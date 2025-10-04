@@ -31,25 +31,13 @@ class DmsRocketmqConsumerGroupArgs:
         """
         The set of arguments for constructing a DmsRocketmqConsumerGroup resource.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the rocketMQ instance.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] retry_max_times: Specifies the maximum number of retry times.  
-               The valid value is range from `1` to `16`.
+        :param pulumi.Input[_builtins.int] retry_max_times: Specifies the maximum number of retry times.
         :param pulumi.Input[_builtins.bool] broadcast: Specifies whether to broadcast of the consumer group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] brokers: Specifies the list of associated brokers of the consumer group.
-               It's only valid when RocketMQ instance version is **4.8.0**.
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.bool] consume_orderly: Specifies whether to consume orderly.
-               It's only valid when RocketMQ instance version is **5.x**.
         :param pulumi.Input[_builtins.str] description: Specifies the description of the consumer group.
-        :param pulumi.Input[_builtins.bool] enabled: Specifies the consumer group is enabled or not. Defaults to true.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the consumer group.  
-               The valid length is limited from `3` to `64`, only letters, digits, vertical lines (|), percent sign (%), hyphens (-)
-               and underscores (_) are allowed.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.bool] enabled: Specifies the consumer group is enabled or not. Default to true.
+        :param pulumi.Input[_builtins.str] name: Specifies the name of the consumer group.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "retry_max_times", retry_max_times)
@@ -73,8 +61,6 @@ class DmsRocketmqConsumerGroupArgs:
     def instance_id(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the ID of the rocketMQ instance.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "instance_id")
 
@@ -86,8 +72,7 @@ class DmsRocketmqConsumerGroupArgs:
     @pulumi.getter(name="retryMaxTimes")
     def retry_max_times(self) -> pulumi.Input[_builtins.int]:
         """
-        Specifies the maximum number of retry times.  
-        The valid value is range from `1` to `16`.
+        Specifies the maximum number of retry times.
         """
         return pulumi.get(self, "retry_max_times")
 
@@ -112,8 +97,6 @@ class DmsRocketmqConsumerGroupArgs:
     def brokers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Specifies the list of associated brokers of the consumer group.
-        It's only valid when RocketMQ instance version is **4.8.0**.
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "brokers")
 
@@ -126,7 +109,6 @@ class DmsRocketmqConsumerGroupArgs:
     def consume_orderly(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Specifies whether to consume orderly.
-        It's only valid when RocketMQ instance version is **5.x**.
         """
         return pulumi.get(self, "consume_orderly")
 
@@ -150,7 +132,7 @@ class DmsRocketmqConsumerGroupArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies the consumer group is enabled or not. Defaults to true.
+        Specifies the consumer group is enabled or not. Default to true.
         """
         return pulumi.get(self, "enabled")
 
@@ -162,11 +144,7 @@ class DmsRocketmqConsumerGroupArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the name of the consumer group.  
-        The valid length is limited from `3` to `64`, only letters, digits, vertical lines (|), percent sign (%), hyphens (-)
-        and underscores (_) are allowed.
-
-        Changing this parameter will create a new resource.
+        Specifies the name of the consumer group.
         """
         return pulumi.get(self, "name")
 
@@ -177,10 +155,6 @@ class DmsRocketmqConsumerGroupArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -204,24 +178,12 @@ class _DmsRocketmqConsumerGroupState:
         Input properties used for looking up and filtering DmsRocketmqConsumerGroup resources.
         :param pulumi.Input[_builtins.bool] broadcast: Specifies whether to broadcast of the consumer group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] brokers: Specifies the list of associated brokers of the consumer group.
-               It's only valid when RocketMQ instance version is **4.8.0**.
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.bool] consume_orderly: Specifies whether to consume orderly.
-               It's only valid when RocketMQ instance version is **5.x**.
         :param pulumi.Input[_builtins.str] description: Specifies the description of the consumer group.
-        :param pulumi.Input[_builtins.bool] enabled: Specifies the consumer group is enabled or not. Defaults to true.
+        :param pulumi.Input[_builtins.bool] enabled: Specifies the consumer group is enabled or not. Default to true.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the rocketMQ instance.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the consumer group.  
-               The valid length is limited from `3` to `64`, only letters, digits, vertical lines (|), percent sign (%), hyphens (-)
-               and underscores (_) are allowed.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] retry_max_times: Specifies the maximum number of retry times.  
-               The valid value is range from `1` to `16`.
+        :param pulumi.Input[_builtins.str] name: Specifies the name of the consumer group.
+        :param pulumi.Input[_builtins.int] retry_max_times: Specifies the maximum number of retry times.
         """
         if broadcast is not None:
             pulumi.set(__self__, "broadcast", broadcast)
@@ -259,8 +221,6 @@ class _DmsRocketmqConsumerGroupState:
     def brokers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Specifies the list of associated brokers of the consumer group.
-        It's only valid when RocketMQ instance version is **4.8.0**.
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "brokers")
 
@@ -273,7 +233,6 @@ class _DmsRocketmqConsumerGroupState:
     def consume_orderly(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Specifies whether to consume orderly.
-        It's only valid when RocketMQ instance version is **5.x**.
         """
         return pulumi.get(self, "consume_orderly")
 
@@ -297,7 +256,7 @@ class _DmsRocketmqConsumerGroupState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies the consumer group is enabled or not. Defaults to true.
+        Specifies the consumer group is enabled or not. Default to true.
         """
         return pulumi.get(self, "enabled")
 
@@ -310,8 +269,6 @@ class _DmsRocketmqConsumerGroupState:
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the ID of the rocketMQ instance.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "instance_id")
 
@@ -323,11 +280,7 @@ class _DmsRocketmqConsumerGroupState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the name of the consumer group.  
-        The valid length is limited from `3` to `64`, only letters, digits, vertical lines (|), percent sign (%), hyphens (-)
-        and underscores (_) are allowed.
-
-        Changing this parameter will create a new resource.
+        Specifies the name of the consumer group.
         """
         return pulumi.get(self, "name")
 
@@ -338,10 +291,6 @@ class _DmsRocketmqConsumerGroupState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -352,8 +301,7 @@ class _DmsRocketmqConsumerGroupState:
     @pulumi.getter(name="retryMaxTimes")
     def retry_max_times(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the maximum number of retry times.  
-        The valid value is range from `1` to `16`.
+        Specifies the maximum number of retry times.
         """
         return pulumi.get(self, "retry_max_times")
 
@@ -379,81 +327,17 @@ class DmsRocketmqConsumerGroup(pulumi.CustomResource):
                  retry_max_times: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
-        Manages DMS RocketMQ consumer group resources within SberCloud.
-
-        ## Example Usage
-
-        ### Create consumer group for 4.8.0 version instance
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        test = sbercloud.DmsRocketmqConsumerGroup("test",
-            instance_id=instance_id,
-            name="consumer_group_test",
-            enabled=True,
-            broadcast=True,
-            brokers=[
-                "broker-0",
-                "broker-1",
-            ],
-            retry_max_times=3,
-            description="the description of the consumer group")
-        ```
-
-        ### Create consumer group for 5.x version instance
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        test = sbercloud.DmsRocketmqConsumerGroup("test",
-            instance_id=instance_id,
-            name="consumer_group_test",
-            enabled=True,
-            broadcast=True,
-            retry_max_times=3,
-            description="the description of the consumer group",
-            consume_orderly=True)
-        ```
-
-        ## Import
-
-        The rocketmq consumer group can be imported using the rocketMQ instance ID and group name separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/dmsRocketmqConsumerGroup:DmsRocketmqConsumerGroup test 8d3c7938-dc47-4937-a30f-c80de381c5e3/group_1
-        ```
-
+        Create a DmsRocketmqConsumerGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] broadcast: Specifies whether to broadcast of the consumer group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] brokers: Specifies the list of associated brokers of the consumer group.
-               It's only valid when RocketMQ instance version is **4.8.0**.
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.bool] consume_orderly: Specifies whether to consume orderly.
-               It's only valid when RocketMQ instance version is **5.x**.
         :param pulumi.Input[_builtins.str] description: Specifies the description of the consumer group.
-        :param pulumi.Input[_builtins.bool] enabled: Specifies the consumer group is enabled or not. Defaults to true.
+        :param pulumi.Input[_builtins.bool] enabled: Specifies the consumer group is enabled or not. Default to true.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the rocketMQ instance.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the consumer group.  
-               The valid length is limited from `3` to `64`, only letters, digits, vertical lines (|), percent sign (%), hyphens (-)
-               and underscores (_) are allowed.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] retry_max_times: Specifies the maximum number of retry times.  
-               The valid value is range from `1` to `16`.
+        :param pulumi.Input[_builtins.str] name: Specifies the name of the consumer group.
+        :param pulumi.Input[_builtins.int] retry_max_times: Specifies the maximum number of retry times.
         """
         ...
     @overload
@@ -462,59 +346,7 @@ class DmsRocketmqConsumerGroup(pulumi.CustomResource):
                  args: DmsRocketmqConsumerGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages DMS RocketMQ consumer group resources within SberCloud.
-
-        ## Example Usage
-
-        ### Create consumer group for 4.8.0 version instance
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        test = sbercloud.DmsRocketmqConsumerGroup("test",
-            instance_id=instance_id,
-            name="consumer_group_test",
-            enabled=True,
-            broadcast=True,
-            brokers=[
-                "broker-0",
-                "broker-1",
-            ],
-            retry_max_times=3,
-            description="the description of the consumer group")
-        ```
-
-        ### Create consumer group for 5.x version instance
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        test = sbercloud.DmsRocketmqConsumerGroup("test",
-            instance_id=instance_id,
-            name="consumer_group_test",
-            enabled=True,
-            broadcast=True,
-            retry_max_times=3,
-            description="the description of the consumer group",
-            consume_orderly=True)
-        ```
-
-        ## Import
-
-        The rocketmq consumer group can be imported using the rocketMQ instance ID and group name separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/dmsRocketmqConsumerGroup:DmsRocketmqConsumerGroup test 8d3c7938-dc47-4937-a30f-c80de381c5e3/group_1
-        ```
-
+        Create a DmsRocketmqConsumerGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param DmsRocketmqConsumerGroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -589,24 +421,12 @@ class DmsRocketmqConsumerGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] broadcast: Specifies whether to broadcast of the consumer group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] brokers: Specifies the list of associated brokers of the consumer group.
-               It's only valid when RocketMQ instance version is **4.8.0**.
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.bool] consume_orderly: Specifies whether to consume orderly.
-               It's only valid when RocketMQ instance version is **5.x**.
         :param pulumi.Input[_builtins.str] description: Specifies the description of the consumer group.
-        :param pulumi.Input[_builtins.bool] enabled: Specifies the consumer group is enabled or not. Defaults to true.
+        :param pulumi.Input[_builtins.bool] enabled: Specifies the consumer group is enabled or not. Default to true.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the rocketMQ instance.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the consumer group.  
-               The valid length is limited from `3` to `64`, only letters, digits, vertical lines (|), percent sign (%), hyphens (-)
-               and underscores (_) are allowed.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] retry_max_times: Specifies the maximum number of retry times.  
-               The valid value is range from `1` to `16`.
+        :param pulumi.Input[_builtins.str] name: Specifies the name of the consumer group.
+        :param pulumi.Input[_builtins.int] retry_max_times: Specifies the maximum number of retry times.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -636,8 +456,6 @@ class DmsRocketmqConsumerGroup(pulumi.CustomResource):
     def brokers(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
         Specifies the list of associated brokers of the consumer group.
-        It's only valid when RocketMQ instance version is **4.8.0**.
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "brokers")
 
@@ -646,7 +464,6 @@ class DmsRocketmqConsumerGroup(pulumi.CustomResource):
     def consume_orderly(self) -> pulumi.Output[_builtins.bool]:
         """
         Specifies whether to consume orderly.
-        It's only valid when RocketMQ instance version is **5.x**.
         """
         return pulumi.get(self, "consume_orderly")
 
@@ -662,7 +479,7 @@ class DmsRocketmqConsumerGroup(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Specifies the consumer group is enabled or not. Defaults to true.
+        Specifies the consumer group is enabled or not. Default to true.
         """
         return pulumi.get(self, "enabled")
 
@@ -671,8 +488,6 @@ class DmsRocketmqConsumerGroup(pulumi.CustomResource):
     def instance_id(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the ID of the rocketMQ instance.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "instance_id")
 
@@ -680,29 +495,20 @@ class DmsRocketmqConsumerGroup(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the name of the consumer group.  
-        The valid length is limited from `3` to `64`, only letters, digits, vertical lines (|), percent sign (%), hyphens (-)
-        and underscores (_) are allowed.
-
-        Changing this parameter will create a new resource.
+        Specifies the name of the consumer group.
         """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="retryMaxTimes")
     def retry_max_times(self) -> pulumi.Output[_builtins.int]:
         """
-        Specifies the maximum number of retry times.  
-        The valid value is range from `1` to `16`.
+        Specifies the maximum number of retry times.
         """
         return pulumi.get(self, "retry_max_times")
 

@@ -28,14 +28,6 @@ class ElbIpgroupArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ElbIpgroup resource.
-        :param pulumi.Input[Sequence[pulumi.Input['ElbIpgroupIpListArgs']]] ip_lists: Specifies an array of one or more ip addresses. The ip_list object structure is
-               documented below.
-        :param pulumi.Input[_builtins.str] description: Human-readable description for the ip group.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the ip group. Changing this
-               creates a new ip group.
-        :param pulumi.Input[_builtins.str] name: Human-readable name for the ip group.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the ip group resource. If omitted, the
-               provider-level region will be used. Changing this creates a new ip group.
         """
         pulumi.set(__self__, "ip_lists", ip_lists)
         if description is not None:
@@ -50,10 +42,6 @@ class ElbIpgroupArgs:
     @_builtins.property
     @pulumi.getter(name="ipLists")
     def ip_lists(self) -> pulumi.Input[Sequence[pulumi.Input['ElbIpgroupIpListArgs']]]:
-        """
-        Specifies an array of one or more ip addresses. The ip_list object structure is
-        documented below.
-        """
         return pulumi.get(self, "ip_lists")
 
     @ip_lists.setter
@@ -63,9 +51,6 @@ class ElbIpgroupArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Human-readable description for the ip group.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -75,10 +60,6 @@ class ElbIpgroupArgs:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The enterprise project id of the ip group. Changing this
-        creates a new ip group.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -88,9 +69,6 @@ class ElbIpgroupArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Human-readable name for the ip group.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -100,10 +78,6 @@ class ElbIpgroupArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the ip group resource. If omitted, the
-        provider-level region will be used. Changing this creates a new ip group.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -124,14 +98,6 @@ class _ElbIpgroupState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ElbIpgroup resources.
-        :param pulumi.Input[_builtins.str] description: Human-readable description for the ip group.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the ip group. Changing this
-               creates a new ip group.
-        :param pulumi.Input[Sequence[pulumi.Input['ElbIpgroupIpListArgs']]] ip_lists: Specifies an array of one or more ip addresses. The ip_list object structure is
-               documented below.
-        :param pulumi.Input[_builtins.str] name: Human-readable name for the ip group.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the ip group resource. If omitted, the
-               provider-level region will be used. Changing this creates a new ip group.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -162,9 +128,6 @@ class _ElbIpgroupState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Human-readable description for the ip group.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -174,10 +137,6 @@ class _ElbIpgroupState:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The enterprise project id of the ip group. Changing this
-        creates a new ip group.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -187,10 +146,6 @@ class _ElbIpgroupState:
     @_builtins.property
     @pulumi.getter(name="ipLists")
     def ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElbIpgroupIpListArgs']]]]:
-        """
-        Specifies an array of one or more ip addresses. The ip_list object structure is
-        documented below.
-        """
         return pulumi.get(self, "ip_lists")
 
     @ip_lists.setter
@@ -209,9 +164,6 @@ class _ElbIpgroupState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Human-readable name for the ip group.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -221,10 +173,6 @@ class _ElbIpgroupState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the ip group resource. If omitted, the
-        provider-level region will be used. Changing this creates a new ip group.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -254,33 +202,9 @@ class ElbIpgroup(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a Dedicated ELB Ip Group resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        basic = sbercloud.ElbIpgroup("basic",
-            name="basic",
-            description="basic example",
-            ip_lists=[{
-                "ip": "192.168.10.10",
-                "description": "ECS01",
-            }])
-        ```
-
+        Create a ElbIpgroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Human-readable description for the ip group.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the ip group. Changing this
-               creates a new ip group.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ElbIpgroupIpListArgs', 'ElbIpgroupIpListArgsDict']]]] ip_lists: Specifies an array of one or more ip addresses. The ip_list object structure is
-               documented below.
-        :param pulumi.Input[_builtins.str] name: Human-readable name for the ip group.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the ip group resource. If omitted, the
-               provider-level region will be used. Changing this creates a new ip group.
         """
         ...
     @overload
@@ -289,23 +213,7 @@ class ElbIpgroup(pulumi.CustomResource):
                  args: ElbIpgroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a Dedicated ELB Ip Group resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        basic = sbercloud.ElbIpgroup("basic",
-            name="basic",
-            description="basic example",
-            ip_lists=[{
-                "ip": "192.168.10.10",
-                "description": "ECS01",
-            }])
-        ```
-
+        Create a ElbIpgroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ElbIpgroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -370,14 +278,6 @@ class ElbIpgroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Human-readable description for the ip group.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the ip group. Changing this
-               creates a new ip group.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ElbIpgroupIpListArgs', 'ElbIpgroupIpListArgsDict']]]] ip_lists: Specifies an array of one or more ip addresses. The ip_list object structure is
-               documented below.
-        :param pulumi.Input[_builtins.str] name: Human-readable name for the ip group.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the ip group resource. If omitted, the
-               provider-level region will be used. Changing this creates a new ip group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -401,27 +301,16 @@ class ElbIpgroup(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Human-readable description for the ip group.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The enterprise project id of the ip group. Changing this
-        creates a new ip group.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
     @pulumi.getter(name="ipLists")
     def ip_lists(self) -> pulumi.Output[Sequence['outputs.ElbIpgroupIpList']]:
-        """
-        Specifies an array of one or more ip addresses. The ip_list object structure is
-        documented below.
-        """
         return pulumi.get(self, "ip_lists")
 
     @_builtins.property
@@ -432,18 +321,11 @@ class ElbIpgroup(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Human-readable name for the ip group.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the ip group resource. If omitted, the
-        provider-level region will be used. Changing this creates a new ip group.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property

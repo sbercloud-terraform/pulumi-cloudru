@@ -48,52 +48,28 @@ class ClusterArgs:
                  volume: Optional[pulumi.Input['ClusterVolumeArgs']] = None):
         """
         The set of arguments for constructing a Cluster resource.
-        :param pulumi.Input[_builtins.str] availability_zone: AZ in a cluster.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.str] network_id: Network ID, which is used for configuring cluster network.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.str] node_type: Node type.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.int] number_of_node: Number of nodes in a cluster. The value ranges from 3 to 32. When expanding,
-               add at least 3 nodes.
-        :param pulumi.Input[_builtins.str] security_group_id: ID of a security group. The ID is used for configuring cluster
-               network.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.str] user_name: Administrator username for logging in to a data warehouse cluster The
-               administrator username must:  Consist of lowercase letters, digits, or underscores. Start with a lowercase letter or
-               an underscore. Contain 1 to 63 characters. Cannot be a keyword of the DWS database.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.str] user_pwd: Administrator password for logging in to a data warehouse cluster A password
-               must conform to the following rules:  Contains 8 to 32 characters. Cannot be the same as the username or the username
-               written in reverse order. Contains three types of the following:
-               Lowercase letters Uppercase letters Digits Special characters
-               ~!@#%^&*()-_=+|[{}];:,<.>/?
-        :param pulumi.Input[_builtins.str] vpc_id: VPC ID, which is used for configuring cluster network.
-               Changing this creates a new cluster resource.
+        :param pulumi.Input[_builtins.str] availability_zone: The availability zone in which to create the cluster instance.
+        :param pulumi.Input[_builtins.str] network_id: The subnet ID.
+        :param pulumi.Input[_builtins.str] node_type: The flavor of the cluster.
+        :param pulumi.Input[_builtins.int] number_of_node: Number of nodes in a cluster.
+        :param pulumi.Input[_builtins.str] security_group_id: The security group ID.
+        :param pulumi.Input[_builtins.str] user_name: Administrator username for logging in to a data warehouse cluster.
+        :param pulumi.Input[_builtins.str] user_pwd: Administrator password for logging in to a data warehouse cluster.
+        :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
         :param pulumi.Input[_builtins.str] description: The description of the cluster.
         :param pulumi.Input[_builtins.str] dss_pool_id: Dedicated storage pool ID.
         :param pulumi.Input[_builtins.str] elb_id: The ID of the ELB load balancer.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the dws cluster,
-               Value 0 indicates the default enterprise project.
-               Changing this creates a new cluster resource.
+        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID.
         :param pulumi.Input[_builtins.bool] force_backup: Whether to automatically execute snapshot when shrinking the number of nodes.
         :param pulumi.Input[_builtins.int] keep_last_manual_snapshot: The number of latest manual snapshots that need to be retained when deleting the cluster.
         :param pulumi.Input[_builtins.str] kms_key_id: The KMS key ID.
         :param pulumi.Input[_builtins.bool] logical_cluster_enable: Whether to enable logical cluster.
         :param pulumi.Input[_builtins.bool] lts_enable: Whether to enable LTS.
-        :param pulumi.Input[_builtins.str] name: Cluster name, which must be unique and contains 4 to 64 characters, which
-               consist of letters, digits, hyphens(-), or underscores(_) only and must start with a letter.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.int] number_of_cn: The number of CN. If you use a large-scale cluster, deploy multiple CNs.
-               Changing this creates a new cluster resource.
+        :param pulumi.Input[_builtins.str] name: The cluster name.
+        :param pulumi.Input[_builtins.int] number_of_cn: schema: Required
         :param pulumi.Input[_builtins.int] port: Service port of a cluster (8000 to 10000). The default value is 8000.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input['ClusterPublicIpArgs'] public_ip: A nested object resource Structure is documented below.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the cluster resource. If omitted, the
-               provider-level region will be used. Changing this creates a new cluster resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the cluster.
-        :param pulumi.Input[_builtins.str] version: Data warehouse version.
+        :param pulumi.Input[_builtins.str] version: schema: Required
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "network_id", network_id)
@@ -142,8 +118,7 @@ class ClusterArgs:
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> pulumi.Input[_builtins.str]:
         """
-        AZ in a cluster.
-        Changing this creates a new cluster resource.
+        The availability zone in which to create the cluster instance.
         """
         return pulumi.get(self, "availability_zone")
 
@@ -155,8 +130,7 @@ class ClusterArgs:
     @pulumi.getter(name="networkId")
     def network_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Network ID, which is used for configuring cluster network.
-        Changing this creates a new cluster resource.
+        The subnet ID.
         """
         return pulumi.get(self, "network_id")
 
@@ -168,8 +142,7 @@ class ClusterArgs:
     @pulumi.getter(name="nodeType")
     def node_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Node type.
-        Changing this creates a new cluster resource.
+        The flavor of the cluster.
         """
         return pulumi.get(self, "node_type")
 
@@ -181,8 +154,7 @@ class ClusterArgs:
     @pulumi.getter(name="numberOfNode")
     def number_of_node(self) -> pulumi.Input[_builtins.int]:
         """
-        Number of nodes in a cluster. The value ranges from 3 to 32. When expanding,
-        add at least 3 nodes.
+        Number of nodes in a cluster.
         """
         return pulumi.get(self, "number_of_node")
 
@@ -194,9 +166,7 @@ class ClusterArgs:
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Input[_builtins.str]:
         """
-        ID of a security group. The ID is used for configuring cluster
-        network.
-        Changing this creates a new cluster resource.
+        The security group ID.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -208,10 +178,7 @@ class ClusterArgs:
     @pulumi.getter(name="userName")
     def user_name(self) -> pulumi.Input[_builtins.str]:
         """
-        Administrator username for logging in to a data warehouse cluster The
-        administrator username must:  Consist of lowercase letters, digits, or underscores. Start with a lowercase letter or
-        an underscore. Contain 1 to 63 characters. Cannot be a keyword of the DWS database.
-        Changing this creates a new cluster resource.
+        Administrator username for logging in to a data warehouse cluster.
         """
         return pulumi.get(self, "user_name")
 
@@ -223,11 +190,7 @@ class ClusterArgs:
     @pulumi.getter(name="userPwd")
     def user_pwd(self) -> pulumi.Input[_builtins.str]:
         """
-        Administrator password for logging in to a data warehouse cluster A password
-        must conform to the following rules:  Contains 8 to 32 characters. Cannot be the same as the username or the username
-        written in reverse order. Contains three types of the following:
-        Lowercase letters Uppercase letters Digits Special characters
-        ~!@#%^&*()-_=+|[{}];:,<.>/?
+        Administrator password for logging in to a data warehouse cluster.
         """
         return pulumi.get(self, "user_pwd")
 
@@ -239,8 +202,7 @@ class ClusterArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[_builtins.str]:
         """
-        VPC ID, which is used for configuring cluster network.
-        Changing this creates a new cluster resource.
+        The VPC ID.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -288,9 +250,7 @@ class ClusterArgs:
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The enterprise project id of the dws cluster,
-        Value 0 indicates the default enterprise project.
-        Changing this creates a new cluster resource.
+        The enterprise project ID.
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -362,9 +322,7 @@ class ClusterArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Cluster name, which must be unique and contains 4 to 64 characters, which
-        consist of letters, digits, hyphens(-), or underscores(_) only and must start with a letter.
-        Changing this creates a new cluster resource.
+        The cluster name.
         """
         return pulumi.get(self, "name")
 
@@ -376,8 +334,7 @@ class ClusterArgs:
     @pulumi.getter(name="numberOfCn")
     def number_of_cn(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The number of CN. If you use a large-scale cluster, deploy multiple CNs.
-        Changing this creates a new cluster resource.
+        schema: Required
         """
         return pulumi.get(self, "number_of_cn")
 
@@ -390,7 +347,6 @@ class ClusterArgs:
     def port(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Service port of a cluster (8000 to 10000). The default value is 8000.
-        Changing this creates a new cluster resource.
         """
         return pulumi.get(self, "port")
 
@@ -401,10 +357,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> Optional[pulumi.Input['ClusterPublicIpArgs']]:
-        """
-        A nested object resource Structure is documented below.
-        Changing this creates a new cluster resource.
-        """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
@@ -414,10 +366,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the cluster resource. If omitted, the
-        provider-level region will be used. Changing this creates a new cluster resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -440,7 +388,7 @@ class ClusterArgs:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Data warehouse version.
+        schema: Required
         """
         return pulumi.get(self, "version")
 
@@ -499,70 +447,38 @@ class _ClusterState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
-        :param pulumi.Input[_builtins.str] availability_zone: AZ in a cluster.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.str] created: Cluster creation time. The format is ISO8601:YYYY-MM-DDThh:mm:ssZ
+        :param pulumi.Input[_builtins.str] availability_zone: The availability zone in which to create the cluster instance.
+        :param pulumi.Input[_builtins.str] created: The creation time of the cluster.
         :param pulumi.Input[_builtins.str] description: The description of the cluster.
         :param pulumi.Input[_builtins.str] dss_pool_id: Dedicated storage pool ID.
         :param pulumi.Input[_builtins.str] elb_id: The ID of the ELB load balancer.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterElbArgs']]] elbs: The ELB information bound to the cluster.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterEndpointArgs']]] endpoints: View the private network connection information about the cluster. Structure is documented below.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the dws cluster,
-               Value 0 indicates the default enterprise project.
-               Changing this creates a new cluster resource.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterEndpointArgs']]] endpoints: Private network connection information about the cluster.
+        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID.
         :param pulumi.Input[_builtins.bool] force_backup: Whether to automatically execute snapshot when shrinking the number of nodes.
         :param pulumi.Input[_builtins.int] keep_last_manual_snapshot: The number of latest manual snapshots that need to be retained when deleting the cluster.
         :param pulumi.Input[_builtins.str] kms_key_id: The KMS key ID.
         :param pulumi.Input[_builtins.bool] logical_cluster_enable: Whether to enable logical cluster.
         :param pulumi.Input[_builtins.bool] lts_enable: Whether to enable LTS.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterMaintainWindowArgs']]] maintain_windows: Cluster maintenance window.
-        :param pulumi.Input[_builtins.str] name: Cluster name, which must be unique and contains 4 to 64 characters, which
-               consist of letters, digits, hyphens(-), or underscores(_) only and must start with a letter.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.str] network_id: Network ID, which is used for configuring cluster network.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.str] node_type: Node type.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.int] number_of_cn: The number of CN. If you use a large-scale cluster, deploy multiple CNs.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.int] number_of_node: Number of nodes in a cluster. The value ranges from 3 to 32. When expanding,
-               add at least 3 nodes.
+        :param pulumi.Input[_builtins.str] name: The cluster name.
+        :param pulumi.Input[_builtins.str] network_id: The subnet ID.
+        :param pulumi.Input[_builtins.str] node_type: The flavor of the cluster.
+        :param pulumi.Input[_builtins.int] number_of_cn: schema: Required
+        :param pulumi.Input[_builtins.int] number_of_node: Number of nodes in a cluster.
         :param pulumi.Input[_builtins.int] port: Service port of a cluster (8000 to 10000). The default value is 8000.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: List of private network IP address.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterPublicEndpointArgs']]] public_endpoints: Public network connection information about the cluster. If the value is not specified, the
-               public network connection information is not used by default Structure is documented below.
-        :param pulumi.Input['ClusterPublicIpArgs'] public_ip: A nested object resource Structure is documented below.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.int] recent_event: The recent event number.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the cluster resource. If omitted, the
-               provider-level region will be used. Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.str] security_group_id: ID of a security group. The ID is used for configuring cluster
-               network.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.str] status: Cluster status, which can be one of the following:  CREATING AVAILABLE UNAVAILABLE CREATION FAILED.
-        :param pulumi.Input[_builtins.str] sub_status: Sub-status of clusters in the AVAILABLE state. The value can be one of the following:  NORMAL READONLY
-               REDISTRIBUTING REDISTRIBUTION-FAILURE UNBALANCED UNBALANCED | READONLY DEGRADED DEGRADED | READONLY DEGRADED |
-               UNBALANCED UNBALANCED | REDISTRIBUTING UNBALANCED | REDISTRIBUTION-FAILURE READONLY | REDISTRIBUTION-FAILURE
-               UNBALANCED | READONLY | REDISTRIBUTION-FAILURE DEGRADED | REDISTRIBUTION-FAILURE DEGRADED | UNBALANCED |
-               REDISTRIBUTION-FAILURE DEGRADED | UNBALANCED | READONLY | REDISTRIBUTION-FAILURE DEGRADED | UNBALANCED | READONLY
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: List of private network IP addresses.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterPublicEndpointArgs']]] public_endpoints: Public network connection information about the cluster.
+        :param pulumi.Input[_builtins.str] security_group_id: The security group ID.
+        :param pulumi.Input[_builtins.str] status: The cluster status.
+        :param pulumi.Input[_builtins.str] sub_status: Sub-status of clusters in the AVAILABLE state.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the cluster.
-        :param pulumi.Input[_builtins.str] task_status: Cluster management task. The value can be one of the following:
-               RESTORING SNAPSHOTTING GROWING REBOOTING SETTING_CONFIGURATION CONFIGURING_EXT_DATASOURCE DELETING_EXT_DATASOURCE
-               REBOOT_FAILURE RESIZE_FAILURE
-        :param pulumi.Input[_builtins.str] updated: Last modification time of a cluster. The format is ISO8601:YYYY-MM-DDThh:mm:ssZ
-        :param pulumi.Input[_builtins.str] user_name: Administrator username for logging in to a data warehouse cluster The
-               administrator username must:  Consist of lowercase letters, digits, or underscores. Start with a lowercase letter or
-               an underscore. Contain 1 to 63 characters. Cannot be a keyword of the DWS database.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.str] user_pwd: Administrator password for logging in to a data warehouse cluster A password
-               must conform to the following rules:  Contains 8 to 32 characters. Cannot be the same as the username or the username
-               written in reverse order. Contains three types of the following:
-               Lowercase letters Uppercase letters Digits Special characters
-               ~!@#%^&*()-_=+|[{}];:,<.>/?
-        :param pulumi.Input[_builtins.str] version: Data warehouse version.
-        :param pulumi.Input[_builtins.str] vpc_id: VPC ID, which is used for configuring cluster network.
-               Changing this creates a new cluster resource.
+        :param pulumi.Input[_builtins.str] task_status: Cluster management task.
+        :param pulumi.Input[_builtins.str] updated: The updated time of the cluster.
+        :param pulumi.Input[_builtins.str] user_name: Administrator username for logging in to a data warehouse cluster.
+        :param pulumi.Input[_builtins.str] user_pwd: Administrator password for logging in to a data warehouse cluster.
+        :param pulumi.Input[_builtins.str] version: schema: Required
+        :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
         """
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
@@ -641,8 +557,7 @@ class _ClusterState:
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        AZ in a cluster.
-        Changing this creates a new cluster resource.
+        The availability zone in which to create the cluster instance.
         """
         return pulumi.get(self, "availability_zone")
 
@@ -654,7 +569,7 @@ class _ClusterState:
     @pulumi.getter
     def created(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Cluster creation time. The format is ISO8601:YYYY-MM-DDThh:mm:ssZ
+        The creation time of the cluster.
         """
         return pulumi.get(self, "created")
 
@@ -714,7 +629,7 @@ class _ClusterState:
     @pulumi.getter
     def endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterEndpointArgs']]]]:
         """
-        View the private network connection information about the cluster. Structure is documented below.
+        Private network connection information about the cluster.
         """
         return pulumi.get(self, "endpoints")
 
@@ -726,9 +641,7 @@ class _ClusterState:
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The enterprise project id of the dws cluster,
-        Value 0 indicates the default enterprise project.
-        Changing this creates a new cluster resource.
+        The enterprise project ID.
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -812,9 +725,7 @@ class _ClusterState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Cluster name, which must be unique and contains 4 to 64 characters, which
-        consist of letters, digits, hyphens(-), or underscores(_) only and must start with a letter.
-        Changing this creates a new cluster resource.
+        The cluster name.
         """
         return pulumi.get(self, "name")
 
@@ -826,8 +737,7 @@ class _ClusterState:
     @pulumi.getter(name="networkId")
     def network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Network ID, which is used for configuring cluster network.
-        Changing this creates a new cluster resource.
+        The subnet ID.
         """
         return pulumi.get(self, "network_id")
 
@@ -839,8 +749,7 @@ class _ClusterState:
     @pulumi.getter(name="nodeType")
     def node_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Node type.
-        Changing this creates a new cluster resource.
+        The flavor of the cluster.
         """
         return pulumi.get(self, "node_type")
 
@@ -852,8 +761,7 @@ class _ClusterState:
     @pulumi.getter(name="numberOfCn")
     def number_of_cn(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The number of CN. If you use a large-scale cluster, deploy multiple CNs.
-        Changing this creates a new cluster resource.
+        schema: Required
         """
         return pulumi.get(self, "number_of_cn")
 
@@ -865,8 +773,7 @@ class _ClusterState:
     @pulumi.getter(name="numberOfNode")
     def number_of_node(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Number of nodes in a cluster. The value ranges from 3 to 32. When expanding,
-        add at least 3 nodes.
+        Number of nodes in a cluster.
         """
         return pulumi.get(self, "number_of_node")
 
@@ -879,7 +786,6 @@ class _ClusterState:
     def port(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Service port of a cluster (8000 to 10000). The default value is 8000.
-        Changing this creates a new cluster resource.
         """
         return pulumi.get(self, "port")
 
@@ -891,7 +797,7 @@ class _ClusterState:
     @pulumi.getter(name="privateIps")
     def private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of private network IP address.
+        List of private network IP addresses.
         """
         return pulumi.get(self, "private_ips")
 
@@ -903,8 +809,7 @@ class _ClusterState:
     @pulumi.getter(name="publicEndpoints")
     def public_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPublicEndpointArgs']]]]:
         """
-        Public network connection information about the cluster. If the value is not specified, the
-        public network connection information is not used by default Structure is documented below.
+        Public network connection information about the cluster.
         """
         return pulumi.get(self, "public_endpoints")
 
@@ -915,10 +820,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> Optional[pulumi.Input['ClusterPublicIpArgs']]:
-        """
-        A nested object resource Structure is documented below.
-        Changing this creates a new cluster resource.
-        """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
@@ -928,9 +829,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="recentEvent")
     def recent_event(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The recent event number.
-        """
         return pulumi.get(self, "recent_event")
 
     @recent_event.setter
@@ -940,10 +838,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the cluster resource. If omitted, the
-        provider-level region will be used. Changing this creates a new cluster resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -954,9 +848,7 @@ class _ClusterState:
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        ID of a security group. The ID is used for configuring cluster
-        network.
-        Changing this creates a new cluster resource.
+        The security group ID.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -968,7 +860,7 @@ class _ClusterState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Cluster status, which can be one of the following:  CREATING AVAILABLE UNAVAILABLE CREATION FAILED.
+        The cluster status.
         """
         return pulumi.get(self, "status")
 
@@ -980,11 +872,7 @@ class _ClusterState:
     @pulumi.getter(name="subStatus")
     def sub_status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Sub-status of clusters in the AVAILABLE state. The value can be one of the following:  NORMAL READONLY
-        REDISTRIBUTING REDISTRIBUTION-FAILURE UNBALANCED UNBALANCED | READONLY DEGRADED DEGRADED | READONLY DEGRADED |
-        UNBALANCED UNBALANCED | REDISTRIBUTING UNBALANCED | REDISTRIBUTION-FAILURE READONLY | REDISTRIBUTION-FAILURE
-        UNBALANCED | READONLY | REDISTRIBUTION-FAILURE DEGRADED | REDISTRIBUTION-FAILURE DEGRADED | UNBALANCED |
-        REDISTRIBUTION-FAILURE DEGRADED | UNBALANCED | READONLY | REDISTRIBUTION-FAILURE DEGRADED | UNBALANCED | READONLY
+        Sub-status of clusters in the AVAILABLE state.
         """
         return pulumi.get(self, "sub_status")
 
@@ -1008,9 +896,7 @@ class _ClusterState:
     @pulumi.getter(name="taskStatus")
     def task_status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Cluster management task. The value can be one of the following:
-        RESTORING SNAPSHOTTING GROWING REBOOTING SETTING_CONFIGURATION CONFIGURING_EXT_DATASOURCE DELETING_EXT_DATASOURCE
-        REBOOT_FAILURE RESIZE_FAILURE
+        Cluster management task.
         """
         return pulumi.get(self, "task_status")
 
@@ -1022,7 +908,7 @@ class _ClusterState:
     @pulumi.getter
     def updated(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Last modification time of a cluster. The format is ISO8601:YYYY-MM-DDThh:mm:ssZ
+        The updated time of the cluster.
         """
         return pulumi.get(self, "updated")
 
@@ -1034,10 +920,7 @@ class _ClusterState:
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Administrator username for logging in to a data warehouse cluster The
-        administrator username must:  Consist of lowercase letters, digits, or underscores. Start with a lowercase letter or
-        an underscore. Contain 1 to 63 characters. Cannot be a keyword of the DWS database.
-        Changing this creates a new cluster resource.
+        Administrator username for logging in to a data warehouse cluster.
         """
         return pulumi.get(self, "user_name")
 
@@ -1049,11 +932,7 @@ class _ClusterState:
     @pulumi.getter(name="userPwd")
     def user_pwd(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Administrator password for logging in to a data warehouse cluster A password
-        must conform to the following rules:  Contains 8 to 32 characters. Cannot be the same as the username or the username
-        written in reverse order. Contains three types of the following:
-        Lowercase letters Uppercase letters Digits Special characters
-        ~!@#%^&*()-_=+|[{}];:,<.>/?
+        Administrator password for logging in to a data warehouse cluster.
         """
         return pulumi.get(self, "user_pwd")
 
@@ -1065,7 +944,7 @@ class _ClusterState:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Data warehouse version.
+        schema: Required
         """
         return pulumi.get(self, "version")
 
@@ -1086,8 +965,7 @@ class _ClusterState:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        VPC ID, which is used for configuring cluster network.
-        Changing this creates a new cluster resource.
+        The VPC ID.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -1129,118 +1007,31 @@ class Cluster(pulumi.CustomResource):
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a cluster in the Data Warehouse Service.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        availability_zone = config.require_object("availabilityZone")
-        dws_cluster_name = config.require_object("dwsClusterName")
-        user_name = config.require_object("userName")
-        user_pwd = config.require_object("userPwd")
-        vpc_id = config.require_object("vpcId")
-        network_id = config.require_object("networkId")
-        secgroup = sbercloud.vpc.Secgroup("secgroup",
-            name="sg_dws",
-            description="terraform security group")
-        cluster = sbercloud.dws.Cluster("cluster",
-            name=dws_cluster_name,
-            node_type="dws.m3.xlarge",
-            number_of_node=3,
-            availability_zone=availability_zone,
-            user_name=user_name,
-            user_pwd=user_pwd,
-            vpc_id=vpc_id,
-            network_id=network_id,
-            security_group_id=secgroup.id)
-        ```
-
-        ## Import
-
-        Cluster can be imported using the following format:
-
-        ```sh
-        $ pulumi import sbercloud:Dws/cluster:Cluster test 47ad727e-9dcc-4833-bde0-bb298607c719
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include: `user_pwd`, `number_of_cn`.
-
-        It is generally recommended running `pulumi preview` after importing a cluster.
-
-        You can then decide if changes should be applied to the cluster, or the resource definition
-
-        should be updated to align with the cluster. Also you can ignore changes as below.
-
-        resource "sbercloud_dws_cluster" "test" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              user_pwd, number_of_cn,
-            
-            ]
-
-          }
-
-        }
-
+        Create a Cluster resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] availability_zone: AZ in a cluster.
-               Changing this creates a new cluster resource.
+        :param pulumi.Input[_builtins.str] availability_zone: The availability zone in which to create the cluster instance.
         :param pulumi.Input[_builtins.str] description: The description of the cluster.
         :param pulumi.Input[_builtins.str] dss_pool_id: Dedicated storage pool ID.
         :param pulumi.Input[_builtins.str] elb_id: The ID of the ELB load balancer.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the dws cluster,
-               Value 0 indicates the default enterprise project.
-               Changing this creates a new cluster resource.
+        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID.
         :param pulumi.Input[_builtins.bool] force_backup: Whether to automatically execute snapshot when shrinking the number of nodes.
         :param pulumi.Input[_builtins.int] keep_last_manual_snapshot: The number of latest manual snapshots that need to be retained when deleting the cluster.
         :param pulumi.Input[_builtins.str] kms_key_id: The KMS key ID.
         :param pulumi.Input[_builtins.bool] logical_cluster_enable: Whether to enable logical cluster.
         :param pulumi.Input[_builtins.bool] lts_enable: Whether to enable LTS.
-        :param pulumi.Input[_builtins.str] name: Cluster name, which must be unique and contains 4 to 64 characters, which
-               consist of letters, digits, hyphens(-), or underscores(_) only and must start with a letter.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.str] network_id: Network ID, which is used for configuring cluster network.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.str] node_type: Node type.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.int] number_of_cn: The number of CN. If you use a large-scale cluster, deploy multiple CNs.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.int] number_of_node: Number of nodes in a cluster. The value ranges from 3 to 32. When expanding,
-               add at least 3 nodes.
+        :param pulumi.Input[_builtins.str] name: The cluster name.
+        :param pulumi.Input[_builtins.str] network_id: The subnet ID.
+        :param pulumi.Input[_builtins.str] node_type: The flavor of the cluster.
+        :param pulumi.Input[_builtins.int] number_of_cn: schema: Required
+        :param pulumi.Input[_builtins.int] number_of_node: Number of nodes in a cluster.
         :param pulumi.Input[_builtins.int] port: Service port of a cluster (8000 to 10000). The default value is 8000.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[Union['ClusterPublicIpArgs', 'ClusterPublicIpArgsDict']] public_ip: A nested object resource Structure is documented below.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the cluster resource. If omitted, the
-               provider-level region will be used. Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.str] security_group_id: ID of a security group. The ID is used for configuring cluster
-               network.
-               Changing this creates a new cluster resource.
+        :param pulumi.Input[_builtins.str] security_group_id: The security group ID.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the cluster.
-        :param pulumi.Input[_builtins.str] user_name: Administrator username for logging in to a data warehouse cluster The
-               administrator username must:  Consist of lowercase letters, digits, or underscores. Start with a lowercase letter or
-               an underscore. Contain 1 to 63 characters. Cannot be a keyword of the DWS database.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.str] user_pwd: Administrator password for logging in to a data warehouse cluster A password
-               must conform to the following rules:  Contains 8 to 32 characters. Cannot be the same as the username or the username
-               written in reverse order. Contains three types of the following:
-               Lowercase letters Uppercase letters Digits Special characters
-               ~!@#%^&*()-_=+|[{}];:,<.>/?
-        :param pulumi.Input[_builtins.str] version: Data warehouse version.
-        :param pulumi.Input[_builtins.str] vpc_id: VPC ID, which is used for configuring cluster network.
-               Changing this creates a new cluster resource.
+        :param pulumi.Input[_builtins.str] user_name: Administrator username for logging in to a data warehouse cluster.
+        :param pulumi.Input[_builtins.str] user_pwd: Administrator password for logging in to a data warehouse cluster.
+        :param pulumi.Input[_builtins.str] version: schema: Required
+        :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
         """
         ...
     @overload
@@ -1249,70 +1040,7 @@ class Cluster(pulumi.CustomResource):
                  args: ClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a cluster in the Data Warehouse Service.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        availability_zone = config.require_object("availabilityZone")
-        dws_cluster_name = config.require_object("dwsClusterName")
-        user_name = config.require_object("userName")
-        user_pwd = config.require_object("userPwd")
-        vpc_id = config.require_object("vpcId")
-        network_id = config.require_object("networkId")
-        secgroup = sbercloud.vpc.Secgroup("secgroup",
-            name="sg_dws",
-            description="terraform security group")
-        cluster = sbercloud.dws.Cluster("cluster",
-            name=dws_cluster_name,
-            node_type="dws.m3.xlarge",
-            number_of_node=3,
-            availability_zone=availability_zone,
-            user_name=user_name,
-            user_pwd=user_pwd,
-            vpc_id=vpc_id,
-            network_id=network_id,
-            security_group_id=secgroup.id)
-        ```
-
-        ## Import
-
-        Cluster can be imported using the following format:
-
-        ```sh
-        $ pulumi import sbercloud:Dws/cluster:Cluster test 47ad727e-9dcc-4833-bde0-bb298607c719
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include: `user_pwd`, `number_of_cn`.
-
-        It is generally recommended running `pulumi preview` after importing a cluster.
-
-        You can then decide if changes should be applied to the cluster, or the resource definition
-
-        should be updated to align with the cluster. Also you can ignore changes as below.
-
-        resource "sbercloud_dws_cluster" "test" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              user_pwd, number_of_cn,
-            
-            ]
-
-          }
-
-        }
-
+        Create a Cluster resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ClusterArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1469,70 +1197,38 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] availability_zone: AZ in a cluster.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.str] created: Cluster creation time. The format is ISO8601:YYYY-MM-DDThh:mm:ssZ
+        :param pulumi.Input[_builtins.str] availability_zone: The availability zone in which to create the cluster instance.
+        :param pulumi.Input[_builtins.str] created: The creation time of the cluster.
         :param pulumi.Input[_builtins.str] description: The description of the cluster.
         :param pulumi.Input[_builtins.str] dss_pool_id: Dedicated storage pool ID.
         :param pulumi.Input[_builtins.str] elb_id: The ID of the ELB load balancer.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterElbArgs', 'ClusterElbArgsDict']]]] elbs: The ELB information bound to the cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterEndpointArgs', 'ClusterEndpointArgsDict']]]] endpoints: View the private network connection information about the cluster. Structure is documented below.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the dws cluster,
-               Value 0 indicates the default enterprise project.
-               Changing this creates a new cluster resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterEndpointArgs', 'ClusterEndpointArgsDict']]]] endpoints: Private network connection information about the cluster.
+        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID.
         :param pulumi.Input[_builtins.bool] force_backup: Whether to automatically execute snapshot when shrinking the number of nodes.
         :param pulumi.Input[_builtins.int] keep_last_manual_snapshot: The number of latest manual snapshots that need to be retained when deleting the cluster.
         :param pulumi.Input[_builtins.str] kms_key_id: The KMS key ID.
         :param pulumi.Input[_builtins.bool] logical_cluster_enable: Whether to enable logical cluster.
         :param pulumi.Input[_builtins.bool] lts_enable: Whether to enable LTS.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterMaintainWindowArgs', 'ClusterMaintainWindowArgsDict']]]] maintain_windows: Cluster maintenance window.
-        :param pulumi.Input[_builtins.str] name: Cluster name, which must be unique and contains 4 to 64 characters, which
-               consist of letters, digits, hyphens(-), or underscores(_) only and must start with a letter.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.str] network_id: Network ID, which is used for configuring cluster network.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.str] node_type: Node type.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.int] number_of_cn: The number of CN. If you use a large-scale cluster, deploy multiple CNs.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.int] number_of_node: Number of nodes in a cluster. The value ranges from 3 to 32. When expanding,
-               add at least 3 nodes.
+        :param pulumi.Input[_builtins.str] name: The cluster name.
+        :param pulumi.Input[_builtins.str] network_id: The subnet ID.
+        :param pulumi.Input[_builtins.str] node_type: The flavor of the cluster.
+        :param pulumi.Input[_builtins.int] number_of_cn: schema: Required
+        :param pulumi.Input[_builtins.int] number_of_node: Number of nodes in a cluster.
         :param pulumi.Input[_builtins.int] port: Service port of a cluster (8000 to 10000). The default value is 8000.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: List of private network IP address.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterPublicEndpointArgs', 'ClusterPublicEndpointArgsDict']]]] public_endpoints: Public network connection information about the cluster. If the value is not specified, the
-               public network connection information is not used by default Structure is documented below.
-        :param pulumi.Input[Union['ClusterPublicIpArgs', 'ClusterPublicIpArgsDict']] public_ip: A nested object resource Structure is documented below.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.int] recent_event: The recent event number.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the cluster resource. If omitted, the
-               provider-level region will be used. Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.str] security_group_id: ID of a security group. The ID is used for configuring cluster
-               network.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.str] status: Cluster status, which can be one of the following:  CREATING AVAILABLE UNAVAILABLE CREATION FAILED.
-        :param pulumi.Input[_builtins.str] sub_status: Sub-status of clusters in the AVAILABLE state. The value can be one of the following:  NORMAL READONLY
-               REDISTRIBUTING REDISTRIBUTION-FAILURE UNBALANCED UNBALANCED | READONLY DEGRADED DEGRADED | READONLY DEGRADED |
-               UNBALANCED UNBALANCED | REDISTRIBUTING UNBALANCED | REDISTRIBUTION-FAILURE READONLY | REDISTRIBUTION-FAILURE
-               UNBALANCED | READONLY | REDISTRIBUTION-FAILURE DEGRADED | REDISTRIBUTION-FAILURE DEGRADED | UNBALANCED |
-               REDISTRIBUTION-FAILURE DEGRADED | UNBALANCED | READONLY | REDISTRIBUTION-FAILURE DEGRADED | UNBALANCED | READONLY
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: List of private network IP addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterPublicEndpointArgs', 'ClusterPublicEndpointArgsDict']]]] public_endpoints: Public network connection information about the cluster.
+        :param pulumi.Input[_builtins.str] security_group_id: The security group ID.
+        :param pulumi.Input[_builtins.str] status: The cluster status.
+        :param pulumi.Input[_builtins.str] sub_status: Sub-status of clusters in the AVAILABLE state.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the cluster.
-        :param pulumi.Input[_builtins.str] task_status: Cluster management task. The value can be one of the following:
-               RESTORING SNAPSHOTTING GROWING REBOOTING SETTING_CONFIGURATION CONFIGURING_EXT_DATASOURCE DELETING_EXT_DATASOURCE
-               REBOOT_FAILURE RESIZE_FAILURE
-        :param pulumi.Input[_builtins.str] updated: Last modification time of a cluster. The format is ISO8601:YYYY-MM-DDThh:mm:ssZ
-        :param pulumi.Input[_builtins.str] user_name: Administrator username for logging in to a data warehouse cluster The
-               administrator username must:  Consist of lowercase letters, digits, or underscores. Start with a lowercase letter or
-               an underscore. Contain 1 to 63 characters. Cannot be a keyword of the DWS database.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.str] user_pwd: Administrator password for logging in to a data warehouse cluster A password
-               must conform to the following rules:  Contains 8 to 32 characters. Cannot be the same as the username or the username
-               written in reverse order. Contains three types of the following:
-               Lowercase letters Uppercase letters Digits Special characters
-               ~!@#%^&*()-_=+|[{}];:,<.>/?
-        :param pulumi.Input[_builtins.str] version: Data warehouse version.
-        :param pulumi.Input[_builtins.str] vpc_id: VPC ID, which is used for configuring cluster network.
-               Changing this creates a new cluster resource.
+        :param pulumi.Input[_builtins.str] task_status: Cluster management task.
+        :param pulumi.Input[_builtins.str] updated: The updated time of the cluster.
+        :param pulumi.Input[_builtins.str] user_name: Administrator username for logging in to a data warehouse cluster.
+        :param pulumi.Input[_builtins.str] user_pwd: Administrator password for logging in to a data warehouse cluster.
+        :param pulumi.Input[_builtins.str] version: schema: Required
+        :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1580,8 +1276,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> pulumi.Output[_builtins.str]:
         """
-        AZ in a cluster.
-        Changing this creates a new cluster resource.
+        The availability zone in which to create the cluster instance.
         """
         return pulumi.get(self, "availability_zone")
 
@@ -1589,7 +1284,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter
     def created(self) -> pulumi.Output[_builtins.str]:
         """
-        Cluster creation time. The format is ISO8601:YYYY-MM-DDThh:mm:ssZ
+        The creation time of the cluster.
         """
         return pulumi.get(self, "created")
 
@@ -1629,7 +1324,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter
     def endpoints(self) -> pulumi.Output[Sequence['outputs.ClusterEndpoint']]:
         """
-        View the private network connection information about the cluster. Structure is documented below.
+        Private network connection information about the cluster.
         """
         return pulumi.get(self, "endpoints")
 
@@ -1637,9 +1332,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The enterprise project id of the dws cluster,
-        Value 0 indicates the default enterprise project.
-        Changing this creates a new cluster resource.
+        The enterprise project ID.
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -1695,9 +1388,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Cluster name, which must be unique and contains 4 to 64 characters, which
-        consist of letters, digits, hyphens(-), or underscores(_) only and must start with a letter.
-        Changing this creates a new cluster resource.
+        The cluster name.
         """
         return pulumi.get(self, "name")
 
@@ -1705,8 +1396,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="networkId")
     def network_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Network ID, which is used for configuring cluster network.
-        Changing this creates a new cluster resource.
+        The subnet ID.
         """
         return pulumi.get(self, "network_id")
 
@@ -1714,8 +1404,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="nodeType")
     def node_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Node type.
-        Changing this creates a new cluster resource.
+        The flavor of the cluster.
         """
         return pulumi.get(self, "node_type")
 
@@ -1723,8 +1412,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="numberOfCn")
     def number_of_cn(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The number of CN. If you use a large-scale cluster, deploy multiple CNs.
-        Changing this creates a new cluster resource.
+        schema: Required
         """
         return pulumi.get(self, "number_of_cn")
 
@@ -1732,8 +1420,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="numberOfNode")
     def number_of_node(self) -> pulumi.Output[_builtins.int]:
         """
-        Number of nodes in a cluster. The value ranges from 3 to 32. When expanding,
-        add at least 3 nodes.
+        Number of nodes in a cluster.
         """
         return pulumi.get(self, "number_of_node")
 
@@ -1742,7 +1429,6 @@ class Cluster(pulumi.CustomResource):
     def port(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         Service port of a cluster (8000 to 10000). The default value is 8000.
-        Changing this creates a new cluster resource.
         """
         return pulumi.get(self, "port")
 
@@ -1750,7 +1436,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="privateIps")
     def private_ips(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        List of private network IP address.
+        List of private network IP addresses.
         """
         return pulumi.get(self, "private_ips")
 
@@ -1758,44 +1444,30 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="publicEndpoints")
     def public_endpoints(self) -> pulumi.Output[Sequence['outputs.ClusterPublicEndpoint']]:
         """
-        Public network connection information about the cluster. If the value is not specified, the
-        public network connection information is not used by default Structure is documented below.
+        Public network connection information about the cluster.
         """
         return pulumi.get(self, "public_endpoints")
 
     @_builtins.property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> pulumi.Output['outputs.ClusterPublicIp']:
-        """
-        A nested object resource Structure is documented below.
-        Changing this creates a new cluster resource.
-        """
         return pulumi.get(self, "public_ip")
 
     @_builtins.property
     @pulumi.getter(name="recentEvent")
     def recent_event(self) -> pulumi.Output[_builtins.int]:
-        """
-        The recent event number.
-        """
         return pulumi.get(self, "recent_event")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the cluster resource. If omitted, the
-        provider-level region will be used. Changing this creates a new cluster resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Output[_builtins.str]:
         """
-        ID of a security group. The ID is used for configuring cluster
-        network.
-        Changing this creates a new cluster resource.
+        The security group ID.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -1803,7 +1475,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        Cluster status, which can be one of the following:  CREATING AVAILABLE UNAVAILABLE CREATION FAILED.
+        The cluster status.
         """
         return pulumi.get(self, "status")
 
@@ -1811,11 +1483,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="subStatus")
     def sub_status(self) -> pulumi.Output[_builtins.str]:
         """
-        Sub-status of clusters in the AVAILABLE state. The value can be one of the following:  NORMAL READONLY
-        REDISTRIBUTING REDISTRIBUTION-FAILURE UNBALANCED UNBALANCED | READONLY DEGRADED DEGRADED | READONLY DEGRADED |
-        UNBALANCED UNBALANCED | REDISTRIBUTING UNBALANCED | REDISTRIBUTION-FAILURE READONLY | REDISTRIBUTION-FAILURE
-        UNBALANCED | READONLY | REDISTRIBUTION-FAILURE DEGRADED | REDISTRIBUTION-FAILURE DEGRADED | UNBALANCED |
-        REDISTRIBUTION-FAILURE DEGRADED | UNBALANCED | READONLY | REDISTRIBUTION-FAILURE DEGRADED | UNBALANCED | READONLY
+        Sub-status of clusters in the AVAILABLE state.
         """
         return pulumi.get(self, "sub_status")
 
@@ -1831,9 +1499,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="taskStatus")
     def task_status(self) -> pulumi.Output[_builtins.str]:
         """
-        Cluster management task. The value can be one of the following:
-        RESTORING SNAPSHOTTING GROWING REBOOTING SETTING_CONFIGURATION CONFIGURING_EXT_DATASOURCE DELETING_EXT_DATASOURCE
-        REBOOT_FAILURE RESIZE_FAILURE
+        Cluster management task.
         """
         return pulumi.get(self, "task_status")
 
@@ -1841,7 +1507,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter
     def updated(self) -> pulumi.Output[_builtins.str]:
         """
-        Last modification time of a cluster. The format is ISO8601:YYYY-MM-DDThh:mm:ssZ
+        The updated time of the cluster.
         """
         return pulumi.get(self, "updated")
 
@@ -1849,10 +1515,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="userName")
     def user_name(self) -> pulumi.Output[_builtins.str]:
         """
-        Administrator username for logging in to a data warehouse cluster The
-        administrator username must:  Consist of lowercase letters, digits, or underscores. Start with a lowercase letter or
-        an underscore. Contain 1 to 63 characters. Cannot be a keyword of the DWS database.
-        Changing this creates a new cluster resource.
+        Administrator username for logging in to a data warehouse cluster.
         """
         return pulumi.get(self, "user_name")
 
@@ -1860,11 +1523,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="userPwd")
     def user_pwd(self) -> pulumi.Output[_builtins.str]:
         """
-        Administrator password for logging in to a data warehouse cluster A password
-        must conform to the following rules:  Contains 8 to 32 characters. Cannot be the same as the username or the username
-        written in reverse order. Contains three types of the following:
-        Lowercase letters Uppercase letters Digits Special characters
-        ~!@#%^&*()-_=+|[{}];:,<.>/?
+        Administrator password for logging in to a data warehouse cluster.
         """
         return pulumi.get(self, "user_pwd")
 
@@ -1872,7 +1531,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter
     def version(self) -> pulumi.Output[_builtins.str]:
         """
-        Data warehouse version.
+        schema: Required
         """
         return pulumi.get(self, "version")
 
@@ -1885,8 +1544,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[_builtins.str]:
         """
-        VPC ID, which is used for configuring cluster network.
-        Changing this creates a new cluster resource.
+        The VPC ID.
         """
         return pulumi.get(self, "vpc_id")
 

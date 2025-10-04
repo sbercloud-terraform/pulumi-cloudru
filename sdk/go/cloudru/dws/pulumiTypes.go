@@ -14,23 +14,19 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type ClusterElb struct {
-	// The cluster ID
+	// The ID of the ELB load balancer.
 	Id *string `pulumi:"id"`
-	// Cluster name, which must be unique and contains 4 to 64 characters, which
-	// consist of letters, digits, hyphens(-), or underscores(_) only and must start with a letter.
-	// Changing this creates a new cluster resource.
+	// The name of the ELB load balancer.
 	Name *string `pulumi:"name"`
 	// The private endpoint of the ELB load balancer.
 	PrivateEndpoint *string `pulumi:"privateEndpoint"`
-	// List of private network IP address.
+	// The private IP address of the ELB load balancer.
 	PrivateIp *string `pulumi:"privateIp"`
 	// The IPv6 address of the ELB load balancer.
 	PrivateIpV6 *string `pulumi:"privateIpV6"`
-	// A nested object resource Structure is documented below.
-	// Changing this creates a new cluster resource.
+	// The public IP address of the ELB load balancer.
 	PublicIp *string `pulumi:"publicIp"`
-	// VPC ID, which is used for configuring cluster network.
-	// Changing this creates a new cluster resource.
+	// The ID of VPC to which the ELB load balancer belongs.
 	VpcId *string `pulumi:"vpcId"`
 }
 
@@ -46,23 +42,19 @@ type ClusterElbInput interface {
 }
 
 type ClusterElbArgs struct {
-	// The cluster ID
+	// The ID of the ELB load balancer.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Cluster name, which must be unique and contains 4 to 64 characters, which
-	// consist of letters, digits, hyphens(-), or underscores(_) only and must start with a letter.
-	// Changing this creates a new cluster resource.
+	// The name of the ELB load balancer.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The private endpoint of the ELB load balancer.
 	PrivateEndpoint pulumi.StringPtrInput `pulumi:"privateEndpoint"`
-	// List of private network IP address.
+	// The private IP address of the ELB load balancer.
 	PrivateIp pulumi.StringPtrInput `pulumi:"privateIp"`
 	// The IPv6 address of the ELB load balancer.
 	PrivateIpV6 pulumi.StringPtrInput `pulumi:"privateIpV6"`
-	// A nested object resource Structure is documented below.
-	// Changing this creates a new cluster resource.
+	// The public IP address of the ELB load balancer.
 	PublicIp pulumi.StringPtrInput `pulumi:"publicIp"`
-	// VPC ID, which is used for configuring cluster network.
-	// Changing this creates a new cluster resource.
+	// The ID of VPC to which the ELB load balancer belongs.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
 }
 
@@ -117,14 +109,12 @@ func (o ClusterElbOutput) ToClusterElbOutputWithContext(ctx context.Context) Clu
 	return o
 }
 
-// The cluster ID
+// The ID of the ELB load balancer.
 func (o ClusterElbOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterElb) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Cluster name, which must be unique and contains 4 to 64 characters, which
-// consist of letters, digits, hyphens(-), or underscores(_) only and must start with a letter.
-// Changing this creates a new cluster resource.
+// The name of the ELB load balancer.
 func (o ClusterElbOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterElb) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -134,7 +124,7 @@ func (o ClusterElbOutput) PrivateEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterElb) *string { return v.PrivateEndpoint }).(pulumi.StringPtrOutput)
 }
 
-// List of private network IP address.
+// The private IP address of the ELB load balancer.
 func (o ClusterElbOutput) PrivateIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterElb) *string { return v.PrivateIp }).(pulumi.StringPtrOutput)
 }
@@ -144,14 +134,12 @@ func (o ClusterElbOutput) PrivateIpV6() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterElb) *string { return v.PrivateIpV6 }).(pulumi.StringPtrOutput)
 }
 
-// A nested object resource Structure is documented below.
-// Changing this creates a new cluster resource.
+// The public IP address of the ELB load balancer.
 func (o ClusterElbOutput) PublicIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterElb) *string { return v.PublicIp }).(pulumi.StringPtrOutput)
 }
 
-// VPC ID, which is used for configuring cluster network.
-// Changing this creates a new cluster resource.
+// The ID of VPC to which the ELB load balancer belongs.
 func (o ClusterElbOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterElb) *string { return v.VpcId }).(pulumi.StringPtrOutput)
 }
@@ -177,11 +165,9 @@ func (o ClusterElbArrayOutput) Index(i pulumi.IntInput) ClusterElbOutput {
 }
 
 type ClusterEndpoint struct {
-	// (Optional, String) Private network connection information.
+	// Private network connection information.
 	ConnectInfo *string `pulumi:"connectInfo"`
-	// (Optional, String)
-	// JDBC URL. The following is the default format:
-	// jdbc:postgresql://< public_connect_info>/<YOUR_DATABASE_NAME>
+	// JDBC URL. Format: jdbc:postgresql://<connect_info>/<YOUR_DATABASE_NAME>
 	JdbcUrl *string `pulumi:"jdbcUrl"`
 }
 
@@ -197,11 +183,9 @@ type ClusterEndpointInput interface {
 }
 
 type ClusterEndpointArgs struct {
-	// (Optional, String) Private network connection information.
+	// Private network connection information.
 	ConnectInfo pulumi.StringPtrInput `pulumi:"connectInfo"`
-	// (Optional, String)
-	// JDBC URL. The following is the default format:
-	// jdbc:postgresql://< public_connect_info>/<YOUR_DATABASE_NAME>
+	// JDBC URL. Format: jdbc:postgresql://<connect_info>/<YOUR_DATABASE_NAME>
 	JdbcUrl pulumi.StringPtrInput `pulumi:"jdbcUrl"`
 }
 
@@ -256,14 +240,12 @@ func (o ClusterEndpointOutput) ToClusterEndpointOutputWithContext(ctx context.Co
 	return o
 }
 
-// (Optional, String) Private network connection information.
+// Private network connection information.
 func (o ClusterEndpointOutput) ConnectInfo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterEndpoint) *string { return v.ConnectInfo }).(pulumi.StringPtrOutput)
 }
 
-// (Optional, String)
-// JDBC URL. The following is the default format:
-// jdbc:postgresql://< public_connect_info>/<YOUR_DATABASE_NAME>
+// JDBC URL. Format: jdbc:postgresql://<connect_info>/<YOUR_DATABASE_NAME>
 func (o ClusterEndpointOutput) JdbcUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterEndpoint) *string { return v.JdbcUrl }).(pulumi.StringPtrOutput)
 }
@@ -404,11 +386,8 @@ func (o ClusterMaintainWindowArrayOutput) Index(i pulumi.IntInput) ClusterMainta
 }
 
 type ClusterPublicEndpoint struct {
-	// (Optional, String)
-	// JDBC URL. The following is the default format:
-	// jdbc:postgresql://< public_connect_info>/<YOUR_DATABASE_NAME>
+	// JDBC URL. Format: jdbc:postgresql://<public_connect_info>/<YOUR_DATABASE_NAME>
 	JdbcUrl *string `pulumi:"jdbcUrl"`
-	// (Optional, String)
 	// Public network connection information.
 	PublicConnectInfo *string `pulumi:"publicConnectInfo"`
 }
@@ -425,11 +404,8 @@ type ClusterPublicEndpointInput interface {
 }
 
 type ClusterPublicEndpointArgs struct {
-	// (Optional, String)
-	// JDBC URL. The following is the default format:
-	// jdbc:postgresql://< public_connect_info>/<YOUR_DATABASE_NAME>
+	// JDBC URL. Format: jdbc:postgresql://<public_connect_info>/<YOUR_DATABASE_NAME>
 	JdbcUrl pulumi.StringPtrInput `pulumi:"jdbcUrl"`
-	// (Optional, String)
 	// Public network connection information.
 	PublicConnectInfo pulumi.StringPtrInput `pulumi:"publicConnectInfo"`
 }
@@ -485,14 +461,11 @@ func (o ClusterPublicEndpointOutput) ToClusterPublicEndpointOutputWithContext(ct
 	return o
 }
 
-// (Optional, String)
-// JDBC URL. The following is the default format:
-// jdbc:postgresql://< public_connect_info>/<YOUR_DATABASE_NAME>
+// JDBC URL. Format: jdbc:postgresql://<public_connect_info>/<YOUR_DATABASE_NAME>
 func (o ClusterPublicEndpointOutput) JdbcUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterPublicEndpoint) *string { return v.JdbcUrl }).(pulumi.StringPtrOutput)
 }
 
-// (Optional, String)
 // Public network connection information.
 func (o ClusterPublicEndpointOutput) PublicConnectInfo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterPublicEndpoint) *string { return v.PublicConnectInfo }).(pulumi.StringPtrOutput)
@@ -519,12 +492,9 @@ func (o ClusterPublicEndpointArrayOutput) Index(i pulumi.IntInput) ClusterPublic
 }
 
 type ClusterPublicIp struct {
-	// EIP ID.
-	// Changing this creates a new cluster resource.
+	// The EIP ID.
 	EipId *string `pulumi:"eipId"`
-	// Binding type of an EIP. The value can be either of the following:
-	// **auto_assign**, **not_use**, **bind_existing**. The default value is **not_use**.
-	// Changing this creates a new cluster resource.
+	// The bind type of public IP.
 	PublicBindType *string `pulumi:"publicBindType"`
 }
 
@@ -540,12 +510,9 @@ type ClusterPublicIpInput interface {
 }
 
 type ClusterPublicIpArgs struct {
-	// EIP ID.
-	// Changing this creates a new cluster resource.
+	// The EIP ID.
 	EipId pulumi.StringPtrInput `pulumi:"eipId"`
-	// Binding type of an EIP. The value can be either of the following:
-	// **auto_assign**, **not_use**, **bind_existing**. The default value is **not_use**.
-	// Changing this creates a new cluster resource.
+	// The bind type of public IP.
 	PublicBindType pulumi.StringPtrInput `pulumi:"publicBindType"`
 }
 
@@ -626,15 +593,12 @@ func (o ClusterPublicIpOutput) ToClusterPublicIpPtrOutputWithContext(ctx context
 	}).(ClusterPublicIpPtrOutput)
 }
 
-// EIP ID.
-// Changing this creates a new cluster resource.
+// The EIP ID.
 func (o ClusterPublicIpOutput) EipId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterPublicIp) *string { return v.EipId }).(pulumi.StringPtrOutput)
 }
 
-// Binding type of an EIP. The value can be either of the following:
-// **auto_assign**, **not_use**, **bind_existing**. The default value is **not_use**.
-// Changing this creates a new cluster resource.
+// The bind type of public IP.
 func (o ClusterPublicIpOutput) PublicBindType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterPublicIp) *string { return v.PublicBindType }).(pulumi.StringPtrOutput)
 }
@@ -663,8 +627,7 @@ func (o ClusterPublicIpPtrOutput) Elem() ClusterPublicIpOutput {
 	}).(ClusterPublicIpOutput)
 }
 
-// EIP ID.
-// Changing this creates a new cluster resource.
+// The EIP ID.
 func (o ClusterPublicIpPtrOutput) EipId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterPublicIp) *string {
 		if v == nil {
@@ -674,9 +637,7 @@ func (o ClusterPublicIpPtrOutput) EipId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Binding type of an EIP. The value can be either of the following:
-// **auto_assign**, **not_use**, **bind_existing**. The default value is **not_use**.
-// Changing this creates a new cluster resource.
+// The bind type of public IP.
 func (o ClusterPublicIpPtrOutput) PublicBindType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterPublicIp) *string {
 		if v == nil {
@@ -845,19 +806,13 @@ func (o ClusterVolumePtrOutput) Type() pulumi.StringPtrOutput {
 type GetFlaovrsFlavor struct {
 	// The list of availability zones.
 	AvailabilityZones []string `pulumi:"availabilityZones"`
-	// The type of datastore.\
-	// The options are as follows:
-	// - **dws**: OLAP, elastic scaling, unlimited scaling of compute and storage capacity.
-	// - **hybrid**: a single data warehouse used for transaction and analytics workloads,
-	//   in single-node or cluster mode.
-	// - **stream**: built-in time series operators; up to 40:1 compression ratio; applicable to IoT services.
+	// The type of datastore.
 	DatastoreType string `pulumi:"datastoreType"`
 	// The version of datastore.
 	DatastoreVersion string `pulumi:"datastoreVersion"`
-	// The ElasticVolumeSpec structure is documented below.
+	// The typical specification, If the volume specification is elastic.
 	ElasticVolumeSpecs []GetFlaovrsFlavorElasticVolumeSpec `pulumi:"elasticVolumeSpecs"`
-	// The name of the dws node flavor.\
-	// It is referenced by `nodeType` in `Dws.getFlaovrs`.
+	// The name of the dws node flavor.
 	FlavorId string `pulumi:"flavorId"`
 	// The ram of the dws node flavor in GB.
 	Memory int `pulumi:"memory"`
@@ -865,10 +820,7 @@ type GetFlaovrsFlavor struct {
 	Size int `pulumi:"size"`
 	// The vcpus of the dws node flavor.
 	Vcpus int `pulumi:"vcpus"`
-	// Disk type.\
-	// The options are as follows:
-	// - **LOCAL_DISK**:common I/O disk.
-	// - **SSD**: ultra-high I/O disk.
+	// Disk type.
 	Volumetype string `pulumi:"volumetype"`
 }
 
@@ -886,19 +838,13 @@ type GetFlaovrsFlavorInput interface {
 type GetFlaovrsFlavorArgs struct {
 	// The list of availability zones.
 	AvailabilityZones pulumi.StringArrayInput `pulumi:"availabilityZones"`
-	// The type of datastore.\
-	// The options are as follows:
-	// - **dws**: OLAP, elastic scaling, unlimited scaling of compute and storage capacity.
-	// - **hybrid**: a single data warehouse used for transaction and analytics workloads,
-	//   in single-node or cluster mode.
-	// - **stream**: built-in time series operators; up to 40:1 compression ratio; applicable to IoT services.
+	// The type of datastore.
 	DatastoreType pulumi.StringInput `pulumi:"datastoreType"`
 	// The version of datastore.
 	DatastoreVersion pulumi.StringInput `pulumi:"datastoreVersion"`
-	// The ElasticVolumeSpec structure is documented below.
+	// The typical specification, If the volume specification is elastic.
 	ElasticVolumeSpecs GetFlaovrsFlavorElasticVolumeSpecArrayInput `pulumi:"elasticVolumeSpecs"`
-	// The name of the dws node flavor.\
-	// It is referenced by `nodeType` in `Dws.getFlaovrs`.
+	// The name of the dws node flavor.
 	FlavorId pulumi.StringInput `pulumi:"flavorId"`
 	// The ram of the dws node flavor in GB.
 	Memory pulumi.IntInput `pulumi:"memory"`
@@ -906,10 +852,7 @@ type GetFlaovrsFlavorArgs struct {
 	Size pulumi.IntInput `pulumi:"size"`
 	// The vcpus of the dws node flavor.
 	Vcpus pulumi.IntInput `pulumi:"vcpus"`
-	// Disk type.\
-	// The options are as follows:
-	// - **LOCAL_DISK**:common I/O disk.
-	// - **SSD**: ultra-high I/O disk.
+	// Disk type.
 	Volumetype pulumi.StringInput `pulumi:"volumetype"`
 }
 
@@ -969,12 +912,7 @@ func (o GetFlaovrsFlavorOutput) AvailabilityZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetFlaovrsFlavor) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }
 
-// The type of datastore.\
-// The options are as follows:
-//   - **dws**: OLAP, elastic scaling, unlimited scaling of compute and storage capacity.
-//   - **hybrid**: a single data warehouse used for transaction and analytics workloads,
-//     in single-node or cluster mode.
-//   - **stream**: built-in time series operators; up to 40:1 compression ratio; applicable to IoT services.
+// The type of datastore.
 func (o GetFlaovrsFlavorOutput) DatastoreType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlaovrsFlavor) string { return v.DatastoreType }).(pulumi.StringOutput)
 }
@@ -984,13 +922,12 @@ func (o GetFlaovrsFlavorOutput) DatastoreVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlaovrsFlavor) string { return v.DatastoreVersion }).(pulumi.StringOutput)
 }
 
-// The ElasticVolumeSpec structure is documented below.
+// The typical specification, If the volume specification is elastic.
 func (o GetFlaovrsFlavorOutput) ElasticVolumeSpecs() GetFlaovrsFlavorElasticVolumeSpecArrayOutput {
 	return o.ApplyT(func(v GetFlaovrsFlavor) []GetFlaovrsFlavorElasticVolumeSpec { return v.ElasticVolumeSpecs }).(GetFlaovrsFlavorElasticVolumeSpecArrayOutput)
 }
 
-// The name of the dws node flavor.\
-// It is referenced by `nodeType` in `Dws.getFlaovrs`.
+// The name of the dws node flavor.
 func (o GetFlaovrsFlavorOutput) FlavorId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlaovrsFlavor) string { return v.FlavorId }).(pulumi.StringOutput)
 }
@@ -1010,10 +947,7 @@ func (o GetFlaovrsFlavorOutput) Vcpus() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFlaovrsFlavor) int { return v.Vcpus }).(pulumi.IntOutput)
 }
 
-// Disk type.\
-// The options are as follows:
-// - **LOCAL_DISK**:common I/O disk.
-// - **SSD**: ultra-high I/O disk.
+// Disk type.
 func (o GetFlaovrsFlavorOutput) Volumetype() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlaovrsFlavor) string { return v.Volumetype }).(pulumi.StringOutput)
 }

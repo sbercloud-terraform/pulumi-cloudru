@@ -100,22 +100,7 @@ def get_dms_az(code: Optional[_builtins.str] = None,
                region: Optional[_builtins.str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDmsAzResult:
     """
-    Use this data source to get the ID of an available SberCloud DMS AZ.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    az1 = sbercloud.get_dms_az(code="ru-moscow-1a")
-    ```
-
-
-    :param _builtins.str code: Indicates the code of an AZ.
-    :param _builtins.str name: Indicates the name of an AZ.
-    :param _builtins.str port: Indicates the port number of an AZ.
-    :param _builtins.str region: The region in which to obtain the dms az. If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['code'] = code
@@ -138,22 +123,7 @@ def get_dms_az_output(code: Optional[pulumi.Input[Optional[_builtins.str]]] = No
                       region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDmsAzResult]:
     """
-    Use this data source to get the ID of an available SberCloud DMS AZ.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    az1 = sbercloud.get_dms_az(code="ru-moscow-1a")
-    ```
-
-
-    :param _builtins.str code: Indicates the code of an AZ.
-    :param _builtins.str name: Indicates the name of an AZ.
-    :param _builtins.str port: Indicates the port number of an AZ.
-    :param _builtins.str region: The region in which to obtain the dms az. If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['code'] = code

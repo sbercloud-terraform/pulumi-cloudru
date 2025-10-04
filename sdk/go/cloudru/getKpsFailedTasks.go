@@ -11,31 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get a list of the tasks that failed to bind, unbind, reset or replace key pairs.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sbercloud.GetKpsFailedTasks(ctx, &cloudru.GetKpsFailedTasksArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetKpsFailedTasks(ctx *pulumi.Context, args *GetKpsFailedTasksArgs, opts ...pulumi.InvokeOption) (*GetKpsFailedTasksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKpsFailedTasksResult
@@ -48,18 +23,15 @@ func GetKpsFailedTasks(ctx *pulumi.Context, args *GetKpsFailedTasksArgs, opts ..
 
 // A collection of arguments for invoking getKpsFailedTasks.
 type GetKpsFailedTasksArgs struct {
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
 	Region *string `pulumi:"region"`
 }
 
 // A collection of values returned by getKpsFailedTasks.
 type GetKpsFailedTasksResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id     string `pulumi:"id"`
-	Region string `pulumi:"region"`
-	// The list of the failed tasks.
-	Tasks []GetKpsFailedTasksTask `pulumi:"tasks"`
+	Id     string                  `pulumi:"id"`
+	Region string                  `pulumi:"region"`
+	Tasks  []GetKpsFailedTasksTask `pulumi:"tasks"`
 }
 
 func GetKpsFailedTasksOutput(ctx *pulumi.Context, args GetKpsFailedTasksOutputArgs, opts ...pulumi.InvokeOption) GetKpsFailedTasksResultOutput {
@@ -73,8 +45,6 @@ func GetKpsFailedTasksOutput(ctx *pulumi.Context, args GetKpsFailedTasksOutputAr
 
 // A collection of arguments for invoking getKpsFailedTasks.
 type GetKpsFailedTasksOutputArgs struct {
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
@@ -106,7 +76,6 @@ func (o GetKpsFailedTasksResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKpsFailedTasksResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The list of the failed tasks.
 func (o GetKpsFailedTasksResultOutput) Tasks() GetKpsFailedTasksTaskArrayOutput {
 	return o.ApplyT(func(v GetKpsFailedTasksResult) []GetKpsFailedTasksTask { return v.Tasks }).(GetKpsFailedTasksTaskArrayOutput)
 }

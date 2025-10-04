@@ -6,47 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to query the route tables under the ER instance within SberCloud.
- *
- * Before using enterprise router, define custom endpoint as shown below:
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * ## Example Usage
- *
- * ### Querying specified route tables under ER instance using name
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const routeTableName = config.requireObject<any>("routeTableName");
- * const test = sbercloud.Er.getRouteTables({
- *     instanceId: instanceId,
- *     name: routeTableName,
- * });
- * ```
- *
- * ### Querying specified route tables under ER instance using tags
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const test = sbercloud.Er.getRouteTables({
- *     instanceId: instanceId,
- *     tags: {
- *         foo: "bar",
- *     },
- * });
- * ```
- */
 export function getRouteTables(args: GetRouteTablesArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteTablesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:Er/getRouteTables:getRouteTables", {
@@ -62,28 +21,10 @@ export function getRouteTables(args: GetRouteTablesArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getRouteTables.
  */
 export interface GetRouteTablesArgs {
-    /**
-     * Specifies the ID of the ER instance to which the route tables belongs.
-     */
     instanceId: string;
-    /**
-     * Specifies the name used to filter the route tables.  
-     * The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-     * hyphens (-) and dots (.) allowed.
-     */
     name?: string;
-    /**
-     * Specifies the region where the ER instance and route table are located.  
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
-    /**
-     * Specifies the route table ID used to query specified route table.
-     */
     routeTableId?: string;
-    /**
-     * Specifies the key/value pairs used to filter the route tables.
-     */
     tags?: {[key: string]: string};
 }
 
@@ -96,60 +37,12 @@ export interface GetRouteTablesResult {
      */
     readonly id: string;
     readonly instanceId: string;
-    /**
-     * The name of the route table.
-     */
     readonly name?: string;
     readonly region: string;
     readonly routeTableId?: string;
-    /**
-     * All route tables that match the filter parameters.  
-     * The object structure is documented below.
-     */
     readonly routeTables: outputs.Er.GetRouteTablesRouteTable[];
     readonly tags?: {[key: string]: string};
 }
-/**
- * Use this data source to query the route tables under the ER instance within SberCloud.
- *
- * Before using enterprise router, define custom endpoint as shown below:
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * ## Example Usage
- *
- * ### Querying specified route tables under ER instance using name
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const routeTableName = config.requireObject<any>("routeTableName");
- * const test = sbercloud.Er.getRouteTables({
- *     instanceId: instanceId,
- *     name: routeTableName,
- * });
- * ```
- *
- * ### Querying specified route tables under ER instance using tags
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const test = sbercloud.Er.getRouteTables({
- *     instanceId: instanceId,
- *     tags: {
- *         foo: "bar",
- *     },
- * });
- * ```
- */
 export function getRouteTablesOutput(args: GetRouteTablesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRouteTablesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:Er/getRouteTables:getRouteTables", {
@@ -165,27 +58,9 @@ export function getRouteTablesOutput(args: GetRouteTablesOutputArgs, opts?: pulu
  * A collection of arguments for invoking getRouteTables.
  */
 export interface GetRouteTablesOutputArgs {
-    /**
-     * Specifies the ID of the ER instance to which the route tables belongs.
-     */
     instanceId: pulumi.Input<string>;
-    /**
-     * Specifies the name used to filter the route tables.  
-     * The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-     * hyphens (-) and dots (.) allowed.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region where the ER instance and route table are located.  
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the route table ID used to query specified route table.
-     */
     routeTableId?: pulumi.Input<string>;
-    /**
-     * Specifies the key/value pairs used to filter the route tables.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -12,63 +12,25 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a Cloud Eye alarm rule resource within SberCloud.
-//
-// ## Example Usage
-//
-// ## Import
-//
-// CES alarm rules can be imported using the `id`, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Ces/alarmrule:Alarmrule alarm_rule al1619578509719Ga0X1RGWv
-// ```
 type Alarmrule struct {
 	pulumi.CustomResourceState
 
-	// Specifies whether to enable the action to be triggered by an alarm. The
-	// default value is true.
-	AlarmActionEnabled pulumi.BoolPtrOutput `pulumi:"alarmActionEnabled"`
-	// Specifies the action triggered by an alarm. The structure is described
-	// below.
-	AlarmActions AlarmruleAlarmActionArrayOutput `pulumi:"alarmActions"`
-	// The value can be a string of 0 to 256 characters.
-	AlarmDescription pulumi.StringPtrOutput `pulumi:"alarmDescription"`
-	// Specifies whether to enable the alarm. The default value is true.
-	AlarmEnabled pulumi.BoolPtrOutput `pulumi:"alarmEnabled"`
-	AlarmLevel   pulumi.IntPtrOutput  `pulumi:"alarmLevel"`
-	// Specifies the name of an alarm rule. The value can be a string of 1 to 128
-	// characters that can consist of letters, digits, underscores (_), hyphens (-) and chinese characters.
-	AlarmName pulumi.StringOutput `pulumi:"alarmName"`
-	// Indicates the alarm status. The value can be:
-	// + ok: The alarm status is normal;
-	// + alarm: An alarm is generated;
-	// + insufficient_data: The required data is insufficient.
-	AlarmState pulumi.StringOutput `pulumi:"alarmState"`
-	// Specifies the alarm type. The value can be **EVENT.SYS**, **EVENT.CUSTOM**,
-	// **MULTI_INSTANCE** and **ALL_INSTANCE**. Defaults to **MULTI_INSTANCE**.
-	AlarmType pulumi.StringOutput `pulumi:"alarmType"`
-	// Specifies the alarm triggering condition. The structure is described below.
-	Condition AlarmruleConditionOutput `pulumi:"condition"`
-	// Specifies the enterprise project id of the alarm rule. Changing
-	// this creates a new resource.
-	//
-	// > **Note** If alarmActionEnabled is set to true, either alarmActions or okActions cannot be empty. If alarmActions
-	// and okActions coexist, their corresponding notificationList must be of the **same value**.
-	EnterpriseProjectId pulumi.StringOutput `pulumi:"enterpriseProjectId"`
+	AlarmActionEnabled  pulumi.BoolPtrOutput            `pulumi:"alarmActionEnabled"`
+	AlarmActions        AlarmruleAlarmActionArrayOutput `pulumi:"alarmActions"`
+	AlarmDescription    pulumi.StringPtrOutput          `pulumi:"alarmDescription"`
+	AlarmEnabled        pulumi.BoolPtrOutput            `pulumi:"alarmEnabled"`
+	AlarmLevel          pulumi.IntPtrOutput             `pulumi:"alarmLevel"`
+	AlarmName           pulumi.StringOutput             `pulumi:"alarmName"`
+	AlarmState          pulumi.StringOutput             `pulumi:"alarmState"`
+	AlarmType           pulumi.StringOutput             `pulumi:"alarmType"`
+	Condition           AlarmruleConditionOutput        `pulumi:"condition"`
+	EnterpriseProjectId pulumi.StringOutput             `pulumi:"enterpriseProjectId"`
 	// Deprecated: insufficientdata_actions is deprecated
 	InsufficientdataActions AlarmruleInsufficientdataActionArrayOutput `pulumi:"insufficientdataActions"`
-	// Specifies the alarm metrics. The structure is described below. Changing this
-	// creates a new resource.
-	Metric AlarmruleMetricOutput `pulumi:"metric"`
-	// Specifies the action triggered by the clearing of an alarm. The structure is
-	// described below.
-	OkActions AlarmruleOkActionArrayOutput `pulumi:"okActions"`
-	// The region in which to create the alarm rule resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Indicates the time when the alarm status changed. The value is a UNIX timestamp and the unit is ms.
-	UpdateTime pulumi.IntOutput `pulumi:"updateTime"`
+	Metric                  AlarmruleMetricOutput                      `pulumi:"metric"`
+	OkActions               AlarmruleOkActionArrayOutput               `pulumi:"okActions"`
+	Region                  pulumi.StringOutput                        `pulumi:"region"`
+	UpdateTime              pulumi.IntOutput                           `pulumi:"updateTime"`
 }
 
 // NewAlarmrule registers a new resource with the given unique name, arguments, and options.
@@ -110,95 +72,41 @@ func GetAlarmrule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Alarmrule resources.
 type alarmruleState struct {
-	// Specifies whether to enable the action to be triggered by an alarm. The
-	// default value is true.
-	AlarmActionEnabled *bool `pulumi:"alarmActionEnabled"`
-	// Specifies the action triggered by an alarm. The structure is described
-	// below.
-	AlarmActions []AlarmruleAlarmAction `pulumi:"alarmActions"`
-	// The value can be a string of 0 to 256 characters.
-	AlarmDescription *string `pulumi:"alarmDescription"`
-	// Specifies whether to enable the alarm. The default value is true.
-	AlarmEnabled *bool `pulumi:"alarmEnabled"`
-	AlarmLevel   *int  `pulumi:"alarmLevel"`
-	// Specifies the name of an alarm rule. The value can be a string of 1 to 128
-	// characters that can consist of letters, digits, underscores (_), hyphens (-) and chinese characters.
-	AlarmName *string `pulumi:"alarmName"`
-	// Indicates the alarm status. The value can be:
-	// + ok: The alarm status is normal;
-	// + alarm: An alarm is generated;
-	// + insufficient_data: The required data is insufficient.
-	AlarmState *string `pulumi:"alarmState"`
-	// Specifies the alarm type. The value can be **EVENT.SYS**, **EVENT.CUSTOM**,
-	// **MULTI_INSTANCE** and **ALL_INSTANCE**. Defaults to **MULTI_INSTANCE**.
-	AlarmType *string `pulumi:"alarmType"`
-	// Specifies the alarm triggering condition. The structure is described below.
-	Condition *AlarmruleCondition `pulumi:"condition"`
-	// Specifies the enterprise project id of the alarm rule. Changing
-	// this creates a new resource.
-	//
-	// > **Note** If alarmActionEnabled is set to true, either alarmActions or okActions cannot be empty. If alarmActions
-	// and okActions coexist, their corresponding notificationList must be of the **same value**.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
+	AlarmActionEnabled  *bool                  `pulumi:"alarmActionEnabled"`
+	AlarmActions        []AlarmruleAlarmAction `pulumi:"alarmActions"`
+	AlarmDescription    *string                `pulumi:"alarmDescription"`
+	AlarmEnabled        *bool                  `pulumi:"alarmEnabled"`
+	AlarmLevel          *int                   `pulumi:"alarmLevel"`
+	AlarmName           *string                `pulumi:"alarmName"`
+	AlarmState          *string                `pulumi:"alarmState"`
+	AlarmType           *string                `pulumi:"alarmType"`
+	Condition           *AlarmruleCondition    `pulumi:"condition"`
+	EnterpriseProjectId *string                `pulumi:"enterpriseProjectId"`
 	// Deprecated: insufficientdata_actions is deprecated
 	InsufficientdataActions []AlarmruleInsufficientdataAction `pulumi:"insufficientdataActions"`
-	// Specifies the alarm metrics. The structure is described below. Changing this
-	// creates a new resource.
-	Metric *AlarmruleMetric `pulumi:"metric"`
-	// Specifies the action triggered by the clearing of an alarm. The structure is
-	// described below.
-	OkActions []AlarmruleOkAction `pulumi:"okActions"`
-	// The region in which to create the alarm rule resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region *string `pulumi:"region"`
-	// Indicates the time when the alarm status changed. The value is a UNIX timestamp and the unit is ms.
-	UpdateTime *int `pulumi:"updateTime"`
+	Metric                  *AlarmruleMetric                  `pulumi:"metric"`
+	OkActions               []AlarmruleOkAction               `pulumi:"okActions"`
+	Region                  *string                           `pulumi:"region"`
+	UpdateTime              *int                              `pulumi:"updateTime"`
 }
 
 type AlarmruleState struct {
-	// Specifies whether to enable the action to be triggered by an alarm. The
-	// default value is true.
-	AlarmActionEnabled pulumi.BoolPtrInput
-	// Specifies the action triggered by an alarm. The structure is described
-	// below.
-	AlarmActions AlarmruleAlarmActionArrayInput
-	// The value can be a string of 0 to 256 characters.
-	AlarmDescription pulumi.StringPtrInput
-	// Specifies whether to enable the alarm. The default value is true.
-	AlarmEnabled pulumi.BoolPtrInput
-	AlarmLevel   pulumi.IntPtrInput
-	// Specifies the name of an alarm rule. The value can be a string of 1 to 128
-	// characters that can consist of letters, digits, underscores (_), hyphens (-) and chinese characters.
-	AlarmName pulumi.StringPtrInput
-	// Indicates the alarm status. The value can be:
-	// + ok: The alarm status is normal;
-	// + alarm: An alarm is generated;
-	// + insufficient_data: The required data is insufficient.
-	AlarmState pulumi.StringPtrInput
-	// Specifies the alarm type. The value can be **EVENT.SYS**, **EVENT.CUSTOM**,
-	// **MULTI_INSTANCE** and **ALL_INSTANCE**. Defaults to **MULTI_INSTANCE**.
-	AlarmType pulumi.StringPtrInput
-	// Specifies the alarm triggering condition. The structure is described below.
-	Condition AlarmruleConditionPtrInput
-	// Specifies the enterprise project id of the alarm rule. Changing
-	// this creates a new resource.
-	//
-	// > **Note** If alarmActionEnabled is set to true, either alarmActions or okActions cannot be empty. If alarmActions
-	// and okActions coexist, their corresponding notificationList must be of the **same value**.
+	AlarmActionEnabled  pulumi.BoolPtrInput
+	AlarmActions        AlarmruleAlarmActionArrayInput
+	AlarmDescription    pulumi.StringPtrInput
+	AlarmEnabled        pulumi.BoolPtrInput
+	AlarmLevel          pulumi.IntPtrInput
+	AlarmName           pulumi.StringPtrInput
+	AlarmState          pulumi.StringPtrInput
+	AlarmType           pulumi.StringPtrInput
+	Condition           AlarmruleConditionPtrInput
 	EnterpriseProjectId pulumi.StringPtrInput
 	// Deprecated: insufficientdata_actions is deprecated
 	InsufficientdataActions AlarmruleInsufficientdataActionArrayInput
-	// Specifies the alarm metrics. The structure is described below. Changing this
-	// creates a new resource.
-	Metric AlarmruleMetricPtrInput
-	// Specifies the action triggered by the clearing of an alarm. The structure is
-	// described below.
-	OkActions AlarmruleOkActionArrayInput
-	// The region in which to create the alarm rule resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringPtrInput
-	// Indicates the time when the alarm status changed. The value is a UNIX timestamp and the unit is ms.
-	UpdateTime pulumi.IntPtrInput
+	Metric                  AlarmruleMetricPtrInput
+	OkActions               AlarmruleOkActionArrayInput
+	Region                  pulumi.StringPtrInput
+	UpdateTime              pulumi.IntPtrInput
 }
 
 func (AlarmruleState) ElementType() reflect.Type {
@@ -206,82 +114,38 @@ func (AlarmruleState) ElementType() reflect.Type {
 }
 
 type alarmruleArgs struct {
-	// Specifies whether to enable the action to be triggered by an alarm. The
-	// default value is true.
-	AlarmActionEnabled *bool `pulumi:"alarmActionEnabled"`
-	// Specifies the action triggered by an alarm. The structure is described
-	// below.
-	AlarmActions []AlarmruleAlarmAction `pulumi:"alarmActions"`
-	// The value can be a string of 0 to 256 characters.
-	AlarmDescription *string `pulumi:"alarmDescription"`
-	// Specifies whether to enable the alarm. The default value is true.
-	AlarmEnabled *bool `pulumi:"alarmEnabled"`
-	AlarmLevel   *int  `pulumi:"alarmLevel"`
-	// Specifies the name of an alarm rule. The value can be a string of 1 to 128
-	// characters that can consist of letters, digits, underscores (_), hyphens (-) and chinese characters.
-	AlarmName string `pulumi:"alarmName"`
-	// Specifies the alarm type. The value can be **EVENT.SYS**, **EVENT.CUSTOM**,
-	// **MULTI_INSTANCE** and **ALL_INSTANCE**. Defaults to **MULTI_INSTANCE**.
-	AlarmType *string `pulumi:"alarmType"`
-	// Specifies the alarm triggering condition. The structure is described below.
-	Condition AlarmruleCondition `pulumi:"condition"`
-	// Specifies the enterprise project id of the alarm rule. Changing
-	// this creates a new resource.
-	//
-	// > **Note** If alarmActionEnabled is set to true, either alarmActions or okActions cannot be empty. If alarmActions
-	// and okActions coexist, their corresponding notificationList must be of the **same value**.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
+	AlarmActionEnabled  *bool                  `pulumi:"alarmActionEnabled"`
+	AlarmActions        []AlarmruleAlarmAction `pulumi:"alarmActions"`
+	AlarmDescription    *string                `pulumi:"alarmDescription"`
+	AlarmEnabled        *bool                  `pulumi:"alarmEnabled"`
+	AlarmLevel          *int                   `pulumi:"alarmLevel"`
+	AlarmName           string                 `pulumi:"alarmName"`
+	AlarmType           *string                `pulumi:"alarmType"`
+	Condition           AlarmruleCondition     `pulumi:"condition"`
+	EnterpriseProjectId *string                `pulumi:"enterpriseProjectId"`
 	// Deprecated: insufficientdata_actions is deprecated
 	InsufficientdataActions []AlarmruleInsufficientdataAction `pulumi:"insufficientdataActions"`
-	// Specifies the alarm metrics. The structure is described below. Changing this
-	// creates a new resource.
-	Metric AlarmruleMetric `pulumi:"metric"`
-	// Specifies the action triggered by the clearing of an alarm. The structure is
-	// described below.
-	OkActions []AlarmruleOkAction `pulumi:"okActions"`
-	// The region in which to create the alarm rule resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region *string `pulumi:"region"`
+	Metric                  AlarmruleMetric                   `pulumi:"metric"`
+	OkActions               []AlarmruleOkAction               `pulumi:"okActions"`
+	Region                  *string                           `pulumi:"region"`
 }
 
 // The set of arguments for constructing a Alarmrule resource.
 type AlarmruleArgs struct {
-	// Specifies whether to enable the action to be triggered by an alarm. The
-	// default value is true.
-	AlarmActionEnabled pulumi.BoolPtrInput
-	// Specifies the action triggered by an alarm. The structure is described
-	// below.
-	AlarmActions AlarmruleAlarmActionArrayInput
-	// The value can be a string of 0 to 256 characters.
-	AlarmDescription pulumi.StringPtrInput
-	// Specifies whether to enable the alarm. The default value is true.
-	AlarmEnabled pulumi.BoolPtrInput
-	AlarmLevel   pulumi.IntPtrInput
-	// Specifies the name of an alarm rule. The value can be a string of 1 to 128
-	// characters that can consist of letters, digits, underscores (_), hyphens (-) and chinese characters.
-	AlarmName pulumi.StringInput
-	// Specifies the alarm type. The value can be **EVENT.SYS**, **EVENT.CUSTOM**,
-	// **MULTI_INSTANCE** and **ALL_INSTANCE**. Defaults to **MULTI_INSTANCE**.
-	AlarmType pulumi.StringPtrInput
-	// Specifies the alarm triggering condition. The structure is described below.
-	Condition AlarmruleConditionInput
-	// Specifies the enterprise project id of the alarm rule. Changing
-	// this creates a new resource.
-	//
-	// > **Note** If alarmActionEnabled is set to true, either alarmActions or okActions cannot be empty. If alarmActions
-	// and okActions coexist, their corresponding notificationList must be of the **same value**.
+	AlarmActionEnabled  pulumi.BoolPtrInput
+	AlarmActions        AlarmruleAlarmActionArrayInput
+	AlarmDescription    pulumi.StringPtrInput
+	AlarmEnabled        pulumi.BoolPtrInput
+	AlarmLevel          pulumi.IntPtrInput
+	AlarmName           pulumi.StringInput
+	AlarmType           pulumi.StringPtrInput
+	Condition           AlarmruleConditionInput
 	EnterpriseProjectId pulumi.StringPtrInput
 	// Deprecated: insufficientdata_actions is deprecated
 	InsufficientdataActions AlarmruleInsufficientdataActionArrayInput
-	// Specifies the alarm metrics. The structure is described below. Changing this
-	// creates a new resource.
-	Metric AlarmruleMetricInput
-	// Specifies the action triggered by the clearing of an alarm. The structure is
-	// described below.
-	OkActions AlarmruleOkActionArrayInput
-	// The region in which to create the alarm rule resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringPtrInput
+	Metric                  AlarmruleMetricInput
+	OkActions               AlarmruleOkActionArrayInput
+	Region                  pulumi.StringPtrInput
 }
 
 func (AlarmruleArgs) ElementType() reflect.Type {
@@ -371,24 +235,18 @@ func (o AlarmruleOutput) ToAlarmruleOutputWithContext(ctx context.Context) Alarm
 	return o
 }
 
-// Specifies whether to enable the action to be triggered by an alarm. The
-// default value is true.
 func (o AlarmruleOutput) AlarmActionEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Alarmrule) pulumi.BoolPtrOutput { return v.AlarmActionEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the action triggered by an alarm. The structure is described
-// below.
 func (o AlarmruleOutput) AlarmActions() AlarmruleAlarmActionArrayOutput {
 	return o.ApplyT(func(v *Alarmrule) AlarmruleAlarmActionArrayOutput { return v.AlarmActions }).(AlarmruleAlarmActionArrayOutput)
 }
 
-// The value can be a string of 0 to 256 characters.
 func (o AlarmruleOutput) AlarmDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Alarmrule) pulumi.StringPtrOutput { return v.AlarmDescription }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to enable the alarm. The default value is true.
 func (o AlarmruleOutput) AlarmEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Alarmrule) pulumi.BoolPtrOutput { return v.AlarmEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -397,36 +255,22 @@ func (o AlarmruleOutput) AlarmLevel() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Alarmrule) pulumi.IntPtrOutput { return v.AlarmLevel }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the name of an alarm rule. The value can be a string of 1 to 128
-// characters that can consist of letters, digits, underscores (_), hyphens (-) and chinese characters.
 func (o AlarmruleOutput) AlarmName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alarmrule) pulumi.StringOutput { return v.AlarmName }).(pulumi.StringOutput)
 }
 
-// Indicates the alarm status. The value can be:
-// + ok: The alarm status is normal;
-// + alarm: An alarm is generated;
-// + insufficient_data: The required data is insufficient.
 func (o AlarmruleOutput) AlarmState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alarmrule) pulumi.StringOutput { return v.AlarmState }).(pulumi.StringOutput)
 }
 
-// Specifies the alarm type. The value can be **EVENT.SYS**, **EVENT.CUSTOM**,
-// **MULTI_INSTANCE** and **ALL_INSTANCE**. Defaults to **MULTI_INSTANCE**.
 func (o AlarmruleOutput) AlarmType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alarmrule) pulumi.StringOutput { return v.AlarmType }).(pulumi.StringOutput)
 }
 
-// Specifies the alarm triggering condition. The structure is described below.
 func (o AlarmruleOutput) Condition() AlarmruleConditionOutput {
 	return o.ApplyT(func(v *Alarmrule) AlarmruleConditionOutput { return v.Condition }).(AlarmruleConditionOutput)
 }
 
-// Specifies the enterprise project id of the alarm rule. Changing
-// this creates a new resource.
-//
-// > **Note** If alarmActionEnabled is set to true, either alarmActions or okActions cannot be empty. If alarmActions
-// and okActions coexist, their corresponding notificationList must be of the **same value**.
 func (o AlarmruleOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alarmrule) pulumi.StringOutput { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
@@ -436,25 +280,18 @@ func (o AlarmruleOutput) InsufficientdataActions() AlarmruleInsufficientdataActi
 	return o.ApplyT(func(v *Alarmrule) AlarmruleInsufficientdataActionArrayOutput { return v.InsufficientdataActions }).(AlarmruleInsufficientdataActionArrayOutput)
 }
 
-// Specifies the alarm metrics. The structure is described below. Changing this
-// creates a new resource.
 func (o AlarmruleOutput) Metric() AlarmruleMetricOutput {
 	return o.ApplyT(func(v *Alarmrule) AlarmruleMetricOutput { return v.Metric }).(AlarmruleMetricOutput)
 }
 
-// Specifies the action triggered by the clearing of an alarm. The structure is
-// described below.
 func (o AlarmruleOutput) OkActions() AlarmruleOkActionArrayOutput {
 	return o.ApplyT(func(v *Alarmrule) AlarmruleOkActionArrayOutput { return v.OkActions }).(AlarmruleOkActionArrayOutput)
 }
 
-// The region in which to create the alarm rule resource. If omitted, the
-// provider-level region will be used. Changing this creates a new resource.
 func (o AlarmruleOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alarmrule) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Indicates the time when the alarm status changed. The value is a UNIX timestamp and the unit is ms.
 func (o AlarmruleOutput) UpdateTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *Alarmrule) pulumi.IntOutput { return v.UpdateTime }).(pulumi.IntOutput)
 }

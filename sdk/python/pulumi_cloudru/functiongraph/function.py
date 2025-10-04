@@ -80,41 +80,37 @@ class FunctionArgs:
                  xrole: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Function resource.
-        :param pulumi.Input[_builtins.int] memory_size: Specifies the memory size(MB) allocated to the function.
-        :param pulumi.Input[_builtins.str] runtime: Specifies the environment for executing the function.
-        :param pulumi.Input[_builtins.int] timeout: Specifies the timeout interval of the function, ranges from 3s to 900s.
-        :param pulumi.Input[_builtins.str] agency: Specifies the agency. This parameter is mandatory if the function needs to access other cloud services.
-        :param pulumi.Input[_builtins.str] app: Specifies the group to which the function belongs.
-        :param pulumi.Input[_builtins.str] app_agency: Specifies An execution agency enables you to obtain a token or an AK/SK for accessing other cloud services.
+        :param pulumi.Input[_builtins.int] memory_size: The memory size allocated to the function, in MByte (MB).
+        :param pulumi.Input[_builtins.str] runtime: The environment for executing the function.
+        :param pulumi.Input[_builtins.int] timeout: The timeout interval of the function, in seconds.
+        :param pulumi.Input[_builtins.str] agency: The agency configuration of the function.
+        :param pulumi.Input[_builtins.str] app: The group to which the function belongs.
+        :param pulumi.Input[_builtins.str] app_agency: The execution agency enables you to obtain a token or an AK/SK for accessing other cloud services.
         :param pulumi.Input[_builtins.str] code_encrypt_kms_key_id: The KMS key ID for encrypting the function code.
-        :param pulumi.Input[_builtins.str] code_filename: Specifies the name of a function file, This field is mandatory only when coe_type is
-               set to jar or zip.
-        :param pulumi.Input[_builtins.str] code_type: Specifies the function code type, which can be inline: inline code, zip: ZIP file,
-               jar: JAR file or java functions, obs: function code stored in an OBS bucket.
-        :param pulumi.Input[_builtins.str] code_url: Specifies the code url. This parameter is mandatory when code_type is set to obs.
+        :param pulumi.Input[_builtins.str] code_filename: The name of the function file.
+        :param pulumi.Input[_builtins.str] code_type: The code type of the function.
+        :param pulumi.Input[_builtins.str] code_url: The URL where the function code is stored in OBS.
         :param pulumi.Input[_builtins.int] concurrency_num: The number of concurrent requests of the function.
         :param pulumi.Input['FunctionCustomImageArgs'] custom_image: The custom image configuration of the function.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] depend_lists: Specifies the dependencies of the function.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the function.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] depend_lists: The ID list of the dependencies.
+        :param pulumi.Input[_builtins.str] description: The description of the function.
         :param pulumi.Input[_builtins.str] dns_list: The private DNS configuration of the function network.
         :param pulumi.Input[_builtins.bool] enable_auth_in_header: Whether the authentication in the request header is enabled.
         :param pulumi.Input[_builtins.bool] enable_class_isolation: Whether the class isolation is enabled for the JAVA runtime functions.
         :param pulumi.Input[_builtins.bool] enable_dynamic_memory: Whether the dynamic memory configuration is enabled.
         :param pulumi.Input[_builtins.bool] enable_lts_log: Whether to enable the LTS log.
         :param pulumi.Input[_builtins.str] encrypted_user_data: The key/value information defined to be encrypted for the function.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the function.
-               Changing this creates a new function.
+        :param pulumi.Input[_builtins.str] enterprise_project_id: The ID of the enterprise project to which the function belongs.
         :param pulumi.Input[_builtins.int] ephemeral_storage: The size of the function ephemeral storage.
-        :param pulumi.Input[_builtins.str] func_code: Specifies the function code. When code_type is set to inline, zip, or jar, this parameter is mandatory,
-               and the code can be encoded using Base64 or just with the text code.
-        :param pulumi.Input[Sequence[pulumi.Input['FunctionFuncMountArgs']]] func_mounts: Specifies the file system list. The `func_mounts` object structure is documented below.
+        :param pulumi.Input[_builtins.str] func_code: The function code.
+        :param pulumi.Input[Sequence[pulumi.Input['FunctionFuncMountArgs']]] func_mounts: The list of function mount configuration.
         :param pulumi.Input[_builtins.str] functiongraph_version: The description of the function.
         :param pulumi.Input[_builtins.int] gpu_memory: The GPU memory size allocated to the function, in MByte (MB).
         :param pulumi.Input[_builtins.str] gpu_type: The GPU type of the function.
-        :param pulumi.Input[_builtins.str] handler: Specifies the entry point of the function.
+        :param pulumi.Input[_builtins.str] handler: The entry point of the function.
         :param pulumi.Input[_builtins.str] heartbeat_handler: The heartbeat handler of the function.
-        :param pulumi.Input[_builtins.str] initializer_handler: Specifies the initializer of the function.
-        :param pulumi.Input[_builtins.int] initializer_timeout: Specifies the maximum duration the function can be initialized. Value range: 1s to 300s.
+        :param pulumi.Input[_builtins.str] initializer_handler: The initializer of the function.
+        :param pulumi.Input[_builtins.int] initializer_timeout: The maximum duration the function can be initialized.
         :param pulumi.Input[_builtins.bool] is_stateful_function: Whether the function is a stateful function.
         :param pulumi.Input[_builtins.str] log_group_id: The LTS group ID for collecting logs.
         :param pulumi.Input[_builtins.str] log_group_name: The LTS group name for collecting logs.
@@ -122,17 +118,16 @@ class FunctionArgs:
         :param pulumi.Input[_builtins.str] log_stream_name: The LTS stream name for collecting logs.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] lts_custom_tag: The custom tags configuration that used to filter the LTS logs.
         :param pulumi.Input[_builtins.str] max_instance_num: The maximum number of instances of the function.
-        :param pulumi.Input[_builtins.int] mount_user_group_id: Specifies the user group ID, a non-0 integer from –1 to 65534. Default to -1.
-        :param pulumi.Input[_builtins.int] mount_user_id: Specifies the user ID, a non-0 integer from –1 to 65534. Default to -1.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the function.
+        :param pulumi.Input[_builtins.int] mount_user_group_id: The mount user group ID.
+        :param pulumi.Input[_builtins.int] mount_user_id: The mount user ID.
+        :param pulumi.Input[_builtins.str] name: The name of the function.
         :param pulumi.Input['FunctionNetworkControllerArgs'] network_controller: The network configuration of the function.
-        :param pulumi.Input[_builtins.str] network_id: Specifies the ID of subnet.
+        :param pulumi.Input[_builtins.str] network_id: The network ID of subnet.
         :param pulumi.Input[_builtins.str] peering_cidr: The VPC CIDR blocks used in the function code to detect whether it conflicts with the VPC
                CIDR blocks used by the service.
         :param pulumi.Input[_builtins.str] pre_stop_handler: The pre-stop handler of a function.
         :param pulumi.Input[_builtins.int] pre_stop_timeout: The maximum duration that the function can be initialized.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the Function resource.
-               If omitted, the provider-level region will be used. Changing this creates a new Function resource.
+        :param pulumi.Input[_builtins.str] region: The region where the function is located.
         :param pulumi.Input[Sequence[pulumi.Input['FunctionReservedInstanceArgs']]] reserved_instances: The reserved instance policies of the function.
         :param pulumi.Input[_builtins.str] restore_hook_handler: The restore hook handler of the function.
         :param pulumi.Input[_builtins.int] restore_hook_timeout: The timeout of the function restore hook.
@@ -140,7 +135,7 @@ class FunctionArgs:
         :param pulumi.Input[_builtins.str] user_data: The key/value information defined for the function.
         :param pulumi.Input[_builtins.str] user_data_encrypt_kms_key_id: The KMS key ID for encrypting the user data.
         :param pulumi.Input[Sequence[pulumi.Input['FunctionVersionArgs']]] versions: The versions management of the function.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of VPC.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC to which the function belongs.
         """
         pulumi.set(__self__, "memory_size", memory_size)
         pulumi.set(__self__, "runtime", runtime)
@@ -264,7 +259,7 @@ class FunctionArgs:
     @pulumi.getter(name="memorySize")
     def memory_size(self) -> pulumi.Input[_builtins.int]:
         """
-        Specifies the memory size(MB) allocated to the function.
+        The memory size allocated to the function, in MByte (MB).
         """
         return pulumi.get(self, "memory_size")
 
@@ -276,7 +271,7 @@ class FunctionArgs:
     @pulumi.getter
     def runtime(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the environment for executing the function.
+        The environment for executing the function.
         """
         return pulumi.get(self, "runtime")
 
@@ -288,7 +283,7 @@ class FunctionArgs:
     @pulumi.getter
     def timeout(self) -> pulumi.Input[_builtins.int]:
         """
-        Specifies the timeout interval of the function, ranges from 3s to 900s.
+        The timeout interval of the function, in seconds.
         """
         return pulumi.get(self, "timeout")
 
@@ -300,7 +295,7 @@ class FunctionArgs:
     @pulumi.getter
     def agency(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the agency. This parameter is mandatory if the function needs to access other cloud services.
+        The agency configuration of the function.
         """
         return pulumi.get(self, "agency")
 
@@ -312,7 +307,7 @@ class FunctionArgs:
     @pulumi.getter
     def app(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the group to which the function belongs.
+        The group to which the function belongs.
         """
         return pulumi.get(self, "app")
 
@@ -324,7 +319,7 @@ class FunctionArgs:
     @pulumi.getter(name="appAgency")
     def app_agency(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies An execution agency enables you to obtain a token or an AK/SK for accessing other cloud services.
+        The execution agency enables you to obtain a token or an AK/SK for accessing other cloud services.
         """
         return pulumi.get(self, "app_agency")
 
@@ -348,8 +343,7 @@ class FunctionArgs:
     @pulumi.getter(name="codeFilename")
     def code_filename(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the name of a function file, This field is mandatory only when coe_type is
-        set to jar or zip.
+        The name of the function file.
         """
         return pulumi.get(self, "code_filename")
 
@@ -361,8 +355,7 @@ class FunctionArgs:
     @pulumi.getter(name="codeType")
     def code_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the function code type, which can be inline: inline code, zip: ZIP file,
-        jar: JAR file or java functions, obs: function code stored in an OBS bucket.
+        The code type of the function.
         """
         return pulumi.get(self, "code_type")
 
@@ -374,7 +367,7 @@ class FunctionArgs:
     @pulumi.getter(name="codeUrl")
     def code_url(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the code url. This parameter is mandatory when code_type is set to obs.
+        The URL where the function code is stored in OBS.
         """
         return pulumi.get(self, "code_url")
 
@@ -410,7 +403,7 @@ class FunctionArgs:
     @pulumi.getter(name="dependLists")
     def depend_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Specifies the dependencies of the function.
+        The ID list of the dependencies.
         """
         return pulumi.get(self, "depend_lists")
 
@@ -422,7 +415,7 @@ class FunctionArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the description of the function.
+        The description of the function.
         """
         return pulumi.get(self, "description")
 
@@ -506,8 +499,7 @@ class FunctionArgs:
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the enterprise project id of the function.
-        Changing this creates a new function.
+        The ID of the enterprise project to which the function belongs.
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -531,8 +523,7 @@ class FunctionArgs:
     @pulumi.getter(name="funcCode")
     def func_code(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the function code. When code_type is set to inline, zip, or jar, this parameter is mandatory,
-        and the code can be encoded using Base64 or just with the text code.
+        The function code.
         """
         return pulumi.get(self, "func_code")
 
@@ -544,7 +535,7 @@ class FunctionArgs:
     @pulumi.getter(name="funcMounts")
     def func_mounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionFuncMountArgs']]]]:
         """
-        Specifies the file system list. The `func_mounts` object structure is documented below.
+        The list of function mount configuration.
         """
         return pulumi.get(self, "func_mounts")
 
@@ -592,7 +583,7 @@ class FunctionArgs:
     @pulumi.getter
     def handler(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the entry point of the function.
+        The entry point of the function.
         """
         return pulumi.get(self, "handler")
 
@@ -616,7 +607,7 @@ class FunctionArgs:
     @pulumi.getter(name="initializerHandler")
     def initializer_handler(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the initializer of the function.
+        The initializer of the function.
         """
         return pulumi.get(self, "initializer_handler")
 
@@ -628,7 +619,7 @@ class FunctionArgs:
     @pulumi.getter(name="initializerTimeout")
     def initializer_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the maximum duration the function can be initialized. Value range: 1s to 300s.
+        The maximum duration the function can be initialized.
         """
         return pulumi.get(self, "initializer_timeout")
 
@@ -724,7 +715,7 @@ class FunctionArgs:
     @pulumi.getter(name="mountUserGroupId")
     def mount_user_group_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the user group ID, a non-0 integer from –1 to 65534. Default to -1.
+        The mount user group ID.
         """
         return pulumi.get(self, "mount_user_group_id")
 
@@ -736,7 +727,7 @@ class FunctionArgs:
     @pulumi.getter(name="mountUserId")
     def mount_user_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the user ID, a non-0 integer from –1 to 65534. Default to -1.
+        The mount user ID.
         """
         return pulumi.get(self, "mount_user_id")
 
@@ -748,7 +739,7 @@ class FunctionArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the name of the function.
+        The name of the function.
         """
         return pulumi.get(self, "name")
 
@@ -772,7 +763,7 @@ class FunctionArgs:
     @pulumi.getter(name="networkId")
     def network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the ID of subnet.
+        The network ID of subnet.
         """
         return pulumi.get(self, "network_id")
 
@@ -831,8 +822,7 @@ class FunctionArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region in which to create the Function resource.
-        If omitted, the provider-level region will be used. Changing this creates a new Function resource.
+        The region where the function is located.
         """
         return pulumi.get(self, "region")
 
@@ -928,7 +918,7 @@ class FunctionArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the ID of VPC.
+        The ID of the VPC to which the function belongs.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -1012,38 +1002,34 @@ class _FunctionState:
                  xrole: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Function resources.
-        :param pulumi.Input[_builtins.str] agency: Specifies the agency. This parameter is mandatory if the function needs to access other cloud services.
-        :param pulumi.Input[_builtins.str] app: Specifies the group to which the function belongs.
-        :param pulumi.Input[_builtins.str] app_agency: Specifies An execution agency enables you to obtain a token or an AK/SK for accessing other cloud services.
+        :param pulumi.Input[_builtins.str] agency: The agency configuration of the function.
+        :param pulumi.Input[_builtins.str] app: The group to which the function belongs.
+        :param pulumi.Input[_builtins.str] app_agency: The execution agency enables you to obtain a token or an AK/SK for accessing other cloud services.
         :param pulumi.Input[_builtins.str] code_encrypt_kms_key_id: The KMS key ID for encrypting the function code.
-        :param pulumi.Input[_builtins.str] code_filename: Specifies the name of a function file, This field is mandatory only when coe_type is
-               set to jar or zip.
-        :param pulumi.Input[_builtins.str] code_type: Specifies the function code type, which can be inline: inline code, zip: ZIP file,
-               jar: JAR file or java functions, obs: function code stored in an OBS bucket.
-        :param pulumi.Input[_builtins.str] code_url: Specifies the code url. This parameter is mandatory when code_type is set to obs.
+        :param pulumi.Input[_builtins.str] code_filename: The name of the function file.
+        :param pulumi.Input[_builtins.str] code_type: The code type of the function.
+        :param pulumi.Input[_builtins.str] code_url: The URL where the function code is stored in OBS.
         :param pulumi.Input[_builtins.int] concurrency_num: The number of concurrent requests of the function.
         :param pulumi.Input['FunctionCustomImageArgs'] custom_image: The custom image configuration of the function.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] depend_lists: Specifies the dependencies of the function.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the function.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] depend_lists: The ID list of the dependencies.
+        :param pulumi.Input[_builtins.str] description: The description of the function.
         :param pulumi.Input[_builtins.str] dns_list: The private DNS configuration of the function network.
         :param pulumi.Input[_builtins.bool] enable_auth_in_header: Whether the authentication in the request header is enabled.
         :param pulumi.Input[_builtins.bool] enable_class_isolation: Whether the class isolation is enabled for the JAVA runtime functions.
         :param pulumi.Input[_builtins.bool] enable_dynamic_memory: Whether the dynamic memory configuration is enabled.
         :param pulumi.Input[_builtins.bool] enable_lts_log: Whether to enable the LTS log.
         :param pulumi.Input[_builtins.str] encrypted_user_data: The key/value information defined to be encrypted for the function.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the function.
-               Changing this creates a new function.
+        :param pulumi.Input[_builtins.str] enterprise_project_id: The ID of the enterprise project to which the function belongs.
         :param pulumi.Input[_builtins.int] ephemeral_storage: The size of the function ephemeral storage.
-        :param pulumi.Input[_builtins.str] func_code: Specifies the function code. When code_type is set to inline, zip, or jar, this parameter is mandatory,
-               and the code can be encoded using Base64 or just with the text code.
-        :param pulumi.Input[Sequence[pulumi.Input['FunctionFuncMountArgs']]] func_mounts: Specifies the file system list. The `func_mounts` object structure is documented below.
+        :param pulumi.Input[_builtins.str] func_code: The function code.
+        :param pulumi.Input[Sequence[pulumi.Input['FunctionFuncMountArgs']]] func_mounts: The list of function mount configuration.
         :param pulumi.Input[_builtins.str] functiongraph_version: The description of the function.
         :param pulumi.Input[_builtins.int] gpu_memory: The GPU memory size allocated to the function, in MByte (MB).
         :param pulumi.Input[_builtins.str] gpu_type: The GPU type of the function.
-        :param pulumi.Input[_builtins.str] handler: Specifies the entry point of the function.
+        :param pulumi.Input[_builtins.str] handler: The entry point of the function.
         :param pulumi.Input[_builtins.str] heartbeat_handler: The heartbeat handler of the function.
-        :param pulumi.Input[_builtins.str] initializer_handler: Specifies the initializer of the function.
-        :param pulumi.Input[_builtins.int] initializer_timeout: Specifies the maximum duration the function can be initialized. Value range: 1s to 300s.
+        :param pulumi.Input[_builtins.str] initializer_handler: The initializer of the function.
+        :param pulumi.Input[_builtins.int] initializer_timeout: The maximum duration the function can be initialized.
         :param pulumi.Input[_builtins.bool] is_stateful_function: Whether the function is a stateful function.
         :param pulumi.Input[_builtins.str] log_group_id: The LTS group ID for collecting logs.
         :param pulumi.Input[_builtins.str] log_group_name: The LTS group name for collecting logs.
@@ -1053,30 +1039,29 @@ class _FunctionState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] lts_custom_tag_origin: The script configuration value of this change is also the original value used for comparison with
                 the new value next time the change is made. The corresponding parameter name is 'lts_custom_tag'.
         :param pulumi.Input[_builtins.str] max_instance_num: The maximum number of instances of the function.
-        :param pulumi.Input[_builtins.int] memory_size: Specifies the memory size(MB) allocated to the function.
-        :param pulumi.Input[_builtins.int] mount_user_group_id: Specifies the user group ID, a non-0 integer from –1 to 65534. Default to -1.
-        :param pulumi.Input[_builtins.int] mount_user_id: Specifies the user ID, a non-0 integer from –1 to 65534. Default to -1.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the function.
+        :param pulumi.Input[_builtins.int] memory_size: The memory size allocated to the function, in MByte (MB).
+        :param pulumi.Input[_builtins.int] mount_user_group_id: The mount user group ID.
+        :param pulumi.Input[_builtins.int] mount_user_id: The mount user ID.
+        :param pulumi.Input[_builtins.str] name: The name of the function.
         :param pulumi.Input['FunctionNetworkControllerArgs'] network_controller: The network configuration of the function.
-        :param pulumi.Input[_builtins.str] network_id: Specifies the ID of subnet.
+        :param pulumi.Input[_builtins.str] network_id: The network ID of subnet.
         :param pulumi.Input[_builtins.str] peering_cidr: The VPC CIDR blocks used in the function code to detect whether it conflicts with the VPC
                CIDR blocks used by the service.
         :param pulumi.Input[_builtins.str] pre_stop_handler: The pre-stop handler of a function.
         :param pulumi.Input[_builtins.int] pre_stop_timeout: The maximum duration that the function can be initialized.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the Function resource.
-               If omitted, the provider-level region will be used. Changing this creates a new Function resource.
+        :param pulumi.Input[_builtins.str] region: The region where the function is located.
         :param pulumi.Input[Sequence[pulumi.Input['FunctionReservedInstanceArgs']]] reserved_instances: The reserved instance policies of the function.
         :param pulumi.Input[_builtins.str] restore_hook_handler: The restore hook handler of the function.
         :param pulumi.Input[_builtins.int] restore_hook_timeout: The timeout of the function restore hook.
-        :param pulumi.Input[_builtins.str] runtime: Specifies the environment for executing the function.
+        :param pulumi.Input[_builtins.str] runtime: The environment for executing the function.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the function.
-        :param pulumi.Input[_builtins.int] timeout: Specifies the timeout interval of the function, ranges from 3s to 900s.
-        :param pulumi.Input[_builtins.str] urn: Uniform Resource Name
+        :param pulumi.Input[_builtins.int] timeout: The timeout interval of the function, in seconds.
+        :param pulumi.Input[_builtins.str] urn: The URN (Uniform Resource Name) of the function.
         :param pulumi.Input[_builtins.str] user_data: The key/value information defined for the function.
         :param pulumi.Input[_builtins.str] user_data_encrypt_kms_key_id: The KMS key ID for encrypting the user data.
-        :param pulumi.Input[_builtins.str] version: The version of the function
+        :param pulumi.Input[_builtins.str] version: The version of the function.
         :param pulumi.Input[Sequence[pulumi.Input['FunctionVersionArgs']]] versions: The versions management of the function.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of VPC.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC to which the function belongs.
         """
         if agency is not None:
             pulumi.set(__self__, "agency", agency)
@@ -1209,7 +1194,7 @@ class _FunctionState:
     @pulumi.getter
     def agency(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the agency. This parameter is mandatory if the function needs to access other cloud services.
+        The agency configuration of the function.
         """
         return pulumi.get(self, "agency")
 
@@ -1221,7 +1206,7 @@ class _FunctionState:
     @pulumi.getter
     def app(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the group to which the function belongs.
+        The group to which the function belongs.
         """
         return pulumi.get(self, "app")
 
@@ -1233,7 +1218,7 @@ class _FunctionState:
     @pulumi.getter(name="appAgency")
     def app_agency(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies An execution agency enables you to obtain a token or an AK/SK for accessing other cloud services.
+        The execution agency enables you to obtain a token or an AK/SK for accessing other cloud services.
         """
         return pulumi.get(self, "app_agency")
 
@@ -1257,8 +1242,7 @@ class _FunctionState:
     @pulumi.getter(name="codeFilename")
     def code_filename(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the name of a function file, This field is mandatory only when coe_type is
-        set to jar or zip.
+        The name of the function file.
         """
         return pulumi.get(self, "code_filename")
 
@@ -1270,8 +1254,7 @@ class _FunctionState:
     @pulumi.getter(name="codeType")
     def code_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the function code type, which can be inline: inline code, zip: ZIP file,
-        jar: JAR file or java functions, obs: function code stored in an OBS bucket.
+        The code type of the function.
         """
         return pulumi.get(self, "code_type")
 
@@ -1283,7 +1266,7 @@ class _FunctionState:
     @pulumi.getter(name="codeUrl")
     def code_url(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the code url. This parameter is mandatory when code_type is set to obs.
+        The URL where the function code is stored in OBS.
         """
         return pulumi.get(self, "code_url")
 
@@ -1319,7 +1302,7 @@ class _FunctionState:
     @pulumi.getter(name="dependLists")
     def depend_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Specifies the dependencies of the function.
+        The ID list of the dependencies.
         """
         return pulumi.get(self, "depend_lists")
 
@@ -1331,7 +1314,7 @@ class _FunctionState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the description of the function.
+        The description of the function.
         """
         return pulumi.get(self, "description")
 
@@ -1415,8 +1398,7 @@ class _FunctionState:
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the enterprise project id of the function.
-        Changing this creates a new function.
+        The ID of the enterprise project to which the function belongs.
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -1440,8 +1422,7 @@ class _FunctionState:
     @pulumi.getter(name="funcCode")
     def func_code(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the function code. When code_type is set to inline, zip, or jar, this parameter is mandatory,
-        and the code can be encoded using Base64 or just with the text code.
+        The function code.
         """
         return pulumi.get(self, "func_code")
 
@@ -1453,7 +1434,7 @@ class _FunctionState:
     @pulumi.getter(name="funcMounts")
     def func_mounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionFuncMountArgs']]]]:
         """
-        Specifies the file system list. The `func_mounts` object structure is documented below.
+        The list of function mount configuration.
         """
         return pulumi.get(self, "func_mounts")
 
@@ -1501,7 +1482,7 @@ class _FunctionState:
     @pulumi.getter
     def handler(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the entry point of the function.
+        The entry point of the function.
         """
         return pulumi.get(self, "handler")
 
@@ -1525,7 +1506,7 @@ class _FunctionState:
     @pulumi.getter(name="initializerHandler")
     def initializer_handler(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the initializer of the function.
+        The initializer of the function.
         """
         return pulumi.get(self, "initializer_handler")
 
@@ -1537,7 +1518,7 @@ class _FunctionState:
     @pulumi.getter(name="initializerTimeout")
     def initializer_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the maximum duration the function can be initialized. Value range: 1s to 300s.
+        The maximum duration the function can be initialized.
         """
         return pulumi.get(self, "initializer_timeout")
 
@@ -1646,7 +1627,7 @@ class _FunctionState:
     @pulumi.getter(name="memorySize")
     def memory_size(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the memory size(MB) allocated to the function.
+        The memory size allocated to the function, in MByte (MB).
         """
         return pulumi.get(self, "memory_size")
 
@@ -1658,7 +1639,7 @@ class _FunctionState:
     @pulumi.getter(name="mountUserGroupId")
     def mount_user_group_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the user group ID, a non-0 integer from –1 to 65534. Default to -1.
+        The mount user group ID.
         """
         return pulumi.get(self, "mount_user_group_id")
 
@@ -1670,7 +1651,7 @@ class _FunctionState:
     @pulumi.getter(name="mountUserId")
     def mount_user_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the user ID, a non-0 integer from –1 to 65534. Default to -1.
+        The mount user ID.
         """
         return pulumi.get(self, "mount_user_id")
 
@@ -1682,7 +1663,7 @@ class _FunctionState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the name of the function.
+        The name of the function.
         """
         return pulumi.get(self, "name")
 
@@ -1706,7 +1687,7 @@ class _FunctionState:
     @pulumi.getter(name="networkId")
     def network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the ID of subnet.
+        The network ID of subnet.
         """
         return pulumi.get(self, "network_id")
 
@@ -1765,8 +1746,7 @@ class _FunctionState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region in which to create the Function resource.
-        If omitted, the provider-level region will be used. Changing this creates a new Function resource.
+        The region where the function is located.
         """
         return pulumi.get(self, "region")
 
@@ -1814,7 +1794,7 @@ class _FunctionState:
     @pulumi.getter
     def runtime(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the environment for executing the function.
+        The environment for executing the function.
         """
         return pulumi.get(self, "runtime")
 
@@ -1838,7 +1818,7 @@ class _FunctionState:
     @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the timeout interval of the function, ranges from 3s to 900s.
+        The timeout interval of the function, in seconds.
         """
         return pulumi.get(self, "timeout")
 
@@ -1850,7 +1830,7 @@ class _FunctionState:
     @pulumi.getter
     def urn(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Uniform Resource Name
+        The URN (Uniform Resource Name) of the function.
         """
         return pulumi.get(self, "urn")
 
@@ -1886,7 +1866,7 @@ class _FunctionState:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The version of the function
+        The version of the function.
         """
         return pulumi.get(self, "version")
 
@@ -1910,7 +1890,7 @@ class _FunctionState:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the ID of VPC.
+        The ID of the VPC to which the function belongs.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -1994,101 +1974,37 @@ class Function(pulumi.CustomResource):
                  xrole: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a Function resource within SberCloud.
-
-        ## Example Usage
-
-        ### With base64 func code
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        f1 = sbercloud.functiongraph.Function("f_1",
-            name="func_1",
-            app="default",
-            agency="test",
-            description="fuction test",
-            handler="test.handler",
-            memory_size=128,
-            timeout=3,
-            runtime="Python2.7",
-            code_type="inline",
-            func_code="aW1wb3J0IGpzb24KZGVmIGhhbmRsZXIgKGV2ZW50LCBjb250ZXh0KToKICAgIG91dHB1dCA9ICdIZWxsbyBtZXNzYWdlOiAnICsganNvbi5kdW1wcyhldmVudCkKICAgIHJldHVybiBvdXRwdXQ=")
-        ```
-
-        ### With text code
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        f1 = sbercloud.functiongraph.Function("f_1",
-            name="func_1",
-            app="default",
-            agency="test",
-            description="fuction test",
-            handler="test.handler",
-            memory_size=128,
-            timeout=3,
-            runtime="Python2.7",
-            code_type="inline",
-            func_code=\"\"\"# -*- coding:utf-8 -*-
-        import json
-        def handler (event, context):
-            return {
-                "statusCode": 200,
-                "isBase64Encoded": False,
-                "body": json.dumps(event),
-                "headers": {
-                    "Content-Type": "application/json"
-                }
-            }
-        \"\"\")
-        ```
-
-        ## Import
-
-        Functions can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:FunctionGraph/function:Function my-func 7117d38e-4c8f-4624-a505-bd96b97d024c
-        ```
-
+        Create a Function resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] agency: Specifies the agency. This parameter is mandatory if the function needs to access other cloud services.
-        :param pulumi.Input[_builtins.str] app: Specifies the group to which the function belongs.
-        :param pulumi.Input[_builtins.str] app_agency: Specifies An execution agency enables you to obtain a token or an AK/SK for accessing other cloud services.
+        :param pulumi.Input[_builtins.str] agency: The agency configuration of the function.
+        :param pulumi.Input[_builtins.str] app: The group to which the function belongs.
+        :param pulumi.Input[_builtins.str] app_agency: The execution agency enables you to obtain a token or an AK/SK for accessing other cloud services.
         :param pulumi.Input[_builtins.str] code_encrypt_kms_key_id: The KMS key ID for encrypting the function code.
-        :param pulumi.Input[_builtins.str] code_filename: Specifies the name of a function file, This field is mandatory only when coe_type is
-               set to jar or zip.
-        :param pulumi.Input[_builtins.str] code_type: Specifies the function code type, which can be inline: inline code, zip: ZIP file,
-               jar: JAR file or java functions, obs: function code stored in an OBS bucket.
-        :param pulumi.Input[_builtins.str] code_url: Specifies the code url. This parameter is mandatory when code_type is set to obs.
+        :param pulumi.Input[_builtins.str] code_filename: The name of the function file.
+        :param pulumi.Input[_builtins.str] code_type: The code type of the function.
+        :param pulumi.Input[_builtins.str] code_url: The URL where the function code is stored in OBS.
         :param pulumi.Input[_builtins.int] concurrency_num: The number of concurrent requests of the function.
         :param pulumi.Input[Union['FunctionCustomImageArgs', 'FunctionCustomImageArgsDict']] custom_image: The custom image configuration of the function.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] depend_lists: Specifies the dependencies of the function.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the function.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] depend_lists: The ID list of the dependencies.
+        :param pulumi.Input[_builtins.str] description: The description of the function.
         :param pulumi.Input[_builtins.str] dns_list: The private DNS configuration of the function network.
         :param pulumi.Input[_builtins.bool] enable_auth_in_header: Whether the authentication in the request header is enabled.
         :param pulumi.Input[_builtins.bool] enable_class_isolation: Whether the class isolation is enabled for the JAVA runtime functions.
         :param pulumi.Input[_builtins.bool] enable_dynamic_memory: Whether the dynamic memory configuration is enabled.
         :param pulumi.Input[_builtins.bool] enable_lts_log: Whether to enable the LTS log.
         :param pulumi.Input[_builtins.str] encrypted_user_data: The key/value information defined to be encrypted for the function.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the function.
-               Changing this creates a new function.
+        :param pulumi.Input[_builtins.str] enterprise_project_id: The ID of the enterprise project to which the function belongs.
         :param pulumi.Input[_builtins.int] ephemeral_storage: The size of the function ephemeral storage.
-        :param pulumi.Input[_builtins.str] func_code: Specifies the function code. When code_type is set to inline, zip, or jar, this parameter is mandatory,
-               and the code can be encoded using Base64 or just with the text code.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FunctionFuncMountArgs', 'FunctionFuncMountArgsDict']]]] func_mounts: Specifies the file system list. The `func_mounts` object structure is documented below.
+        :param pulumi.Input[_builtins.str] func_code: The function code.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FunctionFuncMountArgs', 'FunctionFuncMountArgsDict']]]] func_mounts: The list of function mount configuration.
         :param pulumi.Input[_builtins.str] functiongraph_version: The description of the function.
         :param pulumi.Input[_builtins.int] gpu_memory: The GPU memory size allocated to the function, in MByte (MB).
         :param pulumi.Input[_builtins.str] gpu_type: The GPU type of the function.
-        :param pulumi.Input[_builtins.str] handler: Specifies the entry point of the function.
+        :param pulumi.Input[_builtins.str] handler: The entry point of the function.
         :param pulumi.Input[_builtins.str] heartbeat_handler: The heartbeat handler of the function.
-        :param pulumi.Input[_builtins.str] initializer_handler: Specifies the initializer of the function.
-        :param pulumi.Input[_builtins.int] initializer_timeout: Specifies the maximum duration the function can be initialized. Value range: 1s to 300s.
+        :param pulumi.Input[_builtins.str] initializer_handler: The initializer of the function.
+        :param pulumi.Input[_builtins.int] initializer_timeout: The maximum duration the function can be initialized.
         :param pulumi.Input[_builtins.bool] is_stateful_function: Whether the function is a stateful function.
         :param pulumi.Input[_builtins.str] log_group_id: The LTS group ID for collecting logs.
         :param pulumi.Input[_builtins.str] log_group_name: The LTS group name for collecting logs.
@@ -2096,28 +2012,27 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] log_stream_name: The LTS stream name for collecting logs.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] lts_custom_tag: The custom tags configuration that used to filter the LTS logs.
         :param pulumi.Input[_builtins.str] max_instance_num: The maximum number of instances of the function.
-        :param pulumi.Input[_builtins.int] memory_size: Specifies the memory size(MB) allocated to the function.
-        :param pulumi.Input[_builtins.int] mount_user_group_id: Specifies the user group ID, a non-0 integer from –1 to 65534. Default to -1.
-        :param pulumi.Input[_builtins.int] mount_user_id: Specifies the user ID, a non-0 integer from –1 to 65534. Default to -1.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the function.
+        :param pulumi.Input[_builtins.int] memory_size: The memory size allocated to the function, in MByte (MB).
+        :param pulumi.Input[_builtins.int] mount_user_group_id: The mount user group ID.
+        :param pulumi.Input[_builtins.int] mount_user_id: The mount user ID.
+        :param pulumi.Input[_builtins.str] name: The name of the function.
         :param pulumi.Input[Union['FunctionNetworkControllerArgs', 'FunctionNetworkControllerArgsDict']] network_controller: The network configuration of the function.
-        :param pulumi.Input[_builtins.str] network_id: Specifies the ID of subnet.
+        :param pulumi.Input[_builtins.str] network_id: The network ID of subnet.
         :param pulumi.Input[_builtins.str] peering_cidr: The VPC CIDR blocks used in the function code to detect whether it conflicts with the VPC
                CIDR blocks used by the service.
         :param pulumi.Input[_builtins.str] pre_stop_handler: The pre-stop handler of a function.
         :param pulumi.Input[_builtins.int] pre_stop_timeout: The maximum duration that the function can be initialized.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the Function resource.
-               If omitted, the provider-level region will be used. Changing this creates a new Function resource.
+        :param pulumi.Input[_builtins.str] region: The region where the function is located.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FunctionReservedInstanceArgs', 'FunctionReservedInstanceArgsDict']]]] reserved_instances: The reserved instance policies of the function.
         :param pulumi.Input[_builtins.str] restore_hook_handler: The restore hook handler of the function.
         :param pulumi.Input[_builtins.int] restore_hook_timeout: The timeout of the function restore hook.
-        :param pulumi.Input[_builtins.str] runtime: Specifies the environment for executing the function.
+        :param pulumi.Input[_builtins.str] runtime: The environment for executing the function.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the function.
-        :param pulumi.Input[_builtins.int] timeout: Specifies the timeout interval of the function, ranges from 3s to 900s.
+        :param pulumi.Input[_builtins.int] timeout: The timeout interval of the function, in seconds.
         :param pulumi.Input[_builtins.str] user_data: The key/value information defined for the function.
         :param pulumi.Input[_builtins.str] user_data_encrypt_kms_key_id: The KMS key ID for encrypting the user data.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FunctionVersionArgs', 'FunctionVersionArgsDict']]]] versions: The versions management of the function.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of VPC.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC to which the function belongs.
         """
         ...
     @overload
@@ -2126,67 +2041,7 @@ class Function(pulumi.CustomResource):
                  args: FunctionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a Function resource within SberCloud.
-
-        ## Example Usage
-
-        ### With base64 func code
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        f1 = sbercloud.functiongraph.Function("f_1",
-            name="func_1",
-            app="default",
-            agency="test",
-            description="fuction test",
-            handler="test.handler",
-            memory_size=128,
-            timeout=3,
-            runtime="Python2.7",
-            code_type="inline",
-            func_code="aW1wb3J0IGpzb24KZGVmIGhhbmRsZXIgKGV2ZW50LCBjb250ZXh0KToKICAgIG91dHB1dCA9ICdIZWxsbyBtZXNzYWdlOiAnICsganNvbi5kdW1wcyhldmVudCkKICAgIHJldHVybiBvdXRwdXQ=")
-        ```
-
-        ### With text code
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        f1 = sbercloud.functiongraph.Function("f_1",
-            name="func_1",
-            app="default",
-            agency="test",
-            description="fuction test",
-            handler="test.handler",
-            memory_size=128,
-            timeout=3,
-            runtime="Python2.7",
-            code_type="inline",
-            func_code=\"\"\"# -*- coding:utf-8 -*-
-        import json
-        def handler (event, context):
-            return {
-                "statusCode": 200,
-                "isBase64Encoded": False,
-                "body": json.dumps(event),
-                "headers": {
-                    "Content-Type": "application/json"
-                }
-            }
-        \"\"\")
-        ```
-
-        ## Import
-
-        Functions can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:FunctionGraph/function:Function my-func 7117d38e-4c8f-4624-a505-bd96b97d024c
-        ```
-
+        Create a Function resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param FunctionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -2413,38 +2268,34 @@ class Function(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] agency: Specifies the agency. This parameter is mandatory if the function needs to access other cloud services.
-        :param pulumi.Input[_builtins.str] app: Specifies the group to which the function belongs.
-        :param pulumi.Input[_builtins.str] app_agency: Specifies An execution agency enables you to obtain a token or an AK/SK for accessing other cloud services.
+        :param pulumi.Input[_builtins.str] agency: The agency configuration of the function.
+        :param pulumi.Input[_builtins.str] app: The group to which the function belongs.
+        :param pulumi.Input[_builtins.str] app_agency: The execution agency enables you to obtain a token or an AK/SK for accessing other cloud services.
         :param pulumi.Input[_builtins.str] code_encrypt_kms_key_id: The KMS key ID for encrypting the function code.
-        :param pulumi.Input[_builtins.str] code_filename: Specifies the name of a function file, This field is mandatory only when coe_type is
-               set to jar or zip.
-        :param pulumi.Input[_builtins.str] code_type: Specifies the function code type, which can be inline: inline code, zip: ZIP file,
-               jar: JAR file or java functions, obs: function code stored in an OBS bucket.
-        :param pulumi.Input[_builtins.str] code_url: Specifies the code url. This parameter is mandatory when code_type is set to obs.
+        :param pulumi.Input[_builtins.str] code_filename: The name of the function file.
+        :param pulumi.Input[_builtins.str] code_type: The code type of the function.
+        :param pulumi.Input[_builtins.str] code_url: The URL where the function code is stored in OBS.
         :param pulumi.Input[_builtins.int] concurrency_num: The number of concurrent requests of the function.
         :param pulumi.Input[Union['FunctionCustomImageArgs', 'FunctionCustomImageArgsDict']] custom_image: The custom image configuration of the function.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] depend_lists: Specifies the dependencies of the function.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the function.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] depend_lists: The ID list of the dependencies.
+        :param pulumi.Input[_builtins.str] description: The description of the function.
         :param pulumi.Input[_builtins.str] dns_list: The private DNS configuration of the function network.
         :param pulumi.Input[_builtins.bool] enable_auth_in_header: Whether the authentication in the request header is enabled.
         :param pulumi.Input[_builtins.bool] enable_class_isolation: Whether the class isolation is enabled for the JAVA runtime functions.
         :param pulumi.Input[_builtins.bool] enable_dynamic_memory: Whether the dynamic memory configuration is enabled.
         :param pulumi.Input[_builtins.bool] enable_lts_log: Whether to enable the LTS log.
         :param pulumi.Input[_builtins.str] encrypted_user_data: The key/value information defined to be encrypted for the function.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the function.
-               Changing this creates a new function.
+        :param pulumi.Input[_builtins.str] enterprise_project_id: The ID of the enterprise project to which the function belongs.
         :param pulumi.Input[_builtins.int] ephemeral_storage: The size of the function ephemeral storage.
-        :param pulumi.Input[_builtins.str] func_code: Specifies the function code. When code_type is set to inline, zip, or jar, this parameter is mandatory,
-               and the code can be encoded using Base64 or just with the text code.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FunctionFuncMountArgs', 'FunctionFuncMountArgsDict']]]] func_mounts: Specifies the file system list. The `func_mounts` object structure is documented below.
+        :param pulumi.Input[_builtins.str] func_code: The function code.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FunctionFuncMountArgs', 'FunctionFuncMountArgsDict']]]] func_mounts: The list of function mount configuration.
         :param pulumi.Input[_builtins.str] functiongraph_version: The description of the function.
         :param pulumi.Input[_builtins.int] gpu_memory: The GPU memory size allocated to the function, in MByte (MB).
         :param pulumi.Input[_builtins.str] gpu_type: The GPU type of the function.
-        :param pulumi.Input[_builtins.str] handler: Specifies the entry point of the function.
+        :param pulumi.Input[_builtins.str] handler: The entry point of the function.
         :param pulumi.Input[_builtins.str] heartbeat_handler: The heartbeat handler of the function.
-        :param pulumi.Input[_builtins.str] initializer_handler: Specifies the initializer of the function.
-        :param pulumi.Input[_builtins.int] initializer_timeout: Specifies the maximum duration the function can be initialized. Value range: 1s to 300s.
+        :param pulumi.Input[_builtins.str] initializer_handler: The initializer of the function.
+        :param pulumi.Input[_builtins.int] initializer_timeout: The maximum duration the function can be initialized.
         :param pulumi.Input[_builtins.bool] is_stateful_function: Whether the function is a stateful function.
         :param pulumi.Input[_builtins.str] log_group_id: The LTS group ID for collecting logs.
         :param pulumi.Input[_builtins.str] log_group_name: The LTS group name for collecting logs.
@@ -2454,30 +2305,29 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] lts_custom_tag_origin: The script configuration value of this change is also the original value used for comparison with
                 the new value next time the change is made. The corresponding parameter name is 'lts_custom_tag'.
         :param pulumi.Input[_builtins.str] max_instance_num: The maximum number of instances of the function.
-        :param pulumi.Input[_builtins.int] memory_size: Specifies the memory size(MB) allocated to the function.
-        :param pulumi.Input[_builtins.int] mount_user_group_id: Specifies the user group ID, a non-0 integer from –1 to 65534. Default to -1.
-        :param pulumi.Input[_builtins.int] mount_user_id: Specifies the user ID, a non-0 integer from –1 to 65534. Default to -1.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the function.
+        :param pulumi.Input[_builtins.int] memory_size: The memory size allocated to the function, in MByte (MB).
+        :param pulumi.Input[_builtins.int] mount_user_group_id: The mount user group ID.
+        :param pulumi.Input[_builtins.int] mount_user_id: The mount user ID.
+        :param pulumi.Input[_builtins.str] name: The name of the function.
         :param pulumi.Input[Union['FunctionNetworkControllerArgs', 'FunctionNetworkControllerArgsDict']] network_controller: The network configuration of the function.
-        :param pulumi.Input[_builtins.str] network_id: Specifies the ID of subnet.
+        :param pulumi.Input[_builtins.str] network_id: The network ID of subnet.
         :param pulumi.Input[_builtins.str] peering_cidr: The VPC CIDR blocks used in the function code to detect whether it conflicts with the VPC
                CIDR blocks used by the service.
         :param pulumi.Input[_builtins.str] pre_stop_handler: The pre-stop handler of a function.
         :param pulumi.Input[_builtins.int] pre_stop_timeout: The maximum duration that the function can be initialized.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the Function resource.
-               If omitted, the provider-level region will be used. Changing this creates a new Function resource.
+        :param pulumi.Input[_builtins.str] region: The region where the function is located.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FunctionReservedInstanceArgs', 'FunctionReservedInstanceArgsDict']]]] reserved_instances: The reserved instance policies of the function.
         :param pulumi.Input[_builtins.str] restore_hook_handler: The restore hook handler of the function.
         :param pulumi.Input[_builtins.int] restore_hook_timeout: The timeout of the function restore hook.
-        :param pulumi.Input[_builtins.str] runtime: Specifies the environment for executing the function.
+        :param pulumi.Input[_builtins.str] runtime: The environment for executing the function.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the function.
-        :param pulumi.Input[_builtins.int] timeout: Specifies the timeout interval of the function, ranges from 3s to 900s.
-        :param pulumi.Input[_builtins.str] urn: Uniform Resource Name
+        :param pulumi.Input[_builtins.int] timeout: The timeout interval of the function, in seconds.
+        :param pulumi.Input[_builtins.str] urn: The URN (Uniform Resource Name) of the function.
         :param pulumi.Input[_builtins.str] user_data: The key/value information defined for the function.
         :param pulumi.Input[_builtins.str] user_data_encrypt_kms_key_id: The KMS key ID for encrypting the user data.
-        :param pulumi.Input[_builtins.str] version: The version of the function
+        :param pulumi.Input[_builtins.str] version: The version of the function.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FunctionVersionArgs', 'FunctionVersionArgsDict']]]] versions: The versions management of the function.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of VPC.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC to which the function belongs.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2549,7 +2399,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter
     def agency(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the agency. This parameter is mandatory if the function needs to access other cloud services.
+        The agency configuration of the function.
         """
         return pulumi.get(self, "agency")
 
@@ -2557,7 +2407,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter
     def app(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the group to which the function belongs.
+        The group to which the function belongs.
         """
         return pulumi.get(self, "app")
 
@@ -2565,7 +2415,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter(name="appAgency")
     def app_agency(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies An execution agency enables you to obtain a token or an AK/SK for accessing other cloud services.
+        The execution agency enables you to obtain a token or an AK/SK for accessing other cloud services.
         """
         return pulumi.get(self, "app_agency")
 
@@ -2581,8 +2431,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter(name="codeFilename")
     def code_filename(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the name of a function file, This field is mandatory only when coe_type is
-        set to jar or zip.
+        The name of the function file.
         """
         return pulumi.get(self, "code_filename")
 
@@ -2590,8 +2439,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter(name="codeType")
     def code_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the function code type, which can be inline: inline code, zip: ZIP file,
-        jar: JAR file or java functions, obs: function code stored in an OBS bucket.
+        The code type of the function.
         """
         return pulumi.get(self, "code_type")
 
@@ -2599,7 +2447,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter(name="codeUrl")
     def code_url(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the code url. This parameter is mandatory when code_type is set to obs.
+        The URL where the function code is stored in OBS.
         """
         return pulumi.get(self, "code_url")
 
@@ -2623,7 +2471,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter(name="dependLists")
     def depend_lists(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        Specifies the dependencies of the function.
+        The ID list of the dependencies.
         """
         return pulumi.get(self, "depend_lists")
 
@@ -2631,7 +2479,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the description of the function.
+        The description of the function.
         """
         return pulumi.get(self, "description")
 
@@ -2687,8 +2535,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the enterprise project id of the function.
-        Changing this creates a new function.
+        The ID of the enterprise project to which the function belongs.
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -2704,8 +2551,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter(name="funcCode")
     def func_code(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the function code. When code_type is set to inline, zip, or jar, this parameter is mandatory,
-        and the code can be encoded using Base64 or just with the text code.
+        The function code.
         """
         return pulumi.get(self, "func_code")
 
@@ -2713,7 +2559,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter(name="funcMounts")
     def func_mounts(self) -> pulumi.Output[Sequence['outputs.FunctionFuncMount']]:
         """
-        Specifies the file system list. The `func_mounts` object structure is documented below.
+        The list of function mount configuration.
         """
         return pulumi.get(self, "func_mounts")
 
@@ -2745,7 +2591,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter
     def handler(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the entry point of the function.
+        The entry point of the function.
         """
         return pulumi.get(self, "handler")
 
@@ -2761,7 +2607,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter(name="initializerHandler")
     def initializer_handler(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the initializer of the function.
+        The initializer of the function.
         """
         return pulumi.get(self, "initializer_handler")
 
@@ -2769,7 +2615,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter(name="initializerTimeout")
     def initializer_timeout(self) -> pulumi.Output[_builtins.int]:
         """
-        Specifies the maximum duration the function can be initialized. Value range: 1s to 300s.
+        The maximum duration the function can be initialized.
         """
         return pulumi.get(self, "initializer_timeout")
 
@@ -2842,7 +2688,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter(name="memorySize")
     def memory_size(self) -> pulumi.Output[_builtins.int]:
         """
-        Specifies the memory size(MB) allocated to the function.
+        The memory size allocated to the function, in MByte (MB).
         """
         return pulumi.get(self, "memory_size")
 
@@ -2850,7 +2696,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter(name="mountUserGroupId")
     def mount_user_group_id(self) -> pulumi.Output[_builtins.int]:
         """
-        Specifies the user group ID, a non-0 integer from –1 to 65534. Default to -1.
+        The mount user group ID.
         """
         return pulumi.get(self, "mount_user_group_id")
 
@@ -2858,7 +2704,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter(name="mountUserId")
     def mount_user_id(self) -> pulumi.Output[_builtins.int]:
         """
-        Specifies the user ID, a non-0 integer from –1 to 65534. Default to -1.
+        The mount user ID.
         """
         return pulumi.get(self, "mount_user_id")
 
@@ -2866,7 +2712,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the name of the function.
+        The name of the function.
         """
         return pulumi.get(self, "name")
 
@@ -2882,7 +2728,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter(name="networkId")
     def network_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the ID of subnet.
+        The network ID of subnet.
         """
         return pulumi.get(self, "network_id")
 
@@ -2921,8 +2767,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the region in which to create the Function resource.
-        If omitted, the provider-level region will be used. Changing this creates a new Function resource.
+        The region where the function is located.
         """
         return pulumi.get(self, "region")
 
@@ -2954,7 +2799,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter
     def runtime(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the environment for executing the function.
+        The environment for executing the function.
         """
         return pulumi.get(self, "runtime")
 
@@ -2970,7 +2815,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter
     def timeout(self) -> pulumi.Output[_builtins.int]:
         """
-        Specifies the timeout interval of the function, ranges from 3s to 900s.
+        The timeout interval of the function, in seconds.
         """
         return pulumi.get(self, "timeout")
 
@@ -2978,7 +2823,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter
     def urn(self) -> pulumi.Output[_builtins.str]:
         """
-        Uniform Resource Name
+        The URN (Uniform Resource Name) of the function.
         """
         return pulumi.get(self, "urn")
 
@@ -3002,7 +2847,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter
     def version(self) -> pulumi.Output[_builtins.str]:
         """
-        The version of the function
+        The version of the function.
         """
         return pulumi.get(self, "version")
 
@@ -3018,7 +2863,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the ID of VPC.
+        The ID of the VPC to which the function belongs.
         """
         return pulumi.get(self, "vpc_id")
 

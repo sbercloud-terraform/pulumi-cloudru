@@ -28,13 +28,7 @@ class StreamArgs:
                  ttl_in_days: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Stream resource.
-        :param pulumi.Input[_builtins.str] group_id: Specifies the ID of a created log group. Changing this parameter will create
-               a new resource.
-        :param pulumi.Input[_builtins.str] stream_name: Specifies the log stream name. Changing this parameter will create a new
-               resource.
         :param pulumi.Input[_builtins.bool] is_favorite: Whether to favorite the log stream.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the log stream resource. If omitted, the
-               provider-level region will be used. Changing this creates a new log stream resource.
         """
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "stream_name", stream_name)
@@ -52,10 +46,6 @@ class StreamArgs:
     @_builtins.property
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the ID of a created log group. Changing this parameter will create
-        a new resource.
-        """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
@@ -65,10 +55,6 @@ class StreamArgs:
     @_builtins.property
     @pulumi.getter(name="streamName")
     def stream_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the log stream name. Changing this parameter will create a new
-        resource.
-        """
         return pulumi.get(self, "stream_name")
 
     @stream_name.setter
@@ -99,10 +85,6 @@ class StreamArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the log stream resource. If omitted, the
-        provider-level region will be used. Changing this creates a new log stream resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -142,14 +124,7 @@ class _StreamState:
                  ttl_in_days: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Stream resources.
-        :param pulumi.Input[_builtins.int] filter_count: Number of log stream filters.
-        :param pulumi.Input[_builtins.str] group_id: Specifies the ID of a created log group. Changing this parameter will create
-               a new resource.
         :param pulumi.Input[_builtins.bool] is_favorite: Whether to favorite the log stream.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the log stream resource. If omitted, the
-               provider-level region will be used. Changing this creates a new log stream resource.
-        :param pulumi.Input[_builtins.str] stream_name: Specifies the log stream name. Changing this parameter will create a new
-               resource.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -191,9 +166,6 @@ class _StreamState:
     @_builtins.property
     @pulumi.getter(name="filterCount")
     def filter_count(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Number of log stream filters.
-        """
         return pulumi.get(self, "filter_count")
 
     @filter_count.setter
@@ -203,10 +175,6 @@ class _StreamState:
     @_builtins.property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of a created log group. Changing this parameter will create
-        a new resource.
-        """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
@@ -228,10 +196,6 @@ class _StreamState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the log stream resource. If omitted, the
-        provider-level region will be used. Changing this creates a new log stream resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -241,10 +205,6 @@ class _StreamState:
     @_builtins.property
     @pulumi.getter(name="streamName")
     def stream_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the log stream name. Changing this parameter will create a new
-        resource.
-        """
         return pulumi.get(self, "stream_name")
 
     @stream_name.setter
@@ -285,41 +245,10 @@ class Stream(pulumi.CustomResource):
                  ttl_in_days: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
-        Manage a log stream resource within SberCloud.
-
-        ## Example Usage
-
-        ### create a log stream
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        test_group = sbercloud.lts.Group("test_group",
-            group_name="test_group",
-            ttl_in_days=1)
-        test_stream = sbercloud.lts.Stream("test_stream",
-            group_id=test_group.id,
-            stream_name="testacc_stream")
-        ```
-
-        ## Import
-
-        Log stream can be imported using the lts group ID and stream ID separated by a slash, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Lts/stream:Stream stream_1 393f2bfd-2244-11ea-adb7-286ed488c87f/72855918-20b1-11ea-80e0-286ed488c880
-        ```
-
+        Create a Stream resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] group_id: Specifies the ID of a created log group. Changing this parameter will create
-               a new resource.
         :param pulumi.Input[_builtins.bool] is_favorite: Whether to favorite the log stream.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the log stream resource. If omitted, the
-               provider-level region will be used. Changing this creates a new log stream resource.
-        :param pulumi.Input[_builtins.str] stream_name: Specifies the log stream name. Changing this parameter will create a new
-               resource.
         """
         ...
     @overload
@@ -328,32 +257,7 @@ class Stream(pulumi.CustomResource):
                  args: StreamArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manage a log stream resource within SberCloud.
-
-        ## Example Usage
-
-        ### create a log stream
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        test_group = sbercloud.lts.Group("test_group",
-            group_name="test_group",
-            ttl_in_days=1)
-        test_stream = sbercloud.lts.Stream("test_stream",
-            group_id=test_group.id,
-            stream_name="testacc_stream")
-        ```
-
-        ## Import
-
-        Log stream can be imported using the lts group ID and stream ID separated by a slash, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Lts/stream:Stream stream_1 393f2bfd-2244-11ea-adb7-286ed488c87f/72855918-20b1-11ea-80e0-286ed488c880
-        ```
-
+        Create a Stream resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param StreamArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -424,14 +328,7 @@ class Stream(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] filter_count: Number of log stream filters.
-        :param pulumi.Input[_builtins.str] group_id: Specifies the ID of a created log group. Changing this parameter will create
-               a new resource.
         :param pulumi.Input[_builtins.bool] is_favorite: Whether to favorite the log stream.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the log stream resource. If omitted, the
-               provider-level region will be used. Changing this creates a new log stream resource.
-        :param pulumi.Input[_builtins.str] stream_name: Specifies the log stream name. Changing this parameter will create a new
-               resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -461,18 +358,11 @@ class Stream(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="filterCount")
     def filter_count(self) -> pulumi.Output[_builtins.int]:
-        """
-        Number of log stream filters.
-        """
         return pulumi.get(self, "filter_count")
 
     @_builtins.property
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the ID of a created log group. Changing this parameter will create
-        a new resource.
-        """
         return pulumi.get(self, "group_id")
 
     @_builtins.property
@@ -486,19 +376,11 @@ class Stream(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the log stream resource. If omitted, the
-        provider-level region will be used. Changing this creates a new log stream resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="streamName")
     def stream_name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the log stream name. Changing this parameter will create a new
-        resource.
-        """
         return pulumi.get(self, "stream_name")
 
     @_builtins.property

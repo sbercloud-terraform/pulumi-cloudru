@@ -24,21 +24,9 @@ MYPY = False
 if not MYPY:
     class StreamPartitionArgsDict(TypedDict):
         hash_range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Possible value range of the hash key used by each partition.
-        """
         id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the partition.
-        """
         sequence_number_range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Sequence number range of each partition.
-        """
         status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The status of the partition.
-        """
 elif False:
     StreamPartitionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -49,12 +37,6 @@ class StreamPartitionArgs:
                  id: Optional[pulumi.Input[_builtins.str]] = None,
                  sequence_number_range: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] hash_range: Possible value range of the hash key used by each partition.
-        :param pulumi.Input[_builtins.str] id: The ID of the partition.
-        :param pulumi.Input[_builtins.str] sequence_number_range: Sequence number range of each partition.
-        :param pulumi.Input[_builtins.str] status: The status of the partition.
-        """
         if hash_range is not None:
             pulumi.set(__self__, "hash_range", hash_range)
         if id is not None:
@@ -67,9 +49,6 @@ class StreamPartitionArgs:
     @_builtins.property
     @pulumi.getter(name="hashRange")
     def hash_range(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Possible value range of the hash key used by each partition.
-        """
         return pulumi.get(self, "hash_range")
 
     @hash_range.setter
@@ -79,9 +58,6 @@ class StreamPartitionArgs:
     @_builtins.property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of the partition.
-        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -91,9 +67,6 @@ class StreamPartitionArgs:
     @_builtins.property
     @pulumi.getter(name="sequenceNumberRange")
     def sequence_number_range(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Sequence number range of each partition.
-        """
         return pulumi.get(self, "sequence_number_range")
 
     @sequence_number_range.setter
@@ -103,9 +76,6 @@ class StreamPartitionArgs:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The status of the partition.
-        """
         return pulumi.get(self, "status")
 
     @status.setter

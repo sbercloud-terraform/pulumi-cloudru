@@ -27,15 +27,6 @@ class DmsRocketmqDeadLetterResendArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DmsRocketmqDeadLetterResend resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the instance ID.
-               Changing this creates a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] message_id_lists: Specifies the message ID list.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] topic: Specifies the dead letter topic name.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "message_id_lists", message_id_lists)
@@ -46,10 +37,6 @@ class DmsRocketmqDeadLetterResendArgs:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the instance ID.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -59,10 +46,6 @@ class DmsRocketmqDeadLetterResendArgs:
     @_builtins.property
     @pulumi.getter(name="messageIdLists")
     def message_id_lists(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        Specifies the message ID list.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "message_id_lists")
 
     @message_id_lists.setter
@@ -72,10 +55,6 @@ class DmsRocketmqDeadLetterResendArgs:
     @_builtins.property
     @pulumi.getter
     def topic(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the dead letter topic name.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "topic")
 
     @topic.setter
@@ -85,11 +64,6 @@ class DmsRocketmqDeadLetterResendArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -107,17 +81,7 @@ class _DmsRocketmqDeadLetterResendState:
                  topic: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DmsRocketmqDeadLetterResend resources.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the instance ID.
-               Changing this creates a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] message_id_lists: Specifies the message ID list.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
         :param pulumi.Input[Sequence[pulumi.Input['DmsRocketmqDeadLetterResendResendResultArgs']]] resend_results: Indicates the resend results.
-               The resend_results structure is documented below.
-        :param pulumi.Input[_builtins.str] topic: Specifies the dead letter topic name.
-               Changing this creates a new resource.
         """
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
@@ -133,10 +97,6 @@ class _DmsRocketmqDeadLetterResendState:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the instance ID.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -146,10 +106,6 @@ class _DmsRocketmqDeadLetterResendState:
     @_builtins.property
     @pulumi.getter(name="messageIdLists")
     def message_id_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the message ID list.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "message_id_lists")
 
     @message_id_lists.setter
@@ -159,11 +115,6 @@ class _DmsRocketmqDeadLetterResendState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -175,7 +126,6 @@ class _DmsRocketmqDeadLetterResendState:
     def resend_results(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DmsRocketmqDeadLetterResendResendResultArgs']]]]:
         """
         Indicates the resend results.
-        The resend_results structure is documented below.
         """
         return pulumi.get(self, "resend_results")
 
@@ -186,10 +136,6 @@ class _DmsRocketmqDeadLetterResendState:
     @_builtins.property
     @pulumi.getter
     def topic(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the dead letter topic name.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "topic")
 
     @topic.setter
@@ -209,35 +155,9 @@ class DmsRocketmqDeadLetterResend(pulumi.CustomResource):
                  topic: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a DMS RocketMQ dead letter messages resend resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        dead_letter_topic = config.require_object("deadLetterTopic")
-        message_id_list = config.require_object("messageIdList")
-        test = sbercloud.DmsRocketmqDeadLetterResend("test",
-            instance_id=instance_id,
-            topic=dead_letter_topic,
-            message_id_lists=message_id_list)
-        ```
-
+        Create a DmsRocketmqDeadLetterResend resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the instance ID.
-               Changing this creates a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] message_id_lists: Specifies the message ID list.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] topic: Specifies the dead letter topic name.
-               Changing this creates a new resource.
         """
         ...
     @overload
@@ -246,24 +166,7 @@ class DmsRocketmqDeadLetterResend(pulumi.CustomResource):
                  args: DmsRocketmqDeadLetterResendArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a DMS RocketMQ dead letter messages resend resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        dead_letter_topic = config.require_object("deadLetterTopic")
-        message_id_list = config.require_object("messageIdList")
-        test = sbercloud.DmsRocketmqDeadLetterResend("test",
-            instance_id=instance_id,
-            topic=dead_letter_topic,
-            message_id_lists=message_id_list)
-        ```
-
+        Create a DmsRocketmqDeadLetterResend resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param DmsRocketmqDeadLetterResendArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -325,17 +228,7 @@ class DmsRocketmqDeadLetterResend(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the instance ID.
-               Changing this creates a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] message_id_lists: Specifies the message ID list.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DmsRocketmqDeadLetterResendResendResultArgs', 'DmsRocketmqDeadLetterResendResendResultArgsDict']]]] resend_results: Indicates the resend results.
-               The resend_results structure is documented below.
-        :param pulumi.Input[_builtins.str] topic: Specifies the dead letter topic name.
-               Changing this creates a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -351,29 +244,16 @@ class DmsRocketmqDeadLetterResend(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the instance ID.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
     @pulumi.getter(name="messageIdLists")
     def message_id_lists(self) -> pulumi.Output[Sequence[_builtins.str]]:
-        """
-        Specifies the message ID list.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "message_id_lists")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
@@ -381,16 +261,11 @@ class DmsRocketmqDeadLetterResend(pulumi.CustomResource):
     def resend_results(self) -> pulumi.Output[Sequence['outputs.DmsRocketmqDeadLetterResendResendResult']]:
         """
         Indicates the resend results.
-        The resend_results structure is documented below.
         """
         return pulumi.get(self, "resend_results")
 
     @_builtins.property
     @pulumi.getter
     def topic(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the dead letter topic name.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "topic")
 

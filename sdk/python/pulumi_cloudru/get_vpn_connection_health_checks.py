@@ -53,26 +53,16 @@ class GetVpnConnectionHealthChecksResult:
     @_builtins.property
     @pulumi.getter(name="connectionHealthChecks")
     def connection_health_checks(self) -> Sequence['outputs.GetVpnConnectionHealthChecksConnectionHealthCheckResult']:
-        """
-        All resource connection health checks that match the filter parameters.
-        The connection_health_checks structure is documented below.
-        """
         return pulumi.get(self, "connection_health_checks")
 
     @_builtins.property
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> Optional[_builtins.str]:
-        """
-        The connection ID of the connection health check.
-        """
         return pulumi.get(self, "connection_id")
 
     @_builtins.property
     @pulumi.getter(name="destinationIp")
     def destination_ip(self) -> Optional[_builtins.str]:
-        """
-        The destination IP address of the VPN connection.
-        """
         return pulumi.get(self, "destination_ip")
 
     @_builtins.property
@@ -91,17 +81,11 @@ class GetVpnConnectionHealthChecksResult:
     @_builtins.property
     @pulumi.getter(name="sourceIp")
     def source_ip(self) -> Optional[_builtins.str]:
-        """
-        The source IP address of the VPN connection.
-        """
         return pulumi.get(self, "source_ip")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
-        """
-        The status of the connection health check.
-        """
         return pulumi.get(self, "status")
 
 
@@ -127,32 +111,7 @@ def get_vpn_connection_health_checks(connection_id: Optional[_builtins.str] = No
                                      status: Optional[_builtins.str] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpnConnectionHealthChecksResult:
     """
-    Manages a VPN connection health checks data source within SberCloud.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    connection_id = config.require_object("connectionId")
-    status = config.require_object("status")
-    source_ip = config.require_object("sourceIp")
-    destination_ip = config.require_object("destinationIp")
-    services = sbercloud.get_vpn_connection_health_checks(connection_id=connection_id,
-        status=status,
-        source_ip=source_ip,
-        destination_ip=destination_ip)
-    ```
-
-
-    :param _builtins.str connection_id: Specifies the ID of the VPN connection.
-    :param _builtins.str destination_ip: Specifies the destination IP of the VPN connection health check.
-    :param _builtins.str region: Specifies the region in which to obtain the VPN connection health check.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str source_ip: Specifies the source IP of the VPN connection health check.
-    :param _builtins.str status: Specifies the status of the VPN connection health check.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['connectionId'] = connection_id
@@ -178,32 +137,7 @@ def get_vpn_connection_health_checks_output(connection_id: Optional[pulumi.Input
                                             status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpnConnectionHealthChecksResult]:
     """
-    Manages a VPN connection health checks data source within SberCloud.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    connection_id = config.require_object("connectionId")
-    status = config.require_object("status")
-    source_ip = config.require_object("sourceIp")
-    destination_ip = config.require_object("destinationIp")
-    services = sbercloud.get_vpn_connection_health_checks(connection_id=connection_id,
-        status=status,
-        source_ip=source_ip,
-        destination_ip=destination_ip)
-    ```
-
-
-    :param _builtins.str connection_id: Specifies the ID of the VPN connection.
-    :param _builtins.str destination_ip: Specifies the destination IP of the VPN connection health check.
-    :param _builtins.str region: Specifies the region in which to obtain the VPN connection health check.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str source_ip: Specifies the source IP of the VPN connection health check.
-    :param _builtins.str status: Specifies the status of the VPN connection health check.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['connectionId'] = connection_id

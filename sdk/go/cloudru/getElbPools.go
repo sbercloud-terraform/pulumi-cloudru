@@ -11,36 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of ELB pools.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			poolName := cfg.RequireObject("poolName")
-//			_, err := sbercloud.GetElbPools(ctx, &cloudru.GetElbPoolsArgs{
-//				Name: pulumi.StringRef(poolName),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetElbPools(ctx *pulumi.Context, args *GetElbPoolsArgs, opts ...pulumi.InvokeOption) (*GetElbPoolsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetElbPoolsResult
@@ -53,59 +23,12 @@ func GetElbPools(ctx *pulumi.Context, args *GetElbPoolsArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getElbPools.
 type GetElbPoolsArgs struct {
-	AnyPortEnable   *string `pulumi:"anyPortEnable"`
-	ConnectionDrain *string `pulumi:"connectionDrain"`
-	// Specifies the description of the ELB pool.
-	Description         *string `pulumi:"description"`
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the health monitor ID of the ELB pool.
-	HealthmonitorId *string `pulumi:"healthmonitorId"`
-	// The IP version of the LB pool.
-	IpVersion *string `pulumi:"ipVersion"`
-	// Specifies the method of the ELB pool. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
-	// or SOURCE_IP.
-	LbMethod *string `pulumi:"lbMethod"`
-	// Specifies the listener ID of the ELB pool.
-	ListenerId *string `pulumi:"listenerId"`
-	// Specifies the loadbalancer ID of the ELB pool.
-	LoadbalancerId                 *string `pulumi:"loadbalancerId"`
-	MemberAddress                  *string `pulumi:"memberAddress"`
-	MemberDeletionProtectionEnable *string `pulumi:"memberDeletionProtectionEnable"`
-	MemberDeviceId                 *string `pulumi:"memberDeviceId"`
-	MemberInstanceId               *string `pulumi:"memberInstanceId"`
-	// Specifies the name of the ELB pool.
-	Name       *string `pulumi:"name"`
-	PoolHealth *string `pulumi:"poolHealth"`
-	// Specifies the ID of the ELB pool.
-	PoolId           *string `pulumi:"poolId"`
-	ProtectionStatus *string `pulumi:"protectionStatus"`
-	// Specifies the protocol of the ELB pool. This can either be TCP, UDP or HTTP.
-	Protocol          *string `pulumi:"protocol"`
-	PublicBorderGroup *string `pulumi:"publicBorderGroup"`
-	QuicCidLen        *int    `pulumi:"quicCidLen"`
-	QuicCidOffset     *int    `pulumi:"quicCidOffset"`
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// The type of persistence mode.
-	Type  *string `pulumi:"type"`
-	VpcId *string `pulumi:"vpcId"`
-}
-
-// A collection of values returned by getElbPools.
-type GetElbPoolsResult struct {
-	AnyPortEnable   *string `pulumi:"anyPortEnable"`
-	ConnectionDrain *string `pulumi:"connectionDrain"`
-	// The description of pool.
-	Description         *string `pulumi:"description"`
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// The health monitor ID of the LB pool.
-	HealthmonitorId *string `pulumi:"healthmonitorId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The IP version of the LB pool.
-	IpVersion *string `pulumi:"ipVersion"`
-	// The load balancing algorithm to distribute traffic to the pool's members.
+	AnyPortEnable                  *string `pulumi:"anyPortEnable"`
+	ConnectionDrain                *string `pulumi:"connectionDrain"`
+	Description                    *string `pulumi:"description"`
+	EnterpriseProjectId            *string `pulumi:"enterpriseProjectId"`
+	HealthmonitorId                *string `pulumi:"healthmonitorId"`
+	IpVersion                      *string `pulumi:"ipVersion"`
 	LbMethod                       *string `pulumi:"lbMethod"`
 	ListenerId                     *string `pulumi:"listenerId"`
 	LoadbalancerId                 *string `pulumi:"loadbalancerId"`
@@ -113,23 +36,48 @@ type GetElbPoolsResult struct {
 	MemberDeletionProtectionEnable *string `pulumi:"memberDeletionProtectionEnable"`
 	MemberDeviceId                 *string `pulumi:"memberDeviceId"`
 	MemberInstanceId               *string `pulumi:"memberInstanceId"`
-	// The pool name.
-	Name       *string `pulumi:"name"`
-	PoolHealth *string `pulumi:"poolHealth"`
-	PoolId     *string `pulumi:"poolId"`
-	// Pool list. For details, see data structure of the pool field.
-	// The object structure is documented below.
-	Pools            []GetElbPoolsPool `pulumi:"pools"`
-	ProtectionStatus *string           `pulumi:"protectionStatus"`
-	// The protocol of pool.
-	Protocol          *string `pulumi:"protocol"`
-	PublicBorderGroup *string `pulumi:"publicBorderGroup"`
-	QuicCidLen        *int    `pulumi:"quicCidLen"`
-	QuicCidOffset     *int    `pulumi:"quicCidOffset"`
-	Region            string  `pulumi:"region"`
-	// The type of persistence mode.
-	Type  *string `pulumi:"type"`
-	VpcId *string `pulumi:"vpcId"`
+	Name                           *string `pulumi:"name"`
+	PoolHealth                     *string `pulumi:"poolHealth"`
+	PoolId                         *string `pulumi:"poolId"`
+	ProtectionStatus               *string `pulumi:"protectionStatus"`
+	Protocol                       *string `pulumi:"protocol"`
+	PublicBorderGroup              *string `pulumi:"publicBorderGroup"`
+	QuicCidLen                     *int    `pulumi:"quicCidLen"`
+	QuicCidOffset                  *int    `pulumi:"quicCidOffset"`
+	Region                         *string `pulumi:"region"`
+	Type                           *string `pulumi:"type"`
+	VpcId                          *string `pulumi:"vpcId"`
+}
+
+// A collection of values returned by getElbPools.
+type GetElbPoolsResult struct {
+	AnyPortEnable       *string `pulumi:"anyPortEnable"`
+	ConnectionDrain     *string `pulumi:"connectionDrain"`
+	Description         *string `pulumi:"description"`
+	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
+	HealthmonitorId     *string `pulumi:"healthmonitorId"`
+	// The provider-assigned unique ID for this managed resource.
+	Id                             string            `pulumi:"id"`
+	IpVersion                      *string           `pulumi:"ipVersion"`
+	LbMethod                       *string           `pulumi:"lbMethod"`
+	ListenerId                     *string           `pulumi:"listenerId"`
+	LoadbalancerId                 *string           `pulumi:"loadbalancerId"`
+	MemberAddress                  *string           `pulumi:"memberAddress"`
+	MemberDeletionProtectionEnable *string           `pulumi:"memberDeletionProtectionEnable"`
+	MemberDeviceId                 *string           `pulumi:"memberDeviceId"`
+	MemberInstanceId               *string           `pulumi:"memberInstanceId"`
+	Name                           *string           `pulumi:"name"`
+	PoolHealth                     *string           `pulumi:"poolHealth"`
+	PoolId                         *string           `pulumi:"poolId"`
+	Pools                          []GetElbPoolsPool `pulumi:"pools"`
+	ProtectionStatus               *string           `pulumi:"protectionStatus"`
+	Protocol                       *string           `pulumi:"protocol"`
+	PublicBorderGroup              *string           `pulumi:"publicBorderGroup"`
+	QuicCidLen                     *int              `pulumi:"quicCidLen"`
+	QuicCidOffset                  *int              `pulumi:"quicCidOffset"`
+	Region                         string            `pulumi:"region"`
+	Type                           *string           `pulumi:"type"`
+	VpcId                          *string           `pulumi:"vpcId"`
 }
 
 func GetElbPoolsOutput(ctx *pulumi.Context, args GetElbPoolsOutputArgs, opts ...pulumi.InvokeOption) GetElbPoolsResultOutput {
@@ -143,43 +91,30 @@ func GetElbPoolsOutput(ctx *pulumi.Context, args GetElbPoolsOutputArgs, opts ...
 
 // A collection of arguments for invoking getElbPools.
 type GetElbPoolsOutputArgs struct {
-	AnyPortEnable   pulumi.StringPtrInput `pulumi:"anyPortEnable"`
-	ConnectionDrain pulumi.StringPtrInput `pulumi:"connectionDrain"`
-	// Specifies the description of the ELB pool.
-	Description         pulumi.StringPtrInput `pulumi:"description"`
-	EnterpriseProjectId pulumi.StringPtrInput `pulumi:"enterpriseProjectId"`
-	// Specifies the health monitor ID of the ELB pool.
-	HealthmonitorId pulumi.StringPtrInput `pulumi:"healthmonitorId"`
-	// The IP version of the LB pool.
-	IpVersion pulumi.StringPtrInput `pulumi:"ipVersion"`
-	// Specifies the method of the ELB pool. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
-	// or SOURCE_IP.
-	LbMethod pulumi.StringPtrInput `pulumi:"lbMethod"`
-	// Specifies the listener ID of the ELB pool.
-	ListenerId pulumi.StringPtrInput `pulumi:"listenerId"`
-	// Specifies the loadbalancer ID of the ELB pool.
+	AnyPortEnable                  pulumi.StringPtrInput `pulumi:"anyPortEnable"`
+	ConnectionDrain                pulumi.StringPtrInput `pulumi:"connectionDrain"`
+	Description                    pulumi.StringPtrInput `pulumi:"description"`
+	EnterpriseProjectId            pulumi.StringPtrInput `pulumi:"enterpriseProjectId"`
+	HealthmonitorId                pulumi.StringPtrInput `pulumi:"healthmonitorId"`
+	IpVersion                      pulumi.StringPtrInput `pulumi:"ipVersion"`
+	LbMethod                       pulumi.StringPtrInput `pulumi:"lbMethod"`
+	ListenerId                     pulumi.StringPtrInput `pulumi:"listenerId"`
 	LoadbalancerId                 pulumi.StringPtrInput `pulumi:"loadbalancerId"`
 	MemberAddress                  pulumi.StringPtrInput `pulumi:"memberAddress"`
 	MemberDeletionProtectionEnable pulumi.StringPtrInput `pulumi:"memberDeletionProtectionEnable"`
 	MemberDeviceId                 pulumi.StringPtrInput `pulumi:"memberDeviceId"`
 	MemberInstanceId               pulumi.StringPtrInput `pulumi:"memberInstanceId"`
-	// Specifies the name of the ELB pool.
-	Name       pulumi.StringPtrInput `pulumi:"name"`
-	PoolHealth pulumi.StringPtrInput `pulumi:"poolHealth"`
-	// Specifies the ID of the ELB pool.
-	PoolId           pulumi.StringPtrInput `pulumi:"poolId"`
-	ProtectionStatus pulumi.StringPtrInput `pulumi:"protectionStatus"`
-	// Specifies the protocol of the ELB pool. This can either be TCP, UDP or HTTP.
-	Protocol          pulumi.StringPtrInput `pulumi:"protocol"`
-	PublicBorderGroup pulumi.StringPtrInput `pulumi:"publicBorderGroup"`
-	QuicCidLen        pulumi.IntPtrInput    `pulumi:"quicCidLen"`
-	QuicCidOffset     pulumi.IntPtrInput    `pulumi:"quicCidOffset"`
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// The type of persistence mode.
-	Type  pulumi.StringPtrInput `pulumi:"type"`
-	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+	Name                           pulumi.StringPtrInput `pulumi:"name"`
+	PoolHealth                     pulumi.StringPtrInput `pulumi:"poolHealth"`
+	PoolId                         pulumi.StringPtrInput `pulumi:"poolId"`
+	ProtectionStatus               pulumi.StringPtrInput `pulumi:"protectionStatus"`
+	Protocol                       pulumi.StringPtrInput `pulumi:"protocol"`
+	PublicBorderGroup              pulumi.StringPtrInput `pulumi:"publicBorderGroup"`
+	QuicCidLen                     pulumi.IntPtrInput    `pulumi:"quicCidLen"`
+	QuicCidOffset                  pulumi.IntPtrInput    `pulumi:"quicCidOffset"`
+	Region                         pulumi.StringPtrInput `pulumi:"region"`
+	Type                           pulumi.StringPtrInput `pulumi:"type"`
+	VpcId                          pulumi.StringPtrInput `pulumi:"vpcId"`
 }
 
 func (GetElbPoolsOutputArgs) ElementType() reflect.Type {
@@ -209,7 +144,6 @@ func (o GetElbPoolsResultOutput) ConnectionDrain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElbPoolsResult) *string { return v.ConnectionDrain }).(pulumi.StringPtrOutput)
 }
 
-// The description of pool.
 func (o GetElbPoolsResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElbPoolsResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -218,7 +152,6 @@ func (o GetElbPoolsResultOutput) EnterpriseProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElbPoolsResult) *string { return v.EnterpriseProjectId }).(pulumi.StringPtrOutput)
 }
 
-// The health monitor ID of the LB pool.
 func (o GetElbPoolsResultOutput) HealthmonitorId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElbPoolsResult) *string { return v.HealthmonitorId }).(pulumi.StringPtrOutput)
 }
@@ -228,12 +161,10 @@ func (o GetElbPoolsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetElbPoolsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The IP version of the LB pool.
 func (o GetElbPoolsResultOutput) IpVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElbPoolsResult) *string { return v.IpVersion }).(pulumi.StringPtrOutput)
 }
 
-// The load balancing algorithm to distribute traffic to the pool's members.
 func (o GetElbPoolsResultOutput) LbMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElbPoolsResult) *string { return v.LbMethod }).(pulumi.StringPtrOutput)
 }
@@ -262,7 +193,6 @@ func (o GetElbPoolsResultOutput) MemberInstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElbPoolsResult) *string { return v.MemberInstanceId }).(pulumi.StringPtrOutput)
 }
 
-// The pool name.
 func (o GetElbPoolsResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElbPoolsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -275,8 +205,6 @@ func (o GetElbPoolsResultOutput) PoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElbPoolsResult) *string { return v.PoolId }).(pulumi.StringPtrOutput)
 }
 
-// Pool list. For details, see data structure of the pool field.
-// The object structure is documented below.
 func (o GetElbPoolsResultOutput) Pools() GetElbPoolsPoolArrayOutput {
 	return o.ApplyT(func(v GetElbPoolsResult) []GetElbPoolsPool { return v.Pools }).(GetElbPoolsPoolArrayOutput)
 }
@@ -285,7 +213,6 @@ func (o GetElbPoolsResultOutput) ProtectionStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElbPoolsResult) *string { return v.ProtectionStatus }).(pulumi.StringPtrOutput)
 }
 
-// The protocol of pool.
 func (o GetElbPoolsResultOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElbPoolsResult) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
@@ -306,7 +233,6 @@ func (o GetElbPoolsResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetElbPoolsResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The type of persistence mode.
 func (o GetElbPoolsResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElbPoolsResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

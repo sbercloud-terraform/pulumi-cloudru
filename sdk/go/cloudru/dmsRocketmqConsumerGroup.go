@@ -12,123 +12,25 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages DMS RocketMQ consumer group resources within SberCloud.
-//
-// ## Example Usage
-//
-// ### Create consumer group for 4.8.0 version instance
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			_, err := sbercloud.NewDmsRocketmqConsumerGroup(ctx, "test", &sbercloud.DmsRocketmqConsumerGroupArgs{
-//				InstanceId: pulumi.Any(instanceId),
-//				Name:       pulumi.String("consumer_group_test"),
-//				Enabled:    pulumi.Bool(true),
-//				Broadcast:  pulumi.Bool(true),
-//				Brokers: pulumi.StringArray{
-//					pulumi.String("broker-0"),
-//					pulumi.String("broker-1"),
-//				},
-//				RetryMaxTimes: pulumi.Int(3),
-//				Description:   pulumi.String("the description of the consumer group"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Create consumer group for 5.x version instance
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			_, err := sbercloud.NewDmsRocketmqConsumerGroup(ctx, "test", &sbercloud.DmsRocketmqConsumerGroupArgs{
-//				InstanceId:     pulumi.Any(instanceId),
-//				Name:           pulumi.String("consumer_group_test"),
-//				Enabled:        pulumi.Bool(true),
-//				Broadcast:      pulumi.Bool(true),
-//				RetryMaxTimes:  pulumi.Int(3),
-//				Description:    pulumi.String("the description of the consumer group"),
-//				ConsumeOrderly: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The rocketmq consumer group can be imported using the rocketMQ instance ID and group name separated by a slash, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:index/dmsRocketmqConsumerGroup:DmsRocketmqConsumerGroup test 8d3c7938-dc47-4937-a30f-c80de381c5e3/group_1
-// ```
 type DmsRocketmqConsumerGroup struct {
 	pulumi.CustomResourceState
 
 	// Specifies whether to broadcast of the consumer group.
 	Broadcast pulumi.BoolOutput `pulumi:"broadcast"`
 	// Specifies the list of associated brokers of the consumer group.
-	// It's only valid when RocketMQ instance version is **4.8.0**.
-	// Changing this parameter will create a new resource.
 	Brokers pulumi.StringArrayOutput `pulumi:"brokers"`
 	// Specifies whether to consume orderly.
-	// It's only valid when RocketMQ instance version is **5.x**.
 	ConsumeOrderly pulumi.BoolOutput `pulumi:"consumeOrderly"`
 	// Specifies the description of the consumer group.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Specifies the consumer group is enabled or not. Defaults to true.
+	// Specifies the consumer group is enabled or not. Default to true.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// Specifies the ID of the rocketMQ instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Specifies the name of the consumer group.\
-	// The valid length is limited from `3` to `64`, only letters, digits, vertical lines (|), percent sign (%), hyphens (-)
-	// and underscores (_) are allowed.
-	//
-	// Changing this parameter will create a new resource.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// Specifies the name of the consumer group.
+	Name   pulumi.StringOutput `pulumi:"name"`
 	Region pulumi.StringOutput `pulumi:"region"`
-	// Specifies the maximum number of retry times.\
-	// The valid value is range from `1` to `16`.
+	// Specifies the maximum number of retry times.
 	RetryMaxTimes pulumi.IntOutput `pulumi:"retryMaxTimes"`
 }
 
@@ -171,31 +73,19 @@ type dmsRocketmqConsumerGroupState struct {
 	// Specifies whether to broadcast of the consumer group.
 	Broadcast *bool `pulumi:"broadcast"`
 	// Specifies the list of associated brokers of the consumer group.
-	// It's only valid when RocketMQ instance version is **4.8.0**.
-	// Changing this parameter will create a new resource.
 	Brokers []string `pulumi:"brokers"`
 	// Specifies whether to consume orderly.
-	// It's only valid when RocketMQ instance version is **5.x**.
 	ConsumeOrderly *bool `pulumi:"consumeOrderly"`
 	// Specifies the description of the consumer group.
 	Description *string `pulumi:"description"`
-	// Specifies the consumer group is enabled or not. Defaults to true.
+	// Specifies the consumer group is enabled or not. Default to true.
 	Enabled *bool `pulumi:"enabled"`
 	// Specifies the ID of the rocketMQ instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId *string `pulumi:"instanceId"`
-	// Specifies the name of the consumer group.\
-	// The valid length is limited from `3` to `64`, only letters, digits, vertical lines (|), percent sign (%), hyphens (-)
-	// and underscores (_) are allowed.
-	//
-	// Changing this parameter will create a new resource.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// Specifies the name of the consumer group.
+	Name   *string `pulumi:"name"`
 	Region *string `pulumi:"region"`
-	// Specifies the maximum number of retry times.\
-	// The valid value is range from `1` to `16`.
+	// Specifies the maximum number of retry times.
 	RetryMaxTimes *int `pulumi:"retryMaxTimes"`
 }
 
@@ -203,31 +93,19 @@ type DmsRocketmqConsumerGroupState struct {
 	// Specifies whether to broadcast of the consumer group.
 	Broadcast pulumi.BoolPtrInput
 	// Specifies the list of associated brokers of the consumer group.
-	// It's only valid when RocketMQ instance version is **4.8.0**.
-	// Changing this parameter will create a new resource.
 	Brokers pulumi.StringArrayInput
 	// Specifies whether to consume orderly.
-	// It's only valid when RocketMQ instance version is **5.x**.
 	ConsumeOrderly pulumi.BoolPtrInput
 	// Specifies the description of the consumer group.
 	Description pulumi.StringPtrInput
-	// Specifies the consumer group is enabled or not. Defaults to true.
+	// Specifies the consumer group is enabled or not. Default to true.
 	Enabled pulumi.BoolPtrInput
 	// Specifies the ID of the rocketMQ instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId pulumi.StringPtrInput
-	// Specifies the name of the consumer group.\
-	// The valid length is limited from `3` to `64`, only letters, digits, vertical lines (|), percent sign (%), hyphens (-)
-	// and underscores (_) are allowed.
-	//
-	// Changing this parameter will create a new resource.
-	Name pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// Specifies the name of the consumer group.
+	Name   pulumi.StringPtrInput
 	Region pulumi.StringPtrInput
-	// Specifies the maximum number of retry times.\
-	// The valid value is range from `1` to `16`.
+	// Specifies the maximum number of retry times.
 	RetryMaxTimes pulumi.IntPtrInput
 }
 
@@ -239,31 +117,19 @@ type dmsRocketmqConsumerGroupArgs struct {
 	// Specifies whether to broadcast of the consumer group.
 	Broadcast *bool `pulumi:"broadcast"`
 	// Specifies the list of associated brokers of the consumer group.
-	// It's only valid when RocketMQ instance version is **4.8.0**.
-	// Changing this parameter will create a new resource.
 	Brokers []string `pulumi:"brokers"`
 	// Specifies whether to consume orderly.
-	// It's only valid when RocketMQ instance version is **5.x**.
 	ConsumeOrderly *bool `pulumi:"consumeOrderly"`
 	// Specifies the description of the consumer group.
 	Description *string `pulumi:"description"`
-	// Specifies the consumer group is enabled or not. Defaults to true.
+	// Specifies the consumer group is enabled or not. Default to true.
 	Enabled *bool `pulumi:"enabled"`
 	// Specifies the ID of the rocketMQ instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId string `pulumi:"instanceId"`
-	// Specifies the name of the consumer group.\
-	// The valid length is limited from `3` to `64`, only letters, digits, vertical lines (|), percent sign (%), hyphens (-)
-	// and underscores (_) are allowed.
-	//
-	// Changing this parameter will create a new resource.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// Specifies the name of the consumer group.
+	Name   *string `pulumi:"name"`
 	Region *string `pulumi:"region"`
-	// Specifies the maximum number of retry times.\
-	// The valid value is range from `1` to `16`.
+	// Specifies the maximum number of retry times.
 	RetryMaxTimes int `pulumi:"retryMaxTimes"`
 }
 
@@ -272,31 +138,19 @@ type DmsRocketmqConsumerGroupArgs struct {
 	// Specifies whether to broadcast of the consumer group.
 	Broadcast pulumi.BoolPtrInput
 	// Specifies the list of associated brokers of the consumer group.
-	// It's only valid when RocketMQ instance version is **4.8.0**.
-	// Changing this parameter will create a new resource.
 	Brokers pulumi.StringArrayInput
 	// Specifies whether to consume orderly.
-	// It's only valid when RocketMQ instance version is **5.x**.
 	ConsumeOrderly pulumi.BoolPtrInput
 	// Specifies the description of the consumer group.
 	Description pulumi.StringPtrInput
-	// Specifies the consumer group is enabled or not. Defaults to true.
+	// Specifies the consumer group is enabled or not. Default to true.
 	Enabled pulumi.BoolPtrInput
 	// Specifies the ID of the rocketMQ instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId pulumi.StringInput
-	// Specifies the name of the consumer group.\
-	// The valid length is limited from `3` to `64`, only letters, digits, vertical lines (|), percent sign (%), hyphens (-)
-	// and underscores (_) are allowed.
-	//
-	// Changing this parameter will create a new resource.
-	Name pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// Specifies the name of the consumer group.
+	Name   pulumi.StringPtrInput
 	Region pulumi.StringPtrInput
-	// Specifies the maximum number of retry times.\
-	// The valid value is range from `1` to `16`.
+	// Specifies the maximum number of retry times.
 	RetryMaxTimes pulumi.IntInput
 }
 
@@ -393,14 +247,11 @@ func (o DmsRocketmqConsumerGroupOutput) Broadcast() pulumi.BoolOutput {
 }
 
 // Specifies the list of associated brokers of the consumer group.
-// It's only valid when RocketMQ instance version is **4.8.0**.
-// Changing this parameter will create a new resource.
 func (o DmsRocketmqConsumerGroupOutput) Brokers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DmsRocketmqConsumerGroup) pulumi.StringArrayOutput { return v.Brokers }).(pulumi.StringArrayOutput)
 }
 
 // Specifies whether to consume orderly.
-// It's only valid when RocketMQ instance version is **5.x**.
 func (o DmsRocketmqConsumerGroupOutput) ConsumeOrderly() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DmsRocketmqConsumerGroup) pulumi.BoolOutput { return v.ConsumeOrderly }).(pulumi.BoolOutput)
 }
@@ -410,35 +261,26 @@ func (o DmsRocketmqConsumerGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DmsRocketmqConsumerGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the consumer group is enabled or not. Defaults to true.
+// Specifies the consumer group is enabled or not. Default to true.
 func (o DmsRocketmqConsumerGroupOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DmsRocketmqConsumerGroup) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
 // Specifies the ID of the rocketMQ instance.
-//
-// Changing this parameter will create a new resource.
 func (o DmsRocketmqConsumerGroupOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DmsRocketmqConsumerGroup) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the consumer group.\
-// The valid length is limited from `3` to `64`, only letters, digits, vertical lines (|), percent sign (%), hyphens (-)
-// and underscores (_) are allowed.
-//
-// Changing this parameter will create a new resource.
+// Specifies the name of the consumer group.
 func (o DmsRocketmqConsumerGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DmsRocketmqConsumerGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
 func (o DmsRocketmqConsumerGroupOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *DmsRocketmqConsumerGroup) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Specifies the maximum number of retry times.\
-// The valid value is range from `1` to `16`.
+// Specifies the maximum number of retry times.
 func (o DmsRocketmqConsumerGroupOutput) RetryMaxTimes() pulumi.IntOutput {
 	return o.ApplyT(func(v *DmsRocketmqConsumerGroup) pulumi.IntOutput { return v.RetryMaxTimes }).(pulumi.IntOutput)
 }

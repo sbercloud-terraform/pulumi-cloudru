@@ -70,9 +70,6 @@ class GetCbhFlavorsResult:
     @_builtins.property
     @pulumi.getter
     def asset(self) -> Optional[_builtins.int]:
-        """
-        The number of CBH assets.
-        """
         return pulumi.get(self, "asset")
 
     @_builtins.property
@@ -83,10 +80,6 @@ class GetCbhFlavorsResult:
     @_builtins.property
     @pulumi.getter
     def flavors(self) -> Sequence['outputs.GetCbhFlavorsFlavorResult']:
-        """
-        Indicates the list of CBH specification.
-        The flavor structure is documented below.
-        """
         return pulumi.get(self, "flavors")
 
     @_builtins.property
@@ -100,17 +93,11 @@ class GetCbhFlavorsResult:
     @_builtins.property
     @pulumi.getter(name="maxConnection")
     def max_connection(self) -> Optional[_builtins.int]:
-        """
-        The maximum number of connections to the CBH.
-        """
         return pulumi.get(self, "max_connection")
 
     @_builtins.property
     @pulumi.getter
     def memory(self) -> Optional[_builtins.int]:
-        """
-        The memory size of the CBH, in GB.
-        """
         return pulumi.get(self, "memory")
 
     @_builtins.property
@@ -126,19 +113,11 @@ class GetCbhFlavorsResult:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
-        """
-        The type of CBH specification. The value can be:
-        + **basic**: Standard version.
-        + **enhance**: Professional version.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter
     def vcpus(self) -> Optional[_builtins.int]:
-        """
-        The number of CPU cores of the CBH.
-        """
         return pulumi.get(self, "vcpus")
 
 
@@ -172,42 +151,7 @@ def get_cbh_flavors(action: Optional[_builtins.str] = None,
                     vcpus: Optional[_builtins.int] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCbhFlavorsResult:
     """
-    Use this data source to get the list of CBH specifications.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.get_cbh_flavors(type="basic")
-    ```
-
-
-    :param _builtins.str action: Specifies the action of querying instances specification information.
-           The valid values are as follows:
-           + **create**: Query instance specification information that can be created.
-           + **update**: Query instance specification information that can be updated.
-           
-           If omitted, the CBH specifications that can be created will be queried.
-    :param _builtins.int asset: Specifies the number of CBH assets.
-    :param _builtins.str flavor_id: Specifies the ID of the specification of CBH.
-           At present, CBH provides two functional versions: standard version and professional version.
-           The standard version is equipped with asset specifications of 10(for example the `flavor_id` is: **cbh.basic.10**),
-           20, 50, 100, 200, 500, 1000, 2000, 5000, and 10000.
-           The professional version is equipped with 10(for example the `flavor_id` is: **cbh.enhance.10**),
-           20, 50, 100, 200, 500, 1000, 2000, 5000, 10000 asset specifications.
-           The specification 'enhance' is more advanced than the specification 'basic'.
-    :param _builtins.int max_connection: Specifies the maximum number of connections to the CBH.
-    :param _builtins.int memory: Specifies the memory size of the CBH, in GB.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str spec_code: Specifies the ID of the CBH specification, the query result shows all specifications
-           that can be changed by this specification. This parameter is required when `action` is set to **update**.
-    :param _builtins.str type: Specifies the type of CBH specification. The value can be:
-           + **basic**: Standard version.
-           + **enhance**: Professional version.
-    :param _builtins.int vcpus: Specifies the number of CPU cores of the CBH.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['action'] = action
@@ -245,42 +189,7 @@ def get_cbh_flavors_output(action: Optional[pulumi.Input[Optional[_builtins.str]
                            vcpus: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCbhFlavorsResult]:
     """
-    Use this data source to get the list of CBH specifications.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.get_cbh_flavors(type="basic")
-    ```
-
-
-    :param _builtins.str action: Specifies the action of querying instances specification information.
-           The valid values are as follows:
-           + **create**: Query instance specification information that can be created.
-           + **update**: Query instance specification information that can be updated.
-           
-           If omitted, the CBH specifications that can be created will be queried.
-    :param _builtins.int asset: Specifies the number of CBH assets.
-    :param _builtins.str flavor_id: Specifies the ID of the specification of CBH.
-           At present, CBH provides two functional versions: standard version and professional version.
-           The standard version is equipped with asset specifications of 10(for example the `flavor_id` is: **cbh.basic.10**),
-           20, 50, 100, 200, 500, 1000, 2000, 5000, and 10000.
-           The professional version is equipped with 10(for example the `flavor_id` is: **cbh.enhance.10**),
-           20, 50, 100, 200, 500, 1000, 2000, 5000, 10000 asset specifications.
-           The specification 'enhance' is more advanced than the specification 'basic'.
-    :param _builtins.int max_connection: Specifies the maximum number of connections to the CBH.
-    :param _builtins.int memory: Specifies the memory size of the CBH, in GB.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str spec_code: Specifies the ID of the CBH specification, the query result shows all specifications
-           that can be changed by this specification. This parameter is required when `action` is set to **update**.
-    :param _builtins.str type: Specifies the type of CBH specification. The value can be:
-           + **basic**: Standard version.
-           + **enhance**: Professional version.
-    :param _builtins.int vcpus: Specifies the number of CPU cores of the CBH.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['action'] = action

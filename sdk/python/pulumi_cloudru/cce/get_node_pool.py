@@ -113,9 +113,6 @@ class GetNodePoolResult:
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> _builtins.str:
-        """
-        The name of the available partition (AZ).
-        """
         return pulumi.get(self, "availability_zone")
 
     @_builtins.property
@@ -126,17 +123,11 @@ class GetNodePoolResult:
     @_builtins.property
     @pulumi.getter(name="currentNodeCount")
     def current_node_count(self) -> _builtins.int:
-        """
-        Current number of nodes in the node pool.
-        """
         return pulumi.get(self, "current_node_count")
 
     @_builtins.property
     @pulumi.getter(name="dataVolumes")
     def data_volumes(self) -> Sequence['outputs.GetNodePoolDataVolumeResult']:
-        """
-        Represents the data disk to be created. Structure is documented below.
-        """
         return pulumi.get(self, "data_volumes")
 
     @_builtins.property
@@ -147,17 +138,11 @@ class GetNodePoolResult:
     @_builtins.property
     @pulumi.getter(name="extendParam")
     def extend_param(self) -> Mapping[str, _builtins.str]:
-        """
-        Extended parameter.
-        """
         return pulumi.get(self, "extend_param")
 
     @_builtins.property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> _builtins.str:
-        """
-        The flavor ID.
-        """
         return pulumi.get(self, "flavor_id")
 
     @_builtins.property
@@ -176,49 +161,31 @@ class GetNodePoolResult:
     @_builtins.property
     @pulumi.getter(name="initialNodeCount")
     def initial_node_count(self) -> _builtins.int:
-        """
-        Initial number of nodes in the node pool.
-        """
         return pulumi.get(self, "initial_node_count")
 
     @_builtins.property
     @pulumi.getter(name="keyPair")
     def key_pair(self) -> _builtins.str:
-        """
-        Key pair name when logging in to select the key pair mode.
-        """
         return pulumi.get(self, "key_pair")
 
     @_builtins.property
     @pulumi.getter
     def labels(self) -> Mapping[str, _builtins.str]:
-        """
-        Tags of a Kubernetes node, key/value pair format.
-        """
         return pulumi.get(self, "labels")
 
     @_builtins.property
     @pulumi.getter(name="maxNodeCount")
     def max_node_count(self) -> _builtins.int:
-        """
-        Maximum number of nodes allowed if auto scaling is enabled.
-        """
         return pulumi.get(self, "max_node_count")
 
     @_builtins.property
     @pulumi.getter(name="maxPods")
     def max_pods(self) -> _builtins.int:
-        """
-        The maximum number of instances a node is allowed to create.
-        """
         return pulumi.get(self, "max_pods")
 
     @_builtins.property
     @pulumi.getter(name="minNodeCount")
     def min_node_count(self) -> _builtins.int:
-        """
-        Minimum number of nodes allowed if auto scaling is enabled.
-        """
         return pulumi.get(self, "min_node_count")
 
     @_builtins.property
@@ -234,17 +201,11 @@ class GetNodePoolResult:
     @_builtins.property
     @pulumi.getter
     def os(self) -> _builtins.str:
-        """
-        Operating System of the node.
-        """
         return pulumi.get(self, "os")
 
     @_builtins.property
     @pulumi.getter
     def priority(self) -> _builtins.int:
-        """
-        Weight of a node pool. A node pool with a higher weight has a higher priority during scaling.
-        """
         return pulumi.get(self, "priority")
 
     @_builtins.property
@@ -255,25 +216,16 @@ class GetNodePoolResult:
     @_builtins.property
     @pulumi.getter(name="rootVolumes")
     def root_volumes(self) -> Sequence['outputs.GetNodePoolRootVolumeResult']:
-        """
-        It corresponds to the system disk related configuration. Structure is documented below.
-        """
         return pulumi.get(self, "root_volumes")
 
     @_builtins.property
     @pulumi.getter(name="scaleDownCooldownTime")
     def scale_down_cooldown_time(self) -> _builtins.int:
-        """
-        Interval between two scaling operations, in minutes.
-        """
         return pulumi.get(self, "scale_down_cooldown_time")
 
     @_builtins.property
     @pulumi.getter(name="scallEnable")
     def scall_enable(self) -> _builtins.bool:
-        """
-        Whether auto scaling is enabled.
-        """
         return pulumi.get(self, "scall_enable")
 
     @_builtins.property
@@ -284,25 +236,16 @@ class GetNodePoolResult:
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> _builtins.str:
-        """
-        The ID of the subnet to which the NIC belongs.
-        """
         return pulumi.get(self, "subnet_id")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Mapping[str, _builtins.str]:
-        """
-        Tags of a VM node, key/value pair format.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        Node Pool type.
-        """
         return pulumi.get(self, "type")
 
 
@@ -348,28 +291,7 @@ def get_node_pool(cluster_id: Optional[_builtins.str] = None,
                   status: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodePoolResult:
     """
-    To get the specified node pool in a cluster.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    cluster_id = config.require_object("clusterId")
-    node_pool_name = config.require_object("nodePoolName")
-    node_pool = sbercloud.Cce.get_node_pool(cluster_id=cluster_id,
-        name=node_pool_name)
-    ```
-
-
-    :param _builtins.str cluster_id: Specifies the ID of container cluster.
-    :param _builtins.str name: Specifies the name of the node pool.
-    :param _builtins.str node_pool_id: Specifies the ID of the node pool.
-    :param _builtins.str region: Specifies the region in which to obtain the CCE node pools.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str status: Specifies the state of the node pool.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
@@ -415,28 +337,7 @@ def get_node_pool_output(cluster_id: Optional[pulumi.Input[_builtins.str]] = Non
                          status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodePoolResult]:
     """
-    To get the specified node pool in a cluster.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    cluster_id = config.require_object("clusterId")
-    node_pool_name = config.require_object("nodePoolName")
-    node_pool = sbercloud.Cce.get_node_pool(cluster_id=cluster_id,
-        name=node_pool_name)
-    ```
-
-
-    :param _builtins.str cluster_id: Specifies the ID of container cluster.
-    :param _builtins.str name: Specifies the name of the node pool.
-    :param _builtins.str node_pool_id: Specifies the ID of the node pool.
-    :param _builtins.str region: Specifies the region in which to obtain the CCE node pools.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str status: Specifies the state of the node pool.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

@@ -4,22 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get available SberCloud elb load balancer.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const lbName = config.requireObject<any>("lbName");
- * const test = sbercloud.Elb.getLoadbalancer({
- *     name: lbName,
- * });
- * ```
- */
 export function getLoadbalancer(args?: GetLoadbalancerArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadbalancerResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -39,39 +23,13 @@ export function getLoadbalancer(args?: GetLoadbalancerArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getLoadbalancer.
  */
 export interface GetLoadbalancerArgs {
-    /**
-     * Specifies the supplementary information about the load balancer.
-     */
     description?: string;
-    /**
-     * Specifies the enterprise project id of the load balancer.
-     */
     enterpriseProjectId?: string;
-    /**
-     * Specifies the data source ID of the load balancer in UUID format.
-     */
     id?: string;
-    /**
-     * Specifies the name of the load balancer.
-     */
     name?: string;
-    /**
-     * Specifies the region in which to obtain the load balancer. If omitted, the
-     * provider-level region will be used.
-     */
     region?: string;
-    /**
-     * Specifies the operating status of the load balancer. Valid values are *ONLINE* and
-     * *FROZEN*.
-     */
     status?: string;
-    /**
-     * Specifies the private IP address of the load balancer.
-     */
     vipAddress?: string;
-    /**
-     * Specifies the **IPv4 subnet ID** of the subnet where the load balancer works.
-     */
     vipSubnetId?: string;
 }
 
@@ -83,39 +41,14 @@ export interface GetLoadbalancerResult {
     readonly enterpriseProjectId: string;
     readonly id: string;
     readonly name: string;
-    /**
-     * The EIP address that is associated to the Load Balancer instance.
-     */
     readonly publicIp: string;
     readonly region: string;
     readonly status: string;
-    /**
-     * The tags associated with the load balancer.
-     */
     readonly tags: {[key: string]: string};
     readonly vipAddress: string;
-    /**
-     * The ID of the port bound to the private IP address of the load balancer.
-     */
     readonly vipPortId: string;
     readonly vipSubnetId: string;
 }
-/**
- * Use this data source to get available SberCloud elb load balancer.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const lbName = config.requireObject<any>("lbName");
- * const test = sbercloud.Elb.getLoadbalancer({
- *     name: lbName,
- * });
- * ```
- */
 export function getLoadbalancerOutput(args?: GetLoadbalancerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLoadbalancerResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -135,38 +68,12 @@ export function getLoadbalancerOutput(args?: GetLoadbalancerOutputArgs, opts?: p
  * A collection of arguments for invoking getLoadbalancer.
  */
 export interface GetLoadbalancerOutputArgs {
-    /**
-     * Specifies the supplementary information about the load balancer.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies the enterprise project id of the load balancer.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Specifies the data source ID of the load balancer in UUID format.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the load balancer.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to obtain the load balancer. If omitted, the
-     * provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the operating status of the load balancer. Valid values are *ONLINE* and
-     * *FROZEN*.
-     */
     status?: pulumi.Input<string>;
-    /**
-     * Specifies the private IP address of the load balancer.
-     */
     vipAddress?: pulumi.Input<string>;
-    /**
-     * Specifies the **IPv4 subnet ID** of the subnet where the load balancer works.
-     */
     vipSubnetId?: pulumi.Input<string>;
 }

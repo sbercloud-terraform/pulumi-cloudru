@@ -25,15 +25,10 @@ class FgsFunctionEventArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FgsFunctionEvent resource.
-        :param pulumi.Input[_builtins.str] content: Specifies the function event content.  
-               The value is the base64 encoding of the JSON string.
-        :param pulumi.Input[_builtins.str] function_urn: Specifies the URN of the function to which the event blongs.  
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the function event name.  
-               The name can contain a maximum of `25` characters and must start with a letter and end with a letter or digit.
-               Only letters, digits, underscores (_) and hyphens (-) are allowed.
-        :param pulumi.Input[_builtins.str] region: Specifies the region where the function event is located.  
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] content: The function event content.
+        :param pulumi.Input[_builtins.str] function_urn: The URN of the function to which the event blongs.
+        :param pulumi.Input[_builtins.str] name: The function event name.
+        :param pulumi.Input[_builtins.str] region: The region where the function event is located.
         """
         pulumi.set(__self__, "content", content)
         pulumi.set(__self__, "function_urn", function_urn)
@@ -46,8 +41,7 @@ class FgsFunctionEventArgs:
     @pulumi.getter
     def content(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the function event content.  
-        The value is the base64 encoding of the JSON string.
+        The function event content.
         """
         return pulumi.get(self, "content")
 
@@ -59,8 +53,7 @@ class FgsFunctionEventArgs:
     @pulumi.getter(name="functionUrn")
     def function_urn(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the URN of the function to which the event blongs.  
-        Changing this parameter will create a new resource.
+        The URN of the function to which the event blongs.
         """
         return pulumi.get(self, "function_urn")
 
@@ -72,9 +65,7 @@ class FgsFunctionEventArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the function event name.  
-        The name can contain a maximum of `25` characters and must start with a letter and end with a letter or digit.
-        Only letters, digits, underscores (_) and hyphens (-) are allowed.
+        The function event name.
         """
         return pulumi.get(self, "name")
 
@@ -86,8 +77,7 @@ class FgsFunctionEventArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region where the function event is located.  
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        The region where the function event is located.
         """
         return pulumi.get(self, "region")
 
@@ -106,15 +96,10 @@ class _FgsFunctionEventState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FgsFunctionEvent resources.
-        :param pulumi.Input[_builtins.str] content: Specifies the function event content.  
-               The value is the base64 encoding of the JSON string.
-        :param pulumi.Input[_builtins.str] function_urn: Specifies the URN of the function to which the event blongs.  
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the function event name.  
-               The name can contain a maximum of `25` characters and must start with a letter and end with a letter or digit.
-               Only letters, digits, underscores (_) and hyphens (-) are allowed.
-        :param pulumi.Input[_builtins.str] region: Specifies the region where the function event is located.  
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] content: The function event content.
+        :param pulumi.Input[_builtins.str] function_urn: The URN of the function to which the event blongs.
+        :param pulumi.Input[_builtins.str] name: The function event name.
+        :param pulumi.Input[_builtins.str] region: The region where the function event is located.
         :param pulumi.Input[_builtins.str] updated_at: The latest update (UTC) time of the function event, in RFC3339 format.
         """
         if content is not None:
@@ -132,8 +117,7 @@ class _FgsFunctionEventState:
     @pulumi.getter
     def content(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the function event content.  
-        The value is the base64 encoding of the JSON string.
+        The function event content.
         """
         return pulumi.get(self, "content")
 
@@ -145,8 +129,7 @@ class _FgsFunctionEventState:
     @pulumi.getter(name="functionUrn")
     def function_urn(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the URN of the function to which the event blongs.  
-        Changing this parameter will create a new resource.
+        The URN of the function to which the event blongs.
         """
         return pulumi.get(self, "function_urn")
 
@@ -158,9 +141,7 @@ class _FgsFunctionEventState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the function event name.  
-        The name can contain a maximum of `25` characters and must start with a letter and end with a letter or digit.
-        Only letters, digits, underscores (_) and hyphens (-) are allowed.
+        The function event name.
         """
         return pulumi.get(self, "name")
 
@@ -172,8 +153,7 @@ class _FgsFunctionEventState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region where the function event is located.  
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        The region where the function event is located.
         """
         return pulumi.get(self, "region")
 
@@ -206,31 +186,13 @@ class FgsFunctionEvent(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages an event for testing specified function within SberCloud.
-
-        ## Example Usage
-
-        ## Import
-
-        Function event can be imported using the `function_urn` and `name`, separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/fgsFunctionEvent:FgsFunctionEvent test <function_urn>/<name>
-        ```
-
+        Create a FgsFunctionEvent resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] content: Specifies the function event content.  
-               The value is the base64 encoding of the JSON string.
-        :param pulumi.Input[_builtins.str] function_urn: Specifies the URN of the function to which the event blongs.  
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the function event name.  
-               The name can contain a maximum of `25` characters and must start with a letter and end with a letter or digit.
-               Only letters, digits, underscores (_) and hyphens (-) are allowed.
-        :param pulumi.Input[_builtins.str] region: Specifies the region where the function event is located.  
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] content: The function event content.
+        :param pulumi.Input[_builtins.str] function_urn: The URN of the function to which the event blongs.
+        :param pulumi.Input[_builtins.str] name: The function event name.
+        :param pulumi.Input[_builtins.str] region: The region where the function event is located.
         """
         ...
     @overload
@@ -239,20 +201,7 @@ class FgsFunctionEvent(pulumi.CustomResource):
                  args: FgsFunctionEventArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages an event for testing specified function within SberCloud.
-
-        ## Example Usage
-
-        ## Import
-
-        Function event can be imported using the `function_urn` and `name`, separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/fgsFunctionEvent:FgsFunctionEvent test <function_urn>/<name>
-        ```
-
+        Create a FgsFunctionEvent resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param FgsFunctionEventArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -312,15 +261,10 @@ class FgsFunctionEvent(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] content: Specifies the function event content.  
-               The value is the base64 encoding of the JSON string.
-        :param pulumi.Input[_builtins.str] function_urn: Specifies the URN of the function to which the event blongs.  
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the function event name.  
-               The name can contain a maximum of `25` characters and must start with a letter and end with a letter or digit.
-               Only letters, digits, underscores (_) and hyphens (-) are allowed.
-        :param pulumi.Input[_builtins.str] region: Specifies the region where the function event is located.  
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] content: The function event content.
+        :param pulumi.Input[_builtins.str] function_urn: The URN of the function to which the event blongs.
+        :param pulumi.Input[_builtins.str] name: The function event name.
+        :param pulumi.Input[_builtins.str] region: The region where the function event is located.
         :param pulumi.Input[_builtins.str] updated_at: The latest update (UTC) time of the function event, in RFC3339 format.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -338,8 +282,7 @@ class FgsFunctionEvent(pulumi.CustomResource):
     @pulumi.getter
     def content(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the function event content.  
-        The value is the base64 encoding of the JSON string.
+        The function event content.
         """
         return pulumi.get(self, "content")
 
@@ -347,8 +290,7 @@ class FgsFunctionEvent(pulumi.CustomResource):
     @pulumi.getter(name="functionUrn")
     def function_urn(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the URN of the function to which the event blongs.  
-        Changing this parameter will create a new resource.
+        The URN of the function to which the event blongs.
         """
         return pulumi.get(self, "function_urn")
 
@@ -356,9 +298,7 @@ class FgsFunctionEvent(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the function event name.  
-        The name can contain a maximum of `25` characters and must start with a letter and end with a letter or digit.
-        Only letters, digits, underscores (_) and hyphens (-) are allowed.
+        The function event name.
         """
         return pulumi.get(self, "name")
 
@@ -366,8 +306,7 @@ class FgsFunctionEvent(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the region where the function event is located.  
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        The region where the function event is located.
         """
         return pulumi.get(self, "region")
 

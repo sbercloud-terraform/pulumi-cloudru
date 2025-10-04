@@ -23,10 +23,8 @@ class FgsFunctionToppingArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FgsFunctionTopping resource.
-        :param pulumi.Input[_builtins.str] function_urn: Specifies the URN of the function to be topped.  
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region where the function is located.  
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] function_urn: The URN of the function to be topped.
+        :param pulumi.Input[_builtins.str] region: The region where the function is located.
         """
         pulumi.set(__self__, "function_urn", function_urn)
         if region is not None:
@@ -36,8 +34,7 @@ class FgsFunctionToppingArgs:
     @pulumi.getter(name="functionUrn")
     def function_urn(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the URN of the function to be topped.  
-        Changing this parameter will create a new resource.
+        The URN of the function to be topped.
         """
         return pulumi.get(self, "function_urn")
 
@@ -49,8 +46,7 @@ class FgsFunctionToppingArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region where the function is located.  
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        The region where the function is located.
         """
         return pulumi.get(self, "region")
 
@@ -66,10 +62,8 @@ class _FgsFunctionToppingState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FgsFunctionTopping resources.
-        :param pulumi.Input[_builtins.str] function_urn: Specifies the URN of the function to be topped.  
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region where the function is located.  
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] function_urn: The URN of the function to be topped.
+        :param pulumi.Input[_builtins.str] region: The region where the function is located.
         """
         if function_urn is not None:
             pulumi.set(__self__, "function_urn", function_urn)
@@ -80,8 +74,7 @@ class _FgsFunctionToppingState:
     @pulumi.getter(name="functionUrn")
     def function_urn(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the URN of the function to be topped.  
-        Changing this parameter will create a new resource.
+        The URN of the function to be topped.
         """
         return pulumi.get(self, "function_urn")
 
@@ -93,8 +86,7 @@ class _FgsFunctionToppingState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region where the function is located.  
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        The region where the function is located.
         """
         return pulumi.get(self, "region")
 
@@ -113,27 +105,11 @@ class FgsFunctionTopping(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Using this function to top function within SberCloud.
-
-        ## Example Usage
-
-        ### Topping function
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        function_urn = config.require_object("functionUrn")
-        test = sbercloud.FgsFunctionTopping("test", function_urn=function_urn)
-        ```
-
+        Create a FgsFunctionTopping resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] function_urn: Specifies the URN of the function to be topped.  
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region where the function is located.  
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] function_urn: The URN of the function to be topped.
+        :param pulumi.Input[_builtins.str] region: The region where the function is located.
         """
         ...
     @overload
@@ -142,21 +118,7 @@ class FgsFunctionTopping(pulumi.CustomResource):
                  args: FgsFunctionToppingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Using this function to top function within SberCloud.
-
-        ## Example Usage
-
-        ### Topping function
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        function_urn = config.require_object("functionUrn")
-        test = sbercloud.FgsFunctionTopping("test", function_urn=function_urn)
-        ```
-
+        Create a FgsFunctionTopping resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param FgsFunctionToppingArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -206,10 +168,8 @@ class FgsFunctionTopping(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] function_urn: Specifies the URN of the function to be topped.  
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region where the function is located.  
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] function_urn: The URN of the function to be topped.
+        :param pulumi.Input[_builtins.str] region: The region where the function is located.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -223,8 +183,7 @@ class FgsFunctionTopping(pulumi.CustomResource):
     @pulumi.getter(name="functionUrn")
     def function_urn(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the URN of the function to be topped.  
-        Changing this parameter will create a new resource.
+        The URN of the function to be topped.
         """
         return pulumi.get(self, "function_urn")
 
@@ -232,8 +191,7 @@ class FgsFunctionTopping(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the region where the function is located.  
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        The region where the function is located.
         """
         return pulumi.get(self, "region")
 

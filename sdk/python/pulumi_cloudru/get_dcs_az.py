@@ -59,17 +59,11 @@ class GetDcsAzResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Indicates the name of an AZ.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def port(self) -> _builtins.str:
-        """
-        Indicates the port number of an AZ.
-        """
         return pulumi.get(self, "port")
 
     @_builtins.property
@@ -97,27 +91,7 @@ def get_dcs_az(code: Optional[_builtins.str] = None,
                region: Optional[_builtins.str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDcsAzResult:
     """
-    Use this data source to get the ID of an available SberCloud dcs az.
-
-    !> **WARNING:** It has been deprecated. This data source is used for the `available_zones` of the
-    `Dcs.Instance` resource. Now `available_zones` has been deprecated and this data source is no longer used.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    az1 = sbercloud.get_dcs_az(port="443",
-        code="ru-moscow-1a")
-    ```
-
-
-    :param _builtins.str code: Specifies the code of an AZ, e.g. "ru-moscow-1a".
-    :param _builtins.str name: Indicates the name of an AZ.
-    :param _builtins.str port: Indicates the port number of an AZ.
-    :param _builtins.str region: The region in which to obtain the dcs az. If omitted, the provider-level region will be
-           used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['code'] = code
@@ -139,27 +113,7 @@ def get_dcs_az_output(code: Optional[pulumi.Input[Optional[_builtins.str]]] = No
                       region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDcsAzResult]:
     """
-    Use this data source to get the ID of an available SberCloud dcs az.
-
-    !> **WARNING:** It has been deprecated. This data source is used for the `available_zones` of the
-    `Dcs.Instance` resource. Now `available_zones` has been deprecated and this data source is no longer used.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    az1 = sbercloud.get_dcs_az(port="443",
-        code="ru-moscow-1a")
-    ```
-
-
-    :param _builtins.str code: Specifies the code of an AZ, e.g. "ru-moscow-1a".
-    :param _builtins.str name: Indicates the name of an AZ.
-    :param _builtins.str port: Indicates the port number of an AZ.
-    :param _builtins.str region: The region in which to obtain the dcs az. If omitted, the provider-level region will be
-           used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['code'] = code

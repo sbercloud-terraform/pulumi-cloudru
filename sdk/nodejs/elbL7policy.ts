@@ -6,34 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Manages an ELB L7 Policy resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const listenerId = config.requireObject<any>("listenerId");
- * const poolId = config.requireObject<any>("poolId");
- * const policy1 = new sbercloud.ElbL7policy("policy_1", {
- *     name: "policy_1",
- *     description: "test description",
- *     listenerId: listenerId,
- *     redirectPoolId: poolId,
- * });
- * ```
- *
- * ## Import
- *
- * ELB policy can be imported using the policy ID, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:index/elbL7policy:ElbL7policy policy_1 5c20fdad-7288-11eb-b817-0255ac10158b
- * ```
- */
 export class ElbL7policy extends pulumi.CustomResource {
     /**
      * Get an existing ElbL7policy resource's state with the given name, ID, and optional extra
@@ -64,36 +36,19 @@ export class ElbL7policy extends pulumi.CustomResource {
 
     declare public readonly action: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
-    /**
-     * Human-readable description for the L7 Policy.
-     */
     declare public readonly description: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly enterpriseProjectId: pulumi.Output<string>;
     declare public readonly fixedResponseConfig: pulumi.Output<outputs.ElbL7policyFixedResponseConfig>;
-    /**
-     * The Listener on which the L7 Policy will be associated with. Changing
-     * this creates a new L7 Policy.
-     */
     declare public readonly listenerId: pulumi.Output<string>;
-    /**
-     * Human-readable name for the L7 Policy. Does not have to be unique.
-     */
     declare public readonly name: pulumi.Output<string>;
     declare public readonly priority: pulumi.Output<number>;
     declare public /*out*/ readonly provisioningStatus: pulumi.Output<string>;
     declare public readonly redirectListenerId: pulumi.Output<string>;
-    /**
-     * Requests matching this policy will be redirected to the pool with this ID.
-     */
     declare public readonly redirectPoolId: pulumi.Output<string>;
     declare public readonly redirectPoolsConfigs: pulumi.Output<outputs.ElbL7policyRedirectPoolsConfig[]>;
     declare public readonly redirectPoolsExtendConfig: pulumi.Output<outputs.ElbL7policyRedirectPoolsExtendConfig>;
     declare public readonly redirectPoolsStickySessionConfig: pulumi.Output<outputs.ElbL7policyRedirectPoolsStickySessionConfig>;
     declare public readonly redirectUrlConfig: pulumi.Output<outputs.ElbL7policyRedirectUrlConfig>;
-    /**
-     * The region in which to create the L7 Policy resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new L7 Policy.
-     */
     declare public readonly region: pulumi.Output<string>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
@@ -161,36 +116,19 @@ export class ElbL7policy extends pulumi.CustomResource {
 export interface ElbL7policyState {
     action?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
-    /**
-     * Human-readable description for the L7 Policy.
-     */
     description?: pulumi.Input<string>;
     enterpriseProjectId?: pulumi.Input<string>;
     fixedResponseConfig?: pulumi.Input<inputs.ElbL7policyFixedResponseConfig>;
-    /**
-     * The Listener on which the L7 Policy will be associated with. Changing
-     * this creates a new L7 Policy.
-     */
     listenerId?: pulumi.Input<string>;
-    /**
-     * Human-readable name for the L7 Policy. Does not have to be unique.
-     */
     name?: pulumi.Input<string>;
     priority?: pulumi.Input<number>;
     provisioningStatus?: pulumi.Input<string>;
     redirectListenerId?: pulumi.Input<string>;
-    /**
-     * Requests matching this policy will be redirected to the pool with this ID.
-     */
     redirectPoolId?: pulumi.Input<string>;
     redirectPoolsConfigs?: pulumi.Input<pulumi.Input<inputs.ElbL7policyRedirectPoolsConfig>[]>;
     redirectPoolsExtendConfig?: pulumi.Input<inputs.ElbL7policyRedirectPoolsExtendConfig>;
     redirectPoolsStickySessionConfig?: pulumi.Input<inputs.ElbL7policyRedirectPoolsStickySessionConfig>;
     redirectUrlConfig?: pulumi.Input<inputs.ElbL7policyRedirectUrlConfig>;
-    /**
-     * The region in which to create the L7 Policy resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new L7 Policy.
-     */
     region?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<string>;
 }
@@ -200,33 +138,16 @@ export interface ElbL7policyState {
  */
 export interface ElbL7policyArgs {
     action?: pulumi.Input<string>;
-    /**
-     * Human-readable description for the L7 Policy.
-     */
     description?: pulumi.Input<string>;
     fixedResponseConfig?: pulumi.Input<inputs.ElbL7policyFixedResponseConfig>;
-    /**
-     * The Listener on which the L7 Policy will be associated with. Changing
-     * this creates a new L7 Policy.
-     */
     listenerId: pulumi.Input<string>;
-    /**
-     * Human-readable name for the L7 Policy. Does not have to be unique.
-     */
     name?: pulumi.Input<string>;
     priority?: pulumi.Input<number>;
     redirectListenerId?: pulumi.Input<string>;
-    /**
-     * Requests matching this policy will be redirected to the pool with this ID.
-     */
     redirectPoolId?: pulumi.Input<string>;
     redirectPoolsConfigs?: pulumi.Input<pulumi.Input<inputs.ElbL7policyRedirectPoolsConfig>[]>;
     redirectPoolsExtendConfig?: pulumi.Input<inputs.ElbL7policyRedirectPoolsExtendConfig>;
     redirectPoolsStickySessionConfig?: pulumi.Input<inputs.ElbL7policyRedirectPoolsStickySessionConfig>;
     redirectUrlConfig?: pulumi.Input<inputs.ElbL7policyRedirectUrlConfig>;
-    /**
-     * The region in which to create the L7 Policy resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new L7 Policy.
-     */
     region?: pulumi.Input<string>;
 }

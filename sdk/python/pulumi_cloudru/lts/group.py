@@ -26,12 +26,7 @@ class GroupArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Group resource.
-        :param pulumi.Input[_builtins.str] group_name: Specifies the log group name. Changing this parameter will create a new
-               resource.
-        :param pulumi.Input[_builtins.int] ttl_in_days: Specifies the log expiration time(days), value range: 1-30.
         :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID to which the log group belongs.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the log group resource. If omitted, the
-               provider-level region will be used. Changing this creates a new log group resource.
         """
         pulumi.set(__self__, "group_name", group_name)
         pulumi.set(__self__, "ttl_in_days", ttl_in_days)
@@ -45,10 +40,6 @@ class GroupArgs:
     @_builtins.property
     @pulumi.getter(name="groupName")
     def group_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the log group name. Changing this parameter will create a new
-        resource.
-        """
         return pulumi.get(self, "group_name")
 
     @group_name.setter
@@ -58,9 +49,6 @@ class GroupArgs:
     @_builtins.property
     @pulumi.getter(name="ttlInDays")
     def ttl_in_days(self) -> pulumi.Input[_builtins.int]:
-        """
-        Specifies the log expiration time(days), value range: 1-30.
-        """
         return pulumi.get(self, "ttl_in_days")
 
     @ttl_in_days.setter
@@ -82,10 +70,6 @@ class GroupArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the log group resource. If omitted, the
-        provider-level region will be used. Changing this creates a new log group resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -114,11 +98,6 @@ class _GroupState:
         """
         Input properties used for looking up and filtering Group resources.
         :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID to which the log group belongs.
-        :param pulumi.Input[_builtins.str] group_name: Specifies the log group name. Changing this parameter will create a new
-               resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the log group resource. If omitted, the
-               provider-level region will be used. Changing this creates a new log group resource.
-        :param pulumi.Input[_builtins.int] ttl_in_days: Specifies the log expiration time(days), value range: 1-30.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -157,10 +136,6 @@ class _GroupState:
     @_builtins.property
     @pulumi.getter(name="groupName")
     def group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the log group name. Changing this parameter will create a new
-        resource.
-        """
         return pulumi.get(self, "group_name")
 
     @group_name.setter
@@ -170,10 +145,6 @@ class _GroupState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the log group resource. If omitted, the
-        provider-level region will be used. Changing this creates a new log group resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -192,9 +163,6 @@ class _GroupState:
     @_builtins.property
     @pulumi.getter(name="ttlInDays")
     def ttl_in_days(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the log expiration time(days), value range: 1-30.
-        """
         return pulumi.get(self, "ttl_in_days")
 
     @ttl_in_days.setter
@@ -215,37 +183,10 @@ class Group(pulumi.CustomResource):
                  ttl_in_days: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
-        Manages a log group resource within SberCloud.
-
-        ## Example Usage
-
-        ### create a log group
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        log_group1 = sbercloud.lts.Group("log_group1",
-            group_name="log_group1",
-            ttl_in_days=1)
-        ```
-
-        ## Import
-
-        Log group can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Lts/group:Group group_1 7117d38e-4c8f-4624-a505-bd96b97d024c
-        ```
-
+        Create a Group resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID to which the log group belongs.
-        :param pulumi.Input[_builtins.str] group_name: Specifies the log group name. Changing this parameter will create a new
-               resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the log group resource. If omitted, the
-               provider-level region will be used. Changing this creates a new log group resource.
-        :param pulumi.Input[_builtins.int] ttl_in_days: Specifies the log expiration time(days), value range: 1-30.
         """
         ...
     @overload
@@ -254,29 +195,7 @@ class Group(pulumi.CustomResource):
                  args: GroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a log group resource within SberCloud.
-
-        ## Example Usage
-
-        ### create a log group
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        log_group1 = sbercloud.lts.Group("log_group1",
-            group_name="log_group1",
-            ttl_in_days=1)
-        ```
-
-        ## Import
-
-        Log group can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Lts/group:Group group_1 7117d38e-4c8f-4624-a505-bd96b97d024c
-        ```
-
+        Create a Group resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param GroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -340,11 +259,6 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID to which the log group belongs.
-        :param pulumi.Input[_builtins.str] group_name: Specifies the log group name. Changing this parameter will create a new
-               resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the log group resource. If omitted, the
-               provider-level region will be used. Changing this creates a new log group resource.
-        :param pulumi.Input[_builtins.int] ttl_in_days: Specifies the log expiration time(days), value range: 1-30.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -374,19 +288,11 @@ class Group(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="groupName")
     def group_name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the log group name. Changing this parameter will create a new
-        resource.
-        """
         return pulumi.get(self, "group_name")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the log group resource. If omitted, the
-        provider-level region will be used. Changing this creates a new log group resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
@@ -397,8 +303,5 @@ class Group(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="ttlInDays")
     def ttl_in_days(self) -> pulumi.Output[_builtins.int]:
-        """
-        Specifies the log expiration time(days), value range: 1-30.
-        """
         return pulumi.get(self, "ttl_in_days")
 

@@ -4,43 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a CFW lts log resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const ltsAttackLogStreamId = config.requireObject<any>("ltsAttackLogStreamId");
- * const ltsFlowLogStreamId = config.requireObject<any>("ltsFlowLogStreamId");
- * const ltsAccessLogStreamId = config.requireObject<any>("ltsAccessLogStreamId");
- * const fwInstanceId = config.requireObject<any>("fwInstanceId");
- * const ltsLogGroupId = config.requireObject<any>("ltsLogGroupId");
- * const test = new sbercloud.cfw.LtsLog("test", {
- *     fwInstanceId: fwInstanceId,
- *     ltsLogGroupId: ltsLogGroupId,
- *     ltsAttackLogStreamEnable: 1,
- *     ltsAccessLogStreamEnable: 1,
- *     ltsFlowLogStreamEnable: 1,
- *     ltsAttackLogStreamId: ltsAttackLogStreamId,
- *     ltsAccessLogStreamId: ltsAccessLogStreamId,
- *     ltsFlowLogStreamId: ltsFlowLogStreamId,
- * });
- * ```
- *
- * ## Import
- *
- * The lts log resource can be imported using the firewall instance ID, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:Cfw/ltsLog:LtsLog test <fw_instance_id>
- * ```
- */
 export class LtsLog extends pulumi.CustomResource {
     /**
      * Get an existing LtsLog resource's state with the given name, ID, and optional extra
@@ -70,46 +33,37 @@ export class LtsLog extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies the ID of the firewall.
-     * Changing this creates a new resource.
+     * The ID of the firewall.
      */
     declare public readonly fwInstanceId: pulumi.Output<string>;
     /**
-     * Specifies whether to enable the access log stream.
-     * The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+     * LTS access log stream switch.
      */
     declare public readonly ltsAccessLogStreamEnable: pulumi.Output<number>;
     /**
-     * Specifies the access log stream ID.
+     * LTS access log stream ID.
      */
     declare public readonly ltsAccessLogStreamId: pulumi.Output<string | undefined>;
     /**
-     * Specifies whether to enable the attack log stream.
-     * The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+     * LTS attack log stream switch.
      */
     declare public readonly ltsAttackLogStreamEnable: pulumi.Output<number>;
     /**
-     * Specifies the attack log stream ID.
+     * LTS attack log stream ID.
      */
     declare public readonly ltsAttackLogStreamId: pulumi.Output<string | undefined>;
     /**
-     * Specifies whether to enable the flow log stream.
-     * The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+     * LTS flow log stream switch.
      */
     declare public readonly ltsFlowLogStreamEnable: pulumi.Output<number>;
     /**
-     * Specifies the flow log stream ID.
+     * LTS flow log stream ID.
      */
     declare public readonly ltsFlowLogStreamId: pulumi.Output<string | undefined>;
     /**
-     * Specifies the LTS log group ID.
+     * LTS log group ID.
      */
     declare public readonly ltsLogGroupId: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
 
     /**
@@ -171,46 +125,37 @@ export class LtsLog extends pulumi.CustomResource {
  */
 export interface LtsLogState {
     /**
-     * Specifies the ID of the firewall.
-     * Changing this creates a new resource.
+     * The ID of the firewall.
      */
     fwInstanceId?: pulumi.Input<string>;
     /**
-     * Specifies whether to enable the access log stream.
-     * The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+     * LTS access log stream switch.
      */
     ltsAccessLogStreamEnable?: pulumi.Input<number>;
     /**
-     * Specifies the access log stream ID.
+     * LTS access log stream ID.
      */
     ltsAccessLogStreamId?: pulumi.Input<string>;
     /**
-     * Specifies whether to enable the attack log stream.
-     * The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+     * LTS attack log stream switch.
      */
     ltsAttackLogStreamEnable?: pulumi.Input<number>;
     /**
-     * Specifies the attack log stream ID.
+     * LTS attack log stream ID.
      */
     ltsAttackLogStreamId?: pulumi.Input<string>;
     /**
-     * Specifies whether to enable the flow log stream.
-     * The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+     * LTS flow log stream switch.
      */
     ltsFlowLogStreamEnable?: pulumi.Input<number>;
     /**
-     * Specifies the flow log stream ID.
+     * LTS flow log stream ID.
      */
     ltsFlowLogStreamId?: pulumi.Input<string>;
     /**
-     * Specifies the LTS log group ID.
+     * LTS log group ID.
      */
     ltsLogGroupId?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
 }
 
@@ -219,45 +164,36 @@ export interface LtsLogState {
  */
 export interface LtsLogArgs {
     /**
-     * Specifies the ID of the firewall.
-     * Changing this creates a new resource.
+     * The ID of the firewall.
      */
     fwInstanceId: pulumi.Input<string>;
     /**
-     * Specifies whether to enable the access log stream.
-     * The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+     * LTS access log stream switch.
      */
     ltsAccessLogStreamEnable: pulumi.Input<number>;
     /**
-     * Specifies the access log stream ID.
+     * LTS access log stream ID.
      */
     ltsAccessLogStreamId?: pulumi.Input<string>;
     /**
-     * Specifies whether to enable the attack log stream.
-     * The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+     * LTS attack log stream switch.
      */
     ltsAttackLogStreamEnable: pulumi.Input<number>;
     /**
-     * Specifies the attack log stream ID.
+     * LTS attack log stream ID.
      */
     ltsAttackLogStreamId?: pulumi.Input<string>;
     /**
-     * Specifies whether to enable the flow log stream.
-     * The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+     * LTS flow log stream switch.
      */
     ltsFlowLogStreamEnable: pulumi.Input<number>;
     /**
-     * Specifies the flow log stream ID.
+     * LTS flow log stream ID.
      */
     ltsFlowLogStreamId?: pulumi.Input<string>;
     /**
-     * Specifies the LTS log group ID.
+     * LTS log group ID.
      */
     ltsLogGroupId: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
 }

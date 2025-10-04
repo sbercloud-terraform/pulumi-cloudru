@@ -64,9 +64,6 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[_builtins.str]:
-        """
-        Indicates the enterprise project id.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
@@ -80,49 +77,31 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetInstancesInstanceResult']:
-        """
-        An array of available instances.
-        """
         return pulumi.get(self, "instances")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        Indicates the node name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> _builtins.str:
-        """
-        The region of the instance.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[_builtins.str]:
-        """
-        Indicates the network ID of a subnet.
-        """
         return pulumi.get(self, "subnet_id")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
-        """
-        Indicates the volume type.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[_builtins.str]:
-        """
-        Indicates the VPC ID.
-        """
         return pulumi.get(self, "vpc_id")
 
 
@@ -152,26 +131,7 @@ def get_instances(datastore_type: Optional[_builtins.str] = None,
                   vpc_id: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
-    Use this data source to list all available RDS instances.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    this = sbercloud.Rds.get_instances(name="rds-instance")
-    ```
-
-
-    :param _builtins.str datastore_type: Specifies the type of the database. Valid values are: MySQL, PostgreSQL, and SQLServer.
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project id.
-    :param _builtins.str name: Specifies the name of the instance.
-    :param _builtins.str region: The region in which to obtain the instances. If omitted, the provider-level region will
-           be used.
-    :param _builtins.str subnet_id: Specifies the network ID of a subnet.
-    :param _builtins.str type: Specifies the type of the instance. Valid values are: Single, Ha, Replica, and Enterprise.
-    :param _builtins.str vpc_id: Specifies the VPC ID.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['datastoreType'] = datastore_type
@@ -203,26 +163,7 @@ def get_instances_output(datastore_type: Optional[pulumi.Input[Optional[_builtin
                          vpc_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstancesResult]:
     """
-    Use this data source to list all available RDS instances.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    this = sbercloud.Rds.get_instances(name="rds-instance")
-    ```
-
-
-    :param _builtins.str datastore_type: Specifies the type of the database. Valid values are: MySQL, PostgreSQL, and SQLServer.
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project id.
-    :param _builtins.str name: Specifies the name of the instance.
-    :param _builtins.str region: The region in which to obtain the instances. If omitted, the provider-level region will
-           be used.
-    :param _builtins.str subnet_id: Specifies the network ID of a subnet.
-    :param _builtins.str type: Specifies the type of the instance. Valid values are: Single, Ha, Replica, and Enterprise.
-    :param _builtins.str vpc_id: Specifies the VPC ID.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['datastoreType'] = datastore_type

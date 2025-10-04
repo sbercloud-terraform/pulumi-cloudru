@@ -32,27 +32,6 @@ class PolicyArgs:
                  scheduled_policy: Optional[pulumi.Input['PolicyScheduledPolicyArgs']] = None):
         """
         The set of arguments for constructing a Policy resource.
-        :param pulumi.Input[_builtins.str] scaling_group_id: Specifies the AS group ID. Changing this creates a new AS policy.
-        :param pulumi.Input[_builtins.str] scaling_policy_name: Specifies the name of the AS policy. The name contains only letters, digits,
-               underscores(_), and hyphens(-), and cannot exceed 64 characters.
-        :param pulumi.Input[_builtins.str] scaling_policy_type: Specifies the AS policy type. The value can be `ALARM`, `SCHEDULED` or `RECURRENCE`.
-               + **ALARM**: indicates that the scaling action is triggered by an alarm.
-               + **SCHEDULED**: indicates that the scaling action is triggered as scheduled.
-               + **RECURRENCE**: indicates that the scaling action is triggered periodically.
-        :param pulumi.Input[_builtins.str] alarm_id: Specifies the alarm rule ID. This parameter is mandatory when `scaling_policy_type`
-               is set to `ALARM`.
-        :param pulumi.Input[_builtins.int] cool_down_time: Specifies the cooling duration (in seconds).
-               The value ranges from 0 to 86400 and is 300 by default.
-               
-               <a name="scheduled_policy_object"></a>
-               The `scheduled_policy` block supports:
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the AS policy. If omitted, the
-               provider-level region will be used. Changing this creates a new AS policy.
-        :param pulumi.Input['PolicyScalingPolicyActionArgs'] scaling_policy_action: Specifies the action of the AS policy.
-               The object structure is documented below.
-        :param pulumi.Input['PolicyScheduledPolicyArgs'] scheduled_policy: Specifies the periodic or scheduled AS policy.
-               This parameter is mandatory when `scaling_policy_type` is set to `SCHEDULED` or `RECURRENCE`.
-               The object structure is documented below.
         """
         pulumi.set(__self__, "scaling_group_id", scaling_group_id)
         pulumi.set(__self__, "scaling_policy_name", scaling_policy_name)
@@ -73,9 +52,6 @@ class PolicyArgs:
     @_builtins.property
     @pulumi.getter(name="scalingGroupId")
     def scaling_group_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the AS group ID. Changing this creates a new AS policy.
-        """
         return pulumi.get(self, "scaling_group_id")
 
     @scaling_group_id.setter
@@ -85,10 +61,6 @@ class PolicyArgs:
     @_builtins.property
     @pulumi.getter(name="scalingPolicyName")
     def scaling_policy_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the name of the AS policy. The name contains only letters, digits,
-        underscores(_), and hyphens(-), and cannot exceed 64 characters.
-        """
         return pulumi.get(self, "scaling_policy_name")
 
     @scaling_policy_name.setter
@@ -98,12 +70,6 @@ class PolicyArgs:
     @_builtins.property
     @pulumi.getter(name="scalingPolicyType")
     def scaling_policy_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the AS policy type. The value can be `ALARM`, `SCHEDULED` or `RECURRENCE`.
-        + **ALARM**: indicates that the scaling action is triggered by an alarm.
-        + **SCHEDULED**: indicates that the scaling action is triggered as scheduled.
-        + **RECURRENCE**: indicates that the scaling action is triggered periodically.
-        """
         return pulumi.get(self, "scaling_policy_type")
 
     @scaling_policy_type.setter
@@ -122,10 +88,6 @@ class PolicyArgs:
     @_builtins.property
     @pulumi.getter(name="alarmId")
     def alarm_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the alarm rule ID. This parameter is mandatory when `scaling_policy_type`
-        is set to `ALARM`.
-        """
         return pulumi.get(self, "alarm_id")
 
     @alarm_id.setter
@@ -135,13 +97,6 @@ class PolicyArgs:
     @_builtins.property
     @pulumi.getter(name="coolDownTime")
     def cool_down_time(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the cooling duration (in seconds).
-        The value ranges from 0 to 86400 and is 300 by default.
-
-        <a name="scheduled_policy_object"></a>
-        The `scheduled_policy` block supports:
-        """
         return pulumi.get(self, "cool_down_time")
 
     @cool_down_time.setter
@@ -151,10 +106,6 @@ class PolicyArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the AS policy. If omitted, the
-        provider-level region will be used. Changing this creates a new AS policy.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -164,10 +115,6 @@ class PolicyArgs:
     @_builtins.property
     @pulumi.getter(name="scalingPolicyAction")
     def scaling_policy_action(self) -> Optional[pulumi.Input['PolicyScalingPolicyActionArgs']]:
-        """
-        Specifies the action of the AS policy.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "scaling_policy_action")
 
     @scaling_policy_action.setter
@@ -177,11 +124,6 @@ class PolicyArgs:
     @_builtins.property
     @pulumi.getter(name="scheduledPolicy")
     def scheduled_policy(self) -> Optional[pulumi.Input['PolicyScheduledPolicyArgs']]:
-        """
-        Specifies the periodic or scheduled AS policy.
-        This parameter is mandatory when `scaling_policy_type` is set to `SCHEDULED` or `RECURRENCE`.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "scheduled_policy")
 
     @scheduled_policy.setter
@@ -205,28 +147,6 @@ class _PolicyState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Policy resources.
-        :param pulumi.Input[_builtins.str] alarm_id: Specifies the alarm rule ID. This parameter is mandatory when `scaling_policy_type`
-               is set to `ALARM`.
-        :param pulumi.Input[_builtins.int] cool_down_time: Specifies the cooling duration (in seconds).
-               The value ranges from 0 to 86400 and is 300 by default.
-               
-               <a name="scheduled_policy_object"></a>
-               The `scheduled_policy` block supports:
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the AS policy. If omitted, the
-               provider-level region will be used. Changing this creates a new AS policy.
-        :param pulumi.Input[_builtins.str] scaling_group_id: Specifies the AS group ID. Changing this creates a new AS policy.
-        :param pulumi.Input['PolicyScalingPolicyActionArgs'] scaling_policy_action: Specifies the action of the AS policy.
-               The object structure is documented below.
-        :param pulumi.Input[_builtins.str] scaling_policy_name: Specifies the name of the AS policy. The name contains only letters, digits,
-               underscores(_), and hyphens(-), and cannot exceed 64 characters.
-        :param pulumi.Input[_builtins.str] scaling_policy_type: Specifies the AS policy type. The value can be `ALARM`, `SCHEDULED` or `RECURRENCE`.
-               + **ALARM**: indicates that the scaling action is triggered by an alarm.
-               + **SCHEDULED**: indicates that the scaling action is triggered as scheduled.
-               + **RECURRENCE**: indicates that the scaling action is triggered periodically.
-        :param pulumi.Input['PolicyScheduledPolicyArgs'] scheduled_policy: Specifies the periodic or scheduled AS policy.
-               This parameter is mandatory when `scaling_policy_type` is set to `SCHEDULED` or `RECURRENCE`.
-               The object structure is documented below.
-        :param pulumi.Input[_builtins.str] status: The AS policy status. The value can be *INSERVICE*, *PAUSED* or *EXECUTING*.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -263,10 +183,6 @@ class _PolicyState:
     @_builtins.property
     @pulumi.getter(name="alarmId")
     def alarm_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the alarm rule ID. This parameter is mandatory when `scaling_policy_type`
-        is set to `ALARM`.
-        """
         return pulumi.get(self, "alarm_id")
 
     @alarm_id.setter
@@ -276,13 +192,6 @@ class _PolicyState:
     @_builtins.property
     @pulumi.getter(name="coolDownTime")
     def cool_down_time(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the cooling duration (in seconds).
-        The value ranges from 0 to 86400 and is 300 by default.
-
-        <a name="scheduled_policy_object"></a>
-        The `scheduled_policy` block supports:
-        """
         return pulumi.get(self, "cool_down_time")
 
     @cool_down_time.setter
@@ -301,10 +210,6 @@ class _PolicyState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the AS policy. If omitted, the
-        provider-level region will be used. Changing this creates a new AS policy.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -314,9 +219,6 @@ class _PolicyState:
     @_builtins.property
     @pulumi.getter(name="scalingGroupId")
     def scaling_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the AS group ID. Changing this creates a new AS policy.
-        """
         return pulumi.get(self, "scaling_group_id")
 
     @scaling_group_id.setter
@@ -326,10 +228,6 @@ class _PolicyState:
     @_builtins.property
     @pulumi.getter(name="scalingPolicyAction")
     def scaling_policy_action(self) -> Optional[pulumi.Input['PolicyScalingPolicyActionArgs']]:
-        """
-        Specifies the action of the AS policy.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "scaling_policy_action")
 
     @scaling_policy_action.setter
@@ -339,10 +237,6 @@ class _PolicyState:
     @_builtins.property
     @pulumi.getter(name="scalingPolicyName")
     def scaling_policy_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the AS policy. The name contains only letters, digits,
-        underscores(_), and hyphens(-), and cannot exceed 64 characters.
-        """
         return pulumi.get(self, "scaling_policy_name")
 
     @scaling_policy_name.setter
@@ -352,12 +246,6 @@ class _PolicyState:
     @_builtins.property
     @pulumi.getter(name="scalingPolicyType")
     def scaling_policy_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the AS policy type. The value can be `ALARM`, `SCHEDULED` or `RECURRENCE`.
-        + **ALARM**: indicates that the scaling action is triggered by an alarm.
-        + **SCHEDULED**: indicates that the scaling action is triggered as scheduled.
-        + **RECURRENCE**: indicates that the scaling action is triggered periodically.
-        """
         return pulumi.get(self, "scaling_policy_type")
 
     @scaling_policy_type.setter
@@ -367,11 +255,6 @@ class _PolicyState:
     @_builtins.property
     @pulumi.getter(name="scheduledPolicy")
     def scheduled_policy(self) -> Optional[pulumi.Input['PolicyScheduledPolicyArgs']]:
-        """
-        Specifies the periodic or scheduled AS policy.
-        This parameter is mandatory when `scaling_policy_type` is set to `SCHEDULED` or `RECURRENCE`.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "scheduled_policy")
 
     @scheduled_policy.setter
@@ -381,9 +264,6 @@ class _PolicyState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The AS policy status. The value can be *INSERVICE*, *PAUSED* or *EXECUTING*.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -408,128 +288,9 @@ class Policy(pulumi.CustomResource):
                  scheduled_policy: Optional[pulumi.Input[Union['PolicyScheduledPolicyArgs', 'PolicyScheduledPolicyArgsDict']]] = None,
                  __props__=None):
         """
-        Manages an AS policy resource within SberCloud.
-
-        ## Example Usage
-
-        ### AS Recurrence Policy
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        as_group_id = config.require_object("asGroupId")
-        my_aspolicy = sbercloud.as_.Policy("my_aspolicy",
-            scaling_policy_name="my_aspolicy",
-            scaling_policy_type="RECURRENCE",
-            scaling_group_id=as_group_id,
-            scaling_policy_action={
-                "operation": "ADD",
-                "instance_number": 1,
-            },
-            scheduled_policy={
-                "launch_time": "07:00",
-                "recurrence_type": "Daily",
-                "start_time": "2022-11-30T12:00Z",
-                "end_time": "2022-12-30T12:00Z",
-            })
-        ```
-
-        ### AS Scheduled Policy
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        as_group_id = config.require_object("asGroupId")
-        my_aspolicy1 = sbercloud.as_.Policy("my_aspolicy_1",
-            scaling_policy_name="my_aspolicy_1",
-            scaling_policy_type="SCHEDULED",
-            scaling_group_id=as_group_id,
-            scaling_policy_action={
-                "operation": "REMOVE",
-                "instance_number": 1,
-            },
-            scheduled_policy={
-                "launch_time": "2022-12-22T12:00Z",
-            })
-        ```
-
-        ### AS Alarm Policy
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        as_group_id = config.require_object("asGroupId")
-        alarm_rule = sbercloud.ces.Alarmrule("alarm_rule",
-            alarm_name="as_alarm_rule",
-            metric={
-                "namespace": "SYS.AS",
-                "metric_name": "cpu_util",
-                "dimensions": [{
-                    "name": "AutoScalingGroup",
-                    "value": as_group_id,
-                }],
-            },
-            condition={
-                "period": 300,
-                "filter": "average",
-                "comparison_operator": ">=",
-                "value": 60,
-                "unit": "%",
-                "count": 1,
-            },
-            alarm_actions=[{
-                "type": "autoscaling",
-                "notification_lists": [],
-            }])
-        my_aspolicy2 = sbercloud.as_.Policy("my_aspolicy_2",
-            scaling_policy_name="my_aspolicy_2",
-            scaling_policy_type="ALARM",
-            scaling_group_id=as_group_id,
-            alarm_id=alarm_rule.id,
-            cool_down_time=900,
-            scaling_policy_action={
-                "operation": "ADD",
-                "instance_number": 1,
-            })
-        ```
-
-        ## Import
-
-        AS policies can be imported by their `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:As/policy:Policy test 9fcb65fe-fd79-4407-8fa0-07602044e1c3
-        ```
-
+        Create a Policy resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] alarm_id: Specifies the alarm rule ID. This parameter is mandatory when `scaling_policy_type`
-               is set to `ALARM`.
-        :param pulumi.Input[_builtins.int] cool_down_time: Specifies the cooling duration (in seconds).
-               The value ranges from 0 to 86400 and is 300 by default.
-               
-               <a name="scheduled_policy_object"></a>
-               The `scheduled_policy` block supports:
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the AS policy. If omitted, the
-               provider-level region will be used. Changing this creates a new AS policy.
-        :param pulumi.Input[_builtins.str] scaling_group_id: Specifies the AS group ID. Changing this creates a new AS policy.
-        :param pulumi.Input[Union['PolicyScalingPolicyActionArgs', 'PolicyScalingPolicyActionArgsDict']] scaling_policy_action: Specifies the action of the AS policy.
-               The object structure is documented below.
-        :param pulumi.Input[_builtins.str] scaling_policy_name: Specifies the name of the AS policy. The name contains only letters, digits,
-               underscores(_), and hyphens(-), and cannot exceed 64 characters.
-        :param pulumi.Input[_builtins.str] scaling_policy_type: Specifies the AS policy type. The value can be `ALARM`, `SCHEDULED` or `RECURRENCE`.
-               + **ALARM**: indicates that the scaling action is triggered by an alarm.
-               + **SCHEDULED**: indicates that the scaling action is triggered as scheduled.
-               + **RECURRENCE**: indicates that the scaling action is triggered periodically.
-        :param pulumi.Input[Union['PolicyScheduledPolicyArgs', 'PolicyScheduledPolicyArgsDict']] scheduled_policy: Specifies the periodic or scheduled AS policy.
-               This parameter is mandatory when `scaling_policy_type` is set to `SCHEDULED` or `RECURRENCE`.
-               The object structure is documented below.
         """
         ...
     @overload
@@ -538,105 +299,7 @@ class Policy(pulumi.CustomResource):
                  args: PolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages an AS policy resource within SberCloud.
-
-        ## Example Usage
-
-        ### AS Recurrence Policy
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        as_group_id = config.require_object("asGroupId")
-        my_aspolicy = sbercloud.as_.Policy("my_aspolicy",
-            scaling_policy_name="my_aspolicy",
-            scaling_policy_type="RECURRENCE",
-            scaling_group_id=as_group_id,
-            scaling_policy_action={
-                "operation": "ADD",
-                "instance_number": 1,
-            },
-            scheduled_policy={
-                "launch_time": "07:00",
-                "recurrence_type": "Daily",
-                "start_time": "2022-11-30T12:00Z",
-                "end_time": "2022-12-30T12:00Z",
-            })
-        ```
-
-        ### AS Scheduled Policy
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        as_group_id = config.require_object("asGroupId")
-        my_aspolicy1 = sbercloud.as_.Policy("my_aspolicy_1",
-            scaling_policy_name="my_aspolicy_1",
-            scaling_policy_type="SCHEDULED",
-            scaling_group_id=as_group_id,
-            scaling_policy_action={
-                "operation": "REMOVE",
-                "instance_number": 1,
-            },
-            scheduled_policy={
-                "launch_time": "2022-12-22T12:00Z",
-            })
-        ```
-
-        ### AS Alarm Policy
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        as_group_id = config.require_object("asGroupId")
-        alarm_rule = sbercloud.ces.Alarmrule("alarm_rule",
-            alarm_name="as_alarm_rule",
-            metric={
-                "namespace": "SYS.AS",
-                "metric_name": "cpu_util",
-                "dimensions": [{
-                    "name": "AutoScalingGroup",
-                    "value": as_group_id,
-                }],
-            },
-            condition={
-                "period": 300,
-                "filter": "average",
-                "comparison_operator": ">=",
-                "value": 60,
-                "unit": "%",
-                "count": 1,
-            },
-            alarm_actions=[{
-                "type": "autoscaling",
-                "notification_lists": [],
-            }])
-        my_aspolicy2 = sbercloud.as_.Policy("my_aspolicy_2",
-            scaling_policy_name="my_aspolicy_2",
-            scaling_policy_type="ALARM",
-            scaling_group_id=as_group_id,
-            alarm_id=alarm_rule.id,
-            cool_down_time=900,
-            scaling_policy_action={
-                "operation": "ADD",
-                "instance_number": 1,
-            })
-        ```
-
-        ## Import
-
-        AS policies can be imported by their `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:As/policy:Policy test 9fcb65fe-fd79-4407-8fa0-07602044e1c3
-        ```
-
+        Create a Policy resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param PolicyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -715,28 +378,6 @@ class Policy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] alarm_id: Specifies the alarm rule ID. This parameter is mandatory when `scaling_policy_type`
-               is set to `ALARM`.
-        :param pulumi.Input[_builtins.int] cool_down_time: Specifies the cooling duration (in seconds).
-               The value ranges from 0 to 86400 and is 300 by default.
-               
-               <a name="scheduled_policy_object"></a>
-               The `scheduled_policy` block supports:
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the AS policy. If omitted, the
-               provider-level region will be used. Changing this creates a new AS policy.
-        :param pulumi.Input[_builtins.str] scaling_group_id: Specifies the AS group ID. Changing this creates a new AS policy.
-        :param pulumi.Input[Union['PolicyScalingPolicyActionArgs', 'PolicyScalingPolicyActionArgsDict']] scaling_policy_action: Specifies the action of the AS policy.
-               The object structure is documented below.
-        :param pulumi.Input[_builtins.str] scaling_policy_name: Specifies the name of the AS policy. The name contains only letters, digits,
-               underscores(_), and hyphens(-), and cannot exceed 64 characters.
-        :param pulumi.Input[_builtins.str] scaling_policy_type: Specifies the AS policy type. The value can be `ALARM`, `SCHEDULED` or `RECURRENCE`.
-               + **ALARM**: indicates that the scaling action is triggered by an alarm.
-               + **SCHEDULED**: indicates that the scaling action is triggered as scheduled.
-               + **RECURRENCE**: indicates that the scaling action is triggered periodically.
-        :param pulumi.Input[Union['PolicyScheduledPolicyArgs', 'PolicyScheduledPolicyArgsDict']] scheduled_policy: Specifies the periodic or scheduled AS policy.
-               This parameter is mandatory when `scaling_policy_type` is set to `SCHEDULED` or `RECURRENCE`.
-               The object structure is documented below.
-        :param pulumi.Input[_builtins.str] status: The AS policy status. The value can be *INSERVICE*, *PAUSED* or *EXECUTING*.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -763,22 +404,11 @@ class Policy(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="alarmId")
     def alarm_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the alarm rule ID. This parameter is mandatory when `scaling_policy_type`
-        is set to `ALARM`.
-        """
         return pulumi.get(self, "alarm_id")
 
     @_builtins.property
     @pulumi.getter(name="coolDownTime")
     def cool_down_time(self) -> pulumi.Output[_builtins.int]:
-        """
-        Specifies the cooling duration (in seconds).
-        The value ranges from 0 to 86400 and is 300 by default.
-
-        <a name="scheduled_policy_object"></a>
-        The `scheduled_policy` block supports:
-        """
         return pulumi.get(self, "cool_down_time")
 
     @_builtins.property
@@ -789,64 +419,35 @@ class Policy(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the AS policy. If omitted, the
-        provider-level region will be used. Changing this creates a new AS policy.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="scalingGroupId")
     def scaling_group_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the AS group ID. Changing this creates a new AS policy.
-        """
         return pulumi.get(self, "scaling_group_id")
 
     @_builtins.property
     @pulumi.getter(name="scalingPolicyAction")
     def scaling_policy_action(self) -> pulumi.Output['outputs.PolicyScalingPolicyAction']:
-        """
-        Specifies the action of the AS policy.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "scaling_policy_action")
 
     @_builtins.property
     @pulumi.getter(name="scalingPolicyName")
     def scaling_policy_name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the name of the AS policy. The name contains only letters, digits,
-        underscores(_), and hyphens(-), and cannot exceed 64 characters.
-        """
         return pulumi.get(self, "scaling_policy_name")
 
     @_builtins.property
     @pulumi.getter(name="scalingPolicyType")
     def scaling_policy_type(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the AS policy type. The value can be `ALARM`, `SCHEDULED` or `RECURRENCE`.
-        + **ALARM**: indicates that the scaling action is triggered by an alarm.
-        + **SCHEDULED**: indicates that the scaling action is triggered as scheduled.
-        + **RECURRENCE**: indicates that the scaling action is triggered periodically.
-        """
         return pulumi.get(self, "scaling_policy_type")
 
     @_builtins.property
     @pulumi.getter(name="scheduledPolicy")
     def scheduled_policy(self) -> pulumi.Output['outputs.PolicyScheduledPolicy']:
-        """
-        Specifies the periodic or scheduled AS policy.
-        This parameter is mandatory when `scaling_policy_type` is set to `SCHEDULED` or `RECURRENCE`.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "scheduled_policy")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
-        """
-        The AS policy status. The value can be *INSERVICE*, *PAUSED* or *EXECUTING*.
-        """
         return pulumi.get(self, "status")
 

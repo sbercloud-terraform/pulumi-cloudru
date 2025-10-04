@@ -11,36 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of applications within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := cfg.RequireObject("name")
-//			_, err := sbercloud.GetFgsApplications(ctx, &cloudru.GetFgsApplicationsArgs{
-//				Name: pulumi.StringRef(name),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetFgsApplications(ctx *pulumi.Context, args *GetFgsApplicationsArgs, opts ...pulumi.InvokeOption) (*GetFgsApplicationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFgsApplicationsResult
@@ -53,36 +23,22 @@ func GetFgsApplications(ctx *pulumi.Context, args *GetFgsApplicationsArgs, opts 
 
 // A collection of arguments for invoking getFgsApplications.
 type GetFgsApplicationsArgs struct {
-	// Specifies the application ID used to query specified application.
 	ApplicationId *string `pulumi:"applicationId"`
-	// Specifies the description of the application to be queried.
-	Description *string `pulumi:"description"`
-	// Specifies the application name used to query specified application.
-	Name *string `pulumi:"name"`
-	// Specifies the region where the applications are located.\
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the status of the application to be queried.\
-	// The valid values are as follows:
-	// + **success**: The application created successfully.
-	// + **repoFail**: The application repository creation failed.
-	Status *string `pulumi:"status"`
+	Description   *string `pulumi:"description"`
+	Name          *string `pulumi:"name"`
+	Region        *string `pulumi:"region"`
+	Status        *string `pulumi:"status"`
 }
 
 // A collection of values returned by getFgsApplications.
 type GetFgsApplicationsResult struct {
-	ApplicationId *string `pulumi:"applicationId"`
-	// All applications that match the filter parameters.
-	// The applications structure is documented below.
-	Applications []GetFgsApplicationsApplication `pulumi:"applications"`
-	// The description of application.
-	Description *string `pulumi:"description"`
+	ApplicationId *string                         `pulumi:"applicationId"`
+	Applications  []GetFgsApplicationsApplication `pulumi:"applications"`
+	Description   *string                         `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The name of application.
+	Id     string  `pulumi:"id"`
 	Name   *string `pulumi:"name"`
 	Region string  `pulumi:"region"`
-	// The status of application.
 	Status *string `pulumi:"status"`
 }
 
@@ -97,20 +53,11 @@ func GetFgsApplicationsOutput(ctx *pulumi.Context, args GetFgsApplicationsOutput
 
 // A collection of arguments for invoking getFgsApplications.
 type GetFgsApplicationsOutputArgs struct {
-	// Specifies the application ID used to query specified application.
 	ApplicationId pulumi.StringPtrInput `pulumi:"applicationId"`
-	// Specifies the description of the application to be queried.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Specifies the application name used to query specified application.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the region where the applications are located.\
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the status of the application to be queried.\
-	// The valid values are as follows:
-	// + **success**: The application created successfully.
-	// + **repoFail**: The application repository creation failed.
-	Status pulumi.StringPtrInput `pulumi:"status"`
+	Description   pulumi.StringPtrInput `pulumi:"description"`
+	Name          pulumi.StringPtrInput `pulumi:"name"`
+	Region        pulumi.StringPtrInput `pulumi:"region"`
+	Status        pulumi.StringPtrInput `pulumi:"status"`
 }
 
 func (GetFgsApplicationsOutputArgs) ElementType() reflect.Type {
@@ -136,13 +83,10 @@ func (o GetFgsApplicationsResultOutput) ApplicationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFgsApplicationsResult) *string { return v.ApplicationId }).(pulumi.StringPtrOutput)
 }
 
-// All applications that match the filter parameters.
-// The applications structure is documented below.
 func (o GetFgsApplicationsResultOutput) Applications() GetFgsApplicationsApplicationArrayOutput {
 	return o.ApplyT(func(v GetFgsApplicationsResult) []GetFgsApplicationsApplication { return v.Applications }).(GetFgsApplicationsApplicationArrayOutput)
 }
 
-// The description of application.
 func (o GetFgsApplicationsResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFgsApplicationsResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -152,7 +96,6 @@ func (o GetFgsApplicationsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFgsApplicationsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of application.
 func (o GetFgsApplicationsResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFgsApplicationsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -161,7 +104,6 @@ func (o GetFgsApplicationsResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFgsApplicationsResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The status of application.
 func (o GetFgsApplicationsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFgsApplicationsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

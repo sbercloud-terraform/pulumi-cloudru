@@ -45,41 +45,6 @@ class BucketArgs:
                  website: Optional[pulumi.Input['BucketWebsiteArgs']] = None):
         """
         The set of arguments for constructing a Bucket resource.
-        :param pulumi.Input[_builtins.str] bucket: Specifies the name of the bucket. Changing this parameter will create a new resource.
-               A bucket must be named according to the globally applied DNS naming regulations as follows:
-               * The name must be globally unique in OBS.
-               * The name must contain 3 to 63 characters. Only lowercase letters, digits, hyphens (-), and periods (.) are allowed.
-               * The name cannot start or end with a period (.) or hyphen (-), and cannot contain two consecutive periods (.) or contain a period (.) and a hyphen (-) adjacent to each other.
-               * The name cannot be an IP address.
-               * If the name contains any periods (.), a security certificate verification message may appear when you access the bucket or its objects by entering a domain name.
-        :param pulumi.Input[_builtins.str] acl: Specifies the ACL policy for a bucket. The predefined common policies are as follows: "private", "public-read", "public-read-write" and "log-delivery-write". Defaults to `private`.
-        :param pulumi.Input[Sequence[pulumi.Input['BucketCorsRuleArgs']]] cors_rules: A rule of Cross-Origin Resource Sharing (documented below).
-        :param pulumi.Input[_builtins.bool] encryption: Whether enable default server-side encryption of the bucket in SSE-KMS mode.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the OBS bucket. Changing this creates a OBS bucket.
-        :param pulumi.Input[_builtins.bool] force_destroy: A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. Default to `false`.
-        :param pulumi.Input[_builtins.str] kms_key_id: Specifies the ID of a KMS key. If omitted, the default master key will be used.
-        :param pulumi.Input[_builtins.str] kms_key_project_id: Specifies the project ID to which the KMS key belongs. If omitted, the ID
-               of the provider-level project will be used.
-        :param pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]] lifecycle_rules: A configuration of object lifecycle management (documented below).
-        :param pulumi.Input[Sequence[pulumi.Input['BucketLoggingArgs']]] loggings: A settings of bucket logging (documented below).
-        :param pulumi.Input[_builtins.bool] multi_az: Whether enable the multi-AZ mode for the bucket. When the multi-AZ mode is
-               enabled, data in the bucket is duplicated and stored in multiple AZs.
-               
-               > **NOTE:** Once a bucket is created, you cannot enable or disable the multi-AZ mode. Changing this will create a new
-               bucket, but the name of a deleted bucket can be reused for another bucket at least 30 minutes after the deletion.
-               Exercise caution when changing this field.
-        :param pulumi.Input[_builtins.bool] parallel_fs: Whether enable a bucket as a parallel file system. Changing this will
-               create a new bucket.
-        :param pulumi.Input[_builtins.str] policy: Specifies the text of the bucket policy in JSON format. For more information about
-               obs format bucket policy, see the [Developer Guide](https://support.hc.sbercloud.ru/api/obs/obs_04_0027.html).
-        :param pulumi.Input[_builtins.str] policy_format: Specifies the policy format, the supported values are *obs* and *s3*. Defaults to *obs*.
-        :param pulumi.Input[_builtins.int] quota: Specifies bucket storage quota. Must be a positive integer in the unit of byte. The maximum storage quota is 2<sup>63</sup> – 1 bytes. The default bucket storage quota is 0, indicating that the bucket storage quota is not limited.
-        :param pulumi.Input[_builtins.str] region: Specified the region where this bucket will be created. If not specified, used the region by the provider.
-        :param pulumi.Input[_builtins.str] storage_class: Specifies the storage class of the bucket. OBS provides three storage classes: "STANDARD", "WARM" (Infrequent Access) and "COLD" (Archive). Defaults to `STANDARD`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the bucket. Each tag is represented by one key-value pair.
-        :param pulumi.Input[_builtins.bool] versioning: Whether enable versioning. Once you version-enable a bucket, it can never return to an unversioned state.
-               You can, however, suspend versioning on that bucket.
-        :param pulumi.Input['BucketWebsiteArgs'] website: A website object (documented below).
         """
         pulumi.set(__self__, "bucket", bucket)
         if acl is not None:
@@ -128,15 +93,6 @@ class BucketArgs:
     @_builtins.property
     @pulumi.getter
     def bucket(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the name of the bucket. Changing this parameter will create a new resource.
-        A bucket must be named according to the globally applied DNS naming regulations as follows:
-        * The name must be globally unique in OBS.
-        * The name must contain 3 to 63 characters. Only lowercase letters, digits, hyphens (-), and periods (.) are allowed.
-        * The name cannot start or end with a period (.) or hyphen (-), and cannot contain two consecutive periods (.) or contain a period (.) and a hyphen (-) adjacent to each other.
-        * The name cannot be an IP address.
-        * If the name contains any periods (.), a security certificate verification message may appear when you access the bucket or its objects by entering a domain name.
-        """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
@@ -146,9 +102,6 @@ class BucketArgs:
     @_builtins.property
     @pulumi.getter
     def acl(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ACL policy for a bucket. The predefined common policies are as follows: "private", "public-read", "public-read-write" and "log-delivery-write". Defaults to `private`.
-        """
         return pulumi.get(self, "acl")
 
     @acl.setter
@@ -158,9 +111,6 @@ class BucketArgs:
     @_builtins.property
     @pulumi.getter(name="corsRules")
     def cors_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorsRuleArgs']]]]:
-        """
-        A rule of Cross-Origin Resource Sharing (documented below).
-        """
         return pulumi.get(self, "cors_rules")
 
     @cors_rules.setter
@@ -170,9 +120,6 @@ class BucketArgs:
     @_builtins.property
     @pulumi.getter
     def encryption(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether enable default server-side encryption of the bucket in SSE-KMS mode.
-        """
         return pulumi.get(self, "encryption")
 
     @encryption.setter
@@ -182,9 +129,6 @@ class BucketArgs:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The enterprise project id of the OBS bucket. Changing this creates a OBS bucket.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -194,9 +138,6 @@ class BucketArgs:
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. Default to `false`.
-        """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
@@ -206,9 +147,6 @@ class BucketArgs:
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of a KMS key. If omitted, the default master key will be used.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
@@ -218,10 +156,6 @@ class BucketArgs:
     @_builtins.property
     @pulumi.getter(name="kmsKeyProjectId")
     def kms_key_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the project ID to which the KMS key belongs. If omitted, the ID
-        of the provider-level project will be used.
-        """
         return pulumi.get(self, "kms_key_project_id")
 
     @kms_key_project_id.setter
@@ -231,9 +165,6 @@ class BucketArgs:
     @_builtins.property
     @pulumi.getter(name="lifecycleRules")
     def lifecycle_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]]:
-        """
-        A configuration of object lifecycle management (documented below).
-        """
         return pulumi.get(self, "lifecycle_rules")
 
     @lifecycle_rules.setter
@@ -243,9 +174,6 @@ class BucketArgs:
     @_builtins.property
     @pulumi.getter
     def loggings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketLoggingArgs']]]]:
-        """
-        A settings of bucket logging (documented below).
-        """
         return pulumi.get(self, "loggings")
 
     @loggings.setter
@@ -255,14 +183,6 @@ class BucketArgs:
     @_builtins.property
     @pulumi.getter(name="multiAz")
     def multi_az(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether enable the multi-AZ mode for the bucket. When the multi-AZ mode is
-        enabled, data in the bucket is duplicated and stored in multiple AZs.
-
-        > **NOTE:** Once a bucket is created, you cannot enable or disable the multi-AZ mode. Changing this will create a new
-        bucket, but the name of a deleted bucket can be reused for another bucket at least 30 minutes after the deletion.
-        Exercise caution when changing this field.
-        """
         return pulumi.get(self, "multi_az")
 
     @multi_az.setter
@@ -272,10 +192,6 @@ class BucketArgs:
     @_builtins.property
     @pulumi.getter(name="parallelFs")
     def parallel_fs(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether enable a bucket as a parallel file system. Changing this will
-        create a new bucket.
-        """
         return pulumi.get(self, "parallel_fs")
 
     @parallel_fs.setter
@@ -285,10 +201,6 @@ class BucketArgs:
     @_builtins.property
     @pulumi.getter
     def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the text of the bucket policy in JSON format. For more information about
-        obs format bucket policy, see the [Developer Guide](https://support.hc.sbercloud.ru/api/obs/obs_04_0027.html).
-        """
         return pulumi.get(self, "policy")
 
     @policy.setter
@@ -298,9 +210,6 @@ class BucketArgs:
     @_builtins.property
     @pulumi.getter(name="policyFormat")
     def policy_format(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the policy format, the supported values are *obs* and *s3*. Defaults to *obs*.
-        """
         return pulumi.get(self, "policy_format")
 
     @policy_format.setter
@@ -310,9 +219,6 @@ class BucketArgs:
     @_builtins.property
     @pulumi.getter
     def quota(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies bucket storage quota. Must be a positive integer in the unit of byte. The maximum storage quota is 2<sup>63</sup> – 1 bytes. The default bucket storage quota is 0, indicating that the bucket storage quota is not limited.
-        """
         return pulumi.get(self, "quota")
 
     @quota.setter
@@ -322,9 +228,6 @@ class BucketArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specified the region where this bucket will be created. If not specified, used the region by the provider.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -343,9 +246,6 @@ class BucketArgs:
     @_builtins.property
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the storage class of the bucket. OBS provides three storage classes: "STANDARD", "WARM" (Infrequent Access) and "COLD" (Archive). Defaults to `STANDARD`.
-        """
         return pulumi.get(self, "storage_class")
 
     @storage_class.setter
@@ -355,9 +255,6 @@ class BucketArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        A mapping of tags to assign to the bucket. Each tag is represented by one key-value pair.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -376,10 +273,6 @@ class BucketArgs:
     @_builtins.property
     @pulumi.getter
     def versioning(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether enable versioning. Once you version-enable a bucket, it can never return to an unversioned state.
-        You can, however, suspend versioning on that bucket.
-        """
         return pulumi.get(self, "versioning")
 
     @versioning.setter
@@ -389,9 +282,6 @@ class BucketArgs:
     @_builtins.property
     @pulumi.getter
     def website(self) -> Optional[pulumi.Input['BucketWebsiteArgs']]:
-        """
-        A website object (documented below).
-        """
         return pulumi.get(self, "website")
 
     @website.setter
@@ -429,45 +319,6 @@ class _BucketState:
                  website: Optional[pulumi.Input['BucketWebsiteArgs']] = None):
         """
         Input properties used for looking up and filtering Bucket resources.
-        :param pulumi.Input[_builtins.str] acl: Specifies the ACL policy for a bucket. The predefined common policies are as follows: "private", "public-read", "public-read-write" and "log-delivery-write". Defaults to `private`.
-        :param pulumi.Input[_builtins.str] bucket: Specifies the name of the bucket. Changing this parameter will create a new resource.
-               A bucket must be named according to the globally applied DNS naming regulations as follows:
-               * The name must be globally unique in OBS.
-               * The name must contain 3 to 63 characters. Only lowercase letters, digits, hyphens (-), and periods (.) are allowed.
-               * The name cannot start or end with a period (.) or hyphen (-), and cannot contain two consecutive periods (.) or contain a period (.) and a hyphen (-) adjacent to each other.
-               * The name cannot be an IP address.
-               * If the name contains any periods (.), a security certificate verification message may appear when you access the bucket or its objects by entering a domain name.
-        :param pulumi.Input[_builtins.str] bucket_domain_name: The bucket domain name. Will be of format `bucketname.obs.region.hc.sbercloud.ru`.
-        :param pulumi.Input[_builtins.str] bucket_version: The OBS version of the bucket.
-        :param pulumi.Input[Sequence[pulumi.Input['BucketCorsRuleArgs']]] cors_rules: A rule of Cross-Origin Resource Sharing (documented below).
-        :param pulumi.Input[_builtins.bool] encryption: Whether enable default server-side encryption of the bucket in SSE-KMS mode.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the OBS bucket. Changing this creates a OBS bucket.
-        :param pulumi.Input[_builtins.bool] force_destroy: A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. Default to `false`.
-        :param pulumi.Input[_builtins.str] kms_key_id: Specifies the ID of a KMS key. If omitted, the default master key will be used.
-        :param pulumi.Input[_builtins.str] kms_key_project_id: Specifies the project ID to which the KMS key belongs. If omitted, the ID
-               of the provider-level project will be used.
-        :param pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]] lifecycle_rules: A configuration of object lifecycle management (documented below).
-        :param pulumi.Input[Sequence[pulumi.Input['BucketLoggingArgs']]] loggings: A settings of bucket logging (documented below).
-        :param pulumi.Input[_builtins.bool] multi_az: Whether enable the multi-AZ mode for the bucket. When the multi-AZ mode is
-               enabled, data in the bucket is duplicated and stored in multiple AZs.
-               
-               > **NOTE:** Once a bucket is created, you cannot enable or disable the multi-AZ mode. Changing this will create a new
-               bucket, but the name of a deleted bucket can be reused for another bucket at least 30 minutes after the deletion.
-               Exercise caution when changing this field.
-        :param pulumi.Input[_builtins.bool] parallel_fs: Whether enable a bucket as a parallel file system. Changing this will
-               create a new bucket.
-        :param pulumi.Input[_builtins.str] policy: Specifies the text of the bucket policy in JSON format. For more information about
-               obs format bucket policy, see the [Developer Guide](https://support.hc.sbercloud.ru/api/obs/obs_04_0027.html).
-        :param pulumi.Input[_builtins.str] policy_format: Specifies the policy format, the supported values are *obs* and *s3*. Defaults to *obs*.
-        :param pulumi.Input[_builtins.int] quota: Specifies bucket storage quota. Must be a positive integer in the unit of byte. The maximum storage quota is 2<sup>63</sup> – 1 bytes. The default bucket storage quota is 0, indicating that the bucket storage quota is not limited.
-        :param pulumi.Input[_builtins.str] region: Specified the region where this bucket will be created. If not specified, used the region by the provider.
-        :param pulumi.Input[_builtins.str] storage_class: Specifies the storage class of the bucket. OBS provides three storage classes: "STANDARD", "WARM" (Infrequent Access) and "COLD" (Archive). Defaults to `STANDARD`.
-        :param pulumi.Input[Sequence[pulumi.Input['BucketStorageInfoArgs']]] storage_infos: The OBS storage info of the bucket.
-               The object structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the bucket. Each tag is represented by one key-value pair.
-        :param pulumi.Input[_builtins.bool] versioning: Whether enable versioning. Once you version-enable a bucket, it can never return to an unversioned state.
-               You can, however, suspend versioning on that bucket.
-        :param pulumi.Input['BucketWebsiteArgs'] website: A website object (documented below).
         """
         if acl is not None:
             pulumi.set(__self__, "acl", acl)
@@ -523,9 +374,6 @@ class _BucketState:
     @_builtins.property
     @pulumi.getter
     def acl(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ACL policy for a bucket. The predefined common policies are as follows: "private", "public-read", "public-read-write" and "log-delivery-write". Defaults to `private`.
-        """
         return pulumi.get(self, "acl")
 
     @acl.setter
@@ -535,15 +383,6 @@ class _BucketState:
     @_builtins.property
     @pulumi.getter
     def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the bucket. Changing this parameter will create a new resource.
-        A bucket must be named according to the globally applied DNS naming regulations as follows:
-        * The name must be globally unique in OBS.
-        * The name must contain 3 to 63 characters. Only lowercase letters, digits, hyphens (-), and periods (.) are allowed.
-        * The name cannot start or end with a period (.) or hyphen (-), and cannot contain two consecutive periods (.) or contain a period (.) and a hyphen (-) adjacent to each other.
-        * The name cannot be an IP address.
-        * If the name contains any periods (.), a security certificate verification message may appear when you access the bucket or its objects by entering a domain name.
-        """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
@@ -553,9 +392,6 @@ class _BucketState:
     @_builtins.property
     @pulumi.getter(name="bucketDomainName")
     def bucket_domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The bucket domain name. Will be of format `bucketname.obs.region.hc.sbercloud.ru`.
-        """
         return pulumi.get(self, "bucket_domain_name")
 
     @bucket_domain_name.setter
@@ -565,9 +401,6 @@ class _BucketState:
     @_builtins.property
     @pulumi.getter(name="bucketVersion")
     def bucket_version(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The OBS version of the bucket.
-        """
         return pulumi.get(self, "bucket_version")
 
     @bucket_version.setter
@@ -577,9 +410,6 @@ class _BucketState:
     @_builtins.property
     @pulumi.getter(name="corsRules")
     def cors_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorsRuleArgs']]]]:
-        """
-        A rule of Cross-Origin Resource Sharing (documented below).
-        """
         return pulumi.get(self, "cors_rules")
 
     @cors_rules.setter
@@ -589,9 +419,6 @@ class _BucketState:
     @_builtins.property
     @pulumi.getter
     def encryption(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether enable default server-side encryption of the bucket in SSE-KMS mode.
-        """
         return pulumi.get(self, "encryption")
 
     @encryption.setter
@@ -601,9 +428,6 @@ class _BucketState:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The enterprise project id of the OBS bucket. Changing this creates a OBS bucket.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -613,9 +437,6 @@ class _BucketState:
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. Default to `false`.
-        """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
@@ -625,9 +446,6 @@ class _BucketState:
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of a KMS key. If omitted, the default master key will be used.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
@@ -637,10 +455,6 @@ class _BucketState:
     @_builtins.property
     @pulumi.getter(name="kmsKeyProjectId")
     def kms_key_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the project ID to which the KMS key belongs. If omitted, the ID
-        of the provider-level project will be used.
-        """
         return pulumi.get(self, "kms_key_project_id")
 
     @kms_key_project_id.setter
@@ -650,9 +464,6 @@ class _BucketState:
     @_builtins.property
     @pulumi.getter(name="lifecycleRules")
     def lifecycle_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]]:
-        """
-        A configuration of object lifecycle management (documented below).
-        """
         return pulumi.get(self, "lifecycle_rules")
 
     @lifecycle_rules.setter
@@ -662,9 +473,6 @@ class _BucketState:
     @_builtins.property
     @pulumi.getter
     def loggings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketLoggingArgs']]]]:
-        """
-        A settings of bucket logging (documented below).
-        """
         return pulumi.get(self, "loggings")
 
     @loggings.setter
@@ -674,14 +482,6 @@ class _BucketState:
     @_builtins.property
     @pulumi.getter(name="multiAz")
     def multi_az(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether enable the multi-AZ mode for the bucket. When the multi-AZ mode is
-        enabled, data in the bucket is duplicated and stored in multiple AZs.
-
-        > **NOTE:** Once a bucket is created, you cannot enable or disable the multi-AZ mode. Changing this will create a new
-        bucket, but the name of a deleted bucket can be reused for another bucket at least 30 minutes after the deletion.
-        Exercise caution when changing this field.
-        """
         return pulumi.get(self, "multi_az")
 
     @multi_az.setter
@@ -691,10 +491,6 @@ class _BucketState:
     @_builtins.property
     @pulumi.getter(name="parallelFs")
     def parallel_fs(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether enable a bucket as a parallel file system. Changing this will
-        create a new bucket.
-        """
         return pulumi.get(self, "parallel_fs")
 
     @parallel_fs.setter
@@ -704,10 +500,6 @@ class _BucketState:
     @_builtins.property
     @pulumi.getter
     def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the text of the bucket policy in JSON format. For more information about
-        obs format bucket policy, see the [Developer Guide](https://support.hc.sbercloud.ru/api/obs/obs_04_0027.html).
-        """
         return pulumi.get(self, "policy")
 
     @policy.setter
@@ -717,9 +509,6 @@ class _BucketState:
     @_builtins.property
     @pulumi.getter(name="policyFormat")
     def policy_format(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the policy format, the supported values are *obs* and *s3*. Defaults to *obs*.
-        """
         return pulumi.get(self, "policy_format")
 
     @policy_format.setter
@@ -729,9 +518,6 @@ class _BucketState:
     @_builtins.property
     @pulumi.getter
     def quota(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies bucket storage quota. Must be a positive integer in the unit of byte. The maximum storage quota is 2<sup>63</sup> – 1 bytes. The default bucket storage quota is 0, indicating that the bucket storage quota is not limited.
-        """
         return pulumi.get(self, "quota")
 
     @quota.setter
@@ -741,9 +527,6 @@ class _BucketState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specified the region where this bucket will be created. If not specified, used the region by the provider.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -762,9 +545,6 @@ class _BucketState:
     @_builtins.property
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the storage class of the bucket. OBS provides three storage classes: "STANDARD", "WARM" (Infrequent Access) and "COLD" (Archive). Defaults to `STANDARD`.
-        """
         return pulumi.get(self, "storage_class")
 
     @storage_class.setter
@@ -774,10 +554,6 @@ class _BucketState:
     @_builtins.property
     @pulumi.getter(name="storageInfos")
     def storage_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketStorageInfoArgs']]]]:
-        """
-        The OBS storage info of the bucket.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "storage_infos")
 
     @storage_infos.setter
@@ -787,9 +563,6 @@ class _BucketState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        A mapping of tags to assign to the bucket. Each tag is represented by one key-value pair.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -808,10 +581,6 @@ class _BucketState:
     @_builtins.property
     @pulumi.getter
     def versioning(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether enable versioning. Once you version-enable a bucket, it can never return to an unversioned state.
-        You can, however, suspend versioning on that bucket.
-        """
         return pulumi.get(self, "versioning")
 
     @versioning.setter
@@ -821,9 +590,6 @@ class _BucketState:
     @_builtins.property
     @pulumi.getter
     def website(self) -> Optional[pulumi.Input['BucketWebsiteArgs']]:
-        """
-        A website object (documented below).
-        """
         return pulumi.get(self, "website")
 
     @website.setter
@@ -861,200 +627,9 @@ class Bucket(pulumi.CustomResource):
                  website: Optional[pulumi.Input[Union['BucketWebsiteArgs', 'BucketWebsiteArgsDict']]] = None,
                  __props__=None):
         """
-        Provides an OBS bucket resource.
-
-        ## Example Usage
-
-        ### Private Bucket with Tags
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        b = sbercloud.obs.Bucket("b",
-            bucket="my-tf-test-bucket",
-            acl="private",
-            tags={
-                "foo": "bar",
-                "Env": "Test",
-            })
-        ```
-
-        ### Enable versioning
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        b = sbercloud.obs.Bucket("b",
-            bucket="my-tf-test-bucket",
-            acl="private",
-            versioning=True)
-        ```
-
-        ### Enable Logging
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        log_bucket = sbercloud.obs.Bucket("log_bucket",
-            bucket="my-tf-log-bucket",
-            acl="log-delivery-write")
-        b = sbercloud.obs.Bucket("b",
-            bucket="my-tf-test-bucket",
-            acl="private",
-            loggings=[{
-                "target_bucket": log_bucket.id,
-                "target_prefix": "log/",
-            }])
-        ```
-
-        ### Static Website Hosting
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        b = sbercloud.obs.Bucket("b",
-            bucket="obs-website-test.hashicorp.com",
-            acl="public-read",
-            website={
-                "index_document": "index.html",
-                "error_document": "error.html",
-                "routing_rules": \"\"\"[{
-            "Condition": {
-                "KeyPrefixEquals": "docs/"
-            },
-            "Redirect": {
-                "ReplaceKeyPrefixWith": "documents/"
-            }
-        }]
-        \"\"\",
-            })
-        ```
-
-        ### Using CORS
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        b = sbercloud.obs.Bucket("b",
-            bucket="obs-website-test.hashicorp.com",
-            acl="public-read",
-            cors_rules=[{
-                "allowed_origins": ["https://obs-website-test.hashicorp.com"],
-                "allowed_methods": [
-                    "PUT",
-                    "POST",
-                ],
-                "allowed_headers": ["*"],
-                "expose_headers": ["ETag"],
-                "max_age_seconds": 3000,
-            }])
-        ```
-
-        ### Using object lifecycle
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        bucket = sbercloud.obs.Bucket("bucket",
-            bucket="my-bucket",
-            acl="private",
-            versioning=True,
-            lifecycle_rules=[
-                {
-                    "name": "log",
-                    "prefix": "log/",
-                    "enabled": True,
-                    "expirations": [{
-                        "days": 365,
-                    }],
-                    "transitions": [
-                        {
-                            "days": 60,
-                            "storage_class": "WARM",
-                        },
-                        {
-                            "days": 180,
-                            "storage_class": "COLD",
-                        },
-                    ],
-                },
-                {
-                    "name": "tmp",
-                    "prefix": "tmp/",
-                    "enabled": True,
-                    "noncurrent_version_expirations": [{
-                        "days": 180,
-                    }],
-                    "noncurrent_version_transitions": [
-                        {
-                            "days": 30,
-                            "storage_class": "WARM",
-                        },
-                        {
-                            "days": 60,
-                            "storage_class": "COLD",
-                        },
-                    ],
-                },
-            ])
-        ```
-
-        ## Import
-
-        OBS bucket can be imported using the `bucket`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Obs/bucket:Bucket bucket <bucket-name>
-        ```
-        OBS bucket with S3 foramt bucket policy can be imported using the `bucket` and "s3" by a slash, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Obs/bucket:Bucket s3_policy <bucket-name>/s3
-        ```
-
+        Create a Bucket resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] acl: Specifies the ACL policy for a bucket. The predefined common policies are as follows: "private", "public-read", "public-read-write" and "log-delivery-write". Defaults to `private`.
-        :param pulumi.Input[_builtins.str] bucket: Specifies the name of the bucket. Changing this parameter will create a new resource.
-               A bucket must be named according to the globally applied DNS naming regulations as follows:
-               * The name must be globally unique in OBS.
-               * The name must contain 3 to 63 characters. Only lowercase letters, digits, hyphens (-), and periods (.) are allowed.
-               * The name cannot start or end with a period (.) or hyphen (-), and cannot contain two consecutive periods (.) or contain a period (.) and a hyphen (-) adjacent to each other.
-               * The name cannot be an IP address.
-               * If the name contains any periods (.), a security certificate verification message may appear when you access the bucket or its objects by entering a domain name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BucketCorsRuleArgs', 'BucketCorsRuleArgsDict']]]] cors_rules: A rule of Cross-Origin Resource Sharing (documented below).
-        :param pulumi.Input[_builtins.bool] encryption: Whether enable default server-side encryption of the bucket in SSE-KMS mode.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the OBS bucket. Changing this creates a OBS bucket.
-        :param pulumi.Input[_builtins.bool] force_destroy: A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. Default to `false`.
-        :param pulumi.Input[_builtins.str] kms_key_id: Specifies the ID of a KMS key. If omitted, the default master key will be used.
-        :param pulumi.Input[_builtins.str] kms_key_project_id: Specifies the project ID to which the KMS key belongs. If omitted, the ID
-               of the provider-level project will be used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BucketLifecycleRuleArgs', 'BucketLifecycleRuleArgsDict']]]] lifecycle_rules: A configuration of object lifecycle management (documented below).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BucketLoggingArgs', 'BucketLoggingArgsDict']]]] loggings: A settings of bucket logging (documented below).
-        :param pulumi.Input[_builtins.bool] multi_az: Whether enable the multi-AZ mode for the bucket. When the multi-AZ mode is
-               enabled, data in the bucket is duplicated and stored in multiple AZs.
-               
-               > **NOTE:** Once a bucket is created, you cannot enable or disable the multi-AZ mode. Changing this will create a new
-               bucket, but the name of a deleted bucket can be reused for another bucket at least 30 minutes after the deletion.
-               Exercise caution when changing this field.
-        :param pulumi.Input[_builtins.bool] parallel_fs: Whether enable a bucket as a parallel file system. Changing this will
-               create a new bucket.
-        :param pulumi.Input[_builtins.str] policy: Specifies the text of the bucket policy in JSON format. For more information about
-               obs format bucket policy, see the [Developer Guide](https://support.hc.sbercloud.ru/api/obs/obs_04_0027.html).
-        :param pulumi.Input[_builtins.str] policy_format: Specifies the policy format, the supported values are *obs* and *s3*. Defaults to *obs*.
-        :param pulumi.Input[_builtins.int] quota: Specifies bucket storage quota. Must be a positive integer in the unit of byte. The maximum storage quota is 2<sup>63</sup> – 1 bytes. The default bucket storage quota is 0, indicating that the bucket storage quota is not limited.
-        :param pulumi.Input[_builtins.str] region: Specified the region where this bucket will be created. If not specified, used the region by the provider.
-        :param pulumi.Input[_builtins.str] storage_class: Specifies the storage class of the bucket. OBS provides three storage classes: "STANDARD", "WARM" (Infrequent Access) and "COLD" (Archive). Defaults to `STANDARD`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the bucket. Each tag is represented by one key-value pair.
-        :param pulumi.Input[_builtins.bool] versioning: Whether enable versioning. Once you version-enable a bucket, it can never return to an unversioned state.
-               You can, however, suspend versioning on that bucket.
-        :param pulumi.Input[Union['BucketWebsiteArgs', 'BucketWebsiteArgsDict']] website: A website object (documented below).
         """
         ...
     @overload
@@ -1063,163 +638,7 @@ class Bucket(pulumi.CustomResource):
                  args: BucketArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an OBS bucket resource.
-
-        ## Example Usage
-
-        ### Private Bucket with Tags
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        b = sbercloud.obs.Bucket("b",
-            bucket="my-tf-test-bucket",
-            acl="private",
-            tags={
-                "foo": "bar",
-                "Env": "Test",
-            })
-        ```
-
-        ### Enable versioning
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        b = sbercloud.obs.Bucket("b",
-            bucket="my-tf-test-bucket",
-            acl="private",
-            versioning=True)
-        ```
-
-        ### Enable Logging
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        log_bucket = sbercloud.obs.Bucket("log_bucket",
-            bucket="my-tf-log-bucket",
-            acl="log-delivery-write")
-        b = sbercloud.obs.Bucket("b",
-            bucket="my-tf-test-bucket",
-            acl="private",
-            loggings=[{
-                "target_bucket": log_bucket.id,
-                "target_prefix": "log/",
-            }])
-        ```
-
-        ### Static Website Hosting
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        b = sbercloud.obs.Bucket("b",
-            bucket="obs-website-test.hashicorp.com",
-            acl="public-read",
-            website={
-                "index_document": "index.html",
-                "error_document": "error.html",
-                "routing_rules": \"\"\"[{
-            "Condition": {
-                "KeyPrefixEquals": "docs/"
-            },
-            "Redirect": {
-                "ReplaceKeyPrefixWith": "documents/"
-            }
-        }]
-        \"\"\",
-            })
-        ```
-
-        ### Using CORS
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        b = sbercloud.obs.Bucket("b",
-            bucket="obs-website-test.hashicorp.com",
-            acl="public-read",
-            cors_rules=[{
-                "allowed_origins": ["https://obs-website-test.hashicorp.com"],
-                "allowed_methods": [
-                    "PUT",
-                    "POST",
-                ],
-                "allowed_headers": ["*"],
-                "expose_headers": ["ETag"],
-                "max_age_seconds": 3000,
-            }])
-        ```
-
-        ### Using object lifecycle
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        bucket = sbercloud.obs.Bucket("bucket",
-            bucket="my-bucket",
-            acl="private",
-            versioning=True,
-            lifecycle_rules=[
-                {
-                    "name": "log",
-                    "prefix": "log/",
-                    "enabled": True,
-                    "expirations": [{
-                        "days": 365,
-                    }],
-                    "transitions": [
-                        {
-                            "days": 60,
-                            "storage_class": "WARM",
-                        },
-                        {
-                            "days": 180,
-                            "storage_class": "COLD",
-                        },
-                    ],
-                },
-                {
-                    "name": "tmp",
-                    "prefix": "tmp/",
-                    "enabled": True,
-                    "noncurrent_version_expirations": [{
-                        "days": 180,
-                    }],
-                    "noncurrent_version_transitions": [
-                        {
-                            "days": 30,
-                            "storage_class": "WARM",
-                        },
-                        {
-                            "days": 60,
-                            "storage_class": "COLD",
-                        },
-                    ],
-                },
-            ])
-        ```
-
-        ## Import
-
-        OBS bucket can be imported using the `bucket`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Obs/bucket:Bucket bucket <bucket-name>
-        ```
-        OBS bucket with S3 foramt bucket policy can be imported using the `bucket` and "s3" by a slash, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Obs/bucket:Bucket s3_policy <bucket-name>/s3
-        ```
-
+        Create a Bucket resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param BucketArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1335,45 +754,6 @@ class Bucket(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] acl: Specifies the ACL policy for a bucket. The predefined common policies are as follows: "private", "public-read", "public-read-write" and "log-delivery-write". Defaults to `private`.
-        :param pulumi.Input[_builtins.str] bucket: Specifies the name of the bucket. Changing this parameter will create a new resource.
-               A bucket must be named according to the globally applied DNS naming regulations as follows:
-               * The name must be globally unique in OBS.
-               * The name must contain 3 to 63 characters. Only lowercase letters, digits, hyphens (-), and periods (.) are allowed.
-               * The name cannot start or end with a period (.) or hyphen (-), and cannot contain two consecutive periods (.) or contain a period (.) and a hyphen (-) adjacent to each other.
-               * The name cannot be an IP address.
-               * If the name contains any periods (.), a security certificate verification message may appear when you access the bucket or its objects by entering a domain name.
-        :param pulumi.Input[_builtins.str] bucket_domain_name: The bucket domain name. Will be of format `bucketname.obs.region.hc.sbercloud.ru`.
-        :param pulumi.Input[_builtins.str] bucket_version: The OBS version of the bucket.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BucketCorsRuleArgs', 'BucketCorsRuleArgsDict']]]] cors_rules: A rule of Cross-Origin Resource Sharing (documented below).
-        :param pulumi.Input[_builtins.bool] encryption: Whether enable default server-side encryption of the bucket in SSE-KMS mode.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the OBS bucket. Changing this creates a OBS bucket.
-        :param pulumi.Input[_builtins.bool] force_destroy: A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. Default to `false`.
-        :param pulumi.Input[_builtins.str] kms_key_id: Specifies the ID of a KMS key. If omitted, the default master key will be used.
-        :param pulumi.Input[_builtins.str] kms_key_project_id: Specifies the project ID to which the KMS key belongs. If omitted, the ID
-               of the provider-level project will be used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BucketLifecycleRuleArgs', 'BucketLifecycleRuleArgsDict']]]] lifecycle_rules: A configuration of object lifecycle management (documented below).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BucketLoggingArgs', 'BucketLoggingArgsDict']]]] loggings: A settings of bucket logging (documented below).
-        :param pulumi.Input[_builtins.bool] multi_az: Whether enable the multi-AZ mode for the bucket. When the multi-AZ mode is
-               enabled, data in the bucket is duplicated and stored in multiple AZs.
-               
-               > **NOTE:** Once a bucket is created, you cannot enable or disable the multi-AZ mode. Changing this will create a new
-               bucket, but the name of a deleted bucket can be reused for another bucket at least 30 minutes after the deletion.
-               Exercise caution when changing this field.
-        :param pulumi.Input[_builtins.bool] parallel_fs: Whether enable a bucket as a parallel file system. Changing this will
-               create a new bucket.
-        :param pulumi.Input[_builtins.str] policy: Specifies the text of the bucket policy in JSON format. For more information about
-               obs format bucket policy, see the [Developer Guide](https://support.hc.sbercloud.ru/api/obs/obs_04_0027.html).
-        :param pulumi.Input[_builtins.str] policy_format: Specifies the policy format, the supported values are *obs* and *s3*. Defaults to *obs*.
-        :param pulumi.Input[_builtins.int] quota: Specifies bucket storage quota. Must be a positive integer in the unit of byte. The maximum storage quota is 2<sup>63</sup> – 1 bytes. The default bucket storage quota is 0, indicating that the bucket storage quota is not limited.
-        :param pulumi.Input[_builtins.str] region: Specified the region where this bucket will be created. If not specified, used the region by the provider.
-        :param pulumi.Input[_builtins.str] storage_class: Specifies the storage class of the bucket. OBS provides three storage classes: "STANDARD", "WARM" (Infrequent Access) and "COLD" (Archive). Defaults to `STANDARD`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BucketStorageInfoArgs', 'BucketStorageInfoArgsDict']]]] storage_infos: The OBS storage info of the bucket.
-               The object structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the bucket. Each tag is represented by one key-value pair.
-        :param pulumi.Input[_builtins.bool] versioning: Whether enable versioning. Once you version-enable a bucket, it can never return to an unversioned state.
-               You can, however, suspend versioning on that bucket.
-        :param pulumi.Input[Union['BucketWebsiteArgs', 'BucketWebsiteArgsDict']] website: A website object (documented below).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1409,159 +789,91 @@ class Bucket(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def acl(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the ACL policy for a bucket. The predefined common policies are as follows: "private", "public-read", "public-read-write" and "log-delivery-write". Defaults to `private`.
-        """
         return pulumi.get(self, "acl")
 
     @_builtins.property
     @pulumi.getter
     def bucket(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the name of the bucket. Changing this parameter will create a new resource.
-        A bucket must be named according to the globally applied DNS naming regulations as follows:
-        * The name must be globally unique in OBS.
-        * The name must contain 3 to 63 characters. Only lowercase letters, digits, hyphens (-), and periods (.) are allowed.
-        * The name cannot start or end with a period (.) or hyphen (-), and cannot contain two consecutive periods (.) or contain a period (.) and a hyphen (-) adjacent to each other.
-        * The name cannot be an IP address.
-        * If the name contains any periods (.), a security certificate verification message may appear when you access the bucket or its objects by entering a domain name.
-        """
         return pulumi.get(self, "bucket")
 
     @_builtins.property
     @pulumi.getter(name="bucketDomainName")
     def bucket_domain_name(self) -> pulumi.Output[_builtins.str]:
-        """
-        The bucket domain name. Will be of format `bucketname.obs.region.hc.sbercloud.ru`.
-        """
         return pulumi.get(self, "bucket_domain_name")
 
     @_builtins.property
     @pulumi.getter(name="bucketVersion")
     def bucket_version(self) -> pulumi.Output[_builtins.str]:
-        """
-        The OBS version of the bucket.
-        """
         return pulumi.get(self, "bucket_version")
 
     @_builtins.property
     @pulumi.getter(name="corsRules")
     def cors_rules(self) -> pulumi.Output[Optional[Sequence['outputs.BucketCorsRule']]]:
-        """
-        A rule of Cross-Origin Resource Sharing (documented below).
-        """
         return pulumi.get(self, "cors_rules")
 
     @_builtins.property
     @pulumi.getter
     def encryption(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Whether enable default server-side encryption of the bucket in SSE-KMS mode.
-        """
         return pulumi.get(self, "encryption")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The enterprise project id of the OBS bucket. Changing this creates a OBS bucket.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. Default to `false`.
-        """
         return pulumi.get(self, "force_destroy")
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the ID of a KMS key. If omitted, the default master key will be used.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyProjectId")
     def kms_key_project_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the project ID to which the KMS key belongs. If omitted, the ID
-        of the provider-level project will be used.
-        """
         return pulumi.get(self, "kms_key_project_id")
 
     @_builtins.property
     @pulumi.getter(name="lifecycleRules")
     def lifecycle_rules(self) -> pulumi.Output[Optional[Sequence['outputs.BucketLifecycleRule']]]:
-        """
-        A configuration of object lifecycle management (documented below).
-        """
         return pulumi.get(self, "lifecycle_rules")
 
     @_builtins.property
     @pulumi.getter
     def loggings(self) -> pulumi.Output[Optional[Sequence['outputs.BucketLogging']]]:
-        """
-        A settings of bucket logging (documented below).
-        """
         return pulumi.get(self, "loggings")
 
     @_builtins.property
     @pulumi.getter(name="multiAz")
     def multi_az(self) -> pulumi.Output[_builtins.bool]:
-        """
-        Whether enable the multi-AZ mode for the bucket. When the multi-AZ mode is
-        enabled, data in the bucket is duplicated and stored in multiple AZs.
-
-        > **NOTE:** Once a bucket is created, you cannot enable or disable the multi-AZ mode. Changing this will create a new
-        bucket, but the name of a deleted bucket can be reused for another bucket at least 30 minutes after the deletion.
-        Exercise caution when changing this field.
-        """
         return pulumi.get(self, "multi_az")
 
     @_builtins.property
     @pulumi.getter(name="parallelFs")
     def parallel_fs(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Whether enable a bucket as a parallel file system. Changing this will
-        create a new bucket.
-        """
         return pulumi.get(self, "parallel_fs")
 
     @_builtins.property
     @pulumi.getter
     def policy(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the text of the bucket policy in JSON format. For more information about
-        obs format bucket policy, see the [Developer Guide](https://support.hc.sbercloud.ru/api/obs/obs_04_0027.html).
-        """
         return pulumi.get(self, "policy")
 
     @_builtins.property
     @pulumi.getter(name="policyFormat")
     def policy_format(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the policy format, the supported values are *obs* and *s3*. Defaults to *obs*.
-        """
         return pulumi.get(self, "policy_format")
 
     @_builtins.property
     @pulumi.getter
     def quota(self) -> pulumi.Output[Optional[_builtins.int]]:
-        """
-        Specifies bucket storage quota. Must be a positive integer in the unit of byte. The maximum storage quota is 2<sup>63</sup> – 1 bytes. The default bucket storage quota is 0, indicating that the bucket storage quota is not limited.
-        """
         return pulumi.get(self, "quota")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specified the region where this bucket will be created. If not specified, used the region by the provider.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
@@ -1572,26 +884,16 @@ class Bucket(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the storage class of the bucket. OBS provides three storage classes: "STANDARD", "WARM" (Infrequent Access) and "COLD" (Archive). Defaults to `STANDARD`.
-        """
         return pulumi.get(self, "storage_class")
 
     @_builtins.property
     @pulumi.getter(name="storageInfos")
     def storage_infos(self) -> pulumi.Output[Sequence['outputs.BucketStorageInfo']]:
-        """
-        The OBS storage info of the bucket.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "storage_infos")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        A mapping of tags to assign to the bucket. Each tag is represented by one key-value pair.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
@@ -1602,17 +904,10 @@ class Bucket(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def versioning(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Whether enable versioning. Once you version-enable a bucket, it can never return to an unversioned state.
-        You can, however, suspend versioning on that bucket.
-        """
         return pulumi.get(self, "versioning")
 
     @_builtins.property
     @pulumi.getter
     def website(self) -> pulumi.Output[Optional['outputs.BucketWebsite']]:
-        """
-        A website object (documented below).
-        """
         return pulumi.get(self, "website")
 

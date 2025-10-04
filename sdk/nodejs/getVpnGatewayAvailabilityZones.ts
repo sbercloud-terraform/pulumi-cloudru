@@ -4,22 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get the list of VPN gateway availability zones.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const flavor = config.requireObject<any>("flavor");
- * const test = sbercloud.getVpnGatewayAvailabilityZones({
- *     flavor: flavor,
- * });
- * ```
- */
 export function getVpnGatewayAvailabilityZones(args: GetVpnGatewayAvailabilityZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetVpnGatewayAvailabilityZonesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:index/getVpnGatewayAvailabilityZones:getVpnGatewayAvailabilityZones", {
@@ -33,20 +17,8 @@ export function getVpnGatewayAvailabilityZones(args: GetVpnGatewayAvailabilityZo
  * A collection of arguments for invoking getVpnGatewayAvailabilityZones.
  */
 export interface GetVpnGatewayAvailabilityZonesArgs {
-    /**
-     * Specifies the attachment type.
-     * The value can be **vpc** and **er**. Defaults to **vpc**.
-     */
     attachmentType?: string;
-    /**
-     * Specifies the flavor name.
-     * The value can be **Basic**, **Professional1**, **Professional2** and **GM**.
-     */
     flavor: string;
-    /**
-     * Specifies the region in which to query the data source.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
 }
 
@@ -60,28 +32,9 @@ export interface GetVpnGatewayAvailabilityZonesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The names of the availability zones.
-     */
     readonly names: string[];
     readonly region: string;
 }
-/**
- * Use this data source to get the list of VPN gateway availability zones.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const flavor = config.requireObject<any>("flavor");
- * const test = sbercloud.getVpnGatewayAvailabilityZones({
- *     flavor: flavor,
- * });
- * ```
- */
 export function getVpnGatewayAvailabilityZonesOutput(args: GetVpnGatewayAvailabilityZonesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpnGatewayAvailabilityZonesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:index/getVpnGatewayAvailabilityZones:getVpnGatewayAvailabilityZones", {
@@ -95,19 +48,7 @@ export function getVpnGatewayAvailabilityZonesOutput(args: GetVpnGatewayAvailabi
  * A collection of arguments for invoking getVpnGatewayAvailabilityZones.
  */
 export interface GetVpnGatewayAvailabilityZonesOutputArgs {
-    /**
-     * Specifies the attachment type.
-     * The value can be **vpc** and **er**. Defaults to **vpc**.
-     */
     attachmentType?: pulumi.Input<string>;
-    /**
-     * Specifies the flavor name.
-     * The value can be **Basic**, **Professional1**, **Professional2** and **GM**.
-     */
     flavor: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the data source.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
 }

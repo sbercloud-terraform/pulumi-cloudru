@@ -6,20 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the list of CFW firewalls.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.Cfw.getFirewalls({
- *     serviceType: 0,
- * });
- * ```
- */
 export function getFirewalls(args?: GetFirewallsArgs, opts?: pulumi.InvokeOptions): Promise<GetFirewallsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,21 +20,8 @@ export function getFirewalls(args?: GetFirewallsArgs, opts?: pulumi.InvokeOption
  * A collection of arguments for invoking getFirewalls.
  */
 export interface GetFirewallsArgs {
-    /**
-     * Specifies the firewall instance ID.
-     * If not specified, the first instance will be returned.
-     */
     fwInstanceId?: string;
-    /**
-     * Specifies the region in which to query the data source.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
-    /**
-     * Specifies the service type. The value can be:
-     * + **0**: North-south firewall;
-     * + **1**: East-west firewall;
-     */
     serviceType?: number;
 }
 
@@ -56,39 +29,15 @@ export interface GetFirewallsArgs {
  * A collection of values returned by getFirewalls.
  */
 export interface GetFirewallsResult {
-    /**
-     * The firewall ID.
-     */
     readonly fwInstanceId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The firewall instance records.
-     * The records object structure is documented below.
-     */
     readonly records: outputs.Cfw.GetFirewallsRecord[];
     readonly region: string;
-    /**
-     * The service type.
-     */
     readonly serviceType?: number;
 }
-/**
- * Use this data source to get the list of CFW firewalls.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.Cfw.getFirewalls({
- *     serviceType: 0,
- * });
- * ```
- */
 export function getFirewallsOutput(args?: GetFirewallsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFirewallsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -103,20 +52,7 @@ export function getFirewallsOutput(args?: GetFirewallsOutputArgs, opts?: pulumi.
  * A collection of arguments for invoking getFirewalls.
  */
 export interface GetFirewallsOutputArgs {
-    /**
-     * Specifies the firewall instance ID.
-     * If not specified, the first instance will be returned.
-     */
     fwInstanceId?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the data source.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the service type. The value can be:
-     * + **0**: North-south firewall;
-     * + **1**: East-west firewall;
-     */
     serviceType?: pulumi.Input<number>;
 }

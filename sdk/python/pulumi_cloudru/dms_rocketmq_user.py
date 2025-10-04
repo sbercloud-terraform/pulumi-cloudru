@@ -33,34 +33,16 @@ class DmsRocketmqUserArgs:
                  white_remote_address: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DmsRocketmqUser resource.
-        :param pulumi.Input[_builtins.str] access_key: Specifies the name of the user, which starts with a letter, consists of 7
-               to 64 characters and can contain only letters, digits, hyphens (-), and underscores (_).
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] access_key: Specifies the access key of the user.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the rocketMQ instance.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] secret_key: Specifies the password of the user. Use 8 to 32 characters. Contain at
-               least three of the following character types:
-               + Uppercase letters.
-               + Lowercase letters.
-               + Digits.
-               + Special characters \\`~!@#$%^&*()-_=+\\|[{}];:'"",<.>/?. Cannot be the `access_key` or the `access_key` spelled
-               backwards.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] secret_key: Specifies the secret key of the user.
         :param pulumi.Input[_builtins.bool] admin: Specifies whether the user is an administrator.
         :param pulumi.Input[_builtins.str] default_group_perm: Specifies the default consumer group permissions.
                Value options: **PUB|SUB**, **PUB**, **SUB**, **DENY**.
         :param pulumi.Input[_builtins.str] default_topic_perm: Specifies the default topic permissions.
                Value options: **PUB|SUB**, **PUB**, **SUB**, **DENY**.
         :param pulumi.Input[Sequence[pulumi.Input['DmsRocketmqUserGroupPermArgs']]] group_perms: Specifies the special consumer group permissions.
-               The permission structure is documented below.
-               
-               <a name="DmsRocketMQUser_PermsRef"></a>
-               The `topic_perms` and `group_perms` block supports:
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         :param pulumi.Input[Sequence[pulumi.Input['DmsRocketmqUserTopicPermArgs']]] topic_perms: Specifies the special topic permissions.
-               The permission structure is documented below.
         :param pulumi.Input[_builtins.str] white_remote_address: Specifies the IP address whitelist.
         """
         pulumi.set(__self__, "access_key", access_key)
@@ -85,9 +67,7 @@ class DmsRocketmqUserArgs:
     @pulumi.getter(name="accessKey")
     def access_key(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the name of the user, which starts with a letter, consists of 7
-        to 64 characters and can contain only letters, digits, hyphens (-), and underscores (_).
-        Changing this parameter will create a new resource.
+        Specifies the access key of the user.
         """
         return pulumi.get(self, "access_key")
 
@@ -100,7 +80,6 @@ class DmsRocketmqUserArgs:
     def instance_id(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the ID of the rocketMQ instance.
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "instance_id")
 
@@ -112,15 +91,7 @@ class DmsRocketmqUserArgs:
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the password of the user. Use 8 to 32 characters. Contain at
-        least three of the following character types:
-        + Uppercase letters.
-        + Lowercase letters.
-        + Digits.
-        + Special characters \\`~!@#$%^&*()-_=+\\|[{}];:'"",<.>/?. Cannot be the `access_key` or the `access_key` spelled
-        backwards.
-
-        Changing this parameter will create a new resource.
+        Specifies the secret key of the user.
         """
         return pulumi.get(self, "secret_key")
 
@@ -171,10 +142,6 @@ class DmsRocketmqUserArgs:
     def group_perms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DmsRocketmqUserGroupPermArgs']]]]:
         """
         Specifies the special consumer group permissions.
-        The permission structure is documented below.
-
-        <a name="DmsRocketMQUser_PermsRef"></a>
-        The `topic_perms` and `group_perms` block supports:
         """
         return pulumi.get(self, "group_perms")
 
@@ -185,10 +152,6 @@ class DmsRocketmqUserArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -200,7 +163,6 @@ class DmsRocketmqUserArgs:
     def topic_perms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DmsRocketmqUserTopicPermArgs']]]]:
         """
         Specifies the special topic permissions.
-        The permission structure is documented below.
         """
         return pulumi.get(self, "topic_perms")
 
@@ -236,34 +198,16 @@ class _DmsRocketmqUserState:
                  white_remote_address: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DmsRocketmqUser resources.
-        :param pulumi.Input[_builtins.str] access_key: Specifies the name of the user, which starts with a letter, consists of 7
-               to 64 characters and can contain only letters, digits, hyphens (-), and underscores (_).
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] access_key: Specifies the access key of the user.
         :param pulumi.Input[_builtins.bool] admin: Specifies whether the user is an administrator.
         :param pulumi.Input[_builtins.str] default_group_perm: Specifies the default consumer group permissions.
                Value options: **PUB|SUB**, **PUB**, **SUB**, **DENY**.
         :param pulumi.Input[_builtins.str] default_topic_perm: Specifies the default topic permissions.
                Value options: **PUB|SUB**, **PUB**, **SUB**, **DENY**.
         :param pulumi.Input[Sequence[pulumi.Input['DmsRocketmqUserGroupPermArgs']]] group_perms: Specifies the special consumer group permissions.
-               The permission structure is documented below.
-               
-               <a name="DmsRocketMQUser_PermsRef"></a>
-               The `topic_perms` and `group_perms` block supports:
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the rocketMQ instance.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] secret_key: Specifies the password of the user. Use 8 to 32 characters. Contain at
-               least three of the following character types:
-               + Uppercase letters.
-               + Lowercase letters.
-               + Digits.
-               + Special characters \\`~!@#$%^&*()-_=+\\|[{}];:'"",<.>/?. Cannot be the `access_key` or the `access_key` spelled
-               backwards.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] secret_key: Specifies the secret key of the user.
         :param pulumi.Input[Sequence[pulumi.Input['DmsRocketmqUserTopicPermArgs']]] topic_perms: Specifies the special topic permissions.
-               The permission structure is documented below.
         :param pulumi.Input[_builtins.str] white_remote_address: Specifies the IP address whitelist.
         """
         if access_key is not None:
@@ -291,9 +235,7 @@ class _DmsRocketmqUserState:
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the name of the user, which starts with a letter, consists of 7
-        to 64 characters and can contain only letters, digits, hyphens (-), and underscores (_).
-        Changing this parameter will create a new resource.
+        Specifies the access key of the user.
         """
         return pulumi.get(self, "access_key")
 
@@ -344,10 +286,6 @@ class _DmsRocketmqUserState:
     def group_perms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DmsRocketmqUserGroupPermArgs']]]]:
         """
         Specifies the special consumer group permissions.
-        The permission structure is documented below.
-
-        <a name="DmsRocketMQUser_PermsRef"></a>
-        The `topic_perms` and `group_perms` block supports:
         """
         return pulumi.get(self, "group_perms")
 
@@ -360,7 +298,6 @@ class _DmsRocketmqUserState:
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the ID of the rocketMQ instance.
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "instance_id")
 
@@ -371,10 +308,6 @@ class _DmsRocketmqUserState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -385,15 +318,7 @@ class _DmsRocketmqUserState:
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the password of the user. Use 8 to 32 characters. Contain at
-        least three of the following character types:
-        + Uppercase letters.
-        + Lowercase letters.
-        + Digits.
-        + Special characters \\`~!@#$%^&*()-_=+\\|[{}];:'"",<.>/?. Cannot be the `access_key` or the `access_key` spelled
-        backwards.
-
-        Changing this parameter will create a new resource.
+        Specifies the secret key of the user.
         """
         return pulumi.get(self, "secret_key")
 
@@ -406,7 +331,6 @@ class _DmsRocketmqUserState:
     def topic_perms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DmsRocketmqUserTopicPermArgs']]]]:
         """
         Specifies the special topic permissions.
-        The permission structure is documented below.
         """
         return pulumi.get(self, "topic_perms")
 
@@ -445,74 +369,19 @@ class DmsRocketmqUser(pulumi.CustomResource):
                  white_remote_address: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages DMS RocketMQ user resources within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        test = sbercloud.DmsRocketmqUser("test",
-            instance_id=instance_id,
-            access_key="user_test",
-            secret_key="abcdefg",
-            white_remote_address="10.10.10.10",
-            admin=False,
-            default_topic_perm="PUB",
-            default_group_perm="PUB",
-            topic_perms=[{
-                "name": "topic_name",
-                "perm": "PUB",
-            }],
-            group_perms=[{
-                "name": "group_name",
-                "perm": "PUB",
-            }])
-        ```
-
-        ## Import
-
-        The rocketmq user can be imported using the rocketMQ `instance_id` and user `access_key` separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/dmsRocketmqUser:DmsRocketmqUser test <instance_id>/<access_key>
-        ```
-
+        Create a DmsRocketmqUser resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_key: Specifies the name of the user, which starts with a letter, consists of 7
-               to 64 characters and can contain only letters, digits, hyphens (-), and underscores (_).
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] access_key: Specifies the access key of the user.
         :param pulumi.Input[_builtins.bool] admin: Specifies whether the user is an administrator.
         :param pulumi.Input[_builtins.str] default_group_perm: Specifies the default consumer group permissions.
                Value options: **PUB|SUB**, **PUB**, **SUB**, **DENY**.
         :param pulumi.Input[_builtins.str] default_topic_perm: Specifies the default topic permissions.
                Value options: **PUB|SUB**, **PUB**, **SUB**, **DENY**.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DmsRocketmqUserGroupPermArgs', 'DmsRocketmqUserGroupPermArgsDict']]]] group_perms: Specifies the special consumer group permissions.
-               The permission structure is documented below.
-               
-               <a name="DmsRocketMQUser_PermsRef"></a>
-               The `topic_perms` and `group_perms` block supports:
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the rocketMQ instance.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] secret_key: Specifies the password of the user. Use 8 to 32 characters. Contain at
-               least three of the following character types:
-               + Uppercase letters.
-               + Lowercase letters.
-               + Digits.
-               + Special characters \\`~!@#$%^&*()-_=+\\|[{}];:'"",<.>/?. Cannot be the `access_key` or the `access_key` spelled
-               backwards.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] secret_key: Specifies the secret key of the user.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DmsRocketmqUserTopicPermArgs', 'DmsRocketmqUserTopicPermArgsDict']]]] topic_perms: Specifies the special topic permissions.
-               The permission structure is documented below.
         :param pulumi.Input[_builtins.str] white_remote_address: Specifies the IP address whitelist.
         """
         ...
@@ -522,44 +391,7 @@ class DmsRocketmqUser(pulumi.CustomResource):
                  args: DmsRocketmqUserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages DMS RocketMQ user resources within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        test = sbercloud.DmsRocketmqUser("test",
-            instance_id=instance_id,
-            access_key="user_test",
-            secret_key="abcdefg",
-            white_remote_address="10.10.10.10",
-            admin=False,
-            default_topic_perm="PUB",
-            default_group_perm="PUB",
-            topic_perms=[{
-                "name": "topic_name",
-                "perm": "PUB",
-            }],
-            group_perms=[{
-                "name": "group_name",
-                "perm": "PUB",
-            }])
-        ```
-
-        ## Import
-
-        The rocketmq user can be imported using the rocketMQ `instance_id` and user `access_key` separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/dmsRocketmqUser:DmsRocketmqUser test <instance_id>/<access_key>
-        ```
-
+        Create a DmsRocketmqUser resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param DmsRocketmqUserArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -637,34 +469,16 @@ class DmsRocketmqUser(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_key: Specifies the name of the user, which starts with a letter, consists of 7
-               to 64 characters and can contain only letters, digits, hyphens (-), and underscores (_).
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] access_key: Specifies the access key of the user.
         :param pulumi.Input[_builtins.bool] admin: Specifies whether the user is an administrator.
         :param pulumi.Input[_builtins.str] default_group_perm: Specifies the default consumer group permissions.
                Value options: **PUB|SUB**, **PUB**, **SUB**, **DENY**.
         :param pulumi.Input[_builtins.str] default_topic_perm: Specifies the default topic permissions.
                Value options: **PUB|SUB**, **PUB**, **SUB**, **DENY**.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DmsRocketmqUserGroupPermArgs', 'DmsRocketmqUserGroupPermArgsDict']]]] group_perms: Specifies the special consumer group permissions.
-               The permission structure is documented below.
-               
-               <a name="DmsRocketMQUser_PermsRef"></a>
-               The `topic_perms` and `group_perms` block supports:
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the rocketMQ instance.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] secret_key: Specifies the password of the user. Use 8 to 32 characters. Contain at
-               least three of the following character types:
-               + Uppercase letters.
-               + Lowercase letters.
-               + Digits.
-               + Special characters \\`~!@#$%^&*()-_=+\\|[{}];:'"",<.>/?. Cannot be the `access_key` or the `access_key` spelled
-               backwards.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] secret_key: Specifies the secret key of the user.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DmsRocketmqUserTopicPermArgs', 'DmsRocketmqUserTopicPermArgsDict']]]] topic_perms: Specifies the special topic permissions.
-               The permission structure is documented below.
         :param pulumi.Input[_builtins.str] white_remote_address: Specifies the IP address whitelist.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -687,9 +501,7 @@ class DmsRocketmqUser(pulumi.CustomResource):
     @pulumi.getter(name="accessKey")
     def access_key(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the name of the user, which starts with a letter, consists of 7
-        to 64 characters and can contain only letters, digits, hyphens (-), and underscores (_).
-        Changing this parameter will create a new resource.
+        Specifies the access key of the user.
         """
         return pulumi.get(self, "access_key")
 
@@ -724,10 +536,6 @@ class DmsRocketmqUser(pulumi.CustomResource):
     def group_perms(self) -> pulumi.Output[Sequence['outputs.DmsRocketmqUserGroupPerm']]:
         """
         Specifies the special consumer group permissions.
-        The permission structure is documented below.
-
-        <a name="DmsRocketMQUser_PermsRef"></a>
-        The `topic_perms` and `group_perms` block supports:
         """
         return pulumi.get(self, "group_perms")
 
@@ -736,32 +544,19 @@ class DmsRocketmqUser(pulumi.CustomResource):
     def instance_id(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the ID of the rocketMQ instance.
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the password of the user. Use 8 to 32 characters. Contain at
-        least three of the following character types:
-        + Uppercase letters.
-        + Lowercase letters.
-        + Digits.
-        + Special characters \\`~!@#$%^&*()-_=+\\|[{}];:'"",<.>/?. Cannot be the `access_key` or the `access_key` spelled
-        backwards.
-
-        Changing this parameter will create a new resource.
+        Specifies the secret key of the user.
         """
         return pulumi.get(self, "secret_key")
 
@@ -770,7 +565,6 @@ class DmsRocketmqUser(pulumi.CustomResource):
     def topic_perms(self) -> pulumi.Output[Sequence['outputs.DmsRocketmqUserTopicPerm']]:
         """
         Specifies the special topic permissions.
-        The permission structure is documented below.
         """
         return pulumi.get(self, "topic_perms")
 

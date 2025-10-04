@@ -6,32 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Manages a DCS configuration parameters within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const projectId = config.requireObject<any>("projectId");
- * const config1 = new sbercloud.DcsParameters("config_1", {
- *     instanceId: instanceId,
- *     projectId: projectId,
- *     parameters: {
- *         timeout: "1000",
- *         maxclients: "2100",
- *         appendfsync: "always",
- *         "maxmemory-policy": "allkeys-random",
- *         "zset-max-ziplist-value": "128",
- *         "repl-timeout": "120",
- *     },
- * });
- * ```
- */
 export class DcsParameters extends pulumi.CustomResource {
     /**
      * Get an existing DcsParameters resource's state with the given name, ID, and optional extra
@@ -60,22 +34,9 @@ export class DcsParameters extends pulumi.CustomResource {
         return obj['__pulumiType'] === DcsParameters.__pulumiType;
     }
 
-    /**
-     * Indicates the parameter configuration defined by users based on the default parameters.
-     */
     declare public /*out*/ readonly configurationParameters: pulumi.Output<outputs.DcsParametersConfigurationParameter[]>;
-    /**
-     * Specifies the ID of the instance.
-     */
     declare public readonly instanceId: pulumi.Output<string>;
-    /**
-     * A mapping of parameters to assign to the DCS instance. 
-     * Each parameter is represented by one key-value pair.
-     */
     declare public readonly parameters: pulumi.Output<{[key: string]: string}>;
-    /**
-     * Specifies the project.
-     */
     declare public readonly projectId: pulumi.Output<string>;
 
     /**
@@ -120,22 +81,9 @@ export class DcsParameters extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DcsParameters resources.
  */
 export interface DcsParametersState {
-    /**
-     * Indicates the parameter configuration defined by users based on the default parameters.
-     */
     configurationParameters?: pulumi.Input<pulumi.Input<inputs.DcsParametersConfigurationParameter>[]>;
-    /**
-     * Specifies the ID of the instance.
-     */
     instanceId?: pulumi.Input<string>;
-    /**
-     * A mapping of parameters to assign to the DCS instance. 
-     * Each parameter is represented by one key-value pair.
-     */
     parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies the project.
-     */
     projectId?: pulumi.Input<string>;
 }
 
@@ -143,17 +91,7 @@ export interface DcsParametersState {
  * The set of arguments for constructing a DcsParameters resource.
  */
 export interface DcsParametersArgs {
-    /**
-     * Specifies the ID of the instance.
-     */
     instanceId: pulumi.Input<string>;
-    /**
-     * A mapping of parameters to assign to the DCS instance. 
-     * Each parameter is represented by one key-value pair.
-     */
     parameters: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies the project.
-     */
     projectId: pulumi.Input<string>;
 }

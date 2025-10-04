@@ -11,33 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the ID of an available Sbercloud port.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/vpc"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vpc.GetPort(ctx, &vpc.GetPortArgs{
-//				Name: pulumi.StringRef("port_1"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetPort(ctx *pulumi.Context, args *GetPortArgs, opts ...pulumi.InvokeOption) (*GetPortResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPortResult
@@ -50,36 +23,20 @@ func GetPort(ctx *pulumi.Context, args *GetPortArgs, opts ...pulumi.InvokeOption
 
 // A collection of arguments for invoking getPort.
 type GetPortArgs struct {
-	// The administrative state of the port.
-	//
 	// Deprecated: this field is deprecated
-	AdminStateUp *bool `pulumi:"adminStateUp"`
-	// The ID of the device the port belongs to.
-	DeviceId *string `pulumi:"deviceId"`
-	// The device owner of the port.
-	DeviceOwner *string `pulumi:"deviceOwner"`
-	// The port IP address filter.
-	FixedIp *string `pulumi:"fixedIp"`
-	// The MAC address of the port.
-	MacAddress *string `pulumi:"macAddress"`
-	// The name of the port.
-	Name *string `pulumi:"name"`
-	// The ID of the network the port belongs to.
-	NetworkId *string `pulumi:"networkId"`
-	// The ID of the port.
-	PortId *string `pulumi:"portId"`
-	// The owner of the port.
-	//
+	AdminStateUp *bool   `pulumi:"adminStateUp"`
+	DeviceId     *string `pulumi:"deviceId"`
+	DeviceOwner  *string `pulumi:"deviceOwner"`
+	FixedIp      *string `pulumi:"fixedIp"`
+	MacAddress   *string `pulumi:"macAddress"`
+	Name         *string `pulumi:"name"`
+	NetworkId    *string `pulumi:"networkId"`
+	PortId       *string `pulumi:"portId"`
 	// Deprecated: this field is deprecated
-	ProjectId *string `pulumi:"projectId"`
-	// The region in which to obtain the V2 Neutron client.
-	// A Neutron client is needed to retrieve port ids. If omitted, the
-	// `region` argument of the provider is used.
-	Region *string `pulumi:"region"`
-	// The list of port security group IDs to filter.
+	ProjectId        *string  `pulumi:"projectId"`
+	Region           *string  `pulumi:"region"`
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// The status of the port.
-	Status *string `pulumi:"status"`
+	Status           *string  `pulumi:"status"`
 	// Deprecated: this field is deprecated
 	TenantId *string `pulumi:"tenantId"`
 }
@@ -87,12 +44,9 @@ type GetPortArgs struct {
 // A collection of values returned by getPort.
 type GetPortResult struct {
 	// Deprecated: this field is deprecated
-	AdminStateUp  bool     `pulumi:"adminStateUp"`
-	AllAllowedIps []string `pulumi:"allAllowedIps"`
-	// The collection of Fixed IP addresses on the port in the
-	// order returned by the Network v2 API.
-	AllFixedIps []string `pulumi:"allFixedIps"`
-	// The set of security group IDs applied on the port.
+	AdminStateUp        bool     `pulumi:"adminStateUp"`
+	AllAllowedIps       []string `pulumi:"allAllowedIps"`
+	AllFixedIps         []string `pulumi:"allFixedIps"`
 	AllSecurityGroupIds []string `pulumi:"allSecurityGroupIds"`
 	DeviceId            string   `pulumi:"deviceId"`
 	DeviceOwner         string   `pulumi:"deviceOwner"`
@@ -123,36 +77,20 @@ func GetPortOutput(ctx *pulumi.Context, args GetPortOutputArgs, opts ...pulumi.I
 
 // A collection of arguments for invoking getPort.
 type GetPortOutputArgs struct {
-	// The administrative state of the port.
-	//
 	// Deprecated: this field is deprecated
-	AdminStateUp pulumi.BoolPtrInput `pulumi:"adminStateUp"`
-	// The ID of the device the port belongs to.
-	DeviceId pulumi.StringPtrInput `pulumi:"deviceId"`
-	// The device owner of the port.
-	DeviceOwner pulumi.StringPtrInput `pulumi:"deviceOwner"`
-	// The port IP address filter.
-	FixedIp pulumi.StringPtrInput `pulumi:"fixedIp"`
-	// The MAC address of the port.
-	MacAddress pulumi.StringPtrInput `pulumi:"macAddress"`
-	// The name of the port.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The ID of the network the port belongs to.
-	NetworkId pulumi.StringPtrInput `pulumi:"networkId"`
-	// The ID of the port.
-	PortId pulumi.StringPtrInput `pulumi:"portId"`
-	// The owner of the port.
-	//
+	AdminStateUp pulumi.BoolPtrInput   `pulumi:"adminStateUp"`
+	DeviceId     pulumi.StringPtrInput `pulumi:"deviceId"`
+	DeviceOwner  pulumi.StringPtrInput `pulumi:"deviceOwner"`
+	FixedIp      pulumi.StringPtrInput `pulumi:"fixedIp"`
+	MacAddress   pulumi.StringPtrInput `pulumi:"macAddress"`
+	Name         pulumi.StringPtrInput `pulumi:"name"`
+	NetworkId    pulumi.StringPtrInput `pulumi:"networkId"`
+	PortId       pulumi.StringPtrInput `pulumi:"portId"`
 	// Deprecated: this field is deprecated
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
-	// The region in which to obtain the V2 Neutron client.
-	// A Neutron client is needed to retrieve port ids. If omitted, the
-	// `region` argument of the provider is used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// The list of port security group IDs to filter.
+	ProjectId        pulumi.StringPtrInput   `pulumi:"projectId"`
+	Region           pulumi.StringPtrInput   `pulumi:"region"`
 	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
-	// The status of the port.
-	Status pulumi.StringPtrInput `pulumi:"status"`
+	Status           pulumi.StringPtrInput   `pulumi:"status"`
 	// Deprecated: this field is deprecated
 	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
 }
@@ -185,13 +123,10 @@ func (o GetPortResultOutput) AllAllowedIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPortResult) []string { return v.AllAllowedIps }).(pulumi.StringArrayOutput)
 }
 
-// The collection of Fixed IP addresses on the port in the
-// order returned by the Network v2 API.
 func (o GetPortResultOutput) AllFixedIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPortResult) []string { return v.AllFixedIps }).(pulumi.StringArrayOutput)
 }
 
-// The set of security group IDs applied on the port.
 func (o GetPortResultOutput) AllSecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPortResult) []string { return v.AllSecurityGroupIds }).(pulumi.StringArrayOutput)
 }

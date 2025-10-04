@@ -26,25 +26,10 @@ MYPY = False
 if not MYPY:
     class ServiceConnectionArgsDict(TypedDict):
         description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the description of the VPC endpoint service.
-        """
         domain_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The user's domain ID.
-        """
         endpoint_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The unique ID of the VPC endpoint.
-        """
         packet_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The packet ID of the VPC endpoint.
-        """
         status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The connection status of the VPC endpoint.
-        """
 elif False:
     ServiceConnectionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -56,13 +41,6 @@ class ServiceConnectionArgs:
                  endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
                  packet_id: Optional[pulumi.Input[_builtins.int]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the VPC endpoint service.
-        :param pulumi.Input[_builtins.str] domain_id: The user's domain ID.
-        :param pulumi.Input[_builtins.str] endpoint_id: The unique ID of the VPC endpoint.
-        :param pulumi.Input[_builtins.int] packet_id: The packet ID of the VPC endpoint.
-        :param pulumi.Input[_builtins.str] status: The connection status of the VPC endpoint.
-        """
         if description is not None:
             pulumi.set(__self__, "description", description)
         if domain_id is not None:
@@ -77,9 +55,6 @@ class ServiceConnectionArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the description of the VPC endpoint service.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -89,9 +64,6 @@ class ServiceConnectionArgs:
     @_builtins.property
     @pulumi.getter(name="domainId")
     def domain_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The user's domain ID.
-        """
         return pulumi.get(self, "domain_id")
 
     @domain_id.setter
@@ -101,9 +73,6 @@ class ServiceConnectionArgs:
     @_builtins.property
     @pulumi.getter(name="endpointId")
     def endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The unique ID of the VPC endpoint.
-        """
         return pulumi.get(self, "endpoint_id")
 
     @endpoint_id.setter
@@ -113,9 +82,6 @@ class ServiceConnectionArgs:
     @_builtins.property
     @pulumi.getter(name="packetId")
     def packet_id(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The packet ID of the VPC endpoint.
-        """
         return pulumi.get(self, "packet_id")
 
     @packet_id.setter
@@ -125,9 +91,6 @@ class ServiceConnectionArgs:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The connection status of the VPC endpoint.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -138,18 +101,13 @@ class ServiceConnectionArgs:
 if not MYPY:
     class ServicePortMappingArgsDict(TypedDict):
         protocol: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the protocol used in port mappings. Only **TCP** is supported.
-        """
         service_port: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Specifies the port for accessing the VPC endpoint service. This port is provided by
-        the backend service to provide services. The value ranges from 1 to 65535.
+        schema: Required
         """
         terminal_port: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Specifies the port for accessing the VPC endpoint. This port is provided by the VPC
-        endpoint, allowing you to access the VPC endpoint service. The value ranges from 1 to 65535.
+        schema: Required
         """
 elif False:
     ServicePortMappingArgsDict: TypeAlias = Mapping[str, Any]
@@ -161,11 +119,8 @@ class ServicePortMappingArgs:
                  service_port: Optional[pulumi.Input[_builtins.int]] = None,
                  terminal_port: Optional[pulumi.Input[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.str] protocol: Specifies the protocol used in port mappings. Only **TCP** is supported.
-        :param pulumi.Input[_builtins.int] service_port: Specifies the port for accessing the VPC endpoint service. This port is provided by
-               the backend service to provide services. The value ranges from 1 to 65535.
-        :param pulumi.Input[_builtins.int] terminal_port: Specifies the port for accessing the VPC endpoint. This port is provided by the VPC
-               endpoint, allowing you to access the VPC endpoint service. The value ranges from 1 to 65535.
+        :param pulumi.Input[_builtins.int] service_port: schema: Required
+        :param pulumi.Input[_builtins.int] terminal_port: schema: Required
         """
         if protocol is not None:
             pulumi.set(__self__, "protocol", protocol)
@@ -177,9 +132,6 @@ class ServicePortMappingArgs:
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the protocol used in port mappings. Only **TCP** is supported.
-        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -190,8 +142,7 @@ class ServicePortMappingArgs:
     @pulumi.getter(name="servicePort")
     def service_port(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the port for accessing the VPC endpoint service. This port is provided by
-        the backend service to provide services. The value ranges from 1 to 65535.
+        schema: Required
         """
         return pulumi.get(self, "service_port")
 
@@ -203,8 +154,7 @@ class ServicePortMappingArgs:
     @pulumi.getter(name="terminalPort")
     def terminal_port(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the port for accessing the VPC endpoint. This port is provided by the VPC
-        endpoint, allowing you to access the VPC endpoint service. The value ranges from 1 to 65535.
+        schema: Required
         """
         return pulumi.get(self, "terminal_port")
 

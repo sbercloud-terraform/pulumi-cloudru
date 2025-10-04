@@ -25,19 +25,6 @@ class KeypairArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Keypair resource.
-        :param pulumi.Input[_builtins.str] key_file: Specifies the path of the created private key.
-               The private key file (**.pem**) is created only after the resource is created.
-               By default, the private key file will be created in the same folder as the current script file.
-               If you need to create it in another folder, please specify the path for `key_file`.
-               Changing this creates a new keypair.
-               
-               ~>**NOTE:** If the private key file already exists, it will be overwritten after a new keypair is created.
-        :param pulumi.Input[_builtins.str] name: Specifies a unique name for the keypair. Changing this creates a new keypair.
-        :param pulumi.Input[_builtins.str] public_key: Specifies the imported OpenSSH-formatted public key. Changing this creates
-               a new keypair.
-               This parameter and `key_file` are alternative.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the keypair resource. If omitted, the
-               provider-level region will be used. Changing this creates a new keypair.
         """
         if key_file is not None:
             pulumi.set(__self__, "key_file", key_file)
@@ -51,15 +38,6 @@ class KeypairArgs:
     @_builtins.property
     @pulumi.getter(name="keyFile")
     def key_file(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the path of the created private key.
-        The private key file (**.pem**) is created only after the resource is created.
-        By default, the private key file will be created in the same folder as the current script file.
-        If you need to create it in another folder, please specify the path for `key_file`.
-        Changing this creates a new keypair.
-
-        ~>**NOTE:** If the private key file already exists, it will be overwritten after a new keypair is created.
-        """
         return pulumi.get(self, "key_file")
 
     @key_file.setter
@@ -69,9 +47,6 @@ class KeypairArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies a unique name for the keypair. Changing this creates a new keypair.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -81,11 +56,6 @@ class KeypairArgs:
     @_builtins.property
     @pulumi.getter(name="publicKey")
     def public_key(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the imported OpenSSH-formatted public key. Changing this creates
-        a new keypair.
-        This parameter and `key_file` are alternative.
-        """
         return pulumi.get(self, "public_key")
 
     @public_key.setter
@@ -95,10 +65,6 @@ class KeypairArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the keypair resource. If omitted, the
-        provider-level region will be used. Changing this creates a new keypair.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -115,19 +81,6 @@ class _KeypairState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Keypair resources.
-        :param pulumi.Input[_builtins.str] key_file: Specifies the path of the created private key.
-               The private key file (**.pem**) is created only after the resource is created.
-               By default, the private key file will be created in the same folder as the current script file.
-               If you need to create it in another folder, please specify the path for `key_file`.
-               Changing this creates a new keypair.
-               
-               ~>**NOTE:** If the private key file already exists, it will be overwritten after a new keypair is created.
-        :param pulumi.Input[_builtins.str] name: Specifies a unique name for the keypair. Changing this creates a new keypair.
-        :param pulumi.Input[_builtins.str] public_key: Specifies the imported OpenSSH-formatted public key. Changing this creates
-               a new keypair.
-               This parameter and `key_file` are alternative.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the keypair resource. If omitted, the
-               provider-level region will be used. Changing this creates a new keypair.
         """
         if key_file is not None:
             pulumi.set(__self__, "key_file", key_file)
@@ -141,15 +94,6 @@ class _KeypairState:
     @_builtins.property
     @pulumi.getter(name="keyFile")
     def key_file(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the path of the created private key.
-        The private key file (**.pem**) is created only after the resource is created.
-        By default, the private key file will be created in the same folder as the current script file.
-        If you need to create it in another folder, please specify the path for `key_file`.
-        Changing this creates a new keypair.
-
-        ~>**NOTE:** If the private key file already exists, it will be overwritten after a new keypair is created.
-        """
         return pulumi.get(self, "key_file")
 
     @key_file.setter
@@ -159,9 +103,6 @@ class _KeypairState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies a unique name for the keypair. Changing this creates a new keypair.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -171,11 +112,6 @@ class _KeypairState:
     @_builtins.property
     @pulumi.getter(name="publicKey")
     def public_key(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the imported OpenSSH-formatted public key. Changing this creates
-        a new keypair.
-        This parameter and `key_file` are alternative.
-        """
         return pulumi.get(self, "public_key")
 
     @public_key.setter
@@ -185,10 +121,6 @@ class _KeypairState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the keypair resource. If omitted, the
-        provider-level region will be used. Changing this creates a new keypair.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -208,57 +140,9 @@ class Keypair(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        > **DEPRECATED:**  This resource  has been deprecated.
-
-        Manages a keypair resource within SberCloud.
-
-        ## Example Usage
-
-        ### Create a new keypair and export private key to current folder
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        test_keypair = sbercloud.ecs.Keypair("test-keypair",
-            name="my-keypair",
-            key_file="private_key.pem")
-        ```
-
-        ### Import an exist keypair
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        test_keypair = sbercloud.ecs.Keypair("test-keypair",
-            name="my-keypair",
-            public_key="ssh-rsa AAAAB3NzaC1yc2EAAAlJq5Pu+eizhou7nFFDxXofr2ySF8k/yuA9OnJdVF9Fbf85Z59CWNZBvcAT... root@terra-dev")
-        ```
-
-        ## Import
-
-        Keypairs can be imported using the `name`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Ecs/keypair:Keypair my-keypair test-keypair
-        ```
-
+        Create a Keypair resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] key_file: Specifies the path of the created private key.
-               The private key file (**.pem**) is created only after the resource is created.
-               By default, the private key file will be created in the same folder as the current script file.
-               If you need to create it in another folder, please specify the path for `key_file`.
-               Changing this creates a new keypair.
-               
-               ~>**NOTE:** If the private key file already exists, it will be overwritten after a new keypair is created.
-        :param pulumi.Input[_builtins.str] name: Specifies a unique name for the keypair. Changing this creates a new keypair.
-        :param pulumi.Input[_builtins.str] public_key: Specifies the imported OpenSSH-formatted public key. Changing this creates
-               a new keypair.
-               This parameter and `key_file` are alternative.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the keypair resource. If omitted, the
-               provider-level region will be used. Changing this creates a new keypair.
         """
         ...
     @overload
@@ -267,42 +151,7 @@ class Keypair(pulumi.CustomResource):
                  args: Optional[KeypairArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **DEPRECATED:**  This resource  has been deprecated.
-
-        Manages a keypair resource within SberCloud.
-
-        ## Example Usage
-
-        ### Create a new keypair and export private key to current folder
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        test_keypair = sbercloud.ecs.Keypair("test-keypair",
-            name="my-keypair",
-            key_file="private_key.pem")
-        ```
-
-        ### Import an exist keypair
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        test_keypair = sbercloud.ecs.Keypair("test-keypair",
-            name="my-keypair",
-            public_key="ssh-rsa AAAAB3NzaC1yc2EAAAlJq5Pu+eizhou7nFFDxXofr2ySF8k/yuA9OnJdVF9Fbf85Z59CWNZBvcAT... root@terra-dev")
-        ```
-
-        ## Import
-
-        Keypairs can be imported using the `name`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Ecs/keypair:Keypair my-keypair test-keypair
-        ```
-
+        Create a Keypair resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param KeypairArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -356,19 +205,6 @@ class Keypair(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] key_file: Specifies the path of the created private key.
-               The private key file (**.pem**) is created only after the resource is created.
-               By default, the private key file will be created in the same folder as the current script file.
-               If you need to create it in another folder, please specify the path for `key_file`.
-               Changing this creates a new keypair.
-               
-               ~>**NOTE:** If the private key file already exists, it will be overwritten after a new keypair is created.
-        :param pulumi.Input[_builtins.str] name: Specifies a unique name for the keypair. Changing this creates a new keypair.
-        :param pulumi.Input[_builtins.str] public_key: Specifies the imported OpenSSH-formatted public key. Changing this creates
-               a new keypair.
-               This parameter and `key_file` are alternative.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the keypair resource. If omitted, the
-               provider-level region will be used. Changing this creates a new keypair.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -383,41 +219,20 @@ class Keypair(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="keyFile")
     def key_file(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the path of the created private key.
-        The private key file (**.pem**) is created only after the resource is created.
-        By default, the private key file will be created in the same folder as the current script file.
-        If you need to create it in another folder, please specify the path for `key_file`.
-        Changing this creates a new keypair.
-
-        ~>**NOTE:** If the private key file already exists, it will be overwritten after a new keypair is created.
-        """
         return pulumi.get(self, "key_file")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies a unique name for the keypair. Changing this creates a new keypair.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="publicKey")
     def public_key(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the imported OpenSSH-formatted public key. Changing this creates
-        a new keypair.
-        This parameter and `key_file` are alternative.
-        """
         return pulumi.get(self, "public_key")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the keypair resource. If omitted, the
-        provider-level region will be used. Changing this creates a new keypair.
-        """
         return pulumi.get(self, "region")
 

@@ -11,36 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of CBH availability zones within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			availabilityZoneName := cfg.RequireObject("availabilityZoneName")
-//			_, err := sbercloud.GetCbhAvailabilityZones(ctx, &cloudru.GetCbhAvailabilityZonesArgs{
-//				Name: pulumi.StringRef(availabilityZoneName),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetCbhAvailabilityZones(ctx *pulumi.Context, args *GetCbhAvailabilityZonesArgs, opts ...pulumi.InvokeOption) (*GetCbhAvailabilityZonesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCbhAvailabilityZonesResult
@@ -53,25 +23,17 @@ func GetCbhAvailabilityZones(ctx *pulumi.Context, args *GetCbhAvailabilityZonesA
 
 // A collection of arguments for invoking getCbhAvailabilityZones.
 type GetCbhAvailabilityZonesArgs struct {
-	// Specifies the display name of the availability zone to be queried.
 	DisplayName *string `pulumi:"displayName"`
-	// Specifies the name of the availability zone to be queried.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to query the CBH availability zones.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
+	Name        *string `pulumi:"name"`
+	Region      *string `pulumi:"region"`
 }
 
 // A collection of values returned by getCbhAvailabilityZones.
 type GetCbhAvailabilityZonesResult struct {
-	// All availability zones that match the filter parameters.\
-	// The availabilityZones structure is documented below.
 	AvailabilityZones []GetCbhAvailabilityZonesAvailabilityZone `pulumi:"availabilityZones"`
-	// The display name of the availability zone.
-	DisplayName *string `pulumi:"displayName"`
+	DisplayName       *string                                   `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The name of the availability zone.
+	Id     string  `pulumi:"id"`
 	Name   *string `pulumi:"name"`
 	Region string  `pulumi:"region"`
 }
@@ -87,13 +49,9 @@ func GetCbhAvailabilityZonesOutput(ctx *pulumi.Context, args GetCbhAvailabilityZ
 
 // A collection of arguments for invoking getCbhAvailabilityZones.
 type GetCbhAvailabilityZonesOutputArgs struct {
-	// Specifies the display name of the availability zone to be queried.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// Specifies the name of the availability zone to be queried.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the region in which to query the CBH availability zones.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	Name        pulumi.StringPtrInput `pulumi:"name"`
+	Region      pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetCbhAvailabilityZonesOutputArgs) ElementType() reflect.Type {
@@ -115,15 +73,12 @@ func (o GetCbhAvailabilityZonesResultOutput) ToGetCbhAvailabilityZonesResultOutp
 	return o
 }
 
-// All availability zones that match the filter parameters.\
-// The availabilityZones structure is documented below.
 func (o GetCbhAvailabilityZonesResultOutput) AvailabilityZones() GetCbhAvailabilityZonesAvailabilityZoneArrayOutput {
 	return o.ApplyT(func(v GetCbhAvailabilityZonesResult) []GetCbhAvailabilityZonesAvailabilityZone {
 		return v.AvailabilityZones
 	}).(GetCbhAvailabilityZonesAvailabilityZoneArrayOutput)
 }
 
-// The display name of the availability zone.
 func (o GetCbhAvailabilityZonesResultOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCbhAvailabilityZonesResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
@@ -133,7 +88,6 @@ func (o GetCbhAvailabilityZonesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbhAvailabilityZonesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the availability zone.
 func (o GetCbhAvailabilityZonesResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCbhAvailabilityZonesResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

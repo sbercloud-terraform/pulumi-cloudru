@@ -11,36 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of the compute instances.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/ecs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			nameRegex := cfg.RequireObject("nameRegex")
-//			_, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
-//				Name: pulumi.StringRef(nameRegex),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstancesResult
@@ -53,66 +23,37 @@ func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getInstances.
 type GetInstancesArgs struct {
-	// Specifies the availability zone where the instance is located.
-	// Please following [reference](https://support.hc.sbercloud.ru/endpoint/index.html) for this argument.
-	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Specifies the enterprise project ID.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// The fixed IPv4 address of the instance on this network.
-	FixedIpV4 *string `pulumi:"fixedIpV4"`
-	// Specifies the flavor ID.
-	FlavorId *string `pulumi:"flavorId"`
-	// Specifies the flavor name of the instance.
-	FlavorName *string `pulumi:"flavorName"`
-	// Specifies the image ID of the instance.
-	ImageId *string `pulumi:"imageId"`
-	// Specifies the ECS ID.
-	InstanceId *string `pulumi:"instanceId"`
-	// Specifies the key pair that is used to authenticate the instance.
-	KeyPair *string `pulumi:"keyPair"`
-	// Specifies the instance name, which can be queried with a regular expression.
-	// The instance name supports fuzzy matching query too.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to obtain the instances.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the status of the instance. The valid values are as follows:
-	// + **ACTIVE**: The instance is running properly.
-	// + **SHUTOFF**: The instance has been properly stopped.
-	// + **ERROR**: An error has occurred on the instance.
-	Status *string `pulumi:"status"`
-	// The key/value pairs to associate with the instance.
-	Tags map[string]string `pulumi:"tags"`
+	AvailabilityZone    *string           `pulumi:"availabilityZone"`
+	EnterpriseProjectId *string           `pulumi:"enterpriseProjectId"`
+	FixedIpV4           *string           `pulumi:"fixedIpV4"`
+	FlavorId            *string           `pulumi:"flavorId"`
+	FlavorName          *string           `pulumi:"flavorName"`
+	ImageId             *string           `pulumi:"imageId"`
+	InstanceId          *string           `pulumi:"instanceId"`
+	KeyPair             *string           `pulumi:"keyPair"`
+	Name                *string           `pulumi:"name"`
+	Region              *string           `pulumi:"region"`
+	Status              *string           `pulumi:"status"`
+	Tags                map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getInstances.
 type GetInstancesResult struct {
-	// The availability zone where the instance is located.
-	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// The enterprise project ID.
+	AvailabilityZone    *string `pulumi:"availabilityZone"`
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// The fixed IPv4 address of the instance on this network.
-	FixedIpV4 *string `pulumi:"fixedIpV4"`
-	// The flavor ID.
-	FlavorId *string `pulumi:"flavorId"`
-	// The flavor name of the instance.
-	FlavorName *string `pulumi:"flavorName"`
+	FixedIpV4           *string `pulumi:"fixedIpV4"`
+	FlavorId            *string `pulumi:"flavorId"`
+	FlavorName          *string `pulumi:"flavorName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The image ID of the instance.
-	ImageId    *string `pulumi:"imageId"`
-	InstanceId *string `pulumi:"instanceId"`
-	// List of ECS instance details. The object structure of each ECS instance is documented below.
-	Instances []GetInstancesInstance `pulumi:"instances"`
-	// The key pair that is used to authenticate the instance.
-	KeyPair *string `pulumi:"keyPair"`
-	// The instance name.
-	Name   *string `pulumi:"name"`
-	Region *string `pulumi:"region"`
-	// The instance status.
-	Status *string `pulumi:"status"`
-	// The key/value pairs to associate with the instance.
-	Tags map[string]string `pulumi:"tags"`
+	Id         string                 `pulumi:"id"`
+	ImageId    *string                `pulumi:"imageId"`
+	InstanceId *string                `pulumi:"instanceId"`
+	Instances  []GetInstancesInstance `pulumi:"instances"`
+	KeyPair    *string                `pulumi:"keyPair"`
+	Name       *string                `pulumi:"name"`
+	Region     *string                `pulumi:"region"`
+	Status     *string                `pulumi:"status"`
+	Tags       map[string]string      `pulumi:"tags"`
 }
 
 func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts ...pulumi.InvokeOption) GetInstancesResultOutput {
@@ -126,36 +67,18 @@ func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts .
 
 // A collection of arguments for invoking getInstances.
 type GetInstancesOutputArgs struct {
-	// Specifies the availability zone where the instance is located.
-	// Please following [reference](https://support.hc.sbercloud.ru/endpoint/index.html) for this argument.
-	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
-	// Specifies the enterprise project ID.
+	AvailabilityZone    pulumi.StringPtrInput `pulumi:"availabilityZone"`
 	EnterpriseProjectId pulumi.StringPtrInput `pulumi:"enterpriseProjectId"`
-	// The fixed IPv4 address of the instance on this network.
-	FixedIpV4 pulumi.StringPtrInput `pulumi:"fixedIpV4"`
-	// Specifies the flavor ID.
-	FlavorId pulumi.StringPtrInput `pulumi:"flavorId"`
-	// Specifies the flavor name of the instance.
-	FlavorName pulumi.StringPtrInput `pulumi:"flavorName"`
-	// Specifies the image ID of the instance.
-	ImageId pulumi.StringPtrInput `pulumi:"imageId"`
-	// Specifies the ECS ID.
-	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
-	// Specifies the key pair that is used to authenticate the instance.
-	KeyPair pulumi.StringPtrInput `pulumi:"keyPair"`
-	// Specifies the instance name, which can be queried with a regular expression.
-	// The instance name supports fuzzy matching query too.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the region in which to obtain the instances.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the status of the instance. The valid values are as follows:
-	// + **ACTIVE**: The instance is running properly.
-	// + **SHUTOFF**: The instance has been properly stopped.
-	// + **ERROR**: An error has occurred on the instance.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The key/value pairs to associate with the instance.
-	Tags pulumi.StringMapInput `pulumi:"tags"`
+	FixedIpV4           pulumi.StringPtrInput `pulumi:"fixedIpV4"`
+	FlavorId            pulumi.StringPtrInput `pulumi:"flavorId"`
+	FlavorName          pulumi.StringPtrInput `pulumi:"flavorName"`
+	ImageId             pulumi.StringPtrInput `pulumi:"imageId"`
+	InstanceId          pulumi.StringPtrInput `pulumi:"instanceId"`
+	KeyPair             pulumi.StringPtrInput `pulumi:"keyPair"`
+	Name                pulumi.StringPtrInput `pulumi:"name"`
+	Region              pulumi.StringPtrInput `pulumi:"region"`
+	Status              pulumi.StringPtrInput `pulumi:"status"`
+	Tags                pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetInstancesOutputArgs) ElementType() reflect.Type {
@@ -177,27 +100,22 @@ func (o GetInstancesResultOutput) ToGetInstancesResultOutputWithContext(ctx cont
 	return o
 }
 
-// The availability zone where the instance is located.
 func (o GetInstancesResultOutput) AvailabilityZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
 }
 
-// The enterprise project ID.
 func (o GetInstancesResultOutput) EnterpriseProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.EnterpriseProjectId }).(pulumi.StringPtrOutput)
 }
 
-// The fixed IPv4 address of the instance on this network.
 func (o GetInstancesResultOutput) FixedIpV4() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.FixedIpV4 }).(pulumi.StringPtrOutput)
 }
 
-// The flavor ID.
 func (o GetInstancesResultOutput) FlavorId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.FlavorId }).(pulumi.StringPtrOutput)
 }
 
-// The flavor name of the instance.
 func (o GetInstancesResultOutput) FlavorName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.FlavorName }).(pulumi.StringPtrOutput)
 }
@@ -207,7 +125,6 @@ func (o GetInstancesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The image ID of the instance.
 func (o GetInstancesResultOutput) ImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.ImageId }).(pulumi.StringPtrOutput)
 }
@@ -216,17 +133,14 @@ func (o GetInstancesResultOutput) InstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
 }
 
-// List of ECS instance details. The object structure of each ECS instance is documented below.
 func (o GetInstancesResultOutput) Instances() GetInstancesInstanceArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []GetInstancesInstance { return v.Instances }).(GetInstancesInstanceArrayOutput)
 }
 
-// The key pair that is used to authenticate the instance.
 func (o GetInstancesResultOutput) KeyPair() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.KeyPair }).(pulumi.StringPtrOutput)
 }
 
-// The instance name.
 func (o GetInstancesResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -235,12 +149,10 @@ func (o GetInstancesResultOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// The instance status.
 func (o GetInstancesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// The key/value pairs to associate with the instance.
 func (o GetInstancesResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetInstancesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

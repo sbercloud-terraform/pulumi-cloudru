@@ -6,33 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Manages an ELB L7 Rule resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const l7policyId = config.requireObject<any>("l7policyId");
- * const l7rule1 = new sbercloud.ElbL7rule("l7rule_1", {
- *     l7policyId: l7policyId,
- *     type: "PATH",
- *     compareType: "EQUAL_TO",
- *     value: "/api",
- * });
- * ```
- *
- * ## Import
- *
- * ELB L7 rule can be imported using the L7 policy ID and L7 rule ID separated by a slash, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:index/elbL7rule:ElbL7rule rule_1 e0bd694a-abbe-450e-b329-0931fd1cc5eb/4086b0c9-b18c-4d1c-b6b8-4c56c3ad2a9e
- * ```
- */
 export class ElbL7rule extends pulumi.CustomResource {
     /**
      * Get an existing ElbL7rule resource's state with the given name, ID, and optional extra
@@ -61,30 +34,13 @@ export class ElbL7rule extends pulumi.CustomResource {
         return obj['__pulumiType'] === ElbL7rule.__pulumiType;
     }
 
-    /**
-     * The comparison type for the L7 rule - can either be STARTS_WITH, EQUAL_TO or REGEX
-     */
     declare public readonly compareType: pulumi.Output<string>;
     declare public readonly conditions: pulumi.Output<outputs.ElbL7ruleCondition[]>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
-    /**
-     * The ID of the L7 Policy. Changing this creates a new L7 Rule.
-     */
     declare public readonly l7policyId: pulumi.Output<string>;
-    /**
-     * The region in which to create the L7 Rule resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new L7 Rule.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * The L7 Rule type - can either be HOST_NAME or PATH. Changing this creates a new
-     * L7 Rule.
-     */
     declare public readonly type: pulumi.Output<string>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
-    /**
-     * The value to use for the comparison.
-     */
     declare public readonly value: pulumi.Output<string>;
 
     /**
@@ -137,30 +93,13 @@ export class ElbL7rule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ElbL7rule resources.
  */
 export interface ElbL7ruleState {
-    /**
-     * The comparison type for the L7 rule - can either be STARTS_WITH, EQUAL_TO or REGEX
-     */
     compareType?: pulumi.Input<string>;
     conditions?: pulumi.Input<pulumi.Input<inputs.ElbL7ruleCondition>[]>;
     createdAt?: pulumi.Input<string>;
-    /**
-     * The ID of the L7 Policy. Changing this creates a new L7 Rule.
-     */
     l7policyId?: pulumi.Input<string>;
-    /**
-     * The region in which to create the L7 Rule resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new L7 Rule.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * The L7 Rule type - can either be HOST_NAME or PATH. Changing this creates a new
-     * L7 Rule.
-     */
     type?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<string>;
-    /**
-     * The value to use for the comparison.
-     */
     value?: pulumi.Input<string>;
 }
 
@@ -168,27 +107,10 @@ export interface ElbL7ruleState {
  * The set of arguments for constructing a ElbL7rule resource.
  */
 export interface ElbL7ruleArgs {
-    /**
-     * The comparison type for the L7 rule - can either be STARTS_WITH, EQUAL_TO or REGEX
-     */
     compareType: pulumi.Input<string>;
     conditions?: pulumi.Input<pulumi.Input<inputs.ElbL7ruleCondition>[]>;
-    /**
-     * The ID of the L7 Policy. Changing this creates a new L7 Rule.
-     */
     l7policyId: pulumi.Input<string>;
-    /**
-     * The region in which to create the L7 Rule resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new L7 Rule.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * The L7 Rule type - can either be HOST_NAME or PATH. Changing this creates a new
-     * L7 Rule.
-     */
     type: pulumi.Input<string>;
-    /**
-     * The value to use for the comparison.
-     */
     value?: pulumi.Input<string>;
 }

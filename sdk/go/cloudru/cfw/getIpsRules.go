@@ -11,36 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of CFW IPS basic protection rules.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			objectId := cfg.RequireObject("objectId")
-//			_, err := cfw.GetIpsRules(ctx, &cfw.GetIpsRulesArgs{
-//				ObjectId: objectId,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetIpsRules(ctx *pulumi.Context, args *GetIpsRulesArgs, opts ...pulumi.InvokeOption) (*GetIpsRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIpsRulesResult
@@ -53,40 +23,27 @@ func GetIpsRules(ctx *pulumi.Context, args *GetIpsRulesArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getIpsRules.
 type GetIpsRulesArgs struct {
-	// Specifies the enterprise project ID.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the IPS rule ID.
-	IpsId *string `pulumi:"ipsId"`
-	// Specifies the IPS rule name.
-	// This parameter supports fuzzy search.
-	IpsNameLike *string `pulumi:"ipsNameLike"`
-	// Specifies the IPS rule status.
-	// The valid value can be **OBSERVE**, **ENABLE**, or **CLOSE**.
-	IpsStatus *string `pulumi:"ipsStatus"`
-	// Specifies whether to check for new update rules.
-	IsUpdatedIpsRuleQueried *bool `pulumi:"isUpdatedIpsRuleQueried"`
-	// Specifies the protected object ID.
-	ObjectId string `pulumi:"objectId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
+	EnterpriseProjectId     *string `pulumi:"enterpriseProjectId"`
+	IpsId                   *string `pulumi:"ipsId"`
+	IpsNameLike             *string `pulumi:"ipsNameLike"`
+	IpsStatus               *string `pulumi:"ipsStatus"`
+	IsUpdatedIpsRuleQueried *bool   `pulumi:"isUpdatedIpsRuleQueried"`
+	ObjectId                string  `pulumi:"objectId"`
+	Region                  *string `pulumi:"region"`
 }
 
 // A collection of values returned by getIpsRules.
 type GetIpsRulesResult struct {
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The IPS rule ID.
-	IpsId       *string `pulumi:"ipsId"`
-	IpsNameLike *string `pulumi:"ipsNameLike"`
-	// The current status of the IPS rule.
-	IpsStatus               *string `pulumi:"ipsStatus"`
-	IsUpdatedIpsRuleQueried *bool   `pulumi:"isUpdatedIpsRuleQueried"`
-	ObjectId                string  `pulumi:"objectId"`
-	// The IPS rule list.
-	Records []GetIpsRulesRecord `pulumi:"records"`
-	Region  string              `pulumi:"region"`
+	Id                      string              `pulumi:"id"`
+	IpsId                   *string             `pulumi:"ipsId"`
+	IpsNameLike             *string             `pulumi:"ipsNameLike"`
+	IpsStatus               *string             `pulumi:"ipsStatus"`
+	IsUpdatedIpsRuleQueried *bool               `pulumi:"isUpdatedIpsRuleQueried"`
+	ObjectId                string              `pulumi:"objectId"`
+	Records                 []GetIpsRulesRecord `pulumi:"records"`
+	Region                  string              `pulumi:"region"`
 }
 
 func GetIpsRulesOutput(ctx *pulumi.Context, args GetIpsRulesOutputArgs, opts ...pulumi.InvokeOption) GetIpsRulesResultOutput {
@@ -100,23 +57,13 @@ func GetIpsRulesOutput(ctx *pulumi.Context, args GetIpsRulesOutputArgs, opts ...
 
 // A collection of arguments for invoking getIpsRules.
 type GetIpsRulesOutputArgs struct {
-	// Specifies the enterprise project ID.
-	EnterpriseProjectId pulumi.StringPtrInput `pulumi:"enterpriseProjectId"`
-	// Specifies the IPS rule ID.
-	IpsId pulumi.StringPtrInput `pulumi:"ipsId"`
-	// Specifies the IPS rule name.
-	// This parameter supports fuzzy search.
-	IpsNameLike pulumi.StringPtrInput `pulumi:"ipsNameLike"`
-	// Specifies the IPS rule status.
-	// The valid value can be **OBSERVE**, **ENABLE**, or **CLOSE**.
-	IpsStatus pulumi.StringPtrInput `pulumi:"ipsStatus"`
-	// Specifies whether to check for new update rules.
-	IsUpdatedIpsRuleQueried pulumi.BoolPtrInput `pulumi:"isUpdatedIpsRuleQueried"`
-	// Specifies the protected object ID.
-	ObjectId pulumi.StringInput `pulumi:"objectId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	EnterpriseProjectId     pulumi.StringPtrInput `pulumi:"enterpriseProjectId"`
+	IpsId                   pulumi.StringPtrInput `pulumi:"ipsId"`
+	IpsNameLike             pulumi.StringPtrInput `pulumi:"ipsNameLike"`
+	IpsStatus               pulumi.StringPtrInput `pulumi:"ipsStatus"`
+	IsUpdatedIpsRuleQueried pulumi.BoolPtrInput   `pulumi:"isUpdatedIpsRuleQueried"`
+	ObjectId                pulumi.StringInput    `pulumi:"objectId"`
+	Region                  pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetIpsRulesOutputArgs) ElementType() reflect.Type {
@@ -147,7 +94,6 @@ func (o GetIpsRulesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIpsRulesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The IPS rule ID.
 func (o GetIpsRulesResultOutput) IpsId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetIpsRulesResult) *string { return v.IpsId }).(pulumi.StringPtrOutput)
 }
@@ -156,7 +102,6 @@ func (o GetIpsRulesResultOutput) IpsNameLike() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetIpsRulesResult) *string { return v.IpsNameLike }).(pulumi.StringPtrOutput)
 }
 
-// The current status of the IPS rule.
 func (o GetIpsRulesResultOutput) IpsStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetIpsRulesResult) *string { return v.IpsStatus }).(pulumi.StringPtrOutput)
 }
@@ -169,7 +114,6 @@ func (o GetIpsRulesResultOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIpsRulesResult) string { return v.ObjectId }).(pulumi.StringOutput)
 }
 
-// The IPS rule list.
 func (o GetIpsRulesResultOutput) Records() GetIpsRulesRecordArrayOutput {
 	return o.ApplyT(func(v GetIpsRulesResult) []GetIpsRulesRecord { return v.Records }).(GetIpsRulesRecordArrayOutput)
 }

@@ -63,9 +63,6 @@ class GetQuotasResult:
     @_builtins.property
     @pulumi.getter
     def quotas(self) -> Sequence['outputs.GetQuotasQuotaResult']:
-        """
-        All quotas that match the filter parameters.
-        """
         return pulumi.get(self, "quotas")
 
     @_builtins.property
@@ -81,9 +78,6 @@ class GetQuotasResult:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
-        """
-        The quota type.
-        """
         return pulumi.get(self, "type")
 
 
@@ -107,42 +101,7 @@ def get_quotas(instance_id: Optional[_builtins.str] = None,
                type: Optional[_builtins.str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetQuotasResult:
     """
-    Using this data source to query the list of available resource quotas within SberCloud.
-
-    > Using an invalid ID to filter the results will not report an error or return an empty list, but will return a quota
-       list with all usage equal to 0.
-
-    Before using enterprise router, define custom endpoint as shown below:
-    ```python
-    import pulumi
-    ```
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.Er.get_quotas()
-    ```
-
-
-    :param _builtins.str instance_id: The instance ID.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str route_table_id: The route table ID.
-    :param _builtins.str type: The quota type to be queried.
-           The valid values are as follows:
-           + **er_instance**: Quotas and usage for enterprise router instances.
-           + **dc_attachment**: Quotas and usage for DC attachment.
-           + **vpc_attachment**: Quotas and usage for VPC attachment.
-           + **vpn_attachment**: Quotas and usage for VPN attachment.
-           + **peering_attachment**: Quotas and usage for peering attachment.
-           + **can_attachment**: Quotas and usage for can attachment.
-           + **route_table**: Quotas and usage for route table.
-           + **static_route**: Quotas and usage for static route.
-           + **vpc_er**: The number of enterprise routers that each VPC can access and the current usage.
-           + **flow_log**: The number of flow logs that can be created per attachment.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['instanceId'] = instance_id
@@ -165,42 +124,7 @@ def get_quotas_output(instance_id: Optional[pulumi.Input[Optional[_builtins.str]
                       type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQuotasResult]:
     """
-    Using this data source to query the list of available resource quotas within SberCloud.
-
-    > Using an invalid ID to filter the results will not report an error or return an empty list, but will return a quota
-       list with all usage equal to 0.
-
-    Before using enterprise router, define custom endpoint as shown below:
-    ```python
-    import pulumi
-    ```
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.Er.get_quotas()
-    ```
-
-
-    :param _builtins.str instance_id: The instance ID.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str route_table_id: The route table ID.
-    :param _builtins.str type: The quota type to be queried.
-           The valid values are as follows:
-           + **er_instance**: Quotas and usage for enterprise router instances.
-           + **dc_attachment**: Quotas and usage for DC attachment.
-           + **vpc_attachment**: Quotas and usage for VPC attachment.
-           + **vpn_attachment**: Quotas and usage for VPN attachment.
-           + **peering_attachment**: Quotas and usage for peering attachment.
-           + **can_attachment**: Quotas and usage for can attachment.
-           + **route_table**: Quotas and usage for route table.
-           + **static_route**: Quotas and usage for static route.
-           + **vpc_er**: The number of enterprise routers that each VPC can access and the current usage.
-           + **flow_log**: The number of flow logs that can be created per attachment.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['instanceId'] = instance_id

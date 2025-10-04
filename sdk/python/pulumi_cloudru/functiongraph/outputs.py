@@ -161,10 +161,10 @@ class FunctionFuncMount(dict):
                  mount_type: _builtins.str,
                  status: Optional[_builtins.str] = None):
         """
-        :param _builtins.str local_mount_path: Specifies the function access path.
-        :param _builtins.str mount_resource: Specifies the ID of the mounted resource (corresponding cloud service).
-        :param _builtins.str mount_share_path: Specifies the remote mount path. Example: 192.168.0.12:/data.
-        :param _builtins.str mount_type: Specifies the mount type. Options: sfs, sfsTurbo, and ecs.
+        :param _builtins.str local_mount_path: The function access path.
+        :param _builtins.str mount_resource: The ID of the mounted resource (corresponding cloud service).
+        :param _builtins.str mount_share_path: The remote mount path.
+        :param _builtins.str mount_type: The mount type.
         :param _builtins.str status: The mount status.
         """
         pulumi.set(__self__, "local_mount_path", local_mount_path)
@@ -178,7 +178,7 @@ class FunctionFuncMount(dict):
     @pulumi.getter(name="localMountPath")
     def local_mount_path(self) -> _builtins.str:
         """
-        Specifies the function access path.
+        The function access path.
         """
         return pulumi.get(self, "local_mount_path")
 
@@ -186,7 +186,7 @@ class FunctionFuncMount(dict):
     @pulumi.getter(name="mountResource")
     def mount_resource(self) -> _builtins.str:
         """
-        Specifies the ID of the mounted resource (corresponding cloud service).
+        The ID of the mounted resource (corresponding cloud service).
         """
         return pulumi.get(self, "mount_resource")
 
@@ -194,7 +194,7 @@ class FunctionFuncMount(dict):
     @pulumi.getter(name="mountSharePath")
     def mount_share_path(self) -> _builtins.str:
         """
-        Specifies the remote mount path. Example: 192.168.0.12:/data.
+        The remote mount path.
         """
         return pulumi.get(self, "mount_share_path")
 
@@ -202,7 +202,7 @@ class FunctionFuncMount(dict):
     @pulumi.getter(name="mountType")
     def mount_type(self) -> _builtins.str:
         """
-        Specifies the mount type. Options: sfs, sfsTurbo, and ecs.
+        The mount type.
         """
         return pulumi.get(self, "mount_type")
 
@@ -290,7 +290,7 @@ class FunctionNetworkControllerTriggerAccessVpc(dict):
                  vpc_id: Optional[_builtins.str] = None,
                  vpc_name: Optional[_builtins.str] = None):
         """
-        :param _builtins.str vpc_id: Specifies the ID of VPC.
+        :param _builtins.str vpc_id: The ID of the VPC that can trigger the function.
         :param _builtins.str vpc_name: The ID of the VPC that can trigger the function.
         """
         if vpc_id is not None:
@@ -302,7 +302,7 @@ class FunctionNetworkControllerTriggerAccessVpc(dict):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[_builtins.str]:
         """
-        Specifies the ID of VPC.
+        The ID of the VPC that can trigger the function.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -483,7 +483,7 @@ class FunctionReservedInstanceTacticsConfigCronConfig(dict):
         :param _builtins.int count: The number of reserved instance to which the policy belongs.
         :param _builtins.str cron: The cron expression.
         :param _builtins.int expired_time: The expiration timestamp of the policy.
-        :param _builtins.str name: Specifies the name of the function.
+        :param _builtins.str name: The name of scheduled policy configuration.
         :param _builtins.int start_time: The effective timestamp of policy.
         """
         pulumi.set(__self__, "count", count)
@@ -520,7 +520,7 @@ class FunctionReservedInstanceTacticsConfigCronConfig(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the name of the function.
+        The name of scheduled policy configuration.
         """
         return pulumi.get(self, "name")
 
@@ -542,7 +542,7 @@ class FunctionReservedInstanceTacticsConfigMetricConfig(dict):
                  type: _builtins.str):
         """
         :param _builtins.int min: The minimun of traffic.
-        :param _builtins.str name: Specifies the name of the function.
+        :param _builtins.str name: The name of metric policy.
         :param _builtins.int threshold: The metric policy threshold.
         :param _builtins.str type: The type of metric policy.
         """
@@ -563,7 +563,7 @@ class FunctionReservedInstanceTacticsConfigMetricConfig(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the name of the function.
+        The name of metric policy.
         """
         return pulumi.get(self, "name")
 
@@ -591,9 +591,9 @@ class FunctionVersion(dict):
                  aliases: Optional['outputs.FunctionVersionAliases'] = None,
                  description: Optional[_builtins.str] = None):
         """
-        :param _builtins.str name: Specifies the name of the function.
+        :param _builtins.str name: The version name.
         :param 'FunctionVersionAliasesArgs' aliases: The aliases management for specified version.
-        :param _builtins.str description: Specifies the description of the function.
+        :param _builtins.str description: The description of the version.
         """
         pulumi.set(__self__, "name", name)
         if aliases is not None:
@@ -605,7 +605,7 @@ class FunctionVersion(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the name of the function.
+        The version name.
         """
         return pulumi.get(self, "name")
 
@@ -621,7 +621,7 @@ class FunctionVersion(dict):
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
         """
-        Specifies the description of the function.
+        The description of the version.
         """
         return pulumi.get(self, "description")
 
@@ -653,10 +653,10 @@ class FunctionVersionAliases(dict):
                  additional_version_weights: Optional[_builtins.str] = None,
                  description: Optional[_builtins.str] = None):
         """
-        :param _builtins.str name: Specifies the name of the function.
+        :param _builtins.str name: The name of the version alias.
         :param _builtins.str additional_version_strategy: The description of the version alias.
         :param _builtins.str additional_version_weights: The percentage grayscale configuration of the version alias.
-        :param _builtins.str description: Specifies the description of the function.
+        :param _builtins.str description: The description of the version alias.
         """
         pulumi.set(__self__, "name", name)
         if additional_version_strategy is not None:
@@ -670,7 +670,7 @@ class FunctionVersionAliases(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the name of the function.
+        The name of the version alias.
         """
         return pulumi.get(self, "name")
 
@@ -694,7 +694,7 @@ class FunctionVersionAliases(dict):
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
         """
-        Specifies the description of the function.
+        The description of the version alias.
         """
         return pulumi.get(self, "description")
 
@@ -714,37 +714,13 @@ class GetDependenciesPackageResult(dict):
         """
         :param _builtins.str etag: The unique ID of the dependency package.
         :param _builtins.str file_name: The file name of the stored dependency package.
-        :param _builtins.str id: The ID of the dependency package version.
+        :param _builtins.str id: The ID of the dependency package.
         :param _builtins.str link: The OBS bucket path where the dependency package is located (FunctionGraph serivce side).
-        :param _builtins.str name: Specifies the name of the dependency package.
+        :param _builtins.str name: The name of the dependency package.
         :param _builtins.str owner: The owner of the dependency package.
-        :param _builtins.str runtime: Specifies the runtime of the dependency package.  
-               The valid values are as follows:
-               + **Java8**
-               + **Java11**
-               + **Node.js6.10**
-               + **Node.js8.10**
-               + **Node.js10.16**
-               + **Node.js12.13**
-               + **Node.js14.18**
-               + **Node.js16.17**
-               + **Node.js18.15**
-               + **Python2.7**
-               + **Python3.6**
-               + **Python3.9**
-               + **Python3.10**
-               + **Go1.x**
-               + **C#(.NET Core 2.0)**
-               + **C#(.NET Core 2.1)**
-               + **C#(.NET Core 3.1)**
-               + **Custom**
-               + **PHP7.3**
-               + **Cangjie1.0**
-               + **http**
-               + **Custom Image**
+        :param _builtins.str runtime: The runtime of the dependency package.
         :param _builtins.int size: The size of the dependency package.
         :param Sequence['GetDependenciesPackageVersionArgs'] versions: The list of the versions for the dependency package.
-               The versions structure is documented below.
         """
         pulumi.set(__self__, "etag", etag)
         pulumi.set(__self__, "file_name", file_name)
@@ -776,7 +752,7 @@ class GetDependenciesPackageResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The ID of the dependency package version.
+        The ID of the dependency package.
         """
         return pulumi.get(self, "id")
 
@@ -792,7 +768,7 @@ class GetDependenciesPackageResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the name of the dependency package.
+        The name of the dependency package.
         """
         return pulumi.get(self, "name")
 
@@ -808,30 +784,7 @@ class GetDependenciesPackageResult(dict):
     @pulumi.getter
     def runtime(self) -> _builtins.str:
         """
-        Specifies the runtime of the dependency package.  
-        The valid values are as follows:
-        + **Java8**
-        + **Java11**
-        + **Node.js6.10**
-        + **Node.js8.10**
-        + **Node.js10.16**
-        + **Node.js12.13**
-        + **Node.js14.18**
-        + **Node.js16.17**
-        + **Node.js18.15**
-        + **Python2.7**
-        + **Python3.6**
-        + **Python3.9**
-        + **Python3.10**
-        + **Go1.x**
-        + **C#(.NET Core 2.0)**
-        + **C#(.NET Core 2.1)**
-        + **C#(.NET Core 3.1)**
-        + **Custom**
-        + **PHP7.3**
-        + **Cangjie1.0**
-        + **http**
-        + **Custom Image**
+        The runtime of the dependency package.
         """
         return pulumi.get(self, "runtime")
 
@@ -848,7 +801,6 @@ class GetDependenciesPackageResult(dict):
     def versions(self) -> Sequence['outputs.GetDependenciesPackageVersionResult']:
         """
         The list of the versions for the dependency package.
-        The versions structure is documented below.
         """
         return pulumi.get(self, "versions")
 

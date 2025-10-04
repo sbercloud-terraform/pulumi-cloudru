@@ -50,9 +50,6 @@ class GetAvailableRoutesResult:
     @_builtins.property
     @pulumi.getter
     def destination(self) -> Optional[_builtins.str]:
-        """
-        The destination address of the route.
-        """
         return pulumi.get(self, "destination")
 
     @_builtins.property
@@ -71,9 +68,6 @@ class GetAvailableRoutesResult:
     @_builtins.property
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> Optional[_builtins.str]:
-        """
-        The attachment type.
-        """
         return pulumi.get(self, "resource_type")
 
     @_builtins.property
@@ -84,9 +78,6 @@ class GetAvailableRoutesResult:
     @_builtins.property
     @pulumi.getter
     def routes(self) -> Sequence['outputs.GetAvailableRoutesRouteResult']:
-        """
-        All available routes that match the filter parameters.
-        """
         return pulumi.get(self, "routes")
 
 
@@ -110,37 +101,7 @@ def get_available_routes(destination: Optional[_builtins.str] = None,
                          route_table_id: Optional[_builtins.str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAvailableRoutesResult:
     """
-    Using this data source to query the list of available routes within SberCloud.
-
-    Before using enterprise router, define custom endpoint as shown below:
-    ```python
-    import pulumi
-    ```
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    route_table_id = config.require_object("routeTableId")
-    test = sbercloud.Er.get_available_routes(route_table_id=route_table_id)
-    ```
-
-
-    :param _builtins.str destination: The destination address of the routes to be queried.
-    :param _builtins.str region: Specifies the region in which to query the available routes.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str resource_type: The attachment type.
-           The valid values are as follows:
-           + **vpc**: VPC attachment.
-           + **vpn**: VPN gateway attachment.
-           + **vgw**: virtual gateway attachment.
-           + **peering**: peering connection attachment.
-           + **ecn**: ECN attachment.
-           + **cfw**: CFW instance attachment.
-    :param _builtins.str route_table_id: The route table ID to which the available routes belong.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['destination'] = destination
@@ -163,37 +124,7 @@ def get_available_routes_output(destination: Optional[pulumi.Input[Optional[_bui
                                 route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAvailableRoutesResult]:
     """
-    Using this data source to query the list of available routes within SberCloud.
-
-    Before using enterprise router, define custom endpoint as shown below:
-    ```python
-    import pulumi
-    ```
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    route_table_id = config.require_object("routeTableId")
-    test = sbercloud.Er.get_available_routes(route_table_id=route_table_id)
-    ```
-
-
-    :param _builtins.str destination: The destination address of the routes to be queried.
-    :param _builtins.str region: Specifies the region in which to query the available routes.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str resource_type: The attachment type.
-           The valid values are as follows:
-           + **vpc**: VPC attachment.
-           + **vpn**: VPN gateway attachment.
-           + **vgw**: virtual gateway attachment.
-           + **peering**: peering connection attachment.
-           + **ecn**: ECN attachment.
-           + **cfw**: CFW instance attachment.
-    :param _builtins.str route_table_id: The route table ID to which the available routes belong.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['destination'] = destination

@@ -6,31 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get the list of RocketMQ flavors within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const az1 = config.requireObject<any>("az1");
- * const az2 = config.requireObject<any>("az2");
- * const test = sbercloud.getDmsRocketmqFlavors({
- *     availabilityZones: [
- *         az1,
- *         az2,
- *     ],
- *     archType: "X86",
- *     chargingMode: "prePaid",
- *     type: "cluster",
- *     flavorId: "c6.2u4g.cluster",
- *     storageSpecCode: "dms.physical.storage.high.v2",
- * });
- * ```
- */
 export function getDmsRocketmqFlavors(args?: GetDmsRocketmqFlavorsArgs, opts?: pulumi.InvokeOptions): Promise<GetDmsRocketmqFlavorsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -49,38 +24,12 @@ export function getDmsRocketmqFlavors(args?: GetDmsRocketmqFlavorsArgs, opts?: p
  * A collection of arguments for invoking getDmsRocketmqFlavors.
  */
 export interface GetDmsRocketmqFlavorsArgs {
-    /**
-     * Specifies the type of CPU architecture, e.g. **X86**.
-     */
     archType?: string;
-    /**
-     * Specifies the list of availability zone names.
-     */
     availabilityZones?: string[];
-    /**
-     * Specifies the billing mode of the flavor.
-     * Value options: **prePaid** and **postPaid**.
-     */
     chargingMode?: string;
-    /**
-     * Specifies the ID of the flavor, e.g. **c6.2u4g.cluster**.
-     */
     flavorId?: string;
-    /**
-     * Specifies the region in which to query the data source.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
-    /**
-     * Specifies the disk IO encoding.
-     * Value options:
-     * + **dms.physical.storage.high.v2**: Type of the disk that uses high I/O.
-     * + **dms.physical.storage.ultra.v2**: Type of the disk that uses ultra-high I/O.
-     */
     storageSpecCode?: string;
-    /**
-     * Specifies the type of the flavor. Value options: **single** and **cluster**.
-     */
     type?: string;
 }
 
@@ -89,60 +38,19 @@ export interface GetDmsRocketmqFlavorsArgs {
  */
 export interface GetDmsRocketmqFlavorsResult {
     readonly archType?: string;
-    /**
-     * Indicates the list of availability zone names.
-     */
     readonly availabilityZones?: string[];
     readonly chargingMode?: string;
     readonly flavorId?: string;
-    /**
-     * Indicates the list of flavors.
-     * The flavors structure is documented below.
-     */
     readonly flavors: outputs.GetDmsRocketmqFlavorsFlavor[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly region: string;
-    /**
-     * Indicates the disk IO encoding.
-     */
     readonly storageSpecCode?: string;
-    /**
-     * Indicates the disk type.
-     */
     readonly type?: string;
-    /**
-     * Indicates the list of flavor versions.
-     */
     readonly versions: string[];
 }
-/**
- * Use this data source to get the list of RocketMQ flavors within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const az1 = config.requireObject<any>("az1");
- * const az2 = config.requireObject<any>("az2");
- * const test = sbercloud.getDmsRocketmqFlavors({
- *     availabilityZones: [
- *         az1,
- *         az2,
- *     ],
- *     archType: "X86",
- *     chargingMode: "prePaid",
- *     type: "cluster",
- *     flavorId: "c6.2u4g.cluster",
- *     storageSpecCode: "dms.physical.storage.high.v2",
- * });
- * ```
- */
 export function getDmsRocketmqFlavorsOutput(args?: GetDmsRocketmqFlavorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDmsRocketmqFlavorsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -161,37 +69,11 @@ export function getDmsRocketmqFlavorsOutput(args?: GetDmsRocketmqFlavorsOutputAr
  * A collection of arguments for invoking getDmsRocketmqFlavors.
  */
 export interface GetDmsRocketmqFlavorsOutputArgs {
-    /**
-     * Specifies the type of CPU architecture, e.g. **X86**.
-     */
     archType?: pulumi.Input<string>;
-    /**
-     * Specifies the list of availability zone names.
-     */
     availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the billing mode of the flavor.
-     * Value options: **prePaid** and **postPaid**.
-     */
     chargingMode?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of the flavor, e.g. **c6.2u4g.cluster**.
-     */
     flavorId?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the data source.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the disk IO encoding.
-     * Value options:
-     * + **dms.physical.storage.high.v2**: Type of the disk that uses high I/O.
-     * + **dms.physical.storage.ultra.v2**: Type of the disk that uses ultra-high I/O.
-     */
     storageSpecCode?: pulumi.Input<string>;
-    /**
-     * Specifies the type of the flavor. Value options: **single** and **cluster**.
-     */
     type?: pulumi.Input<string>;
 }

@@ -12,129 +12,17 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a DNS record set resource within SberCloud.
-//
-// ## Example Usage
-//
-// ### Record Set with Public Zone
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/dns"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleZone, err := dns.NewZone(ctx, "example_zone", &dns.ZoneArgs{
-//				Name:        pulumi.String("example.com."),
-//				Email:       pulumi.String("email2@example.com"),
-//				Description: pulumi.String("a public zone"),
-//				Ttl:         pulumi.Int(6000),
-//				ZoneType:    pulumi.String("public"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = dns.NewRecordset(ctx, "test", &dns.RecordsetArgs{
-//				ZoneId:      exampleZone.ID(),
-//				Name:        pulumi.String("rs.example.com."),
-//				Description: pulumi.String("An example record set"),
-//				Ttl:         pulumi.Int(3000),
-//				Type:        pulumi.String("A"),
-//				Records: pulumi.StringArray{
-//					pulumi.String("10.0.0.1"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Record Set with Private Zone
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/dns"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleZone, err := dns.NewZone(ctx, "example_zone", &dns.ZoneArgs{
-//				Name:        pulumi.String("example.com."),
-//				Email:       pulumi.String("email2@example.com"),
-//				Description: pulumi.String("a private zone"),
-//				Ttl:         pulumi.Int(6000),
-//				ZoneType:    pulumi.String("private"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = dns.NewRecordset(ctx, "test", &dns.RecordsetArgs{
-//				ZoneId:      exampleZone.ID(),
-//				Name:        pulumi.String("rs.example.com."),
-//				Description: pulumi.String("An example record set"),
-//				Ttl:         pulumi.Int(3000),
-//				Type:        pulumi.String("A"),
-//				Records: pulumi.StringArray{
-//					pulumi.String("10.0.0.1"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The DNS recordset can be imported using `zone_id`, `recordset_id`, separated by slashes, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Dns/recordset:Recordset test <zone_id>/<recordset_id>
-// ```
 type Recordset struct {
 	pulumi.CustomResourceState
 
-	// Specifies the description of the record set.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Specifies the name of the record set.
-	// The name suffixed with a zone name, which is a complete host name ended with a dot.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies an array of DNS records. The value rules vary depending on the record set type.
-	Records pulumi.StringArrayOutput `pulumi:"records"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Specifies the key/value pairs to associate with the DNS recordset.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Specifies the time to live (TTL) of the record set (in seconds).
-	// The value range is 1–2147483647. The default value is 300.
-	Ttl pulumi.IntPtrOutput `pulumi:"ttl"`
-	// Specifies the type of the record set.
-	// Value options: **A**, **AAAA**, **MX**, **CNAME**, **TXT**, **NS**, **SRV**, **CAA**.
-	Type pulumi.StringOutput `pulumi:"type"`
-	// Specifies the zone ID.
-	// Changing this parameter will create a new resource.
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	Description pulumi.StringPtrOutput   `pulumi:"description"`
+	Name        pulumi.StringOutput      `pulumi:"name"`
+	Records     pulumi.StringArrayOutput `pulumi:"records"`
+	Region      pulumi.StringOutput      `pulumi:"region"`
+	Tags        pulumi.StringMapOutput   `pulumi:"tags"`
+	Ttl         pulumi.IntPtrOutput      `pulumi:"ttl"`
+	Type        pulumi.StringOutput      `pulumi:"type"`
+	ZoneId      pulumi.StringOutput      `pulumi:"zoneId"`
 }
 
 // NewRecordset registers a new resource with the given unique name, arguments, and options.
@@ -176,51 +64,25 @@ func GetRecordset(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Recordset resources.
 type recordsetState struct {
-	// Specifies the description of the record set.
-	Description *string `pulumi:"description"`
-	// Specifies the name of the record set.
-	// The name suffixed with a zone name, which is a complete host name ended with a dot.
-	Name *string `pulumi:"name"`
-	// Specifies an array of DNS records. The value rules vary depending on the record set type.
-	Records []string `pulumi:"records"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies the key/value pairs to associate with the DNS recordset.
-	Tags map[string]string `pulumi:"tags"`
-	// Specifies the time to live (TTL) of the record set (in seconds).
-	// The value range is 1–2147483647. The default value is 300.
-	Ttl *int `pulumi:"ttl"`
-	// Specifies the type of the record set.
-	// Value options: **A**, **AAAA**, **MX**, **CNAME**, **TXT**, **NS**, **SRV**, **CAA**.
-	Type *string `pulumi:"type"`
-	// Specifies the zone ID.
-	// Changing this parameter will create a new resource.
-	ZoneId *string `pulumi:"zoneId"`
+	Description *string           `pulumi:"description"`
+	Name        *string           `pulumi:"name"`
+	Records     []string          `pulumi:"records"`
+	Region      *string           `pulumi:"region"`
+	Tags        map[string]string `pulumi:"tags"`
+	Ttl         *int              `pulumi:"ttl"`
+	Type        *string           `pulumi:"type"`
+	ZoneId      *string           `pulumi:"zoneId"`
 }
 
 type RecordsetState struct {
-	// Specifies the description of the record set.
 	Description pulumi.StringPtrInput
-	// Specifies the name of the record set.
-	// The name suffixed with a zone name, which is a complete host name ended with a dot.
-	Name pulumi.StringPtrInput
-	// Specifies an array of DNS records. The value rules vary depending on the record set type.
-	Records pulumi.StringArrayInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
-	// Specifies the key/value pairs to associate with the DNS recordset.
-	Tags pulumi.StringMapInput
-	// Specifies the time to live (TTL) of the record set (in seconds).
-	// The value range is 1–2147483647. The default value is 300.
-	Ttl pulumi.IntPtrInput
-	// Specifies the type of the record set.
-	// Value options: **A**, **AAAA**, **MX**, **CNAME**, **TXT**, **NS**, **SRV**, **CAA**.
-	Type pulumi.StringPtrInput
-	// Specifies the zone ID.
-	// Changing this parameter will create a new resource.
-	ZoneId pulumi.StringPtrInput
+	Name        pulumi.StringPtrInput
+	Records     pulumi.StringArrayInput
+	Region      pulumi.StringPtrInput
+	Tags        pulumi.StringMapInput
+	Ttl         pulumi.IntPtrInput
+	Type        pulumi.StringPtrInput
+	ZoneId      pulumi.StringPtrInput
 }
 
 func (RecordsetState) ElementType() reflect.Type {
@@ -228,52 +90,26 @@ func (RecordsetState) ElementType() reflect.Type {
 }
 
 type recordsetArgs struct {
-	// Specifies the description of the record set.
-	Description *string `pulumi:"description"`
-	// Specifies the name of the record set.
-	// The name suffixed with a zone name, which is a complete host name ended with a dot.
-	Name *string `pulumi:"name"`
-	// Specifies an array of DNS records. The value rules vary depending on the record set type.
-	Records []string `pulumi:"records"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies the key/value pairs to associate with the DNS recordset.
-	Tags map[string]string `pulumi:"tags"`
-	// Specifies the time to live (TTL) of the record set (in seconds).
-	// The value range is 1–2147483647. The default value is 300.
-	Ttl *int `pulumi:"ttl"`
-	// Specifies the type of the record set.
-	// Value options: **A**, **AAAA**, **MX**, **CNAME**, **TXT**, **NS**, **SRV**, **CAA**.
-	Type string `pulumi:"type"`
-	// Specifies the zone ID.
-	// Changing this parameter will create a new resource.
-	ZoneId string `pulumi:"zoneId"`
+	Description *string           `pulumi:"description"`
+	Name        *string           `pulumi:"name"`
+	Records     []string          `pulumi:"records"`
+	Region      *string           `pulumi:"region"`
+	Tags        map[string]string `pulumi:"tags"`
+	Ttl         *int              `pulumi:"ttl"`
+	Type        string            `pulumi:"type"`
+	ZoneId      string            `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a Recordset resource.
 type RecordsetArgs struct {
-	// Specifies the description of the record set.
 	Description pulumi.StringPtrInput
-	// Specifies the name of the record set.
-	// The name suffixed with a zone name, which is a complete host name ended with a dot.
-	Name pulumi.StringPtrInput
-	// Specifies an array of DNS records. The value rules vary depending on the record set type.
-	Records pulumi.StringArrayInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
-	// Specifies the key/value pairs to associate with the DNS recordset.
-	Tags pulumi.StringMapInput
-	// Specifies the time to live (TTL) of the record set (in seconds).
-	// The value range is 1–2147483647. The default value is 300.
-	Ttl pulumi.IntPtrInput
-	// Specifies the type of the record set.
-	// Value options: **A**, **AAAA**, **MX**, **CNAME**, **TXT**, **NS**, **SRV**, **CAA**.
-	Type pulumi.StringInput
-	// Specifies the zone ID.
-	// Changing this parameter will create a new resource.
-	ZoneId pulumi.StringInput
+	Name        pulumi.StringPtrInput
+	Records     pulumi.StringArrayInput
+	Region      pulumi.StringPtrInput
+	Tags        pulumi.StringMapInput
+	Ttl         pulumi.IntPtrInput
+	Type        pulumi.StringInput
+	ZoneId      pulumi.StringInput
 }
 
 func (RecordsetArgs) ElementType() reflect.Type {
@@ -363,47 +199,34 @@ func (o RecordsetOutput) ToRecordsetOutputWithContext(ctx context.Context) Recor
 	return o
 }
 
-// Specifies the description of the record set.
 func (o RecordsetOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Recordset) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the name of the record set.
-// The name suffixed with a zone name, which is a complete host name ended with a dot.
 func (o RecordsetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Recordset) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies an array of DNS records. The value rules vary depending on the record set type.
 func (o RecordsetOutput) Records() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Recordset) pulumi.StringArrayOutput { return v.Records }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
 func (o RecordsetOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Recordset) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Specifies the key/value pairs to associate with the DNS recordset.
 func (o RecordsetOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Recordset) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Specifies the time to live (TTL) of the record set (in seconds).
-// The value range is 1–2147483647. The default value is 300.
 func (o RecordsetOutput) Ttl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Recordset) pulumi.IntPtrOutput { return v.Ttl }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the type of the record set.
-// Value options: **A**, **AAAA**, **MX**, **CNAME**, **TXT**, **NS**, **SRV**, **CAA**.
 func (o RecordsetOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Recordset) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Specifies the zone ID.
-// Changing this parameter will create a new resource.
 func (o RecordsetOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Recordset) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

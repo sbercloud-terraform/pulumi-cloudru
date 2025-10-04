@@ -28,21 +28,8 @@ class SqlserverDatabasePrivilegeArgs:
         """
         The set of arguments for constructing a SqlserverDatabasePrivilege resource.
         :param pulumi.Input[_builtins.str] db_name: Specifies the database name.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS SQL Server instance.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[Sequence[pulumi.Input['SqlserverDatabasePrivilegeUserArgs']]] users: Specifies the account that associated with the database
-               
-               -> **NOTE:** The account of **rdsuser** is system account, it can not be managed, and it will not be obtained.
-               
-               The users structure is documented below.
-               
-               <a name="SQLServerDatabasePrivilege_CreateUser"></a>
-               The `users` block supports:
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         pulumi.set(__self__, "db_name", db_name)
         pulumi.set(__self__, "instance_id", instance_id)
@@ -55,8 +42,6 @@ class SqlserverDatabasePrivilegeArgs:
     def db_name(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the database name.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "db_name")
 
@@ -69,8 +54,6 @@ class SqlserverDatabasePrivilegeArgs:
     def instance_id(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the ID of the RDS SQL Server instance.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "instance_id")
 
@@ -83,13 +66,6 @@ class SqlserverDatabasePrivilegeArgs:
     def users(self) -> pulumi.Input[Sequence[pulumi.Input['SqlserverDatabasePrivilegeUserArgs']]]:
         """
         Specifies the account that associated with the database
-
-        -> **NOTE:** The account of **rdsuser** is system account, it can not be managed, and it will not be obtained.
-
-        The users structure is documented below.
-
-        <a name="SQLServerDatabasePrivilege_CreateUser"></a>
-        The `users` block supports:
         """
         return pulumi.get(self, "users")
 
@@ -100,10 +76,6 @@ class SqlserverDatabasePrivilegeArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -121,21 +93,8 @@ class _SqlserverDatabasePrivilegeState:
         """
         Input properties used for looking up and filtering SqlserverDatabasePrivilege resources.
         :param pulumi.Input[_builtins.str] db_name: Specifies the database name.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS SQL Server instance.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         :param pulumi.Input[Sequence[pulumi.Input['SqlserverDatabasePrivilegeUserArgs']]] users: Specifies the account that associated with the database
-               
-               -> **NOTE:** The account of **rdsuser** is system account, it can not be managed, and it will not be obtained.
-               
-               The users structure is documented below.
-               
-               <a name="SQLServerDatabasePrivilege_CreateUser"></a>
-               The `users` block supports:
         """
         if db_name is not None:
             pulumi.set(__self__, "db_name", db_name)
@@ -151,8 +110,6 @@ class _SqlserverDatabasePrivilegeState:
     def db_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the database name.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "db_name")
 
@@ -165,8 +122,6 @@ class _SqlserverDatabasePrivilegeState:
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the ID of the RDS SQL Server instance.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "instance_id")
 
@@ -177,10 +132,6 @@ class _SqlserverDatabasePrivilegeState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -192,13 +143,6 @@ class _SqlserverDatabasePrivilegeState:
     def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SqlserverDatabasePrivilegeUserArgs']]]]:
         """
         Specifies the account that associated with the database
-
-        -> **NOTE:** The account of **rdsuser** is system account, it can not be managed, and it will not be obtained.
-
-        The users structure is documented below.
-
-        <a name="SQLServerDatabasePrivilege_CreateUser"></a>
-        The `users` block supports:
         """
         return pulumi.get(self, "users")
 
@@ -219,62 +163,12 @@ class SqlserverDatabasePrivilege(pulumi.CustomResource):
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SqlserverDatabasePrivilegeUserArgs', 'SqlserverDatabasePrivilegeUserArgsDict']]]]] = None,
                  __props__=None):
         """
-        Manages RDS SQL Server database privilege resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        db_name = config.require_object("dbName")
-        user_name1 = config.require_object("userName1")
-        user_name2 = config.require_object("userName2")
-        test = sbercloud.rds.SqlserverDatabasePrivilege("test",
-            instance_id=instance_id,
-            db_name=db_name,
-            users=[
-                {
-                    "name": user_name1,
-                    "readonly": True,
-                },
-                {
-                    "name": user_name2,
-                    "readonly": False,
-                },
-            ])
-        ```
-
-        ## Import
-
-        The RDS SQL Server database privilege can be imported using the `instance_id` and `db_name` separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Rds/sqlserverDatabasePrivilege:SqlserverDatabasePrivilege test <instance_id>/<db_name>
-        ```
-
+        Create a SqlserverDatabasePrivilege resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] db_name: Specifies the database name.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS SQL Server instance.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SqlserverDatabasePrivilegeUserArgs', 'SqlserverDatabasePrivilegeUserArgsDict']]]] users: Specifies the account that associated with the database
-               
-               -> **NOTE:** The account of **rdsuser** is system account, it can not be managed, and it will not be obtained.
-               
-               The users structure is documented below.
-               
-               <a name="SQLServerDatabasePrivilege_CreateUser"></a>
-               The `users` block supports:
         """
         ...
     @overload
@@ -283,44 +177,7 @@ class SqlserverDatabasePrivilege(pulumi.CustomResource):
                  args: SqlserverDatabasePrivilegeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages RDS SQL Server database privilege resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        db_name = config.require_object("dbName")
-        user_name1 = config.require_object("userName1")
-        user_name2 = config.require_object("userName2")
-        test = sbercloud.rds.SqlserverDatabasePrivilege("test",
-            instance_id=instance_id,
-            db_name=db_name,
-            users=[
-                {
-                    "name": user_name1,
-                    "readonly": True,
-                },
-                {
-                    "name": user_name2,
-                    "readonly": False,
-                },
-            ])
-        ```
-
-        ## Import
-
-        The RDS SQL Server database privilege can be imported using the `instance_id` and `db_name` separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Rds/sqlserverDatabasePrivilege:SqlserverDatabasePrivilege test <instance_id>/<db_name>
-        ```
-
+        Create a SqlserverDatabasePrivilege resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param SqlserverDatabasePrivilegeArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -381,21 +238,8 @@ class SqlserverDatabasePrivilege(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] db_name: Specifies the database name.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS SQL Server instance.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SqlserverDatabasePrivilegeUserArgs', 'SqlserverDatabasePrivilegeUserArgsDict']]]] users: Specifies the account that associated with the database
-               
-               -> **NOTE:** The account of **rdsuser** is system account, it can not be managed, and it will not be obtained.
-               
-               The users structure is documented below.
-               
-               <a name="SQLServerDatabasePrivilege_CreateUser"></a>
-               The `users` block supports:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -412,8 +256,6 @@ class SqlserverDatabasePrivilege(pulumi.CustomResource):
     def db_name(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the database name.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "db_name")
 
@@ -422,18 +264,12 @@ class SqlserverDatabasePrivilege(pulumi.CustomResource):
     def instance_id(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the ID of the RDS SQL Server instance.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
@@ -441,13 +277,6 @@ class SqlserverDatabasePrivilege(pulumi.CustomResource):
     def users(self) -> pulumi.Output[Sequence['outputs.SqlserverDatabasePrivilegeUser']]:
         """
         Specifies the account that associated with the database
-
-        -> **NOTE:** The account of **rdsuser** is system account, it can not be managed, and it will not be obtained.
-
-        The users structure is documented below.
-
-        <a name="SQLServerDatabasePrivilege_CreateUser"></a>
-        The `users` block supports:
         """
         return pulumi.get(self, "users")
 

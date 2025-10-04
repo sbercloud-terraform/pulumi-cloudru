@@ -11,38 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of CFW protection rules.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			objectId := cfg.RequireObject("objectId")
-//			name := cfg.RequireObject("name")
-//			_, err := cfw.GetProtectionRules(ctx, &cfw.GetProtectionRulesArgs{
-//				ObjectId: objectId,
-//				Name:     pulumi.StringRef(name),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetProtectionRules(ctx *pulumi.Context, args *GetProtectionRulesArgs, opts ...pulumi.InvokeOption) (*GetProtectionRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProtectionRulesResult
@@ -55,71 +23,37 @@ func GetProtectionRules(ctx *pulumi.Context, args *GetProtectionRulesArgs, opts 
 
 // A collection of arguments for invoking getProtectionRules.
 type GetProtectionRulesArgs struct {
-	// Specifies the rule action type.
-	// The options are as follows:
-	// + **0**: allow;
-	// + **1**: deny.
-	ActionType *string `pulumi:"actionType"`
-	// Specifies the destination address.
-	Destination *string `pulumi:"destination"`
-	// Specifies the rule direction.
-	// The options are as follows:
-	// + **0**: inbound;
-	// + **1**: outbound.
-	Direction *string `pulumi:"direction"`
-	// Specifies the firewall instance ID.
-	FwInstanceId *string `pulumi:"fwInstanceId"`
-	// Specifies the rule name.
-	Name *string `pulumi:"name"`
-	// Specifies the protected object ID.
-	ObjectId string `pulumi:"objectId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the rule ID.
-	RuleId *string `pulumi:"ruleId"`
-	// Specifies the source address.
-	Source *string `pulumi:"source"`
-	// Specifies the rule status.
-	// The options are as follows:
-	// + **0**: disabled;
-	// + **1**: enabled.
-	Status *string `pulumi:"status"`
-	// Specifies the key/value pairs to associate with the protection rule.
-	// Tags should have only one key/value pair.
-	Tags map[string]string `pulumi:"tags"`
-	// Specifies the rule type.
-	// The value can be **0** (Internet rule), **1** (VPC rule), or **2** (NAT rule).
-	Type *string `pulumi:"type"`
+	ActionType   *string           `pulumi:"actionType"`
+	Destination  *string           `pulumi:"destination"`
+	Direction    *string           `pulumi:"direction"`
+	FwInstanceId *string           `pulumi:"fwInstanceId"`
+	Name         *string           `pulumi:"name"`
+	ObjectId     string            `pulumi:"objectId"`
+	Region       *string           `pulumi:"region"`
+	RuleId       *string           `pulumi:"ruleId"`
+	Source       *string           `pulumi:"source"`
+	Status       *string           `pulumi:"status"`
+	Tags         map[string]string `pulumi:"tags"`
+	Type         *string           `pulumi:"type"`
 }
 
 // A collection of values returned by getProtectionRules.
 type GetProtectionRulesResult struct {
-	// The rule action type.
-	ActionType *string `pulumi:"actionType"`
-	// The destination configuration.
-	Destination *string `pulumi:"destination"`
-	// The direction of a rule.
+	ActionType   *string `pulumi:"actionType"`
+	Destination  *string `pulumi:"destination"`
 	Direction    *string `pulumi:"direction"`
 	FwInstanceId *string `pulumi:"fwInstanceId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The custom service name.
-	Name     *string `pulumi:"name"`
-	ObjectId string  `pulumi:"objectId"`
-	// The protection rule list.
-	Records []GetProtectionRulesRecord `pulumi:"records"`
-	Region  string                     `pulumi:"region"`
-	// The rule ID.
-	RuleId *string `pulumi:"ruleId"`
-	// The source configuration.
-	Source *string `pulumi:"source"`
-	// The rule status.
-	Status *string `pulumi:"status"`
-	// The tag of a rule.
-	Tags map[string]string `pulumi:"tags"`
-	// The source type.
-	Type *string `pulumi:"type"`
+	Id       string                     `pulumi:"id"`
+	Name     *string                    `pulumi:"name"`
+	ObjectId string                     `pulumi:"objectId"`
+	Records  []GetProtectionRulesRecord `pulumi:"records"`
+	Region   string                     `pulumi:"region"`
+	RuleId   *string                    `pulumi:"ruleId"`
+	Source   *string                    `pulumi:"source"`
+	Status   *string                    `pulumi:"status"`
+	Tags     map[string]string          `pulumi:"tags"`
+	Type     *string                    `pulumi:"type"`
 }
 
 func GetProtectionRulesOutput(ctx *pulumi.Context, args GetProtectionRulesOutputArgs, opts ...pulumi.InvokeOption) GetProtectionRulesResultOutput {
@@ -133,42 +67,18 @@ func GetProtectionRulesOutput(ctx *pulumi.Context, args GetProtectionRulesOutput
 
 // A collection of arguments for invoking getProtectionRules.
 type GetProtectionRulesOutputArgs struct {
-	// Specifies the rule action type.
-	// The options are as follows:
-	// + **0**: allow;
-	// + **1**: deny.
-	ActionType pulumi.StringPtrInput `pulumi:"actionType"`
-	// Specifies the destination address.
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
-	// Specifies the rule direction.
-	// The options are as follows:
-	// + **0**: inbound;
-	// + **1**: outbound.
-	Direction pulumi.StringPtrInput `pulumi:"direction"`
-	// Specifies the firewall instance ID.
+	ActionType   pulumi.StringPtrInput `pulumi:"actionType"`
+	Destination  pulumi.StringPtrInput `pulumi:"destination"`
+	Direction    pulumi.StringPtrInput `pulumi:"direction"`
 	FwInstanceId pulumi.StringPtrInput `pulumi:"fwInstanceId"`
-	// Specifies the rule name.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the protected object ID.
-	ObjectId pulumi.StringInput `pulumi:"objectId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the rule ID.
-	RuleId pulumi.StringPtrInput `pulumi:"ruleId"`
-	// Specifies the source address.
-	Source pulumi.StringPtrInput `pulumi:"source"`
-	// Specifies the rule status.
-	// The options are as follows:
-	// + **0**: disabled;
-	// + **1**: enabled.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-	// Specifies the key/value pairs to associate with the protection rule.
-	// Tags should have only one key/value pair.
-	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// Specifies the rule type.
-	// The value can be **0** (Internet rule), **1** (VPC rule), or **2** (NAT rule).
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Name         pulumi.StringPtrInput `pulumi:"name"`
+	ObjectId     pulumi.StringInput    `pulumi:"objectId"`
+	Region       pulumi.StringPtrInput `pulumi:"region"`
+	RuleId       pulumi.StringPtrInput `pulumi:"ruleId"`
+	Source       pulumi.StringPtrInput `pulumi:"source"`
+	Status       pulumi.StringPtrInput `pulumi:"status"`
+	Tags         pulumi.StringMapInput `pulumi:"tags"`
+	Type         pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (GetProtectionRulesOutputArgs) ElementType() reflect.Type {
@@ -190,17 +100,14 @@ func (o GetProtectionRulesResultOutput) ToGetProtectionRulesResultOutputWithCont
 	return o
 }
 
-// The rule action type.
 func (o GetProtectionRulesResultOutput) ActionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetProtectionRulesResult) *string { return v.ActionType }).(pulumi.StringPtrOutput)
 }
 
-// The destination configuration.
 func (o GetProtectionRulesResultOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetProtectionRulesResult) *string { return v.Destination }).(pulumi.StringPtrOutput)
 }
 
-// The direction of a rule.
 func (o GetProtectionRulesResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetProtectionRulesResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
@@ -214,7 +121,6 @@ func (o GetProtectionRulesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProtectionRulesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The custom service name.
 func (o GetProtectionRulesResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetProtectionRulesResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -223,7 +129,6 @@ func (o GetProtectionRulesResultOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProtectionRulesResult) string { return v.ObjectId }).(pulumi.StringOutput)
 }
 
-// The protection rule list.
 func (o GetProtectionRulesResultOutput) Records() GetProtectionRulesRecordArrayOutput {
 	return o.ApplyT(func(v GetProtectionRulesResult) []GetProtectionRulesRecord { return v.Records }).(GetProtectionRulesRecordArrayOutput)
 }
@@ -232,27 +137,22 @@ func (o GetProtectionRulesResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProtectionRulesResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The rule ID.
 func (o GetProtectionRulesResultOutput) RuleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetProtectionRulesResult) *string { return v.RuleId }).(pulumi.StringPtrOutput)
 }
 
-// The source configuration.
 func (o GetProtectionRulesResultOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetProtectionRulesResult) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
-// The rule status.
 func (o GetProtectionRulesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetProtectionRulesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// The tag of a rule.
 func (o GetProtectionRulesResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetProtectionRulesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The source type.
 func (o GetProtectionRulesResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetProtectionRulesResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

@@ -6,46 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages RDS SQL Server database privilege resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const dbName = config.requireObject<any>("dbName");
- * const userName1 = config.requireObject<any>("userName1");
- * const userName2 = config.requireObject<any>("userName2");
- * const test = new sbercloud.rds.SqlserverDatabasePrivilege("test", {
- *     instanceId: instanceId,
- *     dbName: dbName,
- *     users: [
- *         {
- *             name: userName1,
- *             readonly: true,
- *         },
- *         {
- *             name: userName2,
- *             readonly: false,
- *         },
- *     ],
- * });
- * ```
- *
- * ## Import
- *
- * The RDS SQL Server database privilege can be imported using the `instance_id` and `db_name` separated by a slash, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:Rds/sqlserverDatabasePrivilege:SqlserverDatabasePrivilege test <instance_id>/<db_name>
- * ```
- */
 export class SqlserverDatabasePrivilege extends pulumi.CustomResource {
     /**
      * Get an existing SqlserverDatabasePrivilege resource's state with the given name, ID, and optional extra
@@ -76,30 +36,15 @@ export class SqlserverDatabasePrivilege extends pulumi.CustomResource {
 
     /**
      * Specifies the database name.
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly dbName: pulumi.Output<string>;
     /**
      * Specifies the ID of the RDS SQL Server instance.
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly instanceId: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies the account that associated with the database
-     *
-     * -> **NOTE:** The account of **rdsuser** is system account, it can not be managed, and it will not be obtained.
-     *
-     * The users structure is documented below.
-     *
-     * <a name="SQLServerDatabasePrivilege_CreateUser"></a>
-     * The `users` block supports:
      */
     declare public readonly users: pulumi.Output<outputs.Rds.SqlserverDatabasePrivilegeUser[]>;
 
@@ -147,30 +92,15 @@ export class SqlserverDatabasePrivilege extends pulumi.CustomResource {
 export interface SqlserverDatabasePrivilegeState {
     /**
      * Specifies the database name.
-     *
-     * Changing this parameter will create a new resource.
      */
     dbName?: pulumi.Input<string>;
     /**
      * Specifies the ID of the RDS SQL Server instance.
-     *
-     * Changing this parameter will create a new resource.
      */
     instanceId?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
      * Specifies the account that associated with the database
-     *
-     * -> **NOTE:** The account of **rdsuser** is system account, it can not be managed, and it will not be obtained.
-     *
-     * The users structure is documented below.
-     *
-     * <a name="SQLServerDatabasePrivilege_CreateUser"></a>
-     * The `users` block supports:
      */
     users?: pulumi.Input<pulumi.Input<inputs.Rds.SqlserverDatabasePrivilegeUser>[]>;
 }
@@ -181,30 +111,15 @@ export interface SqlserverDatabasePrivilegeState {
 export interface SqlserverDatabasePrivilegeArgs {
     /**
      * Specifies the database name.
-     *
-     * Changing this parameter will create a new resource.
      */
     dbName: pulumi.Input<string>;
     /**
      * Specifies the ID of the RDS SQL Server instance.
-     *
-     * Changing this parameter will create a new resource.
      */
     instanceId: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
      * Specifies the account that associated with the database
-     *
-     * -> **NOTE:** The account of **rdsuser** is system account, it can not be managed, and it will not be obtained.
-     *
-     * The users structure is documented below.
-     *
-     * <a name="SQLServerDatabasePrivilege_CreateUser"></a>
-     * The `users` block supports:
      */
     users: pulumi.Input<pulumi.Input<inputs.Rds.SqlserverDatabasePrivilegeUser>[]>;
 }

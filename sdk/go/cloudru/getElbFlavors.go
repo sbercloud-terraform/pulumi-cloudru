@@ -11,43 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the available ELB Flavors.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			flavors, err := sbercloud.GetElbFlavors(ctx, &cloudru.GetElbFlavorsArgs{
-//				Type:           pulumi.StringRef("L7"),
-//				MaxConnections: pulumi.IntRef(200000),
-//				Cps:            pulumi.IntRef(2000),
-//				Bandwidth:      pulumi.IntRef(50),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			// Create Dedicated Load Balancer with the first matched flavor
-//			_, err = sbercloud.NewElbLoadbalancer(ctx, "lb", &sbercloud.ElbLoadbalancerArgs{
-//				L7FlavorId: pulumi.String(flavors.Ids[0]),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetElbFlavors(ctx *pulumi.Context, args *GetElbFlavorsArgs, opts ...pulumi.InvokeOption) (*GetElbFlavorsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetElbFlavorsResult
@@ -60,56 +23,40 @@ func GetElbFlavors(ctx *pulumi.Context, args *GetElbFlavorsArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getElbFlavors.
 type GetElbFlavorsArgs struct {
-	// Specifies the bandwidth size(Mbit/s) in the flavor.
-	Bandwidth *int `pulumi:"bandwidth"`
-	Category  *int `pulumi:"category"`
-	// Specifies the cps in the flavor.
-	Cps           *int    `pulumi:"cps"`
-	FlavorId      *string `pulumi:"flavorId"`
-	FlavorSoldOut *string `pulumi:"flavorSoldOut"`
-	ListAll       *string `pulumi:"listAll"`
-	// Specifies the maximum connections in the flavor.
-	MaxConnections *int `pulumi:"maxConnections"`
-	// Name of the flavor.
+	Bandwidth         *int    `pulumi:"bandwidth"`
+	Category          *int    `pulumi:"category"`
+	Cps               *int    `pulumi:"cps"`
+	FlavorId          *string `pulumi:"flavorId"`
+	FlavorSoldOut     *string `pulumi:"flavorSoldOut"`
+	ListAll           *string `pulumi:"listAll"`
+	MaxConnections    *int    `pulumi:"maxConnections"`
 	Name              *string `pulumi:"name"`
 	PublicBorderGroup *string `pulumi:"publicBorderGroup"`
-	// Specifies the qps in the L7 flavor.
-	Qps *int `pulumi:"qps"`
-	// The region in which to obtain the flavors. If omitted, the provider-level region will be
-	// used.
-	Region *string `pulumi:"region"`
-	Shared *string `pulumi:"shared"`
-	// Specifies the flavor type. Valid values are L4 and L7.
-	Type *string `pulumi:"type"`
+	Qps               *int    `pulumi:"qps"`
+	Region            *string `pulumi:"region"`
+	Shared            *string `pulumi:"shared"`
+	Type              *string `pulumi:"type"`
 }
 
 // A collection of values returned by getElbFlavors.
 type GetElbFlavorsResult struct {
-	// Bandwidth size(Mbit/s) of the flavor.
-	Bandwidth *int `pulumi:"bandwidth"`
-	Category  *int `pulumi:"category"`
-	// Cps of the flavor.
-	Cps           *int    `pulumi:"cps"`
-	FlavorId      *string `pulumi:"flavorId"`
-	FlavorSoldOut *string `pulumi:"flavorSoldOut"`
-	// A list of flavors. Each element contains the following attributes:
-	Flavors []GetElbFlavorsFlavor `pulumi:"flavors"`
+	Bandwidth     *int                  `pulumi:"bandwidth"`
+	Category      *int                  `pulumi:"category"`
+	Cps           *int                  `pulumi:"cps"`
+	FlavorId      *string               `pulumi:"flavorId"`
+	FlavorSoldOut *string               `pulumi:"flavorSoldOut"`
+	Flavors       []GetElbFlavorsFlavor `pulumi:"flavors"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// A list of flavor IDs.
-	Ids     []string `pulumi:"ids"`
-	ListAll *string  `pulumi:"listAll"`
-	// Maximum connections of the flavor.
-	MaxConnections *int `pulumi:"maxConnections"`
-	// Name of the flavor.
-	Name              *string `pulumi:"name"`
-	PublicBorderGroup *string `pulumi:"publicBorderGroup"`
-	// Qps of the L7 flavor.
-	Qps    *int    `pulumi:"qps"`
-	Region string  `pulumi:"region"`
-	Shared *string `pulumi:"shared"`
-	// Type of the flavor.
-	Type *string `pulumi:"type"`
+	Id                string   `pulumi:"id"`
+	Ids               []string `pulumi:"ids"`
+	ListAll           *string  `pulumi:"listAll"`
+	MaxConnections    *int     `pulumi:"maxConnections"`
+	Name              *string  `pulumi:"name"`
+	PublicBorderGroup *string  `pulumi:"publicBorderGroup"`
+	Qps               *int     `pulumi:"qps"`
+	Region            string   `pulumi:"region"`
+	Shared            *string  `pulumi:"shared"`
+	Type              *string  `pulumi:"type"`
 }
 
 func GetElbFlavorsOutput(ctx *pulumi.Context, args GetElbFlavorsOutputArgs, opts ...pulumi.InvokeOption) GetElbFlavorsResultOutput {
@@ -123,27 +70,19 @@ func GetElbFlavorsOutput(ctx *pulumi.Context, args GetElbFlavorsOutputArgs, opts
 
 // A collection of arguments for invoking getElbFlavors.
 type GetElbFlavorsOutputArgs struct {
-	// Specifies the bandwidth size(Mbit/s) in the flavor.
-	Bandwidth pulumi.IntPtrInput `pulumi:"bandwidth"`
-	Category  pulumi.IntPtrInput `pulumi:"category"`
-	// Specifies the cps in the flavor.
-	Cps           pulumi.IntPtrInput    `pulumi:"cps"`
-	FlavorId      pulumi.StringPtrInput `pulumi:"flavorId"`
-	FlavorSoldOut pulumi.StringPtrInput `pulumi:"flavorSoldOut"`
-	ListAll       pulumi.StringPtrInput `pulumi:"listAll"`
-	// Specifies the maximum connections in the flavor.
-	MaxConnections pulumi.IntPtrInput `pulumi:"maxConnections"`
-	// Name of the flavor.
+	Bandwidth         pulumi.IntPtrInput    `pulumi:"bandwidth"`
+	Category          pulumi.IntPtrInput    `pulumi:"category"`
+	Cps               pulumi.IntPtrInput    `pulumi:"cps"`
+	FlavorId          pulumi.StringPtrInput `pulumi:"flavorId"`
+	FlavorSoldOut     pulumi.StringPtrInput `pulumi:"flavorSoldOut"`
+	ListAll           pulumi.StringPtrInput `pulumi:"listAll"`
+	MaxConnections    pulumi.IntPtrInput    `pulumi:"maxConnections"`
 	Name              pulumi.StringPtrInput `pulumi:"name"`
 	PublicBorderGroup pulumi.StringPtrInput `pulumi:"publicBorderGroup"`
-	// Specifies the qps in the L7 flavor.
-	Qps pulumi.IntPtrInput `pulumi:"qps"`
-	// The region in which to obtain the flavors. If omitted, the provider-level region will be
-	// used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	Shared pulumi.StringPtrInput `pulumi:"shared"`
-	// Specifies the flavor type. Valid values are L4 and L7.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Qps               pulumi.IntPtrInput    `pulumi:"qps"`
+	Region            pulumi.StringPtrInput `pulumi:"region"`
+	Shared            pulumi.StringPtrInput `pulumi:"shared"`
+	Type              pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (GetElbFlavorsOutputArgs) ElementType() reflect.Type {
@@ -165,7 +104,6 @@ func (o GetElbFlavorsResultOutput) ToGetElbFlavorsResultOutputWithContext(ctx co
 	return o
 }
 
-// Bandwidth size(Mbit/s) of the flavor.
 func (o GetElbFlavorsResultOutput) Bandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetElbFlavorsResult) *int { return v.Bandwidth }).(pulumi.IntPtrOutput)
 }
@@ -174,7 +112,6 @@ func (o GetElbFlavorsResultOutput) Category() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetElbFlavorsResult) *int { return v.Category }).(pulumi.IntPtrOutput)
 }
 
-// Cps of the flavor.
 func (o GetElbFlavorsResultOutput) Cps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetElbFlavorsResult) *int { return v.Cps }).(pulumi.IntPtrOutput)
 }
@@ -187,7 +124,6 @@ func (o GetElbFlavorsResultOutput) FlavorSoldOut() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElbFlavorsResult) *string { return v.FlavorSoldOut }).(pulumi.StringPtrOutput)
 }
 
-// A list of flavors. Each element contains the following attributes:
 func (o GetElbFlavorsResultOutput) Flavors() GetElbFlavorsFlavorArrayOutput {
 	return o.ApplyT(func(v GetElbFlavorsResult) []GetElbFlavorsFlavor { return v.Flavors }).(GetElbFlavorsFlavorArrayOutput)
 }
@@ -197,7 +133,6 @@ func (o GetElbFlavorsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetElbFlavorsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of flavor IDs.
 func (o GetElbFlavorsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetElbFlavorsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -206,12 +141,10 @@ func (o GetElbFlavorsResultOutput) ListAll() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElbFlavorsResult) *string { return v.ListAll }).(pulumi.StringPtrOutput)
 }
 
-// Maximum connections of the flavor.
 func (o GetElbFlavorsResultOutput) MaxConnections() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetElbFlavorsResult) *int { return v.MaxConnections }).(pulumi.IntPtrOutput)
 }
 
-// Name of the flavor.
 func (o GetElbFlavorsResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElbFlavorsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -220,7 +153,6 @@ func (o GetElbFlavorsResultOutput) PublicBorderGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElbFlavorsResult) *string { return v.PublicBorderGroup }).(pulumi.StringPtrOutput)
 }
 
-// Qps of the L7 flavor.
 func (o GetElbFlavorsResultOutput) Qps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetElbFlavorsResult) *int { return v.Qps }).(pulumi.IntPtrOutput)
 }
@@ -233,7 +165,6 @@ func (o GetElbFlavorsResultOutput) Shared() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElbFlavorsResult) *string { return v.Shared }).(pulumi.StringPtrOutput)
 }
 
-// Type of the flavor.
 func (o GetElbFlavorsResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElbFlavorsResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

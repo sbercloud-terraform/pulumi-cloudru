@@ -12,69 +12,18 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a CFW DNS resolution resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			fwInstanceId := cfg.RequireObject("fwInstanceId")
-//			defaultDnsServers := cfg.RequireObject("defaultDnsServers")
-//			customDnsServers := cfg.RequireObject("customDnsServers")
-//			healthCheckDomainName := cfg.RequireObject("healthCheckDomainName")
-//			_, err := cfw.NewDnsResolution(ctx, "test", &cfw.DnsResolutionArgs{
-//				FwInstanceId:          pulumi.Any(fwInstanceId),
-//				DefaultDnsServers:     pulumi.Any(defaultDnsServers),
-//				CustomDnsServers:      pulumi.Any(customDnsServers),
-//				HealthCheckDomainName: pulumi.Any(healthCheckDomainName),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The DNS resolution resource can be imported using the firewall instance ID, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Cfw/dnsResolution:DnsResolution test <fw_instance_id>
-// ```
 type DnsResolution struct {
 	pulumi.CustomResourceState
 
 	// The custom DNS servers.
-	// Currently, only two custom DNS server addresses can be specified.
 	CustomDnsServers pulumi.StringArrayOutput `pulumi:"customDnsServers"`
 	// The default DNS servers.
 	DefaultDnsServers pulumi.StringArrayOutput `pulumi:"defaultDnsServers"`
 	// The ID of the firewall.
-	// Changing this creates a new resource.
 	FwInstanceId pulumi.StringOutput `pulumi:"fwInstanceId"`
 	// The health check domain name.
 	HealthCheckDomainName pulumi.StringOutput `pulumi:"healthCheckDomainName"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Region                pulumi.StringOutput `pulumi:"region"`
 }
 
 // NewDnsResolution registers a new resource with the given unique name, arguments, and options.
@@ -111,36 +60,26 @@ func GetDnsResolution(ctx *pulumi.Context,
 // Input properties used for looking up and filtering DnsResolution resources.
 type dnsResolutionState struct {
 	// The custom DNS servers.
-	// Currently, only two custom DNS server addresses can be specified.
 	CustomDnsServers []string `pulumi:"customDnsServers"`
 	// The default DNS servers.
 	DefaultDnsServers []string `pulumi:"defaultDnsServers"`
 	// The ID of the firewall.
-	// Changing this creates a new resource.
 	FwInstanceId *string `pulumi:"fwInstanceId"`
 	// The health check domain name.
 	HealthCheckDomainName *string `pulumi:"healthCheckDomainName"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region *string `pulumi:"region"`
+	Region                *string `pulumi:"region"`
 }
 
 type DnsResolutionState struct {
 	// The custom DNS servers.
-	// Currently, only two custom DNS server addresses can be specified.
 	CustomDnsServers pulumi.StringArrayInput
 	// The default DNS servers.
 	DefaultDnsServers pulumi.StringArrayInput
 	// The ID of the firewall.
-	// Changing this creates a new resource.
 	FwInstanceId pulumi.StringPtrInput
 	// The health check domain name.
 	HealthCheckDomainName pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region pulumi.StringPtrInput
+	Region                pulumi.StringPtrInput
 }
 
 func (DnsResolutionState) ElementType() reflect.Type {
@@ -149,37 +88,27 @@ func (DnsResolutionState) ElementType() reflect.Type {
 
 type dnsResolutionArgs struct {
 	// The custom DNS servers.
-	// Currently, only two custom DNS server addresses can be specified.
 	CustomDnsServers []string `pulumi:"customDnsServers"`
 	// The default DNS servers.
 	DefaultDnsServers []string `pulumi:"defaultDnsServers"`
 	// The ID of the firewall.
-	// Changing this creates a new resource.
 	FwInstanceId string `pulumi:"fwInstanceId"`
 	// The health check domain name.
 	HealthCheckDomainName *string `pulumi:"healthCheckDomainName"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region *string `pulumi:"region"`
+	Region                *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a DnsResolution resource.
 type DnsResolutionArgs struct {
 	// The custom DNS servers.
-	// Currently, only two custom DNS server addresses can be specified.
 	CustomDnsServers pulumi.StringArrayInput
 	// The default DNS servers.
 	DefaultDnsServers pulumi.StringArrayInput
 	// The ID of the firewall.
-	// Changing this creates a new resource.
 	FwInstanceId pulumi.StringInput
 	// The health check domain name.
 	HealthCheckDomainName pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region pulumi.StringPtrInput
+	Region                pulumi.StringPtrInput
 }
 
 func (DnsResolutionArgs) ElementType() reflect.Type {
@@ -270,7 +199,6 @@ func (o DnsResolutionOutput) ToDnsResolutionOutputWithContext(ctx context.Contex
 }
 
 // The custom DNS servers.
-// Currently, only two custom DNS server addresses can be specified.
 func (o DnsResolutionOutput) CustomDnsServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DnsResolution) pulumi.StringArrayOutput { return v.CustomDnsServers }).(pulumi.StringArrayOutput)
 }
@@ -281,7 +209,6 @@ func (o DnsResolutionOutput) DefaultDnsServers() pulumi.StringArrayOutput {
 }
 
 // The ID of the firewall.
-// Changing this creates a new resource.
 func (o DnsResolutionOutput) FwInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DnsResolution) pulumi.StringOutput { return v.FwInstanceId }).(pulumi.StringOutput)
 }
@@ -291,9 +218,6 @@ func (o DnsResolutionOutput) HealthCheckDomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DnsResolution) pulumi.StringOutput { return v.HealthCheckDomainName }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used.
-// Changing this creates a new resource.
 func (o DnsResolutionOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *DnsResolution) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

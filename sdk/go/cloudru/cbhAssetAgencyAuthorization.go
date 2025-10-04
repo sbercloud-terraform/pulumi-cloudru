@@ -12,54 +12,11 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a CBH asset agency authorization resource within SberCloud.
-//
-// > After you enable CSMS credentials and KMS key agency authorization, you need to wait about `10` minutes, the CBH
-// instance can obtain a token with agency permissions. Destroying resources will not change the current asset
-// agency authorization status.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sbercloud.NewCbhAssetAgencyAuthorization(ctx, "test", &sbercloud.CbhAssetAgencyAuthorizationArgs{
-//				Csms: pulumi.Bool(true),
-//				Kms:  pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type CbhAssetAgencyAuthorization struct {
 	pulumi.CustomResourceState
 
-	// Specifies whether to enable CSMS credential agency authorization. The value can be **true**
-	// or **false**.
-	// If set to **true** to enable agency authorization, the CBH service will have the permission to query your CSMS
-	// credential list. You can select credentials as resource accounts on the CBH instance.
-	Csms pulumi.BoolOutput `pulumi:"csms"`
-	// Specifies whether to enable KMS key agency authorization. The value can be **true** or
-	// **false**.
-	// If set to **true** to enable agency authorization, the CBH service will have the permission to use the KMS interface
-	// to obtain the CSMS credential value. You can use this credential value to log in to the managed host on the CBH
-	// instance.
-	Kms pulumi.BoolOutput `pulumi:"kms"`
-	// Specifies the region in which to create the CBH asset agency authorization.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	Csms   pulumi.BoolOutput   `pulumi:"csms"`
+	Kms    pulumi.BoolOutput   `pulumi:"kms"`
 	Region pulumi.StringOutput `pulumi:"region"`
 }
 
@@ -99,36 +56,14 @@ func GetCbhAssetAgencyAuthorization(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CbhAssetAgencyAuthorization resources.
 type cbhAssetAgencyAuthorizationState struct {
-	// Specifies whether to enable CSMS credential agency authorization. The value can be **true**
-	// or **false**.
-	// If set to **true** to enable agency authorization, the CBH service will have the permission to query your CSMS
-	// credential list. You can select credentials as resource accounts on the CBH instance.
-	Csms *bool `pulumi:"csms"`
-	// Specifies whether to enable KMS key agency authorization. The value can be **true** or
-	// **false**.
-	// If set to **true** to enable agency authorization, the CBH service will have the permission to use the KMS interface
-	// to obtain the CSMS credential value. You can use this credential value to log in to the managed host on the CBH
-	// instance.
-	Kms *bool `pulumi:"kms"`
-	// Specifies the region in which to create the CBH asset agency authorization.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	Csms   *bool   `pulumi:"csms"`
+	Kms    *bool   `pulumi:"kms"`
 	Region *string `pulumi:"region"`
 }
 
 type CbhAssetAgencyAuthorizationState struct {
-	// Specifies whether to enable CSMS credential agency authorization. The value can be **true**
-	// or **false**.
-	// If set to **true** to enable agency authorization, the CBH service will have the permission to query your CSMS
-	// credential list. You can select credentials as resource accounts on the CBH instance.
-	Csms pulumi.BoolPtrInput
-	// Specifies whether to enable KMS key agency authorization. The value can be **true** or
-	// **false**.
-	// If set to **true** to enable agency authorization, the CBH service will have the permission to use the KMS interface
-	// to obtain the CSMS credential value. You can use this credential value to log in to the managed host on the CBH
-	// instance.
-	Kms pulumi.BoolPtrInput
-	// Specifies the region in which to create the CBH asset agency authorization.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	Csms   pulumi.BoolPtrInput
+	Kms    pulumi.BoolPtrInput
 	Region pulumi.StringPtrInput
 }
 
@@ -137,37 +72,15 @@ func (CbhAssetAgencyAuthorizationState) ElementType() reflect.Type {
 }
 
 type cbhAssetAgencyAuthorizationArgs struct {
-	// Specifies whether to enable CSMS credential agency authorization. The value can be **true**
-	// or **false**.
-	// If set to **true** to enable agency authorization, the CBH service will have the permission to query your CSMS
-	// credential list. You can select credentials as resource accounts on the CBH instance.
-	Csms bool `pulumi:"csms"`
-	// Specifies whether to enable KMS key agency authorization. The value can be **true** or
-	// **false**.
-	// If set to **true** to enable agency authorization, the CBH service will have the permission to use the KMS interface
-	// to obtain the CSMS credential value. You can use this credential value to log in to the managed host on the CBH
-	// instance.
-	Kms bool `pulumi:"kms"`
-	// Specifies the region in which to create the CBH asset agency authorization.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	Csms   bool    `pulumi:"csms"`
+	Kms    bool    `pulumi:"kms"`
 	Region *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a CbhAssetAgencyAuthorization resource.
 type CbhAssetAgencyAuthorizationArgs struct {
-	// Specifies whether to enable CSMS credential agency authorization. The value can be **true**
-	// or **false**.
-	// If set to **true** to enable agency authorization, the CBH service will have the permission to query your CSMS
-	// credential list. You can select credentials as resource accounts on the CBH instance.
-	Csms pulumi.BoolInput
-	// Specifies whether to enable KMS key agency authorization. The value can be **true** or
-	// **false**.
-	// If set to **true** to enable agency authorization, the CBH service will have the permission to use the KMS interface
-	// to obtain the CSMS credential value. You can use this credential value to log in to the managed host on the CBH
-	// instance.
-	Kms pulumi.BoolInput
-	// Specifies the region in which to create the CBH asset agency authorization.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	Csms   pulumi.BoolInput
+	Kms    pulumi.BoolInput
 	Region pulumi.StringPtrInput
 }
 
@@ -258,25 +171,14 @@ func (o CbhAssetAgencyAuthorizationOutput) ToCbhAssetAgencyAuthorizationOutputWi
 	return o
 }
 
-// Specifies whether to enable CSMS credential agency authorization. The value can be **true**
-// or **false**.
-// If set to **true** to enable agency authorization, the CBH service will have the permission to query your CSMS
-// credential list. You can select credentials as resource accounts on the CBH instance.
 func (o CbhAssetAgencyAuthorizationOutput) Csms() pulumi.BoolOutput {
 	return o.ApplyT(func(v *CbhAssetAgencyAuthorization) pulumi.BoolOutput { return v.Csms }).(pulumi.BoolOutput)
 }
 
-// Specifies whether to enable KMS key agency authorization. The value can be **true** or
-// **false**.
-// If set to **true** to enable agency authorization, the CBH service will have the permission to use the KMS interface
-// to obtain the CSMS credential value. You can use this credential value to log in to the managed host on the CBH
-// instance.
 func (o CbhAssetAgencyAuthorizationOutput) Kms() pulumi.BoolOutput {
 	return o.ApplyT(func(v *CbhAssetAgencyAuthorization) pulumi.BoolOutput { return v.Kms }).(pulumi.BoolOutput)
 }
 
-// Specifies the region in which to create the CBH asset agency authorization.
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
 func (o CbhAssetAgencyAuthorizationOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *CbhAssetAgencyAuthorization) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

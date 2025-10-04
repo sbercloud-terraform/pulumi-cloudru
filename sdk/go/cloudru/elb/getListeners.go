@@ -11,36 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to query the list of ELB listeners.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/elb"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			protocol := cfg.RequireObject("protocol")
-//			_, err := elb.GetListeners(ctx, &elb.GetListenersArgs{
-//				Protocol: pulumi.StringRef(protocol),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetListeners(ctx *pulumi.Context, args *GetListenersArgs, opts ...pulumi.InvokeOption) (*GetListenersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetListenersResult
@@ -54,58 +24,38 @@ func GetListeners(ctx *pulumi.Context, args *GetListenersArgs, opts ...pulumi.In
 // A collection of arguments for invoking getListeners.
 type GetListenersArgs struct {
 	ClientCaTlsContainerRef *string `pulumi:"clientCaTlsContainerRef"`
-	// The ID of the default pool with which the ELB listener is associated.
-	DefaultPoolId *string `pulumi:"defaultPoolId"`
-	// The ID of the server certificate used by the listener.
-	DefaultTlsContainerRef *string `pulumi:"defaultTlsContainerRef"`
-	// The description of the ELB listener.
-	Description         *string `pulumi:"description"`
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Whether the ELB listener uses HTTP/2.
-	Http2Enable    *string `pulumi:"http2Enable"`
-	ListenerId     *string `pulumi:"listenerId"`
-	LoadbalancerId *string `pulumi:"loadbalancerId"`
-	// The listener name.
-	Name *string `pulumi:"name"`
-	// The listener protocol.\
-	// The valid values are **TCP**, **UDP**, **HTTP** and **TERMINATED_HTTPS**.
-	Protocol *string `pulumi:"protocol"`
-	// The front-end listening port of the listener.\
-	// The valid value is range from `1` to `65535`.
-	ProtocolPort *string `pulumi:"protocolPort"`
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
-	Region           *string `pulumi:"region"`
-	TlsCiphersPolicy *string `pulumi:"tlsCiphersPolicy"`
+	DefaultPoolId           *string `pulumi:"defaultPoolId"`
+	DefaultTlsContainerRef  *string `pulumi:"defaultTlsContainerRef"`
+	Description             *string `pulumi:"description"`
+	EnterpriseProjectId     *string `pulumi:"enterpriseProjectId"`
+	Http2Enable             *string `pulumi:"http2Enable"`
+	ListenerId              *string `pulumi:"listenerId"`
+	LoadbalancerId          *string `pulumi:"loadbalancerId"`
+	Name                    *string `pulumi:"name"`
+	Protocol                *string `pulumi:"protocol"`
+	ProtocolPort            *string `pulumi:"protocolPort"`
+	Region                  *string `pulumi:"region"`
+	TlsCiphersPolicy        *string `pulumi:"tlsCiphersPolicy"`
 }
 
 // A collection of values returned by getListeners.
 type GetListenersResult struct {
 	ClientCaTlsContainerRef *string `pulumi:"clientCaTlsContainerRef"`
-	// The ID of the default pool with which the ELB listener is associated.
-	DefaultPoolId *string `pulumi:"defaultPoolId"`
-	// The ID of the server certificate used by the listener.
-	DefaultTlsContainerRef *string `pulumi:"defaultTlsContainerRef"`
-	// The description of the ELB listener.
-	Description         *string `pulumi:"description"`
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Whether the ELB listener uses HTTP/2.
-	Http2Enable *string `pulumi:"http2Enable"`
+	DefaultPoolId           *string `pulumi:"defaultPoolId"`
+	DefaultTlsContainerRef  *string `pulumi:"defaultTlsContainerRef"`
+	Description             *string `pulumi:"description"`
+	EnterpriseProjectId     *string `pulumi:"enterpriseProjectId"`
+	Http2Enable             *string `pulumi:"http2Enable"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string  `pulumi:"id"`
-	ListenerId *string `pulumi:"listenerId"`
-	// Listener list.
-	// The object structure is documented below.
-	Listeners      []GetListenersListener `pulumi:"listeners"`
-	LoadbalancerId *string                `pulumi:"loadbalancerId"`
-	// The listener name.
-	Name *string `pulumi:"name"`
-	// The listener protocol.
-	Protocol *string `pulumi:"protocol"`
-	// The front-end listening port of the listener.
-	ProtocolPort     *string `pulumi:"protocolPort"`
-	Region           string  `pulumi:"region"`
-	TlsCiphersPolicy *string `pulumi:"tlsCiphersPolicy"`
+	Id               string                 `pulumi:"id"`
+	ListenerId       *string                `pulumi:"listenerId"`
+	Listeners        []GetListenersListener `pulumi:"listeners"`
+	LoadbalancerId   *string                `pulumi:"loadbalancerId"`
+	Name             *string                `pulumi:"name"`
+	Protocol         *string                `pulumi:"protocol"`
+	ProtocolPort     *string                `pulumi:"protocolPort"`
+	Region           string                 `pulumi:"region"`
+	TlsCiphersPolicy *string                `pulumi:"tlsCiphersPolicy"`
 }
 
 func GetListenersOutput(ctx *pulumi.Context, args GetListenersOutputArgs, opts ...pulumi.InvokeOption) GetListenersResultOutput {
@@ -120,29 +70,18 @@ func GetListenersOutput(ctx *pulumi.Context, args GetListenersOutputArgs, opts .
 // A collection of arguments for invoking getListeners.
 type GetListenersOutputArgs struct {
 	ClientCaTlsContainerRef pulumi.StringPtrInput `pulumi:"clientCaTlsContainerRef"`
-	// The ID of the default pool with which the ELB listener is associated.
-	DefaultPoolId pulumi.StringPtrInput `pulumi:"defaultPoolId"`
-	// The ID of the server certificate used by the listener.
-	DefaultTlsContainerRef pulumi.StringPtrInput `pulumi:"defaultTlsContainerRef"`
-	// The description of the ELB listener.
-	Description         pulumi.StringPtrInput `pulumi:"description"`
-	EnterpriseProjectId pulumi.StringPtrInput `pulumi:"enterpriseProjectId"`
-	// Whether the ELB listener uses HTTP/2.
-	Http2Enable    pulumi.StringPtrInput `pulumi:"http2Enable"`
-	ListenerId     pulumi.StringPtrInput `pulumi:"listenerId"`
-	LoadbalancerId pulumi.StringPtrInput `pulumi:"loadbalancerId"`
-	// The listener name.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The listener protocol.\
-	// The valid values are **TCP**, **UDP**, **HTTP** and **TERMINATED_HTTPS**.
-	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
-	// The front-end listening port of the listener.\
-	// The valid value is range from `1` to `65535`.
-	ProtocolPort pulumi.StringPtrInput `pulumi:"protocolPort"`
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
-	Region           pulumi.StringPtrInput `pulumi:"region"`
-	TlsCiphersPolicy pulumi.StringPtrInput `pulumi:"tlsCiphersPolicy"`
+	DefaultPoolId           pulumi.StringPtrInput `pulumi:"defaultPoolId"`
+	DefaultTlsContainerRef  pulumi.StringPtrInput `pulumi:"defaultTlsContainerRef"`
+	Description             pulumi.StringPtrInput `pulumi:"description"`
+	EnterpriseProjectId     pulumi.StringPtrInput `pulumi:"enterpriseProjectId"`
+	Http2Enable             pulumi.StringPtrInput `pulumi:"http2Enable"`
+	ListenerId              pulumi.StringPtrInput `pulumi:"listenerId"`
+	LoadbalancerId          pulumi.StringPtrInput `pulumi:"loadbalancerId"`
+	Name                    pulumi.StringPtrInput `pulumi:"name"`
+	Protocol                pulumi.StringPtrInput `pulumi:"protocol"`
+	ProtocolPort            pulumi.StringPtrInput `pulumi:"protocolPort"`
+	Region                  pulumi.StringPtrInput `pulumi:"region"`
+	TlsCiphersPolicy        pulumi.StringPtrInput `pulumi:"tlsCiphersPolicy"`
 }
 
 func (GetListenersOutputArgs) ElementType() reflect.Type {
@@ -168,17 +107,14 @@ func (o GetListenersResultOutput) ClientCaTlsContainerRef() pulumi.StringPtrOutp
 	return o.ApplyT(func(v GetListenersResult) *string { return v.ClientCaTlsContainerRef }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the default pool with which the ELB listener is associated.
 func (o GetListenersResultOutput) DefaultPoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetListenersResult) *string { return v.DefaultPoolId }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the server certificate used by the listener.
 func (o GetListenersResultOutput) DefaultTlsContainerRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetListenersResult) *string { return v.DefaultTlsContainerRef }).(pulumi.StringPtrOutput)
 }
 
-// The description of the ELB listener.
 func (o GetListenersResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetListenersResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -187,7 +123,6 @@ func (o GetListenersResultOutput) EnterpriseProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetListenersResult) *string { return v.EnterpriseProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Whether the ELB listener uses HTTP/2.
 func (o GetListenersResultOutput) Http2Enable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetListenersResult) *string { return v.Http2Enable }).(pulumi.StringPtrOutput)
 }
@@ -201,8 +136,6 @@ func (o GetListenersResultOutput) ListenerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetListenersResult) *string { return v.ListenerId }).(pulumi.StringPtrOutput)
 }
 
-// Listener list.
-// The object structure is documented below.
 func (o GetListenersResultOutput) Listeners() GetListenersListenerArrayOutput {
 	return o.ApplyT(func(v GetListenersResult) []GetListenersListener { return v.Listeners }).(GetListenersListenerArrayOutput)
 }
@@ -211,17 +144,14 @@ func (o GetListenersResultOutput) LoadbalancerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetListenersResult) *string { return v.LoadbalancerId }).(pulumi.StringPtrOutput)
 }
 
-// The listener name.
 func (o GetListenersResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetListenersResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The listener protocol.
 func (o GetListenersResultOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetListenersResult) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
-// The front-end listening port of the listener.
 func (o GetListenersResultOutput) ProtocolPort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetListenersResult) *string { return v.ProtocolPort }).(pulumi.StringPtrOutput)
 }

@@ -12,69 +12,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Provides an EVS snapshot resource.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/evs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myvolume, err := evs.NewVolume(ctx, "myvolume", &evs.VolumeArgs{
-//				Name:             pulumi.String("volume"),
-//				Description:      pulumi.String("my volume"),
-//				VolumeType:       pulumi.String("SSD"),
-//				Size:             pulumi.Int(20),
-//				AvailabilityZone: pulumi.String("ru-moscow-1a"),
-//				Tags: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//					"key": pulumi.String("value"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = evs.NewSnapshot(ctx, "snapshot_1", &evs.SnapshotArgs{
-//				Name:        pulumi.String("snapshot-001"),
-//				Description: pulumi.String("Daily backup"),
-//				VolumeId:    myvolume.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// The following arguments are supported:
-//
-// * `region` - (Optional, String, ForceNew) The region in which to create the evs snapshot resource. If omitted, the provider-level region will be used. Changing this creates a new EVS snapshot resource.
-//
-// * `volumeId` - (Required, String, ForceNew) The id of the snapshot's source disk. Changing the parameter creates a new snapshot.
-//
-// * `name` - (Required, String) The name of the snapshot. The value can contain a maximum of 255 bytes.
-//
-// * `description` - (Optional, String) The description of the snapshot. The value can contain a maximum of 255 bytes.
-//
-// * `force` - (Optional, Bool) Specifies the flag for forcibly creating a snapshot. Default to false.
-//
-// In addition to all arguments above, the following attributes are exported:
-//
-// * `id` - The id of the snapshot.
-//
-// * `status` - The status of the snapshot.
-//
-// * `size` - The size of the snapshot in GB.
-//
-// EVS snapshot can be imported using the `snapshot id`, e.g.
 type Snapshot struct {
 	pulumi.CustomResourceState
 

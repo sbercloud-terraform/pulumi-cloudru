@@ -4,40 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a User Group Membership resource within SberCloud IAM service.
- *
- * Note: You _must_ have admin privileges in your SberCloud cloud to use this resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const group1 = new sbercloud.iam.Group("group_1", {
- *     name: "group1",
- *     description: "This is a test group",
- * });
- * const user1 = new sbercloud.iam.User("user_1", {
- *     name: "user1",
- *     enabled: true,
- *     password: "password12345!",
- * });
- * const user2 = new sbercloud.iam.User("user_2", {
- *     name: "user2",
- *     enabled: true,
- *     password: "password12345!",
- * });
- * const membership1 = new sbercloud.iam.GroupMembership("membership_1", {
- *     group: group1.id,
- *     users: [
- *         user1.id,
- *         user2.id,
- *     ],
- * });
- * ```
- */
 export class GroupMembership extends pulumi.CustomResource {
     /**
      * Get an existing GroupMembership resource's state with the given name, ID, and optional extra
@@ -66,13 +32,7 @@ export class GroupMembership extends pulumi.CustomResource {
         return obj['__pulumiType'] === GroupMembership.__pulumiType;
     }
 
-    /**
-     * The group ID of this membership.
-     */
     declare public readonly group: pulumi.Output<string>;
-    /**
-     * A List of user IDs to associate to the group.
-     */
     declare public readonly users: pulumi.Output<string[]>;
 
     /**
@@ -110,13 +70,7 @@ export class GroupMembership extends pulumi.CustomResource {
  * Input properties used for looking up and filtering GroupMembership resources.
  */
 export interface GroupMembershipState {
-    /**
-     * The group ID of this membership.
-     */
     group?: pulumi.Input<string>;
-    /**
-     * A List of user IDs to associate to the group.
-     */
     users?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -124,12 +78,6 @@ export interface GroupMembershipState {
  * The set of arguments for constructing a GroupMembership resource.
  */
 export interface GroupMembershipArgs {
-    /**
-     * The group ID of this membership.
-     */
     group: pulumi.Input<string>;
-    /**
-     * A List of user IDs to associate to the group.
-     */
     users: pulumi.Input<pulumi.Input<string>[]>;
 }

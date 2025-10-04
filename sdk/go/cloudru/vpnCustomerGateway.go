@@ -11,157 +11,33 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a VPN customer gateway resource within SberCloud.
-//
-// ## Example Usage
-//
-// ### Manages a common VPN customer gateway
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := cfg.RequireObject("name")
-//			idValue := cfg.RequireObject("idValue")
-//			_, err := sbercloud.NewVpnCustomerGateway(ctx, "test", &sbercloud.VpnCustomerGatewayArgs{
-//				Name:    pulumi.Any(name),
-//				IdValue: pulumi.Any(idValue),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Manages a VPN customer gateway with CA certificate
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := cfg.RequireObject("name")
-//			idValue := cfg.RequireObject("idValue")
-//			certificateContent := cfg.RequireObject("certificateContent")
-//			_, err := sbercloud.NewVpnCustomerGateway(ctx, "test", &sbercloud.VpnCustomerGatewayArgs{
-//				Name:               pulumi.Any(name),
-//				IdValue:            pulumi.Any(idValue),
-//				CertificateContent: pulumi.Any(certificateContent),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The customer gateway can be imported using the `id`, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:index/vpnCustomerGateway:VpnCustomerGateway test <id>
-// ```
-//
-// # Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-//
-// API response, security or some other reason. The missing attribute is `certificate_content`. It is generally recommended
-//
-// running `pulumi preview` after importing the resource. You can then decide if changes should be applied to the instance,
-//
-// or the resource definition should be updated to align with the instance. Also you can ignore changes as below.
-//
-// hcl
-//
-// resource "sbercloud_vpn_customer_gateway" "test" {
-//
-//	  ...
-//
-//	lifecycle {
-//
-//	  ignore_changes = [
-//
-//	    certificate_content,
-//
-//	  ]
-//
-//	}
-//
-// }
 type VpnCustomerGateway struct {
 	pulumi.CustomResourceState
 
-	// The BGP ASN number of the customer gateway.
-	// The value ranges from **1** to **4294967295**, the default value is **65000**.
-	// Set this parameter to **0** when `idType` is set to **fqdn**.
-	//
-	// Changing this parameter will create a new resource.
-	Asn pulumi.IntPtrOutput `pulumi:"asn"`
-	// The CA certificate content of the customer gateway.
+	// The BGP ASN number of the customer gateway, the default value is 65000.
+	Asn                pulumi.IntPtrOutput    `pulumi:"asn"`
 	CertificateContent pulumi.StringPtrOutput `pulumi:"certificateContent"`
-	// Indicates the ID of the customer gateway certificate.
-	CertificateId pulumi.StringOutput `pulumi:"certificateId"`
+	CertificateId      pulumi.StringOutput    `pulumi:"certificateId"`
 	// The create time.
-	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Indicates the expire time of the customer gateway certificate.
+	CreatedAt  pulumi.StringOutput `pulumi:"createdAt"`
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
-	// Specifies the identifier type of a customer gateway.
-	// The value can be **ip** or **fqdn**. The default value is **ip**.
+	// The identifier type of a customer gateway.
 	IdType pulumi.StringPtrOutput `pulumi:"idType"`
-	// Specifies the identifier of a customer gateway.
-	// When `idType` is set to **ip**, the value is an IPv4 address in dotted decimal notation, for example, 192.168.45.7.
-	// When `idType` is set to **fqdn**, the value is a string of characters that can contain uppercase letters, lowercase letters,
-	// digits, and special characters. Spaces and the following special characters are not supported: & < > [ ] \ ?.
-	//
-	// Changing this parameter will create a new resource.
+	// The identifier of a customer gateway.
 	IdValue pulumi.StringOutput `pulumi:"idValue"`
 	// The IP address of the customer gateway.
-	Ip pulumi.StringPtrOutput `pulumi:"ip"`
-	// Indicates whether the customer gateway certificate is updatable.
-	IsUpdatable pulumi.BoolOutput `pulumi:"isUpdatable"`
-	// Indicates the issuer of the customer gateway certificate.
-	Issuer pulumi.StringOutput `pulumi:"issuer"`
+	Ip          pulumi.StringPtrOutput `pulumi:"ip"`
+	IsUpdatable pulumi.BoolOutput      `pulumi:"isUpdatable"`
+	Issuer      pulumi.StringOutput    `pulumi:"issuer"`
 	// The customer gateway name.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	Name   pulumi.StringOutput `pulumi:"name"`
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The route mode of the customer gateway.
-	RouteMode pulumi.StringPtrOutput `pulumi:"routeMode"`
-	// Indicates the serial number of the customer gateway certificate.
-	SerialNumber pulumi.StringOutput `pulumi:"serialNumber"`
-	// Indicates the signature algorithm of the customer gateway certificate.
-	SignatureAlgorithm pulumi.StringOutput `pulumi:"signatureAlgorithm"`
-	// Indicates the subject of the customer gateway certificate.
-	Subject pulumi.StringOutput `pulumi:"subject"`
-	// Specifies the tags of the customer gateway.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	RouteMode          pulumi.StringPtrOutput `pulumi:"routeMode"`
+	SerialNumber       pulumi.StringOutput    `pulumi:"serialNumber"`
+	SignatureAlgorithm pulumi.StringOutput    `pulumi:"signatureAlgorithm"`
+	Subject            pulumi.StringOutput    `pulumi:"subject"`
+	Tags               pulumi.StringMapOutput `pulumi:"tags"`
 	// The update time.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
@@ -196,101 +72,59 @@ func GetVpnCustomerGateway(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering VpnCustomerGateway resources.
 type vpnCustomerGatewayState struct {
-	// The BGP ASN number of the customer gateway.
-	// The value ranges from **1** to **4294967295**, the default value is **65000**.
-	// Set this parameter to **0** when `idType` is set to **fqdn**.
-	//
-	// Changing this parameter will create a new resource.
-	Asn *int `pulumi:"asn"`
-	// The CA certificate content of the customer gateway.
+	// The BGP ASN number of the customer gateway, the default value is 65000.
+	Asn                *int    `pulumi:"asn"`
 	CertificateContent *string `pulumi:"certificateContent"`
-	// Indicates the ID of the customer gateway certificate.
-	CertificateId *string `pulumi:"certificateId"`
+	CertificateId      *string `pulumi:"certificateId"`
 	// The create time.
-	CreatedAt *string `pulumi:"createdAt"`
-	// Indicates the expire time of the customer gateway certificate.
+	CreatedAt  *string `pulumi:"createdAt"`
 	ExpireTime *string `pulumi:"expireTime"`
-	// Specifies the identifier type of a customer gateway.
-	// The value can be **ip** or **fqdn**. The default value is **ip**.
+	// The identifier type of a customer gateway.
 	IdType *string `pulumi:"idType"`
-	// Specifies the identifier of a customer gateway.
-	// When `idType` is set to **ip**, the value is an IPv4 address in dotted decimal notation, for example, 192.168.45.7.
-	// When `idType` is set to **fqdn**, the value is a string of characters that can contain uppercase letters, lowercase letters,
-	// digits, and special characters. Spaces and the following special characters are not supported: & < > [ ] \ ?.
-	//
-	// Changing this parameter will create a new resource.
+	// The identifier of a customer gateway.
 	IdValue *string `pulumi:"idValue"`
 	// The IP address of the customer gateway.
-	Ip *string `pulumi:"ip"`
-	// Indicates whether the customer gateway certificate is updatable.
-	IsUpdatable *bool `pulumi:"isUpdatable"`
-	// Indicates the issuer of the customer gateway certificate.
-	Issuer *string `pulumi:"issuer"`
+	Ip          *string `pulumi:"ip"`
+	IsUpdatable *bool   `pulumi:"isUpdatable"`
+	Issuer      *string `pulumi:"issuer"`
 	// The customer gateway name.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	Name   *string `pulumi:"name"`
 	Region *string `pulumi:"region"`
 	// The route mode of the customer gateway.
-	RouteMode *string `pulumi:"routeMode"`
-	// Indicates the serial number of the customer gateway certificate.
-	SerialNumber *string `pulumi:"serialNumber"`
-	// Indicates the signature algorithm of the customer gateway certificate.
-	SignatureAlgorithm *string `pulumi:"signatureAlgorithm"`
-	// Indicates the subject of the customer gateway certificate.
-	Subject *string `pulumi:"subject"`
-	// Specifies the tags of the customer gateway.
-	Tags map[string]string `pulumi:"tags"`
+	RouteMode          *string           `pulumi:"routeMode"`
+	SerialNumber       *string           `pulumi:"serialNumber"`
+	SignatureAlgorithm *string           `pulumi:"signatureAlgorithm"`
+	Subject            *string           `pulumi:"subject"`
+	Tags               map[string]string `pulumi:"tags"`
 	// The update time.
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
 type VpnCustomerGatewayState struct {
-	// The BGP ASN number of the customer gateway.
-	// The value ranges from **1** to **4294967295**, the default value is **65000**.
-	// Set this parameter to **0** when `idType` is set to **fqdn**.
-	//
-	// Changing this parameter will create a new resource.
-	Asn pulumi.IntPtrInput
-	// The CA certificate content of the customer gateway.
+	// The BGP ASN number of the customer gateway, the default value is 65000.
+	Asn                pulumi.IntPtrInput
 	CertificateContent pulumi.StringPtrInput
-	// Indicates the ID of the customer gateway certificate.
-	CertificateId pulumi.StringPtrInput
+	CertificateId      pulumi.StringPtrInput
 	// The create time.
-	CreatedAt pulumi.StringPtrInput
-	// Indicates the expire time of the customer gateway certificate.
+	CreatedAt  pulumi.StringPtrInput
 	ExpireTime pulumi.StringPtrInput
-	// Specifies the identifier type of a customer gateway.
-	// The value can be **ip** or **fqdn**. The default value is **ip**.
+	// The identifier type of a customer gateway.
 	IdType pulumi.StringPtrInput
-	// Specifies the identifier of a customer gateway.
-	// When `idType` is set to **ip**, the value is an IPv4 address in dotted decimal notation, for example, 192.168.45.7.
-	// When `idType` is set to **fqdn**, the value is a string of characters that can contain uppercase letters, lowercase letters,
-	// digits, and special characters. Spaces and the following special characters are not supported: & < > [ ] \ ?.
-	//
-	// Changing this parameter will create a new resource.
+	// The identifier of a customer gateway.
 	IdValue pulumi.StringPtrInput
 	// The IP address of the customer gateway.
-	Ip pulumi.StringPtrInput
-	// Indicates whether the customer gateway certificate is updatable.
+	Ip          pulumi.StringPtrInput
 	IsUpdatable pulumi.BoolPtrInput
-	// Indicates the issuer of the customer gateway certificate.
-	Issuer pulumi.StringPtrInput
+	Issuer      pulumi.StringPtrInput
 	// The customer gateway name.
-	Name pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	Name   pulumi.StringPtrInput
 	Region pulumi.StringPtrInput
 	// The route mode of the customer gateway.
-	RouteMode pulumi.StringPtrInput
-	// Indicates the serial number of the customer gateway certificate.
-	SerialNumber pulumi.StringPtrInput
-	// Indicates the signature algorithm of the customer gateway certificate.
+	RouteMode          pulumi.StringPtrInput
+	SerialNumber       pulumi.StringPtrInput
 	SignatureAlgorithm pulumi.StringPtrInput
-	// Indicates the subject of the customer gateway certificate.
-	Subject pulumi.StringPtrInput
-	// Specifies the tags of the customer gateway.
-	Tags pulumi.StringMapInput
+	Subject            pulumi.StringPtrInput
+	Tags               pulumi.StringMapInput
 	// The update time.
 	UpdatedAt pulumi.StringPtrInput
 }
@@ -300,68 +134,40 @@ func (VpnCustomerGatewayState) ElementType() reflect.Type {
 }
 
 type vpnCustomerGatewayArgs struct {
-	// The BGP ASN number of the customer gateway.
-	// The value ranges from **1** to **4294967295**, the default value is **65000**.
-	// Set this parameter to **0** when `idType` is set to **fqdn**.
-	//
-	// Changing this parameter will create a new resource.
-	Asn *int `pulumi:"asn"`
-	// The CA certificate content of the customer gateway.
+	// The BGP ASN number of the customer gateway, the default value is 65000.
+	Asn                *int    `pulumi:"asn"`
 	CertificateContent *string `pulumi:"certificateContent"`
-	// Specifies the identifier type of a customer gateway.
-	// The value can be **ip** or **fqdn**. The default value is **ip**.
+	// The identifier type of a customer gateway.
 	IdType *string `pulumi:"idType"`
-	// Specifies the identifier of a customer gateway.
-	// When `idType` is set to **ip**, the value is an IPv4 address in dotted decimal notation, for example, 192.168.45.7.
-	// When `idType` is set to **fqdn**, the value is a string of characters that can contain uppercase letters, lowercase letters,
-	// digits, and special characters. Spaces and the following special characters are not supported: & < > [ ] \ ?.
-	//
-	// Changing this parameter will create a new resource.
+	// The identifier of a customer gateway.
 	IdValue *string `pulumi:"idValue"`
 	// The IP address of the customer gateway.
 	Ip *string `pulumi:"ip"`
 	// The customer gateway name.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	Name   *string `pulumi:"name"`
 	Region *string `pulumi:"region"`
 	// The route mode of the customer gateway.
-	RouteMode *string `pulumi:"routeMode"`
-	// Specifies the tags of the customer gateway.
-	Tags map[string]string `pulumi:"tags"`
+	RouteMode *string           `pulumi:"routeMode"`
+	Tags      map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a VpnCustomerGateway resource.
 type VpnCustomerGatewayArgs struct {
-	// The BGP ASN number of the customer gateway.
-	// The value ranges from **1** to **4294967295**, the default value is **65000**.
-	// Set this parameter to **0** when `idType` is set to **fqdn**.
-	//
-	// Changing this parameter will create a new resource.
-	Asn pulumi.IntPtrInput
-	// The CA certificate content of the customer gateway.
+	// The BGP ASN number of the customer gateway, the default value is 65000.
+	Asn                pulumi.IntPtrInput
 	CertificateContent pulumi.StringPtrInput
-	// Specifies the identifier type of a customer gateway.
-	// The value can be **ip** or **fqdn**. The default value is **ip**.
+	// The identifier type of a customer gateway.
 	IdType pulumi.StringPtrInput
-	// Specifies the identifier of a customer gateway.
-	// When `idType` is set to **ip**, the value is an IPv4 address in dotted decimal notation, for example, 192.168.45.7.
-	// When `idType` is set to **fqdn**, the value is a string of characters that can contain uppercase letters, lowercase letters,
-	// digits, and special characters. Spaces and the following special characters are not supported: & < > [ ] \ ?.
-	//
-	// Changing this parameter will create a new resource.
+	// The identifier of a customer gateway.
 	IdValue pulumi.StringPtrInput
 	// The IP address of the customer gateway.
 	Ip pulumi.StringPtrInput
 	// The customer gateway name.
-	Name pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	Name   pulumi.StringPtrInput
 	Region pulumi.StringPtrInput
 	// The route mode of the customer gateway.
 	RouteMode pulumi.StringPtrInput
-	// Specifies the tags of the customer gateway.
-	Tags pulumi.StringMapInput
+	Tags      pulumi.StringMapInput
 }
 
 func (VpnCustomerGatewayArgs) ElementType() reflect.Type {
@@ -451,21 +257,15 @@ func (o VpnCustomerGatewayOutput) ToVpnCustomerGatewayOutputWithContext(ctx cont
 	return o
 }
 
-// The BGP ASN number of the customer gateway.
-// The value ranges from **1** to **4294967295**, the default value is **65000**.
-// Set this parameter to **0** when `idType` is set to **fqdn**.
-//
-// Changing this parameter will create a new resource.
+// The BGP ASN number of the customer gateway, the default value is 65000.
 func (o VpnCustomerGatewayOutput) Asn() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VpnCustomerGateway) pulumi.IntPtrOutput { return v.Asn }).(pulumi.IntPtrOutput)
 }
 
-// The CA certificate content of the customer gateway.
 func (o VpnCustomerGatewayOutput) CertificateContent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnCustomerGateway) pulumi.StringPtrOutput { return v.CertificateContent }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the ID of the customer gateway certificate.
 func (o VpnCustomerGatewayOutput) CertificateId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnCustomerGateway) pulumi.StringOutput { return v.CertificateId }).(pulumi.StringOutput)
 }
@@ -475,23 +275,16 @@ func (o VpnCustomerGatewayOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnCustomerGateway) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Indicates the expire time of the customer gateway certificate.
 func (o VpnCustomerGatewayOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnCustomerGateway) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
 }
 
-// Specifies the identifier type of a customer gateway.
-// The value can be **ip** or **fqdn**. The default value is **ip**.
+// The identifier type of a customer gateway.
 func (o VpnCustomerGatewayOutput) IdType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnCustomerGateway) pulumi.StringPtrOutput { return v.IdType }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the identifier of a customer gateway.
-// When `idType` is set to **ip**, the value is an IPv4 address in dotted decimal notation, for example, 192.168.45.7.
-// When `idType` is set to **fqdn**, the value is a string of characters that can contain uppercase letters, lowercase letters,
-// digits, and special characters. Spaces and the following special characters are not supported: & < > [ ] \ ?.
-//
-// Changing this parameter will create a new resource.
+// The identifier of a customer gateway.
 func (o VpnCustomerGatewayOutput) IdValue() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnCustomerGateway) pulumi.StringOutput { return v.IdValue }).(pulumi.StringOutput)
 }
@@ -501,12 +294,10 @@ func (o VpnCustomerGatewayOutput) Ip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnCustomerGateway) pulumi.StringPtrOutput { return v.Ip }).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether the customer gateway certificate is updatable.
 func (o VpnCustomerGatewayOutput) IsUpdatable() pulumi.BoolOutput {
 	return o.ApplyT(func(v *VpnCustomerGateway) pulumi.BoolOutput { return v.IsUpdatable }).(pulumi.BoolOutput)
 }
 
-// Indicates the issuer of the customer gateway certificate.
 func (o VpnCustomerGatewayOutput) Issuer() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnCustomerGateway) pulumi.StringOutput { return v.Issuer }).(pulumi.StringOutput)
 }
@@ -516,8 +307,6 @@ func (o VpnCustomerGatewayOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnCustomerGateway) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
 func (o VpnCustomerGatewayOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnCustomerGateway) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
@@ -527,22 +316,18 @@ func (o VpnCustomerGatewayOutput) RouteMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnCustomerGateway) pulumi.StringPtrOutput { return v.RouteMode }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the serial number of the customer gateway certificate.
 func (o VpnCustomerGatewayOutput) SerialNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnCustomerGateway) pulumi.StringOutput { return v.SerialNumber }).(pulumi.StringOutput)
 }
 
-// Indicates the signature algorithm of the customer gateway certificate.
 func (o VpnCustomerGatewayOutput) SignatureAlgorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnCustomerGateway) pulumi.StringOutput { return v.SignatureAlgorithm }).(pulumi.StringOutput)
 }
 
-// Indicates the subject of the customer gateway certificate.
 func (o VpnCustomerGatewayOutput) Subject() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnCustomerGateway) pulumi.StringOutput { return v.Subject }).(pulumi.StringOutput)
 }
 
-// Specifies the tags of the customer gateway.
 func (o VpnCustomerGatewayOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VpnCustomerGateway) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }

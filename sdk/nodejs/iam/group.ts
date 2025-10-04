@@ -4,31 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a User Group resource within SberCloud IAM service.
- *
- * Note: You _must_ have admin privileges in your SberCloud cloud to use this resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const group1 = new sbercloud.iam.Group("group_1", {
- *     name: "group_1",
- *     description: "This is a test group",
- * });
- * ```
- *
- * ## Import
- *
- * Groups can be imported using the `id`, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Iam/group:Group group_1 89c60255-9bd6-460c-822a-e2b959ede9d2
- * ```
- */
 export class Group extends pulumi.CustomResource {
     /**
      * Get an existing Group resource's state with the given name, ID, and optional extra
@@ -57,13 +32,7 @@ export class Group extends pulumi.CustomResource {
         return obj['__pulumiType'] === Group.__pulumiType;
     }
 
-    /**
-     * Specifies the description of the group.
-     */
     declare public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the name of the group.The length is less than or equal to 64 bytes.
-     */
     declare public readonly name: pulumi.Output<string>;
 
     /**
@@ -95,13 +64,7 @@ export class Group extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Group resources.
  */
 export interface GroupState {
-    /**
-     * Specifies the description of the group.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the group.The length is less than or equal to 64 bytes.
-     */
     name?: pulumi.Input<string>;
 }
 
@@ -109,12 +72,6 @@ export interface GroupState {
  * The set of arguments for constructing a Group resource.
  */
 export interface GroupArgs {
-    /**
-     * Specifies the description of the group.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the group.The length is less than or equal to 64 bytes.
-     */
     name?: pulumi.Input<string>;
 }

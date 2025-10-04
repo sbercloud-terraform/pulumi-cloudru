@@ -11,43 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of RocketMQ flavors within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// cfg := config.New(ctx, "")
-// az1 := cfg.RequireObject("az1")
-// az2 := cfg.RequireObject("az2")
-// _, err := sbercloud.GetDmsRocketmqFlavors(ctx, &cloudru.GetDmsRocketmqFlavorsArgs{
-// AvailabilityZones: interface{}{
-// az1,
-// az2,
-// },
-// ArchType: pulumi.StringRef("X86"),
-// ChargingMode: pulumi.StringRef("prePaid"),
-// Type: pulumi.StringRef("cluster"),
-// FlavorId: pulumi.StringRef("c6.2u4g.cluster"),
-// StorageSpecCode: pulumi.StringRef("dms.physical.storage.high.v2"),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
-// ```
 func GetDmsRocketmqFlavors(ctx *pulumi.Context, args *GetDmsRocketmqFlavorsArgs, opts ...pulumi.InvokeOption) (*GetDmsRocketmqFlavorsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDmsRocketmqFlavorsResult
@@ -60,46 +23,28 @@ func GetDmsRocketmqFlavors(ctx *pulumi.Context, args *GetDmsRocketmqFlavorsArgs,
 
 // A collection of arguments for invoking getDmsRocketmqFlavors.
 type GetDmsRocketmqFlavorsArgs struct {
-	// Specifies the type of CPU architecture, e.g. **X86**.
-	ArchType *string `pulumi:"archType"`
-	// Specifies the list of availability zone names.
+	ArchType          *string  `pulumi:"archType"`
 	AvailabilityZones []string `pulumi:"availabilityZones"`
-	// Specifies the billing mode of the flavor.
-	// Value options: **prePaid** and **postPaid**.
-	ChargingMode *string `pulumi:"chargingMode"`
-	// Specifies the ID of the flavor, e.g. **c6.2u4g.cluster**.
-	FlavorId *string `pulumi:"flavorId"`
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the disk IO encoding.
-	// Value options:
-	// + **dms.physical.storage.high.v2**: Type of the disk that uses high I/O.
-	// + **dms.physical.storage.ultra.v2**: Type of the disk that uses ultra-high I/O.
-	StorageSpecCode *string `pulumi:"storageSpecCode"`
-	// Specifies the type of the flavor. Value options: **single** and **cluster**.
-	Type *string `pulumi:"type"`
+	ChargingMode      *string  `pulumi:"chargingMode"`
+	FlavorId          *string  `pulumi:"flavorId"`
+	Region            *string  `pulumi:"region"`
+	StorageSpecCode   *string  `pulumi:"storageSpecCode"`
+	Type              *string  `pulumi:"type"`
 }
 
 // A collection of values returned by getDmsRocketmqFlavors.
 type GetDmsRocketmqFlavorsResult struct {
-	ArchType *string `pulumi:"archType"`
-	// Indicates the list of availability zone names.
-	AvailabilityZones []string `pulumi:"availabilityZones"`
-	ChargingMode      *string  `pulumi:"chargingMode"`
-	FlavorId          *string  `pulumi:"flavorId"`
-	// Indicates the list of flavors.
-	// The flavors structure is documented below.
-	Flavors []GetDmsRocketmqFlavorsFlavor `pulumi:"flavors"`
+	ArchType          *string                       `pulumi:"archType"`
+	AvailabilityZones []string                      `pulumi:"availabilityZones"`
+	ChargingMode      *string                       `pulumi:"chargingMode"`
+	FlavorId          *string                       `pulumi:"flavorId"`
+	Flavors           []GetDmsRocketmqFlavorsFlavor `pulumi:"flavors"`
 	// The provider-assigned unique ID for this managed resource.
-	Id     string `pulumi:"id"`
-	Region string `pulumi:"region"`
-	// Indicates the disk IO encoding.
-	StorageSpecCode *string `pulumi:"storageSpecCode"`
-	// Indicates the disk type.
-	Type *string `pulumi:"type"`
-	// Indicates the list of flavor versions.
-	Versions []string `pulumi:"versions"`
+	Id              string   `pulumi:"id"`
+	Region          string   `pulumi:"region"`
+	StorageSpecCode *string  `pulumi:"storageSpecCode"`
+	Type            *string  `pulumi:"type"`
+	Versions        []string `pulumi:"versions"`
 }
 
 func GetDmsRocketmqFlavorsOutput(ctx *pulumi.Context, args GetDmsRocketmqFlavorsOutputArgs, opts ...pulumi.InvokeOption) GetDmsRocketmqFlavorsResultOutput {
@@ -113,25 +58,13 @@ func GetDmsRocketmqFlavorsOutput(ctx *pulumi.Context, args GetDmsRocketmqFlavors
 
 // A collection of arguments for invoking getDmsRocketmqFlavors.
 type GetDmsRocketmqFlavorsOutputArgs struct {
-	// Specifies the type of CPU architecture, e.g. **X86**.
-	ArchType pulumi.StringPtrInput `pulumi:"archType"`
-	// Specifies the list of availability zone names.
+	ArchType          pulumi.StringPtrInput   `pulumi:"archType"`
 	AvailabilityZones pulumi.StringArrayInput `pulumi:"availabilityZones"`
-	// Specifies the billing mode of the flavor.
-	// Value options: **prePaid** and **postPaid**.
-	ChargingMode pulumi.StringPtrInput `pulumi:"chargingMode"`
-	// Specifies the ID of the flavor, e.g. **c6.2u4g.cluster**.
-	FlavorId pulumi.StringPtrInput `pulumi:"flavorId"`
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the disk IO encoding.
-	// Value options:
-	// + **dms.physical.storage.high.v2**: Type of the disk that uses high I/O.
-	// + **dms.physical.storage.ultra.v2**: Type of the disk that uses ultra-high I/O.
-	StorageSpecCode pulumi.StringPtrInput `pulumi:"storageSpecCode"`
-	// Specifies the type of the flavor. Value options: **single** and **cluster**.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	ChargingMode      pulumi.StringPtrInput   `pulumi:"chargingMode"`
+	FlavorId          pulumi.StringPtrInput   `pulumi:"flavorId"`
+	Region            pulumi.StringPtrInput   `pulumi:"region"`
+	StorageSpecCode   pulumi.StringPtrInput   `pulumi:"storageSpecCode"`
+	Type              pulumi.StringPtrInput   `pulumi:"type"`
 }
 
 func (GetDmsRocketmqFlavorsOutputArgs) ElementType() reflect.Type {
@@ -157,7 +90,6 @@ func (o GetDmsRocketmqFlavorsResultOutput) ArchType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDmsRocketmqFlavorsResult) *string { return v.ArchType }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the list of availability zone names.
 func (o GetDmsRocketmqFlavorsResultOutput) AvailabilityZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDmsRocketmqFlavorsResult) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }
@@ -170,8 +102,6 @@ func (o GetDmsRocketmqFlavorsResultOutput) FlavorId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDmsRocketmqFlavorsResult) *string { return v.FlavorId }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the list of flavors.
-// The flavors structure is documented below.
 func (o GetDmsRocketmqFlavorsResultOutput) Flavors() GetDmsRocketmqFlavorsFlavorArrayOutput {
 	return o.ApplyT(func(v GetDmsRocketmqFlavorsResult) []GetDmsRocketmqFlavorsFlavor { return v.Flavors }).(GetDmsRocketmqFlavorsFlavorArrayOutput)
 }
@@ -185,17 +115,14 @@ func (o GetDmsRocketmqFlavorsResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqFlavorsResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// Indicates the disk IO encoding.
 func (o GetDmsRocketmqFlavorsResultOutput) StorageSpecCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDmsRocketmqFlavorsResult) *string { return v.StorageSpecCode }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the disk type.
 func (o GetDmsRocketmqFlavorsResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDmsRocketmqFlavorsResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the list of flavor versions.
 func (o GetDmsRocketmqFlavorsResultOutput) Versions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDmsRocketmqFlavorsResult) []string { return v.Versions }).(pulumi.StringArrayOutput)
 }

@@ -12,7 +12,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Provides an API gateway group resource.
 type Group struct {
 	pulumi.CustomResourceState
 
@@ -30,8 +29,7 @@ type Group struct {
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The group name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The region where the dedicated instance is located.\
-	// If omitted, the provider-level region will be used. Changing this creates a new gateway group resource.
+	// The region where the dedicated instance is located.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The registration time.
 	RegistrationTime pulumi.StringOutput `pulumi:"registrationTime"`
@@ -90,8 +88,7 @@ type groupState struct {
 	InstanceId *string `pulumi:"instanceId"`
 	// The group name.
 	Name *string `pulumi:"name"`
-	// The region where the dedicated instance is located.\
-	// If omitted, the provider-level region will be used. Changing this creates a new gateway group resource.
+	// The region where the dedicated instance is located.
 	Region *string `pulumi:"region"`
 	// The registration time.
 	RegistrationTime *string `pulumi:"registrationTime"`
@@ -118,8 +115,7 @@ type GroupState struct {
 	InstanceId pulumi.StringPtrInput
 	// The group name.
 	Name pulumi.StringPtrInput
-	// The region where the dedicated instance is located.\
-	// If omitted, the provider-level region will be used. Changing this creates a new gateway group resource.
+	// The region where the dedicated instance is located.
 	Region pulumi.StringPtrInput
 	// The registration time.
 	RegistrationTime pulumi.StringPtrInput
@@ -148,8 +144,7 @@ type groupArgs struct {
 	InstanceId string `pulumi:"instanceId"`
 	// The group name.
 	Name *string `pulumi:"name"`
-	// The region where the dedicated instance is located.\
-	// If omitted, the provider-level region will be used. Changing this creates a new gateway group resource.
+	// The region where the dedicated instance is located.
 	Region *string `pulumi:"region"`
 	// The associated domain information of the group.
 	UrlDomains []GroupUrlDomain `pulumi:"urlDomains"`
@@ -169,8 +164,7 @@ type GroupArgs struct {
 	InstanceId pulumi.StringInput
 	// The group name.
 	Name pulumi.StringPtrInput
-	// The region where the dedicated instance is located.\
-	// If omitted, the provider-level region will be used. Changing this creates a new gateway group resource.
+	// The region where the dedicated instance is located.
 	Region pulumi.StringPtrInput
 	// The associated domain information of the group.
 	UrlDomains GroupUrlDomainArrayInput
@@ -298,8 +292,7 @@ func (o GroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The region where the dedicated instance is located.\
-// If omitted, the provider-level region will be used. Changing this creates a new gateway group resource.
+// The region where the dedicated instance is located.
 func (o GroupOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

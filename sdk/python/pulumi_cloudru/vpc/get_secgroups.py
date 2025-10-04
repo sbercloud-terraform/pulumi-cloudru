@@ -50,33 +50,21 @@ class GetSecgroupsResult:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
-        """
-        The description of the security group.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[_builtins.str]:
-        """
-        The enterprise project ID of the security group.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        The security group ID.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        The name of the security group.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -87,9 +75,6 @@ class GetSecgroupsResult:
     @_builtins.property
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> Sequence['outputs.GetSecgroupsSecurityGroupResult']:
-        """
-        The list of security groups. The object is documented below.
-        """
         return pulumi.get(self, "security_groups")
 
 
@@ -114,29 +99,7 @@ def get_secgroups(description: Optional[_builtins.str] = None,
                   region: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecgroupsResult:
     """
-    Use this data source to get the list of the available SberCloud security groups.
-
-    ## Example Usage
-
-    ### Filter the list of security groups by a description keyword
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    key_word = config.require_object("keyWord")
-    test = sbercloud.Vpc.get_secgroups(description=key_word)
-    ```
-
-
-    :param _builtins.str description: Specifies the description of the security group. The security groups can be
-           filtered by keywords in the description.
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID of the security group.
-    :param _builtins.str id: Specifies the id of the desired security group.
-    :param _builtins.str name: Specifies the name of the security group.
-    :param _builtins.str region: Specifies the region in which to obtain the security group list.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['description'] = description
@@ -161,29 +124,7 @@ def get_secgroups_output(description: Optional[pulumi.Input[Optional[_builtins.s
                          region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecgroupsResult]:
     """
-    Use this data source to get the list of the available SberCloud security groups.
-
-    ## Example Usage
-
-    ### Filter the list of security groups by a description keyword
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    key_word = config.require_object("keyWord")
-    test = sbercloud.Vpc.get_secgroups(description=key_word)
-    ```
-
-
-    :param _builtins.str description: Specifies the description of the security group. The security groups can be
-           filtered by keywords in the description.
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID of the security group.
-    :param _builtins.str id: Specifies the id of the desired security group.
-    :param _builtins.str name: Specifies the name of the security group.
-    :param _builtins.str region: Specifies the region in which to obtain the security group list.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['description'] = description

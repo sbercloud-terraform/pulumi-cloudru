@@ -58,23 +58,11 @@ class GetFlaovrsResult:
     @_builtins.property
     @pulumi.getter(name="datastoreType")
     def datastore_type(self) -> Optional[_builtins.str]:
-        """
-        The type of datastore.  
-        The options are as follows:
-        - **dws**: OLAP, elastic scaling, unlimited scaling of compute and storage capacity.
-        - **hybrid**: a single data warehouse used for transaction and analytics workloads,
-        in single-node or cluster mode.
-        - **stream**: built-in time series operators; up to 40:1 compression ratio; applicable to IoT services.
-        """
         return pulumi.get(self, "datastore_type")
 
     @_builtins.property
     @pulumi.getter
     def flavors(self) -> Sequence['outputs.GetFlaovrsFlavorResult']:
-        """
-        The list of flavor detail.
-        The Flavors structure is documented below.
-        """
         return pulumi.get(self, "flavors")
 
     @_builtins.property
@@ -88,9 +76,6 @@ class GetFlaovrsResult:
     @_builtins.property
     @pulumi.getter
     def memory(self) -> Optional[_builtins.int]:
-        """
-        The ram of the dws node flavor in GB.
-        """
         return pulumi.get(self, "memory")
 
     @_builtins.property
@@ -101,9 +86,6 @@ class GetFlaovrsResult:
     @_builtins.property
     @pulumi.getter
     def vcpus(self) -> Optional[_builtins.int]:
-        """
-        The vcpus of the dws node flavor.
-        """
         return pulumi.get(self, "vcpus")
 
 
@@ -129,29 +111,7 @@ def get_flaovrs(availability_zone: Optional[_builtins.str] = None,
                 vcpus: Optional[_builtins.int] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFlaovrsResult:
     """
-    Use this data source to get available flavors of DWS cluster node.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    flavor = sbercloud.Dws.get_flaovrs(vcpus=8)
-    ```
-
-
-    :param _builtins.str availability_zone: The availability zone name.
-    :param _builtins.str datastore_type: The type of datastore.  
-           The options are as follows:
-           - **dws**: OLAP, elastic scaling, unlimited scaling of compute and storage capacity.
-           - **hybrid**: a single data warehouse used for transaction and analytics workloads,
-           in single-node or cluster mode.
-           - **stream**: built-in time series operators; up to 40:1 compression ratio; applicable to IoT services.
-    :param _builtins.int memory: The ram of the dws node flavor in GB.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
-    :param _builtins.int vcpus: The vcpus of the dws node flavor.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['availabilityZone'] = availability_zone
@@ -177,29 +137,7 @@ def get_flaovrs_output(availability_zone: Optional[pulumi.Input[Optional[_builti
                        vcpus: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFlaovrsResult]:
     """
-    Use this data source to get available flavors of DWS cluster node.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    flavor = sbercloud.Dws.get_flaovrs(vcpus=8)
-    ```
-
-
-    :param _builtins.str availability_zone: The availability zone name.
-    :param _builtins.str datastore_type: The type of datastore.  
-           The options are as follows:
-           - **dws**: OLAP, elastic scaling, unlimited scaling of compute and storage capacity.
-           - **hybrid**: a single data warehouse used for transaction and analytics workloads,
-           in single-node or cluster mode.
-           - **stream**: built-in time series operators; up to 40:1 compression ratio; applicable to IoT services.
-    :param _builtins.int memory: The ram of the dws node flavor in GB.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
-    :param _builtins.int vcpus: The vcpus of the dws node flavor.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['availabilityZone'] = availability_zone

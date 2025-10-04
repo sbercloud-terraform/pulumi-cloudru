@@ -12,77 +12,16 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this resource to accept or reject the shared attachment within SberCloud.
-//
-// > This resource is only a one-time action resource for operating the attachment. Deleting this resource
-//
-//	will not clear the corresponding request record, but will only remove the resource information from the tfstate file.
-//
-// Before using enterprise router, define custom endpoint as shown below:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/er"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			attachmentId := cfg.RequireObject("attachmentId")
-//			_, err := er.NewAttachmentAccepter(ctx, "test", &er.AttachmentAccepterArgs{
-//				InstanceId:   pulumi.Any(instanceId),
-//				AttachmentId: pulumi.Any(attachmentId),
-//				Action:       pulumi.String("accept"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type AttachmentAccepter struct {
 	pulumi.CustomResourceState
 
-	// Specifies the action type.\
-	// The valid values are as follows:
-	// + **accept**
-	// + **reject**
+	// The action type.
 	Action pulumi.StringOutput `pulumi:"action"`
-	// Specifies the ID of the attachment to be accept or reject.
+	// The ID of the attachment to be action.
 	AttachmentId pulumi.StringOutput `pulumi:"attachmentId"`
-	// Specifies the ID of the shared ER instance.
+	// The ID of the ER instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Region     pulumi.StringOutput `pulumi:"region"`
 }
 
 // NewAttachmentAccepter registers a new resource with the given unique name, arguments, and options.
@@ -124,35 +63,23 @@ func GetAttachmentAccepter(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AttachmentAccepter resources.
 type attachmentAccepterState struct {
-	// Specifies the action type.\
-	// The valid values are as follows:
-	// + **accept**
-	// + **reject**
+	// The action type.
 	Action *string `pulumi:"action"`
-	// Specifies the ID of the attachment to be accept or reject.
+	// The ID of the attachment to be action.
 	AttachmentId *string `pulumi:"attachmentId"`
-	// Specifies the ID of the shared ER instance.
+	// The ID of the ER instance.
 	InstanceId *string `pulumi:"instanceId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region *string `pulumi:"region"`
+	Region     *string `pulumi:"region"`
 }
 
 type AttachmentAccepterState struct {
-	// Specifies the action type.\
-	// The valid values are as follows:
-	// + **accept**
-	// + **reject**
+	// The action type.
 	Action pulumi.StringPtrInput
-	// Specifies the ID of the attachment to be accept or reject.
+	// The ID of the attachment to be action.
 	AttachmentId pulumi.StringPtrInput
-	// Specifies the ID of the shared ER instance.
+	// The ID of the ER instance.
 	InstanceId pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region pulumi.StringPtrInput
+	Region     pulumi.StringPtrInput
 }
 
 func (AttachmentAccepterState) ElementType() reflect.Type {
@@ -160,36 +87,24 @@ func (AttachmentAccepterState) ElementType() reflect.Type {
 }
 
 type attachmentAccepterArgs struct {
-	// Specifies the action type.\
-	// The valid values are as follows:
-	// + **accept**
-	// + **reject**
+	// The action type.
 	Action string `pulumi:"action"`
-	// Specifies the ID of the attachment to be accept or reject.
+	// The ID of the attachment to be action.
 	AttachmentId string `pulumi:"attachmentId"`
-	// Specifies the ID of the shared ER instance.
-	InstanceId string `pulumi:"instanceId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region *string `pulumi:"region"`
+	// The ID of the ER instance.
+	InstanceId string  `pulumi:"instanceId"`
+	Region     *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a AttachmentAccepter resource.
 type AttachmentAccepterArgs struct {
-	// Specifies the action type.\
-	// The valid values are as follows:
-	// + **accept**
-	// + **reject**
+	// The action type.
 	Action pulumi.StringInput
-	// Specifies the ID of the attachment to be accept or reject.
+	// The ID of the attachment to be action.
 	AttachmentId pulumi.StringInput
-	// Specifies the ID of the shared ER instance.
+	// The ID of the ER instance.
 	InstanceId pulumi.StringInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region pulumi.StringPtrInput
+	Region     pulumi.StringPtrInput
 }
 
 func (AttachmentAccepterArgs) ElementType() reflect.Type {
@@ -279,27 +194,21 @@ func (o AttachmentAccepterOutput) ToAttachmentAccepterOutputWithContext(ctx cont
 	return o
 }
 
-// Specifies the action type.\
-// The valid values are as follows:
-// + **accept**
-// + **reject**
+// The action type.
 func (o AttachmentAccepterOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v *AttachmentAccepter) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
 }
 
-// Specifies the ID of the attachment to be accept or reject.
+// The ID of the attachment to be action.
 func (o AttachmentAccepterOutput) AttachmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AttachmentAccepter) pulumi.StringOutput { return v.AttachmentId }).(pulumi.StringOutput)
 }
 
-// Specifies the ID of the shared ER instance.
+// The ID of the ER instance.
 func (o AttachmentAccepterOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AttachmentAccepter) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used.
-// Changing this creates a new resource.
 func (o AttachmentAccepterOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *AttachmentAccepter) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

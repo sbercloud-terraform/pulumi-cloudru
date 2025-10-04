@@ -26,13 +26,6 @@ class WhitelistArgs:
                  whitelist: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Whitelist resource.
-        :param pulumi.Input[_builtins.str] listener_id: The Listener ID that the whitelist will be associated with. Changing this
-               creates a new whitelist.
-        :param pulumi.Input[_builtins.bool] enable_whitelist: Specify whether to enable access control.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the ELB whitelist resource. If omitted, the
-               provider-level region will be used. Changing this creates a new whitelist.
-        :param pulumi.Input[_builtins.str] whitelist: Specifies the IP addresses in the whitelist. Use commas(,) to separate the multiple
-               IP addresses.
         """
         pulumi.set(__self__, "listener_id", listener_id)
         if enable_whitelist is not None:
@@ -50,10 +43,6 @@ class WhitelistArgs:
     @_builtins.property
     @pulumi.getter(name="listenerId")
     def listener_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        The Listener ID that the whitelist will be associated with. Changing this
-        creates a new whitelist.
-        """
         return pulumi.get(self, "listener_id")
 
     @listener_id.setter
@@ -63,9 +52,6 @@ class WhitelistArgs:
     @_builtins.property
     @pulumi.getter(name="enableWhitelist")
     def enable_whitelist(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specify whether to enable access control.
-        """
         return pulumi.get(self, "enable_whitelist")
 
     @enable_whitelist.setter
@@ -75,10 +61,6 @@ class WhitelistArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the ELB whitelist resource. If omitted, the
-        provider-level region will be used. Changing this creates a new whitelist.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -98,10 +80,6 @@ class WhitelistArgs:
     @_builtins.property
     @pulumi.getter
     def whitelist(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the IP addresses in the whitelist. Use commas(,) to separate the multiple
-        IP addresses.
-        """
         return pulumi.get(self, "whitelist")
 
     @whitelist.setter
@@ -119,13 +97,6 @@ class _WhitelistState:
                  whitelist: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Whitelist resources.
-        :param pulumi.Input[_builtins.bool] enable_whitelist: Specify whether to enable access control.
-        :param pulumi.Input[_builtins.str] listener_id: The Listener ID that the whitelist will be associated with. Changing this
-               creates a new whitelist.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the ELB whitelist resource. If omitted, the
-               provider-level region will be used. Changing this creates a new whitelist.
-        :param pulumi.Input[_builtins.str] whitelist: Specifies the IP addresses in the whitelist. Use commas(,) to separate the multiple
-               IP addresses.
         """
         if enable_whitelist is not None:
             pulumi.set(__self__, "enable_whitelist", enable_whitelist)
@@ -144,9 +115,6 @@ class _WhitelistState:
     @_builtins.property
     @pulumi.getter(name="enableWhitelist")
     def enable_whitelist(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specify whether to enable access control.
-        """
         return pulumi.get(self, "enable_whitelist")
 
     @enable_whitelist.setter
@@ -156,10 +124,6 @@ class _WhitelistState:
     @_builtins.property
     @pulumi.getter(name="listenerId")
     def listener_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The Listener ID that the whitelist will be associated with. Changing this
-        creates a new whitelist.
-        """
         return pulumi.get(self, "listener_id")
 
     @listener_id.setter
@@ -169,10 +133,6 @@ class _WhitelistState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the ELB whitelist resource. If omitted, the
-        provider-level region will be used. Changing this creates a new whitelist.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -192,10 +152,6 @@ class _WhitelistState:
     @_builtins.property
     @pulumi.getter
     def whitelist(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the IP addresses in the whitelist. Use commas(,) to separate the multiple
-        IP addresses.
-        """
         return pulumi.get(self, "whitelist")
 
     @whitelist.setter
@@ -216,42 +172,9 @@ class Whitelist(pulumi.CustomResource):
                  whitelist: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages an ELB whitelist resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        listener1 = sbercloud.elb.Listener("listener_1",
-            name="listener_1",
-            protocol="HTTP",
-            protocol_port=8080,
-            loadbalancer_id=loadbalancer_id)
-        whitelist1 = sbercloud.elb.Whitelist("whitelist_1",
-            enable_whitelist=True,
-            whitelist="192.168.11.1,192.168.0.1/24,192.168.201.18/8",
-            listener_id=listener1.id)
-        ```
-
-        ## Import
-
-        ELB whitelist can be imported using the whitelist ID, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Elb/whitelist:Whitelist whitelist_1 5c20fdad-7288-11eb-b817-0255ac10158b
-        ```
-
+        Create a Whitelist resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] enable_whitelist: Specify whether to enable access control.
-        :param pulumi.Input[_builtins.str] listener_id: The Listener ID that the whitelist will be associated with. Changing this
-               creates a new whitelist.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the ELB whitelist resource. If omitted, the
-               provider-level region will be used. Changing this creates a new whitelist.
-        :param pulumi.Input[_builtins.str] whitelist: Specifies the IP addresses in the whitelist. Use commas(,) to separate the multiple
-               IP addresses.
         """
         ...
     @overload
@@ -260,33 +183,7 @@ class Whitelist(pulumi.CustomResource):
                  args: WhitelistArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages an ELB whitelist resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        listener1 = sbercloud.elb.Listener("listener_1",
-            name="listener_1",
-            protocol="HTTP",
-            protocol_port=8080,
-            loadbalancer_id=loadbalancer_id)
-        whitelist1 = sbercloud.elb.Whitelist("whitelist_1",
-            enable_whitelist=True,
-            whitelist="192.168.11.1,192.168.0.1/24,192.168.201.18/8",
-            listener_id=listener1.id)
-        ```
-
-        ## Import
-
-        ELB whitelist can be imported using the whitelist ID, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Elb/whitelist:Whitelist whitelist_1 5c20fdad-7288-11eb-b817-0255ac10158b
-        ```
-
+        Create a Whitelist resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param WhitelistArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -345,13 +242,6 @@ class Whitelist(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] enable_whitelist: Specify whether to enable access control.
-        :param pulumi.Input[_builtins.str] listener_id: The Listener ID that the whitelist will be associated with. Changing this
-               creates a new whitelist.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the ELB whitelist resource. If omitted, the
-               provider-level region will be used. Changing this creates a new whitelist.
-        :param pulumi.Input[_builtins.str] whitelist: Specifies the IP addresses in the whitelist. Use commas(,) to separate the multiple
-               IP addresses.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -367,27 +257,16 @@ class Whitelist(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="enableWhitelist")
     def enable_whitelist(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specify whether to enable access control.
-        """
         return pulumi.get(self, "enable_whitelist")
 
     @_builtins.property
     @pulumi.getter(name="listenerId")
     def listener_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The Listener ID that the whitelist will be associated with. Changing this
-        creates a new whitelist.
-        """
         return pulumi.get(self, "listener_id")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the ELB whitelist resource. If omitted, the
-        provider-level region will be used. Changing this creates a new whitelist.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
@@ -399,9 +278,5 @@ class Whitelist(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def whitelist(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the IP addresses in the whitelist. Use commas(,) to separate the multiple
-        IP addresses.
-        """
         return pulumi.get(self, "whitelist")
 

@@ -62,17 +62,13 @@ class ClusterElb(dict):
                  public_ip: Optional[_builtins.str] = None,
                  vpc_id: Optional[_builtins.str] = None):
         """
-        :param _builtins.str id: The cluster ID
-        :param _builtins.str name: Cluster name, which must be unique and contains 4 to 64 characters, which
-               consist of letters, digits, hyphens(-), or underscores(_) only and must start with a letter.
-               Changing this creates a new cluster resource.
+        :param _builtins.str id: The ID of the ELB load balancer.
+        :param _builtins.str name: The name of the ELB load balancer.
         :param _builtins.str private_endpoint: The private endpoint of the ELB load balancer.
-        :param _builtins.str private_ip: List of private network IP address.
+        :param _builtins.str private_ip: The private IP address of the ELB load balancer.
         :param _builtins.str private_ip_v6: The IPv6 address of the ELB load balancer.
-        :param _builtins.str public_ip: A nested object resource Structure is documented below.
-               Changing this creates a new cluster resource.
-        :param _builtins.str vpc_id: VPC ID, which is used for configuring cluster network.
-               Changing this creates a new cluster resource.
+        :param _builtins.str public_ip: The public IP address of the ELB load balancer.
+        :param _builtins.str vpc_id: The ID of VPC to which the ELB load balancer belongs.
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -93,7 +89,7 @@ class ClusterElb(dict):
     @pulumi.getter
     def id(self) -> Optional[_builtins.str]:
         """
-        The cluster ID
+        The ID of the ELB load balancer.
         """
         return pulumi.get(self, "id")
 
@@ -101,9 +97,7 @@ class ClusterElb(dict):
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
-        Cluster name, which must be unique and contains 4 to 64 characters, which
-        consist of letters, digits, hyphens(-), or underscores(_) only and must start with a letter.
-        Changing this creates a new cluster resource.
+        The name of the ELB load balancer.
         """
         return pulumi.get(self, "name")
 
@@ -119,7 +113,7 @@ class ClusterElb(dict):
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[_builtins.str]:
         """
-        List of private network IP address.
+        The private IP address of the ELB load balancer.
         """
         return pulumi.get(self, "private_ip")
 
@@ -135,8 +129,7 @@ class ClusterElb(dict):
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> Optional[_builtins.str]:
         """
-        A nested object resource Structure is documented below.
-        Changing this creates a new cluster resource.
+        The public IP address of the ELB load balancer.
         """
         return pulumi.get(self, "public_ip")
 
@@ -144,8 +137,7 @@ class ClusterElb(dict):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[_builtins.str]:
         """
-        VPC ID, which is used for configuring cluster network.
-        Changing this creates a new cluster resource.
+        The ID of VPC to which the ELB load balancer belongs.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -175,10 +167,8 @@ class ClusterEndpoint(dict):
                  connect_info: Optional[_builtins.str] = None,
                  jdbc_url: Optional[_builtins.str] = None):
         """
-        :param _builtins.str connect_info: (Optional, String) Private network connection information.
-        :param _builtins.str jdbc_url: (Optional, String)
-               JDBC URL. The following is the default format:
-               jdbc:postgresql://< public_connect_info>/<YOUR_DATABASE_NAME>
+        :param _builtins.str connect_info: Private network connection information.
+        :param _builtins.str jdbc_url: JDBC URL. Format: jdbc:postgresql://<connect_info>/<YOUR_DATABASE_NAME>
         """
         if connect_info is not None:
             pulumi.set(__self__, "connect_info", connect_info)
@@ -189,7 +179,7 @@ class ClusterEndpoint(dict):
     @pulumi.getter(name="connectInfo")
     def connect_info(self) -> Optional[_builtins.str]:
         """
-        (Optional, String) Private network connection information.
+        Private network connection information.
         """
         return pulumi.get(self, "connect_info")
 
@@ -197,9 +187,7 @@ class ClusterEndpoint(dict):
     @pulumi.getter(name="jdbcUrl")
     def jdbc_url(self) -> Optional[_builtins.str]:
         """
-        (Optional, String)
-        JDBC URL. The following is the default format:
-        jdbc:postgresql://< public_connect_info>/<YOUR_DATABASE_NAME>
+        JDBC URL. Format: jdbc:postgresql://<connect_info>/<YOUR_DATABASE_NAME>
         """
         return pulumi.get(self, "jdbc_url")
 
@@ -291,11 +279,8 @@ class ClusterPublicEndpoint(dict):
                  jdbc_url: Optional[_builtins.str] = None,
                  public_connect_info: Optional[_builtins.str] = None):
         """
-        :param _builtins.str jdbc_url: (Optional, String)
-               JDBC URL. The following is the default format:
-               jdbc:postgresql://< public_connect_info>/<YOUR_DATABASE_NAME>
-        :param _builtins.str public_connect_info: (Optional, String)
-               Public network connection information.
+        :param _builtins.str jdbc_url: JDBC URL. Format: jdbc:postgresql://<public_connect_info>/<YOUR_DATABASE_NAME>
+        :param _builtins.str public_connect_info: Public network connection information.
         """
         if jdbc_url is not None:
             pulumi.set(__self__, "jdbc_url", jdbc_url)
@@ -306,9 +291,7 @@ class ClusterPublicEndpoint(dict):
     @pulumi.getter(name="jdbcUrl")
     def jdbc_url(self) -> Optional[_builtins.str]:
         """
-        (Optional, String)
-        JDBC URL. The following is the default format:
-        jdbc:postgresql://< public_connect_info>/<YOUR_DATABASE_NAME>
+        JDBC URL. Format: jdbc:postgresql://<public_connect_info>/<YOUR_DATABASE_NAME>
         """
         return pulumi.get(self, "jdbc_url")
 
@@ -316,7 +299,6 @@ class ClusterPublicEndpoint(dict):
     @pulumi.getter(name="publicConnectInfo")
     def public_connect_info(self) -> Optional[_builtins.str]:
         """
-        (Optional, String)
         Public network connection information.
         """
         return pulumi.get(self, "public_connect_info")
@@ -347,11 +329,8 @@ class ClusterPublicIp(dict):
                  eip_id: Optional[_builtins.str] = None,
                  public_bind_type: Optional[_builtins.str] = None):
         """
-        :param _builtins.str eip_id: EIP ID.
-               Changing this creates a new cluster resource.
-        :param _builtins.str public_bind_type: Binding type of an EIP. The value can be either of the following:
-               **auto_assign**, **not_use**, **bind_existing**. The default value is **not_use**.
-               Changing this creates a new cluster resource.
+        :param _builtins.str eip_id: The EIP ID.
+        :param _builtins.str public_bind_type: The bind type of public IP.
         """
         if eip_id is not None:
             pulumi.set(__self__, "eip_id", eip_id)
@@ -362,8 +341,7 @@ class ClusterPublicIp(dict):
     @pulumi.getter(name="eipId")
     def eip_id(self) -> Optional[_builtins.str]:
         """
-        EIP ID.
-        Changing this creates a new cluster resource.
+        The EIP ID.
         """
         return pulumi.get(self, "eip_id")
 
@@ -371,9 +349,7 @@ class ClusterPublicIp(dict):
     @pulumi.getter(name="publicBindType")
     def public_bind_type(self) -> Optional[_builtins.str]:
         """
-        Binding type of an EIP. The value can be either of the following:
-        **auto_assign**, **not_use**, **bind_existing**. The default value is **not_use**.
-        Changing this creates a new cluster resource.
+        The bind type of public IP.
         """
         return pulumi.get(self, "public_bind_type")
 
@@ -423,23 +399,14 @@ class GetFlaovrsFlavorResult(dict):
                  volumetype: _builtins.str):
         """
         :param Sequence[_builtins.str] availability_zones: The list of availability zones.
-        :param _builtins.str datastore_type: The type of datastore.  
-               The options are as follows:
-               - **dws**: OLAP, elastic scaling, unlimited scaling of compute and storage capacity.
-               - **hybrid**: a single data warehouse used for transaction and analytics workloads,
-               in single-node or cluster mode.
-               - **stream**: built-in time series operators; up to 40:1 compression ratio; applicable to IoT services.
+        :param _builtins.str datastore_type: The type of datastore.
         :param _builtins.str datastore_version: The version of datastore.
-        :param Sequence['GetFlaovrsFlavorElasticVolumeSpecArgs'] elastic_volume_specs: The ElasticVolumeSpec structure is documented below.
-        :param _builtins.str flavor_id: The name of the dws node flavor.  
-               It is referenced by `node_type` in `dws_get_flaovrs`.
+        :param Sequence['GetFlaovrsFlavorElasticVolumeSpecArgs'] elastic_volume_specs: The typical specification, If the volume specification is elastic.
+        :param _builtins.str flavor_id: The name of the dws node flavor.
         :param _builtins.int memory: The ram of the dws node flavor in GB.
         :param _builtins.int size: The default disk size in GB.
         :param _builtins.int vcpus: The vcpus of the dws node flavor.
-        :param _builtins.str volumetype: Disk type.  
-               The options are as follows:
-               - **LOCAL_DISK**:common I/O disk.
-               - **SSD**: ultra-high I/O disk.
+        :param _builtins.str volumetype: Disk type.
         """
         pulumi.set(__self__, "availability_zones", availability_zones)
         pulumi.set(__self__, "datastore_type", datastore_type)
@@ -463,12 +430,7 @@ class GetFlaovrsFlavorResult(dict):
     @pulumi.getter(name="datastoreType")
     def datastore_type(self) -> _builtins.str:
         """
-        The type of datastore.  
-        The options are as follows:
-        - **dws**: OLAP, elastic scaling, unlimited scaling of compute and storage capacity.
-        - **hybrid**: a single data warehouse used for transaction and analytics workloads,
-        in single-node or cluster mode.
-        - **stream**: built-in time series operators; up to 40:1 compression ratio; applicable to IoT services.
+        The type of datastore.
         """
         return pulumi.get(self, "datastore_type")
 
@@ -484,7 +446,7 @@ class GetFlaovrsFlavorResult(dict):
     @pulumi.getter(name="elasticVolumeSpecs")
     def elastic_volume_specs(self) -> Sequence['outputs.GetFlaovrsFlavorElasticVolumeSpecResult']:
         """
-        The ElasticVolumeSpec structure is documented below.
+        The typical specification, If the volume specification is elastic.
         """
         return pulumi.get(self, "elastic_volume_specs")
 
@@ -492,8 +454,7 @@ class GetFlaovrsFlavorResult(dict):
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> _builtins.str:
         """
-        The name of the dws node flavor.  
-        It is referenced by `node_type` in `dws_get_flaovrs`.
+        The name of the dws node flavor.
         """
         return pulumi.get(self, "flavor_id")
 
@@ -525,10 +486,7 @@ class GetFlaovrsFlavorResult(dict):
     @pulumi.getter
     def volumetype(self) -> _builtins.str:
         """
-        Disk type.  
-        The options are as follows:
-        - **LOCAL_DISK**:common I/O disk.
-        - **SSD**: ultra-high I/O disk.
+        Disk type.
         """
         return pulumi.get(self, "volumetype")
 

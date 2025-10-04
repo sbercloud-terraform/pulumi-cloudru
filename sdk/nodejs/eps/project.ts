@@ -4,32 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this resource to manage an enterprise project within SberCloud.
- *
- * > **NOTE:** Deleting enterprise projects is not support. If you destroy a resource of enterprise project,
- *   the project is only disabled and removed from the state, but it remains in the cloud
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = new sbercloud.eps.Project("test", {
- *     name: "test",
- *     description: "example project",
- * });
- * ```
- *
- * ## Import
- *
- * Enterprise projects can be imported using the `id`, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Eps/project:Project test 88f889c7-270e-4e77-8230-bf7db08d9b0e
- * ```
- */
 export class Project extends pulumi.CustomResource {
     /**
      * Get an existing Project resource's state with the given name, ID, and optional extra
@@ -58,43 +32,13 @@ export class Project extends pulumi.CustomResource {
         return obj['__pulumiType'] === Project.__pulumiType;
     }
 
-    /**
-     * Indicates the time (UTC) when the enterprise project was created. Example: 2018-05-18T06:49:06Z
-     */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
-    /**
-     * Specifies the description of the enterprise project.
-     */
     declare public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * Specifies whether to enable the enterprise project. Default to *true*.
-     */
     declare public readonly enable: pulumi.Output<boolean | undefined>;
-    /**
-     * Specifies the name of the enterprise project.
-     * This parameter can contain 1 to 64 characters. Only letters, digits, underscores (_), and hyphens (-) are allowed.
-     * The name must be unique in the domain and cannot include any form of the word "default" ("deFaulT", for instance).
-     */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * Specifies whether to skip disable the enterprise project on destroy.
-     * Defaults to **false**.
-     */
     declare public readonly skipDisableOnDestroy: pulumi.Output<boolean | undefined>;
-    /**
-     * Indicates the status of an enterprise project.
-     * + 1 indicates Enabled.
-     * + 2 indicates Disabled.
-     */
     declare public /*out*/ readonly status: pulumi.Output<number>;
-    /**
-     * Specifies the type of the enterprise project.
-     * The valid values are *poc* and *prod*, default to *prod*.
-     */
     declare public readonly type: pulumi.Output<string>;
-    /**
-     * Indicates the time (UTC) when the enterprise project was modified. Example: 2018-05-28T02:21:36Z
-     */
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
@@ -138,43 +82,13 @@ export class Project extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Project resources.
  */
 export interface ProjectState {
-    /**
-     * Indicates the time (UTC) when the enterprise project was created. Example: 2018-05-18T06:49:06Z
-     */
     createdAt?: pulumi.Input<string>;
-    /**
-     * Specifies the description of the enterprise project.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies whether to enable the enterprise project. Default to *true*.
-     */
     enable?: pulumi.Input<boolean>;
-    /**
-     * Specifies the name of the enterprise project.
-     * This parameter can contain 1 to 64 characters. Only letters, digits, underscores (_), and hyphens (-) are allowed.
-     * The name must be unique in the domain and cannot include any form of the word "default" ("deFaulT", for instance).
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies whether to skip disable the enterprise project on destroy.
-     * Defaults to **false**.
-     */
     skipDisableOnDestroy?: pulumi.Input<boolean>;
-    /**
-     * Indicates the status of an enterprise project.
-     * + 1 indicates Enabled.
-     * + 2 indicates Disabled.
-     */
     status?: pulumi.Input<number>;
-    /**
-     * Specifies the type of the enterprise project.
-     * The valid values are *poc* and *prod*, default to *prod*.
-     */
     type?: pulumi.Input<string>;
-    /**
-     * Indicates the time (UTC) when the enterprise project was modified. Example: 2018-05-28T02:21:36Z
-     */
     updatedAt?: pulumi.Input<string>;
 }
 
@@ -182,28 +96,9 @@ export interface ProjectState {
  * The set of arguments for constructing a Project resource.
  */
 export interface ProjectArgs {
-    /**
-     * Specifies the description of the enterprise project.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies whether to enable the enterprise project. Default to *true*.
-     */
     enable?: pulumi.Input<boolean>;
-    /**
-     * Specifies the name of the enterprise project.
-     * This parameter can contain 1 to 64 characters. Only letters, digits, underscores (_), and hyphens (-) are allowed.
-     * The name must be unique in the domain and cannot include any form of the word "default" ("deFaulT", for instance).
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies whether to skip disable the enterprise project on destroy.
-     * Defaults to **false**.
-     */
     skipDisableOnDestroy?: pulumi.Input<boolean>;
-    /**
-     * Specifies the type of the enterprise project.
-     * The valid values are *poc* and *prod*, default to *prod*.
-     */
     type?: pulumi.Input<string>;
 }

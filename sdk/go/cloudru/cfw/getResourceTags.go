@@ -11,36 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of tags of a specified firewall instance.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			fwInstanceId := cfg.RequireObject("fwInstanceId")
-//			_, err := cfw.GetResourceTags(ctx, &cfw.GetResourceTagsArgs{
-//				FwInstanceId: fwInstanceId,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetResourceTags(ctx *pulumi.Context, args *GetResourceTagsArgs, opts ...pulumi.InvokeOption) (*GetResourceTagsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetResourceTagsResult
@@ -53,21 +23,17 @@ func GetResourceTags(ctx *pulumi.Context, args *GetResourceTagsArgs, opts ...pul
 
 // A collection of arguments for invoking getResourceTags.
 type GetResourceTagsArgs struct {
-	// Specifies the firewall ID.
-	FwInstanceId string `pulumi:"fwInstanceId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
+	FwInstanceId string  `pulumi:"fwInstanceId"`
+	Region       *string `pulumi:"region"`
 }
 
 // A collection of values returned by getResourceTags.
 type GetResourceTagsResult struct {
 	FwInstanceId string `pulumi:"fwInstanceId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id     string `pulumi:"id"`
-	Region string `pulumi:"region"`
-	// The tag list.
-	Tags []GetResourceTagsTag `pulumi:"tags"`
+	Id     string               `pulumi:"id"`
+	Region string               `pulumi:"region"`
+	Tags   []GetResourceTagsTag `pulumi:"tags"`
 }
 
 func GetResourceTagsOutput(ctx *pulumi.Context, args GetResourceTagsOutputArgs, opts ...pulumi.InvokeOption) GetResourceTagsResultOutput {
@@ -81,11 +47,8 @@ func GetResourceTagsOutput(ctx *pulumi.Context, args GetResourceTagsOutputArgs, 
 
 // A collection of arguments for invoking getResourceTags.
 type GetResourceTagsOutputArgs struct {
-	// Specifies the firewall ID.
-	FwInstanceId pulumi.StringInput `pulumi:"fwInstanceId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	FwInstanceId pulumi.StringInput    `pulumi:"fwInstanceId"`
+	Region       pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetResourceTagsOutputArgs) ElementType() reflect.Type {
@@ -120,7 +83,6 @@ func (o GetResourceTagsResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceTagsResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The tag list.
 func (o GetResourceTagsResultOutput) Tags() GetResourceTagsTagArrayOutput {
 	return o.ApplyT(func(v GetResourceTagsResult) []GetResourceTagsTag { return v.Tags }).(GetResourceTagsTagArrayOutput)
 }

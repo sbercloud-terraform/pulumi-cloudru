@@ -6,50 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get the list of RabbitMQ available flavor details within SberCloud.
- *
- * ## Example Usage
- *
- * ### Query the list of RabbitMQ flavors by cluster type
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.getDmsRabbitmqFlavors({
- *     type: "cluster",
- * });
- * ```
- *
- * ### Query the list of RabbitMQ flavors by flavor ID
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.getDmsRabbitmqFlavors({
- *     flavorId: "c6.2u4g.cluster",
- * });
- * ```
- *
- * ### Query the list of RabbitMQ flavors by availability zone
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const az1 = config.requireObject<any>("az1");
- * const az2 = config.requireObject<any>("az2");
- * const test = sbercloud.getDmsRabbitmqFlavors({
- *     availabilityZones: [
- *         az1,
- *         az2,
- *     ],
- * });
- * ```
- */
 export function getDmsRabbitmqFlavors(args?: GetDmsRabbitmqFlavorsArgs, opts?: pulumi.InvokeOptions): Promise<GetDmsRabbitmqFlavorsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -68,37 +24,12 @@ export function getDmsRabbitmqFlavors(args?: GetDmsRabbitmqFlavorsArgs, opts?: p
  * A collection of arguments for invoking getDmsRabbitmqFlavors.
  */
 export interface GetDmsRabbitmqFlavorsArgs {
-    /**
-     * Specifies the type of CPU architecture, e.g. **X86**.
-     */
     archType?: string;
-    /**
-     * Specifies the list of availability zones with available resources.
-     */
     availabilityZones?: string[];
-    /**
-     * Specifies the flavor billing mode.
-     * The valid values are **prePaid** and **postPaid**.
-     */
     chargingMode?: string;
-    /**
-     * Specifies the DMS flavor ID, e.g. **c6.2u4g.cluster**.
-     */
     flavorId?: string;
-    /**
-     * Specifies the region in which to obtain the dms RabbitMQ flavors.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
-    /**
-     * Specifies the disk IO encoding.
-     * + **dms.physical.storage.high.v2**: Type of the disk that uses high I/O.
-     * + **dms.physical.storage.ultra.v2**: Type of the disk that uses ultra-high I/O.
-     */
     storageSpecCode?: string;
-    /**
-     * Specifies flavor type. The valid values are **single** and **cluster**.
-     */
     type?: string;
 }
 
@@ -107,79 +38,19 @@ export interface GetDmsRabbitmqFlavorsArgs {
  */
 export interface GetDmsRabbitmqFlavorsResult {
     readonly archType?: string;
-    /**
-     * Indicates the list of availability zones with available resources.
-     */
     readonly availabilityZones?: string[];
     readonly chargingMode?: string;
     readonly flavorId?: string;
-    /**
-     * Indicates the list of flavor details.
-     * The object structure is documented below.
-     */
     readonly flavors: outputs.GetDmsRabbitmqFlavorsFlavor[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly region: string;
-    /**
-     * Indicates the disk IO encoding.
-     */
     readonly storageSpecCode?: string;
-    /**
-     * The disk type.
-     */
     readonly type?: string;
-    /**
-     * Indicates the supported flavor versions.
-     */
     readonly versions: string[];
 }
-/**
- * Use this data source to get the list of RabbitMQ available flavor details within SberCloud.
- *
- * ## Example Usage
- *
- * ### Query the list of RabbitMQ flavors by cluster type
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.getDmsRabbitmqFlavors({
- *     type: "cluster",
- * });
- * ```
- *
- * ### Query the list of RabbitMQ flavors by flavor ID
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.getDmsRabbitmqFlavors({
- *     flavorId: "c6.2u4g.cluster",
- * });
- * ```
- *
- * ### Query the list of RabbitMQ flavors by availability zone
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const az1 = config.requireObject<any>("az1");
- * const az2 = config.requireObject<any>("az2");
- * const test = sbercloud.getDmsRabbitmqFlavors({
- *     availabilityZones: [
- *         az1,
- *         az2,
- *     ],
- * });
- * ```
- */
 export function getDmsRabbitmqFlavorsOutput(args?: GetDmsRabbitmqFlavorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDmsRabbitmqFlavorsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -198,36 +69,11 @@ export function getDmsRabbitmqFlavorsOutput(args?: GetDmsRabbitmqFlavorsOutputAr
  * A collection of arguments for invoking getDmsRabbitmqFlavors.
  */
 export interface GetDmsRabbitmqFlavorsOutputArgs {
-    /**
-     * Specifies the type of CPU architecture, e.g. **X86**.
-     */
     archType?: pulumi.Input<string>;
-    /**
-     * Specifies the list of availability zones with available resources.
-     */
     availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the flavor billing mode.
-     * The valid values are **prePaid** and **postPaid**.
-     */
     chargingMode?: pulumi.Input<string>;
-    /**
-     * Specifies the DMS flavor ID, e.g. **c6.2u4g.cluster**.
-     */
     flavorId?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to obtain the dms RabbitMQ flavors.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the disk IO encoding.
-     * + **dms.physical.storage.high.v2**: Type of the disk that uses high I/O.
-     * + **dms.physical.storage.ultra.v2**: Type of the disk that uses ultra-high I/O.
-     */
     storageSpecCode?: pulumi.Input<string>;
-    /**
-     * Specifies flavor type. The valid values are **single** and **cluster**.
-     */
     type?: pulumi.Input<string>;
 }

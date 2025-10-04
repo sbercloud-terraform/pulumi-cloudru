@@ -11,57 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to filter ER attachments within SberCloud.
-//
-// Before using enterprise router, define custom endpoint as shown below:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/er"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			_, err := er.GetAttachments(ctx, &er.GetAttachmentsArgs{
-//				InstanceId: instanceId,
-//				Tags: map[string]interface{}{
-//					"foo": "bar",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetAttachments(ctx *pulumi.Context, args *GetAttachmentsArgs, opts ...pulumi.InvokeOption) (*GetAttachmentsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAttachmentsResult
@@ -74,56 +23,29 @@ func GetAttachments(ctx *pulumi.Context, args *GetAttachmentsArgs, opts ...pulum
 
 // A collection of arguments for invoking getAttachments.
 type GetAttachmentsArgs struct {
-	// Specifies the specified attachment ID used to query.
-	AttachmentId *string `pulumi:"attachmentId"`
-	// Specifies the ER instance ID to which the attachment belongs.
-	InstanceId string `pulumi:"instanceId"`
-	// Specifies the name used to filter the attachments.
-	Name *string `pulumi:"name"`
-	// Specifies the region where the ER attachments are located.\
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the associated resource ID used to filter the attachments.
-	ResourceId *string `pulumi:"resourceId"`
-	// Specifies the status used to filter the attachments.
-	// The valid values are as follows:
-	// + **available**
-	// + **failed**
-	// + **pending_acceptance**
-	// + **rejected**
-	Status *string `pulumi:"status"`
-	// The key/value pairs used to filter the attachments.
-	Tags map[string]string `pulumi:"tags"`
-	// Specifies the resource type to be filtered.\
-	// The valid values are as follows:
-	// + **vpc**: Virtual private cloud.
-	// + **vpn**: VPN gateway.
-	// + **vgw**: Virtual gateway of cloud private line.
-	// + **peering**: Peering connection, through the cloud connection (CC) to load ERs in different regions to create a
-	//   peering connection.
-	Type *string `pulumi:"type"`
+	AttachmentId *string           `pulumi:"attachmentId"`
+	InstanceId   string            `pulumi:"instanceId"`
+	Name         *string           `pulumi:"name"`
+	Region       *string           `pulumi:"region"`
+	ResourceId   *string           `pulumi:"resourceId"`
+	Status       *string           `pulumi:"status"`
+	Tags         map[string]string `pulumi:"tags"`
+	Type         *string           `pulumi:"type"`
 }
 
 // A collection of values returned by getAttachments.
 type GetAttachmentsResult struct {
-	AttachmentId *string `pulumi:"attachmentId"`
-	// All attachments that match the filter parameters.\
-	// The object structure is documented below.
-	Attachments []GetAttachmentsAttachment `pulumi:"attachments"`
+	AttachmentId *string                    `pulumi:"attachmentId"`
+	Attachments  []GetAttachmentsAttachment `pulumi:"attachments"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string `pulumi:"id"`
-	InstanceId string `pulumi:"instanceId"`
-	// The attachment name.
-	Name   *string `pulumi:"name"`
-	Region *string `pulumi:"region"`
-	// The associated resource ID.
-	ResourceId *string `pulumi:"resourceId"`
-	// The current status of the attachment.
-	Status *string `pulumi:"status"`
-	// The key/value pairs to associate with the attachment.
-	Tags map[string]string `pulumi:"tags"`
-	// The attachment type.
-	Type *string `pulumi:"type"`
+	Id         string            `pulumi:"id"`
+	InstanceId string            `pulumi:"instanceId"`
+	Name       *string           `pulumi:"name"`
+	Region     *string           `pulumi:"region"`
+	ResourceId *string           `pulumi:"resourceId"`
+	Status     *string           `pulumi:"status"`
+	Tags       map[string]string `pulumi:"tags"`
+	Type       *string           `pulumi:"type"`
 }
 
 func GetAttachmentsOutput(ctx *pulumi.Context, args GetAttachmentsOutputArgs, opts ...pulumi.InvokeOption) GetAttachmentsResultOutput {
@@ -137,34 +59,14 @@ func GetAttachmentsOutput(ctx *pulumi.Context, args GetAttachmentsOutputArgs, op
 
 // A collection of arguments for invoking getAttachments.
 type GetAttachmentsOutputArgs struct {
-	// Specifies the specified attachment ID used to query.
 	AttachmentId pulumi.StringPtrInput `pulumi:"attachmentId"`
-	// Specifies the ER instance ID to which the attachment belongs.
-	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// Specifies the name used to filter the attachments.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the region where the ER attachments are located.\
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the associated resource ID used to filter the attachments.
-	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
-	// Specifies the status used to filter the attachments.
-	// The valid values are as follows:
-	// + **available**
-	// + **failed**
-	// + **pending_acceptance**
-	// + **rejected**
-	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The key/value pairs used to filter the attachments.
-	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// Specifies the resource type to be filtered.\
-	// The valid values are as follows:
-	// + **vpc**: Virtual private cloud.
-	// + **vpn**: VPN gateway.
-	// + **vgw**: Virtual gateway of cloud private line.
-	// + **peering**: Peering connection, through the cloud connection (CC) to load ERs in different regions to create a
-	//   peering connection.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	InstanceId   pulumi.StringInput    `pulumi:"instanceId"`
+	Name         pulumi.StringPtrInput `pulumi:"name"`
+	Region       pulumi.StringPtrInput `pulumi:"region"`
+	ResourceId   pulumi.StringPtrInput `pulumi:"resourceId"`
+	Status       pulumi.StringPtrInput `pulumi:"status"`
+	Tags         pulumi.StringMapInput `pulumi:"tags"`
+	Type         pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (GetAttachmentsOutputArgs) ElementType() reflect.Type {
@@ -190,8 +92,6 @@ func (o GetAttachmentsResultOutput) AttachmentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAttachmentsResult) *string { return v.AttachmentId }).(pulumi.StringPtrOutput)
 }
 
-// All attachments that match the filter parameters.\
-// The object structure is documented below.
 func (o GetAttachmentsResultOutput) Attachments() GetAttachmentsAttachmentArrayOutput {
 	return o.ApplyT(func(v GetAttachmentsResult) []GetAttachmentsAttachment { return v.Attachments }).(GetAttachmentsAttachmentArrayOutput)
 }
@@ -205,7 +105,6 @@ func (o GetAttachmentsResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttachmentsResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// The attachment name.
 func (o GetAttachmentsResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAttachmentsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -214,22 +113,18 @@ func (o GetAttachmentsResultOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAttachmentsResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// The associated resource ID.
 func (o GetAttachmentsResultOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAttachmentsResult) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
 }
 
-// The current status of the attachment.
 func (o GetAttachmentsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAttachmentsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// The key/value pairs to associate with the attachment.
 func (o GetAttachmentsResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetAttachmentsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The attachment type.
 func (o GetAttachmentsResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAttachmentsResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

@@ -56,26 +56,16 @@ class GetDmsRocketmqConsumerGroupsResult:
     @_builtins.property
     @pulumi.getter
     def broadcast(self) -> Optional[_builtins.bool]:
-        """
-        Indicates whether to broadcast the consumer group.
-        """
         return pulumi.get(self, "broadcast")
 
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[_builtins.bool]:
-        """
-        Indicates the consumer group is enabled or not.
-        """
         return pulumi.get(self, "enabled")
 
     @_builtins.property
     @pulumi.getter
     def groups(self) -> Sequence['outputs.GetDmsRocketmqConsumerGroupsGroupResult']:
-        """
-        The list of consumer groups.
-        The groups structure is documented below.
-        """
         return pulumi.get(self, "groups")
 
     @_builtins.property
@@ -94,9 +84,6 @@ class GetDmsRocketmqConsumerGroupsResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        Indicates the name of the consumer group.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -107,9 +94,6 @@ class GetDmsRocketmqConsumerGroupsResult:
     @_builtins.property
     @pulumi.getter(name="retryMaxTimes")
     def retry_max_times(self) -> Optional[_builtins.int]:
-        """
-        Indicates the maximum number of retry times.
-        """
         return pulumi.get(self, "retry_max_times")
 
 
@@ -137,16 +121,7 @@ def get_dms_rocketmq_consumer_groups(broadcast: Optional[_builtins.bool] = None,
                                      retry_max_times: Optional[_builtins.int] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDmsRocketmqConsumerGroupsResult:
     """
-    Use this data source to get the list of DMS rocketMQ consumer groups.
-
-
-    :param _builtins.bool broadcast: Specifies whether to broadcast the consumer group. Defaults to **false**.
-    :param _builtins.bool enabled: Specifies the consumer group is enabled or not. Defaults to **true**.
-    :param _builtins.str instance_id: Specifies the ID of the rocketMQ instance.
-    :param _builtins.str name: Specifies the name of the consumer group.
-    :param _builtins.str region: Specifies the region in which to create the resource.
-           If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-    :param _builtins.int retry_max_times: Specifies the maximum number of retry times.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['broadcast'] = broadcast
@@ -175,16 +150,7 @@ def get_dms_rocketmq_consumer_groups_output(broadcast: Optional[pulumi.Input[Opt
                                             retry_max_times: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDmsRocketmqConsumerGroupsResult]:
     """
-    Use this data source to get the list of DMS rocketMQ consumer groups.
-
-
-    :param _builtins.bool broadcast: Specifies whether to broadcast the consumer group. Defaults to **false**.
-    :param _builtins.bool enabled: Specifies the consumer group is enabled or not. Defaults to **true**.
-    :param _builtins.str instance_id: Specifies the ID of the rocketMQ instance.
-    :param _builtins.str name: Specifies the name of the consumer group.
-    :param _builtins.str region: Specifies the region in which to create the resource.
-           If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-    :param _builtins.int retry_max_times: Specifies the maximum number of retry times.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['broadcast'] = broadcast

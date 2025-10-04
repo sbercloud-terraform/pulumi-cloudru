@@ -12,114 +12,22 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a flow log resource under the ER instance within SberCloud.
-//
-// Before using enterprise router, define custom endpoint as shown below:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/er"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			logGroupId := cfg.RequireObject("logGroupId")
-//			logStreamId := cfg.RequireObject("logStreamId")
-//			resourceId := cfg.RequireObject("resourceId")
-//			flowLogName := cfg.RequireObject("flowLogName")
-//			_, err := er.NewFlowLog(ctx, "test", &er.FlowLogArgs{
-//				InstanceId:   pulumi.Any(instanceId),
-//				LogStoreType: pulumi.String("LTS"),
-//				LogGroupId:   pulumi.Any(logGroupId),
-//				LogStreamId:  pulumi.Any(logStreamId),
-//				ResourceType: pulumi.String("attachment"),
-//				ResourceId:   pulumi.Any(resourceId),
-//				Name:         pulumi.Any(flowLogName),
-//				Description:  pulumi.String("Flow log created by terraform"),
-//				Enabled:      pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The flow log can be imported using the related `instance_id` and their `id`, separated by a slash (/), e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Er/flowLog:FlowLog test <instance_id>/<id>
-// ```
 type FlowLog struct {
 	pulumi.CustomResourceState
 
-	// The creation time of the flow log.
-	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Specifies the description of the flow log.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Specifies whether to enable the flow log function. The default value is **true**.
-	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// Specifies the ID of the ER instance to which the flow log belongs.
-	// Changing this creates a new resource.
-	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Specifies the LTS log group ID.
-	// Changing this creates a new resource.
-	LogGroupId pulumi.StringOutput `pulumi:"logGroupId"`
-	// Specifies the storage type of flow log. The valid value is **LTS**.\
-	// Changing this creates a new resource.
-	LogStoreType pulumi.StringOutput `pulumi:"logStoreType"`
-	// Specifies the LTS log stream ID.
-	// Changing this creates a new resource.
-	LogStreamId pulumi.StringOutput `pulumi:"logStreamId"`
-	// Specifies the name of the flow log.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Specifies the resource ID to which the logs to be collected.
-	// Changing this creates a new resource.
-	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
-	// Specifies the resource type to which the logs to be collected.
-	// The valid value is **attachment**.
-	// Changing this creates a new resource.
-	ResourceType pulumi.StringOutput `pulumi:"resourceType"`
-	// The current status of the flow log.
-	State pulumi.StringOutput `pulumi:"state"`
-	// The latest update time of the flow log.
-	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
+	CreatedAt    pulumi.StringOutput    `pulumi:"createdAt"`
+	Description  pulumi.StringPtrOutput `pulumi:"description"`
+	Enabled      pulumi.BoolPtrOutput   `pulumi:"enabled"`
+	InstanceId   pulumi.StringOutput    `pulumi:"instanceId"`
+	LogGroupId   pulumi.StringOutput    `pulumi:"logGroupId"`
+	LogStoreType pulumi.StringOutput    `pulumi:"logStoreType"`
+	LogStreamId  pulumi.StringOutput    `pulumi:"logStreamId"`
+	Name         pulumi.StringOutput    `pulumi:"name"`
+	Region       pulumi.StringOutput    `pulumi:"region"`
+	ResourceId   pulumi.StringOutput    `pulumi:"resourceId"`
+	ResourceType pulumi.StringOutput    `pulumi:"resourceType"`
+	State        pulumi.StringOutput    `pulumi:"state"`
+	UpdatedAt    pulumi.StringOutput    `pulumi:"updatedAt"`
 }
 
 // NewFlowLog registers a new resource with the given unique name, arguments, and options.
@@ -170,79 +78,35 @@ func GetFlowLog(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FlowLog resources.
 type flowLogState struct {
-	// The creation time of the flow log.
-	CreatedAt *string `pulumi:"createdAt"`
-	// Specifies the description of the flow log.
-	Description *string `pulumi:"description"`
-	// Specifies whether to enable the flow log function. The default value is **true**.
-	Enabled *bool `pulumi:"enabled"`
-	// Specifies the ID of the ER instance to which the flow log belongs.
-	// Changing this creates a new resource.
-	InstanceId *string `pulumi:"instanceId"`
-	// Specifies the LTS log group ID.
-	// Changing this creates a new resource.
-	LogGroupId *string `pulumi:"logGroupId"`
-	// Specifies the storage type of flow log. The valid value is **LTS**.\
-	// Changing this creates a new resource.
+	CreatedAt    *string `pulumi:"createdAt"`
+	Description  *string `pulumi:"description"`
+	Enabled      *bool   `pulumi:"enabled"`
+	InstanceId   *string `pulumi:"instanceId"`
+	LogGroupId   *string `pulumi:"logGroupId"`
 	LogStoreType *string `pulumi:"logStoreType"`
-	// Specifies the LTS log stream ID.
-	// Changing this creates a new resource.
-	LogStreamId *string `pulumi:"logStreamId"`
-	// Specifies the name of the flow log.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies the resource ID to which the logs to be collected.
-	// Changing this creates a new resource.
-	ResourceId *string `pulumi:"resourceId"`
-	// Specifies the resource type to which the logs to be collected.
-	// The valid value is **attachment**.
-	// Changing this creates a new resource.
+	LogStreamId  *string `pulumi:"logStreamId"`
+	Name         *string `pulumi:"name"`
+	Region       *string `pulumi:"region"`
+	ResourceId   *string `pulumi:"resourceId"`
 	ResourceType *string `pulumi:"resourceType"`
-	// The current status of the flow log.
-	State *string `pulumi:"state"`
-	// The latest update time of the flow log.
-	UpdatedAt *string `pulumi:"updatedAt"`
+	State        *string `pulumi:"state"`
+	UpdatedAt    *string `pulumi:"updatedAt"`
 }
 
 type FlowLogState struct {
-	// The creation time of the flow log.
-	CreatedAt pulumi.StringPtrInput
-	// Specifies the description of the flow log.
-	Description pulumi.StringPtrInput
-	// Specifies whether to enable the flow log function. The default value is **true**.
-	Enabled pulumi.BoolPtrInput
-	// Specifies the ID of the ER instance to which the flow log belongs.
-	// Changing this creates a new resource.
-	InstanceId pulumi.StringPtrInput
-	// Specifies the LTS log group ID.
-	// Changing this creates a new resource.
-	LogGroupId pulumi.StringPtrInput
-	// Specifies the storage type of flow log. The valid value is **LTS**.\
-	// Changing this creates a new resource.
+	CreatedAt    pulumi.StringPtrInput
+	Description  pulumi.StringPtrInput
+	Enabled      pulumi.BoolPtrInput
+	InstanceId   pulumi.StringPtrInput
+	LogGroupId   pulumi.StringPtrInput
 	LogStoreType pulumi.StringPtrInput
-	// Specifies the LTS log stream ID.
-	// Changing this creates a new resource.
-	LogStreamId pulumi.StringPtrInput
-	// Specifies the name of the flow log.
-	Name pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region pulumi.StringPtrInput
-	// Specifies the resource ID to which the logs to be collected.
-	// Changing this creates a new resource.
-	ResourceId pulumi.StringPtrInput
-	// Specifies the resource type to which the logs to be collected.
-	// The valid value is **attachment**.
-	// Changing this creates a new resource.
+	LogStreamId  pulumi.StringPtrInput
+	Name         pulumi.StringPtrInput
+	Region       pulumi.StringPtrInput
+	ResourceId   pulumi.StringPtrInput
 	ResourceType pulumi.StringPtrInput
-	// The current status of the flow log.
-	State pulumi.StringPtrInput
-	// The latest update time of the flow log.
-	UpdatedAt pulumi.StringPtrInput
+	State        pulumi.StringPtrInput
+	UpdatedAt    pulumi.StringPtrInput
 }
 
 func (FlowLogState) ElementType() reflect.Type {
@@ -250,67 +114,29 @@ func (FlowLogState) ElementType() reflect.Type {
 }
 
 type flowLogArgs struct {
-	// Specifies the description of the flow log.
-	Description *string `pulumi:"description"`
-	// Specifies whether to enable the flow log function. The default value is **true**.
-	Enabled *bool `pulumi:"enabled"`
-	// Specifies the ID of the ER instance to which the flow log belongs.
-	// Changing this creates a new resource.
-	InstanceId string `pulumi:"instanceId"`
-	// Specifies the LTS log group ID.
-	// Changing this creates a new resource.
-	LogGroupId string `pulumi:"logGroupId"`
-	// Specifies the storage type of flow log. The valid value is **LTS**.\
-	// Changing this creates a new resource.
-	LogStoreType string `pulumi:"logStoreType"`
-	// Specifies the LTS log stream ID.
-	// Changing this creates a new resource.
-	LogStreamId string `pulumi:"logStreamId"`
-	// Specifies the name of the flow log.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies the resource ID to which the logs to be collected.
-	// Changing this creates a new resource.
-	ResourceId string `pulumi:"resourceId"`
-	// Specifies the resource type to which the logs to be collected.
-	// The valid value is **attachment**.
-	// Changing this creates a new resource.
-	ResourceType string `pulumi:"resourceType"`
+	Description  *string `pulumi:"description"`
+	Enabled      *bool   `pulumi:"enabled"`
+	InstanceId   string  `pulumi:"instanceId"`
+	LogGroupId   string  `pulumi:"logGroupId"`
+	LogStoreType string  `pulumi:"logStoreType"`
+	LogStreamId  string  `pulumi:"logStreamId"`
+	Name         *string `pulumi:"name"`
+	Region       *string `pulumi:"region"`
+	ResourceId   string  `pulumi:"resourceId"`
+	ResourceType string  `pulumi:"resourceType"`
 }
 
 // The set of arguments for constructing a FlowLog resource.
 type FlowLogArgs struct {
-	// Specifies the description of the flow log.
-	Description pulumi.StringPtrInput
-	// Specifies whether to enable the flow log function. The default value is **true**.
-	Enabled pulumi.BoolPtrInput
-	// Specifies the ID of the ER instance to which the flow log belongs.
-	// Changing this creates a new resource.
-	InstanceId pulumi.StringInput
-	// Specifies the LTS log group ID.
-	// Changing this creates a new resource.
-	LogGroupId pulumi.StringInput
-	// Specifies the storage type of flow log. The valid value is **LTS**.\
-	// Changing this creates a new resource.
+	Description  pulumi.StringPtrInput
+	Enabled      pulumi.BoolPtrInput
+	InstanceId   pulumi.StringInput
+	LogGroupId   pulumi.StringInput
 	LogStoreType pulumi.StringInput
-	// Specifies the LTS log stream ID.
-	// Changing this creates a new resource.
-	LogStreamId pulumi.StringInput
-	// Specifies the name of the flow log.
-	Name pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region pulumi.StringPtrInput
-	// Specifies the resource ID to which the logs to be collected.
-	// Changing this creates a new resource.
-	ResourceId pulumi.StringInput
-	// Specifies the resource type to which the logs to be collected.
-	// The valid value is **attachment**.
-	// Changing this creates a new resource.
+	LogStreamId  pulumi.StringInput
+	Name         pulumi.StringPtrInput
+	Region       pulumi.StringPtrInput
+	ResourceId   pulumi.StringInput
 	ResourceType pulumi.StringInput
 }
 
@@ -401,76 +227,54 @@ func (o FlowLogOutput) ToFlowLogOutputWithContext(ctx context.Context) FlowLogOu
 	return o
 }
 
-// The creation time of the flow log.
 func (o FlowLogOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlowLog) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Specifies the description of the flow log.
 func (o FlowLogOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlowLog) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to enable the flow log function. The default value is **true**.
 func (o FlowLogOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FlowLog) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the ID of the ER instance to which the flow log belongs.
-// Changing this creates a new resource.
 func (o FlowLogOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlowLog) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Specifies the LTS log group ID.
-// Changing this creates a new resource.
 func (o FlowLogOutput) LogGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlowLog) pulumi.StringOutput { return v.LogGroupId }).(pulumi.StringOutput)
 }
 
-// Specifies the storage type of flow log. The valid value is **LTS**.\
-// Changing this creates a new resource.
 func (o FlowLogOutput) LogStoreType() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlowLog) pulumi.StringOutput { return v.LogStoreType }).(pulumi.StringOutput)
 }
 
-// Specifies the LTS log stream ID.
-// Changing this creates a new resource.
 func (o FlowLogOutput) LogStreamId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlowLog) pulumi.StringOutput { return v.LogStreamId }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the flow log.
 func (o FlowLogOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlowLog) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used.
-// Changing this creates a new resource.
 func (o FlowLogOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlowLog) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Specifies the resource ID to which the logs to be collected.
-// Changing this creates a new resource.
 func (o FlowLogOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlowLog) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
 }
 
-// Specifies the resource type to which the logs to be collected.
-// The valid value is **attachment**.
-// Changing this creates a new resource.
 func (o FlowLogOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlowLog) pulumi.StringOutput { return v.ResourceType }).(pulumi.StringOutput)
 }
 
-// The current status of the flow log.
 func (o FlowLogOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlowLog) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// The latest update time of the flow log.
 func (o FlowLogOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlowLog) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }

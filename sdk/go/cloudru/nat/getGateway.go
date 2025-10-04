@@ -11,33 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the information of an available SberCloud NAT gateway.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/nat"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := nat.GetGateway(ctx, &nat.GetGatewayArgs{
-//				Name: pulumi.StringRef("tf_test_natgateway"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupGateway(ctx *pulumi.Context, args *LookupGatewayArgs, opts ...pulumi.InvokeOption) (*LookupGatewayResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGatewayResult
@@ -50,35 +23,16 @@ func LookupGateway(ctx *pulumi.Context, args *LookupGatewayArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getGateway.
 type LookupGatewayArgs struct {
-	// Specifies the description of the nat
-	// gateway. The value contains 0 to 255 characters, and angle brackets (<)
-	// and (>) are not allowed.
-	Description *string `pulumi:"description"`
-	// Specifies the enterprise project
-	// ID of the NAT gateway.
+	Description         *string `pulumi:"description"`
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the ID of the NAT gateway.
-	Id *string `pulumi:"id"`
-	// Specifies the network ID of the
-	// downstream interface (the next hop of the DVR) of the NAT gateway.
-	//
+	Id                  *string `pulumi:"id"`
 	// Deprecated: use subnetId instead
 	InternalNetworkId *string `pulumi:"internalNetworkId"`
-	// Specifies the nat gateway name. The name can
-	// contain only digits, letters, underscores (_), and hyphens(-).
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to create the Nat
-	// gateway resource. If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the ID of the router this nat
-	// gateway belongs to.
-	//
+	Name              *string `pulumi:"name"`
+	Region            *string `pulumi:"region"`
 	// Deprecated: use vpcId instead
 	RouterId *string `pulumi:"routerId"`
-	// The NAT gateway type.
-	// The value can be:
-	Spec *string `pulumi:"spec"`
-	// Specifies the status of the NAT gateway.
+	Spec     *string `pulumi:"spec"`
 	Status   *string `pulumi:"status"`
 	SubnetId *string `pulumi:"subnetId"`
 	VpcId    *string `pulumi:"vpcId"`
@@ -112,35 +66,16 @@ func LookupGatewayOutput(ctx *pulumi.Context, args LookupGatewayOutputArgs, opts
 
 // A collection of arguments for invoking getGateway.
 type LookupGatewayOutputArgs struct {
-	// Specifies the description of the nat
-	// gateway. The value contains 0 to 255 characters, and angle brackets (<)
-	// and (>) are not allowed.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Specifies the enterprise project
-	// ID of the NAT gateway.
+	Description         pulumi.StringPtrInput `pulumi:"description"`
 	EnterpriseProjectId pulumi.StringPtrInput `pulumi:"enterpriseProjectId"`
-	// Specifies the ID of the NAT gateway.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Specifies the network ID of the
-	// downstream interface (the next hop of the DVR) of the NAT gateway.
-	//
+	Id                  pulumi.StringPtrInput `pulumi:"id"`
 	// Deprecated: use subnetId instead
 	InternalNetworkId pulumi.StringPtrInput `pulumi:"internalNetworkId"`
-	// Specifies the nat gateway name. The name can
-	// contain only digits, letters, underscores (_), and hyphens(-).
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the region in which to create the Nat
-	// gateway resource. If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the ID of the router this nat
-	// gateway belongs to.
-	//
+	Name              pulumi.StringPtrInput `pulumi:"name"`
+	Region            pulumi.StringPtrInput `pulumi:"region"`
 	// Deprecated: use vpcId instead
 	RouterId pulumi.StringPtrInput `pulumi:"routerId"`
-	// The NAT gateway type.
-	// The value can be:
-	Spec pulumi.StringPtrInput `pulumi:"spec"`
-	// Specifies the status of the NAT gateway.
+	Spec     pulumi.StringPtrInput `pulumi:"spec"`
 	Status   pulumi.StringPtrInput `pulumi:"status"`
 	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
 	VpcId    pulumi.StringPtrInput `pulumi:"vpcId"`

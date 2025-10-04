@@ -4,43 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a propagation resource under the route table for ER service within SberCloud.
- *
- * Before using enterprise router, define custom endpoint as shown below:
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const routeTableId = config.requireObject<any>("routeTableId");
- * const attachmentId = config.requireObject<any>("attachmentId");
- * const test = new sbercloud.er.Propagation("test", {
- *     instanceId: instanceId,
- *     routeTableId: routeTableId,
- *     attachmentId: attachmentId,
- * });
- * ```
- *
- * ## Import
- *
- * Propagations can be imported using their `id` and the related `instance_id` and `route_table_id`, separated by
- *
- * slashes (/), e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:Er/propagation:Propagation test <instance_id>/<route_table_id>/<id>
- * ```
- */
 export class Propagation extends pulumi.CustomResource {
     /**
      * Get an existing Propagation resource's state with the given name, ID, and optional extra
@@ -70,8 +33,7 @@ export class Propagation extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies the ID of the attachment corresponding to the propagation.  
-     * Changing this parameter will create a new resource.
+     * The ID of the attachment corresponding to the propagation.
      */
     declare public readonly attachmentId: pulumi.Output<string>;
     /**
@@ -83,20 +45,15 @@ export class Propagation extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * Specifies the ID of the ER instance to which the route table and the
-     * attachment belongs.
-     * Changing this parameter will create a new resource.
+     * The ID of the ER instance to which the route table and the attachment belongs.
      */
     declare public readonly instanceId: pulumi.Output<string>;
     /**
-     * Specifies the region where the ER instance and route table are located.  
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+     * The region where the ER instance and route table are located.
      */
     declare public readonly region: pulumi.Output<string>;
     /**
-     * Specifies the ID of the route table to which the propagation
-     * belongs.
-     * Changing this parameter will create a new resource.
+     * The ID of the route table to which the propagation belongs.
      */
     declare public readonly routeTableId: pulumi.Output<string>;
     /**
@@ -159,8 +116,7 @@ export class Propagation extends pulumi.CustomResource {
  */
 export interface PropagationState {
     /**
-     * Specifies the ID of the attachment corresponding to the propagation.  
-     * Changing this parameter will create a new resource.
+     * The ID of the attachment corresponding to the propagation.
      */
     attachmentId?: pulumi.Input<string>;
     /**
@@ -172,20 +128,15 @@ export interface PropagationState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Specifies the ID of the ER instance to which the route table and the
-     * attachment belongs.
-     * Changing this parameter will create a new resource.
+     * The ID of the ER instance to which the route table and the attachment belongs.
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * Specifies the region where the ER instance and route table are located.  
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+     * The region where the ER instance and route table are located.
      */
     region?: pulumi.Input<string>;
     /**
-     * Specifies the ID of the route table to which the propagation
-     * belongs.
-     * Changing this parameter will create a new resource.
+     * The ID of the route table to which the propagation belongs.
      */
     routeTableId?: pulumi.Input<string>;
     /**
@@ -203,25 +154,19 @@ export interface PropagationState {
  */
 export interface PropagationArgs {
     /**
-     * Specifies the ID of the attachment corresponding to the propagation.  
-     * Changing this parameter will create a new resource.
+     * The ID of the attachment corresponding to the propagation.
      */
     attachmentId: pulumi.Input<string>;
     /**
-     * Specifies the ID of the ER instance to which the route table and the
-     * attachment belongs.
-     * Changing this parameter will create a new resource.
+     * The ID of the ER instance to which the route table and the attachment belongs.
      */
     instanceId: pulumi.Input<string>;
     /**
-     * Specifies the region where the ER instance and route table are located.  
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+     * The region where the ER instance and route table are located.
      */
     region?: pulumi.Input<string>;
     /**
-     * Specifies the ID of the route table to which the propagation
-     * belongs.
-     * Changing this parameter will create a new resource.
+     * The ID of the route table to which the propagation belongs.
      */
     routeTableId: pulumi.Input<string>;
 }

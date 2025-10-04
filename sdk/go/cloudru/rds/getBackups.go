@@ -11,36 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of RDS backups.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/rds"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			_, err := rds.GetBackups(ctx, &rds.GetBackupsArgs{
-//				InstanceId: instanceId,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetBackups(ctx *pulumi.Context, args *GetBackupsArgs, opts ...pulumi.InvokeOption) (*GetBackupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBackupsResult
@@ -53,46 +23,27 @@ func GetBackups(ctx *pulumi.Context, args *GetBackupsArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getBackups.
 type GetBackupsArgs struct {
-	// Backup ID.
-	BackupId *string `pulumi:"backupId"`
-	// Backup type.\
-	// The options are as follows:
-	// - **auto**: Automated full backup.
-	// - **manual**: Manual full backup.
-	// - **fragment**: Differential full backup.
-	// - **incremental**: Automated incremental backup.
+	BackupId   *string `pulumi:"backupId"`
 	BackupType *string `pulumi:"backupType"`
-	// Start time in the "yyyy-mm-ddThh:mm:ssZ" format.
-	BeginTime *string `pulumi:"beginTime"`
-	// End time in the "yyyy-mm-ddThh:mm:ssZ" format.
-	EndTime *string `pulumi:"endTime"`
-	// Instance ID.
-	InstanceId string `pulumi:"instanceId"`
-	// Backup name.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
+	BeginTime  *string `pulumi:"beginTime"`
+	EndTime    *string `pulumi:"endTime"`
+	InstanceId string  `pulumi:"instanceId"`
+	Name       *string `pulumi:"name"`
+	Region     *string `pulumi:"region"`
 }
 
 // A collection of values returned by getBackups.
 type GetBackupsResult struct {
-	BackupId   *string `pulumi:"backupId"`
-	BackupType *string `pulumi:"backupType"`
-	// Backup list. For details, see Data structure of the Backup field.
-	// The backups structure is documented below.
-	Backups []GetBackupsBackup `pulumi:"backups"`
-	// Backup start time in the "yyyy-mm-ddThh:mm:ssZ" format.
-	BeginTime *string `pulumi:"beginTime"`
-	// Backup end time in the "yyyy-mm-ddThh:mm:ssZ" format.
-	EndTime *string `pulumi:"endTime"`
+	BackupId   *string            `pulumi:"backupId"`
+	BackupType *string            `pulumi:"backupType"`
+	Backups    []GetBackupsBackup `pulumi:"backups"`
+	BeginTime  *string            `pulumi:"beginTime"`
+	EndTime    *string            `pulumi:"endTime"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// RDS instance ID.
-	InstanceId string `pulumi:"instanceId"`
-	// Database to be backed up for Microsoft SQL Server.
-	Name   *string `pulumi:"name"`
-	Region string  `pulumi:"region"`
+	Id         string  `pulumi:"id"`
+	InstanceId string  `pulumi:"instanceId"`
+	Name       *string `pulumi:"name"`
+	Region     string  `pulumi:"region"`
 }
 
 func GetBackupsOutput(ctx *pulumi.Context, args GetBackupsOutputArgs, opts ...pulumi.InvokeOption) GetBackupsResultOutput {
@@ -106,26 +57,13 @@ func GetBackupsOutput(ctx *pulumi.Context, args GetBackupsOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getBackups.
 type GetBackupsOutputArgs struct {
-	// Backup ID.
-	BackupId pulumi.StringPtrInput `pulumi:"backupId"`
-	// Backup type.\
-	// The options are as follows:
-	// - **auto**: Automated full backup.
-	// - **manual**: Manual full backup.
-	// - **fragment**: Differential full backup.
-	// - **incremental**: Automated incremental backup.
+	BackupId   pulumi.StringPtrInput `pulumi:"backupId"`
 	BackupType pulumi.StringPtrInput `pulumi:"backupType"`
-	// Start time in the "yyyy-mm-ddThh:mm:ssZ" format.
-	BeginTime pulumi.StringPtrInput `pulumi:"beginTime"`
-	// End time in the "yyyy-mm-ddThh:mm:ssZ" format.
-	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
-	// Instance ID.
-	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// Backup name.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	BeginTime  pulumi.StringPtrInput `pulumi:"beginTime"`
+	EndTime    pulumi.StringPtrInput `pulumi:"endTime"`
+	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
+	Name       pulumi.StringPtrInput `pulumi:"name"`
+	Region     pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetBackupsOutputArgs) ElementType() reflect.Type {
@@ -155,18 +93,14 @@ func (o GetBackupsResultOutput) BackupType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBackupsResult) *string { return v.BackupType }).(pulumi.StringPtrOutput)
 }
 
-// Backup list. For details, see Data structure of the Backup field.
-// The backups structure is documented below.
 func (o GetBackupsResultOutput) Backups() GetBackupsBackupArrayOutput {
 	return o.ApplyT(func(v GetBackupsResult) []GetBackupsBackup { return v.Backups }).(GetBackupsBackupArrayOutput)
 }
 
-// Backup start time in the "yyyy-mm-ddThh:mm:ssZ" format.
 func (o GetBackupsResultOutput) BeginTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBackupsResult) *string { return v.BeginTime }).(pulumi.StringPtrOutput)
 }
 
-// Backup end time in the "yyyy-mm-ddThh:mm:ssZ" format.
 func (o GetBackupsResultOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBackupsResult) *string { return v.EndTime }).(pulumi.StringPtrOutput)
 }
@@ -176,12 +110,10 @@ func (o GetBackupsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// RDS instance ID.
 func (o GetBackupsResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupsResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Database to be backed up for Microsoft SQL Server.
 func (o GetBackupsResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBackupsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

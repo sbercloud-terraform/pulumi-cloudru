@@ -24,10 +24,6 @@ class MysqlBinlogArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MysqlBinlog resource.
-        :param pulumi.Input[_builtins.int] binlog_retention_hours: Specifies the binlog retention period. Value range: `1` to `168` (7x24).
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the RDS MySQL instance ID. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the RDS binlog resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
         """
         pulumi.set(__self__, "binlog_retention_hours", binlog_retention_hours)
         pulumi.set(__self__, "instance_id", instance_id)
@@ -37,9 +33,6 @@ class MysqlBinlogArgs:
     @_builtins.property
     @pulumi.getter(name="binlogRetentionHours")
     def binlog_retention_hours(self) -> pulumi.Input[_builtins.int]:
-        """
-        Specifies the binlog retention period. Value range: `1` to `168` (7x24).
-        """
         return pulumi.get(self, "binlog_retention_hours")
 
     @binlog_retention_hours.setter
@@ -49,9 +42,6 @@ class MysqlBinlogArgs:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the RDS MySQL instance ID. Changing this will create a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -61,10 +51,6 @@ class MysqlBinlogArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the RDS binlog resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -80,10 +66,6 @@ class _MysqlBinlogState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MysqlBinlog resources.
-        :param pulumi.Input[_builtins.int] binlog_retention_hours: Specifies the binlog retention period. Value range: `1` to `168` (7x24).
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the RDS MySQL instance ID. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the RDS binlog resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
         """
         if binlog_retention_hours is not None:
             pulumi.set(__self__, "binlog_retention_hours", binlog_retention_hours)
@@ -95,9 +77,6 @@ class _MysqlBinlogState:
     @_builtins.property
     @pulumi.getter(name="binlogRetentionHours")
     def binlog_retention_hours(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the binlog retention period. Value range: `1` to `168` (7x24).
-        """
         return pulumi.get(self, "binlog_retention_hours")
 
     @binlog_retention_hours.setter
@@ -107,9 +86,6 @@ class _MysqlBinlogState:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the RDS MySQL instance ID. Changing this will create a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -119,10 +95,6 @@ class _MysqlBinlogState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the RDS binlog resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -141,37 +113,9 @@ class MysqlBinlog(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages RDS MySQL binlog resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        test = sbercloud.rds.MysqlBinlog("test",
-            instance_id=instance_id,
-            binlog_retention_hours=6)
-        ```
-
-        ## Import
-
-        RDS MySQL binlog can be imported using the `instance id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Rds/mysqlBinlog:MysqlBinlog test <instance_id>
-        ```
-
+        Create a MysqlBinlog resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] binlog_retention_hours: Specifies the binlog retention period. Value range: `1` to `168` (7x24).
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the RDS MySQL instance ID. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the RDS binlog resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
         """
         ...
     @overload
@@ -180,31 +124,7 @@ class MysqlBinlog(pulumi.CustomResource):
                  args: MysqlBinlogArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages RDS MySQL binlog resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        test = sbercloud.rds.MysqlBinlog("test",
-            instance_id=instance_id,
-            binlog_retention_hours=6)
-        ```
-
-        ## Import
-
-        RDS MySQL binlog can be imported using the `instance id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Rds/mysqlBinlog:MysqlBinlog test <instance_id>
-        ```
-
+        Create a MysqlBinlog resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param MysqlBinlogArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -259,10 +179,6 @@ class MysqlBinlog(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] binlog_retention_hours: Specifies the binlog retention period. Value range: `1` to `168` (7x24).
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the RDS MySQL instance ID. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the RDS binlog resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -276,25 +192,15 @@ class MysqlBinlog(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="binlogRetentionHours")
     def binlog_retention_hours(self) -> pulumi.Output[_builtins.int]:
-        """
-        Specifies the binlog retention period. Value range: `1` to `168` (7x24).
-        """
         return pulumi.get(self, "binlog_retention_hours")
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the RDS MySQL instance ID. Changing this will create a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the RDS binlog resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 

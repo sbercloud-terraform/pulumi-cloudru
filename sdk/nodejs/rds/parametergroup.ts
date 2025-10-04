@@ -6,32 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages a RDS ParameterGroup resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const pg1 = new sbercloud.rds.Parametergroup("pg_1", {
- *     name: "pg_1",
- *     datastore: {
- *         type: "mysql",
- *         version: "5.6",
- *     },
- * });
- * ```
- *
- * ## Import
- *
- * Parameter groups can be imported using the `id`, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Rds/parametergroup:Parametergroup pg_1 7117d38e-4c8f-4624-a505-bd96b97d024c
- * ```
- */
 export class Parametergroup extends pulumi.CustomResource {
     /**
      * Get an existing Parametergroup resource's state with the given name, ID, and optional extra
@@ -60,32 +34,13 @@ export class Parametergroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === Parametergroup.__pulumiType;
     }
 
-    /**
-     * Indicates the parameter configuration defined by users based on the default parameters groups.
-     */
     declare public /*out*/ readonly configurationParameters: pulumi.Output<outputs.Rds.ParametergroupConfigurationParameter[]>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
-    /**
-     * Database object. The database object structure is documented below. Changing this creates a new parameter group.
-     */
     declare public readonly datastore: pulumi.Output<outputs.Rds.ParametergroupDatastore>;
-    /**
-     * The parameter group description. It contains a maximum of 256 characters and cannot contain the following special characters:>!<"&'= the value is left blank by default.
-     */
     declare public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * The parameter group name. It contains a maximum of 64 characters.
-     */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * The region in which to create the RDS parameter group. If omitted, the
-     * provider-level region will be used. Changing this creates a new parameter group.
-     */
     declare public readonly region: pulumi.Output<string>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
-    /**
-     * Parameter group values key/value pairs defined by users based on the default parameter groups.
-     */
     declare public readonly values: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -132,32 +87,13 @@ export class Parametergroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Parametergroup resources.
  */
 export interface ParametergroupState {
-    /**
-     * Indicates the parameter configuration defined by users based on the default parameters groups.
-     */
     configurationParameters?: pulumi.Input<pulumi.Input<inputs.Rds.ParametergroupConfigurationParameter>[]>;
     createdAt?: pulumi.Input<string>;
-    /**
-     * Database object. The database object structure is documented below. Changing this creates a new parameter group.
-     */
     datastore?: pulumi.Input<inputs.Rds.ParametergroupDatastore>;
-    /**
-     * The parameter group description. It contains a maximum of 256 characters and cannot contain the following special characters:>!<"&'= the value is left blank by default.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * The parameter group name. It contains a maximum of 64 characters.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * The region in which to create the RDS parameter group. If omitted, the
-     * provider-level region will be used. Changing this creates a new parameter group.
-     */
     region?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<string>;
-    /**
-     * Parameter group values key/value pairs defined by users based on the default parameter groups.
-     */
     values?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -165,25 +101,9 @@ export interface ParametergroupState {
  * The set of arguments for constructing a Parametergroup resource.
  */
 export interface ParametergroupArgs {
-    /**
-     * Database object. The database object structure is documented below. Changing this creates a new parameter group.
-     */
     datastore: pulumi.Input<inputs.Rds.ParametergroupDatastore>;
-    /**
-     * The parameter group description. It contains a maximum of 256 characters and cannot contain the following special characters:>!<"&'= the value is left blank by default.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * The parameter group name. It contains a maximum of 64 characters.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * The region in which to create the RDS parameter group. If omitted, the
-     * provider-level region will be used. Changing this creates a new parameter group.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Parameter group values key/value pairs defined by users based on the default parameter groups.
-     */
     values?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

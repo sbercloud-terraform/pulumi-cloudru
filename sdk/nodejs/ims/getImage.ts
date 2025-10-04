@@ -4,41 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the ID of an available SberCloud image.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const ubuntu = sbercloud.Ims.getImage({
- *     name: "Ubuntu 18.04 server 64bit",
- *     visibility: "public",
- *     mostRecent: true,
- * });
- * const centos_1 = sbercloud.Ims.getImage({
- *     architecture: "x86",
- *     osVersion: "CentOS 7.4 64bit",
- *     visibility: "public",
- *     mostRecent: true,
- * });
- * const centos_2 = sbercloud.Ims.getImage({
- *     architecture: "x86",
- *     nameRegex: "^CentOS 7.4",
- *     visibility: "public",
- *     mostRecent: true,
- * });
- * const bmsImage = sbercloud.Ims.getImage({
- *     architecture: "x86",
- *     imageType: "Ironic",
- *     osVersion: "CentOS 7.4 64bit",
- *     visibility: "public",
- *     mostRecent: true,
- * });
- * ```
- */
 export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -69,56 +34,18 @@ export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getImage.
  */
 export interface GetImageArgs {
-    /**
-     * Specifies the image architecture type. The value can be **x86** and **arm**.
-     */
     architecture?: string;
-    /**
-     * Specifies the enterprise project ID of the image.
-     */
     enterpriseProjectId?: string;
-    /**
-     * Specifies the ECS flavor ID used to filter out available images.
-     * You can specify only one flavor ID and only ECS flavor ID is valid, BMS flavor is not supported.
-     */
     flavorId?: string;
     imageId?: string;
-    /**
-     * Specifies the environment where the image is used. For a BMS image, the value is **Ironic**.
-     */
     imageType?: string;
     isWholeImage?: boolean;
-    /**
-     * If more than one result is returned, use the latest updated image.
-     */
     mostRecent?: boolean;
-    /**
-     * The name of the image. Cannot be used simultaneously with `nameRegex`.
-     */
     name?: string;
-    /**
-     * The regular expressian of the name of the image.
-     * Cannot be used simultaneously with `name`.
-     */
     nameRegex?: string;
-    /**
-     * Specifies the image OS type. The value can be **Windows**, **Ubuntu**,
-     * **RedHat**, **SUSE**, **CentOS**, **Debian**, **OpenSUSE**, **Oracle Linux**, **Fedora**, **Other**,
-     * **CoreOS**, or **EulerOS**.
-     */
     os?: string;
-    /**
-     * Specifies the OS version. For example, *CentOS 7.4 64bit* or *Ubuntu 18.04 server 64bit*.
-     */
     osVersion?: string;
-    /**
-     * The owner (UUID) of the image.
-     */
     owner?: string;
-    /**
-     * The region in which to obtain the images. If omitted, the provider-level region will be
-     * used.
-     */
     region?: string;
     /**
      * @deprecated size_max is deprecated
@@ -128,23 +55,9 @@ export interface GetImageArgs {
      * @deprecated size_min is deprecated
      */
     sizeMin?: number;
-    /**
-     * Order the results in either `asc` or `desc`.
-     */
     sortDirection?: string;
-    /**
-     * Sort images based on a certain key. Must be one of
-     * "name", "containerFormat", "diskFormat", "status", "id" or "size". Defaults to `name`.
-     */
     sortKey?: string;
-    /**
-     * Search for images with a specific tag in "Key=Value" format.
-     */
     tag?: string;
-    /**
-     * The visibility of the image. Must be one of
-     * **public**, **private**, **market** or **shared**.
-     */
     visibility?: string;
 }
 
@@ -154,33 +67,14 @@ export interface GetImageArgs {
 export interface GetImageResult {
     readonly activeAt: string;
     readonly architecture: string;
-    /**
-     * The backup ID of the whole image in the CBR vault.
-     */
     readonly backupId: string;
-    /**
-     * The checksum of the data associated with the image.
-     */
     readonly checksum: string;
-    /**
-     * The format of the image's container.
-     */
     readonly containerFormat: string;
-    /**
-     * The date when the image was created.
-     */
     readonly createdAt: string;
     readonly dataOrigin: string;
     readonly description: string;
-    /**
-     * The format of the image's disk.
-     */
     readonly diskFormat: string;
     readonly enterpriseProjectId: string;
-    /**
-     * the trailing path after the glance endpoint that represent the location of the image or the path to retrieve
-     * it.
-     */
     readonly file: string;
     readonly flavorId?: string;
     /**
@@ -191,18 +85,8 @@ export interface GetImageResult {
     readonly imageType: string;
     readonly isWholeImage?: boolean;
     readonly maxRamMb: number;
-    /**
-     * The metadata associated with the image. Image metadata allow for meaningfully define the image properties
-     * and tags.
-     */
     readonly metadata: {[key: string]: string};
-    /**
-     * The minimum amount of disk space required to use the image.
-     */
     readonly minDiskGb: number;
-    /**
-     * The minimum amount of ram required to use the image.
-     */
     readonly minRamMb: number;
     readonly mostRecent?: boolean;
     readonly name: string;
@@ -210,18 +94,9 @@ export interface GetImageResult {
     readonly os: string;
     readonly osVersion: string;
     readonly owner: string;
-    /**
-     * Whether or not the image is protected.
-     */
     readonly protected: boolean;
     readonly region: string;
-    /**
-     * The path to the JSON-schema that represent the image or image.
-     */
     readonly schema: string;
-    /**
-     * The size of the image (in bytes).
-     */
     readonly sizeBytes: number;
     /**
      * @deprecated size_max is deprecated
@@ -233,52 +108,11 @@ export interface GetImageResult {
     readonly sizeMin?: number;
     readonly sortDirection?: string;
     readonly sortKey?: string;
-    /**
-     * The status of the image.
-     */
     readonly status: string;
     readonly tag?: string;
-    /**
-     * The date when the image was last updated.
-     */
     readonly updatedAt: string;
     readonly visibility: string;
 }
-/**
- * Use this data source to get the ID of an available SberCloud image.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const ubuntu = sbercloud.Ims.getImage({
- *     name: "Ubuntu 18.04 server 64bit",
- *     visibility: "public",
- *     mostRecent: true,
- * });
- * const centos_1 = sbercloud.Ims.getImage({
- *     architecture: "x86",
- *     osVersion: "CentOS 7.4 64bit",
- *     visibility: "public",
- *     mostRecent: true,
- * });
- * const centos_2 = sbercloud.Ims.getImage({
- *     architecture: "x86",
- *     nameRegex: "^CentOS 7.4",
- *     visibility: "public",
- *     mostRecent: true,
- * });
- * const bmsImage = sbercloud.Ims.getImage({
- *     architecture: "x86",
- *     imageType: "Ironic",
- *     osVersion: "CentOS 7.4 64bit",
- *     visibility: "public",
- *     mostRecent: true,
- * });
- * ```
- */
 export function getImageOutput(args?: GetImageOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetImageResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -309,56 +143,18 @@ export function getImageOutput(args?: GetImageOutputArgs, opts?: pulumi.InvokeOu
  * A collection of arguments for invoking getImage.
  */
 export interface GetImageOutputArgs {
-    /**
-     * Specifies the image architecture type. The value can be **x86** and **arm**.
-     */
     architecture?: pulumi.Input<string>;
-    /**
-     * Specifies the enterprise project ID of the image.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Specifies the ECS flavor ID used to filter out available images.
-     * You can specify only one flavor ID and only ECS flavor ID is valid, BMS flavor is not supported.
-     */
     flavorId?: pulumi.Input<string>;
     imageId?: pulumi.Input<string>;
-    /**
-     * Specifies the environment where the image is used. For a BMS image, the value is **Ironic**.
-     */
     imageType?: pulumi.Input<string>;
     isWholeImage?: pulumi.Input<boolean>;
-    /**
-     * If more than one result is returned, use the latest updated image.
-     */
     mostRecent?: pulumi.Input<boolean>;
-    /**
-     * The name of the image. Cannot be used simultaneously with `nameRegex`.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * The regular expressian of the name of the image.
-     * Cannot be used simultaneously with `name`.
-     */
     nameRegex?: pulumi.Input<string>;
-    /**
-     * Specifies the image OS type. The value can be **Windows**, **Ubuntu**,
-     * **RedHat**, **SUSE**, **CentOS**, **Debian**, **OpenSUSE**, **Oracle Linux**, **Fedora**, **Other**,
-     * **CoreOS**, or **EulerOS**.
-     */
     os?: pulumi.Input<string>;
-    /**
-     * Specifies the OS version. For example, *CentOS 7.4 64bit* or *Ubuntu 18.04 server 64bit*.
-     */
     osVersion?: pulumi.Input<string>;
-    /**
-     * The owner (UUID) of the image.
-     */
     owner?: pulumi.Input<string>;
-    /**
-     * The region in which to obtain the images. If omitted, the provider-level region will be
-     * used.
-     */
     region?: pulumi.Input<string>;
     /**
      * @deprecated size_max is deprecated
@@ -368,22 +164,8 @@ export interface GetImageOutputArgs {
      * @deprecated size_min is deprecated
      */
     sizeMin?: pulumi.Input<number>;
-    /**
-     * Order the results in either `asc` or `desc`.
-     */
     sortDirection?: pulumi.Input<string>;
-    /**
-     * Sort images based on a certain key. Must be one of
-     * "name", "containerFormat", "diskFormat", "status", "id" or "size". Defaults to `name`.
-     */
     sortKey?: pulumi.Input<string>;
-    /**
-     * Search for images with a specific tag in "Key=Value" format.
-     */
     tag?: pulumi.Input<string>;
-    /**
-     * The visibility of the image. Must be one of
-     * **public**, **private**, **market** or **shared**.
-     */
     visibility?: pulumi.Input<string>;
 }

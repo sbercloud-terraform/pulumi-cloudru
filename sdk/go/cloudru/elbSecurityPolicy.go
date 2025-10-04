@@ -12,90 +12,24 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages an ELB security policy resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sbercloud.NewElbSecurityPolicy(ctx, "test", &sbercloud.ElbSecurityPolicyArgs{
-//				Name:        pulumi.String("security_policy_test"),
-//				Description: pulumi.String("this is a security policy"),
-//				Protocols: pulumi.StringArray{
-//					pulumi.String("TLSv1"),
-//					pulumi.String("TLSv1.1"),
-//					pulumi.String("TLSv1.2"),
-//					pulumi.String("TLSv1.3"),
-//				},
-//				Ciphers: pulumi.StringArray{
-//					pulumi.String("ECDHE-RSA-AES256-GCM-SHA384"),
-//					pulumi.String("ECDHE-RSA-AES128-GCM-SHA256"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The elb security policies can be imported using the `id`, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:index/elbSecurityPolicy:ElbSecurityPolicy test 0ce123456a00f2591fabc00385ff1234
-// ```
 type ElbSecurityPolicy struct {
 	pulumi.CustomResourceState
 
 	// Specifies the cipher suite list of the security policy.
-	// The protocol and cipher suite must match. That is to say, there must be at least one cipher suite in
-	// ciphers that matches the protocol. The following cipher suites are supported:
-	// **ECDHE-RSA-AES256-GCM-SHA384**, **ECDHE-RSA-AES128-GCM-SHA256**, **ECDHE-ECDSA-AES256-GCM-SHA384**,
-	// **ECDHE-ECDSA-AES128-GCM-SHA256**, **AES128-GCM-SHA256**, **AES256-GCM-SHA384**, **ECDHE-ECDSA-AES128-SHA256**,
-	// **ECDHE-RSA-AES128-SHA256**, **AES128-SHA256**, **AES256-SHA256**, **ECDHE-ECDSA-AES256-SHA384**,
-	// **ECDHE-RSA-AES256-SHA384**, **ECDHE-ECDSA-AES128-SHA**, **ECDHE-RSA-AES128-SHA**, **ECDHE-RSA-AES256-SHA**,
-	// **ECDHE-ECDSA-AES256-SHA**, **AES128-SHA**, **AES256-SHA**, **CAMELLIA128-SHA**, **DES-CBC3-SHA**,
-	// **CAMELLIA256-SHA**, **ECDHE-RSA-CHACHA20-POLY1305**, **ECDHE-ECDSA-CHACHA20-POLY1305**, **TLS_AES_128_GCM_SHA256**,
-	// **TLS_AES_256_GCM_SHA384**, **TLS_CHACHA20_POLY1305_SHA256**, **TLS_AES_128_CCM_SHA256**,
-	// **TLS_AES_128_CCM_8_SHA256**.
 	Ciphers   pulumi.StringArrayOutput `pulumi:"ciphers"`
 	CreatedAt pulumi.StringOutput      `pulumi:"createdAt"`
-	// Specifies the description of the ELB security policy.
-	// The value can contain 0 to 255 characters.
+	// Specifies the description of the ELB security policy
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Specifies the enterprise project ID to which the Enterprise
-	// router belongs.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the enterprise project ID to which the Enterprise router belongs.
 	EnterpriseProjectId pulumi.StringOutput `pulumi:"enterpriseProjectId"`
 	// The listener which the security policy associated with.
-	// The ListenerRef structure is documented below.
 	Listeners ElbSecurityPolicyListenerArrayOutput `pulumi:"listeners"`
 	// Specifies the ELB security policy name.
-	// The name contains only Chinese characters, letters, digits, underscores (_), and hyphens (-),
-	// and cannot exceed 255 characters.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Specifies the TSL protocol list which the security policy select.
-	// Value options: **TLSv1**, **TLSv1.1**, **TLSv1.2**, and **TLSv1.3**.
 	Protocols pulumi.StringArrayOutput `pulumi:"protocols"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region    pulumi.StringOutput `pulumi:"region"`
-	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
+	Region    pulumi.StringOutput      `pulumi:"region"`
+	UpdatedAt pulumi.StringOutput      `pulumi:"updatedAt"`
 }
 
 // NewElbSecurityPolicy registers a new resource with the given unique name, arguments, and options.
@@ -135,76 +69,36 @@ func GetElbSecurityPolicy(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ElbSecurityPolicy resources.
 type elbSecurityPolicyState struct {
 	// Specifies the cipher suite list of the security policy.
-	// The protocol and cipher suite must match. That is to say, there must be at least one cipher suite in
-	// ciphers that matches the protocol. The following cipher suites are supported:
-	// **ECDHE-RSA-AES256-GCM-SHA384**, **ECDHE-RSA-AES128-GCM-SHA256**, **ECDHE-ECDSA-AES256-GCM-SHA384**,
-	// **ECDHE-ECDSA-AES128-GCM-SHA256**, **AES128-GCM-SHA256**, **AES256-GCM-SHA384**, **ECDHE-ECDSA-AES128-SHA256**,
-	// **ECDHE-RSA-AES128-SHA256**, **AES128-SHA256**, **AES256-SHA256**, **ECDHE-ECDSA-AES256-SHA384**,
-	// **ECDHE-RSA-AES256-SHA384**, **ECDHE-ECDSA-AES128-SHA**, **ECDHE-RSA-AES128-SHA**, **ECDHE-RSA-AES256-SHA**,
-	// **ECDHE-ECDSA-AES256-SHA**, **AES128-SHA**, **AES256-SHA**, **CAMELLIA128-SHA**, **DES-CBC3-SHA**,
-	// **CAMELLIA256-SHA**, **ECDHE-RSA-CHACHA20-POLY1305**, **ECDHE-ECDSA-CHACHA20-POLY1305**, **TLS_AES_128_GCM_SHA256**,
-	// **TLS_AES_256_GCM_SHA384**, **TLS_CHACHA20_POLY1305_SHA256**, **TLS_AES_128_CCM_SHA256**,
-	// **TLS_AES_128_CCM_8_SHA256**.
 	Ciphers   []string `pulumi:"ciphers"`
 	CreatedAt *string  `pulumi:"createdAt"`
-	// Specifies the description of the ELB security policy.
-	// The value can contain 0 to 255 characters.
+	// Specifies the description of the ELB security policy
 	Description *string `pulumi:"description"`
-	// Specifies the enterprise project ID to which the Enterprise
-	// router belongs.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the enterprise project ID to which the Enterprise router belongs.
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
 	// The listener which the security policy associated with.
-	// The ListenerRef structure is documented below.
 	Listeners []ElbSecurityPolicyListener `pulumi:"listeners"`
 	// Specifies the ELB security policy name.
-	// The name contains only Chinese characters, letters, digits, underscores (_), and hyphens (-),
-	// and cannot exceed 255 characters.
 	Name *string `pulumi:"name"`
 	// Specifies the TSL protocol list which the security policy select.
-	// Value options: **TLSv1**, **TLSv1.1**, **TLSv1.2**, and **TLSv1.3**.
 	Protocols []string `pulumi:"protocols"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region    *string `pulumi:"region"`
-	UpdatedAt *string `pulumi:"updatedAt"`
+	Region    *string  `pulumi:"region"`
+	UpdatedAt *string  `pulumi:"updatedAt"`
 }
 
 type ElbSecurityPolicyState struct {
 	// Specifies the cipher suite list of the security policy.
-	// The protocol and cipher suite must match. That is to say, there must be at least one cipher suite in
-	// ciphers that matches the protocol. The following cipher suites are supported:
-	// **ECDHE-RSA-AES256-GCM-SHA384**, **ECDHE-RSA-AES128-GCM-SHA256**, **ECDHE-ECDSA-AES256-GCM-SHA384**,
-	// **ECDHE-ECDSA-AES128-GCM-SHA256**, **AES128-GCM-SHA256**, **AES256-GCM-SHA384**, **ECDHE-ECDSA-AES128-SHA256**,
-	// **ECDHE-RSA-AES128-SHA256**, **AES128-SHA256**, **AES256-SHA256**, **ECDHE-ECDSA-AES256-SHA384**,
-	// **ECDHE-RSA-AES256-SHA384**, **ECDHE-ECDSA-AES128-SHA**, **ECDHE-RSA-AES128-SHA**, **ECDHE-RSA-AES256-SHA**,
-	// **ECDHE-ECDSA-AES256-SHA**, **AES128-SHA**, **AES256-SHA**, **CAMELLIA128-SHA**, **DES-CBC3-SHA**,
-	// **CAMELLIA256-SHA**, **ECDHE-RSA-CHACHA20-POLY1305**, **ECDHE-ECDSA-CHACHA20-POLY1305**, **TLS_AES_128_GCM_SHA256**,
-	// **TLS_AES_256_GCM_SHA384**, **TLS_CHACHA20_POLY1305_SHA256**, **TLS_AES_128_CCM_SHA256**,
-	// **TLS_AES_128_CCM_8_SHA256**.
 	Ciphers   pulumi.StringArrayInput
 	CreatedAt pulumi.StringPtrInput
-	// Specifies the description of the ELB security policy.
-	// The value can contain 0 to 255 characters.
+	// Specifies the description of the ELB security policy
 	Description pulumi.StringPtrInput
-	// Specifies the enterprise project ID to which the Enterprise
-	// router belongs.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the enterprise project ID to which the Enterprise router belongs.
 	EnterpriseProjectId pulumi.StringPtrInput
 	// The listener which the security policy associated with.
-	// The ListenerRef structure is documented below.
 	Listeners ElbSecurityPolicyListenerArrayInput
 	// Specifies the ELB security policy name.
-	// The name contains only Chinese characters, letters, digits, underscores (_), and hyphens (-),
-	// and cannot exceed 255 characters.
 	Name pulumi.StringPtrInput
 	// Specifies the TSL protocol list which the security policy select.
-	// Value options: **TLSv1**, **TLSv1.1**, **TLSv1.2**, and **TLSv1.3**.
 	Protocols pulumi.StringArrayInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
 	Region    pulumi.StringPtrInput
 	UpdatedAt pulumi.StringPtrInput
 }
@@ -215,69 +109,31 @@ func (ElbSecurityPolicyState) ElementType() reflect.Type {
 
 type elbSecurityPolicyArgs struct {
 	// Specifies the cipher suite list of the security policy.
-	// The protocol and cipher suite must match. That is to say, there must be at least one cipher suite in
-	// ciphers that matches the protocol. The following cipher suites are supported:
-	// **ECDHE-RSA-AES256-GCM-SHA384**, **ECDHE-RSA-AES128-GCM-SHA256**, **ECDHE-ECDSA-AES256-GCM-SHA384**,
-	// **ECDHE-ECDSA-AES128-GCM-SHA256**, **AES128-GCM-SHA256**, **AES256-GCM-SHA384**, **ECDHE-ECDSA-AES128-SHA256**,
-	// **ECDHE-RSA-AES128-SHA256**, **AES128-SHA256**, **AES256-SHA256**, **ECDHE-ECDSA-AES256-SHA384**,
-	// **ECDHE-RSA-AES256-SHA384**, **ECDHE-ECDSA-AES128-SHA**, **ECDHE-RSA-AES128-SHA**, **ECDHE-RSA-AES256-SHA**,
-	// **ECDHE-ECDSA-AES256-SHA**, **AES128-SHA**, **AES256-SHA**, **CAMELLIA128-SHA**, **DES-CBC3-SHA**,
-	// **CAMELLIA256-SHA**, **ECDHE-RSA-CHACHA20-POLY1305**, **ECDHE-ECDSA-CHACHA20-POLY1305**, **TLS_AES_128_GCM_SHA256**,
-	// **TLS_AES_256_GCM_SHA384**, **TLS_CHACHA20_POLY1305_SHA256**, **TLS_AES_128_CCM_SHA256**,
-	// **TLS_AES_128_CCM_8_SHA256**.
 	Ciphers []string `pulumi:"ciphers"`
-	// Specifies the description of the ELB security policy.
-	// The value can contain 0 to 255 characters.
+	// Specifies the description of the ELB security policy
 	Description *string `pulumi:"description"`
-	// Specifies the enterprise project ID to which the Enterprise
-	// router belongs.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the enterprise project ID to which the Enterprise router belongs.
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
 	// Specifies the ELB security policy name.
-	// The name contains only Chinese characters, letters, digits, underscores (_), and hyphens (-),
-	// and cannot exceed 255 characters.
 	Name *string `pulumi:"name"`
 	// Specifies the TSL protocol list which the security policy select.
-	// Value options: **TLSv1**, **TLSv1.1**, **TLSv1.2**, and **TLSv1.3**.
 	Protocols []string `pulumi:"protocols"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
+	Region    *string  `pulumi:"region"`
 }
 
 // The set of arguments for constructing a ElbSecurityPolicy resource.
 type ElbSecurityPolicyArgs struct {
 	// Specifies the cipher suite list of the security policy.
-	// The protocol and cipher suite must match. That is to say, there must be at least one cipher suite in
-	// ciphers that matches the protocol. The following cipher suites are supported:
-	// **ECDHE-RSA-AES256-GCM-SHA384**, **ECDHE-RSA-AES128-GCM-SHA256**, **ECDHE-ECDSA-AES256-GCM-SHA384**,
-	// **ECDHE-ECDSA-AES128-GCM-SHA256**, **AES128-GCM-SHA256**, **AES256-GCM-SHA384**, **ECDHE-ECDSA-AES128-SHA256**,
-	// **ECDHE-RSA-AES128-SHA256**, **AES128-SHA256**, **AES256-SHA256**, **ECDHE-ECDSA-AES256-SHA384**,
-	// **ECDHE-RSA-AES256-SHA384**, **ECDHE-ECDSA-AES128-SHA**, **ECDHE-RSA-AES128-SHA**, **ECDHE-RSA-AES256-SHA**,
-	// **ECDHE-ECDSA-AES256-SHA**, **AES128-SHA**, **AES256-SHA**, **CAMELLIA128-SHA**, **DES-CBC3-SHA**,
-	// **CAMELLIA256-SHA**, **ECDHE-RSA-CHACHA20-POLY1305**, **ECDHE-ECDSA-CHACHA20-POLY1305**, **TLS_AES_128_GCM_SHA256**,
-	// **TLS_AES_256_GCM_SHA384**, **TLS_CHACHA20_POLY1305_SHA256**, **TLS_AES_128_CCM_SHA256**,
-	// **TLS_AES_128_CCM_8_SHA256**.
 	Ciphers pulumi.StringArrayInput
-	// Specifies the description of the ELB security policy.
-	// The value can contain 0 to 255 characters.
+	// Specifies the description of the ELB security policy
 	Description pulumi.StringPtrInput
-	// Specifies the enterprise project ID to which the Enterprise
-	// router belongs.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the enterprise project ID to which the Enterprise router belongs.
 	EnterpriseProjectId pulumi.StringPtrInput
 	// Specifies the ELB security policy name.
-	// The name contains only Chinese characters, letters, digits, underscores (_), and hyphens (-),
-	// and cannot exceed 255 characters.
 	Name pulumi.StringPtrInput
 	// Specifies the TSL protocol list which the security policy select.
-	// Value options: **TLSv1**, **TLSv1.1**, **TLSv1.2**, and **TLSv1.3**.
 	Protocols pulumi.StringArrayInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
+	Region    pulumi.StringPtrInput
 }
 
 func (ElbSecurityPolicyArgs) ElementType() reflect.Type {
@@ -368,16 +224,6 @@ func (o ElbSecurityPolicyOutput) ToElbSecurityPolicyOutputWithContext(ctx contex
 }
 
 // Specifies the cipher suite list of the security policy.
-// The protocol and cipher suite must match. That is to say, there must be at least one cipher suite in
-// ciphers that matches the protocol. The following cipher suites are supported:
-// **ECDHE-RSA-AES256-GCM-SHA384**, **ECDHE-RSA-AES128-GCM-SHA256**, **ECDHE-ECDSA-AES256-GCM-SHA384**,
-// **ECDHE-ECDSA-AES128-GCM-SHA256**, **AES128-GCM-SHA256**, **AES256-GCM-SHA384**, **ECDHE-ECDSA-AES128-SHA256**,
-// **ECDHE-RSA-AES128-SHA256**, **AES128-SHA256**, **AES256-SHA256**, **ECDHE-ECDSA-AES256-SHA384**,
-// **ECDHE-RSA-AES256-SHA384**, **ECDHE-ECDSA-AES128-SHA**, **ECDHE-RSA-AES128-SHA**, **ECDHE-RSA-AES256-SHA**,
-// **ECDHE-ECDSA-AES256-SHA**, **AES128-SHA**, **AES256-SHA**, **CAMELLIA128-SHA**, **DES-CBC3-SHA**,
-// **CAMELLIA256-SHA**, **ECDHE-RSA-CHACHA20-POLY1305**, **ECDHE-ECDSA-CHACHA20-POLY1305**, **TLS_AES_128_GCM_SHA256**,
-// **TLS_AES_256_GCM_SHA384**, **TLS_CHACHA20_POLY1305_SHA256**, **TLS_AES_128_CCM_SHA256**,
-// **TLS_AES_128_CCM_8_SHA256**.
 func (o ElbSecurityPolicyOutput) Ciphers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ElbSecurityPolicy) pulumi.StringArrayOutput { return v.Ciphers }).(pulumi.StringArrayOutput)
 }
@@ -386,41 +232,31 @@ func (o ElbSecurityPolicyOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbSecurityPolicy) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Specifies the description of the ELB security policy.
-// The value can contain 0 to 255 characters.
+// Specifies the description of the ELB security policy
 func (o ElbSecurityPolicyOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbSecurityPolicy) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Specifies the enterprise project ID to which the Enterprise
-// router belongs.
-//
-// Changing this parameter will create a new resource.
+// Specifies the enterprise project ID to which the Enterprise router belongs.
 func (o ElbSecurityPolicyOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbSecurityPolicy) pulumi.StringOutput { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
 // The listener which the security policy associated with.
-// The ListenerRef structure is documented below.
 func (o ElbSecurityPolicyOutput) Listeners() ElbSecurityPolicyListenerArrayOutput {
 	return o.ApplyT(func(v *ElbSecurityPolicy) ElbSecurityPolicyListenerArrayOutput { return v.Listeners }).(ElbSecurityPolicyListenerArrayOutput)
 }
 
 // Specifies the ELB security policy name.
-// The name contains only Chinese characters, letters, digits, underscores (_), and hyphens (-),
-// and cannot exceed 255 characters.
 func (o ElbSecurityPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbSecurityPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // Specifies the TSL protocol list which the security policy select.
-// Value options: **TLSv1**, **TLSv1.1**, **TLSv1.2**, and **TLSv1.3**.
 func (o ElbSecurityPolicyOutput) Protocols() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ElbSecurityPolicy) pulumi.StringArrayOutput { return v.Protocols }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
 func (o ElbSecurityPolicyOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbSecurityPolicy) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

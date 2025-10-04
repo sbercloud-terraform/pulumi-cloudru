@@ -31,30 +31,6 @@ class L7policyArgs:
                  tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a L7policy resource.
-        :param pulumi.Input[_builtins.str] action: Specifies whether requests are forwarded to another backend server group
-               or redirected to an HTTPS listener. Changing this creates a new L7 Policy. The value ranges:
-               + **REDIRECT_TO_POOL**: Requests are forwarded to the backend server group specified by `redirect_pool_id`.
-               + **REDIRECT_TO_LISTENER**: Requests are redirected from the HTTP listener specified by `listener_id` to the
-               HTTPS listener specified by `redirect_listener_id`.
-        :param pulumi.Input[_builtins.str] listener_id: Specifies the ID of the listener for which the forwarding policy is added.
-               Changing this creates a new L7 Policy.
-        :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the L7 Policy. This value can only be true (UP).
-        :param pulumi.Input[_builtins.str] description: Human-readable description for the L7 Policy.
-        :param pulumi.Input[_builtins.str] name: Human-readable name for the L7 Policy. Does not have to be unique.
-        :param pulumi.Input[_builtins.int] position: The position of this policy on the listener. Positions start at 1.
-               Changing this creates a new L7 Policy.
-        :param pulumi.Input[_builtins.str] redirect_listener_id: Specifies the ID of the listener to which the traffic is redirected.
-               This parameter is mandatory when `action` is set to **REDIRECT_TO_LISTENER**. The listener must meet the
-               following requirements:
-               + Can only be an HTTPS listener.
-               + Can only be a listener of the same load balancer.
-        :param pulumi.Input[_builtins.str] redirect_pool_id: Specifies the ID of the backend server group to which traffic is forwarded.
-               This parameter is mandatory when `action` is set to **REDIRECT_TO_POOL**. The backend server group must meet the
-               following requirements:
-               + Cannot be the default backend server group of the listener.
-               + Cannot be the backend server group used by forwarding policies of other listeners.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the L7 Policy resource. If omitted, the
-               provider-level region will be used. Changing this creates a new L7 Policy.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "listener_id", listener_id)
@@ -81,13 +57,6 @@ class L7policyArgs:
     @_builtins.property
     @pulumi.getter
     def action(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies whether requests are forwarded to another backend server group
-        or redirected to an HTTPS listener. Changing this creates a new L7 Policy. The value ranges:
-        + **REDIRECT_TO_POOL**: Requests are forwarded to the backend server group specified by `redirect_pool_id`.
-        + **REDIRECT_TO_LISTENER**: Requests are redirected from the HTTP listener specified by `listener_id` to the
-        HTTPS listener specified by `redirect_listener_id`.
-        """
         return pulumi.get(self, "action")
 
     @action.setter
@@ -97,10 +66,6 @@ class L7policyArgs:
     @_builtins.property
     @pulumi.getter(name="listenerId")
     def listener_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the ID of the listener for which the forwarding policy is added.
-        Changing this creates a new L7 Policy.
-        """
         return pulumi.get(self, "listener_id")
 
     @listener_id.setter
@@ -110,9 +75,6 @@ class L7policyArgs:
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        The administrative state of the L7 Policy. This value can only be true (UP).
-        """
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
@@ -122,9 +84,6 @@ class L7policyArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Human-readable description for the L7 Policy.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -134,9 +93,6 @@ class L7policyArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Human-readable name for the L7 Policy. Does not have to be unique.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -146,10 +102,6 @@ class L7policyArgs:
     @_builtins.property
     @pulumi.getter
     def position(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The position of this policy on the listener. Positions start at 1.
-        Changing this creates a new L7 Policy.
-        """
         return pulumi.get(self, "position")
 
     @position.setter
@@ -159,13 +111,6 @@ class L7policyArgs:
     @_builtins.property
     @pulumi.getter(name="redirectListenerId")
     def redirect_listener_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of the listener to which the traffic is redirected.
-        This parameter is mandatory when `action` is set to **REDIRECT_TO_LISTENER**. The listener must meet the
-        following requirements:
-        + Can only be an HTTPS listener.
-        + Can only be a listener of the same load balancer.
-        """
         return pulumi.get(self, "redirect_listener_id")
 
     @redirect_listener_id.setter
@@ -175,13 +120,6 @@ class L7policyArgs:
     @_builtins.property
     @pulumi.getter(name="redirectPoolId")
     def redirect_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of the backend server group to which traffic is forwarded.
-        This parameter is mandatory when `action` is set to **REDIRECT_TO_POOL**. The backend server group must meet the
-        following requirements:
-        + Cannot be the default backend server group of the listener.
-        + Cannot be the backend server group used by forwarding policies of other listeners.
-        """
         return pulumi.get(self, "redirect_pool_id")
 
     @redirect_pool_id.setter
@@ -191,10 +129,6 @@ class L7policyArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the L7 Policy resource. If omitted, the
-        provider-level region will be used. Changing this creates a new L7 Policy.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -227,30 +161,6 @@ class _L7policyState:
                  tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering L7policy resources.
-        :param pulumi.Input[_builtins.str] action: Specifies whether requests are forwarded to another backend server group
-               or redirected to an HTTPS listener. Changing this creates a new L7 Policy. The value ranges:
-               + **REDIRECT_TO_POOL**: Requests are forwarded to the backend server group specified by `redirect_pool_id`.
-               + **REDIRECT_TO_LISTENER**: Requests are redirected from the HTTP listener specified by `listener_id` to the
-               HTTPS listener specified by `redirect_listener_id`.
-        :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the L7 Policy. This value can only be true (UP).
-        :param pulumi.Input[_builtins.str] description: Human-readable description for the L7 Policy.
-        :param pulumi.Input[_builtins.str] listener_id: Specifies the ID of the listener for which the forwarding policy is added.
-               Changing this creates a new L7 Policy.
-        :param pulumi.Input[_builtins.str] name: Human-readable name for the L7 Policy. Does not have to be unique.
-        :param pulumi.Input[_builtins.int] position: The position of this policy on the listener. Positions start at 1.
-               Changing this creates a new L7 Policy.
-        :param pulumi.Input[_builtins.str] redirect_listener_id: Specifies the ID of the listener to which the traffic is redirected.
-               This parameter is mandatory when `action` is set to **REDIRECT_TO_LISTENER**. The listener must meet the
-               following requirements:
-               + Can only be an HTTPS listener.
-               + Can only be a listener of the same load balancer.
-        :param pulumi.Input[_builtins.str] redirect_pool_id: Specifies the ID of the backend server group to which traffic is forwarded.
-               This parameter is mandatory when `action` is set to **REDIRECT_TO_POOL**. The backend server group must meet the
-               following requirements:
-               + Cannot be the default backend server group of the listener.
-               + Cannot be the backend server group used by forwarding policies of other listeners.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the L7 Policy resource. If omitted, the
-               provider-level region will be used. Changing this creates a new L7 Policy.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -279,13 +189,6 @@ class _L7policyState:
     @_builtins.property
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies whether requests are forwarded to another backend server group
-        or redirected to an HTTPS listener. Changing this creates a new L7 Policy. The value ranges:
-        + **REDIRECT_TO_POOL**: Requests are forwarded to the backend server group specified by `redirect_pool_id`.
-        + **REDIRECT_TO_LISTENER**: Requests are redirected from the HTTP listener specified by `listener_id` to the
-        HTTPS listener specified by `redirect_listener_id`.
-        """
         return pulumi.get(self, "action")
 
     @action.setter
@@ -295,9 +198,6 @@ class _L7policyState:
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        The administrative state of the L7 Policy. This value can only be true (UP).
-        """
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
@@ -307,9 +207,6 @@ class _L7policyState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Human-readable description for the L7 Policy.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -319,10 +216,6 @@ class _L7policyState:
     @_builtins.property
     @pulumi.getter(name="listenerId")
     def listener_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of the listener for which the forwarding policy is added.
-        Changing this creates a new L7 Policy.
-        """
         return pulumi.get(self, "listener_id")
 
     @listener_id.setter
@@ -332,9 +225,6 @@ class _L7policyState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Human-readable name for the L7 Policy. Does not have to be unique.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -344,10 +234,6 @@ class _L7policyState:
     @_builtins.property
     @pulumi.getter
     def position(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The position of this policy on the listener. Positions start at 1.
-        Changing this creates a new L7 Policy.
-        """
         return pulumi.get(self, "position")
 
     @position.setter
@@ -357,13 +243,6 @@ class _L7policyState:
     @_builtins.property
     @pulumi.getter(name="redirectListenerId")
     def redirect_listener_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of the listener to which the traffic is redirected.
-        This parameter is mandatory when `action` is set to **REDIRECT_TO_LISTENER**. The listener must meet the
-        following requirements:
-        + Can only be an HTTPS listener.
-        + Can only be a listener of the same load balancer.
-        """
         return pulumi.get(self, "redirect_listener_id")
 
     @redirect_listener_id.setter
@@ -373,13 +252,6 @@ class _L7policyState:
     @_builtins.property
     @pulumi.getter(name="redirectPoolId")
     def redirect_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of the backend server group to which traffic is forwarded.
-        This parameter is mandatory when `action` is set to **REDIRECT_TO_POOL**. The backend server group must meet the
-        following requirements:
-        + Cannot be the default backend server group of the listener.
-        + Cannot be the backend server group used by forwarding policies of other listeners.
-        """
         return pulumi.get(self, "redirect_pool_id")
 
     @redirect_pool_id.setter
@@ -389,10 +261,6 @@ class _L7policyState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the L7 Policy resource. If omitted, the
-        provider-level region will be used. Changing this creates a new L7 Policy.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -428,70 +296,9 @@ class L7policy(pulumi.CustomResource):
                  tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages an ELB L7 Policy resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        loadbalancer1 = sbercloud.elb.Loadbalancer("loadbalancer_1",
-            name="loadbalancer_1",
-            vip_subnet_id=subnet_id)
-        listener1 = sbercloud.elb.Listener("listener_1",
-            name="listener_1",
-            protocol="HTTP",
-            protocol_port=8080,
-            loadbalancer_id=loadbalancer1.id)
-        pool1 = sbercloud.elb.Pool("pool_1",
-            name="pool_1",
-            protocol="HTTP",
-            lb_method="ROUND_ROBIN",
-            loadbalancer_id=loadbalancer1.id)
-        l7policy1 = sbercloud.elb.L7policy("l7policy_1",
-            name="test",
-            action="REDIRECT_TO_POOL",
-            description="test l7 policy",
-            position=1,
-            listener_id=listener1.id,
-            redirect_pool_id=pool1.id)
-        ```
-
-        ## Import
-
-        Load Balancer L7 Policy can be imported using the L7 Policy ID, e.g.:
-
-        ```sh
-        $ pulumi import sbercloud:Elb/l7policy:L7policy l7policy_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
-        ```
-
+        Create a L7policy resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] action: Specifies whether requests are forwarded to another backend server group
-               or redirected to an HTTPS listener. Changing this creates a new L7 Policy. The value ranges:
-               + **REDIRECT_TO_POOL**: Requests are forwarded to the backend server group specified by `redirect_pool_id`.
-               + **REDIRECT_TO_LISTENER**: Requests are redirected from the HTTP listener specified by `listener_id` to the
-               HTTPS listener specified by `redirect_listener_id`.
-        :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the L7 Policy. This value can only be true (UP).
-        :param pulumi.Input[_builtins.str] description: Human-readable description for the L7 Policy.
-        :param pulumi.Input[_builtins.str] listener_id: Specifies the ID of the listener for which the forwarding policy is added.
-               Changing this creates a new L7 Policy.
-        :param pulumi.Input[_builtins.str] name: Human-readable name for the L7 Policy. Does not have to be unique.
-        :param pulumi.Input[_builtins.int] position: The position of this policy on the listener. Positions start at 1.
-               Changing this creates a new L7 Policy.
-        :param pulumi.Input[_builtins.str] redirect_listener_id: Specifies the ID of the listener to which the traffic is redirected.
-               This parameter is mandatory when `action` is set to **REDIRECT_TO_LISTENER**. The listener must meet the
-               following requirements:
-               + Can only be an HTTPS listener.
-               + Can only be a listener of the same load balancer.
-        :param pulumi.Input[_builtins.str] redirect_pool_id: Specifies the ID of the backend server group to which traffic is forwarded.
-               This parameter is mandatory when `action` is set to **REDIRECT_TO_POOL**. The backend server group must meet the
-               following requirements:
-               + Cannot be the default backend server group of the listener.
-               + Cannot be the backend server group used by forwarding policies of other listeners.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the L7 Policy resource. If omitted, the
-               provider-level region will be used. Changing this creates a new L7 Policy.
         """
         ...
     @overload
@@ -500,44 +307,7 @@ class L7policy(pulumi.CustomResource):
                  args: L7policyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages an ELB L7 Policy resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        loadbalancer1 = sbercloud.elb.Loadbalancer("loadbalancer_1",
-            name="loadbalancer_1",
-            vip_subnet_id=subnet_id)
-        listener1 = sbercloud.elb.Listener("listener_1",
-            name="listener_1",
-            protocol="HTTP",
-            protocol_port=8080,
-            loadbalancer_id=loadbalancer1.id)
-        pool1 = sbercloud.elb.Pool("pool_1",
-            name="pool_1",
-            protocol="HTTP",
-            lb_method="ROUND_ROBIN",
-            loadbalancer_id=loadbalancer1.id)
-        l7policy1 = sbercloud.elb.L7policy("l7policy_1",
-            name="test",
-            action="REDIRECT_TO_POOL",
-            description="test l7 policy",
-            position=1,
-            listener_id=listener1.id,
-            redirect_pool_id=pool1.id)
-        ```
-
-        ## Import
-
-        Load Balancer L7 Policy can be imported using the L7 Policy ID, e.g.:
-
-        ```sh
-        $ pulumi import sbercloud:Elb/l7policy:L7policy l7policy_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
-        ```
-
+        Create a L7policy resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param L7policyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -613,30 +383,6 @@ class L7policy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] action: Specifies whether requests are forwarded to another backend server group
-               or redirected to an HTTPS listener. Changing this creates a new L7 Policy. The value ranges:
-               + **REDIRECT_TO_POOL**: Requests are forwarded to the backend server group specified by `redirect_pool_id`.
-               + **REDIRECT_TO_LISTENER**: Requests are redirected from the HTTP listener specified by `listener_id` to the
-               HTTPS listener specified by `redirect_listener_id`.
-        :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the L7 Policy. This value can only be true (UP).
-        :param pulumi.Input[_builtins.str] description: Human-readable description for the L7 Policy.
-        :param pulumi.Input[_builtins.str] listener_id: Specifies the ID of the listener for which the forwarding policy is added.
-               Changing this creates a new L7 Policy.
-        :param pulumi.Input[_builtins.str] name: Human-readable name for the L7 Policy. Does not have to be unique.
-        :param pulumi.Input[_builtins.int] position: The position of this policy on the listener. Positions start at 1.
-               Changing this creates a new L7 Policy.
-        :param pulumi.Input[_builtins.str] redirect_listener_id: Specifies the ID of the listener to which the traffic is redirected.
-               This parameter is mandatory when `action` is set to **REDIRECT_TO_LISTENER**. The listener must meet the
-               following requirements:
-               + Can only be an HTTPS listener.
-               + Can only be a listener of the same load balancer.
-        :param pulumi.Input[_builtins.str] redirect_pool_id: Specifies the ID of the backend server group to which traffic is forwarded.
-               This parameter is mandatory when `action` is set to **REDIRECT_TO_POOL**. The backend server group must meet the
-               following requirements:
-               + Cannot be the default backend server group of the listener.
-               + Cannot be the backend server group used by forwarding policies of other listeners.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the L7 Policy resource. If omitted, the
-               provider-level region will be used. Changing this creates a new L7 Policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -657,88 +403,46 @@ class L7policy(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def action(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies whether requests are forwarded to another backend server group
-        or redirected to an HTTPS listener. Changing this creates a new L7 Policy. The value ranges:
-        + **REDIRECT_TO_POOL**: Requests are forwarded to the backend server group specified by `redirect_pool_id`.
-        + **REDIRECT_TO_LISTENER**: Requests are redirected from the HTTP listener specified by `listener_id` to the
-        HTTPS listener specified by `redirect_listener_id`.
-        """
         return pulumi.get(self, "action")
 
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        The administrative state of the L7 Policy. This value can only be true (UP).
-        """
         return pulumi.get(self, "admin_state_up")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Human-readable description for the L7 Policy.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="listenerId")
     def listener_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the ID of the listener for which the forwarding policy is added.
-        Changing this creates a new L7 Policy.
-        """
         return pulumi.get(self, "listener_id")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Human-readable name for the L7 Policy. Does not have to be unique.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def position(self) -> pulumi.Output[_builtins.int]:
-        """
-        The position of this policy on the listener. Positions start at 1.
-        Changing this creates a new L7 Policy.
-        """
         return pulumi.get(self, "position")
 
     @_builtins.property
     @pulumi.getter(name="redirectListenerId")
     def redirect_listener_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the ID of the listener to which the traffic is redirected.
-        This parameter is mandatory when `action` is set to **REDIRECT_TO_LISTENER**. The listener must meet the
-        following requirements:
-        + Can only be an HTTPS listener.
-        + Can only be a listener of the same load balancer.
-        """
         return pulumi.get(self, "redirect_listener_id")
 
     @_builtins.property
     @pulumi.getter(name="redirectPoolId")
     def redirect_pool_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the ID of the backend server group to which traffic is forwarded.
-        This parameter is mandatory when `action` is set to **REDIRECT_TO_POOL**. The backend server group must meet the
-        following requirements:
-        + Cannot be the default backend server group of the listener.
-        + Cannot be the backend server group used by forwarding policies of other listeners.
-        """
         return pulumi.get(self, "redirect_pool_id")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the L7 Policy resource. If omitted, the
-        provider-level region will be used. Changing this creates a new L7 Policy.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property

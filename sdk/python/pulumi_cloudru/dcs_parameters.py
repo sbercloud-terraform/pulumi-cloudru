@@ -26,10 +26,6 @@ class DcsParametersArgs:
                  project_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a DcsParameters resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the instance.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameters: A mapping of parameters to assign to the DCS instance. 
-               Each parameter is represented by one key-value pair.
-        :param pulumi.Input[_builtins.str] project_id: Specifies the project.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "parameters", parameters)
@@ -38,9 +34,6 @@ class DcsParametersArgs:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the ID of the instance.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -50,10 +43,6 @@ class DcsParametersArgs:
     @_builtins.property
     @pulumi.getter
     def parameters(self) -> pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]:
-        """
-        A mapping of parameters to assign to the DCS instance. 
-        Each parameter is represented by one key-value pair.
-        """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
@@ -63,9 +52,6 @@ class DcsParametersArgs:
     @_builtins.property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the project.
-        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -82,11 +68,6 @@ class _DcsParametersState:
                  project_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DcsParameters resources.
-        :param pulumi.Input[Sequence[pulumi.Input['DcsParametersConfigurationParameterArgs']]] configuration_parameters: Indicates the parameter configuration defined by users based on the default parameters.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the instance.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameters: A mapping of parameters to assign to the DCS instance. 
-               Each parameter is represented by one key-value pair.
-        :param pulumi.Input[_builtins.str] project_id: Specifies the project.
         """
         if configuration_parameters is not None:
             pulumi.set(__self__, "configuration_parameters", configuration_parameters)
@@ -100,9 +81,6 @@ class _DcsParametersState:
     @_builtins.property
     @pulumi.getter(name="configurationParameters")
     def configuration_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DcsParametersConfigurationParameterArgs']]]]:
-        """
-        Indicates the parameter configuration defined by users based on the default parameters.
-        """
         return pulumi.get(self, "configuration_parameters")
 
     @configuration_parameters.setter
@@ -112,9 +90,6 @@ class _DcsParametersState:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of the instance.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -124,10 +99,6 @@ class _DcsParametersState:
     @_builtins.property
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        A mapping of parameters to assign to the DCS instance. 
-        Each parameter is represented by one key-value pair.
-        """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
@@ -137,9 +108,6 @@ class _DcsParametersState:
     @_builtins.property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the project.
-        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -158,36 +126,9 @@ class DcsParameters(pulumi.CustomResource):
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a DCS configuration parameters within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        project_id = config.require_object("projectId")
-        config1 = sbercloud.DcsParameters("config_1",
-            instance_id=instance_id,
-            project_id=project_id,
-            parameters={
-                "timeout": "1000",
-                "maxclients": "2100",
-                "appendfsync": "always",
-                "maxmemory-policy": "allkeys-random",
-                "zset-max-ziplist-value": "128",
-                "repl-timeout": "120",
-            })
-        ```
-
+        Create a DcsParameters resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the instance.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameters: A mapping of parameters to assign to the DCS instance. 
-               Each parameter is represented by one key-value pair.
-        :param pulumi.Input[_builtins.str] project_id: Specifies the project.
         """
         ...
     @overload
@@ -196,30 +137,7 @@ class DcsParameters(pulumi.CustomResource):
                  args: DcsParametersArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a DCS configuration parameters within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        project_id = config.require_object("projectId")
-        config1 = sbercloud.DcsParameters("config_1",
-            instance_id=instance_id,
-            project_id=project_id,
-            parameters={
-                "timeout": "1000",
-                "maxclients": "2100",
-                "appendfsync": "always",
-                "maxmemory-policy": "allkeys-random",
-                "zset-max-ziplist-value": "128",
-                "repl-timeout": "120",
-            })
-        ```
-
+        Create a DcsParameters resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param DcsParametersArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -278,11 +196,6 @@ class DcsParameters(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DcsParametersConfigurationParameterArgs', 'DcsParametersConfigurationParameterArgsDict']]]] configuration_parameters: Indicates the parameter configuration defined by users based on the default parameters.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the instance.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameters: A mapping of parameters to assign to the DCS instance. 
-               Each parameter is represented by one key-value pair.
-        :param pulumi.Input[_builtins.str] project_id: Specifies the project.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -297,33 +210,20 @@ class DcsParameters(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="configurationParameters")
     def configuration_parameters(self) -> pulumi.Output[Sequence['outputs.DcsParametersConfigurationParameter']]:
-        """
-        Indicates the parameter configuration defined by users based on the default parameters.
-        """
         return pulumi.get(self, "configuration_parameters")
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the ID of the instance.
-        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
     @pulumi.getter
     def parameters(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
-        """
-        A mapping of parameters to assign to the DCS instance. 
-        Each parameter is represented by one key-value pair.
-        """
         return pulumi.get(self, "parameters")
 
     @_builtins.property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the project.
-        """
         return pulumi.get(self, "project_id")
 

@@ -28,25 +28,10 @@ class BackupArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Backup resource.
-        :param pulumi.Input[_builtins.str] instance_id: Instance ID. This resource works only with Postgre SQL databases.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input['BackupDatabaseArgs']]] databases: List of self-built Microsoft SQL Server databases that are partially
-               backed up.
-               (Only Microsoft SQL Server supports partial backups.).
-               
-               Changing this parameter will create a new resource.
-               The BackupDatabase structure is documented below.
-               
-               <a name="Backup_BackupDatabase"></a>
-               The `BackupDatabase` block supports:
-        :param pulumi.Input[_builtins.str] description: The description about the backup.  
-               It contains a maximum of 256 characters and cannot contain the following special characters: >!<"&'=.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Database to be backed up for Microsoft SQL Server.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] instance_id: Instance ID.
+        :param pulumi.Input[Sequence[pulumi.Input['BackupDatabaseArgs']]] databases: List of self-built Microsoft SQL Server databases that are partially backed up.
+        :param pulumi.Input[_builtins.str] description: The description about the backup.
+        :param pulumi.Input[_builtins.str] name: Backup name.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         if databases is not None:
@@ -62,9 +47,7 @@ class BackupArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Instance ID. This resource works only with Postgre SQL databases.
-
-        Changing this parameter will create a new resource.
+        Instance ID.
         """
         return pulumi.get(self, "instance_id")
 
@@ -76,15 +59,7 @@ class BackupArgs:
     @pulumi.getter
     def databases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackupDatabaseArgs']]]]:
         """
-        List of self-built Microsoft SQL Server databases that are partially
-        backed up.
-        (Only Microsoft SQL Server supports partial backups.).
-
-        Changing this parameter will create a new resource.
-        The BackupDatabase structure is documented below.
-
-        <a name="Backup_BackupDatabase"></a>
-        The `BackupDatabase` block supports:
+        List of self-built Microsoft SQL Server databases that are partially backed up.
         """
         return pulumi.get(self, "databases")
 
@@ -96,10 +71,7 @@ class BackupArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description about the backup.  
-        It contains a maximum of 256 characters and cannot contain the following special characters: >!<"&'=.
-
-        Changing this parameter will create a new resource.
+        The description about the backup.
         """
         return pulumi.get(self, "description")
 
@@ -111,7 +83,7 @@ class BackupArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Database to be backed up for Microsoft SQL Server.
+        Backup name.
         """
         return pulumi.get(self, "name")
 
@@ -122,10 +94,6 @@ class BackupArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -150,33 +118,13 @@ class _BackupState:
         Input properties used for looking up and filtering Backup resources.
         :param pulumi.Input[_builtins.bool] associated_with_ddm: Whether a DDM instance has been associated.
         :param pulumi.Input[_builtins.str] begin_time: Backup start time in the "yyyy-mm-ddThh:mm:ssZ" format.
-        :param pulumi.Input[Sequence[pulumi.Input['BackupDatabaseArgs']]] databases: List of self-built Microsoft SQL Server databases that are partially
-               backed up.
-               (Only Microsoft SQL Server supports partial backups.).
-               
-               Changing this parameter will create a new resource.
-               The BackupDatabase structure is documented below.
-               
-               <a name="Backup_BackupDatabase"></a>
-               The `BackupDatabase` block supports:
-        :param pulumi.Input[_builtins.str] description: The description about the backup.  
-               It contains a maximum of 256 characters and cannot contain the following special characters: >!<"&'=.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[Sequence[pulumi.Input['BackupDatabaseArgs']]] databases: List of self-built Microsoft SQL Server databases that are partially backed up.
+        :param pulumi.Input[_builtins.str] description: The description about the backup.
         :param pulumi.Input[_builtins.str] end_time: Backup end time in the "yyyy-mm-ddThh:mm:ssZ" format.
-        :param pulumi.Input[_builtins.str] instance_id: Instance ID. This resource works only with Postgre SQL databases.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Database to be backed up for Microsoft SQL Server.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] instance_id: Instance ID.
+        :param pulumi.Input[_builtins.str] name: Backup name.
         :param pulumi.Input[_builtins.int] size: Backup size in KB.
-        :param pulumi.Input[_builtins.str] status: Backup status.  
-               The options are as follows:
-               + **BUILDING**: Backup in progress.
-               + **COMPLETED**: Backup completed.
-               + **FAILED**: Backup failed.
-               + **DELETING**: Backup being deleted.
+        :param pulumi.Input[_builtins.str] status: Backup status.
         """
         if associated_with_ddm is not None:
             pulumi.set(__self__, "associated_with_ddm", associated_with_ddm)
@@ -227,15 +175,7 @@ class _BackupState:
     @pulumi.getter
     def databases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackupDatabaseArgs']]]]:
         """
-        List of self-built Microsoft SQL Server databases that are partially
-        backed up.
-        (Only Microsoft SQL Server supports partial backups.).
-
-        Changing this parameter will create a new resource.
-        The BackupDatabase structure is documented below.
-
-        <a name="Backup_BackupDatabase"></a>
-        The `BackupDatabase` block supports:
+        List of self-built Microsoft SQL Server databases that are partially backed up.
         """
         return pulumi.get(self, "databases")
 
@@ -247,10 +187,7 @@ class _BackupState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description about the backup.  
-        It contains a maximum of 256 characters and cannot contain the following special characters: >!<"&'=.
-
-        Changing this parameter will create a new resource.
+        The description about the backup.
         """
         return pulumi.get(self, "description")
 
@@ -274,9 +211,7 @@ class _BackupState:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Instance ID. This resource works only with Postgre SQL databases.
-
-        Changing this parameter will create a new resource.
+        Instance ID.
         """
         return pulumi.get(self, "instance_id")
 
@@ -288,7 +223,7 @@ class _BackupState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Database to be backed up for Microsoft SQL Server.
+        Backup name.
         """
         return pulumi.get(self, "name")
 
@@ -299,10 +234,6 @@ class _BackupState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -325,12 +256,7 @@ class _BackupState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Backup status.  
-        The options are as follows:
-        + **BUILDING**: Backup in progress.
-        + **COMPLETED**: Backup completed.
-        + **FAILED**: Backup failed.
-        + **DELETING**: Backup being deleted.
+        Backup status.
         """
         return pulumi.get(self, "status")
 
@@ -352,51 +278,13 @@ class Backup(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a RDS manual backup resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        backup_name = config.require_object("backupName")
-        test = sbercloud.rds.Backup("test",
-            instance_id=instance_id,
-            name=backup_name)
-        ```
-
-        ## Import
-
-        The rds manual backup can be imported using the instance ID and the backup ID separated by a slash, e.g.:
-
-        ```sh
-        $ pulumi import sbercloud:Rds/backup:Backup test 1ce123456a00f2591fabc00385ff1235/0ce123456a00f2591fabc00385ff1234
-        ```
-
+        Create a Backup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BackupDatabaseArgs', 'BackupDatabaseArgsDict']]]] databases: List of self-built Microsoft SQL Server databases that are partially
-               backed up.
-               (Only Microsoft SQL Server supports partial backups.).
-               
-               Changing this parameter will create a new resource.
-               The BackupDatabase structure is documented below.
-               
-               <a name="Backup_BackupDatabase"></a>
-               The `BackupDatabase` block supports:
-        :param pulumi.Input[_builtins.str] description: The description about the backup.  
-               It contains a maximum of 256 characters and cannot contain the following special characters: >!<"&'=.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] instance_id: Instance ID. This resource works only with Postgre SQL databases.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Database to be backed up for Microsoft SQL Server.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BackupDatabaseArgs', 'BackupDatabaseArgsDict']]]] databases: List of self-built Microsoft SQL Server databases that are partially backed up.
+        :param pulumi.Input[_builtins.str] description: The description about the backup.
+        :param pulumi.Input[_builtins.str] instance_id: Instance ID.
+        :param pulumi.Input[_builtins.str] name: Backup name.
         """
         ...
     @overload
@@ -405,30 +293,7 @@ class Backup(pulumi.CustomResource):
                  args: BackupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a RDS manual backup resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        backup_name = config.require_object("backupName")
-        test = sbercloud.rds.Backup("test",
-            instance_id=instance_id,
-            name=backup_name)
-        ```
-
-        ## Import
-
-        The rds manual backup can be imported using the instance ID and the backup ID separated by a slash, e.g.:
-
-        ```sh
-        $ pulumi import sbercloud:Rds/backup:Backup test 1ce123456a00f2591fabc00385ff1235/0ce123456a00f2591fabc00385ff1234
-        ```
-
+        Create a Backup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param BackupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -499,33 +364,13 @@ class Backup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] associated_with_ddm: Whether a DDM instance has been associated.
         :param pulumi.Input[_builtins.str] begin_time: Backup start time in the "yyyy-mm-ddThh:mm:ssZ" format.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BackupDatabaseArgs', 'BackupDatabaseArgsDict']]]] databases: List of self-built Microsoft SQL Server databases that are partially
-               backed up.
-               (Only Microsoft SQL Server supports partial backups.).
-               
-               Changing this parameter will create a new resource.
-               The BackupDatabase structure is documented below.
-               
-               <a name="Backup_BackupDatabase"></a>
-               The `BackupDatabase` block supports:
-        :param pulumi.Input[_builtins.str] description: The description about the backup.  
-               It contains a maximum of 256 characters and cannot contain the following special characters: >!<"&'=.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BackupDatabaseArgs', 'BackupDatabaseArgsDict']]]] databases: List of self-built Microsoft SQL Server databases that are partially backed up.
+        :param pulumi.Input[_builtins.str] description: The description about the backup.
         :param pulumi.Input[_builtins.str] end_time: Backup end time in the "yyyy-mm-ddThh:mm:ssZ" format.
-        :param pulumi.Input[_builtins.str] instance_id: Instance ID. This resource works only with Postgre SQL databases.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Database to be backed up for Microsoft SQL Server.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] instance_id: Instance ID.
+        :param pulumi.Input[_builtins.str] name: Backup name.
         :param pulumi.Input[_builtins.int] size: Backup size in KB.
-        :param pulumi.Input[_builtins.str] status: Backup status.  
-               The options are as follows:
-               + **BUILDING**: Backup in progress.
-               + **COMPLETED**: Backup completed.
-               + **FAILED**: Backup failed.
-               + **DELETING**: Backup being deleted.
+        :param pulumi.Input[_builtins.str] status: Backup status.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -563,15 +408,7 @@ class Backup(pulumi.CustomResource):
     @pulumi.getter
     def databases(self) -> pulumi.Output[Sequence['outputs.BackupDatabase']]:
         """
-        List of self-built Microsoft SQL Server databases that are partially
-        backed up.
-        (Only Microsoft SQL Server supports partial backups.).
-
-        Changing this parameter will create a new resource.
-        The BackupDatabase structure is documented below.
-
-        <a name="Backup_BackupDatabase"></a>
-        The `BackupDatabase` block supports:
+        List of self-built Microsoft SQL Server databases that are partially backed up.
         """
         return pulumi.get(self, "databases")
 
@@ -579,10 +416,7 @@ class Backup(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[_builtins.str]:
         """
-        The description about the backup.  
-        It contains a maximum of 256 characters and cannot contain the following special characters: >!<"&'=.
-
-        Changing this parameter will create a new resource.
+        The description about the backup.
         """
         return pulumi.get(self, "description")
 
@@ -598,9 +432,7 @@ class Backup(pulumi.CustomResource):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Instance ID. This resource works only with Postgre SQL databases.
-
-        Changing this parameter will create a new resource.
+        Instance ID.
         """
         return pulumi.get(self, "instance_id")
 
@@ -608,17 +440,13 @@ class Backup(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Database to be backed up for Microsoft SQL Server.
+        Backup name.
         """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
@@ -633,12 +461,7 @@ class Backup(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        Backup status.  
-        The options are as follows:
-        + **BUILDING**: Backup in progress.
-        + **COMPLETED**: Backup completed.
-        + **FAILED**: Backup failed.
-        + **DELETING**: Backup being deleted.
+        Backup status.
         """
         return pulumi.get(self, "status")
 

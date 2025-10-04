@@ -11,40 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the plaintext and the ciphertext of an available
-// SberCloud KMS DEK (data encryption key).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/dew"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			key1, err := dew.NewKey(ctx, "key1", &dew.KeyArgs{
-//				KeyAlias:       pulumi.String("key_1"),
-//				PendingDays:    pulumi.String("7"),
-//				KeyDescription: pulumi.String("first test key"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_ = dew.GetDataKeyOutput(ctx, dew.GetDataKeyOutputArgs{
-//				KeyId:         key1.ID(),
-//				DatakeyLength: pulumi.String("512"),
-//			}, nil)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetDataKey(ctx *pulumi.Context, args *GetDataKeyArgs, opts ...pulumi.InvokeOption) (*GetDataKeyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDataKeyResult
@@ -57,33 +23,20 @@ func GetDataKey(ctx *pulumi.Context, args *GetDataKeyArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getDataKey.
 type GetDataKeyArgs struct {
-	// Number of bits in the length of a DEK (data encryption keys).
-	// The maximum number is 512. Changing this gets the new data encryption key.
-	DatakeyLength string `pulumi:"datakeyLength"`
-	// The value of this parameter must be a series of
-	// "key:value" pairs used to record resource context information. The value of this
-	// parameter must not contain sensitive information and must be within 8192 characters
-	// in length. Example: {"Key1":"Value1","Key2":"Value2"}
+	DatakeyLength     string  `pulumi:"datakeyLength"`
 	EncryptionContext *string `pulumi:"encryptionContext"`
-	// The globally unique identifier for the key.
-	// Changing this gets the new data encryption key.
-	KeyId string `pulumi:"keyId"`
-	// The region in which to obtain the keys. If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
+	KeyId             string  `pulumi:"keyId"`
+	Region            *string `pulumi:"region"`
 }
 
 // A collection of values returned by getDataKey.
 type GetDataKeyResult struct {
-	// The ciphertext of a DEK is expressed in hexadecimal format, and two
-	// characters indicate one byte.
 	CipherText        string  `pulumi:"cipherText"`
 	DatakeyLength     string  `pulumi:"datakeyLength"`
 	EncryptionContext *string `pulumi:"encryptionContext"`
 	// The provider-assigned unique ID for this managed resource.
-	Id    string `pulumi:"id"`
-	KeyId string `pulumi:"keyId"`
-	// The plaintext of a DEK is expressed in hexadecimal format, and two
-	// characters indicate one byte.
+	Id        string `pulumi:"id"`
+	KeyId     string `pulumi:"keyId"`
 	PlainText string `pulumi:"plainText"`
 	Region    string `pulumi:"region"`
 }
@@ -99,19 +52,10 @@ func GetDataKeyOutput(ctx *pulumi.Context, args GetDataKeyOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getDataKey.
 type GetDataKeyOutputArgs struct {
-	// Number of bits in the length of a DEK (data encryption keys).
-	// The maximum number is 512. Changing this gets the new data encryption key.
-	DatakeyLength pulumi.StringInput `pulumi:"datakeyLength"`
-	// The value of this parameter must be a series of
-	// "key:value" pairs used to record resource context information. The value of this
-	// parameter must not contain sensitive information and must be within 8192 characters
-	// in length. Example: {"Key1":"Value1","Key2":"Value2"}
+	DatakeyLength     pulumi.StringInput    `pulumi:"datakeyLength"`
 	EncryptionContext pulumi.StringPtrInput `pulumi:"encryptionContext"`
-	// The globally unique identifier for the key.
-	// Changing this gets the new data encryption key.
-	KeyId pulumi.StringInput `pulumi:"keyId"`
-	// The region in which to obtain the keys. If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	KeyId             pulumi.StringInput    `pulumi:"keyId"`
+	Region            pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetDataKeyOutputArgs) ElementType() reflect.Type {
@@ -133,8 +77,6 @@ func (o GetDataKeyResultOutput) ToGetDataKeyResultOutputWithContext(ctx context.
 	return o
 }
 
-// The ciphertext of a DEK is expressed in hexadecimal format, and two
-// characters indicate one byte.
 func (o GetDataKeyResultOutput) CipherText() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataKeyResult) string { return v.CipherText }).(pulumi.StringOutput)
 }
@@ -156,8 +98,6 @@ func (o GetDataKeyResultOutput) KeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataKeyResult) string { return v.KeyId }).(pulumi.StringOutput)
 }
 
-// The plaintext of a DEK is expressed in hexadecimal format, and two
-// characters indicate one byte.
 func (o GetDataKeyResultOutput) PlainText() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataKeyResult) string { return v.PlainText }).(pulumi.StringOutput)
 }

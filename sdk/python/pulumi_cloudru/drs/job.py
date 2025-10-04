@@ -42,80 +42,6 @@ class JobArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Job resource.
-        :param pulumi.Input['JobDestinationDbArgs'] destination_db: Specifies the destination database configuration.
-               The `db_info` object structure of the `destination_db` is documented below.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] direction: Specifies the direction of data flow.
-               Changing this parameter will create a new resource. The options are as follows:
-               + **up**: To the cloud. The destination database must be a database in the current cloud.
-               + **down**: Out of the cloud. The source database must be a database in the current cloud.
-               + **non-dbs**: self-built database.
-        :param pulumi.Input[_builtins.str] engine_type: Specifies the migration engine type.
-               Changing this parameter will create a new resource. The options are as follows:
-               + **mysql**:  MySQL migration, MySQL synchronization use.
-               + **mongodb**: Mongodb migration use.
-               + **cloudDataGuard-mysql**: Disaster recovery use.
-               + **gaussdbv5**: GaussDB (for openGauss) synchronization use.
-               + **mysql-to-kafka**: Synchronization from MySQL to Kafka use.
-               + **taurus-to-kafka**: Synchronization from GaussDB(for MySQL) to Kafka use.
-               + **gaussdbv5ha-to-kafka**: Synchronization from GaussDB primary/standby to Kafka use.
-               + **postgresql**: Synchronization from PostgreSQL to PostgreSQL use.
-        :param pulumi.Input['JobSourceDbArgs'] source_db: Specifies the source database configuration.
-               The `db_info` object structure of the `source_db` is documented below.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] type: Specifies the job type. Changing this parameter will create a new
-               resource. The options are as follows:
-               + **migration**: Online Migration.
-               + **sync**: Data Synchronization.
-               + **cloudDataGuard**: Disaster Recovery.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the job, which contain a
-               maximum of 256 characters, and certain special characters (including !<>&'"\\\\) are not allowed.
-        :param pulumi.Input[_builtins.bool] destination_db_readnoly: Specifies the destination DB instance as read-only helps
-               ensure the migration is successful. Once the migration is complete, the DB instance automatically changes to
-               Read/Write. The default value is `true`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] expired_days: Specifies how many days after the task is abnormal, it will automatically
-               end. The value ranges from 14 to 100. the default value is `14`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] force_destroy: Specifies whether to forcibly destroy the job even if it is running.
-               The default value is `false`.
-        :param pulumi.Input[Sequence[pulumi.Input['JobLimitSpeedArgs']]] limit_speeds: Specifies the migration speed by setting a time period.
-               The default is no speed limit. The maximum length is 3. Structure is documented below.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] migrate_definer: Specifies whether to migrate the definers of all source database
-               objects to the `user` of `destination_db`. The default value is `true`.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] migration_type: Specifies migration type.
-               Changing this parameter will create a new resource. The options are as follows:
-               + **FULL_TRANS**: Full migration. Suitable for scenarios where services can be interrupted. It migrates all database
-               objects and data, in a non-system database, to a destination database at a time.
-               + **INCR_TRANS**: Incremental migration. Suitable for migration from an on-premises self-built database to a
-               destination cloud database, or from one cloud database to another in a different region.
-               + **FULL_INCR_TRANS**:  Full+Incremental migration. This allows to migrate data with minimal downtime. After a full
-               migration initializes the destination database, an incremental migration parses logs to ensure data consistency
-               between the source and destination databases.
-               
-               The default value is `FULL_INCR_TRANS`.
-        :param pulumi.Input[_builtins.bool] multi_write: Specifies whether to enable multi write. It is mandatory when `type`
-               is `cloudDataGuard`. When the disaster recovery type is dual-active disaster recovery, set `multi_write` to `true`,
-               otherwise to `false`. The default value is `false`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the job name. The name consists of 4 to 50 characters, starting with
-               a letter. Only letters, digits, underscores (\\_) and hyphens (-) are allowed.
-        :param pulumi.Input[_builtins.str] net_type: Specifies the network type.
-               Changing this parameter will create a new resource. The options are as follows:
-               + **eip**: suitable for migration from an on-premises or other cloud database to a destination cloud database.
-               An EIP will be automatically bound to the replication instance and released after the replication task is complete.
-               + **vpc**: suitable for migration from one cloud database to another.
-               + **vpn**: suitable for migration from an on-premises self-built database to a destination cloud database,
-               or from one cloud database to another in a different region.
-               
-               The default value is `eip`.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the resource. If omitted, the
-               provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] start_time: Specifies the time to start the job. The time format
-               is `yyyy-MM-dd HH:mm:ss`. Start immediately by default. Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the DRS job.
-               Changing this parameter will create a new resource.
         """
         pulumi.set(__self__, "destination_db", destination_db)
         pulumi.set(__self__, "direction", direction)
@@ -154,11 +80,6 @@ class JobArgs:
     @_builtins.property
     @pulumi.getter(name="destinationDb")
     def destination_db(self) -> pulumi.Input['JobDestinationDbArgs']:
-        """
-        Specifies the destination database configuration.
-        The `db_info` object structure of the `destination_db` is documented below.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "destination_db")
 
     @destination_db.setter
@@ -168,13 +89,6 @@ class JobArgs:
     @_builtins.property
     @pulumi.getter
     def direction(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the direction of data flow.
-        Changing this parameter will create a new resource. The options are as follows:
-        + **up**: To the cloud. The destination database must be a database in the current cloud.
-        + **down**: Out of the cloud. The source database must be a database in the current cloud.
-        + **non-dbs**: self-built database.
-        """
         return pulumi.get(self, "direction")
 
     @direction.setter
@@ -184,18 +98,6 @@ class JobArgs:
     @_builtins.property
     @pulumi.getter(name="engineType")
     def engine_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the migration engine type.
-        Changing this parameter will create a new resource. The options are as follows:
-        + **mysql**:  MySQL migration, MySQL synchronization use.
-        + **mongodb**: Mongodb migration use.
-        + **cloudDataGuard-mysql**: Disaster recovery use.
-        + **gaussdbv5**: GaussDB (for openGauss) synchronization use.
-        + **mysql-to-kafka**: Synchronization from MySQL to Kafka use.
-        + **taurus-to-kafka**: Synchronization from GaussDB(for MySQL) to Kafka use.
-        + **gaussdbv5ha-to-kafka**: Synchronization from GaussDB primary/standby to Kafka use.
-        + **postgresql**: Synchronization from PostgreSQL to PostgreSQL use.
-        """
         return pulumi.get(self, "engine_type")
 
     @engine_type.setter
@@ -205,11 +107,6 @@ class JobArgs:
     @_builtins.property
     @pulumi.getter(name="sourceDb")
     def source_db(self) -> pulumi.Input['JobSourceDbArgs']:
-        """
-        Specifies the source database configuration.
-        The `db_info` object structure of the `source_db` is documented below.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "source_db")
 
     @source_db.setter
@@ -219,13 +116,6 @@ class JobArgs:
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the job type. Changing this parameter will create a new
-        resource. The options are as follows:
-        + **migration**: Online Migration.
-        + **sync**: Data Synchronization.
-        + **cloudDataGuard**: Disaster Recovery.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -235,10 +125,6 @@ class JobArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the description of the job, which contain a
-        maximum of 256 characters, and certain special characters (including !<>&'"\\\\) are not allowed.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -248,11 +134,6 @@ class JobArgs:
     @_builtins.property
     @pulumi.getter(name="destinationDbReadnoly")
     def destination_db_readnoly(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies the destination DB instance as read-only helps
-        ensure the migration is successful. Once the migration is complete, the DB instance automatically changes to
-        Read/Write. The default value is `true`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "destination_db_readnoly")
 
     @destination_db_readnoly.setter
@@ -262,10 +143,6 @@ class JobArgs:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the enterprise project id.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -275,10 +152,6 @@ class JobArgs:
     @_builtins.property
     @pulumi.getter(name="expiredDays")
     def expired_days(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies how many days after the task is abnormal, it will automatically
-        end. The value ranges from 14 to 100. the default value is `14`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "expired_days")
 
     @expired_days.setter
@@ -288,10 +161,6 @@ class JobArgs:
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to forcibly destroy the job even if it is running.
-        The default value is `false`.
-        """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
@@ -301,11 +170,6 @@ class JobArgs:
     @_builtins.property
     @pulumi.getter(name="limitSpeeds")
     def limit_speeds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobLimitSpeedArgs']]]]:
-        """
-        Specifies the migration speed by setting a time period.
-        The default is no speed limit. The maximum length is 3. Structure is documented below.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "limit_speeds")
 
     @limit_speeds.setter
@@ -315,11 +179,6 @@ class JobArgs:
     @_builtins.property
     @pulumi.getter(name="migrateDefiner")
     def migrate_definer(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to migrate the definers of all source database
-        objects to the `user` of `destination_db`. The default value is `true`.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "migrate_definer")
 
     @migrate_definer.setter
@@ -329,19 +188,6 @@ class JobArgs:
     @_builtins.property
     @pulumi.getter(name="migrationType")
     def migration_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies migration type.
-        Changing this parameter will create a new resource. The options are as follows:
-        + **FULL_TRANS**: Full migration. Suitable for scenarios where services can be interrupted. It migrates all database
-        objects and data, in a non-system database, to a destination database at a time.
-        + **INCR_TRANS**: Incremental migration. Suitable for migration from an on-premises self-built database to a
-        destination cloud database, or from one cloud database to another in a different region.
-        + **FULL_INCR_TRANS**:  Full+Incremental migration. This allows to migrate data with minimal downtime. After a full
-        migration initializes the destination database, an incremental migration parses logs to ensure data consistency
-        between the source and destination databases.
-
-        The default value is `FULL_INCR_TRANS`.
-        """
         return pulumi.get(self, "migration_type")
 
     @migration_type.setter
@@ -351,11 +197,6 @@ class JobArgs:
     @_builtins.property
     @pulumi.getter(name="multiWrite")
     def multi_write(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to enable multi write. It is mandatory when `type`
-        is `cloudDataGuard`. When the disaster recovery type is dual-active disaster recovery, set `multi_write` to `true`,
-        otherwise to `false`. The default value is `false`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "multi_write")
 
     @multi_write.setter
@@ -365,10 +206,6 @@ class JobArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the job name. The name consists of 4 to 50 characters, starting with
-        a letter. Only letters, digits, underscores (\\_) and hyphens (-) are allowed.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -378,17 +215,6 @@ class JobArgs:
     @_builtins.property
     @pulumi.getter(name="netType")
     def net_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the network type.
-        Changing this parameter will create a new resource. The options are as follows:
-        + **eip**: suitable for migration from an on-premises or other cloud database to a destination cloud database.
-        An EIP will be automatically bound to the replication instance and released after the replication task is complete.
-        + **vpc**: suitable for migration from one cloud database to another.
-        + **vpn**: suitable for migration from an on-premises self-built database to a destination cloud database,
-        or from one cloud database to another in a different region.
-
-        The default value is `eip`.
-        """
         return pulumi.get(self, "net_type")
 
     @net_type.setter
@@ -398,10 +224,6 @@ class JobArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the resource. If omitted, the
-        provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -411,10 +233,6 @@ class JobArgs:
     @_builtins.property
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the time to start the job. The time format
-        is `yyyy-MM-dd HH:mm:ss`. Start immediately by default. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
@@ -424,10 +242,6 @@ class JobArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs to associate with the DRS job.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -463,84 +277,6 @@ class _JobState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Job resources.
-        :param pulumi.Input[_builtins.str] created_at: Create time. The format is ISO8601:YYYY-MM-DDThh:mm:ssZ
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the job, which contain a
-               maximum of 256 characters, and certain special characters (including !<>&'"\\\\) are not allowed.
-        :param pulumi.Input['JobDestinationDbArgs'] destination_db: Specifies the destination database configuration.
-               The `db_info` object structure of the `destination_db` is documented below.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] destination_db_readnoly: Specifies the destination DB instance as read-only helps
-               ensure the migration is successful. Once the migration is complete, the DB instance automatically changes to
-               Read/Write. The default value is `true`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] direction: Specifies the direction of data flow.
-               Changing this parameter will create a new resource. The options are as follows:
-               + **up**: To the cloud. The destination database must be a database in the current cloud.
-               + **down**: Out of the cloud. The source database must be a database in the current cloud.
-               + **non-dbs**: self-built database.
-        :param pulumi.Input[_builtins.str] engine_type: Specifies the migration engine type.
-               Changing this parameter will create a new resource. The options are as follows:
-               + **mysql**:  MySQL migration, MySQL synchronization use.
-               + **mongodb**: Mongodb migration use.
-               + **cloudDataGuard-mysql**: Disaster recovery use.
-               + **gaussdbv5**: GaussDB (for openGauss) synchronization use.
-               + **mysql-to-kafka**: Synchronization from MySQL to Kafka use.
-               + **taurus-to-kafka**: Synchronization from GaussDB(for MySQL) to Kafka use.
-               + **gaussdbv5ha-to-kafka**: Synchronization from GaussDB primary/standby to Kafka use.
-               + **postgresql**: Synchronization from PostgreSQL to PostgreSQL use.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] expired_days: Specifies how many days after the task is abnormal, it will automatically
-               end. The value ranges from 14 to 100. the default value is `14`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] force_destroy: Specifies whether to forcibly destroy the job even if it is running.
-               The default value is `false`.
-        :param pulumi.Input[Sequence[pulumi.Input['JobLimitSpeedArgs']]] limit_speeds: Specifies the migration speed by setting a time period.
-               The default is no speed limit. The maximum length is 3. Structure is documented below.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] migrate_definer: Specifies whether to migrate the definers of all source database
-               objects to the `user` of `destination_db`. The default value is `true`.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] migration_type: Specifies migration type.
-               Changing this parameter will create a new resource. The options are as follows:
-               + **FULL_TRANS**: Full migration. Suitable for scenarios where services can be interrupted. It migrates all database
-               objects and data, in a non-system database, to a destination database at a time.
-               + **INCR_TRANS**: Incremental migration. Suitable for migration from an on-premises self-built database to a
-               destination cloud database, or from one cloud database to another in a different region.
-               + **FULL_INCR_TRANS**:  Full+Incremental migration. This allows to migrate data with minimal downtime. After a full
-               migration initializes the destination database, an incremental migration parses logs to ensure data consistency
-               between the source and destination databases.
-               
-               The default value is `FULL_INCR_TRANS`.
-        :param pulumi.Input[_builtins.bool] multi_write: Specifies whether to enable multi write. It is mandatory when `type`
-               is `cloudDataGuard`. When the disaster recovery type is dual-active disaster recovery, set `multi_write` to `true`,
-               otherwise to `false`. The default value is `false`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the job name. The name consists of 4 to 50 characters, starting with
-               a letter. Only letters, digits, underscores (\\_) and hyphens (-) are allowed.
-        :param pulumi.Input[_builtins.str] net_type: Specifies the network type.
-               Changing this parameter will create a new resource. The options are as follows:
-               + **eip**: suitable for migration from an on-premises or other cloud database to a destination cloud database.
-               An EIP will be automatically bound to the replication instance and released after the replication task is complete.
-               + **vpc**: suitable for migration from one cloud database to another.
-               + **vpn**: suitable for migration from an on-premises self-built database to a destination cloud database,
-               or from one cloud database to another in a different region.
-               
-               The default value is `eip`.
-        :param pulumi.Input[_builtins.str] private_ip: Private IP.
-        :param pulumi.Input[_builtins.str] public_ip: Public IP.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the resource. If omitted, the
-               provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input['JobSourceDbArgs'] source_db: Specifies the source database configuration.
-               The `db_info` object structure of the `source_db` is documented below.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] start_time: Specifies the time to start the job. The time format
-               is `yyyy-MM-dd HH:mm:ss`. Start immediately by default. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] status: Status.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the DRS job.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] type: Specifies the job type. Changing this parameter will create a new
-               resource. The options are as follows:
-               + **migration**: Online Migration.
-               + **sync**: Data Synchronization.
-               + **cloudDataGuard**: Disaster Recovery.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -592,9 +328,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Create time. The format is ISO8601:YYYY-MM-DDThh:mm:ssZ
-        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -604,10 +337,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the description of the job, which contain a
-        maximum of 256 characters, and certain special characters (including !<>&'"\\\\) are not allowed.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -617,11 +346,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter(name="destinationDb")
     def destination_db(self) -> Optional[pulumi.Input['JobDestinationDbArgs']]:
-        """
-        Specifies the destination database configuration.
-        The `db_info` object structure of the `destination_db` is documented below.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "destination_db")
 
     @destination_db.setter
@@ -631,11 +355,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter(name="destinationDbReadnoly")
     def destination_db_readnoly(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies the destination DB instance as read-only helps
-        ensure the migration is successful. Once the migration is complete, the DB instance automatically changes to
-        Read/Write. The default value is `true`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "destination_db_readnoly")
 
     @destination_db_readnoly.setter
@@ -645,13 +364,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter
     def direction(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the direction of data flow.
-        Changing this parameter will create a new resource. The options are as follows:
-        + **up**: To the cloud. The destination database must be a database in the current cloud.
-        + **down**: Out of the cloud. The source database must be a database in the current cloud.
-        + **non-dbs**: self-built database.
-        """
         return pulumi.get(self, "direction")
 
     @direction.setter
@@ -661,18 +373,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter(name="engineType")
     def engine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the migration engine type.
-        Changing this parameter will create a new resource. The options are as follows:
-        + **mysql**:  MySQL migration, MySQL synchronization use.
-        + **mongodb**: Mongodb migration use.
-        + **cloudDataGuard-mysql**: Disaster recovery use.
-        + **gaussdbv5**: GaussDB (for openGauss) synchronization use.
-        + **mysql-to-kafka**: Synchronization from MySQL to Kafka use.
-        + **taurus-to-kafka**: Synchronization from GaussDB(for MySQL) to Kafka use.
-        + **gaussdbv5ha-to-kafka**: Synchronization from GaussDB primary/standby to Kafka use.
-        + **postgresql**: Synchronization from PostgreSQL to PostgreSQL use.
-        """
         return pulumi.get(self, "engine_type")
 
     @engine_type.setter
@@ -682,10 +382,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the enterprise project id.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -695,10 +391,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter(name="expiredDays")
     def expired_days(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies how many days after the task is abnormal, it will automatically
-        end. The value ranges from 14 to 100. the default value is `14`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "expired_days")
 
     @expired_days.setter
@@ -708,10 +400,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to forcibly destroy the job even if it is running.
-        The default value is `false`.
-        """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
@@ -721,11 +409,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter(name="limitSpeeds")
     def limit_speeds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobLimitSpeedArgs']]]]:
-        """
-        Specifies the migration speed by setting a time period.
-        The default is no speed limit. The maximum length is 3. Structure is documented below.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "limit_speeds")
 
     @limit_speeds.setter
@@ -735,11 +418,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter(name="migrateDefiner")
     def migrate_definer(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to migrate the definers of all source database
-        objects to the `user` of `destination_db`. The default value is `true`.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "migrate_definer")
 
     @migrate_definer.setter
@@ -749,19 +427,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter(name="migrationType")
     def migration_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies migration type.
-        Changing this parameter will create a new resource. The options are as follows:
-        + **FULL_TRANS**: Full migration. Suitable for scenarios where services can be interrupted. It migrates all database
-        objects and data, in a non-system database, to a destination database at a time.
-        + **INCR_TRANS**: Incremental migration. Suitable for migration from an on-premises self-built database to a
-        destination cloud database, or from one cloud database to another in a different region.
-        + **FULL_INCR_TRANS**:  Full+Incremental migration. This allows to migrate data with minimal downtime. After a full
-        migration initializes the destination database, an incremental migration parses logs to ensure data consistency
-        between the source and destination databases.
-
-        The default value is `FULL_INCR_TRANS`.
-        """
         return pulumi.get(self, "migration_type")
 
     @migration_type.setter
@@ -771,11 +436,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter(name="multiWrite")
     def multi_write(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to enable multi write. It is mandatory when `type`
-        is `cloudDataGuard`. When the disaster recovery type is dual-active disaster recovery, set `multi_write` to `true`,
-        otherwise to `false`. The default value is `false`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "multi_write")
 
     @multi_write.setter
@@ -785,10 +445,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the job name. The name consists of 4 to 50 characters, starting with
-        a letter. Only letters, digits, underscores (\\_) and hyphens (-) are allowed.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -798,17 +454,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter(name="netType")
     def net_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the network type.
-        Changing this parameter will create a new resource. The options are as follows:
-        + **eip**: suitable for migration from an on-premises or other cloud database to a destination cloud database.
-        An EIP will be automatically bound to the replication instance and released after the replication task is complete.
-        + **vpc**: suitable for migration from one cloud database to another.
-        + **vpn**: suitable for migration from an on-premises self-built database to a destination cloud database,
-        or from one cloud database to another in a different region.
-
-        The default value is `eip`.
-        """
         return pulumi.get(self, "net_type")
 
     @net_type.setter
@@ -818,9 +463,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Private IP.
-        """
         return pulumi.get(self, "private_ip")
 
     @private_ip.setter
@@ -830,9 +472,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Public IP.
-        """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
@@ -842,10 +481,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the resource. If omitted, the
-        provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -855,11 +490,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter(name="sourceDb")
     def source_db(self) -> Optional[pulumi.Input['JobSourceDbArgs']]:
-        """
-        Specifies the source database configuration.
-        The `db_info` object structure of the `source_db` is documented below.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "source_db")
 
     @source_db.setter
@@ -869,10 +499,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the time to start the job. The time format
-        is `yyyy-MM-dd HH:mm:ss`. Start immediately by default. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
@@ -882,9 +508,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Status.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -894,10 +517,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs to associate with the DRS job.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -907,13 +526,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the job type. Changing this parameter will create a new
-        resource. The options are as follows:
-        + **migration**: Online Migration.
-        + **sync**: Data Synchronization.
-        + **cloudDataGuard**: Disaster Recovery.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -948,120 +560,9 @@ class Job(pulumi.CustomResource):
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages DRS job resource within SberCloud.
-
-        ## Example Usage
-
-        ## Import
-
-        The DRS job can be imported by `id`. For example,
-
-        ```sh
-        $ pulumi import sbercloud:Drs/job:Job test b11b407c-e604-4e8d-8bc4-92398320b847
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include: `enterprise_project_id`, `tags`,
-
-        `force_destroy`, `source_db.0.password` and `destination_db.0.password`.It is generally recommended running
-
-        `pulumi preview` after importing a job. You can then decide if changes should be applied to the job, or the resource
-
-        definition should be updated to align with the job. Also you can ignore changes as below.
-
-        resource "sbercloud_drs_job" "test" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              source_db.0.password,destination_db.0.password
-            
-            ]
-
-          }
-
-        }
-
+        Create a Job resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the job, which contain a
-               maximum of 256 characters, and certain special characters (including !<>&'"\\\\) are not allowed.
-        :param pulumi.Input[Union['JobDestinationDbArgs', 'JobDestinationDbArgsDict']] destination_db: Specifies the destination database configuration.
-               The `db_info` object structure of the `destination_db` is documented below.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] destination_db_readnoly: Specifies the destination DB instance as read-only helps
-               ensure the migration is successful. Once the migration is complete, the DB instance automatically changes to
-               Read/Write. The default value is `true`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] direction: Specifies the direction of data flow.
-               Changing this parameter will create a new resource. The options are as follows:
-               + **up**: To the cloud. The destination database must be a database in the current cloud.
-               + **down**: Out of the cloud. The source database must be a database in the current cloud.
-               + **non-dbs**: self-built database.
-        :param pulumi.Input[_builtins.str] engine_type: Specifies the migration engine type.
-               Changing this parameter will create a new resource. The options are as follows:
-               + **mysql**:  MySQL migration, MySQL synchronization use.
-               + **mongodb**: Mongodb migration use.
-               + **cloudDataGuard-mysql**: Disaster recovery use.
-               + **gaussdbv5**: GaussDB (for openGauss) synchronization use.
-               + **mysql-to-kafka**: Synchronization from MySQL to Kafka use.
-               + **taurus-to-kafka**: Synchronization from GaussDB(for MySQL) to Kafka use.
-               + **gaussdbv5ha-to-kafka**: Synchronization from GaussDB primary/standby to Kafka use.
-               + **postgresql**: Synchronization from PostgreSQL to PostgreSQL use.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] expired_days: Specifies how many days after the task is abnormal, it will automatically
-               end. The value ranges from 14 to 100. the default value is `14`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] force_destroy: Specifies whether to forcibly destroy the job even if it is running.
-               The default value is `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['JobLimitSpeedArgs', 'JobLimitSpeedArgsDict']]]] limit_speeds: Specifies the migration speed by setting a time period.
-               The default is no speed limit. The maximum length is 3. Structure is documented below.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] migrate_definer: Specifies whether to migrate the definers of all source database
-               objects to the `user` of `destination_db`. The default value is `true`.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] migration_type: Specifies migration type.
-               Changing this parameter will create a new resource. The options are as follows:
-               + **FULL_TRANS**: Full migration. Suitable for scenarios where services can be interrupted. It migrates all database
-               objects and data, in a non-system database, to a destination database at a time.
-               + **INCR_TRANS**: Incremental migration. Suitable for migration from an on-premises self-built database to a
-               destination cloud database, or from one cloud database to another in a different region.
-               + **FULL_INCR_TRANS**:  Full+Incremental migration. This allows to migrate data with minimal downtime. After a full
-               migration initializes the destination database, an incremental migration parses logs to ensure data consistency
-               between the source and destination databases.
-               
-               The default value is `FULL_INCR_TRANS`.
-        :param pulumi.Input[_builtins.bool] multi_write: Specifies whether to enable multi write. It is mandatory when `type`
-               is `cloudDataGuard`. When the disaster recovery type is dual-active disaster recovery, set `multi_write` to `true`,
-               otherwise to `false`. The default value is `false`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the job name. The name consists of 4 to 50 characters, starting with
-               a letter. Only letters, digits, underscores (\\_) and hyphens (-) are allowed.
-        :param pulumi.Input[_builtins.str] net_type: Specifies the network type.
-               Changing this parameter will create a new resource. The options are as follows:
-               + **eip**: suitable for migration from an on-premises or other cloud database to a destination cloud database.
-               An EIP will be automatically bound to the replication instance and released after the replication task is complete.
-               + **vpc**: suitable for migration from one cloud database to another.
-               + **vpn**: suitable for migration from an on-premises self-built database to a destination cloud database,
-               or from one cloud database to another in a different region.
-               
-               The default value is `eip`.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the resource. If omitted, the
-               provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[Union['JobSourceDbArgs', 'JobSourceDbArgsDict']] source_db: Specifies the source database configuration.
-               The `db_info` object structure of the `source_db` is documented below.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] start_time: Specifies the time to start the job. The time format
-               is `yyyy-MM-dd HH:mm:ss`. Start immediately by default. Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the DRS job.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] type: Specifies the job type. Changing this parameter will create a new
-               resource. The options are as follows:
-               + **migration**: Online Migration.
-               + **sync**: Data Synchronization.
-               + **cloudDataGuard**: Disaster Recovery.
         """
         ...
     @overload
@@ -1070,44 +571,7 @@ class Job(pulumi.CustomResource):
                  args: JobArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages DRS job resource within SberCloud.
-
-        ## Example Usage
-
-        ## Import
-
-        The DRS job can be imported by `id`. For example,
-
-        ```sh
-        $ pulumi import sbercloud:Drs/job:Job test b11b407c-e604-4e8d-8bc4-92398320b847
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include: `enterprise_project_id`, `tags`,
-
-        `force_destroy`, `source_db.0.password` and `destination_db.0.password`.It is generally recommended running
-
-        `pulumi preview` after importing a job. You can then decide if changes should be applied to the job, or the resource
-
-        definition should be updated to align with the job. Also you can ignore changes as below.
-
-        resource "sbercloud_drs_job" "test" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              source_db.0.password,destination_db.0.password
-            
-            ]
-
-          }
-
-        }
-
+        Create a Job resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param JobArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1224,84 +688,6 @@ class Job(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] created_at: Create time. The format is ISO8601:YYYY-MM-DDThh:mm:ssZ
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the job, which contain a
-               maximum of 256 characters, and certain special characters (including !<>&'"\\\\) are not allowed.
-        :param pulumi.Input[Union['JobDestinationDbArgs', 'JobDestinationDbArgsDict']] destination_db: Specifies the destination database configuration.
-               The `db_info` object structure of the `destination_db` is documented below.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] destination_db_readnoly: Specifies the destination DB instance as read-only helps
-               ensure the migration is successful. Once the migration is complete, the DB instance automatically changes to
-               Read/Write. The default value is `true`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] direction: Specifies the direction of data flow.
-               Changing this parameter will create a new resource. The options are as follows:
-               + **up**: To the cloud. The destination database must be a database in the current cloud.
-               + **down**: Out of the cloud. The source database must be a database in the current cloud.
-               + **non-dbs**: self-built database.
-        :param pulumi.Input[_builtins.str] engine_type: Specifies the migration engine type.
-               Changing this parameter will create a new resource. The options are as follows:
-               + **mysql**:  MySQL migration, MySQL synchronization use.
-               + **mongodb**: Mongodb migration use.
-               + **cloudDataGuard-mysql**: Disaster recovery use.
-               + **gaussdbv5**: GaussDB (for openGauss) synchronization use.
-               + **mysql-to-kafka**: Synchronization from MySQL to Kafka use.
-               + **taurus-to-kafka**: Synchronization from GaussDB(for MySQL) to Kafka use.
-               + **gaussdbv5ha-to-kafka**: Synchronization from GaussDB primary/standby to Kafka use.
-               + **postgresql**: Synchronization from PostgreSQL to PostgreSQL use.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] expired_days: Specifies how many days after the task is abnormal, it will automatically
-               end. The value ranges from 14 to 100. the default value is `14`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] force_destroy: Specifies whether to forcibly destroy the job even if it is running.
-               The default value is `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['JobLimitSpeedArgs', 'JobLimitSpeedArgsDict']]]] limit_speeds: Specifies the migration speed by setting a time period.
-               The default is no speed limit. The maximum length is 3. Structure is documented below.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] migrate_definer: Specifies whether to migrate the definers of all source database
-               objects to the `user` of `destination_db`. The default value is `true`.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] migration_type: Specifies migration type.
-               Changing this parameter will create a new resource. The options are as follows:
-               + **FULL_TRANS**: Full migration. Suitable for scenarios where services can be interrupted. It migrates all database
-               objects and data, in a non-system database, to a destination database at a time.
-               + **INCR_TRANS**: Incremental migration. Suitable for migration from an on-premises self-built database to a
-               destination cloud database, or from one cloud database to another in a different region.
-               + **FULL_INCR_TRANS**:  Full+Incremental migration. This allows to migrate data with minimal downtime. After a full
-               migration initializes the destination database, an incremental migration parses logs to ensure data consistency
-               between the source and destination databases.
-               
-               The default value is `FULL_INCR_TRANS`.
-        :param pulumi.Input[_builtins.bool] multi_write: Specifies whether to enable multi write. It is mandatory when `type`
-               is `cloudDataGuard`. When the disaster recovery type is dual-active disaster recovery, set `multi_write` to `true`,
-               otherwise to `false`. The default value is `false`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the job name. The name consists of 4 to 50 characters, starting with
-               a letter. Only letters, digits, underscores (\\_) and hyphens (-) are allowed.
-        :param pulumi.Input[_builtins.str] net_type: Specifies the network type.
-               Changing this parameter will create a new resource. The options are as follows:
-               + **eip**: suitable for migration from an on-premises or other cloud database to a destination cloud database.
-               An EIP will be automatically bound to the replication instance and released after the replication task is complete.
-               + **vpc**: suitable for migration from one cloud database to another.
-               + **vpn**: suitable for migration from an on-premises self-built database to a destination cloud database,
-               or from one cloud database to another in a different region.
-               
-               The default value is `eip`.
-        :param pulumi.Input[_builtins.str] private_ip: Private IP.
-        :param pulumi.Input[_builtins.str] public_ip: Public IP.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the resource. If omitted, the
-               provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[Union['JobSourceDbArgs', 'JobSourceDbArgsDict']] source_db: Specifies the source database configuration.
-               The `db_info` object structure of the `source_db` is documented below.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] start_time: Specifies the time to start the job. The time format
-               is `yyyy-MM-dd HH:mm:ss`. Start immediately by default. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] status: Status.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the DRS job.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] type: Specifies the job type. Changing this parameter will create a new
-               resource. The options are as follows:
-               + **migration**: Online Migration.
-               + **sync**: Data Synchronization.
-               + **cloudDataGuard**: Disaster Recovery.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1335,239 +721,115 @@ class Job(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:
-        """
-        Create time. The format is ISO8601:YYYY-MM-DDThh:mm:ssZ
-        """
         return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the description of the job, which contain a
-        maximum of 256 characters, and certain special characters (including !<>&'"\\\\) are not allowed.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="destinationDb")
     def destination_db(self) -> pulumi.Output['outputs.JobDestinationDb']:
-        """
-        Specifies the destination database configuration.
-        The `db_info` object structure of the `destination_db` is documented below.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "destination_db")
 
     @_builtins.property
     @pulumi.getter(name="destinationDbReadnoly")
     def destination_db_readnoly(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies the destination DB instance as read-only helps
-        ensure the migration is successful. Once the migration is complete, the DB instance automatically changes to
-        Read/Write. The default value is `true`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "destination_db_readnoly")
 
     @_builtins.property
     @pulumi.getter
     def direction(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the direction of data flow.
-        Changing this parameter will create a new resource. The options are as follows:
-        + **up**: To the cloud. The destination database must be a database in the current cloud.
-        + **down**: Out of the cloud. The source database must be a database in the current cloud.
-        + **non-dbs**: self-built database.
-        """
         return pulumi.get(self, "direction")
 
     @_builtins.property
     @pulumi.getter(name="engineType")
     def engine_type(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the migration engine type.
-        Changing this parameter will create a new resource. The options are as follows:
-        + **mysql**:  MySQL migration, MySQL synchronization use.
-        + **mongodb**: Mongodb migration use.
-        + **cloudDataGuard-mysql**: Disaster recovery use.
-        + **gaussdbv5**: GaussDB (for openGauss) synchronization use.
-        + **mysql-to-kafka**: Synchronization from MySQL to Kafka use.
-        + **taurus-to-kafka**: Synchronization from GaussDB(for MySQL) to Kafka use.
-        + **gaussdbv5ha-to-kafka**: Synchronization from GaussDB primary/standby to Kafka use.
-        + **postgresql**: Synchronization from PostgreSQL to PostgreSQL use.
-        """
         return pulumi.get(self, "engine_type")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the enterprise project id.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
     @pulumi.getter(name="expiredDays")
     def expired_days(self) -> pulumi.Output[Optional[_builtins.int]]:
-        """
-        Specifies how many days after the task is abnormal, it will automatically
-        end. The value ranges from 14 to 100. the default value is `14`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "expired_days")
 
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether to forcibly destroy the job even if it is running.
-        The default value is `false`.
-        """
         return pulumi.get(self, "force_destroy")
 
     @_builtins.property
     @pulumi.getter(name="limitSpeeds")
     def limit_speeds(self) -> pulumi.Output[Optional[Sequence['outputs.JobLimitSpeed']]]:
-        """
-        Specifies the migration speed by setting a time period.
-        The default is no speed limit. The maximum length is 3. Structure is documented below.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "limit_speeds")
 
     @_builtins.property
     @pulumi.getter(name="migrateDefiner")
     def migrate_definer(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether to migrate the definers of all source database
-        objects to the `user` of `destination_db`. The default value is `true`.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "migrate_definer")
 
     @_builtins.property
     @pulumi.getter(name="migrationType")
     def migration_type(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies migration type.
-        Changing this parameter will create a new resource. The options are as follows:
-        + **FULL_TRANS**: Full migration. Suitable for scenarios where services can be interrupted. It migrates all database
-        objects and data, in a non-system database, to a destination database at a time.
-        + **INCR_TRANS**: Incremental migration. Suitable for migration from an on-premises self-built database to a
-        destination cloud database, or from one cloud database to another in a different region.
-        + **FULL_INCR_TRANS**:  Full+Incremental migration. This allows to migrate data with minimal downtime. After a full
-        migration initializes the destination database, an incremental migration parses logs to ensure data consistency
-        between the source and destination databases.
-
-        The default value is `FULL_INCR_TRANS`.
-        """
         return pulumi.get(self, "migration_type")
 
     @_builtins.property
     @pulumi.getter(name="multiWrite")
     def multi_write(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether to enable multi write. It is mandatory when `type`
-        is `cloudDataGuard`. When the disaster recovery type is dual-active disaster recovery, set `multi_write` to `true`,
-        otherwise to `false`. The default value is `false`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "multi_write")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the job name. The name consists of 4 to 50 characters, starting with
-        a letter. Only letters, digits, underscores (\\_) and hyphens (-) are allowed.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="netType")
     def net_type(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the network type.
-        Changing this parameter will create a new resource. The options are as follows:
-        + **eip**: suitable for migration from an on-premises or other cloud database to a destination cloud database.
-        An EIP will be automatically bound to the replication instance and released after the replication task is complete.
-        + **vpc**: suitable for migration from one cloud database to another.
-        + **vpn**: suitable for migration from an on-premises self-built database to a destination cloud database,
-        or from one cloud database to another in a different region.
-
-        The default value is `eip`.
-        """
         return pulumi.get(self, "net_type")
 
     @_builtins.property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> pulumi.Output[_builtins.str]:
-        """
-        Private IP.
-        """
         return pulumi.get(self, "private_ip")
 
     @_builtins.property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> pulumi.Output[_builtins.str]:
-        """
-        Public IP.
-        """
         return pulumi.get(self, "public_ip")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the resource. If omitted, the
-        provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="sourceDb")
     def source_db(self) -> pulumi.Output['outputs.JobSourceDb']:
-        """
-        Specifies the source database configuration.
-        The `db_info` object structure of the `source_db` is documented below.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "source_db")
 
     @_builtins.property
     @pulumi.getter(name="startTime")
     def start_time(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the time to start the job. The time format
-        is `yyyy-MM-dd HH:mm:ss`. Start immediately by default. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "start_time")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
-        """
-        Status.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        Specifies the key/value pairs to associate with the DRS job.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the job type. Changing this parameter will create a new
-        resource. The options are as follows:
-        + **migration**: Online Migration.
-        + **sync**: Data Synchronization.
-        + **cloudDataGuard**: Disaster Recovery.
-        """
         return pulumi.get(self, "type")
 

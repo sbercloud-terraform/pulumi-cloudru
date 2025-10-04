@@ -12,98 +12,12 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a cluster in the Data Warehouse Service.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/dws"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/vpc"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			availabilityZone := cfg.RequireObject("availabilityZone")
-//			dwsClusterName := cfg.RequireObject("dwsClusterName")
-//			userName := cfg.RequireObject("userName")
-//			userPwd := cfg.RequireObject("userPwd")
-//			vpcId := cfg.RequireObject("vpcId")
-//			networkId := cfg.RequireObject("networkId")
-//			secgroup, err := vpc.NewSecgroup(ctx, "secgroup", &vpc.SecgroupArgs{
-//				Name:        pulumi.String("sg_dws"),
-//				Description: pulumi.String("terraform security group"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = dws.NewCluster(ctx, "cluster", &dws.ClusterArgs{
-//				Name:             pulumi.Any(dwsClusterName),
-//				NodeType:         pulumi.String("dws.m3.xlarge"),
-//				NumberOfNode:     pulumi.Int(3),
-//				AvailabilityZone: pulumi.Any(availabilityZone),
-//				UserName:         pulumi.Any(userName),
-//				UserPwd:          pulumi.Any(userPwd),
-//				VpcId:            pulumi.Any(vpcId),
-//				NetworkId:        pulumi.Any(networkId),
-//				SecurityGroupId:  secgroup.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Cluster can be imported using the following format:
-//
-// ```sh
-// $ pulumi import sbercloud:Dws/cluster:Cluster test 47ad727e-9dcc-4833-bde0-bb298607c719
-// ```
-//
-// # Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-//
-// API response, security or some other reason. The missing attributes include: `user_pwd`, `number_of_cn`.
-//
-// It is generally recommended running `pulumi preview` after importing a cluster.
-//
-// # You can then decide if changes should be applied to the cluster, or the resource definition
-//
-// should be updated to align with the cluster. Also you can ignore changes as below.
-//
-// resource "sbercloud_dws_cluster" "test" {
-//
-//	  ...
-//
-//	lifecycle {
-//
-//	  ignore_changes = [
-//
-//	    user_pwd, number_of_cn,
-//
-//	  ]
-//
-//	}
-//
-// }
 type Cluster struct {
 	pulumi.CustomResourceState
 
-	// AZ in a cluster.
-	// Changing this creates a new cluster resource.
+	// The availability zone in which to create the cluster instance.
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
-	// Cluster creation time. The format is ISO8601:YYYY-MM-DDThh:mm:ssZ
+	// The creation time of the cluster.
 	Created pulumi.StringOutput `pulumi:"created"`
 	// The description of the cluster.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -113,11 +27,9 @@ type Cluster struct {
 	ElbId pulumi.StringPtrOutput `pulumi:"elbId"`
 	// The ELB information bound to the cluster.
 	Elbs ClusterElbArrayOutput `pulumi:"elbs"`
-	// View the private network connection information about the cluster. Structure is documented below.
+	// Private network connection information about the cluster.
 	Endpoints ClusterEndpointArrayOutput `pulumi:"endpoints"`
-	// The enterprise project id of the dws cluster,
-	// Value 0 indicates the default enterprise project.
-	// Changing this creates a new cluster resource.
+	// The enterprise project ID.
 	EnterpriseProjectId pulumi.StringOutput `pulumi:"enterpriseProjectId"`
 	// Whether to automatically execute snapshot when shrinking the number of nodes.
 	ForceBackup pulumi.BoolPtrOutput `pulumi:"forceBackup"`
@@ -131,74 +43,45 @@ type Cluster struct {
 	LtsEnable pulumi.BoolPtrOutput `pulumi:"ltsEnable"`
 	// Cluster maintenance window.
 	MaintainWindows ClusterMaintainWindowArrayOutput `pulumi:"maintainWindows"`
-	// Cluster name, which must be unique and contains 4 to 64 characters, which
-	// consist of letters, digits, hyphens(-), or underscores(_) only and must start with a letter.
-	// Changing this creates a new cluster resource.
+	// The cluster name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Network ID, which is used for configuring cluster network.
-	// Changing this creates a new cluster resource.
+	// The subnet ID.
 	NetworkId pulumi.StringOutput `pulumi:"networkId"`
-	// Node type.
-	// Changing this creates a new cluster resource.
+	// The flavor of the cluster.
 	NodeType pulumi.StringOutput `pulumi:"nodeType"`
-	// The number of CN. If you use a large-scale cluster, deploy multiple CNs.
-	// Changing this creates a new cluster resource.
+	// schema: Required
 	NumberOfCn pulumi.IntPtrOutput `pulumi:"numberOfCn"`
-	// Number of nodes in a cluster. The value ranges from 3 to 32. When expanding,
-	// add at least 3 nodes.
+	// Number of nodes in a cluster.
 	NumberOfNode pulumi.IntOutput `pulumi:"numberOfNode"`
 	// Service port of a cluster (8000 to 10000). The default value is 8000.
-	// Changing this creates a new cluster resource.
 	Port pulumi.IntPtrOutput `pulumi:"port"`
-	// List of private network IP address.
+	// List of private network IP addresses.
 	PrivateIps pulumi.StringArrayOutput `pulumi:"privateIps"`
-	// Public network connection information about the cluster. If the value is not specified, the
-	// public network connection information is not used by default Structure is documented below.
+	// Public network connection information about the cluster.
 	PublicEndpoints ClusterPublicEndpointArrayOutput `pulumi:"publicEndpoints"`
-	// A nested object resource Structure is documented below.
-	// Changing this creates a new cluster resource.
-	PublicIp ClusterPublicIpOutput `pulumi:"publicIp"`
-	// The recent event number.
-	RecentEvent pulumi.IntOutput `pulumi:"recentEvent"`
-	// The region in which to create the cluster resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new cluster resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// ID of a security group. The ID is used for configuring cluster
-	// network.
-	// Changing this creates a new cluster resource.
+	PublicIp        ClusterPublicIpOutput            `pulumi:"publicIp"`
+	RecentEvent     pulumi.IntOutput                 `pulumi:"recentEvent"`
+	Region          pulumi.StringOutput              `pulumi:"region"`
+	// The security group ID.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
-	// Cluster status, which can be one of the following:  CREATING AVAILABLE UNAVAILABLE CREATION FAILED.
+	// The cluster status.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Sub-status of clusters in the AVAILABLE state. The value can be one of the following:  NORMAL READONLY
-	// REDISTRIBUTING REDISTRIBUTION-FAILURE UNBALANCED UNBALANCED | READONLY DEGRADED DEGRADED | READONLY DEGRADED |
-	// UNBALANCED UNBALANCED | REDISTRIBUTING UNBALANCED | REDISTRIBUTION-FAILURE READONLY | REDISTRIBUTION-FAILURE
-	// UNBALANCED | READONLY | REDISTRIBUTION-FAILURE DEGRADED | REDISTRIBUTION-FAILURE DEGRADED | UNBALANCED |
-	// REDISTRIBUTION-FAILURE DEGRADED | UNBALANCED | READONLY | REDISTRIBUTION-FAILURE DEGRADED | UNBALANCED | READONLY
+	// Sub-status of clusters in the AVAILABLE state.
 	SubStatus pulumi.StringOutput `pulumi:"subStatus"`
 	// The key/value pairs to associate with the cluster.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Cluster management task. The value can be one of the following:
-	// RESTORING SNAPSHOTTING GROWING REBOOTING SETTING_CONFIGURATION CONFIGURING_EXT_DATASOURCE DELETING_EXT_DATASOURCE
-	// REBOOT_FAILURE RESIZE_FAILURE
+	// Cluster management task.
 	TaskStatus pulumi.StringOutput `pulumi:"taskStatus"`
-	// Last modification time of a cluster. The format is ISO8601:YYYY-MM-DDThh:mm:ssZ
+	// The updated time of the cluster.
 	Updated pulumi.StringOutput `pulumi:"updated"`
-	// Administrator username for logging in to a data warehouse cluster The
-	// administrator username must:  Consist of lowercase letters, digits, or underscores. Start with a lowercase letter or
-	// an underscore. Contain 1 to 63 characters. Cannot be a keyword of the DWS database.
-	// Changing this creates a new cluster resource.
+	// Administrator username for logging in to a data warehouse cluster.
 	UserName pulumi.StringOutput `pulumi:"userName"`
-	// Administrator password for logging in to a data warehouse cluster A password
-	// must conform to the following rules:  Contains 8 to 32 characters. Cannot be the same as the username or the username
-	// written in reverse order. Contains three types of the following:
-	// Lowercase letters Uppercase letters Digits Special characters
-	// ~!@#%^&*()-_=+|[{}];:,<.>/?
+	// Administrator password for logging in to a data warehouse cluster.
 	UserPwd pulumi.StringOutput `pulumi:"userPwd"`
-	// Data warehouse version.
+	// schema: Required
 	Version pulumi.StringOutput `pulumi:"version"`
 	Volume  ClusterVolumeOutput `pulumi:"volume"`
-	// VPC ID, which is used for configuring cluster network.
-	// Changing this creates a new cluster resource.
+	// The VPC ID.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 }
 
@@ -263,10 +146,9 @@ func GetCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cluster resources.
 type clusterState struct {
-	// AZ in a cluster.
-	// Changing this creates a new cluster resource.
+	// The availability zone in which to create the cluster instance.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Cluster creation time. The format is ISO8601:YYYY-MM-DDThh:mm:ssZ
+	// The creation time of the cluster.
 	Created *string `pulumi:"created"`
 	// The description of the cluster.
 	Description *string `pulumi:"description"`
@@ -276,11 +158,9 @@ type clusterState struct {
 	ElbId *string `pulumi:"elbId"`
 	// The ELB information bound to the cluster.
 	Elbs []ClusterElb `pulumi:"elbs"`
-	// View the private network connection information about the cluster. Structure is documented below.
+	// Private network connection information about the cluster.
 	Endpoints []ClusterEndpoint `pulumi:"endpoints"`
-	// The enterprise project id of the dws cluster,
-	// Value 0 indicates the default enterprise project.
-	// Changing this creates a new cluster resource.
+	// The enterprise project ID.
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
 	// Whether to automatically execute snapshot when shrinking the number of nodes.
 	ForceBackup *bool `pulumi:"forceBackup"`
@@ -294,82 +174,52 @@ type clusterState struct {
 	LtsEnable *bool `pulumi:"ltsEnable"`
 	// Cluster maintenance window.
 	MaintainWindows []ClusterMaintainWindow `pulumi:"maintainWindows"`
-	// Cluster name, which must be unique and contains 4 to 64 characters, which
-	// consist of letters, digits, hyphens(-), or underscores(_) only and must start with a letter.
-	// Changing this creates a new cluster resource.
+	// The cluster name.
 	Name *string `pulumi:"name"`
-	// Network ID, which is used for configuring cluster network.
-	// Changing this creates a new cluster resource.
+	// The subnet ID.
 	NetworkId *string `pulumi:"networkId"`
-	// Node type.
-	// Changing this creates a new cluster resource.
+	// The flavor of the cluster.
 	NodeType *string `pulumi:"nodeType"`
-	// The number of CN. If you use a large-scale cluster, deploy multiple CNs.
-	// Changing this creates a new cluster resource.
+	// schema: Required
 	NumberOfCn *int `pulumi:"numberOfCn"`
-	// Number of nodes in a cluster. The value ranges from 3 to 32. When expanding,
-	// add at least 3 nodes.
+	// Number of nodes in a cluster.
 	NumberOfNode *int `pulumi:"numberOfNode"`
 	// Service port of a cluster (8000 to 10000). The default value is 8000.
-	// Changing this creates a new cluster resource.
 	Port *int `pulumi:"port"`
-	// List of private network IP address.
+	// List of private network IP addresses.
 	PrivateIps []string `pulumi:"privateIps"`
-	// Public network connection information about the cluster. If the value is not specified, the
-	// public network connection information is not used by default Structure is documented below.
+	// Public network connection information about the cluster.
 	PublicEndpoints []ClusterPublicEndpoint `pulumi:"publicEndpoints"`
-	// A nested object resource Structure is documented below.
-	// Changing this creates a new cluster resource.
-	PublicIp *ClusterPublicIp `pulumi:"publicIp"`
-	// The recent event number.
-	RecentEvent *int `pulumi:"recentEvent"`
-	// The region in which to create the cluster resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new cluster resource.
-	Region *string `pulumi:"region"`
-	// ID of a security group. The ID is used for configuring cluster
-	// network.
-	// Changing this creates a new cluster resource.
+	PublicIp        *ClusterPublicIp        `pulumi:"publicIp"`
+	RecentEvent     *int                    `pulumi:"recentEvent"`
+	Region          *string                 `pulumi:"region"`
+	// The security group ID.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// Cluster status, which can be one of the following:  CREATING AVAILABLE UNAVAILABLE CREATION FAILED.
+	// The cluster status.
 	Status *string `pulumi:"status"`
-	// Sub-status of clusters in the AVAILABLE state. The value can be one of the following:  NORMAL READONLY
-	// REDISTRIBUTING REDISTRIBUTION-FAILURE UNBALANCED UNBALANCED | READONLY DEGRADED DEGRADED | READONLY DEGRADED |
-	// UNBALANCED UNBALANCED | REDISTRIBUTING UNBALANCED | REDISTRIBUTION-FAILURE READONLY | REDISTRIBUTION-FAILURE
-	// UNBALANCED | READONLY | REDISTRIBUTION-FAILURE DEGRADED | REDISTRIBUTION-FAILURE DEGRADED | UNBALANCED |
-	// REDISTRIBUTION-FAILURE DEGRADED | UNBALANCED | READONLY | REDISTRIBUTION-FAILURE DEGRADED | UNBALANCED | READONLY
+	// Sub-status of clusters in the AVAILABLE state.
 	SubStatus *string `pulumi:"subStatus"`
 	// The key/value pairs to associate with the cluster.
 	Tags map[string]string `pulumi:"tags"`
-	// Cluster management task. The value can be one of the following:
-	// RESTORING SNAPSHOTTING GROWING REBOOTING SETTING_CONFIGURATION CONFIGURING_EXT_DATASOURCE DELETING_EXT_DATASOURCE
-	// REBOOT_FAILURE RESIZE_FAILURE
+	// Cluster management task.
 	TaskStatus *string `pulumi:"taskStatus"`
-	// Last modification time of a cluster. The format is ISO8601:YYYY-MM-DDThh:mm:ssZ
+	// The updated time of the cluster.
 	Updated *string `pulumi:"updated"`
-	// Administrator username for logging in to a data warehouse cluster The
-	// administrator username must:  Consist of lowercase letters, digits, or underscores. Start with a lowercase letter or
-	// an underscore. Contain 1 to 63 characters. Cannot be a keyword of the DWS database.
-	// Changing this creates a new cluster resource.
+	// Administrator username for logging in to a data warehouse cluster.
 	UserName *string `pulumi:"userName"`
-	// Administrator password for logging in to a data warehouse cluster A password
-	// must conform to the following rules:  Contains 8 to 32 characters. Cannot be the same as the username or the username
-	// written in reverse order. Contains three types of the following:
-	// Lowercase letters Uppercase letters Digits Special characters
-	// ~!@#%^&*()-_=+|[{}];:,<.>/?
+	// Administrator password for logging in to a data warehouse cluster.
 	UserPwd *string `pulumi:"userPwd"`
-	// Data warehouse version.
+	// schema: Required
 	Version *string        `pulumi:"version"`
 	Volume  *ClusterVolume `pulumi:"volume"`
-	// VPC ID, which is used for configuring cluster network.
-	// Changing this creates a new cluster resource.
+	// The VPC ID.
 	VpcId *string `pulumi:"vpcId"`
 }
 
 type ClusterState struct {
-	// AZ in a cluster.
-	// Changing this creates a new cluster resource.
+	// The availability zone in which to create the cluster instance.
 	AvailabilityZone pulumi.StringPtrInput
-	// Cluster creation time. The format is ISO8601:YYYY-MM-DDThh:mm:ssZ
+	// The creation time of the cluster.
 	Created pulumi.StringPtrInput
 	// The description of the cluster.
 	Description pulumi.StringPtrInput
@@ -379,11 +229,9 @@ type ClusterState struct {
 	ElbId pulumi.StringPtrInput
 	// The ELB information bound to the cluster.
 	Elbs ClusterElbArrayInput
-	// View the private network connection information about the cluster. Structure is documented below.
+	// Private network connection information about the cluster.
 	Endpoints ClusterEndpointArrayInput
-	// The enterprise project id of the dws cluster,
-	// Value 0 indicates the default enterprise project.
-	// Changing this creates a new cluster resource.
+	// The enterprise project ID.
 	EnterpriseProjectId pulumi.StringPtrInput
 	// Whether to automatically execute snapshot when shrinking the number of nodes.
 	ForceBackup pulumi.BoolPtrInput
@@ -397,74 +245,45 @@ type ClusterState struct {
 	LtsEnable pulumi.BoolPtrInput
 	// Cluster maintenance window.
 	MaintainWindows ClusterMaintainWindowArrayInput
-	// Cluster name, which must be unique and contains 4 to 64 characters, which
-	// consist of letters, digits, hyphens(-), or underscores(_) only and must start with a letter.
-	// Changing this creates a new cluster resource.
+	// The cluster name.
 	Name pulumi.StringPtrInput
-	// Network ID, which is used for configuring cluster network.
-	// Changing this creates a new cluster resource.
+	// The subnet ID.
 	NetworkId pulumi.StringPtrInput
-	// Node type.
-	// Changing this creates a new cluster resource.
+	// The flavor of the cluster.
 	NodeType pulumi.StringPtrInput
-	// The number of CN. If you use a large-scale cluster, deploy multiple CNs.
-	// Changing this creates a new cluster resource.
+	// schema: Required
 	NumberOfCn pulumi.IntPtrInput
-	// Number of nodes in a cluster. The value ranges from 3 to 32. When expanding,
-	// add at least 3 nodes.
+	// Number of nodes in a cluster.
 	NumberOfNode pulumi.IntPtrInput
 	// Service port of a cluster (8000 to 10000). The default value is 8000.
-	// Changing this creates a new cluster resource.
 	Port pulumi.IntPtrInput
-	// List of private network IP address.
+	// List of private network IP addresses.
 	PrivateIps pulumi.StringArrayInput
-	// Public network connection information about the cluster. If the value is not specified, the
-	// public network connection information is not used by default Structure is documented below.
+	// Public network connection information about the cluster.
 	PublicEndpoints ClusterPublicEndpointArrayInput
-	// A nested object resource Structure is documented below.
-	// Changing this creates a new cluster resource.
-	PublicIp ClusterPublicIpPtrInput
-	// The recent event number.
-	RecentEvent pulumi.IntPtrInput
-	// The region in which to create the cluster resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new cluster resource.
-	Region pulumi.StringPtrInput
-	// ID of a security group. The ID is used for configuring cluster
-	// network.
-	// Changing this creates a new cluster resource.
+	PublicIp        ClusterPublicIpPtrInput
+	RecentEvent     pulumi.IntPtrInput
+	Region          pulumi.StringPtrInput
+	// The security group ID.
 	SecurityGroupId pulumi.StringPtrInput
-	// Cluster status, which can be one of the following:  CREATING AVAILABLE UNAVAILABLE CREATION FAILED.
+	// The cluster status.
 	Status pulumi.StringPtrInput
-	// Sub-status of clusters in the AVAILABLE state. The value can be one of the following:  NORMAL READONLY
-	// REDISTRIBUTING REDISTRIBUTION-FAILURE UNBALANCED UNBALANCED | READONLY DEGRADED DEGRADED | READONLY DEGRADED |
-	// UNBALANCED UNBALANCED | REDISTRIBUTING UNBALANCED | REDISTRIBUTION-FAILURE READONLY | REDISTRIBUTION-FAILURE
-	// UNBALANCED | READONLY | REDISTRIBUTION-FAILURE DEGRADED | REDISTRIBUTION-FAILURE DEGRADED | UNBALANCED |
-	// REDISTRIBUTION-FAILURE DEGRADED | UNBALANCED | READONLY | REDISTRIBUTION-FAILURE DEGRADED | UNBALANCED | READONLY
+	// Sub-status of clusters in the AVAILABLE state.
 	SubStatus pulumi.StringPtrInput
 	// The key/value pairs to associate with the cluster.
 	Tags pulumi.StringMapInput
-	// Cluster management task. The value can be one of the following:
-	// RESTORING SNAPSHOTTING GROWING REBOOTING SETTING_CONFIGURATION CONFIGURING_EXT_DATASOURCE DELETING_EXT_DATASOURCE
-	// REBOOT_FAILURE RESIZE_FAILURE
+	// Cluster management task.
 	TaskStatus pulumi.StringPtrInput
-	// Last modification time of a cluster. The format is ISO8601:YYYY-MM-DDThh:mm:ssZ
+	// The updated time of the cluster.
 	Updated pulumi.StringPtrInput
-	// Administrator username for logging in to a data warehouse cluster The
-	// administrator username must:  Consist of lowercase letters, digits, or underscores. Start with a lowercase letter or
-	// an underscore. Contain 1 to 63 characters. Cannot be a keyword of the DWS database.
-	// Changing this creates a new cluster resource.
+	// Administrator username for logging in to a data warehouse cluster.
 	UserName pulumi.StringPtrInput
-	// Administrator password for logging in to a data warehouse cluster A password
-	// must conform to the following rules:  Contains 8 to 32 characters. Cannot be the same as the username or the username
-	// written in reverse order. Contains three types of the following:
-	// Lowercase letters Uppercase letters Digits Special characters
-	// ~!@#%^&*()-_=+|[{}];:,<.>/?
+	// Administrator password for logging in to a data warehouse cluster.
 	UserPwd pulumi.StringPtrInput
-	// Data warehouse version.
+	// schema: Required
 	Version pulumi.StringPtrInput
 	Volume  ClusterVolumePtrInput
-	// VPC ID, which is used for configuring cluster network.
-	// Changing this creates a new cluster resource.
+	// The VPC ID.
 	VpcId pulumi.StringPtrInput
 }
 
@@ -473,8 +292,7 @@ func (ClusterState) ElementType() reflect.Type {
 }
 
 type clusterArgs struct {
-	// AZ in a cluster.
-	// Changing this creates a new cluster resource.
+	// The availability zone in which to create the cluster instance.
 	AvailabilityZone string `pulumi:"availabilityZone"`
 	// The description of the cluster.
 	Description *string `pulumi:"description"`
@@ -482,9 +300,7 @@ type clusterArgs struct {
 	DssPoolId *string `pulumi:"dssPoolId"`
 	// The ID of the ELB load balancer.
 	ElbId *string `pulumi:"elbId"`
-	// The enterprise project id of the dws cluster,
-	// Value 0 indicates the default enterprise project.
-	// Changing this creates a new cluster resource.
+	// The enterprise project ID.
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
 	// Whether to automatically execute snapshot when shrinking the number of nodes.
 	ForceBackup *bool `pulumi:"forceBackup"`
@@ -496,60 +312,38 @@ type clusterArgs struct {
 	LogicalClusterEnable *bool `pulumi:"logicalClusterEnable"`
 	// Whether to enable LTS.
 	LtsEnable *bool `pulumi:"ltsEnable"`
-	// Cluster name, which must be unique and contains 4 to 64 characters, which
-	// consist of letters, digits, hyphens(-), or underscores(_) only and must start with a letter.
-	// Changing this creates a new cluster resource.
+	// The cluster name.
 	Name *string `pulumi:"name"`
-	// Network ID, which is used for configuring cluster network.
-	// Changing this creates a new cluster resource.
+	// The subnet ID.
 	NetworkId string `pulumi:"networkId"`
-	// Node type.
-	// Changing this creates a new cluster resource.
+	// The flavor of the cluster.
 	NodeType string `pulumi:"nodeType"`
-	// The number of CN. If you use a large-scale cluster, deploy multiple CNs.
-	// Changing this creates a new cluster resource.
+	// schema: Required
 	NumberOfCn *int `pulumi:"numberOfCn"`
-	// Number of nodes in a cluster. The value ranges from 3 to 32. When expanding,
-	// add at least 3 nodes.
+	// Number of nodes in a cluster.
 	NumberOfNode int `pulumi:"numberOfNode"`
 	// Service port of a cluster (8000 to 10000). The default value is 8000.
-	// Changing this creates a new cluster resource.
-	Port *int `pulumi:"port"`
-	// A nested object resource Structure is documented below.
-	// Changing this creates a new cluster resource.
+	Port     *int             `pulumi:"port"`
 	PublicIp *ClusterPublicIp `pulumi:"publicIp"`
-	// The region in which to create the cluster resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new cluster resource.
-	Region *string `pulumi:"region"`
-	// ID of a security group. The ID is used for configuring cluster
-	// network.
-	// Changing this creates a new cluster resource.
+	Region   *string          `pulumi:"region"`
+	// The security group ID.
 	SecurityGroupId string `pulumi:"securityGroupId"`
 	// The key/value pairs to associate with the cluster.
 	Tags map[string]string `pulumi:"tags"`
-	// Administrator username for logging in to a data warehouse cluster The
-	// administrator username must:  Consist of lowercase letters, digits, or underscores. Start with a lowercase letter or
-	// an underscore. Contain 1 to 63 characters. Cannot be a keyword of the DWS database.
-	// Changing this creates a new cluster resource.
+	// Administrator username for logging in to a data warehouse cluster.
 	UserName string `pulumi:"userName"`
-	// Administrator password for logging in to a data warehouse cluster A password
-	// must conform to the following rules:  Contains 8 to 32 characters. Cannot be the same as the username or the username
-	// written in reverse order. Contains three types of the following:
-	// Lowercase letters Uppercase letters Digits Special characters
-	// ~!@#%^&*()-_=+|[{}];:,<.>/?
+	// Administrator password for logging in to a data warehouse cluster.
 	UserPwd string `pulumi:"userPwd"`
-	// Data warehouse version.
+	// schema: Required
 	Version *string        `pulumi:"version"`
 	Volume  *ClusterVolume `pulumi:"volume"`
-	// VPC ID, which is used for configuring cluster network.
-	// Changing this creates a new cluster resource.
+	// The VPC ID.
 	VpcId string `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
-	// AZ in a cluster.
-	// Changing this creates a new cluster resource.
+	// The availability zone in which to create the cluster instance.
 	AvailabilityZone pulumi.StringInput
 	// The description of the cluster.
 	Description pulumi.StringPtrInput
@@ -557,9 +351,7 @@ type ClusterArgs struct {
 	DssPoolId pulumi.StringPtrInput
 	// The ID of the ELB load balancer.
 	ElbId pulumi.StringPtrInput
-	// The enterprise project id of the dws cluster,
-	// Value 0 indicates the default enterprise project.
-	// Changing this creates a new cluster resource.
+	// The enterprise project ID.
 	EnterpriseProjectId pulumi.StringPtrInput
 	// Whether to automatically execute snapshot when shrinking the number of nodes.
 	ForceBackup pulumi.BoolPtrInput
@@ -571,53 +363,32 @@ type ClusterArgs struct {
 	LogicalClusterEnable pulumi.BoolPtrInput
 	// Whether to enable LTS.
 	LtsEnable pulumi.BoolPtrInput
-	// Cluster name, which must be unique and contains 4 to 64 characters, which
-	// consist of letters, digits, hyphens(-), or underscores(_) only and must start with a letter.
-	// Changing this creates a new cluster resource.
+	// The cluster name.
 	Name pulumi.StringPtrInput
-	// Network ID, which is used for configuring cluster network.
-	// Changing this creates a new cluster resource.
+	// The subnet ID.
 	NetworkId pulumi.StringInput
-	// Node type.
-	// Changing this creates a new cluster resource.
+	// The flavor of the cluster.
 	NodeType pulumi.StringInput
-	// The number of CN. If you use a large-scale cluster, deploy multiple CNs.
-	// Changing this creates a new cluster resource.
+	// schema: Required
 	NumberOfCn pulumi.IntPtrInput
-	// Number of nodes in a cluster. The value ranges from 3 to 32. When expanding,
-	// add at least 3 nodes.
+	// Number of nodes in a cluster.
 	NumberOfNode pulumi.IntInput
 	// Service port of a cluster (8000 to 10000). The default value is 8000.
-	// Changing this creates a new cluster resource.
-	Port pulumi.IntPtrInput
-	// A nested object resource Structure is documented below.
-	// Changing this creates a new cluster resource.
+	Port     pulumi.IntPtrInput
 	PublicIp ClusterPublicIpPtrInput
-	// The region in which to create the cluster resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new cluster resource.
-	Region pulumi.StringPtrInput
-	// ID of a security group. The ID is used for configuring cluster
-	// network.
-	// Changing this creates a new cluster resource.
+	Region   pulumi.StringPtrInput
+	// The security group ID.
 	SecurityGroupId pulumi.StringInput
 	// The key/value pairs to associate with the cluster.
 	Tags pulumi.StringMapInput
-	// Administrator username for logging in to a data warehouse cluster The
-	// administrator username must:  Consist of lowercase letters, digits, or underscores. Start with a lowercase letter or
-	// an underscore. Contain 1 to 63 characters. Cannot be a keyword of the DWS database.
-	// Changing this creates a new cluster resource.
+	// Administrator username for logging in to a data warehouse cluster.
 	UserName pulumi.StringInput
-	// Administrator password for logging in to a data warehouse cluster A password
-	// must conform to the following rules:  Contains 8 to 32 characters. Cannot be the same as the username or the username
-	// written in reverse order. Contains three types of the following:
-	// Lowercase letters Uppercase letters Digits Special characters
-	// ~!@#%^&*()-_=+|[{}];:,<.>/?
+	// Administrator password for logging in to a data warehouse cluster.
 	UserPwd pulumi.StringInput
-	// Data warehouse version.
+	// schema: Required
 	Version pulumi.StringPtrInput
 	Volume  ClusterVolumePtrInput
-	// VPC ID, which is used for configuring cluster network.
-	// Changing this creates a new cluster resource.
+	// The VPC ID.
 	VpcId pulumi.StringInput
 }
 
@@ -708,13 +479,12 @@ func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOu
 	return o
 }
 
-// AZ in a cluster.
-// Changing this creates a new cluster resource.
+// The availability zone in which to create the cluster instance.
 func (o ClusterOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// Cluster creation time. The format is ISO8601:YYYY-MM-DDThh:mm:ssZ
+// The creation time of the cluster.
 func (o ClusterOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
 }
@@ -739,14 +509,12 @@ func (o ClusterOutput) Elbs() ClusterElbArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterElbArrayOutput { return v.Elbs }).(ClusterElbArrayOutput)
 }
 
-// View the private network connection information about the cluster. Structure is documented below.
+// Private network connection information about the cluster.
 func (o ClusterOutput) Endpoints() ClusterEndpointArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterEndpointArrayOutput { return v.Endpoints }).(ClusterEndpointArrayOutput)
 }
 
-// The enterprise project id of the dws cluster,
-// Value 0 indicates the default enterprise project.
-// Changing this creates a new cluster resource.
+// The enterprise project ID.
 func (o ClusterOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
@@ -781,88 +549,69 @@ func (o ClusterOutput) MaintainWindows() ClusterMaintainWindowArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterMaintainWindowArrayOutput { return v.MaintainWindows }).(ClusterMaintainWindowArrayOutput)
 }
 
-// Cluster name, which must be unique and contains 4 to 64 characters, which
-// consist of letters, digits, hyphens(-), or underscores(_) only and must start with a letter.
-// Changing this creates a new cluster resource.
+// The cluster name.
 func (o ClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Network ID, which is used for configuring cluster network.
-// Changing this creates a new cluster resource.
+// The subnet ID.
 func (o ClusterOutput) NetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.NetworkId }).(pulumi.StringOutput)
 }
 
-// Node type.
-// Changing this creates a new cluster resource.
+// The flavor of the cluster.
 func (o ClusterOutput) NodeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.NodeType }).(pulumi.StringOutput)
 }
 
-// The number of CN. If you use a large-scale cluster, deploy multiple CNs.
-// Changing this creates a new cluster resource.
+// schema: Required
 func (o ClusterOutput) NumberOfCn() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.NumberOfCn }).(pulumi.IntPtrOutput)
 }
 
-// Number of nodes in a cluster. The value ranges from 3 to 32. When expanding,
-// add at least 3 nodes.
+// Number of nodes in a cluster.
 func (o ClusterOutput) NumberOfNode() pulumi.IntOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.NumberOfNode }).(pulumi.IntOutput)
 }
 
 // Service port of a cluster (8000 to 10000). The default value is 8000.
-// Changing this creates a new cluster resource.
 func (o ClusterOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// List of private network IP address.
+// List of private network IP addresses.
 func (o ClusterOutput) PrivateIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.PrivateIps }).(pulumi.StringArrayOutput)
 }
 
-// Public network connection information about the cluster. If the value is not specified, the
-// public network connection information is not used by default Structure is documented below.
+// Public network connection information about the cluster.
 func (o ClusterOutput) PublicEndpoints() ClusterPublicEndpointArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterPublicEndpointArrayOutput { return v.PublicEndpoints }).(ClusterPublicEndpointArrayOutput)
 }
 
-// A nested object resource Structure is documented below.
-// Changing this creates a new cluster resource.
 func (o ClusterOutput) PublicIp() ClusterPublicIpOutput {
 	return o.ApplyT(func(v *Cluster) ClusterPublicIpOutput { return v.PublicIp }).(ClusterPublicIpOutput)
 }
 
-// The recent event number.
 func (o ClusterOutput) RecentEvent() pulumi.IntOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.RecentEvent }).(pulumi.IntOutput)
 }
 
-// The region in which to create the cluster resource. If omitted, the
-// provider-level region will be used. Changing this creates a new cluster resource.
 func (o ClusterOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// ID of a security group. The ID is used for configuring cluster
-// network.
-// Changing this creates a new cluster resource.
+// The security group ID.
 func (o ClusterOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
-// Cluster status, which can be one of the following:  CREATING AVAILABLE UNAVAILABLE CREATION FAILED.
+// The cluster status.
 func (o ClusterOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Sub-status of clusters in the AVAILABLE state. The value can be one of the following:  NORMAL READONLY
-// REDISTRIBUTING REDISTRIBUTION-FAILURE UNBALANCED UNBALANCED | READONLY DEGRADED DEGRADED | READONLY DEGRADED |
-// UNBALANCED UNBALANCED | REDISTRIBUTING UNBALANCED | REDISTRIBUTION-FAILURE READONLY | REDISTRIBUTION-FAILURE
-// UNBALANCED | READONLY | REDISTRIBUTION-FAILURE DEGRADED | REDISTRIBUTION-FAILURE DEGRADED | UNBALANCED |
-// REDISTRIBUTION-FAILURE DEGRADED | UNBALANCED | READONLY | REDISTRIBUTION-FAILURE DEGRADED | UNBALANCED | READONLY
+// Sub-status of clusters in the AVAILABLE state.
 func (o ClusterOutput) SubStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.SubStatus }).(pulumi.StringOutput)
 }
@@ -872,36 +621,27 @@ func (o ClusterOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Cluster management task. The value can be one of the following:
-// RESTORING SNAPSHOTTING GROWING REBOOTING SETTING_CONFIGURATION CONFIGURING_EXT_DATASOURCE DELETING_EXT_DATASOURCE
-// REBOOT_FAILURE RESIZE_FAILURE
+// Cluster management task.
 func (o ClusterOutput) TaskStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.TaskStatus }).(pulumi.StringOutput)
 }
 
-// Last modification time of a cluster. The format is ISO8601:YYYY-MM-DDThh:mm:ssZ
+// The updated time of the cluster.
 func (o ClusterOutput) Updated() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Updated }).(pulumi.StringOutput)
 }
 
-// Administrator username for logging in to a data warehouse cluster The
-// administrator username must:  Consist of lowercase letters, digits, or underscores. Start with a lowercase letter or
-// an underscore. Contain 1 to 63 characters. Cannot be a keyword of the DWS database.
-// Changing this creates a new cluster resource.
+// Administrator username for logging in to a data warehouse cluster.
 func (o ClusterOutput) UserName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.UserName }).(pulumi.StringOutput)
 }
 
-// Administrator password for logging in to a data warehouse cluster A password
-// must conform to the following rules:  Contains 8 to 32 characters. Cannot be the same as the username or the username
-// written in reverse order. Contains three types of the following:
-// Lowercase letters Uppercase letters Digits Special characters
-// ~!@#%^&*()-_=+|[{}];:,<.>/?
+// Administrator password for logging in to a data warehouse cluster.
 func (o ClusterOutput) UserPwd() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.UserPwd }).(pulumi.StringOutput)
 }
 
-// Data warehouse version.
+// schema: Required
 func (o ClusterOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
 }
@@ -910,8 +650,7 @@ func (o ClusterOutput) Volume() ClusterVolumeOutput {
 	return o.ApplyT(func(v *Cluster) ClusterVolumeOutput { return v.Volume }).(ClusterVolumeOutput)
 }
 
-// VPC ID, which is used for configuring cluster network.
-// Changing this creates a new cluster resource.
+// The VPC ID.
 func (o ClusterOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }

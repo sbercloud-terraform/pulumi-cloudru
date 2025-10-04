@@ -35,38 +35,18 @@ class PolicyArgs:
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Policy resource.
-        :param pulumi.Input['PolicyBackupCycleArgs'] backup_cycle: Specifies the scheduling rule for the CBR policy backup execution.
-               The object structure is documented below.
-        :param pulumi.Input[_builtins.str] type: Specifies the protection type of the CBR policy.
-               Valid values are **backup** and **replication**.
-               Changing this will create a new policy.
-        :param pulumi.Input[_builtins.int] backup_quantity: Specifies the maximum number of retained backups. The value ranges from `2` to
-               `99,999`. This parameter and `time_period` are alternative.
-        :param pulumi.Input[_builtins.str] destination_project_id: Specifies the ID of the replication destination project, which is
-               mandatory for cross-region replication. Required if `protection_type` is **replication**.
-        :param pulumi.Input[_builtins.str] destination_region: Specifies the name of the replication destination region, which is mandatory
-               for cross-region replication. Required if `protection_type` is **replication**.
+        :param pulumi.Input['PolicyBackupCycleArgs'] backup_cycle: The scheduling rule for the CBR policy backup execution.
+        :param pulumi.Input[_builtins.str] type: The protection type of the CBR policy.
+        :param pulumi.Input[_builtins.int] backup_quantity: The maximum number of retained backups.
+        :param pulumi.Input[_builtins.str] destination_project_id: The ID of the replication destination project.
+        :param pulumi.Input[_builtins.str] destination_region: The name of the replication destination region.
         :param pulumi.Input[_builtins.bool] enable_acceleration: Whether to enable the acceleration function to shorten the replication time for cross-region
-        :param pulumi.Input[_builtins.bool] enabled: Specifies whether to enable the CBR policy. Default to **true**.
-        :param pulumi.Input['PolicyLongTermRetentionArgs'] long_term_retention: Specifies the long-term retention rules, which is an advanced options of
-               the `backup_quantity`. The object structure is documented below.
-               
-               > The configuration of `long_term_retention` and `backup_quantity` will take effect together.
-               When the number of retained backups exceeds the preset value (number of `backup_quantity`), the system automatically
-               deletes the earliest backups. By default, the system automatically clears data every other day.
-        :param pulumi.Input[_builtins.str] name: Specifies a unique name of the CBR policy. This parameter can contain a maximum of 64
-               characters, which may consist of chinese characters, letters, digits, underscores(_) and hyphens (-).
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the CBR policy. If omitted, the
-               provider-level region will be used. Changing this will create a new policy.
-        :param pulumi.Input[_builtins.int] time_period: Specifies the duration (in days) for retained backups. The value ranges from `2` to
-               `99,999`.
-               
-               > **NOTE:** If this `backup_quantity` and `time_period` are both left blank, the backups will be retained permanently.
-        :param pulumi.Input[_builtins.str] time_zone: Specifies the UTC time zone, e.g.: `UTC+08:00`.
-               Only available if `long_term_retention` is set.
-               
-               <a name="cbr_policy_backup_cycle"></a>
-               The `backup_cycle` block supports:
+        :param pulumi.Input[_builtins.bool] enabled: Whether to enable the CBR policy.
+        :param pulumi.Input['PolicyLongTermRetentionArgs'] long_term_retention: The long-term retention rules.
+        :param pulumi.Input[_builtins.str] name: The policy name.
+        :param pulumi.Input[_builtins.str] region: The region where the policy is located.
+        :param pulumi.Input[_builtins.int] time_period: The duration (in days) for retained backups.
+        :param pulumi.Input[_builtins.str] time_zone: The UTC time zone.
         """
         pulumi.set(__self__, "backup_cycle", backup_cycle)
         pulumi.set(__self__, "type", type)
@@ -95,8 +75,7 @@ class PolicyArgs:
     @pulumi.getter(name="backupCycle")
     def backup_cycle(self) -> pulumi.Input['PolicyBackupCycleArgs']:
         """
-        Specifies the scheduling rule for the CBR policy backup execution.
-        The object structure is documented below.
+        The scheduling rule for the CBR policy backup execution.
         """
         return pulumi.get(self, "backup_cycle")
 
@@ -108,9 +87,7 @@ class PolicyArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the protection type of the CBR policy.
-        Valid values are **backup** and **replication**.
-        Changing this will create a new policy.
+        The protection type of the CBR policy.
         """
         return pulumi.get(self, "type")
 
@@ -122,8 +99,7 @@ class PolicyArgs:
     @pulumi.getter(name="backupQuantity")
     def backup_quantity(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the maximum number of retained backups. The value ranges from `2` to
-        `99,999`. This parameter and `time_period` are alternative.
+        The maximum number of retained backups.
         """
         return pulumi.get(self, "backup_quantity")
 
@@ -135,8 +111,7 @@ class PolicyArgs:
     @pulumi.getter(name="destinationProjectId")
     def destination_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the ID of the replication destination project, which is
-        mandatory for cross-region replication. Required if `protection_type` is **replication**.
+        The ID of the replication destination project.
         """
         return pulumi.get(self, "destination_project_id")
 
@@ -148,8 +123,7 @@ class PolicyArgs:
     @pulumi.getter(name="destinationRegion")
     def destination_region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the name of the replication destination region, which is mandatory
-        for cross-region replication. Required if `protection_type` is **replication**.
+        The name of the replication destination region.
         """
         return pulumi.get(self, "destination_region")
 
@@ -173,7 +147,7 @@ class PolicyArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether to enable the CBR policy. Default to **true**.
+        Whether to enable the CBR policy.
         """
         return pulumi.get(self, "enabled")
 
@@ -185,12 +159,7 @@ class PolicyArgs:
     @pulumi.getter(name="longTermRetention")
     def long_term_retention(self) -> Optional[pulumi.Input['PolicyLongTermRetentionArgs']]:
         """
-        Specifies the long-term retention rules, which is an advanced options of
-        the `backup_quantity`. The object structure is documented below.
-
-        > The configuration of `long_term_retention` and `backup_quantity` will take effect together.
-        When the number of retained backups exceeds the preset value (number of `backup_quantity`), the system automatically
-        deletes the earliest backups. By default, the system automatically clears data every other day.
+        The long-term retention rules.
         """
         return pulumi.get(self, "long_term_retention")
 
@@ -202,8 +171,7 @@ class PolicyArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies a unique name of the CBR policy. This parameter can contain a maximum of 64
-        characters, which may consist of chinese characters, letters, digits, underscores(_) and hyphens (-).
+        The policy name.
         """
         return pulumi.get(self, "name")
 
@@ -215,8 +183,7 @@ class PolicyArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region in which to create the CBR policy. If omitted, the
-        provider-level region will be used. Changing this will create a new policy.
+        The region where the policy is located.
         """
         return pulumi.get(self, "region")
 
@@ -228,10 +195,7 @@ class PolicyArgs:
     @pulumi.getter(name="timePeriod")
     def time_period(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the duration (in days) for retained backups. The value ranges from `2` to
-        `99,999`.
-
-        > **NOTE:** If this `backup_quantity` and `time_period` are both left blank, the backups will be retained permanently.
+        The duration (in days) for retained backups.
         """
         return pulumi.get(self, "time_period")
 
@@ -243,11 +207,7 @@ class PolicyArgs:
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the UTC time zone, e.g.: `UTC+08:00`.
-        Only available if `long_term_retention` is set.
-
-        <a name="cbr_policy_backup_cycle"></a>
-        The `backup_cycle` block supports:
+        The UTC time zone.
         """
         return pulumi.get(self, "time_zone")
 
@@ -273,38 +233,18 @@ class _PolicyState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Policy resources.
-        :param pulumi.Input['PolicyBackupCycleArgs'] backup_cycle: Specifies the scheduling rule for the CBR policy backup execution.
-               The object structure is documented below.
-        :param pulumi.Input[_builtins.int] backup_quantity: Specifies the maximum number of retained backups. The value ranges from `2` to
-               `99,999`. This parameter and `time_period` are alternative.
-        :param pulumi.Input[_builtins.str] destination_project_id: Specifies the ID of the replication destination project, which is
-               mandatory for cross-region replication. Required if `protection_type` is **replication**.
-        :param pulumi.Input[_builtins.str] destination_region: Specifies the name of the replication destination region, which is mandatory
-               for cross-region replication. Required if `protection_type` is **replication**.
+        :param pulumi.Input['PolicyBackupCycleArgs'] backup_cycle: The scheduling rule for the CBR policy backup execution.
+        :param pulumi.Input[_builtins.int] backup_quantity: The maximum number of retained backups.
+        :param pulumi.Input[_builtins.str] destination_project_id: The ID of the replication destination project.
+        :param pulumi.Input[_builtins.str] destination_region: The name of the replication destination region.
         :param pulumi.Input[_builtins.bool] enable_acceleration: Whether to enable the acceleration function to shorten the replication time for cross-region
-        :param pulumi.Input[_builtins.bool] enabled: Specifies whether to enable the CBR policy. Default to **true**.
-        :param pulumi.Input['PolicyLongTermRetentionArgs'] long_term_retention: Specifies the long-term retention rules, which is an advanced options of
-               the `backup_quantity`. The object structure is documented below.
-               
-               > The configuration of `long_term_retention` and `backup_quantity` will take effect together.
-               When the number of retained backups exceeds the preset value (number of `backup_quantity`), the system automatically
-               deletes the earliest backups. By default, the system automatically clears data every other day.
-        :param pulumi.Input[_builtins.str] name: Specifies a unique name of the CBR policy. This parameter can contain a maximum of 64
-               characters, which may consist of chinese characters, letters, digits, underscores(_) and hyphens (-).
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the CBR policy. If omitted, the
-               provider-level region will be used. Changing this will create a new policy.
-        :param pulumi.Input[_builtins.int] time_period: Specifies the duration (in days) for retained backups. The value ranges from `2` to
-               `99,999`.
-               
-               > **NOTE:** If this `backup_quantity` and `time_period` are both left blank, the backups will be retained permanently.
-        :param pulumi.Input[_builtins.str] time_zone: Specifies the UTC time zone, e.g.: `UTC+08:00`.
-               Only available if `long_term_retention` is set.
-               
-               <a name="cbr_policy_backup_cycle"></a>
-               The `backup_cycle` block supports:
-        :param pulumi.Input[_builtins.str] type: Specifies the protection type of the CBR policy.
-               Valid values are **backup** and **replication**.
-               Changing this will create a new policy.
+        :param pulumi.Input[_builtins.bool] enabled: Whether to enable the CBR policy.
+        :param pulumi.Input['PolicyLongTermRetentionArgs'] long_term_retention: The long-term retention rules.
+        :param pulumi.Input[_builtins.str] name: The policy name.
+        :param pulumi.Input[_builtins.str] region: The region where the policy is located.
+        :param pulumi.Input[_builtins.int] time_period: The duration (in days) for retained backups.
+        :param pulumi.Input[_builtins.str] time_zone: The UTC time zone.
+        :param pulumi.Input[_builtins.str] type: The protection type of the CBR policy.
         """
         if backup_cycle is not None:
             pulumi.set(__self__, "backup_cycle", backup_cycle)
@@ -335,8 +275,7 @@ class _PolicyState:
     @pulumi.getter(name="backupCycle")
     def backup_cycle(self) -> Optional[pulumi.Input['PolicyBackupCycleArgs']]:
         """
-        Specifies the scheduling rule for the CBR policy backup execution.
-        The object structure is documented below.
+        The scheduling rule for the CBR policy backup execution.
         """
         return pulumi.get(self, "backup_cycle")
 
@@ -348,8 +287,7 @@ class _PolicyState:
     @pulumi.getter(name="backupQuantity")
     def backup_quantity(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the maximum number of retained backups. The value ranges from `2` to
-        `99,999`. This parameter and `time_period` are alternative.
+        The maximum number of retained backups.
         """
         return pulumi.get(self, "backup_quantity")
 
@@ -361,8 +299,7 @@ class _PolicyState:
     @pulumi.getter(name="destinationProjectId")
     def destination_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the ID of the replication destination project, which is
-        mandatory for cross-region replication. Required if `protection_type` is **replication**.
+        The ID of the replication destination project.
         """
         return pulumi.get(self, "destination_project_id")
 
@@ -374,8 +311,7 @@ class _PolicyState:
     @pulumi.getter(name="destinationRegion")
     def destination_region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the name of the replication destination region, which is mandatory
-        for cross-region replication. Required if `protection_type` is **replication**.
+        The name of the replication destination region.
         """
         return pulumi.get(self, "destination_region")
 
@@ -399,7 +335,7 @@ class _PolicyState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether to enable the CBR policy. Default to **true**.
+        Whether to enable the CBR policy.
         """
         return pulumi.get(self, "enabled")
 
@@ -411,12 +347,7 @@ class _PolicyState:
     @pulumi.getter(name="longTermRetention")
     def long_term_retention(self) -> Optional[pulumi.Input['PolicyLongTermRetentionArgs']]:
         """
-        Specifies the long-term retention rules, which is an advanced options of
-        the `backup_quantity`. The object structure is documented below.
-
-        > The configuration of `long_term_retention` and `backup_quantity` will take effect together.
-        When the number of retained backups exceeds the preset value (number of `backup_quantity`), the system automatically
-        deletes the earliest backups. By default, the system automatically clears data every other day.
+        The long-term retention rules.
         """
         return pulumi.get(self, "long_term_retention")
 
@@ -428,8 +359,7 @@ class _PolicyState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies a unique name of the CBR policy. This parameter can contain a maximum of 64
-        characters, which may consist of chinese characters, letters, digits, underscores(_) and hyphens (-).
+        The policy name.
         """
         return pulumi.get(self, "name")
 
@@ -441,8 +371,7 @@ class _PolicyState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region in which to create the CBR policy. If omitted, the
-        provider-level region will be used. Changing this will create a new policy.
+        The region where the policy is located.
         """
         return pulumi.get(self, "region")
 
@@ -454,10 +383,7 @@ class _PolicyState:
     @pulumi.getter(name="timePeriod")
     def time_period(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the duration (in days) for retained backups. The value ranges from `2` to
-        `99,999`.
-
-        > **NOTE:** If this `backup_quantity` and `time_period` are both left blank, the backups will be retained permanently.
+        The duration (in days) for retained backups.
         """
         return pulumi.get(self, "time_period")
 
@@ -469,11 +395,7 @@ class _PolicyState:
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the UTC time zone, e.g.: `UTC+08:00`.
-        Only available if `long_term_retention` is set.
-
-        <a name="cbr_policy_backup_cycle"></a>
-        The `backup_cycle` block supports:
+        The UTC time zone.
         """
         return pulumi.get(self, "time_zone")
 
@@ -485,9 +407,7 @@ class _PolicyState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the protection type of the CBR policy.
-        Valid values are **backup** and **replication**.
-        Changing this will create a new policy.
+        The protection type of the CBR policy.
         """
         return pulumi.get(self, "type")
 
@@ -516,52 +436,21 @@ class Policy(pulumi.CustomResource):
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a CBR Policy resource within Sbercloud.
-
-        ## Example Usage
-
-        ## Import
-
-        Policies can be imported by their `id`. For example,
-
-        ```sh
-        $ pulumi import sbercloud:Cbr/policy:Policy test 4d2c2939-774f-42ef-ab15-e5b126b11ace
-        ```
-
+        Create a Policy resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['PolicyBackupCycleArgs', 'PolicyBackupCycleArgsDict']] backup_cycle: Specifies the scheduling rule for the CBR policy backup execution.
-               The object structure is documented below.
-        :param pulumi.Input[_builtins.int] backup_quantity: Specifies the maximum number of retained backups. The value ranges from `2` to
-               `99,999`. This parameter and `time_period` are alternative.
-        :param pulumi.Input[_builtins.str] destination_project_id: Specifies the ID of the replication destination project, which is
-               mandatory for cross-region replication. Required if `protection_type` is **replication**.
-        :param pulumi.Input[_builtins.str] destination_region: Specifies the name of the replication destination region, which is mandatory
-               for cross-region replication. Required if `protection_type` is **replication**.
+        :param pulumi.Input[Union['PolicyBackupCycleArgs', 'PolicyBackupCycleArgsDict']] backup_cycle: The scheduling rule for the CBR policy backup execution.
+        :param pulumi.Input[_builtins.int] backup_quantity: The maximum number of retained backups.
+        :param pulumi.Input[_builtins.str] destination_project_id: The ID of the replication destination project.
+        :param pulumi.Input[_builtins.str] destination_region: The name of the replication destination region.
         :param pulumi.Input[_builtins.bool] enable_acceleration: Whether to enable the acceleration function to shorten the replication time for cross-region
-        :param pulumi.Input[_builtins.bool] enabled: Specifies whether to enable the CBR policy. Default to **true**.
-        :param pulumi.Input[Union['PolicyLongTermRetentionArgs', 'PolicyLongTermRetentionArgsDict']] long_term_retention: Specifies the long-term retention rules, which is an advanced options of
-               the `backup_quantity`. The object structure is documented below.
-               
-               > The configuration of `long_term_retention` and `backup_quantity` will take effect together.
-               When the number of retained backups exceeds the preset value (number of `backup_quantity`), the system automatically
-               deletes the earliest backups. By default, the system automatically clears data every other day.
-        :param pulumi.Input[_builtins.str] name: Specifies a unique name of the CBR policy. This parameter can contain a maximum of 64
-               characters, which may consist of chinese characters, letters, digits, underscores(_) and hyphens (-).
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the CBR policy. If omitted, the
-               provider-level region will be used. Changing this will create a new policy.
-        :param pulumi.Input[_builtins.int] time_period: Specifies the duration (in days) for retained backups. The value ranges from `2` to
-               `99,999`.
-               
-               > **NOTE:** If this `backup_quantity` and `time_period` are both left blank, the backups will be retained permanently.
-        :param pulumi.Input[_builtins.str] time_zone: Specifies the UTC time zone, e.g.: `UTC+08:00`.
-               Only available if `long_term_retention` is set.
-               
-               <a name="cbr_policy_backup_cycle"></a>
-               The `backup_cycle` block supports:
-        :param pulumi.Input[_builtins.str] type: Specifies the protection type of the CBR policy.
-               Valid values are **backup** and **replication**.
-               Changing this will create a new policy.
+        :param pulumi.Input[_builtins.bool] enabled: Whether to enable the CBR policy.
+        :param pulumi.Input[Union['PolicyLongTermRetentionArgs', 'PolicyLongTermRetentionArgsDict']] long_term_retention: The long-term retention rules.
+        :param pulumi.Input[_builtins.str] name: The policy name.
+        :param pulumi.Input[_builtins.str] region: The region where the policy is located.
+        :param pulumi.Input[_builtins.int] time_period: The duration (in days) for retained backups.
+        :param pulumi.Input[_builtins.str] time_zone: The UTC time zone.
+        :param pulumi.Input[_builtins.str] type: The protection type of the CBR policy.
         """
         ...
     @overload
@@ -570,18 +459,7 @@ class Policy(pulumi.CustomResource):
                  args: PolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a CBR Policy resource within Sbercloud.
-
-        ## Example Usage
-
-        ## Import
-
-        Policies can be imported by their `id`. For example,
-
-        ```sh
-        $ pulumi import sbercloud:Cbr/policy:Policy test 4d2c2939-774f-42ef-ab15-e5b126b11ace
-        ```
-
+        Create a Policy resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param PolicyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -663,38 +541,18 @@ class Policy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['PolicyBackupCycleArgs', 'PolicyBackupCycleArgsDict']] backup_cycle: Specifies the scheduling rule for the CBR policy backup execution.
-               The object structure is documented below.
-        :param pulumi.Input[_builtins.int] backup_quantity: Specifies the maximum number of retained backups. The value ranges from `2` to
-               `99,999`. This parameter and `time_period` are alternative.
-        :param pulumi.Input[_builtins.str] destination_project_id: Specifies the ID of the replication destination project, which is
-               mandatory for cross-region replication. Required if `protection_type` is **replication**.
-        :param pulumi.Input[_builtins.str] destination_region: Specifies the name of the replication destination region, which is mandatory
-               for cross-region replication. Required if `protection_type` is **replication**.
+        :param pulumi.Input[Union['PolicyBackupCycleArgs', 'PolicyBackupCycleArgsDict']] backup_cycle: The scheduling rule for the CBR policy backup execution.
+        :param pulumi.Input[_builtins.int] backup_quantity: The maximum number of retained backups.
+        :param pulumi.Input[_builtins.str] destination_project_id: The ID of the replication destination project.
+        :param pulumi.Input[_builtins.str] destination_region: The name of the replication destination region.
         :param pulumi.Input[_builtins.bool] enable_acceleration: Whether to enable the acceleration function to shorten the replication time for cross-region
-        :param pulumi.Input[_builtins.bool] enabled: Specifies whether to enable the CBR policy. Default to **true**.
-        :param pulumi.Input[Union['PolicyLongTermRetentionArgs', 'PolicyLongTermRetentionArgsDict']] long_term_retention: Specifies the long-term retention rules, which is an advanced options of
-               the `backup_quantity`. The object structure is documented below.
-               
-               > The configuration of `long_term_retention` and `backup_quantity` will take effect together.
-               When the number of retained backups exceeds the preset value (number of `backup_quantity`), the system automatically
-               deletes the earliest backups. By default, the system automatically clears data every other day.
-        :param pulumi.Input[_builtins.str] name: Specifies a unique name of the CBR policy. This parameter can contain a maximum of 64
-               characters, which may consist of chinese characters, letters, digits, underscores(_) and hyphens (-).
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the CBR policy. If omitted, the
-               provider-level region will be used. Changing this will create a new policy.
-        :param pulumi.Input[_builtins.int] time_period: Specifies the duration (in days) for retained backups. The value ranges from `2` to
-               `99,999`.
-               
-               > **NOTE:** If this `backup_quantity` and `time_period` are both left blank, the backups will be retained permanently.
-        :param pulumi.Input[_builtins.str] time_zone: Specifies the UTC time zone, e.g.: `UTC+08:00`.
-               Only available if `long_term_retention` is set.
-               
-               <a name="cbr_policy_backup_cycle"></a>
-               The `backup_cycle` block supports:
-        :param pulumi.Input[_builtins.str] type: Specifies the protection type of the CBR policy.
-               Valid values are **backup** and **replication**.
-               Changing this will create a new policy.
+        :param pulumi.Input[_builtins.bool] enabled: Whether to enable the CBR policy.
+        :param pulumi.Input[Union['PolicyLongTermRetentionArgs', 'PolicyLongTermRetentionArgsDict']] long_term_retention: The long-term retention rules.
+        :param pulumi.Input[_builtins.str] name: The policy name.
+        :param pulumi.Input[_builtins.str] region: The region where the policy is located.
+        :param pulumi.Input[_builtins.int] time_period: The duration (in days) for retained backups.
+        :param pulumi.Input[_builtins.str] time_zone: The UTC time zone.
+        :param pulumi.Input[_builtins.str] type: The protection type of the CBR policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -718,8 +576,7 @@ class Policy(pulumi.CustomResource):
     @pulumi.getter(name="backupCycle")
     def backup_cycle(self) -> pulumi.Output['outputs.PolicyBackupCycle']:
         """
-        Specifies the scheduling rule for the CBR policy backup execution.
-        The object structure is documented below.
+        The scheduling rule for the CBR policy backup execution.
         """
         return pulumi.get(self, "backup_cycle")
 
@@ -727,8 +584,7 @@ class Policy(pulumi.CustomResource):
     @pulumi.getter(name="backupQuantity")
     def backup_quantity(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Specifies the maximum number of retained backups. The value ranges from `2` to
-        `99,999`. This parameter and `time_period` are alternative.
+        The maximum number of retained backups.
         """
         return pulumi.get(self, "backup_quantity")
 
@@ -736,8 +592,7 @@ class Policy(pulumi.CustomResource):
     @pulumi.getter(name="destinationProjectId")
     def destination_project_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the ID of the replication destination project, which is
-        mandatory for cross-region replication. Required if `protection_type` is **replication**.
+        The ID of the replication destination project.
         """
         return pulumi.get(self, "destination_project_id")
 
@@ -745,8 +600,7 @@ class Policy(pulumi.CustomResource):
     @pulumi.getter(name="destinationRegion")
     def destination_region(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the name of the replication destination region, which is mandatory
-        for cross-region replication. Required if `protection_type` is **replication**.
+        The name of the replication destination region.
         """
         return pulumi.get(self, "destination_region")
 
@@ -762,7 +616,7 @@ class Policy(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Specifies whether to enable the CBR policy. Default to **true**.
+        Whether to enable the CBR policy.
         """
         return pulumi.get(self, "enabled")
 
@@ -770,12 +624,7 @@ class Policy(pulumi.CustomResource):
     @pulumi.getter(name="longTermRetention")
     def long_term_retention(self) -> pulumi.Output[Optional['outputs.PolicyLongTermRetention']]:
         """
-        Specifies the long-term retention rules, which is an advanced options of
-        the `backup_quantity`. The object structure is documented below.
-
-        > The configuration of `long_term_retention` and `backup_quantity` will take effect together.
-        When the number of retained backups exceeds the preset value (number of `backup_quantity`), the system automatically
-        deletes the earliest backups. By default, the system automatically clears data every other day.
+        The long-term retention rules.
         """
         return pulumi.get(self, "long_term_retention")
 
@@ -783,8 +632,7 @@ class Policy(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies a unique name of the CBR policy. This parameter can contain a maximum of 64
-        characters, which may consist of chinese characters, letters, digits, underscores(_) and hyphens (-).
+        The policy name.
         """
         return pulumi.get(self, "name")
 
@@ -792,8 +640,7 @@ class Policy(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the region in which to create the CBR policy. If omitted, the
-        provider-level region will be used. Changing this will create a new policy.
+        The region where the policy is located.
         """
         return pulumi.get(self, "region")
 
@@ -801,10 +648,7 @@ class Policy(pulumi.CustomResource):
     @pulumi.getter(name="timePeriod")
     def time_period(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Specifies the duration (in days) for retained backups. The value ranges from `2` to
-        `99,999`.
-
-        > **NOTE:** If this `backup_quantity` and `time_period` are both left blank, the backups will be retained permanently.
+        The duration (in days) for retained backups.
         """
         return pulumi.get(self, "time_period")
 
@@ -812,11 +656,7 @@ class Policy(pulumi.CustomResource):
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the UTC time zone, e.g.: `UTC+08:00`.
-        Only available if `long_term_retention` is set.
-
-        <a name="cbr_policy_backup_cycle"></a>
-        The `backup_cycle` block supports:
+        The UTC time zone.
         """
         return pulumi.get(self, "time_zone")
 
@@ -824,9 +664,7 @@ class Policy(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the protection type of the CBR policy.
-        Valid values are **backup** and **replication**.
-        Changing this will create a new policy.
+        The protection type of the CBR policy.
         """
         return pulumi.get(self, "type")
 

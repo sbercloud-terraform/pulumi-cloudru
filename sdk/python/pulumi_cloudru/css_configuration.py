@@ -33,32 +33,15 @@ class CssConfigurationArgs:
         """
         The set of arguments for constructing a CssConfiguration resource.
         :param pulumi.Input[_builtins.str] cluster_id: The CSS cluster ID.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] http_cors_allow_credetials: Whether to return the Access-Control-Allow-Credentials of
-               the header during cross-domain access.
-               The value can be **true** or **false**. Default value: **false**.
-        :param pulumi.Input[_builtins.str] http_cors_allow_headers: Headers allowed for cross-domain access.  
-               Including **X-Requested-With**, **Content-Type**, and **Content-Length**.
-               Use commas (,) and spaces to separate headers.
-        :param pulumi.Input[_builtins.str] http_cors_allow_methods: Methods allowed for cross-domain access.  
-               Including **OPTIONS**, **HEAD**, **GET**, **POST**, **PUT**, and **DELETE**.
-               Use commas (,) and spaces to separate methods.
+        :param pulumi.Input[_builtins.str] http_cors_allow_credetials: Whether to return the Access-Control-Allow-Credentials of the header during cross-domain access.
+        :param pulumi.Input[_builtins.str] http_cors_allow_headers: Headers allowed for cross-domain access.
+        :param pulumi.Input[_builtins.str] http_cors_allow_methods: Methods allowed for cross-domain access.
         :param pulumi.Input[_builtins.str] http_cors_allow_origin: Origin IP address allowed for cross-domain access, for example, **122.122.122.122:9200**.
-        :param pulumi.Input[_builtins.str] http_cors_enabled: Whether to allow cross-domain access.  
-               The value can be **true** or **false**. Default value: **false**.
-        :param pulumi.Input[_builtins.str] http_cors_max_age: Cache duration of the browser. The cache is automatically cleared
-               after the time range you specify.
-               Unit: s, Default value: **1,728,000**.
-        :param pulumi.Input[_builtins.str] indices_queries_cache_size: Cache size in the query phase. Value range: **1%** to **100%**.  
-               Unit: %, Default value: **10%**.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] reindex_remote_whitelist: Configured for migrating data from the current cluster to
-               the target cluster through the reindex API.
-               The example value is **122.122.122.122:9200**.
-        :param pulumi.Input[_builtins.str] thread_pool_force_merge_size: Queue size in the force merge thread pool.  
-               Default value: **1**.
+        :param pulumi.Input[_builtins.str] http_cors_enabled: Whether to allow cross-domain access.
+        :param pulumi.Input[_builtins.str] http_cors_max_age: Cache duration of the browser. The cache is automatically cleared after the time range you specify.
+        :param pulumi.Input[_builtins.str] indices_queries_cache_size: Cache size in the query phase. Value range: **1** to **100**.
+        :param pulumi.Input[_builtins.str] reindex_remote_whitelist: Configured for migrating data from the current cluster to the target cluster through the reindex API.
+        :param pulumi.Input[_builtins.str] thread_pool_force_merge_size: Queue size in the force merge thread pool.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         if http_cors_allow_credetials is not None:
@@ -87,8 +70,6 @@ class CssConfigurationArgs:
     def cluster_id(self) -> pulumi.Input[_builtins.str]:
         """
         The CSS cluster ID.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -100,9 +81,7 @@ class CssConfigurationArgs:
     @pulumi.getter(name="httpCorsAllowCredetials")
     def http_cors_allow_credetials(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Whether to return the Access-Control-Allow-Credentials of
-        the header during cross-domain access.
-        The value can be **true** or **false**. Default value: **false**.
+        Whether to return the Access-Control-Allow-Credentials of the header during cross-domain access.
         """
         return pulumi.get(self, "http_cors_allow_credetials")
 
@@ -114,9 +93,7 @@ class CssConfigurationArgs:
     @pulumi.getter(name="httpCorsAllowHeaders")
     def http_cors_allow_headers(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Headers allowed for cross-domain access.  
-        Including **X-Requested-With**, **Content-Type**, and **Content-Length**.
-        Use commas (,) and spaces to separate headers.
+        Headers allowed for cross-domain access.
         """
         return pulumi.get(self, "http_cors_allow_headers")
 
@@ -128,9 +105,7 @@ class CssConfigurationArgs:
     @pulumi.getter(name="httpCorsAllowMethods")
     def http_cors_allow_methods(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Methods allowed for cross-domain access.  
-        Including **OPTIONS**, **HEAD**, **GET**, **POST**, **PUT**, and **DELETE**.
-        Use commas (,) and spaces to separate methods.
+        Methods allowed for cross-domain access.
         """
         return pulumi.get(self, "http_cors_allow_methods")
 
@@ -154,8 +129,7 @@ class CssConfigurationArgs:
     @pulumi.getter(name="httpCorsEnabled")
     def http_cors_enabled(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Whether to allow cross-domain access.  
-        The value can be **true** or **false**. Default value: **false**.
+        Whether to allow cross-domain access.
         """
         return pulumi.get(self, "http_cors_enabled")
 
@@ -167,9 +141,7 @@ class CssConfigurationArgs:
     @pulumi.getter(name="httpCorsMaxAge")
     def http_cors_max_age(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Cache duration of the browser. The cache is automatically cleared
-        after the time range you specify.
-        Unit: s, Default value: **1,728,000**.
+        Cache duration of the browser. The cache is automatically cleared after the time range you specify.
         """
         return pulumi.get(self, "http_cors_max_age")
 
@@ -181,8 +153,7 @@ class CssConfigurationArgs:
     @pulumi.getter(name="indicesQueriesCacheSize")
     def indices_queries_cache_size(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Cache size in the query phase. Value range: **1%** to **100%**.  
-        Unit: %, Default value: **10%**.
+        Cache size in the query phase. Value range: **1** to **100**.
         """
         return pulumi.get(self, "indices_queries_cache_size")
 
@@ -193,10 +164,6 @@ class CssConfigurationArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -207,9 +174,7 @@ class CssConfigurationArgs:
     @pulumi.getter(name="reindexRemoteWhitelist")
     def reindex_remote_whitelist(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Configured for migrating data from the current cluster to
-        the target cluster through the reindex API.
-        The example value is **122.122.122.122:9200**.
+        Configured for migrating data from the current cluster to the target cluster through the reindex API.
         """
         return pulumi.get(self, "reindex_remote_whitelist")
 
@@ -221,8 +186,7 @@ class CssConfigurationArgs:
     @pulumi.getter(name="threadPoolForceMergeSize")
     def thread_pool_force_merge_size(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Queue size in the force merge thread pool.  
-        Default value: **1**.
+        Queue size in the force merge thread pool.
         """
         return pulumi.get(self, "thread_pool_force_merge_size")
 
@@ -248,32 +212,15 @@ class _CssConfigurationState:
         """
         Input properties used for looking up and filtering CssConfiguration resources.
         :param pulumi.Input[_builtins.str] cluster_id: The CSS cluster ID.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] http_cors_allow_credetials: Whether to return the Access-Control-Allow-Credentials of
-               the header during cross-domain access.
-               The value can be **true** or **false**. Default value: **false**.
-        :param pulumi.Input[_builtins.str] http_cors_allow_headers: Headers allowed for cross-domain access.  
-               Including **X-Requested-With**, **Content-Type**, and **Content-Length**.
-               Use commas (,) and spaces to separate headers.
-        :param pulumi.Input[_builtins.str] http_cors_allow_methods: Methods allowed for cross-domain access.  
-               Including **OPTIONS**, **HEAD**, **GET**, **POST**, **PUT**, and **DELETE**.
-               Use commas (,) and spaces to separate methods.
+        :param pulumi.Input[_builtins.str] http_cors_allow_credetials: Whether to return the Access-Control-Allow-Credentials of the header during cross-domain access.
+        :param pulumi.Input[_builtins.str] http_cors_allow_headers: Headers allowed for cross-domain access.
+        :param pulumi.Input[_builtins.str] http_cors_allow_methods: Methods allowed for cross-domain access.
         :param pulumi.Input[_builtins.str] http_cors_allow_origin: Origin IP address allowed for cross-domain access, for example, **122.122.122.122:9200**.
-        :param pulumi.Input[_builtins.str] http_cors_enabled: Whether to allow cross-domain access.  
-               The value can be **true** or **false**. Default value: **false**.
-        :param pulumi.Input[_builtins.str] http_cors_max_age: Cache duration of the browser. The cache is automatically cleared
-               after the time range you specify.
-               Unit: s, Default value: **1,728,000**.
-        :param pulumi.Input[_builtins.str] indices_queries_cache_size: Cache size in the query phase. Value range: **1%** to **100%**.  
-               Unit: %, Default value: **10%**.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] reindex_remote_whitelist: Configured for migrating data from the current cluster to
-               the target cluster through the reindex API.
-               The example value is **122.122.122.122:9200**.
-        :param pulumi.Input[_builtins.str] thread_pool_force_merge_size: Queue size in the force merge thread pool.  
-               Default value: **1**.
+        :param pulumi.Input[_builtins.str] http_cors_enabled: Whether to allow cross-domain access.
+        :param pulumi.Input[_builtins.str] http_cors_max_age: Cache duration of the browser. The cache is automatically cleared after the time range you specify.
+        :param pulumi.Input[_builtins.str] indices_queries_cache_size: Cache size in the query phase. Value range: **1** to **100**.
+        :param pulumi.Input[_builtins.str] reindex_remote_whitelist: Configured for migrating data from the current cluster to the target cluster through the reindex API.
+        :param pulumi.Input[_builtins.str] thread_pool_force_merge_size: Queue size in the force merge thread pool.
         """
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
@@ -303,8 +250,6 @@ class _CssConfigurationState:
     def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The CSS cluster ID.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -316,9 +261,7 @@ class _CssConfigurationState:
     @pulumi.getter(name="httpCorsAllowCredetials")
     def http_cors_allow_credetials(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Whether to return the Access-Control-Allow-Credentials of
-        the header during cross-domain access.
-        The value can be **true** or **false**. Default value: **false**.
+        Whether to return the Access-Control-Allow-Credentials of the header during cross-domain access.
         """
         return pulumi.get(self, "http_cors_allow_credetials")
 
@@ -330,9 +273,7 @@ class _CssConfigurationState:
     @pulumi.getter(name="httpCorsAllowHeaders")
     def http_cors_allow_headers(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Headers allowed for cross-domain access.  
-        Including **X-Requested-With**, **Content-Type**, and **Content-Length**.
-        Use commas (,) and spaces to separate headers.
+        Headers allowed for cross-domain access.
         """
         return pulumi.get(self, "http_cors_allow_headers")
 
@@ -344,9 +285,7 @@ class _CssConfigurationState:
     @pulumi.getter(name="httpCorsAllowMethods")
     def http_cors_allow_methods(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Methods allowed for cross-domain access.  
-        Including **OPTIONS**, **HEAD**, **GET**, **POST**, **PUT**, and **DELETE**.
-        Use commas (,) and spaces to separate methods.
+        Methods allowed for cross-domain access.
         """
         return pulumi.get(self, "http_cors_allow_methods")
 
@@ -370,8 +309,7 @@ class _CssConfigurationState:
     @pulumi.getter(name="httpCorsEnabled")
     def http_cors_enabled(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Whether to allow cross-domain access.  
-        The value can be **true** or **false**. Default value: **false**.
+        Whether to allow cross-domain access.
         """
         return pulumi.get(self, "http_cors_enabled")
 
@@ -383,9 +321,7 @@ class _CssConfigurationState:
     @pulumi.getter(name="httpCorsMaxAge")
     def http_cors_max_age(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Cache duration of the browser. The cache is automatically cleared
-        after the time range you specify.
-        Unit: s, Default value: **1,728,000**.
+        Cache duration of the browser. The cache is automatically cleared after the time range you specify.
         """
         return pulumi.get(self, "http_cors_max_age")
 
@@ -397,8 +333,7 @@ class _CssConfigurationState:
     @pulumi.getter(name="indicesQueriesCacheSize")
     def indices_queries_cache_size(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Cache size in the query phase. Value range: **1%** to **100%**.  
-        Unit: %, Default value: **10%**.
+        Cache size in the query phase. Value range: **1** to **100**.
         """
         return pulumi.get(self, "indices_queries_cache_size")
 
@@ -409,10 +344,6 @@ class _CssConfigurationState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -423,9 +354,7 @@ class _CssConfigurationState:
     @pulumi.getter(name="reindexRemoteWhitelist")
     def reindex_remote_whitelist(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Configured for migrating data from the current cluster to
-        the target cluster through the reindex API.
-        The example value is **122.122.122.122:9200**.
+        Configured for migrating data from the current cluster to the target cluster through the reindex API.
         """
         return pulumi.get(self, "reindex_remote_whitelist")
 
@@ -437,8 +366,7 @@ class _CssConfigurationState:
     @pulumi.getter(name="threadPoolForceMergeSize")
     def thread_pool_force_merge_size(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Queue size in the force merge thread pool.  
-        Default value: **1**.
+        Queue size in the force merge thread pool.
         """
         return pulumi.get(self, "thread_pool_force_merge_size")
 
@@ -466,60 +394,19 @@ class CssConfiguration(pulumi.CustomResource):
                  thread_pool_force_merge_size: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a CSS configuration resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        cluster_id = config.require_object("clusterId")
-        test = sbercloud.CssConfiguration("test",
-            cluster_id=cluster_id,
-            thread_pool_force_merge_size="3")
-        ```
-
-        ## Import
-
-        The CSS configuration can be imported using the `id` which equals the `cluster_id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/cssConfiguration:CssConfiguration test <id>
-        ```
-
+        Create a CssConfiguration resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The CSS cluster ID.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] http_cors_allow_credetials: Whether to return the Access-Control-Allow-Credentials of
-               the header during cross-domain access.
-               The value can be **true** or **false**. Default value: **false**.
-        :param pulumi.Input[_builtins.str] http_cors_allow_headers: Headers allowed for cross-domain access.  
-               Including **X-Requested-With**, **Content-Type**, and **Content-Length**.
-               Use commas (,) and spaces to separate headers.
-        :param pulumi.Input[_builtins.str] http_cors_allow_methods: Methods allowed for cross-domain access.  
-               Including **OPTIONS**, **HEAD**, **GET**, **POST**, **PUT**, and **DELETE**.
-               Use commas (,) and spaces to separate methods.
+        :param pulumi.Input[_builtins.str] http_cors_allow_credetials: Whether to return the Access-Control-Allow-Credentials of the header during cross-domain access.
+        :param pulumi.Input[_builtins.str] http_cors_allow_headers: Headers allowed for cross-domain access.
+        :param pulumi.Input[_builtins.str] http_cors_allow_methods: Methods allowed for cross-domain access.
         :param pulumi.Input[_builtins.str] http_cors_allow_origin: Origin IP address allowed for cross-domain access, for example, **122.122.122.122:9200**.
-        :param pulumi.Input[_builtins.str] http_cors_enabled: Whether to allow cross-domain access.  
-               The value can be **true** or **false**. Default value: **false**.
-        :param pulumi.Input[_builtins.str] http_cors_max_age: Cache duration of the browser. The cache is automatically cleared
-               after the time range you specify.
-               Unit: s, Default value: **1,728,000**.
-        :param pulumi.Input[_builtins.str] indices_queries_cache_size: Cache size in the query phase. Value range: **1%** to **100%**.  
-               Unit: %, Default value: **10%**.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] reindex_remote_whitelist: Configured for migrating data from the current cluster to
-               the target cluster through the reindex API.
-               The example value is **122.122.122.122:9200**.
-        :param pulumi.Input[_builtins.str] thread_pool_force_merge_size: Queue size in the force merge thread pool.  
-               Default value: **1**.
+        :param pulumi.Input[_builtins.str] http_cors_enabled: Whether to allow cross-domain access.
+        :param pulumi.Input[_builtins.str] http_cors_max_age: Cache duration of the browser. The cache is automatically cleared after the time range you specify.
+        :param pulumi.Input[_builtins.str] indices_queries_cache_size: Cache size in the query phase. Value range: **1** to **100**.
+        :param pulumi.Input[_builtins.str] reindex_remote_whitelist: Configured for migrating data from the current cluster to the target cluster through the reindex API.
+        :param pulumi.Input[_builtins.str] thread_pool_force_merge_size: Queue size in the force merge thread pool.
         """
         ...
     @overload
@@ -528,31 +415,7 @@ class CssConfiguration(pulumi.CustomResource):
                  args: CssConfigurationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a CSS configuration resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        cluster_id = config.require_object("clusterId")
-        test = sbercloud.CssConfiguration("test",
-            cluster_id=cluster_id,
-            thread_pool_force_merge_size="3")
-        ```
-
-        ## Import
-
-        The CSS configuration can be imported using the `id` which equals the `cluster_id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/cssConfiguration:CssConfiguration test <id>
-        ```
-
+        Create a CssConfiguration resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param CssConfigurationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -630,32 +493,15 @@ class CssConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The CSS cluster ID.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] http_cors_allow_credetials: Whether to return the Access-Control-Allow-Credentials of
-               the header during cross-domain access.
-               The value can be **true** or **false**. Default value: **false**.
-        :param pulumi.Input[_builtins.str] http_cors_allow_headers: Headers allowed for cross-domain access.  
-               Including **X-Requested-With**, **Content-Type**, and **Content-Length**.
-               Use commas (,) and spaces to separate headers.
-        :param pulumi.Input[_builtins.str] http_cors_allow_methods: Methods allowed for cross-domain access.  
-               Including **OPTIONS**, **HEAD**, **GET**, **POST**, **PUT**, and **DELETE**.
-               Use commas (,) and spaces to separate methods.
+        :param pulumi.Input[_builtins.str] http_cors_allow_credetials: Whether to return the Access-Control-Allow-Credentials of the header during cross-domain access.
+        :param pulumi.Input[_builtins.str] http_cors_allow_headers: Headers allowed for cross-domain access.
+        :param pulumi.Input[_builtins.str] http_cors_allow_methods: Methods allowed for cross-domain access.
         :param pulumi.Input[_builtins.str] http_cors_allow_origin: Origin IP address allowed for cross-domain access, for example, **122.122.122.122:9200**.
-        :param pulumi.Input[_builtins.str] http_cors_enabled: Whether to allow cross-domain access.  
-               The value can be **true** or **false**. Default value: **false**.
-        :param pulumi.Input[_builtins.str] http_cors_max_age: Cache duration of the browser. The cache is automatically cleared
-               after the time range you specify.
-               Unit: s, Default value: **1,728,000**.
-        :param pulumi.Input[_builtins.str] indices_queries_cache_size: Cache size in the query phase. Value range: **1%** to **100%**.  
-               Unit: %, Default value: **10%**.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] reindex_remote_whitelist: Configured for migrating data from the current cluster to
-               the target cluster through the reindex API.
-               The example value is **122.122.122.122:9200**.
-        :param pulumi.Input[_builtins.str] thread_pool_force_merge_size: Queue size in the force merge thread pool.  
-               Default value: **1**.
+        :param pulumi.Input[_builtins.str] http_cors_enabled: Whether to allow cross-domain access.
+        :param pulumi.Input[_builtins.str] http_cors_max_age: Cache duration of the browser. The cache is automatically cleared after the time range you specify.
+        :param pulumi.Input[_builtins.str] indices_queries_cache_size: Cache size in the query phase. Value range: **1** to **100**.
+        :param pulumi.Input[_builtins.str] reindex_remote_whitelist: Configured for migrating data from the current cluster to the target cluster through the reindex API.
+        :param pulumi.Input[_builtins.str] thread_pool_force_merge_size: Queue size in the force merge thread pool.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -679,8 +525,6 @@ class CssConfiguration(pulumi.CustomResource):
     def cluster_id(self) -> pulumi.Output[_builtins.str]:
         """
         The CSS cluster ID.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -688,9 +532,7 @@ class CssConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="httpCorsAllowCredetials")
     def http_cors_allow_credetials(self) -> pulumi.Output[_builtins.str]:
         """
-        Whether to return the Access-Control-Allow-Credentials of
-        the header during cross-domain access.
-        The value can be **true** or **false**. Default value: **false**.
+        Whether to return the Access-Control-Allow-Credentials of the header during cross-domain access.
         """
         return pulumi.get(self, "http_cors_allow_credetials")
 
@@ -698,9 +540,7 @@ class CssConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="httpCorsAllowHeaders")
     def http_cors_allow_headers(self) -> pulumi.Output[_builtins.str]:
         """
-        Headers allowed for cross-domain access.  
-        Including **X-Requested-With**, **Content-Type**, and **Content-Length**.
-        Use commas (,) and spaces to separate headers.
+        Headers allowed for cross-domain access.
         """
         return pulumi.get(self, "http_cors_allow_headers")
 
@@ -708,9 +548,7 @@ class CssConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="httpCorsAllowMethods")
     def http_cors_allow_methods(self) -> pulumi.Output[_builtins.str]:
         """
-        Methods allowed for cross-domain access.  
-        Including **OPTIONS**, **HEAD**, **GET**, **POST**, **PUT**, and **DELETE**.
-        Use commas (,) and spaces to separate methods.
+        Methods allowed for cross-domain access.
         """
         return pulumi.get(self, "http_cors_allow_methods")
 
@@ -726,8 +564,7 @@ class CssConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="httpCorsEnabled")
     def http_cors_enabled(self) -> pulumi.Output[_builtins.str]:
         """
-        Whether to allow cross-domain access.  
-        The value can be **true** or **false**. Default value: **false**.
+        Whether to allow cross-domain access.
         """
         return pulumi.get(self, "http_cors_enabled")
 
@@ -735,9 +572,7 @@ class CssConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="httpCorsMaxAge")
     def http_cors_max_age(self) -> pulumi.Output[_builtins.str]:
         """
-        Cache duration of the browser. The cache is automatically cleared
-        after the time range you specify.
-        Unit: s, Default value: **1,728,000**.
+        Cache duration of the browser. The cache is automatically cleared after the time range you specify.
         """
         return pulumi.get(self, "http_cors_max_age")
 
@@ -745,27 +580,20 @@ class CssConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="indicesQueriesCacheSize")
     def indices_queries_cache_size(self) -> pulumi.Output[_builtins.str]:
         """
-        Cache size in the query phase. Value range: **1%** to **100%**.  
-        Unit: %, Default value: **10%**.
+        Cache size in the query phase. Value range: **1** to **100**.
         """
         return pulumi.get(self, "indices_queries_cache_size")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="reindexRemoteWhitelist")
     def reindex_remote_whitelist(self) -> pulumi.Output[_builtins.str]:
         """
-        Configured for migrating data from the current cluster to
-        the target cluster through the reindex API.
-        The example value is **122.122.122.122:9200**.
+        Configured for migrating data from the current cluster to the target cluster through the reindex API.
         """
         return pulumi.get(self, "reindex_remote_whitelist")
 
@@ -773,8 +601,7 @@ class CssConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="threadPoolForceMergeSize")
     def thread_pool_force_merge_size(self) -> pulumi.Output[_builtins.str]:
         """
-        Queue size in the force merge thread pool.  
-        Default value: **1**.
+        Queue size in the force merge thread pool.
         """
         return pulumi.get(self, "thread_pool_force_merge_size")
 

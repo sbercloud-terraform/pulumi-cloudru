@@ -30,32 +30,10 @@ MYPY = False
 if not MYPY:
     class InstanceBackupPolicyArgsDict(TypedDict):
         backup_ats: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
-        """
-        Day in a week on which backup starts, the value ranges from `1` to `7`.
-        Where: 1 indicates Monday; 7 indicates Sunday.
-        """
         begin_at: pulumi.Input[_builtins.str]
-        """
-        Time at which backup starts.
-        Format: `hh24:00-hh24:00`, "00:00-01:00" indicates that backup starts at 00:00:00.
-
-        <a name="DcsInstance_Parameters"></a>
-        The `parameters` block supports:
-        """
         backup_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Backup type. Default value is `auto`. The valid values are as follows:
-        """
         period_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Interval at which backup is performed. Default value is `weekly`.
-        Currently, only weekly backup is supported.
-        """
         save_days: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Retention time. Unit: day, the value ranges from `1` to `7`.
-        This parameter is required if the backup_type is **auto**.
-        """
 elif False:
     InstanceBackupPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -67,20 +45,6 @@ class InstanceBackupPolicyArgs:
                  backup_type: Optional[pulumi.Input[_builtins.str]] = None,
                  period_type: Optional[pulumi.Input[_builtins.str]] = None,
                  save_days: Optional[pulumi.Input[_builtins.int]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] backup_ats: Day in a week on which backup starts, the value ranges from `1` to `7`.
-               Where: 1 indicates Monday; 7 indicates Sunday.
-        :param pulumi.Input[_builtins.str] begin_at: Time at which backup starts.
-               Format: `hh24:00-hh24:00`, "00:00-01:00" indicates that backup starts at 00:00:00.
-               
-               <a name="DcsInstance_Parameters"></a>
-               The `parameters` block supports:
-        :param pulumi.Input[_builtins.str] backup_type: Backup type. Default value is `auto`. The valid values are as follows:
-        :param pulumi.Input[_builtins.str] period_type: Interval at which backup is performed. Default value is `weekly`.
-               Currently, only weekly backup is supported.
-        :param pulumi.Input[_builtins.int] save_days: Retention time. Unit: day, the value ranges from `1` to `7`.
-               This parameter is required if the backup_type is **auto**.
-        """
         pulumi.set(__self__, "backup_ats", backup_ats)
         pulumi.set(__self__, "begin_at", begin_at)
         if backup_type is not None:
@@ -93,10 +57,6 @@ class InstanceBackupPolicyArgs:
     @_builtins.property
     @pulumi.getter(name="backupAts")
     def backup_ats(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]:
-        """
-        Day in a week on which backup starts, the value ranges from `1` to `7`.
-        Where: 1 indicates Monday; 7 indicates Sunday.
-        """
         return pulumi.get(self, "backup_ats")
 
     @backup_ats.setter
@@ -106,13 +66,6 @@ class InstanceBackupPolicyArgs:
     @_builtins.property
     @pulumi.getter(name="beginAt")
     def begin_at(self) -> pulumi.Input[_builtins.str]:
-        """
-        Time at which backup starts.
-        Format: `hh24:00-hh24:00`, "00:00-01:00" indicates that backup starts at 00:00:00.
-
-        <a name="DcsInstance_Parameters"></a>
-        The `parameters` block supports:
-        """
         return pulumi.get(self, "begin_at")
 
     @begin_at.setter
@@ -122,9 +75,6 @@ class InstanceBackupPolicyArgs:
     @_builtins.property
     @pulumi.getter(name="backupType")
     def backup_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Backup type. Default value is `auto`. The valid values are as follows:
-        """
         return pulumi.get(self, "backup_type")
 
     @backup_type.setter
@@ -134,10 +84,6 @@ class InstanceBackupPolicyArgs:
     @_builtins.property
     @pulumi.getter(name="periodType")
     def period_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Interval at which backup is performed. Default value is `weekly`.
-        Currently, only weekly backup is supported.
-        """
         return pulumi.get(self, "period_type")
 
     @period_type.setter
@@ -147,10 +93,6 @@ class InstanceBackupPolicyArgs:
     @_builtins.property
     @pulumi.getter(name="saveDays")
     def save_days(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Retention time. Unit: day, the value ranges from `1` to `7`.
-        This parameter is required if the backup_type is **auto**.
-        """
         return pulumi.get(self, "save_days")
 
     @save_days.setter
@@ -161,45 +103,15 @@ class InstanceBackupPolicyArgs:
 if not MYPY:
     class InstanceBandwidthInfoArgsDict(TypedDict):
         bandwidth: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Indicates the bandwidth size, the unit is **GB**.
-        """
         begin_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates the begin time of temporary increase.
-        """
         current_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates the current time.
-        """
         end_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates the end time of temporary increase.
-        """
         expand_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Indicates the number of increases.
-        """
         expand_effect_time: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Indicates the interval between temporary increases, the unit is **ms**.
-        """
         expand_interval_time: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Indicates the time interval to the next increase, the unit is **ms**.
-        """
         max_expand_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Indicates the maximum number of increases.
-        """
         next_expand_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates the next increase time.
-        """
         task_running: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether the increase task is running.
-        """
 elif False:
     InstanceBandwidthInfoArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -216,18 +128,6 @@ class InstanceBandwidthInfoArgs:
                  max_expand_count: Optional[pulumi.Input[_builtins.int]] = None,
                  next_expand_time: Optional[pulumi.Input[_builtins.str]] = None,
                  task_running: Optional[pulumi.Input[_builtins.bool]] = None):
-        """
-        :param pulumi.Input[_builtins.int] bandwidth: Indicates the bandwidth size, the unit is **GB**.
-        :param pulumi.Input[_builtins.str] begin_time: Indicates the begin time of temporary increase.
-        :param pulumi.Input[_builtins.str] current_time: Indicates the current time.
-        :param pulumi.Input[_builtins.str] end_time: Indicates the end time of temporary increase.
-        :param pulumi.Input[_builtins.int] expand_count: Indicates the number of increases.
-        :param pulumi.Input[_builtins.int] expand_effect_time: Indicates the interval between temporary increases, the unit is **ms**.
-        :param pulumi.Input[_builtins.int] expand_interval_time: Indicates the time interval to the next increase, the unit is **ms**.
-        :param pulumi.Input[_builtins.int] max_expand_count: Indicates the maximum number of increases.
-        :param pulumi.Input[_builtins.str] next_expand_time: Indicates the next increase time.
-        :param pulumi.Input[_builtins.bool] task_running: Indicates whether the increase task is running.
-        """
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
         if begin_time is not None:
@@ -252,9 +152,6 @@ class InstanceBandwidthInfoArgs:
     @_builtins.property
     @pulumi.getter
     def bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Indicates the bandwidth size, the unit is **GB**.
-        """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
@@ -264,9 +161,6 @@ class InstanceBandwidthInfoArgs:
     @_builtins.property
     @pulumi.getter(name="beginTime")
     def begin_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the begin time of temporary increase.
-        """
         return pulumi.get(self, "begin_time")
 
     @begin_time.setter
@@ -276,9 +170,6 @@ class InstanceBandwidthInfoArgs:
     @_builtins.property
     @pulumi.getter(name="currentTime")
     def current_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the current time.
-        """
         return pulumi.get(self, "current_time")
 
     @current_time.setter
@@ -288,9 +179,6 @@ class InstanceBandwidthInfoArgs:
     @_builtins.property
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the end time of temporary increase.
-        """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
@@ -300,9 +188,6 @@ class InstanceBandwidthInfoArgs:
     @_builtins.property
     @pulumi.getter(name="expandCount")
     def expand_count(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Indicates the number of increases.
-        """
         return pulumi.get(self, "expand_count")
 
     @expand_count.setter
@@ -312,9 +197,6 @@ class InstanceBandwidthInfoArgs:
     @_builtins.property
     @pulumi.getter(name="expandEffectTime")
     def expand_effect_time(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Indicates the interval between temporary increases, the unit is **ms**.
-        """
         return pulumi.get(self, "expand_effect_time")
 
     @expand_effect_time.setter
@@ -324,9 +206,6 @@ class InstanceBandwidthInfoArgs:
     @_builtins.property
     @pulumi.getter(name="expandIntervalTime")
     def expand_interval_time(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Indicates the time interval to the next increase, the unit is **ms**.
-        """
         return pulumi.get(self, "expand_interval_time")
 
     @expand_interval_time.setter
@@ -336,9 +215,6 @@ class InstanceBandwidthInfoArgs:
     @_builtins.property
     @pulumi.getter(name="maxExpandCount")
     def max_expand_count(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Indicates the maximum number of increases.
-        """
         return pulumi.get(self, "max_expand_count")
 
     @max_expand_count.setter
@@ -348,9 +224,6 @@ class InstanceBandwidthInfoArgs:
     @_builtins.property
     @pulumi.getter(name="nextExpandTime")
     def next_expand_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the next increase time.
-        """
         return pulumi.get(self, "next_expand_time")
 
     @next_expand_time.setter
@@ -360,9 +233,6 @@ class InstanceBandwidthInfoArgs:
     @_builtins.property
     @pulumi.getter(name="taskRunning")
     def task_running(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Indicates whether the increase task is running.
-        """
         return pulumi.get(self, "task_running")
 
     @task_running.setter
@@ -373,19 +243,8 @@ class InstanceBandwidthInfoArgs:
 if not MYPY:
     class InstanceParameterArgsDict(TypedDict):
         id: pulumi.Input[_builtins.str]
-        """
-        A resource ID in UUID format.
-        """
         name: pulumi.Input[_builtins.str]
-        """
-        Specifies the name of an instance.
-        The name must be 4 to 64 characters and start with a letter.
-        Only english, letters (case-insensitive), digits, underscores (_) ,and hyphens (-) are allowed.
-        """
         value: pulumi.Input[_builtins.str]
-        """
-        Specifies the value of the configuration item.
-        """
 elif False:
     InstanceParameterArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -395,13 +254,6 @@ class InstanceParameterArgs:
                  id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.str] id: A resource ID in UUID format.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of an instance.
-               The name must be 4 to 64 characters and start with a letter.
-               Only english, letters (case-insensitive), digits, underscores (_) ,and hyphens (-) are allowed.
-        :param pulumi.Input[_builtins.str] value: Specifies the value of the configuration item.
-        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -409,9 +261,6 @@ class InstanceParameterArgs:
     @_builtins.property
     @pulumi.getter
     def id(self) -> pulumi.Input[_builtins.str]:
-        """
-        A resource ID in UUID format.
-        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -421,11 +270,6 @@ class InstanceParameterArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the name of an instance.
-        The name must be 4 to 64 characters and start with a letter.
-        Only english, letters (case-insensitive), digits, underscores (_) ,and hyphens (-) are allowed.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -435,9 +279,6 @@ class InstanceParameterArgs:
     @_builtins.property
     @pulumi.getter
     def value(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the value of the configuration item.
-        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -448,14 +289,7 @@ class InstanceParameterArgs:
 if not MYPY:
     class InstanceWhitelistArgsDict(TypedDict):
         group_name: pulumi.Input[_builtins.str]
-        """
-        Specifies the name of IP address group.
-        """
         ip_addresses: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Specifies the list of IP address or CIDR which can be whitelisted for an instance.
-        The maximum is 20.
-        """
 elif False:
     InstanceWhitelistArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -464,20 +298,12 @@ class InstanceWhitelistArgs:
     def __init__(__self__, *,
                  group_name: pulumi.Input[_builtins.str],
                  ip_addresses: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
-        """
-        :param pulumi.Input[_builtins.str] group_name: Specifies the name of IP address group.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_addresses: Specifies the list of IP address or CIDR which can be whitelisted for an instance.
-               The maximum is 20.
-        """
         pulumi.set(__self__, "group_name", group_name)
         pulumi.set(__self__, "ip_addresses", ip_addresses)
 
     @_builtins.property
     @pulumi.getter(name="groupName")
     def group_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the name of IP address group.
-        """
         return pulumi.get(self, "group_name")
 
     @group_name.setter
@@ -487,10 +313,6 @@ class InstanceWhitelistArgs:
     @_builtins.property
     @pulumi.getter(name="ipAddresses")
     def ip_addresses(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        Specifies the list of IP address or CIDR which can be whitelisted for an instance.
-        The maximum is 20.
-        """
         return pulumi.get(self, "ip_addresses")
 
     @ip_addresses.setter

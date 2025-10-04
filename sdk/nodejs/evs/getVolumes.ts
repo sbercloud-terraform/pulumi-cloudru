@@ -6,22 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to query the detailed information list of the EVS disks within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const targetServer = config.requireObject<any>("targetServer");
- * const test = sbercloud.Evs.getVolumes({
- *     serverId: targetServer,
- * });
- * ```
- */
 export function getVolumes(args?: GetVolumesArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -50,61 +34,20 @@ export function getVolumes(args?: GetVolumesArgs, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getVolumes.
  */
 export interface GetVolumesArgs {
-    /**
-     * Specifies the availability zone for the disks.
-     */
     availabilityZone?: string;
     dedicatedStorageId?: string;
     dedicatedStorageName?: string;
-    /**
-     * Specifies the enterprise project ID for filtering.
-     */
     enterpriseProjectId?: string;
     ids?: string;
     metadata?: string;
-    /**
-     * The disk name.
-     */
     name?: string;
-    /**
-     * Specifies the region in which to query the disk list.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
-    /**
-     * Specifies the server ID to which the disks are attached.
-     */
     serverId?: string;
-    /**
-     * The service type, such as EVS, DSS or DESS.
-     */
     serviceType?: string;
-    /**
-     * Specifies whether the disk is shareable.
-     */
     shareable?: boolean;
     sortDir?: string;
     sortKey?: string;
-    /**
-     * Specifies the disk status. The valid values are as following:
-     * + **FREEZED**
-     * + **BIND_ERROR**
-     * + **BINDING**
-     * + **PENDING_DELETE**
-     * + **PENDING_CREATE**
-     * + **NOTIFYING**
-     * + **NOTIFY_DELETE**
-     * + **PENDING_UPDATE**
-     * + **DOWN**
-     * + **ACTIVE**
-     * + **ELB**
-     * + **ERROR**
-     * + **VPN**
-     */
     status?: string;
-    /**
-     * Specifies the included key/value pairs which associated with the desired disk.
-     */
     tags?: {[key: string]: string};
     volumeId?: string;
     volumeTypeId?: string;
@@ -114,15 +57,9 @@ export interface GetVolumesArgs {
  * A collection of values returned by getVolumes.
  */
 export interface GetVolumesResult {
-    /**
-     * The availability zone of the disk.
-     */
     readonly availabilityZone?: string;
     readonly dedicatedStorageId?: string;
     readonly dedicatedStorageName?: string;
-    /**
-     * The ID of the enterprise project associated with the disk.
-     */
     readonly enterpriseProjectId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -130,56 +67,19 @@ export interface GetVolumesResult {
     readonly id: string;
     readonly ids?: string;
     readonly metadata?: string;
-    /**
-     * The disk name.
-     */
     readonly name?: string;
     readonly region?: string;
-    /**
-     * The ID of the server to which the disk is attached.
-     */
     readonly serverId?: string;
-    /**
-     * The service type, such as EVS, DSS or DESS.
-     */
     readonly serviceType?: string;
-    /**
-     * Whether the disk is shareable.
-     */
     readonly shareable?: boolean;
     readonly sortDir?: string;
     readonly sortKey?: string;
-    /**
-     * The disk status.
-     */
     readonly status?: string;
-    /**
-     * The disk tags.
-     */
     readonly tags?: {[key: string]: string};
     readonly volumeId?: string;
     readonly volumeTypeId?: string;
-    /**
-     * The detailed information of the disks. Structure is documented below.
-     */
     readonly volumes: outputs.Evs.GetVolumesVolume[];
 }
-/**
- * Use this data source to query the detailed information list of the EVS disks within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const targetServer = config.requireObject<any>("targetServer");
- * const test = sbercloud.Evs.getVolumes({
- *     serverId: targetServer,
- * });
- * ```
- */
 export function getVolumesOutput(args?: GetVolumesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVolumesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -208,61 +108,20 @@ export function getVolumesOutput(args?: GetVolumesOutputArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getVolumes.
  */
 export interface GetVolumesOutputArgs {
-    /**
-     * Specifies the availability zone for the disks.
-     */
     availabilityZone?: pulumi.Input<string>;
     dedicatedStorageId?: pulumi.Input<string>;
     dedicatedStorageName?: pulumi.Input<string>;
-    /**
-     * Specifies the enterprise project ID for filtering.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
     ids?: pulumi.Input<string>;
     metadata?: pulumi.Input<string>;
-    /**
-     * The disk name.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the disk list.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the server ID to which the disks are attached.
-     */
     serverId?: pulumi.Input<string>;
-    /**
-     * The service type, such as EVS, DSS or DESS.
-     */
     serviceType?: pulumi.Input<string>;
-    /**
-     * Specifies whether the disk is shareable.
-     */
     shareable?: pulumi.Input<boolean>;
     sortDir?: pulumi.Input<string>;
     sortKey?: pulumi.Input<string>;
-    /**
-     * Specifies the disk status. The valid values are as following:
-     * + **FREEZED**
-     * + **BIND_ERROR**
-     * + **BINDING**
-     * + **PENDING_DELETE**
-     * + **PENDING_CREATE**
-     * + **NOTIFYING**
-     * + **NOTIFY_DELETE**
-     * + **PENDING_UPDATE**
-     * + **DOWN**
-     * + **ACTIVE**
-     * + **ELB**
-     * + **ERROR**
-     * + **VPN**
-     */
     status?: pulumi.Input<string>;
-    /**
-     * Specifies the included key/value pairs which associated with the desired disk.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     volumeId?: pulumi.Input<string>;
     volumeTypeId?: pulumi.Input<string>;

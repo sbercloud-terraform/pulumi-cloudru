@@ -11,113 +11,30 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a DNS zone in the SberCloud DNS Service.
-//
-// ## Example Usage
-//
-// ### Create a public DNS zone
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/dns"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dns.NewZone(ctx, "my_public_zone", &dns.ZoneArgs{
-//				Name:        pulumi.String("example.com."),
-//				Email:       pulumi.String("jdoe@example.com"),
-//				Description: pulumi.String("An example zone"),
-//				Ttl:         pulumi.Int(3000),
-//				ZoneType:    pulumi.String("public"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Create a private DNS zone
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/dns"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dns.NewZone(ctx, "my_private_zone", &dns.ZoneArgs{
-//				Name:        pulumi.String("1.example.com."),
-//				Email:       pulumi.String("jdoe@example.com"),
-//				Description: pulumi.String("An example zone"),
-//				Ttl:         pulumi.Int(3000),
-//				ZoneType:    pulumi.String("private"),
-//				Routers: dns.ZoneRouterArray{
-//					&dns.ZoneRouterArgs{
-//						RouterId: pulumi.String("2c1fe4bd-ebad-44ca-ae9d-e94e63847b75"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// This resource can be imported by specifying the zone ID:
-//
-// ```sh
-// $ pulumi import sbercloud:Dns/zone:Zone zone_1 <zone_id>
-// ```
 type Zone struct {
 	pulumi.CustomResourceState
 
-	// A description of the zone.
+	// The description of the zone.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The email address of the administrator managing the zone.
 	Email pulumi.StringOutput `pulumi:"email"`
-	// The enterprise project id of the zone. Changing this creates a
-	// new zone.
+	// The enterprise project ID of the zone.
 	EnterpriseProjectId pulumi.StringOutput `pulumi:"enterpriseProjectId"`
-	// An array of master DNS servers.
+	// The list of the masters of the DNS server.
 	Masters pulumi.StringArrayOutput `pulumi:"masters"`
-	// The name of the zone. Note the `.` at the end of the name. Changing this creates
-	// a new DNS zone.
+	// The name of the zone.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The recursive resolution proxy mode for subdomains of the private zone.
-	ProxyPattern pulumi.StringOutput `pulumi:"proxyPattern"`
-	// The region in which to create the DNS zone. If omitted, the `region` argument
-	// of the provider will be used. Changing this creates a new DNS zone.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Router configuration block which is required if zoneType is private. The router
-	// structure is documented below.
-	Routers ZoneRouterArrayOutput `pulumi:"routers"`
+	ProxyPattern pulumi.StringOutput   `pulumi:"proxyPattern"`
+	Region       pulumi.StringOutput   `pulumi:"region"`
+	Routers      ZoneRouterArrayOutput `pulumi:"routers"`
 	// The status of the zone.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The key/value pairs to associate with the zone.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The time to live (TTL) of the zone.
 	Ttl pulumi.IntPtrOutput `pulumi:"ttl"`
-	// The type of zone. Can either be `public` or `private`. Changing this
-	// creates a new DNS zone.
+	// The type of zone.
 	ZoneType pulumi.StringPtrOutput `pulumi:"zoneType"`
 }
 
@@ -151,66 +68,52 @@ func GetZone(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Zone resources.
 type zoneState struct {
-	// A description of the zone.
+	// The description of the zone.
 	Description *string `pulumi:"description"`
 	// The email address of the administrator managing the zone.
 	Email *string `pulumi:"email"`
-	// The enterprise project id of the zone. Changing this creates a
-	// new zone.
+	// The enterprise project ID of the zone.
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// An array of master DNS servers.
+	// The list of the masters of the DNS server.
 	Masters []string `pulumi:"masters"`
-	// The name of the zone. Note the `.` at the end of the name. Changing this creates
-	// a new DNS zone.
+	// The name of the zone.
 	Name *string `pulumi:"name"`
 	// The recursive resolution proxy mode for subdomains of the private zone.
-	ProxyPattern *string `pulumi:"proxyPattern"`
-	// The region in which to create the DNS zone. If omitted, the `region` argument
-	// of the provider will be used. Changing this creates a new DNS zone.
-	Region *string `pulumi:"region"`
-	// Router configuration block which is required if zoneType is private. The router
-	// structure is documented below.
-	Routers []ZoneRouter `pulumi:"routers"`
+	ProxyPattern *string      `pulumi:"proxyPattern"`
+	Region       *string      `pulumi:"region"`
+	Routers      []ZoneRouter `pulumi:"routers"`
 	// The status of the zone.
 	Status *string `pulumi:"status"`
 	// The key/value pairs to associate with the zone.
 	Tags map[string]string `pulumi:"tags"`
 	// The time to live (TTL) of the zone.
 	Ttl *int `pulumi:"ttl"`
-	// The type of zone. Can either be `public` or `private`. Changing this
-	// creates a new DNS zone.
+	// The type of zone.
 	ZoneType *string `pulumi:"zoneType"`
 }
 
 type ZoneState struct {
-	// A description of the zone.
+	// The description of the zone.
 	Description pulumi.StringPtrInput
 	// The email address of the administrator managing the zone.
 	Email pulumi.StringPtrInput
-	// The enterprise project id of the zone. Changing this creates a
-	// new zone.
+	// The enterprise project ID of the zone.
 	EnterpriseProjectId pulumi.StringPtrInput
-	// An array of master DNS servers.
+	// The list of the masters of the DNS server.
 	Masters pulumi.StringArrayInput
-	// The name of the zone. Note the `.` at the end of the name. Changing this creates
-	// a new DNS zone.
+	// The name of the zone.
 	Name pulumi.StringPtrInput
 	// The recursive resolution proxy mode for subdomains of the private zone.
 	ProxyPattern pulumi.StringPtrInput
-	// The region in which to create the DNS zone. If omitted, the `region` argument
-	// of the provider will be used. Changing this creates a new DNS zone.
-	Region pulumi.StringPtrInput
-	// Router configuration block which is required if zoneType is private. The router
-	// structure is documented below.
-	Routers ZoneRouterArrayInput
+	Region       pulumi.StringPtrInput
+	Routers      ZoneRouterArrayInput
 	// The status of the zone.
 	Status pulumi.StringPtrInput
 	// The key/value pairs to associate with the zone.
 	Tags pulumi.StringMapInput
 	// The time to live (TTL) of the zone.
 	Ttl pulumi.IntPtrInput
-	// The type of zone. Can either be `public` or `private`. Changing this
-	// creates a new DNS zone.
+	// The type of zone.
 	ZoneType pulumi.StringPtrInput
 }
 
@@ -219,63 +122,49 @@ func (ZoneState) ElementType() reflect.Type {
 }
 
 type zoneArgs struct {
-	// A description of the zone.
+	// The description of the zone.
 	Description *string `pulumi:"description"`
 	// The email address of the administrator managing the zone.
 	Email *string `pulumi:"email"`
-	// The enterprise project id of the zone. Changing this creates a
-	// new zone.
+	// The enterprise project ID of the zone.
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// The name of the zone. Note the `.` at the end of the name. Changing this creates
-	// a new DNS zone.
+	// The name of the zone.
 	Name *string `pulumi:"name"`
 	// The recursive resolution proxy mode for subdomains of the private zone.
-	ProxyPattern *string `pulumi:"proxyPattern"`
-	// The region in which to create the DNS zone. If omitted, the `region` argument
-	// of the provider will be used. Changing this creates a new DNS zone.
-	Region *string `pulumi:"region"`
-	// Router configuration block which is required if zoneType is private. The router
-	// structure is documented below.
-	Routers []ZoneRouter `pulumi:"routers"`
+	ProxyPattern *string      `pulumi:"proxyPattern"`
+	Region       *string      `pulumi:"region"`
+	Routers      []ZoneRouter `pulumi:"routers"`
 	// The status of the zone.
 	Status *string `pulumi:"status"`
 	// The key/value pairs to associate with the zone.
 	Tags map[string]string `pulumi:"tags"`
 	// The time to live (TTL) of the zone.
 	Ttl *int `pulumi:"ttl"`
-	// The type of zone. Can either be `public` or `private`. Changing this
-	// creates a new DNS zone.
+	// The type of zone.
 	ZoneType *string `pulumi:"zoneType"`
 }
 
 // The set of arguments for constructing a Zone resource.
 type ZoneArgs struct {
-	// A description of the zone.
+	// The description of the zone.
 	Description pulumi.StringPtrInput
 	// The email address of the administrator managing the zone.
 	Email pulumi.StringPtrInput
-	// The enterprise project id of the zone. Changing this creates a
-	// new zone.
+	// The enterprise project ID of the zone.
 	EnterpriseProjectId pulumi.StringPtrInput
-	// The name of the zone. Note the `.` at the end of the name. Changing this creates
-	// a new DNS zone.
+	// The name of the zone.
 	Name pulumi.StringPtrInput
 	// The recursive resolution proxy mode for subdomains of the private zone.
 	ProxyPattern pulumi.StringPtrInput
-	// The region in which to create the DNS zone. If omitted, the `region` argument
-	// of the provider will be used. Changing this creates a new DNS zone.
-	Region pulumi.StringPtrInput
-	// Router configuration block which is required if zoneType is private. The router
-	// structure is documented below.
-	Routers ZoneRouterArrayInput
+	Region       pulumi.StringPtrInput
+	Routers      ZoneRouterArrayInput
 	// The status of the zone.
 	Status pulumi.StringPtrInput
 	// The key/value pairs to associate with the zone.
 	Tags pulumi.StringMapInput
 	// The time to live (TTL) of the zone.
 	Ttl pulumi.IntPtrInput
-	// The type of zone. Can either be `public` or `private`. Changing this
-	// creates a new DNS zone.
+	// The type of zone.
 	ZoneType pulumi.StringPtrInput
 }
 
@@ -366,7 +255,7 @@ func (o ZoneOutput) ToZoneOutputWithContext(ctx context.Context) ZoneOutput {
 	return o
 }
 
-// A description of the zone.
+// The description of the zone.
 func (o ZoneOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -376,19 +265,17 @@ func (o ZoneOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
 }
 
-// The enterprise project id of the zone. Changing this creates a
-// new zone.
+// The enterprise project ID of the zone.
 func (o ZoneOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// An array of master DNS servers.
+// The list of the masters of the DNS server.
 func (o ZoneOutput) Masters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringArrayOutput { return v.Masters }).(pulumi.StringArrayOutput)
 }
 
-// The name of the zone. Note the `.` at the end of the name. Changing this creates
-// a new DNS zone.
+// The name of the zone.
 func (o ZoneOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -398,14 +285,10 @@ func (o ZoneOutput) ProxyPattern() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.ProxyPattern }).(pulumi.StringOutput)
 }
 
-// The region in which to create the DNS zone. If omitted, the `region` argument
-// of the provider will be used. Changing this creates a new DNS zone.
 func (o ZoneOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Router configuration block which is required if zoneType is private. The router
-// structure is documented below.
 func (o ZoneOutput) Routers() ZoneRouterArrayOutput {
 	return o.ApplyT(func(v *Zone) ZoneRouterArrayOutput { return v.Routers }).(ZoneRouterArrayOutput)
 }
@@ -425,8 +308,7 @@ func (o ZoneOutput) Ttl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Zone) pulumi.IntPtrOutput { return v.Ttl }).(pulumi.IntPtrOutput)
 }
 
-// The type of zone. Can either be `public` or `private`. Changing this
-// creates a new DNS zone.
+// The type of zone.
 func (o ZoneOutput) ZoneType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringPtrOutput { return v.ZoneType }).(pulumi.StringPtrOutput)
 }

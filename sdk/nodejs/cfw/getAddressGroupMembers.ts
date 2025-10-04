@@ -6,22 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the list of CFW address group members.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const groupId = config.requireObject<any>("groupId");
- * const test = sbercloud.Cfw.getAddressGroupMembers({
- *     groupId: groupId,
- * });
- * ```
- */
 export function getAddressGroupMembers(args: GetAddressGroupMembersArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressGroupMembersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:Cfw/getAddressGroupMembers:getAddressGroupMembers", {
@@ -39,36 +23,12 @@ export function getAddressGroupMembers(args: GetAddressGroupMembersArgs, opts?: 
  * A collection of arguments for invoking getAddressGroupMembers.
  */
 export interface GetAddressGroupMembersArgs {
-    /**
-     * Specifies the IP address
-     */
     address?: string;
-    /**
-     * Specifies the firewall instance ID.
-     */
     fwInstanceId?: string;
-    /**
-     * Specifies the ID of the IP address group.
-     */
     groupId: string;
-    /**
-     * Specifies the address group member ID.
-     */
     itemId?: string;
-    /**
-     * Specifies the keyword.
-     */
     keyWord?: string;
-    /**
-     * Specifies the query address group type.
-     * + **0** means custom define address set.
-     * + **1** means predefined address set.
-     */
     queryAddressSetType?: string;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
 }
 
@@ -76,9 +36,6 @@ export interface GetAddressGroupMembersArgs {
  * A collection of values returned by getAddressGroupMembers.
  */
 export interface GetAddressGroupMembersResult {
-    /**
-     * The IP address.
-     */
     readonly address?: string;
     readonly fwInstanceId?: string;
     readonly groupId: string;
@@ -86,34 +43,12 @@ export interface GetAddressGroupMembersResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The ID of an address group member.
-     */
     readonly itemId?: string;
     readonly keyWord?: string;
     readonly queryAddressSetType?: string;
-    /**
-     * The IP address group member list.
-     */
     readonly records: outputs.Cfw.GetAddressGroupMembersRecord[];
     readonly region: string;
 }
-/**
- * Use this data source to get the list of CFW address group members.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const groupId = config.requireObject<any>("groupId");
- * const test = sbercloud.Cfw.getAddressGroupMembers({
- *     groupId: groupId,
- * });
- * ```
- */
 export function getAddressGroupMembersOutput(args: GetAddressGroupMembersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAddressGroupMembersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:Cfw/getAddressGroupMembers:getAddressGroupMembers", {
@@ -131,35 +66,11 @@ export function getAddressGroupMembersOutput(args: GetAddressGroupMembersOutputA
  * A collection of arguments for invoking getAddressGroupMembers.
  */
 export interface GetAddressGroupMembersOutputArgs {
-    /**
-     * Specifies the IP address
-     */
     address?: pulumi.Input<string>;
-    /**
-     * Specifies the firewall instance ID.
-     */
     fwInstanceId?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of the IP address group.
-     */
     groupId: pulumi.Input<string>;
-    /**
-     * Specifies the address group member ID.
-     */
     itemId?: pulumi.Input<string>;
-    /**
-     * Specifies the keyword.
-     */
     keyWord?: pulumi.Input<string>;
-    /**
-     * Specifies the query address group type.
-     * + **0** means custom define address set.
-     * + **1** means predefined address set.
-     */
     queryAddressSetType?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
 }

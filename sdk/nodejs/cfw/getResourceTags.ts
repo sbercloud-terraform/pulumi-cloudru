@@ -6,22 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the list of tags of a specified firewall instance.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const fwInstanceId = config.requireObject<any>("fwInstanceId");
- * const test = sbercloud.Cfw.getResourceTags({
- *     fwInstanceId: fwInstanceId,
- * });
- * ```
- */
 export function getResourceTags(args: GetResourceTagsArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceTagsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:Cfw/getResourceTags:getResourceTags", {
@@ -34,14 +18,7 @@ export function getResourceTags(args: GetResourceTagsArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getResourceTags.
  */
 export interface GetResourceTagsArgs {
-    /**
-     * Specifies the firewall ID.
-     */
     fwInstanceId: string;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
 }
 
@@ -55,27 +32,8 @@ export interface GetResourceTagsResult {
      */
     readonly id: string;
     readonly region: string;
-    /**
-     * The tag list.
-     */
     readonly tags: outputs.Cfw.GetResourceTagsTag[];
 }
-/**
- * Use this data source to get the list of tags of a specified firewall instance.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const fwInstanceId = config.requireObject<any>("fwInstanceId");
- * const test = sbercloud.Cfw.getResourceTags({
- *     fwInstanceId: fwInstanceId,
- * });
- * ```
- */
 export function getResourceTagsOutput(args: GetResourceTagsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetResourceTagsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:Cfw/getResourceTags:getResourceTags", {
@@ -88,13 +46,6 @@ export function getResourceTagsOutput(args: GetResourceTagsOutputArgs, opts?: pu
  * A collection of arguments for invoking getResourceTags.
  */
 export interface GetResourceTagsOutputArgs {
-    /**
-     * Specifies the firewall ID.
-     */
     fwInstanceId: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
 }

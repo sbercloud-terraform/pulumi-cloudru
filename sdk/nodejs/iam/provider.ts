@@ -6,64 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages the identity providers within SberCloud IAM service.
- *
- * > **NOTE:** You can create up to 10 identity providers.
- *
- * ## Example Usage
- *
- * ### Create a SAML protocol provider
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const provider1 = new sbercloud.iam.Provider("provider_1", {
- *     name: "example_com_provider_saml",
- *     protocol: "saml",
- * });
- * ```
- *
- * ### Create a OpenID Connect protocol provider
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const provider2 = new sbercloud.iam.Provider("provider_2", {
- *     name: "example_com_provider_oidc",
- *     protocol: "oidc",
- *     accessConfig: {
- *         accessType: "program_console",
- *         providerUrl: "https://accounts.example.com",
- *         clientId: "your_client_id",
- *         authorizationEndpoint: "https://accounts.example.com/o/oauth2/v2/auth",
- *         scopes: ["openid"],
- *         signingKey: JSON.stringify({
- *             keys: [{
- *                 alg: "RS256",
- *                 e: "AQAB",
- *                 kid: "...",
- *                 kty: "RSA",
- *                 n: "...",
- *                 use: "sig",
- *             }],
- *         }),
- *     },
- * });
- * ```
- *
- * <!--markdownlint-disable MD033-->
- *
- * ## Import
- *
- * Identity provider can be imported using the `name`, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Iam/provider:Provider provider_1 example_com_provider_saml
- * ```
- */
 export class Provider extends pulumi.CustomResource {
     /**
      * Get an existing Provider resource's state with the given name, ID, and optional extra
@@ -92,58 +34,14 @@ export class Provider extends pulumi.CustomResource {
         return obj['__pulumiType'] === Provider.__pulumiType;
     }
 
-    /**
-     * Specifies the description of the identity provider.
-     * This field is required only if the protocol is set to *oidc*.
-     */
     declare public readonly accessConfig: pulumi.Output<outputs.Iam.ProviderAccessConfig | undefined>;
-    /**
-     * The identity conversion rules of the identity provider.
-     * The object structure is documented below
-     */
     declare public /*out*/ readonly conversionRules: pulumi.Output<outputs.Iam.ProviderConversionRule[]>;
-    /**
-     * Specifies the description of the identity provider.
-     */
     declare public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * The login link of the identity provider.
-     */
     declare public /*out*/ readonly loginLink: pulumi.Output<string>;
-    /**
-     * Specifies the metadata of the IDP(Identity Provider) server.
-     * To obtain the metadata file of your enterprise IDP, contact the enterprise administrator.
-     * This field is used to import a metadata file to IAM to implement federated identity authentication.
-     * This field is required only if the protocol is set to *saml*.
-     * The maximum length is 30,000 characters and it stores in the state with SHA1 algorithm.
-     *
-     * > **NOTE:**
-     * The metadata file specifies API addresses and certificate information in compliance with the SAML 2.0 standard.
-     * It is usually stored in a file. In the TF script, you can import the metafile through the `file` function,
-     * for example:
-     * <br/>`metadata = file("/usr/local/data/files/metadata.txt")`
-     */
     declare public readonly metadata: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the name of the identity provider to be registered.
-     * The maximum length is 64 characters. Only letters, digits, underscores (_), and hyphens (-) are allowed.
-     * The name is unique, it is recommended to include domain name information.
-     * Changing this creates a new resource.
-     */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * Specifies the protocol of the identity provider.
-     * Valid values are *saml* and *oidc*.
-     * Changing this creates a new resource.
-     */
     declare public readonly protocol: pulumi.Output<string>;
-    /**
-     * The single sign-on type of the identity provider.
-     */
     declare public readonly ssoType: pulumi.Output<string>;
-    /**
-     * Enabled status for the identity provider. Defaults to true.
-     */
     declare public readonly status: pulumi.Output<boolean | undefined>;
 
     /**
@@ -192,58 +90,14 @@ export class Provider extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Provider resources.
  */
 export interface ProviderState {
-    /**
-     * Specifies the description of the identity provider.
-     * This field is required only if the protocol is set to *oidc*.
-     */
     accessConfig?: pulumi.Input<inputs.Iam.ProviderAccessConfig>;
-    /**
-     * The identity conversion rules of the identity provider.
-     * The object structure is documented below
-     */
     conversionRules?: pulumi.Input<pulumi.Input<inputs.Iam.ProviderConversionRule>[]>;
-    /**
-     * Specifies the description of the identity provider.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * The login link of the identity provider.
-     */
     loginLink?: pulumi.Input<string>;
-    /**
-     * Specifies the metadata of the IDP(Identity Provider) server.
-     * To obtain the metadata file of your enterprise IDP, contact the enterprise administrator.
-     * This field is used to import a metadata file to IAM to implement federated identity authentication.
-     * This field is required only if the protocol is set to *saml*.
-     * The maximum length is 30,000 characters and it stores in the state with SHA1 algorithm.
-     *
-     * > **NOTE:**
-     * The metadata file specifies API addresses and certificate information in compliance with the SAML 2.0 standard.
-     * It is usually stored in a file. In the TF script, you can import the metafile through the `file` function,
-     * for example:
-     * <br/>`metadata = file("/usr/local/data/files/metadata.txt")`
-     */
     metadata?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the identity provider to be registered.
-     * The maximum length is 64 characters. Only letters, digits, underscores (_), and hyphens (-) are allowed.
-     * The name is unique, it is recommended to include domain name information.
-     * Changing this creates a new resource.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the protocol of the identity provider.
-     * Valid values are *saml* and *oidc*.
-     * Changing this creates a new resource.
-     */
     protocol?: pulumi.Input<string>;
-    /**
-     * The single sign-on type of the identity provider.
-     */
     ssoType?: pulumi.Input<string>;
-    /**
-     * Enabled status for the identity provider. Defaults to true.
-     */
     status?: pulumi.Input<boolean>;
 }
 
@@ -251,48 +105,11 @@ export interface ProviderState {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
-    /**
-     * Specifies the description of the identity provider.
-     * This field is required only if the protocol is set to *oidc*.
-     */
     accessConfig?: pulumi.Input<inputs.Iam.ProviderAccessConfig>;
-    /**
-     * Specifies the description of the identity provider.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies the metadata of the IDP(Identity Provider) server.
-     * To obtain the metadata file of your enterprise IDP, contact the enterprise administrator.
-     * This field is used to import a metadata file to IAM to implement federated identity authentication.
-     * This field is required only if the protocol is set to *saml*.
-     * The maximum length is 30,000 characters and it stores in the state with SHA1 algorithm.
-     *
-     * > **NOTE:**
-     * The metadata file specifies API addresses and certificate information in compliance with the SAML 2.0 standard.
-     * It is usually stored in a file. In the TF script, you can import the metafile through the `file` function,
-     * for example:
-     * <br/>`metadata = file("/usr/local/data/files/metadata.txt")`
-     */
     metadata?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the identity provider to be registered.
-     * The maximum length is 64 characters. Only letters, digits, underscores (_), and hyphens (-) are allowed.
-     * The name is unique, it is recommended to include domain name information.
-     * Changing this creates a new resource.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the protocol of the identity provider.
-     * Valid values are *saml* and *oidc*.
-     * Changing this creates a new resource.
-     */
     protocol: pulumi.Input<string>;
-    /**
-     * The single sign-on type of the identity provider.
-     */
     ssoType?: pulumi.Input<string>;
-    /**
-     * Enabled status for the identity provider. Defaults to true.
-     */
     status?: pulumi.Input<boolean>;
 }

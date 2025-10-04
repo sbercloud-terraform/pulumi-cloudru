@@ -11,36 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get available CBR policies within Sbercloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			policyName := cfg.RequireObject("policyName")
-//			_, err := sbercloud.GetCbrPolicies(ctx, &cloudru.GetCbrPoliciesArgs{
-//				Name: pulumi.StringRef(policyName),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetCbrPolicies(ctx *pulumi.Context, args *GetCbrPoliciesArgs, opts ...pulumi.InvokeOption) (*GetCbrPoliciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCbrPoliciesResult
@@ -53,46 +23,25 @@ func GetCbrPolicies(ctx *pulumi.Context, args *GetCbrPoliciesArgs, opts ...pulum
 
 // A collection of arguments for invoking getCbrPolicies.
 type GetCbrPoliciesArgs struct {
-	// Specifies the policy enabling status to query. The valid values are as follows:
-	// + **true**: Policy enabled
-	// + **false**: Policy not enabled
-	Enabled *bool `pulumi:"enabled"`
-	// Specifies the policy name used to query.
-	Name *string `pulumi:"name"`
-	// Specifies the policy ID used to query.
+	Enabled  *bool   `pulumi:"enabled"`
+	Name     *string `pulumi:"name"`
 	PolicyId *string `pulumi:"policyId"`
-	// Specifies the region in which to query the policies.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the policy type used to query. The valid values are as follows:
-	// + **backup**: Backup policy
-	// + **replication**: Replication policy
-	Type *string `pulumi:"type"`
-	// Specifies the vault ID of the associated policy used to query.
-	VaultId *string `pulumi:"vaultId"`
+	Region   *string `pulumi:"region"`
+	Type     *string `pulumi:"type"`
+	VaultId  *string `pulumi:"vaultId"`
 }
 
 // A collection of values returned by getCbrPolicies.
 type GetCbrPoliciesResult struct {
-	// Whether to enable the policy. The valid values are as follows:
-	// + **true**: Policy enabled
-	// + **false**: Policy not enabled
 	Enabled *bool `pulumi:"enabled"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The policy name.
-	Name *string `pulumi:"name"`
-	// All CBR policies that match the filter parameters.
-	// The policies structure is documented below.
+	Id       string                 `pulumi:"id"`
+	Name     *string                `pulumi:"name"`
 	Policies []GetCbrPoliciesPolicy `pulumi:"policies"`
 	PolicyId *string                `pulumi:"policyId"`
 	Region   string                 `pulumi:"region"`
-	// The protection type of the policy. The valid values are as follows:
-	// + **backup**: Backup policy
-	// + **replication**: Replication policy
-	Type *string `pulumi:"type"`
-	// The vault ID of the associated CBR policy.
-	VaultId *string `pulumi:"vaultId"`
+	Type     *string                `pulumi:"type"`
+	VaultId  *string                `pulumi:"vaultId"`
 }
 
 func GetCbrPoliciesOutput(ctx *pulumi.Context, args GetCbrPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetCbrPoliciesResultOutput {
@@ -106,23 +55,12 @@ func GetCbrPoliciesOutput(ctx *pulumi.Context, args GetCbrPoliciesOutputArgs, op
 
 // A collection of arguments for invoking getCbrPolicies.
 type GetCbrPoliciesOutputArgs struct {
-	// Specifies the policy enabling status to query. The valid values are as follows:
-	// + **true**: Policy enabled
-	// + **false**: Policy not enabled
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Specifies the policy name used to query.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the policy ID used to query.
+	Enabled  pulumi.BoolPtrInput   `pulumi:"enabled"`
+	Name     pulumi.StringPtrInput `pulumi:"name"`
 	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
-	// Specifies the region in which to query the policies.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the policy type used to query. The valid values are as follows:
-	// + **backup**: Backup policy
-	// + **replication**: Replication policy
-	Type pulumi.StringPtrInput `pulumi:"type"`
-	// Specifies the vault ID of the associated policy used to query.
-	VaultId pulumi.StringPtrInput `pulumi:"vaultId"`
+	Region   pulumi.StringPtrInput `pulumi:"region"`
+	Type     pulumi.StringPtrInput `pulumi:"type"`
+	VaultId  pulumi.StringPtrInput `pulumi:"vaultId"`
 }
 
 func (GetCbrPoliciesOutputArgs) ElementType() reflect.Type {
@@ -144,9 +82,6 @@ func (o GetCbrPoliciesResultOutput) ToGetCbrPoliciesResultOutputWithContext(ctx 
 	return o
 }
 
-// Whether to enable the policy. The valid values are as follows:
-// + **true**: Policy enabled
-// + **false**: Policy not enabled
 func (o GetCbrPoliciesResultOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetCbrPoliciesResult) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -156,13 +91,10 @@ func (o GetCbrPoliciesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrPoliciesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The policy name.
 func (o GetCbrPoliciesResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCbrPoliciesResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// All CBR policies that match the filter parameters.
-// The policies structure is documented below.
 func (o GetCbrPoliciesResultOutput) Policies() GetCbrPoliciesPolicyArrayOutput {
 	return o.ApplyT(func(v GetCbrPoliciesResult) []GetCbrPoliciesPolicy { return v.Policies }).(GetCbrPoliciesPolicyArrayOutput)
 }
@@ -175,14 +107,10 @@ func (o GetCbrPoliciesResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrPoliciesResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The protection type of the policy. The valid values are as follows:
-// + **backup**: Backup policy
-// + **replication**: Replication policy
 func (o GetCbrPoliciesResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCbrPoliciesResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The vault ID of the associated CBR policy.
 func (o GetCbrPoliciesResultOutput) VaultId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCbrPoliciesResult) *string { return v.VaultId }).(pulumi.StringPtrOutput)
 }

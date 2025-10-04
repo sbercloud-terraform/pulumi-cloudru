@@ -66,18 +66,11 @@ class GetDependenciesResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        The name of the dependency package.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def packages(self) -> Sequence['outputs.GetDependenciesPackageResult']:
-        """
-        All dependency packages that match the filter parameters.
-        The packages structure is documented below.
-        """
         return pulumi.get(self, "packages")
 
     @_builtins.property
@@ -88,9 +81,6 @@ class GetDependenciesResult:
     @_builtins.property
     @pulumi.getter
     def runtime(self) -> Optional[_builtins.str]:
-        """
-        The runtime of the dependency package.
-        """
         return pulumi.get(self, "runtime")
 
     @_builtins.property
@@ -121,77 +111,7 @@ def get_dependencies(is_versions_query_allowed: Optional[_builtins.bool] = None,
                      type: Optional[_builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDependenciesResult:
     """
-    Use this data source to query dependency packages within SberCloud.
-
-    > Between `1.64.2` and `1.72.1`, the version list of each dependency package is queried by default.
-       <br>This will cause the query to take up a lot of time and may trigger flow control.
-       <br>There are not recommended to use.
-
-    ## Example Usage
-
-    ### Obtain all public dependency packages
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.FunctionGraph.get_dependencies()
-    ```
-
-    ### Obtain specific public dependency package by name
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.FunctionGraph.get_dependencies(type="public",
-        name="obssdk-3.0.2")
-    ```
-
-    ### Obtain all public Python2.7 dependency packages
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.FunctionGraph.get_dependencies(type="public",
-        runtime="Python2.7")
-    ```
-
-
-    :param _builtins.bool is_versions_query_allowed: Specifies whether to query the versions of each dependency package.
-           Defaults to **false**.
-    :param _builtins.str name: Specifies the name of the dependency package.
-    :param _builtins.str region: Specifies the region where the dependency packages are located.  
-           If omitted, the provider-level region will be used.
-    :param _builtins.str runtime: Specifies the runtime of the dependency package.  
-           The valid values are as follows:
-           + **Java8**
-           + **Java11**
-           + **Node.js6.10**
-           + **Node.js8.10**
-           + **Node.js10.16**
-           + **Node.js12.13**
-           + **Node.js14.18**
-           + **Node.js16.17**
-           + **Node.js18.15**
-           + **Python2.7**
-           + **Python3.6**
-           + **Python3.9**
-           + **Python3.10**
-           + **Go1.x**
-           + **C#(.NET Core 2.0)**
-           + **C#(.NET Core 2.1)**
-           + **C#(.NET Core 3.1)**
-           + **Custom**
-           + **PHP7.3**
-           + **Cangjie1.0**
-           + **http**
-           + **Custom Image**
-    :param _builtins.str type: Specifies the type of the dependency package.  
-           The valid values are as follows:
-           + **public**
-           + **private**
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['isVersionsQueryAllowed'] = is_versions_query_allowed
@@ -217,77 +137,7 @@ def get_dependencies_output(is_versions_query_allowed: Optional[pulumi.Input[Opt
                             type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDependenciesResult]:
     """
-    Use this data source to query dependency packages within SberCloud.
-
-    > Between `1.64.2` and `1.72.1`, the version list of each dependency package is queried by default.
-       <br>This will cause the query to take up a lot of time and may trigger flow control.
-       <br>There are not recommended to use.
-
-    ## Example Usage
-
-    ### Obtain all public dependency packages
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.FunctionGraph.get_dependencies()
-    ```
-
-    ### Obtain specific public dependency package by name
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.FunctionGraph.get_dependencies(type="public",
-        name="obssdk-3.0.2")
-    ```
-
-    ### Obtain all public Python2.7 dependency packages
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.FunctionGraph.get_dependencies(type="public",
-        runtime="Python2.7")
-    ```
-
-
-    :param _builtins.bool is_versions_query_allowed: Specifies whether to query the versions of each dependency package.
-           Defaults to **false**.
-    :param _builtins.str name: Specifies the name of the dependency package.
-    :param _builtins.str region: Specifies the region where the dependency packages are located.  
-           If omitted, the provider-level region will be used.
-    :param _builtins.str runtime: Specifies the runtime of the dependency package.  
-           The valid values are as follows:
-           + **Java8**
-           + **Java11**
-           + **Node.js6.10**
-           + **Node.js8.10**
-           + **Node.js10.16**
-           + **Node.js12.13**
-           + **Node.js14.18**
-           + **Node.js16.17**
-           + **Node.js18.15**
-           + **Python2.7**
-           + **Python3.6**
-           + **Python3.9**
-           + **Python3.10**
-           + **Go1.x**
-           + **C#(.NET Core 2.0)**
-           + **C#(.NET Core 2.1)**
-           + **C#(.NET Core 3.1)**
-           + **Custom**
-           + **PHP7.3**
-           + **Cangjie1.0**
-           + **http**
-           + **Custom Image**
-    :param _builtins.str type: Specifies the type of the dependency package.  
-           The valid values are as follows:
-           + **public**
-           + **private**
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['isVersionsQueryAllowed'] = is_versions_query_allowed

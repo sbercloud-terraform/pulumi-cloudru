@@ -11,38 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to query the backup detail using its ID within Sbercloud.
-//
-// ## Example Usage
-//
-// ### Using backup ID to query the backup detail
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			backupId := cfg.RequireObject("backupId")
-//			_, err := sbercloud.GetCbrBackup(ctx, &cloudru.GetCbrBackupArgs{
-//				Id: "backup_id",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetCbrBackup(ctx *pulumi.Context, args *GetCbrBackupArgs, opts ...pulumi.InvokeOption) (*GetCbrBackupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCbrBackupResult
@@ -55,57 +23,33 @@ func GetCbrBackup(ctx *pulumi.Context, args *GetCbrBackupArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getCbrBackup.
 type GetCbrBackupArgs struct {
-	// Specifies the backup ID.
-	Id string `pulumi:"id"`
-	// Specifies the region in which to query the backup detail.
-	// If omitted, the provider-level region will be used.
+	Id     string  `pulumi:"id"`
 	Region *string `pulumi:"region"`
 }
 
 // A collection of values returned by getCbrBackup.
 type GetCbrBackupResult struct {
-	// The restore point ID of the sub-backup resource.
-	CheckpointId string `pulumi:"checkpointId"`
-	// The backup list of the sub-backup resources.
-	// The object structure is documented below.
-	Childrens []GetCbrBackupChildren `pulumi:"childrens"`
-	// The creation time of the sub-backup.
-	CreatedAt string `pulumi:"createdAt"`
-	// The sub-backup description.
-	Description string `pulumi:"description"`
-	// The enterprise project to which the backup sub-backup resource belongs.
-	EnterpriseProjectId string `pulumi:"enterpriseProjectId"`
-	// The expiration time of the sub-backup.
-	ExpiredAt string `pulumi:"expiredAt"`
-	// The extended information.
-	ExtendInfos []GetCbrBackupExtendInfo `pulumi:"extendInfos"`
-	// The sub-backup ID.
-	Id string `pulumi:"id"`
-	// The sub-backup name.
-	Name string `pulumi:"name"`
-	// The parent backup ID.
-	ParentId string  `pulumi:"parentId"`
-	Region   *string `pulumi:"region"`
-	// The replication records.
-	ReplicationRecords []GetCbrBackupReplicationRecord `pulumi:"replicationRecords"`
-	// The availability zone where the backup sub-backup resource is located.
-	ResourceAz string `pulumi:"resourceAz"`
-	// The sub-backup resource ID.
-	ResourceId string `pulumi:"resourceId"`
-	// The sub-backup resource name.
-	ResourceName string `pulumi:"resourceName"`
-	// The sub-backup resource size, in GB.
-	ResourceSize int `pulumi:"resourceSize"`
-	// The sub-backup resource type.
-	ResourceType string `pulumi:"resourceType"`
-	// The sub-backup status.
-	Status string `pulumi:"status"`
-	// The sub-backup type.
-	Type string `pulumi:"type"`
-	// The latest update time of the sub-backup.
-	UpdatedAt string `pulumi:"updatedAt"`
-	// The vault to which the backup resource belongs.
-	VaultId string `pulumi:"vaultId"`
+	CheckpointId        string                          `pulumi:"checkpointId"`
+	Childrens           []GetCbrBackupChildren          `pulumi:"childrens"`
+	CreatedAt           string                          `pulumi:"createdAt"`
+	Description         string                          `pulumi:"description"`
+	EnterpriseProjectId string                          `pulumi:"enterpriseProjectId"`
+	ExpiredAt           string                          `pulumi:"expiredAt"`
+	ExtendInfos         []GetCbrBackupExtendInfo        `pulumi:"extendInfos"`
+	Id                  string                          `pulumi:"id"`
+	Name                string                          `pulumi:"name"`
+	ParentId            string                          `pulumi:"parentId"`
+	Region              *string                         `pulumi:"region"`
+	ReplicationRecords  []GetCbrBackupReplicationRecord `pulumi:"replicationRecords"`
+	ResourceAz          string                          `pulumi:"resourceAz"`
+	ResourceId          string                          `pulumi:"resourceId"`
+	ResourceName        string                          `pulumi:"resourceName"`
+	ResourceSize        int                             `pulumi:"resourceSize"`
+	ResourceType        string                          `pulumi:"resourceType"`
+	Status              string                          `pulumi:"status"`
+	Type                string                          `pulumi:"type"`
+	UpdatedAt           string                          `pulumi:"updatedAt"`
+	VaultId             string                          `pulumi:"vaultId"`
 }
 
 func GetCbrBackupOutput(ctx *pulumi.Context, args GetCbrBackupOutputArgs, opts ...pulumi.InvokeOption) GetCbrBackupResultOutput {
@@ -119,10 +63,7 @@ func GetCbrBackupOutput(ctx *pulumi.Context, args GetCbrBackupOutputArgs, opts .
 
 // A collection of arguments for invoking getCbrBackup.
 type GetCbrBackupOutputArgs struct {
-	// Specifies the backup ID.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies the region in which to query the backup detail.
-	// If omitted, the provider-level region will be used.
+	Id     pulumi.StringInput    `pulumi:"id"`
 	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
@@ -145,53 +86,42 @@ func (o GetCbrBackupResultOutput) ToGetCbrBackupResultOutputWithContext(ctx cont
 	return o
 }
 
-// The restore point ID of the sub-backup resource.
 func (o GetCbrBackupResultOutput) CheckpointId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrBackupResult) string { return v.CheckpointId }).(pulumi.StringOutput)
 }
 
-// The backup list of the sub-backup resources.
-// The object structure is documented below.
 func (o GetCbrBackupResultOutput) Childrens() GetCbrBackupChildrenArrayOutput {
 	return o.ApplyT(func(v GetCbrBackupResult) []GetCbrBackupChildren { return v.Childrens }).(GetCbrBackupChildrenArrayOutput)
 }
 
-// The creation time of the sub-backup.
 func (o GetCbrBackupResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrBackupResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// The sub-backup description.
 func (o GetCbrBackupResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrBackupResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The enterprise project to which the backup sub-backup resource belongs.
 func (o GetCbrBackupResultOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrBackupResult) string { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// The expiration time of the sub-backup.
 func (o GetCbrBackupResultOutput) ExpiredAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrBackupResult) string { return v.ExpiredAt }).(pulumi.StringOutput)
 }
 
-// The extended information.
 func (o GetCbrBackupResultOutput) ExtendInfos() GetCbrBackupExtendInfoArrayOutput {
 	return o.ApplyT(func(v GetCbrBackupResult) []GetCbrBackupExtendInfo { return v.ExtendInfos }).(GetCbrBackupExtendInfoArrayOutput)
 }
 
-// The sub-backup ID.
 func (o GetCbrBackupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrBackupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The sub-backup name.
 func (o GetCbrBackupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrBackupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The parent backup ID.
 func (o GetCbrBackupResultOutput) ParentId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrBackupResult) string { return v.ParentId }).(pulumi.StringOutput)
 }
@@ -200,52 +130,42 @@ func (o GetCbrBackupResultOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCbrBackupResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// The replication records.
 func (o GetCbrBackupResultOutput) ReplicationRecords() GetCbrBackupReplicationRecordArrayOutput {
 	return o.ApplyT(func(v GetCbrBackupResult) []GetCbrBackupReplicationRecord { return v.ReplicationRecords }).(GetCbrBackupReplicationRecordArrayOutput)
 }
 
-// The availability zone where the backup sub-backup resource is located.
 func (o GetCbrBackupResultOutput) ResourceAz() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrBackupResult) string { return v.ResourceAz }).(pulumi.StringOutput)
 }
 
-// The sub-backup resource ID.
 func (o GetCbrBackupResultOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrBackupResult) string { return v.ResourceId }).(pulumi.StringOutput)
 }
 
-// The sub-backup resource name.
 func (o GetCbrBackupResultOutput) ResourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrBackupResult) string { return v.ResourceName }).(pulumi.StringOutput)
 }
 
-// The sub-backup resource size, in GB.
 func (o GetCbrBackupResultOutput) ResourceSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetCbrBackupResult) int { return v.ResourceSize }).(pulumi.IntOutput)
 }
 
-// The sub-backup resource type.
 func (o GetCbrBackupResultOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrBackupResult) string { return v.ResourceType }).(pulumi.StringOutput)
 }
 
-// The sub-backup status.
 func (o GetCbrBackupResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrBackupResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The sub-backup type.
 func (o GetCbrBackupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrBackupResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The latest update time of the sub-backup.
 func (o GetCbrBackupResultOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrBackupResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// The vault to which the backup resource belongs.
 func (o GetCbrBackupResultOutput) VaultId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrBackupResult) string { return v.VaultId }).(pulumi.StringOutput)
 }

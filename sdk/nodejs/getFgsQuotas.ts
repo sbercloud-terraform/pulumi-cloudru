@@ -6,9 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Using this data source to query the list of available resource quotas for FunctionGraph service within SberCloud.
- */
 export function getFgsQuotas(args?: GetFgsQuotasArgs, opts?: pulumi.InvokeOptions): Promise<GetFgsQuotasResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -21,10 +18,6 @@ export function getFgsQuotas(args?: GetFgsQuotasArgs, opts?: pulumi.InvokeOption
  * A collection of arguments for invoking getFgsQuotas.
  */
 export interface GetFgsQuotasArgs {
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
 }
 
@@ -36,15 +29,9 @@ export interface GetFgsQuotasResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * All quotas that match the filter parameters.
-     */
     readonly quotas: outputs.GetFgsQuotasQuota[];
     readonly region: string;
 }
-/**
- * Using this data source to query the list of available resource quotas for FunctionGraph service within SberCloud.
- */
 export function getFgsQuotasOutput(args?: GetFgsQuotasOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFgsQuotasResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -57,9 +44,5 @@ export function getFgsQuotasOutput(args?: GetFgsQuotasOutputArgs, opts?: pulumi.
  * A collection of arguments for invoking getFgsQuotas.
  */
 export interface GetFgsQuotasOutputArgs {
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
 }

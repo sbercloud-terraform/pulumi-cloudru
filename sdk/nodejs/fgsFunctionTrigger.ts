@@ -4,21 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Manages the function trigger resource within SberCloud.
- *
- * ## Example Usage
- *
- * ## Import
- *
- * Function trigger can be imported using the `function_urn`, `type` and `id`, separated by the slashes (/), e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:index/fgsFunctionTrigger:FgsFunctionTrigger test <function_urn>/<type>/<id>
- * ```
- */
 export class FgsFunctionTrigger extends pulumi.CustomResource {
     /**
      * Get an existing FgsFunctionTrigger resource's state with the given name, ID, and optional extra
@@ -52,41 +37,23 @@ export class FgsFunctionTrigger extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * Specifies the detailed configuration of the function trigger event, in JSON
-     * format.
-     * For various types of trigger parameter configurations, please refer to the
-     * [documentation](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0122.html#functiongraph_06_0122__request_TriggerEventDataRequestBody).
-     *
-     * > Please refer to the [documentation](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0124.html#functiongraph_06_0124__request_UpdateriggerEventData)
-     * for updateable fields.
+     * The detailed configuration of the function trigger event, in JSON format.
      */
     declare public readonly eventData: pulumi.Output<string>;
     /**
-     * Specifies the function URN to which the function trigger belongs.  
-     * Changing this will create a new resource.
+     * The function URN to which the function trigger belongs.
      */
     declare public readonly functionUrn: pulumi.Output<string>;
     /**
-     * Specifies the region where the function trigger is located.  
-     * If omitted, the provider-level region will be used. Changing this will create a new resource.
+     * The region where the function trigger is located.
      */
     declare public readonly region: pulumi.Output<string>;
     /**
-     * Specifies the status of the function trigger.  
-     * The valid values are **ACTIVE** and **DISABLED**.
-     * About `DDS` and `Kafka` triggers, the default value is **DISABLED**, for the other triggers, the default value is
-     * **ACTIVE**.
-     *
-     * > Currently, only some triggers support setting the **DISABLED** value, such as `TIMER`, `DDS`, `DMS`, `KAFKA` and
-     * `LTS`. For more details, please refer to the [documentation](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0122.html).
+     * The expected status of the function trigger.
      */
     declare public readonly status: pulumi.Output<string>;
     /**
-     * Specifies the type of the function trigger.  
-     * The valid values are **TIMER**, **APIG**, **CTS**, **DDS**, **DEDICATEDGATEWAY**, etc.
-     * Changing this will create a new resource.
-     *
-     * > For more available values, please refer to the [documentation table 3](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0122.html#section2).
+     * The type of the function trigger.
      */
     declare public readonly type: pulumi.Output<string>;
     /**
@@ -147,41 +114,23 @@ export interface FgsFunctionTriggerState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Specifies the detailed configuration of the function trigger event, in JSON
-     * format.
-     * For various types of trigger parameter configurations, please refer to the
-     * [documentation](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0122.html#functiongraph_06_0122__request_TriggerEventDataRequestBody).
-     *
-     * > Please refer to the [documentation](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0124.html#functiongraph_06_0124__request_UpdateriggerEventData)
-     * for updateable fields.
+     * The detailed configuration of the function trigger event, in JSON format.
      */
     eventData?: pulumi.Input<string>;
     /**
-     * Specifies the function URN to which the function trigger belongs.  
-     * Changing this will create a new resource.
+     * The function URN to which the function trigger belongs.
      */
     functionUrn?: pulumi.Input<string>;
     /**
-     * Specifies the region where the function trigger is located.  
-     * If omitted, the provider-level region will be used. Changing this will create a new resource.
+     * The region where the function trigger is located.
      */
     region?: pulumi.Input<string>;
     /**
-     * Specifies the status of the function trigger.  
-     * The valid values are **ACTIVE** and **DISABLED**.
-     * About `DDS` and `Kafka` triggers, the default value is **DISABLED**, for the other triggers, the default value is
-     * **ACTIVE**.
-     *
-     * > Currently, only some triggers support setting the **DISABLED** value, such as `TIMER`, `DDS`, `DMS`, `KAFKA` and
-     * `LTS`. For more details, please refer to the [documentation](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0122.html).
+     * The expected status of the function trigger.
      */
     status?: pulumi.Input<string>;
     /**
-     * Specifies the type of the function trigger.  
-     * The valid values are **TIMER**, **APIG**, **CTS**, **DDS**, **DEDICATEDGATEWAY**, etc.
-     * Changing this will create a new resource.
-     *
-     * > For more available values, please refer to the [documentation table 3](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0122.html#section2).
+     * The type of the function trigger.
      */
     type?: pulumi.Input<string>;
     /**
@@ -195,41 +144,23 @@ export interface FgsFunctionTriggerState {
  */
 export interface FgsFunctionTriggerArgs {
     /**
-     * Specifies the detailed configuration of the function trigger event, in JSON
-     * format.
-     * For various types of trigger parameter configurations, please refer to the
-     * [documentation](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0122.html#functiongraph_06_0122__request_TriggerEventDataRequestBody).
-     *
-     * > Please refer to the [documentation](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0124.html#functiongraph_06_0124__request_UpdateriggerEventData)
-     * for updateable fields.
+     * The detailed configuration of the function trigger event, in JSON format.
      */
     eventData: pulumi.Input<string>;
     /**
-     * Specifies the function URN to which the function trigger belongs.  
-     * Changing this will create a new resource.
+     * The function URN to which the function trigger belongs.
      */
     functionUrn: pulumi.Input<string>;
     /**
-     * Specifies the region where the function trigger is located.  
-     * If omitted, the provider-level region will be used. Changing this will create a new resource.
+     * The region where the function trigger is located.
      */
     region?: pulumi.Input<string>;
     /**
-     * Specifies the status of the function trigger.  
-     * The valid values are **ACTIVE** and **DISABLED**.
-     * About `DDS` and `Kafka` triggers, the default value is **DISABLED**, for the other triggers, the default value is
-     * **ACTIVE**.
-     *
-     * > Currently, only some triggers support setting the **DISABLED** value, such as `TIMER`, `DDS`, `DMS`, `KAFKA` and
-     * `LTS`. For more details, please refer to the [documentation](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0122.html).
+     * The expected status of the function trigger.
      */
     status?: pulumi.Input<string>;
     /**
-     * Specifies the type of the function trigger.  
-     * The valid values are **TIMER**, **APIG**, **CTS**, **DDS**, **DEDICATEDGATEWAY**, etc.
-     * Changing this will create a new resource.
-     *
-     * > For more available values, please refer to the [documentation table 3](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0122.html#section2).
+     * The type of the function trigger.
      */
     type: pulumi.Input<string>;
 }

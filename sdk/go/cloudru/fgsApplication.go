@@ -11,87 +11,28 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages an application within SberCloud.
-//
-// > Currently, only available in `cn-north-4` and `cn-east-3` regions.
-//
-// ## Example Usage
-//
-// ## Import
-//
-// Application can be imported using the `id`, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:index/fgsApplication:FgsApplication test <id>
-// ```
-//
-// # Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-//
-// API response.
-//
-// The missing attributes include: `template_id`, `agency_name`, `params`.
-//
-// It is generally recommended running `pulumi preview` after importing the application.
-//
-// # You can then decide if changes should be applied to the application, or the resource definition should be updated to
-//
-// align with the application. Also you can ignore changes as below.
-//
-// hcl
-//
-// resource "sbercloud_fgs_application" "test" {
-//
-//	...
-//
-//	lifecycle {
-//
-//	  ignore_changes = [
-//
-//	    template_id, agency_name,
-//
-//	  ]
-//
-//	}
-//
-// }
 type FgsApplication struct {
 	pulumi.CustomResourceState
 
-	// Specifies the agency name used by the application.\
-	// Changing this parameter will create a new resource.
-	//
-	// > If omitted, the service will automatically create an agency, please ensure that the tenant has IAM related
-	// permissions. The agency will be deleted when the application is deleted.
+	// The agency name used by the application.
 	AgencyName pulumi.StringPtrOutput `pulumi:"agencyName"`
-	// Specifies the description of the application.\
-	// The description can contain a maximum of `1,024` characters.
-	// Changing this parameter will create a new resource.
+	// The description of the application.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Specifies the application name.\
-	// The name can contain a maximum of 60 characters and must start with a letter and end with a letter or digit.
-	// Only letters, digits, underscores (_) and hyphens (-) are allowed.
-	// Changing this parameter will create a new resource.
+	// The application name
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the template parameters, in JSON format.\
-	// Changing this parameter will create a new resource.
+	// The template parameters, in JSON format.
 	Params pulumi.StringPtrOutput `pulumi:"params"`
-	// Specifies the region in which to create an application.\
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the application is located.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// The repository information.\
-	// The repository structure is documented below.
+	// The repository information.
 	Repositories FgsApplicationRepositoryArrayOutput `pulumi:"repositories"`
 	// The ID of the stack where the application is deployed.
 	StackId pulumi.StringOutput `pulumi:"stackId"`
-	// The list of the stack resources information.\
-	// The stackResources structure is documented below.
+	// The list of the stack resources information.
 	StackResources FgsApplicationStackResourceArrayOutput `pulumi:"stackResources"`
-	// The repository status.
+	// The application status.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Specifies the ID of the template used by the application.\
-	// Changing this parameter will create a new resource.
+	// The ID of the template used by the application.
 	TemplateId pulumi.StringPtrOutput `pulumi:"templateId"`
 }
 
@@ -125,76 +66,48 @@ func GetFgsApplication(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FgsApplication resources.
 type fgsApplicationState struct {
-	// Specifies the agency name used by the application.\
-	// Changing this parameter will create a new resource.
-	//
-	// > If omitted, the service will automatically create an agency, please ensure that the tenant has IAM related
-	// permissions. The agency will be deleted when the application is deleted.
+	// The agency name used by the application.
 	AgencyName *string `pulumi:"agencyName"`
-	// Specifies the description of the application.\
-	// The description can contain a maximum of `1,024` characters.
-	// Changing this parameter will create a new resource.
+	// The description of the application.
 	Description *string `pulumi:"description"`
-	// Specifies the application name.\
-	// The name can contain a maximum of 60 characters and must start with a letter and end with a letter or digit.
-	// Only letters, digits, underscores (_) and hyphens (-) are allowed.
-	// Changing this parameter will create a new resource.
+	// The application name
 	Name *string `pulumi:"name"`
-	// Specifies the template parameters, in JSON format.\
-	// Changing this parameter will create a new resource.
+	// The template parameters, in JSON format.
 	Params *string `pulumi:"params"`
-	// Specifies the region in which to create an application.\
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the application is located.
 	Region *string `pulumi:"region"`
-	// The repository information.\
-	// The repository structure is documented below.
+	// The repository information.
 	Repositories []FgsApplicationRepository `pulumi:"repositories"`
 	// The ID of the stack where the application is deployed.
 	StackId *string `pulumi:"stackId"`
-	// The list of the stack resources information.\
-	// The stackResources structure is documented below.
+	// The list of the stack resources information.
 	StackResources []FgsApplicationStackResource `pulumi:"stackResources"`
-	// The repository status.
+	// The application status.
 	Status *string `pulumi:"status"`
-	// Specifies the ID of the template used by the application.\
-	// Changing this parameter will create a new resource.
+	// The ID of the template used by the application.
 	TemplateId *string `pulumi:"templateId"`
 }
 
 type FgsApplicationState struct {
-	// Specifies the agency name used by the application.\
-	// Changing this parameter will create a new resource.
-	//
-	// > If omitted, the service will automatically create an agency, please ensure that the tenant has IAM related
-	// permissions. The agency will be deleted when the application is deleted.
+	// The agency name used by the application.
 	AgencyName pulumi.StringPtrInput
-	// Specifies the description of the application.\
-	// The description can contain a maximum of `1,024` characters.
-	// Changing this parameter will create a new resource.
+	// The description of the application.
 	Description pulumi.StringPtrInput
-	// Specifies the application name.\
-	// The name can contain a maximum of 60 characters and must start with a letter and end with a letter or digit.
-	// Only letters, digits, underscores (_) and hyphens (-) are allowed.
-	// Changing this parameter will create a new resource.
+	// The application name
 	Name pulumi.StringPtrInput
-	// Specifies the template parameters, in JSON format.\
-	// Changing this parameter will create a new resource.
+	// The template parameters, in JSON format.
 	Params pulumi.StringPtrInput
-	// Specifies the region in which to create an application.\
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the application is located.
 	Region pulumi.StringPtrInput
-	// The repository information.\
-	// The repository structure is documented below.
+	// The repository information.
 	Repositories FgsApplicationRepositoryArrayInput
 	// The ID of the stack where the application is deployed.
 	StackId pulumi.StringPtrInput
-	// The list of the stack resources information.\
-	// The stackResources structure is documented below.
+	// The list of the stack resources information.
 	StackResources FgsApplicationStackResourceArrayInput
-	// The repository status.
+	// The application status.
 	Status pulumi.StringPtrInput
-	// Specifies the ID of the template used by the application.\
-	// Changing this parameter will create a new resource.
+	// The ID of the template used by the application.
 	TemplateId pulumi.StringPtrInput
 }
 
@@ -203,57 +116,33 @@ func (FgsApplicationState) ElementType() reflect.Type {
 }
 
 type fgsApplicationArgs struct {
-	// Specifies the agency name used by the application.\
-	// Changing this parameter will create a new resource.
-	//
-	// > If omitted, the service will automatically create an agency, please ensure that the tenant has IAM related
-	// permissions. The agency will be deleted when the application is deleted.
+	// The agency name used by the application.
 	AgencyName *string `pulumi:"agencyName"`
-	// Specifies the description of the application.\
-	// The description can contain a maximum of `1,024` characters.
-	// Changing this parameter will create a new resource.
+	// The description of the application.
 	Description *string `pulumi:"description"`
-	// Specifies the application name.\
-	// The name can contain a maximum of 60 characters and must start with a letter and end with a letter or digit.
-	// Only letters, digits, underscores (_) and hyphens (-) are allowed.
-	// Changing this parameter will create a new resource.
+	// The application name
 	Name *string `pulumi:"name"`
-	// Specifies the template parameters, in JSON format.\
-	// Changing this parameter will create a new resource.
+	// The template parameters, in JSON format.
 	Params *string `pulumi:"params"`
-	// Specifies the region in which to create an application.\
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the application is located.
 	Region *string `pulumi:"region"`
-	// Specifies the ID of the template used by the application.\
-	// Changing this parameter will create a new resource.
+	// The ID of the template used by the application.
 	TemplateId *string `pulumi:"templateId"`
 }
 
 // The set of arguments for constructing a FgsApplication resource.
 type FgsApplicationArgs struct {
-	// Specifies the agency name used by the application.\
-	// Changing this parameter will create a new resource.
-	//
-	// > If omitted, the service will automatically create an agency, please ensure that the tenant has IAM related
-	// permissions. The agency will be deleted when the application is deleted.
+	// The agency name used by the application.
 	AgencyName pulumi.StringPtrInput
-	// Specifies the description of the application.\
-	// The description can contain a maximum of `1,024` characters.
-	// Changing this parameter will create a new resource.
+	// The description of the application.
 	Description pulumi.StringPtrInput
-	// Specifies the application name.\
-	// The name can contain a maximum of 60 characters and must start with a letter and end with a letter or digit.
-	// Only letters, digits, underscores (_) and hyphens (-) are allowed.
-	// Changing this parameter will create a new resource.
+	// The application name
 	Name pulumi.StringPtrInput
-	// Specifies the template parameters, in JSON format.\
-	// Changing this parameter will create a new resource.
+	// The template parameters, in JSON format.
 	Params pulumi.StringPtrInput
-	// Specifies the region in which to create an application.\
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the application is located.
 	Region pulumi.StringPtrInput
-	// Specifies the ID of the template used by the application.\
-	// Changing this parameter will create a new resource.
+	// The ID of the template used by the application.
 	TemplateId pulumi.StringPtrInput
 }
 
@@ -344,44 +233,32 @@ func (o FgsApplicationOutput) ToFgsApplicationOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Specifies the agency name used by the application.\
-// Changing this parameter will create a new resource.
-//
-// > If omitted, the service will automatically create an agency, please ensure that the tenant has IAM related
-// permissions. The agency will be deleted when the application is deleted.
+// The agency name used by the application.
 func (o FgsApplicationOutput) AgencyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FgsApplication) pulumi.StringPtrOutput { return v.AgencyName }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the description of the application.\
-// The description can contain a maximum of `1,024` characters.
-// Changing this parameter will create a new resource.
+// The description of the application.
 func (o FgsApplicationOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FgsApplication) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the application name.\
-// The name can contain a maximum of 60 characters and must start with a letter and end with a letter or digit.
-// Only letters, digits, underscores (_) and hyphens (-) are allowed.
-// Changing this parameter will create a new resource.
+// The application name
 func (o FgsApplicationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FgsApplication) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the template parameters, in JSON format.\
-// Changing this parameter will create a new resource.
+// The template parameters, in JSON format.
 func (o FgsApplicationOutput) Params() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FgsApplication) pulumi.StringPtrOutput { return v.Params }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the region in which to create an application.\
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+// The region where the application is located.
 func (o FgsApplicationOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *FgsApplication) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// The repository information.\
-// The repository structure is documented below.
+// The repository information.
 func (o FgsApplicationOutput) Repositories() FgsApplicationRepositoryArrayOutput {
 	return o.ApplyT(func(v *FgsApplication) FgsApplicationRepositoryArrayOutput { return v.Repositories }).(FgsApplicationRepositoryArrayOutput)
 }
@@ -391,19 +268,17 @@ func (o FgsApplicationOutput) StackId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FgsApplication) pulumi.StringOutput { return v.StackId }).(pulumi.StringOutput)
 }
 
-// The list of the stack resources information.\
-// The stackResources structure is documented below.
+// The list of the stack resources information.
 func (o FgsApplicationOutput) StackResources() FgsApplicationStackResourceArrayOutput {
 	return o.ApplyT(func(v *FgsApplication) FgsApplicationStackResourceArrayOutput { return v.StackResources }).(FgsApplicationStackResourceArrayOutput)
 }
 
-// The repository status.
+// The application status.
 func (o FgsApplicationOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *FgsApplication) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Specifies the ID of the template used by the application.\
-// Changing this parameter will create a new resource.
+// The ID of the template used by the application.
 func (o FgsApplicationOutput) TemplateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FgsApplication) pulumi.StringPtrOutput { return v.TemplateId }).(pulumi.StringPtrOutput)
 }

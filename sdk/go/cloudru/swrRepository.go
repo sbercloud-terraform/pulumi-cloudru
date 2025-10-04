@@ -12,75 +12,20 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a SWR repository resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			organizationName := cfg.RequireObject("organizationName")
-//			_, err := sbercloud.NewSwrRepository(ctx, "test", &sbercloud.SwrRepositoryArgs{
-//				Organization: pulumi.Any(organizationName),
-//				Name:         pulumi.String("%s"),
-//				Description:  pulumi.String("Test repository"),
-//				Category:     pulumi.String("linux"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Repository can be imported using the organization name and repository name separated by a slash, e.g.:
-//
-// ```sh
-// $ pulumi import sbercloud:index/swrRepository:SwrRepository test org-name/repo-name
-// ```
 type SwrRepository struct {
 	pulumi.CustomResourceState
 
-	// Specifies the category of the repository.
-	// The value can be `appServer`, `linux`, `frameworkApp`, `database`, `lang`, `other`, `windows`, `arm`.
-	Category pulumi.StringPtrOutput `pulumi:"category"`
-	// Specifies the description of the repository.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Intra-cluster image address for docker pull.
-	InternalPath pulumi.StringOutput `pulumi:"internalPath"`
-	// Specifies whether the repository is public. Default is false.
-	IsPublic pulumi.BoolPtrOutput `pulumi:"isPublic"`
-	// Specifies the name of the repository. Changing this creates a new resource.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Number of image tags in a repository.
-	NumImages pulumi.IntOutput `pulumi:"numImages"`
-	// Specifies the name of the organization (namespace) the repository belongs.
-	// Changing this creates a new resource.
-	Organization pulumi.StringOutput `pulumi:"organization"`
-	// Image address for docker pull.
-	Path pulumi.StringOutput `pulumi:"path"`
-	// Specifies the region in which to create the resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Numeric ID of the repository
-	RepositoryId pulumi.IntOutput `pulumi:"repositoryId"`
-	// Repository size.
-	Size pulumi.IntOutput `pulumi:"size"`
+	Category     pulumi.StringPtrOutput `pulumi:"category"`
+	Description  pulumi.StringPtrOutput `pulumi:"description"`
+	InternalPath pulumi.StringOutput    `pulumi:"internalPath"`
+	IsPublic     pulumi.BoolPtrOutput   `pulumi:"isPublic"`
+	Name         pulumi.StringOutput    `pulumi:"name"`
+	NumImages    pulumi.IntOutput       `pulumi:"numImages"`
+	Organization pulumi.StringOutput    `pulumi:"organization"`
+	Path         pulumi.StringOutput    `pulumi:"path"`
+	Region       pulumi.StringOutput    `pulumi:"region"`
+	RepositoryId pulumi.IntOutput       `pulumi:"repositoryId"`
+	Size         pulumi.IntOutput       `pulumi:"size"`
 }
 
 // NewSwrRepository registers a new resource with the given unique name, arguments, and options.
@@ -116,59 +61,31 @@ func GetSwrRepository(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SwrRepository resources.
 type swrRepositoryState struct {
-	// Specifies the category of the repository.
-	// The value can be `appServer`, `linux`, `frameworkApp`, `database`, `lang`, `other`, `windows`, `arm`.
-	Category *string `pulumi:"category"`
-	// Specifies the description of the repository.
-	Description *string `pulumi:"description"`
-	// Intra-cluster image address for docker pull.
+	Category     *string `pulumi:"category"`
+	Description  *string `pulumi:"description"`
 	InternalPath *string `pulumi:"internalPath"`
-	// Specifies whether the repository is public. Default is false.
-	IsPublic *bool `pulumi:"isPublic"`
-	// Specifies the name of the repository. Changing this creates a new resource.
-	Name *string `pulumi:"name"`
-	// Number of image tags in a repository.
-	NumImages *int `pulumi:"numImages"`
-	// Specifies the name of the organization (namespace) the repository belongs.
-	// Changing this creates a new resource.
+	IsPublic     *bool   `pulumi:"isPublic"`
+	Name         *string `pulumi:"name"`
+	NumImages    *int    `pulumi:"numImages"`
 	Organization *string `pulumi:"organization"`
-	// Image address for docker pull.
-	Path *string `pulumi:"path"`
-	// Specifies the region in which to create the resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region *string `pulumi:"region"`
-	// Numeric ID of the repository
-	RepositoryId *int `pulumi:"repositoryId"`
-	// Repository size.
-	Size *int `pulumi:"size"`
+	Path         *string `pulumi:"path"`
+	Region       *string `pulumi:"region"`
+	RepositoryId *int    `pulumi:"repositoryId"`
+	Size         *int    `pulumi:"size"`
 }
 
 type SwrRepositoryState struct {
-	// Specifies the category of the repository.
-	// The value can be `appServer`, `linux`, `frameworkApp`, `database`, `lang`, `other`, `windows`, `arm`.
-	Category pulumi.StringPtrInput
-	// Specifies the description of the repository.
-	Description pulumi.StringPtrInput
-	// Intra-cluster image address for docker pull.
+	Category     pulumi.StringPtrInput
+	Description  pulumi.StringPtrInput
 	InternalPath pulumi.StringPtrInput
-	// Specifies whether the repository is public. Default is false.
-	IsPublic pulumi.BoolPtrInput
-	// Specifies the name of the repository. Changing this creates a new resource.
-	Name pulumi.StringPtrInput
-	// Number of image tags in a repository.
-	NumImages pulumi.IntPtrInput
-	// Specifies the name of the organization (namespace) the repository belongs.
-	// Changing this creates a new resource.
+	IsPublic     pulumi.BoolPtrInput
+	Name         pulumi.StringPtrInput
+	NumImages    pulumi.IntPtrInput
 	Organization pulumi.StringPtrInput
-	// Image address for docker pull.
-	Path pulumi.StringPtrInput
-	// Specifies the region in which to create the resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringPtrInput
-	// Numeric ID of the repository
+	Path         pulumi.StringPtrInput
+	Region       pulumi.StringPtrInput
 	RepositoryId pulumi.IntPtrInput
-	// Repository size.
-	Size pulumi.IntPtrInput
+	Size         pulumi.IntPtrInput
 }
 
 func (SwrRepositoryState) ElementType() reflect.Type {
@@ -176,40 +93,22 @@ func (SwrRepositoryState) ElementType() reflect.Type {
 }
 
 type swrRepositoryArgs struct {
-	// Specifies the category of the repository.
-	// The value can be `appServer`, `linux`, `frameworkApp`, `database`, `lang`, `other`, `windows`, `arm`.
-	Category *string `pulumi:"category"`
-	// Specifies the description of the repository.
-	Description *string `pulumi:"description"`
-	// Specifies whether the repository is public. Default is false.
-	IsPublic *bool `pulumi:"isPublic"`
-	// Specifies the name of the repository. Changing this creates a new resource.
-	Name *string `pulumi:"name"`
-	// Specifies the name of the organization (namespace) the repository belongs.
-	// Changing this creates a new resource.
-	Organization string `pulumi:"organization"`
-	// Specifies the region in which to create the resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region *string `pulumi:"region"`
+	Category     *string `pulumi:"category"`
+	Description  *string `pulumi:"description"`
+	IsPublic     *bool   `pulumi:"isPublic"`
+	Name         *string `pulumi:"name"`
+	Organization string  `pulumi:"organization"`
+	Region       *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a SwrRepository resource.
 type SwrRepositoryArgs struct {
-	// Specifies the category of the repository.
-	// The value can be `appServer`, `linux`, `frameworkApp`, `database`, `lang`, `other`, `windows`, `arm`.
-	Category pulumi.StringPtrInput
-	// Specifies the description of the repository.
-	Description pulumi.StringPtrInput
-	// Specifies whether the repository is public. Default is false.
-	IsPublic pulumi.BoolPtrInput
-	// Specifies the name of the repository. Changing this creates a new resource.
-	Name pulumi.StringPtrInput
-	// Specifies the name of the organization (namespace) the repository belongs.
-	// Changing this creates a new resource.
+	Category     pulumi.StringPtrInput
+	Description  pulumi.StringPtrInput
+	IsPublic     pulumi.BoolPtrInput
+	Name         pulumi.StringPtrInput
 	Organization pulumi.StringInput
-	// Specifies the region in which to create the resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringPtrInput
+	Region       pulumi.StringPtrInput
 }
 
 func (SwrRepositoryArgs) ElementType() reflect.Type {
@@ -299,60 +198,46 @@ func (o SwrRepositoryOutput) ToSwrRepositoryOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Specifies the category of the repository.
-// The value can be `appServer`, `linux`, `frameworkApp`, `database`, `lang`, `other`, `windows`, `arm`.
 func (o SwrRepositoryOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SwrRepository) pulumi.StringPtrOutput { return v.Category }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the description of the repository.
 func (o SwrRepositoryOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SwrRepository) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Intra-cluster image address for docker pull.
 func (o SwrRepositoryOutput) InternalPath() pulumi.StringOutput {
 	return o.ApplyT(func(v *SwrRepository) pulumi.StringOutput { return v.InternalPath }).(pulumi.StringOutput)
 }
 
-// Specifies whether the repository is public. Default is false.
 func (o SwrRepositoryOutput) IsPublic() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SwrRepository) pulumi.BoolPtrOutput { return v.IsPublic }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the name of the repository. Changing this creates a new resource.
 func (o SwrRepositoryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SwrRepository) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Number of image tags in a repository.
 func (o SwrRepositoryOutput) NumImages() pulumi.IntOutput {
 	return o.ApplyT(func(v *SwrRepository) pulumi.IntOutput { return v.NumImages }).(pulumi.IntOutput)
 }
 
-// Specifies the name of the organization (namespace) the repository belongs.
-// Changing this creates a new resource.
 func (o SwrRepositoryOutput) Organization() pulumi.StringOutput {
 	return o.ApplyT(func(v *SwrRepository) pulumi.StringOutput { return v.Organization }).(pulumi.StringOutput)
 }
 
-// Image address for docker pull.
 func (o SwrRepositoryOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v *SwrRepository) pulumi.StringOutput { return v.Path }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the resource. If omitted, the
-// provider-level region will be used. Changing this creates a new resource.
 func (o SwrRepositoryOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *SwrRepository) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Numeric ID of the repository
 func (o SwrRepositoryOutput) RepositoryId() pulumi.IntOutput {
 	return o.ApplyT(func(v *SwrRepository) pulumi.IntOutput { return v.RepositoryId }).(pulumi.IntOutput)
 }
 
-// Repository size.
 func (o SwrRepositoryOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v *SwrRepository) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
 }

@@ -12,66 +12,21 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a DMS kafka consumer group resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			kafkaInstanceId := cfg.RequireObject("kafkaInstanceId")
-//			_, err := sbercloud.NewDmsKafkaConsumerGroup(ctx, "group1", &sbercloud.DmsKafkaConsumerGroupArgs{
-//				InstanceId:  pulumi.Any(kafkaInstanceId),
-//				Name:        pulumi.String("group1"),
-//				Description: pulumi.String("Group description"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// DMS kafka consumer groups can be imported using the kafka instance ID and consumer group name separated by a slash, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:index/dmsKafkaConsumerGroup:DmsKafkaConsumerGroup user c8057fe5-23a8-46ef-ad83-c0055b4e0c5c/group1
-// ```
 type DmsKafkaConsumerGroup struct {
 	pulumi.CustomResourceState
 
 	// Indicates the coordinator id of the consumer group.
 	CoordinatorId pulumi.IntOutput `pulumi:"coordinatorId"`
-	// Indicates the create time.
+	// Indicates the created time of the consumer group.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Specifies the description of the consumer group.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Specifies the ID of the DMS kafka instance to which the consumer group belongs.
-	// Changing this creates a new resource.
+	// Specifies the ID of the Kafka instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// Indicates the lag number of the consumer group.
 	Lag pulumi.IntOutput `pulumi:"lag"`
-	// Specifies the name of the consumer group. Changing this creates a new resource.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The region in which to create the DMS kafka consumer group resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
+	// Specifies the name of the consumer group.
+	Name   pulumi.StringOutput `pulumi:"name"`
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Indicates the state of the consumer group.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -112,19 +67,16 @@ func GetDmsKafkaConsumerGroup(ctx *pulumi.Context,
 type dmsKafkaConsumerGroupState struct {
 	// Indicates the coordinator id of the consumer group.
 	CoordinatorId *int `pulumi:"coordinatorId"`
-	// Indicates the create time.
+	// Indicates the created time of the consumer group.
 	CreatedAt *string `pulumi:"createdAt"`
 	// Specifies the description of the consumer group.
 	Description *string `pulumi:"description"`
-	// Specifies the ID of the DMS kafka instance to which the consumer group belongs.
-	// Changing this creates a new resource.
+	// Specifies the ID of the Kafka instance.
 	InstanceId *string `pulumi:"instanceId"`
 	// Indicates the lag number of the consumer group.
 	Lag *int `pulumi:"lag"`
-	// Specifies the name of the consumer group. Changing this creates a new resource.
-	Name *string `pulumi:"name"`
-	// The region in which to create the DMS kafka consumer group resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
+	// Specifies the name of the consumer group.
+	Name   *string `pulumi:"name"`
 	Region *string `pulumi:"region"`
 	// Indicates the state of the consumer group.
 	State *string `pulumi:"state"`
@@ -133,19 +85,16 @@ type dmsKafkaConsumerGroupState struct {
 type DmsKafkaConsumerGroupState struct {
 	// Indicates the coordinator id of the consumer group.
 	CoordinatorId pulumi.IntPtrInput
-	// Indicates the create time.
+	// Indicates the created time of the consumer group.
 	CreatedAt pulumi.StringPtrInput
 	// Specifies the description of the consumer group.
 	Description pulumi.StringPtrInput
-	// Specifies the ID of the DMS kafka instance to which the consumer group belongs.
-	// Changing this creates a new resource.
+	// Specifies the ID of the Kafka instance.
 	InstanceId pulumi.StringPtrInput
 	// Indicates the lag number of the consumer group.
 	Lag pulumi.IntPtrInput
-	// Specifies the name of the consumer group. Changing this creates a new resource.
-	Name pulumi.StringPtrInput
-	// The region in which to create the DMS kafka consumer group resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
+	// Specifies the name of the consumer group.
+	Name   pulumi.StringPtrInput
 	Region pulumi.StringPtrInput
 	// Indicates the state of the consumer group.
 	State pulumi.StringPtrInput
@@ -158,13 +107,10 @@ func (DmsKafkaConsumerGroupState) ElementType() reflect.Type {
 type dmsKafkaConsumerGroupArgs struct {
 	// Specifies the description of the consumer group.
 	Description *string `pulumi:"description"`
-	// Specifies the ID of the DMS kafka instance to which the consumer group belongs.
-	// Changing this creates a new resource.
+	// Specifies the ID of the Kafka instance.
 	InstanceId string `pulumi:"instanceId"`
-	// Specifies the name of the consumer group. Changing this creates a new resource.
-	Name *string `pulumi:"name"`
-	// The region in which to create the DMS kafka consumer group resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
+	// Specifies the name of the consumer group.
+	Name   *string `pulumi:"name"`
 	Region *string `pulumi:"region"`
 }
 
@@ -172,13 +118,10 @@ type dmsKafkaConsumerGroupArgs struct {
 type DmsKafkaConsumerGroupArgs struct {
 	// Specifies the description of the consumer group.
 	Description pulumi.StringPtrInput
-	// Specifies the ID of the DMS kafka instance to which the consumer group belongs.
-	// Changing this creates a new resource.
+	// Specifies the ID of the Kafka instance.
 	InstanceId pulumi.StringInput
-	// Specifies the name of the consumer group. Changing this creates a new resource.
-	Name pulumi.StringPtrInput
-	// The region in which to create the DMS kafka consumer group resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
+	// Specifies the name of the consumer group.
+	Name   pulumi.StringPtrInput
 	Region pulumi.StringPtrInput
 }
 
@@ -274,7 +217,7 @@ func (o DmsKafkaConsumerGroupOutput) CoordinatorId() pulumi.IntOutput {
 	return o.ApplyT(func(v *DmsKafkaConsumerGroup) pulumi.IntOutput { return v.CoordinatorId }).(pulumi.IntOutput)
 }
 
-// Indicates the create time.
+// Indicates the created time of the consumer group.
 func (o DmsKafkaConsumerGroupOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *DmsKafkaConsumerGroup) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
@@ -284,8 +227,7 @@ func (o DmsKafkaConsumerGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DmsKafkaConsumerGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the ID of the DMS kafka instance to which the consumer group belongs.
-// Changing this creates a new resource.
+// Specifies the ID of the Kafka instance.
 func (o DmsKafkaConsumerGroupOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DmsKafkaConsumerGroup) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -295,13 +237,11 @@ func (o DmsKafkaConsumerGroupOutput) Lag() pulumi.IntOutput {
 	return o.ApplyT(func(v *DmsKafkaConsumerGroup) pulumi.IntOutput { return v.Lag }).(pulumi.IntOutput)
 }
 
-// Specifies the name of the consumer group. Changing this creates a new resource.
+// Specifies the name of the consumer group.
 func (o DmsKafkaConsumerGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DmsKafkaConsumerGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The region in which to create the DMS kafka consumer group resource. If omitted, the
-// provider-level region will be used. Changing this creates a new resource.
 func (o DmsKafkaConsumerGroupOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *DmsKafkaConsumerGroup) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

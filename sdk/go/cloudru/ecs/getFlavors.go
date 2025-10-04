@@ -11,87 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the ID of the available Compute Flavors.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/ecs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			flavors, err := ecs.GetFlavors(ctx, &ecs.GetFlavorsArgs{
-//				AvailabilityZone: pulumi.StringRef("ru-moscow-1a"),
-//				PerformanceType:  pulumi.StringRef("normal"),
-//				CpuCoreCount:     pulumi.IntRef(2),
-//				MemorySize:       pulumi.IntRef(4),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			// Create ECS instance with the first matched flavor
-//			_, err = ecs.NewInstance(ctx, "instance", &ecs.InstanceArgs{
-//				FlavorId: pulumi.String(flavors.Ids[0]),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Additional Examples
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/ecs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			flavors, err := ecs.GetFlavors(ctx, &ecs.GetFlavorsArgs{
-//				AvailabilityZone: pulumi.StringRef("ru-moscow-1a"),
-//				PerformanceType:  pulumi.StringRef("normal"),
-//				CpuCoreCount:     pulumi.IntRef(2),
-//				MemorySize:       pulumi.IntRef(4),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			// Create ECS instance with the first matched flavor
-//			_, err = ecs.NewInstance(ctx, "instance", &ecs.InstanceArgs{
-//				FlavorId: pulumi.String(flavors.Ids[0]),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## subcategory: "Elastic Cloud Server (ECS)"
-//
-// ***
-//
-// # sbercloud\_compute\_flavors
-//
-// Use this data source to get the ID of the available Compute Flavors.
 func GetFlavors(ctx *pulumi.Context, args *GetFlavorsArgs, opts ...pulumi.InvokeOption) (*GetFlavorsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFlavorsResult
@@ -104,19 +23,13 @@ func GetFlavors(ctx *pulumi.Context, args *GetFlavorsArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getFlavors.
 type GetFlavorsArgs struct {
-	// Specifies the AZ name.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Specifies the number of vCPUs in the ECS flavor.
-	CpuCoreCount *int `pulumi:"cpuCoreCount"`
-	// Specifies the generation of an ECS type.
-	Generation *string `pulumi:"generation"`
-	// Specifies the memory size(GB) in the ECS flavor.
-	MemorySize *int `pulumi:"memorySize"`
-	// Specifies the ECS flavor type.
-	PerformanceType *string `pulumi:"performanceType"`
-	// The region in which to obtain the flavors. If omitted, the provider-level region will be used.
-	Region      *string `pulumi:"region"`
-	StorageType *string `pulumi:"storageType"`
+	CpuCoreCount     *int    `pulumi:"cpuCoreCount"`
+	Generation       *string `pulumi:"generation"`
+	MemorySize       *int    `pulumi:"memorySize"`
+	PerformanceType  *string `pulumi:"performanceType"`
+	Region           *string `pulumi:"region"`
+	StorageType      *string `pulumi:"storageType"`
 }
 
 // A collection of values returned by getFlavors.
@@ -126,8 +39,7 @@ type GetFlavorsResult struct {
 	Flavors          []GetFlavorsFlavor `pulumi:"flavors"`
 	Generation       *string            `pulumi:"generation"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// A list of flavor IDs.
+	Id              string   `pulumi:"id"`
 	Ids             []string `pulumi:"ids"`
 	MemorySize      *int     `pulumi:"memorySize"`
 	PerformanceType *string  `pulumi:"performanceType"`
@@ -146,19 +58,13 @@ func GetFlavorsOutput(ctx *pulumi.Context, args GetFlavorsOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getFlavors.
 type GetFlavorsOutputArgs struct {
-	// Specifies the AZ name.
 	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
-	// Specifies the number of vCPUs in the ECS flavor.
-	CpuCoreCount pulumi.IntPtrInput `pulumi:"cpuCoreCount"`
-	// Specifies the generation of an ECS type.
-	Generation pulumi.StringPtrInput `pulumi:"generation"`
-	// Specifies the memory size(GB) in the ECS flavor.
-	MemorySize pulumi.IntPtrInput `pulumi:"memorySize"`
-	// Specifies the ECS flavor type.
-	PerformanceType pulumi.StringPtrInput `pulumi:"performanceType"`
-	// The region in which to obtain the flavors. If omitted, the provider-level region will be used.
-	Region      pulumi.StringPtrInput `pulumi:"region"`
-	StorageType pulumi.StringPtrInput `pulumi:"storageType"`
+	CpuCoreCount     pulumi.IntPtrInput    `pulumi:"cpuCoreCount"`
+	Generation       pulumi.StringPtrInput `pulumi:"generation"`
+	MemorySize       pulumi.IntPtrInput    `pulumi:"memorySize"`
+	PerformanceType  pulumi.StringPtrInput `pulumi:"performanceType"`
+	Region           pulumi.StringPtrInput `pulumi:"region"`
+	StorageType      pulumi.StringPtrInput `pulumi:"storageType"`
 }
 
 func (GetFlavorsOutputArgs) ElementType() reflect.Type {
@@ -201,7 +107,6 @@ func (o GetFlavorsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of flavor IDs.
 func (o GetFlavorsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetFlavorsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }

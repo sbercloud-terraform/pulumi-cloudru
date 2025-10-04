@@ -56,17 +56,11 @@ class GetVpnGatewaysResult:
     @_builtins.property
     @pulumi.getter(name="attachmentType")
     def attachment_type(self) -> Optional[_builtins.str]:
-        """
-        The attachment type.
-        """
         return pulumi.get(self, "attachment_type")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[_builtins.str]:
-        """
-        The enterprise project ID
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
@@ -77,10 +71,6 @@ class GetVpnGatewaysResult:
     @_builtins.property
     @pulumi.getter
     def gateways(self) -> Sequence['outputs.GetVpnGatewaysGatewayResult']:
-        """
-        The list of gateways.
-        The gateways structure is documented below.
-        """
         return pulumi.get(self, "gateways")
 
     @_builtins.property
@@ -94,17 +84,11 @@ class GetVpnGatewaysResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        The name of the gateway.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="networkType")
     def network_type(self) -> Optional[_builtins.str]:
-        """
-        The network type of the gateway.
-        """
         return pulumi.get(self, "network_type")
 
     @_builtins.property
@@ -137,29 +121,7 @@ def get_vpn_gateways(attachment_type: Optional[_builtins.str] = None,
                      region: Optional[_builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpnGatewaysResult:
     """
-    Use this data source to get the list of VPN gateways.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    gateway_name = config.require_object("gatewayName")
-    test = sbercloud.get_vpn_gateways(name=gateway_name)
-    ```
-
-
-    :param _builtins.str attachment_type: Specifies the attachment type of the gateway.
-           The value can be: **vpc** and **er**.
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID of the gateway.
-    :param _builtins.str gateway_id: Specifies the ID of the gateway.
-    :param _builtins.str name: Specifies the name of the gateway.
-    :param _builtins.str network_type: Specifies the network type of the gateway.
-           The value can be: **public** and **private**.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['attachmentType'] = attachment_type
@@ -188,29 +150,7 @@ def get_vpn_gateways_output(attachment_type: Optional[pulumi.Input[Optional[_bui
                             region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpnGatewaysResult]:
     """
-    Use this data source to get the list of VPN gateways.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    gateway_name = config.require_object("gatewayName")
-    test = sbercloud.get_vpn_gateways(name=gateway_name)
-    ```
-
-
-    :param _builtins.str attachment_type: Specifies the attachment type of the gateway.
-           The value can be: **vpc** and **er**.
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID of the gateway.
-    :param _builtins.str gateway_id: Specifies the ID of the gateway.
-    :param _builtins.str name: Specifies the name of the gateway.
-    :param _builtins.str network_type: Specifies the network type of the gateway.
-           The value can be: **public** and **private**.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['attachmentType'] = attachment_type

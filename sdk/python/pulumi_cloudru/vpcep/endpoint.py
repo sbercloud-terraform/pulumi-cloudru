@@ -31,26 +31,6 @@ class EndpointArgs:
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Endpoint resource.
-        :param pulumi.Input[_builtins.str] network_id: Specifies the network ID of the subnet in the VPC specified by `vpc_id`.
-               Changing this creates a new VPC endpoint.
-        :param pulumi.Input[_builtins.str] service_id: Specifies the ID of the VPC endpoint service.
-               The VPC endpoint service could be private or public. Changing this creates a new VPC endpoint.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of the VPC where the VPC endpoint is to be created. Changing
-               this creates a new VPC endpoint.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the VPC endpoint.
-               
-               Changing this creates a new VPC endpoint.
-        :param pulumi.Input[_builtins.bool] enable_dns: Specifies whether to create a private domain name. The default value is
-               true. Changing this creates a new VPC endpoint.
-        :param pulumi.Input[_builtins.bool] enable_whitelist: Specifies whether to enable access control. The default value is
-               false.
-        :param pulumi.Input[_builtins.str] ip_address: Specifies the IP address for accessing the associated VPC endpoint
-               service. Only IPv4 addresses are supported. Changing this creates a new VPC endpoint.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the VPC endpoint. If omitted, the provider-level
-               region will be used. Changing this creates a new VPC endpoint.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the VPC endpoint.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] whitelists: Specifies the list of IP address or CIDR block which can be accessed to the
-               VPC endpoint. This field is valid when `enable_whitelist` is set to **true**. The max length of whitelist is 20.
         """
         pulumi.set(__self__, "network_id", network_id)
         pulumi.set(__self__, "service_id", service_id)
@@ -73,10 +53,6 @@ class EndpointArgs:
     @_builtins.property
     @pulumi.getter(name="networkId")
     def network_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the network ID of the subnet in the VPC specified by `vpc_id`.
-        Changing this creates a new VPC endpoint.
-        """
         return pulumi.get(self, "network_id")
 
     @network_id.setter
@@ -86,10 +62,6 @@ class EndpointArgs:
     @_builtins.property
     @pulumi.getter(name="serviceId")
     def service_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the ID of the VPC endpoint service.
-        The VPC endpoint service could be private or public. Changing this creates a new VPC endpoint.
-        """
         return pulumi.get(self, "service_id")
 
     @service_id.setter
@@ -99,10 +71,6 @@ class EndpointArgs:
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the ID of the VPC where the VPC endpoint is to be created. Changing
-        this creates a new VPC endpoint.
-        """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
@@ -112,11 +80,6 @@ class EndpointArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the description of the VPC endpoint.
-
-        Changing this creates a new VPC endpoint.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -126,10 +89,6 @@ class EndpointArgs:
     @_builtins.property
     @pulumi.getter(name="enableDns")
     def enable_dns(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to create a private domain name. The default value is
-        true. Changing this creates a new VPC endpoint.
-        """
         return pulumi.get(self, "enable_dns")
 
     @enable_dns.setter
@@ -139,10 +98,6 @@ class EndpointArgs:
     @_builtins.property
     @pulumi.getter(name="enableWhitelist")
     def enable_whitelist(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to enable access control. The default value is
-        false.
-        """
         return pulumi.get(self, "enable_whitelist")
 
     @enable_whitelist.setter
@@ -152,10 +107,6 @@ class EndpointArgs:
     @_builtins.property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the IP address for accessing the associated VPC endpoint
-        service. Only IPv4 addresses are supported. Changing this creates a new VPC endpoint.
-        """
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
@@ -165,10 +116,6 @@ class EndpointArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the VPC endpoint. If omitted, the provider-level
-        region will be used. Changing this creates a new VPC endpoint.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -178,9 +125,6 @@ class EndpointArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        The key/value pairs to associate with the VPC endpoint.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -190,10 +134,6 @@ class EndpointArgs:
     @_builtins.property
     @pulumi.getter
     def whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the list of IP address or CIDR block which can be accessed to the
-        VPC endpoint. This field is valid when `enable_whitelist` is set to **true**. The max length of whitelist is 20.
-        """
         return pulumi.get(self, "whitelists")
 
     @whitelists.setter
@@ -221,32 +161,6 @@ class _EndpointState:
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Endpoint resources.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the VPC endpoint.
-               
-               Changing this creates a new VPC endpoint.
-        :param pulumi.Input[_builtins.bool] enable_dns: Specifies whether to create a private domain name. The default value is
-               true. Changing this creates a new VPC endpoint.
-        :param pulumi.Input[_builtins.bool] enable_whitelist: Specifies whether to enable access control. The default value is
-               false.
-        :param pulumi.Input[_builtins.str] ip_address: Specifies the IP address for accessing the associated VPC endpoint
-               service. Only IPv4 addresses are supported. Changing this creates a new VPC endpoint.
-        :param pulumi.Input[_builtins.str] network_id: Specifies the network ID of the subnet in the VPC specified by `vpc_id`.
-               Changing this creates a new VPC endpoint.
-        :param pulumi.Input[_builtins.int] packet_id: The packet ID of the VPC endpoint.
-        :param pulumi.Input[_builtins.str] private_domain_name: The domain name for accessing the associated VPC endpoint service. This parameter is only
-               available when enable_dns is set to true.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the VPC endpoint. If omitted, the provider-level
-               region will be used. Changing this creates a new VPC endpoint.
-        :param pulumi.Input[_builtins.str] service_id: Specifies the ID of the VPC endpoint service.
-               The VPC endpoint service could be private or public. Changing this creates a new VPC endpoint.
-        :param pulumi.Input[_builtins.str] service_name: The name of the VPC endpoint service.
-        :param pulumi.Input[_builtins.str] service_type: The type of the VPC endpoint service.
-        :param pulumi.Input[_builtins.str] status: The status of the VPC endpoint. The value can be **accepted**, **pendingAcceptance** or **rejected**.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the VPC endpoint.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of the VPC where the VPC endpoint is to be created. Changing
-               this creates a new VPC endpoint.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] whitelists: Specifies the list of IP address or CIDR block which can be accessed to the
-               VPC endpoint. This field is valid when `enable_whitelist` is set to **true**. The max length of whitelist is 20.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -282,11 +196,6 @@ class _EndpointState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the description of the VPC endpoint.
-
-        Changing this creates a new VPC endpoint.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -296,10 +205,6 @@ class _EndpointState:
     @_builtins.property
     @pulumi.getter(name="enableDns")
     def enable_dns(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to create a private domain name. The default value is
-        true. Changing this creates a new VPC endpoint.
-        """
         return pulumi.get(self, "enable_dns")
 
     @enable_dns.setter
@@ -309,10 +214,6 @@ class _EndpointState:
     @_builtins.property
     @pulumi.getter(name="enableWhitelist")
     def enable_whitelist(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to enable access control. The default value is
-        false.
-        """
         return pulumi.get(self, "enable_whitelist")
 
     @enable_whitelist.setter
@@ -322,10 +223,6 @@ class _EndpointState:
     @_builtins.property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the IP address for accessing the associated VPC endpoint
-        service. Only IPv4 addresses are supported. Changing this creates a new VPC endpoint.
-        """
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
@@ -335,10 +232,6 @@ class _EndpointState:
     @_builtins.property
     @pulumi.getter(name="networkId")
     def network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the network ID of the subnet in the VPC specified by `vpc_id`.
-        Changing this creates a new VPC endpoint.
-        """
         return pulumi.get(self, "network_id")
 
     @network_id.setter
@@ -348,9 +241,6 @@ class _EndpointState:
     @_builtins.property
     @pulumi.getter(name="packetId")
     def packet_id(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The packet ID of the VPC endpoint.
-        """
         return pulumi.get(self, "packet_id")
 
     @packet_id.setter
@@ -360,10 +250,6 @@ class _EndpointState:
     @_builtins.property
     @pulumi.getter(name="privateDomainName")
     def private_domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The domain name for accessing the associated VPC endpoint service. This parameter is only
-        available when enable_dns is set to true.
-        """
         return pulumi.get(self, "private_domain_name")
 
     @private_domain_name.setter
@@ -373,10 +259,6 @@ class _EndpointState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the VPC endpoint. If omitted, the provider-level
-        region will be used. Changing this creates a new VPC endpoint.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -386,10 +268,6 @@ class _EndpointState:
     @_builtins.property
     @pulumi.getter(name="serviceId")
     def service_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of the VPC endpoint service.
-        The VPC endpoint service could be private or public. Changing this creates a new VPC endpoint.
-        """
         return pulumi.get(self, "service_id")
 
     @service_id.setter
@@ -399,9 +277,6 @@ class _EndpointState:
     @_builtins.property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The name of the VPC endpoint service.
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -411,9 +286,6 @@ class _EndpointState:
     @_builtins.property
     @pulumi.getter(name="serviceType")
     def service_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The type of the VPC endpoint service.
-        """
         return pulumi.get(self, "service_type")
 
     @service_type.setter
@@ -423,9 +295,6 @@ class _EndpointState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The status of the VPC endpoint. The value can be **accepted**, **pendingAcceptance** or **rejected**.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -435,9 +304,6 @@ class _EndpointState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        The key/value pairs to associate with the VPC endpoint.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -447,10 +313,6 @@ class _EndpointState:
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of the VPC where the VPC endpoint is to be created. Changing
-        this creates a new VPC endpoint.
-        """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
@@ -460,10 +322,6 @@ class _EndpointState:
     @_builtins.property
     @pulumi.getter
     def whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the list of IP address or CIDR block which can be accessed to the
-        VPC endpoint. This field is valid when `enable_whitelist` is set to **true**. The max length of whitelist is 20.
-        """
         return pulumi.get(self, "whitelists")
 
     @whitelists.setter
@@ -489,90 +347,9 @@ class Endpoint(pulumi.CustomResource):
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Provides a resource to manage a VPC endpoint resource.
-
-        ## Example Usage
-
-        ### Access to the public service
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        config = pulumi.Config()
-        vpc_id = config.require_object("vpcId")
-        network_id = config.require_object("networkId")
-        cloud_service = sbercloud.Vpcep.get_public_services(service_name="dis")
-        myendpoint = sbercloud.vpcep.Endpoint("myendpoint",
-            service_id=cloud_service.services[0].id,
-            vpc_id=vpc_id,
-            network_id=network_id,
-            enable_dns=True,
-            enable_whitelist=True,
-            whitelists=["192.168.0.0/24"])
-        ```
-
-        ### Access to the private service
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        service_vpc_id = config.require_object("serviceVpcId")
-        vm_port = config.require_object("vmPort")
-        vpc_id = config.require_object("vpcId")
-        network_id = config.require_object("networkId")
-        demo = sbercloud.vpcep.Service("demo",
-            name="demo-service",
-            server_type="VM",
-            vpc_id=service_vpc_id,
-            port_id=vm_port,
-            port_mappings=[{
-                "service_port": 8080,
-                "terminal_port": 80,
-            }])
-        demo_endpoint = sbercloud.vpcep.Endpoint("demo",
-            service_id=demo.id,
-            vpc_id=vpc_id,
-            network_id=network_id,
-            enable_dns=True,
-            description="test description")
-        ```
-
-        ## Import
-
-        VPC endpoint can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Vpcep/endpoint:Endpoint test <id>
-        ```
-
+        Create a Endpoint resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the VPC endpoint.
-               
-               Changing this creates a new VPC endpoint.
-        :param pulumi.Input[_builtins.bool] enable_dns: Specifies whether to create a private domain name. The default value is
-               true. Changing this creates a new VPC endpoint.
-        :param pulumi.Input[_builtins.bool] enable_whitelist: Specifies whether to enable access control. The default value is
-               false.
-        :param pulumi.Input[_builtins.str] ip_address: Specifies the IP address for accessing the associated VPC endpoint
-               service. Only IPv4 addresses are supported. Changing this creates a new VPC endpoint.
-        :param pulumi.Input[_builtins.str] network_id: Specifies the network ID of the subnet in the VPC specified by `vpc_id`.
-               Changing this creates a new VPC endpoint.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the VPC endpoint. If omitted, the provider-level
-               region will be used. Changing this creates a new VPC endpoint.
-        :param pulumi.Input[_builtins.str] service_id: Specifies the ID of the VPC endpoint service.
-               The VPC endpoint service could be private or public. Changing this creates a new VPC endpoint.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the VPC endpoint.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of the VPC where the VPC endpoint is to be created. Changing
-               this creates a new VPC endpoint.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] whitelists: Specifies the list of IP address or CIDR block which can be accessed to the
-               VPC endpoint. This field is valid when `enable_whitelist` is set to **true**. The max length of whitelist is 20.
         """
         ...
     @overload
@@ -581,68 +358,7 @@ class Endpoint(pulumi.CustomResource):
                  args: EndpointArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a resource to manage a VPC endpoint resource.
-
-        ## Example Usage
-
-        ### Access to the public service
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        config = pulumi.Config()
-        vpc_id = config.require_object("vpcId")
-        network_id = config.require_object("networkId")
-        cloud_service = sbercloud.Vpcep.get_public_services(service_name="dis")
-        myendpoint = sbercloud.vpcep.Endpoint("myendpoint",
-            service_id=cloud_service.services[0].id,
-            vpc_id=vpc_id,
-            network_id=network_id,
-            enable_dns=True,
-            enable_whitelist=True,
-            whitelists=["192.168.0.0/24"])
-        ```
-
-        ### Access to the private service
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        service_vpc_id = config.require_object("serviceVpcId")
-        vm_port = config.require_object("vmPort")
-        vpc_id = config.require_object("vpcId")
-        network_id = config.require_object("networkId")
-        demo = sbercloud.vpcep.Service("demo",
-            name="demo-service",
-            server_type="VM",
-            vpc_id=service_vpc_id,
-            port_id=vm_port,
-            port_mappings=[{
-                "service_port": 8080,
-                "terminal_port": 80,
-            }])
-        demo_endpoint = sbercloud.vpcep.Endpoint("demo",
-            service_id=demo.id,
-            vpc_id=vpc_id,
-            network_id=network_id,
-            enable_dns=True,
-            description="test description")
-        ```
-
-        ## Import
-
-        VPC endpoint can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Vpcep/endpoint:Endpoint test <id>
-        ```
-
+        Create a Endpoint resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param EndpointArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -730,32 +446,6 @@ class Endpoint(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the VPC endpoint.
-               
-               Changing this creates a new VPC endpoint.
-        :param pulumi.Input[_builtins.bool] enable_dns: Specifies whether to create a private domain name. The default value is
-               true. Changing this creates a new VPC endpoint.
-        :param pulumi.Input[_builtins.bool] enable_whitelist: Specifies whether to enable access control. The default value is
-               false.
-        :param pulumi.Input[_builtins.str] ip_address: Specifies the IP address for accessing the associated VPC endpoint
-               service. Only IPv4 addresses are supported. Changing this creates a new VPC endpoint.
-        :param pulumi.Input[_builtins.str] network_id: Specifies the network ID of the subnet in the VPC specified by `vpc_id`.
-               Changing this creates a new VPC endpoint.
-        :param pulumi.Input[_builtins.int] packet_id: The packet ID of the VPC endpoint.
-        :param pulumi.Input[_builtins.str] private_domain_name: The domain name for accessing the associated VPC endpoint service. This parameter is only
-               available when enable_dns is set to true.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the VPC endpoint. If omitted, the provider-level
-               region will be used. Changing this creates a new VPC endpoint.
-        :param pulumi.Input[_builtins.str] service_id: Specifies the ID of the VPC endpoint service.
-               The VPC endpoint service could be private or public. Changing this creates a new VPC endpoint.
-        :param pulumi.Input[_builtins.str] service_name: The name of the VPC endpoint service.
-        :param pulumi.Input[_builtins.str] service_type: The type of the VPC endpoint service.
-        :param pulumi.Input[_builtins.str] status: The status of the VPC endpoint. The value can be **accepted**, **pendingAcceptance** or **rejected**.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the VPC endpoint.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of the VPC where the VPC endpoint is to be created. Changing
-               this creates a new VPC endpoint.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] whitelists: Specifies the list of IP address or CIDR block which can be accessed to the
-               VPC endpoint. This field is valid when `enable_whitelist` is set to **true**. The max length of whitelist is 20.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -781,131 +471,75 @@ class Endpoint(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the description of the VPC endpoint.
-
-        Changing this creates a new VPC endpoint.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="enableDns")
     def enable_dns(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether to create a private domain name. The default value is
-        true. Changing this creates a new VPC endpoint.
-        """
         return pulumi.get(self, "enable_dns")
 
     @_builtins.property
     @pulumi.getter(name="enableWhitelist")
     def enable_whitelist(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether to enable access control. The default value is
-        false.
-        """
         return pulumi.get(self, "enable_whitelist")
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the IP address for accessing the associated VPC endpoint
-        service. Only IPv4 addresses are supported. Changing this creates a new VPC endpoint.
-        """
         return pulumi.get(self, "ip_address")
 
     @_builtins.property
     @pulumi.getter(name="networkId")
     def network_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the network ID of the subnet in the VPC specified by `vpc_id`.
-        Changing this creates a new VPC endpoint.
-        """
         return pulumi.get(self, "network_id")
 
     @_builtins.property
     @pulumi.getter(name="packetId")
     def packet_id(self) -> pulumi.Output[_builtins.int]:
-        """
-        The packet ID of the VPC endpoint.
-        """
         return pulumi.get(self, "packet_id")
 
     @_builtins.property
     @pulumi.getter(name="privateDomainName")
     def private_domain_name(self) -> pulumi.Output[_builtins.str]:
-        """
-        The domain name for accessing the associated VPC endpoint service. This parameter is only
-        available when enable_dns is set to true.
-        """
         return pulumi.get(self, "private_domain_name")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the VPC endpoint. If omitted, the provider-level
-        region will be used. Changing this creates a new VPC endpoint.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="serviceId")
     def service_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the ID of the VPC endpoint service.
-        The VPC endpoint service could be private or public. Changing this creates a new VPC endpoint.
-        """
         return pulumi.get(self, "service_id")
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[_builtins.str]:
-        """
-        The name of the VPC endpoint service.
-        """
         return pulumi.get(self, "service_name")
 
     @_builtins.property
     @pulumi.getter(name="serviceType")
     def service_type(self) -> pulumi.Output[_builtins.str]:
-        """
-        The type of the VPC endpoint service.
-        """
         return pulumi.get(self, "service_type")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
-        """
-        The status of the VPC endpoint. The value can be **accepted**, **pendingAcceptance** or **rejected**.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        The key/value pairs to associate with the VPC endpoint.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the ID of the VPC where the VPC endpoint is to be created. Changing
-        this creates a new VPC endpoint.
-        """
         return pulumi.get(self, "vpc_id")
 
     @_builtins.property
     @pulumi.getter
     def whitelists(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
-        """
-        Specifies the list of IP address or CIDR block which can be accessed to the
-        VPC endpoint. This field is valid when `enable_whitelist` is set to **true**. The max length of whitelist is 20.
-        """
         return pulumi.get(self, "whitelists")
 

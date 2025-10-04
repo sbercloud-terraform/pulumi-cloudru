@@ -30,26 +30,12 @@ class VpnCustomerGatewayArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a VpnCustomerGateway resource.
-        :param pulumi.Input[_builtins.int] asn: The BGP ASN number of the customer gateway.
-               The value ranges from **1** to **4294967295**, the default value is **65000**.
-               Set this parameter to **0** when `id_type` is set to **fqdn**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] certificate_content: The CA certificate content of the customer gateway.
-        :param pulumi.Input[_builtins.str] id_type: Specifies the identifier type of a customer gateway.
-               The value can be **ip** or **fqdn**. The default value is **ip**.
-        :param pulumi.Input[_builtins.str] id_value: Specifies the identifier of a customer gateway.
-               When `id_type` is set to **ip**, the value is an IPv4 address in dotted decimal notation, for example, 192.168.45.7.
-               When `id_type` is set to **fqdn**, the value is a string of characters that can contain uppercase letters, lowercase letters,
-               digits, and special characters. Spaces and the following special characters are not supported: & < > [ ] \\ ?.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.int] asn: The BGP ASN number of the customer gateway, the default value is 65000.
+        :param pulumi.Input[_builtins.str] id_type: The identifier type of a customer gateway.
+        :param pulumi.Input[_builtins.str] id_value: The identifier of a customer gateway.
         :param pulumi.Input[_builtins.str] ip: The IP address of the customer gateway.
         :param pulumi.Input[_builtins.str] name: The customer gateway name.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] route_mode: The route mode of the customer gateway.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the tags of the customer gateway.
         """
         if asn is not None:
             pulumi.set(__self__, "asn", asn)
@@ -74,11 +60,7 @@ class VpnCustomerGatewayArgs:
     @pulumi.getter
     def asn(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The BGP ASN number of the customer gateway.
-        The value ranges from **1** to **4294967295**, the default value is **65000**.
-        Set this parameter to **0** when `id_type` is set to **fqdn**.
-
-        Changing this parameter will create a new resource.
+        The BGP ASN number of the customer gateway, the default value is 65000.
         """
         return pulumi.get(self, "asn")
 
@@ -89,9 +71,6 @@ class VpnCustomerGatewayArgs:
     @_builtins.property
     @pulumi.getter(name="certificateContent")
     def certificate_content(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The CA certificate content of the customer gateway.
-        """
         return pulumi.get(self, "certificate_content")
 
     @certificate_content.setter
@@ -102,8 +81,7 @@ class VpnCustomerGatewayArgs:
     @pulumi.getter(name="idType")
     def id_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the identifier type of a customer gateway.
-        The value can be **ip** or **fqdn**. The default value is **ip**.
+        The identifier type of a customer gateway.
         """
         return pulumi.get(self, "id_type")
 
@@ -115,12 +93,7 @@ class VpnCustomerGatewayArgs:
     @pulumi.getter(name="idValue")
     def id_value(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the identifier of a customer gateway.
-        When `id_type` is set to **ip**, the value is an IPv4 address in dotted decimal notation, for example, 192.168.45.7.
-        When `id_type` is set to **fqdn**, the value is a string of characters that can contain uppercase letters, lowercase letters,
-        digits, and special characters. Spaces and the following special characters are not supported: & < > [ ] \\ ?.
-
-        Changing this parameter will create a new resource.
+        The identifier of a customer gateway.
         """
         return pulumi.get(self, "id_value")
 
@@ -155,10 +128,6 @@ class VpnCustomerGatewayArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -180,9 +149,6 @@ class VpnCustomerGatewayArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the tags of the customer gateway.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -213,34 +179,13 @@ class _VpnCustomerGatewayState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpnCustomerGateway resources.
-        :param pulumi.Input[_builtins.int] asn: The BGP ASN number of the customer gateway.
-               The value ranges from **1** to **4294967295**, the default value is **65000**.
-               Set this parameter to **0** when `id_type` is set to **fqdn**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] certificate_content: The CA certificate content of the customer gateway.
-        :param pulumi.Input[_builtins.str] certificate_id: Indicates the ID of the customer gateway certificate.
+        :param pulumi.Input[_builtins.int] asn: The BGP ASN number of the customer gateway, the default value is 65000.
         :param pulumi.Input[_builtins.str] created_at: The create time.
-        :param pulumi.Input[_builtins.str] expire_time: Indicates the expire time of the customer gateway certificate.
-        :param pulumi.Input[_builtins.str] id_type: Specifies the identifier type of a customer gateway.
-               The value can be **ip** or **fqdn**. The default value is **ip**.
-        :param pulumi.Input[_builtins.str] id_value: Specifies the identifier of a customer gateway.
-               When `id_type` is set to **ip**, the value is an IPv4 address in dotted decimal notation, for example, 192.168.45.7.
-               When `id_type` is set to **fqdn**, the value is a string of characters that can contain uppercase letters, lowercase letters,
-               digits, and special characters. Spaces and the following special characters are not supported: & < > [ ] \\ ?.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] id_type: The identifier type of a customer gateway.
+        :param pulumi.Input[_builtins.str] id_value: The identifier of a customer gateway.
         :param pulumi.Input[_builtins.str] ip: The IP address of the customer gateway.
-        :param pulumi.Input[_builtins.bool] is_updatable: Indicates whether the customer gateway certificate is updatable.
-        :param pulumi.Input[_builtins.str] issuer: Indicates the issuer of the customer gateway certificate.
         :param pulumi.Input[_builtins.str] name: The customer gateway name.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] route_mode: The route mode of the customer gateway.
-        :param pulumi.Input[_builtins.str] serial_number: Indicates the serial number of the customer gateway certificate.
-        :param pulumi.Input[_builtins.str] signature_algorithm: Indicates the signature algorithm of the customer gateway certificate.
-        :param pulumi.Input[_builtins.str] subject: Indicates the subject of the customer gateway certificate.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the tags of the customer gateway.
         :param pulumi.Input[_builtins.str] updated_at: The update time.
         """
         if asn is not None:
@@ -284,11 +229,7 @@ class _VpnCustomerGatewayState:
     @pulumi.getter
     def asn(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The BGP ASN number of the customer gateway.
-        The value ranges from **1** to **4294967295**, the default value is **65000**.
-        Set this parameter to **0** when `id_type` is set to **fqdn**.
-
-        Changing this parameter will create a new resource.
+        The BGP ASN number of the customer gateway, the default value is 65000.
         """
         return pulumi.get(self, "asn")
 
@@ -299,9 +240,6 @@ class _VpnCustomerGatewayState:
     @_builtins.property
     @pulumi.getter(name="certificateContent")
     def certificate_content(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The CA certificate content of the customer gateway.
-        """
         return pulumi.get(self, "certificate_content")
 
     @certificate_content.setter
@@ -311,9 +249,6 @@ class _VpnCustomerGatewayState:
     @_builtins.property
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the ID of the customer gateway certificate.
-        """
         return pulumi.get(self, "certificate_id")
 
     @certificate_id.setter
@@ -335,9 +270,6 @@ class _VpnCustomerGatewayState:
     @_builtins.property
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the expire time of the customer gateway certificate.
-        """
         return pulumi.get(self, "expire_time")
 
     @expire_time.setter
@@ -348,8 +280,7 @@ class _VpnCustomerGatewayState:
     @pulumi.getter(name="idType")
     def id_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the identifier type of a customer gateway.
-        The value can be **ip** or **fqdn**. The default value is **ip**.
+        The identifier type of a customer gateway.
         """
         return pulumi.get(self, "id_type")
 
@@ -361,12 +292,7 @@ class _VpnCustomerGatewayState:
     @pulumi.getter(name="idValue")
     def id_value(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the identifier of a customer gateway.
-        When `id_type` is set to **ip**, the value is an IPv4 address in dotted decimal notation, for example, 192.168.45.7.
-        When `id_type` is set to **fqdn**, the value is a string of characters that can contain uppercase letters, lowercase letters,
-        digits, and special characters. Spaces and the following special characters are not supported: & < > [ ] \\ ?.
-
-        Changing this parameter will create a new resource.
+        The identifier of a customer gateway.
         """
         return pulumi.get(self, "id_value")
 
@@ -389,9 +315,6 @@ class _VpnCustomerGatewayState:
     @_builtins.property
     @pulumi.getter(name="isUpdatable")
     def is_updatable(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Indicates whether the customer gateway certificate is updatable.
-        """
         return pulumi.get(self, "is_updatable")
 
     @is_updatable.setter
@@ -401,9 +324,6 @@ class _VpnCustomerGatewayState:
     @_builtins.property
     @pulumi.getter
     def issuer(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the issuer of the customer gateway certificate.
-        """
         return pulumi.get(self, "issuer")
 
     @issuer.setter
@@ -425,10 +345,6 @@ class _VpnCustomerGatewayState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -450,9 +366,6 @@ class _VpnCustomerGatewayState:
     @_builtins.property
     @pulumi.getter(name="serialNumber")
     def serial_number(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the serial number of the customer gateway certificate.
-        """
         return pulumi.get(self, "serial_number")
 
     @serial_number.setter
@@ -462,9 +375,6 @@ class _VpnCustomerGatewayState:
     @_builtins.property
     @pulumi.getter(name="signatureAlgorithm")
     def signature_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the signature algorithm of the customer gateway certificate.
-        """
         return pulumi.get(self, "signature_algorithm")
 
     @signature_algorithm.setter
@@ -474,9 +384,6 @@ class _VpnCustomerGatewayState:
     @_builtins.property
     @pulumi.getter
     def subject(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the subject of the customer gateway certificate.
-        """
         return pulumi.get(self, "subject")
 
     @subject.setter
@@ -486,9 +393,6 @@ class _VpnCustomerGatewayState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the tags of the customer gateway.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -525,98 +429,15 @@ class VpnCustomerGateway(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Manages a VPN customer gateway resource within SberCloud.
-
-        ## Example Usage
-
-        ### Manages a common VPN customer gateway
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        id_value = config.require_object("idValue")
-        test = sbercloud.VpnCustomerGateway("test",
-            name=name,
-            id_value=id_value)
-        ```
-
-        ### Manages a VPN customer gateway with CA certificate
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        id_value = config.require_object("idValue")
-        certificate_content = config.require_object("certificateContent")
-        test = sbercloud.VpnCustomerGateway("test",
-            name=name,
-            id_value=id_value,
-            certificate_content=certificate_content)
-        ```
-
-        ## Import
-
-        The customer gateway can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/vpnCustomerGateway:VpnCustomerGateway test <id>
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attribute is `certificate_content`. It is generally recommended
-
-        running `pulumi preview` after importing the resource. You can then decide if changes should be applied to the instance,
-
-        or the resource definition should be updated to align with the instance. Also you can ignore changes as below.
-
-        hcl
-
-        resource "sbercloud_vpn_customer_gateway" "test" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              certificate_content,
-            
-            ]
-
-          }
-
-        }
-
+        Create a VpnCustomerGateway resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] asn: The BGP ASN number of the customer gateway.
-               The value ranges from **1** to **4294967295**, the default value is **65000**.
-               Set this parameter to **0** when `id_type` is set to **fqdn**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] certificate_content: The CA certificate content of the customer gateway.
-        :param pulumi.Input[_builtins.str] id_type: Specifies the identifier type of a customer gateway.
-               The value can be **ip** or **fqdn**. The default value is **ip**.
-        :param pulumi.Input[_builtins.str] id_value: Specifies the identifier of a customer gateway.
-               When `id_type` is set to **ip**, the value is an IPv4 address in dotted decimal notation, for example, 192.168.45.7.
-               When `id_type` is set to **fqdn**, the value is a string of characters that can contain uppercase letters, lowercase letters,
-               digits, and special characters. Spaces and the following special characters are not supported: & < > [ ] \\ ?.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.int] asn: The BGP ASN number of the customer gateway, the default value is 65000.
+        :param pulumi.Input[_builtins.str] id_type: The identifier type of a customer gateway.
+        :param pulumi.Input[_builtins.str] id_value: The identifier of a customer gateway.
         :param pulumi.Input[_builtins.str] ip: The IP address of the customer gateway.
         :param pulumi.Input[_builtins.str] name: The customer gateway name.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] route_mode: The route mode of the customer gateway.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the tags of the customer gateway.
         """
         ...
     @overload
@@ -625,76 +446,7 @@ class VpnCustomerGateway(pulumi.CustomResource):
                  args: Optional[VpnCustomerGatewayArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a VPN customer gateway resource within SberCloud.
-
-        ## Example Usage
-
-        ### Manages a common VPN customer gateway
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        id_value = config.require_object("idValue")
-        test = sbercloud.VpnCustomerGateway("test",
-            name=name,
-            id_value=id_value)
-        ```
-
-        ### Manages a VPN customer gateway with CA certificate
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        id_value = config.require_object("idValue")
-        certificate_content = config.require_object("certificateContent")
-        test = sbercloud.VpnCustomerGateway("test",
-            name=name,
-            id_value=id_value,
-            certificate_content=certificate_content)
-        ```
-
-        ## Import
-
-        The customer gateway can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/vpnCustomerGateway:VpnCustomerGateway test <id>
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attribute is `certificate_content`. It is generally recommended
-
-        running `pulumi preview` after importing the resource. You can then decide if changes should be applied to the instance,
-
-        or the resource definition should be updated to align with the instance. Also you can ignore changes as below.
-
-        hcl
-
-        resource "sbercloud_vpn_customer_gateway" "test" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              certificate_content,
-            
-            ]
-
-          }
-
-        }
-
+        Create a VpnCustomerGateway resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param VpnCustomerGatewayArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -781,34 +533,13 @@ class VpnCustomerGateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] asn: The BGP ASN number of the customer gateway.
-               The value ranges from **1** to **4294967295**, the default value is **65000**.
-               Set this parameter to **0** when `id_type` is set to **fqdn**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] certificate_content: The CA certificate content of the customer gateway.
-        :param pulumi.Input[_builtins.str] certificate_id: Indicates the ID of the customer gateway certificate.
+        :param pulumi.Input[_builtins.int] asn: The BGP ASN number of the customer gateway, the default value is 65000.
         :param pulumi.Input[_builtins.str] created_at: The create time.
-        :param pulumi.Input[_builtins.str] expire_time: Indicates the expire time of the customer gateway certificate.
-        :param pulumi.Input[_builtins.str] id_type: Specifies the identifier type of a customer gateway.
-               The value can be **ip** or **fqdn**. The default value is **ip**.
-        :param pulumi.Input[_builtins.str] id_value: Specifies the identifier of a customer gateway.
-               When `id_type` is set to **ip**, the value is an IPv4 address in dotted decimal notation, for example, 192.168.45.7.
-               When `id_type` is set to **fqdn**, the value is a string of characters that can contain uppercase letters, lowercase letters,
-               digits, and special characters. Spaces and the following special characters are not supported: & < > [ ] \\ ?.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] id_type: The identifier type of a customer gateway.
+        :param pulumi.Input[_builtins.str] id_value: The identifier of a customer gateway.
         :param pulumi.Input[_builtins.str] ip: The IP address of the customer gateway.
-        :param pulumi.Input[_builtins.bool] is_updatable: Indicates whether the customer gateway certificate is updatable.
-        :param pulumi.Input[_builtins.str] issuer: Indicates the issuer of the customer gateway certificate.
         :param pulumi.Input[_builtins.str] name: The customer gateway name.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] route_mode: The route mode of the customer gateway.
-        :param pulumi.Input[_builtins.str] serial_number: Indicates the serial number of the customer gateway certificate.
-        :param pulumi.Input[_builtins.str] signature_algorithm: Indicates the signature algorithm of the customer gateway certificate.
-        :param pulumi.Input[_builtins.str] subject: Indicates the subject of the customer gateway certificate.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the tags of the customer gateway.
         :param pulumi.Input[_builtins.str] updated_at: The update time.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -839,28 +570,18 @@ class VpnCustomerGateway(pulumi.CustomResource):
     @pulumi.getter
     def asn(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The BGP ASN number of the customer gateway.
-        The value ranges from **1** to **4294967295**, the default value is **65000**.
-        Set this parameter to **0** when `id_type` is set to **fqdn**.
-
-        Changing this parameter will create a new resource.
+        The BGP ASN number of the customer gateway, the default value is 65000.
         """
         return pulumi.get(self, "asn")
 
     @_builtins.property
     @pulumi.getter(name="certificateContent")
     def certificate_content(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        The CA certificate content of the customer gateway.
-        """
         return pulumi.get(self, "certificate_content")
 
     @_builtins.property
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates the ID of the customer gateway certificate.
-        """
         return pulumi.get(self, "certificate_id")
 
     @_builtins.property
@@ -874,17 +595,13 @@ class VpnCustomerGateway(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates the expire time of the customer gateway certificate.
-        """
         return pulumi.get(self, "expire_time")
 
     @_builtins.property
     @pulumi.getter(name="idType")
     def id_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the identifier type of a customer gateway.
-        The value can be **ip** or **fqdn**. The default value is **ip**.
+        The identifier type of a customer gateway.
         """
         return pulumi.get(self, "id_type")
 
@@ -892,12 +609,7 @@ class VpnCustomerGateway(pulumi.CustomResource):
     @pulumi.getter(name="idValue")
     def id_value(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the identifier of a customer gateway.
-        When `id_type` is set to **ip**, the value is an IPv4 address in dotted decimal notation, for example, 192.168.45.7.
-        When `id_type` is set to **fqdn**, the value is a string of characters that can contain uppercase letters, lowercase letters,
-        digits, and special characters. Spaces and the following special characters are not supported: & < > [ ] \\ ?.
-
-        Changing this parameter will create a new resource.
+        The identifier of a customer gateway.
         """
         return pulumi.get(self, "id_value")
 
@@ -912,17 +624,11 @@ class VpnCustomerGateway(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="isUpdatable")
     def is_updatable(self) -> pulumi.Output[_builtins.bool]:
-        """
-        Indicates whether the customer gateway certificate is updatable.
-        """
         return pulumi.get(self, "is_updatable")
 
     @_builtins.property
     @pulumi.getter
     def issuer(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates the issuer of the customer gateway certificate.
-        """
         return pulumi.get(self, "issuer")
 
     @_builtins.property
@@ -936,10 +642,6 @@ class VpnCustomerGateway(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
@@ -953,33 +655,21 @@ class VpnCustomerGateway(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="serialNumber")
     def serial_number(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates the serial number of the customer gateway certificate.
-        """
         return pulumi.get(self, "serial_number")
 
     @_builtins.property
     @pulumi.getter(name="signatureAlgorithm")
     def signature_algorithm(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates the signature algorithm of the customer gateway certificate.
-        """
         return pulumi.get(self, "signature_algorithm")
 
     @_builtins.property
     @pulumi.getter
     def subject(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates the subject of the customer gateway certificate.
-        """
         return pulumi.get(self, "subject")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        Specifies the tags of the customer gateway.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property

@@ -6,22 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the list of RDS backups.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const test = sbercloud.Rds.getBackups({
- *     instanceId: instanceId,
- * });
- * ```
- */
 export function getBackups(args: GetBackupsArgs, opts?: pulumi.InvokeOptions): Promise<GetBackupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:Rds/getBackups:getBackups", {
@@ -39,39 +23,12 @@ export function getBackups(args: GetBackupsArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getBackups.
  */
 export interface GetBackupsArgs {
-    /**
-     * Backup ID.
-     */
     backupId?: string;
-    /**
-     * Backup type.  
-     * The options are as follows:
-     * - **auto**: Automated full backup.
-     * - **manual**: Manual full backup.
-     * - **fragment**: Differential full backup.
-     * - **incremental**: Automated incremental backup.
-     */
     backupType?: string;
-    /**
-     * Start time in the "yyyy-mm-ddThh:mm:ssZ" format.
-     */
     beginTime?: string;
-    /**
-     * End time in the "yyyy-mm-ddThh:mm:ssZ" format.
-     */
     endTime?: string;
-    /**
-     * Instance ID.
-     */
     instanceId: string;
-    /**
-     * Backup name.
-     */
     name?: string;
-    /**
-     * Specifies the region in which to query the data source.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
 }
 
@@ -81,49 +38,17 @@ export interface GetBackupsArgs {
 export interface GetBackupsResult {
     readonly backupId?: string;
     readonly backupType?: string;
-    /**
-     * Backup list. For details, see Data structure of the Backup field.
-     * The backups structure is documented below.
-     */
     readonly backups: outputs.Rds.GetBackupsBackup[];
-    /**
-     * Backup start time in the "yyyy-mm-ddThh:mm:ssZ" format.
-     */
     readonly beginTime?: string;
-    /**
-     * Backup end time in the "yyyy-mm-ddThh:mm:ssZ" format.
-     */
     readonly endTime?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * RDS instance ID.
-     */
     readonly instanceId: string;
-    /**
-     * Database to be backed up for Microsoft SQL Server.
-     */
     readonly name?: string;
     readonly region: string;
 }
-/**
- * Use this data source to get the list of RDS backups.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const test = sbercloud.Rds.getBackups({
- *     instanceId: instanceId,
- * });
- * ```
- */
 export function getBackupsOutput(args: GetBackupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBackupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:Rds/getBackups:getBackups", {
@@ -141,38 +66,11 @@ export function getBackupsOutput(args: GetBackupsOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getBackups.
  */
 export interface GetBackupsOutputArgs {
-    /**
-     * Backup ID.
-     */
     backupId?: pulumi.Input<string>;
-    /**
-     * Backup type.  
-     * The options are as follows:
-     * - **auto**: Automated full backup.
-     * - **manual**: Manual full backup.
-     * - **fragment**: Differential full backup.
-     * - **incremental**: Automated incremental backup.
-     */
     backupType?: pulumi.Input<string>;
-    /**
-     * Start time in the "yyyy-mm-ddThh:mm:ssZ" format.
-     */
     beginTime?: pulumi.Input<string>;
-    /**
-     * End time in the "yyyy-mm-ddThh:mm:ssZ" format.
-     */
     endTime?: pulumi.Input<string>;
-    /**
-     * Instance ID.
-     */
     instanceId: pulumi.Input<string>;
-    /**
-     * Backup name.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the data source.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
 }

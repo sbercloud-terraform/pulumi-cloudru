@@ -12,15 +12,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a Nat gateway resource within SberCloud Nat
-//
-// ## Import
-//
-// Nat gateway can be imported using the following format:
-//
-// ```sh
-// $ pulumi import sbercloud:Nat/gateway:Gateway nat_1 d126fb87-43ce-4867-a2ff-cf34af3765d9
-// ```
 type Gateway struct {
 	pulumi.CustomResourceState
 
@@ -32,19 +23,13 @@ type Gateway struct {
 	ChargingMode pulumi.StringOutput `pulumi:"chargingMode"`
 	// The creation time of the NAT gateway.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Specifies the description of the nat
-	// gateway. The value contains 0 to 255 characters, and angle brackets (<)
-	// and (>) are not allowed.
+	// The description of the NAT gateway.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The maximum number of DNAT rules on the NAT gateway.
 	DnatRulesLimit pulumi.IntOutput `pulumi:"dnatRulesLimit"`
-	// Specifies the
-	// enterprise project id of the nat gateway. The value can contains maximum of
-	// 36 characters which it is string "0" or in UUID format with hyphens (-).
-	// Changing this creates a new nat gateway.
+	// The enterprise project ID of the NAT gateway.
 	EnterpriseProjectId pulumi.StringOutput `pulumi:"enterpriseProjectId"`
-	// Specifies the nat gateway name. The name can
-	// contain only digits, letters, underscores (_), and hyphens(-).
+	// The NAT gateway name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The IP address used for the NG port of the NAT gateway.
 	NgportIpAddress pulumi.StringOutput    `pulumi:"ngportIpAddress"`
@@ -52,27 +37,20 @@ type Gateway struct {
 	PeriodUnit      pulumi.StringPtrOutput `pulumi:"periodUnit"`
 	// The number of packets that the NAT gateway can receive or send per second.
 	PpsMax pulumi.IntOutput `pulumi:"ppsMax"`
-	// Specifies the region in which to
-	// create the Nat gateway resource. If omitted, the provider-level region will
-	// be used. Changing this creates a new nat gateway.
+	// The region where the NAT gateway is located.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The session configuration of the NAT gateway.
 	SessionConf GatewaySessionConfOutput `pulumi:"sessionConf"`
 	// The maximum number of SNAT rules on the NAT gateway.
 	SnatRulePublicIpLimit pulumi.IntOutput `pulumi:"snatRulePublicIpLimit"`
-	// Specifies the nat gateway type.
-	// The value can be:
+	// The specification of the NAT gateway.
 	Spec pulumi.StringOutput `pulumi:"spec"`
-	// The status of the nat gateway.
+	// The current status of the NAT gateway.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Specifies the subnet ID of the downstream interface (the next hop of the
-	// DVR) of the NAT gateway.
-	// Changing this will create a new resource.
-	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
-	// Specifies the key/value pairs to associate with the NAT geteway.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Specifies the ID of the VPC to which the NAT gateway belongs.\
-	// Changing this will create a new resource.
+	// The network ID of the downstream interface (the next hop of the DVR) of the NAT gateway.
+	SubnetId pulumi.StringOutput    `pulumi:"subnetId"`
+	Tags     pulumi.StringMapOutput `pulumi:"tags"`
+	// The ID of the VPC to which the NAT gateway belongs.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 }
 
@@ -123,19 +101,13 @@ type gatewayState struct {
 	ChargingMode *string `pulumi:"chargingMode"`
 	// The creation time of the NAT gateway.
 	CreatedAt *string `pulumi:"createdAt"`
-	// Specifies the description of the nat
-	// gateway. The value contains 0 to 255 characters, and angle brackets (<)
-	// and (>) are not allowed.
+	// The description of the NAT gateway.
 	Description *string `pulumi:"description"`
 	// The maximum number of DNAT rules on the NAT gateway.
 	DnatRulesLimit *int `pulumi:"dnatRulesLimit"`
-	// Specifies the
-	// enterprise project id of the nat gateway. The value can contains maximum of
-	// 36 characters which it is string "0" or in UUID format with hyphens (-).
-	// Changing this creates a new nat gateway.
+	// The enterprise project ID of the NAT gateway.
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the nat gateway name. The name can
-	// contain only digits, letters, underscores (_), and hyphens(-).
+	// The NAT gateway name.
 	Name *string `pulumi:"name"`
 	// The IP address used for the NG port of the NAT gateway.
 	NgportIpAddress *string `pulumi:"ngportIpAddress"`
@@ -143,27 +115,20 @@ type gatewayState struct {
 	PeriodUnit      *string `pulumi:"periodUnit"`
 	// The number of packets that the NAT gateway can receive or send per second.
 	PpsMax *int `pulumi:"ppsMax"`
-	// Specifies the region in which to
-	// create the Nat gateway resource. If omitted, the provider-level region will
-	// be used. Changing this creates a new nat gateway.
+	// The region where the NAT gateway is located.
 	Region *string `pulumi:"region"`
 	// The session configuration of the NAT gateway.
 	SessionConf *GatewaySessionConf `pulumi:"sessionConf"`
 	// The maximum number of SNAT rules on the NAT gateway.
 	SnatRulePublicIpLimit *int `pulumi:"snatRulePublicIpLimit"`
-	// Specifies the nat gateway type.
-	// The value can be:
+	// The specification of the NAT gateway.
 	Spec *string `pulumi:"spec"`
-	// The status of the nat gateway.
+	// The current status of the NAT gateway.
 	Status *string `pulumi:"status"`
-	// Specifies the subnet ID of the downstream interface (the next hop of the
-	// DVR) of the NAT gateway.
-	// Changing this will create a new resource.
-	SubnetId *string `pulumi:"subnetId"`
-	// Specifies the key/value pairs to associate with the NAT geteway.
-	Tags map[string]string `pulumi:"tags"`
-	// Specifies the ID of the VPC to which the NAT gateway belongs.\
-	// Changing this will create a new resource.
+	// The network ID of the downstream interface (the next hop of the DVR) of the NAT gateway.
+	SubnetId *string           `pulumi:"subnetId"`
+	Tags     map[string]string `pulumi:"tags"`
+	// The ID of the VPC to which the NAT gateway belongs.
 	VpcId *string `pulumi:"vpcId"`
 }
 
@@ -176,19 +141,13 @@ type GatewayState struct {
 	ChargingMode pulumi.StringPtrInput
 	// The creation time of the NAT gateway.
 	CreatedAt pulumi.StringPtrInput
-	// Specifies the description of the nat
-	// gateway. The value contains 0 to 255 characters, and angle brackets (<)
-	// and (>) are not allowed.
+	// The description of the NAT gateway.
 	Description pulumi.StringPtrInput
 	// The maximum number of DNAT rules on the NAT gateway.
 	DnatRulesLimit pulumi.IntPtrInput
-	// Specifies the
-	// enterprise project id of the nat gateway. The value can contains maximum of
-	// 36 characters which it is string "0" or in UUID format with hyphens (-).
-	// Changing this creates a new nat gateway.
+	// The enterprise project ID of the NAT gateway.
 	EnterpriseProjectId pulumi.StringPtrInput
-	// Specifies the nat gateway name. The name can
-	// contain only digits, letters, underscores (_), and hyphens(-).
+	// The NAT gateway name.
 	Name pulumi.StringPtrInput
 	// The IP address used for the NG port of the NAT gateway.
 	NgportIpAddress pulumi.StringPtrInput
@@ -196,27 +155,20 @@ type GatewayState struct {
 	PeriodUnit      pulumi.StringPtrInput
 	// The number of packets that the NAT gateway can receive or send per second.
 	PpsMax pulumi.IntPtrInput
-	// Specifies the region in which to
-	// create the Nat gateway resource. If omitted, the provider-level region will
-	// be used. Changing this creates a new nat gateway.
+	// The region where the NAT gateway is located.
 	Region pulumi.StringPtrInput
 	// The session configuration of the NAT gateway.
 	SessionConf GatewaySessionConfPtrInput
 	// The maximum number of SNAT rules on the NAT gateway.
 	SnatRulePublicIpLimit pulumi.IntPtrInput
-	// Specifies the nat gateway type.
-	// The value can be:
+	// The specification of the NAT gateway.
 	Spec pulumi.StringPtrInput
-	// The status of the nat gateway.
+	// The current status of the NAT gateway.
 	Status pulumi.StringPtrInput
-	// Specifies the subnet ID of the downstream interface (the next hop of the
-	// DVR) of the NAT gateway.
-	// Changing this will create a new resource.
+	// The network ID of the downstream interface (the next hop of the DVR) of the NAT gateway.
 	SubnetId pulumi.StringPtrInput
-	// Specifies the key/value pairs to associate with the NAT geteway.
-	Tags pulumi.StringMapInput
-	// Specifies the ID of the VPC to which the NAT gateway belongs.\
-	// Changing this will create a new resource.
+	Tags     pulumi.StringMapInput
+	// The ID of the VPC to which the NAT gateway belongs.
 	VpcId pulumi.StringPtrInput
 }
 
@@ -227,39 +179,26 @@ func (GatewayState) ElementType() reflect.Type {
 type gatewayArgs struct {
 	AutoRenew    *string `pulumi:"autoRenew"`
 	ChargingMode *string `pulumi:"chargingMode"`
-	// Specifies the description of the nat
-	// gateway. The value contains 0 to 255 characters, and angle brackets (<)
-	// and (>) are not allowed.
+	// The description of the NAT gateway.
 	Description *string `pulumi:"description"`
-	// Specifies the
-	// enterprise project id of the nat gateway. The value can contains maximum of
-	// 36 characters which it is string "0" or in UUID format with hyphens (-).
-	// Changing this creates a new nat gateway.
+	// The enterprise project ID of the NAT gateway.
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the nat gateway name. The name can
-	// contain only digits, letters, underscores (_), and hyphens(-).
+	// The NAT gateway name.
 	Name *string `pulumi:"name"`
 	// The IP address used for the NG port of the NAT gateway.
 	NgportIpAddress *string `pulumi:"ngportIpAddress"`
 	Period          *int    `pulumi:"period"`
 	PeriodUnit      *string `pulumi:"periodUnit"`
-	// Specifies the region in which to
-	// create the Nat gateway resource. If omitted, the provider-level region will
-	// be used. Changing this creates a new nat gateway.
+	// The region where the NAT gateway is located.
 	Region *string `pulumi:"region"`
 	// The session configuration of the NAT gateway.
 	SessionConf *GatewaySessionConf `pulumi:"sessionConf"`
-	// Specifies the nat gateway type.
-	// The value can be:
+	// The specification of the NAT gateway.
 	Spec string `pulumi:"spec"`
-	// Specifies the subnet ID of the downstream interface (the next hop of the
-	// DVR) of the NAT gateway.
-	// Changing this will create a new resource.
-	SubnetId string `pulumi:"subnetId"`
-	// Specifies the key/value pairs to associate with the NAT geteway.
-	Tags map[string]string `pulumi:"tags"`
-	// Specifies the ID of the VPC to which the NAT gateway belongs.\
-	// Changing this will create a new resource.
+	// The network ID of the downstream interface (the next hop of the DVR) of the NAT gateway.
+	SubnetId string            `pulumi:"subnetId"`
+	Tags     map[string]string `pulumi:"tags"`
+	// The ID of the VPC to which the NAT gateway belongs.
 	VpcId string `pulumi:"vpcId"`
 }
 
@@ -267,39 +206,26 @@ type gatewayArgs struct {
 type GatewayArgs struct {
 	AutoRenew    pulumi.StringPtrInput
 	ChargingMode pulumi.StringPtrInput
-	// Specifies the description of the nat
-	// gateway. The value contains 0 to 255 characters, and angle brackets (<)
-	// and (>) are not allowed.
+	// The description of the NAT gateway.
 	Description pulumi.StringPtrInput
-	// Specifies the
-	// enterprise project id of the nat gateway. The value can contains maximum of
-	// 36 characters which it is string "0" or in UUID format with hyphens (-).
-	// Changing this creates a new nat gateway.
+	// The enterprise project ID of the NAT gateway.
 	EnterpriseProjectId pulumi.StringPtrInput
-	// Specifies the nat gateway name. The name can
-	// contain only digits, letters, underscores (_), and hyphens(-).
+	// The NAT gateway name.
 	Name pulumi.StringPtrInput
 	// The IP address used for the NG port of the NAT gateway.
 	NgportIpAddress pulumi.StringPtrInput
 	Period          pulumi.IntPtrInput
 	PeriodUnit      pulumi.StringPtrInput
-	// Specifies the region in which to
-	// create the Nat gateway resource. If omitted, the provider-level region will
-	// be used. Changing this creates a new nat gateway.
+	// The region where the NAT gateway is located.
 	Region pulumi.StringPtrInput
 	// The session configuration of the NAT gateway.
 	SessionConf GatewaySessionConfPtrInput
-	// Specifies the nat gateway type.
-	// The value can be:
+	// The specification of the NAT gateway.
 	Spec pulumi.StringInput
-	// Specifies the subnet ID of the downstream interface (the next hop of the
-	// DVR) of the NAT gateway.
-	// Changing this will create a new resource.
+	// The network ID of the downstream interface (the next hop of the DVR) of the NAT gateway.
 	SubnetId pulumi.StringInput
-	// Specifies the key/value pairs to associate with the NAT geteway.
-	Tags pulumi.StringMapInput
-	// Specifies the ID of the VPC to which the NAT gateway belongs.\
-	// Changing this will create a new resource.
+	Tags     pulumi.StringMapInput
+	// The ID of the VPC to which the NAT gateway belongs.
 	VpcId pulumi.StringInput
 }
 
@@ -413,9 +339,7 @@ func (o GatewayOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Specifies the description of the nat
-// gateway. The value contains 0 to 255 characters, and angle brackets (<)
-// and (>) are not allowed.
+// The description of the NAT gateway.
 func (o GatewayOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -425,16 +349,12 @@ func (o GatewayOutput) DnatRulesLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.IntOutput { return v.DnatRulesLimit }).(pulumi.IntOutput)
 }
 
-// Specifies the
-// enterprise project id of the nat gateway. The value can contains maximum of
-// 36 characters which it is string "0" or in UUID format with hyphens (-).
-// Changing this creates a new nat gateway.
+// The enterprise project ID of the NAT gateway.
 func (o GatewayOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// Specifies the nat gateway name. The name can
-// contain only digits, letters, underscores (_), and hyphens(-).
+// The NAT gateway name.
 func (o GatewayOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -457,9 +377,7 @@ func (o GatewayOutput) PpsMax() pulumi.IntOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.IntOutput { return v.PpsMax }).(pulumi.IntOutput)
 }
 
-// Specifies the region in which to
-// create the Nat gateway resource. If omitted, the provider-level region will
-// be used. Changing this creates a new nat gateway.
+// The region where the NAT gateway is located.
 func (o GatewayOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
@@ -474,31 +392,26 @@ func (o GatewayOutput) SnatRulePublicIpLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.IntOutput { return v.SnatRulePublicIpLimit }).(pulumi.IntOutput)
 }
 
-// Specifies the nat gateway type.
-// The value can be:
+// The specification of the NAT gateway.
 func (o GatewayOutput) Spec() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Spec }).(pulumi.StringOutput)
 }
 
-// The status of the nat gateway.
+// The current status of the NAT gateway.
 func (o GatewayOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Specifies the subnet ID of the downstream interface (the next hop of the
-// DVR) of the NAT gateway.
-// Changing this will create a new resource.
+// The network ID of the downstream interface (the next hop of the DVR) of the NAT gateway.
 func (o GatewayOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.SubnetId }).(pulumi.StringOutput)
 }
 
-// Specifies the key/value pairs to associate with the NAT geteway.
 func (o GatewayOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Specifies the ID of the VPC to which the NAT gateway belongs.\
-// Changing this will create a new resource.
+// The ID of the VPC to which the NAT gateway belongs.
 func (o GatewayOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }

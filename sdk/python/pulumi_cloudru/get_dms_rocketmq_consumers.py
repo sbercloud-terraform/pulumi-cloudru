@@ -56,9 +56,6 @@ class GetDmsRocketmqConsumersResult:
     @_builtins.property
     @pulumi.getter
     def clients(self) -> Sequence['outputs.GetDmsRocketmqConsumersClientResult']:
-        """
-        Indicates the list of consumer subscription details.
-        """
         return pulumi.get(self, "clients")
 
     @_builtins.property
@@ -87,9 +84,6 @@ class GetDmsRocketmqConsumersResult:
     @_builtins.property
     @pulumi.getter
     def online(self) -> _builtins.bool:
-        """
-        Indicates whether the consumer group is online.
-        """
         return pulumi.get(self, "online")
 
     @_builtins.property
@@ -100,9 +94,6 @@ class GetDmsRocketmqConsumersResult:
     @_builtins.property
     @pulumi.getter(name="subscriptionConsistency")
     def subscription_consistency(self) -> _builtins.bool:
-        """
-        Indicates whether subscriptions are consistent.
-        """
         return pulumi.get(self, "subscription_consistency")
 
 
@@ -128,28 +119,7 @@ def get_dms_rocketmq_consumers(group: Optional[_builtins.str] = None,
                                region: Optional[_builtins.str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDmsRocketmqConsumersResult:
     """
-    Use this data source to get the list of RocketMQ consumers.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    group = config.require_object("group")
-    test = sbercloud.get_dms_rocketmq_consumers(instance_id=instance_id,
-        group=group,
-        is_detail=True)
-    ```
-
-
-    :param _builtins.str group: Specifies the consumer group name.
-    :param _builtins.str instance_id: Specifies the instance ID.
-    :param _builtins.bool is_detail: Specifies whether to query the consumer details.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['group'] = group
@@ -174,28 +144,7 @@ def get_dms_rocketmq_consumers_output(group: Optional[pulumi.Input[_builtins.str
                                       region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDmsRocketmqConsumersResult]:
     """
-    Use this data source to get the list of RocketMQ consumers.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    group = config.require_object("group")
-    test = sbercloud.get_dms_rocketmq_consumers(instance_id=instance_id,
-        group=group,
-        is_detail=True)
-    ```
-
-
-    :param _builtins.str group: Specifies the consumer group name.
-    :param _builtins.str instance_id: Specifies the instance ID.
-    :param _builtins.bool is_detail: Specifies whether to query the consumer details.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['group'] = group

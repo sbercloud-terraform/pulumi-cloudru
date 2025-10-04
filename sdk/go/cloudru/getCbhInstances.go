@@ -11,41 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of CBH instance.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			vpcId := cfg.RequireObject("vpcId")
-//			subnetId := cfg.RequireObject("subnetId")
-//			securityGroupId := cfg.RequireObject("securityGroupId")
-//			_, err := sbercloud.GetCbhInstances(ctx, &cloudru.GetCbhInstancesArgs{
-//				Name:            pulumi.StringRef("test_name"),
-//				VpcId:           pulumi.StringRef(vpcId),
-//				SubnetId:        pulumi.StringRef(subnetId),
-//				SecurityGroupId: pulumi.StringRef(securityGroupId),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetCbhInstances(ctx *pulumi.Context, args *GetCbhInstancesArgs, opts ...pulumi.InvokeOption) (*GetCbhInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCbhInstancesResult
@@ -58,43 +23,27 @@ func GetCbhInstances(ctx *pulumi.Context, args *GetCbhInstancesArgs, opts ...pul
 
 // A collection of arguments for invoking getCbhInstances.
 type GetCbhInstancesArgs struct {
-	// Specifies the specification of the instance.
-	FlavorId *string `pulumi:"flavorId"`
-	// Specifies the instance name.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the ID of a security group.
+	FlavorId        *string `pulumi:"flavorId"`
+	Name            *string `pulumi:"name"`
+	Region          *string `pulumi:"region"`
 	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// Specifies the ID of a subnet.
-	SubnetId *string `pulumi:"subnetId"`
-	// Specifies the current version of the instance image.
-	Version *string `pulumi:"version"`
-	// Specifies the ID of a VPC.
-	VpcId *string `pulumi:"vpcId"`
+	SubnetId        *string `pulumi:"subnetId"`
+	Version         *string `pulumi:"version"`
+	VpcId           *string `pulumi:"vpcId"`
 }
 
 // A collection of values returned by getCbhInstances.
 type GetCbhInstancesResult struct {
-	// Indicates the specification of the instance.
 	FlavorId *string `pulumi:"flavorId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Indicates the list of CBH instance.
-	// The instances structure is documented below.
-	Instances []GetCbhInstancesInstance `pulumi:"instances"`
-	// Indicates the instance name.
-	Name   *string `pulumi:"name"`
-	Region string  `pulumi:"region"`
-	// Indicates the ID of a security group.
-	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// Indicates the ID of a subnet.
-	SubnetId *string `pulumi:"subnetId"`
-	// Indicates the current version of the instance image.
-	Version *string `pulumi:"version"`
-	// Indicates the ID of a VPC.
-	VpcId *string `pulumi:"vpcId"`
+	Id              string                    `pulumi:"id"`
+	Instances       []GetCbhInstancesInstance `pulumi:"instances"`
+	Name            *string                   `pulumi:"name"`
+	Region          string                    `pulumi:"region"`
+	SecurityGroupId *string                   `pulumi:"securityGroupId"`
+	SubnetId        *string                   `pulumi:"subnetId"`
+	Version         *string                   `pulumi:"version"`
+	VpcId           *string                   `pulumi:"vpcId"`
 }
 
 func GetCbhInstancesOutput(ctx *pulumi.Context, args GetCbhInstancesOutputArgs, opts ...pulumi.InvokeOption) GetCbhInstancesResultOutput {
@@ -108,21 +57,13 @@ func GetCbhInstancesOutput(ctx *pulumi.Context, args GetCbhInstancesOutputArgs, 
 
 // A collection of arguments for invoking getCbhInstances.
 type GetCbhInstancesOutputArgs struct {
-	// Specifies the specification of the instance.
-	FlavorId pulumi.StringPtrInput `pulumi:"flavorId"`
-	// Specifies the instance name.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the ID of a security group.
+	FlavorId        pulumi.StringPtrInput `pulumi:"flavorId"`
+	Name            pulumi.StringPtrInput `pulumi:"name"`
+	Region          pulumi.StringPtrInput `pulumi:"region"`
 	SecurityGroupId pulumi.StringPtrInput `pulumi:"securityGroupId"`
-	// Specifies the ID of a subnet.
-	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
-	// Specifies the current version of the instance image.
-	Version pulumi.StringPtrInput `pulumi:"version"`
-	// Specifies the ID of a VPC.
-	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+	SubnetId        pulumi.StringPtrInput `pulumi:"subnetId"`
+	Version         pulumi.StringPtrInput `pulumi:"version"`
+	VpcId           pulumi.StringPtrInput `pulumi:"vpcId"`
 }
 
 func (GetCbhInstancesOutputArgs) ElementType() reflect.Type {
@@ -144,7 +85,6 @@ func (o GetCbhInstancesResultOutput) ToGetCbhInstancesResultOutputWithContext(ct
 	return o
 }
 
-// Indicates the specification of the instance.
 func (o GetCbhInstancesResultOutput) FlavorId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCbhInstancesResult) *string { return v.FlavorId }).(pulumi.StringPtrOutput)
 }
@@ -154,13 +94,10 @@ func (o GetCbhInstancesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbhInstancesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Indicates the list of CBH instance.
-// The instances structure is documented below.
 func (o GetCbhInstancesResultOutput) Instances() GetCbhInstancesInstanceArrayOutput {
 	return o.ApplyT(func(v GetCbhInstancesResult) []GetCbhInstancesInstance { return v.Instances }).(GetCbhInstancesInstanceArrayOutput)
 }
 
-// Indicates the instance name.
 func (o GetCbhInstancesResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCbhInstancesResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -169,22 +106,18 @@ func (o GetCbhInstancesResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbhInstancesResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// Indicates the ID of a security group.
 func (o GetCbhInstancesResultOutput) SecurityGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCbhInstancesResult) *string { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the ID of a subnet.
 func (o GetCbhInstancesResultOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCbhInstancesResult) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the current version of the instance image.
 func (o GetCbhInstancesResultOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCbhInstancesResult) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the ID of a VPC.
 func (o GetCbhInstancesResultOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCbhInstancesResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
 }

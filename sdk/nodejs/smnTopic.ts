@@ -4,29 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Manages a SMN Topic resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const topic1 = new sbercloud.SmnTopic("topic_1", {
- *     name: "topic_1",
- *     displayName: "The display name of topic_1",
- * });
- * ```
- *
- * ## Import
- *
- * SMN topic can be imported using the `id` (topic urn), e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:index/smnTopic:SmnTopic topic_1 urn:smn:ru-moscow-1:0f5181caba0024e72f89c0045e707b91:topic_1:9c06f9d90cc549359e3bf67860a0736a
- * ```
- */
 export class SmnTopic extends pulumi.CustomResource {
     /**
      * Get an existing SmnTopic resource's state with the given name, ID, and optional extra
@@ -59,47 +36,16 @@ export class SmnTopic extends pulumi.CustomResource {
      * schema: Internal
      */
     declare public readonly accessPolicy: pulumi.Output<string | undefined>;
-    /**
-     * Time when the topic was created.
-     */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
-    /**
-     * Topic display name, which is presented as the
-     * name of the email sender in an email message.
-     */
     declare public readonly displayName: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the enterprise project id of the SMN Topic, Value 0
-     * indicates the default enterprise project. Changing this parameter will create a new resource.
-     */
     declare public readonly enterpriseProjectId: pulumi.Output<string>;
     declare public readonly introduction: pulumi.Output<string | undefined>;
-    /**
-     * The name of the topic to be created.
-     */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * Message pushing policy.
-     * + **0**: indicates that the message sending fails and the message is cached in the queue.
-     * + **1**: indicates that the failed message is discarded.
-     */
     declare public /*out*/ readonly pushPolicy: pulumi.Output<number>;
-    /**
-     * The region in which to create the SMN topic resource. If omitted, the provider-level region will be used. Changing this creates a new SMN Topic resource.
-     */
     declare public readonly region: pulumi.Output<string>;
     declare public readonly servicesPublishAllowed: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the tags of the SMN topic, key/value pair format.
-     */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * Resource identifier of a topic, which is unique.
-     */
     declare public /*out*/ readonly topicUrn: pulumi.Output<string>;
-    /**
-     * Time when the topic was updated.
-     */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     declare public readonly usersPublishAllowed: pulumi.Output<string | undefined>;
 
@@ -158,47 +104,16 @@ export interface SmnTopicState {
      * schema: Internal
      */
     accessPolicy?: pulumi.Input<string>;
-    /**
-     * Time when the topic was created.
-     */
     createTime?: pulumi.Input<string>;
-    /**
-     * Topic display name, which is presented as the
-     * name of the email sender in an email message.
-     */
     displayName?: pulumi.Input<string>;
-    /**
-     * Specifies the enterprise project id of the SMN Topic, Value 0
-     * indicates the default enterprise project. Changing this parameter will create a new resource.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
     introduction?: pulumi.Input<string>;
-    /**
-     * The name of the topic to be created.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Message pushing policy.
-     * + **0**: indicates that the message sending fails and the message is cached in the queue.
-     * + **1**: indicates that the failed message is discarded.
-     */
     pushPolicy?: pulumi.Input<number>;
-    /**
-     * The region in which to create the SMN topic resource. If omitted, the provider-level region will be used. Changing this creates a new SMN Topic resource.
-     */
     region?: pulumi.Input<string>;
     servicesPublishAllowed?: pulumi.Input<string>;
-    /**
-     * Specifies the tags of the SMN topic, key/value pair format.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Resource identifier of a topic, which is unique.
-     */
     topicUrn?: pulumi.Input<string>;
-    /**
-     * Time when the topic was updated.
-     */
     updateTime?: pulumi.Input<string>;
     usersPublishAllowed?: pulumi.Input<string>;
 }
@@ -211,29 +126,12 @@ export interface SmnTopicArgs {
      * schema: Internal
      */
     accessPolicy?: pulumi.Input<string>;
-    /**
-     * Topic display name, which is presented as the
-     * name of the email sender in an email message.
-     */
     displayName?: pulumi.Input<string>;
-    /**
-     * Specifies the enterprise project id of the SMN Topic, Value 0
-     * indicates the default enterprise project. Changing this parameter will create a new resource.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
     introduction?: pulumi.Input<string>;
-    /**
-     * The name of the topic to be created.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * The region in which to create the SMN topic resource. If omitted, the provider-level region will be used. Changing this creates a new SMN Topic resource.
-     */
     region?: pulumi.Input<string>;
     servicesPublishAllowed?: pulumi.Input<string>;
-    /**
-     * Specifies the tags of the SMN topic, key/value pair format.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     usersPublishAllowed?: pulumi.Input<string>;
 }

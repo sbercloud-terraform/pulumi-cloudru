@@ -12,95 +12,13 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a DCS instance within SberCloud.
-//
-// ## Example Usage
-//
-// ### Create a single mode Redis instance
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			projectId := cfg.RequireObject("projectId")
-//			instanceId := cfg.RequireObject("instanceId")
-//			backupId := cfg.RequireObject("backupId")
-//			_, err := sbercloud.NewDcsRestore(ctx, "test", &sbercloud.DcsRestoreArgs{
-//				ProjectId:  pulumi.Any(projectId),
-//				InstanceId: pulumi.Any(instanceId),
-//				BackupId:   pulumi.Any(backupId),
-//				Remark:     pulumi.String("restore instance"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// DCS instance can be imported using the `id`, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:index/dcsRestore:DcsRestore instance_1 80e373f9-872e-4046-aae9-ccd9ddc55511
-// ```
-//
-// # Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-//
-// API response, security or some other reason.
-//
-// The missing attributes include: `password`, `auto_renew`, `period`, `period_unit`, `rename_commands`,
-//
-// `internal_version`, `save_days`, `backup_type`, `begin_at`, `period_type`, `backup_at`.
-//
-// It is generally recommended running `pulumi preview` after importing an instance.
-//
-// # You can then decide if changes should be applied to the instance, or the resource definition should be updated to
-//
-// align with the instance. Also you can ignore changes as below.
-//
-// resource "sbercloud_dcs_instance" "instance_1" {
-//
-//	  ...
-//
-//	lifecycle {
-//
-//	  ignore_changes = [
-//
-//	    password, rename_commands,
-//
-//	  ]
-//
-//	}
-//
-// }
 type DcsRestore struct {
 	pulumi.CustomResourceState
 
-	// ID of the backup record.
-	BackupId pulumi.StringOutput `pulumi:"backupId"`
-	// A dcsInstance ID in UUID format.
-	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// The enterprise project id of the dcs instance. Changing this creates a new instance.
-	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// Description of DCS instance restoration.
-	Remark pulumi.StringPtrOutput `pulumi:"remark"`
-	// Array of the restoration records.
+	BackupId       pulumi.StringOutput                `pulumi:"backupId"`
+	InstanceId     pulumi.StringOutput                `pulumi:"instanceId"`
+	ProjectId      pulumi.StringOutput                `pulumi:"projectId"`
+	Remark         pulumi.StringPtrOutput             `pulumi:"remark"`
 	RestoreRecords DcsRestoreRestoreRecordArrayOutput `pulumi:"restoreRecords"`
 }
 
@@ -143,28 +61,18 @@ func GetDcsRestore(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DcsRestore resources.
 type dcsRestoreState struct {
-	// ID of the backup record.
-	BackupId *string `pulumi:"backupId"`
-	// A dcsInstance ID in UUID format.
-	InstanceId *string `pulumi:"instanceId"`
-	// The enterprise project id of the dcs instance. Changing this creates a new instance.
-	ProjectId *string `pulumi:"projectId"`
-	// Description of DCS instance restoration.
-	Remark *string `pulumi:"remark"`
-	// Array of the restoration records.
+	BackupId       *string                   `pulumi:"backupId"`
+	InstanceId     *string                   `pulumi:"instanceId"`
+	ProjectId      *string                   `pulumi:"projectId"`
+	Remark         *string                   `pulumi:"remark"`
 	RestoreRecords []DcsRestoreRestoreRecord `pulumi:"restoreRecords"`
 }
 
 type DcsRestoreState struct {
-	// ID of the backup record.
-	BackupId pulumi.StringPtrInput
-	// A dcsInstance ID in UUID format.
-	InstanceId pulumi.StringPtrInput
-	// The enterprise project id of the dcs instance. Changing this creates a new instance.
-	ProjectId pulumi.StringPtrInput
-	// Description of DCS instance restoration.
-	Remark pulumi.StringPtrInput
-	// Array of the restoration records.
+	BackupId       pulumi.StringPtrInput
+	InstanceId     pulumi.StringPtrInput
+	ProjectId      pulumi.StringPtrInput
+	Remark         pulumi.StringPtrInput
 	RestoreRecords DcsRestoreRestoreRecordArrayInput
 }
 
@@ -173,26 +81,18 @@ func (DcsRestoreState) ElementType() reflect.Type {
 }
 
 type dcsRestoreArgs struct {
-	// ID of the backup record.
-	BackupId string `pulumi:"backupId"`
-	// A dcsInstance ID in UUID format.
-	InstanceId string `pulumi:"instanceId"`
-	// The enterprise project id of the dcs instance. Changing this creates a new instance.
-	ProjectId string `pulumi:"projectId"`
-	// Description of DCS instance restoration.
-	Remark *string `pulumi:"remark"`
+	BackupId   string  `pulumi:"backupId"`
+	InstanceId string  `pulumi:"instanceId"`
+	ProjectId  string  `pulumi:"projectId"`
+	Remark     *string `pulumi:"remark"`
 }
 
 // The set of arguments for constructing a DcsRestore resource.
 type DcsRestoreArgs struct {
-	// ID of the backup record.
-	BackupId pulumi.StringInput
-	// A dcsInstance ID in UUID format.
+	BackupId   pulumi.StringInput
 	InstanceId pulumi.StringInput
-	// The enterprise project id of the dcs instance. Changing this creates a new instance.
-	ProjectId pulumi.StringInput
-	// Description of DCS instance restoration.
-	Remark pulumi.StringPtrInput
+	ProjectId  pulumi.StringInput
+	Remark     pulumi.StringPtrInput
 }
 
 func (DcsRestoreArgs) ElementType() reflect.Type {
@@ -282,27 +182,22 @@ func (o DcsRestoreOutput) ToDcsRestoreOutputWithContext(ctx context.Context) Dcs
 	return o
 }
 
-// ID of the backup record.
 func (o DcsRestoreOutput) BackupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DcsRestore) pulumi.StringOutput { return v.BackupId }).(pulumi.StringOutput)
 }
 
-// A dcsInstance ID in UUID format.
 func (o DcsRestoreOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DcsRestore) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// The enterprise project id of the dcs instance. Changing this creates a new instance.
 func (o DcsRestoreOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DcsRestore) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// Description of DCS instance restoration.
 func (o DcsRestoreOutput) Remark() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DcsRestore) pulumi.StringPtrOutput { return v.Remark }).(pulumi.StringPtrOutput)
 }
 
-// Array of the restoration records.
 func (o DcsRestoreOutput) RestoreRecords() DcsRestoreRestoreRecordArrayOutput {
 	return o.ApplyT(func(v *DcsRestore) DcsRestoreRestoreRecordArrayOutput { return v.RestoreRecords }).(DcsRestoreRestoreRecordArrayOutput)
 }

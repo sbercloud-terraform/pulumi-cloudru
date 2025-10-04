@@ -157,39 +157,17 @@ class SparkJobDependentPackage(dict):
     def __init__(__self__, *,
                  group_name: _builtins.str,
                  packages: Sequence['outputs.SparkJobDependentPackagePackage']):
-        """
-        :param _builtins.str group_name: Specifies the user group name.
-               Changing this parameter will submit a new spark job.
-        :param Sequence['SparkJobDependentPackagePackageArgs'] packages: Specifies the user group resource for details.
-               Changing this parameter will submit a new spark job.
-               The object structure is documented below.
-               
-               <a name="dependent_packages_packages"></a>
-               The `packages` block supports:
-        """
         pulumi.set(__self__, "group_name", group_name)
         pulumi.set(__self__, "packages", packages)
 
     @_builtins.property
     @pulumi.getter(name="groupName")
     def group_name(self) -> _builtins.str:
-        """
-        Specifies the user group name.
-        Changing this parameter will submit a new spark job.
-        """
         return pulumi.get(self, "group_name")
 
     @_builtins.property
     @pulumi.getter
     def packages(self) -> Sequence['outputs.SparkJobDependentPackagePackage']:
-        """
-        Specifies the user group resource for details.
-        Changing this parameter will submit a new spark job.
-        The object structure is documented below.
-
-        <a name="dependent_packages_packages"></a>
-        The `packages` block supports:
-        """
         return pulumi.get(self, "packages")
 
 
@@ -215,31 +193,17 @@ class SparkJobDependentPackagePackage(dict):
     def __init__(__self__, *,
                  package_name: _builtins.str,
                  type: _builtins.str):
-        """
-        :param _builtins.str package_name: Specifies the resource name of the package.
-               Changing this parameter will submit a new spark job.
-        :param _builtins.str type: Specifies the resource type of the package.
-               Changing this parameter will submit a new spark job.
-        """
         pulumi.set(__self__, "package_name", package_name)
         pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter(name="packageName")
     def package_name(self) -> _builtins.str:
-        """
-        Specifies the resource name of the package.
-        Changing this parameter will submit a new spark job.
-        """
         return pulumi.get(self, "package_name")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        Specifies the resource type of the package.
-        Changing this parameter will submit a new spark job.
-        """
         return pulumi.get(self, "type")
 
 

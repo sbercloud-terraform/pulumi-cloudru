@@ -155,33 +155,21 @@ class GetImageResult:
     @_builtins.property
     @pulumi.getter(name="backupId")
     def backup_id(self) -> _builtins.str:
-        """
-        The backup ID of the whole image in the CBR vault.
-        """
         return pulumi.get(self, "backup_id")
 
     @_builtins.property
     @pulumi.getter
     def checksum(self) -> _builtins.str:
-        """
-        The checksum of the data associated with the image.
-        """
         return pulumi.get(self, "checksum")
 
     @_builtins.property
     @pulumi.getter(name="containerFormat")
     def container_format(self) -> _builtins.str:
-        """
-        The format of the image's container.
-        """
         return pulumi.get(self, "container_format")
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> _builtins.str:
-        """
-        The date when the image was created.
-        """
         return pulumi.get(self, "created_at")
 
     @_builtins.property
@@ -197,9 +185,6 @@ class GetImageResult:
     @_builtins.property
     @pulumi.getter(name="diskFormat")
     def disk_format(self) -> _builtins.str:
-        """
-        The format of the image's disk.
-        """
         return pulumi.get(self, "disk_format")
 
     @_builtins.property
@@ -210,10 +195,6 @@ class GetImageResult:
     @_builtins.property
     @pulumi.getter
     def file(self) -> _builtins.str:
-        """
-        the trailing path after the glance endpoint that represent the location of the image or the path to retrieve
-        it.
-        """
         return pulumi.get(self, "file")
 
     @_builtins.property
@@ -252,26 +233,16 @@ class GetImageResult:
     @_builtins.property
     @pulumi.getter
     def metadata(self) -> Mapping[str, _builtins.str]:
-        """
-        The metadata associated with the image. Image metadata allow for meaningfully define the image properties
-        and tags.
-        """
         return pulumi.get(self, "metadata")
 
     @_builtins.property
     @pulumi.getter(name="minDiskGb")
     def min_disk_gb(self) -> _builtins.int:
-        """
-        The minimum amount of disk space required to use the image.
-        """
         return pulumi.get(self, "min_disk_gb")
 
     @_builtins.property
     @pulumi.getter(name="minRamMb")
     def min_ram_mb(self) -> _builtins.int:
-        """
-        The minimum amount of ram required to use the image.
-        """
         return pulumi.get(self, "min_ram_mb")
 
     @_builtins.property
@@ -307,9 +278,6 @@ class GetImageResult:
     @_builtins.property
     @pulumi.getter
     def protected(self) -> _builtins.bool:
-        """
-        Whether or not the image is protected.
-        """
         return pulumi.get(self, "protected")
 
     @_builtins.property
@@ -320,17 +288,11 @@ class GetImageResult:
     @_builtins.property
     @pulumi.getter
     def schema(self) -> _builtins.str:
-        """
-        The path to the JSON-schema that represent the image or image.
-        """
         return pulumi.get(self, "schema")
 
     @_builtins.property
     @pulumi.getter(name="sizeBytes")
     def size_bytes(self) -> _builtins.int:
-        """
-        The size of the image (in bytes).
-        """
         return pulumi.get(self, "size_bytes")
 
     @_builtins.property
@@ -358,9 +320,6 @@ class GetImageResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
-        """
-        The status of the image.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
@@ -371,9 +330,6 @@ class GetImageResult:
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> _builtins.str:
-        """
-        The date when the image was last updated.
-        """
         return pulumi.get(self, "updated_at")
 
     @_builtins.property
@@ -449,55 +405,7 @@ def get_image(architecture: Optional[_builtins.str] = None,
               visibility: Optional[_builtins.str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImageResult:
     """
-    Use this data source to get the ID of an available SberCloud image.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    ubuntu = sbercloud.Ims.get_image(name="Ubuntu 18.04 server 64bit",
-        visibility="public",
-        most_recent=True)
-    centos_1 = sbercloud.Ims.get_image(architecture="x86",
-        os_version="CentOS 7.4 64bit",
-        visibility="public",
-        most_recent=True)
-    centos_2 = sbercloud.Ims.get_image(architecture="x86",
-        name_regex="^CentOS 7.4",
-        visibility="public",
-        most_recent=True)
-    bms_image = sbercloud.Ims.get_image(architecture="x86",
-        image_type="Ironic",
-        os_version="CentOS 7.4 64bit",
-        visibility="public",
-        most_recent=True)
-    ```
-
-
-    :param _builtins.str architecture: Specifies the image architecture type. The value can be **x86** and **arm**.
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID of the image.
-    :param _builtins.str flavor_id: Specifies the ECS flavor ID used to filter out available images.
-           You can specify only one flavor ID and only ECS flavor ID is valid, BMS flavor is not supported.
-    :param _builtins.str image_type: Specifies the environment where the image is used. For a BMS image, the value is **Ironic**.
-    :param _builtins.bool most_recent: If more than one result is returned, use the latest updated image.
-    :param _builtins.str name: The name of the image. Cannot be used simultaneously with `name_regex`.
-    :param _builtins.str name_regex: The regular expressian of the name of the image.
-           Cannot be used simultaneously with `name`.
-    :param _builtins.str os: Specifies the image OS type. The value can be **Windows**, **Ubuntu**,
-           **RedHat**, **SUSE**, **CentOS**, **Debian**, **OpenSUSE**, **Oracle Linux**, **Fedora**, **Other**,
-           **CoreOS**, or **EulerOS**.
-    :param _builtins.str os_version: Specifies the OS version. For example, *CentOS 7.4 64bit* or *Ubuntu 18.04 server 64bit*.
-    :param _builtins.str owner: The owner (UUID) of the image.
-    :param _builtins.str region: The region in which to obtain the images. If omitted, the provider-level region will be
-           used.
-    :param _builtins.str sort_direction: Order the results in either `asc` or `desc`.
-    :param _builtins.str sort_key: Sort images based on a certain key. Must be one of
-           "name", "container_format", "disk_format", "status", "id" or "size". Defaults to `name`.
-    :param _builtins.str tag: Search for images with a specific tag in "Key=Value" format.
-    :param _builtins.str visibility: The visibility of the image. Must be one of
-           **public**, **private**, **market** or **shared**.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['architecture'] = architecture
@@ -582,55 +490,7 @@ def get_image_output(architecture: Optional[pulumi.Input[Optional[_builtins.str]
                      visibility: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImageResult]:
     """
-    Use this data source to get the ID of an available SberCloud image.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    ubuntu = sbercloud.Ims.get_image(name="Ubuntu 18.04 server 64bit",
-        visibility="public",
-        most_recent=True)
-    centos_1 = sbercloud.Ims.get_image(architecture="x86",
-        os_version="CentOS 7.4 64bit",
-        visibility="public",
-        most_recent=True)
-    centos_2 = sbercloud.Ims.get_image(architecture="x86",
-        name_regex="^CentOS 7.4",
-        visibility="public",
-        most_recent=True)
-    bms_image = sbercloud.Ims.get_image(architecture="x86",
-        image_type="Ironic",
-        os_version="CentOS 7.4 64bit",
-        visibility="public",
-        most_recent=True)
-    ```
-
-
-    :param _builtins.str architecture: Specifies the image architecture type. The value can be **x86** and **arm**.
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID of the image.
-    :param _builtins.str flavor_id: Specifies the ECS flavor ID used to filter out available images.
-           You can specify only one flavor ID and only ECS flavor ID is valid, BMS flavor is not supported.
-    :param _builtins.str image_type: Specifies the environment where the image is used. For a BMS image, the value is **Ironic**.
-    :param _builtins.bool most_recent: If more than one result is returned, use the latest updated image.
-    :param _builtins.str name: The name of the image. Cannot be used simultaneously with `name_regex`.
-    :param _builtins.str name_regex: The regular expressian of the name of the image.
-           Cannot be used simultaneously with `name`.
-    :param _builtins.str os: Specifies the image OS type. The value can be **Windows**, **Ubuntu**,
-           **RedHat**, **SUSE**, **CentOS**, **Debian**, **OpenSUSE**, **Oracle Linux**, **Fedora**, **Other**,
-           **CoreOS**, or **EulerOS**.
-    :param _builtins.str os_version: Specifies the OS version. For example, *CentOS 7.4 64bit* or *Ubuntu 18.04 server 64bit*.
-    :param _builtins.str owner: The owner (UUID) of the image.
-    :param _builtins.str region: The region in which to obtain the images. If omitted, the provider-level region will be
-           used.
-    :param _builtins.str sort_direction: Order the results in either `asc` or `desc`.
-    :param _builtins.str sort_key: Sort images based on a certain key. Must be one of
-           "name", "container_format", "disk_format", "status", "id" or "size". Defaults to `name`.
-    :param _builtins.str tag: Search for images with a specific tag in "Key=Value" format.
-    :param _builtins.str visibility: The visibility of the image. Must be one of
-           **public**, **private**, **market** or **shared**.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['architecture'] = architecture

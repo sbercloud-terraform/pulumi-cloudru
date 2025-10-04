@@ -52,9 +52,6 @@ class GetServergroupsResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        The server group name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -65,9 +62,6 @@ class GetServergroupsResult:
     @_builtins.property
     @pulumi.getter
     def servergroups(self) -> Sequence['outputs.GetServergroupsServergroupResult']:
-        """
-        List of ECS server groups details. The object structure of each server group is documented below.
-        """
         return pulumi.get(self, "servergroups")
 
 
@@ -87,23 +81,7 @@ def get_servergroups(name: Optional[_builtins.str] = None,
                      region: Optional[_builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServergroupsResult:
     """
-    Use this data source to get the list of the compute server groups.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    name = config.require_object("name")
-    test = sbercloud.Ecs.get_servergroups(name=name)
-    ```
-
-
-    :param _builtins.str name: Specifies the server group name.
-    :param _builtins.str region: Specifies the region in which to obtain the server groups.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -120,23 +98,7 @@ def get_servergroups_output(name: Optional[pulumi.Input[Optional[_builtins.str]]
                             region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServergroupsResult]:
     """
-    Use this data source to get the list of the compute server groups.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    name = config.require_object("name")
-    test = sbercloud.Ecs.get_servergroups(name=name)
-    ```
-
-
-    :param _builtins.str name: Specifies the server group name.
-    :param _builtins.str region: Specifies the region in which to obtain the server groups.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name

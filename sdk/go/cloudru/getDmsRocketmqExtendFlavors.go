@@ -11,36 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of RocketMQ extend available flavor details within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			_, err := sbercloud.GetDmsRocketmqExtendFlavors(ctx, &cloudru.GetDmsRocketmqExtendFlavorsArgs{
-//				InstanceId: instanceId,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetDmsRocketmqExtendFlavors(ctx *pulumi.Context, args *GetDmsRocketmqExtendFlavorsArgs, opts ...pulumi.InvokeOption) (*GetDmsRocketmqExtendFlavorsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDmsRocketmqExtendFlavorsResult
@@ -53,37 +23,26 @@ func GetDmsRocketmqExtendFlavors(ctx *pulumi.Context, args *GetDmsRocketmqExtend
 
 // A collection of arguments for invoking getDmsRocketmqExtendFlavors.
 type GetDmsRocketmqExtendFlavorsArgs struct {
-	// Specifies the type of CPU architecture, e.g. **X86**.
-	ArchType *string `pulumi:"archType"`
-	// Specifies the flavor billing mode. The valid values are **prePaid** and **postPaid**.
-	ChargingMode *string `pulumi:"chargingMode"`
-	// Specifies the instance ID.
-	InstanceId string `pulumi:"instanceId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the disk IO encoding, e.g. **dms.physical.storage.high.v2**.
+	ArchType        *string `pulumi:"archType"`
+	ChargingMode    *string `pulumi:"chargingMode"`
+	InstanceId      string  `pulumi:"instanceId"`
+	Region          *string `pulumi:"region"`
 	StorageSpecCode *string `pulumi:"storageSpecCode"`
-	// Specifies the flavor type.
-	Type *string `pulumi:"type"`
+	Type            *string `pulumi:"type"`
 }
 
 // A collection of values returned by getDmsRocketmqExtendFlavors.
 type GetDmsRocketmqExtendFlavorsResult struct {
-	ArchType     *string `pulumi:"archType"`
-	ChargingMode *string `pulumi:"chargingMode"`
-	// Indicates the list of flavor details.
-	Flavors []GetDmsRocketmqExtendFlavorsFlavor `pulumi:"flavors"`
+	ArchType     *string                             `pulumi:"archType"`
+	ChargingMode *string                             `pulumi:"chargingMode"`
+	Flavors      []GetDmsRocketmqExtendFlavorsFlavor `pulumi:"flavors"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string `pulumi:"id"`
-	InstanceId string `pulumi:"instanceId"`
-	Region     string `pulumi:"region"`
-	// Indicates the disk IO encoding.
-	StorageSpecCode *string `pulumi:"storageSpecCode"`
-	// Indicates the disk type.
-	Type *string `pulumi:"type"`
-	// Indicates the supported flavor versions.
-	Versions []string `pulumi:"versions"`
+	Id              string   `pulumi:"id"`
+	InstanceId      string   `pulumi:"instanceId"`
+	Region          string   `pulumi:"region"`
+	StorageSpecCode *string  `pulumi:"storageSpecCode"`
+	Type            *string  `pulumi:"type"`
+	Versions        []string `pulumi:"versions"`
 }
 
 func GetDmsRocketmqExtendFlavorsOutput(ctx *pulumi.Context, args GetDmsRocketmqExtendFlavorsOutputArgs, opts ...pulumi.InvokeOption) GetDmsRocketmqExtendFlavorsResultOutput {
@@ -97,19 +56,12 @@ func GetDmsRocketmqExtendFlavorsOutput(ctx *pulumi.Context, args GetDmsRocketmqE
 
 // A collection of arguments for invoking getDmsRocketmqExtendFlavors.
 type GetDmsRocketmqExtendFlavorsOutputArgs struct {
-	// Specifies the type of CPU architecture, e.g. **X86**.
-	ArchType pulumi.StringPtrInput `pulumi:"archType"`
-	// Specifies the flavor billing mode. The valid values are **prePaid** and **postPaid**.
-	ChargingMode pulumi.StringPtrInput `pulumi:"chargingMode"`
-	// Specifies the instance ID.
-	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the disk IO encoding, e.g. **dms.physical.storage.high.v2**.
+	ArchType        pulumi.StringPtrInput `pulumi:"archType"`
+	ChargingMode    pulumi.StringPtrInput `pulumi:"chargingMode"`
+	InstanceId      pulumi.StringInput    `pulumi:"instanceId"`
+	Region          pulumi.StringPtrInput `pulumi:"region"`
 	StorageSpecCode pulumi.StringPtrInput `pulumi:"storageSpecCode"`
-	// Specifies the flavor type.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type            pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (GetDmsRocketmqExtendFlavorsOutputArgs) ElementType() reflect.Type {
@@ -139,7 +91,6 @@ func (o GetDmsRocketmqExtendFlavorsResultOutput) ChargingMode() pulumi.StringPtr
 	return o.ApplyT(func(v GetDmsRocketmqExtendFlavorsResult) *string { return v.ChargingMode }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the list of flavor details.
 func (o GetDmsRocketmqExtendFlavorsResultOutput) Flavors() GetDmsRocketmqExtendFlavorsFlavorArrayOutput {
 	return o.ApplyT(func(v GetDmsRocketmqExtendFlavorsResult) []GetDmsRocketmqExtendFlavorsFlavor { return v.Flavors }).(GetDmsRocketmqExtendFlavorsFlavorArrayOutput)
 }
@@ -157,17 +108,14 @@ func (o GetDmsRocketmqExtendFlavorsResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqExtendFlavorsResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// Indicates the disk IO encoding.
 func (o GetDmsRocketmqExtendFlavorsResultOutput) StorageSpecCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDmsRocketmqExtendFlavorsResult) *string { return v.StorageSpecCode }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the disk type.
 func (o GetDmsRocketmqExtendFlavorsResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDmsRocketmqExtendFlavorsResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the supported flavor versions.
 func (o GetDmsRocketmqExtendFlavorsResultOutput) Versions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDmsRocketmqExtendFlavorsResult) []string { return v.Versions }).(pulumi.StringArrayOutput)
 }

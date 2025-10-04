@@ -26,12 +26,6 @@ class SwrOrganizationPermissionsArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SwrOrganizationPermissions resource.
-        :param pulumi.Input[_builtins.str] organization: Specifies the name of the organization (namespace) to be accessed.
-               Changing this creates a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input['SwrOrganizationPermissionsUserArgs']]] users: Specifies the users to access to the organization (namespace).
-               Structure is documented below.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
         """
         pulumi.set(__self__, "organization", organization)
         pulumi.set(__self__, "users", users)
@@ -41,10 +35,6 @@ class SwrOrganizationPermissionsArgs:
     @_builtins.property
     @pulumi.getter
     def organization(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the name of the organization (namespace) to be accessed.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "organization")
 
     @organization.setter
@@ -54,10 +44,6 @@ class SwrOrganizationPermissionsArgs:
     @_builtins.property
     @pulumi.getter
     def users(self) -> pulumi.Input[Sequence[pulumi.Input['SwrOrganizationPermissionsUserArgs']]]:
-        """
-        Specifies the users to access to the organization (namespace).
-        Structure is documented below.
-        """
         return pulumi.get(self, "users")
 
     @users.setter
@@ -67,10 +53,6 @@ class SwrOrganizationPermissionsArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -88,14 +70,6 @@ class _SwrOrganizationPermissionsState:
                  users: Optional[pulumi.Input[Sequence[pulumi.Input['SwrOrganizationPermissionsUserArgs']]]] = None):
         """
         Input properties used for looking up and filtering SwrOrganizationPermissions resources.
-        :param pulumi.Input[_builtins.str] creator: The creator user name of the organization.
-        :param pulumi.Input[_builtins.str] organization: Specifies the name of the organization (namespace) to be accessed.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input['SwrOrganizationPermissionsSelfPermissionArgs']]] self_permissions: The permission informations of current user.
-        :param pulumi.Input[Sequence[pulumi.Input['SwrOrganizationPermissionsUserArgs']]] users: Specifies the users to access to the organization (namespace).
-               Structure is documented below.
         """
         if creator is not None:
             pulumi.set(__self__, "creator", creator)
@@ -111,9 +85,6 @@ class _SwrOrganizationPermissionsState:
     @_builtins.property
     @pulumi.getter
     def creator(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The creator user name of the organization.
-        """
         return pulumi.get(self, "creator")
 
     @creator.setter
@@ -123,10 +94,6 @@ class _SwrOrganizationPermissionsState:
     @_builtins.property
     @pulumi.getter
     def organization(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the organization (namespace) to be accessed.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "organization")
 
     @organization.setter
@@ -136,10 +103,6 @@ class _SwrOrganizationPermissionsState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -149,9 +112,6 @@ class _SwrOrganizationPermissionsState:
     @_builtins.property
     @pulumi.getter(name="selfPermissions")
     def self_permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SwrOrganizationPermissionsSelfPermissionArgs']]]]:
-        """
-        The permission informations of current user.
-        """
         return pulumi.get(self, "self_permissions")
 
     @self_permissions.setter
@@ -161,10 +121,6 @@ class _SwrOrganizationPermissionsState:
     @_builtins.property
     @pulumi.getter
     def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SwrOrganizationPermissionsUserArgs']]]]:
-        """
-        Specifies the users to access to the organization (namespace).
-        Structure is documented below.
-        """
         return pulumi.get(self, "users")
 
     @users.setter
@@ -183,50 +139,9 @@ class SwrOrganizationPermissions(pulumi.CustomResource):
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SwrOrganizationPermissionsUserArgs', 'SwrOrganizationPermissionsUserArgsDict']]]]] = None,
                  __props__=None):
         """
-        Manages user permissions for the SWR organization resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        organization_name = config.require_object("organizationName")
-        user1 = config.require_object("user1")
-        user2 = config.require_object("user2")
-        test = sbercloud.SwrOrganizationPermissions("test",
-            organization=organization_name,
-            users=[
-                {
-                    "user_name": user1["name"],
-                    "user_id": user1["id"],
-                    "permission": "Read",
-                },
-                {
-                    "user_name": user2["name"],
-                    "user_id": user2["id"],
-                    "permission": "Read",
-                },
-            ])
-        ```
-
-        ## Import
-
-        Organization Permissions can be imported using the `id` (organization name), e.g.
-
-        ```sh
-        $ pulumi import sbercloud:index/swrOrganizationPermissions:SwrOrganizationPermissions test terraform-test
-        ```
-
+        Create a SwrOrganizationPermissions resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] organization: Specifies the name of the organization (namespace) to be accessed.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SwrOrganizationPermissionsUserArgs', 'SwrOrganizationPermissionsUserArgsDict']]]] users: Specifies the users to access to the organization (namespace).
-               Structure is documented below.
         """
         ...
     @overload
@@ -235,42 +150,7 @@ class SwrOrganizationPermissions(pulumi.CustomResource):
                  args: SwrOrganizationPermissionsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages user permissions for the SWR organization resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        organization_name = config.require_object("organizationName")
-        user1 = config.require_object("user1")
-        user2 = config.require_object("user2")
-        test = sbercloud.SwrOrganizationPermissions("test",
-            organization=organization_name,
-            users=[
-                {
-                    "user_name": user1["name"],
-                    "user_id": user1["id"],
-                    "permission": "Read",
-                },
-                {
-                    "user_name": user2["name"],
-                    "user_id": user2["id"],
-                    "permission": "Read",
-                },
-            ])
-        ```
-
-        ## Import
-
-        Organization Permissions can be imported using the `id` (organization name), e.g.
-
-        ```sh
-        $ pulumi import sbercloud:index/swrOrganizationPermissions:SwrOrganizationPermissions test terraform-test
-        ```
-
+        Create a SwrOrganizationPermissions resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param SwrOrganizationPermissionsArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -329,14 +209,6 @@ class SwrOrganizationPermissions(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] creator: The creator user name of the organization.
-        :param pulumi.Input[_builtins.str] organization: Specifies the name of the organization (namespace) to be accessed.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SwrOrganizationPermissionsSelfPermissionArgs', 'SwrOrganizationPermissionsSelfPermissionArgsDict']]]] self_permissions: The permission informations of current user.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SwrOrganizationPermissionsUserArgs', 'SwrOrganizationPermissionsUserArgsDict']]]] users: Specifies the users to access to the organization (namespace).
-               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -352,43 +224,25 @@ class SwrOrganizationPermissions(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def creator(self) -> pulumi.Output[_builtins.str]:
-        """
-        The creator user name of the organization.
-        """
         return pulumi.get(self, "creator")
 
     @_builtins.property
     @pulumi.getter
     def organization(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the name of the organization (namespace) to be accessed.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "organization")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="selfPermissions")
     def self_permissions(self) -> pulumi.Output[Sequence['outputs.SwrOrganizationPermissionsSelfPermission']]:
-        """
-        The permission informations of current user.
-        """
         return pulumi.get(self, "self_permissions")
 
     @_builtins.property
     @pulumi.getter
     def users(self) -> pulumi.Output[Sequence['outputs.SwrOrganizationPermissionsUser']]:
-        """
-        Specifies the users to access to the organization (namespace).
-        Structure is documented below.
-        """
         return pulumi.get(self, "users")
 

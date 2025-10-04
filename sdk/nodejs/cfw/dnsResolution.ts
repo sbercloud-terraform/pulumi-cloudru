@@ -4,38 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a CFW DNS resolution resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const fwInstanceId = config.requireObject<any>("fwInstanceId");
- * const defaultDnsServers = config.requireObject<any>("defaultDnsServers");
- * const customDnsServers = config.requireObject<any>("customDnsServers");
- * const healthCheckDomainName = config.requireObject<any>("healthCheckDomainName");
- * const test = new sbercloud.cfw.DnsResolution("test", {
- *     fwInstanceId: fwInstanceId,
- *     defaultDnsServers: defaultDnsServers,
- *     customDnsServers: customDnsServers,
- *     healthCheckDomainName: healthCheckDomainName,
- * });
- * ```
- *
- * ## Import
- *
- * The DNS resolution resource can be imported using the firewall instance ID, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:Cfw/dnsResolution:DnsResolution test <fw_instance_id>
- * ```
- */
 export class DnsResolution extends pulumi.CustomResource {
     /**
      * Get an existing DnsResolution resource's state with the given name, ID, and optional extra
@@ -66,7 +34,6 @@ export class DnsResolution extends pulumi.CustomResource {
 
     /**
      * The custom DNS servers.
-     * Currently, only two custom DNS server addresses can be specified.
      */
     declare public readonly customDnsServers: pulumi.Output<string[] | undefined>;
     /**
@@ -75,18 +42,12 @@ export class DnsResolution extends pulumi.CustomResource {
     declare public readonly defaultDnsServers: pulumi.Output<string[] | undefined>;
     /**
      * The ID of the firewall.
-     * Changing this creates a new resource.
      */
     declare public readonly fwInstanceId: pulumi.Output<string>;
     /**
      * The health check domain name.
      */
     declare public readonly healthCheckDomainName: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
 
     /**
@@ -129,7 +90,6 @@ export class DnsResolution extends pulumi.CustomResource {
 export interface DnsResolutionState {
     /**
      * The custom DNS servers.
-     * Currently, only two custom DNS server addresses can be specified.
      */
     customDnsServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -138,18 +98,12 @@ export interface DnsResolutionState {
     defaultDnsServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the firewall.
-     * Changing this creates a new resource.
      */
     fwInstanceId?: pulumi.Input<string>;
     /**
      * The health check domain name.
      */
     healthCheckDomainName?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
 }
 
@@ -159,7 +113,6 @@ export interface DnsResolutionState {
 export interface DnsResolutionArgs {
     /**
      * The custom DNS servers.
-     * Currently, only two custom DNS server addresses can be specified.
      */
     customDnsServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -168,17 +121,11 @@ export interface DnsResolutionArgs {
     defaultDnsServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the firewall.
-     * Changing this creates a new resource.
      */
     fwInstanceId: pulumi.Input<string>;
     /**
      * The health check domain name.
      */
     healthCheckDomainName?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
 }

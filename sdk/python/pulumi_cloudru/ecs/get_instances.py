@@ -74,41 +74,26 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[_builtins.str]:
-        """
-        The availability zone where the instance is located.
-        """
         return pulumi.get(self, "availability_zone")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[_builtins.str]:
-        """
-        The enterprise project ID.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
     @pulumi.getter(name="fixedIpV4")
     def fixed_ip_v4(self) -> Optional[_builtins.str]:
-        """
-        The fixed IPv4 address of the instance on this network.
-        """
         return pulumi.get(self, "fixed_ip_v4")
 
     @_builtins.property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> Optional[_builtins.str]:
-        """
-        The flavor ID.
-        """
         return pulumi.get(self, "flavor_id")
 
     @_builtins.property
     @pulumi.getter(name="flavorName")
     def flavor_name(self) -> Optional[_builtins.str]:
-        """
-        The flavor name of the instance.
-        """
         return pulumi.get(self, "flavor_name")
 
     @_builtins.property
@@ -122,9 +107,6 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[_builtins.str]:
-        """
-        The image ID of the instance.
-        """
         return pulumi.get(self, "image_id")
 
     @_builtins.property
@@ -135,25 +117,16 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetInstancesInstanceResult']:
-        """
-        List of ECS instance details. The object structure of each ECS instance is documented below.
-        """
         return pulumi.get(self, "instances")
 
     @_builtins.property
     @pulumi.getter(name="keyPair")
     def key_pair(self) -> Optional[_builtins.str]:
-        """
-        The key pair that is used to authenticate the instance.
-        """
         return pulumi.get(self, "key_pair")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        The instance name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -164,17 +137,11 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
-        """
-        The instance status.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
-        """
-        The key/value pairs to associate with the instance.
-        """
         return pulumi.get(self, "tags")
 
 
@@ -214,38 +181,7 @@ def get_instances(availability_zone: Optional[_builtins.str] = None,
                   tags: Optional[Mapping[str, _builtins.str]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
-    Use this data source to get the list of the compute instances.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    name_regex = config.require_object("nameRegex")
-    test = sbercloud.Ecs.get_instances(name=name_regex)
-    ```
-
-
-    :param _builtins.str availability_zone: Specifies the availability zone where the instance is located.
-           Please following [reference](https://support.hc.sbercloud.ru/endpoint/index.html) for this argument.
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID.
-    :param _builtins.str fixed_ip_v4: The fixed IPv4 address of the instance on this network.
-    :param _builtins.str flavor_id: Specifies the flavor ID.
-    :param _builtins.str flavor_name: Specifies the flavor name of the instance.
-    :param _builtins.str image_id: Specifies the image ID of the instance.
-    :param _builtins.str instance_id: Specifies the ECS ID.
-    :param _builtins.str key_pair: Specifies the key pair that is used to authenticate the instance.
-    :param _builtins.str name: Specifies the instance name, which can be queried with a regular expression.
-           The instance name supports fuzzy matching query too.
-    :param _builtins.str region: Specifies the region in which to obtain the instances.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str status: Specifies the status of the instance. The valid values are as follows:
-           + **ACTIVE**: The instance is running properly.
-           + **SHUTOFF**: The instance has been properly stopped.
-           + **ERROR**: An error has occurred on the instance.
-    :param Mapping[str, _builtins.str] tags: The key/value pairs to associate with the instance.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['availabilityZone'] = availability_zone
@@ -292,38 +228,7 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[_buil
                          tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstancesResult]:
     """
-    Use this data source to get the list of the compute instances.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    name_regex = config.require_object("nameRegex")
-    test = sbercloud.Ecs.get_instances(name=name_regex)
-    ```
-
-
-    :param _builtins.str availability_zone: Specifies the availability zone where the instance is located.
-           Please following [reference](https://support.hc.sbercloud.ru/endpoint/index.html) for this argument.
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID.
-    :param _builtins.str fixed_ip_v4: The fixed IPv4 address of the instance on this network.
-    :param _builtins.str flavor_id: Specifies the flavor ID.
-    :param _builtins.str flavor_name: Specifies the flavor name of the instance.
-    :param _builtins.str image_id: Specifies the image ID of the instance.
-    :param _builtins.str instance_id: Specifies the ECS ID.
-    :param _builtins.str key_pair: Specifies the key pair that is used to authenticate the instance.
-    :param _builtins.str name: Specifies the instance name, which can be queried with a regular expression.
-           The instance name supports fuzzy matching query too.
-    :param _builtins.str region: Specifies the region in which to obtain the instances.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str status: Specifies the status of the instance. The valid values are as follows:
-           + **ACTIVE**: The instance is running properly.
-           + **SHUTOFF**: The instance has been properly stopped.
-           + **ERROR**: An error has occurred on the instance.
-    :param Mapping[str, _builtins.str] tags: The key/value pairs to associate with the instance.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['availabilityZone'] = availability_zone

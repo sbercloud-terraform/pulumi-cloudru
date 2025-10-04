@@ -220,54 +220,7 @@ def get_subnet(availability_zone: Optional[_builtins.str] = None,
                vpc_id: Optional[_builtins.str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSubnetResult:
     """
-    This resource can prove useful when a module accepts a subnet id as an input variable and needs to, for example,
-    determine the id of the VPC that the subnet belongs to.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    subnet = sbercloud.Vpc.get_subnet(id=subnet_id)
-    pulumi.export("subnetVpcId", subnet.vpc_id)
-    ```
-
-    ## **Attributes Reference**
-
-    In addition to all arguments above, the following attributes are exported:
-
-    * `dns_list` - The IP address list of DNS servers on the subnet.
-
-    * `dhcp_enable` - Whether the DHCP is enabled.
-
-    * `subnet_id` - The subnet (Native OpenStack API) ID.
-
-    * `description` - The description of the subnet.
-
-    * `ipv4_subnet_id` - The ID of the IPv4 subnet (Native OpenStack API).
-
-    * `ipv6_enable` - Whether the IPv6 is enabled.
-
-    * `ipv6_subnet_id` - The ID of the IPv6 subnet (Native OpenStack API).
-
-    * `ipv6_cidr` - The IPv6 subnet CIDR block.
-
-    * `ipv6_gateway` - The IPv6 subnet gateway.
-
-
-    :param _builtins.str availability_zone: Specifies the availability zone (AZ) to which the subnet should belong.
-    :param _builtins.str cidr: Specifies the network segment of specific subnet to retrieve. The value must be in CIDR
-           format.
-    :param _builtins.str gateway_ip: Specifies the subnet gateway address of specific subnet.
-    :param _builtins.str id: Specifies a resource ID in UUID format.
-    :param _builtins.str name: Specifies the name of the specific subnet to retrieve.
-    :param _builtins.str primary_dns: Specifies the IP address of DNS server 1 on the specific subnet.
-    :param _builtins.str region: Specifies the region in which to obtain the subnet. If omitted, the provider-level
-           region will be used.
-    :param _builtins.str secondary_dns: Specifies the IP address of DNS server 2 on the specific subnet.
-    :param _builtins.str status: Specifies the value can be ACTIVE, DOWN, UNKNOWN, or ERROR.
-    :param _builtins.str vpc_id: Specifies the id of the VPC that the desired subnet belongs to.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['availabilityZone'] = availability_zone
@@ -315,54 +268,7 @@ def get_subnet_output(availability_zone: Optional[pulumi.Input[Optional[_builtin
                       vpc_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSubnetResult]:
     """
-    This resource can prove useful when a module accepts a subnet id as an input variable and needs to, for example,
-    determine the id of the VPC that the subnet belongs to.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    subnet = sbercloud.Vpc.get_subnet(id=subnet_id)
-    pulumi.export("subnetVpcId", subnet.vpc_id)
-    ```
-
-    ## **Attributes Reference**
-
-    In addition to all arguments above, the following attributes are exported:
-
-    * `dns_list` - The IP address list of DNS servers on the subnet.
-
-    * `dhcp_enable` - Whether the DHCP is enabled.
-
-    * `subnet_id` - The subnet (Native OpenStack API) ID.
-
-    * `description` - The description of the subnet.
-
-    * `ipv4_subnet_id` - The ID of the IPv4 subnet (Native OpenStack API).
-
-    * `ipv6_enable` - Whether the IPv6 is enabled.
-
-    * `ipv6_subnet_id` - The ID of the IPv6 subnet (Native OpenStack API).
-
-    * `ipv6_cidr` - The IPv6 subnet CIDR block.
-
-    * `ipv6_gateway` - The IPv6 subnet gateway.
-
-
-    :param _builtins.str availability_zone: Specifies the availability zone (AZ) to which the subnet should belong.
-    :param _builtins.str cidr: Specifies the network segment of specific subnet to retrieve. The value must be in CIDR
-           format.
-    :param _builtins.str gateway_ip: Specifies the subnet gateway address of specific subnet.
-    :param _builtins.str id: Specifies a resource ID in UUID format.
-    :param _builtins.str name: Specifies the name of the specific subnet to retrieve.
-    :param _builtins.str primary_dns: Specifies the IP address of DNS server 1 on the specific subnet.
-    :param _builtins.str region: Specifies the region in which to obtain the subnet. If omitted, the provider-level
-           region will be used.
-    :param _builtins.str secondary_dns: Specifies the IP address of DNS server 2 on the specific subnet.
-    :param _builtins.str status: Specifies the value can be ACTIVE, DOWN, UNKNOWN, or ERROR.
-    :param _builtins.str vpc_id: Specifies the id of the VPC that the desired subnet belongs to.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['availabilityZone'] = availability_zone

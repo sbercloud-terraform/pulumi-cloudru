@@ -11,116 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of Kafka messages.
-//
-// ## Example Usage
-//
-// ### Query messages by creation time
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			topic := cfg.RequireObject("topic")
-//			startTime := cfg.RequireObject("startTime")
-//			endTime := cfg.RequireObject("endTime")
-//			_, err := sbercloud.GetDmsKafkaMessages(ctx, &cloudru.GetDmsKafkaMessagesArgs{
-//				InstanceId: instanceId,
-//				Topic:      topic,
-//				StartTime:  pulumi.StringRef(startTime),
-//				EndTime:    pulumi.StringRef(endTime),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Query messages by content's keyword, a maximum of 10 messages can be returned
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			topic := cfg.RequireObject("topic")
-//			startTime := cfg.RequireObject("startTime")
-//			endTime := cfg.RequireObject("endTime")
-//			keyword := cfg.RequireObject("keyword")
-//			_, err := sbercloud.GetDmsKafkaMessages(ctx, &cloudru.GetDmsKafkaMessagesArgs{
-//				InstanceId: instanceId,
-//				Topic:      topic,
-//				StartTime:  pulumi.StringRef(startTime),
-//				EndTime:    pulumi.StringRef(endTime),
-//				Keyword:    pulumi.StringRef(keyword),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Query messages content by offset
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			topic := cfg.RequireObject("topic")
-//			partition := cfg.RequireObject("partition")
-//			messageOffset := cfg.RequireObject("messageOffset")
-//			_, err := sbercloud.GetDmsKafkaMessages(ctx, &cloudru.GetDmsKafkaMessagesArgs{
-//				InstanceId:    instanceId,
-//				Topic:         topic,
-//				Partition:     pulumi.StringRef(partition),
-//				MessageOffset: pulumi.StringRef(messageOffset),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetDmsKafkaMessages(ctx *pulumi.Context, args *GetDmsKafkaMessagesArgs, opts ...pulumi.InvokeOption) (*GetDmsKafkaMessagesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDmsKafkaMessagesResult
@@ -133,31 +23,15 @@ func GetDmsKafkaMessages(ctx *pulumi.Context, args *GetDmsKafkaMessagesArgs, opt
 
 // A collection of arguments for invoking getDmsKafkaMessages.
 type GetDmsKafkaMessagesArgs struct {
-	// Whether download is required.
-	// If it is **false**, the big message will be truncated. Defaults to **false**.
-	Download *bool `pulumi:"download"`
-	// Specifies the end time, a Unix timestamp in millisecond.
-	// This parameter is mandatory when you query the message creation time.
-	EndTime *string `pulumi:"endTime"`
-	// Specifies the instance ID.
-	InstanceId string `pulumi:"instanceId"`
-	// Specifies the keyword.
-	// If it's specified, a maximum of **10** messages can be returned.
-	Keyword *string `pulumi:"keyword"`
-	// Specifies the message offset.
-	// This parameter is mandatory when you query the message content by offset.
+	Download      *bool   `pulumi:"download"`
+	EndTime       *string `pulumi:"endTime"`
+	InstanceId    string  `pulumi:"instanceId"`
+	Keyword       *string `pulumi:"keyword"`
 	MessageOffset *string `pulumi:"messageOffset"`
-	// Specifies the partition.
-	// This parameter is mandatory when you query the message content by offset.
-	Partition *string `pulumi:"partition"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the start time, a Unix timestamp in millisecond.
-	// This parameter is mandatory when you query the message creation time.
-	StartTime *string `pulumi:"startTime"`
-	// Specifies the topic name.
-	Topic string `pulumi:"topic"`
+	Partition     *string `pulumi:"partition"`
+	Region        *string `pulumi:"region"`
+	StartTime     *string `pulumi:"startTime"`
+	Topic         string  `pulumi:"topic"`
 }
 
 // A collection of values returned by getDmsKafkaMessages.
@@ -165,18 +39,15 @@ type GetDmsKafkaMessagesResult struct {
 	Download *bool   `pulumi:"download"`
 	EndTime  *string `pulumi:"endTime"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string  `pulumi:"id"`
-	InstanceId string  `pulumi:"instanceId"`
-	Keyword    *string `pulumi:"keyword"`
-	// Indicates the message offset.
-	MessageOffset *string `pulumi:"messageOffset"`
-	// Indicates the message list.
-	Messages []GetDmsKafkaMessagesMessage `pulumi:"messages"`
-	// Indicates the partition where the message is located.
-	Partition *string `pulumi:"partition"`
-	Region    string  `pulumi:"region"`
-	StartTime *string `pulumi:"startTime"`
-	Topic     string  `pulumi:"topic"`
+	Id            string                       `pulumi:"id"`
+	InstanceId    string                       `pulumi:"instanceId"`
+	Keyword       *string                      `pulumi:"keyword"`
+	MessageOffset *string                      `pulumi:"messageOffset"`
+	Messages      []GetDmsKafkaMessagesMessage `pulumi:"messages"`
+	Partition     *string                      `pulumi:"partition"`
+	Region        string                       `pulumi:"region"`
+	StartTime     *string                      `pulumi:"startTime"`
+	Topic         string                       `pulumi:"topic"`
 }
 
 func GetDmsKafkaMessagesOutput(ctx *pulumi.Context, args GetDmsKafkaMessagesOutputArgs, opts ...pulumi.InvokeOption) GetDmsKafkaMessagesResultOutput {
@@ -190,31 +61,15 @@ func GetDmsKafkaMessagesOutput(ctx *pulumi.Context, args GetDmsKafkaMessagesOutp
 
 // A collection of arguments for invoking getDmsKafkaMessages.
 type GetDmsKafkaMessagesOutputArgs struct {
-	// Whether download is required.
-	// If it is **false**, the big message will be truncated. Defaults to **false**.
-	Download pulumi.BoolPtrInput `pulumi:"download"`
-	// Specifies the end time, a Unix timestamp in millisecond.
-	// This parameter is mandatory when you query the message creation time.
-	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
-	// Specifies the instance ID.
-	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// Specifies the keyword.
-	// If it's specified, a maximum of **10** messages can be returned.
-	Keyword pulumi.StringPtrInput `pulumi:"keyword"`
-	// Specifies the message offset.
-	// This parameter is mandatory when you query the message content by offset.
+	Download      pulumi.BoolPtrInput   `pulumi:"download"`
+	EndTime       pulumi.StringPtrInput `pulumi:"endTime"`
+	InstanceId    pulumi.StringInput    `pulumi:"instanceId"`
+	Keyword       pulumi.StringPtrInput `pulumi:"keyword"`
 	MessageOffset pulumi.StringPtrInput `pulumi:"messageOffset"`
-	// Specifies the partition.
-	// This parameter is mandatory when you query the message content by offset.
-	Partition pulumi.StringPtrInput `pulumi:"partition"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the start time, a Unix timestamp in millisecond.
-	// This parameter is mandatory when you query the message creation time.
-	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	// Specifies the topic name.
-	Topic pulumi.StringInput `pulumi:"topic"`
+	Partition     pulumi.StringPtrInput `pulumi:"partition"`
+	Region        pulumi.StringPtrInput `pulumi:"region"`
+	StartTime     pulumi.StringPtrInput `pulumi:"startTime"`
+	Topic         pulumi.StringInput    `pulumi:"topic"`
 }
 
 func (GetDmsKafkaMessagesOutputArgs) ElementType() reflect.Type {
@@ -257,17 +112,14 @@ func (o GetDmsKafkaMessagesResultOutput) Keyword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDmsKafkaMessagesResult) *string { return v.Keyword }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the message offset.
 func (o GetDmsKafkaMessagesResultOutput) MessageOffset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDmsKafkaMessagesResult) *string { return v.MessageOffset }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the message list.
 func (o GetDmsKafkaMessagesResultOutput) Messages() GetDmsKafkaMessagesMessageArrayOutput {
 	return o.ApplyT(func(v GetDmsKafkaMessagesResult) []GetDmsKafkaMessagesMessage { return v.Messages }).(GetDmsKafkaMessagesMessageArrayOutput)
 }
 
-// Indicates the partition where the message is located.
 func (o GetDmsKafkaMessagesResultOutput) Partition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDmsKafkaMessagesResult) *string { return v.Partition }).(pulumi.StringPtrOutput)
 }

@@ -27,17 +27,6 @@ class DatabaseArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Database resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of a queue.
-               Changing this parameter will create a new database resource.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project ID.
-               The value 0 indicates the default enterprise project. Changing this parameter will create a new database resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the database name. The name consists of 1 to 128 characters, starting
-               with a letter or digit. Only letters, digits and underscores (_) are allowed and the name cannot be all digits.
-               Changing this parameter will create a new database resource.
-        :param pulumi.Input[_builtins.str] owner: Specifies the name of the SQL database owner.
-               The owner must be IAM user.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the DLI database resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new database resource.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -55,10 +44,6 @@ class DatabaseArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the description of a queue.
-        Changing this parameter will create a new database resource.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -68,10 +53,6 @@ class DatabaseArgs:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the enterprise project ID.
-        The value 0 indicates the default enterprise project. Changing this parameter will create a new database resource.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -81,11 +62,6 @@ class DatabaseArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the database name. The name consists of 1 to 128 characters, starting
-        with a letter or digit. Only letters, digits and underscores (_) are allowed and the name cannot be all digits.
-        Changing this parameter will create a new database resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -95,10 +71,6 @@ class DatabaseArgs:
     @_builtins.property
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the SQL database owner.
-        The owner must be IAM user.
-        """
         return pulumi.get(self, "owner")
 
     @owner.setter
@@ -108,10 +80,6 @@ class DatabaseArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the DLI database resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new database resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -139,17 +107,6 @@ class _DatabaseState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Database resources.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of a queue.
-               Changing this parameter will create a new database resource.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project ID.
-               The value 0 indicates the default enterprise project. Changing this parameter will create a new database resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the database name. The name consists of 1 to 128 characters, starting
-               with a letter or digit. Only letters, digits and underscores (_) are allowed and the name cannot be all digits.
-               Changing this parameter will create a new database resource.
-        :param pulumi.Input[_builtins.str] owner: Specifies the name of the SQL database owner.
-               The owner must be IAM user.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the DLI database resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new database resource.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -167,10 +124,6 @@ class _DatabaseState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the description of a queue.
-        Changing this parameter will create a new database resource.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -180,10 +133,6 @@ class _DatabaseState:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the enterprise project ID.
-        The value 0 indicates the default enterprise project. Changing this parameter will create a new database resource.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -193,11 +142,6 @@ class _DatabaseState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the database name. The name consists of 1 to 128 characters, starting
-        with a letter or digit. Only letters, digits and underscores (_) are allowed and the name cannot be all digits.
-        Changing this parameter will create a new database resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -207,10 +151,6 @@ class _DatabaseState:
     @_builtins.property
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the SQL database owner.
-        The owner must be IAM user.
-        """
         return pulumi.get(self, "owner")
 
     @owner.setter
@@ -220,10 +160,6 @@ class _DatabaseState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the DLI database resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new database resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -254,42 +190,9 @@ class Database(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Manages DLI SQL database resource within SberCloud.
-
-        ## Example Usage
-
-        ### Create a database
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        database_name = config.require_object("databaseName")
-        test = sbercloud.dli.Database("test", name=database_name)
-        ```
-
-        ## Import
-
-        DLI SQL databases can be imported by their `name`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Dli/database:Database test terraform_test
-        ```
-
+        Create a Database resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of a queue.
-               Changing this parameter will create a new database resource.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project ID.
-               The value 0 indicates the default enterprise project. Changing this parameter will create a new database resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the database name. The name consists of 1 to 128 characters, starting
-               with a letter or digit. Only letters, digits and underscores (_) are allowed and the name cannot be all digits.
-               Changing this parameter will create a new database resource.
-        :param pulumi.Input[_builtins.str] owner: Specifies the name of the SQL database owner.
-               The owner must be IAM user.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the DLI database resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new database resource.
         """
         ...
     @overload
@@ -298,29 +201,7 @@ class Database(pulumi.CustomResource):
                  args: Optional[DatabaseArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages DLI SQL database resource within SberCloud.
-
-        ## Example Usage
-
-        ### Create a database
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        database_name = config.require_object("databaseName")
-        test = sbercloud.dli.Database("test", name=database_name)
-        ```
-
-        ## Import
-
-        DLI SQL databases can be imported by their `name`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Dli/database:Database test terraform_test
-        ```
-
+        Create a Database resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param DatabaseArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -380,17 +261,6 @@ class Database(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of a queue.
-               Changing this parameter will create a new database resource.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project ID.
-               The value 0 indicates the default enterprise project. Changing this parameter will create a new database resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the database name. The name consists of 1 to 128 characters, starting
-               with a letter or digit. Only letters, digits and underscores (_) are allowed and the name cannot be all digits.
-               Changing this parameter will create a new database resource.
-        :param pulumi.Input[_builtins.str] owner: Specifies the name of the SQL database owner.
-               The owner must be IAM user.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the DLI database resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new database resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -407,47 +277,26 @@ class Database(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the description of a queue.
-        Changing this parameter will create a new database resource.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the enterprise project ID.
-        The value 0 indicates the default enterprise project. Changing this parameter will create a new database resource.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the database name. The name consists of 1 to 128 characters, starting
-        with a letter or digit. Only letters, digits and underscores (_) are allowed and the name cannot be all digits.
-        Changing this parameter will create a new database resource.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def owner(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the name of the SQL database owner.
-        The owner must be IAM user.
-        """
         return pulumi.get(self, "owner")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the DLI database resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new database resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property

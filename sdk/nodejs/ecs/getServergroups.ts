@@ -6,22 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the list of the compute server groups.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const name = config.requireObject<any>("name");
- * const test = sbercloud.Ecs.getServergroups({
- *     name: name,
- * });
- * ```
- */
 export function getServergroups(args?: GetServergroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetServergroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -35,14 +19,7 @@ export function getServergroups(args?: GetServergroupsArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getServergroups.
  */
 export interface GetServergroupsArgs {
-    /**
-     * Specifies the server group name.
-     */
     name?: string;
-    /**
-     * Specifies the region in which to obtain the server groups.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
 }
 
@@ -54,32 +31,10 @@ export interface GetServergroupsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The server group name.
-     */
     readonly name?: string;
     readonly region?: string;
-    /**
-     * List of ECS server groups details. The object structure of each server group is documented below.
-     */
     readonly servergroups: outputs.Ecs.GetServergroupsServergroup[];
 }
-/**
- * Use this data source to get the list of the compute server groups.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const name = config.requireObject<any>("name");
- * const test = sbercloud.Ecs.getServergroups({
- *     name: name,
- * });
- * ```
- */
 export function getServergroupsOutput(args?: GetServergroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServergroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -93,13 +48,6 @@ export function getServergroupsOutput(args?: GetServergroupsOutputArgs, opts?: p
  * A collection of arguments for invoking getServergroups.
  */
 export interface GetServergroupsOutputArgs {
-    /**
-     * Specifies the server group name.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to obtain the server groups.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
 }

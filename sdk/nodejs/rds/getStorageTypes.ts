@@ -6,23 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the list of RDS storage types.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const test = sbercloud.Rds.getStorageTypes({
- *     dbType: "MySQL",
- *     dbVersion: "8.0",
- * });
- * ```
- */
 export function getStorageTypes(args: GetStorageTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetStorageTypesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:Rds/getStorageTypes:getStorageTypes", {
@@ -37,22 +20,9 @@ export function getStorageTypes(args: GetStorageTypesArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getStorageTypes.
  */
 export interface GetStorageTypesArgs {
-    /**
-     * DB engine. The valid values are **MySQL**, **PostgreSQL**, **SQLServer**.
-     */
     dbType: string;
-    /**
-     * DB version number.
-     */
     dbVersion: string;
-    /**
-     * HA mode. The valid values are **single**, **ha**, **replica**.
-     */
     instanceMode?: string;
-    /**
-     * Specifies the region in which to query the data source.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
 }
 
@@ -68,29 +38,8 @@ export interface GetStorageTypesResult {
     readonly id: string;
     readonly instanceMode?: string;
     readonly region: string;
-    /**
-     * Storage type list. For details, see Data structure of the storageType field.
-     * The storageType structure is documented below.
-     */
     readonly storageTypes: outputs.Rds.GetStorageTypesStorageType[];
 }
-/**
- * Use this data source to get the list of RDS storage types.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const test = sbercloud.Rds.getStorageTypes({
- *     dbType: "MySQL",
- *     dbVersion: "8.0",
- * });
- * ```
- */
 export function getStorageTypesOutput(args: GetStorageTypesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStorageTypesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:Rds/getStorageTypes:getStorageTypes", {
@@ -105,21 +54,8 @@ export function getStorageTypesOutput(args: GetStorageTypesOutputArgs, opts?: pu
  * A collection of arguments for invoking getStorageTypes.
  */
 export interface GetStorageTypesOutputArgs {
-    /**
-     * DB engine. The valid values are **MySQL**, **PostgreSQL**, **SQLServer**.
-     */
     dbType: pulumi.Input<string>;
-    /**
-     * DB version number.
-     */
     dbVersion: pulumi.Input<string>;
-    /**
-     * HA mode. The valid values are **single**, **ha**, **replica**.
-     */
     instanceMode?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the data source.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
 }

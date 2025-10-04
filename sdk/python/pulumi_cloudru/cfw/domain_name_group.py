@@ -31,26 +31,11 @@ class DomainNameGroupArgs:
         """
         The set of arguments for constructing a DomainNameGroup resource.
         :param pulumi.Input[_builtins.str] fw_instance_id: Specifies the firewall instance ID.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] object_id: Specifies the protected object ID.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.int] type: Specifies the type of the domain name group.
-               The value can be:
-               + **0**: means application type;
-               + **1**: means network type;
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the description.
+        :param pulumi.Input[_builtins.str] description: Specifies the description of the domain name group.
         :param pulumi.Input[Sequence[pulumi.Input['DomainNameGroupDomainNameArgs']]] domain_names: Specifies the list of domain names.
-               The domain_names structure is documented below.
-               
-               <a name="DomainNameGroup_DomainNames"></a>
-               The `domain_names` block supports:
         :param pulumi.Input[_builtins.str] name: Specifies the name of the domain name group.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         pulumi.set(__self__, "fw_instance_id", fw_instance_id)
         pulumi.set(__self__, "object_id", object_id)
@@ -69,8 +54,6 @@ class DomainNameGroupArgs:
     def fw_instance_id(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the firewall instance ID.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "fw_instance_id")
 
@@ -83,8 +66,6 @@ class DomainNameGroupArgs:
     def object_id(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the protected object ID.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "object_id")
 
@@ -97,11 +78,6 @@ class DomainNameGroupArgs:
     def type(self) -> pulumi.Input[_builtins.int]:
         """
         Specifies the type of the domain name group.
-        The value can be:
-        + **0**: means application type;
-        + **1**: means network type;
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "type")
 
@@ -113,7 +89,7 @@ class DomainNameGroupArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the description.
+        Specifies the description of the domain name group.
         """
         return pulumi.get(self, "description")
 
@@ -126,10 +102,6 @@ class DomainNameGroupArgs:
     def domain_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainNameGroupDomainNameArgs']]]]:
         """
         Specifies the list of domain names.
-        The domain_names structure is documented below.
-
-        <a name="DomainNameGroup_DomainNames"></a>
-        The `domain_names` block supports:
         """
         return pulumi.get(self, "domain_names")
 
@@ -152,10 +124,6 @@ class DomainNameGroupArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -179,29 +147,14 @@ class _DomainNameGroupState:
         """
         Input properties used for looking up and filtering DomainNameGroup resources.
         :param pulumi.Input[_builtins.int] config_status: The config status of the domain name group.
-        :param pulumi.Input[_builtins.str] description: Specifies the description.
+        :param pulumi.Input[_builtins.str] description: Specifies the description of the domain name group.
         :param pulumi.Input[Sequence[pulumi.Input['DomainNameGroupDomainNameArgs']]] domain_names: Specifies the list of domain names.
-               The domain_names structure is documented below.
-               
-               <a name="DomainNameGroup_DomainNames"></a>
-               The `domain_names` block supports:
         :param pulumi.Input[_builtins.str] fw_instance_id: Specifies the firewall instance ID.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] message: The exception message of the domain name group.
+        :param pulumi.Input[_builtins.str] message: The message of the domain name group.
         :param pulumi.Input[_builtins.str] name: Specifies the name of the domain name group.
         :param pulumi.Input[_builtins.str] object_id: Specifies the protected object ID.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.int] ref_count: The reference count of the domain name group.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.int] type: Specifies the type of the domain name group.
-               The value can be:
-               + **0**: means application type;
-               + **1**: means network type;
-               
-               Changing this parameter will create a new resource.
         """
         if config_status is not None:
             pulumi.set(__self__, "config_status", config_status)
@@ -240,7 +193,7 @@ class _DomainNameGroupState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the description.
+        Specifies the description of the domain name group.
         """
         return pulumi.get(self, "description")
 
@@ -253,10 +206,6 @@ class _DomainNameGroupState:
     def domain_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainNameGroupDomainNameArgs']]]]:
         """
         Specifies the list of domain names.
-        The domain_names structure is documented below.
-
-        <a name="DomainNameGroup_DomainNames"></a>
-        The `domain_names` block supports:
         """
         return pulumi.get(self, "domain_names")
 
@@ -269,8 +218,6 @@ class _DomainNameGroupState:
     def fw_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the firewall instance ID.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "fw_instance_id")
 
@@ -282,7 +229,7 @@ class _DomainNameGroupState:
     @pulumi.getter
     def message(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The exception message of the domain name group.
+        The message of the domain name group.
         """
         return pulumi.get(self, "message")
 
@@ -307,8 +254,6 @@ class _DomainNameGroupState:
     def object_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the protected object ID.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "object_id")
 
@@ -331,10 +276,6 @@ class _DomainNameGroupState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -346,11 +287,6 @@ class _DomainNameGroupState:
     def type(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the type of the domain name group.
-        The value can be:
-        + **0**: means application type;
-        + **1**: means network type;
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "type")
 
@@ -374,63 +310,15 @@ class DomainNameGroup(pulumi.CustomResource):
                  type: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
-        Manages a CFW domain name group resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        fw_instance_id = config.require_object("fwInstanceId")
-        object_id = config.require_object("objectId")
-        name = config.require_object("name")
-        test = sbercloud.cfw.DomainNameGroup("test",
-            fw_instance_id=fw_instance_id,
-            object_id=object_id,
-            name=name,
-            type=0,
-            description="created by terraform",
-            domain_names=[{
-                "domain_name": "www.cfw-test.com",
-                "description": "test domain",
-            }])
-        ```
-
-        ## Import
-
-        The domainnamegroup can be imported using the `fw_instance_id`, `object_id` and `id`, separated by slashes, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Cfw/domainNameGroup:DomainNameGroup test <fw_instance_id>/<object_id>/<id>
-        ```
-
+        Create a DomainNameGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the description.
+        :param pulumi.Input[_builtins.str] description: Specifies the description of the domain name group.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DomainNameGroupDomainNameArgs', 'DomainNameGroupDomainNameArgsDict']]]] domain_names: Specifies the list of domain names.
-               The domain_names structure is documented below.
-               
-               <a name="DomainNameGroup_DomainNames"></a>
-               The `domain_names` block supports:
         :param pulumi.Input[_builtins.str] fw_instance_id: Specifies the firewall instance ID.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] name: Specifies the name of the domain name group.
         :param pulumi.Input[_builtins.str] object_id: Specifies the protected object ID.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.int] type: Specifies the type of the domain name group.
-               The value can be:
-               + **0**: means application type;
-               + **1**: means network type;
-               
-               Changing this parameter will create a new resource.
         """
         ...
     @overload
@@ -439,40 +327,7 @@ class DomainNameGroup(pulumi.CustomResource):
                  args: DomainNameGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a CFW domain name group resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        fw_instance_id = config.require_object("fwInstanceId")
-        object_id = config.require_object("objectId")
-        name = config.require_object("name")
-        test = sbercloud.cfw.DomainNameGroup("test",
-            fw_instance_id=fw_instance_id,
-            object_id=object_id,
-            name=name,
-            type=0,
-            description="created by terraform",
-            domain_names=[{
-                "domain_name": "www.cfw-test.com",
-                "description": "test domain",
-            }])
-        ```
-
-        ## Import
-
-        The domainnamegroup can be imported using the `fw_instance_id`, `object_id` and `id`, separated by slashes, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Cfw/domainNameGroup:DomainNameGroup test <fw_instance_id>/<object_id>/<id>
-        ```
-
+        Create a DomainNameGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param DomainNameGroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -548,29 +403,14 @@ class DomainNameGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] config_status: The config status of the domain name group.
-        :param pulumi.Input[_builtins.str] description: Specifies the description.
+        :param pulumi.Input[_builtins.str] description: Specifies the description of the domain name group.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DomainNameGroupDomainNameArgs', 'DomainNameGroupDomainNameArgsDict']]]] domain_names: Specifies the list of domain names.
-               The domain_names structure is documented below.
-               
-               <a name="DomainNameGroup_DomainNames"></a>
-               The `domain_names` block supports:
         :param pulumi.Input[_builtins.str] fw_instance_id: Specifies the firewall instance ID.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] message: The exception message of the domain name group.
+        :param pulumi.Input[_builtins.str] message: The message of the domain name group.
         :param pulumi.Input[_builtins.str] name: Specifies the name of the domain name group.
         :param pulumi.Input[_builtins.str] object_id: Specifies the protected object ID.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.int] ref_count: The reference count of the domain name group.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.int] type: Specifies the type of the domain name group.
-               The value can be:
-               + **0**: means application type;
-               + **1**: means network type;
-               
-               Changing this parameter will create a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -600,7 +440,7 @@ class DomainNameGroup(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the description.
+        Specifies the description of the domain name group.
         """
         return pulumi.get(self, "description")
 
@@ -609,10 +449,6 @@ class DomainNameGroup(pulumi.CustomResource):
     def domain_names(self) -> pulumi.Output[Optional[Sequence['outputs.DomainNameGroupDomainName']]]:
         """
         Specifies the list of domain names.
-        The domain_names structure is documented below.
-
-        <a name="DomainNameGroup_DomainNames"></a>
-        The `domain_names` block supports:
         """
         return pulumi.get(self, "domain_names")
 
@@ -621,8 +457,6 @@ class DomainNameGroup(pulumi.CustomResource):
     def fw_instance_id(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the firewall instance ID.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "fw_instance_id")
 
@@ -630,7 +464,7 @@ class DomainNameGroup(pulumi.CustomResource):
     @pulumi.getter
     def message(self) -> pulumi.Output[_builtins.str]:
         """
-        The exception message of the domain name group.
+        The message of the domain name group.
         """
         return pulumi.get(self, "message")
 
@@ -647,8 +481,6 @@ class DomainNameGroup(pulumi.CustomResource):
     def object_id(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the protected object ID.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "object_id")
 
@@ -663,10 +495,6 @@ class DomainNameGroup(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
@@ -674,11 +502,6 @@ class DomainNameGroup(pulumi.CustomResource):
     def type(self) -> pulumi.Output[_builtins.int]:
         """
         Specifies the type of the domain name group.
-        The value can be:
-        + **0**: means application type;
-        + **1**: means network type;
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "type")
 

@@ -79,9 +79,6 @@ class GetEipResult:
     @_builtins.property
     @pulumi.getter(name="bandwidthId")
     def bandwidth_id(self) -> _builtins.str:
-        """
-        The bandwidth id of the EIP.
-        """
         return pulumi.get(self, "bandwidth_id")
 
     @_builtins.property
@@ -92,17 +89,11 @@ class GetEipResult:
     @_builtins.property
     @pulumi.getter(name="bandwidthShareType")
     def bandwidth_share_type(self) -> _builtins.str:
-        """
-        The bandwidth share type of the EIP.
-        """
         return pulumi.get(self, "bandwidth_share_type")
 
     @_builtins.property
     @pulumi.getter(name="bandwidthSize")
     def bandwidth_size(self) -> _builtins.int:
-        """
-        The bandwidth size of the EIP.
-        """
         return pulumi.get(self, "bandwidth_size")
 
     @_builtins.property
@@ -126,9 +117,6 @@ class GetEipResult:
     @_builtins.property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> _builtins.int:
-        """
-        The IP version, either 4 or 6.
-        """
         return pulumi.get(self, "ip_version")
 
     @_builtins.property
@@ -149,9 +137,6 @@ class GetEipResult:
     @_builtins.property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> _builtins.str:
-        """
-        The private ip of the EIP.
-        """
         return pulumi.get(self, "private_ip")
 
     @_builtins.property
@@ -167,17 +152,11 @@ class GetEipResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
-        """
-        The status of the EIP.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        The type of the EIP.
-        """
         return pulumi.get(self, "type")
 
 
@@ -211,23 +190,7 @@ def get_eip(enterprise_project_id: Optional[_builtins.str] = None,
             region: Optional[_builtins.str] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEipResult:
     """
-    Use this data source to get the details of an available EIP.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    by_address = sbercloud.Eip.get_eip(public_ip="123.60.208.163")
-    ```
-
-
-    :param _builtins.str enterprise_project_id: The enterprise project id of the EIP.
-    :param _builtins.str port_id: The port id of the EIP.
-    :param _builtins.str public_ip: The public ip address of the EIP.
-    :param _builtins.str region: The region in which to obtain the EIP. If omitted, the provider-level region will be
-           used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['enterpriseProjectId'] = enterprise_project_id
@@ -260,23 +223,7 @@ def get_eip_output(enterprise_project_id: Optional[pulumi.Input[Optional[_builti
                    region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEipResult]:
     """
-    Use this data source to get the details of an available EIP.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    by_address = sbercloud.Eip.get_eip(public_ip="123.60.208.163")
-    ```
-
-
-    :param _builtins.str enterprise_project_id: The enterprise project id of the EIP.
-    :param _builtins.str port_id: The port id of the EIP.
-    :param _builtins.str public_ip: The public ip address of the EIP.
-    :param _builtins.str region: The region in which to obtain the EIP. If omitted, the provider-level region will be
-           used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['enterpriseProjectId'] = enterprise_project_id

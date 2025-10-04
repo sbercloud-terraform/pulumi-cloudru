@@ -59,35 +59,21 @@ class GetDmsRocketmqUsersResult:
     @_builtins.property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[_builtins.str]:
-        """
-        Indicates the name of the user.
-        """
         return pulumi.get(self, "access_key")
 
     @_builtins.property
     @pulumi.getter
     def admin(self) -> Optional[_builtins.bool]:
-        """
-        Indicates whether the user is an administrator.
-        """
         return pulumi.get(self, "admin")
 
     @_builtins.property
     @pulumi.getter(name="defaultGroupPerm")
     def default_group_perm(self) -> Optional[_builtins.str]:
-        """
-        Indicates the default consumer group permissions.
-        Value options: **SUB**, **DENY**.
-        """
         return pulumi.get(self, "default_group_perm")
 
     @_builtins.property
     @pulumi.getter(name="defaultTopicPerm")
     def default_topic_perm(self) -> Optional[_builtins.str]:
-        """
-        Indicates the default topic permissions.
-        Value options: **PUB|SUB**, **PUB**, **SUB**, **DENY**.
-        """
         return pulumi.get(self, "default_topic_perm")
 
     @_builtins.property
@@ -111,18 +97,11 @@ class GetDmsRocketmqUsersResult:
     @_builtins.property
     @pulumi.getter
     def users(self) -> Sequence['outputs.GetDmsRocketmqUsersUserResult']:
-        """
-        The list of users.
-        The users structure is documented below.
-        """
         return pulumi.get(self, "users")
 
     @_builtins.property
     @pulumi.getter(name="whiteRemoteAddress")
     def white_remote_address(self) -> Optional[_builtins.str]:
-        """
-        Indicates the IP address whitelist.
-        """
         return pulumi.get(self, "white_remote_address")
 
 
@@ -152,19 +131,7 @@ def get_dms_rocketmq_users(access_key: Optional[_builtins.str] = None,
                            white_remote_address: Optional[_builtins.str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDmsRocketmqUsersResult:
     """
-    Use this data source to get the list of DMS rocketMQ users.
-
-
-    :param _builtins.str access_key: Specifies the user name.
-    :param _builtins.bool admin: Specifies whether the user is an administrator.
-    :param _builtins.str default_group_perm: Specifies the default consumer group permissions.
-           Value options: **SUB**, **DENY**.
-    :param _builtins.str default_topic_perm: Specifies the default topic permissions.
-           Value options: **PUB|SUB**, **PUB**, **SUB**, **DENY**.
-    :param _builtins.str instance_id: Specifies the ID of the rocketMQ instance.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str white_remote_address: Specifies the IP address whitelist.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['accessKey'] = access_key
@@ -196,19 +163,7 @@ def get_dms_rocketmq_users_output(access_key: Optional[pulumi.Input[Optional[_bu
                                   white_remote_address: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDmsRocketmqUsersResult]:
     """
-    Use this data source to get the list of DMS rocketMQ users.
-
-
-    :param _builtins.str access_key: Specifies the user name.
-    :param _builtins.bool admin: Specifies whether the user is an administrator.
-    :param _builtins.str default_group_perm: Specifies the default consumer group permissions.
-           Value options: **SUB**, **DENY**.
-    :param _builtins.str default_topic_perm: Specifies the default topic permissions.
-           Value options: **PUB|SUB**, **PUB**, **SUB**, **DENY**.
-    :param _builtins.str instance_id: Specifies the ID of the rocketMQ instance.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str white_remote_address: Specifies the IP address whitelist.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['accessKey'] = access_key

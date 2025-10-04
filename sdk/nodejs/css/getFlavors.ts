@@ -6,23 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get available flavors of SberCloud CSS node instance.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.Css.getFlavors({
- *     type: "ess",
- *     version: "7.9.3",
- *     vcpus: 4,
- *     memory: 32,
- * });
- * ```
- */
 export function getFlavors(args?: GetFlavorsArgs, opts?: pulumi.InvokeOptions): Promise<GetFlavorsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -40,32 +23,11 @@ export function getFlavors(args?: GetFlavorsArgs, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getFlavors.
  */
 export interface GetFlavorsArgs {
-    /**
-     * Specifies the memory size(GB) in the CSS flavor.
-     */
     memory?: number;
-    /**
-     * Specifies the name of the CSS flavor.
-     */
     name?: string;
-    /**
-     * Specifies the region in which to obtain the CSS flavors. If omitted, the
-     * provider-level region will be used.
-     */
     region?: string;
-    /**
-     * Specifies the node instance type. The options are `ess`, `ess-cold`, `ess-master`
-     * and `ess-client`.
-     */
     type?: string;
-    /**
-     * Specifies the number of vCPUs in the CSS flavor.
-     */
     vcpus?: number;
-    /**
-     * Specifies the engine version. The options are `5.5.1`, `6.2.3`, `6.5.4`, `7.1.1`,
-     * `7.6.2` and `7.9.3`.
-     */
     version?: string;
 }
 
@@ -73,56 +35,18 @@ export interface GetFlavorsArgs {
  * A collection of values returned by getFlavors.
  */
 export interface GetFlavorsResult {
-    /**
-     * Indicates the flavors information. Structure is documented below.
-     */
     readonly flavors: outputs.Css.GetFlavorsFlavor[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The memory size in GB.
-     */
     readonly memory?: number;
-    /**
-     * The name of the CSS flavor. It is referenced by `node_config.flavor` in `sbercloud.Css.Cluster`.
-     */
     readonly name?: string;
-    /**
-     * The region where the node resides.
-     */
     readonly region: string;
-    /**
-     * The node instance type.
-     */
     readonly type?: string;
-    /**
-     * The number of vCPUs.
-     */
     readonly vcpus?: number;
-    /**
-     * The engine version.
-     */
     readonly version?: string;
 }
-/**
- * Use this data source to get available flavors of SberCloud CSS node instance.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.Css.getFlavors({
- *     type: "ess",
- *     version: "7.9.3",
- *     vcpus: 4,
- *     memory: 32,
- * });
- * ```
- */
 export function getFlavorsOutput(args?: GetFlavorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFlavorsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -140,31 +64,10 @@ export function getFlavorsOutput(args?: GetFlavorsOutputArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getFlavors.
  */
 export interface GetFlavorsOutputArgs {
-    /**
-     * Specifies the memory size(GB) in the CSS flavor.
-     */
     memory?: pulumi.Input<number>;
-    /**
-     * Specifies the name of the CSS flavor.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to obtain the CSS flavors. If omitted, the
-     * provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the node instance type. The options are `ess`, `ess-cold`, `ess-master`
-     * and `ess-client`.
-     */
     type?: pulumi.Input<string>;
-    /**
-     * Specifies the number of vCPUs in the CSS flavor.
-     */
     vcpus?: pulumi.Input<number>;
-    /**
-     * Specifies the engine version. The options are `5.5.1`, `6.2.3`, `6.5.4`, `7.1.1`,
-     * `7.6.2` and `7.9.3`.
-     */
     version?: pulumi.Input<string>;
 }

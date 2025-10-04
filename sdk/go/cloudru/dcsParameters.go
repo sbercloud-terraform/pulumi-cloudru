@@ -12,58 +12,13 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a DCS configuration parameters within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			projectId := cfg.RequireObject("projectId")
-//			_, err := sbercloud.NewDcsParameters(ctx, "config_1", &sbercloud.DcsParametersArgs{
-//				InstanceId: pulumi.Any(instanceId),
-//				ProjectId:  pulumi.Any(projectId),
-//				Parameters: pulumi.StringMap{
-//					"timeout":                pulumi.String("1000"),
-//					"maxclients":             pulumi.String("2100"),
-//					"appendfsync":            pulumi.String("always"),
-//					"maxmemory-policy":       pulumi.String("allkeys-random"),
-//					"zset-max-ziplist-value": pulumi.String("128"),
-//					"repl-timeout":           pulumi.String("120"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type DcsParameters struct {
 	pulumi.CustomResourceState
 
-	// Indicates the parameter configuration defined by users based on the default parameters.
 	ConfigurationParameters DcsParametersConfigurationParameterArrayOutput `pulumi:"configurationParameters"`
-	// Specifies the ID of the instance.
-	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// A mapping of parameters to assign to the DCS instance.
-	// Each parameter is represented by one key-value pair.
-	Parameters pulumi.StringMapOutput `pulumi:"parameters"`
-	// Specifies the project.
-	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	InstanceId              pulumi.StringOutput                            `pulumi:"instanceId"`
+	Parameters              pulumi.StringMapOutput                         `pulumi:"parameters"`
+	ProjectId               pulumi.StringOutput                            `pulumi:"projectId"`
 }
 
 // NewDcsParameters registers a new resource with the given unique name, arguments, and options.
@@ -105,27 +60,17 @@ func GetDcsParameters(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DcsParameters resources.
 type dcsParametersState struct {
-	// Indicates the parameter configuration defined by users based on the default parameters.
 	ConfigurationParameters []DcsParametersConfigurationParameter `pulumi:"configurationParameters"`
-	// Specifies the ID of the instance.
-	InstanceId *string `pulumi:"instanceId"`
-	// A mapping of parameters to assign to the DCS instance.
-	// Each parameter is represented by one key-value pair.
-	Parameters map[string]string `pulumi:"parameters"`
-	// Specifies the project.
-	ProjectId *string `pulumi:"projectId"`
+	InstanceId              *string                               `pulumi:"instanceId"`
+	Parameters              map[string]string                     `pulumi:"parameters"`
+	ProjectId               *string                               `pulumi:"projectId"`
 }
 
 type DcsParametersState struct {
-	// Indicates the parameter configuration defined by users based on the default parameters.
 	ConfigurationParameters DcsParametersConfigurationParameterArrayInput
-	// Specifies the ID of the instance.
-	InstanceId pulumi.StringPtrInput
-	// A mapping of parameters to assign to the DCS instance.
-	// Each parameter is represented by one key-value pair.
-	Parameters pulumi.StringMapInput
-	// Specifies the project.
-	ProjectId pulumi.StringPtrInput
+	InstanceId              pulumi.StringPtrInput
+	Parameters              pulumi.StringMapInput
+	ProjectId               pulumi.StringPtrInput
 }
 
 func (DcsParametersState) ElementType() reflect.Type {
@@ -133,24 +78,16 @@ func (DcsParametersState) ElementType() reflect.Type {
 }
 
 type dcsParametersArgs struct {
-	// Specifies the ID of the instance.
-	InstanceId string `pulumi:"instanceId"`
-	// A mapping of parameters to assign to the DCS instance.
-	// Each parameter is represented by one key-value pair.
+	InstanceId string            `pulumi:"instanceId"`
 	Parameters map[string]string `pulumi:"parameters"`
-	// Specifies the project.
-	ProjectId string `pulumi:"projectId"`
+	ProjectId  string            `pulumi:"projectId"`
 }
 
 // The set of arguments for constructing a DcsParameters resource.
 type DcsParametersArgs struct {
-	// Specifies the ID of the instance.
 	InstanceId pulumi.StringInput
-	// A mapping of parameters to assign to the DCS instance.
-	// Each parameter is represented by one key-value pair.
 	Parameters pulumi.StringMapInput
-	// Specifies the project.
-	ProjectId pulumi.StringInput
+	ProjectId  pulumi.StringInput
 }
 
 func (DcsParametersArgs) ElementType() reflect.Type {
@@ -240,25 +177,20 @@ func (o DcsParametersOutput) ToDcsParametersOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Indicates the parameter configuration defined by users based on the default parameters.
 func (o DcsParametersOutput) ConfigurationParameters() DcsParametersConfigurationParameterArrayOutput {
 	return o.ApplyT(func(v *DcsParameters) DcsParametersConfigurationParameterArrayOutput {
 		return v.ConfigurationParameters
 	}).(DcsParametersConfigurationParameterArrayOutput)
 }
 
-// Specifies the ID of the instance.
 func (o DcsParametersOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DcsParameters) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// A mapping of parameters to assign to the DCS instance.
-// Each parameter is represented by one key-value pair.
 func (o DcsParametersOutput) Parameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DcsParameters) pulumi.StringMapOutput { return v.Parameters }).(pulumi.StringMapOutput)
 }
 
-// Specifies the project.
 func (o DcsParametersOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DcsParameters) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }

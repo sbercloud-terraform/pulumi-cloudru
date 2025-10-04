@@ -14,16 +14,11 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type ServiceConnection struct {
-	// Specifies the description of the VPC endpoint service.
 	Description *string `pulumi:"description"`
-	// The user's domain ID.
-	DomainId *string `pulumi:"domainId"`
-	// The unique ID of the VPC endpoint.
-	EndpointId *string `pulumi:"endpointId"`
-	// The packet ID of the VPC endpoint.
-	PacketId *int `pulumi:"packetId"`
-	// The connection status of the VPC endpoint.
-	Status *string `pulumi:"status"`
+	DomainId    *string `pulumi:"domainId"`
+	EndpointId  *string `pulumi:"endpointId"`
+	PacketId    *int    `pulumi:"packetId"`
+	Status      *string `pulumi:"status"`
 }
 
 // ServiceConnectionInput is an input type that accepts ServiceConnectionArgs and ServiceConnectionOutput values.
@@ -38,16 +33,11 @@ type ServiceConnectionInput interface {
 }
 
 type ServiceConnectionArgs struct {
-	// Specifies the description of the VPC endpoint service.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The user's domain ID.
-	DomainId pulumi.StringPtrInput `pulumi:"domainId"`
-	// The unique ID of the VPC endpoint.
-	EndpointId pulumi.StringPtrInput `pulumi:"endpointId"`
-	// The packet ID of the VPC endpoint.
-	PacketId pulumi.IntPtrInput `pulumi:"packetId"`
-	// The connection status of the VPC endpoint.
-	Status pulumi.StringPtrInput `pulumi:"status"`
+	DomainId    pulumi.StringPtrInput `pulumi:"domainId"`
+	EndpointId  pulumi.StringPtrInput `pulumi:"endpointId"`
+	PacketId    pulumi.IntPtrInput    `pulumi:"packetId"`
+	Status      pulumi.StringPtrInput `pulumi:"status"`
 }
 
 func (ServiceConnectionArgs) ElementType() reflect.Type {
@@ -101,27 +91,22 @@ func (o ServiceConnectionOutput) ToServiceConnectionOutputWithContext(ctx contex
 	return o
 }
 
-// Specifies the description of the VPC endpoint service.
 func (o ServiceConnectionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceConnection) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The user's domain ID.
 func (o ServiceConnectionOutput) DomainId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceConnection) *string { return v.DomainId }).(pulumi.StringPtrOutput)
 }
 
-// The unique ID of the VPC endpoint.
 func (o ServiceConnectionOutput) EndpointId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceConnection) *string { return v.EndpointId }).(pulumi.StringPtrOutput)
 }
 
-// The packet ID of the VPC endpoint.
 func (o ServiceConnectionOutput) PacketId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceConnection) *int { return v.PacketId }).(pulumi.IntPtrOutput)
 }
 
-// The connection status of the VPC endpoint.
 func (o ServiceConnectionOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceConnection) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -147,13 +132,10 @@ func (o ServiceConnectionArrayOutput) Index(i pulumi.IntInput) ServiceConnection
 }
 
 type ServicePortMapping struct {
-	// Specifies the protocol used in port mappings. Only **TCP** is supported.
 	Protocol *string `pulumi:"protocol"`
-	// Specifies the port for accessing the VPC endpoint service. This port is provided by
-	// the backend service to provide services. The value ranges from 1 to 65535.
+	// schema: Required
 	ServicePort *int `pulumi:"servicePort"`
-	// Specifies the port for accessing the VPC endpoint. This port is provided by the VPC
-	// endpoint, allowing you to access the VPC endpoint service. The value ranges from 1 to 65535.
+	// schema: Required
 	TerminalPort *int `pulumi:"terminalPort"`
 }
 
@@ -169,13 +151,10 @@ type ServicePortMappingInput interface {
 }
 
 type ServicePortMappingArgs struct {
-	// Specifies the protocol used in port mappings. Only **TCP** is supported.
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
-	// Specifies the port for accessing the VPC endpoint service. This port is provided by
-	// the backend service to provide services. The value ranges from 1 to 65535.
+	// schema: Required
 	ServicePort pulumi.IntPtrInput `pulumi:"servicePort"`
-	// Specifies the port for accessing the VPC endpoint. This port is provided by the VPC
-	// endpoint, allowing you to access the VPC endpoint service. The value ranges from 1 to 65535.
+	// schema: Required
 	TerminalPort pulumi.IntPtrInput `pulumi:"terminalPort"`
 }
 
@@ -230,19 +209,16 @@ func (o ServicePortMappingOutput) ToServicePortMappingOutputWithContext(ctx cont
 	return o
 }
 
-// Specifies the protocol used in port mappings. Only **TCP** is supported.
 func (o ServicePortMappingOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePortMapping) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the port for accessing the VPC endpoint service. This port is provided by
-// the backend service to provide services. The value ranges from 1 to 65535.
+// schema: Required
 func (o ServicePortMappingOutput) ServicePort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServicePortMapping) *int { return v.ServicePort }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the port for accessing the VPC endpoint. This port is provided by the VPC
-// endpoint, allowing you to access the VPC endpoint service. The value ranges from 1 to 65535.
+// schema: Required
 func (o ServicePortMappingOutput) TerminalPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServicePortMapping) *int { return v.TerminalPort }).(pulumi.IntPtrOutput)
 }

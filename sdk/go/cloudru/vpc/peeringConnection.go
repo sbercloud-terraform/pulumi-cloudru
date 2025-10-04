@@ -12,74 +12,16 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Provides a resource to manage a VPC Peering Connection resource.
-//
-// > **NOTE:** For cross-tenant (requester's tenant differs from the accepter's tenant) VPC Peering Connections, use
-// the `Vpc.PeeringConnection` resource to manage the requester's side of the connection and use
-// the `Vpc.PeeringConnectionAccepter` resource to manage the accepter's side of the connection.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/vpc"
-//
-// )
-//
-//	func main() {
-//	   pulumi.Run(func(ctx *pulumi.Context) error {
-//	       _, err := vpc.NewPeeringConnection(ctx, "peering", &vpc.PeeringConnectionArgs{
-//	           Name:      pulumi.Any(peerConnName),
-//	           VpcId:     pulumi.Any(vpcId),
-//	           PeerVpcId: pulumi.Any(accepterVpcId),
-//	       })
-//	       if err != nil {
-//	           return err
-//	       }
-//	       return nil
-//	   })
-//	}
-//
-// ```
-//
-// ## Notes
-//
-// If you create a VPC peering connection with another VPC of your own, the connection is created without the need for you
-// to accept the connection.
-//
-// ## Import
-//
-// VPC Peering resources can be imported using the `vpc peering id`, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Vpc/peeringConnection:PeeringConnection test_connection 22b76469-08e3-4937-8c1d-7aad34892be1
-// ```
 type PeeringConnection struct {
 	pulumi.CustomResourceState
 
-	Description pulumi.StringOutput `pulumi:"description"`
-	// Specifies the name of the VPC peering connection. The value can contain 1 to 64
-	// characters.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Specified the Tenant Id of the accepter tenant. Changing this creates
-	// a new VPC peering connection.
+	Description  pulumi.StringOutput `pulumi:"description"`
+	Name         pulumi.StringOutput `pulumi:"name"`
 	PeerTenantId pulumi.StringOutput `pulumi:"peerTenantId"`
-	// Specifies the VPC ID of the accepter tenant. Changing this creates a new
-	// VPC peering connection.
-	PeerVpcId pulumi.StringOutput `pulumi:"peerVpcId"`
-	// The region in which to create the VPC peering connection. If omitted, the
-	// provider-level region will be used. Changing this creates a new VPC peering connection resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// The VPC peering connection status. The value can be PENDING_ACCEPTANCE, REJECTED, EXPIRED, DELETED, or
-	// ACTIVE.
-	Status pulumi.StringOutput `pulumi:"status"`
-	// Specifies the ID of a VPC involved in a VPC peering connection. Changing this
-	// creates a new VPC peering connection.
-	VpcId pulumi.StringOutput `pulumi:"vpcId"`
+	PeerVpcId    pulumi.StringOutput `pulumi:"peerVpcId"`
+	Region       pulumi.StringOutput `pulumi:"region"`
+	Status       pulumi.StringOutput `pulumi:"status"`
+	VpcId        pulumi.StringOutput `pulumi:"vpcId"`
 }
 
 // NewPeeringConnection registers a new resource with the given unique name, arguments, and options.
@@ -118,47 +60,23 @@ func GetPeeringConnection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PeeringConnection resources.
 type peeringConnectionState struct {
-	Description *string `pulumi:"description"`
-	// Specifies the name of the VPC peering connection. The value can contain 1 to 64
-	// characters.
-	Name *string `pulumi:"name"`
-	// Specified the Tenant Id of the accepter tenant. Changing this creates
-	// a new VPC peering connection.
+	Description  *string `pulumi:"description"`
+	Name         *string `pulumi:"name"`
 	PeerTenantId *string `pulumi:"peerTenantId"`
-	// Specifies the VPC ID of the accepter tenant. Changing this creates a new
-	// VPC peering connection.
-	PeerVpcId *string `pulumi:"peerVpcId"`
-	// The region in which to create the VPC peering connection. If omitted, the
-	// provider-level region will be used. Changing this creates a new VPC peering connection resource.
-	Region *string `pulumi:"region"`
-	// The VPC peering connection status. The value can be PENDING_ACCEPTANCE, REJECTED, EXPIRED, DELETED, or
-	// ACTIVE.
-	Status *string `pulumi:"status"`
-	// Specifies the ID of a VPC involved in a VPC peering connection. Changing this
-	// creates a new VPC peering connection.
-	VpcId *string `pulumi:"vpcId"`
+	PeerVpcId    *string `pulumi:"peerVpcId"`
+	Region       *string `pulumi:"region"`
+	Status       *string `pulumi:"status"`
+	VpcId        *string `pulumi:"vpcId"`
 }
 
 type PeeringConnectionState struct {
-	Description pulumi.StringPtrInput
-	// Specifies the name of the VPC peering connection. The value can contain 1 to 64
-	// characters.
-	Name pulumi.StringPtrInput
-	// Specified the Tenant Id of the accepter tenant. Changing this creates
-	// a new VPC peering connection.
+	Description  pulumi.StringPtrInput
+	Name         pulumi.StringPtrInput
 	PeerTenantId pulumi.StringPtrInput
-	// Specifies the VPC ID of the accepter tenant. Changing this creates a new
-	// VPC peering connection.
-	PeerVpcId pulumi.StringPtrInput
-	// The region in which to create the VPC peering connection. If omitted, the
-	// provider-level region will be used. Changing this creates a new VPC peering connection resource.
-	Region pulumi.StringPtrInput
-	// The VPC peering connection status. The value can be PENDING_ACCEPTANCE, REJECTED, EXPIRED, DELETED, or
-	// ACTIVE.
-	Status pulumi.StringPtrInput
-	// Specifies the ID of a VPC involved in a VPC peering connection. Changing this
-	// creates a new VPC peering connection.
-	VpcId pulumi.StringPtrInput
+	PeerVpcId    pulumi.StringPtrInput
+	Region       pulumi.StringPtrInput
+	Status       pulumi.StringPtrInput
+	VpcId        pulumi.StringPtrInput
 }
 
 func (PeeringConnectionState) ElementType() reflect.Type {
@@ -166,42 +84,22 @@ func (PeeringConnectionState) ElementType() reflect.Type {
 }
 
 type peeringConnectionArgs struct {
-	Description *string `pulumi:"description"`
-	// Specifies the name of the VPC peering connection. The value can contain 1 to 64
-	// characters.
-	Name *string `pulumi:"name"`
-	// Specified the Tenant Id of the accepter tenant. Changing this creates
-	// a new VPC peering connection.
+	Description  *string `pulumi:"description"`
+	Name         *string `pulumi:"name"`
 	PeerTenantId *string `pulumi:"peerTenantId"`
-	// Specifies the VPC ID of the accepter tenant. Changing this creates a new
-	// VPC peering connection.
-	PeerVpcId string `pulumi:"peerVpcId"`
-	// The region in which to create the VPC peering connection. If omitted, the
-	// provider-level region will be used. Changing this creates a new VPC peering connection resource.
-	Region *string `pulumi:"region"`
-	// Specifies the ID of a VPC involved in a VPC peering connection. Changing this
-	// creates a new VPC peering connection.
-	VpcId string `pulumi:"vpcId"`
+	PeerVpcId    string  `pulumi:"peerVpcId"`
+	Region       *string `pulumi:"region"`
+	VpcId        string  `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a PeeringConnection resource.
 type PeeringConnectionArgs struct {
-	Description pulumi.StringPtrInput
-	// Specifies the name of the VPC peering connection. The value can contain 1 to 64
-	// characters.
-	Name pulumi.StringPtrInput
-	// Specified the Tenant Id of the accepter tenant. Changing this creates
-	// a new VPC peering connection.
+	Description  pulumi.StringPtrInput
+	Name         pulumi.StringPtrInput
 	PeerTenantId pulumi.StringPtrInput
-	// Specifies the VPC ID of the accepter tenant. Changing this creates a new
-	// VPC peering connection.
-	PeerVpcId pulumi.StringInput
-	// The region in which to create the VPC peering connection. If omitted, the
-	// provider-level region will be used. Changing this creates a new VPC peering connection resource.
-	Region pulumi.StringPtrInput
-	// Specifies the ID of a VPC involved in a VPC peering connection. Changing this
-	// creates a new VPC peering connection.
-	VpcId pulumi.StringInput
+	PeerVpcId    pulumi.StringInput
+	Region       pulumi.StringPtrInput
+	VpcId        pulumi.StringInput
 }
 
 func (PeeringConnectionArgs) ElementType() reflect.Type {
@@ -295,38 +193,26 @@ func (o PeeringConnectionOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *PeeringConnection) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the VPC peering connection. The value can contain 1 to 64
-// characters.
 func (o PeeringConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PeeringConnection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specified the Tenant Id of the accepter tenant. Changing this creates
-// a new VPC peering connection.
 func (o PeeringConnectionOutput) PeerTenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PeeringConnection) pulumi.StringOutput { return v.PeerTenantId }).(pulumi.StringOutput)
 }
 
-// Specifies the VPC ID of the accepter tenant. Changing this creates a new
-// VPC peering connection.
 func (o PeeringConnectionOutput) PeerVpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PeeringConnection) pulumi.StringOutput { return v.PeerVpcId }).(pulumi.StringOutput)
 }
 
-// The region in which to create the VPC peering connection. If omitted, the
-// provider-level region will be used. Changing this creates a new VPC peering connection resource.
 func (o PeeringConnectionOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *PeeringConnection) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// The VPC peering connection status. The value can be PENDING_ACCEPTANCE, REJECTED, EXPIRED, DELETED, or
-// ACTIVE.
 func (o PeeringConnectionOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *PeeringConnection) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Specifies the ID of a VPC involved in a VPC peering connection. Changing this
-// creates a new VPC peering connection.
 func (o PeeringConnectionOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PeeringConnection) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }

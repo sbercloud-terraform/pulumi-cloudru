@@ -6,28 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides details about a specific VPC route table.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const vpcId = config.requireObject<any>("vpcId");
- * // get the default route table
- * const _default = sbercloud.Vpc.getRouteTable({
- *     vpcId: vpcId,
- * });
- * // get a custom route table
- * const custom = sbercloud.Vpc.getRouteTable({
- *     vpcId: vpcId,
- *     name: "demo",
- * });
- * ```
- */
 export function getRouteTable(args: GetRouteTableArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteTableResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:Vpc/getRouteTable:getRouteTable", {
@@ -42,22 +20,9 @@ export function getRouteTable(args: GetRouteTableArgs, opts?: pulumi.InvokeOptio
  * A collection of arguments for invoking getRouteTable.
  */
 export interface GetRouteTableArgs {
-    /**
-     * Specifies the ID of the route table.
-     */
     id?: string;
-    /**
-     * Specifies the name of the route table.
-     */
     name?: string;
-    /**
-     * The region in which to query the vpc route table.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
-    /**
-     * Specifies the VPC ID where the route table resides.
-     */
     vpcId: string;
 }
 
@@ -65,49 +30,15 @@ export interface GetRouteTableArgs {
  * A collection of values returned by getRouteTable.
  */
 export interface GetRouteTableResult {
-    /**
-     * (Bool) - Whether the route table is default or not.
-     */
     readonly default: boolean;
-    /**
-     * (String) - The description about the route.
-     */
     readonly description: string;
     readonly id: string;
     readonly name: string;
     readonly region: string;
-    /**
-     * (List) - The route object list. The route object is documented below.
-     */
     readonly routes: outputs.Vpc.GetRouteTableRoute[];
-    /**
-     * (List) - An array of one or more subnets associating with the route table.
-     */
     readonly subnets: string[];
     readonly vpcId: string;
 }
-/**
- * Provides details about a specific VPC route table.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const vpcId = config.requireObject<any>("vpcId");
- * // get the default route table
- * const _default = sbercloud.Vpc.getRouteTable({
- *     vpcId: vpcId,
- * });
- * // get a custom route table
- * const custom = sbercloud.Vpc.getRouteTable({
- *     vpcId: vpcId,
- *     name: "demo",
- * });
- * ```
- */
 export function getRouteTableOutput(args: GetRouteTableOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRouteTableResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:Vpc/getRouteTable:getRouteTable", {
@@ -122,21 +53,8 @@ export function getRouteTableOutput(args: GetRouteTableOutputArgs, opts?: pulumi
  * A collection of arguments for invoking getRouteTable.
  */
 export interface GetRouteTableOutputArgs {
-    /**
-     * Specifies the ID of the route table.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the route table.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * The region in which to query the vpc route table.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the VPC ID where the route table resides.
-     */
     vpcId: pulumi.Input<string>;
 }

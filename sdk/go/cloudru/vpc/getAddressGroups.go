@@ -11,31 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get a list of VPC IP address groups.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/vpc"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vpc.GetAddressGroups(ctx, &vpc.GetAddressGroupsArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetAddressGroups(ctx *pulumi.Context, args *GetAddressGroupsArgs, opts ...pulumi.InvokeOption) (*GetAddressGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAddressGroupsResult
@@ -48,35 +23,23 @@ func GetAddressGroups(ctx *pulumi.Context, args *GetAddressGroupsArgs, opts ...p
 
 // A collection of arguments for invoking getAddressGroups.
 type GetAddressGroupsArgs struct {
-	// Provides supplementary information about an IP address group,
-	// which can be used to filter the IP address group.
 	Description *string `pulumi:"description"`
-	// Unique ID of an IP address group, which can be used to filter the IP address group.
-	GroupId *string `pulumi:"groupId"`
-	// Version of IP addresses in an IP address group,
-	// which can be used to filter the IP address group.
-	IpVersion *int `pulumi:"ipVersion"`
-	// Name of an IP address group, which can be used to filter the IP address group.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
+	GroupId     *string `pulumi:"groupId"`
+	IpVersion   *int    `pulumi:"ipVersion"`
+	Name        *string `pulumi:"name"`
+	Region      *string `pulumi:"region"`
 }
 
 // A collection of values returned by getAddressGroups.
 type GetAddressGroupsResult struct {
-	// The IP address groups.
 	AddressGroups []GetAddressGroupsAddressGroup `pulumi:"addressGroups"`
-	// The supplementary information about the IP address group.
-	Description *string `pulumi:"description"`
-	GroupId     *string `pulumi:"groupId"`
+	Description   *string                        `pulumi:"description"`
+	GroupId       *string                        `pulumi:"groupId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Whether it is an IPv4 or IPv6 address group.
-	IpVersion *int `pulumi:"ipVersion"`
-	// IP address group name.
-	Name   *string `pulumi:"name"`
-	Region string  `pulumi:"region"`
+	Id        string  `pulumi:"id"`
+	IpVersion *int    `pulumi:"ipVersion"`
+	Name      *string `pulumi:"name"`
+	Region    string  `pulumi:"region"`
 }
 
 func GetAddressGroupsOutput(ctx *pulumi.Context, args GetAddressGroupsOutputArgs, opts ...pulumi.InvokeOption) GetAddressGroupsResultOutput {
@@ -90,19 +53,11 @@ func GetAddressGroupsOutput(ctx *pulumi.Context, args GetAddressGroupsOutputArgs
 
 // A collection of arguments for invoking getAddressGroups.
 type GetAddressGroupsOutputArgs struct {
-	// Provides supplementary information about an IP address group,
-	// which can be used to filter the IP address group.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Unique ID of an IP address group, which can be used to filter the IP address group.
-	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
-	// Version of IP addresses in an IP address group,
-	// which can be used to filter the IP address group.
-	IpVersion pulumi.IntPtrInput `pulumi:"ipVersion"`
-	// Name of an IP address group, which can be used to filter the IP address group.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	GroupId     pulumi.StringPtrInput `pulumi:"groupId"`
+	IpVersion   pulumi.IntPtrInput    `pulumi:"ipVersion"`
+	Name        pulumi.StringPtrInput `pulumi:"name"`
+	Region      pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetAddressGroupsOutputArgs) ElementType() reflect.Type {
@@ -124,12 +79,10 @@ func (o GetAddressGroupsResultOutput) ToGetAddressGroupsResultOutputWithContext(
 	return o
 }
 
-// The IP address groups.
 func (o GetAddressGroupsResultOutput) AddressGroups() GetAddressGroupsAddressGroupArrayOutput {
 	return o.ApplyT(func(v GetAddressGroupsResult) []GetAddressGroupsAddressGroup { return v.AddressGroups }).(GetAddressGroupsAddressGroupArrayOutput)
 }
 
-// The supplementary information about the IP address group.
 func (o GetAddressGroupsResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAddressGroupsResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -143,12 +96,10 @@ func (o GetAddressGroupsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAddressGroupsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Whether it is an IPv4 or IPv6 address group.
 func (o GetAddressGroupsResultOutput) IpVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetAddressGroupsResult) *int { return v.IpVersion }).(pulumi.IntPtrOutput)
 }
 
-// IP address group name.
 func (o GetAddressGroupsResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAddressGroupsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

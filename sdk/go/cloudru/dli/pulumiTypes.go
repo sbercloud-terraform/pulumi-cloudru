@@ -295,16 +295,8 @@ func (o QueueSparkDriverPtrOutput) MaxPrefetchInstance() pulumi.StringPtrOutput 
 }
 
 type SparkJobDependentPackage struct {
-	// Specifies the user group name.
-	// Changing this parameter will submit a new spark job.
-	GroupName string `pulumi:"groupName"`
-	// Specifies the user group resource for details.
-	// Changing this parameter will submit a new spark job.
-	// The object structure is documented below.
-	//
-	// <a name="dependentPackagesPackages"></a>
-	// The `packages` block supports:
-	Packages []SparkJobDependentPackagePackage `pulumi:"packages"`
+	GroupName string                            `pulumi:"groupName"`
+	Packages  []SparkJobDependentPackagePackage `pulumi:"packages"`
 }
 
 // SparkJobDependentPackageInput is an input type that accepts SparkJobDependentPackageArgs and SparkJobDependentPackageOutput values.
@@ -319,16 +311,8 @@ type SparkJobDependentPackageInput interface {
 }
 
 type SparkJobDependentPackageArgs struct {
-	// Specifies the user group name.
-	// Changing this parameter will submit a new spark job.
-	GroupName pulumi.StringInput `pulumi:"groupName"`
-	// Specifies the user group resource for details.
-	// Changing this parameter will submit a new spark job.
-	// The object structure is documented below.
-	//
-	// <a name="dependentPackagesPackages"></a>
-	// The `packages` block supports:
-	Packages SparkJobDependentPackagePackageArrayInput `pulumi:"packages"`
+	GroupName pulumi.StringInput                        `pulumi:"groupName"`
+	Packages  SparkJobDependentPackagePackageArrayInput `pulumi:"packages"`
 }
 
 func (SparkJobDependentPackageArgs) ElementType() reflect.Type {
@@ -382,18 +366,10 @@ func (o SparkJobDependentPackageOutput) ToSparkJobDependentPackageOutputWithCont
 	return o
 }
 
-// Specifies the user group name.
-// Changing this parameter will submit a new spark job.
 func (o SparkJobDependentPackageOutput) GroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v SparkJobDependentPackage) string { return v.GroupName }).(pulumi.StringOutput)
 }
 
-// Specifies the user group resource for details.
-// Changing this parameter will submit a new spark job.
-// The object structure is documented below.
-//
-// <a name="dependentPackagesPackages"></a>
-// The `packages` block supports:
 func (o SparkJobDependentPackageOutput) Packages() SparkJobDependentPackagePackageArrayOutput {
 	return o.ApplyT(func(v SparkJobDependentPackage) []SparkJobDependentPackagePackage { return v.Packages }).(SparkJobDependentPackagePackageArrayOutput)
 }
@@ -419,12 +395,8 @@ func (o SparkJobDependentPackageArrayOutput) Index(i pulumi.IntInput) SparkJobDe
 }
 
 type SparkJobDependentPackagePackage struct {
-	// Specifies the resource name of the package.
-	// Changing this parameter will submit a new spark job.
 	PackageName string `pulumi:"packageName"`
-	// Specifies the resource type of the package.
-	// Changing this parameter will submit a new spark job.
-	Type string `pulumi:"type"`
+	Type        string `pulumi:"type"`
 }
 
 // SparkJobDependentPackagePackageInput is an input type that accepts SparkJobDependentPackagePackageArgs and SparkJobDependentPackagePackageOutput values.
@@ -439,12 +411,8 @@ type SparkJobDependentPackagePackageInput interface {
 }
 
 type SparkJobDependentPackagePackageArgs struct {
-	// Specifies the resource name of the package.
-	// Changing this parameter will submit a new spark job.
 	PackageName pulumi.StringInput `pulumi:"packageName"`
-	// Specifies the resource type of the package.
-	// Changing this parameter will submit a new spark job.
-	Type pulumi.StringInput `pulumi:"type"`
+	Type        pulumi.StringInput `pulumi:"type"`
 }
 
 func (SparkJobDependentPackagePackageArgs) ElementType() reflect.Type {
@@ -498,14 +466,10 @@ func (o SparkJobDependentPackagePackageOutput) ToSparkJobDependentPackagePackage
 	return o
 }
 
-// Specifies the resource name of the package.
-// Changing this parameter will submit a new spark job.
 func (o SparkJobDependentPackagePackageOutput) PackageName() pulumi.StringOutput {
 	return o.ApplyT(func(v SparkJobDependentPackagePackage) string { return v.PackageName }).(pulumi.StringOutput)
 }
 
-// Specifies the resource type of the package.
-// Changing this parameter will submit a new spark job.
 func (o SparkJobDependentPackagePackageOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v SparkJobDependentPackagePackage) string { return v.Type }).(pulumi.StringOutput)
 }

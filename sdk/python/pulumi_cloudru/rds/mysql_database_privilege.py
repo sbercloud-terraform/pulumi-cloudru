@@ -27,11 +27,9 @@ class MysqlDatabasePrivilegeArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MysqlDatabasePrivilege resource.
-        :param pulumi.Input[_builtins.str] db_name: Specifies the database name. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the RDS instance ID. Changing this will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input['MysqlDatabasePrivilegeUserArgs']]] users: Specifies the account that associated with the database. Structure is documented below.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the RDS database privilege resource. If omitted,
-               the provider-level region will be used. Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] db_name: Specifies the database name.
+        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS Mysql instance.
+        :param pulumi.Input[Sequence[pulumi.Input['MysqlDatabasePrivilegeUserArgs']]] users: Specifies the account that associated with the database.
         """
         pulumi.set(__self__, "db_name", db_name)
         pulumi.set(__self__, "instance_id", instance_id)
@@ -43,7 +41,7 @@ class MysqlDatabasePrivilegeArgs:
     @pulumi.getter(name="dbName")
     def db_name(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the database name. Changing this creates a new resource.
+        Specifies the database name.
         """
         return pulumi.get(self, "db_name")
 
@@ -55,7 +53,7 @@ class MysqlDatabasePrivilegeArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the RDS instance ID. Changing this will create a new resource.
+        Specifies the ID of the RDS Mysql instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -67,7 +65,7 @@ class MysqlDatabasePrivilegeArgs:
     @pulumi.getter
     def users(self) -> pulumi.Input[Sequence[pulumi.Input['MysqlDatabasePrivilegeUserArgs']]]:
         """
-        Specifies the account that associated with the database. Structure is documented below.
+        Specifies the account that associated with the database.
         """
         return pulumi.get(self, "users")
 
@@ -78,10 +76,6 @@ class MysqlDatabasePrivilegeArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the RDS database privilege resource. If omitted,
-        the provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -98,11 +92,9 @@ class _MysqlDatabasePrivilegeState:
                  users: Optional[pulumi.Input[Sequence[pulumi.Input['MysqlDatabasePrivilegeUserArgs']]]] = None):
         """
         Input properties used for looking up and filtering MysqlDatabasePrivilege resources.
-        :param pulumi.Input[_builtins.str] db_name: Specifies the database name. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the RDS instance ID. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the RDS database privilege resource. If omitted,
-               the provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input['MysqlDatabasePrivilegeUserArgs']]] users: Specifies the account that associated with the database. Structure is documented below.
+        :param pulumi.Input[_builtins.str] db_name: Specifies the database name.
+        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS Mysql instance.
+        :param pulumi.Input[Sequence[pulumi.Input['MysqlDatabasePrivilegeUserArgs']]] users: Specifies the account that associated with the database.
         """
         if db_name is not None:
             pulumi.set(__self__, "db_name", db_name)
@@ -117,7 +109,7 @@ class _MysqlDatabasePrivilegeState:
     @pulumi.getter(name="dbName")
     def db_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the database name. Changing this creates a new resource.
+        Specifies the database name.
         """
         return pulumi.get(self, "db_name")
 
@@ -129,7 +121,7 @@ class _MysqlDatabasePrivilegeState:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the RDS instance ID. Changing this will create a new resource.
+        Specifies the ID of the RDS Mysql instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -140,10 +132,6 @@ class _MysqlDatabasePrivilegeState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the RDS database privilege resource. If omitted,
-        the provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -154,7 +142,7 @@ class _MysqlDatabasePrivilegeState:
     @pulumi.getter
     def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MysqlDatabasePrivilegeUserArgs']]]]:
         """
-        Specifies the account that associated with the database. Structure is documented below.
+        Specifies the account that associated with the database.
         """
         return pulumi.get(self, "users")
 
@@ -175,51 +163,12 @@ class MysqlDatabasePrivilege(pulumi.CustomResource):
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MysqlDatabasePrivilegeUserArgs', 'MysqlDatabasePrivilegeUserArgsDict']]]]] = None,
                  __props__=None):
         """
-        Manages RDS Mysql database privilege resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        db_name = config.require_object("dbName")
-        user_name1 = config.require_object("userName1")
-        user_name2 = config.require_object("userName2")
-        test = sbercloud.rds.MysqlDatabasePrivilege("test",
-            instance_id=instance_id,
-            db_name=db_name,
-            users=[
-                {
-                    "name": user_name1,
-                    "readonly": True,
-                },
-                {
-                    "name": user_name2,
-                    "readonly": False,
-                },
-            ])
-        ```
-
-        ## Import
-
-        RDS database privilege can be imported using the `instance id` and `db_name`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Rds/mysqlDatabasePrivilege:MysqlDatabasePrivilege test <instance_id>/<db_name>
-        ```
-
+        Create a MysqlDatabasePrivilege resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] db_name: Specifies the database name. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the RDS instance ID. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the RDS database privilege resource. If omitted,
-               the provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MysqlDatabasePrivilegeUserArgs', 'MysqlDatabasePrivilegeUserArgsDict']]]] users: Specifies the account that associated with the database. Structure is documented below.
+        :param pulumi.Input[_builtins.str] db_name: Specifies the database name.
+        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS Mysql instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MysqlDatabasePrivilegeUserArgs', 'MysqlDatabasePrivilegeUserArgsDict']]]] users: Specifies the account that associated with the database.
         """
         ...
     @overload
@@ -228,44 +177,7 @@ class MysqlDatabasePrivilege(pulumi.CustomResource):
                  args: MysqlDatabasePrivilegeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages RDS Mysql database privilege resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        db_name = config.require_object("dbName")
-        user_name1 = config.require_object("userName1")
-        user_name2 = config.require_object("userName2")
-        test = sbercloud.rds.MysqlDatabasePrivilege("test",
-            instance_id=instance_id,
-            db_name=db_name,
-            users=[
-                {
-                    "name": user_name1,
-                    "readonly": True,
-                },
-                {
-                    "name": user_name2,
-                    "readonly": False,
-                },
-            ])
-        ```
-
-        ## Import
-
-        RDS database privilege can be imported using the `instance id` and `db_name`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Rds/mysqlDatabasePrivilege:MysqlDatabasePrivilege test <instance_id>/<db_name>
-        ```
-
+        Create a MysqlDatabasePrivilege resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param MysqlDatabasePrivilegeArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -325,11 +237,9 @@ class MysqlDatabasePrivilege(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] db_name: Specifies the database name. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the RDS instance ID. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the RDS database privilege resource. If omitted,
-               the provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MysqlDatabasePrivilegeUserArgs', 'MysqlDatabasePrivilegeUserArgsDict']]]] users: Specifies the account that associated with the database. Structure is documented below.
+        :param pulumi.Input[_builtins.str] db_name: Specifies the database name.
+        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS Mysql instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MysqlDatabasePrivilegeUserArgs', 'MysqlDatabasePrivilegeUserArgsDict']]]] users: Specifies the account that associated with the database.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -345,7 +255,7 @@ class MysqlDatabasePrivilege(pulumi.CustomResource):
     @pulumi.getter(name="dbName")
     def db_name(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the database name. Changing this creates a new resource.
+        Specifies the database name.
         """
         return pulumi.get(self, "db_name")
 
@@ -353,24 +263,20 @@ class MysqlDatabasePrivilege(pulumi.CustomResource):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the RDS instance ID. Changing this will create a new resource.
+        Specifies the ID of the RDS Mysql instance.
         """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the RDS database privilege resource. If omitted,
-        the provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter
     def users(self) -> pulumi.Output[Sequence['outputs.MysqlDatabasePrivilegeUser']]:
         """
-        Specifies the account that associated with the database. Structure is documented below.
+        Specifies the account that associated with the database.
         """
         return pulumi.get(self, "users")
 

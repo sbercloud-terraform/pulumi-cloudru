@@ -12,69 +12,19 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a permanent Access Key resource within SberCloud IAM service.
-//
-// > **NOTE:** You _must_ have admin privileges in your SberCloud cloud to use this resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/iam"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			user1, err := iam.NewUser(ctx, "user_1", &iam.UserArgs{
-//				Name:        pulumi.String("user_1"),
-//				Description: pulumi.String("A user"),
-//				Password:    pulumi.String("password123!"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = iam.NewAccessKey(ctx, "key_1", &iam.AccessKeyArgs{
-//				UserId: user1.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type AccessKey struct {
 	pulumi.CustomResourceState
 
-	// The time when the access key was created.
-	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Specifies the description of the access key.
+	CreateTime      pulumi.StringOutput    `pulumi:"createTime"`
 	Description     pulumi.StringPtrOutput `pulumi:"description"`
 	EncryptedSecret pulumi.StringOutput    `pulumi:"encryptedSecret"`
-	// The fingerprint of the PGP key used to encrypt the secret
-	KeyFingerprint pulumi.StringOutput `pulumi:"keyFingerprint"`
-	// Either a base-64 encoded PGP public key, or a keybase username in the form
-	// `keybase:some_person_that_exists`. Changing this creates a new resource.
-	PgpKey pulumi.StringPtrOutput `pulumi:"pgpKey"`
-	// The access secret key. Setting the value only when writing to `secretFile` failed.
-	Secret pulumi.StringOutput `pulumi:"secret"`
-	// Specifies the file name that can save access key and access secret key.
-	// Defaults to *./credentials-{{user name}}.csv*. Changing this creates a new resource.
-	SecretFile pulumi.StringPtrOutput `pulumi:"secretFile"`
-	// Specifies the status of the access key. It must be *active* or *inactive*. Default value
-	// is *active*.
-	Status pulumi.StringOutput `pulumi:"status"`
-	// Specifies the ID of the user who is requesting to create an access key.
-	// Changing this creates a new resource.
-	UserId pulumi.StringOutput `pulumi:"userId"`
-	// The name of IAM user.
-	UserName pulumi.StringOutput `pulumi:"userName"`
+	KeyFingerprint  pulumi.StringOutput    `pulumi:"keyFingerprint"`
+	PgpKey          pulumi.StringPtrOutput `pulumi:"pgpKey"`
+	Secret          pulumi.StringOutput    `pulumi:"secret"`
+	SecretFile      pulumi.StringPtrOutput `pulumi:"secretFile"`
+	Status          pulumi.StringOutput    `pulumi:"status"`
+	UserId          pulumi.StringOutput    `pulumi:"userId"`
+	UserName        pulumi.StringOutput    `pulumi:"userName"`
 }
 
 // NewAccessKey registers a new resource with the given unique name, arguments, and options.
@@ -114,55 +64,29 @@ func GetAccessKey(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessKey resources.
 type accessKeyState struct {
-	// The time when the access key was created.
-	CreateTime *string `pulumi:"createTime"`
-	// Specifies the description of the access key.
+	CreateTime      *string `pulumi:"createTime"`
 	Description     *string `pulumi:"description"`
 	EncryptedSecret *string `pulumi:"encryptedSecret"`
-	// The fingerprint of the PGP key used to encrypt the secret
-	KeyFingerprint *string `pulumi:"keyFingerprint"`
-	// Either a base-64 encoded PGP public key, or a keybase username in the form
-	// `keybase:some_person_that_exists`. Changing this creates a new resource.
-	PgpKey *string `pulumi:"pgpKey"`
-	// The access secret key. Setting the value only when writing to `secretFile` failed.
-	Secret *string `pulumi:"secret"`
-	// Specifies the file name that can save access key and access secret key.
-	// Defaults to *./credentials-{{user name}}.csv*. Changing this creates a new resource.
-	SecretFile *string `pulumi:"secretFile"`
-	// Specifies the status of the access key. It must be *active* or *inactive*. Default value
-	// is *active*.
-	Status *string `pulumi:"status"`
-	// Specifies the ID of the user who is requesting to create an access key.
-	// Changing this creates a new resource.
-	UserId *string `pulumi:"userId"`
-	// The name of IAM user.
-	UserName *string `pulumi:"userName"`
+	KeyFingerprint  *string `pulumi:"keyFingerprint"`
+	PgpKey          *string `pulumi:"pgpKey"`
+	Secret          *string `pulumi:"secret"`
+	SecretFile      *string `pulumi:"secretFile"`
+	Status          *string `pulumi:"status"`
+	UserId          *string `pulumi:"userId"`
+	UserName        *string `pulumi:"userName"`
 }
 
 type AccessKeyState struct {
-	// The time when the access key was created.
-	CreateTime pulumi.StringPtrInput
-	// Specifies the description of the access key.
+	CreateTime      pulumi.StringPtrInput
 	Description     pulumi.StringPtrInput
 	EncryptedSecret pulumi.StringPtrInput
-	// The fingerprint of the PGP key used to encrypt the secret
-	KeyFingerprint pulumi.StringPtrInput
-	// Either a base-64 encoded PGP public key, or a keybase username in the form
-	// `keybase:some_person_that_exists`. Changing this creates a new resource.
-	PgpKey pulumi.StringPtrInput
-	// The access secret key. Setting the value only when writing to `secretFile` failed.
-	Secret pulumi.StringPtrInput
-	// Specifies the file name that can save access key and access secret key.
-	// Defaults to *./credentials-{{user name}}.csv*. Changing this creates a new resource.
-	SecretFile pulumi.StringPtrInput
-	// Specifies the status of the access key. It must be *active* or *inactive*. Default value
-	// is *active*.
-	Status pulumi.StringPtrInput
-	// Specifies the ID of the user who is requesting to create an access key.
-	// Changing this creates a new resource.
-	UserId pulumi.StringPtrInput
-	// The name of IAM user.
-	UserName pulumi.StringPtrInput
+	KeyFingerprint  pulumi.StringPtrInput
+	PgpKey          pulumi.StringPtrInput
+	Secret          pulumi.StringPtrInput
+	SecretFile      pulumi.StringPtrInput
+	Status          pulumi.StringPtrInput
+	UserId          pulumi.StringPtrInput
+	UserName        pulumi.StringPtrInput
 }
 
 func (AccessKeyState) ElementType() reflect.Type {
@@ -170,38 +94,20 @@ func (AccessKeyState) ElementType() reflect.Type {
 }
 
 type accessKeyArgs struct {
-	// Specifies the description of the access key.
 	Description *string `pulumi:"description"`
-	// Either a base-64 encoded PGP public key, or a keybase username in the form
-	// `keybase:some_person_that_exists`. Changing this creates a new resource.
-	PgpKey *string `pulumi:"pgpKey"`
-	// Specifies the file name that can save access key and access secret key.
-	// Defaults to *./credentials-{{user name}}.csv*. Changing this creates a new resource.
-	SecretFile *string `pulumi:"secretFile"`
-	// Specifies the status of the access key. It must be *active* or *inactive*. Default value
-	// is *active*.
-	Status *string `pulumi:"status"`
-	// Specifies the ID of the user who is requesting to create an access key.
-	// Changing this creates a new resource.
-	UserId string `pulumi:"userId"`
+	PgpKey      *string `pulumi:"pgpKey"`
+	SecretFile  *string `pulumi:"secretFile"`
+	Status      *string `pulumi:"status"`
+	UserId      string  `pulumi:"userId"`
 }
 
 // The set of arguments for constructing a AccessKey resource.
 type AccessKeyArgs struct {
-	// Specifies the description of the access key.
 	Description pulumi.StringPtrInput
-	// Either a base-64 encoded PGP public key, or a keybase username in the form
-	// `keybase:some_person_that_exists`. Changing this creates a new resource.
-	PgpKey pulumi.StringPtrInput
-	// Specifies the file name that can save access key and access secret key.
-	// Defaults to *./credentials-{{user name}}.csv*. Changing this creates a new resource.
-	SecretFile pulumi.StringPtrInput
-	// Specifies the status of the access key. It must be *active* or *inactive*. Default value
-	// is *active*.
-	Status pulumi.StringPtrInput
-	// Specifies the ID of the user who is requesting to create an access key.
-	// Changing this creates a new resource.
-	UserId pulumi.StringInput
+	PgpKey      pulumi.StringPtrInput
+	SecretFile  pulumi.StringPtrInput
+	Status      pulumi.StringPtrInput
+	UserId      pulumi.StringInput
 }
 
 func (AccessKeyArgs) ElementType() reflect.Type {
@@ -291,12 +197,10 @@ func (o AccessKeyOutput) ToAccessKeyOutputWithContext(ctx context.Context) Acces
 	return o
 }
 
-// The time when the access key was created.
 func (o AccessKeyOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessKey) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Specifies the description of the access key.
 func (o AccessKeyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessKey) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -305,41 +209,30 @@ func (o AccessKeyOutput) EncryptedSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessKey) pulumi.StringOutput { return v.EncryptedSecret }).(pulumi.StringOutput)
 }
 
-// The fingerprint of the PGP key used to encrypt the secret
 func (o AccessKeyOutput) KeyFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessKey) pulumi.StringOutput { return v.KeyFingerprint }).(pulumi.StringOutput)
 }
 
-// Either a base-64 encoded PGP public key, or a keybase username in the form
-// `keybase:some_person_that_exists`. Changing this creates a new resource.
 func (o AccessKeyOutput) PgpKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessKey) pulumi.StringPtrOutput { return v.PgpKey }).(pulumi.StringPtrOutput)
 }
 
-// The access secret key. Setting the value only when writing to `secretFile` failed.
 func (o AccessKeyOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessKey) pulumi.StringOutput { return v.Secret }).(pulumi.StringOutput)
 }
 
-// Specifies the file name that can save access key and access secret key.
-// Defaults to *./credentials-{{user name}}.csv*. Changing this creates a new resource.
 func (o AccessKeyOutput) SecretFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessKey) pulumi.StringPtrOutput { return v.SecretFile }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the status of the access key. It must be *active* or *inactive*. Default value
-// is *active*.
 func (o AccessKeyOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessKey) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Specifies the ID of the user who is requesting to create an access key.
-// Changing this creates a new resource.
 func (o AccessKeyOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessKey) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
 }
 
-// The name of IAM user.
 func (o AccessKeyOutput) UserName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessKey) pulumi.StringOutput { return v.UserName }).(pulumi.StringOutput)
 }

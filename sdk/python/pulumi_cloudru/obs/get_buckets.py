@@ -47,25 +47,16 @@ class GetBucketsResult:
     @_builtins.property
     @pulumi.getter
     def bucket(self) -> Optional[_builtins.str]:
-        """
-        The name of the OBS bucket.
-        """
         return pulumi.get(self, "bucket")
 
     @_builtins.property
     @pulumi.getter
     def buckets(self) -> Sequence['outputs.GetBucketsBucketResult']:
-        """
-        A list of OBS buckets.
-        """
         return pulumi.get(self, "buckets")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[_builtins.str]:
-        """
-        The enterprise project id of the OBS bucket.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
@@ -79,9 +70,6 @@ class GetBucketsResult:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[_builtins.str]:
-        """
-        The region where the OBS bucket belongs.
-        """
         return pulumi.get(self, "region")
 
 
@@ -103,20 +91,7 @@ def get_buckets(bucket: Optional[_builtins.str] = None,
                 region: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBucketsResult:
     """
-    Use this data source to get all OBS buckets.
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    buckets = sbercloud.Obs.get_buckets(bucket="your-bucket-name")
-    ```
-
-
-    :param _builtins.str bucket: The name of the OBS bucket.
-    :param _builtins.str enterprise_project_id: The enterprise project id of the OBS bucket.
-    :param _builtins.str region: The region in which to obtain the OBS bucket.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['bucket'] = bucket
@@ -136,20 +111,7 @@ def get_buckets_output(bucket: Optional[pulumi.Input[Optional[_builtins.str]]] =
                        region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBucketsResult]:
     """
-    Use this data source to get all OBS buckets.
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    buckets = sbercloud.Obs.get_buckets(bucket="your-bucket-name")
-    ```
-
-
-    :param _builtins.str bucket: The name of the OBS bucket.
-    :param _builtins.str enterprise_project_id: The enterprise project id of the OBS bucket.
-    :param _builtins.str region: The region in which to obtain the OBS bucket.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['bucket'] = bucket

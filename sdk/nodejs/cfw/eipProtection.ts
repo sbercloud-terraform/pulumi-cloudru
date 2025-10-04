@@ -6,22 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages the protected EIPs under the protect object for CFW service within SberCloud.
- *
- * > A protection object (`objectId`) can only create one `sbercloud.Cfw.EipProtection` resource for managing
- * protected EIPs.
- *
- * ## Import
- *
- * The protection resource can be imported using their `object_id` or `id`, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:Cfw/eipProtection:EipProtection test <id>
- * ```
- */
 export class EipProtection extends pulumi.CustomResource {
     /**
      * Get an existing EipProtection resource's state with the given name, ID, and optional extra
@@ -52,21 +36,12 @@ export class EipProtection extends pulumi.CustomResource {
 
     /**
      * The protected object ID.
-     * Changing this parameter will create a new resource.
      */
     declare public readonly objectId: pulumi.Output<string>;
     /**
      * The protected EIP configurations.
-     * The object structure is documented below.
-     *
-     * <a name="cfwProtectedEip"></a>
-     * The `protectedEip` block supports:
      */
     declare public readonly protectedEips: pulumi.Output<outputs.Cfw.EipProtectionProtectedEip[]>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
 
     /**
@@ -108,21 +83,12 @@ export class EipProtection extends pulumi.CustomResource {
 export interface EipProtectionState {
     /**
      * The protected object ID.
-     * Changing this parameter will create a new resource.
      */
     objectId?: pulumi.Input<string>;
     /**
      * The protected EIP configurations.
-     * The object structure is documented below.
-     *
-     * <a name="cfwProtectedEip"></a>
-     * The `protectedEip` block supports:
      */
     protectedEips?: pulumi.Input<pulumi.Input<inputs.Cfw.EipProtectionProtectedEip>[]>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
 }
 
@@ -132,20 +98,11 @@ export interface EipProtectionState {
 export interface EipProtectionArgs {
     /**
      * The protected object ID.
-     * Changing this parameter will create a new resource.
      */
     objectId: pulumi.Input<string>;
     /**
      * The protected EIP configurations.
-     * The object structure is documented below.
-     *
-     * <a name="cfwProtectedEip"></a>
-     * The `protectedEip` block supports:
      */
     protectedEips: pulumi.Input<pulumi.Input<inputs.Cfw.EipProtectionProtectedEip>[]>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
 }

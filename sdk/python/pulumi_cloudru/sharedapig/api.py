@@ -52,19 +52,18 @@ class ApiArgs:
                  web_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ApiWebPolicyArgs']]]] = None):
         """
         The set of arguments for constructing a Api resource.
-        :param pulumi.Input[_builtins.str] group_id: Specifies the ID of the API group. Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] group_id: The ID of the API group to which the API belongs.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance to which the API belongs.
-        :param pulumi.Input[_builtins.str] request_method: Specifies the request method, including 'GET','POST','PUT' and etc..
+        :param pulumi.Input[_builtins.str] request_method: The request method of the API.
         :param pulumi.Input[_builtins.str] request_path: The request address.
-        :param pulumi.Input[_builtins.str] request_protocol: Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-               which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+        :param pulumi.Input[_builtins.str] request_protocol: The request protocol of the API request.
         :param pulumi.Input[_builtins.str] type: The API type.
         :param pulumi.Input[_builtins.str] authorizer_id: The ID of the authorizer to which the API request used.
         :param pulumi.Input[Sequence[pulumi.Input['ApiBackendParamArgs']]] backend_params: The configurations of the backend parameters.
         :param pulumi.Input[_builtins.str] body_description: The description of the API request body, which can be an example request body, media type or parameters.
         :param pulumi.Input[_builtins.str] content_type: The content type of the request body.
-        :param pulumi.Input[_builtins.bool] cors: Specifies whether CORS is supported or not.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the API. The description cannot exceed 255 characters.
+        :param pulumi.Input[_builtins.bool] cors: Whether CORS is supported.
+        :param pulumi.Input[_builtins.str] description: The API description.
         :param pulumi.Input[_builtins.str] failure_response: The example response for a failure request.
         :param pulumi.Input['ApiFuncGraphArgs'] func_graph: The FunctionGraph backend details.
         :param pulumi.Input[Sequence[pulumi.Input['ApiFuncGraphPolicyArgs']]] func_graph_policies: The policy backends of the FunctionGraph function.
@@ -72,16 +71,14 @@ class ApiArgs:
         :param pulumi.Input[_builtins.str] matching: The matching mode of the API.
         :param pulumi.Input['ApiMockArgs'] mock: The mock backend details.
         :param pulumi.Input[Sequence[pulumi.Input['ApiMockPolicyArgs']]] mock_policies: The mock policy backends.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-               letter. Only letters, digits, and underscores (_) are allowed.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the API resource. If omitted, the provider-level
-               region will be used. Changing this creates a new API resource.
+        :param pulumi.Input[_builtins.str] name: The API name.
+        :param pulumi.Input[_builtins.str] region: The region where the API is located.
         :param pulumi.Input[Sequence[pulumi.Input['ApiRequestParamArgs']]] request_params: The configurations of the front-end parameters.
         :param pulumi.Input[_builtins.str] response_id: The ID of the custom response that API used.
         :param pulumi.Input[_builtins.str] security_authentication: The security authentication mode of the API request.
         :param pulumi.Input[_builtins.bool] simple_authentication: Whether the authentication of the application code is enabled.
         :param pulumi.Input[_builtins.str] success_response: The example response for a successful request.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: the tags of API in format of string list.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The list of tags configuration.
         :param pulumi.Input['ApiWebArgs'] web: The web backend details.
         :param pulumi.Input[Sequence[pulumi.Input['ApiWebPolicyArgs']]] web_policies: The web policy backends.
         """
@@ -142,7 +139,7 @@ class ApiArgs:
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the ID of the API group. Changing this creates a new resource.
+        The ID of the API group to which the API belongs.
         """
         return pulumi.get(self, "group_id")
 
@@ -166,7 +163,7 @@ class ApiArgs:
     @pulumi.getter(name="requestMethod")
     def request_method(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the request method, including 'GET','POST','PUT' and etc..
+        The request method of the API.
         """
         return pulumi.get(self, "request_method")
 
@@ -190,8 +187,7 @@ class ApiArgs:
     @pulumi.getter(name="requestProtocol")
     def request_protocol(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-        which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+        The request protocol of the API request.
         """
         return pulumi.get(self, "request_protocol")
 
@@ -263,7 +259,7 @@ class ApiArgs:
     @pulumi.getter
     def cors(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether CORS is supported or not.
+        Whether CORS is supported.
         """
         return pulumi.get(self, "cors")
 
@@ -275,7 +271,7 @@ class ApiArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the description of the API. The description cannot exceed 255 characters.
+        The API description.
         """
         return pulumi.get(self, "description")
 
@@ -371,8 +367,7 @@ class ApiArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-        letter. Only letters, digits, and underscores (_) are allowed.
+        The API name.
         """
         return pulumi.get(self, "name")
 
@@ -384,8 +379,7 @@ class ApiArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The region in which to create the API resource. If omitted, the provider-level
-        region will be used. Changing this creates a new API resource.
+        The region where the API is located.
         """
         return pulumi.get(self, "region")
 
@@ -457,7 +451,7 @@ class ApiArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        the tags of API in format of string list.
+        The list of tags configuration.
         """
         return pulumi.get(self, "tags")
 
@@ -530,32 +524,29 @@ class _ApiState:
         :param pulumi.Input[Sequence[pulumi.Input['ApiBackendParamArgs']]] backend_params: The configurations of the backend parameters.
         :param pulumi.Input[_builtins.str] body_description: The description of the API request body, which can be an example request body, media type or parameters.
         :param pulumi.Input[_builtins.str] content_type: The content type of the request body.
-        :param pulumi.Input[_builtins.bool] cors: Specifies whether CORS is supported or not.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the API. The description cannot exceed 255 characters.
+        :param pulumi.Input[_builtins.bool] cors: Whether CORS is supported.
+        :param pulumi.Input[_builtins.str] description: The API description.
         :param pulumi.Input[_builtins.str] failure_response: The example response for a failure request.
         :param pulumi.Input['ApiFuncGraphArgs'] func_graph: The FunctionGraph backend details.
         :param pulumi.Input[Sequence[pulumi.Input['ApiFuncGraphPolicyArgs']]] func_graph_policies: The policy backends of the FunctionGraph function.
-        :param pulumi.Input[_builtins.str] group_id: Specifies the ID of the API group. Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] group_id: The ID of the API group to which the API belongs.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance to which the API belongs.
         :param pulumi.Input[_builtins.bool] is_send_fg_body_base64: Whether to perform Base64 encoding on the body for interaction with FunctionGraph.
         :param pulumi.Input[_builtins.str] matching: The matching mode of the API.
         :param pulumi.Input['ApiMockArgs'] mock: The mock backend details.
         :param pulumi.Input[Sequence[pulumi.Input['ApiMockPolicyArgs']]] mock_policies: The mock policy backends.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-               letter. Only letters, digits, and underscores (_) are allowed.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the API resource. If omitted, the provider-level
-               region will be used. Changing this creates a new API resource.
+        :param pulumi.Input[_builtins.str] name: The API name.
+        :param pulumi.Input[_builtins.str] region: The region where the API is located.
         :param pulumi.Input[_builtins.str] registered_at: The registered time of the API.
-        :param pulumi.Input[_builtins.str] request_method: Specifies the request method, including 'GET','POST','PUT' and etc..
+        :param pulumi.Input[_builtins.str] request_method: The request method of the API.
         :param pulumi.Input[Sequence[pulumi.Input['ApiRequestParamArgs']]] request_params: The configurations of the front-end parameters.
         :param pulumi.Input[_builtins.str] request_path: The request address.
-        :param pulumi.Input[_builtins.str] request_protocol: Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-               which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+        :param pulumi.Input[_builtins.str] request_protocol: The request protocol of the API request.
         :param pulumi.Input[_builtins.str] response_id: The ID of the custom response that API used.
         :param pulumi.Input[_builtins.str] security_authentication: The security authentication mode of the API request.
         :param pulumi.Input[_builtins.bool] simple_authentication: Whether the authentication of the application code is enabled.
         :param pulumi.Input[_builtins.str] success_response: The example response for a successful request.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: the tags of API in format of string list.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The list of tags configuration.
         :param pulumi.Input[_builtins.str] type: The API type.
         :param pulumi.Input[_builtins.str] updated_at: The latest update time of the API.
         :param pulumi.Input['ApiWebArgs'] web: The web backend details.
@@ -676,7 +667,7 @@ class _ApiState:
     @pulumi.getter
     def cors(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether CORS is supported or not.
+        Whether CORS is supported.
         """
         return pulumi.get(self, "cors")
 
@@ -688,7 +679,7 @@ class _ApiState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the description of the API. The description cannot exceed 255 characters.
+        The API description.
         """
         return pulumi.get(self, "description")
 
@@ -736,7 +727,7 @@ class _ApiState:
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the ID of the API group. Changing this creates a new resource.
+        The ID of the API group to which the API belongs.
         """
         return pulumi.get(self, "group_id")
 
@@ -808,8 +799,7 @@ class _ApiState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-        letter. Only letters, digits, and underscores (_) are allowed.
+        The API name.
         """
         return pulumi.get(self, "name")
 
@@ -821,8 +811,7 @@ class _ApiState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The region in which to create the API resource. If omitted, the provider-level
-        region will be used. Changing this creates a new API resource.
+        The region where the API is located.
         """
         return pulumi.get(self, "region")
 
@@ -846,7 +835,7 @@ class _ApiState:
     @pulumi.getter(name="requestMethod")
     def request_method(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the request method, including 'GET','POST','PUT' and etc..
+        The request method of the API.
         """
         return pulumi.get(self, "request_method")
 
@@ -882,8 +871,7 @@ class _ApiState:
     @pulumi.getter(name="requestProtocol")
     def request_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-        which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+        The request protocol of the API request.
         """
         return pulumi.get(self, "request_protocol")
 
@@ -943,7 +931,7 @@ class _ApiState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        the tags of API in format of string list.
+        The list of tags configuration.
         """
         return pulumi.get(self, "tags")
 
@@ -1037,47 +1025,35 @@ class Api(pulumi.CustomResource):
                  web_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApiWebPolicyArgs', 'ApiWebPolicyArgsDict']]]]] = None,
                  __props__=None):
         """
-        Provides an API gateway API resource.
-
-        ## Import
-
-        API can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:SharedApig/api:Api api "774438a28a574ac8a496325d1bf51807"
-        ```
-
+        Create a Api resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] authorizer_id: The ID of the authorizer to which the API request used.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApiBackendParamArgs', 'ApiBackendParamArgsDict']]]] backend_params: The configurations of the backend parameters.
         :param pulumi.Input[_builtins.str] body_description: The description of the API request body, which can be an example request body, media type or parameters.
         :param pulumi.Input[_builtins.str] content_type: The content type of the request body.
-        :param pulumi.Input[_builtins.bool] cors: Specifies whether CORS is supported or not.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the API. The description cannot exceed 255 characters.
+        :param pulumi.Input[_builtins.bool] cors: Whether CORS is supported.
+        :param pulumi.Input[_builtins.str] description: The API description.
         :param pulumi.Input[_builtins.str] failure_response: The example response for a failure request.
         :param pulumi.Input[Union['ApiFuncGraphArgs', 'ApiFuncGraphArgsDict']] func_graph: The FunctionGraph backend details.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApiFuncGraphPolicyArgs', 'ApiFuncGraphPolicyArgsDict']]]] func_graph_policies: The policy backends of the FunctionGraph function.
-        :param pulumi.Input[_builtins.str] group_id: Specifies the ID of the API group. Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] group_id: The ID of the API group to which the API belongs.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance to which the API belongs.
         :param pulumi.Input[_builtins.bool] is_send_fg_body_base64: Whether to perform Base64 encoding on the body for interaction with FunctionGraph.
         :param pulumi.Input[_builtins.str] matching: The matching mode of the API.
         :param pulumi.Input[Union['ApiMockArgs', 'ApiMockArgsDict']] mock: The mock backend details.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApiMockPolicyArgs', 'ApiMockPolicyArgsDict']]]] mock_policies: The mock policy backends.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-               letter. Only letters, digits, and underscores (_) are allowed.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the API resource. If omitted, the provider-level
-               region will be used. Changing this creates a new API resource.
-        :param pulumi.Input[_builtins.str] request_method: Specifies the request method, including 'GET','POST','PUT' and etc..
+        :param pulumi.Input[_builtins.str] name: The API name.
+        :param pulumi.Input[_builtins.str] region: The region where the API is located.
+        :param pulumi.Input[_builtins.str] request_method: The request method of the API.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApiRequestParamArgs', 'ApiRequestParamArgsDict']]]] request_params: The configurations of the front-end parameters.
         :param pulumi.Input[_builtins.str] request_path: The request address.
-        :param pulumi.Input[_builtins.str] request_protocol: Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-               which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+        :param pulumi.Input[_builtins.str] request_protocol: The request protocol of the API request.
         :param pulumi.Input[_builtins.str] response_id: The ID of the custom response that API used.
         :param pulumi.Input[_builtins.str] security_authentication: The security authentication mode of the API request.
         :param pulumi.Input[_builtins.bool] simple_authentication: Whether the authentication of the application code is enabled.
         :param pulumi.Input[_builtins.str] success_response: The example response for a successful request.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: the tags of API in format of string list.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The list of tags configuration.
         :param pulumi.Input[_builtins.str] type: The API type.
         :param pulumi.Input[Union['ApiWebArgs', 'ApiWebArgsDict']] web: The web backend details.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApiWebPolicyArgs', 'ApiWebPolicyArgsDict']]]] web_policies: The web policy backends.
@@ -1089,16 +1065,7 @@ class Api(pulumi.CustomResource):
                  args: ApiArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an API gateway API resource.
-
-        ## Import
-
-        API can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:SharedApig/api:Api api "774438a28a574ac8a496325d1bf51807"
-        ```
-
+        Create a Api resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ApiArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1247,32 +1214,29 @@ class Api(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApiBackendParamArgs', 'ApiBackendParamArgsDict']]]] backend_params: The configurations of the backend parameters.
         :param pulumi.Input[_builtins.str] body_description: The description of the API request body, which can be an example request body, media type or parameters.
         :param pulumi.Input[_builtins.str] content_type: The content type of the request body.
-        :param pulumi.Input[_builtins.bool] cors: Specifies whether CORS is supported or not.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the API. The description cannot exceed 255 characters.
+        :param pulumi.Input[_builtins.bool] cors: Whether CORS is supported.
+        :param pulumi.Input[_builtins.str] description: The API description.
         :param pulumi.Input[_builtins.str] failure_response: The example response for a failure request.
         :param pulumi.Input[Union['ApiFuncGraphArgs', 'ApiFuncGraphArgsDict']] func_graph: The FunctionGraph backend details.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApiFuncGraphPolicyArgs', 'ApiFuncGraphPolicyArgsDict']]]] func_graph_policies: The policy backends of the FunctionGraph function.
-        :param pulumi.Input[_builtins.str] group_id: Specifies the ID of the API group. Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] group_id: The ID of the API group to which the API belongs.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance to which the API belongs.
         :param pulumi.Input[_builtins.bool] is_send_fg_body_base64: Whether to perform Base64 encoding on the body for interaction with FunctionGraph.
         :param pulumi.Input[_builtins.str] matching: The matching mode of the API.
         :param pulumi.Input[Union['ApiMockArgs', 'ApiMockArgsDict']] mock: The mock backend details.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApiMockPolicyArgs', 'ApiMockPolicyArgsDict']]]] mock_policies: The mock policy backends.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-               letter. Only letters, digits, and underscores (_) are allowed.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the API resource. If omitted, the provider-level
-               region will be used. Changing this creates a new API resource.
+        :param pulumi.Input[_builtins.str] name: The API name.
+        :param pulumi.Input[_builtins.str] region: The region where the API is located.
         :param pulumi.Input[_builtins.str] registered_at: The registered time of the API.
-        :param pulumi.Input[_builtins.str] request_method: Specifies the request method, including 'GET','POST','PUT' and etc..
+        :param pulumi.Input[_builtins.str] request_method: The request method of the API.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApiRequestParamArgs', 'ApiRequestParamArgsDict']]]] request_params: The configurations of the front-end parameters.
         :param pulumi.Input[_builtins.str] request_path: The request address.
-        :param pulumi.Input[_builtins.str] request_protocol: Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-               which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+        :param pulumi.Input[_builtins.str] request_protocol: The request protocol of the API request.
         :param pulumi.Input[_builtins.str] response_id: The ID of the custom response that API used.
         :param pulumi.Input[_builtins.str] security_authentication: The security authentication mode of the API request.
         :param pulumi.Input[_builtins.bool] simple_authentication: Whether the authentication of the application code is enabled.
         :param pulumi.Input[_builtins.str] success_response: The example response for a successful request.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: the tags of API in format of string list.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The list of tags configuration.
         :param pulumi.Input[_builtins.str] type: The API type.
         :param pulumi.Input[_builtins.str] updated_at: The latest update time of the API.
         :param pulumi.Input[Union['ApiWebArgs', 'ApiWebArgsDict']] web: The web backend details.
@@ -1351,7 +1315,7 @@ class Api(pulumi.CustomResource):
     @pulumi.getter
     def cors(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Specifies whether CORS is supported or not.
+        Whether CORS is supported.
         """
         return pulumi.get(self, "cors")
 
@@ -1359,7 +1323,7 @@ class Api(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the description of the API. The description cannot exceed 255 characters.
+        The API description.
         """
         return pulumi.get(self, "description")
 
@@ -1391,7 +1355,7 @@ class Api(pulumi.CustomResource):
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the ID of the API group. Changing this creates a new resource.
+        The ID of the API group to which the API belongs.
         """
         return pulumi.get(self, "group_id")
 
@@ -1439,8 +1403,7 @@ class Api(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-        letter. Only letters, digits, and underscores (_) are allowed.
+        The API name.
         """
         return pulumi.get(self, "name")
 
@@ -1448,8 +1411,7 @@ class Api(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
         """
-        The region in which to create the API resource. If omitted, the provider-level
-        region will be used. Changing this creates a new API resource.
+        The region where the API is located.
         """
         return pulumi.get(self, "region")
 
@@ -1465,7 +1427,7 @@ class Api(pulumi.CustomResource):
     @pulumi.getter(name="requestMethod")
     def request_method(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the request method, including 'GET','POST','PUT' and etc..
+        The request method of the API.
         """
         return pulumi.get(self, "request_method")
 
@@ -1489,8 +1451,7 @@ class Api(pulumi.CustomResource):
     @pulumi.getter(name="requestProtocol")
     def request_protocol(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-        which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+        The request protocol of the API request.
         """
         return pulumi.get(self, "request_protocol")
 
@@ -1530,7 +1491,7 @@ class Api(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        the tags of API in format of string list.
+        The list of tags configuration.
         """
         return pulumi.get(self, "tags")
 

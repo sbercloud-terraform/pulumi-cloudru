@@ -14,26 +14,12 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type ClusterBackupStrategy struct {
-	// Specifies the IAM agency used to access OBS.
-	//
-	// > **NOTE:**  If the `bucket`, `backupPath`, and `agency` parameters are empty at the same time, the system will
-	// automatically create an OBS bucket and IAM agent, otherwise the configured parameter values will be used.
-	Agency *string `pulumi:"agency"`
-	// Specifies the storage path of the snapshot in the OBS bucket.
+	Agency     *string `pulumi:"agency"`
 	BackupPath *string `pulumi:"backupPath"`
-	// Specifies the OBS bucket used for index data backup. If there is snapshot data in an OBS
-	// bucket, only the OBS bucket is used and cannot be changed.
-	Bucket *string `pulumi:"bucket"`
-	// Specifies the number of days to retain the generated snapshots. Snapshots are reserved
-	// for seven days by default.
-	KeepDays *int `pulumi:"keepDays"`
-	// Specifies the prefix of the snapshot that is automatically created. Defaults to **snapshot**.
-	Prefix *string `pulumi:"prefix"`
-	// Specifies the time when a snapshot is automatically created everyday. Snapshots can
-	// only be created on the hour. The time format is the time followed by the time zone, specifically, **HH:mm z**. In the
-	// format, **HH:mm** refers to the hour time and z refers to the time zone. For example, "00:00 GMT+08:00"
-	// and "01:00 GMT+08:00".
-	StartTime string `pulumi:"startTime"`
+	Bucket     *string `pulumi:"bucket"`
+	KeepDays   *int    `pulumi:"keepDays"`
+	Prefix     *string `pulumi:"prefix"`
+	StartTime  string  `pulumi:"startTime"`
 }
 
 // ClusterBackupStrategyInput is an input type that accepts ClusterBackupStrategyArgs and ClusterBackupStrategyOutput values.
@@ -48,26 +34,12 @@ type ClusterBackupStrategyInput interface {
 }
 
 type ClusterBackupStrategyArgs struct {
-	// Specifies the IAM agency used to access OBS.
-	//
-	// > **NOTE:**  If the `bucket`, `backupPath`, and `agency` parameters are empty at the same time, the system will
-	// automatically create an OBS bucket and IAM agent, otherwise the configured parameter values will be used.
-	Agency pulumi.StringPtrInput `pulumi:"agency"`
-	// Specifies the storage path of the snapshot in the OBS bucket.
+	Agency     pulumi.StringPtrInput `pulumi:"agency"`
 	BackupPath pulumi.StringPtrInput `pulumi:"backupPath"`
-	// Specifies the OBS bucket used for index data backup. If there is snapshot data in an OBS
-	// bucket, only the OBS bucket is used and cannot be changed.
-	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
-	// Specifies the number of days to retain the generated snapshots. Snapshots are reserved
-	// for seven days by default.
-	KeepDays pulumi.IntPtrInput `pulumi:"keepDays"`
-	// Specifies the prefix of the snapshot that is automatically created. Defaults to **snapshot**.
-	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-	// Specifies the time when a snapshot is automatically created everyday. Snapshots can
-	// only be created on the hour. The time format is the time followed by the time zone, specifically, **HH:mm z**. In the
-	// format, **HH:mm** refers to the hour time and z refers to the time zone. For example, "00:00 GMT+08:00"
-	// and "01:00 GMT+08:00".
-	StartTime pulumi.StringInput `pulumi:"startTime"`
+	Bucket     pulumi.StringPtrInput `pulumi:"bucket"`
+	KeepDays   pulumi.IntPtrInput    `pulumi:"keepDays"`
+	Prefix     pulumi.StringPtrInput `pulumi:"prefix"`
+	StartTime  pulumi.StringInput    `pulumi:"startTime"`
 }
 
 func (ClusterBackupStrategyArgs) ElementType() reflect.Type {
@@ -147,40 +119,26 @@ func (o ClusterBackupStrategyOutput) ToClusterBackupStrategyPtrOutputWithContext
 	}).(ClusterBackupStrategyPtrOutput)
 }
 
-// Specifies the IAM agency used to access OBS.
-//
-// > **NOTE:**  If the `bucket`, `backupPath`, and `agency` parameters are empty at the same time, the system will
-// automatically create an OBS bucket and IAM agent, otherwise the configured parameter values will be used.
 func (o ClusterBackupStrategyOutput) Agency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterBackupStrategy) *string { return v.Agency }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the storage path of the snapshot in the OBS bucket.
 func (o ClusterBackupStrategyOutput) BackupPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterBackupStrategy) *string { return v.BackupPath }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the OBS bucket used for index data backup. If there is snapshot data in an OBS
-// bucket, only the OBS bucket is used and cannot be changed.
 func (o ClusterBackupStrategyOutput) Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterBackupStrategy) *string { return v.Bucket }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the number of days to retain the generated snapshots. Snapshots are reserved
-// for seven days by default.
 func (o ClusterBackupStrategyOutput) KeepDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterBackupStrategy) *int { return v.KeepDays }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the prefix of the snapshot that is automatically created. Defaults to **snapshot**.
 func (o ClusterBackupStrategyOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterBackupStrategy) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the time when a snapshot is automatically created everyday. Snapshots can
-// only be created on the hour. The time format is the time followed by the time zone, specifically, **HH:mm z**. In the
-// format, **HH:mm** refers to the hour time and z refers to the time zone. For example, "00:00 GMT+08:00"
-// and "01:00 GMT+08:00".
 func (o ClusterBackupStrategyOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterBackupStrategy) string { return v.StartTime }).(pulumi.StringOutput)
 }
@@ -209,10 +167,6 @@ func (o ClusterBackupStrategyPtrOutput) Elem() ClusterBackupStrategyOutput {
 	}).(ClusterBackupStrategyOutput)
 }
 
-// Specifies the IAM agency used to access OBS.
-//
-// > **NOTE:**  If the `bucket`, `backupPath`, and `agency` parameters are empty at the same time, the system will
-// automatically create an OBS bucket and IAM agent, otherwise the configured parameter values will be used.
 func (o ClusterBackupStrategyPtrOutput) Agency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterBackupStrategy) *string {
 		if v == nil {
@@ -222,7 +176,6 @@ func (o ClusterBackupStrategyPtrOutput) Agency() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the storage path of the snapshot in the OBS bucket.
 func (o ClusterBackupStrategyPtrOutput) BackupPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterBackupStrategy) *string {
 		if v == nil {
@@ -232,8 +185,6 @@ func (o ClusterBackupStrategyPtrOutput) BackupPath() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the OBS bucket used for index data backup. If there is snapshot data in an OBS
-// bucket, only the OBS bucket is used and cannot be changed.
 func (o ClusterBackupStrategyPtrOutput) Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterBackupStrategy) *string {
 		if v == nil {
@@ -243,8 +194,6 @@ func (o ClusterBackupStrategyPtrOutput) Bucket() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the number of days to retain the generated snapshots. Snapshots are reserved
-// for seven days by default.
 func (o ClusterBackupStrategyPtrOutput) KeepDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterBackupStrategy) *int {
 		if v == nil {
@@ -254,7 +203,6 @@ func (o ClusterBackupStrategyPtrOutput) KeepDays() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the prefix of the snapshot that is automatically created. Defaults to **snapshot**.
 func (o ClusterBackupStrategyPtrOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterBackupStrategy) *string {
 		if v == nil {
@@ -264,10 +212,6 @@ func (o ClusterBackupStrategyPtrOutput) Prefix() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the time when a snapshot is automatically created everyday. Snapshots can
-// only be created on the hour. The time format is the time followed by the time zone, specifically, **HH:mm z**. In the
-// format, **HH:mm** refers to the hour time and z refers to the time zone. For example, "00:00 GMT+08:00"
-// and "01:00 GMT+08:00".
 func (o ClusterBackupStrategyPtrOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterBackupStrategy) *string {
 		if v == nil {
@@ -278,20 +222,10 @@ func (o ClusterBackupStrategyPtrOutput) StartTime() pulumi.StringPtrOutput {
 }
 
 type ClusterClientNodeConfig struct {
-	// Specifies the flavor name.
-	Flavor string `pulumi:"flavor"`
-	// Specifies the number of cluster instances.
-	// + When it is `masterNodeConfig`, The value range is `3` to `10`.
-	// + When it is `clientNodeConfig`, The value range is `1` to `32`.
-	InstanceNumber int `pulumi:"instanceNumber"`
-	// Specifies the node IDs that needs to be scaled down.
-	//
-	// <a name="Css_master_or_client_volume"></a>
-	// The `volume` block supports:
-	ShrinkNodeIds []string `pulumi:"shrinkNodeIds"`
-	// Specifies the information about the volume.
-	// The volume structure is documented below.
-	Volume ClusterClientNodeConfigVolume `pulumi:"volume"`
+	Flavor         string                        `pulumi:"flavor"`
+	InstanceNumber int                           `pulumi:"instanceNumber"`
+	ShrinkNodeIds  []string                      `pulumi:"shrinkNodeIds"`
+	Volume         ClusterClientNodeConfigVolume `pulumi:"volume"`
 }
 
 // ClusterClientNodeConfigInput is an input type that accepts ClusterClientNodeConfigArgs and ClusterClientNodeConfigOutput values.
@@ -306,20 +240,10 @@ type ClusterClientNodeConfigInput interface {
 }
 
 type ClusterClientNodeConfigArgs struct {
-	// Specifies the flavor name.
-	Flavor pulumi.StringInput `pulumi:"flavor"`
-	// Specifies the number of cluster instances.
-	// + When it is `masterNodeConfig`, The value range is `3` to `10`.
-	// + When it is `clientNodeConfig`, The value range is `1` to `32`.
-	InstanceNumber pulumi.IntInput `pulumi:"instanceNumber"`
-	// Specifies the node IDs that needs to be scaled down.
-	//
-	// <a name="Css_master_or_client_volume"></a>
-	// The `volume` block supports:
-	ShrinkNodeIds pulumi.StringArrayInput `pulumi:"shrinkNodeIds"`
-	// Specifies the information about the volume.
-	// The volume structure is documented below.
-	Volume ClusterClientNodeConfigVolumeInput `pulumi:"volume"`
+	Flavor         pulumi.StringInput                 `pulumi:"flavor"`
+	InstanceNumber pulumi.IntInput                    `pulumi:"instanceNumber"`
+	ShrinkNodeIds  pulumi.StringArrayInput            `pulumi:"shrinkNodeIds"`
+	Volume         ClusterClientNodeConfigVolumeInput `pulumi:"volume"`
 }
 
 func (ClusterClientNodeConfigArgs) ElementType() reflect.Type {
@@ -399,28 +323,18 @@ func (o ClusterClientNodeConfigOutput) ToClusterClientNodeConfigPtrOutputWithCon
 	}).(ClusterClientNodeConfigPtrOutput)
 }
 
-// Specifies the flavor name.
 func (o ClusterClientNodeConfigOutput) Flavor() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterClientNodeConfig) string { return v.Flavor }).(pulumi.StringOutput)
 }
 
-// Specifies the number of cluster instances.
-// + When it is `masterNodeConfig`, The value range is `3` to `10`.
-// + When it is `clientNodeConfig`, The value range is `1` to `32`.
 func (o ClusterClientNodeConfigOutput) InstanceNumber() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterClientNodeConfig) int { return v.InstanceNumber }).(pulumi.IntOutput)
 }
 
-// Specifies the node IDs that needs to be scaled down.
-//
-// <a name="Css_master_or_client_volume"></a>
-// The `volume` block supports:
 func (o ClusterClientNodeConfigOutput) ShrinkNodeIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterClientNodeConfig) []string { return v.ShrinkNodeIds }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the information about the volume.
-// The volume structure is documented below.
 func (o ClusterClientNodeConfigOutput) Volume() ClusterClientNodeConfigVolumeOutput {
 	return o.ApplyT(func(v ClusterClientNodeConfig) ClusterClientNodeConfigVolume { return v.Volume }).(ClusterClientNodeConfigVolumeOutput)
 }
@@ -449,7 +363,6 @@ func (o ClusterClientNodeConfigPtrOutput) Elem() ClusterClientNodeConfigOutput {
 	}).(ClusterClientNodeConfigOutput)
 }
 
-// Specifies the flavor name.
 func (o ClusterClientNodeConfigPtrOutput) Flavor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClientNodeConfig) *string {
 		if v == nil {
@@ -459,9 +372,6 @@ func (o ClusterClientNodeConfigPtrOutput) Flavor() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the number of cluster instances.
-// + When it is `masterNodeConfig`, The value range is `3` to `10`.
-// + When it is `clientNodeConfig`, The value range is `1` to `32`.
 func (o ClusterClientNodeConfigPtrOutput) InstanceNumber() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterClientNodeConfig) *int {
 		if v == nil {
@@ -471,10 +381,6 @@ func (o ClusterClientNodeConfigPtrOutput) InstanceNumber() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the node IDs that needs to be scaled down.
-//
-// <a name="Css_master_or_client_volume"></a>
-// The `volume` block supports:
 func (o ClusterClientNodeConfigPtrOutput) ShrinkNodeIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterClientNodeConfig) []string {
 		if v == nil {
@@ -484,8 +390,6 @@ func (o ClusterClientNodeConfigPtrOutput) ShrinkNodeIds() pulumi.StringArrayOutp
 	}).(pulumi.StringArrayOutput)
 }
 
-// Specifies the information about the volume.
-// The volume structure is documented below.
 func (o ClusterClientNodeConfigPtrOutput) Volume() ClusterClientNodeConfigVolumePtrOutput {
 	return o.ApplyT(func(v *ClusterClientNodeConfig) *ClusterClientNodeConfigVolume {
 		if v == nil {
@@ -496,15 +400,7 @@ func (o ClusterClientNodeConfigPtrOutput) Volume() ClusterClientNodeConfigVolume
 }
 
 type ClusterClientNodeConfigVolume struct {
-	// Specifies the volume size in **GB**, which must be a multiple of `10`.
-	Size int `pulumi:"size"`
-	// Specifies the volume type. Value options are as follows:
-	// + **COMMON**: Common I/O. The SATA disk is used.
-	// + **HIGH**: High I/O. The SAS disk is used.
-	// + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-	//
-	// <a name="Css_public_access"></a>
-	// The `publicAccess` block supports:
+	Size       int    `pulumi:"size"`
 	VolumeType string `pulumi:"volumeType"`
 }
 
@@ -520,15 +416,7 @@ type ClusterClientNodeConfigVolumeInput interface {
 }
 
 type ClusterClientNodeConfigVolumeArgs struct {
-	// Specifies the volume size in **GB**, which must be a multiple of `10`.
-	Size pulumi.IntInput `pulumi:"size"`
-	// Specifies the volume type. Value options are as follows:
-	// + **COMMON**: Common I/O. The SATA disk is used.
-	// + **HIGH**: High I/O. The SAS disk is used.
-	// + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-	//
-	// <a name="Css_public_access"></a>
-	// The `publicAccess` block supports:
+	Size       pulumi.IntInput    `pulumi:"size"`
 	VolumeType pulumi.StringInput `pulumi:"volumeType"`
 }
 
@@ -609,18 +497,10 @@ func (o ClusterClientNodeConfigVolumeOutput) ToClusterClientNodeConfigVolumePtrO
 	}).(ClusterClientNodeConfigVolumePtrOutput)
 }
 
-// Specifies the volume size in **GB**, which must be a multiple of `10`.
 func (o ClusterClientNodeConfigVolumeOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterClientNodeConfigVolume) int { return v.Size }).(pulumi.IntOutput)
 }
 
-// Specifies the volume type. Value options are as follows:
-// + **COMMON**: Common I/O. The SATA disk is used.
-// + **HIGH**: High I/O. The SAS disk is used.
-// + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-//
-// <a name="Css_public_access"></a>
-// The `publicAccess` block supports:
 func (o ClusterClientNodeConfigVolumeOutput) VolumeType() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterClientNodeConfigVolume) string { return v.VolumeType }).(pulumi.StringOutput)
 }
@@ -649,7 +529,6 @@ func (o ClusterClientNodeConfigVolumePtrOutput) Elem() ClusterClientNodeConfigVo
 	}).(ClusterClientNodeConfigVolumeOutput)
 }
 
-// Specifies the volume size in **GB**, which must be a multiple of `10`.
 func (o ClusterClientNodeConfigVolumePtrOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterClientNodeConfigVolume) *int {
 		if v == nil {
@@ -659,13 +538,6 @@ func (o ClusterClientNodeConfigVolumePtrOutput) Size() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the volume type. Value options are as follows:
-// + **COMMON**: Common I/O. The SATA disk is used.
-// + **HIGH**: High I/O. The SAS disk is used.
-// + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-//
-// <a name="Css_public_access"></a>
-// The `publicAccess` block supports:
 func (o ClusterClientNodeConfigVolumePtrOutput) VolumeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClientNodeConfigVolume) *string {
 		if v == nil {
@@ -676,20 +548,10 @@ func (o ClusterClientNodeConfigVolumePtrOutput) VolumeType() pulumi.StringPtrOut
 }
 
 type ClusterColdNodeConfig struct {
-	// Specifies the flavor name.
-	Flavor string `pulumi:"flavor"`
-	// Specifies the number of cluster instances.
-	// + When it is `masterNodeConfig`, The value range is `3` to `10`.
-	// + When it is `clientNodeConfig`, The value range is `1` to `32`.
-	InstanceNumber int `pulumi:"instanceNumber"`
-	// Specifies the node IDs that needs to be scaled down.
-	//
-	// <a name="Css_master_or_client_volume"></a>
-	// The `volume` block supports:
-	ShrinkNodeIds []string `pulumi:"shrinkNodeIds"`
-	// Specifies the information about the volume.
-	// The volume structure is documented below.
-	Volume *ClusterColdNodeConfigVolume `pulumi:"volume"`
+	Flavor         string                       `pulumi:"flavor"`
+	InstanceNumber int                          `pulumi:"instanceNumber"`
+	ShrinkNodeIds  []string                     `pulumi:"shrinkNodeIds"`
+	Volume         *ClusterColdNodeConfigVolume `pulumi:"volume"`
 }
 
 // ClusterColdNodeConfigInput is an input type that accepts ClusterColdNodeConfigArgs and ClusterColdNodeConfigOutput values.
@@ -704,20 +566,10 @@ type ClusterColdNodeConfigInput interface {
 }
 
 type ClusterColdNodeConfigArgs struct {
-	// Specifies the flavor name.
-	Flavor pulumi.StringInput `pulumi:"flavor"`
-	// Specifies the number of cluster instances.
-	// + When it is `masterNodeConfig`, The value range is `3` to `10`.
-	// + When it is `clientNodeConfig`, The value range is `1` to `32`.
-	InstanceNumber pulumi.IntInput `pulumi:"instanceNumber"`
-	// Specifies the node IDs that needs to be scaled down.
-	//
-	// <a name="Css_master_or_client_volume"></a>
-	// The `volume` block supports:
-	ShrinkNodeIds pulumi.StringArrayInput `pulumi:"shrinkNodeIds"`
-	// Specifies the information about the volume.
-	// The volume structure is documented below.
-	Volume ClusterColdNodeConfigVolumePtrInput `pulumi:"volume"`
+	Flavor         pulumi.StringInput                  `pulumi:"flavor"`
+	InstanceNumber pulumi.IntInput                     `pulumi:"instanceNumber"`
+	ShrinkNodeIds  pulumi.StringArrayInput             `pulumi:"shrinkNodeIds"`
+	Volume         ClusterColdNodeConfigVolumePtrInput `pulumi:"volume"`
 }
 
 func (ClusterColdNodeConfigArgs) ElementType() reflect.Type {
@@ -797,28 +649,18 @@ func (o ClusterColdNodeConfigOutput) ToClusterColdNodeConfigPtrOutputWithContext
 	}).(ClusterColdNodeConfigPtrOutput)
 }
 
-// Specifies the flavor name.
 func (o ClusterColdNodeConfigOutput) Flavor() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterColdNodeConfig) string { return v.Flavor }).(pulumi.StringOutput)
 }
 
-// Specifies the number of cluster instances.
-// + When it is `masterNodeConfig`, The value range is `3` to `10`.
-// + When it is `clientNodeConfig`, The value range is `1` to `32`.
 func (o ClusterColdNodeConfigOutput) InstanceNumber() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterColdNodeConfig) int { return v.InstanceNumber }).(pulumi.IntOutput)
 }
 
-// Specifies the node IDs that needs to be scaled down.
-//
-// <a name="Css_master_or_client_volume"></a>
-// The `volume` block supports:
 func (o ClusterColdNodeConfigOutput) ShrinkNodeIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterColdNodeConfig) []string { return v.ShrinkNodeIds }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the information about the volume.
-// The volume structure is documented below.
 func (o ClusterColdNodeConfigOutput) Volume() ClusterColdNodeConfigVolumePtrOutput {
 	return o.ApplyT(func(v ClusterColdNodeConfig) *ClusterColdNodeConfigVolume { return v.Volume }).(ClusterColdNodeConfigVolumePtrOutput)
 }
@@ -847,7 +689,6 @@ func (o ClusterColdNodeConfigPtrOutput) Elem() ClusterColdNodeConfigOutput {
 	}).(ClusterColdNodeConfigOutput)
 }
 
-// Specifies the flavor name.
 func (o ClusterColdNodeConfigPtrOutput) Flavor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterColdNodeConfig) *string {
 		if v == nil {
@@ -857,9 +698,6 @@ func (o ClusterColdNodeConfigPtrOutput) Flavor() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the number of cluster instances.
-// + When it is `masterNodeConfig`, The value range is `3` to `10`.
-// + When it is `clientNodeConfig`, The value range is `1` to `32`.
 func (o ClusterColdNodeConfigPtrOutput) InstanceNumber() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterColdNodeConfig) *int {
 		if v == nil {
@@ -869,10 +707,6 @@ func (o ClusterColdNodeConfigPtrOutput) InstanceNumber() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the node IDs that needs to be scaled down.
-//
-// <a name="Css_master_or_client_volume"></a>
-// The `volume` block supports:
 func (o ClusterColdNodeConfigPtrOutput) ShrinkNodeIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterColdNodeConfig) []string {
 		if v == nil {
@@ -882,8 +716,6 @@ func (o ClusterColdNodeConfigPtrOutput) ShrinkNodeIds() pulumi.StringArrayOutput
 	}).(pulumi.StringArrayOutput)
 }
 
-// Specifies the information about the volume.
-// The volume structure is documented below.
 func (o ClusterColdNodeConfigPtrOutput) Volume() ClusterColdNodeConfigVolumePtrOutput {
 	return o.ApplyT(func(v *ClusterColdNodeConfig) *ClusterColdNodeConfigVolume {
 		if v == nil {
@@ -894,15 +726,7 @@ func (o ClusterColdNodeConfigPtrOutput) Volume() ClusterColdNodeConfigVolumePtrO
 }
 
 type ClusterColdNodeConfigVolume struct {
-	// Specifies the volume size in **GB**, which must be a multiple of `10`.
-	Size int `pulumi:"size"`
-	// Specifies the volume type. Value options are as follows:
-	// + **COMMON**: Common I/O. The SATA disk is used.
-	// + **HIGH**: High I/O. The SAS disk is used.
-	// + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-	//
-	// <a name="Css_public_access"></a>
-	// The `publicAccess` block supports:
+	Size       int    `pulumi:"size"`
 	VolumeType string `pulumi:"volumeType"`
 }
 
@@ -918,15 +742,7 @@ type ClusterColdNodeConfigVolumeInput interface {
 }
 
 type ClusterColdNodeConfigVolumeArgs struct {
-	// Specifies the volume size in **GB**, which must be a multiple of `10`.
-	Size pulumi.IntInput `pulumi:"size"`
-	// Specifies the volume type. Value options are as follows:
-	// + **COMMON**: Common I/O. The SATA disk is used.
-	// + **HIGH**: High I/O. The SAS disk is used.
-	// + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-	//
-	// <a name="Css_public_access"></a>
-	// The `publicAccess` block supports:
+	Size       pulumi.IntInput    `pulumi:"size"`
 	VolumeType pulumi.StringInput `pulumi:"volumeType"`
 }
 
@@ -1007,18 +823,10 @@ func (o ClusterColdNodeConfigVolumeOutput) ToClusterColdNodeConfigVolumePtrOutpu
 	}).(ClusterColdNodeConfigVolumePtrOutput)
 }
 
-// Specifies the volume size in **GB**, which must be a multiple of `10`.
 func (o ClusterColdNodeConfigVolumeOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterColdNodeConfigVolume) int { return v.Size }).(pulumi.IntOutput)
 }
 
-// Specifies the volume type. Value options are as follows:
-// + **COMMON**: Common I/O. The SATA disk is used.
-// + **HIGH**: High I/O. The SAS disk is used.
-// + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-//
-// <a name="Css_public_access"></a>
-// The `publicAccess` block supports:
 func (o ClusterColdNodeConfigVolumeOutput) VolumeType() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterColdNodeConfigVolume) string { return v.VolumeType }).(pulumi.StringOutput)
 }
@@ -1047,7 +855,6 @@ func (o ClusterColdNodeConfigVolumePtrOutput) Elem() ClusterColdNodeConfigVolume
 	}).(ClusterColdNodeConfigVolumeOutput)
 }
 
-// Specifies the volume size in **GB**, which must be a multiple of `10`.
 func (o ClusterColdNodeConfigVolumePtrOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterColdNodeConfigVolume) *int {
 		if v == nil {
@@ -1057,13 +864,6 @@ func (o ClusterColdNodeConfigVolumePtrOutput) Size() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the volume type. Value options are as follows:
-// + **COMMON**: Common I/O. The SATA disk is used.
-// + **HIGH**: High I/O. The SAS disk is used.
-// + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-//
-// <a name="Css_public_access"></a>
-// The `publicAccess` block supports:
 func (o ClusterColdNodeConfigVolumePtrOutput) VolumeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterColdNodeConfigVolume) *string {
 		if v == nil {
@@ -1074,20 +874,10 @@ func (o ClusterColdNodeConfigVolumePtrOutput) VolumeType() pulumi.StringPtrOutpu
 }
 
 type ClusterEssNodeConfig struct {
-	// Specifies the flavor name.
-	Flavor string `pulumi:"flavor"`
-	// Specifies the number of cluster instances.
-	// + When it is `masterNodeConfig`, The value range is `3` to `10`.
-	// + When it is `clientNodeConfig`, The value range is `1` to `32`.
-	InstanceNumber int `pulumi:"instanceNumber"`
-	// Specifies the node IDs that needs to be scaled down.
-	//
-	// <a name="Css_master_or_client_volume"></a>
-	// The `volume` block supports:
-	ShrinkNodeIds []string `pulumi:"shrinkNodeIds"`
-	// Specifies the information about the volume.
-	// The volume structure is documented below.
-	Volume *ClusterEssNodeConfigVolume `pulumi:"volume"`
+	Flavor         string                      `pulumi:"flavor"`
+	InstanceNumber int                         `pulumi:"instanceNumber"`
+	ShrinkNodeIds  []string                    `pulumi:"shrinkNodeIds"`
+	Volume         *ClusterEssNodeConfigVolume `pulumi:"volume"`
 }
 
 // ClusterEssNodeConfigInput is an input type that accepts ClusterEssNodeConfigArgs and ClusterEssNodeConfigOutput values.
@@ -1102,20 +892,10 @@ type ClusterEssNodeConfigInput interface {
 }
 
 type ClusterEssNodeConfigArgs struct {
-	// Specifies the flavor name.
-	Flavor pulumi.StringInput `pulumi:"flavor"`
-	// Specifies the number of cluster instances.
-	// + When it is `masterNodeConfig`, The value range is `3` to `10`.
-	// + When it is `clientNodeConfig`, The value range is `1` to `32`.
-	InstanceNumber pulumi.IntInput `pulumi:"instanceNumber"`
-	// Specifies the node IDs that needs to be scaled down.
-	//
-	// <a name="Css_master_or_client_volume"></a>
-	// The `volume` block supports:
-	ShrinkNodeIds pulumi.StringArrayInput `pulumi:"shrinkNodeIds"`
-	// Specifies the information about the volume.
-	// The volume structure is documented below.
-	Volume ClusterEssNodeConfigVolumePtrInput `pulumi:"volume"`
+	Flavor         pulumi.StringInput                 `pulumi:"flavor"`
+	InstanceNumber pulumi.IntInput                    `pulumi:"instanceNumber"`
+	ShrinkNodeIds  pulumi.StringArrayInput            `pulumi:"shrinkNodeIds"`
+	Volume         ClusterEssNodeConfigVolumePtrInput `pulumi:"volume"`
 }
 
 func (ClusterEssNodeConfigArgs) ElementType() reflect.Type {
@@ -1195,28 +975,18 @@ func (o ClusterEssNodeConfigOutput) ToClusterEssNodeConfigPtrOutputWithContext(c
 	}).(ClusterEssNodeConfigPtrOutput)
 }
 
-// Specifies the flavor name.
 func (o ClusterEssNodeConfigOutput) Flavor() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterEssNodeConfig) string { return v.Flavor }).(pulumi.StringOutput)
 }
 
-// Specifies the number of cluster instances.
-// + When it is `masterNodeConfig`, The value range is `3` to `10`.
-// + When it is `clientNodeConfig`, The value range is `1` to `32`.
 func (o ClusterEssNodeConfigOutput) InstanceNumber() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterEssNodeConfig) int { return v.InstanceNumber }).(pulumi.IntOutput)
 }
 
-// Specifies the node IDs that needs to be scaled down.
-//
-// <a name="Css_master_or_client_volume"></a>
-// The `volume` block supports:
 func (o ClusterEssNodeConfigOutput) ShrinkNodeIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterEssNodeConfig) []string { return v.ShrinkNodeIds }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the information about the volume.
-// The volume structure is documented below.
 func (o ClusterEssNodeConfigOutput) Volume() ClusterEssNodeConfigVolumePtrOutput {
 	return o.ApplyT(func(v ClusterEssNodeConfig) *ClusterEssNodeConfigVolume { return v.Volume }).(ClusterEssNodeConfigVolumePtrOutput)
 }
@@ -1245,7 +1015,6 @@ func (o ClusterEssNodeConfigPtrOutput) Elem() ClusterEssNodeConfigOutput {
 	}).(ClusterEssNodeConfigOutput)
 }
 
-// Specifies the flavor name.
 func (o ClusterEssNodeConfigPtrOutput) Flavor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterEssNodeConfig) *string {
 		if v == nil {
@@ -1255,9 +1024,6 @@ func (o ClusterEssNodeConfigPtrOutput) Flavor() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the number of cluster instances.
-// + When it is `masterNodeConfig`, The value range is `3` to `10`.
-// + When it is `clientNodeConfig`, The value range is `1` to `32`.
 func (o ClusterEssNodeConfigPtrOutput) InstanceNumber() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterEssNodeConfig) *int {
 		if v == nil {
@@ -1267,10 +1033,6 @@ func (o ClusterEssNodeConfigPtrOutput) InstanceNumber() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the node IDs that needs to be scaled down.
-//
-// <a name="Css_master_or_client_volume"></a>
-// The `volume` block supports:
 func (o ClusterEssNodeConfigPtrOutput) ShrinkNodeIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterEssNodeConfig) []string {
 		if v == nil {
@@ -1280,8 +1042,6 @@ func (o ClusterEssNodeConfigPtrOutput) ShrinkNodeIds() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
-// Specifies the information about the volume.
-// The volume structure is documented below.
 func (o ClusterEssNodeConfigPtrOutput) Volume() ClusterEssNodeConfigVolumePtrOutput {
 	return o.ApplyT(func(v *ClusterEssNodeConfig) *ClusterEssNodeConfigVolume {
 		if v == nil {
@@ -1292,15 +1052,7 @@ func (o ClusterEssNodeConfigPtrOutput) Volume() ClusterEssNodeConfigVolumePtrOut
 }
 
 type ClusterEssNodeConfigVolume struct {
-	// Specifies the volume size in **GB**, which must be a multiple of `10`.
-	Size int `pulumi:"size"`
-	// Specifies the volume type. Value options are as follows:
-	// + **COMMON**: Common I/O. The SATA disk is used.
-	// + **HIGH**: High I/O. The SAS disk is used.
-	// + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-	//
-	// <a name="Css_public_access"></a>
-	// The `publicAccess` block supports:
+	Size       int    `pulumi:"size"`
 	VolumeType string `pulumi:"volumeType"`
 }
 
@@ -1316,15 +1068,7 @@ type ClusterEssNodeConfigVolumeInput interface {
 }
 
 type ClusterEssNodeConfigVolumeArgs struct {
-	// Specifies the volume size in **GB**, which must be a multiple of `10`.
-	Size pulumi.IntInput `pulumi:"size"`
-	// Specifies the volume type. Value options are as follows:
-	// + **COMMON**: Common I/O. The SATA disk is used.
-	// + **HIGH**: High I/O. The SAS disk is used.
-	// + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-	//
-	// <a name="Css_public_access"></a>
-	// The `publicAccess` block supports:
+	Size       pulumi.IntInput    `pulumi:"size"`
 	VolumeType pulumi.StringInput `pulumi:"volumeType"`
 }
 
@@ -1405,18 +1149,10 @@ func (o ClusterEssNodeConfigVolumeOutput) ToClusterEssNodeConfigVolumePtrOutputW
 	}).(ClusterEssNodeConfigVolumePtrOutput)
 }
 
-// Specifies the volume size in **GB**, which must be a multiple of `10`.
 func (o ClusterEssNodeConfigVolumeOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterEssNodeConfigVolume) int { return v.Size }).(pulumi.IntOutput)
 }
 
-// Specifies the volume type. Value options are as follows:
-// + **COMMON**: Common I/O. The SATA disk is used.
-// + **HIGH**: High I/O. The SAS disk is used.
-// + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-//
-// <a name="Css_public_access"></a>
-// The `publicAccess` block supports:
 func (o ClusterEssNodeConfigVolumeOutput) VolumeType() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterEssNodeConfigVolume) string { return v.VolumeType }).(pulumi.StringOutput)
 }
@@ -1445,7 +1181,6 @@ func (o ClusterEssNodeConfigVolumePtrOutput) Elem() ClusterEssNodeConfigVolumeOu
 	}).(ClusterEssNodeConfigVolumeOutput)
 }
 
-// Specifies the volume size in **GB**, which must be a multiple of `10`.
 func (o ClusterEssNodeConfigVolumePtrOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterEssNodeConfigVolume) *int {
 		if v == nil {
@@ -1455,13 +1190,6 @@ func (o ClusterEssNodeConfigVolumePtrOutput) Size() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the volume type. Value options are as follows:
-// + **COMMON**: Common I/O. The SATA disk is used.
-// + **HIGH**: High I/O. The SAS disk is used.
-// + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-//
-// <a name="Css_public_access"></a>
-// The `publicAccess` block supports:
 func (o ClusterEssNodeConfigVolumePtrOutput) VolumeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterEssNodeConfigVolume) *string {
 		if v == nil {
@@ -1472,13 +1200,10 @@ func (o ClusterEssNodeConfigVolumePtrOutput) VolumeType() pulumi.StringPtrOutput
 }
 
 type ClusterKibanaPublicAccess struct {
-	// Specifies the public network bandwidth.
-	Bandwidth int     `pulumi:"bandwidth"`
-	PublicIp  *string `pulumi:"publicIp"`
-	// Specifies the whitelist of access control. The whitelisted account id must be unique.
-	Whitelist *string `pulumi:"whitelist"`
-	// Specifies whether to enable the public network access control.
-	WhitelistEnabled bool `pulumi:"whitelistEnabled"`
+	Bandwidth        int     `pulumi:"bandwidth"`
+	PublicIp         *string `pulumi:"publicIp"`
+	Whitelist        *string `pulumi:"whitelist"`
+	WhitelistEnabled bool    `pulumi:"whitelistEnabled"`
 }
 
 // ClusterKibanaPublicAccessInput is an input type that accepts ClusterKibanaPublicAccessArgs and ClusterKibanaPublicAccessOutput values.
@@ -1493,13 +1218,10 @@ type ClusterKibanaPublicAccessInput interface {
 }
 
 type ClusterKibanaPublicAccessArgs struct {
-	// Specifies the public network bandwidth.
-	Bandwidth pulumi.IntInput       `pulumi:"bandwidth"`
-	PublicIp  pulumi.StringPtrInput `pulumi:"publicIp"`
-	// Specifies the whitelist of access control. The whitelisted account id must be unique.
-	Whitelist pulumi.StringPtrInput `pulumi:"whitelist"`
-	// Specifies whether to enable the public network access control.
-	WhitelistEnabled pulumi.BoolInput `pulumi:"whitelistEnabled"`
+	Bandwidth        pulumi.IntInput       `pulumi:"bandwidth"`
+	PublicIp         pulumi.StringPtrInput `pulumi:"publicIp"`
+	Whitelist        pulumi.StringPtrInput `pulumi:"whitelist"`
+	WhitelistEnabled pulumi.BoolInput      `pulumi:"whitelistEnabled"`
 }
 
 func (ClusterKibanaPublicAccessArgs) ElementType() reflect.Type {
@@ -1579,7 +1301,6 @@ func (o ClusterKibanaPublicAccessOutput) ToClusterKibanaPublicAccessPtrOutputWit
 	}).(ClusterKibanaPublicAccessPtrOutput)
 }
 
-// Specifies the public network bandwidth.
 func (o ClusterKibanaPublicAccessOutput) Bandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterKibanaPublicAccess) int { return v.Bandwidth }).(pulumi.IntOutput)
 }
@@ -1588,12 +1309,10 @@ func (o ClusterKibanaPublicAccessOutput) PublicIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterKibanaPublicAccess) *string { return v.PublicIp }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the whitelist of access control. The whitelisted account id must be unique.
 func (o ClusterKibanaPublicAccessOutput) Whitelist() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterKibanaPublicAccess) *string { return v.Whitelist }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to enable the public network access control.
 func (o ClusterKibanaPublicAccessOutput) WhitelistEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterKibanaPublicAccess) bool { return v.WhitelistEnabled }).(pulumi.BoolOutput)
 }
@@ -1622,7 +1341,6 @@ func (o ClusterKibanaPublicAccessPtrOutput) Elem() ClusterKibanaPublicAccessOutp
 	}).(ClusterKibanaPublicAccessOutput)
 }
 
-// Specifies the public network bandwidth.
 func (o ClusterKibanaPublicAccessPtrOutput) Bandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterKibanaPublicAccess) *int {
 		if v == nil {
@@ -1641,7 +1359,6 @@ func (o ClusterKibanaPublicAccessPtrOutput) PublicIp() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the whitelist of access control. The whitelisted account id must be unique.
 func (o ClusterKibanaPublicAccessPtrOutput) Whitelist() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterKibanaPublicAccess) *string {
 		if v == nil {
@@ -1651,7 +1368,6 @@ func (o ClusterKibanaPublicAccessPtrOutput) Whitelist() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to enable the public network access control.
 func (o ClusterKibanaPublicAccessPtrOutput) WhitelistEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterKibanaPublicAccess) *bool {
 		if v == nil {
@@ -1662,20 +1378,10 @@ func (o ClusterKibanaPublicAccessPtrOutput) WhitelistEnabled() pulumi.BoolPtrOut
 }
 
 type ClusterMasterNodeConfig struct {
-	// Specifies the flavor name.
-	Flavor string `pulumi:"flavor"`
-	// Specifies the number of cluster instances.
-	// + When it is `masterNodeConfig`, The value range is `3` to `10`.
-	// + When it is `clientNodeConfig`, The value range is `1` to `32`.
-	InstanceNumber int `pulumi:"instanceNumber"`
-	// Specifies the node IDs that needs to be scaled down.
-	//
-	// <a name="Css_master_or_client_volume"></a>
-	// The `volume` block supports:
-	ShrinkNodeIds []string `pulumi:"shrinkNodeIds"`
-	// Specifies the information about the volume.
-	// The volume structure is documented below.
-	Volume ClusterMasterNodeConfigVolume `pulumi:"volume"`
+	Flavor         string                        `pulumi:"flavor"`
+	InstanceNumber int                           `pulumi:"instanceNumber"`
+	ShrinkNodeIds  []string                      `pulumi:"shrinkNodeIds"`
+	Volume         ClusterMasterNodeConfigVolume `pulumi:"volume"`
 }
 
 // ClusterMasterNodeConfigInput is an input type that accepts ClusterMasterNodeConfigArgs and ClusterMasterNodeConfigOutput values.
@@ -1690,20 +1396,10 @@ type ClusterMasterNodeConfigInput interface {
 }
 
 type ClusterMasterNodeConfigArgs struct {
-	// Specifies the flavor name.
-	Flavor pulumi.StringInput `pulumi:"flavor"`
-	// Specifies the number of cluster instances.
-	// + When it is `masterNodeConfig`, The value range is `3` to `10`.
-	// + When it is `clientNodeConfig`, The value range is `1` to `32`.
-	InstanceNumber pulumi.IntInput `pulumi:"instanceNumber"`
-	// Specifies the node IDs that needs to be scaled down.
-	//
-	// <a name="Css_master_or_client_volume"></a>
-	// The `volume` block supports:
-	ShrinkNodeIds pulumi.StringArrayInput `pulumi:"shrinkNodeIds"`
-	// Specifies the information about the volume.
-	// The volume structure is documented below.
-	Volume ClusterMasterNodeConfigVolumeInput `pulumi:"volume"`
+	Flavor         pulumi.StringInput                 `pulumi:"flavor"`
+	InstanceNumber pulumi.IntInput                    `pulumi:"instanceNumber"`
+	ShrinkNodeIds  pulumi.StringArrayInput            `pulumi:"shrinkNodeIds"`
+	Volume         ClusterMasterNodeConfigVolumeInput `pulumi:"volume"`
 }
 
 func (ClusterMasterNodeConfigArgs) ElementType() reflect.Type {
@@ -1783,28 +1479,18 @@ func (o ClusterMasterNodeConfigOutput) ToClusterMasterNodeConfigPtrOutputWithCon
 	}).(ClusterMasterNodeConfigPtrOutput)
 }
 
-// Specifies the flavor name.
 func (o ClusterMasterNodeConfigOutput) Flavor() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterMasterNodeConfig) string { return v.Flavor }).(pulumi.StringOutput)
 }
 
-// Specifies the number of cluster instances.
-// + When it is `masterNodeConfig`, The value range is `3` to `10`.
-// + When it is `clientNodeConfig`, The value range is `1` to `32`.
 func (o ClusterMasterNodeConfigOutput) InstanceNumber() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterMasterNodeConfig) int { return v.InstanceNumber }).(pulumi.IntOutput)
 }
 
-// Specifies the node IDs that needs to be scaled down.
-//
-// <a name="Css_master_or_client_volume"></a>
-// The `volume` block supports:
 func (o ClusterMasterNodeConfigOutput) ShrinkNodeIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterMasterNodeConfig) []string { return v.ShrinkNodeIds }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the information about the volume.
-// The volume structure is documented below.
 func (o ClusterMasterNodeConfigOutput) Volume() ClusterMasterNodeConfigVolumeOutput {
 	return o.ApplyT(func(v ClusterMasterNodeConfig) ClusterMasterNodeConfigVolume { return v.Volume }).(ClusterMasterNodeConfigVolumeOutput)
 }
@@ -1833,7 +1519,6 @@ func (o ClusterMasterNodeConfigPtrOutput) Elem() ClusterMasterNodeConfigOutput {
 	}).(ClusterMasterNodeConfigOutput)
 }
 
-// Specifies the flavor name.
 func (o ClusterMasterNodeConfigPtrOutput) Flavor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterMasterNodeConfig) *string {
 		if v == nil {
@@ -1843,9 +1528,6 @@ func (o ClusterMasterNodeConfigPtrOutput) Flavor() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the number of cluster instances.
-// + When it is `masterNodeConfig`, The value range is `3` to `10`.
-// + When it is `clientNodeConfig`, The value range is `1` to `32`.
 func (o ClusterMasterNodeConfigPtrOutput) InstanceNumber() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterMasterNodeConfig) *int {
 		if v == nil {
@@ -1855,10 +1537,6 @@ func (o ClusterMasterNodeConfigPtrOutput) InstanceNumber() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the node IDs that needs to be scaled down.
-//
-// <a name="Css_master_or_client_volume"></a>
-// The `volume` block supports:
 func (o ClusterMasterNodeConfigPtrOutput) ShrinkNodeIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterMasterNodeConfig) []string {
 		if v == nil {
@@ -1868,8 +1546,6 @@ func (o ClusterMasterNodeConfigPtrOutput) ShrinkNodeIds() pulumi.StringArrayOutp
 	}).(pulumi.StringArrayOutput)
 }
 
-// Specifies the information about the volume.
-// The volume structure is documented below.
 func (o ClusterMasterNodeConfigPtrOutput) Volume() ClusterMasterNodeConfigVolumePtrOutput {
 	return o.ApplyT(func(v *ClusterMasterNodeConfig) *ClusterMasterNodeConfigVolume {
 		if v == nil {
@@ -1880,15 +1556,7 @@ func (o ClusterMasterNodeConfigPtrOutput) Volume() ClusterMasterNodeConfigVolume
 }
 
 type ClusterMasterNodeConfigVolume struct {
-	// Specifies the volume size in **GB**, which must be a multiple of `10`.
-	Size int `pulumi:"size"`
-	// Specifies the volume type. Value options are as follows:
-	// + **COMMON**: Common I/O. The SATA disk is used.
-	// + **HIGH**: High I/O. The SAS disk is used.
-	// + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-	//
-	// <a name="Css_public_access"></a>
-	// The `publicAccess` block supports:
+	Size       int    `pulumi:"size"`
 	VolumeType string `pulumi:"volumeType"`
 }
 
@@ -1904,15 +1572,7 @@ type ClusterMasterNodeConfigVolumeInput interface {
 }
 
 type ClusterMasterNodeConfigVolumeArgs struct {
-	// Specifies the volume size in **GB**, which must be a multiple of `10`.
-	Size pulumi.IntInput `pulumi:"size"`
-	// Specifies the volume type. Value options are as follows:
-	// + **COMMON**: Common I/O. The SATA disk is used.
-	// + **HIGH**: High I/O. The SAS disk is used.
-	// + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-	//
-	// <a name="Css_public_access"></a>
-	// The `publicAccess` block supports:
+	Size       pulumi.IntInput    `pulumi:"size"`
 	VolumeType pulumi.StringInput `pulumi:"volumeType"`
 }
 
@@ -1993,18 +1653,10 @@ func (o ClusterMasterNodeConfigVolumeOutput) ToClusterMasterNodeConfigVolumePtrO
 	}).(ClusterMasterNodeConfigVolumePtrOutput)
 }
 
-// Specifies the volume size in **GB**, which must be a multiple of `10`.
 func (o ClusterMasterNodeConfigVolumeOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterMasterNodeConfigVolume) int { return v.Size }).(pulumi.IntOutput)
 }
 
-// Specifies the volume type. Value options are as follows:
-// + **COMMON**: Common I/O. The SATA disk is used.
-// + **HIGH**: High I/O. The SAS disk is used.
-// + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-//
-// <a name="Css_public_access"></a>
-// The `publicAccess` block supports:
 func (o ClusterMasterNodeConfigVolumeOutput) VolumeType() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterMasterNodeConfigVolume) string { return v.VolumeType }).(pulumi.StringOutput)
 }
@@ -2033,7 +1685,6 @@ func (o ClusterMasterNodeConfigVolumePtrOutput) Elem() ClusterMasterNodeConfigVo
 	}).(ClusterMasterNodeConfigVolumeOutput)
 }
 
-// Specifies the volume size in **GB**, which must be a multiple of `10`.
 func (o ClusterMasterNodeConfigVolumePtrOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterMasterNodeConfigVolume) *int {
 		if v == nil {
@@ -2043,13 +1694,6 @@ func (o ClusterMasterNodeConfigVolumePtrOutput) Size() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the volume type. Value options are as follows:
-// + **COMMON**: Common I/O. The SATA disk is used.
-// + **HIGH**: High I/O. The SAS disk is used.
-// + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-//
-// <a name="Css_public_access"></a>
-// The `publicAccess` block supports:
 func (o ClusterMasterNodeConfigVolumePtrOutput) VolumeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterMasterNodeConfigVolume) *string {
 		if v == nil {
@@ -2060,32 +1704,14 @@ func (o ClusterMasterNodeConfigVolumePtrOutput) VolumeType() pulumi.StringPtrOut
 }
 
 type ClusterNode struct {
-	// Specifies the availability zone name.
-	// Separate multiple AZs with commas (,), for example, az1,az2. AZs must be unique. The number of nodes must be greater
-	// than or equal to the number of AZs. If the number of nodes is a multiple of the number of AZs, the nodes are evenly
-	// distributed to each AZ. If the number of nodes is not a multiple of the number of AZs, the absolute difference
-	// between node quantity in any two AZs is **1** at most.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Instance ID.
-	Id *string `pulumi:"id"`
-	// Instance IP address.
-	Ip *string `pulumi:"ip"`
-	// Specifies the cluster name. It contains `4` to `32` characters.
-	// Only letters, digits, hyphens (-), and underscores (_) are allowed. The value must start with a letter.
-	// Changing this parameter will create a new resource.
-	Name *string `pulumi:"name"`
-	// The resource ID of this instance.
-	ResourceId *string `pulumi:"resourceId"`
-	// Instance specification code.
-	SpecCode *string `pulumi:"specCode"`
-	// Instance status.
-	Status *string `pulumi:"status"`
-	// Node type. The options are as follows:
-	// + **ess-master:** Indicates a master node.
-	// + **ess-client:** Indicates a client node.
-	// + **ess-cold:** Indicates a cold data node.
-	// + **ess indicates:** Indicates a data node.
-	Type *string `pulumi:"type"`
+	Id               *string `pulumi:"id"`
+	Ip               *string `pulumi:"ip"`
+	Name             *string `pulumi:"name"`
+	ResourceId       *string `pulumi:"resourceId"`
+	SpecCode         *string `pulumi:"specCode"`
+	Status           *string `pulumi:"status"`
+	Type             *string `pulumi:"type"`
 }
 
 // ClusterNodeInput is an input type that accepts ClusterNodeArgs and ClusterNodeOutput values.
@@ -2100,32 +1726,14 @@ type ClusterNodeInput interface {
 }
 
 type ClusterNodeArgs struct {
-	// Specifies the availability zone name.
-	// Separate multiple AZs with commas (,), for example, az1,az2. AZs must be unique. The number of nodes must be greater
-	// than or equal to the number of AZs. If the number of nodes is a multiple of the number of AZs, the nodes are evenly
-	// distributed to each AZ. If the number of nodes is not a multiple of the number of AZs, the absolute difference
-	// between node quantity in any two AZs is **1** at most.
 	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
-	// Instance ID.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Instance IP address.
-	Ip pulumi.StringPtrInput `pulumi:"ip"`
-	// Specifies the cluster name. It contains `4` to `32` characters.
-	// Only letters, digits, hyphens (-), and underscores (_) are allowed. The value must start with a letter.
-	// Changing this parameter will create a new resource.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The resource ID of this instance.
-	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
-	// Instance specification code.
-	SpecCode pulumi.StringPtrInput `pulumi:"specCode"`
-	// Instance status.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-	// Node type. The options are as follows:
-	// + **ess-master:** Indicates a master node.
-	// + **ess-client:** Indicates a client node.
-	// + **ess-cold:** Indicates a cold data node.
-	// + **ess indicates:** Indicates a data node.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Id               pulumi.StringPtrInput `pulumi:"id"`
+	Ip               pulumi.StringPtrInput `pulumi:"ip"`
+	Name             pulumi.StringPtrInput `pulumi:"name"`
+	ResourceId       pulumi.StringPtrInput `pulumi:"resourceId"`
+	SpecCode         pulumi.StringPtrInput `pulumi:"specCode"`
+	Status           pulumi.StringPtrInput `pulumi:"status"`
+	Type             pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (ClusterNodeArgs) ElementType() reflect.Type {
@@ -2179,52 +1787,34 @@ func (o ClusterNodeOutput) ToClusterNodeOutputWithContext(ctx context.Context) C
 	return o
 }
 
-// Specifies the availability zone name.
-// Separate multiple AZs with commas (,), for example, az1,az2. AZs must be unique. The number of nodes must be greater
-// than or equal to the number of AZs. If the number of nodes is a multiple of the number of AZs, the nodes are evenly
-// distributed to each AZ. If the number of nodes is not a multiple of the number of AZs, the absolute difference
-// between node quantity in any two AZs is **1** at most.
 func (o ClusterNodeOutput) AvailabilityZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNode) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
 }
 
-// Instance ID.
 func (o ClusterNodeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNode) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Instance IP address.
 func (o ClusterNodeOutput) Ip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNode) *string { return v.Ip }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the cluster name. It contains `4` to `32` characters.
-// Only letters, digits, hyphens (-), and underscores (_) are allowed. The value must start with a letter.
-// Changing this parameter will create a new resource.
 func (o ClusterNodeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNode) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The resource ID of this instance.
 func (o ClusterNodeOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNode) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
 }
 
-// Instance specification code.
 func (o ClusterNodeOutput) SpecCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNode) *string { return v.SpecCode }).(pulumi.StringPtrOutput)
 }
 
-// Instance status.
 func (o ClusterNodeOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNode) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// Node type. The options are as follows:
-// + **ess-master:** Indicates a master node.
-// + **ess-client:** Indicates a client node.
-// + **ess-cold:** Indicates a cold data node.
-// + **ess indicates:** Indicates a data node.
 func (o ClusterNodeOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNode) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -2250,18 +1840,10 @@ func (o ClusterNodeArrayOutput) Index(i pulumi.IntInput) ClusterNodeOutput {
 }
 
 type ClusterNodeConfig struct {
-	// Specifies the availability zone name.
-	// Separate multiple AZs with commas (,), for example, az1,az2. AZs must be unique. The number of nodes must be greater
-	// than or equal to the number of AZs. If the number of nodes is a multiple of the number of AZs, the nodes are evenly
-	// distributed to each AZ. If the number of nodes is not a multiple of the number of AZs, the absolute difference
-	// between node quantity in any two AZs is **1** at most.
-	AvailabilityZone string `pulumi:"availabilityZone"`
-	// Specifies the flavor name.
-	Flavor      string                       `pulumi:"flavor"`
-	NetworkInfo ClusterNodeConfigNetworkInfo `pulumi:"networkInfo"`
-	// Specifies the information about the volume.
-	// The volume structure is documented below.
-	Volume ClusterNodeConfigVolume `pulumi:"volume"`
+	AvailabilityZone string                       `pulumi:"availabilityZone"`
+	Flavor           string                       `pulumi:"flavor"`
+	NetworkInfo      ClusterNodeConfigNetworkInfo `pulumi:"networkInfo"`
+	Volume           ClusterNodeConfigVolume      `pulumi:"volume"`
 }
 
 // ClusterNodeConfigInput is an input type that accepts ClusterNodeConfigArgs and ClusterNodeConfigOutput values.
@@ -2276,18 +1858,10 @@ type ClusterNodeConfigInput interface {
 }
 
 type ClusterNodeConfigArgs struct {
-	// Specifies the availability zone name.
-	// Separate multiple AZs with commas (,), for example, az1,az2. AZs must be unique. The number of nodes must be greater
-	// than or equal to the number of AZs. If the number of nodes is a multiple of the number of AZs, the nodes are evenly
-	// distributed to each AZ. If the number of nodes is not a multiple of the number of AZs, the absolute difference
-	// between node quantity in any two AZs is **1** at most.
-	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
-	// Specifies the flavor name.
-	Flavor      pulumi.StringInput                `pulumi:"flavor"`
-	NetworkInfo ClusterNodeConfigNetworkInfoInput `pulumi:"networkInfo"`
-	// Specifies the information about the volume.
-	// The volume structure is documented below.
-	Volume ClusterNodeConfigVolumeInput `pulumi:"volume"`
+	AvailabilityZone pulumi.StringInput                `pulumi:"availabilityZone"`
+	Flavor           pulumi.StringInput                `pulumi:"flavor"`
+	NetworkInfo      ClusterNodeConfigNetworkInfoInput `pulumi:"networkInfo"`
+	Volume           ClusterNodeConfigVolumeInput      `pulumi:"volume"`
 }
 
 func (ClusterNodeConfigArgs) ElementType() reflect.Type {
@@ -2367,16 +1941,10 @@ func (o ClusterNodeConfigOutput) ToClusterNodeConfigPtrOutputWithContext(ctx con
 	}).(ClusterNodeConfigPtrOutput)
 }
 
-// Specifies the availability zone name.
-// Separate multiple AZs with commas (,), for example, az1,az2. AZs must be unique. The number of nodes must be greater
-// than or equal to the number of AZs. If the number of nodes is a multiple of the number of AZs, the nodes are evenly
-// distributed to each AZ. If the number of nodes is not a multiple of the number of AZs, the absolute difference
-// between node quantity in any two AZs is **1** at most.
 func (o ClusterNodeConfigOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// Specifies the flavor name.
 func (o ClusterNodeConfigOutput) Flavor() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) string { return v.Flavor }).(pulumi.StringOutput)
 }
@@ -2385,8 +1953,6 @@ func (o ClusterNodeConfigOutput) NetworkInfo() ClusterNodeConfigNetworkInfoOutpu
 	return o.ApplyT(func(v ClusterNodeConfig) ClusterNodeConfigNetworkInfo { return v.NetworkInfo }).(ClusterNodeConfigNetworkInfoOutput)
 }
 
-// Specifies the information about the volume.
-// The volume structure is documented below.
 func (o ClusterNodeConfigOutput) Volume() ClusterNodeConfigVolumeOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) ClusterNodeConfigVolume { return v.Volume }).(ClusterNodeConfigVolumeOutput)
 }
@@ -2415,11 +1981,6 @@ func (o ClusterNodeConfigPtrOutput) Elem() ClusterNodeConfigOutput {
 	}).(ClusterNodeConfigOutput)
 }
 
-// Specifies the availability zone name.
-// Separate multiple AZs with commas (,), for example, az1,az2. AZs must be unique. The number of nodes must be greater
-// than or equal to the number of AZs. If the number of nodes is a multiple of the number of AZs, the nodes are evenly
-// distributed to each AZ. If the number of nodes is not a multiple of the number of AZs, the absolute difference
-// between node quantity in any two AZs is **1** at most.
 func (o ClusterNodeConfigPtrOutput) AvailabilityZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *string {
 		if v == nil {
@@ -2429,7 +1990,6 @@ func (o ClusterNodeConfigPtrOutput) AvailabilityZone() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the flavor name.
 func (o ClusterNodeConfigPtrOutput) Flavor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *string {
 		if v == nil {
@@ -2448,8 +2008,6 @@ func (o ClusterNodeConfigPtrOutput) NetworkInfo() ClusterNodeConfigNetworkInfoPt
 	}).(ClusterNodeConfigNetworkInfoPtrOutput)
 }
 
-// Specifies the information about the volume.
-// The volume structure is documented below.
 func (o ClusterNodeConfigPtrOutput) Volume() ClusterNodeConfigVolumePtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigVolume {
 		if v == nil {
@@ -2460,14 +2018,9 @@ func (o ClusterNodeConfigPtrOutput) Volume() ClusterNodeConfigVolumePtrOutput {
 }
 
 type ClusterNodeConfigNetworkInfo struct {
-	// Specifies the security group ID.
 	SecurityGroupId string `pulumi:"securityGroupId"`
-	// Specifies the Subnet ID.
-	// Changing this parameter will create a new resource.
-	SubnetId string `pulumi:"subnetId"`
-	// Specifies the VPC ID.
-	// Changing this parameter will create a new resource.
-	VpcId string `pulumi:"vpcId"`
+	SubnetId        string `pulumi:"subnetId"`
+	VpcId           string `pulumi:"vpcId"`
 }
 
 // ClusterNodeConfigNetworkInfoInput is an input type that accepts ClusterNodeConfigNetworkInfoArgs and ClusterNodeConfigNetworkInfoOutput values.
@@ -2482,14 +2035,9 @@ type ClusterNodeConfigNetworkInfoInput interface {
 }
 
 type ClusterNodeConfigNetworkInfoArgs struct {
-	// Specifies the security group ID.
 	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
-	// Specifies the Subnet ID.
-	// Changing this parameter will create a new resource.
-	SubnetId pulumi.StringInput `pulumi:"subnetId"`
-	// Specifies the VPC ID.
-	// Changing this parameter will create a new resource.
-	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	SubnetId        pulumi.StringInput `pulumi:"subnetId"`
+	VpcId           pulumi.StringInput `pulumi:"vpcId"`
 }
 
 func (ClusterNodeConfigNetworkInfoArgs) ElementType() reflect.Type {
@@ -2569,19 +2117,14 @@ func (o ClusterNodeConfigNetworkInfoOutput) ToClusterNodeConfigNetworkInfoPtrOut
 	}).(ClusterNodeConfigNetworkInfoPtrOutput)
 }
 
-// Specifies the security group ID.
 func (o ClusterNodeConfigNetworkInfoOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeConfigNetworkInfo) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
-// Specifies the Subnet ID.
-// Changing this parameter will create a new resource.
 func (o ClusterNodeConfigNetworkInfoOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeConfigNetworkInfo) string { return v.SubnetId }).(pulumi.StringOutput)
 }
 
-// Specifies the VPC ID.
-// Changing this parameter will create a new resource.
 func (o ClusterNodeConfigNetworkInfoOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeConfigNetworkInfo) string { return v.VpcId }).(pulumi.StringOutput)
 }
@@ -2610,7 +2153,6 @@ func (o ClusterNodeConfigNetworkInfoPtrOutput) Elem() ClusterNodeConfigNetworkIn
 	}).(ClusterNodeConfigNetworkInfoOutput)
 }
 
-// Specifies the security group ID.
 func (o ClusterNodeConfigNetworkInfoPtrOutput) SecurityGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfigNetworkInfo) *string {
 		if v == nil {
@@ -2620,8 +2162,6 @@ func (o ClusterNodeConfigNetworkInfoPtrOutput) SecurityGroupId() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the Subnet ID.
-// Changing this parameter will create a new resource.
 func (o ClusterNodeConfigNetworkInfoPtrOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfigNetworkInfo) *string {
 		if v == nil {
@@ -2631,8 +2171,6 @@ func (o ClusterNodeConfigNetworkInfoPtrOutput) SubnetId() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the VPC ID.
-// Changing this parameter will create a new resource.
 func (o ClusterNodeConfigNetworkInfoPtrOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfigNetworkInfo) *string {
 		if v == nil {
@@ -2643,15 +2181,7 @@ func (o ClusterNodeConfigNetworkInfoPtrOutput) VpcId() pulumi.StringPtrOutput {
 }
 
 type ClusterNodeConfigVolume struct {
-	// Specifies the volume size in **GB**, which must be a multiple of `10`.
-	Size int `pulumi:"size"`
-	// Specifies the volume type. Value options are as follows:
-	// + **COMMON**: Common I/O. The SATA disk is used.
-	// + **HIGH**: High I/O. The SAS disk is used.
-	// + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-	//
-	// <a name="Css_public_access"></a>
-	// The `publicAccess` block supports:
+	Size       int    `pulumi:"size"`
 	VolumeType string `pulumi:"volumeType"`
 }
 
@@ -2667,15 +2197,7 @@ type ClusterNodeConfigVolumeInput interface {
 }
 
 type ClusterNodeConfigVolumeArgs struct {
-	// Specifies the volume size in **GB**, which must be a multiple of `10`.
-	Size pulumi.IntInput `pulumi:"size"`
-	// Specifies the volume type. Value options are as follows:
-	// + **COMMON**: Common I/O. The SATA disk is used.
-	// + **HIGH**: High I/O. The SAS disk is used.
-	// + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-	//
-	// <a name="Css_public_access"></a>
-	// The `publicAccess` block supports:
+	Size       pulumi.IntInput    `pulumi:"size"`
 	VolumeType pulumi.StringInput `pulumi:"volumeType"`
 }
 
@@ -2756,18 +2278,10 @@ func (o ClusterNodeConfigVolumeOutput) ToClusterNodeConfigVolumePtrOutputWithCon
 	}).(ClusterNodeConfigVolumePtrOutput)
 }
 
-// Specifies the volume size in **GB**, which must be a multiple of `10`.
 func (o ClusterNodeConfigVolumeOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterNodeConfigVolume) int { return v.Size }).(pulumi.IntOutput)
 }
 
-// Specifies the volume type. Value options are as follows:
-// + **COMMON**: Common I/O. The SATA disk is used.
-// + **HIGH**: High I/O. The SAS disk is used.
-// + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-//
-// <a name="Css_public_access"></a>
-// The `publicAccess` block supports:
 func (o ClusterNodeConfigVolumeOutput) VolumeType() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeConfigVolume) string { return v.VolumeType }).(pulumi.StringOutput)
 }
@@ -2796,7 +2310,6 @@ func (o ClusterNodeConfigVolumePtrOutput) Elem() ClusterNodeConfigVolumeOutput {
 	}).(ClusterNodeConfigVolumeOutput)
 }
 
-// Specifies the volume size in **GB**, which must be a multiple of `10`.
 func (o ClusterNodeConfigVolumePtrOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfigVolume) *int {
 		if v == nil {
@@ -2806,13 +2319,6 @@ func (o ClusterNodeConfigVolumePtrOutput) Size() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the volume type. Value options are as follows:
-// + **COMMON**: Common I/O. The SATA disk is used.
-// + **HIGH**: High I/O. The SAS disk is used.
-// + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-//
-// <a name="Css_public_access"></a>
-// The `publicAccess` block supports:
 func (o ClusterNodeConfigVolumePtrOutput) VolumeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfigVolume) *string {
 		if v == nil {
@@ -2823,13 +2329,10 @@ func (o ClusterNodeConfigVolumePtrOutput) VolumeType() pulumi.StringPtrOutput {
 }
 
 type ClusterPublicAccess struct {
-	// Specifies the public network bandwidth.
-	Bandwidth int     `pulumi:"bandwidth"`
-	PublicIp  *string `pulumi:"publicIp"`
-	// Specifies the whitelist of access control. The whitelisted account id must be unique.
-	Whitelist *string `pulumi:"whitelist"`
-	// Specifies whether to enable the public network access control.
-	WhitelistEnabled bool `pulumi:"whitelistEnabled"`
+	Bandwidth        int     `pulumi:"bandwidth"`
+	PublicIp         *string `pulumi:"publicIp"`
+	Whitelist        *string `pulumi:"whitelist"`
+	WhitelistEnabled bool    `pulumi:"whitelistEnabled"`
 }
 
 // ClusterPublicAccessInput is an input type that accepts ClusterPublicAccessArgs and ClusterPublicAccessOutput values.
@@ -2844,13 +2347,10 @@ type ClusterPublicAccessInput interface {
 }
 
 type ClusterPublicAccessArgs struct {
-	// Specifies the public network bandwidth.
-	Bandwidth pulumi.IntInput       `pulumi:"bandwidth"`
-	PublicIp  pulumi.StringPtrInput `pulumi:"publicIp"`
-	// Specifies the whitelist of access control. The whitelisted account id must be unique.
-	Whitelist pulumi.StringPtrInput `pulumi:"whitelist"`
-	// Specifies whether to enable the public network access control.
-	WhitelistEnabled pulumi.BoolInput `pulumi:"whitelistEnabled"`
+	Bandwidth        pulumi.IntInput       `pulumi:"bandwidth"`
+	PublicIp         pulumi.StringPtrInput `pulumi:"publicIp"`
+	Whitelist        pulumi.StringPtrInput `pulumi:"whitelist"`
+	WhitelistEnabled pulumi.BoolInput      `pulumi:"whitelistEnabled"`
 }
 
 func (ClusterPublicAccessArgs) ElementType() reflect.Type {
@@ -2930,7 +2430,6 @@ func (o ClusterPublicAccessOutput) ToClusterPublicAccessPtrOutputWithContext(ctx
 	}).(ClusterPublicAccessPtrOutput)
 }
 
-// Specifies the public network bandwidth.
 func (o ClusterPublicAccessOutput) Bandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterPublicAccess) int { return v.Bandwidth }).(pulumi.IntOutput)
 }
@@ -2939,12 +2438,10 @@ func (o ClusterPublicAccessOutput) PublicIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterPublicAccess) *string { return v.PublicIp }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the whitelist of access control. The whitelisted account id must be unique.
 func (o ClusterPublicAccessOutput) Whitelist() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterPublicAccess) *string { return v.Whitelist }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to enable the public network access control.
 func (o ClusterPublicAccessOutput) WhitelistEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterPublicAccess) bool { return v.WhitelistEnabled }).(pulumi.BoolOutput)
 }
@@ -2973,7 +2470,6 @@ func (o ClusterPublicAccessPtrOutput) Elem() ClusterPublicAccessOutput {
 	}).(ClusterPublicAccessOutput)
 }
 
-// Specifies the public network bandwidth.
 func (o ClusterPublicAccessPtrOutput) Bandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterPublicAccess) *int {
 		if v == nil {
@@ -2992,7 +2488,6 @@ func (o ClusterPublicAccessPtrOutput) PublicIp() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the whitelist of access control. The whitelisted account id must be unique.
 func (o ClusterPublicAccessPtrOutput) Whitelist() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterPublicAccess) *string {
 		if v == nil {
@@ -3002,7 +2497,6 @@ func (o ClusterPublicAccessPtrOutput) Whitelist() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to enable the public network access control.
 func (o ClusterPublicAccessPtrOutput) WhitelistEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterPublicAccess) *bool {
 		if v == nil {
@@ -3013,10 +2507,8 @@ func (o ClusterPublicAccessPtrOutput) WhitelistEnabled() pulumi.BoolPtrOutput {
 }
 
 type ClusterVpcepEndpoint struct {
-	// Specifies whether to enable the private domain name.
-	EndpointWithDnsName bool `pulumi:"endpointWithDnsName"`
-	// Specifies the whitelist of access control. The whitelisted account id must be unique.
-	Whitelists []string `pulumi:"whitelists"`
+	EndpointWithDnsName bool     `pulumi:"endpointWithDnsName"`
+	Whitelists          []string `pulumi:"whitelists"`
 }
 
 // ClusterVpcepEndpointInput is an input type that accepts ClusterVpcepEndpointArgs and ClusterVpcepEndpointOutput values.
@@ -3031,10 +2523,8 @@ type ClusterVpcepEndpointInput interface {
 }
 
 type ClusterVpcepEndpointArgs struct {
-	// Specifies whether to enable the private domain name.
-	EndpointWithDnsName pulumi.BoolInput `pulumi:"endpointWithDnsName"`
-	// Specifies the whitelist of access control. The whitelisted account id must be unique.
-	Whitelists pulumi.StringArrayInput `pulumi:"whitelists"`
+	EndpointWithDnsName pulumi.BoolInput        `pulumi:"endpointWithDnsName"`
+	Whitelists          pulumi.StringArrayInput `pulumi:"whitelists"`
 }
 
 func (ClusterVpcepEndpointArgs) ElementType() reflect.Type {
@@ -3114,12 +2604,10 @@ func (o ClusterVpcepEndpointOutput) ToClusterVpcepEndpointPtrOutputWithContext(c
 	}).(ClusterVpcepEndpointPtrOutput)
 }
 
-// Specifies whether to enable the private domain name.
 func (o ClusterVpcepEndpointOutput) EndpointWithDnsName() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterVpcepEndpoint) bool { return v.EndpointWithDnsName }).(pulumi.BoolOutput)
 }
 
-// Specifies the whitelist of access control. The whitelisted account id must be unique.
 func (o ClusterVpcepEndpointOutput) Whitelists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterVpcepEndpoint) []string { return v.Whitelists }).(pulumi.StringArrayOutput)
 }
@@ -3148,7 +2636,6 @@ func (o ClusterVpcepEndpointPtrOutput) Elem() ClusterVpcepEndpointOutput {
 	}).(ClusterVpcepEndpointOutput)
 }
 
-// Specifies whether to enable the private domain name.
 func (o ClusterVpcepEndpointPtrOutput) EndpointWithDnsName() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterVpcepEndpoint) *bool {
 		if v == nil {
@@ -3158,7 +2645,6 @@ func (o ClusterVpcepEndpointPtrOutput) EndpointWithDnsName() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the whitelist of access control. The whitelisted account id must be unique.
 func (o ClusterVpcepEndpointPtrOutput) Whitelists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterVpcepEndpoint) []string {
 		if v == nil {
@@ -3170,25 +2656,14 @@ func (o ClusterVpcepEndpointPtrOutput) Whitelists() pulumi.StringArrayOutput {
 
 type GetFlavorsFlavor struct {
 	AvailabilityZones string `pulumi:"availabilityZones"`
-	// The disk capacity range of an instance, in GB.
-	DiskRange string `pulumi:"diskRange"`
-	// The ID of CSS flavor.
-	Id string `pulumi:"id"`
-	// Specifies the memory size(GB) in the CSS flavor.
-	Memory int `pulumi:"memory"`
-	// Specifies the name of the CSS flavor.
-	Name string `pulumi:"name"`
-	// Specifies the region in which to obtain the CSS flavors. If omitted, the
-	// provider-level region will be used.
-	Region string `pulumi:"region"`
-	// Specifies the node instance type. The options are `ess`, `ess-cold`, `ess-master`
-	// and `ess-client`.
-	Type string `pulumi:"type"`
-	// Specifies the number of vCPUs in the CSS flavor.
-	Vcpus int `pulumi:"vcpus"`
-	// Specifies the engine version. The options are `5.5.1`, `6.2.3`, `6.5.4`, `7.1.1`,
-	// `7.6.2` and `7.9.3`.
-	Version string `pulumi:"version"`
+	DiskRange         string `pulumi:"diskRange"`
+	Id                string `pulumi:"id"`
+	Memory            int    `pulumi:"memory"`
+	Name              string `pulumi:"name"`
+	Region            string `pulumi:"region"`
+	Type              string `pulumi:"type"`
+	Vcpus             int    `pulumi:"vcpus"`
+	Version           string `pulumi:"version"`
 }
 
 // GetFlavorsFlavorInput is an input type that accepts GetFlavorsFlavorArgs and GetFlavorsFlavorOutput values.
@@ -3204,25 +2679,14 @@ type GetFlavorsFlavorInput interface {
 
 type GetFlavorsFlavorArgs struct {
 	AvailabilityZones pulumi.StringInput `pulumi:"availabilityZones"`
-	// The disk capacity range of an instance, in GB.
-	DiskRange pulumi.StringInput `pulumi:"diskRange"`
-	// The ID of CSS flavor.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies the memory size(GB) in the CSS flavor.
-	Memory pulumi.IntInput `pulumi:"memory"`
-	// Specifies the name of the CSS flavor.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies the region in which to obtain the CSS flavors. If omitted, the
-	// provider-level region will be used.
-	Region pulumi.StringInput `pulumi:"region"`
-	// Specifies the node instance type. The options are `ess`, `ess-cold`, `ess-master`
-	// and `ess-client`.
-	Type pulumi.StringInput `pulumi:"type"`
-	// Specifies the number of vCPUs in the CSS flavor.
-	Vcpus pulumi.IntInput `pulumi:"vcpus"`
-	// Specifies the engine version. The options are `5.5.1`, `6.2.3`, `6.5.4`, `7.1.1`,
-	// `7.6.2` and `7.9.3`.
-	Version pulumi.StringInput `pulumi:"version"`
+	DiskRange         pulumi.StringInput `pulumi:"diskRange"`
+	Id                pulumi.StringInput `pulumi:"id"`
+	Memory            pulumi.IntInput    `pulumi:"memory"`
+	Name              pulumi.StringInput `pulumi:"name"`
+	Region            pulumi.StringInput `pulumi:"region"`
+	Type              pulumi.StringInput `pulumi:"type"`
+	Vcpus             pulumi.IntInput    `pulumi:"vcpus"`
+	Version           pulumi.StringInput `pulumi:"version"`
 }
 
 func (GetFlavorsFlavorArgs) ElementType() reflect.Type {
@@ -3280,45 +2744,34 @@ func (o GetFlavorsFlavorOutput) AvailabilityZones() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) string { return v.AvailabilityZones }).(pulumi.StringOutput)
 }
 
-// The disk capacity range of an instance, in GB.
 func (o GetFlavorsFlavorOutput) DiskRange() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) string { return v.DiskRange }).(pulumi.StringOutput)
 }
 
-// The ID of CSS flavor.
 func (o GetFlavorsFlavorOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Specifies the memory size(GB) in the CSS flavor.
 func (o GetFlavorsFlavorOutput) Memory() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) int { return v.Memory }).(pulumi.IntOutput)
 }
 
-// Specifies the name of the CSS flavor.
 func (o GetFlavorsFlavorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to obtain the CSS flavors. If omitted, the
-// provider-level region will be used.
 func (o GetFlavorsFlavorOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// Specifies the node instance type. The options are `ess`, `ess-cold`, `ess-master`
-// and `ess-client`.
 func (o GetFlavorsFlavorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Specifies the number of vCPUs in the CSS flavor.
 func (o GetFlavorsFlavorOutput) Vcpus() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) int { return v.Vcpus }).(pulumi.IntOutput)
 }
 
-// Specifies the engine version. The options are `5.5.1`, `6.2.3`, `6.5.4`, `7.1.1`,
-// `7.6.2` and `7.9.3`.
 func (o GetFlavorsFlavorOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) string { return v.Version }).(pulumi.StringOutput)
 }

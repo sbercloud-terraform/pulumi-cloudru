@@ -6,26 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Using this data source to query the list of available resource quotas within SberCloud.
- *
- * > Using an invalid ID to filter the results will not report an error or return an empty list, but will return a quota
- *    list with all usage equal to 0.
- *
- * Before using enterprise router, define custom endpoint as shown below:
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.Er.getQuotas({});
- * ```
- */
 export function getQuotas(args?: GetQuotasArgs, opts?: pulumi.InvokeOptions): Promise<GetQuotasResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -41,33 +21,9 @@ export function getQuotas(args?: GetQuotasArgs, opts?: pulumi.InvokeOptions): Pr
  * A collection of arguments for invoking getQuotas.
  */
 export interface GetQuotasArgs {
-    /**
-     * The instance ID.
-     */
     instanceId?: string;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
-    /**
-     * The route table ID.
-     */
     routeTableId?: string;
-    /**
-     * The quota type to be queried.
-     * The valid values are as follows:
-     * + **er_instance**: Quotas and usage for enterprise router instances.
-     * + **dc_attachment**: Quotas and usage for DC attachment.
-     * + **vpc_attachment**: Quotas and usage for VPC attachment.
-     * + **vpn_attachment**: Quotas and usage for VPN attachment.
-     * + **peering_attachment**: Quotas and usage for peering attachment.
-     * + **can_attachment**: Quotas and usage for can attachment.
-     * + **route_table**: Quotas and usage for route table.
-     * + **static_route**: Quotas and usage for static route.
-     * + **vpc_er**: The number of enterprise routers that each VPC can access and the current usage.
-     * + **flow_log**: The number of flow logs that can be created per attachment.
-     */
     type?: string;
 }
 
@@ -80,37 +36,11 @@ export interface GetQuotasResult {
      */
     readonly id: string;
     readonly instanceId?: string;
-    /**
-     * All quotas that match the filter parameters.
-     */
     readonly quotas: outputs.Er.GetQuotasQuota[];
     readonly region: string;
     readonly routeTableId?: string;
-    /**
-     * The quota type.
-     */
     readonly type?: string;
 }
-/**
- * Using this data source to query the list of available resource quotas within SberCloud.
- *
- * > Using an invalid ID to filter the results will not report an error or return an empty list, but will return a quota
- *    list with all usage equal to 0.
- *
- * Before using enterprise router, define custom endpoint as shown below:
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.Er.getQuotas({});
- * ```
- */
 export function getQuotasOutput(args?: GetQuotasOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetQuotasResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -126,32 +56,8 @@ export function getQuotasOutput(args?: GetQuotasOutputArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getQuotas.
  */
 export interface GetQuotasOutputArgs {
-    /**
-     * The instance ID.
-     */
     instanceId?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * The route table ID.
-     */
     routeTableId?: pulumi.Input<string>;
-    /**
-     * The quota type to be queried.
-     * The valid values are as follows:
-     * + **er_instance**: Quotas and usage for enterprise router instances.
-     * + **dc_attachment**: Quotas and usage for DC attachment.
-     * + **vpc_attachment**: Quotas and usage for VPC attachment.
-     * + **vpn_attachment**: Quotas and usage for VPN attachment.
-     * + **peering_attachment**: Quotas and usage for peering attachment.
-     * + **can_attachment**: Quotas and usage for can attachment.
-     * + **route_table**: Quotas and usage for route table.
-     * + **static_route**: Quotas and usage for static route.
-     * + **vpc_er**: The number of enterprise routers that each VPC can access and the current usage.
-     * + **flow_log**: The number of flow logs that can be created per attachment.
-     */
     type?: pulumi.Input<string>;
 }

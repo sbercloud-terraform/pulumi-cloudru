@@ -11,33 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the ID of an available SberCloud DMS maintainwindow.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/dms"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dms.GetMaintainwindow(ctx, &dms.GetMaintainwindowArgs{
-//				Seq: pulumi.IntRef(1),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetMaintainwindow(ctx *pulumi.Context, args *GetMaintainwindowArgs, opts ...pulumi.InvokeOption) (*GetMaintainwindowResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMaintainwindowResult
@@ -50,16 +23,11 @@ func GetMaintainwindow(ctx *pulumi.Context, args *GetMaintainwindowArgs, opts ..
 
 // A collection of arguments for invoking getMaintainwindow.
 type GetMaintainwindowArgs struct {
-	// Indicates the time at which a maintenance time window starts.
-	Begin *string `pulumi:"begin"`
-	// Indicates whether a maintenance time window is set to the default time segment.
-	Default *bool `pulumi:"default"`
-	// Indicates the time at which a maintenance time window ends.
-	End *string `pulumi:"end"`
-	// The region in which to obtain the dms maintainwindows. If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Indicates the sequential number of a maintenance time window.
-	Seq *int `pulumi:"seq"`
+	Begin   *string `pulumi:"begin"`
+	Default *bool   `pulumi:"default"`
+	End     *string `pulumi:"end"`
+	Region  *string `pulumi:"region"`
+	Seq     *int    `pulumi:"seq"`
 }
 
 // A collection of values returned by getMaintainwindow.
@@ -84,16 +52,11 @@ func GetMaintainwindowOutput(ctx *pulumi.Context, args GetMaintainwindowOutputAr
 
 // A collection of arguments for invoking getMaintainwindow.
 type GetMaintainwindowOutputArgs struct {
-	// Indicates the time at which a maintenance time window starts.
-	Begin pulumi.StringPtrInput `pulumi:"begin"`
-	// Indicates whether a maintenance time window is set to the default time segment.
-	Default pulumi.BoolPtrInput `pulumi:"default"`
-	// Indicates the time at which a maintenance time window ends.
-	End pulumi.StringPtrInput `pulumi:"end"`
-	// The region in which to obtain the dms maintainwindows. If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Indicates the sequential number of a maintenance time window.
-	Seq pulumi.IntPtrInput `pulumi:"seq"`
+	Begin   pulumi.StringPtrInput `pulumi:"begin"`
+	Default pulumi.BoolPtrInput   `pulumi:"default"`
+	End     pulumi.StringPtrInput `pulumi:"end"`
+	Region  pulumi.StringPtrInput `pulumi:"region"`
+	Seq     pulumi.IntPtrInput    `pulumi:"seq"`
 }
 
 func (GetMaintainwindowOutputArgs) ElementType() reflect.Type {

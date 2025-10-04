@@ -11,38 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Provides information about a Shared File System (SFS).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/sfs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			shareName := cfg.RequireObject("shareName")
-//			shareId := cfg.RequireObject("shareId")
-//			_, err := sfs.GetFileSystem(ctx, &sfs.GetFileSystemArgs{
-//				Name: pulumi.StringRef(shareName),
-//				Id:   pulumi.StringRef(shareId),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupFileSystem(ctx *pulumi.Context, args *LookupFileSystemArgs, opts ...pulumi.InvokeOption) (*LookupFileSystemResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFileSystemResult
@@ -55,55 +23,33 @@ func LookupFileSystem(ctx *pulumi.Context, args *LookupFileSystemArgs, opts ...p
 
 // A collection of arguments for invoking getFileSystem.
 type LookupFileSystemArgs struct {
-	// The UUID of the shared file system.
-	Id *string `pulumi:"id"`
-	// The name of the shared file system.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to obtain the shared file system.
-	// If omitted, the provider-level region will be used.
+	Id     *string `pulumi:"id"`
+	Name   *string `pulumi:"name"`
 	Region *string `pulumi:"region"`
-	// The status of the shared file system.
 	Status *string `pulumi:"status"`
 }
 
 // A collection of values returned by getFileSystem.
 type LookupFileSystemResult struct {
-	// The level of the access rule.
-	AccessLevel string `pulumi:"accessLevel"`
-	// The access that the back end grants or denies.
-	AccessTo string `pulumi:"accessTo"`
-	// The type of the share access rule.
-	AccessType string `pulumi:"accessType"`
-	// The availability zone name.
-	// *
-	AvailabilityZone string `pulumi:"availabilityZone"`
-	// The description of the shared file system.
-	Description string `pulumi:"description"`
-	// The path for accessing the shared file system.
-	ExportLocation string `pulumi:"exportLocation"`
-	Id             string `pulumi:"id"`
-	// The level of visibility for the shared file system.
-	IsPublic bool `pulumi:"isPublic"`
-	// Metadata key and value pairs as a dictionary of strings.
-	Metadata map[string]string `pulumi:"metadata"`
-	// The UUID of the mount location of the shared file system.
-	MountId string `pulumi:"mountId"`
-	Name    string `pulumi:"name"`
-	// Identifies which mount locations are most efficient and are used preferentially when multiple mount locations exist.
-	Preferred bool   `pulumi:"preferred"`
-	Region    string `pulumi:"region"`
-	// The UUID of the share access rule.
-	ShareAccessId string `pulumi:"shareAccessId"`
-	// The access that the back end grants or denies.
-	ShareInstanceId string `pulumi:"shareInstanceId"`
-	// The protocol for sharing file systems.
-	ShareProto string `pulumi:"shareProto"`
-	// The size (GB) of the shared file system.
-	Size int `pulumi:"size"`
-	// The state of the shared file system.
-	State string `pulumi:"state"`
-	// The status of the shared file system.
-	Status string `pulumi:"status"`
+	AccessLevel      string            `pulumi:"accessLevel"`
+	AccessTo         string            `pulumi:"accessTo"`
+	AccessType       string            `pulumi:"accessType"`
+	AvailabilityZone string            `pulumi:"availabilityZone"`
+	Description      string            `pulumi:"description"`
+	ExportLocation   string            `pulumi:"exportLocation"`
+	Id               string            `pulumi:"id"`
+	IsPublic         bool              `pulumi:"isPublic"`
+	Metadata         map[string]string `pulumi:"metadata"`
+	MountId          string            `pulumi:"mountId"`
+	Name             string            `pulumi:"name"`
+	Preferred        bool              `pulumi:"preferred"`
+	Region           string            `pulumi:"region"`
+	ShareAccessId    string            `pulumi:"shareAccessId"`
+	ShareInstanceId  string            `pulumi:"shareInstanceId"`
+	ShareProto       string            `pulumi:"shareProto"`
+	Size             int               `pulumi:"size"`
+	State            string            `pulumi:"state"`
+	Status           string            `pulumi:"status"`
 }
 
 func LookupFileSystemOutput(ctx *pulumi.Context, args LookupFileSystemOutputArgs, opts ...pulumi.InvokeOption) LookupFileSystemResultOutput {
@@ -117,14 +63,9 @@ func LookupFileSystemOutput(ctx *pulumi.Context, args LookupFileSystemOutputArgs
 
 // A collection of arguments for invoking getFileSystem.
 type LookupFileSystemOutputArgs struct {
-	// The UUID of the shared file system.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The name of the shared file system.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the region in which to obtain the shared file system.
-	// If omitted, the provider-level region will be used.
+	Id     pulumi.StringPtrInput `pulumi:"id"`
+	Name   pulumi.StringPtrInput `pulumi:"name"`
 	Region pulumi.StringPtrInput `pulumi:"region"`
-	// The status of the shared file system.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -147,33 +88,26 @@ func (o LookupFileSystemResultOutput) ToLookupFileSystemResultOutputWithContext(
 	return o
 }
 
-// The level of the access rule.
 func (o LookupFileSystemResultOutput) AccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileSystemResult) string { return v.AccessLevel }).(pulumi.StringOutput)
 }
 
-// The access that the back end grants or denies.
 func (o LookupFileSystemResultOutput) AccessTo() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileSystemResult) string { return v.AccessTo }).(pulumi.StringOutput)
 }
 
-// The type of the share access rule.
 func (o LookupFileSystemResultOutput) AccessType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileSystemResult) string { return v.AccessType }).(pulumi.StringOutput)
 }
 
-// The availability zone name.
-// *
 func (o LookupFileSystemResultOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileSystemResult) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// The description of the shared file system.
 func (o LookupFileSystemResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileSystemResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The path for accessing the shared file system.
 func (o LookupFileSystemResultOutput) ExportLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileSystemResult) string { return v.ExportLocation }).(pulumi.StringOutput)
 }
@@ -182,17 +116,14 @@ func (o LookupFileSystemResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileSystemResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The level of visibility for the shared file system.
 func (o LookupFileSystemResultOutput) IsPublic() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupFileSystemResult) bool { return v.IsPublic }).(pulumi.BoolOutput)
 }
 
-// Metadata key and value pairs as a dictionary of strings.
 func (o LookupFileSystemResultOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupFileSystemResult) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
-// The UUID of the mount location of the shared file system.
 func (o LookupFileSystemResultOutput) MountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileSystemResult) string { return v.MountId }).(pulumi.StringOutput)
 }
@@ -201,7 +132,6 @@ func (o LookupFileSystemResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileSystemResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Identifies which mount locations are most efficient and are used preferentially when multiple mount locations exist.
 func (o LookupFileSystemResultOutput) Preferred() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupFileSystemResult) bool { return v.Preferred }).(pulumi.BoolOutput)
 }
@@ -210,32 +140,26 @@ func (o LookupFileSystemResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileSystemResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The UUID of the share access rule.
 func (o LookupFileSystemResultOutput) ShareAccessId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileSystemResult) string { return v.ShareAccessId }).(pulumi.StringOutput)
 }
 
-// The access that the back end grants or denies.
 func (o LookupFileSystemResultOutput) ShareInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileSystemResult) string { return v.ShareInstanceId }).(pulumi.StringOutput)
 }
 
-// The protocol for sharing file systems.
 func (o LookupFileSystemResultOutput) ShareProto() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileSystemResult) string { return v.ShareProto }).(pulumi.StringOutput)
 }
 
-// The size (GB) of the shared file system.
 func (o LookupFileSystemResultOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupFileSystemResult) int { return v.Size }).(pulumi.IntOutput)
 }
 
-// The state of the shared file system.
 func (o LookupFileSystemResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileSystemResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// The status of the shared file system.
 func (o LookupFileSystemResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileSystemResult) string { return v.Status }).(pulumi.StringOutput)
 }

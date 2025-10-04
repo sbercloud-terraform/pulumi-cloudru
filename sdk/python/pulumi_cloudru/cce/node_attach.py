@@ -47,39 +47,9 @@ class NodeAttachArgs:
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodeAttachTaintArgs']]]] = None):
         """
         The set of arguments for constructing a NodeAttach resource.
-        :param pulumi.Input[_builtins.str] cluster_id: Specifies the ID of the cluster. Changing this parameter will create a new
-               resource.
-        :param pulumi.Input[_builtins.str] os: Specifies the operating System of the node. Changing this parameter will reset the node.
-               + For VM nodes, clusters of v1.13 and later support *CentOS 7.6* and *Ubuntu 18.04*.
-        :param pulumi.Input[_builtins.str] server_id: Specifies the ecs server ID. Changing this parameter will create a new
-               resource.
-        :param pulumi.Input[_builtins.int] docker_base_size: Specifies the available disk space of a single docker container on the
-               node in device mapper mode. Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] image_id: schema: Internal
-        :param pulumi.Input[_builtins.str] key_pair: Specifies the key pair name when logging in to select the key pair mode.
-               This parameter and `password` are alternative. Changing this parameter will reset the node.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Specifies the tags of a Kubernetes node, key/value pair format.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] lvm_config: Specifies the docker data disk configurations. The following is an
-               example:
-        :param pulumi.Input[_builtins.int] max_pods: Specifies the the maximum number of instances a node is allowed to create.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the Node Name.
         :param pulumi.Input[_builtins.str] nic_multi_queue: schema: Internal
         :param pulumi.Input[_builtins.str] nic_threshold: schema: Internal
-        :param pulumi.Input[_builtins.str] password: Specifies the root password when logging in to select the password mode.
-               This parameter can be plain or salted and is alternative to `key_pair`.
-               Changing this parameter will reset the node.
-        :param pulumi.Input[_builtins.str] postinstall: Specifies the script required after installation. The input value can be
-               a Base64 encoded string or not. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] preinstall: Specifies the script required before installation. The input value can be
-               a Base64 encoded string or not. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the CCE node attach resource. If omitted, the
-               provider-level region will be used. Changing this creates a new CCE node attach resource.
-        :param pulumi.Input[_builtins.str] runtime: The runtime of the CCE node.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the tags of a VM node, key/value pair format.
-        :param pulumi.Input[Sequence[pulumi.Input['NodeAttachTaintArgs']]] taints: Specifies the taints configuration of the nodes to set anti-affinity.
-               Changing this parameter will create a new resource. Each taint contains the following parameters:
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "os", os)
@@ -130,10 +100,6 @@ class NodeAttachArgs:
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the ID of the cluster. Changing this parameter will create a new
-        resource.
-        """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
@@ -143,10 +109,6 @@ class NodeAttachArgs:
     @_builtins.property
     @pulumi.getter
     def os(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the operating System of the node. Changing this parameter will reset the node.
-        + For VM nodes, clusters of v1.13 and later support *CentOS 7.6* and *Ubuntu 18.04*.
-        """
         return pulumi.get(self, "os")
 
     @os.setter
@@ -156,10 +118,6 @@ class NodeAttachArgs:
     @_builtins.property
     @pulumi.getter(name="serverId")
     def server_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the ecs server ID. Changing this parameter will create a new
-        resource.
-        """
         return pulumi.get(self, "server_id")
 
     @server_id.setter
@@ -169,10 +127,6 @@ class NodeAttachArgs:
     @_builtins.property
     @pulumi.getter(name="dockerBaseSize")
     def docker_base_size(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the available disk space of a single docker container on the
-        node in device mapper mode. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "docker_base_size")
 
     @docker_base_size.setter
@@ -212,10 +166,6 @@ class NodeAttachArgs:
     @_builtins.property
     @pulumi.getter(name="keyPair")
     def key_pair(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the key pair name when logging in to select the key pair mode.
-        This parameter and `password` are alternative. Changing this parameter will reset the node.
-        """
         return pulumi.get(self, "key_pair")
 
     @key_pair.setter
@@ -225,10 +175,6 @@ class NodeAttachArgs:
     @_builtins.property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the tags of a Kubernetes node, key/value pair format.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "labels")
 
     @labels.setter
@@ -238,10 +184,6 @@ class NodeAttachArgs:
     @_builtins.property
     @pulumi.getter(name="lvmConfig")
     def lvm_config(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the docker data disk configurations. The following is an
-        example:
-        """
         return pulumi.get(self, "lvm_config")
 
     @lvm_config.setter
@@ -251,10 +193,6 @@ class NodeAttachArgs:
     @_builtins.property
     @pulumi.getter(name="maxPods")
     def max_pods(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the the maximum number of instances a node is allowed to create.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "max_pods")
 
     @max_pods.setter
@@ -264,9 +202,6 @@ class NodeAttachArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the Node Name.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -300,11 +235,6 @@ class NodeAttachArgs:
     @_builtins.property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the root password when logging in to select the password mode.
-        This parameter can be plain or salted and is alternative to `key_pair`.
-        Changing this parameter will reset the node.
-        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -314,10 +244,6 @@ class NodeAttachArgs:
     @_builtins.property
     @pulumi.getter
     def postinstall(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the script required after installation. The input value can be
-        a Base64 encoded string or not. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "postinstall")
 
     @postinstall.setter
@@ -327,10 +253,6 @@ class NodeAttachArgs:
     @_builtins.property
     @pulumi.getter
     def preinstall(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the script required before installation. The input value can be
-        a Base64 encoded string or not. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "preinstall")
 
     @preinstall.setter
@@ -349,10 +271,6 @@ class NodeAttachArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the CCE node attach resource. If omitted, the
-        provider-level region will be used. Changing this creates a new CCE node attach resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -362,9 +280,6 @@ class NodeAttachArgs:
     @_builtins.property
     @pulumi.getter
     def runtime(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The runtime of the CCE node.
-        """
         return pulumi.get(self, "runtime")
 
     @runtime.setter
@@ -392,9 +307,6 @@ class NodeAttachArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the tags of a VM node, key/value pair format.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -404,10 +316,6 @@ class NodeAttachArgs:
     @_builtins.property
     @pulumi.getter
     def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeAttachTaintArgs']]]]:
-        """
-        Specifies the taints configuration of the nodes to set anti-affinity.
-        Changing this parameter will create a new resource. Each taint contains the following parameters:
-        """
         return pulumi.get(self, "taints")
 
     @taints.setter
@@ -456,48 +364,9 @@ class _NodeAttachState:
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodeAttachTaintArgs']]]] = None):
         """
         Input properties used for looking up and filtering NodeAttach resources.
-        :param pulumi.Input[_builtins.str] availability_zone: The name of the available partition (AZ).
-        :param pulumi.Input[_builtins.str] cluster_id: Specifies the ID of the cluster. Changing this parameter will create a new
-               resource.
-        :param pulumi.Input[Sequence[pulumi.Input['NodeAttachDataVolumeArgs']]] data_volumes: The data disks related configuration.
-        :param pulumi.Input[_builtins.int] docker_base_size: Specifies the available disk space of a single docker container on the
-               node in device mapper mode. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] ecs_group_id: The Ecs group ID.
-        :param pulumi.Input[_builtins.str] flavor_id: The flavor ID of the CCE node.
         :param pulumi.Input[_builtins.str] image_id: schema: Internal
-        :param pulumi.Input[_builtins.str] key_pair: Specifies the key pair name when logging in to select the key pair mode.
-               This parameter and `password` are alternative. Changing this parameter will reset the node.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Specifies the tags of a Kubernetes node, key/value pair format.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] lvm_config: Specifies the docker data disk configurations. The following is an
-               example:
-        :param pulumi.Input[_builtins.int] max_pods: Specifies the the maximum number of instances a node is allowed to create.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the Node Name.
         :param pulumi.Input[_builtins.str] nic_multi_queue: schema: Internal
         :param pulumi.Input[_builtins.str] nic_threshold: schema: Internal
-        :param pulumi.Input[_builtins.str] os: Specifies the operating System of the node. Changing this parameter will reset the node.
-               + For VM nodes, clusters of v1.13 and later support *CentOS 7.6* and *Ubuntu 18.04*.
-        :param pulumi.Input[_builtins.str] password: Specifies the root password when logging in to select the password mode.
-               This parameter can be plain or salted and is alternative to `key_pair`.
-               Changing this parameter will reset the node.
-        :param pulumi.Input[_builtins.str] postinstall: Specifies the script required after installation. The input value can be
-               a Base64 encoded string or not. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] preinstall: Specifies the script required before installation. The input value can be
-               a Base64 encoded string or not. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] private_ip: Private IP of the CCE node.
-        :param pulumi.Input[_builtins.str] public_ip: Public IP of the CCE node.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the CCE node attach resource. If omitted, the
-               provider-level region will be used. Changing this creates a new CCE node attach resource.
-        :param pulumi.Input[Sequence[pulumi.Input['NodeAttachRootVolumeArgs']]] root_volumes: The system disk related configuration.
-        :param pulumi.Input[_builtins.str] runtime: The runtime of the CCE node.
-        :param pulumi.Input[_builtins.str] server_id: Specifies the ecs server ID. Changing this parameter will create a new
-               resource.
-        :param pulumi.Input[_builtins.str] status: Node status information.
-        :param pulumi.Input[_builtins.str] subnet_id: The ID of the subnet to which the NIC belongs.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the tags of a VM node, key/value pair format.
-        :param pulumi.Input[Sequence[pulumi.Input['NodeAttachTaintArgs']]] taints: Specifies the taints configuration of the nodes to set anti-affinity.
-               Changing this parameter will create a new resource. Each taint contains the following parameters:
         """
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
@@ -575,9 +444,6 @@ class _NodeAttachState:
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The name of the available partition (AZ).
-        """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -596,10 +462,6 @@ class _NodeAttachState:
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of the cluster. Changing this parameter will create a new
-        resource.
-        """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
@@ -609,9 +471,6 @@ class _NodeAttachState:
     @_builtins.property
     @pulumi.getter(name="dataVolumes")
     def data_volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeAttachDataVolumeArgs']]]]:
-        """
-        The data disks related configuration.
-        """
         return pulumi.get(self, "data_volumes")
 
     @data_volumes.setter
@@ -621,10 +480,6 @@ class _NodeAttachState:
     @_builtins.property
     @pulumi.getter(name="dockerBaseSize")
     def docker_base_size(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the available disk space of a single docker container on the
-        node in device mapper mode. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "docker_base_size")
 
     @docker_base_size.setter
@@ -634,9 +489,6 @@ class _NodeAttachState:
     @_builtins.property
     @pulumi.getter(name="ecsGroupId")
     def ecs_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The Ecs group ID.
-        """
         return pulumi.get(self, "ecs_group_id")
 
     @ecs_group_id.setter
@@ -664,9 +516,6 @@ class _NodeAttachState:
     @_builtins.property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The flavor ID of the CCE node.
-        """
         return pulumi.get(self, "flavor_id")
 
     @flavor_id.setter
@@ -706,10 +555,6 @@ class _NodeAttachState:
     @_builtins.property
     @pulumi.getter(name="keyPair")
     def key_pair(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the key pair name when logging in to select the key pair mode.
-        This parameter and `password` are alternative. Changing this parameter will reset the node.
-        """
         return pulumi.get(self, "key_pair")
 
     @key_pair.setter
@@ -719,10 +564,6 @@ class _NodeAttachState:
     @_builtins.property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the tags of a Kubernetes node, key/value pair format.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "labels")
 
     @labels.setter
@@ -732,10 +573,6 @@ class _NodeAttachState:
     @_builtins.property
     @pulumi.getter(name="lvmConfig")
     def lvm_config(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the docker data disk configurations. The following is an
-        example:
-        """
         return pulumi.get(self, "lvm_config")
 
     @lvm_config.setter
@@ -745,10 +582,6 @@ class _NodeAttachState:
     @_builtins.property
     @pulumi.getter(name="maxPods")
     def max_pods(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the the maximum number of instances a node is allowed to create.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "max_pods")
 
     @max_pods.setter
@@ -758,9 +591,6 @@ class _NodeAttachState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the Node Name.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -794,10 +624,6 @@ class _NodeAttachState:
     @_builtins.property
     @pulumi.getter
     def os(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the operating System of the node. Changing this parameter will reset the node.
-        + For VM nodes, clusters of v1.13 and later support *CentOS 7.6* and *Ubuntu 18.04*.
-        """
         return pulumi.get(self, "os")
 
     @os.setter
@@ -807,11 +633,6 @@ class _NodeAttachState:
     @_builtins.property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the root password when logging in to select the password mode.
-        This parameter can be plain or salted and is alternative to `key_pair`.
-        Changing this parameter will reset the node.
-        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -821,10 +642,6 @@ class _NodeAttachState:
     @_builtins.property
     @pulumi.getter
     def postinstall(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the script required after installation. The input value can be
-        a Base64 encoded string or not. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "postinstall")
 
     @postinstall.setter
@@ -834,10 +651,6 @@ class _NodeAttachState:
     @_builtins.property
     @pulumi.getter
     def preinstall(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the script required before installation. The input value can be
-        a Base64 encoded string or not. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "preinstall")
 
     @preinstall.setter
@@ -847,9 +660,6 @@ class _NodeAttachState:
     @_builtins.property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Private IP of the CCE node.
-        """
         return pulumi.get(self, "private_ip")
 
     @private_ip.setter
@@ -868,9 +678,6 @@ class _NodeAttachState:
     @_builtins.property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Public IP of the CCE node.
-        """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
@@ -880,10 +687,6 @@ class _NodeAttachState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the CCE node attach resource. If omitted, the
-        provider-level region will be used. Changing this creates a new CCE node attach resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -893,9 +696,6 @@ class _NodeAttachState:
     @_builtins.property
     @pulumi.getter(name="rootVolumes")
     def root_volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeAttachRootVolumeArgs']]]]:
-        """
-        The system disk related configuration.
-        """
         return pulumi.get(self, "root_volumes")
 
     @root_volumes.setter
@@ -905,9 +705,6 @@ class _NodeAttachState:
     @_builtins.property
     @pulumi.getter
     def runtime(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The runtime of the CCE node.
-        """
         return pulumi.get(self, "runtime")
 
     @runtime.setter
@@ -917,10 +714,6 @@ class _NodeAttachState:
     @_builtins.property
     @pulumi.getter(name="serverId")
     def server_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ecs server ID. Changing this parameter will create a new
-        resource.
-        """
         return pulumi.get(self, "server_id")
 
     @server_id.setter
@@ -930,9 +723,6 @@ class _NodeAttachState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Node status information.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -951,9 +741,6 @@ class _NodeAttachState:
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of the subnet to which the NIC belongs.
-        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -972,9 +759,6 @@ class _NodeAttachState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the tags of a VM node, key/value pair format.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -984,10 +768,6 @@ class _NodeAttachState:
     @_builtins.property
     @pulumi.getter
     def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeAttachTaintArgs']]]]:
-        """
-        Specifies the taints configuration of the nodes to set anti-affinity.
-        Changing this parameter will create a new resource. Each taint contains the following parameters:
-        """
         return pulumi.get(self, "taints")
 
     @taints.setter
@@ -1027,60 +807,12 @@ class NodeAttach(pulumi.CustomResource):
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeAttachTaintArgs', 'NodeAttachTaintArgsDict']]]]] = None,
                  __props__=None):
         """
-        Add a node from an existing ecs server to a CCE cluster.
-
-        ## Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        test = sbercloud.cce.NodeAttach("test",
-            cluster_id=cluster_id,
-            server_id=server_id,
-            key_pair=keypair_name,
-            os="CentOS 7.6",
-            tags={
-                "foo": "bar",
-                "key": "value",
-            })
-        ```
-
+        Create a NodeAttach resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] cluster_id: Specifies the ID of the cluster. Changing this parameter will create a new
-               resource.
-        :param pulumi.Input[_builtins.int] docker_base_size: Specifies the available disk space of a single docker container on the
-               node in device mapper mode. Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] image_id: schema: Internal
-        :param pulumi.Input[_builtins.str] key_pair: Specifies the key pair name when logging in to select the key pair mode.
-               This parameter and `password` are alternative. Changing this parameter will reset the node.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Specifies the tags of a Kubernetes node, key/value pair format.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] lvm_config: Specifies the docker data disk configurations. The following is an
-               example:
-        :param pulumi.Input[_builtins.int] max_pods: Specifies the the maximum number of instances a node is allowed to create.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the Node Name.
         :param pulumi.Input[_builtins.str] nic_multi_queue: schema: Internal
         :param pulumi.Input[_builtins.str] nic_threshold: schema: Internal
-        :param pulumi.Input[_builtins.str] os: Specifies the operating System of the node. Changing this parameter will reset the node.
-               + For VM nodes, clusters of v1.13 and later support *CentOS 7.6* and *Ubuntu 18.04*.
-        :param pulumi.Input[_builtins.str] password: Specifies the root password when logging in to select the password mode.
-               This parameter can be plain or salted and is alternative to `key_pair`.
-               Changing this parameter will reset the node.
-        :param pulumi.Input[_builtins.str] postinstall: Specifies the script required after installation. The input value can be
-               a Base64 encoded string or not. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] preinstall: Specifies the script required before installation. The input value can be
-               a Base64 encoded string or not. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the CCE node attach resource. If omitted, the
-               provider-level region will be used. Changing this creates a new CCE node attach resource.
-        :param pulumi.Input[_builtins.str] runtime: The runtime of the CCE node.
-        :param pulumi.Input[_builtins.str] server_id: Specifies the ecs server ID. Changing this parameter will create a new
-               resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the tags of a VM node, key/value pair format.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeAttachTaintArgs', 'NodeAttachTaintArgsDict']]]] taints: Specifies the taints configuration of the nodes to set anti-affinity.
-               Changing this parameter will create a new resource. Each taint contains the following parameters:
         """
         ...
     @overload
@@ -1089,25 +821,7 @@ class NodeAttach(pulumi.CustomResource):
                  args: NodeAttachArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Add a node from an existing ecs server to a CCE cluster.
-
-        ## Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        test = sbercloud.cce.NodeAttach("test",
-            cluster_id=cluster_id,
-            server_id=server_id,
-            key_pair=keypair_name,
-            os="CentOS 7.6",
-            tags={
-                "foo": "bar",
-                "key": "value",
-            })
-        ```
-
+        Create a NodeAttach resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param NodeAttachArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1253,48 +967,9 @@ class NodeAttach(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] availability_zone: The name of the available partition (AZ).
-        :param pulumi.Input[_builtins.str] cluster_id: Specifies the ID of the cluster. Changing this parameter will create a new
-               resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeAttachDataVolumeArgs', 'NodeAttachDataVolumeArgsDict']]]] data_volumes: The data disks related configuration.
-        :param pulumi.Input[_builtins.int] docker_base_size: Specifies the available disk space of a single docker container on the
-               node in device mapper mode. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] ecs_group_id: The Ecs group ID.
-        :param pulumi.Input[_builtins.str] flavor_id: The flavor ID of the CCE node.
         :param pulumi.Input[_builtins.str] image_id: schema: Internal
-        :param pulumi.Input[_builtins.str] key_pair: Specifies the key pair name when logging in to select the key pair mode.
-               This parameter and `password` are alternative. Changing this parameter will reset the node.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Specifies the tags of a Kubernetes node, key/value pair format.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] lvm_config: Specifies the docker data disk configurations. The following is an
-               example:
-        :param pulumi.Input[_builtins.int] max_pods: Specifies the the maximum number of instances a node is allowed to create.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the Node Name.
         :param pulumi.Input[_builtins.str] nic_multi_queue: schema: Internal
         :param pulumi.Input[_builtins.str] nic_threshold: schema: Internal
-        :param pulumi.Input[_builtins.str] os: Specifies the operating System of the node. Changing this parameter will reset the node.
-               + For VM nodes, clusters of v1.13 and later support *CentOS 7.6* and *Ubuntu 18.04*.
-        :param pulumi.Input[_builtins.str] password: Specifies the root password when logging in to select the password mode.
-               This parameter can be plain or salted and is alternative to `key_pair`.
-               Changing this parameter will reset the node.
-        :param pulumi.Input[_builtins.str] postinstall: Specifies the script required after installation. The input value can be
-               a Base64 encoded string or not. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] preinstall: Specifies the script required before installation. The input value can be
-               a Base64 encoded string or not. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] private_ip: Private IP of the CCE node.
-        :param pulumi.Input[_builtins.str] public_ip: Public IP of the CCE node.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the CCE node attach resource. If omitted, the
-               provider-level region will be used. Changing this creates a new CCE node attach resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeAttachRootVolumeArgs', 'NodeAttachRootVolumeArgsDict']]]] root_volumes: The system disk related configuration.
-        :param pulumi.Input[_builtins.str] runtime: The runtime of the CCE node.
-        :param pulumi.Input[_builtins.str] server_id: Specifies the ecs server ID. Changing this parameter will create a new
-               resource.
-        :param pulumi.Input[_builtins.str] status: Node status information.
-        :param pulumi.Input[_builtins.str] subnet_id: The ID of the subnet to which the NIC belongs.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the tags of a VM node, key/value pair format.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeAttachTaintArgs', 'NodeAttachTaintArgsDict']]]] taints: Specifies the taints configuration of the nodes to set anti-affinity.
-               Changing this parameter will create a new resource. Each taint contains the following parameters:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1341,9 +1016,6 @@ class NodeAttach(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> pulumi.Output[_builtins.str]:
-        """
-        The name of the available partition (AZ).
-        """
         return pulumi.get(self, "availability_zone")
 
     @_builtins.property
@@ -1354,35 +1026,21 @@ class NodeAttach(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the ID of the cluster. Changing this parameter will create a new
-        resource.
-        """
         return pulumi.get(self, "cluster_id")
 
     @_builtins.property
     @pulumi.getter(name="dataVolumes")
     def data_volumes(self) -> pulumi.Output[Sequence['outputs.NodeAttachDataVolume']]:
-        """
-        The data disks related configuration.
-        """
         return pulumi.get(self, "data_volumes")
 
     @_builtins.property
     @pulumi.getter(name="dockerBaseSize")
     def docker_base_size(self) -> pulumi.Output[Optional[_builtins.int]]:
-        """
-        Specifies the available disk space of a single docker container on the
-        node in device mapper mode. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "docker_base_size")
 
     @_builtins.property
     @pulumi.getter(name="ecsGroupId")
     def ecs_group_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The Ecs group ID.
-        """
         return pulumi.get(self, "ecs_group_id")
 
     @_builtins.property
@@ -1398,9 +1056,6 @@ class NodeAttach(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The flavor ID of the CCE node.
-        """
         return pulumi.get(self, "flavor_id")
 
     @_builtins.property
@@ -1424,45 +1079,26 @@ class NodeAttach(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="keyPair")
     def key_pair(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the key pair name when logging in to select the key pair mode.
-        This parameter and `password` are alternative. Changing this parameter will reset the node.
-        """
         return pulumi.get(self, "key_pair")
 
     @_builtins.property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        Specifies the tags of a Kubernetes node, key/value pair format.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "labels")
 
     @_builtins.property
     @pulumi.getter(name="lvmConfig")
     def lvm_config(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the docker data disk configurations. The following is an
-        example:
-        """
         return pulumi.get(self, "lvm_config")
 
     @_builtins.property
     @pulumi.getter(name="maxPods")
     def max_pods(self) -> pulumi.Output[Optional[_builtins.int]]:
-        """
-        Specifies the the maximum number of instances a node is allowed to create.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "max_pods")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the Node Name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -1484,46 +1120,26 @@ class NodeAttach(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def os(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the operating System of the node. Changing this parameter will reset the node.
-        + For VM nodes, clusters of v1.13 and later support *CentOS 7.6* and *Ubuntu 18.04*.
-        """
         return pulumi.get(self, "os")
 
     @_builtins.property
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the root password when logging in to select the password mode.
-        This parameter can be plain or salted and is alternative to `key_pair`.
-        Changing this parameter will reset the node.
-        """
         return pulumi.get(self, "password")
 
     @_builtins.property
     @pulumi.getter
     def postinstall(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the script required after installation. The input value can be
-        a Base64 encoded string or not. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "postinstall")
 
     @_builtins.property
     @pulumi.getter
     def preinstall(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the script required before installation. The input value can be
-        a Base64 encoded string or not. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "preinstall")
 
     @_builtins.property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> pulumi.Output[_builtins.str]:
-        """
-        Private IP of the CCE node.
-        """
         return pulumi.get(self, "private_ip")
 
     @_builtins.property
@@ -1534,51 +1150,31 @@ class NodeAttach(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> pulumi.Output[_builtins.str]:
-        """
-        Public IP of the CCE node.
-        """
         return pulumi.get(self, "public_ip")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the CCE node attach resource. If omitted, the
-        provider-level region will be used. Changing this creates a new CCE node attach resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="rootVolumes")
     def root_volumes(self) -> pulumi.Output[Sequence['outputs.NodeAttachRootVolume']]:
-        """
-        The system disk related configuration.
-        """
         return pulumi.get(self, "root_volumes")
 
     @_builtins.property
     @pulumi.getter
     def runtime(self) -> pulumi.Output[_builtins.str]:
-        """
-        The runtime of the CCE node.
-        """
         return pulumi.get(self, "runtime")
 
     @_builtins.property
     @pulumi.getter(name="serverId")
     def server_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the ecs server ID. Changing this parameter will create a new
-        resource.
-        """
         return pulumi.get(self, "server_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
-        """
-        Node status information.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
@@ -1589,9 +1185,6 @@ class NodeAttach(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The ID of the subnet to which the NIC belongs.
-        """
         return pulumi.get(self, "subnet_id")
 
     @_builtins.property
@@ -1602,17 +1195,10 @@ class NodeAttach(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        Specifies the tags of a VM node, key/value pair format.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter
     def taints(self) -> pulumi.Output[Optional[Sequence['outputs.NodeAttachTaint']]]:
-        """
-        Specifies the taints configuration of the nodes to set anti-affinity.
-        Changing this parameter will create a new resource. Each taint contains the following parameters:
-        """
         return pulumi.get(self, "taints")
 

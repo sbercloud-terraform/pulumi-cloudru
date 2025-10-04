@@ -6,42 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages a CFW domain name group resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const fwInstanceId = config.requireObject<any>("fwInstanceId");
- * const objectId = config.requireObject<any>("objectId");
- * const name = config.requireObject<any>("name");
- * const test = new sbercloud.cfw.DomainNameGroup("test", {
- *     fwInstanceId: fwInstanceId,
- *     objectId: objectId,
- *     name: name,
- *     type: 0,
- *     description: "created by terraform",
- *     domainNames: [{
- *         domainName: "www.cfw-test.com",
- *         description: "test domain",
- *     }],
- * });
- * ```
- *
- * ## Import
- *
- * The domainnamegroup can be imported using the `fw_instance_id`, `object_id` and `id`, separated by slashes, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:Cfw/domainNameGroup:DomainNameGroup test <fw_instance_id>/<object_id>/<id>
- * ```
- */
 export class DomainNameGroup extends pulumi.CustomResource {
     /**
      * Get an existing DomainNameGroup resource's state with the given name, ID, and optional extra
@@ -75,25 +39,19 @@ export class DomainNameGroup extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly configStatus: pulumi.Output<number>;
     /**
-     * Specifies the description.
+     * Specifies the description of the domain name group.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specifies the list of domain names.
-     * The domainNames structure is documented below.
-     *
-     * <a name="DomainNameGroup_DomainNames"></a>
-     * The `domainNames` block supports:
      */
     declare public readonly domainNames: pulumi.Output<outputs.Cfw.DomainNameGroupDomainName[] | undefined>;
     /**
      * Specifies the firewall instance ID.
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly fwInstanceId: pulumi.Output<string>;
     /**
-     * The exception message of the domain name group.
+     * The message of the domain name group.
      */
     declare public /*out*/ readonly message: pulumi.Output<string>;
     /**
@@ -102,26 +60,15 @@ export class DomainNameGroup extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the protected object ID.
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly objectId: pulumi.Output<string>;
     /**
      * The reference count of the domain name group.
      */
     declare public /*out*/ readonly refCount: pulumi.Output<number>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies the type of the domain name group.
-     * The value can be:
-     * + **0**: means application type;
-     * + **1**: means network type;
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly type: pulumi.Output<number>;
 
@@ -184,25 +131,19 @@ export interface DomainNameGroupState {
      */
     configStatus?: pulumi.Input<number>;
     /**
-     * Specifies the description.
+     * Specifies the description of the domain name group.
      */
     description?: pulumi.Input<string>;
     /**
      * Specifies the list of domain names.
-     * The domainNames structure is documented below.
-     *
-     * <a name="DomainNameGroup_DomainNames"></a>
-     * The `domainNames` block supports:
      */
     domainNames?: pulumi.Input<pulumi.Input<inputs.Cfw.DomainNameGroupDomainName>[]>;
     /**
      * Specifies the firewall instance ID.
-     *
-     * Changing this parameter will create a new resource.
      */
     fwInstanceId?: pulumi.Input<string>;
     /**
-     * The exception message of the domain name group.
+     * The message of the domain name group.
      */
     message?: pulumi.Input<string>;
     /**
@@ -211,26 +152,15 @@ export interface DomainNameGroupState {
     name?: pulumi.Input<string>;
     /**
      * Specifies the protected object ID.
-     *
-     * Changing this parameter will create a new resource.
      */
     objectId?: pulumi.Input<string>;
     /**
      * The reference count of the domain name group.
      */
     refCount?: pulumi.Input<number>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
      * Specifies the type of the domain name group.
-     * The value can be:
-     * + **0**: means application type;
-     * + **1**: means network type;
-     *
-     * Changing this parameter will create a new resource.
      */
     type?: pulumi.Input<number>;
 }
@@ -240,21 +170,15 @@ export interface DomainNameGroupState {
  */
 export interface DomainNameGroupArgs {
     /**
-     * Specifies the description.
+     * Specifies the description of the domain name group.
      */
     description?: pulumi.Input<string>;
     /**
      * Specifies the list of domain names.
-     * The domainNames structure is documented below.
-     *
-     * <a name="DomainNameGroup_DomainNames"></a>
-     * The `domainNames` block supports:
      */
     domainNames?: pulumi.Input<pulumi.Input<inputs.Cfw.DomainNameGroupDomainName>[]>;
     /**
      * Specifies the firewall instance ID.
-     *
-     * Changing this parameter will create a new resource.
      */
     fwInstanceId: pulumi.Input<string>;
     /**
@@ -263,22 +187,11 @@ export interface DomainNameGroupArgs {
     name?: pulumi.Input<string>;
     /**
      * Specifies the protected object ID.
-     *
-     * Changing this parameter will create a new resource.
      */
     objectId: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
      * Specifies the type of the domain name group.
-     * The value can be:
-     * + **0**: means application type;
-     * + **1**: means network type;
-     *
-     * Changing this parameter will create a new resource.
      */
     type: pulumi.Input<number>;
 }

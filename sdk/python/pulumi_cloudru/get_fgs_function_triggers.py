@@ -87,9 +87,6 @@ class GetFgsFunctionTriggersResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
-        """
-        The current status of the function trigger.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
@@ -100,18 +97,11 @@ class GetFgsFunctionTriggersResult:
     @_builtins.property
     @pulumi.getter
     def triggers(self) -> Sequence['outputs.GetFgsFunctionTriggersTriggerResult']:
-        """
-        All triggers that match the filter parameters.
-        The triggers structure is documented below.
-        """
         return pulumi.get(self, "triggers")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
-        """
-        The type of the function trigger.
-        """
         return pulumi.get(self, "type")
 
 
@@ -141,53 +131,7 @@ def get_fgs_function_triggers(end_time: Optional[_builtins.str] = None,
                               type: Optional[_builtins.str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFgsFunctionTriggersResult:
     """
-    Use this data source to get the list of function triggers of FunctionGraph within SberCloud.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    function_urn = config.require_object("functionUrn")
-    test = sbercloud.get_fgs_function_triggers(function_urn=function_urn)
-    ```
-
-
-    :param _builtins.str end_time: Specifies end time of creation time of the function trigger.
-           The format is `YYYY-MM-DDThh:mm:ss{timezone}`.
-           
-           > The `status`, `start_time` and `end_time` parameters does not take effect for some triggers, e.g. `SMN`.
-    :param _builtins.str function_urn: Specifies the function URN to which the trigger belongs.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str start_time: Specifies start time of creation time of the function trigger.
-           The format is `YYYY-MM-DDThh:mm:ss{timezone}`.
-    :param _builtins.str status: Specifies status of the function trigger.
-           The valid values are as follows:
-           + **ACTIVE**
-           + **DISABLED**
-    :param _builtins.str trigger_id: Specifies the ID of the function trigger.
-    :param _builtins.str type: Specifies type of the function trigger.
-           The valid values are as follows:
-           + **TIMER**
-           + **APIG**
-           + **CTS**
-           + **DDS**
-           + **DMS**
-           + **DIS**
-           + **LTS**
-           + **OBS**
-           + **SMN**
-           + **KAFKA**
-           + **RABBITMQ**
-           + **DEDICATEDGATEWAY**
-           + **OPENSOURCEKAFKA**
-           + **APIC**
-           + **GAUSSMONGO**
-           + **EVENTGRID**
-           + **IOTDA**
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['endTime'] = end_time
@@ -219,53 +163,7 @@ def get_fgs_function_triggers_output(end_time: Optional[pulumi.Input[Optional[_b
                                      type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFgsFunctionTriggersResult]:
     """
-    Use this data source to get the list of function triggers of FunctionGraph within SberCloud.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    function_urn = config.require_object("functionUrn")
-    test = sbercloud.get_fgs_function_triggers(function_urn=function_urn)
-    ```
-
-
-    :param _builtins.str end_time: Specifies end time of creation time of the function trigger.
-           The format is `YYYY-MM-DDThh:mm:ss{timezone}`.
-           
-           > The `status`, `start_time` and `end_time` parameters does not take effect for some triggers, e.g. `SMN`.
-    :param _builtins.str function_urn: Specifies the function URN to which the trigger belongs.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str start_time: Specifies start time of creation time of the function trigger.
-           The format is `YYYY-MM-DDThh:mm:ss{timezone}`.
-    :param _builtins.str status: Specifies status of the function trigger.
-           The valid values are as follows:
-           + **ACTIVE**
-           + **DISABLED**
-    :param _builtins.str trigger_id: Specifies the ID of the function trigger.
-    :param _builtins.str type: Specifies type of the function trigger.
-           The valid values are as follows:
-           + **TIMER**
-           + **APIG**
-           + **CTS**
-           + **DDS**
-           + **DMS**
-           + **DIS**
-           + **LTS**
-           + **OBS**
-           + **SMN**
-           + **KAFKA**
-           + **RABBITMQ**
-           + **DEDICATEDGATEWAY**
-           + **OPENSOURCEKAFKA**
-           + **APIC**
-           + **GAUSSMONGO**
-           + **EVENTGRID**
-           + **IOTDA**
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['endTime'] = end_time

@@ -44,9 +44,6 @@ class GetFgsFunctionEventsResult:
     @_builtins.property
     @pulumi.getter
     def events(self) -> Sequence['outputs.GetFgsFunctionEventsEventResult']:
-        """
-        All events that match the filter parameters.
-        """
         return pulumi.get(self, "events")
 
     @_builtins.property
@@ -84,23 +81,7 @@ def get_fgs_function_events(function_urn: Optional[_builtins.str] = None,
                             region: Optional[_builtins.str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFgsFunctionEventsResult:
     """
-    Use this data source to get the list of function events within SberCloud.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    function_urn = config.require_object("functionUrn")
-    test = sbercloud.get_fgs_function_events(function_urn=function_urn)
-    ```
-
-
-    :param _builtins.str function_urn: Specifies the function URN to which the events belong.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['functionUrn'] = function_urn
@@ -117,23 +98,7 @@ def get_fgs_function_events_output(function_urn: Optional[pulumi.Input[_builtins
                                    region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFgsFunctionEventsResult]:
     """
-    Use this data source to get the list of function events within SberCloud.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    function_urn = config.require_object("functionUrn")
-    test = sbercloud.get_fgs_function_events(function_urn=function_urn)
-    ```
-
-
-    :param _builtins.str function_urn: Specifies the function URN to which the events belong.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['functionUrn'] = function_urn

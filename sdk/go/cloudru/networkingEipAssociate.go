@@ -12,73 +12,13 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Associates an EIP to a port.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/vpc"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myport, err := vpc.GetPort(ctx, &vpc.GetPortArgs{
-//				NetworkId: pulumi.StringRef("a5bbd213-e1d3-49b6-aed1-9df60ea94b9a"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			myeip, err := vpc.NewEip(ctx, "myeip", &vpc.EipArgs{
-//				Publicip: &vpc.EipPublicipArgs{
-//					Type: pulumi.String("5_bgp"),
-//				},
-//				Bandwidth: &vpc.EipBandwidthArgs{
-//					Name:       pulumi.String("test"),
-//					Size:       pulumi.Int(8),
-//					ShareType:  pulumi.String("PER"),
-//					ChargeMode: pulumi.String("traffic"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = sbercloud.NewNetworkingEipAssociate(ctx, "associated", &sbercloud.NetworkingEipAssociateArgs{
-//				PublicIp: myeip.Address,
-//				PortId:   pulumi.String(myport.Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// EIP associations can be imported using the `id` of the EIP, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:index/networkingEipAssociate:NetworkingEipAssociate eip 2c7f39f3-702b-48d1-940c-b50384177ee1
-// ```
 type NetworkingEipAssociate struct {
 	pulumi.CustomResourceState
 
 	FixedIp    pulumi.StringOutput `pulumi:"fixedIp"`
 	MacAddress pulumi.StringOutput `pulumi:"macAddress"`
 	NetworkId  pulumi.StringOutput `pulumi:"networkId"`
-	// ID of an existing port with at least one IP address to
-	// associate with this EIP.
-	PortId pulumi.StringOutput `pulumi:"portId"`
-	// The EIP to associate.
+	PortId     pulumi.StringOutput `pulumi:"portId"`
 	PublicIp   pulumi.StringOutput `pulumi:"publicIp"`
 	PublicIpv6 pulumi.StringOutput `pulumi:"publicIpv6"`
 	Region     pulumi.StringOutput `pulumi:"region"`
@@ -121,10 +61,7 @@ type networkingEipAssociateState struct {
 	FixedIp    *string `pulumi:"fixedIp"`
 	MacAddress *string `pulumi:"macAddress"`
 	NetworkId  *string `pulumi:"networkId"`
-	// ID of an existing port with at least one IP address to
-	// associate with this EIP.
-	PortId *string `pulumi:"portId"`
-	// The EIP to associate.
+	PortId     *string `pulumi:"portId"`
 	PublicIp   *string `pulumi:"publicIp"`
 	PublicIpv6 *string `pulumi:"publicIpv6"`
 	Region     *string `pulumi:"region"`
@@ -135,10 +72,7 @@ type NetworkingEipAssociateState struct {
 	FixedIp    pulumi.StringPtrInput
 	MacAddress pulumi.StringPtrInput
 	NetworkId  pulumi.StringPtrInput
-	// ID of an existing port with at least one IP address to
-	// associate with this EIP.
-	PortId pulumi.StringPtrInput
-	// The EIP to associate.
+	PortId     pulumi.StringPtrInput
 	PublicIp   pulumi.StringPtrInput
 	PublicIpv6 pulumi.StringPtrInput
 	Region     pulumi.StringPtrInput
@@ -152,24 +86,18 @@ func (NetworkingEipAssociateState) ElementType() reflect.Type {
 type networkingEipAssociateArgs struct {
 	FixedIp   *string `pulumi:"fixedIp"`
 	NetworkId *string `pulumi:"networkId"`
-	// ID of an existing port with at least one IP address to
-	// associate with this EIP.
-	PortId *string `pulumi:"portId"`
-	// The EIP to associate.
-	PublicIp string  `pulumi:"publicIp"`
-	Region   *string `pulumi:"region"`
+	PortId    *string `pulumi:"portId"`
+	PublicIp  string  `pulumi:"publicIp"`
+	Region    *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a NetworkingEipAssociate resource.
 type NetworkingEipAssociateArgs struct {
 	FixedIp   pulumi.StringPtrInput
 	NetworkId pulumi.StringPtrInput
-	// ID of an existing port with at least one IP address to
-	// associate with this EIP.
-	PortId pulumi.StringPtrInput
-	// The EIP to associate.
-	PublicIp pulumi.StringInput
-	Region   pulumi.StringPtrInput
+	PortId    pulumi.StringPtrInput
+	PublicIp  pulumi.StringInput
+	Region    pulumi.StringPtrInput
 }
 
 func (NetworkingEipAssociateArgs) ElementType() reflect.Type {
@@ -271,13 +199,10 @@ func (o NetworkingEipAssociateOutput) NetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkingEipAssociate) pulumi.StringOutput { return v.NetworkId }).(pulumi.StringOutput)
 }
 
-// ID of an existing port with at least one IP address to
-// associate with this EIP.
 func (o NetworkingEipAssociateOutput) PortId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkingEipAssociate) pulumi.StringOutput { return v.PortId }).(pulumi.StringOutput)
 }
 
-// The EIP to associate.
 func (o NetworkingEipAssociateOutput) PublicIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkingEipAssociate) pulumi.StringOutput { return v.PublicIp }).(pulumi.StringOutput)
 }

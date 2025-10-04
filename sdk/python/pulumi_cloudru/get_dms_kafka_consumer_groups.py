@@ -59,25 +59,16 @@ class GetDmsKafkaConsumerGroupsResult:
     @_builtins.property
     @pulumi.getter(name="coordinatorId")
     def coordinator_id(self) -> Optional[_builtins.int]:
-        """
-        Indicates the coordinator ID.
-        """
         return pulumi.get(self, "coordinator_id")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
-        """
-        Indicates the consumer group description.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
     def groups(self) -> Sequence['outputs.GetDmsKafkaConsumerGroupsGroupResult']:
-        """
-        Indicates the groups list.
-        """
         return pulumi.get(self, "groups")
 
     @_builtins.property
@@ -96,17 +87,11 @@ class GetDmsKafkaConsumerGroupsResult:
     @_builtins.property
     @pulumi.getter
     def lag(self) -> Optional[_builtins.int]:
-        """
-        Indicates the number of accumulated messages.
-        """
         return pulumi.get(self, "lag")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        Indicates the consumer group name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -117,9 +102,6 @@ class GetDmsKafkaConsumerGroupsResult:
     @_builtins.property
     @pulumi.getter
     def state(self) -> Optional[_builtins.str]:
-        """
-        Indicates the consumer group status.
-        """
         return pulumi.get(self, "state")
 
 
@@ -149,42 +131,7 @@ def get_dms_kafka_consumer_groups(coordinator_id: Optional[_builtins.int] = None
                                   state: Optional[_builtins.str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDmsKafkaConsumerGroupsResult:
     """
-    Use this data source to get the list of Kafka instance consumer groups.
-
-    ## Example Usage
-
-    ### Get all groups for an instance
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    test = sbercloud.get_dms_kafka_consumer_groups(instance_id=instance_id)
-    ```
-
-    ### Get specific group for an instance
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    test = sbercloud.get_dms_kafka_consumer_groups(instance_id=instance_id,
-        name="test_group")
-    ```
-
-
-    :param _builtins.int coordinator_id: Specifies the coordinator ID.
-    :param _builtins.str description: Specifies the group description.
-    :param _builtins.str instance_id: Specifies the instance ID.
-    :param _builtins.int lag: Specifies the number of accumulated messages.
-    :param _builtins.str name: Specifies the group name.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str state: Specifies the consumer group status.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['coordinatorId'] = coordinator_id
@@ -216,42 +163,7 @@ def get_dms_kafka_consumer_groups_output(coordinator_id: Optional[pulumi.Input[O
                                          state: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDmsKafkaConsumerGroupsResult]:
     """
-    Use this data source to get the list of Kafka instance consumer groups.
-
-    ## Example Usage
-
-    ### Get all groups for an instance
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    test = sbercloud.get_dms_kafka_consumer_groups(instance_id=instance_id)
-    ```
-
-    ### Get specific group for an instance
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    test = sbercloud.get_dms_kafka_consumer_groups(instance_id=instance_id,
-        name="test_group")
-    ```
-
-
-    :param _builtins.int coordinator_id: Specifies the coordinator ID.
-    :param _builtins.str description: Specifies the group description.
-    :param _builtins.str instance_id: Specifies the instance ID.
-    :param _builtins.int lag: Specifies the number of accumulated messages.
-    :param _builtins.str name: Specifies the group name.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str state: Specifies the consumer group status.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['coordinatorId'] = coordinator_id

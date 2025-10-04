@@ -11,59 +11,14 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a Project resource within SberCloud Identity And Access Management service.
-//
-// > You *must* have security admin privileges in your SberCloud cloud to use this resource.
-//
-// !>  Deleting projects is not supported. The project is only removed from the state, but it remains in the cloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/iam"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := iam.NewProject(ctx, "project_1", &iam.ProjectArgs{
-//				Name:        pulumi.String("ru-moscow-1_project1"),
-//				Description: pulumi.String("This is a test project"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Projects can be imported using the `id`, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Iam/project:Project project_1 89c60255-9bd6-460c-822a-e2b959ede9d2
-// ```
 type Project struct {
 	pulumi.CustomResourceState
 
-	// Specifies the description of the project.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Enabling status of this project.
-	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// Specifies the name of the project. it must start with an existing *region* and be less
-	// than or equal to 64 characters. Example: ru-moscow-1_project1.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The parent of this project.
-	ParentId pulumi.StringOutput `pulumi:"parentId"`
-	Status   pulumi.StringOutput `pulumi:"status"`
+	Enabled     pulumi.BoolOutput      `pulumi:"enabled"`
+	Name        pulumi.StringOutput    `pulumi:"name"`
+	ParentId    pulumi.StringOutput    `pulumi:"parentId"`
+	Status      pulumi.StringOutput    `pulumi:"status"`
 }
 
 // NewProject registers a new resource with the given unique name, arguments, and options.
@@ -96,29 +51,19 @@ func GetProject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Project resources.
 type projectState struct {
-	// Specifies the description of the project.
 	Description *string `pulumi:"description"`
-	// Enabling status of this project.
-	Enabled *bool `pulumi:"enabled"`
-	// Specifies the name of the project. it must start with an existing *region* and be less
-	// than or equal to 64 characters. Example: ru-moscow-1_project1.
-	Name *string `pulumi:"name"`
-	// The parent of this project.
-	ParentId *string `pulumi:"parentId"`
-	Status   *string `pulumi:"status"`
+	Enabled     *bool   `pulumi:"enabled"`
+	Name        *string `pulumi:"name"`
+	ParentId    *string `pulumi:"parentId"`
+	Status      *string `pulumi:"status"`
 }
 
 type ProjectState struct {
-	// Specifies the description of the project.
 	Description pulumi.StringPtrInput
-	// Enabling status of this project.
-	Enabled pulumi.BoolPtrInput
-	// Specifies the name of the project. it must start with an existing *region* and be less
-	// than or equal to 64 characters. Example: ru-moscow-1_project1.
-	Name pulumi.StringPtrInput
-	// The parent of this project.
-	ParentId pulumi.StringPtrInput
-	Status   pulumi.StringPtrInput
+	Enabled     pulumi.BoolPtrInput
+	Name        pulumi.StringPtrInput
+	ParentId    pulumi.StringPtrInput
+	Status      pulumi.StringPtrInput
 }
 
 func (ProjectState) ElementType() reflect.Type {
@@ -126,22 +71,16 @@ func (ProjectState) ElementType() reflect.Type {
 }
 
 type projectArgs struct {
-	// Specifies the description of the project.
 	Description *string `pulumi:"description"`
-	// Specifies the name of the project. it must start with an existing *region* and be less
-	// than or equal to 64 characters. Example: ru-moscow-1_project1.
-	Name   *string `pulumi:"name"`
-	Status *string `pulumi:"status"`
+	Name        *string `pulumi:"name"`
+	Status      *string `pulumi:"status"`
 }
 
 // The set of arguments for constructing a Project resource.
 type ProjectArgs struct {
-	// Specifies the description of the project.
 	Description pulumi.StringPtrInput
-	// Specifies the name of the project. it must start with an existing *region* and be less
-	// than or equal to 64 characters. Example: ru-moscow-1_project1.
-	Name   pulumi.StringPtrInput
-	Status pulumi.StringPtrInput
+	Name        pulumi.StringPtrInput
+	Status      pulumi.StringPtrInput
 }
 
 func (ProjectArgs) ElementType() reflect.Type {
@@ -231,23 +170,18 @@ func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOu
 	return o
 }
 
-// Specifies the description of the project.
 func (o ProjectOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Enabling status of this project.
 func (o ProjectOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Specifies the name of the project. it must start with an existing *region* and be less
-// than or equal to 64 characters. Example: ru-moscow-1_project1.
 func (o ProjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The parent of this project.
 func (o ProjectOutput) ParentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.ParentId }).(pulumi.StringOutput)
 }

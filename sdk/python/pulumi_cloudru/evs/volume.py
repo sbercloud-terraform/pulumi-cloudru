@@ -47,47 +47,6 @@ class VolumeArgs:
                  throughput: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Volume resource.
-        :param pulumi.Input[_builtins.str] availability_zone: The availability zone for the volume.
-               Changing this creates a new volume.
-        :param pulumi.Input[_builtins.str] volume_type: Specifies the disk type.
-               Currently, the value can be SSD, SAS, or SATA.
-               - SSD: specifies the ultra-high I/O disk type.
-               - SAS: specifies the high I/O disk type.
-               - SATA: specifies the common I/O disk type.
-               If the specified disk type is not available in the AZ, the disk will fail to create.
-        :param pulumi.Input[_builtins.str] backup_id: The backup ID from which to create the volume.
-               Changing this creates a new volume.
-        :param pulumi.Input[_builtins.bool] cascade: Specifies the delete mode of snapshot. The default value is false. All snapshot
-               associated with the disk will also be deleted when the parameter is set to true.
-        :param pulumi.Input[_builtins.str] description: Specifies the disk description. The value can contain a maximum of 255 bytes.
-        :param pulumi.Input[_builtins.str] device_type: The device type of volume to create. Valid options are VBD and SCSI.
-               Defaults to VBD. Changing this creates a new volume.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the disk. Changing this
-               creates a new disk.
-        :param pulumi.Input[_builtins.str] image_id: The image ID from which to create the volume.
-               Changing this creates a new volume.
-        :param pulumi.Input[_builtins.str] kms_id: The Encryption KMS ID to create the volume.
-               Changing this creates a new volume.
-        :param pulumi.Input[_builtins.bool] multiattach: Default:false. Specifies the shared EVS disk information.
-               Changing this creates a new volume.
-        :param pulumi.Input[_builtins.str] name: Specifies the disk name.
-               If you create disks one by one, the name value is the disk name. The value can contain a maximum of 255 bytes.
-               If you create multiple disks (the count value is greater than 1), the system automatically adds a hyphen followed
-               by a four-digit incremental number, such as -0000, to the end of each disk name. For example,
-               the disk names can be volume-0001 and volume-0002. The value can contain a maximum of 250 bytes.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the EVS volume resource. If omitted, the provider-level region will be used. Changing this creates a new EVS resource.
-        :param pulumi.Input[_builtins.int] size: Specifies the disk size, in GB. Its value can be as follows:
-               - System disk: 1 GB to 1024 GB
-               - Data disk: 10 GB to 32768 GB
-               This parameter is mandatory when you create an empty disk. You can specify the parameter value as required within the value range.
-               This parameter is mandatory when you create the disk from a snapshot. Ensure that the disk size is greater than or equal to the snapshot size.
-               This parameter is mandatory when you create the disk from an image. Ensure that the disk size is greater than or equal to
-               the minimum disk capacity required by min_disk in the image attributes.
-               This parameter is optional when you create the disk from a backup. If this parameter is not specified, the disk size is equal to the backup size.
-               Changing this parameter will update the disk. You can extend the disk by setting this parameter to a new value, which must be between current size
-               and the max size(System disk: 1024 GB; Data disk: 32768 GB). Shrinking the disk is not supported.
-        :param pulumi.Input[_builtins.str] snapshot_id: The snapshot ID from which to create the volume.
-               Changing this creates a new volume.
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "volume_type", volume_type)
@@ -142,10 +101,6 @@ class VolumeArgs:
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> pulumi.Input[_builtins.str]:
-        """
-        The availability zone for the volume.
-        Changing this creates a new volume.
-        """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -155,14 +110,6 @@ class VolumeArgs:
     @_builtins.property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the disk type.
-        Currently, the value can be SSD, SAS, or SATA.
-        - SSD: specifies the ultra-high I/O disk type.
-        - SAS: specifies the high I/O disk type.
-        - SATA: specifies the common I/O disk type.
-        If the specified disk type is not available in the AZ, the disk will fail to create.
-        """
         return pulumi.get(self, "volume_type")
 
     @volume_type.setter
@@ -191,10 +138,6 @@ class VolumeArgs:
     @_builtins.property
     @pulumi.getter(name="backupId")
     def backup_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The backup ID from which to create the volume.
-        Changing this creates a new volume.
-        """
         return pulumi.get(self, "backup_id")
 
     @backup_id.setter
@@ -204,10 +147,6 @@ class VolumeArgs:
     @_builtins.property
     @pulumi.getter
     def cascade(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies the delete mode of snapshot. The default value is false. All snapshot
-        associated with the disk will also be deleted when the parameter is set to true.
-        """
         return pulumi.get(self, "cascade")
 
     @cascade.setter
@@ -235,9 +174,6 @@ class VolumeArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the disk description. The value can contain a maximum of 255 bytes.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -247,10 +183,6 @@ class VolumeArgs:
     @_builtins.property
     @pulumi.getter(name="deviceType")
     def device_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The device type of volume to create. Valid options are VBD and SCSI.
-        Defaults to VBD. Changing this creates a new volume.
-        """
         return pulumi.get(self, "device_type")
 
     @device_type.setter
@@ -260,10 +192,6 @@ class VolumeArgs:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the enterprise project id of the disk. Changing this
-        creates a new disk.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -273,10 +201,6 @@ class VolumeArgs:
     @_builtins.property
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The image ID from which to create the volume.
-        Changing this creates a new volume.
-        """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
@@ -295,10 +219,6 @@ class VolumeArgs:
     @_builtins.property
     @pulumi.getter(name="kmsId")
     def kms_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The Encryption KMS ID to create the volume.
-        Changing this creates a new volume.
-        """
         return pulumi.get(self, "kms_id")
 
     @kms_id.setter
@@ -308,10 +228,6 @@ class VolumeArgs:
     @_builtins.property
     @pulumi.getter
     def multiattach(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Default:false. Specifies the shared EVS disk information.
-        Changing this creates a new volume.
-        """
         return pulumi.get(self, "multiattach")
 
     @multiattach.setter
@@ -321,13 +237,6 @@ class VolumeArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the disk name.
-        If you create disks one by one, the name value is the disk name. The value can contain a maximum of 255 bytes.
-        If you create multiple disks (the count value is greater than 1), the system automatically adds a hyphen followed
-        by a four-digit incremental number, such as -0000, to the end of each disk name. For example,
-        the disk names can be volume-0001 and volume-0002. The value can contain a maximum of 250 bytes.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -355,9 +264,6 @@ class VolumeArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the EVS volume resource. If omitted, the provider-level region will be used. Changing this creates a new EVS resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -376,18 +282,6 @@ class VolumeArgs:
     @_builtins.property
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the disk size, in GB. Its value can be as follows:
-        - System disk: 1 GB to 1024 GB
-        - Data disk: 10 GB to 32768 GB
-        This parameter is mandatory when you create an empty disk. You can specify the parameter value as required within the value range.
-        This parameter is mandatory when you create the disk from a snapshot. Ensure that the disk size is greater than or equal to the snapshot size.
-        This parameter is mandatory when you create the disk from an image. Ensure that the disk size is greater than or equal to
-        the minimum disk capacity required by min_disk in the image attributes.
-        This parameter is optional when you create the disk from a backup. If this parameter is not specified, the disk size is equal to the backup size.
-        Changing this parameter will update the disk. You can extend the disk by setting this parameter to a new value, which must be between current size
-        and the max size(System disk: 1024 GB; Data disk: 32768 GB). Shrinking the disk is not supported.
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -397,10 +291,6 @@ class VolumeArgs:
     @_builtins.property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The snapshot ID from which to create the volume.
-        Changing this creates a new volume.
-        """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
@@ -469,51 +359,6 @@ class _VolumeState:
                  wwn: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Volume resources.
-        :param pulumi.Input[Sequence[pulumi.Input['VolumeAttachmentArgs']]] attachments: If a volume is attached to an instance, this attribute will
-               display the Attachment ID, Instance ID, and the Device as the Instance
-               sees it.
-        :param pulumi.Input[_builtins.str] availability_zone: The availability zone for the volume.
-               Changing this creates a new volume.
-        :param pulumi.Input[_builtins.str] backup_id: The backup ID from which to create the volume.
-               Changing this creates a new volume.
-        :param pulumi.Input[_builtins.bool] cascade: Specifies the delete mode of snapshot. The default value is false. All snapshot
-               associated with the disk will also be deleted when the parameter is set to true.
-        :param pulumi.Input[_builtins.str] description: Specifies the disk description. The value can contain a maximum of 255 bytes.
-        :param pulumi.Input[_builtins.str] device_type: The device type of volume to create. Valid options are VBD and SCSI.
-               Defaults to VBD. Changing this creates a new volume.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the disk. Changing this
-               creates a new disk.
-        :param pulumi.Input[_builtins.str] image_id: The image ID from which to create the volume.
-               Changing this creates a new volume.
-        :param pulumi.Input[_builtins.str] kms_id: The Encryption KMS ID to create the volume.
-               Changing this creates a new volume.
-        :param pulumi.Input[_builtins.bool] multiattach: Default:false. Specifies the shared EVS disk information.
-               Changing this creates a new volume.
-        :param pulumi.Input[_builtins.str] name: Specifies the disk name.
-               If you create disks one by one, the name value is the disk name. The value can contain a maximum of 255 bytes.
-               If you create multiple disks (the count value is greater than 1), the system automatically adds a hyphen followed
-               by a four-digit incremental number, such as -0000, to the end of each disk name. For example,
-               the disk names can be volume-0001 and volume-0002. The value can contain a maximum of 250 bytes.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the EVS volume resource. If omitted, the provider-level region will be used. Changing this creates a new EVS resource.
-        :param pulumi.Input[_builtins.int] size: Specifies the disk size, in GB. Its value can be as follows:
-               - System disk: 1 GB to 1024 GB
-               - Data disk: 10 GB to 32768 GB
-               This parameter is mandatory when you create an empty disk. You can specify the parameter value as required within the value range.
-               This parameter is mandatory when you create the disk from a snapshot. Ensure that the disk size is greater than or equal to the snapshot size.
-               This parameter is mandatory when you create the disk from an image. Ensure that the disk size is greater than or equal to
-               the minimum disk capacity required by min_disk in the image attributes.
-               This parameter is optional when you create the disk from a backup. If this parameter is not specified, the disk size is equal to the backup size.
-               Changing this parameter will update the disk. You can extend the disk by setting this parameter to a new value, which must be between current size
-               and the max size(System disk: 1024 GB; Data disk: 32768 GB). Shrinking the disk is not supported.
-        :param pulumi.Input[_builtins.str] snapshot_id: The snapshot ID from which to create the volume.
-               Changing this creates a new volume.
-        :param pulumi.Input[_builtins.str] volume_type: Specifies the disk type.
-               Currently, the value can be SSD, SAS, or SATA.
-               - SSD: specifies the ultra-high I/O disk type.
-               - SAS: specifies the high I/O disk type.
-               - SATA: specifies the common I/O disk type.
-               If the specified disk type is not available in the AZ, the disk will fail to create.
-        :param pulumi.Input[_builtins.str] wwn: Specifies the unique identifier used for mounting the EVS disk.
         """
         if all_metadata is not None:
             pulumi.set(__self__, "all_metadata", all_metadata)
@@ -616,11 +461,6 @@ class _VolumeState:
     @_builtins.property
     @pulumi.getter
     def attachments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VolumeAttachmentArgs']]]]:
-        """
-        If a volume is attached to an instance, this attribute will
-        display the Attachment ID, Instance ID, and the Device as the Instance
-        sees it.
-        """
         return pulumi.get(self, "attachments")
 
     @attachments.setter
@@ -649,10 +489,6 @@ class _VolumeState:
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The availability zone for the volume.
-        Changing this creates a new volume.
-        """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -662,10 +498,6 @@ class _VolumeState:
     @_builtins.property
     @pulumi.getter(name="backupId")
     def backup_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The backup ID from which to create the volume.
-        Changing this creates a new volume.
-        """
         return pulumi.get(self, "backup_id")
 
     @backup_id.setter
@@ -684,10 +516,6 @@ class _VolumeState:
     @_builtins.property
     @pulumi.getter
     def cascade(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies the delete mode of snapshot. The default value is false. All snapshot
-        associated with the disk will also be deleted when the parameter is set to true.
-        """
         return pulumi.get(self, "cascade")
 
     @cascade.setter
@@ -733,9 +561,6 @@ class _VolumeState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the disk description. The value can contain a maximum of 255 bytes.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -745,10 +570,6 @@ class _VolumeState:
     @_builtins.property
     @pulumi.getter(name="deviceType")
     def device_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The device type of volume to create. Valid options are VBD and SCSI.
-        Defaults to VBD. Changing this creates a new volume.
-        """
         return pulumi.get(self, "device_type")
 
     @device_type.setter
@@ -758,10 +579,6 @@ class _VolumeState:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the enterprise project id of the disk. Changing this
-        creates a new disk.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -771,10 +588,6 @@ class _VolumeState:
     @_builtins.property
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The image ID from which to create the volume.
-        Changing this creates a new volume.
-        """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
@@ -802,10 +615,6 @@ class _VolumeState:
     @_builtins.property
     @pulumi.getter(name="kmsId")
     def kms_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The Encryption KMS ID to create the volume.
-        Changing this creates a new volume.
-        """
         return pulumi.get(self, "kms_id")
 
     @kms_id.setter
@@ -824,10 +633,6 @@ class _VolumeState:
     @_builtins.property
     @pulumi.getter
     def multiattach(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Default:false. Specifies the shared EVS disk information.
-        Changing this creates a new volume.
-        """
         return pulumi.get(self, "multiattach")
 
     @multiattach.setter
@@ -837,13 +642,6 @@ class _VolumeState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the disk name.
-        If you create disks one by one, the name value is the disk name. The value can contain a maximum of 255 bytes.
-        If you create multiple disks (the count value is greater than 1), the system automatically adds a hyphen followed
-        by a four-digit incremental number, such as -0000, to the end of each disk name. For example,
-        the disk names can be volume-0001 and volume-0002. The value can contain a maximum of 250 bytes.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -871,9 +669,6 @@ class _VolumeState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the EVS volume resource. If omitted, the provider-level region will be used. Changing this creates a new EVS resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -910,18 +705,6 @@ class _VolumeState:
     @_builtins.property
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the disk size, in GB. Its value can be as follows:
-        - System disk: 1 GB to 1024 GB
-        - Data disk: 10 GB to 32768 GB
-        This parameter is mandatory when you create an empty disk. You can specify the parameter value as required within the value range.
-        This parameter is mandatory when you create the disk from a snapshot. Ensure that the disk size is greater than or equal to the snapshot size.
-        This parameter is mandatory when you create the disk from an image. Ensure that the disk size is greater than or equal to
-        the minimum disk capacity required by min_disk in the image attributes.
-        This parameter is optional when you create the disk from a backup. If this parameter is not specified, the disk size is equal to the backup size.
-        Changing this parameter will update the disk. You can extend the disk by setting this parameter to a new value, which must be between current size
-        and the max size(System disk: 1024 GB; Data disk: 32768 GB). Shrinking the disk is not supported.
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -931,10 +714,6 @@ class _VolumeState:
     @_builtins.property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The snapshot ID from which to create the volume.
-        Changing this creates a new volume.
-        """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
@@ -989,14 +768,6 @@ class _VolumeState:
     @_builtins.property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the disk type.
-        Currently, the value can be SSD, SAS, or SATA.
-        - SSD: specifies the ultra-high I/O disk type.
-        - SAS: specifies the high I/O disk type.
-        - SATA: specifies the common I/O disk type.
-        If the specified disk type is not available in the AZ, the disk will fail to create.
-        """
         return pulumi.get(self, "volume_type")
 
     @volume_type.setter
@@ -1006,9 +777,6 @@ class _VolumeState:
     @_builtins.property
     @pulumi.getter
     def wwn(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the unique identifier used for mounting the EVS disk.
-        """
         return pulumi.get(self, "wwn")
 
     @wwn.setter
@@ -1048,88 +816,9 @@ class Volume(pulumi.CustomResource):
                  volume_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a volume resource within sbercloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        volume = sbercloud.evs.Volume("volume",
-            name="volume",
-            description="my volume",
-            volume_type="SSD",
-            size=20,
-            availability_zone="ru-moscow-1a")
-        ```
-
-        ### With KMS Encryption
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        volume = sbercloud.evs.Volume("volume",
-            name="volume",
-            description="my volume",
-            volume_type="SSD",
-            size=20,
-            kms_id=kms_id,
-            availability_zone="ru-moscow-1a")
-        ```
-
-        ## Import
-
-        Volumes can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Evs/volume:Volume volume_1 14a80bc7-c12c-4fe0-a38a-cb77eeac9bd6
-        ```
-
+        Create a Volume resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] availability_zone: The availability zone for the volume.
-               Changing this creates a new volume.
-        :param pulumi.Input[_builtins.str] backup_id: The backup ID from which to create the volume.
-               Changing this creates a new volume.
-        :param pulumi.Input[_builtins.bool] cascade: Specifies the delete mode of snapshot. The default value is false. All snapshot
-               associated with the disk will also be deleted when the parameter is set to true.
-        :param pulumi.Input[_builtins.str] description: Specifies the disk description. The value can contain a maximum of 255 bytes.
-        :param pulumi.Input[_builtins.str] device_type: The device type of volume to create. Valid options are VBD and SCSI.
-               Defaults to VBD. Changing this creates a new volume.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the disk. Changing this
-               creates a new disk.
-        :param pulumi.Input[_builtins.str] image_id: The image ID from which to create the volume.
-               Changing this creates a new volume.
-        :param pulumi.Input[_builtins.str] kms_id: The Encryption KMS ID to create the volume.
-               Changing this creates a new volume.
-        :param pulumi.Input[_builtins.bool] multiattach: Default:false. Specifies the shared EVS disk information.
-               Changing this creates a new volume.
-        :param pulumi.Input[_builtins.str] name: Specifies the disk name.
-               If you create disks one by one, the name value is the disk name. The value can contain a maximum of 255 bytes.
-               If you create multiple disks (the count value is greater than 1), the system automatically adds a hyphen followed
-               by a four-digit incremental number, such as -0000, to the end of each disk name. For example,
-               the disk names can be volume-0001 and volume-0002. The value can contain a maximum of 250 bytes.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the EVS volume resource. If omitted, the provider-level region will be used. Changing this creates a new EVS resource.
-        :param pulumi.Input[_builtins.int] size: Specifies the disk size, in GB. Its value can be as follows:
-               - System disk: 1 GB to 1024 GB
-               - Data disk: 10 GB to 32768 GB
-               This parameter is mandatory when you create an empty disk. You can specify the parameter value as required within the value range.
-               This parameter is mandatory when you create the disk from a snapshot. Ensure that the disk size is greater than or equal to the snapshot size.
-               This parameter is mandatory when you create the disk from an image. Ensure that the disk size is greater than or equal to
-               the minimum disk capacity required by min_disk in the image attributes.
-               This parameter is optional when you create the disk from a backup. If this parameter is not specified, the disk size is equal to the backup size.
-               Changing this parameter will update the disk. You can extend the disk by setting this parameter to a new value, which must be between current size
-               and the max size(System disk: 1024 GB; Data disk: 32768 GB). Shrinking the disk is not supported.
-        :param pulumi.Input[_builtins.str] snapshot_id: The snapshot ID from which to create the volume.
-               Changing this creates a new volume.
-        :param pulumi.Input[_builtins.str] volume_type: Specifies the disk type.
-               Currently, the value can be SSD, SAS, or SATA.
-               - SSD: specifies the ultra-high I/O disk type.
-               - SAS: specifies the high I/O disk type.
-               - SATA: specifies the common I/O disk type.
-               If the specified disk type is not available in the AZ, the disk will fail to create.
         """
         ...
     @overload
@@ -1138,45 +827,7 @@ class Volume(pulumi.CustomResource):
                  args: VolumeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a volume resource within sbercloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        volume = sbercloud.evs.Volume("volume",
-            name="volume",
-            description="my volume",
-            volume_type="SSD",
-            size=20,
-            availability_zone="ru-moscow-1a")
-        ```
-
-        ### With KMS Encryption
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        volume = sbercloud.evs.Volume("volume",
-            name="volume",
-            description="my volume",
-            volume_type="SSD",
-            size=20,
-            kms_id=kms_id,
-            availability_zone="ru-moscow-1a")
-        ```
-
-        ## Import
-
-        Volumes can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Evs/volume:Volume volume_1 14a80bc7-c12c-4fe0-a38a-cb77eeac9bd6
-        ```
-
+        Create a Volume resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param VolumeArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1322,51 +973,6 @@ class Volume(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeAttachmentArgs', 'VolumeAttachmentArgsDict']]]] attachments: If a volume is attached to an instance, this attribute will
-               display the Attachment ID, Instance ID, and the Device as the Instance
-               sees it.
-        :param pulumi.Input[_builtins.str] availability_zone: The availability zone for the volume.
-               Changing this creates a new volume.
-        :param pulumi.Input[_builtins.str] backup_id: The backup ID from which to create the volume.
-               Changing this creates a new volume.
-        :param pulumi.Input[_builtins.bool] cascade: Specifies the delete mode of snapshot. The default value is false. All snapshot
-               associated with the disk will also be deleted when the parameter is set to true.
-        :param pulumi.Input[_builtins.str] description: Specifies the disk description. The value can contain a maximum of 255 bytes.
-        :param pulumi.Input[_builtins.str] device_type: The device type of volume to create. Valid options are VBD and SCSI.
-               Defaults to VBD. Changing this creates a new volume.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the disk. Changing this
-               creates a new disk.
-        :param pulumi.Input[_builtins.str] image_id: The image ID from which to create the volume.
-               Changing this creates a new volume.
-        :param pulumi.Input[_builtins.str] kms_id: The Encryption KMS ID to create the volume.
-               Changing this creates a new volume.
-        :param pulumi.Input[_builtins.bool] multiattach: Default:false. Specifies the shared EVS disk information.
-               Changing this creates a new volume.
-        :param pulumi.Input[_builtins.str] name: Specifies the disk name.
-               If you create disks one by one, the name value is the disk name. The value can contain a maximum of 255 bytes.
-               If you create multiple disks (the count value is greater than 1), the system automatically adds a hyphen followed
-               by a four-digit incremental number, such as -0000, to the end of each disk name. For example,
-               the disk names can be volume-0001 and volume-0002. The value can contain a maximum of 250 bytes.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the EVS volume resource. If omitted, the provider-level region will be used. Changing this creates a new EVS resource.
-        :param pulumi.Input[_builtins.int] size: Specifies the disk size, in GB. Its value can be as follows:
-               - System disk: 1 GB to 1024 GB
-               - Data disk: 10 GB to 32768 GB
-               This parameter is mandatory when you create an empty disk. You can specify the parameter value as required within the value range.
-               This parameter is mandatory when you create the disk from a snapshot. Ensure that the disk size is greater than or equal to the snapshot size.
-               This parameter is mandatory when you create the disk from an image. Ensure that the disk size is greater than or equal to
-               the minimum disk capacity required by min_disk in the image attributes.
-               This parameter is optional when you create the disk from a backup. If this parameter is not specified, the disk size is equal to the backup size.
-               Changing this parameter will update the disk. You can extend the disk by setting this parameter to a new value, which must be between current size
-               and the max size(System disk: 1024 GB; Data disk: 32768 GB). Shrinking the disk is not supported.
-        :param pulumi.Input[_builtins.str] snapshot_id: The snapshot ID from which to create the volume.
-               Changing this creates a new volume.
-        :param pulumi.Input[_builtins.str] volume_type: Specifies the disk type.
-               Currently, the value can be SSD, SAS, or SATA.
-               - SSD: specifies the ultra-high I/O disk type.
-               - SAS: specifies the high I/O disk type.
-               - SATA: specifies the common I/O disk type.
-               If the specified disk type is not available in the AZ, the disk will fail to create.
-        :param pulumi.Input[_builtins.str] wwn: Specifies the unique identifier used for mounting the EVS disk.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1425,11 +1031,6 @@ class Volume(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def attachments(self) -> pulumi.Output[Sequence['outputs.VolumeAttachment']]:
-        """
-        If a volume is attached to an instance, this attribute will
-        display the Attachment ID, Instance ID, and the Device as the Instance
-        sees it.
-        """
         return pulumi.get(self, "attachments")
 
     @_builtins.property
@@ -1446,19 +1047,11 @@ class Volume(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> pulumi.Output[_builtins.str]:
-        """
-        The availability zone for the volume.
-        Changing this creates a new volume.
-        """
         return pulumi.get(self, "availability_zone")
 
     @_builtins.property
     @pulumi.getter(name="backupId")
     def backup_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        The backup ID from which to create the volume.
-        Changing this creates a new volume.
-        """
         return pulumi.get(self, "backup_id")
 
     @_builtins.property
@@ -1469,10 +1062,6 @@ class Volume(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def cascade(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies the delete mode of snapshot. The default value is false. All snapshot
-        associated with the disk will also be deleted when the parameter is set to true.
-        """
         return pulumi.get(self, "cascade")
 
     @_builtins.property
@@ -1498,36 +1087,21 @@ class Volume(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the disk description. The value can contain a maximum of 255 bytes.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="deviceType")
     def device_type(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        The device type of volume to create. Valid options are VBD and SCSI.
-        Defaults to VBD. Changing this creates a new volume.
-        """
         return pulumi.get(self, "device_type")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the enterprise project id of the disk. Changing this
-        creates a new disk.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        The image ID from which to create the volume.
-        Changing this creates a new volume.
-        """
         return pulumi.get(self, "image_id")
 
     @_builtins.property
@@ -1543,10 +1117,6 @@ class Volume(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="kmsId")
     def kms_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        The Encryption KMS ID to create the volume.
-        Changing this creates a new volume.
-        """
         return pulumi.get(self, "kms_id")
 
     @_builtins.property
@@ -1557,22 +1127,11 @@ class Volume(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def multiattach(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Default:false. Specifies the shared EVS disk information.
-        Changing this creates a new volume.
-        """
         return pulumi.get(self, "multiattach")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the disk name.
-        If you create disks one by one, the name value is the disk name. The value can contain a maximum of 255 bytes.
-        If you create multiple disks (the count value is greater than 1), the system automatically adds a hyphen followed
-        by a four-digit incremental number, such as -0000, to the end of each disk name. For example,
-        the disk names can be volume-0001 and volume-0002. The value can contain a maximum of 250 bytes.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -1588,9 +1147,6 @@ class Volume(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the EVS volume resource. If omitted, the provider-level region will be used. Changing this creates a new EVS resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
@@ -1611,27 +1167,11 @@ class Volume(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def size(self) -> pulumi.Output[_builtins.int]:
-        """
-        Specifies the disk size, in GB. Its value can be as follows:
-        - System disk: 1 GB to 1024 GB
-        - Data disk: 10 GB to 32768 GB
-        This parameter is mandatory when you create an empty disk. You can specify the parameter value as required within the value range.
-        This parameter is mandatory when you create the disk from a snapshot. Ensure that the disk size is greater than or equal to the snapshot size.
-        This parameter is mandatory when you create the disk from an image. Ensure that the disk size is greater than or equal to
-        the minimum disk capacity required by min_disk in the image attributes.
-        This parameter is optional when you create the disk from a backup. If this parameter is not specified, the disk size is equal to the backup size.
-        Changing this parameter will update the disk. You can extend the disk by setting this parameter to a new value, which must be between current size
-        and the max size(System disk: 1024 GB; Data disk: 32768 GB). Shrinking the disk is not supported.
-        """
         return pulumi.get(self, "size")
 
     @_builtins.property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        The snapshot ID from which to create the volume.
-        Changing this creates a new volume.
-        """
         return pulumi.get(self, "snapshot_id")
 
     @_builtins.property
@@ -1662,21 +1202,10 @@ class Volume(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the disk type.
-        Currently, the value can be SSD, SAS, or SATA.
-        - SSD: specifies the ultra-high I/O disk type.
-        - SAS: specifies the high I/O disk type.
-        - SATA: specifies the common I/O disk type.
-        If the specified disk type is not available in the AZ, the disk will fail to create.
-        """
         return pulumi.get(self, "volume_type")
 
     @_builtins.property
     @pulumi.getter
     def wwn(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the unique identifier used for mounting the EVS disk.
-        """
         return pulumi.get(self, "wwn")
 

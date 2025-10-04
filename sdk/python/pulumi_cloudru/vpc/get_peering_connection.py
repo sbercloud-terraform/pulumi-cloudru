@@ -118,36 +118,7 @@ def get_peering_connection(id: Optional[_builtins.str] = None,
                            vpc_id: Optional[_builtins.str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPeeringConnectionResult:
     """
-    The VPC Peering Connection data source provides details about a specific VPC peering connection.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudru as sbercloud
-    import pulumi_sbercloud as sbercloud
-
-    vpc = sbercloud.Vpc.get_vpc(name="vpc")
-    peer_vpc = sbercloud.Vpc.get_vpc(name="peer_vpc")
-    peering = sbercloud.Vpc.get_peering_connection(vpc_id=vpc.id,
-        peer_vpc_id=peer_vpc.id)
-    vpc_route = sbercloud.vpc.Route("vpc_route",
-        type="peering",
-        nexthop=peering.id,
-        destination="192.168.0.0/16",
-        vpc_id=vpc.id)
-    ```
-
-
-    :param _builtins.str id: The ID of the specific VPC Peering Connection to retrieve.
-    :param _builtins.str name: The name of the specific VPC Peering Connection to retrieve.
-    :param _builtins.str peer_tenant_id: The Tenant ID of the accepter/peer VPC of the specific VPC Peering Connection to
-           retrieve.
-    :param _builtins.str peer_vpc_id: The ID of the accepter/peer VPC of the specific VPC Peering Connection to retrieve.
-    :param _builtins.str region: The region in which to obtain the VPC Peering Connection. If omitted, the provider-level
-           region will be used.
-    :param _builtins.str status: The status of the specific VPC Peering Connection to retrieve.
-    :param _builtins.str vpc_id: The ID of the requester VPC of the specific VPC Peering Connection to retrieve.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -178,36 +149,7 @@ def get_peering_connection_output(id: Optional[pulumi.Input[Optional[_builtins.s
                                   vpc_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPeeringConnectionResult]:
     """
-    The VPC Peering Connection data source provides details about a specific VPC peering connection.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudru as sbercloud
-    import pulumi_sbercloud as sbercloud
-
-    vpc = sbercloud.Vpc.get_vpc(name="vpc")
-    peer_vpc = sbercloud.Vpc.get_vpc(name="peer_vpc")
-    peering = sbercloud.Vpc.get_peering_connection(vpc_id=vpc.id,
-        peer_vpc_id=peer_vpc.id)
-    vpc_route = sbercloud.vpc.Route("vpc_route",
-        type="peering",
-        nexthop=peering.id,
-        destination="192.168.0.0/16",
-        vpc_id=vpc.id)
-    ```
-
-
-    :param _builtins.str id: The ID of the specific VPC Peering Connection to retrieve.
-    :param _builtins.str name: The name of the specific VPC Peering Connection to retrieve.
-    :param _builtins.str peer_tenant_id: The Tenant ID of the accepter/peer VPC of the specific VPC Peering Connection to
-           retrieve.
-    :param _builtins.str peer_vpc_id: The ID of the accepter/peer VPC of the specific VPC Peering Connection to retrieve.
-    :param _builtins.str region: The region in which to obtain the VPC Peering Connection. If omitted, the provider-level
-           region will be used.
-    :param _builtins.str status: The status of the specific VPC Peering Connection to retrieve.
-    :param _builtins.str vpc_id: The ID of the requester VPC of the specific VPC Peering Connection to retrieve.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id

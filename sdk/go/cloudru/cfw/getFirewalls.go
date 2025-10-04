@@ -11,33 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of CFW firewalls.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cfw.GetFirewalls(ctx, &cfw.GetFirewallsArgs{
-//				ServiceType: pulumi.IntRef(0),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetFirewalls(ctx *pulumi.Context, args *GetFirewallsArgs, opts ...pulumi.InvokeOption) (*GetFirewallsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFirewallsResult
@@ -50,30 +23,19 @@ func GetFirewalls(ctx *pulumi.Context, args *GetFirewallsArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getFirewalls.
 type GetFirewallsArgs struct {
-	// Specifies the firewall instance ID.
-	// If not specified, the first instance will be returned.
 	FwInstanceId *string `pulumi:"fwInstanceId"`
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the service type. The value can be:
-	// + **0**: North-south firewall;
-	// + **1**: East-west firewall;
-	ServiceType *int `pulumi:"serviceType"`
+	Region       *string `pulumi:"region"`
+	ServiceType  *int    `pulumi:"serviceType"`
 }
 
 // A collection of values returned by getFirewalls.
 type GetFirewallsResult struct {
-	// The firewall ID.
 	FwInstanceId *string `pulumi:"fwInstanceId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The firewall instance records.
-	// The records object structure is documented below.
-	Records []GetFirewallsRecord `pulumi:"records"`
-	Region  string               `pulumi:"region"`
-	// The service type.
-	ServiceType *int `pulumi:"serviceType"`
+	Id          string               `pulumi:"id"`
+	Records     []GetFirewallsRecord `pulumi:"records"`
+	Region      string               `pulumi:"region"`
+	ServiceType *int                 `pulumi:"serviceType"`
 }
 
 func GetFirewallsOutput(ctx *pulumi.Context, args GetFirewallsOutputArgs, opts ...pulumi.InvokeOption) GetFirewallsResultOutput {
@@ -87,16 +49,9 @@ func GetFirewallsOutput(ctx *pulumi.Context, args GetFirewallsOutputArgs, opts .
 
 // A collection of arguments for invoking getFirewalls.
 type GetFirewallsOutputArgs struct {
-	// Specifies the firewall instance ID.
-	// If not specified, the first instance will be returned.
 	FwInstanceId pulumi.StringPtrInput `pulumi:"fwInstanceId"`
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the service type. The value can be:
-	// + **0**: North-south firewall;
-	// + **1**: East-west firewall;
-	ServiceType pulumi.IntPtrInput `pulumi:"serviceType"`
+	Region       pulumi.StringPtrInput `pulumi:"region"`
+	ServiceType  pulumi.IntPtrInput    `pulumi:"serviceType"`
 }
 
 func (GetFirewallsOutputArgs) ElementType() reflect.Type {
@@ -118,7 +73,6 @@ func (o GetFirewallsResultOutput) ToGetFirewallsResultOutputWithContext(ctx cont
 	return o
 }
 
-// The firewall ID.
 func (o GetFirewallsResultOutput) FwInstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFirewallsResult) *string { return v.FwInstanceId }).(pulumi.StringPtrOutput)
 }
@@ -128,8 +82,6 @@ func (o GetFirewallsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The firewall instance records.
-// The records object structure is documented below.
 func (o GetFirewallsResultOutput) Records() GetFirewallsRecordArrayOutput {
 	return o.ApplyT(func(v GetFirewallsResult) []GetFirewallsRecord { return v.Records }).(GetFirewallsRecordArrayOutput)
 }
@@ -138,7 +90,6 @@ func (o GetFirewallsResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallsResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The service type.
 func (o GetFirewallsResultOutput) ServiceType() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetFirewallsResult) *int { return v.ServiceType }).(pulumi.IntPtrOutput)
 }

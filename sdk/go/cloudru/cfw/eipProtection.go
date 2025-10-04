@@ -12,35 +12,14 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages the protected EIPs under the protect object for CFW service within SberCloud.
-//
-// > A protection object (`objectId`) can only create one `Cfw.EipProtection` resource for managing
-// protected EIPs.
-//
-// ## Import
-//
-// The protection resource can be imported using their `object_id` or `id`, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Cfw/eipProtection:EipProtection test <id>
-// ```
 type EipProtection struct {
 	pulumi.CustomResourceState
 
 	// The protected object ID.
-	// Changing this parameter will create a new resource.
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
 	// The protected EIP configurations.
-	// The object structure is documented below.
-	//
-	// <a name="cfwProtectedEip"></a>
-	// The `protectedEip` block supports:
 	ProtectedEips EipProtectionProtectedEipArrayOutput `pulumi:"protectedEips"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Region        pulumi.StringOutput                  `pulumi:"region"`
 }
 
 // NewEipProtection registers a new resource with the given unique name, arguments, and options.
@@ -80,32 +59,18 @@ func GetEipProtection(ctx *pulumi.Context,
 // Input properties used for looking up and filtering EipProtection resources.
 type eipProtectionState struct {
 	// The protected object ID.
-	// Changing this parameter will create a new resource.
 	ObjectId *string `pulumi:"objectId"`
 	// The protected EIP configurations.
-	// The object structure is documented below.
-	//
-	// <a name="cfwProtectedEip"></a>
-	// The `protectedEip` block supports:
 	ProtectedEips []EipProtectionProtectedEip `pulumi:"protectedEips"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
+	Region        *string                     `pulumi:"region"`
 }
 
 type EipProtectionState struct {
 	// The protected object ID.
-	// Changing this parameter will create a new resource.
 	ObjectId pulumi.StringPtrInput
 	// The protected EIP configurations.
-	// The object structure is documented below.
-	//
-	// <a name="cfwProtectedEip"></a>
-	// The `protectedEip` block supports:
 	ProtectedEips EipProtectionProtectedEipArrayInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
+	Region        pulumi.StringPtrInput
 }
 
 func (EipProtectionState) ElementType() reflect.Type {
@@ -114,33 +79,19 @@ func (EipProtectionState) ElementType() reflect.Type {
 
 type eipProtectionArgs struct {
 	// The protected object ID.
-	// Changing this parameter will create a new resource.
 	ObjectId string `pulumi:"objectId"`
 	// The protected EIP configurations.
-	// The object structure is documented below.
-	//
-	// <a name="cfwProtectedEip"></a>
-	// The `protectedEip` block supports:
 	ProtectedEips []EipProtectionProtectedEip `pulumi:"protectedEips"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
+	Region        *string                     `pulumi:"region"`
 }
 
 // The set of arguments for constructing a EipProtection resource.
 type EipProtectionArgs struct {
 	// The protected object ID.
-	// Changing this parameter will create a new resource.
 	ObjectId pulumi.StringInput
 	// The protected EIP configurations.
-	// The object structure is documented below.
-	//
-	// <a name="cfwProtectedEip"></a>
-	// The `protectedEip` block supports:
 	ProtectedEips EipProtectionProtectedEipArrayInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
+	Region        pulumi.StringPtrInput
 }
 
 func (EipProtectionArgs) ElementType() reflect.Type {
@@ -231,22 +182,15 @@ func (o EipProtectionOutput) ToEipProtectionOutputWithContext(ctx context.Contex
 }
 
 // The protected object ID.
-// Changing this parameter will create a new resource.
 func (o EipProtectionOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EipProtection) pulumi.StringOutput { return v.ObjectId }).(pulumi.StringOutput)
 }
 
 // The protected EIP configurations.
-// The object structure is documented below.
-//
-// <a name="cfwProtectedEip"></a>
-// The `protectedEip` block supports:
 func (o EipProtectionOutput) ProtectedEips() EipProtectionProtectedEipArrayOutput {
 	return o.ApplyT(func(v *EipProtection) EipProtectionProtectedEipArrayOutput { return v.ProtectedEips }).(EipProtectionProtectedEipArrayOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
 func (o EipProtectionOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *EipProtection) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

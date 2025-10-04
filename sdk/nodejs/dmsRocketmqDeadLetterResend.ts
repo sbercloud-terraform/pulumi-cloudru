@@ -6,26 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Manages a DMS RocketMQ dead letter messages resend resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const deadLetterTopic = config.requireObject<any>("deadLetterTopic");
- * const messageIdList = config.requireObject<any>("messageIdList");
- * const test = new sbercloud.DmsRocketmqDeadLetterResend("test", {
- *     instanceId: instanceId,
- *     topic: deadLetterTopic,
- *     messageIdLists: messageIdList,
- * });
- * ```
- */
 export class DmsRocketmqDeadLetterResend extends pulumi.CustomResource {
     /**
      * Get an existing DmsRocketmqDeadLetterResend resource's state with the given name, ID, and optional extra
@@ -54,31 +34,13 @@ export class DmsRocketmqDeadLetterResend extends pulumi.CustomResource {
         return obj['__pulumiType'] === DmsRocketmqDeadLetterResend.__pulumiType;
     }
 
-    /**
-     * Specifies the instance ID.
-     * Changing this creates a new resource.
-     */
     declare public readonly instanceId: pulumi.Output<string>;
-    /**
-     * Specifies the message ID list.
-     * Changing this creates a new resource.
-     */
     declare public readonly messageIdLists: pulumi.Output<string[]>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
     /**
      * Indicates the resend results.
-     * The resendResults structure is documented below.
      */
     declare public /*out*/ readonly resendResults: pulumi.Output<outputs.DmsRocketmqDeadLetterResendResendResult[]>;
-    /**
-     * Specifies the dead letter topic name.
-     * Changing this creates a new resource.
-     */
     declare public readonly topic: pulumi.Output<string>;
 
     /**
@@ -125,31 +87,13 @@ export class DmsRocketmqDeadLetterResend extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DmsRocketmqDeadLetterResend resources.
  */
 export interface DmsRocketmqDeadLetterResendState {
-    /**
-     * Specifies the instance ID.
-     * Changing this creates a new resource.
-     */
     instanceId?: pulumi.Input<string>;
-    /**
-     * Specifies the message ID list.
-     * Changing this creates a new resource.
-     */
     messageIdLists?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
      * Indicates the resend results.
-     * The resendResults structure is documented below.
      */
     resendResults?: pulumi.Input<pulumi.Input<inputs.DmsRocketmqDeadLetterResendResendResult>[]>;
-    /**
-     * Specifies the dead letter topic name.
-     * Changing this creates a new resource.
-     */
     topic?: pulumi.Input<string>;
 }
 
@@ -157,25 +101,8 @@ export interface DmsRocketmqDeadLetterResendState {
  * The set of arguments for constructing a DmsRocketmqDeadLetterResend resource.
  */
 export interface DmsRocketmqDeadLetterResendArgs {
-    /**
-     * Specifies the instance ID.
-     * Changing this creates a new resource.
-     */
     instanceId: pulumi.Input<string>;
-    /**
-     * Specifies the message ID list.
-     * Changing this creates a new resource.
-     */
     messageIdLists: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the dead letter topic name.
-     * Changing this creates a new resource.
-     */
     topic: pulumi.Input<string>;
 }

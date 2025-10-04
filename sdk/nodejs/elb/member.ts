@@ -4,31 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages an ELB member resource within SberCloud. This is an alternative to `sbercloudLbMemberV2`
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const member1 = new sbercloud.elb.Member("member_1", {
- *     address: "192.168.199.23",
- *     protocolPort: 8080,
- *     poolId: poolId,
- *     subnetId: subnetId,
- * });
- * ```
- *
- * ## Import
- *
- * ELB member can be imported using the pool ID and member ID separated by a slash, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Elb/member:Member member_1 e0bd694a-abbe-450e-b329-0931fd1cc5eb/4086b0c9-b18c-4d1c-b6b8-4c56c3ad2a9e
- * ```
- */
 export class Member extends pulumi.CustomResource {
     /**
      * Get an existing Member resource's state with the given name, ID, and optional extra
@@ -57,49 +32,25 @@ export class Member extends pulumi.CustomResource {
         return obj['__pulumiType'] === Member.__pulumiType;
     }
 
-    /**
-     * The IP address of the member to receive traffic from the load balancer.
-     * Changing this creates a new member.
-     */
     declare public readonly address: pulumi.Output<string>;
     /**
-     * The administrative state of the member.
-     * A valid value is true (UP) or false (DOWN).
+     * schema: Deprecated
      */
     declare public readonly adminStateUp: pulumi.Output<boolean | undefined>;
     declare public /*out*/ readonly backendServerStatus: pulumi.Output<boolean>;
-    /**
-     * Human-readable name for the member.
-     */
     declare public readonly name: pulumi.Output<string>;
     declare public /*out*/ readonly operatingStatus: pulumi.Output<string>;
-    /**
-     * The id of the pool that this member will be assigned to.
-     */
     declare public readonly poolId: pulumi.Output<string>;
-    /**
-     * The port on which to listen for client traffic. Changing this creates a
-     * new member.
-     */
     declare public readonly protocolPort: pulumi.Output<number>;
-    /**
-     * The region in which to create the ELB member resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new member.
-     */
     declare public readonly region: pulumi.Output<string>;
     /**
-     * The subnet in which to access the member
+     * the IPv4 subnet ID of the subnet in which to access the member
      */
     declare public readonly subnetId: pulumi.Output<string>;
     /**
      * @deprecated tenant_id is deprecated
      */
     declare public readonly tenantId: pulumi.Output<string>;
-    /**
-     * A positive integer value that indicates the relative portion of traffic that this member
-     * should receive from the pool. For example, a member with a weight of 10 receives five times as much traffic as a
-     * member with a weight of 2.
-     */
     declare public readonly weight: pulumi.Output<number>;
 
     /**
@@ -161,49 +112,25 @@ export class Member extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Member resources.
  */
 export interface MemberState {
-    /**
-     * The IP address of the member to receive traffic from the load balancer.
-     * Changing this creates a new member.
-     */
     address?: pulumi.Input<string>;
     /**
-     * The administrative state of the member.
-     * A valid value is true (UP) or false (DOWN).
+     * schema: Deprecated
      */
     adminStateUp?: pulumi.Input<boolean>;
     backendServerStatus?: pulumi.Input<boolean>;
-    /**
-     * Human-readable name for the member.
-     */
     name?: pulumi.Input<string>;
     operatingStatus?: pulumi.Input<string>;
-    /**
-     * The id of the pool that this member will be assigned to.
-     */
     poolId?: pulumi.Input<string>;
-    /**
-     * The port on which to listen for client traffic. Changing this creates a
-     * new member.
-     */
     protocolPort?: pulumi.Input<number>;
-    /**
-     * The region in which to create the ELB member resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new member.
-     */
     region?: pulumi.Input<string>;
     /**
-     * The subnet in which to access the member
+     * the IPv4 subnet ID of the subnet in which to access the member
      */
     subnetId?: pulumi.Input<string>;
     /**
      * @deprecated tenant_id is deprecated
      */
     tenantId?: pulumi.Input<string>;
-    /**
-     * A positive integer value that indicates the relative portion of traffic that this member
-     * should receive from the pool. For example, a member with a weight of 10 receives five times as much traffic as a
-     * member with a weight of 2.
-     */
     weight?: pulumi.Input<number>;
 }
 
@@ -211,46 +138,22 @@ export interface MemberState {
  * The set of arguments for constructing a Member resource.
  */
 export interface MemberArgs {
-    /**
-     * The IP address of the member to receive traffic from the load balancer.
-     * Changing this creates a new member.
-     */
     address: pulumi.Input<string>;
     /**
-     * The administrative state of the member.
-     * A valid value is true (UP) or false (DOWN).
+     * schema: Deprecated
      */
     adminStateUp?: pulumi.Input<boolean>;
-    /**
-     * Human-readable name for the member.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * The id of the pool that this member will be assigned to.
-     */
     poolId: pulumi.Input<string>;
-    /**
-     * The port on which to listen for client traffic. Changing this creates a
-     * new member.
-     */
     protocolPort: pulumi.Input<number>;
-    /**
-     * The region in which to create the ELB member resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new member.
-     */
     region?: pulumi.Input<string>;
     /**
-     * The subnet in which to access the member
+     * the IPv4 subnet ID of the subnet in which to access the member
      */
     subnetId: pulumi.Input<string>;
     /**
      * @deprecated tenant_id is deprecated
      */
     tenantId?: pulumi.Input<string>;
-    /**
-     * A positive integer value that indicates the relative portion of traffic that this member
-     * should receive from the pool. For example, a member with a weight of 10 receives five times as much traffic as a
-     * member with a weight of 2.
-     */
     weight?: pulumi.Input<number>;
 }

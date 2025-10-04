@@ -42,29 +42,10 @@ MYPY = False
 if not MYPY:
     class BucketCorsRuleArgsDict(TypedDict):
         allowed_methods: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Specifies the acceptable operation type of buckets and objects.
-        The methods include `GET`, `PUT`, `POST`, `DELETE` or `HEAD`.
-        """
         allowed_origins: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Requests from this origin can access the bucket. Multiple matching rules are allowed.
-        One rule occupies one line, and allows one wildcard character (*) at most.
-        """
         allowed_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specifies the allowed header of cross-origin requests.
-        Only CORS requests matching the allowed header are valid.
-        """
         expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specifies the exposed header in CORS responses, providing additional information for clients.
-        """
         max_age_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the duration that your browser can cache CORS responses, expressed in seconds.
-        The default value is 100.
-        """
 elif False:
     BucketCorsRuleArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -76,17 +57,6 @@ class BucketCorsRuleArgs:
                  allowed_headers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  expose_headers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  max_age_seconds: Optional[pulumi.Input[_builtins.int]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_methods: Specifies the acceptable operation type of buckets and objects.
-               The methods include `GET`, `PUT`, `POST`, `DELETE` or `HEAD`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: Requests from this origin can access the bucket. Multiple matching rules are allowed.
-               One rule occupies one line, and allows one wildcard character (*) at most.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_headers: Specifies the allowed header of cross-origin requests.
-               Only CORS requests matching the allowed header are valid.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] expose_headers: Specifies the exposed header in CORS responses, providing additional information for clients.
-        :param pulumi.Input[_builtins.int] max_age_seconds: Specifies the duration that your browser can cache CORS responses, expressed in seconds.
-               The default value is 100.
-        """
         pulumi.set(__self__, "allowed_methods", allowed_methods)
         pulumi.set(__self__, "allowed_origins", allowed_origins)
         if allowed_headers is not None:
@@ -99,10 +69,6 @@ class BucketCorsRuleArgs:
     @_builtins.property
     @pulumi.getter(name="allowedMethods")
     def allowed_methods(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        Specifies the acceptable operation type of buckets and objects.
-        The methods include `GET`, `PUT`, `POST`, `DELETE` or `HEAD`.
-        """
         return pulumi.get(self, "allowed_methods")
 
     @allowed_methods.setter
@@ -112,10 +78,6 @@ class BucketCorsRuleArgs:
     @_builtins.property
     @pulumi.getter(name="allowedOrigins")
     def allowed_origins(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        Requests from this origin can access the bucket. Multiple matching rules are allowed.
-        One rule occupies one line, and allows one wildcard character (*) at most.
-        """
         return pulumi.get(self, "allowed_origins")
 
     @allowed_origins.setter
@@ -125,10 +87,6 @@ class BucketCorsRuleArgs:
     @_builtins.property
     @pulumi.getter(name="allowedHeaders")
     def allowed_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the allowed header of cross-origin requests.
-        Only CORS requests matching the allowed header are valid.
-        """
         return pulumi.get(self, "allowed_headers")
 
     @allowed_headers.setter
@@ -138,9 +96,6 @@ class BucketCorsRuleArgs:
     @_builtins.property
     @pulumi.getter(name="exposeHeaders")
     def expose_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the exposed header in CORS responses, providing additional information for clients.
-        """
         return pulumi.get(self, "expose_headers")
 
     @expose_headers.setter
@@ -150,10 +105,6 @@ class BucketCorsRuleArgs:
     @_builtins.property
     @pulumi.getter(name="maxAgeSeconds")
     def max_age_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the duration that your browser can cache CORS responses, expressed in seconds.
-        The default value is 100.
-        """
         return pulumi.get(self, "max_age_seconds")
 
     @max_age_seconds.setter
@@ -164,38 +115,13 @@ class BucketCorsRuleArgs:
 if not MYPY:
     class BucketLifecycleRuleArgsDict(TypedDict):
         enabled: pulumi.Input[_builtins.bool]
-        """
-        Specifies lifecycle rule status.
-        """
         name: pulumi.Input[_builtins.str]
-        """
-        Unique identifier for lifecycle rules. The Rule Name contains a maximum of 255 characters.
-        """
         abort_incomplete_multipart_uploads: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleAbortIncompleteMultipartUploadArgsDict']]]]
         expirations: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleExpirationArgsDict']]]]
-        """
-        Specifies a period when objects that have been last updated are automatically deleted. (documented below).
-        """
         noncurrent_version_expirations: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleNoncurrentVersionExpirationArgsDict']]]]
-        """
-        Specifies a period when noncurrent object versions are automatically deleted. (documented below).
-        """
         noncurrent_version_transitions: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleNoncurrentVersionTransitionArgsDict']]]]
-        """
-        Specifies a period when noncurrent object versions are automatically transitioned to `WARM` or `COLD` storage class (documented below).
-
-        At least one of `expiration`, `transition`, `noncurrent_version_expiration`, `noncurrent_version_transition` must be specified.
-        """
         prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Object key prefix identifying one or more objects to which the rule applies.
-        If omitted, all objects in the bucket will be managed by the lifecycle rule.
-        The prefix cannot start or end with a slash (/), cannot have consecutive slashes (/), and cannot contain the following special characters: \\:*?"<>|.
-        """
         transitions: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleTransitionArgsDict']]]]
-        """
-        Specifies a period when objects that have been last updated are automatically transitioned to `WARM` or `COLD` storage class (documented below).
-        """
 elif False:
     BucketLifecycleRuleArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -210,19 +136,6 @@ class BucketLifecycleRuleArgs:
                  noncurrent_version_transitions: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleNoncurrentVersionTransitionArgs']]]] = None,
                  prefix: Optional[pulumi.Input[_builtins.str]] = None,
                  transitions: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleTransitionArgs']]]] = None):
-        """
-        :param pulumi.Input[_builtins.bool] enabled: Specifies lifecycle rule status.
-        :param pulumi.Input[_builtins.str] name: Unique identifier for lifecycle rules. The Rule Name contains a maximum of 255 characters.
-        :param pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleExpirationArgs']]] expirations: Specifies a period when objects that have been last updated are automatically deleted. (documented below).
-        :param pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleNoncurrentVersionExpirationArgs']]] noncurrent_version_expirations: Specifies a period when noncurrent object versions are automatically deleted. (documented below).
-        :param pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleNoncurrentVersionTransitionArgs']]] noncurrent_version_transitions: Specifies a period when noncurrent object versions are automatically transitioned to `WARM` or `COLD` storage class (documented below).
-               
-               At least one of `expiration`, `transition`, `noncurrent_version_expiration`, `noncurrent_version_transition` must be specified.
-        :param pulumi.Input[_builtins.str] prefix: Object key prefix identifying one or more objects to which the rule applies.
-               If omitted, all objects in the bucket will be managed by the lifecycle rule.
-               The prefix cannot start or end with a slash (/), cannot have consecutive slashes (/), and cannot contain the following special characters: \\:*?"<>|.
-        :param pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleTransitionArgs']]] transitions: Specifies a period when objects that have been last updated are automatically transitioned to `WARM` or `COLD` storage class (documented below).
-        """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "name", name)
         if abort_incomplete_multipart_uploads is not None:
@@ -241,9 +154,6 @@ class BucketLifecycleRuleArgs:
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[_builtins.bool]:
-        """
-        Specifies lifecycle rule status.
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -253,9 +163,6 @@ class BucketLifecycleRuleArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Unique identifier for lifecycle rules. The Rule Name contains a maximum of 255 characters.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -274,9 +181,6 @@ class BucketLifecycleRuleArgs:
     @_builtins.property
     @pulumi.getter
     def expirations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleExpirationArgs']]]]:
-        """
-        Specifies a period when objects that have been last updated are automatically deleted. (documented below).
-        """
         return pulumi.get(self, "expirations")
 
     @expirations.setter
@@ -286,9 +190,6 @@ class BucketLifecycleRuleArgs:
     @_builtins.property
     @pulumi.getter(name="noncurrentVersionExpirations")
     def noncurrent_version_expirations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleNoncurrentVersionExpirationArgs']]]]:
-        """
-        Specifies a period when noncurrent object versions are automatically deleted. (documented below).
-        """
         return pulumi.get(self, "noncurrent_version_expirations")
 
     @noncurrent_version_expirations.setter
@@ -298,11 +199,6 @@ class BucketLifecycleRuleArgs:
     @_builtins.property
     @pulumi.getter(name="noncurrentVersionTransitions")
     def noncurrent_version_transitions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleNoncurrentVersionTransitionArgs']]]]:
-        """
-        Specifies a period when noncurrent object versions are automatically transitioned to `WARM` or `COLD` storage class (documented below).
-
-        At least one of `expiration`, `transition`, `noncurrent_version_expiration`, `noncurrent_version_transition` must be specified.
-        """
         return pulumi.get(self, "noncurrent_version_transitions")
 
     @noncurrent_version_transitions.setter
@@ -312,11 +208,6 @@ class BucketLifecycleRuleArgs:
     @_builtins.property
     @pulumi.getter
     def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Object key prefix identifying one or more objects to which the rule applies.
-        If omitted, all objects in the bucket will be managed by the lifecycle rule.
-        The prefix cannot start or end with a slash (/), cannot have consecutive slashes (/), and cannot contain the following special characters: \\:*?"<>|.
-        """
         return pulumi.get(self, "prefix")
 
     @prefix.setter
@@ -326,9 +217,6 @@ class BucketLifecycleRuleArgs:
     @_builtins.property
     @pulumi.getter
     def transitions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleTransitionArgs']]]]:
-        """
-        Specifies a period when objects that have been last updated are automatically transitioned to `WARM` or `COLD` storage class (documented below).
-        """
         return pulumi.get(self, "transitions")
 
     @transitions.setter
@@ -361,10 +249,6 @@ class BucketLifecycleRuleAbortIncompleteMultipartUploadArgs:
 if not MYPY:
     class BucketLifecycleRuleExpirationArgsDict(TypedDict):
         days: pulumi.Input[_builtins.int]
-        """
-        Specifies the number of days when objects that have been last updated are automatically deleted.
-        The expiration time must be greater than the transition times.
-        """
 elif False:
     BucketLifecycleRuleExpirationArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -372,19 +256,11 @@ elif False:
 class BucketLifecycleRuleExpirationArgs:
     def __init__(__self__, *,
                  days: pulumi.Input[_builtins.int]):
-        """
-        :param pulumi.Input[_builtins.int] days: Specifies the number of days when objects that have been last updated are automatically deleted.
-               The expiration time must be greater than the transition times.
-        """
         pulumi.set(__self__, "days", days)
 
     @_builtins.property
     @pulumi.getter
     def days(self) -> pulumi.Input[_builtins.int]:
-        """
-        Specifies the number of days when objects that have been last updated are automatically deleted.
-        The expiration time must be greater than the transition times.
-        """
         return pulumi.get(self, "days")
 
     @days.setter
@@ -395,9 +271,6 @@ class BucketLifecycleRuleExpirationArgs:
 if not MYPY:
     class BucketLifecycleRuleNoncurrentVersionExpirationArgsDict(TypedDict):
         days: pulumi.Input[_builtins.int]
-        """
-        Specifies the number of days when noncurrent object versions are automatically deleted.
-        """
 elif False:
     BucketLifecycleRuleNoncurrentVersionExpirationArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -405,17 +278,11 @@ elif False:
 class BucketLifecycleRuleNoncurrentVersionExpirationArgs:
     def __init__(__self__, *,
                  days: pulumi.Input[_builtins.int]):
-        """
-        :param pulumi.Input[_builtins.int] days: Specifies the number of days when noncurrent object versions are automatically deleted.
-        """
         pulumi.set(__self__, "days", days)
 
     @_builtins.property
     @pulumi.getter
     def days(self) -> pulumi.Input[_builtins.int]:
-        """
-        Specifies the number of days when noncurrent object versions are automatically deleted.
-        """
         return pulumi.get(self, "days")
 
     @days.setter
@@ -426,13 +293,7 @@ class BucketLifecycleRuleNoncurrentVersionExpirationArgs:
 if not MYPY:
     class BucketLifecycleRuleNoncurrentVersionTransitionArgsDict(TypedDict):
         days: pulumi.Input[_builtins.int]
-        """
-        Specifies the number of days when noncurrent object versions are automatically transitioned to the specified storage class.
-        """
         storage_class: pulumi.Input[_builtins.str]
-        """
-        The class of storage used to store the object. Only `WARM` and `COLD` are supported.
-        """
 elif False:
     BucketLifecycleRuleNoncurrentVersionTransitionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -441,19 +302,12 @@ class BucketLifecycleRuleNoncurrentVersionTransitionArgs:
     def __init__(__self__, *,
                  days: pulumi.Input[_builtins.int],
                  storage_class: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.int] days: Specifies the number of days when noncurrent object versions are automatically transitioned to the specified storage class.
-        :param pulumi.Input[_builtins.str] storage_class: The class of storage used to store the object. Only `WARM` and `COLD` are supported.
-        """
         pulumi.set(__self__, "days", days)
         pulumi.set(__self__, "storage_class", storage_class)
 
     @_builtins.property
     @pulumi.getter
     def days(self) -> pulumi.Input[_builtins.int]:
-        """
-        Specifies the number of days when noncurrent object versions are automatically transitioned to the specified storage class.
-        """
         return pulumi.get(self, "days")
 
     @days.setter
@@ -463,9 +317,6 @@ class BucketLifecycleRuleNoncurrentVersionTransitionArgs:
     @_builtins.property
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> pulumi.Input[_builtins.str]:
-        """
-        The class of storage used to store the object. Only `WARM` and `COLD` are supported.
-        """
         return pulumi.get(self, "storage_class")
 
     @storage_class.setter
@@ -476,13 +327,7 @@ class BucketLifecycleRuleNoncurrentVersionTransitionArgs:
 if not MYPY:
     class BucketLifecycleRuleTransitionArgsDict(TypedDict):
         days: pulumi.Input[_builtins.int]
-        """
-        Specifies the number of days when objects that have been last updated are automatically transitioned to the specified storage class.
-        """
         storage_class: pulumi.Input[_builtins.str]
-        """
-        The class of storage used to store the object. Only `WARM` and `COLD` are supported.
-        """
 elif False:
     BucketLifecycleRuleTransitionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -491,19 +336,12 @@ class BucketLifecycleRuleTransitionArgs:
     def __init__(__self__, *,
                  days: pulumi.Input[_builtins.int],
                  storage_class: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.int] days: Specifies the number of days when objects that have been last updated are automatically transitioned to the specified storage class.
-        :param pulumi.Input[_builtins.str] storage_class: The class of storage used to store the object. Only `WARM` and `COLD` are supported.
-        """
         pulumi.set(__self__, "days", days)
         pulumi.set(__self__, "storage_class", storage_class)
 
     @_builtins.property
     @pulumi.getter
     def days(self) -> pulumi.Input[_builtins.int]:
-        """
-        Specifies the number of days when objects that have been last updated are automatically transitioned to the specified storage class.
-        """
         return pulumi.get(self, "days")
 
     @days.setter
@@ -513,9 +351,6 @@ class BucketLifecycleRuleTransitionArgs:
     @_builtins.property
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> pulumi.Input[_builtins.str]:
-        """
-        The class of storage used to store the object. Only `WARM` and `COLD` are supported.
-        """
         return pulumi.get(self, "storage_class")
 
     @storage_class.setter
@@ -526,18 +361,11 @@ class BucketLifecycleRuleTransitionArgs:
 if not MYPY:
     class BucketLoggingArgsDict(TypedDict):
         target_bucket: pulumi.Input[_builtins.str]
-        """
-        The name of the bucket that will receive the log objects.
-        The acl policy of the target bucket should be `log-delivery-write`.
-        """
         agency: NotRequired[pulumi.Input[_builtins.str]]
         """
         schema: Required
         """
         target_prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        To specify a key prefix for log objects.
-        """
 elif False:
     BucketLoggingArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -548,10 +376,7 @@ class BucketLoggingArgs:
                  agency: Optional[pulumi.Input[_builtins.str]] = None,
                  target_prefix: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] target_bucket: The name of the bucket that will receive the log objects.
-               The acl policy of the target bucket should be `log-delivery-write`.
         :param pulumi.Input[_builtins.str] agency: schema: Required
-        :param pulumi.Input[_builtins.str] target_prefix: To specify a key prefix for log objects.
         """
         pulumi.set(__self__, "target_bucket", target_bucket)
         if agency is not None:
@@ -562,10 +387,6 @@ class BucketLoggingArgs:
     @_builtins.property
     @pulumi.getter(name="targetBucket")
     def target_bucket(self) -> pulumi.Input[_builtins.str]:
-        """
-        The name of the bucket that will receive the log objects.
-        The acl policy of the target bucket should be `log-delivery-write`.
-        """
         return pulumi.get(self, "target_bucket")
 
     @target_bucket.setter
@@ -587,9 +408,6 @@ class BucketLoggingArgs:
     @_builtins.property
     @pulumi.getter(name="targetPrefix")
     def target_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        To specify a key prefix for log objects.
-        """
         return pulumi.get(self, "target_prefix")
 
     @target_prefix.setter
@@ -600,13 +418,7 @@ class BucketLoggingArgs:
 if not MYPY:
     class BucketStorageInfoArgsDict(TypedDict):
         object_number: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of objects stored in the bucket.
-        """
         size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The stored size of the bucket.
-        """
 elif False:
     BucketStorageInfoArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -615,10 +427,6 @@ class BucketStorageInfoArgs:
     def __init__(__self__, *,
                  object_number: Optional[pulumi.Input[_builtins.int]] = None,
                  size: Optional[pulumi.Input[_builtins.int]] = None):
-        """
-        :param pulumi.Input[_builtins.int] object_number: The number of objects stored in the bucket.
-        :param pulumi.Input[_builtins.int] size: The stored size of the bucket.
-        """
         if object_number is not None:
             pulumi.set(__self__, "object_number", object_number)
         if size is not None:
@@ -627,9 +435,6 @@ class BucketStorageInfoArgs:
     @_builtins.property
     @pulumi.getter(name="objectNumber")
     def object_number(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The number of objects stored in the bucket.
-        """
         return pulumi.get(self, "object_number")
 
     @object_number.setter
@@ -639,9 +444,6 @@ class BucketStorageInfoArgs:
     @_builtins.property
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The stored size of the bucket.
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -652,30 +454,9 @@ class BucketStorageInfoArgs:
 if not MYPY:
     class BucketWebsiteArgsDict(TypedDict):
         error_document: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the error page returned when an error occurs during static website access.
-        Only HTML, JPG, PNG, BMP, and WEBP files under the root directory are supported.
-        """
         index_document: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Unless using `redirect_all_requests_to`. Specifies the default homepage of the static website, only HTML web pages are supported.
-        OBS only allows files such as `index.html` in the root directory of a bucket to function as the default homepage.
-        That is to say, do not set the default homepage with a multi-level directory structure (for example, /page/index.html).
-        """
         redirect_all_requests_to: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A hostname to redirect all website requests for this bucket to. Hostname can optionally be prefixed with a protocol (`http://` or `https://`) to use when redirecting requests. The default is the protocol that is used in the original request.
-        """
         routing_rules: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A JSON or XML format containing routing rules describing redirect behavior and when redirects are applied.
-        Each rule contains a `Condition` and a `Redirect` as shown in the following table:
-
-        Parameter | Key
-        --- | ---
-        Condition | KeyPrefixEquals, HttpErrorCodeReturnedEquals
-        Redirect | Protocol, HostName, ReplaceKeyPrefixWith, ReplaceKeyWith, HttpRedirectCode
-        """
 elif False:
     BucketWebsiteArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -686,21 +467,6 @@ class BucketWebsiteArgs:
                  index_document: Optional[pulumi.Input[_builtins.str]] = None,
                  redirect_all_requests_to: Optional[pulumi.Input[_builtins.str]] = None,
                  routing_rules: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] error_document: Specifies the error page returned when an error occurs during static website access.
-               Only HTML, JPG, PNG, BMP, and WEBP files under the root directory are supported.
-        :param pulumi.Input[_builtins.str] index_document: Unless using `redirect_all_requests_to`. Specifies the default homepage of the static website, only HTML web pages are supported.
-               OBS only allows files such as `index.html` in the root directory of a bucket to function as the default homepage.
-               That is to say, do not set the default homepage with a multi-level directory structure (for example, /page/index.html).
-        :param pulumi.Input[_builtins.str] redirect_all_requests_to: A hostname to redirect all website requests for this bucket to. Hostname can optionally be prefixed with a protocol (`http://` or `https://`) to use when redirecting requests. The default is the protocol that is used in the original request.
-        :param pulumi.Input[_builtins.str] routing_rules: A JSON or XML format containing routing rules describing redirect behavior and when redirects are applied.
-               Each rule contains a `Condition` and a `Redirect` as shown in the following table:
-               
-               Parameter | Key
-               --- | ---
-               Condition | KeyPrefixEquals, HttpErrorCodeReturnedEquals
-               Redirect | Protocol, HostName, ReplaceKeyPrefixWith, ReplaceKeyWith, HttpRedirectCode
-        """
         if error_document is not None:
             pulumi.set(__self__, "error_document", error_document)
         if index_document is not None:
@@ -713,10 +479,6 @@ class BucketWebsiteArgs:
     @_builtins.property
     @pulumi.getter(name="errorDocument")
     def error_document(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the error page returned when an error occurs during static website access.
-        Only HTML, JPG, PNG, BMP, and WEBP files under the root directory are supported.
-        """
         return pulumi.get(self, "error_document")
 
     @error_document.setter
@@ -726,11 +488,6 @@ class BucketWebsiteArgs:
     @_builtins.property
     @pulumi.getter(name="indexDocument")
     def index_document(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Unless using `redirect_all_requests_to`. Specifies the default homepage of the static website, only HTML web pages are supported.
-        OBS only allows files such as `index.html` in the root directory of a bucket to function as the default homepage.
-        That is to say, do not set the default homepage with a multi-level directory structure (for example, /page/index.html).
-        """
         return pulumi.get(self, "index_document")
 
     @index_document.setter
@@ -740,9 +497,6 @@ class BucketWebsiteArgs:
     @_builtins.property
     @pulumi.getter(name="redirectAllRequestsTo")
     def redirect_all_requests_to(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        A hostname to redirect all website requests for this bucket to. Hostname can optionally be prefixed with a protocol (`http://` or `https://`) to use when redirecting requests. The default is the protocol that is used in the original request.
-        """
         return pulumi.get(self, "redirect_all_requests_to")
 
     @redirect_all_requests_to.setter
@@ -752,15 +506,6 @@ class BucketWebsiteArgs:
     @_builtins.property
     @pulumi.getter(name="routingRules")
     def routing_rules(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        A JSON or XML format containing routing rules describing redirect behavior and when redirects are applied.
-        Each rule contains a `Condition` and a `Redirect` as shown in the following table:
-
-        Parameter | Key
-        --- | ---
-        Condition | KeyPrefixEquals, HttpErrorCodeReturnedEquals
-        Redirect | Protocol, HostName, ReplaceKeyPrefixWith, ReplaceKeyWith, HttpRedirectCode
-        """
         return pulumi.get(self, "routing_rules")
 
     @routing_rules.setter

@@ -6,41 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Manages SMN subscription resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const topic1 = new sbercloud.SmnTopic("topic_1", {
- *     name: "topic_1",
- *     displayName: "The display name of topic_1",
- * });
- * const subscription1 = new sbercloud.SmnSubscription("subscription_1", {
- *     topicUrn: topic1.id,
- *     endpoint: "mailtest@gmail.com",
- *     protocol: "email",
- *     remark: "O&M",
- * });
- * const subscription2 = new sbercloud.SmnSubscription("subscription_2", {
- *     topicUrn: topic1.id,
- *     endpoint: "13600000000",
- *     protocol: "sms",
- *     remark: "O&M",
- * });
- * ```
- *
- * ## Import
- *
- * SMN subscription can be imported using the `id` (subscription urn), e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:index/smnSubscription:SmnSubscription subscription_1 urn:smn:ru-moscow-1:0f5181caba0024e72f89c0045e707b91:topic_1:9c06f9d90cc549359e3bf67860a0736a
- * ```
- */
 export class SmnSubscription extends pulumi.CustomResource {
     /**
      * Get an existing SmnSubscription resource's state with the given name, ID, and optional extra
@@ -69,53 +34,18 @@ export class SmnSubscription extends pulumi.CustomResource {
         return obj['__pulumiType'] === SmnSubscription.__pulumiType;
     }
 
-    /**
-     * Message endpoint.
-     * + **For an HTTP subscription**, the endpoint starts with `http://`.
-     * + **For an HTTPS subscription**, the endpoint starts with `https://`.
-     * + **For an email subscription**, the endpoint is an mail address.
-     * + **For an SMS message subscription**, the endpoint is a phone number,
-     * the format is \[+\]\[country code\]\[phone number\], e.g. +7905xxx0000.
-     * + **For a functiongraph subscription**, the endpoint is a workflow ID.
-     */
     declare public readonly endpoint: pulumi.Output<string>;
     declare public readonly extension: pulumi.Output<outputs.SmnSubscriptionExtension>;
     /**
      * The message filter policies of a subscriber.
      */
     declare public /*out*/ readonly filterPolicies: pulumi.Output<outputs.SmnSubscriptionFilterPolicy[]>;
-    /**
-     * Project ID of the topic creator.
-     */
     declare public /*out*/ readonly owner: pulumi.Output<string>;
-    /**
-     * Protocol of the message endpoint. Currently, email,
-     * sms, http, and https are supported.
-     */
     declare public readonly protocol: pulumi.Output<string>;
-    /**
-     * The region in which to create the SMN subscription resource. If omitted, the provider-level region will be used. Changing this creates a new SMN subscription resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Remark information. The remarks must be a UTF-8-coded
-     * character string containing 128 bytes.
-     */
     declare public readonly remark: pulumi.Output<string | undefined>;
-    /**
-     * Subscription status.
-     * + **0**: indicates that the subscription is not confirmed.
-     * + **1**: indicates that the subscription is confirmed.
-     * + **3**: indicates that the subscription is canceled.
-     */
     declare public /*out*/ readonly status: pulumi.Output<number>;
-    /**
-     * Resource identifier of a subscription, which is unique.
-     */
     declare public /*out*/ readonly subscriptionUrn: pulumi.Output<string>;
-    /**
-     * Resource identifier of a topic, which is unique.
-     */
     declare public readonly topicUrn: pulumi.Output<string>;
 
     /**
@@ -172,53 +102,18 @@ export class SmnSubscription extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SmnSubscription resources.
  */
 export interface SmnSubscriptionState {
-    /**
-     * Message endpoint.
-     * + **For an HTTP subscription**, the endpoint starts with `http://`.
-     * + **For an HTTPS subscription**, the endpoint starts with `https://`.
-     * + **For an email subscription**, the endpoint is an mail address.
-     * + **For an SMS message subscription**, the endpoint is a phone number,
-     * the format is \[+\]\[country code\]\[phone number\], e.g. +7905xxx0000.
-     * + **For a functiongraph subscription**, the endpoint is a workflow ID.
-     */
     endpoint?: pulumi.Input<string>;
     extension?: pulumi.Input<inputs.SmnSubscriptionExtension>;
     /**
      * The message filter policies of a subscriber.
      */
     filterPolicies?: pulumi.Input<pulumi.Input<inputs.SmnSubscriptionFilterPolicy>[]>;
-    /**
-     * Project ID of the topic creator.
-     */
     owner?: pulumi.Input<string>;
-    /**
-     * Protocol of the message endpoint. Currently, email,
-     * sms, http, and https are supported.
-     */
     protocol?: pulumi.Input<string>;
-    /**
-     * The region in which to create the SMN subscription resource. If omitted, the provider-level region will be used. Changing this creates a new SMN subscription resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Remark information. The remarks must be a UTF-8-coded
-     * character string containing 128 bytes.
-     */
     remark?: pulumi.Input<string>;
-    /**
-     * Subscription status.
-     * + **0**: indicates that the subscription is not confirmed.
-     * + **1**: indicates that the subscription is confirmed.
-     * + **3**: indicates that the subscription is canceled.
-     */
     status?: pulumi.Input<number>;
-    /**
-     * Resource identifier of a subscription, which is unique.
-     */
     subscriptionUrn?: pulumi.Input<string>;
-    /**
-     * Resource identifier of a topic, which is unique.
-     */
     topicUrn?: pulumi.Input<string>;
 }
 
@@ -226,33 +121,10 @@ export interface SmnSubscriptionState {
  * The set of arguments for constructing a SmnSubscription resource.
  */
 export interface SmnSubscriptionArgs {
-    /**
-     * Message endpoint.
-     * + **For an HTTP subscription**, the endpoint starts with `http://`.
-     * + **For an HTTPS subscription**, the endpoint starts with `https://`.
-     * + **For an email subscription**, the endpoint is an mail address.
-     * + **For an SMS message subscription**, the endpoint is a phone number,
-     * the format is \[+\]\[country code\]\[phone number\], e.g. +7905xxx0000.
-     * + **For a functiongraph subscription**, the endpoint is a workflow ID.
-     */
     endpoint: pulumi.Input<string>;
     extension?: pulumi.Input<inputs.SmnSubscriptionExtension>;
-    /**
-     * Protocol of the message endpoint. Currently, email,
-     * sms, http, and https are supported.
-     */
     protocol: pulumi.Input<string>;
-    /**
-     * The region in which to create the SMN subscription resource. If omitted, the provider-level region will be used. Changing this creates a new SMN subscription resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Remark information. The remarks must be a UTF-8-coded
-     * character string containing 128 bytes.
-     */
     remark?: pulumi.Input<string>;
-    /**
-     * Resource identifier of a topic, which is unique.
-     */
     topicUrn: pulumi.Input<string>;
 }

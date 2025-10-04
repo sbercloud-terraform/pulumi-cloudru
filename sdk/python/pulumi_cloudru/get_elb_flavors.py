@@ -80,9 +80,6 @@ class GetElbFlavorsResult:
     @_builtins.property
     @pulumi.getter
     def bandwidth(self) -> Optional[_builtins.int]:
-        """
-        Bandwidth size(Mbit/s) of the flavor.
-        """
         return pulumi.get(self, "bandwidth")
 
     @_builtins.property
@@ -93,9 +90,6 @@ class GetElbFlavorsResult:
     @_builtins.property
     @pulumi.getter
     def cps(self) -> Optional[_builtins.int]:
-        """
-        Cps of the flavor.
-        """
         return pulumi.get(self, "cps")
 
     @_builtins.property
@@ -111,9 +105,6 @@ class GetElbFlavorsResult:
     @_builtins.property
     @pulumi.getter
     def flavors(self) -> Sequence['outputs.GetElbFlavorsFlavorResult']:
-        """
-        A list of flavors. Each element contains the following attributes:
-        """
         return pulumi.get(self, "flavors")
 
     @_builtins.property
@@ -127,9 +118,6 @@ class GetElbFlavorsResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
-        """
-        A list of flavor IDs.
-        """
         return pulumi.get(self, "ids")
 
     @_builtins.property
@@ -140,17 +128,11 @@ class GetElbFlavorsResult:
     @_builtins.property
     @pulumi.getter(name="maxConnections")
     def max_connections(self) -> Optional[_builtins.int]:
-        """
-        Maximum connections of the flavor.
-        """
         return pulumi.get(self, "max_connections")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        Name of the flavor.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -161,9 +143,6 @@ class GetElbFlavorsResult:
     @_builtins.property
     @pulumi.getter
     def qps(self) -> Optional[_builtins.int]:
-        """
-        Qps of the L7 flavor.
-        """
         return pulumi.get(self, "qps")
 
     @_builtins.property
@@ -179,9 +158,6 @@ class GetElbFlavorsResult:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
-        """
-        Type of the flavor.
-        """
         return pulumi.get(self, "type")
 
 
@@ -224,32 +200,7 @@ def get_elb_flavors(bandwidth: Optional[_builtins.int] = None,
                     type: Optional[_builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetElbFlavorsResult:
     """
-    Use this data source to get the available ELB Flavors.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudru as sbercloud
-    import pulumi_sbercloud as sbercloud
-
-    flavors = sbercloud.get_elb_flavors(type="L7",
-        max_connections=200000,
-        cps=2000,
-        bandwidth=50)
-    # Create Dedicated Load Balancer with the first matched flavor
-    lb = sbercloud.ElbLoadbalancer("lb", l7_flavor_id=flavors.ids[0])
-    ```
-
-
-    :param _builtins.int bandwidth: Specifies the bandwidth size(Mbit/s) in the flavor.
-    :param _builtins.int cps: Specifies the cps in the flavor.
-    :param _builtins.int max_connections: Specifies the maximum connections in the flavor.
-    :param _builtins.str name: Name of the flavor.
-    :param _builtins.int qps: Specifies the qps in the L7 flavor.
-    :param _builtins.str region: The region in which to obtain the flavors. If omitted, the provider-level region will be
-           used.
-    :param _builtins.str type: Specifies the flavor type. Valid values are L4 and L7.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['bandwidth'] = bandwidth
@@ -300,32 +251,7 @@ def get_elb_flavors_output(bandwidth: Optional[pulumi.Input[Optional[_builtins.i
                            type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetElbFlavorsResult]:
     """
-    Use this data source to get the available ELB Flavors.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudru as sbercloud
-    import pulumi_sbercloud as sbercloud
-
-    flavors = sbercloud.get_elb_flavors(type="L7",
-        max_connections=200000,
-        cps=2000,
-        bandwidth=50)
-    # Create Dedicated Load Balancer with the first matched flavor
-    lb = sbercloud.ElbLoadbalancer("lb", l7_flavor_id=flavors.ids[0])
-    ```
-
-
-    :param _builtins.int bandwidth: Specifies the bandwidth size(Mbit/s) in the flavor.
-    :param _builtins.int cps: Specifies the cps in the flavor.
-    :param _builtins.int max_connections: Specifies the maximum connections in the flavor.
-    :param _builtins.str name: Name of the flavor.
-    :param _builtins.int qps: Specifies the qps in the L7 flavor.
-    :param _builtins.str region: The region in which to obtain the flavors. If omitted, the provider-level region will be
-           used.
-    :param _builtins.str type: Specifies the flavor type. Valid values are L4 and L7.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['bandwidth'] = bandwidth

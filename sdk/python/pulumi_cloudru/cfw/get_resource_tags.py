@@ -62,9 +62,6 @@ class GetResourceTagsResult:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Sequence['outputs.GetResourceTagsTagResult']:
-        """
-        The tag list.
-        """
         return pulumi.get(self, "tags")
 
 
@@ -84,23 +81,7 @@ def get_resource_tags(fw_instance_id: Optional[_builtins.str] = None,
                       region: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetResourceTagsResult:
     """
-    Use this data source to get the list of tags of a specified firewall instance.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    fw_instance_id = config.require_object("fwInstanceId")
-    test = sbercloud.Cfw.get_resource_tags(fw_instance_id=fw_instance_id)
-    ```
-
-
-    :param _builtins.str fw_instance_id: Specifies the firewall ID.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['fwInstanceId'] = fw_instance_id
@@ -117,23 +98,7 @@ def get_resource_tags_output(fw_instance_id: Optional[pulumi.Input[_builtins.str
                              region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetResourceTagsResult]:
     """
-    Use this data source to get the list of tags of a specified firewall instance.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    fw_instance_id = config.require_object("fwInstanceId")
-    test = sbercloud.Cfw.get_resource_tags(fw_instance_id=fw_instance_id)
-    ```
-
-
-    :param _builtins.str fw_instance_id: Specifies the firewall ID.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['fwInstanceId'] = fw_instance_id

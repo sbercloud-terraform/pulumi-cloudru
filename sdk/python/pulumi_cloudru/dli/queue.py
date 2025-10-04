@@ -39,44 +39,9 @@ class QueueArgs:
                  vpc_cidr: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Queue resource.
-        :param pulumi.Input[_builtins.int] cu_count: Minimum number of CUs that are bound to a queue. Initial value can be `16`,
-               `64`, or `256`. When scale_out or scale_in, the number must be a multiple of 16
-        :param pulumi.Input[_builtins.str] description: Description of a queue. Changing this parameter will create a new
-               resource.
         :param pulumi.Input[_builtins.str] elastic_resource_pool_name: The name of the elastic resource pool to which the queue belongs.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Enterprise project ID. The value 0 indicates the default
-               enterprise project. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] feature: Indicates the queue feature. Changing this parameter will create a new
-               resource. The options are as follows:
-               + basic: basic type (default value)
-               + ai: AI-enhanced (Only the SQL x86_64 dedicated queue supports this option.)
-        :param pulumi.Input[_builtins.str] name: Name of a queue. Name of a newly created resource queue. The name can contain
-               only digits, letters, and underscores (\\_), but cannot contain only digits or start with an underscore (_). Length
-               range: 1 to 128 characters. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] platform: CPU architecture of queue compute resources. Changing this parameter will
-               create a new resource. The options are as follows:
-               + x86_64 : default value
-               + aarch64
-        :param pulumi.Input[_builtins.str] queue_type: Indicates the queue type. Changing this parameter will create a new
-               resource. The options are as follows:
-               + sql
-               + general
-               
-               The default value is `sql`.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the dli queue resource. If omitted,
-               the provider-level region will be used. Changing this will create a new VPC channel resource.
-        :param pulumi.Input[_builtins.int] resource_mode: Queue resource mode. Changing this parameter will create a new
-               resource. The options are as follows:
-               + 0: indicates the shared resource mode.
-               + 1: indicates the exclusive resource mode.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Label of a queue. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] vpc_cidr: The CIDR block of a queue. If use DLI enhanced datasource connections, the CIDR block
-               cannot be the same as that of the data source.
-               The CIDR blocks supported by different CU specifications:
-               
-               + When `cu_count` is `16` or `64`: 10.0.0.0~10.255.0.0/8~24, 172.16.0.0~172.31.0.0/12~24,
-               192.168.0.0~192.168.0.0/16~24.
-               + When `cu_count` is `256`: 10.0.0.0~10.255.0.0/8~22, 172.16.0.0~172.31.0.0/12~22, 192.168.0.0~192.168.0.0/16~22.
+        :param pulumi.Input[_builtins.int] resource_mode: The queue resource mode.
+        :param pulumi.Input[_builtins.str] vpc_cidr: The CIDR block of the queue.
         """
         pulumi.set(__self__, "cu_count", cu_count)
         if description is not None:
@@ -119,10 +84,6 @@ class QueueArgs:
     @_builtins.property
     @pulumi.getter(name="cuCount")
     def cu_count(self) -> pulumi.Input[_builtins.int]:
-        """
-        Minimum number of CUs that are bound to a queue. Initial value can be `16`,
-        `64`, or `256`. When scale_out or scale_in, the number must be a multiple of 16
-        """
         return pulumi.get(self, "cu_count")
 
     @cu_count.setter
@@ -132,10 +93,6 @@ class QueueArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Description of a queue. Changing this parameter will create a new
-        resource.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -157,10 +114,6 @@ class QueueArgs:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Enterprise project ID. The value 0 indicates the default
-        enterprise project. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -170,12 +123,6 @@ class QueueArgs:
     @_builtins.property
     @pulumi.getter
     def feature(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the queue feature. Changing this parameter will create a new
-        resource. The options are as follows:
-        + basic: basic type (default value)
-        + ai: AI-enhanced (Only the SQL x86_64 dedicated queue supports this option.)
-        """
         return pulumi.get(self, "feature")
 
     @feature.setter
@@ -195,11 +142,6 @@ class QueueArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Name of a queue. Name of a newly created resource queue. The name can contain
-        only digits, letters, and underscores (\\_), but cannot contain only digits or start with an underscore (_). Length
-        range: 1 to 128 characters. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -209,12 +151,6 @@ class QueueArgs:
     @_builtins.property
     @pulumi.getter
     def platform(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        CPU architecture of queue compute resources. Changing this parameter will
-        create a new resource. The options are as follows:
-        + x86_64 : default value
-        + aarch64
-        """
         return pulumi.get(self, "platform")
 
     @platform.setter
@@ -224,14 +160,6 @@ class QueueArgs:
     @_builtins.property
     @pulumi.getter(name="queueType")
     def queue_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the queue type. Changing this parameter will create a new
-        resource. The options are as follows:
-        + sql
-        + general
-
-        The default value is `sql`.
-        """
         return pulumi.get(self, "queue_type")
 
     @queue_type.setter
@@ -241,10 +169,6 @@ class QueueArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the dli queue resource. If omitted,
-        the provider-level region will be used. Changing this will create a new VPC channel resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -255,10 +179,7 @@ class QueueArgs:
     @pulumi.getter(name="resourceMode")
     def resource_mode(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Queue resource mode. Changing this parameter will create a new
-        resource. The options are as follows:
-        + 0: indicates the shared resource mode.
-        + 1: indicates the exclusive resource mode.
+        The queue resource mode.
         """
         return pulumi.get(self, "resource_mode")
 
@@ -297,9 +218,6 @@ class QueueArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Label of a queue. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -310,13 +228,7 @@ class QueueArgs:
     @pulumi.getter(name="vpcCidr")
     def vpc_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The CIDR block of a queue. If use DLI enhanced datasource connections, the CIDR block
-        cannot be the same as that of the data source.
-        The CIDR blocks supported by different CU specifications:
-
-        + When `cu_count` is `16` or `64`: 10.0.0.0~10.255.0.0/8~24, 172.16.0.0~172.31.0.0/12~24,
-        192.168.0.0~192.168.0.0/16~24.
-        + When `cu_count` is `256`: 10.0.0.0~10.255.0.0/8~22, 172.16.0.0~172.31.0.0/12~22, 192.168.0.0~192.168.0.0/16~22.
+        The CIDR block of the queue.
         """
         return pulumi.get(self, "vpc_cidr")
 
@@ -347,45 +259,9 @@ class _QueueState:
                  vpc_cidr: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Queue resources.
-        :param pulumi.Input[_builtins.int] create_time: Time when a queue is created.
-        :param pulumi.Input[_builtins.int] cu_count: Minimum number of CUs that are bound to a queue. Initial value can be `16`,
-               `64`, or `256`. When scale_out or scale_in, the number must be a multiple of 16
-        :param pulumi.Input[_builtins.str] description: Description of a queue. Changing this parameter will create a new
-               resource.
         :param pulumi.Input[_builtins.str] elastic_resource_pool_name: The name of the elastic resource pool to which the queue belongs.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Enterprise project ID. The value 0 indicates the default
-               enterprise project. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] feature: Indicates the queue feature. Changing this parameter will create a new
-               resource. The options are as follows:
-               + basic: basic type (default value)
-               + ai: AI-enhanced (Only the SQL x86_64 dedicated queue supports this option.)
-        :param pulumi.Input[_builtins.str] name: Name of a queue. Name of a newly created resource queue. The name can contain
-               only digits, letters, and underscores (\\_), but cannot contain only digits or start with an underscore (_). Length
-               range: 1 to 128 characters. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] platform: CPU architecture of queue compute resources. Changing this parameter will
-               create a new resource. The options are as follows:
-               + x86_64 : default value
-               + aarch64
-        :param pulumi.Input[_builtins.str] queue_type: Indicates the queue type. Changing this parameter will create a new
-               resource. The options are as follows:
-               + sql
-               + general
-               
-               The default value is `sql`.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the dli queue resource. If omitted,
-               the provider-level region will be used. Changing this will create a new VPC channel resource.
-        :param pulumi.Input[_builtins.int] resource_mode: Queue resource mode. Changing this parameter will create a new
-               resource. The options are as follows:
-               + 0: indicates the shared resource mode.
-               + 1: indicates the exclusive resource mode.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Label of a queue. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] vpc_cidr: The CIDR block of a queue. If use DLI enhanced datasource connections, the CIDR block
-               cannot be the same as that of the data source.
-               The CIDR blocks supported by different CU specifications:
-               
-               + When `cu_count` is `16` or `64`: 10.0.0.0~10.255.0.0/8~24, 172.16.0.0~172.31.0.0/12~24,
-               192.168.0.0~192.168.0.0/16~24.
-               + When `cu_count` is `256`: 10.0.0.0~10.255.0.0/8~22, 172.16.0.0~172.31.0.0/12~22, 192.168.0.0~192.168.0.0/16~22.
+        :param pulumi.Input[_builtins.int] resource_mode: The queue resource mode.
+        :param pulumi.Input[_builtins.str] vpc_cidr: The CIDR block of the queue.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -431,9 +307,6 @@ class _QueueState:
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Time when a queue is created.
-        """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
@@ -443,10 +316,6 @@ class _QueueState:
     @_builtins.property
     @pulumi.getter(name="cuCount")
     def cu_count(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Minimum number of CUs that are bound to a queue. Initial value can be `16`,
-        `64`, or `256`. When scale_out or scale_in, the number must be a multiple of 16
-        """
         return pulumi.get(self, "cu_count")
 
     @cu_count.setter
@@ -456,10 +325,6 @@ class _QueueState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Description of a queue. Changing this parameter will create a new
-        resource.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -481,10 +346,6 @@ class _QueueState:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Enterprise project ID. The value 0 indicates the default
-        enterprise project. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -494,12 +355,6 @@ class _QueueState:
     @_builtins.property
     @pulumi.getter
     def feature(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the queue feature. Changing this parameter will create a new
-        resource. The options are as follows:
-        + basic: basic type (default value)
-        + ai: AI-enhanced (Only the SQL x86_64 dedicated queue supports this option.)
-        """
         return pulumi.get(self, "feature")
 
     @feature.setter
@@ -519,11 +374,6 @@ class _QueueState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Name of a queue. Name of a newly created resource queue. The name can contain
-        only digits, letters, and underscores (\\_), but cannot contain only digits or start with an underscore (_). Length
-        range: 1 to 128 characters. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -533,12 +383,6 @@ class _QueueState:
     @_builtins.property
     @pulumi.getter
     def platform(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        CPU architecture of queue compute resources. Changing this parameter will
-        create a new resource. The options are as follows:
-        + x86_64 : default value
-        + aarch64
-        """
         return pulumi.get(self, "platform")
 
     @platform.setter
@@ -548,14 +392,6 @@ class _QueueState:
     @_builtins.property
     @pulumi.getter(name="queueType")
     def queue_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the queue type. Changing this parameter will create a new
-        resource. The options are as follows:
-        + sql
-        + general
-
-        The default value is `sql`.
-        """
         return pulumi.get(self, "queue_type")
 
     @queue_type.setter
@@ -565,10 +401,6 @@ class _QueueState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the dli queue resource. If omitted,
-        the provider-level region will be used. Changing this will create a new VPC channel resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -579,10 +411,7 @@ class _QueueState:
     @pulumi.getter(name="resourceMode")
     def resource_mode(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Queue resource mode. Changing this parameter will create a new
-        resource. The options are as follows:
-        + 0: indicates the shared resource mode.
-        + 1: indicates the exclusive resource mode.
+        The queue resource mode.
         """
         return pulumi.get(self, "resource_mode")
 
@@ -621,9 +450,6 @@ class _QueueState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Label of a queue. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -634,13 +460,7 @@ class _QueueState:
     @pulumi.getter(name="vpcCidr")
     def vpc_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The CIDR block of a queue. If use DLI enhanced datasource connections, the CIDR block
-        cannot be the same as that of the data source.
-        The CIDR blocks supported by different CU specifications:
-
-        + When `cu_count` is `16` or `64`: 10.0.0.0~10.255.0.0/8~24, 172.16.0.0~172.31.0.0/12~24,
-        192.168.0.0~192.168.0.0/16~24.
-        + When `cu_count` is `256`: 10.0.0.0~10.255.0.0/8~22, 172.16.0.0~172.31.0.0/12~22, 192.168.0.0~192.168.0.0/16~22.
+        The CIDR block of the queue.
         """
         return pulumi.get(self, "vpc_cidr")
 
@@ -673,90 +493,12 @@ class Queue(pulumi.CustomResource):
                  vpc_cidr: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages DLI Queue resource within SberCloud
-
-        ## Example Usage
-
-        ### Create a queue
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        queue = sbercloud.dli.Queue("queue",
-            name="terraform_dli_queue_test",
-            cu_count=16,
-            tags={
-                "foo": "bar",
-                "key": "value",
-            })
-        ```
-
-        ### Create a queue with CIDR Block
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        queue = sbercloud.dli.Queue("queue",
-            name="terraform_dli_queue_test",
-            cu_count=16,
-            resource_mode=1,
-            vpc_cidr="172.16.0.0/14",
-            tags={
-                "foo": "bar",
-                "key": "value",
-            })
-        ```
-
-        ## Import
-
-        DLI queue can be imported by  `id`. For example,
-
-        ```sh
-        $ pulumi import sbercloud:Dli/queue:Queue example abc123
-        ```
-
+        Create a Queue resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] cu_count: Minimum number of CUs that are bound to a queue. Initial value can be `16`,
-               `64`, or `256`. When scale_out or scale_in, the number must be a multiple of 16
-        :param pulumi.Input[_builtins.str] description: Description of a queue. Changing this parameter will create a new
-               resource.
         :param pulumi.Input[_builtins.str] elastic_resource_pool_name: The name of the elastic resource pool to which the queue belongs.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Enterprise project ID. The value 0 indicates the default
-               enterprise project. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] feature: Indicates the queue feature. Changing this parameter will create a new
-               resource. The options are as follows:
-               + basic: basic type (default value)
-               + ai: AI-enhanced (Only the SQL x86_64 dedicated queue supports this option.)
-        :param pulumi.Input[_builtins.str] name: Name of a queue. Name of a newly created resource queue. The name can contain
-               only digits, letters, and underscores (\\_), but cannot contain only digits or start with an underscore (_). Length
-               range: 1 to 128 characters. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] platform: CPU architecture of queue compute resources. Changing this parameter will
-               create a new resource. The options are as follows:
-               + x86_64 : default value
-               + aarch64
-        :param pulumi.Input[_builtins.str] queue_type: Indicates the queue type. Changing this parameter will create a new
-               resource. The options are as follows:
-               + sql
-               + general
-               
-               The default value is `sql`.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the dli queue resource. If omitted,
-               the provider-level region will be used. Changing this will create a new VPC channel resource.
-        :param pulumi.Input[_builtins.int] resource_mode: Queue resource mode. Changing this parameter will create a new
-               resource. The options are as follows:
-               + 0: indicates the shared resource mode.
-               + 1: indicates the exclusive resource mode.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Label of a queue. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] vpc_cidr: The CIDR block of a queue. If use DLI enhanced datasource connections, the CIDR block
-               cannot be the same as that of the data source.
-               The CIDR blocks supported by different CU specifications:
-               
-               + When `cu_count` is `16` or `64`: 10.0.0.0~10.255.0.0/8~24, 172.16.0.0~172.31.0.0/12~24,
-               192.168.0.0~192.168.0.0/16~24.
-               + When `cu_count` is `256`: 10.0.0.0~10.255.0.0/8~22, 172.16.0.0~172.31.0.0/12~22, 192.168.0.0~192.168.0.0/16~22.
+        :param pulumi.Input[_builtins.int] resource_mode: The queue resource mode.
+        :param pulumi.Input[_builtins.str] vpc_cidr: The CIDR block of the queue.
         """
         ...
     @overload
@@ -765,50 +507,7 @@ class Queue(pulumi.CustomResource):
                  args: QueueArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages DLI Queue resource within SberCloud
-
-        ## Example Usage
-
-        ### Create a queue
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        queue = sbercloud.dli.Queue("queue",
-            name="terraform_dli_queue_test",
-            cu_count=16,
-            tags={
-                "foo": "bar",
-                "key": "value",
-            })
-        ```
-
-        ### Create a queue with CIDR Block
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        queue = sbercloud.dli.Queue("queue",
-            name="terraform_dli_queue_test",
-            cu_count=16,
-            resource_mode=1,
-            vpc_cidr="172.16.0.0/14",
-            tags={
-                "foo": "bar",
-                "key": "value",
-            })
-        ```
-
-        ## Import
-
-        DLI queue can be imported by  `id`. For example,
-
-        ```sh
-        $ pulumi import sbercloud:Dli/queue:Queue example abc123
-        ```
-
+        Create a Queue resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param QueueArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -902,45 +601,9 @@ class Queue(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] create_time: Time when a queue is created.
-        :param pulumi.Input[_builtins.int] cu_count: Minimum number of CUs that are bound to a queue. Initial value can be `16`,
-               `64`, or `256`. When scale_out or scale_in, the number must be a multiple of 16
-        :param pulumi.Input[_builtins.str] description: Description of a queue. Changing this parameter will create a new
-               resource.
         :param pulumi.Input[_builtins.str] elastic_resource_pool_name: The name of the elastic resource pool to which the queue belongs.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Enterprise project ID. The value 0 indicates the default
-               enterprise project. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] feature: Indicates the queue feature. Changing this parameter will create a new
-               resource. The options are as follows:
-               + basic: basic type (default value)
-               + ai: AI-enhanced (Only the SQL x86_64 dedicated queue supports this option.)
-        :param pulumi.Input[_builtins.str] name: Name of a queue. Name of a newly created resource queue. The name can contain
-               only digits, letters, and underscores (\\_), but cannot contain only digits or start with an underscore (_). Length
-               range: 1 to 128 characters. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] platform: CPU architecture of queue compute resources. Changing this parameter will
-               create a new resource. The options are as follows:
-               + x86_64 : default value
-               + aarch64
-        :param pulumi.Input[_builtins.str] queue_type: Indicates the queue type. Changing this parameter will create a new
-               resource. The options are as follows:
-               + sql
-               + general
-               
-               The default value is `sql`.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the dli queue resource. If omitted,
-               the provider-level region will be used. Changing this will create a new VPC channel resource.
-        :param pulumi.Input[_builtins.int] resource_mode: Queue resource mode. Changing this parameter will create a new
-               resource. The options are as follows:
-               + 0: indicates the shared resource mode.
-               + 1: indicates the exclusive resource mode.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Label of a queue. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] vpc_cidr: The CIDR block of a queue. If use DLI enhanced datasource connections, the CIDR block
-               cannot be the same as that of the data source.
-               The CIDR blocks supported by different CU specifications:
-               
-               + When `cu_count` is `16` or `64`: 10.0.0.0~10.255.0.0/8~24, 172.16.0.0~172.31.0.0/12~24,
-               192.168.0.0~192.168.0.0/16~24.
-               + When `cu_count` is `256`: 10.0.0.0~10.255.0.0/8~22, 172.16.0.0~172.31.0.0/12~22, 192.168.0.0~192.168.0.0/16~22.
+        :param pulumi.Input[_builtins.int] resource_mode: The queue resource mode.
+        :param pulumi.Input[_builtins.str] vpc_cidr: The CIDR block of the queue.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -968,27 +631,16 @@ class Queue(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.int]:
-        """
-        Time when a queue is created.
-        """
         return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter(name="cuCount")
     def cu_count(self) -> pulumi.Output[_builtins.int]:
-        """
-        Minimum number of CUs that are bound to a queue. Initial value can be `16`,
-        `64`, or `256`. When scale_out or scale_in, the number must be a multiple of 16
-        """
         return pulumi.get(self, "cu_count")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[_builtins.str]:
-        """
-        Description of a queue. Changing this parameter will create a new
-        resource.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
@@ -1002,21 +654,11 @@ class Queue(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Enterprise project ID. The value 0 indicates the default
-        enterprise project. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
     @pulumi.getter
     def feature(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Indicates the queue feature. Changing this parameter will create a new
-        resource. The options are as follows:
-        + basic: basic type (default value)
-        + ai: AI-enhanced (Only the SQL x86_64 dedicated queue supports this option.)
-        """
         return pulumi.get(self, "feature")
 
     @_builtins.property
@@ -1028,54 +670,28 @@ class Queue(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Name of a queue. Name of a newly created resource queue. The name can contain
-        only digits, letters, and underscores (\\_), but cannot contain only digits or start with an underscore (_). Length
-        range: 1 to 128 characters. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def platform(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        CPU architecture of queue compute resources. Changing this parameter will
-        create a new resource. The options are as follows:
-        + x86_64 : default value
-        + aarch64
-        """
         return pulumi.get(self, "platform")
 
     @_builtins.property
     @pulumi.getter(name="queueType")
     def queue_type(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Indicates the queue type. Changing this parameter will create a new
-        resource. The options are as follows:
-        + sql
-        + general
-
-        The default value is `sql`.
-        """
         return pulumi.get(self, "queue_type")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the dli queue resource. If omitted,
-        the provider-level region will be used. Changing this will create a new VPC channel resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="resourceMode")
     def resource_mode(self) -> pulumi.Output[_builtins.int]:
         """
-        Queue resource mode. Changing this parameter will create a new
-        resource. The options are as follows:
-        + 0: indicates the shared resource mode.
-        + 1: indicates the exclusive resource mode.
+        The queue resource mode.
         """
         return pulumi.get(self, "resource_mode")
 
@@ -1098,22 +714,13 @@ class Queue(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        Label of a queue. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="vpcCidr")
     def vpc_cidr(self) -> pulumi.Output[_builtins.str]:
         """
-        The CIDR block of a queue. If use DLI enhanced datasource connections, the CIDR block
-        cannot be the same as that of the data source.
-        The CIDR blocks supported by different CU specifications:
-
-        + When `cu_count` is `16` or `64`: 10.0.0.0~10.255.0.0/8~24, 172.16.0.0~172.31.0.0/12~24,
-        192.168.0.0~192.168.0.0/16~24.
-        + When `cu_count` is `256`: 10.0.0.0~10.255.0.0/8~22, 172.16.0.0~172.31.0.0/12~22, 192.168.0.0~192.168.0.0/16~22.
+        The CIDR block of the queue.
         """
         return pulumi.get(self, "vpc_cidr")
 

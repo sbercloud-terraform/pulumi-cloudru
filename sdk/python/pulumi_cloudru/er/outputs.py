@@ -44,20 +44,6 @@ class GetAssociationsAssociationResult(dict):
                  route_table_id: _builtins.str,
                  status: _builtins.str,
                  updated_at: _builtins.str):
-        """
-        :param _builtins.str attachment_id: Specifies the attachment ID corresponding to the association.
-        :param _builtins.str attachment_type: Specifies the attachment type corresponding to the association.
-        :param _builtins.str created_at: The creation time.
-        :param _builtins.str id: The association ID.
-        :param _builtins.str resource_id: The resource ID of the attachment corresponding to the association.
-        :param _builtins.str route_policy_id: The route policy ID of the egress IPv4 protocol.
-        :param _builtins.str route_table_id: Specifies the route table ID to which the association belongs.
-        :param _builtins.str status: Specifies the status of the association. Default value is `available`.
-               The valid values are as follows:
-               + **available**
-               + **failed**
-        :param _builtins.str updated_at: The latest update time.
-        """
         pulumi.set(__self__, "attachment_id", attachment_id)
         pulumi.set(__self__, "attachment_type", attachment_type)
         pulumi.set(__self__, "created_at", created_at)
@@ -71,76 +57,46 @@ class GetAssociationsAssociationResult(dict):
     @_builtins.property
     @pulumi.getter(name="attachmentId")
     def attachment_id(self) -> _builtins.str:
-        """
-        Specifies the attachment ID corresponding to the association.
-        """
         return pulumi.get(self, "attachment_id")
 
     @_builtins.property
     @pulumi.getter(name="attachmentType")
     def attachment_type(self) -> _builtins.str:
-        """
-        Specifies the attachment type corresponding to the association.
-        """
         return pulumi.get(self, "attachment_type")
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> _builtins.str:
-        """
-        The creation time.
-        """
         return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        The association ID.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> _builtins.str:
-        """
-        The resource ID of the attachment corresponding to the association.
-        """
         return pulumi.get(self, "resource_id")
 
     @_builtins.property
     @pulumi.getter(name="routePolicyId")
     def route_policy_id(self) -> _builtins.str:
-        """
-        The route policy ID of the egress IPv4 protocol.
-        """
         return pulumi.get(self, "route_policy_id")
 
     @_builtins.property
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> _builtins.str:
-        """
-        Specifies the route table ID to which the association belongs.
-        """
         return pulumi.get(self, "route_table_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
-        """
-        Specifies the status of the association. Default value is `available`.
-        The valid values are as follows:
-        + **available**
-        + **failed**
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> _builtins.str:
-        """
-        The latest update time.
-        """
         return pulumi.get(self, "updated_at")
 
 
@@ -163,23 +119,12 @@ class GetAttachmentsAttachmentResult(dict):
         :param _builtins.str created_at: The creation time of the attachment.
         :param _builtins.str description: The description of the attachment.
         :param _builtins.str id: The attachment ID.
-        :param _builtins.str name: Specifies the name used to filter the attachments.
-        :param _builtins.str resource_id: Specifies the associated resource ID used to filter the attachments.
+        :param _builtins.str name: The attachment name.
+        :param _builtins.str resource_id: The associated resource ID.
         :param _builtins.str route_table_id: The associated route table ID.
-        :param _builtins.str status: Specifies the status used to filter the attachments.
-               The valid values are as follows:
-               + **available**
-               + **failed**
-               + **pending_acceptance**
-               + **rejected**
-        :param Mapping[str, _builtins.str] tags: The key/value pairs used to filter the attachments.
-        :param _builtins.str type: Specifies the resource type to be filtered.  
-               The valid values are as follows:
-               + **vpc**: Virtual private cloud.
-               + **vpn**: VPN gateway.
-               + **vgw**: Virtual gateway of cloud private line.
-               + **peering**: Peering connection, through the cloud connection (CC) to load ERs in different regions to create a
-               peering connection.
+        :param _builtins.str status: The current status of the attachment.
+        :param Mapping[str, _builtins.str] tags: The key/value pairs to associate with the attachment.
+        :param _builtins.str type: The attachment type.
         :param _builtins.str updated_at: The latest update time of the attachment.
         """
         pulumi.set(__self__, "associated", associated)
@@ -230,7 +175,7 @@ class GetAttachmentsAttachmentResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the name used to filter the attachments.
+        The attachment name.
         """
         return pulumi.get(self, "name")
 
@@ -238,7 +183,7 @@ class GetAttachmentsAttachmentResult(dict):
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> _builtins.str:
         """
-        Specifies the associated resource ID used to filter the attachments.
+        The associated resource ID.
         """
         return pulumi.get(self, "resource_id")
 
@@ -254,12 +199,7 @@ class GetAttachmentsAttachmentResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        Specifies the status used to filter the attachments.
-        The valid values are as follows:
-        + **available**
-        + **failed**
-        + **pending_acceptance**
-        + **rejected**
+        The current status of the attachment.
         """
         return pulumi.get(self, "status")
 
@@ -267,7 +207,7 @@ class GetAttachmentsAttachmentResult(dict):
     @pulumi.getter
     def tags(self) -> Mapping[str, _builtins.str]:
         """
-        The key/value pairs used to filter the attachments.
+        The key/value pairs to associate with the attachment.
         """
         return pulumi.get(self, "tags")
 
@@ -275,13 +215,7 @@ class GetAttachmentsAttachmentResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        Specifies the resource type to be filtered.  
-        The valid values are as follows:
-        + **vpc**: Virtual private cloud.
-        + **vpn**: VPN gateway.
-        + **vgw**: Virtual gateway of cloud private line.
-        + **peering**: Peering connection, through the cloud connection (CC) to load ERs in different regions to create a
-        peering connection.
+        The attachment type.
         """
         return pulumi.get(self, "type")
 
@@ -303,7 +237,7 @@ class GetAvailableRoutesRouteResult(dict):
                  next_hops: Sequence['outputs.GetAvailableRoutesRouteNextHopResult'],
                  type: _builtins.str):
         """
-        :param _builtins.str destination: The destination address of the routes to be queried.
+        :param _builtins.str destination: The destination address of the route.
         :param _builtins.str id: The route ID.
         :param _builtins.bool is_blackhole: Whether the route is a blackhole route.
         :param Sequence['GetAvailableRoutesRouteNextHopArgs'] next_hops: The next hops of the route.
@@ -319,7 +253,7 @@ class GetAvailableRoutesRouteResult(dict):
     @pulumi.getter
     def destination(self) -> _builtins.str:
         """
-        The destination address of the routes to be queried.
+        The destination address of the route.
         """
         return pulumi.get(self, "destination")
 
@@ -366,13 +300,6 @@ class GetAvailableRoutesRouteNextHopResult(dict):
         :param _builtins.str attachment_id: The attachment ID.
         :param _builtins.str resource_id: The attached resource ID.
         :param _builtins.str resource_type: The attachment type.
-               The valid values are as follows:
-               + **vpc**: VPC attachment.
-               + **vpn**: VPN gateway attachment.
-               + **vgw**: virtual gateway attachment.
-               + **peering**: peering connection attachment.
-               + **ecn**: ECN attachment.
-               + **cfw**: CFW instance attachment.
         """
         pulumi.set(__self__, "attachment_id", attachment_id)
         pulumi.set(__self__, "resource_id", resource_id)
@@ -399,13 +326,6 @@ class GetAvailableRoutesRouteNextHopResult(dict):
     def resource_type(self) -> _builtins.str:
         """
         The attachment type.
-        The valid values are as follows:
-        + **vpc**: VPC attachment.
-        + **vpn**: VPN gateway attachment.
-        + **vgw**: virtual gateway attachment.
-        + **peering**: peering connection attachment.
-        + **ecn**: ECN attachment.
-        + **cfw**: CFW instance attachment.
         """
         return pulumi.get(self, "resource_type")
 
@@ -428,18 +348,15 @@ class GetFlowLogsFlowLogResult(dict):
         """
         :param _builtins.str created_at: The creation time of the flow log.
         :param _builtins.str description: The description of the flow log.
-        :param _builtins.bool enabled: Specifies the switch status of the flow log.
-               The value can be **true** and **false**.
+        :param _builtins.bool enabled: The switch of the flow log.
         :param _builtins.str id: The ID of the flow log.
-        :param _builtins.str log_group_id: Specifies the ID of the log group to which the flow logs belong.
+        :param _builtins.str log_group_id: The ID of the log group to which the flow log belongs.
         :param _builtins.str log_store_type: The storage type of the flow log.
-        :param _builtins.str log_stream_id: Specifies the ID of the log stream to which the flow logs belong.
-        :param _builtins.str name: Specifies the name of the flow log.
-        :param _builtins.str resource_id: Specifies the ID of the attachment to which the flow logs belong.
-        :param _builtins.str resource_type: Specifies the type of the flow logs.
-               The valid values are as follows:
-               + **attachment**: The flow logs type are attachment.
-        :param _builtins.str status: Specifies the status of the flow logs.
+        :param _builtins.str log_stream_id: The ID of the log stream to which the flow log belongs.
+        :param _builtins.str name: The name of the flow log.
+        :param _builtins.str resource_id: The ID of the attachment to which the flow log belongs.
+        :param _builtins.str resource_type: The type of the flow log.
+        :param _builtins.str status: The status of the flow log.
         :param _builtins.str updated_at: The latest update time of the flow log.
         """
         pulumi.set(__self__, "created_at", created_at)
@@ -475,8 +392,7 @@ class GetFlowLogsFlowLogResult(dict):
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
         """
-        Specifies the switch status of the flow log.
-        The value can be **true** and **false**.
+        The switch of the flow log.
         """
         return pulumi.get(self, "enabled")
 
@@ -492,7 +408,7 @@ class GetFlowLogsFlowLogResult(dict):
     @pulumi.getter(name="logGroupId")
     def log_group_id(self) -> _builtins.str:
         """
-        Specifies the ID of the log group to which the flow logs belong.
+        The ID of the log group to which the flow log belongs.
         """
         return pulumi.get(self, "log_group_id")
 
@@ -508,7 +424,7 @@ class GetFlowLogsFlowLogResult(dict):
     @pulumi.getter(name="logStreamId")
     def log_stream_id(self) -> _builtins.str:
         """
-        Specifies the ID of the log stream to which the flow logs belong.
+        The ID of the log stream to which the flow log belongs.
         """
         return pulumi.get(self, "log_stream_id")
 
@@ -516,7 +432,7 @@ class GetFlowLogsFlowLogResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the name of the flow log.
+        The name of the flow log.
         """
         return pulumi.get(self, "name")
 
@@ -524,7 +440,7 @@ class GetFlowLogsFlowLogResult(dict):
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> _builtins.str:
         """
-        Specifies the ID of the attachment to which the flow logs belong.
+        The ID of the attachment to which the flow log belongs.
         """
         return pulumi.get(self, "resource_id")
 
@@ -532,9 +448,7 @@ class GetFlowLogsFlowLogResult(dict):
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> _builtins.str:
         """
-        Specifies the type of the flow logs.
-        The valid values are as follows:
-        + **attachment**: The flow logs type are attachment.
+        The type of the flow log.
         """
         return pulumi.get(self, "resource_type")
 
@@ -542,7 +456,7 @@ class GetFlowLogsFlowLogResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        Specifies the status of the flow logs.
+        The status of the flow log.
         """
         return pulumi.get(self, "status")
 
@@ -577,20 +491,18 @@ class GetInstancesInstanceResult(dict):
         :param _builtins.int asn: The BGP AS number of the ER instance.
         :param _builtins.bool auto_accept_shared_attachments: Whether to automatically accept the creation of shared attachment.
         :param Sequence[_builtins.str] availability_zones: The availability zone list where the ER instance is located.
-        :param _builtins.str created_at: The creation time of the ER instance.
+        :param _builtins.str created_at: The creation time of the instance.
         :param _builtins.str default_association_route_table_id: The ID of the default association route table.
         :param _builtins.str default_propagation_route_table_id: The ID of the default propagation route table.
-        :param _builtins.str description: The description of the ER instance.
+        :param _builtins.str description: The description of the instance.
         :param _builtins.bool enable_default_association: Whether to enable the association of the default route table.
         :param _builtins.bool enable_default_propagation: Whether to enable the propagation of the default route table.
-        :param _builtins.str enterprise_project_id: Specifies the enterprise project ID of the ER instances to be queried.
-        :param _builtins.str id: The ER instance ID.
-        :param _builtins.str name: Specifies the name used to filter the ER instances.
-               The valid length is limited from `1` to `64`, only Chinese and English letters, digits, underscores (_) and
-               hyphens (-) are allowed.
-        :param _builtins.str status: Specifies the status used to filter the ER instances.
-        :param Mapping[str, _builtins.str] tags: Specifies the key/value pairs used to filter the ER instances.
-        :param _builtins.str updated_at: The last update time of the ER instance.
+        :param _builtins.str enterprise_project_id: The ID of enterprise project to which the instance belongs.
+        :param _builtins.str id: The instance ID.
+        :param _builtins.str name: The name of the instance.
+        :param _builtins.str status: The current status of the instance.
+        :param Mapping[str, _builtins.str] tags: The key/value pairs to associate with the instance.
+        :param _builtins.str updated_at: The last update time of the instance.
         """
         pulumi.set(__self__, "asn", asn)
         pulumi.set(__self__, "auto_accept_shared_attachments", auto_accept_shared_attachments)
@@ -636,7 +548,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> _builtins.str:
         """
-        The creation time of the ER instance.
+        The creation time of the instance.
         """
         return pulumi.get(self, "created_at")
 
@@ -660,7 +572,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        The description of the ER instance.
+        The description of the instance.
         """
         return pulumi.get(self, "description")
 
@@ -684,7 +596,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> _builtins.str:
         """
-        Specifies the enterprise project ID of the ER instances to be queried.
+        The ID of enterprise project to which the instance belongs.
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -692,7 +604,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The ER instance ID.
+        The instance ID.
         """
         return pulumi.get(self, "id")
 
@@ -700,9 +612,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the name used to filter the ER instances.
-        The valid length is limited from `1` to `64`, only Chinese and English letters, digits, underscores (_) and
-        hyphens (-) are allowed.
+        The name of the instance.
         """
         return pulumi.get(self, "name")
 
@@ -710,7 +620,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        Specifies the status used to filter the ER instances.
+        The current status of the instance.
         """
         return pulumi.get(self, "status")
 
@@ -718,7 +628,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def tags(self) -> Mapping[str, _builtins.str]:
         """
-        Specifies the key/value pairs used to filter the ER instances.
+        The key/value pairs to associate with the instance.
         """
         return pulumi.get(self, "tags")
 
@@ -726,7 +636,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> _builtins.str:
         """
-        The last update time of the ER instance.
+        The last update time of the instance.
         """
         return pulumi.get(self, "updated_at")
 
@@ -744,29 +654,6 @@ class GetPropagationsPropagationResult(dict):
                  route_table_id: _builtins.str,
                  status: _builtins.str,
                  updated_at: _builtins.str):
-        """
-        :param _builtins.str attachment_id: Specifies the attachment ID to which the propagation belongs.
-        :param _builtins.str attachment_type: Specifies the attachment type of corresponding to the propagation.  
-               The valid values are as follows:
-               + **vpc**: Virtual private cloud.
-               + **vpn**: VPN gateway.
-               + **vgw**: Virtual gateway of cloud private line.
-               + **peering**: Peering connection, through the cloud connection (CC) to load ERs in different regions to create a
-               peering connection.
-               + **enc**: Enterprise connect network in EC.
-               + **cfw**: VPC border firewall.
-        :param _builtins.str created_at: The creation time of the propagation.
-        :param _builtins.str id: The propagation ID.
-        :param _builtins.str instance_id: Specifies the ER instance ID to which the propagation belongs.
-        :param _builtins.str resource_id: The resource ID of the attachment associated with the propagation.
-        :param _builtins.str route_policy_id: The route policy ID of the ingress IPv4 protocol.
-        :param _builtins.str route_table_id: Specifies the route table ID to which the propagation belongs.
-        :param _builtins.str status: Specifies the status of the propagation. Default value is `available`.
-               The valid values are as follows:
-               + **available**
-               + **failed**
-        :param _builtins.str updated_at: The latest update time of the propagation.
-        """
         pulumi.set(__self__, "attachment_id", attachment_id)
         pulumi.set(__self__, "attachment_type", attachment_type)
         pulumi.set(__self__, "created_at", created_at)
@@ -781,92 +668,51 @@ class GetPropagationsPropagationResult(dict):
     @_builtins.property
     @pulumi.getter(name="attachmentId")
     def attachment_id(self) -> _builtins.str:
-        """
-        Specifies the attachment ID to which the propagation belongs.
-        """
         return pulumi.get(self, "attachment_id")
 
     @_builtins.property
     @pulumi.getter(name="attachmentType")
     def attachment_type(self) -> _builtins.str:
-        """
-        Specifies the attachment type of corresponding to the propagation.  
-        The valid values are as follows:
-        + **vpc**: Virtual private cloud.
-        + **vpn**: VPN gateway.
-        + **vgw**: Virtual gateway of cloud private line.
-        + **peering**: Peering connection, through the cloud connection (CC) to load ERs in different regions to create a
-        peering connection.
-        + **enc**: Enterprise connect network in EC.
-        + **cfw**: VPC border firewall.
-        """
         return pulumi.get(self, "attachment_type")
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> _builtins.str:
-        """
-        The creation time of the propagation.
-        """
         return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        The propagation ID.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
-        """
-        Specifies the ER instance ID to which the propagation belongs.
-        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> _builtins.str:
-        """
-        The resource ID of the attachment associated with the propagation.
-        """
         return pulumi.get(self, "resource_id")
 
     @_builtins.property
     @pulumi.getter(name="routePolicyId")
     def route_policy_id(self) -> _builtins.str:
-        """
-        The route policy ID of the ingress IPv4 protocol.
-        """
         return pulumi.get(self, "route_policy_id")
 
     @_builtins.property
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> _builtins.str:
-        """
-        Specifies the route table ID to which the propagation belongs.
-        """
         return pulumi.get(self, "route_table_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
-        """
-        Specifies the status of the propagation. Default value is `available`.
-        The valid values are as follows:
-        + **available**
-        + **failed**
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> _builtins.str:
-        """
-        The latest update time of the propagation.
-        """
         return pulumi.get(self, "updated_at")
 
 
@@ -879,18 +725,7 @@ class GetQuotasQuotaResult(dict):
                  used: _builtins.int):
         """
         :param _builtins.int limit: The number of available quotas, `-1` means unlimited.
-        :param _builtins.str type: The quota type to be queried.
-               The valid values are as follows:
-               + **er_instance**: Quotas and usage for enterprise router instances.
-               + **dc_attachment**: Quotas and usage for DC attachment.
-               + **vpc_attachment**: Quotas and usage for VPC attachment.
-               + **vpn_attachment**: Quotas and usage for VPN attachment.
-               + **peering_attachment**: Quotas and usage for peering attachment.
-               + **can_attachment**: Quotas and usage for can attachment.
-               + **route_table**: Quotas and usage for route table.
-               + **static_route**: Quotas and usage for static route.
-               + **vpc_er**: The number of enterprise routers that each VPC can access and the current usage.
-               + **flow_log**: The number of flow logs that can be created per attachment.
+        :param _builtins.str type: The quota type.
         :param _builtins.str unit: The unit of usage.
         :param _builtins.int used: The number of quota used.
         """
@@ -911,18 +746,7 @@ class GetQuotasQuotaResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        The quota type to be queried.
-        The valid values are as follows:
-        + **er_instance**: Quotas and usage for enterprise router instances.
-        + **dc_attachment**: Quotas and usage for DC attachment.
-        + **vpc_attachment**: Quotas and usage for VPC attachment.
-        + **vpn_attachment**: Quotas and usage for VPN attachment.
-        + **peering_attachment**: Quotas and usage for peering attachment.
-        + **can_attachment**: Quotas and usage for can attachment.
-        + **route_table**: Quotas and usage for route table.
-        + **static_route**: Quotas and usage for static route.
-        + **vpc_er**: The number of enterprise routers that each VPC can access and the current usage.
-        + **flow_log**: The number of flow logs that can be created per attachment.
+        The quota type.
         """
         return pulumi.get(self, "type")
 
@@ -959,22 +783,17 @@ class GetRouteTablesRouteTableResult(dict):
                  tags: Mapping[str, _builtins.str],
                  updated_at: _builtins.str):
         """
-        :param Sequence['GetRouteTablesRouteTableAssociationArgs'] associations: The association configurations of the route table.  
-               The object structure is documented below.
+        :param Sequence['GetRouteTablesRouteTableAssociationArgs'] associations: The association configuration of the route table.
         :param _builtins.str created_at: The creation time.
         :param _builtins.str description: The description of the route table.
-        :param _builtins.str id: The route ID.
+        :param _builtins.str id: The route table ID.
         :param _builtins.bool is_default_association: Whether this route table is the default association route table.
         :param _builtins.bool is_default_propagation: Whether this route table is the default propagation route table.
-        :param _builtins.str name: Specifies the name used to filter the route tables.  
-               The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-               hyphens (-) and dots (.) allowed.
-        :param Sequence['GetRouteTablesRouteTablePropagationArgs'] propagations: The propagation configurations of the route table.  
-               The object structure is documented below.
-        :param Sequence['GetRouteTablesRouteTableRouteArgs'] routes: The route details of the route table.  
-               The object structure is documented below.
-        :param _builtins.str status: The current status of the route.
-        :param Mapping[str, _builtins.str] tags: Specifies the key/value pairs used to filter the route tables.
+        :param _builtins.str name: The name of the route table.
+        :param Sequence['GetRouteTablesRouteTablePropagationArgs'] propagations: The propagation configuration of the route table.
+        :param Sequence['GetRouteTablesRouteTableRouteArgs'] routes: The route details of the route table.
+        :param _builtins.str status: The current status of the route table.
+        :param Mapping[str, _builtins.str] tags: The tags configuration of the route table.
         :param _builtins.str updated_at: The latest update time.
         """
         pulumi.set(__self__, "associations", associations)
@@ -994,8 +813,7 @@ class GetRouteTablesRouteTableResult(dict):
     @pulumi.getter
     def associations(self) -> Sequence['outputs.GetRouteTablesRouteTableAssociationResult']:
         """
-        The association configurations of the route table.  
-        The object structure is documented below.
+        The association configuration of the route table.
         """
         return pulumi.get(self, "associations")
 
@@ -1019,7 +837,7 @@ class GetRouteTablesRouteTableResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The route ID.
+        The route table ID.
         """
         return pulumi.get(self, "id")
 
@@ -1043,9 +861,7 @@ class GetRouteTablesRouteTableResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the name used to filter the route tables.  
-        The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-        hyphens (-) and dots (.) allowed.
+        The name of the route table.
         """
         return pulumi.get(self, "name")
 
@@ -1053,8 +869,7 @@ class GetRouteTablesRouteTableResult(dict):
     @pulumi.getter
     def propagations(self) -> Sequence['outputs.GetRouteTablesRouteTablePropagationResult']:
         """
-        The propagation configurations of the route table.  
-        The object structure is documented below.
+        The propagation configuration of the route table.
         """
         return pulumi.get(self, "propagations")
 
@@ -1062,8 +877,7 @@ class GetRouteTablesRouteTableResult(dict):
     @pulumi.getter
     def routes(self) -> Sequence['outputs.GetRouteTablesRouteTableRouteResult']:
         """
-        The route details of the route table.  
-        The object structure is documented below.
+        The route details of the route table.
         """
         return pulumi.get(self, "routes")
 
@@ -1071,7 +885,7 @@ class GetRouteTablesRouteTableResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The current status of the route.
+        The current status of the route table.
         """
         return pulumi.get(self, "status")
 
@@ -1079,7 +893,7 @@ class GetRouteTablesRouteTableResult(dict):
     @pulumi.getter
     def tags(self) -> Mapping[str, _builtins.str]:
         """
-        Specifies the key/value pairs used to filter the route tables.
+        The tags configuration of the route table.
         """
         return pulumi.get(self, "tags")
 
@@ -1099,9 +913,9 @@ class GetRouteTablesRouteTableAssociationResult(dict):
                  attachment_type: _builtins.str,
                  id: _builtins.str):
         """
-        :param _builtins.str attachment_id: The ID of the nexthop attachment.
-        :param _builtins.str attachment_type: The type of the nexthop attachment.
-        :param _builtins.str id: The route ID.
+        :param _builtins.str attachment_id: The attachment ID corresponding to the routing association/propagation.
+        :param _builtins.str attachment_type: The attachment type corresponding to the routing association/propagation.
+        :param _builtins.str id: The ID of the association/propagation.
         """
         pulumi.set(__self__, "attachment_id", attachment_id)
         pulumi.set(__self__, "attachment_type", attachment_type)
@@ -1111,7 +925,7 @@ class GetRouteTablesRouteTableAssociationResult(dict):
     @pulumi.getter(name="attachmentId")
     def attachment_id(self) -> _builtins.str:
         """
-        The ID of the nexthop attachment.
+        The attachment ID corresponding to the routing association/propagation.
         """
         return pulumi.get(self, "attachment_id")
 
@@ -1119,7 +933,7 @@ class GetRouteTablesRouteTableAssociationResult(dict):
     @pulumi.getter(name="attachmentType")
     def attachment_type(self) -> _builtins.str:
         """
-        The type of the nexthop attachment.
+        The attachment type corresponding to the routing association/propagation.
         """
         return pulumi.get(self, "attachment_type")
 
@@ -1127,7 +941,7 @@ class GetRouteTablesRouteTableAssociationResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The route ID.
+        The ID of the association/propagation.
         """
         return pulumi.get(self, "id")
 
@@ -1139,9 +953,9 @@ class GetRouteTablesRouteTablePropagationResult(dict):
                  attachment_type: _builtins.str,
                  id: _builtins.str):
         """
-        :param _builtins.str attachment_id: The ID of the nexthop attachment.
-        :param _builtins.str attachment_type: The type of the nexthop attachment.
-        :param _builtins.str id: The route ID.
+        :param _builtins.str attachment_id: The attachment ID corresponding to the routing association/propagation.
+        :param _builtins.str attachment_type: The attachment type corresponding to the routing association/propagation.
+        :param _builtins.str id: The ID of the association/propagation.
         """
         pulumi.set(__self__, "attachment_id", attachment_id)
         pulumi.set(__self__, "attachment_type", attachment_type)
@@ -1151,7 +965,7 @@ class GetRouteTablesRouteTablePropagationResult(dict):
     @pulumi.getter(name="attachmentId")
     def attachment_id(self) -> _builtins.str:
         """
-        The ID of the nexthop attachment.
+        The attachment ID corresponding to the routing association/propagation.
         """
         return pulumi.get(self, "attachment_id")
 
@@ -1159,7 +973,7 @@ class GetRouteTablesRouteTablePropagationResult(dict):
     @pulumi.getter(name="attachmentType")
     def attachment_type(self) -> _builtins.str:
         """
-        The type of the nexthop attachment.
+        The attachment type corresponding to the routing association/propagation.
         """
         return pulumi.get(self, "attachment_type")
 
@@ -1167,7 +981,7 @@ class GetRouteTablesRouteTablePropagationResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The route ID.
+        The ID of the association/propagation.
         """
         return pulumi.get(self, "id")
 
@@ -1181,8 +995,7 @@ class GetRouteTablesRouteTableRouteResult(dict):
                  is_blackhole: _builtins.bool,
                  status: _builtins.str):
         """
-        :param Sequence['GetRouteTablesRouteTableRouteAttachmentArgs'] attachments: The details of the attachment corresponding to the route.  
-               The object structure is documented below.
+        :param Sequence['GetRouteTablesRouteTableRouteAttachmentArgs'] attachments: The details of the attachment corresponding to the route.
         :param _builtins.str destination: The destination address (CIDR) of the route.
         :param _builtins.str id: The route ID.
         :param _builtins.bool is_blackhole: Whether route is the black hole route.
@@ -1198,8 +1011,7 @@ class GetRouteTablesRouteTableRouteResult(dict):
     @pulumi.getter
     def attachments(self) -> Sequence['outputs.GetRouteTablesRouteTableRouteAttachmentResult']:
         """
-        The details of the attachment corresponding to the route.  
-        The object structure is documented below.
+        The details of the attachment corresponding to the route.
         """
         return pulumi.get(self, "attachments")
 

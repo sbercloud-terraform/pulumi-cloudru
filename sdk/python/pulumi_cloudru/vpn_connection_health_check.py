@@ -24,10 +24,6 @@ class VpnConnectionHealthCheckArgs:
         """
         The set of arguments for constructing a VpnConnectionHealthCheck resource.
         :param pulumi.Input[_builtins.str] connection_id: Specifies the ID of the VPN connection to monitor.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         pulumi.set(__self__, "connection_id", connection_id)
         if region is not None:
@@ -38,8 +34,6 @@ class VpnConnectionHealthCheckArgs:
     def connection_id(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the ID of the VPN connection to monitor.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "connection_id")
 
@@ -50,10 +44,6 @@ class VpnConnectionHealthCheckArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -72,11 +62,7 @@ class _VpnConnectionHealthCheckState:
         """
         Input properties used for looking up and filtering VpnConnectionHealthCheck resources.
         :param pulumi.Input[_builtins.str] connection_id: Specifies the ID of the VPN connection to monitor.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] destination_ip: The destination IP address of the VPN connection.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] source_ip: The source IP address of the VPN connection.
         :param pulumi.Input[_builtins.str] status: The status of the connection health check.
         """
@@ -96,8 +82,6 @@ class _VpnConnectionHealthCheckState:
     def connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the ID of the VPN connection to monitor.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "connection_id")
 
@@ -120,10 +104,6 @@ class _VpnConnectionHealthCheckState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -165,36 +145,10 @@ class VpnConnectionHealthCheck(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a VPN connection health check resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        connection_id = config.require_object("connectionId")
-        test = sbercloud.VpnConnectionHealthCheck("test", connection_id=connection_id)
-        ```
-
-        ## Import
-
-        The health check can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/vpnConnectionHealthCheck:VpnConnectionHealthCheck test <id>
-        ```
-
+        Create a VpnConnectionHealthCheck resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connection_id: Specifies the ID of the VPN connection to monitor.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         ...
     @overload
@@ -203,29 +157,7 @@ class VpnConnectionHealthCheck(pulumi.CustomResource):
                  args: VpnConnectionHealthCheckArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a VPN connection health check resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        connection_id = config.require_object("connectionId")
-        test = sbercloud.VpnConnectionHealthCheck("test", connection_id=connection_id)
-        ```
-
-        ## Import
-
-        The health check can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/vpnConnectionHealthCheck:VpnConnectionHealthCheck test <id>
-        ```
-
+        Create a VpnConnectionHealthCheck resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param VpnConnectionHealthCheckArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -282,11 +214,7 @@ class VpnConnectionHealthCheck(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connection_id: Specifies the ID of the VPN connection to monitor.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] destination_ip: The destination IP address of the VPN connection.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] source_ip: The source IP address of the VPN connection.
         :param pulumi.Input[_builtins.str] status: The status of the connection health check.
         """
@@ -306,8 +234,6 @@ class VpnConnectionHealthCheck(pulumi.CustomResource):
     def connection_id(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the ID of the VPN connection to monitor.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "connection_id")
 
@@ -322,10 +248,6 @@ class VpnConnectionHealthCheck(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property

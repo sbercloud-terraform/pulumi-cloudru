@@ -11,92 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of RabbitMQ available flavor details within SberCloud.
-//
-// ## Example Usage
-//
-// ### Query the list of RabbitMQ flavors by cluster type
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sbercloud.GetDmsRabbitmqFlavors(ctx, &cloudru.GetDmsRabbitmqFlavorsArgs{
-//				Type: pulumi.StringRef("cluster"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Query the list of RabbitMQ flavors by flavor ID
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sbercloud.GetDmsRabbitmqFlavors(ctx, &cloudru.GetDmsRabbitmqFlavorsArgs{
-//				FlavorId: pulumi.StringRef("c6.2u4g.cluster"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Query the list of RabbitMQ flavors by availability zone
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// cfg := config.New(ctx, "")
-// az1 := cfg.RequireObject("az1")
-// az2 := cfg.RequireObject("az2")
-// _, err := sbercloud.GetDmsRabbitmqFlavors(ctx, &cloudru.GetDmsRabbitmqFlavorsArgs{
-// AvailabilityZones: interface{}{
-// az1,
-// az2,
-// },
-// }, nil);
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
-// ```
 func GetDmsRabbitmqFlavors(ctx *pulumi.Context, args *GetDmsRabbitmqFlavorsArgs, opts ...pulumi.InvokeOption) (*GetDmsRabbitmqFlavorsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDmsRabbitmqFlavorsResult
@@ -109,45 +23,28 @@ func GetDmsRabbitmqFlavors(ctx *pulumi.Context, args *GetDmsRabbitmqFlavorsArgs,
 
 // A collection of arguments for invoking getDmsRabbitmqFlavors.
 type GetDmsRabbitmqFlavorsArgs struct {
-	// Specifies the type of CPU architecture, e.g. **X86**.
-	ArchType *string `pulumi:"archType"`
-	// Specifies the list of availability zones with available resources.
+	ArchType          *string  `pulumi:"archType"`
 	AvailabilityZones []string `pulumi:"availabilityZones"`
-	// Specifies the flavor billing mode.
-	// The valid values are **prePaid** and **postPaid**.
-	ChargingMode *string `pulumi:"chargingMode"`
-	// Specifies the DMS flavor ID, e.g. **c6.2u4g.cluster**.
-	FlavorId *string `pulumi:"flavorId"`
-	// Specifies the region in which to obtain the dms RabbitMQ flavors.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the disk IO encoding.
-	// + **dms.physical.storage.high.v2**: Type of the disk that uses high I/O.
-	// + **dms.physical.storage.ultra.v2**: Type of the disk that uses ultra-high I/O.
-	StorageSpecCode *string `pulumi:"storageSpecCode"`
-	// Specifies flavor type. The valid values are **single** and **cluster**.
-	Type *string `pulumi:"type"`
+	ChargingMode      *string  `pulumi:"chargingMode"`
+	FlavorId          *string  `pulumi:"flavorId"`
+	Region            *string  `pulumi:"region"`
+	StorageSpecCode   *string  `pulumi:"storageSpecCode"`
+	Type              *string  `pulumi:"type"`
 }
 
 // A collection of values returned by getDmsRabbitmqFlavors.
 type GetDmsRabbitmqFlavorsResult struct {
-	ArchType *string `pulumi:"archType"`
-	// Indicates the list of availability zones with available resources.
-	AvailabilityZones []string `pulumi:"availabilityZones"`
-	ChargingMode      *string  `pulumi:"chargingMode"`
-	FlavorId          *string  `pulumi:"flavorId"`
-	// Indicates the list of flavor details.
-	// The object structure is documented below.
-	Flavors []GetDmsRabbitmqFlavorsFlavor `pulumi:"flavors"`
+	ArchType          *string                       `pulumi:"archType"`
+	AvailabilityZones []string                      `pulumi:"availabilityZones"`
+	ChargingMode      *string                       `pulumi:"chargingMode"`
+	FlavorId          *string                       `pulumi:"flavorId"`
+	Flavors           []GetDmsRabbitmqFlavorsFlavor `pulumi:"flavors"`
 	// The provider-assigned unique ID for this managed resource.
-	Id     string `pulumi:"id"`
-	Region string `pulumi:"region"`
-	// Indicates the disk IO encoding.
-	StorageSpecCode *string `pulumi:"storageSpecCode"`
-	// The disk type.
-	Type *string `pulumi:"type"`
-	// Indicates the supported flavor versions.
-	Versions []string `pulumi:"versions"`
+	Id              string   `pulumi:"id"`
+	Region          string   `pulumi:"region"`
+	StorageSpecCode *string  `pulumi:"storageSpecCode"`
+	Type            *string  `pulumi:"type"`
+	Versions        []string `pulumi:"versions"`
 }
 
 func GetDmsRabbitmqFlavorsOutput(ctx *pulumi.Context, args GetDmsRabbitmqFlavorsOutputArgs, opts ...pulumi.InvokeOption) GetDmsRabbitmqFlavorsResultOutput {
@@ -161,24 +58,13 @@ func GetDmsRabbitmqFlavorsOutput(ctx *pulumi.Context, args GetDmsRabbitmqFlavors
 
 // A collection of arguments for invoking getDmsRabbitmqFlavors.
 type GetDmsRabbitmqFlavorsOutputArgs struct {
-	// Specifies the type of CPU architecture, e.g. **X86**.
-	ArchType pulumi.StringPtrInput `pulumi:"archType"`
-	// Specifies the list of availability zones with available resources.
+	ArchType          pulumi.StringPtrInput   `pulumi:"archType"`
 	AvailabilityZones pulumi.StringArrayInput `pulumi:"availabilityZones"`
-	// Specifies the flavor billing mode.
-	// The valid values are **prePaid** and **postPaid**.
-	ChargingMode pulumi.StringPtrInput `pulumi:"chargingMode"`
-	// Specifies the DMS flavor ID, e.g. **c6.2u4g.cluster**.
-	FlavorId pulumi.StringPtrInput `pulumi:"flavorId"`
-	// Specifies the region in which to obtain the dms RabbitMQ flavors.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the disk IO encoding.
-	// + **dms.physical.storage.high.v2**: Type of the disk that uses high I/O.
-	// + **dms.physical.storage.ultra.v2**: Type of the disk that uses ultra-high I/O.
-	StorageSpecCode pulumi.StringPtrInput `pulumi:"storageSpecCode"`
-	// Specifies flavor type. The valid values are **single** and **cluster**.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	ChargingMode      pulumi.StringPtrInput   `pulumi:"chargingMode"`
+	FlavorId          pulumi.StringPtrInput   `pulumi:"flavorId"`
+	Region            pulumi.StringPtrInput   `pulumi:"region"`
+	StorageSpecCode   pulumi.StringPtrInput   `pulumi:"storageSpecCode"`
+	Type              pulumi.StringPtrInput   `pulumi:"type"`
 }
 
 func (GetDmsRabbitmqFlavorsOutputArgs) ElementType() reflect.Type {
@@ -204,7 +90,6 @@ func (o GetDmsRabbitmqFlavorsResultOutput) ArchType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsResult) *string { return v.ArchType }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the list of availability zones with available resources.
 func (o GetDmsRabbitmqFlavorsResultOutput) AvailabilityZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsResult) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }
@@ -217,8 +102,6 @@ func (o GetDmsRabbitmqFlavorsResultOutput) FlavorId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsResult) *string { return v.FlavorId }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the list of flavor details.
-// The object structure is documented below.
 func (o GetDmsRabbitmqFlavorsResultOutput) Flavors() GetDmsRabbitmqFlavorsFlavorArrayOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsResult) []GetDmsRabbitmqFlavorsFlavor { return v.Flavors }).(GetDmsRabbitmqFlavorsFlavorArrayOutput)
 }
@@ -232,17 +115,14 @@ func (o GetDmsRabbitmqFlavorsResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// Indicates the disk IO encoding.
 func (o GetDmsRabbitmqFlavorsResultOutput) StorageSpecCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsResult) *string { return v.StorageSpecCode }).(pulumi.StringPtrOutput)
 }
 
-// The disk type.
 func (o GetDmsRabbitmqFlavorsResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the supported flavor versions.
 func (o GetDmsRabbitmqFlavorsResultOutput) Versions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsResult) []string { return v.Versions }).(pulumi.StringArrayOutput)
 }

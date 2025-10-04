@@ -30,21 +30,10 @@ class PgAccountArgs:
         """
         The set of arguments for constructing a PgAccount resource.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS PostgreSQL instance.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] password: Specifies the password of the DB account. The value must be 8 to 32 characters long
-               and contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
-               characters (~!@#%^*-_=+?,). The value cannot contain the username or the username spelled backwards.
-        :param pulumi.Input[_builtins.str] description: Specifies the remarks of the DB account. The parameter must be 1 to 512 characters.
+        :param pulumi.Input[_builtins.str] password: Specifies the password of the DB account.
+        :param pulumi.Input[_builtins.str] description: Specifies the remarks of the DB account.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] memberofs: schema: Deprecated
-        :param pulumi.Input[_builtins.str] name: Specifies the username of the DB account. The username contains 1 to 63
-               characters, including letters, digits, and underscores (_). It cannot start with pg or a digit and must be different
-               from system usernames. System users include **rdsAdmin**, **rdsMetric**, **rdsBackup**, **rdsRepl**, **rdsProxy**,
-               and **rdsDdm**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] name: Specifies the username of the DB account.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "password", password)
@@ -62,8 +51,6 @@ class PgAccountArgs:
     def instance_id(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the ID of the RDS PostgreSQL instance.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "instance_id")
 
@@ -75,9 +62,7 @@ class PgAccountArgs:
     @pulumi.getter
     def password(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the password of the DB account. The value must be 8 to 32 characters long
-        and contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
-        characters (~!@#%^*-_=+?,). The value cannot contain the username or the username spelled backwards.
+        Specifies the password of the DB account.
         """
         return pulumi.get(self, "password")
 
@@ -89,7 +74,7 @@ class PgAccountArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the remarks of the DB account. The parameter must be 1 to 512 characters.
+        Specifies the remarks of the DB account.
         """
         return pulumi.get(self, "description")
 
@@ -113,12 +98,7 @@ class PgAccountArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the username of the DB account. The username contains 1 to 63
-        characters, including letters, digits, and underscores (_). It cannot start with pg or a digit and must be different
-        from system usernames. System users include **rdsAdmin**, **rdsMetric**, **rdsBackup**, **rdsRepl**, **rdsProxy**,
-        and **rdsDdm**.
-
-        Changing this parameter will create a new resource.
+        Specifies the username of the DB account.
         """
         return pulumi.get(self, "name")
 
@@ -129,10 +109,6 @@ class PgAccountArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -152,24 +128,12 @@ class _PgAccountState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PgAccount resources.
-        :param pulumi.Input[Sequence[pulumi.Input['PgAccountAttributeArgs']]] attributes: Indicates the permission attributes of a user.
-               The attributes structure is documented below.
-        :param pulumi.Input[_builtins.str] description: Specifies the remarks of the DB account. The parameter must be 1 to 512 characters.
+        :param pulumi.Input[Sequence[pulumi.Input['PgAccountAttributeArgs']]] attributes: Indicates the permission attributes of the account.
+        :param pulumi.Input[_builtins.str] description: Specifies the remarks of the DB account.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS PostgreSQL instance.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] memberofs: schema: Deprecated
-        :param pulumi.Input[_builtins.str] name: Specifies the username of the DB account. The username contains 1 to 63
-               characters, including letters, digits, and underscores (_). It cannot start with pg or a digit and must be different
-               from system usernames. System users include **rdsAdmin**, **rdsMetric**, **rdsBackup**, **rdsRepl**, **rdsProxy**,
-               and **rdsDdm**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] password: Specifies the password of the DB account. The value must be 8 to 32 characters long
-               and contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
-               characters (~!@#%^*-_=+?,). The value cannot contain the username or the username spelled backwards.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] name: Specifies the username of the DB account.
+        :param pulumi.Input[_builtins.str] password: Specifies the password of the DB account.
         """
         if attributes is not None:
             pulumi.set(__self__, "attributes", attributes)
@@ -190,8 +154,7 @@ class _PgAccountState:
     @pulumi.getter
     def attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PgAccountAttributeArgs']]]]:
         """
-        Indicates the permission attributes of a user.
-        The attributes structure is documented below.
+        Indicates the permission attributes of the account.
         """
         return pulumi.get(self, "attributes")
 
@@ -203,7 +166,7 @@ class _PgAccountState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the remarks of the DB account. The parameter must be 1 to 512 characters.
+        Specifies the remarks of the DB account.
         """
         return pulumi.get(self, "description")
 
@@ -216,8 +179,6 @@ class _PgAccountState:
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the ID of the RDS PostgreSQL instance.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "instance_id")
 
@@ -241,12 +202,7 @@ class _PgAccountState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the username of the DB account. The username contains 1 to 63
-        characters, including letters, digits, and underscores (_). It cannot start with pg or a digit and must be different
-        from system usernames. System users include **rdsAdmin**, **rdsMetric**, **rdsBackup**, **rdsRepl**, **rdsProxy**,
-        and **rdsDdm**.
-
-        Changing this parameter will create a new resource.
+        Specifies the username of the DB account.
         """
         return pulumi.get(self, "name")
 
@@ -258,9 +214,7 @@ class _PgAccountState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the password of the DB account. The value must be 8 to 32 characters long
-        and contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
-        characters (~!@#%^*-_=+?,). The value cannot contain the username or the username spelled backwards.
+        Specifies the password of the DB account.
         """
         return pulumi.get(self, "password")
 
@@ -271,10 +225,6 @@ class _PgAccountState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -296,79 +246,14 @@ class PgAccount(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages RDS PostgreSQL account resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        account_password = config.require_object("accountPassword")
-        test = sbercloud.rds.PgAccount("test",
-            instance_id=instance_id,
-            name="test_account_name",
-            password=account_password)
-        ```
-
-        ## Import
-
-        The RDS PostgreSQL account can be imported using the `instance_id` and `name` separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Rds/pgAccount:PgAccount test <instance_id>/<name>
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include: `password`. It is generally recommended
-
-        running `pulumi preview` after importing the RDS PostgreSQL account. You can then decide if changes should be applied to
-
-        the RDS PostgreSQL account, or the resource definition should be updated to align with the RDS PostgreSQL account. Also
-
-        you can ignore changes as below.
-
-        hcl
-
-        resource "sbercloud_rds_pg_account" "account_1" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              password
-            
-            ]
-
-          }
-
-        }
-
+        Create a PgAccount resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the remarks of the DB account. The parameter must be 1 to 512 characters.
+        :param pulumi.Input[_builtins.str] description: Specifies the remarks of the DB account.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS PostgreSQL instance.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] memberofs: schema: Deprecated
-        :param pulumi.Input[_builtins.str] name: Specifies the username of the DB account. The username contains 1 to 63
-               characters, including letters, digits, and underscores (_). It cannot start with pg or a digit and must be different
-               from system usernames. System users include **rdsAdmin**, **rdsMetric**, **rdsBackup**, **rdsRepl**, **rdsProxy**,
-               and **rdsDdm**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] password: Specifies the password of the DB account. The value must be 8 to 32 characters long
-               and contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
-               characters (~!@#%^*-_=+?,). The value cannot contain the username or the username spelled backwards.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] name: Specifies the username of the DB account.
+        :param pulumi.Input[_builtins.str] password: Specifies the password of the DB account.
         """
         ...
     @overload
@@ -377,61 +262,7 @@ class PgAccount(pulumi.CustomResource):
                  args: PgAccountArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages RDS PostgreSQL account resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        account_password = config.require_object("accountPassword")
-        test = sbercloud.rds.PgAccount("test",
-            instance_id=instance_id,
-            name="test_account_name",
-            password=account_password)
-        ```
-
-        ## Import
-
-        The RDS PostgreSQL account can be imported using the `instance_id` and `name` separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Rds/pgAccount:PgAccount test <instance_id>/<name>
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include: `password`. It is generally recommended
-
-        running `pulumi preview` after importing the RDS PostgreSQL account. You can then decide if changes should be applied to
-
-        the RDS PostgreSQL account, or the resource definition should be updated to align with the RDS PostgreSQL account. Also
-
-        you can ignore changes as below.
-
-        hcl
-
-        resource "sbercloud_rds_pg_account" "account_1" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              password
-            
-            ]
-
-          }
-
-        }
-
+        Create a PgAccount resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param PgAccountArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -499,24 +330,12 @@ class PgAccount(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PgAccountAttributeArgs', 'PgAccountAttributeArgsDict']]]] attributes: Indicates the permission attributes of a user.
-               The attributes structure is documented below.
-        :param pulumi.Input[_builtins.str] description: Specifies the remarks of the DB account. The parameter must be 1 to 512 characters.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PgAccountAttributeArgs', 'PgAccountAttributeArgsDict']]]] attributes: Indicates the permission attributes of the account.
+        :param pulumi.Input[_builtins.str] description: Specifies the remarks of the DB account.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS PostgreSQL instance.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] memberofs: schema: Deprecated
-        :param pulumi.Input[_builtins.str] name: Specifies the username of the DB account. The username contains 1 to 63
-               characters, including letters, digits, and underscores (_). It cannot start with pg or a digit and must be different
-               from system usernames. System users include **rdsAdmin**, **rdsMetric**, **rdsBackup**, **rdsRepl**, **rdsProxy**,
-               and **rdsDdm**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] password: Specifies the password of the DB account. The value must be 8 to 32 characters long
-               and contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
-               characters (~!@#%^*-_=+?,). The value cannot contain the username or the username spelled backwards.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] name: Specifies the username of the DB account.
+        :param pulumi.Input[_builtins.str] password: Specifies the password of the DB account.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -535,8 +354,7 @@ class PgAccount(pulumi.CustomResource):
     @pulumi.getter
     def attributes(self) -> pulumi.Output[Sequence['outputs.PgAccountAttribute']]:
         """
-        Indicates the permission attributes of a user.
-        The attributes structure is documented below.
+        Indicates the permission attributes of the account.
         """
         return pulumi.get(self, "attributes")
 
@@ -544,7 +362,7 @@ class PgAccount(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the remarks of the DB account. The parameter must be 1 to 512 characters.
+        Specifies the remarks of the DB account.
         """
         return pulumi.get(self, "description")
 
@@ -553,8 +371,6 @@ class PgAccount(pulumi.CustomResource):
     def instance_id(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the ID of the RDS PostgreSQL instance.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "instance_id")
 
@@ -570,12 +386,7 @@ class PgAccount(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the username of the DB account. The username contains 1 to 63
-        characters, including letters, digits, and underscores (_). It cannot start with pg or a digit and must be different
-        from system usernames. System users include **rdsAdmin**, **rdsMetric**, **rdsBackup**, **rdsRepl**, **rdsProxy**,
-        and **rdsDdm**.
-
-        Changing this parameter will create a new resource.
+        Specifies the username of the DB account.
         """
         return pulumi.get(self, "name")
 
@@ -583,18 +394,12 @@ class PgAccount(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the password of the DB account. The value must be 8 to 32 characters long
-        and contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
-        characters (~!@#%^*-_=+?,). The value cannot contain the username or the username spelled backwards.
+        Specifies the password of the DB account.
         """
         return pulumi.get(self, "password")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 

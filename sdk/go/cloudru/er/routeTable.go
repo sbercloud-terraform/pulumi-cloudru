@@ -12,97 +12,26 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a route table resource under the ER instance within SberCloud.
-//
-// Before using enterprise router, define custom endpoint as shown below:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/er"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			routeTableName := cfg.RequireObject("routeTableName")
-//			_, err := er.NewRouteTable(ctx, "test", &er.RouteTableArgs{
-//				InstanceId:  pulumi.Any(instanceId),
-//				Name:        pulumi.Any(routeTableName),
-//				Description: pulumi.String("Route table created by terraform"),
-//				Tags: pulumi.StringMap{
-//					"foo":   pulumi.String("bar"),
-//					"owner": pulumi.String("terraform"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Route tables can be imported using their `id` and the related `instance_id`, separated by slashes (/), e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Er/routeTable:RouteTable test <instance_id>/<id>
-// ```
 type RouteTable struct {
 	pulumi.CustomResourceState
 
 	// The creation time.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Specifies the description of the route table.\
-	// The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
+	// The description of the ER route table.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Specifies the ID of the ER instance to which the route table belongs.\
-	// Changing this parameter will create a new resource.
+	// The ID of the ER instance to which the route table belongs.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// Whether this route table is the default association route table.
 	IsDefaultAssociation pulumi.BoolOutput `pulumi:"isDefaultAssociation"`
 	// Whether this route table is the default propagation route table.
 	IsDefaultPropagation pulumi.BoolOutput `pulumi:"isDefaultPropagation"`
-	// Specifies the name of the route table.\
-	// The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-	// hyphens (-) and dots (.) allowed.
+	// The name of the route table.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the region where the ER instance and route table are located.\
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the ER instance and route table are located.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The current status of the route table.
-	Status pulumi.StringOutput `pulumi:"status"`
-	// Specifies the key/value pairs to associate with the route table.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Status pulumi.StringOutput    `pulumi:"status"`
+	Tags   pulumi.StringMapOutput `pulumi:"tags"`
 	// The latest update time.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
@@ -142,27 +71,21 @@ func GetRouteTable(ctx *pulumi.Context,
 type routeTableState struct {
 	// The creation time.
 	CreatedAt *string `pulumi:"createdAt"`
-	// Specifies the description of the route table.\
-	// The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
+	// The description of the ER route table.
 	Description *string `pulumi:"description"`
-	// Specifies the ID of the ER instance to which the route table belongs.\
-	// Changing this parameter will create a new resource.
+	// The ID of the ER instance to which the route table belongs.
 	InstanceId *string `pulumi:"instanceId"`
 	// Whether this route table is the default association route table.
 	IsDefaultAssociation *bool `pulumi:"isDefaultAssociation"`
 	// Whether this route table is the default propagation route table.
 	IsDefaultPropagation *bool `pulumi:"isDefaultPropagation"`
-	// Specifies the name of the route table.\
-	// The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-	// hyphens (-) and dots (.) allowed.
+	// The name of the route table.
 	Name *string `pulumi:"name"`
-	// Specifies the region where the ER instance and route table are located.\
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the ER instance and route table are located.
 	Region *string `pulumi:"region"`
 	// The current status of the route table.
-	Status *string `pulumi:"status"`
-	// Specifies the key/value pairs to associate with the route table.
-	Tags map[string]string `pulumi:"tags"`
+	Status *string           `pulumi:"status"`
+	Tags   map[string]string `pulumi:"tags"`
 	// The latest update time.
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
@@ -170,27 +93,21 @@ type routeTableState struct {
 type RouteTableState struct {
 	// The creation time.
 	CreatedAt pulumi.StringPtrInput
-	// Specifies the description of the route table.\
-	// The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
+	// The description of the ER route table.
 	Description pulumi.StringPtrInput
-	// Specifies the ID of the ER instance to which the route table belongs.\
-	// Changing this parameter will create a new resource.
+	// The ID of the ER instance to which the route table belongs.
 	InstanceId pulumi.StringPtrInput
 	// Whether this route table is the default association route table.
 	IsDefaultAssociation pulumi.BoolPtrInput
 	// Whether this route table is the default propagation route table.
 	IsDefaultPropagation pulumi.BoolPtrInput
-	// Specifies the name of the route table.\
-	// The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-	// hyphens (-) and dots (.) allowed.
+	// The name of the route table.
 	Name pulumi.StringPtrInput
-	// Specifies the region where the ER instance and route table are located.\
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the ER instance and route table are located.
 	Region pulumi.StringPtrInput
 	// The current status of the route table.
 	Status pulumi.StringPtrInput
-	// Specifies the key/value pairs to associate with the route table.
-	Tags pulumi.StringMapInput
+	Tags   pulumi.StringMapInput
 	// The latest update time.
 	UpdatedAt pulumi.StringPtrInput
 }
@@ -200,40 +117,28 @@ func (RouteTableState) ElementType() reflect.Type {
 }
 
 type routeTableArgs struct {
-	// Specifies the description of the route table.\
-	// The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
+	// The description of the ER route table.
 	Description *string `pulumi:"description"`
-	// Specifies the ID of the ER instance to which the route table belongs.\
-	// Changing this parameter will create a new resource.
+	// The ID of the ER instance to which the route table belongs.
 	InstanceId string `pulumi:"instanceId"`
-	// Specifies the name of the route table.\
-	// The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-	// hyphens (-) and dots (.) allowed.
+	// The name of the route table.
 	Name *string `pulumi:"name"`
-	// Specifies the region where the ER instance and route table are located.\
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies the key/value pairs to associate with the route table.
-	Tags map[string]string `pulumi:"tags"`
+	// The region where the ER instance and route table are located.
+	Region *string           `pulumi:"region"`
+	Tags   map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a RouteTable resource.
 type RouteTableArgs struct {
-	// Specifies the description of the route table.\
-	// The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
+	// The description of the ER route table.
 	Description pulumi.StringPtrInput
-	// Specifies the ID of the ER instance to which the route table belongs.\
-	// Changing this parameter will create a new resource.
+	// The ID of the ER instance to which the route table belongs.
 	InstanceId pulumi.StringInput
-	// Specifies the name of the route table.\
-	// The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-	// hyphens (-) and dots (.) allowed.
+	// The name of the route table.
 	Name pulumi.StringPtrInput
-	// Specifies the region where the ER instance and route table are located.\
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the ER instance and route table are located.
 	Region pulumi.StringPtrInput
-	// Specifies the key/value pairs to associate with the route table.
-	Tags pulumi.StringMapInput
+	Tags   pulumi.StringMapInput
 }
 
 func (RouteTableArgs) ElementType() reflect.Type {
@@ -328,14 +233,12 @@ func (o RouteTableOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouteTable) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Specifies the description of the route table.\
-// The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
+// The description of the ER route table.
 func (o RouteTableOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouteTable) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the ID of the ER instance to which the route table belongs.\
-// Changing this parameter will create a new resource.
+// The ID of the ER instance to which the route table belongs.
 func (o RouteTableOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouteTable) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -350,15 +253,12 @@ func (o RouteTableOutput) IsDefaultPropagation() pulumi.BoolOutput {
 	return o.ApplyT(func(v *RouteTable) pulumi.BoolOutput { return v.IsDefaultPropagation }).(pulumi.BoolOutput)
 }
 
-// Specifies the name of the route table.\
-// The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-// hyphens (-) and dots (.) allowed.
+// The name of the route table.
 func (o RouteTableOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouteTable) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the region where the ER instance and route table are located.\
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+// The region where the ER instance and route table are located.
 func (o RouteTableOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouteTable) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
@@ -368,7 +268,6 @@ func (o RouteTableOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouteTable) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Specifies the key/value pairs to associate with the route table.
 func (o RouteTableOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RouteTable) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }

@@ -25,16 +25,7 @@ class DdsParameterTemplateApplyArgs:
         """
         The set of arguments for constructing a DdsParameterTemplateApply resource.
         :param pulumi.Input[_builtins.str] configuration_id: Specifies the parameter template ID.
-               Changing this creates a new resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] entity_ids: Specifies the entity IDs.
-               + If the DB instance type is cluster and the shard or config parameter template is to be changed, the value is the
-               group ID. If the parameter template of the mongos node is to be changed, the value is the node ID.
-               + If the DB instance to be changed is a replica set instance, the value is the instance ID.
-               
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
         """
         pulumi.set(__self__, "configuration_id", configuration_id)
         pulumi.set(__self__, "entity_ids", entity_ids)
@@ -46,7 +37,6 @@ class DdsParameterTemplateApplyArgs:
     def configuration_id(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the parameter template ID.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "configuration_id")
 
@@ -59,11 +49,6 @@ class DdsParameterTemplateApplyArgs:
     def entity_ids(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
         Specifies the entity IDs.
-        + If the DB instance type is cluster and the shard or config parameter template is to be changed, the value is the
-        group ID. If the parameter template of the mongos node is to be changed, the value is the node ID.
-        + If the DB instance to be changed is a replica set instance, the value is the instance ID.
-
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "entity_ids")
 
@@ -74,11 +59,6 @@ class DdsParameterTemplateApplyArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -95,16 +75,7 @@ class _DdsParameterTemplateApplyState:
         """
         Input properties used for looking up and filtering DdsParameterTemplateApply resources.
         :param pulumi.Input[_builtins.str] configuration_id: Specifies the parameter template ID.
-               Changing this creates a new resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] entity_ids: Specifies the entity IDs.
-               + If the DB instance type is cluster and the shard or config parameter template is to be changed, the value is the
-               group ID. If the parameter template of the mongos node is to be changed, the value is the node ID.
-               + If the DB instance to be changed is a replica set instance, the value is the instance ID.
-               
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
         """
         if configuration_id is not None:
             pulumi.set(__self__, "configuration_id", configuration_id)
@@ -118,7 +89,6 @@ class _DdsParameterTemplateApplyState:
     def configuration_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the parameter template ID.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "configuration_id")
 
@@ -131,11 +101,6 @@ class _DdsParameterTemplateApplyState:
     def entity_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Specifies the entity IDs.
-        + If the DB instance type is cluster and the shard or config parameter template is to be changed, the value is the
-        group ID. If the parameter template of the mongos node is to be changed, the value is the node ID.
-        + If the DB instance to be changed is a replica set instance, the value is the instance ID.
-
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "entity_ids")
 
@@ -146,11 +111,6 @@ class _DdsParameterTemplateApplyState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -169,37 +129,11 @@ class DdsParameterTemplateApply(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a DDS parameter template apply resource within SberCloud.
-
-        > Please check whether the entities need to be restarted after applying parameter template.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        configuration_id = config.require_object("configurationId")
-        entity_ids = config.require_object("entityIds")
-        test = sbercloud.DdsParameterTemplateApply("test",
-            configuration_id=configuration_id,
-            entity_ids=entity_ids)
-        ```
-
+        Create a DdsParameterTemplateApply resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] configuration_id: Specifies the parameter template ID.
-               Changing this creates a new resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] entity_ids: Specifies the entity IDs.
-               + If the DB instance type is cluster and the shard or config parameter template is to be changed, the value is the
-               group ID. If the parameter template of the mongos node is to be changed, the value is the node ID.
-               + If the DB instance to be changed is a replica set instance, the value is the instance ID.
-               
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
         """
         ...
     @overload
@@ -208,24 +142,7 @@ class DdsParameterTemplateApply(pulumi.CustomResource):
                  args: DdsParameterTemplateApplyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a DDS parameter template apply resource within SberCloud.
-
-        > Please check whether the entities need to be restarted after applying parameter template.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        configuration_id = config.require_object("configurationId")
-        entity_ids = config.require_object("entityIds")
-        test = sbercloud.DdsParameterTemplateApply("test",
-            configuration_id=configuration_id,
-            entity_ids=entity_ids)
-        ```
-
+        Create a DdsParameterTemplateApply resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param DdsParameterTemplateApplyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -281,16 +198,7 @@ class DdsParameterTemplateApply(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] configuration_id: Specifies the parameter template ID.
-               Changing this creates a new resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] entity_ids: Specifies the entity IDs.
-               + If the DB instance type is cluster and the shard or config parameter template is to be changed, the value is the
-               group ID. If the parameter template of the mongos node is to be changed, the value is the node ID.
-               + If the DB instance to be changed is a replica set instance, the value is the instance ID.
-               
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -306,7 +214,6 @@ class DdsParameterTemplateApply(pulumi.CustomResource):
     def configuration_id(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the parameter template ID.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "configuration_id")
 
@@ -315,21 +222,11 @@ class DdsParameterTemplateApply(pulumi.CustomResource):
     def entity_ids(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
         Specifies the entity IDs.
-        + If the DB instance type is cluster and the shard or config parameter template is to be changed, the value is the
-        group ID. If the parameter template of the mongos node is to be changed, the value is the node ID.
-        + If the DB instance to be changed is a replica set instance, the value is the instance ID.
-
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "entity_ids")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 

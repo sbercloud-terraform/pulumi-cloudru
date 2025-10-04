@@ -6,22 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the list of CFW service groups.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const objectId = config.requireObject<any>("objectId");
- * const test = sbercloud.Cfw.getServiceGroups({
- *     objectId: objectId,
- * });
- * ```
- */
 export function getServiceGroups(args: GetServiceGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:Cfw/getServiceGroups:getServiceGroups", {
@@ -38,30 +22,11 @@ export function getServiceGroups(args: GetServiceGroupsArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getServiceGroups.
  */
 export interface GetServiceGroupsArgs {
-    /**
-     * Specifies the enterprise project ID.
-     */
     enterpriseProjectId?: string;
-    /**
-     * Specifies the firewall instance ID.
-     */
     fwInstanceId?: string;
-    /**
-     * Specifies the keyword of the service group description.
-     */
     keyWord?: string;
-    /**
-     * Specifies the name of the service group.
-     */
     name?: string;
-    /**
-     * Specifies the protected object ID.
-     */
     objectId: string;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
 }
 
@@ -76,33 +41,11 @@ export interface GetServiceGroupsResult {
      */
     readonly id: string;
     readonly keyWord?: string;
-    /**
-     * The name of the service group.
-     */
     readonly name?: string;
     readonly objectId: string;
     readonly region: string;
-    /**
-     * Service group list
-     */
     readonly serviceGroups: outputs.Cfw.GetServiceGroupsServiceGroup[];
 }
-/**
- * Use this data source to get the list of CFW service groups.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const objectId = config.requireObject<any>("objectId");
- * const test = sbercloud.Cfw.getServiceGroups({
- *     objectId: objectId,
- * });
- * ```
- */
 export function getServiceGroupsOutput(args: GetServiceGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServiceGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:Cfw/getServiceGroups:getServiceGroups", {
@@ -119,29 +62,10 @@ export function getServiceGroupsOutput(args: GetServiceGroupsOutputArgs, opts?: 
  * A collection of arguments for invoking getServiceGroups.
  */
 export interface GetServiceGroupsOutputArgs {
-    /**
-     * Specifies the enterprise project ID.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Specifies the firewall instance ID.
-     */
     fwInstanceId?: pulumi.Input<string>;
-    /**
-     * Specifies the keyword of the service group description.
-     */
     keyWord?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the service group.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the protected object ID.
-     */
     objectId: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
 }

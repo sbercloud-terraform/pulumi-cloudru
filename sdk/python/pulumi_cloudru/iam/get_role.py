@@ -52,17 +52,11 @@ class GetRoleResult:
     @_builtins.property
     @pulumi.getter
     def catalog(self) -> _builtins.str:
-        """
-        The service catalog of the policy.
-        """
         return pulumi.get(self, "catalog")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
-        """
-        The description of the policy.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
@@ -86,17 +80,11 @@ class GetRoleResult:
     @_builtins.property
     @pulumi.getter
     def policy(self) -> _builtins.str:
-        """
-        The content of the policy.
-        """
         return pulumi.get(self, "policy")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        The display mode of the policy.
-        """
         return pulumi.get(self, "type")
 
 
@@ -119,20 +107,7 @@ def get_role(display_name: Optional[_builtins.str] = None,
              name: Optional[_builtins.str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRoleResult:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    auth_admin = sbercloud.Iam.get_role(name="secu_admin")
-    ```
-
-
-    :param _builtins.str display_name: Specifies the display name of the role displayed on the console.
-           It is recommended to use this parameter instead of `name` and required if `name` is not specified.
-    :param _builtins.str name: Specifies the name of the role for internal use.
-           It's required if `display_name` is not specified.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['displayName'] = display_name
@@ -152,20 +127,7 @@ def get_role_output(display_name: Optional[pulumi.Input[Optional[_builtins.str]]
                     name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRoleResult]:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    auth_admin = sbercloud.Iam.get_role(name="secu_admin")
-    ```
-
-
-    :param _builtins.str display_name: Specifies the display name of the role displayed on the console.
-           It is recommended to use this parameter instead of `name` and required if `name` is not specified.
-    :param _builtins.str name: Specifies the name of the role for internal use.
-           It's required if `display_name` is not specified.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['displayName'] = display_name

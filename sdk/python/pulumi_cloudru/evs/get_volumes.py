@@ -89,9 +89,6 @@ class GetVolumesResult:
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[_builtins.str]:
-        """
-        The availability zone of the disk.
-        """
         return pulumi.get(self, "availability_zone")
 
     @_builtins.property
@@ -107,9 +104,6 @@ class GetVolumesResult:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[_builtins.str]:
-        """
-        The ID of the enterprise project associated with the disk.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
@@ -133,9 +127,6 @@ class GetVolumesResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        The disk name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -146,25 +137,16 @@ class GetVolumesResult:
     @_builtins.property
     @pulumi.getter(name="serverId")
     def server_id(self) -> Optional[_builtins.str]:
-        """
-        The ID of the server to which the disk is attached.
-        """
         return pulumi.get(self, "server_id")
 
     @_builtins.property
     @pulumi.getter(name="serviceType")
     def service_type(self) -> Optional[_builtins.str]:
-        """
-        The service type, such as EVS, DSS or DESS.
-        """
         return pulumi.get(self, "service_type")
 
     @_builtins.property
     @pulumi.getter
     def shareable(self) -> Optional[_builtins.bool]:
-        """
-        Whether the disk is shareable.
-        """
         return pulumi.get(self, "shareable")
 
     @_builtins.property
@@ -180,17 +162,11 @@ class GetVolumesResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
-        """
-        The disk status.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
-        """
-        The disk tags.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
@@ -206,9 +182,6 @@ class GetVolumesResult:
     @_builtins.property
     @pulumi.getter
     def volumes(self) -> Sequence['outputs.GetVolumesVolumeResult']:
-        """
-        The detailed information of the disks. Structure is documented below.
-        """
         return pulumi.get(self, "volumes")
 
 
@@ -258,43 +231,7 @@ def get_volumes(availability_zone: Optional[_builtins.str] = None,
                 volume_type_id: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVolumesResult:
     """
-    Use this data source to query the detailed information list of the EVS disks within SberCloud.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    target_server = config.require_object("targetServer")
-    test = sbercloud.Evs.get_volumes(server_id=target_server)
-    ```
-
-
-    :param _builtins.str availability_zone: Specifies the availability zone for the disks.
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID for filtering.
-    :param _builtins.str name: The disk name.
-    :param _builtins.str region: Specifies the region in which to query the disk list.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str server_id: Specifies the server ID to which the disks are attached.
-    :param _builtins.str service_type: The service type, such as EVS, DSS or DESS.
-    :param _builtins.bool shareable: Specifies whether the disk is shareable.
-    :param _builtins.str status: Specifies the disk status. The valid values are as following:
-           + **FREEZED**
-           + **BIND_ERROR**
-           + **BINDING**
-           + **PENDING_DELETE**
-           + **PENDING_CREATE**
-           + **NOTIFYING**
-           + **NOTIFY_DELETE**
-           + **PENDING_UPDATE**
-           + **DOWN**
-           + **ACTIVE**
-           + **ELB**
-           + **ERROR**
-           + **VPN**
-    :param Mapping[str, _builtins.str] tags: Specifies the included key/value pairs which associated with the desired disk.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['availabilityZone'] = availability_zone
@@ -356,43 +293,7 @@ def get_volumes_output(availability_zone: Optional[pulumi.Input[Optional[_builti
                        volume_type_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVolumesResult]:
     """
-    Use this data source to query the detailed information list of the EVS disks within SberCloud.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    target_server = config.require_object("targetServer")
-    test = sbercloud.Evs.get_volumes(server_id=target_server)
-    ```
-
-
-    :param _builtins.str availability_zone: Specifies the availability zone for the disks.
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID for filtering.
-    :param _builtins.str name: The disk name.
-    :param _builtins.str region: Specifies the region in which to query the disk list.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str server_id: Specifies the server ID to which the disks are attached.
-    :param _builtins.str service_type: The service type, such as EVS, DSS or DESS.
-    :param _builtins.bool shareable: Specifies whether the disk is shareable.
-    :param _builtins.str status: Specifies the disk status. The valid values are as following:
-           + **FREEZED**
-           + **BIND_ERROR**
-           + **BINDING**
-           + **PENDING_DELETE**
-           + **PENDING_CREATE**
-           + **NOTIFYING**
-           + **NOTIFY_DELETE**
-           + **PENDING_UPDATE**
-           + **DOWN**
-           + **ACTIVE**
-           + **ELB**
-           + **ERROR**
-           + **VPN**
-    :param Mapping[str, _builtins.str] tags: Specifies the included key/value pairs which associated with the desired disk.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['availabilityZone'] = availability_zone

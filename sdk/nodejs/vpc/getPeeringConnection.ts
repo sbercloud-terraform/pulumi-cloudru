@@ -4,33 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * The VPC Peering Connection data source provides details about a specific VPC peering connection.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const vpc = sbercloud.Vpc.getVpc({
- *     name: "vpc",
- * });
- * const peerVpc = sbercloud.Vpc.getVpc({
- *     name: "peer_vpc",
- * });
- * const peering = Promise.all([vpc, peerVpc]).then(([vpc, peerVpc]) => sbercloud.Vpc.getPeeringConnection({
- *     vpcId: vpc.id,
- *     peerVpcId: peerVpc.id,
- * }));
- * const vpcRoute = new sbercloud.vpc.Route("vpc_route", {
- *     type: "peering",
- *     nexthop: peering.then(peering => peering.id),
- *     destination: "192.168.0.0/16",
- *     vpcId: vpc.then(vpc => vpc.id),
- * });
- * ```
- */
 export function getPeeringConnection(args?: GetPeeringConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetPeeringConnectionResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -49,35 +22,12 @@ export function getPeeringConnection(args?: GetPeeringConnectionArgs, opts?: pul
  * A collection of arguments for invoking getPeeringConnection.
  */
 export interface GetPeeringConnectionArgs {
-    /**
-     * The ID of the specific VPC Peering Connection to retrieve.
-     */
     id?: string;
-    /**
-     * The name of the specific VPC Peering Connection to retrieve.
-     */
     name?: string;
-    /**
-     * The Tenant ID of the accepter/peer VPC of the specific VPC Peering Connection to
-     * retrieve.
-     */
     peerTenantId?: string;
-    /**
-     * The ID of the accepter/peer VPC of the specific VPC Peering Connection to retrieve.
-     */
     peerVpcId?: string;
-    /**
-     * The region in which to obtain the VPC Peering Connection. If omitted, the provider-level
-     * region will be used.
-     */
     region?: string;
-    /**
-     * The status of the specific VPC Peering Connection to retrieve.
-     */
     status?: string;
-    /**
-     * The ID of the requester VPC of the specific VPC Peering Connection to retrieve.
-     */
     vpcId?: string;
 }
 
@@ -94,33 +44,6 @@ export interface GetPeeringConnectionResult {
     readonly status: string;
     readonly vpcId: string;
 }
-/**
- * The VPC Peering Connection data source provides details about a specific VPC peering connection.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const vpc = sbercloud.Vpc.getVpc({
- *     name: "vpc",
- * });
- * const peerVpc = sbercloud.Vpc.getVpc({
- *     name: "peer_vpc",
- * });
- * const peering = Promise.all([vpc, peerVpc]).then(([vpc, peerVpc]) => sbercloud.Vpc.getPeeringConnection({
- *     vpcId: vpc.id,
- *     peerVpcId: peerVpc.id,
- * }));
- * const vpcRoute = new sbercloud.vpc.Route("vpc_route", {
- *     type: "peering",
- *     nexthop: peering.then(peering => peering.id),
- *     destination: "192.168.0.0/16",
- *     vpcId: vpc.then(vpc => vpc.id),
- * });
- * ```
- */
 export function getPeeringConnectionOutput(args?: GetPeeringConnectionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPeeringConnectionResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -139,34 +62,11 @@ export function getPeeringConnectionOutput(args?: GetPeeringConnectionOutputArgs
  * A collection of arguments for invoking getPeeringConnection.
  */
 export interface GetPeeringConnectionOutputArgs {
-    /**
-     * The ID of the specific VPC Peering Connection to retrieve.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * The name of the specific VPC Peering Connection to retrieve.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * The Tenant ID of the accepter/peer VPC of the specific VPC Peering Connection to
-     * retrieve.
-     */
     peerTenantId?: pulumi.Input<string>;
-    /**
-     * The ID of the accepter/peer VPC of the specific VPC Peering Connection to retrieve.
-     */
     peerVpcId?: pulumi.Input<string>;
-    /**
-     * The region in which to obtain the VPC Peering Connection. If omitted, the provider-level
-     * region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * The status of the specific VPC Peering Connection to retrieve.
-     */
     status?: pulumi.Input<string>;
-    /**
-     * The ID of the requester VPC of the specific VPC Peering Connection to retrieve.
-     */
     vpcId?: pulumi.Input<string>;
 }

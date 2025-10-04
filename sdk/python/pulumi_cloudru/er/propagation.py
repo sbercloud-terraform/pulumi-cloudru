@@ -25,16 +25,10 @@ class PropagationArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Propagation resource.
-        :param pulumi.Input[_builtins.str] attachment_id: Specifies the ID of the attachment corresponding to the propagation.  
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the ER instance to which the route table and the
-               attachment belongs.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] route_table_id: Specifies the ID of the route table to which the propagation
-               belongs.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region where the ER instance and route table are located.  
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] attachment_id: The ID of the attachment corresponding to the propagation.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the ER instance to which the route table and the attachment belongs.
+        :param pulumi.Input[_builtins.str] route_table_id: The ID of the route table to which the propagation belongs.
+        :param pulumi.Input[_builtins.str] region: The region where the ER instance and route table are located.
         """
         pulumi.set(__self__, "attachment_id", attachment_id)
         pulumi.set(__self__, "instance_id", instance_id)
@@ -46,8 +40,7 @@ class PropagationArgs:
     @pulumi.getter(name="attachmentId")
     def attachment_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the ID of the attachment corresponding to the propagation.  
-        Changing this parameter will create a new resource.
+        The ID of the attachment corresponding to the propagation.
         """
         return pulumi.get(self, "attachment_id")
 
@@ -59,9 +52,7 @@ class PropagationArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the ID of the ER instance to which the route table and the
-        attachment belongs.
-        Changing this parameter will create a new resource.
+        The ID of the ER instance to which the route table and the attachment belongs.
         """
         return pulumi.get(self, "instance_id")
 
@@ -73,9 +64,7 @@ class PropagationArgs:
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the ID of the route table to which the propagation
-        belongs.
-        Changing this parameter will create a new resource.
+        The ID of the route table to which the propagation belongs.
         """
         return pulumi.get(self, "route_table_id")
 
@@ -87,8 +76,7 @@ class PropagationArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region where the ER instance and route table are located.  
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        The region where the ER instance and route table are located.
         """
         return pulumi.get(self, "region")
 
@@ -110,18 +98,12 @@ class _PropagationState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Propagation resources.
-        :param pulumi.Input[_builtins.str] attachment_id: Specifies the ID of the attachment corresponding to the propagation.  
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] attachment_id: The ID of the attachment corresponding to the propagation.
         :param pulumi.Input[_builtins.str] attachment_type: The type of the attachment corresponding to the propagation.
         :param pulumi.Input[_builtins.str] created_at: The creation time.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the ER instance to which the route table and the
-               attachment belongs.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region where the ER instance and route table are located.  
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] route_table_id: Specifies the ID of the route table to which the propagation
-               belongs.
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the ER instance to which the route table and the attachment belongs.
+        :param pulumi.Input[_builtins.str] region: The region where the ER instance and route table are located.
+        :param pulumi.Input[_builtins.str] route_table_id: The ID of the route table to which the propagation belongs.
         :param pulumi.Input[_builtins.str] status: The current status of the propagation.
         :param pulumi.Input[_builtins.str] updated_at: The latest update time.
         """
@@ -146,8 +128,7 @@ class _PropagationState:
     @pulumi.getter(name="attachmentId")
     def attachment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the ID of the attachment corresponding to the propagation.  
-        Changing this parameter will create a new resource.
+        The ID of the attachment corresponding to the propagation.
         """
         return pulumi.get(self, "attachment_id")
 
@@ -183,9 +164,7 @@ class _PropagationState:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the ID of the ER instance to which the route table and the
-        attachment belongs.
-        Changing this parameter will create a new resource.
+        The ID of the ER instance to which the route table and the attachment belongs.
         """
         return pulumi.get(self, "instance_id")
 
@@ -197,8 +176,7 @@ class _PropagationState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region where the ER instance and route table are located.  
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        The region where the ER instance and route table are located.
         """
         return pulumi.get(self, "region")
 
@@ -210,9 +188,7 @@ class _PropagationState:
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the ID of the route table to which the propagation
-        belongs.
-        Changing this parameter will create a new resource.
+        The ID of the route table to which the propagation belongs.
         """
         return pulumi.get(self, "route_table_id")
 
@@ -257,53 +233,13 @@ class Propagation(pulumi.CustomResource):
                  route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a propagation resource under the route table for ER service within SberCloud.
-
-        Before using enterprise router, define custom endpoint as shown below:
-        ```python
-        import pulumi
-        ```
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        route_table_id = config.require_object("routeTableId")
-        attachment_id = config.require_object("attachmentId")
-        test = sbercloud.er.Propagation("test",
-            instance_id=instance_id,
-            route_table_id=route_table_id,
-            attachment_id=attachment_id)
-        ```
-
-        ## Import
-
-        Propagations can be imported using their `id` and the related `instance_id` and `route_table_id`, separated by
-
-        slashes (/), e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Er/propagation:Propagation test <instance_id>/<route_table_id>/<id>
-        ```
-
+        Create a Propagation resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] attachment_id: Specifies the ID of the attachment corresponding to the propagation.  
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the ER instance to which the route table and the
-               attachment belongs.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region where the ER instance and route table are located.  
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] route_table_id: Specifies the ID of the route table to which the propagation
-               belongs.
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] attachment_id: The ID of the attachment corresponding to the propagation.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the ER instance to which the route table and the attachment belongs.
+        :param pulumi.Input[_builtins.str] region: The region where the ER instance and route table are located.
+        :param pulumi.Input[_builtins.str] route_table_id: The ID of the route table to which the propagation belongs.
         """
         ...
     @overload
@@ -312,41 +248,7 @@ class Propagation(pulumi.CustomResource):
                  args: PropagationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a propagation resource under the route table for ER service within SberCloud.
-
-        Before using enterprise router, define custom endpoint as shown below:
-        ```python
-        import pulumi
-        ```
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        route_table_id = config.require_object("routeTableId")
-        attachment_id = config.require_object("attachmentId")
-        test = sbercloud.er.Propagation("test",
-            instance_id=instance_id,
-            route_table_id=route_table_id,
-            attachment_id=attachment_id)
-        ```
-
-        ## Import
-
-        Propagations can be imported using their `id` and the related `instance_id` and `route_table_id`, separated by
-
-        slashes (/), e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Er/propagation:Propagation test <instance_id>/<route_table_id>/<id>
-        ```
-
+        Create a Propagation resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param PropagationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -414,18 +316,12 @@ class Propagation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] attachment_id: Specifies the ID of the attachment corresponding to the propagation.  
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] attachment_id: The ID of the attachment corresponding to the propagation.
         :param pulumi.Input[_builtins.str] attachment_type: The type of the attachment corresponding to the propagation.
         :param pulumi.Input[_builtins.str] created_at: The creation time.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the ER instance to which the route table and the
-               attachment belongs.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region where the ER instance and route table are located.  
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] route_table_id: Specifies the ID of the route table to which the propagation
-               belongs.
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the ER instance to which the route table and the attachment belongs.
+        :param pulumi.Input[_builtins.str] region: The region where the ER instance and route table are located.
+        :param pulumi.Input[_builtins.str] route_table_id: The ID of the route table to which the propagation belongs.
         :param pulumi.Input[_builtins.str] status: The current status of the propagation.
         :param pulumi.Input[_builtins.str] updated_at: The latest update time.
         """
@@ -447,8 +343,7 @@ class Propagation(pulumi.CustomResource):
     @pulumi.getter(name="attachmentId")
     def attachment_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the ID of the attachment corresponding to the propagation.  
-        Changing this parameter will create a new resource.
+        The ID of the attachment corresponding to the propagation.
         """
         return pulumi.get(self, "attachment_id")
 
@@ -472,9 +367,7 @@ class Propagation(pulumi.CustomResource):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the ID of the ER instance to which the route table and the
-        attachment belongs.
-        Changing this parameter will create a new resource.
+        The ID of the ER instance to which the route table and the attachment belongs.
         """
         return pulumi.get(self, "instance_id")
 
@@ -482,8 +375,7 @@ class Propagation(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the region where the ER instance and route table are located.  
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        The region where the ER instance and route table are located.
         """
         return pulumi.get(self, "region")
 
@@ -491,9 +383,7 @@ class Propagation(pulumi.CustomResource):
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the ID of the route table to which the propagation
-        belongs.
-        Changing this parameter will create a new resource.
+        The ID of the route table to which the propagation belongs.
         """
         return pulumi.get(self, "route_table_id")
 

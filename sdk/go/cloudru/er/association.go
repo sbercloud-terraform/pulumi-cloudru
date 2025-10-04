@@ -12,90 +12,20 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages an association resource under the route table for ER service within SberCloud.
-//
-// Before using enterprise router, define custom endpoint as shown below:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/er"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			routeTableId := cfg.RequireObject("routeTableId")
-//			attachmentId := cfg.RequireObject("attachmentId")
-//			_, err := er.NewAssociation(ctx, "test", &er.AssociationArgs{
-//				InstanceId:   pulumi.Any(instanceId),
-//				RouteTableId: pulumi.Any(routeTableId),
-//				AttachmentId: pulumi.Any(attachmentId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Associations can be imported using their `id` and the related `instance_id` and `route_table_id`, separated by
-//
-// slashes (/), e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Er/association:Association test <instance_id>/<route_table_id>/<id>
-// ```
 type Association struct {
 	pulumi.CustomResourceState
 
-	// Specifies the ID of the attachment corresponding to the association.\
-	// Changing this parameter will create a new resource.
+	// The ID of the attachment corresponding to the association.
 	AttachmentId pulumi.StringOutput `pulumi:"attachmentId"`
 	// The type of the attachment corresponding to the association.
 	AttachmentType pulumi.StringOutput `pulumi:"attachmentType"`
 	// The creation time.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Specifies the ID of the ER instance to which the route table and the
-	// attachment belongs.
-	// Changing this parameter will create a new resource.
+	// The ID of the ER instance to which the route table and the attachment belongs.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Specifies the region where the ER instance and route table are located.\
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the ER instance and route table are located.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// Specifies the ID of the route table to which the association
-	// belongs.
-	// Changing this parameter will create a new resource.
+	// The ID of the route table to which the association belongs.
 	RouteTableId pulumi.StringOutput `pulumi:"routeTableId"`
 	// The current status of the association.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -142,23 +72,17 @@ func GetAssociation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Association resources.
 type associationState struct {
-	// Specifies the ID of the attachment corresponding to the association.\
-	// Changing this parameter will create a new resource.
+	// The ID of the attachment corresponding to the association.
 	AttachmentId *string `pulumi:"attachmentId"`
 	// The type of the attachment corresponding to the association.
 	AttachmentType *string `pulumi:"attachmentType"`
 	// The creation time.
 	CreatedAt *string `pulumi:"createdAt"`
-	// Specifies the ID of the ER instance to which the route table and the
-	// attachment belongs.
-	// Changing this parameter will create a new resource.
+	// The ID of the ER instance to which the route table and the attachment belongs.
 	InstanceId *string `pulumi:"instanceId"`
-	// Specifies the region where the ER instance and route table are located.\
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the ER instance and route table are located.
 	Region *string `pulumi:"region"`
-	// Specifies the ID of the route table to which the association
-	// belongs.
-	// Changing this parameter will create a new resource.
+	// The ID of the route table to which the association belongs.
 	RouteTableId *string `pulumi:"routeTableId"`
 	// The current status of the association.
 	Status *string `pulumi:"status"`
@@ -167,23 +91,17 @@ type associationState struct {
 }
 
 type AssociationState struct {
-	// Specifies the ID of the attachment corresponding to the association.\
-	// Changing this parameter will create a new resource.
+	// The ID of the attachment corresponding to the association.
 	AttachmentId pulumi.StringPtrInput
 	// The type of the attachment corresponding to the association.
 	AttachmentType pulumi.StringPtrInput
 	// The creation time.
 	CreatedAt pulumi.StringPtrInput
-	// Specifies the ID of the ER instance to which the route table and the
-	// attachment belongs.
-	// Changing this parameter will create a new resource.
+	// The ID of the ER instance to which the route table and the attachment belongs.
 	InstanceId pulumi.StringPtrInput
-	// Specifies the region where the ER instance and route table are located.\
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the ER instance and route table are located.
 	Region pulumi.StringPtrInput
-	// Specifies the ID of the route table to which the association
-	// belongs.
-	// Changing this parameter will create a new resource.
+	// The ID of the route table to which the association belongs.
 	RouteTableId pulumi.StringPtrInput
 	// The current status of the association.
 	Status pulumi.StringPtrInput
@@ -196,37 +114,25 @@ func (AssociationState) ElementType() reflect.Type {
 }
 
 type associationArgs struct {
-	// Specifies the ID of the attachment corresponding to the association.\
-	// Changing this parameter will create a new resource.
+	// The ID of the attachment corresponding to the association.
 	AttachmentId string `pulumi:"attachmentId"`
-	// Specifies the ID of the ER instance to which the route table and the
-	// attachment belongs.
-	// Changing this parameter will create a new resource.
+	// The ID of the ER instance to which the route table and the attachment belongs.
 	InstanceId string `pulumi:"instanceId"`
-	// Specifies the region where the ER instance and route table are located.\
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the ER instance and route table are located.
 	Region *string `pulumi:"region"`
-	// Specifies the ID of the route table to which the association
-	// belongs.
-	// Changing this parameter will create a new resource.
+	// The ID of the route table to which the association belongs.
 	RouteTableId string `pulumi:"routeTableId"`
 }
 
 // The set of arguments for constructing a Association resource.
 type AssociationArgs struct {
-	// Specifies the ID of the attachment corresponding to the association.\
-	// Changing this parameter will create a new resource.
+	// The ID of the attachment corresponding to the association.
 	AttachmentId pulumi.StringInput
-	// Specifies the ID of the ER instance to which the route table and the
-	// attachment belongs.
-	// Changing this parameter will create a new resource.
+	// The ID of the ER instance to which the route table and the attachment belongs.
 	InstanceId pulumi.StringInput
-	// Specifies the region where the ER instance and route table are located.\
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the ER instance and route table are located.
 	Region pulumi.StringPtrInput
-	// Specifies the ID of the route table to which the association
-	// belongs.
-	// Changing this parameter will create a new resource.
+	// The ID of the route table to which the association belongs.
 	RouteTableId pulumi.StringInput
 }
 
@@ -317,8 +223,7 @@ func (o AssociationOutput) ToAssociationOutputWithContext(ctx context.Context) A
 	return o
 }
 
-// Specifies the ID of the attachment corresponding to the association.\
-// Changing this parameter will create a new resource.
+// The ID of the attachment corresponding to the association.
 func (o AssociationOutput) AttachmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Association) pulumi.StringOutput { return v.AttachmentId }).(pulumi.StringOutput)
 }
@@ -333,22 +238,17 @@ func (o AssociationOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Association) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Specifies the ID of the ER instance to which the route table and the
-// attachment belongs.
-// Changing this parameter will create a new resource.
+// The ID of the ER instance to which the route table and the attachment belongs.
 func (o AssociationOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Association) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Specifies the region where the ER instance and route table are located.\
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+// The region where the ER instance and route table are located.
 func (o AssociationOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Association) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Specifies the ID of the route table to which the association
-// belongs.
-// Changing this parameter will create a new resource.
+// The ID of the route table to which the association belongs.
 func (o AssociationOutput) RouteTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Association) pulumi.StringOutput { return v.RouteTableId }).(pulumi.StringOutput)
 }

@@ -46,63 +46,23 @@ class VaultArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Vault resource.
-        :param pulumi.Input[_builtins.str] protection_type: Specifies the protection type of the CBR vault.
-               The valid values are **backup** and **replication**. Vaults of type **disk** don't support **replication**.
-               Changing this will create a new vault.
-        :param pulumi.Input[_builtins.int] size: Specifies the vault capacity, in GB. The valid value range is `1` to `10,485,760`.
-               
-               > You cannot update `size` if the vault is **prePaid** mode.
-        :param pulumi.Input[_builtins.str] type: Specifies the object type of the CBR vault.
-               Changing this will create a new vault. Vaild values are as follows:
-               + **server** (Cloud Servers)
-               + **disk** (EVS Disks)
-               + **turbo** (SFS Turbo file systems)
-        :param pulumi.Input[_builtins.bool] auto_bind: Specifies whether automatic association is enabled. Defaults to **false**.
-        :param pulumi.Input[_builtins.bool] auto_expand: Specifies to enable auto capacity expansion for the backup protection type vault.
-               Defaults to **false**.
-               
-               > You cannot configure `auto_expand` if the vault is **prePaid** mode.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled.
-               Valid values are **true** and **false**. Defaults to **false**.
-               
-               <a name="cbr_vault_resources"></a>
-               The `resources` block supports:
+        :param pulumi.Input[_builtins.str] protection_type: The protection type of the vault.
+        :param pulumi.Input[_builtins.int] size: The capacity of the vault, in GB.
+        :param pulumi.Input[_builtins.str] type: The type of the vault.
+        :param pulumi.Input[_builtins.bool] auto_bind: Whether automatic association is supported.
+        :param pulumi.Input[_builtins.bool] auto_expand: Whether to enable auto capacity expansion for the vault.
         :param pulumi.Input[_builtins.str] backup_name_prefix: The backup name prefix.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] bind_rules: Specifies the tags to filter resources for automatic association with **auto_bind**.
-        :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode of the vault.
-               The valid values are as follows:
-               + **prePaid**: the yearly/monthly billing mode.
-               + **postPaid**: the pay-per-use billing mode.
-               
-               Changing this will create a new vault.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] bind_rules: The rules for automatic association.
         :param pulumi.Input[_builtins.str] cloud_type: The cloud type of the vault.
-        :param pulumi.Input[_builtins.str] consistent_level: Specifies the backup specifications.
-               
-               Only **server** type vaults support application consistent and defaults to **crash_consistent**.
-               Changing this will create a new vault.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies a unique ID in UUID format of enterprise project.
-               Changing this will create a new vault.
-        :param pulumi.Input[_builtins.bool] is_multi_az: Specifies whether multiple availability zones are used for backing up.
-               Defaults to **false**.
+        :param pulumi.Input[_builtins.str] consistent_level: The consistent level (specification) of the vault.
+        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID to which the vault belongs.
+        :param pulumi.Input[_builtins.bool] is_multi_az: Whether multiple availability zones are used for backing up.
         :param pulumi.Input[_builtins.bool] locked: Locked status of the vault.
-        :param pulumi.Input[_builtins.str] name: Specifies a unique name of the CBR vault. This parameter can contain a maximum of 64
-               characters, which may consist of letters, digits, underscores(_) and hyphens (-).
-        :param pulumi.Input[_builtins.int] period: Specifies the charging period of the vault.
-               If `period_unit` is set to **month**, the value ranges from 1 to 9.
-               If `period_unit` is set to **year**, the value ranges from 1 to 5.
-               This parameter is mandatory if `charging_mode` is set to **prePaid**.
-               Changing this will create a new vault.
-        :param pulumi.Input[_builtins.str] period_unit: Specifies the charging period unit of the vault.
-               Valid values are **month** and **year**. This parameter is mandatory if `charging_mode` is set to **prePaid**.
-               Changing this will create a new vault.
+        :param pulumi.Input[_builtins.str] name: The name of the vault.
         :param pulumi.Input[Sequence[pulumi.Input['VaultPolicyArgs']]] policies: The policy details to associate with the CBR vault.
-        :param pulumi.Input[_builtins.str] policy_id: Specifies a policy to associate with the CBR vault.
-               `policy_id` cannot be used with the vault of replicate protection type.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the CBR vault. If omitted, the
-               provider-level region will be used. Changing this will create a new vault.
-        :param pulumi.Input[Sequence[pulumi.Input['VaultResourceArgs']]] resources: Specifies an array of one or more resources to attach to the CBR vault.
-               The object structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the CBR vault.
+        :param pulumi.Input[_builtins.str] policy_id: schema:Deprecated; Using parameter 'policy' instead.
+        :param pulumi.Input[_builtins.str] region: The region where the vault is located.
+        :param pulumi.Input[Sequence[pulumi.Input['VaultResourceArgs']]] resources: The array of one or more resources to attach to the CBR vault.
         """
         pulumi.set(__self__, "protection_type", protection_type)
         pulumi.set(__self__, "size", size)
@@ -155,9 +115,7 @@ class VaultArgs:
     @pulumi.getter(name="protectionType")
     def protection_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the protection type of the CBR vault.
-        The valid values are **backup** and **replication**. Vaults of type **disk** don't support **replication**.
-        Changing this will create a new vault.
+        The protection type of the vault.
         """
         return pulumi.get(self, "protection_type")
 
@@ -169,9 +127,7 @@ class VaultArgs:
     @pulumi.getter
     def size(self) -> pulumi.Input[_builtins.int]:
         """
-        Specifies the vault capacity, in GB. The valid value range is `1` to `10,485,760`.
-
-        > You cannot update `size` if the vault is **prePaid** mode.
+        The capacity of the vault, in GB.
         """
         return pulumi.get(self, "size")
 
@@ -183,11 +139,7 @@ class VaultArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the object type of the CBR vault.
-        Changing this will create a new vault. Vaild values are as follows:
-        + **server** (Cloud Servers)
-        + **disk** (EVS Disks)
-        + **turbo** (SFS Turbo file systems)
+        The type of the vault.
         """
         return pulumi.get(self, "type")
 
@@ -199,7 +151,7 @@ class VaultArgs:
     @pulumi.getter(name="autoBind")
     def auto_bind(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether automatic association is enabled. Defaults to **false**.
+        Whether automatic association is supported.
         """
         return pulumi.get(self, "auto_bind")
 
@@ -211,10 +163,7 @@ class VaultArgs:
     @pulumi.getter(name="autoExpand")
     def auto_expand(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies to enable auto capacity expansion for the backup protection type vault.
-        Defaults to **false**.
-
-        > You cannot configure `auto_expand` if the vault is **prePaid** mode.
+        Whether to enable auto capacity expansion for the vault.
         """
         return pulumi.get(self, "auto_expand")
 
@@ -235,13 +184,6 @@ class VaultArgs:
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies whether auto renew is enabled.
-        Valid values are **true** and **false**. Defaults to **false**.
-
-        <a name="cbr_vault_resources"></a>
-        The `resources` block supports:
-        """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
@@ -264,7 +206,7 @@ class VaultArgs:
     @pulumi.getter(name="bindRules")
     def bind_rules(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Specifies the tags to filter resources for automatic association with **auto_bind**.
+        The rules for automatic association.
         """
         return pulumi.get(self, "bind_rules")
 
@@ -275,14 +217,6 @@ class VaultArgs:
     @_builtins.property
     @pulumi.getter(name="chargingMode")
     def charging_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the charging mode of the vault.
-        The valid values are as follows:
-        + **prePaid**: the yearly/monthly billing mode.
-        + **postPaid**: the pay-per-use billing mode.
-
-        Changing this will create a new vault.
-        """
         return pulumi.get(self, "charging_mode")
 
     @charging_mode.setter
@@ -305,10 +239,7 @@ class VaultArgs:
     @pulumi.getter(name="consistentLevel")
     def consistent_level(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the backup specifications.
-
-        Only **server** type vaults support application consistent and defaults to **crash_consistent**.
-        Changing this will create a new vault.
+        The consistent level (specification) of the vault.
         """
         return pulumi.get(self, "consistent_level")
 
@@ -320,8 +251,7 @@ class VaultArgs:
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies a unique ID in UUID format of enterprise project.
-        Changing this will create a new vault.
+        The enterprise project ID to which the vault belongs.
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -333,8 +263,7 @@ class VaultArgs:
     @pulumi.getter(name="isMultiAz")
     def is_multi_az(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether multiple availability zones are used for backing up.
-        Defaults to **false**.
+        Whether multiple availability zones are used for backing up.
         """
         return pulumi.get(self, "is_multi_az")
 
@@ -358,8 +287,7 @@ class VaultArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies a unique name of the CBR vault. This parameter can contain a maximum of 64
-        characters, which may consist of letters, digits, underscores(_) and hyphens (-).
+        The name of the vault.
         """
         return pulumi.get(self, "name")
 
@@ -370,13 +298,6 @@ class VaultArgs:
     @_builtins.property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the charging period of the vault.
-        If `period_unit` is set to **month**, the value ranges from 1 to 9.
-        If `period_unit` is set to **year**, the value ranges from 1 to 5.
-        This parameter is mandatory if `charging_mode` is set to **prePaid**.
-        Changing this will create a new vault.
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -386,11 +307,6 @@ class VaultArgs:
     @_builtins.property
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the charging period unit of the vault.
-        Valid values are **month** and **year**. This parameter is mandatory if `charging_mode` is set to **prePaid**.
-        Changing this will create a new vault.
-        """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
@@ -413,8 +329,7 @@ class VaultArgs:
     @pulumi.getter(name="policyId")
     def policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies a policy to associate with the CBR vault.
-        `policy_id` cannot be used with the vault of replicate protection type.
+        schema:Deprecated; Using parameter 'policy' instead.
         """
         return pulumi.get(self, "policy_id")
 
@@ -426,8 +341,7 @@ class VaultArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region in which to create the CBR vault. If omitted, the
-        provider-level region will be used. Changing this will create a new vault.
+        The region where the vault is located.
         """
         return pulumi.get(self, "region")
 
@@ -439,8 +353,7 @@ class VaultArgs:
     @pulumi.getter
     def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VaultResourceArgs']]]]:
         """
-        Specifies an array of one or more resources to attach to the CBR vault.
-        The object structure is documented below.
+        The array of one or more resources to attach to the CBR vault.
         """
         return pulumi.get(self, "resources")
 
@@ -451,9 +364,6 @@ class VaultArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs to associate with the CBR vault.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -494,67 +404,27 @@ class _VaultState:
                  used: Optional[pulumi.Input[_builtins.float]] = None):
         """
         Input properties used for looking up and filtering Vault resources.
-        :param pulumi.Input[_builtins.float] allocated: The allocated capacity of the vault, in GB.
-        :param pulumi.Input[_builtins.bool] auto_bind: Specifies whether automatic association is enabled. Defaults to **false**.
-        :param pulumi.Input[_builtins.bool] auto_expand: Specifies to enable auto capacity expansion for the backup protection type vault.
-               Defaults to **false**.
-               
-               > You cannot configure `auto_expand` if the vault is **prePaid** mode.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled.
-               Valid values are **true** and **false**. Defaults to **false**.
-               
-               <a name="cbr_vault_resources"></a>
-               The `resources` block supports:
+        :param pulumi.Input[_builtins.float] allocated: The allocated capacity, in GB.
+        :param pulumi.Input[_builtins.bool] auto_bind: Whether automatic association is supported.
+        :param pulumi.Input[_builtins.bool] auto_expand: Whether to enable auto capacity expansion for the vault.
         :param pulumi.Input[_builtins.str] backup_name_prefix: The backup name prefix.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] bind_rules: Specifies the tags to filter resources for automatic association with **auto_bind**.
-        :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode of the vault.
-               The valid values are as follows:
-               + **prePaid**: the yearly/monthly billing mode.
-               + **postPaid**: the pay-per-use billing mode.
-               
-               Changing this will create a new vault.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] bind_rules: The rules for automatic association.
         :param pulumi.Input[_builtins.str] cloud_type: The cloud type of the vault.
-        :param pulumi.Input[_builtins.str] consistent_level: Specifies the backup specifications.
-               
-               Only **server** type vaults support application consistent and defaults to **crash_consistent**.
-               Changing this will create a new vault.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies a unique ID in UUID format of enterprise project.
-               Changing this will create a new vault.
-        :param pulumi.Input[_builtins.bool] is_multi_az: Specifies whether multiple availability zones are used for backing up.
-               Defaults to **false**.
+        :param pulumi.Input[_builtins.str] consistent_level: The consistent level (specification) of the vault.
+        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID to which the vault belongs.
+        :param pulumi.Input[_builtins.bool] is_multi_az: Whether multiple availability zones are used for backing up.
         :param pulumi.Input[_builtins.bool] locked: Locked status of the vault.
-        :param pulumi.Input[_builtins.str] name: Specifies a unique name of the CBR vault. This parameter can contain a maximum of 64
-               characters, which may consist of letters, digits, underscores(_) and hyphens (-).
-        :param pulumi.Input[_builtins.int] period: Specifies the charging period of the vault.
-               If `period_unit` is set to **month**, the value ranges from 1 to 9.
-               If `period_unit` is set to **year**, the value ranges from 1 to 5.
-               This parameter is mandatory if `charging_mode` is set to **prePaid**.
-               Changing this will create a new vault.
-        :param pulumi.Input[_builtins.str] period_unit: Specifies the charging period unit of the vault.
-               Valid values are **month** and **year**. This parameter is mandatory if `charging_mode` is set to **prePaid**.
-               Changing this will create a new vault.
+        :param pulumi.Input[_builtins.str] name: The name of the vault.
         :param pulumi.Input[Sequence[pulumi.Input['VaultPolicyArgs']]] policies: The policy details to associate with the CBR vault.
-        :param pulumi.Input[_builtins.str] policy_id: Specifies a policy to associate with the CBR vault.
-               `policy_id` cannot be used with the vault of replicate protection type.
-        :param pulumi.Input[_builtins.str] protection_type: Specifies the protection type of the CBR vault.
-               The valid values are **backup** and **replication**. Vaults of type **disk** don't support **replication**.
-               Changing this will create a new vault.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the CBR vault. If omitted, the
-               provider-level region will be used. Changing this will create a new vault.
-        :param pulumi.Input[Sequence[pulumi.Input['VaultResourceArgs']]] resources: Specifies an array of one or more resources to attach to the CBR vault.
-               The object structure is documented below.
-        :param pulumi.Input[_builtins.int] size: Specifies the vault capacity, in GB. The valid value range is `1` to `10,485,760`.
-               
-               > You cannot update `size` if the vault is **prePaid** mode.
+        :param pulumi.Input[_builtins.str] policy_id: schema:Deprecated; Using parameter 'policy' instead.
+        :param pulumi.Input[_builtins.str] protection_type: The protection type of the vault.
+        :param pulumi.Input[_builtins.str] region: The region where the vault is located.
+        :param pulumi.Input[Sequence[pulumi.Input['VaultResourceArgs']]] resources: The array of one or more resources to attach to the CBR vault.
+        :param pulumi.Input[_builtins.int] size: The capacity of the vault, in GB.
         :param pulumi.Input[_builtins.str] spec_code: The specification code.
         :param pulumi.Input[_builtins.str] status: The vault status.
         :param pulumi.Input[_builtins.str] storage: The name of the bucket for the vault.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the CBR vault.
-        :param pulumi.Input[_builtins.str] type: Specifies the object type of the CBR vault.
-               Changing this will create a new vault. Vaild values are as follows:
-               + **server** (Cloud Servers)
-               + **disk** (EVS Disks)
-               + **turbo** (SFS Turbo file systems)
+        :param pulumi.Input[_builtins.str] type: The type of the vault.
         :param pulumi.Input[_builtins.float] used: The used capacity, in GB.
         """
         if allocated is not None:
@@ -621,7 +491,7 @@ class _VaultState:
     @pulumi.getter
     def allocated(self) -> Optional[pulumi.Input[_builtins.float]]:
         """
-        The allocated capacity of the vault, in GB.
+        The allocated capacity, in GB.
         """
         return pulumi.get(self, "allocated")
 
@@ -633,7 +503,7 @@ class _VaultState:
     @pulumi.getter(name="autoBind")
     def auto_bind(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether automatic association is enabled. Defaults to **false**.
+        Whether automatic association is supported.
         """
         return pulumi.get(self, "auto_bind")
 
@@ -645,10 +515,7 @@ class _VaultState:
     @pulumi.getter(name="autoExpand")
     def auto_expand(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies to enable auto capacity expansion for the backup protection type vault.
-        Defaults to **false**.
-
-        > You cannot configure `auto_expand` if the vault is **prePaid** mode.
+        Whether to enable auto capacity expansion for the vault.
         """
         return pulumi.get(self, "auto_expand")
 
@@ -669,13 +536,6 @@ class _VaultState:
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies whether auto renew is enabled.
-        Valid values are **true** and **false**. Defaults to **false**.
-
-        <a name="cbr_vault_resources"></a>
-        The `resources` block supports:
-        """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
@@ -698,7 +558,7 @@ class _VaultState:
     @pulumi.getter(name="bindRules")
     def bind_rules(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Specifies the tags to filter resources for automatic association with **auto_bind**.
+        The rules for automatic association.
         """
         return pulumi.get(self, "bind_rules")
 
@@ -709,14 +569,6 @@ class _VaultState:
     @_builtins.property
     @pulumi.getter(name="chargingMode")
     def charging_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the charging mode of the vault.
-        The valid values are as follows:
-        + **prePaid**: the yearly/monthly billing mode.
-        + **postPaid**: the pay-per-use billing mode.
-
-        Changing this will create a new vault.
-        """
         return pulumi.get(self, "charging_mode")
 
     @charging_mode.setter
@@ -739,10 +591,7 @@ class _VaultState:
     @pulumi.getter(name="consistentLevel")
     def consistent_level(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the backup specifications.
-
-        Only **server** type vaults support application consistent and defaults to **crash_consistent**.
-        Changing this will create a new vault.
+        The consistent level (specification) of the vault.
         """
         return pulumi.get(self, "consistent_level")
 
@@ -754,8 +603,7 @@ class _VaultState:
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies a unique ID in UUID format of enterprise project.
-        Changing this will create a new vault.
+        The enterprise project ID to which the vault belongs.
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -767,8 +615,7 @@ class _VaultState:
     @pulumi.getter(name="isMultiAz")
     def is_multi_az(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether multiple availability zones are used for backing up.
-        Defaults to **false**.
+        Whether multiple availability zones are used for backing up.
         """
         return pulumi.get(self, "is_multi_az")
 
@@ -792,8 +639,7 @@ class _VaultState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies a unique name of the CBR vault. This parameter can contain a maximum of 64
-        characters, which may consist of letters, digits, underscores(_) and hyphens (-).
+        The name of the vault.
         """
         return pulumi.get(self, "name")
 
@@ -804,13 +650,6 @@ class _VaultState:
     @_builtins.property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the charging period of the vault.
-        If `period_unit` is set to **month**, the value ranges from 1 to 9.
-        If `period_unit` is set to **year**, the value ranges from 1 to 5.
-        This parameter is mandatory if `charging_mode` is set to **prePaid**.
-        Changing this will create a new vault.
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -820,11 +659,6 @@ class _VaultState:
     @_builtins.property
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the charging period unit of the vault.
-        Valid values are **month** and **year**. This parameter is mandatory if `charging_mode` is set to **prePaid**.
-        Changing this will create a new vault.
-        """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
@@ -847,8 +681,7 @@ class _VaultState:
     @pulumi.getter(name="policyId")
     def policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies a policy to associate with the CBR vault.
-        `policy_id` cannot be used with the vault of replicate protection type.
+        schema:Deprecated; Using parameter 'policy' instead.
         """
         return pulumi.get(self, "policy_id")
 
@@ -860,9 +693,7 @@ class _VaultState:
     @pulumi.getter(name="protectionType")
     def protection_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the protection type of the CBR vault.
-        The valid values are **backup** and **replication**. Vaults of type **disk** don't support **replication**.
-        Changing this will create a new vault.
+        The protection type of the vault.
         """
         return pulumi.get(self, "protection_type")
 
@@ -874,8 +705,7 @@ class _VaultState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region in which to create the CBR vault. If omitted, the
-        provider-level region will be used. Changing this will create a new vault.
+        The region where the vault is located.
         """
         return pulumi.get(self, "region")
 
@@ -887,8 +717,7 @@ class _VaultState:
     @pulumi.getter
     def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VaultResourceArgs']]]]:
         """
-        Specifies an array of one or more resources to attach to the CBR vault.
-        The object structure is documented below.
+        The array of one or more resources to attach to the CBR vault.
         """
         return pulumi.get(self, "resources")
 
@@ -900,9 +729,7 @@ class _VaultState:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the vault capacity, in GB. The valid value range is `1` to `10,485,760`.
-
-        > You cannot update `size` if the vault is **prePaid** mode.
+        The capacity of the vault, in GB.
         """
         return pulumi.get(self, "size")
 
@@ -949,9 +776,6 @@ class _VaultState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs to associate with the CBR vault.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -962,11 +786,7 @@ class _VaultState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the object type of the CBR vault.
-        Changing this will create a new vault. Vaild values are as follows:
-        + **server** (Cloud Servers)
-        + **disk** (EVS Disks)
-        + **turbo** (SFS Turbo file systems)
+        The type of the vault.
         """
         return pulumi.get(self, "type")
 
@@ -1018,163 +838,26 @@ class Vault(pulumi.CustomResource):
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a CBR Vault resource within Sbercloud.
-
-        ## Example Usage
-
-        ### Create a disk type vault
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        vault_name = config.require_object("vaultName")
-        evs_volume_id = config.require_object("evsVolumeId")
-        test = sbercloud.cbr.Vault("test",
-            name=vault_name,
-            type="disk",
-            protection_type="backup",
-            size=50,
-            auto_expand=True,
-            resources=[{
-                "includes": [evs_volume_id],
-            }],
-            tags={
-                "foo": "bar",
-            })
-        ```
-
-        ### Create an SFS turbo type vault
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        vault_name = config.require_object("vaultName")
-        sfs_turbo_id = config.require_object("sfsTurboId")
-        test = sbercloud.cbr.Vault("test",
-            name=vault_name,
-            type="turbo",
-            protection_type="backup",
-            size=1000,
-            resources=[{
-                "includes": [sfs_turbo_id],
-            }],
-            tags={
-                "foo": "bar",
-            })
-        ```
-
-        ### Create an SFS turbo type vault with replicate protection type
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        vault_name = config.require_object("vaultName")
-        test = sbercloud.cbr.Vault("test",
-            name=vault_name,
-            type="turbo",
-            protection_type="replication",
-            size=1000)
-        ```
-
-        ## Import
-
-        Vaults can be imported by their `id`. For example,
-
-        ```sh
-        $ pulumi import sbercloud:Cbr/vault:Vault test 01c33779-7c83-4182-8b6b-24a671fcedf8
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include: `period_unit`, `period`, `auto_renew`.
-
-        It is generally recommended running `pulumi preview` after importing a vault.
-
-        You can then decide if changes should be applied to the vault, or the resource definition should be updated to align
-
-        with the vault. Also you can ignore changes as below.
-
-        resource "sbercloud_cbr_vault" "test" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              period_unit, period, auto_renew,
-            
-            ]
-
-          }
-
-        }
-
+        Create a Vault resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] auto_bind: Specifies whether automatic association is enabled. Defaults to **false**.
-        :param pulumi.Input[_builtins.bool] auto_expand: Specifies to enable auto capacity expansion for the backup protection type vault.
-               Defaults to **false**.
-               
-               > You cannot configure `auto_expand` if the vault is **prePaid** mode.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled.
-               Valid values are **true** and **false**. Defaults to **false**.
-               
-               <a name="cbr_vault_resources"></a>
-               The `resources` block supports:
+        :param pulumi.Input[_builtins.bool] auto_bind: Whether automatic association is supported.
+        :param pulumi.Input[_builtins.bool] auto_expand: Whether to enable auto capacity expansion for the vault.
         :param pulumi.Input[_builtins.str] backup_name_prefix: The backup name prefix.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] bind_rules: Specifies the tags to filter resources for automatic association with **auto_bind**.
-        :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode of the vault.
-               The valid values are as follows:
-               + **prePaid**: the yearly/monthly billing mode.
-               + **postPaid**: the pay-per-use billing mode.
-               
-               Changing this will create a new vault.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] bind_rules: The rules for automatic association.
         :param pulumi.Input[_builtins.str] cloud_type: The cloud type of the vault.
-        :param pulumi.Input[_builtins.str] consistent_level: Specifies the backup specifications.
-               
-               Only **server** type vaults support application consistent and defaults to **crash_consistent**.
-               Changing this will create a new vault.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies a unique ID in UUID format of enterprise project.
-               Changing this will create a new vault.
-        :param pulumi.Input[_builtins.bool] is_multi_az: Specifies whether multiple availability zones are used for backing up.
-               Defaults to **false**.
+        :param pulumi.Input[_builtins.str] consistent_level: The consistent level (specification) of the vault.
+        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID to which the vault belongs.
+        :param pulumi.Input[_builtins.bool] is_multi_az: Whether multiple availability zones are used for backing up.
         :param pulumi.Input[_builtins.bool] locked: Locked status of the vault.
-        :param pulumi.Input[_builtins.str] name: Specifies a unique name of the CBR vault. This parameter can contain a maximum of 64
-               characters, which may consist of letters, digits, underscores(_) and hyphens (-).
-        :param pulumi.Input[_builtins.int] period: Specifies the charging period of the vault.
-               If `period_unit` is set to **month**, the value ranges from 1 to 9.
-               If `period_unit` is set to **year**, the value ranges from 1 to 5.
-               This parameter is mandatory if `charging_mode` is set to **prePaid**.
-               Changing this will create a new vault.
-        :param pulumi.Input[_builtins.str] period_unit: Specifies the charging period unit of the vault.
-               Valid values are **month** and **year**. This parameter is mandatory if `charging_mode` is set to **prePaid**.
-               Changing this will create a new vault.
+        :param pulumi.Input[_builtins.str] name: The name of the vault.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VaultPolicyArgs', 'VaultPolicyArgsDict']]]] policies: The policy details to associate with the CBR vault.
-        :param pulumi.Input[_builtins.str] policy_id: Specifies a policy to associate with the CBR vault.
-               `policy_id` cannot be used with the vault of replicate protection type.
-        :param pulumi.Input[_builtins.str] protection_type: Specifies the protection type of the CBR vault.
-               The valid values are **backup** and **replication**. Vaults of type **disk** don't support **replication**.
-               Changing this will create a new vault.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the CBR vault. If omitted, the
-               provider-level region will be used. Changing this will create a new vault.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VaultResourceArgs', 'VaultResourceArgsDict']]]] resources: Specifies an array of one or more resources to attach to the CBR vault.
-               The object structure is documented below.
-        :param pulumi.Input[_builtins.int] size: Specifies the vault capacity, in GB. The valid value range is `1` to `10,485,760`.
-               
-               > You cannot update `size` if the vault is **prePaid** mode.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the CBR vault.
-        :param pulumi.Input[_builtins.str] type: Specifies the object type of the CBR vault.
-               Changing this will create a new vault. Vaild values are as follows:
-               + **server** (Cloud Servers)
-               + **disk** (EVS Disks)
-               + **turbo** (SFS Turbo file systems)
+        :param pulumi.Input[_builtins.str] policy_id: schema:Deprecated; Using parameter 'policy' instead.
+        :param pulumi.Input[_builtins.str] protection_type: The protection type of the vault.
+        :param pulumi.Input[_builtins.str] region: The region where the vault is located.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VaultResourceArgs', 'VaultResourceArgsDict']]]] resources: The array of one or more resources to attach to the CBR vault.
+        :param pulumi.Input[_builtins.int] size: The capacity of the vault, in GB.
+        :param pulumi.Input[_builtins.str] type: The type of the vault.
         """
         ...
     @overload
@@ -1183,104 +866,7 @@ class Vault(pulumi.CustomResource):
                  args: VaultArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a CBR Vault resource within Sbercloud.
-
-        ## Example Usage
-
-        ### Create a disk type vault
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        vault_name = config.require_object("vaultName")
-        evs_volume_id = config.require_object("evsVolumeId")
-        test = sbercloud.cbr.Vault("test",
-            name=vault_name,
-            type="disk",
-            protection_type="backup",
-            size=50,
-            auto_expand=True,
-            resources=[{
-                "includes": [evs_volume_id],
-            }],
-            tags={
-                "foo": "bar",
-            })
-        ```
-
-        ### Create an SFS turbo type vault
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        vault_name = config.require_object("vaultName")
-        sfs_turbo_id = config.require_object("sfsTurboId")
-        test = sbercloud.cbr.Vault("test",
-            name=vault_name,
-            type="turbo",
-            protection_type="backup",
-            size=1000,
-            resources=[{
-                "includes": [sfs_turbo_id],
-            }],
-            tags={
-                "foo": "bar",
-            })
-        ```
-
-        ### Create an SFS turbo type vault with replicate protection type
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        vault_name = config.require_object("vaultName")
-        test = sbercloud.cbr.Vault("test",
-            name=vault_name,
-            type="turbo",
-            protection_type="replication",
-            size=1000)
-        ```
-
-        ## Import
-
-        Vaults can be imported by their `id`. For example,
-
-        ```sh
-        $ pulumi import sbercloud:Cbr/vault:Vault test 01c33779-7c83-4182-8b6b-24a671fcedf8
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include: `period_unit`, `period`, `auto_renew`.
-
-        It is generally recommended running `pulumi preview` after importing a vault.
-
-        You can then decide if changes should be applied to the vault, or the resource definition should be updated to align
-
-        with the vault. Also you can ignore changes as below.
-
-        resource "sbercloud_cbr_vault" "test" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              period_unit, period, auto_renew,
-            
-            ]
-
-          }
-
-        }
-
+        Create a Vault resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param VaultArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1407,67 +993,27 @@ class Vault(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.float] allocated: The allocated capacity of the vault, in GB.
-        :param pulumi.Input[_builtins.bool] auto_bind: Specifies whether automatic association is enabled. Defaults to **false**.
-        :param pulumi.Input[_builtins.bool] auto_expand: Specifies to enable auto capacity expansion for the backup protection type vault.
-               Defaults to **false**.
-               
-               > You cannot configure `auto_expand` if the vault is **prePaid** mode.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled.
-               Valid values are **true** and **false**. Defaults to **false**.
-               
-               <a name="cbr_vault_resources"></a>
-               The `resources` block supports:
+        :param pulumi.Input[_builtins.float] allocated: The allocated capacity, in GB.
+        :param pulumi.Input[_builtins.bool] auto_bind: Whether automatic association is supported.
+        :param pulumi.Input[_builtins.bool] auto_expand: Whether to enable auto capacity expansion for the vault.
         :param pulumi.Input[_builtins.str] backup_name_prefix: The backup name prefix.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] bind_rules: Specifies the tags to filter resources for automatic association with **auto_bind**.
-        :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode of the vault.
-               The valid values are as follows:
-               + **prePaid**: the yearly/monthly billing mode.
-               + **postPaid**: the pay-per-use billing mode.
-               
-               Changing this will create a new vault.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] bind_rules: The rules for automatic association.
         :param pulumi.Input[_builtins.str] cloud_type: The cloud type of the vault.
-        :param pulumi.Input[_builtins.str] consistent_level: Specifies the backup specifications.
-               
-               Only **server** type vaults support application consistent and defaults to **crash_consistent**.
-               Changing this will create a new vault.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies a unique ID in UUID format of enterprise project.
-               Changing this will create a new vault.
-        :param pulumi.Input[_builtins.bool] is_multi_az: Specifies whether multiple availability zones are used for backing up.
-               Defaults to **false**.
+        :param pulumi.Input[_builtins.str] consistent_level: The consistent level (specification) of the vault.
+        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID to which the vault belongs.
+        :param pulumi.Input[_builtins.bool] is_multi_az: Whether multiple availability zones are used for backing up.
         :param pulumi.Input[_builtins.bool] locked: Locked status of the vault.
-        :param pulumi.Input[_builtins.str] name: Specifies a unique name of the CBR vault. This parameter can contain a maximum of 64
-               characters, which may consist of letters, digits, underscores(_) and hyphens (-).
-        :param pulumi.Input[_builtins.int] period: Specifies the charging period of the vault.
-               If `period_unit` is set to **month**, the value ranges from 1 to 9.
-               If `period_unit` is set to **year**, the value ranges from 1 to 5.
-               This parameter is mandatory if `charging_mode` is set to **prePaid**.
-               Changing this will create a new vault.
-        :param pulumi.Input[_builtins.str] period_unit: Specifies the charging period unit of the vault.
-               Valid values are **month** and **year**. This parameter is mandatory if `charging_mode` is set to **prePaid**.
-               Changing this will create a new vault.
+        :param pulumi.Input[_builtins.str] name: The name of the vault.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VaultPolicyArgs', 'VaultPolicyArgsDict']]]] policies: The policy details to associate with the CBR vault.
-        :param pulumi.Input[_builtins.str] policy_id: Specifies a policy to associate with the CBR vault.
-               `policy_id` cannot be used with the vault of replicate protection type.
-        :param pulumi.Input[_builtins.str] protection_type: Specifies the protection type of the CBR vault.
-               The valid values are **backup** and **replication**. Vaults of type **disk** don't support **replication**.
-               Changing this will create a new vault.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the CBR vault. If omitted, the
-               provider-level region will be used. Changing this will create a new vault.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VaultResourceArgs', 'VaultResourceArgsDict']]]] resources: Specifies an array of one or more resources to attach to the CBR vault.
-               The object structure is documented below.
-        :param pulumi.Input[_builtins.int] size: Specifies the vault capacity, in GB. The valid value range is `1` to `10,485,760`.
-               
-               > You cannot update `size` if the vault is **prePaid** mode.
+        :param pulumi.Input[_builtins.str] policy_id: schema:Deprecated; Using parameter 'policy' instead.
+        :param pulumi.Input[_builtins.str] protection_type: The protection type of the vault.
+        :param pulumi.Input[_builtins.str] region: The region where the vault is located.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VaultResourceArgs', 'VaultResourceArgsDict']]]] resources: The array of one or more resources to attach to the CBR vault.
+        :param pulumi.Input[_builtins.int] size: The capacity of the vault, in GB.
         :param pulumi.Input[_builtins.str] spec_code: The specification code.
         :param pulumi.Input[_builtins.str] status: The vault status.
         :param pulumi.Input[_builtins.str] storage: The name of the bucket for the vault.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the CBR vault.
-        :param pulumi.Input[_builtins.str] type: Specifies the object type of the CBR vault.
-               Changing this will create a new vault. Vaild values are as follows:
-               + **server** (Cloud Servers)
-               + **disk** (EVS Disks)
-               + **turbo** (SFS Turbo file systems)
+        :param pulumi.Input[_builtins.str] type: The type of the vault.
         :param pulumi.Input[_builtins.float] used: The used capacity, in GB.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1508,7 +1054,7 @@ class Vault(pulumi.CustomResource):
     @pulumi.getter
     def allocated(self) -> pulumi.Output[_builtins.float]:
         """
-        The allocated capacity of the vault, in GB.
+        The allocated capacity, in GB.
         """
         return pulumi.get(self, "allocated")
 
@@ -1516,7 +1062,7 @@ class Vault(pulumi.CustomResource):
     @pulumi.getter(name="autoBind")
     def auto_bind(self) -> pulumi.Output[_builtins.bool]:
         """
-        Specifies whether automatic association is enabled. Defaults to **false**.
+        Whether automatic association is supported.
         """
         return pulumi.get(self, "auto_bind")
 
@@ -1524,10 +1070,7 @@ class Vault(pulumi.CustomResource):
     @pulumi.getter(name="autoExpand")
     def auto_expand(self) -> pulumi.Output[_builtins.bool]:
         """
-        Specifies to enable auto capacity expansion for the backup protection type vault.
-        Defaults to **false**.
-
-        > You cannot configure `auto_expand` if the vault is **prePaid** mode.
+        Whether to enable auto capacity expansion for the vault.
         """
         return pulumi.get(self, "auto_expand")
 
@@ -1540,13 +1083,6 @@ class Vault(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies whether auto renew is enabled.
-        Valid values are **true** and **false**. Defaults to **false**.
-
-        <a name="cbr_vault_resources"></a>
-        The `resources` block supports:
-        """
         return pulumi.get(self, "auto_renew")
 
     @_builtins.property
@@ -1561,21 +1097,13 @@ class Vault(pulumi.CustomResource):
     @pulumi.getter(name="bindRules")
     def bind_rules(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        Specifies the tags to filter resources for automatic association with **auto_bind**.
+        The rules for automatic association.
         """
         return pulumi.get(self, "bind_rules")
 
     @_builtins.property
     @pulumi.getter(name="chargingMode")
     def charging_mode(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the charging mode of the vault.
-        The valid values are as follows:
-        + **prePaid**: the yearly/monthly billing mode.
-        + **postPaid**: the pay-per-use billing mode.
-
-        Changing this will create a new vault.
-        """
         return pulumi.get(self, "charging_mode")
 
     @_builtins.property
@@ -1590,10 +1118,7 @@ class Vault(pulumi.CustomResource):
     @pulumi.getter(name="consistentLevel")
     def consistent_level(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the backup specifications.
-
-        Only **server** type vaults support application consistent and defaults to **crash_consistent**.
-        Changing this will create a new vault.
+        The consistent level (specification) of the vault.
         """
         return pulumi.get(self, "consistent_level")
 
@@ -1601,8 +1126,7 @@ class Vault(pulumi.CustomResource):
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies a unique ID in UUID format of enterprise project.
-        Changing this will create a new vault.
+        The enterprise project ID to which the vault belongs.
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -1610,8 +1134,7 @@ class Vault(pulumi.CustomResource):
     @pulumi.getter(name="isMultiAz")
     def is_multi_az(self) -> pulumi.Output[_builtins.bool]:
         """
-        Specifies whether multiple availability zones are used for backing up.
-        Defaults to **false**.
+        Whether multiple availability zones are used for backing up.
         """
         return pulumi.get(self, "is_multi_az")
 
@@ -1627,31 +1150,18 @@ class Vault(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies a unique name of the CBR vault. This parameter can contain a maximum of 64
-        characters, which may consist of letters, digits, underscores(_) and hyphens (-).
+        The name of the vault.
         """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[_builtins.int]]:
-        """
-        Specifies the charging period of the vault.
-        If `period_unit` is set to **month**, the value ranges from 1 to 9.
-        If `period_unit` is set to **year**, the value ranges from 1 to 5.
-        This parameter is mandatory if `charging_mode` is set to **prePaid**.
-        Changing this will create a new vault.
-        """
         return pulumi.get(self, "period")
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the charging period unit of the vault.
-        Valid values are **month** and **year**. This parameter is mandatory if `charging_mode` is set to **prePaid**.
-        Changing this will create a new vault.
-        """
         return pulumi.get(self, "period_unit")
 
     @_builtins.property
@@ -1666,8 +1176,7 @@ class Vault(pulumi.CustomResource):
     @pulumi.getter(name="policyId")
     def policy_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies a policy to associate with the CBR vault.
-        `policy_id` cannot be used with the vault of replicate protection type.
+        schema:Deprecated; Using parameter 'policy' instead.
         """
         return pulumi.get(self, "policy_id")
 
@@ -1675,9 +1184,7 @@ class Vault(pulumi.CustomResource):
     @pulumi.getter(name="protectionType")
     def protection_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the protection type of the CBR vault.
-        The valid values are **backup** and **replication**. Vaults of type **disk** don't support **replication**.
-        Changing this will create a new vault.
+        The protection type of the vault.
         """
         return pulumi.get(self, "protection_type")
 
@@ -1685,8 +1192,7 @@ class Vault(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the region in which to create the CBR vault. If omitted, the
-        provider-level region will be used. Changing this will create a new vault.
+        The region where the vault is located.
         """
         return pulumi.get(self, "region")
 
@@ -1694,8 +1200,7 @@ class Vault(pulumi.CustomResource):
     @pulumi.getter
     def resources(self) -> pulumi.Output[Sequence['outputs.VaultResource']]:
         """
-        Specifies an array of one or more resources to attach to the CBR vault.
-        The object structure is documented below.
+        The array of one or more resources to attach to the CBR vault.
         """
         return pulumi.get(self, "resources")
 
@@ -1703,9 +1208,7 @@ class Vault(pulumi.CustomResource):
     @pulumi.getter
     def size(self) -> pulumi.Output[_builtins.int]:
         """
-        Specifies the vault capacity, in GB. The valid value range is `1` to `10,485,760`.
-
-        > You cannot update `size` if the vault is **prePaid** mode.
+        The capacity of the vault, in GB.
         """
         return pulumi.get(self, "size")
 
@@ -1736,20 +1239,13 @@ class Vault(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        Specifies the key/value pairs to associate with the CBR vault.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the object type of the CBR vault.
-        Changing this will create a new vault. Vaild values are as follows:
-        + **server** (Cloud Servers)
-        + **disk** (EVS Disks)
-        + **turbo** (SFS Turbo file systems)
+        The type of the vault.
         """
         return pulumi.get(self, "type")
 

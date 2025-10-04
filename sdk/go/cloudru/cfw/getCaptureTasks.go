@@ -11,36 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of CFW capture tasks.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			fwInstanceId := cfg.RequireObject("fwInstanceId")
-//			_, err := cfw.GetCaptureTasks(ctx, &cfw.GetCaptureTasksArgs{
-//				FwInstanceId: fwInstanceId,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetCaptureTasks(ctx *pulumi.Context, args *GetCaptureTasksArgs, opts ...pulumi.InvokeOption) (*GetCaptureTasksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCaptureTasksResult
@@ -53,19 +23,15 @@ func GetCaptureTasks(ctx *pulumi.Context, args *GetCaptureTasksArgs, opts ...pul
 
 // A collection of arguments for invoking getCaptureTasks.
 type GetCaptureTasksArgs struct {
-	// Specifies the ID of the firewall instance.
-	FwInstanceId string `pulumi:"fwInstanceId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
+	FwInstanceId string  `pulumi:"fwInstanceId"`
+	Region       *string `pulumi:"region"`
 }
 
 // A collection of values returned by getCaptureTasks.
 type GetCaptureTasksResult struct {
 	FwInstanceId string `pulumi:"fwInstanceId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// List of capture task information.
+	Id      string                  `pulumi:"id"`
 	Records []GetCaptureTasksRecord `pulumi:"records"`
 	Region  string                  `pulumi:"region"`
 }
@@ -81,11 +47,8 @@ func GetCaptureTasksOutput(ctx *pulumi.Context, args GetCaptureTasksOutputArgs, 
 
 // A collection of arguments for invoking getCaptureTasks.
 type GetCaptureTasksOutputArgs struct {
-	// Specifies the ID of the firewall instance.
-	FwInstanceId pulumi.StringInput `pulumi:"fwInstanceId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	FwInstanceId pulumi.StringInput    `pulumi:"fwInstanceId"`
+	Region       pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetCaptureTasksOutputArgs) ElementType() reflect.Type {
@@ -116,7 +79,6 @@ func (o GetCaptureTasksResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCaptureTasksResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// List of capture task information.
 func (o GetCaptureTasksResultOutput) Records() GetCaptureTasksRecordArrayOutput {
 	return o.ApplyT(func(v GetCaptureTasksResult) []GetCaptureTasksRecord { return v.Records }).(GetCaptureTasksRecordArrayOutput)
 }

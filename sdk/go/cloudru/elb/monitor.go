@@ -12,156 +12,25 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages an ELB monitor resource within SberCloud.
-//
-// ## Example Usage
-//
-// ### TCP Health Check
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/elb"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := elb.NewMonitor(ctx, "monitor_tcp", &elb.MonitorArgs{
-//				PoolId:     pulumi.Any(poolId),
-//				Type:       pulumi.String("TCP"),
-//				Delay:      pulumi.Int(5),
-//				Timeout:    pulumi.Int(3),
-//				MaxRetries: pulumi.Int(3),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### UDP Health Check
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/elb"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := elb.NewMonitor(ctx, "monitor_udp", &elb.MonitorArgs{
-//				PoolId:     pulumi.Any(poolId),
-//				Type:       pulumi.String("UDP_CONNECT"),
-//				Delay:      pulumi.Int(5),
-//				Timeout:    pulumi.Int(3),
-//				MaxRetries: pulumi.Int(3),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### HTTP Health Check
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/elb"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := elb.NewMonitor(ctx, "monitor_http", &elb.MonitorArgs{
-//				PoolId:        pulumi.Any(poolId),
-//				Type:          pulumi.String("HTTP"),
-//				Delay:         pulumi.Int(5),
-//				Timeout:       pulumi.Int(3),
-//				MaxRetries:    pulumi.Int(3),
-//				UrlPath:       pulumi.String("/test"),
-//				ExpectedCodes: pulumi.String("200-202"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// ELB monitor can be imported using the monitor ID, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Elb/monitor:Monitor monitor_1 5c20fdad-7288-11eb-b817-0255ac10158b
-// ```
 type Monitor struct {
 	pulumi.CustomResourceState
 
-	// The administrative state of the monitor.
-	//
 	// Deprecated: tenant_id is deprecated
-	AdminStateUp pulumi.BoolPtrOutput `pulumi:"adminStateUp"`
-	// Specifies the maximum time between health checks in the unit of second. The value ranges
-	// from 1 to 50.
-	Delay      pulumi.IntOutput    `pulumi:"delay"`
-	DomainName pulumi.StringOutput `pulumi:"domainName"`
-	// Specifies the expected HTTP status code. Required for HTTP type.
-	// You can either specify a single status like "200", or a range like "200-202".
-	ExpectedCodes pulumi.StringOutput `pulumi:"expectedCodes"`
-	// Specifies the HTTP request method. Required for HTTP type.
-	// The default value is *GET*.
-	HttpMethod pulumi.StringOutput `pulumi:"httpMethod"`
-	// Specifies the maximum number of consecutive health checks after which the backend
-	// servers are declared *healthy*. The value ranges from 1 to 10.
-	//
-	// > Backend servers can be declared *unhealthy* after **three** consecutive health checks that detect these backend
-	// servers are unhealthy, regardless of the value set for `maxRetries`. The health check time window is determined
-	// by [Health Check Time Window](https://support.sbercloud.com/intl/en-us/usermanual-elb/elb_ug_hc_0001.html#section4).
-	MaxRetries pulumi.IntOutput `pulumi:"maxRetries"`
-	// Specifies the health check name. The value contains a maximum of 255 characters.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the id of the pool that this monitor will be assigned to. Changing
-	// this creates a new monitor.
-	PoolId pulumi.StringOutput `pulumi:"poolId"`
-	// Specifies the health check port. The port number ranges from 1 to 65535. If not specified,
-	// the port of the backend server will be used as the health check port.
-	Port pulumi.IntPtrOutput `pulumi:"port"`
-	// The region in which to create the ELB monitor resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new monitor.
-	Region pulumi.StringOutput `pulumi:"region"`
+	AdminStateUp  pulumi.BoolPtrOutput `pulumi:"adminStateUp"`
+	Delay         pulumi.IntOutput     `pulumi:"delay"`
+	DomainName    pulumi.StringOutput  `pulumi:"domainName"`
+	ExpectedCodes pulumi.StringOutput  `pulumi:"expectedCodes"`
+	HttpMethod    pulumi.StringOutput  `pulumi:"httpMethod"`
+	MaxRetries    pulumi.IntOutput     `pulumi:"maxRetries"`
+	Name          pulumi.StringOutput  `pulumi:"name"`
+	PoolId        pulumi.StringOutput  `pulumi:"poolId"`
+	Port          pulumi.IntPtrOutput  `pulumi:"port"`
+	Region        pulumi.StringOutput  `pulumi:"region"`
 	// Deprecated: tenant_id is deprecated
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
-	// Specifies the health check timeout duration in the unit of second.
-	// The value ranges from 1 to 50 and must be less than the `delay` value.
-	Timeout pulumi.IntOutput `pulumi:"timeout"`
-	// Specifies the monitor protocol.
-	// The value can be *TCP*, *UDP_CONNECT*, or *HTTP*.
-	// If the listener protocol is UDP, the monitor protocol must be *UDP_CONNECT*. Changing this creates a new monitor.
-	Type pulumi.StringOutput `pulumi:"type"`
-	// Specifies the HTTP request path for the health check. Required for HTTP type.
-	// The value starts with a slash (/) and contains a maximum of 255 characters.
-	UrlPath pulumi.StringOutput `pulumi:"urlPath"`
+	Timeout  pulumi.IntOutput    `pulumi:"timeout"`
+	Type     pulumi.StringOutput `pulumi:"type"`
+	UrlPath  pulumi.StringOutput `pulumi:"urlPath"`
 }
 
 // NewMonitor registers a new resource with the given unique name, arguments, and options.
@@ -209,97 +78,41 @@ func GetMonitor(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Monitor resources.
 type monitorState struct {
-	// The administrative state of the monitor.
-	//
 	// Deprecated: tenant_id is deprecated
-	AdminStateUp *bool `pulumi:"adminStateUp"`
-	// Specifies the maximum time between health checks in the unit of second. The value ranges
-	// from 1 to 50.
-	Delay      *int    `pulumi:"delay"`
-	DomainName *string `pulumi:"domainName"`
-	// Specifies the expected HTTP status code. Required for HTTP type.
-	// You can either specify a single status like "200", or a range like "200-202".
+	AdminStateUp  *bool   `pulumi:"adminStateUp"`
+	Delay         *int    `pulumi:"delay"`
+	DomainName    *string `pulumi:"domainName"`
 	ExpectedCodes *string `pulumi:"expectedCodes"`
-	// Specifies the HTTP request method. Required for HTTP type.
-	// The default value is *GET*.
-	HttpMethod *string `pulumi:"httpMethod"`
-	// Specifies the maximum number of consecutive health checks after which the backend
-	// servers are declared *healthy*. The value ranges from 1 to 10.
-	//
-	// > Backend servers can be declared *unhealthy* after **three** consecutive health checks that detect these backend
-	// servers are unhealthy, regardless of the value set for `maxRetries`. The health check time window is determined
-	// by [Health Check Time Window](https://support.sbercloud.com/intl/en-us/usermanual-elb/elb_ug_hc_0001.html#section4).
-	MaxRetries *int `pulumi:"maxRetries"`
-	// Specifies the health check name. The value contains a maximum of 255 characters.
-	Name *string `pulumi:"name"`
-	// Specifies the id of the pool that this monitor will be assigned to. Changing
-	// this creates a new monitor.
-	PoolId *string `pulumi:"poolId"`
-	// Specifies the health check port. The port number ranges from 1 to 65535. If not specified,
-	// the port of the backend server will be used as the health check port.
-	Port *int `pulumi:"port"`
-	// The region in which to create the ELB monitor resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new monitor.
-	Region *string `pulumi:"region"`
+	HttpMethod    *string `pulumi:"httpMethod"`
+	MaxRetries    *int    `pulumi:"maxRetries"`
+	Name          *string `pulumi:"name"`
+	PoolId        *string `pulumi:"poolId"`
+	Port          *int    `pulumi:"port"`
+	Region        *string `pulumi:"region"`
 	// Deprecated: tenant_id is deprecated
 	TenantId *string `pulumi:"tenantId"`
-	// Specifies the health check timeout duration in the unit of second.
-	// The value ranges from 1 to 50 and must be less than the `delay` value.
-	Timeout *int `pulumi:"timeout"`
-	// Specifies the monitor protocol.
-	// The value can be *TCP*, *UDP_CONNECT*, or *HTTP*.
-	// If the listener protocol is UDP, the monitor protocol must be *UDP_CONNECT*. Changing this creates a new monitor.
-	Type *string `pulumi:"type"`
-	// Specifies the HTTP request path for the health check. Required for HTTP type.
-	// The value starts with a slash (/) and contains a maximum of 255 characters.
-	UrlPath *string `pulumi:"urlPath"`
+	Timeout  *int    `pulumi:"timeout"`
+	Type     *string `pulumi:"type"`
+	UrlPath  *string `pulumi:"urlPath"`
 }
 
 type MonitorState struct {
-	// The administrative state of the monitor.
-	//
 	// Deprecated: tenant_id is deprecated
-	AdminStateUp pulumi.BoolPtrInput
-	// Specifies the maximum time between health checks in the unit of second. The value ranges
-	// from 1 to 50.
-	Delay      pulumi.IntPtrInput
-	DomainName pulumi.StringPtrInput
-	// Specifies the expected HTTP status code. Required for HTTP type.
-	// You can either specify a single status like "200", or a range like "200-202".
+	AdminStateUp  pulumi.BoolPtrInput
+	Delay         pulumi.IntPtrInput
+	DomainName    pulumi.StringPtrInput
 	ExpectedCodes pulumi.StringPtrInput
-	// Specifies the HTTP request method. Required for HTTP type.
-	// The default value is *GET*.
-	HttpMethod pulumi.StringPtrInput
-	// Specifies the maximum number of consecutive health checks after which the backend
-	// servers are declared *healthy*. The value ranges from 1 to 10.
-	//
-	// > Backend servers can be declared *unhealthy* after **three** consecutive health checks that detect these backend
-	// servers are unhealthy, regardless of the value set for `maxRetries`. The health check time window is determined
-	// by [Health Check Time Window](https://support.sbercloud.com/intl/en-us/usermanual-elb/elb_ug_hc_0001.html#section4).
-	MaxRetries pulumi.IntPtrInput
-	// Specifies the health check name. The value contains a maximum of 255 characters.
-	Name pulumi.StringPtrInput
-	// Specifies the id of the pool that this monitor will be assigned to. Changing
-	// this creates a new monitor.
-	PoolId pulumi.StringPtrInput
-	// Specifies the health check port. The port number ranges from 1 to 65535. If not specified,
-	// the port of the backend server will be used as the health check port.
-	Port pulumi.IntPtrInput
-	// The region in which to create the ELB monitor resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new monitor.
-	Region pulumi.StringPtrInput
+	HttpMethod    pulumi.StringPtrInput
+	MaxRetries    pulumi.IntPtrInput
+	Name          pulumi.StringPtrInput
+	PoolId        pulumi.StringPtrInput
+	Port          pulumi.IntPtrInput
+	Region        pulumi.StringPtrInput
 	// Deprecated: tenant_id is deprecated
 	TenantId pulumi.StringPtrInput
-	// Specifies the health check timeout duration in the unit of second.
-	// The value ranges from 1 to 50 and must be less than the `delay` value.
-	Timeout pulumi.IntPtrInput
-	// Specifies the monitor protocol.
-	// The value can be *TCP*, *UDP_CONNECT*, or *HTTP*.
-	// If the listener protocol is UDP, the monitor protocol must be *UDP_CONNECT*. Changing this creates a new monitor.
-	Type pulumi.StringPtrInput
-	// Specifies the HTTP request path for the health check. Required for HTTP type.
-	// The value starts with a slash (/) and contains a maximum of 255 characters.
-	UrlPath pulumi.StringPtrInput
+	Timeout  pulumi.IntPtrInput
+	Type     pulumi.StringPtrInput
+	UrlPath  pulumi.StringPtrInput
 }
 
 func (MonitorState) ElementType() reflect.Type {
@@ -307,98 +120,42 @@ func (MonitorState) ElementType() reflect.Type {
 }
 
 type monitorArgs struct {
-	// The administrative state of the monitor.
-	//
 	// Deprecated: tenant_id is deprecated
-	AdminStateUp *bool `pulumi:"adminStateUp"`
-	// Specifies the maximum time between health checks in the unit of second. The value ranges
-	// from 1 to 50.
-	Delay      int     `pulumi:"delay"`
-	DomainName *string `pulumi:"domainName"`
-	// Specifies the expected HTTP status code. Required for HTTP type.
-	// You can either specify a single status like "200", or a range like "200-202".
+	AdminStateUp  *bool   `pulumi:"adminStateUp"`
+	Delay         int     `pulumi:"delay"`
+	DomainName    *string `pulumi:"domainName"`
 	ExpectedCodes *string `pulumi:"expectedCodes"`
-	// Specifies the HTTP request method. Required for HTTP type.
-	// The default value is *GET*.
-	HttpMethod *string `pulumi:"httpMethod"`
-	// Specifies the maximum number of consecutive health checks after which the backend
-	// servers are declared *healthy*. The value ranges from 1 to 10.
-	//
-	// > Backend servers can be declared *unhealthy* after **three** consecutive health checks that detect these backend
-	// servers are unhealthy, regardless of the value set for `maxRetries`. The health check time window is determined
-	// by [Health Check Time Window](https://support.sbercloud.com/intl/en-us/usermanual-elb/elb_ug_hc_0001.html#section4).
-	MaxRetries int `pulumi:"maxRetries"`
-	// Specifies the health check name. The value contains a maximum of 255 characters.
-	Name *string `pulumi:"name"`
-	// Specifies the id of the pool that this monitor will be assigned to. Changing
-	// this creates a new monitor.
-	PoolId string `pulumi:"poolId"`
-	// Specifies the health check port. The port number ranges from 1 to 65535. If not specified,
-	// the port of the backend server will be used as the health check port.
-	Port *int `pulumi:"port"`
-	// The region in which to create the ELB monitor resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new monitor.
-	Region *string `pulumi:"region"`
+	HttpMethod    *string `pulumi:"httpMethod"`
+	MaxRetries    int     `pulumi:"maxRetries"`
+	Name          *string `pulumi:"name"`
+	PoolId        string  `pulumi:"poolId"`
+	Port          *int    `pulumi:"port"`
+	Region        *string `pulumi:"region"`
 	// Deprecated: tenant_id is deprecated
 	TenantId *string `pulumi:"tenantId"`
-	// Specifies the health check timeout duration in the unit of second.
-	// The value ranges from 1 to 50 and must be less than the `delay` value.
-	Timeout int `pulumi:"timeout"`
-	// Specifies the monitor protocol.
-	// The value can be *TCP*, *UDP_CONNECT*, or *HTTP*.
-	// If the listener protocol is UDP, the monitor protocol must be *UDP_CONNECT*. Changing this creates a new monitor.
-	Type string `pulumi:"type"`
-	// Specifies the HTTP request path for the health check. Required for HTTP type.
-	// The value starts with a slash (/) and contains a maximum of 255 characters.
-	UrlPath *string `pulumi:"urlPath"`
+	Timeout  int     `pulumi:"timeout"`
+	Type     string  `pulumi:"type"`
+	UrlPath  *string `pulumi:"urlPath"`
 }
 
 // The set of arguments for constructing a Monitor resource.
 type MonitorArgs struct {
-	// The administrative state of the monitor.
-	//
 	// Deprecated: tenant_id is deprecated
-	AdminStateUp pulumi.BoolPtrInput
-	// Specifies the maximum time between health checks in the unit of second. The value ranges
-	// from 1 to 50.
-	Delay      pulumi.IntInput
-	DomainName pulumi.StringPtrInput
-	// Specifies the expected HTTP status code. Required for HTTP type.
-	// You can either specify a single status like "200", or a range like "200-202".
+	AdminStateUp  pulumi.BoolPtrInput
+	Delay         pulumi.IntInput
+	DomainName    pulumi.StringPtrInput
 	ExpectedCodes pulumi.StringPtrInput
-	// Specifies the HTTP request method. Required for HTTP type.
-	// The default value is *GET*.
-	HttpMethod pulumi.StringPtrInput
-	// Specifies the maximum number of consecutive health checks after which the backend
-	// servers are declared *healthy*. The value ranges from 1 to 10.
-	//
-	// > Backend servers can be declared *unhealthy* after **three** consecutive health checks that detect these backend
-	// servers are unhealthy, regardless of the value set for `maxRetries`. The health check time window is determined
-	// by [Health Check Time Window](https://support.sbercloud.com/intl/en-us/usermanual-elb/elb_ug_hc_0001.html#section4).
-	MaxRetries pulumi.IntInput
-	// Specifies the health check name. The value contains a maximum of 255 characters.
-	Name pulumi.StringPtrInput
-	// Specifies the id of the pool that this monitor will be assigned to. Changing
-	// this creates a new monitor.
-	PoolId pulumi.StringInput
-	// Specifies the health check port. The port number ranges from 1 to 65535. If not specified,
-	// the port of the backend server will be used as the health check port.
-	Port pulumi.IntPtrInput
-	// The region in which to create the ELB monitor resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new monitor.
-	Region pulumi.StringPtrInput
+	HttpMethod    pulumi.StringPtrInput
+	MaxRetries    pulumi.IntInput
+	Name          pulumi.StringPtrInput
+	PoolId        pulumi.StringInput
+	Port          pulumi.IntPtrInput
+	Region        pulumi.StringPtrInput
 	// Deprecated: tenant_id is deprecated
 	TenantId pulumi.StringPtrInput
-	// Specifies the health check timeout duration in the unit of second.
-	// The value ranges from 1 to 50 and must be less than the `delay` value.
-	Timeout pulumi.IntInput
-	// Specifies the monitor protocol.
-	// The value can be *TCP*, *UDP_CONNECT*, or *HTTP*.
-	// If the listener protocol is UDP, the monitor protocol must be *UDP_CONNECT*. Changing this creates a new monitor.
-	Type pulumi.StringInput
-	// Specifies the HTTP request path for the health check. Required for HTTP type.
-	// The value starts with a slash (/) and contains a maximum of 255 characters.
-	UrlPath pulumi.StringPtrInput
+	Timeout  pulumi.IntInput
+	Type     pulumi.StringInput
+	UrlPath  pulumi.StringPtrInput
 }
 
 func (MonitorArgs) ElementType() reflect.Type {
@@ -488,15 +245,11 @@ func (o MonitorOutput) ToMonitorOutputWithContext(ctx context.Context) MonitorOu
 	return o
 }
 
-// The administrative state of the monitor.
-//
 // Deprecated: tenant_id is deprecated
 func (o MonitorOutput) AdminStateUp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Monitor) pulumi.BoolPtrOutput { return v.AdminStateUp }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the maximum time between health checks in the unit of second. The value ranges
-// from 1 to 50.
 func (o MonitorOutput) Delay() pulumi.IntOutput {
 	return o.ApplyT(func(v *Monitor) pulumi.IntOutput { return v.Delay }).(pulumi.IntOutput)
 }
@@ -505,47 +258,30 @@ func (o MonitorOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
 }
 
-// Specifies the expected HTTP status code. Required for HTTP type.
-// You can either specify a single status like "200", or a range like "200-202".
 func (o MonitorOutput) ExpectedCodes() pulumi.StringOutput {
 	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.ExpectedCodes }).(pulumi.StringOutput)
 }
 
-// Specifies the HTTP request method. Required for HTTP type.
-// The default value is *GET*.
 func (o MonitorOutput) HttpMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.HttpMethod }).(pulumi.StringOutput)
 }
 
-// Specifies the maximum number of consecutive health checks after which the backend
-// servers are declared *healthy*. The value ranges from 1 to 10.
-//
-// > Backend servers can be declared *unhealthy* after **three** consecutive health checks that detect these backend
-// servers are unhealthy, regardless of the value set for `maxRetries`. The health check time window is determined
-// by [Health Check Time Window](https://support.sbercloud.com/intl/en-us/usermanual-elb/elb_ug_hc_0001.html#section4).
 func (o MonitorOutput) MaxRetries() pulumi.IntOutput {
 	return o.ApplyT(func(v *Monitor) pulumi.IntOutput { return v.MaxRetries }).(pulumi.IntOutput)
 }
 
-// Specifies the health check name. The value contains a maximum of 255 characters.
 func (o MonitorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the id of the pool that this monitor will be assigned to. Changing
-// this creates a new monitor.
 func (o MonitorOutput) PoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.PoolId }).(pulumi.StringOutput)
 }
 
-// Specifies the health check port. The port number ranges from 1 to 65535. If not specified,
-// the port of the backend server will be used as the health check port.
 func (o MonitorOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Monitor) pulumi.IntPtrOutput { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// The region in which to create the ELB monitor resource. If omitted, the
-// provider-level region will be used. Changing this creates a new monitor.
 func (o MonitorOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
@@ -555,21 +291,14 @@ func (o MonitorOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
 }
 
-// Specifies the health check timeout duration in the unit of second.
-// The value ranges from 1 to 50 and must be less than the `delay` value.
 func (o MonitorOutput) Timeout() pulumi.IntOutput {
 	return o.ApplyT(func(v *Monitor) pulumi.IntOutput { return v.Timeout }).(pulumi.IntOutput)
 }
 
-// Specifies the monitor protocol.
-// The value can be *TCP*, *UDP_CONNECT*, or *HTTP*.
-// If the listener protocol is UDP, the monitor protocol must be *UDP_CONNECT*. Changing this creates a new monitor.
 func (o MonitorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Specifies the HTTP request path for the health check. Required for HTTP type.
-// The value starts with a slash (/) and contains a maximum of 255 characters.
 func (o MonitorOutput) UrlPath() pulumi.StringOutput {
 	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.UrlPath }).(pulumi.StringOutput)
 }

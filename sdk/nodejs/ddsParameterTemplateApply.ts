@@ -4,26 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Manages a DDS parameter template apply resource within SberCloud.
- *
- * > Please check whether the entities need to be restarted after applying parameter template.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const configurationId = config.requireObject<any>("configurationId");
- * const entityIds = config.requireObject<any>("entityIds");
- * const test = new sbercloud.DdsParameterTemplateApply("test", {
- *     configurationId: configurationId,
- *     entityIds: entityIds,
- * });
- * ```
- */
 export class DdsParameterTemplateApply extends pulumi.CustomResource {
     /**
      * Get an existing DdsParameterTemplateApply resource's state with the given name, ID, and optional extra
@@ -54,23 +34,12 @@ export class DdsParameterTemplateApply extends pulumi.CustomResource {
 
     /**
      * Specifies the parameter template ID.
-     * Changing this creates a new resource.
      */
     declare public readonly configurationId: pulumi.Output<string>;
     /**
      * Specifies the entity IDs.
-     * + If the DB instance type is cluster and the shard or config parameter template is to be changed, the value is the
-     * group ID. If the parameter template of the mongos node is to be changed, the value is the node ID.
-     * + If the DB instance to be changed is a replica set instance, the value is the instance ID.
-     *
-     * Changing this creates a new resource.
      */
     declare public readonly entityIds: pulumi.Output<string[]>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
 
     /**
@@ -112,23 +81,12 @@ export class DdsParameterTemplateApply extends pulumi.CustomResource {
 export interface DdsParameterTemplateApplyState {
     /**
      * Specifies the parameter template ID.
-     * Changing this creates a new resource.
      */
     configurationId?: pulumi.Input<string>;
     /**
      * Specifies the entity IDs.
-     * + If the DB instance type is cluster and the shard or config parameter template is to be changed, the value is the
-     * group ID. If the parameter template of the mongos node is to be changed, the value is the node ID.
-     * + If the DB instance to be changed is a replica set instance, the value is the instance ID.
-     *
-     * Changing this creates a new resource.
      */
     entityIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
 }
 
@@ -138,22 +96,11 @@ export interface DdsParameterTemplateApplyState {
 export interface DdsParameterTemplateApplyArgs {
     /**
      * Specifies the parameter template ID.
-     * Changing this creates a new resource.
      */
     configurationId: pulumi.Input<string>;
     /**
      * Specifies the entity IDs.
-     * + If the DB instance type is cluster and the shard or config parameter template is to be changed, the value is the
-     * group ID. If the parameter template of the mongos node is to be changed, the value is the node ID.
-     * + If the DB instance to be changed is a replica set instance, the value is the instance ID.
-     *
-     * Changing this creates a new resource.
      */
     entityIds: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
 }

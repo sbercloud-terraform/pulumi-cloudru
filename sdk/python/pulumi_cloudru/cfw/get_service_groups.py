@@ -79,9 +79,6 @@ class GetServiceGroupsResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        The name of the service group.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -97,9 +94,6 @@ class GetServiceGroupsResult:
     @_builtins.property
     @pulumi.getter(name="serviceGroups")
     def service_groups(self) -> Sequence['outputs.GetServiceGroupsServiceGroupResult']:
-        """
-        Service group list
-        """
         return pulumi.get(self, "service_groups")
 
 
@@ -127,27 +121,7 @@ def get_service_groups(enterprise_project_id: Optional[_builtins.str] = None,
                        region: Optional[_builtins.str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceGroupsResult:
     """
-    Use this data source to get the list of CFW service groups.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    object_id = config.require_object("objectId")
-    test = sbercloud.Cfw.get_service_groups(object_id=object_id)
-    ```
-
-
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID.
-    :param _builtins.str fw_instance_id: Specifies the firewall instance ID.
-    :param _builtins.str key_word: Specifies the keyword of the service group description.
-    :param _builtins.str name: Specifies the name of the service group.
-    :param _builtins.str object_id: Specifies the protected object ID.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['enterpriseProjectId'] = enterprise_project_id
@@ -176,27 +150,7 @@ def get_service_groups_output(enterprise_project_id: Optional[pulumi.Input[Optio
                               region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceGroupsResult]:
     """
-    Use this data source to get the list of CFW service groups.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    object_id = config.require_object("objectId")
-    test = sbercloud.Cfw.get_service_groups(object_id=object_id)
-    ```
-
-
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID.
-    :param _builtins.str fw_instance_id: Specifies the firewall instance ID.
-    :param _builtins.str key_word: Specifies the keyword of the service group description.
-    :param _builtins.str name: Specifies the name of the service group.
-    :param _builtins.str object_id: Specifies the protected object ID.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['enterpriseProjectId'] = enterprise_project_id

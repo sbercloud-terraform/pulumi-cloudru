@@ -14,20 +14,11 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type BucketCorsRule struct {
-	// Specifies the allowed header of cross-origin requests.
-	// Only CORS requests matching the allowed header are valid.
 	AllowedHeaders []string `pulumi:"allowedHeaders"`
-	// Specifies the acceptable operation type of buckets and objects.
-	// The methods include `GET`, `PUT`, `POST`, `DELETE` or `HEAD`.
 	AllowedMethods []string `pulumi:"allowedMethods"`
-	// Requests from this origin can access the bucket. Multiple matching rules are allowed.
-	// One rule occupies one line, and allows one wildcard character (*) at most.
 	AllowedOrigins []string `pulumi:"allowedOrigins"`
-	// Specifies the exposed header in CORS responses, providing additional information for clients.
-	ExposeHeaders []string `pulumi:"exposeHeaders"`
-	// Specifies the duration that your browser can cache CORS responses, expressed in seconds.
-	// The default value is 100.
-	MaxAgeSeconds *int `pulumi:"maxAgeSeconds"`
+	ExposeHeaders  []string `pulumi:"exposeHeaders"`
+	MaxAgeSeconds  *int     `pulumi:"maxAgeSeconds"`
 }
 
 // BucketCorsRuleInput is an input type that accepts BucketCorsRuleArgs and BucketCorsRuleOutput values.
@@ -42,20 +33,11 @@ type BucketCorsRuleInput interface {
 }
 
 type BucketCorsRuleArgs struct {
-	// Specifies the allowed header of cross-origin requests.
-	// Only CORS requests matching the allowed header are valid.
 	AllowedHeaders pulumi.StringArrayInput `pulumi:"allowedHeaders"`
-	// Specifies the acceptable operation type of buckets and objects.
-	// The methods include `GET`, `PUT`, `POST`, `DELETE` or `HEAD`.
 	AllowedMethods pulumi.StringArrayInput `pulumi:"allowedMethods"`
-	// Requests from this origin can access the bucket. Multiple matching rules are allowed.
-	// One rule occupies one line, and allows one wildcard character (*) at most.
 	AllowedOrigins pulumi.StringArrayInput `pulumi:"allowedOrigins"`
-	// Specifies the exposed header in CORS responses, providing additional information for clients.
-	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
-	// Specifies the duration that your browser can cache CORS responses, expressed in seconds.
-	// The default value is 100.
-	MaxAgeSeconds pulumi.IntPtrInput `pulumi:"maxAgeSeconds"`
+	ExposeHeaders  pulumi.StringArrayInput `pulumi:"exposeHeaders"`
+	MaxAgeSeconds  pulumi.IntPtrInput      `pulumi:"maxAgeSeconds"`
 }
 
 func (BucketCorsRuleArgs) ElementType() reflect.Type {
@@ -109,31 +91,22 @@ func (o BucketCorsRuleOutput) ToBucketCorsRuleOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Specifies the allowed header of cross-origin requests.
-// Only CORS requests matching the allowed header are valid.
 func (o BucketCorsRuleOutput) AllowedHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BucketCorsRule) []string { return v.AllowedHeaders }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the acceptable operation type of buckets and objects.
-// The methods include `GET`, `PUT`, `POST`, `DELETE` or `HEAD`.
 func (o BucketCorsRuleOutput) AllowedMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BucketCorsRule) []string { return v.AllowedMethods }).(pulumi.StringArrayOutput)
 }
 
-// Requests from this origin can access the bucket. Multiple matching rules are allowed.
-// One rule occupies one line, and allows one wildcard character (*) at most.
 func (o BucketCorsRuleOutput) AllowedOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BucketCorsRule) []string { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the exposed header in CORS responses, providing additional information for clients.
 func (o BucketCorsRuleOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BucketCorsRule) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the duration that your browser can cache CORS responses, expressed in seconds.
-// The default value is 100.
 func (o BucketCorsRuleOutput) MaxAgeSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketCorsRule) *int { return v.MaxAgeSeconds }).(pulumi.IntPtrOutput)
 }
@@ -160,24 +133,13 @@ func (o BucketCorsRuleArrayOutput) Index(i pulumi.IntInput) BucketCorsRuleOutput
 
 type BucketLifecycleRule struct {
 	AbortIncompleteMultipartUploads []BucketLifecycleRuleAbortIncompleteMultipartUpload `pulumi:"abortIncompleteMultipartUploads"`
-	// Specifies lifecycle rule status.
-	Enabled bool `pulumi:"enabled"`
-	// Specifies a period when objects that have been last updated are automatically deleted. (documented below).
-	Expirations []BucketLifecycleRuleExpiration `pulumi:"expirations"`
-	// Unique identifier for lifecycle rules. The Rule Name contains a maximum of 255 characters.
-	Name string `pulumi:"name"`
-	// Specifies a period when noncurrent object versions are automatically deleted. (documented below).
-	NoncurrentVersionExpirations []BucketLifecycleRuleNoncurrentVersionExpiration `pulumi:"noncurrentVersionExpirations"`
-	// Specifies a period when noncurrent object versions are automatically transitioned to `WARM` or `COLD` storage class (documented below).
-	//
-	// At least one of `expiration`, `transition`, `noncurrentVersionExpiration`, `noncurrentVersionTransition` must be specified.
-	NoncurrentVersionTransitions []BucketLifecycleRuleNoncurrentVersionTransition `pulumi:"noncurrentVersionTransitions"`
-	// Object key prefix identifying one or more objects to which the rule applies.
-	// If omitted, all objects in the bucket will be managed by the lifecycle rule.
-	// The prefix cannot start or end with a slash (/), cannot have consecutive slashes (/), and cannot contain the following special characters: \:*?"<>|.
-	Prefix *string `pulumi:"prefix"`
-	// Specifies a period when objects that have been last updated are automatically transitioned to `WARM` or `COLD` storage class (documented below).
-	Transitions []BucketLifecycleRuleTransition `pulumi:"transitions"`
+	Enabled                         bool                                                `pulumi:"enabled"`
+	Expirations                     []BucketLifecycleRuleExpiration                     `pulumi:"expirations"`
+	Name                            string                                              `pulumi:"name"`
+	NoncurrentVersionExpirations    []BucketLifecycleRuleNoncurrentVersionExpiration    `pulumi:"noncurrentVersionExpirations"`
+	NoncurrentVersionTransitions    []BucketLifecycleRuleNoncurrentVersionTransition    `pulumi:"noncurrentVersionTransitions"`
+	Prefix                          *string                                             `pulumi:"prefix"`
+	Transitions                     []BucketLifecycleRuleTransition                     `pulumi:"transitions"`
 }
 
 // BucketLifecycleRuleInput is an input type that accepts BucketLifecycleRuleArgs and BucketLifecycleRuleOutput values.
@@ -193,24 +155,13 @@ type BucketLifecycleRuleInput interface {
 
 type BucketLifecycleRuleArgs struct {
 	AbortIncompleteMultipartUploads BucketLifecycleRuleAbortIncompleteMultipartUploadArrayInput `pulumi:"abortIncompleteMultipartUploads"`
-	// Specifies lifecycle rule status.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// Specifies a period when objects that have been last updated are automatically deleted. (documented below).
-	Expirations BucketLifecycleRuleExpirationArrayInput `pulumi:"expirations"`
-	// Unique identifier for lifecycle rules. The Rule Name contains a maximum of 255 characters.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies a period when noncurrent object versions are automatically deleted. (documented below).
-	NoncurrentVersionExpirations BucketLifecycleRuleNoncurrentVersionExpirationArrayInput `pulumi:"noncurrentVersionExpirations"`
-	// Specifies a period when noncurrent object versions are automatically transitioned to `WARM` or `COLD` storage class (documented below).
-	//
-	// At least one of `expiration`, `transition`, `noncurrentVersionExpiration`, `noncurrentVersionTransition` must be specified.
-	NoncurrentVersionTransitions BucketLifecycleRuleNoncurrentVersionTransitionArrayInput `pulumi:"noncurrentVersionTransitions"`
-	// Object key prefix identifying one or more objects to which the rule applies.
-	// If omitted, all objects in the bucket will be managed by the lifecycle rule.
-	// The prefix cannot start or end with a slash (/), cannot have consecutive slashes (/), and cannot contain the following special characters: \:*?"<>|.
-	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-	// Specifies a period when objects that have been last updated are automatically transitioned to `WARM` or `COLD` storage class (documented below).
-	Transitions BucketLifecycleRuleTransitionArrayInput `pulumi:"transitions"`
+	Enabled                         pulumi.BoolInput                                            `pulumi:"enabled"`
+	Expirations                     BucketLifecycleRuleExpirationArrayInput                     `pulumi:"expirations"`
+	Name                            pulumi.StringInput                                          `pulumi:"name"`
+	NoncurrentVersionExpirations    BucketLifecycleRuleNoncurrentVersionExpirationArrayInput    `pulumi:"noncurrentVersionExpirations"`
+	NoncurrentVersionTransitions    BucketLifecycleRuleNoncurrentVersionTransitionArrayInput    `pulumi:"noncurrentVersionTransitions"`
+	Prefix                          pulumi.StringPtrInput                                       `pulumi:"prefix"`
+	Transitions                     BucketLifecycleRuleTransitionArrayInput                     `pulumi:"transitions"`
 }
 
 func (BucketLifecycleRuleArgs) ElementType() reflect.Type {
@@ -270,45 +221,34 @@ func (o BucketLifecycleRuleOutput) AbortIncompleteMultipartUploads() BucketLifec
 	}).(BucketLifecycleRuleAbortIncompleteMultipartUploadArrayOutput)
 }
 
-// Specifies lifecycle rule status.
 func (o BucketLifecycleRuleOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v BucketLifecycleRule) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Specifies a period when objects that have been last updated are automatically deleted. (documented below).
 func (o BucketLifecycleRuleOutput) Expirations() BucketLifecycleRuleExpirationArrayOutput {
 	return o.ApplyT(func(v BucketLifecycleRule) []BucketLifecycleRuleExpiration { return v.Expirations }).(BucketLifecycleRuleExpirationArrayOutput)
 }
 
-// Unique identifier for lifecycle rules. The Rule Name contains a maximum of 255 characters.
 func (o BucketLifecycleRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketLifecycleRule) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies a period when noncurrent object versions are automatically deleted. (documented below).
 func (o BucketLifecycleRuleOutput) NoncurrentVersionExpirations() BucketLifecycleRuleNoncurrentVersionExpirationArrayOutput {
 	return o.ApplyT(func(v BucketLifecycleRule) []BucketLifecycleRuleNoncurrentVersionExpiration {
 		return v.NoncurrentVersionExpirations
 	}).(BucketLifecycleRuleNoncurrentVersionExpirationArrayOutput)
 }
 
-// Specifies a period when noncurrent object versions are automatically transitioned to `WARM` or `COLD` storage class (documented below).
-//
-// At least one of `expiration`, `transition`, `noncurrentVersionExpiration`, `noncurrentVersionTransition` must be specified.
 func (o BucketLifecycleRuleOutput) NoncurrentVersionTransitions() BucketLifecycleRuleNoncurrentVersionTransitionArrayOutput {
 	return o.ApplyT(func(v BucketLifecycleRule) []BucketLifecycleRuleNoncurrentVersionTransition {
 		return v.NoncurrentVersionTransitions
 	}).(BucketLifecycleRuleNoncurrentVersionTransitionArrayOutput)
 }
 
-// Object key prefix identifying one or more objects to which the rule applies.
-// If omitted, all objects in the bucket will be managed by the lifecycle rule.
-// The prefix cannot start or end with a slash (/), cannot have consecutive slashes (/), and cannot contain the following special characters: \:*?"<>|.
 func (o BucketLifecycleRuleOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRule) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
-// Specifies a period when objects that have been last updated are automatically transitioned to `WARM` or `COLD` storage class (documented below).
 func (o BucketLifecycleRuleOutput) Transitions() BucketLifecycleRuleTransitionArrayOutput {
 	return o.ApplyT(func(v BucketLifecycleRule) []BucketLifecycleRuleTransition { return v.Transitions }).(BucketLifecycleRuleTransitionArrayOutput)
 }
@@ -428,8 +368,6 @@ func (o BucketLifecycleRuleAbortIncompleteMultipartUploadArrayOutput) Index(i pu
 }
 
 type BucketLifecycleRuleExpiration struct {
-	// Specifies the number of days when objects that have been last updated are automatically deleted.
-	// The expiration time must be greater than the transition times.
 	Days int `pulumi:"days"`
 }
 
@@ -445,8 +383,6 @@ type BucketLifecycleRuleExpirationInput interface {
 }
 
 type BucketLifecycleRuleExpirationArgs struct {
-	// Specifies the number of days when objects that have been last updated are automatically deleted.
-	// The expiration time must be greater than the transition times.
 	Days pulumi.IntInput `pulumi:"days"`
 }
 
@@ -501,8 +437,6 @@ func (o BucketLifecycleRuleExpirationOutput) ToBucketLifecycleRuleExpirationOutp
 	return o
 }
 
-// Specifies the number of days when objects that have been last updated are automatically deleted.
-// The expiration time must be greater than the transition times.
 func (o BucketLifecycleRuleExpirationOutput) Days() pulumi.IntOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleExpiration) int { return v.Days }).(pulumi.IntOutput)
 }
@@ -528,7 +462,6 @@ func (o BucketLifecycleRuleExpirationArrayOutput) Index(i pulumi.IntInput) Bucke
 }
 
 type BucketLifecycleRuleNoncurrentVersionExpiration struct {
-	// Specifies the number of days when noncurrent object versions are automatically deleted.
 	Days int `pulumi:"days"`
 }
 
@@ -544,7 +477,6 @@ type BucketLifecycleRuleNoncurrentVersionExpirationInput interface {
 }
 
 type BucketLifecycleRuleNoncurrentVersionExpirationArgs struct {
-	// Specifies the number of days when noncurrent object versions are automatically deleted.
 	Days pulumi.IntInput `pulumi:"days"`
 }
 
@@ -599,7 +531,6 @@ func (o BucketLifecycleRuleNoncurrentVersionExpirationOutput) ToBucketLifecycleR
 	return o
 }
 
-// Specifies the number of days when noncurrent object versions are automatically deleted.
 func (o BucketLifecycleRuleNoncurrentVersionExpirationOutput) Days() pulumi.IntOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleNoncurrentVersionExpiration) int { return v.Days }).(pulumi.IntOutput)
 }
@@ -625,9 +556,7 @@ func (o BucketLifecycleRuleNoncurrentVersionExpirationArrayOutput) Index(i pulum
 }
 
 type BucketLifecycleRuleNoncurrentVersionTransition struct {
-	// Specifies the number of days when noncurrent object versions are automatically transitioned to the specified storage class.
-	Days int `pulumi:"days"`
-	// The class of storage used to store the object. Only `WARM` and `COLD` are supported.
+	Days         int    `pulumi:"days"`
 	StorageClass string `pulumi:"storageClass"`
 }
 
@@ -643,9 +572,7 @@ type BucketLifecycleRuleNoncurrentVersionTransitionInput interface {
 }
 
 type BucketLifecycleRuleNoncurrentVersionTransitionArgs struct {
-	// Specifies the number of days when noncurrent object versions are automatically transitioned to the specified storage class.
-	Days pulumi.IntInput `pulumi:"days"`
-	// The class of storage used to store the object. Only `WARM` and `COLD` are supported.
+	Days         pulumi.IntInput    `pulumi:"days"`
 	StorageClass pulumi.StringInput `pulumi:"storageClass"`
 }
 
@@ -700,12 +627,10 @@ func (o BucketLifecycleRuleNoncurrentVersionTransitionOutput) ToBucketLifecycleR
 	return o
 }
 
-// Specifies the number of days when noncurrent object versions are automatically transitioned to the specified storage class.
 func (o BucketLifecycleRuleNoncurrentVersionTransitionOutput) Days() pulumi.IntOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleNoncurrentVersionTransition) int { return v.Days }).(pulumi.IntOutput)
 }
 
-// The class of storage used to store the object. Only `WARM` and `COLD` are supported.
 func (o BucketLifecycleRuleNoncurrentVersionTransitionOutput) StorageClass() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleNoncurrentVersionTransition) string { return v.StorageClass }).(pulumi.StringOutput)
 }
@@ -731,9 +656,7 @@ func (o BucketLifecycleRuleNoncurrentVersionTransitionArrayOutput) Index(i pulum
 }
 
 type BucketLifecycleRuleTransition struct {
-	// Specifies the number of days when objects that have been last updated are automatically transitioned to the specified storage class.
-	Days int `pulumi:"days"`
-	// The class of storage used to store the object. Only `WARM` and `COLD` are supported.
+	Days         int    `pulumi:"days"`
 	StorageClass string `pulumi:"storageClass"`
 }
 
@@ -749,9 +672,7 @@ type BucketLifecycleRuleTransitionInput interface {
 }
 
 type BucketLifecycleRuleTransitionArgs struct {
-	// Specifies the number of days when objects that have been last updated are automatically transitioned to the specified storage class.
-	Days pulumi.IntInput `pulumi:"days"`
-	// The class of storage used to store the object. Only `WARM` and `COLD` are supported.
+	Days         pulumi.IntInput    `pulumi:"days"`
 	StorageClass pulumi.StringInput `pulumi:"storageClass"`
 }
 
@@ -806,12 +727,10 @@ func (o BucketLifecycleRuleTransitionOutput) ToBucketLifecycleRuleTransitionOutp
 	return o
 }
 
-// Specifies the number of days when objects that have been last updated are automatically transitioned to the specified storage class.
 func (o BucketLifecycleRuleTransitionOutput) Days() pulumi.IntOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleTransition) int { return v.Days }).(pulumi.IntOutput)
 }
 
-// The class of storage used to store the object. Only `WARM` and `COLD` are supported.
 func (o BucketLifecycleRuleTransitionOutput) StorageClass() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleTransition) string { return v.StorageClass }).(pulumi.StringOutput)
 }
@@ -838,11 +757,8 @@ func (o BucketLifecycleRuleTransitionArrayOutput) Index(i pulumi.IntInput) Bucke
 
 type BucketLogging struct {
 	// schema: Required
-	Agency *string `pulumi:"agency"`
-	// The name of the bucket that will receive the log objects.
-	// The acl policy of the target bucket should be `log-delivery-write`.
-	TargetBucket string `pulumi:"targetBucket"`
-	// To specify a key prefix for log objects.
+	Agency       *string `pulumi:"agency"`
+	TargetBucket string  `pulumi:"targetBucket"`
 	TargetPrefix *string `pulumi:"targetPrefix"`
 }
 
@@ -859,11 +775,8 @@ type BucketLoggingInput interface {
 
 type BucketLoggingArgs struct {
 	// schema: Required
-	Agency pulumi.StringPtrInput `pulumi:"agency"`
-	// The name of the bucket that will receive the log objects.
-	// The acl policy of the target bucket should be `log-delivery-write`.
-	TargetBucket pulumi.StringInput `pulumi:"targetBucket"`
-	// To specify a key prefix for log objects.
+	Agency       pulumi.StringPtrInput `pulumi:"agency"`
+	TargetBucket pulumi.StringInput    `pulumi:"targetBucket"`
 	TargetPrefix pulumi.StringPtrInput `pulumi:"targetPrefix"`
 }
 
@@ -923,13 +836,10 @@ func (o BucketLoggingOutput) Agency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLogging) *string { return v.Agency }).(pulumi.StringPtrOutput)
 }
 
-// The name of the bucket that will receive the log objects.
-// The acl policy of the target bucket should be `log-delivery-write`.
 func (o BucketLoggingOutput) TargetBucket() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketLogging) string { return v.TargetBucket }).(pulumi.StringOutput)
 }
 
-// To specify a key prefix for log objects.
 func (o BucketLoggingOutput) TargetPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLogging) *string { return v.TargetPrefix }).(pulumi.StringPtrOutput)
 }
@@ -955,10 +865,8 @@ func (o BucketLoggingArrayOutput) Index(i pulumi.IntInput) BucketLoggingOutput {
 }
 
 type BucketStorageInfo struct {
-	// The number of objects stored in the bucket.
 	ObjectNumber *int `pulumi:"objectNumber"`
-	// The stored size of the bucket.
-	Size *int `pulumi:"size"`
+	Size         *int `pulumi:"size"`
 }
 
 // BucketStorageInfoInput is an input type that accepts BucketStorageInfoArgs and BucketStorageInfoOutput values.
@@ -973,10 +881,8 @@ type BucketStorageInfoInput interface {
 }
 
 type BucketStorageInfoArgs struct {
-	// The number of objects stored in the bucket.
 	ObjectNumber pulumi.IntPtrInput `pulumi:"objectNumber"`
-	// The stored size of the bucket.
-	Size pulumi.IntPtrInput `pulumi:"size"`
+	Size         pulumi.IntPtrInput `pulumi:"size"`
 }
 
 func (BucketStorageInfoArgs) ElementType() reflect.Type {
@@ -1030,12 +936,10 @@ func (o BucketStorageInfoOutput) ToBucketStorageInfoOutputWithContext(ctx contex
 	return o
 }
 
-// The number of objects stored in the bucket.
 func (o BucketStorageInfoOutput) ObjectNumber() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketStorageInfo) *int { return v.ObjectNumber }).(pulumi.IntPtrOutput)
 }
 
-// The stored size of the bucket.
 func (o BucketStorageInfoOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketStorageInfo) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
@@ -1061,23 +965,10 @@ func (o BucketStorageInfoArrayOutput) Index(i pulumi.IntInput) BucketStorageInfo
 }
 
 type BucketWebsite struct {
-	// Specifies the error page returned when an error occurs during static website access.
-	// Only HTML, JPG, PNG, BMP, and WEBP files under the root directory are supported.
-	ErrorDocument *string `pulumi:"errorDocument"`
-	// Unless using `redirectAllRequestsTo`. Specifies the default homepage of the static website, only HTML web pages are supported.
-	// OBS only allows files such as `index.html` in the root directory of a bucket to function as the default homepage.
-	// That is to say, do not set the default homepage with a multi-level directory structure (for example, /page/index.html).
-	IndexDocument *string `pulumi:"indexDocument"`
-	// A hostname to redirect all website requests for this bucket to. Hostname can optionally be prefixed with a protocol (`http://` or `https://`) to use when redirecting requests. The default is the protocol that is used in the original request.
+	ErrorDocument         *string `pulumi:"errorDocument"`
+	IndexDocument         *string `pulumi:"indexDocument"`
 	RedirectAllRequestsTo *string `pulumi:"redirectAllRequestsTo"`
-	// A JSON or XML format containing routing rules describing redirect behavior and when redirects are applied.
-	// Each rule contains a `Condition` and a `Redirect` as shown in the following table:
-	//
-	// Parameter | Key
-	// --- | ---
-	// Condition | KeyPrefixEquals, HttpErrorCodeReturnedEquals
-	// Redirect | Protocol, HostName, ReplaceKeyPrefixWith, ReplaceKeyWith, HttpRedirectCode
-	RoutingRules *string `pulumi:"routingRules"`
+	RoutingRules          *string `pulumi:"routingRules"`
 }
 
 // BucketWebsiteInput is an input type that accepts BucketWebsiteArgs and BucketWebsiteOutput values.
@@ -1092,23 +983,10 @@ type BucketWebsiteInput interface {
 }
 
 type BucketWebsiteArgs struct {
-	// Specifies the error page returned when an error occurs during static website access.
-	// Only HTML, JPG, PNG, BMP, and WEBP files under the root directory are supported.
-	ErrorDocument pulumi.StringPtrInput `pulumi:"errorDocument"`
-	// Unless using `redirectAllRequestsTo`. Specifies the default homepage of the static website, only HTML web pages are supported.
-	// OBS only allows files such as `index.html` in the root directory of a bucket to function as the default homepage.
-	// That is to say, do not set the default homepage with a multi-level directory structure (for example, /page/index.html).
-	IndexDocument pulumi.StringPtrInput `pulumi:"indexDocument"`
-	// A hostname to redirect all website requests for this bucket to. Hostname can optionally be prefixed with a protocol (`http://` or `https://`) to use when redirecting requests. The default is the protocol that is used in the original request.
+	ErrorDocument         pulumi.StringPtrInput `pulumi:"errorDocument"`
+	IndexDocument         pulumi.StringPtrInput `pulumi:"indexDocument"`
 	RedirectAllRequestsTo pulumi.StringPtrInput `pulumi:"redirectAllRequestsTo"`
-	// A JSON or XML format containing routing rules describing redirect behavior and when redirects are applied.
-	// Each rule contains a `Condition` and a `Redirect` as shown in the following table:
-	//
-	// Parameter | Key
-	// --- | ---
-	// Condition | KeyPrefixEquals, HttpErrorCodeReturnedEquals
-	// Redirect | Protocol, HostName, ReplaceKeyPrefixWith, ReplaceKeyWith, HttpRedirectCode
-	RoutingRules pulumi.StringPtrInput `pulumi:"routingRules"`
+	RoutingRules          pulumi.StringPtrInput `pulumi:"routingRules"`
 }
 
 func (BucketWebsiteArgs) ElementType() reflect.Type {
@@ -1188,31 +1066,18 @@ func (o BucketWebsiteOutput) ToBucketWebsitePtrOutputWithContext(ctx context.Con
 	}).(BucketWebsitePtrOutput)
 }
 
-// Specifies the error page returned when an error occurs during static website access.
-// Only HTML, JPG, PNG, BMP, and WEBP files under the root directory are supported.
 func (o BucketWebsiteOutput) ErrorDocument() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketWebsite) *string { return v.ErrorDocument }).(pulumi.StringPtrOutput)
 }
 
-// Unless using `redirectAllRequestsTo`. Specifies the default homepage of the static website, only HTML web pages are supported.
-// OBS only allows files such as `index.html` in the root directory of a bucket to function as the default homepage.
-// That is to say, do not set the default homepage with a multi-level directory structure (for example, /page/index.html).
 func (o BucketWebsiteOutput) IndexDocument() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketWebsite) *string { return v.IndexDocument }).(pulumi.StringPtrOutput)
 }
 
-// A hostname to redirect all website requests for this bucket to. Hostname can optionally be prefixed with a protocol (`http://` or `https://`) to use when redirecting requests. The default is the protocol that is used in the original request.
 func (o BucketWebsiteOutput) RedirectAllRequestsTo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketWebsite) *string { return v.RedirectAllRequestsTo }).(pulumi.StringPtrOutput)
 }
 
-// A JSON or XML format containing routing rules describing redirect behavior and when redirects are applied.
-// Each rule contains a `Condition` and a `Redirect` as shown in the following table:
-//
-// Parameter | Key
-// --- | ---
-// Condition | KeyPrefixEquals, HttpErrorCodeReturnedEquals
-// Redirect | Protocol, HostName, ReplaceKeyPrefixWith, ReplaceKeyWith, HttpRedirectCode
 func (o BucketWebsiteOutput) RoutingRules() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketWebsite) *string { return v.RoutingRules }).(pulumi.StringPtrOutput)
 }
@@ -1241,8 +1106,6 @@ func (o BucketWebsitePtrOutput) Elem() BucketWebsiteOutput {
 	}).(BucketWebsiteOutput)
 }
 
-// Specifies the error page returned when an error occurs during static website access.
-// Only HTML, JPG, PNG, BMP, and WEBP files under the root directory are supported.
 func (o BucketWebsitePtrOutput) ErrorDocument() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketWebsite) *string {
 		if v == nil {
@@ -1252,9 +1115,6 @@ func (o BucketWebsitePtrOutput) ErrorDocument() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Unless using `redirectAllRequestsTo`. Specifies the default homepage of the static website, only HTML web pages are supported.
-// OBS only allows files such as `index.html` in the root directory of a bucket to function as the default homepage.
-// That is to say, do not set the default homepage with a multi-level directory structure (for example, /page/index.html).
 func (o BucketWebsitePtrOutput) IndexDocument() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketWebsite) *string {
 		if v == nil {
@@ -1264,7 +1124,6 @@ func (o BucketWebsitePtrOutput) IndexDocument() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A hostname to redirect all website requests for this bucket to. Hostname can optionally be prefixed with a protocol (`http://` or `https://`) to use when redirecting requests. The default is the protocol that is used in the original request.
 func (o BucketWebsitePtrOutput) RedirectAllRequestsTo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketWebsite) *string {
 		if v == nil {
@@ -1274,13 +1133,6 @@ func (o BucketWebsitePtrOutput) RedirectAllRequestsTo() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A JSON or XML format containing routing rules describing redirect behavior and when redirects are applied.
-// Each rule contains a `Condition` and a `Redirect` as shown in the following table:
-//
-// Parameter | Key
-// --- | ---
-// Condition | KeyPrefixEquals, HttpErrorCodeReturnedEquals
-// Redirect | Protocol, HostName, ReplaceKeyPrefixWith, ReplaceKeyWith, HttpRedirectCode
 func (o BucketWebsitePtrOutput) RoutingRules() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketWebsite) *string {
 		if v == nil {
@@ -1291,17 +1143,11 @@ func (o BucketWebsitePtrOutput) RoutingRules() pulumi.StringPtrOutput {
 }
 
 type GetBucketsBucket struct {
-	// The name of the OBS bucket.
-	Bucket string `pulumi:"bucket"`
-	// The date when the OBS bucket was created.
-	CreatedAt string `pulumi:"createdAt"`
-	// The enterprise project id of the OBS bucket.
+	Bucket              string `pulumi:"bucket"`
+	CreatedAt           string `pulumi:"createdAt"`
 	EnterpriseProjectId string `pulumi:"enterpriseProjectId"`
-	// The region in which to obtain the OBS bucket.
-	// If omitted, the provider-level region will be used.
-	Region string `pulumi:"region"`
-	// The storage class of the OBS bucket.
-	StorageClass string `pulumi:"storageClass"`
+	Region              string `pulumi:"region"`
+	StorageClass        string `pulumi:"storageClass"`
 }
 
 // GetBucketsBucketInput is an input type that accepts GetBucketsBucketArgs and GetBucketsBucketOutput values.
@@ -1316,17 +1162,11 @@ type GetBucketsBucketInput interface {
 }
 
 type GetBucketsBucketArgs struct {
-	// The name of the OBS bucket.
-	Bucket pulumi.StringInput `pulumi:"bucket"`
-	// The date when the OBS bucket was created.
-	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// The enterprise project id of the OBS bucket.
+	Bucket              pulumi.StringInput `pulumi:"bucket"`
+	CreatedAt           pulumi.StringInput `pulumi:"createdAt"`
 	EnterpriseProjectId pulumi.StringInput `pulumi:"enterpriseProjectId"`
-	// The region in which to obtain the OBS bucket.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringInput `pulumi:"region"`
-	// The storage class of the OBS bucket.
-	StorageClass pulumi.StringInput `pulumi:"storageClass"`
+	Region              pulumi.StringInput `pulumi:"region"`
+	StorageClass        pulumi.StringInput `pulumi:"storageClass"`
 }
 
 func (GetBucketsBucketArgs) ElementType() reflect.Type {
@@ -1380,28 +1220,22 @@ func (o GetBucketsBucketOutput) ToGetBucketsBucketOutputWithContext(ctx context.
 	return o
 }
 
-// The name of the OBS bucket.
 func (o GetBucketsBucketOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketsBucket) string { return v.Bucket }).(pulumi.StringOutput)
 }
 
-// The date when the OBS bucket was created.
 func (o GetBucketsBucketOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketsBucket) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// The enterprise project id of the OBS bucket.
 func (o GetBucketsBucketOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketsBucket) string { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// The region in which to obtain the OBS bucket.
-// If omitted, the provider-level region will be used.
 func (o GetBucketsBucketOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketsBucket) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The storage class of the OBS bucket.
 func (o GetBucketsBucketOutput) StorageClass() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketsBucket) string { return v.StorageClass }).(pulumi.StringOutput)
 }

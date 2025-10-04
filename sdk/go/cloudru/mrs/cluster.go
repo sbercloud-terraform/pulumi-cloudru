@@ -12,606 +12,49 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a cluster resource within SberCloud MRS.
-//
-// ## Example Usage
-//
-// ### Create an analysis cluster
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/mrs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			test, err := sbercloud.GetAvailabilityZones(ctx, &cloudru.GetAvailabilityZonesArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			cfg := config.New(ctx, "")
-//			clusterName := cfg.RequireObject("clusterName")
-//			password := cfg.RequireObject("password")
-//			vpcId := cfg.RequireObject("vpcId")
-//			subnetId := cfg.RequireObject("subnetId")
-//			_, err = mrs.Newcluster(ctx, "test", &mrs.clusterArgs{
-//				AvailabilityZone: pulumi.String(test.Names[0]),
-//				Name:             pulumi.Any(clusterName),
-//				Version:          pulumi.String("MRS 2.1.0"),
-//				Type:             pulumi.String("ANALYSIS"),
-//				ComponentLists: pulumi.StringArray{
-//					pulumi.String("Hadoop"),
-//					pulumi.String("Hive"),
-//					pulumi.String("Tez"),
-//				},
-//				ManagerAdminPass: pulumi.Any(password),
-//				NodeAdminPass:    pulumi.Any(password),
-//				VpcId:            pulumi.Any(vpcId),
-//				SubnetId:         pulumi.Any(subnetId),
-//				MasterNodes: &mrs.ClusterMasterNodesArgs{
-//					Flavor:          pulumi.String("c6.2xlarge.4.linux.bigdata"),
-//					NodeNumber:      pulumi.Int(2),
-//					RootVolumeType:  pulumi.String("SAS"),
-//					RootVolumeSize:  pulumi.Int(300),
-//					DataVolumeType:  pulumi.String("SAS"),
-//					DataVolumeSize:  pulumi.Int(480),
-//					DataVolumeCount: pulumi.Int(1),
-//				},
-//				AnalysisCoreNodes: &mrs.ClusterAnalysisCoreNodesArgs{
-//					Flavor:          pulumi.String("c6.2xlarge.4.linux.bigdata"),
-//					NodeNumber:      pulumi.Int(2),
-//					RootVolumeType:  pulumi.String("SAS"),
-//					RootVolumeSize:  pulumi.Int(300),
-//					DataVolumeType:  pulumi.String("SAS"),
-//					DataVolumeSize:  pulumi.Int(480),
-//					DataVolumeCount: pulumi.Int(1),
-//				},
-//				AnalysisTaskNodes: &mrs.ClusterAnalysisTaskNodesArgs{
-//					Flavor:          pulumi.String("c6.2xlarge.4.linux.bigdata"),
-//					NodeNumber:      pulumi.Int(1),
-//					RootVolumeType:  pulumi.String("SAS"),
-//					RootVolumeSize:  pulumi.Int(300),
-//					DataVolumeType:  pulumi.String("SAS"),
-//					DataVolumeSize:  pulumi.Int(480),
-//					DataVolumeCount: pulumi.Int(1),
-//				},
-//				Tags: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//					"key": pulumi.String("value"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Create a stream cluster
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/mrs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			test, err := sbercloud.GetAvailabilityZones(ctx, &cloudru.GetAvailabilityZonesArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			cfg := config.New(ctx, "")
-//			clusterName := cfg.RequireObject("clusterName")
-//			password := cfg.RequireObject("password")
-//			vpcId := cfg.RequireObject("vpcId")
-//			subnetId := cfg.RequireObject("subnetId")
-//			_, err = mrs.Newcluster(ctx, "test", &mrs.clusterArgs{
-//				AvailabilityZone: pulumi.String(test.Names[0]),
-//				Name:             pulumi.Any(clusterName),
-//				Type:             pulumi.String("STREAMING"),
-//				Version:          pulumi.String("MRS 2.1.0"),
-//				ManagerAdminPass: pulumi.Any(password),
-//				NodeAdminPass:    pulumi.Any(password),
-//				VpcId:            pulumi.Any(vpcId),
-//				SubnetId:         pulumi.Any(subnetId),
-//				ComponentLists: pulumi.StringArray{
-//					pulumi.String("Storm"),
-//				},
-//				MasterNodes: &mrs.ClusterMasterNodesArgs{
-//					Flavor:          pulumi.String("c6.2xlarge.4.linux.bigdata"),
-//					NodeNumber:      pulumi.Int(2),
-//					RootVolumeType:  pulumi.String("SAS"),
-//					RootVolumeSize:  pulumi.Int(300),
-//					DataVolumeType:  pulumi.String("SAS"),
-//					DataVolumeSize:  pulumi.Int(480),
-//					DataVolumeCount: pulumi.Int(1),
-//				},
-//				StreamingCoreNodes: &mrs.ClusterStreamingCoreNodesArgs{
-//					Flavor:          pulumi.String("c6.2xlarge.4.linux.bigdata"),
-//					NodeNumber:      pulumi.Int(2),
-//					RootVolumeType:  pulumi.String("SAS"),
-//					RootVolumeSize:  pulumi.Int(300),
-//					DataVolumeType:  pulumi.String("SAS"),
-//					DataVolumeSize:  pulumi.Int(480),
-//					DataVolumeCount: pulumi.Int(1),
-//				},
-//				Tags: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//					"key": pulumi.String("value"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Create a hybrid cluster
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/mrs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			test, err := sbercloud.GetAvailabilityZones(ctx, &cloudru.GetAvailabilityZonesArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			cfg := config.New(ctx, "")
-//			clusterName := cfg.RequireObject("clusterName")
-//			password := cfg.RequireObject("password")
-//			vpcId := cfg.RequireObject("vpcId")
-//			subnetId := cfg.RequireObject("subnetId")
-//			_, err = mrs.Newcluster(ctx, "test", &mrs.clusterArgs{
-//				AvailabilityZone: pulumi.String(test.Names[0]),
-//				Name:             pulumi.Any(clusterName),
-//				Version:          pulumi.String("MRS 3.0.5"),
-//				Type:             pulumi.String("MIXED"),
-//				ComponentLists: pulumi.StringArray{
-//					pulumi.String("Hadoop"),
-//					pulumi.String("Spark"),
-//					pulumi.String("Hive"),
-//					pulumi.String("Tez"),
-//					pulumi.String("Storm"),
-//				},
-//				ManagerAdminPass: pulumi.Any(password),
-//				NodeAdminPass:    pulumi.Any(password),
-//				VpcId:            pulumi.Any(vpcId),
-//				SubnetId:         pulumi.Any(subnetId),
-//				MasterNodes: &mrs.ClusterMasterNodesArgs{
-//					Flavor:          pulumi.String("c6.2xlarge.4.linux.bigdata"),
-//					NodeNumber:      pulumi.Int(2),
-//					RootVolumeType:  pulumi.String("SAS"),
-//					RootVolumeSize:  pulumi.Int(300),
-//					DataVolumeType:  pulumi.String("SAS"),
-//					DataVolumeSize:  pulumi.Int(480),
-//					DataVolumeCount: pulumi.Int(1),
-//				},
-//				AnalysisCoreNodes: &mrs.ClusterAnalysisCoreNodesArgs{
-//					Flavor:          pulumi.String("c6.2xlarge.4.linux.bigdata"),
-//					NodeNumber:      pulumi.Int(2),
-//					RootVolumeType:  pulumi.String("SAS"),
-//					RootVolumeSize:  pulumi.Int(300),
-//					DataVolumeType:  pulumi.String("SAS"),
-//					DataVolumeSize:  pulumi.Int(480),
-//					DataVolumeCount: pulumi.Int(1),
-//				},
-//				StreamingCoreNodes: &mrs.ClusterStreamingCoreNodesArgs{
-//					Flavor:          pulumi.String("c6.2xlarge.4.linux.bigdata"),
-//					NodeNumber:      pulumi.Int(2),
-//					RootVolumeType:  pulumi.String("SAS"),
-//					RootVolumeSize:  pulumi.Int(300),
-//					DataVolumeType:  pulumi.String("SAS"),
-//					DataVolumeSize:  pulumi.Int(480),
-//					DataVolumeCount: pulumi.Int(1),
-//				},
-//				AnalysisTaskNodes: &mrs.ClusterAnalysisTaskNodesArgs{
-//					Flavor:          pulumi.String("c6.2xlarge.4.linux.bigdata"),
-//					NodeNumber:      pulumi.Int(1),
-//					RootVolumeType:  pulumi.String("SAS"),
-//					RootVolumeSize:  pulumi.Int(300),
-//					DataVolumeType:  pulumi.String("SAS"),
-//					DataVolumeSize:  pulumi.Int(480),
-//					DataVolumeCount: pulumi.Int(1),
-//				},
-//				StreamingTaskNodes: &mrs.ClusterStreamingTaskNodesArgs{
-//					Flavor:          pulumi.String("c6.2xlarge.4.linux.bigdata"),
-//					NodeNumber:      pulumi.Int(1),
-//					RootVolumeType:  pulumi.String("SAS"),
-//					RootVolumeSize:  pulumi.Int(300),
-//					DataVolumeType:  pulumi.String("SAS"),
-//					DataVolumeSize:  pulumi.Int(480),
-//					DataVolumeCount: pulumi.Int(1),
-//				},
-//				Tags: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//					"key": pulumi.String("value"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Create a custom cluster
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/mrs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			test, err := sbercloud.GetAvailabilityZones(ctx, &cloudru.GetAvailabilityZonesArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			cfg := config.New(ctx, "")
-//			clusterName := cfg.RequireObject("clusterName")
-//			password := cfg.RequireObject("password")
-//			vpcId := cfg.RequireObject("vpcId")
-//			subnetId := cfg.RequireObject("subnetId")
-//			_, err = mrs.Newcluster(ctx, "test", &mrs.clusterArgs{
-//				AvailabilityZone: pulumi.String(test.Names[0]),
-//				Name:             pulumi.Any(clusterName),
-//				Version:          pulumi.String("MRS 3.1.0"),
-//				Type:             pulumi.String("CUSTOM"),
-//				SafeMode:         pulumi.Bool(true),
-//				ManagerAdminPass: pulumi.Any(password),
-//				NodeAdminPass:    pulumi.Any(password),
-//				VpcId:            pulumi.Any(vpcId),
-//				SubnetId:         pulumi.Any(subnetId),
-//				TemplateId:       pulumi.String("mgmt_control_combined_v4"),
-//				ComponentLists: pulumi.StringArray{
-//					pulumi.String("DBService"),
-//					pulumi.String("Hadoop"),
-//					pulumi.String("ZooKeeper"),
-//					pulumi.String("Ranger"),
-//				},
-//				MasterNodes: &mrs.ClusterMasterNodesArgs{
-//					Flavor:          pulumi.String("c6.4xlarge.4.linux.bigdata"),
-//					NodeNumber:      pulumi.Int(3),
-//					RootVolumeType:  pulumi.String("SAS"),
-//					RootVolumeSize:  pulumi.Int(480),
-//					DataVolumeType:  pulumi.String("SAS"),
-//					DataVolumeSize:  pulumi.Int(600),
-//					DataVolumeCount: pulumi.Int(1),
-//					AssignedRoles: pulumi.StringArray{
-//						pulumi.String("OMSServer:1,2"),
-//						pulumi.String("SlapdServer:1,2"),
-//						pulumi.String("KerberosServer:1,2"),
-//						pulumi.String("KerberosAdmin:1,2"),
-//						pulumi.String("quorumpeer:1,2,3"),
-//						pulumi.String("NameNode:2,3"),
-//						pulumi.String("Zkfc:2,3"),
-//						pulumi.String("JournalNode:1,2,3"),
-//						pulumi.String("ResourceManager:2,3"),
-//						pulumi.String("JobHistoryServer:3"),
-//						pulumi.String("DBServer:1,3"),
-//						pulumi.String("HttpFS:1,3"),
-//						pulumi.String("TimelineServer:3"),
-//						pulumi.String("RangerAdmin:1,2"),
-//						pulumi.String("UserSync:2"),
-//						pulumi.String("TagSync:2"),
-//						pulumi.String("KerberosClient"),
-//						pulumi.String("SlapdClient"),
-//						pulumi.String("meta"),
-//					},
-//				},
-//				CustomNodes: mrs.ClusterCustomNodeArray{
-//					&mrs.ClusterCustomNodeArgs{
-//						GroupName:       pulumi.String("node_group_1"),
-//						Flavor:          pulumi.String("c6.4xlarge.4.linux.bigdata"),
-//						NodeNumber:      pulumi.Int(4),
-//						RootVolumeType:  pulumi.String("SAS"),
-//						RootVolumeSize:  pulumi.Int(480),
-//						DataVolumeType:  pulumi.String("SAS"),
-//						DataVolumeSize:  pulumi.Int(600),
-//						DataVolumeCount: pulumi.Int(1),
-//						AssignedRoles: pulumi.StringArray{
-//							pulumi.String("DataNode"),
-//							pulumi.String("NodeManager"),
-//							pulumi.String("KerberosClient"),
-//							pulumi.String("SlapdClient"),
-//							pulumi.String("meta"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Create an analysis cluster and bind public IP
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/mrs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			test, err := sbercloud.GetAvailabilityZones(ctx, &cloudru.GetAvailabilityZonesArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			cfg := config.New(ctx, "")
-//			clusterName := cfg.RequireObject("clusterName")
-//			password := cfg.RequireObject("password")
-//			vpcId := cfg.RequireObject("vpcId")
-//			subnetId := cfg.RequireObject("subnetId")
-//			publicIp := cfg.RequireObject("publicIp")
-//			_, err = mrs.Newcluster(ctx, "test", &mrs.clusterArgs{
-//				AvailabilityZone: pulumi.String(test.Names[0]),
-//				Name:             pulumi.Any(clusterName),
-//				Version:          pulumi.String("MRS 2.1.0"),
-//				Type:             pulumi.String("ANALYSIS"),
-//				ComponentLists: pulumi.StringArray{
-//					pulumi.String("Hadoop"),
-//					pulumi.String("Hive"),
-//					pulumi.String("Tez"),
-//				},
-//				ManagerAdminPass: pulumi.Any(password),
-//				NodeAdminPass:    pulumi.Any(password),
-//				VpcId:            pulumi.Any(vpcId),
-//				SubnetId:         pulumi.Any(subnetId),
-//				PublicIp:         pulumi.Any(publicIp),
-//				MasterNodes: &mrs.ClusterMasterNodesArgs{
-//					Flavor:          pulumi.String("c6.2xlarge.4.linux.bigdata"),
-//					NodeNumber:      pulumi.Int(2),
-//					RootVolumeType:  pulumi.String("SAS"),
-//					RootVolumeSize:  pulumi.Int(300),
-//					DataVolumeType:  pulumi.String("SAS"),
-//					DataVolumeSize:  pulumi.Int(480),
-//					DataVolumeCount: pulumi.Int(1),
-//				},
-//				AnalysisCoreNodes: &mrs.ClusterAnalysisCoreNodesArgs{
-//					Flavor:          pulumi.String("c6.2xlarge.4.linux.bigdata"),
-//					NodeNumber:      pulumi.Int(2),
-//					RootVolumeType:  pulumi.String("SAS"),
-//					RootVolumeSize:  pulumi.Int(300),
-//					DataVolumeType:  pulumi.String("SAS"),
-//					DataVolumeSize:  pulumi.Int(480),
-//					DataVolumeCount: pulumi.Int(1),
-//				},
-//				AnalysisTaskNodes: &mrs.ClusterAnalysisTaskNodesArgs{
-//					Flavor:          pulumi.String("c6.2xlarge.4.linux.bigdata"),
-//					NodeNumber:      pulumi.Int(1),
-//					RootVolumeType:  pulumi.String("SAS"),
-//					RootVolumeSize:  pulumi.Int(300),
-//					DataVolumeType:  pulumi.String("SAS"),
-//					DataVolumeSize:  pulumi.Int(480),
-//					DataVolumeCount: pulumi.Int(1),
-//				},
-//				Tags: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//					"key": pulumi.String("value"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Clusters can be imported by their `id`. For example,
-//
-// ```sh
-// $ pulumi import sbercloud:Mrs/cluster:cluster test b11b407c-e604-4e8d-8bc4-92398320b847
-// ```
-//
-// # Note that the imported state may not be identical to your resource definition, due to some attrubutes missing from the
-//
-// API response, security or some other reason. The missing attributes include:
-//
-// `manager_admin_pass`, `node_admin_pass`,`template_id` and `assigned_roles`.
-//
-// It is generally recommended running `pulumi preview` after importing a cluster.
-//
-// # You can then decide if changes should be applied to the cluster, or the resource definition
-//
-// should be updated to align with the cluster. Also you can ignore changes as below.
-//
-// resource "sbercloud_mapreduce_cluster" "test" {
-//
-//	  ...
-//
-//	lifecycle {
-//
-//	  ignore_changes = [
-//
-//	    manager_admin_pass, node_admin_pass,
-//
-//	  ]
-//
-//	}
-//
-// }
 type Cluster struct {
 	pulumi.CustomResourceState
 
-	// Specifies a list of the informations about the analysis core nodes in the
-	// MapReduce cluster.
-	// The `nodes` object structure of the `analysisCoreNodes` is documented below.
-	AnalysisCoreNodes ClusterAnalysisCoreNodesPtrOutput `pulumi:"analysisCoreNodes"`
-	// Specifies a list of the informations about the analysis task nodes in the
-	// MapReduce cluster.
-	// The `nodes` object structure of the `analysisTaskNodes` is documented below.
-	AnalysisTaskNodes ClusterAnalysisTaskNodesPtrOutput `pulumi:"analysisTaskNodes"`
-	AutoRenew         pulumi.StringPtrOutput            `pulumi:"autoRenew"`
-	// Specifies the availability zone in which to create the cluster.
-	// For more information about regions and AZs, see [Regions and Endpoints](https://support.hc.sbercloud.ru/en-us/endpoint/index.html).
-	// Changing this will create a new MapReduce cluster resource.
-	AvailabilityZone pulumi.StringOutput               `pulumi:"availabilityZone"`
-	BootstrapScripts ClusterBootstrapScriptArrayOutput `pulumi:"bootstrapScripts"`
-	ChargingMode     pulumi.StringOutput               `pulumi:"chargingMode"`
-	// The charging start time which is the start time of billing, in RFC-3339 format.
-	ChargingStartTime pulumi.StringOutput               `pulumi:"chargingStartTime"`
-	ComponentConfigs  ClusterComponentConfigArrayOutput `pulumi:"componentConfigs"`
-	// Specifies the list of component names. For the components supported by
-	// the cluster, please following [reference](https://support.hc.sbercloud.ru/api/mrs/mrs_02_0101.html)
-	// Changing this will create a new MapReduce cluster resource.
-	ComponentLists pulumi.StringArrayOutput `pulumi:"componentLists"`
-	// The cluster creation time, in RFC-3339 format.
-	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Specifies a list of the informations about the custom nodes in the MapReduce
-	// cluster.
-	// The `nodes` object structure of the `customNodes` is documented below.
-	// `Unlike other nodes, it needs to specify groupName`
-	CustomNodes ClusterCustomNodeArrayOutput `pulumi:"customNodes"`
-	// Specifies the EIP ID which bound to the MapReduce cluster.
-	// The EIP must have been created and must be in the same region as the cluster.
-	// Changing this will create a new MapReduce cluster resource.
-	EipId pulumi.StringOutput `pulumi:"eipId"`
-	// Specifies a unique ID in UUID format of enterprise project.
-	// Changing this will create a new MapReduce cluster resource.
+	AnalysisCoreNodes   ClusterAnalysisCoreNodesPtrOutput    `pulumi:"analysisCoreNodes"`
+	AnalysisTaskNodes   ClusterAnalysisTaskNodesPtrOutput    `pulumi:"analysisTaskNodes"`
+	AutoRenew           pulumi.StringPtrOutput               `pulumi:"autoRenew"`
+	AvailabilityZone    pulumi.StringOutput                  `pulumi:"availabilityZone"`
+	BootstrapScripts    ClusterBootstrapScriptArrayOutput    `pulumi:"bootstrapScripts"`
+	ChargingMode        pulumi.StringOutput                  `pulumi:"chargingMode"`
+	ChargingStartTime   pulumi.StringOutput                  `pulumi:"chargingStartTime"`
+	ComponentConfigs    ClusterComponentConfigArrayOutput    `pulumi:"componentConfigs"`
+	ComponentLists      pulumi.StringArrayOutput             `pulumi:"componentLists"`
+	CreateTime          pulumi.StringOutput                  `pulumi:"createTime"`
+	CustomNodes         ClusterCustomNodeArrayOutput         `pulumi:"customNodes"`
+	EipId               pulumi.StringOutput                  `pulumi:"eipId"`
 	EnterpriseProjectId pulumi.StringOutput                  `pulumi:"enterpriseProjectId"`
 	ExternalDatasources ClusterExternalDatasourceArrayOutput `pulumi:"externalDatasources"`
-	// Specifies whether logs are collected when cluster installation fails.
-	// Default to true. If `logCollection` set true, the OBS buckets will be created and only used to collect logs that
-	// record MapReduce cluster creation failures. Changing this will create a new MapReduce cluster resource.
-	LogCollection pulumi.BoolPtrOutput `pulumi:"logCollection"`
-	// Specifies the administrator password, which is used to log in to
-	// the cluster management page. The password can contain 8 to 26 charactors and cannot be the username or the username
-	// spelled backwards. The password must contain lowercase letters, uppercase letters, digits, spaces and the special
-	// characters: `!?,.:-_{}[]@$^+=/`. Changing this will create a new MapReduce cluster resource.
-	ManagerAdminPass pulumi.StringOutput `pulumi:"managerAdminPass"`
-	// The IP address of the master node.
-	MasterNodeIp pulumi.StringOutput `pulumi:"masterNodeIp"`
-	// Specifies a list of the information about the master nodes in the
-	// MapReduce cluster.
-	// The `nodes` object structure of the `masterNodes` is documented below.
-	// Changing this will create a new MapReduce cluster resource.
-	MasterNodes ClusterMasterNodesOutput `pulumi:"masterNodes"`
-	// Specifies the name of the MapReduce cluster. The name can contain 2 to 64
-	// characters, which may consist of letters, digits, underscores (_) and hyphens (-). Changing this will create a new
-	// MapReduce cluster resource.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the administrator password, which is used to log in to the
-	// each nodes(/ECSs). The password can contain 8 to 26 charactors and cannot be the username or the username spelled
-	// backwards. The password must contain lowercase letters, uppercase letters, digits, spaces and the special
-	// characters: `!?,.:-_{}[]@$^+=/`. Changing this will create a new MapReduce cluster resource. This parameter
-	// and `nodeKeyPair` are alternative.
-	NodeAdminPass pulumi.StringPtrOutput `pulumi:"nodeAdminPass"`
-	// Specifies the name of a key pair, which is used to log in to the each
-	// nodes(/ECSs). Changing this will create a new MapReduce cluster resource.
-	NodeKeyPair pulumi.StringPtrOutput `pulumi:"nodeKeyPair"`
-	Period      pulumi.IntPtrOutput    `pulumi:"period"`
-	PeriodUnit  pulumi.StringPtrOutput `pulumi:"periodUnit"`
-	// The preferred private IP address of the master node.
-	PrivateIp pulumi.StringOutput `pulumi:"privateIp"`
-	// Specifies the EIP address which bound to the MapReduce cluster.
-	// The EIP must have been created and must be in the same region as the cluster.
-	// Changing this will create a new MapReduce cluster resource.
-	PublicIp pulumi.StringOutput `pulumi:"publicIp"`
-	// The region in which to create the MapReduce cluster resource. If omitted, the
-	// provider-level region will be used. Changing this will create a new MapReduce cluster resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Specifies whether the running mode of the MapReduce cluster is secure,
-	// default to true.
-	// + true: enable Kerberos authentication.
-	// + false: disable Kerberos authentication. Changing this will create a new MapReduce cluster resource.
-	SafeMode pulumi.BoolPtrOutput `pulumi:"safeMode"`
-	// Specifies an array of one or more security group ID to attach to the
-	// MapReduce cluster. If using the specified security group, the group need to open the specified port (9022) rules.
-	SecurityGroupIds pulumi.StringArrayOutput  `pulumi:"securityGroupIds"`
-	SmnNotify        ClusterSmnNotifyPtrOutput `pulumi:"smnNotify"`
-	// The cluster state, which include: running, frozen, abnormal and failed.
-	Status pulumi.StringOutput `pulumi:"status"`
-	// Specifies a list of the informations about the streaming core nodes in the
-	// MapReduce cluster.
-	// The `nodes` object structure of the `streamingCoreNodes` is documented below.
-	StreamingCoreNodes ClusterStreamingCoreNodesPtrOutput `pulumi:"streamingCoreNodes"`
-	// Specifies a list of the informations about the streaming task nodes in the
-	// MapReduce cluster.
-	// The `nodes` object structure of the `streamingTaskNodes` is documented below.
-	StreamingTaskNodes ClusterStreamingTaskNodesPtrOutput `pulumi:"streamingTaskNodes"`
-	// Specifies the network ID of a subnet which bound to the MapReduce cluster.
-	// Changing this will create a new MapReduce cluster resource.
-	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
-	// Specifies the key/value pairs to associate with the cluster.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Specifies the template used for node deployment when the cluster type is
-	// CUSTOM.
-	// + mgmt_control_combined_v2: template for jointly deploying the management and control nodes. The management and
-	//   control roles are co-deployed on the Master node, and data instances are deployed in the same node group. This
-	//   deployment mode applies to scenarios where the number of control nodes is less than 100, reducing costs.
-	// + mgmt_control_separated_v2: The management and control roles are deployed on different master nodes, and data
-	//   instances are deployed in the same node group. This deployment mode is applicable to a cluster with 100 to 500 nodes
-	//   and delivers better performance in high-concurrency load scenarios.
-	// + mgmt_control_data_separated_v2: The management role and control role are deployed on different Master nodes,
-	//   and data instances are deployed in different node groups. This deployment mode is applicable to a cluster with more
-	//   than 500 nodes. Components can be deployed separately, which can be used for a larger cluster scale.
-	TemplateId pulumi.StringPtrOutput `pulumi:"templateId"`
-	// The total number of nodes deployed in the cluster.
-	TotalNodeNumber pulumi.IntOutput `pulumi:"totalNodeNumber"`
-	// Specifies the type of the MapReduce cluster. The valid values are *ANALYSIS*,
-	// *STREAMING* and *MIXED*, default to *ANALYSIS*. Changing this will create a new MapReduce cluster resource.
-	Type pulumi.StringPtrOutput `pulumi:"type"`
-	// The cluster update time, in RFC-3339 format.
-	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// Specifies the MapReduce cluster version. The valid values are `MRS 2.1.0`
-	// , `MRS 3.0.5` and `MRS 3.1.0`. Changing this will create a new MapReduce cluster resource.
-	Version pulumi.StringOutput `pulumi:"version"`
-	// Specifies the ID of the VPC which bound to the MapReduce cluster. Changing
-	// this will create a new MapReduce cluster resource.
-	VpcId pulumi.StringOutput `pulumi:"vpcId"`
+	LogCollection       pulumi.BoolPtrOutput                 `pulumi:"logCollection"`
+	ManagerAdminPass    pulumi.StringOutput                  `pulumi:"managerAdminPass"`
+	MasterNodeIp        pulumi.StringOutput                  `pulumi:"masterNodeIp"`
+	MasterNodes         ClusterMasterNodesOutput             `pulumi:"masterNodes"`
+	Name                pulumi.StringOutput                  `pulumi:"name"`
+	NodeAdminPass       pulumi.StringPtrOutput               `pulumi:"nodeAdminPass"`
+	NodeKeyPair         pulumi.StringPtrOutput               `pulumi:"nodeKeyPair"`
+	Period              pulumi.IntPtrOutput                  `pulumi:"period"`
+	PeriodUnit          pulumi.StringPtrOutput               `pulumi:"periodUnit"`
+	PrivateIp           pulumi.StringOutput                  `pulumi:"privateIp"`
+	PublicIp            pulumi.StringOutput                  `pulumi:"publicIp"`
+	Region              pulumi.StringOutput                  `pulumi:"region"`
+	SafeMode            pulumi.BoolPtrOutput                 `pulumi:"safeMode"`
+	SecurityGroupIds    pulumi.StringArrayOutput             `pulumi:"securityGroupIds"`
+	SmnNotify           ClusterSmnNotifyPtrOutput            `pulumi:"smnNotify"`
+	Status              pulumi.StringOutput                  `pulumi:"status"`
+	StreamingCoreNodes  ClusterStreamingCoreNodesPtrOutput   `pulumi:"streamingCoreNodes"`
+	StreamingTaskNodes  ClusterStreamingTaskNodesPtrOutput   `pulumi:"streamingTaskNodes"`
+	SubnetId            pulumi.StringOutput                  `pulumi:"subnetId"`
+	Tags                pulumi.StringMapOutput               `pulumi:"tags"`
+	TemplateId          pulumi.StringPtrOutput               `pulumi:"templateId"`
+	TotalNodeNumber     pulumi.IntOutput                     `pulumi:"totalNodeNumber"`
+	Type                pulumi.StringPtrOutput               `pulumi:"type"`
+	UpdateTime          pulumi.StringOutput                  `pulumi:"updateTime"`
+	Version             pulumi.StringOutput                  `pulumi:"version"`
+	VpcId               pulumi.StringOutput                  `pulumi:"vpcId"`
 }
 
 // NewCluster registers a new resource with the given unique name, arguments, and options.
@@ -676,261 +119,89 @@ func GetCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cluster resources.
 type clusterState struct {
-	// Specifies a list of the informations about the analysis core nodes in the
-	// MapReduce cluster.
-	// The `nodes` object structure of the `analysisCoreNodes` is documented below.
-	AnalysisCoreNodes *ClusterAnalysisCoreNodes `pulumi:"analysisCoreNodes"`
-	// Specifies a list of the informations about the analysis task nodes in the
-	// MapReduce cluster.
-	// The `nodes` object structure of the `analysisTaskNodes` is documented below.
-	AnalysisTaskNodes *ClusterAnalysisTaskNodes `pulumi:"analysisTaskNodes"`
-	AutoRenew         *string                   `pulumi:"autoRenew"`
-	// Specifies the availability zone in which to create the cluster.
-	// For more information about regions and AZs, see [Regions and Endpoints](https://support.hc.sbercloud.ru/en-us/endpoint/index.html).
-	// Changing this will create a new MapReduce cluster resource.
-	AvailabilityZone *string                  `pulumi:"availabilityZone"`
-	BootstrapScripts []ClusterBootstrapScript `pulumi:"bootstrapScripts"`
-	ChargingMode     *string                  `pulumi:"chargingMode"`
-	// The charging start time which is the start time of billing, in RFC-3339 format.
-	ChargingStartTime *string                  `pulumi:"chargingStartTime"`
-	ComponentConfigs  []ClusterComponentConfig `pulumi:"componentConfigs"`
-	// Specifies the list of component names. For the components supported by
-	// the cluster, please following [reference](https://support.hc.sbercloud.ru/api/mrs/mrs_02_0101.html)
-	// Changing this will create a new MapReduce cluster resource.
-	ComponentLists []string `pulumi:"componentLists"`
-	// The cluster creation time, in RFC-3339 format.
-	CreateTime *string `pulumi:"createTime"`
-	// Specifies a list of the informations about the custom nodes in the MapReduce
-	// cluster.
-	// The `nodes` object structure of the `customNodes` is documented below.
-	// `Unlike other nodes, it needs to specify groupName`
-	CustomNodes []ClusterCustomNode `pulumi:"customNodes"`
-	// Specifies the EIP ID which bound to the MapReduce cluster.
-	// The EIP must have been created and must be in the same region as the cluster.
-	// Changing this will create a new MapReduce cluster resource.
-	EipId *string `pulumi:"eipId"`
-	// Specifies a unique ID in UUID format of enterprise project.
-	// Changing this will create a new MapReduce cluster resource.
+	AnalysisCoreNodes   *ClusterAnalysisCoreNodes   `pulumi:"analysisCoreNodes"`
+	AnalysisTaskNodes   *ClusterAnalysisTaskNodes   `pulumi:"analysisTaskNodes"`
+	AutoRenew           *string                     `pulumi:"autoRenew"`
+	AvailabilityZone    *string                     `pulumi:"availabilityZone"`
+	BootstrapScripts    []ClusterBootstrapScript    `pulumi:"bootstrapScripts"`
+	ChargingMode        *string                     `pulumi:"chargingMode"`
+	ChargingStartTime   *string                     `pulumi:"chargingStartTime"`
+	ComponentConfigs    []ClusterComponentConfig    `pulumi:"componentConfigs"`
+	ComponentLists      []string                    `pulumi:"componentLists"`
+	CreateTime          *string                     `pulumi:"createTime"`
+	CustomNodes         []ClusterCustomNode         `pulumi:"customNodes"`
+	EipId               *string                     `pulumi:"eipId"`
 	EnterpriseProjectId *string                     `pulumi:"enterpriseProjectId"`
 	ExternalDatasources []ClusterExternalDatasource `pulumi:"externalDatasources"`
-	// Specifies whether logs are collected when cluster installation fails.
-	// Default to true. If `logCollection` set true, the OBS buckets will be created and only used to collect logs that
-	// record MapReduce cluster creation failures. Changing this will create a new MapReduce cluster resource.
-	LogCollection *bool `pulumi:"logCollection"`
-	// Specifies the administrator password, which is used to log in to
-	// the cluster management page. The password can contain 8 to 26 charactors and cannot be the username or the username
-	// spelled backwards. The password must contain lowercase letters, uppercase letters, digits, spaces and the special
-	// characters: `!?,.:-_{}[]@$^+=/`. Changing this will create a new MapReduce cluster resource.
-	ManagerAdminPass *string `pulumi:"managerAdminPass"`
-	// The IP address of the master node.
-	MasterNodeIp *string `pulumi:"masterNodeIp"`
-	// Specifies a list of the information about the master nodes in the
-	// MapReduce cluster.
-	// The `nodes` object structure of the `masterNodes` is documented below.
-	// Changing this will create a new MapReduce cluster resource.
-	MasterNodes *ClusterMasterNodes `pulumi:"masterNodes"`
-	// Specifies the name of the MapReduce cluster. The name can contain 2 to 64
-	// characters, which may consist of letters, digits, underscores (_) and hyphens (-). Changing this will create a new
-	// MapReduce cluster resource.
-	Name *string `pulumi:"name"`
-	// Specifies the administrator password, which is used to log in to the
-	// each nodes(/ECSs). The password can contain 8 to 26 charactors and cannot be the username or the username spelled
-	// backwards. The password must contain lowercase letters, uppercase letters, digits, spaces and the special
-	// characters: `!?,.:-_{}[]@$^+=/`. Changing this will create a new MapReduce cluster resource. This parameter
-	// and `nodeKeyPair` are alternative.
-	NodeAdminPass *string `pulumi:"nodeAdminPass"`
-	// Specifies the name of a key pair, which is used to log in to the each
-	// nodes(/ECSs). Changing this will create a new MapReduce cluster resource.
-	NodeKeyPair *string `pulumi:"nodeKeyPair"`
-	Period      *int    `pulumi:"period"`
-	PeriodUnit  *string `pulumi:"periodUnit"`
-	// The preferred private IP address of the master node.
-	PrivateIp *string `pulumi:"privateIp"`
-	// Specifies the EIP address which bound to the MapReduce cluster.
-	// The EIP must have been created and must be in the same region as the cluster.
-	// Changing this will create a new MapReduce cluster resource.
-	PublicIp *string `pulumi:"publicIp"`
-	// The region in which to create the MapReduce cluster resource. If omitted, the
-	// provider-level region will be used. Changing this will create a new MapReduce cluster resource.
-	Region *string `pulumi:"region"`
-	// Specifies whether the running mode of the MapReduce cluster is secure,
-	// default to true.
-	// + true: enable Kerberos authentication.
-	// + false: disable Kerberos authentication. Changing this will create a new MapReduce cluster resource.
-	SafeMode *bool `pulumi:"safeMode"`
-	// Specifies an array of one or more security group ID to attach to the
-	// MapReduce cluster. If using the specified security group, the group need to open the specified port (9022) rules.
-	SecurityGroupIds []string          `pulumi:"securityGroupIds"`
-	SmnNotify        *ClusterSmnNotify `pulumi:"smnNotify"`
-	// The cluster state, which include: running, frozen, abnormal and failed.
-	Status *string `pulumi:"status"`
-	// Specifies a list of the informations about the streaming core nodes in the
-	// MapReduce cluster.
-	// The `nodes` object structure of the `streamingCoreNodes` is documented below.
-	StreamingCoreNodes *ClusterStreamingCoreNodes `pulumi:"streamingCoreNodes"`
-	// Specifies a list of the informations about the streaming task nodes in the
-	// MapReduce cluster.
-	// The `nodes` object structure of the `streamingTaskNodes` is documented below.
-	StreamingTaskNodes *ClusterStreamingTaskNodes `pulumi:"streamingTaskNodes"`
-	// Specifies the network ID of a subnet which bound to the MapReduce cluster.
-	// Changing this will create a new MapReduce cluster resource.
-	SubnetId *string `pulumi:"subnetId"`
-	// Specifies the key/value pairs to associate with the cluster.
-	Tags map[string]string `pulumi:"tags"`
-	// Specifies the template used for node deployment when the cluster type is
-	// CUSTOM.
-	// + mgmt_control_combined_v2: template for jointly deploying the management and control nodes. The management and
-	//   control roles are co-deployed on the Master node, and data instances are deployed in the same node group. This
-	//   deployment mode applies to scenarios where the number of control nodes is less than 100, reducing costs.
-	// + mgmt_control_separated_v2: The management and control roles are deployed on different master nodes, and data
-	//   instances are deployed in the same node group. This deployment mode is applicable to a cluster with 100 to 500 nodes
-	//   and delivers better performance in high-concurrency load scenarios.
-	// + mgmt_control_data_separated_v2: The management role and control role are deployed on different Master nodes,
-	//   and data instances are deployed in different node groups. This deployment mode is applicable to a cluster with more
-	//   than 500 nodes. Components can be deployed separately, which can be used for a larger cluster scale.
-	TemplateId *string `pulumi:"templateId"`
-	// The total number of nodes deployed in the cluster.
-	TotalNodeNumber *int `pulumi:"totalNodeNumber"`
-	// Specifies the type of the MapReduce cluster. The valid values are *ANALYSIS*,
-	// *STREAMING* and *MIXED*, default to *ANALYSIS*. Changing this will create a new MapReduce cluster resource.
-	Type *string `pulumi:"type"`
-	// The cluster update time, in RFC-3339 format.
-	UpdateTime *string `pulumi:"updateTime"`
-	// Specifies the MapReduce cluster version. The valid values are `MRS 2.1.0`
-	// , `MRS 3.0.5` and `MRS 3.1.0`. Changing this will create a new MapReduce cluster resource.
-	Version *string `pulumi:"version"`
-	// Specifies the ID of the VPC which bound to the MapReduce cluster. Changing
-	// this will create a new MapReduce cluster resource.
-	VpcId *string `pulumi:"vpcId"`
+	LogCollection       *bool                       `pulumi:"logCollection"`
+	ManagerAdminPass    *string                     `pulumi:"managerAdminPass"`
+	MasterNodeIp        *string                     `pulumi:"masterNodeIp"`
+	MasterNodes         *ClusterMasterNodes         `pulumi:"masterNodes"`
+	Name                *string                     `pulumi:"name"`
+	NodeAdminPass       *string                     `pulumi:"nodeAdminPass"`
+	NodeKeyPair         *string                     `pulumi:"nodeKeyPair"`
+	Period              *int                        `pulumi:"period"`
+	PeriodUnit          *string                     `pulumi:"periodUnit"`
+	PrivateIp           *string                     `pulumi:"privateIp"`
+	PublicIp            *string                     `pulumi:"publicIp"`
+	Region              *string                     `pulumi:"region"`
+	SafeMode            *bool                       `pulumi:"safeMode"`
+	SecurityGroupIds    []string                    `pulumi:"securityGroupIds"`
+	SmnNotify           *ClusterSmnNotify           `pulumi:"smnNotify"`
+	Status              *string                     `pulumi:"status"`
+	StreamingCoreNodes  *ClusterStreamingCoreNodes  `pulumi:"streamingCoreNodes"`
+	StreamingTaskNodes  *ClusterStreamingTaskNodes  `pulumi:"streamingTaskNodes"`
+	SubnetId            *string                     `pulumi:"subnetId"`
+	Tags                map[string]string           `pulumi:"tags"`
+	TemplateId          *string                     `pulumi:"templateId"`
+	TotalNodeNumber     *int                        `pulumi:"totalNodeNumber"`
+	Type                *string                     `pulumi:"type"`
+	UpdateTime          *string                     `pulumi:"updateTime"`
+	Version             *string                     `pulumi:"version"`
+	VpcId               *string                     `pulumi:"vpcId"`
 }
 
 type ClusterState struct {
-	// Specifies a list of the informations about the analysis core nodes in the
-	// MapReduce cluster.
-	// The `nodes` object structure of the `analysisCoreNodes` is documented below.
-	AnalysisCoreNodes ClusterAnalysisCoreNodesPtrInput
-	// Specifies a list of the informations about the analysis task nodes in the
-	// MapReduce cluster.
-	// The `nodes` object structure of the `analysisTaskNodes` is documented below.
-	AnalysisTaskNodes ClusterAnalysisTaskNodesPtrInput
-	AutoRenew         pulumi.StringPtrInput
-	// Specifies the availability zone in which to create the cluster.
-	// For more information about regions and AZs, see [Regions and Endpoints](https://support.hc.sbercloud.ru/en-us/endpoint/index.html).
-	// Changing this will create a new MapReduce cluster resource.
-	AvailabilityZone pulumi.StringPtrInput
-	BootstrapScripts ClusterBootstrapScriptArrayInput
-	ChargingMode     pulumi.StringPtrInput
-	// The charging start time which is the start time of billing, in RFC-3339 format.
-	ChargingStartTime pulumi.StringPtrInput
-	ComponentConfigs  ClusterComponentConfigArrayInput
-	// Specifies the list of component names. For the components supported by
-	// the cluster, please following [reference](https://support.hc.sbercloud.ru/api/mrs/mrs_02_0101.html)
-	// Changing this will create a new MapReduce cluster resource.
-	ComponentLists pulumi.StringArrayInput
-	// The cluster creation time, in RFC-3339 format.
-	CreateTime pulumi.StringPtrInput
-	// Specifies a list of the informations about the custom nodes in the MapReduce
-	// cluster.
-	// The `nodes` object structure of the `customNodes` is documented below.
-	// `Unlike other nodes, it needs to specify groupName`
-	CustomNodes ClusterCustomNodeArrayInput
-	// Specifies the EIP ID which bound to the MapReduce cluster.
-	// The EIP must have been created and must be in the same region as the cluster.
-	// Changing this will create a new MapReduce cluster resource.
-	EipId pulumi.StringPtrInput
-	// Specifies a unique ID in UUID format of enterprise project.
-	// Changing this will create a new MapReduce cluster resource.
+	AnalysisCoreNodes   ClusterAnalysisCoreNodesPtrInput
+	AnalysisTaskNodes   ClusterAnalysisTaskNodesPtrInput
+	AutoRenew           pulumi.StringPtrInput
+	AvailabilityZone    pulumi.StringPtrInput
+	BootstrapScripts    ClusterBootstrapScriptArrayInput
+	ChargingMode        pulumi.StringPtrInput
+	ChargingStartTime   pulumi.StringPtrInput
+	ComponentConfigs    ClusterComponentConfigArrayInput
+	ComponentLists      pulumi.StringArrayInput
+	CreateTime          pulumi.StringPtrInput
+	CustomNodes         ClusterCustomNodeArrayInput
+	EipId               pulumi.StringPtrInput
 	EnterpriseProjectId pulumi.StringPtrInput
 	ExternalDatasources ClusterExternalDatasourceArrayInput
-	// Specifies whether logs are collected when cluster installation fails.
-	// Default to true. If `logCollection` set true, the OBS buckets will be created and only used to collect logs that
-	// record MapReduce cluster creation failures. Changing this will create a new MapReduce cluster resource.
-	LogCollection pulumi.BoolPtrInput
-	// Specifies the administrator password, which is used to log in to
-	// the cluster management page. The password can contain 8 to 26 charactors and cannot be the username or the username
-	// spelled backwards. The password must contain lowercase letters, uppercase letters, digits, spaces and the special
-	// characters: `!?,.:-_{}[]@$^+=/`. Changing this will create a new MapReduce cluster resource.
-	ManagerAdminPass pulumi.StringPtrInput
-	// The IP address of the master node.
-	MasterNodeIp pulumi.StringPtrInput
-	// Specifies a list of the information about the master nodes in the
-	// MapReduce cluster.
-	// The `nodes` object structure of the `masterNodes` is documented below.
-	// Changing this will create a new MapReduce cluster resource.
-	MasterNodes ClusterMasterNodesPtrInput
-	// Specifies the name of the MapReduce cluster. The name can contain 2 to 64
-	// characters, which may consist of letters, digits, underscores (_) and hyphens (-). Changing this will create a new
-	// MapReduce cluster resource.
-	Name pulumi.StringPtrInput
-	// Specifies the administrator password, which is used to log in to the
-	// each nodes(/ECSs). The password can contain 8 to 26 charactors and cannot be the username or the username spelled
-	// backwards. The password must contain lowercase letters, uppercase letters, digits, spaces and the special
-	// characters: `!?,.:-_{}[]@$^+=/`. Changing this will create a new MapReduce cluster resource. This parameter
-	// and `nodeKeyPair` are alternative.
-	NodeAdminPass pulumi.StringPtrInput
-	// Specifies the name of a key pair, which is used to log in to the each
-	// nodes(/ECSs). Changing this will create a new MapReduce cluster resource.
-	NodeKeyPair pulumi.StringPtrInput
-	Period      pulumi.IntPtrInput
-	PeriodUnit  pulumi.StringPtrInput
-	// The preferred private IP address of the master node.
-	PrivateIp pulumi.StringPtrInput
-	// Specifies the EIP address which bound to the MapReduce cluster.
-	// The EIP must have been created and must be in the same region as the cluster.
-	// Changing this will create a new MapReduce cluster resource.
-	PublicIp pulumi.StringPtrInput
-	// The region in which to create the MapReduce cluster resource. If omitted, the
-	// provider-level region will be used. Changing this will create a new MapReduce cluster resource.
-	Region pulumi.StringPtrInput
-	// Specifies whether the running mode of the MapReduce cluster is secure,
-	// default to true.
-	// + true: enable Kerberos authentication.
-	// + false: disable Kerberos authentication. Changing this will create a new MapReduce cluster resource.
-	SafeMode pulumi.BoolPtrInput
-	// Specifies an array of one or more security group ID to attach to the
-	// MapReduce cluster. If using the specified security group, the group need to open the specified port (9022) rules.
-	SecurityGroupIds pulumi.StringArrayInput
-	SmnNotify        ClusterSmnNotifyPtrInput
-	// The cluster state, which include: running, frozen, abnormal and failed.
-	Status pulumi.StringPtrInput
-	// Specifies a list of the informations about the streaming core nodes in the
-	// MapReduce cluster.
-	// The `nodes` object structure of the `streamingCoreNodes` is documented below.
-	StreamingCoreNodes ClusterStreamingCoreNodesPtrInput
-	// Specifies a list of the informations about the streaming task nodes in the
-	// MapReduce cluster.
-	// The `nodes` object structure of the `streamingTaskNodes` is documented below.
-	StreamingTaskNodes ClusterStreamingTaskNodesPtrInput
-	// Specifies the network ID of a subnet which bound to the MapReduce cluster.
-	// Changing this will create a new MapReduce cluster resource.
-	SubnetId pulumi.StringPtrInput
-	// Specifies the key/value pairs to associate with the cluster.
-	Tags pulumi.StringMapInput
-	// Specifies the template used for node deployment when the cluster type is
-	// CUSTOM.
-	// + mgmt_control_combined_v2: template for jointly deploying the management and control nodes. The management and
-	//   control roles are co-deployed on the Master node, and data instances are deployed in the same node group. This
-	//   deployment mode applies to scenarios where the number of control nodes is less than 100, reducing costs.
-	// + mgmt_control_separated_v2: The management and control roles are deployed on different master nodes, and data
-	//   instances are deployed in the same node group. This deployment mode is applicable to a cluster with 100 to 500 nodes
-	//   and delivers better performance in high-concurrency load scenarios.
-	// + mgmt_control_data_separated_v2: The management role and control role are deployed on different Master nodes,
-	//   and data instances are deployed in different node groups. This deployment mode is applicable to a cluster with more
-	//   than 500 nodes. Components can be deployed separately, which can be used for a larger cluster scale.
-	TemplateId pulumi.StringPtrInput
-	// The total number of nodes deployed in the cluster.
-	TotalNodeNumber pulumi.IntPtrInput
-	// Specifies the type of the MapReduce cluster. The valid values are *ANALYSIS*,
-	// *STREAMING* and *MIXED*, default to *ANALYSIS*. Changing this will create a new MapReduce cluster resource.
-	Type pulumi.StringPtrInput
-	// The cluster update time, in RFC-3339 format.
-	UpdateTime pulumi.StringPtrInput
-	// Specifies the MapReduce cluster version. The valid values are `MRS 2.1.0`
-	// , `MRS 3.0.5` and `MRS 3.1.0`. Changing this will create a new MapReduce cluster resource.
-	Version pulumi.StringPtrInput
-	// Specifies the ID of the VPC which bound to the MapReduce cluster. Changing
-	// this will create a new MapReduce cluster resource.
-	VpcId pulumi.StringPtrInput
+	LogCollection       pulumi.BoolPtrInput
+	ManagerAdminPass    pulumi.StringPtrInput
+	MasterNodeIp        pulumi.StringPtrInput
+	MasterNodes         ClusterMasterNodesPtrInput
+	Name                pulumi.StringPtrInput
+	NodeAdminPass       pulumi.StringPtrInput
+	NodeKeyPair         pulumi.StringPtrInput
+	Period              pulumi.IntPtrInput
+	PeriodUnit          pulumi.StringPtrInput
+	PrivateIp           pulumi.StringPtrInput
+	PublicIp            pulumi.StringPtrInput
+	Region              pulumi.StringPtrInput
+	SafeMode            pulumi.BoolPtrInput
+	SecurityGroupIds    pulumi.StringArrayInput
+	SmnNotify           ClusterSmnNotifyPtrInput
+	Status              pulumi.StringPtrInput
+	StreamingCoreNodes  ClusterStreamingCoreNodesPtrInput
+	StreamingTaskNodes  ClusterStreamingTaskNodesPtrInput
+	SubnetId            pulumi.StringPtrInput
+	Tags                pulumi.StringMapInput
+	TemplateId          pulumi.StringPtrInput
+	TotalNodeNumber     pulumi.IntPtrInput
+	Type                pulumi.StringPtrInput
+	UpdateTime          pulumi.StringPtrInput
+	Version             pulumi.StringPtrInput
+	VpcId               pulumi.StringPtrInput
 }
 
 func (ClusterState) ElementType() reflect.Type {
@@ -938,234 +209,76 @@ func (ClusterState) ElementType() reflect.Type {
 }
 
 type clusterArgs struct {
-	// Specifies a list of the informations about the analysis core nodes in the
-	// MapReduce cluster.
-	// The `nodes` object structure of the `analysisCoreNodes` is documented below.
-	AnalysisCoreNodes *ClusterAnalysisCoreNodes `pulumi:"analysisCoreNodes"`
-	// Specifies a list of the informations about the analysis task nodes in the
-	// MapReduce cluster.
-	// The `nodes` object structure of the `analysisTaskNodes` is documented below.
-	AnalysisTaskNodes *ClusterAnalysisTaskNodes `pulumi:"analysisTaskNodes"`
-	AutoRenew         *string                   `pulumi:"autoRenew"`
-	// Specifies the availability zone in which to create the cluster.
-	// For more information about regions and AZs, see [Regions and Endpoints](https://support.hc.sbercloud.ru/en-us/endpoint/index.html).
-	// Changing this will create a new MapReduce cluster resource.
-	AvailabilityZone string                   `pulumi:"availabilityZone"`
-	BootstrapScripts []ClusterBootstrapScript `pulumi:"bootstrapScripts"`
-	ChargingMode     *string                  `pulumi:"chargingMode"`
-	ComponentConfigs []ClusterComponentConfig `pulumi:"componentConfigs"`
-	// Specifies the list of component names. For the components supported by
-	// the cluster, please following [reference](https://support.hc.sbercloud.ru/api/mrs/mrs_02_0101.html)
-	// Changing this will create a new MapReduce cluster resource.
-	ComponentLists []string `pulumi:"componentLists"`
-	// Specifies a list of the informations about the custom nodes in the MapReduce
-	// cluster.
-	// The `nodes` object structure of the `customNodes` is documented below.
-	// `Unlike other nodes, it needs to specify groupName`
-	CustomNodes []ClusterCustomNode `pulumi:"customNodes"`
-	// Specifies the EIP ID which bound to the MapReduce cluster.
-	// The EIP must have been created and must be in the same region as the cluster.
-	// Changing this will create a new MapReduce cluster resource.
-	EipId *string `pulumi:"eipId"`
-	// Specifies a unique ID in UUID format of enterprise project.
-	// Changing this will create a new MapReduce cluster resource.
+	AnalysisCoreNodes   *ClusterAnalysisCoreNodes   `pulumi:"analysisCoreNodes"`
+	AnalysisTaskNodes   *ClusterAnalysisTaskNodes   `pulumi:"analysisTaskNodes"`
+	AutoRenew           *string                     `pulumi:"autoRenew"`
+	AvailabilityZone    string                      `pulumi:"availabilityZone"`
+	BootstrapScripts    []ClusterBootstrapScript    `pulumi:"bootstrapScripts"`
+	ChargingMode        *string                     `pulumi:"chargingMode"`
+	ComponentConfigs    []ClusterComponentConfig    `pulumi:"componentConfigs"`
+	ComponentLists      []string                    `pulumi:"componentLists"`
+	CustomNodes         []ClusterCustomNode         `pulumi:"customNodes"`
+	EipId               *string                     `pulumi:"eipId"`
 	EnterpriseProjectId *string                     `pulumi:"enterpriseProjectId"`
 	ExternalDatasources []ClusterExternalDatasource `pulumi:"externalDatasources"`
-	// Specifies whether logs are collected when cluster installation fails.
-	// Default to true. If `logCollection` set true, the OBS buckets will be created and only used to collect logs that
-	// record MapReduce cluster creation failures. Changing this will create a new MapReduce cluster resource.
-	LogCollection *bool `pulumi:"logCollection"`
-	// Specifies the administrator password, which is used to log in to
-	// the cluster management page. The password can contain 8 to 26 charactors and cannot be the username or the username
-	// spelled backwards. The password must contain lowercase letters, uppercase letters, digits, spaces and the special
-	// characters: `!?,.:-_{}[]@$^+=/`. Changing this will create a new MapReduce cluster resource.
-	ManagerAdminPass string `pulumi:"managerAdminPass"`
-	// Specifies a list of the information about the master nodes in the
-	// MapReduce cluster.
-	// The `nodes` object structure of the `masterNodes` is documented below.
-	// Changing this will create a new MapReduce cluster resource.
-	MasterNodes ClusterMasterNodes `pulumi:"masterNodes"`
-	// Specifies the name of the MapReduce cluster. The name can contain 2 to 64
-	// characters, which may consist of letters, digits, underscores (_) and hyphens (-). Changing this will create a new
-	// MapReduce cluster resource.
-	Name *string `pulumi:"name"`
-	// Specifies the administrator password, which is used to log in to the
-	// each nodes(/ECSs). The password can contain 8 to 26 charactors and cannot be the username or the username spelled
-	// backwards. The password must contain lowercase letters, uppercase letters, digits, spaces and the special
-	// characters: `!?,.:-_{}[]@$^+=/`. Changing this will create a new MapReduce cluster resource. This parameter
-	// and `nodeKeyPair` are alternative.
-	NodeAdminPass *string `pulumi:"nodeAdminPass"`
-	// Specifies the name of a key pair, which is used to log in to the each
-	// nodes(/ECSs). Changing this will create a new MapReduce cluster resource.
-	NodeKeyPair *string `pulumi:"nodeKeyPair"`
-	Period      *int    `pulumi:"period"`
-	PeriodUnit  *string `pulumi:"periodUnit"`
-	// Specifies the EIP address which bound to the MapReduce cluster.
-	// The EIP must have been created and must be in the same region as the cluster.
-	// Changing this will create a new MapReduce cluster resource.
-	PublicIp *string `pulumi:"publicIp"`
-	// The region in which to create the MapReduce cluster resource. If omitted, the
-	// provider-level region will be used. Changing this will create a new MapReduce cluster resource.
-	Region *string `pulumi:"region"`
-	// Specifies whether the running mode of the MapReduce cluster is secure,
-	// default to true.
-	// + true: enable Kerberos authentication.
-	// + false: disable Kerberos authentication. Changing this will create a new MapReduce cluster resource.
-	SafeMode *bool `pulumi:"safeMode"`
-	// Specifies an array of one or more security group ID to attach to the
-	// MapReduce cluster. If using the specified security group, the group need to open the specified port (9022) rules.
-	SecurityGroupIds []string          `pulumi:"securityGroupIds"`
-	SmnNotify        *ClusterSmnNotify `pulumi:"smnNotify"`
-	// Specifies a list of the informations about the streaming core nodes in the
-	// MapReduce cluster.
-	// The `nodes` object structure of the `streamingCoreNodes` is documented below.
-	StreamingCoreNodes *ClusterStreamingCoreNodes `pulumi:"streamingCoreNodes"`
-	// Specifies a list of the informations about the streaming task nodes in the
-	// MapReduce cluster.
-	// The `nodes` object structure of the `streamingTaskNodes` is documented below.
-	StreamingTaskNodes *ClusterStreamingTaskNodes `pulumi:"streamingTaskNodes"`
-	// Specifies the network ID of a subnet which bound to the MapReduce cluster.
-	// Changing this will create a new MapReduce cluster resource.
-	SubnetId string `pulumi:"subnetId"`
-	// Specifies the key/value pairs to associate with the cluster.
-	Tags map[string]string `pulumi:"tags"`
-	// Specifies the template used for node deployment when the cluster type is
-	// CUSTOM.
-	// + mgmt_control_combined_v2: template for jointly deploying the management and control nodes. The management and
-	//   control roles are co-deployed on the Master node, and data instances are deployed in the same node group. This
-	//   deployment mode applies to scenarios where the number of control nodes is less than 100, reducing costs.
-	// + mgmt_control_separated_v2: The management and control roles are deployed on different master nodes, and data
-	//   instances are deployed in the same node group. This deployment mode is applicable to a cluster with 100 to 500 nodes
-	//   and delivers better performance in high-concurrency load scenarios.
-	// + mgmt_control_data_separated_v2: The management role and control role are deployed on different Master nodes,
-	//   and data instances are deployed in different node groups. This deployment mode is applicable to a cluster with more
-	//   than 500 nodes. Components can be deployed separately, which can be used for a larger cluster scale.
-	TemplateId *string `pulumi:"templateId"`
-	// Specifies the type of the MapReduce cluster. The valid values are *ANALYSIS*,
-	// *STREAMING* and *MIXED*, default to *ANALYSIS*. Changing this will create a new MapReduce cluster resource.
-	Type *string `pulumi:"type"`
-	// Specifies the MapReduce cluster version. The valid values are `MRS 2.1.0`
-	// , `MRS 3.0.5` and `MRS 3.1.0`. Changing this will create a new MapReduce cluster resource.
-	Version string `pulumi:"version"`
-	// Specifies the ID of the VPC which bound to the MapReduce cluster. Changing
-	// this will create a new MapReduce cluster resource.
-	VpcId string `pulumi:"vpcId"`
+	LogCollection       *bool                       `pulumi:"logCollection"`
+	ManagerAdminPass    string                      `pulumi:"managerAdminPass"`
+	MasterNodes         ClusterMasterNodes          `pulumi:"masterNodes"`
+	Name                *string                     `pulumi:"name"`
+	NodeAdminPass       *string                     `pulumi:"nodeAdminPass"`
+	NodeKeyPair         *string                     `pulumi:"nodeKeyPair"`
+	Period              *int                        `pulumi:"period"`
+	PeriodUnit          *string                     `pulumi:"periodUnit"`
+	PublicIp            *string                     `pulumi:"publicIp"`
+	Region              *string                     `pulumi:"region"`
+	SafeMode            *bool                       `pulumi:"safeMode"`
+	SecurityGroupIds    []string                    `pulumi:"securityGroupIds"`
+	SmnNotify           *ClusterSmnNotify           `pulumi:"smnNotify"`
+	StreamingCoreNodes  *ClusterStreamingCoreNodes  `pulumi:"streamingCoreNodes"`
+	StreamingTaskNodes  *ClusterStreamingTaskNodes  `pulumi:"streamingTaskNodes"`
+	SubnetId            string                      `pulumi:"subnetId"`
+	Tags                map[string]string           `pulumi:"tags"`
+	TemplateId          *string                     `pulumi:"templateId"`
+	Type                *string                     `pulumi:"type"`
+	Version             string                      `pulumi:"version"`
+	VpcId               string                      `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
-	// Specifies a list of the informations about the analysis core nodes in the
-	// MapReduce cluster.
-	// The `nodes` object structure of the `analysisCoreNodes` is documented below.
-	AnalysisCoreNodes ClusterAnalysisCoreNodesPtrInput
-	// Specifies a list of the informations about the analysis task nodes in the
-	// MapReduce cluster.
-	// The `nodes` object structure of the `analysisTaskNodes` is documented below.
-	AnalysisTaskNodes ClusterAnalysisTaskNodesPtrInput
-	AutoRenew         pulumi.StringPtrInput
-	// Specifies the availability zone in which to create the cluster.
-	// For more information about regions and AZs, see [Regions and Endpoints](https://support.hc.sbercloud.ru/en-us/endpoint/index.html).
-	// Changing this will create a new MapReduce cluster resource.
-	AvailabilityZone pulumi.StringInput
-	BootstrapScripts ClusterBootstrapScriptArrayInput
-	ChargingMode     pulumi.StringPtrInput
-	ComponentConfigs ClusterComponentConfigArrayInput
-	// Specifies the list of component names. For the components supported by
-	// the cluster, please following [reference](https://support.hc.sbercloud.ru/api/mrs/mrs_02_0101.html)
-	// Changing this will create a new MapReduce cluster resource.
-	ComponentLists pulumi.StringArrayInput
-	// Specifies a list of the informations about the custom nodes in the MapReduce
-	// cluster.
-	// The `nodes` object structure of the `customNodes` is documented below.
-	// `Unlike other nodes, it needs to specify groupName`
-	CustomNodes ClusterCustomNodeArrayInput
-	// Specifies the EIP ID which bound to the MapReduce cluster.
-	// The EIP must have been created and must be in the same region as the cluster.
-	// Changing this will create a new MapReduce cluster resource.
-	EipId pulumi.StringPtrInput
-	// Specifies a unique ID in UUID format of enterprise project.
-	// Changing this will create a new MapReduce cluster resource.
+	AnalysisCoreNodes   ClusterAnalysisCoreNodesPtrInput
+	AnalysisTaskNodes   ClusterAnalysisTaskNodesPtrInput
+	AutoRenew           pulumi.StringPtrInput
+	AvailabilityZone    pulumi.StringInput
+	BootstrapScripts    ClusterBootstrapScriptArrayInput
+	ChargingMode        pulumi.StringPtrInput
+	ComponentConfigs    ClusterComponentConfigArrayInput
+	ComponentLists      pulumi.StringArrayInput
+	CustomNodes         ClusterCustomNodeArrayInput
+	EipId               pulumi.StringPtrInput
 	EnterpriseProjectId pulumi.StringPtrInput
 	ExternalDatasources ClusterExternalDatasourceArrayInput
-	// Specifies whether logs are collected when cluster installation fails.
-	// Default to true. If `logCollection` set true, the OBS buckets will be created and only used to collect logs that
-	// record MapReduce cluster creation failures. Changing this will create a new MapReduce cluster resource.
-	LogCollection pulumi.BoolPtrInput
-	// Specifies the administrator password, which is used to log in to
-	// the cluster management page. The password can contain 8 to 26 charactors and cannot be the username or the username
-	// spelled backwards. The password must contain lowercase letters, uppercase letters, digits, spaces and the special
-	// characters: `!?,.:-_{}[]@$^+=/`. Changing this will create a new MapReduce cluster resource.
-	ManagerAdminPass pulumi.StringInput
-	// Specifies a list of the information about the master nodes in the
-	// MapReduce cluster.
-	// The `nodes` object structure of the `masterNodes` is documented below.
-	// Changing this will create a new MapReduce cluster resource.
-	MasterNodes ClusterMasterNodesInput
-	// Specifies the name of the MapReduce cluster. The name can contain 2 to 64
-	// characters, which may consist of letters, digits, underscores (_) and hyphens (-). Changing this will create a new
-	// MapReduce cluster resource.
-	Name pulumi.StringPtrInput
-	// Specifies the administrator password, which is used to log in to the
-	// each nodes(/ECSs). The password can contain 8 to 26 charactors and cannot be the username or the username spelled
-	// backwards. The password must contain lowercase letters, uppercase letters, digits, spaces and the special
-	// characters: `!?,.:-_{}[]@$^+=/`. Changing this will create a new MapReduce cluster resource. This parameter
-	// and `nodeKeyPair` are alternative.
-	NodeAdminPass pulumi.StringPtrInput
-	// Specifies the name of a key pair, which is used to log in to the each
-	// nodes(/ECSs). Changing this will create a new MapReduce cluster resource.
-	NodeKeyPair pulumi.StringPtrInput
-	Period      pulumi.IntPtrInput
-	PeriodUnit  pulumi.StringPtrInput
-	// Specifies the EIP address which bound to the MapReduce cluster.
-	// The EIP must have been created and must be in the same region as the cluster.
-	// Changing this will create a new MapReduce cluster resource.
-	PublicIp pulumi.StringPtrInput
-	// The region in which to create the MapReduce cluster resource. If omitted, the
-	// provider-level region will be used. Changing this will create a new MapReduce cluster resource.
-	Region pulumi.StringPtrInput
-	// Specifies whether the running mode of the MapReduce cluster is secure,
-	// default to true.
-	// + true: enable Kerberos authentication.
-	// + false: disable Kerberos authentication. Changing this will create a new MapReduce cluster resource.
-	SafeMode pulumi.BoolPtrInput
-	// Specifies an array of one or more security group ID to attach to the
-	// MapReduce cluster. If using the specified security group, the group need to open the specified port (9022) rules.
-	SecurityGroupIds pulumi.StringArrayInput
-	SmnNotify        ClusterSmnNotifyPtrInput
-	// Specifies a list of the informations about the streaming core nodes in the
-	// MapReduce cluster.
-	// The `nodes` object structure of the `streamingCoreNodes` is documented below.
-	StreamingCoreNodes ClusterStreamingCoreNodesPtrInput
-	// Specifies a list of the informations about the streaming task nodes in the
-	// MapReduce cluster.
-	// The `nodes` object structure of the `streamingTaskNodes` is documented below.
-	StreamingTaskNodes ClusterStreamingTaskNodesPtrInput
-	// Specifies the network ID of a subnet which bound to the MapReduce cluster.
-	// Changing this will create a new MapReduce cluster resource.
-	SubnetId pulumi.StringInput
-	// Specifies the key/value pairs to associate with the cluster.
-	Tags pulumi.StringMapInput
-	// Specifies the template used for node deployment when the cluster type is
-	// CUSTOM.
-	// + mgmt_control_combined_v2: template for jointly deploying the management and control nodes. The management and
-	//   control roles are co-deployed on the Master node, and data instances are deployed in the same node group. This
-	//   deployment mode applies to scenarios where the number of control nodes is less than 100, reducing costs.
-	// + mgmt_control_separated_v2: The management and control roles are deployed on different master nodes, and data
-	//   instances are deployed in the same node group. This deployment mode is applicable to a cluster with 100 to 500 nodes
-	//   and delivers better performance in high-concurrency load scenarios.
-	// + mgmt_control_data_separated_v2: The management role and control role are deployed on different Master nodes,
-	//   and data instances are deployed in different node groups. This deployment mode is applicable to a cluster with more
-	//   than 500 nodes. Components can be deployed separately, which can be used for a larger cluster scale.
-	TemplateId pulumi.StringPtrInput
-	// Specifies the type of the MapReduce cluster. The valid values are *ANALYSIS*,
-	// *STREAMING* and *MIXED*, default to *ANALYSIS*. Changing this will create a new MapReduce cluster resource.
-	Type pulumi.StringPtrInput
-	// Specifies the MapReduce cluster version. The valid values are `MRS 2.1.0`
-	// , `MRS 3.0.5` and `MRS 3.1.0`. Changing this will create a new MapReduce cluster resource.
-	Version pulumi.StringInput
-	// Specifies the ID of the VPC which bound to the MapReduce cluster. Changing
-	// this will create a new MapReduce cluster resource.
-	VpcId pulumi.StringInput
+	LogCollection       pulumi.BoolPtrInput
+	ManagerAdminPass    pulumi.StringInput
+	MasterNodes         ClusterMasterNodesInput
+	Name                pulumi.StringPtrInput
+	NodeAdminPass       pulumi.StringPtrInput
+	NodeKeyPair         pulumi.StringPtrInput
+	Period              pulumi.IntPtrInput
+	PeriodUnit          pulumi.StringPtrInput
+	PublicIp            pulumi.StringPtrInput
+	Region              pulumi.StringPtrInput
+	SafeMode            pulumi.BoolPtrInput
+	SecurityGroupIds    pulumi.StringArrayInput
+	SmnNotify           ClusterSmnNotifyPtrInput
+	StreamingCoreNodes  ClusterStreamingCoreNodesPtrInput
+	StreamingTaskNodes  ClusterStreamingTaskNodesPtrInput
+	SubnetId            pulumi.StringInput
+	Tags                pulumi.StringMapInput
+	TemplateId          pulumi.StringPtrInput
+	Type                pulumi.StringPtrInput
+	Version             pulumi.StringInput
+	VpcId               pulumi.StringInput
 }
 
 func (ClusterArgs) ElementType() reflect.Type {
@@ -1255,16 +368,10 @@ func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOu
 	return o
 }
 
-// Specifies a list of the informations about the analysis core nodes in the
-// MapReduce cluster.
-// The `nodes` object structure of the `analysisCoreNodes` is documented below.
 func (o ClusterOutput) AnalysisCoreNodes() ClusterAnalysisCoreNodesPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterAnalysisCoreNodesPtrOutput { return v.AnalysisCoreNodes }).(ClusterAnalysisCoreNodesPtrOutput)
 }
 
-// Specifies a list of the informations about the analysis task nodes in the
-// MapReduce cluster.
-// The `nodes` object structure of the `analysisTaskNodes` is documented below.
 func (o ClusterOutput) AnalysisTaskNodes() ClusterAnalysisTaskNodesPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterAnalysisTaskNodesPtrOutput { return v.AnalysisTaskNodes }).(ClusterAnalysisTaskNodesPtrOutput)
 }
@@ -1273,9 +380,6 @@ func (o ClusterOutput) AutoRenew() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.AutoRenew }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the availability zone in which to create the cluster.
-// For more information about regions and AZs, see [Regions and Endpoints](https://support.hc.sbercloud.ru/en-us/endpoint/index.html).
-// Changing this will create a new MapReduce cluster resource.
 func (o ClusterOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
@@ -1288,7 +392,6 @@ func (o ClusterOutput) ChargingMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ChargingMode }).(pulumi.StringOutput)
 }
 
-// The charging start time which is the start time of billing, in RFC-3339 format.
 func (o ClusterOutput) ChargingStartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ChargingStartTime }).(pulumi.StringOutput)
 }
@@ -1297,35 +400,22 @@ func (o ClusterOutput) ComponentConfigs() ClusterComponentConfigArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterComponentConfigArrayOutput { return v.ComponentConfigs }).(ClusterComponentConfigArrayOutput)
 }
 
-// Specifies the list of component names. For the components supported by
-// the cluster, please following [reference](https://support.hc.sbercloud.ru/api/mrs/mrs_02_0101.html)
-// Changing this will create a new MapReduce cluster resource.
 func (o ClusterOutput) ComponentLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.ComponentLists }).(pulumi.StringArrayOutput)
 }
 
-// The cluster creation time, in RFC-3339 format.
 func (o ClusterOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Specifies a list of the informations about the custom nodes in the MapReduce
-// cluster.
-// The `nodes` object structure of the `customNodes` is documented below.
-// `Unlike other nodes, it needs to specify groupName`
 func (o ClusterOutput) CustomNodes() ClusterCustomNodeArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterCustomNodeArrayOutput { return v.CustomNodes }).(ClusterCustomNodeArrayOutput)
 }
 
-// Specifies the EIP ID which bound to the MapReduce cluster.
-// The EIP must have been created and must be in the same region as the cluster.
-// Changing this will create a new MapReduce cluster resource.
 func (o ClusterOutput) EipId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.EipId }).(pulumi.StringOutput)
 }
 
-// Specifies a unique ID in UUID format of enterprise project.
-// Changing this will create a new MapReduce cluster resource.
 func (o ClusterOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
@@ -1334,52 +424,30 @@ func (o ClusterOutput) ExternalDatasources() ClusterExternalDatasourceArrayOutpu
 	return o.ApplyT(func(v *Cluster) ClusterExternalDatasourceArrayOutput { return v.ExternalDatasources }).(ClusterExternalDatasourceArrayOutput)
 }
 
-// Specifies whether logs are collected when cluster installation fails.
-// Default to true. If `logCollection` set true, the OBS buckets will be created and only used to collect logs that
-// record MapReduce cluster creation failures. Changing this will create a new MapReduce cluster resource.
 func (o ClusterOutput) LogCollection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.LogCollection }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the administrator password, which is used to log in to
-// the cluster management page. The password can contain 8 to 26 charactors and cannot be the username or the username
-// spelled backwards. The password must contain lowercase letters, uppercase letters, digits, spaces and the special
-// characters: `!?,.:-_{}[]@$^+=/`. Changing this will create a new MapReduce cluster resource.
 func (o ClusterOutput) ManagerAdminPass() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ManagerAdminPass }).(pulumi.StringOutput)
 }
 
-// The IP address of the master node.
 func (o ClusterOutput) MasterNodeIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.MasterNodeIp }).(pulumi.StringOutput)
 }
 
-// Specifies a list of the information about the master nodes in the
-// MapReduce cluster.
-// The `nodes` object structure of the `masterNodes` is documented below.
-// Changing this will create a new MapReduce cluster resource.
 func (o ClusterOutput) MasterNodes() ClusterMasterNodesOutput {
 	return o.ApplyT(func(v *Cluster) ClusterMasterNodesOutput { return v.MasterNodes }).(ClusterMasterNodesOutput)
 }
 
-// Specifies the name of the MapReduce cluster. The name can contain 2 to 64
-// characters, which may consist of letters, digits, underscores (_) and hyphens (-). Changing this will create a new
-// MapReduce cluster resource.
 func (o ClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the administrator password, which is used to log in to the
-// each nodes(/ECSs). The password can contain 8 to 26 charactors and cannot be the username or the username spelled
-// backwards. The password must contain lowercase letters, uppercase letters, digits, spaces and the special
-// characters: `!?,.:-_{}[]@$^+=/`. Changing this will create a new MapReduce cluster resource. This parameter
-// and `nodeKeyPair` are alternative.
 func (o ClusterOutput) NodeAdminPass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.NodeAdminPass }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the name of a key pair, which is used to log in to the each
-// nodes(/ECSs). Changing this will create a new MapReduce cluster resource.
 func (o ClusterOutput) NodeKeyPair() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.NodeKeyPair }).(pulumi.StringPtrOutput)
 }
@@ -1392,34 +460,22 @@ func (o ClusterOutput) PeriodUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.PeriodUnit }).(pulumi.StringPtrOutput)
 }
 
-// The preferred private IP address of the master node.
 func (o ClusterOutput) PrivateIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.PrivateIp }).(pulumi.StringOutput)
 }
 
-// Specifies the EIP address which bound to the MapReduce cluster.
-// The EIP must have been created and must be in the same region as the cluster.
-// Changing this will create a new MapReduce cluster resource.
 func (o ClusterOutput) PublicIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.PublicIp }).(pulumi.StringOutput)
 }
 
-// The region in which to create the MapReduce cluster resource. If omitted, the
-// provider-level region will be used. Changing this will create a new MapReduce cluster resource.
 func (o ClusterOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Specifies whether the running mode of the MapReduce cluster is secure,
-// default to true.
-// + true: enable Kerberos authentication.
-// + false: disable Kerberos authentication. Changing this will create a new MapReduce cluster resource.
 func (o ClusterOutput) SafeMode() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.SafeMode }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies an array of one or more security group ID to attach to the
-// MapReduce cluster. If using the specified security group, the group need to open the specified port (9022) rules.
 func (o ClusterOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
@@ -1428,75 +484,46 @@ func (o ClusterOutput) SmnNotify() ClusterSmnNotifyPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterSmnNotifyPtrOutput { return v.SmnNotify }).(ClusterSmnNotifyPtrOutput)
 }
 
-// The cluster state, which include: running, frozen, abnormal and failed.
 func (o ClusterOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Specifies a list of the informations about the streaming core nodes in the
-// MapReduce cluster.
-// The `nodes` object structure of the `streamingCoreNodes` is documented below.
 func (o ClusterOutput) StreamingCoreNodes() ClusterStreamingCoreNodesPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterStreamingCoreNodesPtrOutput { return v.StreamingCoreNodes }).(ClusterStreamingCoreNodesPtrOutput)
 }
 
-// Specifies a list of the informations about the streaming task nodes in the
-// MapReduce cluster.
-// The `nodes` object structure of the `streamingTaskNodes` is documented below.
 func (o ClusterOutput) StreamingTaskNodes() ClusterStreamingTaskNodesPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterStreamingTaskNodesPtrOutput { return v.StreamingTaskNodes }).(ClusterStreamingTaskNodesPtrOutput)
 }
 
-// Specifies the network ID of a subnet which bound to the MapReduce cluster.
-// Changing this will create a new MapReduce cluster resource.
 func (o ClusterOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.SubnetId }).(pulumi.StringOutput)
 }
 
-// Specifies the key/value pairs to associate with the cluster.
 func (o ClusterOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Specifies the template used for node deployment when the cluster type is
-// CUSTOM.
-//   - mgmt_control_combined_v2: template for jointly deploying the management and control nodes. The management and
-//     control roles are co-deployed on the Master node, and data instances are deployed in the same node group. This
-//     deployment mode applies to scenarios where the number of control nodes is less than 100, reducing costs.
-//   - mgmt_control_separated_v2: The management and control roles are deployed on different master nodes, and data
-//     instances are deployed in the same node group. This deployment mode is applicable to a cluster with 100 to 500 nodes
-//     and delivers better performance in high-concurrency load scenarios.
-//   - mgmt_control_data_separated_v2: The management role and control role are deployed on different Master nodes,
-//     and data instances are deployed in different node groups. This deployment mode is applicable to a cluster with more
-//     than 500 nodes. Components can be deployed separately, which can be used for a larger cluster scale.
 func (o ClusterOutput) TemplateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.TemplateId }).(pulumi.StringPtrOutput)
 }
 
-// The total number of nodes deployed in the cluster.
 func (o ClusterOutput) TotalNodeNumber() pulumi.IntOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.TotalNodeNumber }).(pulumi.IntOutput)
 }
 
-// Specifies the type of the MapReduce cluster. The valid values are *ANALYSIS*,
-// *STREAMING* and *MIXED*, default to *ANALYSIS*. Changing this will create a new MapReduce cluster resource.
 func (o ClusterOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The cluster update time, in RFC-3339 format.
 func (o ClusterOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// Specifies the MapReduce cluster version. The valid values are `MRS 2.1.0`
-// , `MRS 3.0.5` and `MRS 3.1.0`. Changing this will create a new MapReduce cluster resource.
 func (o ClusterOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
 }
 
-// Specifies the ID of the VPC which bound to the MapReduce cluster. Changing
-// this will create a new MapReduce cluster resource.
 func (o ClusterOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }

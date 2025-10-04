@@ -6,18 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get available SberCloud cdm flavors.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const flavor = sbercloud.getCdmFlavors({});
- * ```
- */
 export function getCdmFlavors(args?: GetCdmFlavorsArgs, opts?: pulumi.InvokeOptions): Promise<GetCdmFlavorsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -30,9 +18,6 @@ export function getCdmFlavors(args?: GetCdmFlavorsArgs, opts?: pulumi.InvokeOpti
  * A collection of arguments for invoking getCdmFlavors.
  */
 export interface GetCdmFlavorsArgs {
-    /**
-     * The region in which to obtain the CDM flavors. If omitted, the provider-level region will be used.
-     */
     region?: string;
 }
 
@@ -40,35 +25,14 @@ export interface GetCdmFlavorsArgs {
  * A collection of values returned by getCdmFlavors.
  */
 export interface GetCdmFlavorsResult {
-    /**
-     * Indicates the flavors information. Structure is documented below.
-     */
     readonly flavors: outputs.GetCdmFlavorsFlavor[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The region in which to obtain the CDM flavors. If omitted, the provider-level region will be used.
-     */
     readonly region: string;
-    /**
-     * The version of the flavor.
-     */
     readonly version: string;
 }
-/**
- * Use this data source to get available SberCloud cdm flavors.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const flavor = sbercloud.getCdmFlavors({});
- * ```
- */
 export function getCdmFlavorsOutput(args?: GetCdmFlavorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCdmFlavorsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -81,8 +45,5 @@ export function getCdmFlavorsOutput(args?: GetCdmFlavorsOutputArgs, opts?: pulum
  * A collection of arguments for invoking getCdmFlavors.
  */
 export interface GetCdmFlavorsOutputArgs {
-    /**
-     * The region in which to obtain the CDM flavors. If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
 }

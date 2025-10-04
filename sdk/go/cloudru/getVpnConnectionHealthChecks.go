@@ -11,42 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a VPN connection health checks data source within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			connectionId := cfg.RequireObject("connectionId")
-//			status := cfg.RequireObject("status")
-//			sourceIp := cfg.RequireObject("sourceIp")
-//			destinationIp := cfg.RequireObject("destinationIp")
-//			_, err := sbercloud.GetVpnConnectionHealthChecks(ctx, &cloudru.GetVpnConnectionHealthChecksArgs{
-//				ConnectionId:  pulumi.StringRef(connectionId),
-//				Status:        pulumi.StringRef(status),
-//				SourceIp:      pulumi.StringRef(sourceIp),
-//				DestinationIp: pulumi.StringRef(destinationIp),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetVpnConnectionHealthChecks(ctx *pulumi.Context, args *GetVpnConnectionHealthChecksArgs, opts ...pulumi.InvokeOption) (*GetVpnConnectionHealthChecksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVpnConnectionHealthChecksResult
@@ -59,35 +23,23 @@ func GetVpnConnectionHealthChecks(ctx *pulumi.Context, args *GetVpnConnectionHea
 
 // A collection of arguments for invoking getVpnConnectionHealthChecks.
 type GetVpnConnectionHealthChecksArgs struct {
-	// Specifies the ID of the VPN connection.
-	ConnectionId *string `pulumi:"connectionId"`
-	// Specifies the destination IP of the VPN connection health check.
+	ConnectionId  *string `pulumi:"connectionId"`
 	DestinationIp *string `pulumi:"destinationIp"`
-	// Specifies the region in which to obtain the VPN connection health check.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the source IP of the VPN connection health check.
-	SourceIp *string `pulumi:"sourceIp"`
-	// Specifies the status of the VPN connection health check.
-	Status *string `pulumi:"status"`
+	Region        *string `pulumi:"region"`
+	SourceIp      *string `pulumi:"sourceIp"`
+	Status        *string `pulumi:"status"`
 }
 
 // A collection of values returned by getVpnConnectionHealthChecks.
 type GetVpnConnectionHealthChecksResult struct {
-	// All resource connection health checks that match the filter parameters.
-	// The connectionHealthChecks structure is documented below.
 	ConnectionHealthChecks []GetVpnConnectionHealthChecksConnectionHealthCheck `pulumi:"connectionHealthChecks"`
-	// The connection ID of the connection health check.
-	ConnectionId *string `pulumi:"connectionId"`
-	// The destination IP address of the VPN connection.
-	DestinationIp *string `pulumi:"destinationIp"`
+	ConnectionId           *string                                             `pulumi:"connectionId"`
+	DestinationIp          *string                                             `pulumi:"destinationIp"`
 	// The provider-assigned unique ID for this managed resource.
-	Id     string `pulumi:"id"`
-	Region string `pulumi:"region"`
-	// The source IP address of the VPN connection.
+	Id       string  `pulumi:"id"`
+	Region   string  `pulumi:"region"`
 	SourceIp *string `pulumi:"sourceIp"`
-	// The status of the connection health check.
-	Status *string `pulumi:"status"`
+	Status   *string `pulumi:"status"`
 }
 
 func GetVpnConnectionHealthChecksOutput(ctx *pulumi.Context, args GetVpnConnectionHealthChecksOutputArgs, opts ...pulumi.InvokeOption) GetVpnConnectionHealthChecksResultOutput {
@@ -101,17 +53,11 @@ func GetVpnConnectionHealthChecksOutput(ctx *pulumi.Context, args GetVpnConnecti
 
 // A collection of arguments for invoking getVpnConnectionHealthChecks.
 type GetVpnConnectionHealthChecksOutputArgs struct {
-	// Specifies the ID of the VPN connection.
-	ConnectionId pulumi.StringPtrInput `pulumi:"connectionId"`
-	// Specifies the destination IP of the VPN connection health check.
+	ConnectionId  pulumi.StringPtrInput `pulumi:"connectionId"`
 	DestinationIp pulumi.StringPtrInput `pulumi:"destinationIp"`
-	// Specifies the region in which to obtain the VPN connection health check.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the source IP of the VPN connection health check.
-	SourceIp pulumi.StringPtrInput `pulumi:"sourceIp"`
-	// Specifies the status of the VPN connection health check.
-	Status pulumi.StringPtrInput `pulumi:"status"`
+	Region        pulumi.StringPtrInput `pulumi:"region"`
+	SourceIp      pulumi.StringPtrInput `pulumi:"sourceIp"`
+	Status        pulumi.StringPtrInput `pulumi:"status"`
 }
 
 func (GetVpnConnectionHealthChecksOutputArgs) ElementType() reflect.Type {
@@ -133,20 +79,16 @@ func (o GetVpnConnectionHealthChecksResultOutput) ToGetVpnConnectionHealthChecks
 	return o
 }
 
-// All resource connection health checks that match the filter parameters.
-// The connectionHealthChecks structure is documented below.
 func (o GetVpnConnectionHealthChecksResultOutput) ConnectionHealthChecks() GetVpnConnectionHealthChecksConnectionHealthCheckArrayOutput {
 	return o.ApplyT(func(v GetVpnConnectionHealthChecksResult) []GetVpnConnectionHealthChecksConnectionHealthCheck {
 		return v.ConnectionHealthChecks
 	}).(GetVpnConnectionHealthChecksConnectionHealthCheckArrayOutput)
 }
 
-// The connection ID of the connection health check.
 func (o GetVpnConnectionHealthChecksResultOutput) ConnectionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpnConnectionHealthChecksResult) *string { return v.ConnectionId }).(pulumi.StringPtrOutput)
 }
 
-// The destination IP address of the VPN connection.
 func (o GetVpnConnectionHealthChecksResultOutput) DestinationIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpnConnectionHealthChecksResult) *string { return v.DestinationIp }).(pulumi.StringPtrOutput)
 }
@@ -160,12 +102,10 @@ func (o GetVpnConnectionHealthChecksResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionHealthChecksResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The source IP address of the VPN connection.
 func (o GetVpnConnectionHealthChecksResultOutput) SourceIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpnConnectionHealthChecksResult) *string { return v.SourceIp }).(pulumi.StringPtrOutput)
 }
 
-// The status of the connection health check.
 func (o GetVpnConnectionHealthChecksResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpnConnectionHealthChecksResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

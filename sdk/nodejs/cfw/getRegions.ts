@@ -4,22 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the list of CFW regions.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const fwInstanceId = config.requireObject<any>("fwInstanceId");
- * const test = sbercloud.Cfw.getRegions({
- *     fwInstanceId: fwInstanceId,
- * });
- * ```
- */
 export function getRegions(args: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:Cfw/getRegions:getRegions", {
@@ -33,18 +17,8 @@ export function getRegions(args: GetRegionsArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getRegions.
  */
 export interface GetRegionsArgs {
-    /**
-     * Specifies the enterprise project ID.
-     */
     enterpriseProjectId?: string;
-    /**
-     * Specifies the firewall ID.
-     */
     fwInstanceId: string;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
 }
 
@@ -52,9 +26,6 @@ export interface GetRegionsArgs {
  * A collection of values returned by getRegions.
  */
 export interface GetRegionsResult {
-    /**
-     * The region list.
-     */
     readonly data: string;
     readonly enterpriseProjectId?: string;
     readonly fwInstanceId: string;
@@ -64,22 +35,6 @@ export interface GetRegionsResult {
     readonly id: string;
     readonly region: string;
 }
-/**
- * Use this data source to get the list of CFW regions.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const fwInstanceId = config.requireObject<any>("fwInstanceId");
- * const test = sbercloud.Cfw.getRegions({
- *     fwInstanceId: fwInstanceId,
- * });
- * ```
- */
 export function getRegionsOutput(args: GetRegionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:Cfw/getRegions:getRegions", {
@@ -93,17 +48,7 @@ export function getRegionsOutput(args: GetRegionsOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getRegions.
  */
 export interface GetRegionsOutputArgs {
-    /**
-     * Specifies the enterprise project ID.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Specifies the firewall ID.
-     */
     fwInstanceId: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
 }

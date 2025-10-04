@@ -246,13 +246,13 @@ func (o FunctionCustomImagePtrOutput) WorkingDir() pulumi.StringPtrOutput {
 }
 
 type FunctionFuncMount struct {
-	// Specifies the function access path.
+	// The function access path.
 	LocalMountPath string `pulumi:"localMountPath"`
-	// Specifies the ID of the mounted resource (corresponding cloud service).
+	// The ID of the mounted resource (corresponding cloud service).
 	MountResource string `pulumi:"mountResource"`
-	// Specifies the remote mount path. Example: 192.168.0.12:/data.
+	// The remote mount path.
 	MountSharePath string `pulumi:"mountSharePath"`
-	// Specifies the mount type. Options: sfs, sfsTurbo, and ecs.
+	// The mount type.
 	MountType string `pulumi:"mountType"`
 	// The mount status.
 	Status *string `pulumi:"status"`
@@ -270,13 +270,13 @@ type FunctionFuncMountInput interface {
 }
 
 type FunctionFuncMountArgs struct {
-	// Specifies the function access path.
+	// The function access path.
 	LocalMountPath pulumi.StringInput `pulumi:"localMountPath"`
-	// Specifies the ID of the mounted resource (corresponding cloud service).
+	// The ID of the mounted resource (corresponding cloud service).
 	MountResource pulumi.StringInput `pulumi:"mountResource"`
-	// Specifies the remote mount path. Example: 192.168.0.12:/data.
+	// The remote mount path.
 	MountSharePath pulumi.StringInput `pulumi:"mountSharePath"`
-	// Specifies the mount type. Options: sfs, sfsTurbo, and ecs.
+	// The mount type.
 	MountType pulumi.StringInput `pulumi:"mountType"`
 	// The mount status.
 	Status pulumi.StringPtrInput `pulumi:"status"`
@@ -333,22 +333,22 @@ func (o FunctionFuncMountOutput) ToFunctionFuncMountOutputWithContext(ctx contex
 	return o
 }
 
-// Specifies the function access path.
+// The function access path.
 func (o FunctionFuncMountOutput) LocalMountPath() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionFuncMount) string { return v.LocalMountPath }).(pulumi.StringOutput)
 }
 
-// Specifies the ID of the mounted resource (corresponding cloud service).
+// The ID of the mounted resource (corresponding cloud service).
 func (o FunctionFuncMountOutput) MountResource() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionFuncMount) string { return v.MountResource }).(pulumi.StringOutput)
 }
 
-// Specifies the remote mount path. Example: 192.168.0.12:/data.
+// The remote mount path.
 func (o FunctionFuncMountOutput) MountSharePath() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionFuncMount) string { return v.MountSharePath }).(pulumi.StringOutput)
 }
 
-// Specifies the mount type. Options: sfs, sfsTurbo, and ecs.
+// The mount type.
 func (o FunctionFuncMountOutput) MountType() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionFuncMount) string { return v.MountType }).(pulumi.StringOutput)
 }
@@ -537,7 +537,7 @@ func (o FunctionNetworkControllerPtrOutput) TriggerAccessVpcs() FunctionNetworkC
 }
 
 type FunctionNetworkControllerTriggerAccessVpc struct {
-	// Specifies the ID of VPC.
+	// The ID of the VPC that can trigger the function.
 	VpcId *string `pulumi:"vpcId"`
 	// The ID of the VPC that can trigger the function.
 	VpcName *string `pulumi:"vpcName"`
@@ -555,7 +555,7 @@ type FunctionNetworkControllerTriggerAccessVpcInput interface {
 }
 
 type FunctionNetworkControllerTriggerAccessVpcArgs struct {
-	// Specifies the ID of VPC.
+	// The ID of the VPC that can trigger the function.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
 	// The ID of the VPC that can trigger the function.
 	VpcName pulumi.StringPtrInput `pulumi:"vpcName"`
@@ -612,7 +612,7 @@ func (o FunctionNetworkControllerTriggerAccessVpcOutput) ToFunctionNetworkContro
 	return o
 }
 
-// Specifies the ID of VPC.
+// The ID of the VPC that can trigger the function.
 func (o FunctionNetworkControllerTriggerAccessVpcOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionNetworkControllerTriggerAccessVpc) *string { return v.VpcId }).(pulumi.StringPtrOutput)
 }
@@ -942,7 +942,7 @@ type FunctionReservedInstanceTacticsConfigCronConfig struct {
 	Cron string `pulumi:"cron"`
 	// The expiration timestamp of the policy.
 	ExpiredTime int `pulumi:"expiredTime"`
-	// Specifies the name of the function.
+	// The name of scheduled policy configuration.
 	Name string `pulumi:"name"`
 	// The effective timestamp of policy.
 	StartTime int `pulumi:"startTime"`
@@ -966,7 +966,7 @@ type FunctionReservedInstanceTacticsConfigCronConfigArgs struct {
 	Cron pulumi.StringInput `pulumi:"cron"`
 	// The expiration timestamp of the policy.
 	ExpiredTime pulumi.IntInput `pulumi:"expiredTime"`
-	// Specifies the name of the function.
+	// The name of scheduled policy configuration.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The effective timestamp of policy.
 	StartTime pulumi.IntInput `pulumi:"startTime"`
@@ -1038,7 +1038,7 @@ func (o FunctionReservedInstanceTacticsConfigCronConfigOutput) ExpiredTime() pul
 	return o.ApplyT(func(v FunctionReservedInstanceTacticsConfigCronConfig) int { return v.ExpiredTime }).(pulumi.IntOutput)
 }
 
-// Specifies the name of the function.
+// The name of scheduled policy configuration.
 func (o FunctionReservedInstanceTacticsConfigCronConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionReservedInstanceTacticsConfigCronConfig) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1071,7 +1071,7 @@ func (o FunctionReservedInstanceTacticsConfigCronConfigArrayOutput) Index(i pulu
 type FunctionReservedInstanceTacticsConfigMetricConfig struct {
 	// The minimun of traffic.
 	Min int `pulumi:"min"`
-	// Specifies the name of the function.
+	// The name of metric policy.
 	Name string `pulumi:"name"`
 	// The metric policy threshold.
 	Threshold int `pulumi:"threshold"`
@@ -1093,7 +1093,7 @@ type FunctionReservedInstanceTacticsConfigMetricConfigInput interface {
 type FunctionReservedInstanceTacticsConfigMetricConfigArgs struct {
 	// The minimun of traffic.
 	Min pulumi.IntInput `pulumi:"min"`
-	// Specifies the name of the function.
+	// The name of metric policy.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The metric policy threshold.
 	Threshold pulumi.IntInput `pulumi:"threshold"`
@@ -1157,7 +1157,7 @@ func (o FunctionReservedInstanceTacticsConfigMetricConfigOutput) Min() pulumi.In
 	return o.ApplyT(func(v FunctionReservedInstanceTacticsConfigMetricConfig) int { return v.Min }).(pulumi.IntOutput)
 }
 
-// Specifies the name of the function.
+// The name of metric policy.
 func (o FunctionReservedInstanceTacticsConfigMetricConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionReservedInstanceTacticsConfigMetricConfig) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1195,9 +1195,9 @@ func (o FunctionReservedInstanceTacticsConfigMetricConfigArrayOutput) Index(i pu
 type FunctionVersion struct {
 	// The aliases management for specified version.
 	Aliases *FunctionVersionAliases `pulumi:"aliases"`
-	// Specifies the description of the function.
+	// The description of the version.
 	Description *string `pulumi:"description"`
-	// Specifies the name of the function.
+	// The version name.
 	Name string `pulumi:"name"`
 }
 
@@ -1215,9 +1215,9 @@ type FunctionVersionInput interface {
 type FunctionVersionArgs struct {
 	// The aliases management for specified version.
 	Aliases FunctionVersionAliasesPtrInput `pulumi:"aliases"`
-	// Specifies the description of the function.
+	// The description of the version.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Specifies the name of the function.
+	// The version name.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -1277,12 +1277,12 @@ func (o FunctionVersionOutput) Aliases() FunctionVersionAliasesPtrOutput {
 	return o.ApplyT(func(v FunctionVersion) *FunctionVersionAliases { return v.Aliases }).(FunctionVersionAliasesPtrOutput)
 }
 
-// Specifies the description of the function.
+// The description of the version.
 func (o FunctionVersionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionVersion) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the name of the function.
+// The version name.
 func (o FunctionVersionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionVersion) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1312,9 +1312,9 @@ type FunctionVersionAliases struct {
 	AdditionalVersionStrategy *string `pulumi:"additionalVersionStrategy"`
 	// The percentage grayscale configuration of the version alias.
 	AdditionalVersionWeights *string `pulumi:"additionalVersionWeights"`
-	// Specifies the description of the function.
+	// The description of the version alias.
 	Description *string `pulumi:"description"`
-	// Specifies the name of the function.
+	// The name of the version alias.
 	Name string `pulumi:"name"`
 }
 
@@ -1334,9 +1334,9 @@ type FunctionVersionAliasesArgs struct {
 	AdditionalVersionStrategy pulumi.StringPtrInput `pulumi:"additionalVersionStrategy"`
 	// The percentage grayscale configuration of the version alias.
 	AdditionalVersionWeights pulumi.StringPtrInput `pulumi:"additionalVersionWeights"`
-	// Specifies the description of the function.
+	// The description of the version alias.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Specifies the name of the function.
+	// The name of the version alias.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -1427,12 +1427,12 @@ func (o FunctionVersionAliasesOutput) AdditionalVersionWeights() pulumi.StringPt
 	return o.ApplyT(func(v FunctionVersionAliases) *string { return v.AdditionalVersionWeights }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the description of the function.
+// The description of the version alias.
 func (o FunctionVersionAliasesOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionVersionAliases) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the name of the function.
+// The name of the version alias.
 func (o FunctionVersionAliasesOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionVersionAliases) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1481,7 +1481,7 @@ func (o FunctionVersionAliasesPtrOutput) AdditionalVersionWeights() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the description of the function.
+// The description of the version alias.
 func (o FunctionVersionAliasesPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FunctionVersionAliases) *string {
 		if v == nil {
@@ -1491,7 +1491,7 @@ func (o FunctionVersionAliasesPtrOutput) Description() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the name of the function.
+// The name of the version alias.
 func (o FunctionVersionAliasesPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FunctionVersionAliases) *string {
 		if v == nil {
@@ -1506,43 +1506,19 @@ type GetDependenciesPackage struct {
 	Etag string `pulumi:"etag"`
 	// The file name of the stored dependency package.
 	FileName string `pulumi:"fileName"`
-	// The ID of the dependency package version.
+	// The ID of the dependency package.
 	Id string `pulumi:"id"`
 	// The OBS bucket path where the dependency package is located (FunctionGraph serivce side).
 	Link string `pulumi:"link"`
-	// Specifies the name of the dependency package.
+	// The name of the dependency package.
 	Name string `pulumi:"name"`
 	// The owner of the dependency package.
 	Owner string `pulumi:"owner"`
-	// Specifies the runtime of the dependency package.\
-	// The valid values are as follows:
-	// + **Java8**
-	// + **Java11**
-	// + **Node.js6.10**
-	// + **Node.js8.10**
-	// + **Node.js10.16**
-	// + **Node.js12.13**
-	// + **Node.js14.18**
-	// + **Node.js16.17**
-	// + **Node.js18.15**
-	// + **Python2.7**
-	// + **Python3.6**
-	// + **Python3.9**
-	// + **Python3.10**
-	// + **Go1.x**
-	// + **C#(.NET Core 2.0)**
-	// + **C#(.NET Core 2.1)**
-	// + **C#(.NET Core 3.1)**
-	// + **Custom**
-	// + **PHP7.3**
-	// + **Cangjie1.0**
-	// + **http**
-	// + **Custom Image**
+	// The runtime of the dependency package.
 	Runtime string `pulumi:"runtime"`
 	// The size of the dependency package.
 	Size int `pulumi:"size"`
 	// The list of the versions for the dependency package.
-	// The versions structure is documented below.
 	Versions []GetDependenciesPackageVersion `pulumi:"versions"`
 }
 
@@ -1562,43 +1538,19 @@ type GetDependenciesPackageArgs struct {
 	Etag pulumi.StringInput `pulumi:"etag"`
 	// The file name of the stored dependency package.
 	FileName pulumi.StringInput `pulumi:"fileName"`
-	// The ID of the dependency package version.
+	// The ID of the dependency package.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The OBS bucket path where the dependency package is located (FunctionGraph serivce side).
 	Link pulumi.StringInput `pulumi:"link"`
-	// Specifies the name of the dependency package.
+	// The name of the dependency package.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The owner of the dependency package.
 	Owner pulumi.StringInput `pulumi:"owner"`
-	// Specifies the runtime of the dependency package.\
-	// The valid values are as follows:
-	// + **Java8**
-	// + **Java11**
-	// + **Node.js6.10**
-	// + **Node.js8.10**
-	// + **Node.js10.16**
-	// + **Node.js12.13**
-	// + **Node.js14.18**
-	// + **Node.js16.17**
-	// + **Node.js18.15**
-	// + **Python2.7**
-	// + **Python3.6**
-	// + **Python3.9**
-	// + **Python3.10**
-	// + **Go1.x**
-	// + **C#(.NET Core 2.0)**
-	// + **C#(.NET Core 2.1)**
-	// + **C#(.NET Core 3.1)**
-	// + **Custom**
-	// + **PHP7.3**
-	// + **Cangjie1.0**
-	// + **http**
-	// + **Custom Image**
+	// The runtime of the dependency package.
 	Runtime pulumi.StringInput `pulumi:"runtime"`
 	// The size of the dependency package.
 	Size pulumi.IntInput `pulumi:"size"`
 	// The list of the versions for the dependency package.
-	// The versions structure is documented below.
 	Versions GetDependenciesPackageVersionArrayInput `pulumi:"versions"`
 }
 
@@ -1663,7 +1615,7 @@ func (o GetDependenciesPackageOutput) FileName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDependenciesPackage) string { return v.FileName }).(pulumi.StringOutput)
 }
 
-// The ID of the dependency package version.
+// The ID of the dependency package.
 func (o GetDependenciesPackageOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDependenciesPackage) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -1673,7 +1625,7 @@ func (o GetDependenciesPackageOutput) Link() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDependenciesPackage) string { return v.Link }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the dependency package.
+// The name of the dependency package.
 func (o GetDependenciesPackageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDependenciesPackage) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1683,30 +1635,7 @@ func (o GetDependenciesPackageOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDependenciesPackage) string { return v.Owner }).(pulumi.StringOutput)
 }
 
-// Specifies the runtime of the dependency package.\
-// The valid values are as follows:
-// + **Java8**
-// + **Java11**
-// + **Node.js6.10**
-// + **Node.js8.10**
-// + **Node.js10.16**
-// + **Node.js12.13**
-// + **Node.js14.18**
-// + **Node.js16.17**
-// + **Node.js18.15**
-// + **Python2.7**
-// + **Python3.6**
-// + **Python3.9**
-// + **Python3.10**
-// + **Go1.x**
-// + **C#(.NET Core 2.0)**
-// + **C#(.NET Core 2.1)**
-// + **C#(.NET Core 3.1)**
-// + **Custom**
-// + **PHP7.3**
-// + **Cangjie1.0**
-// + **http**
-// + **Custom Image**
+// The runtime of the dependency package.
 func (o GetDependenciesPackageOutput) Runtime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDependenciesPackage) string { return v.Runtime }).(pulumi.StringOutput)
 }
@@ -1717,7 +1646,6 @@ func (o GetDependenciesPackageOutput) Size() pulumi.IntOutput {
 }
 
 // The list of the versions for the dependency package.
-// The versions structure is documented below.
 func (o GetDependenciesPackageOutput) Versions() GetDependenciesPackageVersionArrayOutput {
 	return o.ApplyT(func(v GetDependenciesPackage) []GetDependenciesPackageVersion { return v.Versions }).(GetDependenciesPackageVersionArrayOutput)
 }

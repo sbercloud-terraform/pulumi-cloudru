@@ -71,18 +71,11 @@ class GetDmsRocketmqInstancesResult:
     @_builtins.property
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetDmsRocketmqInstancesInstanceResult']:
-        """
-        Indicates the list of DMS RocketMQ instances.
-        The Instance structure is documented below.
-        """
         return pulumi.get(self, "instances")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        Indicates the name of the DMS RocketMQ instance.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -93,9 +86,6 @@ class GetDmsRocketmqInstancesResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
-        """
-        Indicates the status of the DMS RocketMQ instance.
-        """
         return pulumi.get(self, "status")
 
 
@@ -121,25 +111,7 @@ def get_dms_rocketmq_instances(exact_match_name: Optional[_builtins.str] = None,
                                status: Optional[_builtins.str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDmsRocketmqInstancesResult:
     """
-    Use this data source to get the list of DMS RocketMQ instances.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.get_dms_rocketmq_instances(name="rocketmq_name_test")
-    ```
-
-
-    :param _builtins.str exact_match_name: Specifies whether to search for the instance that precisely matches a
-           specified instance name. Value options: **true**, **false**. Defaults to **false**.
-    :param _builtins.str instance_id: Specifies the ID of the RocketMQ instance.
-    :param _builtins.str name: Specifies the name of the DMS RocketMQ instance.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str status: Specifies the status of the DMS RocketMQ instance.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['exactMatchName'] = exact_match_name
@@ -165,25 +137,7 @@ def get_dms_rocketmq_instances_output(exact_match_name: Optional[pulumi.Input[Op
                                       status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDmsRocketmqInstancesResult]:
     """
-    Use this data source to get the list of DMS RocketMQ instances.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.get_dms_rocketmq_instances(name="rocketmq_name_test")
-    ```
-
-
-    :param _builtins.str exact_match_name: Specifies whether to search for the instance that precisely matches a
-           specified instance name. Value options: **true**, **false**. Defaults to **false**.
-    :param _builtins.str instance_id: Specifies the ID of the RocketMQ instance.
-    :param _builtins.str name: Specifies the name of the DMS RocketMQ instance.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str status: Specifies the status of the DMS RocketMQ instance.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['exactMatchName'] = exact_match_name

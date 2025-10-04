@@ -4,42 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manage a job resource within SberCloud MRS.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const clusterId = config.requireObject<any>("clusterId");
- * const jobName = config.requireObject<any>("jobName");
- * const programPath = config.requireObject<any>("programPath");
- * const accessKey = config.requireObject<any>("accessKey");
- * const secretKey = config.requireObject<any>("secretKey");
- * const test1 = new sbercloud.mrs.Job("test_1", {
- *     clusterId: clusterId,
- *     type: "SparkSubmit",
- *     name: jobName,
- *     programPath: programPath,
- *     parameters: `${accessKey} ${secretKey} 1 obs://obs-demo-analysis/input obs://obs-demo-analysis/output`,
- *     programParameters: {
- *         "--class": "com.sbercloud.bigdata.spark.examples.DriverBehavior",
- *     },
- * });
- * ```
- *
- * ## Import
- *
- * MapReduce jobs can be imported using their `id` and the IDs of the MapReduce cluster to which the job belongs, separated
- * by a slash, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Mrs/job:Job test <cluster_id>/<id>
- * ```
- */
 export class Job extends pulumi.CustomResource {
     /**
      * Get an existing Job resource's state with the given name, ID, and optional extra
@@ -68,89 +32,17 @@ export class Job extends pulumi.CustomResource {
         return obj['__pulumiType'] === Job.__pulumiType;
     }
 
-    /**
-     * Specifies an ID of the MapReduce cluster to which the job belongs to.
-     * Changing this will create a new MapReduce job resource.
-     */
     declare public readonly clusterId: pulumi.Output<string>;
-    /**
-     * The completion time of the MapReduce job.
-     */
     declare public /*out*/ readonly finishTime: pulumi.Output<string>;
-    /**
-     * Specifies the name of the MapReduce job. The name can contain 1 to 64
-     * characters, which may consist of letters, digits, underscores (_) and hyphens (-). Changing this will create a new
-     * MapReduce job resource.
-     *
-     * <!-- Placing the html block above list will lead to improperly rendered content -->
-     * * <a name="mapreduceJobType">`type`</a> - (Required, String, ForceNew) Specifies the job type.
-     * The valid values are as follows:
-     * + Flink
-     * + HiveSql
-     * + HiveScript
-     * + MapReduce
-     * + SparkSubmit
-     * + SparkSql
-     * + SparkScript
-     *
-     * Changing this will create a new MapReduce job resource.
-     *
-     * > **NOTE:** Spark and Hive jobs can be added to only clusters including Spark and Hive components.
-     */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * Specifies the parameters for the MapReduce job. Add an at sign (@) before
-     * each parameter can prevent the parameters being saved in plaintext format. Each parameters are separated with spaces.
-     * This parameter can be set when `type` is **Flink**, **MapReduce** or **SparkSubmit**. Changing this will create a new
-     * MapReduce job resource.
-     */
     declare public readonly parameters: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the the key/value pairs of the program parameters, such as
-     * thread, memory, and vCPUs, are used to optimize resource usage and improve job execution performance. This parameter
-     * can be set when `type` is **Flink**, **SparkSubmit**, **SparkSql**, **SparkScript**, **HiveSql** or
-     * **HiveScript**. Refer to the documents for each type of support key-values.
-     * Changing this will create a new MapReduce job resource.
-     */
     declare public readonly programParameters: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * Specifies the .jar package path or .py file path for program execution.
-     * The parameter must meet the following requirements:
-     * + Contains a maximum of 1023 characters, excluding special characters such as `;|&><'$`.
-     * + The address cannot be empty or full of spaces.
-     * + The program support OBS or DHFS to storage program file or package. For OBS, starts with (OBS:) **obs://** and end
-     * with **.jar** or **.py**. For DHFS, starts with (DHFS:) **&#47;user**.
-     *
-     * Required if `type` is **MapReduce** or **SparkSubmit**. Changing this will create a new MapReduce job resource.
-     */
     declare public readonly programPath: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the region in which to create the MapReduce job resource. If
-     * omitted, the provider-level region will be used. Changing this will create a new MapReduce job resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Specifies the key/value pairs used to modify service configuration.
-     * Parameter configurations of services are available on the Service Configuration tab page of MapReduce Manager.
-     * Changing this will create a new MapReduce job resource.
-     */
     declare public readonly serviceParameters: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * Specifies the SQL command or file path. Only required if `type` is **HiveSql**
-     * or **SparkSql**. Changing this will create a new MapReduce job resource.
-     */
     declare public readonly sql: pulumi.Output<string | undefined>;
-    /**
-     * The creation time of the MapReduce job.
-     */
     declare public /*out*/ readonly startTime: pulumi.Output<string>;
-    /**
-     * Status of the MapReduce job.
-     */
     declare public /*out*/ readonly status: pulumi.Output<string>;
-    /**
-     * The submission time of the MapReduce job.
-     */
     declare public /*out*/ readonly submitTime: pulumi.Output<string>;
     declare public readonly type: pulumi.Output<string>;
 
@@ -211,89 +103,17 @@ export class Job extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Job resources.
  */
 export interface JobState {
-    /**
-     * Specifies an ID of the MapReduce cluster to which the job belongs to.
-     * Changing this will create a new MapReduce job resource.
-     */
     clusterId?: pulumi.Input<string>;
-    /**
-     * The completion time of the MapReduce job.
-     */
     finishTime?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the MapReduce job. The name can contain 1 to 64
-     * characters, which may consist of letters, digits, underscores (_) and hyphens (-). Changing this will create a new
-     * MapReduce job resource.
-     *
-     * <!-- Placing the html block above list will lead to improperly rendered content -->
-     * * <a name="mapreduceJobType">`type`</a> - (Required, String, ForceNew) Specifies the job type.
-     * The valid values are as follows:
-     * + Flink
-     * + HiveSql
-     * + HiveScript
-     * + MapReduce
-     * + SparkSubmit
-     * + SparkSql
-     * + SparkScript
-     *
-     * Changing this will create a new MapReduce job resource.
-     *
-     * > **NOTE:** Spark and Hive jobs can be added to only clusters including Spark and Hive components.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the parameters for the MapReduce job. Add an at sign (@) before
-     * each parameter can prevent the parameters being saved in plaintext format. Each parameters are separated with spaces.
-     * This parameter can be set when `type` is **Flink**, **MapReduce** or **SparkSubmit**. Changing this will create a new
-     * MapReduce job resource.
-     */
     parameters?: pulumi.Input<string>;
-    /**
-     * Specifies the the key/value pairs of the program parameters, such as
-     * thread, memory, and vCPUs, are used to optimize resource usage and improve job execution performance. This parameter
-     * can be set when `type` is **Flink**, **SparkSubmit**, **SparkSql**, **SparkScript**, **HiveSql** or
-     * **HiveScript**. Refer to the documents for each type of support key-values.
-     * Changing this will create a new MapReduce job resource.
-     */
     programParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies the .jar package path or .py file path for program execution.
-     * The parameter must meet the following requirements:
-     * + Contains a maximum of 1023 characters, excluding special characters such as `;|&><'$`.
-     * + The address cannot be empty or full of spaces.
-     * + The program support OBS or DHFS to storage program file or package. For OBS, starts with (OBS:) **obs://** and end
-     * with **.jar** or **.py**. For DHFS, starts with (DHFS:) **&#47;user**.
-     *
-     * Required if `type` is **MapReduce** or **SparkSubmit**. Changing this will create a new MapReduce job resource.
-     */
     programPath?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the MapReduce job resource. If
-     * omitted, the provider-level region will be used. Changing this will create a new MapReduce job resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the key/value pairs used to modify service configuration.
-     * Parameter configurations of services are available on the Service Configuration tab page of MapReduce Manager.
-     * Changing this will create a new MapReduce job resource.
-     */
     serviceParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies the SQL command or file path. Only required if `type` is **HiveSql**
-     * or **SparkSql**. Changing this will create a new MapReduce job resource.
-     */
     sql?: pulumi.Input<string>;
-    /**
-     * The creation time of the MapReduce job.
-     */
     startTime?: pulumi.Input<string>;
-    /**
-     * Status of the MapReduce job.
-     */
     status?: pulumi.Input<string>;
-    /**
-     * The submission time of the MapReduce job.
-     */
     submitTime?: pulumi.Input<string>;
     type?: pulumi.Input<string>;
 }
@@ -302,73 +122,13 @@ export interface JobState {
  * The set of arguments for constructing a Job resource.
  */
 export interface JobArgs {
-    /**
-     * Specifies an ID of the MapReduce cluster to which the job belongs to.
-     * Changing this will create a new MapReduce job resource.
-     */
     clusterId: pulumi.Input<string>;
-    /**
-     * Specifies the name of the MapReduce job. The name can contain 1 to 64
-     * characters, which may consist of letters, digits, underscores (_) and hyphens (-). Changing this will create a new
-     * MapReduce job resource.
-     *
-     * <!-- Placing the html block above list will lead to improperly rendered content -->
-     * * <a name="mapreduceJobType">`type`</a> - (Required, String, ForceNew) Specifies the job type.
-     * The valid values are as follows:
-     * + Flink
-     * + HiveSql
-     * + HiveScript
-     * + MapReduce
-     * + SparkSubmit
-     * + SparkSql
-     * + SparkScript
-     *
-     * Changing this will create a new MapReduce job resource.
-     *
-     * > **NOTE:** Spark and Hive jobs can be added to only clusters including Spark and Hive components.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the parameters for the MapReduce job. Add an at sign (@) before
-     * each parameter can prevent the parameters being saved in plaintext format. Each parameters are separated with spaces.
-     * This parameter can be set when `type` is **Flink**, **MapReduce** or **SparkSubmit**. Changing this will create a new
-     * MapReduce job resource.
-     */
     parameters?: pulumi.Input<string>;
-    /**
-     * Specifies the the key/value pairs of the program parameters, such as
-     * thread, memory, and vCPUs, are used to optimize resource usage and improve job execution performance. This parameter
-     * can be set when `type` is **Flink**, **SparkSubmit**, **SparkSql**, **SparkScript**, **HiveSql** or
-     * **HiveScript**. Refer to the documents for each type of support key-values.
-     * Changing this will create a new MapReduce job resource.
-     */
     programParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies the .jar package path or .py file path for program execution.
-     * The parameter must meet the following requirements:
-     * + Contains a maximum of 1023 characters, excluding special characters such as `;|&><'$`.
-     * + The address cannot be empty or full of spaces.
-     * + The program support OBS or DHFS to storage program file or package. For OBS, starts with (OBS:) **obs://** and end
-     * with **.jar** or **.py**. For DHFS, starts with (DHFS:) **&#47;user**.
-     *
-     * Required if `type` is **MapReduce** or **SparkSubmit**. Changing this will create a new MapReduce job resource.
-     */
     programPath?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the MapReduce job resource. If
-     * omitted, the provider-level region will be used. Changing this will create a new MapReduce job resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the key/value pairs used to modify service configuration.
-     * Parameter configurations of services are available on the Service Configuration tab page of MapReduce Manager.
-     * Changing this will create a new MapReduce job resource.
-     */
     serviceParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies the SQL command or file path. Only required if `type` is **HiveSql**
-     * or **SparkSql**. Changing this will create a new MapReduce job resource.
-     */
     sql?: pulumi.Input<string>;
     type: pulumi.Input<string>;
 }

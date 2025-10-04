@@ -6,81 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Manages an OBS bucket acl resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const bucket = config.requireObject<any>("bucket");
- * const account1 = config.requireObject<any>("account1");
- * const account2 = config.requireObject<any>("account2");
- * const test = new sbercloud.ObsBucketAcl("test", {
- *     bucket: bucket,
- *     ownerPermission: {
- *         accessToBuckets: [
- *             "READ",
- *             "WRITE",
- *         ],
- *         accessToAcls: [
- *             "READ_ACP",
- *             "WRITE_ACP",
- *         ],
- *     },
- *     accountPermissions: [
- *         {
- *             accessToBuckets: [
- *                 "READ",
- *                 "WRITE",
- *             ],
- *             accessToAcls: [
- *                 "READ_ACP",
- *                 "WRITE_ACP",
- *             ],
- *             accountId: account1,
- *         },
- *         {
- *             accessToBuckets: ["READ"],
- *             accessToAcls: [
- *                 "READ_ACP",
- *                 "WRITE_ACP",
- *             ],
- *             accountId: account2,
- *         },
- *     ],
- *     publicPermission: {
- *         accessToBuckets: [
- *             "READ",
- *             "WRITE",
- *         ],
- *     },
- *     logDeliveryUserPermission: {
- *         accessToBuckets: [
- *             "READ",
- *             "WRITE",
- *         ],
- *         accessToAcls: [
- *             "READ_ACP",
- *             "WRITE_ACP",
- *         ],
- *     },
- * });
- * ```
- *
- * ## Import
- *
- * The obs bucket acl can be imported using the `bucket`, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:index/obsBucketAcl:ObsBucketAcl test <bucket-name>
- * ```
- */
 export class ObsBucketAcl extends pulumi.CustomResource {
     /**
      * Get an existing ObsBucketAcl resource's state with the given name, ID, and optional extra
@@ -111,40 +36,24 @@ export class ObsBucketAcl extends pulumi.CustomResource {
 
     /**
      * Specifies the account permissions.
-     * The accountPermissionStruct structure is documented below.
-     *
-     * <a name="OBSBucketAcl_permission_struct"></a>
-     * The `permissionStruct` block supports:
      */
     declare public readonly accountPermissions: pulumi.Output<outputs.ObsBucketAclAccountPermission[] | undefined>;
     /**
      * Specifies the name of the bucket to which to set the acl.
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly bucket: pulumi.Output<string>;
     /**
      * Specifies the log delivery user permission.
-     * The permissionStruct structure is documented below.
      */
     declare public readonly logDeliveryUserPermission: pulumi.Output<outputs.ObsBucketAclLogDeliveryUserPermission | undefined>;
     /**
-     * Specifies the bucket owner permission. If omitted, the current obs bucket acl
-     * owner permission will not be changed.
-     * The permissionStruct structure is documented below.
+     * Specifies the bucket owner permission.
      */
     declare public readonly ownerPermission: pulumi.Output<outputs.ObsBucketAclOwnerPermission>;
     /**
      * Specifies the public permission.
-     * The permissionStruct structure is documented below.
      */
     declare public readonly publicPermission: pulumi.Output<outputs.ObsBucketAclPublicPermission | undefined>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     *
-     * Changing this parameter will create a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
 
     /**
@@ -189,40 +98,24 @@ export class ObsBucketAcl extends pulumi.CustomResource {
 export interface ObsBucketAclState {
     /**
      * Specifies the account permissions.
-     * The accountPermissionStruct structure is documented below.
-     *
-     * <a name="OBSBucketAcl_permission_struct"></a>
-     * The `permissionStruct` block supports:
      */
     accountPermissions?: pulumi.Input<pulumi.Input<inputs.ObsBucketAclAccountPermission>[]>;
     /**
      * Specifies the name of the bucket to which to set the acl.
-     *
-     * Changing this parameter will create a new resource.
      */
     bucket?: pulumi.Input<string>;
     /**
      * Specifies the log delivery user permission.
-     * The permissionStruct structure is documented below.
      */
     logDeliveryUserPermission?: pulumi.Input<inputs.ObsBucketAclLogDeliveryUserPermission>;
     /**
-     * Specifies the bucket owner permission. If omitted, the current obs bucket acl
-     * owner permission will not be changed.
-     * The permissionStruct structure is documented below.
+     * Specifies the bucket owner permission.
      */
     ownerPermission?: pulumi.Input<inputs.ObsBucketAclOwnerPermission>;
     /**
      * Specifies the public permission.
-     * The permissionStruct structure is documented below.
      */
     publicPermission?: pulumi.Input<inputs.ObsBucketAclPublicPermission>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     *
-     * Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
 }
 
@@ -232,39 +125,23 @@ export interface ObsBucketAclState {
 export interface ObsBucketAclArgs {
     /**
      * Specifies the account permissions.
-     * The accountPermissionStruct structure is documented below.
-     *
-     * <a name="OBSBucketAcl_permission_struct"></a>
-     * The `permissionStruct` block supports:
      */
     accountPermissions?: pulumi.Input<pulumi.Input<inputs.ObsBucketAclAccountPermission>[]>;
     /**
      * Specifies the name of the bucket to which to set the acl.
-     *
-     * Changing this parameter will create a new resource.
      */
     bucket: pulumi.Input<string>;
     /**
      * Specifies the log delivery user permission.
-     * The permissionStruct structure is documented below.
      */
     logDeliveryUserPermission?: pulumi.Input<inputs.ObsBucketAclLogDeliveryUserPermission>;
     /**
-     * Specifies the bucket owner permission. If omitted, the current obs bucket acl
-     * owner permission will not be changed.
-     * The permissionStruct structure is documented below.
+     * Specifies the bucket owner permission.
      */
     ownerPermission?: pulumi.Input<inputs.ObsBucketAclOwnerPermission>;
     /**
      * Specifies the public permission.
-     * The permissionStruct structure is documented below.
      */
     publicPermission?: pulumi.Input<inputs.ObsBucketAclPublicPermission>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     *
-     * Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
 }

@@ -6,24 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get the list of RocketMQ topic access users.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const topic = config.requireObject<any>("topic");
- * const test = sbercloud.getDmsRocketmqTopicAccessUsers({
- *     instanceId: instanceId,
- *     topic: topic,
- * });
- * ```
- */
 export function getDmsRocketmqTopicAccessUsers(args: GetDmsRocketmqTopicAccessUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetDmsRocketmqTopicAccessUsersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:index/getDmsRocketmqTopicAccessUsers:getDmsRocketmqTopicAccessUsers", {
@@ -37,18 +19,8 @@ export function getDmsRocketmqTopicAccessUsers(args: GetDmsRocketmqTopicAccessUs
  * A collection of arguments for invoking getDmsRocketmqTopicAccessUsers.
  */
 export interface GetDmsRocketmqTopicAccessUsersArgs {
-    /**
-     * Specifies the instance ID.
-     */
     instanceId: string;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
-    /**
-     * Specifies the topic name.
-     */
     topic: string;
 }
 
@@ -61,31 +33,10 @@ export interface GetDmsRocketmqTopicAccessUsersResult {
      */
     readonly id: string;
     readonly instanceId: string;
-    /**
-     * Indicates the user list.
-     */
     readonly policies: outputs.GetDmsRocketmqTopicAccessUsersPolicy[];
     readonly region: string;
     readonly topic: string;
 }
-/**
- * Use this data source to get the list of RocketMQ topic access users.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const topic = config.requireObject<any>("topic");
- * const test = sbercloud.getDmsRocketmqTopicAccessUsers({
- *     instanceId: instanceId,
- *     topic: topic,
- * });
- * ```
- */
 export function getDmsRocketmqTopicAccessUsersOutput(args: GetDmsRocketmqTopicAccessUsersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDmsRocketmqTopicAccessUsersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:index/getDmsRocketmqTopicAccessUsers:getDmsRocketmqTopicAccessUsers", {
@@ -99,17 +50,7 @@ export function getDmsRocketmqTopicAccessUsersOutput(args: GetDmsRocketmqTopicAc
  * A collection of arguments for invoking getDmsRocketmqTopicAccessUsers.
  */
 export interface GetDmsRocketmqTopicAccessUsersOutputArgs {
-    /**
-     * Specifies the instance ID.
-     */
     instanceId: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the topic name.
-     */
     topic: pulumi.Input<string>;
 }

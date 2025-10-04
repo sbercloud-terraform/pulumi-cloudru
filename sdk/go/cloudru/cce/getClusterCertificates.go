@@ -11,37 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the certificate of a CCE cluster within HuaweiCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cce"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			clusterId := cfg.RequireObject("clusterId")
-//			_, err := cce.GetClusterCertificates(ctx, &cce.GetClusterCertificatesArgs{
-//				ClusterId: clusterId,
-//				Duration:  30,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetClusterCertificates(ctx *pulumi.Context, args *GetClusterCertificatesArgs, opts ...pulumi.InvokeOption) (*GetClusterCertificatesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetClusterCertificatesResult
@@ -54,36 +23,23 @@ func GetClusterCertificates(ctx *pulumi.Context, args *GetClusterCertificatesArg
 
 // A collection of arguments for invoking getClusterCertificates.
 type GetClusterCertificatesArgs struct {
-	// Specifies the cluster ID which the cluster certificate in.
-	ClusterId string `pulumi:"clusterId"`
-	// Specifies the duration of the cluster certificate. The unit is days. The valid value in
-	// [1, 1827]. If the input value is -1, it will use the maximum 1827 as `duration` value.
-	Duration int `pulumi:"duration"`
-	// Specifies the region in which to obtain the CCE cluster certificate. If omitted, the
-	// provider-level region will be used.
-	Region *string `pulumi:"region"`
+	ClusterId string  `pulumi:"clusterId"`
+	Duration  int     `pulumi:"duration"`
+	Region    *string `pulumi:"region"`
 }
 
 // A collection of values returned by getClusterCertificates.
 type GetClusterCertificatesResult struct {
-	ClusterId string `pulumi:"clusterId"`
-	// The clusters information of the cluster certificate.
-	// The clusters structure is documented below.
-	Clusters []GetClusterCertificatesCluster `pulumi:"clusters"`
-	// The contexts information of the cluster certificate.
-	// The contexts structure is documented below.
-	Contexts []GetClusterCertificatesContext `pulumi:"contexts"`
-	// The current context of the cluster certificate.
-	CurrentContext string `pulumi:"currentContext"`
-	Duration       int    `pulumi:"duration"`
+	ClusterId      string                          `pulumi:"clusterId"`
+	Clusters       []GetClusterCertificatesCluster `pulumi:"clusters"`
+	Contexts       []GetClusterCertificatesContext `pulumi:"contexts"`
+	CurrentContext string                          `pulumi:"currentContext"`
+	Duration       int                             `pulumi:"duration"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Raw Kubernetes config to be used by kubectl and other compatible tools.
-	KubeConfigRaw string `pulumi:"kubeConfigRaw"`
-	Region        string `pulumi:"region"`
-	// The users information of cluster the certificate.
-	// The users structure is documented below.
-	Users []GetClusterCertificatesUser `pulumi:"users"`
+	Id            string                       `pulumi:"id"`
+	KubeConfigRaw string                       `pulumi:"kubeConfigRaw"`
+	Region        string                       `pulumi:"region"`
+	Users         []GetClusterCertificatesUser `pulumi:"users"`
 }
 
 func GetClusterCertificatesOutput(ctx *pulumi.Context, args GetClusterCertificatesOutputArgs, opts ...pulumi.InvokeOption) GetClusterCertificatesResultOutput {
@@ -97,14 +53,9 @@ func GetClusterCertificatesOutput(ctx *pulumi.Context, args GetClusterCertificat
 
 // A collection of arguments for invoking getClusterCertificates.
 type GetClusterCertificatesOutputArgs struct {
-	// Specifies the cluster ID which the cluster certificate in.
-	ClusterId pulumi.StringInput `pulumi:"clusterId"`
-	// Specifies the duration of the cluster certificate. The unit is days. The valid value in
-	// [1, 1827]. If the input value is -1, it will use the maximum 1827 as `duration` value.
-	Duration pulumi.IntInput `pulumi:"duration"`
-	// Specifies the region in which to obtain the CCE cluster certificate. If omitted, the
-	// provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	ClusterId pulumi.StringInput    `pulumi:"clusterId"`
+	Duration  pulumi.IntInput       `pulumi:"duration"`
+	Region    pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetClusterCertificatesOutputArgs) ElementType() reflect.Type {
@@ -130,19 +81,14 @@ func (o GetClusterCertificatesResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterCertificatesResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// The clusters information of the cluster certificate.
-// The clusters structure is documented below.
 func (o GetClusterCertificatesResultOutput) Clusters() GetClusterCertificatesClusterArrayOutput {
 	return o.ApplyT(func(v GetClusterCertificatesResult) []GetClusterCertificatesCluster { return v.Clusters }).(GetClusterCertificatesClusterArrayOutput)
 }
 
-// The contexts information of the cluster certificate.
-// The contexts structure is documented below.
 func (o GetClusterCertificatesResultOutput) Contexts() GetClusterCertificatesContextArrayOutput {
 	return o.ApplyT(func(v GetClusterCertificatesResult) []GetClusterCertificatesContext { return v.Contexts }).(GetClusterCertificatesContextArrayOutput)
 }
 
-// The current context of the cluster certificate.
 func (o GetClusterCertificatesResultOutput) CurrentContext() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterCertificatesResult) string { return v.CurrentContext }).(pulumi.StringOutput)
 }
@@ -156,7 +102,6 @@ func (o GetClusterCertificatesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterCertificatesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Raw Kubernetes config to be used by kubectl and other compatible tools.
 func (o GetClusterCertificatesResultOutput) KubeConfigRaw() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterCertificatesResult) string { return v.KubeConfigRaw }).(pulumi.StringOutput)
 }
@@ -165,8 +110,6 @@ func (o GetClusterCertificatesResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterCertificatesResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The users information of cluster the certificate.
-// The users structure is documented below.
 func (o GetClusterCertificatesResultOutput) Users() GetClusterCertificatesUserArrayOutput {
 	return o.ApplyT(func(v GetClusterCertificatesResult) []GetClusterCertificatesUser { return v.Users }).(GetClusterCertificatesUserArrayOutput)
 }

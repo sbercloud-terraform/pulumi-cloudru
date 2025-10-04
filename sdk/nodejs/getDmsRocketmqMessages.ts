@@ -6,64 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get the list of RocketMQ instance messages.
- *
- * ## Example Usage
- *
- * ### Query message by topic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const topic = config.requireObject<any>("topic");
- * const startTime = config.requireObject<any>("startTime");
- * const endTime = config.requireObject<any>("endTime");
- * const test = sbercloud.getDmsRocketmqMessages({
- *     instanceId: instanceId,
- *     topic: topic,
- *     startTime: startTime,
- *     endTime: endTime,
- * });
- * ```
- *
- * ### Query message by key
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const topic = config.requireObject<any>("topic");
- * const key = config.requireObject<any>("key");
- * const test = sbercloud.getDmsRocketmqMessages({
- *     instanceId: instanceId,
- *     topic: topic,
- *     key: key,
- * });
- * ```
- *
- * ### Query message by message ID
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const topic = config.requireObject<any>("topic");
- * const messageId = config.requireObject<any>("messageId");
- * const test = sbercloud.getDmsRocketmqMessages({
- *     instanceId: instanceId,
- *     topic: topic,
- *     messageId: messageId,
- * });
- * ```
- */
 export function getDmsRocketmqMessages(args: GetDmsRocketmqMessagesArgs, opts?: pulumi.InvokeOptions): Promise<GetDmsRocketmqMessagesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:index/getDmsRocketmqMessages:getDmsRocketmqMessages", {
@@ -81,34 +23,12 @@ export function getDmsRocketmqMessages(args: GetDmsRocketmqMessagesArgs, opts?: 
  * A collection of arguments for invoking getDmsRocketmqMessages.
  */
 export interface GetDmsRocketmqMessagesArgs {
-    /**
-     * Specifies the end time, a Unix timestamp in millisecond.
-     */
     endTime?: string;
-    /**
-     * Specifies the instance ID.
-     */
     instanceId: string;
-    /**
-     * Specifies the message key.
-     */
     key?: string;
-    /**
-     * Specifies the message ID.
-     */
     messageId?: string;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
-    /**
-     * Specifies the start time, a Unix timestamp in millisecond.
-     */
     startTime?: string;
-    /**
-     * Specifies the topic name.
-     */
     topic: string;
 }
 
@@ -123,77 +43,12 @@ export interface GetDmsRocketmqMessagesResult {
     readonly id: string;
     readonly instanceId: string;
     readonly key?: string;
-    /**
-     * Indicates the message ID.
-     */
     readonly messageId?: string;
-    /**
-     * Indicates the message list.
-     * The messages structure is documented below.
-     */
     readonly messages: outputs.GetDmsRocketmqMessagesMessage[];
     readonly region: string;
     readonly startTime?: string;
     readonly topic: string;
 }
-/**
- * Use this data source to get the list of RocketMQ instance messages.
- *
- * ## Example Usage
- *
- * ### Query message by topic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const topic = config.requireObject<any>("topic");
- * const startTime = config.requireObject<any>("startTime");
- * const endTime = config.requireObject<any>("endTime");
- * const test = sbercloud.getDmsRocketmqMessages({
- *     instanceId: instanceId,
- *     topic: topic,
- *     startTime: startTime,
- *     endTime: endTime,
- * });
- * ```
- *
- * ### Query message by key
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const topic = config.requireObject<any>("topic");
- * const key = config.requireObject<any>("key");
- * const test = sbercloud.getDmsRocketmqMessages({
- *     instanceId: instanceId,
- *     topic: topic,
- *     key: key,
- * });
- * ```
- *
- * ### Query message by message ID
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const topic = config.requireObject<any>("topic");
- * const messageId = config.requireObject<any>("messageId");
- * const test = sbercloud.getDmsRocketmqMessages({
- *     instanceId: instanceId,
- *     topic: topic,
- *     messageId: messageId,
- * });
- * ```
- */
 export function getDmsRocketmqMessagesOutput(args: GetDmsRocketmqMessagesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDmsRocketmqMessagesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:index/getDmsRocketmqMessages:getDmsRocketmqMessages", {
@@ -211,33 +66,11 @@ export function getDmsRocketmqMessagesOutput(args: GetDmsRocketmqMessagesOutputA
  * A collection of arguments for invoking getDmsRocketmqMessages.
  */
 export interface GetDmsRocketmqMessagesOutputArgs {
-    /**
-     * Specifies the end time, a Unix timestamp in millisecond.
-     */
     endTime?: pulumi.Input<string>;
-    /**
-     * Specifies the instance ID.
-     */
     instanceId: pulumi.Input<string>;
-    /**
-     * Specifies the message key.
-     */
     key?: pulumi.Input<string>;
-    /**
-     * Specifies the message ID.
-     */
     messageId?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the start time, a Unix timestamp in millisecond.
-     */
     startTime?: pulumi.Input<string>;
-    /**
-     * Specifies the topic name.
-     */
     topic: pulumi.Input<string>;
 }

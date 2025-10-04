@@ -4,54 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a **Custom Policy** resource within SberCloud IAM service.
- *
- * ->**Note** You _must_ have admin privileges in your SberCloud cloud to use this resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const role1 = new sbercloud.iam.Role("role1", {
- *     name: "test",
- *     description: "created by terraform",
- *     type: "AX",
- *     policy: `{
- *   "Version": "1.1",
- *   "Statement": [
- *     {
- *       "Action": [
- *         "obs:bucket:GetBucketAcl"
- *       ],
- *       "Effect": "Allow",
- *       "Resource": [
- *         "obs:*:*:bucket:*"
- *       ],
- *       "Condition": {
- *         "StringStartWith": {
- *           "g:ProjectName": [
- *             "ru-moscow-1"
- *           ]
- *         }
- *       }
- *     }
- *   ]
- * }
- * `,
- * });
- * ```
- *
- * ## Import
- *
- * Roles can be imported using the `id`, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Iam/role:Role role1 89c60255-9bd6-460c-822a-e2b959ede9d2
- * ```
- */
 export class Role extends pulumi.CustomResource {
     /**
      * Get an existing Role resource's state with the given name, ID, and optional extra
@@ -80,25 +32,10 @@ export class Role extends pulumi.CustomResource {
         return obj['__pulumiType'] === Role.__pulumiType;
     }
 
-    /**
-     * Description of the custom policy.
-     */
     declare public readonly description: pulumi.Output<string>;
-    /**
-     * Name of the custom policy.
-     */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * Document of the custom policy in JSON format.
-     */
     declare public readonly policy: pulumi.Output<string>;
-    /**
-     * The number of references.
-     */
     declare public /*out*/ readonly references: pulumi.Output<number>;
-    /**
-     * Display mode. Valid options are _AX_: Account level and _XA_: Project level.
-     */
     declare public readonly type: pulumi.Output<string>;
 
     /**
@@ -145,25 +82,10 @@ export class Role extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Role resources.
  */
 export interface RoleState {
-    /**
-     * Description of the custom policy.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Name of the custom policy.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Document of the custom policy in JSON format.
-     */
     policy?: pulumi.Input<string>;
-    /**
-     * The number of references.
-     */
     references?: pulumi.Input<number>;
-    /**
-     * Display mode. Valid options are _AX_: Account level and _XA_: Project level.
-     */
     type?: pulumi.Input<string>;
 }
 
@@ -171,20 +93,8 @@ export interface RoleState {
  * The set of arguments for constructing a Role resource.
  */
 export interface RoleArgs {
-    /**
-     * Description of the custom policy.
-     */
     description: pulumi.Input<string>;
-    /**
-     * Name of the custom policy.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Document of the custom policy in JSON format.
-     */
     policy: pulumi.Input<string>;
-    /**
-     * Display mode. Valid options are _AX_: Account level and _XA_: Project level.
-     */
     type: pulumi.Input<string>;
 }

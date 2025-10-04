@@ -12,71 +12,15 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages RDS Mysql database privilege resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/rds"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			dbName := cfg.RequireObject("dbName")
-//			userName1 := cfg.RequireObject("userName1")
-//			userName2 := cfg.RequireObject("userName2")
-//			_, err := rds.NewMysqlDatabasePrivilege(ctx, "test", &rds.MysqlDatabasePrivilegeArgs{
-//				InstanceId: pulumi.Any(instanceId),
-//				DbName:     pulumi.Any(dbName),
-//				Users: rds.MysqlDatabasePrivilegeUserArray{
-//					&rds.MysqlDatabasePrivilegeUserArgs{
-//						Name:     pulumi.Any(userName1),
-//						Readonly: pulumi.Bool(true),
-//					},
-//					&rds.MysqlDatabasePrivilegeUserArgs{
-//						Name:     pulumi.Any(userName2),
-//						Readonly: pulumi.Bool(false),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// RDS database privilege can be imported using the `instance id` and `db_name`, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Rds/mysqlDatabasePrivilege:MysqlDatabasePrivilege test <instance_id>/<db_name>
-// ```
 type MysqlDatabasePrivilege struct {
 	pulumi.CustomResourceState
 
-	// Specifies the database name. Changing this creates a new resource.
+	// Specifies the database name.
 	DbName pulumi.StringOutput `pulumi:"dbName"`
-	// Specifies the RDS instance ID. Changing this will create a new resource.
+	// Specifies the ID of the RDS Mysql instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// The region in which to create the RDS database privilege resource. If omitted,
-	// the provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Specifies the account that associated with the database. Structure is documented below.
+	Region     pulumi.StringOutput `pulumi:"region"`
+	// Specifies the account that associated with the database.
 	Users MysqlDatabasePrivilegeUserArrayOutput `pulumi:"users"`
 }
 
@@ -119,26 +63,22 @@ func GetMysqlDatabasePrivilege(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MysqlDatabasePrivilege resources.
 type mysqlDatabasePrivilegeState struct {
-	// Specifies the database name. Changing this creates a new resource.
+	// Specifies the database name.
 	DbName *string `pulumi:"dbName"`
-	// Specifies the RDS instance ID. Changing this will create a new resource.
+	// Specifies the ID of the RDS Mysql instance.
 	InstanceId *string `pulumi:"instanceId"`
-	// The region in which to create the RDS database privilege resource. If omitted,
-	// the provider-level region will be used. Changing this creates a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies the account that associated with the database. Structure is documented below.
+	Region     *string `pulumi:"region"`
+	// Specifies the account that associated with the database.
 	Users []MysqlDatabasePrivilegeUser `pulumi:"users"`
 }
 
 type MysqlDatabasePrivilegeState struct {
-	// Specifies the database name. Changing this creates a new resource.
+	// Specifies the database name.
 	DbName pulumi.StringPtrInput
-	// Specifies the RDS instance ID. Changing this will create a new resource.
+	// Specifies the ID of the RDS Mysql instance.
 	InstanceId pulumi.StringPtrInput
-	// The region in which to create the RDS database privilege resource. If omitted,
-	// the provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringPtrInput
-	// Specifies the account that associated with the database. Structure is documented below.
+	Region     pulumi.StringPtrInput
+	// Specifies the account that associated with the database.
 	Users MysqlDatabasePrivilegeUserArrayInput
 }
 
@@ -147,27 +87,23 @@ func (MysqlDatabasePrivilegeState) ElementType() reflect.Type {
 }
 
 type mysqlDatabasePrivilegeArgs struct {
-	// Specifies the database name. Changing this creates a new resource.
+	// Specifies the database name.
 	DbName string `pulumi:"dbName"`
-	// Specifies the RDS instance ID. Changing this will create a new resource.
-	InstanceId string `pulumi:"instanceId"`
-	// The region in which to create the RDS database privilege resource. If omitted,
-	// the provider-level region will be used. Changing this creates a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies the account that associated with the database. Structure is documented below.
+	// Specifies the ID of the RDS Mysql instance.
+	InstanceId string  `pulumi:"instanceId"`
+	Region     *string `pulumi:"region"`
+	// Specifies the account that associated with the database.
 	Users []MysqlDatabasePrivilegeUser `pulumi:"users"`
 }
 
 // The set of arguments for constructing a MysqlDatabasePrivilege resource.
 type MysqlDatabasePrivilegeArgs struct {
-	// Specifies the database name. Changing this creates a new resource.
+	// Specifies the database name.
 	DbName pulumi.StringInput
-	// Specifies the RDS instance ID. Changing this will create a new resource.
+	// Specifies the ID of the RDS Mysql instance.
 	InstanceId pulumi.StringInput
-	// The region in which to create the RDS database privilege resource. If omitted,
-	// the provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringPtrInput
-	// Specifies the account that associated with the database. Structure is documented below.
+	Region     pulumi.StringPtrInput
+	// Specifies the account that associated with the database.
 	Users MysqlDatabasePrivilegeUserArrayInput
 }
 
@@ -258,23 +194,21 @@ func (o MysqlDatabasePrivilegeOutput) ToMysqlDatabasePrivilegeOutputWithContext(
 	return o
 }
 
-// Specifies the database name. Changing this creates a new resource.
+// Specifies the database name.
 func (o MysqlDatabasePrivilegeOutput) DbName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlDatabasePrivilege) pulumi.StringOutput { return v.DbName }).(pulumi.StringOutput)
 }
 
-// Specifies the RDS instance ID. Changing this will create a new resource.
+// Specifies the ID of the RDS Mysql instance.
 func (o MysqlDatabasePrivilegeOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlDatabasePrivilege) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// The region in which to create the RDS database privilege resource. If omitted,
-// the provider-level region will be used. Changing this creates a new resource.
 func (o MysqlDatabasePrivilegeOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlDatabasePrivilege) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Specifies the account that associated with the database. Structure is documented below.
+// Specifies the account that associated with the database.
 func (o MysqlDatabasePrivilegeOutput) Users() MysqlDatabasePrivilegeUserArrayOutput {
 	return o.ApplyT(func(v *MysqlDatabasePrivilege) MysqlDatabasePrivilegeUserArrayOutput { return v.Users }).(MysqlDatabasePrivilegeUserArrayOutput)
 }

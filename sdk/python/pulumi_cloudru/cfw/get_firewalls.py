@@ -47,9 +47,6 @@ class GetFirewallsResult:
     @_builtins.property
     @pulumi.getter(name="fwInstanceId")
     def fw_instance_id(self) -> Optional[_builtins.str]:
-        """
-        The firewall ID.
-        """
         return pulumi.get(self, "fw_instance_id")
 
     @_builtins.property
@@ -63,10 +60,6 @@ class GetFirewallsResult:
     @_builtins.property
     @pulumi.getter
     def records(self) -> Sequence['outputs.GetFirewallsRecordResult']:
-        """
-        The firewall instance records.
-        The records object structure is documented below.
-        """
         return pulumi.get(self, "records")
 
     @_builtins.property
@@ -77,9 +70,6 @@ class GetFirewallsResult:
     @_builtins.property
     @pulumi.getter(name="serviceType")
     def service_type(self) -> Optional[_builtins.int]:
-        """
-        The service type.
-        """
         return pulumi.get(self, "service_type")
 
 
@@ -101,25 +91,7 @@ def get_firewalls(fw_instance_id: Optional[_builtins.str] = None,
                   service_type: Optional[_builtins.int] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFirewallsResult:
     """
-    Use this data source to get the list of CFW firewalls.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.Cfw.get_firewalls(service_type=0)
-    ```
-
-
-    :param _builtins.str fw_instance_id: Specifies the firewall instance ID.
-           If not specified, the first instance will be returned.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
-    :param _builtins.int service_type: Specifies the service type. The value can be:
-           + **0**: North-south firewall;
-           + **1**: East-west firewall;
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['fwInstanceId'] = fw_instance_id
@@ -139,25 +111,7 @@ def get_firewalls_output(fw_instance_id: Optional[pulumi.Input[Optional[_builtin
                          service_type: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFirewallsResult]:
     """
-    Use this data source to get the list of CFW firewalls.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.Cfw.get_firewalls(service_type=0)
-    ```
-
-
-    :param _builtins.str fw_instance_id: Specifies the firewall instance ID.
-           If not specified, the first instance will be returned.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
-    :param _builtins.int service_type: Specifies the service type. The value can be:
-           + **0**: North-south firewall;
-           + **1**: East-west firewall;
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['fwInstanceId'] = fw_instance_id

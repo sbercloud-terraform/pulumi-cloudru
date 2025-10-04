@@ -6,17 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides an API gateway API resource.
- *
- * ## Import
- *
- * API can be imported using the `id`, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:SharedApig/api:Api api "774438a28a574ac8a496325d1bf51807"
- * ```
- */
 export class Api extends pulumi.CustomResource {
     /**
      * Get an existing Api resource's state with the given name, ID, and optional extra
@@ -62,11 +51,11 @@ export class Api extends pulumi.CustomResource {
      */
     declare public readonly contentType: pulumi.Output<string>;
     /**
-     * Specifies whether CORS is supported or not.
+     * Whether CORS is supported.
      */
     declare public readonly cors: pulumi.Output<boolean | undefined>;
     /**
-     * Specifies the description of the API. The description cannot exceed 255 characters.
+     * The API description.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
@@ -82,7 +71,7 @@ export class Api extends pulumi.CustomResource {
      */
     declare public readonly funcGraphPolicies: pulumi.Output<outputs.SharedApig.ApiFuncGraphPolicy[] | undefined>;
     /**
-     * Specifies the ID of the API group. Changing this creates a new resource.
+     * The ID of the API group to which the API belongs.
      */
     declare public readonly groupId: pulumi.Output<string>;
     /**
@@ -106,13 +95,11 @@ export class Api extends pulumi.CustomResource {
      */
     declare public readonly mockPolicies: pulumi.Output<outputs.SharedApig.ApiMockPolicy[] | undefined>;
     /**
-     * Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-     * letter. Only letters, digits, and underscores (_) are allowed.
+     * The API name.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The region in which to create the API resource. If omitted, the provider-level
-     * region will be used. Changing this creates a new API resource.
+     * The region where the API is located.
      */
     declare public readonly region: pulumi.Output<string>;
     /**
@@ -120,7 +107,7 @@ export class Api extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly registeredAt: pulumi.Output<string>;
     /**
-     * Specifies the request method, including 'GET','POST','PUT' and etc..
+     * The request method of the API.
      */
     declare public readonly requestMethod: pulumi.Output<string>;
     /**
@@ -132,8 +119,7 @@ export class Api extends pulumi.CustomResource {
      */
     declare public readonly requestPath: pulumi.Output<string>;
     /**
-     * Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-     * which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+     * The request protocol of the API request.
      */
     declare public readonly requestProtocol: pulumi.Output<string>;
     /**
@@ -153,7 +139,7 @@ export class Api extends pulumi.CustomResource {
      */
     declare public readonly successResponse: pulumi.Output<string | undefined>;
     /**
-     * the tags of API in format of string list.
+     * The list of tags configuration.
      */
     declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
@@ -295,11 +281,11 @@ export interface ApiState {
      */
     contentType?: pulumi.Input<string>;
     /**
-     * Specifies whether CORS is supported or not.
+     * Whether CORS is supported.
      */
     cors?: pulumi.Input<boolean>;
     /**
-     * Specifies the description of the API. The description cannot exceed 255 characters.
+     * The API description.
      */
     description?: pulumi.Input<string>;
     /**
@@ -315,7 +301,7 @@ export interface ApiState {
      */
     funcGraphPolicies?: pulumi.Input<pulumi.Input<inputs.SharedApig.ApiFuncGraphPolicy>[]>;
     /**
-     * Specifies the ID of the API group. Changing this creates a new resource.
+     * The ID of the API group to which the API belongs.
      */
     groupId?: pulumi.Input<string>;
     /**
@@ -339,13 +325,11 @@ export interface ApiState {
      */
     mockPolicies?: pulumi.Input<pulumi.Input<inputs.SharedApig.ApiMockPolicy>[]>;
     /**
-     * Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-     * letter. Only letters, digits, and underscores (_) are allowed.
+     * The API name.
      */
     name?: pulumi.Input<string>;
     /**
-     * The region in which to create the API resource. If omitted, the provider-level
-     * region will be used. Changing this creates a new API resource.
+     * The region where the API is located.
      */
     region?: pulumi.Input<string>;
     /**
@@ -353,7 +337,7 @@ export interface ApiState {
      */
     registeredAt?: pulumi.Input<string>;
     /**
-     * Specifies the request method, including 'GET','POST','PUT' and etc..
+     * The request method of the API.
      */
     requestMethod?: pulumi.Input<string>;
     /**
@@ -365,8 +349,7 @@ export interface ApiState {
      */
     requestPath?: pulumi.Input<string>;
     /**
-     * Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-     * which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+     * The request protocol of the API request.
      */
     requestProtocol?: pulumi.Input<string>;
     /**
@@ -386,7 +369,7 @@ export interface ApiState {
      */
     successResponse?: pulumi.Input<string>;
     /**
-     * the tags of API in format of string list.
+     * The list of tags configuration.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -428,11 +411,11 @@ export interface ApiArgs {
      */
     contentType?: pulumi.Input<string>;
     /**
-     * Specifies whether CORS is supported or not.
+     * Whether CORS is supported.
      */
     cors?: pulumi.Input<boolean>;
     /**
-     * Specifies the description of the API. The description cannot exceed 255 characters.
+     * The API description.
      */
     description?: pulumi.Input<string>;
     /**
@@ -448,7 +431,7 @@ export interface ApiArgs {
      */
     funcGraphPolicies?: pulumi.Input<pulumi.Input<inputs.SharedApig.ApiFuncGraphPolicy>[]>;
     /**
-     * Specifies the ID of the API group. Changing this creates a new resource.
+     * The ID of the API group to which the API belongs.
      */
     groupId: pulumi.Input<string>;
     /**
@@ -472,17 +455,15 @@ export interface ApiArgs {
      */
     mockPolicies?: pulumi.Input<pulumi.Input<inputs.SharedApig.ApiMockPolicy>[]>;
     /**
-     * Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-     * letter. Only letters, digits, and underscores (_) are allowed.
+     * The API name.
      */
     name?: pulumi.Input<string>;
     /**
-     * The region in which to create the API resource. If omitted, the provider-level
-     * region will be used. Changing this creates a new API resource.
+     * The region where the API is located.
      */
     region?: pulumi.Input<string>;
     /**
-     * Specifies the request method, including 'GET','POST','PUT' and etc..
+     * The request method of the API.
      */
     requestMethod: pulumi.Input<string>;
     /**
@@ -494,8 +475,7 @@ export interface ApiArgs {
      */
     requestPath: pulumi.Input<string>;
     /**
-     * Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-     * which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+     * The request protocol of the API request.
      */
     requestProtocol: pulumi.Input<string>;
     /**
@@ -515,7 +495,7 @@ export interface ApiArgs {
      */
     successResponse?: pulumi.Input<string>;
     /**
-     * the tags of API in format of string list.
+     * The list of tags configuration.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**

@@ -30,21 +30,14 @@ class LtsLogArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LtsLog resource.
-        :param pulumi.Input[_builtins.str] fw_instance_id: Specifies the ID of the firewall.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.int] lts_access_log_stream_enable: Specifies whether to enable the access log stream.
-               The valid values are `0` and `1`, where `0` means disable and `1` means enable.
-        :param pulumi.Input[_builtins.int] lts_attack_log_stream_enable: Specifies whether to enable the attack log stream.
-               The valid values are `0` and `1`, where `0` means disable and `1` means enable.
-        :param pulumi.Input[_builtins.int] lts_flow_log_stream_enable: Specifies whether to enable the flow log stream.
-               The valid values are `0` and `1`, where `0` means disable and `1` means enable.
-        :param pulumi.Input[_builtins.str] lts_log_group_id: Specifies the LTS log group ID.
-        :param pulumi.Input[_builtins.str] lts_access_log_stream_id: Specifies the access log stream ID.
-        :param pulumi.Input[_builtins.str] lts_attack_log_stream_id: Specifies the attack log stream ID.
-        :param pulumi.Input[_builtins.str] lts_flow_log_stream_id: Specifies the flow log stream ID.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] fw_instance_id: The ID of the firewall.
+        :param pulumi.Input[_builtins.int] lts_access_log_stream_enable: LTS access log stream switch.
+        :param pulumi.Input[_builtins.int] lts_attack_log_stream_enable: LTS attack log stream switch.
+        :param pulumi.Input[_builtins.int] lts_flow_log_stream_enable: LTS flow log stream switch.
+        :param pulumi.Input[_builtins.str] lts_log_group_id: LTS log group ID.
+        :param pulumi.Input[_builtins.str] lts_access_log_stream_id: LTS access log stream ID.
+        :param pulumi.Input[_builtins.str] lts_attack_log_stream_id: LTS attack log stream ID.
+        :param pulumi.Input[_builtins.str] lts_flow_log_stream_id: LTS flow log stream ID.
         """
         pulumi.set(__self__, "fw_instance_id", fw_instance_id)
         pulumi.set(__self__, "lts_access_log_stream_enable", lts_access_log_stream_enable)
@@ -64,8 +57,7 @@ class LtsLogArgs:
     @pulumi.getter(name="fwInstanceId")
     def fw_instance_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the ID of the firewall.
-        Changing this creates a new resource.
+        The ID of the firewall.
         """
         return pulumi.get(self, "fw_instance_id")
 
@@ -77,8 +69,7 @@ class LtsLogArgs:
     @pulumi.getter(name="ltsAccessLogStreamEnable")
     def lts_access_log_stream_enable(self) -> pulumi.Input[_builtins.int]:
         """
-        Specifies whether to enable the access log stream.
-        The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+        LTS access log stream switch.
         """
         return pulumi.get(self, "lts_access_log_stream_enable")
 
@@ -90,8 +81,7 @@ class LtsLogArgs:
     @pulumi.getter(name="ltsAttackLogStreamEnable")
     def lts_attack_log_stream_enable(self) -> pulumi.Input[_builtins.int]:
         """
-        Specifies whether to enable the attack log stream.
-        The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+        LTS attack log stream switch.
         """
         return pulumi.get(self, "lts_attack_log_stream_enable")
 
@@ -103,8 +93,7 @@ class LtsLogArgs:
     @pulumi.getter(name="ltsFlowLogStreamEnable")
     def lts_flow_log_stream_enable(self) -> pulumi.Input[_builtins.int]:
         """
-        Specifies whether to enable the flow log stream.
-        The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+        LTS flow log stream switch.
         """
         return pulumi.get(self, "lts_flow_log_stream_enable")
 
@@ -116,7 +105,7 @@ class LtsLogArgs:
     @pulumi.getter(name="ltsLogGroupId")
     def lts_log_group_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the LTS log group ID.
+        LTS log group ID.
         """
         return pulumi.get(self, "lts_log_group_id")
 
@@ -128,7 +117,7 @@ class LtsLogArgs:
     @pulumi.getter(name="ltsAccessLogStreamId")
     def lts_access_log_stream_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the access log stream ID.
+        LTS access log stream ID.
         """
         return pulumi.get(self, "lts_access_log_stream_id")
 
@@ -140,7 +129,7 @@ class LtsLogArgs:
     @pulumi.getter(name="ltsAttackLogStreamId")
     def lts_attack_log_stream_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the attack log stream ID.
+        LTS attack log stream ID.
         """
         return pulumi.get(self, "lts_attack_log_stream_id")
 
@@ -152,7 +141,7 @@ class LtsLogArgs:
     @pulumi.getter(name="ltsFlowLogStreamId")
     def lts_flow_log_stream_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the flow log stream ID.
+        LTS flow log stream ID.
         """
         return pulumi.get(self, "lts_flow_log_stream_id")
 
@@ -163,11 +152,6 @@ class LtsLogArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -189,21 +173,14 @@ class _LtsLogState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LtsLog resources.
-        :param pulumi.Input[_builtins.str] fw_instance_id: Specifies the ID of the firewall.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.int] lts_access_log_stream_enable: Specifies whether to enable the access log stream.
-               The valid values are `0` and `1`, where `0` means disable and `1` means enable.
-        :param pulumi.Input[_builtins.str] lts_access_log_stream_id: Specifies the access log stream ID.
-        :param pulumi.Input[_builtins.int] lts_attack_log_stream_enable: Specifies whether to enable the attack log stream.
-               The valid values are `0` and `1`, where `0` means disable and `1` means enable.
-        :param pulumi.Input[_builtins.str] lts_attack_log_stream_id: Specifies the attack log stream ID.
-        :param pulumi.Input[_builtins.int] lts_flow_log_stream_enable: Specifies whether to enable the flow log stream.
-               The valid values are `0` and `1`, where `0` means disable and `1` means enable.
-        :param pulumi.Input[_builtins.str] lts_flow_log_stream_id: Specifies the flow log stream ID.
-        :param pulumi.Input[_builtins.str] lts_log_group_id: Specifies the LTS log group ID.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] fw_instance_id: The ID of the firewall.
+        :param pulumi.Input[_builtins.int] lts_access_log_stream_enable: LTS access log stream switch.
+        :param pulumi.Input[_builtins.str] lts_access_log_stream_id: LTS access log stream ID.
+        :param pulumi.Input[_builtins.int] lts_attack_log_stream_enable: LTS attack log stream switch.
+        :param pulumi.Input[_builtins.str] lts_attack_log_stream_id: LTS attack log stream ID.
+        :param pulumi.Input[_builtins.int] lts_flow_log_stream_enable: LTS flow log stream switch.
+        :param pulumi.Input[_builtins.str] lts_flow_log_stream_id: LTS flow log stream ID.
+        :param pulumi.Input[_builtins.str] lts_log_group_id: LTS log group ID.
         """
         if fw_instance_id is not None:
             pulumi.set(__self__, "fw_instance_id", fw_instance_id)
@@ -228,8 +205,7 @@ class _LtsLogState:
     @pulumi.getter(name="fwInstanceId")
     def fw_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the ID of the firewall.
-        Changing this creates a new resource.
+        The ID of the firewall.
         """
         return pulumi.get(self, "fw_instance_id")
 
@@ -241,8 +217,7 @@ class _LtsLogState:
     @pulumi.getter(name="ltsAccessLogStreamEnable")
     def lts_access_log_stream_enable(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies whether to enable the access log stream.
-        The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+        LTS access log stream switch.
         """
         return pulumi.get(self, "lts_access_log_stream_enable")
 
@@ -254,7 +229,7 @@ class _LtsLogState:
     @pulumi.getter(name="ltsAccessLogStreamId")
     def lts_access_log_stream_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the access log stream ID.
+        LTS access log stream ID.
         """
         return pulumi.get(self, "lts_access_log_stream_id")
 
@@ -266,8 +241,7 @@ class _LtsLogState:
     @pulumi.getter(name="ltsAttackLogStreamEnable")
     def lts_attack_log_stream_enable(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies whether to enable the attack log stream.
-        The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+        LTS attack log stream switch.
         """
         return pulumi.get(self, "lts_attack_log_stream_enable")
 
@@ -279,7 +253,7 @@ class _LtsLogState:
     @pulumi.getter(name="ltsAttackLogStreamId")
     def lts_attack_log_stream_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the attack log stream ID.
+        LTS attack log stream ID.
         """
         return pulumi.get(self, "lts_attack_log_stream_id")
 
@@ -291,8 +265,7 @@ class _LtsLogState:
     @pulumi.getter(name="ltsFlowLogStreamEnable")
     def lts_flow_log_stream_enable(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies whether to enable the flow log stream.
-        The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+        LTS flow log stream switch.
         """
         return pulumi.get(self, "lts_flow_log_stream_enable")
 
@@ -304,7 +277,7 @@ class _LtsLogState:
     @pulumi.getter(name="ltsFlowLogStreamId")
     def lts_flow_log_stream_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the flow log stream ID.
+        LTS flow log stream ID.
         """
         return pulumi.get(self, "lts_flow_log_stream_id")
 
@@ -316,7 +289,7 @@ class _LtsLogState:
     @pulumi.getter(name="ltsLogGroupId")
     def lts_log_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the LTS log group ID.
+        LTS log group ID.
         """
         return pulumi.get(self, "lts_log_group_id")
 
@@ -327,11 +300,6 @@ class _LtsLogState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -356,58 +324,17 @@ class LtsLog(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a CFW lts log resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        lts_attack_log_stream_id = config.require_object("ltsAttackLogStreamId")
-        lts_flow_log_stream_id = config.require_object("ltsFlowLogStreamId")
-        lts_access_log_stream_id = config.require_object("ltsAccessLogStreamId")
-        fw_instance_id = config.require_object("fwInstanceId")
-        lts_log_group_id = config.require_object("ltsLogGroupId")
-        test = sbercloud.cfw.LtsLog("test",
-            fw_instance_id=fw_instance_id,
-            lts_log_group_id=lts_log_group_id,
-            lts_attack_log_stream_enable=1,
-            lts_access_log_stream_enable=1,
-            lts_flow_log_stream_enable=1,
-            lts_attack_log_stream_id=lts_attack_log_stream_id,
-            lts_access_log_stream_id=lts_access_log_stream_id,
-            lts_flow_log_stream_id=lts_flow_log_stream_id)
-        ```
-
-        ## Import
-
-        The lts log resource can be imported using the firewall instance ID, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Cfw/ltsLog:LtsLog test <fw_instance_id>
-        ```
-
+        Create a LtsLog resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] fw_instance_id: Specifies the ID of the firewall.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.int] lts_access_log_stream_enable: Specifies whether to enable the access log stream.
-               The valid values are `0` and `1`, where `0` means disable and `1` means enable.
-        :param pulumi.Input[_builtins.str] lts_access_log_stream_id: Specifies the access log stream ID.
-        :param pulumi.Input[_builtins.int] lts_attack_log_stream_enable: Specifies whether to enable the attack log stream.
-               The valid values are `0` and `1`, where `0` means disable and `1` means enable.
-        :param pulumi.Input[_builtins.str] lts_attack_log_stream_id: Specifies the attack log stream ID.
-        :param pulumi.Input[_builtins.int] lts_flow_log_stream_enable: Specifies whether to enable the flow log stream.
-               The valid values are `0` and `1`, where `0` means disable and `1` means enable.
-        :param pulumi.Input[_builtins.str] lts_flow_log_stream_id: Specifies the flow log stream ID.
-        :param pulumi.Input[_builtins.str] lts_log_group_id: Specifies the LTS log group ID.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] fw_instance_id: The ID of the firewall.
+        :param pulumi.Input[_builtins.int] lts_access_log_stream_enable: LTS access log stream switch.
+        :param pulumi.Input[_builtins.str] lts_access_log_stream_id: LTS access log stream ID.
+        :param pulumi.Input[_builtins.int] lts_attack_log_stream_enable: LTS attack log stream switch.
+        :param pulumi.Input[_builtins.str] lts_attack_log_stream_id: LTS attack log stream ID.
+        :param pulumi.Input[_builtins.int] lts_flow_log_stream_enable: LTS flow log stream switch.
+        :param pulumi.Input[_builtins.str] lts_flow_log_stream_id: LTS flow log stream ID.
+        :param pulumi.Input[_builtins.str] lts_log_group_id: LTS log group ID.
         """
         ...
     @overload
@@ -416,41 +343,7 @@ class LtsLog(pulumi.CustomResource):
                  args: LtsLogArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a CFW lts log resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        lts_attack_log_stream_id = config.require_object("ltsAttackLogStreamId")
-        lts_flow_log_stream_id = config.require_object("ltsFlowLogStreamId")
-        lts_access_log_stream_id = config.require_object("ltsAccessLogStreamId")
-        fw_instance_id = config.require_object("fwInstanceId")
-        lts_log_group_id = config.require_object("ltsLogGroupId")
-        test = sbercloud.cfw.LtsLog("test",
-            fw_instance_id=fw_instance_id,
-            lts_log_group_id=lts_log_group_id,
-            lts_attack_log_stream_enable=1,
-            lts_access_log_stream_enable=1,
-            lts_flow_log_stream_enable=1,
-            lts_attack_log_stream_id=lts_attack_log_stream_id,
-            lts_access_log_stream_id=lts_access_log_stream_id,
-            lts_flow_log_stream_id=lts_flow_log_stream_id)
-        ```
-
-        ## Import
-
-        The lts log resource can be imported using the firewall instance ID, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Cfw/ltsLog:LtsLog test <fw_instance_id>
-        ```
-
+        Create a LtsLog resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param LtsLogArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -529,21 +422,14 @@ class LtsLog(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] fw_instance_id: Specifies the ID of the firewall.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.int] lts_access_log_stream_enable: Specifies whether to enable the access log stream.
-               The valid values are `0` and `1`, where `0` means disable and `1` means enable.
-        :param pulumi.Input[_builtins.str] lts_access_log_stream_id: Specifies the access log stream ID.
-        :param pulumi.Input[_builtins.int] lts_attack_log_stream_enable: Specifies whether to enable the attack log stream.
-               The valid values are `0` and `1`, where `0` means disable and `1` means enable.
-        :param pulumi.Input[_builtins.str] lts_attack_log_stream_id: Specifies the attack log stream ID.
-        :param pulumi.Input[_builtins.int] lts_flow_log_stream_enable: Specifies whether to enable the flow log stream.
-               The valid values are `0` and `1`, where `0` means disable and `1` means enable.
-        :param pulumi.Input[_builtins.str] lts_flow_log_stream_id: Specifies the flow log stream ID.
-        :param pulumi.Input[_builtins.str] lts_log_group_id: Specifies the LTS log group ID.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] fw_instance_id: The ID of the firewall.
+        :param pulumi.Input[_builtins.int] lts_access_log_stream_enable: LTS access log stream switch.
+        :param pulumi.Input[_builtins.str] lts_access_log_stream_id: LTS access log stream ID.
+        :param pulumi.Input[_builtins.int] lts_attack_log_stream_enable: LTS attack log stream switch.
+        :param pulumi.Input[_builtins.str] lts_attack_log_stream_id: LTS attack log stream ID.
+        :param pulumi.Input[_builtins.int] lts_flow_log_stream_enable: LTS flow log stream switch.
+        :param pulumi.Input[_builtins.str] lts_flow_log_stream_id: LTS flow log stream ID.
+        :param pulumi.Input[_builtins.str] lts_log_group_id: LTS log group ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -564,8 +450,7 @@ class LtsLog(pulumi.CustomResource):
     @pulumi.getter(name="fwInstanceId")
     def fw_instance_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the ID of the firewall.
-        Changing this creates a new resource.
+        The ID of the firewall.
         """
         return pulumi.get(self, "fw_instance_id")
 
@@ -573,8 +458,7 @@ class LtsLog(pulumi.CustomResource):
     @pulumi.getter(name="ltsAccessLogStreamEnable")
     def lts_access_log_stream_enable(self) -> pulumi.Output[_builtins.int]:
         """
-        Specifies whether to enable the access log stream.
-        The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+        LTS access log stream switch.
         """
         return pulumi.get(self, "lts_access_log_stream_enable")
 
@@ -582,7 +466,7 @@ class LtsLog(pulumi.CustomResource):
     @pulumi.getter(name="ltsAccessLogStreamId")
     def lts_access_log_stream_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the access log stream ID.
+        LTS access log stream ID.
         """
         return pulumi.get(self, "lts_access_log_stream_id")
 
@@ -590,8 +474,7 @@ class LtsLog(pulumi.CustomResource):
     @pulumi.getter(name="ltsAttackLogStreamEnable")
     def lts_attack_log_stream_enable(self) -> pulumi.Output[_builtins.int]:
         """
-        Specifies whether to enable the attack log stream.
-        The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+        LTS attack log stream switch.
         """
         return pulumi.get(self, "lts_attack_log_stream_enable")
 
@@ -599,7 +482,7 @@ class LtsLog(pulumi.CustomResource):
     @pulumi.getter(name="ltsAttackLogStreamId")
     def lts_attack_log_stream_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the attack log stream ID.
+        LTS attack log stream ID.
         """
         return pulumi.get(self, "lts_attack_log_stream_id")
 
@@ -607,8 +490,7 @@ class LtsLog(pulumi.CustomResource):
     @pulumi.getter(name="ltsFlowLogStreamEnable")
     def lts_flow_log_stream_enable(self) -> pulumi.Output[_builtins.int]:
         """
-        Specifies whether to enable the flow log stream.
-        The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+        LTS flow log stream switch.
         """
         return pulumi.get(self, "lts_flow_log_stream_enable")
 
@@ -616,7 +498,7 @@ class LtsLog(pulumi.CustomResource):
     @pulumi.getter(name="ltsFlowLogStreamId")
     def lts_flow_log_stream_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the flow log stream ID.
+        LTS flow log stream ID.
         """
         return pulumi.get(self, "lts_flow_log_stream_id")
 
@@ -624,17 +506,12 @@ class LtsLog(pulumi.CustomResource):
     @pulumi.getter(name="ltsLogGroupId")
     def lts_log_group_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the LTS log group ID.
+        LTS log group ID.
         """
         return pulumi.get(self, "lts_log_group_id")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 

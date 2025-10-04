@@ -31,13 +31,6 @@ class SmnTopicArgs:
         """
         The set of arguments for constructing a SmnTopic resource.
         :param pulumi.Input[_builtins.str] access_policy: schema: Internal
-        :param pulumi.Input[_builtins.str] display_name: Topic display name, which is presented as the
-               name of the email sender in an email message.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the SMN Topic, Value 0
-               indicates the default enterprise project. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: The name of the topic to be created.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the SMN topic resource. If omitted, the provider-level region will be used. Changing this creates a new SMN Topic resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the tags of the SMN topic, key/value pair format.
         """
         if access_policy is not None:
             pulumi.set(__self__, "access_policy", access_policy)
@@ -73,10 +66,6 @@ class SmnTopicArgs:
     @_builtins.property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Topic display name, which is presented as the
-        name of the email sender in an email message.
-        """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
@@ -86,10 +75,6 @@ class SmnTopicArgs:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the enterprise project id of the SMN Topic, Value 0
-        indicates the default enterprise project. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -108,9 +93,6 @@ class SmnTopicArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The name of the topic to be created.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -120,9 +102,6 @@ class SmnTopicArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the SMN topic resource. If omitted, the provider-level region will be used. Changing this creates a new SMN Topic resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -141,9 +120,6 @@ class SmnTopicArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the tags of the SMN topic, key/value pair format.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -179,19 +155,6 @@ class _SmnTopicState:
         """
         Input properties used for looking up and filtering SmnTopic resources.
         :param pulumi.Input[_builtins.str] access_policy: schema: Internal
-        :param pulumi.Input[_builtins.str] create_time: Time when the topic was created.
-        :param pulumi.Input[_builtins.str] display_name: Topic display name, which is presented as the
-               name of the email sender in an email message.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the SMN Topic, Value 0
-               indicates the default enterprise project. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: The name of the topic to be created.
-        :param pulumi.Input[_builtins.int] push_policy: Message pushing policy.
-               + **0**: indicates that the message sending fails and the message is cached in the queue.
-               + **1**: indicates that the failed message is discarded.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the SMN topic resource. If omitted, the provider-level region will be used. Changing this creates a new SMN Topic resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the tags of the SMN topic, key/value pair format.
-        :param pulumi.Input[_builtins.str] topic_urn: Resource identifier of a topic, which is unique.
-        :param pulumi.Input[_builtins.str] update_time: Time when the topic was updated.
         """
         if access_policy is not None:
             pulumi.set(__self__, "access_policy", access_policy)
@@ -235,9 +198,6 @@ class _SmnTopicState:
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Time when the topic was created.
-        """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
@@ -247,10 +207,6 @@ class _SmnTopicState:
     @_builtins.property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Topic display name, which is presented as the
-        name of the email sender in an email message.
-        """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
@@ -260,10 +216,6 @@ class _SmnTopicState:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the enterprise project id of the SMN Topic, Value 0
-        indicates the default enterprise project. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -282,9 +234,6 @@ class _SmnTopicState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The name of the topic to be created.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -294,11 +243,6 @@ class _SmnTopicState:
     @_builtins.property
     @pulumi.getter(name="pushPolicy")
     def push_policy(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Message pushing policy.
-        + **0**: indicates that the message sending fails and the message is cached in the queue.
-        + **1**: indicates that the failed message is discarded.
-        """
         return pulumi.get(self, "push_policy")
 
     @push_policy.setter
@@ -308,9 +252,6 @@ class _SmnTopicState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the SMN topic resource. If omitted, the provider-level region will be used. Changing this creates a new SMN Topic resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -329,9 +270,6 @@ class _SmnTopicState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the tags of the SMN topic, key/value pair format.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -341,9 +279,6 @@ class _SmnTopicState:
     @_builtins.property
     @pulumi.getter(name="topicUrn")
     def topic_urn(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Resource identifier of a topic, which is unique.
-        """
         return pulumi.get(self, "topic_urn")
 
     @topic_urn.setter
@@ -353,9 +288,6 @@ class _SmnTopicState:
     @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Time when the topic was updated.
-        """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
@@ -389,37 +321,10 @@ class SmnTopic(pulumi.CustomResource):
                  users_publish_allowed: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a SMN Topic resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        topic1 = sbercloud.SmnTopic("topic_1",
-            name="topic_1",
-            display_name="The display name of topic_1")
-        ```
-
-        ## Import
-
-        SMN topic can be imported using the `id` (topic urn), e.g.
-
-        ```sh
-        $ pulumi import sbercloud:index/smnTopic:SmnTopic topic_1 urn:smn:ru-moscow-1:0f5181caba0024e72f89c0045e707b91:topic_1:9c06f9d90cc549359e3bf67860a0736a
-        ```
-
+        Create a SmnTopic resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_policy: schema: Internal
-        :param pulumi.Input[_builtins.str] display_name: Topic display name, which is presented as the
-               name of the email sender in an email message.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the SMN Topic, Value 0
-               indicates the default enterprise project. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: The name of the topic to be created.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the SMN topic resource. If omitted, the provider-level region will be used. Changing this creates a new SMN Topic resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the tags of the SMN topic, key/value pair format.
         """
         ...
     @overload
@@ -428,27 +333,7 @@ class SmnTopic(pulumi.CustomResource):
                  args: Optional[SmnTopicArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a SMN Topic resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        topic1 = sbercloud.SmnTopic("topic_1",
-            name="topic_1",
-            display_name="The display name of topic_1")
-        ```
-
-        ## Import
-
-        SMN topic can be imported using the `id` (topic urn), e.g.
-
-        ```sh
-        $ pulumi import sbercloud:index/smnTopic:SmnTopic topic_1 urn:smn:ru-moscow-1:0f5181caba0024e72f89c0045e707b91:topic_1:9c06f9d90cc549359e3bf67860a0736a
-        ```
-
+        Create a SmnTopic resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param SmnTopicArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -526,19 +411,6 @@ class SmnTopic(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_policy: schema: Internal
-        :param pulumi.Input[_builtins.str] create_time: Time when the topic was created.
-        :param pulumi.Input[_builtins.str] display_name: Topic display name, which is presented as the
-               name of the email sender in an email message.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the SMN Topic, Value 0
-               indicates the default enterprise project. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: The name of the topic to be created.
-        :param pulumi.Input[_builtins.int] push_policy: Message pushing policy.
-               + **0**: indicates that the message sending fails and the message is cached in the queue.
-               + **1**: indicates that the failed message is discarded.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the SMN topic resource. If omitted, the provider-level region will be used. Changing this creates a new SMN Topic resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the tags of the SMN topic, key/value pair format.
-        :param pulumi.Input[_builtins.str] topic_urn: Resource identifier of a topic, which is unique.
-        :param pulumi.Input[_builtins.str] update_time: Time when the topic was updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -570,27 +442,16 @@ class SmnTopic(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
-        """
-        Time when the topic was created.
-        """
         return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Topic display name, which is presented as the
-        name of the email sender in an email message.
-        """
         return pulumi.get(self, "display_name")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the enterprise project id of the SMN Topic, Value 0
-        indicates the default enterprise project. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
@@ -601,27 +462,16 @@ class SmnTopic(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        The name of the topic to be created.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="pushPolicy")
     def push_policy(self) -> pulumi.Output[_builtins.int]:
-        """
-        Message pushing policy.
-        + **0**: indicates that the message sending fails and the message is cached in the queue.
-        + **1**: indicates that the failed message is discarded.
-        """
         return pulumi.get(self, "push_policy")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the SMN topic resource. If omitted, the provider-level region will be used. Changing this creates a new SMN Topic resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
@@ -632,25 +482,16 @@ class SmnTopic(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        Specifies the tags of the SMN topic, key/value pair format.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="topicUrn")
     def topic_urn(self) -> pulumi.Output[_builtins.str]:
-        """
-        Resource identifier of a topic, which is unique.
-        """
         return pulumi.get(self, "topic_urn")
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[_builtins.str]:
-        """
-        Time when the topic was updated.
-        """
         return pulumi.get(self, "update_time")
 
     @_builtins.property

@@ -54,37 +54,11 @@ MYPY = False
 if not MYPY:
     class ClusterBackupStrategyArgsDict(TypedDict):
         start_time: pulumi.Input[_builtins.str]
-        """
-        Specifies the time when a snapshot is automatically created everyday. Snapshots can
-        only be created on the hour. The time format is the time followed by the time zone, specifically, **HH:mm z**. In the
-        format, **HH:mm** refers to the hour time and z refers to the time zone. For example, "00:00 GMT+08:00"
-        and "01:00 GMT+08:00".
-        """
         agency: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the IAM agency used to access OBS.
-
-        > **NOTE:**  If the `bucket`, `backup_path`, and `agency` parameters are empty at the same time, the system will
-        automatically create an OBS bucket and IAM agent, otherwise the configured parameter values will be used.
-        """
         backup_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the storage path of the snapshot in the OBS bucket.
-        """
         bucket: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the OBS bucket used for index data backup. If there is snapshot data in an OBS
-        bucket, only the OBS bucket is used and cannot be changed.
-        """
         keep_days: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the number of days to retain the generated snapshots. Snapshots are reserved
-        for seven days by default.
-        """
         prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the prefix of the snapshot that is automatically created. Defaults to **snapshot**.
-        """
 elif False:
     ClusterBackupStrategyArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -97,22 +71,6 @@ class ClusterBackupStrategyArgs:
                  bucket: Optional[pulumi.Input[_builtins.str]] = None,
                  keep_days: Optional[pulumi.Input[_builtins.int]] = None,
                  prefix: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] start_time: Specifies the time when a snapshot is automatically created everyday. Snapshots can
-               only be created on the hour. The time format is the time followed by the time zone, specifically, **HH:mm z**. In the
-               format, **HH:mm** refers to the hour time and z refers to the time zone. For example, "00:00 GMT+08:00"
-               and "01:00 GMT+08:00".
-        :param pulumi.Input[_builtins.str] agency: Specifies the IAM agency used to access OBS.
-               
-               > **NOTE:**  If the `bucket`, `backup_path`, and `agency` parameters are empty at the same time, the system will
-               automatically create an OBS bucket and IAM agent, otherwise the configured parameter values will be used.
-        :param pulumi.Input[_builtins.str] backup_path: Specifies the storage path of the snapshot in the OBS bucket.
-        :param pulumi.Input[_builtins.str] bucket: Specifies the OBS bucket used for index data backup. If there is snapshot data in an OBS
-               bucket, only the OBS bucket is used and cannot be changed.
-        :param pulumi.Input[_builtins.int] keep_days: Specifies the number of days to retain the generated snapshots. Snapshots are reserved
-               for seven days by default.
-        :param pulumi.Input[_builtins.str] prefix: Specifies the prefix of the snapshot that is automatically created. Defaults to **snapshot**.
-        """
         pulumi.set(__self__, "start_time", start_time)
         if agency is not None:
             pulumi.set(__self__, "agency", agency)
@@ -128,12 +86,6 @@ class ClusterBackupStrategyArgs:
     @_builtins.property
     @pulumi.getter(name="startTime")
     def start_time(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the time when a snapshot is automatically created everyday. Snapshots can
-        only be created on the hour. The time format is the time followed by the time zone, specifically, **HH:mm z**. In the
-        format, **HH:mm** refers to the hour time and z refers to the time zone. For example, "00:00 GMT+08:00"
-        and "01:00 GMT+08:00".
-        """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
@@ -143,12 +95,6 @@ class ClusterBackupStrategyArgs:
     @_builtins.property
     @pulumi.getter
     def agency(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the IAM agency used to access OBS.
-
-        > **NOTE:**  If the `bucket`, `backup_path`, and `agency` parameters are empty at the same time, the system will
-        automatically create an OBS bucket and IAM agent, otherwise the configured parameter values will be used.
-        """
         return pulumi.get(self, "agency")
 
     @agency.setter
@@ -158,9 +104,6 @@ class ClusterBackupStrategyArgs:
     @_builtins.property
     @pulumi.getter(name="backupPath")
     def backup_path(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the storage path of the snapshot in the OBS bucket.
-        """
         return pulumi.get(self, "backup_path")
 
     @backup_path.setter
@@ -170,10 +113,6 @@ class ClusterBackupStrategyArgs:
     @_builtins.property
     @pulumi.getter
     def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the OBS bucket used for index data backup. If there is snapshot data in an OBS
-        bucket, only the OBS bucket is used and cannot be changed.
-        """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
@@ -183,10 +122,6 @@ class ClusterBackupStrategyArgs:
     @_builtins.property
     @pulumi.getter(name="keepDays")
     def keep_days(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the number of days to retain the generated snapshots. Snapshots are reserved
-        for seven days by default.
-        """
         return pulumi.get(self, "keep_days")
 
     @keep_days.setter
@@ -196,9 +131,6 @@ class ClusterBackupStrategyArgs:
     @_builtins.property
     @pulumi.getter
     def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the prefix of the snapshot that is automatically created. Defaults to **snapshot**.
-        """
         return pulumi.get(self, "prefix")
 
     @prefix.setter
@@ -209,27 +141,9 @@ class ClusterBackupStrategyArgs:
 if not MYPY:
     class ClusterClientNodeConfigArgsDict(TypedDict):
         flavor: pulumi.Input[_builtins.str]
-        """
-        Specifies the flavor name.
-        """
         instance_number: pulumi.Input[_builtins.int]
-        """
-        Specifies the number of cluster instances.
-        + When it is `master_node_config`, The value range is `3` to `10`.
-        + When it is `client_node_config`, The value range is `1` to `32`.
-        """
         volume: pulumi.Input['ClusterClientNodeConfigVolumeArgsDict']
-        """
-        Specifies the information about the volume.
-        The volume structure is documented below.
-        """
         shrink_node_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specifies the node IDs that needs to be scaled down.
-
-        <a name="Css_master_or_client_volume"></a>
-        The `volume` block supports:
-        """
 elif False:
     ClusterClientNodeConfigArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -240,18 +154,6 @@ class ClusterClientNodeConfigArgs:
                  instance_number: pulumi.Input[_builtins.int],
                  volume: pulumi.Input['ClusterClientNodeConfigVolumeArgs'],
                  shrink_node_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
-        """
-        :param pulumi.Input[_builtins.str] flavor: Specifies the flavor name.
-        :param pulumi.Input[_builtins.int] instance_number: Specifies the number of cluster instances.
-               + When it is `master_node_config`, The value range is `3` to `10`.
-               + When it is `client_node_config`, The value range is `1` to `32`.
-        :param pulumi.Input['ClusterClientNodeConfigVolumeArgs'] volume: Specifies the information about the volume.
-               The volume structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] shrink_node_ids: Specifies the node IDs that needs to be scaled down.
-               
-               <a name="Css_master_or_client_volume"></a>
-               The `volume` block supports:
-        """
         pulumi.set(__self__, "flavor", flavor)
         pulumi.set(__self__, "instance_number", instance_number)
         pulumi.set(__self__, "volume", volume)
@@ -261,9 +163,6 @@ class ClusterClientNodeConfigArgs:
     @_builtins.property
     @pulumi.getter
     def flavor(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the flavor name.
-        """
         return pulumi.get(self, "flavor")
 
     @flavor.setter
@@ -273,11 +172,6 @@ class ClusterClientNodeConfigArgs:
     @_builtins.property
     @pulumi.getter(name="instanceNumber")
     def instance_number(self) -> pulumi.Input[_builtins.int]:
-        """
-        Specifies the number of cluster instances.
-        + When it is `master_node_config`, The value range is `3` to `10`.
-        + When it is `client_node_config`, The value range is `1` to `32`.
-        """
         return pulumi.get(self, "instance_number")
 
     @instance_number.setter
@@ -287,10 +181,6 @@ class ClusterClientNodeConfigArgs:
     @_builtins.property
     @pulumi.getter
     def volume(self) -> pulumi.Input['ClusterClientNodeConfigVolumeArgs']:
-        """
-        Specifies the information about the volume.
-        The volume structure is documented below.
-        """
         return pulumi.get(self, "volume")
 
     @volume.setter
@@ -300,12 +190,6 @@ class ClusterClientNodeConfigArgs:
     @_builtins.property
     @pulumi.getter(name="shrinkNodeIds")
     def shrink_node_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the node IDs that needs to be scaled down.
-
-        <a name="Css_master_or_client_volume"></a>
-        The `volume` block supports:
-        """
         return pulumi.get(self, "shrink_node_ids")
 
     @shrink_node_ids.setter
@@ -316,19 +200,7 @@ class ClusterClientNodeConfigArgs:
 if not MYPY:
     class ClusterClientNodeConfigVolumeArgsDict(TypedDict):
         size: pulumi.Input[_builtins.int]
-        """
-        Specifies the volume size in **GB**, which must be a multiple of `10`.
-        """
         volume_type: pulumi.Input[_builtins.str]
-        """
-        Specifies the volume type. Value options are as follows:
-        + **COMMON**: Common I/O. The SATA disk is used.
-        + **HIGH**: High I/O. The SAS disk is used.
-        + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-
-        <a name="Css_public_access"></a>
-        The `public_access` block supports:
-        """
 elif False:
     ClusterClientNodeConfigVolumeArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -337,25 +209,12 @@ class ClusterClientNodeConfigVolumeArgs:
     def __init__(__self__, *,
                  size: pulumi.Input[_builtins.int],
                  volume_type: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.int] size: Specifies the volume size in **GB**, which must be a multiple of `10`.
-        :param pulumi.Input[_builtins.str] volume_type: Specifies the volume type. Value options are as follows:
-               + **COMMON**: Common I/O. The SATA disk is used.
-               + **HIGH**: High I/O. The SAS disk is used.
-               + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-               
-               <a name="Css_public_access"></a>
-               The `public_access` block supports:
-        """
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "volume_type", volume_type)
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> pulumi.Input[_builtins.int]:
-        """
-        Specifies the volume size in **GB**, which must be a multiple of `10`.
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -365,15 +224,6 @@ class ClusterClientNodeConfigVolumeArgs:
     @_builtins.property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the volume type. Value options are as follows:
-        + **COMMON**: Common I/O. The SATA disk is used.
-        + **HIGH**: High I/O. The SAS disk is used.
-        + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-
-        <a name="Css_public_access"></a>
-        The `public_access` block supports:
-        """
         return pulumi.get(self, "volume_type")
 
     @volume_type.setter
@@ -384,27 +234,9 @@ class ClusterClientNodeConfigVolumeArgs:
 if not MYPY:
     class ClusterColdNodeConfigArgsDict(TypedDict):
         flavor: pulumi.Input[_builtins.str]
-        """
-        Specifies the flavor name.
-        """
         instance_number: pulumi.Input[_builtins.int]
-        """
-        Specifies the number of cluster instances.
-        + When it is `master_node_config`, The value range is `3` to `10`.
-        + When it is `client_node_config`, The value range is `1` to `32`.
-        """
         shrink_node_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specifies the node IDs that needs to be scaled down.
-
-        <a name="Css_master_or_client_volume"></a>
-        The `volume` block supports:
-        """
         volume: NotRequired[pulumi.Input['ClusterColdNodeConfigVolumeArgsDict']]
-        """
-        Specifies the information about the volume.
-        The volume structure is documented below.
-        """
 elif False:
     ClusterColdNodeConfigArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -415,18 +247,6 @@ class ClusterColdNodeConfigArgs:
                  instance_number: pulumi.Input[_builtins.int],
                  shrink_node_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  volume: Optional[pulumi.Input['ClusterColdNodeConfigVolumeArgs']] = None):
-        """
-        :param pulumi.Input[_builtins.str] flavor: Specifies the flavor name.
-        :param pulumi.Input[_builtins.int] instance_number: Specifies the number of cluster instances.
-               + When it is `master_node_config`, The value range is `3` to `10`.
-               + When it is `client_node_config`, The value range is `1` to `32`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] shrink_node_ids: Specifies the node IDs that needs to be scaled down.
-               
-               <a name="Css_master_or_client_volume"></a>
-               The `volume` block supports:
-        :param pulumi.Input['ClusterColdNodeConfigVolumeArgs'] volume: Specifies the information about the volume.
-               The volume structure is documented below.
-        """
         pulumi.set(__self__, "flavor", flavor)
         pulumi.set(__self__, "instance_number", instance_number)
         if shrink_node_ids is not None:
@@ -437,9 +257,6 @@ class ClusterColdNodeConfigArgs:
     @_builtins.property
     @pulumi.getter
     def flavor(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the flavor name.
-        """
         return pulumi.get(self, "flavor")
 
     @flavor.setter
@@ -449,11 +266,6 @@ class ClusterColdNodeConfigArgs:
     @_builtins.property
     @pulumi.getter(name="instanceNumber")
     def instance_number(self) -> pulumi.Input[_builtins.int]:
-        """
-        Specifies the number of cluster instances.
-        + When it is `master_node_config`, The value range is `3` to `10`.
-        + When it is `client_node_config`, The value range is `1` to `32`.
-        """
         return pulumi.get(self, "instance_number")
 
     @instance_number.setter
@@ -463,12 +275,6 @@ class ClusterColdNodeConfigArgs:
     @_builtins.property
     @pulumi.getter(name="shrinkNodeIds")
     def shrink_node_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the node IDs that needs to be scaled down.
-
-        <a name="Css_master_or_client_volume"></a>
-        The `volume` block supports:
-        """
         return pulumi.get(self, "shrink_node_ids")
 
     @shrink_node_ids.setter
@@ -478,10 +284,6 @@ class ClusterColdNodeConfigArgs:
     @_builtins.property
     @pulumi.getter
     def volume(self) -> Optional[pulumi.Input['ClusterColdNodeConfigVolumeArgs']]:
-        """
-        Specifies the information about the volume.
-        The volume structure is documented below.
-        """
         return pulumi.get(self, "volume")
 
     @volume.setter
@@ -492,19 +294,7 @@ class ClusterColdNodeConfigArgs:
 if not MYPY:
     class ClusterColdNodeConfigVolumeArgsDict(TypedDict):
         size: pulumi.Input[_builtins.int]
-        """
-        Specifies the volume size in **GB**, which must be a multiple of `10`.
-        """
         volume_type: pulumi.Input[_builtins.str]
-        """
-        Specifies the volume type. Value options are as follows:
-        + **COMMON**: Common I/O. The SATA disk is used.
-        + **HIGH**: High I/O. The SAS disk is used.
-        + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-
-        <a name="Css_public_access"></a>
-        The `public_access` block supports:
-        """
 elif False:
     ClusterColdNodeConfigVolumeArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -513,25 +303,12 @@ class ClusterColdNodeConfigVolumeArgs:
     def __init__(__self__, *,
                  size: pulumi.Input[_builtins.int],
                  volume_type: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.int] size: Specifies the volume size in **GB**, which must be a multiple of `10`.
-        :param pulumi.Input[_builtins.str] volume_type: Specifies the volume type. Value options are as follows:
-               + **COMMON**: Common I/O. The SATA disk is used.
-               + **HIGH**: High I/O. The SAS disk is used.
-               + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-               
-               <a name="Css_public_access"></a>
-               The `public_access` block supports:
-        """
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "volume_type", volume_type)
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> pulumi.Input[_builtins.int]:
-        """
-        Specifies the volume size in **GB**, which must be a multiple of `10`.
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -541,15 +318,6 @@ class ClusterColdNodeConfigVolumeArgs:
     @_builtins.property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the volume type. Value options are as follows:
-        + **COMMON**: Common I/O. The SATA disk is used.
-        + **HIGH**: High I/O. The SAS disk is used.
-        + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-
-        <a name="Css_public_access"></a>
-        The `public_access` block supports:
-        """
         return pulumi.get(self, "volume_type")
 
     @volume_type.setter
@@ -560,27 +328,9 @@ class ClusterColdNodeConfigVolumeArgs:
 if not MYPY:
     class ClusterEssNodeConfigArgsDict(TypedDict):
         flavor: pulumi.Input[_builtins.str]
-        """
-        Specifies the flavor name.
-        """
         instance_number: pulumi.Input[_builtins.int]
-        """
-        Specifies the number of cluster instances.
-        + When it is `master_node_config`, The value range is `3` to `10`.
-        + When it is `client_node_config`, The value range is `1` to `32`.
-        """
         shrink_node_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specifies the node IDs that needs to be scaled down.
-
-        <a name="Css_master_or_client_volume"></a>
-        The `volume` block supports:
-        """
         volume: NotRequired[pulumi.Input['ClusterEssNodeConfigVolumeArgsDict']]
-        """
-        Specifies the information about the volume.
-        The volume structure is documented below.
-        """
 elif False:
     ClusterEssNodeConfigArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -591,18 +341,6 @@ class ClusterEssNodeConfigArgs:
                  instance_number: pulumi.Input[_builtins.int],
                  shrink_node_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  volume: Optional[pulumi.Input['ClusterEssNodeConfigVolumeArgs']] = None):
-        """
-        :param pulumi.Input[_builtins.str] flavor: Specifies the flavor name.
-        :param pulumi.Input[_builtins.int] instance_number: Specifies the number of cluster instances.
-               + When it is `master_node_config`, The value range is `3` to `10`.
-               + When it is `client_node_config`, The value range is `1` to `32`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] shrink_node_ids: Specifies the node IDs that needs to be scaled down.
-               
-               <a name="Css_master_or_client_volume"></a>
-               The `volume` block supports:
-        :param pulumi.Input['ClusterEssNodeConfigVolumeArgs'] volume: Specifies the information about the volume.
-               The volume structure is documented below.
-        """
         pulumi.set(__self__, "flavor", flavor)
         pulumi.set(__self__, "instance_number", instance_number)
         if shrink_node_ids is not None:
@@ -613,9 +351,6 @@ class ClusterEssNodeConfigArgs:
     @_builtins.property
     @pulumi.getter
     def flavor(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the flavor name.
-        """
         return pulumi.get(self, "flavor")
 
     @flavor.setter
@@ -625,11 +360,6 @@ class ClusterEssNodeConfigArgs:
     @_builtins.property
     @pulumi.getter(name="instanceNumber")
     def instance_number(self) -> pulumi.Input[_builtins.int]:
-        """
-        Specifies the number of cluster instances.
-        + When it is `master_node_config`, The value range is `3` to `10`.
-        + When it is `client_node_config`, The value range is `1` to `32`.
-        """
         return pulumi.get(self, "instance_number")
 
     @instance_number.setter
@@ -639,12 +369,6 @@ class ClusterEssNodeConfigArgs:
     @_builtins.property
     @pulumi.getter(name="shrinkNodeIds")
     def shrink_node_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the node IDs that needs to be scaled down.
-
-        <a name="Css_master_or_client_volume"></a>
-        The `volume` block supports:
-        """
         return pulumi.get(self, "shrink_node_ids")
 
     @shrink_node_ids.setter
@@ -654,10 +378,6 @@ class ClusterEssNodeConfigArgs:
     @_builtins.property
     @pulumi.getter
     def volume(self) -> Optional[pulumi.Input['ClusterEssNodeConfigVolumeArgs']]:
-        """
-        Specifies the information about the volume.
-        The volume structure is documented below.
-        """
         return pulumi.get(self, "volume")
 
     @volume.setter
@@ -668,19 +388,7 @@ class ClusterEssNodeConfigArgs:
 if not MYPY:
     class ClusterEssNodeConfigVolumeArgsDict(TypedDict):
         size: pulumi.Input[_builtins.int]
-        """
-        Specifies the volume size in **GB**, which must be a multiple of `10`.
-        """
         volume_type: pulumi.Input[_builtins.str]
-        """
-        Specifies the volume type. Value options are as follows:
-        + **COMMON**: Common I/O. The SATA disk is used.
-        + **HIGH**: High I/O. The SAS disk is used.
-        + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-
-        <a name="Css_public_access"></a>
-        The `public_access` block supports:
-        """
 elif False:
     ClusterEssNodeConfigVolumeArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -689,25 +397,12 @@ class ClusterEssNodeConfigVolumeArgs:
     def __init__(__self__, *,
                  size: pulumi.Input[_builtins.int],
                  volume_type: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.int] size: Specifies the volume size in **GB**, which must be a multiple of `10`.
-        :param pulumi.Input[_builtins.str] volume_type: Specifies the volume type. Value options are as follows:
-               + **COMMON**: Common I/O. The SATA disk is used.
-               + **HIGH**: High I/O. The SAS disk is used.
-               + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-               
-               <a name="Css_public_access"></a>
-               The `public_access` block supports:
-        """
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "volume_type", volume_type)
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> pulumi.Input[_builtins.int]:
-        """
-        Specifies the volume size in **GB**, which must be a multiple of `10`.
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -717,15 +412,6 @@ class ClusterEssNodeConfigVolumeArgs:
     @_builtins.property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the volume type. Value options are as follows:
-        + **COMMON**: Common I/O. The SATA disk is used.
-        + **HIGH**: High I/O. The SAS disk is used.
-        + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-
-        <a name="Css_public_access"></a>
-        The `public_access` block supports:
-        """
         return pulumi.get(self, "volume_type")
 
     @volume_type.setter
@@ -736,18 +422,9 @@ class ClusterEssNodeConfigVolumeArgs:
 if not MYPY:
     class ClusterKibanaPublicAccessArgsDict(TypedDict):
         bandwidth: pulumi.Input[_builtins.int]
-        """
-        Specifies the public network bandwidth.
-        """
         whitelist_enabled: pulumi.Input[_builtins.bool]
-        """
-        Specifies whether to enable the public network access control.
-        """
         public_ip: NotRequired[pulumi.Input[_builtins.str]]
         whitelist: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the whitelist of access control. The whitelisted account id must be unique.
-        """
 elif False:
     ClusterKibanaPublicAccessArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -758,11 +435,6 @@ class ClusterKibanaPublicAccessArgs:
                  whitelist_enabled: pulumi.Input[_builtins.bool],
                  public_ip: Optional[pulumi.Input[_builtins.str]] = None,
                  whitelist: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.int] bandwidth: Specifies the public network bandwidth.
-        :param pulumi.Input[_builtins.bool] whitelist_enabled: Specifies whether to enable the public network access control.
-        :param pulumi.Input[_builtins.str] whitelist: Specifies the whitelist of access control. The whitelisted account id must be unique.
-        """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "whitelist_enabled", whitelist_enabled)
         if public_ip is not None:
@@ -773,9 +445,6 @@ class ClusterKibanaPublicAccessArgs:
     @_builtins.property
     @pulumi.getter
     def bandwidth(self) -> pulumi.Input[_builtins.int]:
-        """
-        Specifies the public network bandwidth.
-        """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
@@ -785,9 +454,6 @@ class ClusterKibanaPublicAccessArgs:
     @_builtins.property
     @pulumi.getter(name="whitelistEnabled")
     def whitelist_enabled(self) -> pulumi.Input[_builtins.bool]:
-        """
-        Specifies whether to enable the public network access control.
-        """
         return pulumi.get(self, "whitelist_enabled")
 
     @whitelist_enabled.setter
@@ -806,9 +472,6 @@ class ClusterKibanaPublicAccessArgs:
     @_builtins.property
     @pulumi.getter
     def whitelist(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the whitelist of access control. The whitelisted account id must be unique.
-        """
         return pulumi.get(self, "whitelist")
 
     @whitelist.setter
@@ -819,27 +482,9 @@ class ClusterKibanaPublicAccessArgs:
 if not MYPY:
     class ClusterMasterNodeConfigArgsDict(TypedDict):
         flavor: pulumi.Input[_builtins.str]
-        """
-        Specifies the flavor name.
-        """
         instance_number: pulumi.Input[_builtins.int]
-        """
-        Specifies the number of cluster instances.
-        + When it is `master_node_config`, The value range is `3` to `10`.
-        + When it is `client_node_config`, The value range is `1` to `32`.
-        """
         volume: pulumi.Input['ClusterMasterNodeConfigVolumeArgsDict']
-        """
-        Specifies the information about the volume.
-        The volume structure is documented below.
-        """
         shrink_node_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specifies the node IDs that needs to be scaled down.
-
-        <a name="Css_master_or_client_volume"></a>
-        The `volume` block supports:
-        """
 elif False:
     ClusterMasterNodeConfigArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -850,18 +495,6 @@ class ClusterMasterNodeConfigArgs:
                  instance_number: pulumi.Input[_builtins.int],
                  volume: pulumi.Input['ClusterMasterNodeConfigVolumeArgs'],
                  shrink_node_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
-        """
-        :param pulumi.Input[_builtins.str] flavor: Specifies the flavor name.
-        :param pulumi.Input[_builtins.int] instance_number: Specifies the number of cluster instances.
-               + When it is `master_node_config`, The value range is `3` to `10`.
-               + When it is `client_node_config`, The value range is `1` to `32`.
-        :param pulumi.Input['ClusterMasterNodeConfigVolumeArgs'] volume: Specifies the information about the volume.
-               The volume structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] shrink_node_ids: Specifies the node IDs that needs to be scaled down.
-               
-               <a name="Css_master_or_client_volume"></a>
-               The `volume` block supports:
-        """
         pulumi.set(__self__, "flavor", flavor)
         pulumi.set(__self__, "instance_number", instance_number)
         pulumi.set(__self__, "volume", volume)
@@ -871,9 +504,6 @@ class ClusterMasterNodeConfigArgs:
     @_builtins.property
     @pulumi.getter
     def flavor(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the flavor name.
-        """
         return pulumi.get(self, "flavor")
 
     @flavor.setter
@@ -883,11 +513,6 @@ class ClusterMasterNodeConfigArgs:
     @_builtins.property
     @pulumi.getter(name="instanceNumber")
     def instance_number(self) -> pulumi.Input[_builtins.int]:
-        """
-        Specifies the number of cluster instances.
-        + When it is `master_node_config`, The value range is `3` to `10`.
-        + When it is `client_node_config`, The value range is `1` to `32`.
-        """
         return pulumi.get(self, "instance_number")
 
     @instance_number.setter
@@ -897,10 +522,6 @@ class ClusterMasterNodeConfigArgs:
     @_builtins.property
     @pulumi.getter
     def volume(self) -> pulumi.Input['ClusterMasterNodeConfigVolumeArgs']:
-        """
-        Specifies the information about the volume.
-        The volume structure is documented below.
-        """
         return pulumi.get(self, "volume")
 
     @volume.setter
@@ -910,12 +531,6 @@ class ClusterMasterNodeConfigArgs:
     @_builtins.property
     @pulumi.getter(name="shrinkNodeIds")
     def shrink_node_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the node IDs that needs to be scaled down.
-
-        <a name="Css_master_or_client_volume"></a>
-        The `volume` block supports:
-        """
         return pulumi.get(self, "shrink_node_ids")
 
     @shrink_node_ids.setter
@@ -926,19 +541,7 @@ class ClusterMasterNodeConfigArgs:
 if not MYPY:
     class ClusterMasterNodeConfigVolumeArgsDict(TypedDict):
         size: pulumi.Input[_builtins.int]
-        """
-        Specifies the volume size in **GB**, which must be a multiple of `10`.
-        """
         volume_type: pulumi.Input[_builtins.str]
-        """
-        Specifies the volume type. Value options are as follows:
-        + **COMMON**: Common I/O. The SATA disk is used.
-        + **HIGH**: High I/O. The SAS disk is used.
-        + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-
-        <a name="Css_public_access"></a>
-        The `public_access` block supports:
-        """
 elif False:
     ClusterMasterNodeConfigVolumeArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -947,25 +550,12 @@ class ClusterMasterNodeConfigVolumeArgs:
     def __init__(__self__, *,
                  size: pulumi.Input[_builtins.int],
                  volume_type: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.int] size: Specifies the volume size in **GB**, which must be a multiple of `10`.
-        :param pulumi.Input[_builtins.str] volume_type: Specifies the volume type. Value options are as follows:
-               + **COMMON**: Common I/O. The SATA disk is used.
-               + **HIGH**: High I/O. The SAS disk is used.
-               + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-               
-               <a name="Css_public_access"></a>
-               The `public_access` block supports:
-        """
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "volume_type", volume_type)
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> pulumi.Input[_builtins.int]:
-        """
-        Specifies the volume size in **GB**, which must be a multiple of `10`.
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -975,15 +565,6 @@ class ClusterMasterNodeConfigVolumeArgs:
     @_builtins.property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the volume type. Value options are as follows:
-        + **COMMON**: Common I/O. The SATA disk is used.
-        + **HIGH**: High I/O. The SAS disk is used.
-        + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-
-        <a name="Css_public_access"></a>
-        The `public_access` block supports:
-        """
         return pulumi.get(self, "volume_type")
 
     @volume_type.setter
@@ -994,47 +575,13 @@ class ClusterMasterNodeConfigVolumeArgs:
 if not MYPY:
     class ClusterNodeArgsDict(TypedDict):
         availability_zone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the availability zone name.
-        Separate multiple AZs with commas (,), for example, az1,az2. AZs must be unique. The number of nodes must be greater
-        than or equal to the number of AZs. If the number of nodes is a multiple of the number of AZs, the nodes are evenly
-        distributed to each AZ. If the number of nodes is not a multiple of the number of AZs, the absolute difference
-        between node quantity in any two AZs is **1** at most.
-        """
         id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Instance ID.
-        """
         ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Instance IP address.
-        """
         name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the cluster name. It contains `4` to `32` characters.
-        Only letters, digits, hyphens (-), and underscores (_) are allowed. The value must start with a letter.
-        Changing this parameter will create a new resource.
-        """
         resource_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The resource ID of this instance.
-        """
         spec_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Instance specification code.
-        """
         status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Instance status.
-        """
         type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Node type. The options are as follows:
-        + **ess-master:** Indicates a master node.
-        + **ess-client:** Indicates a client node.
-        + **ess-cold:** Indicates a cold data node.
-        + **ess indicates:** Indicates a data node.
-        """
 elif False:
     ClusterNodeArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1049,26 +596,6 @@ class ClusterNodeArgs:
                  spec_code: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies the availability zone name.
-               Separate multiple AZs with commas (,), for example, az1,az2. AZs must be unique. The number of nodes must be greater
-               than or equal to the number of AZs. If the number of nodes is a multiple of the number of AZs, the nodes are evenly
-               distributed to each AZ. If the number of nodes is not a multiple of the number of AZs, the absolute difference
-               between node quantity in any two AZs is **1** at most.
-        :param pulumi.Input[_builtins.str] id: Instance ID.
-        :param pulumi.Input[_builtins.str] ip: Instance IP address.
-        :param pulumi.Input[_builtins.str] name: Specifies the cluster name. It contains `4` to `32` characters.
-               Only letters, digits, hyphens (-), and underscores (_) are allowed. The value must start with a letter.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] resource_id: The resource ID of this instance.
-        :param pulumi.Input[_builtins.str] spec_code: Instance specification code.
-        :param pulumi.Input[_builtins.str] status: Instance status.
-        :param pulumi.Input[_builtins.str] type: Node type. The options are as follows:
-               + **ess-master:** Indicates a master node.
-               + **ess-client:** Indicates a client node.
-               + **ess-cold:** Indicates a cold data node.
-               + **ess indicates:** Indicates a data node.
-        """
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
         if id is not None:
@@ -1089,13 +616,6 @@ class ClusterNodeArgs:
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the availability zone name.
-        Separate multiple AZs with commas (,), for example, az1,az2. AZs must be unique. The number of nodes must be greater
-        than or equal to the number of AZs. If the number of nodes is a multiple of the number of AZs, the nodes are evenly
-        distributed to each AZ. If the number of nodes is not a multiple of the number of AZs, the absolute difference
-        between node quantity in any two AZs is **1** at most.
-        """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -1105,9 +625,6 @@ class ClusterNodeArgs:
     @_builtins.property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Instance ID.
-        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -1117,9 +634,6 @@ class ClusterNodeArgs:
     @_builtins.property
     @pulumi.getter
     def ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Instance IP address.
-        """
         return pulumi.get(self, "ip")
 
     @ip.setter
@@ -1129,11 +643,6 @@ class ClusterNodeArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the cluster name. It contains `4` to `32` characters.
-        Only letters, digits, hyphens (-), and underscores (_) are allowed. The value must start with a letter.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -1143,9 +652,6 @@ class ClusterNodeArgs:
     @_builtins.property
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The resource ID of this instance.
-        """
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
@@ -1155,9 +661,6 @@ class ClusterNodeArgs:
     @_builtins.property
     @pulumi.getter(name="specCode")
     def spec_code(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Instance specification code.
-        """
         return pulumi.get(self, "spec_code")
 
     @spec_code.setter
@@ -1167,9 +670,6 @@ class ClusterNodeArgs:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Instance status.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -1179,13 +679,6 @@ class ClusterNodeArgs:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Node type. The options are as follows:
-        + **ess-master:** Indicates a master node.
-        + **ess-client:** Indicates a client node.
-        + **ess-cold:** Indicates a cold data node.
-        + **ess indicates:** Indicates a data node.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -1196,23 +689,9 @@ class ClusterNodeArgs:
 if not MYPY:
     class ClusterNodeConfigArgsDict(TypedDict):
         availability_zone: pulumi.Input[_builtins.str]
-        """
-        Specifies the availability zone name.
-        Separate multiple AZs with commas (,), for example, az1,az2. AZs must be unique. The number of nodes must be greater
-        than or equal to the number of AZs. If the number of nodes is a multiple of the number of AZs, the nodes are evenly
-        distributed to each AZ. If the number of nodes is not a multiple of the number of AZs, the absolute difference
-        between node quantity in any two AZs is **1** at most.
-        """
         flavor: pulumi.Input[_builtins.str]
-        """
-        Specifies the flavor name.
-        """
         network_info: pulumi.Input['ClusterNodeConfigNetworkInfoArgsDict']
         volume: pulumi.Input['ClusterNodeConfigVolumeArgsDict']
-        """
-        Specifies the information about the volume.
-        The volume structure is documented below.
-        """
 elif False:
     ClusterNodeConfigArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1223,16 +702,6 @@ class ClusterNodeConfigArgs:
                  flavor: pulumi.Input[_builtins.str],
                  network_info: pulumi.Input['ClusterNodeConfigNetworkInfoArgs'],
                  volume: pulumi.Input['ClusterNodeConfigVolumeArgs']):
-        """
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies the availability zone name.
-               Separate multiple AZs with commas (,), for example, az1,az2. AZs must be unique. The number of nodes must be greater
-               than or equal to the number of AZs. If the number of nodes is a multiple of the number of AZs, the nodes are evenly
-               distributed to each AZ. If the number of nodes is not a multiple of the number of AZs, the absolute difference
-               between node quantity in any two AZs is **1** at most.
-        :param pulumi.Input[_builtins.str] flavor: Specifies the flavor name.
-        :param pulumi.Input['ClusterNodeConfigVolumeArgs'] volume: Specifies the information about the volume.
-               The volume structure is documented below.
-        """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "flavor", flavor)
         pulumi.set(__self__, "network_info", network_info)
@@ -1241,13 +710,6 @@ class ClusterNodeConfigArgs:
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the availability zone name.
-        Separate multiple AZs with commas (,), for example, az1,az2. AZs must be unique. The number of nodes must be greater
-        than or equal to the number of AZs. If the number of nodes is a multiple of the number of AZs, the nodes are evenly
-        distributed to each AZ. If the number of nodes is not a multiple of the number of AZs, the absolute difference
-        between node quantity in any two AZs is **1** at most.
-        """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -1257,9 +719,6 @@ class ClusterNodeConfigArgs:
     @_builtins.property
     @pulumi.getter
     def flavor(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the flavor name.
-        """
         return pulumi.get(self, "flavor")
 
     @flavor.setter
@@ -1278,10 +737,6 @@ class ClusterNodeConfigArgs:
     @_builtins.property
     @pulumi.getter
     def volume(self) -> pulumi.Input['ClusterNodeConfigVolumeArgs']:
-        """
-        Specifies the information about the volume.
-        The volume structure is documented below.
-        """
         return pulumi.get(self, "volume")
 
     @volume.setter
@@ -1292,19 +747,8 @@ class ClusterNodeConfigArgs:
 if not MYPY:
     class ClusterNodeConfigNetworkInfoArgsDict(TypedDict):
         security_group_id: pulumi.Input[_builtins.str]
-        """
-        Specifies the security group ID.
-        """
         subnet_id: pulumi.Input[_builtins.str]
-        """
-        Specifies the Subnet ID.
-        Changing this parameter will create a new resource.
-        """
         vpc_id: pulumi.Input[_builtins.str]
-        """
-        Specifies the VPC ID.
-        Changing this parameter will create a new resource.
-        """
 elif False:
     ClusterNodeConfigNetworkInfoArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1314,13 +758,6 @@ class ClusterNodeConfigNetworkInfoArgs:
                  security_group_id: pulumi.Input[_builtins.str],
                  subnet_id: pulumi.Input[_builtins.str],
                  vpc_id: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.str] security_group_id: Specifies the security group ID.
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies the Subnet ID.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the VPC ID.
-               Changing this parameter will create a new resource.
-        """
         pulumi.set(__self__, "security_group_id", security_group_id)
         pulumi.set(__self__, "subnet_id", subnet_id)
         pulumi.set(__self__, "vpc_id", vpc_id)
@@ -1328,9 +765,6 @@ class ClusterNodeConfigNetworkInfoArgs:
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the security group ID.
-        """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
@@ -1340,10 +774,6 @@ class ClusterNodeConfigNetworkInfoArgs:
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the Subnet ID.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -1353,10 +783,6 @@ class ClusterNodeConfigNetworkInfoArgs:
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the VPC ID.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
@@ -1367,19 +793,7 @@ class ClusterNodeConfigNetworkInfoArgs:
 if not MYPY:
     class ClusterNodeConfigVolumeArgsDict(TypedDict):
         size: pulumi.Input[_builtins.int]
-        """
-        Specifies the volume size in **GB**, which must be a multiple of `10`.
-        """
         volume_type: pulumi.Input[_builtins.str]
-        """
-        Specifies the volume type. Value options are as follows:
-        + **COMMON**: Common I/O. The SATA disk is used.
-        + **HIGH**: High I/O. The SAS disk is used.
-        + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-
-        <a name="Css_public_access"></a>
-        The `public_access` block supports:
-        """
 elif False:
     ClusterNodeConfigVolumeArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1388,25 +802,12 @@ class ClusterNodeConfigVolumeArgs:
     def __init__(__self__, *,
                  size: pulumi.Input[_builtins.int],
                  volume_type: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.int] size: Specifies the volume size in **GB**, which must be a multiple of `10`.
-        :param pulumi.Input[_builtins.str] volume_type: Specifies the volume type. Value options are as follows:
-               + **COMMON**: Common I/O. The SATA disk is used.
-               + **HIGH**: High I/O. The SAS disk is used.
-               + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-               
-               <a name="Css_public_access"></a>
-               The `public_access` block supports:
-        """
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "volume_type", volume_type)
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> pulumi.Input[_builtins.int]:
-        """
-        Specifies the volume size in **GB**, which must be a multiple of `10`.
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -1416,15 +817,6 @@ class ClusterNodeConfigVolumeArgs:
     @_builtins.property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the volume type. Value options are as follows:
-        + **COMMON**: Common I/O. The SATA disk is used.
-        + **HIGH**: High I/O. The SAS disk is used.
-        + **ULTRAHIGH**: Ultra-high I/O. The solid-state drive (SSD) is used.
-
-        <a name="Css_public_access"></a>
-        The `public_access` block supports:
-        """
         return pulumi.get(self, "volume_type")
 
     @volume_type.setter
@@ -1435,18 +827,9 @@ class ClusterNodeConfigVolumeArgs:
 if not MYPY:
     class ClusterPublicAccessArgsDict(TypedDict):
         bandwidth: pulumi.Input[_builtins.int]
-        """
-        Specifies the public network bandwidth.
-        """
         whitelist_enabled: pulumi.Input[_builtins.bool]
-        """
-        Specifies whether to enable the public network access control.
-        """
         public_ip: NotRequired[pulumi.Input[_builtins.str]]
         whitelist: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the whitelist of access control. The whitelisted account id must be unique.
-        """
 elif False:
     ClusterPublicAccessArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1457,11 +840,6 @@ class ClusterPublicAccessArgs:
                  whitelist_enabled: pulumi.Input[_builtins.bool],
                  public_ip: Optional[pulumi.Input[_builtins.str]] = None,
                  whitelist: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.int] bandwidth: Specifies the public network bandwidth.
-        :param pulumi.Input[_builtins.bool] whitelist_enabled: Specifies whether to enable the public network access control.
-        :param pulumi.Input[_builtins.str] whitelist: Specifies the whitelist of access control. The whitelisted account id must be unique.
-        """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "whitelist_enabled", whitelist_enabled)
         if public_ip is not None:
@@ -1472,9 +850,6 @@ class ClusterPublicAccessArgs:
     @_builtins.property
     @pulumi.getter
     def bandwidth(self) -> pulumi.Input[_builtins.int]:
-        """
-        Specifies the public network bandwidth.
-        """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
@@ -1484,9 +859,6 @@ class ClusterPublicAccessArgs:
     @_builtins.property
     @pulumi.getter(name="whitelistEnabled")
     def whitelist_enabled(self) -> pulumi.Input[_builtins.bool]:
-        """
-        Specifies whether to enable the public network access control.
-        """
         return pulumi.get(self, "whitelist_enabled")
 
     @whitelist_enabled.setter
@@ -1505,9 +877,6 @@ class ClusterPublicAccessArgs:
     @_builtins.property
     @pulumi.getter
     def whitelist(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the whitelist of access control. The whitelisted account id must be unique.
-        """
         return pulumi.get(self, "whitelist")
 
     @whitelist.setter
@@ -1518,13 +887,7 @@ class ClusterPublicAccessArgs:
 if not MYPY:
     class ClusterVpcepEndpointArgsDict(TypedDict):
         endpoint_with_dns_name: pulumi.Input[_builtins.bool]
-        """
-        Specifies whether to enable the private domain name.
-        """
         whitelists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specifies the whitelist of access control. The whitelisted account id must be unique.
-        """
 elif False:
     ClusterVpcepEndpointArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1533,10 +896,6 @@ class ClusterVpcepEndpointArgs:
     def __init__(__self__, *,
                  endpoint_with_dns_name: pulumi.Input[_builtins.bool],
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
-        """
-        :param pulumi.Input[_builtins.bool] endpoint_with_dns_name: Specifies whether to enable the private domain name.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] whitelists: Specifies the whitelist of access control. The whitelisted account id must be unique.
-        """
         pulumi.set(__self__, "endpoint_with_dns_name", endpoint_with_dns_name)
         if whitelists is not None:
             pulumi.set(__self__, "whitelists", whitelists)
@@ -1544,9 +903,6 @@ class ClusterVpcepEndpointArgs:
     @_builtins.property
     @pulumi.getter(name="endpointWithDnsName")
     def endpoint_with_dns_name(self) -> pulumi.Input[_builtins.bool]:
-        """
-        Specifies whether to enable the private domain name.
-        """
         return pulumi.get(self, "endpoint_with_dns_name")
 
     @endpoint_with_dns_name.setter
@@ -1556,9 +912,6 @@ class ClusterVpcepEndpointArgs:
     @_builtins.property
     @pulumi.getter
     def whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the whitelist of access control. The whitelisted account id must be unique.
-        """
         return pulumi.get(self, "whitelists")
 
     @whitelists.setter

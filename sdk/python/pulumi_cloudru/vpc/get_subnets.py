@@ -159,70 +159,7 @@ def get_subnets(availability_zone: Optional[_builtins.str] = None,
                 vpc_id: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSubnetsResult:
     """
-    Use this data source to get a list of VPC subnet.
-
-    ## Example Usage
-
-    An example filter by name and tag
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    subnet = sbercloud.Vpc.get_subnets(name=subnet_name,
-        tags={
-            "foo": "bar,value",
-        })
-    pulumi.export("subnetVpcIds", [__item.vpc_id for __item in subnet.subnets])
-    ```
-
-    ## **Attributes Reference**
-
-    The following attributes are exported:
-
-    * `id` - Indicates a data source ID.
-    * `subnets` - Indicates a list of all subnets found. Structure is documented below.
-
-    The `subnets` block supports:
-
-    * `id` - Indicates the ID of the subnet.
-    * `name` - Indicates the name of the subnet.
-    * `cidr` - Indicates the cidr block of the subnet.
-    * `status` - Indicates the current status of the subnet.
-    * `vpc_id` - Indicates the Id of the VPC that the subnet belongs to.
-    * `gateway_ip` - Indicates the subnet gateway address of the subnet.
-    * `primary_dns` - Indicates the IP address of DNS server 1 on the subnet.
-    * `secondary_dns` - Indicates the IP address of DNS server 2 on the subnet.
-    * `availability_zone` - Indicates the availability zone (AZ) to which the subnet belongs to.
-    * `subnet_id` - Indicates the subnet (Native OpenStack API) ID.
-    * `dhcp_enable` - Indicates whether the DHCP is enabled.
-    * `dns_list` - Indicates The IP address list of DNS servers on the subnet.
-    * `ipv4_subnet_id` - Indicates the ID of the IPv4 subnet (Native OpenStack API).
-    * `ipv6_enable` - Indicates whether the IPv6 is enabled.
-    * `ipv6_subnet_id` - Indicates the ID of the IPv6 subnet (Native OpenStack API).
-    * `ipv6_cidr` - Indicates the IPv6 subnet CIDR block.
-    * `ipv6_gateway` - Indicates the IPv6 subnet gateway.
-    * `tags` - Indicates the key/value pairs which associated with the subnet.
-
-
-    :param _builtins.str availability_zone: Specifies the availability zone (AZ) to which the desired subnet belongs to.
-    :param _builtins.str cidr: Specifies the network segment of desired subnet. The value must be in CIDR format.
-    :param _builtins.str gateway_ip: Specifies the subnet gateway address of desired subnet.
-    :param _builtins.str id: Specifies the id of the desired subnet.
-    :param _builtins.str name: Specifies the name of the desired subnet.
-    :param _builtins.str primary_dns: Specifies the IP address of DNS server 1 on the desired subnet.
-    :param _builtins.str region: Specifies the region in which to obtain the subnet. If omitted, the provider-level
-           region will be used.
-    :param _builtins.str secondary_dns: Specifies the IP address of DNS server 2 on the desired subnet.
-    :param _builtins.str status: Specifies the current status of the desired subnet.
-           the value can be ACTIVE, DOWN, UNKNOWN, or ERROR.
-    :param Mapping[str, _builtins.str] tags: Specifies the included key/value pairs which associated with the desired subnet.
-           
-           > A maximum of 10 tag keys are allowed for each query operation. Each tag key can have up to 10 tag values.
-           The tag key cannot be left blank or set to an empty string. Each tag key must be unique, and each tag value in a
-           tag must be unique, use commas(,) to separate the multiple values. An empty for values indicates any value.
-           The values are in the OR relationship.
-    :param _builtins.str vpc_id: Specifies the id of the VPC that the desired subnet belongs to.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['availabilityZone'] = availability_zone
@@ -265,70 +202,7 @@ def get_subnets_output(availability_zone: Optional[pulumi.Input[Optional[_builti
                        vpc_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSubnetsResult]:
     """
-    Use this data source to get a list of VPC subnet.
-
-    ## Example Usage
-
-    An example filter by name and tag
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    subnet = sbercloud.Vpc.get_subnets(name=subnet_name,
-        tags={
-            "foo": "bar,value",
-        })
-    pulumi.export("subnetVpcIds", [__item.vpc_id for __item in subnet.subnets])
-    ```
-
-    ## **Attributes Reference**
-
-    The following attributes are exported:
-
-    * `id` - Indicates a data source ID.
-    * `subnets` - Indicates a list of all subnets found. Structure is documented below.
-
-    The `subnets` block supports:
-
-    * `id` - Indicates the ID of the subnet.
-    * `name` - Indicates the name of the subnet.
-    * `cidr` - Indicates the cidr block of the subnet.
-    * `status` - Indicates the current status of the subnet.
-    * `vpc_id` - Indicates the Id of the VPC that the subnet belongs to.
-    * `gateway_ip` - Indicates the subnet gateway address of the subnet.
-    * `primary_dns` - Indicates the IP address of DNS server 1 on the subnet.
-    * `secondary_dns` - Indicates the IP address of DNS server 2 on the subnet.
-    * `availability_zone` - Indicates the availability zone (AZ) to which the subnet belongs to.
-    * `subnet_id` - Indicates the subnet (Native OpenStack API) ID.
-    * `dhcp_enable` - Indicates whether the DHCP is enabled.
-    * `dns_list` - Indicates The IP address list of DNS servers on the subnet.
-    * `ipv4_subnet_id` - Indicates the ID of the IPv4 subnet (Native OpenStack API).
-    * `ipv6_enable` - Indicates whether the IPv6 is enabled.
-    * `ipv6_subnet_id` - Indicates the ID of the IPv6 subnet (Native OpenStack API).
-    * `ipv6_cidr` - Indicates the IPv6 subnet CIDR block.
-    * `ipv6_gateway` - Indicates the IPv6 subnet gateway.
-    * `tags` - Indicates the key/value pairs which associated with the subnet.
-
-
-    :param _builtins.str availability_zone: Specifies the availability zone (AZ) to which the desired subnet belongs to.
-    :param _builtins.str cidr: Specifies the network segment of desired subnet. The value must be in CIDR format.
-    :param _builtins.str gateway_ip: Specifies the subnet gateway address of desired subnet.
-    :param _builtins.str id: Specifies the id of the desired subnet.
-    :param _builtins.str name: Specifies the name of the desired subnet.
-    :param _builtins.str primary_dns: Specifies the IP address of DNS server 1 on the desired subnet.
-    :param _builtins.str region: Specifies the region in which to obtain the subnet. If omitted, the provider-level
-           region will be used.
-    :param _builtins.str secondary_dns: Specifies the IP address of DNS server 2 on the desired subnet.
-    :param _builtins.str status: Specifies the current status of the desired subnet.
-           the value can be ACTIVE, DOWN, UNKNOWN, or ERROR.
-    :param Mapping[str, _builtins.str] tags: Specifies the included key/value pairs which associated with the desired subnet.
-           
-           > A maximum of 10 tag keys are allowed for each query operation. Each tag key can have up to 10 tag values.
-           The tag key cannot be left blank or set to an empty string. Each tag key must be unique, and each tag value in a
-           tag must be unique, use commas(,) to separate the multiple values. An empty for values indicates any value.
-           The values are in the OR relationship.
-    :param _builtins.str vpc_id: Specifies the id of the VPC that the desired subnet belongs to.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['availabilityZone'] = availability_zone

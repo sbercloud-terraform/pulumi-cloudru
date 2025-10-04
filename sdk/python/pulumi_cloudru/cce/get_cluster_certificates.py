@@ -64,27 +64,16 @@ class GetClusterCertificatesResult:
     @_builtins.property
     @pulumi.getter
     def clusters(self) -> Sequence['outputs.GetClusterCertificatesClusterResult']:
-        """
-        The clusters information of the cluster certificate.
-        The clusters structure is documented below.
-        """
         return pulumi.get(self, "clusters")
 
     @_builtins.property
     @pulumi.getter
     def contexts(self) -> Sequence['outputs.GetClusterCertificatesContextResult']:
-        """
-        The contexts information of the cluster certificate.
-        The contexts structure is documented below.
-        """
         return pulumi.get(self, "contexts")
 
     @_builtins.property
     @pulumi.getter(name="currentContext")
     def current_context(self) -> _builtins.str:
-        """
-        The current context of the cluster certificate.
-        """
         return pulumi.get(self, "current_context")
 
     @_builtins.property
@@ -103,9 +92,6 @@ class GetClusterCertificatesResult:
     @_builtins.property
     @pulumi.getter(name="kubeConfigRaw")
     def kube_config_raw(self) -> _builtins.str:
-        """
-        Raw Kubernetes config to be used by kubectl and other compatible tools.
-        """
         return pulumi.get(self, "kube_config_raw")
 
     @_builtins.property
@@ -116,10 +102,6 @@ class GetClusterCertificatesResult:
     @_builtins.property
     @pulumi.getter
     def users(self) -> Sequence['outputs.GetClusterCertificatesUserResult']:
-        """
-        The users information of cluster the certificate.
-        The users structure is documented below.
-        """
         return pulumi.get(self, "users")
 
 
@@ -145,26 +127,7 @@ def get_cluster_certificates(cluster_id: Optional[_builtins.str] = None,
                              region: Optional[_builtins.str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterCertificatesResult:
     """
-    Use this data source to get the certificate of a CCE cluster within HuaweiCloud.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    cluster_id = config.require_object("clusterId")
-    test = sbercloud.Cce.get_cluster_certificates(cluster_id=cluster_id,
-        duration=30)
-    ```
-
-
-    :param _builtins.str cluster_id: Specifies the cluster ID which the cluster certificate in.
-    :param _builtins.int duration: Specifies the duration of the cluster certificate. The unit is days. The valid value in
-           [1, 1827]. If the input value is -1, it will use the maximum 1827 as `duration` value.
-    :param _builtins.str region: Specifies the region in which to obtain the CCE cluster certificate. If omitted, the
-           provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
@@ -188,26 +151,7 @@ def get_cluster_certificates_output(cluster_id: Optional[pulumi.Input[_builtins.
                                     region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterCertificatesResult]:
     """
-    Use this data source to get the certificate of a CCE cluster within HuaweiCloud.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    cluster_id = config.require_object("clusterId")
-    test = sbercloud.Cce.get_cluster_certificates(cluster_id=cluster_id,
-        duration=30)
-    ```
-
-
-    :param _builtins.str cluster_id: Specifies the cluster ID which the cluster certificate in.
-    :param _builtins.int duration: Specifies the duration of the cluster certificate. The unit is days. The valid value in
-           [1, 1827]. If the input value is -1, it will use the maximum 1827 as `duration` value.
-    :param _builtins.str region: Specifies the region in which to obtain the CCE cluster certificate. If omitted, the
-           provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

@@ -11,71 +11,17 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this resource to manage an enterprise project within SberCloud.
-//
-// > **NOTE:** Deleting enterprise projects is not support. If you destroy a resource of enterprise project,
-//
-//	the project is only disabled and removed from the state, but it remains in the cloud
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/eps"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := eps.NewProject(ctx, "test", &eps.ProjectArgs{
-//				Name:        pulumi.String("test"),
-//				Description: pulumi.String("example project"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Enterprise projects can be imported using the `id`, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Eps/project:Project test 88f889c7-270e-4e77-8230-bf7db08d9b0e
-// ```
 type Project struct {
 	pulumi.CustomResourceState
 
-	// Indicates the time (UTC) when the enterprise project was created. Example: 2018-05-18T06:49:06Z
-	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Specifies the description of the enterprise project.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Specifies whether to enable the enterprise project. Default to *true*.
-	Enable pulumi.BoolPtrOutput `pulumi:"enable"`
-	// Specifies the name of the enterprise project.
-	// This parameter can contain 1 to 64 characters. Only letters, digits, underscores (_), and hyphens (-) are allowed.
-	// The name must be unique in the domain and cannot include any form of the word "default" ("deFaulT", for instance).
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies whether to skip disable the enterprise project on destroy.
-	// Defaults to **false**.
-	SkipDisableOnDestroy pulumi.BoolPtrOutput `pulumi:"skipDisableOnDestroy"`
-	// Indicates the status of an enterprise project.
-	// + 1 indicates Enabled.
-	// + 2 indicates Disabled.
-	Status pulumi.IntOutput `pulumi:"status"`
-	// Specifies the type of the enterprise project.
-	// The valid values are *poc* and *prod*, default to *prod*.
-	Type pulumi.StringOutput `pulumi:"type"`
-	// Indicates the time (UTC) when the enterprise project was modified. Example: 2018-05-28T02:21:36Z
-	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
+	CreatedAt            pulumi.StringOutput    `pulumi:"createdAt"`
+	Description          pulumi.StringPtrOutput `pulumi:"description"`
+	Enable               pulumi.BoolPtrOutput   `pulumi:"enable"`
+	Name                 pulumi.StringOutput    `pulumi:"name"`
+	SkipDisableOnDestroy pulumi.BoolPtrOutput   `pulumi:"skipDisableOnDestroy"`
+	Status               pulumi.IntOutput       `pulumi:"status"`
+	Type                 pulumi.StringOutput    `pulumi:"type"`
+	UpdatedAt            pulumi.StringOutput    `pulumi:"updatedAt"`
 }
 
 // NewProject registers a new resource with the given unique name, arguments, and options.
@@ -108,53 +54,25 @@ func GetProject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Project resources.
 type projectState struct {
-	// Indicates the time (UTC) when the enterprise project was created. Example: 2018-05-18T06:49:06Z
-	CreatedAt *string `pulumi:"createdAt"`
-	// Specifies the description of the enterprise project.
-	Description *string `pulumi:"description"`
-	// Specifies whether to enable the enterprise project. Default to *true*.
-	Enable *bool `pulumi:"enable"`
-	// Specifies the name of the enterprise project.
-	// This parameter can contain 1 to 64 characters. Only letters, digits, underscores (_), and hyphens (-) are allowed.
-	// The name must be unique in the domain and cannot include any form of the word "default" ("deFaulT", for instance).
-	Name *string `pulumi:"name"`
-	// Specifies whether to skip disable the enterprise project on destroy.
-	// Defaults to **false**.
-	SkipDisableOnDestroy *bool `pulumi:"skipDisableOnDestroy"`
-	// Indicates the status of an enterprise project.
-	// + 1 indicates Enabled.
-	// + 2 indicates Disabled.
-	Status *int `pulumi:"status"`
-	// Specifies the type of the enterprise project.
-	// The valid values are *poc* and *prod*, default to *prod*.
-	Type *string `pulumi:"type"`
-	// Indicates the time (UTC) when the enterprise project was modified. Example: 2018-05-28T02:21:36Z
-	UpdatedAt *string `pulumi:"updatedAt"`
+	CreatedAt            *string `pulumi:"createdAt"`
+	Description          *string `pulumi:"description"`
+	Enable               *bool   `pulumi:"enable"`
+	Name                 *string `pulumi:"name"`
+	SkipDisableOnDestroy *bool   `pulumi:"skipDisableOnDestroy"`
+	Status               *int    `pulumi:"status"`
+	Type                 *string `pulumi:"type"`
+	UpdatedAt            *string `pulumi:"updatedAt"`
 }
 
 type ProjectState struct {
-	// Indicates the time (UTC) when the enterprise project was created. Example: 2018-05-18T06:49:06Z
-	CreatedAt pulumi.StringPtrInput
-	// Specifies the description of the enterprise project.
-	Description pulumi.StringPtrInput
-	// Specifies whether to enable the enterprise project. Default to *true*.
-	Enable pulumi.BoolPtrInput
-	// Specifies the name of the enterprise project.
-	// This parameter can contain 1 to 64 characters. Only letters, digits, underscores (_), and hyphens (-) are allowed.
-	// The name must be unique in the domain and cannot include any form of the word "default" ("deFaulT", for instance).
-	Name pulumi.StringPtrInput
-	// Specifies whether to skip disable the enterprise project on destroy.
-	// Defaults to **false**.
+	CreatedAt            pulumi.StringPtrInput
+	Description          pulumi.StringPtrInput
+	Enable               pulumi.BoolPtrInput
+	Name                 pulumi.StringPtrInput
 	SkipDisableOnDestroy pulumi.BoolPtrInput
-	// Indicates the status of an enterprise project.
-	// + 1 indicates Enabled.
-	// + 2 indicates Disabled.
-	Status pulumi.IntPtrInput
-	// Specifies the type of the enterprise project.
-	// The valid values are *poc* and *prod*, default to *prod*.
-	Type pulumi.StringPtrInput
-	// Indicates the time (UTC) when the enterprise project was modified. Example: 2018-05-28T02:21:36Z
-	UpdatedAt pulumi.StringPtrInput
+	Status               pulumi.IntPtrInput
+	Type                 pulumi.StringPtrInput
+	UpdatedAt            pulumi.StringPtrInput
 }
 
 func (ProjectState) ElementType() reflect.Type {
@@ -162,38 +80,20 @@ func (ProjectState) ElementType() reflect.Type {
 }
 
 type projectArgs struct {
-	// Specifies the description of the enterprise project.
-	Description *string `pulumi:"description"`
-	// Specifies whether to enable the enterprise project. Default to *true*.
-	Enable *bool `pulumi:"enable"`
-	// Specifies the name of the enterprise project.
-	// This parameter can contain 1 to 64 characters. Only letters, digits, underscores (_), and hyphens (-) are allowed.
-	// The name must be unique in the domain and cannot include any form of the word "default" ("deFaulT", for instance).
-	Name *string `pulumi:"name"`
-	// Specifies whether to skip disable the enterprise project on destroy.
-	// Defaults to **false**.
-	SkipDisableOnDestroy *bool `pulumi:"skipDisableOnDestroy"`
-	// Specifies the type of the enterprise project.
-	// The valid values are *poc* and *prod*, default to *prod*.
-	Type *string `pulumi:"type"`
+	Description          *string `pulumi:"description"`
+	Enable               *bool   `pulumi:"enable"`
+	Name                 *string `pulumi:"name"`
+	SkipDisableOnDestroy *bool   `pulumi:"skipDisableOnDestroy"`
+	Type                 *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a Project resource.
 type ProjectArgs struct {
-	// Specifies the description of the enterprise project.
-	Description pulumi.StringPtrInput
-	// Specifies whether to enable the enterprise project. Default to *true*.
-	Enable pulumi.BoolPtrInput
-	// Specifies the name of the enterprise project.
-	// This parameter can contain 1 to 64 characters. Only letters, digits, underscores (_), and hyphens (-) are allowed.
-	// The name must be unique in the domain and cannot include any form of the word "default" ("deFaulT", for instance).
-	Name pulumi.StringPtrInput
-	// Specifies whether to skip disable the enterprise project on destroy.
-	// Defaults to **false**.
+	Description          pulumi.StringPtrInput
+	Enable               pulumi.BoolPtrInput
+	Name                 pulumi.StringPtrInput
 	SkipDisableOnDestroy pulumi.BoolPtrInput
-	// Specifies the type of the enterprise project.
-	// The valid values are *poc* and *prod*, default to *prod*.
-	Type pulumi.StringPtrInput
+	Type                 pulumi.StringPtrInput
 }
 
 func (ProjectArgs) ElementType() reflect.Type {
@@ -283,48 +183,34 @@ func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOu
 	return o
 }
 
-// Indicates the time (UTC) when the enterprise project was created. Example: 2018-05-18T06:49:06Z
 func (o ProjectOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Specifies the description of the enterprise project.
 func (o ProjectOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to enable the enterprise project. Default to *true*.
 func (o ProjectOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the name of the enterprise project.
-// This parameter can contain 1 to 64 characters. Only letters, digits, underscores (_), and hyphens (-) are allowed.
-// The name must be unique in the domain and cannot include any form of the word "default" ("deFaulT", for instance).
 func (o ProjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies whether to skip disable the enterprise project on destroy.
-// Defaults to **false**.
 func (o ProjectOutput) SkipDisableOnDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.SkipDisableOnDestroy }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates the status of an enterprise project.
-// + 1 indicates Enabled.
-// + 2 indicates Disabled.
 func (o ProjectOutput) Status() pulumi.IntOutput {
 	return o.ApplyT(func(v *Project) pulumi.IntOutput { return v.Status }).(pulumi.IntOutput)
 }
 
-// Specifies the type of the enterprise project.
-// The valid values are *poc* and *prod*, default to *prod*.
 func (o ProjectOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Indicates the time (UTC) when the enterprise project was modified. Example: 2018-05-28T02:21:36Z
 func (o ProjectOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }

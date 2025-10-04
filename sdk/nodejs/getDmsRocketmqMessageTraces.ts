@@ -6,9 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get the list of RocketMQ message traces.
- */
 export function getDmsRocketmqMessageTraces(args: GetDmsRocketmqMessageTracesArgs, opts?: pulumi.InvokeOptions): Promise<GetDmsRocketmqMessageTracesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:index/getDmsRocketmqMessageTraces:getDmsRocketmqMessageTraces", {
@@ -22,18 +19,8 @@ export function getDmsRocketmqMessageTraces(args: GetDmsRocketmqMessageTracesArg
  * A collection of arguments for invoking getDmsRocketmqMessageTraces.
  */
 export interface GetDmsRocketmqMessageTracesArgs {
-    /**
-     * Specifies the instance ID.
-     */
     instanceId: string;
-    /**
-     * Specifies the message ID.
-     */
     messageId: string;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
 }
 
@@ -46,19 +33,10 @@ export interface GetDmsRocketmqMessageTracesResult {
      */
     readonly id: string;
     readonly instanceId: string;
-    /**
-     * Specifies the message ID.
-     */
     readonly messageId: string;
     readonly region: string;
-    /**
-     * Specifies the message trace list.
-     */
     readonly traces: outputs.GetDmsRocketmqMessageTracesTrace[];
 }
-/**
- * Use this data source to get the list of RocketMQ message traces.
- */
 export function getDmsRocketmqMessageTracesOutput(args: GetDmsRocketmqMessageTracesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDmsRocketmqMessageTracesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:index/getDmsRocketmqMessageTraces:getDmsRocketmqMessageTraces", {
@@ -72,17 +50,7 @@ export function getDmsRocketmqMessageTracesOutput(args: GetDmsRocketmqMessageTra
  * A collection of arguments for invoking getDmsRocketmqMessageTraces.
  */
 export interface GetDmsRocketmqMessageTracesOutputArgs {
-    /**
-     * Specifies the instance ID.
-     */
     instanceId: pulumi.Input<string>;
-    /**
-     * Specifies the message ID.
-     */
     messageId: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
 }

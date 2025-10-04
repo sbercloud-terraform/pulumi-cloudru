@@ -56,18 +56,11 @@ class GetFgsFunctionsResult:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[_builtins.str]:
-        """
-        The enterprise project ID to which the function belongs.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
     @pulumi.getter
     def functions(self) -> Sequence['outputs.GetFgsFunctionsFunctionResult']:
-        """
-        All functions that match the filter parameters.  
-        The functions structure is documented below.
-        """
         return pulumi.get(self, "functions")
 
     @_builtins.property
@@ -81,9 +74,6 @@ class GetFgsFunctionsResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        The function name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -99,17 +89,11 @@ class GetFgsFunctionsResult:
     @_builtins.property
     @pulumi.getter
     def runtime(self) -> Optional[_builtins.str]:
-        """
-        The dependency package runtime of the function.
-        """
         return pulumi.get(self, "runtime")
 
     @_builtins.property
     @pulumi.getter
     def urn(self) -> Optional[_builtins.str]:
-        """
-        The function URN.
-        """
         return pulumi.get(self, "urn")
 
 
@@ -137,58 +121,7 @@ def get_fgs_functions(enterprise_project_id: Optional[_builtins.str] = None,
                       urn: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFgsFunctionsResult:
     """
-    Use this data source to filter FGS functions within SberCloud.
-
-    ## Example Usage
-
-    ### Obtain all public functions
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.get_fgs_functions()
-    ```
-
-    ### Obtain specific public function by package name
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.get_fgs_functions(package_name="default")
-    ```
-
-
-    :param _builtins.str enterprise_project_id: Specifies the ID of the enterprise project to which the functions belong.
-    :param _builtins.str name: Specifies the function name used to query the specified function.
-    :param _builtins.str package_name: Specifies the package name used to query the functions.
-    :param _builtins.str region: Specifies the region in which to obtain the functions.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str runtime: Specifies the dependency package runtime used to query the functions.  
-           The valid values are as follows:
-           + **Java8**
-           + **Java11**
-           + **Node.js6.10**
-           + **Node.js8.10**
-           + **Node.js10.16**
-           + **Node.js12.13**
-           + **Node.js14.18**
-           + **Node.js16.17**
-           + **Node.js18.15**
-           + **Python2.7**
-           + **Python3.6**
-           + **Python3.9**
-           + **Python3.10**
-           + **Go1.x**
-           + **C#(.NET Core 2.1)**
-           + **C#(.NET Core 3.1)**
-           + **Custom**
-           + **PHP7.3**
-           + **http**
-           + **Custom Image**
-           + **Cangjie1.0**
-    :param _builtins.str urn: Specifies the function URN used to query the specified function.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['enterpriseProjectId'] = enterprise_project_id
@@ -217,58 +150,7 @@ def get_fgs_functions_output(enterprise_project_id: Optional[pulumi.Input[Option
                              urn: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFgsFunctionsResult]:
     """
-    Use this data source to filter FGS functions within SberCloud.
-
-    ## Example Usage
-
-    ### Obtain all public functions
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.get_fgs_functions()
-    ```
-
-    ### Obtain specific public function by package name
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.get_fgs_functions(package_name="default")
-    ```
-
-
-    :param _builtins.str enterprise_project_id: Specifies the ID of the enterprise project to which the functions belong.
-    :param _builtins.str name: Specifies the function name used to query the specified function.
-    :param _builtins.str package_name: Specifies the package name used to query the functions.
-    :param _builtins.str region: Specifies the region in which to obtain the functions.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str runtime: Specifies the dependency package runtime used to query the functions.  
-           The valid values are as follows:
-           + **Java8**
-           + **Java11**
-           + **Node.js6.10**
-           + **Node.js8.10**
-           + **Node.js10.16**
-           + **Node.js12.13**
-           + **Node.js14.18**
-           + **Node.js16.17**
-           + **Node.js18.15**
-           + **Python2.7**
-           + **Python3.6**
-           + **Python3.9**
-           + **Python3.10**
-           + **Go1.x**
-           + **C#(.NET Core 2.1)**
-           + **C#(.NET Core 3.1)**
-           + **Custom**
-           + **PHP7.3**
-           + **http**
-           + **Custom Image**
-           + **Cangjie1.0**
-    :param _builtins.str urn: Specifies the function URN used to query the specified function.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['enterpriseProjectId'] = enterprise_project_id

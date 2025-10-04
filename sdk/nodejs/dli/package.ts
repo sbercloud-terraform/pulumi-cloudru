@@ -4,27 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages DLI package resource within SberCloud
- *
- * ## Example Usage
- *
- * ### Upload the specified python script as a resource package
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const groupName = config.requireObject<any>("groupName");
- * const accessDomainName = config.requireObject<any>("accessDomainName");
- * const queue = new sbercloud.dli.Package("queue", {
- *     groupName: groupName,
- *     objectPath: `https://${accessDomainName}/dli/packages/object_file.py`,
- *     type: "pyFile",
- * });
- * ```
- */
 export class Package extends pulumi.CustomResource {
     /**
      * Get an existing Package resource's state with the given name, ID, and optional extra
@@ -53,56 +32,16 @@ export class Package extends pulumi.CustomResource {
         return obj['__pulumiType'] === Package.__pulumiType;
     }
 
-    /**
-     * Time when a queue is created.
-     */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
-    /**
-     * Specifies the group name which the package belongs to.
-     * Changing this parameter will delete the current package and upload a new package.
-     */
     declare public readonly groupName: pulumi.Output<string | undefined>;
-    /**
-     * Specifies whether to upload resource packages in asynchronous mode.
-     * The default value is **false**. Changing this parameter will delete the current package and upload a new package.
-     */
     declare public readonly isAsync: pulumi.Output<boolean>;
-    /**
-     * The package name.
-     */
     declare public /*out*/ readonly objectName: pulumi.Output<string>;
-    /**
-     * Specifies the OBS storage path where the package is located.
-     * Changing this parameter will delete the current package and upload a new package.
-     */
     declare public readonly objectPath: pulumi.Output<string>;
-    /**
-     * Specifies the name of the package owner. The owner must be IAM user.
-     */
     declare public readonly owner: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to upload packages.
-     * If omitted, the provider-level region will be used.
-     * Changing this parameter will delete the current package and upload a new package.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Status of a package group to be uploaded.
-     */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * Specifies the package type.
-     * + **jar**: `.jar` or jar related files.
-     * + **pyFile**: `.py` or python related files.
-     * + **file**: Other user files.
-     *
-     * Changing this parameter will delete the current package and upload a new package.
-     */
     declare public readonly type: pulumi.Output<string>;
-    /**
-     * The last time when the package configuration update has complated.
-     */
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
@@ -158,56 +97,16 @@ export class Package extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Package resources.
  */
 export interface PackageState {
-    /**
-     * Time when a queue is created.
-     */
     createdAt?: pulumi.Input<string>;
-    /**
-     * Specifies the group name which the package belongs to.
-     * Changing this parameter will delete the current package and upload a new package.
-     */
     groupName?: pulumi.Input<string>;
-    /**
-     * Specifies whether to upload resource packages in asynchronous mode.
-     * The default value is **false**. Changing this parameter will delete the current package and upload a new package.
-     */
     isAsync?: pulumi.Input<boolean>;
-    /**
-     * The package name.
-     */
     objectName?: pulumi.Input<string>;
-    /**
-     * Specifies the OBS storage path where the package is located.
-     * Changing this parameter will delete the current package and upload a new package.
-     */
     objectPath?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the package owner. The owner must be IAM user.
-     */
     owner?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to upload packages.
-     * If omitted, the provider-level region will be used.
-     * Changing this parameter will delete the current package and upload a new package.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Status of a package group to be uploaded.
-     */
     status?: pulumi.Input<string>;
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies the package type.
-     * + **jar**: `.jar` or jar related files.
-     * + **pyFile**: `.py` or python related files.
-     * + **file**: Other user files.
-     *
-     * Changing this parameter will delete the current package and upload a new package.
-     */
     type?: pulumi.Input<string>;
-    /**
-     * The last time when the package configuration update has complated.
-     */
     updatedAt?: pulumi.Input<string>;
 }
 
@@ -215,39 +114,11 @@ export interface PackageState {
  * The set of arguments for constructing a Package resource.
  */
 export interface PackageArgs {
-    /**
-     * Specifies the group name which the package belongs to.
-     * Changing this parameter will delete the current package and upload a new package.
-     */
     groupName?: pulumi.Input<string>;
-    /**
-     * Specifies whether to upload resource packages in asynchronous mode.
-     * The default value is **false**. Changing this parameter will delete the current package and upload a new package.
-     */
     isAsync?: pulumi.Input<boolean>;
-    /**
-     * Specifies the OBS storage path where the package is located.
-     * Changing this parameter will delete the current package and upload a new package.
-     */
     objectPath: pulumi.Input<string>;
-    /**
-     * Specifies the name of the package owner. The owner must be IAM user.
-     */
     owner?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to upload packages.
-     * If omitted, the provider-level region will be used.
-     * Changing this parameter will delete the current package and upload a new package.
-     */
     region?: pulumi.Input<string>;
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies the package type.
-     * + **jar**: `.jar` or jar related files.
-     * + **pyFile**: `.py` or python related files.
-     * + **file**: Other user files.
-     *
-     * Changing this parameter will delete the current package and upload a new package.
-     */
     type: pulumi.Input<string>;
 }

@@ -84,9 +84,6 @@ class GetLoadbalancerResult:
     @_builtins.property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> _builtins.str:
-        """
-        The EIP address that is associated to the Load Balancer instance.
-        """
         return pulumi.get(self, "public_ip")
 
     @_builtins.property
@@ -102,9 +99,6 @@ class GetLoadbalancerResult:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Mapping[str, _builtins.str]:
-        """
-        The tags associated with the load balancer.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
@@ -115,9 +109,6 @@ class GetLoadbalancerResult:
     @_builtins.property
     @pulumi.getter(name="vipPortId")
     def vip_port_id(self) -> _builtins.str:
-        """
-        The ID of the port bound to the private IP address of the load balancer.
-        """
         return pulumi.get(self, "vip_port_id")
 
     @_builtins.property
@@ -155,30 +146,7 @@ def get_loadbalancer(description: Optional[_builtins.str] = None,
                      vip_subnet_id: Optional[_builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLoadbalancerResult:
     """
-    Use this data source to get available SberCloud elb load balancer.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    lb_name = config.require_object("lbName")
-    test = sbercloud.Elb.get_loadbalancer(name=lb_name)
-    ```
-
-
-    :param _builtins.str description: Specifies the supplementary information about the load balancer.
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project id of the load balancer.
-    :param _builtins.str id: Specifies the data source ID of the load balancer in UUID format.
-    :param _builtins.str name: Specifies the name of the load balancer.
-    :param _builtins.str region: Specifies the region in which to obtain the load balancer. If omitted, the
-           provider-level region will be used.
-    :param _builtins.str status: Specifies the operating status of the load balancer. Valid values are *ONLINE* and
-           *FROZEN*.
-    :param _builtins.str vip_address: Specifies the private IP address of the load balancer.
-    :param _builtins.str vip_subnet_id: Specifies the **IPv4 subnet ID** of the subnet where the load balancer works.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['description'] = description
@@ -214,30 +182,7 @@ def get_loadbalancer_output(description: Optional[pulumi.Input[Optional[_builtin
                             vip_subnet_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLoadbalancerResult]:
     """
-    Use this data source to get available SberCloud elb load balancer.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    lb_name = config.require_object("lbName")
-    test = sbercloud.Elb.get_loadbalancer(name=lb_name)
-    ```
-
-
-    :param _builtins.str description: Specifies the supplementary information about the load balancer.
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project id of the load balancer.
-    :param _builtins.str id: Specifies the data source ID of the load balancer in UUID format.
-    :param _builtins.str name: Specifies the name of the load balancer.
-    :param _builtins.str region: Specifies the region in which to obtain the load balancer. If omitted, the
-           provider-level region will be used.
-    :param _builtins.str status: Specifies the operating status of the load balancer. Valid values are *ONLINE* and
-           *FROZEN*.
-    :param _builtins.str vip_address: Specifies the private IP address of the load balancer.
-    :param _builtins.str vip_subnet_id: Specifies the **IPv4 subnet ID** of the subnet where the load balancer works.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['description'] = description

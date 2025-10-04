@@ -4,33 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this resource to accept or reject the shared attachment within SberCloud.
- *
- * > This resource is only a one-time action resource for operating the attachment. Deleting this resource
- *    will not clear the corresponding request record, but will only remove the resource information from the tfstate file.
- *
- * Before using enterprise router, define custom endpoint as shown below:
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const attachmentId = config.requireObject<any>("attachmentId");
- * const test = new sbercloud.er.AttachmentAccepter("test", {
- *     instanceId: instanceId,
- *     attachmentId: attachmentId,
- *     action: "accept",
- * });
- * ```
- */
 export class AttachmentAccepter extends pulumi.CustomResource {
     /**
      * Get an existing AttachmentAccepter resource's state with the given name, ID, and optional extra
@@ -60,25 +33,17 @@ export class AttachmentAccepter extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies the action type.  
-     * The valid values are as follows:
-     * + **accept**
-     * + **reject**
+     * The action type.
      */
     declare public readonly action: pulumi.Output<string>;
     /**
-     * Specifies the ID of the attachment to be accept or reject.
+     * The ID of the attachment to be action.
      */
     declare public readonly attachmentId: pulumi.Output<string>;
     /**
-     * Specifies the ID of the shared ER instance.
+     * The ID of the ER instance.
      */
     declare public readonly instanceId: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
 
     /**
@@ -124,25 +89,17 @@ export class AttachmentAccepter extends pulumi.CustomResource {
  */
 export interface AttachmentAccepterState {
     /**
-     * Specifies the action type.  
-     * The valid values are as follows:
-     * + **accept**
-     * + **reject**
+     * The action type.
      */
     action?: pulumi.Input<string>;
     /**
-     * Specifies the ID of the attachment to be accept or reject.
+     * The ID of the attachment to be action.
      */
     attachmentId?: pulumi.Input<string>;
     /**
-     * Specifies the ID of the shared ER instance.
+     * The ID of the ER instance.
      */
     instanceId?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
 }
 
@@ -151,24 +108,16 @@ export interface AttachmentAccepterState {
  */
 export interface AttachmentAccepterArgs {
     /**
-     * Specifies the action type.  
-     * The valid values are as follows:
-     * + **accept**
-     * + **reject**
+     * The action type.
      */
     action: pulumi.Input<string>;
     /**
-     * Specifies the ID of the attachment to be accept or reject.
+     * The ID of the attachment to be action.
      */
     attachmentId: pulumi.Input<string>;
     /**
-     * Specifies the ID of the shared ER instance.
+     * The ID of the ER instance.
      */
     instanceId: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
 }

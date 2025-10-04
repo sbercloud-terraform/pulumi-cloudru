@@ -51,9 +51,6 @@ class GetAvailabilityZonesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
-        """
-        The names of the availability zones, ordered alphanumerically, that match the queried `state`
-        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -83,22 +80,7 @@ def get_availability_zones(region: Optional[_builtins.str] = None,
                            state: Optional[_builtins.str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAvailabilityZonesResult:
     """
-    ## # sbercloud\\_availability\\_zones
-
-    Use this data source to get a list of availability zones from Sbercloud
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    zones = sbercloud.get_availability_zones()
-    ```
-
-
-    :param _builtins.str region: The region in which to obtain the available zones. If omitted, the provider-level region will be used.
-    :param _builtins.str state: The `state` of the availability zones to match, default ("available").
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['region'] = region
@@ -115,22 +97,7 @@ def get_availability_zones_output(region: Optional[pulumi.Input[Optional[_builti
                                   state: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAvailabilityZonesResult]:
     """
-    ## # sbercloud\\_availability\\_zones
-
-    Use this data source to get a list of availability zones from Sbercloud
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    zones = sbercloud.get_availability_zones()
-    ```
-
-
-    :param _builtins.str region: The region in which to obtain the available zones. If omitted, the provider-level region will be used.
-    :param _builtins.str state: The `state` of the availability zones to match, default ("available").
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['region'] = region

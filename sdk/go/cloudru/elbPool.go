@@ -12,97 +12,35 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages an ELB pool resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sbercloud.NewElbPool(ctx, "pool_1", &sbercloud.ElbPoolArgs{
-//				Protocol:   pulumi.String("HTTP"),
-//				LbMethod:   pulumi.String("ROUND_ROBIN"),
-//				ListenerId: pulumi.String("{{ listener_id }}"),
-//				Persistence: &cloudru.ElbPoolPersistenceArgs{
-//					Type:       pulumi.String("HTTP_COOKIE"),
-//					CookieName: pulumi.String("testCookie"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// ELB pool can be imported using the pool ID, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:index/elbPool:ElbPool pool_1 5c20fdad-7288-11eb-b817-0255ac10158b
-// ```
 type ElbPool struct {
 	pulumi.CustomResourceState
 
-	AnyPortEnable            pulumi.BoolOutput    `pulumi:"anyPortEnable"`
-	ConnectionDrainEnabled   pulumi.BoolOutput    `pulumi:"connectionDrainEnabled"`
-	ConnectionDrainTimeout   pulumi.IntOutput     `pulumi:"connectionDrainTimeout"`
-	CreatedAt                pulumi.StringOutput  `pulumi:"createdAt"`
-	DeletionProtectionEnable pulumi.BoolPtrOutput `pulumi:"deletionProtectionEnable"`
-	// Human-readable description for the pool.
-	Description         pulumi.StringPtrOutput `pulumi:"description"`
-	EnableForceNew      pulumi.StringPtrOutput `pulumi:"enableForceNew"`
-	EnterpriseProjectId pulumi.StringOutput    `pulumi:"enterpriseProjectId"`
-	IpVersion           pulumi.StringOutput    `pulumi:"ipVersion"`
-	// The load balancing algorithm to distribute traffic to the pool's members. Must be one
-	// of ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
-	LbMethod pulumi.StringOutput `pulumi:"lbMethod"`
-	// The Listener on which the members of the pool will be associated with.
-	// Changing this creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
-	ListenerId pulumi.StringOutput `pulumi:"listenerId"`
-	// The load balancer on which to provision this pool. Changing this
-	// creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
-	LoadbalancerId            pulumi.StringOutput `pulumi:"loadbalancerId"`
-	MinimumHealthyMemberCount pulumi.IntOutput    `pulumi:"minimumHealthyMemberCount"`
-	MonitorId                 pulumi.StringOutput `pulumi:"monitorId"`
-	// Human-readable name for the pool.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Omit this field to prevent session persistence. Indicates whether
-	// connections in the same session will be processed by the same Pool member or not. Changing this creates a new pool.
-	Persistence      ElbPoolPersistencePtrOutput `pulumi:"persistence"`
-	ProtectionReason pulumi.StringPtrOutput      `pulumi:"protectionReason"`
-	ProtectionStatus pulumi.StringOutput         `pulumi:"protectionStatus"`
-	// The protocol - can either be TCP, UDP, HTTP, HTTPS or QUIC.
-	//
-	// + When the protocol used by the listener is UDP, the protocol of the backend pool must be UDP or QUIC.
-	// + When the protocol used by the listener is TCP, the protocol of the backend pool must be TCP.
-	// + When the protocol used by the listener is HTTP, the protocol of the backend pool must be HTTP.
-	// + When the protocol used by the listener is HTTPS, the protocol of the backend pool must be HTTPS.
-	// + When the protocol used by the listener is TERMINATED_HTTPS, the protocol of the backend pool must be HTTP.
-	//
-	// Changing this creates a new pool.
-	Protocol          pulumi.StringOutput `pulumi:"protocol"`
-	PublicBorderGroup pulumi.StringOutput `pulumi:"publicBorderGroup"`
-	// The region in which to create the ELB pool resource. If omitted, the the
-	// provider-level region will be used. Changing this creates a new pool.
-	Region            pulumi.StringOutput `pulumi:"region"`
-	SlowStartDuration pulumi.IntOutput    `pulumi:"slowStartDuration"`
-	SlowStartEnabled  pulumi.BoolOutput   `pulumi:"slowStartEnabled"`
-	Type              pulumi.StringOutput `pulumi:"type"`
-	UpdatedAt         pulumi.StringOutput `pulumi:"updatedAt"`
-	VpcId             pulumi.StringOutput `pulumi:"vpcId"`
+	AnyPortEnable             pulumi.BoolOutput           `pulumi:"anyPortEnable"`
+	ConnectionDrainEnabled    pulumi.BoolOutput           `pulumi:"connectionDrainEnabled"`
+	ConnectionDrainTimeout    pulumi.IntOutput            `pulumi:"connectionDrainTimeout"`
+	CreatedAt                 pulumi.StringOutput         `pulumi:"createdAt"`
+	DeletionProtectionEnable  pulumi.BoolPtrOutput        `pulumi:"deletionProtectionEnable"`
+	Description               pulumi.StringPtrOutput      `pulumi:"description"`
+	EnableForceNew            pulumi.StringPtrOutput      `pulumi:"enableForceNew"`
+	EnterpriseProjectId       pulumi.StringOutput         `pulumi:"enterpriseProjectId"`
+	IpVersion                 pulumi.StringOutput         `pulumi:"ipVersion"`
+	LbMethod                  pulumi.StringOutput         `pulumi:"lbMethod"`
+	ListenerId                pulumi.StringOutput         `pulumi:"listenerId"`
+	LoadbalancerId            pulumi.StringOutput         `pulumi:"loadbalancerId"`
+	MinimumHealthyMemberCount pulumi.IntOutput            `pulumi:"minimumHealthyMemberCount"`
+	MonitorId                 pulumi.StringOutput         `pulumi:"monitorId"`
+	Name                      pulumi.StringOutput         `pulumi:"name"`
+	Persistence               ElbPoolPersistencePtrOutput `pulumi:"persistence"`
+	ProtectionReason          pulumi.StringPtrOutput      `pulumi:"protectionReason"`
+	ProtectionStatus          pulumi.StringOutput         `pulumi:"protectionStatus"`
+	Protocol                  pulumi.StringOutput         `pulumi:"protocol"`
+	PublicBorderGroup         pulumi.StringOutput         `pulumi:"publicBorderGroup"`
+	Region                    pulumi.StringOutput         `pulumi:"region"`
+	SlowStartDuration         pulumi.IntOutput            `pulumi:"slowStartDuration"`
+	SlowStartEnabled          pulumi.BoolOutput           `pulumi:"slowStartEnabled"`
+	Type                      pulumi.StringOutput         `pulumi:"type"`
+	UpdatedAt                 pulumi.StringOutput         `pulumi:"updatedAt"`
+	VpcId                     pulumi.StringOutput         `pulumi:"vpcId"`
 }
 
 // NewElbPool registers a new resource with the given unique name, arguments, and options.
@@ -141,103 +79,61 @@ func GetElbPool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ElbPool resources.
 type elbPoolState struct {
-	AnyPortEnable            *bool   `pulumi:"anyPortEnable"`
-	ConnectionDrainEnabled   *bool   `pulumi:"connectionDrainEnabled"`
-	ConnectionDrainTimeout   *int    `pulumi:"connectionDrainTimeout"`
-	CreatedAt                *string `pulumi:"createdAt"`
-	DeletionProtectionEnable *bool   `pulumi:"deletionProtectionEnable"`
-	// Human-readable description for the pool.
-	Description         *string `pulumi:"description"`
-	EnableForceNew      *string `pulumi:"enableForceNew"`
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	IpVersion           *string `pulumi:"ipVersion"`
-	// The load balancing algorithm to distribute traffic to the pool's members. Must be one
-	// of ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
-	LbMethod *string `pulumi:"lbMethod"`
-	// The Listener on which the members of the pool will be associated with.
-	// Changing this creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
-	ListenerId *string `pulumi:"listenerId"`
-	// The load balancer on which to provision this pool. Changing this
-	// creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
-	LoadbalancerId            *string `pulumi:"loadbalancerId"`
-	MinimumHealthyMemberCount *int    `pulumi:"minimumHealthyMemberCount"`
-	MonitorId                 *string `pulumi:"monitorId"`
-	// Human-readable name for the pool.
-	Name *string `pulumi:"name"`
-	// Omit this field to prevent session persistence. Indicates whether
-	// connections in the same session will be processed by the same Pool member or not. Changing this creates a new pool.
-	Persistence      *ElbPoolPersistence `pulumi:"persistence"`
-	ProtectionReason *string             `pulumi:"protectionReason"`
-	ProtectionStatus *string             `pulumi:"protectionStatus"`
-	// The protocol - can either be TCP, UDP, HTTP, HTTPS or QUIC.
-	//
-	// + When the protocol used by the listener is UDP, the protocol of the backend pool must be UDP or QUIC.
-	// + When the protocol used by the listener is TCP, the protocol of the backend pool must be TCP.
-	// + When the protocol used by the listener is HTTP, the protocol of the backend pool must be HTTP.
-	// + When the protocol used by the listener is HTTPS, the protocol of the backend pool must be HTTPS.
-	// + When the protocol used by the listener is TERMINATED_HTTPS, the protocol of the backend pool must be HTTP.
-	//
-	// Changing this creates a new pool.
-	Protocol          *string `pulumi:"protocol"`
-	PublicBorderGroup *string `pulumi:"publicBorderGroup"`
-	// The region in which to create the ELB pool resource. If omitted, the the
-	// provider-level region will be used. Changing this creates a new pool.
-	Region            *string `pulumi:"region"`
-	SlowStartDuration *int    `pulumi:"slowStartDuration"`
-	SlowStartEnabled  *bool   `pulumi:"slowStartEnabled"`
-	Type              *string `pulumi:"type"`
-	UpdatedAt         *string `pulumi:"updatedAt"`
-	VpcId             *string `pulumi:"vpcId"`
+	AnyPortEnable             *bool               `pulumi:"anyPortEnable"`
+	ConnectionDrainEnabled    *bool               `pulumi:"connectionDrainEnabled"`
+	ConnectionDrainTimeout    *int                `pulumi:"connectionDrainTimeout"`
+	CreatedAt                 *string             `pulumi:"createdAt"`
+	DeletionProtectionEnable  *bool               `pulumi:"deletionProtectionEnable"`
+	Description               *string             `pulumi:"description"`
+	EnableForceNew            *string             `pulumi:"enableForceNew"`
+	EnterpriseProjectId       *string             `pulumi:"enterpriseProjectId"`
+	IpVersion                 *string             `pulumi:"ipVersion"`
+	LbMethod                  *string             `pulumi:"lbMethod"`
+	ListenerId                *string             `pulumi:"listenerId"`
+	LoadbalancerId            *string             `pulumi:"loadbalancerId"`
+	MinimumHealthyMemberCount *int                `pulumi:"minimumHealthyMemberCount"`
+	MonitorId                 *string             `pulumi:"monitorId"`
+	Name                      *string             `pulumi:"name"`
+	Persistence               *ElbPoolPersistence `pulumi:"persistence"`
+	ProtectionReason          *string             `pulumi:"protectionReason"`
+	ProtectionStatus          *string             `pulumi:"protectionStatus"`
+	Protocol                  *string             `pulumi:"protocol"`
+	PublicBorderGroup         *string             `pulumi:"publicBorderGroup"`
+	Region                    *string             `pulumi:"region"`
+	SlowStartDuration         *int                `pulumi:"slowStartDuration"`
+	SlowStartEnabled          *bool               `pulumi:"slowStartEnabled"`
+	Type                      *string             `pulumi:"type"`
+	UpdatedAt                 *string             `pulumi:"updatedAt"`
+	VpcId                     *string             `pulumi:"vpcId"`
 }
 
 type ElbPoolState struct {
-	AnyPortEnable            pulumi.BoolPtrInput
-	ConnectionDrainEnabled   pulumi.BoolPtrInput
-	ConnectionDrainTimeout   pulumi.IntPtrInput
-	CreatedAt                pulumi.StringPtrInput
-	DeletionProtectionEnable pulumi.BoolPtrInput
-	// Human-readable description for the pool.
-	Description         pulumi.StringPtrInput
-	EnableForceNew      pulumi.StringPtrInput
-	EnterpriseProjectId pulumi.StringPtrInput
-	IpVersion           pulumi.StringPtrInput
-	// The load balancing algorithm to distribute traffic to the pool's members. Must be one
-	// of ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
-	LbMethod pulumi.StringPtrInput
-	// The Listener on which the members of the pool will be associated with.
-	// Changing this creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
-	ListenerId pulumi.StringPtrInput
-	// The load balancer on which to provision this pool. Changing this
-	// creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
+	AnyPortEnable             pulumi.BoolPtrInput
+	ConnectionDrainEnabled    pulumi.BoolPtrInput
+	ConnectionDrainTimeout    pulumi.IntPtrInput
+	CreatedAt                 pulumi.StringPtrInput
+	DeletionProtectionEnable  pulumi.BoolPtrInput
+	Description               pulumi.StringPtrInput
+	EnableForceNew            pulumi.StringPtrInput
+	EnterpriseProjectId       pulumi.StringPtrInput
+	IpVersion                 pulumi.StringPtrInput
+	LbMethod                  pulumi.StringPtrInput
+	ListenerId                pulumi.StringPtrInput
 	LoadbalancerId            pulumi.StringPtrInput
 	MinimumHealthyMemberCount pulumi.IntPtrInput
 	MonitorId                 pulumi.StringPtrInput
-	// Human-readable name for the pool.
-	Name pulumi.StringPtrInput
-	// Omit this field to prevent session persistence. Indicates whether
-	// connections in the same session will be processed by the same Pool member or not. Changing this creates a new pool.
-	Persistence      ElbPoolPersistencePtrInput
-	ProtectionReason pulumi.StringPtrInput
-	ProtectionStatus pulumi.StringPtrInput
-	// The protocol - can either be TCP, UDP, HTTP, HTTPS or QUIC.
-	//
-	// + When the protocol used by the listener is UDP, the protocol of the backend pool must be UDP or QUIC.
-	// + When the protocol used by the listener is TCP, the protocol of the backend pool must be TCP.
-	// + When the protocol used by the listener is HTTP, the protocol of the backend pool must be HTTP.
-	// + When the protocol used by the listener is HTTPS, the protocol of the backend pool must be HTTPS.
-	// + When the protocol used by the listener is TERMINATED_HTTPS, the protocol of the backend pool must be HTTP.
-	//
-	// Changing this creates a new pool.
-	Protocol          pulumi.StringPtrInput
-	PublicBorderGroup pulumi.StringPtrInput
-	// The region in which to create the ELB pool resource. If omitted, the the
-	// provider-level region will be used. Changing this creates a new pool.
-	Region            pulumi.StringPtrInput
-	SlowStartDuration pulumi.IntPtrInput
-	SlowStartEnabled  pulumi.BoolPtrInput
-	Type              pulumi.StringPtrInput
-	UpdatedAt         pulumi.StringPtrInput
-	VpcId             pulumi.StringPtrInput
+	Name                      pulumi.StringPtrInput
+	Persistence               ElbPoolPersistencePtrInput
+	ProtectionReason          pulumi.StringPtrInput
+	ProtectionStatus          pulumi.StringPtrInput
+	Protocol                  pulumi.StringPtrInput
+	PublicBorderGroup         pulumi.StringPtrInput
+	Region                    pulumi.StringPtrInput
+	SlowStartDuration         pulumi.IntPtrInput
+	SlowStartEnabled          pulumi.BoolPtrInput
+	Type                      pulumi.StringPtrInput
+	UpdatedAt                 pulumi.StringPtrInput
+	VpcId                     pulumi.StringPtrInput
 }
 
 func (ElbPoolState) ElementType() reflect.Type {
@@ -245,96 +141,54 @@ func (ElbPoolState) ElementType() reflect.Type {
 }
 
 type elbPoolArgs struct {
-	AnyPortEnable            *bool `pulumi:"anyPortEnable"`
-	ConnectionDrainEnabled   *bool `pulumi:"connectionDrainEnabled"`
-	ConnectionDrainTimeout   *int  `pulumi:"connectionDrainTimeout"`
-	DeletionProtectionEnable *bool `pulumi:"deletionProtectionEnable"`
-	// Human-readable description for the pool.
-	Description    *string `pulumi:"description"`
-	EnableForceNew *string `pulumi:"enableForceNew"`
-	IpVersion      *string `pulumi:"ipVersion"`
-	// The load balancing algorithm to distribute traffic to the pool's members. Must be one
-	// of ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
-	LbMethod string `pulumi:"lbMethod"`
-	// The Listener on which the members of the pool will be associated with.
-	// Changing this creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
-	ListenerId *string `pulumi:"listenerId"`
-	// The load balancer on which to provision this pool. Changing this
-	// creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
-	LoadbalancerId            *string `pulumi:"loadbalancerId"`
-	MinimumHealthyMemberCount *int    `pulumi:"minimumHealthyMemberCount"`
-	// Human-readable name for the pool.
-	Name *string `pulumi:"name"`
-	// Omit this field to prevent session persistence. Indicates whether
-	// connections in the same session will be processed by the same Pool member or not. Changing this creates a new pool.
-	Persistence      *ElbPoolPersistence `pulumi:"persistence"`
-	ProtectionReason *string             `pulumi:"protectionReason"`
-	ProtectionStatus *string             `pulumi:"protectionStatus"`
-	// The protocol - can either be TCP, UDP, HTTP, HTTPS or QUIC.
-	//
-	// + When the protocol used by the listener is UDP, the protocol of the backend pool must be UDP or QUIC.
-	// + When the protocol used by the listener is TCP, the protocol of the backend pool must be TCP.
-	// + When the protocol used by the listener is HTTP, the protocol of the backend pool must be HTTP.
-	// + When the protocol used by the listener is HTTPS, the protocol of the backend pool must be HTTPS.
-	// + When the protocol used by the listener is TERMINATED_HTTPS, the protocol of the backend pool must be HTTP.
-	//
-	// Changing this creates a new pool.
-	Protocol          string  `pulumi:"protocol"`
-	PublicBorderGroup *string `pulumi:"publicBorderGroup"`
-	// The region in which to create the ELB pool resource. If omitted, the the
-	// provider-level region will be used. Changing this creates a new pool.
-	Region            *string `pulumi:"region"`
-	SlowStartDuration *int    `pulumi:"slowStartDuration"`
-	SlowStartEnabled  *bool   `pulumi:"slowStartEnabled"`
-	Type              *string `pulumi:"type"`
-	VpcId             *string `pulumi:"vpcId"`
+	AnyPortEnable             *bool               `pulumi:"anyPortEnable"`
+	ConnectionDrainEnabled    *bool               `pulumi:"connectionDrainEnabled"`
+	ConnectionDrainTimeout    *int                `pulumi:"connectionDrainTimeout"`
+	DeletionProtectionEnable  *bool               `pulumi:"deletionProtectionEnable"`
+	Description               *string             `pulumi:"description"`
+	EnableForceNew            *string             `pulumi:"enableForceNew"`
+	IpVersion                 *string             `pulumi:"ipVersion"`
+	LbMethod                  string              `pulumi:"lbMethod"`
+	ListenerId                *string             `pulumi:"listenerId"`
+	LoadbalancerId            *string             `pulumi:"loadbalancerId"`
+	MinimumHealthyMemberCount *int                `pulumi:"minimumHealthyMemberCount"`
+	Name                      *string             `pulumi:"name"`
+	Persistence               *ElbPoolPersistence `pulumi:"persistence"`
+	ProtectionReason          *string             `pulumi:"protectionReason"`
+	ProtectionStatus          *string             `pulumi:"protectionStatus"`
+	Protocol                  string              `pulumi:"protocol"`
+	PublicBorderGroup         *string             `pulumi:"publicBorderGroup"`
+	Region                    *string             `pulumi:"region"`
+	SlowStartDuration         *int                `pulumi:"slowStartDuration"`
+	SlowStartEnabled          *bool               `pulumi:"slowStartEnabled"`
+	Type                      *string             `pulumi:"type"`
+	VpcId                     *string             `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a ElbPool resource.
 type ElbPoolArgs struct {
-	AnyPortEnable            pulumi.BoolPtrInput
-	ConnectionDrainEnabled   pulumi.BoolPtrInput
-	ConnectionDrainTimeout   pulumi.IntPtrInput
-	DeletionProtectionEnable pulumi.BoolPtrInput
-	// Human-readable description for the pool.
-	Description    pulumi.StringPtrInput
-	EnableForceNew pulumi.StringPtrInput
-	IpVersion      pulumi.StringPtrInput
-	// The load balancing algorithm to distribute traffic to the pool's members. Must be one
-	// of ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
-	LbMethod pulumi.StringInput
-	// The Listener on which the members of the pool will be associated with.
-	// Changing this creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
-	ListenerId pulumi.StringPtrInput
-	// The load balancer on which to provision this pool. Changing this
-	// creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
+	AnyPortEnable             pulumi.BoolPtrInput
+	ConnectionDrainEnabled    pulumi.BoolPtrInput
+	ConnectionDrainTimeout    pulumi.IntPtrInput
+	DeletionProtectionEnable  pulumi.BoolPtrInput
+	Description               pulumi.StringPtrInput
+	EnableForceNew            pulumi.StringPtrInput
+	IpVersion                 pulumi.StringPtrInput
+	LbMethod                  pulumi.StringInput
+	ListenerId                pulumi.StringPtrInput
 	LoadbalancerId            pulumi.StringPtrInput
 	MinimumHealthyMemberCount pulumi.IntPtrInput
-	// Human-readable name for the pool.
-	Name pulumi.StringPtrInput
-	// Omit this field to prevent session persistence. Indicates whether
-	// connections in the same session will be processed by the same Pool member or not. Changing this creates a new pool.
-	Persistence      ElbPoolPersistencePtrInput
-	ProtectionReason pulumi.StringPtrInput
-	ProtectionStatus pulumi.StringPtrInput
-	// The protocol - can either be TCP, UDP, HTTP, HTTPS or QUIC.
-	//
-	// + When the protocol used by the listener is UDP, the protocol of the backend pool must be UDP or QUIC.
-	// + When the protocol used by the listener is TCP, the protocol of the backend pool must be TCP.
-	// + When the protocol used by the listener is HTTP, the protocol of the backend pool must be HTTP.
-	// + When the protocol used by the listener is HTTPS, the protocol of the backend pool must be HTTPS.
-	// + When the protocol used by the listener is TERMINATED_HTTPS, the protocol of the backend pool must be HTTP.
-	//
-	// Changing this creates a new pool.
-	Protocol          pulumi.StringInput
-	PublicBorderGroup pulumi.StringPtrInput
-	// The region in which to create the ELB pool resource. If omitted, the the
-	// provider-level region will be used. Changing this creates a new pool.
-	Region            pulumi.StringPtrInput
-	SlowStartDuration pulumi.IntPtrInput
-	SlowStartEnabled  pulumi.BoolPtrInput
-	Type              pulumi.StringPtrInput
-	VpcId             pulumi.StringPtrInput
+	Name                      pulumi.StringPtrInput
+	Persistence               ElbPoolPersistencePtrInput
+	ProtectionReason          pulumi.StringPtrInput
+	ProtectionStatus          pulumi.StringPtrInput
+	Protocol                  pulumi.StringInput
+	PublicBorderGroup         pulumi.StringPtrInput
+	Region                    pulumi.StringPtrInput
+	SlowStartDuration         pulumi.IntPtrInput
+	SlowStartEnabled          pulumi.BoolPtrInput
+	Type                      pulumi.StringPtrInput
+	VpcId                     pulumi.StringPtrInput
 }
 
 func (ElbPoolArgs) ElementType() reflect.Type {
@@ -444,7 +298,6 @@ func (o ElbPoolOutput) DeletionProtectionEnable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ElbPool) pulumi.BoolPtrOutput { return v.DeletionProtectionEnable }).(pulumi.BoolPtrOutput)
 }
 
-// Human-readable description for the pool.
 func (o ElbPoolOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElbPool) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -461,20 +314,14 @@ func (o ElbPoolOutput) IpVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbPool) pulumi.StringOutput { return v.IpVersion }).(pulumi.StringOutput)
 }
 
-// The load balancing algorithm to distribute traffic to the pool's members. Must be one
-// of ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
 func (o ElbPoolOutput) LbMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbPool) pulumi.StringOutput { return v.LbMethod }).(pulumi.StringOutput)
 }
 
-// The Listener on which the members of the pool will be associated with.
-// Changing this creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
 func (o ElbPoolOutput) ListenerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbPool) pulumi.StringOutput { return v.ListenerId }).(pulumi.StringOutput)
 }
 
-// The load balancer on which to provision this pool. Changing this
-// creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
 func (o ElbPoolOutput) LoadbalancerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbPool) pulumi.StringOutput { return v.LoadbalancerId }).(pulumi.StringOutput)
 }
@@ -487,13 +334,10 @@ func (o ElbPoolOutput) MonitorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbPool) pulumi.StringOutput { return v.MonitorId }).(pulumi.StringOutput)
 }
 
-// Human-readable name for the pool.
 func (o ElbPoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbPool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Omit this field to prevent session persistence. Indicates whether
-// connections in the same session will be processed by the same Pool member or not. Changing this creates a new pool.
 func (o ElbPoolOutput) Persistence() ElbPoolPersistencePtrOutput {
 	return o.ApplyT(func(v *ElbPool) ElbPoolPersistencePtrOutput { return v.Persistence }).(ElbPoolPersistencePtrOutput)
 }
@@ -506,15 +350,6 @@ func (o ElbPoolOutput) ProtectionStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbPool) pulumi.StringOutput { return v.ProtectionStatus }).(pulumi.StringOutput)
 }
 
-// The protocol - can either be TCP, UDP, HTTP, HTTPS or QUIC.
-//
-// + When the protocol used by the listener is UDP, the protocol of the backend pool must be UDP or QUIC.
-// + When the protocol used by the listener is TCP, the protocol of the backend pool must be TCP.
-// + When the protocol used by the listener is HTTP, the protocol of the backend pool must be HTTP.
-// + When the protocol used by the listener is HTTPS, the protocol of the backend pool must be HTTPS.
-// + When the protocol used by the listener is TERMINATED_HTTPS, the protocol of the backend pool must be HTTP.
-//
-// Changing this creates a new pool.
 func (o ElbPoolOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbPool) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
 }
@@ -523,8 +358,6 @@ func (o ElbPoolOutput) PublicBorderGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbPool) pulumi.StringOutput { return v.PublicBorderGroup }).(pulumi.StringOutput)
 }
 
-// The region in which to create the ELB pool resource. If omitted, the the
-// provider-level region will be used. Changing this creates a new pool.
 func (o ElbPoolOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbPool) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

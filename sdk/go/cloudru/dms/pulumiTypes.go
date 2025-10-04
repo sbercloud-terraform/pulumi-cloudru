@@ -14,16 +14,12 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type KafkaInstanceCrossVpcAccess struct {
-	// The advertised IP Address or domain name.
 	AdvertisedIp *string `pulumi:"advertisedIp"`
 	// Deprecated: typo in lisenter_ip, please use "listenerIp" instead.
 	LisenterIp *string `pulumi:"lisenterIp"`
-	// The listener IP address.
 	ListenerIp *string `pulumi:"listenerIp"`
-	// The port number.
-	Port *int `pulumi:"port"`
-	// The port ID associated with the address.
-	PortId *string `pulumi:"portId"`
+	Port       *int    `pulumi:"port"`
+	PortId     *string `pulumi:"portId"`
 }
 
 // KafkaInstanceCrossVpcAccessInput is an input type that accepts KafkaInstanceCrossVpcAccessArgs and KafkaInstanceCrossVpcAccessOutput values.
@@ -38,16 +34,12 @@ type KafkaInstanceCrossVpcAccessInput interface {
 }
 
 type KafkaInstanceCrossVpcAccessArgs struct {
-	// The advertised IP Address or domain name.
 	AdvertisedIp pulumi.StringPtrInput `pulumi:"advertisedIp"`
 	// Deprecated: typo in lisenter_ip, please use "listenerIp" instead.
 	LisenterIp pulumi.StringPtrInput `pulumi:"lisenterIp"`
-	// The listener IP address.
 	ListenerIp pulumi.StringPtrInput `pulumi:"listenerIp"`
-	// The port number.
-	Port pulumi.IntPtrInput `pulumi:"port"`
-	// The port ID associated with the address.
-	PortId pulumi.StringPtrInput `pulumi:"portId"`
+	Port       pulumi.IntPtrInput    `pulumi:"port"`
+	PortId     pulumi.StringPtrInput `pulumi:"portId"`
 }
 
 func (KafkaInstanceCrossVpcAccessArgs) ElementType() reflect.Type {
@@ -101,7 +93,6 @@ func (o KafkaInstanceCrossVpcAccessOutput) ToKafkaInstanceCrossVpcAccessOutputWi
 	return o
 }
 
-// The advertised IP Address or domain name.
 func (o KafkaInstanceCrossVpcAccessOutput) AdvertisedIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaInstanceCrossVpcAccess) *string { return v.AdvertisedIp }).(pulumi.StringPtrOutput)
 }
@@ -111,17 +102,14 @@ func (o KafkaInstanceCrossVpcAccessOutput) LisenterIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaInstanceCrossVpcAccess) *string { return v.LisenterIp }).(pulumi.StringPtrOutput)
 }
 
-// The listener IP address.
 func (o KafkaInstanceCrossVpcAccessOutput) ListenerIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaInstanceCrossVpcAccess) *string { return v.ListenerIp }).(pulumi.StringPtrOutput)
 }
 
-// The port number.
 func (o KafkaInstanceCrossVpcAccessOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v KafkaInstanceCrossVpcAccess) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// The port ID associated with the address.
 func (o KafkaInstanceCrossVpcAccessOutput) PortId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaInstanceCrossVpcAccess) *string { return v.PortId }).(pulumi.StringPtrOutput)
 }
@@ -147,8 +135,6 @@ func (o KafkaInstanceCrossVpcAccessArrayOutput) Index(i pulumi.IntInput) KafkaIn
 }
 
 type KafkaInstanceParameter struct {
-	// Specifies the name of the DMS Kafka instance. An instance name starts with a letter,
-	// consists of 4 to 64 characters, and supports only letters, digits, hyphens (-) and underscores (_).
 	Name  string `pulumi:"name"`
 	Value string `pulumi:"value"`
 }
@@ -165,8 +151,6 @@ type KafkaInstanceParameterInput interface {
 }
 
 type KafkaInstanceParameterArgs struct {
-	// Specifies the name of the DMS Kafka instance. An instance name starts with a letter,
-	// consists of 4 to 64 characters, and supports only letters, digits, hyphens (-) and underscores (_).
 	Name  pulumi.StringInput `pulumi:"name"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
@@ -222,8 +206,6 @@ func (o KafkaInstanceParameterOutput) ToKafkaInstanceParameterOutputWithContext(
 	return o
 }
 
-// Specifies the name of the DMS Kafka instance. An instance name starts with a letter,
-// consists of 4 to 64 characters, and supports only letters, digits, hyphens (-) and underscores (_).
 func (o KafkaInstanceParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v KafkaInstanceParameter) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -449,13 +431,8 @@ func (o KafkaInstancePortProtocolArrayOutput) Index(i pulumi.IntInput) KafkaInst
 }
 
 type KafkaPermissionsPolicy struct {
-	// Specifies the permissions type. The value can be:
-	// + **all**: publish and subscribe permissions.
-	// + **pub**: publish permissions.
-	// + **sub**: subscribe permissions.
 	AccessPolicy string `pulumi:"accessPolicy"`
-	// Specifies the username.
-	UserName string `pulumi:"userName"`
+	UserName     string `pulumi:"userName"`
 }
 
 // KafkaPermissionsPolicyInput is an input type that accepts KafkaPermissionsPolicyArgs and KafkaPermissionsPolicyOutput values.
@@ -470,13 +447,8 @@ type KafkaPermissionsPolicyInput interface {
 }
 
 type KafkaPermissionsPolicyArgs struct {
-	// Specifies the permissions type. The value can be:
-	// + **all**: publish and subscribe permissions.
-	// + **pub**: publish permissions.
-	// + **sub**: subscribe permissions.
 	AccessPolicy pulumi.StringInput `pulumi:"accessPolicy"`
-	// Specifies the username.
-	UserName pulumi.StringInput `pulumi:"userName"`
+	UserName     pulumi.StringInput `pulumi:"userName"`
 }
 
 func (KafkaPermissionsPolicyArgs) ElementType() reflect.Type {
@@ -530,15 +502,10 @@ func (o KafkaPermissionsPolicyOutput) ToKafkaPermissionsPolicyOutputWithContext(
 	return o
 }
 
-// Specifies the permissions type. The value can be:
-// + **all**: publish and subscribe permissions.
-// + **pub**: publish permissions.
-// + **sub**: subscribe permissions.
 func (o KafkaPermissionsPolicyOutput) AccessPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v KafkaPermissionsPolicy) string { return v.AccessPolicy }).(pulumi.StringOutput)
 }
 
-// Specifies the username.
 func (o KafkaPermissionsPolicyOutput) UserName() pulumi.StringOutput {
 	return o.ApplyT(func(v KafkaPermissionsPolicy) string { return v.UserName }).(pulumi.StringOutput)
 }
@@ -564,9 +531,6 @@ func (o KafkaPermissionsPolicyArrayOutput) Index(i pulumi.IntInput) KafkaPermiss
 }
 
 type KafkaTopicConfig struct {
-	// Specifies the name of the topic. The name starts with a letter, consists of 4 to
-	// 64 characters, and supports only letters, digits, hyphens (-) and underscores (_). Changing this creates a new
-	// resource.
 	Name  string `pulumi:"name"`
 	Value string `pulumi:"value"`
 }
@@ -583,9 +547,6 @@ type KafkaTopicConfigInput interface {
 }
 
 type KafkaTopicConfigArgs struct {
-	// Specifies the name of the topic. The name starts with a letter, consists of 4 to
-	// 64 characters, and supports only letters, digits, hyphens (-) and underscores (_). Changing this creates a new
-	// resource.
 	Name  pulumi.StringInput `pulumi:"name"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
@@ -641,9 +602,6 @@ func (o KafkaTopicConfigOutput) ToKafkaTopicConfigOutputWithContext(ctx context.
 	return o
 }
 
-// Specifies the name of the topic. The name starts with a letter, consists of 4 to
-// 64 characters, and supports only letters, digits, hyphens (-) and underscores (_). Changing this creates a new
-// resource.
 func (o KafkaTopicConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -673,25 +631,14 @@ func (o KafkaTopicConfigArrayOutput) Index(i pulumi.IntInput) KafkaTopicConfigOu
 }
 
 type GetFlavorsFlavor struct {
-	// The list of supported CPU architectures.
-	ArchTypes []string `pulumi:"archTypes"`
-	// The list of supported billing modes.
-	ChargingModes []string `pulumi:"chargingModes"`
-	// The flavor ID.
-	Id string `pulumi:"id"`
-	// The list of supported disk IO types.
-	// The object structure is documented below.
-	Ios []GetFlavorsFlavorIo `pulumi:"ios"`
-	// The function property details.
-	// The object structure is documented below.
-	Properties []GetFlavorsFlavorProperty `pulumi:"properties"`
-	// The list of features supported by the current specification.
-	// The object structure is documented below.
+	ArchTypes       []string                         `pulumi:"archTypes"`
+	ChargingModes   []string                         `pulumi:"chargingModes"`
+	Id              string                           `pulumi:"id"`
+	Ios             []GetFlavorsFlavorIo             `pulumi:"ios"`
+	Properties      []GetFlavorsFlavorProperty       `pulumi:"properties"`
 	SupportFeatures []GetFlavorsFlavorSupportFeature `pulumi:"supportFeatures"`
-	// Specifies flavor type. The valid values are **single**, **cluster** and **cluster.small**.
-	Type string `pulumi:"type"`
-	// The underlying VM specification.
-	VmSpecification string `pulumi:"vmSpecification"`
+	Type            string                           `pulumi:"type"`
+	VmSpecification string                           `pulumi:"vmSpecification"`
 }
 
 // GetFlavorsFlavorInput is an input type that accepts GetFlavorsFlavorArgs and GetFlavorsFlavorOutput values.
@@ -706,25 +653,14 @@ type GetFlavorsFlavorInput interface {
 }
 
 type GetFlavorsFlavorArgs struct {
-	// The list of supported CPU architectures.
-	ArchTypes pulumi.StringArrayInput `pulumi:"archTypes"`
-	// The list of supported billing modes.
-	ChargingModes pulumi.StringArrayInput `pulumi:"chargingModes"`
-	// The flavor ID.
-	Id pulumi.StringInput `pulumi:"id"`
-	// The list of supported disk IO types.
-	// The object structure is documented below.
-	Ios GetFlavorsFlavorIoArrayInput `pulumi:"ios"`
-	// The function property details.
-	// The object structure is documented below.
-	Properties GetFlavorsFlavorPropertyArrayInput `pulumi:"properties"`
-	// The list of features supported by the current specification.
-	// The object structure is documented below.
+	ArchTypes       pulumi.StringArrayInput                  `pulumi:"archTypes"`
+	ChargingModes   pulumi.StringArrayInput                  `pulumi:"chargingModes"`
+	Id              pulumi.StringInput                       `pulumi:"id"`
+	Ios             GetFlavorsFlavorIoArrayInput             `pulumi:"ios"`
+	Properties      GetFlavorsFlavorPropertyArrayInput       `pulumi:"properties"`
 	SupportFeatures GetFlavorsFlavorSupportFeatureArrayInput `pulumi:"supportFeatures"`
-	// Specifies flavor type. The valid values are **single**, **cluster** and **cluster.small**.
-	Type pulumi.StringInput `pulumi:"type"`
-	// The underlying VM specification.
-	VmSpecification pulumi.StringInput `pulumi:"vmSpecification"`
+	Type            pulumi.StringInput                       `pulumi:"type"`
+	VmSpecification pulumi.StringInput                       `pulumi:"vmSpecification"`
 }
 
 func (GetFlavorsFlavorArgs) ElementType() reflect.Type {
@@ -778,45 +714,34 @@ func (o GetFlavorsFlavorOutput) ToGetFlavorsFlavorOutputWithContext(ctx context.
 	return o
 }
 
-// The list of supported CPU architectures.
 func (o GetFlavorsFlavorOutput) ArchTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) []string { return v.ArchTypes }).(pulumi.StringArrayOutput)
 }
 
-// The list of supported billing modes.
 func (o GetFlavorsFlavorOutput) ChargingModes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) []string { return v.ChargingModes }).(pulumi.StringArrayOutput)
 }
 
-// The flavor ID.
 func (o GetFlavorsFlavorOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The list of supported disk IO types.
-// The object structure is documented below.
 func (o GetFlavorsFlavorOutput) Ios() GetFlavorsFlavorIoArrayOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) []GetFlavorsFlavorIo { return v.Ios }).(GetFlavorsFlavorIoArrayOutput)
 }
 
-// The function property details.
-// The object structure is documented below.
 func (o GetFlavorsFlavorOutput) Properties() GetFlavorsFlavorPropertyArrayOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) []GetFlavorsFlavorProperty { return v.Properties }).(GetFlavorsFlavorPropertyArrayOutput)
 }
 
-// The list of features supported by the current specification.
-// The object structure is documented below.
 func (o GetFlavorsFlavorOutput) SupportFeatures() GetFlavorsFlavorSupportFeatureArrayOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) []GetFlavorsFlavorSupportFeature { return v.SupportFeatures }).(GetFlavorsFlavorSupportFeatureArrayOutput)
 }
 
-// Specifies flavor type. The valid values are **single**, **cluster** and **cluster.small**.
 func (o GetFlavorsFlavorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The underlying VM specification.
 func (o GetFlavorsFlavorOutput) VmSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) string { return v.VmSpecification }).(pulumi.StringOutput)
 }
@@ -842,15 +767,9 @@ func (o GetFlavorsFlavorArrayOutput) Index(i pulumi.IntInput) GetFlavorsFlavorOu
 }
 
 type GetFlavorsFlavorIo struct {
-	// Specifies the list of availability zones with available resources.
-	AvailabilityZones []string `pulumi:"availabilityZones"`
-	// Specifies the disk IO encoding.
-	// + **dms.physical.storage.high.v2**: Type of the disk that uses high I/O.
-	// + **dms.physical.storage.ultra.v2**: Type of the disk that uses ultra-high I/O.
-	StorageSpecCode string `pulumi:"storageSpecCode"`
-	// Specifies flavor type. The valid values are **single**, **cluster** and **cluster.small**.
-	Type string `pulumi:"type"`
-	// The list of unavailability zones with available resources.
+	AvailabilityZones   []string `pulumi:"availabilityZones"`
+	StorageSpecCode     string   `pulumi:"storageSpecCode"`
+	Type                string   `pulumi:"type"`
 	UnavailabilityZones []string `pulumi:"unavailabilityZones"`
 }
 
@@ -866,15 +785,9 @@ type GetFlavorsFlavorIoInput interface {
 }
 
 type GetFlavorsFlavorIoArgs struct {
-	// Specifies the list of availability zones with available resources.
-	AvailabilityZones pulumi.StringArrayInput `pulumi:"availabilityZones"`
-	// Specifies the disk IO encoding.
-	// + **dms.physical.storage.high.v2**: Type of the disk that uses high I/O.
-	// + **dms.physical.storage.ultra.v2**: Type of the disk that uses ultra-high I/O.
-	StorageSpecCode pulumi.StringInput `pulumi:"storageSpecCode"`
-	// Specifies flavor type. The valid values are **single**, **cluster** and **cluster.small**.
-	Type pulumi.StringInput `pulumi:"type"`
-	// The list of unavailability zones with available resources.
+	AvailabilityZones   pulumi.StringArrayInput `pulumi:"availabilityZones"`
+	StorageSpecCode     pulumi.StringInput      `pulumi:"storageSpecCode"`
+	Type                pulumi.StringInput      `pulumi:"type"`
 	UnavailabilityZones pulumi.StringArrayInput `pulumi:"unavailabilityZones"`
 }
 
@@ -929,24 +842,18 @@ func (o GetFlavorsFlavorIoOutput) ToGetFlavorsFlavorIoOutputWithContext(ctx cont
 	return o
 }
 
-// Specifies the list of availability zones with available resources.
 func (o GetFlavorsFlavorIoOutput) AvailabilityZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetFlavorsFlavorIo) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the disk IO encoding.
-// + **dms.physical.storage.high.v2**: Type of the disk that uses high I/O.
-// + **dms.physical.storage.ultra.v2**: Type of the disk that uses ultra-high I/O.
 func (o GetFlavorsFlavorIoOutput) StorageSpecCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsFlavorIo) string { return v.StorageSpecCode }).(pulumi.StringOutput)
 }
 
-// Specifies flavor type. The valid values are **single**, **cluster** and **cluster.small**.
 func (o GetFlavorsFlavorIoOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsFlavorIo) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The list of unavailability zones with available resources.
 func (o GetFlavorsFlavorIoOutput) UnavailabilityZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetFlavorsFlavorIo) []string { return v.UnavailabilityZones }).(pulumi.StringArrayOutput)
 }
@@ -972,24 +879,15 @@ func (o GetFlavorsFlavorIoArrayOutput) Index(i pulumi.IntInput) GetFlavorsFlavor
 }
 
 type GetFlavorsFlavorProperty struct {
-	// The flavor ID alias.
-	FlavorAlias string `pulumi:"flavorAlias"`
-	// The maximum bandwidth per broker.
-	MaxBandwidthPerBroker int `pulumi:"maxBandwidthPerBroker"`
-	// The maximum number of brokers.
-	MaxBroker int `pulumi:"maxBroker"`
-	// The maximum number of consumers per broker.
-	MaxConsumerPerBroker int `pulumi:"maxConsumerPerBroker"`
-	// The maximum number of partitions per broker.
-	MaxPartitionPerBroker int `pulumi:"maxPartitionPerBroker"`
-	// The maximum storage per node. The unit is GB.
-	MaxStoragePerNode int `pulumi:"maxStoragePerNode"`
-	// The maximum TPS per broker.
-	MaxTpsPerBroker int `pulumi:"maxTpsPerBroker"`
-	// The minimum number of brokers.
-	MinBroker int `pulumi:"minBroker"`
-	// The minimum storage per node. The unit is GB.
-	MinStoragePerNode int `pulumi:"minStoragePerNode"`
+	FlavorAlias           string `pulumi:"flavorAlias"`
+	MaxBandwidthPerBroker int    `pulumi:"maxBandwidthPerBroker"`
+	MaxBroker             int    `pulumi:"maxBroker"`
+	MaxConsumerPerBroker  int    `pulumi:"maxConsumerPerBroker"`
+	MaxPartitionPerBroker int    `pulumi:"maxPartitionPerBroker"`
+	MaxStoragePerNode     int    `pulumi:"maxStoragePerNode"`
+	MaxTpsPerBroker       int    `pulumi:"maxTpsPerBroker"`
+	MinBroker             int    `pulumi:"minBroker"`
+	MinStoragePerNode     int    `pulumi:"minStoragePerNode"`
 }
 
 // GetFlavorsFlavorPropertyInput is an input type that accepts GetFlavorsFlavorPropertyArgs and GetFlavorsFlavorPropertyOutput values.
@@ -1004,24 +902,15 @@ type GetFlavorsFlavorPropertyInput interface {
 }
 
 type GetFlavorsFlavorPropertyArgs struct {
-	// The flavor ID alias.
-	FlavorAlias pulumi.StringInput `pulumi:"flavorAlias"`
-	// The maximum bandwidth per broker.
-	MaxBandwidthPerBroker pulumi.IntInput `pulumi:"maxBandwidthPerBroker"`
-	// The maximum number of brokers.
-	MaxBroker pulumi.IntInput `pulumi:"maxBroker"`
-	// The maximum number of consumers per broker.
-	MaxConsumerPerBroker pulumi.IntInput `pulumi:"maxConsumerPerBroker"`
-	// The maximum number of partitions per broker.
-	MaxPartitionPerBroker pulumi.IntInput `pulumi:"maxPartitionPerBroker"`
-	// The maximum storage per node. The unit is GB.
-	MaxStoragePerNode pulumi.IntInput `pulumi:"maxStoragePerNode"`
-	// The maximum TPS per broker.
-	MaxTpsPerBroker pulumi.IntInput `pulumi:"maxTpsPerBroker"`
-	// The minimum number of brokers.
-	MinBroker pulumi.IntInput `pulumi:"minBroker"`
-	// The minimum storage per node. The unit is GB.
-	MinStoragePerNode pulumi.IntInput `pulumi:"minStoragePerNode"`
+	FlavorAlias           pulumi.StringInput `pulumi:"flavorAlias"`
+	MaxBandwidthPerBroker pulumi.IntInput    `pulumi:"maxBandwidthPerBroker"`
+	MaxBroker             pulumi.IntInput    `pulumi:"maxBroker"`
+	MaxConsumerPerBroker  pulumi.IntInput    `pulumi:"maxConsumerPerBroker"`
+	MaxPartitionPerBroker pulumi.IntInput    `pulumi:"maxPartitionPerBroker"`
+	MaxStoragePerNode     pulumi.IntInput    `pulumi:"maxStoragePerNode"`
+	MaxTpsPerBroker       pulumi.IntInput    `pulumi:"maxTpsPerBroker"`
+	MinBroker             pulumi.IntInput    `pulumi:"minBroker"`
+	MinStoragePerNode     pulumi.IntInput    `pulumi:"minStoragePerNode"`
 }
 
 func (GetFlavorsFlavorPropertyArgs) ElementType() reflect.Type {
@@ -1075,47 +964,38 @@ func (o GetFlavorsFlavorPropertyOutput) ToGetFlavorsFlavorPropertyOutputWithCont
 	return o
 }
 
-// The flavor ID alias.
 func (o GetFlavorsFlavorPropertyOutput) FlavorAlias() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsFlavorProperty) string { return v.FlavorAlias }).(pulumi.StringOutput)
 }
 
-// The maximum bandwidth per broker.
 func (o GetFlavorsFlavorPropertyOutput) MaxBandwidthPerBroker() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFlavorsFlavorProperty) int { return v.MaxBandwidthPerBroker }).(pulumi.IntOutput)
 }
 
-// The maximum number of brokers.
 func (o GetFlavorsFlavorPropertyOutput) MaxBroker() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFlavorsFlavorProperty) int { return v.MaxBroker }).(pulumi.IntOutput)
 }
 
-// The maximum number of consumers per broker.
 func (o GetFlavorsFlavorPropertyOutput) MaxConsumerPerBroker() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFlavorsFlavorProperty) int { return v.MaxConsumerPerBroker }).(pulumi.IntOutput)
 }
 
-// The maximum number of partitions per broker.
 func (o GetFlavorsFlavorPropertyOutput) MaxPartitionPerBroker() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFlavorsFlavorProperty) int { return v.MaxPartitionPerBroker }).(pulumi.IntOutput)
 }
 
-// The maximum storage per node. The unit is GB.
 func (o GetFlavorsFlavorPropertyOutput) MaxStoragePerNode() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFlavorsFlavorProperty) int { return v.MaxStoragePerNode }).(pulumi.IntOutput)
 }
 
-// The maximum TPS per broker.
 func (o GetFlavorsFlavorPropertyOutput) MaxTpsPerBroker() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFlavorsFlavorProperty) int { return v.MaxTpsPerBroker }).(pulumi.IntOutput)
 }
 
-// The minimum number of brokers.
 func (o GetFlavorsFlavorPropertyOutput) MinBroker() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFlavorsFlavorProperty) int { return v.MinBroker }).(pulumi.IntOutput)
 }
 
-// The minimum storage per node. The unit is GB.
 func (o GetFlavorsFlavorPropertyOutput) MinStoragePerNode() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFlavorsFlavorProperty) int { return v.MinStoragePerNode }).(pulumi.IntOutput)
 }
@@ -1141,10 +1021,7 @@ func (o GetFlavorsFlavorPropertyArrayOutput) Index(i pulumi.IntInput) GetFlavors
 }
 
 type GetFlavorsFlavorSupportFeature struct {
-	// The function name, e.g. **connector_obs**.
-	Name string `pulumi:"name"`
-	// The function property details.
-	// The object structure is documented below.
+	Name       string                                   `pulumi:"name"`
 	Properties []GetFlavorsFlavorSupportFeatureProperty `pulumi:"properties"`
 }
 
@@ -1160,10 +1037,7 @@ type GetFlavorsFlavorSupportFeatureInput interface {
 }
 
 type GetFlavorsFlavorSupportFeatureArgs struct {
-	// The function name, e.g. **connector_obs**.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The function property details.
-	// The object structure is documented below.
+	Name       pulumi.StringInput                               `pulumi:"name"`
 	Properties GetFlavorsFlavorSupportFeaturePropertyArrayInput `pulumi:"properties"`
 }
 
@@ -1218,13 +1092,10 @@ func (o GetFlavorsFlavorSupportFeatureOutput) ToGetFlavorsFlavorSupportFeatureOu
 	return o
 }
 
-// The function name, e.g. **connector_obs**.
 func (o GetFlavorsFlavorSupportFeatureOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsFlavorSupportFeature) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The function property details.
-// The object structure is documented below.
 func (o GetFlavorsFlavorSupportFeatureOutput) Properties() GetFlavorsFlavorSupportFeaturePropertyArrayOutput {
 	return o.ApplyT(func(v GetFlavorsFlavorSupportFeature) []GetFlavorsFlavorSupportFeatureProperty { return v.Properties }).(GetFlavorsFlavorSupportFeaturePropertyArrayOutput)
 }
@@ -1250,13 +1121,9 @@ func (o GetFlavorsFlavorSupportFeatureArrayOutput) Index(i pulumi.IntInput) GetF
 }
 
 type GetFlavorsFlavorSupportFeatureProperty struct {
-	// The maximum number of nodes for the dump function.
 	MaxNode int `pulumi:"maxNode"`
-	// The maximum number of tasks for the dump function.
 	MaxTask int `pulumi:"maxTask"`
-	// The minimum number of nodes for the dump function.
 	MinNode int `pulumi:"minNode"`
-	// The minimum number of tasks for the dump function.
 	MinTask int `pulumi:"minTask"`
 }
 
@@ -1272,13 +1139,9 @@ type GetFlavorsFlavorSupportFeaturePropertyInput interface {
 }
 
 type GetFlavorsFlavorSupportFeaturePropertyArgs struct {
-	// The maximum number of nodes for the dump function.
 	MaxNode pulumi.IntInput `pulumi:"maxNode"`
-	// The maximum number of tasks for the dump function.
 	MaxTask pulumi.IntInput `pulumi:"maxTask"`
-	// The minimum number of nodes for the dump function.
 	MinNode pulumi.IntInput `pulumi:"minNode"`
-	// The minimum number of tasks for the dump function.
 	MinTask pulumi.IntInput `pulumi:"minTask"`
 }
 
@@ -1333,22 +1196,18 @@ func (o GetFlavorsFlavorSupportFeaturePropertyOutput) ToGetFlavorsFlavorSupportF
 	return o
 }
 
-// The maximum number of nodes for the dump function.
 func (o GetFlavorsFlavorSupportFeaturePropertyOutput) MaxNode() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFlavorsFlavorSupportFeatureProperty) int { return v.MaxNode }).(pulumi.IntOutput)
 }
 
-// The maximum number of tasks for the dump function.
 func (o GetFlavorsFlavorSupportFeaturePropertyOutput) MaxTask() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFlavorsFlavorSupportFeatureProperty) int { return v.MaxTask }).(pulumi.IntOutput)
 }
 
-// The minimum number of nodes for the dump function.
 func (o GetFlavorsFlavorSupportFeaturePropertyOutput) MinNode() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFlavorsFlavorSupportFeatureProperty) int { return v.MinNode }).(pulumi.IntOutput)
 }
 
-// The minimum number of tasks for the dump function.
 func (o GetFlavorsFlavorSupportFeaturePropertyOutput) MinTask() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFlavorsFlavorSupportFeatureProperty) int { return v.MinTask }).(pulumi.IntOutput)
 }
@@ -1374,82 +1233,45 @@ func (o GetFlavorsFlavorSupportFeaturePropertyArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetInstancesInstance struct {
-	// The access username.
-	AccessUser string `pulumi:"accessUser"`
-	// The list of AZ names.
-	AvailabilityZones []string `pulumi:"availabilityZones"`
-	// The IP address for instance connection.
-	ConnectAddress string `pulumi:"connectAddress"`
-	// Indicates the Access information of cross-VPC. The structure is documented below.
-	CrossVpcAccesses []GetInstancesInstanceCrossVpcAccess `pulumi:"crossVpcAccesses"`
-	// The instance description.
-	Description string `pulumi:"description"`
-	// Whether to dumping is enabled.
-	Dumping bool `pulumi:"dumping"`
-	// Whether to enable automatic topic creation.
-	EnableAutoTopic bool `pulumi:"enableAutoTopic"`
-	// Whether public access to the instance is enabled.
-	EnablePublicIp    bool     `pulumi:"enablePublicIp"`
-	EnabledMechanisms []string `pulumi:"enabledMechanisms"`
-	// The kafka engine version.
-	EngineVersion string `pulumi:"engineVersion"`
-	// Specifies the enterprise project ID to which all instances of the list
-	// belong.
-	EnterpriseProjectId string `pulumi:"enterpriseProjectId"`
-	// The instance ID.
-	Id string `pulumi:"id"`
-	// The time at which a maintenance time window starts, the format is `HH:mm`.
-	MaintainBegin string `pulumi:"maintainBegin"`
-	// The time at which a maintenance time window ends, the format is `HH:mm`.
-	MaintainEnd string `pulumi:"maintainEnd"`
-	// The connection address of the Kafka manager of an instance.
-	ManagementConnectAddress string `pulumi:"managementConnectAddress"`
-	// The username for logging in to the Kafka Manager.
-	ManagerUser string `pulumi:"managerUser"`
+	AccessUser               string                               `pulumi:"accessUser"`
+	AvailabilityZones        []string                             `pulumi:"availabilityZones"`
+	ConnectAddress           string                               `pulumi:"connectAddress"`
+	CrossVpcAccesses         []GetInstancesInstanceCrossVpcAccess `pulumi:"crossVpcAccesses"`
+	Description              string                               `pulumi:"description"`
+	Dumping                  bool                                 `pulumi:"dumping"`
+	EnableAutoTopic          bool                                 `pulumi:"enableAutoTopic"`
+	EnablePublicIp           bool                                 `pulumi:"enablePublicIp"`
+	EnabledMechanisms        []string                             `pulumi:"enabledMechanisms"`
+	EngineVersion            string                               `pulumi:"engineVersion"`
+	EnterpriseProjectId      string                               `pulumi:"enterpriseProjectId"`
+	Id                       string                               `pulumi:"id"`
+	MaintainBegin            string                               `pulumi:"maintainBegin"`
+	MaintainEnd              string                               `pulumi:"maintainEnd"`
+	ManagementConnectAddress string                               `pulumi:"managementConnectAddress"`
+	ManagerUser              string                               `pulumi:"managerUser"`
 	// Deprecated: typo in manegement_connect_address, please use "managementConnectAddress" instead.
-	ManegementConnectAddress string `pulumi:"manegementConnectAddress"`
-	// Specifies the kafka instance name for data-source queries.
-	Name string `pulumi:"name"`
-	// The subnet ID to which the instance belongs.
-	NetworkId string `pulumi:"networkId"`
-	// The maximum number of topics in the DMS kafka instance.
-	PartitionNum int `pulumi:"partitionNum"`
-	// The port number.
-	Port int `pulumi:"port"`
-	// The product ID used by the instance.
-	ProductId string `pulumi:"productId"`
-	// The instance public access address.
-	// The format of each connection address is `{IP address}:{port}`.
-	PublicConnAddresses string `pulumi:"publicConnAddresses"`
-	// The IDs of the elastic IP address (EIP).
-	PublicIpIds []string `pulumi:"publicIpIds"`
-	// The resource specifications identifier.
-	ResourceSpecCode string `pulumi:"resourceSpecCode"`
-	// The action to be taken when the memory usage reaches the disk capacity threshold.
-	RetentionPolicy string `pulumi:"retentionPolicy"`
-	// The security group ID associated with the instance.
-	SecurityGroupId  string `pulumi:"securityGroupId"`
-	SecurityProtocol string `pulumi:"securityProtocol"`
-	// Whether the Kafka SASL_SSL is enabled.
-	SslEnable bool `pulumi:"sslEnable"`
-	// Specifies the kafka instance status for data-source queries.
-	Status string `pulumi:"status"`
-	// The message storage capacity, in GB unit.
-	StorageSpace int `pulumi:"storageSpace"`
-	// The storage I/O specification.
-	StorageSpecCode string `pulumi:"storageSpecCode"`
-	// The key/value pairs to associate with the instance.
-	Tags map[string]string `pulumi:"tags"`
-	// The instance type.
-	Type string `pulumi:"type"`
-	// The used message storage space, in GB unit.
-	UsedStorageSpace int `pulumi:"usedStorageSpace"`
-	// The user ID who created the instance.
-	UserId string `pulumi:"userId"`
-	// The username who created the instance.
-	UserName string `pulumi:"userName"`
-	// The VPC ID to which the instance belongs.
-	VpcId string `pulumi:"vpcId"`
+	ManegementConnectAddress string            `pulumi:"manegementConnectAddress"`
+	Name                     string            `pulumi:"name"`
+	NetworkId                string            `pulumi:"networkId"`
+	PartitionNum             int               `pulumi:"partitionNum"`
+	Port                     int               `pulumi:"port"`
+	ProductId                string            `pulumi:"productId"`
+	PublicConnAddresses      string            `pulumi:"publicConnAddresses"`
+	PublicIpIds              []string          `pulumi:"publicIpIds"`
+	ResourceSpecCode         string            `pulumi:"resourceSpecCode"`
+	RetentionPolicy          string            `pulumi:"retentionPolicy"`
+	SecurityGroupId          string            `pulumi:"securityGroupId"`
+	SecurityProtocol         string            `pulumi:"securityProtocol"`
+	SslEnable                bool              `pulumi:"sslEnable"`
+	Status                   string            `pulumi:"status"`
+	StorageSpace             int               `pulumi:"storageSpace"`
+	StorageSpecCode          string            `pulumi:"storageSpecCode"`
+	Tags                     map[string]string `pulumi:"tags"`
+	Type                     string            `pulumi:"type"`
+	UsedStorageSpace         int               `pulumi:"usedStorageSpace"`
+	UserId                   string            `pulumi:"userId"`
+	UserName                 string            `pulumi:"userName"`
+	VpcId                    string            `pulumi:"vpcId"`
 }
 
 // GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
@@ -1464,82 +1286,45 @@ type GetInstancesInstanceInput interface {
 }
 
 type GetInstancesInstanceArgs struct {
-	// The access username.
-	AccessUser pulumi.StringInput `pulumi:"accessUser"`
-	// The list of AZ names.
-	AvailabilityZones pulumi.StringArrayInput `pulumi:"availabilityZones"`
-	// The IP address for instance connection.
-	ConnectAddress pulumi.StringInput `pulumi:"connectAddress"`
-	// Indicates the Access information of cross-VPC. The structure is documented below.
-	CrossVpcAccesses GetInstancesInstanceCrossVpcAccessArrayInput `pulumi:"crossVpcAccesses"`
-	// The instance description.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Whether to dumping is enabled.
-	Dumping pulumi.BoolInput `pulumi:"dumping"`
-	// Whether to enable automatic topic creation.
-	EnableAutoTopic pulumi.BoolInput `pulumi:"enableAutoTopic"`
-	// Whether public access to the instance is enabled.
-	EnablePublicIp    pulumi.BoolInput        `pulumi:"enablePublicIp"`
-	EnabledMechanisms pulumi.StringArrayInput `pulumi:"enabledMechanisms"`
-	// The kafka engine version.
-	EngineVersion pulumi.StringInput `pulumi:"engineVersion"`
-	// Specifies the enterprise project ID to which all instances of the list
-	// belong.
-	EnterpriseProjectId pulumi.StringInput `pulumi:"enterpriseProjectId"`
-	// The instance ID.
-	Id pulumi.StringInput `pulumi:"id"`
-	// The time at which a maintenance time window starts, the format is `HH:mm`.
-	MaintainBegin pulumi.StringInput `pulumi:"maintainBegin"`
-	// The time at which a maintenance time window ends, the format is `HH:mm`.
-	MaintainEnd pulumi.StringInput `pulumi:"maintainEnd"`
-	// The connection address of the Kafka manager of an instance.
-	ManagementConnectAddress pulumi.StringInput `pulumi:"managementConnectAddress"`
-	// The username for logging in to the Kafka Manager.
-	ManagerUser pulumi.StringInput `pulumi:"managerUser"`
+	AccessUser               pulumi.StringInput                           `pulumi:"accessUser"`
+	AvailabilityZones        pulumi.StringArrayInput                      `pulumi:"availabilityZones"`
+	ConnectAddress           pulumi.StringInput                           `pulumi:"connectAddress"`
+	CrossVpcAccesses         GetInstancesInstanceCrossVpcAccessArrayInput `pulumi:"crossVpcAccesses"`
+	Description              pulumi.StringInput                           `pulumi:"description"`
+	Dumping                  pulumi.BoolInput                             `pulumi:"dumping"`
+	EnableAutoTopic          pulumi.BoolInput                             `pulumi:"enableAutoTopic"`
+	EnablePublicIp           pulumi.BoolInput                             `pulumi:"enablePublicIp"`
+	EnabledMechanisms        pulumi.StringArrayInput                      `pulumi:"enabledMechanisms"`
+	EngineVersion            pulumi.StringInput                           `pulumi:"engineVersion"`
+	EnterpriseProjectId      pulumi.StringInput                           `pulumi:"enterpriseProjectId"`
+	Id                       pulumi.StringInput                           `pulumi:"id"`
+	MaintainBegin            pulumi.StringInput                           `pulumi:"maintainBegin"`
+	MaintainEnd              pulumi.StringInput                           `pulumi:"maintainEnd"`
+	ManagementConnectAddress pulumi.StringInput                           `pulumi:"managementConnectAddress"`
+	ManagerUser              pulumi.StringInput                           `pulumi:"managerUser"`
 	// Deprecated: typo in manegement_connect_address, please use "managementConnectAddress" instead.
-	ManegementConnectAddress pulumi.StringInput `pulumi:"manegementConnectAddress"`
-	// Specifies the kafka instance name for data-source queries.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The subnet ID to which the instance belongs.
-	NetworkId pulumi.StringInput `pulumi:"networkId"`
-	// The maximum number of topics in the DMS kafka instance.
-	PartitionNum pulumi.IntInput `pulumi:"partitionNum"`
-	// The port number.
-	Port pulumi.IntInput `pulumi:"port"`
-	// The product ID used by the instance.
-	ProductId pulumi.StringInput `pulumi:"productId"`
-	// The instance public access address.
-	// The format of each connection address is `{IP address}:{port}`.
-	PublicConnAddresses pulumi.StringInput `pulumi:"publicConnAddresses"`
-	// The IDs of the elastic IP address (EIP).
-	PublicIpIds pulumi.StringArrayInput `pulumi:"publicIpIds"`
-	// The resource specifications identifier.
-	ResourceSpecCode pulumi.StringInput `pulumi:"resourceSpecCode"`
-	// The action to be taken when the memory usage reaches the disk capacity threshold.
-	RetentionPolicy pulumi.StringInput `pulumi:"retentionPolicy"`
-	// The security group ID associated with the instance.
-	SecurityGroupId  pulumi.StringInput `pulumi:"securityGroupId"`
-	SecurityProtocol pulumi.StringInput `pulumi:"securityProtocol"`
-	// Whether the Kafka SASL_SSL is enabled.
-	SslEnable pulumi.BoolInput `pulumi:"sslEnable"`
-	// Specifies the kafka instance status for data-source queries.
-	Status pulumi.StringInput `pulumi:"status"`
-	// The message storage capacity, in GB unit.
-	StorageSpace pulumi.IntInput `pulumi:"storageSpace"`
-	// The storage I/O specification.
-	StorageSpecCode pulumi.StringInput `pulumi:"storageSpecCode"`
-	// The key/value pairs to associate with the instance.
-	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// The instance type.
-	Type pulumi.StringInput `pulumi:"type"`
-	// The used message storage space, in GB unit.
-	UsedStorageSpace pulumi.IntInput `pulumi:"usedStorageSpace"`
-	// The user ID who created the instance.
-	UserId pulumi.StringInput `pulumi:"userId"`
-	// The username who created the instance.
-	UserName pulumi.StringInput `pulumi:"userName"`
-	// The VPC ID to which the instance belongs.
-	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	ManegementConnectAddress pulumi.StringInput      `pulumi:"manegementConnectAddress"`
+	Name                     pulumi.StringInput      `pulumi:"name"`
+	NetworkId                pulumi.StringInput      `pulumi:"networkId"`
+	PartitionNum             pulumi.IntInput         `pulumi:"partitionNum"`
+	Port                     pulumi.IntInput         `pulumi:"port"`
+	ProductId                pulumi.StringInput      `pulumi:"productId"`
+	PublicConnAddresses      pulumi.StringInput      `pulumi:"publicConnAddresses"`
+	PublicIpIds              pulumi.StringArrayInput `pulumi:"publicIpIds"`
+	ResourceSpecCode         pulumi.StringInput      `pulumi:"resourceSpecCode"`
+	RetentionPolicy          pulumi.StringInput      `pulumi:"retentionPolicy"`
+	SecurityGroupId          pulumi.StringInput      `pulumi:"securityGroupId"`
+	SecurityProtocol         pulumi.StringInput      `pulumi:"securityProtocol"`
+	SslEnable                pulumi.BoolInput        `pulumi:"sslEnable"`
+	Status                   pulumi.StringInput      `pulumi:"status"`
+	StorageSpace             pulumi.IntInput         `pulumi:"storageSpace"`
+	StorageSpecCode          pulumi.StringInput      `pulumi:"storageSpecCode"`
+	Tags                     pulumi.StringMapInput   `pulumi:"tags"`
+	Type                     pulumi.StringInput      `pulumi:"type"`
+	UsedStorageSpace         pulumi.IntInput         `pulumi:"usedStorageSpace"`
+	UserId                   pulumi.StringInput      `pulumi:"userId"`
+	UserName                 pulumi.StringInput      `pulumi:"userName"`
+	VpcId                    pulumi.StringInput      `pulumi:"vpcId"`
 }
 
 func (GetInstancesInstanceArgs) ElementType() reflect.Type {
@@ -1593,42 +1378,34 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx 
 	return o
 }
 
-// The access username.
 func (o GetInstancesInstanceOutput) AccessUser() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.AccessUser }).(pulumi.StringOutput)
 }
 
-// The list of AZ names.
 func (o GetInstancesInstanceOutput) AvailabilityZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstance) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }
 
-// The IP address for instance connection.
 func (o GetInstancesInstanceOutput) ConnectAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ConnectAddress }).(pulumi.StringOutput)
 }
 
-// Indicates the Access information of cross-VPC. The structure is documented below.
 func (o GetInstancesInstanceOutput) CrossVpcAccesses() GetInstancesInstanceCrossVpcAccessArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstance) []GetInstancesInstanceCrossVpcAccess { return v.CrossVpcAccesses }).(GetInstancesInstanceCrossVpcAccessArrayOutput)
 }
 
-// The instance description.
 func (o GetInstancesInstanceOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Whether to dumping is enabled.
 func (o GetInstancesInstanceOutput) Dumping() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstancesInstance) bool { return v.Dumping }).(pulumi.BoolOutput)
 }
 
-// Whether to enable automatic topic creation.
 func (o GetInstancesInstanceOutput) EnableAutoTopic() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstancesInstance) bool { return v.EnableAutoTopic }).(pulumi.BoolOutput)
 }
 
-// Whether public access to the instance is enabled.
 func (o GetInstancesInstanceOutput) EnablePublicIp() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstancesInstance) bool { return v.EnablePublicIp }).(pulumi.BoolOutput)
 }
@@ -1637,38 +1414,30 @@ func (o GetInstancesInstanceOutput) EnabledMechanisms() pulumi.StringArrayOutput
 	return o.ApplyT(func(v GetInstancesInstance) []string { return v.EnabledMechanisms }).(pulumi.StringArrayOutput)
 }
 
-// The kafka engine version.
 func (o GetInstancesInstanceOutput) EngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.EngineVersion }).(pulumi.StringOutput)
 }
 
-// Specifies the enterprise project ID to which all instances of the list
-// belong.
 func (o GetInstancesInstanceOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// The instance ID.
 func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The time at which a maintenance time window starts, the format is `HH:mm`.
 func (o GetInstancesInstanceOutput) MaintainBegin() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.MaintainBegin }).(pulumi.StringOutput)
 }
 
-// The time at which a maintenance time window ends, the format is `HH:mm`.
 func (o GetInstancesInstanceOutput) MaintainEnd() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.MaintainEnd }).(pulumi.StringOutput)
 }
 
-// The connection address of the Kafka manager of an instance.
 func (o GetInstancesInstanceOutput) ManagementConnectAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ManagementConnectAddress }).(pulumi.StringOutput)
 }
 
-// The username for logging in to the Kafka Manager.
 func (o GetInstancesInstanceOutput) ManagerUser() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ManagerUser }).(pulumi.StringOutput)
 }
@@ -1678,53 +1447,42 @@ func (o GetInstancesInstanceOutput) ManegementConnectAddress() pulumi.StringOutp
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ManegementConnectAddress }).(pulumi.StringOutput)
 }
 
-// Specifies the kafka instance name for data-source queries.
 func (o GetInstancesInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The subnet ID to which the instance belongs.
 func (o GetInstancesInstanceOutput) NetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.NetworkId }).(pulumi.StringOutput)
 }
 
-// The maximum number of topics in the DMS kafka instance.
 func (o GetInstancesInstanceOutput) PartitionNum() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.PartitionNum }).(pulumi.IntOutput)
 }
 
-// The port number.
 func (o GetInstancesInstanceOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// The product ID used by the instance.
 func (o GetInstancesInstanceOutput) ProductId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ProductId }).(pulumi.StringOutput)
 }
 
-// The instance public access address.
-// The format of each connection address is `{IP address}:{port}`.
 func (o GetInstancesInstanceOutput) PublicConnAddresses() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.PublicConnAddresses }).(pulumi.StringOutput)
 }
 
-// The IDs of the elastic IP address (EIP).
 func (o GetInstancesInstanceOutput) PublicIpIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstance) []string { return v.PublicIpIds }).(pulumi.StringArrayOutput)
 }
 
-// The resource specifications identifier.
 func (o GetInstancesInstanceOutput) ResourceSpecCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ResourceSpecCode }).(pulumi.StringOutput)
 }
 
-// The action to be taken when the memory usage reaches the disk capacity threshold.
 func (o GetInstancesInstanceOutput) RetentionPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.RetentionPolicy }).(pulumi.StringOutput)
 }
 
-// The security group ID associated with the instance.
 func (o GetInstancesInstanceOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
@@ -1733,52 +1491,42 @@ func (o GetInstancesInstanceOutput) SecurityProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.SecurityProtocol }).(pulumi.StringOutput)
 }
 
-// Whether the Kafka SASL_SSL is enabled.
 func (o GetInstancesInstanceOutput) SslEnable() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstancesInstance) bool { return v.SslEnable }).(pulumi.BoolOutput)
 }
 
-// Specifies the kafka instance status for data-source queries.
 func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The message storage capacity, in GB unit.
 func (o GetInstancesInstanceOutput) StorageSpace() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.StorageSpace }).(pulumi.IntOutput)
 }
 
-// The storage I/O specification.
 func (o GetInstancesInstanceOutput) StorageSpecCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.StorageSpecCode }).(pulumi.StringOutput)
 }
 
-// The key/value pairs to associate with the instance.
 func (o GetInstancesInstanceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetInstancesInstance) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The instance type.
 func (o GetInstancesInstanceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The used message storage space, in GB unit.
 func (o GetInstancesInstanceOutput) UsedStorageSpace() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.UsedStorageSpace }).(pulumi.IntOutput)
 }
 
-// The user ID who created the instance.
 func (o GetInstancesInstanceOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.UserId }).(pulumi.StringOutput)
 }
 
-// The username who created the instance.
 func (o GetInstancesInstanceOutput) UserName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.UserName }).(pulumi.StringOutput)
 }
 
-// The VPC ID to which the instance belongs.
 func (o GetInstancesInstanceOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.VpcId }).(pulumi.StringOutput)
 }
@@ -1804,16 +1552,12 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 }
 
 type GetInstancesInstanceCrossVpcAccess struct {
-	// The advertised IP Address.
 	AdvertisedIp string `pulumi:"advertisedIp"`
 	// Deprecated: typo in lisenter_ip, please use "listenerIp" instead.
 	LisenterIp string `pulumi:"lisenterIp"`
-	// The listener IP address.
 	ListenerIp string `pulumi:"listenerIp"`
-	// The port number.
-	Port int `pulumi:"port"`
-	// The port ID associated with the address
-	PortId string `pulumi:"portId"`
+	Port       int    `pulumi:"port"`
+	PortId     string `pulumi:"portId"`
 }
 
 // GetInstancesInstanceCrossVpcAccessInput is an input type that accepts GetInstancesInstanceCrossVpcAccessArgs and GetInstancesInstanceCrossVpcAccessOutput values.
@@ -1828,16 +1572,12 @@ type GetInstancesInstanceCrossVpcAccessInput interface {
 }
 
 type GetInstancesInstanceCrossVpcAccessArgs struct {
-	// The advertised IP Address.
 	AdvertisedIp pulumi.StringInput `pulumi:"advertisedIp"`
 	// Deprecated: typo in lisenter_ip, please use "listenerIp" instead.
 	LisenterIp pulumi.StringInput `pulumi:"lisenterIp"`
-	// The listener IP address.
 	ListenerIp pulumi.StringInput `pulumi:"listenerIp"`
-	// The port number.
-	Port pulumi.IntInput `pulumi:"port"`
-	// The port ID associated with the address
-	PortId pulumi.StringInput `pulumi:"portId"`
+	Port       pulumi.IntInput    `pulumi:"port"`
+	PortId     pulumi.StringInput `pulumi:"portId"`
 }
 
 func (GetInstancesInstanceCrossVpcAccessArgs) ElementType() reflect.Type {
@@ -1891,7 +1631,6 @@ func (o GetInstancesInstanceCrossVpcAccessOutput) ToGetInstancesInstanceCrossVpc
 	return o
 }
 
-// The advertised IP Address.
 func (o GetInstancesInstanceCrossVpcAccessOutput) AdvertisedIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceCrossVpcAccess) string { return v.AdvertisedIp }).(pulumi.StringOutput)
 }
@@ -1901,17 +1640,14 @@ func (o GetInstancesInstanceCrossVpcAccessOutput) LisenterIp() pulumi.StringOutp
 	return o.ApplyT(func(v GetInstancesInstanceCrossVpcAccess) string { return v.LisenterIp }).(pulumi.StringOutput)
 }
 
-// The listener IP address.
 func (o GetInstancesInstanceCrossVpcAccessOutput) ListenerIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceCrossVpcAccess) string { return v.ListenerIp }).(pulumi.StringOutput)
 }
 
-// The port number.
 func (o GetInstancesInstanceCrossVpcAccessOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceCrossVpcAccess) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// The port ID associated with the address
 func (o GetInstancesInstanceCrossVpcAccessOutput) PortId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceCrossVpcAccess) string { return v.PortId }).(pulumi.StringOutput)
 }

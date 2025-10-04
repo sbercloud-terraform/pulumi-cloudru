@@ -4,76 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides an OBS bucket object resource.
- *
- * ## Example Usage
- *
- * ### Uploading to a bucket
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const object = new sbercloud.obs.BucketObject("object", {
- *     bucket: "your_bucket_name",
- *     key: "new_key_from_content",
- *     content: "some object content",
- *     contentType: "application/xml",
- * });
- * ```
- *
- * ### Uploading a file to a bucket
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const examplebucket = new sbercloud.obs.Bucket("examplebucket", {
- *     bucket: "examplebuckettftest",
- *     acl: "private",
- * });
- * const object = new sbercloud.obs.BucketObject("object", {
- *     bucket: examplebucket.bucket,
- *     key: "new_key_from_file",
- *     source: "index.html",
- * });
- * ```
- *
- * ## Import
- *
- * OBS bucket object can be imported using the bucket and key separated by a slash, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Obs/bucketObject:BucketObject object bucket/key
- * ```
- *
- * Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
- *
- * API response, security or some other reason. The missing attributes include: `encryption`, `source`, `acl` and
- *
- * `kms_key_id`. It is generally recommended running `pulumi preview` after importing an object.
- *
- * You can then decide if changes should be applied to the object, or the resource
- *
- * definition should be updated to align with the object. Also you can ignore changes as below.
- *
- * resource "sbercloud_obs_bucket_object" "object" {
- *
- *     ...
- *
- *   lifecycle {
- *
- *     ignore_changes = [
- *     
- *       encryption, source, acl, kms_key_id,
- *     
- *     ]
- *
- *   }
- *
- * }
- */
 export class BucketObject extends pulumi.CustomResource {
     /**
      * Get an existing BucketObject resource's state with the given name, ID, and optional extra
@@ -102,59 +32,18 @@ export class BucketObject extends pulumi.CustomResource {
         return obj['__pulumiType'] === BucketObject.__pulumiType;
     }
 
-    /**
-     * The ACL policy to apply. Defaults to `private`.
-     */
     declare public readonly acl: pulumi.Output<string | undefined>;
-    /**
-     * The name of the bucket to put the file in.
-     */
     declare public readonly bucket: pulumi.Output<string>;
-    /**
-     * The literal content being uploaded to the bucket.
-     */
     declare public readonly content: pulumi.Output<string | undefined>;
-    /**
-     * A standard MIME type describing the format of the object data, e.g. application/octet-stream.
-     * All Valid MIME Types are valid for this input.
-     */
     declare public readonly contentType: pulumi.Output<string>;
     declare public readonly encryption: pulumi.Output<boolean | undefined>;
-    /**
-     * Specifies the unique identifier of the object content. It can be used to trigger updates.
-     * The only meaningful value is `md5(file("pathToFile"))`.
-     *
-     * Either `source` or `content` must be provided to specify the bucket content.
-     * These two arguments are mutually-exclusive.
-     */
     declare public readonly etag: pulumi.Output<string>;
-    /**
-     * The name of the object once it is in the bucket.
-     */
     declare public readonly key: pulumi.Output<string>;
-    /**
-     * The ID of the kms key. If omitted, the default master key will be used.
-     */
     declare public readonly kmsKeyId: pulumi.Output<string | undefined>;
-    /**
-     * The region in which to create the OBS bucket object resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket object resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * the size of the object in bytes.
-     */
     declare public /*out*/ readonly size: pulumi.Output<number>;
-    /**
-     * The path to the source file being uploaded to the bucket.
-     */
     declare public readonly source: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the storage class of the object. Defaults to `STANDARD`.
-     */
     declare public readonly storageClass: pulumi.Output<string>;
-    /**
-     * A unique version ID value for the object, if bucket versioning is enabled.
-     */
     declare public /*out*/ readonly versionId: pulumi.Output<string>;
 
     /**
@@ -214,59 +103,18 @@ export class BucketObject extends pulumi.CustomResource {
  * Input properties used for looking up and filtering BucketObject resources.
  */
 export interface BucketObjectState {
-    /**
-     * The ACL policy to apply. Defaults to `private`.
-     */
     acl?: pulumi.Input<string>;
-    /**
-     * The name of the bucket to put the file in.
-     */
     bucket?: pulumi.Input<string>;
-    /**
-     * The literal content being uploaded to the bucket.
-     */
     content?: pulumi.Input<string>;
-    /**
-     * A standard MIME type describing the format of the object data, e.g. application/octet-stream.
-     * All Valid MIME Types are valid for this input.
-     */
     contentType?: pulumi.Input<string>;
     encryption?: pulumi.Input<boolean>;
-    /**
-     * Specifies the unique identifier of the object content. It can be used to trigger updates.
-     * The only meaningful value is `md5(file("pathToFile"))`.
-     *
-     * Either `source` or `content` must be provided to specify the bucket content.
-     * These two arguments are mutually-exclusive.
-     */
     etag?: pulumi.Input<string>;
-    /**
-     * The name of the object once it is in the bucket.
-     */
     key?: pulumi.Input<string>;
-    /**
-     * The ID of the kms key. If omitted, the default master key will be used.
-     */
     kmsKeyId?: pulumi.Input<string>;
-    /**
-     * The region in which to create the OBS bucket object resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket object resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * the size of the object in bytes.
-     */
     size?: pulumi.Input<number>;
-    /**
-     * The path to the source file being uploaded to the bucket.
-     */
     source?: pulumi.Input<string>;
-    /**
-     * Specifies the storage class of the object. Defaults to `STANDARD`.
-     */
     storageClass?: pulumi.Input<string>;
-    /**
-     * A unique version ID value for the object, if bucket versioning is enabled.
-     */
     versionId?: pulumi.Input<string>;
 }
 
@@ -274,50 +122,15 @@ export interface BucketObjectState {
  * The set of arguments for constructing a BucketObject resource.
  */
 export interface BucketObjectArgs {
-    /**
-     * The ACL policy to apply. Defaults to `private`.
-     */
     acl?: pulumi.Input<string>;
-    /**
-     * The name of the bucket to put the file in.
-     */
     bucket: pulumi.Input<string>;
-    /**
-     * The literal content being uploaded to the bucket.
-     */
     content?: pulumi.Input<string>;
-    /**
-     * A standard MIME type describing the format of the object data, e.g. application/octet-stream.
-     * All Valid MIME Types are valid for this input.
-     */
     contentType?: pulumi.Input<string>;
     encryption?: pulumi.Input<boolean>;
-    /**
-     * Specifies the unique identifier of the object content. It can be used to trigger updates.
-     * The only meaningful value is `md5(file("pathToFile"))`.
-     *
-     * Either `source` or `content` must be provided to specify the bucket content.
-     * These two arguments are mutually-exclusive.
-     */
     etag?: pulumi.Input<string>;
-    /**
-     * The name of the object once it is in the bucket.
-     */
     key: pulumi.Input<string>;
-    /**
-     * The ID of the kms key. If omitted, the default master key will be used.
-     */
     kmsKeyId?: pulumi.Input<string>;
-    /**
-     * The region in which to create the OBS bucket object resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket object resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * The path to the source file being uploaded to the bucket.
-     */
     source?: pulumi.Input<string>;
-    /**
-     * Specifies the storage class of the object. Defaults to `STANDARD`.
-     */
     storageClass?: pulumi.Input<string>;
 }

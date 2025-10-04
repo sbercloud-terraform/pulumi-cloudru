@@ -25,10 +25,6 @@ class RoleArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Role resource.
-        :param pulumi.Input[_builtins.str] description: Description of the custom policy.
-        :param pulumi.Input[_builtins.str] policy: Document of the custom policy in JSON format.
-        :param pulumi.Input[_builtins.str] type: Display mode. Valid options are _AX_: Account level and _XA_: Project level.
-        :param pulumi.Input[_builtins.str] name: Name of the custom policy.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "policy", policy)
@@ -39,9 +35,6 @@ class RoleArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[_builtins.str]:
-        """
-        Description of the custom policy.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -51,9 +44,6 @@ class RoleArgs:
     @_builtins.property
     @pulumi.getter
     def policy(self) -> pulumi.Input[_builtins.str]:
-        """
-        Document of the custom policy in JSON format.
-        """
         return pulumi.get(self, "policy")
 
     @policy.setter
@@ -63,9 +53,6 @@ class RoleArgs:
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Display mode. Valid options are _AX_: Account level and _XA_: Project level.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -75,9 +62,6 @@ class RoleArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Name of the custom policy.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -95,11 +79,6 @@ class _RoleState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Role resources.
-        :param pulumi.Input[_builtins.str] description: Description of the custom policy.
-        :param pulumi.Input[_builtins.str] name: Name of the custom policy.
-        :param pulumi.Input[_builtins.str] policy: Document of the custom policy in JSON format.
-        :param pulumi.Input[_builtins.int] references: The number of references.
-        :param pulumi.Input[_builtins.str] type: Display mode. Valid options are _AX_: Account level and _XA_: Project level.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -115,9 +94,6 @@ class _RoleState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Description of the custom policy.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -127,9 +103,6 @@ class _RoleState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Name of the custom policy.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -139,9 +112,6 @@ class _RoleState:
     @_builtins.property
     @pulumi.getter
     def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Document of the custom policy in JSON format.
-        """
         return pulumi.get(self, "policy")
 
     @policy.setter
@@ -151,9 +121,6 @@ class _RoleState:
     @_builtins.property
     @pulumi.getter
     def references(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The number of references.
-        """
         return pulumi.get(self, "references")
 
     @references.setter
@@ -163,9 +130,6 @@ class _RoleState:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Display mode. Valid options are _AX_: Account level and _XA_: Project level.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -185,58 +149,9 @@ class Role(pulumi.CustomResource):
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a **Custom Policy** resource within SberCloud IAM service.
-
-        ->**Note** You _must_ have admin privileges in your SberCloud cloud to use this resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        role1 = sbercloud.iam.Role("role1",
-            name="test",
-            description="created by terraform",
-            type="AX",
-            policy=\"\"\"{
-          "Version": "1.1",
-          "Statement": [
-            {
-              "Action": [
-                "obs:bucket:GetBucketAcl"
-              ],
-              "Effect": "Allow",
-              "Resource": [
-                "obs:*:*:bucket:*"
-              ],
-              "Condition": {
-                "StringStartWith": {
-                  "g:ProjectName": [
-                    "ru-moscow-1"
-                  ]
-                }
-              }
-            }
-          ]
-        }
-        \"\"\")
-        ```
-
-        ## Import
-
-        Roles can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Iam/role:Role role1 89c60255-9bd6-460c-822a-e2b959ede9d2
-        ```
-
+        Create a Role resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Description of the custom policy.
-        :param pulumi.Input[_builtins.str] name: Name of the custom policy.
-        :param pulumi.Input[_builtins.str] policy: Document of the custom policy in JSON format.
-        :param pulumi.Input[_builtins.str] type: Display mode. Valid options are _AX_: Account level and _XA_: Project level.
         """
         ...
     @overload
@@ -245,52 +160,7 @@ class Role(pulumi.CustomResource):
                  args: RoleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a **Custom Policy** resource within SberCloud IAM service.
-
-        ->**Note** You _must_ have admin privileges in your SberCloud cloud to use this resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        role1 = sbercloud.iam.Role("role1",
-            name="test",
-            description="created by terraform",
-            type="AX",
-            policy=\"\"\"{
-          "Version": "1.1",
-          "Statement": [
-            {
-              "Action": [
-                "obs:bucket:GetBucketAcl"
-              ],
-              "Effect": "Allow",
-              "Resource": [
-                "obs:*:*:bucket:*"
-              ],
-              "Condition": {
-                "StringStartWith": {
-                  "g:ProjectName": [
-                    "ru-moscow-1"
-                  ]
-                }
-              }
-            }
-          ]
-        }
-        \"\"\")
-        ```
-
-        ## Import
-
-        Roles can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Iam/role:Role role1 89c60255-9bd6-460c-822a-e2b959ede9d2
-        ```
-
+        Create a Role resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param RoleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -352,11 +222,6 @@ class Role(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Description of the custom policy.
-        :param pulumi.Input[_builtins.str] name: Name of the custom policy.
-        :param pulumi.Input[_builtins.str] policy: Document of the custom policy in JSON format.
-        :param pulumi.Input[_builtins.int] references: The number of references.
-        :param pulumi.Input[_builtins.str] type: Display mode. Valid options are _AX_: Account level and _XA_: Project level.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -372,40 +237,25 @@ class Role(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[_builtins.str]:
-        """
-        Description of the custom policy.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Name of the custom policy.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def policy(self) -> pulumi.Output[_builtins.str]:
-        """
-        Document of the custom policy in JSON format.
-        """
         return pulumi.get(self, "policy")
 
     @_builtins.property
     @pulumi.getter
     def references(self) -> pulumi.Output[_builtins.int]:
-        """
-        The number of references.
-        """
         return pulumi.get(self, "references")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
-        """
-        Display mode. Valid options are _AX_: Account level and _XA_: Project level.
-        """
         return pulumi.get(self, "type")
 

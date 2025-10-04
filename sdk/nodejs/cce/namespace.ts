@@ -4,33 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a CCE namespace resource within SberCloud.
- *
- * ## Example Usage
- *
- * ### Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const clusterId = config.requireObject<any>("clusterId");
- * const test = new sbercloud.cce.Namespace("test", {
- *     clusterId: clusterId,
- *     name: "test-namespace",
- * });
- * ```
- *
- * ## Import
- *
- * CCE namespace can be imported using the cluster ID and namespace name separated by a slash, e.g.:
- *
- * ```sh
- * $ pulumi import sbercloud:Cce/namespace:Namespace test bb6923e4-b16e-11eb-b0cd-0255ac101da1/test-namespace
- * ```
- */
 export class Namespace extends pulumi.CustomResource {
     /**
      * Get an existing Namespace resource's state with the given name, ID, and optional extra
@@ -59,47 +32,13 @@ export class Namespace extends pulumi.CustomResource {
         return obj['__pulumiType'] === Namespace.__pulumiType;
     }
 
-    /**
-     * Specifies an unstructured key value map for external parameters.
-     * Changing this will create a new namespace resource.
-     */
     declare public readonly annotations: pulumi.Output<{[key: string]: string}>;
-    /**
-     * Specifies the cluster ID to which the CCE namespace belongs.
-     * Changing this will create a new namespace resource.
-     */
     declare public readonly clusterId: pulumi.Output<string>;
-    /**
-     * The server time when namespace was created.
-     */
     declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
-    /**
-     * Specifies the map of string keys and values for labels.
-     * Changing this will create a new namespace resource.
-     */
     declare public readonly labels: pulumi.Output<{[key: string]: string}>;
-    /**
-     * Specifies the unique name of the namespace.
-     * This parameter can contain a maximum of 63 characters, which may consist of lowercase letters, digits and hyphens (-),
-     * and must start and end with lowercase letters and digits. Changing this will create a new namespace resource.
-     * Exactly one of `name` or `prefix` must be provided.
-     */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * Specifies a prefix used by the server to generate a unique name.
-     * This parameter can contain a maximum of 63 characters, which may consist of lowercase letters, digits and
-     * hyphens (-), and must start and end with lowercase letters and digits.
-     * Changing this will create a new namespace resource. Exactly one of `name` or `prefix` must be provided.
-     */
     declare public readonly prefix: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the region in which to create the namespace resource.
-     * If omitted, the provider-level region will be used. Changing this will create a new namespace resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * The current phase of the namespace.
-     */
     declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
@@ -146,47 +85,13 @@ export class Namespace extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Namespace resources.
  */
 export interface NamespaceState {
-    /**
-     * Specifies an unstructured key value map for external parameters.
-     * Changing this will create a new namespace resource.
-     */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies the cluster ID to which the CCE namespace belongs.
-     * Changing this will create a new namespace resource.
-     */
     clusterId?: pulumi.Input<string>;
-    /**
-     * The server time when namespace was created.
-     */
     creationTimestamp?: pulumi.Input<string>;
-    /**
-     * Specifies the map of string keys and values for labels.
-     * Changing this will create a new namespace resource.
-     */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies the unique name of the namespace.
-     * This parameter can contain a maximum of 63 characters, which may consist of lowercase letters, digits and hyphens (-),
-     * and must start and end with lowercase letters and digits. Changing this will create a new namespace resource.
-     * Exactly one of `name` or `prefix` must be provided.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies a prefix used by the server to generate a unique name.
-     * This parameter can contain a maximum of 63 characters, which may consist of lowercase letters, digits and
-     * hyphens (-), and must start and end with lowercase letters and digits.
-     * Changing this will create a new namespace resource. Exactly one of `name` or `prefix` must be provided.
-     */
     prefix?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the namespace resource.
-     * If omitted, the provider-level region will be used. Changing this will create a new namespace resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * The current phase of the namespace.
-     */
     status?: pulumi.Input<string>;
 }
 
@@ -194,38 +99,10 @@ export interface NamespaceState {
  * The set of arguments for constructing a Namespace resource.
  */
 export interface NamespaceArgs {
-    /**
-     * Specifies an unstructured key value map for external parameters.
-     * Changing this will create a new namespace resource.
-     */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies the cluster ID to which the CCE namespace belongs.
-     * Changing this will create a new namespace resource.
-     */
     clusterId: pulumi.Input<string>;
-    /**
-     * Specifies the map of string keys and values for labels.
-     * Changing this will create a new namespace resource.
-     */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies the unique name of the namespace.
-     * This parameter can contain a maximum of 63 characters, which may consist of lowercase letters, digits and hyphens (-),
-     * and must start and end with lowercase letters and digits. Changing this will create a new namespace resource.
-     * Exactly one of `name` or `prefix` must be provided.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies a prefix used by the server to generate a unique name.
-     * This parameter can contain a maximum of 63 characters, which may consist of lowercase letters, digits and
-     * hyphens (-), and must start and end with lowercase letters and digits.
-     * Changing this will create a new namespace resource. Exactly one of `name` or `prefix` must be provided.
-     */
     prefix?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the namespace resource.
-     * If omitted, the provider-level region will be used. Changing this will create a new namespace resource.
-     */
     region?: pulumi.Input<string>;
 }

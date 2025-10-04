@@ -4,24 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get the ID of an available SberCloud dcs az.
- *
- * !> **WARNING:** It has been deprecated. This data source is used for the `availableZones` of the
- * `sbercloud.Dcs.Instance` resource. Now `availableZones` has been deprecated and this data source is no longer used.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const az1 = sbercloud.getDcsAz({
- *     port: "443",
- *     code: "ru-moscow-1a",
- * });
- * ```
- */
 export function getDcsAz(args?: GetDcsAzArgs, opts?: pulumi.InvokeOptions): Promise<GetDcsAzResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -37,22 +19,9 @@ export function getDcsAz(args?: GetDcsAzArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getDcsAz.
  */
 export interface GetDcsAzArgs {
-    /**
-     * Specifies the code of an AZ, e.g. "ru-moscow-1a".
-     */
     code?: string;
-    /**
-     * Indicates the name of an AZ.
-     */
     name?: string;
-    /**
-     * Indicates the port number of an AZ.
-     */
     port?: string;
-    /**
-     * The region in which to obtain the dcs az. If omitted, the provider-level region will be
-     * used.
-     */
     region?: string;
 }
 
@@ -65,34 +34,10 @@ export interface GetDcsAzResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Indicates the name of an AZ.
-     */
     readonly name: string;
-    /**
-     * Indicates the port number of an AZ.
-     */
     readonly port: string;
     readonly region: string;
 }
-/**
- * Use this data source to get the ID of an available SberCloud dcs az.
- *
- * !> **WARNING:** It has been deprecated. This data source is used for the `availableZones` of the
- * `sbercloud.Dcs.Instance` resource. Now `availableZones` has been deprecated and this data source is no longer used.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const az1 = sbercloud.getDcsAz({
- *     port: "443",
- *     code: "ru-moscow-1a",
- * });
- * ```
- */
 export function getDcsAzOutput(args?: GetDcsAzOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDcsAzResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -108,21 +53,8 @@ export function getDcsAzOutput(args?: GetDcsAzOutputArgs, opts?: pulumi.InvokeOu
  * A collection of arguments for invoking getDcsAz.
  */
 export interface GetDcsAzOutputArgs {
-    /**
-     * Specifies the code of an AZ, e.g. "ru-moscow-1a".
-     */
     code?: pulumi.Input<string>;
-    /**
-     * Indicates the name of an AZ.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Indicates the port number of an AZ.
-     */
     port?: pulumi.Input<string>;
-    /**
-     * The region in which to obtain the dcs az. If omitted, the provider-level region will be
-     * used.
-     */
     region?: pulumi.Input<string>;
 }

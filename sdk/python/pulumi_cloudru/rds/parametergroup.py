@@ -28,12 +28,6 @@ class ParametergroupArgs:
                  values: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Parametergroup resource.
-        :param pulumi.Input['ParametergroupDatastoreArgs'] datastore: Database object. The database object structure is documented below. Changing this creates a new parameter group.
-        :param pulumi.Input[_builtins.str] description: The parameter group description. It contains a maximum of 256 characters and cannot contain the following special characters:>!<"&'= the value is left blank by default.
-        :param pulumi.Input[_builtins.str] name: The parameter group name. It contains a maximum of 64 characters.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the RDS parameter group. If omitted, the
-               provider-level region will be used. Changing this creates a new parameter group.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] values: Parameter group values key/value pairs defined by users based on the default parameter groups.
         """
         pulumi.set(__self__, "datastore", datastore)
         if description is not None:
@@ -48,9 +42,6 @@ class ParametergroupArgs:
     @_builtins.property
     @pulumi.getter
     def datastore(self) -> pulumi.Input['ParametergroupDatastoreArgs']:
-        """
-        Database object. The database object structure is documented below. Changing this creates a new parameter group.
-        """
         return pulumi.get(self, "datastore")
 
     @datastore.setter
@@ -60,9 +51,6 @@ class ParametergroupArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The parameter group description. It contains a maximum of 256 characters and cannot contain the following special characters:>!<"&'= the value is left blank by default.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -72,9 +60,6 @@ class ParametergroupArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The parameter group name. It contains a maximum of 64 characters.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -84,10 +69,6 @@ class ParametergroupArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the RDS parameter group. If omitted, the
-        provider-level region will be used. Changing this creates a new parameter group.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -97,9 +78,6 @@ class ParametergroupArgs:
     @_builtins.property
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Parameter group values key/value pairs defined by users based on the default parameter groups.
-        """
         return pulumi.get(self, "values")
 
     @values.setter
@@ -120,13 +98,6 @@ class _ParametergroupState:
                  values: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Parametergroup resources.
-        :param pulumi.Input[Sequence[pulumi.Input['ParametergroupConfigurationParameterArgs']]] configuration_parameters: Indicates the parameter configuration defined by users based on the default parameters groups.
-        :param pulumi.Input['ParametergroupDatastoreArgs'] datastore: Database object. The database object structure is documented below. Changing this creates a new parameter group.
-        :param pulumi.Input[_builtins.str] description: The parameter group description. It contains a maximum of 256 characters and cannot contain the following special characters:>!<"&'= the value is left blank by default.
-        :param pulumi.Input[_builtins.str] name: The parameter group name. It contains a maximum of 64 characters.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the RDS parameter group. If omitted, the
-               provider-level region will be used. Changing this creates a new parameter group.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] values: Parameter group values key/value pairs defined by users based on the default parameter groups.
         """
         if configuration_parameters is not None:
             pulumi.set(__self__, "configuration_parameters", configuration_parameters)
@@ -148,9 +119,6 @@ class _ParametergroupState:
     @_builtins.property
     @pulumi.getter(name="configurationParameters")
     def configuration_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ParametergroupConfigurationParameterArgs']]]]:
-        """
-        Indicates the parameter configuration defined by users based on the default parameters groups.
-        """
         return pulumi.get(self, "configuration_parameters")
 
     @configuration_parameters.setter
@@ -169,9 +137,6 @@ class _ParametergroupState:
     @_builtins.property
     @pulumi.getter
     def datastore(self) -> Optional[pulumi.Input['ParametergroupDatastoreArgs']]:
-        """
-        Database object. The database object structure is documented below. Changing this creates a new parameter group.
-        """
         return pulumi.get(self, "datastore")
 
     @datastore.setter
@@ -181,9 +146,6 @@ class _ParametergroupState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The parameter group description. It contains a maximum of 256 characters and cannot contain the following special characters:>!<"&'= the value is left blank by default.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -193,9 +155,6 @@ class _ParametergroupState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The parameter group name. It contains a maximum of 64 characters.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -205,10 +164,6 @@ class _ParametergroupState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the RDS parameter group. If omitted, the
-        provider-level region will be used. Changing this creates a new parameter group.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -227,9 +182,6 @@ class _ParametergroupState:
     @_builtins.property
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Parameter group values key/value pairs defined by users based on the default parameter groups.
-        """
         return pulumi.get(self, "values")
 
     @values.setter
@@ -250,38 +202,9 @@ class Parametergroup(pulumi.CustomResource):
                  values: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Manages a RDS ParameterGroup resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        pg1 = sbercloud.rds.Parametergroup("pg_1",
-            name="pg_1",
-            datastore={
-                "type": "mysql",
-                "version": "5.6",
-            })
-        ```
-
-        ## Import
-
-        Parameter groups can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Rds/parametergroup:Parametergroup pg_1 7117d38e-4c8f-4624-a505-bd96b97d024c
-        ```
-
+        Create a Parametergroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ParametergroupDatastoreArgs', 'ParametergroupDatastoreArgsDict']] datastore: Database object. The database object structure is documented below. Changing this creates a new parameter group.
-        :param pulumi.Input[_builtins.str] description: The parameter group description. It contains a maximum of 256 characters and cannot contain the following special characters:>!<"&'= the value is left blank by default.
-        :param pulumi.Input[_builtins.str] name: The parameter group name. It contains a maximum of 64 characters.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the RDS parameter group. If omitted, the
-               provider-level region will be used. Changing this creates a new parameter group.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] values: Parameter group values key/value pairs defined by users based on the default parameter groups.
         """
         ...
     @overload
@@ -290,30 +213,7 @@ class Parametergroup(pulumi.CustomResource):
                  args: ParametergroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a RDS ParameterGroup resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        pg1 = sbercloud.rds.Parametergroup("pg_1",
-            name="pg_1",
-            datastore={
-                "type": "mysql",
-                "version": "5.6",
-            })
-        ```
-
-        ## Import
-
-        Parameter groups can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Rds/parametergroup:Parametergroup pg_1 7117d38e-4c8f-4624-a505-bd96b97d024c
-        ```
-
+        Create a Parametergroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ParametergroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -378,13 +278,6 @@ class Parametergroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ParametergroupConfigurationParameterArgs', 'ParametergroupConfigurationParameterArgsDict']]]] configuration_parameters: Indicates the parameter configuration defined by users based on the default parameters groups.
-        :param pulumi.Input[Union['ParametergroupDatastoreArgs', 'ParametergroupDatastoreArgsDict']] datastore: Database object. The database object structure is documented below. Changing this creates a new parameter group.
-        :param pulumi.Input[_builtins.str] description: The parameter group description. It contains a maximum of 256 characters and cannot contain the following special characters:>!<"&'= the value is left blank by default.
-        :param pulumi.Input[_builtins.str] name: The parameter group name. It contains a maximum of 64 characters.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the RDS parameter group. If omitted, the
-               provider-level region will be used. Changing this creates a new parameter group.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] values: Parameter group values key/value pairs defined by users based on the default parameter groups.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -403,9 +296,6 @@ class Parametergroup(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="configurationParameters")
     def configuration_parameters(self) -> pulumi.Output[Sequence['outputs.ParametergroupConfigurationParameter']]:
-        """
-        Indicates the parameter configuration defined by users based on the default parameters groups.
-        """
         return pulumi.get(self, "configuration_parameters")
 
     @_builtins.property
@@ -416,34 +306,21 @@ class Parametergroup(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def datastore(self) -> pulumi.Output['outputs.ParametergroupDatastore']:
-        """
-        Database object. The database object structure is documented below. Changing this creates a new parameter group.
-        """
         return pulumi.get(self, "datastore")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        The parameter group description. It contains a maximum of 256 characters and cannot contain the following special characters:>!<"&'= the value is left blank by default.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        The parameter group name. It contains a maximum of 64 characters.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the RDS parameter group. If omitted, the
-        provider-level region will be used. Changing this creates a new parameter group.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
@@ -454,8 +331,5 @@ class Parametergroup(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def values(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        Parameter group values key/value pairs defined by users based on the default parameter groups.
-        """
         return pulumi.get(self, "values")
 

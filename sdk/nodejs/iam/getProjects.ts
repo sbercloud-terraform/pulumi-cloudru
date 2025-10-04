@@ -6,35 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to query the project list within SberCloud.
- *
- * > You *must* have IAM read privileges to use this data source.
- *
- * ## Example Usage
- *
- * ### Obtain project information by name
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.Iam.getProjects({
- *     name: "ru-moscow-1",
- * });
- * ```
- *
- * ### Obtain special project information by name
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.Iam.getProjects({
- *     name: "MOS",
- * });
- * ```
- */
 export function getProjects(args?: GetProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -47,9 +18,6 @@ export function getProjects(args?: GetProjectsArgs, opts?: pulumi.InvokeOptions)
  * A collection of arguments for invoking getProjects.
  */
 export interface GetProjectsArgs {
-    /**
-     * Specifies the project name to query.
-     */
     name?: string;
 }
 
@@ -61,44 +29,9 @@ export interface GetProjectsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The project name.
-     */
     readonly name?: string;
-    /**
-     * The details of the query projects. The structure is documented below.
-     */
     readonly projects: outputs.Iam.GetProjectsProject[];
 }
-/**
- * Use this data source to query the project list within SberCloud.
- *
- * > You *must* have IAM read privileges to use this data source.
- *
- * ## Example Usage
- *
- * ### Obtain project information by name
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.Iam.getProjects({
- *     name: "ru-moscow-1",
- * });
- * ```
- *
- * ### Obtain special project information by name
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.Iam.getProjects({
- *     name: "MOS",
- * });
- * ```
- */
 export function getProjectsOutput(args?: GetProjectsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -111,8 +44,5 @@ export function getProjectsOutput(args?: GetProjectsOutputArgs, opts?: pulumi.In
  * A collection of arguments for invoking getProjects.
  */
 export interface GetProjectsOutputArgs {
-    /**
-     * Specifies the project name to query.
-     */
     name?: pulumi.Input<string>;
 }

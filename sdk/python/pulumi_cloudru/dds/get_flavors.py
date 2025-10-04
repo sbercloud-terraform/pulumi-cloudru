@@ -58,9 +58,6 @@ class GetFlavorsResult:
     @_builtins.property
     @pulumi.getter
     def flavors(self) -> Sequence['outputs.GetFlavorsFlavorResult']:
-        """
-        Indicates the flavors information. Structure is documented below.
-        """
         return pulumi.get(self, "flavors")
 
     @_builtins.property
@@ -74,9 +71,6 @@ class GetFlavorsResult:
     @_builtins.property
     @pulumi.getter
     def memory(self) -> Optional[_builtins.str]:
-        """
-        See 'memory' above.
-        """
         return pulumi.get(self, "memory")
 
     @_builtins.property
@@ -87,17 +81,11 @@ class GetFlavorsResult:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
-        """
-        See `type` above.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter
     def vcpus(self) -> Optional[_builtins.str]:
-        """
-        See `vcpus` above.
-        """
         return pulumi.get(self, "vcpus")
 
 
@@ -123,24 +111,7 @@ def get_flavors(engine_name: Optional[_builtins.str] = None,
                 vcpus: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFlavorsResult:
     """
-    Use this data source to get the ID of an available SberCloud dds flavor.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    flavor = sbercloud.Dds.get_flavors(engine_name="DDS-Community",
-        vcpus="8")
-    ```
-
-
-    :param _builtins.str engine_name: Specifies the engine name of the dds, "DDS-Community" and "DDS-Enhanced" are supported.
-    :param _builtins.str memory: Specifies the ram of the dds flavor in GB.
-    :param _builtins.str region: Specifies the region in which to obtain the V3 dds client. If omitted, the provider-level region will be used.
-    :param _builtins.str type: Specifies the type of the dds falvor. "mongos", "shard", "config", "replica" and "single" are supported.
-    :param _builtins.str vcpus: Specifies the vcpus of the dds flavor.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['engineName'] = engine_name
@@ -166,24 +137,7 @@ def get_flavors_output(engine_name: Optional[pulumi.Input[_builtins.str]] = None
                        vcpus: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFlavorsResult]:
     """
-    Use this data source to get the ID of an available SberCloud dds flavor.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    flavor = sbercloud.Dds.get_flavors(engine_name="DDS-Community",
-        vcpus="8")
-    ```
-
-
-    :param _builtins.str engine_name: Specifies the engine name of the dds, "DDS-Community" and "DDS-Enhanced" are supported.
-    :param _builtins.str memory: Specifies the ram of the dds flavor in GB.
-    :param _builtins.str region: Specifies the region in which to obtain the V3 dds client. If omitted, the provider-level region will be used.
-    :param _builtins.str type: Specifies the type of the dds falvor. "mongos", "shard", "config", "replica" and "single" are supported.
-    :param _builtins.str vcpus: Specifies the vcpus of the dds flavor.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['engineName'] = engine_name

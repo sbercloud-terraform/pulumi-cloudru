@@ -4,30 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages DLI SQL database resource within SberCloud.
- *
- * ## Example Usage
- *
- * ### Create a database
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const databaseName = config.requireObject<any>("databaseName");
- * const test = new sbercloud.dli.Database("test", {name: databaseName});
- * ```
- *
- * ## Import
- *
- * DLI SQL databases can be imported by their `name`, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Dli/database:Database test terraform_test
- * ```
- */
 export class Database extends pulumi.CustomResource {
     /**
      * Get an existing Database resource's state with the given name, ID, and optional extra
@@ -56,31 +32,10 @@ export class Database extends pulumi.CustomResource {
         return obj['__pulumiType'] === Database.__pulumiType;
     }
 
-    /**
-     * Specifies the description of a queue.
-     * Changing this parameter will create a new database resource.
-     */
     declare public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the enterprise project ID.
-     * The value 0 indicates the default enterprise project. Changing this parameter will create a new database resource.
-     */
     declare public readonly enterpriseProjectId: pulumi.Output<string>;
-    /**
-     * Specifies the database name. The name consists of 1 to 128 characters, starting
-     * with a letter or digit. Only letters, digits and underscores (_) are allowed and the name cannot be all digits.
-     * Changing this parameter will create a new database resource.
-     */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * Specifies the name of the SQL database owner.
-     * The owner must be IAM user.
-     */
     declare public readonly owner: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the DLI database resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new database resource.
-     */
     declare public readonly region: pulumi.Output<string>;
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
@@ -121,31 +76,10 @@ export class Database extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Database resources.
  */
 export interface DatabaseState {
-    /**
-     * Specifies the description of a queue.
-     * Changing this parameter will create a new database resource.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies the enterprise project ID.
-     * The value 0 indicates the default enterprise project. Changing this parameter will create a new database resource.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Specifies the database name. The name consists of 1 to 128 characters, starting
-     * with a letter or digit. Only letters, digits and underscores (_) are allowed and the name cannot be all digits.
-     * Changing this parameter will create a new database resource.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the SQL database owner.
-     * The owner must be IAM user.
-     */
     owner?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the DLI database resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new database resource.
-     */
     region?: pulumi.Input<string>;
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
@@ -154,31 +88,10 @@ export interface DatabaseState {
  * The set of arguments for constructing a Database resource.
  */
 export interface DatabaseArgs {
-    /**
-     * Specifies the description of a queue.
-     * Changing this parameter will create a new database resource.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies the enterprise project ID.
-     * The value 0 indicates the default enterprise project. Changing this parameter will create a new database resource.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Specifies the database name. The name consists of 1 to 128 characters, starting
-     * with a letter or digit. Only letters, digits and underscores (_) are allowed and the name cannot be all digits.
-     * Changing this parameter will create a new database resource.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the SQL database owner.
-     * The owner must be IAM user.
-     */
     owner?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the DLI database resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new database resource.
-     */
     region?: pulumi.Input<string>;
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -25,9 +25,6 @@ class VolumeAttachArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VolumeAttach resource.
-        :param pulumi.Input[_builtins.str] instance_id: The ID of the Instance to attach the Volume to.
-        :param pulumi.Input[_builtins.str] volume_id: The ID of the Volume to attach to an Instance.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the volume resource. If omitted, the provider-level region will be used. Changing this creates a new resource.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "volume_id", volume_id)
@@ -39,9 +36,6 @@ class VolumeAttachArgs:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        The ID of the Instance to attach the Volume to.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -51,9 +45,6 @@ class VolumeAttachArgs:
     @_builtins.property
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        The ID of the Volume to attach to an Instance.
-        """
         return pulumi.get(self, "volume_id")
 
     @volume_id.setter
@@ -72,9 +63,6 @@ class VolumeAttachArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the volume resource. If omitted, the provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -92,10 +80,6 @@ class _VolumeAttachState:
                  volume_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VolumeAttach resources.
-        :param pulumi.Input[_builtins.str] instance_id: The ID of the Instance to attach the Volume to.
-        :param pulumi.Input[_builtins.str] pci_address: PCI address of the block device.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the volume resource. If omitted, the provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] volume_id: The ID of the Volume to attach to an Instance.
         """
         if device is not None:
             pulumi.set(__self__, "device", device)
@@ -120,9 +104,6 @@ class _VolumeAttachState:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of the Instance to attach the Volume to.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -132,9 +113,6 @@ class _VolumeAttachState:
     @_builtins.property
     @pulumi.getter(name="pciAddress")
     def pci_address(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        PCI address of the block device.
-        """
         return pulumi.get(self, "pci_address")
 
     @pci_address.setter
@@ -144,9 +122,6 @@ class _VolumeAttachState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the volume resource. If omitted, the provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -156,9 +131,6 @@ class _VolumeAttachState:
     @_builtins.property
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of the Volume to attach to an Instance.
-        """
         return pulumi.get(self, "volume_id")
 
     @volume_id.setter
@@ -178,50 +150,9 @@ class VolumeAttach(pulumi.CustomResource):
                  volume_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Attaches a Volume to an Instance.
-
-        ## Example Usage
-
-        ### Basic attachment of a single volume to a single instance
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        myvol = sbercloud.evs.Volume("myvol",
-            name="volume",
-            availability_zone="ru-moscow-1a",
-            volume_type="SAS",
-            size=10)
-        myinstance = sbercloud.ecs.Instance("myinstance",
-            name="instance",
-            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
-            flavor_id="s6.small.1",
-            key_pair="my_key_pair_name",
-            security_groups=["default"],
-            availability_zone="ru-moscow-1a",
-            networks=[{
-                "uuid": "55534eaa-533a-419d-9b40-ec427ea7195a",
-            }])
-        attached = sbercloud.ecs.VolumeAttach("attached",
-            instance_id=myinstance.id,
-            volume_id=myvol.id)
-        ```
-
-        ## Import
-
-        Volume Attachments can be imported using the Instance ID and Volume ID
-        separated by a slash, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Ecs/volumeAttach:VolumeAttach va_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666
-        ```
-
+        Create a VolumeAttach resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] instance_id: The ID of the Instance to attach the Volume to.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the volume resource. If omitted, the provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] volume_id: The ID of the Volume to attach to an Instance.
         """
         ...
     @overload
@@ -230,45 +161,7 @@ class VolumeAttach(pulumi.CustomResource):
                  args: VolumeAttachArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Attaches a Volume to an Instance.
-
-        ## Example Usage
-
-        ### Basic attachment of a single volume to a single instance
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        myvol = sbercloud.evs.Volume("myvol",
-            name="volume",
-            availability_zone="ru-moscow-1a",
-            volume_type="SAS",
-            size=10)
-        myinstance = sbercloud.ecs.Instance("myinstance",
-            name="instance",
-            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
-            flavor_id="s6.small.1",
-            key_pair="my_key_pair_name",
-            security_groups=["default"],
-            availability_zone="ru-moscow-1a",
-            networks=[{
-                "uuid": "55534eaa-533a-419d-9b40-ec427ea7195a",
-            }])
-        attached = sbercloud.ecs.VolumeAttach("attached",
-            instance_id=myinstance.id,
-            volume_id=myvol.id)
-        ```
-
-        ## Import
-
-        Volume Attachments can be imported using the Instance ID and Volume ID
-        separated by a slash, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Ecs/volumeAttach:VolumeAttach va_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666
-        ```
-
+        Create a VolumeAttach resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param VolumeAttachArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -328,10 +221,6 @@ class VolumeAttach(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] instance_id: The ID of the Instance to attach the Volume to.
-        :param pulumi.Input[_builtins.str] pci_address: PCI address of the block device.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the volume resource. If omitted, the provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] volume_id: The ID of the Volume to attach to an Instance.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -352,32 +241,20 @@ class VolumeAttach(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The ID of the Instance to attach the Volume to.
-        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
     @pulumi.getter(name="pciAddress")
     def pci_address(self) -> pulumi.Output[_builtins.str]:
-        """
-        PCI address of the block device.
-        """
         return pulumi.get(self, "pci_address")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the volume resource. If omitted, the provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The ID of the Volume to attach to an Instance.
-        """
         return pulumi.get(self, "volume_id")
 

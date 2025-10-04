@@ -12,105 +12,14 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a Role assignment within group on SberCloud IAM Service.
-//
-// Note: You _must_ have admin privileges in your SberCloud cloud to use this resource.
-//
-// ## Example Usage
-//
-// ### Assign Role On Project Level
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/iam"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			role1, err := iam.GetRole(ctx, &iam.GetRoleArgs{
-//				Name: pulumi.StringRef("rds_adm"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			group1, err := iam.NewGroup(ctx, "group_1", &iam.GroupArgs{
-//				Name: pulumi.String("group_1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = iam.NewRoleAssignment(ctx, "role_assignment_1", &iam.RoleAssignmentArgs{
-//				RoleId:    pulumi.String(role1.Id),
-//				GroupId:   group1.ID(),
-//				ProjectId: pulumi.Any(projectId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Assign Role On Domain Level
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/iam"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			role1, err := iam.GetRole(ctx, &iam.GetRoleArgs{
-//				Name: pulumi.StringRef("secu_admin"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			group1, err := iam.NewGroup(ctx, "group_1", &iam.GroupArgs{
-//				Name: pulumi.String("group_1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = iam.NewRoleAssignment(ctx, "role_assignment_1", &iam.RoleAssignmentArgs{
-//				RoleId:   pulumi.String(role1.Id),
-//				GroupId:  group1.ID(),
-//				DomainId: pulumi.Any(domainId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type RoleAssignment struct {
 	pulumi.CustomResourceState
 
-	// Specifies the domain to assign the role
-	// in.
 	DomainId            pulumi.StringPtrOutput `pulumi:"domainId"`
 	EnterpriseProjectId pulumi.StringPtrOutput `pulumi:"enterpriseProjectId"`
-	// Specifies the group to assign the role to.
-	GroupId pulumi.StringOutput `pulumi:"groupId"`
-	// Specifies the project to assign the role
-	// in.
-	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
-	// Specifies the role to assign.
-	RoleId pulumi.StringOutput `pulumi:"roleId"`
+	GroupId             pulumi.StringOutput    `pulumi:"groupId"`
+	ProjectId           pulumi.StringPtrOutput `pulumi:"projectId"`
+	RoleId              pulumi.StringOutput    `pulumi:"roleId"`
 }
 
 // NewRoleAssignment registers a new resource with the given unique name, arguments, and options.
@@ -149,31 +58,19 @@ func GetRoleAssignment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RoleAssignment resources.
 type roleAssignmentState struct {
-	// Specifies the domain to assign the role
-	// in.
 	DomainId            *string `pulumi:"domainId"`
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the group to assign the role to.
-	GroupId *string `pulumi:"groupId"`
-	// Specifies the project to assign the role
-	// in.
-	ProjectId *string `pulumi:"projectId"`
-	// Specifies the role to assign.
-	RoleId *string `pulumi:"roleId"`
+	GroupId             *string `pulumi:"groupId"`
+	ProjectId           *string `pulumi:"projectId"`
+	RoleId              *string `pulumi:"roleId"`
 }
 
 type RoleAssignmentState struct {
-	// Specifies the domain to assign the role
-	// in.
 	DomainId            pulumi.StringPtrInput
 	EnterpriseProjectId pulumi.StringPtrInput
-	// Specifies the group to assign the role to.
-	GroupId pulumi.StringPtrInput
-	// Specifies the project to assign the role
-	// in.
-	ProjectId pulumi.StringPtrInput
-	// Specifies the role to assign.
-	RoleId pulumi.StringPtrInput
+	GroupId             pulumi.StringPtrInput
+	ProjectId           pulumi.StringPtrInput
+	RoleId              pulumi.StringPtrInput
 }
 
 func (RoleAssignmentState) ElementType() reflect.Type {
@@ -181,32 +78,20 @@ func (RoleAssignmentState) ElementType() reflect.Type {
 }
 
 type roleAssignmentArgs struct {
-	// Specifies the domain to assign the role
-	// in.
 	DomainId            *string `pulumi:"domainId"`
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the group to assign the role to.
-	GroupId string `pulumi:"groupId"`
-	// Specifies the project to assign the role
-	// in.
-	ProjectId *string `pulumi:"projectId"`
-	// Specifies the role to assign.
-	RoleId string `pulumi:"roleId"`
+	GroupId             string  `pulumi:"groupId"`
+	ProjectId           *string `pulumi:"projectId"`
+	RoleId              string  `pulumi:"roleId"`
 }
 
 // The set of arguments for constructing a RoleAssignment resource.
 type RoleAssignmentArgs struct {
-	// Specifies the domain to assign the role
-	// in.
 	DomainId            pulumi.StringPtrInput
 	EnterpriseProjectId pulumi.StringPtrInput
-	// Specifies the group to assign the role to.
-	GroupId pulumi.StringInput
-	// Specifies the project to assign the role
-	// in.
-	ProjectId pulumi.StringPtrInput
-	// Specifies the role to assign.
-	RoleId pulumi.StringInput
+	GroupId             pulumi.StringInput
+	ProjectId           pulumi.StringPtrInput
+	RoleId              pulumi.StringInput
 }
 
 func (RoleAssignmentArgs) ElementType() reflect.Type {
@@ -296,8 +181,6 @@ func (o RoleAssignmentOutput) ToRoleAssignmentOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Specifies the domain to assign the role
-// in.
 func (o RoleAssignmentOutput) DomainId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RoleAssignment) pulumi.StringPtrOutput { return v.DomainId }).(pulumi.StringPtrOutput)
 }
@@ -306,18 +189,14 @@ func (o RoleAssignmentOutput) EnterpriseProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RoleAssignment) pulumi.StringPtrOutput { return v.EnterpriseProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the group to assign the role to.
 func (o RoleAssignmentOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RoleAssignment) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
 }
 
-// Specifies the project to assign the role
-// in.
 func (o RoleAssignmentOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RoleAssignment) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the role to assign.
 func (o RoleAssignmentOutput) RoleId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RoleAssignment) pulumi.StringOutput { return v.RoleId }).(pulumi.StringOutput)
 }

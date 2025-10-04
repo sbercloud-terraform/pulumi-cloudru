@@ -6,29 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages a Shared Bandwidth resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const bandwidth1 = new sbercloud.vpc.Bandwidth("bandwidth_1", {
- *     name: "bandwidth_1",
- *     size: 5,
- * });
- * ```
- *
- * ## Import
- *
- * Shared Bandwidths can be imported using the `id`, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Vpc/bandwidth:Bandwidth bandwidth_1 7117d38e-4c8f-4624-a505-bd96b97d024c
- * ```
- */
 export class Bandwidth extends pulumi.CustomResource {
     /**
      * Get an existing Bandwidth resource's state with the given name, ID, and optional extra
@@ -58,48 +35,19 @@ export class Bandwidth extends pulumi.CustomResource {
     }
 
     declare public readonly autoRenew: pulumi.Output<string | undefined>;
-    /**
-     * Indicates the bandwidth type.
-     */
     declare public readonly bandwidthType: pulumi.Output<string>;
-    /**
-     * Indicates whether the billing is based on traffic, bandwidth, or 95th percentile bandwidth (enhanced).
-     */
     declare public readonly chargeMode: pulumi.Output<string>;
     declare public readonly chargingMode: pulumi.Output<string>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
-    /**
-     * The enterprise project id of the Shared Bandwidth. Changing
-     * this creates a new bandwidth.
-     */
     declare public readonly enterpriseProjectId: pulumi.Output<string>;
-    /**
-     * The name of the Shared Bandwidth.
-     */
     declare public readonly name: pulumi.Output<string>;
     declare public readonly period: pulumi.Output<number | undefined>;
     declare public readonly periodUnit: pulumi.Output<string | undefined>;
     declare public readonly publicBorderGroup: pulumi.Output<string>;
-    /**
-     * An array of EIPs that use the bandwidth. The object includes the following:
-     */
     declare public /*out*/ readonly publicips: pulumi.Output<outputs.Vpc.BandwidthPublicip[]>;
-    /**
-     * The region in which to create the Shared Bandwidth. If omitted, the
-     * provider-level region will be used. Changing this creates a new Shared Bandwidth resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Indicates whether the bandwidth is shared or dedicated.
-     */
     declare public /*out*/ readonly shareType: pulumi.Output<string>;
-    /**
-     * The size of the Shared Bandwidth. The value ranges from 5 to 2000 G.
-     */
     declare public readonly size: pulumi.Output<number>;
-    /**
-     * Indicates the bandwidth status.
-     */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
@@ -164,48 +112,19 @@ export class Bandwidth extends pulumi.CustomResource {
  */
 export interface BandwidthState {
     autoRenew?: pulumi.Input<string>;
-    /**
-     * Indicates the bandwidth type.
-     */
     bandwidthType?: pulumi.Input<string>;
-    /**
-     * Indicates whether the billing is based on traffic, bandwidth, or 95th percentile bandwidth (enhanced).
-     */
     chargeMode?: pulumi.Input<string>;
     chargingMode?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
-    /**
-     * The enterprise project id of the Shared Bandwidth. Changing
-     * this creates a new bandwidth.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * The name of the Shared Bandwidth.
-     */
     name?: pulumi.Input<string>;
     period?: pulumi.Input<number>;
     periodUnit?: pulumi.Input<string>;
     publicBorderGroup?: pulumi.Input<string>;
-    /**
-     * An array of EIPs that use the bandwidth. The object includes the following:
-     */
     publicips?: pulumi.Input<pulumi.Input<inputs.Vpc.BandwidthPublicip>[]>;
-    /**
-     * The region in which to create the Shared Bandwidth. If omitted, the
-     * provider-level region will be used. Changing this creates a new Shared Bandwidth resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Indicates whether the bandwidth is shared or dedicated.
-     */
     shareType?: pulumi.Input<string>;
-    /**
-     * The size of the Shared Bandwidth. The value ranges from 5 to 2000 G.
-     */
     size?: pulumi.Input<number>;
-    /**
-     * Indicates the bandwidth status.
-     */
     status?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<string>;
 }
@@ -215,34 +134,14 @@ export interface BandwidthState {
  */
 export interface BandwidthArgs {
     autoRenew?: pulumi.Input<string>;
-    /**
-     * Indicates the bandwidth type.
-     */
     bandwidthType?: pulumi.Input<string>;
-    /**
-     * Indicates whether the billing is based on traffic, bandwidth, or 95th percentile bandwidth (enhanced).
-     */
     chargeMode?: pulumi.Input<string>;
     chargingMode?: pulumi.Input<string>;
-    /**
-     * The enterprise project id of the Shared Bandwidth. Changing
-     * this creates a new bandwidth.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * The name of the Shared Bandwidth.
-     */
     name?: pulumi.Input<string>;
     period?: pulumi.Input<number>;
     periodUnit?: pulumi.Input<string>;
     publicBorderGroup?: pulumi.Input<string>;
-    /**
-     * The region in which to create the Shared Bandwidth. If omitted, the
-     * provider-level region will be used. Changing this creates a new Shared Bandwidth resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * The size of the Shared Bandwidth. The value ranges from 5 to 2000 G.
-     */
     size: pulumi.Input<number>;
 }

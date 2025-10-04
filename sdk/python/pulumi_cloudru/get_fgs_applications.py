@@ -58,18 +58,11 @@ class GetFgsApplicationsResult:
     @_builtins.property
     @pulumi.getter
     def applications(self) -> Sequence['outputs.GetFgsApplicationsApplicationResult']:
-        """
-        All applications that match the filter parameters.
-        The applications structure is documented below.
-        """
         return pulumi.get(self, "applications")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
-        """
-        The description of application.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
@@ -83,9 +76,6 @@ class GetFgsApplicationsResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        The name of application.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -96,9 +86,6 @@ class GetFgsApplicationsResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
-        """
-        The status of application.
-        """
         return pulumi.get(self, "status")
 
 
@@ -124,29 +111,7 @@ def get_fgs_applications(application_id: Optional[_builtins.str] = None,
                          status: Optional[_builtins.str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFgsApplicationsResult:
     """
-    Use this data source to get the list of applications within SberCloud.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    name = config.require_object("name")
-    test = sbercloud.get_fgs_applications(name=name)
-    ```
-
-
-    :param _builtins.str application_id: Specifies the application ID used to query specified application.
-    :param _builtins.str description: Specifies the description of the application to be queried.
-    :param _builtins.str name: Specifies the application name used to query specified application.
-    :param _builtins.str region: Specifies the region where the applications are located.  
-           If omitted, the provider-level region will be used.
-    :param _builtins.str status: Specifies the status of the application to be queried.  
-           The valid values are as follows:
-           + **success**: The application created successfully.
-           + **repoFail**: The application repository creation failed.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['applicationId'] = application_id
@@ -172,29 +137,7 @@ def get_fgs_applications_output(application_id: Optional[pulumi.Input[Optional[_
                                 status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFgsApplicationsResult]:
     """
-    Use this data source to get the list of applications within SberCloud.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    name = config.require_object("name")
-    test = sbercloud.get_fgs_applications(name=name)
-    ```
-
-
-    :param _builtins.str application_id: Specifies the application ID used to query specified application.
-    :param _builtins.str description: Specifies the description of the application to be queried.
-    :param _builtins.str name: Specifies the application name used to query specified application.
-    :param _builtins.str region: Specifies the region where the applications are located.  
-           If omitted, the provider-level region will be used.
-    :param _builtins.str status: Specifies the status of the application to be queried.  
-           The valid values are as follows:
-           + **success**: The application created successfully.
-           + **repoFail**: The application repository creation failed.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['applicationId'] = application_id

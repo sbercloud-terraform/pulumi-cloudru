@@ -4,26 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * This resource can be useful for getting back a list of subnet ids for a vpc.
- *
- * ## Example Usage
- *
- * The following example shows outputing all cidr blocks for every subnet id in a vpc.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const subnetIds = sbercloud.Vpc.getSubnetIds({
- *     vpcId: vpcId,
- * });
- * const subnet = .map(__index => (sbercloud.Vpc.getSubnet({
- *     id: _arg0_.ids[__index],
- * })));
- * export const subnetCidrBlocks = subnet.apply(subnet => subnet.map(s => (`${s.name}: ${s.id}: ${s.cidr}`)));
- * ```
- */
 export function getSubnetIds(args: GetSubnetIdsArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetIdsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:Vpc/getSubnetIds:getSubnetIds", {
@@ -36,14 +16,7 @@ export function getSubnetIds(args: GetSubnetIdsArgs, opts?: pulumi.InvokeOptions
  * A collection of arguments for invoking getSubnetIds.
  */
 export interface GetSubnetIdsArgs {
-    /**
-     * The region in which to obtain the subnet ids. If omitted, the provider-level region will
-     * be used.
-     */
     region?: string;
-    /**
-     * Specifies the VPC ID used as the query filter.
-     */
     vpcId: string;
 }
 
@@ -55,33 +28,10 @@ export interface GetSubnetIdsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * A set of all the subnet ids found. This data source will fail if none are found.
-     */
     readonly ids: string[];
     readonly region: string;
     readonly vpcId: string;
 }
-/**
- * This resource can be useful for getting back a list of subnet ids for a vpc.
- *
- * ## Example Usage
- *
- * The following example shows outputing all cidr blocks for every subnet id in a vpc.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const subnetIds = sbercloud.Vpc.getSubnetIds({
- *     vpcId: vpcId,
- * });
- * const subnet = .map(__index => (sbercloud.Vpc.getSubnet({
- *     id: _arg0_.ids[__index],
- * })));
- * export const subnetCidrBlocks = subnet.apply(subnet => subnet.map(s => (`${s.name}: ${s.id}: ${s.cidr}`)));
- * ```
- */
 export function getSubnetIdsOutput(args: GetSubnetIdsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSubnetIdsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:Vpc/getSubnetIds:getSubnetIds", {
@@ -94,13 +44,6 @@ export function getSubnetIdsOutput(args: GetSubnetIdsOutputArgs, opts?: pulumi.I
  * A collection of arguments for invoking getSubnetIds.
  */
 export interface GetSubnetIdsOutputArgs {
-    /**
-     * The region in which to obtain the subnet ids. If omitted, the provider-level region will
-     * be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the VPC ID used as the query filter.
-     */
     vpcId: pulumi.Input<string>;
 }

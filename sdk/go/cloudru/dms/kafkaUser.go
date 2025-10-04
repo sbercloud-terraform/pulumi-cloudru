@@ -12,73 +12,17 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a DMS kafka user resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/dms"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			kafkaInstanceId := cfg.RequireObject("kafkaInstanceId")
-//			userPassword := cfg.RequireObject("userPassword")
-//			_, err := dms.NewKafkaUser(ctx, "user", &dms.KafkaUserArgs{
-//				InstanceId:  pulumi.Any(kafkaInstanceId),
-//				Name:        pulumi.String("user_1"),
-//				Password:    pulumi.Any(userPassword),
-//				Description: pulumi.String("test_description"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// DMS kafka users can be imported using the kafka instance ID and user name separated by a slash, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Dms/kafkaUser:KafkaUser user c8057fe5-23a8-46ef-ad83-c0055b4e0c5c/user_1
-// ```
 type KafkaUser struct {
 	pulumi.CustomResourceState
 
-	// Indicates the create time.
-	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Indicates whether the application is the default application.
-	DefaultApp pulumi.BoolOutput `pulumi:"defaultApp"`
-	// Specifies the description of the user.
+	CreatedAt   pulumi.StringOutput    `pulumi:"createdAt"`
+	DefaultApp  pulumi.BoolOutput      `pulumi:"defaultApp"`
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Specifies the ID of the DMS kafka instance to which the user belongs.
-	// Changing this creates a new resource.
-	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Specifies the name of the user. Changing this creates a new resource.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the password of the user. The parameter must be 8 to 32 characters
-	// long and contain only letters(case-sensitive), digits, and special characters(`~!@#$%^&*()-_=+|[{}]:'",<.>/?).
-	// The value must be different from name.
-	Password pulumi.StringOutput `pulumi:"password"`
-	// The region in which to create the DMS kafka user resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Indicates the user role.
-	Role pulumi.StringOutput `pulumi:"role"`
+	InstanceId  pulumi.StringOutput    `pulumi:"instanceId"`
+	Name        pulumi.StringOutput    `pulumi:"name"`
+	Password    pulumi.StringOutput    `pulumi:"password"`
+	Region      pulumi.StringOutput    `pulumi:"region"`
+	Role        pulumi.StringOutput    `pulumi:"role"`
 }
 
 // NewKafkaUser registers a new resource with the given unique name, arguments, and options.
@@ -124,49 +68,25 @@ func GetKafkaUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KafkaUser resources.
 type kafkaUserState struct {
-	// Indicates the create time.
-	CreatedAt *string `pulumi:"createdAt"`
-	// Indicates whether the application is the default application.
-	DefaultApp *bool `pulumi:"defaultApp"`
-	// Specifies the description of the user.
+	CreatedAt   *string `pulumi:"createdAt"`
+	DefaultApp  *bool   `pulumi:"defaultApp"`
 	Description *string `pulumi:"description"`
-	// Specifies the ID of the DMS kafka instance to which the user belongs.
-	// Changing this creates a new resource.
-	InstanceId *string `pulumi:"instanceId"`
-	// Specifies the name of the user. Changing this creates a new resource.
-	Name *string `pulumi:"name"`
-	// Specifies the password of the user. The parameter must be 8 to 32 characters
-	// long and contain only letters(case-sensitive), digits, and special characters(`~!@#$%^&*()-_=+|[{}]:'",<.>/?).
-	// The value must be different from name.
-	Password *string `pulumi:"password"`
-	// The region in which to create the DMS kafka user resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region *string `pulumi:"region"`
-	// Indicates the user role.
-	Role *string `pulumi:"role"`
+	InstanceId  *string `pulumi:"instanceId"`
+	Name        *string `pulumi:"name"`
+	Password    *string `pulumi:"password"`
+	Region      *string `pulumi:"region"`
+	Role        *string `pulumi:"role"`
 }
 
 type KafkaUserState struct {
-	// Indicates the create time.
-	CreatedAt pulumi.StringPtrInput
-	// Indicates whether the application is the default application.
-	DefaultApp pulumi.BoolPtrInput
-	// Specifies the description of the user.
+	CreatedAt   pulumi.StringPtrInput
+	DefaultApp  pulumi.BoolPtrInput
 	Description pulumi.StringPtrInput
-	// Specifies the ID of the DMS kafka instance to which the user belongs.
-	// Changing this creates a new resource.
-	InstanceId pulumi.StringPtrInput
-	// Specifies the name of the user. Changing this creates a new resource.
-	Name pulumi.StringPtrInput
-	// Specifies the password of the user. The parameter must be 8 to 32 characters
-	// long and contain only letters(case-sensitive), digits, and special characters(`~!@#$%^&*()-_=+|[{}]:'",<.>/?).
-	// The value must be different from name.
-	Password pulumi.StringPtrInput
-	// The region in which to create the DMS kafka user resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringPtrInput
-	// Indicates the user role.
-	Role pulumi.StringPtrInput
+	InstanceId  pulumi.StringPtrInput
+	Name        pulumi.StringPtrInput
+	Password    pulumi.StringPtrInput
+	Region      pulumi.StringPtrInput
+	Role        pulumi.StringPtrInput
 }
 
 func (KafkaUserState) ElementType() reflect.Type {
@@ -174,38 +94,20 @@ func (KafkaUserState) ElementType() reflect.Type {
 }
 
 type kafkaUserArgs struct {
-	// Specifies the description of the user.
 	Description *string `pulumi:"description"`
-	// Specifies the ID of the DMS kafka instance to which the user belongs.
-	// Changing this creates a new resource.
-	InstanceId string `pulumi:"instanceId"`
-	// Specifies the name of the user. Changing this creates a new resource.
-	Name *string `pulumi:"name"`
-	// Specifies the password of the user. The parameter must be 8 to 32 characters
-	// long and contain only letters(case-sensitive), digits, and special characters(`~!@#$%^&*()-_=+|[{}]:'",<.>/?).
-	// The value must be different from name.
-	Password string `pulumi:"password"`
-	// The region in which to create the DMS kafka user resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region *string `pulumi:"region"`
+	InstanceId  string  `pulumi:"instanceId"`
+	Name        *string `pulumi:"name"`
+	Password    string  `pulumi:"password"`
+	Region      *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a KafkaUser resource.
 type KafkaUserArgs struct {
-	// Specifies the description of the user.
 	Description pulumi.StringPtrInput
-	// Specifies the ID of the DMS kafka instance to which the user belongs.
-	// Changing this creates a new resource.
-	InstanceId pulumi.StringInput
-	// Specifies the name of the user. Changing this creates a new resource.
-	Name pulumi.StringPtrInput
-	// Specifies the password of the user. The parameter must be 8 to 32 characters
-	// long and contain only letters(case-sensitive), digits, and special characters(`~!@#$%^&*()-_=+|[{}]:'",<.>/?).
-	// The value must be different from name.
-	Password pulumi.StringInput
-	// The region in which to create the DMS kafka user resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringPtrInput
+	InstanceId  pulumi.StringInput
+	Name        pulumi.StringPtrInput
+	Password    pulumi.StringInput
+	Region      pulumi.StringPtrInput
 }
 
 func (KafkaUserArgs) ElementType() reflect.Type {
@@ -295,46 +197,34 @@ func (o KafkaUserOutput) ToKafkaUserOutputWithContext(ctx context.Context) Kafka
 	return o
 }
 
-// Indicates the create time.
 func (o KafkaUserOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaUser) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Indicates whether the application is the default application.
 func (o KafkaUserOutput) DefaultApp() pulumi.BoolOutput {
 	return o.ApplyT(func(v *KafkaUser) pulumi.BoolOutput { return v.DefaultApp }).(pulumi.BoolOutput)
 }
 
-// Specifies the description of the user.
 func (o KafkaUserOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaUser) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the ID of the DMS kafka instance to which the user belongs.
-// Changing this creates a new resource.
 func (o KafkaUserOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaUser) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the user. Changing this creates a new resource.
 func (o KafkaUserOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaUser) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the password of the user. The parameter must be 8 to 32 characters
-// long and contain only letters(case-sensitive), digits, and special characters(`~!@#$%^&*()-_=+|[{}]:'",<.>/?).
-// The value must be different from name.
 func (o KafkaUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
-// The region in which to create the DMS kafka user resource. If omitted, the
-// provider-level region will be used. Changing this creates a new resource.
 func (o KafkaUserOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaUser) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Indicates the user role.
 func (o KafkaUserOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaUser) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }

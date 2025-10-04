@@ -42,43 +42,14 @@ class VpnConnectionArgs:
         The set of arguments for constructing a VpnConnection resource.
         :param pulumi.Input[_builtins.str] customer_gateway_id: The customer gateway ID.
         :param pulumi.Input[_builtins.str] gateway_id: The VPN gateway ID.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] gateway_ip: The VPN gateway IP ID.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] psk: The pre-shared key.
         :param pulumi.Input[_builtins.str] vpn_type: The connection type. The value can be **policy**, **static** or **bgp**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] enable_nqa: Whether to enable NQA check. Defaults to **false**.
+        :param pulumi.Input[_builtins.bool] enable_nqa: Whether to enable NQA check.
         :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID.
-        :param pulumi.Input[_builtins.str] ha_role: Specifies the mode of the VPN connection.
-               The valid values are **master** and **slave**, defaults to **master**.
-               This parameter is optional when you create a connection for a VPN gateway in **active-active** mode.
-               When you create a connection for a VPN gateway in **active-standby** mode, **master** indicates
-               the active connection, and **slave** indicates the standby connection.
-               In **active-active** mode, this field must be set to **master** for the connection established
-               using the active EIP or active private IP address of the VPN gateway, and must be set to **slave**
-               for the connection established using active EIP 2 or active private IP address 2 of the VPN gateway.
-               
-               Changing this parameter will create a new resource.
-               
-               <a name="Connection_CreateRequestIkePolicy"></a>
-               The `ikepolicy` block supports:
-        :param pulumi.Input['VpnConnectionIkepolicyArgs'] ikepolicy: The IKE policy configurations.
-               The ikepolicy structure is documented below.
-        :param pulumi.Input['VpnConnectionIpsecpolicyArgs'] ipsecpolicy: The IPsec policy configurations.
-               The ipsecpolicy structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the VPN connection.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] peer_subnets: The CIDR list of customer subnets. This parameter must be empty
-               when the `attachment_type` of the VPN gateway is set to **er** and `vpn_type` is set to **policy** or **bgp**.
-               This parameter is mandatory in other scenarios.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] peer_subnets: The customer subnets.
         :param pulumi.Input[Sequence[pulumi.Input['VpnConnectionPolicyRuleArgs']]] policy_rules: The policy rules. Only works when vpn_type is set to **policy**
-               The policy_rules structure is documented below.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the tags of the VPN connection.
         :param pulumi.Input[_builtins.str] tunnel_local_address: The local tunnel address.
         :param pulumi.Input[_builtins.str] tunnel_peer_address: The peer tunnel address.
         """
@@ -129,8 +100,6 @@ class VpnConnectionArgs:
     def gateway_id(self) -> pulumi.Input[_builtins.str]:
         """
         The VPN gateway ID.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "gateway_id")
 
@@ -143,8 +112,6 @@ class VpnConnectionArgs:
     def gateway_ip(self) -> pulumi.Input[_builtins.str]:
         """
         The VPN gateway IP ID.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "gateway_ip")
 
@@ -169,8 +136,6 @@ class VpnConnectionArgs:
     def vpn_type(self) -> pulumi.Input[_builtins.str]:
         """
         The connection type. The value can be **policy**, **static** or **bgp**.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "vpn_type")
 
@@ -182,7 +147,7 @@ class VpnConnectionArgs:
     @pulumi.getter(name="enableNqa")
     def enable_nqa(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to enable NQA check. Defaults to **false**.
+        Whether to enable NQA check.
         """
         return pulumi.get(self, "enable_nqa")
 
@@ -205,21 +170,6 @@ class VpnConnectionArgs:
     @_builtins.property
     @pulumi.getter(name="haRole")
     def ha_role(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the mode of the VPN connection.
-        The valid values are **master** and **slave**, defaults to **master**.
-        This parameter is optional when you create a connection for a VPN gateway in **active-active** mode.
-        When you create a connection for a VPN gateway in **active-standby** mode, **master** indicates
-        the active connection, and **slave** indicates the standby connection.
-        In **active-active** mode, this field must be set to **master** for the connection established
-        using the active EIP or active private IP address of the VPN gateway, and must be set to **slave**
-        for the connection established using active EIP 2 or active private IP address 2 of the VPN gateway.
-
-        Changing this parameter will create a new resource.
-
-        <a name="Connection_CreateRequestIkePolicy"></a>
-        The `ikepolicy` block supports:
-        """
         return pulumi.get(self, "ha_role")
 
     @ha_role.setter
@@ -229,10 +179,6 @@ class VpnConnectionArgs:
     @_builtins.property
     @pulumi.getter
     def ikepolicy(self) -> Optional[pulumi.Input['VpnConnectionIkepolicyArgs']]:
-        """
-        The IKE policy configurations.
-        The ikepolicy structure is documented below.
-        """
         return pulumi.get(self, "ikepolicy")
 
     @ikepolicy.setter
@@ -242,10 +188,6 @@ class VpnConnectionArgs:
     @_builtins.property
     @pulumi.getter
     def ipsecpolicy(self) -> Optional[pulumi.Input['VpnConnectionIpsecpolicyArgs']]:
-        """
-        The IPsec policy configurations.
-        The ipsecpolicy structure is documented below.
-        """
         return pulumi.get(self, "ipsecpolicy")
 
     @ipsecpolicy.setter
@@ -268,9 +210,7 @@ class VpnConnectionArgs:
     @pulumi.getter(name="peerSubnets")
     def peer_subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The CIDR list of customer subnets. This parameter must be empty
-        when the `attachment_type` of the VPN gateway is set to **er** and `vpn_type` is set to **policy** or **bgp**.
-        This parameter is mandatory in other scenarios.
+        The customer subnets.
         """
         return pulumi.get(self, "peer_subnets")
 
@@ -283,7 +223,6 @@ class VpnConnectionArgs:
     def policy_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionPolicyRuleArgs']]]]:
         """
         The policy rules. Only works when vpn_type is set to **policy**
-        The policy_rules structure is documented below.
         """
         return pulumi.get(self, "policy_rules")
 
@@ -294,10 +233,6 @@ class VpnConnectionArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -307,9 +242,6 @@ class VpnConnectionArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the tags of the VPN connection.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -368,48 +300,19 @@ class _VpnConnectionState:
         Input properties used for looking up and filtering VpnConnection resources.
         :param pulumi.Input[_builtins.str] created_at: The create time.
         :param pulumi.Input[_builtins.str] customer_gateway_id: The customer gateway ID.
-        :param pulumi.Input[_builtins.bool] enable_nqa: Whether to enable NQA check. Defaults to **false**.
+        :param pulumi.Input[_builtins.bool] enable_nqa: Whether to enable NQA check.
         :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID.
         :param pulumi.Input[_builtins.str] gateway_id: The VPN gateway ID.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] gateway_ip: The VPN gateway IP ID.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] ha_role: Specifies the mode of the VPN connection.
-               The valid values are **master** and **slave**, defaults to **master**.
-               This parameter is optional when you create a connection for a VPN gateway in **active-active** mode.
-               When you create a connection for a VPN gateway in **active-standby** mode, **master** indicates
-               the active connection, and **slave** indicates the standby connection.
-               In **active-active** mode, this field must be set to **master** for the connection established
-               using the active EIP or active private IP address of the VPN gateway, and must be set to **slave**
-               for the connection established using active EIP 2 or active private IP address 2 of the VPN gateway.
-               
-               Changing this parameter will create a new resource.
-               
-               <a name="Connection_CreateRequestIkePolicy"></a>
-               The `ikepolicy` block supports:
-        :param pulumi.Input['VpnConnectionIkepolicyArgs'] ikepolicy: The IKE policy configurations.
-               The ikepolicy structure is documented below.
-        :param pulumi.Input['VpnConnectionIpsecpolicyArgs'] ipsecpolicy: The IPsec policy configurations.
-               The ipsecpolicy structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the VPN connection.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] peer_subnets: The CIDR list of customer subnets. This parameter must be empty
-               when the `attachment_type` of the VPN gateway is set to **er** and `vpn_type` is set to **policy** or **bgp**.
-               This parameter is mandatory in other scenarios.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] peer_subnets: The customer subnets.
         :param pulumi.Input[Sequence[pulumi.Input['VpnConnectionPolicyRuleArgs']]] policy_rules: The policy rules. Only works when vpn_type is set to **policy**
-               The policy_rules structure is documented below.
         :param pulumi.Input[_builtins.str] psk: The pre-shared key.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] status: The status of the VPN connection.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the tags of the VPN connection.
         :param pulumi.Input[_builtins.str] tunnel_local_address: The local tunnel address.
         :param pulumi.Input[_builtins.str] tunnel_peer_address: The peer tunnel address.
         :param pulumi.Input[_builtins.str] updated_at: The update time.
         :param pulumi.Input[_builtins.str] vpn_type: The connection type. The value can be **policy**, **static** or **bgp**.
-               
-               Changing this parameter will create a new resource.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -480,7 +383,7 @@ class _VpnConnectionState:
     @pulumi.getter(name="enableNqa")
     def enable_nqa(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to enable NQA check. Defaults to **false**.
+        Whether to enable NQA check.
         """
         return pulumi.get(self, "enable_nqa")
 
@@ -505,8 +408,6 @@ class _VpnConnectionState:
     def gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The VPN gateway ID.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "gateway_id")
 
@@ -519,8 +420,6 @@ class _VpnConnectionState:
     def gateway_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The VPN gateway IP ID.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "gateway_ip")
 
@@ -531,21 +430,6 @@ class _VpnConnectionState:
     @_builtins.property
     @pulumi.getter(name="haRole")
     def ha_role(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the mode of the VPN connection.
-        The valid values are **master** and **slave**, defaults to **master**.
-        This parameter is optional when you create a connection for a VPN gateway in **active-active** mode.
-        When you create a connection for a VPN gateway in **active-standby** mode, **master** indicates
-        the active connection, and **slave** indicates the standby connection.
-        In **active-active** mode, this field must be set to **master** for the connection established
-        using the active EIP or active private IP address of the VPN gateway, and must be set to **slave**
-        for the connection established using active EIP 2 or active private IP address 2 of the VPN gateway.
-
-        Changing this parameter will create a new resource.
-
-        <a name="Connection_CreateRequestIkePolicy"></a>
-        The `ikepolicy` block supports:
-        """
         return pulumi.get(self, "ha_role")
 
     @ha_role.setter
@@ -555,10 +439,6 @@ class _VpnConnectionState:
     @_builtins.property
     @pulumi.getter
     def ikepolicy(self) -> Optional[pulumi.Input['VpnConnectionIkepolicyArgs']]:
-        """
-        The IKE policy configurations.
-        The ikepolicy structure is documented below.
-        """
         return pulumi.get(self, "ikepolicy")
 
     @ikepolicy.setter
@@ -568,10 +448,6 @@ class _VpnConnectionState:
     @_builtins.property
     @pulumi.getter
     def ipsecpolicy(self) -> Optional[pulumi.Input['VpnConnectionIpsecpolicyArgs']]:
-        """
-        The IPsec policy configurations.
-        The ipsecpolicy structure is documented below.
-        """
         return pulumi.get(self, "ipsecpolicy")
 
     @ipsecpolicy.setter
@@ -594,9 +470,7 @@ class _VpnConnectionState:
     @pulumi.getter(name="peerSubnets")
     def peer_subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The CIDR list of customer subnets. This parameter must be empty
-        when the `attachment_type` of the VPN gateway is set to **er** and `vpn_type` is set to **policy** or **bgp**.
-        This parameter is mandatory in other scenarios.
+        The customer subnets.
         """
         return pulumi.get(self, "peer_subnets")
 
@@ -609,7 +483,6 @@ class _VpnConnectionState:
     def policy_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionPolicyRuleArgs']]]]:
         """
         The policy rules. Only works when vpn_type is set to **policy**
-        The policy_rules structure is documented below.
         """
         return pulumi.get(self, "policy_rules")
 
@@ -632,10 +505,6 @@ class _VpnConnectionState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -657,9 +526,6 @@ class _VpnConnectionState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the tags of the VPN connection.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -707,8 +573,6 @@ class _VpnConnectionState:
     def vpn_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The connection type. The value can be **policy**, **static** or **bgp**.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "vpn_type")
 
@@ -742,123 +606,21 @@ class VpnConnection(pulumi.CustomResource):
                  vpn_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a VPN connection resource within SberCloud.
-
-        ## Example Usage
-
-        ### Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        peer_subnet = config.require_object("peerSubnet")
-        gateway_id = config.require_object("gatewayId")
-        gateway_ip = config.require_object("gatewayIp")
-        customer_gateway_id = config.require_object("customerGatewayId")
-        test = sbercloud.VpnConnection("test",
-            name=name,
-            gateway_id=gateway_id,
-            gateway_ip=gateway_ip,
-            customer_gateway_id=customer_gateway_id,
-            peer_subnets=[peer_subnet],
-            vpn_type="static",
-            psk="Test@123")
-        ```
-
-        ### VPN connection with policy
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        peer_subnet = config.require_object("peerSubnet")
-        gateway_id = config.require_object("gatewayId")
-        gateway_ip = config.require_object("gatewayIp")
-        customer_gateway_id = config.require_object("customerGatewayId")
-        test = sbercloud.VpnConnection("test",
-            name=name,
-            gateway_id=gateway_id,
-            gateway_ip=gateway_ip,
-            customer_gateway_id=customer_gateway_id,
-            peer_subnets=[peer_subnet],
-            vpn_type="static",
-            psk="Test@123",
-            ikepolicy={
-                "authentication_algorithm": "sha2-256",
-                "authentication_method": "pre-share",
-                "encryption_algorithm": "aes-128",
-                "ike_version": "v2",
-                "lifetime_seconds": 86400,
-                "pfs": "group14",
-            },
-            ipsecpolicy={
-                "authentication_algorithm": "sha2-256",
-                "encapsulation_mode": "tunnel",
-                "encryption_algorithm": "aes-128",
-                "lifetime_seconds": 3600,
-                "pfs": "group14",
-                "transform_protocol": "esp",
-            })
-        ```
-
-        ## Import
-
-        The connection can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/vpnConnection:VpnConnection test <id>
-        ```
-
+        Create a VpnConnection resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] customer_gateway_id: The customer gateway ID.
-        :param pulumi.Input[_builtins.bool] enable_nqa: Whether to enable NQA check. Defaults to **false**.
+        :param pulumi.Input[_builtins.bool] enable_nqa: Whether to enable NQA check.
         :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID.
         :param pulumi.Input[_builtins.str] gateway_id: The VPN gateway ID.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] gateway_ip: The VPN gateway IP ID.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] ha_role: Specifies the mode of the VPN connection.
-               The valid values are **master** and **slave**, defaults to **master**.
-               This parameter is optional when you create a connection for a VPN gateway in **active-active** mode.
-               When you create a connection for a VPN gateway in **active-standby** mode, **master** indicates
-               the active connection, and **slave** indicates the standby connection.
-               In **active-active** mode, this field must be set to **master** for the connection established
-               using the active EIP or active private IP address of the VPN gateway, and must be set to **slave**
-               for the connection established using active EIP 2 or active private IP address 2 of the VPN gateway.
-               
-               Changing this parameter will create a new resource.
-               
-               <a name="Connection_CreateRequestIkePolicy"></a>
-               The `ikepolicy` block supports:
-        :param pulumi.Input[Union['VpnConnectionIkepolicyArgs', 'VpnConnectionIkepolicyArgsDict']] ikepolicy: The IKE policy configurations.
-               The ikepolicy structure is documented below.
-        :param pulumi.Input[Union['VpnConnectionIpsecpolicyArgs', 'VpnConnectionIpsecpolicyArgsDict']] ipsecpolicy: The IPsec policy configurations.
-               The ipsecpolicy structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the VPN connection.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] peer_subnets: The CIDR list of customer subnets. This parameter must be empty
-               when the `attachment_type` of the VPN gateway is set to **er** and `vpn_type` is set to **policy** or **bgp**.
-               This parameter is mandatory in other scenarios.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] peer_subnets: The customer subnets.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VpnConnectionPolicyRuleArgs', 'VpnConnectionPolicyRuleArgsDict']]]] policy_rules: The policy rules. Only works when vpn_type is set to **policy**
-               The policy_rules structure is documented below.
         :param pulumi.Input[_builtins.str] psk: The pre-shared key.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the tags of the VPN connection.
         :param pulumi.Input[_builtins.str] tunnel_local_address: The local tunnel address.
         :param pulumi.Input[_builtins.str] tunnel_peer_address: The peer tunnel address.
         :param pulumi.Input[_builtins.str] vpn_type: The connection type. The value can be **policy**, **static** or **bgp**.
-               
-               Changing this parameter will create a new resource.
         """
         ...
     @overload
@@ -867,80 +629,7 @@ class VpnConnection(pulumi.CustomResource):
                  args: VpnConnectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a VPN connection resource within SberCloud.
-
-        ## Example Usage
-
-        ### Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        peer_subnet = config.require_object("peerSubnet")
-        gateway_id = config.require_object("gatewayId")
-        gateway_ip = config.require_object("gatewayIp")
-        customer_gateway_id = config.require_object("customerGatewayId")
-        test = sbercloud.VpnConnection("test",
-            name=name,
-            gateway_id=gateway_id,
-            gateway_ip=gateway_ip,
-            customer_gateway_id=customer_gateway_id,
-            peer_subnets=[peer_subnet],
-            vpn_type="static",
-            psk="Test@123")
-        ```
-
-        ### VPN connection with policy
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        peer_subnet = config.require_object("peerSubnet")
-        gateway_id = config.require_object("gatewayId")
-        gateway_ip = config.require_object("gatewayIp")
-        customer_gateway_id = config.require_object("customerGatewayId")
-        test = sbercloud.VpnConnection("test",
-            name=name,
-            gateway_id=gateway_id,
-            gateway_ip=gateway_ip,
-            customer_gateway_id=customer_gateway_id,
-            peer_subnets=[peer_subnet],
-            vpn_type="static",
-            psk="Test@123",
-            ikepolicy={
-                "authentication_algorithm": "sha2-256",
-                "authentication_method": "pre-share",
-                "encryption_algorithm": "aes-128",
-                "ike_version": "v2",
-                "lifetime_seconds": 86400,
-                "pfs": "group14",
-            },
-            ipsecpolicy={
-                "authentication_algorithm": "sha2-256",
-                "encapsulation_mode": "tunnel",
-                "encryption_algorithm": "aes-128",
-                "lifetime_seconds": 3600,
-                "pfs": "group14",
-                "transform_protocol": "esp",
-            })
-        ```
-
-        ## Import
-
-        The connection can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/vpnConnection:VpnConnection test <id>
-        ```
-
+        Create a VpnConnection resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param VpnConnectionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1051,48 +740,19 @@ class VpnConnection(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] created_at: The create time.
         :param pulumi.Input[_builtins.str] customer_gateway_id: The customer gateway ID.
-        :param pulumi.Input[_builtins.bool] enable_nqa: Whether to enable NQA check. Defaults to **false**.
+        :param pulumi.Input[_builtins.bool] enable_nqa: Whether to enable NQA check.
         :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID.
         :param pulumi.Input[_builtins.str] gateway_id: The VPN gateway ID.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] gateway_ip: The VPN gateway IP ID.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] ha_role: Specifies the mode of the VPN connection.
-               The valid values are **master** and **slave**, defaults to **master**.
-               This parameter is optional when you create a connection for a VPN gateway in **active-active** mode.
-               When you create a connection for a VPN gateway in **active-standby** mode, **master** indicates
-               the active connection, and **slave** indicates the standby connection.
-               In **active-active** mode, this field must be set to **master** for the connection established
-               using the active EIP or active private IP address of the VPN gateway, and must be set to **slave**
-               for the connection established using active EIP 2 or active private IP address 2 of the VPN gateway.
-               
-               Changing this parameter will create a new resource.
-               
-               <a name="Connection_CreateRequestIkePolicy"></a>
-               The `ikepolicy` block supports:
-        :param pulumi.Input[Union['VpnConnectionIkepolicyArgs', 'VpnConnectionIkepolicyArgsDict']] ikepolicy: The IKE policy configurations.
-               The ikepolicy structure is documented below.
-        :param pulumi.Input[Union['VpnConnectionIpsecpolicyArgs', 'VpnConnectionIpsecpolicyArgsDict']] ipsecpolicy: The IPsec policy configurations.
-               The ipsecpolicy structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the VPN connection.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] peer_subnets: The CIDR list of customer subnets. This parameter must be empty
-               when the `attachment_type` of the VPN gateway is set to **er** and `vpn_type` is set to **policy** or **bgp**.
-               This parameter is mandatory in other scenarios.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] peer_subnets: The customer subnets.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VpnConnectionPolicyRuleArgs', 'VpnConnectionPolicyRuleArgsDict']]]] policy_rules: The policy rules. Only works when vpn_type is set to **policy**
-               The policy_rules structure is documented below.
         :param pulumi.Input[_builtins.str] psk: The pre-shared key.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] status: The status of the VPN connection.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the tags of the VPN connection.
         :param pulumi.Input[_builtins.str] tunnel_local_address: The local tunnel address.
         :param pulumi.Input[_builtins.str] tunnel_peer_address: The peer tunnel address.
         :param pulumi.Input[_builtins.str] updated_at: The update time.
         :param pulumi.Input[_builtins.str] vpn_type: The connection type. The value can be **policy**, **static** or **bgp**.
-               
-               Changing this parameter will create a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1140,7 +800,7 @@ class VpnConnection(pulumi.CustomResource):
     @pulumi.getter(name="enableNqa")
     def enable_nqa(self) -> pulumi.Output[_builtins.bool]:
         """
-        Whether to enable NQA check. Defaults to **false**.
+        Whether to enable NQA check.
         """
         return pulumi.get(self, "enable_nqa")
 
@@ -1157,8 +817,6 @@ class VpnConnection(pulumi.CustomResource):
     def gateway_id(self) -> pulumi.Output[_builtins.str]:
         """
         The VPN gateway ID.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "gateway_id")
 
@@ -1167,47 +825,22 @@ class VpnConnection(pulumi.CustomResource):
     def gateway_ip(self) -> pulumi.Output[_builtins.str]:
         """
         The VPN gateway IP ID.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "gateway_ip")
 
     @_builtins.property
     @pulumi.getter(name="haRole")
     def ha_role(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the mode of the VPN connection.
-        The valid values are **master** and **slave**, defaults to **master**.
-        This parameter is optional when you create a connection for a VPN gateway in **active-active** mode.
-        When you create a connection for a VPN gateway in **active-standby** mode, **master** indicates
-        the active connection, and **slave** indicates the standby connection.
-        In **active-active** mode, this field must be set to **master** for the connection established
-        using the active EIP or active private IP address of the VPN gateway, and must be set to **slave**
-        for the connection established using active EIP 2 or active private IP address 2 of the VPN gateway.
-
-        Changing this parameter will create a new resource.
-
-        <a name="Connection_CreateRequestIkePolicy"></a>
-        The `ikepolicy` block supports:
-        """
         return pulumi.get(self, "ha_role")
 
     @_builtins.property
     @pulumi.getter
     def ikepolicy(self) -> pulumi.Output['outputs.VpnConnectionIkepolicy']:
-        """
-        The IKE policy configurations.
-        The ikepolicy structure is documented below.
-        """
         return pulumi.get(self, "ikepolicy")
 
     @_builtins.property
     @pulumi.getter
     def ipsecpolicy(self) -> pulumi.Output['outputs.VpnConnectionIpsecpolicy']:
-        """
-        The IPsec policy configurations.
-        The ipsecpolicy structure is documented below.
-        """
         return pulumi.get(self, "ipsecpolicy")
 
     @_builtins.property
@@ -1222,9 +855,7 @@ class VpnConnection(pulumi.CustomResource):
     @pulumi.getter(name="peerSubnets")
     def peer_subnets(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        The CIDR list of customer subnets. This parameter must be empty
-        when the `attachment_type` of the VPN gateway is set to **er** and `vpn_type` is set to **policy** or **bgp**.
-        This parameter is mandatory in other scenarios.
+        The customer subnets.
         """
         return pulumi.get(self, "peer_subnets")
 
@@ -1233,7 +864,6 @@ class VpnConnection(pulumi.CustomResource):
     def policy_rules(self) -> pulumi.Output[Sequence['outputs.VpnConnectionPolicyRule']]:
         """
         The policy rules. Only works when vpn_type is set to **policy**
-        The policy_rules structure is documented below.
         """
         return pulumi.get(self, "policy_rules")
 
@@ -1248,10 +878,6 @@ class VpnConnection(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
@@ -1265,9 +891,6 @@ class VpnConnection(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        Specifies the tags of the VPN connection.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
@@ -1299,8 +922,6 @@ class VpnConnection(pulumi.CustomResource):
     def vpn_type(self) -> pulumi.Output[_builtins.str]:
         """
         The connection type. The value can be **policy**, **static** or **bgp**.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "vpn_type")
 

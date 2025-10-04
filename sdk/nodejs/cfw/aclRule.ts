@@ -6,230 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages a CFW ACL rule resource within SberCloud.
- *
- * ## Example Usage
- *
- * ### Create a basic rule
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const name = config.requireObject<any>("name");
- * const description = config.requireObject<any>("description");
- * const objectId = config.requireObject<any>("objectId");
- * const test = new sbercloud.cfw.AclRule("test", {
- *     name: name,
- *     objectId: objectId,
- *     description: description,
- *     type: 0,
- *     addressType: 0,
- *     actionType: 0,
- *     longConnectEnable: 0,
- *     status: 1,
- *     sourceAddresses: ["1.1.1.1"],
- *     destinationAddresses: ["1.1.1.2"],
- *     customServices: [{
- *         protocol: 6,
- *         sourcePort: "81",
- *         destPort: "82",
- *     }],
- *     sequence: {
- *         top: 1,
- *     },
- *     tags: {
- *         key: "value",
- *     },
- * });
- * ```
- *
- * ### Create a rule with the source address using the region list
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const name = config.requireObject<any>("name");
- * const description = config.requireObject<any>("description");
- * const objectId = config.requireObject<any>("objectId");
- * const test = new sbercloud.cfw.AclRule("test", {
- *     name: name,
- *     objectId: objectId,
- *     description: description,
- *     type: 0,
- *     addressType: 0,
- *     actionType: 0,
- *     longConnectEnable: 0,
- *     status: 1,
- *     sourceRegionLists: [{
- *         descriptionCn: "中国",
- *         descriptionEn: "Chinese Mainland",
- *         regionId: "CN",
- *         regionType: 0,
- *     }],
- *     destinationAddresses: ["1.1.1.2"],
- *     customServices: [{
- *         protocol: 6,
- *         sourcePort: "81",
- *         destPort: "82",
- *     }],
- *     sequence: {
- *         top: 1,
- *     },
- *     tags: {
- *         key: "value",
- *     },
- * });
- * ```
- *
- * ### Create a rule with the custom service groups
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const name = config.requireObject<any>("name");
- * const description = config.requireObject<any>("description");
- * const objectId = config.requireObject<any>("objectId");
- * const serviceGroupId = config.requireObject<any>("serviceGroupId");
- * const protocol = config.requireObject<any>("protocol");
- * const test = new sbercloud.cfw.AclRule("test", {
- *     name: name,
- *     objectId: objectId,
- *     description: description,
- *     type: 0,
- *     addressType: 0,
- *     actionType: 0,
- *     longConnectEnable: 0,
- *     status: 1,
- *     sourceAddresses: ["1.1.1.1"],
- *     destinationAddresses: ["1.1.1.2"],
- *     customServiceGroups: {
- *         protocols: [protocol],
- *         groupIds: [serviceGroupId],
- *     },
- *     sequence: {
- *         top: 1,
- *     },
- *     tags: {
- *         key: "value",
- *     },
- * });
- * ```
- *
- * ### Create a rule with any service
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const name = config.requireObject<any>("name");
- * const description = config.requireObject<any>("description");
- * const objectId = config.requireObject<any>("objectId");
- * const serviceGroupId = config.requireObject<any>("serviceGroupId");
- * const protocol = config.requireObject<any>("protocol");
- * const test = new sbercloud.cfw.AclRule("test", {
- *     name: name,
- *     objectId: objectId,
- *     description: description,
- *     type: 0,
- *     addressType: 0,
- *     actionType: 0,
- *     longConnectEnable: 0,
- *     status: 1,
- *     sourceAddresses: ["1.1.1.1"],
- *     destinationAddresses: ["1.1.1.2"],
- *     sequence: {
- *         top: 1,
- *     },
- *     tags: {
- *         key: "value",
- *     },
- * });
- * ```
- *
- * ### Create a rule with any source address
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const name = config.requireObject<any>("name");
- * const description = config.requireObject<any>("description");
- * const objectId = config.requireObject<any>("objectId");
- * const serviceGroupId = config.requireObject<any>("serviceGroupId");
- * const protocol = config.requireObject<any>("protocol");
- * const test = new sbercloud.cfw.AclRule("test", {
- *     name: name,
- *     objectId: objectId,
- *     description: description,
- *     type: 0,
- *     addressType: 0,
- *     actionType: 0,
- *     longConnectEnable: 0,
- *     status: 1,
- *     destinationAddresses: ["1.1.1.2"],
- *     customServices: [{
- *         protocol: 6,
- *         sourcePort: "81",
- *         destPort: "82",
- *     }],
- *     sequence: {
- *         top: 1,
- *     },
- *     tags: {
- *         key: "value",
- *     },
- * });
- * ```
- *
- * ## Import
- *
- * The ACL rule can be imported using `object_id`, `id`, separated by a slash, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:Cfw/aclRule:AclRule test <object_id>/<id>
- * ```
- *
- * Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
- *
- * API response, security or some other reason.
- *
- * The missing attributes include: `sequence`, `type`, `predefined_service_groups` and `source_predefined_groups`.
- *
- * It is generally recommended running `pulumi preview` after importing the resource.
- *
- * You can then decide if changes should be applied to the instance, or the resource definition should be updated to
- *
- * align with the instance. Also you can ignore changes as below.
- *
- * hcl
- *
- * resource "sbercloud_cfw_acl_rule" "test" {
- *
- *     ...
- *
- *   lifecycle {
- *
- *     ignore_changes = [
- *     
- *       sequence, type, predefined_service_groups, source_predefined_groups,
- *     
- *     ]
- *
- *   }
- *
- * }
- */
 export class AclRule extends pulumi.CustomResource {
     /**
      * Get an existing AclRule resource's state with the given name, ID, and optional extra
@@ -260,28 +36,22 @@ export class AclRule extends pulumi.CustomResource {
 
     /**
      * The action type.
-     * The value can be `0` (allow), `1` (deny).
      */
     declare public readonly actionType: pulumi.Output<number>;
     /**
      * The address type.
-     * The value can be `0` (IPv4), `1` (IPv6).
      */
     declare public readonly addressType: pulumi.Output<number>;
     /**
      * The application list.
-     * The valid value can be **HTTP**, **HTTPS**, **TLS1**, **DNS**, **SSH**, **MYSQL**, **SMTP**, **RDP**, **RDPS**,
-     * **VNC**, **POP3**, **IMAP4**, **SMTPS**, **POP3S**, **FTPS**, **ANY**, **BGP** and so on.
      */
     declare public readonly applications: pulumi.Output<string[] | undefined>;
     /**
      * The custom service group list.
-     * The customServiceGroups structure is documented below.
      */
     declare public readonly customServiceGroups: pulumi.Output<outputs.Cfw.AclRuleCustomServiceGroups | undefined>;
     /**
      * The custom service configuration.
-     * The customServices structure is documented below.
      */
     declare public readonly customServices: pulumi.Output<outputs.Cfw.AclRuleCustomService[] | undefined>;
     /**
@@ -294,7 +64,6 @@ export class AclRule extends pulumi.CustomResource {
     declare public readonly destinationAddressGroups: pulumi.Output<string[] | undefined>;
     /**
      * The destination address type.
-     * The value can be `0` (IPv4), `1` (IPv6).
      */
     declare public readonly destinationAddressType: pulumi.Output<number | undefined>;
     /**
@@ -315,20 +84,14 @@ export class AclRule extends pulumi.CustomResource {
     declare public readonly destinationDomainGroupName: pulumi.Output<string | undefined>;
     /**
      * The destination domain group type.
-     * The options are as follows:
-     * + **4**: application domain name group;
-     * + **6**: network domain name group;
      */
     declare public readonly destinationDomainGroupType: pulumi.Output<number | undefined>;
     /**
      * The destination region list.
-     * The destinationRegionList structure is documented below.
      */
     declare public readonly destinationRegionLists: pulumi.Output<outputs.Cfw.AclRuleDestinationRegionList[] | undefined>;
     /**
-     * The rule direction. The options are as follows:
-     * + **0**: inbound;
-     * + **1**: outbound;
+     * The rule direction.
      */
     declare public readonly direction: pulumi.Output<number>;
     declare public readonly enableForceNew: pulumi.Output<string | undefined>;
@@ -358,23 +121,15 @@ export class AclRule extends pulumi.CustomResource {
     declare public readonly objectId: pulumi.Output<string>;
     /**
      * The predefined service group list.
-     * The predefinedServiceGroups structure is documented below.
      */
     declare public readonly predefinedServiceGroups: pulumi.Output<outputs.Cfw.AclRulePredefinedServiceGroups | undefined>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
     /**
      * The number of times the ACL rule is hit.
-     * Setting the value to **0** will clear the hit count. Value options: **0**.
      */
     declare public readonly ruleHitCount: pulumi.Output<string>;
     /**
      * The sequence configuration.
-     * The sequence structure is documented below.
      */
     declare public readonly sequence: pulumi.Output<outputs.Cfw.AclRuleSequence>;
     /**
@@ -383,7 +138,6 @@ export class AclRule extends pulumi.CustomResource {
     declare public readonly sourceAddressGroups: pulumi.Output<string[] | undefined>;
     /**
      * The source address type.
-     * The value can be `0` (IPv4), `1` (IPv6).
      */
     declare public readonly sourceAddressType: pulumi.Output<number | undefined>;
     /**
@@ -396,25 +150,18 @@ export class AclRule extends pulumi.CustomResource {
     declare public readonly sourcePredefinedGroups: pulumi.Output<string[] | undefined>;
     /**
      * The source region list.
-     * The sourceRegionList structure is documented below.
      */
     declare public readonly sourceRegionLists: pulumi.Output<outputs.Cfw.AclRuleSourceRegionList[] | undefined>;
     /**
-     * The rule status. The options are as follows:
-     * + **0**: disabled;
-     * + **1**: enabled;
+     * The rule status.
      */
     declare public readonly status: pulumi.Output<number>;
     /**
      * The key/value pairs to associate with the ACL rule.
-     *
-     * <a name="Sequence"></a>
-     * The `sequence` block supports:
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The rule type.
-     * The value can be `0` (Internet rule), `1` (VPC rule), or `2` (NAT rule).
      */
     declare public readonly type: pulumi.Output<number>;
 
@@ -534,28 +281,22 @@ export class AclRule extends pulumi.CustomResource {
 export interface AclRuleState {
     /**
      * The action type.
-     * The value can be `0` (allow), `1` (deny).
      */
     actionType?: pulumi.Input<number>;
     /**
      * The address type.
-     * The value can be `0` (IPv4), `1` (IPv6).
      */
     addressType?: pulumi.Input<number>;
     /**
      * The application list.
-     * The valid value can be **HTTP**, **HTTPS**, **TLS1**, **DNS**, **SSH**, **MYSQL**, **SMTP**, **RDP**, **RDPS**,
-     * **VNC**, **POP3**, **IMAP4**, **SMTPS**, **POP3S**, **FTPS**, **ANY**, **BGP** and so on.
      */
     applications?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The custom service group list.
-     * The customServiceGroups structure is documented below.
      */
     customServiceGroups?: pulumi.Input<inputs.Cfw.AclRuleCustomServiceGroups>;
     /**
      * The custom service configuration.
-     * The customServices structure is documented below.
      */
     customServices?: pulumi.Input<pulumi.Input<inputs.Cfw.AclRuleCustomService>[]>;
     /**
@@ -568,7 +309,6 @@ export interface AclRuleState {
     destinationAddressGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The destination address type.
-     * The value can be `0` (IPv4), `1` (IPv6).
      */
     destinationAddressType?: pulumi.Input<number>;
     /**
@@ -589,20 +329,14 @@ export interface AclRuleState {
     destinationDomainGroupName?: pulumi.Input<string>;
     /**
      * The destination domain group type.
-     * The options are as follows:
-     * + **4**: application domain name group;
-     * + **6**: network domain name group;
      */
     destinationDomainGroupType?: pulumi.Input<number>;
     /**
      * The destination region list.
-     * The destinationRegionList structure is documented below.
      */
     destinationRegionLists?: pulumi.Input<pulumi.Input<inputs.Cfw.AclRuleDestinationRegionList>[]>;
     /**
-     * The rule direction. The options are as follows:
-     * + **0**: inbound;
-     * + **1**: outbound;
+     * The rule direction.
      */
     direction?: pulumi.Input<number>;
     enableForceNew?: pulumi.Input<string>;
@@ -632,23 +366,15 @@ export interface AclRuleState {
     objectId?: pulumi.Input<string>;
     /**
      * The predefined service group list.
-     * The predefinedServiceGroups structure is documented below.
      */
     predefinedServiceGroups?: pulumi.Input<inputs.Cfw.AclRulePredefinedServiceGroups>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
      * The number of times the ACL rule is hit.
-     * Setting the value to **0** will clear the hit count. Value options: **0**.
      */
     ruleHitCount?: pulumi.Input<string>;
     /**
      * The sequence configuration.
-     * The sequence structure is documented below.
      */
     sequence?: pulumi.Input<inputs.Cfw.AclRuleSequence>;
     /**
@@ -657,7 +383,6 @@ export interface AclRuleState {
     sourceAddressGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The source address type.
-     * The value can be `0` (IPv4), `1` (IPv6).
      */
     sourceAddressType?: pulumi.Input<number>;
     /**
@@ -670,25 +395,18 @@ export interface AclRuleState {
     sourcePredefinedGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The source region list.
-     * The sourceRegionList structure is documented below.
      */
     sourceRegionLists?: pulumi.Input<pulumi.Input<inputs.Cfw.AclRuleSourceRegionList>[]>;
     /**
-     * The rule status. The options are as follows:
-     * + **0**: disabled;
-     * + **1**: enabled;
+     * The rule status.
      */
     status?: pulumi.Input<number>;
     /**
      * The key/value pairs to associate with the ACL rule.
-     *
-     * <a name="Sequence"></a>
-     * The `sequence` block supports:
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The rule type.
-     * The value can be `0` (Internet rule), `1` (VPC rule), or `2` (NAT rule).
      */
     type?: pulumi.Input<number>;
 }
@@ -699,28 +417,22 @@ export interface AclRuleState {
 export interface AclRuleArgs {
     /**
      * The action type.
-     * The value can be `0` (allow), `1` (deny).
      */
     actionType: pulumi.Input<number>;
     /**
      * The address type.
-     * The value can be `0` (IPv4), `1` (IPv6).
      */
     addressType: pulumi.Input<number>;
     /**
      * The application list.
-     * The valid value can be **HTTP**, **HTTPS**, **TLS1**, **DNS**, **SSH**, **MYSQL**, **SMTP**, **RDP**, **RDPS**,
-     * **VNC**, **POP3**, **IMAP4**, **SMTPS**, **POP3S**, **FTPS**, **ANY**, **BGP** and so on.
      */
     applications?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The custom service group list.
-     * The customServiceGroups structure is documented below.
      */
     customServiceGroups?: pulumi.Input<inputs.Cfw.AclRuleCustomServiceGroups>;
     /**
      * The custom service configuration.
-     * The customServices structure is documented below.
      */
     customServices?: pulumi.Input<pulumi.Input<inputs.Cfw.AclRuleCustomService>[]>;
     /**
@@ -733,7 +445,6 @@ export interface AclRuleArgs {
     destinationAddressGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The destination address type.
-     * The value can be `0` (IPv4), `1` (IPv6).
      */
     destinationAddressType?: pulumi.Input<number>;
     /**
@@ -754,20 +465,14 @@ export interface AclRuleArgs {
     destinationDomainGroupName?: pulumi.Input<string>;
     /**
      * The destination domain group type.
-     * The options are as follows:
-     * + **4**: application domain name group;
-     * + **6**: network domain name group;
      */
     destinationDomainGroupType?: pulumi.Input<number>;
     /**
      * The destination region list.
-     * The destinationRegionList structure is documented below.
      */
     destinationRegionLists?: pulumi.Input<pulumi.Input<inputs.Cfw.AclRuleDestinationRegionList>[]>;
     /**
-     * The rule direction. The options are as follows:
-     * + **0**: inbound;
-     * + **1**: outbound;
+     * The rule direction.
      */
     direction?: pulumi.Input<number>;
     enableForceNew?: pulumi.Input<string>;
@@ -797,23 +502,15 @@ export interface AclRuleArgs {
     objectId: pulumi.Input<string>;
     /**
      * The predefined service group list.
-     * The predefinedServiceGroups structure is documented below.
      */
     predefinedServiceGroups?: pulumi.Input<inputs.Cfw.AclRulePredefinedServiceGroups>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
      * The number of times the ACL rule is hit.
-     * Setting the value to **0** will clear the hit count. Value options: **0**.
      */
     ruleHitCount?: pulumi.Input<string>;
     /**
      * The sequence configuration.
-     * The sequence structure is documented below.
      */
     sequence: pulumi.Input<inputs.Cfw.AclRuleSequence>;
     /**
@@ -822,7 +519,6 @@ export interface AclRuleArgs {
     sourceAddressGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The source address type.
-     * The value can be `0` (IPv4), `1` (IPv6).
      */
     sourceAddressType?: pulumi.Input<number>;
     /**
@@ -835,25 +531,18 @@ export interface AclRuleArgs {
     sourcePredefinedGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The source region list.
-     * The sourceRegionList structure is documented below.
      */
     sourceRegionLists?: pulumi.Input<pulumi.Input<inputs.Cfw.AclRuleSourceRegionList>[]>;
     /**
-     * The rule status. The options are as follows:
-     * + **0**: disabled;
-     * + **1**: enabled;
+     * The rule status.
      */
     status: pulumi.Input<number>;
     /**
      * The key/value pairs to associate with the ACL rule.
-     *
-     * <a name="Sequence"></a>
-     * The `sequence` block supports:
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The rule type.
-     * The value can be `0` (Internet rule), `1` (VPC rule), or `2` (NAT rule).
      */
     type: pulumi.Input<number>;
 }

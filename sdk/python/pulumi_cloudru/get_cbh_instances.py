@@ -59,9 +59,6 @@ class GetCbhInstancesResult:
     @_builtins.property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> Optional[_builtins.str]:
-        """
-        Indicates the specification of the instance.
-        """
         return pulumi.get(self, "flavor_id")
 
     @_builtins.property
@@ -75,18 +72,11 @@ class GetCbhInstancesResult:
     @_builtins.property
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetCbhInstancesInstanceResult']:
-        """
-        Indicates the list of CBH instance.
-        The instances structure is documented below.
-        """
         return pulumi.get(self, "instances")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        Indicates the instance name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -97,33 +87,21 @@ class GetCbhInstancesResult:
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[_builtins.str]:
-        """
-        Indicates the ID of a security group.
-        """
         return pulumi.get(self, "security_group_id")
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[_builtins.str]:
-        """
-        Indicates the ID of a subnet.
-        """
         return pulumi.get(self, "subnet_id")
 
     @_builtins.property
     @pulumi.getter
     def version(self) -> Optional[_builtins.str]:
-        """
-        Indicates the current version of the instance image.
-        """
         return pulumi.get(self, "version")
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[_builtins.str]:
-        """
-        Indicates the ID of a VPC.
-        """
         return pulumi.get(self, "vpc_id")
 
 
@@ -153,33 +131,7 @@ def get_cbh_instances(flavor_id: Optional[_builtins.str] = None,
                       vpc_id: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCbhInstancesResult:
     """
-    Use this data source to get the list of CBH instance.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    vpc_id = config.require_object("vpcId")
-    subnet_id = config.require_object("subnetId")
-    security_group_id = config.require_object("securityGroupId")
-    test = sbercloud.get_cbh_instances(name="test_name",
-        vpc_id=vpc_id,
-        subnet_id=subnet_id,
-        security_group_id=security_group_id)
-    ```
-
-
-    :param _builtins.str flavor_id: Specifies the specification of the instance.
-    :param _builtins.str name: Specifies the instance name.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str security_group_id: Specifies the ID of a security group.
-    :param _builtins.str subnet_id: Specifies the ID of a subnet.
-    :param _builtins.str version: Specifies the current version of the instance image.
-    :param _builtins.str vpc_id: Specifies the ID of a VPC.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['flavorId'] = flavor_id
@@ -211,33 +163,7 @@ def get_cbh_instances_output(flavor_id: Optional[pulumi.Input[Optional[_builtins
                              vpc_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCbhInstancesResult]:
     """
-    Use this data source to get the list of CBH instance.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    vpc_id = config.require_object("vpcId")
-    subnet_id = config.require_object("subnetId")
-    security_group_id = config.require_object("securityGroupId")
-    test = sbercloud.get_cbh_instances(name="test_name",
-        vpc_id=vpc_id,
-        subnet_id=subnet_id,
-        security_group_id=security_group_id)
-    ```
-
-
-    :param _builtins.str flavor_id: Specifies the specification of the instance.
-    :param _builtins.str name: Specifies the instance name.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str security_group_id: Specifies the ID of a security group.
-    :param _builtins.str subnet_id: Specifies the ID of a subnet.
-    :param _builtins.str version: Specifies the current version of the instance image.
-    :param _builtins.str vpc_id: Specifies the ID of a VPC.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['flavorId'] = flavor_id

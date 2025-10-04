@@ -12,67 +12,14 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages an ELB whitelist resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/elb"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			listener1, err := elb.NewListener(ctx, "listener_1", &elb.ListenerArgs{
-//				Name:           pulumi.String("listener_1"),
-//				Protocol:       pulumi.String("HTTP"),
-//				ProtocolPort:   pulumi.Int(8080),
-//				LoadbalancerId: pulumi.Any(loadbalancerId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = elb.NewWhitelist(ctx, "whitelist_1", &elb.WhitelistArgs{
-//				EnableWhitelist: pulumi.Bool(true),
-//				Whitelist:       pulumi.String("192.168.11.1,192.168.0.1/24,192.168.201.18/8"),
-//				ListenerId:      listener1.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// ELB whitelist can be imported using the whitelist ID, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Elb/whitelist:Whitelist whitelist_1 5c20fdad-7288-11eb-b817-0255ac10158b
-// ```
 type Whitelist struct {
 	pulumi.CustomResourceState
 
-	// Specify whether to enable access control.
 	EnableWhitelist pulumi.BoolPtrOutput `pulumi:"enableWhitelist"`
-	// The Listener ID that the whitelist will be associated with. Changing this
-	// creates a new whitelist.
-	ListenerId pulumi.StringOutput `pulumi:"listenerId"`
-	// The region in which to create the ELB whitelist resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new whitelist.
-	Region pulumi.StringOutput `pulumi:"region"`
+	ListenerId      pulumi.StringOutput  `pulumi:"listenerId"`
+	Region          pulumi.StringOutput  `pulumi:"region"`
 	// Deprecated: tenant_id is deprecated
-	TenantId pulumi.StringOutput `pulumi:"tenantId"`
-	// Specifies the IP addresses in the whitelist. Use commas(,) to separate the multiple
-	// IP addresses.
+	TenantId  pulumi.StringOutput    `pulumi:"tenantId"`
 	Whitelist pulumi.StringPtrOutput `pulumi:"whitelist"`
 }
 
@@ -109,34 +56,20 @@ func GetWhitelist(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Whitelist resources.
 type whitelistState struct {
-	// Specify whether to enable access control.
-	EnableWhitelist *bool `pulumi:"enableWhitelist"`
-	// The Listener ID that the whitelist will be associated with. Changing this
-	// creates a new whitelist.
-	ListenerId *string `pulumi:"listenerId"`
-	// The region in which to create the ELB whitelist resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new whitelist.
-	Region *string `pulumi:"region"`
+	EnableWhitelist *bool   `pulumi:"enableWhitelist"`
+	ListenerId      *string `pulumi:"listenerId"`
+	Region          *string `pulumi:"region"`
 	// Deprecated: tenant_id is deprecated
-	TenantId *string `pulumi:"tenantId"`
-	// Specifies the IP addresses in the whitelist. Use commas(,) to separate the multiple
-	// IP addresses.
+	TenantId  *string `pulumi:"tenantId"`
 	Whitelist *string `pulumi:"whitelist"`
 }
 
 type WhitelistState struct {
-	// Specify whether to enable access control.
 	EnableWhitelist pulumi.BoolPtrInput
-	// The Listener ID that the whitelist will be associated with. Changing this
-	// creates a new whitelist.
-	ListenerId pulumi.StringPtrInput
-	// The region in which to create the ELB whitelist resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new whitelist.
-	Region pulumi.StringPtrInput
+	ListenerId      pulumi.StringPtrInput
+	Region          pulumi.StringPtrInput
 	// Deprecated: tenant_id is deprecated
-	TenantId pulumi.StringPtrInput
-	// Specifies the IP addresses in the whitelist. Use commas(,) to separate the multiple
-	// IP addresses.
+	TenantId  pulumi.StringPtrInput
 	Whitelist pulumi.StringPtrInput
 }
 
@@ -145,35 +78,21 @@ func (WhitelistState) ElementType() reflect.Type {
 }
 
 type whitelistArgs struct {
-	// Specify whether to enable access control.
-	EnableWhitelist *bool `pulumi:"enableWhitelist"`
-	// The Listener ID that the whitelist will be associated with. Changing this
-	// creates a new whitelist.
-	ListenerId string `pulumi:"listenerId"`
-	// The region in which to create the ELB whitelist resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new whitelist.
-	Region *string `pulumi:"region"`
+	EnableWhitelist *bool   `pulumi:"enableWhitelist"`
+	ListenerId      string  `pulumi:"listenerId"`
+	Region          *string `pulumi:"region"`
 	// Deprecated: tenant_id is deprecated
-	TenantId *string `pulumi:"tenantId"`
-	// Specifies the IP addresses in the whitelist. Use commas(,) to separate the multiple
-	// IP addresses.
+	TenantId  *string `pulumi:"tenantId"`
 	Whitelist *string `pulumi:"whitelist"`
 }
 
 // The set of arguments for constructing a Whitelist resource.
 type WhitelistArgs struct {
-	// Specify whether to enable access control.
 	EnableWhitelist pulumi.BoolPtrInput
-	// The Listener ID that the whitelist will be associated with. Changing this
-	// creates a new whitelist.
-	ListenerId pulumi.StringInput
-	// The region in which to create the ELB whitelist resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new whitelist.
-	Region pulumi.StringPtrInput
+	ListenerId      pulumi.StringInput
+	Region          pulumi.StringPtrInput
 	// Deprecated: tenant_id is deprecated
-	TenantId pulumi.StringPtrInput
-	// Specifies the IP addresses in the whitelist. Use commas(,) to separate the multiple
-	// IP addresses.
+	TenantId  pulumi.StringPtrInput
 	Whitelist pulumi.StringPtrInput
 }
 
@@ -264,19 +183,14 @@ func (o WhitelistOutput) ToWhitelistOutputWithContext(ctx context.Context) White
 	return o
 }
 
-// Specify whether to enable access control.
 func (o WhitelistOutput) EnableWhitelist() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Whitelist) pulumi.BoolPtrOutput { return v.EnableWhitelist }).(pulumi.BoolPtrOutput)
 }
 
-// The Listener ID that the whitelist will be associated with. Changing this
-// creates a new whitelist.
 func (o WhitelistOutput) ListenerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Whitelist) pulumi.StringOutput { return v.ListenerId }).(pulumi.StringOutput)
 }
 
-// The region in which to create the ELB whitelist resource. If omitted, the
-// provider-level region will be used. Changing this creates a new whitelist.
 func (o WhitelistOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Whitelist) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
@@ -286,8 +200,6 @@ func (o WhitelistOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Whitelist) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
 }
 
-// Specifies the IP addresses in the whitelist. Use commas(,) to separate the multiple
-// IP addresses.
 func (o WhitelistOutput) Whitelist() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Whitelist) pulumi.StringPtrOutput { return v.Whitelist }).(pulumi.StringPtrOutput)
 }

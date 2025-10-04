@@ -89,65 +89,41 @@ class GetFlowLogsResult:
     @_builtins.property
     @pulumi.getter
     def app(self) -> Optional[_builtins.str]:
-        """
-        The application protocol.
-        """
         return pulumi.get(self, "app")
 
     @_builtins.property
     @pulumi.getter
     def direction(self) -> Optional[_builtins.str]:
-        """
-        The direction, which can be inbound or outbound.
-        """
         return pulumi.get(self, "direction")
 
     @_builtins.property
     @pulumi.getter(name="dstCityName")
     def dst_city_name(self) -> Optional[_builtins.str]:
-        """
-        The destination city name.
-        """
         return pulumi.get(self, "dst_city_name")
 
     @_builtins.property
     @pulumi.getter(name="dstIp")
     def dst_ip(self) -> Optional[_builtins.str]:
-        """
-        The destination IP address.
-        """
         return pulumi.get(self, "dst_ip")
 
     @_builtins.property
     @pulumi.getter(name="dstPort")
     def dst_port(self) -> Optional[_builtins.int]:
-        """
-        The destination port.
-        """
         return pulumi.get(self, "dst_port")
 
     @_builtins.property
     @pulumi.getter(name="dstProvinceName")
     def dst_province_name(self) -> Optional[_builtins.str]:
-        """
-        The destination province name.
-        """
         return pulumi.get(self, "dst_province_name")
 
     @_builtins.property
     @pulumi.getter(name="dstRegionName")
     def dst_region_name(self) -> Optional[_builtins.str]:
-        """
-        The destination region name.
-        """
         return pulumi.get(self, "dst_region_name")
 
     @_builtins.property
     @pulumi.getter(name="endTime")
     def end_time(self) -> _builtins.str:
-        """
-        The end time.
-        """
         return pulumi.get(self, "end_time")
 
     @_builtins.property
@@ -171,9 +147,6 @@ class GetFlowLogsResult:
     @_builtins.property
     @pulumi.getter
     def records(self) -> Sequence['outputs.GetFlowLogsRecordResult']:
-        """
-        The flow log records.
-        """
         return pulumi.get(self, "records")
 
     @_builtins.property
@@ -184,49 +157,31 @@ class GetFlowLogsResult:
     @_builtins.property
     @pulumi.getter(name="srcCityName")
     def src_city_name(self) -> Optional[_builtins.str]:
-        """
-        The source city name.
-        """
         return pulumi.get(self, "src_city_name")
 
     @_builtins.property
     @pulumi.getter(name="srcIp")
     def src_ip(self) -> Optional[_builtins.str]:
-        """
-        The source IP address.
-        """
         return pulumi.get(self, "src_ip")
 
     @_builtins.property
     @pulumi.getter(name="srcPort")
     def src_port(self) -> Optional[_builtins.int]:
-        """
-        The source port.
-        """
         return pulumi.get(self, "src_port")
 
     @_builtins.property
     @pulumi.getter(name="srcProvinceName")
     def src_province_name(self) -> Optional[_builtins.str]:
-        """
-        The source province name.
-        """
         return pulumi.get(self, "src_province_name")
 
     @_builtins.property
     @pulumi.getter(name="srcRegionName")
     def src_region_name(self) -> Optional[_builtins.str]:
-        """
-        The source region name.
-        """
         return pulumi.get(self, "src_region_name")
 
     @_builtins.property
     @pulumi.getter(name="startTime")
     def start_time(self) -> _builtins.str:
-        """
-        The start time.
-        """
         return pulumi.get(self, "start_time")
 
 
@@ -276,46 +231,7 @@ def get_flow_logs(app: Optional[_builtins.str] = None,
                   start_time: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFlowLogsResult:
     """
-    Use this data source to get the list of CFW flow logs.
-
-    > **NOTE:** Up to 1000 logs can be retrieved. Set filter criteria to narrow down the search scope.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    fw_instance_id = config.require_object("fwInstanceId")
-    start_time = config.require_object("startTime")
-    end_time = config.require_object("endTime")
-    test = sbercloud.Cfw.get_flow_logs(fw_instance_id=fw_instance_id,
-        start_time=start_time,
-        end_time=end_time)
-    ```
-
-
-    :param _builtins.str app: Specifies the application protocol.
-    :param _builtins.str direction: Specifies the direction. The values can be **out2in** and **in2out**.
-    :param _builtins.str dst_city_name: Specifies the destination city name.
-    :param _builtins.str dst_ip: Specifies the destination IP address.
-    :param _builtins.int dst_port: Specifies the destination port.
-    :param _builtins.str dst_province_name: Specifies the destination province name.
-    :param _builtins.str dst_region_name: Specifies the destination region name.
-    :param _builtins.str end_time: Specifies the end time. The time is in UTC.
-           The format is **yyyy-MM-dd HH:mm:ss**.
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project id.
-    :param _builtins.str fw_instance_id: Specifies the firewall instance ID.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str src_city_name: Specifies the source city name.
-    :param _builtins.str src_ip: Specifies the source IP address.
-    :param _builtins.int src_port: Specifies the source port.
-    :param _builtins.str src_province_name: Specifies the source province name.
-    :param _builtins.str src_region_name: Specifies the source region name.
-    :param _builtins.str start_time: Specifies the start time. The time is in UTC.
-           The format is **yyyy-MM-dd HH:mm:ss**.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['app'] = app
@@ -377,46 +293,7 @@ def get_flow_logs_output(app: Optional[pulumi.Input[Optional[_builtins.str]]] = 
                          start_time: Optional[pulumi.Input[_builtins.str]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFlowLogsResult]:
     """
-    Use this data source to get the list of CFW flow logs.
-
-    > **NOTE:** Up to 1000 logs can be retrieved. Set filter criteria to narrow down the search scope.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    fw_instance_id = config.require_object("fwInstanceId")
-    start_time = config.require_object("startTime")
-    end_time = config.require_object("endTime")
-    test = sbercloud.Cfw.get_flow_logs(fw_instance_id=fw_instance_id,
-        start_time=start_time,
-        end_time=end_time)
-    ```
-
-
-    :param _builtins.str app: Specifies the application protocol.
-    :param _builtins.str direction: Specifies the direction. The values can be **out2in** and **in2out**.
-    :param _builtins.str dst_city_name: Specifies the destination city name.
-    :param _builtins.str dst_ip: Specifies the destination IP address.
-    :param _builtins.int dst_port: Specifies the destination port.
-    :param _builtins.str dst_province_name: Specifies the destination province name.
-    :param _builtins.str dst_region_name: Specifies the destination region name.
-    :param _builtins.str end_time: Specifies the end time. The time is in UTC.
-           The format is **yyyy-MM-dd HH:mm:ss**.
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project id.
-    :param _builtins.str fw_instance_id: Specifies the firewall instance ID.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str src_city_name: Specifies the source city name.
-    :param _builtins.str src_ip: Specifies the source IP address.
-    :param _builtins.int src_port: Specifies the source port.
-    :param _builtins.str src_province_name: Specifies the source province name.
-    :param _builtins.str src_region_name: Specifies the source region name.
-    :param _builtins.str start_time: Specifies the start time. The time is in UTC.
-           The format is **yyyy-MM-dd HH:mm:ss**.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['app'] = app

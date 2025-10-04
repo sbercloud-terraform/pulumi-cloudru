@@ -4,32 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages CTS **system** tracker resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const bucketName = config.requireObject<any>("bucketName");
- * const tracker = new sbercloud.cts.Tracker("tracker", {
- *     bucketName: bucketName,
- *     filePrefix: "cts",
- *     ltsEnabled: true,
- * });
- * ```
- *
- * ## Import
- *
- * CTS tracker can be imported using `name`, only __system__ is available. e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Cts/tracker:Tracker tracker system
- * ```
- */
 export class Tracker extends pulumi.CustomResource {
     /**
      * Get an existing Tracker resource's state with the given name, ID, and optional extra
@@ -59,66 +33,30 @@ export class Tracker extends pulumi.CustomResource {
     }
 
     declare public /*out*/ readonly agencyName: pulumi.Output<string>;
-    /**
-     * Specifies the OBS bucket to which traces will be transferred.
-     */
     declare public readonly bucketName: pulumi.Output<string | undefined>;
     declare public readonly compressType: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly createTime: pulumi.Output<number>;
     declare public readonly deleteTracker: pulumi.Output<boolean | undefined>;
     declare public /*out*/ readonly detail: pulumi.Output<string>;
     declare public /*out*/ readonly domainId: pulumi.Output<string>;
-    /**
-     * Specifies whether tracker is enabled.
-     */
     declare public readonly enabled: pulumi.Output<boolean | undefined>;
     declare public readonly excludeServices: pulumi.Output<string[] | undefined>;
-    /**
-     * Specifies the file name prefix to mark trace files that need to be stored
-     * in an OBS bucket. The value contains 0 to 64 characters. Only letters, numbers, hyphens (-), underscores (_),
-     * and periods (.) are allowed.
-     */
     declare public readonly filePrefix: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly groupId: pulumi.Output<string>;
     declare public /*out*/ readonly isAuthorizedBucket: pulumi.Output<boolean>;
     declare public readonly isSortByService: pulumi.Output<boolean | undefined>;
-    /**
-     * Specifies the ID of KMS key used for trace file encryption.
-     */
     declare public readonly kmsId: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly logGroupName: pulumi.Output<string>;
     declare public /*out*/ readonly logTopicName: pulumi.Output<string>;
-    /**
-     * Specifies whether trace analysis is enabled.
-     */
     declare public readonly ltsEnabled: pulumi.Output<boolean | undefined>;
-    /**
-     * The tracker name, only **system** is available.
-     */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     declare public readonly organizationEnabled: pulumi.Output<boolean>;
-    /**
-     * Specifies the region in which to manage the CTS system tracker resource.
-     * If omitted, the provider-level region will be used. Changing this creates a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * The tracker status, the value can be **enabled**, **disabled** or **error**.
-     */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     declare public /*out*/ readonly streamId: pulumi.Output<string>;
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * Whether traces will be transferred.
-     */
     declare public /*out*/ readonly transferEnabled: pulumi.Output<boolean>;
-    /**
-     * The tracker type, only **system** is available.
-     */
     declare public /*out*/ readonly type: pulumi.Output<string>;
-    /**
-     * Specifies whether trace file verification is enabled during trace transfer.
-     */
     declare public readonly validateFile: pulumi.Output<boolean | undefined>;
 
     /**
@@ -199,66 +137,30 @@ export class Tracker extends pulumi.CustomResource {
  */
 export interface TrackerState {
     agencyName?: pulumi.Input<string>;
-    /**
-     * Specifies the OBS bucket to which traces will be transferred.
-     */
     bucketName?: pulumi.Input<string>;
     compressType?: pulumi.Input<string>;
     createTime?: pulumi.Input<number>;
     deleteTracker?: pulumi.Input<boolean>;
     detail?: pulumi.Input<string>;
     domainId?: pulumi.Input<string>;
-    /**
-     * Specifies whether tracker is enabled.
-     */
     enabled?: pulumi.Input<boolean>;
     excludeServices?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the file name prefix to mark trace files that need to be stored
-     * in an OBS bucket. The value contains 0 to 64 characters. Only letters, numbers, hyphens (-), underscores (_),
-     * and periods (.) are allowed.
-     */
     filePrefix?: pulumi.Input<string>;
     groupId?: pulumi.Input<string>;
     isAuthorizedBucket?: pulumi.Input<boolean>;
     isSortByService?: pulumi.Input<boolean>;
-    /**
-     * Specifies the ID of KMS key used for trace file encryption.
-     */
     kmsId?: pulumi.Input<string>;
     logGroupName?: pulumi.Input<string>;
     logTopicName?: pulumi.Input<string>;
-    /**
-     * Specifies whether trace analysis is enabled.
-     */
     ltsEnabled?: pulumi.Input<boolean>;
-    /**
-     * The tracker name, only **system** is available.
-     */
     name?: pulumi.Input<string>;
     organizationEnabled?: pulumi.Input<boolean>;
-    /**
-     * Specifies the region in which to manage the CTS system tracker resource.
-     * If omitted, the provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * The tracker status, the value can be **enabled**, **disabled** or **error**.
-     */
     status?: pulumi.Input<string>;
     streamId?: pulumi.Input<string>;
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Whether traces will be transferred.
-     */
     transferEnabled?: pulumi.Input<boolean>;
-    /**
-     * The tracker type, only **system** is available.
-     */
     type?: pulumi.Input<string>;
-    /**
-     * Specifies whether trace file verification is enabled during trace transfer.
-     */
     validateFile?: pulumi.Input<boolean>;
 }
 
@@ -266,41 +168,17 @@ export interface TrackerState {
  * The set of arguments for constructing a Tracker resource.
  */
 export interface TrackerArgs {
-    /**
-     * Specifies the OBS bucket to which traces will be transferred.
-     */
     bucketName?: pulumi.Input<string>;
     compressType?: pulumi.Input<string>;
     deleteTracker?: pulumi.Input<boolean>;
-    /**
-     * Specifies whether tracker is enabled.
-     */
     enabled?: pulumi.Input<boolean>;
     excludeServices?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the file name prefix to mark trace files that need to be stored
-     * in an OBS bucket. The value contains 0 to 64 characters. Only letters, numbers, hyphens (-), underscores (_),
-     * and periods (.) are allowed.
-     */
     filePrefix?: pulumi.Input<string>;
     isSortByService?: pulumi.Input<boolean>;
-    /**
-     * Specifies the ID of KMS key used for trace file encryption.
-     */
     kmsId?: pulumi.Input<string>;
-    /**
-     * Specifies whether trace analysis is enabled.
-     */
     ltsEnabled?: pulumi.Input<boolean>;
     organizationEnabled?: pulumi.Input<boolean>;
-    /**
-     * Specifies the region in which to manage the CTS system tracker resource.
-     * If omitted, the provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies whether trace file verification is enabled during trace transfer.
-     */
     validateFile?: pulumi.Input<boolean>;
 }

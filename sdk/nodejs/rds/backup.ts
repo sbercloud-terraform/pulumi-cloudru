@@ -6,32 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages a RDS manual backup resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const backupName = config.requireObject<any>("backupName");
- * const test = new sbercloud.rds.Backup("test", {
- *     instanceId: instanceId,
- *     name: backupName,
- * });
- * ```
- *
- * ## Import
- *
- * The rds manual backup can be imported using the instance ID and the backup ID separated by a slash, e.g.:
- *
- * ```sh
- * $ pulumi import sbercloud:Rds/backup:Backup test 1ce123456a00f2591fabc00385ff1235/0ce123456a00f2591fabc00385ff1234
- * ```
- */
 export class Backup extends pulumi.CustomResource {
     /**
      * Get an existing Backup resource's state with the given name, ID, and optional extra
@@ -69,22 +43,11 @@ export class Backup extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly beginTime: pulumi.Output<string>;
     /**
-     * List of self-built Microsoft SQL Server databases that are partially
-     * backed up.
-     * (Only Microsoft SQL Server supports partial backups.).
-     *
-     * Changing this parameter will create a new resource.
-     * The BackupDatabase structure is documented below.
-     *
-     * <a name="Backup_BackupDatabase"></a>
-     * The `BackupDatabase` block supports:
+     * List of self-built Microsoft SQL Server databases that are partially backed up.
      */
     declare public readonly databases: pulumi.Output<outputs.Rds.BackupDatabase[]>;
     /**
-     * The description about the backup.  
-     * It contains a maximum of 256 characters and cannot contain the following special characters: >!<"&'=.
-     *
-     * Changing this parameter will create a new resource.
+     * The description about the backup.
      */
     declare public readonly description: pulumi.Output<string>;
     /**
@@ -92,31 +55,20 @@ export class Backup extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly endTime: pulumi.Output<string>;
     /**
-     * Instance ID. This resource works only with Postgre SQL databases.
-     *
-     * Changing this parameter will create a new resource.
+     * Instance ID.
      */
     declare public readonly instanceId: pulumi.Output<string>;
     /**
-     * Database to be backed up for Microsoft SQL Server.
+     * Backup name.
      */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
     /**
      * Backup size in KB.
      */
     declare public /*out*/ readonly size: pulumi.Output<number>;
     /**
-     * Backup status.  
-     * The options are as follows:
-     * + **BUILDING**: Backup in progress.
-     * + **COMPLETED**: Backup completed.
-     * + **FAILED**: Backup failed.
-     * + **DELETING**: Backup being deleted.
+     * Backup status.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
 
@@ -177,22 +129,11 @@ export interface BackupState {
      */
     beginTime?: pulumi.Input<string>;
     /**
-     * List of self-built Microsoft SQL Server databases that are partially
-     * backed up.
-     * (Only Microsoft SQL Server supports partial backups.).
-     *
-     * Changing this parameter will create a new resource.
-     * The BackupDatabase structure is documented below.
-     *
-     * <a name="Backup_BackupDatabase"></a>
-     * The `BackupDatabase` block supports:
+     * List of self-built Microsoft SQL Server databases that are partially backed up.
      */
     databases?: pulumi.Input<pulumi.Input<inputs.Rds.BackupDatabase>[]>;
     /**
-     * The description about the backup.  
-     * It contains a maximum of 256 characters and cannot contain the following special characters: >!<"&'=.
-     *
-     * Changing this parameter will create a new resource.
+     * The description about the backup.
      */
     description?: pulumi.Input<string>;
     /**
@@ -200,31 +141,20 @@ export interface BackupState {
      */
     endTime?: pulumi.Input<string>;
     /**
-     * Instance ID. This resource works only with Postgre SQL databases.
-     *
-     * Changing this parameter will create a new resource.
+     * Instance ID.
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * Database to be backed up for Microsoft SQL Server.
+     * Backup name.
      */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
      * Backup size in KB.
      */
     size?: pulumi.Input<number>;
     /**
-     * Backup status.  
-     * The options are as follows:
-     * + **BUILDING**: Backup in progress.
-     * + **COMPLETED**: Backup completed.
-     * + **FAILED**: Backup failed.
-     * + **DELETING**: Backup being deleted.
+     * Backup status.
      */
     status?: pulumi.Input<string>;
 }
@@ -234,37 +164,20 @@ export interface BackupState {
  */
 export interface BackupArgs {
     /**
-     * List of self-built Microsoft SQL Server databases that are partially
-     * backed up.
-     * (Only Microsoft SQL Server supports partial backups.).
-     *
-     * Changing this parameter will create a new resource.
-     * The BackupDatabase structure is documented below.
-     *
-     * <a name="Backup_BackupDatabase"></a>
-     * The `BackupDatabase` block supports:
+     * List of self-built Microsoft SQL Server databases that are partially backed up.
      */
     databases?: pulumi.Input<pulumi.Input<inputs.Rds.BackupDatabase>[]>;
     /**
-     * The description about the backup.  
-     * It contains a maximum of 256 characters and cannot contain the following special characters: >!<"&'=.
-     *
-     * Changing this parameter will create a new resource.
+     * The description about the backup.
      */
     description?: pulumi.Input<string>;
     /**
-     * Instance ID. This resource works only with Postgre SQL databases.
-     *
-     * Changing this parameter will create a new resource.
+     * Instance ID.
      */
     instanceId: pulumi.Input<string>;
     /**
-     * Database to be backed up for Microsoft SQL Server.
+     * Backup name.
      */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
 }

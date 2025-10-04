@@ -26,11 +26,6 @@ class InstanceEipAssociateArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceEipAssociate resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of an RDS instance.
-        :param pulumi.Input[_builtins.str] public_ip: Specifies the EIP address to be bound.
-        :param pulumi.Input[_builtins.str] public_ip_id: Specifies the EIP ID.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this creates a new resource.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "public_ip", public_ip)
@@ -43,9 +38,6 @@ class InstanceEipAssociateArgs:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the ID of an RDS instance.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -55,9 +47,6 @@ class InstanceEipAssociateArgs:
     @_builtins.property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the EIP address to be bound.
-        """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
@@ -67,9 +56,6 @@ class InstanceEipAssociateArgs:
     @_builtins.property
     @pulumi.getter(name="publicIpId")
     def public_ip_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the EIP ID.
-        """
         return pulumi.get(self, "public_ip_id")
 
     @public_ip_id.setter
@@ -88,10 +74,6 @@ class InstanceEipAssociateArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -109,11 +91,6 @@ class _InstanceEipAssociateState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceEipAssociate resources.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of an RDS instance.
-        :param pulumi.Input[_builtins.str] public_ip: Specifies the EIP address to be bound.
-        :param pulumi.Input[_builtins.str] public_ip_id: Specifies the EIP ID.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this creates a new resource.
         """
         if enable_force_new is not None:
             pulumi.set(__self__, "enable_force_new", enable_force_new)
@@ -138,9 +115,6 @@ class _InstanceEipAssociateState:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of an RDS instance.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -150,9 +124,6 @@ class _InstanceEipAssociateState:
     @_builtins.property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the EIP address to be bound.
-        """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
@@ -162,9 +133,6 @@ class _InstanceEipAssociateState:
     @_builtins.property
     @pulumi.getter(name="publicIpId")
     def public_ip_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the EIP ID.
-        """
         return pulumi.get(self, "public_ip_id")
 
     @public_ip_id.setter
@@ -174,10 +142,6 @@ class _InstanceEipAssociateState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -198,41 +162,9 @@ class InstanceEipAssociate(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages an RDS instance EIP associate resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        public_ip = config.require_object("publicIp")
-        public_ip_id = config.require_object("publicIpId")
-        test = sbercloud.rds.InstanceEipAssociate("test",
-            instance_id=instance_id,
-            public_ip=public_ip,
-            public_ip_id=node_id)
-        ```
-
-        ## Import
-
-        The RDS instance eip associate can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Rds/instanceEipAssociate:InstanceEipAssociate test <id>
-        ```
-
+        Create a InstanceEipAssociate resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of an RDS instance.
-        :param pulumi.Input[_builtins.str] public_ip: Specifies the EIP address to be bound.
-        :param pulumi.Input[_builtins.str] public_ip_id: Specifies the EIP ID.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this creates a new resource.
         """
         ...
     @overload
@@ -241,34 +173,7 @@ class InstanceEipAssociate(pulumi.CustomResource):
                  args: InstanceEipAssociateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages an RDS instance EIP associate resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        public_ip = config.require_object("publicIp")
-        public_ip_id = config.require_object("publicIpId")
-        test = sbercloud.rds.InstanceEipAssociate("test",
-            instance_id=instance_id,
-            public_ip=public_ip,
-            public_ip_id=node_id)
-        ```
-
-        ## Import
-
-        The RDS instance eip associate can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Rds/instanceEipAssociate:InstanceEipAssociate test <id>
-        ```
-
+        Create a InstanceEipAssociate resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param InstanceEipAssociateArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -331,11 +236,6 @@ class InstanceEipAssociate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of an RDS instance.
-        :param pulumi.Input[_builtins.str] public_ip: Specifies the EIP address to be bound.
-        :param pulumi.Input[_builtins.str] public_ip_id: Specifies the EIP ID.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this creates a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -356,33 +256,20 @@ class InstanceEipAssociate(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the ID of an RDS instance.
-        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the EIP address to be bound.
-        """
         return pulumi.get(self, "public_ip")
 
     @_builtins.property
     @pulumi.getter(name="publicIpId")
     def public_ip_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the EIP ID.
-        """
         return pulumi.get(self, "public_ip_id")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 

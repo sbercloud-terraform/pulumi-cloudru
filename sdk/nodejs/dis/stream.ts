@@ -6,45 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages DIS Stream resource within SberCloud.
- *
- * ## Example Usage
- *
- * ### Create a stream that type is BLOB
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const stream = new sbercloud.dis.Stream("stream", {
- *     streamName: "terraform_test_dis_stream",
- *     partitionCount: 1,
- * });
- * ```
- *
- * ### Create a stream that type is JSON
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const stream = new sbercloud.dis.Stream("stream", {
- *     streamName: "terraform_test_dis_stream",
- *     partitionCount: 1,
- *     dataType: "JSON",
- *     dataSchema: "{\"type\":\"record\",\"name\":\"RecordName\",\"fields\":[{\"name\":\"id\",\"type\":\"string\",\"doc\":\"Type inferred from '\\\"2017/10/11 11:11:11\\\"'\"},{\"name\":\"info\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"info\",\"fields\":[{\"name\":\"date\",\"type\":\"string\",\"doc\":\"Type inferred from '\\\"2018/10/11 11:11:11\\\"'\"}]}},\"doc\":\"Type inferred from '[{\\\"date\\\":\\\"2018/10/11 11:11:11\\\"}]'\"}]}",
- * });
- * ```
- *
- * ## Import
- *
- * Dis stream can be imported by `stream_name`. For example,
- *
- * ```sh
- * $ pulumi import sbercloud:Dis/stream:Stream example _abc123
- * ```
- */
 export class Stream extends pulumi.CustomResource {
     /**
      * Get an existing Stream resource's state with the given name, ID, and optional extra
@@ -73,93 +34,24 @@ export class Stream extends pulumi.CustomResource {
         return obj['__pulumiType'] === Stream.__pulumiType;
     }
 
-    /**
-     * Maximum number of partition for automatic scaling.
-     * Changing this parameter will create a new resource.
-     */
     declare public readonly autoScaleMaxPartitionCount: pulumi.Output<number>;
-    /**
-     * Minimum number of partition for automatic scaling.
-     * Changing this parameter will create a new resource.
-     */
     declare public readonly autoScaleMinPartitionCount: pulumi.Output<number>;
-    /**
-     * Data compression type. The value is one of snappy, gzip and zip.
-     * Changing this parameter will create a new resource.
-     */
     declare public readonly compressionFormat: pulumi.Output<string>;
-    /**
-     * Timestamp at which the DIS stream was created.
-     */
     declare public /*out*/ readonly created: pulumi.Output<number>;
-    /**
-     * Field separator for CSV file. Changing this parameter will create a new
-     * resource.
-     */
     declare public readonly csvDelimiter: pulumi.Output<string>;
-    /**
-     * User's JOSN, CSV format data schema, described with Avro schema. Changing
-     * this parameter will create a new resource.
-     */
     declare public readonly dataSchema: pulumi.Output<string>;
-    /**
-     * Data type of the data putting into the stream. The value is one of `BLOB`,
-     * `JSON` and `CSV`. Changing this parameter will create a new resource.
-     */
     declare public readonly dataType: pulumi.Output<string>;
-    /**
-     * Specifies the enterprise project id of the dis stream, Value 0
-     * indicates the default enterprise project. Changing this parameter will create a new resource.
-     */
     declare public readonly enterpriseProjectId: pulumi.Output<string>;
-    /**
-     * Number of the expect partitions. NOTE: Each stream can be scaled up and down a
-     * total of five times within one hour. After the stream is successfully scaled up or down, it cannot be scaled up or
-     * down again within the next one hour.
-     */
     declare public readonly partitionCount: pulumi.Output<number>;
-    /**
-     * The information of stream partitions. Structure is documented below.
-     */
     declare public /*out*/ readonly partitions: pulumi.Output<outputs.Dis.StreamPartition[]>;
-    /**
-     * Total number of readable partitions (including partitions in ACTIVE state only).
-     */
     declare public /*out*/ readonly readablePartitionCount: pulumi.Output<number>;
-    /**
-     * The region in which to create the DIS stream resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new DIS Stream resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * The number of hours for which data from the stream will be retained in DIS.
-     * Value range: `24` to `72`. Unit: `hour`. Default:`24`. Changing this parameter will create a new resource.
-     */
     declare public readonly retentionPeriod: pulumi.Output<number | undefined>;
-    /**
-     * The status of the partition.
-     */
     declare public /*out*/ readonly status: pulumi.Output<string>;
-    /**
-     * Indicates a stream ID in UUID format.
-     */
     declare public /*out*/ readonly streamId: pulumi.Output<string>;
-    /**
-     * Name of the DIS stream to be created.
-     */
     declare public readonly streamName: pulumi.Output<string>;
-    /**
-     * Stream Type. The value is COMMON(means 1M bandwidth) or ADVANCED(means 5M
-     * bandwidth). Changing this parameter will create a new resource.
-     */
     declare public readonly streamType: pulumi.Output<string>;
-    /**
-     * Specifies the key/value pairs to associate with the stream.
-     */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * Total number of writable partitions (including partitions in ACTIVE and DELETED states).
-     */
     declare public /*out*/ readonly writablePartitionCount: pulumi.Output<number>;
 
     /**
@@ -231,93 +123,24 @@ export class Stream extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Stream resources.
  */
 export interface StreamState {
-    /**
-     * Maximum number of partition for automatic scaling.
-     * Changing this parameter will create a new resource.
-     */
     autoScaleMaxPartitionCount?: pulumi.Input<number>;
-    /**
-     * Minimum number of partition for automatic scaling.
-     * Changing this parameter will create a new resource.
-     */
     autoScaleMinPartitionCount?: pulumi.Input<number>;
-    /**
-     * Data compression type. The value is one of snappy, gzip and zip.
-     * Changing this parameter will create a new resource.
-     */
     compressionFormat?: pulumi.Input<string>;
-    /**
-     * Timestamp at which the DIS stream was created.
-     */
     created?: pulumi.Input<number>;
-    /**
-     * Field separator for CSV file. Changing this parameter will create a new
-     * resource.
-     */
     csvDelimiter?: pulumi.Input<string>;
-    /**
-     * User's JOSN, CSV format data schema, described with Avro schema. Changing
-     * this parameter will create a new resource.
-     */
     dataSchema?: pulumi.Input<string>;
-    /**
-     * Data type of the data putting into the stream. The value is one of `BLOB`,
-     * `JSON` and `CSV`. Changing this parameter will create a new resource.
-     */
     dataType?: pulumi.Input<string>;
-    /**
-     * Specifies the enterprise project id of the dis stream, Value 0
-     * indicates the default enterprise project. Changing this parameter will create a new resource.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Number of the expect partitions. NOTE: Each stream can be scaled up and down a
-     * total of five times within one hour. After the stream is successfully scaled up or down, it cannot be scaled up or
-     * down again within the next one hour.
-     */
     partitionCount?: pulumi.Input<number>;
-    /**
-     * The information of stream partitions. Structure is documented below.
-     */
     partitions?: pulumi.Input<pulumi.Input<inputs.Dis.StreamPartition>[]>;
-    /**
-     * Total number of readable partitions (including partitions in ACTIVE state only).
-     */
     readablePartitionCount?: pulumi.Input<number>;
-    /**
-     * The region in which to create the DIS stream resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new DIS Stream resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * The number of hours for which data from the stream will be retained in DIS.
-     * Value range: `24` to `72`. Unit: `hour`. Default:`24`. Changing this parameter will create a new resource.
-     */
     retentionPeriod?: pulumi.Input<number>;
-    /**
-     * The status of the partition.
-     */
     status?: pulumi.Input<string>;
-    /**
-     * Indicates a stream ID in UUID format.
-     */
     streamId?: pulumi.Input<string>;
-    /**
-     * Name of the DIS stream to be created.
-     */
     streamName?: pulumi.Input<string>;
-    /**
-     * Stream Type. The value is COMMON(means 1M bandwidth) or ADVANCED(means 5M
-     * bandwidth). Changing this parameter will create a new resource.
-     */
     streamType?: pulumi.Input<string>;
-    /**
-     * Specifies the key/value pairs to associate with the stream.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Total number of writable partitions (including partitions in ACTIVE and DELETED states).
-     */
     writablePartitionCount?: pulumi.Input<number>;
 }
 
@@ -325,68 +148,17 @@ export interface StreamState {
  * The set of arguments for constructing a Stream resource.
  */
 export interface StreamArgs {
-    /**
-     * Maximum number of partition for automatic scaling.
-     * Changing this parameter will create a new resource.
-     */
     autoScaleMaxPartitionCount?: pulumi.Input<number>;
-    /**
-     * Minimum number of partition for automatic scaling.
-     * Changing this parameter will create a new resource.
-     */
     autoScaleMinPartitionCount?: pulumi.Input<number>;
-    /**
-     * Data compression type. The value is one of snappy, gzip and zip.
-     * Changing this parameter will create a new resource.
-     */
     compressionFormat?: pulumi.Input<string>;
-    /**
-     * Field separator for CSV file. Changing this parameter will create a new
-     * resource.
-     */
     csvDelimiter?: pulumi.Input<string>;
-    /**
-     * User's JOSN, CSV format data schema, described with Avro schema. Changing
-     * this parameter will create a new resource.
-     */
     dataSchema?: pulumi.Input<string>;
-    /**
-     * Data type of the data putting into the stream. The value is one of `BLOB`,
-     * `JSON` and `CSV`. Changing this parameter will create a new resource.
-     */
     dataType?: pulumi.Input<string>;
-    /**
-     * Specifies the enterprise project id of the dis stream, Value 0
-     * indicates the default enterprise project. Changing this parameter will create a new resource.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Number of the expect partitions. NOTE: Each stream can be scaled up and down a
-     * total of five times within one hour. After the stream is successfully scaled up or down, it cannot be scaled up or
-     * down again within the next one hour.
-     */
     partitionCount: pulumi.Input<number>;
-    /**
-     * The region in which to create the DIS stream resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new DIS Stream resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * The number of hours for which data from the stream will be retained in DIS.
-     * Value range: `24` to `72`. Unit: `hour`. Default:`24`. Changing this parameter will create a new resource.
-     */
     retentionPeriod?: pulumi.Input<number>;
-    /**
-     * Name of the DIS stream to be created.
-     */
     streamName: pulumi.Input<string>;
-    /**
-     * Stream Type. The value is COMMON(means 1M bandwidth) or ADVANCED(means 5M
-     * bandwidth). Changing this parameter will create a new resource.
-     */
     streamType?: pulumi.Input<string>;
-    /**
-     * Specifies the key/value pairs to associate with the stream.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

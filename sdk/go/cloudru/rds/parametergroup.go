@@ -12,63 +12,17 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a RDS ParameterGroup resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/rds"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rds.NewParametergroup(ctx, "pg_1", &rds.ParametergroupArgs{
-//				Name: pulumi.String("pg_1"),
-//				Datastore: &rds.ParametergroupDatastoreArgs{
-//					Type:    pulumi.String("mysql"),
-//					Version: pulumi.String("5.6"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Parameter groups can be imported using the `id`, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Rds/parametergroup:Parametergroup pg_1 7117d38e-4c8f-4624-a505-bd96b97d024c
-// ```
 type Parametergroup struct {
 	pulumi.CustomResourceState
 
-	// Indicates the parameter configuration defined by users based on the default parameters groups.
 	ConfigurationParameters ParametergroupConfigurationParameterArrayOutput `pulumi:"configurationParameters"`
 	CreatedAt               pulumi.StringOutput                             `pulumi:"createdAt"`
-	// Database object. The database object structure is documented below. Changing this creates a new parameter group.
-	Datastore ParametergroupDatastoreOutput `pulumi:"datastore"`
-	// The parameter group description. It contains a maximum of 256 characters and cannot contain the following special characters:>!<"&'= the value is left blank by default.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The parameter group name. It contains a maximum of 64 characters.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The region in which to create the RDS parameter group. If omitted, the
-	// provider-level region will be used. Changing this creates a new parameter group.
-	Region    pulumi.StringOutput `pulumi:"region"`
-	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
-	// Parameter group values key/value pairs defined by users based on the default parameter groups.
-	Values pulumi.StringMapOutput `pulumi:"values"`
+	Datastore               ParametergroupDatastoreOutput                   `pulumi:"datastore"`
+	Description             pulumi.StringPtrOutput                          `pulumi:"description"`
+	Name                    pulumi.StringOutput                             `pulumi:"name"`
+	Region                  pulumi.StringOutput                             `pulumi:"region"`
+	UpdatedAt               pulumi.StringOutput                             `pulumi:"updatedAt"`
+	Values                  pulumi.StringMapOutput                          `pulumi:"values"`
 }
 
 // NewParametergroup registers a new resource with the given unique name, arguments, and options.
@@ -104,39 +58,25 @@ func GetParametergroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Parametergroup resources.
 type parametergroupState struct {
-	// Indicates the parameter configuration defined by users based on the default parameters groups.
 	ConfigurationParameters []ParametergroupConfigurationParameter `pulumi:"configurationParameters"`
 	CreatedAt               *string                                `pulumi:"createdAt"`
-	// Database object. The database object structure is documented below. Changing this creates a new parameter group.
-	Datastore *ParametergroupDatastore `pulumi:"datastore"`
-	// The parameter group description. It contains a maximum of 256 characters and cannot contain the following special characters:>!<"&'= the value is left blank by default.
-	Description *string `pulumi:"description"`
-	// The parameter group name. It contains a maximum of 64 characters.
-	Name *string `pulumi:"name"`
-	// The region in which to create the RDS parameter group. If omitted, the
-	// provider-level region will be used. Changing this creates a new parameter group.
-	Region    *string `pulumi:"region"`
-	UpdatedAt *string `pulumi:"updatedAt"`
-	// Parameter group values key/value pairs defined by users based on the default parameter groups.
-	Values map[string]string `pulumi:"values"`
+	Datastore               *ParametergroupDatastore               `pulumi:"datastore"`
+	Description             *string                                `pulumi:"description"`
+	Name                    *string                                `pulumi:"name"`
+	Region                  *string                                `pulumi:"region"`
+	UpdatedAt               *string                                `pulumi:"updatedAt"`
+	Values                  map[string]string                      `pulumi:"values"`
 }
 
 type ParametergroupState struct {
-	// Indicates the parameter configuration defined by users based on the default parameters groups.
 	ConfigurationParameters ParametergroupConfigurationParameterArrayInput
 	CreatedAt               pulumi.StringPtrInput
-	// Database object. The database object structure is documented below. Changing this creates a new parameter group.
-	Datastore ParametergroupDatastorePtrInput
-	// The parameter group description. It contains a maximum of 256 characters and cannot contain the following special characters:>!<"&'= the value is left blank by default.
-	Description pulumi.StringPtrInput
-	// The parameter group name. It contains a maximum of 64 characters.
-	Name pulumi.StringPtrInput
-	// The region in which to create the RDS parameter group. If omitted, the
-	// provider-level region will be used. Changing this creates a new parameter group.
-	Region    pulumi.StringPtrInput
-	UpdatedAt pulumi.StringPtrInput
-	// Parameter group values key/value pairs defined by users based on the default parameter groups.
-	Values pulumi.StringMapInput
+	Datastore               ParametergroupDatastorePtrInput
+	Description             pulumi.StringPtrInput
+	Name                    pulumi.StringPtrInput
+	Region                  pulumi.StringPtrInput
+	UpdatedAt               pulumi.StringPtrInput
+	Values                  pulumi.StringMapInput
 }
 
 func (ParametergroupState) ElementType() reflect.Type {
@@ -144,32 +84,20 @@ func (ParametergroupState) ElementType() reflect.Type {
 }
 
 type parametergroupArgs struct {
-	// Database object. The database object structure is documented below. Changing this creates a new parameter group.
-	Datastore ParametergroupDatastore `pulumi:"datastore"`
-	// The parameter group description. It contains a maximum of 256 characters and cannot contain the following special characters:>!<"&'= the value is left blank by default.
-	Description *string `pulumi:"description"`
-	// The parameter group name. It contains a maximum of 64 characters.
-	Name *string `pulumi:"name"`
-	// The region in which to create the RDS parameter group. If omitted, the
-	// provider-level region will be used. Changing this creates a new parameter group.
-	Region *string `pulumi:"region"`
-	// Parameter group values key/value pairs defined by users based on the default parameter groups.
-	Values map[string]string `pulumi:"values"`
+	Datastore   ParametergroupDatastore `pulumi:"datastore"`
+	Description *string                 `pulumi:"description"`
+	Name        *string                 `pulumi:"name"`
+	Region      *string                 `pulumi:"region"`
+	Values      map[string]string       `pulumi:"values"`
 }
 
 // The set of arguments for constructing a Parametergroup resource.
 type ParametergroupArgs struct {
-	// Database object. The database object structure is documented below. Changing this creates a new parameter group.
-	Datastore ParametergroupDatastoreInput
-	// The parameter group description. It contains a maximum of 256 characters and cannot contain the following special characters:>!<"&'= the value is left blank by default.
+	Datastore   ParametergroupDatastoreInput
 	Description pulumi.StringPtrInput
-	// The parameter group name. It contains a maximum of 64 characters.
-	Name pulumi.StringPtrInput
-	// The region in which to create the RDS parameter group. If omitted, the
-	// provider-level region will be used. Changing this creates a new parameter group.
-	Region pulumi.StringPtrInput
-	// Parameter group values key/value pairs defined by users based on the default parameter groups.
-	Values pulumi.StringMapInput
+	Name        pulumi.StringPtrInput
+	Region      pulumi.StringPtrInput
+	Values      pulumi.StringMapInput
 }
 
 func (ParametergroupArgs) ElementType() reflect.Type {
@@ -259,7 +187,6 @@ func (o ParametergroupOutput) ToParametergroupOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Indicates the parameter configuration defined by users based on the default parameters groups.
 func (o ParametergroupOutput) ConfigurationParameters() ParametergroupConfigurationParameterArrayOutput {
 	return o.ApplyT(func(v *Parametergroup) ParametergroupConfigurationParameterArrayOutput {
 		return v.ConfigurationParameters
@@ -270,23 +197,18 @@ func (o ParametergroupOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Parametergroup) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Database object. The database object structure is documented below. Changing this creates a new parameter group.
 func (o ParametergroupOutput) Datastore() ParametergroupDatastoreOutput {
 	return o.ApplyT(func(v *Parametergroup) ParametergroupDatastoreOutput { return v.Datastore }).(ParametergroupDatastoreOutput)
 }
 
-// The parameter group description. It contains a maximum of 256 characters and cannot contain the following special characters:>!<"&'= the value is left blank by default.
 func (o ParametergroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Parametergroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The parameter group name. It contains a maximum of 64 characters.
 func (o ParametergroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Parametergroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The region in which to create the RDS parameter group. If omitted, the
-// provider-level region will be used. Changing this creates a new parameter group.
 func (o ParametergroupOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Parametergroup) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
@@ -295,7 +217,6 @@ func (o ParametergroupOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Parametergroup) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// Parameter group values key/value pairs defined by users based on the default parameter groups.
 func (o ParametergroupOutput) Values() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Parametergroup) pulumi.StringMapOutput { return v.Values }).(pulumi.StringMapOutput)
 }

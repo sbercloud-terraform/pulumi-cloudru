@@ -62,14 +62,6 @@ class NotificationOperation(dict):
                  resource: _builtins.str,
                  service: _builtins.str,
                  trace_names: Sequence[_builtins.str]):
-        """
-        :param _builtins.str resource: Specifies the resource type.
-        :param _builtins.str service: Specifies the cloud service.
-        :param Sequence[_builtins.str] trace_names: Specifies an array of trace names.
-               
-               <a name="notification_operation_users_object"></a>
-               The `operation_users` block supports:
-        """
         pulumi.set(__self__, "resource", resource)
         pulumi.set(__self__, "service", service)
         pulumi.set(__self__, "trace_names", trace_names)
@@ -77,28 +69,16 @@ class NotificationOperation(dict):
     @_builtins.property
     @pulumi.getter
     def resource(self) -> _builtins.str:
-        """
-        Specifies the resource type.
-        """
         return pulumi.get(self, "resource")
 
     @_builtins.property
     @pulumi.getter
     def service(self) -> _builtins.str:
-        """
-        Specifies the cloud service.
-        """
         return pulumi.get(self, "service")
 
     @_builtins.property
     @pulumi.getter(name="traceNames")
     def trace_names(self) -> Sequence[_builtins.str]:
-        """
-        Specifies an array of trace names.
-
-        <a name="notification_operation_users_object"></a>
-        The `operation_users` block supports:
-        """
         return pulumi.get(self, "trace_names")
 
 
@@ -107,27 +87,17 @@ class NotificationOperationUser(dict):
     def __init__(__self__, *,
                  group: _builtins.str,
                  users: Sequence[_builtins.str]):
-        """
-        :param _builtins.str group: Specifies the IAM user group name.
-        :param Sequence[_builtins.str] users: Specifies an array of IAM users in the group.
-        """
         pulumi.set(__self__, "group", group)
         pulumi.set(__self__, "users", users)
 
     @_builtins.property
     @pulumi.getter
     def group(self) -> _builtins.str:
-        """
-        Specifies the IAM user group name.
-        """
         return pulumi.get(self, "group")
 
     @_builtins.property
     @pulumi.getter
     def users(self) -> Sequence[_builtins.str]:
-        """
-        Specifies an array of IAM users in the group.
-        """
         return pulumi.get(self, "users")
 
 

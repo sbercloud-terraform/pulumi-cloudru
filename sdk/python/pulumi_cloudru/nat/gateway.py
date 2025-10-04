@@ -37,28 +37,15 @@ class GatewayArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Gateway resource.
-        :param pulumi.Input[_builtins.str] spec: Specifies the nat gateway type.
-               The value can be:
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies the subnet ID of the downstream interface (the next hop of the
-               DVR) of the NAT gateway.
-               Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of the VPC to which the NAT gateway belongs.  
-               Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the nat
-               gateway. The value contains 0 to 255 characters, and angle brackets (<)
-               and (>) are not allowed.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the
-               enterprise project id of the nat gateway. The value can contains maximum of
-               36 characters which it is string "0" or in UUID format with hyphens (-).
-               Changing this creates a new nat gateway.
-        :param pulumi.Input[_builtins.str] name: Specifies the nat gateway name. The name can
-               contain only digits, letters, underscores (_), and hyphens(-).
+        :param pulumi.Input[_builtins.str] spec: The specification of the NAT gateway.
+        :param pulumi.Input[_builtins.str] subnet_id: The network ID of the downstream interface (the next hop of the DVR) of the NAT gateway.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC to which the NAT gateway belongs.
+        :param pulumi.Input[_builtins.str] description: The description of the NAT gateway.
+        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID of the NAT gateway.
+        :param pulumi.Input[_builtins.str] name: The NAT gateway name.
         :param pulumi.Input[_builtins.str] ngport_ip_address: The IP address used for the NG port of the NAT gateway.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to
-               create the Nat gateway resource. If omitted, the provider-level region will
-               be used. Changing this creates a new nat gateway.
+        :param pulumi.Input[_builtins.str] region: The region where the NAT gateway is located.
         :param pulumi.Input['GatewaySessionConfArgs'] session_conf: The session configuration of the NAT gateway.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the NAT geteway.
         """
         pulumi.set(__self__, "spec", spec)
         pulumi.set(__self__, "subnet_id", subnet_id)
@@ -90,8 +77,7 @@ class GatewayArgs:
     @pulumi.getter
     def spec(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the nat gateway type.
-        The value can be:
+        The specification of the NAT gateway.
         """
         return pulumi.get(self, "spec")
 
@@ -103,9 +89,7 @@ class GatewayArgs:
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the subnet ID of the downstream interface (the next hop of the
-        DVR) of the NAT gateway.
-        Changing this will create a new resource.
+        The network ID of the downstream interface (the next hop of the DVR) of the NAT gateway.
         """
         return pulumi.get(self, "subnet_id")
 
@@ -117,8 +101,7 @@ class GatewayArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the ID of the VPC to which the NAT gateway belongs.  
-        Changing this will create a new resource.
+        The ID of the VPC to which the NAT gateway belongs.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -148,9 +131,7 @@ class GatewayArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the description of the nat
-        gateway. The value contains 0 to 255 characters, and angle brackets (<)
-        and (>) are not allowed.
+        The description of the NAT gateway.
         """
         return pulumi.get(self, "description")
 
@@ -162,10 +143,7 @@ class GatewayArgs:
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the
-        enterprise project id of the nat gateway. The value can contains maximum of
-        36 characters which it is string "0" or in UUID format with hyphens (-).
-        Changing this creates a new nat gateway.
+        The enterprise project ID of the NAT gateway.
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -177,8 +155,7 @@ class GatewayArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the nat gateway name. The name can
-        contain only digits, letters, underscores (_), and hyphens(-).
+        The NAT gateway name.
         """
         return pulumi.get(self, "name")
 
@@ -220,9 +197,7 @@ class GatewayArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region in which to
-        create the Nat gateway resource. If omitted, the provider-level region will
-        be used. Changing this creates a new nat gateway.
+        The region where the NAT gateway is located.
         """
         return pulumi.get(self, "region")
 
@@ -245,9 +220,6 @@ class GatewayArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs to associate with the NAT geteway.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -284,32 +256,19 @@ class _GatewayState:
         :param pulumi.Input[_builtins.str] billing_info: The order information of the NAT gateway.
         :param pulumi.Input[_builtins.int] bps_max: The bandwidth that the NAT gateway can receive or send per second.
         :param pulumi.Input[_builtins.str] created_at: The creation time of the NAT gateway.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the nat
-               gateway. The value contains 0 to 255 characters, and angle brackets (<)
-               and (>) are not allowed.
+        :param pulumi.Input[_builtins.str] description: The description of the NAT gateway.
         :param pulumi.Input[_builtins.int] dnat_rules_limit: The maximum number of DNAT rules on the NAT gateway.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the
-               enterprise project id of the nat gateway. The value can contains maximum of
-               36 characters which it is string "0" or in UUID format with hyphens (-).
-               Changing this creates a new nat gateway.
-        :param pulumi.Input[_builtins.str] name: Specifies the nat gateway name. The name can
-               contain only digits, letters, underscores (_), and hyphens(-).
+        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID of the NAT gateway.
+        :param pulumi.Input[_builtins.str] name: The NAT gateway name.
         :param pulumi.Input[_builtins.str] ngport_ip_address: The IP address used for the NG port of the NAT gateway.
         :param pulumi.Input[_builtins.int] pps_max: The number of packets that the NAT gateway can receive or send per second.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to
-               create the Nat gateway resource. If omitted, the provider-level region will
-               be used. Changing this creates a new nat gateway.
+        :param pulumi.Input[_builtins.str] region: The region where the NAT gateway is located.
         :param pulumi.Input['GatewaySessionConfArgs'] session_conf: The session configuration of the NAT gateway.
         :param pulumi.Input[_builtins.int] snat_rule_public_ip_limit: The maximum number of SNAT rules on the NAT gateway.
-        :param pulumi.Input[_builtins.str] spec: Specifies the nat gateway type.
-               The value can be:
-        :param pulumi.Input[_builtins.str] status: The status of the nat gateway.
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies the subnet ID of the downstream interface (the next hop of the
-               DVR) of the NAT gateway.
-               Changing this will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the NAT geteway.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of the VPC to which the NAT gateway belongs.  
-               Changing this will create a new resource.
+        :param pulumi.Input[_builtins.str] spec: The specification of the NAT gateway.
+        :param pulumi.Input[_builtins.str] status: The current status of the NAT gateway.
+        :param pulumi.Input[_builtins.str] subnet_id: The network ID of the downstream interface (the next hop of the DVR) of the NAT gateway.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC to which the NAT gateway belongs.
         """
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
@@ -412,9 +371,7 @@ class _GatewayState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the description of the nat
-        gateway. The value contains 0 to 255 characters, and angle brackets (<)
-        and (>) are not allowed.
+        The description of the NAT gateway.
         """
         return pulumi.get(self, "description")
 
@@ -438,10 +395,7 @@ class _GatewayState:
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the
-        enterprise project id of the nat gateway. The value can contains maximum of
-        36 characters which it is string "0" or in UUID format with hyphens (-).
-        Changing this creates a new nat gateway.
+        The enterprise project ID of the NAT gateway.
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -453,8 +407,7 @@ class _GatewayState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the nat gateway name. The name can
-        contain only digits, letters, underscores (_), and hyphens(-).
+        The NAT gateway name.
         """
         return pulumi.get(self, "name")
 
@@ -508,9 +461,7 @@ class _GatewayState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region in which to
-        create the Nat gateway resource. If omitted, the provider-level region will
-        be used. Changing this creates a new nat gateway.
+        The region where the NAT gateway is located.
         """
         return pulumi.get(self, "region")
 
@@ -546,8 +497,7 @@ class _GatewayState:
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the nat gateway type.
-        The value can be:
+        The specification of the NAT gateway.
         """
         return pulumi.get(self, "spec")
 
@@ -559,7 +509,7 @@ class _GatewayState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The status of the nat gateway.
+        The current status of the NAT gateway.
         """
         return pulumi.get(self, "status")
 
@@ -571,9 +521,7 @@ class _GatewayState:
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the subnet ID of the downstream interface (the next hop of the
-        DVR) of the NAT gateway.
-        Changing this will create a new resource.
+        The network ID of the downstream interface (the next hop of the DVR) of the NAT gateway.
         """
         return pulumi.get(self, "subnet_id")
 
@@ -584,9 +532,6 @@ class _GatewayState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs to associate with the NAT geteway.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -597,8 +542,7 @@ class _GatewayState:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the ID of the VPC to which the NAT gateway belongs.  
-        Changing this will create a new resource.
+        The ID of the VPC to which the NAT gateway belongs.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -629,40 +573,18 @@ class Gateway(pulumi.CustomResource):
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a Nat gateway resource within SberCloud Nat
-
-        ## Import
-
-        Nat gateway can be imported using the following format:
-
-        ```sh
-        $ pulumi import sbercloud:Nat/gateway:Gateway nat_1 d126fb87-43ce-4867-a2ff-cf34af3765d9
-        ```
-
+        Create a Gateway resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the nat
-               gateway. The value contains 0 to 255 characters, and angle brackets (<)
-               and (>) are not allowed.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the
-               enterprise project id of the nat gateway. The value can contains maximum of
-               36 characters which it is string "0" or in UUID format with hyphens (-).
-               Changing this creates a new nat gateway.
-        :param pulumi.Input[_builtins.str] name: Specifies the nat gateway name. The name can
-               contain only digits, letters, underscores (_), and hyphens(-).
+        :param pulumi.Input[_builtins.str] description: The description of the NAT gateway.
+        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID of the NAT gateway.
+        :param pulumi.Input[_builtins.str] name: The NAT gateway name.
         :param pulumi.Input[_builtins.str] ngport_ip_address: The IP address used for the NG port of the NAT gateway.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to
-               create the Nat gateway resource. If omitted, the provider-level region will
-               be used. Changing this creates a new nat gateway.
+        :param pulumi.Input[_builtins.str] region: The region where the NAT gateway is located.
         :param pulumi.Input[Union['GatewaySessionConfArgs', 'GatewaySessionConfArgsDict']] session_conf: The session configuration of the NAT gateway.
-        :param pulumi.Input[_builtins.str] spec: Specifies the nat gateway type.
-               The value can be:
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies the subnet ID of the downstream interface (the next hop of the
-               DVR) of the NAT gateway.
-               Changing this will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the NAT geteway.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of the VPC to which the NAT gateway belongs.  
-               Changing this will create a new resource.
+        :param pulumi.Input[_builtins.str] spec: The specification of the NAT gateway.
+        :param pulumi.Input[_builtins.str] subnet_id: The network ID of the downstream interface (the next hop of the DVR) of the NAT gateway.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC to which the NAT gateway belongs.
         """
         ...
     @overload
@@ -671,16 +593,7 @@ class Gateway(pulumi.CustomResource):
                  args: GatewayArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a Nat gateway resource within SberCloud Nat
-
-        ## Import
-
-        Nat gateway can be imported using the following format:
-
-        ```sh
-        $ pulumi import sbercloud:Nat/gateway:Gateway nat_1 d126fb87-43ce-4867-a2ff-cf34af3765d9
-        ```
-
+        Create a Gateway resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param GatewayArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -787,32 +700,19 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] billing_info: The order information of the NAT gateway.
         :param pulumi.Input[_builtins.int] bps_max: The bandwidth that the NAT gateway can receive or send per second.
         :param pulumi.Input[_builtins.str] created_at: The creation time of the NAT gateway.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the nat
-               gateway. The value contains 0 to 255 characters, and angle brackets (<)
-               and (>) are not allowed.
+        :param pulumi.Input[_builtins.str] description: The description of the NAT gateway.
         :param pulumi.Input[_builtins.int] dnat_rules_limit: The maximum number of DNAT rules on the NAT gateway.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the
-               enterprise project id of the nat gateway. The value can contains maximum of
-               36 characters which it is string "0" or in UUID format with hyphens (-).
-               Changing this creates a new nat gateway.
-        :param pulumi.Input[_builtins.str] name: Specifies the nat gateway name. The name can
-               contain only digits, letters, underscores (_), and hyphens(-).
+        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID of the NAT gateway.
+        :param pulumi.Input[_builtins.str] name: The NAT gateway name.
         :param pulumi.Input[_builtins.str] ngport_ip_address: The IP address used for the NG port of the NAT gateway.
         :param pulumi.Input[_builtins.int] pps_max: The number of packets that the NAT gateway can receive or send per second.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to
-               create the Nat gateway resource. If omitted, the provider-level region will
-               be used. Changing this creates a new nat gateway.
+        :param pulumi.Input[_builtins.str] region: The region where the NAT gateway is located.
         :param pulumi.Input[Union['GatewaySessionConfArgs', 'GatewaySessionConfArgsDict']] session_conf: The session configuration of the NAT gateway.
         :param pulumi.Input[_builtins.int] snat_rule_public_ip_limit: The maximum number of SNAT rules on the NAT gateway.
-        :param pulumi.Input[_builtins.str] spec: Specifies the nat gateway type.
-               The value can be:
-        :param pulumi.Input[_builtins.str] status: The status of the nat gateway.
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies the subnet ID of the downstream interface (the next hop of the
-               DVR) of the NAT gateway.
-               Changing this will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the NAT geteway.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of the VPC to which the NAT gateway belongs.  
-               Changing this will create a new resource.
+        :param pulumi.Input[_builtins.str] spec: The specification of the NAT gateway.
+        :param pulumi.Input[_builtins.str] status: The current status of the NAT gateway.
+        :param pulumi.Input[_builtins.str] subnet_id: The network ID of the downstream interface (the next hop of the DVR) of the NAT gateway.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC to which the NAT gateway belongs.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -879,9 +779,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the description of the nat
-        gateway. The value contains 0 to 255 characters, and angle brackets (<)
-        and (>) are not allowed.
+        The description of the NAT gateway.
         """
         return pulumi.get(self, "description")
 
@@ -897,10 +795,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the
-        enterprise project id of the nat gateway. The value can contains maximum of
-        36 characters which it is string "0" or in UUID format with hyphens (-).
-        Changing this creates a new nat gateway.
+        The enterprise project ID of the NAT gateway.
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -908,8 +803,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the nat gateway name. The name can
-        contain only digits, letters, underscores (_), and hyphens(-).
+        The NAT gateway name.
         """
         return pulumi.get(self, "name")
 
@@ -943,9 +837,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the region in which to
-        create the Nat gateway resource. If omitted, the provider-level region will
-        be used. Changing this creates a new nat gateway.
+        The region where the NAT gateway is located.
         """
         return pulumi.get(self, "region")
 
@@ -969,8 +861,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter
     def spec(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the nat gateway type.
-        The value can be:
+        The specification of the NAT gateway.
         """
         return pulumi.get(self, "spec")
 
@@ -978,7 +869,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the nat gateway.
+        The current status of the NAT gateway.
         """
         return pulumi.get(self, "status")
 
@@ -986,26 +877,20 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the subnet ID of the downstream interface (the next hop of the
-        DVR) of the NAT gateway.
-        Changing this will create a new resource.
+        The network ID of the downstream interface (the next hop of the DVR) of the NAT gateway.
         """
         return pulumi.get(self, "subnet_id")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        Specifies the key/value pairs to associate with the NAT geteway.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the ID of the VPC to which the NAT gateway belongs.  
-        Changing this will create a new resource.
+        The ID of the VPC to which the NAT gateway belongs.
         """
         return pulumi.get(self, "vpc_id")
 

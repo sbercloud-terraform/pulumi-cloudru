@@ -46,43 +46,17 @@ class AlarmruleAlarmAction(dict):
     def __init__(__self__, *,
                  notification_lists: Sequence[_builtins.str],
                  type: _builtins.str):
-        """
-        :param Sequence[_builtins.str] notification_lists: specifies the list of objects to be notified if the alarm status changes, the
-               maximum length is 5. If `type` is set to *notification*, the value of notification_list cannot be empty. If `type` is
-               set to *autoscaling*, the value of notification_list must be **[]**
-               and the value of namespace must be *SYS.AS*.
-               
-               Note: to enable the *autoscaling* alarm rules take effect, you must bind scaling policies.
-        :param _builtins.str type: Specifies the type of action triggered by an alarm. the
-               value can be *notification* or *autoscaling*.
-               + notification: indicates that a notification will be sent to the user.
-               + autoscaling: indicates that a scaling action will be triggered.
-        """
         pulumi.set(__self__, "notification_lists", notification_lists)
         pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter(name="notificationLists")
     def notification_lists(self) -> Sequence[_builtins.str]:
-        """
-        specifies the list of objects to be notified if the alarm status changes, the
-        maximum length is 5. If `type` is set to *notification*, the value of notification_list cannot be empty. If `type` is
-        set to *autoscaling*, the value of notification_list must be **[]**
-        and the value of namespace must be *SYS.AS*.
-
-        Note: to enable the *autoscaling* alarm rules take effect, you must bind scaling policies.
-        """
         return pulumi.get(self, "notification_lists")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        Specifies the type of action triggered by an alarm. the
-        value can be *notification* or *autoscaling*.
-        + notification: indicates that a notification will be sent to the user.
-        + autoscaling: indicates that a scaling action will be triggered.
-        """
         return pulumi.get(self, "type")
 
 
@@ -115,34 +89,6 @@ class AlarmruleCondition(dict):
                  value: _builtins.int,
                  suppress_duration: Optional[_builtins.int] = None,
                  unit: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str comparison_operator: Specifies the comparison condition of alarm thresholds. The value can be >,
-               =, <, >=, or <=.
-        :param _builtins.int count: Specifies the number of consecutive occurrence times. The value ranges from 1 to 5.
-        :param _builtins.str filter: Specifies the data rollup methods. The value can be max, min, average, sum, and vaiance.
-        :param _builtins.int period: Specifies the alarm checking period in seconds. The value can be 0, 1, 300, 1200, 3600, 14400,
-               and 86400.
-               
-               Note: If period is set to 1, the raw metric data is used to determine whether to generate an alarm. When the value of
-               `alarm_type` is **EVENT.SYS** or **EVENT.CUSTOM**, period can be set to 0.
-        :param _builtins.int value: Specifies the alarm threshold. The value ranges from 0 to Number of
-               1.7976931348623157e+108.
-        :param _builtins.int suppress_duration: Specifies the interval for triggering an alarm if the alarm persists.
-               Possible values are as follows:
-               + **0**: Cloud Eye triggers the alarm only once;
-               + **300**: Cloud Eye triggers the alarm every 5 minutes;
-               + **600**: Cloud Eye triggers the alarm every 10 minutes;
-               + **900**: Cloud Eye triggers the alarm every 15 minutes;
-               + **1800**: Cloud Eye triggers the alarm every 30 minutes;
-               + **3600**: Cloud Eye triggers the alarm every hour;
-               + **10800**: Cloud Eye triggers the alarm every 3 hours;
-               + **21600**: Cloud Eye triggers the alarm every 6 hours;
-               + **43200**: Cloud Eye triggers the alarm every 12 hour;
-               + **86400**: Cloud Eye triggers the alarm every day.
-               
-               The default value is **0**.
-        :param _builtins.str unit: Specifies the data unit.
-        """
         pulumi.set(__self__, "comparison_operator", comparison_operator)
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "filter", filter)
@@ -156,76 +102,36 @@ class AlarmruleCondition(dict):
     @_builtins.property
     @pulumi.getter(name="comparisonOperator")
     def comparison_operator(self) -> _builtins.str:
-        """
-        Specifies the comparison condition of alarm thresholds. The value can be >,
-        =, <, >=, or <=.
-        """
         return pulumi.get(self, "comparison_operator")
 
     @_builtins.property
     @pulumi.getter
     def count(self) -> _builtins.int:
-        """
-        Specifies the number of consecutive occurrence times. The value ranges from 1 to 5.
-        """
         return pulumi.get(self, "count")
 
     @_builtins.property
     @pulumi.getter
     def filter(self) -> _builtins.str:
-        """
-        Specifies the data rollup methods. The value can be max, min, average, sum, and vaiance.
-        """
         return pulumi.get(self, "filter")
 
     @_builtins.property
     @pulumi.getter
     def period(self) -> _builtins.int:
-        """
-        Specifies the alarm checking period in seconds. The value can be 0, 1, 300, 1200, 3600, 14400,
-        and 86400.
-
-        Note: If period is set to 1, the raw metric data is used to determine whether to generate an alarm. When the value of
-        `alarm_type` is **EVENT.SYS** or **EVENT.CUSTOM**, period can be set to 0.
-        """
         return pulumi.get(self, "period")
 
     @_builtins.property
     @pulumi.getter
     def value(self) -> _builtins.int:
-        """
-        Specifies the alarm threshold. The value ranges from 0 to Number of
-        1.7976931348623157e+108.
-        """
         return pulumi.get(self, "value")
 
     @_builtins.property
     @pulumi.getter(name="suppressDuration")
     def suppress_duration(self) -> Optional[_builtins.int]:
-        """
-        Specifies the interval for triggering an alarm if the alarm persists.
-        Possible values are as follows:
-        + **0**: Cloud Eye triggers the alarm only once;
-        + **300**: Cloud Eye triggers the alarm every 5 minutes;
-        + **600**: Cloud Eye triggers the alarm every 10 minutes;
-        + **900**: Cloud Eye triggers the alarm every 15 minutes;
-        + **1800**: Cloud Eye triggers the alarm every 30 minutes;
-        + **3600**: Cloud Eye triggers the alarm every hour;
-        + **10800**: Cloud Eye triggers the alarm every 3 hours;
-        + **21600**: Cloud Eye triggers the alarm every 6 hours;
-        + **43200**: Cloud Eye triggers the alarm every 12 hour;
-        + **86400**: Cloud Eye triggers the alarm every day.
-
-        The default value is **0**.
-        """
         return pulumi.get(self, "suppress_duration")
 
     @_builtins.property
     @pulumi.getter
     def unit(self) -> Optional[_builtins.str]:
-        """
-        Specifies the data unit.
-        """
         return pulumi.get(self, "unit")
 
 
@@ -288,14 +194,6 @@ class AlarmruleMetric(dict):
                  metric_name: _builtins.str,
                  namespace: _builtins.str,
                  dimensions: Optional[Sequence['outputs.AlarmruleMetricDimension']] = None):
-        """
-        :param _builtins.str metric_name: Specifies the metric name of the condition. The value can be a string of
-               1 to 64 characters that must start with a letter and contain only letters, digits, and underscores (_).
-        :param _builtins.str namespace: Specifies the namespace in **service.item** format. **service** and **item**
-               each must be a string that starts with a letter and contains only letters, digits, and underscores (_).
-               Changing this creates a new resource.
-        :param Sequence['AlarmruleMetricDimensionArgs'] dimensions: Specifies the list of metric dimensions. The structure is described below.
-        """
         pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "namespace", namespace)
         if dimensions is not None:
@@ -304,28 +202,16 @@ class AlarmruleMetric(dict):
     @_builtins.property
     @pulumi.getter(name="metricName")
     def metric_name(self) -> _builtins.str:
-        """
-        Specifies the metric name of the condition. The value can be a string of
-        1 to 64 characters that must start with a letter and contain only letters, digits, and underscores (_).
-        """
         return pulumi.get(self, "metric_name")
 
     @_builtins.property
     @pulumi.getter
     def namespace(self) -> _builtins.str:
-        """
-        Specifies the namespace in **service.item** format. **service** and **item**
-        each must be a string that starts with a letter and contains only letters, digits, and underscores (_).
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "namespace")
 
     @_builtins.property
     @pulumi.getter
     def dimensions(self) -> Optional[Sequence['outputs.AlarmruleMetricDimension']]:
-        """
-        Specifies the list of metric dimensions. The structure is described below.
-        """
         return pulumi.get(self, "dimensions")
 
 
@@ -334,31 +220,17 @@ class AlarmruleMetricDimension(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
                  value: _builtins.str):
-        """
-        :param _builtins.str name: Specifies the dimension name. The value can be a string of 1 to 32 characters
-               that must start with a letter and contain only letters, digits, underscores (_), and hyphens (-).
-        :param _builtins.str value: Specifies the dimension value. The value can be a string of 1 to 64 characters
-               that must start with a letter or a number and contain only letters, digits, underscores (_), and hyphens (-).
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the dimension name. The value can be a string of 1 to 32 characters
-        that must start with a letter and contain only letters, digits, underscores (_), and hyphens (-).
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def value(self) -> _builtins.str:
-        """
-        Specifies the dimension value. The value can be a string of 1 to 64 characters
-        that must start with a letter or a number and contain only letters, digits, underscores (_), and hyphens (-).
-        """
         return pulumi.get(self, "value")
 
 
@@ -384,31 +256,17 @@ class AlarmruleOkAction(dict):
     def __init__(__self__, *,
                  notification_lists: Sequence[_builtins.str],
                  type: _builtins.str):
-        """
-        :param Sequence[_builtins.str] notification_lists: specifies the list of objects to be notified if the alarm status changes, the
-               maximum length is 5.
-        :param _builtins.str type: Specifies the type of action triggered by an alarm. the value is notification.
-               notification: indicates that a notification will be sent to the user.
-        """
         pulumi.set(__self__, "notification_lists", notification_lists)
         pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter(name="notificationLists")
     def notification_lists(self) -> Sequence[_builtins.str]:
-        """
-        specifies the list of objects to be notified if the alarm status changes, the
-        maximum length is 5.
-        """
         return pulumi.get(self, "notification_lists")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        Specifies the type of action triggered by an alarm. the value is notification.
-        notification: indicates that a notification will be sent to the user.
-        """
         return pulumi.get(self, "type")
 
 

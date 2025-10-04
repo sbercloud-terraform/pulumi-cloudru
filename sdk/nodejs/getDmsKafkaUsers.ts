@@ -6,22 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get the list of Kafka instance users.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const test = sbercloud.getDmsKafkaUsers({
- *     instanceId: instanceId,
- * });
- * ```
- */
 export function getDmsKafkaUsers(args: GetDmsKafkaUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetDmsKafkaUsersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:index/getDmsKafkaUsers:getDmsKafkaUsers", {
@@ -36,22 +20,9 @@ export function getDmsKafkaUsers(args: GetDmsKafkaUsersArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getDmsKafkaUsers.
  */
 export interface GetDmsKafkaUsersArgs {
-    /**
-     * Specifies the user description.
-     */
     description?: string;
-    /**
-     * Specifies the instance ID.
-     */
     instanceId: string;
-    /**
-     * Specifies the user name.
-     */
     name?: string;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
 }
 
@@ -59,41 +30,16 @@ export interface GetDmsKafkaUsersArgs {
  * A collection of values returned by getDmsKafkaUsers.
  */
 export interface GetDmsKafkaUsersResult {
-    /**
-     * Indicates the description.
-     */
     readonly description?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly instanceId: string;
-    /**
-     * Indicates the username.
-     */
     readonly name?: string;
     readonly region: string;
-    /**
-     * Indicates the user list.
-     */
     readonly users: outputs.GetDmsKafkaUsersUser[];
 }
-/**
- * Use this data source to get the list of Kafka instance users.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const test = sbercloud.getDmsKafkaUsers({
- *     instanceId: instanceId,
- * });
- * ```
- */
 export function getDmsKafkaUsersOutput(args: GetDmsKafkaUsersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDmsKafkaUsersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:index/getDmsKafkaUsers:getDmsKafkaUsers", {
@@ -108,21 +54,8 @@ export function getDmsKafkaUsersOutput(args: GetDmsKafkaUsersOutputArgs, opts?: 
  * A collection of arguments for invoking getDmsKafkaUsers.
  */
 export interface GetDmsKafkaUsersOutputArgs {
-    /**
-     * Specifies the user description.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies the instance ID.
-     */
     instanceId: pulumi.Input<string>;
-    /**
-     * Specifies the user name.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
 }

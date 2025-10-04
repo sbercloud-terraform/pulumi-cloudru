@@ -12,91 +12,11 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manage the conversion rules of identity provider within SberCloud IAM service.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/iam"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			providerId := cfg.RequireObject("providerId")
-//			_, err := iam.NewProviderConversion(ctx, "conversion", &iam.ProviderConversionArgs{
-//				ProviderId: pulumi.Any(providerId),
-//				ConversionRules: iam.ProviderConversionConversionRuleArray{
-//					&iam.ProviderConversionConversionRuleArgs{
-//						Locals: iam.ProviderConversionConversionRuleLocalArray{
-//							&iam.ProviderConversionConversionRuleLocalArgs{
-//								Username: pulumi.String("Tom"),
-//							},
-//						},
-//						Remotes: iam.ProviderConversionConversionRuleRemoteArray{
-//							&iam.ProviderConversionConversionRuleRemoteArgs{
-//								Attribute: pulumi.String("Tom"),
-//							},
-//						},
-//					},
-//					&iam.ProviderConversionConversionRuleArgs{
-//						Locals: iam.ProviderConversionConversionRuleLocalArray{
-//							&iam.ProviderConversionConversionRuleLocalArgs{
-//								Username: pulumi.String("FederationUser"),
-//							},
-//						},
-//						Remotes: iam.ProviderConversionConversionRuleRemoteArray{
-//							&iam.ProviderConversionConversionRuleRemoteArgs{
-//								Attribute: pulumi.String("username"),
-//								Condition: pulumi.String("any_one_of"),
-//								Values: pulumi.StringArray{
-//									pulumi.String("Tom"),
-//									pulumi.String("Jerry"),
-//								},
-//							},
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// <!--markdownlint-disable MD033-->
-//
-// ## Import
-//
-// Identity provider conversion rules are imported using the `provider_id`, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Iam/providerConversion:ProviderConversion conversion example_com_provider_oidc
-// ```
 type ProviderConversion struct {
 	pulumi.CustomResourceState
 
-	// Specifies the identity conversion rules of the identity provider.
-	// You can use identity conversion rules to map the identities of existing users to Huawei Cloud and manage their access
-	// to cloud resources.
-	// The object structure is documented below.
-	//
-	// <a name="conversionRules"></a>
-	// The `conversionRules` block supports:
 	ConversionRules ProviderConversionConversionRuleArrayOutput `pulumi:"conversionRules"`
-	// The ID of the identity provider used to manage the conversion rules.
-	// Changing this parameter will create a new resource.
-	ProviderId pulumi.StringOutput `pulumi:"providerId"`
+	ProviderId      pulumi.StringOutput                         `pulumi:"providerId"`
 }
 
 // NewProviderConversion registers a new resource with the given unique name, arguments, and options.
@@ -135,31 +55,13 @@ func GetProviderConversion(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProviderConversion resources.
 type providerConversionState struct {
-	// Specifies the identity conversion rules of the identity provider.
-	// You can use identity conversion rules to map the identities of existing users to Huawei Cloud and manage their access
-	// to cloud resources.
-	// The object structure is documented below.
-	//
-	// <a name="conversionRules"></a>
-	// The `conversionRules` block supports:
 	ConversionRules []ProviderConversionConversionRule `pulumi:"conversionRules"`
-	// The ID of the identity provider used to manage the conversion rules.
-	// Changing this parameter will create a new resource.
-	ProviderId *string `pulumi:"providerId"`
+	ProviderId      *string                            `pulumi:"providerId"`
 }
 
 type ProviderConversionState struct {
-	// Specifies the identity conversion rules of the identity provider.
-	// You can use identity conversion rules to map the identities of existing users to Huawei Cloud and manage their access
-	// to cloud resources.
-	// The object structure is documented below.
-	//
-	// <a name="conversionRules"></a>
-	// The `conversionRules` block supports:
 	ConversionRules ProviderConversionConversionRuleArrayInput
-	// The ID of the identity provider used to manage the conversion rules.
-	// Changing this parameter will create a new resource.
-	ProviderId pulumi.StringPtrInput
+	ProviderId      pulumi.StringPtrInput
 }
 
 func (ProviderConversionState) ElementType() reflect.Type {
@@ -167,32 +69,14 @@ func (ProviderConversionState) ElementType() reflect.Type {
 }
 
 type providerConversionArgs struct {
-	// Specifies the identity conversion rules of the identity provider.
-	// You can use identity conversion rules to map the identities of existing users to Huawei Cloud and manage their access
-	// to cloud resources.
-	// The object structure is documented below.
-	//
-	// <a name="conversionRules"></a>
-	// The `conversionRules` block supports:
 	ConversionRules []ProviderConversionConversionRule `pulumi:"conversionRules"`
-	// The ID of the identity provider used to manage the conversion rules.
-	// Changing this parameter will create a new resource.
-	ProviderId string `pulumi:"providerId"`
+	ProviderId      string                             `pulumi:"providerId"`
 }
 
 // The set of arguments for constructing a ProviderConversion resource.
 type ProviderConversionArgs struct {
-	// Specifies the identity conversion rules of the identity provider.
-	// You can use identity conversion rules to map the identities of existing users to Huawei Cloud and manage their access
-	// to cloud resources.
-	// The object structure is documented below.
-	//
-	// <a name="conversionRules"></a>
-	// The `conversionRules` block supports:
 	ConversionRules ProviderConversionConversionRuleArrayInput
-	// The ID of the identity provider used to manage the conversion rules.
-	// Changing this parameter will create a new resource.
-	ProviderId pulumi.StringInput
+	ProviderId      pulumi.StringInput
 }
 
 func (ProviderConversionArgs) ElementType() reflect.Type {
@@ -282,19 +166,10 @@ func (o ProviderConversionOutput) ToProviderConversionOutputWithContext(ctx cont
 	return o
 }
 
-// Specifies the identity conversion rules of the identity provider.
-// You can use identity conversion rules to map the identities of existing users to Huawei Cloud and manage their access
-// to cloud resources.
-// The object structure is documented below.
-//
-// <a name="conversionRules"></a>
-// The `conversionRules` block supports:
 func (o ProviderConversionOutput) ConversionRules() ProviderConversionConversionRuleArrayOutput {
 	return o.ApplyT(func(v *ProviderConversion) ProviderConversionConversionRuleArrayOutput { return v.ConversionRules }).(ProviderConversionConversionRuleArrayOutput)
 }
 
-// The ID of the identity provider used to manage the conversion rules.
-// Changing this parameter will create a new resource.
 func (o ProviderConversionOutput) ProviderId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProviderConversion) pulumi.StringOutput { return v.ProviderId }).(pulumi.StringOutput)
 }

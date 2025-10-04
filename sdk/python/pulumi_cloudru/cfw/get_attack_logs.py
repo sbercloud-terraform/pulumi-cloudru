@@ -101,73 +101,46 @@ class GetAttackLogsResult:
     @_builtins.property
     @pulumi.getter
     def app(self) -> Optional[_builtins.str]:
-        """
-        The application protocol.
-        """
         return pulumi.get(self, "app")
 
     @_builtins.property
     @pulumi.getter(name="attackRule")
     def attack_rule(self) -> Optional[_builtins.str]:
-        """
-        The attack rule.
-        """
         return pulumi.get(self, "attack_rule")
 
     @_builtins.property
     @pulumi.getter(name="attackRuleId")
     def attack_rule_id(self) -> Optional[_builtins.str]:
-        """
-        The attack rule ID.
-        """
         return pulumi.get(self, "attack_rule_id")
 
     @_builtins.property
     @pulumi.getter(name="attackType")
     def attack_type(self) -> Optional[_builtins.str]:
-        """
-        The attack type.
-        """
         return pulumi.get(self, "attack_type")
 
     @_builtins.property
     @pulumi.getter(name="dstCityName")
     def dst_city_name(self) -> Optional[_builtins.str]:
-        """
-        The destination city name.
-        """
         return pulumi.get(self, "dst_city_name")
 
     @_builtins.property
     @pulumi.getter(name="dstIp")
     def dst_ip(self) -> Optional[_builtins.str]:
-        """
-        The destination IP address.
-        """
         return pulumi.get(self, "dst_ip")
 
     @_builtins.property
     @pulumi.getter(name="dstPort")
     def dst_port(self) -> Optional[_builtins.int]:
-        """
-        The destination port.
-        """
         return pulumi.get(self, "dst_port")
 
     @_builtins.property
     @pulumi.getter(name="dstProvinceName")
     def dst_province_name(self) -> Optional[_builtins.str]:
-        """
-        The destination province name.
-        """
         return pulumi.get(self, "dst_province_name")
 
     @_builtins.property
     @pulumi.getter(name="dstRegionName")
     def dst_region_name(self) -> Optional[_builtins.str]:
-        """
-        The destination region name.
-        """
         return pulumi.get(self, "dst_region_name")
 
     @_builtins.property
@@ -196,9 +169,6 @@ class GetAttackLogsResult:
     @_builtins.property
     @pulumi.getter
     def level(self) -> Optional[_builtins.str]:
-        """
-        The threat level.
-        """
         return pulumi.get(self, "level")
 
     @_builtins.property
@@ -209,9 +179,6 @@ class GetAttackLogsResult:
     @_builtins.property
     @pulumi.getter
     def records(self) -> Sequence['outputs.GetAttackLogsRecordResult']:
-        """
-        The attack log records.
-        """
         return pulumi.get(self, "records")
 
     @_builtins.property
@@ -222,41 +189,26 @@ class GetAttackLogsResult:
     @_builtins.property
     @pulumi.getter(name="srcCityName")
     def src_city_name(self) -> Optional[_builtins.str]:
-        """
-        The source city name.
-        """
         return pulumi.get(self, "src_city_name")
 
     @_builtins.property
     @pulumi.getter(name="srcIp")
     def src_ip(self) -> Optional[_builtins.str]:
-        """
-        The source IP address.
-        """
         return pulumi.get(self, "src_ip")
 
     @_builtins.property
     @pulumi.getter(name="srcPort")
     def src_port(self) -> Optional[_builtins.int]:
-        """
-        The source port.
-        """
         return pulumi.get(self, "src_port")
 
     @_builtins.property
     @pulumi.getter(name="srcProvinceName")
     def src_province_name(self) -> Optional[_builtins.str]:
-        """
-        The source province name.
-        """
         return pulumi.get(self, "src_province_name")
 
     @_builtins.property
     @pulumi.getter(name="srcRegionName")
     def src_region_name(self) -> Optional[_builtins.str]:
-        """
-        The source region name.
-        """
         return pulumi.get(self, "src_region_name")
 
     @_builtins.property
@@ -319,36 +271,7 @@ def get_attack_logs(app: Optional[_builtins.str] = None,
                     start_time: Optional[_builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAttackLogsResult:
     """
-    Use this data source to get the list of CFW attack logs.
-
-    > **NOTE:** Up to 1000 logs can be retrieved. Set filter criteria to narrow down the search scope.
-
-
-    :param _builtins.str app: Specifies the application protocol.
-    :param _builtins.str attack_rule: Specifies the intrusion event rule.
-    :param _builtins.str attack_rule_id: Specifies the attack rule ID.
-    :param _builtins.str attack_type: Specifies the intrusion event type.
-    :param _builtins.str dst_city_name: Specifies the destination city name.
-    :param _builtins.str dst_ip: Specifies the destination IP address.
-    :param _builtins.int dst_port: Specifies the destination port.
-    :param _builtins.str dst_province_name: Specifies the destination province name.
-    :param _builtins.str dst_region_name: Specifies the destination region name.
-    :param _builtins.str end_time: Specifies the end time. The time is in UTC.
-           The format is **yyyy-MM-dd HH:mm:ss**.
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID.
-    :param _builtins.str fw_instance_id: Specifies the firewall instance ID.
-    :param _builtins.str level: Specifies the threat level.
-    :param _builtins.str log_type: Specifies the log type.
-           The valid values are **internet**, **nat** and **vpc**.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str src_city_name: Specifies the source city name.
-    :param _builtins.str src_ip: Specifies the source IP address.
-    :param _builtins.int src_port: Specifies the source port.
-    :param _builtins.str src_province_name: Specifies the source province name.
-    :param _builtins.str src_region_name: Specifies the source region name.
-    :param _builtins.str start_time: Specifies the start time. The time is in UTC.
-           The format is **yyyy-MM-dd HH:mm:ss**.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['app'] = app
@@ -422,36 +345,7 @@ def get_attack_logs_output(app: Optional[pulumi.Input[Optional[_builtins.str]]] 
                            start_time: Optional[pulumi.Input[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAttackLogsResult]:
     """
-    Use this data source to get the list of CFW attack logs.
-
-    > **NOTE:** Up to 1000 logs can be retrieved. Set filter criteria to narrow down the search scope.
-
-
-    :param _builtins.str app: Specifies the application protocol.
-    :param _builtins.str attack_rule: Specifies the intrusion event rule.
-    :param _builtins.str attack_rule_id: Specifies the attack rule ID.
-    :param _builtins.str attack_type: Specifies the intrusion event type.
-    :param _builtins.str dst_city_name: Specifies the destination city name.
-    :param _builtins.str dst_ip: Specifies the destination IP address.
-    :param _builtins.int dst_port: Specifies the destination port.
-    :param _builtins.str dst_province_name: Specifies the destination province name.
-    :param _builtins.str dst_region_name: Specifies the destination region name.
-    :param _builtins.str end_time: Specifies the end time. The time is in UTC.
-           The format is **yyyy-MM-dd HH:mm:ss**.
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID.
-    :param _builtins.str fw_instance_id: Specifies the firewall instance ID.
-    :param _builtins.str level: Specifies the threat level.
-    :param _builtins.str log_type: Specifies the log type.
-           The valid values are **internet**, **nat** and **vpc**.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str src_city_name: Specifies the source city name.
-    :param _builtins.str src_ip: Specifies the source IP address.
-    :param _builtins.int src_port: Specifies the source port.
-    :param _builtins.str src_province_name: Specifies the source province name.
-    :param _builtins.str src_region_name: Specifies the source region name.
-    :param _builtins.str start_time: Specifies the start time. The time is in UTC.
-           The format is **yyyy-MM-dd HH:mm:ss**.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['app'] = app

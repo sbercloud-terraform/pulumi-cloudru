@@ -55,20 +55,6 @@ class InstanceBackupPolicy(dict):
                  backup_type: Optional[_builtins.str] = None,
                  period_type: Optional[_builtins.str] = None,
                  save_days: Optional[_builtins.int] = None):
-        """
-        :param Sequence[_builtins.int] backup_ats: Day in a week on which backup starts, the value ranges from `1` to `7`.
-               Where: 1 indicates Monday; 7 indicates Sunday.
-        :param _builtins.str begin_at: Time at which backup starts.
-               Format: `hh24:00-hh24:00`, "00:00-01:00" indicates that backup starts at 00:00:00.
-               
-               <a name="DcsInstance_Parameters"></a>
-               The `parameters` block supports:
-        :param _builtins.str backup_type: Backup type. Default value is `auto`. The valid values are as follows:
-        :param _builtins.str period_type: Interval at which backup is performed. Default value is `weekly`.
-               Currently, only weekly backup is supported.
-        :param _builtins.int save_days: Retention time. Unit: day, the value ranges from `1` to `7`.
-               This parameter is required if the backup_type is **auto**.
-        """
         pulumi.set(__self__, "backup_ats", backup_ats)
         pulumi.set(__self__, "begin_at", begin_at)
         if backup_type is not None:
@@ -81,48 +67,26 @@ class InstanceBackupPolicy(dict):
     @_builtins.property
     @pulumi.getter(name="backupAts")
     def backup_ats(self) -> Sequence[_builtins.int]:
-        """
-        Day in a week on which backup starts, the value ranges from `1` to `7`.
-        Where: 1 indicates Monday; 7 indicates Sunday.
-        """
         return pulumi.get(self, "backup_ats")
 
     @_builtins.property
     @pulumi.getter(name="beginAt")
     def begin_at(self) -> _builtins.str:
-        """
-        Time at which backup starts.
-        Format: `hh24:00-hh24:00`, "00:00-01:00" indicates that backup starts at 00:00:00.
-
-        <a name="DcsInstance_Parameters"></a>
-        The `parameters` block supports:
-        """
         return pulumi.get(self, "begin_at")
 
     @_builtins.property
     @pulumi.getter(name="backupType")
     def backup_type(self) -> Optional[_builtins.str]:
-        """
-        Backup type. Default value is `auto`. The valid values are as follows:
-        """
         return pulumi.get(self, "backup_type")
 
     @_builtins.property
     @pulumi.getter(name="periodType")
     def period_type(self) -> Optional[_builtins.str]:
-        """
-        Interval at which backup is performed. Default value is `weekly`.
-        Currently, only weekly backup is supported.
-        """
         return pulumi.get(self, "period_type")
 
     @_builtins.property
     @pulumi.getter(name="saveDays")
     def save_days(self) -> Optional[_builtins.int]:
-        """
-        Retention time. Unit: day, the value ranges from `1` to `7`.
-        This parameter is required if the backup_type is **auto**.
-        """
         return pulumi.get(self, "save_days")
 
 
@@ -172,18 +136,6 @@ class InstanceBandwidthInfo(dict):
                  max_expand_count: Optional[_builtins.int] = None,
                  next_expand_time: Optional[_builtins.str] = None,
                  task_running: Optional[_builtins.bool] = None):
-        """
-        :param _builtins.int bandwidth: Indicates the bandwidth size, the unit is **GB**.
-        :param _builtins.str begin_time: Indicates the begin time of temporary increase.
-        :param _builtins.str current_time: Indicates the current time.
-        :param _builtins.str end_time: Indicates the end time of temporary increase.
-        :param _builtins.int expand_count: Indicates the number of increases.
-        :param _builtins.int expand_effect_time: Indicates the interval between temporary increases, the unit is **ms**.
-        :param _builtins.int expand_interval_time: Indicates the time interval to the next increase, the unit is **ms**.
-        :param _builtins.int max_expand_count: Indicates the maximum number of increases.
-        :param _builtins.str next_expand_time: Indicates the next increase time.
-        :param _builtins.bool task_running: Indicates whether the increase task is running.
-        """
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
         if begin_time is not None:
@@ -208,81 +160,51 @@ class InstanceBandwidthInfo(dict):
     @_builtins.property
     @pulumi.getter
     def bandwidth(self) -> Optional[_builtins.int]:
-        """
-        Indicates the bandwidth size, the unit is **GB**.
-        """
         return pulumi.get(self, "bandwidth")
 
     @_builtins.property
     @pulumi.getter(name="beginTime")
     def begin_time(self) -> Optional[_builtins.str]:
-        """
-        Indicates the begin time of temporary increase.
-        """
         return pulumi.get(self, "begin_time")
 
     @_builtins.property
     @pulumi.getter(name="currentTime")
     def current_time(self) -> Optional[_builtins.str]:
-        """
-        Indicates the current time.
-        """
         return pulumi.get(self, "current_time")
 
     @_builtins.property
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[_builtins.str]:
-        """
-        Indicates the end time of temporary increase.
-        """
         return pulumi.get(self, "end_time")
 
     @_builtins.property
     @pulumi.getter(name="expandCount")
     def expand_count(self) -> Optional[_builtins.int]:
-        """
-        Indicates the number of increases.
-        """
         return pulumi.get(self, "expand_count")
 
     @_builtins.property
     @pulumi.getter(name="expandEffectTime")
     def expand_effect_time(self) -> Optional[_builtins.int]:
-        """
-        Indicates the interval between temporary increases, the unit is **ms**.
-        """
         return pulumi.get(self, "expand_effect_time")
 
     @_builtins.property
     @pulumi.getter(name="expandIntervalTime")
     def expand_interval_time(self) -> Optional[_builtins.int]:
-        """
-        Indicates the time interval to the next increase, the unit is **ms**.
-        """
         return pulumi.get(self, "expand_interval_time")
 
     @_builtins.property
     @pulumi.getter(name="maxExpandCount")
     def max_expand_count(self) -> Optional[_builtins.int]:
-        """
-        Indicates the maximum number of increases.
-        """
         return pulumi.get(self, "max_expand_count")
 
     @_builtins.property
     @pulumi.getter(name="nextExpandTime")
     def next_expand_time(self) -> Optional[_builtins.str]:
-        """
-        Indicates the next increase time.
-        """
         return pulumi.get(self, "next_expand_time")
 
     @_builtins.property
     @pulumi.getter(name="taskRunning")
     def task_running(self) -> Optional[_builtins.bool]:
-        """
-        Indicates whether the increase task is running.
-        """
         return pulumi.get(self, "task_running")
 
 
@@ -292,13 +214,6 @@ class InstanceParameter(dict):
                  id: _builtins.str,
                  name: _builtins.str,
                  value: _builtins.str):
-        """
-        :param _builtins.str id: A resource ID in UUID format.
-        :param _builtins.str name: Specifies the name of an instance.
-               The name must be 4 to 64 characters and start with a letter.
-               Only english, letters (case-insensitive), digits, underscores (_) ,and hyphens (-) are allowed.
-        :param _builtins.str value: Specifies the value of the configuration item.
-        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -306,27 +221,16 @@ class InstanceParameter(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        A resource ID in UUID format.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the name of an instance.
-        The name must be 4 to 64 characters and start with a letter.
-        Only english, letters (case-insensitive), digits, underscores (_) ,and hyphens (-) are allowed.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def value(self) -> _builtins.str:
-        """
-        Specifies the value of the configuration item.
-        """
         return pulumi.get(self, "value")
 
 
@@ -354,29 +258,17 @@ class InstanceWhitelist(dict):
     def __init__(__self__, *,
                  group_name: _builtins.str,
                  ip_addresses: Sequence[_builtins.str]):
-        """
-        :param _builtins.str group_name: Specifies the name of IP address group.
-        :param Sequence[_builtins.str] ip_addresses: Specifies the list of IP address or CIDR which can be whitelisted for an instance.
-               The maximum is 20.
-        """
         pulumi.set(__self__, "group_name", group_name)
         pulumi.set(__self__, "ip_addresses", ip_addresses)
 
     @_builtins.property
     @pulumi.getter(name="groupName")
     def group_name(self) -> _builtins.str:
-        """
-        Specifies the name of IP address group.
-        """
         return pulumi.get(self, "group_name")
 
     @_builtins.property
     @pulumi.getter(name="ipAddresses")
     def ip_addresses(self) -> Sequence[_builtins.str]:
-        """
-        Specifies the list of IP address or CIDR which can be whitelisted for an instance.
-        The maximum is 20.
-        """
         return pulumi.get(self, "ip_addresses")
 
 
@@ -392,29 +284,6 @@ class GetFlavorsFlavorResult(dict):
                  engine_versions: _builtins.str,
                  ip_count: _builtins.int,
                  name: _builtins.str):
-        """
-        :param Sequence[_builtins.str] available_zones: An array of available zones where the cache specification can be used.
-        :param _builtins.str cache_mode: The mode of a cache engine. The valid values are as follows:
-        :param _builtins.float capacity: The total memory of the cache, in GB.
-               + **Redis4.0 and Redis5.0**: Stand-alone and active/standby type instance values:
-               `1`, `2`, `4`, `8`, `16`, `32` and `64`.
-               Cluster instance specifications support `24`, `32`, `48`, `64`, `96`, `128`, `192`, `256`, `384`, `512`, `768` and
-               `1024`.
-               + **Redis3.0**: Stand-alone and active/standby type instance values: `2`, `4`, `8`, `16`, `32` and `64`.
-               Proxy cluster instance specifications support `64`, `128`, `256`, `512`, and `1024`.
-               + **Memcached**: Stand-alone and active/standby type instance values: `2`, `4`, `8`, `16`, `32` and `64`.
-        :param Sequence[_builtins.str] charging_modes: The charging modes for the specification cache instance.
-               + `Hourly` - Pay-per-use.
-               + `Monthly` - Pay monthly.
-               + `Yearly` - Annual payment.
-        :param _builtins.str cpu_architecture: The CPU architecture of cache instance.
-               Valid values *x86_64* and *aarch64*.
-        :param _builtins.str engine: The engine of the cache instance. Valid values are *Redis* and *Memcached*.
-               Default value is *Redis*.
-        :param _builtins.str engine_versions: Supported versions of the specification.
-        :param _builtins.int ip_count: Number of IP addresses corresponding to the specifications.
-        :param _builtins.str name: The flavor name of the cache instance.
-        """
         pulumi.set(__self__, "available_zones", available_zones)
         pulumi.set(__self__, "cache_mode", cache_mode)
         pulumi.set(__self__, "capacity", capacity)
@@ -428,85 +297,46 @@ class GetFlavorsFlavorResult(dict):
     @_builtins.property
     @pulumi.getter(name="availableZones")
     def available_zones(self) -> Sequence[_builtins.str]:
-        """
-        An array of available zones where the cache specification can be used.
-        """
         return pulumi.get(self, "available_zones")
 
     @_builtins.property
     @pulumi.getter(name="cacheMode")
     def cache_mode(self) -> _builtins.str:
-        """
-        The mode of a cache engine. The valid values are as follows:
-        """
         return pulumi.get(self, "cache_mode")
 
     @_builtins.property
     @pulumi.getter
     def capacity(self) -> _builtins.float:
-        """
-        The total memory of the cache, in GB.
-        + **Redis4.0 and Redis5.0**: Stand-alone and active/standby type instance values:
-        `1`, `2`, `4`, `8`, `16`, `32` and `64`.
-        Cluster instance specifications support `24`, `32`, `48`, `64`, `96`, `128`, `192`, `256`, `384`, `512`, `768` and
-        `1024`.
-        + **Redis3.0**: Stand-alone and active/standby type instance values: `2`, `4`, `8`, `16`, `32` and `64`.
-        Proxy cluster instance specifications support `64`, `128`, `256`, `512`, and `1024`.
-        + **Memcached**: Stand-alone and active/standby type instance values: `2`, `4`, `8`, `16`, `32` and `64`.
-        """
         return pulumi.get(self, "capacity")
 
     @_builtins.property
     @pulumi.getter(name="chargingModes")
     def charging_modes(self) -> Sequence[_builtins.str]:
-        """
-        The charging modes for the specification cache instance.
-        + `Hourly` - Pay-per-use.
-        + `Monthly` - Pay monthly.
-        + `Yearly` - Annual payment.
-        """
         return pulumi.get(self, "charging_modes")
 
     @_builtins.property
     @pulumi.getter(name="cpuArchitecture")
     def cpu_architecture(self) -> _builtins.str:
-        """
-        The CPU architecture of cache instance.
-        Valid values *x86_64* and *aarch64*.
-        """
         return pulumi.get(self, "cpu_architecture")
 
     @_builtins.property
     @pulumi.getter
     def engine(self) -> _builtins.str:
-        """
-        The engine of the cache instance. Valid values are *Redis* and *Memcached*.
-        Default value is *Redis*.
-        """
         return pulumi.get(self, "engine")
 
     @_builtins.property
     @pulumi.getter(name="engineVersions")
     def engine_versions(self) -> _builtins.str:
-        """
-        Supported versions of the specification.
-        """
         return pulumi.get(self, "engine_versions")
 
     @_builtins.property
     @pulumi.getter(name="ipCount")
     def ip_count(self) -> _builtins.int:
-        """
-        Number of IP addresses corresponding to the specifications.
-        """
         return pulumi.get(self, "ip_count")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        The flavor name of the cache instance.
-        """
         return pulumi.get(self, "name")
 
 

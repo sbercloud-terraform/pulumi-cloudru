@@ -28,17 +28,6 @@ class AddonArgs:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Addon resource.
-        :param pulumi.Input[_builtins.str] cluster_id: Specifies the cluster ID.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] template_name: Specifies the name of the add-on template.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the CCE add-on resource.
-               If omitted, the provider-level region will be used. Changing this creates a new CCE add-on resource.
-        :param pulumi.Input['AddonValuesArgs'] values: Specifies the add-on template installation parameters.
-               These parameters vary depending on the add-on. Structure is documented below.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] version: Specifies the version of the add-on.
-               Changing this parameter will create a new resource.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "template_name", template_name)
@@ -52,10 +41,6 @@ class AddonArgs:
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the cluster ID.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
@@ -65,10 +50,6 @@ class AddonArgs:
     @_builtins.property
     @pulumi.getter(name="templateName")
     def template_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the name of the add-on template.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "template_name")
 
     @template_name.setter
@@ -78,10 +59,6 @@ class AddonArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the CCE add-on resource.
-        If omitted, the provider-level region will be used. Changing this creates a new CCE add-on resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -91,11 +68,6 @@ class AddonArgs:
     @_builtins.property
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input['AddonValuesArgs']]:
-        """
-        Specifies the add-on template installation parameters.
-        These parameters vary depending on the add-on. Structure is documented below.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "values")
 
     @values.setter
@@ -105,10 +77,6 @@ class AddonArgs:
     @_builtins.property
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the version of the add-on.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "version")
 
     @version.setter
@@ -128,19 +96,6 @@ class _AddonState:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Addon resources.
-        :param pulumi.Input[_builtins.str] cluster_id: Specifies the cluster ID.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] description: Description of add-on instance.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the CCE add-on resource.
-               If omitted, the provider-level region will be used. Changing this creates a new CCE add-on resource.
-        :param pulumi.Input[_builtins.str] status: Add-on status information.
-        :param pulumi.Input[_builtins.str] template_name: Specifies the name of the add-on template.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input['AddonValuesArgs'] values: Specifies the add-on template installation parameters.
-               These parameters vary depending on the add-on. Structure is documented below.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] version: Specifies the version of the add-on.
-               Changing this parameter will create a new resource.
         """
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
@@ -160,10 +115,6 @@ class _AddonState:
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the cluster ID.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
@@ -173,9 +124,6 @@ class _AddonState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Description of add-on instance.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -185,10 +133,6 @@ class _AddonState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the CCE add-on resource.
-        If omitted, the provider-level region will be used. Changing this creates a new CCE add-on resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -198,9 +142,6 @@ class _AddonState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Add-on status information.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -210,10 +151,6 @@ class _AddonState:
     @_builtins.property
     @pulumi.getter(name="templateName")
     def template_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the add-on template.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "template_name")
 
     @template_name.setter
@@ -223,11 +160,6 @@ class _AddonState:
     @_builtins.property
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input['AddonValuesArgs']]:
-        """
-        Specifies the add-on template installation parameters.
-        These parameters vary depending on the add-on. Structure is documented below.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "values")
 
     @values.setter
@@ -237,10 +169,6 @@ class _AddonState:
     @_builtins.property
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the version of the add-on.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "version")
 
     @version.setter
@@ -261,43 +189,9 @@ class Addon(pulumi.CustomResource):
                  version: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides a CCE add-on resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        cluster_id = config.require_object("clusterId")
-        addon_test = sbercloud.cce.Addon("addon_test",
-            cluster_id=cluster_id,
-            template_name="metrics-server",
-            version="1.1.10")
-        ```
-
-        ## Import
-
-        CCE add-on can be imported using the cluster ID and add-on ID separated by a slash, e.g.:
-
-        ```sh
-        $ pulumi import sbercloud:Cce/addon:Addon my_addon bb6923e4-b16e-11eb-b0cd-0255ac101da1/c7ecb230-b16f-11eb-b3b6-0255ac1015a3
-        ```
-
+        Create a Addon resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] cluster_id: Specifies the cluster ID.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the CCE add-on resource.
-               If omitted, the provider-level region will be used. Changing this creates a new CCE add-on resource.
-        :param pulumi.Input[_builtins.str] template_name: Specifies the name of the add-on template.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Union['AddonValuesArgs', 'AddonValuesArgsDict']] values: Specifies the add-on template installation parameters.
-               These parameters vary depending on the add-on. Structure is documented below.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] version: Specifies the version of the add-on.
-               Changing this parameter will create a new resource.
         """
         ...
     @overload
@@ -306,30 +200,7 @@ class Addon(pulumi.CustomResource):
                  args: AddonArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a CCE add-on resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        cluster_id = config.require_object("clusterId")
-        addon_test = sbercloud.cce.Addon("addon_test",
-            cluster_id=cluster_id,
-            template_name="metrics-server",
-            version="1.1.10")
-        ```
-
-        ## Import
-
-        CCE add-on can be imported using the cluster ID and add-on ID separated by a slash, e.g.:
-
-        ```sh
-        $ pulumi import sbercloud:Cce/addon:Addon my_addon bb6923e4-b16e-11eb-b0cd-0255ac101da1/c7ecb230-b16f-11eb-b3b6-0255ac1015a3
-        ```
-
+        Create a Addon resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param AddonArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -394,19 +265,6 @@ class Addon(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] cluster_id: Specifies the cluster ID.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] description: Description of add-on instance.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the CCE add-on resource.
-               If omitted, the provider-level region will be used. Changing this creates a new CCE add-on resource.
-        :param pulumi.Input[_builtins.str] status: Add-on status information.
-        :param pulumi.Input[_builtins.str] template_name: Specifies the name of the add-on template.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Union['AddonValuesArgs', 'AddonValuesArgsDict']] values: Specifies the add-on template installation parameters.
-               These parameters vary depending on the add-on. Structure is documented below.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] version: Specifies the version of the add-on.
-               Changing this parameter will create a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -424,62 +282,35 @@ class Addon(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the cluster ID.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "cluster_id")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[_builtins.str]:
-        """
-        Description of add-on instance.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the CCE add-on resource.
-        If omitted, the provider-level region will be used. Changing this creates a new CCE add-on resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
-        """
-        Add-on status information.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="templateName")
     def template_name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the name of the add-on template.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "template_name")
 
     @_builtins.property
     @pulumi.getter
     def values(self) -> pulumi.Output[Optional['outputs.AddonValues']]:
-        """
-        Specifies the add-on template installation parameters.
-        These parameters vary depending on the add-on. Structure is documented below.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "values")
 
     @_builtins.property
     @pulumi.getter
     def version(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the version of the add-on.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "version")
 

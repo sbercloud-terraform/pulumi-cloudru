@@ -26,22 +26,6 @@ class AccessRuleArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccessRule resource.
-        :param pulumi.Input[_builtins.str] access_to: Specifies the value that defines the access rule. The value contains 1 to 255 characters.
-               Changing this will create a new access rule. The value varies according to the scenario:
-               - Set the VPC ID in VPC authorization scenarios.
-               - Set this parameter in IP address authorization scenario.
-               
-               For an NFS shared file system, the value in the format of *VPC_ID#IP_address#priority#user_permission*.
-               For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#100#all_squash,root_squash.
-               
-               For a CIFS shared file system, the value in the format of *VPC_ID#IP_address#priority*.
-               For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#0.
-        :param pulumi.Input[_builtins.str] sfs_id: Specifies the UUID of the shared file system. Changing this will create a new access rule.
-        :param pulumi.Input[_builtins.str] access_level: Specifies the access level of the shared file system. Possible values are *ro* (read-only)
-               and *rw* (read-write). The default value is *rw* (read/write). Changing this will create a new access rule.
-        :param pulumi.Input[_builtins.str] access_type: Specifies the type of the share access rule. The default value is *cert*.
-               Changing this will create a new access rule.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the sfs access rule resource. If omitted, the provider-level region will be used. Changing this creates a new access rule resource.
         """
         pulumi.set(__self__, "access_to", access_to)
         pulumi.set(__self__, "sfs_id", sfs_id)
@@ -55,18 +39,6 @@ class AccessRuleArgs:
     @_builtins.property
     @pulumi.getter(name="accessTo")
     def access_to(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the value that defines the access rule. The value contains 1 to 255 characters.
-        Changing this will create a new access rule. The value varies according to the scenario:
-        - Set the VPC ID in VPC authorization scenarios.
-        - Set this parameter in IP address authorization scenario.
-
-        For an NFS shared file system, the value in the format of *VPC_ID#IP_address#priority#user_permission*.
-        For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#100#all_squash,root_squash.
-
-        For a CIFS shared file system, the value in the format of *VPC_ID#IP_address#priority*.
-        For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#0.
-        """
         return pulumi.get(self, "access_to")
 
     @access_to.setter
@@ -76,9 +48,6 @@ class AccessRuleArgs:
     @_builtins.property
     @pulumi.getter(name="sfsId")
     def sfs_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the UUID of the shared file system. Changing this will create a new access rule.
-        """
         return pulumi.get(self, "sfs_id")
 
     @sfs_id.setter
@@ -88,10 +57,6 @@ class AccessRuleArgs:
     @_builtins.property
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the access level of the shared file system. Possible values are *ro* (read-only)
-        and *rw* (read-write). The default value is *rw* (read/write). Changing this will create a new access rule.
-        """
         return pulumi.get(self, "access_level")
 
     @access_level.setter
@@ -101,10 +66,6 @@ class AccessRuleArgs:
     @_builtins.property
     @pulumi.getter(name="accessType")
     def access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the type of the share access rule. The default value is *cert*.
-        Changing this will create a new access rule.
-        """
         return pulumi.get(self, "access_type")
 
     @access_type.setter
@@ -114,9 +75,6 @@ class AccessRuleArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the sfs access rule resource. If omitted, the provider-level region will be used. Changing this creates a new access rule resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -135,23 +93,6 @@ class _AccessRuleState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessRule resources.
-        :param pulumi.Input[_builtins.str] access_level: Specifies the access level of the shared file system. Possible values are *ro* (read-only)
-               and *rw* (read-write). The default value is *rw* (read/write). Changing this will create a new access rule.
-        :param pulumi.Input[_builtins.str] access_to: Specifies the value that defines the access rule. The value contains 1 to 255 characters.
-               Changing this will create a new access rule. The value varies according to the scenario:
-               - Set the VPC ID in VPC authorization scenarios.
-               - Set this parameter in IP address authorization scenario.
-               
-               For an NFS shared file system, the value in the format of *VPC_ID#IP_address#priority#user_permission*.
-               For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#100#all_squash,root_squash.
-               
-               For a CIFS shared file system, the value in the format of *VPC_ID#IP_address#priority*.
-               For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#0.
-        :param pulumi.Input[_builtins.str] access_type: Specifies the type of the share access rule. The default value is *cert*.
-               Changing this will create a new access rule.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the sfs access rule resource. If omitted, the provider-level region will be used. Changing this creates a new access rule resource.
-        :param pulumi.Input[_builtins.str] sfs_id: Specifies the UUID of the shared file system. Changing this will create a new access rule.
-        :param pulumi.Input[_builtins.str] status: The status of the share access rule.
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
@@ -169,10 +110,6 @@ class _AccessRuleState:
     @_builtins.property
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the access level of the shared file system. Possible values are *ro* (read-only)
-        and *rw* (read-write). The default value is *rw* (read/write). Changing this will create a new access rule.
-        """
         return pulumi.get(self, "access_level")
 
     @access_level.setter
@@ -182,18 +119,6 @@ class _AccessRuleState:
     @_builtins.property
     @pulumi.getter(name="accessTo")
     def access_to(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the value that defines the access rule. The value contains 1 to 255 characters.
-        Changing this will create a new access rule. The value varies according to the scenario:
-        - Set the VPC ID in VPC authorization scenarios.
-        - Set this parameter in IP address authorization scenario.
-
-        For an NFS shared file system, the value in the format of *VPC_ID#IP_address#priority#user_permission*.
-        For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#100#all_squash,root_squash.
-
-        For a CIFS shared file system, the value in the format of *VPC_ID#IP_address#priority*.
-        For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#0.
-        """
         return pulumi.get(self, "access_to")
 
     @access_to.setter
@@ -203,10 +128,6 @@ class _AccessRuleState:
     @_builtins.property
     @pulumi.getter(name="accessType")
     def access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the type of the share access rule. The default value is *cert*.
-        Changing this will create a new access rule.
-        """
         return pulumi.get(self, "access_type")
 
     @access_type.setter
@@ -216,9 +137,6 @@ class _AccessRuleState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the sfs access rule resource. If omitted, the provider-level region will be used. Changing this creates a new access rule resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -228,9 +146,6 @@ class _AccessRuleState:
     @_builtins.property
     @pulumi.getter(name="sfsId")
     def sfs_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the UUID of the shared file system. Changing this will create a new access rule.
-        """
         return pulumi.get(self, "sfs_id")
 
     @sfs_id.setter
@@ -240,9 +155,6 @@ class _AccessRuleState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The status of the share access rule.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -263,53 +175,9 @@ class AccessRule(pulumi.CustomResource):
                  sfs_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides an access rule resource of Scalable File Resource (SFS).
-
-        ## Example Usage
-
-        ### Usage in VPC authorization scenarios
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        share_name = config.require_object("shareName")
-        vpc_id = config.require_object("vpcId")
-        share_file = sbercloud.sfs.FileSystem("share-file",
-            name=share_name,
-            size=100,
-            share_proto="NFS")
-        rule1 = sbercloud.sfs.AccessRule("rule_1",
-            sfs_id=share_file.id,
-            access_to=vpc_id)
-        ```
-
-        ## Import
-
-        SFS access rule can be imported by specifying the SFS ID and access rule ID separated by a slash, e.g.:
-
-        ```sh
-        $ pulumi import sbercloud:Sfs/accessRule:AccessRule sbercloud_sfs_access_rule <sfs_id>/<rule_id>
-        ```
-
+        Create a AccessRule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_level: Specifies the access level of the shared file system. Possible values are *ro* (read-only)
-               and *rw* (read-write). The default value is *rw* (read/write). Changing this will create a new access rule.
-        :param pulumi.Input[_builtins.str] access_to: Specifies the value that defines the access rule. The value contains 1 to 255 characters.
-               Changing this will create a new access rule. The value varies according to the scenario:
-               - Set the VPC ID in VPC authorization scenarios.
-               - Set this parameter in IP address authorization scenario.
-               
-               For an NFS shared file system, the value in the format of *VPC_ID#IP_address#priority#user_permission*.
-               For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#100#all_squash,root_squash.
-               
-               For a CIFS shared file system, the value in the format of *VPC_ID#IP_address#priority*.
-               For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#0.
-        :param pulumi.Input[_builtins.str] access_type: Specifies the type of the share access rule. The default value is *cert*.
-               Changing this will create a new access rule.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the sfs access rule resource. If omitted, the provider-level region will be used. Changing this creates a new access rule resource.
-        :param pulumi.Input[_builtins.str] sfs_id: Specifies the UUID of the shared file system. Changing this will create a new access rule.
         """
         ...
     @overload
@@ -318,35 +186,7 @@ class AccessRule(pulumi.CustomResource):
                  args: AccessRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an access rule resource of Scalable File Resource (SFS).
-
-        ## Example Usage
-
-        ### Usage in VPC authorization scenarios
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        share_name = config.require_object("shareName")
-        vpc_id = config.require_object("vpcId")
-        share_file = sbercloud.sfs.FileSystem("share-file",
-            name=share_name,
-            size=100,
-            share_proto="NFS")
-        rule1 = sbercloud.sfs.AccessRule("rule_1",
-            sfs_id=share_file.id,
-            access_to=vpc_id)
-        ```
-
-        ## Import
-
-        SFS access rule can be imported by specifying the SFS ID and access rule ID separated by a slash, e.g.:
-
-        ```sh
-        $ pulumi import sbercloud:Sfs/accessRule:AccessRule sbercloud_sfs_access_rule <sfs_id>/<rule_id>
-        ```
-
+        Create a AccessRule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param AccessRuleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -409,23 +249,6 @@ class AccessRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_level: Specifies the access level of the shared file system. Possible values are *ro* (read-only)
-               and *rw* (read-write). The default value is *rw* (read/write). Changing this will create a new access rule.
-        :param pulumi.Input[_builtins.str] access_to: Specifies the value that defines the access rule. The value contains 1 to 255 characters.
-               Changing this will create a new access rule. The value varies according to the scenario:
-               - Set the VPC ID in VPC authorization scenarios.
-               - Set this parameter in IP address authorization scenario.
-               
-               For an NFS shared file system, the value in the format of *VPC_ID#IP_address#priority#user_permission*.
-               For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#100#all_squash,root_squash.
-               
-               For a CIFS shared file system, the value in the format of *VPC_ID#IP_address#priority*.
-               For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#0.
-        :param pulumi.Input[_builtins.str] access_type: Specifies the type of the share access rule. The default value is *cert*.
-               Changing this will create a new access rule.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the sfs access rule resource. If omitted, the provider-level region will be used. Changing this creates a new access rule resource.
-        :param pulumi.Input[_builtins.str] sfs_id: Specifies the UUID of the shared file system. Changing this will create a new access rule.
-        :param pulumi.Input[_builtins.str] status: The status of the share access rule.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -442,59 +265,30 @@ class AccessRule(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the access level of the shared file system. Possible values are *ro* (read-only)
-        and *rw* (read-write). The default value is *rw* (read/write). Changing this will create a new access rule.
-        """
         return pulumi.get(self, "access_level")
 
     @_builtins.property
     @pulumi.getter(name="accessTo")
     def access_to(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the value that defines the access rule. The value contains 1 to 255 characters.
-        Changing this will create a new access rule. The value varies according to the scenario:
-        - Set the VPC ID in VPC authorization scenarios.
-        - Set this parameter in IP address authorization scenario.
-
-        For an NFS shared file system, the value in the format of *VPC_ID#IP_address#priority#user_permission*.
-        For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#100#all_squash,root_squash.
-
-        For a CIFS shared file system, the value in the format of *VPC_ID#IP_address#priority*.
-        For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#0.
-        """
         return pulumi.get(self, "access_to")
 
     @_builtins.property
     @pulumi.getter(name="accessType")
     def access_type(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the type of the share access rule. The default value is *cert*.
-        Changing this will create a new access rule.
-        """
         return pulumi.get(self, "access_type")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the sfs access rule resource. If omitted, the provider-level region will be used. Changing this creates a new access rule resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="sfsId")
     def sfs_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the UUID of the shared file system. Changing this will create a new access rule.
-        """
         return pulumi.get(self, "sfs_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
-        """
-        The status of the share access rule.
-        """
         return pulumi.get(self, "status")
 

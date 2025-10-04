@@ -12,71 +12,17 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages RDS SQLServer database resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/rds"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			_, err := rds.NewSqlserverDatabase(ctx, "test", &rds.SqlserverDatabaseArgs{
-//				InstanceId: pulumi.Any(instanceId),
-//				Name:       pulumi.String("test"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The RDS sqlserver database can be imported using the `instance_id` and `name` separated by a slash, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Rds/sqlserverDatabase:SqlserverDatabase test <instance_id>/<name>
-// ```
 type SqlserverDatabase struct {
 	pulumi.CustomResourceState
 
 	// Indicates the character set used by the database.
 	CharacterSet pulumi.StringOutput `pulumi:"characterSet"`
 	// Specifies the ID of the RDS SQLServer instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Specifies the database name. The database name can contain 1 to 64 characters,
-	// and can include letters, digits, hyphens (-), underscores (_), and periods (.). It cannot start or end with an RDS for
-	// SQL Server system database name. RDS for SQL Server system databases include **master**, **msdb**, **model**,
-	// **tempdb**, **resource**, and **rdsadmin**.
-	//
-	// Changing this parameter will create a new resource.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// Specifies the database name.
+	Name   pulumi.StringOutput `pulumi:"name"`
 	Region pulumi.StringOutput `pulumi:"region"`
-	// Indicates the database status. Its value can be any of the following:
-	// + **Creating**: The database is being created.
-	// + **Running**: The database is running.
-	// + **Deleting**: The database is being deleted.
-	// + **Not Exists**: The database does not exist.
+	// Indicates the database status.
 	State pulumi.StringOutput `pulumi:"state"`
 }
 
@@ -116,24 +62,11 @@ type sqlserverDatabaseState struct {
 	// Indicates the character set used by the database.
 	CharacterSet *string `pulumi:"characterSet"`
 	// Specifies the ID of the RDS SQLServer instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId *string `pulumi:"instanceId"`
-	// Specifies the database name. The database name can contain 1 to 64 characters,
-	// and can include letters, digits, hyphens (-), underscores (_), and periods (.). It cannot start or end with an RDS for
-	// SQL Server system database name. RDS for SQL Server system databases include **master**, **msdb**, **model**,
-	// **tempdb**, **resource**, and **rdsadmin**.
-	//
-	// Changing this parameter will create a new resource.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// Specifies the database name.
+	Name   *string `pulumi:"name"`
 	Region *string `pulumi:"region"`
-	// Indicates the database status. Its value can be any of the following:
-	// + **Creating**: The database is being created.
-	// + **Running**: The database is running.
-	// + **Deleting**: The database is being deleted.
-	// + **Not Exists**: The database does not exist.
+	// Indicates the database status.
 	State *string `pulumi:"state"`
 }
 
@@ -141,24 +74,11 @@ type SqlserverDatabaseState struct {
 	// Indicates the character set used by the database.
 	CharacterSet pulumi.StringPtrInput
 	// Specifies the ID of the RDS SQLServer instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId pulumi.StringPtrInput
-	// Specifies the database name. The database name can contain 1 to 64 characters,
-	// and can include letters, digits, hyphens (-), underscores (_), and periods (.). It cannot start or end with an RDS for
-	// SQL Server system database name. RDS for SQL Server system databases include **master**, **msdb**, **model**,
-	// **tempdb**, **resource**, and **rdsadmin**.
-	//
-	// Changing this parameter will create a new resource.
-	Name pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// Specifies the database name.
+	Name   pulumi.StringPtrInput
 	Region pulumi.StringPtrInput
-	// Indicates the database status. Its value can be any of the following:
-	// + **Creating**: The database is being created.
-	// + **Running**: The database is running.
-	// + **Deleting**: The database is being deleted.
-	// + **Not Exists**: The database does not exist.
+	// Indicates the database status.
 	State pulumi.StringPtrInput
 }
 
@@ -168,36 +88,18 @@ func (SqlserverDatabaseState) ElementType() reflect.Type {
 
 type sqlserverDatabaseArgs struct {
 	// Specifies the ID of the RDS SQLServer instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId string `pulumi:"instanceId"`
-	// Specifies the database name. The database name can contain 1 to 64 characters,
-	// and can include letters, digits, hyphens (-), underscores (_), and periods (.). It cannot start or end with an RDS for
-	// SQL Server system database name. RDS for SQL Server system databases include **master**, **msdb**, **model**,
-	// **tempdb**, **resource**, and **rdsadmin**.
-	//
-	// Changing this parameter will create a new resource.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// Specifies the database name.
+	Name   *string `pulumi:"name"`
 	Region *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a SqlserverDatabase resource.
 type SqlserverDatabaseArgs struct {
 	// Specifies the ID of the RDS SQLServer instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId pulumi.StringInput
-	// Specifies the database name. The database name can contain 1 to 64 characters,
-	// and can include letters, digits, hyphens (-), underscores (_), and periods (.). It cannot start or end with an RDS for
-	// SQL Server system database name. RDS for SQL Server system databases include **master**, **msdb**, **model**,
-	// **tempdb**, **resource**, and **rdsadmin**.
-	//
-	// Changing this parameter will create a new resource.
-	Name pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// Specifies the database name.
+	Name   pulumi.StringPtrInput
 	Region pulumi.StringPtrInput
 }
 
@@ -294,33 +196,20 @@ func (o SqlserverDatabaseOutput) CharacterSet() pulumi.StringOutput {
 }
 
 // Specifies the ID of the RDS SQLServer instance.
-//
-// Changing this parameter will create a new resource.
 func (o SqlserverDatabaseOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlserverDatabase) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Specifies the database name. The database name can contain 1 to 64 characters,
-// and can include letters, digits, hyphens (-), underscores (_), and periods (.). It cannot start or end with an RDS for
-// SQL Server system database name. RDS for SQL Server system databases include **master**, **msdb**, **model**,
-// **tempdb**, **resource**, and **rdsadmin**.
-//
-// Changing this parameter will create a new resource.
+// Specifies the database name.
 func (o SqlserverDatabaseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlserverDatabase) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
 func (o SqlserverDatabaseOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlserverDatabase) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Indicates the database status. Its value can be any of the following:
-// + **Creating**: The database is being created.
-// + **Running**: The database is running.
-// + **Deleting**: The database is being deleted.
-// + **Not Exists**: The database does not exist.
+// Indicates the database status.
 func (o SqlserverDatabaseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlserverDatabase) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

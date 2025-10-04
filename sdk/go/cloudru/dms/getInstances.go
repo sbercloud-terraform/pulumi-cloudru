@@ -11,68 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to query the available instances within sbercloud DMS service.
-//
-// ## Example Usage
-//
-// ### Query all instances with the keyword in the name
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/dms"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			keyword := cfg.RequireObject("keyword")
-//			_, err := dms.GetInstances(ctx, &dms.GetInstancesArgs{
-//				Name:       pulumi.StringRef(keyword),
-//				FuzzyMatch: pulumi.BoolRef(true),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Query the instance with the specified name
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/dms"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceName := cfg.RequireObject("instanceName")
-//			_, err := dms.GetInstances(ctx, &dms.GetInstancesArgs{
-//				Name: pulumi.StringRef(instanceName),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstancesResult
@@ -85,41 +23,27 @@ func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getInstances.
 type GetInstancesArgs struct {
-	// Specifies the enterprise project ID to which all instances of the list
-	// belong.
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies whether to match the instance name fuzzily, the default is a exact
-	// match (`flase`).
-	FuzzyMatch *bool `pulumi:"fuzzyMatch"`
-	// Specifies whether the query results contain instances that failed to create.
-	IncludeFailure *bool `pulumi:"includeFailure"`
-	// Specifies the kafka instance ID to match exactly.
-	InstanceId *string `pulumi:"instanceId"`
-	// Specifies the kafka instance name for data-source queries.
-	Name *string `pulumi:"name"`
-	// The region in which to query the kafka instance list.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the kafka instance status for data-source queries.
-	Status *string `pulumi:"status"`
+	FuzzyMatch          *bool   `pulumi:"fuzzyMatch"`
+	IncludeFailure      *bool   `pulumi:"includeFailure"`
+	InstanceId          *string `pulumi:"instanceId"`
+	Name                *string `pulumi:"name"`
+	Region              *string `pulumi:"region"`
+	Status              *string `pulumi:"status"`
 }
 
 // A collection of values returned by getInstances.
 type GetInstancesResult struct {
-	// The enterprise project ID to which the instance belongs.
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
 	FuzzyMatch          *bool   `pulumi:"fuzzyMatch"`
 	// The provider-assigned unique ID for this managed resource.
-	Id             string  `pulumi:"id"`
-	IncludeFailure *bool   `pulumi:"includeFailure"`
-	InstanceId     *string `pulumi:"instanceId"`
-	// The result of the query's list of kafka instances. The structure is documented below.
-	Instances []GetInstancesInstance `pulumi:"instances"`
-	// The instance name.
-	Name   *string `pulumi:"name"`
-	Region *string `pulumi:"region"`
-	// The instance status.
-	Status *string `pulumi:"status"`
+	Id             string                 `pulumi:"id"`
+	IncludeFailure *bool                  `pulumi:"includeFailure"`
+	InstanceId     *string                `pulumi:"instanceId"`
+	Instances      []GetInstancesInstance `pulumi:"instances"`
+	Name           *string                `pulumi:"name"`
+	Region         *string                `pulumi:"region"`
+	Status         *string                `pulumi:"status"`
 }
 
 func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts ...pulumi.InvokeOption) GetInstancesResultOutput {
@@ -133,23 +57,13 @@ func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts .
 
 // A collection of arguments for invoking getInstances.
 type GetInstancesOutputArgs struct {
-	// Specifies the enterprise project ID to which all instances of the list
-	// belong.
 	EnterpriseProjectId pulumi.StringPtrInput `pulumi:"enterpriseProjectId"`
-	// Specifies whether to match the instance name fuzzily, the default is a exact
-	// match (`flase`).
-	FuzzyMatch pulumi.BoolPtrInput `pulumi:"fuzzyMatch"`
-	// Specifies whether the query results contain instances that failed to create.
-	IncludeFailure pulumi.BoolPtrInput `pulumi:"includeFailure"`
-	// Specifies the kafka instance ID to match exactly.
-	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
-	// Specifies the kafka instance name for data-source queries.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The region in which to query the kafka instance list.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the kafka instance status for data-source queries.
-	Status pulumi.StringPtrInput `pulumi:"status"`
+	FuzzyMatch          pulumi.BoolPtrInput   `pulumi:"fuzzyMatch"`
+	IncludeFailure      pulumi.BoolPtrInput   `pulumi:"includeFailure"`
+	InstanceId          pulumi.StringPtrInput `pulumi:"instanceId"`
+	Name                pulumi.StringPtrInput `pulumi:"name"`
+	Region              pulumi.StringPtrInput `pulumi:"region"`
+	Status              pulumi.StringPtrInput `pulumi:"status"`
 }
 
 func (GetInstancesOutputArgs) ElementType() reflect.Type {
@@ -171,7 +85,6 @@ func (o GetInstancesResultOutput) ToGetInstancesResultOutputWithContext(ctx cont
 	return o
 }
 
-// The enterprise project ID to which the instance belongs.
 func (o GetInstancesResultOutput) EnterpriseProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.EnterpriseProjectId }).(pulumi.StringPtrOutput)
 }
@@ -193,12 +106,10 @@ func (o GetInstancesResultOutput) InstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
 }
 
-// The result of the query's list of kafka instances. The structure is documented below.
 func (o GetInstancesResultOutput) Instances() GetInstancesInstanceArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []GetInstancesInstance { return v.Instances }).(GetInstancesInstanceArrayOutput)
 }
 
-// The instance name.
 func (o GetInstancesResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -207,7 +118,6 @@ func (o GetInstancesResultOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// The instance status.
 func (o GetInstancesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

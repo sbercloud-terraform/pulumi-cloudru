@@ -11,37 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the certificates in SberCloud Elastic Load Balance (ELB).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/elb"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			certificateName := cfg.RequireObject("certificateName")
-//			_, err := elb.GetCertificate(ctx, &elb.GetCertificateArgs{
-//				Name: certificateName,
-//				Type: pulumi.StringRef("server"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupCertificate(ctx *pulumi.Context, args *LookupCertificateArgs, opts ...pulumi.InvokeOption) (*LookupCertificateResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCertificateResult
@@ -54,26 +23,16 @@ func LookupCertificate(ctx *pulumi.Context, args *LookupCertificateArgs, opts ..
 
 // A collection of arguments for invoking getCertificate.
 type LookupCertificateArgs struct {
-	// The name of certificate. The value is case sensitive and does not supports fuzzy matching.
-	//
-	// > **NOTE:** The certificate name is not unique. Only returns the last created one when matched multiple certificates.
-	Name string `pulumi:"name"`
-	// The region in which to obtain the ELB certificate. If omitted, the provider-level region
-	// will be used.
+	Name   string  `pulumi:"name"`
 	Region *string `pulumi:"region"`
-	// Specifies the certificate type. The default value is `server`. The value can be one of the
-	// following:
-	Type *string `pulumi:"type"`
+	Type   *string `pulumi:"type"`
 }
 
 // A collection of values returned by getCertificate.
 type LookupCertificateResult struct {
-	// Human-readable description for the Certificate.
 	Description string `pulumi:"description"`
-	// The domain of the Certificate. This parameter is valid only when `type` is "server".
-	Domain string `pulumi:"domain"`
-	// Indicates the time when the certificate expires.
-	Expiration string `pulumi:"expiration"`
+	Domain      string `pulumi:"domain"`
+	Expiration  string `pulumi:"expiration"`
 	// The provider-assigned unique ID for this managed resource.
 	Id     string  `pulumi:"id"`
 	Name   string  `pulumi:"name"`
@@ -92,16 +51,9 @@ func LookupCertificateOutput(ctx *pulumi.Context, args LookupCertificateOutputAr
 
 // A collection of arguments for invoking getCertificate.
 type LookupCertificateOutputArgs struct {
-	// The name of certificate. The value is case sensitive and does not supports fuzzy matching.
-	//
-	// > **NOTE:** The certificate name is not unique. Only returns the last created one when matched multiple certificates.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The region in which to obtain the ELB certificate. If omitted, the provider-level region
-	// will be used.
+	Name   pulumi.StringInput    `pulumi:"name"`
 	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the certificate type. The default value is `server`. The value can be one of the
-	// following:
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type   pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (LookupCertificateOutputArgs) ElementType() reflect.Type {
@@ -123,17 +75,14 @@ func (o LookupCertificateResultOutput) ToLookupCertificateResultOutputWithContex
 	return o
 }
 
-// Human-readable description for the Certificate.
 func (o LookupCertificateResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The domain of the Certificate. This parameter is valid only when `type` is "server".
 func (o LookupCertificateResultOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateResult) string { return v.Domain }).(pulumi.StringOutput)
 }
 
-// Indicates the time when the certificate expires.
 func (o LookupCertificateResultOutput) Expiration() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateResult) string { return v.Expiration }).(pulumi.StringOutput)
 }

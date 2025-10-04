@@ -12,85 +12,14 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Attaches a Volume to an Instance.
-//
-// ## Example Usage
-//
-// ### Basic attachment of a single volume to a single instance
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/ecs"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/evs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myvol, err := evs.NewVolume(ctx, "myvol", &evs.VolumeArgs{
-//				Name:             pulumi.String("volume"),
-//				AvailabilityZone: pulumi.String("ru-moscow-1a"),
-//				VolumeType:       pulumi.String("SAS"),
-//				Size:             pulumi.Int(10),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			myinstance, err := ecs.NewInstance(ctx, "myinstance", &ecs.InstanceArgs{
-//				Name:     pulumi.String("instance"),
-//				ImageId:  pulumi.String("ad091b52-742f-469e-8f3c-fd81cadf0743"),
-//				FlavorId: pulumi.String("s6.small.1"),
-//				KeyPair:  pulumi.String("my_key_pair_name"),
-//				SecurityGroups: pulumi.StringArray{
-//					pulumi.String("default"),
-//				},
-//				AvailabilityZone: pulumi.String("ru-moscow-1a"),
-//				Networks: ecs.InstanceNetworkArray{
-//					&ecs.InstanceNetworkArgs{
-//						Uuid: pulumi.String("55534eaa-533a-419d-9b40-ec427ea7195a"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = ecs.NewVolumeAttach(ctx, "attached", &ecs.VolumeAttachArgs{
-//				InstanceId: myinstance.ID(),
-//				VolumeId:   myvol.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Volume Attachments can be imported using the Instance ID and Volume ID
-// separated by a slash, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Ecs/volumeAttach:VolumeAttach va_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666
-// ```
 type VolumeAttach struct {
 	pulumi.CustomResourceState
 
-	Device pulumi.StringOutput `pulumi:"device"`
-	// The ID of the Instance to attach the Volume to.
+	Device     pulumi.StringOutput `pulumi:"device"`
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// PCI address of the block device.
 	PciAddress pulumi.StringOutput `pulumi:"pciAddress"`
-	// The region in which to create the volume resource. If omitted, the provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// The ID of the Volume to attach to an Instance.
-	VolumeId pulumi.StringOutput `pulumi:"volumeId"`
+	Region     pulumi.StringOutput `pulumi:"region"`
+	VolumeId   pulumi.StringOutput `pulumi:"volumeId"`
 }
 
 // NewVolumeAttach registers a new resource with the given unique name, arguments, and options.
@@ -129,27 +58,19 @@ func GetVolumeAttach(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering VolumeAttach resources.
 type volumeAttachState struct {
-	Device *string `pulumi:"device"`
-	// The ID of the Instance to attach the Volume to.
+	Device     *string `pulumi:"device"`
 	InstanceId *string `pulumi:"instanceId"`
-	// PCI address of the block device.
 	PciAddress *string `pulumi:"pciAddress"`
-	// The region in which to create the volume resource. If omitted, the provider-level region will be used. Changing this creates a new resource.
-	Region *string `pulumi:"region"`
-	// The ID of the Volume to attach to an Instance.
-	VolumeId *string `pulumi:"volumeId"`
+	Region     *string `pulumi:"region"`
+	VolumeId   *string `pulumi:"volumeId"`
 }
 
 type VolumeAttachState struct {
-	Device pulumi.StringPtrInput
-	// The ID of the Instance to attach the Volume to.
+	Device     pulumi.StringPtrInput
 	InstanceId pulumi.StringPtrInput
-	// PCI address of the block device.
 	PciAddress pulumi.StringPtrInput
-	// The region in which to create the volume resource. If omitted, the provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringPtrInput
-	// The ID of the Volume to attach to an Instance.
-	VolumeId pulumi.StringPtrInput
+	Region     pulumi.StringPtrInput
+	VolumeId   pulumi.StringPtrInput
 }
 
 func (VolumeAttachState) ElementType() reflect.Type {
@@ -157,24 +78,18 @@ func (VolumeAttachState) ElementType() reflect.Type {
 }
 
 type volumeAttachArgs struct {
-	Device *string `pulumi:"device"`
-	// The ID of the Instance to attach the Volume to.
-	InstanceId string `pulumi:"instanceId"`
-	// The region in which to create the volume resource. If omitted, the provider-level region will be used. Changing this creates a new resource.
-	Region *string `pulumi:"region"`
-	// The ID of the Volume to attach to an Instance.
-	VolumeId string `pulumi:"volumeId"`
+	Device     *string `pulumi:"device"`
+	InstanceId string  `pulumi:"instanceId"`
+	Region     *string `pulumi:"region"`
+	VolumeId   string  `pulumi:"volumeId"`
 }
 
 // The set of arguments for constructing a VolumeAttach resource.
 type VolumeAttachArgs struct {
-	Device pulumi.StringPtrInput
-	// The ID of the Instance to attach the Volume to.
+	Device     pulumi.StringPtrInput
 	InstanceId pulumi.StringInput
-	// The region in which to create the volume resource. If omitted, the provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringPtrInput
-	// The ID of the Volume to attach to an Instance.
-	VolumeId pulumi.StringInput
+	Region     pulumi.StringPtrInput
+	VolumeId   pulumi.StringInput
 }
 
 func (VolumeAttachArgs) ElementType() reflect.Type {
@@ -268,22 +183,18 @@ func (o VolumeAttachOutput) Device() pulumi.StringOutput {
 	return o.ApplyT(func(v *VolumeAttach) pulumi.StringOutput { return v.Device }).(pulumi.StringOutput)
 }
 
-// The ID of the Instance to attach the Volume to.
 func (o VolumeAttachOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VolumeAttach) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// PCI address of the block device.
 func (o VolumeAttachOutput) PciAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *VolumeAttach) pulumi.StringOutput { return v.PciAddress }).(pulumi.StringOutput)
 }
 
-// The region in which to create the volume resource. If omitted, the provider-level region will be used. Changing this creates a new resource.
 func (o VolumeAttachOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *VolumeAttach) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// The ID of the Volume to attach to an Instance.
 func (o VolumeAttachOutput) VolumeId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VolumeAttach) pulumi.StringOutput { return v.VolumeId }).(pulumi.StringOutput)
 }

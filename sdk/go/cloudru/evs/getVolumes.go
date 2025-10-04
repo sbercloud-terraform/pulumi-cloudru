@@ -11,36 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to query the detailed information list of the EVS disks within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/evs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			targetServer := cfg.RequireObject("targetServer")
-//			_, err := evs.GetVolumes(ctx, &evs.GetVolumesArgs{
-//				ServerId: pulumi.StringRef(targetServer),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetVolumes(ctx *pulumi.Context, args *GetVolumesArgs, opts ...pulumi.InvokeOption) (*GetVolumesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVolumesResult
@@ -53,79 +23,47 @@ func GetVolumes(ctx *pulumi.Context, args *GetVolumesArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getVolumes.
 type GetVolumesArgs struct {
-	// Specifies the availability zone for the disks.
-	AvailabilityZone     *string `pulumi:"availabilityZone"`
-	DedicatedStorageId   *string `pulumi:"dedicatedStorageId"`
-	DedicatedStorageName *string `pulumi:"dedicatedStorageName"`
-	// Specifies the enterprise project ID for filtering.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	Ids                 *string `pulumi:"ids"`
-	Metadata            *string `pulumi:"metadata"`
-	// The disk name.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to query the disk list.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the server ID to which the disks are attached.
-	ServerId *string `pulumi:"serverId"`
-	// The service type, such as EVS, DSS or DESS.
-	ServiceType *string `pulumi:"serviceType"`
-	// Specifies whether the disk is shareable.
-	Shareable *bool   `pulumi:"shareable"`
-	SortDir   *string `pulumi:"sortDir"`
-	SortKey   *string `pulumi:"sortKey"`
-	// Specifies the disk status. The valid values are as following:
-	// + **FREEZED**
-	// + **BIND_ERROR**
-	// + **BINDING**
-	// + **PENDING_DELETE**
-	// + **PENDING_CREATE**
-	// + **NOTIFYING**
-	// + **NOTIFY_DELETE**
-	// + **PENDING_UPDATE**
-	// + **DOWN**
-	// + **ACTIVE**
-	// + **ELB**
-	// + **ERROR**
-	// + **VPN**
-	Status *string `pulumi:"status"`
-	// Specifies the included key/value pairs which associated with the desired disk.
-	Tags         map[string]string `pulumi:"tags"`
-	VolumeId     *string           `pulumi:"volumeId"`
-	VolumeTypeId *string           `pulumi:"volumeTypeId"`
+	AvailabilityZone     *string           `pulumi:"availabilityZone"`
+	DedicatedStorageId   *string           `pulumi:"dedicatedStorageId"`
+	DedicatedStorageName *string           `pulumi:"dedicatedStorageName"`
+	EnterpriseProjectId  *string           `pulumi:"enterpriseProjectId"`
+	Ids                  *string           `pulumi:"ids"`
+	Metadata             *string           `pulumi:"metadata"`
+	Name                 *string           `pulumi:"name"`
+	Region               *string           `pulumi:"region"`
+	ServerId             *string           `pulumi:"serverId"`
+	ServiceType          *string           `pulumi:"serviceType"`
+	Shareable            *bool             `pulumi:"shareable"`
+	SortDir              *string           `pulumi:"sortDir"`
+	SortKey              *string           `pulumi:"sortKey"`
+	Status               *string           `pulumi:"status"`
+	Tags                 map[string]string `pulumi:"tags"`
+	VolumeId             *string           `pulumi:"volumeId"`
+	VolumeTypeId         *string           `pulumi:"volumeTypeId"`
 }
 
 // A collection of values returned by getVolumes.
 type GetVolumesResult struct {
-	// The availability zone of the disk.
 	AvailabilityZone     *string `pulumi:"availabilityZone"`
 	DedicatedStorageId   *string `pulumi:"dedicatedStorageId"`
 	DedicatedStorageName *string `pulumi:"dedicatedStorageName"`
-	// The ID of the enterprise project associated with the disk.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
+	EnterpriseProjectId  *string `pulumi:"enterpriseProjectId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id       string  `pulumi:"id"`
-	Ids      *string `pulumi:"ids"`
-	Metadata *string `pulumi:"metadata"`
-	// The disk name.
-	Name   *string `pulumi:"name"`
-	Region *string `pulumi:"region"`
-	// The ID of the server to which the disk is attached.
-	ServerId *string `pulumi:"serverId"`
-	// The service type, such as EVS, DSS or DESS.
-	ServiceType *string `pulumi:"serviceType"`
-	// Whether the disk is shareable.
-	Shareable *bool   `pulumi:"shareable"`
-	SortDir   *string `pulumi:"sortDir"`
-	SortKey   *string `pulumi:"sortKey"`
-	// The disk status.
-	Status *string `pulumi:"status"`
-	// The disk tags.
-	Tags         map[string]string `pulumi:"tags"`
-	VolumeId     *string           `pulumi:"volumeId"`
-	VolumeTypeId *string           `pulumi:"volumeTypeId"`
-	// The detailed information of the disks. Structure is documented below.
-	Volumes []GetVolumesVolume `pulumi:"volumes"`
+	Id           string             `pulumi:"id"`
+	Ids          *string            `pulumi:"ids"`
+	Metadata     *string            `pulumi:"metadata"`
+	Name         *string            `pulumi:"name"`
+	Region       *string            `pulumi:"region"`
+	ServerId     *string            `pulumi:"serverId"`
+	ServiceType  *string            `pulumi:"serviceType"`
+	Shareable    *bool              `pulumi:"shareable"`
+	SortDir      *string            `pulumi:"sortDir"`
+	SortKey      *string            `pulumi:"sortKey"`
+	Status       *string            `pulumi:"status"`
+	Tags         map[string]string  `pulumi:"tags"`
+	VolumeId     *string            `pulumi:"volumeId"`
+	VolumeTypeId *string            `pulumi:"volumeTypeId"`
+	Volumes      []GetVolumesVolume `pulumi:"volumes"`
 }
 
 func GetVolumesOutput(ctx *pulumi.Context, args GetVolumesOutputArgs, opts ...pulumi.InvokeOption) GetVolumesResultOutput {
@@ -139,46 +77,23 @@ func GetVolumesOutput(ctx *pulumi.Context, args GetVolumesOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getVolumes.
 type GetVolumesOutputArgs struct {
-	// Specifies the availability zone for the disks.
 	AvailabilityZone     pulumi.StringPtrInput `pulumi:"availabilityZone"`
 	DedicatedStorageId   pulumi.StringPtrInput `pulumi:"dedicatedStorageId"`
 	DedicatedStorageName pulumi.StringPtrInput `pulumi:"dedicatedStorageName"`
-	// Specifies the enterprise project ID for filtering.
-	EnterpriseProjectId pulumi.StringPtrInput `pulumi:"enterpriseProjectId"`
-	Ids                 pulumi.StringPtrInput `pulumi:"ids"`
-	Metadata            pulumi.StringPtrInput `pulumi:"metadata"`
-	// The disk name.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the region in which to query the disk list.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the server ID to which the disks are attached.
-	ServerId pulumi.StringPtrInput `pulumi:"serverId"`
-	// The service type, such as EVS, DSS or DESS.
-	ServiceType pulumi.StringPtrInput `pulumi:"serviceType"`
-	// Specifies whether the disk is shareable.
-	Shareable pulumi.BoolPtrInput   `pulumi:"shareable"`
-	SortDir   pulumi.StringPtrInput `pulumi:"sortDir"`
-	SortKey   pulumi.StringPtrInput `pulumi:"sortKey"`
-	// Specifies the disk status. The valid values are as following:
-	// + **FREEZED**
-	// + **BIND_ERROR**
-	// + **BINDING**
-	// + **PENDING_DELETE**
-	// + **PENDING_CREATE**
-	// + **NOTIFYING**
-	// + **NOTIFY_DELETE**
-	// + **PENDING_UPDATE**
-	// + **DOWN**
-	// + **ACTIVE**
-	// + **ELB**
-	// + **ERROR**
-	// + **VPN**
-	Status pulumi.StringPtrInput `pulumi:"status"`
-	// Specifies the included key/value pairs which associated with the desired disk.
-	Tags         pulumi.StringMapInput `pulumi:"tags"`
-	VolumeId     pulumi.StringPtrInput `pulumi:"volumeId"`
-	VolumeTypeId pulumi.StringPtrInput `pulumi:"volumeTypeId"`
+	EnterpriseProjectId  pulumi.StringPtrInput `pulumi:"enterpriseProjectId"`
+	Ids                  pulumi.StringPtrInput `pulumi:"ids"`
+	Metadata             pulumi.StringPtrInput `pulumi:"metadata"`
+	Name                 pulumi.StringPtrInput `pulumi:"name"`
+	Region               pulumi.StringPtrInput `pulumi:"region"`
+	ServerId             pulumi.StringPtrInput `pulumi:"serverId"`
+	ServiceType          pulumi.StringPtrInput `pulumi:"serviceType"`
+	Shareable            pulumi.BoolPtrInput   `pulumi:"shareable"`
+	SortDir              pulumi.StringPtrInput `pulumi:"sortDir"`
+	SortKey              pulumi.StringPtrInput `pulumi:"sortKey"`
+	Status               pulumi.StringPtrInput `pulumi:"status"`
+	Tags                 pulumi.StringMapInput `pulumi:"tags"`
+	VolumeId             pulumi.StringPtrInput `pulumi:"volumeId"`
+	VolumeTypeId         pulumi.StringPtrInput `pulumi:"volumeTypeId"`
 }
 
 func (GetVolumesOutputArgs) ElementType() reflect.Type {
@@ -200,7 +115,6 @@ func (o GetVolumesResultOutput) ToGetVolumesResultOutputWithContext(ctx context.
 	return o
 }
 
-// The availability zone of the disk.
 func (o GetVolumesResultOutput) AvailabilityZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVolumesResult) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
 }
@@ -213,7 +127,6 @@ func (o GetVolumesResultOutput) DedicatedStorageName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVolumesResult) *string { return v.DedicatedStorageName }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the enterprise project associated with the disk.
 func (o GetVolumesResultOutput) EnterpriseProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVolumesResult) *string { return v.EnterpriseProjectId }).(pulumi.StringPtrOutput)
 }
@@ -231,7 +144,6 @@ func (o GetVolumesResultOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVolumesResult) *string { return v.Metadata }).(pulumi.StringPtrOutput)
 }
 
-// The disk name.
 func (o GetVolumesResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVolumesResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -240,17 +152,14 @@ func (o GetVolumesResultOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVolumesResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the server to which the disk is attached.
 func (o GetVolumesResultOutput) ServerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVolumesResult) *string { return v.ServerId }).(pulumi.StringPtrOutput)
 }
 
-// The service type, such as EVS, DSS or DESS.
 func (o GetVolumesResultOutput) ServiceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVolumesResult) *string { return v.ServiceType }).(pulumi.StringPtrOutput)
 }
 
-// Whether the disk is shareable.
 func (o GetVolumesResultOutput) Shareable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetVolumesResult) *bool { return v.Shareable }).(pulumi.BoolPtrOutput)
 }
@@ -263,12 +172,10 @@ func (o GetVolumesResultOutput) SortKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVolumesResult) *string { return v.SortKey }).(pulumi.StringPtrOutput)
 }
 
-// The disk status.
 func (o GetVolumesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVolumesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// The disk tags.
 func (o GetVolumesResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetVolumesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -281,7 +188,6 @@ func (o GetVolumesResultOutput) VolumeTypeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVolumesResult) *string { return v.VolumeTypeId }).(pulumi.StringPtrOutput)
 }
 
-// The detailed information of the disks. Structure is documented below.
 func (o GetVolumesResultOutput) Volumes() GetVolumesVolumeArrayOutput {
 	return o.ApplyT(func(v GetVolumesResult) []GetVolumesVolume { return v.Volumes }).(GetVolumesVolumeArrayOutput)
 }

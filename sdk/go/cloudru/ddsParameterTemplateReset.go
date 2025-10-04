@@ -12,46 +12,12 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a DDS parameter template reset resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			configurationId := cfg.RequireObject("configurationId")
-//			_, err := sbercloud.NewDdsParameterTemplateReset(ctx, "test", &sbercloud.DdsParameterTemplateResetArgs{
-//				ConfigurationId: pulumi.Any(configurationId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type DdsParameterTemplateReset struct {
 	pulumi.CustomResourceState
 
 	// Specifies the parameter template ID.
-	// Changing this creates a new resource.
 	ConfigurationId pulumi.StringOutput `pulumi:"configurationId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Region          pulumi.StringOutput `pulumi:"region"`
 }
 
 // NewDdsParameterTemplateReset registers a new resource with the given unique name, arguments, and options.
@@ -88,22 +54,14 @@ func GetDdsParameterTemplateReset(ctx *pulumi.Context,
 // Input properties used for looking up and filtering DdsParameterTemplateReset resources.
 type ddsParameterTemplateResetState struct {
 	// Specifies the parameter template ID.
-	// Changing this creates a new resource.
 	ConfigurationId *string `pulumi:"configurationId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region *string `pulumi:"region"`
+	Region          *string `pulumi:"region"`
 }
 
 type DdsParameterTemplateResetState struct {
 	// Specifies the parameter template ID.
-	// Changing this creates a new resource.
 	ConfigurationId pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region pulumi.StringPtrInput
+	Region          pulumi.StringPtrInput
 }
 
 func (DdsParameterTemplateResetState) ElementType() reflect.Type {
@@ -112,23 +70,15 @@ func (DdsParameterTemplateResetState) ElementType() reflect.Type {
 
 type ddsParameterTemplateResetArgs struct {
 	// Specifies the parameter template ID.
-	// Changing this creates a new resource.
-	ConfigurationId string `pulumi:"configurationId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region *string `pulumi:"region"`
+	ConfigurationId string  `pulumi:"configurationId"`
+	Region          *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a DdsParameterTemplateReset resource.
 type DdsParameterTemplateResetArgs struct {
 	// Specifies the parameter template ID.
-	// Changing this creates a new resource.
 	ConfigurationId pulumi.StringInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region pulumi.StringPtrInput
+	Region          pulumi.StringPtrInput
 }
 
 func (DdsParameterTemplateResetArgs) ElementType() reflect.Type {
@@ -219,14 +169,10 @@ func (o DdsParameterTemplateResetOutput) ToDdsParameterTemplateResetOutputWithCo
 }
 
 // Specifies the parameter template ID.
-// Changing this creates a new resource.
 func (o DdsParameterTemplateResetOutput) ConfigurationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdsParameterTemplateReset) pulumi.StringOutput { return v.ConfigurationId }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used.
-// Changing this creates a new resource.
 func (o DdsParameterTemplateResetOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdsParameterTemplateReset) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

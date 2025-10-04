@@ -55,53 +55,6 @@ class InstanceArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies the ID of the availability zone. Changing this creates a
-               new instance.
-        :param pulumi.Input['InstanceDatastoreArgs'] datastore: Specifies database information. The structure is described below. Changing
-               this creates a new instance.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceFlavorArgs']]] flavors: Specifies the flavors information. The structure is described below. Changing
-               this creates a new instance.
-        :param pulumi.Input[_builtins.str] mode: Specifies the mode of the database instance. **Sharding**, **ReplicaSet**,
-               **Single** are supported. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] security_group_id: Specifies the security group ID of the DDS instance.
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies the subnet Network ID. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the VPC ID. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto-renew is enabled.
-               Valid values are `true` and `false`, defaults to `false`.
-               Changing this creates a new instance.
-        :param pulumi.Input['InstanceBackupStrategyArgs'] backup_strategy: Specifies the advanced backup policy. The structure is described below.
-        :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode of the instance.
-               The valid values are as follows:
-               + `prePaid`: indicates the yearly/monthly billing mode.
-               + `postPaid`: indicates the pay-per-use billing mode.
-               
-               Default value is `postPaid`.
-               Changing this creates a new instance.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceConfigurationArgs']]] configurations: Specifies the configuration information.
-               The structure is described below. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] disk_encryption_id: Specifies the disk encryption ID of the instance. Changing this
-               creates a new instance.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the dds instance.
-               Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] name: Specifies the DB instance name. The DB instance name of the same type is unique in the
-               same tenant.
-        :param pulumi.Input[_builtins.str] password: Specifies the Administrator password of the database instance.
-        :param pulumi.Input[_builtins.int] period: Specifies the charging period of the instance.
-               If `period_unit` is set to *month*, the value ranges from 1 to 9.
-               If `period_unit` is set to *year*, the value ranges from 1 to 3.
-               This parameter is mandatory if `charging_mode` is set to *prePaid*.
-               Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] period_unit: Specifies the charging period unit of the instance.
-               Valid values are *month* and *year*. This parameter is mandatory if `charging_mode` is set to *prePaid*.
-               Changing this creates a new instance.
-        :param pulumi.Input[_builtins.int] port: Specifies the database access port. The valid values are range from `2100` to `9500` and
-               `27017`, `27018`, `27019`. Defaults to `8635`.
-        :param pulumi.Input[_builtins.str] region: Specifies the region of the DDS instance. Changing this creates a new
-               instance.
-        :param pulumi.Input[_builtins.bool] ssl: Specifies whether to enable or disable SSL. Defaults to true.
-               
-               **NOTE:** The instance will be restarted in the background when switching SSL. Please operate with caution.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the DDS instance.
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "datastore", datastore)
@@ -167,10 +120,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the ID of the availability zone. Changing this creates a
-        new instance.
-        """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -180,10 +129,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter
     def datastore(self) -> pulumi.Input['InstanceDatastoreArgs']:
-        """
-        Specifies database information. The structure is described below. Changing
-        this creates a new instance.
-        """
         return pulumi.get(self, "datastore")
 
     @datastore.setter
@@ -193,10 +138,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter
     def flavors(self) -> pulumi.Input[Sequence[pulumi.Input['InstanceFlavorArgs']]]:
-        """
-        Specifies the flavors information. The structure is described below. Changing
-        this creates a new instance.
-        """
         return pulumi.get(self, "flavors")
 
     @flavors.setter
@@ -206,10 +147,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter
     def mode(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the mode of the database instance. **Sharding**, **ReplicaSet**,
-        **Single** are supported. Changing this creates a new instance.
-        """
         return pulumi.get(self, "mode")
 
     @mode.setter
@@ -219,9 +156,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the security group ID of the DDS instance.
-        """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
@@ -231,9 +165,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the subnet Network ID. Changing this creates a new instance.
-        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -243,9 +174,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the VPC ID. Changing this creates a new instance.
-        """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
@@ -265,11 +193,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies whether auto-renew is enabled.
-        Valid values are `true` and `false`, defaults to `false`.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
@@ -279,9 +202,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="backupStrategy")
     def backup_strategy(self) -> Optional[pulumi.Input['InstanceBackupStrategyArgs']]:
-        """
-        Specifies the advanced backup policy. The structure is described below.
-        """
         return pulumi.get(self, "backup_strategy")
 
     @backup_strategy.setter
@@ -318,15 +238,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="chargingMode")
     def charging_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the charging mode of the instance.
-        The valid values are as follows:
-        + `prePaid`: indicates the yearly/monthly billing mode.
-        + `postPaid`: indicates the pay-per-use billing mode.
-
-        Default value is `postPaid`.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "charging_mode")
 
     @charging_mode.setter
@@ -345,10 +256,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter
     def configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigurationArgs']]]]:
-        """
-        Specifies the configuration information.
-        The structure is described below. Changing this creates a new instance.
-        """
         return pulumi.get(self, "configurations")
 
     @configurations.setter
@@ -367,10 +274,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="diskEncryptionId")
     def disk_encryption_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the disk encryption ID of the instance. Changing this
-        creates a new instance.
-        """
         return pulumi.get(self, "disk_encryption_id")
 
     @disk_encryption_id.setter
@@ -380,10 +283,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the enterprise project id of the dds instance.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -411,10 +310,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the DB instance name. The DB instance name of the same type is unique in the
-        same tenant.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -424,9 +319,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the Administrator password of the database instance.
-        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -436,13 +328,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the charging period of the instance.
-        If `period_unit` is set to *month*, the value ranges from 1 to 9.
-        If `period_unit` is set to *year*, the value ranges from 1 to 3.
-        This parameter is mandatory if `charging_mode` is set to *prePaid*.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -452,11 +337,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the charging period unit of the instance.
-        Valid values are *month* and *year*. This parameter is mandatory if `charging_mode` is set to *prePaid*.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
@@ -466,10 +346,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the database access port. The valid values are range from `2100` to `9500` and
-        `27017`, `27018`, `27019`. Defaults to `8635`.
-        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -479,10 +355,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region of the DDS instance. Changing this creates a new
-        instance.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -519,11 +391,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter
     def ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to enable or disable SSL. Defaults to true.
-
-        **NOTE:** The instance will be restarted in the background when switching SSL. Please operate with caution.
-        """
         return pulumi.get(self, "ssl")
 
     @ssl.setter
@@ -533,9 +400,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        The key/value pairs to associate with the DDS instance.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -587,56 +451,7 @@ class _InstanceState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto-renew is enabled.
-               Valid values are `true` and `false`, defaults to `false`.
-               Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies the ID of the availability zone. Changing this creates a
-               new instance.
-        :param pulumi.Input['InstanceBackupStrategyArgs'] backup_strategy: Specifies the advanced backup policy. The structure is described below.
-        :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode of the instance.
-               The valid values are as follows:
-               + `prePaid`: indicates the yearly/monthly billing mode.
-               + `postPaid`: indicates the pay-per-use billing mode.
-               
-               Default value is `postPaid`.
-               Changing this creates a new instance.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceConfigurationArgs']]] configurations: Specifies the configuration information.
-               The structure is described below. Changing this creates a new instance.
-        :param pulumi.Input['InstanceDatastoreArgs'] datastore: Specifies database information. The structure is described below. Changing
-               this creates a new instance.
-        :param pulumi.Input[_builtins.str] db_username: Indicates the DB Administator name.
-        :param pulumi.Input[_builtins.str] disk_encryption_id: Specifies the disk encryption ID of the instance. Changing this
-               creates a new instance.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the dds instance.
-               Changing this creates a new instance.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceFlavorArgs']]] flavors: Specifies the flavors information. The structure is described below. Changing
-               this creates a new instance.
-        :param pulumi.Input[_builtins.str] mode: Specifies the mode of the database instance. **Sharding**, **ReplicaSet**,
-               **Single** are supported. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] name: Specifies the DB instance name. The DB instance name of the same type is unique in the
-               same tenant.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceNodeArgs']]] nodes: Indicates the instance nodes information. Structure is documented below.
-        :param pulumi.Input[_builtins.str] password: Specifies the Administrator password of the database instance.
-        :param pulumi.Input[_builtins.int] period: Specifies the charging period of the instance.
-               If `period_unit` is set to *month*, the value ranges from 1 to 9.
-               If `period_unit` is set to *year*, the value ranges from 1 to 3.
-               This parameter is mandatory if `charging_mode` is set to *prePaid*.
-               Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] period_unit: Specifies the charging period unit of the instance.
-               Valid values are *month* and *year*. This parameter is mandatory if `charging_mode` is set to *prePaid*.
-               Changing this creates a new instance.
-        :param pulumi.Input[_builtins.int] port: Specifies the database access port. The valid values are range from `2100` to `9500` and
-               `27017`, `27018`, `27019`. Defaults to `8635`.
-        :param pulumi.Input[_builtins.str] region: Specifies the region of the DDS instance. Changing this creates a new
-               instance.
-        :param pulumi.Input[_builtins.str] security_group_id: Specifies the security group ID of the DDS instance.
-        :param pulumi.Input[_builtins.bool] ssl: Specifies whether to enable or disable SSL. Defaults to true.
-               
-               **NOTE:** The instance will be restarted in the background when switching SSL. Please operate with caution.
-        :param pulumi.Input[_builtins.str] status: Indicates the node status.
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies the subnet Network ID. Changing this creates a new instance.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the DDS instance.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the VPC ID. Changing this creates a new instance.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceNodeArgs']]] nodes: This field is deprecated.
         """
         if auto_pay is not None:
             warnings.warn("""Deprecated""", DeprecationWarning)
@@ -733,11 +548,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies whether auto-renew is enabled.
-        Valid values are `true` and `false`, defaults to `false`.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
@@ -747,10 +557,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of the availability zone. Changing this creates a
-        new instance.
-        """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -760,9 +566,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="backupStrategy")
     def backup_strategy(self) -> Optional[pulumi.Input['InstanceBackupStrategyArgs']]:
-        """
-        Specifies the advanced backup policy. The structure is described below.
-        """
         return pulumi.get(self, "backup_strategy")
 
     @backup_strategy.setter
@@ -799,15 +602,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="chargingMode")
     def charging_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the charging mode of the instance.
-        The valid values are as follows:
-        + `prePaid`: indicates the yearly/monthly billing mode.
-        + `postPaid`: indicates the pay-per-use billing mode.
-
-        Default value is `postPaid`.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "charging_mode")
 
     @charging_mode.setter
@@ -826,10 +620,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter
     def configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigurationArgs']]]]:
-        """
-        Specifies the configuration information.
-        The structure is described below. Changing this creates a new instance.
-        """
         return pulumi.get(self, "configurations")
 
     @configurations.setter
@@ -848,10 +638,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter
     def datastore(self) -> Optional[pulumi.Input['InstanceDatastoreArgs']]:
-        """
-        Specifies database information. The structure is described below. Changing
-        this creates a new instance.
-        """
         return pulumi.get(self, "datastore")
 
     @datastore.setter
@@ -861,9 +647,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="dbUsername")
     def db_username(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the DB Administator name.
-        """
         return pulumi.get(self, "db_username")
 
     @db_username.setter
@@ -882,10 +665,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="diskEncryptionId")
     def disk_encryption_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the disk encryption ID of the instance. Changing this
-        creates a new instance.
-        """
         return pulumi.get(self, "disk_encryption_id")
 
     @disk_encryption_id.setter
@@ -895,10 +674,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the enterprise project id of the dds instance.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -908,10 +683,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter
     def flavors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFlavorArgs']]]]:
-        """
-        Specifies the flavors information. The structure is described below. Changing
-        this creates a new instance.
-        """
         return pulumi.get(self, "flavors")
 
     @flavors.setter
@@ -948,10 +719,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the mode of the database instance. **Sharding**, **ReplicaSet**,
-        **Single** are supported. Changing this creates a new instance.
-        """
         return pulumi.get(self, "mode")
 
     @mode.setter
@@ -961,10 +728,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the DB instance name. The DB instance name of the same type is unique in the
-        same tenant.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -975,7 +738,7 @@ class _InstanceState:
     @pulumi.getter
     def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNodeArgs']]]]:
         """
-        Indicates the instance nodes information. Structure is documented below.
+        This field is deprecated.
         """
         return pulumi.get(self, "nodes")
 
@@ -986,9 +749,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the Administrator password of the database instance.
-        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -998,13 +758,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the charging period of the instance.
-        If `period_unit` is set to *month*, the value ranges from 1 to 9.
-        If `period_unit` is set to *year*, the value ranges from 1 to 3.
-        This parameter is mandatory if `charging_mode` is set to *prePaid*.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -1014,11 +767,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the charging period unit of the instance.
-        Valid values are *month* and *year*. This parameter is mandatory if `charging_mode` is set to *prePaid*.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
@@ -1028,10 +776,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the database access port. The valid values are range from `2100` to `9500` and
-        `27017`, `27018`, `27019`. Defaults to `8635`.
-        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -1041,10 +785,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region of the DDS instance. Changing this creates a new
-        instance.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -1072,9 +812,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the security group ID of the DDS instance.
-        """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
@@ -1093,11 +830,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter
     def ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to enable or disable SSL. Defaults to true.
-
-        **NOTE:** The instance will be restarted in the background when switching SSL. Please operate with caution.
-        """
         return pulumi.get(self, "ssl")
 
     @ssl.setter
@@ -1107,9 +839,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the node status.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -1119,9 +848,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the subnet Network ID. Changing this creates a new instance.
-        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -1131,9 +857,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        The key/value pairs to associate with the DDS instance.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -1161,9 +884,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the VPC ID. Changing this creates a new instance.
-        """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
@@ -1211,197 +931,9 @@ class Instance(pulumi.CustomResource):
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages dds instance resource within SberCloud.
-
-        ## Example Usage
-
-        ### Creating A Cluster Community Edition
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        instance = sbercloud.dds.Instance("instance",
-            name="dds-instance",
-            datastore={
-                "type": "DDS-Community",
-                "version": "3.4",
-                "storage_engine": "wiredTiger",
-            },
-            availability_zone="{{ availability_zone }}",
-            vpc_id="{{ vpc_id }}",
-            subnet_id="{{ subnet_network_id }}}",
-            security_group_id="{{ security_group_id }}",
-            password="Test@123",
-            mode="Sharding",
-            flavors=[
-                {
-                    "type": "mongos",
-                    "num": 2,
-                    "spec_code": "dds.mongodb.c3.medium.4.mongos",
-                },
-                {
-                    "type": "shard",
-                    "num": 2,
-                    "storage": "ULTRAHIGH",
-                    "size": 20,
-                    "spec_code": "dds.mongodb.c3.medium.4.shard",
-                },
-                {
-                    "type": "config",
-                    "num": 1,
-                    "storage": "ULTRAHIGH",
-                    "size": 20,
-                    "spec_code": "dds.mongodb.c3.large.2.config",
-                },
-            ],
-            backup_strategy={
-                "start_time": "08:00-09:00",
-                "keep_days": 8,
-            })
-        ```
-
-        ### Creating A Replica Set Community Edition
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        instance = sbercloud.dds.Instance("instance",
-            name="dds-instance",
-            datastore={
-                "type": "DDS-Community",
-                "version": "3.4",
-                "storage_engine": "wiredTiger",
-            },
-            availability_zone="{{ availability_zone }}",
-            vpc_id="{{ vpc_id }}",
-            subnet_id="{{ subnet_network_id }}}",
-            security_group_id="{{ security_group_id }}",
-            password="Test@123",
-            mode="ReplicaSet",
-            flavors=[{
-                "type": "replica",
-                "num": 1,
-                "storage": "ULTRAHIGH",
-                "size": 30,
-                "spec_code": "dds.mongodb.c6.2xlarge.4.repset",
-            }])
-        ```
-
-        ### Creating A Single Community Edition
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        instance = sbercloud.dds.Instance("instance",
-            name="dds-instance",
-            datastore={
-                "type": "DDS-Community",
-                "version": "3.4",
-                "storage_engine": "wiredTiger",
-            },
-            availability_zone="{{ availability_zone }}",
-            vpc_id="{{ vpc_id }}",
-            subnet_id="{{ subnet_network_id }}}",
-            security_group_id="{{ security_group_id }}",
-            password="Test@123",
-            mode="Single",
-            flavors=[{
-                "type": "single",
-                "num": 1,
-                "storage": "ULTRAHIGH",
-                "size": 30,
-                "spec_code": "dds.mongodb.c6.2xlarge.4.repset",
-            }])
-        ```
-
-        ## Import
-
-        DDS instance can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Dds/instance:Instance instance 9c6d6ff2cba3434293fd479571517e16in02
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason.
-
-        The missing attributes include: `password`, `availability_zone`, `flavor`, configuration.
-
-        It is generally recommended running `pulumi preview` after importing an instance.
-
-        You can then decide if changes should be applied to the instance, or the resource definition should be updated to
-
-        align with the instance. Also you can ignore changes as below.
-
-        resource "sbercloud_dds_instance" "instance" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              password, availability_zone, flavor, configuration,
-            
-            ]
-
-          }
-
-        }
-
+        Create a Instance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto-renew is enabled.
-               Valid values are `true` and `false`, defaults to `false`.
-               Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies the ID of the availability zone. Changing this creates a
-               new instance.
-        :param pulumi.Input[Union['InstanceBackupStrategyArgs', 'InstanceBackupStrategyArgsDict']] backup_strategy: Specifies the advanced backup policy. The structure is described below.
-        :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode of the instance.
-               The valid values are as follows:
-               + `prePaid`: indicates the yearly/monthly billing mode.
-               + `postPaid`: indicates the pay-per-use billing mode.
-               
-               Default value is `postPaid`.
-               Changing this creates a new instance.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigurationArgs', 'InstanceConfigurationArgsDict']]]] configurations: Specifies the configuration information.
-               The structure is described below. Changing this creates a new instance.
-        :param pulumi.Input[Union['InstanceDatastoreArgs', 'InstanceDatastoreArgsDict']] datastore: Specifies database information. The structure is described below. Changing
-               this creates a new instance.
-        :param pulumi.Input[_builtins.str] disk_encryption_id: Specifies the disk encryption ID of the instance. Changing this
-               creates a new instance.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the dds instance.
-               Changing this creates a new instance.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceFlavorArgs', 'InstanceFlavorArgsDict']]]] flavors: Specifies the flavors information. The structure is described below. Changing
-               this creates a new instance.
-        :param pulumi.Input[_builtins.str] mode: Specifies the mode of the database instance. **Sharding**, **ReplicaSet**,
-               **Single** are supported. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] name: Specifies the DB instance name. The DB instance name of the same type is unique in the
-               same tenant.
-        :param pulumi.Input[_builtins.str] password: Specifies the Administrator password of the database instance.
-        :param pulumi.Input[_builtins.int] period: Specifies the charging period of the instance.
-               If `period_unit` is set to *month*, the value ranges from 1 to 9.
-               If `period_unit` is set to *year*, the value ranges from 1 to 3.
-               This parameter is mandatory if `charging_mode` is set to *prePaid*.
-               Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] period_unit: Specifies the charging period unit of the instance.
-               Valid values are *month* and *year*. This parameter is mandatory if `charging_mode` is set to *prePaid*.
-               Changing this creates a new instance.
-        :param pulumi.Input[_builtins.int] port: Specifies the database access port. The valid values are range from `2100` to `9500` and
-               `27017`, `27018`, `27019`. Defaults to `8635`.
-        :param pulumi.Input[_builtins.str] region: Specifies the region of the DDS instance. Changing this creates a new
-               instance.
-        :param pulumi.Input[_builtins.str] security_group_id: Specifies the security group ID of the DDS instance.
-        :param pulumi.Input[_builtins.bool] ssl: Specifies whether to enable or disable SSL. Defaults to true.
-               
-               **NOTE:** The instance will be restarted in the background when switching SSL. Please operate with caution.
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies the subnet Network ID. Changing this creates a new instance.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the DDS instance.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the VPC ID. Changing this creates a new instance.
         """
         ...
     @overload
@@ -1410,148 +942,7 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages dds instance resource within SberCloud.
-
-        ## Example Usage
-
-        ### Creating A Cluster Community Edition
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        instance = sbercloud.dds.Instance("instance",
-            name="dds-instance",
-            datastore={
-                "type": "DDS-Community",
-                "version": "3.4",
-                "storage_engine": "wiredTiger",
-            },
-            availability_zone="{{ availability_zone }}",
-            vpc_id="{{ vpc_id }}",
-            subnet_id="{{ subnet_network_id }}}",
-            security_group_id="{{ security_group_id }}",
-            password="Test@123",
-            mode="Sharding",
-            flavors=[
-                {
-                    "type": "mongos",
-                    "num": 2,
-                    "spec_code": "dds.mongodb.c3.medium.4.mongos",
-                },
-                {
-                    "type": "shard",
-                    "num": 2,
-                    "storage": "ULTRAHIGH",
-                    "size": 20,
-                    "spec_code": "dds.mongodb.c3.medium.4.shard",
-                },
-                {
-                    "type": "config",
-                    "num": 1,
-                    "storage": "ULTRAHIGH",
-                    "size": 20,
-                    "spec_code": "dds.mongodb.c3.large.2.config",
-                },
-            ],
-            backup_strategy={
-                "start_time": "08:00-09:00",
-                "keep_days": 8,
-            })
-        ```
-
-        ### Creating A Replica Set Community Edition
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        instance = sbercloud.dds.Instance("instance",
-            name="dds-instance",
-            datastore={
-                "type": "DDS-Community",
-                "version": "3.4",
-                "storage_engine": "wiredTiger",
-            },
-            availability_zone="{{ availability_zone }}",
-            vpc_id="{{ vpc_id }}",
-            subnet_id="{{ subnet_network_id }}}",
-            security_group_id="{{ security_group_id }}",
-            password="Test@123",
-            mode="ReplicaSet",
-            flavors=[{
-                "type": "replica",
-                "num": 1,
-                "storage": "ULTRAHIGH",
-                "size": 30,
-                "spec_code": "dds.mongodb.c6.2xlarge.4.repset",
-            }])
-        ```
-
-        ### Creating A Single Community Edition
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        instance = sbercloud.dds.Instance("instance",
-            name="dds-instance",
-            datastore={
-                "type": "DDS-Community",
-                "version": "3.4",
-                "storage_engine": "wiredTiger",
-            },
-            availability_zone="{{ availability_zone }}",
-            vpc_id="{{ vpc_id }}",
-            subnet_id="{{ subnet_network_id }}}",
-            security_group_id="{{ security_group_id }}",
-            password="Test@123",
-            mode="Single",
-            flavors=[{
-                "type": "single",
-                "num": 1,
-                "storage": "ULTRAHIGH",
-                "size": 30,
-                "spec_code": "dds.mongodb.c6.2xlarge.4.repset",
-            }])
-        ```
-
-        ## Import
-
-        DDS instance can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Dds/instance:Instance instance 9c6d6ff2cba3434293fd479571517e16in02
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason.
-
-        The missing attributes include: `password`, `availability_zone`, `flavor`, configuration.
-
-        It is generally recommended running `pulumi preview` after importing an instance.
-
-        You can then decide if changes should be applied to the instance, or the resource definition should be updated to
-
-        align with the instance. Also you can ignore changes as below.
-
-        resource "sbercloud_dds_instance" "instance" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              password, availability_zone, flavor, configuration,
-            
-            ]
-
-          }
-
-        }
-
+        Create a Instance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1719,56 +1110,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto-renew is enabled.
-               Valid values are `true` and `false`, defaults to `false`.
-               Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies the ID of the availability zone. Changing this creates a
-               new instance.
-        :param pulumi.Input[Union['InstanceBackupStrategyArgs', 'InstanceBackupStrategyArgsDict']] backup_strategy: Specifies the advanced backup policy. The structure is described below.
-        :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode of the instance.
-               The valid values are as follows:
-               + `prePaid`: indicates the yearly/monthly billing mode.
-               + `postPaid`: indicates the pay-per-use billing mode.
-               
-               Default value is `postPaid`.
-               Changing this creates a new instance.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigurationArgs', 'InstanceConfigurationArgsDict']]]] configurations: Specifies the configuration information.
-               The structure is described below. Changing this creates a new instance.
-        :param pulumi.Input[Union['InstanceDatastoreArgs', 'InstanceDatastoreArgsDict']] datastore: Specifies database information. The structure is described below. Changing
-               this creates a new instance.
-        :param pulumi.Input[_builtins.str] db_username: Indicates the DB Administator name.
-        :param pulumi.Input[_builtins.str] disk_encryption_id: Specifies the disk encryption ID of the instance. Changing this
-               creates a new instance.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the dds instance.
-               Changing this creates a new instance.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceFlavorArgs', 'InstanceFlavorArgsDict']]]] flavors: Specifies the flavors information. The structure is described below. Changing
-               this creates a new instance.
-        :param pulumi.Input[_builtins.str] mode: Specifies the mode of the database instance. **Sharding**, **ReplicaSet**,
-               **Single** are supported. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] name: Specifies the DB instance name. The DB instance name of the same type is unique in the
-               same tenant.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceNodeArgs', 'InstanceNodeArgsDict']]]] nodes: Indicates the instance nodes information. Structure is documented below.
-        :param pulumi.Input[_builtins.str] password: Specifies the Administrator password of the database instance.
-        :param pulumi.Input[_builtins.int] period: Specifies the charging period of the instance.
-               If `period_unit` is set to *month*, the value ranges from 1 to 9.
-               If `period_unit` is set to *year*, the value ranges from 1 to 3.
-               This parameter is mandatory if `charging_mode` is set to *prePaid*.
-               Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] period_unit: Specifies the charging period unit of the instance.
-               Valid values are *month* and *year*. This parameter is mandatory if `charging_mode` is set to *prePaid*.
-               Changing this creates a new instance.
-        :param pulumi.Input[_builtins.int] port: Specifies the database access port. The valid values are range from `2100` to `9500` and
-               `27017`, `27018`, `27019`. Defaults to `8635`.
-        :param pulumi.Input[_builtins.str] region: Specifies the region of the DDS instance. Changing this creates a new
-               instance.
-        :param pulumi.Input[_builtins.str] security_group_id: Specifies the security group ID of the DDS instance.
-        :param pulumi.Input[_builtins.bool] ssl: Specifies whether to enable or disable SSL. Defaults to true.
-               
-               **NOTE:** The instance will be restarted in the background when switching SSL. Please operate with caution.
-        :param pulumi.Input[_builtins.str] status: Indicates the node status.
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies the subnet Network ID. Changing this creates a new instance.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the DDS instance.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the VPC ID. Changing this creates a new instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceNodeArgs', 'InstanceNodeArgsDict']]]] nodes: This field is deprecated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1824,28 +1166,16 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies whether auto-renew is enabled.
-        Valid values are `true` and `false`, defaults to `false`.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "auto_renew")
 
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the ID of the availability zone. Changing this creates a
-        new instance.
-        """
         return pulumi.get(self, "availability_zone")
 
     @_builtins.property
     @pulumi.getter(name="backupStrategy")
     def backup_strategy(self) -> pulumi.Output['outputs.InstanceBackupStrategy']:
-        """
-        Specifies the advanced backup policy. The structure is described below.
-        """
         return pulumi.get(self, "backup_strategy")
 
     @_builtins.property
@@ -1866,15 +1196,6 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="chargingMode")
     def charging_mode(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the charging mode of the instance.
-        The valid values are as follows:
-        + `prePaid`: indicates the yearly/monthly billing mode.
-        + `postPaid`: indicates the pay-per-use billing mode.
-
-        Default value is `postPaid`.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "charging_mode")
 
     @_builtins.property
@@ -1885,10 +1206,6 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def configurations(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceConfiguration']]]:
-        """
-        Specifies the configuration information.
-        The structure is described below. Changing this creates a new instance.
-        """
         return pulumi.get(self, "configurations")
 
     @_builtins.property
@@ -1899,18 +1216,11 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def datastore(self) -> pulumi.Output['outputs.InstanceDatastore']:
-        """
-        Specifies database information. The structure is described below. Changing
-        this creates a new instance.
-        """
         return pulumi.get(self, "datastore")
 
     @_builtins.property
     @pulumi.getter(name="dbUsername")
     def db_username(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates the DB Administator name.
-        """
         return pulumi.get(self, "db_username")
 
     @_builtins.property
@@ -1921,28 +1231,16 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="diskEncryptionId")
     def disk_encryption_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the disk encryption ID of the instance. Changing this
-        creates a new instance.
-        """
         return pulumi.get(self, "disk_encryption_id")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the enterprise project id of the dds instance.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
     @pulumi.getter
     def flavors(self) -> pulumi.Output[Sequence['outputs.InstanceFlavor']]:
-        """
-        Specifies the flavors information. The structure is described below. Changing
-        this creates a new instance.
-        """
         return pulumi.get(self, "flavors")
 
     @_builtins.property
@@ -1963,75 +1261,44 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def mode(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the mode of the database instance. **Sharding**, **ReplicaSet**,
-        **Single** are supported. Changing this creates a new instance.
-        """
         return pulumi.get(self, "mode")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the DB instance name. The DB instance name of the same type is unique in the
-        same tenant.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def nodes(self) -> pulumi.Output[Sequence['outputs.InstanceNode']]:
         """
-        Indicates the instance nodes information. Structure is documented below.
+        This field is deprecated.
         """
         return pulumi.get(self, "nodes")
 
     @_builtins.property
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the Administrator password of the database instance.
-        """
         return pulumi.get(self, "password")
 
     @_builtins.property
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[_builtins.int]]:
-        """
-        Specifies the charging period of the instance.
-        If `period_unit` is set to *month*, the value ranges from 1 to 9.
-        If `period_unit` is set to *year*, the value ranges from 1 to 3.
-        This parameter is mandatory if `charging_mode` is set to *prePaid*.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "period")
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the charging period unit of the instance.
-        Valid values are *month* and *year*. This parameter is mandatory if `charging_mode` is set to *prePaid*.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "period_unit")
 
     @_builtins.property
     @pulumi.getter
     def port(self) -> pulumi.Output[_builtins.int]:
-        """
-        Specifies the database access port. The valid values are range from `2100` to `9500` and
-        `27017`, `27018`, `27019`. Defaults to `8635`.
-        """
         return pulumi.get(self, "port")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region of the DDS instance. Changing this creates a new
-        instance.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
@@ -2047,9 +1314,6 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the security group ID of the DDS instance.
-        """
         return pulumi.get(self, "security_group_id")
 
     @_builtins.property
@@ -2060,35 +1324,21 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def ssl(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether to enable or disable SSL. Defaults to true.
-
-        **NOTE:** The instance will be restarted in the background when switching SSL. Please operate with caution.
-        """
         return pulumi.get(self, "ssl")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates the node status.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the subnet Network ID. Changing this creates a new instance.
-        """
         return pulumi.get(self, "subnet_id")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        The key/value pairs to associate with the DDS instance.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
@@ -2104,8 +1354,5 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the VPC ID. Changing this creates a new instance.
-        """
         return pulumi.get(self, "vpc_id")
 

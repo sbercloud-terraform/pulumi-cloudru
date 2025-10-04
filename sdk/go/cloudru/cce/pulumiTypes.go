@@ -14,34 +14,12 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type AddonValues struct {
-	// Specifies the key/value pairs vary depending on the add-on.
-	// Only supports non-nested structure and only supports string type elements.
-	// This is an alternative to `basicJson`, but it is not recommended.
-	// Changing this parameter will create a new resource.
-	Basic map[string]string `pulumi:"basic"`
-	// Specifies the json string vary depending on the add-on.
-	// Changing this parameter will create a new resource.
-	BasicJson *string `pulumi:"basicJson"`
-	// Specifies the key/value pairs vary depending on the add-on.
-	// Only supports non-nested structure and only supports string type elements.
-	// This is an alternative to `customJson`, but it is not recommended.
-	// Changing this parameter will create a new resource.
-	Custom map[string]string `pulumi:"custom"`
-	// Specifies the json string vary depending on the add-on.
-	// Changing this parameter will create a new resource.
-	CustomJson *string `pulumi:"customJson"`
-	// Specifies the key/value pairs vary depending on the add-on.
-	// Only supports non-nested structure and only supports string type elements.
-	// This is an alternative to `flavorJson`, but it is not recommended.
-	// Changing this parameter will create a new resource.
-	//
-	// Arguments which can be passed to the `basicJson`, `customJson` and `flavorJson` add-on parameters depends on
-	// the add-on type and version. For more detailed description of add-ons
-	// see add-ons description
-	Flavor map[string]string `pulumi:"flavor"`
-	// Specifies the json string vary depending on the add-on.
-	// Changing this parameter will create a new resource.
-	FlavorJson *string `pulumi:"flavorJson"`
+	Basic      map[string]string `pulumi:"basic"`
+	BasicJson  *string           `pulumi:"basicJson"`
+	Custom     map[string]string `pulumi:"custom"`
+	CustomJson *string           `pulumi:"customJson"`
+	Flavor     map[string]string `pulumi:"flavor"`
+	FlavorJson *string           `pulumi:"flavorJson"`
 }
 
 // AddonValuesInput is an input type that accepts AddonValuesArgs and AddonValuesOutput values.
@@ -56,33 +34,11 @@ type AddonValuesInput interface {
 }
 
 type AddonValuesArgs struct {
-	// Specifies the key/value pairs vary depending on the add-on.
-	// Only supports non-nested structure and only supports string type elements.
-	// This is an alternative to `basicJson`, but it is not recommended.
-	// Changing this parameter will create a new resource.
-	Basic pulumi.StringMapInput `pulumi:"basic"`
-	// Specifies the json string vary depending on the add-on.
-	// Changing this parameter will create a new resource.
-	BasicJson pulumi.StringPtrInput `pulumi:"basicJson"`
-	// Specifies the key/value pairs vary depending on the add-on.
-	// Only supports non-nested structure and only supports string type elements.
-	// This is an alternative to `customJson`, but it is not recommended.
-	// Changing this parameter will create a new resource.
-	Custom pulumi.StringMapInput `pulumi:"custom"`
-	// Specifies the json string vary depending on the add-on.
-	// Changing this parameter will create a new resource.
+	Basic      pulumi.StringMapInput `pulumi:"basic"`
+	BasicJson  pulumi.StringPtrInput `pulumi:"basicJson"`
+	Custom     pulumi.StringMapInput `pulumi:"custom"`
 	CustomJson pulumi.StringPtrInput `pulumi:"customJson"`
-	// Specifies the key/value pairs vary depending on the add-on.
-	// Only supports non-nested structure and only supports string type elements.
-	// This is an alternative to `flavorJson`, but it is not recommended.
-	// Changing this parameter will create a new resource.
-	//
-	// Arguments which can be passed to the `basicJson`, `customJson` and `flavorJson` add-on parameters depends on
-	// the add-on type and version. For more detailed description of add-ons
-	// see add-ons description
-	Flavor pulumi.StringMapInput `pulumi:"flavor"`
-	// Specifies the json string vary depending on the add-on.
-	// Changing this parameter will create a new resource.
+	Flavor     pulumi.StringMapInput `pulumi:"flavor"`
 	FlavorJson pulumi.StringPtrInput `pulumi:"flavorJson"`
 }
 
@@ -163,48 +119,26 @@ func (o AddonValuesOutput) ToAddonValuesPtrOutputWithContext(ctx context.Context
 	}).(AddonValuesPtrOutput)
 }
 
-// Specifies the key/value pairs vary depending on the add-on.
-// Only supports non-nested structure and only supports string type elements.
-// This is an alternative to `basicJson`, but it is not recommended.
-// Changing this parameter will create a new resource.
 func (o AddonValuesOutput) Basic() pulumi.StringMapOutput {
 	return o.ApplyT(func(v AddonValues) map[string]string { return v.Basic }).(pulumi.StringMapOutput)
 }
 
-// Specifies the json string vary depending on the add-on.
-// Changing this parameter will create a new resource.
 func (o AddonValuesOutput) BasicJson() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AddonValues) *string { return v.BasicJson }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the key/value pairs vary depending on the add-on.
-// Only supports non-nested structure and only supports string type elements.
-// This is an alternative to `customJson`, but it is not recommended.
-// Changing this parameter will create a new resource.
 func (o AddonValuesOutput) Custom() pulumi.StringMapOutput {
 	return o.ApplyT(func(v AddonValues) map[string]string { return v.Custom }).(pulumi.StringMapOutput)
 }
 
-// Specifies the json string vary depending on the add-on.
-// Changing this parameter will create a new resource.
 func (o AddonValuesOutput) CustomJson() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AddonValues) *string { return v.CustomJson }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the key/value pairs vary depending on the add-on.
-// Only supports non-nested structure and only supports string type elements.
-// This is an alternative to `flavorJson`, but it is not recommended.
-// Changing this parameter will create a new resource.
-//
-// Arguments which can be passed to the `basicJson`, `customJson` and `flavorJson` add-on parameters depends on
-// the add-on type and version. For more detailed description of add-ons
-// see add-ons description
 func (o AddonValuesOutput) Flavor() pulumi.StringMapOutput {
 	return o.ApplyT(func(v AddonValues) map[string]string { return v.Flavor }).(pulumi.StringMapOutput)
 }
 
-// Specifies the json string vary depending on the add-on.
-// Changing this parameter will create a new resource.
 func (o AddonValuesOutput) FlavorJson() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AddonValues) *string { return v.FlavorJson }).(pulumi.StringPtrOutput)
 }
@@ -233,10 +167,6 @@ func (o AddonValuesPtrOutput) Elem() AddonValuesOutput {
 	}).(AddonValuesOutput)
 }
 
-// Specifies the key/value pairs vary depending on the add-on.
-// Only supports non-nested structure and only supports string type elements.
-// This is an alternative to `basicJson`, but it is not recommended.
-// Changing this parameter will create a new resource.
 func (o AddonValuesPtrOutput) Basic() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AddonValues) map[string]string {
 		if v == nil {
@@ -246,8 +176,6 @@ func (o AddonValuesPtrOutput) Basic() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Specifies the json string vary depending on the add-on.
-// Changing this parameter will create a new resource.
 func (o AddonValuesPtrOutput) BasicJson() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AddonValues) *string {
 		if v == nil {
@@ -257,10 +185,6 @@ func (o AddonValuesPtrOutput) BasicJson() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the key/value pairs vary depending on the add-on.
-// Only supports non-nested structure and only supports string type elements.
-// This is an alternative to `customJson`, but it is not recommended.
-// Changing this parameter will create a new resource.
 func (o AddonValuesPtrOutput) Custom() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AddonValues) map[string]string {
 		if v == nil {
@@ -270,8 +194,6 @@ func (o AddonValuesPtrOutput) Custom() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Specifies the json string vary depending on the add-on.
-// Changing this parameter will create a new resource.
 func (o AddonValuesPtrOutput) CustomJson() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AddonValues) *string {
 		if v == nil {
@@ -281,14 +203,6 @@ func (o AddonValuesPtrOutput) CustomJson() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the key/value pairs vary depending on the add-on.
-// Only supports non-nested structure and only supports string type elements.
-// This is an alternative to `flavorJson`, but it is not recommended.
-// Changing this parameter will create a new resource.
-//
-// Arguments which can be passed to the `basicJson`, `customJson` and `flavorJson` add-on parameters depends on
-// the add-on type and version. For more detailed description of add-ons
-// see add-ons description
 func (o AddonValuesPtrOutput) Flavor() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AddonValues) map[string]string {
 		if v == nil {
@@ -298,8 +212,6 @@ func (o AddonValuesPtrOutput) Flavor() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Specifies the json string vary depending on the add-on.
-// Changing this parameter will create a new resource.
 func (o AddonValuesPtrOutput) FlavorJson() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AddonValues) *string {
 		if v == nil {
@@ -310,13 +222,9 @@ func (o AddonValuesPtrOutput) FlavorJson() pulumi.StringPtrOutput {
 }
 
 type ClusterCertificateCluster struct {
-	// The certificate data.
 	CertificateAuthorityData *string `pulumi:"certificateAuthorityData"`
-	// Specifies the component name.
-	// Changing this parameter will create a new cluster resource.
-	Name *string `pulumi:"name"`
-	// The server IP address.
-	Server *string `pulumi:"server"`
+	Name                     *string `pulumi:"name"`
+	Server                   *string `pulumi:"server"`
 }
 
 // ClusterCertificateClusterInput is an input type that accepts ClusterCertificateClusterArgs and ClusterCertificateClusterOutput values.
@@ -331,13 +239,9 @@ type ClusterCertificateClusterInput interface {
 }
 
 type ClusterCertificateClusterArgs struct {
-	// The certificate data.
 	CertificateAuthorityData pulumi.StringPtrInput `pulumi:"certificateAuthorityData"`
-	// Specifies the component name.
-	// Changing this parameter will create a new cluster resource.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The server IP address.
-	Server pulumi.StringPtrInput `pulumi:"server"`
+	Name                     pulumi.StringPtrInput `pulumi:"name"`
+	Server                   pulumi.StringPtrInput `pulumi:"server"`
 }
 
 func (ClusterCertificateClusterArgs) ElementType() reflect.Type {
@@ -391,18 +295,14 @@ func (o ClusterCertificateClusterOutput) ToClusterCertificateClusterOutputWithCo
 	return o
 }
 
-// The certificate data.
 func (o ClusterCertificateClusterOutput) CertificateAuthorityData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterCertificateCluster) *string { return v.CertificateAuthorityData }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the component name.
-// Changing this parameter will create a new cluster resource.
 func (o ClusterCertificateClusterOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterCertificateCluster) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The server IP address.
 func (o ClusterCertificateClusterOutput) Server() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterCertificateCluster) *string { return v.Server }).(pulumi.StringPtrOutput)
 }
@@ -428,13 +328,9 @@ func (o ClusterCertificateClusterArrayOutput) Index(i pulumi.IntInput) ClusterCe
 }
 
 type ClusterCertificateUser struct {
-	// The client certificate data.
 	ClientCertificateData *string `pulumi:"clientCertificateData"`
-	// The client key data.
-	ClientKeyData *string `pulumi:"clientKeyData"`
-	// Specifies the component name.
-	// Changing this parameter will create a new cluster resource.
-	Name *string `pulumi:"name"`
+	ClientKeyData         *string `pulumi:"clientKeyData"`
+	Name                  *string `pulumi:"name"`
 }
 
 // ClusterCertificateUserInput is an input type that accepts ClusterCertificateUserArgs and ClusterCertificateUserOutput values.
@@ -449,13 +345,9 @@ type ClusterCertificateUserInput interface {
 }
 
 type ClusterCertificateUserArgs struct {
-	// The client certificate data.
 	ClientCertificateData pulumi.StringPtrInput `pulumi:"clientCertificateData"`
-	// The client key data.
-	ClientKeyData pulumi.StringPtrInput `pulumi:"clientKeyData"`
-	// Specifies the component name.
-	// Changing this parameter will create a new cluster resource.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	ClientKeyData         pulumi.StringPtrInput `pulumi:"clientKeyData"`
+	Name                  pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (ClusterCertificateUserArgs) ElementType() reflect.Type {
@@ -509,18 +401,14 @@ func (o ClusterCertificateUserOutput) ToClusterCertificateUserOutputWithContext(
 	return o
 }
 
-// The client certificate data.
 func (o ClusterCertificateUserOutput) ClientCertificateData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterCertificateUser) *string { return v.ClientCertificateData }).(pulumi.StringPtrOutput)
 }
 
-// The client key data.
 func (o ClusterCertificateUserOutput) ClientKeyData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterCertificateUser) *string { return v.ClientKeyData }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the component name.
-// Changing this parameter will create a new cluster resource.
 func (o ClusterCertificateUserOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterCertificateUser) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -546,12 +434,8 @@ func (o ClusterCertificateUserArrayOutput) Index(i pulumi.IntInput) ClusterCerti
 }
 
 type ClusterComponentConfiguration struct {
-	// Specifies JSON string of the component configurations.
-	// Changing this parameter will create a new cluster resource.
 	Configurations *string `pulumi:"configurations"`
-	// Specifies the component name.
-	// Changing this parameter will create a new cluster resource.
-	Name string `pulumi:"name"`
+	Name           string  `pulumi:"name"`
 }
 
 // ClusterComponentConfigurationInput is an input type that accepts ClusterComponentConfigurationArgs and ClusterComponentConfigurationOutput values.
@@ -566,12 +450,8 @@ type ClusterComponentConfigurationInput interface {
 }
 
 type ClusterComponentConfigurationArgs struct {
-	// Specifies JSON string of the component configurations.
-	// Changing this parameter will create a new cluster resource.
 	Configurations pulumi.StringPtrInput `pulumi:"configurations"`
-	// Specifies the component name.
-	// Changing this parameter will create a new cluster resource.
-	Name pulumi.StringInput `pulumi:"name"`
+	Name           pulumi.StringInput    `pulumi:"name"`
 }
 
 func (ClusterComponentConfigurationArgs) ElementType() reflect.Type {
@@ -625,14 +505,10 @@ func (o ClusterComponentConfigurationOutput) ToClusterComponentConfigurationOutp
 	return o
 }
 
-// Specifies JSON string of the component configurations.
-// Changing this parameter will create a new cluster resource.
 func (o ClusterComponentConfigurationOutput) Configurations() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterComponentConfiguration) *string { return v.Configurations }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the component name.
-// Changing this parameter will create a new cluster resource.
 func (o ClusterComponentConfigurationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterComponentConfiguration) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -806,46 +682,12 @@ func (o ClusterEncryptionConfigPtrOutput) Mode() pulumi.StringPtrOutput {
 }
 
 type ClusterExtendParam struct {
-	// Specifies the AZ of master nodes in the cluster. The value can be:
-	// + **multi_az**: The cluster will span across AZs. This field is configurable only for high-availability clusters.
-	// + **AZ of the dedicated cloud computing pool**: The cluster will be deployed in the AZ of Dedicated Cloud (DeC).
-	//   This parameter is mandatory for dedicated CCE clusters.
-	//
-	// Changing this parameter will create a new cluster resource.
-	ClusterAz *string `pulumi:"clusterAz"`
-	// Specifies the cluster CPU management policy.
-	// The value can be:
-	// + **none**: CPU cores will not be exclusively allocated to workload pods.
-	//   Select this value if you want a large pool of shareable CPU cores.
-	// + **static**: CPU cores can be exclusively allocated to workload pods.
-	//   Select this value if your workload is sensitive to latency in CPU cache and scheduling.In a CCE Turbo cluster,
-	//   this setting is valid only for nodes where common containers, not Kata containers, run.
-	//
-	// Defaults to none.
-	// Changing this parameter will create a new cluster resource.
-	//
-	// <a name="cceClusterComponentConfigurations"></a>
-	// The `componentConfigurations` block supports:
+	ClusterAz        *string `pulumi:"clusterAz"`
 	CpuManagerPolicy *string `pulumi:"cpuManagerPolicy"`
-	// Specifies the specifications of the master node
-	// in the dedicated hybrid cluster.
-	// Changing this parameter will create a new cluster resource.
-	DecMasterFlavor *string `pulumi:"decMasterFlavor"`
-	// Specifies the default UmaskMode configuration of Docker in a
-	// cluster. The value can be **secure** or **normal**, defaults to normal.
-	// Changing this parameter will create a new cluster resource.
-	DockerUmaskMode *string `pulumi:"dockerUmaskMode"`
-	// Specifies whether the system and data disks of a master node
-	// use dedicated distributed storage. If left unspecified, EVS disks are used by default.
-	// This parameter is mandatory for dedicated CCE clusters.
-	// It is in the following format:
-	//
-	// Changing this parameter will create a new cluster resource.
+	DecMasterFlavor  *string `pulumi:"decMasterFlavor"`
+	DockerUmaskMode  *string `pulumi:"dockerUmaskMode"`
 	DssMasterVolumes *string `pulumi:"dssMasterVolumes"`
-	// Specifies the number of mask bits of the fixed IP address pool
-	// of the container network model. This field can only be used when `containerNetworkType` is set to **vpc-router**.
-	// Changing this parameter will create a new cluster resource.
-	FixPoolMask *string `pulumi:"fixPoolMask"`
+	FixPoolMask      *string `pulumi:"fixPoolMask"`
 }
 
 // ClusterExtendParamInput is an input type that accepts ClusterExtendParamArgs and ClusterExtendParamOutput values.
@@ -860,46 +702,12 @@ type ClusterExtendParamInput interface {
 }
 
 type ClusterExtendParamArgs struct {
-	// Specifies the AZ of master nodes in the cluster. The value can be:
-	// + **multi_az**: The cluster will span across AZs. This field is configurable only for high-availability clusters.
-	// + **AZ of the dedicated cloud computing pool**: The cluster will be deployed in the AZ of Dedicated Cloud (DeC).
-	//   This parameter is mandatory for dedicated CCE clusters.
-	//
-	// Changing this parameter will create a new cluster resource.
-	ClusterAz pulumi.StringPtrInput `pulumi:"clusterAz"`
-	// Specifies the cluster CPU management policy.
-	// The value can be:
-	// + **none**: CPU cores will not be exclusively allocated to workload pods.
-	//   Select this value if you want a large pool of shareable CPU cores.
-	// + **static**: CPU cores can be exclusively allocated to workload pods.
-	//   Select this value if your workload is sensitive to latency in CPU cache and scheduling.In a CCE Turbo cluster,
-	//   this setting is valid only for nodes where common containers, not Kata containers, run.
-	//
-	// Defaults to none.
-	// Changing this parameter will create a new cluster resource.
-	//
-	// <a name="cceClusterComponentConfigurations"></a>
-	// The `componentConfigurations` block supports:
+	ClusterAz        pulumi.StringPtrInput `pulumi:"clusterAz"`
 	CpuManagerPolicy pulumi.StringPtrInput `pulumi:"cpuManagerPolicy"`
-	// Specifies the specifications of the master node
-	// in the dedicated hybrid cluster.
-	// Changing this parameter will create a new cluster resource.
-	DecMasterFlavor pulumi.StringPtrInput `pulumi:"decMasterFlavor"`
-	// Specifies the default UmaskMode configuration of Docker in a
-	// cluster. The value can be **secure** or **normal**, defaults to normal.
-	// Changing this parameter will create a new cluster resource.
-	DockerUmaskMode pulumi.StringPtrInput `pulumi:"dockerUmaskMode"`
-	// Specifies whether the system and data disks of a master node
-	// use dedicated distributed storage. If left unspecified, EVS disks are used by default.
-	// This parameter is mandatory for dedicated CCE clusters.
-	// It is in the following format:
-	//
-	// Changing this parameter will create a new cluster resource.
+	DecMasterFlavor  pulumi.StringPtrInput `pulumi:"decMasterFlavor"`
+	DockerUmaskMode  pulumi.StringPtrInput `pulumi:"dockerUmaskMode"`
 	DssMasterVolumes pulumi.StringPtrInput `pulumi:"dssMasterVolumes"`
-	// Specifies the number of mask bits of the fixed IP address pool
-	// of the container network model. This field can only be used when `containerNetworkType` is set to **vpc-router**.
-	// Changing this parameter will create a new cluster resource.
-	FixPoolMask pulumi.StringPtrInput `pulumi:"fixPoolMask"`
+	FixPoolMask      pulumi.StringPtrInput `pulumi:"fixPoolMask"`
 }
 
 func (ClusterExtendParamArgs) ElementType() reflect.Type {
@@ -953,60 +761,26 @@ func (o ClusterExtendParamOutput) ToClusterExtendParamOutputWithContext(ctx cont
 	return o
 }
 
-// Specifies the AZ of master nodes in the cluster. The value can be:
-//   - **multi_az**: The cluster will span across AZs. This field is configurable only for high-availability clusters.
-//   - **AZ of the dedicated cloud computing pool**: The cluster will be deployed in the AZ of Dedicated Cloud (DeC).
-//     This parameter is mandatory for dedicated CCE clusters.
-//
-// Changing this parameter will create a new cluster resource.
 func (o ClusterExtendParamOutput) ClusterAz() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterExtendParam) *string { return v.ClusterAz }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the cluster CPU management policy.
-// The value can be:
-//   - **none**: CPU cores will not be exclusively allocated to workload pods.
-//     Select this value if you want a large pool of shareable CPU cores.
-//   - **static**: CPU cores can be exclusively allocated to workload pods.
-//     Select this value if your workload is sensitive to latency in CPU cache and scheduling.In a CCE Turbo cluster,
-//     this setting is valid only for nodes where common containers, not Kata containers, run.
-//
-// Defaults to none.
-// Changing this parameter will create a new cluster resource.
-//
-// <a name="cceClusterComponentConfigurations"></a>
-// The `componentConfigurations` block supports:
 func (o ClusterExtendParamOutput) CpuManagerPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterExtendParam) *string { return v.CpuManagerPolicy }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the specifications of the master node
-// in the dedicated hybrid cluster.
-// Changing this parameter will create a new cluster resource.
 func (o ClusterExtendParamOutput) DecMasterFlavor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterExtendParam) *string { return v.DecMasterFlavor }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the default UmaskMode configuration of Docker in a
-// cluster. The value can be **secure** or **normal**, defaults to normal.
-// Changing this parameter will create a new cluster resource.
 func (o ClusterExtendParamOutput) DockerUmaskMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterExtendParam) *string { return v.DockerUmaskMode }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether the system and data disks of a master node
-// use dedicated distributed storage. If left unspecified, EVS disks are used by default.
-// This parameter is mandatory for dedicated CCE clusters.
-// It is in the following format:
-//
-// Changing this parameter will create a new cluster resource.
 func (o ClusterExtendParamOutput) DssMasterVolumes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterExtendParam) *string { return v.DssMasterVolumes }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the number of mask bits of the fixed IP address pool
-// of the container network model. This field can only be used when `containerNetworkType` is set to **vpc-router**.
-// Changing this parameter will create a new cluster resource.
 func (o ClusterExtendParamOutput) FixPoolMask() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterExtendParam) *string { return v.FixPoolMask }).(pulumi.StringPtrOutput)
 }
@@ -1032,11 +806,6 @@ func (o ClusterExtendParamArrayOutput) Index(i pulumi.IntInput) ClusterExtendPar
 }
 
 type ClusterMaster struct {
-	// Specifies the availability zone of the master node.
-	// Changing this parameter will create a new cluster resource.
-	//
-	// <a name="cceClusterExtendParams"></a>
-	// The `extendParams` block supports:
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 }
 
@@ -1052,11 +821,6 @@ type ClusterMasterInput interface {
 }
 
 type ClusterMasterArgs struct {
-	// Specifies the availability zone of the master node.
-	// Changing this parameter will create a new cluster resource.
-	//
-	// <a name="cceClusterExtendParams"></a>
-	// The `extendParams` block supports:
 	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
 }
 
@@ -1111,11 +875,6 @@ func (o ClusterMasterOutput) ToClusterMasterOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Specifies the availability zone of the master node.
-// Changing this parameter will create a new cluster resource.
-//
-// <a name="cceClusterExtendParams"></a>
-// The `extendParams` block supports:
 func (o ClusterMasterOutput) AvailabilityZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterMaster) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
 }
@@ -1289,7 +1048,6 @@ func (o NodeAttachDataVolumeArrayOutput) Index(i pulumi.IntInput) NodeAttachData
 }
 
 type NodeAttachExtensionNic struct {
-	// The ID of the subnet to which the NIC belongs.
 	SubnetId *string `pulumi:"subnetId"`
 }
 
@@ -1305,7 +1063,6 @@ type NodeAttachExtensionNicInput interface {
 }
 
 type NodeAttachExtensionNicArgs struct {
-	// The ID of the subnet to which the NIC belongs.
 	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
 }
 
@@ -1360,7 +1117,6 @@ func (o NodeAttachExtensionNicOutput) ToNodeAttachExtensionNicOutputWithContext(
 	return o
 }
 
-// The ID of the subnet to which the NIC belongs.
 func (o NodeAttachExtensionNicOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeAttachExtensionNic) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
@@ -1815,8 +1571,7 @@ func (o NodeAttachStoragePtrOutput) Selectors() NodeAttachStorageSelectorArrayOu
 }
 
 type NodeAttachStorageGroup struct {
-	CceManaged *bool `pulumi:"cceManaged"`
-	// Specifies the Node Name.
+	CceManaged    *bool                                `pulumi:"cceManaged"`
 	Name          string                               `pulumi:"name"`
 	SelectorNames []string                             `pulumi:"selectorNames"`
 	VirtualSpaces []NodeAttachStorageGroupVirtualSpace `pulumi:"virtualSpaces"`
@@ -1834,8 +1589,7 @@ type NodeAttachStorageGroupInput interface {
 }
 
 type NodeAttachStorageGroupArgs struct {
-	CceManaged pulumi.BoolPtrInput `pulumi:"cceManaged"`
-	// Specifies the Node Name.
+	CceManaged    pulumi.BoolPtrInput                          `pulumi:"cceManaged"`
 	Name          pulumi.StringInput                           `pulumi:"name"`
 	SelectorNames pulumi.StringArrayInput                      `pulumi:"selectorNames"`
 	VirtualSpaces NodeAttachStorageGroupVirtualSpaceArrayInput `pulumi:"virtualSpaces"`
@@ -1896,7 +1650,6 @@ func (o NodeAttachStorageGroupOutput) CceManaged() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodeAttachStorageGroup) *bool { return v.CceManaged }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the Node Name.
 func (o NodeAttachStorageGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeAttachStorageGroup) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1930,9 +1683,8 @@ func (o NodeAttachStorageGroupArrayOutput) Index(i pulumi.IntInput) NodeAttachSt
 }
 
 type NodeAttachStorageGroupVirtualSpace struct {
-	LvmLvType *string `pulumi:"lvmLvType"`
-	LvmPath   *string `pulumi:"lvmPath"`
-	// Specifies the Node Name.
+	LvmLvType     *string `pulumi:"lvmLvType"`
+	LvmPath       *string `pulumi:"lvmPath"`
 	Name          string  `pulumi:"name"`
 	RuntimeLvType *string `pulumi:"runtimeLvType"`
 	Size          string  `pulumi:"size"`
@@ -1950,9 +1702,8 @@ type NodeAttachStorageGroupVirtualSpaceInput interface {
 }
 
 type NodeAttachStorageGroupVirtualSpaceArgs struct {
-	LvmLvType pulumi.StringPtrInput `pulumi:"lvmLvType"`
-	LvmPath   pulumi.StringPtrInput `pulumi:"lvmPath"`
-	// Specifies the Node Name.
+	LvmLvType     pulumi.StringPtrInput `pulumi:"lvmLvType"`
+	LvmPath       pulumi.StringPtrInput `pulumi:"lvmPath"`
 	Name          pulumi.StringInput    `pulumi:"name"`
 	RuntimeLvType pulumi.StringPtrInput `pulumi:"runtimeLvType"`
 	Size          pulumi.StringInput    `pulumi:"size"`
@@ -2017,7 +1768,6 @@ func (o NodeAttachStorageGroupVirtualSpaceOutput) LvmPath() pulumi.StringPtrOutp
 	return o.ApplyT(func(v NodeAttachStorageGroupVirtualSpace) *string { return v.LvmPath }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the Node Name.
 func (o NodeAttachStorageGroupVirtualSpaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeAttachStorageGroupVirtualSpace) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2056,9 +1806,8 @@ type NodeAttachStorageSelector struct {
 	MatchLabelMetadataEncrypted *string `pulumi:"matchLabelMetadataEncrypted"`
 	MatchLabelSize              *string `pulumi:"matchLabelSize"`
 	MatchLabelVolumeType        *string `pulumi:"matchLabelVolumeType"`
-	// Specifies the Node Name.
-	Name string  `pulumi:"name"`
-	Type *string `pulumi:"type"`
+	Name                        string  `pulumi:"name"`
+	Type                        *string `pulumi:"type"`
 }
 
 // NodeAttachStorageSelectorInput is an input type that accepts NodeAttachStorageSelectorArgs and NodeAttachStorageSelectorOutput values.
@@ -2078,9 +1827,8 @@ type NodeAttachStorageSelectorArgs struct {
 	MatchLabelMetadataEncrypted pulumi.StringPtrInput `pulumi:"matchLabelMetadataEncrypted"`
 	MatchLabelSize              pulumi.StringPtrInput `pulumi:"matchLabelSize"`
 	MatchLabelVolumeType        pulumi.StringPtrInput `pulumi:"matchLabelVolumeType"`
-	// Specifies the Node Name.
-	Name pulumi.StringInput    `pulumi:"name"`
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Name                        pulumi.StringInput    `pulumi:"name"`
+	Type                        pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (NodeAttachStorageSelectorArgs) ElementType() reflect.Type {
@@ -2154,7 +1902,6 @@ func (o NodeAttachStorageSelectorOutput) MatchLabelVolumeType() pulumi.StringPtr
 	return o.ApplyT(func(v NodeAttachStorageSelector) *string { return v.MatchLabelVolumeType }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the Node Name.
 func (o NodeAttachStorageSelectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeAttachStorageSelector) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2184,17 +1931,9 @@ func (o NodeAttachStorageSelectorArrayOutput) Index(i pulumi.IntInput) NodeAttac
 }
 
 type NodeAttachTaint struct {
-	// Available options are NoSchedule, PreferNoSchedule, and NoExecute.
-	// Changing this parameter will create a new resource.
 	Effect string `pulumi:"effect"`
-	// A key must contain 1 to 63 characters starting with a letter or digit.
-	// Only letters, digits, hyphens (-), underscores (_), and periods (.) are allowed. A DNS subdomain name can be used
-	// as the prefix of a key. Changing this parameter will create a new resource.
-	Key string `pulumi:"key"`
-	// A value must start with a letter or digit and can contain a maximum of 63
-	// characters, including letters, digits, hyphens (-), underscores (_), and periods (.). Changing this parameter will
-	// create a new resource.
-	Value string `pulumi:"value"`
+	Key    string `pulumi:"key"`
+	Value  string `pulumi:"value"`
 }
 
 // NodeAttachTaintInput is an input type that accepts NodeAttachTaintArgs and NodeAttachTaintOutput values.
@@ -2209,17 +1948,9 @@ type NodeAttachTaintInput interface {
 }
 
 type NodeAttachTaintArgs struct {
-	// Available options are NoSchedule, PreferNoSchedule, and NoExecute.
-	// Changing this parameter will create a new resource.
 	Effect pulumi.StringInput `pulumi:"effect"`
-	// A key must contain 1 to 63 characters starting with a letter or digit.
-	// Only letters, digits, hyphens (-), underscores (_), and periods (.) are allowed. A DNS subdomain name can be used
-	// as the prefix of a key. Changing this parameter will create a new resource.
-	Key pulumi.StringInput `pulumi:"key"`
-	// A value must start with a letter or digit and can contain a maximum of 63
-	// characters, including letters, digits, hyphens (-), underscores (_), and periods (.). Changing this parameter will
-	// create a new resource.
-	Value pulumi.StringInput `pulumi:"value"`
+	Key    pulumi.StringInput `pulumi:"key"`
+	Value  pulumi.StringInput `pulumi:"value"`
 }
 
 func (NodeAttachTaintArgs) ElementType() reflect.Type {
@@ -2273,22 +2004,14 @@ func (o NodeAttachTaintOutput) ToNodeAttachTaintOutputWithContext(ctx context.Co
 	return o
 }
 
-// Available options are NoSchedule, PreferNoSchedule, and NoExecute.
-// Changing this parameter will create a new resource.
 func (o NodeAttachTaintOutput) Effect() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeAttachTaint) string { return v.Effect }).(pulumi.StringOutput)
 }
 
-// A key must contain 1 to 63 characters starting with a letter or digit.
-// Only letters, digits, hyphens (-), underscores (_), and periods (.) are allowed. A DNS subdomain name can be used
-// as the prefix of a key. Changing this parameter will create a new resource.
 func (o NodeAttachTaintOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeAttachTaint) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// A value must start with a letter or digit and can contain a maximum of 63
-// characters, including letters, digits, hyphens (-), underscores (_), and periods (.). Changing this parameter will
-// create a new resource.
 func (o NodeAttachTaintOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeAttachTaint) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -2315,34 +2038,16 @@ func (o NodeAttachTaintArrayOutput) Index(i pulumi.IntInput) NodeAttachTaintOutp
 
 type NodeDataVolume struct {
 	DssPoolId *string `pulumi:"dssPoolId"`
-	// Specifies the extended parameter.
-	// Changing this parameter will create a new resource.
-	// The available keys are as follows:
-	// + **agency_name**: The agency name to provide temporary credentials for CCE node to access other cloud services.
-	// + **alpha.cce/NodeImageID**: The custom image ID used to create the BMS nodes.
-	// + **dockerBaseSize**: The available disk space of a single docker container on the node in device mapper mode.
-	// + **DockerLVMConfigOverride**: Specifies the data disk configurations of Docker.
-	//
-	// The following is an example default configuration:
-	//
 	// Deprecated: use extendParams instead
-	ExtendParam *string `pulumi:"extendParam"`
-	// Specifies the disk expansion parameters.
-	// Changing this parameter will create a new resource.
+	ExtendParam  *string           `pulumi:"extendParam"`
 	ExtendParams map[string]string `pulumi:"extendParams"`
 	// schema: Internal
-	HwPassthrough *bool `pulumi:"hwPassthrough"`
-	Iops          *int  `pulumi:"iops"`
-	// Specifies the ID of a KMS key. This is used to encrypt the volume.
-	// Changing this parameter will create a new resource.
-	KmsKeyId *string `pulumi:"kmsKeyId"`
-	// Specifies the disk size in GB.
-	// Changing this parameter will create a new resource.
-	Size       int  `pulumi:"size"`
-	Throughput *int `pulumi:"throughput"`
-	// Specifies the disk type.
-	// Changing this parameter will create a new resource.
-	Volumetype string `pulumi:"volumetype"`
+	HwPassthrough *bool   `pulumi:"hwPassthrough"`
+	Iops          *int    `pulumi:"iops"`
+	KmsKeyId      *string `pulumi:"kmsKeyId"`
+	Size          int     `pulumi:"size"`
+	Throughput    *int    `pulumi:"throughput"`
+	Volumetype    string  `pulumi:"volumetype"`
 }
 
 // NodeDataVolumeInput is an input type that accepts NodeDataVolumeArgs and NodeDataVolumeOutput values.
@@ -2358,34 +2063,16 @@ type NodeDataVolumeInput interface {
 
 type NodeDataVolumeArgs struct {
 	DssPoolId pulumi.StringPtrInput `pulumi:"dssPoolId"`
-	// Specifies the extended parameter.
-	// Changing this parameter will create a new resource.
-	// The available keys are as follows:
-	// + **agency_name**: The agency name to provide temporary credentials for CCE node to access other cloud services.
-	// + **alpha.cce/NodeImageID**: The custom image ID used to create the BMS nodes.
-	// + **dockerBaseSize**: The available disk space of a single docker container on the node in device mapper mode.
-	// + **DockerLVMConfigOverride**: Specifies the data disk configurations of Docker.
-	//
-	// The following is an example default configuration:
-	//
 	// Deprecated: use extendParams instead
-	ExtendParam pulumi.StringPtrInput `pulumi:"extendParam"`
-	// Specifies the disk expansion parameters.
-	// Changing this parameter will create a new resource.
+	ExtendParam  pulumi.StringPtrInput `pulumi:"extendParam"`
 	ExtendParams pulumi.StringMapInput `pulumi:"extendParams"`
 	// schema: Internal
-	HwPassthrough pulumi.BoolPtrInput `pulumi:"hwPassthrough"`
-	Iops          pulumi.IntPtrInput  `pulumi:"iops"`
-	// Specifies the ID of a KMS key. This is used to encrypt the volume.
-	// Changing this parameter will create a new resource.
-	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
-	// Specifies the disk size in GB.
-	// Changing this parameter will create a new resource.
-	Size       pulumi.IntInput    `pulumi:"size"`
-	Throughput pulumi.IntPtrInput `pulumi:"throughput"`
-	// Specifies the disk type.
-	// Changing this parameter will create a new resource.
-	Volumetype pulumi.StringInput `pulumi:"volumetype"`
+	HwPassthrough pulumi.BoolPtrInput   `pulumi:"hwPassthrough"`
+	Iops          pulumi.IntPtrInput    `pulumi:"iops"`
+	KmsKeyId      pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	Size          pulumi.IntInput       `pulumi:"size"`
+	Throughput    pulumi.IntPtrInput    `pulumi:"throughput"`
+	Volumetype    pulumi.StringInput    `pulumi:"volumetype"`
 }
 
 func (NodeDataVolumeArgs) ElementType() reflect.Type {
@@ -2443,23 +2130,11 @@ func (o NodeDataVolumeOutput) DssPoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeDataVolume) *string { return v.DssPoolId }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the extended parameter.
-// Changing this parameter will create a new resource.
-// The available keys are as follows:
-// + **agency_name**: The agency name to provide temporary credentials for CCE node to access other cloud services.
-// + **alpha.cce/NodeImageID**: The custom image ID used to create the BMS nodes.
-// + **dockerBaseSize**: The available disk space of a single docker container on the node in device mapper mode.
-// + **DockerLVMConfigOverride**: Specifies the data disk configurations of Docker.
-//
-// The following is an example default configuration:
-//
 // Deprecated: use extendParams instead
 func (o NodeDataVolumeOutput) ExtendParam() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeDataVolume) *string { return v.ExtendParam }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the disk expansion parameters.
-// Changing this parameter will create a new resource.
 func (o NodeDataVolumeOutput) ExtendParams() pulumi.StringMapOutput {
 	return o.ApplyT(func(v NodeDataVolume) map[string]string { return v.ExtendParams }).(pulumi.StringMapOutput)
 }
@@ -2473,14 +2148,10 @@ func (o NodeDataVolumeOutput) Iops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodeDataVolume) *int { return v.Iops }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the ID of a KMS key. This is used to encrypt the volume.
-// Changing this parameter will create a new resource.
 func (o NodeDataVolumeOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeDataVolume) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the disk size in GB.
-// Changing this parameter will create a new resource.
 func (o NodeDataVolumeOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v NodeDataVolume) int { return v.Size }).(pulumi.IntOutput)
 }
@@ -2489,8 +2160,6 @@ func (o NodeDataVolumeOutput) Throughput() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodeDataVolume) *int { return v.Throughput }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the disk type.
-// Changing this parameter will create a new resource.
 func (o NodeDataVolumeOutput) Volumetype() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeDataVolume) string { return v.Volumetype }).(pulumi.StringOutput)
 }
@@ -2516,21 +2185,15 @@ func (o NodeDataVolumeArrayOutput) Index(i pulumi.IntInput) NodeDataVolumeOutput
 }
 
 type NodeExtendParams struct {
-	AgencyName      *string `pulumi:"agencyName"`
-	DockerBaseSize  *int    `pulumi:"dockerBaseSize"`
-	KubeReservedMem *int    `pulumi:"kubeReservedMem"`
-	MarketType      *string `pulumi:"marketType"`
-	// Specifies the maximum number of instances a node is allowed to create.
-	// Changing this parameter will create a new resource.
-	MaxPods        *int    `pulumi:"maxPods"`
-	NicThreshold   *string `pulumi:"nicThreshold"`
-	NodeImageId    *string `pulumi:"nodeImageId"`
-	NodeMultiQueue *string `pulumi:"nodeMultiQueue"`
-	// Specifies the script to be executed after installation.
-	// The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
-	Postinstall *string `pulumi:"postinstall"`
-	// Specifies the script to be executed before installation.
-	// The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
+	AgencyName                *string `pulumi:"agencyName"`
+	DockerBaseSize            *int    `pulumi:"dockerBaseSize"`
+	KubeReservedMem           *int    `pulumi:"kubeReservedMem"`
+	MarketType                *string `pulumi:"marketType"`
+	MaxPods                   *int    `pulumi:"maxPods"`
+	NicThreshold              *string `pulumi:"nicThreshold"`
+	NodeImageId               *string `pulumi:"nodeImageId"`
+	NodeMultiQueue            *string `pulumi:"nodeMultiQueue"`
+	Postinstall               *string `pulumi:"postinstall"`
 	Preinstall                *string `pulumi:"preinstall"`
 	SecurityReinforcementType *string `pulumi:"securityReinforcementType"`
 	SpotPrice                 *string `pulumi:"spotPrice"`
@@ -2549,21 +2212,15 @@ type NodeExtendParamsInput interface {
 }
 
 type NodeExtendParamsArgs struct {
-	AgencyName      pulumi.StringPtrInput `pulumi:"agencyName"`
-	DockerBaseSize  pulumi.IntPtrInput    `pulumi:"dockerBaseSize"`
-	KubeReservedMem pulumi.IntPtrInput    `pulumi:"kubeReservedMem"`
-	MarketType      pulumi.StringPtrInput `pulumi:"marketType"`
-	// Specifies the maximum number of instances a node is allowed to create.
-	// Changing this parameter will create a new resource.
-	MaxPods        pulumi.IntPtrInput    `pulumi:"maxPods"`
-	NicThreshold   pulumi.StringPtrInput `pulumi:"nicThreshold"`
-	NodeImageId    pulumi.StringPtrInput `pulumi:"nodeImageId"`
-	NodeMultiQueue pulumi.StringPtrInput `pulumi:"nodeMultiQueue"`
-	// Specifies the script to be executed after installation.
-	// The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
-	Postinstall pulumi.StringPtrInput `pulumi:"postinstall"`
-	// Specifies the script to be executed before installation.
-	// The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
+	AgencyName                pulumi.StringPtrInput `pulumi:"agencyName"`
+	DockerBaseSize            pulumi.IntPtrInput    `pulumi:"dockerBaseSize"`
+	KubeReservedMem           pulumi.IntPtrInput    `pulumi:"kubeReservedMem"`
+	MarketType                pulumi.StringPtrInput `pulumi:"marketType"`
+	MaxPods                   pulumi.IntPtrInput    `pulumi:"maxPods"`
+	NicThreshold              pulumi.StringPtrInput `pulumi:"nicThreshold"`
+	NodeImageId               pulumi.StringPtrInput `pulumi:"nodeImageId"`
+	NodeMultiQueue            pulumi.StringPtrInput `pulumi:"nodeMultiQueue"`
+	Postinstall               pulumi.StringPtrInput `pulumi:"postinstall"`
 	Preinstall                pulumi.StringPtrInput `pulumi:"preinstall"`
 	SecurityReinforcementType pulumi.StringPtrInput `pulumi:"securityReinforcementType"`
 	SpotPrice                 pulumi.StringPtrInput `pulumi:"spotPrice"`
@@ -2663,8 +2320,6 @@ func (o NodeExtendParamsOutput) MarketType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeExtendParams) *string { return v.MarketType }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the maximum number of instances a node is allowed to create.
-// Changing this parameter will create a new resource.
 func (o NodeExtendParamsOutput) MaxPods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodeExtendParams) *int { return v.MaxPods }).(pulumi.IntPtrOutput)
 }
@@ -2681,14 +2336,10 @@ func (o NodeExtendParamsOutput) NodeMultiQueue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeExtendParams) *string { return v.NodeMultiQueue }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the script to be executed after installation.
-// The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
 func (o NodeExtendParamsOutput) Postinstall() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeExtendParams) *string { return v.Postinstall }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the script to be executed before installation.
-// The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
 func (o NodeExtendParamsOutput) Preinstall() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeExtendParams) *string { return v.Preinstall }).(pulumi.StringPtrOutput)
 }
@@ -2765,8 +2416,6 @@ func (o NodeExtendParamsPtrOutput) MarketType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the maximum number of instances a node is allowed to create.
-// Changing this parameter will create a new resource.
 func (o NodeExtendParamsPtrOutput) MaxPods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodeExtendParams) *int {
 		if v == nil {
@@ -2803,8 +2452,6 @@ func (o NodeExtendParamsPtrOutput) NodeMultiQueue() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the script to be executed after installation.
-// The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
 func (o NodeExtendParamsPtrOutput) Postinstall() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeExtendParams) *string {
 		if v == nil {
@@ -2814,8 +2461,6 @@ func (o NodeExtendParamsPtrOutput) Postinstall() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the script to be executed before installation.
-// The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
 func (o NodeExtendParamsPtrOutput) Preinstall() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeExtendParams) *string {
 		if v == nil {
@@ -2853,8 +2498,6 @@ func (o NodeExtendParamsPtrOutput) SystemReservedMem() pulumi.IntPtrOutput {
 }
 
 type NodeExtensionNic struct {
-	// Specifies the ID of the subnet to which the NIC belongs.
-	// Changing this parameter will create a new resource.
 	SubnetId string `pulumi:"subnetId"`
 }
 
@@ -2870,8 +2513,6 @@ type NodeExtensionNicInput interface {
 }
 
 type NodeExtensionNicArgs struct {
-	// Specifies the ID of the subnet to which the NIC belongs.
-	// Changing this parameter will create a new resource.
 	SubnetId pulumi.StringInput `pulumi:"subnetId"`
 }
 
@@ -2926,8 +2567,6 @@ func (o NodeExtensionNicOutput) ToNodeExtensionNicOutputWithContext(ctx context.
 	return o
 }
 
-// Specifies the ID of the subnet to which the NIC belongs.
-// Changing this parameter will create a new resource.
 func (o NodeExtensionNicOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeExtensionNic) string { return v.SubnetId }).(pulumi.StringOutput)
 }
@@ -2953,8 +2592,6 @@ func (o NodeExtensionNicArrayOutput) Index(i pulumi.IntInput) NodeExtensionNicOu
 }
 
 type NodeHostnameConfig struct {
-	// Specifies the storage type. Currently, only **evs (EVS volumes)** is supported.
-	// The default value is **evs**. Changing this parameter will create a new resource.
 	Type string `pulumi:"type"`
 }
 
@@ -2970,8 +2607,6 @@ type NodeHostnameConfigInput interface {
 }
 
 type NodeHostnameConfigArgs struct {
-	// Specifies the storage type. Currently, only **evs (EVS volumes)** is supported.
-	// The default value is **evs**. Changing this parameter will create a new resource.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -3052,8 +2687,6 @@ func (o NodeHostnameConfigOutput) ToNodeHostnameConfigPtrOutputWithContext(ctx c
 	}).(NodeHostnameConfigPtrOutput)
 }
 
-// Specifies the storage type. Currently, only **evs (EVS volumes)** is supported.
-// The default value is **evs**. Changing this parameter will create a new resource.
 func (o NodeHostnameConfigOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeHostnameConfig) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -3082,8 +2715,6 @@ func (o NodeHostnameConfigPtrOutput) Elem() NodeHostnameConfigOutput {
 	}).(NodeHostnameConfigOutput)
 }
 
-// Specifies the storage type. Currently, only **evs (EVS volumes)** is supported.
-// The default value is **evs**. Changing this parameter will create a new resource.
 func (o NodeHostnameConfigPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeHostnameConfig) *string {
 		if v == nil {
@@ -3094,31 +2725,17 @@ func (o NodeHostnameConfigPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type NodePoolDataVolume struct {
-	// Specifies the DSS pool ID. This field is used only for dedicated storage.
-	// Changing this parameter will create a new resource.
 	DssPoolId *string `pulumi:"dssPoolId"`
 	// Deprecated: use extendParams instead
-	ExtendParam *string `pulumi:"extendParam"`
-	// Specifies the disk expansion parameters.
-	// Changing this parameter will create a new resource.
+	ExtendParam  *string           `pulumi:"extendParam"`
 	ExtendParams map[string]string `pulumi:"extendParams"`
 	// schema: Internal
-	HwPassthrough *bool `pulumi:"hwPassthrough"`
-	// Specifies the iops of the disk,
-	// required when `volumetype` is **GPSSD2** or **ESSD2**.
-	Iops *int `pulumi:"iops"`
-	// Specifies the KMS key ID. This is used to encrypt the volume.
-	// Changing this parameter will create a new resource.
-	KmsKeyId *string `pulumi:"kmsKeyId"`
-	// Specifies the disk size in GB. Changing this parameter will create a new resource.
-	Size int `pulumi:"size"`
-	// Specifies the throughput of the disk in MiB/s,
-	// required when `volumetype` is **GPSSD2**.
-	//
-	// > You need to create an agency (EVSAccessKMS) when disk encryption is used in the current project for the first time ever.
-	Throughput *int `pulumi:"throughput"`
-	// Specifies the disk type. Changing this parameter will create a new resource.
-	Volumetype string `pulumi:"volumetype"`
+	HwPassthrough *bool   `pulumi:"hwPassthrough"`
+	Iops          *int    `pulumi:"iops"`
+	KmsKeyId      *string `pulumi:"kmsKeyId"`
+	Size          int     `pulumi:"size"`
+	Throughput    *int    `pulumi:"throughput"`
+	Volumetype    string  `pulumi:"volumetype"`
 }
 
 // NodePoolDataVolumeInput is an input type that accepts NodePoolDataVolumeArgs and NodePoolDataVolumeOutput values.
@@ -3133,31 +2750,17 @@ type NodePoolDataVolumeInput interface {
 }
 
 type NodePoolDataVolumeArgs struct {
-	// Specifies the DSS pool ID. This field is used only for dedicated storage.
-	// Changing this parameter will create a new resource.
 	DssPoolId pulumi.StringPtrInput `pulumi:"dssPoolId"`
 	// Deprecated: use extendParams instead
-	ExtendParam pulumi.StringPtrInput `pulumi:"extendParam"`
-	// Specifies the disk expansion parameters.
-	// Changing this parameter will create a new resource.
+	ExtendParam  pulumi.StringPtrInput `pulumi:"extendParam"`
 	ExtendParams pulumi.StringMapInput `pulumi:"extendParams"`
 	// schema: Internal
-	HwPassthrough pulumi.BoolPtrInput `pulumi:"hwPassthrough"`
-	// Specifies the iops of the disk,
-	// required when `volumetype` is **GPSSD2** or **ESSD2**.
-	Iops pulumi.IntPtrInput `pulumi:"iops"`
-	// Specifies the KMS key ID. This is used to encrypt the volume.
-	// Changing this parameter will create a new resource.
-	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
-	// Specifies the disk size in GB. Changing this parameter will create a new resource.
-	Size pulumi.IntInput `pulumi:"size"`
-	// Specifies the throughput of the disk in MiB/s,
-	// required when `volumetype` is **GPSSD2**.
-	//
-	// > You need to create an agency (EVSAccessKMS) when disk encryption is used in the current project for the first time ever.
-	Throughput pulumi.IntPtrInput `pulumi:"throughput"`
-	// Specifies the disk type. Changing this parameter will create a new resource.
-	Volumetype pulumi.StringInput `pulumi:"volumetype"`
+	HwPassthrough pulumi.BoolPtrInput   `pulumi:"hwPassthrough"`
+	Iops          pulumi.IntPtrInput    `pulumi:"iops"`
+	KmsKeyId      pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	Size          pulumi.IntInput       `pulumi:"size"`
+	Throughput    pulumi.IntPtrInput    `pulumi:"throughput"`
+	Volumetype    pulumi.StringInput    `pulumi:"volumetype"`
 }
 
 func (NodePoolDataVolumeArgs) ElementType() reflect.Type {
@@ -3211,8 +2814,6 @@ func (o NodePoolDataVolumeOutput) ToNodePoolDataVolumeOutputWithContext(ctx cont
 	return o
 }
 
-// Specifies the DSS pool ID. This field is used only for dedicated storage.
-// Changing this parameter will create a new resource.
 func (o NodePoolDataVolumeOutput) DssPoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolDataVolume) *string { return v.DssPoolId }).(pulumi.StringPtrOutput)
 }
@@ -3222,8 +2823,6 @@ func (o NodePoolDataVolumeOutput) ExtendParam() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolDataVolume) *string { return v.ExtendParam }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the disk expansion parameters.
-// Changing this parameter will create a new resource.
 func (o NodePoolDataVolumeOutput) ExtendParams() pulumi.StringMapOutput {
 	return o.ApplyT(func(v NodePoolDataVolume) map[string]string { return v.ExtendParams }).(pulumi.StringMapOutput)
 }
@@ -3233,32 +2832,22 @@ func (o NodePoolDataVolumeOutput) HwPassthrough() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolDataVolume) *bool { return v.HwPassthrough }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the iops of the disk,
-// required when `volumetype` is **GPSSD2** or **ESSD2**.
 func (o NodePoolDataVolumeOutput) Iops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolDataVolume) *int { return v.Iops }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the KMS key ID. This is used to encrypt the volume.
-// Changing this parameter will create a new resource.
 func (o NodePoolDataVolumeOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolDataVolume) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the disk size in GB. Changing this parameter will create a new resource.
 func (o NodePoolDataVolumeOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v NodePoolDataVolume) int { return v.Size }).(pulumi.IntOutput)
 }
 
-// Specifies the throughput of the disk in MiB/s,
-// required when `volumetype` is **GPSSD2**.
-//
-// > You need to create an agency (EVSAccessKMS) when disk encryption is used in the current project for the first time ever.
 func (o NodePoolDataVolumeOutput) Throughput() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolDataVolume) *int { return v.Throughput }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the disk type. Changing this parameter will create a new resource.
 func (o NodePoolDataVolumeOutput) Volumetype() pulumi.StringOutput {
 	return o.ApplyT(func(v NodePoolDataVolume) string { return v.Volumetype }).(pulumi.StringOutput)
 }
@@ -3284,39 +2873,19 @@ func (o NodePoolDataVolumeArrayOutput) Index(i pulumi.IntInput) NodePoolDataVolu
 }
 
 type NodePoolExtendParams struct {
-	// Specifies the agency name.
-	// Changing this parameter will create a new resource.
-	AgencyName *string `pulumi:"agencyName"`
-	// Specifies the available disk space of a single container on a node,
-	// in GB. Changing this parameter will create a new resource.
-	DockerBaseSize *int `pulumi:"dockerBaseSize"`
-	// Specifies the reserved node memory, which is reserved for
-	// Kubernetes-related components. Changing this parameter will create a new resource.
-	KubeReservedMem *int    `pulumi:"kubeReservedMem"`
-	MarketType      *string `pulumi:"marketType"`
-	// Specifies the maximum number of instances a node is allowed to create.
-	// Changing this parameter will create a new resource.
-	MaxPods *int `pulumi:"maxPods"`
-	// Specifies the ENI pre-binding thresholds.
-	// Example setting: **"0.3:0.6"**. Changing this parameter will create a new resource.
-	NicThreshold *string `pulumi:"nicThreshold"`
-	// Specifies the image ID to create the node.
-	// Changing this parameter will create a new resource.
-	NodeImageId *string `pulumi:"nodeImageId"`
-	// Specifies the number of ENI queues.
-	// Example setting: **"[{\"queue\":4}]"**. Changing this parameter will create a new resource.
-	NodeMultiQueue *string `pulumi:"nodeMultiQueue"`
-	// Specifies the script to be executed after installation.
-	// The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
-	Postinstall *string `pulumi:"postinstall"`
-	// Specifies the script to be executed before installation.
-	// The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
+	AgencyName                *string `pulumi:"agencyName"`
+	DockerBaseSize            *int    `pulumi:"dockerBaseSize"`
+	KubeReservedMem           *int    `pulumi:"kubeReservedMem"`
+	MarketType                *string `pulumi:"marketType"`
+	MaxPods                   *int    `pulumi:"maxPods"`
+	NicThreshold              *string `pulumi:"nicThreshold"`
+	NodeImageId               *string `pulumi:"nodeImageId"`
+	NodeMultiQueue            *string `pulumi:"nodeMultiQueue"`
+	Postinstall               *string `pulumi:"postinstall"`
 	Preinstall                *string `pulumi:"preinstall"`
 	SecurityReinforcementType *string `pulumi:"securityReinforcementType"`
 	SpotPrice                 *string `pulumi:"spotPrice"`
-	// Specifies the reserved node memory, which is reserved
-	// value for system components. Changing this parameter will create a new resource.
-	SystemReservedMem *int `pulumi:"systemReservedMem"`
+	SystemReservedMem         *int    `pulumi:"systemReservedMem"`
 }
 
 // NodePoolExtendParamsInput is an input type that accepts NodePoolExtendParamsArgs and NodePoolExtendParamsOutput values.
@@ -3331,39 +2900,19 @@ type NodePoolExtendParamsInput interface {
 }
 
 type NodePoolExtendParamsArgs struct {
-	// Specifies the agency name.
-	// Changing this parameter will create a new resource.
-	AgencyName pulumi.StringPtrInput `pulumi:"agencyName"`
-	// Specifies the available disk space of a single container on a node,
-	// in GB. Changing this parameter will create a new resource.
-	DockerBaseSize pulumi.IntPtrInput `pulumi:"dockerBaseSize"`
-	// Specifies the reserved node memory, which is reserved for
-	// Kubernetes-related components. Changing this parameter will create a new resource.
-	KubeReservedMem pulumi.IntPtrInput    `pulumi:"kubeReservedMem"`
-	MarketType      pulumi.StringPtrInput `pulumi:"marketType"`
-	// Specifies the maximum number of instances a node is allowed to create.
-	// Changing this parameter will create a new resource.
-	MaxPods pulumi.IntPtrInput `pulumi:"maxPods"`
-	// Specifies the ENI pre-binding thresholds.
-	// Example setting: **"0.3:0.6"**. Changing this parameter will create a new resource.
-	NicThreshold pulumi.StringPtrInput `pulumi:"nicThreshold"`
-	// Specifies the image ID to create the node.
-	// Changing this parameter will create a new resource.
-	NodeImageId pulumi.StringPtrInput `pulumi:"nodeImageId"`
-	// Specifies the number of ENI queues.
-	// Example setting: **"[{\"queue\":4}]"**. Changing this parameter will create a new resource.
-	NodeMultiQueue pulumi.StringPtrInput `pulumi:"nodeMultiQueue"`
-	// Specifies the script to be executed after installation.
-	// The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
-	Postinstall pulumi.StringPtrInput `pulumi:"postinstall"`
-	// Specifies the script to be executed before installation.
-	// The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
+	AgencyName                pulumi.StringPtrInput `pulumi:"agencyName"`
+	DockerBaseSize            pulumi.IntPtrInput    `pulumi:"dockerBaseSize"`
+	KubeReservedMem           pulumi.IntPtrInput    `pulumi:"kubeReservedMem"`
+	MarketType                pulumi.StringPtrInput `pulumi:"marketType"`
+	MaxPods                   pulumi.IntPtrInput    `pulumi:"maxPods"`
+	NicThreshold              pulumi.StringPtrInput `pulumi:"nicThreshold"`
+	NodeImageId               pulumi.StringPtrInput `pulumi:"nodeImageId"`
+	NodeMultiQueue            pulumi.StringPtrInput `pulumi:"nodeMultiQueue"`
+	Postinstall               pulumi.StringPtrInput `pulumi:"postinstall"`
 	Preinstall                pulumi.StringPtrInput `pulumi:"preinstall"`
 	SecurityReinforcementType pulumi.StringPtrInput `pulumi:"securityReinforcementType"`
 	SpotPrice                 pulumi.StringPtrInput `pulumi:"spotPrice"`
-	// Specifies the reserved node memory, which is reserved
-	// value for system components. Changing this parameter will create a new resource.
-	SystemReservedMem pulumi.IntPtrInput `pulumi:"systemReservedMem"`
+	SystemReservedMem         pulumi.IntPtrInput    `pulumi:"systemReservedMem"`
 }
 
 func (NodePoolExtendParamsArgs) ElementType() reflect.Type {
@@ -3443,20 +2992,14 @@ func (o NodePoolExtendParamsOutput) ToNodePoolExtendParamsPtrOutputWithContext(c
 	}).(NodePoolExtendParamsPtrOutput)
 }
 
-// Specifies the agency name.
-// Changing this parameter will create a new resource.
 func (o NodePoolExtendParamsOutput) AgencyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolExtendParams) *string { return v.AgencyName }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the available disk space of a single container on a node,
-// in GB. Changing this parameter will create a new resource.
 func (o NodePoolExtendParamsOutput) DockerBaseSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolExtendParams) *int { return v.DockerBaseSize }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the reserved node memory, which is reserved for
-// Kubernetes-related components. Changing this parameter will create a new resource.
 func (o NodePoolExtendParamsOutput) KubeReservedMem() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolExtendParams) *int { return v.KubeReservedMem }).(pulumi.IntPtrOutput)
 }
@@ -3465,38 +3008,26 @@ func (o NodePoolExtendParamsOutput) MarketType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolExtendParams) *string { return v.MarketType }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the maximum number of instances a node is allowed to create.
-// Changing this parameter will create a new resource.
 func (o NodePoolExtendParamsOutput) MaxPods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolExtendParams) *int { return v.MaxPods }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the ENI pre-binding thresholds.
-// Example setting: **"0.3:0.6"**. Changing this parameter will create a new resource.
 func (o NodePoolExtendParamsOutput) NicThreshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolExtendParams) *string { return v.NicThreshold }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the image ID to create the node.
-// Changing this parameter will create a new resource.
 func (o NodePoolExtendParamsOutput) NodeImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolExtendParams) *string { return v.NodeImageId }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the number of ENI queues.
-// Example setting: **"[{\"queue\":4}]"**. Changing this parameter will create a new resource.
 func (o NodePoolExtendParamsOutput) NodeMultiQueue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolExtendParams) *string { return v.NodeMultiQueue }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the script to be executed after installation.
-// The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
 func (o NodePoolExtendParamsOutput) Postinstall() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolExtendParams) *string { return v.Postinstall }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the script to be executed before installation.
-// The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
 func (o NodePoolExtendParamsOutput) Preinstall() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolExtendParams) *string { return v.Preinstall }).(pulumi.StringPtrOutput)
 }
@@ -3509,8 +3040,6 @@ func (o NodePoolExtendParamsOutput) SpotPrice() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolExtendParams) *string { return v.SpotPrice }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the reserved node memory, which is reserved
-// value for system components. Changing this parameter will create a new resource.
 func (o NodePoolExtendParamsOutput) SystemReservedMem() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolExtendParams) *int { return v.SystemReservedMem }).(pulumi.IntPtrOutput)
 }
@@ -3539,8 +3068,6 @@ func (o NodePoolExtendParamsPtrOutput) Elem() NodePoolExtendParamsOutput {
 	}).(NodePoolExtendParamsOutput)
 }
 
-// Specifies the agency name.
-// Changing this parameter will create a new resource.
 func (o NodePoolExtendParamsPtrOutput) AgencyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolExtendParams) *string {
 		if v == nil {
@@ -3550,8 +3077,6 @@ func (o NodePoolExtendParamsPtrOutput) AgencyName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the available disk space of a single container on a node,
-// in GB. Changing this parameter will create a new resource.
 func (o NodePoolExtendParamsPtrOutput) DockerBaseSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePoolExtendParams) *int {
 		if v == nil {
@@ -3561,8 +3086,6 @@ func (o NodePoolExtendParamsPtrOutput) DockerBaseSize() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the reserved node memory, which is reserved for
-// Kubernetes-related components. Changing this parameter will create a new resource.
 func (o NodePoolExtendParamsPtrOutput) KubeReservedMem() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePoolExtendParams) *int {
 		if v == nil {
@@ -3581,8 +3104,6 @@ func (o NodePoolExtendParamsPtrOutput) MarketType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the maximum number of instances a node is allowed to create.
-// Changing this parameter will create a new resource.
 func (o NodePoolExtendParamsPtrOutput) MaxPods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePoolExtendParams) *int {
 		if v == nil {
@@ -3592,8 +3113,6 @@ func (o NodePoolExtendParamsPtrOutput) MaxPods() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the ENI pre-binding thresholds.
-// Example setting: **"0.3:0.6"**. Changing this parameter will create a new resource.
 func (o NodePoolExtendParamsPtrOutput) NicThreshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolExtendParams) *string {
 		if v == nil {
@@ -3603,8 +3122,6 @@ func (o NodePoolExtendParamsPtrOutput) NicThreshold() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the image ID to create the node.
-// Changing this parameter will create a new resource.
 func (o NodePoolExtendParamsPtrOutput) NodeImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolExtendParams) *string {
 		if v == nil {
@@ -3614,8 +3131,6 @@ func (o NodePoolExtendParamsPtrOutput) NodeImageId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the number of ENI queues.
-// Example setting: **"[{\"queue\":4}]"**. Changing this parameter will create a new resource.
 func (o NodePoolExtendParamsPtrOutput) NodeMultiQueue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolExtendParams) *string {
 		if v == nil {
@@ -3625,8 +3140,6 @@ func (o NodePoolExtendParamsPtrOutput) NodeMultiQueue() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the script to be executed after installation.
-// The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
 func (o NodePoolExtendParamsPtrOutput) Postinstall() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolExtendParams) *string {
 		if v == nil {
@@ -3636,8 +3149,6 @@ func (o NodePoolExtendParamsPtrOutput) Postinstall() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the script to be executed before installation.
-// The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
 func (o NodePoolExtendParamsPtrOutput) Preinstall() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolExtendParams) *string {
 		if v == nil {
@@ -3665,8 +3176,6 @@ func (o NodePoolExtendParamsPtrOutput) SpotPrice() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the reserved node memory, which is reserved
-// value for system components. Changing this parameter will create a new resource.
 func (o NodePoolExtendParamsPtrOutput) SystemReservedMem() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePoolExtendParams) *int {
 		if v == nil {
@@ -3677,16 +3186,8 @@ func (o NodePoolExtendParamsPtrOutput) SystemReservedMem() pulumi.IntPtrOutput {
 }
 
 type NodePoolExtensionScaleGroup struct {
-	// Specifies the basic information about the extended scaling group.
-	// The object structure is documented below.
 	Metadata *NodePoolExtensionScaleGroupMetadata `pulumi:"metadata"`
-	// Specifies the configurations of the extended scaling group,
-	// which carry different configurations from those of the default scaling group.
-	// The object structure is documented below.
-	//
-	// <a name="metadata"></a>
-	// The `metadata` block supports:
-	Spec *NodePoolExtensionScaleGroupSpec `pulumi:"spec"`
+	Spec     *NodePoolExtensionScaleGroupSpec     `pulumi:"spec"`
 }
 
 // NodePoolExtensionScaleGroupInput is an input type that accepts NodePoolExtensionScaleGroupArgs and NodePoolExtensionScaleGroupOutput values.
@@ -3701,16 +3202,8 @@ type NodePoolExtensionScaleGroupInput interface {
 }
 
 type NodePoolExtensionScaleGroupArgs struct {
-	// Specifies the basic information about the extended scaling group.
-	// The object structure is documented below.
 	Metadata NodePoolExtensionScaleGroupMetadataPtrInput `pulumi:"metadata"`
-	// Specifies the configurations of the extended scaling group,
-	// which carry different configurations from those of the default scaling group.
-	// The object structure is documented below.
-	//
-	// <a name="metadata"></a>
-	// The `metadata` block supports:
-	Spec NodePoolExtensionScaleGroupSpecPtrInput `pulumi:"spec"`
+	Spec     NodePoolExtensionScaleGroupSpecPtrInput     `pulumi:"spec"`
 }
 
 func (NodePoolExtensionScaleGroupArgs) ElementType() reflect.Type {
@@ -3764,18 +3257,10 @@ func (o NodePoolExtensionScaleGroupOutput) ToNodePoolExtensionScaleGroupOutputWi
 	return o
 }
 
-// Specifies the basic information about the extended scaling group.
-// The object structure is documented below.
 func (o NodePoolExtensionScaleGroupOutput) Metadata() NodePoolExtensionScaleGroupMetadataPtrOutput {
 	return o.ApplyT(func(v NodePoolExtensionScaleGroup) *NodePoolExtensionScaleGroupMetadata { return v.Metadata }).(NodePoolExtensionScaleGroupMetadataPtrOutput)
 }
 
-// Specifies the configurations of the extended scaling group,
-// which carry different configurations from those of the default scaling group.
-// The object structure is documented below.
-//
-// <a name="metadata"></a>
-// The `metadata` block supports:
 func (o NodePoolExtensionScaleGroupOutput) Spec() NodePoolExtensionScaleGroupSpecPtrOutput {
 	return o.ApplyT(func(v NodePoolExtensionScaleGroup) *NodePoolExtensionScaleGroupSpec { return v.Spec }).(NodePoolExtensionScaleGroupSpecPtrOutput)
 }
@@ -3801,7 +3286,6 @@ func (o NodePoolExtensionScaleGroupArrayOutput) Index(i pulumi.IntInput) NodePoo
 }
 
 type NodePoolExtensionScaleGroupMetadata struct {
-	// Specifies the node pool name.
 	Name *string `pulumi:"name"`
 }
 
@@ -3817,7 +3301,6 @@ type NodePoolExtensionScaleGroupMetadataInput interface {
 }
 
 type NodePoolExtensionScaleGroupMetadataArgs struct {
-	// Specifies the node pool name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -3898,7 +3381,6 @@ func (o NodePoolExtensionScaleGroupMetadataOutput) ToNodePoolExtensionScaleGroup
 	}).(NodePoolExtensionScaleGroupMetadataPtrOutput)
 }
 
-// Specifies the node pool name.
 func (o NodePoolExtensionScaleGroupMetadataOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolExtensionScaleGroupMetadata) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -3927,7 +3409,6 @@ func (o NodePoolExtensionScaleGroupMetadataPtrOutput) Elem() NodePoolExtensionSc
 	}).(NodePoolExtensionScaleGroupMetadataOutput)
 }
 
-// Specifies the node pool name.
 func (o NodePoolExtensionScaleGroupMetadataPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolExtensionScaleGroupMetadata) *string {
 		if v == nil {
@@ -3938,21 +3419,10 @@ func (o NodePoolExtensionScaleGroupMetadataPtrOutput) Name() pulumi.StringPtrOut
 }
 
 type NodePoolExtensionScaleGroupSpec struct {
-	// Specifies the auto scaling configurations of the extended scaling group.
-	// The object structure is documented below.
-	//
-	// <a name="capacityReservationSpecification"></a>
-	// The `capacityReservationSpecification` block supports:
-	Autoscaling *NodePoolExtensionScaleGroupSpecAutoscaling `pulumi:"autoscaling"`
-	// Specifies the availability zone of a node.
-	// If this parameter is not specified or left blank, the default scaling group configurations take effect.
-	Az *string `pulumi:"az"`
-	// Specifies the capacity reservation
-	// configurations of the extended scaling group.
-	// The object structure is documented below.
+	Autoscaling                      *NodePoolExtensionScaleGroupSpecAutoscaling                      `pulumi:"autoscaling"`
+	Az                               *string                                                          `pulumi:"az"`
 	CapacityReservationSpecification *NodePoolExtensionScaleGroupSpecCapacityReservationSpecification `pulumi:"capacityReservationSpecification"`
-	// Specifies the node flavor.
-	Flavor *string `pulumi:"flavor"`
+	Flavor                           *string                                                          `pulumi:"flavor"`
 }
 
 // NodePoolExtensionScaleGroupSpecInput is an input type that accepts NodePoolExtensionScaleGroupSpecArgs and NodePoolExtensionScaleGroupSpecOutput values.
@@ -3967,21 +3437,10 @@ type NodePoolExtensionScaleGroupSpecInput interface {
 }
 
 type NodePoolExtensionScaleGroupSpecArgs struct {
-	// Specifies the auto scaling configurations of the extended scaling group.
-	// The object structure is documented below.
-	//
-	// <a name="capacityReservationSpecification"></a>
-	// The `capacityReservationSpecification` block supports:
-	Autoscaling NodePoolExtensionScaleGroupSpecAutoscalingPtrInput `pulumi:"autoscaling"`
-	// Specifies the availability zone of a node.
-	// If this parameter is not specified or left blank, the default scaling group configurations take effect.
-	Az pulumi.StringPtrInput `pulumi:"az"`
-	// Specifies the capacity reservation
-	// configurations of the extended scaling group.
-	// The object structure is documented below.
+	Autoscaling                      NodePoolExtensionScaleGroupSpecAutoscalingPtrInput                      `pulumi:"autoscaling"`
+	Az                               pulumi.StringPtrInput                                                   `pulumi:"az"`
 	CapacityReservationSpecification NodePoolExtensionScaleGroupSpecCapacityReservationSpecificationPtrInput `pulumi:"capacityReservationSpecification"`
-	// Specifies the node flavor.
-	Flavor pulumi.StringPtrInput `pulumi:"flavor"`
+	Flavor                           pulumi.StringPtrInput                                                   `pulumi:"flavor"`
 }
 
 func (NodePoolExtensionScaleGroupSpecArgs) ElementType() reflect.Type {
@@ -4061,33 +3520,22 @@ func (o NodePoolExtensionScaleGroupSpecOutput) ToNodePoolExtensionScaleGroupSpec
 	}).(NodePoolExtensionScaleGroupSpecPtrOutput)
 }
 
-// Specifies the auto scaling configurations of the extended scaling group.
-// The object structure is documented below.
-//
-// <a name="capacityReservationSpecification"></a>
-// The `capacityReservationSpecification` block supports:
 func (o NodePoolExtensionScaleGroupSpecOutput) Autoscaling() NodePoolExtensionScaleGroupSpecAutoscalingPtrOutput {
 	return o.ApplyT(func(v NodePoolExtensionScaleGroupSpec) *NodePoolExtensionScaleGroupSpecAutoscaling {
 		return v.Autoscaling
 	}).(NodePoolExtensionScaleGroupSpecAutoscalingPtrOutput)
 }
 
-// Specifies the availability zone of a node.
-// If this parameter is not specified or left blank, the default scaling group configurations take effect.
 func (o NodePoolExtensionScaleGroupSpecOutput) Az() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolExtensionScaleGroupSpec) *string { return v.Az }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the capacity reservation
-// configurations of the extended scaling group.
-// The object structure is documented below.
 func (o NodePoolExtensionScaleGroupSpecOutput) CapacityReservationSpecification() NodePoolExtensionScaleGroupSpecCapacityReservationSpecificationPtrOutput {
 	return o.ApplyT(func(v NodePoolExtensionScaleGroupSpec) *NodePoolExtensionScaleGroupSpecCapacityReservationSpecification {
 		return v.CapacityReservationSpecification
 	}).(NodePoolExtensionScaleGroupSpecCapacityReservationSpecificationPtrOutput)
 }
 
-// Specifies the node flavor.
 func (o NodePoolExtensionScaleGroupSpecOutput) Flavor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolExtensionScaleGroupSpec) *string { return v.Flavor }).(pulumi.StringPtrOutput)
 }
@@ -4116,11 +3564,6 @@ func (o NodePoolExtensionScaleGroupSpecPtrOutput) Elem() NodePoolExtensionScaleG
 	}).(NodePoolExtensionScaleGroupSpecOutput)
 }
 
-// Specifies the auto scaling configurations of the extended scaling group.
-// The object structure is documented below.
-//
-// <a name="capacityReservationSpecification"></a>
-// The `capacityReservationSpecification` block supports:
 func (o NodePoolExtensionScaleGroupSpecPtrOutput) Autoscaling() NodePoolExtensionScaleGroupSpecAutoscalingPtrOutput {
 	return o.ApplyT(func(v *NodePoolExtensionScaleGroupSpec) *NodePoolExtensionScaleGroupSpecAutoscaling {
 		if v == nil {
@@ -4130,8 +3573,6 @@ func (o NodePoolExtensionScaleGroupSpecPtrOutput) Autoscaling() NodePoolExtensio
 	}).(NodePoolExtensionScaleGroupSpecAutoscalingPtrOutput)
 }
 
-// Specifies the availability zone of a node.
-// If this parameter is not specified or left blank, the default scaling group configurations take effect.
 func (o NodePoolExtensionScaleGroupSpecPtrOutput) Az() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolExtensionScaleGroupSpec) *string {
 		if v == nil {
@@ -4141,9 +3582,6 @@ func (o NodePoolExtensionScaleGroupSpecPtrOutput) Az() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the capacity reservation
-// configurations of the extended scaling group.
-// The object structure is documented below.
 func (o NodePoolExtensionScaleGroupSpecPtrOutput) CapacityReservationSpecification() NodePoolExtensionScaleGroupSpecCapacityReservationSpecificationPtrOutput {
 	return o.ApplyT(func(v *NodePoolExtensionScaleGroupSpec) *NodePoolExtensionScaleGroupSpecCapacityReservationSpecification {
 		if v == nil {
@@ -4153,7 +3591,6 @@ func (o NodePoolExtensionScaleGroupSpecPtrOutput) CapacityReservationSpecificati
 	}).(NodePoolExtensionScaleGroupSpecCapacityReservationSpecificationPtrOutput)
 }
 
-// Specifies the node flavor.
 func (o NodePoolExtensionScaleGroupSpecPtrOutput) Flavor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolExtensionScaleGroupSpec) *string {
 		if v == nil {
@@ -4164,15 +3601,10 @@ func (o NodePoolExtensionScaleGroupSpecPtrOutput) Flavor() pulumi.StringPtrOutpu
 }
 
 type NodePoolExtensionScaleGroupSpecAutoscaling struct {
-	// Specifies whether to enable auto scaling for the scaling group, defaults to **false**.
-	Enable *bool `pulumi:"enable"`
-	// Specifies the priority of the scaling group, defaults to **0**.
-	// A higher value indicates a greater priority.
-	ExtensionPriority *int `pulumi:"extensionPriority"`
-	// Specifies the maximum number of nodes allowed if auto scaling is enabled.
-	MaxNodeCount *int `pulumi:"maxNodeCount"`
-	// Specifies the minimum number of nodes allowed if auto scaling is enabled.
-	MinNodeCount *int `pulumi:"minNodeCount"`
+	Enable            *bool `pulumi:"enable"`
+	ExtensionPriority *int  `pulumi:"extensionPriority"`
+	MaxNodeCount      *int  `pulumi:"maxNodeCount"`
+	MinNodeCount      *int  `pulumi:"minNodeCount"`
 }
 
 // NodePoolExtensionScaleGroupSpecAutoscalingInput is an input type that accepts NodePoolExtensionScaleGroupSpecAutoscalingArgs and NodePoolExtensionScaleGroupSpecAutoscalingOutput values.
@@ -4187,15 +3619,10 @@ type NodePoolExtensionScaleGroupSpecAutoscalingInput interface {
 }
 
 type NodePoolExtensionScaleGroupSpecAutoscalingArgs struct {
-	// Specifies whether to enable auto scaling for the scaling group, defaults to **false**.
-	Enable pulumi.BoolPtrInput `pulumi:"enable"`
-	// Specifies the priority of the scaling group, defaults to **0**.
-	// A higher value indicates a greater priority.
-	ExtensionPriority pulumi.IntPtrInput `pulumi:"extensionPriority"`
-	// Specifies the maximum number of nodes allowed if auto scaling is enabled.
-	MaxNodeCount pulumi.IntPtrInput `pulumi:"maxNodeCount"`
-	// Specifies the minimum number of nodes allowed if auto scaling is enabled.
-	MinNodeCount pulumi.IntPtrInput `pulumi:"minNodeCount"`
+	Enable            pulumi.BoolPtrInput `pulumi:"enable"`
+	ExtensionPriority pulumi.IntPtrInput  `pulumi:"extensionPriority"`
+	MaxNodeCount      pulumi.IntPtrInput  `pulumi:"maxNodeCount"`
+	MinNodeCount      pulumi.IntPtrInput  `pulumi:"minNodeCount"`
 }
 
 func (NodePoolExtensionScaleGroupSpecAutoscalingArgs) ElementType() reflect.Type {
@@ -4275,23 +3702,18 @@ func (o NodePoolExtensionScaleGroupSpecAutoscalingOutput) ToNodePoolExtensionSca
 	}).(NodePoolExtensionScaleGroupSpecAutoscalingPtrOutput)
 }
 
-// Specifies whether to enable auto scaling for the scaling group, defaults to **false**.
 func (o NodePoolExtensionScaleGroupSpecAutoscalingOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolExtensionScaleGroupSpecAutoscaling) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the priority of the scaling group, defaults to **0**.
-// A higher value indicates a greater priority.
 func (o NodePoolExtensionScaleGroupSpecAutoscalingOutput) ExtensionPriority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolExtensionScaleGroupSpecAutoscaling) *int { return v.ExtensionPriority }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the maximum number of nodes allowed if auto scaling is enabled.
 func (o NodePoolExtensionScaleGroupSpecAutoscalingOutput) MaxNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolExtensionScaleGroupSpecAutoscaling) *int { return v.MaxNodeCount }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the minimum number of nodes allowed if auto scaling is enabled.
 func (o NodePoolExtensionScaleGroupSpecAutoscalingOutput) MinNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolExtensionScaleGroupSpecAutoscaling) *int { return v.MinNodeCount }).(pulumi.IntPtrOutput)
 }
@@ -4320,7 +3742,6 @@ func (o NodePoolExtensionScaleGroupSpecAutoscalingPtrOutput) Elem() NodePoolExte
 	}).(NodePoolExtensionScaleGroupSpecAutoscalingOutput)
 }
 
-// Specifies whether to enable auto scaling for the scaling group, defaults to **false**.
 func (o NodePoolExtensionScaleGroupSpecAutoscalingPtrOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePoolExtensionScaleGroupSpecAutoscaling) *bool {
 		if v == nil {
@@ -4330,8 +3751,6 @@ func (o NodePoolExtensionScaleGroupSpecAutoscalingPtrOutput) Enable() pulumi.Boo
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the priority of the scaling group, defaults to **0**.
-// A higher value indicates a greater priority.
 func (o NodePoolExtensionScaleGroupSpecAutoscalingPtrOutput) ExtensionPriority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePoolExtensionScaleGroupSpecAutoscaling) *int {
 		if v == nil {
@@ -4341,7 +3760,6 @@ func (o NodePoolExtensionScaleGroupSpecAutoscalingPtrOutput) ExtensionPriority()
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the maximum number of nodes allowed if auto scaling is enabled.
 func (o NodePoolExtensionScaleGroupSpecAutoscalingPtrOutput) MaxNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePoolExtensionScaleGroupSpecAutoscaling) *int {
 		if v == nil {
@@ -4351,7 +3769,6 @@ func (o NodePoolExtensionScaleGroupSpecAutoscalingPtrOutput) MaxNodeCount() pulu
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the minimum number of nodes allowed if auto scaling is enabled.
 func (o NodePoolExtensionScaleGroupSpecAutoscalingPtrOutput) MinNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePoolExtensionScaleGroupSpecAutoscaling) *int {
 		if v == nil {
@@ -4362,14 +3779,7 @@ func (o NodePoolExtensionScaleGroupSpecAutoscalingPtrOutput) MinNodeCount() pulu
 }
 
 type NodePoolExtensionScaleGroupSpecCapacityReservationSpecification struct {
-	// The resource ID in UUID format.
-	Id *string `pulumi:"id"`
-	// Specifies the capacity of a private storage pool. If the value is none,
-	// the capacity reservation is not specified. If the value is targeted, the capacity reservation is specified.
-	// In this case, the `id` cannot be left blank.
-	//
-	// <a name="autoscaling"></a>
-	// The `autoscaling` block supports:
+	Id         *string `pulumi:"id"`
 	Preference *string `pulumi:"preference"`
 }
 
@@ -4385,14 +3795,7 @@ type NodePoolExtensionScaleGroupSpecCapacityReservationSpecificationInput interf
 }
 
 type NodePoolExtensionScaleGroupSpecCapacityReservationSpecificationArgs struct {
-	// The resource ID in UUID format.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Specifies the capacity of a private storage pool. If the value is none,
-	// the capacity reservation is not specified. If the value is targeted, the capacity reservation is specified.
-	// In this case, the `id` cannot be left blank.
-	//
-	// <a name="autoscaling"></a>
-	// The `autoscaling` block supports:
+	Id         pulumi.StringPtrInput `pulumi:"id"`
 	Preference pulumi.StringPtrInput `pulumi:"preference"`
 }
 
@@ -4473,17 +3876,10 @@ func (o NodePoolExtensionScaleGroupSpecCapacityReservationSpecificationOutput) T
 	}).(NodePoolExtensionScaleGroupSpecCapacityReservationSpecificationPtrOutput)
 }
 
-// The resource ID in UUID format.
 func (o NodePoolExtensionScaleGroupSpecCapacityReservationSpecificationOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolExtensionScaleGroupSpecCapacityReservationSpecification) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the capacity of a private storage pool. If the value is none,
-// the capacity reservation is not specified. If the value is targeted, the capacity reservation is specified.
-// In this case, the `id` cannot be left blank.
-//
-// <a name="autoscaling"></a>
-// The `autoscaling` block supports:
 func (o NodePoolExtensionScaleGroupSpecCapacityReservationSpecificationOutput) Preference() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolExtensionScaleGroupSpecCapacityReservationSpecification) *string { return v.Preference }).(pulumi.StringPtrOutput)
 }
@@ -4512,7 +3908,6 @@ func (o NodePoolExtensionScaleGroupSpecCapacityReservationSpecificationPtrOutput
 	}).(NodePoolExtensionScaleGroupSpecCapacityReservationSpecificationOutput)
 }
 
-// The resource ID in UUID format.
 func (o NodePoolExtensionScaleGroupSpecCapacityReservationSpecificationPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolExtensionScaleGroupSpecCapacityReservationSpecification) *string {
 		if v == nil {
@@ -4522,12 +3917,6 @@ func (o NodePoolExtensionScaleGroupSpecCapacityReservationSpecificationPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the capacity of a private storage pool. If the value is none,
-// the capacity reservation is not specified. If the value is targeted, the capacity reservation is specified.
-// In this case, the `id` cannot be left blank.
-//
-// <a name="autoscaling"></a>
-// The `autoscaling` block supports:
 func (o NodePoolExtensionScaleGroupSpecCapacityReservationSpecificationPtrOutput) Preference() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolExtensionScaleGroupSpecCapacityReservationSpecification) *string {
 		if v == nil {
@@ -4538,7 +3927,6 @@ func (o NodePoolExtensionScaleGroupSpecCapacityReservationSpecificationPtrOutput
 }
 
 type NodePoolHostnameConfig struct {
-	// Specifies the node pool type. Possible values are: **vm** and **ElasticBMS**.
 	Type string `pulumi:"type"`
 }
 
@@ -4554,7 +3942,6 @@ type NodePoolHostnameConfigInput interface {
 }
 
 type NodePoolHostnameConfigArgs struct {
-	// Specifies the node pool type. Possible values are: **vm** and **ElasticBMS**.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -4635,7 +4022,6 @@ func (o NodePoolHostnameConfigOutput) ToNodePoolHostnameConfigPtrOutputWithConte
 	}).(NodePoolHostnameConfigPtrOutput)
 }
 
-// Specifies the node pool type. Possible values are: **vm** and **ElasticBMS**.
 func (o NodePoolHostnameConfigOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v NodePoolHostnameConfig) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -4664,7 +4050,6 @@ func (o NodePoolHostnameConfigPtrOutput) Elem() NodePoolHostnameConfigOutput {
 	}).(NodePoolHostnameConfigOutput)
 }
 
-// Specifies the node pool type. Possible values are: **vm** and **ElasticBMS**.
 func (o NodePoolHostnameConfigPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolHostnameConfig) *string {
 		if v == nil {
@@ -4675,29 +4060,17 @@ func (o NodePoolHostnameConfigPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type NodePoolRootVolume struct {
-	// Specifies the DSS pool ID. This field is used only for dedicated storage.
-	// Changing this parameter will create a new resource.
 	DssPoolId *string `pulumi:"dssPoolId"`
 	// Deprecated: use extendParams instead
-	ExtendParam *string `pulumi:"extendParam"`
-	// Specifies the disk expansion parameters.
-	// Changing this parameter will create a new resource.
+	ExtendParam  *string           `pulumi:"extendParam"`
 	ExtendParams map[string]string `pulumi:"extendParams"`
 	// schema: Internal
-	HwPassthrough *bool `pulumi:"hwPassthrough"`
-	// Specifies the iops of the disk,
-	// required when `volumetype` is **GPSSD2** or **ESSD2**.
-	Iops *int `pulumi:"iops"`
-	// Specifies the KMS key ID. This is used to encrypt the volume.
-	// Changing this parameter will create a new resource.
-	KmsKeyId *string `pulumi:"kmsKeyId"`
-	// Specifies the disk size in GB. Changing this parameter will create a new resource.
-	Size int `pulumi:"size"`
-	// Specifies the throughput of the disk in MiB/s,
-	// required when `volumetype` is **GPSSD2**.
-	Throughput *int `pulumi:"throughput"`
-	// Specifies the disk type. Changing this parameter will create a new resource.
-	Volumetype string `pulumi:"volumetype"`
+	HwPassthrough *bool   `pulumi:"hwPassthrough"`
+	Iops          *int    `pulumi:"iops"`
+	KmsKeyId      *string `pulumi:"kmsKeyId"`
+	Size          int     `pulumi:"size"`
+	Throughput    *int    `pulumi:"throughput"`
+	Volumetype    string  `pulumi:"volumetype"`
 }
 
 // NodePoolRootVolumeInput is an input type that accepts NodePoolRootVolumeArgs and NodePoolRootVolumeOutput values.
@@ -4712,29 +4085,17 @@ type NodePoolRootVolumeInput interface {
 }
 
 type NodePoolRootVolumeArgs struct {
-	// Specifies the DSS pool ID. This field is used only for dedicated storage.
-	// Changing this parameter will create a new resource.
 	DssPoolId pulumi.StringPtrInput `pulumi:"dssPoolId"`
 	// Deprecated: use extendParams instead
-	ExtendParam pulumi.StringPtrInput `pulumi:"extendParam"`
-	// Specifies the disk expansion parameters.
-	// Changing this parameter will create a new resource.
+	ExtendParam  pulumi.StringPtrInput `pulumi:"extendParam"`
 	ExtendParams pulumi.StringMapInput `pulumi:"extendParams"`
 	// schema: Internal
-	HwPassthrough pulumi.BoolPtrInput `pulumi:"hwPassthrough"`
-	// Specifies the iops of the disk,
-	// required when `volumetype` is **GPSSD2** or **ESSD2**.
-	Iops pulumi.IntPtrInput `pulumi:"iops"`
-	// Specifies the KMS key ID. This is used to encrypt the volume.
-	// Changing this parameter will create a new resource.
-	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
-	// Specifies the disk size in GB. Changing this parameter will create a new resource.
-	Size pulumi.IntInput `pulumi:"size"`
-	// Specifies the throughput of the disk in MiB/s,
-	// required when `volumetype` is **GPSSD2**.
-	Throughput pulumi.IntPtrInput `pulumi:"throughput"`
-	// Specifies the disk type. Changing this parameter will create a new resource.
-	Volumetype pulumi.StringInput `pulumi:"volumetype"`
+	HwPassthrough pulumi.BoolPtrInput   `pulumi:"hwPassthrough"`
+	Iops          pulumi.IntPtrInput    `pulumi:"iops"`
+	KmsKeyId      pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	Size          pulumi.IntInput       `pulumi:"size"`
+	Throughput    pulumi.IntPtrInput    `pulumi:"throughput"`
+	Volumetype    pulumi.StringInput    `pulumi:"volumetype"`
 }
 
 func (NodePoolRootVolumeArgs) ElementType() reflect.Type {
@@ -4814,8 +4175,6 @@ func (o NodePoolRootVolumeOutput) ToNodePoolRootVolumePtrOutputWithContext(ctx c
 	}).(NodePoolRootVolumePtrOutput)
 }
 
-// Specifies the DSS pool ID. This field is used only for dedicated storage.
-// Changing this parameter will create a new resource.
 func (o NodePoolRootVolumeOutput) DssPoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolRootVolume) *string { return v.DssPoolId }).(pulumi.StringPtrOutput)
 }
@@ -4825,8 +4184,6 @@ func (o NodePoolRootVolumeOutput) ExtendParam() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolRootVolume) *string { return v.ExtendParam }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the disk expansion parameters.
-// Changing this parameter will create a new resource.
 func (o NodePoolRootVolumeOutput) ExtendParams() pulumi.StringMapOutput {
 	return o.ApplyT(func(v NodePoolRootVolume) map[string]string { return v.ExtendParams }).(pulumi.StringMapOutput)
 }
@@ -4836,30 +4193,22 @@ func (o NodePoolRootVolumeOutput) HwPassthrough() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolRootVolume) *bool { return v.HwPassthrough }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the iops of the disk,
-// required when `volumetype` is **GPSSD2** or **ESSD2**.
 func (o NodePoolRootVolumeOutput) Iops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolRootVolume) *int { return v.Iops }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the KMS key ID. This is used to encrypt the volume.
-// Changing this parameter will create a new resource.
 func (o NodePoolRootVolumeOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolRootVolume) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the disk size in GB. Changing this parameter will create a new resource.
 func (o NodePoolRootVolumeOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v NodePoolRootVolume) int { return v.Size }).(pulumi.IntOutput)
 }
 
-// Specifies the throughput of the disk in MiB/s,
-// required when `volumetype` is **GPSSD2**.
 func (o NodePoolRootVolumeOutput) Throughput() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolRootVolume) *int { return v.Throughput }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the disk type. Changing this parameter will create a new resource.
 func (o NodePoolRootVolumeOutput) Volumetype() pulumi.StringOutput {
 	return o.ApplyT(func(v NodePoolRootVolume) string { return v.Volumetype }).(pulumi.StringOutput)
 }
@@ -4888,8 +4237,6 @@ func (o NodePoolRootVolumePtrOutput) Elem() NodePoolRootVolumeOutput {
 	}).(NodePoolRootVolumeOutput)
 }
 
-// Specifies the DSS pool ID. This field is used only for dedicated storage.
-// Changing this parameter will create a new resource.
 func (o NodePoolRootVolumePtrOutput) DssPoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolRootVolume) *string {
 		if v == nil {
@@ -4909,8 +4256,6 @@ func (o NodePoolRootVolumePtrOutput) ExtendParam() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the disk expansion parameters.
-// Changing this parameter will create a new resource.
 func (o NodePoolRootVolumePtrOutput) ExtendParams() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *NodePoolRootVolume) map[string]string {
 		if v == nil {
@@ -4930,8 +4275,6 @@ func (o NodePoolRootVolumePtrOutput) HwPassthrough() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the iops of the disk,
-// required when `volumetype` is **GPSSD2** or **ESSD2**.
 func (o NodePoolRootVolumePtrOutput) Iops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePoolRootVolume) *int {
 		if v == nil {
@@ -4941,8 +4284,6 @@ func (o NodePoolRootVolumePtrOutput) Iops() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the KMS key ID. This is used to encrypt the volume.
-// Changing this parameter will create a new resource.
 func (o NodePoolRootVolumePtrOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolRootVolume) *string {
 		if v == nil {
@@ -4952,7 +4293,6 @@ func (o NodePoolRootVolumePtrOutput) KmsKeyId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the disk size in GB. Changing this parameter will create a new resource.
 func (o NodePoolRootVolumePtrOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePoolRootVolume) *int {
 		if v == nil {
@@ -4962,8 +4302,6 @@ func (o NodePoolRootVolumePtrOutput) Size() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the throughput of the disk in MiB/s,
-// required when `volumetype` is **GPSSD2**.
 func (o NodePoolRootVolumePtrOutput) Throughput() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePoolRootVolume) *int {
 		if v == nil {
@@ -4973,7 +4311,6 @@ func (o NodePoolRootVolumePtrOutput) Throughput() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the disk type. Changing this parameter will create a new resource.
 func (o NodePoolRootVolumePtrOutput) Volumetype() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolRootVolume) *string {
 		if v == nil {
@@ -4984,13 +4321,7 @@ func (o NodePoolRootVolumePtrOutput) Volumetype() pulumi.StringPtrOutput {
 }
 
 type NodePoolStorage struct {
-	// Specifies the storage group consists of multiple storage devices.
-	// This is used to divide storage space. Structure is documented below.
-	// Changing this parameter will create a new resource.
-	Groups []NodePoolStorageGroup `pulumi:"groups"`
-	// Specifies the disk selection.
-	// Matched disks are managed according to match labels and storage type. Structure is documented below.
-	// Changing this parameter will create a new resource.
+	Groups    []NodePoolStorageGroup    `pulumi:"groups"`
 	Selectors []NodePoolStorageSelector `pulumi:"selectors"`
 }
 
@@ -5006,13 +4337,7 @@ type NodePoolStorageInput interface {
 }
 
 type NodePoolStorageArgs struct {
-	// Specifies the storage group consists of multiple storage devices.
-	// This is used to divide storage space. Structure is documented below.
-	// Changing this parameter will create a new resource.
-	Groups NodePoolStorageGroupArrayInput `pulumi:"groups"`
-	// Specifies the disk selection.
-	// Matched disks are managed according to match labels and storage type. Structure is documented below.
-	// Changing this parameter will create a new resource.
+	Groups    NodePoolStorageGroupArrayInput    `pulumi:"groups"`
 	Selectors NodePoolStorageSelectorArrayInput `pulumi:"selectors"`
 }
 
@@ -5093,16 +4418,10 @@ func (o NodePoolStorageOutput) ToNodePoolStoragePtrOutputWithContext(ctx context
 	}).(NodePoolStoragePtrOutput)
 }
 
-// Specifies the storage group consists of multiple storage devices.
-// This is used to divide storage space. Structure is documented below.
-// Changing this parameter will create a new resource.
 func (o NodePoolStorageOutput) Groups() NodePoolStorageGroupArrayOutput {
 	return o.ApplyT(func(v NodePoolStorage) []NodePoolStorageGroup { return v.Groups }).(NodePoolStorageGroupArrayOutput)
 }
 
-// Specifies the disk selection.
-// Matched disks are managed according to match labels and storage type. Structure is documented below.
-// Changing this parameter will create a new resource.
 func (o NodePoolStorageOutput) Selectors() NodePoolStorageSelectorArrayOutput {
 	return o.ApplyT(func(v NodePoolStorage) []NodePoolStorageSelector { return v.Selectors }).(NodePoolStorageSelectorArrayOutput)
 }
@@ -5131,9 +4450,6 @@ func (o NodePoolStoragePtrOutput) Elem() NodePoolStorageOutput {
 	}).(NodePoolStorageOutput)
 }
 
-// Specifies the storage group consists of multiple storage devices.
-// This is used to divide storage space. Structure is documented below.
-// Changing this parameter will create a new resource.
 func (o NodePoolStoragePtrOutput) Groups() NodePoolStorageGroupArrayOutput {
 	return o.ApplyT(func(v *NodePoolStorage) []NodePoolStorageGroup {
 		if v == nil {
@@ -5143,9 +4459,6 @@ func (o NodePoolStoragePtrOutput) Groups() NodePoolStorageGroupArrayOutput {
 	}).(NodePoolStorageGroupArrayOutput)
 }
 
-// Specifies the disk selection.
-// Matched disks are managed according to match labels and storage type. Structure is documented below.
-// Changing this parameter will create a new resource.
 func (o NodePoolStoragePtrOutput) Selectors() NodePoolStorageSelectorArrayOutput {
 	return o.ApplyT(func(v *NodePoolStorage) []NodePoolStorageSelector {
 		if v == nil {
@@ -5156,23 +4469,9 @@ func (o NodePoolStoragePtrOutput) Selectors() NodePoolStorageSelectorArrayOutput
 }
 
 type NodePoolStorageGroup struct {
-	// Specifies the whether the storage space is for **kubernetes** and
-	// **runtime** components. Only one group can be set to true. The default value is **false**.
-	// Changing this parameter will create a new resource.
-	CceManaged *bool `pulumi:"cceManaged"`
-	// Specifies the name of an extended scaling group.
-	// The value cannot be default and can contain a maximum of 55 characters.
-	// Only digits, lowercase letters, and hyphens (-) are allowed.
-	//
-	// <a name="spec"></a>
-	// The `spec` block supports:
-	Name string `pulumi:"name"`
-	// Specifies the list of names of selectors to match.
-	// This parameter corresponds to name in `selectors`. A group can match multiple selectors,
-	// but a selector can match only one group. Changing this parameter will create a new resource.
-	SelectorNames []string `pulumi:"selectorNames"`
-	// Specifies the detailed management of space configuration in a group.
-	// Changing this parameter will create a new resource.
+	CceManaged    *bool                              `pulumi:"cceManaged"`
+	Name          string                             `pulumi:"name"`
+	SelectorNames []string                           `pulumi:"selectorNames"`
 	VirtualSpaces []NodePoolStorageGroupVirtualSpace `pulumi:"virtualSpaces"`
 }
 
@@ -5188,23 +4487,9 @@ type NodePoolStorageGroupInput interface {
 }
 
 type NodePoolStorageGroupArgs struct {
-	// Specifies the whether the storage space is for **kubernetes** and
-	// **runtime** components. Only one group can be set to true. The default value is **false**.
-	// Changing this parameter will create a new resource.
-	CceManaged pulumi.BoolPtrInput `pulumi:"cceManaged"`
-	// Specifies the name of an extended scaling group.
-	// The value cannot be default and can contain a maximum of 55 characters.
-	// Only digits, lowercase letters, and hyphens (-) are allowed.
-	//
-	// <a name="spec"></a>
-	// The `spec` block supports:
-	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies the list of names of selectors to match.
-	// This parameter corresponds to name in `selectors`. A group can match multiple selectors,
-	// but a selector can match only one group. Changing this parameter will create a new resource.
-	SelectorNames pulumi.StringArrayInput `pulumi:"selectorNames"`
-	// Specifies the detailed management of space configuration in a group.
-	// Changing this parameter will create a new resource.
+	CceManaged    pulumi.BoolPtrInput                        `pulumi:"cceManaged"`
+	Name          pulumi.StringInput                         `pulumi:"name"`
+	SelectorNames pulumi.StringArrayInput                    `pulumi:"selectorNames"`
 	VirtualSpaces NodePoolStorageGroupVirtualSpaceArrayInput `pulumi:"virtualSpaces"`
 }
 
@@ -5259,32 +4544,18 @@ func (o NodePoolStorageGroupOutput) ToNodePoolStorageGroupOutputWithContext(ctx 
 	return o
 }
 
-// Specifies the whether the storage space is for **kubernetes** and
-// **runtime** components. Only one group can be set to true. The default value is **false**.
-// Changing this parameter will create a new resource.
 func (o NodePoolStorageGroupOutput) CceManaged() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolStorageGroup) *bool { return v.CceManaged }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the name of an extended scaling group.
-// The value cannot be default and can contain a maximum of 55 characters.
-// Only digits, lowercase letters, and hyphens (-) are allowed.
-//
-// <a name="spec"></a>
-// The `spec` block supports:
 func (o NodePoolStorageGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v NodePoolStorageGroup) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the list of names of selectors to match.
-// This parameter corresponds to name in `selectors`. A group can match multiple selectors,
-// but a selector can match only one group. Changing this parameter will create a new resource.
 func (o NodePoolStorageGroupOutput) SelectorNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NodePoolStorageGroup) []string { return v.SelectorNames }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the detailed management of space configuration in a group.
-// Changing this parameter will create a new resource.
 func (o NodePoolStorageGroupOutput) VirtualSpaces() NodePoolStorageGroupVirtualSpaceArrayOutput {
 	return o.ApplyT(func(v NodePoolStorageGroup) []NodePoolStorageGroupVirtualSpace { return v.VirtualSpaces }).(NodePoolStorageGroupVirtualSpaceArrayOutput)
 }
@@ -5310,26 +4581,11 @@ func (o NodePoolStorageGroupArrayOutput) Index(i pulumi.IntInput) NodePoolStorag
 }
 
 type NodePoolStorageGroupVirtualSpace struct {
-	// Specifies the LVM write mode, values can be **linear** and **striped**.
-	// This parameter takes effect only in **kubernetes** and **user** configuration. Changing this parameter will create
-	// a new resource.
-	LvmLvType *string `pulumi:"lvmLvType"`
-	// Specifies the absolute path to which the disk is attached.
-	// This parameter takes effect only in **user** configuration. Changing this parameter will create a new resource.
-	LvmPath *string `pulumi:"lvmPath"`
-	// Specifies the virtual space name. Currently, only **kubernetes**, **runtime**,
-	// and **user** are supported. Changing this parameter will create a new resource.
-	Name string `pulumi:"name"`
-	// Specifies the LVM write mode, values can be **linear** and **striped**.
-	// This parameter takes effect only in **runtime** configuration. Changing this parameter will create a new resource.
-	//
-	// <a name="hostnameConfig"></a>
-	// The `hostnameConfig` block supports:
+	LvmLvType     *string `pulumi:"lvmLvType"`
+	LvmPath       *string `pulumi:"lvmPath"`
+	Name          string  `pulumi:"name"`
 	RuntimeLvType *string `pulumi:"runtimeLvType"`
-	// Specifies the size of a virtual space. Only an integer percentage is supported.
-	// Example: 90%. Note that the total percentage of all virtual spaces in a group cannot exceed 100%.
-	// Changing this parameter will create a new resource.
-	Size string `pulumi:"size"`
+	Size          string  `pulumi:"size"`
 }
 
 // NodePoolStorageGroupVirtualSpaceInput is an input type that accepts NodePoolStorageGroupVirtualSpaceArgs and NodePoolStorageGroupVirtualSpaceOutput values.
@@ -5344,26 +4600,11 @@ type NodePoolStorageGroupVirtualSpaceInput interface {
 }
 
 type NodePoolStorageGroupVirtualSpaceArgs struct {
-	// Specifies the LVM write mode, values can be **linear** and **striped**.
-	// This parameter takes effect only in **kubernetes** and **user** configuration. Changing this parameter will create
-	// a new resource.
-	LvmLvType pulumi.StringPtrInput `pulumi:"lvmLvType"`
-	// Specifies the absolute path to which the disk is attached.
-	// This parameter takes effect only in **user** configuration. Changing this parameter will create a new resource.
-	LvmPath pulumi.StringPtrInput `pulumi:"lvmPath"`
-	// Specifies the virtual space name. Currently, only **kubernetes**, **runtime**,
-	// and **user** are supported. Changing this parameter will create a new resource.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies the LVM write mode, values can be **linear** and **striped**.
-	// This parameter takes effect only in **runtime** configuration. Changing this parameter will create a new resource.
-	//
-	// <a name="hostnameConfig"></a>
-	// The `hostnameConfig` block supports:
+	LvmLvType     pulumi.StringPtrInput `pulumi:"lvmLvType"`
+	LvmPath       pulumi.StringPtrInput `pulumi:"lvmPath"`
+	Name          pulumi.StringInput    `pulumi:"name"`
 	RuntimeLvType pulumi.StringPtrInput `pulumi:"runtimeLvType"`
-	// Specifies the size of a virtual space. Only an integer percentage is supported.
-	// Example: 90%. Note that the total percentage of all virtual spaces in a group cannot exceed 100%.
-	// Changing this parameter will create a new resource.
-	Size pulumi.StringInput `pulumi:"size"`
+	Size          pulumi.StringInput    `pulumi:"size"`
 }
 
 func (NodePoolStorageGroupVirtualSpaceArgs) ElementType() reflect.Type {
@@ -5417,37 +4658,22 @@ func (o NodePoolStorageGroupVirtualSpaceOutput) ToNodePoolStorageGroupVirtualSpa
 	return o
 }
 
-// Specifies the LVM write mode, values can be **linear** and **striped**.
-// This parameter takes effect only in **kubernetes** and **user** configuration. Changing this parameter will create
-// a new resource.
 func (o NodePoolStorageGroupVirtualSpaceOutput) LvmLvType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolStorageGroupVirtualSpace) *string { return v.LvmLvType }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the absolute path to which the disk is attached.
-// This parameter takes effect only in **user** configuration. Changing this parameter will create a new resource.
 func (o NodePoolStorageGroupVirtualSpaceOutput) LvmPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolStorageGroupVirtualSpace) *string { return v.LvmPath }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the virtual space name. Currently, only **kubernetes**, **runtime**,
-// and **user** are supported. Changing this parameter will create a new resource.
 func (o NodePoolStorageGroupVirtualSpaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v NodePoolStorageGroupVirtualSpace) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the LVM write mode, values can be **linear** and **striped**.
-// This parameter takes effect only in **runtime** configuration. Changing this parameter will create a new resource.
-//
-// <a name="hostnameConfig"></a>
-// The `hostnameConfig` block supports:
 func (o NodePoolStorageGroupVirtualSpaceOutput) RuntimeLvType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolStorageGroupVirtualSpace) *string { return v.RuntimeLvType }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the size of a virtual space. Only an integer percentage is supported.
-// Example: 90%. Note that the total percentage of all virtual spaces in a group cannot exceed 100%.
-// Changing this parameter will create a new resource.
 func (o NodePoolStorageGroupVirtualSpaceOutput) Size() pulumi.StringOutput {
 	return o.ApplyT(func(v NodePoolStorageGroupVirtualSpace) string { return v.Size }).(pulumi.StringOutput)
 }
@@ -5473,29 +4699,13 @@ func (o NodePoolStorageGroupVirtualSpaceArrayOutput) Index(i pulumi.IntInput) No
 }
 
 type NodePoolStorageSelector struct {
-	// Specifies the number of disks to be selected. If omitted,
-	// all disks of this type are selected. Changing this parameter will create a new resource.
-	MatchLabelCount *string `pulumi:"matchLabelCount"`
-	// Specifies the customer master key ID of an encrypted
-	// disk. Changing this parameter will create a new resource.
-	MatchLabelMetadataCmkid *string `pulumi:"matchLabelMetadataCmkid"`
-	// Specifies the disk encryption identifier.
-	// Values can be: **0** indicates that the disk is not encrypted and **1** indicates that the disk is encrypted.
-	// If omitted, whether the disk is encrypted is not limited. Changing this parameter will create a new resource.
+	MatchLabelCount             *string `pulumi:"matchLabelCount"`
+	MatchLabelMetadataCmkid     *string `pulumi:"matchLabelMetadataCmkid"`
 	MatchLabelMetadataEncrypted *string `pulumi:"matchLabelMetadataEncrypted"`
-	// Specifies the matched disk size. If omitted,
-	// the disk size is not limited. Example: 100. Changing this parameter will create a new resource.
-	MatchLabelSize *string `pulumi:"matchLabelSize"`
-	// Specifies the EVS disk type. Currently,
-	// **SSD**, **GPSSD**, and **SAS** are supported. If omitted, the disk type is not limited.
-	// Changing this parameter will create a new resource.
-	MatchLabelVolumeType *string `pulumi:"matchLabelVolumeType"`
-	// Specifies the selector name, used as the index of `selectorNames` in storage group.
-	// The name of each selector must be unique. Changing this parameter will create a new resource.
-	Name string `pulumi:"name"`
-	// Specifies the storage type. Currently, only **evs (EVS volumes)** is supported.
-	// The default value is **evs**. Changing this parameter will create a new resource.
-	Type *string `pulumi:"type"`
+	MatchLabelSize              *string `pulumi:"matchLabelSize"`
+	MatchLabelVolumeType        *string `pulumi:"matchLabelVolumeType"`
+	Name                        string  `pulumi:"name"`
+	Type                        *string `pulumi:"type"`
 }
 
 // NodePoolStorageSelectorInput is an input type that accepts NodePoolStorageSelectorArgs and NodePoolStorageSelectorOutput values.
@@ -5510,29 +4720,13 @@ type NodePoolStorageSelectorInput interface {
 }
 
 type NodePoolStorageSelectorArgs struct {
-	// Specifies the number of disks to be selected. If omitted,
-	// all disks of this type are selected. Changing this parameter will create a new resource.
-	MatchLabelCount pulumi.StringPtrInput `pulumi:"matchLabelCount"`
-	// Specifies the customer master key ID of an encrypted
-	// disk. Changing this parameter will create a new resource.
-	MatchLabelMetadataCmkid pulumi.StringPtrInput `pulumi:"matchLabelMetadataCmkid"`
-	// Specifies the disk encryption identifier.
-	// Values can be: **0** indicates that the disk is not encrypted and **1** indicates that the disk is encrypted.
-	// If omitted, whether the disk is encrypted is not limited. Changing this parameter will create a new resource.
+	MatchLabelCount             pulumi.StringPtrInput `pulumi:"matchLabelCount"`
+	MatchLabelMetadataCmkid     pulumi.StringPtrInput `pulumi:"matchLabelMetadataCmkid"`
 	MatchLabelMetadataEncrypted pulumi.StringPtrInput `pulumi:"matchLabelMetadataEncrypted"`
-	// Specifies the matched disk size. If omitted,
-	// the disk size is not limited. Example: 100. Changing this parameter will create a new resource.
-	MatchLabelSize pulumi.StringPtrInput `pulumi:"matchLabelSize"`
-	// Specifies the EVS disk type. Currently,
-	// **SSD**, **GPSSD**, and **SAS** are supported. If omitted, the disk type is not limited.
-	// Changing this parameter will create a new resource.
-	MatchLabelVolumeType pulumi.StringPtrInput `pulumi:"matchLabelVolumeType"`
-	// Specifies the selector name, used as the index of `selectorNames` in storage group.
-	// The name of each selector must be unique. Changing this parameter will create a new resource.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies the storage type. Currently, only **evs (EVS volumes)** is supported.
-	// The default value is **evs**. Changing this parameter will create a new resource.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	MatchLabelSize              pulumi.StringPtrInput `pulumi:"matchLabelSize"`
+	MatchLabelVolumeType        pulumi.StringPtrInput `pulumi:"matchLabelVolumeType"`
+	Name                        pulumi.StringInput    `pulumi:"name"`
+	Type                        pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (NodePoolStorageSelectorArgs) ElementType() reflect.Type {
@@ -5586,46 +4780,30 @@ func (o NodePoolStorageSelectorOutput) ToNodePoolStorageSelectorOutputWithContex
 	return o
 }
 
-// Specifies the number of disks to be selected. If omitted,
-// all disks of this type are selected. Changing this parameter will create a new resource.
 func (o NodePoolStorageSelectorOutput) MatchLabelCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolStorageSelector) *string { return v.MatchLabelCount }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the customer master key ID of an encrypted
-// disk. Changing this parameter will create a new resource.
 func (o NodePoolStorageSelectorOutput) MatchLabelMetadataCmkid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolStorageSelector) *string { return v.MatchLabelMetadataCmkid }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the disk encryption identifier.
-// Values can be: **0** indicates that the disk is not encrypted and **1** indicates that the disk is encrypted.
-// If omitted, whether the disk is encrypted is not limited. Changing this parameter will create a new resource.
 func (o NodePoolStorageSelectorOutput) MatchLabelMetadataEncrypted() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolStorageSelector) *string { return v.MatchLabelMetadataEncrypted }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the matched disk size. If omitted,
-// the disk size is not limited. Example: 100. Changing this parameter will create a new resource.
 func (o NodePoolStorageSelectorOutput) MatchLabelSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolStorageSelector) *string { return v.MatchLabelSize }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the EVS disk type. Currently,
-// **SSD**, **GPSSD**, and **SAS** are supported. If omitted, the disk type is not limited.
-// Changing this parameter will create a new resource.
 func (o NodePoolStorageSelectorOutput) MatchLabelVolumeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolStorageSelector) *string { return v.MatchLabelVolumeType }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the selector name, used as the index of `selectorNames` in storage group.
-// The name of each selector must be unique. Changing this parameter will create a new resource.
 func (o NodePoolStorageSelectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v NodePoolStorageSelector) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the storage type. Currently, only **evs (EVS volumes)** is supported.
-// The default value is **evs**. Changing this parameter will create a new resource.
 func (o NodePoolStorageSelectorOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolStorageSelector) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -5651,18 +4829,9 @@ func (o NodePoolStorageSelectorArrayOutput) Index(i pulumi.IntInput) NodePoolSto
 }
 
 type NodePoolTaint struct {
-	// Available options are NoSchedule, PreferNoSchedule, and NoExecute.
-	//
-	// <a name="extendParams"></a>
-	// The `extendParams` block supports:
 	Effect string `pulumi:"effect"`
-	// A key must contain 1 to 63 characters starting with a letter or digit. Only letters,
-	// digits, hyphens (-), underscores (_), and periods (.) are allowed. A DNS subdomain name can be used as the
-	// prefix of a key.
-	Key string `pulumi:"key"`
-	// A value must start with a letter or digit and can contain a maximum of 63 characters,
-	// including letters, digits, hyphens (-), underscores (_), and periods (.).
-	Value string `pulumi:"value"`
+	Key    string `pulumi:"key"`
+	Value  string `pulumi:"value"`
 }
 
 // NodePoolTaintInput is an input type that accepts NodePoolTaintArgs and NodePoolTaintOutput values.
@@ -5677,18 +4846,9 @@ type NodePoolTaintInput interface {
 }
 
 type NodePoolTaintArgs struct {
-	// Available options are NoSchedule, PreferNoSchedule, and NoExecute.
-	//
-	// <a name="extendParams"></a>
-	// The `extendParams` block supports:
 	Effect pulumi.StringInput `pulumi:"effect"`
-	// A key must contain 1 to 63 characters starting with a letter or digit. Only letters,
-	// digits, hyphens (-), underscores (_), and periods (.) are allowed. A DNS subdomain name can be used as the
-	// prefix of a key.
-	Key pulumi.StringInput `pulumi:"key"`
-	// A value must start with a letter or digit and can contain a maximum of 63 characters,
-	// including letters, digits, hyphens (-), underscores (_), and periods (.).
-	Value pulumi.StringInput `pulumi:"value"`
+	Key    pulumi.StringInput `pulumi:"key"`
+	Value  pulumi.StringInput `pulumi:"value"`
 }
 
 func (NodePoolTaintArgs) ElementType() reflect.Type {
@@ -5742,23 +4902,14 @@ func (o NodePoolTaintOutput) ToNodePoolTaintOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Available options are NoSchedule, PreferNoSchedule, and NoExecute.
-//
-// <a name="extendParams"></a>
-// The `extendParams` block supports:
 func (o NodePoolTaintOutput) Effect() pulumi.StringOutput {
 	return o.ApplyT(func(v NodePoolTaint) string { return v.Effect }).(pulumi.StringOutput)
 }
 
-// A key must contain 1 to 63 characters starting with a letter or digit. Only letters,
-// digits, hyphens (-), underscores (_), and periods (.) are allowed. A DNS subdomain name can be used as the
-// prefix of a key.
 func (o NodePoolTaintOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v NodePoolTaint) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// A value must start with a letter or digit and can contain a maximum of 63 characters,
-// including letters, digits, hyphens (-), underscores (_), and periods (.).
 func (o NodePoolTaintOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v NodePoolTaint) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -5785,34 +4936,16 @@ func (o NodePoolTaintArrayOutput) Index(i pulumi.IntInput) NodePoolTaintOutput {
 
 type NodeRootVolume struct {
 	DssPoolId *string `pulumi:"dssPoolId"`
-	// Specifies the extended parameter.
-	// Changing this parameter will create a new resource.
-	// The available keys are as follows:
-	// + **agency_name**: The agency name to provide temporary credentials for CCE node to access other cloud services.
-	// + **alpha.cce/NodeImageID**: The custom image ID used to create the BMS nodes.
-	// + **dockerBaseSize**: The available disk space of a single docker container on the node in device mapper mode.
-	// + **DockerLVMConfigOverride**: Specifies the data disk configurations of Docker.
-	//
-	// The following is an example default configuration:
-	//
 	// Deprecated: use extendParams instead
-	ExtendParam *string `pulumi:"extendParam"`
-	// Specifies the disk expansion parameters.
-	// Changing this parameter will create a new resource.
+	ExtendParam  *string           `pulumi:"extendParam"`
 	ExtendParams map[string]string `pulumi:"extendParams"`
 	// schema: Internal
-	HwPassthrough *bool `pulumi:"hwPassthrough"`
-	Iops          *int  `pulumi:"iops"`
-	// Specifies the ID of a KMS key. This is used to encrypt the volume.
-	// Changing this parameter will create a new resource.
-	KmsKeyId *string `pulumi:"kmsKeyId"`
-	// Specifies the disk size in GB.
-	// Changing this parameter will create a new resource.
-	Size       int  `pulumi:"size"`
-	Throughput *int `pulumi:"throughput"`
-	// Specifies the disk type.
-	// Changing this parameter will create a new resource.
-	Volumetype string `pulumi:"volumetype"`
+	HwPassthrough *bool   `pulumi:"hwPassthrough"`
+	Iops          *int    `pulumi:"iops"`
+	KmsKeyId      *string `pulumi:"kmsKeyId"`
+	Size          int     `pulumi:"size"`
+	Throughput    *int    `pulumi:"throughput"`
+	Volumetype    string  `pulumi:"volumetype"`
 }
 
 // NodeRootVolumeInput is an input type that accepts NodeRootVolumeArgs and NodeRootVolumeOutput values.
@@ -5828,34 +4961,16 @@ type NodeRootVolumeInput interface {
 
 type NodeRootVolumeArgs struct {
 	DssPoolId pulumi.StringPtrInput `pulumi:"dssPoolId"`
-	// Specifies the extended parameter.
-	// Changing this parameter will create a new resource.
-	// The available keys are as follows:
-	// + **agency_name**: The agency name to provide temporary credentials for CCE node to access other cloud services.
-	// + **alpha.cce/NodeImageID**: The custom image ID used to create the BMS nodes.
-	// + **dockerBaseSize**: The available disk space of a single docker container on the node in device mapper mode.
-	// + **DockerLVMConfigOverride**: Specifies the data disk configurations of Docker.
-	//
-	// The following is an example default configuration:
-	//
 	// Deprecated: use extendParams instead
-	ExtendParam pulumi.StringPtrInput `pulumi:"extendParam"`
-	// Specifies the disk expansion parameters.
-	// Changing this parameter will create a new resource.
+	ExtendParam  pulumi.StringPtrInput `pulumi:"extendParam"`
 	ExtendParams pulumi.StringMapInput `pulumi:"extendParams"`
 	// schema: Internal
-	HwPassthrough pulumi.BoolPtrInput `pulumi:"hwPassthrough"`
-	Iops          pulumi.IntPtrInput  `pulumi:"iops"`
-	// Specifies the ID of a KMS key. This is used to encrypt the volume.
-	// Changing this parameter will create a new resource.
-	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
-	// Specifies the disk size in GB.
-	// Changing this parameter will create a new resource.
-	Size       pulumi.IntInput    `pulumi:"size"`
-	Throughput pulumi.IntPtrInput `pulumi:"throughput"`
-	// Specifies the disk type.
-	// Changing this parameter will create a new resource.
-	Volumetype pulumi.StringInput `pulumi:"volumetype"`
+	HwPassthrough pulumi.BoolPtrInput   `pulumi:"hwPassthrough"`
+	Iops          pulumi.IntPtrInput    `pulumi:"iops"`
+	KmsKeyId      pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	Size          pulumi.IntInput       `pulumi:"size"`
+	Throughput    pulumi.IntPtrInput    `pulumi:"throughput"`
+	Volumetype    pulumi.StringInput    `pulumi:"volumetype"`
 }
 
 func (NodeRootVolumeArgs) ElementType() reflect.Type {
@@ -5939,23 +5054,11 @@ func (o NodeRootVolumeOutput) DssPoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeRootVolume) *string { return v.DssPoolId }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the extended parameter.
-// Changing this parameter will create a new resource.
-// The available keys are as follows:
-// + **agency_name**: The agency name to provide temporary credentials for CCE node to access other cloud services.
-// + **alpha.cce/NodeImageID**: The custom image ID used to create the BMS nodes.
-// + **dockerBaseSize**: The available disk space of a single docker container on the node in device mapper mode.
-// + **DockerLVMConfigOverride**: Specifies the data disk configurations of Docker.
-//
-// The following is an example default configuration:
-//
 // Deprecated: use extendParams instead
 func (o NodeRootVolumeOutput) ExtendParam() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeRootVolume) *string { return v.ExtendParam }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the disk expansion parameters.
-// Changing this parameter will create a new resource.
 func (o NodeRootVolumeOutput) ExtendParams() pulumi.StringMapOutput {
 	return o.ApplyT(func(v NodeRootVolume) map[string]string { return v.ExtendParams }).(pulumi.StringMapOutput)
 }
@@ -5969,14 +5072,10 @@ func (o NodeRootVolumeOutput) Iops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodeRootVolume) *int { return v.Iops }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the ID of a KMS key. This is used to encrypt the volume.
-// Changing this parameter will create a new resource.
 func (o NodeRootVolumeOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeRootVolume) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the disk size in GB.
-// Changing this parameter will create a new resource.
 func (o NodeRootVolumeOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v NodeRootVolume) int { return v.Size }).(pulumi.IntOutput)
 }
@@ -5985,8 +5084,6 @@ func (o NodeRootVolumeOutput) Throughput() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodeRootVolume) *int { return v.Throughput }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the disk type.
-// Changing this parameter will create a new resource.
 func (o NodeRootVolumeOutput) Volumetype() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeRootVolume) string { return v.Volumetype }).(pulumi.StringOutput)
 }
@@ -6024,16 +5121,6 @@ func (o NodeRootVolumePtrOutput) DssPoolId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the extended parameter.
-// Changing this parameter will create a new resource.
-// The available keys are as follows:
-// + **agency_name**: The agency name to provide temporary credentials for CCE node to access other cloud services.
-// + **alpha.cce/NodeImageID**: The custom image ID used to create the BMS nodes.
-// + **dockerBaseSize**: The available disk space of a single docker container on the node in device mapper mode.
-// + **DockerLVMConfigOverride**: Specifies the data disk configurations of Docker.
-//
-// The following is an example default configuration:
-//
 // Deprecated: use extendParams instead
 func (o NodeRootVolumePtrOutput) ExtendParam() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeRootVolume) *string {
@@ -6044,8 +5131,6 @@ func (o NodeRootVolumePtrOutput) ExtendParam() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the disk expansion parameters.
-// Changing this parameter will create a new resource.
 func (o NodeRootVolumePtrOutput) ExtendParams() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *NodeRootVolume) map[string]string {
 		if v == nil {
@@ -6074,8 +5159,6 @@ func (o NodeRootVolumePtrOutput) Iops() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the ID of a KMS key. This is used to encrypt the volume.
-// Changing this parameter will create a new resource.
 func (o NodeRootVolumePtrOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeRootVolume) *string {
 		if v == nil {
@@ -6085,8 +5168,6 @@ func (o NodeRootVolumePtrOutput) KmsKeyId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the disk size in GB.
-// Changing this parameter will create a new resource.
 func (o NodeRootVolumePtrOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodeRootVolume) *int {
 		if v == nil {
@@ -6105,8 +5186,6 @@ func (o NodeRootVolumePtrOutput) Throughput() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the disk type.
-// Changing this parameter will create a new resource.
 func (o NodeRootVolumePtrOutput) Volumetype() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeRootVolume) *string {
 		if v == nil {
@@ -6117,13 +5196,7 @@ func (o NodeRootVolumePtrOutput) Volumetype() pulumi.StringPtrOutput {
 }
 
 type NodeStorage struct {
-	// Specifies the storage group consists of multiple storage devices.
-	// This is used to divide storage space. Structure is documented below.
-	// Changing this parameter will create a new resource.
-	Groups []NodeStorageGroup `pulumi:"groups"`
-	// Specifies the disk selection.
-	// Matched disks are managed according to match labels and storage type. Structure is documented below.
-	// Changing this parameter will create a new resource.
+	Groups    []NodeStorageGroup    `pulumi:"groups"`
 	Selectors []NodeStorageSelector `pulumi:"selectors"`
 }
 
@@ -6139,13 +5212,7 @@ type NodeStorageInput interface {
 }
 
 type NodeStorageArgs struct {
-	// Specifies the storage group consists of multiple storage devices.
-	// This is used to divide storage space. Structure is documented below.
-	// Changing this parameter will create a new resource.
-	Groups NodeStorageGroupArrayInput `pulumi:"groups"`
-	// Specifies the disk selection.
-	// Matched disks are managed according to match labels and storage type. Structure is documented below.
-	// Changing this parameter will create a new resource.
+	Groups    NodeStorageGroupArrayInput    `pulumi:"groups"`
 	Selectors NodeStorageSelectorArrayInput `pulumi:"selectors"`
 }
 
@@ -6226,16 +5293,10 @@ func (o NodeStorageOutput) ToNodeStoragePtrOutputWithContext(ctx context.Context
 	}).(NodeStoragePtrOutput)
 }
 
-// Specifies the storage group consists of multiple storage devices.
-// This is used to divide storage space. Structure is documented below.
-// Changing this parameter will create a new resource.
 func (o NodeStorageOutput) Groups() NodeStorageGroupArrayOutput {
 	return o.ApplyT(func(v NodeStorage) []NodeStorageGroup { return v.Groups }).(NodeStorageGroupArrayOutput)
 }
 
-// Specifies the disk selection.
-// Matched disks are managed according to match labels and storage type. Structure is documented below.
-// Changing this parameter will create a new resource.
 func (o NodeStorageOutput) Selectors() NodeStorageSelectorArrayOutput {
 	return o.ApplyT(func(v NodeStorage) []NodeStorageSelector { return v.Selectors }).(NodeStorageSelectorArrayOutput)
 }
@@ -6264,9 +5325,6 @@ func (o NodeStoragePtrOutput) Elem() NodeStorageOutput {
 	}).(NodeStorageOutput)
 }
 
-// Specifies the storage group consists of multiple storage devices.
-// This is used to divide storage space. Structure is documented below.
-// Changing this parameter will create a new resource.
 func (o NodeStoragePtrOutput) Groups() NodeStorageGroupArrayOutput {
 	return o.ApplyT(func(v *NodeStorage) []NodeStorageGroup {
 		if v == nil {
@@ -6276,9 +5334,6 @@ func (o NodeStoragePtrOutput) Groups() NodeStorageGroupArrayOutput {
 	}).(NodeStorageGroupArrayOutput)
 }
 
-// Specifies the disk selection.
-// Matched disks are managed according to match labels and storage type. Structure is documented below.
-// Changing this parameter will create a new resource.
 func (o NodeStoragePtrOutput) Selectors() NodeStorageSelectorArrayOutput {
 	return o.ApplyT(func(v *NodeStorage) []NodeStorageSelector {
 		if v == nil {
@@ -6289,19 +5344,9 @@ func (o NodeStoragePtrOutput) Selectors() NodeStorageSelectorArrayOutput {
 }
 
 type NodeStorageGroup struct {
-	// Specifies the whether the storage space is for **kubernetes** and
-	// **runtime** components. Only one group can be set to true. The default value is **false**.
-	// Changing this parameter will create a new resource.
-	CceManaged *bool `pulumi:"cceManaged"`
-	// Specifies the name of a virtual storage group. Each group name must be unique.
-	// Changing this parameter will create a new resource.
-	Name string `pulumi:"name"`
-	// Specifies the list of names of seletors to match.
-	// This parameter corresponds to name in `selectors`. A group can match multiple selectors,
-	// but a selector can match only one group. Changing this parameter will create a new resource.
-	SelectorNames []string `pulumi:"selectorNames"`
-	// Specifies the detailed management of space configuration in a group.
-	// Changing this parameter will create a new resource.
+	CceManaged    *bool                          `pulumi:"cceManaged"`
+	Name          string                         `pulumi:"name"`
+	SelectorNames []string                       `pulumi:"selectorNames"`
 	VirtualSpaces []NodeStorageGroupVirtualSpace `pulumi:"virtualSpaces"`
 }
 
@@ -6317,19 +5362,9 @@ type NodeStorageGroupInput interface {
 }
 
 type NodeStorageGroupArgs struct {
-	// Specifies the whether the storage space is for **kubernetes** and
-	// **runtime** components. Only one group can be set to true. The default value is **false**.
-	// Changing this parameter will create a new resource.
-	CceManaged pulumi.BoolPtrInput `pulumi:"cceManaged"`
-	// Specifies the name of a virtual storage group. Each group name must be unique.
-	// Changing this parameter will create a new resource.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies the list of names of seletors to match.
-	// This parameter corresponds to name in `selectors`. A group can match multiple selectors,
-	// but a selector can match only one group. Changing this parameter will create a new resource.
-	SelectorNames pulumi.StringArrayInput `pulumi:"selectorNames"`
-	// Specifies the detailed management of space configuration in a group.
-	// Changing this parameter will create a new resource.
+	CceManaged    pulumi.BoolPtrInput                    `pulumi:"cceManaged"`
+	Name          pulumi.StringInput                     `pulumi:"name"`
+	SelectorNames pulumi.StringArrayInput                `pulumi:"selectorNames"`
 	VirtualSpaces NodeStorageGroupVirtualSpaceArrayInput `pulumi:"virtualSpaces"`
 }
 
@@ -6384,28 +5419,18 @@ func (o NodeStorageGroupOutput) ToNodeStorageGroupOutputWithContext(ctx context.
 	return o
 }
 
-// Specifies the whether the storage space is for **kubernetes** and
-// **runtime** components. Only one group can be set to true. The default value is **false**.
-// Changing this parameter will create a new resource.
 func (o NodeStorageGroupOutput) CceManaged() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodeStorageGroup) *bool { return v.CceManaged }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the name of a virtual storage group. Each group name must be unique.
-// Changing this parameter will create a new resource.
 func (o NodeStorageGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeStorageGroup) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the list of names of seletors to match.
-// This parameter corresponds to name in `selectors`. A group can match multiple selectors,
-// but a selector can match only one group. Changing this parameter will create a new resource.
 func (o NodeStorageGroupOutput) SelectorNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NodeStorageGroup) []string { return v.SelectorNames }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the detailed management of space configuration in a group.
-// Changing this parameter will create a new resource.
 func (o NodeStorageGroupOutput) VirtualSpaces() NodeStorageGroupVirtualSpaceArrayOutput {
 	return o.ApplyT(func(v NodeStorageGroup) []NodeStorageGroupVirtualSpace { return v.VirtualSpaces }).(NodeStorageGroupVirtualSpaceArrayOutput)
 }
@@ -6431,23 +5456,11 @@ func (o NodeStorageGroupArrayOutput) Index(i pulumi.IntInput) NodeStorageGroupOu
 }
 
 type NodeStorageGroupVirtualSpace struct {
-	// Specifies the LVM write mode, values can be **linear** and **striped**.
-	// This parameter takes effect only in **kubernetes** and **user** configuration. Changing this parameter will create
-	// a new resource.
-	LvmLvType *string `pulumi:"lvmLvType"`
-	// Specifies the absolute path to which the disk is attached.
-	// This parameter takes effect only in **user** configuration. Changing this parameter will create a new resource.
-	LvmPath *string `pulumi:"lvmPath"`
-	// Specifies the virtual space name. Currently, only **kubernetes**, **runtime**,
-	// and **user** are supported. Changing this parameter will create a new resource.
-	Name string `pulumi:"name"`
-	// Specifies the LVM write mode, values can be **linear** and **striped**.
-	// This parameter takes effect only in **runtime** configuration. Changing this parameter will create a new resource.
+	LvmLvType     *string `pulumi:"lvmLvType"`
+	LvmPath       *string `pulumi:"lvmPath"`
+	Name          string  `pulumi:"name"`
 	RuntimeLvType *string `pulumi:"runtimeLvType"`
-	// Specifies the size of a virtual space. Only an integer percentage is supported.
-	// Example: 90%. Note that the total percentage of all virtual spaces in a group cannot exceed 100%.
-	// Changing this parameter will create a new resource.
-	Size string `pulumi:"size"`
+	Size          string  `pulumi:"size"`
 }
 
 // NodeStorageGroupVirtualSpaceInput is an input type that accepts NodeStorageGroupVirtualSpaceArgs and NodeStorageGroupVirtualSpaceOutput values.
@@ -6462,23 +5475,11 @@ type NodeStorageGroupVirtualSpaceInput interface {
 }
 
 type NodeStorageGroupVirtualSpaceArgs struct {
-	// Specifies the LVM write mode, values can be **linear** and **striped**.
-	// This parameter takes effect only in **kubernetes** and **user** configuration. Changing this parameter will create
-	// a new resource.
-	LvmLvType pulumi.StringPtrInput `pulumi:"lvmLvType"`
-	// Specifies the absolute path to which the disk is attached.
-	// This parameter takes effect only in **user** configuration. Changing this parameter will create a new resource.
-	LvmPath pulumi.StringPtrInput `pulumi:"lvmPath"`
-	// Specifies the virtual space name. Currently, only **kubernetes**, **runtime**,
-	// and **user** are supported. Changing this parameter will create a new resource.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies the LVM write mode, values can be **linear** and **striped**.
-	// This parameter takes effect only in **runtime** configuration. Changing this parameter will create a new resource.
+	LvmLvType     pulumi.StringPtrInput `pulumi:"lvmLvType"`
+	LvmPath       pulumi.StringPtrInput `pulumi:"lvmPath"`
+	Name          pulumi.StringInput    `pulumi:"name"`
 	RuntimeLvType pulumi.StringPtrInput `pulumi:"runtimeLvType"`
-	// Specifies the size of a virtual space. Only an integer percentage is supported.
-	// Example: 90%. Note that the total percentage of all virtual spaces in a group cannot exceed 100%.
-	// Changing this parameter will create a new resource.
-	Size pulumi.StringInput `pulumi:"size"`
+	Size          pulumi.StringInput    `pulumi:"size"`
 }
 
 func (NodeStorageGroupVirtualSpaceArgs) ElementType() reflect.Type {
@@ -6532,34 +5533,22 @@ func (o NodeStorageGroupVirtualSpaceOutput) ToNodeStorageGroupVirtualSpaceOutput
 	return o
 }
 
-// Specifies the LVM write mode, values can be **linear** and **striped**.
-// This parameter takes effect only in **kubernetes** and **user** configuration. Changing this parameter will create
-// a new resource.
 func (o NodeStorageGroupVirtualSpaceOutput) LvmLvType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeStorageGroupVirtualSpace) *string { return v.LvmLvType }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the absolute path to which the disk is attached.
-// This parameter takes effect only in **user** configuration. Changing this parameter will create a new resource.
 func (o NodeStorageGroupVirtualSpaceOutput) LvmPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeStorageGroupVirtualSpace) *string { return v.LvmPath }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the virtual space name. Currently, only **kubernetes**, **runtime**,
-// and **user** are supported. Changing this parameter will create a new resource.
 func (o NodeStorageGroupVirtualSpaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeStorageGroupVirtualSpace) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the LVM write mode, values can be **linear** and **striped**.
-// This parameter takes effect only in **runtime** configuration. Changing this parameter will create a new resource.
 func (o NodeStorageGroupVirtualSpaceOutput) RuntimeLvType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeStorageGroupVirtualSpace) *string { return v.RuntimeLvType }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the size of a virtual space. Only an integer percentage is supported.
-// Example: 90%. Note that the total percentage of all virtual spaces in a group cannot exceed 100%.
-// Changing this parameter will create a new resource.
 func (o NodeStorageGroupVirtualSpaceOutput) Size() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeStorageGroupVirtualSpace) string { return v.Size }).(pulumi.StringOutput)
 }
@@ -6585,29 +5574,13 @@ func (o NodeStorageGroupVirtualSpaceArrayOutput) Index(i pulumi.IntInput) NodeSt
 }
 
 type NodeStorageSelector struct {
-	// Specifies the number of disks to be selected. If omitted,
-	// all disks of this type are selected. Changing this parameter will create a new resource.
-	MatchLabelCount *string `pulumi:"matchLabelCount"`
-	// Specifies the cstomer master key ID of an encrypted
-	// disk. Changing this parameter will create a new resource.
-	MatchLabelMetadataCmkid *string `pulumi:"matchLabelMetadataCmkid"`
-	// Specifies the disk encryption identifier.
-	// Values can be: **0** indicates that the disk is not encrypted and **1** indicates that the disk is encrypted.
-	// If omitted, whether the disk is encrypted is not limited. Changing this parameter will create a new resource.
+	MatchLabelCount             *string `pulumi:"matchLabelCount"`
+	MatchLabelMetadataCmkid     *string `pulumi:"matchLabelMetadataCmkid"`
 	MatchLabelMetadataEncrypted *string `pulumi:"matchLabelMetadataEncrypted"`
-	// Specifies the matched disk size. If omitted,
-	// the disk size is not limited. Example: 100. Changing this parameter will create a new resource.
-	MatchLabelSize *string `pulumi:"matchLabelSize"`
-	// Specifies the EVS disk type. Currently,
-	// **SSD** and **SAS** are supported. If omitted, the disk type is not limited.
-	// Changing this parameter will create a new resource.
-	MatchLabelVolumeType *string `pulumi:"matchLabelVolumeType"`
-	// Specifies the selector name, used as the index of `selectorNames` in storage group.
-	// The name of each selector must be unique. Changing this parameter will create a new resource.
-	Name string `pulumi:"name"`
-	// Specifies the storage type. Currently, only **evs (EVS volumes)** is supported.
-	// The default value is **evs**. Changing this parameter will create a new resource.
-	Type *string `pulumi:"type"`
+	MatchLabelSize              *string `pulumi:"matchLabelSize"`
+	MatchLabelVolumeType        *string `pulumi:"matchLabelVolumeType"`
+	Name                        string  `pulumi:"name"`
+	Type                        *string `pulumi:"type"`
 }
 
 // NodeStorageSelectorInput is an input type that accepts NodeStorageSelectorArgs and NodeStorageSelectorOutput values.
@@ -6622,29 +5595,13 @@ type NodeStorageSelectorInput interface {
 }
 
 type NodeStorageSelectorArgs struct {
-	// Specifies the number of disks to be selected. If omitted,
-	// all disks of this type are selected. Changing this parameter will create a new resource.
-	MatchLabelCount pulumi.StringPtrInput `pulumi:"matchLabelCount"`
-	// Specifies the cstomer master key ID of an encrypted
-	// disk. Changing this parameter will create a new resource.
-	MatchLabelMetadataCmkid pulumi.StringPtrInput `pulumi:"matchLabelMetadataCmkid"`
-	// Specifies the disk encryption identifier.
-	// Values can be: **0** indicates that the disk is not encrypted and **1** indicates that the disk is encrypted.
-	// If omitted, whether the disk is encrypted is not limited. Changing this parameter will create a new resource.
+	MatchLabelCount             pulumi.StringPtrInput `pulumi:"matchLabelCount"`
+	MatchLabelMetadataCmkid     pulumi.StringPtrInput `pulumi:"matchLabelMetadataCmkid"`
 	MatchLabelMetadataEncrypted pulumi.StringPtrInput `pulumi:"matchLabelMetadataEncrypted"`
-	// Specifies the matched disk size. If omitted,
-	// the disk size is not limited. Example: 100. Changing this parameter will create a new resource.
-	MatchLabelSize pulumi.StringPtrInput `pulumi:"matchLabelSize"`
-	// Specifies the EVS disk type. Currently,
-	// **SSD** and **SAS** are supported. If omitted, the disk type is not limited.
-	// Changing this parameter will create a new resource.
-	MatchLabelVolumeType pulumi.StringPtrInput `pulumi:"matchLabelVolumeType"`
-	// Specifies the selector name, used as the index of `selectorNames` in storage group.
-	// The name of each selector must be unique. Changing this parameter will create a new resource.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies the storage type. Currently, only **evs (EVS volumes)** is supported.
-	// The default value is **evs**. Changing this parameter will create a new resource.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	MatchLabelSize              pulumi.StringPtrInput `pulumi:"matchLabelSize"`
+	MatchLabelVolumeType        pulumi.StringPtrInput `pulumi:"matchLabelVolumeType"`
+	Name                        pulumi.StringInput    `pulumi:"name"`
+	Type                        pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (NodeStorageSelectorArgs) ElementType() reflect.Type {
@@ -6698,46 +5655,30 @@ func (o NodeStorageSelectorOutput) ToNodeStorageSelectorOutputWithContext(ctx co
 	return o
 }
 
-// Specifies the number of disks to be selected. If omitted,
-// all disks of this type are selected. Changing this parameter will create a new resource.
 func (o NodeStorageSelectorOutput) MatchLabelCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeStorageSelector) *string { return v.MatchLabelCount }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the cstomer master key ID of an encrypted
-// disk. Changing this parameter will create a new resource.
 func (o NodeStorageSelectorOutput) MatchLabelMetadataCmkid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeStorageSelector) *string { return v.MatchLabelMetadataCmkid }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the disk encryption identifier.
-// Values can be: **0** indicates that the disk is not encrypted and **1** indicates that the disk is encrypted.
-// If omitted, whether the disk is encrypted is not limited. Changing this parameter will create a new resource.
 func (o NodeStorageSelectorOutput) MatchLabelMetadataEncrypted() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeStorageSelector) *string { return v.MatchLabelMetadataEncrypted }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the matched disk size. If omitted,
-// the disk size is not limited. Example: 100. Changing this parameter will create a new resource.
 func (o NodeStorageSelectorOutput) MatchLabelSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeStorageSelector) *string { return v.MatchLabelSize }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the EVS disk type. Currently,
-// **SSD** and **SAS** are supported. If omitted, the disk type is not limited.
-// Changing this parameter will create a new resource.
 func (o NodeStorageSelectorOutput) MatchLabelVolumeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeStorageSelector) *string { return v.MatchLabelVolumeType }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the selector name, used as the index of `selectorNames` in storage group.
-// The name of each selector must be unique. Changing this parameter will create a new resource.
 func (o NodeStorageSelectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeStorageSelector) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the storage type. Currently, only **evs (EVS volumes)** is supported.
-// The default value is **evs**. Changing this parameter will create a new resource.
 func (o NodeStorageSelectorOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeStorageSelector) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -6763,17 +5704,9 @@ func (o NodeStorageSelectorArrayOutput) Index(i pulumi.IntInput) NodeStorageSele
 }
 
 type NodeTaint struct {
-	// Available options are NoSchedule, PreferNoSchedule, and NoExecute.
-	// Changing this parameter will create a new resource.
-	Effect string `pulumi:"effect"`
-	// A key must contain 1 to 63 characters starting with a letter or digit.
-	// Only letters, digits, hyphens (-), underscores (_), and periods (.) are allowed. A DNS subdomain name can be used
-	// as the prefix of a key. Changing this parameter will create a new resource.
-	Key string `pulumi:"key"`
-	// A value must start with a letter or digit and can contain a maximum of 63
-	// characters, including letters, digits, hyphens (-), underscores (_), and periods (.). Changing this parameter will
-	// create a new resource.
-	Value *string `pulumi:"value"`
+	Effect string  `pulumi:"effect"`
+	Key    string  `pulumi:"key"`
+	Value  *string `pulumi:"value"`
 }
 
 // NodeTaintInput is an input type that accepts NodeTaintArgs and NodeTaintOutput values.
@@ -6788,17 +5721,9 @@ type NodeTaintInput interface {
 }
 
 type NodeTaintArgs struct {
-	// Available options are NoSchedule, PreferNoSchedule, and NoExecute.
-	// Changing this parameter will create a new resource.
-	Effect pulumi.StringInput `pulumi:"effect"`
-	// A key must contain 1 to 63 characters starting with a letter or digit.
-	// Only letters, digits, hyphens (-), underscores (_), and periods (.) are allowed. A DNS subdomain name can be used
-	// as the prefix of a key. Changing this parameter will create a new resource.
-	Key pulumi.StringInput `pulumi:"key"`
-	// A value must start with a letter or digit and can contain a maximum of 63
-	// characters, including letters, digits, hyphens (-), underscores (_), and periods (.). Changing this parameter will
-	// create a new resource.
-	Value pulumi.StringPtrInput `pulumi:"value"`
+	Effect pulumi.StringInput    `pulumi:"effect"`
+	Key    pulumi.StringInput    `pulumi:"key"`
+	Value  pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (NodeTaintArgs) ElementType() reflect.Type {
@@ -6852,22 +5777,14 @@ func (o NodeTaintOutput) ToNodeTaintOutputWithContext(ctx context.Context) NodeT
 	return o
 }
 
-// Available options are NoSchedule, PreferNoSchedule, and NoExecute.
-// Changing this parameter will create a new resource.
 func (o NodeTaintOutput) Effect() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeTaint) string { return v.Effect }).(pulumi.StringOutput)
 }
 
-// A key must contain 1 to 63 characters starting with a letter or digit.
-// Only letters, digits, hyphens (-), underscores (_), and periods (.) are allowed. A DNS subdomain name can be used
-// as the prefix of a key. Changing this parameter will create a new resource.
 func (o NodeTaintOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeTaint) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// A value must start with a letter or digit and can contain a maximum of 63
-// characters, including letters, digits, hyphens (-), underscores (_), and periods (.). Changing this parameter will
-// create a new resource.
 func (o NodeTaintOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeTaint) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -6993,12 +5910,9 @@ func (o GetAddonTemplateSupportVersionArrayOutput) Index(i pulumi.IntInput) GetA
 }
 
 type GetClusterCertificateCluster struct {
-	// The certificate data.
 	CertificateAuthorityData string `pulumi:"certificateAuthorityData"`
-	// Specifies the name of the cluster.
-	Name string `pulumi:"name"`
-	// The server IP address.
-	Server string `pulumi:"server"`
+	Name                     string `pulumi:"name"`
+	Server                   string `pulumi:"server"`
 }
 
 // GetClusterCertificateClusterInput is an input type that accepts GetClusterCertificateClusterArgs and GetClusterCertificateClusterOutput values.
@@ -7013,12 +5927,9 @@ type GetClusterCertificateClusterInput interface {
 }
 
 type GetClusterCertificateClusterArgs struct {
-	// The certificate data.
 	CertificateAuthorityData pulumi.StringInput `pulumi:"certificateAuthorityData"`
-	// Specifies the name of the cluster.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The server IP address.
-	Server pulumi.StringInput `pulumi:"server"`
+	Name                     pulumi.StringInput `pulumi:"name"`
+	Server                   pulumi.StringInput `pulumi:"server"`
 }
 
 func (GetClusterCertificateClusterArgs) ElementType() reflect.Type {
@@ -7072,17 +5983,14 @@ func (o GetClusterCertificateClusterOutput) ToGetClusterCertificateClusterOutput
 	return o
 }
 
-// The certificate data.
 func (o GetClusterCertificateClusterOutput) CertificateAuthorityData() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterCertificateCluster) string { return v.CertificateAuthorityData }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the cluster.
 func (o GetClusterCertificateClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterCertificateCluster) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The server IP address.
 func (o GetClusterCertificateClusterOutput) Server() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterCertificateCluster) string { return v.Server }).(pulumi.StringOutput)
 }
@@ -7108,12 +6016,9 @@ func (o GetClusterCertificateClusterArrayOutput) Index(i pulumi.IntInput) GetClu
 }
 
 type GetClusterCertificateUser struct {
-	// The client certificate data.
 	ClientCertificateData string `pulumi:"clientCertificateData"`
-	// The client key data.
-	ClientKeyData string `pulumi:"clientKeyData"`
-	// Specifies the name of the cluster.
-	Name string `pulumi:"name"`
+	ClientKeyData         string `pulumi:"clientKeyData"`
+	Name                  string `pulumi:"name"`
 }
 
 // GetClusterCertificateUserInput is an input type that accepts GetClusterCertificateUserArgs and GetClusterCertificateUserOutput values.
@@ -7128,12 +6033,9 @@ type GetClusterCertificateUserInput interface {
 }
 
 type GetClusterCertificateUserArgs struct {
-	// The client certificate data.
 	ClientCertificateData pulumi.StringInput `pulumi:"clientCertificateData"`
-	// The client key data.
-	ClientKeyData pulumi.StringInput `pulumi:"clientKeyData"`
-	// Specifies the name of the cluster.
-	Name pulumi.StringInput `pulumi:"name"`
+	ClientKeyData         pulumi.StringInput `pulumi:"clientKeyData"`
+	Name                  pulumi.StringInput `pulumi:"name"`
 }
 
 func (GetClusterCertificateUserArgs) ElementType() reflect.Type {
@@ -7187,17 +6089,14 @@ func (o GetClusterCertificateUserOutput) ToGetClusterCertificateUserOutputWithCo
 	return o
 }
 
-// The client certificate data.
 func (o GetClusterCertificateUserOutput) ClientCertificateData() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterCertificateUser) string { return v.ClientCertificateData }).(pulumi.StringOutput)
 }
 
-// The client key data.
 func (o GetClusterCertificateUserOutput) ClientKeyData() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterCertificateUser) string { return v.ClientKeyData }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the cluster.
 func (o GetClusterCertificateUserOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterCertificateUser) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -7223,14 +6122,10 @@ func (o GetClusterCertificateUserArrayOutput) Index(i pulumi.IntInput) GetCluste
 }
 
 type GetClusterCertificatesCluster struct {
-	// The certificate authority data of the cluster certificate.
 	CertificateAuthorityData string `pulumi:"certificateAuthorityData"`
-	// Whether insecure skip tls verify of the cluster certificate.
-	InsecureSkipTlsVerify bool `pulumi:"insecureSkipTlsVerify"`
-	// The context name of the cluster certificate.
-	Name string `pulumi:"name"`
-	// The server address of the cluster certificate.
-	Server string `pulumi:"server"`
+	InsecureSkipTlsVerify    bool   `pulumi:"insecureSkipTlsVerify"`
+	Name                     string `pulumi:"name"`
+	Server                   string `pulumi:"server"`
 }
 
 // GetClusterCertificatesClusterInput is an input type that accepts GetClusterCertificatesClusterArgs and GetClusterCertificatesClusterOutput values.
@@ -7245,14 +6140,10 @@ type GetClusterCertificatesClusterInput interface {
 }
 
 type GetClusterCertificatesClusterArgs struct {
-	// The certificate authority data of the cluster certificate.
 	CertificateAuthorityData pulumi.StringInput `pulumi:"certificateAuthorityData"`
-	// Whether insecure skip tls verify of the cluster certificate.
-	InsecureSkipTlsVerify pulumi.BoolInput `pulumi:"insecureSkipTlsVerify"`
-	// The context name of the cluster certificate.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The server address of the cluster certificate.
-	Server pulumi.StringInput `pulumi:"server"`
+	InsecureSkipTlsVerify    pulumi.BoolInput   `pulumi:"insecureSkipTlsVerify"`
+	Name                     pulumi.StringInput `pulumi:"name"`
+	Server                   pulumi.StringInput `pulumi:"server"`
 }
 
 func (GetClusterCertificatesClusterArgs) ElementType() reflect.Type {
@@ -7306,22 +6197,18 @@ func (o GetClusterCertificatesClusterOutput) ToGetClusterCertificatesClusterOutp
 	return o
 }
 
-// The certificate authority data of the cluster certificate.
 func (o GetClusterCertificatesClusterOutput) CertificateAuthorityData() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterCertificatesCluster) string { return v.CertificateAuthorityData }).(pulumi.StringOutput)
 }
 
-// Whether insecure skip tls verify of the cluster certificate.
 func (o GetClusterCertificatesClusterOutput) InsecureSkipTlsVerify() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClusterCertificatesCluster) bool { return v.InsecureSkipTlsVerify }).(pulumi.BoolOutput)
 }
 
-// The context name of the cluster certificate.
 func (o GetClusterCertificatesClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterCertificatesCluster) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The server address of the cluster certificate.
 func (o GetClusterCertificatesClusterOutput) Server() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterCertificatesCluster) string { return v.Server }).(pulumi.StringOutput)
 }
@@ -7347,12 +6234,9 @@ func (o GetClusterCertificatesClusterArrayOutput) Index(i pulumi.IntInput) GetCl
 }
 
 type GetClusterCertificatesContext struct {
-	// The context cluster of the cluster certificate.
 	Cluster string `pulumi:"cluster"`
-	// The context name of the cluster certificate.
-	Name string `pulumi:"name"`
-	// The context user of the cluster certificate.
-	User string `pulumi:"user"`
+	Name    string `pulumi:"name"`
+	User    string `pulumi:"user"`
 }
 
 // GetClusterCertificatesContextInput is an input type that accepts GetClusterCertificatesContextArgs and GetClusterCertificatesContextOutput values.
@@ -7367,12 +6251,9 @@ type GetClusterCertificatesContextInput interface {
 }
 
 type GetClusterCertificatesContextArgs struct {
-	// The context cluster of the cluster certificate.
 	Cluster pulumi.StringInput `pulumi:"cluster"`
-	// The context name of the cluster certificate.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The context user of the cluster certificate.
-	User pulumi.StringInput `pulumi:"user"`
+	Name    pulumi.StringInput `pulumi:"name"`
+	User    pulumi.StringInput `pulumi:"user"`
 }
 
 func (GetClusterCertificatesContextArgs) ElementType() reflect.Type {
@@ -7426,17 +6307,14 @@ func (o GetClusterCertificatesContextOutput) ToGetClusterCertificatesContextOutp
 	return o
 }
 
-// The context cluster of the cluster certificate.
 func (o GetClusterCertificatesContextOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterCertificatesContext) string { return v.Cluster }).(pulumi.StringOutput)
 }
 
-// The context name of the cluster certificate.
 func (o GetClusterCertificatesContextOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterCertificatesContext) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The context user of the cluster certificate.
 func (o GetClusterCertificatesContextOutput) User() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterCertificatesContext) string { return v.User }).(pulumi.StringOutput)
 }
@@ -7462,12 +6340,9 @@ func (o GetClusterCertificatesContextArrayOutput) Index(i pulumi.IntInput) GetCl
 }
 
 type GetClusterCertificatesUser struct {
-	// The client certificate data of the cluster certificate.
 	ClientCertificateData string `pulumi:"clientCertificateData"`
-	// The client key data of the cluster certificate.
-	ClientKeyData string `pulumi:"clientKeyData"`
-	// The context name of the cluster certificate.
-	Name string `pulumi:"name"`
+	ClientKeyData         string `pulumi:"clientKeyData"`
+	Name                  string `pulumi:"name"`
 }
 
 // GetClusterCertificatesUserInput is an input type that accepts GetClusterCertificatesUserArgs and GetClusterCertificatesUserOutput values.
@@ -7482,12 +6357,9 @@ type GetClusterCertificatesUserInput interface {
 }
 
 type GetClusterCertificatesUserArgs struct {
-	// The client certificate data of the cluster certificate.
 	ClientCertificateData pulumi.StringInput `pulumi:"clientCertificateData"`
-	// The client key data of the cluster certificate.
-	ClientKeyData pulumi.StringInput `pulumi:"clientKeyData"`
-	// The context name of the cluster certificate.
-	Name pulumi.StringInput `pulumi:"name"`
+	ClientKeyData         pulumi.StringInput `pulumi:"clientKeyData"`
+	Name                  pulumi.StringInput `pulumi:"name"`
 }
 
 func (GetClusterCertificatesUserArgs) ElementType() reflect.Type {
@@ -7541,17 +6413,14 @@ func (o GetClusterCertificatesUserOutput) ToGetClusterCertificatesUserOutputWith
 	return o
 }
 
-// The client certificate data of the cluster certificate.
 func (o GetClusterCertificatesUserOutput) ClientCertificateData() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterCertificatesUser) string { return v.ClientCertificateData }).(pulumi.StringOutput)
 }
 
-// The client key data of the cluster certificate.
 func (o GetClusterCertificatesUserOutput) ClientKeyData() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterCertificatesUser) string { return v.ClientKeyData }).(pulumi.StringOutput)
 }
 
-// The context name of the cluster certificate.
 func (o GetClusterCertificatesUserOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterCertificatesUser) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -7577,12 +6446,8 @@ func (o GetClusterCertificatesUserArrayOutput) Index(i pulumi.IntInput) GetClust
 }
 
 type GetClusterEndpoint struct {
-	// The type of the cluster access address.
-	// + **Internal**: The user's subnet access address.
-	// + **External**: The public network access address.
 	Type string `pulumi:"type"`
-	// The URL of the cluster access address.
-	Url string `pulumi:"url"`
+	Url  string `pulumi:"url"`
 }
 
 // GetClusterEndpointInput is an input type that accepts GetClusterEndpointArgs and GetClusterEndpointOutput values.
@@ -7597,12 +6462,8 @@ type GetClusterEndpointInput interface {
 }
 
 type GetClusterEndpointArgs struct {
-	// The type of the cluster access address.
-	// + **Internal**: The user's subnet access address.
-	// + **External**: The public network access address.
 	Type pulumi.StringInput `pulumi:"type"`
-	// The URL of the cluster access address.
-	Url pulumi.StringInput `pulumi:"url"`
+	Url  pulumi.StringInput `pulumi:"url"`
 }
 
 func (GetClusterEndpointArgs) ElementType() reflect.Type {
@@ -7656,14 +6517,10 @@ func (o GetClusterEndpointOutput) ToGetClusterEndpointOutputWithContext(ctx cont
 	return o
 }
 
-// The type of the cluster access address.
-// + **Internal**: The user's subnet access address.
-// + **External**: The public network access address.
 func (o GetClusterEndpointOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterEndpoint) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The URL of the cluster access address.
 func (o GetClusterEndpointOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterEndpoint) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -7689,7 +6546,6 @@ func (o GetClusterEndpointArrayOutput) Index(i pulumi.IntInput) GetClusterEndpoi
 }
 
 type GetClusterMaster struct {
-	// The availability zone (AZ) of the master node.
 	AvailabilityZone string `pulumi:"availabilityZone"`
 }
 
@@ -7705,7 +6561,6 @@ type GetClusterMasterInput interface {
 }
 
 type GetClusterMasterArgs struct {
-	// The availability zone (AZ) of the master node.
 	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
 }
 
@@ -7760,7 +6615,6 @@ func (o GetClusterMasterOutput) ToGetClusterMasterOutputWithContext(ctx context.
 	return o
 }
 
-// The availability zone (AZ) of the master node.
 func (o GetClusterMasterOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterMaster) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
@@ -7786,52 +6640,29 @@ func (o GetClusterMasterArrayOutput) Index(i pulumi.IntInput) GetClusterMasterOu
 }
 
 type GetClustersCluster struct {
-	// The authentication mode of the cluster, possible values are x509 and rbac. Defaults to **rbac**.
-	AuthenticationMode string `pulumi:"authenticationMode"`
-	// The charging mode of the cluster.
-	BillingMode int `pulumi:"billingMode"`
-	// The certificate clusters. Structure is documented below.
-	CertificateClusters []GetClustersClusterCertificateCluster `pulumi:"certificateClusters"`
-	// The certificate users. Structure is documented below.
-	CertificateUsers []GetClustersClusterCertificateUser `pulumi:"certificateUsers"`
-	// Specifies the type of the cluster. Possible values: **VirtualMachine**, **BareMetal**.
-	ClusterType string `pulumi:"clusterType"`
-	// The version of the cluster.
-	ClusterVersion string `pulumi:"clusterVersion"`
-	// The container network segment.
-	ContainerNetworkCidr string `pulumi:"containerNetworkCidr"`
-	// The container network type: **overlay_l2** , **underlay_ipvlan**, **vpc-router** or **eni**.
-	ContainerNetworkType string `pulumi:"containerNetworkType"`
-	// The description of the cluster.
-	Description string `pulumi:"description"`
-	// The access addresses of kube-apiserver in the cluster. Structure is documented below.
-	Endpoints []GetClustersClusterEndpoint `pulumi:"endpoints"`
-	// The ENI network segment.
-	EniSubnetCidr string `pulumi:"eniSubnetCidr"`
-	// The ENI**IPv4 subnet ID** of the subnet where the ENI resides.
-	EniSubnetId string `pulumi:"eniSubnetId"`
-	// Specifies the enterprise project ID of the cluster.
-	EnterpriseProjectId string `pulumi:"enterpriseProjectId"`
-	// The specification of the cluster.
-	FlavorId string `pulumi:"flavorId"`
-	// The ID of the cluster.
-	Id string `pulumi:"id"`
-	// The raw Kubernetes config to be used by kubectl and other compatible tools.
-	KubeConfigRaw string `pulumi:"kubeConfigRaw"`
-	// The advanced configuration of master nodes.
-	Masters []GetClustersClusterMaster `pulumi:"masters"`
-	// Specifies the name of the cluster.
-	Name string `pulumi:"name"`
-	// The security group ID of the cluster.
-	SecurityGroupId string `pulumi:"securityGroupId"`
-	// The service network segment.
-	ServiceNetworkCidr string `pulumi:"serviceNetworkCidr"`
-	// Specifies the status of the cluster.
-	Status string `pulumi:"status"`
-	// The ID of the subnet used to create the node.
-	SubnetId string `pulumi:"subnetId"`
-	// Specifies the VPC ID to which the cluster belongs.
-	VpcId string `pulumi:"vpcId"`
+	AuthenticationMode   string                                 `pulumi:"authenticationMode"`
+	BillingMode          int                                    `pulumi:"billingMode"`
+	CertificateClusters  []GetClustersClusterCertificateCluster `pulumi:"certificateClusters"`
+	CertificateUsers     []GetClustersClusterCertificateUser    `pulumi:"certificateUsers"`
+	ClusterType          string                                 `pulumi:"clusterType"`
+	ClusterVersion       string                                 `pulumi:"clusterVersion"`
+	ContainerNetworkCidr string                                 `pulumi:"containerNetworkCidr"`
+	ContainerNetworkType string                                 `pulumi:"containerNetworkType"`
+	Description          string                                 `pulumi:"description"`
+	Endpoints            []GetClustersClusterEndpoint           `pulumi:"endpoints"`
+	EniSubnetCidr        string                                 `pulumi:"eniSubnetCidr"`
+	EniSubnetId          string                                 `pulumi:"eniSubnetId"`
+	EnterpriseProjectId  string                                 `pulumi:"enterpriseProjectId"`
+	FlavorId             string                                 `pulumi:"flavorId"`
+	Id                   string                                 `pulumi:"id"`
+	KubeConfigRaw        string                                 `pulumi:"kubeConfigRaw"`
+	Masters              []GetClustersClusterMaster             `pulumi:"masters"`
+	Name                 string                                 `pulumi:"name"`
+	SecurityGroupId      string                                 `pulumi:"securityGroupId"`
+	ServiceNetworkCidr   string                                 `pulumi:"serviceNetworkCidr"`
+	Status               string                                 `pulumi:"status"`
+	SubnetId             string                                 `pulumi:"subnetId"`
+	VpcId                string                                 `pulumi:"vpcId"`
 }
 
 // GetClustersClusterInput is an input type that accepts GetClustersClusterArgs and GetClustersClusterOutput values.
@@ -7846,52 +6677,29 @@ type GetClustersClusterInput interface {
 }
 
 type GetClustersClusterArgs struct {
-	// The authentication mode of the cluster, possible values are x509 and rbac. Defaults to **rbac**.
-	AuthenticationMode pulumi.StringInput `pulumi:"authenticationMode"`
-	// The charging mode of the cluster.
-	BillingMode pulumi.IntInput `pulumi:"billingMode"`
-	// The certificate clusters. Structure is documented below.
-	CertificateClusters GetClustersClusterCertificateClusterArrayInput `pulumi:"certificateClusters"`
-	// The certificate users. Structure is documented below.
-	CertificateUsers GetClustersClusterCertificateUserArrayInput `pulumi:"certificateUsers"`
-	// Specifies the type of the cluster. Possible values: **VirtualMachine**, **BareMetal**.
-	ClusterType pulumi.StringInput `pulumi:"clusterType"`
-	// The version of the cluster.
-	ClusterVersion pulumi.StringInput `pulumi:"clusterVersion"`
-	// The container network segment.
-	ContainerNetworkCidr pulumi.StringInput `pulumi:"containerNetworkCidr"`
-	// The container network type: **overlay_l2** , **underlay_ipvlan**, **vpc-router** or **eni**.
-	ContainerNetworkType pulumi.StringInput `pulumi:"containerNetworkType"`
-	// The description of the cluster.
-	Description pulumi.StringInput `pulumi:"description"`
-	// The access addresses of kube-apiserver in the cluster. Structure is documented below.
-	Endpoints GetClustersClusterEndpointArrayInput `pulumi:"endpoints"`
-	// The ENI network segment.
-	EniSubnetCidr pulumi.StringInput `pulumi:"eniSubnetCidr"`
-	// The ENI**IPv4 subnet ID** of the subnet where the ENI resides.
-	EniSubnetId pulumi.StringInput `pulumi:"eniSubnetId"`
-	// Specifies the enterprise project ID of the cluster.
-	EnterpriseProjectId pulumi.StringInput `pulumi:"enterpriseProjectId"`
-	// The specification of the cluster.
-	FlavorId pulumi.StringInput `pulumi:"flavorId"`
-	// The ID of the cluster.
-	Id pulumi.StringInput `pulumi:"id"`
-	// The raw Kubernetes config to be used by kubectl and other compatible tools.
-	KubeConfigRaw pulumi.StringInput `pulumi:"kubeConfigRaw"`
-	// The advanced configuration of master nodes.
-	Masters GetClustersClusterMasterArrayInput `pulumi:"masters"`
-	// Specifies the name of the cluster.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The security group ID of the cluster.
-	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
-	// The service network segment.
-	ServiceNetworkCidr pulumi.StringInput `pulumi:"serviceNetworkCidr"`
-	// Specifies the status of the cluster.
-	Status pulumi.StringInput `pulumi:"status"`
-	// The ID of the subnet used to create the node.
-	SubnetId pulumi.StringInput `pulumi:"subnetId"`
-	// Specifies the VPC ID to which the cluster belongs.
-	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	AuthenticationMode   pulumi.StringInput                             `pulumi:"authenticationMode"`
+	BillingMode          pulumi.IntInput                                `pulumi:"billingMode"`
+	CertificateClusters  GetClustersClusterCertificateClusterArrayInput `pulumi:"certificateClusters"`
+	CertificateUsers     GetClustersClusterCertificateUserArrayInput    `pulumi:"certificateUsers"`
+	ClusterType          pulumi.StringInput                             `pulumi:"clusterType"`
+	ClusterVersion       pulumi.StringInput                             `pulumi:"clusterVersion"`
+	ContainerNetworkCidr pulumi.StringInput                             `pulumi:"containerNetworkCidr"`
+	ContainerNetworkType pulumi.StringInput                             `pulumi:"containerNetworkType"`
+	Description          pulumi.StringInput                             `pulumi:"description"`
+	Endpoints            GetClustersClusterEndpointArrayInput           `pulumi:"endpoints"`
+	EniSubnetCidr        pulumi.StringInput                             `pulumi:"eniSubnetCidr"`
+	EniSubnetId          pulumi.StringInput                             `pulumi:"eniSubnetId"`
+	EnterpriseProjectId  pulumi.StringInput                             `pulumi:"enterpriseProjectId"`
+	FlavorId             pulumi.StringInput                             `pulumi:"flavorId"`
+	Id                   pulumi.StringInput                             `pulumi:"id"`
+	KubeConfigRaw        pulumi.StringInput                             `pulumi:"kubeConfigRaw"`
+	Masters              GetClustersClusterMasterArrayInput             `pulumi:"masters"`
+	Name                 pulumi.StringInput                             `pulumi:"name"`
+	SecurityGroupId      pulumi.StringInput                             `pulumi:"securityGroupId"`
+	ServiceNetworkCidr   pulumi.StringInput                             `pulumi:"serviceNetworkCidr"`
+	Status               pulumi.StringInput                             `pulumi:"status"`
+	SubnetId             pulumi.StringInput                             `pulumi:"subnetId"`
+	VpcId                pulumi.StringInput                             `pulumi:"vpcId"`
 }
 
 func (GetClustersClusterArgs) ElementType() reflect.Type {
@@ -7945,117 +6753,94 @@ func (o GetClustersClusterOutput) ToGetClustersClusterOutputWithContext(ctx cont
 	return o
 }
 
-// The authentication mode of the cluster, possible values are x509 and rbac. Defaults to **rbac**.
 func (o GetClustersClusterOutput) AuthenticationMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.AuthenticationMode }).(pulumi.StringOutput)
 }
 
-// The charging mode of the cluster.
 func (o GetClustersClusterOutput) BillingMode() pulumi.IntOutput {
 	return o.ApplyT(func(v GetClustersCluster) int { return v.BillingMode }).(pulumi.IntOutput)
 }
 
-// The certificate clusters. Structure is documented below.
 func (o GetClustersClusterOutput) CertificateClusters() GetClustersClusterCertificateClusterArrayOutput {
 	return o.ApplyT(func(v GetClustersCluster) []GetClustersClusterCertificateCluster { return v.CertificateClusters }).(GetClustersClusterCertificateClusterArrayOutput)
 }
 
-// The certificate users. Structure is documented below.
 func (o GetClustersClusterOutput) CertificateUsers() GetClustersClusterCertificateUserArrayOutput {
 	return o.ApplyT(func(v GetClustersCluster) []GetClustersClusterCertificateUser { return v.CertificateUsers }).(GetClustersClusterCertificateUserArrayOutput)
 }
 
-// Specifies the type of the cluster. Possible values: **VirtualMachine**, **BareMetal**.
 func (o GetClustersClusterOutput) ClusterType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.ClusterType }).(pulumi.StringOutput)
 }
 
-// The version of the cluster.
 func (o GetClustersClusterOutput) ClusterVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.ClusterVersion }).(pulumi.StringOutput)
 }
 
-// The container network segment.
 func (o GetClustersClusterOutput) ContainerNetworkCidr() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.ContainerNetworkCidr }).(pulumi.StringOutput)
 }
 
-// The container network type: **overlay_l2** , **underlay_ipvlan**, **vpc-router** or **eni**.
 func (o GetClustersClusterOutput) ContainerNetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.ContainerNetworkType }).(pulumi.StringOutput)
 }
 
-// The description of the cluster.
 func (o GetClustersClusterOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The access addresses of kube-apiserver in the cluster. Structure is documented below.
 func (o GetClustersClusterOutput) Endpoints() GetClustersClusterEndpointArrayOutput {
 	return o.ApplyT(func(v GetClustersCluster) []GetClustersClusterEndpoint { return v.Endpoints }).(GetClustersClusterEndpointArrayOutput)
 }
 
-// The ENI network segment.
 func (o GetClustersClusterOutput) EniSubnetCidr() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.EniSubnetCidr }).(pulumi.StringOutput)
 }
 
-// The ENI**IPv4 subnet ID** of the subnet where the ENI resides.
 func (o GetClustersClusterOutput) EniSubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.EniSubnetId }).(pulumi.StringOutput)
 }
 
-// Specifies the enterprise project ID of the cluster.
 func (o GetClustersClusterOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// The specification of the cluster.
 func (o GetClustersClusterOutput) FlavorId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.FlavorId }).(pulumi.StringOutput)
 }
 
-// The ID of the cluster.
 func (o GetClustersClusterOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The raw Kubernetes config to be used by kubectl and other compatible tools.
 func (o GetClustersClusterOutput) KubeConfigRaw() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.KubeConfigRaw }).(pulumi.StringOutput)
 }
 
-// The advanced configuration of master nodes.
 func (o GetClustersClusterOutput) Masters() GetClustersClusterMasterArrayOutput {
 	return o.ApplyT(func(v GetClustersCluster) []GetClustersClusterMaster { return v.Masters }).(GetClustersClusterMasterArrayOutput)
 }
 
-// Specifies the name of the cluster.
 func (o GetClustersClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The security group ID of the cluster.
 func (o GetClustersClusterOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
-// The service network segment.
 func (o GetClustersClusterOutput) ServiceNetworkCidr() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.ServiceNetworkCidr }).(pulumi.StringOutput)
 }
 
-// Specifies the status of the cluster.
 func (o GetClustersClusterOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The ID of the subnet used to create the node.
 func (o GetClustersClusterOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.SubnetId }).(pulumi.StringOutput)
 }
 
-// Specifies the VPC ID to which the cluster belongs.
 func (o GetClustersClusterOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.VpcId }).(pulumi.StringOutput)
 }
@@ -8081,12 +6866,9 @@ func (o GetClustersClusterArrayOutput) Index(i pulumi.IntInput) GetClustersClust
 }
 
 type GetClustersClusterCertificateCluster struct {
-	// The certificate data.
 	CertificateAuthorityData string `pulumi:"certificateAuthorityData"`
-	// Specifies the name of the cluster.
-	Name string `pulumi:"name"`
-	// The server IP address.
-	Server string `pulumi:"server"`
+	Name                     string `pulumi:"name"`
+	Server                   string `pulumi:"server"`
 }
 
 // GetClustersClusterCertificateClusterInput is an input type that accepts GetClustersClusterCertificateClusterArgs and GetClustersClusterCertificateClusterOutput values.
@@ -8101,12 +6883,9 @@ type GetClustersClusterCertificateClusterInput interface {
 }
 
 type GetClustersClusterCertificateClusterArgs struct {
-	// The certificate data.
 	CertificateAuthorityData pulumi.StringInput `pulumi:"certificateAuthorityData"`
-	// Specifies the name of the cluster.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The server IP address.
-	Server pulumi.StringInput `pulumi:"server"`
+	Name                     pulumi.StringInput `pulumi:"name"`
+	Server                   pulumi.StringInput `pulumi:"server"`
 }
 
 func (GetClustersClusterCertificateClusterArgs) ElementType() reflect.Type {
@@ -8160,17 +6939,14 @@ func (o GetClustersClusterCertificateClusterOutput) ToGetClustersClusterCertific
 	return o
 }
 
-// The certificate data.
 func (o GetClustersClusterCertificateClusterOutput) CertificateAuthorityData() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterCertificateCluster) string { return v.CertificateAuthorityData }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the cluster.
 func (o GetClustersClusterCertificateClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterCertificateCluster) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The server IP address.
 func (o GetClustersClusterCertificateClusterOutput) Server() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterCertificateCluster) string { return v.Server }).(pulumi.StringOutput)
 }
@@ -8196,12 +6972,9 @@ func (o GetClustersClusterCertificateClusterArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetClustersClusterCertificateUser struct {
-	// The client certificate data.
 	ClientCertificateData string `pulumi:"clientCertificateData"`
-	// The client key data.
-	ClientKeyData string `pulumi:"clientKeyData"`
-	// Specifies the name of the cluster.
-	Name string `pulumi:"name"`
+	ClientKeyData         string `pulumi:"clientKeyData"`
+	Name                  string `pulumi:"name"`
 }
 
 // GetClustersClusterCertificateUserInput is an input type that accepts GetClustersClusterCertificateUserArgs and GetClustersClusterCertificateUserOutput values.
@@ -8216,12 +6989,9 @@ type GetClustersClusterCertificateUserInput interface {
 }
 
 type GetClustersClusterCertificateUserArgs struct {
-	// The client certificate data.
 	ClientCertificateData pulumi.StringInput `pulumi:"clientCertificateData"`
-	// The client key data.
-	ClientKeyData pulumi.StringInput `pulumi:"clientKeyData"`
-	// Specifies the name of the cluster.
-	Name pulumi.StringInput `pulumi:"name"`
+	ClientKeyData         pulumi.StringInput `pulumi:"clientKeyData"`
+	Name                  pulumi.StringInput `pulumi:"name"`
 }
 
 func (GetClustersClusterCertificateUserArgs) ElementType() reflect.Type {
@@ -8275,17 +7045,14 @@ func (o GetClustersClusterCertificateUserOutput) ToGetClustersClusterCertificate
 	return o
 }
 
-// The client certificate data.
 func (o GetClustersClusterCertificateUserOutput) ClientCertificateData() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterCertificateUser) string { return v.ClientCertificateData }).(pulumi.StringOutput)
 }
 
-// The client key data.
 func (o GetClustersClusterCertificateUserOutput) ClientKeyData() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterCertificateUser) string { return v.ClientKeyData }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the cluster.
 func (o GetClustersClusterCertificateUserOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterCertificateUser) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -8311,12 +7078,8 @@ func (o GetClustersClusterCertificateUserArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetClustersClusterEndpoint struct {
-	// The type of the cluster access address.
-	// + **Internal**: The user's subnet access address.
-	// + **External**: The public network access address.
 	Type string `pulumi:"type"`
-	// The URL of the cluster access address.
-	Url string `pulumi:"url"`
+	Url  string `pulumi:"url"`
 }
 
 // GetClustersClusterEndpointInput is an input type that accepts GetClustersClusterEndpointArgs and GetClustersClusterEndpointOutput values.
@@ -8331,12 +7094,8 @@ type GetClustersClusterEndpointInput interface {
 }
 
 type GetClustersClusterEndpointArgs struct {
-	// The type of the cluster access address.
-	// + **Internal**: The user's subnet access address.
-	// + **External**: The public network access address.
 	Type pulumi.StringInput `pulumi:"type"`
-	// The URL of the cluster access address.
-	Url pulumi.StringInput `pulumi:"url"`
+	Url  pulumi.StringInput `pulumi:"url"`
 }
 
 func (GetClustersClusterEndpointArgs) ElementType() reflect.Type {
@@ -8390,14 +7149,10 @@ func (o GetClustersClusterEndpointOutput) ToGetClustersClusterEndpointOutputWith
 	return o
 }
 
-// The type of the cluster access address.
-// + **Internal**: The user's subnet access address.
-// + **External**: The public network access address.
 func (o GetClustersClusterEndpointOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterEndpoint) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The URL of the cluster access address.
 func (o GetClustersClusterEndpointOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterEndpoint) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -8423,7 +7178,6 @@ func (o GetClustersClusterEndpointArrayOutput) Index(i pulumi.IntInput) GetClust
 }
 
 type GetClustersClusterMaster struct {
-	// The availability zone (AZ) of the master node.
 	AvailabilityZone string `pulumi:"availabilityZone"`
 }
 
@@ -8439,7 +7193,6 @@ type GetClustersClusterMasterInput interface {
 }
 
 type GetClustersClusterMasterArgs struct {
-	// The availability zone (AZ) of the master node.
 	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
 }
 
@@ -8494,7 +7247,6 @@ func (o GetClustersClusterMasterOutput) ToGetClustersClusterMasterOutputWithCont
 	return o
 }
 
-// The availability zone (AZ) of the master node.
 func (o GetClustersClusterMasterOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterMaster) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
@@ -8520,12 +7272,9 @@ func (o GetClustersClusterMasterArrayOutput) Index(i pulumi.IntInput) GetCluster
 }
 
 type GetNodeDataVolume struct {
-	// Disk expansion parameters.
 	ExtendParams map[string]string `pulumi:"extendParams"`
-	// Disk size in GB.
-	Size int `pulumi:"size"`
-	// Disk type.
-	Volumetype string `pulumi:"volumetype"`
+	Size         int               `pulumi:"size"`
+	Volumetype   string            `pulumi:"volumetype"`
 }
 
 // GetNodeDataVolumeInput is an input type that accepts GetNodeDataVolumeArgs and GetNodeDataVolumeOutput values.
@@ -8540,12 +7289,9 @@ type GetNodeDataVolumeInput interface {
 }
 
 type GetNodeDataVolumeArgs struct {
-	// Disk expansion parameters.
 	ExtendParams pulumi.StringMapInput `pulumi:"extendParams"`
-	// Disk size in GB.
-	Size pulumi.IntInput `pulumi:"size"`
-	// Disk type.
-	Volumetype pulumi.StringInput `pulumi:"volumetype"`
+	Size         pulumi.IntInput       `pulumi:"size"`
+	Volumetype   pulumi.StringInput    `pulumi:"volumetype"`
 }
 
 func (GetNodeDataVolumeArgs) ElementType() reflect.Type {
@@ -8599,17 +7345,14 @@ func (o GetNodeDataVolumeOutput) ToGetNodeDataVolumeOutputWithContext(ctx contex
 	return o
 }
 
-// Disk expansion parameters.
 func (o GetNodeDataVolumeOutput) ExtendParams() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetNodeDataVolume) map[string]string { return v.ExtendParams }).(pulumi.StringMapOutput)
 }
 
-// Disk size in GB.
 func (o GetNodeDataVolumeOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetNodeDataVolume) int { return v.Size }).(pulumi.IntOutput)
 }
 
-// Disk type.
 func (o GetNodeDataVolumeOutput) Volumetype() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodeDataVolume) string { return v.Volumetype }).(pulumi.StringOutput)
 }
@@ -8729,12 +7472,9 @@ func (o GetNodeHostnameConfigArrayOutput) Index(i pulumi.IntInput) GetNodeHostna
 }
 
 type GetNodePoolDataVolume struct {
-	// Disk expansion parameters.
 	ExtendParams map[string]string `pulumi:"extendParams"`
-	// Disk size in GB.
-	Size int `pulumi:"size"`
-	// Disk type.
-	Volumetype string `pulumi:"volumetype"`
+	Size         int               `pulumi:"size"`
+	Volumetype   string            `pulumi:"volumetype"`
 }
 
 // GetNodePoolDataVolumeInput is an input type that accepts GetNodePoolDataVolumeArgs and GetNodePoolDataVolumeOutput values.
@@ -8749,12 +7489,9 @@ type GetNodePoolDataVolumeInput interface {
 }
 
 type GetNodePoolDataVolumeArgs struct {
-	// Disk expansion parameters.
 	ExtendParams pulumi.StringMapInput `pulumi:"extendParams"`
-	// Disk size in GB.
-	Size pulumi.IntInput `pulumi:"size"`
-	// Disk type.
-	Volumetype pulumi.StringInput `pulumi:"volumetype"`
+	Size         pulumi.IntInput       `pulumi:"size"`
+	Volumetype   pulumi.StringInput    `pulumi:"volumetype"`
 }
 
 func (GetNodePoolDataVolumeArgs) ElementType() reflect.Type {
@@ -8808,17 +7545,14 @@ func (o GetNodePoolDataVolumeOutput) ToGetNodePoolDataVolumeOutputWithContext(ct
 	return o
 }
 
-// Disk expansion parameters.
 func (o GetNodePoolDataVolumeOutput) ExtendParams() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetNodePoolDataVolume) map[string]string { return v.ExtendParams }).(pulumi.StringMapOutput)
 }
 
-// Disk size in GB.
 func (o GetNodePoolDataVolumeOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetNodePoolDataVolume) int { return v.Size }).(pulumi.IntOutput)
 }
 
-// Disk type.
 func (o GetNodePoolDataVolumeOutput) Volumetype() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodePoolDataVolume) string { return v.Volumetype }).(pulumi.StringOutput)
 }
@@ -8844,7 +7578,6 @@ func (o GetNodePoolDataVolumeArrayOutput) Index(i pulumi.IntInput) GetNodePoolDa
 }
 
 type GetNodePoolHostnameConfig struct {
-	// Node Pool type.
 	Type string `pulumi:"type"`
 }
 
@@ -8860,7 +7593,6 @@ type GetNodePoolHostnameConfigInput interface {
 }
 
 type GetNodePoolHostnameConfigArgs struct {
-	// Node Pool type.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -8915,7 +7647,6 @@ func (o GetNodePoolHostnameConfigOutput) ToGetNodePoolHostnameConfigOutputWithCo
 	return o
 }
 
-// Node Pool type.
 func (o GetNodePoolHostnameConfigOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodePoolHostnameConfig) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -8941,12 +7672,9 @@ func (o GetNodePoolHostnameConfigArrayOutput) Index(i pulumi.IntInput) GetNodePo
 }
 
 type GetNodePoolRootVolume struct {
-	// Disk expansion parameters.
 	ExtendParams map[string]string `pulumi:"extendParams"`
-	// Disk size in GB.
-	Size int `pulumi:"size"`
-	// Disk type.
-	Volumetype string `pulumi:"volumetype"`
+	Size         int               `pulumi:"size"`
+	Volumetype   string            `pulumi:"volumetype"`
 }
 
 // GetNodePoolRootVolumeInput is an input type that accepts GetNodePoolRootVolumeArgs and GetNodePoolRootVolumeOutput values.
@@ -8961,12 +7689,9 @@ type GetNodePoolRootVolumeInput interface {
 }
 
 type GetNodePoolRootVolumeArgs struct {
-	// Disk expansion parameters.
 	ExtendParams pulumi.StringMapInput `pulumi:"extendParams"`
-	// Disk size in GB.
-	Size pulumi.IntInput `pulumi:"size"`
-	// Disk type.
-	Volumetype pulumi.StringInput `pulumi:"volumetype"`
+	Size         pulumi.IntInput       `pulumi:"size"`
+	Volumetype   pulumi.StringInput    `pulumi:"volumetype"`
 }
 
 func (GetNodePoolRootVolumeArgs) ElementType() reflect.Type {
@@ -9020,17 +7745,14 @@ func (o GetNodePoolRootVolumeOutput) ToGetNodePoolRootVolumeOutputWithContext(ct
 	return o
 }
 
-// Disk expansion parameters.
 func (o GetNodePoolRootVolumeOutput) ExtendParams() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetNodePoolRootVolume) map[string]string { return v.ExtendParams }).(pulumi.StringMapOutput)
 }
 
-// Disk size in GB.
 func (o GetNodePoolRootVolumeOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetNodePoolRootVolume) int { return v.Size }).(pulumi.IntOutput)
 }
 
-// Disk type.
 func (o GetNodePoolRootVolumeOutput) Volumetype() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodePoolRootVolume) string { return v.Volumetype }).(pulumi.StringOutput)
 }
@@ -9056,12 +7778,9 @@ func (o GetNodePoolRootVolumeArrayOutput) Index(i pulumi.IntInput) GetNodePoolRo
 }
 
 type GetNodeRootVolume struct {
-	// Disk expansion parameters.
 	ExtendParams map[string]string `pulumi:"extendParams"`
-	// Disk size in GB.
-	Size int `pulumi:"size"`
-	// Disk type.
-	Volumetype string `pulumi:"volumetype"`
+	Size         int               `pulumi:"size"`
+	Volumetype   string            `pulumi:"volumetype"`
 }
 
 // GetNodeRootVolumeInput is an input type that accepts GetNodeRootVolumeArgs and GetNodeRootVolumeOutput values.
@@ -9076,12 +7795,9 @@ type GetNodeRootVolumeInput interface {
 }
 
 type GetNodeRootVolumeArgs struct {
-	// Disk expansion parameters.
 	ExtendParams pulumi.StringMapInput `pulumi:"extendParams"`
-	// Disk size in GB.
-	Size pulumi.IntInput `pulumi:"size"`
-	// Disk type.
-	Volumetype pulumi.StringInput `pulumi:"volumetype"`
+	Size         pulumi.IntInput       `pulumi:"size"`
+	Volumetype   pulumi.StringInput    `pulumi:"volumetype"`
 }
 
 func (GetNodeRootVolumeArgs) ElementType() reflect.Type {
@@ -9135,17 +7851,14 @@ func (o GetNodeRootVolumeOutput) ToGetNodeRootVolumeOutputWithContext(ctx contex
 	return o
 }
 
-// Disk expansion parameters.
 func (o GetNodeRootVolumeOutput) ExtendParams() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetNodeRootVolume) map[string]string { return v.ExtendParams }).(pulumi.StringMapOutput)
 }
 
-// Disk size in GB.
 func (o GetNodeRootVolumeOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetNodeRootVolume) int { return v.Size }).(pulumi.IntOutput)
 }
 
-// Disk type.
 func (o GetNodeRootVolumeOutput) Volumetype() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodeRootVolume) string { return v.Volumetype }).(pulumi.StringOutput)
 }
@@ -9171,40 +7884,24 @@ func (o GetNodeRootVolumeArrayOutput) Index(i pulumi.IntInput) GetNodeRootVolume
 }
 
 type GetNodesNode struct {
-	// The available partitions where the node is located.
-	AvailabilityZone string `pulumi:"availabilityZone"`
-	// The node's billing mode: The value is 0 (on demand).
-	BillingMode int `pulumi:"billingMode"`
-	// The data related configuration. Structure is documented below.
-	DataVolumes []GetNodesNodeDataVolume `pulumi:"dataVolumes"`
-	// The ID of ECS group to which the node belongs.
-	EcsGroupId          string `pulumi:"ecsGroupId"`
-	EnterpriseProjectId string `pulumi:"enterpriseProjectId"`
-	// The flavor ID to be used.
-	FlavorId        string                       `pulumi:"flavorId"`
-	HostnameConfigs []GetNodesNodeHostnameConfig `pulumi:"hostnameConfigs"`
-	// The ID of the node.
-	Id string `pulumi:"id"`
-	// The key pair name when logging in to select the key pair mode.
-	KeyPair string `pulumi:"keyPair"`
-	// Specifies the of the node.
-	Name string `pulumi:"name"`
-	// The operating System of the node.
-	Os string `pulumi:"os"`
-	// The private IP of the node.
-	PrivateIp string `pulumi:"privateIp"`
-	// The elastic IP parameters of the node.
-	PublicIp string `pulumi:"publicIp"`
-	// The system disk related configuration. Structure is documented below.
-	RootVolumes []GetNodesNodeRootVolume `pulumi:"rootVolumes"`
-	// The node's virtual machine ID in ECS.
-	ServerId string `pulumi:"serverId"`
-	// Specifies the status of the node.
-	Status string `pulumi:"status"`
-	// The ID of the subnet to which the NIC belongs.
-	SubnetId string `pulumi:"subnetId"`
-	// The tags of a VM node, key/value pair format.
-	Tags map[string]string `pulumi:"tags"`
+	AvailabilityZone    string                       `pulumi:"availabilityZone"`
+	BillingMode         int                          `pulumi:"billingMode"`
+	DataVolumes         []GetNodesNodeDataVolume     `pulumi:"dataVolumes"`
+	EcsGroupId          string                       `pulumi:"ecsGroupId"`
+	EnterpriseProjectId string                       `pulumi:"enterpriseProjectId"`
+	FlavorId            string                       `pulumi:"flavorId"`
+	HostnameConfigs     []GetNodesNodeHostnameConfig `pulumi:"hostnameConfigs"`
+	Id                  string                       `pulumi:"id"`
+	KeyPair             string                       `pulumi:"keyPair"`
+	Name                string                       `pulumi:"name"`
+	Os                  string                       `pulumi:"os"`
+	PrivateIp           string                       `pulumi:"privateIp"`
+	PublicIp            string                       `pulumi:"publicIp"`
+	RootVolumes         []GetNodesNodeRootVolume     `pulumi:"rootVolumes"`
+	ServerId            string                       `pulumi:"serverId"`
+	Status              string                       `pulumi:"status"`
+	SubnetId            string                       `pulumi:"subnetId"`
+	Tags                map[string]string            `pulumi:"tags"`
 }
 
 // GetNodesNodeInput is an input type that accepts GetNodesNodeArgs and GetNodesNodeOutput values.
@@ -9219,40 +7916,24 @@ type GetNodesNodeInput interface {
 }
 
 type GetNodesNodeArgs struct {
-	// The available partitions where the node is located.
-	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
-	// The node's billing mode: The value is 0 (on demand).
-	BillingMode pulumi.IntInput `pulumi:"billingMode"`
-	// The data related configuration. Structure is documented below.
-	DataVolumes GetNodesNodeDataVolumeArrayInput `pulumi:"dataVolumes"`
-	// The ID of ECS group to which the node belongs.
-	EcsGroupId          pulumi.StringInput `pulumi:"ecsGroupId"`
-	EnterpriseProjectId pulumi.StringInput `pulumi:"enterpriseProjectId"`
-	// The flavor ID to be used.
-	FlavorId        pulumi.StringInput                   `pulumi:"flavorId"`
-	HostnameConfigs GetNodesNodeHostnameConfigArrayInput `pulumi:"hostnameConfigs"`
-	// The ID of the node.
-	Id pulumi.StringInput `pulumi:"id"`
-	// The key pair name when logging in to select the key pair mode.
-	KeyPair pulumi.StringInput `pulumi:"keyPair"`
-	// Specifies the of the node.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The operating System of the node.
-	Os pulumi.StringInput `pulumi:"os"`
-	// The private IP of the node.
-	PrivateIp pulumi.StringInput `pulumi:"privateIp"`
-	// The elastic IP parameters of the node.
-	PublicIp pulumi.StringInput `pulumi:"publicIp"`
-	// The system disk related configuration. Structure is documented below.
-	RootVolumes GetNodesNodeRootVolumeArrayInput `pulumi:"rootVolumes"`
-	// The node's virtual machine ID in ECS.
-	ServerId pulumi.StringInput `pulumi:"serverId"`
-	// Specifies the status of the node.
-	Status pulumi.StringInput `pulumi:"status"`
-	// The ID of the subnet to which the NIC belongs.
-	SubnetId pulumi.StringInput `pulumi:"subnetId"`
-	// The tags of a VM node, key/value pair format.
-	Tags pulumi.StringMapInput `pulumi:"tags"`
+	AvailabilityZone    pulumi.StringInput                   `pulumi:"availabilityZone"`
+	BillingMode         pulumi.IntInput                      `pulumi:"billingMode"`
+	DataVolumes         GetNodesNodeDataVolumeArrayInput     `pulumi:"dataVolumes"`
+	EcsGroupId          pulumi.StringInput                   `pulumi:"ecsGroupId"`
+	EnterpriseProjectId pulumi.StringInput                   `pulumi:"enterpriseProjectId"`
+	FlavorId            pulumi.StringInput                   `pulumi:"flavorId"`
+	HostnameConfigs     GetNodesNodeHostnameConfigArrayInput `pulumi:"hostnameConfigs"`
+	Id                  pulumi.StringInput                   `pulumi:"id"`
+	KeyPair             pulumi.StringInput                   `pulumi:"keyPair"`
+	Name                pulumi.StringInput                   `pulumi:"name"`
+	Os                  pulumi.StringInput                   `pulumi:"os"`
+	PrivateIp           pulumi.StringInput                   `pulumi:"privateIp"`
+	PublicIp            pulumi.StringInput                   `pulumi:"publicIp"`
+	RootVolumes         GetNodesNodeRootVolumeArrayInput     `pulumi:"rootVolumes"`
+	ServerId            pulumi.StringInput                   `pulumi:"serverId"`
+	Status              pulumi.StringInput                   `pulumi:"status"`
+	SubnetId            pulumi.StringInput                   `pulumi:"subnetId"`
+	Tags                pulumi.StringMapInput                `pulumi:"tags"`
 }
 
 func (GetNodesNodeArgs) ElementType() reflect.Type {
@@ -9306,22 +7987,18 @@ func (o GetNodesNodeOutput) ToGetNodesNodeOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The available partitions where the node is located.
 func (o GetNodesNodeOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodesNode) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// The node's billing mode: The value is 0 (on demand).
 func (o GetNodesNodeOutput) BillingMode() pulumi.IntOutput {
 	return o.ApplyT(func(v GetNodesNode) int { return v.BillingMode }).(pulumi.IntOutput)
 }
 
-// The data related configuration. Structure is documented below.
 func (o GetNodesNodeOutput) DataVolumes() GetNodesNodeDataVolumeArrayOutput {
 	return o.ApplyT(func(v GetNodesNode) []GetNodesNodeDataVolume { return v.DataVolumes }).(GetNodesNodeDataVolumeArrayOutput)
 }
 
-// The ID of ECS group to which the node belongs.
 func (o GetNodesNodeOutput) EcsGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodesNode) string { return v.EcsGroupId }).(pulumi.StringOutput)
 }
@@ -9330,7 +8007,6 @@ func (o GetNodesNodeOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodesNode) string { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// The flavor ID to be used.
 func (o GetNodesNodeOutput) FlavorId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodesNode) string { return v.FlavorId }).(pulumi.StringOutput)
 }
@@ -9339,57 +8015,46 @@ func (o GetNodesNodeOutput) HostnameConfigs() GetNodesNodeHostnameConfigArrayOut
 	return o.ApplyT(func(v GetNodesNode) []GetNodesNodeHostnameConfig { return v.HostnameConfigs }).(GetNodesNodeHostnameConfigArrayOutput)
 }
 
-// The ID of the node.
 func (o GetNodesNodeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodesNode) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The key pair name when logging in to select the key pair mode.
 func (o GetNodesNodeOutput) KeyPair() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodesNode) string { return v.KeyPair }).(pulumi.StringOutput)
 }
 
-// Specifies the of the node.
 func (o GetNodesNodeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodesNode) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The operating System of the node.
 func (o GetNodesNodeOutput) Os() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodesNode) string { return v.Os }).(pulumi.StringOutput)
 }
 
-// The private IP of the node.
 func (o GetNodesNodeOutput) PrivateIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodesNode) string { return v.PrivateIp }).(pulumi.StringOutput)
 }
 
-// The elastic IP parameters of the node.
 func (o GetNodesNodeOutput) PublicIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodesNode) string { return v.PublicIp }).(pulumi.StringOutput)
 }
 
-// The system disk related configuration. Structure is documented below.
 func (o GetNodesNodeOutput) RootVolumes() GetNodesNodeRootVolumeArrayOutput {
 	return o.ApplyT(func(v GetNodesNode) []GetNodesNodeRootVolume { return v.RootVolumes }).(GetNodesNodeRootVolumeArrayOutput)
 }
 
-// The node's virtual machine ID in ECS.
 func (o GetNodesNodeOutput) ServerId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodesNode) string { return v.ServerId }).(pulumi.StringOutput)
 }
 
-// Specifies the status of the node.
 func (o GetNodesNodeOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodesNode) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The ID of the subnet to which the NIC belongs.
 func (o GetNodesNodeOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodesNode) string { return v.SubnetId }).(pulumi.StringOutput)
 }
 
-// The tags of a VM node, key/value pair format.
 func (o GetNodesNodeOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetNodesNode) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -9415,12 +8080,9 @@ func (o GetNodesNodeArrayOutput) Index(i pulumi.IntInput) GetNodesNodeOutput {
 }
 
 type GetNodesNodeDataVolume struct {
-	// Disk expansion parameters.
 	ExtendParams map[string]string `pulumi:"extendParams"`
-	// Disk size in GB.
-	Size int `pulumi:"size"`
-	// Disk type.
-	Volumetype string `pulumi:"volumetype"`
+	Size         int               `pulumi:"size"`
+	Volumetype   string            `pulumi:"volumetype"`
 }
 
 // GetNodesNodeDataVolumeInput is an input type that accepts GetNodesNodeDataVolumeArgs and GetNodesNodeDataVolumeOutput values.
@@ -9435,12 +8097,9 @@ type GetNodesNodeDataVolumeInput interface {
 }
 
 type GetNodesNodeDataVolumeArgs struct {
-	// Disk expansion parameters.
 	ExtendParams pulumi.StringMapInput `pulumi:"extendParams"`
-	// Disk size in GB.
-	Size pulumi.IntInput `pulumi:"size"`
-	// Disk type.
-	Volumetype pulumi.StringInput `pulumi:"volumetype"`
+	Size         pulumi.IntInput       `pulumi:"size"`
+	Volumetype   pulumi.StringInput    `pulumi:"volumetype"`
 }
 
 func (GetNodesNodeDataVolumeArgs) ElementType() reflect.Type {
@@ -9494,17 +8153,14 @@ func (o GetNodesNodeDataVolumeOutput) ToGetNodesNodeDataVolumeOutputWithContext(
 	return o
 }
 
-// Disk expansion parameters.
 func (o GetNodesNodeDataVolumeOutput) ExtendParams() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetNodesNodeDataVolume) map[string]string { return v.ExtendParams }).(pulumi.StringMapOutput)
 }
 
-// Disk size in GB.
 func (o GetNodesNodeDataVolumeOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetNodesNodeDataVolume) int { return v.Size }).(pulumi.IntOutput)
 }
 
-// Disk type.
 func (o GetNodesNodeDataVolumeOutput) Volumetype() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodesNodeDataVolume) string { return v.Volumetype }).(pulumi.StringOutput)
 }
@@ -9624,12 +8280,9 @@ func (o GetNodesNodeHostnameConfigArrayOutput) Index(i pulumi.IntInput) GetNodes
 }
 
 type GetNodesNodeRootVolume struct {
-	// Disk expansion parameters.
 	ExtendParams map[string]string `pulumi:"extendParams"`
-	// Disk size in GB.
-	Size int `pulumi:"size"`
-	// Disk type.
-	Volumetype string `pulumi:"volumetype"`
+	Size         int               `pulumi:"size"`
+	Volumetype   string            `pulumi:"volumetype"`
 }
 
 // GetNodesNodeRootVolumeInput is an input type that accepts GetNodesNodeRootVolumeArgs and GetNodesNodeRootVolumeOutput values.
@@ -9644,12 +8297,9 @@ type GetNodesNodeRootVolumeInput interface {
 }
 
 type GetNodesNodeRootVolumeArgs struct {
-	// Disk expansion parameters.
 	ExtendParams pulumi.StringMapInput `pulumi:"extendParams"`
-	// Disk size in GB.
-	Size pulumi.IntInput `pulumi:"size"`
-	// Disk type.
-	Volumetype pulumi.StringInput `pulumi:"volumetype"`
+	Size         pulumi.IntInput       `pulumi:"size"`
+	Volumetype   pulumi.StringInput    `pulumi:"volumetype"`
 }
 
 func (GetNodesNodeRootVolumeArgs) ElementType() reflect.Type {
@@ -9703,17 +8353,14 @@ func (o GetNodesNodeRootVolumeOutput) ToGetNodesNodeRootVolumeOutputWithContext(
 	return o
 }
 
-// Disk expansion parameters.
 func (o GetNodesNodeRootVolumeOutput) ExtendParams() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetNodesNodeRootVolume) map[string]string { return v.ExtendParams }).(pulumi.StringMapOutput)
 }
 
-// Disk size in GB.
 func (o GetNodesNodeRootVolumeOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetNodesNodeRootVolume) int { return v.Size }).(pulumi.IntOutput)
 }
 
-// Disk type.
 func (o GetNodesNodeRootVolumeOutput) Volumetype() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodesNodeRootVolume) string { return v.Volumetype }).(pulumi.StringOutput)
 }

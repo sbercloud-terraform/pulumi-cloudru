@@ -6,118 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages an AS configuration resource within SberCloud.
- *
- * ## Example Usage
- *
- * ### Basic AS Configuration
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const flavorId = config.requireObject<any>("flavorId");
- * const imageId = config.requireObject<any>("imageId");
- * const sshKey = config.requireObject<any>("sshKey");
- * const securityGroupId = config.requireObject<any>("securityGroupId");
- * const myAsConfig = new sbercloud.as.Configuration("my_as_config", {
- *     scalingConfigurationName: "my_as_config",
- *     instanceConfig: {
- *         flavor: flavorId,
- *         image: imageId,
- *         keyName: sshKey,
- *         securityGroupIds: [securityGroupId],
- *         disks: [{
- *             size: 40,
- *             volumeType: "SSD",
- *             diskType: "SYS",
- *         }],
- *     },
- * });
- * ```
- *
- * ### AS Configuration With Encrypted Data Disk
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const flavorId = config.requireObject<any>("flavorId");
- * const imageId = config.requireObject<any>("imageId");
- * const sshKey = config.requireObject<any>("sshKey");
- * const kmsId = config.requireObject<any>("kmsId");
- * const securityGroupId = config.requireObject<any>("securityGroupId");
- * const myAsConfig = new sbercloud.as.Configuration("my_as_config", {
- *     scalingConfigurationName: "my_as_config",
- *     instanceConfig: {
- *         flavor: flavorId,
- *         image: imageId,
- *         keyName: sshKey,
- *         securityGroupIds: [securityGroupId],
- *         disks: [
- *             {
- *                 size: 40,
- *                 volumeType: "SSD",
- *                 diskType: "SYS",
- *             },
- *             {
- *                 size: 100,
- *                 volumeType: "SSD",
- *                 diskType: "DATA",
- *                 kmsId: kmsId,
- *             },
- *         ],
- *     },
- * });
- * ```
- *
- * ### AS Configuration uses the existing instance specifications as the template
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const sshKey = config.requireObject<any>("sshKey");
- * const securityGroupId = config.requireObject<any>("securityGroupId");
- * const myAsConfig = new sbercloud.as.Configuration("my_as_config", {
- *     scalingConfigurationName: "my_as_config",
- *     instanceConfig: {
- *         instanceId: instanceId,
- *         keyName: sshKey,
- *         securityGroupIds: [securityGroupId],
- *     },
- * });
- * ```
- *
- * ## Import
- *
- * AS configurations can be imported by their `id`, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:As/configuration:Configuration test 18518c8a-9d15-416b-8add-2ee874751d18
- * ```
- *
- * Note that the imported state may not be identical to your resource definition, due to `instance_config.0.instance_id`
- *
- * is missing from the API response. You can ignore changes after importing an AS configuration as below.
- *
- * resource "sbercloud_as_configuration" "test" {
- *
- *   ...
- *
- *   lifecycle {
- *
- *     ignore_changes = [ instance_config.0.instance_id ]
- *
- *   }
- *
- * }
- */
 export class Configuration extends pulumi.CustomResource {
     /**
      * Get an existing Configuration resource's state with the given name, ID, and optional extra
@@ -147,25 +35,9 @@ export class Configuration extends pulumi.CustomResource {
     }
 
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
-    /**
-     * Specifies the information about instance configuration.
-     * The object structure is documented below. Changing this will create a new resource.
-     */
     declare public readonly instanceConfig: pulumi.Output<outputs.As.ConfigurationInstanceConfig>;
-    /**
-     * Specifies the region in which to create the AS configuration.
-     * If omitted, the provider-level region will be used. Changing this will create a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Specifies the AS configuration name.
-     * The name contains only letters, digits, underscores (_), and hyphens (-), and cannot exceed 64 characters.
-     * Changing this will create a new resource.
-     */
     declare public readonly scalingConfigurationName: pulumi.Output<string>;
-    /**
-     * The AS configuration status, the value can be **Bound** or **Unbound**.
-     */
     declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
@@ -210,25 +82,9 @@ export class Configuration extends pulumi.CustomResource {
  */
 export interface ConfigurationState {
     createTime?: pulumi.Input<string>;
-    /**
-     * Specifies the information about instance configuration.
-     * The object structure is documented below. Changing this will create a new resource.
-     */
     instanceConfig?: pulumi.Input<inputs.As.ConfigurationInstanceConfig>;
-    /**
-     * Specifies the region in which to create the AS configuration.
-     * If omitted, the provider-level region will be used. Changing this will create a new resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the AS configuration name.
-     * The name contains only letters, digits, underscores (_), and hyphens (-), and cannot exceed 64 characters.
-     * Changing this will create a new resource.
-     */
     scalingConfigurationName?: pulumi.Input<string>;
-    /**
-     * The AS configuration status, the value can be **Bound** or **Unbound**.
-     */
     status?: pulumi.Input<string>;
 }
 
@@ -236,20 +92,7 @@ export interface ConfigurationState {
  * The set of arguments for constructing a Configuration resource.
  */
 export interface ConfigurationArgs {
-    /**
-     * Specifies the information about instance configuration.
-     * The object structure is documented below. Changing this will create a new resource.
-     */
     instanceConfig: pulumi.Input<inputs.As.ConfigurationInstanceConfig>;
-    /**
-     * Specifies the region in which to create the AS configuration.
-     * If omitted, the provider-level region will be used. Changing this will create a new resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the AS configuration name.
-     * The name contains only letters, digits, underscores (_), and hyphens (-), and cannot exceed 64 characters.
-     * Changing this will create a new resource.
-     */
     scalingConfigurationName: pulumi.Input<string>;
 }

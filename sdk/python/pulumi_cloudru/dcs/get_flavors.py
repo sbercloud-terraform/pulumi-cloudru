@@ -59,33 +59,21 @@ class GetFlavorsResult:
     @_builtins.property
     @pulumi.getter(name="cacheMode")
     def cache_mode(self) -> Optional[_builtins.str]:
-        """
-        The mode of a cache instance.
-        """
         return pulumi.get(self, "cache_mode")
 
     @_builtins.property
     @pulumi.getter
     def capacity(self) -> Optional[_builtins.float]:
-        """
-        The total memory of the cache, in GB.
-        """
         return pulumi.get(self, "capacity")
 
     @_builtins.property
     @pulumi.getter(name="cpuArchitecture")
     def cpu_architecture(self) -> Optional[_builtins.str]:
-        """
-        The CPU architecture of cache instance. Value is *x86_64* or *aarch64*.
-        """
         return pulumi.get(self, "cpu_architecture")
 
     @_builtins.property
     @pulumi.getter
     def engine(self) -> Optional[_builtins.str]:
-        """
-        The engine of the cache instance. Value is *redis* or *memcached*.
-        """
         return pulumi.get(self, "engine")
 
     @_builtins.property
@@ -96,9 +84,6 @@ class GetFlavorsResult:
     @_builtins.property
     @pulumi.getter
     def flavors(self) -> Sequence['outputs.GetFlavorsFlavorResult']:
-        """
-        A list of DCS flavors.
-        """
         return pulumi.get(self, "flavors")
 
     @_builtins.property
@@ -112,9 +97,6 @@ class GetFlavorsResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        The flavor name of the cache instance.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -149,36 +131,7 @@ def get_flavors(cache_mode: Optional[_builtins.str] = None,
                 region: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFlavorsResult:
     """
-    Use this data source to get a list of available DCS flavors.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    flavors = sbercloud.Dcs.get_flavors(capacity=4)
-    ```
-
-
-    :param _builtins.str cache_mode: The mode of a cache engine. The valid values are as follows:
-    :param _builtins.float capacity: The total memory of the cache, in GB.
-           + **Redis4.0 and Redis5.0**: Stand-alone and active/standby type instance values:
-           `1`, `2`, `4`, `8`, `16`, `32` and `64`.
-           Cluster instance specifications support `24`, `32`, `48`, `64`, `96`, `128`, `192`, `256`, `384`, `512`, `768` and
-           `1024`.
-           + **Redis3.0**: Stand-alone and active/standby type instance values: `2`, `4`, `8`, `16`, `32` and `64`.
-           Proxy cluster instance specifications support `64`, `128`, `256`, `512`, and `1024`.
-           + **Memcached**: Stand-alone and active/standby type instance values: `2`, `4`, `8`, `16`, `32` and `64`.
-    :param _builtins.str cpu_architecture: The CPU architecture of cache instance.
-           Valid values *x86_64* and *aarch64*.
-    :param _builtins.str engine: The engine of the cache instance. Valid values are *Redis* and *Memcached*.
-           Default value is *Redis*.
-    :param _builtins.str engine_version: The version of a cache engine.
-           It is mandatory when the engine is *Redis*, the value can be `3.0`, `4.0`, or `5.0`.
-    :param _builtins.str name: The flavor name of the cache instance.
-    :param _builtins.str region: Specifies the region in which to obtain the DCS flavors.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['cacheMode'] = cache_mode
@@ -210,36 +163,7 @@ def get_flavors_output(cache_mode: Optional[pulumi.Input[Optional[_builtins.str]
                        region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFlavorsResult]:
     """
-    Use this data source to get a list of available DCS flavors.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    flavors = sbercloud.Dcs.get_flavors(capacity=4)
-    ```
-
-
-    :param _builtins.str cache_mode: The mode of a cache engine. The valid values are as follows:
-    :param _builtins.float capacity: The total memory of the cache, in GB.
-           + **Redis4.0 and Redis5.0**: Stand-alone and active/standby type instance values:
-           `1`, `2`, `4`, `8`, `16`, `32` and `64`.
-           Cluster instance specifications support `24`, `32`, `48`, `64`, `96`, `128`, `192`, `256`, `384`, `512`, `768` and
-           `1024`.
-           + **Redis3.0**: Stand-alone and active/standby type instance values: `2`, `4`, `8`, `16`, `32` and `64`.
-           Proxy cluster instance specifications support `64`, `128`, `256`, `512`, and `1024`.
-           + **Memcached**: Stand-alone and active/standby type instance values: `2`, `4`, `8`, `16`, `32` and `64`.
-    :param _builtins.str cpu_architecture: The CPU architecture of cache instance.
-           Valid values *x86_64* and *aarch64*.
-    :param _builtins.str engine: The engine of the cache instance. Valid values are *Redis* and *Memcached*.
-           Default value is *Redis*.
-    :param _builtins.str engine_version: The version of a cache engine.
-           It is mandatory when the engine is *Redis*, the value can be `3.0`, `4.0`, or `5.0`.
-    :param _builtins.str name: The flavor name of the cache instance.
-    :param _builtins.str region: Specifies the region in which to obtain the DCS flavors.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['cacheMode'] = cache_mode

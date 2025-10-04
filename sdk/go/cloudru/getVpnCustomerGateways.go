@@ -11,42 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get a list of VPN customer gateways.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			routeMode := cfg.RequireObject("routeMode")
-//			name := cfg.RequireObject("name")
-//			asn := cfg.RequireObject("asn")
-//			ip := cfg.RequireObject("ip")
-//			_, err := sbercloud.GetVpnCustomerGateways(ctx, &cloudru.GetVpnCustomerGatewaysArgs{
-//				RouteMode: pulumi.StringRef(routeMode),
-//				Name:      pulumi.StringRef(name),
-//				Asn:       pulumi.IntRef(asn),
-//				Ip:        pulumi.StringRef(ip),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetVpnCustomerGateways(ctx *pulumi.Context, args *GetVpnCustomerGatewaysArgs, opts ...pulumi.InvokeOption) (*GetVpnCustomerGatewaysResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVpnCustomerGatewaysResult
@@ -59,38 +23,24 @@ func GetVpnCustomerGateways(ctx *pulumi.Context, args *GetVpnCustomerGatewaysArg
 
 // A collection of arguments for invoking getVpnCustomerGateways.
 type GetVpnCustomerGatewaysArgs struct {
-	// Specifies the BGP ASN number of the customer gateway, only works when the routeMode is
-	// **bgp**. The value ranges from **1** to **4294967295**.
-	Asn *int `pulumi:"asn"`
-	// Specifies the customer gateway ID used as the query filter.
+	Asn               *int    `pulumi:"asn"`
 	CustomerGatewayId *string `pulumi:"customerGatewayId"`
-	// Specifies the IP address of the customer gateway.
-	Ip *string `pulumi:"ip"`
-	// Specifies the customer gateway name.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to obtain the VPN customer gateways.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the route mode of the customer gateway. The value can be **static** and **bgp**.
-	RouteMode *string `pulumi:"routeMode"`
+	Ip                *string `pulumi:"ip"`
+	Name              *string `pulumi:"name"`
+	Region            *string `pulumi:"region"`
+	RouteMode         *string `pulumi:"routeMode"`
 }
 
 // A collection of values returned by getVpnCustomerGateways.
 type GetVpnCustomerGatewaysResult struct {
-	// Indicates the asn of the customer gateway.
-	Asn               *int    `pulumi:"asn"`
-	CustomerGatewayId *string `pulumi:"customerGatewayId"`
-	// All resource customer gateways that match the filter parameters.
-	// The customerGateways structure is documented below.
-	CustomerGateways []GetVpnCustomerGatewaysCustomerGateway `pulumi:"customerGateways"`
+	Asn               *int                                    `pulumi:"asn"`
+	CustomerGatewayId *string                                 `pulumi:"customerGatewayId"`
+	CustomerGateways  []GetVpnCustomerGatewaysCustomerGateway `pulumi:"customerGateways"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Indicates the IP of the customer gateway.
-	Ip *string `pulumi:"ip"`
-	// Indicates the name of the customer gateway.
-	Name   *string `pulumi:"name"`
-	Region string  `pulumi:"region"`
-	// Indicates the route mode of the customer gateway.
+	Id        string  `pulumi:"id"`
+	Ip        *string `pulumi:"ip"`
+	Name      *string `pulumi:"name"`
+	Region    string  `pulumi:"region"`
 	RouteMode *string `pulumi:"routeMode"`
 }
 
@@ -105,20 +55,12 @@ func GetVpnCustomerGatewaysOutput(ctx *pulumi.Context, args GetVpnCustomerGatewa
 
 // A collection of arguments for invoking getVpnCustomerGateways.
 type GetVpnCustomerGatewaysOutputArgs struct {
-	// Specifies the BGP ASN number of the customer gateway, only works when the routeMode is
-	// **bgp**. The value ranges from **1** to **4294967295**.
-	Asn pulumi.IntPtrInput `pulumi:"asn"`
-	// Specifies the customer gateway ID used as the query filter.
+	Asn               pulumi.IntPtrInput    `pulumi:"asn"`
 	CustomerGatewayId pulumi.StringPtrInput `pulumi:"customerGatewayId"`
-	// Specifies the IP address of the customer gateway.
-	Ip pulumi.StringPtrInput `pulumi:"ip"`
-	// Specifies the customer gateway name.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the region in which to obtain the VPN customer gateways.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the route mode of the customer gateway. The value can be **static** and **bgp**.
-	RouteMode pulumi.StringPtrInput `pulumi:"routeMode"`
+	Ip                pulumi.StringPtrInput `pulumi:"ip"`
+	Name              pulumi.StringPtrInput `pulumi:"name"`
+	Region            pulumi.StringPtrInput `pulumi:"region"`
+	RouteMode         pulumi.StringPtrInput `pulumi:"routeMode"`
 }
 
 func (GetVpnCustomerGatewaysOutputArgs) ElementType() reflect.Type {
@@ -140,7 +82,6 @@ func (o GetVpnCustomerGatewaysResultOutput) ToGetVpnCustomerGatewaysResultOutput
 	return o
 }
 
-// Indicates the asn of the customer gateway.
 func (o GetVpnCustomerGatewaysResultOutput) Asn() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetVpnCustomerGatewaysResult) *int { return v.Asn }).(pulumi.IntPtrOutput)
 }
@@ -149,8 +90,6 @@ func (o GetVpnCustomerGatewaysResultOutput) CustomerGatewayId() pulumi.StringPtr
 	return o.ApplyT(func(v GetVpnCustomerGatewaysResult) *string { return v.CustomerGatewayId }).(pulumi.StringPtrOutput)
 }
 
-// All resource customer gateways that match the filter parameters.
-// The customerGateways structure is documented below.
 func (o GetVpnCustomerGatewaysResultOutput) CustomerGateways() GetVpnCustomerGatewaysCustomerGatewayArrayOutput {
 	return o.ApplyT(func(v GetVpnCustomerGatewaysResult) []GetVpnCustomerGatewaysCustomerGateway {
 		return v.CustomerGateways
@@ -162,12 +101,10 @@ func (o GetVpnCustomerGatewaysResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnCustomerGatewaysResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Indicates the IP of the customer gateway.
 func (o GetVpnCustomerGatewaysResultOutput) Ip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpnCustomerGatewaysResult) *string { return v.Ip }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the name of the customer gateway.
 func (o GetVpnCustomerGatewaysResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpnCustomerGatewaysResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -176,7 +113,6 @@ func (o GetVpnCustomerGatewaysResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnCustomerGatewaysResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// Indicates the route mode of the customer gateway.
 func (o GetVpnCustomerGatewaysResultOutput) RouteMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpnCustomerGatewaysResult) *string { return v.RouteMode }).(pulumi.StringPtrOutput)
 }

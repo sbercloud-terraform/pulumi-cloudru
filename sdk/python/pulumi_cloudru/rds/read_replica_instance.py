@@ -43,26 +43,6 @@ class ReadReplicaInstanceArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ReadReplicaInstance resource.
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies the AZ name.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] flavor: Specifies the specification code.
-        :param pulumi.Input[_builtins.str] primary_instance_id: Specifies the DB instance ID, which is used to create a read replica.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input['ReadReplicaInstanceVolumeArgs'] volume: Specifies the volume information. Structure is documented below.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input['ReadReplicaInstanceDbArgs'] db: Indicates the database information. Structure is documented below.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the read replica instance.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the DB instance name. The DB instance name of the same type
-               must be unique for the same tenant. The value must be 4 to 64 characters in length and start with a letter.
-               It is case-sensitive and can contain only letters, digits, hyphens (-), and underscores (_).
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the rds read replica instance resource.
-               If omitted, the provider-level region will be used.
-               
-               Currently, read replicas can be created *only* in the same region as that of the primary DB instance.
-        :param pulumi.Input[_builtins.str] security_group_id: Indicates the security group which the RDS DB instance belongs to.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the RDS read replica instance. Each tag is represented by one key-value pair.
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "flavor", flavor)
@@ -104,10 +84,6 @@ class ReadReplicaInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the AZ name.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -117,9 +93,6 @@ class ReadReplicaInstanceArgs:
     @_builtins.property
     @pulumi.getter
     def flavor(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the specification code.
-        """
         return pulumi.get(self, "flavor")
 
     @flavor.setter
@@ -129,10 +102,6 @@ class ReadReplicaInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="primaryInstanceId")
     def primary_instance_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the DB instance ID, which is used to create a read replica.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "primary_instance_id")
 
     @primary_instance_id.setter
@@ -142,10 +111,6 @@ class ReadReplicaInstanceArgs:
     @_builtins.property
     @pulumi.getter
     def volume(self) -> pulumi.Input['ReadReplicaInstanceVolumeArgs']:
-        """
-        Specifies the volume information. Structure is documented below.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "volume")
 
     @volume.setter
@@ -173,9 +138,6 @@ class ReadReplicaInstanceArgs:
     @_builtins.property
     @pulumi.getter
     def db(self) -> Optional[pulumi.Input['ReadReplicaInstanceDbArgs']]:
-        """
-        Indicates the database information. Structure is documented below.
-        """
         return pulumi.get(self, "db")
 
     @db.setter
@@ -194,10 +156,6 @@ class ReadReplicaInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The enterprise project id of the read replica instance.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -234,12 +192,6 @@ class ReadReplicaInstanceArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the DB instance name. The DB instance name of the same type
-        must be unique for the same tenant. The value must be 4 to 64 characters in length and start with a letter.
-        It is case-sensitive and can contain only letters, digits, hyphens (-), and underscores (_).
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -276,12 +228,6 @@ class ReadReplicaInstanceArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the rds read replica instance resource.
-        If omitted, the provider-level region will be used.
-
-        Currently, read replicas can be created *only* in the same region as that of the primary DB instance.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -291,9 +237,6 @@ class ReadReplicaInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the security group which the RDS DB instance belongs to.
-        """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
@@ -312,9 +255,6 @@ class ReadReplicaInstanceArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        A mapping of tags to assign to the RDS read replica instance. Each tag is represented by one key-value pair.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -353,32 +293,6 @@ class _ReadReplicaInstanceState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ReadReplicaInstance resources.
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies the AZ name.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input['ReadReplicaInstanceDbArgs'] db: Indicates the database information. Structure is documented below.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the read replica instance.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] flavor: Specifies the specification code.
-        :param pulumi.Input[_builtins.str] name: Specifies the DB instance name. The DB instance name of the same type
-               must be unique for the same tenant. The value must be 4 to 64 characters in length and start with a letter.
-               It is case-sensitive and can contain only letters, digits, hyphens (-), and underscores (_).
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] primary_instance_id: Specifies the DB instance ID, which is used to create a read replica.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: Indicates the private IP address list.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_ips: Indicates the public IP address list.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the rds read replica instance resource.
-               If omitted, the provider-level region will be used.
-               
-               Currently, read replicas can be created *only* in the same region as that of the primary DB instance.
-        :param pulumi.Input[_builtins.str] security_group_id: Indicates the security group which the RDS DB instance belongs to.
-        :param pulumi.Input[_builtins.str] status: Indicates the instance status.
-        :param pulumi.Input[_builtins.str] subnet_id: Indicates the subnet id.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the RDS read replica instance. Each tag is represented by one key-value pair.
-        :param pulumi.Input[_builtins.str] type: Indicates the DB engine. Value: MySQL, PostgreSQL, SQLServer.
-        :param pulumi.Input['ReadReplicaInstanceVolumeArgs'] volume: Specifies the volume information. Structure is documented below.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] vpc_id: Indicates the VPC ID.
         """
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
@@ -445,10 +359,6 @@ class _ReadReplicaInstanceState:
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the AZ name.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -467,9 +377,6 @@ class _ReadReplicaInstanceState:
     @_builtins.property
     @pulumi.getter
     def db(self) -> Optional[pulumi.Input['ReadReplicaInstanceDbArgs']]:
-        """
-        Indicates the database information. Structure is documented below.
-        """
         return pulumi.get(self, "db")
 
     @db.setter
@@ -488,10 +395,6 @@ class _ReadReplicaInstanceState:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The enterprise project id of the read replica instance.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -510,9 +413,6 @@ class _ReadReplicaInstanceState:
     @_builtins.property
     @pulumi.getter
     def flavor(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the specification code.
-        """
         return pulumi.get(self, "flavor")
 
     @flavor.setter
@@ -540,12 +440,6 @@ class _ReadReplicaInstanceState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the DB instance name. The DB instance name of the same type
-        must be unique for the same tenant. The value must be 4 to 64 characters in length and start with a letter.
-        It is case-sensitive and can contain only letters, digits, hyphens (-), and underscores (_).
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -582,10 +476,6 @@ class _ReadReplicaInstanceState:
     @_builtins.property
     @pulumi.getter(name="primaryInstanceId")
     def primary_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the DB instance ID, which is used to create a read replica.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "primary_instance_id")
 
     @primary_instance_id.setter
@@ -595,9 +485,6 @@ class _ReadReplicaInstanceState:
     @_builtins.property
     @pulumi.getter(name="privateIps")
     def private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Indicates the private IP address list.
-        """
         return pulumi.get(self, "private_ips")
 
     @private_ips.setter
@@ -607,9 +494,6 @@ class _ReadReplicaInstanceState:
     @_builtins.property
     @pulumi.getter(name="publicIps")
     def public_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Indicates the public IP address list.
-        """
         return pulumi.get(self, "public_ips")
 
     @public_ips.setter
@@ -619,12 +503,6 @@ class _ReadReplicaInstanceState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the rds read replica instance resource.
-        If omitted, the provider-level region will be used.
-
-        Currently, read replicas can be created *only* in the same region as that of the primary DB instance.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -634,9 +512,6 @@ class _ReadReplicaInstanceState:
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the security group which the RDS DB instance belongs to.
-        """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
@@ -655,9 +530,6 @@ class _ReadReplicaInstanceState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the instance status.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -667,9 +539,6 @@ class _ReadReplicaInstanceState:
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the subnet id.
-        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -679,9 +548,6 @@ class _ReadReplicaInstanceState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        A mapping of tags to assign to the RDS read replica instance. Each tag is represented by one key-value pair.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -691,9 +557,6 @@ class _ReadReplicaInstanceState:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the DB engine. Value: MySQL, PostgreSQL, SQLServer.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -703,10 +566,6 @@ class _ReadReplicaInstanceState:
     @_builtins.property
     @pulumi.getter
     def volume(self) -> Optional[pulumi.Input['ReadReplicaInstanceVolumeArgs']]:
-        """
-        Specifies the volume information. Structure is documented below.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "volume")
 
     @volume.setter
@@ -716,9 +575,6 @@ class _ReadReplicaInstanceState:
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the VPC ID.
-        """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
@@ -754,81 +610,9 @@ class ReadReplicaInstance(pulumi.CustomResource):
                  volume: Optional[pulumi.Input[Union['ReadReplicaInstanceVolumeArgs', 'ReadReplicaInstanceVolumeArgsDict']]] = None,
                  __props__=None):
         """
-        Manages RDS Read Replica Instance resource.
-
-        ## Example Usage
-
-        ### Create a Rds read replica instance
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        secgroup = sbercloud.vpc.Secgroup("secgroup",
-            name="test_sg_for_rds",
-            description="security group for rds read replica instance")
-        instance = sbercloud.rds.Instance("instance",
-            name="terraform_test_rds_instance",
-            flavor="rds.pg.c6.large.4",
-            availability_zones=["{{ availability_zone }}"],
-            vpc_id="{{ vpc_id }}",
-            subnet_id="{{ subnet_id }}",
-            security_group_id=secgroup.id,
-            enterprise_project_id="{{ enterprise_project_id }}",
-            db={
-                "type": "PostgreSQL",
-                "version": "12",
-                "password": "Huangwei!120521",
-                "port": 8635,
-            },
-            volume={
-                "type": "ULTRAHIGH",
-                "size": 50,
-            },
-            backup_strategy={
-                "start_time": "08:00-09:00",
-                "keep_days": 1,
-            })
-        replica_instance = sbercloud.rds.ReadReplicaInstance("replica_instance",
-            name="test_rds_readonly_instance",
-            flavor="rds.pg.c6.large.4.rr",
-            primary_instance_id=instance.id,
-            availability_zone="{{ availability_zone }}",
-            enterprise_project_id="{{ enterprise_project_id }}",
-            volume={
-                "type": "ULTRAHIGH",
-            })
-        ```
-
-        ## Import
-
-        RDS read replica instance can be imported by `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Rds/readReplicaInstance:ReadReplicaInstance replica_instance 92302c133d13424cbe357506ce057ea5in03
-        ```
-
+        Create a ReadReplicaInstance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies the AZ name.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Union['ReadReplicaInstanceDbArgs', 'ReadReplicaInstanceDbArgsDict']] db: Indicates the database information. Structure is documented below.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the read replica instance.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] flavor: Specifies the specification code.
-        :param pulumi.Input[_builtins.str] name: Specifies the DB instance name. The DB instance name of the same type
-               must be unique for the same tenant. The value must be 4 to 64 characters in length and start with a letter.
-               It is case-sensitive and can contain only letters, digits, hyphens (-), and underscores (_).
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] primary_instance_id: Specifies the DB instance ID, which is used to create a read replica.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the rds read replica instance resource.
-               If omitted, the provider-level region will be used.
-               
-               Currently, read replicas can be created *only* in the same region as that of the primary DB instance.
-        :param pulumi.Input[_builtins.str] security_group_id: Indicates the security group which the RDS DB instance belongs to.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the RDS read replica instance. Each tag is represented by one key-value pair.
-        :param pulumi.Input[Union['ReadReplicaInstanceVolumeArgs', 'ReadReplicaInstanceVolumeArgsDict']] volume: Specifies the volume information. Structure is documented below.
-               Changing this parameter will create a new resource.
         """
         ...
     @overload
@@ -837,59 +621,7 @@ class ReadReplicaInstance(pulumi.CustomResource):
                  args: ReadReplicaInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages RDS Read Replica Instance resource.
-
-        ## Example Usage
-
-        ### Create a Rds read replica instance
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        secgroup = sbercloud.vpc.Secgroup("secgroup",
-            name="test_sg_for_rds",
-            description="security group for rds read replica instance")
-        instance = sbercloud.rds.Instance("instance",
-            name="terraform_test_rds_instance",
-            flavor="rds.pg.c6.large.4",
-            availability_zones=["{{ availability_zone }}"],
-            vpc_id="{{ vpc_id }}",
-            subnet_id="{{ subnet_id }}",
-            security_group_id=secgroup.id,
-            enterprise_project_id="{{ enterprise_project_id }}",
-            db={
-                "type": "PostgreSQL",
-                "version": "12",
-                "password": "Huangwei!120521",
-                "port": 8635,
-            },
-            volume={
-                "type": "ULTRAHIGH",
-                "size": 50,
-            },
-            backup_strategy={
-                "start_time": "08:00-09:00",
-                "keep_days": 1,
-            })
-        replica_instance = sbercloud.rds.ReadReplicaInstance("replica_instance",
-            name="test_rds_readonly_instance",
-            flavor="rds.pg.c6.large.4.rr",
-            primary_instance_id=instance.id,
-            availability_zone="{{ availability_zone }}",
-            enterprise_project_id="{{ enterprise_project_id }}",
-            volume={
-                "type": "ULTRAHIGH",
-            })
-        ```
-
-        ## Import
-
-        RDS read replica instance can be imported by `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Rds/readReplicaInstance:ReadReplicaInstance replica_instance 92302c133d13424cbe357506ce057ea5in03
-        ```
-
+        Create a ReadReplicaInstance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ReadReplicaInstanceArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1011,32 +743,6 @@ class ReadReplicaInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies the AZ name.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Union['ReadReplicaInstanceDbArgs', 'ReadReplicaInstanceDbArgsDict']] db: Indicates the database information. Structure is documented below.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the read replica instance.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] flavor: Specifies the specification code.
-        :param pulumi.Input[_builtins.str] name: Specifies the DB instance name. The DB instance name of the same type
-               must be unique for the same tenant. The value must be 4 to 64 characters in length and start with a letter.
-               It is case-sensitive and can contain only letters, digits, hyphens (-), and underscores (_).
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] primary_instance_id: Specifies the DB instance ID, which is used to create a read replica.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: Indicates the private IP address list.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_ips: Indicates the public IP address list.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the rds read replica instance resource.
-               If omitted, the provider-level region will be used.
-               
-               Currently, read replicas can be created *only* in the same region as that of the primary DB instance.
-        :param pulumi.Input[_builtins.str] security_group_id: Indicates the security group which the RDS DB instance belongs to.
-        :param pulumi.Input[_builtins.str] status: Indicates the instance status.
-        :param pulumi.Input[_builtins.str] subnet_id: Indicates the subnet id.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the RDS read replica instance. Each tag is represented by one key-value pair.
-        :param pulumi.Input[_builtins.str] type: Indicates the DB engine. Value: MySQL, PostgreSQL, SQLServer.
-        :param pulumi.Input[Union['ReadReplicaInstanceVolumeArgs', 'ReadReplicaInstanceVolumeArgsDict']] volume: Specifies the volume information. Structure is documented below.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] vpc_id: Indicates the VPC ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1078,10 +784,6 @@ class ReadReplicaInstance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the AZ name.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "availability_zone")
 
     @_builtins.property
@@ -1092,9 +794,6 @@ class ReadReplicaInstance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def db(self) -> pulumi.Output['outputs.ReadReplicaInstanceDb']:
-        """
-        Indicates the database information. Structure is documented below.
-        """
         return pulumi.get(self, "db")
 
     @_builtins.property
@@ -1105,10 +804,6 @@ class ReadReplicaInstance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The enterprise project id of the read replica instance.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
@@ -1119,9 +814,6 @@ class ReadReplicaInstance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def flavor(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the specification code.
-        """
         return pulumi.get(self, "flavor")
 
     @_builtins.property
@@ -1137,12 +829,6 @@ class ReadReplicaInstance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the DB instance name. The DB instance name of the same type
-        must be unique for the same tenant. The value must be 4 to 64 characters in length and start with a letter.
-        It is case-sensitive and can contain only letters, digits, hyphens (-), and underscores (_).
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -1163,45 +849,26 @@ class ReadReplicaInstance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="primaryInstanceId")
     def primary_instance_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the DB instance ID, which is used to create a read replica.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "primary_instance_id")
 
     @_builtins.property
     @pulumi.getter(name="privateIps")
     def private_ips(self) -> pulumi.Output[Sequence[_builtins.str]]:
-        """
-        Indicates the private IP address list.
-        """
         return pulumi.get(self, "private_ips")
 
     @_builtins.property
     @pulumi.getter(name="publicIps")
     def public_ips(self) -> pulumi.Output[Sequence[_builtins.str]]:
-        """
-        Indicates the public IP address list.
-        """
         return pulumi.get(self, "public_ips")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the rds read replica instance resource.
-        If omitted, the provider-level region will be used.
-
-        Currently, read replicas can be created *only* in the same region as that of the primary DB instance.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates the security group which the RDS DB instance belongs to.
-        """
         return pulumi.get(self, "security_group_id")
 
     @_builtins.property
@@ -1212,49 +879,30 @@ class ReadReplicaInstance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates the instance status.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates the subnet id.
-        """
         return pulumi.get(self, "subnet_id")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        A mapping of tags to assign to the RDS read replica instance. Each tag is represented by one key-value pair.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates the DB engine. Value: MySQL, PostgreSQL, SQLServer.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter
     def volume(self) -> pulumi.Output['outputs.ReadReplicaInstanceVolume']:
-        """
-        Specifies the volume information. Structure is documented below.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "volume")
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates the VPC ID.
-        """
         return pulumi.get(self, "vpc_id")
 

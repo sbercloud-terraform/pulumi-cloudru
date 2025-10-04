@@ -80,12 +80,6 @@ class BandwidthPublicip(dict):
                  ip_address: Optional[_builtins.str] = None,
                  ip_version: Optional[_builtins.int] = None,
                  type: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str id: The ID of the EIP or IPv6 port that uses the bandwidth.
-        :param _builtins.str ip_address: The IPv4 or IPv6 address.
-        :param _builtins.int ip_version: The IP version, either 4 or 6.
-        :param _builtins.str type: The EIP type.
-        """
         if id is not None:
             pulumi.set(__self__, "id", id)
         if ip_address is not None:
@@ -98,33 +92,21 @@ class BandwidthPublicip(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> Optional[_builtins.str]:
-        """
-        The ID of the EIP or IPv6 port that uses the bandwidth.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[_builtins.str]:
-        """
-        The IPv4 or IPv6 address.
-        """
         return pulumi.get(self, "ip_address")
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> Optional[_builtins.int]:
-        """
-        The IP version, either 4 or 6.
-        """
         return pulumi.get(self, "ip_version")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
-        """
-        The EIP type.
-        """
         return pulumi.get(self, "type")
 
 
@@ -156,18 +138,11 @@ class EipBandwidth(dict):
                  name: Optional[_builtins.str] = None,
                  size: Optional[_builtins.int] = None):
         """
-        :param _builtins.str share_type: Whether the bandwidth is dedicated or shared. Changing this creates a new
-               eip. Possible values are as follows:
-               + *PER*: Dedicated bandwidth
-               + *WHOLE*: Shared bandwidth
-        :param _builtins.str charge_mode: Specifies whether the bandwidth is billed by traffic or by bandwidth
-               size. The value can be *traffic* or *bandwidth*. Changing this creates a new eip.
-        :param _builtins.str id: The shared bandwidth id. This parameter is mandatory when
-               `share_type` is set to *WHOLE*. Changing this creates a new eip.
-        :param _builtins.str name: The bandwidth name, which is a string of 1 to 64 characters that contain letters, digits,
-               underscores (_), and hyphens (-). This parameter is mandatory when `share_type` is set to *PER*.
-        :param _builtins.int size: The bandwidth size. The value ranges from 1 to 300 Mbit/s. This parameter is mandatory
-               when `share_type` is set to *PER*.
+        :param _builtins.str share_type: Whether the bandwidth is dedicated or shared.
+        :param _builtins.str charge_mode: Whether the bandwidth is billed by traffic or by bandwidth size.
+        :param _builtins.str id: The shared bandwidth ID.
+        :param _builtins.str name: The dedicated bandwidth name.
+        :param _builtins.int size: The dedicated bandwidth size.
         """
         pulumi.set(__self__, "share_type", share_type)
         if charge_mode is not None:
@@ -183,10 +158,7 @@ class EipBandwidth(dict):
     @pulumi.getter(name="shareType")
     def share_type(self) -> _builtins.str:
         """
-        Whether the bandwidth is dedicated or shared. Changing this creates a new
-        eip. Possible values are as follows:
-        + *PER*: Dedicated bandwidth
-        + *WHOLE*: Shared bandwidth
+        Whether the bandwidth is dedicated or shared.
         """
         return pulumi.get(self, "share_type")
 
@@ -194,8 +166,7 @@ class EipBandwidth(dict):
     @pulumi.getter(name="chargeMode")
     def charge_mode(self) -> Optional[_builtins.str]:
         """
-        Specifies whether the bandwidth is billed by traffic or by bandwidth
-        size. The value can be *traffic* or *bandwidth*. Changing this creates a new eip.
+        Whether the bandwidth is billed by traffic or by bandwidth size.
         """
         return pulumi.get(self, "charge_mode")
 
@@ -203,8 +174,7 @@ class EipBandwidth(dict):
     @pulumi.getter
     def id(self) -> Optional[_builtins.str]:
         """
-        The shared bandwidth id. This parameter is mandatory when
-        `share_type` is set to *WHOLE*. Changing this creates a new eip.
+        The shared bandwidth ID.
         """
         return pulumi.get(self, "id")
 
@@ -212,8 +182,7 @@ class EipBandwidth(dict):
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
-        The bandwidth name, which is a string of 1 to 64 characters that contain letters, digits,
-        underscores (_), and hyphens (-). This parameter is mandatory when `share_type` is set to *PER*.
+        The dedicated bandwidth name.
         """
         return pulumi.get(self, "name")
 
@@ -221,8 +190,7 @@ class EipBandwidth(dict):
     @pulumi.getter
     def size(self) -> Optional[_builtins.int]:
         """
-        The bandwidth size. The value ranges from 1 to 300 Mbit/s. This parameter is mandatory
-        when `share_type` is set to *PER*.
+        The dedicated bandwidth size.
         """
         return pulumi.get(self, "size")
 
@@ -256,12 +224,10 @@ class EipPublicip(dict):
                  port_id: Optional[_builtins.str] = None,
                  type: Optional[_builtins.str] = None):
         """
-        :param _builtins.str ip_address: The value must be a valid IP address in the available IP address segment.
-               Changing this creates a new eip.
+        :param _builtins.str ip_address: The EIP address to be assigned.
         :param _builtins.int ip_version: The IP version.
-        :param _builtins.str port_id: The port id which this eip will associate with. If the value is "" or this not
-               specified, the eip will be in unbind state.
-        :param _builtins.str type: The type of the eip. Changing this creates a new eip.
+        :param _builtins.str port_id: schema: Deprecated
+        :param _builtins.str type: The EIP type.
         """
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
@@ -276,8 +242,7 @@ class EipPublicip(dict):
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[_builtins.str]:
         """
-        The value must be a valid IP address in the available IP address segment.
-        Changing this creates a new eip.
+        The EIP address to be assigned.
         """
         return pulumi.get(self, "ip_address")
 
@@ -293,8 +258,7 @@ class EipPublicip(dict):
     @pulumi.getter(name="portId")
     def port_id(self) -> Optional[_builtins.str]:
         """
-        The port id which this eip will associate with. If the value is "" or this not
-        specified, the eip will be in unbind state.
+        schema: Deprecated
         """
         return pulumi.get(self, "port_id")
 
@@ -302,7 +266,7 @@ class EipPublicip(dict):
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
         """
-        The type of the eip. Changing this creates a new eip.
+        The EIP type.
         """
         return pulumi.get(self, "type")
 
@@ -314,24 +278,6 @@ class RouteTableRoute(dict):
                  nexthop: _builtins.str,
                  type: _builtins.str,
                  description: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str destination: Specifies the destination address in the CIDR notation format,
-               for example, 192.168.200.0/24. The destination of each route must be unique and cannot overlap
-               with any subnet in the VPC.
-        :param _builtins.str nexthop: Specifies the next hop.
-               + If the route type is **ecs**, the value is an ECS instance ID in the VPC.
-               + If the route type is **eni**, the value is the extension NIC of an ECS in the VPC.
-               + If the route type is **vip**, the value is a virtual IP address.
-               + If the route type is **nat**, the value is a VPN gateway ID.
-               + If the route type is **peering**, the value is a VPC peering connection ID.
-               + If the route type is **vpn**, the value is a VPN gateway ID.
-               + If the route type is **dc**, the value is a Direct Connect gateway ID.
-               + If the route type is **cc**, the value is a Cloud Connection ID.
-        :param _builtins.str type: Specifies the route type. Currently, the value can be:
-               **ecs**, **eni**, **vip**, **nat**, **peering**, **vpn**, **dc** and **cc**.
-        :param _builtins.str description: Specifies the supplementary information about the route.
-               The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-        """
         pulumi.set(__self__, "destination", destination)
         pulumi.set(__self__, "nexthop", nexthop)
         pulumi.set(__self__, "type", type)
@@ -341,45 +287,21 @@ class RouteTableRoute(dict):
     @_builtins.property
     @pulumi.getter
     def destination(self) -> _builtins.str:
-        """
-        Specifies the destination address in the CIDR notation format,
-        for example, 192.168.200.0/24. The destination of each route must be unique and cannot overlap
-        with any subnet in the VPC.
-        """
         return pulumi.get(self, "destination")
 
     @_builtins.property
     @pulumi.getter
     def nexthop(self) -> _builtins.str:
-        """
-        Specifies the next hop.
-        + If the route type is **ecs**, the value is an ECS instance ID in the VPC.
-        + If the route type is **eni**, the value is the extension NIC of an ECS in the VPC.
-        + If the route type is **vip**, the value is a virtual IP address.
-        + If the route type is **nat**, the value is a VPN gateway ID.
-        + If the route type is **peering**, the value is a VPC peering connection ID.
-        + If the route type is **vpn**, the value is a VPN gateway ID.
-        + If the route type is **dc**, the value is a Direct Connect gateway ID.
-        + If the route type is **cc**, the value is a Cloud Connection ID.
-        """
         return pulumi.get(self, "nexthop")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        Specifies the route type. Currently, the value can be:
-        **ecs**, **eni**, **vip**, **nat**, **peering**, **vpn**, **dc** and **cc**.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
-        """
-        Specifies the supplementary information about the route.
-        The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-        """
         return pulumi.get(self, "description")
 
 
@@ -425,19 +347,8 @@ class SecgroupRule(dict):
                  remote_group_id: Optional[_builtins.str] = None,
                  remote_ip_prefix: Optional[_builtins.str] = None):
         """
-        :param _builtins.str action: The effective policy.
-        :param _builtins.str description: Description of the security group.
-        :param _builtins.str direction: The direction of the rule. The value can be *egress* or *ingress*.
-        :param _builtins.str ethertype: The IP protocol version. The value can be *IPv4* or *IPv6*.
-        :param _builtins.str id: The security group rule ID.
         :param _builtins.int port_range_max: schema: Deprecated
         :param _builtins.int port_range_min: schema: Deprecated
-        :param _builtins.str ports: The port value range.
-        :param _builtins.int priority: The priority number.
-        :param _builtins.str protocol: The protocol type.
-        :param _builtins.str remote_address_group_id: The ID of the remote address group.
-        :param _builtins.str remote_group_id: The ID of the peer security group.
-        :param _builtins.str remote_ip_prefix: The remote IP address. The value can be in the CIDR format or IP addresses.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -469,41 +380,26 @@ class SecgroupRule(dict):
     @_builtins.property
     @pulumi.getter
     def action(self) -> Optional[_builtins.str]:
-        """
-        The effective policy.
-        """
         return pulumi.get(self, "action")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
-        """
-        Description of the security group.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
     def direction(self) -> Optional[_builtins.str]:
-        """
-        The direction of the rule. The value can be *egress* or *ingress*.
-        """
         return pulumi.get(self, "direction")
 
     @_builtins.property
     @pulumi.getter
     def ethertype(self) -> Optional[_builtins.str]:
-        """
-        The IP protocol version. The value can be *IPv4* or *IPv6*.
-        """
         return pulumi.get(self, "ethertype")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> Optional[_builtins.str]:
-        """
-        The security group rule ID.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -525,49 +421,31 @@ class SecgroupRule(dict):
     @_builtins.property
     @pulumi.getter
     def ports(self) -> Optional[_builtins.str]:
-        """
-        The port value range.
-        """
         return pulumi.get(self, "ports")
 
     @_builtins.property
     @pulumi.getter
     def priority(self) -> Optional[_builtins.int]:
-        """
-        The priority number.
-        """
         return pulumi.get(self, "priority")
 
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> Optional[_builtins.str]:
-        """
-        The protocol type.
-        """
         return pulumi.get(self, "protocol")
 
     @_builtins.property
     @pulumi.getter(name="remoteAddressGroupId")
     def remote_address_group_id(self) -> Optional[_builtins.str]:
-        """
-        The ID of the remote address group.
-        """
         return pulumi.get(self, "remote_address_group_id")
 
     @_builtins.property
     @pulumi.getter(name="remoteGroupId")
     def remote_group_id(self) -> Optional[_builtins.str]:
-        """
-        The ID of the peer security group.
-        """
         return pulumi.get(self, "remote_group_id")
 
     @_builtins.property
     @pulumi.getter(name="remoteIpPrefix")
     def remote_ip_prefix(self) -> Optional[_builtins.str]:
-        """
-        The remote IP address. The value can be in the CIDR format or IP addresses.
-        """
         return pulumi.get(self, "remote_ip_prefix")
 
 
@@ -609,24 +487,15 @@ class GetAddressGroupsAddressGroupResult(dict):
                  updated_at: _builtins.str):
         """
         :param Sequence[_builtins.str] addresses: IP address sets in an IP address group.
-               Value range: a single IP address, IP address range, or CIDR block.
         :param _builtins.str created_at: Time when the IP address group is created.
-        :param _builtins.str description: Provides supplementary information about an IP address group,
-               which can be used to filter the IP address group.
+        :param _builtins.str description: The supplementary information about the IP address group.
         :param _builtins.str enterprise_project_id: Enterprise project ID.
         :param _builtins.str id: IP address group ID, which uniquely identifies the IP address group.
         :param Sequence['GetAddressGroupsAddressGroupIpExtraSetArgs'] ip_extra_sets: IP addresses and their remarks in an IP address group.
-        :param _builtins.int ip_version: Version of IP addresses in an IP address group,
-               which can be used to filter the IP address group.
+        :param _builtins.int ip_version: Whether it is an IPv4 or IPv6 address group.
         :param _builtins.int max_capacity: Maximum number of entries in an address group,
-               which limits the number of addresses that can be contained in an address group.
-        :param _builtins.str name: Name of an IP address group, which can be used to filter the IP address group.
+        :param _builtins.str name: IP address group name.
         :param _builtins.str status: The status of IP address group.
-               Valid values are:
-               + `NORMAL`: normal status.
-               + `UPDATING`: updating.
-               + `UPDATE_FAILED`: update failed.
-               When the status of IP address group is `UPDATING`, the IP address group cannot be updated again.
         :param _builtins.str status_message: The status details of IP address group.
         :param _builtins.str updated_at: Time when the IP address group was last updated.
         """
@@ -648,7 +517,6 @@ class GetAddressGroupsAddressGroupResult(dict):
     def addresses(self) -> Sequence[_builtins.str]:
         """
         IP address sets in an IP address group.
-        Value range: a single IP address, IP address range, or CIDR block.
         """
         return pulumi.get(self, "addresses")
 
@@ -664,8 +532,7 @@ class GetAddressGroupsAddressGroupResult(dict):
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        Provides supplementary information about an IP address group,
-        which can be used to filter the IP address group.
+        The supplementary information about the IP address group.
         """
         return pulumi.get(self, "description")
 
@@ -697,8 +564,7 @@ class GetAddressGroupsAddressGroupResult(dict):
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> _builtins.int:
         """
-        Version of IP addresses in an IP address group,
-        which can be used to filter the IP address group.
+        Whether it is an IPv4 or IPv6 address group.
         """
         return pulumi.get(self, "ip_version")
 
@@ -707,7 +573,6 @@ class GetAddressGroupsAddressGroupResult(dict):
     def max_capacity(self) -> _builtins.int:
         """
         Maximum number of entries in an address group,
-        which limits the number of addresses that can be contained in an address group.
         """
         return pulumi.get(self, "max_capacity")
 
@@ -715,7 +580,7 @@ class GetAddressGroupsAddressGroupResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Name of an IP address group, which can be used to filter the IP address group.
+        IP address group name.
         """
         return pulumi.get(self, "name")
 
@@ -724,11 +589,6 @@ class GetAddressGroupsAddressGroupResult(dict):
     def status(self) -> _builtins.str:
         """
         The status of IP address group.
-        Valid values are:
-        + `NORMAL`: normal status.
-        + `UPDATING`: updating.
-        + `UPDATE_FAILED`: update failed.
-        When the status of IP address group is `UPDATING`, the IP address group cannot be updated again.
         """
         return pulumi.get(self, "status")
 
@@ -785,12 +645,6 @@ class GetRouteTableRouteResult(dict):
                  destination: _builtins.str,
                  nexthop: _builtins.str,
                  type: _builtins.str):
-        """
-        :param _builtins.str description: (String) - The description about the route.
-        :param _builtins.str destination: (String) - The destination address in the CIDR notation format
-        :param _builtins.str nexthop: (String) - The next hop.
-        :param _builtins.str type: (String) - The route type.
-        """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "destination", destination)
         pulumi.set(__self__, "nexthop", nexthop)
@@ -799,33 +653,21 @@ class GetRouteTableRouteResult(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
-        """
-        (String) - The description about the route.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
     def destination(self) -> _builtins.str:
-        """
-        (String) - The destination address in the CIDR notation format
-        """
         return pulumi.get(self, "destination")
 
     @_builtins.property
     @pulumi.getter
     def nexthop(self) -> _builtins.str:
-        """
-        (String) - The next hop.
-        """
         return pulumi.get(self, "nexthop")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        (String) - The route type.
-        """
         return pulumi.get(self, "type")
 
 
@@ -838,11 +680,11 @@ class GetRoutesRouteResult(dict):
                  type: _builtins.str,
                  vpc_id: _builtins.str):
         """
-        :param _builtins.str destination: Specifies the route destination.
+        :param _builtins.str destination: The route destination.
         :param _builtins.str id: The route ID.
         :param _builtins.str nexthop: The next hop of the route.
-        :param _builtins.str type: Specifies the route type.
-        :param _builtins.str vpc_id: Specifies the ID of the VPC to which the route belongs.
+        :param _builtins.str type: The route type.
+        :param _builtins.str vpc_id: The ID of the VPC to which the route belongs.
         """
         pulumi.set(__self__, "destination", destination)
         pulumi.set(__self__, "id", id)
@@ -854,7 +696,7 @@ class GetRoutesRouteResult(dict):
     @pulumi.getter
     def destination(self) -> _builtins.str:
         """
-        Specifies the route destination.
+        The route destination.
         """
         return pulumi.get(self, "destination")
 
@@ -878,7 +720,7 @@ class GetRoutesRouteResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        Specifies the route type.
+        The route type.
         """
         return pulumi.get(self, "type")
 
@@ -886,7 +728,7 @@ class GetRoutesRouteResult(dict):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> _builtins.str:
         """
-        Specifies the ID of the VPC to which the route belongs.
+        The ID of the VPC to which the route belongs.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -908,19 +750,8 @@ class GetSecgroupRuleResult(dict):
                  remote_group_id: _builtins.str,
                  remote_ip_prefix: _builtins.str):
         """
-        :param _builtins.str action: The effective policy.
-        :param _builtins.str description: The supplementary information about the security group rule.
-        :param _builtins.str direction: The direction of the rule. The value can be *egress* or *ingress*.
-        :param _builtins.str ethertype: The IP protocol version. The value can be *IPv4* or *IPv6*.
-        :param _builtins.str id: The security group rule ID.
         :param _builtins.int port_range_max: schema: Deprecated
         :param _builtins.int port_range_min: schema: Deprecated
-        :param _builtins.str ports: The port value range.
-        :param _builtins.int priority: The priority number.
-        :param _builtins.str protocol: The protocol type.
-        :param _builtins.str remote_address_group_id: The ID of the remote address group.
-        :param _builtins.str remote_group_id: The ID of the peer security group.
-        :param _builtins.str remote_ip_prefix: The remote IP address. The value can be in the CIDR format or IP addresses.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "description", description)
@@ -939,41 +770,26 @@ class GetSecgroupRuleResult(dict):
     @_builtins.property
     @pulumi.getter
     def action(self) -> _builtins.str:
-        """
-        The effective policy.
-        """
         return pulumi.get(self, "action")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
-        """
-        The supplementary information about the security group rule.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
     def direction(self) -> _builtins.str:
-        """
-        The direction of the rule. The value can be *egress* or *ingress*.
-        """
         return pulumi.get(self, "direction")
 
     @_builtins.property
     @pulumi.getter
     def ethertype(self) -> _builtins.str:
-        """
-        The IP protocol version. The value can be *IPv4* or *IPv6*.
-        """
         return pulumi.get(self, "ethertype")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        The security group rule ID.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -995,49 +811,31 @@ class GetSecgroupRuleResult(dict):
     @_builtins.property
     @pulumi.getter
     def ports(self) -> _builtins.str:
-        """
-        The port value range.
-        """
         return pulumi.get(self, "ports")
 
     @_builtins.property
     @pulumi.getter
     def priority(self) -> _builtins.int:
-        """
-        The priority number.
-        """
         return pulumi.get(self, "priority")
 
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> _builtins.str:
-        """
-        The protocol type.
-        """
         return pulumi.get(self, "protocol")
 
     @_builtins.property
     @pulumi.getter(name="remoteAddressGroupId")
     def remote_address_group_id(self) -> _builtins.str:
-        """
-        The ID of the remote address group.
-        """
         return pulumi.get(self, "remote_address_group_id")
 
     @_builtins.property
     @pulumi.getter(name="remoteGroupId")
     def remote_group_id(self) -> _builtins.str:
-        """
-        The ID of the peer security group.
-        """
         return pulumi.get(self, "remote_group_id")
 
     @_builtins.property
     @pulumi.getter(name="remoteIpPrefix")
     def remote_ip_prefix(self) -> _builtins.str:
-        """
-        The remote IP address. The value can be in the CIDR format or IP addresses.
-        """
         return pulumi.get(self, "remote_ip_prefix")
 
 
@@ -1050,15 +848,6 @@ class GetSecgroupsSecurityGroupResult(dict):
                  id: _builtins.str,
                  name: _builtins.str,
                  updated_at: _builtins.str):
-        """
-        :param _builtins.str created_at: The creation time, in UTC format.
-        :param _builtins.str description: Specifies the description of the security group. The security groups can be
-               filtered by keywords in the description.
-        :param _builtins.str enterprise_project_id: Specifies the enterprise project ID of the security group.
-        :param _builtins.str id: Specifies the id of the desired security group.
-        :param _builtins.str name: Specifies the name of the security group.
-        :param _builtins.str updated_at: The last update time, in UTC format.
-        """
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "enterprise_project_id", enterprise_project_id)
@@ -1069,50 +858,31 @@ class GetSecgroupsSecurityGroupResult(dict):
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> _builtins.str:
-        """
-        The creation time, in UTC format.
-        """
         return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
-        """
-        Specifies the description of the security group. The security groups can be
-        filtered by keywords in the description.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> _builtins.str:
-        """
-        Specifies the enterprise project ID of the security group.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        Specifies the id of the desired security group.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the name of the security group.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> _builtins.str:
-        """
-        The last update time, in UTC format.
-        """
         return pulumi.get(self, "updated_at")
 
 
@@ -1139,23 +909,7 @@ class GetSubnetsSubnetResult(dict):
                  tags: Mapping[str, _builtins.str],
                  vpc_id: _builtins.str):
         """
-        :param _builtins.str availability_zone: Specifies the availability zone (AZ) to which the desired subnet belongs to.
-        :param _builtins.str cidr: Specifies the network segment of desired subnet. The value must be in CIDR format.
-        :param _builtins.str gateway_ip: Specifies the subnet gateway address of desired subnet.
-        :param _builtins.str id: Specifies the id of the desired subnet.
-        :param _builtins.str name: Specifies the name of the desired subnet.
-        :param _builtins.str primary_dns: Specifies the IP address of DNS server 1 on the desired subnet.
-        :param _builtins.str secondary_dns: Specifies the IP address of DNS server 2 on the desired subnet.
-        :param _builtins.str status: Specifies the current status of the desired subnet.
-               the value can be ACTIVE, DOWN, UNKNOWN, or ERROR.
         :param _builtins.str subnet_id: schema: Deprecated
-        :param Mapping[str, _builtins.str] tags: Specifies the included key/value pairs which associated with the desired subnet.
-               
-               > A maximum of 10 tag keys are allowed for each query operation. Each tag key can have up to 10 tag values.
-               The tag key cannot be left blank or set to an empty string. Each tag key must be unique, and each tag value in a
-               tag must be unique, use commas(,) to separate the multiple values. An empty for values indicates any value.
-               The values are in the OR relationship.
-        :param _builtins.str vpc_id: Specifies the id of the VPC that the desired subnet belongs to.
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "cidr", cidr)
@@ -1180,17 +934,11 @@ class GetSubnetsSubnetResult(dict):
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> _builtins.str:
-        """
-        Specifies the availability zone (AZ) to which the desired subnet belongs to.
-        """
         return pulumi.get(self, "availability_zone")
 
     @_builtins.property
     @pulumi.getter
     def cidr(self) -> _builtins.str:
-        """
-        Specifies the network segment of desired subnet. The value must be in CIDR format.
-        """
         return pulumi.get(self, "cidr")
 
     @_builtins.property
@@ -1211,17 +959,11 @@ class GetSubnetsSubnetResult(dict):
     @_builtins.property
     @pulumi.getter(name="gatewayIp")
     def gateway_ip(self) -> _builtins.str:
-        """
-        Specifies the subnet gateway address of desired subnet.
-        """
         return pulumi.get(self, "gateway_ip")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        Specifies the id of the desired subnet.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -1252,34 +994,21 @@ class GetSubnetsSubnetResult(dict):
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the name of the desired subnet.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="primaryDns")
     def primary_dns(self) -> _builtins.str:
-        """
-        Specifies the IP address of DNS server 1 on the desired subnet.
-        """
         return pulumi.get(self, "primary_dns")
 
     @_builtins.property
     @pulumi.getter(name="secondaryDns")
     def secondary_dns(self) -> _builtins.str:
-        """
-        Specifies the IP address of DNS server 2 on the desired subnet.
-        """
         return pulumi.get(self, "secondary_dns")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
-        """
-        Specifies the current status of the desired subnet.
-        the value can be ACTIVE, DOWN, UNKNOWN, or ERROR.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
@@ -1293,22 +1022,11 @@ class GetSubnetsSubnetResult(dict):
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Mapping[str, _builtins.str]:
-        """
-        Specifies the included key/value pairs which associated with the desired subnet.
-
-        > A maximum of 10 tag keys are allowed for each query operation. Each tag key can have up to 10 tag values.
-        The tag key cannot be left blank or set to an empty string. Each tag key must be unique, and each tag value in a
-        tag must be unique, use commas(,) to separate the multiple values. An empty for values indicates any value.
-        The values are in the OR relationship.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> _builtins.str:
-        """
-        Specifies the id of the VPC that the desired subnet belongs to.
-        """
         return pulumi.get(self, "vpc_id")
 
 
@@ -1342,21 +1060,6 @@ class GetVpcsVpcResult(dict):
                  secondary_cidrs: Sequence[_builtins.str],
                  status: _builtins.str,
                  tags: Mapping[str, _builtins.str]):
-        """
-        :param _builtins.str cidr: Specifies the cidr block of the desired VPC.
-        :param _builtins.str description: Indicates the description of the VPC.
-        :param _builtins.str enterprise_project_id: Specifies the enterprise project ID which the desired VPC belongs to.
-        :param _builtins.str id: Specifies the id of the desired VPC.
-        :param _builtins.str name: Specifies the name of the desired VPC. The value is a string of no more than 64 characters
-               and can contain digits, letters, underscores (_) and hyphens (-).
-        :param _builtins.str status: Specifies the current status of the desired VPC. The value can be CREATING, OK or ERROR.
-        :param Mapping[str, _builtins.str] tags: Specifies the included key/value pairs which associated with the desired VPC.
-               
-               > A maximum of 10 tag keys are allowed for each query operation. Each tag key can have up to 10 tag values.
-               The tag key cannot be left blank or set to an empty string. Each tag key must be unique, and each tag value in a
-               tag must be unique, use commas(,) to separate the multiple values. An empty for values indicates any value.
-               The values are in the OR relationship.
-        """
         pulumi.set(__self__, "cidr", cidr)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "enterprise_project_id", enterprise_project_id)
@@ -1369,42 +1072,26 @@ class GetVpcsVpcResult(dict):
     @_builtins.property
     @pulumi.getter
     def cidr(self) -> _builtins.str:
-        """
-        Specifies the cidr block of the desired VPC.
-        """
         return pulumi.get(self, "cidr")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
-        """
-        Indicates the description of the VPC.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> _builtins.str:
-        """
-        Specifies the enterprise project ID which the desired VPC belongs to.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        Specifies the id of the desired VPC.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the name of the desired VPC. The value is a string of no more than 64 characters
-        and can contain digits, letters, underscores (_) and hyphens (-).
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -1415,22 +1102,11 @@ class GetVpcsVpcResult(dict):
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
-        """
-        Specifies the current status of the desired VPC. The value can be CREATING, OK or ERROR.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Mapping[str, _builtins.str]:
-        """
-        Specifies the included key/value pairs which associated with the desired VPC.
-
-        > A maximum of 10 tag keys are allowed for each query operation. Each tag key can have up to 10 tag values.
-        The tag key cannot be left blank or set to an empty string. Each tag key must be unique, and each tag value in a
-        tag must be unique, use commas(,) to separate the multiple values. An empty for values indicates any value.
-        The values are in the OR relationship.
-        """
         return pulumi.get(self, "tags")
 
 

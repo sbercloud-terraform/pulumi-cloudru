@@ -33,39 +33,14 @@ class DmsRocketmqTopicArgs:
                  total_write_queue_num: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a DmsRocketmqTopic resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the rocketMQ instance.
-               Changing this parameter will create a new resource.
         :param pulumi.Input[Sequence[pulumi.Input['DmsRocketmqTopicBrokerArgs']]] brokers: Specifies the list of associated brokers of the topic.
-               It's only valid when RocketMQ instance version is **4.8.0**.
-               Changing this parameter will create a new resource.
-               The brokers structure is documented below.
         :param pulumi.Input[_builtins.str] message_type: Specifies the message type of the topic.
-               It's only valid when RocketMQ instance version is **5.x**. Valid values are:
-               + **NORMAL**: Normal messages.
-               + **FIFO**: Ordered messages.
-               + **DELAY**: Scheduled messages.
-               + **TRANSACTION**: Transactional messages.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the broker.
-               
-               <a name="DmsRocketMQTopic_QueueRef"></a>
-               The `queues` block supports:
+        :param pulumi.Input[_builtins.str] name: Specifies the name of the topic.
         :param pulumi.Input[_builtins.str] permission: Specifies the permissions of the topic.
-               Value options: **all**, **sub**, **pub**. Defaults to **all**.
-               It's only valid when RocketMQ instance version is **4.8.0**.
-        :param pulumi.Input[_builtins.int] queue_num: Specifies the number of the queues.
-        :param pulumi.Input[Sequence[pulumi.Input['DmsRocketmqTopicQueueArgs']]] queues: Specifies the queues information of the topic.
-               It's only valid when RocketMQ instance version is **4.8.0**.
-               The queues structure is documented below.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.int] queue_num: Specifies the number of queues.
+        :param pulumi.Input[Sequence[pulumi.Input['DmsRocketmqTopicQueueArgs']]] queues: Specifies the queue info of the topic.
         :param pulumi.Input[_builtins.int] total_read_queue_num: Specifies the total number of read queues.
         :param pulumi.Input[_builtins.int] total_write_queue_num: Specifies the total number of write queues.
-               
-               <a name="DmsRocketMQTopic_BrokerRef"></a>
-               The `brokers` block supports:
         """
         pulumi.set(__self__, "instance_id", instance_id)
         if brokers is not None:
@@ -90,10 +65,6 @@ class DmsRocketmqTopicArgs:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the ID of the rocketMQ instance.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -105,9 +76,6 @@ class DmsRocketmqTopicArgs:
     def brokers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DmsRocketmqTopicBrokerArgs']]]]:
         """
         Specifies the list of associated brokers of the topic.
-        It's only valid when RocketMQ instance version is **4.8.0**.
-        Changing this parameter will create a new resource.
-        The brokers structure is documented below.
         """
         return pulumi.get(self, "brokers")
 
@@ -120,13 +88,6 @@ class DmsRocketmqTopicArgs:
     def message_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the message type of the topic.
-        It's only valid when RocketMQ instance version is **5.x**. Valid values are:
-        + **NORMAL**: Normal messages.
-        + **FIFO**: Ordered messages.
-        + **DELAY**: Scheduled messages.
-        + **TRANSACTION**: Transactional messages.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "message_type")
 
@@ -138,10 +99,7 @@ class DmsRocketmqTopicArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the name of the broker.
-
-        <a name="DmsRocketMQTopic_QueueRef"></a>
-        The `queues` block supports:
+        Specifies the name of the topic.
         """
         return pulumi.get(self, "name")
 
@@ -154,8 +112,6 @@ class DmsRocketmqTopicArgs:
     def permission(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the permissions of the topic.
-        Value options: **all**, **sub**, **pub**. Defaults to **all**.
-        It's only valid when RocketMQ instance version is **4.8.0**.
         """
         return pulumi.get(self, "permission")
 
@@ -167,7 +123,7 @@ class DmsRocketmqTopicArgs:
     @pulumi.getter(name="queueNum")
     def queue_num(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the number of the queues.
+        Specifies the number of queues.
         """
         return pulumi.get(self, "queue_num")
 
@@ -179,10 +135,7 @@ class DmsRocketmqTopicArgs:
     @pulumi.getter
     def queues(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DmsRocketmqTopicQueueArgs']]]]:
         """
-        Specifies the queues information of the topic.
-        It's only valid when RocketMQ instance version is **4.8.0**.
-        The queues structure is documented below.
-        Changing this parameter will create a new resource.
+        Specifies the queue info of the topic.
         """
         return pulumi.get(self, "queues")
 
@@ -193,10 +146,6 @@ class DmsRocketmqTopicArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -220,9 +169,6 @@ class DmsRocketmqTopicArgs:
     def total_write_queue_num(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the total number of write queues.
-
-        <a name="DmsRocketMQTopic_BrokerRef"></a>
-        The `brokers` block supports:
         """
         return pulumi.get(self, "total_write_queue_num")
 
@@ -247,38 +193,13 @@ class _DmsRocketmqTopicState:
         """
         Input properties used for looking up and filtering DmsRocketmqTopic resources.
         :param pulumi.Input[Sequence[pulumi.Input['DmsRocketmqTopicBrokerArgs']]] brokers: Specifies the list of associated brokers of the topic.
-               It's only valid when RocketMQ instance version is **4.8.0**.
-               Changing this parameter will create a new resource.
-               The brokers structure is documented below.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the rocketMQ instance.
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] message_type: Specifies the message type of the topic.
-               It's only valid when RocketMQ instance version is **5.x**. Valid values are:
-               + **NORMAL**: Normal messages.
-               + **FIFO**: Ordered messages.
-               + **DELAY**: Scheduled messages.
-               + **TRANSACTION**: Transactional messages.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the broker.
-               
-               <a name="DmsRocketMQTopic_QueueRef"></a>
-               The `queues` block supports:
+        :param pulumi.Input[_builtins.str] name: Specifies the name of the topic.
         :param pulumi.Input[_builtins.str] permission: Specifies the permissions of the topic.
-               Value options: **all**, **sub**, **pub**. Defaults to **all**.
-               It's only valid when RocketMQ instance version is **4.8.0**.
-        :param pulumi.Input[_builtins.int] queue_num: Specifies the number of the queues.
-        :param pulumi.Input[Sequence[pulumi.Input['DmsRocketmqTopicQueueArgs']]] queues: Specifies the queues information of the topic.
-               It's only valid when RocketMQ instance version is **4.8.0**.
-               The queues structure is documented below.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.int] queue_num: Specifies the number of queues.
+        :param pulumi.Input[Sequence[pulumi.Input['DmsRocketmqTopicQueueArgs']]] queues: Specifies the queue info of the topic.
         :param pulumi.Input[_builtins.int] total_read_queue_num: Specifies the total number of read queues.
         :param pulumi.Input[_builtins.int] total_write_queue_num: Specifies the total number of write queues.
-               
-               <a name="DmsRocketMQTopic_BrokerRef"></a>
-               The `brokers` block supports:
         """
         if brokers is not None:
             pulumi.set(__self__, "brokers", brokers)
@@ -306,9 +227,6 @@ class _DmsRocketmqTopicState:
     def brokers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DmsRocketmqTopicBrokerArgs']]]]:
         """
         Specifies the list of associated brokers of the topic.
-        It's only valid when RocketMQ instance version is **4.8.0**.
-        Changing this parameter will create a new resource.
-        The brokers structure is documented below.
         """
         return pulumi.get(self, "brokers")
 
@@ -319,10 +237,6 @@ class _DmsRocketmqTopicState:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of the rocketMQ instance.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -334,13 +248,6 @@ class _DmsRocketmqTopicState:
     def message_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the message type of the topic.
-        It's only valid when RocketMQ instance version is **5.x**. Valid values are:
-        + **NORMAL**: Normal messages.
-        + **FIFO**: Ordered messages.
-        + **DELAY**: Scheduled messages.
-        + **TRANSACTION**: Transactional messages.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "message_type")
 
@@ -352,10 +259,7 @@ class _DmsRocketmqTopicState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the name of the broker.
-
-        <a name="DmsRocketMQTopic_QueueRef"></a>
-        The `queues` block supports:
+        Specifies the name of the topic.
         """
         return pulumi.get(self, "name")
 
@@ -368,8 +272,6 @@ class _DmsRocketmqTopicState:
     def permission(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the permissions of the topic.
-        Value options: **all**, **sub**, **pub**. Defaults to **all**.
-        It's only valid when RocketMQ instance version is **4.8.0**.
         """
         return pulumi.get(self, "permission")
 
@@ -381,7 +283,7 @@ class _DmsRocketmqTopicState:
     @pulumi.getter(name="queueNum")
     def queue_num(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the number of the queues.
+        Specifies the number of queues.
         """
         return pulumi.get(self, "queue_num")
 
@@ -393,10 +295,7 @@ class _DmsRocketmqTopicState:
     @pulumi.getter
     def queues(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DmsRocketmqTopicQueueArgs']]]]:
         """
-        Specifies the queues information of the topic.
-        It's only valid when RocketMQ instance version is **4.8.0**.
-        The queues structure is documented below.
-        Changing this parameter will create a new resource.
+        Specifies the queue info of the topic.
         """
         return pulumi.get(self, "queues")
 
@@ -407,10 +306,6 @@ class _DmsRocketmqTopicState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -434,9 +329,6 @@ class _DmsRocketmqTopicState:
     def total_write_queue_num(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the total number of write queues.
-
-        <a name="DmsRocketMQTopic_BrokerRef"></a>
-        The `brokers` block supports:
         """
         return pulumi.get(self, "total_write_queue_num")
 
@@ -463,105 +355,17 @@ class DmsRocketmqTopic(pulumi.CustomResource):
                  total_write_queue_num: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
-        Manages DMS RocketMQ topic resources within SberCloud.
-
-        ## Example Usage
-
-        ### Create a topic for 5.x version instance
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        test = sbercloud.DmsRocketmqTopic("test",
-            instance_id=instance_id,
-            name="topic_test",
-            message_type="NORMAL")
-        ```
-
-        ### Create a topic with brokers for 4.8.0 version instance
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        test = sbercloud.DmsRocketmqTopic("test",
-            instance_id=instance_id,
-            name="topic_test",
-            queue_num=3,
-            permission="all",
-            brokers=[{
-                "name": "broker-0",
-            }])
-        ```
-
-        ### Create a topic with queues for 4.8.0 version instance
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        test = sbercloud.DmsRocketmqTopic("test",
-            instance_id=instance_id,
-            name="topic_test",
-            permission="all",
-            queues=[{
-                "broker": "broker-0",
-                "queue_num": 3,
-            }])
-        ```
-
-        ## Import
-
-        The rocketmq topic can be imported using the rocketMQ instance ID and topic name separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/dmsRocketmqTopic:DmsRocketmqTopic test c8057fe5-23a8-46ef-ad83-c0055b4e0c5c/topic_1
-        ```
-
+        Create a DmsRocketmqTopic resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DmsRocketmqTopicBrokerArgs', 'DmsRocketmqTopicBrokerArgsDict']]]] brokers: Specifies the list of associated brokers of the topic.
-               It's only valid when RocketMQ instance version is **4.8.0**.
-               Changing this parameter will create a new resource.
-               The brokers structure is documented below.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the rocketMQ instance.
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] message_type: Specifies the message type of the topic.
-               It's only valid when RocketMQ instance version is **5.x**. Valid values are:
-               + **NORMAL**: Normal messages.
-               + **FIFO**: Ordered messages.
-               + **DELAY**: Scheduled messages.
-               + **TRANSACTION**: Transactional messages.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the broker.
-               
-               <a name="DmsRocketMQTopic_QueueRef"></a>
-               The `queues` block supports:
+        :param pulumi.Input[_builtins.str] name: Specifies the name of the topic.
         :param pulumi.Input[_builtins.str] permission: Specifies the permissions of the topic.
-               Value options: **all**, **sub**, **pub**. Defaults to **all**.
-               It's only valid when RocketMQ instance version is **4.8.0**.
-        :param pulumi.Input[_builtins.int] queue_num: Specifies the number of the queues.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DmsRocketmqTopicQueueArgs', 'DmsRocketmqTopicQueueArgsDict']]]] queues: Specifies the queues information of the topic.
-               It's only valid when RocketMQ instance version is **4.8.0**.
-               The queues structure is documented below.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.int] queue_num: Specifies the number of queues.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DmsRocketmqTopicQueueArgs', 'DmsRocketmqTopicQueueArgsDict']]]] queues: Specifies the queue info of the topic.
         :param pulumi.Input[_builtins.int] total_read_queue_num: Specifies the total number of read queues.
         :param pulumi.Input[_builtins.int] total_write_queue_num: Specifies the total number of write queues.
-               
-               <a name="DmsRocketMQTopic_BrokerRef"></a>
-               The `brokers` block supports:
         """
         ...
     @overload
@@ -570,70 +374,7 @@ class DmsRocketmqTopic(pulumi.CustomResource):
                  args: DmsRocketmqTopicArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages DMS RocketMQ topic resources within SberCloud.
-
-        ## Example Usage
-
-        ### Create a topic for 5.x version instance
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        test = sbercloud.DmsRocketmqTopic("test",
-            instance_id=instance_id,
-            name="topic_test",
-            message_type="NORMAL")
-        ```
-
-        ### Create a topic with brokers for 4.8.0 version instance
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        test = sbercloud.DmsRocketmqTopic("test",
-            instance_id=instance_id,
-            name="topic_test",
-            queue_num=3,
-            permission="all",
-            brokers=[{
-                "name": "broker-0",
-            }])
-        ```
-
-        ### Create a topic with queues for 4.8.0 version instance
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        test = sbercloud.DmsRocketmqTopic("test",
-            instance_id=instance_id,
-            name="topic_test",
-            permission="all",
-            queues=[{
-                "broker": "broker-0",
-                "queue_num": 3,
-            }])
-        ```
-
-        ## Import
-
-        The rocketmq topic can be imported using the rocketMQ instance ID and topic name separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/dmsRocketmqTopic:DmsRocketmqTopic test c8057fe5-23a8-46ef-ad83-c0055b4e0c5c/topic_1
-        ```
-
+        Create a DmsRocketmqTopic resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param DmsRocketmqTopicArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -708,38 +449,13 @@ class DmsRocketmqTopic(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DmsRocketmqTopicBrokerArgs', 'DmsRocketmqTopicBrokerArgsDict']]]] brokers: Specifies the list of associated brokers of the topic.
-               It's only valid when RocketMQ instance version is **4.8.0**.
-               Changing this parameter will create a new resource.
-               The brokers structure is documented below.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the rocketMQ instance.
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] message_type: Specifies the message type of the topic.
-               It's only valid when RocketMQ instance version is **5.x**. Valid values are:
-               + **NORMAL**: Normal messages.
-               + **FIFO**: Ordered messages.
-               + **DELAY**: Scheduled messages.
-               + **TRANSACTION**: Transactional messages.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the broker.
-               
-               <a name="DmsRocketMQTopic_QueueRef"></a>
-               The `queues` block supports:
+        :param pulumi.Input[_builtins.str] name: Specifies the name of the topic.
         :param pulumi.Input[_builtins.str] permission: Specifies the permissions of the topic.
-               Value options: **all**, **sub**, **pub**. Defaults to **all**.
-               It's only valid when RocketMQ instance version is **4.8.0**.
-        :param pulumi.Input[_builtins.int] queue_num: Specifies the number of the queues.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DmsRocketmqTopicQueueArgs', 'DmsRocketmqTopicQueueArgsDict']]]] queues: Specifies the queues information of the topic.
-               It's only valid when RocketMQ instance version is **4.8.0**.
-               The queues structure is documented below.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.int] queue_num: Specifies the number of queues.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DmsRocketmqTopicQueueArgs', 'DmsRocketmqTopicQueueArgsDict']]]] queues: Specifies the queue info of the topic.
         :param pulumi.Input[_builtins.int] total_read_queue_num: Specifies the total number of read queues.
         :param pulumi.Input[_builtins.int] total_write_queue_num: Specifies the total number of write queues.
-               
-               <a name="DmsRocketMQTopic_BrokerRef"></a>
-               The `brokers` block supports:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -762,19 +478,12 @@ class DmsRocketmqTopic(pulumi.CustomResource):
     def brokers(self) -> pulumi.Output[Sequence['outputs.DmsRocketmqTopicBroker']]:
         """
         Specifies the list of associated brokers of the topic.
-        It's only valid when RocketMQ instance version is **4.8.0**.
-        Changing this parameter will create a new resource.
-        The brokers structure is documented below.
         """
         return pulumi.get(self, "brokers")
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the ID of the rocketMQ instance.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
@@ -782,13 +491,6 @@ class DmsRocketmqTopic(pulumi.CustomResource):
     def message_type(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the message type of the topic.
-        It's only valid when RocketMQ instance version is **5.x**. Valid values are:
-        + **NORMAL**: Normal messages.
-        + **FIFO**: Ordered messages.
-        + **DELAY**: Scheduled messages.
-        + **TRANSACTION**: Transactional messages.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "message_type")
 
@@ -796,10 +498,7 @@ class DmsRocketmqTopic(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the name of the broker.
-
-        <a name="DmsRocketMQTopic_QueueRef"></a>
-        The `queues` block supports:
+        Specifies the name of the topic.
         """
         return pulumi.get(self, "name")
 
@@ -808,8 +507,6 @@ class DmsRocketmqTopic(pulumi.CustomResource):
     def permission(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the permissions of the topic.
-        Value options: **all**, **sub**, **pub**. Defaults to **all**.
-        It's only valid when RocketMQ instance version is **4.8.0**.
         """
         return pulumi.get(self, "permission")
 
@@ -817,7 +514,7 @@ class DmsRocketmqTopic(pulumi.CustomResource):
     @pulumi.getter(name="queueNum")
     def queue_num(self) -> pulumi.Output[_builtins.int]:
         """
-        Specifies the number of the queues.
+        Specifies the number of queues.
         """
         return pulumi.get(self, "queue_num")
 
@@ -825,20 +522,13 @@ class DmsRocketmqTopic(pulumi.CustomResource):
     @pulumi.getter
     def queues(self) -> pulumi.Output[Optional[Sequence['outputs.DmsRocketmqTopicQueue']]]:
         """
-        Specifies the queues information of the topic.
-        It's only valid when RocketMQ instance version is **4.8.0**.
-        The queues structure is documented below.
-        Changing this parameter will create a new resource.
+        Specifies the queue info of the topic.
         """
         return pulumi.get(self, "queues")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
@@ -854,9 +544,6 @@ class DmsRocketmqTopic(pulumi.CustomResource):
     def total_write_queue_num(self) -> pulumi.Output[_builtins.int]:
         """
         Specifies the total number of write queues.
-
-        <a name="DmsRocketMQTopic_BrokerRef"></a>
-        The `brokers` block supports:
         """
         return pulumi.get(self, "total_write_queue_num")
 

@@ -25,12 +25,9 @@ class DmsKafkaConsumerGroupArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DmsKafkaConsumerGroup resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the DMS kafka instance to which the consumer group belongs.
-               Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the Kafka instance.
         :param pulumi.Input[_builtins.str] description: Specifies the description of the consumer group.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the consumer group. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the DMS kafka consumer group resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] name: Specifies the name of the consumer group.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         if description is not None:
@@ -44,8 +41,7 @@ class DmsKafkaConsumerGroupArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the ID of the DMS kafka instance to which the consumer group belongs.
-        Changing this creates a new resource.
+        Specifies the ID of the Kafka instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -69,7 +65,7 @@ class DmsKafkaConsumerGroupArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the name of the consumer group. Changing this creates a new resource.
+        Specifies the name of the consumer group.
         """
         return pulumi.get(self, "name")
 
@@ -80,10 +76,6 @@ class DmsKafkaConsumerGroupArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the DMS kafka consumer group resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -105,14 +97,11 @@ class _DmsKafkaConsumerGroupState:
         """
         Input properties used for looking up and filtering DmsKafkaConsumerGroup resources.
         :param pulumi.Input[_builtins.int] coordinator_id: Indicates the coordinator id of the consumer group.
-        :param pulumi.Input[_builtins.str] created_at: Indicates the create time.
+        :param pulumi.Input[_builtins.str] created_at: Indicates the created time of the consumer group.
         :param pulumi.Input[_builtins.str] description: Specifies the description of the consumer group.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the DMS kafka instance to which the consumer group belongs.
-               Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the Kafka instance.
         :param pulumi.Input[_builtins.int] lag: Indicates the lag number of the consumer group.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the consumer group. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the DMS kafka consumer group resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] name: Specifies the name of the consumer group.
         :param pulumi.Input[_builtins.str] state: Indicates the state of the consumer group.
         """
         if coordinator_id is not None:
@@ -148,7 +137,7 @@ class _DmsKafkaConsumerGroupState:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Indicates the create time.
+        Indicates the created time of the consumer group.
         """
         return pulumi.get(self, "created_at")
 
@@ -172,8 +161,7 @@ class _DmsKafkaConsumerGroupState:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the ID of the DMS kafka instance to which the consumer group belongs.
-        Changing this creates a new resource.
+        Specifies the ID of the Kafka instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -197,7 +185,7 @@ class _DmsKafkaConsumerGroupState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the name of the consumer group. Changing this creates a new resource.
+        Specifies the name of the consumer group.
         """
         return pulumi.get(self, "name")
 
@@ -208,10 +196,6 @@ class _DmsKafkaConsumerGroupState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the DMS kafka consumer group resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -243,40 +227,12 @@ class DmsKafkaConsumerGroup(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a DMS kafka consumer group resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        kafka_instance_id = config.require_object("kafkaInstanceId")
-        group1 = sbercloud.DmsKafkaConsumerGroup("group1",
-            instance_id=kafka_instance_id,
-            name="group1",
-            description="Group description")
-        ```
-
-        ## Import
-
-        DMS kafka consumer groups can be imported using the kafka instance ID and consumer group name separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/dmsKafkaConsumerGroup:DmsKafkaConsumerGroup user c8057fe5-23a8-46ef-ad83-c0055b4e0c5c/group1
-        ```
-
+        Create a DmsKafkaConsumerGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Specifies the description of the consumer group.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the DMS kafka instance to which the consumer group belongs.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the consumer group. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the DMS kafka consumer group resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the Kafka instance.
+        :param pulumi.Input[_builtins.str] name: Specifies the name of the consumer group.
         """
         ...
     @overload
@@ -285,32 +241,7 @@ class DmsKafkaConsumerGroup(pulumi.CustomResource):
                  args: DmsKafkaConsumerGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a DMS kafka consumer group resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        kafka_instance_id = config.require_object("kafkaInstanceId")
-        group1 = sbercloud.DmsKafkaConsumerGroup("group1",
-            instance_id=kafka_instance_id,
-            name="group1",
-            description="Group description")
-        ```
-
-        ## Import
-
-        DMS kafka consumer groups can be imported using the kafka instance ID and consumer group name separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/dmsKafkaConsumerGroup:DmsKafkaConsumerGroup user c8057fe5-23a8-46ef-ad83-c0055b4e0c5c/group1
-        ```
-
+        Create a DmsKafkaConsumerGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param DmsKafkaConsumerGroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -375,14 +306,11 @@ class DmsKafkaConsumerGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] coordinator_id: Indicates the coordinator id of the consumer group.
-        :param pulumi.Input[_builtins.str] created_at: Indicates the create time.
+        :param pulumi.Input[_builtins.str] created_at: Indicates the created time of the consumer group.
         :param pulumi.Input[_builtins.str] description: Specifies the description of the consumer group.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the DMS kafka instance to which the consumer group belongs.
-               Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the Kafka instance.
         :param pulumi.Input[_builtins.int] lag: Indicates the lag number of the consumer group.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the consumer group. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the DMS kafka consumer group resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] name: Specifies the name of the consumer group.
         :param pulumi.Input[_builtins.str] state: Indicates the state of the consumer group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -411,7 +339,7 @@ class DmsKafkaConsumerGroup(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:
         """
-        Indicates the create time.
+        Indicates the created time of the consumer group.
         """
         return pulumi.get(self, "created_at")
 
@@ -427,8 +355,7 @@ class DmsKafkaConsumerGroup(pulumi.CustomResource):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the ID of the DMS kafka instance to which the consumer group belongs.
-        Changing this creates a new resource.
+        Specifies the ID of the Kafka instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -444,17 +371,13 @@ class DmsKafkaConsumerGroup(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the name of the consumer group. Changing this creates a new resource.
+        Specifies the name of the consumer group.
         """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the DMS kafka consumer group resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property

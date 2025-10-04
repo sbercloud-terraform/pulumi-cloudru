@@ -4,66 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a Security Group Rule resource within SberCloud.
- *
- * ## Example Usage
- *
- * ### Create an ingress rule that opens TCP port 8080 with port range parameters
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const securityGroupId = config.requireObject<any>("securityGroupId");
- * const test = new sbercloud.vpc.SecgroupRule("test", {
- *     securityGroupId: securityGroupId,
- *     direction: "ingress",
- *     ethertype: "IPv4",
- *     protocol: "tcp",
- *     portRangeMin: 8080,
- *     portRangeMax: 8080,
- *     remoteIpPrefix: "0.0.0.0/0",
- * });
- * ```
- *
- * ### Create an ingress rule that enable the remote address group and open some TCP ports
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const groupName = config.requireObject<any>("groupName");
- * const securityGroupId = config.requireObject<any>("securityGroupId");
- * const test = new sbercloud.vpc.AddressGroup("test", {
- *     name: groupName,
- *     addresses: [
- *         "192.168.10.12",
- *         "192.168.11.0-192.168.11.240",
- *     ],
- * });
- * const testSecgroupRule = new sbercloud.vpc.SecgroupRule("test", {
- *     securityGroupId: securityGroupId,
- *     direction: "ingress",
- *     action: "allow",
- *     ethertype: "IPv4",
- *     ports: "80,500,600-800",
- *     protocol: "tcp",
- *     priority: 5,
- *     remoteAddressGroupId: test.id,
- * });
- * ```
- *
- * ## Import
- *
- * Security Group Rules can be imported using the `id`, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Vpc/secgroupRule:SecgroupRule secgroup_rule_1 aeb68ee3-6e9d-4256-955c-9584a6212745
- * ```
- */
 export class SecgroupRule extends pulumi.CustomResource {
     /**
      * Get an existing SecgroupRule resource's state with the given name, ID, and optional extra
@@ -92,86 +32,19 @@ export class SecgroupRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === SecgroupRule.__pulumiType;
     }
 
-    /**
-     * Specifies the effective policy. The valid values are **allow** and **deny**.
-     * This parameter is not used with `portRangeMin` and `portRangeMax`.
-     * Changing this creates a new security group rule.
-     */
     declare public readonly action: pulumi.Output<string>;
-    /**
-     * Specifies the supplementary information about the networking security
-     * group rule. This parameter can contain a maximum of 255 characters and cannot contain angle brackets (< or >).
-     * Changing this creates a new security group rule.
-     */
     declare public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the direction of the rule, valid values are **ingress** or
-     * **egress**. Changing this creates a new security group rule.
-     */
     declare public readonly direction: pulumi.Output<string>;
-    /**
-     * Specifies the layer 3 protocol type, valid values are **IPv4** or **IPv6**.
-     * Changing this creates a new security group rule.
-     */
     declare public readonly ethertype: pulumi.Output<string>;
-    /**
-     * Specifies the higher part of the allowed port range, valid integer value
-     * needs to be between `1` and `65,535`. Changing this creates a new security group rule.
-     * This parameter and `ports` are alternative.
-     */
     declare public readonly portRangeMax: pulumi.Output<number>;
-    /**
-     * Specifies the lower part of the allowed port range, valid integer value
-     * needs to be between `1` and `65,535`. Changing this creates a new security group rule.
-     * This parameter and `ports` are alternative.
-     */
     declare public readonly portRangeMin: pulumi.Output<number>;
-    /**
-     * Specifies the allowed port value range, which supports single port (80),
-     * continuous port (1-30) and discontinous port (22, 3389, 80) The valid port values is range form `1` to `65,535`.
-     * Changing this creates a new security group rule.
-     */
     declare public readonly ports: pulumi.Output<string>;
-    /**
-     * Specifies the priority number.
-     * The valid value is range from **1** to **100**. The default value is **1**.
-     * This parameter is not used with `portRangeMin` and `portRangeMax`.
-     * Changing this creates a new security group rule.
-     */
     declare public readonly priority: pulumi.Output<number>;
-    /**
-     * Specifies the layer 4 protocol type, valid values are **tcp**, **udp**,
-     * **icmp** and **icmpv6**. If omitted, the protocol means that all protocols are supported.
-     * This is required if you want to specify a port range. Changing this creates a new security group rule.
-     */
     declare public readonly protocol: pulumi.Output<string>;
-    /**
-     * The region in which to obtain the V2 networking client.
-     * A networking client is needed to create a port. If omitted, the
-     * `region` argument of the provider is used. Changing this creates a new
-     * security group rule.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Specifies the remote address group ID.
-     * This parameter is not used with `portRangeMin` and `portRangeMax`.
-     * Changing this creates a new security group rule.
-     */
     declare public readonly remoteAddressGroupId: pulumi.Output<string>;
-    /**
-     * Specifies the remote group ID. Changing this creates a new security
-     * group rule.
-     */
     declare public readonly remoteGroupId: pulumi.Output<string>;
-    /**
-     * Specifies the remote CIDR, the value needs to be a valid CIDR (i.e.
-     * 192.168.0.0/16). Changing this creates a new security group rule.
-     */
     declare public readonly remoteIpPrefix: pulumi.Output<string>;
-    /**
-     * Specifies the security group ID the rule should belong to. Changing
-     * this creates a new security group rule.
-     */
     declare public readonly securityGroupId: pulumi.Output<string>;
 
     /**
@@ -236,86 +109,19 @@ export class SecgroupRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SecgroupRule resources.
  */
 export interface SecgroupRuleState {
-    /**
-     * Specifies the effective policy. The valid values are **allow** and **deny**.
-     * This parameter is not used with `portRangeMin` and `portRangeMax`.
-     * Changing this creates a new security group rule.
-     */
     action?: pulumi.Input<string>;
-    /**
-     * Specifies the supplementary information about the networking security
-     * group rule. This parameter can contain a maximum of 255 characters and cannot contain angle brackets (< or >).
-     * Changing this creates a new security group rule.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies the direction of the rule, valid values are **ingress** or
-     * **egress**. Changing this creates a new security group rule.
-     */
     direction?: pulumi.Input<string>;
-    /**
-     * Specifies the layer 3 protocol type, valid values are **IPv4** or **IPv6**.
-     * Changing this creates a new security group rule.
-     */
     ethertype?: pulumi.Input<string>;
-    /**
-     * Specifies the higher part of the allowed port range, valid integer value
-     * needs to be between `1` and `65,535`. Changing this creates a new security group rule.
-     * This parameter and `ports` are alternative.
-     */
     portRangeMax?: pulumi.Input<number>;
-    /**
-     * Specifies the lower part of the allowed port range, valid integer value
-     * needs to be between `1` and `65,535`. Changing this creates a new security group rule.
-     * This parameter and `ports` are alternative.
-     */
     portRangeMin?: pulumi.Input<number>;
-    /**
-     * Specifies the allowed port value range, which supports single port (80),
-     * continuous port (1-30) and discontinous port (22, 3389, 80) The valid port values is range form `1` to `65,535`.
-     * Changing this creates a new security group rule.
-     */
     ports?: pulumi.Input<string>;
-    /**
-     * Specifies the priority number.
-     * The valid value is range from **1** to **100**. The default value is **1**.
-     * This parameter is not used with `portRangeMin` and `portRangeMax`.
-     * Changing this creates a new security group rule.
-     */
     priority?: pulumi.Input<number>;
-    /**
-     * Specifies the layer 4 protocol type, valid values are **tcp**, **udp**,
-     * **icmp** and **icmpv6**. If omitted, the protocol means that all protocols are supported.
-     * This is required if you want to specify a port range. Changing this creates a new security group rule.
-     */
     protocol?: pulumi.Input<string>;
-    /**
-     * The region in which to obtain the V2 networking client.
-     * A networking client is needed to create a port. If omitted, the
-     * `region` argument of the provider is used. Changing this creates a new
-     * security group rule.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the remote address group ID.
-     * This parameter is not used with `portRangeMin` and `portRangeMax`.
-     * Changing this creates a new security group rule.
-     */
     remoteAddressGroupId?: pulumi.Input<string>;
-    /**
-     * Specifies the remote group ID. Changing this creates a new security
-     * group rule.
-     */
     remoteGroupId?: pulumi.Input<string>;
-    /**
-     * Specifies the remote CIDR, the value needs to be a valid CIDR (i.e.
-     * 192.168.0.0/16). Changing this creates a new security group rule.
-     */
     remoteIpPrefix?: pulumi.Input<string>;
-    /**
-     * Specifies the security group ID the rule should belong to. Changing
-     * this creates a new security group rule.
-     */
     securityGroupId?: pulumi.Input<string>;
 }
 
@@ -323,85 +129,18 @@ export interface SecgroupRuleState {
  * The set of arguments for constructing a SecgroupRule resource.
  */
 export interface SecgroupRuleArgs {
-    /**
-     * Specifies the effective policy. The valid values are **allow** and **deny**.
-     * This parameter is not used with `portRangeMin` and `portRangeMax`.
-     * Changing this creates a new security group rule.
-     */
     action?: pulumi.Input<string>;
-    /**
-     * Specifies the supplementary information about the networking security
-     * group rule. This parameter can contain a maximum of 255 characters and cannot contain angle brackets (< or >).
-     * Changing this creates a new security group rule.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies the direction of the rule, valid values are **ingress** or
-     * **egress**. Changing this creates a new security group rule.
-     */
     direction: pulumi.Input<string>;
-    /**
-     * Specifies the layer 3 protocol type, valid values are **IPv4** or **IPv6**.
-     * Changing this creates a new security group rule.
-     */
     ethertype: pulumi.Input<string>;
-    /**
-     * Specifies the higher part of the allowed port range, valid integer value
-     * needs to be between `1` and `65,535`. Changing this creates a new security group rule.
-     * This parameter and `ports` are alternative.
-     */
     portRangeMax?: pulumi.Input<number>;
-    /**
-     * Specifies the lower part of the allowed port range, valid integer value
-     * needs to be between `1` and `65,535`. Changing this creates a new security group rule.
-     * This parameter and `ports` are alternative.
-     */
     portRangeMin?: pulumi.Input<number>;
-    /**
-     * Specifies the allowed port value range, which supports single port (80),
-     * continuous port (1-30) and discontinous port (22, 3389, 80) The valid port values is range form `1` to `65,535`.
-     * Changing this creates a new security group rule.
-     */
     ports?: pulumi.Input<string>;
-    /**
-     * Specifies the priority number.
-     * The valid value is range from **1** to **100**. The default value is **1**.
-     * This parameter is not used with `portRangeMin` and `portRangeMax`.
-     * Changing this creates a new security group rule.
-     */
     priority?: pulumi.Input<number>;
-    /**
-     * Specifies the layer 4 protocol type, valid values are **tcp**, **udp**,
-     * **icmp** and **icmpv6**. If omitted, the protocol means that all protocols are supported.
-     * This is required if you want to specify a port range. Changing this creates a new security group rule.
-     */
     protocol?: pulumi.Input<string>;
-    /**
-     * The region in which to obtain the V2 networking client.
-     * A networking client is needed to create a port. If omitted, the
-     * `region` argument of the provider is used. Changing this creates a new
-     * security group rule.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the remote address group ID.
-     * This parameter is not used with `portRangeMin` and `portRangeMax`.
-     * Changing this creates a new security group rule.
-     */
     remoteAddressGroupId?: pulumi.Input<string>;
-    /**
-     * Specifies the remote group ID. Changing this creates a new security
-     * group rule.
-     */
     remoteGroupId?: pulumi.Input<string>;
-    /**
-     * Specifies the remote CIDR, the value needs to be a valid CIDR (i.e.
-     * 192.168.0.0/16). Changing this creates a new security group rule.
-     */
     remoteIpPrefix?: pulumi.Input<string>;
-    /**
-     * Specifies the security group ID the rule should belong to. Changing
-     * this creates a new security group rule.
-     */
     securityGroupId: pulumi.Input<string>;
 }

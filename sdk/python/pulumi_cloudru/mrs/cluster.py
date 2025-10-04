@@ -56,85 +56,6 @@ class ClusterArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies the availability zone in which to create the cluster.
-               For more information about regions and AZs, see [Regions and Endpoints](https://support.hc.sbercloud.ru/en-us/endpoint/index.html).
-               Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] component_lists: Specifies the list of component names. For the components supported by
-               the cluster, please following [reference](https://support.hc.sbercloud.ru/api/mrs/mrs_02_0101.html)
-               Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] manager_admin_pass: Specifies the administrator password, which is used to log in to
-               the cluster management page. The password can contain 8 to 26 charactors and cannot be the username or the username
-               spelled backwards. The password must contain lowercase letters, uppercase letters, digits, spaces and the special
-               characters: `!?,.:-_{}[]@$^+=/`. Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input['ClusterMasterNodesArgs'] master_nodes: Specifies a list of the information about the master nodes in the
-               MapReduce cluster.
-               The `nodes` object structure of the `master_nodes` is documented below.
-               Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies the network ID of a subnet which bound to the MapReduce cluster.
-               Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] version: Specifies the MapReduce cluster version. The valid values are `MRS 2.1.0`
-               , `MRS 3.0.5` and `MRS 3.1.0`. Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of the VPC which bound to the MapReduce cluster. Changing
-               this will create a new MapReduce cluster resource.
-        :param pulumi.Input['ClusterAnalysisCoreNodesArgs'] analysis_core_nodes: Specifies a list of the informations about the analysis core nodes in the
-               MapReduce cluster.
-               The `nodes` object structure of the `analysis_core_nodes` is documented below.
-        :param pulumi.Input['ClusterAnalysisTaskNodesArgs'] analysis_task_nodes: Specifies a list of the informations about the analysis task nodes in the
-               MapReduce cluster.
-               The `nodes` object structure of the `analysis_task_nodes` is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterCustomNodeArgs']]] custom_nodes: Specifies a list of the informations about the custom nodes in the MapReduce
-               cluster.
-               The `nodes` object structure of the `custom_nodes` is documented below.
-               `Unlike other nodes, it needs to specify group_name`
-        :param pulumi.Input[_builtins.str] eip_id: Specifies the EIP ID which bound to the MapReduce cluster.
-               The EIP must have been created and must be in the same region as the cluster.
-               Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies a unique ID in UUID format of enterprise project.
-               Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.bool] log_collection: Specifies whether logs are collected when cluster installation fails.
-               Default to true. If `log_collection` set true, the OBS buckets will be created and only used to collect logs that
-               record MapReduce cluster creation failures. Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the MapReduce cluster. The name can contain 2 to 64
-               characters, which may consist of letters, digits, underscores (_) and hyphens (-). Changing this will create a new
-               MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] node_admin_pass: Specifies the administrator password, which is used to log in to the
-               each nodes(/ECSs). The password can contain 8 to 26 charactors and cannot be the username or the username spelled
-               backwards. The password must contain lowercase letters, uppercase letters, digits, spaces and the special
-               characters: `!?,.:-_{}[]@$^+=/`. Changing this will create a new MapReduce cluster resource. This parameter
-               and `node_key_pair` are alternative.
-        :param pulumi.Input[_builtins.str] node_key_pair: Specifies the name of a key pair, which is used to log in to the each
-               nodes(/ECSs). Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] public_ip: Specifies the EIP address which bound to the MapReduce cluster.
-               The EIP must have been created and must be in the same region as the cluster.
-               Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the MapReduce cluster resource. If omitted, the
-               provider-level region will be used. Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.bool] safe_mode: Specifies whether the running mode of the MapReduce cluster is secure,
-               default to true.
-               + true: enable Kerberos authentication.
-               + false: disable Kerberos authentication. Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: Specifies an array of one or more security group ID to attach to the
-               MapReduce cluster. If using the specified security group, the group need to open the specified port (9022) rules.
-        :param pulumi.Input['ClusterStreamingCoreNodesArgs'] streaming_core_nodes: Specifies a list of the informations about the streaming core nodes in the
-               MapReduce cluster.
-               The `nodes` object structure of the `streaming_core_nodes` is documented below.
-        :param pulumi.Input['ClusterStreamingTaskNodesArgs'] streaming_task_nodes: Specifies a list of the informations about the streaming task nodes in the
-               MapReduce cluster.
-               The `nodes` object structure of the `streaming_task_nodes` is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the cluster.
-        :param pulumi.Input[_builtins.str] template_id: Specifies the template used for node deployment when the cluster type is
-               CUSTOM.
-               + mgmt_control_combined_v2: template for jointly deploying the management and control nodes. The management and
-               control roles are co-deployed on the Master node, and data instances are deployed in the same node group. This
-               deployment mode applies to scenarios where the number of control nodes is less than 100, reducing costs.
-               + mgmt_control_separated_v2: The management and control roles are deployed on different master nodes, and data
-               instances are deployed in the same node group. This deployment mode is applicable to a cluster with 100 to 500 nodes
-               and delivers better performance in high-concurrency load scenarios.
-               + mgmt_control_data_separated_v2: The management role and control role are deployed on different Master nodes,
-               and data instances are deployed in different node groups. This deployment mode is applicable to a cluster with more
-               than 500 nodes. Components can be deployed separately, which can be used for a larger cluster scale.
-        :param pulumi.Input[_builtins.str] type: Specifies the type of the MapReduce cluster. The valid values are *ANALYSIS*,
-               *STREAMING* and *MIXED*, default to *ANALYSIS*. Changing this will create a new MapReduce cluster resource.
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "component_lists", component_lists)
@@ -199,11 +120,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the availability zone in which to create the cluster.
-        For more information about regions and AZs, see [Regions and Endpoints](https://support.hc.sbercloud.ru/en-us/endpoint/index.html).
-        Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -213,11 +129,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="componentLists")
     def component_lists(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        Specifies the list of component names. For the components supported by
-        the cluster, please following [reference](https://support.hc.sbercloud.ru/api/mrs/mrs_02_0101.html)
-        Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "component_lists")
 
     @component_lists.setter
@@ -227,12 +138,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="managerAdminPass")
     def manager_admin_pass(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the administrator password, which is used to log in to
-        the cluster management page. The password can contain 8 to 26 charactors and cannot be the username or the username
-        spelled backwards. The password must contain lowercase letters, uppercase letters, digits, spaces and the special
-        characters: `!?,.:-_{}[]@$^+=/`. Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "manager_admin_pass")
 
     @manager_admin_pass.setter
@@ -242,12 +147,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="masterNodes")
     def master_nodes(self) -> pulumi.Input['ClusterMasterNodesArgs']:
-        """
-        Specifies a list of the information about the master nodes in the
-        MapReduce cluster.
-        The `nodes` object structure of the `master_nodes` is documented below.
-        Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "master_nodes")
 
     @master_nodes.setter
@@ -257,10 +156,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the network ID of a subnet which bound to the MapReduce cluster.
-        Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -270,10 +165,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter
     def version(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the MapReduce cluster version. The valid values are `MRS 2.1.0`
-        , `MRS 3.0.5` and `MRS 3.1.0`. Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "version")
 
     @version.setter
@@ -283,10 +174,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the ID of the VPC which bound to the MapReduce cluster. Changing
-        this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
@@ -296,11 +183,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="analysisCoreNodes")
     def analysis_core_nodes(self) -> Optional[pulumi.Input['ClusterAnalysisCoreNodesArgs']]:
-        """
-        Specifies a list of the informations about the analysis core nodes in the
-        MapReduce cluster.
-        The `nodes` object structure of the `analysis_core_nodes` is documented below.
-        """
         return pulumi.get(self, "analysis_core_nodes")
 
     @analysis_core_nodes.setter
@@ -310,11 +192,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="analysisTaskNodes")
     def analysis_task_nodes(self) -> Optional[pulumi.Input['ClusterAnalysisTaskNodesArgs']]:
-        """
-        Specifies a list of the informations about the analysis task nodes in the
-        MapReduce cluster.
-        The `nodes` object structure of the `analysis_task_nodes` is documented below.
-        """
         return pulumi.get(self, "analysis_task_nodes")
 
     @analysis_task_nodes.setter
@@ -360,12 +237,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="customNodes")
     def custom_nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterCustomNodeArgs']]]]:
-        """
-        Specifies a list of the informations about the custom nodes in the MapReduce
-        cluster.
-        The `nodes` object structure of the `custom_nodes` is documented below.
-        `Unlike other nodes, it needs to specify group_name`
-        """
         return pulumi.get(self, "custom_nodes")
 
     @custom_nodes.setter
@@ -375,11 +246,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="eipId")
     def eip_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the EIP ID which bound to the MapReduce cluster.
-        The EIP must have been created and must be in the same region as the cluster.
-        Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "eip_id")
 
     @eip_id.setter
@@ -389,10 +255,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies a unique ID in UUID format of enterprise project.
-        Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -411,11 +273,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="logCollection")
     def log_collection(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether logs are collected when cluster installation fails.
-        Default to true. If `log_collection` set true, the OBS buckets will be created and only used to collect logs that
-        record MapReduce cluster creation failures. Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "log_collection")
 
     @log_collection.setter
@@ -425,11 +282,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the MapReduce cluster. The name can contain 2 to 64
-        characters, which may consist of letters, digits, underscores (_) and hyphens (-). Changing this will create a new
-        MapReduce cluster resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -439,13 +291,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="nodeAdminPass")
     def node_admin_pass(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the administrator password, which is used to log in to the
-        each nodes(/ECSs). The password can contain 8 to 26 charactors and cannot be the username or the username spelled
-        backwards. The password must contain lowercase letters, uppercase letters, digits, spaces and the special
-        characters: `!?,.:-_{}[]@$^+=/`. Changing this will create a new MapReduce cluster resource. This parameter
-        and `node_key_pair` are alternative.
-        """
         return pulumi.get(self, "node_admin_pass")
 
     @node_admin_pass.setter
@@ -455,10 +300,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="nodeKeyPair")
     def node_key_pair(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of a key pair, which is used to log in to the each
-        nodes(/ECSs). Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "node_key_pair")
 
     @node_key_pair.setter
@@ -486,11 +327,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the EIP address which bound to the MapReduce cluster.
-        The EIP must have been created and must be in the same region as the cluster.
-        Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
@@ -500,10 +336,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the MapReduce cluster resource. If omitted, the
-        provider-level region will be used. Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -513,12 +345,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="safeMode")
     def safe_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether the running mode of the MapReduce cluster is secure,
-        default to true.
-        + true: enable Kerberos authentication.
-        + false: disable Kerberos authentication. Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "safe_mode")
 
     @safe_mode.setter
@@ -528,10 +354,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies an array of one or more security group ID to attach to the
-        MapReduce cluster. If using the specified security group, the group need to open the specified port (9022) rules.
-        """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
@@ -550,11 +372,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="streamingCoreNodes")
     def streaming_core_nodes(self) -> Optional[pulumi.Input['ClusterStreamingCoreNodesArgs']]:
-        """
-        Specifies a list of the informations about the streaming core nodes in the
-        MapReduce cluster.
-        The `nodes` object structure of the `streaming_core_nodes` is documented below.
-        """
         return pulumi.get(self, "streaming_core_nodes")
 
     @streaming_core_nodes.setter
@@ -564,11 +381,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="streamingTaskNodes")
     def streaming_task_nodes(self) -> Optional[pulumi.Input['ClusterStreamingTaskNodesArgs']]:
-        """
-        Specifies a list of the informations about the streaming task nodes in the
-        MapReduce cluster.
-        The `nodes` object structure of the `streaming_task_nodes` is documented below.
-        """
         return pulumi.get(self, "streaming_task_nodes")
 
     @streaming_task_nodes.setter
@@ -578,9 +390,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs to associate with the cluster.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -590,19 +399,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="templateId")
     def template_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the template used for node deployment when the cluster type is
-        CUSTOM.
-        + mgmt_control_combined_v2: template for jointly deploying the management and control nodes. The management and
-        control roles are co-deployed on the Master node, and data instances are deployed in the same node group. This
-        deployment mode applies to scenarios where the number of control nodes is less than 100, reducing costs.
-        + mgmt_control_separated_v2: The management and control roles are deployed on different master nodes, and data
-        instances are deployed in the same node group. This deployment mode is applicable to a cluster with 100 to 500 nodes
-        and delivers better performance in high-concurrency load scenarios.
-        + mgmt_control_data_separated_v2: The management role and control role are deployed on different Master nodes,
-        and data instances are deployed in different node groups. This deployment mode is applicable to a cluster with more
-        than 500 nodes. Components can be deployed separately, which can be used for a larger cluster scale.
-        """
         return pulumi.get(self, "template_id")
 
     @template_id.setter
@@ -612,10 +408,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the type of the MapReduce cluster. The valid values are *ANALYSIS*,
-        *STREAMING* and *MIXED*, default to *ANALYSIS*. Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -668,92 +460,6 @@ class _ClusterState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
-        :param pulumi.Input['ClusterAnalysisCoreNodesArgs'] analysis_core_nodes: Specifies a list of the informations about the analysis core nodes in the
-               MapReduce cluster.
-               The `nodes` object structure of the `analysis_core_nodes` is documented below.
-        :param pulumi.Input['ClusterAnalysisTaskNodesArgs'] analysis_task_nodes: Specifies a list of the informations about the analysis task nodes in the
-               MapReduce cluster.
-               The `nodes` object structure of the `analysis_task_nodes` is documented below.
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies the availability zone in which to create the cluster.
-               For more information about regions and AZs, see [Regions and Endpoints](https://support.hc.sbercloud.ru/en-us/endpoint/index.html).
-               Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] charging_start_time: The charging start time which is the start time of billing, in RFC-3339 format.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] component_lists: Specifies the list of component names. For the components supported by
-               the cluster, please following [reference](https://support.hc.sbercloud.ru/api/mrs/mrs_02_0101.html)
-               Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] create_time: The cluster creation time, in RFC-3339 format.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterCustomNodeArgs']]] custom_nodes: Specifies a list of the informations about the custom nodes in the MapReduce
-               cluster.
-               The `nodes` object structure of the `custom_nodes` is documented below.
-               `Unlike other nodes, it needs to specify group_name`
-        :param pulumi.Input[_builtins.str] eip_id: Specifies the EIP ID which bound to the MapReduce cluster.
-               The EIP must have been created and must be in the same region as the cluster.
-               Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies a unique ID in UUID format of enterprise project.
-               Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.bool] log_collection: Specifies whether logs are collected when cluster installation fails.
-               Default to true. If `log_collection` set true, the OBS buckets will be created and only used to collect logs that
-               record MapReduce cluster creation failures. Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] manager_admin_pass: Specifies the administrator password, which is used to log in to
-               the cluster management page. The password can contain 8 to 26 charactors and cannot be the username or the username
-               spelled backwards. The password must contain lowercase letters, uppercase letters, digits, spaces and the special
-               characters: `!?,.:-_{}[]@$^+=/`. Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] master_node_ip: The IP address of the master node.
-        :param pulumi.Input['ClusterMasterNodesArgs'] master_nodes: Specifies a list of the information about the master nodes in the
-               MapReduce cluster.
-               The `nodes` object structure of the `master_nodes` is documented below.
-               Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the MapReduce cluster. The name can contain 2 to 64
-               characters, which may consist of letters, digits, underscores (_) and hyphens (-). Changing this will create a new
-               MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] node_admin_pass: Specifies the administrator password, which is used to log in to the
-               each nodes(/ECSs). The password can contain 8 to 26 charactors and cannot be the username or the username spelled
-               backwards. The password must contain lowercase letters, uppercase letters, digits, spaces and the special
-               characters: `!?,.:-_{}[]@$^+=/`. Changing this will create a new MapReduce cluster resource. This parameter
-               and `node_key_pair` are alternative.
-        :param pulumi.Input[_builtins.str] node_key_pair: Specifies the name of a key pair, which is used to log in to the each
-               nodes(/ECSs). Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] private_ip: The preferred private IP address of the master node.
-        :param pulumi.Input[_builtins.str] public_ip: Specifies the EIP address which bound to the MapReduce cluster.
-               The EIP must have been created and must be in the same region as the cluster.
-               Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the MapReduce cluster resource. If omitted, the
-               provider-level region will be used. Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.bool] safe_mode: Specifies whether the running mode of the MapReduce cluster is secure,
-               default to true.
-               + true: enable Kerberos authentication.
-               + false: disable Kerberos authentication. Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: Specifies an array of one or more security group ID to attach to the
-               MapReduce cluster. If using the specified security group, the group need to open the specified port (9022) rules.
-        :param pulumi.Input[_builtins.str] status: The cluster state, which include: running, frozen, abnormal and failed.
-        :param pulumi.Input['ClusterStreamingCoreNodesArgs'] streaming_core_nodes: Specifies a list of the informations about the streaming core nodes in the
-               MapReduce cluster.
-               The `nodes` object structure of the `streaming_core_nodes` is documented below.
-        :param pulumi.Input['ClusterStreamingTaskNodesArgs'] streaming_task_nodes: Specifies a list of the informations about the streaming task nodes in the
-               MapReduce cluster.
-               The `nodes` object structure of the `streaming_task_nodes` is documented below.
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies the network ID of a subnet which bound to the MapReduce cluster.
-               Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the cluster.
-        :param pulumi.Input[_builtins.str] template_id: Specifies the template used for node deployment when the cluster type is
-               CUSTOM.
-               + mgmt_control_combined_v2: template for jointly deploying the management and control nodes. The management and
-               control roles are co-deployed on the Master node, and data instances are deployed in the same node group. This
-               deployment mode applies to scenarios where the number of control nodes is less than 100, reducing costs.
-               + mgmt_control_separated_v2: The management and control roles are deployed on different master nodes, and data
-               instances are deployed in the same node group. This deployment mode is applicable to a cluster with 100 to 500 nodes
-               and delivers better performance in high-concurrency load scenarios.
-               + mgmt_control_data_separated_v2: The management role and control role are deployed on different Master nodes,
-               and data instances are deployed in different node groups. This deployment mode is applicable to a cluster with more
-               than 500 nodes. Components can be deployed separately, which can be used for a larger cluster scale.
-        :param pulumi.Input[_builtins.int] total_node_number: The total number of nodes deployed in the cluster.
-        :param pulumi.Input[_builtins.str] type: Specifies the type of the MapReduce cluster. The valid values are *ANALYSIS*,
-               *STREAMING* and *MIXED*, default to *ANALYSIS*. Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] update_time: The cluster update time, in RFC-3339 format.
-        :param pulumi.Input[_builtins.str] version: Specifies the MapReduce cluster version. The valid values are `MRS 2.1.0`
-               , `MRS 3.0.5` and `MRS 3.1.0`. Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of the VPC which bound to the MapReduce cluster. Changing
-               this will create a new MapReduce cluster resource.
         """
         if analysis_core_nodes is not None:
             pulumi.set(__self__, "analysis_core_nodes", analysis_core_nodes)
@@ -839,11 +545,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="analysisCoreNodes")
     def analysis_core_nodes(self) -> Optional[pulumi.Input['ClusterAnalysisCoreNodesArgs']]:
-        """
-        Specifies a list of the informations about the analysis core nodes in the
-        MapReduce cluster.
-        The `nodes` object structure of the `analysis_core_nodes` is documented below.
-        """
         return pulumi.get(self, "analysis_core_nodes")
 
     @analysis_core_nodes.setter
@@ -853,11 +554,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="analysisTaskNodes")
     def analysis_task_nodes(self) -> Optional[pulumi.Input['ClusterAnalysisTaskNodesArgs']]:
-        """
-        Specifies a list of the informations about the analysis task nodes in the
-        MapReduce cluster.
-        The `nodes` object structure of the `analysis_task_nodes` is documented below.
-        """
         return pulumi.get(self, "analysis_task_nodes")
 
     @analysis_task_nodes.setter
@@ -876,11 +572,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the availability zone in which to create the cluster.
-        For more information about regions and AZs, see [Regions and Endpoints](https://support.hc.sbercloud.ru/en-us/endpoint/index.html).
-        Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -908,9 +599,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="chargingStartTime")
     def charging_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The charging start time which is the start time of billing, in RFC-3339 format.
-        """
         return pulumi.get(self, "charging_start_time")
 
     @charging_start_time.setter
@@ -929,11 +617,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="componentLists")
     def component_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the list of component names. For the components supported by
-        the cluster, please following [reference](https://support.hc.sbercloud.ru/api/mrs/mrs_02_0101.html)
-        Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "component_lists")
 
     @component_lists.setter
@@ -943,9 +626,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The cluster creation time, in RFC-3339 format.
-        """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
@@ -955,12 +635,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="customNodes")
     def custom_nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterCustomNodeArgs']]]]:
-        """
-        Specifies a list of the informations about the custom nodes in the MapReduce
-        cluster.
-        The `nodes` object structure of the `custom_nodes` is documented below.
-        `Unlike other nodes, it needs to specify group_name`
-        """
         return pulumi.get(self, "custom_nodes")
 
     @custom_nodes.setter
@@ -970,11 +644,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="eipId")
     def eip_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the EIP ID which bound to the MapReduce cluster.
-        The EIP must have been created and must be in the same region as the cluster.
-        Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "eip_id")
 
     @eip_id.setter
@@ -984,10 +653,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies a unique ID in UUID format of enterprise project.
-        Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -1006,11 +671,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="logCollection")
     def log_collection(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether logs are collected when cluster installation fails.
-        Default to true. If `log_collection` set true, the OBS buckets will be created and only used to collect logs that
-        record MapReduce cluster creation failures. Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "log_collection")
 
     @log_collection.setter
@@ -1020,12 +680,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="managerAdminPass")
     def manager_admin_pass(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the administrator password, which is used to log in to
-        the cluster management page. The password can contain 8 to 26 charactors and cannot be the username or the username
-        spelled backwards. The password must contain lowercase letters, uppercase letters, digits, spaces and the special
-        characters: `!?,.:-_{}[]@$^+=/`. Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "manager_admin_pass")
 
     @manager_admin_pass.setter
@@ -1035,9 +689,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="masterNodeIp")
     def master_node_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The IP address of the master node.
-        """
         return pulumi.get(self, "master_node_ip")
 
     @master_node_ip.setter
@@ -1047,12 +698,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="masterNodes")
     def master_nodes(self) -> Optional[pulumi.Input['ClusterMasterNodesArgs']]:
-        """
-        Specifies a list of the information about the master nodes in the
-        MapReduce cluster.
-        The `nodes` object structure of the `master_nodes` is documented below.
-        Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "master_nodes")
 
     @master_nodes.setter
@@ -1062,11 +707,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the MapReduce cluster. The name can contain 2 to 64
-        characters, which may consist of letters, digits, underscores (_) and hyphens (-). Changing this will create a new
-        MapReduce cluster resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -1076,13 +716,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="nodeAdminPass")
     def node_admin_pass(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the administrator password, which is used to log in to the
-        each nodes(/ECSs). The password can contain 8 to 26 charactors and cannot be the username or the username spelled
-        backwards. The password must contain lowercase letters, uppercase letters, digits, spaces and the special
-        characters: `!?,.:-_{}[]@$^+=/`. Changing this will create a new MapReduce cluster resource. This parameter
-        and `node_key_pair` are alternative.
-        """
         return pulumi.get(self, "node_admin_pass")
 
     @node_admin_pass.setter
@@ -1092,10 +725,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="nodeKeyPair")
     def node_key_pair(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of a key pair, which is used to log in to the each
-        nodes(/ECSs). Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "node_key_pair")
 
     @node_key_pair.setter
@@ -1123,9 +752,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The preferred private IP address of the master node.
-        """
         return pulumi.get(self, "private_ip")
 
     @private_ip.setter
@@ -1135,11 +761,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the EIP address which bound to the MapReduce cluster.
-        The EIP must have been created and must be in the same region as the cluster.
-        Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
@@ -1149,10 +770,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the MapReduce cluster resource. If omitted, the
-        provider-level region will be used. Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -1162,12 +779,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="safeMode")
     def safe_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether the running mode of the MapReduce cluster is secure,
-        default to true.
-        + true: enable Kerberos authentication.
-        + false: disable Kerberos authentication. Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "safe_mode")
 
     @safe_mode.setter
@@ -1177,10 +788,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies an array of one or more security group ID to attach to the
-        MapReduce cluster. If using the specified security group, the group need to open the specified port (9022) rules.
-        """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
@@ -1199,9 +806,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The cluster state, which include: running, frozen, abnormal and failed.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -1211,11 +815,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="streamingCoreNodes")
     def streaming_core_nodes(self) -> Optional[pulumi.Input['ClusterStreamingCoreNodesArgs']]:
-        """
-        Specifies a list of the informations about the streaming core nodes in the
-        MapReduce cluster.
-        The `nodes` object structure of the `streaming_core_nodes` is documented below.
-        """
         return pulumi.get(self, "streaming_core_nodes")
 
     @streaming_core_nodes.setter
@@ -1225,11 +824,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="streamingTaskNodes")
     def streaming_task_nodes(self) -> Optional[pulumi.Input['ClusterStreamingTaskNodesArgs']]:
-        """
-        Specifies a list of the informations about the streaming task nodes in the
-        MapReduce cluster.
-        The `nodes` object structure of the `streaming_task_nodes` is documented below.
-        """
         return pulumi.get(self, "streaming_task_nodes")
 
     @streaming_task_nodes.setter
@@ -1239,10 +833,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the network ID of a subnet which bound to the MapReduce cluster.
-        Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -1252,9 +842,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs to associate with the cluster.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -1264,19 +851,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="templateId")
     def template_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the template used for node deployment when the cluster type is
-        CUSTOM.
-        + mgmt_control_combined_v2: template for jointly deploying the management and control nodes. The management and
-        control roles are co-deployed on the Master node, and data instances are deployed in the same node group. This
-        deployment mode applies to scenarios where the number of control nodes is less than 100, reducing costs.
-        + mgmt_control_separated_v2: The management and control roles are deployed on different master nodes, and data
-        instances are deployed in the same node group. This deployment mode is applicable to a cluster with 100 to 500 nodes
-        and delivers better performance in high-concurrency load scenarios.
-        + mgmt_control_data_separated_v2: The management role and control role are deployed on different Master nodes,
-        and data instances are deployed in different node groups. This deployment mode is applicable to a cluster with more
-        than 500 nodes. Components can be deployed separately, which can be used for a larger cluster scale.
-        """
         return pulumi.get(self, "template_id")
 
     @template_id.setter
@@ -1286,9 +860,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="totalNodeNumber")
     def total_node_number(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The total number of nodes deployed in the cluster.
-        """
         return pulumi.get(self, "total_node_number")
 
     @total_node_number.setter
@@ -1298,10 +869,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the type of the MapReduce cluster. The valid values are *ANALYSIS*,
-        *STREAMING* and *MIXED*, default to *ANALYSIS*. Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -1311,9 +878,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The cluster update time, in RFC-3339 format.
-        """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
@@ -1323,10 +887,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the MapReduce cluster version. The valid values are `MRS 2.1.0`
-        , `MRS 3.0.5` and `MRS 3.1.0`. Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "version")
 
     @version.setter
@@ -1336,10 +896,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of the VPC which bound to the MapReduce cluster. Changing
-        this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
@@ -1388,455 +944,9 @@ class Cluster(pulumi.CustomResource):
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a cluster resource within SberCloud MRS.
-
-        ## Example Usage
-
-        ### Create an analysis cluster
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        test = sbercloud.get_availability_zones()
-        config = pulumi.Config()
-        cluster_name = config.require_object("clusterName")
-        password = config.require_object("password")
-        vpc_id = config.require_object("vpcId")
-        subnet_id = config.require_object("subnetId")
-        test_cluster = sbercloud.mrs.Cluster("test",
-            availability_zone=test.names[0],
-            name=cluster_name,
-            version="MRS 2.1.0",
-            type="ANALYSIS",
-            component_lists=[
-                "Hadoop",
-                "Hive",
-                "Tez",
-            ],
-            manager_admin_pass=password,
-            node_admin_pass=password,
-            vpc_id=vpc_id,
-            subnet_id=subnet_id,
-            master_nodes={
-                "flavor": "c6.2xlarge.4.linux.bigdata",
-                "node_number": 2,
-                "root_volume_type": "SAS",
-                "root_volume_size": 300,
-                "data_volume_type": "SAS",
-                "data_volume_size": 480,
-                "data_volume_count": 1,
-            },
-            analysis_core_nodes={
-                "flavor": "c6.2xlarge.4.linux.bigdata",
-                "node_number": 2,
-                "root_volume_type": "SAS",
-                "root_volume_size": 300,
-                "data_volume_type": "SAS",
-                "data_volume_size": 480,
-                "data_volume_count": 1,
-            },
-            analysis_task_nodes={
-                "flavor": "c6.2xlarge.4.linux.bigdata",
-                "node_number": 1,
-                "root_volume_type": "SAS",
-                "root_volume_size": 300,
-                "data_volume_type": "SAS",
-                "data_volume_size": 480,
-                "data_volume_count": 1,
-            },
-            tags={
-                "foo": "bar",
-                "key": "value",
-            })
-        ```
-
-        ### Create a stream cluster
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        test = sbercloud.get_availability_zones()
-        config = pulumi.Config()
-        cluster_name = config.require_object("clusterName")
-        password = config.require_object("password")
-        vpc_id = config.require_object("vpcId")
-        subnet_id = config.require_object("subnetId")
-        test_cluster = sbercloud.mrs.Cluster("test",
-            availability_zone=test.names[0],
-            name=cluster_name,
-            type="STREAMING",
-            version="MRS 2.1.0",
-            manager_admin_pass=password,
-            node_admin_pass=password,
-            vpc_id=vpc_id,
-            subnet_id=subnet_id,
-            component_lists=["Storm"],
-            master_nodes={
-                "flavor": "c6.2xlarge.4.linux.bigdata",
-                "node_number": 2,
-                "root_volume_type": "SAS",
-                "root_volume_size": 300,
-                "data_volume_type": "SAS",
-                "data_volume_size": 480,
-                "data_volume_count": 1,
-            },
-            streaming_core_nodes={
-                "flavor": "c6.2xlarge.4.linux.bigdata",
-                "node_number": 2,
-                "root_volume_type": "SAS",
-                "root_volume_size": 300,
-                "data_volume_type": "SAS",
-                "data_volume_size": 480,
-                "data_volume_count": 1,
-            },
-            tags={
-                "foo": "bar",
-                "key": "value",
-            })
-        ```
-
-        ### Create a hybrid cluster
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        test = sbercloud.get_availability_zones()
-        config = pulumi.Config()
-        cluster_name = config.require_object("clusterName")
-        password = config.require_object("password")
-        vpc_id = config.require_object("vpcId")
-        subnet_id = config.require_object("subnetId")
-        test_cluster = sbercloud.mrs.Cluster("test",
-            availability_zone=test.names[0],
-            name=cluster_name,
-            version="MRS 3.0.5",
-            type="MIXED",
-            component_lists=[
-                "Hadoop",
-                "Spark",
-                "Hive",
-                "Tez",
-                "Storm",
-            ],
-            manager_admin_pass=password,
-            node_admin_pass=password,
-            vpc_id=vpc_id,
-            subnet_id=subnet_id,
-            master_nodes={
-                "flavor": "c6.2xlarge.4.linux.bigdata",
-                "node_number": 2,
-                "root_volume_type": "SAS",
-                "root_volume_size": 300,
-                "data_volume_type": "SAS",
-                "data_volume_size": 480,
-                "data_volume_count": 1,
-            },
-            analysis_core_nodes={
-                "flavor": "c6.2xlarge.4.linux.bigdata",
-                "node_number": 2,
-                "root_volume_type": "SAS",
-                "root_volume_size": 300,
-                "data_volume_type": "SAS",
-                "data_volume_size": 480,
-                "data_volume_count": 1,
-            },
-            streaming_core_nodes={
-                "flavor": "c6.2xlarge.4.linux.bigdata",
-                "node_number": 2,
-                "root_volume_type": "SAS",
-                "root_volume_size": 300,
-                "data_volume_type": "SAS",
-                "data_volume_size": 480,
-                "data_volume_count": 1,
-            },
-            analysis_task_nodes={
-                "flavor": "c6.2xlarge.4.linux.bigdata",
-                "node_number": 1,
-                "root_volume_type": "SAS",
-                "root_volume_size": 300,
-                "data_volume_type": "SAS",
-                "data_volume_size": 480,
-                "data_volume_count": 1,
-            },
-            streaming_task_nodes={
-                "flavor": "c6.2xlarge.4.linux.bigdata",
-                "node_number": 1,
-                "root_volume_type": "SAS",
-                "root_volume_size": 300,
-                "data_volume_type": "SAS",
-                "data_volume_size": 480,
-                "data_volume_count": 1,
-            },
-            tags={
-                "foo": "bar",
-                "key": "value",
-            })
-        ```
-
-        ### Create a custom cluster
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        test = sbercloud.get_availability_zones()
-        config = pulumi.Config()
-        cluster_name = config.require_object("clusterName")
-        password = config.require_object("password")
-        vpc_id = config.require_object("vpcId")
-        subnet_id = config.require_object("subnetId")
-        test_cluster = sbercloud.mrs.Cluster("test",
-            availability_zone=test.names[0],
-            name=cluster_name,
-            version="MRS 3.1.0",
-            type="CUSTOM",
-            safe_mode=True,
-            manager_admin_pass=password,
-            node_admin_pass=password,
-            vpc_id=vpc_id,
-            subnet_id=subnet_id,
-            template_id="mgmt_control_combined_v4",
-            component_lists=[
-                "DBService",
-                "Hadoop",
-                "ZooKeeper",
-                "Ranger",
-            ],
-            master_nodes={
-                "flavor": "c6.4xlarge.4.linux.bigdata",
-                "node_number": 3,
-                "root_volume_type": "SAS",
-                "root_volume_size": 480,
-                "data_volume_type": "SAS",
-                "data_volume_size": 600,
-                "data_volume_count": 1,
-                "assigned_roles": [
-                    "OMSServer:1,2",
-                    "SlapdServer:1,2",
-                    "KerberosServer:1,2",
-                    "KerberosAdmin:1,2",
-                    "quorumpeer:1,2,3",
-                    "NameNode:2,3",
-                    "Zkfc:2,3",
-                    "JournalNode:1,2,3",
-                    "ResourceManager:2,3",
-                    "JobHistoryServer:3",
-                    "DBServer:1,3",
-                    "HttpFS:1,3",
-                    "TimelineServer:3",
-                    "RangerAdmin:1,2",
-                    "UserSync:2",
-                    "TagSync:2",
-                    "KerberosClient",
-                    "SlapdClient",
-                    "meta",
-                ],
-            },
-            custom_nodes=[{
-                "group_name": "node_group_1",
-                "flavor": "c6.4xlarge.4.linux.bigdata",
-                "node_number": 4,
-                "root_volume_type": "SAS",
-                "root_volume_size": 480,
-                "data_volume_type": "SAS",
-                "data_volume_size": 600,
-                "data_volume_count": 1,
-                "assigned_roles": [
-                    "DataNode",
-                    "NodeManager",
-                    "KerberosClient",
-                    "SlapdClient",
-                    "meta",
-                ],
-            }])
-        ```
-
-        ### Create an analysis cluster and bind public IP
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        test = sbercloud.get_availability_zones()
-        config = pulumi.Config()
-        cluster_name = config.require_object("clusterName")
-        password = config.require_object("password")
-        vpc_id = config.require_object("vpcId")
-        subnet_id = config.require_object("subnetId")
-        public_ip = config.require_object("publicIp")
-        test_cluster = sbercloud.mrs.Cluster("test",
-            availability_zone=test.names[0],
-            name=cluster_name,
-            version="MRS 2.1.0",
-            type="ANALYSIS",
-            component_lists=[
-                "Hadoop",
-                "Hive",
-                "Tez",
-            ],
-            manager_admin_pass=password,
-            node_admin_pass=password,
-            vpc_id=vpc_id,
-            subnet_id=subnet_id,
-            public_ip=public_ip,
-            master_nodes={
-                "flavor": "c6.2xlarge.4.linux.bigdata",
-                "node_number": 2,
-                "root_volume_type": "SAS",
-                "root_volume_size": 300,
-                "data_volume_type": "SAS",
-                "data_volume_size": 480,
-                "data_volume_count": 1,
-            },
-            analysis_core_nodes={
-                "flavor": "c6.2xlarge.4.linux.bigdata",
-                "node_number": 2,
-                "root_volume_type": "SAS",
-                "root_volume_size": 300,
-                "data_volume_type": "SAS",
-                "data_volume_size": 480,
-                "data_volume_count": 1,
-            },
-            analysis_task_nodes={
-                "flavor": "c6.2xlarge.4.linux.bigdata",
-                "node_number": 1,
-                "root_volume_type": "SAS",
-                "root_volume_size": 300,
-                "data_volume_type": "SAS",
-                "data_volume_size": 480,
-                "data_volume_count": 1,
-            },
-            tags={
-                "foo": "bar",
-                "key": "value",
-            })
-        ```
-
-        ## Import
-
-        Clusters can be imported by their `id`. For example,
-
-        ```sh
-        $ pulumi import sbercloud:Mrs/cluster:cluster test b11b407c-e604-4e8d-8bc4-92398320b847
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attrubutes missing from the
-
-        API response, security or some other reason. The missing attributes include:
-
-        `manager_admin_pass`, `node_admin_pass`,`template_id` and `assigned_roles`.
-
-        It is generally recommended running `pulumi preview` after importing a cluster.
-
-        You can then decide if changes should be applied to the cluster, or the resource definition
-
-        should be updated to align with the cluster. Also you can ignore changes as below.
-
-        resource "sbercloud_mapreduce_cluster" "test" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              manager_admin_pass, node_admin_pass,
-            
-            ]
-
-          }
-
-        }
-
+        Create a Cluster resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ClusterAnalysisCoreNodesArgs', 'ClusterAnalysisCoreNodesArgsDict']] analysis_core_nodes: Specifies a list of the informations about the analysis core nodes in the
-               MapReduce cluster.
-               The `nodes` object structure of the `analysis_core_nodes` is documented below.
-        :param pulumi.Input[Union['ClusterAnalysisTaskNodesArgs', 'ClusterAnalysisTaskNodesArgsDict']] analysis_task_nodes: Specifies a list of the informations about the analysis task nodes in the
-               MapReduce cluster.
-               The `nodes` object structure of the `analysis_task_nodes` is documented below.
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies the availability zone in which to create the cluster.
-               For more information about regions and AZs, see [Regions and Endpoints](https://support.hc.sbercloud.ru/en-us/endpoint/index.html).
-               Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] component_lists: Specifies the list of component names. For the components supported by
-               the cluster, please following [reference](https://support.hc.sbercloud.ru/api/mrs/mrs_02_0101.html)
-               Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterCustomNodeArgs', 'ClusterCustomNodeArgsDict']]]] custom_nodes: Specifies a list of the informations about the custom nodes in the MapReduce
-               cluster.
-               The `nodes` object structure of the `custom_nodes` is documented below.
-               `Unlike other nodes, it needs to specify group_name`
-        :param pulumi.Input[_builtins.str] eip_id: Specifies the EIP ID which bound to the MapReduce cluster.
-               The EIP must have been created and must be in the same region as the cluster.
-               Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies a unique ID in UUID format of enterprise project.
-               Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.bool] log_collection: Specifies whether logs are collected when cluster installation fails.
-               Default to true. If `log_collection` set true, the OBS buckets will be created and only used to collect logs that
-               record MapReduce cluster creation failures. Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] manager_admin_pass: Specifies the administrator password, which is used to log in to
-               the cluster management page. The password can contain 8 to 26 charactors and cannot be the username or the username
-               spelled backwards. The password must contain lowercase letters, uppercase letters, digits, spaces and the special
-               characters: `!?,.:-_{}[]@$^+=/`. Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[Union['ClusterMasterNodesArgs', 'ClusterMasterNodesArgsDict']] master_nodes: Specifies a list of the information about the master nodes in the
-               MapReduce cluster.
-               The `nodes` object structure of the `master_nodes` is documented below.
-               Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the MapReduce cluster. The name can contain 2 to 64
-               characters, which may consist of letters, digits, underscores (_) and hyphens (-). Changing this will create a new
-               MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] node_admin_pass: Specifies the administrator password, which is used to log in to the
-               each nodes(/ECSs). The password can contain 8 to 26 charactors and cannot be the username or the username spelled
-               backwards. The password must contain lowercase letters, uppercase letters, digits, spaces and the special
-               characters: `!?,.:-_{}[]@$^+=/`. Changing this will create a new MapReduce cluster resource. This parameter
-               and `node_key_pair` are alternative.
-        :param pulumi.Input[_builtins.str] node_key_pair: Specifies the name of a key pair, which is used to log in to the each
-               nodes(/ECSs). Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] public_ip: Specifies the EIP address which bound to the MapReduce cluster.
-               The EIP must have been created and must be in the same region as the cluster.
-               Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the MapReduce cluster resource. If omitted, the
-               provider-level region will be used. Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.bool] safe_mode: Specifies whether the running mode of the MapReduce cluster is secure,
-               default to true.
-               + true: enable Kerberos authentication.
-               + false: disable Kerberos authentication. Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: Specifies an array of one or more security group ID to attach to the
-               MapReduce cluster. If using the specified security group, the group need to open the specified port (9022) rules.
-        :param pulumi.Input[Union['ClusterStreamingCoreNodesArgs', 'ClusterStreamingCoreNodesArgsDict']] streaming_core_nodes: Specifies a list of the informations about the streaming core nodes in the
-               MapReduce cluster.
-               The `nodes` object structure of the `streaming_core_nodes` is documented below.
-        :param pulumi.Input[Union['ClusterStreamingTaskNodesArgs', 'ClusterStreamingTaskNodesArgsDict']] streaming_task_nodes: Specifies a list of the informations about the streaming task nodes in the
-               MapReduce cluster.
-               The `nodes` object structure of the `streaming_task_nodes` is documented below.
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies the network ID of a subnet which bound to the MapReduce cluster.
-               Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the cluster.
-        :param pulumi.Input[_builtins.str] template_id: Specifies the template used for node deployment when the cluster type is
-               CUSTOM.
-               + mgmt_control_combined_v2: template for jointly deploying the management and control nodes. The management and
-               control roles are co-deployed on the Master node, and data instances are deployed in the same node group. This
-               deployment mode applies to scenarios where the number of control nodes is less than 100, reducing costs.
-               + mgmt_control_separated_v2: The management and control roles are deployed on different master nodes, and data
-               instances are deployed in the same node group. This deployment mode is applicable to a cluster with 100 to 500 nodes
-               and delivers better performance in high-concurrency load scenarios.
-               + mgmt_control_data_separated_v2: The management role and control role are deployed on different Master nodes,
-               and data instances are deployed in different node groups. This deployment mode is applicable to a cluster with more
-               than 500 nodes. Components can be deployed separately, which can be used for a larger cluster scale.
-        :param pulumi.Input[_builtins.str] type: Specifies the type of the MapReduce cluster. The valid values are *ANALYSIS*,
-               *STREAMING* and *MIXED*, default to *ANALYSIS*. Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] version: Specifies the MapReduce cluster version. The valid values are `MRS 2.1.0`
-               , `MRS 3.0.5` and `MRS 3.1.0`. Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of the VPC which bound to the MapReduce cluster. Changing
-               this will create a new MapReduce cluster resource.
         """
         ...
     @overload
@@ -1845,374 +955,7 @@ class Cluster(pulumi.CustomResource):
                  args: ClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a cluster resource within SberCloud MRS.
-
-        ## Example Usage
-
-        ### Create an analysis cluster
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        test = sbercloud.get_availability_zones()
-        config = pulumi.Config()
-        cluster_name = config.require_object("clusterName")
-        password = config.require_object("password")
-        vpc_id = config.require_object("vpcId")
-        subnet_id = config.require_object("subnetId")
-        test_cluster = sbercloud.mrs.Cluster("test",
-            availability_zone=test.names[0],
-            name=cluster_name,
-            version="MRS 2.1.0",
-            type="ANALYSIS",
-            component_lists=[
-                "Hadoop",
-                "Hive",
-                "Tez",
-            ],
-            manager_admin_pass=password,
-            node_admin_pass=password,
-            vpc_id=vpc_id,
-            subnet_id=subnet_id,
-            master_nodes={
-                "flavor": "c6.2xlarge.4.linux.bigdata",
-                "node_number": 2,
-                "root_volume_type": "SAS",
-                "root_volume_size": 300,
-                "data_volume_type": "SAS",
-                "data_volume_size": 480,
-                "data_volume_count": 1,
-            },
-            analysis_core_nodes={
-                "flavor": "c6.2xlarge.4.linux.bigdata",
-                "node_number": 2,
-                "root_volume_type": "SAS",
-                "root_volume_size": 300,
-                "data_volume_type": "SAS",
-                "data_volume_size": 480,
-                "data_volume_count": 1,
-            },
-            analysis_task_nodes={
-                "flavor": "c6.2xlarge.4.linux.bigdata",
-                "node_number": 1,
-                "root_volume_type": "SAS",
-                "root_volume_size": 300,
-                "data_volume_type": "SAS",
-                "data_volume_size": 480,
-                "data_volume_count": 1,
-            },
-            tags={
-                "foo": "bar",
-                "key": "value",
-            })
-        ```
-
-        ### Create a stream cluster
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        test = sbercloud.get_availability_zones()
-        config = pulumi.Config()
-        cluster_name = config.require_object("clusterName")
-        password = config.require_object("password")
-        vpc_id = config.require_object("vpcId")
-        subnet_id = config.require_object("subnetId")
-        test_cluster = sbercloud.mrs.Cluster("test",
-            availability_zone=test.names[0],
-            name=cluster_name,
-            type="STREAMING",
-            version="MRS 2.1.0",
-            manager_admin_pass=password,
-            node_admin_pass=password,
-            vpc_id=vpc_id,
-            subnet_id=subnet_id,
-            component_lists=["Storm"],
-            master_nodes={
-                "flavor": "c6.2xlarge.4.linux.bigdata",
-                "node_number": 2,
-                "root_volume_type": "SAS",
-                "root_volume_size": 300,
-                "data_volume_type": "SAS",
-                "data_volume_size": 480,
-                "data_volume_count": 1,
-            },
-            streaming_core_nodes={
-                "flavor": "c6.2xlarge.4.linux.bigdata",
-                "node_number": 2,
-                "root_volume_type": "SAS",
-                "root_volume_size": 300,
-                "data_volume_type": "SAS",
-                "data_volume_size": 480,
-                "data_volume_count": 1,
-            },
-            tags={
-                "foo": "bar",
-                "key": "value",
-            })
-        ```
-
-        ### Create a hybrid cluster
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        test = sbercloud.get_availability_zones()
-        config = pulumi.Config()
-        cluster_name = config.require_object("clusterName")
-        password = config.require_object("password")
-        vpc_id = config.require_object("vpcId")
-        subnet_id = config.require_object("subnetId")
-        test_cluster = sbercloud.mrs.Cluster("test",
-            availability_zone=test.names[0],
-            name=cluster_name,
-            version="MRS 3.0.5",
-            type="MIXED",
-            component_lists=[
-                "Hadoop",
-                "Spark",
-                "Hive",
-                "Tez",
-                "Storm",
-            ],
-            manager_admin_pass=password,
-            node_admin_pass=password,
-            vpc_id=vpc_id,
-            subnet_id=subnet_id,
-            master_nodes={
-                "flavor": "c6.2xlarge.4.linux.bigdata",
-                "node_number": 2,
-                "root_volume_type": "SAS",
-                "root_volume_size": 300,
-                "data_volume_type": "SAS",
-                "data_volume_size": 480,
-                "data_volume_count": 1,
-            },
-            analysis_core_nodes={
-                "flavor": "c6.2xlarge.4.linux.bigdata",
-                "node_number": 2,
-                "root_volume_type": "SAS",
-                "root_volume_size": 300,
-                "data_volume_type": "SAS",
-                "data_volume_size": 480,
-                "data_volume_count": 1,
-            },
-            streaming_core_nodes={
-                "flavor": "c6.2xlarge.4.linux.bigdata",
-                "node_number": 2,
-                "root_volume_type": "SAS",
-                "root_volume_size": 300,
-                "data_volume_type": "SAS",
-                "data_volume_size": 480,
-                "data_volume_count": 1,
-            },
-            analysis_task_nodes={
-                "flavor": "c6.2xlarge.4.linux.bigdata",
-                "node_number": 1,
-                "root_volume_type": "SAS",
-                "root_volume_size": 300,
-                "data_volume_type": "SAS",
-                "data_volume_size": 480,
-                "data_volume_count": 1,
-            },
-            streaming_task_nodes={
-                "flavor": "c6.2xlarge.4.linux.bigdata",
-                "node_number": 1,
-                "root_volume_type": "SAS",
-                "root_volume_size": 300,
-                "data_volume_type": "SAS",
-                "data_volume_size": 480,
-                "data_volume_count": 1,
-            },
-            tags={
-                "foo": "bar",
-                "key": "value",
-            })
-        ```
-
-        ### Create a custom cluster
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        test = sbercloud.get_availability_zones()
-        config = pulumi.Config()
-        cluster_name = config.require_object("clusterName")
-        password = config.require_object("password")
-        vpc_id = config.require_object("vpcId")
-        subnet_id = config.require_object("subnetId")
-        test_cluster = sbercloud.mrs.Cluster("test",
-            availability_zone=test.names[0],
-            name=cluster_name,
-            version="MRS 3.1.0",
-            type="CUSTOM",
-            safe_mode=True,
-            manager_admin_pass=password,
-            node_admin_pass=password,
-            vpc_id=vpc_id,
-            subnet_id=subnet_id,
-            template_id="mgmt_control_combined_v4",
-            component_lists=[
-                "DBService",
-                "Hadoop",
-                "ZooKeeper",
-                "Ranger",
-            ],
-            master_nodes={
-                "flavor": "c6.4xlarge.4.linux.bigdata",
-                "node_number": 3,
-                "root_volume_type": "SAS",
-                "root_volume_size": 480,
-                "data_volume_type": "SAS",
-                "data_volume_size": 600,
-                "data_volume_count": 1,
-                "assigned_roles": [
-                    "OMSServer:1,2",
-                    "SlapdServer:1,2",
-                    "KerberosServer:1,2",
-                    "KerberosAdmin:1,2",
-                    "quorumpeer:1,2,3",
-                    "NameNode:2,3",
-                    "Zkfc:2,3",
-                    "JournalNode:1,2,3",
-                    "ResourceManager:2,3",
-                    "JobHistoryServer:3",
-                    "DBServer:1,3",
-                    "HttpFS:1,3",
-                    "TimelineServer:3",
-                    "RangerAdmin:1,2",
-                    "UserSync:2",
-                    "TagSync:2",
-                    "KerberosClient",
-                    "SlapdClient",
-                    "meta",
-                ],
-            },
-            custom_nodes=[{
-                "group_name": "node_group_1",
-                "flavor": "c6.4xlarge.4.linux.bigdata",
-                "node_number": 4,
-                "root_volume_type": "SAS",
-                "root_volume_size": 480,
-                "data_volume_type": "SAS",
-                "data_volume_size": 600,
-                "data_volume_count": 1,
-                "assigned_roles": [
-                    "DataNode",
-                    "NodeManager",
-                    "KerberosClient",
-                    "SlapdClient",
-                    "meta",
-                ],
-            }])
-        ```
-
-        ### Create an analysis cluster and bind public IP
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        test = sbercloud.get_availability_zones()
-        config = pulumi.Config()
-        cluster_name = config.require_object("clusterName")
-        password = config.require_object("password")
-        vpc_id = config.require_object("vpcId")
-        subnet_id = config.require_object("subnetId")
-        public_ip = config.require_object("publicIp")
-        test_cluster = sbercloud.mrs.Cluster("test",
-            availability_zone=test.names[0],
-            name=cluster_name,
-            version="MRS 2.1.0",
-            type="ANALYSIS",
-            component_lists=[
-                "Hadoop",
-                "Hive",
-                "Tez",
-            ],
-            manager_admin_pass=password,
-            node_admin_pass=password,
-            vpc_id=vpc_id,
-            subnet_id=subnet_id,
-            public_ip=public_ip,
-            master_nodes={
-                "flavor": "c6.2xlarge.4.linux.bigdata",
-                "node_number": 2,
-                "root_volume_type": "SAS",
-                "root_volume_size": 300,
-                "data_volume_type": "SAS",
-                "data_volume_size": 480,
-                "data_volume_count": 1,
-            },
-            analysis_core_nodes={
-                "flavor": "c6.2xlarge.4.linux.bigdata",
-                "node_number": 2,
-                "root_volume_type": "SAS",
-                "root_volume_size": 300,
-                "data_volume_type": "SAS",
-                "data_volume_size": 480,
-                "data_volume_count": 1,
-            },
-            analysis_task_nodes={
-                "flavor": "c6.2xlarge.4.linux.bigdata",
-                "node_number": 1,
-                "root_volume_type": "SAS",
-                "root_volume_size": 300,
-                "data_volume_type": "SAS",
-                "data_volume_size": 480,
-                "data_volume_count": 1,
-            },
-            tags={
-                "foo": "bar",
-                "key": "value",
-            })
-        ```
-
-        ## Import
-
-        Clusters can be imported by their `id`. For example,
-
-        ```sh
-        $ pulumi import sbercloud:Mrs/cluster:cluster test b11b407c-e604-4e8d-8bc4-92398320b847
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attrubutes missing from the
-
-        API response, security or some other reason. The missing attributes include:
-
-        `manager_admin_pass`, `node_admin_pass`,`template_id` and `assigned_roles`.
-
-        It is generally recommended running `pulumi preview` after importing a cluster.
-
-        You can then decide if changes should be applied to the cluster, or the resource definition
-
-        should be updated to align with the cluster. Also you can ignore changes as below.
-
-        resource "sbercloud_mapreduce_cluster" "test" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              manager_admin_pass, node_admin_pass,
-            
-            ]
-
-          }
-
-        }
-
+        Create a Cluster resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ClusterArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -2383,92 +1126,6 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ClusterAnalysisCoreNodesArgs', 'ClusterAnalysisCoreNodesArgsDict']] analysis_core_nodes: Specifies a list of the informations about the analysis core nodes in the
-               MapReduce cluster.
-               The `nodes` object structure of the `analysis_core_nodes` is documented below.
-        :param pulumi.Input[Union['ClusterAnalysisTaskNodesArgs', 'ClusterAnalysisTaskNodesArgsDict']] analysis_task_nodes: Specifies a list of the informations about the analysis task nodes in the
-               MapReduce cluster.
-               The `nodes` object structure of the `analysis_task_nodes` is documented below.
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies the availability zone in which to create the cluster.
-               For more information about regions and AZs, see [Regions and Endpoints](https://support.hc.sbercloud.ru/en-us/endpoint/index.html).
-               Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] charging_start_time: The charging start time which is the start time of billing, in RFC-3339 format.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] component_lists: Specifies the list of component names. For the components supported by
-               the cluster, please following [reference](https://support.hc.sbercloud.ru/api/mrs/mrs_02_0101.html)
-               Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] create_time: The cluster creation time, in RFC-3339 format.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterCustomNodeArgs', 'ClusterCustomNodeArgsDict']]]] custom_nodes: Specifies a list of the informations about the custom nodes in the MapReduce
-               cluster.
-               The `nodes` object structure of the `custom_nodes` is documented below.
-               `Unlike other nodes, it needs to specify group_name`
-        :param pulumi.Input[_builtins.str] eip_id: Specifies the EIP ID which bound to the MapReduce cluster.
-               The EIP must have been created and must be in the same region as the cluster.
-               Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies a unique ID in UUID format of enterprise project.
-               Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.bool] log_collection: Specifies whether logs are collected when cluster installation fails.
-               Default to true. If `log_collection` set true, the OBS buckets will be created and only used to collect logs that
-               record MapReduce cluster creation failures. Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] manager_admin_pass: Specifies the administrator password, which is used to log in to
-               the cluster management page. The password can contain 8 to 26 charactors and cannot be the username or the username
-               spelled backwards. The password must contain lowercase letters, uppercase letters, digits, spaces and the special
-               characters: `!?,.:-_{}[]@$^+=/`. Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] master_node_ip: The IP address of the master node.
-        :param pulumi.Input[Union['ClusterMasterNodesArgs', 'ClusterMasterNodesArgsDict']] master_nodes: Specifies a list of the information about the master nodes in the
-               MapReduce cluster.
-               The `nodes` object structure of the `master_nodes` is documented below.
-               Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the MapReduce cluster. The name can contain 2 to 64
-               characters, which may consist of letters, digits, underscores (_) and hyphens (-). Changing this will create a new
-               MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] node_admin_pass: Specifies the administrator password, which is used to log in to the
-               each nodes(/ECSs). The password can contain 8 to 26 charactors and cannot be the username or the username spelled
-               backwards. The password must contain lowercase letters, uppercase letters, digits, spaces and the special
-               characters: `!?,.:-_{}[]@$^+=/`. Changing this will create a new MapReduce cluster resource. This parameter
-               and `node_key_pair` are alternative.
-        :param pulumi.Input[_builtins.str] node_key_pair: Specifies the name of a key pair, which is used to log in to the each
-               nodes(/ECSs). Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] private_ip: The preferred private IP address of the master node.
-        :param pulumi.Input[_builtins.str] public_ip: Specifies the EIP address which bound to the MapReduce cluster.
-               The EIP must have been created and must be in the same region as the cluster.
-               Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the MapReduce cluster resource. If omitted, the
-               provider-level region will be used. Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.bool] safe_mode: Specifies whether the running mode of the MapReduce cluster is secure,
-               default to true.
-               + true: enable Kerberos authentication.
-               + false: disable Kerberos authentication. Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: Specifies an array of one or more security group ID to attach to the
-               MapReduce cluster. If using the specified security group, the group need to open the specified port (9022) rules.
-        :param pulumi.Input[_builtins.str] status: The cluster state, which include: running, frozen, abnormal and failed.
-        :param pulumi.Input[Union['ClusterStreamingCoreNodesArgs', 'ClusterStreamingCoreNodesArgsDict']] streaming_core_nodes: Specifies a list of the informations about the streaming core nodes in the
-               MapReduce cluster.
-               The `nodes` object structure of the `streaming_core_nodes` is documented below.
-        :param pulumi.Input[Union['ClusterStreamingTaskNodesArgs', 'ClusterStreamingTaskNodesArgsDict']] streaming_task_nodes: Specifies a list of the informations about the streaming task nodes in the
-               MapReduce cluster.
-               The `nodes` object structure of the `streaming_task_nodes` is documented below.
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies the network ID of a subnet which bound to the MapReduce cluster.
-               Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the cluster.
-        :param pulumi.Input[_builtins.str] template_id: Specifies the template used for node deployment when the cluster type is
-               CUSTOM.
-               + mgmt_control_combined_v2: template for jointly deploying the management and control nodes. The management and
-               control roles are co-deployed on the Master node, and data instances are deployed in the same node group. This
-               deployment mode applies to scenarios where the number of control nodes is less than 100, reducing costs.
-               + mgmt_control_separated_v2: The management and control roles are deployed on different master nodes, and data
-               instances are deployed in the same node group. This deployment mode is applicable to a cluster with 100 to 500 nodes
-               and delivers better performance in high-concurrency load scenarios.
-               + mgmt_control_data_separated_v2: The management role and control role are deployed on different Master nodes,
-               and data instances are deployed in different node groups. This deployment mode is applicable to a cluster with more
-               than 500 nodes. Components can be deployed separately, which can be used for a larger cluster scale.
-        :param pulumi.Input[_builtins.int] total_node_number: The total number of nodes deployed in the cluster.
-        :param pulumi.Input[_builtins.str] type: Specifies the type of the MapReduce cluster. The valid values are *ANALYSIS*,
-               *STREAMING* and *MIXED*, default to *ANALYSIS*. Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] update_time: The cluster update time, in RFC-3339 format.
-        :param pulumi.Input[_builtins.str] version: Specifies the MapReduce cluster version. The valid values are `MRS 2.1.0`
-               , `MRS 3.0.5` and `MRS 3.1.0`. Changing this will create a new MapReduce cluster resource.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of the VPC which bound to the MapReduce cluster. Changing
-               this will create a new MapReduce cluster resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2519,21 +1176,11 @@ class Cluster(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="analysisCoreNodes")
     def analysis_core_nodes(self) -> pulumi.Output[Optional['outputs.ClusterAnalysisCoreNodes']]:
-        """
-        Specifies a list of the informations about the analysis core nodes in the
-        MapReduce cluster.
-        The `nodes` object structure of the `analysis_core_nodes` is documented below.
-        """
         return pulumi.get(self, "analysis_core_nodes")
 
     @_builtins.property
     @pulumi.getter(name="analysisTaskNodes")
     def analysis_task_nodes(self) -> pulumi.Output[Optional['outputs.ClusterAnalysisTaskNodes']]:
-        """
-        Specifies a list of the informations about the analysis task nodes in the
-        MapReduce cluster.
-        The `nodes` object structure of the `analysis_task_nodes` is documented below.
-        """
         return pulumi.get(self, "analysis_task_nodes")
 
     @_builtins.property
@@ -2544,11 +1191,6 @@ class Cluster(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the availability zone in which to create the cluster.
-        For more information about regions and AZs, see [Regions and Endpoints](https://support.hc.sbercloud.ru/en-us/endpoint/index.html).
-        Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "availability_zone")
 
     @_builtins.property
@@ -2564,9 +1206,6 @@ class Cluster(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="chargingStartTime")
     def charging_start_time(self) -> pulumi.Output[_builtins.str]:
-        """
-        The charging start time which is the start time of billing, in RFC-3339 format.
-        """
         return pulumi.get(self, "charging_start_time")
 
     @_builtins.property
@@ -2577,49 +1216,26 @@ class Cluster(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="componentLists")
     def component_lists(self) -> pulumi.Output[Sequence[_builtins.str]]:
-        """
-        Specifies the list of component names. For the components supported by
-        the cluster, please following [reference](https://support.hc.sbercloud.ru/api/mrs/mrs_02_0101.html)
-        Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "component_lists")
 
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
-        """
-        The cluster creation time, in RFC-3339 format.
-        """
         return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter(name="customNodes")
     def custom_nodes(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterCustomNode']]]:
-        """
-        Specifies a list of the informations about the custom nodes in the MapReduce
-        cluster.
-        The `nodes` object structure of the `custom_nodes` is documented below.
-        `Unlike other nodes, it needs to specify group_name`
-        """
         return pulumi.get(self, "custom_nodes")
 
     @_builtins.property
     @pulumi.getter(name="eipId")
     def eip_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the EIP ID which bound to the MapReduce cluster.
-        The EIP must have been created and must be in the same region as the cluster.
-        Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "eip_id")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies a unique ID in UUID format of enterprise project.
-        Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
@@ -2630,72 +1246,36 @@ class Cluster(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="logCollection")
     def log_collection(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether logs are collected when cluster installation fails.
-        Default to true. If `log_collection` set true, the OBS buckets will be created and only used to collect logs that
-        record MapReduce cluster creation failures. Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "log_collection")
 
     @_builtins.property
     @pulumi.getter(name="managerAdminPass")
     def manager_admin_pass(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the administrator password, which is used to log in to
-        the cluster management page. The password can contain 8 to 26 charactors and cannot be the username or the username
-        spelled backwards. The password must contain lowercase letters, uppercase letters, digits, spaces and the special
-        characters: `!?,.:-_{}[]@$^+=/`. Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "manager_admin_pass")
 
     @_builtins.property
     @pulumi.getter(name="masterNodeIp")
     def master_node_ip(self) -> pulumi.Output[_builtins.str]:
-        """
-        The IP address of the master node.
-        """
         return pulumi.get(self, "master_node_ip")
 
     @_builtins.property
     @pulumi.getter(name="masterNodes")
     def master_nodes(self) -> pulumi.Output['outputs.ClusterMasterNodes']:
-        """
-        Specifies a list of the information about the master nodes in the
-        MapReduce cluster.
-        The `nodes` object structure of the `master_nodes` is documented below.
-        Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "master_nodes")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the name of the MapReduce cluster. The name can contain 2 to 64
-        characters, which may consist of letters, digits, underscores (_) and hyphens (-). Changing this will create a new
-        MapReduce cluster resource.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="nodeAdminPass")
     def node_admin_pass(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the administrator password, which is used to log in to the
-        each nodes(/ECSs). The password can contain 8 to 26 charactors and cannot be the username or the username spelled
-        backwards. The password must contain lowercase letters, uppercase letters, digits, spaces and the special
-        characters: `!?,.:-_{}[]@$^+=/`. Changing this will create a new MapReduce cluster resource. This parameter
-        and `node_key_pair` are alternative.
-        """
         return pulumi.get(self, "node_admin_pass")
 
     @_builtins.property
     @pulumi.getter(name="nodeKeyPair")
     def node_key_pair(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the name of a key pair, which is used to log in to the each
-        nodes(/ECSs). Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "node_key_pair")
 
     @_builtins.property
@@ -2711,48 +1291,26 @@ class Cluster(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> pulumi.Output[_builtins.str]:
-        """
-        The preferred private IP address of the master node.
-        """
         return pulumi.get(self, "private_ip")
 
     @_builtins.property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the EIP address which bound to the MapReduce cluster.
-        The EIP must have been created and must be in the same region as the cluster.
-        Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "public_ip")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the MapReduce cluster resource. If omitted, the
-        provider-level region will be used. Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="safeMode")
     def safe_mode(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether the running mode of the MapReduce cluster is secure,
-        default to true.
-        + true: enable Kerberos authentication.
-        + false: disable Kerberos authentication. Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "safe_mode")
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Output[Sequence[_builtins.str]]:
-        """
-        Specifies an array of one or more security group ID to attach to the
-        MapReduce cluster. If using the specified security group, the group need to open the specified port (9022) rules.
-        """
         return pulumi.get(self, "security_group_ids")
 
     @_builtins.property
@@ -2763,106 +1321,55 @@ class Cluster(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
-        """
-        The cluster state, which include: running, frozen, abnormal and failed.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="streamingCoreNodes")
     def streaming_core_nodes(self) -> pulumi.Output[Optional['outputs.ClusterStreamingCoreNodes']]:
-        """
-        Specifies a list of the informations about the streaming core nodes in the
-        MapReduce cluster.
-        The `nodes` object structure of the `streaming_core_nodes` is documented below.
-        """
         return pulumi.get(self, "streaming_core_nodes")
 
     @_builtins.property
     @pulumi.getter(name="streamingTaskNodes")
     def streaming_task_nodes(self) -> pulumi.Output[Optional['outputs.ClusterStreamingTaskNodes']]:
-        """
-        Specifies a list of the informations about the streaming task nodes in the
-        MapReduce cluster.
-        The `nodes` object structure of the `streaming_task_nodes` is documented below.
-        """
         return pulumi.get(self, "streaming_task_nodes")
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the network ID of a subnet which bound to the MapReduce cluster.
-        Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "subnet_id")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        Specifies the key/value pairs to associate with the cluster.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="templateId")
     def template_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the template used for node deployment when the cluster type is
-        CUSTOM.
-        + mgmt_control_combined_v2: template for jointly deploying the management and control nodes. The management and
-        control roles are co-deployed on the Master node, and data instances are deployed in the same node group. This
-        deployment mode applies to scenarios where the number of control nodes is less than 100, reducing costs.
-        + mgmt_control_separated_v2: The management and control roles are deployed on different master nodes, and data
-        instances are deployed in the same node group. This deployment mode is applicable to a cluster with 100 to 500 nodes
-        and delivers better performance in high-concurrency load scenarios.
-        + mgmt_control_data_separated_v2: The management role and control role are deployed on different Master nodes,
-        and data instances are deployed in different node groups. This deployment mode is applicable to a cluster with more
-        than 500 nodes. Components can be deployed separately, which can be used for a larger cluster scale.
-        """
         return pulumi.get(self, "template_id")
 
     @_builtins.property
     @pulumi.getter(name="totalNodeNumber")
     def total_node_number(self) -> pulumi.Output[_builtins.int]:
-        """
-        The total number of nodes deployed in the cluster.
-        """
         return pulumi.get(self, "total_node_number")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the type of the MapReduce cluster. The valid values are *ANALYSIS*,
-        *STREAMING* and *MIXED*, default to *ANALYSIS*. Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[_builtins.str]:
-        """
-        The cluster update time, in RFC-3339 format.
-        """
         return pulumi.get(self, "update_time")
 
     @_builtins.property
     @pulumi.getter
     def version(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the MapReduce cluster version. The valid values are `MRS 2.1.0`
-        , `MRS 3.0.5` and `MRS 3.1.0`. Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "version")
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the ID of the VPC which bound to the MapReduce cluster. Changing
-        this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "vpc_id")
 

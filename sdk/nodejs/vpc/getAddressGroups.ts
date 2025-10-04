@@ -6,18 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get a list of VPC IP address groups.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const demo1 = sbercloud.Vpc.getAddressGroups({});
- * ```
- */
 export function getAddressGroups(args?: GetAddressGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressGroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,28 +22,10 @@ export function getAddressGroups(args?: GetAddressGroupsArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getAddressGroups.
  */
 export interface GetAddressGroupsArgs {
-    /**
-     * Provides supplementary information about an IP address group,
-     * which can be used to filter the IP address group.
-     */
     description?: string;
-    /**
-     * Unique ID of an IP address group, which can be used to filter the IP address group.
-     */
     groupId?: string;
-    /**
-     * Version of IP addresses in an IP address group,
-     * which can be used to filter the IP address group.
-     */
     ipVersion?: number;
-    /**
-     * Name of an IP address group, which can be used to filter the IP address group.
-     */
     name?: string;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
 }
 
@@ -63,41 +33,17 @@ export interface GetAddressGroupsArgs {
  * A collection of values returned by getAddressGroups.
  */
 export interface GetAddressGroupsResult {
-    /**
-     * The IP address groups.
-     */
     readonly addressGroups: outputs.Vpc.GetAddressGroupsAddressGroup[];
-    /**
-     * The supplementary information about the IP address group.
-     */
     readonly description?: string;
     readonly groupId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Whether it is an IPv4 or IPv6 address group.
-     */
     readonly ipVersion?: number;
-    /**
-     * IP address group name.
-     */
     readonly name?: string;
     readonly region: string;
 }
-/**
- * Use this data source to get a list of VPC IP address groups.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const demo1 = sbercloud.Vpc.getAddressGroups({});
- * ```
- */
 export function getAddressGroupsOutput(args?: GetAddressGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAddressGroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -114,27 +60,9 @@ export function getAddressGroupsOutput(args?: GetAddressGroupsOutputArgs, opts?:
  * A collection of arguments for invoking getAddressGroups.
  */
 export interface GetAddressGroupsOutputArgs {
-    /**
-     * Provides supplementary information about an IP address group,
-     * which can be used to filter the IP address group.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Unique ID of an IP address group, which can be used to filter the IP address group.
-     */
     groupId?: pulumi.Input<string>;
-    /**
-     * Version of IP addresses in an IP address group,
-     * which can be used to filter the IP address group.
-     */
     ipVersion?: pulumi.Input<number>;
-    /**
-     * Name of an IP address group, which can be used to filter the IP address group.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
 }

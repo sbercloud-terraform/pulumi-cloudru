@@ -29,20 +29,9 @@ class DdsParameterTemplateCopyArgs:
         """
         The set of arguments for constructing a DdsParameterTemplateCopy resource.
         :param pulumi.Input[_builtins.str] configuration_id: Specifies the parameter template ID.
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] description: Specifies the description of replicated parameter template.
-               The value is left blank by default. The description must consist of a maximum of **256** characters and cannot contain
-               the carriage return character or the following special characters: >!<"&'=
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] name: Specifies the name of replicated parameter template.
-               The parameter template name can contain **1** to **64** characters. It can contain only letters, digits, hyphens (-),
-               underscores (_), and periods (.).
-               Changing this creates a new resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameter_values: Specifies the mapping between parameter names and parameter values.
-               You can customize parameter values based on the parameters in the default parameter template.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
         """
         pulumi.set(__self__, "configuration_id", configuration_id)
         if description is not None:
@@ -59,7 +48,6 @@ class DdsParameterTemplateCopyArgs:
     def configuration_id(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the parameter template ID.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "configuration_id")
 
@@ -72,9 +60,6 @@ class DdsParameterTemplateCopyArgs:
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the description of replicated parameter template.
-        The value is left blank by default. The description must consist of a maximum of **256** characters and cannot contain
-        the carriage return character or the following special characters: >!<"&'=
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "description")
 
@@ -87,9 +72,6 @@ class DdsParameterTemplateCopyArgs:
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the name of replicated parameter template.
-        The parameter template name can contain **1** to **64** characters. It can contain only letters, digits, hyphens (-),
-        underscores (_), and periods (.).
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "name")
 
@@ -102,7 +84,6 @@ class DdsParameterTemplateCopyArgs:
     def parameter_values(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Specifies the mapping between parameter names and parameter values.
-        You can customize parameter values based on the parameters in the default parameter template.
         """
         return pulumi.get(self, "parameter_values")
 
@@ -113,11 +94,6 @@ class DdsParameterTemplateCopyArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -140,25 +116,13 @@ class _DdsParameterTemplateCopyState:
         """
         Input properties used for looking up and filtering DdsParameterTemplateCopy resources.
         :param pulumi.Input[_builtins.str] configuration_id: Specifies the parameter template ID.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] created_at: The create time of the parameter template.
+        :param pulumi.Input[_builtins.str] created_at: Indicates the create time.
         :param pulumi.Input[_builtins.str] description: Specifies the description of replicated parameter template.
-               The value is left blank by default. The description must consist of a maximum of **256** characters and cannot contain
-               the carriage return character or the following special characters: >!<"&'=
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] name: Specifies the name of replicated parameter template.
-               The parameter template name can contain **1** to **64** characters. It can contain only letters, digits, hyphens (-),
-               underscores (_), and periods (.).
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] node_version: Indicates the database version.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameter_values: Specifies the mapping between parameter names and parameter values.
-               You can customize parameter values based on the parameters in the default parameter template.
         :param pulumi.Input[Sequence[pulumi.Input['DdsParameterTemplateCopyParameterArgs']]] parameters: Indicates the parameters defined by users based on the default parameter templates.
-               The Parameter structure is documented below.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] updated_at: The update time of the parameter template.
+        :param pulumi.Input[_builtins.str] updated_at: Indicates the update time.
         """
         if configuration_id is not None:
             pulumi.set(__self__, "configuration_id", configuration_id)
@@ -184,7 +148,6 @@ class _DdsParameterTemplateCopyState:
     def configuration_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the parameter template ID.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "configuration_id")
 
@@ -196,7 +159,7 @@ class _DdsParameterTemplateCopyState:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The create time of the parameter template.
+        Indicates the create time.
         """
         return pulumi.get(self, "created_at")
 
@@ -209,9 +172,6 @@ class _DdsParameterTemplateCopyState:
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the description of replicated parameter template.
-        The value is left blank by default. The description must consist of a maximum of **256** characters and cannot contain
-        the carriage return character or the following special characters: >!<"&'=
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "description")
 
@@ -224,9 +184,6 @@ class _DdsParameterTemplateCopyState:
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the name of replicated parameter template.
-        The parameter template name can contain **1** to **64** characters. It can contain only letters, digits, hyphens (-),
-        underscores (_), and periods (.).
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "name")
 
@@ -251,7 +208,6 @@ class _DdsParameterTemplateCopyState:
     def parameter_values(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Specifies the mapping between parameter names and parameter values.
-        You can customize parameter values based on the parameters in the default parameter template.
         """
         return pulumi.get(self, "parameter_values")
 
@@ -264,7 +220,6 @@ class _DdsParameterTemplateCopyState:
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DdsParameterTemplateCopyParameterArgs']]]]:
         """
         Indicates the parameters defined by users based on the default parameter templates.
-        The Parameter structure is documented below.
         """
         return pulumi.get(self, "parameters")
 
@@ -275,11 +230,6 @@ class _DdsParameterTemplateCopyState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -290,7 +240,7 @@ class _DdsParameterTemplateCopyState:
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The update time of the parameter template.
+        Indicates the update time.
         """
         return pulumi.get(self, "updated_at")
 
@@ -312,80 +262,13 @@ class DdsParameterTemplateCopy(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a DDS parameter template copy resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        configuration_id = config.require_object("configurationId")
-        name = config.require_object("name")
-        test = sbercloud.DdsParameterTemplateCopy("test",
-            configuration_id=configuration_id,
-            name=name,
-            description="test copy")
-        ```
-
-        ## Import
-
-        The DDS copyed parameter template can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/ddsParameterTemplateCopy:DdsParameterTemplateCopy test <id>
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason.
-
-        The missing attributes include: `configuration_id`.
-
-        It is generally recommended running `pulumi preview` after importing an template.
-
-        You can then decide if changes should be applied to the template, or the resource definition should be updated to
-
-        align with the template. Also you can ignore changes as below.
-
-        hcl
-
-        resource "sbercloud_dds_parameter_template_copy" "test" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              configuration_id,
-            
-            ]
-
-          }
-
-        }
-
+        Create a DdsParameterTemplateCopy resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] configuration_id: Specifies the parameter template ID.
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] description: Specifies the description of replicated parameter template.
-               The value is left blank by default. The description must consist of a maximum of **256** characters and cannot contain
-               the carriage return character or the following special characters: >!<"&'=
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] name: Specifies the name of replicated parameter template.
-               The parameter template name can contain **1** to **64** characters. It can contain only letters, digits, hyphens (-),
-               underscores (_), and periods (.).
-               Changing this creates a new resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameter_values: Specifies the mapping between parameter names and parameter values.
-               You can customize parameter values based on the parameters in the default parameter template.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
         """
         ...
     @overload
@@ -394,63 +277,7 @@ class DdsParameterTemplateCopy(pulumi.CustomResource):
                  args: DdsParameterTemplateCopyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a DDS parameter template copy resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        configuration_id = config.require_object("configurationId")
-        name = config.require_object("name")
-        test = sbercloud.DdsParameterTemplateCopy("test",
-            configuration_id=configuration_id,
-            name=name,
-            description="test copy")
-        ```
-
-        ## Import
-
-        The DDS copyed parameter template can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/ddsParameterTemplateCopy:DdsParameterTemplateCopy test <id>
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason.
-
-        The missing attributes include: `configuration_id`.
-
-        It is generally recommended running `pulumi preview` after importing an template.
-
-        You can then decide if changes should be applied to the template, or the resource definition should be updated to
-
-        align with the template. Also you can ignore changes as below.
-
-        hcl
-
-        resource "sbercloud_dds_parameter_template_copy" "test" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              configuration_id,
-            
-            ]
-
-          }
-
-        }
-
+        Create a DdsParameterTemplateCopy resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param DdsParameterTemplateCopyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -518,25 +345,13 @@ class DdsParameterTemplateCopy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] configuration_id: Specifies the parameter template ID.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] created_at: The create time of the parameter template.
+        :param pulumi.Input[_builtins.str] created_at: Indicates the create time.
         :param pulumi.Input[_builtins.str] description: Specifies the description of replicated parameter template.
-               The value is left blank by default. The description must consist of a maximum of **256** characters and cannot contain
-               the carriage return character or the following special characters: >!<"&'=
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] name: Specifies the name of replicated parameter template.
-               The parameter template name can contain **1** to **64** characters. It can contain only letters, digits, hyphens (-),
-               underscores (_), and periods (.).
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] node_version: Indicates the database version.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameter_values: Specifies the mapping between parameter names and parameter values.
-               You can customize parameter values based on the parameters in the default parameter template.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DdsParameterTemplateCopyParameterArgs', 'DdsParameterTemplateCopyParameterArgsDict']]]] parameters: Indicates the parameters defined by users based on the default parameter templates.
-               The Parameter structure is documented below.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] updated_at: The update time of the parameter template.
+        :param pulumi.Input[_builtins.str] updated_at: Indicates the update time.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -558,7 +373,6 @@ class DdsParameterTemplateCopy(pulumi.CustomResource):
     def configuration_id(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the parameter template ID.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "configuration_id")
 
@@ -566,7 +380,7 @@ class DdsParameterTemplateCopy(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:
         """
-        The create time of the parameter template.
+        Indicates the create time.
         """
         return pulumi.get(self, "created_at")
 
@@ -575,9 +389,6 @@ class DdsParameterTemplateCopy(pulumi.CustomResource):
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Specifies the description of replicated parameter template.
-        The value is left blank by default. The description must consist of a maximum of **256** characters and cannot contain
-        the carriage return character or the following special characters: >!<"&'=
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "description")
 
@@ -586,9 +397,6 @@ class DdsParameterTemplateCopy(pulumi.CustomResource):
     def name(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the name of replicated parameter template.
-        The parameter template name can contain **1** to **64** characters. It can contain only letters, digits, hyphens (-),
-        underscores (_), and periods (.).
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "name")
 
@@ -605,7 +413,6 @@ class DdsParameterTemplateCopy(pulumi.CustomResource):
     def parameter_values(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
         Specifies the mapping between parameter names and parameter values.
-        You can customize parameter values based on the parameters in the default parameter template.
         """
         return pulumi.get(self, "parameter_values")
 
@@ -614,25 +421,19 @@ class DdsParameterTemplateCopy(pulumi.CustomResource):
     def parameters(self) -> pulumi.Output[Sequence['outputs.DdsParameterTemplateCopyParameter']]:
         """
         Indicates the parameters defined by users based on the default parameter templates.
-        The Parameter structure is documented below.
         """
         return pulumi.get(self, "parameters")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[_builtins.str]:
         """
-        The update time of the parameter template.
+        Indicates the update time.
         """
         return pulumi.get(self, "updated_at")
 

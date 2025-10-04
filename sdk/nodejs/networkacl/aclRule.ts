@@ -4,48 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a network ACL rule resource within SberCloud.
- *
- * ## Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const rule1 = new sbercloud.networkacl.AclRule("rule_1", {
- *     name: "rule_1",
- *     protocol: "udp",
- *     action: "deny",
- *     sourceIpAddress: "1.2.3.4",
- *     sourcePort: "444",
- *     destinationIpAddress: "4.3.2.0/24",
- *     destinationPort: "555",
- * });
- * ```
- *
- * ## Create a network acl rule with range port
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const rule2 = new sbercloud.networkacl.AclRule("rule_2", {
- *     protocol: "tcp",
- *     ipVersion: 4,
- *     action: "allow",
- *     destinationPort: "1:100",
- * });
- * ```
- *
- * ## Import
- *
- * network ACL rules can be imported using the `id`, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:NetworkAcl/aclRule:AclRule rule_1 89a84b28-4cc2-4859-9885-c67e802a46a3
- * ```
- */
 export class AclRule extends pulumi.CustomResource {
     /**
      * Get an existing AclRule resource's state with the given name, ID, and optional extra
@@ -74,57 +32,16 @@ export class AclRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === AclRule.__pulumiType;
     }
 
-    /**
-     * Specifies the action in the network ACL rule. Currently, the value can be *allow* or
-     * *deny*.
-     */
     declare public readonly action: pulumi.Output<string>;
-    /**
-     * Specifies the description for the network ACL rule.
-     */
     declare public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the destination IP address to which the traffic is allowed.
-     * The default value is *0.0.0.0/0*. For example: xxx.xxx.xxx.xxx (IP address), xxx.xxx.xxx.0/24 (CIDR block).
-     */
     declare public readonly destinationIpAddress: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the destination port number or port number range. The value ranges
-     * from 1 to 65535. For a port number range, enter two port numbers connected by a colon(:). For example, 1:100.
-     */
     declare public readonly destinationPort: pulumi.Output<string | undefined>;
-    /**
-     * Enabled status for the network ACL rule. Defaults to true.
-     */
     declare public readonly enabled: pulumi.Output<boolean | undefined>;
-    /**
-     * Specifies the IP version, either 4 (default) or 6. This parameter is available after
-     * the IPv6 function is enabled.
-     */
     declare public readonly ipVersion: pulumi.Output<number | undefined>;
-    /**
-     * Specifies a unique name for the network ACL rule.
-     */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * Specifies the protocol supported by the network ACL rule. Valid values are: *tcp*,
-     * *udp* and *icmp*.
-     */
     declare public readonly protocol: pulumi.Output<string>;
-    /**
-     * The region in which to create the network ACL rule resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new network ACL rule resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Specifies the source IP address that the traffic is allowed from. The default
-     * value is *0.0.0.0/0*. For example: xxx.xxx.xxx.xxx (IP address), xxx.xxx.xxx.0/24 (CIDR block).
-     */
     declare public readonly sourceIpAddress: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the source port number or port number range. The value ranges from 1 to
-     * 65535. For a port number range, enter two port numbers connected by a colon(:). For example, 1:100.
-     */
     declare public readonly sourcePort: pulumi.Output<string | undefined>;
 
     /**
@@ -180,57 +97,16 @@ export class AclRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AclRule resources.
  */
 export interface AclRuleState {
-    /**
-     * Specifies the action in the network ACL rule. Currently, the value can be *allow* or
-     * *deny*.
-     */
     action?: pulumi.Input<string>;
-    /**
-     * Specifies the description for the network ACL rule.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies the destination IP address to which the traffic is allowed.
-     * The default value is *0.0.0.0/0*. For example: xxx.xxx.xxx.xxx (IP address), xxx.xxx.xxx.0/24 (CIDR block).
-     */
     destinationIpAddress?: pulumi.Input<string>;
-    /**
-     * Specifies the destination port number or port number range. The value ranges
-     * from 1 to 65535. For a port number range, enter two port numbers connected by a colon(:). For example, 1:100.
-     */
     destinationPort?: pulumi.Input<string>;
-    /**
-     * Enabled status for the network ACL rule. Defaults to true.
-     */
     enabled?: pulumi.Input<boolean>;
-    /**
-     * Specifies the IP version, either 4 (default) or 6. This parameter is available after
-     * the IPv6 function is enabled.
-     */
     ipVersion?: pulumi.Input<number>;
-    /**
-     * Specifies a unique name for the network ACL rule.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the protocol supported by the network ACL rule. Valid values are: *tcp*,
-     * *udp* and *icmp*.
-     */
     protocol?: pulumi.Input<string>;
-    /**
-     * The region in which to create the network ACL rule resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new network ACL rule resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the source IP address that the traffic is allowed from. The default
-     * value is *0.0.0.0/0*. For example: xxx.xxx.xxx.xxx (IP address), xxx.xxx.xxx.0/24 (CIDR block).
-     */
     sourceIpAddress?: pulumi.Input<string>;
-    /**
-     * Specifies the source port number or port number range. The value ranges from 1 to
-     * 65535. For a port number range, enter two port numbers connected by a colon(:). For example, 1:100.
-     */
     sourcePort?: pulumi.Input<string>;
 }
 
@@ -238,56 +114,15 @@ export interface AclRuleState {
  * The set of arguments for constructing a AclRule resource.
  */
 export interface AclRuleArgs {
-    /**
-     * Specifies the action in the network ACL rule. Currently, the value can be *allow* or
-     * *deny*.
-     */
     action: pulumi.Input<string>;
-    /**
-     * Specifies the description for the network ACL rule.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies the destination IP address to which the traffic is allowed.
-     * The default value is *0.0.0.0/0*. For example: xxx.xxx.xxx.xxx (IP address), xxx.xxx.xxx.0/24 (CIDR block).
-     */
     destinationIpAddress?: pulumi.Input<string>;
-    /**
-     * Specifies the destination port number or port number range. The value ranges
-     * from 1 to 65535. For a port number range, enter two port numbers connected by a colon(:). For example, 1:100.
-     */
     destinationPort?: pulumi.Input<string>;
-    /**
-     * Enabled status for the network ACL rule. Defaults to true.
-     */
     enabled?: pulumi.Input<boolean>;
-    /**
-     * Specifies the IP version, either 4 (default) or 6. This parameter is available after
-     * the IPv6 function is enabled.
-     */
     ipVersion?: pulumi.Input<number>;
-    /**
-     * Specifies a unique name for the network ACL rule.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the protocol supported by the network ACL rule. Valid values are: *tcp*,
-     * *udp* and *icmp*.
-     */
     protocol: pulumi.Input<string>;
-    /**
-     * The region in which to create the network ACL rule resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new network ACL rule resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the source IP address that the traffic is allowed from. The default
-     * value is *0.0.0.0/0*. For example: xxx.xxx.xxx.xxx (IP address), xxx.xxx.xxx.0/24 (CIDR block).
-     */
     sourceIpAddress?: pulumi.Input<string>;
-    /**
-     * Specifies the source port number or port number range. The value ranges from 1 to
-     * 65535. For a port number range, enter two port numbers connected by a colon(:). For example, 1:100.
-     */
     sourcePort?: pulumi.Input<string>;
 }

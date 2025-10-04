@@ -12,363 +12,59 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a VPN gateway resource within SberCloud.
-//
-// ## Example Usage
-//
-// ### Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := cfg.RequireObject("name")
-//			vpcId := cfg.RequireObject("vpcId")
-//			subnetId := cfg.RequireObject("subnetId")
-//			eipId1 := cfg.RequireObject("eipId1")
-//			eipId2 := cfg.RequireObject("eipId2")
-//			test, err := sbercloud.GetVpnGatewayAvailabilityZones(ctx, &cloudru.GetVpnGatewayAvailabilityZonesArgs{
-//				Flavor:         "professional1",
-//				AttachmentType: pulumi.StringRef("vpc"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = sbercloud.NewVpnGateway(ctx, "test", &sbercloud.VpnGatewayArgs{
-//				Name:  pulumi.Any(name),
-//				VpcId: pulumi.Any(vpcId),
-//				LocalSubnets: pulumi.StringArray{
-//					pulumi.String("192.168.0.0/24"),
-//					pulumi.String("192.168.1.0/24"),
-//				},
-//				ConnectSubnet: pulumi.Any(subnetId),
-//				AvailabilityZones: pulumi.StringArray{
-//					pulumi.String(test.Names[0]),
-//					pulumi.String(test.Names[1]),
-//				},
-//				Eip1: &cloudru.VpnGatewayEip1Args{
-//					Id: pulumi.Any(eipId1),
-//				},
-//				Eip2: &cloudru.VpnGatewayEip2Args{
-//					Id: pulumi.Any(eipId2),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Creating a VPN gateway with creating new EIPs
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := cfg.RequireObject("name")
-//			vpcId := cfg.RequireObject("vpcId")
-//			subnetId := cfg.RequireObject("subnetId")
-//			bandwidthName1 := cfg.RequireObject("bandwidthName1")
-//			bandwidthName2 := cfg.RequireObject("bandwidthName2")
-//			test, err := sbercloud.GetVpnGatewayAvailabilityZones(ctx, &cloudru.GetVpnGatewayAvailabilityZonesArgs{
-//				Flavor:         "professional1",
-//				AttachmentType: pulumi.StringRef("vpc"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = sbercloud.NewVpnGateway(ctx, "test", &sbercloud.VpnGatewayArgs{
-//				Name:  pulumi.Any(name),
-//				VpcId: pulumi.Any(vpcId),
-//				LocalSubnets: pulumi.StringArray{
-//					pulumi.String("192.168.0.0/24"),
-//					pulumi.String("192.168.1.0/24"),
-//				},
-//				ConnectSubnet: pulumi.Any(subnetId),
-//				AvailabilityZones: pulumi.StringArray{
-//					pulumi.String(test.Names[0]),
-//					pulumi.String(test.Names[1]),
-//				},
-//				Eip1: &cloudru.VpnGatewayEip1Args{
-//					BandwidthName: pulumi.Any(bandwidthName1),
-//					Type:          pulumi.String("5_bgp"),
-//					BandwidthSize: pulumi.Int(5),
-//					ChargeMode:    pulumi.String("traffic"),
-//				},
-//				Eip2: &cloudru.VpnGatewayEip2Args{
-//					BandwidthName: pulumi.Any(bandwidthName2),
-//					Type:          pulumi.String("5_bgp"),
-//					BandwidthSize: pulumi.Int(5),
-//					ChargeMode:    pulumi.String("traffic"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Creating a private VPN gateway with Enterprise Router
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := cfg.RequireObject("name")
-//			erId := cfg.RequireObject("erId")
-//			accessVpcId := cfg.RequireObject("accessVpcId")
-//			accessSubnetId := cfg.RequireObject("accessSubnetId")
-//			accessPrivateIp1 := cfg.RequireObject("accessPrivateIp1")
-//			accessPrivateIp2 := cfg.RequireObject("accessPrivateIp2")
-//			test, err := sbercloud.GetVpnGatewayAvailabilityZones(ctx, &cloudru.GetVpnGatewayAvailabilityZonesArgs{
-//				Flavor:         "professional1",
-//				AttachmentType: pulumi.StringRef("er"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = sbercloud.NewVpnGateway(ctx, "test", &sbercloud.VpnGatewayArgs{
-//				Name:           pulumi.Any(name),
-//				NetworkType:    pulumi.String("private"),
-//				AttachmentType: pulumi.String("er"),
-//				ErId:           pulumi.Any(erId),
-//				AvailabilityZones: pulumi.StringArray{
-//					pulumi.String(test.Names[0]),
-//					pulumi.String(test.Names[1]),
-//				},
-//				AccessVpcId:      pulumi.Any(accessVpcId),
-//				AccessSubnetId:   pulumi.Any(accessSubnetId),
-//				AccessPrivateIp1: pulumi.Any(accessPrivateIp1),
-//				AccessPrivateIp2: pulumi.Any(accessPrivateIp2),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Creating a GM VPN gateway with certificate
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			vpcId := cfg.RequireObject("vpcId")
-//			cidr := cfg.RequireObject("cidr")
-//			subnetId := cfg.RequireObject("subnetId")
-//			test, err := sbercloud.GetVpnGatewayAvailabilityZones(ctx, &cloudru.GetVpnGatewayAvailabilityZonesArgs{
-//				AttachmentType: pulumi.StringRef("er"),
-//				Flavor:         "GM",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = sbercloud.NewVpnGateway(ctx, "test", &sbercloud.VpnGatewayArgs{
-//				Name:        pulumi.String("test"),
-//				VpcId:       pulumi.Any(vpcId),
-//				Flavor:      pulumi.String("GM"),
-//				NetworkType: pulumi.String("private"),
-//				LocalSubnets: pulumi.StringArray{
-//					cidr,
-//				},
-//				ConnectSubnet: pulumi.Any(subnetId),
-//				AvailabilityZones: pulumi.StringArray{
-//					pulumi.String(test.Names[0]),
-//					pulumi.String(test.Names[1]),
-//				},
-//				Certificate: &cloudru.VpnGatewayCertificateArgs{
-//					Name:             pulumi.String("test"),
-//					Content:          pulumi.String("-----BEGIN CERTIFICATE-----\nTHIS IS YOUR CERT CONTENT\n-----END CERTIFICATE-----"),
-//					PrivateKey:       pulumi.String("-----BEGIN EC PRIVATE KEY-----\nTHIS IS YOUR PRIVATE KEY CONTENT\n-----END EC PRIVATE KEY-----"),
-//					CertificateChain: pulumi.String("-----BEGIN CERTIFICATE-----\nTHIS IS YOUR CERTIFICATE CHAIN CONTENT\n-----END CERTIFICATE-----"),
-//					EncCertificate:   pulumi.String("-----BEGIN CERTIFICATE-----\nTHIS IS YOUR ENC CERTIFICATE CONTENT\n-----END CERTIFICATE-----"),
-//					EncPrivateKey:    pulumi.String("-----BEGIN EC PRIVATE KEY-----\nTHIS IS YOUR ENC PRIVATE KEY CONTENT\n-----END EC PRIVATE KEY-----"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The gateway can be imported using the `id`, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:index/vpnGateway:VpnGateway test <id>
-// ```
 type VpnGateway struct {
 	pulumi.CustomResourceState
 
-	// The private IP 1 in private network type VPN gateway.
-	// It is the master IP 1 in **active-active** HA mode, and the master IP in **active-standby** HA mode.
-	// Must declare the **access_private_ip_2** at the same time, and can not use the same IP value.
-	//
-	// Changing this parameter will create a new resource.
 	AccessPrivateIp1 pulumi.StringOutput `pulumi:"accessPrivateIp1"`
-	// The private IP 2 in private network type VPN gateway.
-	// It is the master IP 2 in **active-active** HA mode, and the slave IP in **active-standby** HA mode.
-	// Must declare the **access_private_ip_1** at the same time, and can not use the same IP value.
-	//
-	// Changing this parameter will create a new resource.
 	AccessPrivateIp2 pulumi.StringOutput `pulumi:"accessPrivateIp2"`
-	// The access subnet ID.
-	// The default value is the value of `connectSubnet`.
-	//
-	// Changing this parameter will create a new resource.
+	// The access subnet ID of the VPN gateway.
 	AccessSubnetId pulumi.StringOutput `pulumi:"accessSubnetId"`
-	// The access VPC ID.
-	// The default value is the value of `vpcId`.
-	//
-	// Changing this parameter will create a new resource.
+	// The access VPC ID of the VPN gateway.
 	AccessVpcId pulumi.StringOutput `pulumi:"accessVpcId"`
-	// The ASN number of BGP. The value ranges from **1** to **4294967295**.
-	// Defaults to **64512**
-	//
-	// Changing this parameter will create a new resource.
+	// The ASN number of BGP
 	Asn pulumi.IntPtrOutput `pulumi:"asn"`
-	// The attachment type. The value can be **vpc** and **er**.
-	// Defaults to **vpc**.
-	//
-	// Changing this parameter will create a new resource.
+	// The attachment type.
 	AttachmentType pulumi.StringPtrOutput `pulumi:"attachmentType"`
-	// The list of availability zone IDs.
-	//
-	// Changing this parameter will create a new resource.
-	AvailabilityZones pulumi.StringArrayOutput `pulumi:"availabilityZones"`
-	// The GM certificate of the **GM** flavor gateway.
-	// The object structure is documented below.
-	Certificate VpnGatewayCertificateOutput `pulumi:"certificate"`
+	// The availability zone IDs.
+	AvailabilityZones pulumi.StringArrayOutput    `pulumi:"availabilityZones"`
+	Certificate       VpnGatewayCertificateOutput `pulumi:"certificate"`
 	// The Network ID of the VPC subnet used by the VPN gateway.
-	// This parameter is mandatory when `attachmentType` is **vpc**.
-	//
-	// Changing this parameter will create a new resource.
 	ConnectSubnet pulumi.StringOutput `pulumi:"connectSubnet"`
-	// The create time of the gateway certificate.
+	// The create time.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Whether to delete the EIP when the VPN gateway is deleted.
 	DeleteEipOnTermination pulumi.BoolPtrOutput `pulumi:"deleteEipOnTermination"`
-	// The master 1 IP in active-active VPN gateway or the master IP
-	// in active-standby VPN gateway. This parameter is mandatory when `networkType` is **public** or left empty.
-	// The object structure is documented below.
-	//
-	// Changing this parameter will create a new resource.
-	Eip1 VpnGatewayEip1Output `pulumi:"eip1"`
-	// The master 2 IP in active-active VPN gateway or the slave IP
-	// in active-standby VPN gateway. This parameter is mandatory when `networkType` is **public** or left empty.
-	// The object structure is documented below.
-	//
-	// Changing this parameter will create a new resource.
-	Eip2 VpnGatewayEip2Output `pulumi:"eip2"`
-	// The enterprise project ID.
-	//
-	// <a name="Gateway_CreateRequestEip"></a>
-	// The `eip1` or `eip2` block supports:
+	Eip1                   VpnGatewayEip1Output `pulumi:"eip1"`
+	Eip2                   VpnGatewayEip2Output `pulumi:"eip2"`
+	// The enterprise project ID
 	EnterpriseProjectId pulumi.StringOutput `pulumi:"enterpriseProjectId"`
 	// The ER attachment ID.
 	ErAttachmentId pulumi.StringOutput `pulumi:"erAttachmentId"`
 	// The enterprise router ID to attach with to VPN gateway.
-	// This parameter is mandatory when `attachmentType` is **er**.
-	//
-	// Changing this parameter will create a new resource.
 	ErId pulumi.StringOutput `pulumi:"erId"`
 	// The flavor of the VPN gateway.
-	// The value can be **Basic**, **Professional1**, **Professional2** and **GM**. Defaults to **Professional1**.
-	//
-	// Changing this parameter will create a new resource.
 	Flavor pulumi.StringOutput `pulumi:"flavor"`
-	// The HA mode of VPN gateway. Valid values are **active-active** and
-	// **active-standby**. The default value is **active-active**.
-	//
-	// Changing this parameter will create a new resource.
+	// The HA mode of the VPN gateway.
 	HaMode pulumi.StringOutput `pulumi:"haMode"`
-	// The list of local subnets.
-	// This parameter is mandatory when `attachmentType` is **vpc**.
+	// The local subnets.
 	LocalSubnets pulumi.StringArrayOutput  `pulumi:"localSubnets"`
 	MasterEip    VpnGatewayMasterEipOutput `pulumi:"masterEip"`
-	// The name of the gateway certificate.
+	// The name of the VPN gateway. Only letters, digits, underscores(_) and hypens(-) are supported.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The network type. The value can be **public** and **private**.
-	// Defaults to **public**.
-	//
-	// Changing this parameter will create a new resource.
-	NetworkType pulumi.StringOutput `pulumi:"networkType"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region   pulumi.StringOutput      `pulumi:"region"`
-	SlaveEip VpnGatewaySlaveEipOutput `pulumi:"slaveEip"`
-	// The status of the certificate.
-	Status pulumi.StringOutput `pulumi:"status"`
-	// Specifies the tags of the VPN gateway.
-	//
-	// <a name="Gateway_certificate_attr"></a>
-	// The `certificate` block supports:
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The update time of the gateway certificate.
+	// The network type of the VPN gateway.
+	NetworkType pulumi.StringOutput      `pulumi:"networkType"`
+	Region      pulumi.StringOutput      `pulumi:"region"`
+	SlaveEip    VpnGatewaySlaveEipOutput `pulumi:"slaveEip"`
+	// The status of VPN gateway.
+	Status pulumi.StringOutput    `pulumi:"status"`
+	Tags   pulumi.StringMapOutput `pulumi:"tags"`
+	// The update time.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 	// The number of used connection groups.
 	UsedConnectionGroup pulumi.IntOutput `pulumi:"usedConnectionGroup"`
 	// The number of used connections.
 	UsedConnectionNumber pulumi.IntOutput `pulumi:"usedConnectionNumber"`
 	// The ID of the VPC to which the VPN gateway is connected.
-	// This parameter is mandatory when `attachmentType` is **vpc**.
-	//
-	// Changing this parameter will create a new resource.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 }
 
@@ -405,238 +101,110 @@ func GetVpnGateway(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering VpnGateway resources.
 type vpnGatewayState struct {
-	// The private IP 1 in private network type VPN gateway.
-	// It is the master IP 1 in **active-active** HA mode, and the master IP in **active-standby** HA mode.
-	// Must declare the **access_private_ip_2** at the same time, and can not use the same IP value.
-	//
-	// Changing this parameter will create a new resource.
 	AccessPrivateIp1 *string `pulumi:"accessPrivateIp1"`
-	// The private IP 2 in private network type VPN gateway.
-	// It is the master IP 2 in **active-active** HA mode, and the slave IP in **active-standby** HA mode.
-	// Must declare the **access_private_ip_1** at the same time, and can not use the same IP value.
-	//
-	// Changing this parameter will create a new resource.
 	AccessPrivateIp2 *string `pulumi:"accessPrivateIp2"`
-	// The access subnet ID.
-	// The default value is the value of `connectSubnet`.
-	//
-	// Changing this parameter will create a new resource.
+	// The access subnet ID of the VPN gateway.
 	AccessSubnetId *string `pulumi:"accessSubnetId"`
-	// The access VPC ID.
-	// The default value is the value of `vpcId`.
-	//
-	// Changing this parameter will create a new resource.
+	// The access VPC ID of the VPN gateway.
 	AccessVpcId *string `pulumi:"accessVpcId"`
-	// The ASN number of BGP. The value ranges from **1** to **4294967295**.
-	// Defaults to **64512**
-	//
-	// Changing this parameter will create a new resource.
+	// The ASN number of BGP
 	Asn *int `pulumi:"asn"`
-	// The attachment type. The value can be **vpc** and **er**.
-	// Defaults to **vpc**.
-	//
-	// Changing this parameter will create a new resource.
+	// The attachment type.
 	AttachmentType *string `pulumi:"attachmentType"`
-	// The list of availability zone IDs.
-	//
-	// Changing this parameter will create a new resource.
-	AvailabilityZones []string `pulumi:"availabilityZones"`
-	// The GM certificate of the **GM** flavor gateway.
-	// The object structure is documented below.
-	Certificate *VpnGatewayCertificate `pulumi:"certificate"`
+	// The availability zone IDs.
+	AvailabilityZones []string               `pulumi:"availabilityZones"`
+	Certificate       *VpnGatewayCertificate `pulumi:"certificate"`
 	// The Network ID of the VPC subnet used by the VPN gateway.
-	// This parameter is mandatory when `attachmentType` is **vpc**.
-	//
-	// Changing this parameter will create a new resource.
 	ConnectSubnet *string `pulumi:"connectSubnet"`
-	// The create time of the gateway certificate.
+	// The create time.
 	CreatedAt *string `pulumi:"createdAt"`
 	// Whether to delete the EIP when the VPN gateway is deleted.
-	DeleteEipOnTermination *bool `pulumi:"deleteEipOnTermination"`
-	// The master 1 IP in active-active VPN gateway or the master IP
-	// in active-standby VPN gateway. This parameter is mandatory when `networkType` is **public** or left empty.
-	// The object structure is documented below.
-	//
-	// Changing this parameter will create a new resource.
-	Eip1 *VpnGatewayEip1 `pulumi:"eip1"`
-	// The master 2 IP in active-active VPN gateway or the slave IP
-	// in active-standby VPN gateway. This parameter is mandatory when `networkType` is **public** or left empty.
-	// The object structure is documented below.
-	//
-	// Changing this parameter will create a new resource.
-	Eip2 *VpnGatewayEip2 `pulumi:"eip2"`
-	// The enterprise project ID.
-	//
-	// <a name="Gateway_CreateRequestEip"></a>
-	// The `eip1` or `eip2` block supports:
+	DeleteEipOnTermination *bool           `pulumi:"deleteEipOnTermination"`
+	Eip1                   *VpnGatewayEip1 `pulumi:"eip1"`
+	Eip2                   *VpnGatewayEip2 `pulumi:"eip2"`
+	// The enterprise project ID
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
 	// The ER attachment ID.
 	ErAttachmentId *string `pulumi:"erAttachmentId"`
 	// The enterprise router ID to attach with to VPN gateway.
-	// This parameter is mandatory when `attachmentType` is **er**.
-	//
-	// Changing this parameter will create a new resource.
 	ErId *string `pulumi:"erId"`
 	// The flavor of the VPN gateway.
-	// The value can be **Basic**, **Professional1**, **Professional2** and **GM**. Defaults to **Professional1**.
-	//
-	// Changing this parameter will create a new resource.
 	Flavor *string `pulumi:"flavor"`
-	// The HA mode of VPN gateway. Valid values are **active-active** and
-	// **active-standby**. The default value is **active-active**.
-	//
-	// Changing this parameter will create a new resource.
+	// The HA mode of the VPN gateway.
 	HaMode *string `pulumi:"haMode"`
-	// The list of local subnets.
-	// This parameter is mandatory when `attachmentType` is **vpc**.
+	// The local subnets.
 	LocalSubnets []string             `pulumi:"localSubnets"`
 	MasterEip    *VpnGatewayMasterEip `pulumi:"masterEip"`
-	// The name of the gateway certificate.
+	// The name of the VPN gateway. Only letters, digits, underscores(_) and hypens(-) are supported.
 	Name *string `pulumi:"name"`
-	// The network type. The value can be **public** and **private**.
-	// Defaults to **public**.
-	//
-	// Changing this parameter will create a new resource.
-	NetworkType *string `pulumi:"networkType"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region   *string             `pulumi:"region"`
-	SlaveEip *VpnGatewaySlaveEip `pulumi:"slaveEip"`
-	// The status of the certificate.
-	Status *string `pulumi:"status"`
-	// Specifies the tags of the VPN gateway.
-	//
-	// <a name="Gateway_certificate_attr"></a>
-	// The `certificate` block supports:
-	Tags map[string]string `pulumi:"tags"`
-	// The update time of the gateway certificate.
+	// The network type of the VPN gateway.
+	NetworkType *string             `pulumi:"networkType"`
+	Region      *string             `pulumi:"region"`
+	SlaveEip    *VpnGatewaySlaveEip `pulumi:"slaveEip"`
+	// The status of VPN gateway.
+	Status *string           `pulumi:"status"`
+	Tags   map[string]string `pulumi:"tags"`
+	// The update time.
 	UpdatedAt *string `pulumi:"updatedAt"`
 	// The number of used connection groups.
 	UsedConnectionGroup *int `pulumi:"usedConnectionGroup"`
 	// The number of used connections.
 	UsedConnectionNumber *int `pulumi:"usedConnectionNumber"`
 	// The ID of the VPC to which the VPN gateway is connected.
-	// This parameter is mandatory when `attachmentType` is **vpc**.
-	//
-	// Changing this parameter will create a new resource.
 	VpcId *string `pulumi:"vpcId"`
 }
 
 type VpnGatewayState struct {
-	// The private IP 1 in private network type VPN gateway.
-	// It is the master IP 1 in **active-active** HA mode, and the master IP in **active-standby** HA mode.
-	// Must declare the **access_private_ip_2** at the same time, and can not use the same IP value.
-	//
-	// Changing this parameter will create a new resource.
 	AccessPrivateIp1 pulumi.StringPtrInput
-	// The private IP 2 in private network type VPN gateway.
-	// It is the master IP 2 in **active-active** HA mode, and the slave IP in **active-standby** HA mode.
-	// Must declare the **access_private_ip_1** at the same time, and can not use the same IP value.
-	//
-	// Changing this parameter will create a new resource.
 	AccessPrivateIp2 pulumi.StringPtrInput
-	// The access subnet ID.
-	// The default value is the value of `connectSubnet`.
-	//
-	// Changing this parameter will create a new resource.
+	// The access subnet ID of the VPN gateway.
 	AccessSubnetId pulumi.StringPtrInput
-	// The access VPC ID.
-	// The default value is the value of `vpcId`.
-	//
-	// Changing this parameter will create a new resource.
+	// The access VPC ID of the VPN gateway.
 	AccessVpcId pulumi.StringPtrInput
-	// The ASN number of BGP. The value ranges from **1** to **4294967295**.
-	// Defaults to **64512**
-	//
-	// Changing this parameter will create a new resource.
+	// The ASN number of BGP
 	Asn pulumi.IntPtrInput
-	// The attachment type. The value can be **vpc** and **er**.
-	// Defaults to **vpc**.
-	//
-	// Changing this parameter will create a new resource.
+	// The attachment type.
 	AttachmentType pulumi.StringPtrInput
-	// The list of availability zone IDs.
-	//
-	// Changing this parameter will create a new resource.
+	// The availability zone IDs.
 	AvailabilityZones pulumi.StringArrayInput
-	// The GM certificate of the **GM** flavor gateway.
-	// The object structure is documented below.
-	Certificate VpnGatewayCertificatePtrInput
+	Certificate       VpnGatewayCertificatePtrInput
 	// The Network ID of the VPC subnet used by the VPN gateway.
-	// This parameter is mandatory when `attachmentType` is **vpc**.
-	//
-	// Changing this parameter will create a new resource.
 	ConnectSubnet pulumi.StringPtrInput
-	// The create time of the gateway certificate.
+	// The create time.
 	CreatedAt pulumi.StringPtrInput
 	// Whether to delete the EIP when the VPN gateway is deleted.
 	DeleteEipOnTermination pulumi.BoolPtrInput
-	// The master 1 IP in active-active VPN gateway or the master IP
-	// in active-standby VPN gateway. This parameter is mandatory when `networkType` is **public** or left empty.
-	// The object structure is documented below.
-	//
-	// Changing this parameter will create a new resource.
-	Eip1 VpnGatewayEip1PtrInput
-	// The master 2 IP in active-active VPN gateway or the slave IP
-	// in active-standby VPN gateway. This parameter is mandatory when `networkType` is **public** or left empty.
-	// The object structure is documented below.
-	//
-	// Changing this parameter will create a new resource.
-	Eip2 VpnGatewayEip2PtrInput
-	// The enterprise project ID.
-	//
-	// <a name="Gateway_CreateRequestEip"></a>
-	// The `eip1` or `eip2` block supports:
+	Eip1                   VpnGatewayEip1PtrInput
+	Eip2                   VpnGatewayEip2PtrInput
+	// The enterprise project ID
 	EnterpriseProjectId pulumi.StringPtrInput
 	// The ER attachment ID.
 	ErAttachmentId pulumi.StringPtrInput
 	// The enterprise router ID to attach with to VPN gateway.
-	// This parameter is mandatory when `attachmentType` is **er**.
-	//
-	// Changing this parameter will create a new resource.
 	ErId pulumi.StringPtrInput
 	// The flavor of the VPN gateway.
-	// The value can be **Basic**, **Professional1**, **Professional2** and **GM**. Defaults to **Professional1**.
-	//
-	// Changing this parameter will create a new resource.
 	Flavor pulumi.StringPtrInput
-	// The HA mode of VPN gateway. Valid values are **active-active** and
-	// **active-standby**. The default value is **active-active**.
-	//
-	// Changing this parameter will create a new resource.
+	// The HA mode of the VPN gateway.
 	HaMode pulumi.StringPtrInput
-	// The list of local subnets.
-	// This parameter is mandatory when `attachmentType` is **vpc**.
+	// The local subnets.
 	LocalSubnets pulumi.StringArrayInput
 	MasterEip    VpnGatewayMasterEipPtrInput
-	// The name of the gateway certificate.
+	// The name of the VPN gateway. Only letters, digits, underscores(_) and hypens(-) are supported.
 	Name pulumi.StringPtrInput
-	// The network type. The value can be **public** and **private**.
-	// Defaults to **public**.
-	//
-	// Changing this parameter will create a new resource.
+	// The network type of the VPN gateway.
 	NetworkType pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region   pulumi.StringPtrInput
-	SlaveEip VpnGatewaySlaveEipPtrInput
-	// The status of the certificate.
+	Region      pulumi.StringPtrInput
+	SlaveEip    VpnGatewaySlaveEipPtrInput
+	// The status of VPN gateway.
 	Status pulumi.StringPtrInput
-	// Specifies the tags of the VPN gateway.
-	//
-	// <a name="Gateway_certificate_attr"></a>
-	// The `certificate` block supports:
-	Tags pulumi.StringMapInput
-	// The update time of the gateway certificate.
+	Tags   pulumi.StringMapInput
+	// The update time.
 	UpdatedAt pulumi.StringPtrInput
 	// The number of used connection groups.
 	UsedConnectionGroup pulumi.IntPtrInput
 	// The number of used connections.
 	UsedConnectionNumber pulumi.IntPtrInput
 	// The ID of the VPC to which the VPN gateway is connected.
-	// This parameter is mandatory when `attachmentType` is **vpc**.
-	//
-	// Changing this parameter will create a new resource.
 	VpcId pulumi.StringPtrInput
 }
 
@@ -645,215 +213,87 @@ func (VpnGatewayState) ElementType() reflect.Type {
 }
 
 type vpnGatewayArgs struct {
-	// The private IP 1 in private network type VPN gateway.
-	// It is the master IP 1 in **active-active** HA mode, and the master IP in **active-standby** HA mode.
-	// Must declare the **access_private_ip_2** at the same time, and can not use the same IP value.
-	//
-	// Changing this parameter will create a new resource.
 	AccessPrivateIp1 *string `pulumi:"accessPrivateIp1"`
-	// The private IP 2 in private network type VPN gateway.
-	// It is the master IP 2 in **active-active** HA mode, and the slave IP in **active-standby** HA mode.
-	// Must declare the **access_private_ip_1** at the same time, and can not use the same IP value.
-	//
-	// Changing this parameter will create a new resource.
 	AccessPrivateIp2 *string `pulumi:"accessPrivateIp2"`
-	// The access subnet ID.
-	// The default value is the value of `connectSubnet`.
-	//
-	// Changing this parameter will create a new resource.
+	// The access subnet ID of the VPN gateway.
 	AccessSubnetId *string `pulumi:"accessSubnetId"`
-	// The access VPC ID.
-	// The default value is the value of `vpcId`.
-	//
-	// Changing this parameter will create a new resource.
+	// The access VPC ID of the VPN gateway.
 	AccessVpcId *string `pulumi:"accessVpcId"`
-	// The ASN number of BGP. The value ranges from **1** to **4294967295**.
-	// Defaults to **64512**
-	//
-	// Changing this parameter will create a new resource.
+	// The ASN number of BGP
 	Asn *int `pulumi:"asn"`
-	// The attachment type. The value can be **vpc** and **er**.
-	// Defaults to **vpc**.
-	//
-	// Changing this parameter will create a new resource.
+	// The attachment type.
 	AttachmentType *string `pulumi:"attachmentType"`
-	// The list of availability zone IDs.
-	//
-	// Changing this parameter will create a new resource.
-	AvailabilityZones []string `pulumi:"availabilityZones"`
-	// The GM certificate of the **GM** flavor gateway.
-	// The object structure is documented below.
-	Certificate *VpnGatewayCertificate `pulumi:"certificate"`
+	// The availability zone IDs.
+	AvailabilityZones []string               `pulumi:"availabilityZones"`
+	Certificate       *VpnGatewayCertificate `pulumi:"certificate"`
 	// The Network ID of the VPC subnet used by the VPN gateway.
-	// This parameter is mandatory when `attachmentType` is **vpc**.
-	//
-	// Changing this parameter will create a new resource.
 	ConnectSubnet *string `pulumi:"connectSubnet"`
 	// Whether to delete the EIP when the VPN gateway is deleted.
-	DeleteEipOnTermination *bool `pulumi:"deleteEipOnTermination"`
-	// The master 1 IP in active-active VPN gateway or the master IP
-	// in active-standby VPN gateway. This parameter is mandatory when `networkType` is **public** or left empty.
-	// The object structure is documented below.
-	//
-	// Changing this parameter will create a new resource.
-	Eip1 *VpnGatewayEip1 `pulumi:"eip1"`
-	// The master 2 IP in active-active VPN gateway or the slave IP
-	// in active-standby VPN gateway. This parameter is mandatory when `networkType` is **public** or left empty.
-	// The object structure is documented below.
-	//
-	// Changing this parameter will create a new resource.
-	Eip2 *VpnGatewayEip2 `pulumi:"eip2"`
-	// The enterprise project ID.
-	//
-	// <a name="Gateway_CreateRequestEip"></a>
-	// The `eip1` or `eip2` block supports:
+	DeleteEipOnTermination *bool           `pulumi:"deleteEipOnTermination"`
+	Eip1                   *VpnGatewayEip1 `pulumi:"eip1"`
+	Eip2                   *VpnGatewayEip2 `pulumi:"eip2"`
+	// The enterprise project ID
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
 	// The enterprise router ID to attach with to VPN gateway.
-	// This parameter is mandatory when `attachmentType` is **er**.
-	//
-	// Changing this parameter will create a new resource.
 	ErId *string `pulumi:"erId"`
 	// The flavor of the VPN gateway.
-	// The value can be **Basic**, **Professional1**, **Professional2** and **GM**. Defaults to **Professional1**.
-	//
-	// Changing this parameter will create a new resource.
 	Flavor *string `pulumi:"flavor"`
-	// The HA mode of VPN gateway. Valid values are **active-active** and
-	// **active-standby**. The default value is **active-active**.
-	//
-	// Changing this parameter will create a new resource.
+	// The HA mode of the VPN gateway.
 	HaMode *string `pulumi:"haMode"`
-	// The list of local subnets.
-	// This parameter is mandatory when `attachmentType` is **vpc**.
+	// The local subnets.
 	LocalSubnets []string             `pulumi:"localSubnets"`
 	MasterEip    *VpnGatewayMasterEip `pulumi:"masterEip"`
-	// The name of the gateway certificate.
+	// The name of the VPN gateway. Only letters, digits, underscores(_) and hypens(-) are supported.
 	Name *string `pulumi:"name"`
-	// The network type. The value can be **public** and **private**.
-	// Defaults to **public**.
-	//
-	// Changing this parameter will create a new resource.
-	NetworkType *string `pulumi:"networkType"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region   *string             `pulumi:"region"`
-	SlaveEip *VpnGatewaySlaveEip `pulumi:"slaveEip"`
-	// Specifies the tags of the VPN gateway.
-	//
-	// <a name="Gateway_certificate_attr"></a>
-	// The `certificate` block supports:
-	Tags map[string]string `pulumi:"tags"`
+	// The network type of the VPN gateway.
+	NetworkType *string             `pulumi:"networkType"`
+	Region      *string             `pulumi:"region"`
+	SlaveEip    *VpnGatewaySlaveEip `pulumi:"slaveEip"`
+	Tags        map[string]string   `pulumi:"tags"`
 	// The ID of the VPC to which the VPN gateway is connected.
-	// This parameter is mandatory when `attachmentType` is **vpc**.
-	//
-	// Changing this parameter will create a new resource.
 	VpcId *string `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a VpnGateway resource.
 type VpnGatewayArgs struct {
-	// The private IP 1 in private network type VPN gateway.
-	// It is the master IP 1 in **active-active** HA mode, and the master IP in **active-standby** HA mode.
-	// Must declare the **access_private_ip_2** at the same time, and can not use the same IP value.
-	//
-	// Changing this parameter will create a new resource.
 	AccessPrivateIp1 pulumi.StringPtrInput
-	// The private IP 2 in private network type VPN gateway.
-	// It is the master IP 2 in **active-active** HA mode, and the slave IP in **active-standby** HA mode.
-	// Must declare the **access_private_ip_1** at the same time, and can not use the same IP value.
-	//
-	// Changing this parameter will create a new resource.
 	AccessPrivateIp2 pulumi.StringPtrInput
-	// The access subnet ID.
-	// The default value is the value of `connectSubnet`.
-	//
-	// Changing this parameter will create a new resource.
+	// The access subnet ID of the VPN gateway.
 	AccessSubnetId pulumi.StringPtrInput
-	// The access VPC ID.
-	// The default value is the value of `vpcId`.
-	//
-	// Changing this parameter will create a new resource.
+	// The access VPC ID of the VPN gateway.
 	AccessVpcId pulumi.StringPtrInput
-	// The ASN number of BGP. The value ranges from **1** to **4294967295**.
-	// Defaults to **64512**
-	//
-	// Changing this parameter will create a new resource.
+	// The ASN number of BGP
 	Asn pulumi.IntPtrInput
-	// The attachment type. The value can be **vpc** and **er**.
-	// Defaults to **vpc**.
-	//
-	// Changing this parameter will create a new resource.
+	// The attachment type.
 	AttachmentType pulumi.StringPtrInput
-	// The list of availability zone IDs.
-	//
-	// Changing this parameter will create a new resource.
+	// The availability zone IDs.
 	AvailabilityZones pulumi.StringArrayInput
-	// The GM certificate of the **GM** flavor gateway.
-	// The object structure is documented below.
-	Certificate VpnGatewayCertificatePtrInput
+	Certificate       VpnGatewayCertificatePtrInput
 	// The Network ID of the VPC subnet used by the VPN gateway.
-	// This parameter is mandatory when `attachmentType` is **vpc**.
-	//
-	// Changing this parameter will create a new resource.
 	ConnectSubnet pulumi.StringPtrInput
 	// Whether to delete the EIP when the VPN gateway is deleted.
 	DeleteEipOnTermination pulumi.BoolPtrInput
-	// The master 1 IP in active-active VPN gateway or the master IP
-	// in active-standby VPN gateway. This parameter is mandatory when `networkType` is **public** or left empty.
-	// The object structure is documented below.
-	//
-	// Changing this parameter will create a new resource.
-	Eip1 VpnGatewayEip1PtrInput
-	// The master 2 IP in active-active VPN gateway or the slave IP
-	// in active-standby VPN gateway. This parameter is mandatory when `networkType` is **public** or left empty.
-	// The object structure is documented below.
-	//
-	// Changing this parameter will create a new resource.
-	Eip2 VpnGatewayEip2PtrInput
-	// The enterprise project ID.
-	//
-	// <a name="Gateway_CreateRequestEip"></a>
-	// The `eip1` or `eip2` block supports:
+	Eip1                   VpnGatewayEip1PtrInput
+	Eip2                   VpnGatewayEip2PtrInput
+	// The enterprise project ID
 	EnterpriseProjectId pulumi.StringPtrInput
 	// The enterprise router ID to attach with to VPN gateway.
-	// This parameter is mandatory when `attachmentType` is **er**.
-	//
-	// Changing this parameter will create a new resource.
 	ErId pulumi.StringPtrInput
 	// The flavor of the VPN gateway.
-	// The value can be **Basic**, **Professional1**, **Professional2** and **GM**. Defaults to **Professional1**.
-	//
-	// Changing this parameter will create a new resource.
 	Flavor pulumi.StringPtrInput
-	// The HA mode of VPN gateway. Valid values are **active-active** and
-	// **active-standby**. The default value is **active-active**.
-	//
-	// Changing this parameter will create a new resource.
+	// The HA mode of the VPN gateway.
 	HaMode pulumi.StringPtrInput
-	// The list of local subnets.
-	// This parameter is mandatory when `attachmentType` is **vpc**.
+	// The local subnets.
 	LocalSubnets pulumi.StringArrayInput
 	MasterEip    VpnGatewayMasterEipPtrInput
-	// The name of the gateway certificate.
+	// The name of the VPN gateway. Only letters, digits, underscores(_) and hypens(-) are supported.
 	Name pulumi.StringPtrInput
-	// The network type. The value can be **public** and **private**.
-	// Defaults to **public**.
-	//
-	// Changing this parameter will create a new resource.
+	// The network type of the VPN gateway.
 	NetworkType pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region   pulumi.StringPtrInput
-	SlaveEip VpnGatewaySlaveEipPtrInput
-	// Specifies the tags of the VPN gateway.
-	//
-	// <a name="Gateway_certificate_attr"></a>
-	// The `certificate` block supports:
-	Tags pulumi.StringMapInput
+	Region      pulumi.StringPtrInput
+	SlaveEip    VpnGatewaySlaveEipPtrInput
+	Tags        pulumi.StringMapInput
 	// The ID of the VPC to which the VPN gateway is connected.
-	// This parameter is mandatory when `attachmentType` is **vpc**.
-	//
-	// Changing this parameter will create a new resource.
 	VpcId pulumi.StringPtrInput
 }
 
@@ -944,78 +384,49 @@ func (o VpnGatewayOutput) ToVpnGatewayOutputWithContext(ctx context.Context) Vpn
 	return o
 }
 
-// The private IP 1 in private network type VPN gateway.
-// It is the master IP 1 in **active-active** HA mode, and the master IP in **active-standby** HA mode.
-// Must declare the **access_private_ip_2** at the same time, and can not use the same IP value.
-//
-// Changing this parameter will create a new resource.
 func (o VpnGatewayOutput) AccessPrivateIp1() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnGateway) pulumi.StringOutput { return v.AccessPrivateIp1 }).(pulumi.StringOutput)
 }
 
-// The private IP 2 in private network type VPN gateway.
-// It is the master IP 2 in **active-active** HA mode, and the slave IP in **active-standby** HA mode.
-// Must declare the **access_private_ip_1** at the same time, and can not use the same IP value.
-//
-// Changing this parameter will create a new resource.
 func (o VpnGatewayOutput) AccessPrivateIp2() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnGateway) pulumi.StringOutput { return v.AccessPrivateIp2 }).(pulumi.StringOutput)
 }
 
-// The access subnet ID.
-// The default value is the value of `connectSubnet`.
-//
-// Changing this parameter will create a new resource.
+// The access subnet ID of the VPN gateway.
 func (o VpnGatewayOutput) AccessSubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnGateway) pulumi.StringOutput { return v.AccessSubnetId }).(pulumi.StringOutput)
 }
 
-// The access VPC ID.
-// The default value is the value of `vpcId`.
-//
-// Changing this parameter will create a new resource.
+// The access VPC ID of the VPN gateway.
 func (o VpnGatewayOutput) AccessVpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnGateway) pulumi.StringOutput { return v.AccessVpcId }).(pulumi.StringOutput)
 }
 
-// The ASN number of BGP. The value ranges from **1** to **4294967295**.
-// Defaults to **64512**
-//
-// Changing this parameter will create a new resource.
+// The ASN number of BGP
 func (o VpnGatewayOutput) Asn() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VpnGateway) pulumi.IntPtrOutput { return v.Asn }).(pulumi.IntPtrOutput)
 }
 
-// The attachment type. The value can be **vpc** and **er**.
-// Defaults to **vpc**.
-//
-// Changing this parameter will create a new resource.
+// The attachment type.
 func (o VpnGatewayOutput) AttachmentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGateway) pulumi.StringPtrOutput { return v.AttachmentType }).(pulumi.StringPtrOutput)
 }
 
-// The list of availability zone IDs.
-//
-// Changing this parameter will create a new resource.
+// The availability zone IDs.
 func (o VpnGatewayOutput) AvailabilityZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VpnGateway) pulumi.StringArrayOutput { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }
 
-// The GM certificate of the **GM** flavor gateway.
-// The object structure is documented below.
 func (o VpnGatewayOutput) Certificate() VpnGatewayCertificateOutput {
 	return o.ApplyT(func(v *VpnGateway) VpnGatewayCertificateOutput { return v.Certificate }).(VpnGatewayCertificateOutput)
 }
 
 // The Network ID of the VPC subnet used by the VPN gateway.
-// This parameter is mandatory when `attachmentType` is **vpc**.
-//
-// Changing this parameter will create a new resource.
 func (o VpnGatewayOutput) ConnectSubnet() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnGateway) pulumi.StringOutput { return v.ConnectSubnet }).(pulumi.StringOutput)
 }
 
-// The create time of the gateway certificate.
+// The create time.
 func (o VpnGatewayOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnGateway) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
@@ -1025,28 +436,15 @@ func (o VpnGatewayOutput) DeleteEipOnTermination() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VpnGateway) pulumi.BoolPtrOutput { return v.DeleteEipOnTermination }).(pulumi.BoolPtrOutput)
 }
 
-// The master 1 IP in active-active VPN gateway or the master IP
-// in active-standby VPN gateway. This parameter is mandatory when `networkType` is **public** or left empty.
-// The object structure is documented below.
-//
-// Changing this parameter will create a new resource.
 func (o VpnGatewayOutput) Eip1() VpnGatewayEip1Output {
 	return o.ApplyT(func(v *VpnGateway) VpnGatewayEip1Output { return v.Eip1 }).(VpnGatewayEip1Output)
 }
 
-// The master 2 IP in active-active VPN gateway or the slave IP
-// in active-standby VPN gateway. This parameter is mandatory when `networkType` is **public** or left empty.
-// The object structure is documented below.
-//
-// Changing this parameter will create a new resource.
 func (o VpnGatewayOutput) Eip2() VpnGatewayEip2Output {
 	return o.ApplyT(func(v *VpnGateway) VpnGatewayEip2Output { return v.Eip2 }).(VpnGatewayEip2Output)
 }
 
-// The enterprise project ID.
-//
-// <a name="Gateway_CreateRequestEip"></a>
-// The `eip1` or `eip2` block supports:
+// The enterprise project ID
 func (o VpnGatewayOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnGateway) pulumi.StringOutput { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
@@ -1057,31 +455,21 @@ func (o VpnGatewayOutput) ErAttachmentId() pulumi.StringOutput {
 }
 
 // The enterprise router ID to attach with to VPN gateway.
-// This parameter is mandatory when `attachmentType` is **er**.
-//
-// Changing this parameter will create a new resource.
 func (o VpnGatewayOutput) ErId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnGateway) pulumi.StringOutput { return v.ErId }).(pulumi.StringOutput)
 }
 
 // The flavor of the VPN gateway.
-// The value can be **Basic**, **Professional1**, **Professional2** and **GM**. Defaults to **Professional1**.
-//
-// Changing this parameter will create a new resource.
 func (o VpnGatewayOutput) Flavor() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnGateway) pulumi.StringOutput { return v.Flavor }).(pulumi.StringOutput)
 }
 
-// The HA mode of VPN gateway. Valid values are **active-active** and
-// **active-standby**. The default value is **active-active**.
-//
-// Changing this parameter will create a new resource.
+// The HA mode of the VPN gateway.
 func (o VpnGatewayOutput) HaMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnGateway) pulumi.StringOutput { return v.HaMode }).(pulumi.StringOutput)
 }
 
-// The list of local subnets.
-// This parameter is mandatory when `attachmentType` is **vpc**.
+// The local subnets.
 func (o VpnGatewayOutput) LocalSubnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VpnGateway) pulumi.StringArrayOutput { return v.LocalSubnets }).(pulumi.StringArrayOutput)
 }
@@ -1090,21 +478,16 @@ func (o VpnGatewayOutput) MasterEip() VpnGatewayMasterEipOutput {
 	return o.ApplyT(func(v *VpnGateway) VpnGatewayMasterEipOutput { return v.MasterEip }).(VpnGatewayMasterEipOutput)
 }
 
-// The name of the gateway certificate.
+// The name of the VPN gateway. Only letters, digits, underscores(_) and hypens(-) are supported.
 func (o VpnGatewayOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnGateway) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The network type. The value can be **public** and **private**.
-// Defaults to **public**.
-//
-// Changing this parameter will create a new resource.
+// The network type of the VPN gateway.
 func (o VpnGatewayOutput) NetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnGateway) pulumi.StringOutput { return v.NetworkType }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
 func (o VpnGatewayOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnGateway) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
@@ -1113,20 +496,16 @@ func (o VpnGatewayOutput) SlaveEip() VpnGatewaySlaveEipOutput {
 	return o.ApplyT(func(v *VpnGateway) VpnGatewaySlaveEipOutput { return v.SlaveEip }).(VpnGatewaySlaveEipOutput)
 }
 
-// The status of the certificate.
+// The status of VPN gateway.
 func (o VpnGatewayOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnGateway) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Specifies the tags of the VPN gateway.
-//
-// <a name="Gateway_certificate_attr"></a>
-// The `certificate` block supports:
 func (o VpnGatewayOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VpnGateway) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The update time of the gateway certificate.
+// The update time.
 func (o VpnGatewayOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnGateway) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
@@ -1142,9 +521,6 @@ func (o VpnGatewayOutput) UsedConnectionNumber() pulumi.IntOutput {
 }
 
 // The ID of the VPC to which the VPN gateway is connected.
-// This parameter is mandatory when `attachmentType` is **vpc**.
-//
-// Changing this parameter will create a new resource.
 func (o VpnGatewayOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnGateway) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }

@@ -11,36 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of the compute server groups.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/ecs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := cfg.RequireObject("name")
-//			_, err := ecs.GetServergroups(ctx, &ecs.GetServergroupsArgs{
-//				Name: pulumi.StringRef(name),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetServergroups(ctx *pulumi.Context, args *GetServergroupsArgs, opts ...pulumi.InvokeOption) (*GetServergroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServergroupsResult
@@ -53,21 +23,16 @@ func GetServergroups(ctx *pulumi.Context, args *GetServergroupsArgs, opts ...pul
 
 // A collection of arguments for invoking getServergroups.
 type GetServergroupsArgs struct {
-	// Specifies the server group name.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to obtain the server groups.
-	// If omitted, the provider-level region will be used.
+	Name   *string `pulumi:"name"`
 	Region *string `pulumi:"region"`
 }
 
 // A collection of values returned by getServergroups.
 type GetServergroupsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The server group name.
-	Name   *string `pulumi:"name"`
-	Region *string `pulumi:"region"`
-	// List of ECS server groups details. The object structure of each server group is documented below.
+	Id           string                       `pulumi:"id"`
+	Name         *string                      `pulumi:"name"`
+	Region       *string                      `pulumi:"region"`
 	Servergroups []GetServergroupsServergroup `pulumi:"servergroups"`
 }
 
@@ -82,10 +47,7 @@ func GetServergroupsOutput(ctx *pulumi.Context, args GetServergroupsOutputArgs, 
 
 // A collection of arguments for invoking getServergroups.
 type GetServergroupsOutputArgs struct {
-	// Specifies the server group name.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the region in which to obtain the server groups.
-	// If omitted, the provider-level region will be used.
+	Name   pulumi.StringPtrInput `pulumi:"name"`
 	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
@@ -113,7 +75,6 @@ func (o GetServergroupsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServergroupsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The server group name.
 func (o GetServergroupsResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServergroupsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -122,7 +83,6 @@ func (o GetServergroupsResultOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServergroupsResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// List of ECS server groups details. The object structure of each server group is documented below.
 func (o GetServergroupsResultOutput) Servergroups() GetServergroupsServergroupArrayOutput {
 	return o.ApplyT(func(v GetServergroupsResult) []GetServergroupsServergroup { return v.Servergroups }).(GetServergroupsServergroupArrayOutput)
 }

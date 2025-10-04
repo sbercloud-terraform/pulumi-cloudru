@@ -11,7 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of DMS rocketMQ users.
 func GetDmsRocketmqUsers(ctx *pulumi.Context, args *GetDmsRocketmqUsersArgs, opts ...pulumi.InvokeOption) (*GetDmsRocketmqUsersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDmsRocketmqUsersResult
@@ -24,46 +23,27 @@ func GetDmsRocketmqUsers(ctx *pulumi.Context, args *GetDmsRocketmqUsersArgs, opt
 
 // A collection of arguments for invoking getDmsRocketmqUsers.
 type GetDmsRocketmqUsersArgs struct {
-	// Specifies the user name.
-	AccessKey *string `pulumi:"accessKey"`
-	// Specifies whether the user is an administrator.
-	Admin *bool `pulumi:"admin"`
-	// Specifies the default consumer group permissions.
-	// Value options: **SUB**, **DENY**.
-	DefaultGroupPerm *string `pulumi:"defaultGroupPerm"`
-	// Specifies the default topic permissions.
-	// Value options: **PUB|SUB**, **PUB**, **SUB**, **DENY**.
-	DefaultTopicPerm *string `pulumi:"defaultTopicPerm"`
-	// Specifies the ID of the rocketMQ instance.
-	InstanceId string `pulumi:"instanceId"`
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the IP address whitelist.
+	AccessKey          *string `pulumi:"accessKey"`
+	Admin              *bool   `pulumi:"admin"`
+	DefaultGroupPerm   *string `pulumi:"defaultGroupPerm"`
+	DefaultTopicPerm   *string `pulumi:"defaultTopicPerm"`
+	InstanceId         string  `pulumi:"instanceId"`
+	Region             *string `pulumi:"region"`
 	WhiteRemoteAddress *string `pulumi:"whiteRemoteAddress"`
 }
 
 // A collection of values returned by getDmsRocketmqUsers.
 type GetDmsRocketmqUsersResult struct {
-	// Indicates the name of the user.
-	AccessKey *string `pulumi:"accessKey"`
-	// Indicates whether the user is an administrator.
-	Admin *bool `pulumi:"admin"`
-	// Indicates the default consumer group permissions.
-	// Value options: **SUB**, **DENY**.
+	AccessKey        *string `pulumi:"accessKey"`
+	Admin            *bool   `pulumi:"admin"`
 	DefaultGroupPerm *string `pulumi:"defaultGroupPerm"`
-	// Indicates the default topic permissions.
-	// Value options: **PUB|SUB**, **PUB**, **SUB**, **DENY**.
 	DefaultTopicPerm *string `pulumi:"defaultTopicPerm"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string `pulumi:"id"`
-	InstanceId string `pulumi:"instanceId"`
-	Region     string `pulumi:"region"`
-	// The list of users.
-	// The users structure is documented below.
-	Users []GetDmsRocketmqUsersUser `pulumi:"users"`
-	// Indicates the IP address whitelist.
-	WhiteRemoteAddress *string `pulumi:"whiteRemoteAddress"`
+	Id                 string                    `pulumi:"id"`
+	InstanceId         string                    `pulumi:"instanceId"`
+	Region             string                    `pulumi:"region"`
+	Users              []GetDmsRocketmqUsersUser `pulumi:"users"`
+	WhiteRemoteAddress *string                   `pulumi:"whiteRemoteAddress"`
 }
 
 func GetDmsRocketmqUsersOutput(ctx *pulumi.Context, args GetDmsRocketmqUsersOutputArgs, opts ...pulumi.InvokeOption) GetDmsRocketmqUsersResultOutput {
@@ -77,22 +57,12 @@ func GetDmsRocketmqUsersOutput(ctx *pulumi.Context, args GetDmsRocketmqUsersOutp
 
 // A collection of arguments for invoking getDmsRocketmqUsers.
 type GetDmsRocketmqUsersOutputArgs struct {
-	// Specifies the user name.
-	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
-	// Specifies whether the user is an administrator.
-	Admin pulumi.BoolPtrInput `pulumi:"admin"`
-	// Specifies the default consumer group permissions.
-	// Value options: **SUB**, **DENY**.
-	DefaultGroupPerm pulumi.StringPtrInput `pulumi:"defaultGroupPerm"`
-	// Specifies the default topic permissions.
-	// Value options: **PUB|SUB**, **PUB**, **SUB**, **DENY**.
-	DefaultTopicPerm pulumi.StringPtrInput `pulumi:"defaultTopicPerm"`
-	// Specifies the ID of the rocketMQ instance.
-	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the IP address whitelist.
+	AccessKey          pulumi.StringPtrInput `pulumi:"accessKey"`
+	Admin              pulumi.BoolPtrInput   `pulumi:"admin"`
+	DefaultGroupPerm   pulumi.StringPtrInput `pulumi:"defaultGroupPerm"`
+	DefaultTopicPerm   pulumi.StringPtrInput `pulumi:"defaultTopicPerm"`
+	InstanceId         pulumi.StringInput    `pulumi:"instanceId"`
+	Region             pulumi.StringPtrInput `pulumi:"region"`
 	WhiteRemoteAddress pulumi.StringPtrInput `pulumi:"whiteRemoteAddress"`
 }
 
@@ -115,24 +85,18 @@ func (o GetDmsRocketmqUsersResultOutput) ToGetDmsRocketmqUsersResultOutputWithCo
 	return o
 }
 
-// Indicates the name of the user.
 func (o GetDmsRocketmqUsersResultOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDmsRocketmqUsersResult) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether the user is an administrator.
 func (o GetDmsRocketmqUsersResultOutput) Admin() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetDmsRocketmqUsersResult) *bool { return v.Admin }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates the default consumer group permissions.
-// Value options: **SUB**, **DENY**.
 func (o GetDmsRocketmqUsersResultOutput) DefaultGroupPerm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDmsRocketmqUsersResult) *string { return v.DefaultGroupPerm }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the default topic permissions.
-// Value options: **PUB|SUB**, **PUB**, **SUB**, **DENY**.
 func (o GetDmsRocketmqUsersResultOutput) DefaultTopicPerm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDmsRocketmqUsersResult) *string { return v.DefaultTopicPerm }).(pulumi.StringPtrOutput)
 }
@@ -150,13 +114,10 @@ func (o GetDmsRocketmqUsersResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqUsersResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The list of users.
-// The users structure is documented below.
 func (o GetDmsRocketmqUsersResultOutput) Users() GetDmsRocketmqUsersUserArrayOutput {
 	return o.ApplyT(func(v GetDmsRocketmqUsersResult) []GetDmsRocketmqUsersUser { return v.Users }).(GetDmsRocketmqUsersUserArrayOutput)
 }
 
-// Indicates the IP address whitelist.
 func (o GetDmsRocketmqUsersResultOutput) WhiteRemoteAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDmsRocketmqUsersResult) *string { return v.WhiteRemoteAddress }).(pulumi.StringPtrOutput)
 }

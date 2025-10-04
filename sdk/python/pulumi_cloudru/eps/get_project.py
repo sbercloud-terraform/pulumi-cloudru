@@ -49,17 +49,11 @@ class GetProjectResult:
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> _builtins.str:
-        """
-        Specifies the time (UTC) when the enterprise project was created. Example: 2018-05-18T06:49:06Z
-        """
         return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
-        """
-        Provides supplementary information about the enterprise project.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
@@ -80,9 +74,6 @@ class GetProjectResult:
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> _builtins.str:
-        """
-        Specifies the time (UTC) when the enterprise project was modified. Example: 2018-05-28T02:21:36Z
-        """
         return pulumi.get(self, "updated_at")
 
 
@@ -105,50 +96,7 @@ def get_project(id: Optional[_builtins.str] = None,
                 status: Optional[_builtins.int] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectResult:
     """
-    Use this data source to get an enterprise project from SberCloud
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.Eps.get_project(name="test")
-    ```
-
-    ## Resources Supported Currently
-
-    <!-- markdownlint-disable MD033 -->
-    Service Name | Resource Name | Sub Resource Name
-    ---- | --- | ---
-    AS  | As.Group |
-    CBR | Cbr.Vault |
-    CCE | Cce.Cluster | sbercloud_cce_node<br>sbercloud_cce_node_pool
-    CDM | Cdm.Cluster |
-    CES | Ces.Alarmrule |
-    DCS | Dcs.Instance |
-    DDS | Dds.Instance |
-    DMS | sbercloud_dms_kafka_instance<br>sbercloud_dms_rabbitmq_instance |
-    DNS | sbercloud_dns_ptrrecord<br>sbercloud_dns_zone |
-    ECS | Ecs.Instance |
-    EIP | sbercloud_vpc_eip<br>sbercloud_vpc_bandwidth |
-    ELB | Elb.Loadbalancer |
-    EVS | Evs.Volume |
-    FGS | FunctionGraph.Function |
-    IMS | Ims.Image |
-    NAT | Nat.Gateway | sbercloud_nat_snat_rule<br>sbercloud_nat_dnat_rule
-    OBS | Obs.Bucket | sbercloud_obs_bucket_object<br>sbercloud_obs_bucket_policy
-    RDS | sbercloud_rds_instance<br>sbercloud_rds_read_replica_instance |
-    SFS | sbercloud_sfs_file_system<br>sbercloud_sfs_turbo | Sfs.AccessRule
-    VPC | sbercloud_vpc<br>sbercloud_networking_secgroup | sbercloud_vpc_subnet<br>sbercloud_vpc_route<br>sbercloud_networking_secgroup_rule
-    <!-- markdownlint-enable MD033 -->
-
-
-    :param _builtins.str id: Specifies the ID of an enterprise project. The value 0 indicates enterprise project default.
-    :param _builtins.str name: Specifies the enterprise project name. Fuzzy search is supported.
-    :param _builtins.int status: Specifies the status of an enterprise project.
-           + 1 indicates Enabled.
-           + 2 indicates Disabled.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -169,50 +117,7 @@ def get_project_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = Non
                        status: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectResult]:
     """
-    Use this data source to get an enterprise project from SberCloud
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.Eps.get_project(name="test")
-    ```
-
-    ## Resources Supported Currently
-
-    <!-- markdownlint-disable MD033 -->
-    Service Name | Resource Name | Sub Resource Name
-    ---- | --- | ---
-    AS  | As.Group |
-    CBR | Cbr.Vault |
-    CCE | Cce.Cluster | sbercloud_cce_node<br>sbercloud_cce_node_pool
-    CDM | Cdm.Cluster |
-    CES | Ces.Alarmrule |
-    DCS | Dcs.Instance |
-    DDS | Dds.Instance |
-    DMS | sbercloud_dms_kafka_instance<br>sbercloud_dms_rabbitmq_instance |
-    DNS | sbercloud_dns_ptrrecord<br>sbercloud_dns_zone |
-    ECS | Ecs.Instance |
-    EIP | sbercloud_vpc_eip<br>sbercloud_vpc_bandwidth |
-    ELB | Elb.Loadbalancer |
-    EVS | Evs.Volume |
-    FGS | FunctionGraph.Function |
-    IMS | Ims.Image |
-    NAT | Nat.Gateway | sbercloud_nat_snat_rule<br>sbercloud_nat_dnat_rule
-    OBS | Obs.Bucket | sbercloud_obs_bucket_object<br>sbercloud_obs_bucket_policy
-    RDS | sbercloud_rds_instance<br>sbercloud_rds_read_replica_instance |
-    SFS | sbercloud_sfs_file_system<br>sbercloud_sfs_turbo | Sfs.AccessRule
-    VPC | sbercloud_vpc<br>sbercloud_networking_secgroup | sbercloud_vpc_subnet<br>sbercloud_vpc_route<br>sbercloud_networking_secgroup_rule
-    <!-- markdownlint-enable MD033 -->
-
-
-    :param _builtins.str id: Specifies the ID of an enterprise project. The value 0 indicates enterprise project default.
-    :param _builtins.str name: Specifies the enterprise project name. Fuzzy search is supported.
-    :param _builtins.int status: Specifies the status of an enterprise project.
-           + 1 indicates Enabled.
-           + 2 indicates Disabled.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id

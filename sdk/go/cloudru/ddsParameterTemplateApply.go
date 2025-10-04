@@ -12,57 +12,14 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a DDS parameter template apply resource within SberCloud.
-//
-// > Please check whether the entities need to be restarted after applying parameter template.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			configurationId := cfg.RequireObject("configurationId")
-//			entityIds := cfg.RequireObject("entityIds")
-//			_, err := sbercloud.NewDdsParameterTemplateApply(ctx, "test", &sbercloud.DdsParameterTemplateApplyArgs{
-//				ConfigurationId: pulumi.Any(configurationId),
-//				EntityIds:       pulumi.Any(entityIds),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type DdsParameterTemplateApply struct {
 	pulumi.CustomResourceState
 
 	// Specifies the parameter template ID.
-	// Changing this creates a new resource.
 	ConfigurationId pulumi.StringOutput `pulumi:"configurationId"`
 	// Specifies the entity IDs.
-	// + If the DB instance type is cluster and the shard or config parameter template is to be changed, the value is the
-	//   group ID. If the parameter template of the mongos node is to be changed, the value is the node ID.
-	// + If the DB instance to be changed is a replica set instance, the value is the instance ID.
-	//
-	// Changing this creates a new resource.
 	EntityIds pulumi.StringArrayOutput `pulumi:"entityIds"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Region    pulumi.StringOutput      `pulumi:"region"`
 }
 
 // NewDdsParameterTemplateApply registers a new resource with the given unique name, arguments, and options.
@@ -102,36 +59,18 @@ func GetDdsParameterTemplateApply(ctx *pulumi.Context,
 // Input properties used for looking up and filtering DdsParameterTemplateApply resources.
 type ddsParameterTemplateApplyState struct {
 	// Specifies the parameter template ID.
-	// Changing this creates a new resource.
 	ConfigurationId *string `pulumi:"configurationId"`
 	// Specifies the entity IDs.
-	// + If the DB instance type is cluster and the shard or config parameter template is to be changed, the value is the
-	//   group ID. If the parameter template of the mongos node is to be changed, the value is the node ID.
-	// + If the DB instance to be changed is a replica set instance, the value is the instance ID.
-	//
-	// Changing this creates a new resource.
 	EntityIds []string `pulumi:"entityIds"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region *string `pulumi:"region"`
+	Region    *string  `pulumi:"region"`
 }
 
 type DdsParameterTemplateApplyState struct {
 	// Specifies the parameter template ID.
-	// Changing this creates a new resource.
 	ConfigurationId pulumi.StringPtrInput
 	// Specifies the entity IDs.
-	// + If the DB instance type is cluster and the shard or config parameter template is to be changed, the value is the
-	//   group ID. If the parameter template of the mongos node is to be changed, the value is the node ID.
-	// + If the DB instance to be changed is a replica set instance, the value is the instance ID.
-	//
-	// Changing this creates a new resource.
 	EntityIds pulumi.StringArrayInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region pulumi.StringPtrInput
+	Region    pulumi.StringPtrInput
 }
 
 func (DdsParameterTemplateApplyState) ElementType() reflect.Type {
@@ -140,37 +79,19 @@ func (DdsParameterTemplateApplyState) ElementType() reflect.Type {
 
 type ddsParameterTemplateApplyArgs struct {
 	// Specifies the parameter template ID.
-	// Changing this creates a new resource.
 	ConfigurationId string `pulumi:"configurationId"`
 	// Specifies the entity IDs.
-	// + If the DB instance type is cluster and the shard or config parameter template is to be changed, the value is the
-	//   group ID. If the parameter template of the mongos node is to be changed, the value is the node ID.
-	// + If the DB instance to be changed is a replica set instance, the value is the instance ID.
-	//
-	// Changing this creates a new resource.
 	EntityIds []string `pulumi:"entityIds"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region *string `pulumi:"region"`
+	Region    *string  `pulumi:"region"`
 }
 
 // The set of arguments for constructing a DdsParameterTemplateApply resource.
 type DdsParameterTemplateApplyArgs struct {
 	// Specifies the parameter template ID.
-	// Changing this creates a new resource.
 	ConfigurationId pulumi.StringInput
 	// Specifies the entity IDs.
-	// + If the DB instance type is cluster and the shard or config parameter template is to be changed, the value is the
-	//   group ID. If the parameter template of the mongos node is to be changed, the value is the node ID.
-	// + If the DB instance to be changed is a replica set instance, the value is the instance ID.
-	//
-	// Changing this creates a new resource.
 	EntityIds pulumi.StringArrayInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region pulumi.StringPtrInput
+	Region    pulumi.StringPtrInput
 }
 
 func (DdsParameterTemplateApplyArgs) ElementType() reflect.Type {
@@ -261,24 +182,15 @@ func (o DdsParameterTemplateApplyOutput) ToDdsParameterTemplateApplyOutputWithCo
 }
 
 // Specifies the parameter template ID.
-// Changing this creates a new resource.
 func (o DdsParameterTemplateApplyOutput) ConfigurationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdsParameterTemplateApply) pulumi.StringOutput { return v.ConfigurationId }).(pulumi.StringOutput)
 }
 
 // Specifies the entity IDs.
-//   - If the DB instance type is cluster and the shard or config parameter template is to be changed, the value is the
-//     group ID. If the parameter template of the mongos node is to be changed, the value is the node ID.
-//   - If the DB instance to be changed is a replica set instance, the value is the instance ID.
-//
-// Changing this creates a new resource.
 func (o DdsParameterTemplateApplyOutput) EntityIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DdsParameterTemplateApply) pulumi.StringArrayOutput { return v.EntityIds }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used.
-// Changing this creates a new resource.
 func (o DdsParameterTemplateApplyOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdsParameterTemplateApply) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

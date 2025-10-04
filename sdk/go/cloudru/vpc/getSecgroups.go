@@ -11,38 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of the available SberCloud security groups.
-//
-// ## Example Usage
-//
-// ### Filter the list of security groups by a description keyword
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/vpc"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			keyWord := cfg.RequireObject("keyWord")
-//			_, err := vpc.GetSecgroups(ctx, &vpc.GetSecgroupsArgs{
-//				Description: pulumi.StringRef(keyWord),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetSecgroups(ctx *pulumi.Context, args *GetSecgroupsArgs, opts ...pulumi.InvokeOption) (*GetSecgroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSecgroupsResult
@@ -55,33 +23,21 @@ func GetSecgroups(ctx *pulumi.Context, args *GetSecgroupsArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getSecgroups.
 type GetSecgroupsArgs struct {
-	// Specifies the description of the security group. The security groups can be
-	// filtered by keywords in the description.
-	Description *string `pulumi:"description"`
-	// Specifies the enterprise project ID of the security group.
+	Description         *string `pulumi:"description"`
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the id of the desired security group.
-	Id *string `pulumi:"id"`
-	// Specifies the name of the security group.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to obtain the security group list.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
+	Id                  *string `pulumi:"id"`
+	Name                *string `pulumi:"name"`
+	Region              *string `pulumi:"region"`
 }
 
 // A collection of values returned by getSecgroups.
 type GetSecgroupsResult struct {
-	// The description of the security group.
-	Description *string `pulumi:"description"`
-	// The enterprise project ID of the security group.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// The security group ID.
-	Id string `pulumi:"id"`
-	// The name of the security group.
-	Name   *string `pulumi:"name"`
-	Region string  `pulumi:"region"`
-	// The list of security groups. The object is documented below.
-	SecurityGroups []GetSecgroupsSecurityGroup `pulumi:"securityGroups"`
+	Description         *string                     `pulumi:"description"`
+	EnterpriseProjectId *string                     `pulumi:"enterpriseProjectId"`
+	Id                  string                      `pulumi:"id"`
+	Name                *string                     `pulumi:"name"`
+	Region              string                      `pulumi:"region"`
+	SecurityGroups      []GetSecgroupsSecurityGroup `pulumi:"securityGroups"`
 }
 
 func GetSecgroupsOutput(ctx *pulumi.Context, args GetSecgroupsOutputArgs, opts ...pulumi.InvokeOption) GetSecgroupsResultOutput {
@@ -95,18 +51,11 @@ func GetSecgroupsOutput(ctx *pulumi.Context, args GetSecgroupsOutputArgs, opts .
 
 // A collection of arguments for invoking getSecgroups.
 type GetSecgroupsOutputArgs struct {
-	// Specifies the description of the security group. The security groups can be
-	// filtered by keywords in the description.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Specifies the enterprise project ID of the security group.
+	Description         pulumi.StringPtrInput `pulumi:"description"`
 	EnterpriseProjectId pulumi.StringPtrInput `pulumi:"enterpriseProjectId"`
-	// Specifies the id of the desired security group.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Specifies the name of the security group.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the region in which to obtain the security group list.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	Id                  pulumi.StringPtrInput `pulumi:"id"`
+	Name                pulumi.StringPtrInput `pulumi:"name"`
+	Region              pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetSecgroupsOutputArgs) ElementType() reflect.Type {
@@ -128,22 +77,18 @@ func (o GetSecgroupsResultOutput) ToGetSecgroupsResultOutputWithContext(ctx cont
 	return o
 }
 
-// The description of the security group.
 func (o GetSecgroupsResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSecgroupsResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The enterprise project ID of the security group.
 func (o GetSecgroupsResultOutput) EnterpriseProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSecgroupsResult) *string { return v.EnterpriseProjectId }).(pulumi.StringPtrOutput)
 }
 
-// The security group ID.
 func (o GetSecgroupsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecgroupsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the security group.
 func (o GetSecgroupsResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSecgroupsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -152,7 +97,6 @@ func (o GetSecgroupsResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecgroupsResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The list of security groups. The object is documented below.
 func (o GetSecgroupsResultOutput) SecurityGroups() GetSecgroupsSecurityGroupArrayOutput {
 	return o.ApplyT(func(v GetSecgroupsResult) []GetSecgroupsSecurityGroup { return v.SecurityGroups }).(GetSecgroupsSecurityGroupArrayOutput)
 }

@@ -34,23 +34,6 @@ class KeyArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Key resource.
-        :param pulumi.Input[_builtins.str] key_alias: The alias in which to create the key. It is required when
-               we create a new key. Changing this updates the alias of key.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the kms key. Changing this creates a new key.
-        :param pulumi.Input[_builtins.bool] is_enabled: Specifies whether the key is enabled. Defaults to true.
-               Changing this updates the state of existing key.
-        :param pulumi.Input[_builtins.str] key_algorithm: The algorithm of the key. Valid values are AES_256, SM4, RSA_2048, RSA_3072,
-               RSA_4096, EC_P256, EC_P384, SM2. Changing this creates a new key.
-        :param pulumi.Input[_builtins.str] key_description: The description of the key as viewed in Sber console.
-               Changing this updates the description of key.
-        :param pulumi.Input[_builtins.str] pending_days: Duration in days after which the key is deleted
-               after destruction of the resource, must be between 7 and 1096 days. It doesn't
-               have default value. It only be used when delete a key.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the KMS key resource. If omitted, the provider-level region will be used. Changing this creates a new KMS key resource.
-        :param pulumi.Input[_builtins.bool] rotation_enabled: Specifies whether the key rotation is enabled. Defaults to false.
-        :param pulumi.Input[_builtins.int] rotation_interval: Specifies the key rotation interval. The valid value is range from 30 to 365,
-               defaults to 365.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the kms key.
         """
         pulumi.set(__self__, "key_alias", key_alias)
         if enterprise_project_id is not None:
@@ -81,10 +64,6 @@ class KeyArgs:
     @_builtins.property
     @pulumi.getter(name="keyAlias")
     def key_alias(self) -> pulumi.Input[_builtins.str]:
-        """
-        The alias in which to create the key. It is required when
-        we create a new key. Changing this updates the alias of key.
-        """
         return pulumi.get(self, "key_alias")
 
     @key_alias.setter
@@ -94,9 +73,6 @@ class KeyArgs:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The enterprise project id of the kms key. Changing this creates a new key.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -106,10 +82,6 @@ class KeyArgs:
     @_builtins.property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether the key is enabled. Defaults to true.
-        Changing this updates the state of existing key.
-        """
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
@@ -119,10 +91,6 @@ class KeyArgs:
     @_builtins.property
     @pulumi.getter(name="keyAlgorithm")
     def key_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The algorithm of the key. Valid values are AES_256, SM4, RSA_2048, RSA_3072,
-        RSA_4096, EC_P256, EC_P384, SM2. Changing this creates a new key.
-        """
         return pulumi.get(self, "key_algorithm")
 
     @key_algorithm.setter
@@ -132,10 +100,6 @@ class KeyArgs:
     @_builtins.property
     @pulumi.getter(name="keyDescription")
     def key_description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The description of the key as viewed in Sber console.
-        Changing this updates the description of key.
-        """
         return pulumi.get(self, "key_description")
 
     @key_description.setter
@@ -172,11 +136,6 @@ class KeyArgs:
     @_builtins.property
     @pulumi.getter(name="pendingDays")
     def pending_days(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Duration in days after which the key is deleted
-        after destruction of the resource, must be between 7 and 1096 days. It doesn't
-        have default value. It only be used when delete a key.
-        """
         return pulumi.get(self, "pending_days")
 
     @pending_days.setter
@@ -186,9 +145,6 @@ class KeyArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the KMS key resource. If omitted, the provider-level region will be used. Changing this creates a new KMS key resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -198,9 +154,6 @@ class KeyArgs:
     @_builtins.property
     @pulumi.getter(name="rotationEnabled")
     def rotation_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether the key rotation is enabled. Defaults to false.
-        """
         return pulumi.get(self, "rotation_enabled")
 
     @rotation_enabled.setter
@@ -210,10 +163,6 @@ class KeyArgs:
     @_builtins.property
     @pulumi.getter(name="rotationInterval")
     def rotation_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the key rotation interval. The valid value is range from 30 to 365,
-        defaults to 365.
-        """
         return pulumi.get(self, "rotation_interval")
 
     @rotation_interval.setter
@@ -223,9 +172,6 @@ class KeyArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs to associate with the kms key.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -259,31 +205,6 @@ class _KeyState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Key resources.
-        :param pulumi.Input[_builtins.str] creation_date: Creation time (time stamp) of a key.
-        :param pulumi.Input[_builtins.str] default_key_flag: Identification of a Master Key. The value 1 indicates a Default
-               Master Key, and the value 0 indicates a key.
-        :param pulumi.Input[_builtins.str] domain_id: ID of a user domain for the key.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the kms key. Changing this creates a new key.
-        :param pulumi.Input[_builtins.str] expiration_time: Expiration time.
-        :param pulumi.Input[_builtins.bool] is_enabled: Specifies whether the key is enabled. Defaults to true.
-               Changing this updates the state of existing key.
-        :param pulumi.Input[_builtins.str] key_algorithm: The algorithm of the key. Valid values are AES_256, SM4, RSA_2048, RSA_3072,
-               RSA_4096, EC_P256, EC_P384, SM2. Changing this creates a new key.
-        :param pulumi.Input[_builtins.str] key_alias: The alias in which to create the key. It is required when
-               we create a new key. Changing this updates the alias of key.
-        :param pulumi.Input[_builtins.str] key_description: The description of the key as viewed in Sber console.
-               Changing this updates the description of key.
-        :param pulumi.Input[_builtins.str] key_id: The globally unique identifier for the key.
-        :param pulumi.Input[_builtins.str] pending_days: Duration in days after which the key is deleted
-               after destruction of the resource, must be between 7 and 1096 days. It doesn't
-               have default value. It only be used when delete a key.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the KMS key resource. If omitted, the provider-level region will be used. Changing this creates a new KMS key resource.
-        :param pulumi.Input[_builtins.bool] rotation_enabled: Specifies whether the key rotation is enabled. Defaults to false.
-        :param pulumi.Input[_builtins.int] rotation_interval: Specifies the key rotation interval. The valid value is range from 30 to 365,
-               defaults to 365.
-        :param pulumi.Input[_builtins.int] rotation_number: The total number of key rotations.
-        :param pulumi.Input[_builtins.str] scheduled_deletion_date: Scheduled deletion time (time stamp) of a key.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the kms key.
         """
         if creation_date is not None:
             pulumi.set(__self__, "creation_date", creation_date)
@@ -331,9 +252,6 @@ class _KeyState:
     @_builtins.property
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Creation time (time stamp) of a key.
-        """
         return pulumi.get(self, "creation_date")
 
     @creation_date.setter
@@ -343,10 +261,6 @@ class _KeyState:
     @_builtins.property
     @pulumi.getter(name="defaultKeyFlag")
     def default_key_flag(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Identification of a Master Key. The value 1 indicates a Default
-        Master Key, and the value 0 indicates a key.
-        """
         return pulumi.get(self, "default_key_flag")
 
     @default_key_flag.setter
@@ -356,9 +270,6 @@ class _KeyState:
     @_builtins.property
     @pulumi.getter(name="domainId")
     def domain_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        ID of a user domain for the key.
-        """
         return pulumi.get(self, "domain_id")
 
     @domain_id.setter
@@ -368,9 +279,6 @@ class _KeyState:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The enterprise project id of the kms key. Changing this creates a new key.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -380,9 +288,6 @@ class _KeyState:
     @_builtins.property
     @pulumi.getter(name="expirationTime")
     def expiration_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Expiration time.
-        """
         return pulumi.get(self, "expiration_time")
 
     @expiration_time.setter
@@ -392,10 +297,6 @@ class _KeyState:
     @_builtins.property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether the key is enabled. Defaults to true.
-        Changing this updates the state of existing key.
-        """
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
@@ -405,10 +306,6 @@ class _KeyState:
     @_builtins.property
     @pulumi.getter(name="keyAlgorithm")
     def key_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The algorithm of the key. Valid values are AES_256, SM4, RSA_2048, RSA_3072,
-        RSA_4096, EC_P256, EC_P384, SM2. Changing this creates a new key.
-        """
         return pulumi.get(self, "key_algorithm")
 
     @key_algorithm.setter
@@ -418,10 +315,6 @@ class _KeyState:
     @_builtins.property
     @pulumi.getter(name="keyAlias")
     def key_alias(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The alias in which to create the key. It is required when
-        we create a new key. Changing this updates the alias of key.
-        """
         return pulumi.get(self, "key_alias")
 
     @key_alias.setter
@@ -431,10 +324,6 @@ class _KeyState:
     @_builtins.property
     @pulumi.getter(name="keyDescription")
     def key_description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The description of the key as viewed in Sber console.
-        Changing this updates the description of key.
-        """
         return pulumi.get(self, "key_description")
 
     @key_description.setter
@@ -444,9 +333,6 @@ class _KeyState:
     @_builtins.property
     @pulumi.getter(name="keyId")
     def key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The globally unique identifier for the key.
-        """
         return pulumi.get(self, "key_id")
 
     @key_id.setter
@@ -492,11 +378,6 @@ class _KeyState:
     @_builtins.property
     @pulumi.getter(name="pendingDays")
     def pending_days(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Duration in days after which the key is deleted
-        after destruction of the resource, must be between 7 and 1096 days. It doesn't
-        have default value. It only be used when delete a key.
-        """
         return pulumi.get(self, "pending_days")
 
     @pending_days.setter
@@ -506,9 +387,6 @@ class _KeyState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the KMS key resource. If omitted, the provider-level region will be used. Changing this creates a new KMS key resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -518,9 +396,6 @@ class _KeyState:
     @_builtins.property
     @pulumi.getter(name="rotationEnabled")
     def rotation_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether the key rotation is enabled. Defaults to false.
-        """
         return pulumi.get(self, "rotation_enabled")
 
     @rotation_enabled.setter
@@ -530,10 +405,6 @@ class _KeyState:
     @_builtins.property
     @pulumi.getter(name="rotationInterval")
     def rotation_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the key rotation interval. The valid value is range from 30 to 365,
-        defaults to 365.
-        """
         return pulumi.get(self, "rotation_interval")
 
     @rotation_interval.setter
@@ -543,9 +414,6 @@ class _KeyState:
     @_builtins.property
     @pulumi.getter(name="rotationNumber")
     def rotation_number(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The total number of key rotations.
-        """
         return pulumi.get(self, "rotation_number")
 
     @rotation_number.setter
@@ -555,9 +423,6 @@ class _KeyState:
     @_builtins.property
     @pulumi.getter(name="scheduledDeletionDate")
     def scheduled_deletion_date(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Scheduled deletion time (time stamp) of a key.
-        """
         return pulumi.get(self, "scheduled_deletion_date")
 
     @scheduled_deletion_date.setter
@@ -567,9 +432,6 @@ class _KeyState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs to associate with the kms key.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -598,48 +460,9 @@ class Key(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Manages a KMS key resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        key1 = sbercloud.dew.Key("key_1",
-            key_alias="key_1",
-            pending_days="7",
-            key_description="first test key",
-            is_enabled=True)
-        ```
-
-        ## Import
-
-        KMS Keys can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Dew/key:Key key_1 7056d636-ac60-4663-8a6c-82d3c32c1c64
-        ```
-
+        Create a Key resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the kms key. Changing this creates a new key.
-        :param pulumi.Input[_builtins.bool] is_enabled: Specifies whether the key is enabled. Defaults to true.
-               Changing this updates the state of existing key.
-        :param pulumi.Input[_builtins.str] key_algorithm: The algorithm of the key. Valid values are AES_256, SM4, RSA_2048, RSA_3072,
-               RSA_4096, EC_P256, EC_P384, SM2. Changing this creates a new key.
-        :param pulumi.Input[_builtins.str] key_alias: The alias in which to create the key. It is required when
-               we create a new key. Changing this updates the alias of key.
-        :param pulumi.Input[_builtins.str] key_description: The description of the key as viewed in Sber console.
-               Changing this updates the description of key.
-        :param pulumi.Input[_builtins.str] pending_days: Duration in days after which the key is deleted
-               after destruction of the resource, must be between 7 and 1096 days. It doesn't
-               have default value. It only be used when delete a key.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the KMS key resource. If omitted, the provider-level region will be used. Changing this creates a new KMS key resource.
-        :param pulumi.Input[_builtins.bool] rotation_enabled: Specifies whether the key rotation is enabled. Defaults to false.
-        :param pulumi.Input[_builtins.int] rotation_interval: Specifies the key rotation interval. The valid value is range from 30 to 365,
-               defaults to 365.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the kms key.
         """
         ...
     @overload
@@ -648,29 +471,7 @@ class Key(pulumi.CustomResource):
                  args: KeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a KMS key resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        key1 = sbercloud.dew.Key("key_1",
-            key_alias="key_1",
-            pending_days="7",
-            key_description="first test key",
-            is_enabled=True)
-        ```
-
-        ## Import
-
-        KMS Keys can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Dew/key:Key key_1 7056d636-ac60-4663-8a6c-82d3c32c1c64
-        ```
-
+        Create a Key resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param KeyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -769,31 +570,6 @@ class Key(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] creation_date: Creation time (time stamp) of a key.
-        :param pulumi.Input[_builtins.str] default_key_flag: Identification of a Master Key. The value 1 indicates a Default
-               Master Key, and the value 0 indicates a key.
-        :param pulumi.Input[_builtins.str] domain_id: ID of a user domain for the key.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the kms key. Changing this creates a new key.
-        :param pulumi.Input[_builtins.str] expiration_time: Expiration time.
-        :param pulumi.Input[_builtins.bool] is_enabled: Specifies whether the key is enabled. Defaults to true.
-               Changing this updates the state of existing key.
-        :param pulumi.Input[_builtins.str] key_algorithm: The algorithm of the key. Valid values are AES_256, SM4, RSA_2048, RSA_3072,
-               RSA_4096, EC_P256, EC_P384, SM2. Changing this creates a new key.
-        :param pulumi.Input[_builtins.str] key_alias: The alias in which to create the key. It is required when
-               we create a new key. Changing this updates the alias of key.
-        :param pulumi.Input[_builtins.str] key_description: The description of the key as viewed in Sber console.
-               Changing this updates the description of key.
-        :param pulumi.Input[_builtins.str] key_id: The globally unique identifier for the key.
-        :param pulumi.Input[_builtins.str] pending_days: Duration in days after which the key is deleted
-               after destruction of the resource, must be between 7 and 1096 days. It doesn't
-               have default value. It only be used when delete a key.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the KMS key resource. If omitted, the provider-level region will be used. Changing this creates a new KMS key resource.
-        :param pulumi.Input[_builtins.bool] rotation_enabled: Specifies whether the key rotation is enabled. Defaults to false.
-        :param pulumi.Input[_builtins.int] rotation_interval: Specifies the key rotation interval. The valid value is range from 30 to 365,
-               defaults to 365.
-        :param pulumi.Input[_builtins.int] rotation_number: The total number of key rotations.
-        :param pulumi.Input[_builtins.str] scheduled_deletion_date: Scheduled deletion time (time stamp) of a key.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the kms key.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -825,86 +601,51 @@ class Key(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> pulumi.Output[_builtins.str]:
-        """
-        Creation time (time stamp) of a key.
-        """
         return pulumi.get(self, "creation_date")
 
     @_builtins.property
     @pulumi.getter(name="defaultKeyFlag")
     def default_key_flag(self) -> pulumi.Output[_builtins.str]:
-        """
-        Identification of a Master Key. The value 1 indicates a Default
-        Master Key, and the value 0 indicates a key.
-        """
         return pulumi.get(self, "default_key_flag")
 
     @_builtins.property
     @pulumi.getter(name="domainId")
     def domain_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        ID of a user domain for the key.
-        """
         return pulumi.get(self, "domain_id")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The enterprise project id of the kms key. Changing this creates a new key.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
     @pulumi.getter(name="expirationTime")
     def expiration_time(self) -> pulumi.Output[_builtins.str]:
-        """
-        Expiration time.
-        """
         return pulumi.get(self, "expiration_time")
 
     @_builtins.property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether the key is enabled. Defaults to true.
-        Changing this updates the state of existing key.
-        """
         return pulumi.get(self, "is_enabled")
 
     @_builtins.property
     @pulumi.getter(name="keyAlgorithm")
     def key_algorithm(self) -> pulumi.Output[_builtins.str]:
-        """
-        The algorithm of the key. Valid values are AES_256, SM4, RSA_2048, RSA_3072,
-        RSA_4096, EC_P256, EC_P384, SM2. Changing this creates a new key.
-        """
         return pulumi.get(self, "key_algorithm")
 
     @_builtins.property
     @pulumi.getter(name="keyAlias")
     def key_alias(self) -> pulumi.Output[_builtins.str]:
-        """
-        The alias in which to create the key. It is required when
-        we create a new key. Changing this updates the alias of key.
-        """
         return pulumi.get(self, "key_alias")
 
     @_builtins.property
     @pulumi.getter(name="keyDescription")
     def key_description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        The description of the key as viewed in Sber console.
-        Changing this updates the description of key.
-        """
         return pulumi.get(self, "key_description")
 
     @_builtins.property
     @pulumi.getter(name="keyId")
     def key_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The globally unique identifier for the key.
-        """
         return pulumi.get(self, "key_id")
 
     @_builtins.property
@@ -930,59 +671,35 @@ class Key(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="pendingDays")
     def pending_days(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Duration in days after which the key is deleted
-        after destruction of the resource, must be between 7 and 1096 days. It doesn't
-        have default value. It only be used when delete a key.
-        """
         return pulumi.get(self, "pending_days")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the KMS key resource. If omitted, the provider-level region will be used. Changing this creates a new KMS key resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="rotationEnabled")
     def rotation_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether the key rotation is enabled. Defaults to false.
-        """
         return pulumi.get(self, "rotation_enabled")
 
     @_builtins.property
     @pulumi.getter(name="rotationInterval")
     def rotation_interval(self) -> pulumi.Output[_builtins.int]:
-        """
-        Specifies the key rotation interval. The valid value is range from 30 to 365,
-        defaults to 365.
-        """
         return pulumi.get(self, "rotation_interval")
 
     @_builtins.property
     @pulumi.getter(name="rotationNumber")
     def rotation_number(self) -> pulumi.Output[_builtins.int]:
-        """
-        The total number of key rotations.
-        """
         return pulumi.get(self, "rotation_number")
 
     @_builtins.property
     @pulumi.getter(name="scheduledDeletionDate")
     def scheduled_deletion_date(self) -> pulumi.Output[_builtins.str]:
-        """
-        Scheduled deletion time (time stamp) of a key.
-        """
         return pulumi.get(self, "scheduled_deletion_date")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        Specifies the key/value pairs to associate with the kms key.
-        """
         return pulumi.get(self, "tags")
 

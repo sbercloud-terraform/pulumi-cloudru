@@ -11,40 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of CFW access control logs.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			fwInstanceId := cfg.RequireObject("fwInstanceId")
-//			startTime := cfg.RequireObject("startTime")
-//			endTime := cfg.RequireObject("endTime")
-//			_, err := cfw.GetAccessControlLogs(ctx, &cfw.GetAccessControlLogsArgs{
-//				FwInstanceId: fwInstanceId,
-//				StartTime:    startTime,
-//				EndTime:      endTime,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetAccessControlLogs(ctx *pulumi.Context, args *GetAccessControlLogsArgs, opts ...pulumi.InvokeOption) (*GetAccessControlLogsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccessControlLogsResult
@@ -57,84 +23,49 @@ func GetAccessControlLogs(ctx *pulumi.Context, args *GetAccessControlLogsArgs, o
 
 // A collection of arguments for invoking getAccessControlLogs.
 type GetAccessControlLogsArgs struct {
-	// Specifies the action. The values can be **allow** and **deny**.
-	Action *string `pulumi:"action"`
-	// Specifies the application protocol.
-	App *string `pulumi:"app"`
-	// Specifies the destination city name.
-	DstCityName *string `pulumi:"dstCityName"`
-	// Specifies the destination IP address.
-	DstIp *string `pulumi:"dstIp"`
-	// Specifies the destination port.
-	DstPort *int `pulumi:"dstPort"`
-	// Specifies the destination province name.
-	DstProvinceName *string `pulumi:"dstProvinceName"`
-	// Specifies the destination region name.
-	DstRegionName *string `pulumi:"dstRegionName"`
-	// Specifies the end time. The time is in UTC.
-	// The format is **yyyy-MM-dd HH:mm:ss**.
-	EndTime string `pulumi:"endTime"`
-	// Specifies the enterprise project ID.
+	Action              *string `pulumi:"action"`
+	App                 *string `pulumi:"app"`
+	DstCityName         *string `pulumi:"dstCityName"`
+	DstIp               *string `pulumi:"dstIp"`
+	DstPort             *int    `pulumi:"dstPort"`
+	DstProvinceName     *string `pulumi:"dstProvinceName"`
+	DstRegionName       *string `pulumi:"dstRegionName"`
+	EndTime             string  `pulumi:"endTime"`
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the firewall instance ID.
-	FwInstanceId string `pulumi:"fwInstanceId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the rule name.
-	RuleName *string `pulumi:"ruleName"`
-	// Specifies the source city name.
-	SrcCityName *string `pulumi:"srcCityName"`
-	// Specifies the source IP address.
-	SrcIp *string `pulumi:"srcIp"`
-	// Specifies the source port.
-	SrcPort *int `pulumi:"srcPort"`
-	// Specifies the source province name.
-	SrcProvinceName *string `pulumi:"srcProvinceName"`
-	// Specifies the source region name.
-	SrcRegionName *string `pulumi:"srcRegionName"`
-	// Specifies the start time. The time is in UTC.
-	// The format is **yyyy-MM-dd HH:mm:ss**.
-	StartTime string `pulumi:"startTime"`
+	FwInstanceId        string  `pulumi:"fwInstanceId"`
+	Region              *string `pulumi:"region"`
+	RuleName            *string `pulumi:"ruleName"`
+	SrcCityName         *string `pulumi:"srcCityName"`
+	SrcIp               *string `pulumi:"srcIp"`
+	SrcPort             *int    `pulumi:"srcPort"`
+	SrcProvinceName     *string `pulumi:"srcProvinceName"`
+	SrcRegionName       *string `pulumi:"srcRegionName"`
+	StartTime           string  `pulumi:"startTime"`
 }
 
 // A collection of values returned by getAccessControlLogs.
 type GetAccessControlLogsResult struct {
-	// The action.
-	Action *string `pulumi:"action"`
-	// The application protocol.
-	App *string `pulumi:"app"`
-	// The destination city name.
-	DstCityName *string `pulumi:"dstCityName"`
-	// The destination IP address.
-	DstIp *string `pulumi:"dstIp"`
-	// The destination port.
-	DstPort *int `pulumi:"dstPort"`
-	// The destination province name.
-	DstProvinceName *string `pulumi:"dstProvinceName"`
-	// The destination region name.
+	Action              *string `pulumi:"action"`
+	App                 *string `pulumi:"app"`
+	DstCityName         *string `pulumi:"dstCityName"`
+	DstIp               *string `pulumi:"dstIp"`
+	DstPort             *int    `pulumi:"dstPort"`
+	DstProvinceName     *string `pulumi:"dstProvinceName"`
 	DstRegionName       *string `pulumi:"dstRegionName"`
 	EndTime             string  `pulumi:"endTime"`
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
 	FwInstanceId        string  `pulumi:"fwInstanceId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The access control log records.
-	Records []GetAccessControlLogsRecord `pulumi:"records"`
-	Region  string                       `pulumi:"region"`
-	// The rule name.
-	RuleName *string `pulumi:"ruleName"`
-	// The source city name.
-	SrcCityName *string `pulumi:"srcCityName"`
-	// The source IP address.
-	SrcIp *string `pulumi:"srcIp"`
-	// The source port.
-	SrcPort *int `pulumi:"srcPort"`
-	// The source province name.
-	SrcProvinceName *string `pulumi:"srcProvinceName"`
-	// The source region name.
-	SrcRegionName *string `pulumi:"srcRegionName"`
-	StartTime     string  `pulumi:"startTime"`
+	Id              string                       `pulumi:"id"`
+	Records         []GetAccessControlLogsRecord `pulumi:"records"`
+	Region          string                       `pulumi:"region"`
+	RuleName        *string                      `pulumi:"ruleName"`
+	SrcCityName     *string                      `pulumi:"srcCityName"`
+	SrcIp           *string                      `pulumi:"srcIp"`
+	SrcPort         *int                         `pulumi:"srcPort"`
+	SrcProvinceName *string                      `pulumi:"srcProvinceName"`
+	SrcRegionName   *string                      `pulumi:"srcRegionName"`
+	StartTime       string                       `pulumi:"startTime"`
 }
 
 func GetAccessControlLogsOutput(ctx *pulumi.Context, args GetAccessControlLogsOutputArgs, opts ...pulumi.InvokeOption) GetAccessControlLogsResultOutput {
@@ -148,45 +79,24 @@ func GetAccessControlLogsOutput(ctx *pulumi.Context, args GetAccessControlLogsOu
 
 // A collection of arguments for invoking getAccessControlLogs.
 type GetAccessControlLogsOutputArgs struct {
-	// Specifies the action. The values can be **allow** and **deny**.
-	Action pulumi.StringPtrInput `pulumi:"action"`
-	// Specifies the application protocol.
-	App pulumi.StringPtrInput `pulumi:"app"`
-	// Specifies the destination city name.
-	DstCityName pulumi.StringPtrInput `pulumi:"dstCityName"`
-	// Specifies the destination IP address.
-	DstIp pulumi.StringPtrInput `pulumi:"dstIp"`
-	// Specifies the destination port.
-	DstPort pulumi.IntPtrInput `pulumi:"dstPort"`
-	// Specifies the destination province name.
-	DstProvinceName pulumi.StringPtrInput `pulumi:"dstProvinceName"`
-	// Specifies the destination region name.
-	DstRegionName pulumi.StringPtrInput `pulumi:"dstRegionName"`
-	// Specifies the end time. The time is in UTC.
-	// The format is **yyyy-MM-dd HH:mm:ss**.
-	EndTime pulumi.StringInput `pulumi:"endTime"`
-	// Specifies the enterprise project ID.
+	Action              pulumi.StringPtrInput `pulumi:"action"`
+	App                 pulumi.StringPtrInput `pulumi:"app"`
+	DstCityName         pulumi.StringPtrInput `pulumi:"dstCityName"`
+	DstIp               pulumi.StringPtrInput `pulumi:"dstIp"`
+	DstPort             pulumi.IntPtrInput    `pulumi:"dstPort"`
+	DstProvinceName     pulumi.StringPtrInput `pulumi:"dstProvinceName"`
+	DstRegionName       pulumi.StringPtrInput `pulumi:"dstRegionName"`
+	EndTime             pulumi.StringInput    `pulumi:"endTime"`
 	EnterpriseProjectId pulumi.StringPtrInput `pulumi:"enterpriseProjectId"`
-	// Specifies the firewall instance ID.
-	FwInstanceId pulumi.StringInput `pulumi:"fwInstanceId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the rule name.
-	RuleName pulumi.StringPtrInput `pulumi:"ruleName"`
-	// Specifies the source city name.
-	SrcCityName pulumi.StringPtrInput `pulumi:"srcCityName"`
-	// Specifies the source IP address.
-	SrcIp pulumi.StringPtrInput `pulumi:"srcIp"`
-	// Specifies the source port.
-	SrcPort pulumi.IntPtrInput `pulumi:"srcPort"`
-	// Specifies the source province name.
-	SrcProvinceName pulumi.StringPtrInput `pulumi:"srcProvinceName"`
-	// Specifies the source region name.
-	SrcRegionName pulumi.StringPtrInput `pulumi:"srcRegionName"`
-	// Specifies the start time. The time is in UTC.
-	// The format is **yyyy-MM-dd HH:mm:ss**.
-	StartTime pulumi.StringInput `pulumi:"startTime"`
+	FwInstanceId        pulumi.StringInput    `pulumi:"fwInstanceId"`
+	Region              pulumi.StringPtrInput `pulumi:"region"`
+	RuleName            pulumi.StringPtrInput `pulumi:"ruleName"`
+	SrcCityName         pulumi.StringPtrInput `pulumi:"srcCityName"`
+	SrcIp               pulumi.StringPtrInput `pulumi:"srcIp"`
+	SrcPort             pulumi.IntPtrInput    `pulumi:"srcPort"`
+	SrcProvinceName     pulumi.StringPtrInput `pulumi:"srcProvinceName"`
+	SrcRegionName       pulumi.StringPtrInput `pulumi:"srcRegionName"`
+	StartTime           pulumi.StringInput    `pulumi:"startTime"`
 }
 
 func (GetAccessControlLogsOutputArgs) ElementType() reflect.Type {
@@ -208,37 +118,30 @@ func (o GetAccessControlLogsResultOutput) ToGetAccessControlLogsResultOutputWith
 	return o
 }
 
-// The action.
 func (o GetAccessControlLogsResultOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccessControlLogsResult) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
 
-// The application protocol.
 func (o GetAccessControlLogsResultOutput) App() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccessControlLogsResult) *string { return v.App }).(pulumi.StringPtrOutput)
 }
 
-// The destination city name.
 func (o GetAccessControlLogsResultOutput) DstCityName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccessControlLogsResult) *string { return v.DstCityName }).(pulumi.StringPtrOutput)
 }
 
-// The destination IP address.
 func (o GetAccessControlLogsResultOutput) DstIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccessControlLogsResult) *string { return v.DstIp }).(pulumi.StringPtrOutput)
 }
 
-// The destination port.
 func (o GetAccessControlLogsResultOutput) DstPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetAccessControlLogsResult) *int { return v.DstPort }).(pulumi.IntPtrOutput)
 }
 
-// The destination province name.
 func (o GetAccessControlLogsResultOutput) DstProvinceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccessControlLogsResult) *string { return v.DstProvinceName }).(pulumi.StringPtrOutput)
 }
 
-// The destination region name.
 func (o GetAccessControlLogsResultOutput) DstRegionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccessControlLogsResult) *string { return v.DstRegionName }).(pulumi.StringPtrOutput)
 }
@@ -260,7 +163,6 @@ func (o GetAccessControlLogsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessControlLogsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The access control log records.
 func (o GetAccessControlLogsResultOutput) Records() GetAccessControlLogsRecordArrayOutput {
 	return o.ApplyT(func(v GetAccessControlLogsResult) []GetAccessControlLogsRecord { return v.Records }).(GetAccessControlLogsRecordArrayOutput)
 }
@@ -269,32 +171,26 @@ func (o GetAccessControlLogsResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessControlLogsResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The rule name.
 func (o GetAccessControlLogsResultOutput) RuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccessControlLogsResult) *string { return v.RuleName }).(pulumi.StringPtrOutput)
 }
 
-// The source city name.
 func (o GetAccessControlLogsResultOutput) SrcCityName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccessControlLogsResult) *string { return v.SrcCityName }).(pulumi.StringPtrOutput)
 }
 
-// The source IP address.
 func (o GetAccessControlLogsResultOutput) SrcIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccessControlLogsResult) *string { return v.SrcIp }).(pulumi.StringPtrOutput)
 }
 
-// The source port.
 func (o GetAccessControlLogsResultOutput) SrcPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetAccessControlLogsResult) *int { return v.SrcPort }).(pulumi.IntPtrOutput)
 }
 
-// The source province name.
 func (o GetAccessControlLogsResultOutput) SrcProvinceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccessControlLogsResult) *string { return v.SrcProvinceName }).(pulumi.StringPtrOutput)
 }
 
-// The source region name.
 func (o GetAccessControlLogsResultOutput) SrcRegionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccessControlLogsResult) *string { return v.SrcRegionName }).(pulumi.StringPtrOutput)
 }

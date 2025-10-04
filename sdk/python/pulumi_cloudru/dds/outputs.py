@@ -51,23 +51,6 @@ class InstanceBackupStrategy(dict):
                  keep_days: _builtins.int,
                  start_time: _builtins.str,
                  period: Optional[_builtins.str] = None):
-        """
-        :param _builtins.int keep_days: Specifies the number of days to retain the generated backup files. The value range is
-               from 0 to 732.
-               + If this parameter is set to 0, the automated backup policy is not set.
-               + If this parameter is not transferred, the automated backup policy is enabled by default. Backup files are stored
-               for seven days by default.
-        :param _builtins.str start_time: Specifies the backup time window. Automated backups will be triggered during the
-               backup time window. The value cannot be empty. It must be a valid value in the
-               "hh:mm-HH:MM" format. The current time is in the UTC format.
-               + The HH value must be 1 greater than the hh value.
-               + The values from mm and MM must be the same and must be set to any of the following 00, 15, 30, or 45.
-        :param _builtins.str period: Specifies the charging period of the instance.
-               If `period_unit` is set to *month*, the value ranges from 1 to 9.
-               If `period_unit` is set to *year*, the value ranges from 1 to 3.
-               This parameter is mandatory if `charging_mode` is set to *prePaid*.
-               Changing this creates a new instance.
-        """
         pulumi.set(__self__, "keep_days", keep_days)
         pulumi.set(__self__, "start_time", start_time)
         if period is not None:
@@ -76,37 +59,16 @@ class InstanceBackupStrategy(dict):
     @_builtins.property
     @pulumi.getter(name="keepDays")
     def keep_days(self) -> _builtins.int:
-        """
-        Specifies the number of days to retain the generated backup files. The value range is
-        from 0 to 732.
-        + If this parameter is set to 0, the automated backup policy is not set.
-        + If this parameter is not transferred, the automated backup policy is enabled by default. Backup files are stored
-        for seven days by default.
-        """
         return pulumi.get(self, "keep_days")
 
     @_builtins.property
     @pulumi.getter(name="startTime")
     def start_time(self) -> _builtins.str:
-        """
-        Specifies the backup time window. Automated backups will be triggered during the
-        backup time window. The value cannot be empty. It must be a valid value in the
-        "hh:mm-HH:MM" format. The current time is in the UTC format.
-        + The HH value must be 1 greater than the hh value.
-        + The values from mm and MM must be the same and must be set to any of the following 00, 15, 30, or 45.
-        """
         return pulumi.get(self, "start_time")
 
     @_builtins.property
     @pulumi.getter
     def period(self) -> Optional[_builtins.str]:
-        """
-        Specifies the charging period of the instance.
-        If `period_unit` is set to *month*, the value ranges from 1 to 9.
-        If `period_unit` is set to *year*, the value ranges from 1 to 3.
-        This parameter is mandatory if `charging_mode` is set to *prePaid*.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "period")
 
 
@@ -115,37 +77,17 @@ class InstanceConfiguration(dict):
     def __init__(__self__, *,
                  id: _builtins.str,
                  type: _builtins.str):
-        """
-        :param _builtins.str id: Specifies the ID of the template.
-               Changing this creates a new instance.
-        :param _builtins.str type: Specifies the node type. Valid value:
-               + For a Community Edition cluster instance, the value can be **mongos**, **shard** or **config**.
-               + For a Community Edition replica set instance, the value is **replica**.
-               + For a Community Edition single node instance, the value is **single**.
-               Changing this creates a new instance.
-        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        Specifies the ID of the template.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        Specifies the node type. Valid value:
-        + For a Community Edition cluster instance, the value can be **mongos**, **shard** or **config**.
-        + For a Community Edition replica set instance, the value is **replica**.
-        + For a Community Edition single node instance, the value is **single**.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "type")
 
 
@@ -172,14 +114,6 @@ class InstanceDatastore(dict):
                  type: _builtins.str,
                  version: _builtins.str,
                  storage_engine: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str type: Specifies the DB engine. **DDS-Community** is supported.
-        :param _builtins.str version: Specifies the DB instance version. For the Community Edition, the valid
-               values are `3.2`, `3.4`, `4.0`, `4.2`, or `4.4`.
-        :param _builtins.str storage_engine: Specifies the storage engine of the DB instance.
-               If `version` is set to `3.2`, `3.4`, or `4.0`, the value is **wiredTiger**.
-               If `period_unit` is set to `4.2`, or `4.4`, the value is **rocksDB**.
-        """
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "version", version)
         if storage_engine is not None:
@@ -188,28 +122,16 @@ class InstanceDatastore(dict):
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        Specifies the DB engine. **DDS-Community** is supported.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter
     def version(self) -> _builtins.str:
-        """
-        Specifies the DB instance version. For the Community Edition, the valid
-        values are `3.2`, `3.4`, `4.0`, `4.2`, or `4.4`.
-        """
         return pulumi.get(self, "version")
 
     @_builtins.property
     @pulumi.getter(name="storageEngine")
     def storage_engine(self) -> Optional[_builtins.str]:
-        """
-        Specifies the storage engine of the DB instance.
-        If `version` is set to `3.2`, `3.4`, or `4.0`, the value is **wiredTiger**.
-        If `period_unit` is set to `4.2`, or `4.4`, the value is **rocksDB**.
-        """
         return pulumi.get(self, "storage_engine")
 
 
@@ -238,31 +160,6 @@ class InstanceFlavor(dict):
                  type: _builtins.str,
                  size: Optional[_builtins.int] = None,
                  storage: Optional[_builtins.str] = None):
-        """
-        :param _builtins.int num: Specifies the node quantity. Valid value:
-               + In a Community Edition cluster instance,the number of mongos ranges from 2 to 16.
-               + In a Community Edition cluster instance,the number of shards ranges from 2 to 16.
-               + In an Enhanced Edition cluster instance, the number of shards ranges from 2 to 12.
-               + config: the value is 1.
-               + replica: the value is 1.
-               + single: The value is 1. This parameter can be updated when the value of `type` is mongos or shard.
-        :param _builtins.str spec_code: Specifies the resource specification code. In a cluster instance, multiple
-               specifications need to be specified. All specifications must be of the same series, that is, general-purpose (s6),
-               enhanced (c3), or enhanced II (c6). For example:
-               + dds.mongodb.s6.large.4.mongos and dds.mongodb.s6.large.4.config have the same specifications.
-               + dds.mongodb.s6.large.4.mongos and dds.mongodb.c3.large.4.config are not of the same specifications. This parameter
-               can be updated when the value of `type` is mongos, shard, replica or single.
-        :param _builtins.str type: Specifies the node type. Valid value:
-               + For a Community Edition cluster instance, the value can be **mongos**, **shard**, or **config**.
-               + For an Enhanced Edition cluster instance, the value is **shard**.
-               + For a Community Edition replica set instance, the value is **replica**.
-               + For a Community Edition single node instance, the value is **single**.
-        :param _builtins.int size: Specifies the disk size. The value must be a multiple of 10. The unit is GB. This parameter
-               is mandatory for nodes except mongos and invalid for mongos. This parameter can be updated when the value of `type` is
-               shard, replica or single.
-        :param _builtins.str storage: Specifies the disk type.
-               Valid value: **ULTRAHIGH** which indicates the type SSD.
-        """
         pulumi.set(__self__, "num", num)
         pulumi.set(__self__, "spec_code", spec_code)
         pulumi.set(__self__, "type", type)
@@ -274,59 +171,26 @@ class InstanceFlavor(dict):
     @_builtins.property
     @pulumi.getter
     def num(self) -> _builtins.int:
-        """
-        Specifies the node quantity. Valid value:
-        + In a Community Edition cluster instance,the number of mongos ranges from 2 to 16.
-        + In a Community Edition cluster instance,the number of shards ranges from 2 to 16.
-        + In an Enhanced Edition cluster instance, the number of shards ranges from 2 to 12.
-        + config: the value is 1.
-        + replica: the value is 1.
-        + single: The value is 1. This parameter can be updated when the value of `type` is mongos or shard.
-        """
         return pulumi.get(self, "num")
 
     @_builtins.property
     @pulumi.getter(name="specCode")
     def spec_code(self) -> _builtins.str:
-        """
-        Specifies the resource specification code. In a cluster instance, multiple
-        specifications need to be specified. All specifications must be of the same series, that is, general-purpose (s6),
-        enhanced (c3), or enhanced II (c6). For example:
-        + dds.mongodb.s6.large.4.mongos and dds.mongodb.s6.large.4.config have the same specifications.
-        + dds.mongodb.s6.large.4.mongos and dds.mongodb.c3.large.4.config are not of the same specifications. This parameter
-        can be updated when the value of `type` is mongos, shard, replica or single.
-        """
         return pulumi.get(self, "spec_code")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        Specifies the node type. Valid value:
-        + For a Community Edition cluster instance, the value can be **mongos**, **shard**, or **config**.
-        + For an Enhanced Edition cluster instance, the value is **shard**.
-        + For a Community Edition replica set instance, the value is **replica**.
-        + For a Community Edition single node instance, the value is **single**.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> Optional[_builtins.int]:
-        """
-        Specifies the disk size. The value must be a multiple of 10. The unit is GB. This parameter
-        is mandatory for nodes except mongos and invalid for mongos. This parameter can be updated when the value of `type` is
-        shard, replica or single.
-        """
         return pulumi.get(self, "size")
 
     @_builtins.property
     @pulumi.getter
     def storage(self) -> Optional[_builtins.str]:
-        """
-        Specifies the disk type.
-        Valid value: **ULTRAHIGH** which indicates the type SSD.
-        """
         return pulumi.get(self, "storage")
 
 
@@ -340,17 +204,6 @@ class InstanceGroup(dict):
                  status: Optional[_builtins.str] = None,
                  type: Optional[_builtins.str] = None,
                  used: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str id: Indicates the node ID.
-        :param _builtins.str name: Specifies the DB instance name. The DB instance name of the same type is unique in the
-               same tenant.
-        :param Sequence['InstanceGroupNodeArgs'] nodes: Indicates the instance nodes information. Structure is documented below.
-        :param _builtins.str size: Specifies the disk size. The value must be a multiple of 10. The unit is GB. This parameter
-               is mandatory for nodes except mongos and invalid for mongos. This parameter can be updated when the value of `type` is
-               shard, replica or single.
-        :param _builtins.str status: Indicates the node status.
-        :param _builtins.str type: Indicates the node type.
-        """
         if id is not None:
             pulumi.set(__self__, "id", id)
         if name is not None:
@@ -369,52 +222,31 @@ class InstanceGroup(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> Optional[_builtins.str]:
-        """
-        Indicates the node ID.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        Specifies the DB instance name. The DB instance name of the same type is unique in the
-        same tenant.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def nodes(self) -> Optional[Sequence['outputs.InstanceGroupNode']]:
-        """
-        Indicates the instance nodes information. Structure is documented below.
-        """
         return pulumi.get(self, "nodes")
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> Optional[_builtins.str]:
-        """
-        Specifies the disk size. The value must be a multiple of 10. The unit is GB. This parameter
-        is mandatory for nodes except mongos and invalid for mongos. This parameter can be updated when the value of `type` is
-        shard, replica or single.
-        """
         return pulumi.get(self, "size")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
-        """
-        Indicates the node status.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
-        """
-        Indicates the node type.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
@@ -454,12 +286,9 @@ class InstanceGroupNode(dict):
                  type: Optional[_builtins.str] = None):
         """
         :param _builtins.str id: Indicates the node ID.
-        :param _builtins.str name: Specifies the DB instance name. The DB instance name of the same type is unique in the
-               same tenant.
-        :param _builtins.str private_ip: Indicates the private IP address of a node. This parameter is valid only for mongos nodes, replica set
-               instances, and single node instances.
-        :param _builtins.str public_ip: Indicates the EIP that has been bound on a node. This parameter is valid only for mongos nodes of
-               cluster instances, primary nodes and secondary nodes of replica set instances, and single node instances.
+        :param _builtins.str name: Indicates the node name.
+        :param _builtins.str private_ip: Indicates the private IP address of a node.
+        :param _builtins.str public_ip: Indicates the EIP that has been bound on a node.
         :param _builtins.str role: Indicates the node role.
         :param _builtins.str status: Indicates the node status.
         :param _builtins.str type: Indicates the node type.
@@ -491,8 +320,7 @@ class InstanceGroupNode(dict):
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
-        Specifies the DB instance name. The DB instance name of the same type is unique in the
-        same tenant.
+        Indicates the node name.
         """
         return pulumi.get(self, "name")
 
@@ -500,8 +328,7 @@ class InstanceGroupNode(dict):
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[_builtins.str]:
         """
-        Indicates the private IP address of a node. This parameter is valid only for mongos nodes, replica set
-        instances, and single node instances.
+        Indicates the private IP address of a node.
         """
         return pulumi.get(self, "private_ip")
 
@@ -509,8 +336,7 @@ class InstanceGroupNode(dict):
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> Optional[_builtins.str]:
         """
-        Indicates the EIP that has been bound on a node. This parameter is valid only for mongos nodes of
-        cluster instances, primary nodes and secondary nodes of replica set instances, and single node instances.
+        Indicates the EIP that has been bound on a node.
         """
         return pulumi.get(self, "public_ip")
 
@@ -570,12 +396,9 @@ class InstanceNode(dict):
                  type: Optional[_builtins.str] = None):
         """
         :param _builtins.str id: Indicates the node ID.
-        :param _builtins.str name: Specifies the DB instance name. The DB instance name of the same type is unique in the
-               same tenant.
-        :param _builtins.str private_ip: Indicates the private IP address of a node. This parameter is valid only for mongos nodes, replica set
-               instances, and single node instances.
-        :param _builtins.str public_ip: Indicates the EIP that has been bound on a node. This parameter is valid only for mongos nodes of
-               cluster instances, primary nodes and secondary nodes of replica set instances, and single node instances.
+        :param _builtins.str name: Indicates the node name.
+        :param _builtins.str private_ip: Indicates the private IP address of a node.
+        :param _builtins.str public_ip: Indicates the EIP that has been bound on a node.
         :param _builtins.str role: Indicates the node role.
         :param _builtins.str status: Indicates the node status.
         :param _builtins.str type: Indicates the node type.
@@ -607,8 +430,7 @@ class InstanceNode(dict):
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
-        Specifies the DB instance name. The DB instance name of the same type is unique in the
-        same tenant.
+        Indicates the node name.
         """
         return pulumi.get(self, "name")
 
@@ -616,8 +438,7 @@ class InstanceNode(dict):
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[_builtins.str]:
         """
-        Indicates the private IP address of a node. This parameter is valid only for mongos nodes, replica set
-        instances, and single node instances.
+        Indicates the private IP address of a node.
         """
         return pulumi.get(self, "private_ip")
 
@@ -625,8 +446,7 @@ class InstanceNode(dict):
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> Optional[_builtins.str]:
         """
-        Indicates the EIP that has been bound on a node. This parameter is valid only for mongos nodes of
-        cluster instances, primary nodes and secondary nodes of replica set instances, and single node instances.
+        Indicates the EIP that has been bound on a node.
         """
         return pulumi.get(self, "public_ip")
 
@@ -662,11 +482,6 @@ class GetFlavorsFlavorResult(dict):
                  spec_code: _builtins.str,
                  type: _builtins.str,
                  vcpus: _builtins.str):
-        """
-        :param _builtins.str memory: Specifies the ram of the dds flavor in GB.
-        :param _builtins.str type: Specifies the type of the dds falvor. "mongos", "shard", "config", "replica" and "single" are supported.
-        :param _builtins.str vcpus: Specifies the vcpus of the dds flavor.
-        """
         pulumi.set(__self__, "memory", memory)
         pulumi.set(__self__, "spec_code", spec_code)
         pulumi.set(__self__, "type", type)
@@ -675,9 +490,6 @@ class GetFlavorsFlavorResult(dict):
     @_builtins.property
     @pulumi.getter
     def memory(self) -> _builtins.str:
-        """
-        Specifies the ram of the dds flavor in GB.
-        """
         return pulumi.get(self, "memory")
 
     @_builtins.property
@@ -688,17 +500,11 @@ class GetFlavorsFlavorResult(dict):
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        Specifies the type of the dds falvor. "mongos", "shard", "config", "replica" and "single" are supported.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter
     def vcpus(self) -> _builtins.str:
-        """
-        Specifies the vcpus of the dds flavor.
-        """
         return pulumi.get(self, "vcpus")
 
 

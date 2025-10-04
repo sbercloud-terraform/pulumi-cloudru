@@ -11,36 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of function events within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			functionUrn := cfg.RequireObject("functionUrn")
-//			_, err := sbercloud.GetFgsFunctionEvents(ctx, &cloudru.GetFgsFunctionEventsArgs{
-//				FunctionUrn: functionUrn,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetFgsFunctionEvents(ctx *pulumi.Context, args *GetFgsFunctionEventsArgs, opts ...pulumi.InvokeOption) (*GetFgsFunctionEventsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFgsFunctionEventsResult
@@ -53,16 +23,12 @@ func GetFgsFunctionEvents(ctx *pulumi.Context, args *GetFgsFunctionEventsArgs, o
 
 // A collection of arguments for invoking getFgsFunctionEvents.
 type GetFgsFunctionEventsArgs struct {
-	// Specifies the function URN to which the events belong.
-	FunctionUrn string `pulumi:"functionUrn"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
+	FunctionUrn string  `pulumi:"functionUrn"`
+	Region      *string `pulumi:"region"`
 }
 
 // A collection of values returned by getFgsFunctionEvents.
 type GetFgsFunctionEventsResult struct {
-	// All events that match the filter parameters.
 	Events      []GetFgsFunctionEventsEvent `pulumi:"events"`
 	FunctionUrn string                      `pulumi:"functionUrn"`
 	// The provider-assigned unique ID for this managed resource.
@@ -81,11 +47,8 @@ func GetFgsFunctionEventsOutput(ctx *pulumi.Context, args GetFgsFunctionEventsOu
 
 // A collection of arguments for invoking getFgsFunctionEvents.
 type GetFgsFunctionEventsOutputArgs struct {
-	// Specifies the function URN to which the events belong.
-	FunctionUrn pulumi.StringInput `pulumi:"functionUrn"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	FunctionUrn pulumi.StringInput    `pulumi:"functionUrn"`
+	Region      pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetFgsFunctionEventsOutputArgs) ElementType() reflect.Type {
@@ -107,7 +70,6 @@ func (o GetFgsFunctionEventsResultOutput) ToGetFgsFunctionEventsResultOutputWith
 	return o
 }
 
-// All events that match the filter parameters.
 func (o GetFgsFunctionEventsResultOutput) Events() GetFgsFunctionEventsEventArrayOutput {
 	return o.ApplyT(func(v GetFgsFunctionEventsResult) []GetFgsFunctionEventsEvent { return v.Events }).(GetFgsFunctionEventsEventArrayOutput)
 }

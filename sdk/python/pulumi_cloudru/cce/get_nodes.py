@@ -72,9 +72,6 @@ class GetNodesResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
-        """
-        Indicates a list of IDs of all CCE nodes found.
-        """
         return pulumi.get(self, "ids")
 
     @_builtins.property
@@ -85,9 +82,6 @@ class GetNodesResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        The name of the node.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -98,9 +92,6 @@ class GetNodesResult:
     @_builtins.property
     @pulumi.getter
     def nodes(self) -> Sequence['outputs.GetNodesNodeResult']:
-        """
-        Indicates a list of CCE nodes found. Structure is documented below.
-        """
         return pulumi.get(self, "nodes")
 
     @_builtins.property
@@ -111,9 +102,6 @@ class GetNodesResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
-        """
-        The state of the node.
-        """
         return pulumi.get(self, "status")
 
 
@@ -142,28 +130,7 @@ def get_nodes(cluster_id: Optional[_builtins.str] = None,
               status: Optional[_builtins.str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodesResult:
     """
-    Use this data source to get a list of CCE nodes.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    cluster_id = config.require_object("clusterId")
-    node_name = config.require_object("nodeName")
-    node = sbercloud.Cce.get_nodes(cluster_id=cluster_id,
-        name=node_name)
-    ```
-
-
-    :param _builtins.str cluster_id: Specifies the ID of CCE cluster.
-    :param _builtins.str name: Specifies the of the node.
-    :param _builtins.str node_id: Specifies the ID of the node.
-    :param _builtins.str region: Specifies the region in which to obtain the CCE nodes. If omitted, the provider-level
-           region will be used.
-    :param _builtins.str status: Specifies the status of the node.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
@@ -193,28 +160,7 @@ def get_nodes_output(cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                      status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodesResult]:
     """
-    Use this data source to get a list of CCE nodes.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    cluster_id = config.require_object("clusterId")
-    node_name = config.require_object("nodeName")
-    node = sbercloud.Cce.get_nodes(cluster_id=cluster_id,
-        name=node_name)
-    ```
-
-
-    :param _builtins.str cluster_id: Specifies the ID of CCE cluster.
-    :param _builtins.str name: Specifies the of the node.
-    :param _builtins.str node_id: Specifies the ID of the node.
-    :param _builtins.str region: Specifies the region in which to obtain the CCE nodes. If omitted, the provider-level
-           region will be used.
-    :param _builtins.str status: Specifies the status of the node.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

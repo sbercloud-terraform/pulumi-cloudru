@@ -12,143 +12,29 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages CDM cluster resource within SberCloud.
-//
-// ## Example Usage
-//
-// ### create a cdm cluster
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cdm"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := cfg.RequireObject("name")
-//			flavorId := cfg.RequireObject("flavorId")
-//			availabilityZone := cfg.RequireObject("availabilityZone")
-//			vpcId := cfg.RequireObject("vpcId")
-//			subnetId := cfg.RequireObject("subnetId")
-//			secgroupId := cfg.RequireObject("secgroupId")
-//			test, err := sbercloud.GetCdmFlavors(ctx, &cloudru.GetCdmFlavorsArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cdm.NewCluster(ctx, "cluster", &cdm.ClusterArgs{
-//				Name:             pulumi.Any(name),
-//				AvailabilityZone: pulumi.Any(availabilityZone),
-//				FlavorId:         pulumi.String(test.Flavors[0].Id),
-//				SubnetId:         pulumi.Any(subnetId),
-//				VpcId:            pulumi.Any(vpcId),
-//				SecurityGroupId:  pulumi.Any(secgroupId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Clusters can be imported by `id`. For example,
-//
-// ```sh
-// $ pulumi import sbercloud:Cdm/cluster:Cluster test b11b407c-e604-4e8d-8bc4-92398320b847
-// ```
-//
-// # Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-//
-// API response, security or some other reason. The missing attributes include: `email` and `phone_num`.
-//
-// It is generally recommended running `pulumi preview` after importing a cluster.
-//
-// # You can then decide if changes should be applied to the cluster, or the resource definition
-//
-// should be updated to align with the cluster. Also you can ignore changes as below.
-//
-// resource "sbercloud_cdm_cluster" "test" {
-//
-//	  ...
-//
-//	lifecycle {
-//
-//	  ignore_changes = [
-//
-//	    email, phone_num,
-//
-//	  ]
-//
-//	}
-//
-// }
 type Cluster struct {
 	pulumi.CustomResourceState
 
-	// Specifies available zone.
-	// Changing this parameter will create a new resource.
-	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
-	// Create time. The format is: `YYYY-MM-DDThh:mm:ss`.
-	Created pulumi.StringOutput `pulumi:"created"`
-	// Specifies email address for receiving notifications when a table/file migration
-	// job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
-	Emails pulumi.StringArrayOutput `pulumi:"emails"`
-	// Specifies the enterprise project id.
-	// Changing this parameter will create a new resource.
-	EnterpriseProjectId pulumi.StringOutput `pulumi:"enterpriseProjectId"`
-	// Specifies flavor id. Changing this parameter will create a new resource.
-	FlavorId   pulumi.StringOutput `pulumi:"flavorId"`
-	FlavorName pulumi.StringOutput `pulumi:"flavorName"`
-	// Instance list. Structure is documented below.
-	Instances ClusterInstanceArrayOutput `pulumi:"instances"`
-	// Specifies Whether to enable auto shutdown. The auto shutdown and scheduled
-	// startup/shutdown functions cannot be enabled at the same time. When auto shutdown is enabled, if no job is running in
-	// the cluster and no scheduled job is created, a cluster will be automatically shut down 15 minutes after it starts
-	// running to reduce costs. The default value is `false`. Changing this parameter will create a new resource.
-	IsAutoOff pulumi.BoolOutput `pulumi:"isAutoOff"`
-	// Specifies cluster name. Changing this parameter will create a new resource.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies phone number for receiving notifications when a table/file
-	// migration job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
-	PhoneNums pulumi.StringArrayOutput `pulumi:"phoneNums"`
-	// EIP bound to the cluster.
-	PublicEndpoint pulumi.StringOutput `pulumi:"publicEndpoint"`
-	// Public IP.
-	PublicIp pulumi.StringOutput `pulumi:"publicIp"`
-	// The region in which to create the cluster resource. If omitted, the
-	// provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Specifies time for scheduled startup of a CDM cluster.
-	// The CDM cluster starts at this time every day. The scheduled startup/shutdown and auto shutdown function cannot be
-	// enabled at the same time. The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
-	ScheduleBootTime pulumi.StringOutput `pulumi:"scheduleBootTime"`
-	// Specifies time for scheduled shutdown of a CDM cluster.
-	// The system shuts down directly at this time every day without waiting for unfinished jobs to complete.
-	// The scheduled startup/shutdown and auto shutdown function cannot be enabled at the same time.
-	// The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
-	ScheduleOffTime pulumi.StringOutput `pulumi:"scheduleOffTime"`
-	// Specifies security group ID.
-	// Changing this parameter will create a new resource.
-	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
-	// Status.
-	Status pulumi.StringOutput `pulumi:"status"`
-	// Specifies subnet ID. Changing this parameter will create a new resource.
-	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
-	// Specifies the cluster version. Changing this parameter will create a new resource.
-	Version pulumi.StringOutput `pulumi:"version"`
-	// Specifies VPC ID. Changing this parameter will create a new resource.
-	VpcId pulumi.StringOutput `pulumi:"vpcId"`
+	AvailabilityZone    pulumi.StringOutput        `pulumi:"availabilityZone"`
+	Created             pulumi.StringOutput        `pulumi:"created"`
+	Emails              pulumi.StringArrayOutput   `pulumi:"emails"`
+	EnterpriseProjectId pulumi.StringOutput        `pulumi:"enterpriseProjectId"`
+	FlavorId            pulumi.StringOutput        `pulumi:"flavorId"`
+	FlavorName          pulumi.StringOutput        `pulumi:"flavorName"`
+	Instances           ClusterInstanceArrayOutput `pulumi:"instances"`
+	IsAutoOff           pulumi.BoolOutput          `pulumi:"isAutoOff"`
+	Name                pulumi.StringOutput        `pulumi:"name"`
+	PhoneNums           pulumi.StringArrayOutput   `pulumi:"phoneNums"`
+	PublicEndpoint      pulumi.StringOutput        `pulumi:"publicEndpoint"`
+	PublicIp            pulumi.StringOutput        `pulumi:"publicIp"`
+	Region              pulumi.StringOutput        `pulumi:"region"`
+	ScheduleBootTime    pulumi.StringOutput        `pulumi:"scheduleBootTime"`
+	ScheduleOffTime     pulumi.StringOutput        `pulumi:"scheduleOffTime"`
+	SecurityGroupId     pulumi.StringOutput        `pulumi:"securityGroupId"`
+	Status              pulumi.StringOutput        `pulumi:"status"`
+	SubnetId            pulumi.StringOutput        `pulumi:"subnetId"`
+	Version             pulumi.StringOutput        `pulumi:"version"`
+	VpcId               pulumi.StringOutput        `pulumi:"vpcId"`
 }
 
 // NewCluster registers a new resource with the given unique name, arguments, and options.
@@ -196,115 +82,49 @@ func GetCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cluster resources.
 type clusterState struct {
-	// Specifies available zone.
-	// Changing this parameter will create a new resource.
-	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Create time. The format is: `YYYY-MM-DDThh:mm:ss`.
-	Created *string `pulumi:"created"`
-	// Specifies email address for receiving notifications when a table/file migration
-	// job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
-	Emails []string `pulumi:"emails"`
-	// Specifies the enterprise project id.
-	// Changing this parameter will create a new resource.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies flavor id. Changing this parameter will create a new resource.
-	FlavorId   *string `pulumi:"flavorId"`
-	FlavorName *string `pulumi:"flavorName"`
-	// Instance list. Structure is documented below.
-	Instances []ClusterInstance `pulumi:"instances"`
-	// Specifies Whether to enable auto shutdown. The auto shutdown and scheduled
-	// startup/shutdown functions cannot be enabled at the same time. When auto shutdown is enabled, if no job is running in
-	// the cluster and no scheduled job is created, a cluster will be automatically shut down 15 minutes after it starts
-	// running to reduce costs. The default value is `false`. Changing this parameter will create a new resource.
-	IsAutoOff *bool `pulumi:"isAutoOff"`
-	// Specifies cluster name. Changing this parameter will create a new resource.
-	Name *string `pulumi:"name"`
-	// Specifies phone number for receiving notifications when a table/file
-	// migration job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
-	PhoneNums []string `pulumi:"phoneNums"`
-	// EIP bound to the cluster.
-	PublicEndpoint *string `pulumi:"publicEndpoint"`
-	// Public IP.
-	PublicIp *string `pulumi:"publicIp"`
-	// The region in which to create the cluster resource. If omitted, the
-	// provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies time for scheduled startup of a CDM cluster.
-	// The CDM cluster starts at this time every day. The scheduled startup/shutdown and auto shutdown function cannot be
-	// enabled at the same time. The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
-	ScheduleBootTime *string `pulumi:"scheduleBootTime"`
-	// Specifies time for scheduled shutdown of a CDM cluster.
-	// The system shuts down directly at this time every day without waiting for unfinished jobs to complete.
-	// The scheduled startup/shutdown and auto shutdown function cannot be enabled at the same time.
-	// The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
-	ScheduleOffTime *string `pulumi:"scheduleOffTime"`
-	// Specifies security group ID.
-	// Changing this parameter will create a new resource.
-	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// Status.
-	Status *string `pulumi:"status"`
-	// Specifies subnet ID. Changing this parameter will create a new resource.
-	SubnetId *string `pulumi:"subnetId"`
-	// Specifies the cluster version. Changing this parameter will create a new resource.
-	Version *string `pulumi:"version"`
-	// Specifies VPC ID. Changing this parameter will create a new resource.
-	VpcId *string `pulumi:"vpcId"`
+	AvailabilityZone    *string           `pulumi:"availabilityZone"`
+	Created             *string           `pulumi:"created"`
+	Emails              []string          `pulumi:"emails"`
+	EnterpriseProjectId *string           `pulumi:"enterpriseProjectId"`
+	FlavorId            *string           `pulumi:"flavorId"`
+	FlavorName          *string           `pulumi:"flavorName"`
+	Instances           []ClusterInstance `pulumi:"instances"`
+	IsAutoOff           *bool             `pulumi:"isAutoOff"`
+	Name                *string           `pulumi:"name"`
+	PhoneNums           []string          `pulumi:"phoneNums"`
+	PublicEndpoint      *string           `pulumi:"publicEndpoint"`
+	PublicIp            *string           `pulumi:"publicIp"`
+	Region              *string           `pulumi:"region"`
+	ScheduleBootTime    *string           `pulumi:"scheduleBootTime"`
+	ScheduleOffTime     *string           `pulumi:"scheduleOffTime"`
+	SecurityGroupId     *string           `pulumi:"securityGroupId"`
+	Status              *string           `pulumi:"status"`
+	SubnetId            *string           `pulumi:"subnetId"`
+	Version             *string           `pulumi:"version"`
+	VpcId               *string           `pulumi:"vpcId"`
 }
 
 type ClusterState struct {
-	// Specifies available zone.
-	// Changing this parameter will create a new resource.
-	AvailabilityZone pulumi.StringPtrInput
-	// Create time. The format is: `YYYY-MM-DDThh:mm:ss`.
-	Created pulumi.StringPtrInput
-	// Specifies email address for receiving notifications when a table/file migration
-	// job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
-	Emails pulumi.StringArrayInput
-	// Specifies the enterprise project id.
-	// Changing this parameter will create a new resource.
+	AvailabilityZone    pulumi.StringPtrInput
+	Created             pulumi.StringPtrInput
+	Emails              pulumi.StringArrayInput
 	EnterpriseProjectId pulumi.StringPtrInput
-	// Specifies flavor id. Changing this parameter will create a new resource.
-	FlavorId   pulumi.StringPtrInput
-	FlavorName pulumi.StringPtrInput
-	// Instance list. Structure is documented below.
-	Instances ClusterInstanceArrayInput
-	// Specifies Whether to enable auto shutdown. The auto shutdown and scheduled
-	// startup/shutdown functions cannot be enabled at the same time. When auto shutdown is enabled, if no job is running in
-	// the cluster and no scheduled job is created, a cluster will be automatically shut down 15 minutes after it starts
-	// running to reduce costs. The default value is `false`. Changing this parameter will create a new resource.
-	IsAutoOff pulumi.BoolPtrInput
-	// Specifies cluster name. Changing this parameter will create a new resource.
-	Name pulumi.StringPtrInput
-	// Specifies phone number for receiving notifications when a table/file
-	// migration job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
-	PhoneNums pulumi.StringArrayInput
-	// EIP bound to the cluster.
-	PublicEndpoint pulumi.StringPtrInput
-	// Public IP.
-	PublicIp pulumi.StringPtrInput
-	// The region in which to create the cluster resource. If omitted, the
-	// provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
-	// Specifies time for scheduled startup of a CDM cluster.
-	// The CDM cluster starts at this time every day. The scheduled startup/shutdown and auto shutdown function cannot be
-	// enabled at the same time. The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
-	ScheduleBootTime pulumi.StringPtrInput
-	// Specifies time for scheduled shutdown of a CDM cluster.
-	// The system shuts down directly at this time every day without waiting for unfinished jobs to complete.
-	// The scheduled startup/shutdown and auto shutdown function cannot be enabled at the same time.
-	// The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
-	ScheduleOffTime pulumi.StringPtrInput
-	// Specifies security group ID.
-	// Changing this parameter will create a new resource.
-	SecurityGroupId pulumi.StringPtrInput
-	// Status.
-	Status pulumi.StringPtrInput
-	// Specifies subnet ID. Changing this parameter will create a new resource.
-	SubnetId pulumi.StringPtrInput
-	// Specifies the cluster version. Changing this parameter will create a new resource.
-	Version pulumi.StringPtrInput
-	// Specifies VPC ID. Changing this parameter will create a new resource.
-	VpcId pulumi.StringPtrInput
+	FlavorId            pulumi.StringPtrInput
+	FlavorName          pulumi.StringPtrInput
+	Instances           ClusterInstanceArrayInput
+	IsAutoOff           pulumi.BoolPtrInput
+	Name                pulumi.StringPtrInput
+	PhoneNums           pulumi.StringArrayInput
+	PublicEndpoint      pulumi.StringPtrInput
+	PublicIp            pulumi.StringPtrInput
+	Region              pulumi.StringPtrInput
+	ScheduleBootTime    pulumi.StringPtrInput
+	ScheduleOffTime     pulumi.StringPtrInput
+	SecurityGroupId     pulumi.StringPtrInput
+	Status              pulumi.StringPtrInput
+	SubnetId            pulumi.StringPtrInput
+	Version             pulumi.StringPtrInput
+	VpcId               pulumi.StringPtrInput
 }
 
 func (ClusterState) ElementType() reflect.Type {
@@ -312,94 +132,38 @@ func (ClusterState) ElementType() reflect.Type {
 }
 
 type clusterArgs struct {
-	// Specifies available zone.
-	// Changing this parameter will create a new resource.
-	AvailabilityZone string `pulumi:"availabilityZone"`
-	// Specifies email address for receiving notifications when a table/file migration
-	// job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
-	Emails []string `pulumi:"emails"`
-	// Specifies the enterprise project id.
-	// Changing this parameter will create a new resource.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies flavor id. Changing this parameter will create a new resource.
-	FlavorId string `pulumi:"flavorId"`
-	// Specifies Whether to enable auto shutdown. The auto shutdown and scheduled
-	// startup/shutdown functions cannot be enabled at the same time. When auto shutdown is enabled, if no job is running in
-	// the cluster and no scheduled job is created, a cluster will be automatically shut down 15 minutes after it starts
-	// running to reduce costs. The default value is `false`. Changing this parameter will create a new resource.
-	IsAutoOff *bool `pulumi:"isAutoOff"`
-	// Specifies cluster name. Changing this parameter will create a new resource.
-	Name *string `pulumi:"name"`
-	// Specifies phone number for receiving notifications when a table/file
-	// migration job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
-	PhoneNums []string `pulumi:"phoneNums"`
-	// The region in which to create the cluster resource. If omitted, the
-	// provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies time for scheduled startup of a CDM cluster.
-	// The CDM cluster starts at this time every day. The scheduled startup/shutdown and auto shutdown function cannot be
-	// enabled at the same time. The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
-	ScheduleBootTime *string `pulumi:"scheduleBootTime"`
-	// Specifies time for scheduled shutdown of a CDM cluster.
-	// The system shuts down directly at this time every day without waiting for unfinished jobs to complete.
-	// The scheduled startup/shutdown and auto shutdown function cannot be enabled at the same time.
-	// The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
-	ScheduleOffTime *string `pulumi:"scheduleOffTime"`
-	// Specifies security group ID.
-	// Changing this parameter will create a new resource.
-	SecurityGroupId string `pulumi:"securityGroupId"`
-	// Specifies subnet ID. Changing this parameter will create a new resource.
-	SubnetId string `pulumi:"subnetId"`
-	// Specifies the cluster version. Changing this parameter will create a new resource.
-	Version *string `pulumi:"version"`
-	// Specifies VPC ID. Changing this parameter will create a new resource.
-	VpcId string `pulumi:"vpcId"`
+	AvailabilityZone    string   `pulumi:"availabilityZone"`
+	Emails              []string `pulumi:"emails"`
+	EnterpriseProjectId *string  `pulumi:"enterpriseProjectId"`
+	FlavorId            string   `pulumi:"flavorId"`
+	IsAutoOff           *bool    `pulumi:"isAutoOff"`
+	Name                *string  `pulumi:"name"`
+	PhoneNums           []string `pulumi:"phoneNums"`
+	Region              *string  `pulumi:"region"`
+	ScheduleBootTime    *string  `pulumi:"scheduleBootTime"`
+	ScheduleOffTime     *string  `pulumi:"scheduleOffTime"`
+	SecurityGroupId     string   `pulumi:"securityGroupId"`
+	SubnetId            string   `pulumi:"subnetId"`
+	Version             *string  `pulumi:"version"`
+	VpcId               string   `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
-	// Specifies available zone.
-	// Changing this parameter will create a new resource.
-	AvailabilityZone pulumi.StringInput
-	// Specifies email address for receiving notifications when a table/file migration
-	// job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
-	Emails pulumi.StringArrayInput
-	// Specifies the enterprise project id.
-	// Changing this parameter will create a new resource.
+	AvailabilityZone    pulumi.StringInput
+	Emails              pulumi.StringArrayInput
 	EnterpriseProjectId pulumi.StringPtrInput
-	// Specifies flavor id. Changing this parameter will create a new resource.
-	FlavorId pulumi.StringInput
-	// Specifies Whether to enable auto shutdown. The auto shutdown and scheduled
-	// startup/shutdown functions cannot be enabled at the same time. When auto shutdown is enabled, if no job is running in
-	// the cluster and no scheduled job is created, a cluster will be automatically shut down 15 minutes after it starts
-	// running to reduce costs. The default value is `false`. Changing this parameter will create a new resource.
-	IsAutoOff pulumi.BoolPtrInput
-	// Specifies cluster name. Changing this parameter will create a new resource.
-	Name pulumi.StringPtrInput
-	// Specifies phone number for receiving notifications when a table/file
-	// migration job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
-	PhoneNums pulumi.StringArrayInput
-	// The region in which to create the cluster resource. If omitted, the
-	// provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
-	// Specifies time for scheduled startup of a CDM cluster.
-	// The CDM cluster starts at this time every day. The scheduled startup/shutdown and auto shutdown function cannot be
-	// enabled at the same time. The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
-	ScheduleBootTime pulumi.StringPtrInput
-	// Specifies time for scheduled shutdown of a CDM cluster.
-	// The system shuts down directly at this time every day without waiting for unfinished jobs to complete.
-	// The scheduled startup/shutdown and auto shutdown function cannot be enabled at the same time.
-	// The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
-	ScheduleOffTime pulumi.StringPtrInput
-	// Specifies security group ID.
-	// Changing this parameter will create a new resource.
-	SecurityGroupId pulumi.StringInput
-	// Specifies subnet ID. Changing this parameter will create a new resource.
-	SubnetId pulumi.StringInput
-	// Specifies the cluster version. Changing this parameter will create a new resource.
-	Version pulumi.StringPtrInput
-	// Specifies VPC ID. Changing this parameter will create a new resource.
-	VpcId pulumi.StringInput
+	FlavorId            pulumi.StringInput
+	IsAutoOff           pulumi.BoolPtrInput
+	Name                pulumi.StringPtrInput
+	PhoneNums           pulumi.StringArrayInput
+	Region              pulumi.StringPtrInput
+	ScheduleBootTime    pulumi.StringPtrInput
+	ScheduleOffTime     pulumi.StringPtrInput
+	SecurityGroupId     pulumi.StringInput
+	SubnetId            pulumi.StringInput
+	Version             pulumi.StringPtrInput
+	VpcId               pulumi.StringInput
 }
 
 func (ClusterArgs) ElementType() reflect.Type {
@@ -489,30 +253,22 @@ func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOu
 	return o
 }
 
-// Specifies available zone.
-// Changing this parameter will create a new resource.
 func (o ClusterOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// Create time. The format is: `YYYY-MM-DDThh:mm:ss`.
 func (o ClusterOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
 }
 
-// Specifies email address for receiving notifications when a table/file migration
-// job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
 func (o ClusterOutput) Emails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.Emails }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the enterprise project id.
-// Changing this parameter will create a new resource.
 func (o ClusterOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// Specifies flavor id. Changing this parameter will create a new resource.
 func (o ClusterOutput) FlavorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.FlavorId }).(pulumi.StringOutput)
 }
@@ -521,83 +277,58 @@ func (o ClusterOutput) FlavorName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.FlavorName }).(pulumi.StringOutput)
 }
 
-// Instance list. Structure is documented below.
 func (o ClusterOutput) Instances() ClusterInstanceArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterInstanceArrayOutput { return v.Instances }).(ClusterInstanceArrayOutput)
 }
 
-// Specifies Whether to enable auto shutdown. The auto shutdown and scheduled
-// startup/shutdown functions cannot be enabled at the same time. When auto shutdown is enabled, if no job is running in
-// the cluster and no scheduled job is created, a cluster will be automatically shut down 15 minutes after it starts
-// running to reduce costs. The default value is `false`. Changing this parameter will create a new resource.
 func (o ClusterOutput) IsAutoOff() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.IsAutoOff }).(pulumi.BoolOutput)
 }
 
-// Specifies cluster name. Changing this parameter will create a new resource.
 func (o ClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies phone number for receiving notifications when a table/file
-// migration job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
 func (o ClusterOutput) PhoneNums() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.PhoneNums }).(pulumi.StringArrayOutput)
 }
 
-// EIP bound to the cluster.
 func (o ClusterOutput) PublicEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.PublicEndpoint }).(pulumi.StringOutput)
 }
 
-// Public IP.
 func (o ClusterOutput) PublicIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.PublicIp }).(pulumi.StringOutput)
 }
 
-// The region in which to create the cluster resource. If omitted, the
-// provider-level region will be used. Changing this parameter will create a new resource.
 func (o ClusterOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Specifies time for scheduled startup of a CDM cluster.
-// The CDM cluster starts at this time every day. The scheduled startup/shutdown and auto shutdown function cannot be
-// enabled at the same time. The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
 func (o ClusterOutput) ScheduleBootTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ScheduleBootTime }).(pulumi.StringOutput)
 }
 
-// Specifies time for scheduled shutdown of a CDM cluster.
-// The system shuts down directly at this time every day without waiting for unfinished jobs to complete.
-// The scheduled startup/shutdown and auto shutdown function cannot be enabled at the same time.
-// The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
 func (o ClusterOutput) ScheduleOffTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ScheduleOffTime }).(pulumi.StringOutput)
 }
 
-// Specifies security group ID.
-// Changing this parameter will create a new resource.
 func (o ClusterOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
-// Status.
 func (o ClusterOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Specifies subnet ID. Changing this parameter will create a new resource.
 func (o ClusterOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.SubnetId }).(pulumi.StringOutput)
 }
 
-// Specifies the cluster version. Changing this parameter will create a new resource.
 func (o ClusterOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
 }
 
-// Specifies VPC ID. Changing this parameter will create a new resource.
 func (o ClusterOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }

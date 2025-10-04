@@ -24,17 +24,6 @@ class CbhAssetAgencyAuthorizationArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CbhAssetAgencyAuthorization resource.
-        :param pulumi.Input[_builtins.bool] csms: Specifies whether to enable CSMS credential agency authorization. The value can be **true**
-               or **false**.
-               If set to **true** to enable agency authorization, the CBH service will have the permission to query your CSMS
-               credential list. You can select credentials as resource accounts on the CBH instance.
-        :param pulumi.Input[_builtins.bool] kms: Specifies whether to enable KMS key agency authorization. The value can be **true** or
-               **false**.
-               If set to **true** to enable agency authorization, the CBH service will have the permission to use the KMS interface
-               to obtain the CSMS credential value. You can use this credential value to log in to the managed host on the CBH
-               instance.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the CBH asset agency authorization.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         pulumi.set(__self__, "csms", csms)
         pulumi.set(__self__, "kms", kms)
@@ -44,12 +33,6 @@ class CbhAssetAgencyAuthorizationArgs:
     @_builtins.property
     @pulumi.getter
     def csms(self) -> pulumi.Input[_builtins.bool]:
-        """
-        Specifies whether to enable CSMS credential agency authorization. The value can be **true**
-        or **false**.
-        If set to **true** to enable agency authorization, the CBH service will have the permission to query your CSMS
-        credential list. You can select credentials as resource accounts on the CBH instance.
-        """
         return pulumi.get(self, "csms")
 
     @csms.setter
@@ -59,13 +42,6 @@ class CbhAssetAgencyAuthorizationArgs:
     @_builtins.property
     @pulumi.getter
     def kms(self) -> pulumi.Input[_builtins.bool]:
-        """
-        Specifies whether to enable KMS key agency authorization. The value can be **true** or
-        **false**.
-        If set to **true** to enable agency authorization, the CBH service will have the permission to use the KMS interface
-        to obtain the CSMS credential value. You can use this credential value to log in to the managed host on the CBH
-        instance.
-        """
         return pulumi.get(self, "kms")
 
     @kms.setter
@@ -75,10 +51,6 @@ class CbhAssetAgencyAuthorizationArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the CBH asset agency authorization.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -94,17 +66,6 @@ class _CbhAssetAgencyAuthorizationState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CbhAssetAgencyAuthorization resources.
-        :param pulumi.Input[_builtins.bool] csms: Specifies whether to enable CSMS credential agency authorization. The value can be **true**
-               or **false**.
-               If set to **true** to enable agency authorization, the CBH service will have the permission to query your CSMS
-               credential list. You can select credentials as resource accounts on the CBH instance.
-        :param pulumi.Input[_builtins.bool] kms: Specifies whether to enable KMS key agency authorization. The value can be **true** or
-               **false**.
-               If set to **true** to enable agency authorization, the CBH service will have the permission to use the KMS interface
-               to obtain the CSMS credential value. You can use this credential value to log in to the managed host on the CBH
-               instance.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the CBH asset agency authorization.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         if csms is not None:
             pulumi.set(__self__, "csms", csms)
@@ -116,12 +77,6 @@ class _CbhAssetAgencyAuthorizationState:
     @_builtins.property
     @pulumi.getter
     def csms(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to enable CSMS credential agency authorization. The value can be **true**
-        or **false**.
-        If set to **true** to enable agency authorization, the CBH service will have the permission to query your CSMS
-        credential list. You can select credentials as resource accounts on the CBH instance.
-        """
         return pulumi.get(self, "csms")
 
     @csms.setter
@@ -131,13 +86,6 @@ class _CbhAssetAgencyAuthorizationState:
     @_builtins.property
     @pulumi.getter
     def kms(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to enable KMS key agency authorization. The value can be **true** or
-        **false**.
-        If set to **true** to enable agency authorization, the CBH service will have the permission to use the KMS interface
-        to obtain the CSMS credential value. You can use this credential value to log in to the managed host on the CBH
-        instance.
-        """
         return pulumi.get(self, "kms")
 
     @kms.setter
@@ -147,10 +95,6 @@ class _CbhAssetAgencyAuthorizationState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the CBH asset agency authorization.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -169,36 +113,9 @@ class CbhAssetAgencyAuthorization(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a CBH asset agency authorization resource within SberCloud.
-
-        > After you enable CSMS credentials and KMS key agency authorization, you need to wait about `10` minutes, the CBH
-        instance can obtain a token with agency permissions. Destroying resources will not change the current asset
-        agency authorization status.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        test = sbercloud.CbhAssetAgencyAuthorization("test",
-            csms=True,
-            kms=True)
-        ```
-
+        Create a CbhAssetAgencyAuthorization resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] csms: Specifies whether to enable CSMS credential agency authorization. The value can be **true**
-               or **false**.
-               If set to **true** to enable agency authorization, the CBH service will have the permission to query your CSMS
-               credential list. You can select credentials as resource accounts on the CBH instance.
-        :param pulumi.Input[_builtins.bool] kms: Specifies whether to enable KMS key agency authorization. The value can be **true** or
-               **false**.
-               If set to **true** to enable agency authorization, the CBH service will have the permission to use the KMS interface
-               to obtain the CSMS credential value. You can use this credential value to log in to the managed host on the CBH
-               instance.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the CBH asset agency authorization.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         ...
     @overload
@@ -207,23 +124,7 @@ class CbhAssetAgencyAuthorization(pulumi.CustomResource):
                  args: CbhAssetAgencyAuthorizationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a CBH asset agency authorization resource within SberCloud.
-
-        > After you enable CSMS credentials and KMS key agency authorization, you need to wait about `10` minutes, the CBH
-        instance can obtain a token with agency permissions. Destroying resources will not change the current asset
-        agency authorization status.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        test = sbercloud.CbhAssetAgencyAuthorization("test",
-            csms=True,
-            kms=True)
-        ```
-
+        Create a CbhAssetAgencyAuthorization resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param CbhAssetAgencyAuthorizationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -278,17 +179,6 @@ class CbhAssetAgencyAuthorization(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] csms: Specifies whether to enable CSMS credential agency authorization. The value can be **true**
-               or **false**.
-               If set to **true** to enable agency authorization, the CBH service will have the permission to query your CSMS
-               credential list. You can select credentials as resource accounts on the CBH instance.
-        :param pulumi.Input[_builtins.bool] kms: Specifies whether to enable KMS key agency authorization. The value can be **true** or
-               **false**.
-               If set to **true** to enable agency authorization, the CBH service will have the permission to use the KMS interface
-               to obtain the CSMS credential value. You can use this credential value to log in to the managed host on the CBH
-               instance.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the CBH asset agency authorization.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -302,32 +192,15 @@ class CbhAssetAgencyAuthorization(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def csms(self) -> pulumi.Output[_builtins.bool]:
-        """
-        Specifies whether to enable CSMS credential agency authorization. The value can be **true**
-        or **false**.
-        If set to **true** to enable agency authorization, the CBH service will have the permission to query your CSMS
-        credential list. You can select credentials as resource accounts on the CBH instance.
-        """
         return pulumi.get(self, "csms")
 
     @_builtins.property
     @pulumi.getter
     def kms(self) -> pulumi.Output[_builtins.bool]:
-        """
-        Specifies whether to enable KMS key agency authorization. The value can be **true** or
-        **false**.
-        If set to **true** to enable agency authorization, the CBH service will have the permission to use the KMS interface
-        to obtain the CSMS credential value. You can use this credential value to log in to the managed host on the CBH
-        instance.
-        """
         return pulumi.get(self, "kms")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the CBH asset agency authorization.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 

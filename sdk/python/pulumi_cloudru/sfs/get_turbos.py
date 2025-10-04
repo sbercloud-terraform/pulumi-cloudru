@@ -56,9 +56,6 @@ class GetTurbosResult:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[_builtins.str]:
-        """
-        The enterprise project ID of the SFS turbo file system.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
@@ -72,9 +69,6 @@ class GetTurbosResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        The name of the SFS turbo file system.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -85,33 +79,21 @@ class GetTurbosResult:
     @_builtins.property
     @pulumi.getter(name="shareProto")
     def share_proto(self) -> Optional[_builtins.str]:
-        """
-        The protocol of the SFS turbo file system.
-        """
         return pulumi.get(self, "share_proto")
 
     @_builtins.property
     @pulumi.getter(name="shareType")
     def share_type(self) -> Optional[_builtins.str]:
-        """
-        The type of the SFS turbo file system.
-        """
         return pulumi.get(self, "share_type")
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> Optional[_builtins.int]:
-        """
-        The capacity of the SFS turbo file system.
-        """
         return pulumi.get(self, "size")
 
     @_builtins.property
     @pulumi.getter
     def turbos(self) -> Sequence['outputs.GetTurbosTurboResult']:
-        """
-        The list of the SFS turbo file systems. The object structure is documented below.
-        """
         return pulumi.get(self, "turbos")
 
 
@@ -139,29 +121,7 @@ def get_turbos(enterprise_project_id: Optional[_builtins.str] = None,
                size: Optional[_builtins.int] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTurbosResult:
     """
-    Use this data source to get the list of the available SFS turbos.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    sfs_turbo_name = config.require_object("sfsTurboName")
-    test = sbercloud.Sfs.get_turbos(name=sfs_turbo_name)
-    ```
-
-
-    :param _builtins.str enterprise_project_id: The enterprise project ID of the SFS turbo file system.
-    :param _builtins.str name: Specifies the name of the SFS turbo file system.
-    :param _builtins.str region: Specifies the region in which to obtain the SFS turbo file systems.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str share_proto: Specifies the protocol of the SFS turbo file system. The valid value is **NFS**.
-    :param _builtins.str share_type: Specifies the type of the SFS turbo file system.
-           The valid values are **STANDARD** and **PERFORMANCE**.
-    :param _builtins.int size: Specifies the capacity of the SFS turbo file system, in GB.
-           The value ranges from `500` to `32,768`, and must be large than `10,240` for an enhanced file system.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['enterpriseProjectId'] = enterprise_project_id
@@ -190,29 +150,7 @@ def get_turbos_output(enterprise_project_id: Optional[pulumi.Input[Optional[_bui
                       size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTurbosResult]:
     """
-    Use this data source to get the list of the available SFS turbos.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    sfs_turbo_name = config.require_object("sfsTurboName")
-    test = sbercloud.Sfs.get_turbos(name=sfs_turbo_name)
-    ```
-
-
-    :param _builtins.str enterprise_project_id: The enterprise project ID of the SFS turbo file system.
-    :param _builtins.str name: Specifies the name of the SFS turbo file system.
-    :param _builtins.str region: Specifies the region in which to obtain the SFS turbo file systems.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str share_proto: Specifies the protocol of the SFS turbo file system. The valid value is **NFS**.
-    :param _builtins.str share_type: Specifies the type of the SFS turbo file system.
-           The valid values are **STANDARD** and **PERFORMANCE**.
-    :param _builtins.int size: Specifies the capacity of the SFS turbo file system, in GB.
-           The value ranges from `500` to `32,768`, and must be large than `10,240` for an enhanced file system.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['enterpriseProjectId'] = enterprise_project_id

@@ -6,22 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get available CBR policies within Sbercloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const policyName = config.requireObject<any>("policyName");
- * const test = sbercloud.getCbrPolicies({
- *     name: policyName,
- * });
- * ```
- */
 export function getCbrPolicies(args?: GetCbrPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetCbrPoliciesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -39,34 +23,11 @@ export function getCbrPolicies(args?: GetCbrPoliciesArgs, opts?: pulumi.InvokeOp
  * A collection of arguments for invoking getCbrPolicies.
  */
 export interface GetCbrPoliciesArgs {
-    /**
-     * Specifies the policy enabling status to query. The valid values are as follows:
-     * + **true**: Policy enabled
-     * + **false**: Policy not enabled
-     */
     enabled?: boolean;
-    /**
-     * Specifies the policy name used to query.
-     */
     name?: string;
-    /**
-     * Specifies the policy ID used to query.
-     */
     policyId?: string;
-    /**
-     * Specifies the region in which to query the policies.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
-    /**
-     * Specifies the policy type used to query. The valid values are as follows:
-     * + **backup**: Backup policy
-     * + **replication**: Replication policy
-     */
     type?: string;
-    /**
-     * Specifies the vault ID of the associated policy used to query.
-     */
     vaultId?: string;
 }
 
@@ -74,54 +35,18 @@ export interface GetCbrPoliciesArgs {
  * A collection of values returned by getCbrPolicies.
  */
 export interface GetCbrPoliciesResult {
-    /**
-     * Whether to enable the policy. The valid values are as follows:
-     * + **true**: Policy enabled
-     * + **false**: Policy not enabled
-     */
     readonly enabled?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The policy name.
-     */
     readonly name?: string;
-    /**
-     * All CBR policies that match the filter parameters.
-     * The policies structure is documented below.
-     */
     readonly policies: outputs.GetCbrPoliciesPolicy[];
     readonly policyId?: string;
     readonly region: string;
-    /**
-     * The protection type of the policy. The valid values are as follows:
-     * + **backup**: Backup policy
-     * + **replication**: Replication policy
-     */
     readonly type?: string;
-    /**
-     * The vault ID of the associated CBR policy.
-     */
     readonly vaultId?: string;
 }
-/**
- * Use this data source to get available CBR policies within Sbercloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const policyName = config.requireObject<any>("policyName");
- * const test = sbercloud.getCbrPolicies({
- *     name: policyName,
- * });
- * ```
- */
 export function getCbrPoliciesOutput(args?: GetCbrPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCbrPoliciesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -139,33 +64,10 @@ export function getCbrPoliciesOutput(args?: GetCbrPoliciesOutputArgs, opts?: pul
  * A collection of arguments for invoking getCbrPolicies.
  */
 export interface GetCbrPoliciesOutputArgs {
-    /**
-     * Specifies the policy enabling status to query. The valid values are as follows:
-     * + **true**: Policy enabled
-     * + **false**: Policy not enabled
-     */
     enabled?: pulumi.Input<boolean>;
-    /**
-     * Specifies the policy name used to query.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the policy ID used to query.
-     */
     policyId?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the policies.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the policy type used to query. The valid values are as follows:
-     * + **backup**: Backup policy
-     * + **replication**: Replication policy
-     */
     type?: pulumi.Input<string>;
-    /**
-     * Specifies the vault ID of the associated policy used to query.
-     */
     vaultId?: pulumi.Input<string>;
 }

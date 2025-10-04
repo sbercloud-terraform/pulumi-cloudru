@@ -4,45 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides an VPC subnet resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const vpc = new sbercloud.vpc.Vpc("vpc", {
- *     name: vpcName,
- *     cidr: vpcCidr,
- * });
- * const subnet = new sbercloud.vpc.Subnet("subnet", {
- *     name: subnetName,
- *     cidr: subnetCidr,
- *     gatewayIp: subnetGatewayIp,
- *     vpcId: vpc.id,
- * });
- * const subnetWithTags = new sbercloud.vpc.Subnet("subnet_with_tags", {
- *     name: subnetName,
- *     cidr: subnetCidr,
- *     gatewayIp: subnetGatewayIp,
- *     vpcId: vpc.id,
- *     tags: {
- *         foo: "bar",
- *         key: "value",
- *     },
- * });
- * ```
- *
- * ## Import
- *
- * Subnets can be imported using the `subnet id`, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Vpc/subnet:Subnet sbercloud_vpc_subnet 4779ab1c-7c1a-44b1-a02e-93dfc361b32d
- * ```
- */
 export class Subnet extends pulumi.CustomResource {
     /**
      * Get an existing Subnet resource's state with the given name, ID, and optional extra
@@ -71,91 +32,28 @@ export class Subnet extends pulumi.CustomResource {
         return obj['__pulumiType'] === Subnet.__pulumiType;
     }
 
-    /**
-     * Specifies the availability zone (AZ) to which the subnet belongs.
-     * The value must be an existing AZ in the system. Changing this creates a new Subnet.
-     */
     declare public readonly availabilityZone: pulumi.Output<string>;
-    /**
-     * Specifies the network segment on which the subnet resides. The value must be in
-     * CIDR format and within the CIDR block of the VPC. The subnet mask cannot be greater than 28. Changing this creates a
-     * new Subnet.
-     */
     declare public readonly cidr: pulumi.Output<string>;
-    /**
-     * Specifies supplementary information about the subnet. The value is a string of
-     * no more than 255 characters and cannot contain angle brackets (< or >).
-     */
     declare public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * Specifies whether the DHCP function is enabled for the subnet. Defaults to true.
-     */
     declare public readonly dhcpEnable: pulumi.Output<boolean | undefined>;
     declare public readonly dhcpLeaseTime: pulumi.Output<string>;
-    /**
-     * Specifies the DNS server address list of a subnet. This field is required if you need to
-     * use more than two DNS servers. This parameter value is the superset of both DNS server address 1 and DNS server
-     * address 2.
-     */
     declare public readonly dnsLists: pulumi.Output<string[]>;
-    /**
-     * Specifies the gateway of the subnet. The value must be a valid IP address
-     * in the subnet segment. Changing this creates a new Subnet.
-     */
     declare public readonly gatewayIp: pulumi.Output<string>;
-    /**
-     * The ID of the IPv4 subnet (Native OpenStack API).
-     */
     declare public /*out*/ readonly ipv4SubnetId: pulumi.Output<string>;
-    /**
-     * The IPv6 subnet CIDR block.
-     */
     declare public /*out*/ readonly ipv6Cidr: pulumi.Output<string>;
-    /**
-     * Specifies whether the IPv6 function is enabled for the subnet. Defaults to false.
-     */
     declare public readonly ipv6Enable: pulumi.Output<boolean | undefined>;
-    /**
-     * The IPv6 subnet gateway.
-     */
     declare public /*out*/ readonly ipv6Gateway: pulumi.Output<string>;
-    /**
-     * The ID of the IPv6 subnet (Native OpenStack API).
-     */
     declare public /*out*/ readonly ipv6SubnetId: pulumi.Output<string>;
-    /**
-     * Specifies the subnet name. The value is a string of 1 to 64 characters that can contain
-     * letters, digits, underscores (_), and hyphens (-).
-     */
     declare public readonly name: pulumi.Output<string>;
     declare public readonly ntpServerAddress: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the IP address of DNS server 1 on the subnet. The value must be a valid
-     * IP address.
-     */
     declare public readonly primaryDns: pulumi.Output<string>;
-    /**
-     * Specifies tThe region in which to create the vpc subnet. If omitted, the
-     * provider-level region will be used. Changing this creates a new Subnet.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Specifies the IP address of DNS server 2 on the subnet. The value must be a valid
-     * IP address.
-     */
     declare public readonly secondaryDns: pulumi.Output<string>;
     /**
-     * The subnet (Native OpenStack API) ID.
+     * schema: Deprecated
      */
     declare public /*out*/ readonly subnetId: pulumi.Output<string>;
-    /**
-     * The key/value pairs to associate with the subnet.
-     */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * Specifies the ID of the VPC to which the subnet belongs. Changing this creates
-     * a new Subnet.
-     */
     declare public readonly vpcId: pulumi.Output<string>;
 
     /**
@@ -232,91 +130,28 @@ export class Subnet extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Subnet resources.
  */
 export interface SubnetState {
-    /**
-     * Specifies the availability zone (AZ) to which the subnet belongs.
-     * The value must be an existing AZ in the system. Changing this creates a new Subnet.
-     */
     availabilityZone?: pulumi.Input<string>;
-    /**
-     * Specifies the network segment on which the subnet resides. The value must be in
-     * CIDR format and within the CIDR block of the VPC. The subnet mask cannot be greater than 28. Changing this creates a
-     * new Subnet.
-     */
     cidr?: pulumi.Input<string>;
-    /**
-     * Specifies supplementary information about the subnet. The value is a string of
-     * no more than 255 characters and cannot contain angle brackets (< or >).
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies whether the DHCP function is enabled for the subnet. Defaults to true.
-     */
     dhcpEnable?: pulumi.Input<boolean>;
     dhcpLeaseTime?: pulumi.Input<string>;
-    /**
-     * Specifies the DNS server address list of a subnet. This field is required if you need to
-     * use more than two DNS servers. This parameter value is the superset of both DNS server address 1 and DNS server
-     * address 2.
-     */
     dnsLists?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the gateway of the subnet. The value must be a valid IP address
-     * in the subnet segment. Changing this creates a new Subnet.
-     */
     gatewayIp?: pulumi.Input<string>;
-    /**
-     * The ID of the IPv4 subnet (Native OpenStack API).
-     */
     ipv4SubnetId?: pulumi.Input<string>;
-    /**
-     * The IPv6 subnet CIDR block.
-     */
     ipv6Cidr?: pulumi.Input<string>;
-    /**
-     * Specifies whether the IPv6 function is enabled for the subnet. Defaults to false.
-     */
     ipv6Enable?: pulumi.Input<boolean>;
-    /**
-     * The IPv6 subnet gateway.
-     */
     ipv6Gateway?: pulumi.Input<string>;
-    /**
-     * The ID of the IPv6 subnet (Native OpenStack API).
-     */
     ipv6SubnetId?: pulumi.Input<string>;
-    /**
-     * Specifies the subnet name. The value is a string of 1 to 64 characters that can contain
-     * letters, digits, underscores (_), and hyphens (-).
-     */
     name?: pulumi.Input<string>;
     ntpServerAddress?: pulumi.Input<string>;
-    /**
-     * Specifies the IP address of DNS server 1 on the subnet. The value must be a valid
-     * IP address.
-     */
     primaryDns?: pulumi.Input<string>;
-    /**
-     * Specifies tThe region in which to create the vpc subnet. If omitted, the
-     * provider-level region will be used. Changing this creates a new Subnet.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the IP address of DNS server 2 on the subnet. The value must be a valid
-     * IP address.
-     */
     secondaryDns?: pulumi.Input<string>;
     /**
-     * The subnet (Native OpenStack API) ID.
+     * schema: Deprecated
      */
     subnetId?: pulumi.Input<string>;
-    /**
-     * The key/value pairs to associate with the subnet.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies the ID of the VPC to which the subnet belongs. Changing this creates
-     * a new Subnet.
-     */
     vpcId?: pulumi.Input<string>;
 }
 
@@ -324,70 +159,19 @@ export interface SubnetState {
  * The set of arguments for constructing a Subnet resource.
  */
 export interface SubnetArgs {
-    /**
-     * Specifies the availability zone (AZ) to which the subnet belongs.
-     * The value must be an existing AZ in the system. Changing this creates a new Subnet.
-     */
     availabilityZone?: pulumi.Input<string>;
-    /**
-     * Specifies the network segment on which the subnet resides. The value must be in
-     * CIDR format and within the CIDR block of the VPC. The subnet mask cannot be greater than 28. Changing this creates a
-     * new Subnet.
-     */
     cidr: pulumi.Input<string>;
-    /**
-     * Specifies supplementary information about the subnet. The value is a string of
-     * no more than 255 characters and cannot contain angle brackets (< or >).
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies whether the DHCP function is enabled for the subnet. Defaults to true.
-     */
     dhcpEnable?: pulumi.Input<boolean>;
     dhcpLeaseTime?: pulumi.Input<string>;
-    /**
-     * Specifies the DNS server address list of a subnet. This field is required if you need to
-     * use more than two DNS servers. This parameter value is the superset of both DNS server address 1 and DNS server
-     * address 2.
-     */
     dnsLists?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the gateway of the subnet. The value must be a valid IP address
-     * in the subnet segment. Changing this creates a new Subnet.
-     */
     gatewayIp: pulumi.Input<string>;
-    /**
-     * Specifies whether the IPv6 function is enabled for the subnet. Defaults to false.
-     */
     ipv6Enable?: pulumi.Input<boolean>;
-    /**
-     * Specifies the subnet name. The value is a string of 1 to 64 characters that can contain
-     * letters, digits, underscores (_), and hyphens (-).
-     */
     name?: pulumi.Input<string>;
     ntpServerAddress?: pulumi.Input<string>;
-    /**
-     * Specifies the IP address of DNS server 1 on the subnet. The value must be a valid
-     * IP address.
-     */
     primaryDns?: pulumi.Input<string>;
-    /**
-     * Specifies tThe region in which to create the vpc subnet. If omitted, the
-     * provider-level region will be used. Changing this creates a new Subnet.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the IP address of DNS server 2 on the subnet. The value must be a valid
-     * IP address.
-     */
     secondaryDns?: pulumi.Input<string>;
-    /**
-     * The key/value pairs to associate with the subnet.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies the ID of the VPC to which the subnet belongs. Changing this creates
-     * a new Subnet.
-     */
     vpcId: pulumi.Input<string>;
 }

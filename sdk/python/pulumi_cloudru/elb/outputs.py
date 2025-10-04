@@ -91,16 +91,6 @@ class PoolPersistence(dict):
                  type: _builtins.str,
                  cookie_name: Optional[_builtins.str] = None,
                  timeout: Optional[_builtins.int] = None):
-        """
-        :param _builtins.str type: The type of persistence mode. The current specification supports SOURCE_IP,
-               HTTP_COOKIE, and APP_COOKIE.
-        :param _builtins.str cookie_name: The name of the cookie if persistence mode is set appropriately. Required
-               if `type = APP_COOKIE`.
-        :param _builtins.int timeout: Specifies the sticky session timeout duration in minutes. This parameter is
-               invalid when type is set to APP_COOKIE. The value range varies depending on the protocol of the backend server group:
-               + When the protocol of the backend server group is TCP or UDP, the value ranges from 1 to 60.
-               + When the protocol of the backend server group is HTTP or HTTPS, the value ranges from 1 to 1440.
-        """
         pulumi.set(__self__, "type", type)
         if cookie_name is not None:
             pulumi.set(__self__, "cookie_name", cookie_name)
@@ -110,30 +100,16 @@ class PoolPersistence(dict):
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        The type of persistence mode. The current specification supports SOURCE_IP,
-        HTTP_COOKIE, and APP_COOKIE.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="cookieName")
     def cookie_name(self) -> Optional[_builtins.str]:
-        """
-        The name of the cookie if persistence mode is set appropriately. Required
-        if `type = APP_COOKIE`.
-        """
         return pulumi.get(self, "cookie_name")
 
     @_builtins.property
     @pulumi.getter
     def timeout(self) -> Optional[_builtins.int]:
-        """
-        Specifies the sticky session timeout duration in minutes. This parameter is
-        invalid when type is set to APP_COOKIE. The value range varies depending on the protocol of the backend server group:
-        + When the protocol of the backend server group is TCP or UDP, the value ranges from 1 to 60.
-        + When the protocol of the backend server group is HTTP or HTTPS, the value ranges from 1 to 1440.
-        """
         return pulumi.get(self, "timeout")
 
 
@@ -159,22 +135,6 @@ class GetListenersListenerResult(dict):
                  tags: Mapping[str, _builtins.str],
                  tls_ciphers_policy: _builtins.str,
                  updated_at: _builtins.str):
-        """
-        :param _builtins.int connection_limit: The maximum number of connections allowed for the listener.
-        :param _builtins.str default_pool_id: The ID of the default pool with which the ELB listener is associated.
-        :param _builtins.str default_tls_container_ref: The ID of the server certificate used by the listener.
-        :param _builtins.str description: The description of the ELB listener.
-        :param _builtins.bool http2_enable: Whether the ELB listener uses HTTP/2.
-        :param _builtins.str id: The ELB loadbalancer ID.
-        :param Sequence['GetListenersListenerLoadbalancerArgs'] loadbalancers: Listener list.
-               The object structure is documented below.
-        :param _builtins.str name: The listener name.
-        :param _builtins.str protocol: The listener protocol.  
-               The valid values are **TCP**, **UDP**, **HTTP** and **TERMINATED_HTTPS**.
-        :param _builtins.int protocol_port: The front-end listening port of the listener.  
-               The valid value is range from `1` to `65535`.
-        :param Sequence[_builtins.str] sni_container_refs: List of the SNI certificate (server certificates with a domain name) IDs used by the listener.
-        """
         pulumi.set(__self__, "client_ca_tls_container_ref", client_ca_tls_container_ref)
         pulumi.set(__self__, "connection_limit", connection_limit)
         pulumi.set(__self__, "created_at", created_at)
@@ -203,9 +163,6 @@ class GetListenersListenerResult(dict):
     @_builtins.property
     @pulumi.getter(name="connectionLimit")
     def connection_limit(self) -> _builtins.int:
-        """
-        The maximum number of connections allowed for the listener.
-        """
         return pulumi.get(self, "connection_limit")
 
     @_builtins.property
@@ -216,41 +173,26 @@ class GetListenersListenerResult(dict):
     @_builtins.property
     @pulumi.getter(name="defaultPoolId")
     def default_pool_id(self) -> _builtins.str:
-        """
-        The ID of the default pool with which the ELB listener is associated.
-        """
         return pulumi.get(self, "default_pool_id")
 
     @_builtins.property
     @pulumi.getter(name="defaultTlsContainerRef")
     def default_tls_container_ref(self) -> _builtins.str:
-        """
-        The ID of the server certificate used by the listener.
-        """
         return pulumi.get(self, "default_tls_container_ref")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
-        """
-        The description of the ELB listener.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="http2Enable")
     def http2_enable(self) -> _builtins.bool:
-        """
-        Whether the ELB listener uses HTTP/2.
-        """
         return pulumi.get(self, "http2_enable")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        The ELB loadbalancer ID.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -261,18 +203,11 @@ class GetListenersListenerResult(dict):
     @_builtins.property
     @pulumi.getter
     def loadbalancers(self) -> Sequence['outputs.GetListenersListenerLoadbalancerResult']:
-        """
-        Listener list.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "loadbalancers")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        The listener name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -288,27 +223,16 @@ class GetListenersListenerResult(dict):
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> _builtins.str:
-        """
-        The listener protocol.  
-        The valid values are **TCP**, **UDP**, **HTTP** and **TERMINATED_HTTPS**.
-        """
         return pulumi.get(self, "protocol")
 
     @_builtins.property
     @pulumi.getter(name="protocolPort")
     def protocol_port(self) -> _builtins.int:
-        """
-        The front-end listening port of the listener.  
-        The valid value is range from `1` to `65535`.
-        """
         return pulumi.get(self, "protocol_port")
 
     @_builtins.property
     @pulumi.getter(name="sniContainerRefs")
     def sni_container_refs(self) -> Sequence[_builtins.str]:
-        """
-        List of the SNI certificate (server certificates with a domain name) IDs used by the listener.
-        """
         return pulumi.get(self, "sni_container_refs")
 
     @_builtins.property
@@ -351,7 +275,7 @@ class GetListenersListenerLoadbalancerResult(dict):
     def __init__(__self__, *,
                  id: _builtins.str):
         """
-        :param _builtins.str id: The ELB loadbalancer ID.
+        :param _builtins.str id: The loadbalancer ID.
         """
         pulumi.set(__self__, "id", id)
 
@@ -359,7 +283,7 @@ class GetListenersListenerLoadbalancerResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The ELB loadbalancer ID.
+        The loadbalancer ID.
         """
         return pulumi.get(self, "id")
 
@@ -379,20 +303,6 @@ class GetPoolsPoolResult(dict):
                  protection_reason: _builtins.str,
                  protection_status: _builtins.str,
                  protocol: _builtins.str):
-        """
-        :param _builtins.str description: Specifies the description of the ELB pool.
-        :param _builtins.str healthmonitor_id: Specifies the health monitor ID of the ELB pool.
-        :param _builtins.str id: The listener, loadbalancer or member ID.
-        :param _builtins.str lb_method: Specifies the method of the ELB pool. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
-               or SOURCE_IP.
-        :param Sequence['GetPoolsPoolListenerArgs'] listeners: The listener list. The object structure is documented below.
-        :param Sequence['GetPoolsPoolLoadbalancerArgs'] loadbalancers: The loadbalancer list. The object structure is documented below.
-        :param Sequence['GetPoolsPoolMemberArgs'] members: The member list. The object structure is documented below.
-        :param _builtins.str name: Specifies the name of the ELB pool.
-        :param Sequence['GetPoolsPoolPersistenceArgs'] persistences: Indicates whether connections in the same session will be processed by the same pool member or not.
-               The object structure is documented below.
-        :param _builtins.str protocol: Specifies the protocol of the ELB pool. This can either be TCP, UDP or HTTP.
-        """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "healthmonitor_id", healthmonitor_id)
         pulumi.set(__self__, "id", id)
@@ -409,75 +319,46 @@ class GetPoolsPoolResult(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
-        """
-        Specifies the description of the ELB pool.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="healthmonitorId")
     def healthmonitor_id(self) -> _builtins.str:
-        """
-        Specifies the health monitor ID of the ELB pool.
-        """
         return pulumi.get(self, "healthmonitor_id")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        The listener, loadbalancer or member ID.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="lbMethod")
     def lb_method(self) -> _builtins.str:
-        """
-        Specifies the method of the ELB pool. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
-        or SOURCE_IP.
-        """
         return pulumi.get(self, "lb_method")
 
     @_builtins.property
     @pulumi.getter
     def listeners(self) -> Sequence['outputs.GetPoolsPoolListenerResult']:
-        """
-        The listener list. The object structure is documented below.
-        """
         return pulumi.get(self, "listeners")
 
     @_builtins.property
     @pulumi.getter
     def loadbalancers(self) -> Sequence['outputs.GetPoolsPoolLoadbalancerResult']:
-        """
-        The loadbalancer list. The object structure is documented below.
-        """
         return pulumi.get(self, "loadbalancers")
 
     @_builtins.property
     @pulumi.getter
     def members(self) -> Sequence['outputs.GetPoolsPoolMemberResult']:
-        """
-        The member list. The object structure is documented below.
-        """
         return pulumi.get(self, "members")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the name of the ELB pool.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def persistences(self) -> Sequence['outputs.GetPoolsPoolPersistenceResult']:
-        """
-        Indicates whether connections in the same session will be processed by the same pool member or not.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "persistences")
 
     @_builtins.property
@@ -493,9 +374,6 @@ class GetPoolsPoolResult(dict):
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> _builtins.str:
-        """
-        Specifies the protocol of the ELB pool. This can either be TCP, UDP or HTTP.
-        """
         return pulumi.get(self, "protocol")
 
 
@@ -503,17 +381,11 @@ class GetPoolsPoolResult(dict):
 class GetPoolsPoolListenerResult(dict):
     def __init__(__self__, *,
                  id: _builtins.str):
-        """
-        :param _builtins.str id: The listener, loadbalancer or member ID.
-        """
         pulumi.set(__self__, "id", id)
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        The listener, loadbalancer or member ID.
-        """
         return pulumi.get(self, "id")
 
 
@@ -521,17 +393,11 @@ class GetPoolsPoolListenerResult(dict):
 class GetPoolsPoolLoadbalancerResult(dict):
     def __init__(__self__, *,
                  id: _builtins.str):
-        """
-        :param _builtins.str id: The listener, loadbalancer or member ID.
-        """
         pulumi.set(__self__, "id", id)
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        The listener, loadbalancer or member ID.
-        """
         return pulumi.get(self, "id")
 
 
@@ -539,17 +405,11 @@ class GetPoolsPoolLoadbalancerResult(dict):
 class GetPoolsPoolMemberResult(dict):
     def __init__(__self__, *,
                  id: _builtins.str):
-        """
-        :param _builtins.str id: The listener, loadbalancer or member ID.
-        """
         pulumi.set(__self__, "id", id)
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        The listener, loadbalancer or member ID.
-        """
         return pulumi.get(self, "id")
 
 
@@ -559,10 +419,6 @@ class GetPoolsPoolPersistenceResult(dict):
                  cookie_name: _builtins.str,
                  timeout: _builtins.int,
                  type: _builtins.str):
-        """
-        :param _builtins.str cookie_name: The name of the cookie if persistence mode is set appropriately.
-        :param _builtins.str type: The type of persistence mode.
-        """
         pulumi.set(__self__, "cookie_name", cookie_name)
         pulumi.set(__self__, "timeout", timeout)
         pulumi.set(__self__, "type", type)
@@ -570,9 +426,6 @@ class GetPoolsPoolPersistenceResult(dict):
     @_builtins.property
     @pulumi.getter(name="cookieName")
     def cookie_name(self) -> _builtins.str:
-        """
-        The name of the cookie if persistence mode is set appropriately.
-        """
         return pulumi.get(self, "cookie_name")
 
     @_builtins.property
@@ -583,9 +436,6 @@ class GetPoolsPoolPersistenceResult(dict):
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        The type of persistence mode.
-        """
         return pulumi.get(self, "type")
 
 

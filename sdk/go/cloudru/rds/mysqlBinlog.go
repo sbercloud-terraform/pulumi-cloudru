@@ -12,57 +12,12 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages RDS MySQL binlog resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/rds"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			_, err := rds.NewMysqlBinlog(ctx, "test", &rds.MysqlBinlogArgs{
-//				InstanceId:           pulumi.Any(instanceId),
-//				BinlogRetentionHours: pulumi.Int(6),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// RDS MySQL binlog can be imported using the `instance id`, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Rds/mysqlBinlog:MysqlBinlog test <instance_id>
-// ```
 type MysqlBinlog struct {
 	pulumi.CustomResourceState
 
-	// Specifies the binlog retention period. Value range: `1` to `168` (7x24).
-	BinlogRetentionHours pulumi.IntOutput `pulumi:"binlogRetentionHours"`
-	// Specifies the RDS MySQL instance ID. Changing this will create a new resource.
-	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// The region in which to create the RDS binlog resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
+	BinlogRetentionHours pulumi.IntOutput    `pulumi:"binlogRetentionHours"`
+	InstanceId           pulumi.StringOutput `pulumi:"instanceId"`
+	Region               pulumi.StringOutput `pulumi:"region"`
 }
 
 // NewMysqlBinlog registers a new resource with the given unique name, arguments, and options.
@@ -101,23 +56,15 @@ func GetMysqlBinlog(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MysqlBinlog resources.
 type mysqlBinlogState struct {
-	// Specifies the binlog retention period. Value range: `1` to `168` (7x24).
-	BinlogRetentionHours *int `pulumi:"binlogRetentionHours"`
-	// Specifies the RDS MySQL instance ID. Changing this will create a new resource.
-	InstanceId *string `pulumi:"instanceId"`
-	// The region in which to create the RDS binlog resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region *string `pulumi:"region"`
+	BinlogRetentionHours *int    `pulumi:"binlogRetentionHours"`
+	InstanceId           *string `pulumi:"instanceId"`
+	Region               *string `pulumi:"region"`
 }
 
 type MysqlBinlogState struct {
-	// Specifies the binlog retention period. Value range: `1` to `168` (7x24).
 	BinlogRetentionHours pulumi.IntPtrInput
-	// Specifies the RDS MySQL instance ID. Changing this will create a new resource.
-	InstanceId pulumi.StringPtrInput
-	// The region in which to create the RDS binlog resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringPtrInput
+	InstanceId           pulumi.StringPtrInput
+	Region               pulumi.StringPtrInput
 }
 
 func (MysqlBinlogState) ElementType() reflect.Type {
@@ -125,24 +72,16 @@ func (MysqlBinlogState) ElementType() reflect.Type {
 }
 
 type mysqlBinlogArgs struct {
-	// Specifies the binlog retention period. Value range: `1` to `168` (7x24).
-	BinlogRetentionHours int `pulumi:"binlogRetentionHours"`
-	// Specifies the RDS MySQL instance ID. Changing this will create a new resource.
-	InstanceId string `pulumi:"instanceId"`
-	// The region in which to create the RDS binlog resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region *string `pulumi:"region"`
+	BinlogRetentionHours int     `pulumi:"binlogRetentionHours"`
+	InstanceId           string  `pulumi:"instanceId"`
+	Region               *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a MysqlBinlog resource.
 type MysqlBinlogArgs struct {
-	// Specifies the binlog retention period. Value range: `1` to `168` (7x24).
 	BinlogRetentionHours pulumi.IntInput
-	// Specifies the RDS MySQL instance ID. Changing this will create a new resource.
-	InstanceId pulumi.StringInput
-	// The region in which to create the RDS binlog resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringPtrInput
+	InstanceId           pulumi.StringInput
+	Region               pulumi.StringPtrInput
 }
 
 func (MysqlBinlogArgs) ElementType() reflect.Type {
@@ -232,18 +171,14 @@ func (o MysqlBinlogOutput) ToMysqlBinlogOutputWithContext(ctx context.Context) M
 	return o
 }
 
-// Specifies the binlog retention period. Value range: `1` to `168` (7x24).
 func (o MysqlBinlogOutput) BinlogRetentionHours() pulumi.IntOutput {
 	return o.ApplyT(func(v *MysqlBinlog) pulumi.IntOutput { return v.BinlogRetentionHours }).(pulumi.IntOutput)
 }
 
-// Specifies the RDS MySQL instance ID. Changing this will create a new resource.
 func (o MysqlBinlogOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlBinlog) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// The region in which to create the RDS binlog resource. If omitted, the
-// provider-level region will be used. Changing this creates a new resource.
 func (o MysqlBinlogOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlBinlog) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

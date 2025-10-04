@@ -27,14 +27,9 @@ class DnsResolutionArgs:
         """
         The set of arguments for constructing a DnsResolution resource.
         :param pulumi.Input[_builtins.str] fw_instance_id: The ID of the firewall.
-               Changing this creates a new resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_dns_servers: The custom DNS servers.
-               Currently, only two custom DNS server addresses can be specified.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] default_dns_servers: The default DNS servers.
         :param pulumi.Input[_builtins.str] health_check_domain_name: The health check domain name.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
         """
         pulumi.set(__self__, "fw_instance_id", fw_instance_id)
         if custom_dns_servers is not None:
@@ -51,7 +46,6 @@ class DnsResolutionArgs:
     def fw_instance_id(self) -> pulumi.Input[_builtins.str]:
         """
         The ID of the firewall.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "fw_instance_id")
 
@@ -64,7 +58,6 @@ class DnsResolutionArgs:
     def custom_dns_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The custom DNS servers.
-        Currently, only two custom DNS server addresses can be specified.
         """
         return pulumi.get(self, "custom_dns_servers")
 
@@ -99,11 +92,6 @@ class DnsResolutionArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -122,14 +110,9 @@ class _DnsResolutionState:
         """
         Input properties used for looking up and filtering DnsResolution resources.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_dns_servers: The custom DNS servers.
-               Currently, only two custom DNS server addresses can be specified.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] default_dns_servers: The default DNS servers.
         :param pulumi.Input[_builtins.str] fw_instance_id: The ID of the firewall.
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] health_check_domain_name: The health check domain name.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
         """
         if custom_dns_servers is not None:
             pulumi.set(__self__, "custom_dns_servers", custom_dns_servers)
@@ -147,7 +130,6 @@ class _DnsResolutionState:
     def custom_dns_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The custom DNS servers.
-        Currently, only two custom DNS server addresses can be specified.
         """
         return pulumi.get(self, "custom_dns_servers")
 
@@ -172,7 +154,6 @@ class _DnsResolutionState:
     def fw_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the firewall.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "fw_instance_id")
 
@@ -195,11 +176,6 @@ class _DnsResolutionState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -220,47 +196,13 @@ class DnsResolution(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a CFW DNS resolution resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        fw_instance_id = config.require_object("fwInstanceId")
-        default_dns_servers = config.require_object("defaultDnsServers")
-        custom_dns_servers = config.require_object("customDnsServers")
-        health_check_domain_name = config.require_object("healthCheckDomainName")
-        test = sbercloud.cfw.DnsResolution("test",
-            fw_instance_id=fw_instance_id,
-            default_dns_servers=default_dns_servers,
-            custom_dns_servers=custom_dns_servers,
-            health_check_domain_name=health_check_domain_name)
-        ```
-
-        ## Import
-
-        The DNS resolution resource can be imported using the firewall instance ID, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Cfw/dnsResolution:DnsResolution test <fw_instance_id>
-        ```
-
+        Create a DnsResolution resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_dns_servers: The custom DNS servers.
-               Currently, only two custom DNS server addresses can be specified.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] default_dns_servers: The default DNS servers.
         :param pulumi.Input[_builtins.str] fw_instance_id: The ID of the firewall.
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] health_check_domain_name: The health check domain name.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
         """
         ...
     @overload
@@ -269,36 +211,7 @@ class DnsResolution(pulumi.CustomResource):
                  args: DnsResolutionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a CFW DNS resolution resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        fw_instance_id = config.require_object("fwInstanceId")
-        default_dns_servers = config.require_object("defaultDnsServers")
-        custom_dns_servers = config.require_object("customDnsServers")
-        health_check_domain_name = config.require_object("healthCheckDomainName")
-        test = sbercloud.cfw.DnsResolution("test",
-            fw_instance_id=fw_instance_id,
-            default_dns_servers=default_dns_servers,
-            custom_dns_servers=custom_dns_servers,
-            health_check_domain_name=health_check_domain_name)
-        ```
-
-        ## Import
-
-        The DNS resolution resource can be imported using the firewall instance ID, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Cfw/dnsResolution:DnsResolution test <fw_instance_id>
-        ```
-
+        Create a DnsResolution resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param DnsResolutionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -358,14 +271,9 @@ class DnsResolution(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_dns_servers: The custom DNS servers.
-               Currently, only two custom DNS server addresses can be specified.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] default_dns_servers: The default DNS servers.
         :param pulumi.Input[_builtins.str] fw_instance_id: The ID of the firewall.
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] health_check_domain_name: The health check domain name.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -383,7 +291,6 @@ class DnsResolution(pulumi.CustomResource):
     def custom_dns_servers(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
         The custom DNS servers.
-        Currently, only two custom DNS server addresses can be specified.
         """
         return pulumi.get(self, "custom_dns_servers")
 
@@ -400,7 +307,6 @@ class DnsResolution(pulumi.CustomResource):
     def fw_instance_id(self) -> pulumi.Output[_builtins.str]:
         """
         The ID of the firewall.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "fw_instance_id")
 
@@ -415,10 +321,5 @@ class DnsResolution(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 

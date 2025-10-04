@@ -88,50 +88,31 @@ class GetFileSystemResult:
     @_builtins.property
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> _builtins.str:
-        """
-        The level of the access rule.
-        """
         return pulumi.get(self, "access_level")
 
     @_builtins.property
     @pulumi.getter(name="accessTo")
     def access_to(self) -> _builtins.str:
-        """
-        The access that the back end grants or denies.
-        """
         return pulumi.get(self, "access_to")
 
     @_builtins.property
     @pulumi.getter(name="accessType")
     def access_type(self) -> _builtins.str:
-        """
-        The type of the share access rule.
-        """
         return pulumi.get(self, "access_type")
 
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> _builtins.str:
-        """
-        The availability zone name.
-        *
-        """
         return pulumi.get(self, "availability_zone")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
-        """
-        The description of the shared file system.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="exportLocation")
     def export_location(self) -> _builtins.str:
-        """
-        The path for accessing the shared file system.
-        """
         return pulumi.get(self, "export_location")
 
     @_builtins.property
@@ -142,25 +123,16 @@ class GetFileSystemResult:
     @_builtins.property
     @pulumi.getter(name="isPublic")
     def is_public(self) -> _builtins.bool:
-        """
-        The level of visibility for the shared file system.
-        """
         return pulumi.get(self, "is_public")
 
     @_builtins.property
     @pulumi.getter
     def metadata(self) -> Mapping[str, _builtins.str]:
-        """
-        Metadata key and value pairs as a dictionary of strings.
-        """
         return pulumi.get(self, "metadata")
 
     @_builtins.property
     @pulumi.getter(name="mountId")
     def mount_id(self) -> _builtins.str:
-        """
-        The UUID of the mount location of the shared file system.
-        """
         return pulumi.get(self, "mount_id")
 
     @_builtins.property
@@ -171,9 +143,6 @@ class GetFileSystemResult:
     @_builtins.property
     @pulumi.getter
     def preferred(self) -> _builtins.bool:
-        """
-        Identifies which mount locations are most efficient and are used preferentially when multiple mount locations exist.
-        """
         return pulumi.get(self, "preferred")
 
     @_builtins.property
@@ -184,49 +153,31 @@ class GetFileSystemResult:
     @_builtins.property
     @pulumi.getter(name="shareAccessId")
     def share_access_id(self) -> _builtins.str:
-        """
-        The UUID of the share access rule.
-        """
         return pulumi.get(self, "share_access_id")
 
     @_builtins.property
     @pulumi.getter(name="shareInstanceId")
     def share_instance_id(self) -> _builtins.str:
-        """
-        The access that the back end grants or denies.
-        """
         return pulumi.get(self, "share_instance_id")
 
     @_builtins.property
     @pulumi.getter(name="shareProto")
     def share_proto(self) -> _builtins.str:
-        """
-        The protocol for sharing file systems.
-        """
         return pulumi.get(self, "share_proto")
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> _builtins.int:
-        """
-        The size (GB) of the shared file system.
-        """
         return pulumi.get(self, "size")
 
     @_builtins.property
     @pulumi.getter
     def state(self) -> _builtins.str:
-        """
-        The state of the shared file system.
-        """
         return pulumi.get(self, "state")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
-        """
-        The status of the shared file system.
-        """
         return pulumi.get(self, "status")
 
 
@@ -263,27 +214,7 @@ def get_file_system(id: Optional[_builtins.str] = None,
                     status: Optional[_builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFileSystemResult:
     """
-    Provides information about a Shared File System (SFS).
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    share_name = config.require_object("shareName")
-    share_id = config.require_object("shareId")
-    shares = sbercloud.Sfs.get_file_system(name=share_name,
-        id=share_id)
-    ```
-
-
-    :param _builtins.str id: The UUID of the shared file system.
-    :param _builtins.str name: The name of the shared file system.
-    :param _builtins.str region: Specifies the region in which to obtain the shared file system.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str status: The status of the shared file system.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -319,27 +250,7 @@ def get_file_system_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] =
                            status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFileSystemResult]:
     """
-    Provides information about a Shared File System (SFS).
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    share_name = config.require_object("shareName")
-    share_id = config.require_object("shareId")
-    shares = sbercloud.Sfs.get_file_system(name=share_name,
-        id=share_id)
-    ```
-
-
-    :param _builtins.str id: The UUID of the shared file system.
-    :param _builtins.str name: The name of the shared file system.
-    :param _builtins.str region: Specifies the region in which to obtain the shared file system.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str status: The status of the shared file system.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id

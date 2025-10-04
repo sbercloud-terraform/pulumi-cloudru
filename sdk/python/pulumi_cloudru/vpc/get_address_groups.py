@@ -53,17 +53,11 @@ class GetAddressGroupsResult:
     @_builtins.property
     @pulumi.getter(name="addressGroups")
     def address_groups(self) -> Sequence['outputs.GetAddressGroupsAddressGroupResult']:
-        """
-        The IP address groups.
-        """
         return pulumi.get(self, "address_groups")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
-        """
-        The supplementary information about the IP address group.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
@@ -82,17 +76,11 @@ class GetAddressGroupsResult:
     @_builtins.property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> Optional[_builtins.int]:
-        """
-        Whether it is an IPv4 or IPv6 address group.
-        """
         return pulumi.get(self, "ip_version")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        IP address group name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -123,26 +111,7 @@ def get_address_groups(description: Optional[_builtins.str] = None,
                        region: Optional[_builtins.str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAddressGroupsResult:
     """
-    Use this data source to get a list of VPC IP address groups.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    demo1 = sbercloud.Vpc.get_address_groups()
-    ```
-
-
-    :param _builtins.str description: Provides supplementary information about an IP address group,
-           which can be used to filter the IP address group.
-    :param _builtins.str group_id: Unique ID of an IP address group, which can be used to filter the IP address group.
-    :param _builtins.int ip_version: Version of IP addresses in an IP address group,
-           which can be used to filter the IP address group.
-    :param _builtins.str name: Name of an IP address group, which can be used to filter the IP address group.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['description'] = description
@@ -168,26 +137,7 @@ def get_address_groups_output(description: Optional[pulumi.Input[Optional[_built
                               region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAddressGroupsResult]:
     """
-    Use this data source to get a list of VPC IP address groups.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    demo1 = sbercloud.Vpc.get_address_groups()
-    ```
-
-
-    :param _builtins.str description: Provides supplementary information about an IP address group,
-           which can be used to filter the IP address group.
-    :param _builtins.str group_id: Unique ID of an IP address group, which can be used to filter the IP address group.
-    :param _builtins.int ip_version: Version of IP addresses in an IP address group,
-           which can be used to filter the IP address group.
-    :param _builtins.str name: Name of an IP address group, which can be used to filter the IP address group.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['description'] = description

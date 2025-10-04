@@ -12,391 +12,76 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Provides a CCE cluster resource.
-//
-// ## Example Usage
-//
-// ### Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cce"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/vpc"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myvpc, err := vpc.NewVpc(ctx, "myvpc", &vpc.VpcArgs{
-//				Name: pulumi.String("vpc"),
-//				Cidr: pulumi.String("192.168.0.0/16"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			mysubnet, err := vpc.NewSubnet(ctx, "mysubnet", &vpc.SubnetArgs{
-//				Name:         pulumi.String("subnet"),
-//				Cidr:         pulumi.String("192.168.0.0/16"),
-//				GatewayIp:    pulumi.String("192.168.0.1"),
-//				PrimaryDns:   pulumi.String("100.125.13.59"),
-//				SecondaryDns: pulumi.String("100.125.65.14"),
-//				VpcId:        myvpc.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cce.NewCluster(ctx, "cluster", &cce.ClusterArgs{
-//				Name:                 pulumi.String("cluster"),
-//				FlavorId:             pulumi.String("cce.s1.small"),
-//				VpcId:                myvpc.ID(),
-//				SubnetId:             mysubnet.ID(),
-//				ContainerNetworkType: pulumi.String("overlay_l2"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Cluster With EIP
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cce"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/vpc"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myvpc, err := vpc.NewVpc(ctx, "myvpc", &vpc.VpcArgs{
-//				Name: pulumi.String("vpc"),
-//				Cidr: pulumi.String("192.168.0.0/16"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			mysubnet, err := vpc.NewSubnet(ctx, "mysubnet", &vpc.SubnetArgs{
-//				Name:         pulumi.String("subnet"),
-//				Cidr:         pulumi.String("192.168.0.0/16"),
-//				GatewayIp:    pulumi.String("192.168.0.1"),
-//				PrimaryDns:   pulumi.String("100.125.13.59"),
-//				SecondaryDns: pulumi.String("100.125.65.14"),
-//				VpcId:        myvpc.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			myeip, err := vpc.NewEip(ctx, "myeip", &vpc.EipArgs{
-//				Publicip: &vpc.EipPublicipArgs{
-//					Type: pulumi.String("5_bgp"),
-//				},
-//				Bandwidth: &vpc.EipBandwidthArgs{
-//					Name:       pulumi.String("test"),
-//					Size:       pulumi.Int(8),
-//					ShareType:  pulumi.String("PER"),
-//					ChargeMode: pulumi.String("traffic"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cce.NewCluster(ctx, "cluster", &cce.ClusterArgs{
-//				Name:                 pulumi.String("cluster"),
-//				ClusterType:          pulumi.String("VirtualMachine"),
-//				FlavorId:             pulumi.String("cce.s1.small"),
-//				VpcId:                myvpc.ID(),
-//				SubnetId:             mysubnet.ID(),
-//				ContainerNetworkType: pulumi.String("overlay_l2"),
-//				AuthenticationMode:   pulumi.String("rbac"),
-//				Eip:                  myeip.Address,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### CCE HA Cluster
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cce"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			vpcId := cfg.RequireObject("vpcId")
-//			subnetId := cfg.RequireObject("subnetId")
-//			_, err := cce.NewCluster(ctx, "cluster", &cce.ClusterArgs{
-//				Name:                 pulumi.String("cluster"),
-//				FlavorId:             pulumi.String("cce.s2.small"),
-//				VpcId:                pulumi.Any(vpcId),
-//				SubnetId:             pulumi.Any(subnetId),
-//				ContainerNetworkType: pulumi.String("overlay_l2"),
-//				Masters: cce.ClusterMasterArray{
-//					&cce.ClusterMasterArgs{
-//						AvailabilityZone: pulumi.String("cn-north-4a"),
-//					},
-//					&cce.ClusterMasterArgs{
-//						AvailabilityZone: pulumi.String("cn-north-4b"),
-//					},
-//					&cce.ClusterMasterArgs{
-//						AvailabilityZone: pulumi.String("cn-north-4c"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Cluster can be imported using the cluster ID, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Cce/cluster:Cluster  sbercloud_cce_cluster.cluster_1 4779ab1c-7c1a-44b1-a02e-93dfc361b32d
-// ```
-//
-// # Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-//
-// API response, security or some other reason. The missing attributes include:
-//
-// `delete_efs`, `delete_eni`, `delete_evs`, `delete_net`, `delete_obs`, `delete_sfs` and `delete_all`. It is generally
-//
-// recommended running `pulumi preview` after importing an CCE cluster. You can then decide if changes should be applied to
-//
-// the cluster, or the resource definition should be updated to align with the cluster. Also you can ignore changes as
-//
-// below.
-//
-// resource "sbercloud_cce_cluster" "cluster_1" {
-//
-//	  ...
-//
-//	lifecycle {
-//
-//	  ignore_changes = [
-//
-//	    delete_efs, delete_obs,
-//
-//	  ]
-//
-//	}
-//
-// }
 type Cluster struct {
 	pulumi.CustomResourceState
 
-	// Specifies the display name of a cluster. The value of `alias` cannot be the same as the `name`
-	// and display names of other clusters.
 	Alias pulumi.StringOutput `pulumi:"alias"`
 	// schema: Internal
-	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
-	// Specifies the CA root certificate provided in the
-	// **authenticating_proxy** mode. The input value can be a Base64 encoded string or not.
-	// Changing this parameter will create a new cluster resource.
-	AuthenticatingProxyCa pulumi.StringPtrOutput `pulumi:"authenticatingProxyCa"`
-	// Specifies the Client certificate provided in the
-	// **authenticating_proxy** mode. The input value can be a Base64 encoded string or not.
-	// Changing this parameter will create a new cluster resource.
-	AuthenticatingProxyCert pulumi.StringPtrOutput `pulumi:"authenticatingProxyCert"`
-	// Specifies the private key of the client certificate
-	// provided in the **authenticating_proxy** mode. The input value can be a Base64 encoded string or not.
-	// Changing this parameter will create a new cluster resource.
+	Annotations                   pulumi.StringMapOutput `pulumi:"annotations"`
+	AuthenticatingProxyCa         pulumi.StringPtrOutput `pulumi:"authenticatingProxyCa"`
+	AuthenticatingProxyCert       pulumi.StringPtrOutput `pulumi:"authenticatingProxyCert"`
 	AuthenticatingProxyPrivateKey pulumi.StringPtrOutput `pulumi:"authenticatingProxyPrivateKey"`
-	// Specifies the authentication mode of the cluster, possible values
-	// are **rbac** and **authenticating_proxy**. Defaults to **rbac**.
-	// Changing this parameter will create a new cluster resource.
-	AuthenticationMode pulumi.StringPtrOutput `pulumi:"authenticationMode"`
+	AuthenticationMode            pulumi.StringPtrOutput `pulumi:"authenticationMode"`
 	// Deprecated: Deprecated
-	AutoPay pulumi.StringPtrOutput `pulumi:"autoPay"`
-	// Specifies whether auto renew is enabled. Valid values are **true** and **false**.
+	AutoPay   pulumi.StringPtrOutput `pulumi:"autoPay"`
 	AutoRenew pulumi.StringPtrOutput `pulumi:"autoRenew"`
 	// Deprecated: use chargingMode instead
-	BillingMode pulumi.IntOutput `pulumi:"billingMode"`
-	// The category of the cluster. The value can be **CCE** and **Turbo**.
-	Category pulumi.StringOutput `pulumi:"category"`
-	// The certificate clusters. Structure is documented below.
-	CertificateClusters ClusterCertificateClusterArrayOutput `pulumi:"certificateClusters"`
-	// The certificate users. Structure is documented below.
-	CertificateUsers ClusterCertificateUserArrayOutput `pulumi:"certificateUsers"`
-	// Specifies the charging mode of the CCE cluster.
-	// Valid values are **prePaid** and **postPaid**, defaults to **postPaid**.
-	// Changing this parameter will create a new cluster resource.
-	ChargingMode pulumi.StringOutput `pulumi:"chargingMode"`
-	// Specifies the cluster Type, possible values are **VirtualMachine** and
-	// **ARM64**. Defaults to **VirtualMachine**. Changing this parameter will create a new cluster resource.
-	ClusterType pulumi.StringPtrOutput `pulumi:"clusterType"`
-	// Specifies the cluster version, defaults to the latest supported
-	// version. Changing this parameter will create a new cluster resource.
-	ClusterVersion pulumi.StringOutput `pulumi:"clusterVersion"`
-	// Specifies the kubernetes component configurations.
-	// The object structure is documented below.
-	// Changing this parameter will create a new cluster resource.
+	BillingMode             pulumi.IntOutput                         `pulumi:"billingMode"`
+	Category                pulumi.StringOutput                      `pulumi:"category"`
+	CertificateClusters     ClusterCertificateClusterArrayOutput     `pulumi:"certificateClusters"`
+	CertificateUsers        ClusterCertificateUserArrayOutput        `pulumi:"certificateUsers"`
+	ChargingMode            pulumi.StringOutput                      `pulumi:"chargingMode"`
+	ClusterType             pulumi.StringPtrOutput                   `pulumi:"clusterType"`
+	ClusterVersion          pulumi.StringOutput                      `pulumi:"clusterVersion"`
 	ComponentConfigurations ClusterComponentConfigurationArrayOutput `pulumi:"componentConfigurations"`
-	// Specifies the container network segments.
-	// In clusters of v1.21 and later, when the `containerNetworkType` is **vpc-router**, you can add multiple container
-	// segments, separated with comma (,). In other situations, only the first segment takes effect.
-	ContainerNetworkCidr pulumi.StringOutput `pulumi:"containerNetworkCidr"`
-	// Specifies the container network type.
-	// Changing this parameter will create a new cluster resource. Possible values:
-	// + **overlay_l2**: An overlayL2 network built for containers by using Open vSwitch(OVS).
-	// + **vpc-router**: An vpc-router network built for containers by using ipvlan and custom VPC routes.
-	// + **eni**: A Yangtse network built for CCE Turbo cluster. The container network deeply integrates the native ENI
-	//   capability of VPC, uses the VPC CIDR block to allocate container addresses, and supports direct connections between
-	//   ELB and containers to provide high performance.
-	ContainerNetworkType pulumi.StringOutput `pulumi:"containerNetworkType"`
-	// Specifies the custom san to add to certificate (array of string).
-	CustomSans pulumi.StringArrayOutput `pulumi:"customSans"`
-	// Specified whether to delete all associated storage resources when deleting the CCE
-	// cluster. valid values are **true**, **try** and **false**. Default is **false**.
-	DeleteAll pulumi.StringPtrOutput `pulumi:"deleteAll"`
-	// Specified whether to unbind associated SFS Turbo file systems when deleting the CCE
-	// cluster. valid values are **true**, **try** and **false**. Default is **false**.
-	DeleteEfs pulumi.StringPtrOutput `pulumi:"deleteEfs"`
+	ContainerNetworkCidr    pulumi.StringOutput                      `pulumi:"containerNetworkCidr"`
+	ContainerNetworkType    pulumi.StringOutput                      `pulumi:"containerNetworkType"`
+	CustomSans              pulumi.StringArrayOutput                 `pulumi:"customSans"`
+	DeleteAll               pulumi.StringPtrOutput                   `pulumi:"deleteAll"`
+	DeleteEfs               pulumi.StringPtrOutput                   `pulumi:"deleteEfs"`
 	// schema: Internal
 	DeleteEni pulumi.StringPtrOutput `pulumi:"deleteEni"`
-	// Specified whether to delete associated EVS disks when deleting the CCE cluster.
-	// valid values are **true**, **try** and **false**. Default is **false**.
 	DeleteEvs pulumi.StringPtrOutput `pulumi:"deleteEvs"`
 	// schema: Internal
-	DeleteNet pulumi.StringPtrOutput `pulumi:"deleteNet"`
-	// Specified whether to delete associated OBS buckets when deleting the CCE cluster.
-	// valid values are **true**, **try** and **false**. Default is **false**.
-	DeleteObs pulumi.StringPtrOutput `pulumi:"deleteObs"`
-	// Specified whether to delete associated SFS file systems when deleting the CCE
-	// cluster. valid values are **true**, **try** and **false**. Default is **false**.
-	DeleteSfs pulumi.StringPtrOutput `pulumi:"deleteSfs"`
-	// Specifies the cluster description.
-	Description pulumi.StringOutput `pulumi:"description"`
-	// Specifies the EIP address of the cluster.
+	DeleteNet                  pulumi.StringPtrOutput        `pulumi:"deleteNet"`
+	DeleteObs                  pulumi.StringPtrOutput        `pulumi:"deleteObs"`
+	DeleteSfs                  pulumi.StringPtrOutput        `pulumi:"deleteSfs"`
+	Description                pulumi.StringOutput           `pulumi:"description"`
 	Eip                        pulumi.StringPtrOutput        `pulumi:"eip"`
 	EnableDistributeManagement pulumi.BoolOutput             `pulumi:"enableDistributeManagement"`
 	EncryptionConfig           ClusterEncryptionConfigOutput `pulumi:"encryptionConfig"`
-	// The ENI network segment. This value is valid when only one eniSubnetId is specified.
+	// schema: Computed
 	EniSubnetCidr pulumi.StringOutput `pulumi:"eniSubnetCidr"`
-	// Specifies the **IPv4 subnet ID** of the subnet where the ENI resides.
-	// Specified when creating a CCE Turbo cluster. You can add multiple IPv4 subnet ID, separated with comma (,).
-	// Only adding subnets is allowed, removing subnets is not allowed.
-	EniSubnetId pulumi.StringOutput `pulumi:"eniSubnetId"`
-	// The enterprise project ID of the CCE cluster.
+	// the IPv4 subnet ID of the subnet where the ENI resides
+	EniSubnetId         pulumi.StringOutput `pulumi:"eniSubnetId"`
 	EnterpriseProjectId pulumi.StringOutput `pulumi:"enterpriseProjectId"`
 	// schema: Internal
-	ExtendParam pulumi.StringMapOutput `pulumi:"extendParam"`
-	// Specifies the extended parameter.
-	// The object structure is documented below.
-	// Changing this parameter will create a new cluster resource.
+	ExtendParam  pulumi.StringMapOutput        `pulumi:"extendParam"`
 	ExtendParams ClusterExtendParamArrayOutput `pulumi:"extendParams"`
-	// Specifies the cluster specifications.
-	// Possible values:
-	// + **cce.s1.small**: small-scale single cluster (up to 50 nodes).
-	// + **cce.s1.medium**: medium-scale single cluster (up to 200 nodes).
-	// + **cce.s2.small**: small-scale HA cluster (up to 50 nodes).
-	// + **cce.s2.medium**: medium-scale HA cluster (up to 200 nodes).
-	// + **cce.s2.large**: large-scale HA cluster (up to 1000 nodes).
-	// + **cce.s2.xlarge**: large-scale HA cluster (up to 2000 nodes).
-	//
-	// > Changing the number of control nodes or reducing cluster flavor is not supported.
-	FlavorId pulumi.StringOutput `pulumi:"flavorId"`
-	// Specifies whether to hibernate the CCE cluster. Defaults to **false**. After a cluster is
-	// hibernated, resources such as workloads cannot be created or managed in the cluster, and the cluster cannot be
-	// deleted.
-	//
-	// <a name="cceClusterMasters"></a>
-	// The `masters` block supports:
-	Hibernate pulumi.BoolPtrOutput `pulumi:"hibernate"`
+	FlavorId     pulumi.StringOutput           `pulumi:"flavorId"`
+	Hibernate    pulumi.BoolPtrOutput          `pulumi:"hibernate"`
 	// schema: Internal
 	HighwaySubnetId pulumi.StringOutput `pulumi:"highwaySubnetId"`
-	// Specifies whether to enable IPv6 in the cluster.
-	// Changing this parameter will create a new cluster resource.
-	Ipv6Enable pulumi.BoolOutput `pulumi:"ipv6Enable"`
-	// Raw Kubernetes config to be used by kubectl and other compatible tools.
-	KubeConfigRaw pulumi.StringOutput `pulumi:"kubeConfigRaw"`
-	// Specifies the service forwarding mode.
-	// Changing this parameter will create a new cluster resource. Two modes are available:
-	//
-	// + **iptables**: Traditional kube-proxy uses iptables rules to implement service load balancing. In this mode, too many
-	//   iptables rules will be generated when many services are deployed. In addition, non-incremental updates will cause a
-	//   latency and even obvious performance issues in the case of heavy service traffic.
-	// + **ipvs**: Optimized kube-proxy mode with higher throughput and faster speed. This mode supports incremental updates
-	//   and can keep connections uninterrupted during service updates. It is suitable for large-sized clusters.
-	KubeProxyMode pulumi.StringOutput `pulumi:"kubeProxyMode"`
+	Ipv6Enable      pulumi.BoolOutput   `pulumi:"ipv6Enable"`
+	KubeConfigRaw   pulumi.StringOutput `pulumi:"kubeConfigRaw"`
+	KubeProxyMode   pulumi.StringOutput `pulumi:"kubeProxyMode"`
 	// schema: Internal
-	Labels           pulumi.StringMapOutput `pulumi:"labels"`
-	LtsReclaimPolicy pulumi.StringPtrOutput `pulumi:"ltsReclaimPolicy"`
-	// Specifies the advanced configuration of master nodes.
-	// The object structure is documented below.
-	// This parameter and `multiAz` are alternative. Changing this parameter will create a new cluster resource.
-	Masters ClusterMasterArrayOutput `pulumi:"masters"`
-	// Specifies whether to enable multiple AZs for the cluster, only when using HA
-	// flavors. Changing this parameter will create a new cluster resource. This parameter and `masters` are alternative.
-	MultiAz pulumi.BoolPtrOutput `pulumi:"multiAz"`
-	// Specifies the component name.
-	// Changing this parameter will create a new cluster resource.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the charging period of the CCE cluster.
-	// If `periodUnit` is set to **month**, the value ranges from 1 to 9.
-	// If `periodUnit` is set to **year**, the value ranges from 1 to 3.
-	// This parameter is mandatory if `chargingMode` is set to **prePaid**.
-	// Changing this parameter will create a new cluster resource.
-	Period pulumi.IntPtrOutput `pulumi:"period"`
-	// Specifies the charging period unit of the CCE cluster.
-	// Valid values are **month** and **year**. This parameter is mandatory if `chargingMode` is set to **prePaid**.
-	// Changing this parameter will create a new cluster resource.
-	PeriodUnit pulumi.StringPtrOutput `pulumi:"periodUnit"`
-	// Specifies the region in which to create the CCE cluster resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new cluster resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Specifies the default worker node security group ID of the cluster.
-	// If left empty, the system will automatically create a default worker node security group for you.
-	// The default worker node security group needs to allow access from certain ports to ensure normal communications.
-	// If updated, the modified security group will only be applied to nodes newly created or accepted.
-	// For existing nodes, you need to manually modify the security group rules for them.
-	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
-	// Specifies the service network segment.
-	// Changing this parameter will create a new cluster resource.
-	ServiceNetworkCidr pulumi.StringOutput `pulumi:"serviceNetworkCidr"`
-	// Cluster status information.
-	Status pulumi.StringOutput `pulumi:"status"`
-	// Specifies the ID of the subnet used to create the node which should be
-	// configured with a *DNS address*. Changing this parameter will create a new cluster resource.
-	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
-	// Specifies whether to support Istio in the cluster.
-	// Changing this parameter will create a new cluster resource.
-	SupportIstio pulumi.BoolOutput `pulumi:"supportIstio"`
-	// Specifies the tags of the CCE cluster, key/value pair format.
-	Tags     pulumi.StringMapOutput `pulumi:"tags"`
-	Timezone pulumi.StringOutput    `pulumi:"timezone"`
-	// Specifies the ID of the VPC used to create the node.
-	// Changing this parameter will create a new cluster resource.
-	VpcId pulumi.StringOutput `pulumi:"vpcId"`
+	Labels             pulumi.StringMapOutput   `pulumi:"labels"`
+	LtsReclaimPolicy   pulumi.StringPtrOutput   `pulumi:"ltsReclaimPolicy"`
+	Masters            ClusterMasterArrayOutput `pulumi:"masters"`
+	MultiAz            pulumi.BoolPtrOutput     `pulumi:"multiAz"`
+	Name               pulumi.StringOutput      `pulumi:"name"`
+	Period             pulumi.IntPtrOutput      `pulumi:"period"`
+	PeriodUnit         pulumi.StringPtrOutput   `pulumi:"periodUnit"`
+	Region             pulumi.StringOutput      `pulumi:"region"`
+	SecurityGroupId    pulumi.StringOutput      `pulumi:"securityGroupId"`
+	ServiceNetworkCidr pulumi.StringOutput      `pulumi:"serviceNetworkCidr"`
+	Status             pulumi.StringOutput      `pulumi:"status"`
+	SubnetId           pulumi.StringOutput      `pulumi:"subnetId"`
+	SupportIstio       pulumi.BoolOutput        `pulumi:"supportIstio"`
+	Tags               pulumi.StringMapOutput   `pulumi:"tags"`
+	Timezone           pulumi.StringOutput      `pulumi:"timezone"`
+	VpcId              pulumi.StringOutput      `pulumi:"vpcId"`
 }
 
 // NewCluster registers a new resource with the given unique name, arguments, and options.
@@ -441,375 +126,143 @@ func GetCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cluster resources.
 type clusterState struct {
-	// Specifies the display name of a cluster. The value of `alias` cannot be the same as the `name`
-	// and display names of other clusters.
 	Alias *string `pulumi:"alias"`
 	// schema: Internal
-	Annotations map[string]string `pulumi:"annotations"`
-	// Specifies the CA root certificate provided in the
-	// **authenticating_proxy** mode. The input value can be a Base64 encoded string or not.
-	// Changing this parameter will create a new cluster resource.
-	AuthenticatingProxyCa *string `pulumi:"authenticatingProxyCa"`
-	// Specifies the Client certificate provided in the
-	// **authenticating_proxy** mode. The input value can be a Base64 encoded string or not.
-	// Changing this parameter will create a new cluster resource.
-	AuthenticatingProxyCert *string `pulumi:"authenticatingProxyCert"`
-	// Specifies the private key of the client certificate
-	// provided in the **authenticating_proxy** mode. The input value can be a Base64 encoded string or not.
-	// Changing this parameter will create a new cluster resource.
-	AuthenticatingProxyPrivateKey *string `pulumi:"authenticatingProxyPrivateKey"`
-	// Specifies the authentication mode of the cluster, possible values
-	// are **rbac** and **authenticating_proxy**. Defaults to **rbac**.
-	// Changing this parameter will create a new cluster resource.
-	AuthenticationMode *string `pulumi:"authenticationMode"`
+	Annotations                   map[string]string `pulumi:"annotations"`
+	AuthenticatingProxyCa         *string           `pulumi:"authenticatingProxyCa"`
+	AuthenticatingProxyCert       *string           `pulumi:"authenticatingProxyCert"`
+	AuthenticatingProxyPrivateKey *string           `pulumi:"authenticatingProxyPrivateKey"`
+	AuthenticationMode            *string           `pulumi:"authenticationMode"`
 	// Deprecated: Deprecated
-	AutoPay *string `pulumi:"autoPay"`
-	// Specifies whether auto renew is enabled. Valid values are **true** and **false**.
+	AutoPay   *string `pulumi:"autoPay"`
 	AutoRenew *string `pulumi:"autoRenew"`
 	// Deprecated: use chargingMode instead
-	BillingMode *int `pulumi:"billingMode"`
-	// The category of the cluster. The value can be **CCE** and **Turbo**.
-	Category *string `pulumi:"category"`
-	// The certificate clusters. Structure is documented below.
-	CertificateClusters []ClusterCertificateCluster `pulumi:"certificateClusters"`
-	// The certificate users. Structure is documented below.
-	CertificateUsers []ClusterCertificateUser `pulumi:"certificateUsers"`
-	// Specifies the charging mode of the CCE cluster.
-	// Valid values are **prePaid** and **postPaid**, defaults to **postPaid**.
-	// Changing this parameter will create a new cluster resource.
-	ChargingMode *string `pulumi:"chargingMode"`
-	// Specifies the cluster Type, possible values are **VirtualMachine** and
-	// **ARM64**. Defaults to **VirtualMachine**. Changing this parameter will create a new cluster resource.
-	ClusterType *string `pulumi:"clusterType"`
-	// Specifies the cluster version, defaults to the latest supported
-	// version. Changing this parameter will create a new cluster resource.
-	ClusterVersion *string `pulumi:"clusterVersion"`
-	// Specifies the kubernetes component configurations.
-	// The object structure is documented below.
-	// Changing this parameter will create a new cluster resource.
+	BillingMode             *int                            `pulumi:"billingMode"`
+	Category                *string                         `pulumi:"category"`
+	CertificateClusters     []ClusterCertificateCluster     `pulumi:"certificateClusters"`
+	CertificateUsers        []ClusterCertificateUser        `pulumi:"certificateUsers"`
+	ChargingMode            *string                         `pulumi:"chargingMode"`
+	ClusterType             *string                         `pulumi:"clusterType"`
+	ClusterVersion          *string                         `pulumi:"clusterVersion"`
 	ComponentConfigurations []ClusterComponentConfiguration `pulumi:"componentConfigurations"`
-	// Specifies the container network segments.
-	// In clusters of v1.21 and later, when the `containerNetworkType` is **vpc-router**, you can add multiple container
-	// segments, separated with comma (,). In other situations, only the first segment takes effect.
-	ContainerNetworkCidr *string `pulumi:"containerNetworkCidr"`
-	// Specifies the container network type.
-	// Changing this parameter will create a new cluster resource. Possible values:
-	// + **overlay_l2**: An overlayL2 network built for containers by using Open vSwitch(OVS).
-	// + **vpc-router**: An vpc-router network built for containers by using ipvlan and custom VPC routes.
-	// + **eni**: A Yangtse network built for CCE Turbo cluster. The container network deeply integrates the native ENI
-	//   capability of VPC, uses the VPC CIDR block to allocate container addresses, and supports direct connections between
-	//   ELB and containers to provide high performance.
-	ContainerNetworkType *string `pulumi:"containerNetworkType"`
-	// Specifies the custom san to add to certificate (array of string).
-	CustomSans []string `pulumi:"customSans"`
-	// Specified whether to delete all associated storage resources when deleting the CCE
-	// cluster. valid values are **true**, **try** and **false**. Default is **false**.
-	DeleteAll *string `pulumi:"deleteAll"`
-	// Specified whether to unbind associated SFS Turbo file systems when deleting the CCE
-	// cluster. valid values are **true**, **try** and **false**. Default is **false**.
-	DeleteEfs *string `pulumi:"deleteEfs"`
+	ContainerNetworkCidr    *string                         `pulumi:"containerNetworkCidr"`
+	ContainerNetworkType    *string                         `pulumi:"containerNetworkType"`
+	CustomSans              []string                        `pulumi:"customSans"`
+	DeleteAll               *string                         `pulumi:"deleteAll"`
+	DeleteEfs               *string                         `pulumi:"deleteEfs"`
 	// schema: Internal
 	DeleteEni *string `pulumi:"deleteEni"`
-	// Specified whether to delete associated EVS disks when deleting the CCE cluster.
-	// valid values are **true**, **try** and **false**. Default is **false**.
 	DeleteEvs *string `pulumi:"deleteEvs"`
 	// schema: Internal
-	DeleteNet *string `pulumi:"deleteNet"`
-	// Specified whether to delete associated OBS buckets when deleting the CCE cluster.
-	// valid values are **true**, **try** and **false**. Default is **false**.
-	DeleteObs *string `pulumi:"deleteObs"`
-	// Specified whether to delete associated SFS file systems when deleting the CCE
-	// cluster. valid values are **true**, **try** and **false**. Default is **false**.
-	DeleteSfs *string `pulumi:"deleteSfs"`
-	// Specifies the cluster description.
-	Description *string `pulumi:"description"`
-	// Specifies the EIP address of the cluster.
+	DeleteNet                  *string                  `pulumi:"deleteNet"`
+	DeleteObs                  *string                  `pulumi:"deleteObs"`
+	DeleteSfs                  *string                  `pulumi:"deleteSfs"`
+	Description                *string                  `pulumi:"description"`
 	Eip                        *string                  `pulumi:"eip"`
 	EnableDistributeManagement *bool                    `pulumi:"enableDistributeManagement"`
 	EncryptionConfig           *ClusterEncryptionConfig `pulumi:"encryptionConfig"`
-	// The ENI network segment. This value is valid when only one eniSubnetId is specified.
+	// schema: Computed
 	EniSubnetCidr *string `pulumi:"eniSubnetCidr"`
-	// Specifies the **IPv4 subnet ID** of the subnet where the ENI resides.
-	// Specified when creating a CCE Turbo cluster. You can add multiple IPv4 subnet ID, separated with comma (,).
-	// Only adding subnets is allowed, removing subnets is not allowed.
-	EniSubnetId *string `pulumi:"eniSubnetId"`
-	// The enterprise project ID of the CCE cluster.
+	// the IPv4 subnet ID of the subnet where the ENI resides
+	EniSubnetId         *string `pulumi:"eniSubnetId"`
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
 	// schema: Internal
-	ExtendParam map[string]string `pulumi:"extendParam"`
-	// Specifies the extended parameter.
-	// The object structure is documented below.
-	// Changing this parameter will create a new cluster resource.
+	ExtendParam  map[string]string    `pulumi:"extendParam"`
 	ExtendParams []ClusterExtendParam `pulumi:"extendParams"`
-	// Specifies the cluster specifications.
-	// Possible values:
-	// + **cce.s1.small**: small-scale single cluster (up to 50 nodes).
-	// + **cce.s1.medium**: medium-scale single cluster (up to 200 nodes).
-	// + **cce.s2.small**: small-scale HA cluster (up to 50 nodes).
-	// + **cce.s2.medium**: medium-scale HA cluster (up to 200 nodes).
-	// + **cce.s2.large**: large-scale HA cluster (up to 1000 nodes).
-	// + **cce.s2.xlarge**: large-scale HA cluster (up to 2000 nodes).
-	//
-	// > Changing the number of control nodes or reducing cluster flavor is not supported.
-	FlavorId *string `pulumi:"flavorId"`
-	// Specifies whether to hibernate the CCE cluster. Defaults to **false**. After a cluster is
-	// hibernated, resources such as workloads cannot be created or managed in the cluster, and the cluster cannot be
-	// deleted.
-	//
-	// <a name="cceClusterMasters"></a>
-	// The `masters` block supports:
-	Hibernate *bool `pulumi:"hibernate"`
+	FlavorId     *string              `pulumi:"flavorId"`
+	Hibernate    *bool                `pulumi:"hibernate"`
 	// schema: Internal
 	HighwaySubnetId *string `pulumi:"highwaySubnetId"`
-	// Specifies whether to enable IPv6 in the cluster.
-	// Changing this parameter will create a new cluster resource.
-	Ipv6Enable *bool `pulumi:"ipv6Enable"`
-	// Raw Kubernetes config to be used by kubectl and other compatible tools.
-	KubeConfigRaw *string `pulumi:"kubeConfigRaw"`
-	// Specifies the service forwarding mode.
-	// Changing this parameter will create a new cluster resource. Two modes are available:
-	//
-	// + **iptables**: Traditional kube-proxy uses iptables rules to implement service load balancing. In this mode, too many
-	//   iptables rules will be generated when many services are deployed. In addition, non-incremental updates will cause a
-	//   latency and even obvious performance issues in the case of heavy service traffic.
-	// + **ipvs**: Optimized kube-proxy mode with higher throughput and faster speed. This mode supports incremental updates
-	//   and can keep connections uninterrupted during service updates. It is suitable for large-sized clusters.
-	KubeProxyMode *string `pulumi:"kubeProxyMode"`
+	Ipv6Enable      *bool   `pulumi:"ipv6Enable"`
+	KubeConfigRaw   *string `pulumi:"kubeConfigRaw"`
+	KubeProxyMode   *string `pulumi:"kubeProxyMode"`
 	// schema: Internal
-	Labels           map[string]string `pulumi:"labels"`
-	LtsReclaimPolicy *string           `pulumi:"ltsReclaimPolicy"`
-	// Specifies the advanced configuration of master nodes.
-	// The object structure is documented below.
-	// This parameter and `multiAz` are alternative. Changing this parameter will create a new cluster resource.
-	Masters []ClusterMaster `pulumi:"masters"`
-	// Specifies whether to enable multiple AZs for the cluster, only when using HA
-	// flavors. Changing this parameter will create a new cluster resource. This parameter and `masters` are alternative.
-	MultiAz *bool `pulumi:"multiAz"`
-	// Specifies the component name.
-	// Changing this parameter will create a new cluster resource.
-	Name *string `pulumi:"name"`
-	// Specifies the charging period of the CCE cluster.
-	// If `periodUnit` is set to **month**, the value ranges from 1 to 9.
-	// If `periodUnit` is set to **year**, the value ranges from 1 to 3.
-	// This parameter is mandatory if `chargingMode` is set to **prePaid**.
-	// Changing this parameter will create a new cluster resource.
-	Period *int `pulumi:"period"`
-	// Specifies the charging period unit of the CCE cluster.
-	// Valid values are **month** and **year**. This parameter is mandatory if `chargingMode` is set to **prePaid**.
-	// Changing this parameter will create a new cluster resource.
-	PeriodUnit *string `pulumi:"periodUnit"`
-	// Specifies the region in which to create the CCE cluster resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new cluster resource.
-	Region *string `pulumi:"region"`
-	// Specifies the default worker node security group ID of the cluster.
-	// If left empty, the system will automatically create a default worker node security group for you.
-	// The default worker node security group needs to allow access from certain ports to ensure normal communications.
-	// If updated, the modified security group will only be applied to nodes newly created or accepted.
-	// For existing nodes, you need to manually modify the security group rules for them.
-	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// Specifies the service network segment.
-	// Changing this parameter will create a new cluster resource.
-	ServiceNetworkCidr *string `pulumi:"serviceNetworkCidr"`
-	// Cluster status information.
-	Status *string `pulumi:"status"`
-	// Specifies the ID of the subnet used to create the node which should be
-	// configured with a *DNS address*. Changing this parameter will create a new cluster resource.
-	SubnetId *string `pulumi:"subnetId"`
-	// Specifies whether to support Istio in the cluster.
-	// Changing this parameter will create a new cluster resource.
-	SupportIstio *bool `pulumi:"supportIstio"`
-	// Specifies the tags of the CCE cluster, key/value pair format.
-	Tags     map[string]string `pulumi:"tags"`
-	Timezone *string           `pulumi:"timezone"`
-	// Specifies the ID of the VPC used to create the node.
-	// Changing this parameter will create a new cluster resource.
-	VpcId *string `pulumi:"vpcId"`
+	Labels             map[string]string `pulumi:"labels"`
+	LtsReclaimPolicy   *string           `pulumi:"ltsReclaimPolicy"`
+	Masters            []ClusterMaster   `pulumi:"masters"`
+	MultiAz            *bool             `pulumi:"multiAz"`
+	Name               *string           `pulumi:"name"`
+	Period             *int              `pulumi:"period"`
+	PeriodUnit         *string           `pulumi:"periodUnit"`
+	Region             *string           `pulumi:"region"`
+	SecurityGroupId    *string           `pulumi:"securityGroupId"`
+	ServiceNetworkCidr *string           `pulumi:"serviceNetworkCidr"`
+	Status             *string           `pulumi:"status"`
+	SubnetId           *string           `pulumi:"subnetId"`
+	SupportIstio       *bool             `pulumi:"supportIstio"`
+	Tags               map[string]string `pulumi:"tags"`
+	Timezone           *string           `pulumi:"timezone"`
+	VpcId              *string           `pulumi:"vpcId"`
 }
 
 type ClusterState struct {
-	// Specifies the display name of a cluster. The value of `alias` cannot be the same as the `name`
-	// and display names of other clusters.
 	Alias pulumi.StringPtrInput
 	// schema: Internal
-	Annotations pulumi.StringMapInput
-	// Specifies the CA root certificate provided in the
-	// **authenticating_proxy** mode. The input value can be a Base64 encoded string or not.
-	// Changing this parameter will create a new cluster resource.
-	AuthenticatingProxyCa pulumi.StringPtrInput
-	// Specifies the Client certificate provided in the
-	// **authenticating_proxy** mode. The input value can be a Base64 encoded string or not.
-	// Changing this parameter will create a new cluster resource.
-	AuthenticatingProxyCert pulumi.StringPtrInput
-	// Specifies the private key of the client certificate
-	// provided in the **authenticating_proxy** mode. The input value can be a Base64 encoded string or not.
-	// Changing this parameter will create a new cluster resource.
+	Annotations                   pulumi.StringMapInput
+	AuthenticatingProxyCa         pulumi.StringPtrInput
+	AuthenticatingProxyCert       pulumi.StringPtrInput
 	AuthenticatingProxyPrivateKey pulumi.StringPtrInput
-	// Specifies the authentication mode of the cluster, possible values
-	// are **rbac** and **authenticating_proxy**. Defaults to **rbac**.
-	// Changing this parameter will create a new cluster resource.
-	AuthenticationMode pulumi.StringPtrInput
+	AuthenticationMode            pulumi.StringPtrInput
 	// Deprecated: Deprecated
-	AutoPay pulumi.StringPtrInput
-	// Specifies whether auto renew is enabled. Valid values are **true** and **false**.
+	AutoPay   pulumi.StringPtrInput
 	AutoRenew pulumi.StringPtrInput
 	// Deprecated: use chargingMode instead
-	BillingMode pulumi.IntPtrInput
-	// The category of the cluster. The value can be **CCE** and **Turbo**.
-	Category pulumi.StringPtrInput
-	// The certificate clusters. Structure is documented below.
-	CertificateClusters ClusterCertificateClusterArrayInput
-	// The certificate users. Structure is documented below.
-	CertificateUsers ClusterCertificateUserArrayInput
-	// Specifies the charging mode of the CCE cluster.
-	// Valid values are **prePaid** and **postPaid**, defaults to **postPaid**.
-	// Changing this parameter will create a new cluster resource.
-	ChargingMode pulumi.StringPtrInput
-	// Specifies the cluster Type, possible values are **VirtualMachine** and
-	// **ARM64**. Defaults to **VirtualMachine**. Changing this parameter will create a new cluster resource.
-	ClusterType pulumi.StringPtrInput
-	// Specifies the cluster version, defaults to the latest supported
-	// version. Changing this parameter will create a new cluster resource.
-	ClusterVersion pulumi.StringPtrInput
-	// Specifies the kubernetes component configurations.
-	// The object structure is documented below.
-	// Changing this parameter will create a new cluster resource.
+	BillingMode             pulumi.IntPtrInput
+	Category                pulumi.StringPtrInput
+	CertificateClusters     ClusterCertificateClusterArrayInput
+	CertificateUsers        ClusterCertificateUserArrayInput
+	ChargingMode            pulumi.StringPtrInput
+	ClusterType             pulumi.StringPtrInput
+	ClusterVersion          pulumi.StringPtrInput
 	ComponentConfigurations ClusterComponentConfigurationArrayInput
-	// Specifies the container network segments.
-	// In clusters of v1.21 and later, when the `containerNetworkType` is **vpc-router**, you can add multiple container
-	// segments, separated with comma (,). In other situations, only the first segment takes effect.
-	ContainerNetworkCidr pulumi.StringPtrInput
-	// Specifies the container network type.
-	// Changing this parameter will create a new cluster resource. Possible values:
-	// + **overlay_l2**: An overlayL2 network built for containers by using Open vSwitch(OVS).
-	// + **vpc-router**: An vpc-router network built for containers by using ipvlan and custom VPC routes.
-	// + **eni**: A Yangtse network built for CCE Turbo cluster. The container network deeply integrates the native ENI
-	//   capability of VPC, uses the VPC CIDR block to allocate container addresses, and supports direct connections between
-	//   ELB and containers to provide high performance.
-	ContainerNetworkType pulumi.StringPtrInput
-	// Specifies the custom san to add to certificate (array of string).
-	CustomSans pulumi.StringArrayInput
-	// Specified whether to delete all associated storage resources when deleting the CCE
-	// cluster. valid values are **true**, **try** and **false**. Default is **false**.
-	DeleteAll pulumi.StringPtrInput
-	// Specified whether to unbind associated SFS Turbo file systems when deleting the CCE
-	// cluster. valid values are **true**, **try** and **false**. Default is **false**.
-	DeleteEfs pulumi.StringPtrInput
+	ContainerNetworkCidr    pulumi.StringPtrInput
+	ContainerNetworkType    pulumi.StringPtrInput
+	CustomSans              pulumi.StringArrayInput
+	DeleteAll               pulumi.StringPtrInput
+	DeleteEfs               pulumi.StringPtrInput
 	// schema: Internal
 	DeleteEni pulumi.StringPtrInput
-	// Specified whether to delete associated EVS disks when deleting the CCE cluster.
-	// valid values are **true**, **try** and **false**. Default is **false**.
 	DeleteEvs pulumi.StringPtrInput
 	// schema: Internal
-	DeleteNet pulumi.StringPtrInput
-	// Specified whether to delete associated OBS buckets when deleting the CCE cluster.
-	// valid values are **true**, **try** and **false**. Default is **false**.
-	DeleteObs pulumi.StringPtrInput
-	// Specified whether to delete associated SFS file systems when deleting the CCE
-	// cluster. valid values are **true**, **try** and **false**. Default is **false**.
-	DeleteSfs pulumi.StringPtrInput
-	// Specifies the cluster description.
-	Description pulumi.StringPtrInput
-	// Specifies the EIP address of the cluster.
+	DeleteNet                  pulumi.StringPtrInput
+	DeleteObs                  pulumi.StringPtrInput
+	DeleteSfs                  pulumi.StringPtrInput
+	Description                pulumi.StringPtrInput
 	Eip                        pulumi.StringPtrInput
 	EnableDistributeManagement pulumi.BoolPtrInput
 	EncryptionConfig           ClusterEncryptionConfigPtrInput
-	// The ENI network segment. This value is valid when only one eniSubnetId is specified.
+	// schema: Computed
 	EniSubnetCidr pulumi.StringPtrInput
-	// Specifies the **IPv4 subnet ID** of the subnet where the ENI resides.
-	// Specified when creating a CCE Turbo cluster. You can add multiple IPv4 subnet ID, separated with comma (,).
-	// Only adding subnets is allowed, removing subnets is not allowed.
-	EniSubnetId pulumi.StringPtrInput
-	// The enterprise project ID of the CCE cluster.
+	// the IPv4 subnet ID of the subnet where the ENI resides
+	EniSubnetId         pulumi.StringPtrInput
 	EnterpriseProjectId pulumi.StringPtrInput
 	// schema: Internal
-	ExtendParam pulumi.StringMapInput
-	// Specifies the extended parameter.
-	// The object structure is documented below.
-	// Changing this parameter will create a new cluster resource.
+	ExtendParam  pulumi.StringMapInput
 	ExtendParams ClusterExtendParamArrayInput
-	// Specifies the cluster specifications.
-	// Possible values:
-	// + **cce.s1.small**: small-scale single cluster (up to 50 nodes).
-	// + **cce.s1.medium**: medium-scale single cluster (up to 200 nodes).
-	// + **cce.s2.small**: small-scale HA cluster (up to 50 nodes).
-	// + **cce.s2.medium**: medium-scale HA cluster (up to 200 nodes).
-	// + **cce.s2.large**: large-scale HA cluster (up to 1000 nodes).
-	// + **cce.s2.xlarge**: large-scale HA cluster (up to 2000 nodes).
-	//
-	// > Changing the number of control nodes or reducing cluster flavor is not supported.
-	FlavorId pulumi.StringPtrInput
-	// Specifies whether to hibernate the CCE cluster. Defaults to **false**. After a cluster is
-	// hibernated, resources such as workloads cannot be created or managed in the cluster, and the cluster cannot be
-	// deleted.
-	//
-	// <a name="cceClusterMasters"></a>
-	// The `masters` block supports:
-	Hibernate pulumi.BoolPtrInput
+	FlavorId     pulumi.StringPtrInput
+	Hibernate    pulumi.BoolPtrInput
 	// schema: Internal
 	HighwaySubnetId pulumi.StringPtrInput
-	// Specifies whether to enable IPv6 in the cluster.
-	// Changing this parameter will create a new cluster resource.
-	Ipv6Enable pulumi.BoolPtrInput
-	// Raw Kubernetes config to be used by kubectl and other compatible tools.
-	KubeConfigRaw pulumi.StringPtrInput
-	// Specifies the service forwarding mode.
-	// Changing this parameter will create a new cluster resource. Two modes are available:
-	//
-	// + **iptables**: Traditional kube-proxy uses iptables rules to implement service load balancing. In this mode, too many
-	//   iptables rules will be generated when many services are deployed. In addition, non-incremental updates will cause a
-	//   latency and even obvious performance issues in the case of heavy service traffic.
-	// + **ipvs**: Optimized kube-proxy mode with higher throughput and faster speed. This mode supports incremental updates
-	//   and can keep connections uninterrupted during service updates. It is suitable for large-sized clusters.
-	KubeProxyMode pulumi.StringPtrInput
+	Ipv6Enable      pulumi.BoolPtrInput
+	KubeConfigRaw   pulumi.StringPtrInput
+	KubeProxyMode   pulumi.StringPtrInput
 	// schema: Internal
-	Labels           pulumi.StringMapInput
-	LtsReclaimPolicy pulumi.StringPtrInput
-	// Specifies the advanced configuration of master nodes.
-	// The object structure is documented below.
-	// This parameter and `multiAz` are alternative. Changing this parameter will create a new cluster resource.
-	Masters ClusterMasterArrayInput
-	// Specifies whether to enable multiple AZs for the cluster, only when using HA
-	// flavors. Changing this parameter will create a new cluster resource. This parameter and `masters` are alternative.
-	MultiAz pulumi.BoolPtrInput
-	// Specifies the component name.
-	// Changing this parameter will create a new cluster resource.
-	Name pulumi.StringPtrInput
-	// Specifies the charging period of the CCE cluster.
-	// If `periodUnit` is set to **month**, the value ranges from 1 to 9.
-	// If `periodUnit` is set to **year**, the value ranges from 1 to 3.
-	// This parameter is mandatory if `chargingMode` is set to **prePaid**.
-	// Changing this parameter will create a new cluster resource.
-	Period pulumi.IntPtrInput
-	// Specifies the charging period unit of the CCE cluster.
-	// Valid values are **month** and **year**. This parameter is mandatory if `chargingMode` is set to **prePaid**.
-	// Changing this parameter will create a new cluster resource.
-	PeriodUnit pulumi.StringPtrInput
-	// Specifies the region in which to create the CCE cluster resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new cluster resource.
-	Region pulumi.StringPtrInput
-	// Specifies the default worker node security group ID of the cluster.
-	// If left empty, the system will automatically create a default worker node security group for you.
-	// The default worker node security group needs to allow access from certain ports to ensure normal communications.
-	// If updated, the modified security group will only be applied to nodes newly created or accepted.
-	// For existing nodes, you need to manually modify the security group rules for them.
-	SecurityGroupId pulumi.StringPtrInput
-	// Specifies the service network segment.
-	// Changing this parameter will create a new cluster resource.
+	Labels             pulumi.StringMapInput
+	LtsReclaimPolicy   pulumi.StringPtrInput
+	Masters            ClusterMasterArrayInput
+	MultiAz            pulumi.BoolPtrInput
+	Name               pulumi.StringPtrInput
+	Period             pulumi.IntPtrInput
+	PeriodUnit         pulumi.StringPtrInput
+	Region             pulumi.StringPtrInput
+	SecurityGroupId    pulumi.StringPtrInput
 	ServiceNetworkCidr pulumi.StringPtrInput
-	// Cluster status information.
-	Status pulumi.StringPtrInput
-	// Specifies the ID of the subnet used to create the node which should be
-	// configured with a *DNS address*. Changing this parameter will create a new cluster resource.
-	SubnetId pulumi.StringPtrInput
-	// Specifies whether to support Istio in the cluster.
-	// Changing this parameter will create a new cluster resource.
-	SupportIstio pulumi.BoolPtrInput
-	// Specifies the tags of the CCE cluster, key/value pair format.
-	Tags     pulumi.StringMapInput
-	Timezone pulumi.StringPtrInput
-	// Specifies the ID of the VPC used to create the node.
-	// Changing this parameter will create a new cluster resource.
-	VpcId pulumi.StringPtrInput
+	Status             pulumi.StringPtrInput
+	SubnetId           pulumi.StringPtrInput
+	SupportIstio       pulumi.BoolPtrInput
+	Tags               pulumi.StringMapInput
+	Timezone           pulumi.StringPtrInput
+	VpcId              pulumi.StringPtrInput
 }
 
 func (ClusterState) ElementType() reflect.Type {
@@ -817,356 +270,134 @@ func (ClusterState) ElementType() reflect.Type {
 }
 
 type clusterArgs struct {
-	// Specifies the display name of a cluster. The value of `alias` cannot be the same as the `name`
-	// and display names of other clusters.
 	Alias *string `pulumi:"alias"`
 	// schema: Internal
-	Annotations map[string]string `pulumi:"annotations"`
-	// Specifies the CA root certificate provided in the
-	// **authenticating_proxy** mode. The input value can be a Base64 encoded string or not.
-	// Changing this parameter will create a new cluster resource.
-	AuthenticatingProxyCa *string `pulumi:"authenticatingProxyCa"`
-	// Specifies the Client certificate provided in the
-	// **authenticating_proxy** mode. The input value can be a Base64 encoded string or not.
-	// Changing this parameter will create a new cluster resource.
-	AuthenticatingProxyCert *string `pulumi:"authenticatingProxyCert"`
-	// Specifies the private key of the client certificate
-	// provided in the **authenticating_proxy** mode. The input value can be a Base64 encoded string or not.
-	// Changing this parameter will create a new cluster resource.
-	AuthenticatingProxyPrivateKey *string `pulumi:"authenticatingProxyPrivateKey"`
-	// Specifies the authentication mode of the cluster, possible values
-	// are **rbac** and **authenticating_proxy**. Defaults to **rbac**.
-	// Changing this parameter will create a new cluster resource.
-	AuthenticationMode *string `pulumi:"authenticationMode"`
+	Annotations                   map[string]string `pulumi:"annotations"`
+	AuthenticatingProxyCa         *string           `pulumi:"authenticatingProxyCa"`
+	AuthenticatingProxyCert       *string           `pulumi:"authenticatingProxyCert"`
+	AuthenticatingProxyPrivateKey *string           `pulumi:"authenticatingProxyPrivateKey"`
+	AuthenticationMode            *string           `pulumi:"authenticationMode"`
 	// Deprecated: Deprecated
-	AutoPay *string `pulumi:"autoPay"`
-	// Specifies whether auto renew is enabled. Valid values are **true** and **false**.
+	AutoPay   *string `pulumi:"autoPay"`
 	AutoRenew *string `pulumi:"autoRenew"`
 	// Deprecated: use chargingMode instead
-	BillingMode *int `pulumi:"billingMode"`
-	// Specifies the charging mode of the CCE cluster.
-	// Valid values are **prePaid** and **postPaid**, defaults to **postPaid**.
-	// Changing this parameter will create a new cluster resource.
-	ChargingMode *string `pulumi:"chargingMode"`
-	// Specifies the cluster Type, possible values are **VirtualMachine** and
-	// **ARM64**. Defaults to **VirtualMachine**. Changing this parameter will create a new cluster resource.
-	ClusterType *string `pulumi:"clusterType"`
-	// Specifies the cluster version, defaults to the latest supported
-	// version. Changing this parameter will create a new cluster resource.
-	ClusterVersion *string `pulumi:"clusterVersion"`
-	// Specifies the kubernetes component configurations.
-	// The object structure is documented below.
-	// Changing this parameter will create a new cluster resource.
+	BillingMode             *int                            `pulumi:"billingMode"`
+	ChargingMode            *string                         `pulumi:"chargingMode"`
+	ClusterType             *string                         `pulumi:"clusterType"`
+	ClusterVersion          *string                         `pulumi:"clusterVersion"`
 	ComponentConfigurations []ClusterComponentConfiguration `pulumi:"componentConfigurations"`
-	// Specifies the container network segments.
-	// In clusters of v1.21 and later, when the `containerNetworkType` is **vpc-router**, you can add multiple container
-	// segments, separated with comma (,). In other situations, only the first segment takes effect.
-	ContainerNetworkCidr *string `pulumi:"containerNetworkCidr"`
-	// Specifies the container network type.
-	// Changing this parameter will create a new cluster resource. Possible values:
-	// + **overlay_l2**: An overlayL2 network built for containers by using Open vSwitch(OVS).
-	// + **vpc-router**: An vpc-router network built for containers by using ipvlan and custom VPC routes.
-	// + **eni**: A Yangtse network built for CCE Turbo cluster. The container network deeply integrates the native ENI
-	//   capability of VPC, uses the VPC CIDR block to allocate container addresses, and supports direct connections between
-	//   ELB and containers to provide high performance.
-	ContainerNetworkType string `pulumi:"containerNetworkType"`
-	// Specifies the custom san to add to certificate (array of string).
-	CustomSans []string `pulumi:"customSans"`
-	// Specified whether to delete all associated storage resources when deleting the CCE
-	// cluster. valid values are **true**, **try** and **false**. Default is **false**.
-	DeleteAll *string `pulumi:"deleteAll"`
-	// Specified whether to unbind associated SFS Turbo file systems when deleting the CCE
-	// cluster. valid values are **true**, **try** and **false**. Default is **false**.
-	DeleteEfs *string `pulumi:"deleteEfs"`
+	ContainerNetworkCidr    *string                         `pulumi:"containerNetworkCidr"`
+	ContainerNetworkType    string                          `pulumi:"containerNetworkType"`
+	CustomSans              []string                        `pulumi:"customSans"`
+	DeleteAll               *string                         `pulumi:"deleteAll"`
+	DeleteEfs               *string                         `pulumi:"deleteEfs"`
 	// schema: Internal
 	DeleteEni *string `pulumi:"deleteEni"`
-	// Specified whether to delete associated EVS disks when deleting the CCE cluster.
-	// valid values are **true**, **try** and **false**. Default is **false**.
 	DeleteEvs *string `pulumi:"deleteEvs"`
 	// schema: Internal
-	DeleteNet *string `pulumi:"deleteNet"`
-	// Specified whether to delete associated OBS buckets when deleting the CCE cluster.
-	// valid values are **true**, **try** and **false**. Default is **false**.
-	DeleteObs *string `pulumi:"deleteObs"`
-	// Specified whether to delete associated SFS file systems when deleting the CCE
-	// cluster. valid values are **true**, **try** and **false**. Default is **false**.
-	DeleteSfs *string `pulumi:"deleteSfs"`
-	// Specifies the cluster description.
-	Description *string `pulumi:"description"`
-	// Specifies the EIP address of the cluster.
+	DeleteNet                  *string                  `pulumi:"deleteNet"`
+	DeleteObs                  *string                  `pulumi:"deleteObs"`
+	DeleteSfs                  *string                  `pulumi:"deleteSfs"`
+	Description                *string                  `pulumi:"description"`
 	Eip                        *string                  `pulumi:"eip"`
 	EnableDistributeManagement *bool                    `pulumi:"enableDistributeManagement"`
 	EncryptionConfig           *ClusterEncryptionConfig `pulumi:"encryptionConfig"`
-	// The ENI network segment. This value is valid when only one eniSubnetId is specified.
+	// schema: Computed
 	EniSubnetCidr *string `pulumi:"eniSubnetCidr"`
-	// Specifies the **IPv4 subnet ID** of the subnet where the ENI resides.
-	// Specified when creating a CCE Turbo cluster. You can add multiple IPv4 subnet ID, separated with comma (,).
-	// Only adding subnets is allowed, removing subnets is not allowed.
-	EniSubnetId *string `pulumi:"eniSubnetId"`
-	// The enterprise project ID of the CCE cluster.
+	// the IPv4 subnet ID of the subnet where the ENI resides
+	EniSubnetId         *string `pulumi:"eniSubnetId"`
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
 	// schema: Internal
-	ExtendParam map[string]string `pulumi:"extendParam"`
-	// Specifies the extended parameter.
-	// The object structure is documented below.
-	// Changing this parameter will create a new cluster resource.
+	ExtendParam  map[string]string    `pulumi:"extendParam"`
 	ExtendParams []ClusterExtendParam `pulumi:"extendParams"`
-	// Specifies the cluster specifications.
-	// Possible values:
-	// + **cce.s1.small**: small-scale single cluster (up to 50 nodes).
-	// + **cce.s1.medium**: medium-scale single cluster (up to 200 nodes).
-	// + **cce.s2.small**: small-scale HA cluster (up to 50 nodes).
-	// + **cce.s2.medium**: medium-scale HA cluster (up to 200 nodes).
-	// + **cce.s2.large**: large-scale HA cluster (up to 1000 nodes).
-	// + **cce.s2.xlarge**: large-scale HA cluster (up to 2000 nodes).
-	//
-	// > Changing the number of control nodes or reducing cluster flavor is not supported.
-	FlavorId string `pulumi:"flavorId"`
-	// Specifies whether to hibernate the CCE cluster. Defaults to **false**. After a cluster is
-	// hibernated, resources such as workloads cannot be created or managed in the cluster, and the cluster cannot be
-	// deleted.
-	//
-	// <a name="cceClusterMasters"></a>
-	// The `masters` block supports:
-	Hibernate *bool `pulumi:"hibernate"`
+	FlavorId     string               `pulumi:"flavorId"`
+	Hibernate    *bool                `pulumi:"hibernate"`
 	// schema: Internal
 	HighwaySubnetId *string `pulumi:"highwaySubnetId"`
-	// Specifies whether to enable IPv6 in the cluster.
-	// Changing this parameter will create a new cluster resource.
-	Ipv6Enable *bool `pulumi:"ipv6Enable"`
-	// Specifies the service forwarding mode.
-	// Changing this parameter will create a new cluster resource. Two modes are available:
-	//
-	// + **iptables**: Traditional kube-proxy uses iptables rules to implement service load balancing. In this mode, too many
-	//   iptables rules will be generated when many services are deployed. In addition, non-incremental updates will cause a
-	//   latency and even obvious performance issues in the case of heavy service traffic.
-	// + **ipvs**: Optimized kube-proxy mode with higher throughput and faster speed. This mode supports incremental updates
-	//   and can keep connections uninterrupted during service updates. It is suitable for large-sized clusters.
-	KubeProxyMode *string `pulumi:"kubeProxyMode"`
+	Ipv6Enable      *bool   `pulumi:"ipv6Enable"`
+	KubeProxyMode   *string `pulumi:"kubeProxyMode"`
 	// schema: Internal
-	Labels           map[string]string `pulumi:"labels"`
-	LtsReclaimPolicy *string           `pulumi:"ltsReclaimPolicy"`
-	// Specifies the advanced configuration of master nodes.
-	// The object structure is documented below.
-	// This parameter and `multiAz` are alternative. Changing this parameter will create a new cluster resource.
-	Masters []ClusterMaster `pulumi:"masters"`
-	// Specifies whether to enable multiple AZs for the cluster, only when using HA
-	// flavors. Changing this parameter will create a new cluster resource. This parameter and `masters` are alternative.
-	MultiAz *bool `pulumi:"multiAz"`
-	// Specifies the component name.
-	// Changing this parameter will create a new cluster resource.
-	Name *string `pulumi:"name"`
-	// Specifies the charging period of the CCE cluster.
-	// If `periodUnit` is set to **month**, the value ranges from 1 to 9.
-	// If `periodUnit` is set to **year**, the value ranges from 1 to 3.
-	// This parameter is mandatory if `chargingMode` is set to **prePaid**.
-	// Changing this parameter will create a new cluster resource.
-	Period *int `pulumi:"period"`
-	// Specifies the charging period unit of the CCE cluster.
-	// Valid values are **month** and **year**. This parameter is mandatory if `chargingMode` is set to **prePaid**.
-	// Changing this parameter will create a new cluster resource.
-	PeriodUnit *string `pulumi:"periodUnit"`
-	// Specifies the region in which to create the CCE cluster resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new cluster resource.
-	Region *string `pulumi:"region"`
-	// Specifies the default worker node security group ID of the cluster.
-	// If left empty, the system will automatically create a default worker node security group for you.
-	// The default worker node security group needs to allow access from certain ports to ensure normal communications.
-	// If updated, the modified security group will only be applied to nodes newly created or accepted.
-	// For existing nodes, you need to manually modify the security group rules for them.
-	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// Specifies the service network segment.
-	// Changing this parameter will create a new cluster resource.
-	ServiceNetworkCidr *string `pulumi:"serviceNetworkCidr"`
-	// Specifies the ID of the subnet used to create the node which should be
-	// configured with a *DNS address*. Changing this parameter will create a new cluster resource.
-	SubnetId string `pulumi:"subnetId"`
-	// Specifies whether to support Istio in the cluster.
-	// Changing this parameter will create a new cluster resource.
-	SupportIstio *bool `pulumi:"supportIstio"`
-	// Specifies the tags of the CCE cluster, key/value pair format.
-	Tags     map[string]string `pulumi:"tags"`
-	Timezone *string           `pulumi:"timezone"`
-	// Specifies the ID of the VPC used to create the node.
-	// Changing this parameter will create a new cluster resource.
-	VpcId string `pulumi:"vpcId"`
+	Labels             map[string]string `pulumi:"labels"`
+	LtsReclaimPolicy   *string           `pulumi:"ltsReclaimPolicy"`
+	Masters            []ClusterMaster   `pulumi:"masters"`
+	MultiAz            *bool             `pulumi:"multiAz"`
+	Name               *string           `pulumi:"name"`
+	Period             *int              `pulumi:"period"`
+	PeriodUnit         *string           `pulumi:"periodUnit"`
+	Region             *string           `pulumi:"region"`
+	SecurityGroupId    *string           `pulumi:"securityGroupId"`
+	ServiceNetworkCidr *string           `pulumi:"serviceNetworkCidr"`
+	SubnetId           string            `pulumi:"subnetId"`
+	SupportIstio       *bool             `pulumi:"supportIstio"`
+	Tags               map[string]string `pulumi:"tags"`
+	Timezone           *string           `pulumi:"timezone"`
+	VpcId              string            `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
-	// Specifies the display name of a cluster. The value of `alias` cannot be the same as the `name`
-	// and display names of other clusters.
 	Alias pulumi.StringPtrInput
 	// schema: Internal
-	Annotations pulumi.StringMapInput
-	// Specifies the CA root certificate provided in the
-	// **authenticating_proxy** mode. The input value can be a Base64 encoded string or not.
-	// Changing this parameter will create a new cluster resource.
-	AuthenticatingProxyCa pulumi.StringPtrInput
-	// Specifies the Client certificate provided in the
-	// **authenticating_proxy** mode. The input value can be a Base64 encoded string or not.
-	// Changing this parameter will create a new cluster resource.
-	AuthenticatingProxyCert pulumi.StringPtrInput
-	// Specifies the private key of the client certificate
-	// provided in the **authenticating_proxy** mode. The input value can be a Base64 encoded string or not.
-	// Changing this parameter will create a new cluster resource.
+	Annotations                   pulumi.StringMapInput
+	AuthenticatingProxyCa         pulumi.StringPtrInput
+	AuthenticatingProxyCert       pulumi.StringPtrInput
 	AuthenticatingProxyPrivateKey pulumi.StringPtrInput
-	// Specifies the authentication mode of the cluster, possible values
-	// are **rbac** and **authenticating_proxy**. Defaults to **rbac**.
-	// Changing this parameter will create a new cluster resource.
-	AuthenticationMode pulumi.StringPtrInput
+	AuthenticationMode            pulumi.StringPtrInput
 	// Deprecated: Deprecated
-	AutoPay pulumi.StringPtrInput
-	// Specifies whether auto renew is enabled. Valid values are **true** and **false**.
+	AutoPay   pulumi.StringPtrInput
 	AutoRenew pulumi.StringPtrInput
 	// Deprecated: use chargingMode instead
-	BillingMode pulumi.IntPtrInput
-	// Specifies the charging mode of the CCE cluster.
-	// Valid values are **prePaid** and **postPaid**, defaults to **postPaid**.
-	// Changing this parameter will create a new cluster resource.
-	ChargingMode pulumi.StringPtrInput
-	// Specifies the cluster Type, possible values are **VirtualMachine** and
-	// **ARM64**. Defaults to **VirtualMachine**. Changing this parameter will create a new cluster resource.
-	ClusterType pulumi.StringPtrInput
-	// Specifies the cluster version, defaults to the latest supported
-	// version. Changing this parameter will create a new cluster resource.
-	ClusterVersion pulumi.StringPtrInput
-	// Specifies the kubernetes component configurations.
-	// The object structure is documented below.
-	// Changing this parameter will create a new cluster resource.
+	BillingMode             pulumi.IntPtrInput
+	ChargingMode            pulumi.StringPtrInput
+	ClusterType             pulumi.StringPtrInput
+	ClusterVersion          pulumi.StringPtrInput
 	ComponentConfigurations ClusterComponentConfigurationArrayInput
-	// Specifies the container network segments.
-	// In clusters of v1.21 and later, when the `containerNetworkType` is **vpc-router**, you can add multiple container
-	// segments, separated with comma (,). In other situations, only the first segment takes effect.
-	ContainerNetworkCidr pulumi.StringPtrInput
-	// Specifies the container network type.
-	// Changing this parameter will create a new cluster resource. Possible values:
-	// + **overlay_l2**: An overlayL2 network built for containers by using Open vSwitch(OVS).
-	// + **vpc-router**: An vpc-router network built for containers by using ipvlan and custom VPC routes.
-	// + **eni**: A Yangtse network built for CCE Turbo cluster. The container network deeply integrates the native ENI
-	//   capability of VPC, uses the VPC CIDR block to allocate container addresses, and supports direct connections between
-	//   ELB and containers to provide high performance.
-	ContainerNetworkType pulumi.StringInput
-	// Specifies the custom san to add to certificate (array of string).
-	CustomSans pulumi.StringArrayInput
-	// Specified whether to delete all associated storage resources when deleting the CCE
-	// cluster. valid values are **true**, **try** and **false**. Default is **false**.
-	DeleteAll pulumi.StringPtrInput
-	// Specified whether to unbind associated SFS Turbo file systems when deleting the CCE
-	// cluster. valid values are **true**, **try** and **false**. Default is **false**.
-	DeleteEfs pulumi.StringPtrInput
+	ContainerNetworkCidr    pulumi.StringPtrInput
+	ContainerNetworkType    pulumi.StringInput
+	CustomSans              pulumi.StringArrayInput
+	DeleteAll               pulumi.StringPtrInput
+	DeleteEfs               pulumi.StringPtrInput
 	// schema: Internal
 	DeleteEni pulumi.StringPtrInput
-	// Specified whether to delete associated EVS disks when deleting the CCE cluster.
-	// valid values are **true**, **try** and **false**. Default is **false**.
 	DeleteEvs pulumi.StringPtrInput
 	// schema: Internal
-	DeleteNet pulumi.StringPtrInput
-	// Specified whether to delete associated OBS buckets when deleting the CCE cluster.
-	// valid values are **true**, **try** and **false**. Default is **false**.
-	DeleteObs pulumi.StringPtrInput
-	// Specified whether to delete associated SFS file systems when deleting the CCE
-	// cluster. valid values are **true**, **try** and **false**. Default is **false**.
-	DeleteSfs pulumi.StringPtrInput
-	// Specifies the cluster description.
-	Description pulumi.StringPtrInput
-	// Specifies the EIP address of the cluster.
+	DeleteNet                  pulumi.StringPtrInput
+	DeleteObs                  pulumi.StringPtrInput
+	DeleteSfs                  pulumi.StringPtrInput
+	Description                pulumi.StringPtrInput
 	Eip                        pulumi.StringPtrInput
 	EnableDistributeManagement pulumi.BoolPtrInput
 	EncryptionConfig           ClusterEncryptionConfigPtrInput
-	// The ENI network segment. This value is valid when only one eniSubnetId is specified.
+	// schema: Computed
 	EniSubnetCidr pulumi.StringPtrInput
-	// Specifies the **IPv4 subnet ID** of the subnet where the ENI resides.
-	// Specified when creating a CCE Turbo cluster. You can add multiple IPv4 subnet ID, separated with comma (,).
-	// Only adding subnets is allowed, removing subnets is not allowed.
-	EniSubnetId pulumi.StringPtrInput
-	// The enterprise project ID of the CCE cluster.
+	// the IPv4 subnet ID of the subnet where the ENI resides
+	EniSubnetId         pulumi.StringPtrInput
 	EnterpriseProjectId pulumi.StringPtrInput
 	// schema: Internal
-	ExtendParam pulumi.StringMapInput
-	// Specifies the extended parameter.
-	// The object structure is documented below.
-	// Changing this parameter will create a new cluster resource.
+	ExtendParam  pulumi.StringMapInput
 	ExtendParams ClusterExtendParamArrayInput
-	// Specifies the cluster specifications.
-	// Possible values:
-	// + **cce.s1.small**: small-scale single cluster (up to 50 nodes).
-	// + **cce.s1.medium**: medium-scale single cluster (up to 200 nodes).
-	// + **cce.s2.small**: small-scale HA cluster (up to 50 nodes).
-	// + **cce.s2.medium**: medium-scale HA cluster (up to 200 nodes).
-	// + **cce.s2.large**: large-scale HA cluster (up to 1000 nodes).
-	// + **cce.s2.xlarge**: large-scale HA cluster (up to 2000 nodes).
-	//
-	// > Changing the number of control nodes or reducing cluster flavor is not supported.
-	FlavorId pulumi.StringInput
-	// Specifies whether to hibernate the CCE cluster. Defaults to **false**. After a cluster is
-	// hibernated, resources such as workloads cannot be created or managed in the cluster, and the cluster cannot be
-	// deleted.
-	//
-	// <a name="cceClusterMasters"></a>
-	// The `masters` block supports:
-	Hibernate pulumi.BoolPtrInput
+	FlavorId     pulumi.StringInput
+	Hibernate    pulumi.BoolPtrInput
 	// schema: Internal
 	HighwaySubnetId pulumi.StringPtrInput
-	// Specifies whether to enable IPv6 in the cluster.
-	// Changing this parameter will create a new cluster resource.
-	Ipv6Enable pulumi.BoolPtrInput
-	// Specifies the service forwarding mode.
-	// Changing this parameter will create a new cluster resource. Two modes are available:
-	//
-	// + **iptables**: Traditional kube-proxy uses iptables rules to implement service load balancing. In this mode, too many
-	//   iptables rules will be generated when many services are deployed. In addition, non-incremental updates will cause a
-	//   latency and even obvious performance issues in the case of heavy service traffic.
-	// + **ipvs**: Optimized kube-proxy mode with higher throughput and faster speed. This mode supports incremental updates
-	//   and can keep connections uninterrupted during service updates. It is suitable for large-sized clusters.
-	KubeProxyMode pulumi.StringPtrInput
+	Ipv6Enable      pulumi.BoolPtrInput
+	KubeProxyMode   pulumi.StringPtrInput
 	// schema: Internal
-	Labels           pulumi.StringMapInput
-	LtsReclaimPolicy pulumi.StringPtrInput
-	// Specifies the advanced configuration of master nodes.
-	// The object structure is documented below.
-	// This parameter and `multiAz` are alternative. Changing this parameter will create a new cluster resource.
-	Masters ClusterMasterArrayInput
-	// Specifies whether to enable multiple AZs for the cluster, only when using HA
-	// flavors. Changing this parameter will create a new cluster resource. This parameter and `masters` are alternative.
-	MultiAz pulumi.BoolPtrInput
-	// Specifies the component name.
-	// Changing this parameter will create a new cluster resource.
-	Name pulumi.StringPtrInput
-	// Specifies the charging period of the CCE cluster.
-	// If `periodUnit` is set to **month**, the value ranges from 1 to 9.
-	// If `periodUnit` is set to **year**, the value ranges from 1 to 3.
-	// This parameter is mandatory if `chargingMode` is set to **prePaid**.
-	// Changing this parameter will create a new cluster resource.
-	Period pulumi.IntPtrInput
-	// Specifies the charging period unit of the CCE cluster.
-	// Valid values are **month** and **year**. This parameter is mandatory if `chargingMode` is set to **prePaid**.
-	// Changing this parameter will create a new cluster resource.
-	PeriodUnit pulumi.StringPtrInput
-	// Specifies the region in which to create the CCE cluster resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new cluster resource.
-	Region pulumi.StringPtrInput
-	// Specifies the default worker node security group ID of the cluster.
-	// If left empty, the system will automatically create a default worker node security group for you.
-	// The default worker node security group needs to allow access from certain ports to ensure normal communications.
-	// If updated, the modified security group will only be applied to nodes newly created or accepted.
-	// For existing nodes, you need to manually modify the security group rules for them.
-	SecurityGroupId pulumi.StringPtrInput
-	// Specifies the service network segment.
-	// Changing this parameter will create a new cluster resource.
+	Labels             pulumi.StringMapInput
+	LtsReclaimPolicy   pulumi.StringPtrInput
+	Masters            ClusterMasterArrayInput
+	MultiAz            pulumi.BoolPtrInput
+	Name               pulumi.StringPtrInput
+	Period             pulumi.IntPtrInput
+	PeriodUnit         pulumi.StringPtrInput
+	Region             pulumi.StringPtrInput
+	SecurityGroupId    pulumi.StringPtrInput
 	ServiceNetworkCidr pulumi.StringPtrInput
-	// Specifies the ID of the subnet used to create the node which should be
-	// configured with a *DNS address*. Changing this parameter will create a new cluster resource.
-	SubnetId pulumi.StringInput
-	// Specifies whether to support Istio in the cluster.
-	// Changing this parameter will create a new cluster resource.
-	SupportIstio pulumi.BoolPtrInput
-	// Specifies the tags of the CCE cluster, key/value pair format.
-	Tags     pulumi.StringMapInput
-	Timezone pulumi.StringPtrInput
-	// Specifies the ID of the VPC used to create the node.
-	// Changing this parameter will create a new cluster resource.
-	VpcId pulumi.StringInput
+	SubnetId           pulumi.StringInput
+	SupportIstio       pulumi.BoolPtrInput
+	Tags               pulumi.StringMapInput
+	Timezone           pulumi.StringPtrInput
+	VpcId              pulumi.StringInput
 }
 
 func (ClusterArgs) ElementType() reflect.Type {
@@ -1256,8 +487,6 @@ func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOu
 	return o
 }
 
-// Specifies the display name of a cluster. The value of `alias` cannot be the same as the `name`
-// and display names of other clusters.
 func (o ClusterOutput) Alias() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Alias }).(pulumi.StringOutput)
 }
@@ -1267,30 +496,18 @@ func (o ClusterOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// Specifies the CA root certificate provided in the
-// **authenticating_proxy** mode. The input value can be a Base64 encoded string or not.
-// Changing this parameter will create a new cluster resource.
 func (o ClusterOutput) AuthenticatingProxyCa() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.AuthenticatingProxyCa }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the Client certificate provided in the
-// **authenticating_proxy** mode. The input value can be a Base64 encoded string or not.
-// Changing this parameter will create a new cluster resource.
 func (o ClusterOutput) AuthenticatingProxyCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.AuthenticatingProxyCert }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the private key of the client certificate
-// provided in the **authenticating_proxy** mode. The input value can be a Base64 encoded string or not.
-// Changing this parameter will create a new cluster resource.
 func (o ClusterOutput) AuthenticatingProxyPrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.AuthenticatingProxyPrivateKey }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the authentication mode of the cluster, possible values
-// are **rbac** and **authenticating_proxy**. Defaults to **rbac**.
-// Changing this parameter will create a new cluster resource.
 func (o ClusterOutput) AuthenticationMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.AuthenticationMode }).(pulumi.StringPtrOutput)
 }
@@ -1300,7 +517,6 @@ func (o ClusterOutput) AutoPay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.AutoPay }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether auto renew is enabled. Valid values are **true** and **false**.
 func (o ClusterOutput) AutoRenew() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.AutoRenew }).(pulumi.StringPtrOutput)
 }
@@ -1310,78 +526,50 @@ func (o ClusterOutput) BillingMode() pulumi.IntOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.BillingMode }).(pulumi.IntOutput)
 }
 
-// The category of the cluster. The value can be **CCE** and **Turbo**.
 func (o ClusterOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Category }).(pulumi.StringOutput)
 }
 
-// The certificate clusters. Structure is documented below.
 func (o ClusterOutput) CertificateClusters() ClusterCertificateClusterArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterCertificateClusterArrayOutput { return v.CertificateClusters }).(ClusterCertificateClusterArrayOutput)
 }
 
-// The certificate users. Structure is documented below.
 func (o ClusterOutput) CertificateUsers() ClusterCertificateUserArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterCertificateUserArrayOutput { return v.CertificateUsers }).(ClusterCertificateUserArrayOutput)
 }
 
-// Specifies the charging mode of the CCE cluster.
-// Valid values are **prePaid** and **postPaid**, defaults to **postPaid**.
-// Changing this parameter will create a new cluster resource.
 func (o ClusterOutput) ChargingMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ChargingMode }).(pulumi.StringOutput)
 }
 
-// Specifies the cluster Type, possible values are **VirtualMachine** and
-// **ARM64**. Defaults to **VirtualMachine**. Changing this parameter will create a new cluster resource.
 func (o ClusterOutput) ClusterType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ClusterType }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the cluster version, defaults to the latest supported
-// version. Changing this parameter will create a new cluster resource.
 func (o ClusterOutput) ClusterVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterVersion }).(pulumi.StringOutput)
 }
 
-// Specifies the kubernetes component configurations.
-// The object structure is documented below.
-// Changing this parameter will create a new cluster resource.
 func (o ClusterOutput) ComponentConfigurations() ClusterComponentConfigurationArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterComponentConfigurationArrayOutput { return v.ComponentConfigurations }).(ClusterComponentConfigurationArrayOutput)
 }
 
-// Specifies the container network segments.
-// In clusters of v1.21 and later, when the `containerNetworkType` is **vpc-router**, you can add multiple container
-// segments, separated with comma (,). In other situations, only the first segment takes effect.
 func (o ClusterOutput) ContainerNetworkCidr() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ContainerNetworkCidr }).(pulumi.StringOutput)
 }
 
-// Specifies the container network type.
-// Changing this parameter will create a new cluster resource. Possible values:
-//   - **overlay_l2**: An overlayL2 network built for containers by using Open vSwitch(OVS).
-//   - **vpc-router**: An vpc-router network built for containers by using ipvlan and custom VPC routes.
-//   - **eni**: A Yangtse network built for CCE Turbo cluster. The container network deeply integrates the native ENI
-//     capability of VPC, uses the VPC CIDR block to allocate container addresses, and supports direct connections between
-//     ELB and containers to provide high performance.
 func (o ClusterOutput) ContainerNetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ContainerNetworkType }).(pulumi.StringOutput)
 }
 
-// Specifies the custom san to add to certificate (array of string).
 func (o ClusterOutput) CustomSans() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.CustomSans }).(pulumi.StringArrayOutput)
 }
 
-// Specified whether to delete all associated storage resources when deleting the CCE
-// cluster. valid values are **true**, **try** and **false**. Default is **false**.
 func (o ClusterOutput) DeleteAll() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.DeleteAll }).(pulumi.StringPtrOutput)
 }
 
-// Specified whether to unbind associated SFS Turbo file systems when deleting the CCE
-// cluster. valid values are **true**, **try** and **false**. Default is **false**.
 func (o ClusterOutput) DeleteEfs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.DeleteEfs }).(pulumi.StringPtrOutput)
 }
@@ -1391,8 +579,6 @@ func (o ClusterOutput) DeleteEni() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.DeleteEni }).(pulumi.StringPtrOutput)
 }
 
-// Specified whether to delete associated EVS disks when deleting the CCE cluster.
-// valid values are **true**, **try** and **false**. Default is **false**.
 func (o ClusterOutput) DeleteEvs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.DeleteEvs }).(pulumi.StringPtrOutput)
 }
@@ -1402,24 +588,18 @@ func (o ClusterOutput) DeleteNet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.DeleteNet }).(pulumi.StringPtrOutput)
 }
 
-// Specified whether to delete associated OBS buckets when deleting the CCE cluster.
-// valid values are **true**, **try** and **false**. Default is **false**.
 func (o ClusterOutput) DeleteObs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.DeleteObs }).(pulumi.StringPtrOutput)
 }
 
-// Specified whether to delete associated SFS file systems when deleting the CCE
-// cluster. valid values are **true**, **try** and **false**. Default is **false**.
 func (o ClusterOutput) DeleteSfs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.DeleteSfs }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the cluster description.
 func (o ClusterOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Specifies the EIP address of the cluster.
 func (o ClusterOutput) Eip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.Eip }).(pulumi.StringPtrOutput)
 }
@@ -1432,19 +612,16 @@ func (o ClusterOutput) EncryptionConfig() ClusterEncryptionConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterEncryptionConfigOutput { return v.EncryptionConfig }).(ClusterEncryptionConfigOutput)
 }
 
-// The ENI network segment. This value is valid when only one eniSubnetId is specified.
+// schema: Computed
 func (o ClusterOutput) EniSubnetCidr() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.EniSubnetCidr }).(pulumi.StringOutput)
 }
 
-// Specifies the **IPv4 subnet ID** of the subnet where the ENI resides.
-// Specified when creating a CCE Turbo cluster. You can add multiple IPv4 subnet ID, separated with comma (,).
-// Only adding subnets is allowed, removing subnets is not allowed.
+// the IPv4 subnet ID of the subnet where the ENI resides
 func (o ClusterOutput) EniSubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.EniSubnetId }).(pulumi.StringOutput)
 }
 
-// The enterprise project ID of the CCE cluster.
 func (o ClusterOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
@@ -1454,33 +631,14 @@ func (o ClusterOutput) ExtendParam() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.ExtendParam }).(pulumi.StringMapOutput)
 }
 
-// Specifies the extended parameter.
-// The object structure is documented below.
-// Changing this parameter will create a new cluster resource.
 func (o ClusterOutput) ExtendParams() ClusterExtendParamArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterExtendParamArrayOutput { return v.ExtendParams }).(ClusterExtendParamArrayOutput)
 }
 
-// Specifies the cluster specifications.
-// Possible values:
-// + **cce.s1.small**: small-scale single cluster (up to 50 nodes).
-// + **cce.s1.medium**: medium-scale single cluster (up to 200 nodes).
-// + **cce.s2.small**: small-scale HA cluster (up to 50 nodes).
-// + **cce.s2.medium**: medium-scale HA cluster (up to 200 nodes).
-// + **cce.s2.large**: large-scale HA cluster (up to 1000 nodes).
-// + **cce.s2.xlarge**: large-scale HA cluster (up to 2000 nodes).
-//
-// > Changing the number of control nodes or reducing cluster flavor is not supported.
 func (o ClusterOutput) FlavorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.FlavorId }).(pulumi.StringOutput)
 }
 
-// Specifies whether to hibernate the CCE cluster. Defaults to **false**. After a cluster is
-// hibernated, resources such as workloads cannot be created or managed in the cluster, and the cluster cannot be
-// deleted.
-//
-// <a name="cceClusterMasters"></a>
-// The `masters` block supports:
 func (o ClusterOutput) Hibernate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.Hibernate }).(pulumi.BoolPtrOutput)
 }
@@ -1490,25 +648,14 @@ func (o ClusterOutput) HighwaySubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.HighwaySubnetId }).(pulumi.StringOutput)
 }
 
-// Specifies whether to enable IPv6 in the cluster.
-// Changing this parameter will create a new cluster resource.
 func (o ClusterOutput) Ipv6Enable() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.Ipv6Enable }).(pulumi.BoolOutput)
 }
 
-// Raw Kubernetes config to be used by kubectl and other compatible tools.
 func (o ClusterOutput) KubeConfigRaw() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.KubeConfigRaw }).(pulumi.StringOutput)
 }
 
-// Specifies the service forwarding mode.
-// Changing this parameter will create a new cluster resource. Two modes are available:
-//
-//   - **iptables**: Traditional kube-proxy uses iptables rules to implement service load balancing. In this mode, too many
-//     iptables rules will be generated when many services are deployed. In addition, non-incremental updates will cause a
-//     latency and even obvious performance issues in the case of heavy service traffic.
-//   - **ipvs**: Optimized kube-proxy mode with higher throughput and faster speed. This mode supports incremental updates
-//     and can keep connections uninterrupted during service updates. It is suitable for large-sized clusters.
 func (o ClusterOutput) KubeProxyMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.KubeProxyMode }).(pulumi.StringOutput)
 }
@@ -1522,80 +669,50 @@ func (o ClusterOutput) LtsReclaimPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.LtsReclaimPolicy }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the advanced configuration of master nodes.
-// The object structure is documented below.
-// This parameter and `multiAz` are alternative. Changing this parameter will create a new cluster resource.
 func (o ClusterOutput) Masters() ClusterMasterArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterMasterArrayOutput { return v.Masters }).(ClusterMasterArrayOutput)
 }
 
-// Specifies whether to enable multiple AZs for the cluster, only when using HA
-// flavors. Changing this parameter will create a new cluster resource. This parameter and `masters` are alternative.
 func (o ClusterOutput) MultiAz() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.MultiAz }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the component name.
-// Changing this parameter will create a new cluster resource.
 func (o ClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the charging period of the CCE cluster.
-// If `periodUnit` is set to **month**, the value ranges from 1 to 9.
-// If `periodUnit` is set to **year**, the value ranges from 1 to 3.
-// This parameter is mandatory if `chargingMode` is set to **prePaid**.
-// Changing this parameter will create a new cluster resource.
 func (o ClusterOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the charging period unit of the CCE cluster.
-// Valid values are **month** and **year**. This parameter is mandatory if `chargingMode` is set to **prePaid**.
-// Changing this parameter will create a new cluster resource.
 func (o ClusterOutput) PeriodUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.PeriodUnit }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the region in which to create the CCE cluster resource.
-// If omitted, the provider-level region will be used. Changing this parameter will create a new cluster resource.
 func (o ClusterOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Specifies the default worker node security group ID of the cluster.
-// If left empty, the system will automatically create a default worker node security group for you.
-// The default worker node security group needs to allow access from certain ports to ensure normal communications.
-// If updated, the modified security group will only be applied to nodes newly created or accepted.
-// For existing nodes, you need to manually modify the security group rules for them.
 func (o ClusterOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
-// Specifies the service network segment.
-// Changing this parameter will create a new cluster resource.
 func (o ClusterOutput) ServiceNetworkCidr() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ServiceNetworkCidr }).(pulumi.StringOutput)
 }
 
-// Cluster status information.
 func (o ClusterOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Specifies the ID of the subnet used to create the node which should be
-// configured with a *DNS address*. Changing this parameter will create a new cluster resource.
 func (o ClusterOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.SubnetId }).(pulumi.StringOutput)
 }
 
-// Specifies whether to support Istio in the cluster.
-// Changing this parameter will create a new cluster resource.
 func (o ClusterOutput) SupportIstio() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.SupportIstio }).(pulumi.BoolOutput)
 }
 
-// Specifies the tags of the CCE cluster, key/value pair format.
 func (o ClusterOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -1604,8 +721,6 @@ func (o ClusterOutput) Timezone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Timezone }).(pulumi.StringOutput)
 }
 
-// Specifies the ID of the VPC used to create the node.
-// Changing this parameter will create a new cluster resource.
 func (o ClusterOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }

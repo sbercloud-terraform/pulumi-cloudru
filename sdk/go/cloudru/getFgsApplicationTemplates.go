@@ -11,33 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of application templates within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sbercloud.GetFgsApplicationTemplates(ctx, &cloudru.GetFgsApplicationTemplatesArgs{
-//				Runtime: pulumi.StringRef("Python2.7"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetFgsApplicationTemplates(ctx *pulumi.Context, args *GetFgsApplicationTemplatesArgs, opts ...pulumi.InvokeOption) (*GetFgsApplicationTemplatesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFgsApplicationTemplatesResult
@@ -50,46 +23,18 @@ func GetFgsApplicationTemplates(ctx *pulumi.Context, args *GetFgsApplicationTemp
 
 // A collection of arguments for invoking getFgsApplicationTemplates.
 type GetFgsApplicationTemplatesArgs struct {
-	// Specifies the category used to query the application templates.
 	Category *string `pulumi:"category"`
-	// Specifies the region where the application templates are located.\
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the runtime name used to query the application templates.\
-	// The valid values are as follows:
-	// + **Node.js6.10**
-	// + **Node.js8.10**
-	// + **Node.js10.16**
-	// + **Node.js12.13**
-	// + **Node.js14.18**
-	// + **Node.js16.17**
-	// + **Node.js18.15**
-	// + **Python2.7**
-	// + **Python3.6**
-	// + **Python3.9**
-	// + **Python3.10**
-	// + **Java8**
-	// + **Java11**
-	// + **Go1.x**
-	// + **C#(.NET Core 2.1)**
-	// + **C#(.NET Core 3.1)**
-	// + **http**
-	// + **PHP7.3**
-	// + **Custom**
-	Runtime *string `pulumi:"runtime"`
+	Region   *string `pulumi:"region"`
+	Runtime  *string `pulumi:"runtime"`
 }
 
 // A collection of values returned by getFgsApplicationTemplates.
 type GetFgsApplicationTemplatesResult struct {
-	// The template category.
 	Category *string `pulumi:"category"`
 	// The provider-assigned unique ID for this managed resource.
-	Id     string `pulumi:"id"`
-	Region string `pulumi:"region"`
-	// The template runtime.
-	Runtime *string `pulumi:"runtime"`
-	// All application templates that match the filter parameters.\
-	// The templates structure is documented below.
+	Id        string                               `pulumi:"id"`
+	Region    string                               `pulumi:"region"`
+	Runtime   *string                              `pulumi:"runtime"`
 	Templates []GetFgsApplicationTemplatesTemplate `pulumi:"templates"`
 }
 
@@ -104,33 +49,9 @@ func GetFgsApplicationTemplatesOutput(ctx *pulumi.Context, args GetFgsApplicatio
 
 // A collection of arguments for invoking getFgsApplicationTemplates.
 type GetFgsApplicationTemplatesOutputArgs struct {
-	// Specifies the category used to query the application templates.
 	Category pulumi.StringPtrInput `pulumi:"category"`
-	// Specifies the region where the application templates are located.\
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the runtime name used to query the application templates.\
-	// The valid values are as follows:
-	// + **Node.js6.10**
-	// + **Node.js8.10**
-	// + **Node.js10.16**
-	// + **Node.js12.13**
-	// + **Node.js14.18**
-	// + **Node.js16.17**
-	// + **Node.js18.15**
-	// + **Python2.7**
-	// + **Python3.6**
-	// + **Python3.9**
-	// + **Python3.10**
-	// + **Java8**
-	// + **Java11**
-	// + **Go1.x**
-	// + **C#(.NET Core 2.1)**
-	// + **C#(.NET Core 3.1)**
-	// + **http**
-	// + **PHP7.3**
-	// + **Custom**
-	Runtime pulumi.StringPtrInput `pulumi:"runtime"`
+	Region   pulumi.StringPtrInput `pulumi:"region"`
+	Runtime  pulumi.StringPtrInput `pulumi:"runtime"`
 }
 
 func (GetFgsApplicationTemplatesOutputArgs) ElementType() reflect.Type {
@@ -152,7 +73,6 @@ func (o GetFgsApplicationTemplatesResultOutput) ToGetFgsApplicationTemplatesResu
 	return o
 }
 
-// The template category.
 func (o GetFgsApplicationTemplatesResultOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFgsApplicationTemplatesResult) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
@@ -166,13 +86,10 @@ func (o GetFgsApplicationTemplatesResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFgsApplicationTemplatesResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The template runtime.
 func (o GetFgsApplicationTemplatesResultOutput) Runtime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFgsApplicationTemplatesResult) *string { return v.Runtime }).(pulumi.StringPtrOutput)
 }
 
-// All application templates that match the filter parameters.\
-// The templates structure is documented below.
 func (o GetFgsApplicationTemplatesResultOutput) Templates() GetFgsApplicationTemplatesTemplateArrayOutput {
 	return o.ApplyT(func(v GetFgsApplicationTemplatesResult) []GetFgsApplicationTemplatesTemplate { return v.Templates }).(GetFgsApplicationTemplatesTemplateArrayOutput)
 }

@@ -39,53 +39,16 @@ class FirewallArgs:
         """
         The set of arguments for constructing a Firewall resource.
         :param pulumi.Input['FirewallFlavorArgs'] flavor: Specifies the flavor of the firewall.
-               Changing this parameter will create a new resource.
-               The flavor structure is documented below.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled.
-               Valid values are **true** and **false**. Defaults to **false**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode of the firewall.
-               Valid values are **prePaid** and **postPaid**, defaults to **postPaid**.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode.
         :param pulumi.Input[_builtins.str] east_west_firewall_er_id: Specifies the ER ID of the east-west firewall.
         :param pulumi.Input[_builtins.str] east_west_firewall_inspection_cidr: Specifies the inspection cidr of the east-west firewall.
         :param pulumi.Input[_builtins.str] east_west_firewall_mode: Specifies the mode of the east-west firewall.
-               The value can be: **er**.
         :param pulumi.Input[_builtins.int] east_west_firewall_status: Specifies the protection statue of the east-west firewall.
-               The value can be: `0`(enabled) and `1`(disabled). Defaults to `0`.
         :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project ID of the firewall.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] ips_protection_mode: Specifies the IPS protection mode of the firewall. Defaults to `0`.
-               
-               Valid values are as follows:
-               + **0**: Observation Mode.
-               + **1**: Strict Mode.
-               + **2**: Medium Mode.
-               + **3**: Loose Mode.
+        :param pulumi.Input[_builtins.int] ips_protection_mode: Specifies the IPS protection mode of the firewall.
         :param pulumi.Input[_builtins.int] ips_switch_status: Specifies the IPS patch switch status of the firewall.
-               The value can be `0`(disabled) and `1`(enabled). Defaults to `0`.
         :param pulumi.Input[_builtins.str] name: Specifies the firewall name.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] period: Specifies the charging period.
-               If `period_unit` is set to **month**, the value ranges from 1 to 9.
-               If `period_unit` is set to **year**, the value ranges from 1 to 3.
-               This parameter is mandatory if `charging_mode` is set to **prePaid**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] period_unit: Specifies the charging period unit.
-               Valid values are **month** and **year**. This parameter is mandatory if `charging_mode` is set to **prePaid**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the firewall.
-               
-               <a name="Firewall_Flavor"></a>
-               The `flavor` block supports:
         """
         pulumi.set(__self__, "flavor", flavor)
         if auto_renew is not None:
@@ -122,8 +85,6 @@ class FirewallArgs:
     def flavor(self) -> pulumi.Input['FirewallFlavorArgs']:
         """
         Specifies the flavor of the firewall.
-        Changing this parameter will create a new resource.
-        The flavor structure is documented below.
         """
         return pulumi.get(self, "flavor")
 
@@ -134,12 +95,6 @@ class FirewallArgs:
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies whether auto renew is enabled.
-        Valid values are **true** and **false**. Defaults to **false**.
-
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
@@ -150,10 +105,7 @@ class FirewallArgs:
     @pulumi.getter(name="chargingMode")
     def charging_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the charging mode of the firewall.
-        Valid values are **prePaid** and **postPaid**, defaults to **postPaid**.
-
-        Changing this parameter will create a new resource.
+        Specifies the charging mode.
         """
         return pulumi.get(self, "charging_mode")
 
@@ -190,7 +142,6 @@ class FirewallArgs:
     def east_west_firewall_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the mode of the east-west firewall.
-        The value can be: **er**.
         """
         return pulumi.get(self, "east_west_firewall_mode")
 
@@ -203,7 +154,6 @@ class FirewallArgs:
     def east_west_firewall_status(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the protection statue of the east-west firewall.
-        The value can be: `0`(enabled) and `1`(disabled). Defaults to `0`.
         """
         return pulumi.get(self, "east_west_firewall_status")
 
@@ -216,8 +166,6 @@ class FirewallArgs:
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the enterprise project ID of the firewall.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -229,13 +177,7 @@ class FirewallArgs:
     @pulumi.getter(name="ipsProtectionMode")
     def ips_protection_mode(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the IPS protection mode of the firewall. Defaults to `0`.
-
-        Valid values are as follows:
-        + **0**: Observation Mode.
-        + **1**: Strict Mode.
-        + **2**: Medium Mode.
-        + **3**: Loose Mode.
+        Specifies the IPS protection mode of the firewall.
         """
         return pulumi.get(self, "ips_protection_mode")
 
@@ -248,7 +190,6 @@ class FirewallArgs:
     def ips_switch_status(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the IPS patch switch status of the firewall.
-        The value can be `0`(disabled) and `1`(enabled). Defaults to `0`.
         """
         return pulumi.get(self, "ips_switch_status")
 
@@ -261,8 +202,6 @@ class FirewallArgs:
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the firewall name.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "name")
 
@@ -273,14 +212,6 @@ class FirewallArgs:
     @_builtins.property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the charging period.
-        If `period_unit` is set to **month**, the value ranges from 1 to 9.
-        If `period_unit` is set to **year**, the value ranges from 1 to 3.
-        This parameter is mandatory if `charging_mode` is set to **prePaid**.
-
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -290,12 +221,6 @@ class FirewallArgs:
     @_builtins.property
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the charging period unit.
-        Valid values are **month** and **year**. This parameter is mandatory if `charging_mode` is set to **prePaid**.
-
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
@@ -305,10 +230,6 @@ class FirewallArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -320,9 +241,6 @@ class FirewallArgs:
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Specifies the key/value pairs to associate with the firewall.
-
-        <a name="Firewall_Flavor"></a>
-        The `flavor` block supports:
         """
         return pulumi.get(self, "tags")
 
@@ -359,63 +277,25 @@ class _FirewallState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Firewall resources.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled.
-               Valid values are **true** and **false**. Defaults to **false**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode of the firewall.
-               Valid values are **prePaid** and **postPaid**, defaults to **postPaid**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] east_west_firewall_er_attachment_id: Enterprise Router and Firewall Connection ID.
+        :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode.
+        :param pulumi.Input[_builtins.str] east_west_firewall_er_attachment_id: Enterprise Router and Firewall Connection ID
         :param pulumi.Input[_builtins.str] east_west_firewall_er_id: Specifies the ER ID of the east-west firewall.
         :param pulumi.Input[_builtins.str] east_west_firewall_inspection_cidr: Specifies the inspection cidr of the east-west firewall.
         :param pulumi.Input[_builtins.str] east_west_firewall_inspection_vpc_id: The east-west firewall inspection VPC ID.
         :param pulumi.Input[_builtins.str] east_west_firewall_mode: Specifies the mode of the east-west firewall.
-               The value can be: **er**.
         :param pulumi.Input[_builtins.int] east_west_firewall_status: Specifies the protection statue of the east-west firewall.
-               The value can be: `0`(enabled) and `1`(disabled). Defaults to `0`.
         :param pulumi.Input[_builtins.int] engine_type: The engine type
         :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project ID of the firewall.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input['FirewallFlavorArgs'] flavor: Specifies the flavor of the firewall.
-               Changing this parameter will create a new resource.
-               The flavor structure is documented below.
         :param pulumi.Input[_builtins.int] ha_type: The HA type.
-        :param pulumi.Input[_builtins.int] ips_protection_mode: Specifies the IPS protection mode of the firewall. Defaults to `0`.
-               
-               Valid values are as follows:
-               + **0**: Observation Mode.
-               + **1**: Strict Mode.
-               + **2**: Medium Mode.
-               + **3**: Loose Mode.
+        :param pulumi.Input[_builtins.int] ips_protection_mode: Specifies the IPS protection mode of the firewall.
         :param pulumi.Input[_builtins.int] ips_switch_status: Specifies the IPS patch switch status of the firewall.
-               The value can be `0`(disabled) and `1`(enabled). Defaults to `0`.
         :param pulumi.Input[_builtins.str] name: Specifies the firewall name.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] period: Specifies the charging period.
-               If `period_unit` is set to **month**, the value ranges from 1 to 9.
-               If `period_unit` is set to **year**, the value ranges from 1 to 3.
-               This parameter is mandatory if `charging_mode` is set to **prePaid**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] period_unit: Specifies the charging period unit.
-               Valid values are **month** and **year**. This parameter is mandatory if `charging_mode` is set to **prePaid**.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallProtectObjectArgs']]] protect_objects: The protect objects list.
-               The protect_objects structure is documented below.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.int] service_type: The service type.
         :param pulumi.Input[_builtins.int] status: The firewall status.
         :param pulumi.Input[_builtins.bool] support_ipv6: Whether IPv6 is supported.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the firewall.
-               
-               <a name="Firewall_Flavor"></a>
-               The `flavor` block supports:
         """
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
@@ -467,12 +347,6 @@ class _FirewallState:
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies whether auto renew is enabled.
-        Valid values are **true** and **false**. Defaults to **false**.
-
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
@@ -483,10 +357,7 @@ class _FirewallState:
     @pulumi.getter(name="chargingMode")
     def charging_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the charging mode of the firewall.
-        Valid values are **prePaid** and **postPaid**, defaults to **postPaid**.
-
-        Changing this parameter will create a new resource.
+        Specifies the charging mode.
         """
         return pulumi.get(self, "charging_mode")
 
@@ -498,7 +369,7 @@ class _FirewallState:
     @pulumi.getter(name="eastWestFirewallErAttachmentId")
     def east_west_firewall_er_attachment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Enterprise Router and Firewall Connection ID.
+        Enterprise Router and Firewall Connection ID
         """
         return pulumi.get(self, "east_west_firewall_er_attachment_id")
 
@@ -547,7 +418,6 @@ class _FirewallState:
     def east_west_firewall_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the mode of the east-west firewall.
-        The value can be: **er**.
         """
         return pulumi.get(self, "east_west_firewall_mode")
 
@@ -560,7 +430,6 @@ class _FirewallState:
     def east_west_firewall_status(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the protection statue of the east-west firewall.
-        The value can be: `0`(enabled) and `1`(disabled). Defaults to `0`.
         """
         return pulumi.get(self, "east_west_firewall_status")
 
@@ -585,8 +454,6 @@ class _FirewallState:
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the enterprise project ID of the firewall.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -599,8 +466,6 @@ class _FirewallState:
     def flavor(self) -> Optional[pulumi.Input['FirewallFlavorArgs']]:
         """
         Specifies the flavor of the firewall.
-        Changing this parameter will create a new resource.
-        The flavor structure is documented below.
         """
         return pulumi.get(self, "flavor")
 
@@ -624,13 +489,7 @@ class _FirewallState:
     @pulumi.getter(name="ipsProtectionMode")
     def ips_protection_mode(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the IPS protection mode of the firewall. Defaults to `0`.
-
-        Valid values are as follows:
-        + **0**: Observation Mode.
-        + **1**: Strict Mode.
-        + **2**: Medium Mode.
-        + **3**: Loose Mode.
+        Specifies the IPS protection mode of the firewall.
         """
         return pulumi.get(self, "ips_protection_mode")
 
@@ -643,7 +502,6 @@ class _FirewallState:
     def ips_switch_status(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the IPS patch switch status of the firewall.
-        The value can be `0`(disabled) and `1`(enabled). Defaults to `0`.
         """
         return pulumi.get(self, "ips_switch_status")
 
@@ -656,8 +514,6 @@ class _FirewallState:
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the firewall name.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "name")
 
@@ -668,14 +524,6 @@ class _FirewallState:
     @_builtins.property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the charging period.
-        If `period_unit` is set to **month**, the value ranges from 1 to 9.
-        If `period_unit` is set to **year**, the value ranges from 1 to 3.
-        This parameter is mandatory if `charging_mode` is set to **prePaid**.
-
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -685,12 +533,6 @@ class _FirewallState:
     @_builtins.property
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the charging period unit.
-        Valid values are **month** and **year**. This parameter is mandatory if `charging_mode` is set to **prePaid**.
-
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
@@ -702,7 +544,6 @@ class _FirewallState:
     def protect_objects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallProtectObjectArgs']]]]:
         """
         The protect objects list.
-        The protect_objects structure is documented below.
         """
         return pulumi.get(self, "protect_objects")
 
@@ -713,10 +554,6 @@ class _FirewallState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -764,9 +601,6 @@ class _FirewallState:
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Specifies the key/value pairs to associate with the firewall.
-
-        <a name="Firewall_Flavor"></a>
-        The `flavor` block supports:
         """
         return pulumi.get(self, "tags")
 
@@ -798,181 +632,20 @@ class Firewall(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Manages a CFW firewall resource within SberCloud.
-
-        ## Example Usage
-
-        ### Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        test = sbercloud.cfw.Firewall("test",
-            name="test",
-            flavor={
-                "version": "Professional",
-            },
-            tags={
-                "key": "value",
-                "foo": "bar",
-            })
-        ```
-
-        ### PrePaid firewall
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        test = sbercloud.cfw.Firewall("test",
-            name="test",
-            flavor={
-                "version": "Professional",
-            },
-            tags={
-                "key": "value",
-                "foo": "bar",
-            },
-            charging_mode="prePaid",
-            period_unit="month",
-            period=1,
-            auto_renew="false")
-        ```
-
-        ### firewall with east-west firewall
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        test = sbercloud.cfw.Firewall("test",
-            name="test",
-            east_west_firewall_inspection_cidr="172.16.1.0/24",
-            east_west_firewall_er_id=test_sbercloud_er_instance["id"],
-            east_west_firewall_mode="er",
-            flavor={
-                "version": "Professional",
-            },
-            tags={
-                "key": "value",
-                "foo": "bar",
-            })
-        ```
-
-        ### firewall with IPS switch and IPS protection mode
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        test = sbercloud.cfw.Firewall("test",
-            name="test",
-            flavor={
-                "version": "Professional",
-            },
-            tags={
-                "key": "value",
-                "foo": "bar",
-            },
-            charging_mode="prePaid",
-            period_unit="month",
-            period=1,
-            auto_renew="false",
-            ips_switch_status=1,
-            ips_protection_mode=1)
-        ```
-
-        ## Import
-
-        The firewall can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Cfw/firewall:Firewall test 6cb1ce47-9990-447e-b071-d167c5393871
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include:
-
-        `period_unit`, `period` and `auto_renew`. It is generally
-
-        recommended running `pulumi preview` after importing an CFW firewall. You can then decide if changes should be applied to
-
-        the firewall, or the resource definition should be updated to align with the firewall. Also you can ignore changes as
-
-        below.
-
-        hcl
-
-        resource "sbercloud_cfw_firewall" "test" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              period_unit, period, auto_renew
-            
-            ]
-
-          }
-
-        }
-
+        Create a Firewall resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled.
-               Valid values are **true** and **false**. Defaults to **false**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode of the firewall.
-               Valid values are **prePaid** and **postPaid**, defaults to **postPaid**.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode.
         :param pulumi.Input[_builtins.str] east_west_firewall_er_id: Specifies the ER ID of the east-west firewall.
         :param pulumi.Input[_builtins.str] east_west_firewall_inspection_cidr: Specifies the inspection cidr of the east-west firewall.
         :param pulumi.Input[_builtins.str] east_west_firewall_mode: Specifies the mode of the east-west firewall.
-               The value can be: **er**.
         :param pulumi.Input[_builtins.int] east_west_firewall_status: Specifies the protection statue of the east-west firewall.
-               The value can be: `0`(enabled) and `1`(disabled). Defaults to `0`.
         :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project ID of the firewall.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[Union['FirewallFlavorArgs', 'FirewallFlavorArgsDict']] flavor: Specifies the flavor of the firewall.
-               Changing this parameter will create a new resource.
-               The flavor structure is documented below.
-        :param pulumi.Input[_builtins.int] ips_protection_mode: Specifies the IPS protection mode of the firewall. Defaults to `0`.
-               
-               Valid values are as follows:
-               + **0**: Observation Mode.
-               + **1**: Strict Mode.
-               + **2**: Medium Mode.
-               + **3**: Loose Mode.
+        :param pulumi.Input[_builtins.int] ips_protection_mode: Specifies the IPS protection mode of the firewall.
         :param pulumi.Input[_builtins.int] ips_switch_status: Specifies the IPS patch switch status of the firewall.
-               The value can be `0`(disabled) and `1`(enabled). Defaults to `0`.
         :param pulumi.Input[_builtins.str] name: Specifies the firewall name.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] period: Specifies the charging period.
-               If `period_unit` is set to **month**, the value ranges from 1 to 9.
-               If `period_unit` is set to **year**, the value ranges from 1 to 3.
-               This parameter is mandatory if `charging_mode` is set to **prePaid**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] period_unit: Specifies the charging period unit.
-               Valid values are **month** and **year**. This parameter is mandatory if `charging_mode` is set to **prePaid**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the firewall.
-               
-               <a name="Firewall_Flavor"></a>
-               The `flavor` block supports:
         """
         ...
     @overload
@@ -981,131 +654,7 @@ class Firewall(pulumi.CustomResource):
                  args: FirewallArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a CFW firewall resource within SberCloud.
-
-        ## Example Usage
-
-        ### Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        test = sbercloud.cfw.Firewall("test",
-            name="test",
-            flavor={
-                "version": "Professional",
-            },
-            tags={
-                "key": "value",
-                "foo": "bar",
-            })
-        ```
-
-        ### PrePaid firewall
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        test = sbercloud.cfw.Firewall("test",
-            name="test",
-            flavor={
-                "version": "Professional",
-            },
-            tags={
-                "key": "value",
-                "foo": "bar",
-            },
-            charging_mode="prePaid",
-            period_unit="month",
-            period=1,
-            auto_renew="false")
-        ```
-
-        ### firewall with east-west firewall
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        test = sbercloud.cfw.Firewall("test",
-            name="test",
-            east_west_firewall_inspection_cidr="172.16.1.0/24",
-            east_west_firewall_er_id=test_sbercloud_er_instance["id"],
-            east_west_firewall_mode="er",
-            flavor={
-                "version": "Professional",
-            },
-            tags={
-                "key": "value",
-                "foo": "bar",
-            })
-        ```
-
-        ### firewall with IPS switch and IPS protection mode
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        test = sbercloud.cfw.Firewall("test",
-            name="test",
-            flavor={
-                "version": "Professional",
-            },
-            tags={
-                "key": "value",
-                "foo": "bar",
-            },
-            charging_mode="prePaid",
-            period_unit="month",
-            period=1,
-            auto_renew="false",
-            ips_switch_status=1,
-            ips_protection_mode=1)
-        ```
-
-        ## Import
-
-        The firewall can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Cfw/firewall:Firewall test 6cb1ce47-9990-447e-b071-d167c5393871
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include:
-
-        `period_unit`, `period` and `auto_renew`. It is generally
-
-        recommended running `pulumi preview` after importing an CFW firewall. You can then decide if changes should be applied to
-
-        the firewall, or the resource definition should be updated to align with the firewall. Also you can ignore changes as
-
-        below.
-
-        hcl
-
-        resource "sbercloud_cfw_firewall" "test" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              period_unit, period, auto_renew
-            
-            ]
-
-          }
-
-        }
-
+        Create a Firewall resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param FirewallArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1210,63 +759,25 @@ class Firewall(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled.
-               Valid values are **true** and **false**. Defaults to **false**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode of the firewall.
-               Valid values are **prePaid** and **postPaid**, defaults to **postPaid**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] east_west_firewall_er_attachment_id: Enterprise Router and Firewall Connection ID.
+        :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode.
+        :param pulumi.Input[_builtins.str] east_west_firewall_er_attachment_id: Enterprise Router and Firewall Connection ID
         :param pulumi.Input[_builtins.str] east_west_firewall_er_id: Specifies the ER ID of the east-west firewall.
         :param pulumi.Input[_builtins.str] east_west_firewall_inspection_cidr: Specifies the inspection cidr of the east-west firewall.
         :param pulumi.Input[_builtins.str] east_west_firewall_inspection_vpc_id: The east-west firewall inspection VPC ID.
         :param pulumi.Input[_builtins.str] east_west_firewall_mode: Specifies the mode of the east-west firewall.
-               The value can be: **er**.
         :param pulumi.Input[_builtins.int] east_west_firewall_status: Specifies the protection statue of the east-west firewall.
-               The value can be: `0`(enabled) and `1`(disabled). Defaults to `0`.
         :param pulumi.Input[_builtins.int] engine_type: The engine type
         :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project ID of the firewall.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[Union['FirewallFlavorArgs', 'FirewallFlavorArgsDict']] flavor: Specifies the flavor of the firewall.
-               Changing this parameter will create a new resource.
-               The flavor structure is documented below.
         :param pulumi.Input[_builtins.int] ha_type: The HA type.
-        :param pulumi.Input[_builtins.int] ips_protection_mode: Specifies the IPS protection mode of the firewall. Defaults to `0`.
-               
-               Valid values are as follows:
-               + **0**: Observation Mode.
-               + **1**: Strict Mode.
-               + **2**: Medium Mode.
-               + **3**: Loose Mode.
+        :param pulumi.Input[_builtins.int] ips_protection_mode: Specifies the IPS protection mode of the firewall.
         :param pulumi.Input[_builtins.int] ips_switch_status: Specifies the IPS patch switch status of the firewall.
-               The value can be `0`(disabled) and `1`(enabled). Defaults to `0`.
         :param pulumi.Input[_builtins.str] name: Specifies the firewall name.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] period: Specifies the charging period.
-               If `period_unit` is set to **month**, the value ranges from 1 to 9.
-               If `period_unit` is set to **year**, the value ranges from 1 to 3.
-               This parameter is mandatory if `charging_mode` is set to **prePaid**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] period_unit: Specifies the charging period unit.
-               Valid values are **month** and **year**. This parameter is mandatory if `charging_mode` is set to **prePaid**.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallProtectObjectArgs', 'FirewallProtectObjectArgsDict']]]] protect_objects: The protect objects list.
-               The protect_objects structure is documented below.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.int] service_type: The service type.
         :param pulumi.Input[_builtins.int] status: The firewall status.
         :param pulumi.Input[_builtins.bool] support_ipv6: Whether IPv6 is supported.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the firewall.
-               
-               <a name="Firewall_Flavor"></a>
-               The `flavor` block supports:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1300,22 +811,13 @@ class Firewall(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies whether auto renew is enabled.
-        Valid values are **true** and **false**. Defaults to **false**.
-
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "auto_renew")
 
     @_builtins.property
     @pulumi.getter(name="chargingMode")
     def charging_mode(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the charging mode of the firewall.
-        Valid values are **prePaid** and **postPaid**, defaults to **postPaid**.
-
-        Changing this parameter will create a new resource.
+        Specifies the charging mode.
         """
         return pulumi.get(self, "charging_mode")
 
@@ -1323,7 +825,7 @@ class Firewall(pulumi.CustomResource):
     @pulumi.getter(name="eastWestFirewallErAttachmentId")
     def east_west_firewall_er_attachment_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Enterprise Router and Firewall Connection ID.
+        Enterprise Router and Firewall Connection ID
         """
         return pulumi.get(self, "east_west_firewall_er_attachment_id")
 
@@ -1356,7 +858,6 @@ class Firewall(pulumi.CustomResource):
     def east_west_firewall_mode(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the mode of the east-west firewall.
-        The value can be: **er**.
         """
         return pulumi.get(self, "east_west_firewall_mode")
 
@@ -1365,7 +866,6 @@ class Firewall(pulumi.CustomResource):
     def east_west_firewall_status(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         Specifies the protection statue of the east-west firewall.
-        The value can be: `0`(enabled) and `1`(disabled). Defaults to `0`.
         """
         return pulumi.get(self, "east_west_firewall_status")
 
@@ -1382,8 +882,6 @@ class Firewall(pulumi.CustomResource):
     def enterprise_project_id(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the enterprise project ID of the firewall.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -1392,8 +890,6 @@ class Firewall(pulumi.CustomResource):
     def flavor(self) -> pulumi.Output['outputs.FirewallFlavor']:
         """
         Specifies the flavor of the firewall.
-        Changing this parameter will create a new resource.
-        The flavor structure is documented below.
         """
         return pulumi.get(self, "flavor")
 
@@ -1409,13 +905,7 @@ class Firewall(pulumi.CustomResource):
     @pulumi.getter(name="ipsProtectionMode")
     def ips_protection_mode(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Specifies the IPS protection mode of the firewall. Defaults to `0`.
-
-        Valid values are as follows:
-        + **0**: Observation Mode.
-        + **1**: Strict Mode.
-        + **2**: Medium Mode.
-        + **3**: Loose Mode.
+        Specifies the IPS protection mode of the firewall.
         """
         return pulumi.get(self, "ips_protection_mode")
 
@@ -1424,7 +914,6 @@ class Firewall(pulumi.CustomResource):
     def ips_switch_status(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         Specifies the IPS patch switch status of the firewall.
-        The value can be `0`(disabled) and `1`(enabled). Defaults to `0`.
         """
         return pulumi.get(self, "ips_switch_status")
 
@@ -1433,33 +922,17 @@ class Firewall(pulumi.CustomResource):
     def name(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the firewall name.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[_builtins.int]]:
-        """
-        Specifies the charging period.
-        If `period_unit` is set to **month**, the value ranges from 1 to 9.
-        If `period_unit` is set to **year**, the value ranges from 1 to 3.
-        This parameter is mandatory if `charging_mode` is set to **prePaid**.
-
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "period")
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the charging period unit.
-        Valid values are **month** and **year**. This parameter is mandatory if `charging_mode` is set to **prePaid**.
-
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "period_unit")
 
     @_builtins.property
@@ -1467,17 +940,12 @@ class Firewall(pulumi.CustomResource):
     def protect_objects(self) -> pulumi.Output[Sequence['outputs.FirewallProtectObject']]:
         """
         The protect objects list.
-        The protect_objects structure is documented below.
         """
         return pulumi.get(self, "protect_objects")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
@@ -1509,9 +977,6 @@ class Firewall(pulumi.CustomResource):
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
         Specifies the key/value pairs to associate with the firewall.
-
-        <a name="Firewall_Flavor"></a>
-        The `flavor` block supports:
         """
         return pulumi.get(self, "tags")
 

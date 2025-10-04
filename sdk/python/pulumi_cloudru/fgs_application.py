@@ -29,24 +29,12 @@ class FgsApplicationArgs:
                  template_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FgsApplication resource.
-        :param pulumi.Input[_builtins.str] agency_name: Specifies the agency name used by the application.  
-               Changing this parameter will create a new resource.
-               
-               > If omitted, the service will automatically create an agency, please ensure that the tenant has IAM related
-               permissions. The agency will be deleted when the application is deleted.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the application.  
-               The description can contain a maximum of `1,024` characters.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the application name.  
-               The name can contain a maximum of 60 characters and must start with a letter and end with a letter or digit.
-               Only letters, digits, underscores (_) and hyphens (-) are allowed.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] params: Specifies the template parameters, in JSON format.  
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create an application.  
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] template_id: Specifies the ID of the template used by the application.  
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] agency_name: The agency name used by the application.
+        :param pulumi.Input[_builtins.str] description: The description of the application.
+        :param pulumi.Input[_builtins.str] name: The application name
+        :param pulumi.Input[_builtins.str] params: The template parameters, in JSON format.
+        :param pulumi.Input[_builtins.str] region: The region where the application is located.
+        :param pulumi.Input[_builtins.str] template_id: The ID of the template used by the application.
         """
         if agency_name is not None:
             pulumi.set(__self__, "agency_name", agency_name)
@@ -65,11 +53,7 @@ class FgsApplicationArgs:
     @pulumi.getter(name="agencyName")
     def agency_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the agency name used by the application.  
-        Changing this parameter will create a new resource.
-
-        > If omitted, the service will automatically create an agency, please ensure that the tenant has IAM related
-        permissions. The agency will be deleted when the application is deleted.
+        The agency name used by the application.
         """
         return pulumi.get(self, "agency_name")
 
@@ -81,9 +65,7 @@ class FgsApplicationArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the description of the application.  
-        The description can contain a maximum of `1,024` characters.
-        Changing this parameter will create a new resource.
+        The description of the application.
         """
         return pulumi.get(self, "description")
 
@@ -95,10 +77,7 @@ class FgsApplicationArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the application name.  
-        The name can contain a maximum of 60 characters and must start with a letter and end with a letter or digit.
-        Only letters, digits, underscores (_) and hyphens (-) are allowed.
-        Changing this parameter will create a new resource.
+        The application name
         """
         return pulumi.get(self, "name")
 
@@ -110,8 +89,7 @@ class FgsApplicationArgs:
     @pulumi.getter
     def params(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the template parameters, in JSON format.  
-        Changing this parameter will create a new resource.
+        The template parameters, in JSON format.
         """
         return pulumi.get(self, "params")
 
@@ -123,8 +101,7 @@ class FgsApplicationArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region in which to create an application.  
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        The region where the application is located.
         """
         return pulumi.get(self, "region")
 
@@ -136,8 +113,7 @@ class FgsApplicationArgs:
     @pulumi.getter(name="templateId")
     def template_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the ID of the template used by the application.  
-        Changing this parameter will create a new resource.
+        The ID of the template used by the application.
         """
         return pulumi.get(self, "template_id")
 
@@ -161,30 +137,16 @@ class _FgsApplicationState:
                  template_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FgsApplication resources.
-        :param pulumi.Input[_builtins.str] agency_name: Specifies the agency name used by the application.  
-               Changing this parameter will create a new resource.
-               
-               > If omitted, the service will automatically create an agency, please ensure that the tenant has IAM related
-               permissions. The agency will be deleted when the application is deleted.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the application.  
-               The description can contain a maximum of `1,024` characters.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the application name.  
-               The name can contain a maximum of 60 characters and must start with a letter and end with a letter or digit.
-               Only letters, digits, underscores (_) and hyphens (-) are allowed.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] params: Specifies the template parameters, in JSON format.  
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create an application.  
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input['FgsApplicationRepositoryArgs']]] repositories: The repository information.  
-               The repository structure is documented below.
+        :param pulumi.Input[_builtins.str] agency_name: The agency name used by the application.
+        :param pulumi.Input[_builtins.str] description: The description of the application.
+        :param pulumi.Input[_builtins.str] name: The application name
+        :param pulumi.Input[_builtins.str] params: The template parameters, in JSON format.
+        :param pulumi.Input[_builtins.str] region: The region where the application is located.
+        :param pulumi.Input[Sequence[pulumi.Input['FgsApplicationRepositoryArgs']]] repositories: The repository information.
         :param pulumi.Input[_builtins.str] stack_id: The ID of the stack where the application is deployed.
-        :param pulumi.Input[Sequence[pulumi.Input['FgsApplicationStackResourceArgs']]] stack_resources: The list of the stack resources information.  
-               The stack_resources structure is documented below.
-        :param pulumi.Input[_builtins.str] status: The repository status.
-        :param pulumi.Input[_builtins.str] template_id: Specifies the ID of the template used by the application.  
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[Sequence[pulumi.Input['FgsApplicationStackResourceArgs']]] stack_resources: The list of the stack resources information.
+        :param pulumi.Input[_builtins.str] status: The application status.
+        :param pulumi.Input[_builtins.str] template_id: The ID of the template used by the application.
         """
         if agency_name is not None:
             pulumi.set(__self__, "agency_name", agency_name)
@@ -211,11 +173,7 @@ class _FgsApplicationState:
     @pulumi.getter(name="agencyName")
     def agency_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the agency name used by the application.  
-        Changing this parameter will create a new resource.
-
-        > If omitted, the service will automatically create an agency, please ensure that the tenant has IAM related
-        permissions. The agency will be deleted when the application is deleted.
+        The agency name used by the application.
         """
         return pulumi.get(self, "agency_name")
 
@@ -227,9 +185,7 @@ class _FgsApplicationState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the description of the application.  
-        The description can contain a maximum of `1,024` characters.
-        Changing this parameter will create a new resource.
+        The description of the application.
         """
         return pulumi.get(self, "description")
 
@@ -241,10 +197,7 @@ class _FgsApplicationState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the application name.  
-        The name can contain a maximum of 60 characters and must start with a letter and end with a letter or digit.
-        Only letters, digits, underscores (_) and hyphens (-) are allowed.
-        Changing this parameter will create a new resource.
+        The application name
         """
         return pulumi.get(self, "name")
 
@@ -256,8 +209,7 @@ class _FgsApplicationState:
     @pulumi.getter
     def params(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the template parameters, in JSON format.  
-        Changing this parameter will create a new resource.
+        The template parameters, in JSON format.
         """
         return pulumi.get(self, "params")
 
@@ -269,8 +221,7 @@ class _FgsApplicationState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region in which to create an application.  
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        The region where the application is located.
         """
         return pulumi.get(self, "region")
 
@@ -282,8 +233,7 @@ class _FgsApplicationState:
     @pulumi.getter
     def repositories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FgsApplicationRepositoryArgs']]]]:
         """
-        The repository information.  
-        The repository structure is documented below.
+        The repository information.
         """
         return pulumi.get(self, "repositories")
 
@@ -307,8 +257,7 @@ class _FgsApplicationState:
     @pulumi.getter(name="stackResources")
     def stack_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FgsApplicationStackResourceArgs']]]]:
         """
-        The list of the stack resources information.  
-        The stack_resources structure is documented below.
+        The list of the stack resources information.
         """
         return pulumi.get(self, "stack_resources")
 
@@ -320,7 +269,7 @@ class _FgsApplicationState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The repository status.
+        The application status.
         """
         return pulumi.get(self, "status")
 
@@ -332,8 +281,7 @@ class _FgsApplicationState:
     @pulumi.getter(name="templateId")
     def template_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the ID of the template used by the application.  
-        Changing this parameter will create a new resource.
+        The ID of the template used by the application.
         """
         return pulumi.get(self, "template_id")
 
@@ -356,72 +304,15 @@ class FgsApplication(pulumi.CustomResource):
                  template_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages an application within SberCloud.
-
-        > Currently, only available in `cn-north-4` and `cn-east-3` regions.
-
-        ## Example Usage
-
-        ## Import
-
-        Application can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/fgsApplication:FgsApplication test <id>
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response.
-
-        The missing attributes include: `template_id`, `agency_name`, `params`.
-
-        It is generally recommended running `pulumi preview` after importing the application.
-
-        You can then decide if changes should be applied to the application, or the resource definition should be updated to
-
-        align with the application. Also you can ignore changes as below.
-
-        hcl
-
-        resource "sbercloud_fgs_application" "test" {
-
-          ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              template_id, agency_name,
-            
-            ]
-
-          }
-
-        }
-
+        Create a FgsApplication resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] agency_name: Specifies the agency name used by the application.  
-               Changing this parameter will create a new resource.
-               
-               > If omitted, the service will automatically create an agency, please ensure that the tenant has IAM related
-               permissions. The agency will be deleted when the application is deleted.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the application.  
-               The description can contain a maximum of `1,024` characters.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the application name.  
-               The name can contain a maximum of 60 characters and must start with a letter and end with a letter or digit.
-               Only letters, digits, underscores (_) and hyphens (-) are allowed.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] params: Specifies the template parameters, in JSON format.  
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create an application.  
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] template_id: Specifies the ID of the template used by the application.  
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] agency_name: The agency name used by the application.
+        :param pulumi.Input[_builtins.str] description: The description of the application.
+        :param pulumi.Input[_builtins.str] name: The application name
+        :param pulumi.Input[_builtins.str] params: The template parameters, in JSON format.
+        :param pulumi.Input[_builtins.str] region: The region where the application is located.
+        :param pulumi.Input[_builtins.str] template_id: The ID of the template used by the application.
         """
         ...
     @overload
@@ -430,52 +321,7 @@ class FgsApplication(pulumi.CustomResource):
                  args: Optional[FgsApplicationArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages an application within SberCloud.
-
-        > Currently, only available in `cn-north-4` and `cn-east-3` regions.
-
-        ## Example Usage
-
-        ## Import
-
-        Application can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/fgsApplication:FgsApplication test <id>
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response.
-
-        The missing attributes include: `template_id`, `agency_name`, `params`.
-
-        It is generally recommended running `pulumi preview` after importing the application.
-
-        You can then decide if changes should be applied to the application, or the resource definition should be updated to
-
-        align with the application. Also you can ignore changes as below.
-
-        hcl
-
-        resource "sbercloud_fgs_application" "test" {
-
-          ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              template_id, agency_name,
-            
-            ]
-
-          }
-
-        }
-
+        Create a FgsApplication resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param FgsApplicationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -543,30 +389,16 @@ class FgsApplication(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] agency_name: Specifies the agency name used by the application.  
-               Changing this parameter will create a new resource.
-               
-               > If omitted, the service will automatically create an agency, please ensure that the tenant has IAM related
-               permissions. The agency will be deleted when the application is deleted.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the application.  
-               The description can contain a maximum of `1,024` characters.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the application name.  
-               The name can contain a maximum of 60 characters and must start with a letter and end with a letter or digit.
-               Only letters, digits, underscores (_) and hyphens (-) are allowed.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] params: Specifies the template parameters, in JSON format.  
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create an application.  
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FgsApplicationRepositoryArgs', 'FgsApplicationRepositoryArgsDict']]]] repositories: The repository information.  
-               The repository structure is documented below.
+        :param pulumi.Input[_builtins.str] agency_name: The agency name used by the application.
+        :param pulumi.Input[_builtins.str] description: The description of the application.
+        :param pulumi.Input[_builtins.str] name: The application name
+        :param pulumi.Input[_builtins.str] params: The template parameters, in JSON format.
+        :param pulumi.Input[_builtins.str] region: The region where the application is located.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FgsApplicationRepositoryArgs', 'FgsApplicationRepositoryArgsDict']]]] repositories: The repository information.
         :param pulumi.Input[_builtins.str] stack_id: The ID of the stack where the application is deployed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FgsApplicationStackResourceArgs', 'FgsApplicationStackResourceArgsDict']]]] stack_resources: The list of the stack resources information.  
-               The stack_resources structure is documented below.
-        :param pulumi.Input[_builtins.str] status: The repository status.
-        :param pulumi.Input[_builtins.str] template_id: Specifies the ID of the template used by the application.  
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FgsApplicationStackResourceArgs', 'FgsApplicationStackResourceArgsDict']]]] stack_resources: The list of the stack resources information.
+        :param pulumi.Input[_builtins.str] status: The application status.
+        :param pulumi.Input[_builtins.str] template_id: The ID of the template used by the application.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -588,11 +420,7 @@ class FgsApplication(pulumi.CustomResource):
     @pulumi.getter(name="agencyName")
     def agency_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the agency name used by the application.  
-        Changing this parameter will create a new resource.
-
-        > If omitted, the service will automatically create an agency, please ensure that the tenant has IAM related
-        permissions. The agency will be deleted when the application is deleted.
+        The agency name used by the application.
         """
         return pulumi.get(self, "agency_name")
 
@@ -600,9 +428,7 @@ class FgsApplication(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the description of the application.  
-        The description can contain a maximum of `1,024` characters.
-        Changing this parameter will create a new resource.
+        The description of the application.
         """
         return pulumi.get(self, "description")
 
@@ -610,10 +436,7 @@ class FgsApplication(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the application name.  
-        The name can contain a maximum of 60 characters and must start with a letter and end with a letter or digit.
-        Only letters, digits, underscores (_) and hyphens (-) are allowed.
-        Changing this parameter will create a new resource.
+        The application name
         """
         return pulumi.get(self, "name")
 
@@ -621,8 +444,7 @@ class FgsApplication(pulumi.CustomResource):
     @pulumi.getter
     def params(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the template parameters, in JSON format.  
-        Changing this parameter will create a new resource.
+        The template parameters, in JSON format.
         """
         return pulumi.get(self, "params")
 
@@ -630,8 +452,7 @@ class FgsApplication(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the region in which to create an application.  
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        The region where the application is located.
         """
         return pulumi.get(self, "region")
 
@@ -639,8 +460,7 @@ class FgsApplication(pulumi.CustomResource):
     @pulumi.getter
     def repositories(self) -> pulumi.Output[Sequence['outputs.FgsApplicationRepository']]:
         """
-        The repository information.  
-        The repository structure is documented below.
+        The repository information.
         """
         return pulumi.get(self, "repositories")
 
@@ -656,8 +476,7 @@ class FgsApplication(pulumi.CustomResource):
     @pulumi.getter(name="stackResources")
     def stack_resources(self) -> pulumi.Output[Sequence['outputs.FgsApplicationStackResource']]:
         """
-        The list of the stack resources information.  
-        The stack_resources structure is documented below.
+        The list of the stack resources information.
         """
         return pulumi.get(self, "stack_resources")
 
@@ -665,7 +484,7 @@ class FgsApplication(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The repository status.
+        The application status.
         """
         return pulumi.get(self, "status")
 
@@ -673,8 +492,7 @@ class FgsApplication(pulumi.CustomResource):
     @pulumi.getter(name="templateId")
     def template_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the ID of the template used by the application.  
-        Changing this parameter will create a new resource.
+        The ID of the template used by the application.
         """
         return pulumi.get(self, "template_id")
 

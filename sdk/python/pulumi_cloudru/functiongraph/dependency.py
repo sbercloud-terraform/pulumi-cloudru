@@ -27,33 +27,10 @@ class DependencyArgs:
         """
         The set of arguments for constructing a Dependency resource.
         :param pulumi.Input[_builtins.str] link: The OBS storage URL of the dependency package.
-        :param pulumi.Input[_builtins.str] runtime: Specifies the dependency package runtime.
-               The valid values are as follows:
-               + **Java8**
-               + **Java11**
-               + **Node.js6.10**
-               + **Node.js8.10**
-               + **Node.js10.16**
-               + **Node.js12.13**
-               + **Node.js14.18**
-               + **Python2.7**
-               + **Python3.6**
-               + **Python3.9**
-               + **Go1.8**
-               + **Go1.x**
-               + **C#(.NET Core 2.0)**
-               + **C#(.NET Core 2.1)**
-               + **C#(.NET Core 3.1)**
-               + **PHP7.3**
-               + **Custom**
-               + **http**
-        :param pulumi.Input[_builtins.str] description: Specifies the dependency description.
-               The description can contain a maximum of `512` characters.
-        :param pulumi.Input[_builtins.str] name: Specifies the dependency name.
-               The name can contain a maximum of `96` characters and must start with a letter and end with a letter or digit.
-               Only letters, digits, underscores (_), periods (.), and hyphens (-) are allowed.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create a custom dependency package.
-               If omitted, the provider-level region will be used. Changing this will create a new resource.
+        :param pulumi.Input[_builtins.str] runtime: The runtime of the dependency package.
+        :param pulumi.Input[_builtins.str] description: The description of the dependency package.
+        :param pulumi.Input[_builtins.str] name: The name of the dependency package.
+        :param pulumi.Input[_builtins.str] region: The region where the dependency package is located.
         """
         pulumi.set(__self__, "link", link)
         pulumi.set(__self__, "runtime", runtime)
@@ -80,26 +57,7 @@ class DependencyArgs:
     @pulumi.getter
     def runtime(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the dependency package runtime.
-        The valid values are as follows:
-        + **Java8**
-        + **Java11**
-        + **Node.js6.10**
-        + **Node.js8.10**
-        + **Node.js10.16**
-        + **Node.js12.13**
-        + **Node.js14.18**
-        + **Python2.7**
-        + **Python3.6**
-        + **Python3.9**
-        + **Go1.8**
-        + **Go1.x**
-        + **C#(.NET Core 2.0)**
-        + **C#(.NET Core 2.1)**
-        + **C#(.NET Core 3.1)**
-        + **PHP7.3**
-        + **Custom**
-        + **http**
+        The runtime of the dependency package.
         """
         return pulumi.get(self, "runtime")
 
@@ -111,8 +69,7 @@ class DependencyArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the dependency description.
-        The description can contain a maximum of `512` characters.
+        The description of the dependency package.
         """
         return pulumi.get(self, "description")
 
@@ -124,9 +81,7 @@ class DependencyArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the dependency name.
-        The name can contain a maximum of `96` characters and must start with a letter and end with a letter or digit.
-        Only letters, digits, underscores (_), periods (.), and hyphens (-) are allowed.
+        The name of the dependency package.
         """
         return pulumi.get(self, "name")
 
@@ -138,8 +93,7 @@ class DependencyArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region in which to create a custom dependency package.
-        If omitted, the provider-level region will be used. Changing this will create a new resource.
+        The region where the dependency package is located.
         """
         return pulumi.get(self, "region")
 
@@ -162,38 +116,15 @@ class _DependencyState:
                  version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Dependency resources.
-        :param pulumi.Input[_builtins.str] description: Specifies the dependency description.
-               The description can contain a maximum of `512` characters.
-        :param pulumi.Input[_builtins.str] etag: The unique ID of the dependency package.
+        :param pulumi.Input[_builtins.str] description: The description of the dependency package.
+        :param pulumi.Input[_builtins.str] etag: The etag of the dependency package.
         :param pulumi.Input[_builtins.str] link: The OBS storage URL of the dependency package.
-        :param pulumi.Input[_builtins.str] name: Specifies the dependency name.
-               The name can contain a maximum of `96` characters and must start with a letter and end with a letter or digit.
-               Only letters, digits, underscores (_), periods (.), and hyphens (-) are allowed.
-        :param pulumi.Input[_builtins.str] owner: The base64 encoded digest of the dependency after encryption by MD5.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create a custom dependency package.
-               If omitted, the provider-level region will be used. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] runtime: Specifies the dependency package runtime.
-               The valid values are as follows:
-               + **Java8**
-               + **Java11**
-               + **Node.js6.10**
-               + **Node.js8.10**
-               + **Node.js10.16**
-               + **Node.js12.13**
-               + **Node.js14.18**
-               + **Python2.7**
-               + **Python3.6**
-               + **Python3.9**
-               + **Go1.8**
-               + **Go1.x**
-               + **C#(.NET Core 2.0)**
-               + **C#(.NET Core 2.1)**
-               + **C#(.NET Core 3.1)**
-               + **PHP7.3**
-               + **Custom**
-               + **http**
-        :param pulumi.Input[_builtins.int] size: The dependency package size in bytes.
-        :param pulumi.Input[_builtins.int] version: The dependency package version.
+        :param pulumi.Input[_builtins.str] name: The name of the dependency package.
+        :param pulumi.Input[_builtins.str] owner: The owner name of the dependency package.
+        :param pulumi.Input[_builtins.str] region: The region where the dependency package is located.
+        :param pulumi.Input[_builtins.str] runtime: The runtime of the dependency package.
+        :param pulumi.Input[_builtins.int] size: The capacity of the dependency package.
+        :param pulumi.Input[_builtins.int] version: The version of the dependency package.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -218,8 +149,7 @@ class _DependencyState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the dependency description.
-        The description can contain a maximum of `512` characters.
+        The description of the dependency package.
         """
         return pulumi.get(self, "description")
 
@@ -231,7 +161,7 @@ class _DependencyState:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The unique ID of the dependency package.
+        The etag of the dependency package.
         """
         return pulumi.get(self, "etag")
 
@@ -255,9 +185,7 @@ class _DependencyState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the dependency name.
-        The name can contain a maximum of `96` characters and must start with a letter and end with a letter or digit.
-        Only letters, digits, underscores (_), periods (.), and hyphens (-) are allowed.
+        The name of the dependency package.
         """
         return pulumi.get(self, "name")
 
@@ -269,7 +197,7 @@ class _DependencyState:
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The base64 encoded digest of the dependency after encryption by MD5.
+        The owner name of the dependency package.
         """
         return pulumi.get(self, "owner")
 
@@ -281,8 +209,7 @@ class _DependencyState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region in which to create a custom dependency package.
-        If omitted, the provider-level region will be used. Changing this will create a new resource.
+        The region where the dependency package is located.
         """
         return pulumi.get(self, "region")
 
@@ -294,26 +221,7 @@ class _DependencyState:
     @pulumi.getter
     def runtime(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the dependency package runtime.
-        The valid values are as follows:
-        + **Java8**
-        + **Java11**
-        + **Node.js6.10**
-        + **Node.js8.10**
-        + **Node.js10.16**
-        + **Node.js12.13**
-        + **Node.js14.18**
-        + **Python2.7**
-        + **Python3.6**
-        + **Python3.9**
-        + **Go1.8**
-        + **Go1.x**
-        + **C#(.NET Core 2.0)**
-        + **C#(.NET Core 2.1)**
-        + **C#(.NET Core 3.1)**
-        + **PHP7.3**
-        + **Custom**
-        + **http**
+        The runtime of the dependency package.
         """
         return pulumi.get(self, "runtime")
 
@@ -325,7 +233,7 @@ class _DependencyState:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The dependency package size in bytes.
+        The capacity of the dependency package.
         """
         return pulumi.get(self, "size")
 
@@ -337,7 +245,7 @@ class _DependencyState:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The dependency package version.
+        The version of the dependency package.
         """
         return pulumi.get(self, "version")
 
@@ -359,53 +267,14 @@ class Dependency(pulumi.CustomResource):
                  runtime: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a custom dependency package within SberCloud FunctionGraph.
-
-        > This resource will be deprecated in a future version. Please use `FgsDependencyVersion` resource to
-        replace it. For specific usage instructions, please refer to the corresponding document.
-
-        ## Example Usage
-
-        ## Import
-
-        Dependencies can be imported using the `id`, e.g.:
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:FunctionGraph/dependency:Dependency test 795e722f-0c23-41b6-a189-dcd56f889cf6
-        ```
-
+        Create a Dependency resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the dependency description.
-               The description can contain a maximum of `512` characters.
+        :param pulumi.Input[_builtins.str] description: The description of the dependency package.
         :param pulumi.Input[_builtins.str] link: The OBS storage URL of the dependency package.
-        :param pulumi.Input[_builtins.str] name: Specifies the dependency name.
-               The name can contain a maximum of `96` characters and must start with a letter and end with a letter or digit.
-               Only letters, digits, underscores (_), periods (.), and hyphens (-) are allowed.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create a custom dependency package.
-               If omitted, the provider-level region will be used. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] runtime: Specifies the dependency package runtime.
-               The valid values are as follows:
-               + **Java8**
-               + **Java11**
-               + **Node.js6.10**
-               + **Node.js8.10**
-               + **Node.js10.16**
-               + **Node.js12.13**
-               + **Node.js14.18**
-               + **Python2.7**
-               + **Python3.6**
-               + **Python3.9**
-               + **Go1.8**
-               + **Go1.x**
-               + **C#(.NET Core 2.0)**
-               + **C#(.NET Core 2.1)**
-               + **C#(.NET Core 3.1)**
-               + **PHP7.3**
-               + **Custom**
-               + **http**
+        :param pulumi.Input[_builtins.str] name: The name of the dependency package.
+        :param pulumi.Input[_builtins.str] region: The region where the dependency package is located.
+        :param pulumi.Input[_builtins.str] runtime: The runtime of the dependency package.
         """
         ...
     @overload
@@ -414,23 +283,7 @@ class Dependency(pulumi.CustomResource):
                  args: DependencyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a custom dependency package within SberCloud FunctionGraph.
-
-        > This resource will be deprecated in a future version. Please use `FgsDependencyVersion` resource to
-        replace it. For specific usage instructions, please refer to the corresponding document.
-
-        ## Example Usage
-
-        ## Import
-
-        Dependencies can be imported using the `id`, e.g.:
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:FunctionGraph/dependency:Dependency test 795e722f-0c23-41b6-a189-dcd56f889cf6
-        ```
-
+        Create a Dependency resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param DependencyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -499,38 +352,15 @@ class Dependency(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the dependency description.
-               The description can contain a maximum of `512` characters.
-        :param pulumi.Input[_builtins.str] etag: The unique ID of the dependency package.
+        :param pulumi.Input[_builtins.str] description: The description of the dependency package.
+        :param pulumi.Input[_builtins.str] etag: The etag of the dependency package.
         :param pulumi.Input[_builtins.str] link: The OBS storage URL of the dependency package.
-        :param pulumi.Input[_builtins.str] name: Specifies the dependency name.
-               The name can contain a maximum of `96` characters and must start with a letter and end with a letter or digit.
-               Only letters, digits, underscores (_), periods (.), and hyphens (-) are allowed.
-        :param pulumi.Input[_builtins.str] owner: The base64 encoded digest of the dependency after encryption by MD5.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create a custom dependency package.
-               If omitted, the provider-level region will be used. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] runtime: Specifies the dependency package runtime.
-               The valid values are as follows:
-               + **Java8**
-               + **Java11**
-               + **Node.js6.10**
-               + **Node.js8.10**
-               + **Node.js10.16**
-               + **Node.js12.13**
-               + **Node.js14.18**
-               + **Python2.7**
-               + **Python3.6**
-               + **Python3.9**
-               + **Go1.8**
-               + **Go1.x**
-               + **C#(.NET Core 2.0)**
-               + **C#(.NET Core 2.1)**
-               + **C#(.NET Core 3.1)**
-               + **PHP7.3**
-               + **Custom**
-               + **http**
-        :param pulumi.Input[_builtins.int] size: The dependency package size in bytes.
-        :param pulumi.Input[_builtins.int] version: The dependency package version.
+        :param pulumi.Input[_builtins.str] name: The name of the dependency package.
+        :param pulumi.Input[_builtins.str] owner: The owner name of the dependency package.
+        :param pulumi.Input[_builtins.str] region: The region where the dependency package is located.
+        :param pulumi.Input[_builtins.str] runtime: The runtime of the dependency package.
+        :param pulumi.Input[_builtins.int] size: The capacity of the dependency package.
+        :param pulumi.Input[_builtins.int] version: The version of the dependency package.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -551,8 +381,7 @@ class Dependency(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the dependency description.
-        The description can contain a maximum of `512` characters.
+        The description of the dependency package.
         """
         return pulumi.get(self, "description")
 
@@ -560,7 +389,7 @@ class Dependency(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[_builtins.str]:
         """
-        The unique ID of the dependency package.
+        The etag of the dependency package.
         """
         return pulumi.get(self, "etag")
 
@@ -576,9 +405,7 @@ class Dependency(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the dependency name.
-        The name can contain a maximum of `96` characters and must start with a letter and end with a letter or digit.
-        Only letters, digits, underscores (_), periods (.), and hyphens (-) are allowed.
+        The name of the dependency package.
         """
         return pulumi.get(self, "name")
 
@@ -586,7 +413,7 @@ class Dependency(pulumi.CustomResource):
     @pulumi.getter
     def owner(self) -> pulumi.Output[_builtins.str]:
         """
-        The base64 encoded digest of the dependency after encryption by MD5.
+        The owner name of the dependency package.
         """
         return pulumi.get(self, "owner")
 
@@ -594,8 +421,7 @@ class Dependency(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the region in which to create a custom dependency package.
-        If omitted, the provider-level region will be used. Changing this will create a new resource.
+        The region where the dependency package is located.
         """
         return pulumi.get(self, "region")
 
@@ -603,26 +429,7 @@ class Dependency(pulumi.CustomResource):
     @pulumi.getter
     def runtime(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the dependency package runtime.
-        The valid values are as follows:
-        + **Java8**
-        + **Java11**
-        + **Node.js6.10**
-        + **Node.js8.10**
-        + **Node.js10.16**
-        + **Node.js12.13**
-        + **Node.js14.18**
-        + **Python2.7**
-        + **Python3.6**
-        + **Python3.9**
-        + **Go1.8**
-        + **Go1.x**
-        + **C#(.NET Core 2.0)**
-        + **C#(.NET Core 2.1)**
-        + **C#(.NET Core 3.1)**
-        + **PHP7.3**
-        + **Custom**
-        + **http**
+        The runtime of the dependency package.
         """
         return pulumi.get(self, "runtime")
 
@@ -630,7 +437,7 @@ class Dependency(pulumi.CustomResource):
     @pulumi.getter
     def size(self) -> pulumi.Output[_builtins.int]:
         """
-        The dependency package size in bytes.
+        The capacity of the dependency package.
         """
         return pulumi.get(self, "size")
 
@@ -638,7 +445,7 @@ class Dependency(pulumi.CustomResource):
     @pulumi.getter
     def version(self) -> pulumi.Output[_builtins.int]:
         """
-        The dependency package version.
+        The version of the dependency package.
         """
         return pulumi.get(self, "version")
 

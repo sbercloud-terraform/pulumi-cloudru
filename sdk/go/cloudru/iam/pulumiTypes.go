@@ -14,10 +14,7 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type AclIpCidr struct {
-	// Specifies the IPv4 CIDR block, for example, __192.168.0.0/24__.
-	Cidr string `pulumi:"cidr"`
-	// Specifies a description about an IPv4 CIDR block. This parameter can contain a
-	// maximum of 255 characters and the following charactors are not allowed:__@#%^&*<>\\__.
+	Cidr        string  `pulumi:"cidr"`
 	Description *string `pulumi:"description"`
 }
 
@@ -33,10 +30,7 @@ type AclIpCidrInput interface {
 }
 
 type AclIpCidrArgs struct {
-	// Specifies the IPv4 CIDR block, for example, __192.168.0.0/24__.
-	Cidr pulumi.StringInput `pulumi:"cidr"`
-	// Specifies a description about an IPv4 CIDR block. This parameter can contain a
-	// maximum of 255 characters and the following charactors are not allowed:__@#%^&*<>\\__.
+	Cidr        pulumi.StringInput    `pulumi:"cidr"`
 	Description pulumi.StringPtrInput `pulumi:"description"`
 }
 
@@ -91,13 +85,10 @@ func (o AclIpCidrOutput) ToAclIpCidrOutputWithContext(ctx context.Context) AclIp
 	return o
 }
 
-// Specifies the IPv4 CIDR block, for example, __192.168.0.0/24__.
 func (o AclIpCidrOutput) Cidr() pulumi.StringOutput {
 	return o.ApplyT(func(v AclIpCidr) string { return v.Cidr }).(pulumi.StringOutput)
 }
 
-// Specifies a description about an IPv4 CIDR block. This parameter can contain a
-// maximum of 255 characters and the following charactors are not allowed:__@#%^&*<>\\__.
 func (o AclIpCidrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AclIpCidr) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -123,13 +114,8 @@ func (o AclIpCidrArrayOutput) Index(i pulumi.IntInput) AclIpCidrOutput {
 }
 
 type AclIpRange struct {
-	// Specifies a description about an IP address range. This parameter can contain a
-	// maximum of 255 characters and the following charactors are not allowed:__@#%^&*<>\\__.
-	//
-	// ->**NOTE:** Up to 200 `ipCidrs` and `ipRanges` can be created in total for each access method.
 	Description *string `pulumi:"description"`
-	// Specifies the Ip address range, for example, __0.0.0.0-255.255.255.0__.
-	Range string `pulumi:"range"`
+	Range       string  `pulumi:"range"`
 }
 
 // AclIpRangeInput is an input type that accepts AclIpRangeArgs and AclIpRangeOutput values.
@@ -144,13 +130,8 @@ type AclIpRangeInput interface {
 }
 
 type AclIpRangeArgs struct {
-	// Specifies a description about an IP address range. This parameter can contain a
-	// maximum of 255 characters and the following charactors are not allowed:__@#%^&*<>\\__.
-	//
-	// ->**NOTE:** Up to 200 `ipCidrs` and `ipRanges` can be created in total for each access method.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Specifies the Ip address range, for example, __0.0.0.0-255.255.255.0__.
-	Range pulumi.StringInput `pulumi:"range"`
+	Range       pulumi.StringInput    `pulumi:"range"`
 }
 
 func (AclIpRangeArgs) ElementType() reflect.Type {
@@ -204,15 +185,10 @@ func (o AclIpRangeOutput) ToAclIpRangeOutputWithContext(ctx context.Context) Acl
 	return o
 }
 
-// Specifies a description about an IP address range. This parameter can contain a
-// maximum of 255 characters and the following charactors are not allowed:__@#%^&*<>\\__.
-//
-// ->**NOTE:** Up to 200 `ipCidrs` and `ipRanges` can be created in total for each access method.
 func (o AclIpRangeOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AclIpRange) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the Ip address range, for example, __0.0.0.0-255.255.255.0__.
 func (o AclIpRangeOutput) Range() pulumi.StringOutput {
 	return o.ApplyT(func(v AclIpRange) string { return v.Range }).(pulumi.StringOutput)
 }
@@ -238,15 +214,8 @@ func (o AclIpRangeArrayOutput) Index(i pulumi.IntInput) AclIpRangeOutput {
 }
 
 type AgencyProjectRole struct {
-	// Specifies the name of project.
-	Project string `pulumi:"project"`
-	// Specifies an array of role names.
-	//
-	// > **NOTE**
-	// - At least one of `projectRole` and `domainRoles` must be specified when creating an agency.
-	// - We can get all **System-Defined Roles** form
-	//   [SberCloud](https://support.hc.sbercloud.ru/permissions/index.html).
-	Roles []string `pulumi:"roles"`
+	Project string   `pulumi:"project"`
+	Roles   []string `pulumi:"roles"`
 }
 
 // AgencyProjectRoleInput is an input type that accepts AgencyProjectRoleArgs and AgencyProjectRoleOutput values.
@@ -261,15 +230,8 @@ type AgencyProjectRoleInput interface {
 }
 
 type AgencyProjectRoleArgs struct {
-	// Specifies the name of project.
-	Project pulumi.StringInput `pulumi:"project"`
-	// Specifies an array of role names.
-	//
-	// > **NOTE**
-	// - At least one of `projectRole` and `domainRoles` must be specified when creating an agency.
-	// - We can get all **System-Defined Roles** form
-	//   [SberCloud](https://support.hc.sbercloud.ru/permissions/index.html).
-	Roles pulumi.StringArrayInput `pulumi:"roles"`
+	Project pulumi.StringInput      `pulumi:"project"`
+	Roles   pulumi.StringArrayInput `pulumi:"roles"`
 }
 
 func (AgencyProjectRoleArgs) ElementType() reflect.Type {
@@ -323,17 +285,10 @@ func (o AgencyProjectRoleOutput) ToAgencyProjectRoleOutputWithContext(ctx contex
 	return o
 }
 
-// Specifies the name of project.
 func (o AgencyProjectRoleOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v AgencyProjectRole) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies an array of role names.
-//
-// > **NOTE**
-//   - At least one of `projectRole` and `domainRoles` must be specified when creating an agency.
-//   - We can get all **System-Defined Roles** form
-//     [SberCloud](https://support.hc.sbercloud.ru/permissions/index.html).
 func (o AgencyProjectRoleOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AgencyProjectRole) []string { return v.Roles }).(pulumi.StringArrayOutput)
 }
@@ -359,35 +314,14 @@ func (o AgencyProjectRoleArrayOutput) Index(i pulumi.IntInput) AgencyProjectRole
 }
 
 type ProviderAccessConfig struct {
-	// Specifies the access type of the identity provider.
-	// Available options are:
-	AccessType string `pulumi:"accessType"`
-	// Specifies the authorization endpoint of the OpenID Connect identity
-	// provider. This field is required only if the access type is set to `programConsole`.
-	AuthorizationEndpoint *string `pulumi:"authorizationEndpoint"`
-	// Specifies the ID of a client registered with the OpenID Connect identity provider.
-	ClientId string `pulumi:"clientId"`
-	// Specifies the URL of the identity provider.
-	// This field corresponds to the iss field in the ID token.
-	ProviderUrl string `pulumi:"providerUrl"`
-	// Response mode.
-	// Valid values is *form_post* and *fragment*, default value is *form_post*.
-	// This field is required only if the access type is set to `programConsole`.
-	ResponseMode *string `pulumi:"responseMode"`
-	// Response type. Valid values is *id_token*, default value is *id_token*.
-	// This field is required only if the access type is set to `programConsole`.
-	ResponseType *string `pulumi:"responseType"`
-	// Specifies the scopes of authorization requests. It is an array of one or more scopes.
-	// Valid values are *openid*, *email*, *profile* and other values defined by you.
-	// This field is required only if the access type is set to `programConsole`.
-	//
-	// > **NOTE:** 1. *openid* must be specified for this field.
-	// <br/>2. A maximum of 10 values can be specified, and they must be separated with spaces.
-	// <br/>Example: openid email host.
-	Scopes []string `pulumi:"scopes"`
-	// Public key used to sign the ID token of the OpenID Connect identity provider.
-	// This field is required only if the protocol is set to *oidc*.
-	SigningKey string `pulumi:"signingKey"`
+	AccessType            string   `pulumi:"accessType"`
+	AuthorizationEndpoint *string  `pulumi:"authorizationEndpoint"`
+	ClientId              string   `pulumi:"clientId"`
+	ProviderUrl           string   `pulumi:"providerUrl"`
+	ResponseMode          *string  `pulumi:"responseMode"`
+	ResponseType          *string  `pulumi:"responseType"`
+	Scopes                []string `pulumi:"scopes"`
+	SigningKey            string   `pulumi:"signingKey"`
 }
 
 // ProviderAccessConfigInput is an input type that accepts ProviderAccessConfigArgs and ProviderAccessConfigOutput values.
@@ -402,35 +336,14 @@ type ProviderAccessConfigInput interface {
 }
 
 type ProviderAccessConfigArgs struct {
-	// Specifies the access type of the identity provider.
-	// Available options are:
-	AccessType pulumi.StringInput `pulumi:"accessType"`
-	// Specifies the authorization endpoint of the OpenID Connect identity
-	// provider. This field is required only if the access type is set to `programConsole`.
-	AuthorizationEndpoint pulumi.StringPtrInput `pulumi:"authorizationEndpoint"`
-	// Specifies the ID of a client registered with the OpenID Connect identity provider.
-	ClientId pulumi.StringInput `pulumi:"clientId"`
-	// Specifies the URL of the identity provider.
-	// This field corresponds to the iss field in the ID token.
-	ProviderUrl pulumi.StringInput `pulumi:"providerUrl"`
-	// Response mode.
-	// Valid values is *form_post* and *fragment*, default value is *form_post*.
-	// This field is required only if the access type is set to `programConsole`.
-	ResponseMode pulumi.StringPtrInput `pulumi:"responseMode"`
-	// Response type. Valid values is *id_token*, default value is *id_token*.
-	// This field is required only if the access type is set to `programConsole`.
-	ResponseType pulumi.StringPtrInput `pulumi:"responseType"`
-	// Specifies the scopes of authorization requests. It is an array of one or more scopes.
-	// Valid values are *openid*, *email*, *profile* and other values defined by you.
-	// This field is required only if the access type is set to `programConsole`.
-	//
-	// > **NOTE:** 1. *openid* must be specified for this field.
-	// <br/>2. A maximum of 10 values can be specified, and they must be separated with spaces.
-	// <br/>Example: openid email host.
-	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
-	// Public key used to sign the ID token of the OpenID Connect identity provider.
-	// This field is required only if the protocol is set to *oidc*.
-	SigningKey pulumi.StringInput `pulumi:"signingKey"`
+	AccessType            pulumi.StringInput      `pulumi:"accessType"`
+	AuthorizationEndpoint pulumi.StringPtrInput   `pulumi:"authorizationEndpoint"`
+	ClientId              pulumi.StringInput      `pulumi:"clientId"`
+	ProviderUrl           pulumi.StringInput      `pulumi:"providerUrl"`
+	ResponseMode          pulumi.StringPtrInput   `pulumi:"responseMode"`
+	ResponseType          pulumi.StringPtrInput   `pulumi:"responseType"`
+	Scopes                pulumi.StringArrayInput `pulumi:"scopes"`
+	SigningKey            pulumi.StringInput      `pulumi:"signingKey"`
 }
 
 func (ProviderAccessConfigArgs) ElementType() reflect.Type {
@@ -510,55 +423,34 @@ func (o ProviderAccessConfigOutput) ToProviderAccessConfigPtrOutputWithContext(c
 	}).(ProviderAccessConfigPtrOutput)
 }
 
-// Specifies the access type of the identity provider.
-// Available options are:
 func (o ProviderAccessConfigOutput) AccessType() pulumi.StringOutput {
 	return o.ApplyT(func(v ProviderAccessConfig) string { return v.AccessType }).(pulumi.StringOutput)
 }
 
-// Specifies the authorization endpoint of the OpenID Connect identity
-// provider. This field is required only if the access type is set to `programConsole`.
 func (o ProviderAccessConfigOutput) AuthorizationEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderAccessConfig) *string { return v.AuthorizationEndpoint }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the ID of a client registered with the OpenID Connect identity provider.
 func (o ProviderAccessConfigOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v ProviderAccessConfig) string { return v.ClientId }).(pulumi.StringOutput)
 }
 
-// Specifies the URL of the identity provider.
-// This field corresponds to the iss field in the ID token.
 func (o ProviderAccessConfigOutput) ProviderUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v ProviderAccessConfig) string { return v.ProviderUrl }).(pulumi.StringOutput)
 }
 
-// Response mode.
-// Valid values is *form_post* and *fragment*, default value is *form_post*.
-// This field is required only if the access type is set to `programConsole`.
 func (o ProviderAccessConfigOutput) ResponseMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderAccessConfig) *string { return v.ResponseMode }).(pulumi.StringPtrOutput)
 }
 
-// Response type. Valid values is *id_token*, default value is *id_token*.
-// This field is required only if the access type is set to `programConsole`.
 func (o ProviderAccessConfigOutput) ResponseType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderAccessConfig) *string { return v.ResponseType }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the scopes of authorization requests. It is an array of one or more scopes.
-// Valid values are *openid*, *email*, *profile* and other values defined by you.
-// This field is required only if the access type is set to `programConsole`.
-//
-// > **NOTE:** 1. *openid* must be specified for this field.
-// <br/>2. A maximum of 10 values can be specified, and they must be separated with spaces.
-// <br/>Example: openid email host.
 func (o ProviderAccessConfigOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ProviderAccessConfig) []string { return v.Scopes }).(pulumi.StringArrayOutput)
 }
 
-// Public key used to sign the ID token of the OpenID Connect identity provider.
-// This field is required only if the protocol is set to *oidc*.
 func (o ProviderAccessConfigOutput) SigningKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ProviderAccessConfig) string { return v.SigningKey }).(pulumi.StringOutput)
 }
@@ -587,8 +479,6 @@ func (o ProviderAccessConfigPtrOutput) Elem() ProviderAccessConfigOutput {
 	}).(ProviderAccessConfigOutput)
 }
 
-// Specifies the access type of the identity provider.
-// Available options are:
 func (o ProviderAccessConfigPtrOutput) AccessType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProviderAccessConfig) *string {
 		if v == nil {
@@ -598,8 +488,6 @@ func (o ProviderAccessConfigPtrOutput) AccessType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the authorization endpoint of the OpenID Connect identity
-// provider. This field is required only if the access type is set to `programConsole`.
 func (o ProviderAccessConfigPtrOutput) AuthorizationEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProviderAccessConfig) *string {
 		if v == nil {
@@ -609,7 +497,6 @@ func (o ProviderAccessConfigPtrOutput) AuthorizationEndpoint() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the ID of a client registered with the OpenID Connect identity provider.
 func (o ProviderAccessConfigPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProviderAccessConfig) *string {
 		if v == nil {
@@ -619,8 +506,6 @@ func (o ProviderAccessConfigPtrOutput) ClientId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the URL of the identity provider.
-// This field corresponds to the iss field in the ID token.
 func (o ProviderAccessConfigPtrOutput) ProviderUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProviderAccessConfig) *string {
 		if v == nil {
@@ -630,9 +515,6 @@ func (o ProviderAccessConfigPtrOutput) ProviderUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Response mode.
-// Valid values is *form_post* and *fragment*, default value is *form_post*.
-// This field is required only if the access type is set to `programConsole`.
 func (o ProviderAccessConfigPtrOutput) ResponseMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProviderAccessConfig) *string {
 		if v == nil {
@@ -642,8 +524,6 @@ func (o ProviderAccessConfigPtrOutput) ResponseMode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Response type. Valid values is *id_token*, default value is *id_token*.
-// This field is required only if the access type is set to `programConsole`.
 func (o ProviderAccessConfigPtrOutput) ResponseType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProviderAccessConfig) *string {
 		if v == nil {
@@ -653,13 +533,6 @@ func (o ProviderAccessConfigPtrOutput) ResponseType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the scopes of authorization requests. It is an array of one or more scopes.
-// Valid values are *openid*, *email*, *profile* and other values defined by you.
-// This field is required only if the access type is set to `programConsole`.
-//
-// > **NOTE:** 1. *openid* must be specified for this field.
-// <br/>2. A maximum of 10 values can be specified, and they must be separated with spaces.
-// <br/>Example: openid email host.
 func (o ProviderAccessConfigPtrOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ProviderAccessConfig) []string {
 		if v == nil {
@@ -669,8 +542,6 @@ func (o ProviderAccessConfigPtrOutput) Scopes() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Public key used to sign the ID token of the OpenID Connect identity provider.
-// This field is required only if the protocol is set to *oidc*.
 func (o ProviderAccessConfigPtrOutput) SigningKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProviderAccessConfig) *string {
 		if v == nil {
@@ -681,13 +552,7 @@ func (o ProviderAccessConfigPtrOutput) SigningKey() pulumi.StringPtrOutput {
 }
 
 type ProviderConversionConversionRule struct {
-	// Specifies the federated user information on the cloud platform.
-	Locals []ProviderConversionConversionRuleLocal `pulumi:"locals"`
-	// Specifies Federated user information in the IDP system.
-	//
-	// > **NOTE:** If the protocol of identity provider is SAML, this field is an expression consisting of assertion
-	// attributes and operators.
-	// If the protocol of identity provider is OIDC, the value of this field is determined by the ID token.
+	Locals  []ProviderConversionConversionRuleLocal  `pulumi:"locals"`
 	Remotes []ProviderConversionConversionRuleRemote `pulumi:"remotes"`
 }
 
@@ -703,13 +568,7 @@ type ProviderConversionConversionRuleInput interface {
 }
 
 type ProviderConversionConversionRuleArgs struct {
-	// Specifies the federated user information on the cloud platform.
-	Locals ProviderConversionConversionRuleLocalArrayInput `pulumi:"locals"`
-	// Specifies Federated user information in the IDP system.
-	//
-	// > **NOTE:** If the protocol of identity provider is SAML, this field is an expression consisting of assertion
-	// attributes and operators.
-	// If the protocol of identity provider is OIDC, the value of this field is determined by the ID token.
+	Locals  ProviderConversionConversionRuleLocalArrayInput  `pulumi:"locals"`
 	Remotes ProviderConversionConversionRuleRemoteArrayInput `pulumi:"remotes"`
 }
 
@@ -764,16 +623,10 @@ func (o ProviderConversionConversionRuleOutput) ToProviderConversionConversionRu
 	return o
 }
 
-// Specifies the federated user information on the cloud platform.
 func (o ProviderConversionConversionRuleOutput) Locals() ProviderConversionConversionRuleLocalArrayOutput {
 	return o.ApplyT(func(v ProviderConversionConversionRule) []ProviderConversionConversionRuleLocal { return v.Locals }).(ProviderConversionConversionRuleLocalArrayOutput)
 }
 
-// Specifies Federated user information in the IDP system.
-//
-// > **NOTE:** If the protocol of identity provider is SAML, this field is an expression consisting of assertion
-// attributes and operators.
-// If the protocol of identity provider is OIDC, the value of this field is determined by the ID token.
 func (o ProviderConversionConversionRuleOutput) Remotes() ProviderConversionConversionRuleRemoteArrayOutput {
 	return o.ApplyT(func(v ProviderConversionConversionRule) []ProviderConversionConversionRuleRemote { return v.Remotes }).(ProviderConversionConversionRuleRemoteArrayOutput)
 }
@@ -799,9 +652,7 @@ func (o ProviderConversionConversionRuleArrayOutput) Index(i pulumi.IntInput) Pr
 }
 
 type ProviderConversionConversionRuleLocal struct {
-	// Specifies the user group to which the federated user belongs on the cloud platform.
-	Group *string `pulumi:"group"`
-	// Specifies the name of a federated user on the cloud platform.
+	Group    *string `pulumi:"group"`
 	Username *string `pulumi:"username"`
 }
 
@@ -817,9 +668,7 @@ type ProviderConversionConversionRuleLocalInput interface {
 }
 
 type ProviderConversionConversionRuleLocalArgs struct {
-	// Specifies the user group to which the federated user belongs on the cloud platform.
-	Group pulumi.StringPtrInput `pulumi:"group"`
-	// Specifies the name of a federated user on the cloud platform.
+	Group    pulumi.StringPtrInput `pulumi:"group"`
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
@@ -874,12 +723,10 @@ func (o ProviderConversionConversionRuleLocalOutput) ToProviderConversionConvers
 	return o
 }
 
-// Specifies the user group to which the federated user belongs on the cloud platform.
 func (o ProviderConversionConversionRuleLocalOutput) Group() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderConversionConversionRuleLocal) *string { return v.Group }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the name of a federated user on the cloud platform.
 func (o ProviderConversionConversionRuleLocalOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderConversionConversionRuleLocal) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -905,13 +752,9 @@ func (o ProviderConversionConversionRuleLocalArrayOutput) Index(i pulumi.IntInpu
 }
 
 type ProviderConversionConversionRuleRemote struct {
-	// Specifies the attribute in the IDP assertion.
-	Attribute string `pulumi:"attribute"`
-	// Specifies the condition of conversion rule.
-	// Available options are:
-	Condition *string `pulumi:"condition"`
-	// Specifies the rule is matched only if the specified strings appear in the attribute type.
-	Values []string `pulumi:"values"`
+	Attribute string   `pulumi:"attribute"`
+	Condition *string  `pulumi:"condition"`
+	Values    []string `pulumi:"values"`
 }
 
 // ProviderConversionConversionRuleRemoteInput is an input type that accepts ProviderConversionConversionRuleRemoteArgs and ProviderConversionConversionRuleRemoteOutput values.
@@ -926,13 +769,9 @@ type ProviderConversionConversionRuleRemoteInput interface {
 }
 
 type ProviderConversionConversionRuleRemoteArgs struct {
-	// Specifies the attribute in the IDP assertion.
-	Attribute pulumi.StringInput `pulumi:"attribute"`
-	// Specifies the condition of conversion rule.
-	// Available options are:
-	Condition pulumi.StringPtrInput `pulumi:"condition"`
-	// Specifies the rule is matched only if the specified strings appear in the attribute type.
-	Values pulumi.StringArrayInput `pulumi:"values"`
+	Attribute pulumi.StringInput      `pulumi:"attribute"`
+	Condition pulumi.StringPtrInput   `pulumi:"condition"`
+	Values    pulumi.StringArrayInput `pulumi:"values"`
 }
 
 func (ProviderConversionConversionRuleRemoteArgs) ElementType() reflect.Type {
@@ -986,18 +825,14 @@ func (o ProviderConversionConversionRuleRemoteOutput) ToProviderConversionConver
 	return o
 }
 
-// Specifies the attribute in the IDP assertion.
 func (o ProviderConversionConversionRuleRemoteOutput) Attribute() pulumi.StringOutput {
 	return o.ApplyT(func(v ProviderConversionConversionRuleRemote) string { return v.Attribute }).(pulumi.StringOutput)
 }
 
-// Specifies the condition of conversion rule.
-// Available options are:
 func (o ProviderConversionConversionRuleRemoteOutput) Condition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderConversionConversionRuleRemote) *string { return v.Condition }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the rule is matched only if the specified strings appear in the attribute type.
 func (o ProviderConversionConversionRuleRemoteOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ProviderConversionConversionRuleRemote) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -1023,9 +858,7 @@ func (o ProviderConversionConversionRuleRemoteArrayOutput) Index(i pulumi.IntInp
 }
 
 type ProviderConversionRule struct {
-	// The federated user information on the cloud platform.
-	Locals []ProviderConversionRuleLocal `pulumi:"locals"`
-	// The description of the identity provider.
+	Locals  []ProviderConversionRuleLocal  `pulumi:"locals"`
 	Remotes []ProviderConversionRuleRemote `pulumi:"remotes"`
 }
 
@@ -1041,9 +874,7 @@ type ProviderConversionRuleInput interface {
 }
 
 type ProviderConversionRuleArgs struct {
-	// The federated user information on the cloud platform.
-	Locals ProviderConversionRuleLocalArrayInput `pulumi:"locals"`
-	// The description of the identity provider.
+	Locals  ProviderConversionRuleLocalArrayInput  `pulumi:"locals"`
 	Remotes ProviderConversionRuleRemoteArrayInput `pulumi:"remotes"`
 }
 
@@ -1098,12 +929,10 @@ func (o ProviderConversionRuleOutput) ToProviderConversionRuleOutputWithContext(
 	return o
 }
 
-// The federated user information on the cloud platform.
 func (o ProviderConversionRuleOutput) Locals() ProviderConversionRuleLocalArrayOutput {
 	return o.ApplyT(func(v ProviderConversionRule) []ProviderConversionRuleLocal { return v.Locals }).(ProviderConversionRuleLocalArrayOutput)
 }
 
-// The description of the identity provider.
 func (o ProviderConversionRuleOutput) Remotes() ProviderConversionRuleRemoteArrayOutput {
 	return o.ApplyT(func(v ProviderConversionRule) []ProviderConversionRuleRemote { return v.Remotes }).(ProviderConversionRuleRemoteArrayOutput)
 }
@@ -1129,9 +958,7 @@ func (o ProviderConversionRuleArrayOutput) Index(i pulumi.IntInput) ProviderConv
 }
 
 type ProviderConversionRuleLocal struct {
-	// The user group to which the federated user belongs on the cloud platform.
-	Group *string `pulumi:"group"`
-	// The name of a federated user on the cloud platform.
+	Group    *string `pulumi:"group"`
 	Username *string `pulumi:"username"`
 }
 
@@ -1147,9 +974,7 @@ type ProviderConversionRuleLocalInput interface {
 }
 
 type ProviderConversionRuleLocalArgs struct {
-	// The user group to which the federated user belongs on the cloud platform.
-	Group pulumi.StringPtrInput `pulumi:"group"`
-	// The name of a federated user on the cloud platform.
+	Group    pulumi.StringPtrInput `pulumi:"group"`
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
@@ -1204,12 +1029,10 @@ func (o ProviderConversionRuleLocalOutput) ToProviderConversionRuleLocalOutputWi
 	return o
 }
 
-// The user group to which the federated user belongs on the cloud platform.
 func (o ProviderConversionRuleLocalOutput) Group() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderConversionRuleLocal) *string { return v.Group }).(pulumi.StringPtrOutput)
 }
 
-// The name of a federated user on the cloud platform.
 func (o ProviderConversionRuleLocalOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderConversionRuleLocal) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -1235,12 +1058,9 @@ func (o ProviderConversionRuleLocalArrayOutput) Index(i pulumi.IntInput) Provide
 }
 
 type ProviderConversionRuleRemote struct {
-	// The attribute in the IDP assertion.
-	Attribute *string `pulumi:"attribute"`
-	// The condition of conversion rule.
-	Condition *string `pulumi:"condition"`
-	// The rule is matched only if the specified strings appear in the attribute type.
-	Values []string `pulumi:"values"`
+	Attribute *string  `pulumi:"attribute"`
+	Condition *string  `pulumi:"condition"`
+	Values    []string `pulumi:"values"`
 }
 
 // ProviderConversionRuleRemoteInput is an input type that accepts ProviderConversionRuleRemoteArgs and ProviderConversionRuleRemoteOutput values.
@@ -1255,12 +1075,9 @@ type ProviderConversionRuleRemoteInput interface {
 }
 
 type ProviderConversionRuleRemoteArgs struct {
-	// The attribute in the IDP assertion.
-	Attribute pulumi.StringPtrInput `pulumi:"attribute"`
-	// The condition of conversion rule.
-	Condition pulumi.StringPtrInput `pulumi:"condition"`
-	// The rule is matched only if the specified strings appear in the attribute type.
-	Values pulumi.StringArrayInput `pulumi:"values"`
+	Attribute pulumi.StringPtrInput   `pulumi:"attribute"`
+	Condition pulumi.StringPtrInput   `pulumi:"condition"`
+	Values    pulumi.StringArrayInput `pulumi:"values"`
 }
 
 func (ProviderConversionRuleRemoteArgs) ElementType() reflect.Type {
@@ -1314,17 +1131,14 @@ func (o ProviderConversionRuleRemoteOutput) ToProviderConversionRuleRemoteOutput
 	return o
 }
 
-// The attribute in the IDP assertion.
 func (o ProviderConversionRuleRemoteOutput) Attribute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderConversionRuleRemote) *string { return v.Attribute }).(pulumi.StringPtrOutput)
 }
 
-// The condition of conversion rule.
 func (o ProviderConversionRuleRemoteOutput) Condition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderConversionRuleRemote) *string { return v.Condition }).(pulumi.StringPtrOutput)
 }
 
-// The rule is matched only if the specified strings appear in the attribute type.
 func (o ProviderConversionRuleRemoteOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ProviderConversionRuleRemote) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -1350,22 +1164,13 @@ func (o ProviderConversionRuleRemoteArrayOutput) Index(i pulumi.IntInput) Provid
 }
 
 type GetGroupUser struct {
-	// Specifies the description of the identity group.
-	Description string `pulumi:"description"`
-	// Indicates the whether the IAM user is enabled.
-	Enabled bool `pulumi:"enabled"`
-	// Specifies the ID of the identity group.
-	Id string `pulumi:"id"`
-	// Specifies the name of the identity group.
-	Name string `pulumi:"name"`
-	// Indicates the time when the password will expire.
-	// Null indicates that the password has unlimited validity.
+	Description       string `pulumi:"description"`
+	Enabled           bool   `pulumi:"enabled"`
+	Id                string `pulumi:"id"`
+	Name              string `pulumi:"name"`
 	PasswordExpiresAt string `pulumi:"passwordExpiresAt"`
-	// Indicates the password status. True means that the password needs to be changed,
-	// and false means that the password is normal.
-	PasswordStatus bool `pulumi:"passwordStatus"`
-	// Indicates the password strength. The value can be high, mid, or low.
-	PasswordStrength string `pulumi:"passwordStrength"`
+	PasswordStatus    bool   `pulumi:"passwordStatus"`
+	PasswordStrength  string `pulumi:"passwordStrength"`
 }
 
 // GetGroupUserInput is an input type that accepts GetGroupUserArgs and GetGroupUserOutput values.
@@ -1380,22 +1185,13 @@ type GetGroupUserInput interface {
 }
 
 type GetGroupUserArgs struct {
-	// Specifies the description of the identity group.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Indicates the whether the IAM user is enabled.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// Specifies the ID of the identity group.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies the name of the identity group.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Indicates the time when the password will expire.
-	// Null indicates that the password has unlimited validity.
+	Description       pulumi.StringInput `pulumi:"description"`
+	Enabled           pulumi.BoolInput   `pulumi:"enabled"`
+	Id                pulumi.StringInput `pulumi:"id"`
+	Name              pulumi.StringInput `pulumi:"name"`
 	PasswordExpiresAt pulumi.StringInput `pulumi:"passwordExpiresAt"`
-	// Indicates the password status. True means that the password needs to be changed,
-	// and false means that the password is normal.
-	PasswordStatus pulumi.BoolInput `pulumi:"passwordStatus"`
-	// Indicates the password strength. The value can be high, mid, or low.
-	PasswordStrength pulumi.StringInput `pulumi:"passwordStrength"`
+	PasswordStatus    pulumi.BoolInput   `pulumi:"passwordStatus"`
+	PasswordStrength  pulumi.StringInput `pulumi:"passwordStrength"`
 }
 
 func (GetGroupUserArgs) ElementType() reflect.Type {
@@ -1449,39 +1245,30 @@ func (o GetGroupUserOutput) ToGetGroupUserOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Specifies the description of the identity group.
 func (o GetGroupUserOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupUser) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Indicates the whether the IAM user is enabled.
 func (o GetGroupUserOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGroupUser) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Specifies the ID of the identity group.
 func (o GetGroupUserOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupUser) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the identity group.
 func (o GetGroupUserOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupUser) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Indicates the time when the password will expire.
-// Null indicates that the password has unlimited validity.
 func (o GetGroupUserOutput) PasswordExpiresAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupUser) string { return v.PasswordExpiresAt }).(pulumi.StringOutput)
 }
 
-// Indicates the password status. True means that the password needs to be changed,
-// and false means that the password is normal.
 func (o GetGroupUserOutput) PasswordStatus() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGroupUser) bool { return v.PasswordStatus }).(pulumi.BoolOutput)
 }
 
-// Indicates the password strength. The value can be high, mid, or low.
 func (o GetGroupUserOutput) PasswordStrength() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupUser) string { return v.PasswordStrength }).(pulumi.StringOutput)
 }
@@ -1507,12 +1294,9 @@ func (o GetGroupUserArrayOutput) Index(i pulumi.IntInput) GetGroupUserOutput {
 }
 
 type GetProjectsProject struct {
-	// Whether project is enabled.
-	Enabled bool `pulumi:"enabled"`
-	// The project ID.
-	Id string `pulumi:"id"`
-	// Specifies the project name to query.
-	Name string `pulumi:"name"`
+	Enabled bool   `pulumi:"enabled"`
+	Id      string `pulumi:"id"`
+	Name    string `pulumi:"name"`
 }
 
 // GetProjectsProjectInput is an input type that accepts GetProjectsProjectArgs and GetProjectsProjectOutput values.
@@ -1527,12 +1311,9 @@ type GetProjectsProjectInput interface {
 }
 
 type GetProjectsProjectArgs struct {
-	// Whether project is enabled.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// The project ID.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies the project name to query.
-	Name pulumi.StringInput `pulumi:"name"`
+	Enabled pulumi.BoolInput   `pulumi:"enabled"`
+	Id      pulumi.StringInput `pulumi:"id"`
+	Name    pulumi.StringInput `pulumi:"name"`
 }
 
 func (GetProjectsProjectArgs) ElementType() reflect.Type {
@@ -1586,17 +1367,14 @@ func (o GetProjectsProjectOutput) ToGetProjectsProjectOutputWithContext(ctx cont
 	return o
 }
 
-// Whether project is enabled.
 func (o GetProjectsProjectOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProject) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// The project ID.
 func (o GetProjectsProjectOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Specifies the project name to query.
 func (o GetProjectsProjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1622,22 +1400,13 @@ func (o GetProjectsProjectArrayOutput) Index(i pulumi.IntInput) GetProjectsProje
 }
 
 type GetUsersUser struct {
-	// Indicates the description of the IAM user.
-	Description string `pulumi:"description"`
-	// Specifies the status of the IAM user, the default value is **true**.
-	Enabled bool `pulumi:"enabled"`
-	// Indicates the user groups to which an IAM user belongs.
-	Groups []string `pulumi:"groups"`
-	// Indicates the ID of the User.
-	Id string `pulumi:"id"`
-	// Specifies the IAM user name.
-	Name string `pulumi:"name"`
-	// Indicates the time when the password will expire.
-	// Null indicates that the password has unlimited validity.
-	PasswordExpiresAt string `pulumi:"passwordExpiresAt"`
-	// Indicates the password status. True means that the password needs to be changed,
-	// and false means that the password is normal.
-	PasswordStatus bool `pulumi:"passwordStatus"`
+	Description       string   `pulumi:"description"`
+	Enabled           bool     `pulumi:"enabled"`
+	Groups            []string `pulumi:"groups"`
+	Id                string   `pulumi:"id"`
+	Name              string   `pulumi:"name"`
+	PasswordExpiresAt string   `pulumi:"passwordExpiresAt"`
+	PasswordStatus    bool     `pulumi:"passwordStatus"`
 }
 
 // GetUsersUserInput is an input type that accepts GetUsersUserArgs and GetUsersUserOutput values.
@@ -1652,22 +1421,13 @@ type GetUsersUserInput interface {
 }
 
 type GetUsersUserArgs struct {
-	// Indicates the description of the IAM user.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Specifies the status of the IAM user, the default value is **true**.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// Indicates the user groups to which an IAM user belongs.
-	Groups pulumi.StringArrayInput `pulumi:"groups"`
-	// Indicates the ID of the User.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies the IAM user name.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Indicates the time when the password will expire.
-	// Null indicates that the password has unlimited validity.
-	PasswordExpiresAt pulumi.StringInput `pulumi:"passwordExpiresAt"`
-	// Indicates the password status. True means that the password needs to be changed,
-	// and false means that the password is normal.
-	PasswordStatus pulumi.BoolInput `pulumi:"passwordStatus"`
+	Description       pulumi.StringInput      `pulumi:"description"`
+	Enabled           pulumi.BoolInput        `pulumi:"enabled"`
+	Groups            pulumi.StringArrayInput `pulumi:"groups"`
+	Id                pulumi.StringInput      `pulumi:"id"`
+	Name              pulumi.StringInput      `pulumi:"name"`
+	PasswordExpiresAt pulumi.StringInput      `pulumi:"passwordExpiresAt"`
+	PasswordStatus    pulumi.BoolInput        `pulumi:"passwordStatus"`
 }
 
 func (GetUsersUserArgs) ElementType() reflect.Type {
@@ -1721,39 +1481,30 @@ func (o GetUsersUserOutput) ToGetUsersUserOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Indicates the description of the IAM user.
 func (o GetUsersUserOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Specifies the status of the IAM user, the default value is **true**.
 func (o GetUsersUserOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetUsersUser) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Indicates the user groups to which an IAM user belongs.
 func (o GetUsersUserOutput) Groups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetUsersUser) []string { return v.Groups }).(pulumi.StringArrayOutput)
 }
 
-// Indicates the ID of the User.
 func (o GetUsersUserOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Specifies the IAM user name.
 func (o GetUsersUserOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Indicates the time when the password will expire.
-// Null indicates that the password has unlimited validity.
 func (o GetUsersUserOutput) PasswordExpiresAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.PasswordExpiresAt }).(pulumi.StringOutput)
 }
 
-// Indicates the password status. True means that the password needs to be changed,
-// and false means that the password is normal.
 func (o GetUsersUserOutput) PasswordStatus() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetUsersUser) bool { return v.PasswordStatus }).(pulumi.BoolOutput)
 }

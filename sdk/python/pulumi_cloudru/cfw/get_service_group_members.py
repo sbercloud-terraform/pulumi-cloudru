@@ -65,9 +65,6 @@ class GetServiceGroupMembersResult:
     @_builtins.property
     @pulumi.getter(name="destPort")
     def dest_port(self) -> Optional[_builtins.str]:
-        """
-        The destination port.
-        """
         return pulumi.get(self, "dest_port")
 
     @_builtins.property
@@ -96,9 +93,6 @@ class GetServiceGroupMembersResult:
     @_builtins.property
     @pulumi.getter(name="itemId")
     def item_id(self) -> Optional[_builtins.str]:
-        """
-        The service group member ID.
-        """
         return pulumi.get(self, "item_id")
 
     @_builtins.property
@@ -109,17 +103,11 @@ class GetServiceGroupMembersResult:
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> Optional[_builtins.int]:
-        """
-        The protocol type.
-        """
         return pulumi.get(self, "protocol")
 
     @_builtins.property
     @pulumi.getter
     def records(self) -> Sequence['outputs.GetServiceGroupMembersRecordResult']:
-        """
-        The service group member list.
-        """
         return pulumi.get(self, "records")
 
     @_builtins.property
@@ -130,9 +118,6 @@ class GetServiceGroupMembersResult:
     @_builtins.property
     @pulumi.getter(name="sourcePort")
     def source_port(self) -> Optional[_builtins.str]:
-        """
-        The source port.
-        """
         return pulumi.get(self, "source_port")
 
 
@@ -166,35 +151,7 @@ def get_service_group_members(dest_port: Optional[_builtins.str] = None,
                               source_port: Optional[_builtins.str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceGroupMembersResult:
     """
-    Use this data source to get the list of CFW service group members.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    group_id = config.require_object("groupId")
-    test = sbercloud.Cfw.get_service_group_members(group_id=group_id)
-    ```
-
-
-    :param _builtins.str dest_port: Specifies the destination port.
-    :param _builtins.str fw_instance_id: Specifies the firewall instance ID.
-    :param _builtins.str group_id: Specifies the service group ID.
-    :param _builtins.str group_type: Specifies the service group type.
-           The value can be **0** (custom service group), **1** (predefined service group).
-    :param _builtins.str item_id: Specifies the service group member ID.
-    :param _builtins.str key_word: Specifies the key word.
-    :param _builtins.int protocol: Specifies the protocol type.
-           The options are as follows:
-           + **6**: TCP;
-           + **17**: UDP;
-           + **1**: ICMP.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str source_port: Specifies the source port.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['destPort'] = dest_port
@@ -232,35 +189,7 @@ def get_service_group_members_output(dest_port: Optional[pulumi.Input[Optional[_
                                      source_port: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceGroupMembersResult]:
     """
-    Use this data source to get the list of CFW service group members.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    group_id = config.require_object("groupId")
-    test = sbercloud.Cfw.get_service_group_members(group_id=group_id)
-    ```
-
-
-    :param _builtins.str dest_port: Specifies the destination port.
-    :param _builtins.str fw_instance_id: Specifies the firewall instance ID.
-    :param _builtins.str group_id: Specifies the service group ID.
-    :param _builtins.str group_type: Specifies the service group type.
-           The value can be **0** (custom service group), **1** (predefined service group).
-    :param _builtins.str item_id: Specifies the service group member ID.
-    :param _builtins.str key_word: Specifies the key word.
-    :param _builtins.int protocol: Specifies the protocol type.
-           The options are as follows:
-           + **6**: TCP;
-           + **17**: UDP;
-           + **1**: ICMP.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str source_port: Specifies the source port.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['destPort'] = dest_port

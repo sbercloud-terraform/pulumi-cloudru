@@ -78,11 +78,12 @@ var metadata []byte
 func Provider() tfbridge.ProviderInfo {
 	prov := tfbridge.ProviderInfo{
 		//nolint:lll
-		P:           shimv2.NewProvider(sbercloud.Provider()),
-		Name:        "sbercloud",
-		Version:     version.Version,
-		DisplayName: "Cloudru",
-		Publisher:   "Cloud.ru",
+		P:                shimv2.NewProvider(sbercloud.Provider()),
+		Name:             "cloudru",
+		Version:          version.Version,
+		DisplayName:      "Cloudru",
+		Publisher:        "Cloud.ru",
+		UpstreamRepoPath: "github.com/sbercloud-terraform/terraform-provider-sbercloud",
 		// LogoURL is optional but useful to help identify your package in the Pulumi Registry
 		// if this package is published there.
 		//

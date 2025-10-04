@@ -12,46 +12,12 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Using this function to top function within SberCloud.
-//
-// ## Example Usage
-//
-// ### Topping function
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			functionUrn := cfg.RequireObject("functionUrn")
-//			_, err := sbercloud.NewFgsFunctionTopping(ctx, "test", &sbercloud.FgsFunctionToppingArgs{
-//				FunctionUrn: pulumi.Any(functionUrn),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type FgsFunctionTopping struct {
 	pulumi.CustomResourceState
 
-	// Specifies the URN of the function to be topped.\
-	// Changing this parameter will create a new resource.
+	// The URN of the function to be topped.
 	FunctionUrn pulumi.StringOutput `pulumi:"functionUrn"`
-	// Specifies the region where the function is located.\
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the function is located.
 	Region pulumi.StringOutput `pulumi:"region"`
 }
 
@@ -88,20 +54,16 @@ func GetFgsFunctionTopping(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FgsFunctionTopping resources.
 type fgsFunctionToppingState struct {
-	// Specifies the URN of the function to be topped.\
-	// Changing this parameter will create a new resource.
+	// The URN of the function to be topped.
 	FunctionUrn *string `pulumi:"functionUrn"`
-	// Specifies the region where the function is located.\
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the function is located.
 	Region *string `pulumi:"region"`
 }
 
 type FgsFunctionToppingState struct {
-	// Specifies the URN of the function to be topped.\
-	// Changing this parameter will create a new resource.
+	// The URN of the function to be topped.
 	FunctionUrn pulumi.StringPtrInput
-	// Specifies the region where the function is located.\
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the function is located.
 	Region pulumi.StringPtrInput
 }
 
@@ -110,21 +72,17 @@ func (FgsFunctionToppingState) ElementType() reflect.Type {
 }
 
 type fgsFunctionToppingArgs struct {
-	// Specifies the URN of the function to be topped.\
-	// Changing this parameter will create a new resource.
+	// The URN of the function to be topped.
 	FunctionUrn string `pulumi:"functionUrn"`
-	// Specifies the region where the function is located.\
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the function is located.
 	Region *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a FgsFunctionTopping resource.
 type FgsFunctionToppingArgs struct {
-	// Specifies the URN of the function to be topped.\
-	// Changing this parameter will create a new resource.
+	// The URN of the function to be topped.
 	FunctionUrn pulumi.StringInput
-	// Specifies the region where the function is located.\
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the function is located.
 	Region pulumi.StringPtrInput
 }
 
@@ -215,14 +173,12 @@ func (o FgsFunctionToppingOutput) ToFgsFunctionToppingOutputWithContext(ctx cont
 	return o
 }
 
-// Specifies the URN of the function to be topped.\
-// Changing this parameter will create a new resource.
+// The URN of the function to be topped.
 func (o FgsFunctionToppingOutput) FunctionUrn() pulumi.StringOutput {
 	return o.ApplyT(func(v *FgsFunctionTopping) pulumi.StringOutput { return v.FunctionUrn }).(pulumi.StringOutput)
 }
 
-// Specifies the region where the function is located.\
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+// The region where the function is located.
 func (o FgsFunctionToppingOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *FgsFunctionTopping) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

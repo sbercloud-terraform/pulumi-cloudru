@@ -12,126 +12,28 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages DIS Stream resource within SberCloud.
-//
-// ## Example Usage
-//
-// ### Create a stream that type is BLOB
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/dis"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dis.NewStream(ctx, "stream", &dis.StreamArgs{
-//				StreamName:     pulumi.String("terraform_test_dis_stream"),
-//				PartitionCount: pulumi.Int(1),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Create a stream that type is JSON
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/dis"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dis.NewStream(ctx, "stream", &dis.StreamArgs{
-//				StreamName:     pulumi.String("terraform_test_dis_stream"),
-//				PartitionCount: pulumi.Int(1),
-//				DataType:       pulumi.String("JSON"),
-//				DataSchema:     pulumi.String("{\"type\":\"record\",\"name\":\"RecordName\",\"fields\":[{\"name\":\"id\",\"type\":\"string\",\"doc\":\"Type inferred from '\\\"2017/10/11 11:11:11\\\"'\"},{\"name\":\"info\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"info\",\"fields\":[{\"name\":\"date\",\"type\":\"string\",\"doc\":\"Type inferred from '\\\"2018/10/11 11:11:11\\\"'\"}]}},\"doc\":\"Type inferred from '[{\\\"date\\\":\\\"2018/10/11 11:11:11\\\"}]'\"}]}"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Dis stream can be imported by `stream_name`. For example,
-//
-// ```sh
-// $ pulumi import sbercloud:Dis/stream:Stream example _abc123
-// ```
 type Stream struct {
 	pulumi.CustomResourceState
 
-	// Maximum number of partition for automatic scaling.
-	// Changing this parameter will create a new resource.
-	AutoScaleMaxPartitionCount pulumi.IntOutput `pulumi:"autoScaleMaxPartitionCount"`
-	// Minimum number of partition for automatic scaling.
-	// Changing this parameter will create a new resource.
-	AutoScaleMinPartitionCount pulumi.IntOutput `pulumi:"autoScaleMinPartitionCount"`
-	// Data compression type. The value is one of snappy, gzip and zip.
-	// Changing this parameter will create a new resource.
-	CompressionFormat pulumi.StringOutput `pulumi:"compressionFormat"`
-	// Timestamp at which the DIS stream was created.
-	Created pulumi.IntOutput `pulumi:"created"`
-	// Field separator for CSV file. Changing this parameter will create a new
-	// resource.
-	CsvDelimiter pulumi.StringOutput `pulumi:"csvDelimiter"`
-	// User's JOSN, CSV format data schema, described with Avro schema. Changing
-	// this parameter will create a new resource.
-	DataSchema pulumi.StringOutput `pulumi:"dataSchema"`
-	// Data type of the data putting into the stream. The value is one of `BLOB`,
-	// `JSON` and `CSV`. Changing this parameter will create a new resource.
-	DataType pulumi.StringOutput `pulumi:"dataType"`
-	// Specifies the enterprise project id of the dis stream, Value 0
-	// indicates the default enterprise project. Changing this parameter will create a new resource.
-	EnterpriseProjectId pulumi.StringOutput `pulumi:"enterpriseProjectId"`
-	// Number of the expect partitions. NOTE: Each stream can be scaled up and down a
-	// total of five times within one hour. After the stream is successfully scaled up or down, it cannot be scaled up or
-	// down again within the next one hour.
-	PartitionCount pulumi.IntOutput `pulumi:"partitionCount"`
-	// The information of stream partitions. Structure is documented below.
-	Partitions StreamPartitionArrayOutput `pulumi:"partitions"`
-	// Total number of readable partitions (including partitions in ACTIVE state only).
-	ReadablePartitionCount pulumi.IntOutput `pulumi:"readablePartitionCount"`
-	// The region in which to create the DIS stream resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new DIS Stream resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// The number of hours for which data from the stream will be retained in DIS.
-	// Value range: `24` to `72`. Unit: `hour`. Default:`24`. Changing this parameter will create a new resource.
-	RetentionPeriod pulumi.IntPtrOutput `pulumi:"retentionPeriod"`
-	// The status of the partition.
-	Status pulumi.StringOutput `pulumi:"status"`
-	// Indicates a stream ID in UUID format.
-	StreamId pulumi.StringOutput `pulumi:"streamId"`
-	// Name of the DIS stream to be created.
-	StreamName pulumi.StringOutput `pulumi:"streamName"`
-	// Stream Type. The value is COMMON(means 1M bandwidth) or ADVANCED(means 5M
-	// bandwidth). Changing this parameter will create a new resource.
-	StreamType pulumi.StringOutput `pulumi:"streamType"`
-	// Specifies the key/value pairs to associate with the stream.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Total number of writable partitions (including partitions in ACTIVE and DELETED states).
-	WritablePartitionCount pulumi.IntOutput `pulumi:"writablePartitionCount"`
+	AutoScaleMaxPartitionCount pulumi.IntOutput           `pulumi:"autoScaleMaxPartitionCount"`
+	AutoScaleMinPartitionCount pulumi.IntOutput           `pulumi:"autoScaleMinPartitionCount"`
+	CompressionFormat          pulumi.StringOutput        `pulumi:"compressionFormat"`
+	Created                    pulumi.IntOutput           `pulumi:"created"`
+	CsvDelimiter               pulumi.StringOutput        `pulumi:"csvDelimiter"`
+	DataSchema                 pulumi.StringOutput        `pulumi:"dataSchema"`
+	DataType                   pulumi.StringOutput        `pulumi:"dataType"`
+	EnterpriseProjectId        pulumi.StringOutput        `pulumi:"enterpriseProjectId"`
+	PartitionCount             pulumi.IntOutput           `pulumi:"partitionCount"`
+	Partitions                 StreamPartitionArrayOutput `pulumi:"partitions"`
+	ReadablePartitionCount     pulumi.IntOutput           `pulumi:"readablePartitionCount"`
+	Region                     pulumi.StringOutput        `pulumi:"region"`
+	RetentionPeriod            pulumi.IntPtrOutput        `pulumi:"retentionPeriod"`
+	Status                     pulumi.StringOutput        `pulumi:"status"`
+	StreamId                   pulumi.StringOutput        `pulumi:"streamId"`
+	StreamName                 pulumi.StringOutput        `pulumi:"streamName"`
+	StreamType                 pulumi.StringOutput        `pulumi:"streamType"`
+	Tags                       pulumi.StringMapOutput     `pulumi:"tags"`
+	WritablePartitionCount     pulumi.IntOutput           `pulumi:"writablePartitionCount"`
 }
 
 // NewStream registers a new resource with the given unique name, arguments, and options.
@@ -170,109 +72,47 @@ func GetStream(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Stream resources.
 type streamState struct {
-	// Maximum number of partition for automatic scaling.
-	// Changing this parameter will create a new resource.
-	AutoScaleMaxPartitionCount *int `pulumi:"autoScaleMaxPartitionCount"`
-	// Minimum number of partition for automatic scaling.
-	// Changing this parameter will create a new resource.
-	AutoScaleMinPartitionCount *int `pulumi:"autoScaleMinPartitionCount"`
-	// Data compression type. The value is one of snappy, gzip and zip.
-	// Changing this parameter will create a new resource.
-	CompressionFormat *string `pulumi:"compressionFormat"`
-	// Timestamp at which the DIS stream was created.
-	Created *int `pulumi:"created"`
-	// Field separator for CSV file. Changing this parameter will create a new
-	// resource.
-	CsvDelimiter *string `pulumi:"csvDelimiter"`
-	// User's JOSN, CSV format data schema, described with Avro schema. Changing
-	// this parameter will create a new resource.
-	DataSchema *string `pulumi:"dataSchema"`
-	// Data type of the data putting into the stream. The value is one of `BLOB`,
-	// `JSON` and `CSV`. Changing this parameter will create a new resource.
-	DataType *string `pulumi:"dataType"`
-	// Specifies the enterprise project id of the dis stream, Value 0
-	// indicates the default enterprise project. Changing this parameter will create a new resource.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Number of the expect partitions. NOTE: Each stream can be scaled up and down a
-	// total of five times within one hour. After the stream is successfully scaled up or down, it cannot be scaled up or
-	// down again within the next one hour.
-	PartitionCount *int `pulumi:"partitionCount"`
-	// The information of stream partitions. Structure is documented below.
-	Partitions []StreamPartition `pulumi:"partitions"`
-	// Total number of readable partitions (including partitions in ACTIVE state only).
-	ReadablePartitionCount *int `pulumi:"readablePartitionCount"`
-	// The region in which to create the DIS stream resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new DIS Stream resource.
-	Region *string `pulumi:"region"`
-	// The number of hours for which data from the stream will be retained in DIS.
-	// Value range: `24` to `72`. Unit: `hour`. Default:`24`. Changing this parameter will create a new resource.
-	RetentionPeriod *int `pulumi:"retentionPeriod"`
-	// The status of the partition.
-	Status *string `pulumi:"status"`
-	// Indicates a stream ID in UUID format.
-	StreamId *string `pulumi:"streamId"`
-	// Name of the DIS stream to be created.
-	StreamName *string `pulumi:"streamName"`
-	// Stream Type. The value is COMMON(means 1M bandwidth) or ADVANCED(means 5M
-	// bandwidth). Changing this parameter will create a new resource.
-	StreamType *string `pulumi:"streamType"`
-	// Specifies the key/value pairs to associate with the stream.
-	Tags map[string]string `pulumi:"tags"`
-	// Total number of writable partitions (including partitions in ACTIVE and DELETED states).
-	WritablePartitionCount *int `pulumi:"writablePartitionCount"`
+	AutoScaleMaxPartitionCount *int              `pulumi:"autoScaleMaxPartitionCount"`
+	AutoScaleMinPartitionCount *int              `pulumi:"autoScaleMinPartitionCount"`
+	CompressionFormat          *string           `pulumi:"compressionFormat"`
+	Created                    *int              `pulumi:"created"`
+	CsvDelimiter               *string           `pulumi:"csvDelimiter"`
+	DataSchema                 *string           `pulumi:"dataSchema"`
+	DataType                   *string           `pulumi:"dataType"`
+	EnterpriseProjectId        *string           `pulumi:"enterpriseProjectId"`
+	PartitionCount             *int              `pulumi:"partitionCount"`
+	Partitions                 []StreamPartition `pulumi:"partitions"`
+	ReadablePartitionCount     *int              `pulumi:"readablePartitionCount"`
+	Region                     *string           `pulumi:"region"`
+	RetentionPeriod            *int              `pulumi:"retentionPeriod"`
+	Status                     *string           `pulumi:"status"`
+	StreamId                   *string           `pulumi:"streamId"`
+	StreamName                 *string           `pulumi:"streamName"`
+	StreamType                 *string           `pulumi:"streamType"`
+	Tags                       map[string]string `pulumi:"tags"`
+	WritablePartitionCount     *int              `pulumi:"writablePartitionCount"`
 }
 
 type StreamState struct {
-	// Maximum number of partition for automatic scaling.
-	// Changing this parameter will create a new resource.
 	AutoScaleMaxPartitionCount pulumi.IntPtrInput
-	// Minimum number of partition for automatic scaling.
-	// Changing this parameter will create a new resource.
 	AutoScaleMinPartitionCount pulumi.IntPtrInput
-	// Data compression type. The value is one of snappy, gzip and zip.
-	// Changing this parameter will create a new resource.
-	CompressionFormat pulumi.StringPtrInput
-	// Timestamp at which the DIS stream was created.
-	Created pulumi.IntPtrInput
-	// Field separator for CSV file. Changing this parameter will create a new
-	// resource.
-	CsvDelimiter pulumi.StringPtrInput
-	// User's JOSN, CSV format data schema, described with Avro schema. Changing
-	// this parameter will create a new resource.
-	DataSchema pulumi.StringPtrInput
-	// Data type of the data putting into the stream. The value is one of `BLOB`,
-	// `JSON` and `CSV`. Changing this parameter will create a new resource.
-	DataType pulumi.StringPtrInput
-	// Specifies the enterprise project id of the dis stream, Value 0
-	// indicates the default enterprise project. Changing this parameter will create a new resource.
-	EnterpriseProjectId pulumi.StringPtrInput
-	// Number of the expect partitions. NOTE: Each stream can be scaled up and down a
-	// total of five times within one hour. After the stream is successfully scaled up or down, it cannot be scaled up or
-	// down again within the next one hour.
-	PartitionCount pulumi.IntPtrInput
-	// The information of stream partitions. Structure is documented below.
-	Partitions StreamPartitionArrayInput
-	// Total number of readable partitions (including partitions in ACTIVE state only).
-	ReadablePartitionCount pulumi.IntPtrInput
-	// The region in which to create the DIS stream resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new DIS Stream resource.
-	Region pulumi.StringPtrInput
-	// The number of hours for which data from the stream will be retained in DIS.
-	// Value range: `24` to `72`. Unit: `hour`. Default:`24`. Changing this parameter will create a new resource.
-	RetentionPeriod pulumi.IntPtrInput
-	// The status of the partition.
-	Status pulumi.StringPtrInput
-	// Indicates a stream ID in UUID format.
-	StreamId pulumi.StringPtrInput
-	// Name of the DIS stream to be created.
-	StreamName pulumi.StringPtrInput
-	// Stream Type. The value is COMMON(means 1M bandwidth) or ADVANCED(means 5M
-	// bandwidth). Changing this parameter will create a new resource.
-	StreamType pulumi.StringPtrInput
-	// Specifies the key/value pairs to associate with the stream.
-	Tags pulumi.StringMapInput
-	// Total number of writable partitions (including partitions in ACTIVE and DELETED states).
-	WritablePartitionCount pulumi.IntPtrInput
+	CompressionFormat          pulumi.StringPtrInput
+	Created                    pulumi.IntPtrInput
+	CsvDelimiter               pulumi.StringPtrInput
+	DataSchema                 pulumi.StringPtrInput
+	DataType                   pulumi.StringPtrInput
+	EnterpriseProjectId        pulumi.StringPtrInput
+	PartitionCount             pulumi.IntPtrInput
+	Partitions                 StreamPartitionArrayInput
+	ReadablePartitionCount     pulumi.IntPtrInput
+	Region                     pulumi.StringPtrInput
+	RetentionPeriod            pulumi.IntPtrInput
+	Status                     pulumi.StringPtrInput
+	StreamId                   pulumi.StringPtrInput
+	StreamName                 pulumi.StringPtrInput
+	StreamType                 pulumi.StringPtrInput
+	Tags                       pulumi.StringMapInput
+	WritablePartitionCount     pulumi.IntPtrInput
 }
 
 func (StreamState) ElementType() reflect.Type {
@@ -280,86 +120,36 @@ func (StreamState) ElementType() reflect.Type {
 }
 
 type streamArgs struct {
-	// Maximum number of partition for automatic scaling.
-	// Changing this parameter will create a new resource.
-	AutoScaleMaxPartitionCount *int `pulumi:"autoScaleMaxPartitionCount"`
-	// Minimum number of partition for automatic scaling.
-	// Changing this parameter will create a new resource.
-	AutoScaleMinPartitionCount *int `pulumi:"autoScaleMinPartitionCount"`
-	// Data compression type. The value is one of snappy, gzip and zip.
-	// Changing this parameter will create a new resource.
-	CompressionFormat *string `pulumi:"compressionFormat"`
-	// Field separator for CSV file. Changing this parameter will create a new
-	// resource.
-	CsvDelimiter *string `pulumi:"csvDelimiter"`
-	// User's JOSN, CSV format data schema, described with Avro schema. Changing
-	// this parameter will create a new resource.
-	DataSchema *string `pulumi:"dataSchema"`
-	// Data type of the data putting into the stream. The value is one of `BLOB`,
-	// `JSON` and `CSV`. Changing this parameter will create a new resource.
-	DataType *string `pulumi:"dataType"`
-	// Specifies the enterprise project id of the dis stream, Value 0
-	// indicates the default enterprise project. Changing this parameter will create a new resource.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Number of the expect partitions. NOTE: Each stream can be scaled up and down a
-	// total of five times within one hour. After the stream is successfully scaled up or down, it cannot be scaled up or
-	// down again within the next one hour.
-	PartitionCount int `pulumi:"partitionCount"`
-	// The region in which to create the DIS stream resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new DIS Stream resource.
-	Region *string `pulumi:"region"`
-	// The number of hours for which data from the stream will be retained in DIS.
-	// Value range: `24` to `72`. Unit: `hour`. Default:`24`. Changing this parameter will create a new resource.
-	RetentionPeriod *int `pulumi:"retentionPeriod"`
-	// Name of the DIS stream to be created.
-	StreamName string `pulumi:"streamName"`
-	// Stream Type. The value is COMMON(means 1M bandwidth) or ADVANCED(means 5M
-	// bandwidth). Changing this parameter will create a new resource.
-	StreamType *string `pulumi:"streamType"`
-	// Specifies the key/value pairs to associate with the stream.
-	Tags map[string]string `pulumi:"tags"`
+	AutoScaleMaxPartitionCount *int              `pulumi:"autoScaleMaxPartitionCount"`
+	AutoScaleMinPartitionCount *int              `pulumi:"autoScaleMinPartitionCount"`
+	CompressionFormat          *string           `pulumi:"compressionFormat"`
+	CsvDelimiter               *string           `pulumi:"csvDelimiter"`
+	DataSchema                 *string           `pulumi:"dataSchema"`
+	DataType                   *string           `pulumi:"dataType"`
+	EnterpriseProjectId        *string           `pulumi:"enterpriseProjectId"`
+	PartitionCount             int               `pulumi:"partitionCount"`
+	Region                     *string           `pulumi:"region"`
+	RetentionPeriod            *int              `pulumi:"retentionPeriod"`
+	StreamName                 string            `pulumi:"streamName"`
+	StreamType                 *string           `pulumi:"streamType"`
+	Tags                       map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Stream resource.
 type StreamArgs struct {
-	// Maximum number of partition for automatic scaling.
-	// Changing this parameter will create a new resource.
 	AutoScaleMaxPartitionCount pulumi.IntPtrInput
-	// Minimum number of partition for automatic scaling.
-	// Changing this parameter will create a new resource.
 	AutoScaleMinPartitionCount pulumi.IntPtrInput
-	// Data compression type. The value is one of snappy, gzip and zip.
-	// Changing this parameter will create a new resource.
-	CompressionFormat pulumi.StringPtrInput
-	// Field separator for CSV file. Changing this parameter will create a new
-	// resource.
-	CsvDelimiter pulumi.StringPtrInput
-	// User's JOSN, CSV format data schema, described with Avro schema. Changing
-	// this parameter will create a new resource.
-	DataSchema pulumi.StringPtrInput
-	// Data type of the data putting into the stream. The value is one of `BLOB`,
-	// `JSON` and `CSV`. Changing this parameter will create a new resource.
-	DataType pulumi.StringPtrInput
-	// Specifies the enterprise project id of the dis stream, Value 0
-	// indicates the default enterprise project. Changing this parameter will create a new resource.
-	EnterpriseProjectId pulumi.StringPtrInput
-	// Number of the expect partitions. NOTE: Each stream can be scaled up and down a
-	// total of five times within one hour. After the stream is successfully scaled up or down, it cannot be scaled up or
-	// down again within the next one hour.
-	PartitionCount pulumi.IntInput
-	// The region in which to create the DIS stream resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new DIS Stream resource.
-	Region pulumi.StringPtrInput
-	// The number of hours for which data from the stream will be retained in DIS.
-	// Value range: `24` to `72`. Unit: `hour`. Default:`24`. Changing this parameter will create a new resource.
-	RetentionPeriod pulumi.IntPtrInput
-	// Name of the DIS stream to be created.
-	StreamName pulumi.StringInput
-	// Stream Type. The value is COMMON(means 1M bandwidth) or ADVANCED(means 5M
-	// bandwidth). Changing this parameter will create a new resource.
-	StreamType pulumi.StringPtrInput
-	// Specifies the key/value pairs to associate with the stream.
-	Tags pulumi.StringMapInput
+	CompressionFormat          pulumi.StringPtrInput
+	CsvDelimiter               pulumi.StringPtrInput
+	DataSchema                 pulumi.StringPtrInput
+	DataType                   pulumi.StringPtrInput
+	EnterpriseProjectId        pulumi.StringPtrInput
+	PartitionCount             pulumi.IntInput
+	Region                     pulumi.StringPtrInput
+	RetentionPeriod            pulumi.IntPtrInput
+	StreamName                 pulumi.StringInput
+	StreamType                 pulumi.StringPtrInput
+	Tags                       pulumi.StringMapInput
 }
 
 func (StreamArgs) ElementType() reflect.Type {
@@ -449,109 +239,78 @@ func (o StreamOutput) ToStreamOutputWithContext(ctx context.Context) StreamOutpu
 	return o
 }
 
-// Maximum number of partition for automatic scaling.
-// Changing this parameter will create a new resource.
 func (o StreamOutput) AutoScaleMaxPartitionCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Stream) pulumi.IntOutput { return v.AutoScaleMaxPartitionCount }).(pulumi.IntOutput)
 }
 
-// Minimum number of partition for automatic scaling.
-// Changing this parameter will create a new resource.
 func (o StreamOutput) AutoScaleMinPartitionCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Stream) pulumi.IntOutput { return v.AutoScaleMinPartitionCount }).(pulumi.IntOutput)
 }
 
-// Data compression type. The value is one of snappy, gzip and zip.
-// Changing this parameter will create a new resource.
 func (o StreamOutput) CompressionFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.CompressionFormat }).(pulumi.StringOutput)
 }
 
-// Timestamp at which the DIS stream was created.
 func (o StreamOutput) Created() pulumi.IntOutput {
 	return o.ApplyT(func(v *Stream) pulumi.IntOutput { return v.Created }).(pulumi.IntOutput)
 }
 
-// Field separator for CSV file. Changing this parameter will create a new
-// resource.
 func (o StreamOutput) CsvDelimiter() pulumi.StringOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.CsvDelimiter }).(pulumi.StringOutput)
 }
 
-// User's JOSN, CSV format data schema, described with Avro schema. Changing
-// this parameter will create a new resource.
 func (o StreamOutput) DataSchema() pulumi.StringOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.DataSchema }).(pulumi.StringOutput)
 }
 
-// Data type of the data putting into the stream. The value is one of `BLOB`,
-// `JSON` and `CSV`. Changing this parameter will create a new resource.
 func (o StreamOutput) DataType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.DataType }).(pulumi.StringOutput)
 }
 
-// Specifies the enterprise project id of the dis stream, Value 0
-// indicates the default enterprise project. Changing this parameter will create a new resource.
 func (o StreamOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// Number of the expect partitions. NOTE: Each stream can be scaled up and down a
-// total of five times within one hour. After the stream is successfully scaled up or down, it cannot be scaled up or
-// down again within the next one hour.
 func (o StreamOutput) PartitionCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Stream) pulumi.IntOutput { return v.PartitionCount }).(pulumi.IntOutput)
 }
 
-// The information of stream partitions. Structure is documented below.
 func (o StreamOutput) Partitions() StreamPartitionArrayOutput {
 	return o.ApplyT(func(v *Stream) StreamPartitionArrayOutput { return v.Partitions }).(StreamPartitionArrayOutput)
 }
 
-// Total number of readable partitions (including partitions in ACTIVE state only).
 func (o StreamOutput) ReadablePartitionCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Stream) pulumi.IntOutput { return v.ReadablePartitionCount }).(pulumi.IntOutput)
 }
 
-// The region in which to create the DIS stream resource. If omitted, the
-// provider-level region will be used. Changing this creates a new DIS Stream resource.
 func (o StreamOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// The number of hours for which data from the stream will be retained in DIS.
-// Value range: `24` to `72`. Unit: `hour`. Default:`24`. Changing this parameter will create a new resource.
 func (o StreamOutput) RetentionPeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Stream) pulumi.IntPtrOutput { return v.RetentionPeriod }).(pulumi.IntPtrOutput)
 }
 
-// The status of the partition.
 func (o StreamOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Indicates a stream ID in UUID format.
 func (o StreamOutput) StreamId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.StreamId }).(pulumi.StringOutput)
 }
 
-// Name of the DIS stream to be created.
 func (o StreamOutput) StreamName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.StreamName }).(pulumi.StringOutput)
 }
 
-// Stream Type. The value is COMMON(means 1M bandwidth) or ADVANCED(means 5M
-// bandwidth). Changing this parameter will create a new resource.
 func (o StreamOutput) StreamType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.StreamType }).(pulumi.StringOutput)
 }
 
-// Specifies the key/value pairs to associate with the stream.
 func (o StreamOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Total number of writable partitions (including partitions in ACTIVE and DELETED states).
 func (o StreamOutput) WritablePartitionCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Stream) pulumi.IntOutput { return v.WritablePartitionCount }).(pulumi.IntOutput)
 }

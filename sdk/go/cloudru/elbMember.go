@@ -12,82 +12,24 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages an ELB member resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			elbPoolId := cfg.RequireObject("elbPoolId")
-//			ipv4SubnetId := cfg.RequireObject("ipv4SubnetId")
-//			_, err := sbercloud.NewElbMember(ctx, "member_1", &sbercloud.ElbMemberArgs{
-//				Address:      pulumi.String("192.168.199.23"),
-//				ProtocolPort: pulumi.Int(8080),
-//				PoolId:       pulumi.Any(elbPoolId),
-//				SubnetId:     pulumi.Any(ipv4SubnetId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// ELB member can be imported using the pool ID and member ID separated by a slash, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:index/elbMember:ElbMember member_1 e0bd694a-abbe-450e-b329-0931fd1cc5eb/4086b0c9-b18c-4d1c-b6b8-4c56c3ad2a9e
-// ```
 type ElbMember struct {
 	pulumi.CustomResourceState
 
-	// The IP address of the member to receive traffic from the load balancer.
-	// Changing this creates a new member.
-	Address    pulumi.StringOutput `pulumi:"address"`
-	CreatedAt  pulumi.StringOutput `pulumi:"createdAt"`
-	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	IpVersion  pulumi.StringOutput `pulumi:"ipVersion"`
-	MemberType pulumi.StringOutput `pulumi:"memberType"`
-	// Human-readable name for the member.
-	Name            pulumi.StringOutput `pulumi:"name"`
-	OperatingStatus pulumi.StringOutput `pulumi:"operatingStatus"`
-	// The id of the pool that this member will be assigned to.
-	PoolId pulumi.StringOutput `pulumi:"poolId"`
-	// The port on which to listen for client traffic. Changing this creates a
-	// new member.
-	ProtocolPort pulumi.IntOutput           `pulumi:"protocolPort"`
-	Reasons      ElbMemberReasonArrayOutput `pulumi:"reasons"`
-	// The region in which to create the ELB member resource. If omitted, the the
-	// provider-level region will be used. Changing this creates a new member.
-	Region   pulumi.StringOutput        `pulumi:"region"`
-	Statuses ElbMemberStatusArrayOutput `pulumi:"statuses"`
-	// The **IPv4 or IPv6 subnet ID** of the subnet in which to access the member.
-	// + The IPv4 or IPv6 subnet must be in the same VPC as the subnet of the load balancer.
-	// + If this parameter is not specified, **cross-VPC backend** has been enabled for the load balancer.
-	//   In this case, cross-VPC backend servers must use private IPv4 addresses,
-	//   and the protocol of the backend server group must be TCP, HTTP, or HTTPS.
-	SubnetId  pulumi.StringPtrOutput `pulumi:"subnetId"`
-	UpdatedAt pulumi.StringOutput    `pulumi:"updatedAt"`
-	// A positive integer value that indicates the relative portion of traffic that this member
-	// should receive from the pool. For example, a member with a weight of 10 receives five times as much traffic as a
-	// member with a weight of 2.
-	Weight pulumi.IntOutput `pulumi:"weight"`
+	Address         pulumi.StringOutput        `pulumi:"address"`
+	CreatedAt       pulumi.StringOutput        `pulumi:"createdAt"`
+	InstanceId      pulumi.StringOutput        `pulumi:"instanceId"`
+	IpVersion       pulumi.StringOutput        `pulumi:"ipVersion"`
+	MemberType      pulumi.StringOutput        `pulumi:"memberType"`
+	Name            pulumi.StringOutput        `pulumi:"name"`
+	OperatingStatus pulumi.StringOutput        `pulumi:"operatingStatus"`
+	PoolId          pulumi.StringOutput        `pulumi:"poolId"`
+	ProtocolPort    pulumi.IntOutput           `pulumi:"protocolPort"`
+	Reasons         ElbMemberReasonArrayOutput `pulumi:"reasons"`
+	Region          pulumi.StringOutput        `pulumi:"region"`
+	Statuses        ElbMemberStatusArrayOutput `pulumi:"statuses"`
+	SubnetId        pulumi.StringPtrOutput     `pulumi:"subnetId"`
+	UpdatedAt       pulumi.StringOutput        `pulumi:"updatedAt"`
+	Weight          pulumi.IntOutput           `pulumi:"weight"`
 }
 
 // NewElbMember registers a new resource with the given unique name, arguments, and options.
@@ -126,71 +68,39 @@ func GetElbMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ElbMember resources.
 type elbMemberState struct {
-	// The IP address of the member to receive traffic from the load balancer.
-	// Changing this creates a new member.
-	Address    *string `pulumi:"address"`
-	CreatedAt  *string `pulumi:"createdAt"`
-	InstanceId *string `pulumi:"instanceId"`
-	IpVersion  *string `pulumi:"ipVersion"`
-	MemberType *string `pulumi:"memberType"`
-	// Human-readable name for the member.
-	Name            *string `pulumi:"name"`
-	OperatingStatus *string `pulumi:"operatingStatus"`
-	// The id of the pool that this member will be assigned to.
-	PoolId *string `pulumi:"poolId"`
-	// The port on which to listen for client traffic. Changing this creates a
-	// new member.
-	ProtocolPort *int              `pulumi:"protocolPort"`
-	Reasons      []ElbMemberReason `pulumi:"reasons"`
-	// The region in which to create the ELB member resource. If omitted, the the
-	// provider-level region will be used. Changing this creates a new member.
-	Region   *string           `pulumi:"region"`
-	Statuses []ElbMemberStatus `pulumi:"statuses"`
-	// The **IPv4 or IPv6 subnet ID** of the subnet in which to access the member.
-	// + The IPv4 or IPv6 subnet must be in the same VPC as the subnet of the load balancer.
-	// + If this parameter is not specified, **cross-VPC backend** has been enabled for the load balancer.
-	//   In this case, cross-VPC backend servers must use private IPv4 addresses,
-	//   and the protocol of the backend server group must be TCP, HTTP, or HTTPS.
-	SubnetId  *string `pulumi:"subnetId"`
-	UpdatedAt *string `pulumi:"updatedAt"`
-	// A positive integer value that indicates the relative portion of traffic that this member
-	// should receive from the pool. For example, a member with a weight of 10 receives five times as much traffic as a
-	// member with a weight of 2.
-	Weight *int `pulumi:"weight"`
+	Address         *string           `pulumi:"address"`
+	CreatedAt       *string           `pulumi:"createdAt"`
+	InstanceId      *string           `pulumi:"instanceId"`
+	IpVersion       *string           `pulumi:"ipVersion"`
+	MemberType      *string           `pulumi:"memberType"`
+	Name            *string           `pulumi:"name"`
+	OperatingStatus *string           `pulumi:"operatingStatus"`
+	PoolId          *string           `pulumi:"poolId"`
+	ProtocolPort    *int              `pulumi:"protocolPort"`
+	Reasons         []ElbMemberReason `pulumi:"reasons"`
+	Region          *string           `pulumi:"region"`
+	Statuses        []ElbMemberStatus `pulumi:"statuses"`
+	SubnetId        *string           `pulumi:"subnetId"`
+	UpdatedAt       *string           `pulumi:"updatedAt"`
+	Weight          *int              `pulumi:"weight"`
 }
 
 type ElbMemberState struct {
-	// The IP address of the member to receive traffic from the load balancer.
-	// Changing this creates a new member.
-	Address    pulumi.StringPtrInput
-	CreatedAt  pulumi.StringPtrInput
-	InstanceId pulumi.StringPtrInput
-	IpVersion  pulumi.StringPtrInput
-	MemberType pulumi.StringPtrInput
-	// Human-readable name for the member.
+	Address         pulumi.StringPtrInput
+	CreatedAt       pulumi.StringPtrInput
+	InstanceId      pulumi.StringPtrInput
+	IpVersion       pulumi.StringPtrInput
+	MemberType      pulumi.StringPtrInput
 	Name            pulumi.StringPtrInput
 	OperatingStatus pulumi.StringPtrInput
-	// The id of the pool that this member will be assigned to.
-	PoolId pulumi.StringPtrInput
-	// The port on which to listen for client traffic. Changing this creates a
-	// new member.
-	ProtocolPort pulumi.IntPtrInput
-	Reasons      ElbMemberReasonArrayInput
-	// The region in which to create the ELB member resource. If omitted, the the
-	// provider-level region will be used. Changing this creates a new member.
-	Region   pulumi.StringPtrInput
-	Statuses ElbMemberStatusArrayInput
-	// The **IPv4 or IPv6 subnet ID** of the subnet in which to access the member.
-	// + The IPv4 or IPv6 subnet must be in the same VPC as the subnet of the load balancer.
-	// + If this parameter is not specified, **cross-VPC backend** has been enabled for the load balancer.
-	//   In this case, cross-VPC backend servers must use private IPv4 addresses,
-	//   and the protocol of the backend server group must be TCP, HTTP, or HTTPS.
-	SubnetId  pulumi.StringPtrInput
-	UpdatedAt pulumi.StringPtrInput
-	// A positive integer value that indicates the relative portion of traffic that this member
-	// should receive from the pool. For example, a member with a weight of 10 receives five times as much traffic as a
-	// member with a weight of 2.
-	Weight pulumi.IntPtrInput
+	PoolId          pulumi.StringPtrInput
+	ProtocolPort    pulumi.IntPtrInput
+	Reasons         ElbMemberReasonArrayInput
+	Region          pulumi.StringPtrInput
+	Statuses        ElbMemberStatusArrayInput
+	SubnetId        pulumi.StringPtrInput
+	UpdatedAt       pulumi.StringPtrInput
+	Weight          pulumi.IntPtrInput
 }
 
 func (ElbMemberState) ElementType() reflect.Type {
@@ -198,56 +108,24 @@ func (ElbMemberState) ElementType() reflect.Type {
 }
 
 type elbMemberArgs struct {
-	// The IP address of the member to receive traffic from the load balancer.
-	// Changing this creates a new member.
-	Address string `pulumi:"address"`
-	// Human-readable name for the member.
-	Name *string `pulumi:"name"`
-	// The id of the pool that this member will be assigned to.
-	PoolId string `pulumi:"poolId"`
-	// The port on which to listen for client traffic. Changing this creates a
-	// new member.
-	ProtocolPort *int `pulumi:"protocolPort"`
-	// The region in which to create the ELB member resource. If omitted, the the
-	// provider-level region will be used. Changing this creates a new member.
-	Region *string `pulumi:"region"`
-	// The **IPv4 or IPv6 subnet ID** of the subnet in which to access the member.
-	// + The IPv4 or IPv6 subnet must be in the same VPC as the subnet of the load balancer.
-	// + If this parameter is not specified, **cross-VPC backend** has been enabled for the load balancer.
-	//   In this case, cross-VPC backend servers must use private IPv4 addresses,
-	//   and the protocol of the backend server group must be TCP, HTTP, or HTTPS.
-	SubnetId *string `pulumi:"subnetId"`
-	// A positive integer value that indicates the relative portion of traffic that this member
-	// should receive from the pool. For example, a member with a weight of 10 receives five times as much traffic as a
-	// member with a weight of 2.
-	Weight *int `pulumi:"weight"`
+	Address      string  `pulumi:"address"`
+	Name         *string `pulumi:"name"`
+	PoolId       string  `pulumi:"poolId"`
+	ProtocolPort *int    `pulumi:"protocolPort"`
+	Region       *string `pulumi:"region"`
+	SubnetId     *string `pulumi:"subnetId"`
+	Weight       *int    `pulumi:"weight"`
 }
 
 // The set of arguments for constructing a ElbMember resource.
 type ElbMemberArgs struct {
-	// The IP address of the member to receive traffic from the load balancer.
-	// Changing this creates a new member.
-	Address pulumi.StringInput
-	// Human-readable name for the member.
-	Name pulumi.StringPtrInput
-	// The id of the pool that this member will be assigned to.
-	PoolId pulumi.StringInput
-	// The port on which to listen for client traffic. Changing this creates a
-	// new member.
+	Address      pulumi.StringInput
+	Name         pulumi.StringPtrInput
+	PoolId       pulumi.StringInput
 	ProtocolPort pulumi.IntPtrInput
-	// The region in which to create the ELB member resource. If omitted, the the
-	// provider-level region will be used. Changing this creates a new member.
-	Region pulumi.StringPtrInput
-	// The **IPv4 or IPv6 subnet ID** of the subnet in which to access the member.
-	// + The IPv4 or IPv6 subnet must be in the same VPC as the subnet of the load balancer.
-	// + If this parameter is not specified, **cross-VPC backend** has been enabled for the load balancer.
-	//   In this case, cross-VPC backend servers must use private IPv4 addresses,
-	//   and the protocol of the backend server group must be TCP, HTTP, or HTTPS.
-	SubnetId pulumi.StringPtrInput
-	// A positive integer value that indicates the relative portion of traffic that this member
-	// should receive from the pool. For example, a member with a weight of 10 receives five times as much traffic as a
-	// member with a weight of 2.
-	Weight pulumi.IntPtrInput
+	Region       pulumi.StringPtrInput
+	SubnetId     pulumi.StringPtrInput
+	Weight       pulumi.IntPtrInput
 }
 
 func (ElbMemberArgs) ElementType() reflect.Type {
@@ -337,8 +215,6 @@ func (o ElbMemberOutput) ToElbMemberOutputWithContext(ctx context.Context) ElbMe
 	return o
 }
 
-// The IP address of the member to receive traffic from the load balancer.
-// Changing this creates a new member.
 func (o ElbMemberOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbMember) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
 }
@@ -359,7 +235,6 @@ func (o ElbMemberOutput) MemberType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbMember) pulumi.StringOutput { return v.MemberType }).(pulumi.StringOutput)
 }
 
-// Human-readable name for the member.
 func (o ElbMemberOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbMember) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -368,13 +243,10 @@ func (o ElbMemberOutput) OperatingStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbMember) pulumi.StringOutput { return v.OperatingStatus }).(pulumi.StringOutput)
 }
 
-// The id of the pool that this member will be assigned to.
 func (o ElbMemberOutput) PoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbMember) pulumi.StringOutput { return v.PoolId }).(pulumi.StringOutput)
 }
 
-// The port on which to listen for client traffic. Changing this creates a
-// new member.
 func (o ElbMemberOutput) ProtocolPort() pulumi.IntOutput {
 	return o.ApplyT(func(v *ElbMember) pulumi.IntOutput { return v.ProtocolPort }).(pulumi.IntOutput)
 }
@@ -383,8 +255,6 @@ func (o ElbMemberOutput) Reasons() ElbMemberReasonArrayOutput {
 	return o.ApplyT(func(v *ElbMember) ElbMemberReasonArrayOutput { return v.Reasons }).(ElbMemberReasonArrayOutput)
 }
 
-// The region in which to create the ELB member resource. If omitted, the the
-// provider-level region will be used. Changing this creates a new member.
 func (o ElbMemberOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbMember) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
@@ -393,11 +263,6 @@ func (o ElbMemberOutput) Statuses() ElbMemberStatusArrayOutput {
 	return o.ApplyT(func(v *ElbMember) ElbMemberStatusArrayOutput { return v.Statuses }).(ElbMemberStatusArrayOutput)
 }
 
-// The **IPv4 or IPv6 subnet ID** of the subnet in which to access the member.
-//   - The IPv4 or IPv6 subnet must be in the same VPC as the subnet of the load balancer.
-//   - If this parameter is not specified, **cross-VPC backend** has been enabled for the load balancer.
-//     In this case, cross-VPC backend servers must use private IPv4 addresses,
-//     and the protocol of the backend server group must be TCP, HTTP, or HTTPS.
 func (o ElbMemberOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElbMember) pulumi.StringPtrOutput { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
@@ -406,9 +271,6 @@ func (o ElbMemberOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbMember) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// A positive integer value that indicates the relative portion of traffic that this member
-// should receive from the pool. For example, a member with a weight of 10 receives five times as much traffic as a
-// member with a weight of 2.
 func (o ElbMemberOutput) Weight() pulumi.IntOutput {
 	return o.ApplyT(func(v *ElbMember) pulumi.IntOutput { return v.Weight }).(pulumi.IntOutput)
 }

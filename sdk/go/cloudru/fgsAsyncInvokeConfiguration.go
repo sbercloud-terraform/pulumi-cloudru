@@ -12,110 +12,27 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Using this resource to manage the configuration of the asynchronous invocation within HuaweiCloud.
-//
-// > A function only supports configuring one resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"encoding/json"
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			functionUrn := cfg.RequireObject("functionUrn")
-//			bucketName := cfg.RequireObject("bucketName")
-//			topicUrn := cfg.RequireObject("topicUrn")
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"bucket":  bucketName,
-//				"prefix":  "/success",
-//				"expires": 5,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			json0 := string(tmpJSON0)
-//			tmpJSON1, err := json.Marshal(map[string]interface{}{
-//				"topic_urn": topicUrn,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			json1 := string(tmpJSON1)
-//			_, err = sbercloud.NewFgsAsyncInvokeConfiguration(ctx, "test", &sbercloud.FgsAsyncInvokeConfigurationArgs{
-//				FunctionUrn:               pulumi.Any(functionUrn),
-//				MaxAsyncEventAgeInSeconds: pulumi.Int(3500),
-//				MaxAsyncRetryAttempts:     pulumi.Int(2),
-//				EnableAsyncStatusLog:      pulumi.Bool(true),
-//				OnSuccess: &cloudru.FgsAsyncInvokeConfigurationOnSuccessArgs{
-//					Destination: pulumi.String("OBS"),
-//					Param:       pulumi.String(json0),
-//				},
-//				OnFailure: &cloudru.FgsAsyncInvokeConfigurationOnFailureArgs{
-//					Destination: pulumi.String("SMN"),
-//					Param:       pulumi.String(json1),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The configurations can be imported using their related `function_urn`, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:index/fgsAsyncInvokeConfiguration:FgsAsyncInvokeConfiguration test <function_urn>
-// ```
 type FgsAsyncInvokeConfiguration struct {
 	pulumi.CustomResourceState
 
-	// The creation time of the asynchronous invocation, in RFC3339 format.
+	// The creation time of the asynchronous invocation.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Specifies whether to enable asynchronous invocation status persistence.
-	//
-	// <a name="functiongraphDestinationConfig"></a>
-	// The `onSuccess` and the `onFailure` blocks support:
+	// Whether to enable asynchronous invocation status persistence.
 	EnableAsyncStatusLog pulumi.BoolPtrOutput `pulumi:"enableAsyncStatusLog"`
-	// Specifies the function URN to which the asynchronous invocation belongs.
-	// Changing this will create a new resource.
+	// The function URN to which the asynchronous invocation belongs.
 	FunctionUrn pulumi.StringOutput `pulumi:"functionUrn"`
-	// Specifies the maximum validity period of a message.\
-	// The valid value is range from `1` to `86,400`.
+	// The maximum validity period of a message.
 	MaxAsyncEventAgeInSeconds pulumi.IntOutput `pulumi:"maxAsyncEventAgeInSeconds"`
-	// Specifies the maximum number of retry attempts to be made if
-	// asynchronous invocation fails.
-	// The valid value is range from `0` to `3`.
+	// The maximum number of retry attempts to be made if asynchronous invocation fails.
 	MaxAsyncRetryAttempts pulumi.IntOutput `pulumi:"maxAsyncRetryAttempts"`
-	// Specifies the target to be invoked when a function fails to be executed due to a
-	// system error or an internal error.
-	// The object structure is documented below.
+	// The target to be invoked when a function fails to be executed due to a system error or an
+	// internal error.
 	OnFailure FgsAsyncInvokeConfigurationOnFailurePtrOutput `pulumi:"onFailure"`
-	// Specifies the target to be invoked when a function is successfully executed.\
-	// The object structure is documented below.
+	// The target to be invoked when a function is successfully executed.
 	OnSuccess FgsAsyncInvokeConfigurationOnSuccessPtrOutput `pulumi:"onSuccess"`
-	// Specifies the region in which to configure the asynchronous invocation.\
-	// If omitted, the provider-level region will be used. Changing this will create a new resource.
+	// The region in which to configure the asynchronous invocation.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// The latest update time of the asynchronous invocation, in RFC3339 format.
+	// The latest update time of the asynchronous invocation.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
 
@@ -158,66 +75,46 @@ func GetFgsAsyncInvokeConfiguration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FgsAsyncInvokeConfiguration resources.
 type fgsAsyncInvokeConfigurationState struct {
-	// The creation time of the asynchronous invocation, in RFC3339 format.
+	// The creation time of the asynchronous invocation.
 	CreatedAt *string `pulumi:"createdAt"`
-	// Specifies whether to enable asynchronous invocation status persistence.
-	//
-	// <a name="functiongraphDestinationConfig"></a>
-	// The `onSuccess` and the `onFailure` blocks support:
+	// Whether to enable asynchronous invocation status persistence.
 	EnableAsyncStatusLog *bool `pulumi:"enableAsyncStatusLog"`
-	// Specifies the function URN to which the asynchronous invocation belongs.
-	// Changing this will create a new resource.
+	// The function URN to which the asynchronous invocation belongs.
 	FunctionUrn *string `pulumi:"functionUrn"`
-	// Specifies the maximum validity period of a message.\
-	// The valid value is range from `1` to `86,400`.
+	// The maximum validity period of a message.
 	MaxAsyncEventAgeInSeconds *int `pulumi:"maxAsyncEventAgeInSeconds"`
-	// Specifies the maximum number of retry attempts to be made if
-	// asynchronous invocation fails.
-	// The valid value is range from `0` to `3`.
+	// The maximum number of retry attempts to be made if asynchronous invocation fails.
 	MaxAsyncRetryAttempts *int `pulumi:"maxAsyncRetryAttempts"`
-	// Specifies the target to be invoked when a function fails to be executed due to a
-	// system error or an internal error.
-	// The object structure is documented below.
+	// The target to be invoked when a function fails to be executed due to a system error or an
+	// internal error.
 	OnFailure *FgsAsyncInvokeConfigurationOnFailure `pulumi:"onFailure"`
-	// Specifies the target to be invoked when a function is successfully executed.\
-	// The object structure is documented below.
+	// The target to be invoked when a function is successfully executed.
 	OnSuccess *FgsAsyncInvokeConfigurationOnSuccess `pulumi:"onSuccess"`
-	// Specifies the region in which to configure the asynchronous invocation.\
-	// If omitted, the provider-level region will be used. Changing this will create a new resource.
+	// The region in which to configure the asynchronous invocation.
 	Region *string `pulumi:"region"`
-	// The latest update time of the asynchronous invocation, in RFC3339 format.
+	// The latest update time of the asynchronous invocation.
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
 type FgsAsyncInvokeConfigurationState struct {
-	// The creation time of the asynchronous invocation, in RFC3339 format.
+	// The creation time of the asynchronous invocation.
 	CreatedAt pulumi.StringPtrInput
-	// Specifies whether to enable asynchronous invocation status persistence.
-	//
-	// <a name="functiongraphDestinationConfig"></a>
-	// The `onSuccess` and the `onFailure` blocks support:
+	// Whether to enable asynchronous invocation status persistence.
 	EnableAsyncStatusLog pulumi.BoolPtrInput
-	// Specifies the function URN to which the asynchronous invocation belongs.
-	// Changing this will create a new resource.
+	// The function URN to which the asynchronous invocation belongs.
 	FunctionUrn pulumi.StringPtrInput
-	// Specifies the maximum validity period of a message.\
-	// The valid value is range from `1` to `86,400`.
+	// The maximum validity period of a message.
 	MaxAsyncEventAgeInSeconds pulumi.IntPtrInput
-	// Specifies the maximum number of retry attempts to be made if
-	// asynchronous invocation fails.
-	// The valid value is range from `0` to `3`.
+	// The maximum number of retry attempts to be made if asynchronous invocation fails.
 	MaxAsyncRetryAttempts pulumi.IntPtrInput
-	// Specifies the target to be invoked when a function fails to be executed due to a
-	// system error or an internal error.
-	// The object structure is documented below.
+	// The target to be invoked when a function fails to be executed due to a system error or an
+	// internal error.
 	OnFailure FgsAsyncInvokeConfigurationOnFailurePtrInput
-	// Specifies the target to be invoked when a function is successfully executed.\
-	// The object structure is documented below.
+	// The target to be invoked when a function is successfully executed.
 	OnSuccess FgsAsyncInvokeConfigurationOnSuccessPtrInput
-	// Specifies the region in which to configure the asynchronous invocation.\
-	// If omitted, the provider-level region will be used. Changing this will create a new resource.
+	// The region in which to configure the asynchronous invocation.
 	Region pulumi.StringPtrInput
-	// The latest update time of the asynchronous invocation, in RFC3339 format.
+	// The latest update time of the asynchronous invocation.
 	UpdatedAt pulumi.StringPtrInput
 }
 
@@ -226,59 +123,39 @@ func (FgsAsyncInvokeConfigurationState) ElementType() reflect.Type {
 }
 
 type fgsAsyncInvokeConfigurationArgs struct {
-	// Specifies whether to enable asynchronous invocation status persistence.
-	//
-	// <a name="functiongraphDestinationConfig"></a>
-	// The `onSuccess` and the `onFailure` blocks support:
+	// Whether to enable asynchronous invocation status persistence.
 	EnableAsyncStatusLog *bool `pulumi:"enableAsyncStatusLog"`
-	// Specifies the function URN to which the asynchronous invocation belongs.
-	// Changing this will create a new resource.
+	// The function URN to which the asynchronous invocation belongs.
 	FunctionUrn string `pulumi:"functionUrn"`
-	// Specifies the maximum validity period of a message.\
-	// The valid value is range from `1` to `86,400`.
+	// The maximum validity period of a message.
 	MaxAsyncEventAgeInSeconds int `pulumi:"maxAsyncEventAgeInSeconds"`
-	// Specifies the maximum number of retry attempts to be made if
-	// asynchronous invocation fails.
-	// The valid value is range from `0` to `3`.
+	// The maximum number of retry attempts to be made if asynchronous invocation fails.
 	MaxAsyncRetryAttempts int `pulumi:"maxAsyncRetryAttempts"`
-	// Specifies the target to be invoked when a function fails to be executed due to a
-	// system error or an internal error.
-	// The object structure is documented below.
+	// The target to be invoked when a function fails to be executed due to a system error or an
+	// internal error.
 	OnFailure *FgsAsyncInvokeConfigurationOnFailure `pulumi:"onFailure"`
-	// Specifies the target to be invoked when a function is successfully executed.\
-	// The object structure is documented below.
+	// The target to be invoked when a function is successfully executed.
 	OnSuccess *FgsAsyncInvokeConfigurationOnSuccess `pulumi:"onSuccess"`
-	// Specifies the region in which to configure the asynchronous invocation.\
-	// If omitted, the provider-level region will be used. Changing this will create a new resource.
+	// The region in which to configure the asynchronous invocation.
 	Region *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a FgsAsyncInvokeConfiguration resource.
 type FgsAsyncInvokeConfigurationArgs struct {
-	// Specifies whether to enable asynchronous invocation status persistence.
-	//
-	// <a name="functiongraphDestinationConfig"></a>
-	// The `onSuccess` and the `onFailure` blocks support:
+	// Whether to enable asynchronous invocation status persistence.
 	EnableAsyncStatusLog pulumi.BoolPtrInput
-	// Specifies the function URN to which the asynchronous invocation belongs.
-	// Changing this will create a new resource.
+	// The function URN to which the asynchronous invocation belongs.
 	FunctionUrn pulumi.StringInput
-	// Specifies the maximum validity period of a message.\
-	// The valid value is range from `1` to `86,400`.
+	// The maximum validity period of a message.
 	MaxAsyncEventAgeInSeconds pulumi.IntInput
-	// Specifies the maximum number of retry attempts to be made if
-	// asynchronous invocation fails.
-	// The valid value is range from `0` to `3`.
+	// The maximum number of retry attempts to be made if asynchronous invocation fails.
 	MaxAsyncRetryAttempts pulumi.IntInput
-	// Specifies the target to be invoked when a function fails to be executed due to a
-	// system error or an internal error.
-	// The object structure is documented below.
+	// The target to be invoked when a function fails to be executed due to a system error or an
+	// internal error.
 	OnFailure FgsAsyncInvokeConfigurationOnFailurePtrInput
-	// Specifies the target to be invoked when a function is successfully executed.\
-	// The object structure is documented below.
+	// The target to be invoked when a function is successfully executed.
 	OnSuccess FgsAsyncInvokeConfigurationOnSuccessPtrInput
-	// Specifies the region in which to configure the asynchronous invocation.\
-	// If omitted, the provider-level region will be used. Changing this will create a new resource.
+	// The region in which to configure the asynchronous invocation.
 	Region pulumi.StringPtrInput
 }
 
@@ -369,58 +246,48 @@ func (o FgsAsyncInvokeConfigurationOutput) ToFgsAsyncInvokeConfigurationOutputWi
 	return o
 }
 
-// The creation time of the asynchronous invocation, in RFC3339 format.
+// The creation time of the asynchronous invocation.
 func (o FgsAsyncInvokeConfigurationOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *FgsAsyncInvokeConfiguration) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Specifies whether to enable asynchronous invocation status persistence.
-//
-// <a name="functiongraphDestinationConfig"></a>
-// The `onSuccess` and the `onFailure` blocks support:
+// Whether to enable asynchronous invocation status persistence.
 func (o FgsAsyncInvokeConfigurationOutput) EnableAsyncStatusLog() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FgsAsyncInvokeConfiguration) pulumi.BoolPtrOutput { return v.EnableAsyncStatusLog }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the function URN to which the asynchronous invocation belongs.
-// Changing this will create a new resource.
+// The function URN to which the asynchronous invocation belongs.
 func (o FgsAsyncInvokeConfigurationOutput) FunctionUrn() pulumi.StringOutput {
 	return o.ApplyT(func(v *FgsAsyncInvokeConfiguration) pulumi.StringOutput { return v.FunctionUrn }).(pulumi.StringOutput)
 }
 
-// Specifies the maximum validity period of a message.\
-// The valid value is range from `1` to `86,400`.
+// The maximum validity period of a message.
 func (o FgsAsyncInvokeConfigurationOutput) MaxAsyncEventAgeInSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v *FgsAsyncInvokeConfiguration) pulumi.IntOutput { return v.MaxAsyncEventAgeInSeconds }).(pulumi.IntOutput)
 }
 
-// Specifies the maximum number of retry attempts to be made if
-// asynchronous invocation fails.
-// The valid value is range from `0` to `3`.
+// The maximum number of retry attempts to be made if asynchronous invocation fails.
 func (o FgsAsyncInvokeConfigurationOutput) MaxAsyncRetryAttempts() pulumi.IntOutput {
 	return o.ApplyT(func(v *FgsAsyncInvokeConfiguration) pulumi.IntOutput { return v.MaxAsyncRetryAttempts }).(pulumi.IntOutput)
 }
 
-// Specifies the target to be invoked when a function fails to be executed due to a
-// system error or an internal error.
-// The object structure is documented below.
+// The target to be invoked when a function fails to be executed due to a system error or an
+// internal error.
 func (o FgsAsyncInvokeConfigurationOutput) OnFailure() FgsAsyncInvokeConfigurationOnFailurePtrOutput {
 	return o.ApplyT(func(v *FgsAsyncInvokeConfiguration) FgsAsyncInvokeConfigurationOnFailurePtrOutput { return v.OnFailure }).(FgsAsyncInvokeConfigurationOnFailurePtrOutput)
 }
 
-// Specifies the target to be invoked when a function is successfully executed.\
-// The object structure is documented below.
+// The target to be invoked when a function is successfully executed.
 func (o FgsAsyncInvokeConfigurationOutput) OnSuccess() FgsAsyncInvokeConfigurationOnSuccessPtrOutput {
 	return o.ApplyT(func(v *FgsAsyncInvokeConfiguration) FgsAsyncInvokeConfigurationOnSuccessPtrOutput { return v.OnSuccess }).(FgsAsyncInvokeConfigurationOnSuccessPtrOutput)
 }
 
-// Specifies the region in which to configure the asynchronous invocation.\
-// If omitted, the provider-level region will be used. Changing this will create a new resource.
+// The region in which to configure the asynchronous invocation.
 func (o FgsAsyncInvokeConfigurationOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *FgsAsyncInvokeConfiguration) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// The latest update time of the asynchronous invocation, in RFC3339 format.
+// The latest update time of the asynchronous invocation.
 func (o FgsAsyncInvokeConfigurationOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *FgsAsyncInvokeConfiguration) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }

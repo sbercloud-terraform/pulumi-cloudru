@@ -162,14 +162,8 @@ func (o NotificationFilterPtrOutput) Rules() pulumi.StringArrayOutput {
 }
 
 type NotificationOperation struct {
-	// Specifies the resource type.
-	Resource string `pulumi:"resource"`
-	// Specifies the cloud service.
-	Service string `pulumi:"service"`
-	// Specifies an array of trace names.
-	//
-	// <a name="notificationOperationUsersObject"></a>
-	// The `operationUsers` block supports:
+	Resource   string   `pulumi:"resource"`
+	Service    string   `pulumi:"service"`
 	TraceNames []string `pulumi:"traceNames"`
 }
 
@@ -185,14 +179,8 @@ type NotificationOperationInput interface {
 }
 
 type NotificationOperationArgs struct {
-	// Specifies the resource type.
-	Resource pulumi.StringInput `pulumi:"resource"`
-	// Specifies the cloud service.
-	Service pulumi.StringInput `pulumi:"service"`
-	// Specifies an array of trace names.
-	//
-	// <a name="notificationOperationUsersObject"></a>
-	// The `operationUsers` block supports:
+	Resource   pulumi.StringInput      `pulumi:"resource"`
+	Service    pulumi.StringInput      `pulumi:"service"`
 	TraceNames pulumi.StringArrayInput `pulumi:"traceNames"`
 }
 
@@ -247,20 +235,14 @@ func (o NotificationOperationOutput) ToNotificationOperationOutputWithContext(ct
 	return o
 }
 
-// Specifies the resource type.
 func (o NotificationOperationOutput) Resource() pulumi.StringOutput {
 	return o.ApplyT(func(v NotificationOperation) string { return v.Resource }).(pulumi.StringOutput)
 }
 
-// Specifies the cloud service.
 func (o NotificationOperationOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v NotificationOperation) string { return v.Service }).(pulumi.StringOutput)
 }
 
-// Specifies an array of trace names.
-//
-// <a name="notificationOperationUsersObject"></a>
-// The `operationUsers` block supports:
 func (o NotificationOperationOutput) TraceNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationOperation) []string { return v.TraceNames }).(pulumi.StringArrayOutput)
 }
@@ -286,9 +268,7 @@ func (o NotificationOperationArrayOutput) Index(i pulumi.IntInput) NotificationO
 }
 
 type NotificationOperationUser struct {
-	// Specifies the IAM user group name.
-	Group string `pulumi:"group"`
-	// Specifies an array of IAM users in the group.
+	Group string   `pulumi:"group"`
 	Users []string `pulumi:"users"`
 }
 
@@ -304,9 +284,7 @@ type NotificationOperationUserInput interface {
 }
 
 type NotificationOperationUserArgs struct {
-	// Specifies the IAM user group name.
-	Group pulumi.StringInput `pulumi:"group"`
-	// Specifies an array of IAM users in the group.
+	Group pulumi.StringInput      `pulumi:"group"`
 	Users pulumi.StringArrayInput `pulumi:"users"`
 }
 
@@ -361,12 +339,10 @@ func (o NotificationOperationUserOutput) ToNotificationOperationUserOutputWithCo
 	return o
 }
 
-// Specifies the IAM user group name.
 func (o NotificationOperationUserOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v NotificationOperationUser) string { return v.Group }).(pulumi.StringOutput)
 }
 
-// Specifies an array of IAM users in the group.
 func (o NotificationOperationUserOutput) Users() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationOperationUser) []string { return v.Users }).(pulumi.StringArrayOutput)
 }

@@ -6,63 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages RDS PostgreSQL account resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const accountPassword = config.requireObject<any>("accountPassword");
- * const test = new sbercloud.rds.PgAccount("test", {
- *     instanceId: instanceId,
- *     name: "test_account_name",
- *     password: accountPassword,
- * });
- * ```
- *
- * ## Import
- *
- * The RDS PostgreSQL account can be imported using the `instance_id` and `name` separated by a slash, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:Rds/pgAccount:PgAccount test <instance_id>/<name>
- * ```
- *
- * Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
- *
- * API response, security or some other reason. The missing attributes include: `password`. It is generally recommended
- *
- * running `pulumi preview` after importing the RDS PostgreSQL account. You can then decide if changes should be applied to
- *
- * the RDS PostgreSQL account, or the resource definition should be updated to align with the RDS PostgreSQL account. Also
- *
- * you can ignore changes as below.
- *
- * hcl
- *
- * resource "sbercloud_rds_pg_account" "account_1" {
- *
- *     ...
- *
- *   lifecycle {
- *
- *     ignore_changes = [
- *     
- *       password
- *     
- *     ]
- *
- *   }
- *
- * }
- */
 export class PgAccount extends pulumi.CustomResource {
     /**
      * Get an existing PgAccount resource's state with the given name, ID, and optional extra
@@ -92,18 +35,15 @@ export class PgAccount extends pulumi.CustomResource {
     }
 
     /**
-     * Indicates the permission attributes of a user.
-     * The attributes structure is documented below.
+     * Indicates the permission attributes of the account.
      */
     declare public /*out*/ readonly attributes: pulumi.Output<outputs.Rds.PgAccountAttribute[]>;
     /**
-     * Specifies the remarks of the DB account. The parameter must be 1 to 512 characters.
+     * Specifies the remarks of the DB account.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specifies the ID of the RDS PostgreSQL instance.
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly instanceId: pulumi.Output<string>;
     /**
@@ -111,24 +51,13 @@ export class PgAccount extends pulumi.CustomResource {
      */
     declare public readonly memberofs: pulumi.Output<string[] | undefined>;
     /**
-     * Specifies the username of the DB account. The username contains 1 to 63
-     * characters, including letters, digits, and underscores (_). It cannot start with pg or a digit and must be different
-     * from system usernames. System users include **rdsAdmin**, **rdsMetric**, **rdsBackup**, **rdsRepl**, **rdsProxy**,
-     * and **rdsDdm**.
-     *
-     * Changing this parameter will create a new resource.
+     * Specifies the username of the DB account.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Specifies the password of the DB account. The value must be 8 to 32 characters long
-     * and contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
-     * characters (~!@#%^*-_=+?,). The value cannot contain the username or the username spelled backwards.
+     * Specifies the password of the DB account.
      */
     declare public readonly password: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
 
     /**
@@ -179,18 +108,15 @@ export class PgAccount extends pulumi.CustomResource {
  */
 export interface PgAccountState {
     /**
-     * Indicates the permission attributes of a user.
-     * The attributes structure is documented below.
+     * Indicates the permission attributes of the account.
      */
     attributes?: pulumi.Input<pulumi.Input<inputs.Rds.PgAccountAttribute>[]>;
     /**
-     * Specifies the remarks of the DB account. The parameter must be 1 to 512 characters.
+     * Specifies the remarks of the DB account.
      */
     description?: pulumi.Input<string>;
     /**
      * Specifies the ID of the RDS PostgreSQL instance.
-     *
-     * Changing this parameter will create a new resource.
      */
     instanceId?: pulumi.Input<string>;
     /**
@@ -198,24 +124,13 @@ export interface PgAccountState {
      */
     memberofs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Specifies the username of the DB account. The username contains 1 to 63
-     * characters, including letters, digits, and underscores (_). It cannot start with pg or a digit and must be different
-     * from system usernames. System users include **rdsAdmin**, **rdsMetric**, **rdsBackup**, **rdsRepl**, **rdsProxy**,
-     * and **rdsDdm**.
-     *
-     * Changing this parameter will create a new resource.
+     * Specifies the username of the DB account.
      */
     name?: pulumi.Input<string>;
     /**
-     * Specifies the password of the DB account. The value must be 8 to 32 characters long
-     * and contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
-     * characters (~!@#%^*-_=+?,). The value cannot contain the username or the username spelled backwards.
+     * Specifies the password of the DB account.
      */
     password?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
 }
 
@@ -224,13 +139,11 @@ export interface PgAccountState {
  */
 export interface PgAccountArgs {
     /**
-     * Specifies the remarks of the DB account. The parameter must be 1 to 512 characters.
+     * Specifies the remarks of the DB account.
      */
     description?: pulumi.Input<string>;
     /**
      * Specifies the ID of the RDS PostgreSQL instance.
-     *
-     * Changing this parameter will create a new resource.
      */
     instanceId: pulumi.Input<string>;
     /**
@@ -238,23 +151,12 @@ export interface PgAccountArgs {
      */
     memberofs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Specifies the username of the DB account. The username contains 1 to 63
-     * characters, including letters, digits, and underscores (_). It cannot start with pg or a digit and must be different
-     * from system usernames. System users include **rdsAdmin**, **rdsMetric**, **rdsBackup**, **rdsRepl**, **rdsProxy**,
-     * and **rdsDdm**.
-     *
-     * Changing this parameter will create a new resource.
+     * Specifies the username of the DB account.
      */
     name?: pulumi.Input<string>;
     /**
-     * Specifies the password of the DB account. The value must be 8 to 32 characters long
-     * and contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
-     * characters (~!@#%^*-_=+?,). The value cannot contain the username or the username spelled backwards.
+     * Specifies the password of the DB account.
      */
     password: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
 }

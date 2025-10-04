@@ -11,9 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of CFW attack logs.
-//
-// > **NOTE:** Up to 1000 logs can be retrieved. Set filter criteria to narrow down the search scope.
 func GetAttackLogs(ctx *pulumi.Context, args *GetAttackLogsArgs, opts ...pulumi.InvokeOption) (*GetAttackLogsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAttackLogsResult
@@ -26,96 +23,55 @@ func GetAttackLogs(ctx *pulumi.Context, args *GetAttackLogsArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getAttackLogs.
 type GetAttackLogsArgs struct {
-	// Specifies the application protocol.
-	App *string `pulumi:"app"`
-	// Specifies the intrusion event rule.
-	AttackRule *string `pulumi:"attackRule"`
-	// Specifies the attack rule ID.
-	AttackRuleId *string `pulumi:"attackRuleId"`
-	// Specifies the intrusion event type.
-	AttackType *string `pulumi:"attackType"`
-	// Specifies the destination city name.
-	DstCityName *string `pulumi:"dstCityName"`
-	// Specifies the destination IP address.
-	DstIp *string `pulumi:"dstIp"`
-	// Specifies the destination port.
-	DstPort *int `pulumi:"dstPort"`
-	// Specifies the destination province name.
-	DstProvinceName *string `pulumi:"dstProvinceName"`
-	// Specifies the destination region name.
-	DstRegionName *string `pulumi:"dstRegionName"`
-	// Specifies the end time. The time is in UTC.
-	// The format is **yyyy-MM-dd HH:mm:ss**.
-	EndTime string `pulumi:"endTime"`
-	// Specifies the enterprise project ID.
+	App                 *string `pulumi:"app"`
+	AttackRule          *string `pulumi:"attackRule"`
+	AttackRuleId        *string `pulumi:"attackRuleId"`
+	AttackType          *string `pulumi:"attackType"`
+	DstCityName         *string `pulumi:"dstCityName"`
+	DstIp               *string `pulumi:"dstIp"`
+	DstPort             *int    `pulumi:"dstPort"`
+	DstProvinceName     *string `pulumi:"dstProvinceName"`
+	DstRegionName       *string `pulumi:"dstRegionName"`
+	EndTime             string  `pulumi:"endTime"`
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the firewall instance ID.
-	FwInstanceId string `pulumi:"fwInstanceId"`
-	// Specifies the threat level.
-	Level *string `pulumi:"level"`
-	// Specifies the log type.
-	// The valid values are **internet**, **nat** and **vpc**.
-	LogType *string `pulumi:"logType"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the source city name.
-	SrcCityName *string `pulumi:"srcCityName"`
-	// Specifies the source IP address.
-	SrcIp *string `pulumi:"srcIp"`
-	// Specifies the source port.
-	SrcPort *int `pulumi:"srcPort"`
-	// Specifies the source province name.
-	SrcProvinceName *string `pulumi:"srcProvinceName"`
-	// Specifies the source region name.
-	SrcRegionName *string `pulumi:"srcRegionName"`
-	// Specifies the start time. The time is in UTC.
-	// The format is **yyyy-MM-dd HH:mm:ss**.
-	StartTime string `pulumi:"startTime"`
+	FwInstanceId        string  `pulumi:"fwInstanceId"`
+	Level               *string `pulumi:"level"`
+	LogType             *string `pulumi:"logType"`
+	Region              *string `pulumi:"region"`
+	SrcCityName         *string `pulumi:"srcCityName"`
+	SrcIp               *string `pulumi:"srcIp"`
+	SrcPort             *int    `pulumi:"srcPort"`
+	SrcProvinceName     *string `pulumi:"srcProvinceName"`
+	SrcRegionName       *string `pulumi:"srcRegionName"`
+	StartTime           string  `pulumi:"startTime"`
 }
 
 // A collection of values returned by getAttackLogs.
 type GetAttackLogsResult struct {
-	// The application protocol.
-	App *string `pulumi:"app"`
-	// The attack rule.
-	AttackRule *string `pulumi:"attackRule"`
-	// The attack rule ID.
-	AttackRuleId *string `pulumi:"attackRuleId"`
-	// The attack type.
-	AttackType *string `pulumi:"attackType"`
-	// The destination city name.
-	DstCityName *string `pulumi:"dstCityName"`
-	// The destination IP address.
-	DstIp *string `pulumi:"dstIp"`
-	// The destination port.
-	DstPort *int `pulumi:"dstPort"`
-	// The destination province name.
-	DstProvinceName *string `pulumi:"dstProvinceName"`
-	// The destination region name.
+	App                 *string `pulumi:"app"`
+	AttackRule          *string `pulumi:"attackRule"`
+	AttackRuleId        *string `pulumi:"attackRuleId"`
+	AttackType          *string `pulumi:"attackType"`
+	DstCityName         *string `pulumi:"dstCityName"`
+	DstIp               *string `pulumi:"dstIp"`
+	DstPort             *int    `pulumi:"dstPort"`
+	DstProvinceName     *string `pulumi:"dstProvinceName"`
 	DstRegionName       *string `pulumi:"dstRegionName"`
 	EndTime             string  `pulumi:"endTime"`
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
 	FwInstanceId        string  `pulumi:"fwInstanceId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The threat level.
-	Level   *string `pulumi:"level"`
-	LogType *string `pulumi:"logType"`
-	// The attack log records.
-	Records []GetAttackLogsRecord `pulumi:"records"`
-	Region  string                `pulumi:"region"`
-	// The source city name.
-	SrcCityName *string `pulumi:"srcCityName"`
-	// The source IP address.
-	SrcIp *string `pulumi:"srcIp"`
-	// The source port.
-	SrcPort *int `pulumi:"srcPort"`
-	// The source province name.
-	SrcProvinceName *string `pulumi:"srcProvinceName"`
-	// The source region name.
-	SrcRegionName *string `pulumi:"srcRegionName"`
-	StartTime     string  `pulumi:"startTime"`
+	Id              string                `pulumi:"id"`
+	Level           *string               `pulumi:"level"`
+	LogType         *string               `pulumi:"logType"`
+	Records         []GetAttackLogsRecord `pulumi:"records"`
+	Region          string                `pulumi:"region"`
+	SrcCityName     *string               `pulumi:"srcCityName"`
+	SrcIp           *string               `pulumi:"srcIp"`
+	SrcPort         *int                  `pulumi:"srcPort"`
+	SrcProvinceName *string               `pulumi:"srcProvinceName"`
+	SrcRegionName   *string               `pulumi:"srcRegionName"`
+	StartTime       string                `pulumi:"startTime"`
 }
 
 func GetAttackLogsOutput(ctx *pulumi.Context, args GetAttackLogsOutputArgs, opts ...pulumi.InvokeOption) GetAttackLogsResultOutput {
@@ -129,52 +85,27 @@ func GetAttackLogsOutput(ctx *pulumi.Context, args GetAttackLogsOutputArgs, opts
 
 // A collection of arguments for invoking getAttackLogs.
 type GetAttackLogsOutputArgs struct {
-	// Specifies the application protocol.
-	App pulumi.StringPtrInput `pulumi:"app"`
-	// Specifies the intrusion event rule.
-	AttackRule pulumi.StringPtrInput `pulumi:"attackRule"`
-	// Specifies the attack rule ID.
-	AttackRuleId pulumi.StringPtrInput `pulumi:"attackRuleId"`
-	// Specifies the intrusion event type.
-	AttackType pulumi.StringPtrInput `pulumi:"attackType"`
-	// Specifies the destination city name.
-	DstCityName pulumi.StringPtrInput `pulumi:"dstCityName"`
-	// Specifies the destination IP address.
-	DstIp pulumi.StringPtrInput `pulumi:"dstIp"`
-	// Specifies the destination port.
-	DstPort pulumi.IntPtrInput `pulumi:"dstPort"`
-	// Specifies the destination province name.
-	DstProvinceName pulumi.StringPtrInput `pulumi:"dstProvinceName"`
-	// Specifies the destination region name.
-	DstRegionName pulumi.StringPtrInput `pulumi:"dstRegionName"`
-	// Specifies the end time. The time is in UTC.
-	// The format is **yyyy-MM-dd HH:mm:ss**.
-	EndTime pulumi.StringInput `pulumi:"endTime"`
-	// Specifies the enterprise project ID.
+	App                 pulumi.StringPtrInput `pulumi:"app"`
+	AttackRule          pulumi.StringPtrInput `pulumi:"attackRule"`
+	AttackRuleId        pulumi.StringPtrInput `pulumi:"attackRuleId"`
+	AttackType          pulumi.StringPtrInput `pulumi:"attackType"`
+	DstCityName         pulumi.StringPtrInput `pulumi:"dstCityName"`
+	DstIp               pulumi.StringPtrInput `pulumi:"dstIp"`
+	DstPort             pulumi.IntPtrInput    `pulumi:"dstPort"`
+	DstProvinceName     pulumi.StringPtrInput `pulumi:"dstProvinceName"`
+	DstRegionName       pulumi.StringPtrInput `pulumi:"dstRegionName"`
+	EndTime             pulumi.StringInput    `pulumi:"endTime"`
 	EnterpriseProjectId pulumi.StringPtrInput `pulumi:"enterpriseProjectId"`
-	// Specifies the firewall instance ID.
-	FwInstanceId pulumi.StringInput `pulumi:"fwInstanceId"`
-	// Specifies the threat level.
-	Level pulumi.StringPtrInput `pulumi:"level"`
-	// Specifies the log type.
-	// The valid values are **internet**, **nat** and **vpc**.
-	LogType pulumi.StringPtrInput `pulumi:"logType"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the source city name.
-	SrcCityName pulumi.StringPtrInput `pulumi:"srcCityName"`
-	// Specifies the source IP address.
-	SrcIp pulumi.StringPtrInput `pulumi:"srcIp"`
-	// Specifies the source port.
-	SrcPort pulumi.IntPtrInput `pulumi:"srcPort"`
-	// Specifies the source province name.
-	SrcProvinceName pulumi.StringPtrInput `pulumi:"srcProvinceName"`
-	// Specifies the source region name.
-	SrcRegionName pulumi.StringPtrInput `pulumi:"srcRegionName"`
-	// Specifies the start time. The time is in UTC.
-	// The format is **yyyy-MM-dd HH:mm:ss**.
-	StartTime pulumi.StringInput `pulumi:"startTime"`
+	FwInstanceId        pulumi.StringInput    `pulumi:"fwInstanceId"`
+	Level               pulumi.StringPtrInput `pulumi:"level"`
+	LogType             pulumi.StringPtrInput `pulumi:"logType"`
+	Region              pulumi.StringPtrInput `pulumi:"region"`
+	SrcCityName         pulumi.StringPtrInput `pulumi:"srcCityName"`
+	SrcIp               pulumi.StringPtrInput `pulumi:"srcIp"`
+	SrcPort             pulumi.IntPtrInput    `pulumi:"srcPort"`
+	SrcProvinceName     pulumi.StringPtrInput `pulumi:"srcProvinceName"`
+	SrcRegionName       pulumi.StringPtrInput `pulumi:"srcRegionName"`
+	StartTime           pulumi.StringInput    `pulumi:"startTime"`
 }
 
 func (GetAttackLogsOutputArgs) ElementType() reflect.Type {
@@ -196,47 +127,38 @@ func (o GetAttackLogsResultOutput) ToGetAttackLogsResultOutputWithContext(ctx co
 	return o
 }
 
-// The application protocol.
 func (o GetAttackLogsResultOutput) App() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAttackLogsResult) *string { return v.App }).(pulumi.StringPtrOutput)
 }
 
-// The attack rule.
 func (o GetAttackLogsResultOutput) AttackRule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAttackLogsResult) *string { return v.AttackRule }).(pulumi.StringPtrOutput)
 }
 
-// The attack rule ID.
 func (o GetAttackLogsResultOutput) AttackRuleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAttackLogsResult) *string { return v.AttackRuleId }).(pulumi.StringPtrOutput)
 }
 
-// The attack type.
 func (o GetAttackLogsResultOutput) AttackType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAttackLogsResult) *string { return v.AttackType }).(pulumi.StringPtrOutput)
 }
 
-// The destination city name.
 func (o GetAttackLogsResultOutput) DstCityName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAttackLogsResult) *string { return v.DstCityName }).(pulumi.StringPtrOutput)
 }
 
-// The destination IP address.
 func (o GetAttackLogsResultOutput) DstIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAttackLogsResult) *string { return v.DstIp }).(pulumi.StringPtrOutput)
 }
 
-// The destination port.
 func (o GetAttackLogsResultOutput) DstPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetAttackLogsResult) *int { return v.DstPort }).(pulumi.IntPtrOutput)
 }
 
-// The destination province name.
 func (o GetAttackLogsResultOutput) DstProvinceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAttackLogsResult) *string { return v.DstProvinceName }).(pulumi.StringPtrOutput)
 }
 
-// The destination region name.
 func (o GetAttackLogsResultOutput) DstRegionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAttackLogsResult) *string { return v.DstRegionName }).(pulumi.StringPtrOutput)
 }
@@ -258,7 +180,6 @@ func (o GetAttackLogsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttackLogsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The threat level.
 func (o GetAttackLogsResultOutput) Level() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAttackLogsResult) *string { return v.Level }).(pulumi.StringPtrOutput)
 }
@@ -267,7 +188,6 @@ func (o GetAttackLogsResultOutput) LogType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAttackLogsResult) *string { return v.LogType }).(pulumi.StringPtrOutput)
 }
 
-// The attack log records.
 func (o GetAttackLogsResultOutput) Records() GetAttackLogsRecordArrayOutput {
 	return o.ApplyT(func(v GetAttackLogsResult) []GetAttackLogsRecord { return v.Records }).(GetAttackLogsRecordArrayOutput)
 }
@@ -276,27 +196,22 @@ func (o GetAttackLogsResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttackLogsResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The source city name.
 func (o GetAttackLogsResultOutput) SrcCityName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAttackLogsResult) *string { return v.SrcCityName }).(pulumi.StringPtrOutput)
 }
 
-// The source IP address.
 func (o GetAttackLogsResultOutput) SrcIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAttackLogsResult) *string { return v.SrcIp }).(pulumi.StringPtrOutput)
 }
 
-// The source port.
 func (o GetAttackLogsResultOutput) SrcPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetAttackLogsResult) *int { return v.SrcPort }).(pulumi.IntPtrOutput)
 }
 
-// The source province name.
 func (o GetAttackLogsResultOutput) SrcProvinceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAttackLogsResult) *string { return v.SrcProvinceName }).(pulumi.StringPtrOutput)
 }
 
-// The source region name.
 func (o GetAttackLogsResultOutput) SrcRegionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAttackLogsResult) *string { return v.SrcRegionName }).(pulumi.StringPtrOutput)
 }

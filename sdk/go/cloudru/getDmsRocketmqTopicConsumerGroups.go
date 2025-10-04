@@ -11,38 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of RocketMQ topic consumer groups.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			topicName := cfg.RequireObject("topicName")
-//			_, err := sbercloud.GetDmsRocketmqTopicConsumerGroups(ctx, &cloudru.GetDmsRocketmqTopicConsumerGroupsArgs{
-//				InstanceId: instanceId,
-//				TopicName:  topicName,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetDmsRocketmqTopicConsumerGroups(ctx *pulumi.Context, args *GetDmsRocketmqTopicConsumerGroupsArgs, opts ...pulumi.InvokeOption) (*GetDmsRocketmqTopicConsumerGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDmsRocketmqTopicConsumerGroupsResult
@@ -55,18 +23,13 @@ func GetDmsRocketmqTopicConsumerGroups(ctx *pulumi.Context, args *GetDmsRocketmq
 
 // A collection of arguments for invoking getDmsRocketmqTopicConsumerGroups.
 type GetDmsRocketmqTopicConsumerGroupsArgs struct {
-	// Specifies the instance ID.
-	InstanceId string `pulumi:"instanceId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the topic name.
-	TopicName string `pulumi:"topicName"`
+	InstanceId string  `pulumi:"instanceId"`
+	Region     *string `pulumi:"region"`
+	TopicName  string  `pulumi:"topicName"`
 }
 
 // A collection of values returned by getDmsRocketmqTopicConsumerGroups.
 type GetDmsRocketmqTopicConsumerGroupsResult struct {
-	// Indicates the consumer group list.
 	Groups []string `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string `pulumi:"id"`
@@ -86,13 +49,9 @@ func GetDmsRocketmqTopicConsumerGroupsOutput(ctx *pulumi.Context, args GetDmsRoc
 
 // A collection of arguments for invoking getDmsRocketmqTopicConsumerGroups.
 type GetDmsRocketmqTopicConsumerGroupsOutputArgs struct {
-	// Specifies the instance ID.
-	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the topic name.
-	TopicName pulumi.StringInput `pulumi:"topicName"`
+	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
+	Region     pulumi.StringPtrInput `pulumi:"region"`
+	TopicName  pulumi.StringInput    `pulumi:"topicName"`
 }
 
 func (GetDmsRocketmqTopicConsumerGroupsOutputArgs) ElementType() reflect.Type {
@@ -114,7 +73,6 @@ func (o GetDmsRocketmqTopicConsumerGroupsResultOutput) ToGetDmsRocketmqTopicCons
 	return o
 }
 
-// Indicates the consumer group list.
 func (o GetDmsRocketmqTopicConsumerGroupsResultOutput) Groups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDmsRocketmqTopicConsumerGroupsResult) []string { return v.Groups }).(pulumi.StringArrayOutput)
 }

@@ -69,26 +69,16 @@ class GetBackupsResult:
     @_builtins.property
     @pulumi.getter
     def backups(self) -> Sequence['outputs.GetBackupsBackupResult']:
-        """
-        Backup list. For details, see Data structure of the Backup field.
-        The backups structure is documented below.
-        """
         return pulumi.get(self, "backups")
 
     @_builtins.property
     @pulumi.getter(name="beginTime")
     def begin_time(self) -> Optional[_builtins.str]:
-        """
-        Backup start time in the "yyyy-mm-ddThh:mm:ssZ" format.
-        """
         return pulumi.get(self, "begin_time")
 
     @_builtins.property
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[_builtins.str]:
-        """
-        Backup end time in the "yyyy-mm-ddThh:mm:ssZ" format.
-        """
         return pulumi.get(self, "end_time")
 
     @_builtins.property
@@ -102,17 +92,11 @@ class GetBackupsResult:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
-        """
-        RDS instance ID.
-        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        Database to be backed up for Microsoft SQL Server.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -147,33 +131,7 @@ def get_backups(backup_id: Optional[_builtins.str] = None,
                 region: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBackupsResult:
     """
-    Use this data source to get the list of RDS backups.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    test = sbercloud.Rds.get_backups(instance_id=instance_id)
-    ```
-
-
-    :param _builtins.str backup_id: Backup ID.
-    :param _builtins.str backup_type: Backup type.  
-           The options are as follows:
-           - **auto**: Automated full backup.
-           - **manual**: Manual full backup.
-           - **fragment**: Differential full backup.
-           - **incremental**: Automated incremental backup.
-    :param _builtins.str begin_time: Start time in the "yyyy-mm-ddThh:mm:ssZ" format.
-    :param _builtins.str end_time: End time in the "yyyy-mm-ddThh:mm:ssZ" format.
-    :param _builtins.str instance_id: Instance ID.
-    :param _builtins.str name: Backup name.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['backupId'] = backup_id
@@ -205,33 +163,7 @@ def get_backups_output(backup_id: Optional[pulumi.Input[Optional[_builtins.str]]
                        region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBackupsResult]:
     """
-    Use this data source to get the list of RDS backups.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    test = sbercloud.Rds.get_backups(instance_id=instance_id)
-    ```
-
-
-    :param _builtins.str backup_id: Backup ID.
-    :param _builtins.str backup_type: Backup type.  
-           The options are as follows:
-           - **auto**: Automated full backup.
-           - **manual**: Manual full backup.
-           - **fragment**: Differential full backup.
-           - **incremental**: Automated incremental backup.
-    :param _builtins.str begin_time: Start time in the "yyyy-mm-ddThh:mm:ssZ" format.
-    :param _builtins.str end_time: End time in the "yyyy-mm-ddThh:mm:ssZ" format.
-    :param _builtins.str instance_id: Instance ID.
-    :param _builtins.str name: Backup name.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['backupId'] = backup_id

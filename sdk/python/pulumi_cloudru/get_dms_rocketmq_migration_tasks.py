@@ -66,9 +66,6 @@ class GetDmsRocketmqMigrationTasksResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        Indicates the name of a metadata migration task.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -84,17 +81,11 @@ class GetDmsRocketmqMigrationTasksResult:
     @_builtins.property
     @pulumi.getter
     def tasks(self) -> Sequence['outputs.GetDmsRocketmqMigrationTasksTaskResult']:
-        """
-        Indicates the list of metadata migration tasks.
-        """
         return pulumi.get(self, "tasks")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
-        """
-        Indicates the metadata migration task type.
-        """
         return pulumi.get(self, "type")
 
 
@@ -120,27 +111,7 @@ def get_dms_rocketmq_migration_tasks(instance_id: Optional[_builtins.str] = None
                                      type: Optional[_builtins.str] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDmsRocketmqMigrationTasksResult:
     """
-    Use this data source to get the list of RocketMQ instance's migration tasks.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    test = sbercloud.get_dms_rocketmq_migration_tasks(instance_id=instance_id)
-    ```
-
-
-    :param _builtins.str instance_id: Specifies the RocketMQ instance ID.
-    :param _builtins.str name: Specifies the RocketMQ migration task name.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str task_id: Specifies the RocketMQ migration task ID.
-    :param _builtins.str type: Specifies the RocketMQ migration task type.
-           Valid values are **rocketmq** and **rabbitToRocket**.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['instanceId'] = instance_id
@@ -166,27 +137,7 @@ def get_dms_rocketmq_migration_tasks_output(instance_id: Optional[pulumi.Input[_
                                             type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDmsRocketmqMigrationTasksResult]:
     """
-    Use this data source to get the list of RocketMQ instance's migration tasks.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    test = sbercloud.get_dms_rocketmq_migration_tasks(instance_id=instance_id)
-    ```
-
-
-    :param _builtins.str instance_id: Specifies the RocketMQ instance ID.
-    :param _builtins.str name: Specifies the RocketMQ migration task name.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str task_id: Specifies the RocketMQ migration task ID.
-    :param _builtins.str type: Specifies the RocketMQ migration task type.
-           Valid values are **rocketmq** and **rabbitToRocket**.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['instanceId'] = instance_id

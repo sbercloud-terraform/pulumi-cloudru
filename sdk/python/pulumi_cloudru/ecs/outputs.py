@@ -61,18 +61,6 @@ class InstanceBandwidth(dict):
                  extend_param: Optional[Mapping[str, _builtins.str]] = None,
                  id: Optional[_builtins.str] = None,
                  size: Optional[_builtins.int] = None):
-        """
-        :param _builtins.str share_type: Specifies the bandwidth sharing type. Changing this creates a new instance.
-               Possible values are as follows:
-               + **PER**: Dedicated bandwidth
-               + **WHOLE**: Shared bandwidth
-        :param _builtins.str charge_mode: Specifies the bandwidth billing mode. The value can be *traffic* or *bandwidth*.
-               Changing this creates a new instance.
-        :param _builtins.str id: Specifies the **shared** bandwidth id. This parameter is mandatory when
-               `share_type` is set to **WHOLE**. Changing this creates a new instance.
-        :param _builtins.int size: Specifies the bandwidth size. The value ranges from 1 to 300 Mbit/s.
-               This parameter is mandatory when `share_type` is set to **PER**. Changing this creates a new instance.
-        """
         pulumi.set(__self__, "share_type", share_type)
         if charge_mode is not None:
             pulumi.set(__self__, "charge_mode", charge_mode)
@@ -86,21 +74,11 @@ class InstanceBandwidth(dict):
     @_builtins.property
     @pulumi.getter(name="shareType")
     def share_type(self) -> _builtins.str:
-        """
-        Specifies the bandwidth sharing type. Changing this creates a new instance.
-        Possible values are as follows:
-        + **PER**: Dedicated bandwidth
-        + **WHOLE**: Shared bandwidth
-        """
         return pulumi.get(self, "share_type")
 
     @_builtins.property
     @pulumi.getter(name="chargeMode")
     def charge_mode(self) -> Optional[_builtins.str]:
-        """
-        Specifies the bandwidth billing mode. The value can be *traffic* or *bandwidth*.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "charge_mode")
 
     @_builtins.property
@@ -111,19 +89,11 @@ class InstanceBandwidth(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> Optional[_builtins.str]:
-        """
-        Specifies the **shared** bandwidth id. This parameter is mandatory when
-        `share_type` is set to **WHOLE**. Changing this creates a new instance.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> Optional[_builtins.int]:
-        """
-        Specifies the bandwidth size. The value ranges from 1 to 300 Mbit/s.
-        This parameter is mandatory when `share_type` is set to **PER**. Changing this creates a new instance.
-        """
         return pulumi.get(self, "size")
 
 
@@ -158,15 +128,6 @@ class InstanceDataDisk(dict):
                  kms_key_id: Optional[_builtins.str] = None,
                  snapshot_id: Optional[_builtins.str] = None,
                  throughput: Optional[_builtins.int] = None):
-        """
-        :param _builtins.int size: Specifies the data disk size, in GB. The value ranges form 10 to 32768.
-               Changing this creates a new instance.
-        :param _builtins.str type: Specifies the ECS data disk type, which must be one of available disk types,
-               contains of *SSD*, *GPSSD* and *SAS*. Changing this creates a new instance.
-        :param _builtins.str kms_key_id: Specifies the ID of a KMS key. This is used to encrypt the disk.
-               Changing this creates a new instance.
-        :param _builtins.str snapshot_id: Specifies the snapshot id. Changing this creates a new instance.
-        """
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "type", type)
         if dss_pool_id is not None:
@@ -183,19 +144,11 @@ class InstanceDataDisk(dict):
     @_builtins.property
     @pulumi.getter
     def size(self) -> _builtins.int:
-        """
-        Specifies the data disk size, in GB. The value ranges form 10 to 32768.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "size")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        Specifies the ECS data disk type, which must be one of available disk types,
-        contains of *SSD*, *GPSSD* and *SAS*. Changing this creates a new instance.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
@@ -211,18 +164,11 @@ class InstanceDataDisk(dict):
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[_builtins.str]:
-        """
-        Specifies the ID of a KMS key. This is used to encrypt the disk.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @_builtins.property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[_builtins.str]:
-        """
-        Specifies the snapshot id. Changing this creates a new instance.
-        """
         return pulumi.get(self, "snapshot_id")
 
     @_builtins.property
@@ -268,20 +214,9 @@ class InstanceNetwork(dict):
                  source_dest_check: Optional[_builtins.bool] = None,
                  uuid: Optional[_builtins.str] = None):
         """
-        :param _builtins.bool access_network: Specifies if this network should be used for provisioning access.
-               Accepts true or false. Defaults to false.
-        :param _builtins.str fixed_ip_v4: Specifies a fixed IPv4 address to be used on this network.
-               Changing this creates a new instance.
-        :param _builtins.str fixed_ip_v6: The Fixed IPv6 address of the instance on that network.
-        :param _builtins.bool ipv6_enable: Specifies whether the IPv6 function is enabled for the nic.
-               Defaults to false. Changing this creates a new instance.
-        :param _builtins.str mac: The MAC address of the NIC on that network.
-        :param _builtins.str port: The port ID corresponding to the IP address on that network.
-        :param _builtins.bool source_dest_check: Specifies whether the ECS processes only traffic that is destined specifically
-               for it. This function is enabled by default but should be disabled if the ECS functions as a SNAT server or has a
-               virtual IP address bound to it.
-        :param _builtins.str uuid: Specifies the network UUID to attach to the instance.
-               Changing this creates a new instance.
+        :param _builtins.str fixed_ip_v6: schema: Computed
+        :param _builtins.str port: schema: Computed
+        :param _builtins.str uuid: schema: Required
         """
         if access_network is not None:
             pulumi.set(__self__, "access_network", access_network)
@@ -303,70 +238,49 @@ class InstanceNetwork(dict):
     @_builtins.property
     @pulumi.getter(name="accessNetwork")
     def access_network(self) -> Optional[_builtins.bool]:
-        """
-        Specifies if this network should be used for provisioning access.
-        Accepts true or false. Defaults to false.
-        """
         return pulumi.get(self, "access_network")
 
     @_builtins.property
     @pulumi.getter(name="fixedIpV4")
     def fixed_ip_v4(self) -> Optional[_builtins.str]:
-        """
-        Specifies a fixed IPv4 address to be used on this network.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "fixed_ip_v4")
 
     @_builtins.property
     @pulumi.getter(name="fixedIpV6")
     def fixed_ip_v6(self) -> Optional[_builtins.str]:
         """
-        The Fixed IPv6 address of the instance on that network.
+        schema: Computed
         """
         return pulumi.get(self, "fixed_ip_v6")
 
     @_builtins.property
     @pulumi.getter(name="ipv6Enable")
     def ipv6_enable(self) -> Optional[_builtins.bool]:
-        """
-        Specifies whether the IPv6 function is enabled for the nic.
-        Defaults to false. Changing this creates a new instance.
-        """
         return pulumi.get(self, "ipv6_enable")
 
     @_builtins.property
     @pulumi.getter
     def mac(self) -> Optional[_builtins.str]:
-        """
-        The MAC address of the NIC on that network.
-        """
         return pulumi.get(self, "mac")
 
     @_builtins.property
     @pulumi.getter
     def port(self) -> Optional[_builtins.str]:
         """
-        The port ID corresponding to the IP address on that network.
+        schema: Computed
         """
         return pulumi.get(self, "port")
 
     @_builtins.property
     @pulumi.getter(name="sourceDestCheck")
     def source_dest_check(self) -> Optional[_builtins.bool]:
-        """
-        Specifies whether the ECS processes only traffic that is destined specifically
-        for it. This function is enabled by default but should be disabled if the ECS functions as a SNAT server or has a
-        virtual IP address bound to it.
-        """
         return pulumi.get(self, "source_dest_check")
 
     @_builtins.property
     @pulumi.getter
     def uuid(self) -> Optional[_builtins.str]:
         """
-        Specifies the network UUID to attach to the instance.
-        Changing this creates a new instance.
+        schema: Required
         """
         return pulumi.get(self, "uuid")
 
@@ -398,14 +312,7 @@ class InstanceSchedulerHint(dict):
                  group: Optional[_builtins.str] = None,
                  tenancy: Optional[_builtins.str] = None):
         """
-        :param _builtins.str deh_id: Specifies the ID of DeH.
-               This parameter takes effect only when the value of tenancy is dedicated. Changing this creates a new instance.
         :param _builtins.str fault_domain: schema: Internal
-        :param _builtins.str group: Specifies a UUID of a Server Group.
-               The instance will be placed into that group. Changing this creates a new instance.
-        :param _builtins.str tenancy: Specifies the tenancy specifies whether the ECS is to be created on a
-               Dedicated Host
-               (DeH) or in a shared pool. Changing this creates a new instance.
         """
         if deh_id is not None:
             pulumi.set(__self__, "deh_id", deh_id)
@@ -419,10 +326,6 @@ class InstanceSchedulerHint(dict):
     @_builtins.property
     @pulumi.getter(name="dehId")
     def deh_id(self) -> Optional[_builtins.str]:
-        """
-        Specifies the ID of DeH.
-        This parameter takes effect only when the value of tenancy is dedicated. Changing this creates a new instance.
-        """
         return pulumi.get(self, "deh_id")
 
     @_builtins.property
@@ -436,20 +339,11 @@ class InstanceSchedulerHint(dict):
     @_builtins.property
     @pulumi.getter
     def group(self) -> Optional[_builtins.str]:
-        """
-        Specifies a UUID of a Server Group.
-        The instance will be placed into that group. Changing this creates a new instance.
-        """
         return pulumi.get(self, "group")
 
     @_builtins.property
     @pulumi.getter
     def tenancy(self) -> Optional[_builtins.str]:
-        """
-        Specifies the tenancy specifies whether the ECS is to be created on a
-        Dedicated Host
-        (DeH) or in a shared pool. Changing this creates a new instance.
-        """
         return pulumi.get(self, "tenancy")
 
 
@@ -485,15 +379,6 @@ class InstanceVolumeAttached(dict):
                  size: Optional[_builtins.int] = None,
                  type: Optional[_builtins.str] = None,
                  volume_id: Optional[_builtins.str] = None):
-        """
-        :param _builtins.int boot_index: The volume boot index on that attachment.
-        :param _builtins.str kms_key_id: Specifies the ID of a KMS key. This is used to encrypt the disk.
-               Changing this creates a new instance.
-        :param _builtins.str pci_address: The volume pci address on that attachment.
-        :param _builtins.int size: The volume size on that attachment.
-        :param _builtins.str type: The volume type on that attachment.
-        :param _builtins.str volume_id: The volume ID on that attachment.
-        """
         if boot_index is not None:
             pulumi.set(__self__, "boot_index", boot_index)
         if kms_key_id is not None:
@@ -510,50 +395,31 @@ class InstanceVolumeAttached(dict):
     @_builtins.property
     @pulumi.getter(name="bootIndex")
     def boot_index(self) -> Optional[_builtins.int]:
-        """
-        The volume boot index on that attachment.
-        """
         return pulumi.get(self, "boot_index")
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[_builtins.str]:
-        """
-        Specifies the ID of a KMS key. This is used to encrypt the disk.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @_builtins.property
     @pulumi.getter(name="pciAddress")
     def pci_address(self) -> Optional[_builtins.str]:
-        """
-        The volume pci address on that attachment.
-        """
         return pulumi.get(self, "pci_address")
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> Optional[_builtins.int]:
-        """
-        The volume size on that attachment.
-        """
         return pulumi.get(self, "size")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
-        """
-        The volume type on that attachment.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> Optional[_builtins.str]:
-        """
-        The volume ID on that attachment.
-        """
         return pulumi.get(self, "volume_id")
 
 
@@ -566,13 +432,6 @@ class GetFlavorsFlavorResult(dict):
                  memory_size: _builtins.int,
                  performance_type: _builtins.str,
                  storage_type: _builtins.str):
-        """
-        :param _builtins.int cpu_core_count: Specifies the number of vCPUs in the ECS flavor.
-        :param _builtins.str generation: Specifies the generation of an ECS type.
-        :param _builtins.str id: Specifies a data source ID in UUID format.
-        :param _builtins.int memory_size: Specifies the memory size(GB) in the ECS flavor.
-        :param _builtins.str performance_type: Specifies the ECS flavor type.
-        """
         pulumi.set(__self__, "cpu_core_count", cpu_core_count)
         pulumi.set(__self__, "generation", generation)
         pulumi.set(__self__, "id", id)
@@ -583,41 +442,26 @@ class GetFlavorsFlavorResult(dict):
     @_builtins.property
     @pulumi.getter(name="cpuCoreCount")
     def cpu_core_count(self) -> _builtins.int:
-        """
-        Specifies the number of vCPUs in the ECS flavor.
-        """
         return pulumi.get(self, "cpu_core_count")
 
     @_builtins.property
     @pulumi.getter
     def generation(self) -> _builtins.str:
-        """
-        Specifies the generation of an ECS type.
-        """
         return pulumi.get(self, "generation")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        Specifies a data source ID in UUID format.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="memorySize")
     def memory_size(self) -> _builtins.int:
-        """
-        Specifies the memory size(GB) in the ECS flavor.
-        """
         return pulumi.get(self, "memory_size")
 
     @_builtins.property
     @pulumi.getter(name="performanceType")
     def performance_type(self) -> _builtins.str:
-        """
-        Specifies the ECS flavor type.
-        """
         return pulumi.get(self, "performance_type")
 
     @_builtins.property
@@ -634,13 +478,6 @@ class GetInstanceNetworkResult(dict):
                  mac: _builtins.str,
                  port: _builtins.str,
                  uuid: _builtins.str):
-        """
-        :param _builtins.str fixed_ip_v4: Specifies the IPv4 addresses of the ECS.
-        :param _builtins.str fixed_ip_v6: The Fixed IPv6 address of the instance on that network.
-        :param _builtins.str mac: The MAC address of the NIC on that network.
-        :param _builtins.str port: The port ID corresponding to the IP address on that network.
-        :param _builtins.str uuid: The network UUID to attach to the server.
-        """
         pulumi.set(__self__, "fixed_ip_v4", fixed_ip_v4)
         pulumi.set(__self__, "fixed_ip_v6", fixed_ip_v6)
         pulumi.set(__self__, "mac", mac)
@@ -650,41 +487,26 @@ class GetInstanceNetworkResult(dict):
     @_builtins.property
     @pulumi.getter(name="fixedIpV4")
     def fixed_ip_v4(self) -> _builtins.str:
-        """
-        Specifies the IPv4 addresses of the ECS.
-        """
         return pulumi.get(self, "fixed_ip_v4")
 
     @_builtins.property
     @pulumi.getter(name="fixedIpV6")
     def fixed_ip_v6(self) -> _builtins.str:
-        """
-        The Fixed IPv6 address of the instance on that network.
-        """
         return pulumi.get(self, "fixed_ip_v6")
 
     @_builtins.property
     @pulumi.getter
     def mac(self) -> _builtins.str:
-        """
-        The MAC address of the NIC on that network.
-        """
         return pulumi.get(self, "mac")
 
     @_builtins.property
     @pulumi.getter
     def port(self) -> _builtins.str:
-        """
-        The port ID corresponding to the IP address on that network.
-        """
         return pulumi.get(self, "port")
 
     @_builtins.property
     @pulumi.getter
     def uuid(self) -> _builtins.str:
-        """
-        The network UUID to attach to the server.
-        """
         return pulumi.get(self, "uuid")
 
 
@@ -692,17 +514,11 @@ class GetInstanceNetworkResult(dict):
 class GetInstanceSchedulerHintResult(dict):
     def __init__(__self__, *,
                  group: _builtins.str):
-        """
-        :param _builtins.str group: The UUID of a Server Group where the instance will be placed into.
-        """
         pulumi.set(__self__, "group", group)
 
     @_builtins.property
     @pulumi.getter
     def group(self) -> _builtins.str:
-        """
-        The UUID of a Server Group where the instance will be placed into.
-        """
         return pulumi.get(self, "group")
 
 
@@ -715,14 +531,6 @@ class GetInstanceVolumeAttachedResult(dict):
                  size: _builtins.int,
                  type: _builtins.str,
                  volume_id: _builtins.str):
-        """
-        :param _builtins.int boot_index: The volume boot index on that attachment.
-        :param _builtins.bool is_sys_volume: Whether the volume is the system disk.
-        :param _builtins.str pci_address: The volume pci address on that attachment.
-        :param _builtins.int size: The volume size on that attachment.
-        :param _builtins.str type: The volume type on that attachment.
-        :param _builtins.str volume_id: The volume id on that attachment.
-        """
         pulumi.set(__self__, "boot_index", boot_index)
         pulumi.set(__self__, "is_sys_volume", is_sys_volume)
         pulumi.set(__self__, "pci_address", pci_address)
@@ -733,49 +541,31 @@ class GetInstanceVolumeAttachedResult(dict):
     @_builtins.property
     @pulumi.getter(name="bootIndex")
     def boot_index(self) -> _builtins.int:
-        """
-        The volume boot index on that attachment.
-        """
         return pulumi.get(self, "boot_index")
 
     @_builtins.property
     @pulumi.getter(name="isSysVolume")
     def is_sys_volume(self) -> _builtins.bool:
-        """
-        Whether the volume is the system disk.
-        """
         return pulumi.get(self, "is_sys_volume")
 
     @_builtins.property
     @pulumi.getter(name="pciAddress")
     def pci_address(self) -> _builtins.str:
-        """
-        The volume pci address on that attachment.
-        """
         return pulumi.get(self, "pci_address")
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> _builtins.int:
-        """
-        The volume size on that attachment.
-        """
         return pulumi.get(self, "size")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        The volume type on that attachment.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> _builtins.str:
-        """
-        The volume id on that attachment.
-        """
         return pulumi.get(self, "volume_id")
 
 
@@ -802,31 +592,6 @@ class GetInstancesInstanceResult(dict):
                  tags: Mapping[str, _builtins.str],
                  user_data: _builtins.str,
                  volume_attacheds: Sequence['outputs.GetInstancesInstanceVolumeAttachedResult']):
-        """
-        :param _builtins.str availability_zone: Specifies the availability zone where the instance is located.
-               Please following [reference](https://support.hc.sbercloud.ru/endpoint/index.html) for this argument.
-        :param _builtins.str enterprise_project_id: Specifies the enterprise project ID.
-        :param _builtins.str flavor_id: Specifies the flavor ID.
-        :param _builtins.str flavor_name: Specifies the flavor name of the instance.
-        :param _builtins.str id: The instance ID in UUID format.
-        :param _builtins.str image_id: Specifies the image ID of the instance.
-        :param _builtins.str image_name: The image name of the instance.
-        :param _builtins.str key_pair: Specifies the key pair that is used to authenticate the instance.
-        :param _builtins.str name: Specifies the instance name, which can be queried with a regular expression.
-               The instance name supports fuzzy matching query too.
-        :param _builtins.str public_ip: The EIP address that is associted to the instance.
-        :param Sequence['GetInstancesInstanceSchedulerHintArgs'] scheduler_hints: The scheduler with hints on how the instance should be launched.
-               The object structure is documented below.
-        :param Sequence[_builtins.str] security_group_ids: An array of one or more security group IDs to associate with the instance.
-        :param _builtins.str status: Specifies the status of the instance. The valid values are as follows:
-               + **ACTIVE**: The instance is running properly.
-               + **SHUTOFF**: The instance has been properly stopped.
-               + **ERROR**: An error has occurred on the instance.
-        :param _builtins.str system_disk_id: The system disk voume ID.
-        :param Mapping[str, _builtins.str] tags: The key/value pairs to associate with the instance.
-        :param _builtins.str user_data: The user data (information after encoding) configured during instance creation.
-        :param Sequence['GetInstancesInstanceVolumeAttachedArgs'] volume_attacheds: An array of one or more disks to attach to the instance. The object structure is documented below.
-        """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "charging_mode", charging_mode)
         pulumi.set(__self__, "enterprise_project_id", enterprise_project_id)
@@ -851,10 +616,6 @@ class GetInstancesInstanceResult(dict):
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> _builtins.str:
-        """
-        Specifies the availability zone where the instance is located.
-        Please following [reference](https://support.hc.sbercloud.ru/endpoint/index.html) for this argument.
-        """
         return pulumi.get(self, "availability_zone")
 
     @_builtins.property
@@ -865,9 +626,6 @@ class GetInstancesInstanceResult(dict):
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> _builtins.str:
-        """
-        Specifies the enterprise project ID.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
@@ -878,58 +636,36 @@ class GetInstancesInstanceResult(dict):
     @_builtins.property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> _builtins.str:
-        """
-        Specifies the flavor ID.
-        """
         return pulumi.get(self, "flavor_id")
 
     @_builtins.property
     @pulumi.getter(name="flavorName")
     def flavor_name(self) -> _builtins.str:
-        """
-        Specifies the flavor name of the instance.
-        """
         return pulumi.get(self, "flavor_name")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        The instance ID in UUID format.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="imageId")
     def image_id(self) -> _builtins.str:
-        """
-        Specifies the image ID of the instance.
-        """
         return pulumi.get(self, "image_id")
 
     @_builtins.property
     @pulumi.getter(name="imageName")
     def image_name(self) -> _builtins.str:
-        """
-        The image name of the instance.
-        """
         return pulumi.get(self, "image_name")
 
     @_builtins.property
     @pulumi.getter(name="keyPair")
     def key_pair(self) -> _builtins.str:
-        """
-        Specifies the key pair that is used to authenticate the instance.
-        """
         return pulumi.get(self, "key_pair")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the instance name, which can be queried with a regular expression.
-        The instance name supports fuzzy matching query too.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -940,69 +676,41 @@ class GetInstancesInstanceResult(dict):
     @_builtins.property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> _builtins.str:
-        """
-        The EIP address that is associted to the instance.
-        """
         return pulumi.get(self, "public_ip")
 
     @_builtins.property
     @pulumi.getter(name="schedulerHints")
     def scheduler_hints(self) -> Sequence['outputs.GetInstancesInstanceSchedulerHintResult']:
-        """
-        The scheduler with hints on how the instance should be launched.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "scheduler_hints")
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Sequence[_builtins.str]:
-        """
-        An array of one or more security group IDs to associate with the instance.
-        """
         return pulumi.get(self, "security_group_ids")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
-        """
-        Specifies the status of the instance. The valid values are as follows:
-        + **ACTIVE**: The instance is running properly.
-        + **SHUTOFF**: The instance has been properly stopped.
-        + **ERROR**: An error has occurred on the instance.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="systemDiskId")
     def system_disk_id(self) -> _builtins.str:
-        """
-        The system disk voume ID.
-        """
         return pulumi.get(self, "system_disk_id")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Mapping[str, _builtins.str]:
-        """
-        The key/value pairs to associate with the instance.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="userData")
     def user_data(self) -> _builtins.str:
-        """
-        The user data (information after encoding) configured during instance creation.
-        """
         return pulumi.get(self, "user_data")
 
     @_builtins.property
     @pulumi.getter(name="volumeAttacheds")
     def volume_attacheds(self) -> Sequence['outputs.GetInstancesInstanceVolumeAttachedResult']:
-        """
-        An array of one or more disks to attach to the instance. The object structure is documented below.
-        """
         return pulumi.get(self, "volume_attacheds")
 
 
@@ -1014,13 +722,6 @@ class GetInstancesInstanceNetworkResult(dict):
                  mac: _builtins.str,
                  port: _builtins.str,
                  uuid: _builtins.str):
-        """
-        :param _builtins.str fixed_ip_v4: The fixed IPv4 address of the instance on this network.
-        :param _builtins.str fixed_ip_v6: The Fixed IPv6 address of the instance on that network.
-        :param _builtins.str mac: The MAC address of the NIC on that network.
-        :param _builtins.str port: The port ID corresponding to the IP address on that network.
-        :param _builtins.str uuid: The network ID to attach to the server.
-        """
         pulumi.set(__self__, "fixed_ip_v4", fixed_ip_v4)
         pulumi.set(__self__, "fixed_ip_v6", fixed_ip_v6)
         pulumi.set(__self__, "mac", mac)
@@ -1030,41 +731,26 @@ class GetInstancesInstanceNetworkResult(dict):
     @_builtins.property
     @pulumi.getter(name="fixedIpV4")
     def fixed_ip_v4(self) -> _builtins.str:
-        """
-        The fixed IPv4 address of the instance on this network.
-        """
         return pulumi.get(self, "fixed_ip_v4")
 
     @_builtins.property
     @pulumi.getter(name="fixedIpV6")
     def fixed_ip_v6(self) -> _builtins.str:
-        """
-        The Fixed IPv6 address of the instance on that network.
-        """
         return pulumi.get(self, "fixed_ip_v6")
 
     @_builtins.property
     @pulumi.getter
     def mac(self) -> _builtins.str:
-        """
-        The MAC address of the NIC on that network.
-        """
         return pulumi.get(self, "mac")
 
     @_builtins.property
     @pulumi.getter
     def port(self) -> _builtins.str:
-        """
-        The port ID corresponding to the IP address on that network.
-        """
         return pulumi.get(self, "port")
 
     @_builtins.property
     @pulumi.getter
     def uuid(self) -> _builtins.str:
-        """
-        The network ID to attach to the server.
-        """
         return pulumi.get(self, "uuid")
 
 
@@ -1072,17 +758,11 @@ class GetInstancesInstanceNetworkResult(dict):
 class GetInstancesInstanceSchedulerHintResult(dict):
     def __init__(__self__, *,
                  group: _builtins.str):
-        """
-        :param _builtins.str group: The UUID of a server group where the instance will be placed into.
-        """
         pulumi.set(__self__, "group", group)
 
     @_builtins.property
     @pulumi.getter
     def group(self) -> _builtins.str:
-        """
-        The UUID of a server group where the instance will be placed into.
-        """
         return pulumi.get(self, "group")
 
 
@@ -1095,13 +775,6 @@ class GetInstancesInstanceVolumeAttachedResult(dict):
                  size: _builtins.int,
                  type: _builtins.str,
                  volume_id: _builtins.str):
-        """
-        :param _builtins.bool is_sys_volume: Whether the volume is the system disk.
-        :param _builtins.str pci_address: The volume pci address on that attachment.
-        :param _builtins.int size: The volume size on that attachment.
-        :param _builtins.str type: The volume type on that attachment.
-        :param _builtins.str volume_id: The volume id on that attachment.
-        """
         pulumi.set(__self__, "boot_index", boot_index)
         pulumi.set(__self__, "is_sys_volume", is_sys_volume)
         pulumi.set(__self__, "pci_address", pci_address)
@@ -1117,41 +790,26 @@ class GetInstancesInstanceVolumeAttachedResult(dict):
     @_builtins.property
     @pulumi.getter(name="isSysVolume")
     def is_sys_volume(self) -> _builtins.bool:
-        """
-        Whether the volume is the system disk.
-        """
         return pulumi.get(self, "is_sys_volume")
 
     @_builtins.property
     @pulumi.getter(name="pciAddress")
     def pci_address(self) -> _builtins.str:
-        """
-        The volume pci address on that attachment.
-        """
         return pulumi.get(self, "pci_address")
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> _builtins.int:
-        """
-        The volume size on that attachment.
-        """
         return pulumi.get(self, "size")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        The volume type on that attachment.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> _builtins.str:
-        """
-        The volume id on that attachment.
-        """
         return pulumi.get(self, "volume_id")
 
 
@@ -1162,12 +820,6 @@ class GetServergroupsServergroupResult(dict):
                  members: Sequence[_builtins.str],
                  name: _builtins.str,
                  policies: Sequence[_builtins.str]):
-        """
-        :param _builtins.str id: The server group ID in UUID format.
-        :param Sequence[_builtins.str] members: An array of one or more instance ID attached to the server group.
-        :param _builtins.str name: Specifies the server group name.
-        :param Sequence[_builtins.str] policies: The set of policies for the server group.
-        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "members", members)
         pulumi.set(__self__, "name", name)
@@ -1176,33 +828,21 @@ class GetServergroupsServergroupResult(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        The server group ID in UUID format.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def members(self) -> Sequence[_builtins.str]:
-        """
-        An array of one or more instance ID attached to the server group.
-        """
         return pulumi.get(self, "members")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the server group name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def policies(self) -> Sequence[_builtins.str]:
-        """
-        The set of policies for the server group.
-        """
         return pulumi.get(self, "policies")
 
 

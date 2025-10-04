@@ -68,9 +68,6 @@ class GetFlowLogsResult:
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[_builtins.str]:
-        """
-        The switch of the flow log.
-        """
         return pulumi.get(self, "enabled")
 
     @_builtins.property
@@ -81,10 +78,6 @@ class GetFlowLogsResult:
     @_builtins.property
     @pulumi.getter(name="flowLogs")
     def flow_logs(self) -> Sequence['outputs.GetFlowLogsFlowLogResult']:
-        """
-        The list ot the flow logs.
-        The flow_logs structure is documented below.
-        """
         return pulumi.get(self, "flow_logs")
 
     @_builtins.property
@@ -103,25 +96,16 @@ class GetFlowLogsResult:
     @_builtins.property
     @pulumi.getter(name="logGroupId")
     def log_group_id(self) -> Optional[_builtins.str]:
-        """
-        The ID of the log group to which the flow log belongs.
-        """
         return pulumi.get(self, "log_group_id")
 
     @_builtins.property
     @pulumi.getter(name="logStreamId")
     def log_stream_id(self) -> Optional[_builtins.str]:
-        """
-        The ID of the log stream to which the flow log belongs.
-        """
         return pulumi.get(self, "log_stream_id")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        The name of the flow log.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -132,25 +116,16 @@ class GetFlowLogsResult:
     @_builtins.property
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> Optional[_builtins.str]:
-        """
-        The ID of the attachment to which the flow log belongs.
-        """
         return pulumi.get(self, "resource_id")
 
     @_builtins.property
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> Optional[_builtins.str]:
-        """
-        The type of the flow log.
-        """
         return pulumi.get(self, "resource_type")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
-        """
-        The status of the flow log.
-        """
         return pulumi.get(self, "status")
 
 
@@ -186,41 +161,7 @@ def get_flow_logs(enabled: Optional[_builtins.str] = None,
                   status: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFlowLogsResult:
     """
-    Use this data source to get the list of flow logs.
-
-    Before using enterprise router, define custom endpoint as shown below:
-    ```python
-    import pulumi
-    ```
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    resource_id = config.require_object("resourceId")
-    test = sbercloud.Er.get_flow_logs(instance_id=instance_id,
-        resource_id=resource_id)
-    ```
-
-
-    :param _builtins.str enabled: Specifies the switch status of the flow log.
-           The value can be **true** and **false**.
-    :param _builtins.str flow_log_id: Specifies the ID of the flow log.
-    :param _builtins.str instance_id: Specifies the ID of the ER instance to which the flow logs belong.
-    :param _builtins.str log_group_id: Specifies the ID of the log group to which the flow logs belong.
-    :param _builtins.str log_stream_id: Specifies the ID of the log stream to which the flow logs belong.
-    :param _builtins.str name: Specifies the name of the flow log.
-    :param _builtins.str region: Specifies the region where the flow logs are located.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str resource_id: Specifies the ID of the attachment to which the flow logs belong.
-    :param _builtins.str resource_type: Specifies the type of the flow logs.
-           The valid values are as follows:
-           + **attachment**: The flow logs type are attachment.
-    :param _builtins.str status: Specifies the status of the flow logs.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['enabled'] = enabled
@@ -261,41 +202,7 @@ def get_flow_logs_output(enabled: Optional[pulumi.Input[Optional[_builtins.str]]
                          status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFlowLogsResult]:
     """
-    Use this data source to get the list of flow logs.
-
-    Before using enterprise router, define custom endpoint as shown below:
-    ```python
-    import pulumi
-    ```
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    resource_id = config.require_object("resourceId")
-    test = sbercloud.Er.get_flow_logs(instance_id=instance_id,
-        resource_id=resource_id)
-    ```
-
-
-    :param _builtins.str enabled: Specifies the switch status of the flow log.
-           The value can be **true** and **false**.
-    :param _builtins.str flow_log_id: Specifies the ID of the flow log.
-    :param _builtins.str instance_id: Specifies the ID of the ER instance to which the flow logs belong.
-    :param _builtins.str log_group_id: Specifies the ID of the log group to which the flow logs belong.
-    :param _builtins.str log_stream_id: Specifies the ID of the log stream to which the flow logs belong.
-    :param _builtins.str name: Specifies the name of the flow log.
-    :param _builtins.str region: Specifies the region where the flow logs are located.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str resource_id: Specifies the ID of the attachment to which the flow logs belong.
-    :param _builtins.str resource_type: Specifies the type of the flow logs.
-           The valid values are as follows:
-           + **attachment**: The flow logs type are attachment.
-    :param _builtins.str status: Specifies the status of the flow logs.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['enabled'] = enabled

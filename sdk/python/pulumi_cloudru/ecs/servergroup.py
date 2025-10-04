@@ -25,17 +25,7 @@ class ServergroupArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Servergroup resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Specifies an array of one or more instance ID to attach server group.
-        :param pulumi.Input[_builtins.str] name: Specifies a unique name for the server group. This parameter can contain a
-               maximum of 255 characters, which may consist of letters, digits, underscores (_), and hyphens (-). Changing this
-               creates a new server group.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] policies: Specifies the set of policies for the server group. Only *anti-affinity*
-               policies are supported.
-               
-               + `anti-affinity`: All ECS in this group must be deployed on different hosts. Changing this creates a new server
-               group.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the server group resource. If omitted,
-               the provider-level region will be used. Changing this creates a new server group.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] policies: schema: Required
         """
         if members is not None:
             pulumi.set(__self__, "members", members)
@@ -49,9 +39,6 @@ class ServergroupArgs:
     @_builtins.property
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies an array of one or more instance ID to attach server group.
-        """
         return pulumi.get(self, "members")
 
     @members.setter
@@ -61,11 +48,6 @@ class ServergroupArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies a unique name for the server group. This parameter can contain a
-        maximum of 255 characters, which may consist of letters, digits, underscores (_), and hyphens (-). Changing this
-        creates a new server group.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -76,11 +58,7 @@ class ServergroupArgs:
     @pulumi.getter
     def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Specifies the set of policies for the server group. Only *anti-affinity*
-        policies are supported.
-
-        + `anti-affinity`: All ECS in this group must be deployed on different hosts. Changing this creates a new server
-        group.
+        schema: Required
         """
         return pulumi.get(self, "policies")
 
@@ -91,10 +69,6 @@ class ServergroupArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the server group resource. If omitted,
-        the provider-level region will be used. Changing this creates a new server group.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -113,17 +87,7 @@ class _ServergroupState:
         """
         Input properties used for looking up and filtering Servergroup resources.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] fault_domains: schema: Internal
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Specifies an array of one or more instance ID to attach server group.
-        :param pulumi.Input[_builtins.str] name: Specifies a unique name for the server group. This parameter can contain a
-               maximum of 255 characters, which may consist of letters, digits, underscores (_), and hyphens (-). Changing this
-               creates a new server group.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] policies: Specifies the set of policies for the server group. Only *anti-affinity*
-               policies are supported.
-               
-               + `anti-affinity`: All ECS in this group must be deployed on different hosts. Changing this creates a new server
-               group.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the server group resource. If omitted,
-               the provider-level region will be used. Changing this creates a new server group.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] policies: schema: Required
         """
         if fault_domains is not None:
             pulumi.set(__self__, "fault_domains", fault_domains)
@@ -151,9 +115,6 @@ class _ServergroupState:
     @_builtins.property
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies an array of one or more instance ID to attach server group.
-        """
         return pulumi.get(self, "members")
 
     @members.setter
@@ -163,11 +124,6 @@ class _ServergroupState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies a unique name for the server group. This parameter can contain a
-        maximum of 255 characters, which may consist of letters, digits, underscores (_), and hyphens (-). Changing this
-        creates a new server group.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -178,11 +134,7 @@ class _ServergroupState:
     @pulumi.getter
     def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Specifies the set of policies for the server group. Only *anti-affinity*
-        policies are supported.
-
-        + `anti-affinity`: All ECS in this group must be deployed on different hosts. Changing this creates a new server
-        group.
+        schema: Required
         """
         return pulumi.get(self, "policies")
 
@@ -193,10 +145,6 @@ class _ServergroupState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the server group resource. If omitted,
-        the provider-level region will be used. Changing this creates a new server group.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -216,43 +164,10 @@ class Servergroup(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages Server Group resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        instance_demo = sbercloud.Ecs.get_instance(name="ecs-servergroup-demo")
-        test_sg = sbercloud.ecs.Servergroup("test-sg",
-            name="my-sg",
-            policies=["anti-affinity"],
-            members=[instance_demo.id])
-        ```
-
-        ## Import
-
-        Server Groups can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Ecs/servergroup:Servergroup test-sg 1bc30ee9-9d5b-4c30-bdd5-7f1e663f5edf
-        ```
-
+        Create a Servergroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Specifies an array of one or more instance ID to attach server group.
-        :param pulumi.Input[_builtins.str] name: Specifies a unique name for the server group. This parameter can contain a
-               maximum of 255 characters, which may consist of letters, digits, underscores (_), and hyphens (-). Changing this
-               creates a new server group.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] policies: Specifies the set of policies for the server group. Only *anti-affinity*
-               policies are supported.
-               
-               + `anti-affinity`: All ECS in this group must be deployed on different hosts. Changing this creates a new server
-               group.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the server group resource. If omitted,
-               the provider-level region will be used. Changing this creates a new server group.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] policies: schema: Required
         """
         ...
     @overload
@@ -261,30 +176,7 @@ class Servergroup(pulumi.CustomResource):
                  args: Optional[ServergroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages Server Group resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        instance_demo = sbercloud.Ecs.get_instance(name="ecs-servergroup-demo")
-        test_sg = sbercloud.ecs.Servergroup("test-sg",
-            name="my-sg",
-            policies=["anti-affinity"],
-            members=[instance_demo.id])
-        ```
-
-        ## Import
-
-        Server Groups can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Ecs/servergroup:Servergroup test-sg 1bc30ee9-9d5b-4c30-bdd5-7f1e663f5edf
-        ```
-
+        Create a Servergroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ServergroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -341,17 +233,7 @@ class Servergroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] fault_domains: schema: Internal
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Specifies an array of one or more instance ID to attach server group.
-        :param pulumi.Input[_builtins.str] name: Specifies a unique name for the server group. This parameter can contain a
-               maximum of 255 characters, which may consist of letters, digits, underscores (_), and hyphens (-). Changing this
-               creates a new server group.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] policies: Specifies the set of policies for the server group. Only *anti-affinity*
-               policies are supported.
-               
-               + `anti-affinity`: All ECS in this group must be deployed on different hosts. Changing this creates a new server
-               group.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the server group resource. If omitted,
-               the provider-level region will be used. Changing this creates a new server group.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] policies: schema: Required
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -375,39 +257,23 @@ class Servergroup(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def members(self) -> pulumi.Output[Sequence[_builtins.str]]:
-        """
-        Specifies an array of one or more instance ID to attach server group.
-        """
         return pulumi.get(self, "members")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies a unique name for the server group. This parameter can contain a
-        maximum of 255 characters, which may consist of letters, digits, underscores (_), and hyphens (-). Changing this
-        creates a new server group.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def policies(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        Specifies the set of policies for the server group. Only *anti-affinity*
-        policies are supported.
-
-        + `anti-affinity`: All ECS in this group must be deployed on different hosts. Changing this creates a new server
-        group.
+        schema: Required
         """
         return pulumi.get(self, "policies")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the server group resource. If omitted,
-        the provider-level region will be used. Changing this creates a new server group.
-        """
         return pulumi.get(self, "region")
 

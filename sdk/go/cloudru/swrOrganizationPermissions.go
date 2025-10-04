@@ -12,74 +12,14 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages user permissions for the SWR organization resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			organizationName := cfg.RequireObject("organizationName")
-//			user1 := cfg.RequireObject("user1")
-//			user2 := cfg.RequireObject("user2")
-//			_, err := sbercloud.NewSwrOrganizationPermissions(ctx, "test", &sbercloud.SwrOrganizationPermissionsArgs{
-//				Organization: pulumi.Any(organizationName),
-//				Users: cloudru.SwrOrganizationPermissionsUserArray{
-//					&cloudru.SwrOrganizationPermissionsUserArgs{
-//						UserName:   pulumi.Any(user1.Name),
-//						UserId:     pulumi.Any(user1.Id),
-//						Permission: pulumi.String("Read"),
-//					},
-//					&cloudru.SwrOrganizationPermissionsUserArgs{
-//						UserName:   pulumi.Any(user2.Name),
-//						UserId:     pulumi.Any(user2.Id),
-//						Permission: pulumi.String("Read"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Organization Permissions can be imported using the `id` (organization name), e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:index/swrOrganizationPermissions:SwrOrganizationPermissions test terraform-test
-// ```
 type SwrOrganizationPermissions struct {
 	pulumi.CustomResourceState
 
-	// The creator user name of the organization.
-	Creator pulumi.StringOutput `pulumi:"creator"`
-	// Specifies the name of the organization (namespace) to be accessed.
-	// Changing this creates a new resource.
-	Organization pulumi.StringOutput `pulumi:"organization"`
-	// Specifies the region in which to create the resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// The permission informations of current user.
+	Creator         pulumi.StringOutput                                 `pulumi:"creator"`
+	Organization    pulumi.StringOutput                                 `pulumi:"organization"`
+	Region          pulumi.StringOutput                                 `pulumi:"region"`
 	SelfPermissions SwrOrganizationPermissionsSelfPermissionArrayOutput `pulumi:"selfPermissions"`
-	// Specifies the users to access to the organization (namespace).
-	// Structure is documented below.
-	Users SwrOrganizationPermissionsUserArrayOutput `pulumi:"users"`
+	Users           SwrOrganizationPermissionsUserArrayOutput           `pulumi:"users"`
 }
 
 // NewSwrOrganizationPermissions registers a new resource with the given unique name, arguments, and options.
@@ -118,35 +58,19 @@ func GetSwrOrganizationPermissions(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SwrOrganizationPermissions resources.
 type swrOrganizationPermissionsState struct {
-	// The creator user name of the organization.
-	Creator *string `pulumi:"creator"`
-	// Specifies the name of the organization (namespace) to be accessed.
-	// Changing this creates a new resource.
-	Organization *string `pulumi:"organization"`
-	// Specifies the region in which to create the resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region *string `pulumi:"region"`
-	// The permission informations of current user.
+	Creator         *string                                    `pulumi:"creator"`
+	Organization    *string                                    `pulumi:"organization"`
+	Region          *string                                    `pulumi:"region"`
 	SelfPermissions []SwrOrganizationPermissionsSelfPermission `pulumi:"selfPermissions"`
-	// Specifies the users to access to the organization (namespace).
-	// Structure is documented below.
-	Users []SwrOrganizationPermissionsUser `pulumi:"users"`
+	Users           []SwrOrganizationPermissionsUser           `pulumi:"users"`
 }
 
 type SwrOrganizationPermissionsState struct {
-	// The creator user name of the organization.
-	Creator pulumi.StringPtrInput
-	// Specifies the name of the organization (namespace) to be accessed.
-	// Changing this creates a new resource.
-	Organization pulumi.StringPtrInput
-	// Specifies the region in which to create the resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringPtrInput
-	// The permission informations of current user.
+	Creator         pulumi.StringPtrInput
+	Organization    pulumi.StringPtrInput
+	Region          pulumi.StringPtrInput
 	SelfPermissions SwrOrganizationPermissionsSelfPermissionArrayInput
-	// Specifies the users to access to the organization (namespace).
-	// Structure is documented below.
-	Users SwrOrganizationPermissionsUserArrayInput
+	Users           SwrOrganizationPermissionsUserArrayInput
 }
 
 func (SwrOrganizationPermissionsState) ElementType() reflect.Type {
@@ -154,28 +78,16 @@ func (SwrOrganizationPermissionsState) ElementType() reflect.Type {
 }
 
 type swrOrganizationPermissionsArgs struct {
-	// Specifies the name of the organization (namespace) to be accessed.
-	// Changing this creates a new resource.
-	Organization string `pulumi:"organization"`
-	// Specifies the region in which to create the resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies the users to access to the organization (namespace).
-	// Structure is documented below.
-	Users []SwrOrganizationPermissionsUser `pulumi:"users"`
+	Organization string                           `pulumi:"organization"`
+	Region       *string                          `pulumi:"region"`
+	Users        []SwrOrganizationPermissionsUser `pulumi:"users"`
 }
 
 // The set of arguments for constructing a SwrOrganizationPermissions resource.
 type SwrOrganizationPermissionsArgs struct {
-	// Specifies the name of the organization (namespace) to be accessed.
-	// Changing this creates a new resource.
 	Organization pulumi.StringInput
-	// Specifies the region in which to create the resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringPtrInput
-	// Specifies the users to access to the organization (namespace).
-	// Structure is documented below.
-	Users SwrOrganizationPermissionsUserArrayInput
+	Region       pulumi.StringPtrInput
+	Users        SwrOrganizationPermissionsUserArrayInput
 }
 
 func (SwrOrganizationPermissionsArgs) ElementType() reflect.Type {
@@ -265,32 +177,24 @@ func (o SwrOrganizationPermissionsOutput) ToSwrOrganizationPermissionsOutputWith
 	return o
 }
 
-// The creator user name of the organization.
 func (o SwrOrganizationPermissionsOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v *SwrOrganizationPermissions) pulumi.StringOutput { return v.Creator }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the organization (namespace) to be accessed.
-// Changing this creates a new resource.
 func (o SwrOrganizationPermissionsOutput) Organization() pulumi.StringOutput {
 	return o.ApplyT(func(v *SwrOrganizationPermissions) pulumi.StringOutput { return v.Organization }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the resource. If omitted, the
-// provider-level region will be used. Changing this creates a new resource.
 func (o SwrOrganizationPermissionsOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *SwrOrganizationPermissions) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// The permission informations of current user.
 func (o SwrOrganizationPermissionsOutput) SelfPermissions() SwrOrganizationPermissionsSelfPermissionArrayOutput {
 	return o.ApplyT(func(v *SwrOrganizationPermissions) SwrOrganizationPermissionsSelfPermissionArrayOutput {
 		return v.SelfPermissions
 	}).(SwrOrganizationPermissionsSelfPermissionArrayOutput)
 }
 
-// Specifies the users to access to the organization (namespace).
-// Structure is documented below.
 func (o SwrOrganizationPermissionsOutput) Users() SwrOrganizationPermissionsUserArrayOutput {
 	return o.ApplyT(func(v *SwrOrganizationPermissions) SwrOrganizationPermissionsUserArrayOutput { return v.Users }).(SwrOrganizationPermissionsUserArrayOutput)
 }

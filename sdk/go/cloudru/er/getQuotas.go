@@ -11,53 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Using this data source to query the list of available resource quotas within SberCloud.
-//
-// > Using an invalid ID to filter the results will not report an error or return an empty list, but will return a quota
-//
-//	list with all usage equal to 0.
-//
-// Before using enterprise router, define custom endpoint as shown below:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/er"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := er.GetQuotas(ctx, &er.GetQuotasArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetQuotas(ctx *pulumi.Context, args *GetQuotasArgs, opts ...pulumi.InvokeOption) (*GetQuotasResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetQuotasResult
@@ -70,39 +23,21 @@ func GetQuotas(ctx *pulumi.Context, args *GetQuotasArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getQuotas.
 type GetQuotasArgs struct {
-	// The instance ID.
-	InstanceId *string `pulumi:"instanceId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// The route table ID.
+	InstanceId   *string `pulumi:"instanceId"`
+	Region       *string `pulumi:"region"`
 	RouteTableId *string `pulumi:"routeTableId"`
-	// The quota type to be queried.
-	// The valid values are as follows:
-	// + **er_instance**: Quotas and usage for enterprise router instances.
-	// + **dc_attachment**: Quotas and usage for DC attachment.
-	// + **vpc_attachment**: Quotas and usage for VPC attachment.
-	// + **vpn_attachment**: Quotas and usage for VPN attachment.
-	// + **peering_attachment**: Quotas and usage for peering attachment.
-	// + **can_attachment**: Quotas and usage for can attachment.
-	// + **route_table**: Quotas and usage for route table.
-	// + **static_route**: Quotas and usage for static route.
-	// + **vpc_er**: The number of enterprise routers that each VPC can access and the current usage.
-	// + **flow_log**: The number of flow logs that can be created per attachment.
-	Type *string `pulumi:"type"`
+	Type         *string `pulumi:"type"`
 }
 
 // A collection of values returned by getQuotas.
 type GetQuotasResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string  `pulumi:"id"`
-	InstanceId *string `pulumi:"instanceId"`
-	// All quotas that match the filter parameters.
+	Id           string           `pulumi:"id"`
+	InstanceId   *string          `pulumi:"instanceId"`
 	Quotas       []GetQuotasQuota `pulumi:"quotas"`
 	Region       string           `pulumi:"region"`
 	RouteTableId *string          `pulumi:"routeTableId"`
-	// The quota type.
-	Type *string `pulumi:"type"`
+	Type         *string          `pulumi:"type"`
 }
 
 func GetQuotasOutput(ctx *pulumi.Context, args GetQuotasOutputArgs, opts ...pulumi.InvokeOption) GetQuotasResultOutput {
@@ -116,26 +51,10 @@ func GetQuotasOutput(ctx *pulumi.Context, args GetQuotasOutputArgs, opts ...pulu
 
 // A collection of arguments for invoking getQuotas.
 type GetQuotasOutputArgs struct {
-	// The instance ID.
-	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// The route table ID.
+	InstanceId   pulumi.StringPtrInput `pulumi:"instanceId"`
+	Region       pulumi.StringPtrInput `pulumi:"region"`
 	RouteTableId pulumi.StringPtrInput `pulumi:"routeTableId"`
-	// The quota type to be queried.
-	// The valid values are as follows:
-	// + **er_instance**: Quotas and usage for enterprise router instances.
-	// + **dc_attachment**: Quotas and usage for DC attachment.
-	// + **vpc_attachment**: Quotas and usage for VPC attachment.
-	// + **vpn_attachment**: Quotas and usage for VPN attachment.
-	// + **peering_attachment**: Quotas and usage for peering attachment.
-	// + **can_attachment**: Quotas and usage for can attachment.
-	// + **route_table**: Quotas and usage for route table.
-	// + **static_route**: Quotas and usage for static route.
-	// + **vpc_er**: The number of enterprise routers that each VPC can access and the current usage.
-	// + **flow_log**: The number of flow logs that can be created per attachment.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type         pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (GetQuotasOutputArgs) ElementType() reflect.Type {
@@ -166,7 +85,6 @@ func (o GetQuotasResultOutput) InstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetQuotasResult) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
 }
 
-// All quotas that match the filter parameters.
 func (o GetQuotasResultOutput) Quotas() GetQuotasQuotaArrayOutput {
 	return o.ApplyT(func(v GetQuotasResult) []GetQuotasQuota { return v.Quotas }).(GetQuotasQuotaArrayOutput)
 }
@@ -179,7 +97,6 @@ func (o GetQuotasResultOutput) RouteTableId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetQuotasResult) *string { return v.RouteTableId }).(pulumi.StringPtrOutput)
 }
 
-// The quota type.
 func (o GetQuotasResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetQuotasResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

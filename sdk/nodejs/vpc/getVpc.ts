@@ -6,24 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * sbercloud_vpc provides details about a specific VPC.
- *
- * This resource can prove useful when a module accepts a vpc id as an input variable and needs to, for example, determine the CIDR block of that VPC.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const vpcName = config.requireObject<any>("vpcName");
- * const vpc = sbercloud.Vpc.getVpc({
- *     name: vpcName,
- * });
- * ```
- */
 export function getVpc(args?: GetVpcArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -41,31 +23,11 @@ export function getVpc(args?: GetVpcArgs, opts?: pulumi.InvokeOptions): Promise<
  * A collection of arguments for invoking getVpc.
  */
 export interface GetVpcArgs {
-    /**
-     * Specifies the cidr block of the desired VPC.
-     */
     cidr?: string;
-    /**
-     * Specifies the enterprise project ID which the desired VPC belongs to.
-     */
     enterpriseProjectId?: string;
-    /**
-     * Specifies the id of the VPC to retrieve.
-     */
     id?: string;
-    /**
-     * Specifies an unique name for the VPC. The value is a string of no more than 64 characters
-     * and can contain digits, letters, underscores (_), and hyphens (-).
-     */
     name?: string;
-    /**
-     * Specifies the region in which to obtain the VPC. If omitted, the provider-level region
-     * will be used.
-     */
     region?: string;
-    /**
-     * Specifies the current status of the desired VPC. The value can be CREATING, OK or ERROR.
-     */
     status?: string;
 }
 
@@ -74,10 +36,6 @@ export interface GetVpcArgs {
  */
 export interface GetVpcResult {
     readonly cidr: string;
-    /**
-     * The supplementary information about the VPC. The value is a string of
-     * no more than 255 characters and cannot contain angle brackets (< or >).
-     */
     readonly description: string;
     readonly enterpriseProjectId: string;
     readonly id: string;
@@ -89,29 +47,8 @@ export interface GetVpcResult {
     readonly routes: outputs.Vpc.GetVpcRoute[];
     readonly secondaryCidrs: string[];
     readonly status: string;
-    /**
-     * The key/value pairs to associate with the VPC.
-     */
     readonly tags: {[key: string]: string};
 }
-/**
- * sbercloud_vpc provides details about a specific VPC.
- *
- * This resource can prove useful when a module accepts a vpc id as an input variable and needs to, for example, determine the CIDR block of that VPC.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const vpcName = config.requireObject<any>("vpcName");
- * const vpc = sbercloud.Vpc.getVpc({
- *     name: vpcName,
- * });
- * ```
- */
 export function getVpcOutput(args?: GetVpcOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpcResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -129,30 +66,10 @@ export function getVpcOutput(args?: GetVpcOutputArgs, opts?: pulumi.InvokeOutput
  * A collection of arguments for invoking getVpc.
  */
 export interface GetVpcOutputArgs {
-    /**
-     * Specifies the cidr block of the desired VPC.
-     */
     cidr?: pulumi.Input<string>;
-    /**
-     * Specifies the enterprise project ID which the desired VPC belongs to.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Specifies the id of the VPC to retrieve.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * Specifies an unique name for the VPC. The value is a string of no more than 64 characters
-     * and can contain digits, letters, underscores (_), and hyphens (-).
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to obtain the VPC. If omitted, the provider-level region
-     * will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the current status of the desired VPC. The value can be CREATING, OK or ERROR.
-     */
     status?: pulumi.Input<string>;
 }

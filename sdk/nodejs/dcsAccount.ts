@@ -4,64 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Manages a DCS account resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const test = new sbercloud.DcsAccount("test", {
- *     instanceId: instanceId,
- *     accountName: "user",
- *     accountRole: "read",
- *     accountPassword: "Terraform@123",
- *     description: "add account",
- * });
- * ```
- *
- * ## Import
- *
- * The DCS account can be imported using the DCS instance ID and the DCS account ID separated by a slash, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:index/dcsAccount:DcsAccount test <instance_id>/<id>
- * ```
- *
- * Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
- *
- * API response, security or some other reason. The missing attributes include: `account_password`.
- *
- * It is generally recommended running `pulumi preview` after importing the account.
- *
- * You can then decide if changes should be applied to the account, or the resource definition should be updated to
- *
- * align with the account. Also you can ignore changes as below.
- *
- * hcl
- *
- * resource "sbercloud_dcs_account" "test" {
- *
- *     ...
- *
- *   lifecycle {
- *
- *     ignore_changes = [
- *     
- *       account_password,
- *     
- *     ]
- *
- *   }
- *
- * }
- */
 export class DcsAccount extends pulumi.CustomResource {
     /**
      * Get an existing DcsAccount resource's state with the given name, ID, and optional extra
@@ -92,7 +34,6 @@ export class DcsAccount extends pulumi.CustomResource {
 
     /**
      * Specifies the name of the account.
-     * Changing this creates a new resource.
      */
     declare public readonly accountName: pulumi.Output<string>;
     /**
@@ -101,13 +42,10 @@ export class DcsAccount extends pulumi.CustomResource {
     declare public readonly accountPassword: pulumi.Output<string>;
     /**
      * Specifies the role of the account.
-     * Value options:
-     * + **read**: The account has read-only privilege.
-     * + **write**: The account has read and write privilege.
      */
     declare public readonly accountRole: pulumi.Output<string>;
     /**
-     * Indicates the type of the account. The value can be **normal** or **default**.
+     * Indicates the type of the account.
      */
     declare public /*out*/ readonly accountType: pulumi.Output<string>;
     /**
@@ -116,17 +54,11 @@ export class DcsAccount extends pulumi.CustomResource {
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specifies the ID of the DCS instance.
-     * Changing this creates a new resource.
      */
     declare public readonly instanceId: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this creates a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
     /**
-     * Indicates the status of the account. The value can be **CREATING**, **AVAILABLE**, **CREATEFAILED**,
-     * **DELETED**, **DELETEFAILED**, **DELETING**, **UPDATING** or **ERROR**.
+     * Indicates the status of the account.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
 
@@ -187,7 +119,6 @@ export class DcsAccount extends pulumi.CustomResource {
 export interface DcsAccountState {
     /**
      * Specifies the name of the account.
-     * Changing this creates a new resource.
      */
     accountName?: pulumi.Input<string>;
     /**
@@ -196,13 +127,10 @@ export interface DcsAccountState {
     accountPassword?: pulumi.Input<string>;
     /**
      * Specifies the role of the account.
-     * Value options:
-     * + **read**: The account has read-only privilege.
-     * + **write**: The account has read and write privilege.
      */
     accountRole?: pulumi.Input<string>;
     /**
-     * Indicates the type of the account. The value can be **normal** or **default**.
+     * Indicates the type of the account.
      */
     accountType?: pulumi.Input<string>;
     /**
@@ -211,17 +139,11 @@ export interface DcsAccountState {
     description?: pulumi.Input<string>;
     /**
      * Specifies the ID of the DCS instance.
-     * Changing this creates a new resource.
      */
     instanceId?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
-     * Indicates the status of the account. The value can be **CREATING**, **AVAILABLE**, **CREATEFAILED**,
-     * **DELETED**, **DELETEFAILED**, **DELETING**, **UPDATING** or **ERROR**.
+     * Indicates the status of the account.
      */
     status?: pulumi.Input<string>;
 }
@@ -232,7 +154,6 @@ export interface DcsAccountState {
 export interface DcsAccountArgs {
     /**
      * Specifies the name of the account.
-     * Changing this creates a new resource.
      */
     accountName: pulumi.Input<string>;
     /**
@@ -241,9 +162,6 @@ export interface DcsAccountArgs {
     accountPassword: pulumi.Input<string>;
     /**
      * Specifies the role of the account.
-     * Value options:
-     * + **read**: The account has read-only privilege.
-     * + **write**: The account has read and write privilege.
      */
     accountRole: pulumi.Input<string>;
     /**
@@ -252,12 +170,7 @@ export interface DcsAccountArgs {
     description?: pulumi.Input<string>;
     /**
      * Specifies the ID of the DCS instance.
-     * Changing this creates a new resource.
      */
     instanceId: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
 }

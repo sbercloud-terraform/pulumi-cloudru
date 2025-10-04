@@ -11,7 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of DMS rocketMQ topics.
 func GetDmsRocketmqTopics(ctx *pulumi.Context, args *GetDmsRocketmqTopicsArgs, opts ...pulumi.InvokeOption) (*GetDmsRocketmqTopicsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDmsRocketmqTopicsResult
@@ -24,38 +23,25 @@ func GetDmsRocketmqTopics(ctx *pulumi.Context, args *GetDmsRocketmqTopicsArgs, o
 
 // A collection of arguments for invoking getDmsRocketmqTopics.
 type GetDmsRocketmqTopicsArgs struct {
-	// Specifies the ID of the rocketMQ instance.
-	InstanceId string `pulumi:"instanceId"`
-	// Specifies the topic name.
-	Name *string `pulumi:"name"`
-	// Specifies the permission. Value options: **sub**, **pub** or **all**.
-	Permission *string `pulumi:"permission"`
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the number of total read queue.
-	TotalReadQueueNum *int `pulumi:"totalReadQueueNum"`
-	// Specifies the number of total write queue.
-	TotalWriteQueueNum *int `pulumi:"totalWriteQueueNum"`
+	InstanceId         string  `pulumi:"instanceId"`
+	Name               *string `pulumi:"name"`
+	Permission         *string `pulumi:"permission"`
+	Region             *string `pulumi:"region"`
+	TotalReadQueueNum  *int    `pulumi:"totalReadQueueNum"`
+	TotalWriteQueueNum *int    `pulumi:"totalWriteQueueNum"`
 }
 
 // A collection of values returned by getDmsRocketmqTopics.
 type GetDmsRocketmqTopicsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string `pulumi:"id"`
-	InstanceId string `pulumi:"instanceId"`
-	// Indicates the topic name.
-	Name *string `pulumi:"name"`
-	// Indicates the permission. Value options: **sub**, **pub** or **all**.
-	Permission *string `pulumi:"permission"`
-	Region     string  `pulumi:"region"`
-	// The list of topics.
-	// The topics structure is documented below.
-	Topics []GetDmsRocketmqTopicsTopic `pulumi:"topics"`
-	// Indicates the number of total read queue.
-	TotalReadQueueNum *int `pulumi:"totalReadQueueNum"`
-	// Indicates the number of total write queue.
-	TotalWriteQueueNum *int `pulumi:"totalWriteQueueNum"`
+	Id                 string                      `pulumi:"id"`
+	InstanceId         string                      `pulumi:"instanceId"`
+	Name               *string                     `pulumi:"name"`
+	Permission         *string                     `pulumi:"permission"`
+	Region             string                      `pulumi:"region"`
+	Topics             []GetDmsRocketmqTopicsTopic `pulumi:"topics"`
+	TotalReadQueueNum  *int                        `pulumi:"totalReadQueueNum"`
+	TotalWriteQueueNum *int                        `pulumi:"totalWriteQueueNum"`
 }
 
 func GetDmsRocketmqTopicsOutput(ctx *pulumi.Context, args GetDmsRocketmqTopicsOutputArgs, opts ...pulumi.InvokeOption) GetDmsRocketmqTopicsResultOutput {
@@ -69,19 +55,12 @@ func GetDmsRocketmqTopicsOutput(ctx *pulumi.Context, args GetDmsRocketmqTopicsOu
 
 // A collection of arguments for invoking getDmsRocketmqTopics.
 type GetDmsRocketmqTopicsOutputArgs struct {
-	// Specifies the ID of the rocketMQ instance.
-	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// Specifies the topic name.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the permission. Value options: **sub**, **pub** or **all**.
-	Permission pulumi.StringPtrInput `pulumi:"permission"`
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the number of total read queue.
-	TotalReadQueueNum pulumi.IntPtrInput `pulumi:"totalReadQueueNum"`
-	// Specifies the number of total write queue.
-	TotalWriteQueueNum pulumi.IntPtrInput `pulumi:"totalWriteQueueNum"`
+	InstanceId         pulumi.StringInput    `pulumi:"instanceId"`
+	Name               pulumi.StringPtrInput `pulumi:"name"`
+	Permission         pulumi.StringPtrInput `pulumi:"permission"`
+	Region             pulumi.StringPtrInput `pulumi:"region"`
+	TotalReadQueueNum  pulumi.IntPtrInput    `pulumi:"totalReadQueueNum"`
+	TotalWriteQueueNum pulumi.IntPtrInput    `pulumi:"totalWriteQueueNum"`
 }
 
 func (GetDmsRocketmqTopicsOutputArgs) ElementType() reflect.Type {
@@ -112,12 +91,10 @@ func (o GetDmsRocketmqTopicsResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqTopicsResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Indicates the topic name.
 func (o GetDmsRocketmqTopicsResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDmsRocketmqTopicsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the permission. Value options: **sub**, **pub** or **all**.
 func (o GetDmsRocketmqTopicsResultOutput) Permission() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDmsRocketmqTopicsResult) *string { return v.Permission }).(pulumi.StringPtrOutput)
 }
@@ -126,18 +103,14 @@ func (o GetDmsRocketmqTopicsResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqTopicsResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The list of topics.
-// The topics structure is documented below.
 func (o GetDmsRocketmqTopicsResultOutput) Topics() GetDmsRocketmqTopicsTopicArrayOutput {
 	return o.ApplyT(func(v GetDmsRocketmqTopicsResult) []GetDmsRocketmqTopicsTopic { return v.Topics }).(GetDmsRocketmqTopicsTopicArrayOutput)
 }
 
-// Indicates the number of total read queue.
 func (o GetDmsRocketmqTopicsResultOutput) TotalReadQueueNum() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetDmsRocketmqTopicsResult) *int { return v.TotalReadQueueNum }).(pulumi.IntPtrOutput)
 }
 
-// Indicates the number of total write queue.
 func (o GetDmsRocketmqTopicsResultOutput) TotalWriteQueueNum() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetDmsRocketmqTopicsResult) *int { return v.TotalWriteQueueNum }).(pulumi.IntPtrOutput)
 }

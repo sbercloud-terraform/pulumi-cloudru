@@ -12,116 +12,29 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a VPC attachment resource under the ER instance within SberCloud.
-//
-// Before using enterprise router, define custom endpoint as shown below:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/er"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			vpcId := cfg.RequireObject("vpcId")
-//			subnetId := cfg.RequireObject("subnetId")
-//			attachmentName := cfg.RequireObject("attachmentName")
-//			_, err := er.NewVpcAttachment(ctx, "test", &er.VpcAttachmentArgs{
-//				InstanceId:          pulumi.Any(instanceId),
-//				VpcId:               pulumi.Any(vpcId),
-//				SubnetId:            pulumi.Any(subnetId),
-//				Name:                pulumi.Any(attachmentName),
-//				Description:         pulumi.String("VPC attachment created by terraform"),
-//				AutoCreateVpcRoutes: pulumi.Bool(true),
-//				Tags: pulumi.StringMap{
-//					"foo":   pulumi.String("bar"),
-//					"owner": pulumi.String("terraform"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// VPC attachments can be imported using their `id` and the related `instance_id`, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Er/vpcAttachment:VpcAttachment test <instance_id>/<id>
-// ```
 type VpcAttachment struct {
 	pulumi.CustomResourceState
 
-	// Specifies whether to automatically configure routes for the VPC
-	// which pointing to the ER instance.
-	// The destination CIDRs of the routes are fixed as follows:
-	// + **10.0.0.0/8**
-	// + **172.16.0.0/12**
-	// + **192.168.0.0/16**
-	//
-	// The default value is false. Changing this parameter will create a new resource.
+	// Whether to automatically configure routes for the VPC which pointing to the ER instance.
 	AutoCreateVpcRoutes pulumi.BoolOutput `pulumi:"autoCreateVpcRoutes"`
 	// The creation time.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Specifies the description of the VPC attachment.\
-	// The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
+	// The description of the VPC attachment.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Specifies the ID of the ER instance to which the VPC attachment
-	// belongs.
-	// Changing this parameter will create a new resource.
+	// The ID of the ER instance to which the VPC attachment belongs.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Specifies the name of the VPC attachment.\
-	// The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-	// hyphens (-) and dots (.) allowed.
+	// The name of the VPC attachment.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the region where the ER instance and the VPC attachment are
-	// located.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the ER instance and the VPC attachment are located.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The current status of the VPC attachment.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Specifies the ID of the VPC subnet to which the VPC attachment belongs.\
-	// Changing this parameter will create a new resource.
-	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
-	// Specifies the key/value pairs to associate with the VPC attachment.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// The ID of the VPC subnet to which the VPC attachment belongs.
+	SubnetId pulumi.StringOutput    `pulumi:"subnetId"`
+	Tags     pulumi.StringMapOutput `pulumi:"tags"`
 	// The latest update time.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
-	// Specifies the ID of the VPC to which the VPC attachment belongs.\
-	// Changing this parameter will create a new resource.
+	// The ID of the VPC to which the VPC attachment belongs.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 }
 
@@ -164,84 +77,50 @@ func GetVpcAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering VpcAttachment resources.
 type vpcAttachmentState struct {
-	// Specifies whether to automatically configure routes for the VPC
-	// which pointing to the ER instance.
-	// The destination CIDRs of the routes are fixed as follows:
-	// + **10.0.0.0/8**
-	// + **172.16.0.0/12**
-	// + **192.168.0.0/16**
-	//
-	// The default value is false. Changing this parameter will create a new resource.
+	// Whether to automatically configure routes for the VPC which pointing to the ER instance.
 	AutoCreateVpcRoutes *bool `pulumi:"autoCreateVpcRoutes"`
 	// The creation time.
 	CreatedAt *string `pulumi:"createdAt"`
-	// Specifies the description of the VPC attachment.\
-	// The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
+	// The description of the VPC attachment.
 	Description *string `pulumi:"description"`
-	// Specifies the ID of the ER instance to which the VPC attachment
-	// belongs.
-	// Changing this parameter will create a new resource.
+	// The ID of the ER instance to which the VPC attachment belongs.
 	InstanceId *string `pulumi:"instanceId"`
-	// Specifies the name of the VPC attachment.\
-	// The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-	// hyphens (-) and dots (.) allowed.
+	// The name of the VPC attachment.
 	Name *string `pulumi:"name"`
-	// Specifies the region where the ER instance and the VPC attachment are
-	// located.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the ER instance and the VPC attachment are located.
 	Region *string `pulumi:"region"`
 	// The current status of the VPC attachment.
 	Status *string `pulumi:"status"`
-	// Specifies the ID of the VPC subnet to which the VPC attachment belongs.\
-	// Changing this parameter will create a new resource.
-	SubnetId *string `pulumi:"subnetId"`
-	// Specifies the key/value pairs to associate with the VPC attachment.
-	Tags map[string]string `pulumi:"tags"`
+	// The ID of the VPC subnet to which the VPC attachment belongs.
+	SubnetId *string           `pulumi:"subnetId"`
+	Tags     map[string]string `pulumi:"tags"`
 	// The latest update time.
 	UpdatedAt *string `pulumi:"updatedAt"`
-	// Specifies the ID of the VPC to which the VPC attachment belongs.\
-	// Changing this parameter will create a new resource.
+	// The ID of the VPC to which the VPC attachment belongs.
 	VpcId *string `pulumi:"vpcId"`
 }
 
 type VpcAttachmentState struct {
-	// Specifies whether to automatically configure routes for the VPC
-	// which pointing to the ER instance.
-	// The destination CIDRs of the routes are fixed as follows:
-	// + **10.0.0.0/8**
-	// + **172.16.0.0/12**
-	// + **192.168.0.0/16**
-	//
-	// The default value is false. Changing this parameter will create a new resource.
+	// Whether to automatically configure routes for the VPC which pointing to the ER instance.
 	AutoCreateVpcRoutes pulumi.BoolPtrInput
 	// The creation time.
 	CreatedAt pulumi.StringPtrInput
-	// Specifies the description of the VPC attachment.\
-	// The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
+	// The description of the VPC attachment.
 	Description pulumi.StringPtrInput
-	// Specifies the ID of the ER instance to which the VPC attachment
-	// belongs.
-	// Changing this parameter will create a new resource.
+	// The ID of the ER instance to which the VPC attachment belongs.
 	InstanceId pulumi.StringPtrInput
-	// Specifies the name of the VPC attachment.\
-	// The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-	// hyphens (-) and dots (.) allowed.
+	// The name of the VPC attachment.
 	Name pulumi.StringPtrInput
-	// Specifies the region where the ER instance and the VPC attachment are
-	// located.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the ER instance and the VPC attachment are located.
 	Region pulumi.StringPtrInput
 	// The current status of the VPC attachment.
 	Status pulumi.StringPtrInput
-	// Specifies the ID of the VPC subnet to which the VPC attachment belongs.\
-	// Changing this parameter will create a new resource.
+	// The ID of the VPC subnet to which the VPC attachment belongs.
 	SubnetId pulumi.StringPtrInput
-	// Specifies the key/value pairs to associate with the VPC attachment.
-	Tags pulumi.StringMapInput
+	Tags     pulumi.StringMapInput
 	// The latest update time.
 	UpdatedAt pulumi.StringPtrInput
-	// Specifies the ID of the VPC to which the VPC attachment belongs.\
-	// Changing this parameter will create a new resource.
+	// The ID of the VPC to which the VPC attachment belongs.
 	VpcId pulumi.StringPtrInput
 }
 
@@ -250,73 +129,39 @@ func (VpcAttachmentState) ElementType() reflect.Type {
 }
 
 type vpcAttachmentArgs struct {
-	// Specifies whether to automatically configure routes for the VPC
-	// which pointing to the ER instance.
-	// The destination CIDRs of the routes are fixed as follows:
-	// + **10.0.0.0/8**
-	// + **172.16.0.0/12**
-	// + **192.168.0.0/16**
-	//
-	// The default value is false. Changing this parameter will create a new resource.
+	// Whether to automatically configure routes for the VPC which pointing to the ER instance.
 	AutoCreateVpcRoutes *bool `pulumi:"autoCreateVpcRoutes"`
-	// Specifies the description of the VPC attachment.\
-	// The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
+	// The description of the VPC attachment.
 	Description *string `pulumi:"description"`
-	// Specifies the ID of the ER instance to which the VPC attachment
-	// belongs.
-	// Changing this parameter will create a new resource.
+	// The ID of the ER instance to which the VPC attachment belongs.
 	InstanceId string `pulumi:"instanceId"`
-	// Specifies the name of the VPC attachment.\
-	// The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-	// hyphens (-) and dots (.) allowed.
+	// The name of the VPC attachment.
 	Name *string `pulumi:"name"`
-	// Specifies the region where the ER instance and the VPC attachment are
-	// located.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the ER instance and the VPC attachment are located.
 	Region *string `pulumi:"region"`
-	// Specifies the ID of the VPC subnet to which the VPC attachment belongs.\
-	// Changing this parameter will create a new resource.
-	SubnetId string `pulumi:"subnetId"`
-	// Specifies the key/value pairs to associate with the VPC attachment.
-	Tags map[string]string `pulumi:"tags"`
-	// Specifies the ID of the VPC to which the VPC attachment belongs.\
-	// Changing this parameter will create a new resource.
+	// The ID of the VPC subnet to which the VPC attachment belongs.
+	SubnetId string            `pulumi:"subnetId"`
+	Tags     map[string]string `pulumi:"tags"`
+	// The ID of the VPC to which the VPC attachment belongs.
 	VpcId string `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a VpcAttachment resource.
 type VpcAttachmentArgs struct {
-	// Specifies whether to automatically configure routes for the VPC
-	// which pointing to the ER instance.
-	// The destination CIDRs of the routes are fixed as follows:
-	// + **10.0.0.0/8**
-	// + **172.16.0.0/12**
-	// + **192.168.0.0/16**
-	//
-	// The default value is false. Changing this parameter will create a new resource.
+	// Whether to automatically configure routes for the VPC which pointing to the ER instance.
 	AutoCreateVpcRoutes pulumi.BoolPtrInput
-	// Specifies the description of the VPC attachment.\
-	// The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
+	// The description of the VPC attachment.
 	Description pulumi.StringPtrInput
-	// Specifies the ID of the ER instance to which the VPC attachment
-	// belongs.
-	// Changing this parameter will create a new resource.
+	// The ID of the ER instance to which the VPC attachment belongs.
 	InstanceId pulumi.StringInput
-	// Specifies the name of the VPC attachment.\
-	// The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-	// hyphens (-) and dots (.) allowed.
+	// The name of the VPC attachment.
 	Name pulumi.StringPtrInput
-	// Specifies the region where the ER instance and the VPC attachment are
-	// located.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the ER instance and the VPC attachment are located.
 	Region pulumi.StringPtrInput
-	// Specifies the ID of the VPC subnet to which the VPC attachment belongs.\
-	// Changing this parameter will create a new resource.
+	// The ID of the VPC subnet to which the VPC attachment belongs.
 	SubnetId pulumi.StringInput
-	// Specifies the key/value pairs to associate with the VPC attachment.
-	Tags pulumi.StringMapInput
-	// Specifies the ID of the VPC to which the VPC attachment belongs.\
-	// Changing this parameter will create a new resource.
+	Tags     pulumi.StringMapInput
+	// The ID of the VPC to which the VPC attachment belongs.
 	VpcId pulumi.StringInput
 }
 
@@ -407,14 +252,7 @@ func (o VpcAttachmentOutput) ToVpcAttachmentOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Specifies whether to automatically configure routes for the VPC
-// which pointing to the ER instance.
-// The destination CIDRs of the routes are fixed as follows:
-// + **10.0.0.0/8**
-// + **172.16.0.0/12**
-// + **192.168.0.0/16**
-//
-// The default value is false. Changing this parameter will create a new resource.
+// Whether to automatically configure routes for the VPC which pointing to the ER instance.
 func (o VpcAttachmentOutput) AutoCreateVpcRoutes() pulumi.BoolOutput {
 	return o.ApplyT(func(v *VpcAttachment) pulumi.BoolOutput { return v.AutoCreateVpcRoutes }).(pulumi.BoolOutput)
 }
@@ -424,29 +262,22 @@ func (o VpcAttachmentOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcAttachment) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Specifies the description of the VPC attachment.\
-// The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
+// The description of the VPC attachment.
 func (o VpcAttachmentOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpcAttachment) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the ID of the ER instance to which the VPC attachment
-// belongs.
-// Changing this parameter will create a new resource.
+// The ID of the ER instance to which the VPC attachment belongs.
 func (o VpcAttachmentOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcAttachment) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the VPC attachment.\
-// The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-// hyphens (-) and dots (.) allowed.
+// The name of the VPC attachment.
 func (o VpcAttachmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcAttachment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the region where the ER instance and the VPC attachment are
-// located.
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+// The region where the ER instance and the VPC attachment are located.
 func (o VpcAttachmentOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcAttachment) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
@@ -456,13 +287,11 @@ func (o VpcAttachmentOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcAttachment) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Specifies the ID of the VPC subnet to which the VPC attachment belongs.\
-// Changing this parameter will create a new resource.
+// The ID of the VPC subnet to which the VPC attachment belongs.
 func (o VpcAttachmentOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcAttachment) pulumi.StringOutput { return v.SubnetId }).(pulumi.StringOutput)
 }
 
-// Specifies the key/value pairs to associate with the VPC attachment.
 func (o VpcAttachmentOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VpcAttachment) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -472,8 +301,7 @@ func (o VpcAttachmentOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcAttachment) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// Specifies the ID of the VPC to which the VPC attachment belongs.\
-// Changing this parameter will create a new resource.
+// The ID of the VPC to which the VPC attachment belongs.
 func (o VpcAttachmentOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcAttachment) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }

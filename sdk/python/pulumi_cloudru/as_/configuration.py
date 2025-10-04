@@ -26,13 +26,6 @@ class ConfigurationArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Configuration resource.
-        :param pulumi.Input['ConfigurationInstanceConfigArgs'] instance_config: Specifies the information about instance configuration.
-               The object structure is documented below. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] scaling_configuration_name: Specifies the AS configuration name.
-               The name contains only letters, digits, underscores (_), and hyphens (-), and cannot exceed 64 characters.
-               Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the AS configuration.
-               If omitted, the provider-level region will be used. Changing this will create a new resource.
         """
         pulumi.set(__self__, "instance_config", instance_config)
         pulumi.set(__self__, "scaling_configuration_name", scaling_configuration_name)
@@ -42,10 +35,6 @@ class ConfigurationArgs:
     @_builtins.property
     @pulumi.getter(name="instanceConfig")
     def instance_config(self) -> pulumi.Input['ConfigurationInstanceConfigArgs']:
-        """
-        Specifies the information about instance configuration.
-        The object structure is documented below. Changing this will create a new resource.
-        """
         return pulumi.get(self, "instance_config")
 
     @instance_config.setter
@@ -55,11 +44,6 @@ class ConfigurationArgs:
     @_builtins.property
     @pulumi.getter(name="scalingConfigurationName")
     def scaling_configuration_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the AS configuration name.
-        The name contains only letters, digits, underscores (_), and hyphens (-), and cannot exceed 64 characters.
-        Changing this will create a new resource.
-        """
         return pulumi.get(self, "scaling_configuration_name")
 
     @scaling_configuration_name.setter
@@ -69,10 +53,6 @@ class ConfigurationArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the AS configuration.
-        If omitted, the provider-level region will be used. Changing this will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -90,14 +70,6 @@ class _ConfigurationState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Configuration resources.
-        :param pulumi.Input['ConfigurationInstanceConfigArgs'] instance_config: Specifies the information about instance configuration.
-               The object structure is documented below. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the AS configuration.
-               If omitted, the provider-level region will be used. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] scaling_configuration_name: Specifies the AS configuration name.
-               The name contains only letters, digits, underscores (_), and hyphens (-), and cannot exceed 64 characters.
-               Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] status: The AS configuration status, the value can be **Bound** or **Unbound**.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -122,10 +94,6 @@ class _ConfigurationState:
     @_builtins.property
     @pulumi.getter(name="instanceConfig")
     def instance_config(self) -> Optional[pulumi.Input['ConfigurationInstanceConfigArgs']]:
-        """
-        Specifies the information about instance configuration.
-        The object structure is documented below. Changing this will create a new resource.
-        """
         return pulumi.get(self, "instance_config")
 
     @instance_config.setter
@@ -135,10 +103,6 @@ class _ConfigurationState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the AS configuration.
-        If omitted, the provider-level region will be used. Changing this will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -148,11 +112,6 @@ class _ConfigurationState:
     @_builtins.property
     @pulumi.getter(name="scalingConfigurationName")
     def scaling_configuration_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the AS configuration name.
-        The name contains only letters, digits, underscores (_), and hyphens (-), and cannot exceed 64 characters.
-        Changing this will create a new resource.
-        """
         return pulumi.get(self, "scaling_configuration_name")
 
     @scaling_configuration_name.setter
@@ -162,9 +121,6 @@ class _ConfigurationState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The AS configuration status, the value can be **Bound** or **Unbound**.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -183,123 +139,9 @@ class Configuration(pulumi.CustomResource):
                  scaling_configuration_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages an AS configuration resource within SberCloud.
-
-        ## Example Usage
-
-        ### Basic AS Configuration
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        flavor_id = config.require_object("flavorId")
-        image_id = config.require_object("imageId")
-        ssh_key = config.require_object("sshKey")
-        security_group_id = config.require_object("securityGroupId")
-        my_as_config = sbercloud.as_.Configuration("my_as_config",
-            scaling_configuration_name="my_as_config",
-            instance_config={
-                "flavor": flavor_id,
-                "image": image_id,
-                "key_name": ssh_key,
-                "security_group_ids": [security_group_id],
-                "disks": [{
-                    "size": 40,
-                    "volume_type": "SSD",
-                    "disk_type": "SYS",
-                }],
-            })
-        ```
-
-        ### AS Configuration With Encrypted Data Disk
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        flavor_id = config.require_object("flavorId")
-        image_id = config.require_object("imageId")
-        ssh_key = config.require_object("sshKey")
-        kms_id = config.require_object("kmsId")
-        security_group_id = config.require_object("securityGroupId")
-        my_as_config = sbercloud.as_.Configuration("my_as_config",
-            scaling_configuration_name="my_as_config",
-            instance_config={
-                "flavor": flavor_id,
-                "image": image_id,
-                "key_name": ssh_key,
-                "security_group_ids": [security_group_id],
-                "disks": [
-                    {
-                        "size": 40,
-                        "volume_type": "SSD",
-                        "disk_type": "SYS",
-                    },
-                    {
-                        "size": 100,
-                        "volume_type": "SSD",
-                        "disk_type": "DATA",
-                        "kms_id": kms_id,
-                    },
-                ],
-            })
-        ```
-
-        ### AS Configuration uses the existing instance specifications as the template
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        ssh_key = config.require_object("sshKey")
-        security_group_id = config.require_object("securityGroupId")
-        my_as_config = sbercloud.as_.Configuration("my_as_config",
-            scaling_configuration_name="my_as_config",
-            instance_config={
-                "instance_id": instance_id,
-                "key_name": ssh_key,
-                "security_group_ids": [security_group_id],
-            })
-        ```
-
-        ## Import
-
-        AS configurations can be imported by their `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:As/configuration:Configuration test 18518c8a-9d15-416b-8add-2ee874751d18
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to `instance_config.0.instance_id`
-
-        is missing from the API response. You can ignore changes after importing an AS configuration as below.
-
-        resource "sbercloud_as_configuration" "test" {
-
-          ...
-
-          lifecycle {
-
-            ignore_changes = [ instance_config.0.instance_id ]
-
-          }
-
-        }
-
+        Create a Configuration resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ConfigurationInstanceConfigArgs', 'ConfigurationInstanceConfigArgsDict']] instance_config: Specifies the information about instance configuration.
-               The object structure is documented below. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the AS configuration.
-               If omitted, the provider-level region will be used. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] scaling_configuration_name: Specifies the AS configuration name.
-               The name contains only letters, digits, underscores (_), and hyphens (-), and cannot exceed 64 characters.
-               Changing this will create a new resource.
         """
         ...
     @overload
@@ -308,114 +150,7 @@ class Configuration(pulumi.CustomResource):
                  args: ConfigurationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages an AS configuration resource within SberCloud.
-
-        ## Example Usage
-
-        ### Basic AS Configuration
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        flavor_id = config.require_object("flavorId")
-        image_id = config.require_object("imageId")
-        ssh_key = config.require_object("sshKey")
-        security_group_id = config.require_object("securityGroupId")
-        my_as_config = sbercloud.as_.Configuration("my_as_config",
-            scaling_configuration_name="my_as_config",
-            instance_config={
-                "flavor": flavor_id,
-                "image": image_id,
-                "key_name": ssh_key,
-                "security_group_ids": [security_group_id],
-                "disks": [{
-                    "size": 40,
-                    "volume_type": "SSD",
-                    "disk_type": "SYS",
-                }],
-            })
-        ```
-
-        ### AS Configuration With Encrypted Data Disk
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        flavor_id = config.require_object("flavorId")
-        image_id = config.require_object("imageId")
-        ssh_key = config.require_object("sshKey")
-        kms_id = config.require_object("kmsId")
-        security_group_id = config.require_object("securityGroupId")
-        my_as_config = sbercloud.as_.Configuration("my_as_config",
-            scaling_configuration_name="my_as_config",
-            instance_config={
-                "flavor": flavor_id,
-                "image": image_id,
-                "key_name": ssh_key,
-                "security_group_ids": [security_group_id],
-                "disks": [
-                    {
-                        "size": 40,
-                        "volume_type": "SSD",
-                        "disk_type": "SYS",
-                    },
-                    {
-                        "size": 100,
-                        "volume_type": "SSD",
-                        "disk_type": "DATA",
-                        "kms_id": kms_id,
-                    },
-                ],
-            })
-        ```
-
-        ### AS Configuration uses the existing instance specifications as the template
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        ssh_key = config.require_object("sshKey")
-        security_group_id = config.require_object("securityGroupId")
-        my_as_config = sbercloud.as_.Configuration("my_as_config",
-            scaling_configuration_name="my_as_config",
-            instance_config={
-                "instance_id": instance_id,
-                "key_name": ssh_key,
-                "security_group_ids": [security_group_id],
-            })
-        ```
-
-        ## Import
-
-        AS configurations can be imported by their `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:As/configuration:Configuration test 18518c8a-9d15-416b-8add-2ee874751d18
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to `instance_config.0.instance_id`
-
-        is missing from the API response. You can ignore changes after importing an AS configuration as below.
-
-        resource "sbercloud_as_configuration" "test" {
-
-          ...
-
-          lifecycle {
-
-            ignore_changes = [ instance_config.0.instance_id ]
-
-          }
-
-        }
-
+        Create a Configuration resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ConfigurationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -474,14 +209,6 @@ class Configuration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ConfigurationInstanceConfigArgs', 'ConfigurationInstanceConfigArgsDict']] instance_config: Specifies the information about instance configuration.
-               The object structure is documented below. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the AS configuration.
-               If omitted, the provider-level region will be used. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] scaling_configuration_name: Specifies the AS configuration name.
-               The name contains only letters, digits, underscores (_), and hyphens (-), and cannot exceed 64 characters.
-               Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] status: The AS configuration status, the value can be **Bound** or **Unbound**.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -502,36 +229,20 @@ class Configuration(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="instanceConfig")
     def instance_config(self) -> pulumi.Output['outputs.ConfigurationInstanceConfig']:
-        """
-        Specifies the information about instance configuration.
-        The object structure is documented below. Changing this will create a new resource.
-        """
         return pulumi.get(self, "instance_config")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the AS configuration.
-        If omitted, the provider-level region will be used. Changing this will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="scalingConfigurationName")
     def scaling_configuration_name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the AS configuration name.
-        The name contains only letters, digits, underscores (_), and hyphens (-), and cannot exceed 64 characters.
-        Changing this will create a new resource.
-        """
         return pulumi.get(self, "scaling_configuration_name")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
-        """
-        The AS configuration status, the value can be **Bound** or **Unbound**.
-        """
         return pulumi.get(self, "status")
 

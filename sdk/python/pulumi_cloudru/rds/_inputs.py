@@ -93,27 +93,11 @@ class BackupDatabaseArgs:
 if not MYPY:
     class InstanceBackupStrategyArgsDict(TypedDict):
         start_time: pulumi.Input[_builtins.str]
-        """
-        Specifies the backup time window. Automated backups will be triggered during the
-        backup time window. It must be a valid value in the **hh:mm-HH:MM**
-        format. The current time is in the UTC format. The HH value must be 1 greater than the hh value. The values of mm and
-        MM must be the same and must be set to any of the following: 00, 15, 30, or 45. Example value: 08:15-09:15 23:00-00:
-        00.
-        """
         keep_days: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Specifies the retention days for specific backup files. The value range is from 0 to 732.
-
-        > **NOTE:** Primary/standby DB instances of Microsoft SQL Server do not support disabling the automated backup
-        policy.
+        schema: Required
         """
         period: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the backup cycle. Automatic backups will be performed on the specified days of
-        the week, except when disabling the automatic backup policy. The value range is a comma-separated number, where each
-        number represents a day of the week. For example, a value of 1,2,3,4 would set the backup cycle to Monday, Tuesday,
-        Wednesday, and Thursday. The default value is 1,2,3,4,5,6,7.
-        """
 elif False:
     InstanceBackupStrategyArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -124,19 +108,7 @@ class InstanceBackupStrategyArgs:
                  keep_days: Optional[pulumi.Input[_builtins.int]] = None,
                  period: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] start_time: Specifies the backup time window. Automated backups will be triggered during the
-               backup time window. It must be a valid value in the **hh:mm-HH:MM**
-               format. The current time is in the UTC format. The HH value must be 1 greater than the hh value. The values of mm and
-               MM must be the same and must be set to any of the following: 00, 15, 30, or 45. Example value: 08:15-09:15 23:00-00:
-               00.
-        :param pulumi.Input[_builtins.int] keep_days: Specifies the retention days for specific backup files. The value range is from 0 to 732.
-               
-               > **NOTE:** Primary/standby DB instances of Microsoft SQL Server do not support disabling the automated backup
-               policy.
-        :param pulumi.Input[_builtins.str] period: Specifies the backup cycle. Automatic backups will be performed on the specified days of
-               the week, except when disabling the automatic backup policy. The value range is a comma-separated number, where each
-               number represents a day of the week. For example, a value of 1,2,3,4 would set the backup cycle to Monday, Tuesday,
-               Wednesday, and Thursday. The default value is 1,2,3,4,5,6,7.
+        :param pulumi.Input[_builtins.int] keep_days: schema: Required
         """
         pulumi.set(__self__, "start_time", start_time)
         if keep_days is not None:
@@ -147,13 +119,6 @@ class InstanceBackupStrategyArgs:
     @_builtins.property
     @pulumi.getter(name="startTime")
     def start_time(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the backup time window. Automated backups will be triggered during the
-        backup time window. It must be a valid value in the **hh:mm-HH:MM**
-        format. The current time is in the UTC format. The HH value must be 1 greater than the hh value. The values of mm and
-        MM must be the same and must be set to any of the following: 00, 15, 30, or 45. Example value: 08:15-09:15 23:00-00:
-        00.
-        """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
@@ -164,10 +129,7 @@ class InstanceBackupStrategyArgs:
     @pulumi.getter(name="keepDays")
     def keep_days(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the retention days for specific backup files. The value range is from 0 to 732.
-
-        > **NOTE:** Primary/standby DB instances of Microsoft SQL Server do not support disabling the automated backup
-        policy.
+        schema: Required
         """
         return pulumi.get(self, "keep_days")
 
@@ -178,12 +140,6 @@ class InstanceBackupStrategyArgs:
     @_builtins.property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the backup cycle. Automatic backups will be performed on the specified days of
-        the week, except when disabling the automatic backup policy. The value range is a comma-separated number, where each
-        number represents a day of the week. For example, a value of 1,2,3,4 would set the backup cycle to Monday, Tuesday,
-        Wednesday, and Thursday. The default value is 1,2,3,4,5,6,7.
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -194,32 +150,9 @@ class InstanceBackupStrategyArgs:
 if not MYPY:
     class InstanceDbArgsDict(TypedDict):
         type: pulumi.Input[_builtins.str]
-        """
-        Specifies the DB engine. Available value are **MySQL**, **PostgreSQL**
-        and **SQLServer**. Changing this parameter will create a new resource.
-        """
         version: pulumi.Input[_builtins.str]
-        """
-        Specifies the database version. Changing this parameter will create a new
-        resource.
-        """
         password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the database password. The value should contain 8 to 32 characters,
-        including uppercase and lowercase letters, digits, and the following special characters: ~!@#%^*-_=+? You are advised
-        to enter a strong password to improve security, preventing security risks such as brute force cracking.
-        """
         port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the database port.
-        + The MySQL database port ranges from 1024 to 65535 (excluding 12017 and 33071, which are occupied by the RDS system
-        and cannot be used). The default value is 3306.
-        + The PostgreSQL database port ranges from 2100 to 9500. The default value is 5432.
-        + The Microsoft SQL Server database port can be 1433 or ranges from 2100 to 9500, excluding 5355 and 5985. The
-        default value is 1433.
-        + The MariaDB database port ranges from 1024 to 65535 (excluding 12017 and 33071, which are occupied by the RDS system
-        and cannot be used). The default value is 3306.
-        """
         user_name: NotRequired[pulumi.Input[_builtins.str]]
 elif False:
     InstanceDbArgsDict: TypeAlias = Mapping[str, Any]
@@ -232,23 +165,6 @@ class InstanceDbArgs:
                  password: Optional[pulumi.Input[_builtins.str]] = None,
                  port: Optional[pulumi.Input[_builtins.int]] = None,
                  user_name: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] type: Specifies the DB engine. Available value are **MySQL**, **PostgreSQL**
-               and **SQLServer**. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] version: Specifies the database version. Changing this parameter will create a new
-               resource.
-        :param pulumi.Input[_builtins.str] password: Specifies the database password. The value should contain 8 to 32 characters,
-               including uppercase and lowercase letters, digits, and the following special characters: ~!@#%^*-_=+? You are advised
-               to enter a strong password to improve security, preventing security risks such as brute force cracking.
-        :param pulumi.Input[_builtins.int] port: Specifies the database port.
-               + The MySQL database port ranges from 1024 to 65535 (excluding 12017 and 33071, which are occupied by the RDS system
-               and cannot be used). The default value is 3306.
-               + The PostgreSQL database port ranges from 2100 to 9500. The default value is 5432.
-               + The Microsoft SQL Server database port can be 1433 or ranges from 2100 to 9500, excluding 5355 and 5985. The
-               default value is 1433.
-               + The MariaDB database port ranges from 1024 to 65535 (excluding 12017 and 33071, which are occupied by the RDS system
-               and cannot be used). The default value is 3306.
-        """
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "version", version)
         if password is not None:
@@ -261,10 +177,6 @@ class InstanceDbArgs:
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the DB engine. Available value are **MySQL**, **PostgreSQL**
-        and **SQLServer**. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -274,10 +186,6 @@ class InstanceDbArgs:
     @_builtins.property
     @pulumi.getter
     def version(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the database version. Changing this parameter will create a new
-        resource.
-        """
         return pulumi.get(self, "version")
 
     @version.setter
@@ -287,11 +195,6 @@ class InstanceDbArgs:
     @_builtins.property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the database password. The value should contain 8 to 32 characters,
-        including uppercase and lowercase letters, digits, and the following special characters: ~!@#%^*-_=+? You are advised
-        to enter a strong password to improve security, preventing security risks such as brute force cracking.
-        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -301,16 +204,6 @@ class InstanceDbArgs:
     @_builtins.property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the database port.
-        + The MySQL database port ranges from 1024 to 65535 (excluding 12017 and 33071, which are occupied by the RDS system
-        and cannot be used). The default value is 3306.
-        + The PostgreSQL database port ranges from 2100 to 9500. The default value is 5432.
-        + The Microsoft SQL Server database port can be 1433 or ranges from 2100 to 9500, excluding 5355 and 5985. The
-        default value is 1433.
-        + The MariaDB database port ranges from 1024 to 65535 (excluding 12017 and 33071, which are occupied by the RDS system
-        and cannot be used). The default value is 3306.
-        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -330,17 +223,8 @@ class InstanceDbArgs:
 if not MYPY:
     class InstanceMsdtcHostArgsDict(TypedDict):
         host_name: pulumi.Input[_builtins.str]
-        """
-        Specifies the host name.
-        """
         ip: pulumi.Input[_builtins.str]
-        """
-        Specifies the host IP address.
-        """
         id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates the host ID.
-        """
 elif False:
     InstanceMsdtcHostArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -350,11 +234,6 @@ class InstanceMsdtcHostArgs:
                  host_name: pulumi.Input[_builtins.str],
                  ip: pulumi.Input[_builtins.str],
                  id: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] host_name: Specifies the host name.
-        :param pulumi.Input[_builtins.str] ip: Specifies the host IP address.
-        :param pulumi.Input[_builtins.str] id: Indicates the host ID.
-        """
         pulumi.set(__self__, "host_name", host_name)
         pulumi.set(__self__, "ip", ip)
         if id is not None:
@@ -363,9 +242,6 @@ class InstanceMsdtcHostArgs:
     @_builtins.property
     @pulumi.getter(name="hostName")
     def host_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the host name.
-        """
         return pulumi.get(self, "host_name")
 
     @host_name.setter
@@ -375,9 +251,6 @@ class InstanceMsdtcHostArgs:
     @_builtins.property
     @pulumi.getter
     def ip(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the host IP address.
-        """
         return pulumi.get(self, "ip")
 
     @ip.setter
@@ -387,9 +260,6 @@ class InstanceMsdtcHostArgs:
     @_builtins.property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the host ID.
-        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -400,29 +270,10 @@ class InstanceMsdtcHostArgs:
 if not MYPY:
     class InstanceNodeArgsDict(TypedDict):
         availability_zone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the list of AZ name. Changing this parameter will create a
-        new resource.
-        """
         id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates the host ID.
-        """
         name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the DB instance name. The DB instance name of the same type must be unique for
-        the same tenant. The value must be 4 to 64 characters in length and start with a letter. It is case-sensitive and can
-        contain only letters, digits, hyphens (-), and underscores (_).
-        """
         role: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates the node type. The value can be master or slave, indicating the primary node or standby node
-        respectively.
-        """
         status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates the node status.
-        """
 elif False:
     InstanceNodeArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -434,17 +285,6 @@ class InstanceNodeArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  role: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies the list of AZ name. Changing this parameter will create a
-               new resource.
-        :param pulumi.Input[_builtins.str] id: Indicates the host ID.
-        :param pulumi.Input[_builtins.str] name: Specifies the DB instance name. The DB instance name of the same type must be unique for
-               the same tenant. The value must be 4 to 64 characters in length and start with a letter. It is case-sensitive and can
-               contain only letters, digits, hyphens (-), and underscores (_).
-        :param pulumi.Input[_builtins.str] role: Indicates the node type. The value can be master or slave, indicating the primary node or standby node
-               respectively.
-        :param pulumi.Input[_builtins.str] status: Indicates the node status.
-        """
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
         if id is not None:
@@ -459,10 +299,6 @@ class InstanceNodeArgs:
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the list of AZ name. Changing this parameter will create a
-        new resource.
-        """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -472,9 +308,6 @@ class InstanceNodeArgs:
     @_builtins.property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the host ID.
-        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -484,11 +317,6 @@ class InstanceNodeArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the DB instance name. The DB instance name of the same type must be unique for
-        the same tenant. The value must be 4 to 64 characters in length and start with a letter. It is case-sensitive and can
-        contain only letters, digits, hyphens (-), and underscores (_).
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -498,10 +326,6 @@ class InstanceNodeArgs:
     @_builtins.property
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the node type. The value can be master or slave, indicating the primary node or standby node
-        respectively.
-        """
         return pulumi.get(self, "role")
 
     @role.setter
@@ -511,9 +335,6 @@ class InstanceNodeArgs:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the node status.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -524,17 +345,7 @@ class InstanceNodeArgs:
 if not MYPY:
     class InstanceParameterArgsDict(TypedDict):
         name: pulumi.Input[_builtins.str]
-        """
-        Specifies the parameter name. Some of them needs the instance to be restarted
-        to take effect.
-        """
         value: pulumi.Input[_builtins.str]
-        """
-        Specifies the parameter value.
-
-        <a name="RdsInstance_MsdtcHosts"></a>
-        The `msdtc_hosts` block supports:
-        """
 elif False:
     InstanceParameterArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -543,24 +354,12 @@ class InstanceParameterArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.str] name: Specifies the parameter name. Some of them needs the instance to be restarted
-               to take effect.
-        :param pulumi.Input[_builtins.str] value: Specifies the parameter value.
-               
-               <a name="RdsInstance_MsdtcHosts"></a>
-               The `msdtc_hosts` block supports:
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the parameter name. Some of them needs the instance to be restarted
-        to take effect.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -570,12 +369,6 @@ class InstanceParameterArgs:
     @_builtins.property
     @pulumi.getter
     def value(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the parameter value.
-
-        <a name="RdsInstance_MsdtcHosts"></a>
-        The `msdtc_hosts` block supports:
-        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -586,20 +379,8 @@ class InstanceParameterArgs:
 if not MYPY:
     class InstanceRestoreArgsDict(TypedDict):
         backup_id: pulumi.Input[_builtins.str]
-        """
-        Specifies the ID of the backup used to restore data. Changing this
-        parameter will create a new resource.
-        """
         instance_id: pulumi.Input[_builtins.str]
-        """
-        Specifies the source DB instance ID. Changing this parameter will create
-        a new resource.
-        """
         database_name: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Specifies the database to be restored. This parameter applies only to
-        Microsoft SQL Server databases. Changing this parameter will create a new resource.
-        """
 elif False:
     InstanceRestoreArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -609,14 +390,6 @@ class InstanceRestoreArgs:
                  backup_id: pulumi.Input[_builtins.str],
                  instance_id: pulumi.Input[_builtins.str],
                  database_name: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
-        """
-        :param pulumi.Input[_builtins.str] backup_id: Specifies the ID of the backup used to restore data. Changing this
-               parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the source DB instance ID. Changing this parameter will create
-               a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] database_name: Specifies the database to be restored. This parameter applies only to
-               Microsoft SQL Server databases. Changing this parameter will create a new resource.
-        """
         pulumi.set(__self__, "backup_id", backup_id)
         pulumi.set(__self__, "instance_id", instance_id)
         if database_name is not None:
@@ -625,10 +398,6 @@ class InstanceRestoreArgs:
     @_builtins.property
     @pulumi.getter(name="backupId")
     def backup_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the ID of the backup used to restore data. Changing this
-        parameter will create a new resource.
-        """
         return pulumi.get(self, "backup_id")
 
     @backup_id.setter
@@ -638,10 +407,6 @@ class InstanceRestoreArgs:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the source DB instance ID. Changing this parameter will create
-        a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -651,10 +416,6 @@ class InstanceRestoreArgs:
     @_builtins.property
     @pulumi.getter(name="databaseName")
     def database_name(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the database to be restored. This parameter applies only to
-        Microsoft SQL Server databases. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "database_name")
 
     @database_name.setter
@@ -665,39 +426,10 @@ class InstanceRestoreArgs:
 if not MYPY:
     class InstanceVolumeArgsDict(TypedDict):
         size: pulumi.Input[_builtins.int]
-        """
-        Specifies the volume size. Its value range is from 40 GB to 4000 GB. The value must be a
-        multiple of 10 and greater than the original size.
-        """
         type: pulumi.Input[_builtins.str]
-        """
-        Specifies the volume type. Its value can be any of the following and is
-        case-sensitive:
-        + **CLOUDSSD**: cloud SSD storage. This storage type is supported only with general-purpose and dedicated DB
-        instances (MySQL and PostreSQL).
-        + **ESSD**: extreme SSD storage. Supported by: MySQL primary/standby, PostgeSQL (both single and primary/standby).
-        + **ULTRAHIGH** the only storage type for SQLServer, not supported by other DB engines.
-
-        Changing this parameter will create a new resource.
-        """
         disk_encryption_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the key ID for disk encryption.
-        Changing this parameter will create a new resource.
-        """
         limit_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the upper limit of automatic expansion of storage, in GB.
-        """
         trigger_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the threshold to trigger automatic expansion.  
-        If the available storage drops to this threshold or `10` GB, the automatic expansion is triggered.
-        The valid values are as follows:
-        + **10**
-        + **15**
-        + **20**
-        """
 elif False:
     InstanceVolumeArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -709,27 +441,6 @@ class InstanceVolumeArgs:
                  disk_encryption_id: Optional[pulumi.Input[_builtins.str]] = None,
                  limit_size: Optional[pulumi.Input[_builtins.int]] = None,
                  trigger_threshold: Optional[pulumi.Input[_builtins.int]] = None):
-        """
-        :param pulumi.Input[_builtins.int] size: Specifies the volume size. Its value range is from 40 GB to 4000 GB. The value must be a
-               multiple of 10 and greater than the original size.
-        :param pulumi.Input[_builtins.str] type: Specifies the volume type. Its value can be any of the following and is
-               case-sensitive:
-               + **CLOUDSSD**: cloud SSD storage. This storage type is supported only with general-purpose and dedicated DB
-               instances (MySQL and PostreSQL).
-               + **ESSD**: extreme SSD storage. Supported by: MySQL primary/standby, PostgeSQL (both single and primary/standby).
-               + **ULTRAHIGH** the only storage type for SQLServer, not supported by other DB engines.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] disk_encryption_id: Specifies the key ID for disk encryption.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] limit_size: Specifies the upper limit of automatic expansion of storage, in GB.
-        :param pulumi.Input[_builtins.int] trigger_threshold: Specifies the threshold to trigger automatic expansion.  
-               If the available storage drops to this threshold or `10` GB, the automatic expansion is triggered.
-               The valid values are as follows:
-               + **10**
-               + **15**
-               + **20**
-        """
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "type", type)
         if disk_encryption_id is not None:
@@ -742,10 +453,6 @@ class InstanceVolumeArgs:
     @_builtins.property
     @pulumi.getter
     def size(self) -> pulumi.Input[_builtins.int]:
-        """
-        Specifies the volume size. Its value range is from 40 GB to 4000 GB. The value must be a
-        multiple of 10 and greater than the original size.
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -755,16 +462,6 @@ class InstanceVolumeArgs:
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the volume type. Its value can be any of the following and is
-        case-sensitive:
-        + **CLOUDSSD**: cloud SSD storage. This storage type is supported only with general-purpose and dedicated DB
-        instances (MySQL and PostreSQL).
-        + **ESSD**: extreme SSD storage. Supported by: MySQL primary/standby, PostgeSQL (both single and primary/standby).
-        + **ULTRAHIGH** the only storage type for SQLServer, not supported by other DB engines.
-
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -774,10 +471,6 @@ class InstanceVolumeArgs:
     @_builtins.property
     @pulumi.getter(name="diskEncryptionId")
     def disk_encryption_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the key ID for disk encryption.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "disk_encryption_id")
 
     @disk_encryption_id.setter
@@ -787,9 +480,6 @@ class InstanceVolumeArgs:
     @_builtins.property
     @pulumi.getter(name="limitSize")
     def limit_size(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the upper limit of automatic expansion of storage, in GB.
-        """
         return pulumi.get(self, "limit_size")
 
     @limit_size.setter
@@ -799,14 +489,6 @@ class InstanceVolumeArgs:
     @_builtins.property
     @pulumi.getter(name="triggerThreshold")
     def trigger_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the threshold to trigger automatic expansion.  
-        If the available storage drops to this threshold or `10` GB, the automatic expansion is triggered.
-        The valid values are as follows:
-        + **10**
-        + **15**
-        + **20**
-        """
         return pulumi.get(self, "trigger_threshold")
 
     @trigger_threshold.setter
@@ -822,11 +504,7 @@ if not MYPY:
         """
         readonly: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        Specifies the read-only permission. The value can be:
-        + **true**: indicates the read-only permission.
-        + **false**: indicates the read and write permission.
-
-        The default value is **false**.
+        Specifies the read-only permission.
         """
 elif False:
     MysqlDatabasePrivilegeUserArgsDict: TypeAlias = Mapping[str, Any]
@@ -838,11 +516,7 @@ class MysqlDatabasePrivilegeUserArgs:
                  readonly: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Specifies the username of the database account.
-        :param pulumi.Input[_builtins.bool] readonly: Specifies the read-only permission. The value can be:
-               + **true**: indicates the read-only permission.
-               + **false**: indicates the read and write permission.
-               
-               The default value is **false**.
+        :param pulumi.Input[_builtins.bool] readonly: Specifies the read-only permission.
         """
         pulumi.set(__self__, "name", name)
         if readonly is not None:
@@ -864,11 +538,7 @@ class MysqlDatabasePrivilegeUserArgs:
     @pulumi.getter
     def readonly(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies the read-only permission. The value can be:
-        + **true**: indicates the read-only permission.
-        + **false**: indicates the read and write permission.
-
-        The default value is **false**.
+        Specifies the read-only permission.
         """
         return pulumi.get(self, "readonly")
 
@@ -881,15 +551,11 @@ if not MYPY:
     class MysqlDatabaseTableRestoreDatabaseArgsDict(TypedDict):
         new_name: pulumi.Input[_builtins.str]
         """
-        Specifies the name of the table after restoration.
-
-        Changing this creates a new resource.
+        Specifies the name of the database after restoration.
         """
         old_name: pulumi.Input[_builtins.str]
         """
-        Specifies the name of the table before restoration.
-
-        Changing this creates a new resource.
+        Specifies the name of the database before restoration.
         """
 elif False:
     MysqlDatabaseTableRestoreDatabaseArgsDict: TypeAlias = Mapping[str, Any]
@@ -900,12 +566,8 @@ class MysqlDatabaseTableRestoreDatabaseArgs:
                  new_name: pulumi.Input[_builtins.str],
                  old_name: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] new_name: Specifies the name of the table after restoration.
-               
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] old_name: Specifies the name of the table before restoration.
-               
-               Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] new_name: Specifies the name of the database after restoration.
+        :param pulumi.Input[_builtins.str] old_name: Specifies the name of the database before restoration.
         """
         pulumi.set(__self__, "new_name", new_name)
         pulumi.set(__self__, "old_name", old_name)
@@ -914,9 +576,7 @@ class MysqlDatabaseTableRestoreDatabaseArgs:
     @pulumi.getter(name="newName")
     def new_name(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the name of the table after restoration.
-
-        Changing this creates a new resource.
+        Specifies the name of the database after restoration.
         """
         return pulumi.get(self, "new_name")
 
@@ -928,9 +588,7 @@ class MysqlDatabaseTableRestoreDatabaseArgs:
     @pulumi.getter(name="oldName")
     def old_name(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the name of the table before restoration.
-
-        Changing this creates a new resource.
+        Specifies the name of the database before restoration.
         """
         return pulumi.get(self, "old_name")
 
@@ -944,18 +602,10 @@ if not MYPY:
         database: pulumi.Input[_builtins.str]
         """
         Specifies the database name.
-
-        Changing this creates a new resource.
         """
         tables: pulumi.Input[Sequence[pulumi.Input['MysqlDatabaseTableRestoreRestoreTableTableArgsDict']]]
         """
         Specifies the tables.
-        The tables structure is documented below.
-
-        Changing this creates a new resource.
-
-        <a name="tables_struct"></a>
-        The `tables` block supports:
         """
 elif False:
     MysqlDatabaseTableRestoreRestoreTableArgsDict: TypeAlias = Mapping[str, Any]
@@ -967,15 +617,7 @@ class MysqlDatabaseTableRestoreRestoreTableArgs:
                  tables: pulumi.Input[Sequence[pulumi.Input['MysqlDatabaseTableRestoreRestoreTableTableArgs']]]):
         """
         :param pulumi.Input[_builtins.str] database: Specifies the database name.
-               
-               Changing this creates a new resource.
         :param pulumi.Input[Sequence[pulumi.Input['MysqlDatabaseTableRestoreRestoreTableTableArgs']]] tables: Specifies the tables.
-               The tables structure is documented below.
-               
-               Changing this creates a new resource.
-               
-               <a name="tables_struct"></a>
-               The `tables` block supports:
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "tables", tables)
@@ -985,8 +627,6 @@ class MysqlDatabaseTableRestoreRestoreTableArgs:
     def database(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the database name.
-
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "database")
 
@@ -999,12 +639,6 @@ class MysqlDatabaseTableRestoreRestoreTableArgs:
     def tables(self) -> pulumi.Input[Sequence[pulumi.Input['MysqlDatabaseTableRestoreRestoreTableTableArgs']]]:
         """
         Specifies the tables.
-        The tables structure is documented below.
-
-        Changing this creates a new resource.
-
-        <a name="tables_struct"></a>
-        The `tables` block supports:
         """
         return pulumi.get(self, "tables")
 
@@ -1018,14 +652,10 @@ if not MYPY:
         new_name: pulumi.Input[_builtins.str]
         """
         Specifies the name of the table after restoration.
-
-        Changing this creates a new resource.
         """
         old_name: pulumi.Input[_builtins.str]
         """
         Specifies the name of the table before restoration.
-
-        Changing this creates a new resource.
         """
 elif False:
     MysqlDatabaseTableRestoreRestoreTableTableArgsDict: TypeAlias = Mapping[str, Any]
@@ -1037,11 +667,7 @@ class MysqlDatabaseTableRestoreRestoreTableTableArgs:
                  old_name: pulumi.Input[_builtins.str]):
         """
         :param pulumi.Input[_builtins.str] new_name: Specifies the name of the table after restoration.
-               
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] old_name: Specifies the name of the table before restoration.
-               
-               Changing this creates a new resource.
         """
         pulumi.set(__self__, "new_name", new_name)
         pulumi.set(__self__, "old_name", old_name)
@@ -1051,8 +677,6 @@ class MysqlDatabaseTableRestoreRestoreTableTableArgs:
     def new_name(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the name of the table after restoration.
-
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "new_name")
 
@@ -1065,8 +689,6 @@ class MysqlDatabaseTableRestoreRestoreTableTableArgs:
     def old_name(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the name of the table before restoration.
-
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "old_name")
 
@@ -1078,33 +700,12 @@ class MysqlDatabaseTableRestoreRestoreTableTableArgs:
 if not MYPY:
     class ParametergroupConfigurationParameterArgsDict(TypedDict):
         description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The parameter group description. It contains a maximum of 256 characters and cannot contain the following special characters:>!<"&'= the value is left blank by default.
-        """
         name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The parameter group name. It contains a maximum of 64 characters.
-        """
         readonly: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether the parameter is read-only.
-        """
         restart_required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether a restart is required.
-        """
         type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates the parameter type.
-        """
         value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates the parameter value.
-        """
         value_range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates the parameter value range.
-        """
 elif False:
     ParametergroupConfigurationParameterArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1118,15 +719,6 @@ class ParametergroupConfigurationParameterArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  value: Optional[pulumi.Input[_builtins.str]] = None,
                  value_range: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] description: The parameter group description. It contains a maximum of 256 characters and cannot contain the following special characters:>!<"&'= the value is left blank by default.
-        :param pulumi.Input[_builtins.str] name: The parameter group name. It contains a maximum of 64 characters.
-        :param pulumi.Input[_builtins.bool] readonly: Indicates whether the parameter is read-only.
-        :param pulumi.Input[_builtins.bool] restart_required: Indicates whether a restart is required.
-        :param pulumi.Input[_builtins.str] type: Indicates the parameter type.
-        :param pulumi.Input[_builtins.str] value: Indicates the parameter value.
-        :param pulumi.Input[_builtins.str] value_range: Indicates the parameter value range.
-        """
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -1145,9 +737,6 @@ class ParametergroupConfigurationParameterArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The parameter group description. It contains a maximum of 256 characters and cannot contain the following special characters:>!<"&'= the value is left blank by default.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -1157,9 +746,6 @@ class ParametergroupConfigurationParameterArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The parameter group name. It contains a maximum of 64 characters.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -1169,9 +755,6 @@ class ParametergroupConfigurationParameterArgs:
     @_builtins.property
     @pulumi.getter
     def readonly(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Indicates whether the parameter is read-only.
-        """
         return pulumi.get(self, "readonly")
 
     @readonly.setter
@@ -1181,9 +764,6 @@ class ParametergroupConfigurationParameterArgs:
     @_builtins.property
     @pulumi.getter(name="restartRequired")
     def restart_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Indicates whether a restart is required.
-        """
         return pulumi.get(self, "restart_required")
 
     @restart_required.setter
@@ -1193,9 +773,6 @@ class ParametergroupConfigurationParameterArgs:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the parameter type.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -1205,9 +782,6 @@ class ParametergroupConfigurationParameterArgs:
     @_builtins.property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the parameter value.
-        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -1217,9 +791,6 @@ class ParametergroupConfigurationParameterArgs:
     @_builtins.property
     @pulumi.getter(name="valueRange")
     def value_range(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the parameter value range.
-        """
         return pulumi.get(self, "value_range")
 
     @value_range.setter
@@ -1230,17 +801,7 @@ class ParametergroupConfigurationParameterArgs:
 if not MYPY:
     class ParametergroupDatastoreArgsDict(TypedDict):
         type: pulumi.Input[_builtins.str]
-        """
-        The DB engine. Currently, MySQL, PostgreSQL, and Microsoft SQL Server are supported. The value is case-insensitive and can be mysql, postgresql, or sqlserver.
-        """
         version: pulumi.Input[_builtins.str]
-        """
-        Specifies the database version.
-
-        * MySQL databases support MySQL 5.6, 5.7 and 8.0. Example value: 5.7.
-        * PostgreSQL databases support PostgreSQL 9.5, 9.6, 10, 11 and 12. Example value: 9.5.
-        * Microsoft SQL Server databases support 2012_SE, 2014_SE, 2016_SE, 2012_EE, 2014_EE, 2016_EE and 2017_EE. Example value: 2014_SE.
-        """
 elif False:
     ParametergroupDatastoreArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1249,23 +810,12 @@ class ParametergroupDatastoreArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[_builtins.str],
                  version: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.str] type: The DB engine. Currently, MySQL, PostgreSQL, and Microsoft SQL Server are supported. The value is case-insensitive and can be mysql, postgresql, or sqlserver.
-        :param pulumi.Input[_builtins.str] version: Specifies the database version.
-               
-               * MySQL databases support MySQL 5.6, 5.7 and 8.0. Example value: 5.7.
-               * PostgreSQL databases support PostgreSQL 9.5, 9.6, 10, 11 and 12. Example value: 9.5.
-               * Microsoft SQL Server databases support 2012_SE, 2014_SE, 2016_SE, 2012_EE, 2014_EE, 2016_EE and 2017_EE. Example value: 2014_SE.
-        """
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "version", version)
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
-        """
-        The DB engine. Currently, MySQL, PostgreSQL, and Microsoft SQL Server are supported. The value is case-insensitive and can be mysql, postgresql, or sqlserver.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -1275,13 +825,6 @@ class ParametergroupDatastoreArgs:
     @_builtins.property
     @pulumi.getter
     def version(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the database version.
-
-        * MySQL databases support MySQL 5.6, 5.7 and 8.0. Example value: 5.7.
-        * PostgreSQL databases support PostgreSQL 9.5, 9.6, 10, 11 and 12. Example value: 9.5.
-        * Microsoft SQL Server databases support 2012_SE, 2014_SE, 2016_SE, 2012_EE, 2014_EE, 2016_EE and 2017_EE. Example value: 2014_SE.
-        """
         return pulumi.get(self, "version")
 
     @version.setter
@@ -1313,7 +856,8 @@ if not MYPY:
         """
         rol_inherit: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        Indicates whether a user automatically inherits the permissions of the role to which the user belongs.
+        Indicates whether a user automatically inherits the permissions of the role to which the
+        user belongs.
         """
         rol_replication: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -1343,7 +887,8 @@ class PgAccountAttributeArgs:
         :param pulumi.Input[_builtins.int] rol_conn_limit: Indicates the maximum number of concurrent connections to a DB instance.
         :param pulumi.Input[_builtins.bool] rol_create_db: Indicates whether a user can create a database.
         :param pulumi.Input[_builtins.bool] rol_create_role: Indicates whether a user can create other sub-users.
-        :param pulumi.Input[_builtins.bool] rol_inherit: Indicates whether a user automatically inherits the permissions of the role to which the user belongs.
+        :param pulumi.Input[_builtins.bool] rol_inherit: Indicates whether a user automatically inherits the permissions of the role to which the
+               user belongs.
         :param pulumi.Input[_builtins.bool] rol_replication: Indicates whether the user is a replication role.
         :param pulumi.Input[_builtins.bool] rol_super: Indicates whether a user has the super-user permission.
         """
@@ -1428,7 +973,8 @@ class PgAccountAttributeArgs:
     @pulumi.getter(name="rolInherit")
     def rol_inherit(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Indicates whether a user automatically inherits the permissions of the role to which the user belongs.
+        Indicates whether a user automatically inherits the permissions of the role to which the
+        user belongs.
         """
         return pulumi.get(self, "rol_inherit")
 
@@ -1591,21 +1137,9 @@ class PgHbaHostBasedAuthenticationArgs:
 if not MYPY:
     class ReadReplicaInstanceDbArgsDict(TypedDict):
         port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Indicates the database port information.
-        """
         type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates the DB engine. Value: MySQL, PostgreSQL, SQLServer.
-        """
         user_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates the default user name of database.
-        """
         version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates the database version.
-        """
 elif False:
     ReadReplicaInstanceDbArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1616,12 +1150,6 @@ class ReadReplicaInstanceDbArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  user_name: Optional[pulumi.Input[_builtins.str]] = None,
                  version: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.int] port: Indicates the database port information.
-        :param pulumi.Input[_builtins.str] type: Indicates the DB engine. Value: MySQL, PostgreSQL, SQLServer.
-        :param pulumi.Input[_builtins.str] user_name: Indicates the default user name of database.
-        :param pulumi.Input[_builtins.str] version: Indicates the database version.
-        """
         if port is not None:
             pulumi.set(__self__, "port", port)
         if type is not None:
@@ -1634,9 +1162,6 @@ class ReadReplicaInstanceDbArgs:
     @_builtins.property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Indicates the database port information.
-        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -1646,9 +1171,6 @@ class ReadReplicaInstanceDbArgs:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the DB engine. Value: MySQL, PostgreSQL, SQLServer.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -1658,9 +1180,6 @@ class ReadReplicaInstanceDbArgs:
     @_builtins.property
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the default user name of database.
-        """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
@@ -1670,9 +1189,6 @@ class ReadReplicaInstanceDbArgs:
     @_builtins.property
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the database version.
-        """
         return pulumi.get(self, "version")
 
     @version.setter
@@ -1683,12 +1199,6 @@ class ReadReplicaInstanceDbArgs:
 if not MYPY:
     class ReadReplicaInstanceParameterArgsDict(TypedDict):
         name: pulumi.Input[_builtins.str]
-        """
-        Specifies the DB instance name. The DB instance name of the same type
-        must be unique for the same tenant. The value must be 4 to 64 characters in length and start with a letter.
-        It is case-sensitive and can contain only letters, digits, hyphens (-), and underscores (_).
-        Changing this parameter will create a new resource.
-        """
         value: pulumi.Input[_builtins.str]
 elif False:
     ReadReplicaInstanceParameterArgsDict: TypeAlias = Mapping[str, Any]
@@ -1698,24 +1208,12 @@ class ReadReplicaInstanceParameterArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.str] name: Specifies the DB instance name. The DB instance name of the same type
-               must be unique for the same tenant. The value must be 4 to 64 characters in length and start with a letter.
-               It is case-sensitive and can contain only letters, digits, hyphens (-), and underscores (_).
-               Changing this parameter will create a new resource.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the DB instance name. The DB instance name of the same type
-        must be unique for the same tenant. The value must be 4 to 64 characters in length and start with a letter.
-        It is case-sensitive and can contain only letters, digits, hyphens (-), and underscores (_).
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -1735,17 +1233,9 @@ class ReadReplicaInstanceParameterArgs:
 if not MYPY:
     class ReadReplicaInstanceVolumeArgsDict(TypedDict):
         type: pulumi.Input[_builtins.str]
-        """
-        Specifies the volume type. Its value can be any of the following and is case-sensitive:
-        - *ESSD* - ultrahigh I/O.
-        - *CLOUDSSD* - high I/O.
-
-        Changing this parameter will create a new resource.
-        """
         disk_encryption_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the key ID for disk encryption.
-        Changing this parameter will create a new resource.
+        schema: Computed
         """
         limit_size: NotRequired[pulumi.Input[_builtins.int]]
         size: NotRequired[pulumi.Input[_builtins.int]]
@@ -1762,13 +1252,7 @@ class ReadReplicaInstanceVolumeArgs:
                  size: Optional[pulumi.Input[_builtins.int]] = None,
                  trigger_threshold: Optional[pulumi.Input[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.str] type: Specifies the volume type. Its value can be any of the following and is case-sensitive:
-               - *ESSD* - ultrahigh I/O.
-               - *CLOUDSSD* - high I/O.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] disk_encryption_id: Specifies the key ID for disk encryption.
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] disk_encryption_id: schema: Computed
         """
         pulumi.set(__self__, "type", type)
         if disk_encryption_id is not None:
@@ -1783,13 +1267,6 @@ class ReadReplicaInstanceVolumeArgs:
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the volume type. Its value can be any of the following and is case-sensitive:
-        - *ESSD* - ultrahigh I/O.
-        - *CLOUDSSD* - high I/O.
-
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -1800,8 +1277,7 @@ class ReadReplicaInstanceVolumeArgs:
     @pulumi.getter(name="diskEncryptionId")
     def disk_encryption_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the key ID for disk encryption.
-        Changing this parameter will create a new resource.
+        schema: Computed
         """
         return pulumi.get(self, "disk_encryption_id")
 
@@ -1845,11 +1321,7 @@ if not MYPY:
         """
         readonly: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        Specifies the read-only permission. Value options:
-        + **true**: indicates the read-only permission.
-        + **false**: indicates the read and write permission.
-
-        Defaults to **false**.
+        Specifies the read-only permission.
         """
 elif False:
     SqlserverDatabasePrivilegeUserArgsDict: TypeAlias = Mapping[str, Any]
@@ -1861,11 +1333,7 @@ class SqlserverDatabasePrivilegeUserArgs:
                  readonly: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Specifies the username of the database account.
-        :param pulumi.Input[_builtins.bool] readonly: Specifies the read-only permission. Value options:
-               + **true**: indicates the read-only permission.
-               + **false**: indicates the read and write permission.
-               
-               Defaults to **false**.
+        :param pulumi.Input[_builtins.bool] readonly: Specifies the read-only permission.
         """
         pulumi.set(__self__, "name", name)
         if readonly is not None:
@@ -1887,11 +1355,7 @@ class SqlserverDatabasePrivilegeUserArgs:
     @pulumi.getter
     def readonly(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies the read-only permission. Value options:
-        + **true**: indicates the read-only permission.
-        + **false**: indicates the read and write permission.
-
-        Defaults to **false**.
+        Specifies the read-only permission.
         """
         return pulumi.get(self, "readonly")
 

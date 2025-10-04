@@ -12,69 +12,17 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a DMS RocketMQ consumption verify resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			group := cfg.RequireObject("group")
-//			topic := cfg.RequireObject("topic")
-//			clientId := cfg.RequireObject("clientId")
-//			messageIdList := cfg.RequireObject("messageIdList")
-//			_, err := sbercloud.NewDmsRocketmqConsumptionVerify(ctx, "test", &sbercloud.DmsRocketmqConsumptionVerifyArgs{
-//				InstanceId:     pulumi.Any(instanceId),
-//				Group:          pulumi.Any(group),
-//				Topic:          pulumi.Any(topic),
-//				ClientId:       pulumi.Any(clientId),
-//				MessageIdLists: pulumi.Any(messageIdList),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type DmsRocketmqConsumptionVerify struct {
 	pulumi.CustomResourceState
 
-	// Specifies the client ID.
-	// Changing this creates a new resource.
-	ClientId pulumi.StringPtrOutput `pulumi:"clientId"`
-	// Specifies the group name.
-	// Changing this creates a new resource.
-	Group pulumi.StringPtrOutput `pulumi:"group"`
-	// Specifies the instance ID.
-	// Changing this creates a new resource.
-	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Specifies the message ID list.
-	// Changing this creates a new resource.
+	ClientId       pulumi.StringPtrOutput   `pulumi:"clientId"`
+	Group          pulumi.StringPtrOutput   `pulumi:"group"`
+	InstanceId     pulumi.StringOutput      `pulumi:"instanceId"`
 	MessageIdLists pulumi.StringArrayOutput `pulumi:"messageIdLists"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Region         pulumi.StringOutput      `pulumi:"region"`
 	// Indicates the verify results.
-	// The resendResults structure is documented below.
 	ResendResults DmsRocketmqConsumptionVerifyResendResultArrayOutput `pulumi:"resendResults"`
-	// Specifies the topic name.
-	// Changing this creates a new resource.
-	Topic pulumi.StringPtrOutput `pulumi:"topic"`
+	Topic         pulumi.StringPtrOutput                              `pulumi:"topic"`
 }
 
 // NewDmsRocketmqConsumptionVerify registers a new resource with the given unique name, arguments, and options.
@@ -110,53 +58,25 @@ func GetDmsRocketmqConsumptionVerify(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DmsRocketmqConsumptionVerify resources.
 type dmsRocketmqConsumptionVerifyState struct {
-	// Specifies the client ID.
-	// Changing this creates a new resource.
-	ClientId *string `pulumi:"clientId"`
-	// Specifies the group name.
-	// Changing this creates a new resource.
-	Group *string `pulumi:"group"`
-	// Specifies the instance ID.
-	// Changing this creates a new resource.
-	InstanceId *string `pulumi:"instanceId"`
-	// Specifies the message ID list.
-	// Changing this creates a new resource.
+	ClientId       *string  `pulumi:"clientId"`
+	Group          *string  `pulumi:"group"`
+	InstanceId     *string  `pulumi:"instanceId"`
 	MessageIdLists []string `pulumi:"messageIdLists"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region *string `pulumi:"region"`
+	Region         *string  `pulumi:"region"`
 	// Indicates the verify results.
-	// The resendResults structure is documented below.
 	ResendResults []DmsRocketmqConsumptionVerifyResendResult `pulumi:"resendResults"`
-	// Specifies the topic name.
-	// Changing this creates a new resource.
-	Topic *string `pulumi:"topic"`
+	Topic         *string                                    `pulumi:"topic"`
 }
 
 type DmsRocketmqConsumptionVerifyState struct {
-	// Specifies the client ID.
-	// Changing this creates a new resource.
-	ClientId pulumi.StringPtrInput
-	// Specifies the group name.
-	// Changing this creates a new resource.
-	Group pulumi.StringPtrInput
-	// Specifies the instance ID.
-	// Changing this creates a new resource.
-	InstanceId pulumi.StringPtrInput
-	// Specifies the message ID list.
-	// Changing this creates a new resource.
+	ClientId       pulumi.StringPtrInput
+	Group          pulumi.StringPtrInput
+	InstanceId     pulumi.StringPtrInput
 	MessageIdLists pulumi.StringArrayInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region pulumi.StringPtrInput
+	Region         pulumi.StringPtrInput
 	// Indicates the verify results.
-	// The resendResults structure is documented below.
 	ResendResults DmsRocketmqConsumptionVerifyResendResultArrayInput
-	// Specifies the topic name.
-	// Changing this creates a new resource.
-	Topic pulumi.StringPtrInput
+	Topic         pulumi.StringPtrInput
 }
 
 func (DmsRocketmqConsumptionVerifyState) ElementType() reflect.Type {
@@ -164,48 +84,22 @@ func (DmsRocketmqConsumptionVerifyState) ElementType() reflect.Type {
 }
 
 type dmsRocketmqConsumptionVerifyArgs struct {
-	// Specifies the client ID.
-	// Changing this creates a new resource.
-	ClientId *string `pulumi:"clientId"`
-	// Specifies the group name.
-	// Changing this creates a new resource.
-	Group *string `pulumi:"group"`
-	// Specifies the instance ID.
-	// Changing this creates a new resource.
-	InstanceId string `pulumi:"instanceId"`
-	// Specifies the message ID list.
-	// Changing this creates a new resource.
+	ClientId       *string  `pulumi:"clientId"`
+	Group          *string  `pulumi:"group"`
+	InstanceId     string   `pulumi:"instanceId"`
 	MessageIdLists []string `pulumi:"messageIdLists"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies the topic name.
-	// Changing this creates a new resource.
-	Topic *string `pulumi:"topic"`
+	Region         *string  `pulumi:"region"`
+	Topic          *string  `pulumi:"topic"`
 }
 
 // The set of arguments for constructing a DmsRocketmqConsumptionVerify resource.
 type DmsRocketmqConsumptionVerifyArgs struct {
-	// Specifies the client ID.
-	// Changing this creates a new resource.
-	ClientId pulumi.StringPtrInput
-	// Specifies the group name.
-	// Changing this creates a new resource.
-	Group pulumi.StringPtrInput
-	// Specifies the instance ID.
-	// Changing this creates a new resource.
-	InstanceId pulumi.StringInput
-	// Specifies the message ID list.
-	// Changing this creates a new resource.
+	ClientId       pulumi.StringPtrInput
+	Group          pulumi.StringPtrInput
+	InstanceId     pulumi.StringInput
 	MessageIdLists pulumi.StringArrayInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region pulumi.StringPtrInput
-	// Specifies the topic name.
-	// Changing this creates a new resource.
-	Topic pulumi.StringPtrInput
+	Region         pulumi.StringPtrInput
+	Topic          pulumi.StringPtrInput
 }
 
 func (DmsRocketmqConsumptionVerifyArgs) ElementType() reflect.Type {
@@ -295,47 +189,33 @@ func (o DmsRocketmqConsumptionVerifyOutput) ToDmsRocketmqConsumptionVerifyOutput
 	return o
 }
 
-// Specifies the client ID.
-// Changing this creates a new resource.
 func (o DmsRocketmqConsumptionVerifyOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DmsRocketmqConsumptionVerify) pulumi.StringPtrOutput { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the group name.
-// Changing this creates a new resource.
 func (o DmsRocketmqConsumptionVerifyOutput) Group() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DmsRocketmqConsumptionVerify) pulumi.StringPtrOutput { return v.Group }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the instance ID.
-// Changing this creates a new resource.
 func (o DmsRocketmqConsumptionVerifyOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DmsRocketmqConsumptionVerify) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Specifies the message ID list.
-// Changing this creates a new resource.
 func (o DmsRocketmqConsumptionVerifyOutput) MessageIdLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DmsRocketmqConsumptionVerify) pulumi.StringArrayOutput { return v.MessageIdLists }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used.
-// Changing this creates a new resource.
 func (o DmsRocketmqConsumptionVerifyOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *DmsRocketmqConsumptionVerify) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // Indicates the verify results.
-// The resendResults structure is documented below.
 func (o DmsRocketmqConsumptionVerifyOutput) ResendResults() DmsRocketmqConsumptionVerifyResendResultArrayOutput {
 	return o.ApplyT(func(v *DmsRocketmqConsumptionVerify) DmsRocketmqConsumptionVerifyResendResultArrayOutput {
 		return v.ResendResults
 	}).(DmsRocketmqConsumptionVerifyResendResultArrayOutput)
 }
 
-// Specifies the topic name.
-// Changing this creates a new resource.
 func (o DmsRocketmqConsumptionVerifyOutput) Topic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DmsRocketmqConsumptionVerify) pulumi.StringPtrOutput { return v.Topic }).(pulumi.StringPtrOutput)
 }

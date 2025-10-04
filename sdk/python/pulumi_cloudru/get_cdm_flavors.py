@@ -44,9 +44,6 @@ class GetCdmFlavorsResult:
     @_builtins.property
     @pulumi.getter
     def flavors(self) -> Sequence['outputs.GetCdmFlavorsFlavorResult']:
-        """
-        Indicates the flavors information. Structure is documented below.
-        """
         return pulumi.get(self, "flavors")
 
     @_builtins.property
@@ -60,17 +57,11 @@ class GetCdmFlavorsResult:
     @_builtins.property
     @pulumi.getter
     def region(self) -> _builtins.str:
-        """
-        The region in which to obtain the CDM flavors. If omitted, the provider-level region will be used.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter
     def version(self) -> _builtins.str:
-        """
-        The version of the flavor.
-        """
         return pulumi.get(self, "version")
 
 
@@ -89,19 +80,7 @@ class AwaitableGetCdmFlavorsResult(GetCdmFlavorsResult):
 def get_cdm_flavors(region: Optional[_builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCdmFlavorsResult:
     """
-    Use this data source to get available SberCloud cdm flavors.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    flavor = sbercloud.get_cdm_flavors()
-    ```
-
-
-    :param _builtins.str region: The region in which to obtain the CDM flavors. If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['region'] = region
@@ -116,19 +95,7 @@ def get_cdm_flavors(region: Optional[_builtins.str] = None,
 def get_cdm_flavors_output(region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCdmFlavorsResult]:
     """
-    Use this data source to get available SberCloud cdm flavors.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    flavor = sbercloud.get_cdm_flavors()
-    ```
-
-
-    :param _builtins.str region: The region in which to obtain the CDM flavors. If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['region'] = region

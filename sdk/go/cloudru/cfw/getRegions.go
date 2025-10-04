@@ -11,36 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of CFW regions.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			fwInstanceId := cfg.RequireObject("fwInstanceId")
-//			_, err := cfw.GetRegions(ctx, &cfw.GetRegionsArgs{
-//				FwInstanceId: fwInstanceId,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetRegions(ctx *pulumi.Context, args *GetRegionsArgs, opts ...pulumi.InvokeOption) (*GetRegionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRegionsResult
@@ -53,18 +23,13 @@ func GetRegions(ctx *pulumi.Context, args *GetRegionsArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getRegions.
 type GetRegionsArgs struct {
-	// Specifies the enterprise project ID.
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the firewall ID.
-	FwInstanceId string `pulumi:"fwInstanceId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
+	FwInstanceId        string  `pulumi:"fwInstanceId"`
+	Region              *string `pulumi:"region"`
 }
 
 // A collection of values returned by getRegions.
 type GetRegionsResult struct {
-	// The region list.
 	Data                string  `pulumi:"data"`
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
 	FwInstanceId        string  `pulumi:"fwInstanceId"`
@@ -84,13 +49,9 @@ func GetRegionsOutput(ctx *pulumi.Context, args GetRegionsOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getRegions.
 type GetRegionsOutputArgs struct {
-	// Specifies the enterprise project ID.
 	EnterpriseProjectId pulumi.StringPtrInput `pulumi:"enterpriseProjectId"`
-	// Specifies the firewall ID.
-	FwInstanceId pulumi.StringInput `pulumi:"fwInstanceId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	FwInstanceId        pulumi.StringInput    `pulumi:"fwInstanceId"`
+	Region              pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetRegionsOutputArgs) ElementType() reflect.Type {
@@ -112,7 +73,6 @@ func (o GetRegionsResultOutput) ToGetRegionsResultOutputWithContext(ctx context.
 	return o
 }
 
-// The region list.
 func (o GetRegionsResultOutput) Data() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionsResult) string { return v.Data }).(pulumi.StringOutput)
 }

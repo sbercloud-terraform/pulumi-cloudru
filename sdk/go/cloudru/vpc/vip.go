@@ -12,38 +12,17 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a network VIP resource within SberCloud VPC.
-//
-// ## Import
-//
-// Network VIPs can be imported using their `id`, e.g.:
-//
-// ```sh
-// $ pulumi import sbercloud:Vpc/vip:Vip test ce595799-da26-4015-8db5-7733c6db292e
-// ```
 type Vip struct {
 	pulumi.CustomResourceState
 
-	// The device owner of the VIP.
 	DeviceOwner pulumi.StringOutput `pulumi:"deviceOwner"`
-	// Specifies the IP address desired in the subnet for this VIP.
-	// Changing this will create a new VIP resource.
-	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
-	// Specifies the IP version, either `4` (default) or `6`.
-	// Changing this will create a new VIP resource.
-	IpVersion pulumi.IntOutput `pulumi:"ipVersion"`
-	// The MAC address of the VIP.
-	MacAddress pulumi.StringOutput `pulumi:"macAddress"`
-	// Specifies a unique name for the VIP.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the network ID of the VPC subnet to which the VIP belongs.
-	// Changing this will create a new VIP resource.
-	NetworkId pulumi.StringOutput `pulumi:"networkId"`
-	// Specifies the region in which to create the VIP.
-	// If omitted, the provider-level region will be used. Changing this will create a new VIP resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// The VIP status.
-	Status pulumi.StringOutput `pulumi:"status"`
+	IpAddress   pulumi.StringOutput `pulumi:"ipAddress"`
+	IpVersion   pulumi.IntOutput    `pulumi:"ipVersion"`
+	MacAddress  pulumi.StringOutput `pulumi:"macAddress"`
+	Name        pulumi.StringOutput `pulumi:"name"`
+	NetworkId   pulumi.StringOutput `pulumi:"networkId"`
+	Region      pulumi.StringOutput `pulumi:"region"`
+	Status      pulumi.StringOutput `pulumi:"status"`
 	// Deprecated: use ipVersion instead
 	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
 }
@@ -81,51 +60,27 @@ func GetVip(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Vip resources.
 type vipState struct {
-	// The device owner of the VIP.
 	DeviceOwner *string `pulumi:"deviceOwner"`
-	// Specifies the IP address desired in the subnet for this VIP.
-	// Changing this will create a new VIP resource.
-	IpAddress *string `pulumi:"ipAddress"`
-	// Specifies the IP version, either `4` (default) or `6`.
-	// Changing this will create a new VIP resource.
-	IpVersion *int `pulumi:"ipVersion"`
-	// The MAC address of the VIP.
-	MacAddress *string `pulumi:"macAddress"`
-	// Specifies a unique name for the VIP.
-	Name *string `pulumi:"name"`
-	// Specifies the network ID of the VPC subnet to which the VIP belongs.
-	// Changing this will create a new VIP resource.
-	NetworkId *string `pulumi:"networkId"`
-	// Specifies the region in which to create the VIP.
-	// If omitted, the provider-level region will be used. Changing this will create a new VIP resource.
-	Region *string `pulumi:"region"`
-	// The VIP status.
-	Status *string `pulumi:"status"`
+	IpAddress   *string `pulumi:"ipAddress"`
+	IpVersion   *int    `pulumi:"ipVersion"`
+	MacAddress  *string `pulumi:"macAddress"`
+	Name        *string `pulumi:"name"`
+	NetworkId   *string `pulumi:"networkId"`
+	Region      *string `pulumi:"region"`
+	Status      *string `pulumi:"status"`
 	// Deprecated: use ipVersion instead
 	SubnetId *string `pulumi:"subnetId"`
 }
 
 type VipState struct {
-	// The device owner of the VIP.
 	DeviceOwner pulumi.StringPtrInput
-	// Specifies the IP address desired in the subnet for this VIP.
-	// Changing this will create a new VIP resource.
-	IpAddress pulumi.StringPtrInput
-	// Specifies the IP version, either `4` (default) or `6`.
-	// Changing this will create a new VIP resource.
-	IpVersion pulumi.IntPtrInput
-	// The MAC address of the VIP.
-	MacAddress pulumi.StringPtrInput
-	// Specifies a unique name for the VIP.
-	Name pulumi.StringPtrInput
-	// Specifies the network ID of the VPC subnet to which the VIP belongs.
-	// Changing this will create a new VIP resource.
-	NetworkId pulumi.StringPtrInput
-	// Specifies the region in which to create the VIP.
-	// If omitted, the provider-level region will be used. Changing this will create a new VIP resource.
-	Region pulumi.StringPtrInput
-	// The VIP status.
-	Status pulumi.StringPtrInput
+	IpAddress   pulumi.StringPtrInput
+	IpVersion   pulumi.IntPtrInput
+	MacAddress  pulumi.StringPtrInput
+	Name        pulumi.StringPtrInput
+	NetworkId   pulumi.StringPtrInput
+	Region      pulumi.StringPtrInput
+	Status      pulumi.StringPtrInput
 	// Deprecated: use ipVersion instead
 	SubnetId pulumi.StringPtrInput
 }
@@ -135,40 +90,22 @@ func (VipState) ElementType() reflect.Type {
 }
 
 type vipArgs struct {
-	// Specifies the IP address desired in the subnet for this VIP.
-	// Changing this will create a new VIP resource.
 	IpAddress *string `pulumi:"ipAddress"`
-	// Specifies the IP version, either `4` (default) or `6`.
-	// Changing this will create a new VIP resource.
-	IpVersion *int `pulumi:"ipVersion"`
-	// Specifies a unique name for the VIP.
-	Name *string `pulumi:"name"`
-	// Specifies the network ID of the VPC subnet to which the VIP belongs.
-	// Changing this will create a new VIP resource.
-	NetworkId string `pulumi:"networkId"`
-	// Specifies the region in which to create the VIP.
-	// If omitted, the provider-level region will be used. Changing this will create a new VIP resource.
-	Region *string `pulumi:"region"`
+	IpVersion *int    `pulumi:"ipVersion"`
+	Name      *string `pulumi:"name"`
+	NetworkId string  `pulumi:"networkId"`
+	Region    *string `pulumi:"region"`
 	// Deprecated: use ipVersion instead
 	SubnetId *string `pulumi:"subnetId"`
 }
 
 // The set of arguments for constructing a Vip resource.
 type VipArgs struct {
-	// Specifies the IP address desired in the subnet for this VIP.
-	// Changing this will create a new VIP resource.
 	IpAddress pulumi.StringPtrInput
-	// Specifies the IP version, either `4` (default) or `6`.
-	// Changing this will create a new VIP resource.
 	IpVersion pulumi.IntPtrInput
-	// Specifies a unique name for the VIP.
-	Name pulumi.StringPtrInput
-	// Specifies the network ID of the VPC subnet to which the VIP belongs.
-	// Changing this will create a new VIP resource.
+	Name      pulumi.StringPtrInput
 	NetworkId pulumi.StringInput
-	// Specifies the region in which to create the VIP.
-	// If omitted, the provider-level region will be used. Changing this will create a new VIP resource.
-	Region pulumi.StringPtrInput
+	Region    pulumi.StringPtrInput
 	// Deprecated: use ipVersion instead
 	SubnetId pulumi.StringPtrInput
 }
@@ -260,46 +197,34 @@ func (o VipOutput) ToVipOutputWithContext(ctx context.Context) VipOutput {
 	return o
 }
 
-// The device owner of the VIP.
 func (o VipOutput) DeviceOwner() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vip) pulumi.StringOutput { return v.DeviceOwner }).(pulumi.StringOutput)
 }
 
-// Specifies the IP address desired in the subnet for this VIP.
-// Changing this will create a new VIP resource.
 func (o VipOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vip) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
 }
 
-// Specifies the IP version, either `4` (default) or `6`.
-// Changing this will create a new VIP resource.
 func (o VipOutput) IpVersion() pulumi.IntOutput {
 	return o.ApplyT(func(v *Vip) pulumi.IntOutput { return v.IpVersion }).(pulumi.IntOutput)
 }
 
-// The MAC address of the VIP.
 func (o VipOutput) MacAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vip) pulumi.StringOutput { return v.MacAddress }).(pulumi.StringOutput)
 }
 
-// Specifies a unique name for the VIP.
 func (o VipOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vip) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the network ID of the VPC subnet to which the VIP belongs.
-// Changing this will create a new VIP resource.
 func (o VipOutput) NetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vip) pulumi.StringOutput { return v.NetworkId }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the VIP.
-// If omitted, the provider-level region will be used. Changing this will create a new VIP resource.
 func (o VipOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vip) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// The VIP status.
 func (o VipOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vip) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

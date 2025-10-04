@@ -4,41 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages an ER instance resource within SberCloud.
- *
- * Before using enterprise router, define custom endpoint as shown below:
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const routerName = config.requireObject<any>("routerName");
- * const bgpAsNumber = config.requireObject<any>("bgpAsNumber");
- * const availabilityZones = config.requireObject<Array<string>>("availabilityZones");
- * const test = new sbercloud.er.Instance("test", {
- *     availabilityZones: availabilityZones,
- *     name: routerName,
- *     asn: bgpAsNumber,
- * });
- * ```
- *
- * ## Import
- *
- * The router instance can be imported using the `id`, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:Er/instance:Instance test 0ce123456a00f2591fabc00385ff1234
- * ```
- */
 export class Instance extends pulumi.CustomResource {
     /**
      * Get an existing Instance resource's state with the given name, ID, and optional extra
@@ -68,22 +33,15 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * The BGP AS number of the ER instance.  
-     * The valid value is range from `64,512` to `65534` or range from `4,200,000,000` to `4,294,967,294`.
-     *
-     * Changing this parameter will create a new resource.
+     * The BGP AS number of the Enterprise router.
      */
     declare public readonly asn: pulumi.Output<number>;
     /**
-     * Whether to automatically accept the creation of shared
-     * attachment.
-     * The default value is **false**.
+     * Whether to automatically accept the creation of shared attachment.
      */
     declare public readonly autoAcceptSharedAttachments: pulumi.Output<boolean | undefined>;
     /**
-     * The availability zone list where the ER instance is located.
-     * The maximum number of availability zone is two. Select two AZs to configure active-active deployment for high
-     * availability which will ensure reliability and disaster recovery.
+     * The availability zone list where the Enterprise router is located.
      */
     declare public readonly availabilityZones: pulumi.Output<string[]>;
     /**
@@ -92,56 +50,37 @@ export class Instance extends pulumi.CustomResource {
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The ID of the default association route table.
-     *
-     * > Before modifying the default routing table of this instance (except cancel the default route table), make sure
-     * `enableDefaultAssociation` is set to **true**.
      */
     declare public readonly defaultAssociationRouteTableId: pulumi.Output<string>;
     /**
      * The ID of the default propagation route table.
-     *
-     * > Before modifying the default routing table of this instance (except cancel the default route table), make sure
-     * `enableDefaultPropagation` is set to **true**.
      */
     declare public readonly defaultPropagationRouteTableId: pulumi.Output<string>;
     /**
-     * The description of the ER instance.  
-     * The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
+     * The description of the Enterprise router.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * Whether to enable the association of the default route table.  
-     * The default value is **false**.
+     * Whether to enable the association of the default route table.
      */
     declare public readonly enableDefaultAssociation: pulumi.Output<boolean | undefined>;
     /**
-     * Whether to enable the propagation of the default route table.  
-     * The default value is **false**.
+     * Whether to enable the propagation of the default route table.
      */
     declare public readonly enableDefaultPropagation: pulumi.Output<boolean | undefined>;
     /**
-     * Specifies the enterprise project ID to which the ER instance
-     * belongs.
+     * The enterprise project ID to which the Enterprise router belongs.
      */
     declare public readonly enterpriseProjectId: pulumi.Output<string>;
     /**
-     * The router name.  
-     * The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-     * hyphens (-) and dots (.) allowed.
+     * The router name.
      */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
     /**
      * Current status of the router.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
-    /**
-     * Specifies the key/value pairs to associate with the instance.
-     */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The latest update time.
@@ -210,22 +149,15 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
-     * The BGP AS number of the ER instance.  
-     * The valid value is range from `64,512` to `65534` or range from `4,200,000,000` to `4,294,967,294`.
-     *
-     * Changing this parameter will create a new resource.
+     * The BGP AS number of the Enterprise router.
      */
     asn?: pulumi.Input<number>;
     /**
-     * Whether to automatically accept the creation of shared
-     * attachment.
-     * The default value is **false**.
+     * Whether to automatically accept the creation of shared attachment.
      */
     autoAcceptSharedAttachments?: pulumi.Input<boolean>;
     /**
-     * The availability zone list where the ER instance is located.
-     * The maximum number of availability zone is two. Select two AZs to configure active-active deployment for high
-     * availability which will ensure reliability and disaster recovery.
+     * The availability zone list where the Enterprise router is located.
      */
     availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -234,56 +166,37 @@ export interface InstanceState {
     createdAt?: pulumi.Input<string>;
     /**
      * The ID of the default association route table.
-     *
-     * > Before modifying the default routing table of this instance (except cancel the default route table), make sure
-     * `enableDefaultAssociation` is set to **true**.
      */
     defaultAssociationRouteTableId?: pulumi.Input<string>;
     /**
      * The ID of the default propagation route table.
-     *
-     * > Before modifying the default routing table of this instance (except cancel the default route table), make sure
-     * `enableDefaultPropagation` is set to **true**.
      */
     defaultPropagationRouteTableId?: pulumi.Input<string>;
     /**
-     * The description of the ER instance.  
-     * The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
+     * The description of the Enterprise router.
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether to enable the association of the default route table.  
-     * The default value is **false**.
+     * Whether to enable the association of the default route table.
      */
     enableDefaultAssociation?: pulumi.Input<boolean>;
     /**
-     * Whether to enable the propagation of the default route table.  
-     * The default value is **false**.
+     * Whether to enable the propagation of the default route table.
      */
     enableDefaultPropagation?: pulumi.Input<boolean>;
     /**
-     * Specifies the enterprise project ID to which the ER instance
-     * belongs.
+     * The enterprise project ID to which the Enterprise router belongs.
      */
     enterpriseProjectId?: pulumi.Input<string>;
     /**
-     * The router name.  
-     * The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-     * hyphens (-) and dots (.) allowed.
+     * The router name.
      */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
      * Current status of the router.
      */
     status?: pulumi.Input<string>;
-    /**
-     * Specifies the key/value pairs to associate with the instance.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The latest update time.
@@ -296,71 +209,45 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
-     * The BGP AS number of the ER instance.  
-     * The valid value is range from `64,512` to `65534` or range from `4,200,000,000` to `4,294,967,294`.
-     *
-     * Changing this parameter will create a new resource.
+     * The BGP AS number of the Enterprise router.
      */
     asn: pulumi.Input<number>;
     /**
-     * Whether to automatically accept the creation of shared
-     * attachment.
-     * The default value is **false**.
+     * Whether to automatically accept the creation of shared attachment.
      */
     autoAcceptSharedAttachments?: pulumi.Input<boolean>;
     /**
-     * The availability zone list where the ER instance is located.
-     * The maximum number of availability zone is two. Select two AZs to configure active-active deployment for high
-     * availability which will ensure reliability and disaster recovery.
+     * The availability zone list where the Enterprise router is located.
      */
     availabilityZones: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the default association route table.
-     *
-     * > Before modifying the default routing table of this instance (except cancel the default route table), make sure
-     * `enableDefaultAssociation` is set to **true**.
      */
     defaultAssociationRouteTableId?: pulumi.Input<string>;
     /**
      * The ID of the default propagation route table.
-     *
-     * > Before modifying the default routing table of this instance (except cancel the default route table), make sure
-     * `enableDefaultPropagation` is set to **true**.
      */
     defaultPropagationRouteTableId?: pulumi.Input<string>;
     /**
-     * The description of the ER instance.  
-     * The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
+     * The description of the Enterprise router.
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether to enable the association of the default route table.  
-     * The default value is **false**.
+     * Whether to enable the association of the default route table.
      */
     enableDefaultAssociation?: pulumi.Input<boolean>;
     /**
-     * Whether to enable the propagation of the default route table.  
-     * The default value is **false**.
+     * Whether to enable the propagation of the default route table.
      */
     enableDefaultPropagation?: pulumi.Input<boolean>;
     /**
-     * Specifies the enterprise project ID to which the ER instance
-     * belongs.
+     * The enterprise project ID to which the Enterprise router belongs.
      */
     enterpriseProjectId?: pulumi.Input<string>;
     /**
-     * The router name.  
-     * The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-     * hyphens (-) and dots (.) allowed.
+     * The router name.
      */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the key/value pairs to associate with the instance.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

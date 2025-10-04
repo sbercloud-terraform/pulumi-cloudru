@@ -56,26 +56,16 @@ class GetAssociationsResult:
     @_builtins.property
     @pulumi.getter
     def associations(self) -> Sequence['outputs.GetAssociationsAssociationResult']:
-        """
-        All associations that match the filter parameters.
-        The associations structure is documented below.
-        """
         return pulumi.get(self, "associations")
 
     @_builtins.property
     @pulumi.getter(name="attachmentId")
     def attachment_id(self) -> Optional[_builtins.str]:
-        """
-        The attachment ID corresponding to the association.
-        """
         return pulumi.get(self, "attachment_id")
 
     @_builtins.property
     @pulumi.getter(name="attachmentType")
     def attachment_type(self) -> Optional[_builtins.str]:
-        """
-        The type of the attachment corresponding to the association.
-        """
         return pulumi.get(self, "attachment_type")
 
     @_builtins.property
@@ -99,17 +89,11 @@ class GetAssociationsResult:
     @_builtins.property
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> _builtins.str:
-        """
-        The route table ID corresponding to the association.
-        """
         return pulumi.get(self, "route_table_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
-        """
-        The current status of the association.
-        """
         return pulumi.get(self, "status")
 
 
@@ -137,37 +121,7 @@ def get_associations(attachment_id: Optional[_builtins.str] = None,
                      status: Optional[_builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAssociationsResult:
     """
-    Use this data source to get the list of associations.
-
-    Before using enterprise router, define custom endpoint as shown below:
-    ```python
-    import pulumi
-    ```
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    route_table_id = config.require_object("routeTableId")
-    test = sbercloud.Er.get_associations(instance_id=instance_id,
-        route_table_id=route_table_id)
-    ```
-
-
-    :param _builtins.str attachment_id: Specifies the attachment ID corresponding to the association.
-    :param _builtins.str attachment_type: Specifies the attachment type corresponding to the association.
-    :param _builtins.str instance_id: Specifies the ER instance ID to which the association belongs.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str route_table_id: Specifies the route table ID to which the association belongs.
-    :param _builtins.str status: Specifies the status of the association. Default value is `available`.
-           The valid values are as follows:
-           + **available**
-           + **failed**
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['attachmentId'] = attachment_id
@@ -196,37 +150,7 @@ def get_associations_output(attachment_id: Optional[pulumi.Input[Optional[_built
                             status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAssociationsResult]:
     """
-    Use this data source to get the list of associations.
-
-    Before using enterprise router, define custom endpoint as shown below:
-    ```python
-    import pulumi
-    ```
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    route_table_id = config.require_object("routeTableId")
-    test = sbercloud.Er.get_associations(instance_id=instance_id,
-        route_table_id=route_table_id)
-    ```
-
-
-    :param _builtins.str attachment_id: Specifies the attachment ID corresponding to the association.
-    :param _builtins.str attachment_type: Specifies the attachment type corresponding to the association.
-    :param _builtins.str instance_id: Specifies the ER instance ID to which the association belongs.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str route_table_id: Specifies the route table ID to which the association belongs.
-    :param _builtins.str status: Specifies the status of the association. Default value is `available`.
-           The valid values are as follows:
-           + **available**
-           + **failed**
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['attachmentId'] = attachment_id

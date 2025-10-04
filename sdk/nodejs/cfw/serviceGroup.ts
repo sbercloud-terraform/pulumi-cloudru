@@ -4,36 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a CFW service group resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const name = config.requireObject<any>("name");
- * const description = config.requireObject<any>("description");
- * const test = sbercloud.Cfw.getFirewalls({});
- * const testServiceGroup = new sbercloud.cfw.ServiceGroup("test", {
- *     objectId: test.then(test => test.records?.[0]?.protectObjects?.[0]?.objectId),
- *     name: name,
- *     description: description,
- * });
- * ```
- *
- * ## Import
- *
- * The service group can be imported using the `id`, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:Cfw/serviceGroup:ServiceGroup test 0ce123456a00f2591fabc00385ff1234
- * ```
- */
 export class ServiceGroup extends pulumi.CustomResource {
     /**
      * Get an existing ServiceGroup resource's state with the given name, ID, and optional extra
@@ -72,14 +42,8 @@ export class ServiceGroup extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the protected object ID.
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly objectId: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
 
     /**
@@ -128,14 +92,8 @@ export interface ServiceGroupState {
     name?: pulumi.Input<string>;
     /**
      * Specifies the protected object ID.
-     *
-     * Changing this parameter will create a new resource.
      */
     objectId?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
 }
 
@@ -153,13 +111,7 @@ export interface ServiceGroupArgs {
     name?: pulumi.Input<string>;
     /**
      * Specifies the protected object ID.
-     *
-     * Changing this parameter will create a new resource.
      */
     objectId: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
 }

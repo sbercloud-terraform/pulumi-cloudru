@@ -4,35 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages RDS SQL audit resource within SberCloud.
- *
- * > **NOTE:** Only MySQL and PostgreSQL engines are supported.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const test = new sbercloud.rds.SqlAudit("test", {
- *     instanceId: instanceId,
- *     keepDays: 5,
- * });
- * ```
- *
- * ## Import
- *
- * The RDS SQL audit can be imported using the `id`, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:Rds/sqlAudit:SqlAudit test <id>
- * ```
- */
 export class SqlAudit extends pulumi.CustomResource {
     /**
      * Get an existing SqlAudit resource's state with the given name, ID, and optional extra
@@ -62,30 +33,21 @@ export class SqlAudit extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies the list of audit types. Value options: **CREATE_USER**, **DROP_USER**,
-     * **RENAME_USER**, **GRANT**, **REVOKE**, **CREATE**, **ALTER**, **DROP**, **RENAME**, **TRUNCATE**, **INSERT**,
-     * **DELETE**, **UPDATE**, **REPLACE**, **SELECT**, **BEGIN/COMMIT/ROLLBACK**, **PREPARED_STATEMENT**.
-     * It is not supported for PostgreSQL.
+     * Specifies the list of audit types.
      */
     declare public readonly auditTypes: pulumi.Output<string[]>;
     /**
      * Specifies the ID of the RDS instance.
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly instanceId: pulumi.Output<string>;
     /**
-     * Specifies the number of days for storing audit logs. Value ranges from `1` to `732`.
+     * Specifies the number of days for storing audit logs.
      */
     declare public readonly keepDays: pulumi.Output<number>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
     /**
-     * Specifies whether the historical audit logs will be reserved for some time
-     * when SQL audit is disabled. It is valid only when SQL audit is disabled.
+     * Specifies whether the historical audit logs will be reserved for some time when SQL
+     * audit is disabled.
      */
     declare public readonly reserveAuditlogs: pulumi.Output<boolean | undefined>;
 
@@ -131,30 +93,21 @@ export class SqlAudit extends pulumi.CustomResource {
  */
 export interface SqlAuditState {
     /**
-     * Specifies the list of audit types. Value options: **CREATE_USER**, **DROP_USER**,
-     * **RENAME_USER**, **GRANT**, **REVOKE**, **CREATE**, **ALTER**, **DROP**, **RENAME**, **TRUNCATE**, **INSERT**,
-     * **DELETE**, **UPDATE**, **REPLACE**, **SELECT**, **BEGIN/COMMIT/ROLLBACK**, **PREPARED_STATEMENT**.
-     * It is not supported for PostgreSQL.
+     * Specifies the list of audit types.
      */
     auditTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Specifies the ID of the RDS instance.
-     *
-     * Changing this parameter will create a new resource.
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * Specifies the number of days for storing audit logs. Value ranges from `1` to `732`.
+     * Specifies the number of days for storing audit logs.
      */
     keepDays?: pulumi.Input<number>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
-     * Specifies whether the historical audit logs will be reserved for some time
-     * when SQL audit is disabled. It is valid only when SQL audit is disabled.
+     * Specifies whether the historical audit logs will be reserved for some time when SQL
+     * audit is disabled.
      */
     reserveAuditlogs?: pulumi.Input<boolean>;
 }
@@ -164,30 +117,21 @@ export interface SqlAuditState {
  */
 export interface SqlAuditArgs {
     /**
-     * Specifies the list of audit types. Value options: **CREATE_USER**, **DROP_USER**,
-     * **RENAME_USER**, **GRANT**, **REVOKE**, **CREATE**, **ALTER**, **DROP**, **RENAME**, **TRUNCATE**, **INSERT**,
-     * **DELETE**, **UPDATE**, **REPLACE**, **SELECT**, **BEGIN/COMMIT/ROLLBACK**, **PREPARED_STATEMENT**.
-     * It is not supported for PostgreSQL.
+     * Specifies the list of audit types.
      */
     auditTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Specifies the ID of the RDS instance.
-     *
-     * Changing this parameter will create a new resource.
      */
     instanceId: pulumi.Input<string>;
     /**
-     * Specifies the number of days for storing audit logs. Value ranges from `1` to `732`.
+     * Specifies the number of days for storing audit logs.
      */
     keepDays: pulumi.Input<number>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
-     * Specifies whether the historical audit logs will be reserved for some time
-     * when SQL audit is disabled. It is valid only when SQL audit is disabled.
+     * Specifies whether the historical audit logs will be reserved for some time when SQL
+     * audit is disabled.
      */
     reserveAuditlogs?: pulumi.Input<boolean>;
 }

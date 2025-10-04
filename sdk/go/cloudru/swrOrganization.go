@@ -11,56 +11,14 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a SWR organization resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sbercloud.NewSwrOrganization(ctx, "test", &sbercloud.SwrOrganizationArgs{
-//				Name: pulumi.String("terraform-test"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Organizations can be imported using the `name`, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:index/swrOrganization:SwrOrganization test org-name
-// ```
 type SwrOrganization struct {
 	pulumi.CustomResourceState
 
-	// The creator user name of the organization.
-	Creator pulumi.StringOutput `pulumi:"creator"`
-	// The URL that can be used to log into the container registry.
+	Creator     pulumi.StringOutput `pulumi:"creator"`
 	LoginServer pulumi.StringOutput `pulumi:"loginServer"`
-	// Specifies the name of the organization. The organization name must be globally
-	// unique.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The permission of the organization, the value can be Manage, Write, and Read.
-	Permission pulumi.StringOutput `pulumi:"permission"`
-	// Specifies the region in which to create the resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Name        pulumi.StringOutput `pulumi:"name"`
+	Permission  pulumi.StringOutput `pulumi:"permission"`
+	Region      pulumi.StringOutput `pulumi:"region"`
 }
 
 // NewSwrOrganization registers a new resource with the given unique name, arguments, and options.
@@ -93,33 +51,19 @@ func GetSwrOrganization(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SwrOrganization resources.
 type swrOrganizationState struct {
-	// The creator user name of the organization.
-	Creator *string `pulumi:"creator"`
-	// The URL that can be used to log into the container registry.
+	Creator     *string `pulumi:"creator"`
 	LoginServer *string `pulumi:"loginServer"`
-	// Specifies the name of the organization. The organization name must be globally
-	// unique.
-	Name *string `pulumi:"name"`
-	// The permission of the organization, the value can be Manage, Write, and Read.
-	Permission *string `pulumi:"permission"`
-	// Specifies the region in which to create the resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region *string `pulumi:"region"`
+	Name        *string `pulumi:"name"`
+	Permission  *string `pulumi:"permission"`
+	Region      *string `pulumi:"region"`
 }
 
 type SwrOrganizationState struct {
-	// The creator user name of the organization.
-	Creator pulumi.StringPtrInput
-	// The URL that can be used to log into the container registry.
+	Creator     pulumi.StringPtrInput
 	LoginServer pulumi.StringPtrInput
-	// Specifies the name of the organization. The organization name must be globally
-	// unique.
-	Name pulumi.StringPtrInput
-	// The permission of the organization, the value can be Manage, Write, and Read.
-	Permission pulumi.StringPtrInput
-	// Specifies the region in which to create the resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringPtrInput
+	Name        pulumi.StringPtrInput
+	Permission  pulumi.StringPtrInput
+	Region      pulumi.StringPtrInput
 }
 
 func (SwrOrganizationState) ElementType() reflect.Type {
@@ -127,21 +71,13 @@ func (SwrOrganizationState) ElementType() reflect.Type {
 }
 
 type swrOrganizationArgs struct {
-	// Specifies the name of the organization. The organization name must be globally
-	// unique.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to create the resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
+	Name   *string `pulumi:"name"`
 	Region *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a SwrOrganization resource.
 type SwrOrganizationArgs struct {
-	// Specifies the name of the organization. The organization name must be globally
-	// unique.
-	Name pulumi.StringPtrInput
-	// Specifies the region in which to create the resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
+	Name   pulumi.StringPtrInput
 	Region pulumi.StringPtrInput
 }
 
@@ -232,29 +168,22 @@ func (o SwrOrganizationOutput) ToSwrOrganizationOutputWithContext(ctx context.Co
 	return o
 }
 
-// The creator user name of the organization.
 func (o SwrOrganizationOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v *SwrOrganization) pulumi.StringOutput { return v.Creator }).(pulumi.StringOutput)
 }
 
-// The URL that can be used to log into the container registry.
 func (o SwrOrganizationOutput) LoginServer() pulumi.StringOutput {
 	return o.ApplyT(func(v *SwrOrganization) pulumi.StringOutput { return v.LoginServer }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the organization. The organization name must be globally
-// unique.
 func (o SwrOrganizationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SwrOrganization) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The permission of the organization, the value can be Manage, Write, and Read.
 func (o SwrOrganizationOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v *SwrOrganization) pulumi.StringOutput { return v.Permission }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the resource. If omitted, the
-// provider-level region will be used. Changing this creates a new resource.
 func (o SwrOrganizationOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *SwrOrganization) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

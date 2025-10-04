@@ -48,59 +48,25 @@ class DmsRocketmqInstanceArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DmsRocketmqInstance resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: Specifies the list of availability zone names, where
-               instance brokers reside and which has available resources.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: Specifies the list of availability zone names
         :param pulumi.Input[_builtins.str] engine_version: Specifies the version of the RocketMQ engine.
-               Valid values are **4.8.0** and **5.x**.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] flavor_id: Specifies the flavor ID.
-        :param pulumi.Input[_builtins.str] security_group_id: Specifies the ID of a security group.
+        :param pulumi.Input[_builtins.str] flavor_id: Specifies a product ID
+        :param pulumi.Input[_builtins.str] security_group_id: Specifies the ID of a security group
         :param pulumi.Input[_builtins.int] storage_space: Specifies the message storage capacity, Unit: GB.
-               When `engine_version` is **4.8.0**, value ranges from `300` to `30,000`.
-               When `engine_version` is **5.x**, value ranges from `200` to `60,000`.
-        :param pulumi.Input[_builtins.str] storage_spec_code: Specifies the storage I/O specification.
-               The options are as follows:
-               + **dms.physical.storage.high.v2**: high I/O disk
-               + **dms.physical.storage.ultra.v2**: ultra-high I/O disk
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies the ID of a subnet.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of a VPC.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled. Valid values are "true" and "false".
-        :param pulumi.Input[_builtins.int] broker_num: Specifies the broker numbers. It's **required** when instance architecture is
-               **cluster**. Defaults to `1` when instance architecture is **single node**.
-        :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode of the instance. Valid values are *prePaid*
-               and *postPaid*, defaults to *postPaid*. Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] storage_spec_code: Specifies the storage I/O specification
+        :param pulumi.Input[_builtins.str] subnet_id: Specifies the ID of a subnet
+        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of a VPC
+        :param pulumi.Input[_builtins.int] broker_num: Specifies the broker numbers.
         :param pulumi.Input[Sequence[pulumi.Input['DmsRocketmqInstanceConfigArgs']]] configs: Specifies the instance configs.
-               The configs structure is documented below.
-               
-               <a name="dms_configs"></a>
-               The `configs` block supports:
         :param pulumi.Input[_builtins.str] description: Specifies the description of the DMS RocketMQ instance.
-               The description can contain a maximum of `1,024` characters.
         :param pulumi.Input[_builtins.bool] enable_acl: Specifies whether access control is enabled.
-        :param pulumi.Input[_builtins.bool] enable_publicip: Specifies whether to enable public access. By default, public access is disabled.
+        :param pulumi.Input[_builtins.bool] enable_publicip: Specifies whether to enable public access.
         :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the instance.
-        :param pulumi.Input[_builtins.bool] ipv6_enable: Specifies whether to support IPv6. Defaults to **false**.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the config name.
-        :param pulumi.Input[_builtins.int] period: Specifies the charging period of the instance. If `period_unit` is set to *month*
-               , the value ranges from 1 to 9. If `period_unit` is set to *year*, the value ranges from `1` to `3`. This parameter is
-               mandatory if `charging_mode` is set to *prePaid*. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] period_unit: Specifies the charging period unit of the instance.
-               Valid values are *month* and *year*. This parameter is mandatory if `charging_mode` is set to *prePaid*.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] publicip_id: Specifies the ID of the EIP bound to the instance. Use commas (,) to separate
-               multiple EIP IDs. It is mandatory if `enable_publicip` is **true** and should be empty when `enable_publicip` is **false**.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.bool] ipv6_enable: Specifies whether to support IPv6
+        :param pulumi.Input[_builtins.str] name: Specifies the name of the DMS RocketMQ instance
+        :param pulumi.Input[_builtins.str] publicip_id: Specifies the ID of the EIP bound to the instance.
         :param pulumi.Input[_builtins.bool] retention_policy: Specifies whether access control is enabled.
-        :param pulumi.Input[_builtins.bool] ssl_enable: Specifies whether the RocketMQ SASL_SSL is enabled. Defaults to **false**.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the instance.
+        :param pulumi.Input[_builtins.bool] ssl_enable: Specifies whether the RocketMQ SASL_SSL is enabled.
         """
         pulumi.set(__self__, "availability_zones", availability_zones)
         pulumi.set(__self__, "engine_version", engine_version)
@@ -152,10 +118,7 @@ class DmsRocketmqInstanceArgs:
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        Specifies the list of availability zone names, where
-        instance brokers reside and which has available resources.
-
-        Changing this parameter will create a new resource.
+        Specifies the list of availability zone names
         """
         return pulumi.get(self, "availability_zones")
 
@@ -168,8 +131,6 @@ class DmsRocketmqInstanceArgs:
     def engine_version(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the version of the RocketMQ engine.
-        Valid values are **4.8.0** and **5.x**.
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "engine_version")
 
@@ -181,7 +142,7 @@ class DmsRocketmqInstanceArgs:
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the flavor ID.
+        Specifies a product ID
         """
         return pulumi.get(self, "flavor_id")
 
@@ -193,7 +154,7 @@ class DmsRocketmqInstanceArgs:
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the ID of a security group.
+        Specifies the ID of a security group
         """
         return pulumi.get(self, "security_group_id")
 
@@ -206,8 +167,6 @@ class DmsRocketmqInstanceArgs:
     def storage_space(self) -> pulumi.Input[_builtins.int]:
         """
         Specifies the message storage capacity, Unit: GB.
-        When `engine_version` is **4.8.0**, value ranges from `300` to `30,000`.
-        When `engine_version` is **5.x**, value ranges from `200` to `60,000`.
         """
         return pulumi.get(self, "storage_space")
 
@@ -219,11 +178,7 @@ class DmsRocketmqInstanceArgs:
     @pulumi.getter(name="storageSpecCode")
     def storage_spec_code(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the storage I/O specification.
-        The options are as follows:
-        + **dms.physical.storage.high.v2**: high I/O disk
-        + **dms.physical.storage.ultra.v2**: ultra-high I/O disk
-        Changing this parameter will create a new resource.
+        Specifies the storage I/O specification
         """
         return pulumi.get(self, "storage_spec_code")
 
@@ -235,8 +190,7 @@ class DmsRocketmqInstanceArgs:
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the ID of a subnet.
-        Changing this parameter will create a new resource.
+        Specifies the ID of a subnet
         """
         return pulumi.get(self, "subnet_id")
 
@@ -248,8 +202,7 @@ class DmsRocketmqInstanceArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the ID of a VPC.
-        Changing this parameter will create a new resource.
+        Specifies the ID of a VPC
         """
         return pulumi.get(self, "vpc_id")
 
@@ -260,9 +213,6 @@ class DmsRocketmqInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies whether auto renew is enabled. Valid values are "true" and "false".
-        """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
@@ -273,8 +223,7 @@ class DmsRocketmqInstanceArgs:
     @pulumi.getter(name="brokerNum")
     def broker_num(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the broker numbers. It's **required** when instance architecture is
-        **cluster**. Defaults to `1` when instance architecture is **single node**.
+        Specifies the broker numbers.
         """
         return pulumi.get(self, "broker_num")
 
@@ -285,10 +234,6 @@ class DmsRocketmqInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="chargingMode")
     def charging_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the charging mode of the instance. Valid values are *prePaid*
-        and *postPaid*, defaults to *postPaid*. Changing this creates a new resource.
-        """
         return pulumi.get(self, "charging_mode")
 
     @charging_mode.setter
@@ -300,10 +245,6 @@ class DmsRocketmqInstanceArgs:
     def configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DmsRocketmqInstanceConfigArgs']]]]:
         """
         Specifies the instance configs.
-        The configs structure is documented below.
-
-        <a name="dms_configs"></a>
-        The `configs` block supports:
         """
         return pulumi.get(self, "configs")
 
@@ -316,7 +257,6 @@ class DmsRocketmqInstanceArgs:
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the description of the DMS RocketMQ instance.
-        The description can contain a maximum of `1,024` characters.
         """
         return pulumi.get(self, "description")
 
@@ -340,7 +280,7 @@ class DmsRocketmqInstanceArgs:
     @pulumi.getter(name="enablePublicip")
     def enable_publicip(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether to enable public access. By default, public access is disabled.
+        Specifies whether to enable public access.
         """
         return pulumi.get(self, "enable_publicip")
 
@@ -364,8 +304,7 @@ class DmsRocketmqInstanceArgs:
     @pulumi.getter(name="ipv6Enable")
     def ipv6_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether to support IPv6. Defaults to **false**.
-        Changing this parameter will create a new resource.
+        Specifies whether to support IPv6
         """
         return pulumi.get(self, "ipv6_enable")
 
@@ -377,7 +316,7 @@ class DmsRocketmqInstanceArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the config name.
+        Specifies the name of the DMS RocketMQ instance
         """
         return pulumi.get(self, "name")
 
@@ -388,11 +327,6 @@ class DmsRocketmqInstanceArgs:
     @_builtins.property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the charging period of the instance. If `period_unit` is set to *month*
-        , the value ranges from 1 to 9. If `period_unit` is set to *year*, the value ranges from `1` to `3`. This parameter is
-        mandatory if `charging_mode` is set to *prePaid*. Changing this creates a new resource.
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -402,11 +336,6 @@ class DmsRocketmqInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the charging period unit of the instance.
-        Valid values are *month* and *year*. This parameter is mandatory if `charging_mode` is set to *prePaid*.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
@@ -417,8 +346,7 @@ class DmsRocketmqInstanceArgs:
     @pulumi.getter(name="publicipId")
     def publicip_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the ID of the EIP bound to the instance. Use commas (,) to separate
-        multiple EIP IDs. It is mandatory if `enable_publicip` is **true** and should be empty when `enable_publicip` is **false**.
+        Specifies the ID of the EIP bound to the instance.
         """
         return pulumi.get(self, "publicip_id")
 
@@ -429,10 +357,6 @@ class DmsRocketmqInstanceArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -456,8 +380,7 @@ class DmsRocketmqInstanceArgs:
     @pulumi.getter(name="sslEnable")
     def ssl_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether the RocketMQ SASL_SSL is enabled. Defaults to **false**.
-        Changing this parameter will create a new resource.
+        Specifies whether the RocketMQ SASL_SSL is enabled.
         """
         return pulumi.get(self, "ssl_enable")
 
@@ -468,9 +391,6 @@ class DmsRocketmqInstanceArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs to associate with the instance.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -523,75 +443,40 @@ class _DmsRocketmqInstanceState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DmsRocketmqInstance resources.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled. Valid values are "true" and "false".
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: Specifies the list of availability zone names, where
-               instance brokers reside and which has available resources.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: Specifies the list of availability zone names
         :param pulumi.Input[_builtins.str] broker_address: Indicates the service data address.
-        :param pulumi.Input[_builtins.int] broker_num: Specifies the broker numbers. It's **required** when instance architecture is
-               **cluster**. Defaults to `1` when instance architecture is **single node**.
-        :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode of the instance. Valid values are *prePaid*
-               and *postPaid*, defaults to *postPaid*. Changing this creates a new resource.
+        :param pulumi.Input[_builtins.int] broker_num: Specifies the broker numbers.
         :param pulumi.Input[Sequence[pulumi.Input['DmsRocketmqInstanceConfigArgs']]] configs: Specifies the instance configs.
-               The configs structure is documented below.
-               
-               <a name="dms_configs"></a>
-               The `configs` block supports:
-        :param pulumi.Input[Sequence[pulumi.Input['DmsRocketmqInstanceCrossVpcAccessArgs']]] cross_vpc_accesses: Indicates the Access information of cross-VPC. The structure is documented below.
         :param pulumi.Input[_builtins.str] description: Specifies the description of the DMS RocketMQ instance.
-               The description can contain a maximum of `1,024` characters.
         :param pulumi.Input[_builtins.bool] enable_acl: Specifies whether access control is enabled.
-        :param pulumi.Input[_builtins.bool] enable_publicip: Specifies whether to enable public access. By default, public access is disabled.
+        :param pulumi.Input[_builtins.bool] enable_publicip: Specifies whether to enable public access.
         :param pulumi.Input[_builtins.str] engine_version: Specifies the version of the RocketMQ engine.
-               Valid values are **4.8.0** and **5.x**.
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the instance.
-        :param pulumi.Input[_builtins.str] flavor_id: Specifies the flavor ID.
-        :param pulumi.Input[_builtins.bool] ipv6_enable: Specifies whether to support IPv6. Defaults to **false**.
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] flavor_id: Specifies a product ID
+        :param pulumi.Input[_builtins.bool] ipv6_enable: Specifies whether to support IPv6
         :param pulumi.Input[_builtins.str] maintain_begin: Indicates the time at which the maintenance window starts. The format is HH:mm:ss.
         :param pulumi.Input[_builtins.str] maintain_end: Indicates the time at which the maintenance window ends. The format is HH:mm:ss.
-        :param pulumi.Input[_builtins.str] name: Specifies the config name.
+        :param pulumi.Input[_builtins.str] name: Specifies the name of the DMS RocketMQ instance
         :param pulumi.Input[_builtins.str] namesrv_address: Indicates the metadata address.
         :param pulumi.Input[_builtins.bool] new_spec_billing_enable: Indicates whether billing based on new specifications is enabled.
         :param pulumi.Input[_builtins.int] node_num: Indicates the node quantity.
-        :param pulumi.Input[_builtins.int] period: Specifies the charging period of the instance. If `period_unit` is set to *month*
-               , the value ranges from 1 to 9. If `period_unit` is set to *year*, the value ranges from `1` to `3`. This parameter is
-               mandatory if `charging_mode` is set to *prePaid*. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] period_unit: Specifies the charging period unit of the instance.
-               Valid values are *month* and *year*. This parameter is mandatory if `charging_mode` is set to *prePaid*.
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] public_broker_address: Indicates the public network service data address.
         :param pulumi.Input[_builtins.str] public_namesrv_address: Indicates the public network metadata address.
         :param pulumi.Input[_builtins.str] publicip_address: Indicates the public IP address.
-        :param pulumi.Input[_builtins.str] publicip_id: Specifies the ID of the EIP bound to the instance. Use commas (,) to separate
-               multiple EIP IDs. It is mandatory if `enable_publicip` is **true** and should be empty when `enable_publicip` is **false**.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] publicip_id: Specifies the ID of the EIP bound to the instance.
         :param pulumi.Input[_builtins.str] resource_spec_code: Indicates the resource specifications.
         :param pulumi.Input[_builtins.bool] retention_policy: Specifies whether access control is enabled.
-        :param pulumi.Input[_builtins.str] security_group_id: Specifies the ID of a security group.
+        :param pulumi.Input[_builtins.str] security_group_id: Specifies the ID of a security group
         :param pulumi.Input[_builtins.str] specification: Indicates the instance specification. For a cluster DMS RocketMQ instance, VM specifications
-               and the number of nodes are returned.
-        :param pulumi.Input[_builtins.bool] ssl_enable: Specifies whether the RocketMQ SASL_SSL is enabled. Defaults to **false**.
-               Changing this parameter will create a new resource.
+                 and the number of nodes are returned.
+        :param pulumi.Input[_builtins.bool] ssl_enable: Specifies whether the RocketMQ SASL_SSL is enabled.
         :param pulumi.Input[_builtins.str] status: Indicates the status of the DMS RocketMQ instance.
         :param pulumi.Input[_builtins.int] storage_space: Specifies the message storage capacity, Unit: GB.
-               When `engine_version` is **4.8.0**, value ranges from `300` to `30,000`.
-               When `engine_version` is **5.x**, value ranges from `200` to `60,000`.
-        :param pulumi.Input[_builtins.str] storage_spec_code: Specifies the storage I/O specification.
-               The options are as follows:
-               + **dms.physical.storage.high.v2**: high I/O disk
-               + **dms.physical.storage.ultra.v2**: ultra-high I/O disk
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies the ID of a subnet.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the instance.
+        :param pulumi.Input[_builtins.str] storage_spec_code: Specifies the storage I/O specification
+        :param pulumi.Input[_builtins.str] subnet_id: Specifies the ID of a subnet
         :param pulumi.Input[_builtins.str] type: Indicates the DMS RocketMQ instance type. Value: cluster.
         :param pulumi.Input[_builtins.int] used_storage_space: Indicates the used message storage space. Unit: GB.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of a VPC.
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of a VPC
         """
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
@@ -680,9 +565,6 @@ class _DmsRocketmqInstanceState:
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies whether auto renew is enabled. Valid values are "true" and "false".
-        """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
@@ -693,10 +575,7 @@ class _DmsRocketmqInstanceState:
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Specifies the list of availability zone names, where
-        instance brokers reside and which has available resources.
-
-        Changing this parameter will create a new resource.
+        Specifies the list of availability zone names
         """
         return pulumi.get(self, "availability_zones")
 
@@ -720,8 +599,7 @@ class _DmsRocketmqInstanceState:
     @pulumi.getter(name="brokerNum")
     def broker_num(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the broker numbers. It's **required** when instance architecture is
-        **cluster**. Defaults to `1` when instance architecture is **single node**.
+        Specifies the broker numbers.
         """
         return pulumi.get(self, "broker_num")
 
@@ -732,10 +610,6 @@ class _DmsRocketmqInstanceState:
     @_builtins.property
     @pulumi.getter(name="chargingMode")
     def charging_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the charging mode of the instance. Valid values are *prePaid*
-        and *postPaid*, defaults to *postPaid*. Changing this creates a new resource.
-        """
         return pulumi.get(self, "charging_mode")
 
     @charging_mode.setter
@@ -747,10 +621,6 @@ class _DmsRocketmqInstanceState:
     def configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DmsRocketmqInstanceConfigArgs']]]]:
         """
         Specifies the instance configs.
-        The configs structure is documented below.
-
-        <a name="dms_configs"></a>
-        The `configs` block supports:
         """
         return pulumi.get(self, "configs")
 
@@ -761,9 +631,6 @@ class _DmsRocketmqInstanceState:
     @_builtins.property
     @pulumi.getter(name="crossVpcAccesses")
     def cross_vpc_accesses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DmsRocketmqInstanceCrossVpcAccessArgs']]]]:
-        """
-        Indicates the Access information of cross-VPC. The structure is documented below.
-        """
         return pulumi.get(self, "cross_vpc_accesses")
 
     @cross_vpc_accesses.setter
@@ -775,7 +642,6 @@ class _DmsRocketmqInstanceState:
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the description of the DMS RocketMQ instance.
-        The description can contain a maximum of `1,024` characters.
         """
         return pulumi.get(self, "description")
 
@@ -799,7 +665,7 @@ class _DmsRocketmqInstanceState:
     @pulumi.getter(name="enablePublicip")
     def enable_publicip(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether to enable public access. By default, public access is disabled.
+        Specifies whether to enable public access.
         """
         return pulumi.get(self, "enable_publicip")
 
@@ -812,8 +678,6 @@ class _DmsRocketmqInstanceState:
     def engine_version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the version of the RocketMQ engine.
-        Valid values are **4.8.0** and **5.x**.
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "engine_version")
 
@@ -837,7 +701,7 @@ class _DmsRocketmqInstanceState:
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the flavor ID.
+        Specifies a product ID
         """
         return pulumi.get(self, "flavor_id")
 
@@ -849,8 +713,7 @@ class _DmsRocketmqInstanceState:
     @pulumi.getter(name="ipv6Enable")
     def ipv6_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether to support IPv6. Defaults to **false**.
-        Changing this parameter will create a new resource.
+        Specifies whether to support IPv6
         """
         return pulumi.get(self, "ipv6_enable")
 
@@ -886,7 +749,7 @@ class _DmsRocketmqInstanceState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the config name.
+        Specifies the name of the DMS RocketMQ instance
         """
         return pulumi.get(self, "name")
 
@@ -933,11 +796,6 @@ class _DmsRocketmqInstanceState:
     @_builtins.property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the charging period of the instance. If `period_unit` is set to *month*
-        , the value ranges from 1 to 9. If `period_unit` is set to *year*, the value ranges from `1` to `3`. This parameter is
-        mandatory if `charging_mode` is set to *prePaid*. Changing this creates a new resource.
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -947,11 +805,6 @@ class _DmsRocketmqInstanceState:
     @_builtins.property
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the charging period unit of the instance.
-        Valid values are *month* and *year*. This parameter is mandatory if `charging_mode` is set to *prePaid*.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
@@ -998,8 +851,7 @@ class _DmsRocketmqInstanceState:
     @pulumi.getter(name="publicipId")
     def publicip_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the ID of the EIP bound to the instance. Use commas (,) to separate
-        multiple EIP IDs. It is mandatory if `enable_publicip` is **true** and should be empty when `enable_publicip` is **false**.
+        Specifies the ID of the EIP bound to the instance.
         """
         return pulumi.get(self, "publicip_id")
 
@@ -1010,10 +862,6 @@ class _DmsRocketmqInstanceState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -1049,7 +897,7 @@ class _DmsRocketmqInstanceState:
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the ID of a security group.
+        Specifies the ID of a security group
         """
         return pulumi.get(self, "security_group_id")
 
@@ -1062,7 +910,7 @@ class _DmsRocketmqInstanceState:
     def specification(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Indicates the instance specification. For a cluster DMS RocketMQ instance, VM specifications
-        and the number of nodes are returned.
+          and the number of nodes are returned.
         """
         return pulumi.get(self, "specification")
 
@@ -1074,8 +922,7 @@ class _DmsRocketmqInstanceState:
     @pulumi.getter(name="sslEnable")
     def ssl_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether the RocketMQ SASL_SSL is enabled. Defaults to **false**.
-        Changing this parameter will create a new resource.
+        Specifies whether the RocketMQ SASL_SSL is enabled.
         """
         return pulumi.get(self, "ssl_enable")
 
@@ -1100,8 +947,6 @@ class _DmsRocketmqInstanceState:
     def storage_space(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the message storage capacity, Unit: GB.
-        When `engine_version` is **4.8.0**, value ranges from `300` to `30,000`.
-        When `engine_version` is **5.x**, value ranges from `200` to `60,000`.
         """
         return pulumi.get(self, "storage_space")
 
@@ -1113,11 +958,7 @@ class _DmsRocketmqInstanceState:
     @pulumi.getter(name="storageSpecCode")
     def storage_spec_code(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the storage I/O specification.
-        The options are as follows:
-        + **dms.physical.storage.high.v2**: high I/O disk
-        + **dms.physical.storage.ultra.v2**: ultra-high I/O disk
-        Changing this parameter will create a new resource.
+        Specifies the storage I/O specification
         """
         return pulumi.get(self, "storage_spec_code")
 
@@ -1129,8 +970,7 @@ class _DmsRocketmqInstanceState:
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the ID of a subnet.
-        Changing this parameter will create a new resource.
+        Specifies the ID of a subnet
         """
         return pulumi.get(self, "subnet_id")
 
@@ -1141,9 +981,6 @@ class _DmsRocketmqInstanceState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs to associate with the instance.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -1178,8 +1015,7 @@ class _DmsRocketmqInstanceState:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the ID of a VPC.
-        Changing this parameter will create a new resource.
+        Specifies the ID of a VPC
         """
         return pulumi.get(self, "vpc_id")
 
@@ -1221,98 +1057,28 @@ class DmsRocketmqInstance(pulumi.CustomResource):
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manage DMS RocketMQ instance resources within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        vpc_id = config.require_object("vpcId")
-        subnet_id = config.require_object("subnetId")
-        security_group_id = config.require_object("securityGroupId")
-        availability_zones = config.require_object("availabilityZones")
-        test = sbercloud.DmsRocketmqInstance("test",
-            name="rocketmq_name_test",
-            description="this is a rocketmq instance",
-            engine_version="4.8.0",
-            storage_space=300,
-            vpc_id=vpc_id,
-            subnet_id=subnet_id,
-            security_group_id=security_group_id,
-            availability_zones=availability_zones,
-            flavor_id="c6.4u8g.cluster",
-            storage_spec_code="dms.physical.storage.high.v2",
-            broker_num=1)
-        ```
-
-        ## Import
-
-        The rocketmq instance can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/dmsRocketmqInstance:DmsRocketmqInstance test 8d3c7938-dc47-4937-a30f-c80de381c5e3
-        ```
-
+        Create a DmsRocketmqInstance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled. Valid values are "true" and "false".
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: Specifies the list of availability zone names, where
-               instance brokers reside and which has available resources.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] broker_num: Specifies the broker numbers. It's **required** when instance architecture is
-               **cluster**. Defaults to `1` when instance architecture is **single node**.
-        :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode of the instance. Valid values are *prePaid*
-               and *postPaid*, defaults to *postPaid*. Changing this creates a new resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: Specifies the list of availability zone names
+        :param pulumi.Input[_builtins.int] broker_num: Specifies the broker numbers.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DmsRocketmqInstanceConfigArgs', 'DmsRocketmqInstanceConfigArgsDict']]]] configs: Specifies the instance configs.
-               The configs structure is documented below.
-               
-               <a name="dms_configs"></a>
-               The `configs` block supports:
         :param pulumi.Input[_builtins.str] description: Specifies the description of the DMS RocketMQ instance.
-               The description can contain a maximum of `1,024` characters.
         :param pulumi.Input[_builtins.bool] enable_acl: Specifies whether access control is enabled.
-        :param pulumi.Input[_builtins.bool] enable_publicip: Specifies whether to enable public access. By default, public access is disabled.
+        :param pulumi.Input[_builtins.bool] enable_publicip: Specifies whether to enable public access.
         :param pulumi.Input[_builtins.str] engine_version: Specifies the version of the RocketMQ engine.
-               Valid values are **4.8.0** and **5.x**.
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the instance.
-        :param pulumi.Input[_builtins.str] flavor_id: Specifies the flavor ID.
-        :param pulumi.Input[_builtins.bool] ipv6_enable: Specifies whether to support IPv6. Defaults to **false**.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the config name.
-        :param pulumi.Input[_builtins.int] period: Specifies the charging period of the instance. If `period_unit` is set to *month*
-               , the value ranges from 1 to 9. If `period_unit` is set to *year*, the value ranges from `1` to `3`. This parameter is
-               mandatory if `charging_mode` is set to *prePaid*. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] period_unit: Specifies the charging period unit of the instance.
-               Valid values are *month* and *year*. This parameter is mandatory if `charging_mode` is set to *prePaid*.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] publicip_id: Specifies the ID of the EIP bound to the instance. Use commas (,) to separate
-               multiple EIP IDs. It is mandatory if `enable_publicip` is **true** and should be empty when `enable_publicip` is **false**.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] flavor_id: Specifies a product ID
+        :param pulumi.Input[_builtins.bool] ipv6_enable: Specifies whether to support IPv6
+        :param pulumi.Input[_builtins.str] name: Specifies the name of the DMS RocketMQ instance
+        :param pulumi.Input[_builtins.str] publicip_id: Specifies the ID of the EIP bound to the instance.
         :param pulumi.Input[_builtins.bool] retention_policy: Specifies whether access control is enabled.
-        :param pulumi.Input[_builtins.str] security_group_id: Specifies the ID of a security group.
-        :param pulumi.Input[_builtins.bool] ssl_enable: Specifies whether the RocketMQ SASL_SSL is enabled. Defaults to **false**.
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] security_group_id: Specifies the ID of a security group
+        :param pulumi.Input[_builtins.bool] ssl_enable: Specifies whether the RocketMQ SASL_SSL is enabled.
         :param pulumi.Input[_builtins.int] storage_space: Specifies the message storage capacity, Unit: GB.
-               When `engine_version` is **4.8.0**, value ranges from `300` to `30,000`.
-               When `engine_version` is **5.x**, value ranges from `200` to `60,000`.
-        :param pulumi.Input[_builtins.str] storage_spec_code: Specifies the storage I/O specification.
-               The options are as follows:
-               + **dms.physical.storage.high.v2**: high I/O disk
-               + **dms.physical.storage.ultra.v2**: ultra-high I/O disk
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies the ID of a subnet.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the instance.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of a VPC.
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] storage_spec_code: Specifies the storage I/O specification
+        :param pulumi.Input[_builtins.str] subnet_id: Specifies the ID of a subnet
+        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of a VPC
         """
         ...
     @overload
@@ -1321,43 +1087,7 @@ class DmsRocketmqInstance(pulumi.CustomResource):
                  args: DmsRocketmqInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manage DMS RocketMQ instance resources within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        vpc_id = config.require_object("vpcId")
-        subnet_id = config.require_object("subnetId")
-        security_group_id = config.require_object("securityGroupId")
-        availability_zones = config.require_object("availabilityZones")
-        test = sbercloud.DmsRocketmqInstance("test",
-            name="rocketmq_name_test",
-            description="this is a rocketmq instance",
-            engine_version="4.8.0",
-            storage_space=300,
-            vpc_id=vpc_id,
-            subnet_id=subnet_id,
-            security_group_id=security_group_id,
-            availability_zones=availability_zones,
-            flavor_id="c6.4u8g.cluster",
-            storage_spec_code="dms.physical.storage.high.v2",
-            broker_num=1)
-        ```
-
-        ## Import
-
-        The rocketmq instance can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/dmsRocketmqInstance:DmsRocketmqInstance test 8d3c7938-dc47-4937-a30f-c80de381c5e3
-        ```
-
+        Create a DmsRocketmqInstance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param DmsRocketmqInstanceArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1520,75 +1250,40 @@ class DmsRocketmqInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled. Valid values are "true" and "false".
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: Specifies the list of availability zone names, where
-               instance brokers reside and which has available resources.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: Specifies the list of availability zone names
         :param pulumi.Input[_builtins.str] broker_address: Indicates the service data address.
-        :param pulumi.Input[_builtins.int] broker_num: Specifies the broker numbers. It's **required** when instance architecture is
-               **cluster**. Defaults to `1` when instance architecture is **single node**.
-        :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode of the instance. Valid values are *prePaid*
-               and *postPaid*, defaults to *postPaid*. Changing this creates a new resource.
+        :param pulumi.Input[_builtins.int] broker_num: Specifies the broker numbers.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DmsRocketmqInstanceConfigArgs', 'DmsRocketmqInstanceConfigArgsDict']]]] configs: Specifies the instance configs.
-               The configs structure is documented below.
-               
-               <a name="dms_configs"></a>
-               The `configs` block supports:
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DmsRocketmqInstanceCrossVpcAccessArgs', 'DmsRocketmqInstanceCrossVpcAccessArgsDict']]]] cross_vpc_accesses: Indicates the Access information of cross-VPC. The structure is documented below.
         :param pulumi.Input[_builtins.str] description: Specifies the description of the DMS RocketMQ instance.
-               The description can contain a maximum of `1,024` characters.
         :param pulumi.Input[_builtins.bool] enable_acl: Specifies whether access control is enabled.
-        :param pulumi.Input[_builtins.bool] enable_publicip: Specifies whether to enable public access. By default, public access is disabled.
+        :param pulumi.Input[_builtins.bool] enable_publicip: Specifies whether to enable public access.
         :param pulumi.Input[_builtins.str] engine_version: Specifies the version of the RocketMQ engine.
-               Valid values are **4.8.0** and **5.x**.
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the instance.
-        :param pulumi.Input[_builtins.str] flavor_id: Specifies the flavor ID.
-        :param pulumi.Input[_builtins.bool] ipv6_enable: Specifies whether to support IPv6. Defaults to **false**.
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] flavor_id: Specifies a product ID
+        :param pulumi.Input[_builtins.bool] ipv6_enable: Specifies whether to support IPv6
         :param pulumi.Input[_builtins.str] maintain_begin: Indicates the time at which the maintenance window starts. The format is HH:mm:ss.
         :param pulumi.Input[_builtins.str] maintain_end: Indicates the time at which the maintenance window ends. The format is HH:mm:ss.
-        :param pulumi.Input[_builtins.str] name: Specifies the config name.
+        :param pulumi.Input[_builtins.str] name: Specifies the name of the DMS RocketMQ instance
         :param pulumi.Input[_builtins.str] namesrv_address: Indicates the metadata address.
         :param pulumi.Input[_builtins.bool] new_spec_billing_enable: Indicates whether billing based on new specifications is enabled.
         :param pulumi.Input[_builtins.int] node_num: Indicates the node quantity.
-        :param pulumi.Input[_builtins.int] period: Specifies the charging period of the instance. If `period_unit` is set to *month*
-               , the value ranges from 1 to 9. If `period_unit` is set to *year*, the value ranges from `1` to `3`. This parameter is
-               mandatory if `charging_mode` is set to *prePaid*. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] period_unit: Specifies the charging period unit of the instance.
-               Valid values are *month* and *year*. This parameter is mandatory if `charging_mode` is set to *prePaid*.
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] public_broker_address: Indicates the public network service data address.
         :param pulumi.Input[_builtins.str] public_namesrv_address: Indicates the public network metadata address.
         :param pulumi.Input[_builtins.str] publicip_address: Indicates the public IP address.
-        :param pulumi.Input[_builtins.str] publicip_id: Specifies the ID of the EIP bound to the instance. Use commas (,) to separate
-               multiple EIP IDs. It is mandatory if `enable_publicip` is **true** and should be empty when `enable_publicip` is **false**.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] publicip_id: Specifies the ID of the EIP bound to the instance.
         :param pulumi.Input[_builtins.str] resource_spec_code: Indicates the resource specifications.
         :param pulumi.Input[_builtins.bool] retention_policy: Specifies whether access control is enabled.
-        :param pulumi.Input[_builtins.str] security_group_id: Specifies the ID of a security group.
+        :param pulumi.Input[_builtins.str] security_group_id: Specifies the ID of a security group
         :param pulumi.Input[_builtins.str] specification: Indicates the instance specification. For a cluster DMS RocketMQ instance, VM specifications
-               and the number of nodes are returned.
-        :param pulumi.Input[_builtins.bool] ssl_enable: Specifies whether the RocketMQ SASL_SSL is enabled. Defaults to **false**.
-               Changing this parameter will create a new resource.
+                 and the number of nodes are returned.
+        :param pulumi.Input[_builtins.bool] ssl_enable: Specifies whether the RocketMQ SASL_SSL is enabled.
         :param pulumi.Input[_builtins.str] status: Indicates the status of the DMS RocketMQ instance.
         :param pulumi.Input[_builtins.int] storage_space: Specifies the message storage capacity, Unit: GB.
-               When `engine_version` is **4.8.0**, value ranges from `300` to `30,000`.
-               When `engine_version` is **5.x**, value ranges from `200` to `60,000`.
-        :param pulumi.Input[_builtins.str] storage_spec_code: Specifies the storage I/O specification.
-               The options are as follows:
-               + **dms.physical.storage.high.v2**: high I/O disk
-               + **dms.physical.storage.ultra.v2**: ultra-high I/O disk
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies the ID of a subnet.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the instance.
+        :param pulumi.Input[_builtins.str] storage_spec_code: Specifies the storage I/O specification
+        :param pulumi.Input[_builtins.str] subnet_id: Specifies the ID of a subnet
         :param pulumi.Input[_builtins.str] type: Indicates the DMS RocketMQ instance type. Value: cluster.
         :param pulumi.Input[_builtins.int] used_storage_space: Indicates the used message storage space. Unit: GB.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of a VPC.
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of a VPC
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1639,19 +1334,13 @@ class DmsRocketmqInstance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies whether auto renew is enabled. Valid values are "true" and "false".
-        """
         return pulumi.get(self, "auto_renew")
 
     @_builtins.property
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        Specifies the list of availability zone names, where
-        instance brokers reside and which has available resources.
-
-        Changing this parameter will create a new resource.
+        Specifies the list of availability zone names
         """
         return pulumi.get(self, "availability_zones")
 
@@ -1667,18 +1356,13 @@ class DmsRocketmqInstance(pulumi.CustomResource):
     @pulumi.getter(name="brokerNum")
     def broker_num(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Specifies the broker numbers. It's **required** when instance architecture is
-        **cluster**. Defaults to `1` when instance architecture is **single node**.
+        Specifies the broker numbers.
         """
         return pulumi.get(self, "broker_num")
 
     @_builtins.property
     @pulumi.getter(name="chargingMode")
     def charging_mode(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the charging mode of the instance. Valid values are *prePaid*
-        and *postPaid*, defaults to *postPaid*. Changing this creates a new resource.
-        """
         return pulumi.get(self, "charging_mode")
 
     @_builtins.property
@@ -1686,19 +1370,12 @@ class DmsRocketmqInstance(pulumi.CustomResource):
     def configs(self) -> pulumi.Output[Sequence['outputs.DmsRocketmqInstanceConfig']]:
         """
         Specifies the instance configs.
-        The configs structure is documented below.
-
-        <a name="dms_configs"></a>
-        The `configs` block supports:
         """
         return pulumi.get(self, "configs")
 
     @_builtins.property
     @pulumi.getter(name="crossVpcAccesses")
     def cross_vpc_accesses(self) -> pulumi.Output[Sequence['outputs.DmsRocketmqInstanceCrossVpcAccess']]:
-        """
-        Indicates the Access information of cross-VPC. The structure is documented below.
-        """
         return pulumi.get(self, "cross_vpc_accesses")
 
     @_builtins.property
@@ -1706,7 +1383,6 @@ class DmsRocketmqInstance(pulumi.CustomResource):
     def description(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the description of the DMS RocketMQ instance.
-        The description can contain a maximum of `1,024` characters.
         """
         return pulumi.get(self, "description")
 
@@ -1722,7 +1398,7 @@ class DmsRocketmqInstance(pulumi.CustomResource):
     @pulumi.getter(name="enablePublicip")
     def enable_publicip(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Specifies whether to enable public access. By default, public access is disabled.
+        Specifies whether to enable public access.
         """
         return pulumi.get(self, "enable_publicip")
 
@@ -1731,8 +1407,6 @@ class DmsRocketmqInstance(pulumi.CustomResource):
     def engine_version(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the version of the RocketMQ engine.
-        Valid values are **4.8.0** and **5.x**.
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "engine_version")
 
@@ -1748,7 +1422,7 @@ class DmsRocketmqInstance(pulumi.CustomResource):
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the flavor ID.
+        Specifies a product ID
         """
         return pulumi.get(self, "flavor_id")
 
@@ -1756,8 +1430,7 @@ class DmsRocketmqInstance(pulumi.CustomResource):
     @pulumi.getter(name="ipv6Enable")
     def ipv6_enable(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Specifies whether to support IPv6. Defaults to **false**.
-        Changing this parameter will create a new resource.
+        Specifies whether to support IPv6
         """
         return pulumi.get(self, "ipv6_enable")
 
@@ -1781,7 +1454,7 @@ class DmsRocketmqInstance(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the config name.
+        Specifies the name of the DMS RocketMQ instance
         """
         return pulumi.get(self, "name")
 
@@ -1812,21 +1485,11 @@ class DmsRocketmqInstance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[_builtins.int]]:
-        """
-        Specifies the charging period of the instance. If `period_unit` is set to *month*
-        , the value ranges from 1 to 9. If `period_unit` is set to *year*, the value ranges from `1` to `3`. This parameter is
-        mandatory if `charging_mode` is set to *prePaid*. Changing this creates a new resource.
-        """
         return pulumi.get(self, "period")
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the charging period unit of the instance.
-        Valid values are *month* and *year*. This parameter is mandatory if `charging_mode` is set to *prePaid*.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "period_unit")
 
     @_builtins.property
@@ -1857,18 +1520,13 @@ class DmsRocketmqInstance(pulumi.CustomResource):
     @pulumi.getter(name="publicipId")
     def publicip_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the ID of the EIP bound to the instance. Use commas (,) to separate
-        multiple EIP IDs. It is mandatory if `enable_publicip` is **true** and should be empty when `enable_publicip` is **false**.
+        Specifies the ID of the EIP bound to the instance.
         """
         return pulumi.get(self, "publicip_id")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
@@ -1892,7 +1550,7 @@ class DmsRocketmqInstance(pulumi.CustomResource):
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the ID of a security group.
+        Specifies the ID of a security group
         """
         return pulumi.get(self, "security_group_id")
 
@@ -1901,7 +1559,7 @@ class DmsRocketmqInstance(pulumi.CustomResource):
     def specification(self) -> pulumi.Output[_builtins.str]:
         """
         Indicates the instance specification. For a cluster DMS RocketMQ instance, VM specifications
-        and the number of nodes are returned.
+          and the number of nodes are returned.
         """
         return pulumi.get(self, "specification")
 
@@ -1909,8 +1567,7 @@ class DmsRocketmqInstance(pulumi.CustomResource):
     @pulumi.getter(name="sslEnable")
     def ssl_enable(self) -> pulumi.Output[_builtins.bool]:
         """
-        Specifies whether the RocketMQ SASL_SSL is enabled. Defaults to **false**.
-        Changing this parameter will create a new resource.
+        Specifies whether the RocketMQ SASL_SSL is enabled.
         """
         return pulumi.get(self, "ssl_enable")
 
@@ -1927,8 +1584,6 @@ class DmsRocketmqInstance(pulumi.CustomResource):
     def storage_space(self) -> pulumi.Output[_builtins.int]:
         """
         Specifies the message storage capacity, Unit: GB.
-        When `engine_version` is **4.8.0**, value ranges from `300` to `30,000`.
-        When `engine_version` is **5.x**, value ranges from `200` to `60,000`.
         """
         return pulumi.get(self, "storage_space")
 
@@ -1936,11 +1591,7 @@ class DmsRocketmqInstance(pulumi.CustomResource):
     @pulumi.getter(name="storageSpecCode")
     def storage_spec_code(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the storage I/O specification.
-        The options are as follows:
-        + **dms.physical.storage.high.v2**: high I/O disk
-        + **dms.physical.storage.ultra.v2**: ultra-high I/O disk
-        Changing this parameter will create a new resource.
+        Specifies the storage I/O specification
         """
         return pulumi.get(self, "storage_spec_code")
 
@@ -1948,17 +1599,13 @@ class DmsRocketmqInstance(pulumi.CustomResource):
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the ID of a subnet.
-        Changing this parameter will create a new resource.
+        Specifies the ID of a subnet
         """
         return pulumi.get(self, "subnet_id")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        Specifies the key/value pairs to associate with the instance.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
@@ -1981,8 +1628,7 @@ class DmsRocketmqInstance(pulumi.CustomResource):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the ID of a VPC.
-        Changing this parameter will create a new resource.
+        Specifies the ID of a VPC
         """
         return pulumi.get(self, "vpc_id")
 

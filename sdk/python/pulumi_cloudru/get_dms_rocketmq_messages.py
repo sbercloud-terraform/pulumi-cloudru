@@ -82,18 +82,11 @@ class GetDmsRocketmqMessagesResult:
     @_builtins.property
     @pulumi.getter(name="messageId")
     def message_id(self) -> Optional[_builtins.str]:
-        """
-        Indicates the message ID.
-        """
         return pulumi.get(self, "message_id")
 
     @_builtins.property
     @pulumi.getter
     def messages(self) -> Sequence['outputs.GetDmsRocketmqMessagesMessageResult']:
-        """
-        Indicates the message list.
-        The messages structure is documented below.
-        """
         return pulumi.get(self, "messages")
 
     @_builtins.property
@@ -138,66 +131,7 @@ def get_dms_rocketmq_messages(end_time: Optional[_builtins.str] = None,
                               topic: Optional[_builtins.str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDmsRocketmqMessagesResult:
     """
-    Use this data source to get the list of RocketMQ instance messages.
-
-    ## Example Usage
-
-    ### Query message by topic
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    topic = config.require_object("topic")
-    start_time = config.require_object("startTime")
-    end_time = config.require_object("endTime")
-    test = sbercloud.get_dms_rocketmq_messages(instance_id=instance_id,
-        topic=topic,
-        start_time=start_time,
-        end_time=end_time)
-    ```
-
-    ### Query message by key
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    topic = config.require_object("topic")
-    key = config.require_object("key")
-    test = sbercloud.get_dms_rocketmq_messages(instance_id=instance_id,
-        topic=topic,
-        key=key)
-    ```
-
-    ### Query message by message ID
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    topic = config.require_object("topic")
-    message_id = config.require_object("messageId")
-    test = sbercloud.get_dms_rocketmq_messages(instance_id=instance_id,
-        topic=topic,
-        message_id=message_id)
-    ```
-
-
-    :param _builtins.str end_time: Specifies the end time, a Unix timestamp in millisecond.
-    :param _builtins.str instance_id: Specifies the instance ID.
-    :param _builtins.str key: Specifies the message key.
-    :param _builtins.str message_id: Specifies the message ID.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str start_time: Specifies the start time, a Unix timestamp in millisecond.
-    :param _builtins.str topic: Specifies the topic name.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['endTime'] = end_time
@@ -229,66 +163,7 @@ def get_dms_rocketmq_messages_output(end_time: Optional[pulumi.Input[Optional[_b
                                      topic: Optional[pulumi.Input[_builtins.str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDmsRocketmqMessagesResult]:
     """
-    Use this data source to get the list of RocketMQ instance messages.
-
-    ## Example Usage
-
-    ### Query message by topic
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    topic = config.require_object("topic")
-    start_time = config.require_object("startTime")
-    end_time = config.require_object("endTime")
-    test = sbercloud.get_dms_rocketmq_messages(instance_id=instance_id,
-        topic=topic,
-        start_time=start_time,
-        end_time=end_time)
-    ```
-
-    ### Query message by key
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    topic = config.require_object("topic")
-    key = config.require_object("key")
-    test = sbercloud.get_dms_rocketmq_messages(instance_id=instance_id,
-        topic=topic,
-        key=key)
-    ```
-
-    ### Query message by message ID
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    topic = config.require_object("topic")
-    message_id = config.require_object("messageId")
-    test = sbercloud.get_dms_rocketmq_messages(instance_id=instance_id,
-        topic=topic,
-        message_id=message_id)
-    ```
-
-
-    :param _builtins.str end_time: Specifies the end time, a Unix timestamp in millisecond.
-    :param _builtins.str instance_id: Specifies the instance ID.
-    :param _builtins.str key: Specifies the message key.
-    :param _builtins.str message_id: Specifies the message ID.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str start_time: Specifies the start time, a Unix timestamp in millisecond.
-    :param _builtins.str topic: Specifies the topic name.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['endTime'] = end_time

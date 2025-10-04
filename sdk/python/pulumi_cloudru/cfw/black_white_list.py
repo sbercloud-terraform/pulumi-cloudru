@@ -32,27 +32,12 @@ class BlackWhiteListArgs:
         The set of arguments for constructing a BlackWhiteList resource.
         :param pulumi.Input[_builtins.str] address: Specifies the address.
         :param pulumi.Input[_builtins.int] address_type: Specifies the IP address type.
-               The options are `0` (ipv4), `1` (ipv6) and `2` (domain).
         :param pulumi.Input[_builtins.int] direction: Specifies the address direction.
-               The options are `0` (source address) and `1` (destination address).
         :param pulumi.Input[_builtins.int] list_type: Specifies the list type.
-               The options are `4` (blacklist) and `5` (whitelist).
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] object_id: Specifies the protected object ID.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] protocol: Specifies the protocol type. The value can be:
-               + **6**: indicates TCP;
-               + **17**: indicates UDP;
-               + **1**: indicates ICMP;
-               + **58**: indicates ICMPv6;
-               + **-1**: indicates any protocol;
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the list.
+        :param pulumi.Input[_builtins.int] protocol: Specifies the protocol type.
+        :param pulumi.Input[_builtins.str] description: Specifies the description.
         :param pulumi.Input[_builtins.str] port: Specifies the destination port.
-               Required and only available if protocol is **TCP** or **UDP**.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "address_type", address_type)
@@ -84,7 +69,6 @@ class BlackWhiteListArgs:
     def address_type(self) -> pulumi.Input[_builtins.int]:
         """
         Specifies the IP address type.
-        The options are `0` (ipv4), `1` (ipv6) and `2` (domain).
         """
         return pulumi.get(self, "address_type")
 
@@ -97,7 +81,6 @@ class BlackWhiteListArgs:
     def direction(self) -> pulumi.Input[_builtins.int]:
         """
         Specifies the address direction.
-        The options are `0` (source address) and `1` (destination address).
         """
         return pulumi.get(self, "direction")
 
@@ -110,9 +93,6 @@ class BlackWhiteListArgs:
     def list_type(self) -> pulumi.Input[_builtins.int]:
         """
         Specifies the list type.
-        The options are `4` (blacklist) and `5` (whitelist).
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "list_type")
 
@@ -125,8 +105,6 @@ class BlackWhiteListArgs:
     def object_id(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the protected object ID.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "object_id")
 
@@ -138,12 +116,7 @@ class BlackWhiteListArgs:
     @pulumi.getter
     def protocol(self) -> pulumi.Input[_builtins.int]:
         """
-        Specifies the protocol type. The value can be:
-        + **6**: indicates TCP;
-        + **17**: indicates UDP;
-        + **1**: indicates ICMP;
-        + **58**: indicates ICMPv6;
-        + **-1**: indicates any protocol;
+        Specifies the protocol type.
         """
         return pulumi.get(self, "protocol")
 
@@ -155,7 +128,7 @@ class BlackWhiteListArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the description of the list.
+        Specifies the description.
         """
         return pulumi.get(self, "description")
 
@@ -168,7 +141,6 @@ class BlackWhiteListArgs:
     def port(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the destination port.
-        Required and only available if protocol is **TCP** or **UDP**.
         """
         return pulumi.get(self, "port")
 
@@ -179,10 +151,6 @@ class BlackWhiteListArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -206,27 +174,12 @@ class _BlackWhiteListState:
         Input properties used for looking up and filtering BlackWhiteList resources.
         :param pulumi.Input[_builtins.str] address: Specifies the address.
         :param pulumi.Input[_builtins.int] address_type: Specifies the IP address type.
-               The options are `0` (ipv4), `1` (ipv6) and `2` (domain).
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the list.
+        :param pulumi.Input[_builtins.str] description: Specifies the description.
         :param pulumi.Input[_builtins.int] direction: Specifies the address direction.
-               The options are `0` (source address) and `1` (destination address).
         :param pulumi.Input[_builtins.int] list_type: Specifies the list type.
-               The options are `4` (blacklist) and `5` (whitelist).
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] object_id: Specifies the protected object ID.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] port: Specifies the destination port.
-               Required and only available if protocol is **TCP** or **UDP**.
-        :param pulumi.Input[_builtins.int] protocol: Specifies the protocol type. The value can be:
-               + **6**: indicates TCP;
-               + **17**: indicates UDP;
-               + **1**: indicates ICMP;
-               + **58**: indicates ICMPv6;
-               + **-1**: indicates any protocol;
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.int] protocol: Specifies the protocol type.
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -264,7 +217,6 @@ class _BlackWhiteListState:
     def address_type(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the IP address type.
-        The options are `0` (ipv4), `1` (ipv6) and `2` (domain).
         """
         return pulumi.get(self, "address_type")
 
@@ -276,7 +228,7 @@ class _BlackWhiteListState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the description of the list.
+        Specifies the description.
         """
         return pulumi.get(self, "description")
 
@@ -289,7 +241,6 @@ class _BlackWhiteListState:
     def direction(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the address direction.
-        The options are `0` (source address) and `1` (destination address).
         """
         return pulumi.get(self, "direction")
 
@@ -302,9 +253,6 @@ class _BlackWhiteListState:
     def list_type(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the list type.
-        The options are `4` (blacklist) and `5` (whitelist).
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "list_type")
 
@@ -317,8 +265,6 @@ class _BlackWhiteListState:
     def object_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the protected object ID.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "object_id")
 
@@ -331,7 +277,6 @@ class _BlackWhiteListState:
     def port(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the destination port.
-        Required and only available if protocol is **TCP** or **UDP**.
         """
         return pulumi.get(self, "port")
 
@@ -343,12 +288,7 @@ class _BlackWhiteListState:
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the protocol type. The value can be:
-        + **6**: indicates TCP;
-        + **17**: indicates UDP;
-        + **1**: indicates ICMP;
-        + **58**: indicates ICMPv6;
-        + **-1**: indicates any protocol;
+        Specifies the protocol type.
         """
         return pulumi.get(self, "protocol")
 
@@ -359,10 +299,6 @@ class _BlackWhiteListState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -387,68 +323,17 @@ class BlackWhiteList(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a CFW black white list resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        config = pulumi.Config()
-        list_type = config.require_object("listType")
-        direction = config.require_object("direction")
-        address_type = config.require_object("addressType")
-        address = config.require_object("address")
-        protocol = config.require_object("protocol")
-        port = config.require_object("port")
-        test = sbercloud.Cfw.get_firewalls()
-        test_black_white_list = sbercloud.cfw.BlackWhiteList("test",
-            object_id=test.records[0].protect_objects[0].object_id,
-            list_type=list_type,
-            direction=direction,
-            address_type=address_type,
-            address=address,
-            protocol=protocol,
-            port=port)
-        ```
-
-        ## Import
-
-        The black whitelist can be imported using `object_id`, `list_type`, `address`, separated by slashes, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Cfw/blackWhiteList:BlackWhiteList test <object_id>/<list_type>/<address>
-        ```
-
+        Create a BlackWhiteList resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address: Specifies the address.
         :param pulumi.Input[_builtins.int] address_type: Specifies the IP address type.
-               The options are `0` (ipv4), `1` (ipv6) and `2` (domain).
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the list.
+        :param pulumi.Input[_builtins.str] description: Specifies the description.
         :param pulumi.Input[_builtins.int] direction: Specifies the address direction.
-               The options are `0` (source address) and `1` (destination address).
         :param pulumi.Input[_builtins.int] list_type: Specifies the list type.
-               The options are `4` (blacklist) and `5` (whitelist).
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] object_id: Specifies the protected object ID.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] port: Specifies the destination port.
-               Required and only available if protocol is **TCP** or **UDP**.
-        :param pulumi.Input[_builtins.int] protocol: Specifies the protocol type. The value can be:
-               + **6**: indicates TCP;
-               + **17**: indicates UDP;
-               + **1**: indicates ICMP;
-               + **58**: indicates ICMPv6;
-               + **-1**: indicates any protocol;
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.int] protocol: Specifies the protocol type.
         """
         ...
     @overload
@@ -457,43 +342,7 @@ class BlackWhiteList(pulumi.CustomResource):
                  args: BlackWhiteListArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a CFW black white list resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        config = pulumi.Config()
-        list_type = config.require_object("listType")
-        direction = config.require_object("direction")
-        address_type = config.require_object("addressType")
-        address = config.require_object("address")
-        protocol = config.require_object("protocol")
-        port = config.require_object("port")
-        test = sbercloud.Cfw.get_firewalls()
-        test_black_white_list = sbercloud.cfw.BlackWhiteList("test",
-            object_id=test.records[0].protect_objects[0].object_id,
-            list_type=list_type,
-            direction=direction,
-            address_type=address_type,
-            address=address,
-            protocol=protocol,
-            port=port)
-        ```
-
-        ## Import
-
-        The black whitelist can be imported using `object_id`, `list_type`, `address`, separated by slashes, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Cfw/blackWhiteList:BlackWhiteList test <object_id>/<list_type>/<address>
-        ```
-
+        Create a BlackWhiteList resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param BlackWhiteListArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -576,27 +425,12 @@ class BlackWhiteList(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address: Specifies the address.
         :param pulumi.Input[_builtins.int] address_type: Specifies the IP address type.
-               The options are `0` (ipv4), `1` (ipv6) and `2` (domain).
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the list.
+        :param pulumi.Input[_builtins.str] description: Specifies the description.
         :param pulumi.Input[_builtins.int] direction: Specifies the address direction.
-               The options are `0` (source address) and `1` (destination address).
         :param pulumi.Input[_builtins.int] list_type: Specifies the list type.
-               The options are `4` (blacklist) and `5` (whitelist).
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] object_id: Specifies the protected object ID.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] port: Specifies the destination port.
-               Required and only available if protocol is **TCP** or **UDP**.
-        :param pulumi.Input[_builtins.int] protocol: Specifies the protocol type. The value can be:
-               + **6**: indicates TCP;
-               + **17**: indicates UDP;
-               + **1**: indicates ICMP;
-               + **58**: indicates ICMPv6;
-               + **-1**: indicates any protocol;
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.int] protocol: Specifies the protocol type.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -626,7 +460,6 @@ class BlackWhiteList(pulumi.CustomResource):
     def address_type(self) -> pulumi.Output[_builtins.int]:
         """
         Specifies the IP address type.
-        The options are `0` (ipv4), `1` (ipv6) and `2` (domain).
         """
         return pulumi.get(self, "address_type")
 
@@ -634,7 +467,7 @@ class BlackWhiteList(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the description of the list.
+        Specifies the description.
         """
         return pulumi.get(self, "description")
 
@@ -643,7 +476,6 @@ class BlackWhiteList(pulumi.CustomResource):
     def direction(self) -> pulumi.Output[_builtins.int]:
         """
         Specifies the address direction.
-        The options are `0` (source address) and `1` (destination address).
         """
         return pulumi.get(self, "direction")
 
@@ -652,9 +484,6 @@ class BlackWhiteList(pulumi.CustomResource):
     def list_type(self) -> pulumi.Output[_builtins.int]:
         """
         Specifies the list type.
-        The options are `4` (blacklist) and `5` (whitelist).
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "list_type")
 
@@ -663,8 +492,6 @@ class BlackWhiteList(pulumi.CustomResource):
     def object_id(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the protected object ID.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "object_id")
 
@@ -673,7 +500,6 @@ class BlackWhiteList(pulumi.CustomResource):
     def port(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the destination port.
-        Required and only available if protocol is **TCP** or **UDP**.
         """
         return pulumi.get(self, "port")
 
@@ -681,21 +507,12 @@ class BlackWhiteList(pulumi.CustomResource):
     @pulumi.getter
     def protocol(self) -> pulumi.Output[_builtins.int]:
         """
-        Specifies the protocol type. The value can be:
-        + **6**: indicates TCP;
-        + **17**: indicates UDP;
-        + **1**: indicates ICMP;
-        + **58**: indicates ICMPv6;
-        + **-1**: indicates any protocol;
+        Specifies the protocol type.
         """
         return pulumi.get(self, "protocol")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 

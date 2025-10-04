@@ -6,22 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the list of CFW address groups.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const objectId = config.requireObject<any>("objectId");
- * const test = sbercloud.Cfw.getAddressGroups({
- *     objectId: objectId,
- * });
- * ```
- */
 export function getAddressGroups(args: GetAddressGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:Cfw/getAddressGroups:getAddressGroups", {
@@ -41,45 +25,14 @@ export function getAddressGroups(args: GetAddressGroupsArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getAddressGroups.
  */
 export interface GetAddressGroupsArgs {
-    /**
-     * Specifies IP address of the IP address group.
-     */
     address?: string;
-    /**
-     * Specifies the IP address type.
-     * The value can be **0** (IPv4) or **1** (IPv6).
-     */
     addressType?: string;
-    /**
-     * Specifies the enterprise project id to which the IP address group belongs.
-     */
     enterpriseProjectId?: string;
-    /**
-     * Specifies the firewall instance ID.
-     */
     fwInstanceId?: string;
-    /**
-     * Specifies the keyword of the address group description.
-     */
     keyWord?: string;
-    /**
-     * Specifies the name of the address group.
-     */
     name?: string;
-    /**
-     * Specifies the protected object ID.
-     */
     objectId: string;
-    /**
-     * Specifies the address group type of the query.
-     * + **0:** indicates a custom IP address group.
-     * + **1:** indicates a predefined IP address group.
-     */
     queryAddressSetType?: number;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
 }
 
@@ -88,13 +41,7 @@ export interface GetAddressGroupsArgs {
  */
 export interface GetAddressGroupsResult {
     readonly address?: string;
-    /**
-     * The IP address group list.
-     */
     readonly addressGroups: outputs.Cfw.GetAddressGroupsAddressGroup[];
-    /**
-     * The address type.
-     */
     readonly addressType?: string;
     readonly enterpriseProjectId?: string;
     readonly fwInstanceId?: string;
@@ -103,33 +50,11 @@ export interface GetAddressGroupsResult {
      */
     readonly id: string;
     readonly keyWord?: string;
-    /**
-     * The IP address group name.
-     */
     readonly name?: string;
-    /**
-     * The protected object ID.
-     */
     readonly objectId: string;
     readonly queryAddressSetType?: number;
     readonly region: string;
 }
-/**
- * Use this data source to get the list of CFW address groups.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const objectId = config.requireObject<any>("objectId");
- * const test = sbercloud.Cfw.getAddressGroups({
- *     objectId: objectId,
- * });
- * ```
- */
 export function getAddressGroupsOutput(args: GetAddressGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAddressGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:Cfw/getAddressGroups:getAddressGroups", {
@@ -149,44 +74,13 @@ export function getAddressGroupsOutput(args: GetAddressGroupsOutputArgs, opts?: 
  * A collection of arguments for invoking getAddressGroups.
  */
 export interface GetAddressGroupsOutputArgs {
-    /**
-     * Specifies IP address of the IP address group.
-     */
     address?: pulumi.Input<string>;
-    /**
-     * Specifies the IP address type.
-     * The value can be **0** (IPv4) or **1** (IPv6).
-     */
     addressType?: pulumi.Input<string>;
-    /**
-     * Specifies the enterprise project id to which the IP address group belongs.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Specifies the firewall instance ID.
-     */
     fwInstanceId?: pulumi.Input<string>;
-    /**
-     * Specifies the keyword of the address group description.
-     */
     keyWord?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the address group.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the protected object ID.
-     */
     objectId: pulumi.Input<string>;
-    /**
-     * Specifies the address group type of the query.
-     * + **0:** indicates a custom IP address group.
-     * + **1:** indicates a predefined IP address group.
-     */
     queryAddressSetType?: pulumi.Input<number>;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
 }

@@ -11,36 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the ID of an available DCS product.
-//
-// !> **WARNING:** It has been deprecated. This data source is used for the `productId` of the
-// `Dcs.Instance` resource. Now `productId` has been deprecated and this data source is no longer used.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sbercloud.GetDcsProduct(ctx, &cloudru.GetDcsProductArgs{
-//				SpecCode: pulumi.StringRef("dcs.single_node"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetDcsProduct(ctx *pulumi.Context, args *GetDcsProductArgs, opts ...pulumi.InvokeOption) (*GetDcsProductResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDcsProductResult
@@ -53,24 +23,15 @@ func GetDcsProduct(ctx *pulumi.Context, args *GetDcsProductArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getDcsProduct.
 type GetDcsProductArgs struct {
-	// Specifies the region in which to obtain the dcs products.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the DCS instance specification code. For details, see
-	// [Querying Service Specifications](https://support.hc.sbercloud.ru/api/dcs/dcs-api-0312040.html).
-	// + Log in to the DCS console, click *Buy DCS Instance*, and find the corresponding instance specification.
+	Region   *string `pulumi:"region"`
 	SpecCode *string `pulumi:"specCode"`
 }
 
 // A collection of values returned by getDcsProduct.
 type GetDcsProductResult struct {
-	// The mode of a cache engine. The value is one of *single*, *ha*, *cluster*,
-	// *proxy* and *ha_rw_split*.
-	CacheMode string `pulumi:"cacheMode"`
-	Capacity  string `pulumi:"capacity"`
-	// The cache engine. The value is *redis* or *memcached*.
-	Engine string `pulumi:"engine"`
-	// The supported versions of a cache engine.
+	CacheMode     string `pulumi:"cacheMode"`
+	Capacity      string `pulumi:"capacity"`
+	Engine        string `pulumi:"engine"`
 	EngineVersion string `pulumi:"engineVersion"`
 	// The provider-assigned unique ID for this managed resource.
 	Id       string `pulumi:"id"`
@@ -89,12 +50,7 @@ func GetDcsProductOutput(ctx *pulumi.Context, args GetDcsProductOutputArgs, opts
 
 // A collection of arguments for invoking getDcsProduct.
 type GetDcsProductOutputArgs struct {
-	// Specifies the region in which to obtain the dcs products.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the DCS instance specification code. For details, see
-	// [Querying Service Specifications](https://support.hc.sbercloud.ru/api/dcs/dcs-api-0312040.html).
-	// + Log in to the DCS console, click *Buy DCS Instance*, and find the corresponding instance specification.
+	Region   pulumi.StringPtrInput `pulumi:"region"`
 	SpecCode pulumi.StringPtrInput `pulumi:"specCode"`
 }
 
@@ -117,8 +73,6 @@ func (o GetDcsProductResultOutput) ToGetDcsProductResultOutputWithContext(ctx co
 	return o
 }
 
-// The mode of a cache engine. The value is one of *single*, *ha*, *cluster*,
-// *proxy* and *ha_rw_split*.
 func (o GetDcsProductResultOutput) CacheMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDcsProductResult) string { return v.CacheMode }).(pulumi.StringOutput)
 }
@@ -127,12 +81,10 @@ func (o GetDcsProductResultOutput) Capacity() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDcsProductResult) string { return v.Capacity }).(pulumi.StringOutput)
 }
 
-// The cache engine. The value is *redis* or *memcached*.
 func (o GetDcsProductResultOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDcsProductResult) string { return v.Engine }).(pulumi.StringOutput)
 }
 
-// The supported versions of a cache engine.
 func (o GetDcsProductResultOutput) EngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDcsProductResult) string { return v.EngineVersion }).(pulumi.StringOutput)
 }

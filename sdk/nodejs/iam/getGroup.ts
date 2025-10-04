@@ -6,20 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get details of the specified IAM user group.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const group = sbercloud.Iam.getGroup({
- *     name: "my_group",
- * });
- * ```
- */
 export function getGroup(args?: GetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,17 +20,8 @@ export function getGroup(args?: GetGroupArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getGroup.
  */
 export interface GetGroupArgs {
-    /**
-     * Specifies the description of the identity group.
-     */
     description?: string;
-    /**
-     * Specifies the ID of the identity group.
-     */
     id?: string;
-    /**
-     * Specifies the name of the identity group.
-     */
     name?: string;
 }
 
@@ -52,41 +29,12 @@ export interface GetGroupArgs {
  * A collection of values returned by getGroup.
  */
 export interface GetGroupResult {
-    /**
-     * Indicates the description of the IAM user.
-     */
     readonly description: string;
-    /**
-     * Indicates the domain the group belongs to.
-     */
     readonly domainId: string;
-    /**
-     * Indicates the ID of the User.
-     */
     readonly id: string;
-    /**
-     * Indicates the IAM user name.
-     */
     readonly name: string;
-    /**
-     * Indicates the users the group contains. Structure is documented below.
-     */
     readonly users: outputs.Iam.GetGroupUser[];
 }
-/**
- * Use this data source to get details of the specified IAM user group.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const group = sbercloud.Iam.getGroup({
- *     name: "my_group",
- * });
- * ```
- */
 export function getGroupOutput(args?: GetGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -101,16 +49,7 @@ export function getGroupOutput(args?: GetGroupOutputArgs, opts?: pulumi.InvokeOu
  * A collection of arguments for invoking getGroup.
  */
 export interface GetGroupOutputArgs {
-    /**
-     * Specifies the description of the identity group.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of the identity group.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the identity group.
-     */
     name?: pulumi.Input<string>;
 }

@@ -12,93 +12,30 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a KMS key resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/dew"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dew.NewKey(ctx, "key_1", &dew.KeyArgs{
-//				KeyAlias:       pulumi.String("key_1"),
-//				PendingDays:    pulumi.String("7"),
-//				KeyDescription: pulumi.String("first test key"),
-//				IsEnabled:      pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// KMS Keys can be imported using the `id`, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Dew/key:Key key_1 7056d636-ac60-4663-8a6c-82d3c32c1c64
-// ```
 type Key struct {
 	pulumi.CustomResourceState
 
-	// Creation time (time stamp) of a key.
-	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
-	// Identification of a Master Key. The value 1 indicates a Default
-	// Master Key, and the value 0 indicates a key.
-	DefaultKeyFlag pulumi.StringOutput `pulumi:"defaultKeyFlag"`
-	// ID of a user domain for the key.
-	DomainId pulumi.StringOutput `pulumi:"domainId"`
-	// The enterprise project id of the kms key. Changing this creates a new key.
-	EnterpriseProjectId pulumi.StringOutput `pulumi:"enterpriseProjectId"`
-	// Expiration time.
-	ExpirationTime pulumi.StringOutput `pulumi:"expirationTime"`
-	// Specifies whether the key is enabled. Defaults to true.
-	// Changing this updates the state of existing key.
-	IsEnabled pulumi.BoolPtrOutput `pulumi:"isEnabled"`
-	// The algorithm of the key. Valid values are AES_256, SM4, RSA_2048, RSA_3072,
-	// RSA_4096, EC_P256, EC_P384, SM2. Changing this creates a new key.
-	KeyAlgorithm pulumi.StringOutput `pulumi:"keyAlgorithm"`
-	// The alias in which to create the key. It is required when
-	// we create a new key. Changing this updates the alias of key.
-	KeyAlias pulumi.StringOutput `pulumi:"keyAlias"`
-	// The description of the key as viewed in Sber console.
-	// Changing this updates the description of key.
-	KeyDescription pulumi.StringPtrOutput `pulumi:"keyDescription"`
-	// The globally unique identifier for the key.
-	KeyId      pulumi.StringOutput `pulumi:"keyId"`
-	KeyState   pulumi.StringOutput `pulumi:"keyState"`
-	KeyUsage   pulumi.StringOutput `pulumi:"keyUsage"`
-	KeystoreId pulumi.StringOutput `pulumi:"keystoreId"`
-	Origin     pulumi.StringOutput `pulumi:"origin"`
-	// Duration in days after which the key is deleted
-	// after destruction of the resource, must be between 7 and 1096 days. It doesn't
-	// have default value. It only be used when delete a key.
-	PendingDays pulumi.StringPtrOutput `pulumi:"pendingDays"`
-	// The region in which to create the KMS key resource. If omitted, the provider-level region will be used. Changing this creates a new KMS key resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Specifies whether the key rotation is enabled. Defaults to false.
-	RotationEnabled pulumi.BoolPtrOutput `pulumi:"rotationEnabled"`
-	// Specifies the key rotation interval. The valid value is range from 30 to 365,
-	// defaults to 365.
-	RotationInterval pulumi.IntOutput `pulumi:"rotationInterval"`
-	// The total number of key rotations.
-	RotationNumber pulumi.IntOutput `pulumi:"rotationNumber"`
-	// Scheduled deletion time (time stamp) of a key.
-	ScheduledDeletionDate pulumi.StringOutput `pulumi:"scheduledDeletionDate"`
-	// Specifies the key/value pairs to associate with the kms key.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	CreationDate          pulumi.StringOutput    `pulumi:"creationDate"`
+	DefaultKeyFlag        pulumi.StringOutput    `pulumi:"defaultKeyFlag"`
+	DomainId              pulumi.StringOutput    `pulumi:"domainId"`
+	EnterpriseProjectId   pulumi.StringOutput    `pulumi:"enterpriseProjectId"`
+	ExpirationTime        pulumi.StringOutput    `pulumi:"expirationTime"`
+	IsEnabled             pulumi.BoolPtrOutput   `pulumi:"isEnabled"`
+	KeyAlgorithm          pulumi.StringOutput    `pulumi:"keyAlgorithm"`
+	KeyAlias              pulumi.StringOutput    `pulumi:"keyAlias"`
+	KeyDescription        pulumi.StringPtrOutput `pulumi:"keyDescription"`
+	KeyId                 pulumi.StringOutput    `pulumi:"keyId"`
+	KeyState              pulumi.StringOutput    `pulumi:"keyState"`
+	KeyUsage              pulumi.StringOutput    `pulumi:"keyUsage"`
+	KeystoreId            pulumi.StringOutput    `pulumi:"keystoreId"`
+	Origin                pulumi.StringOutput    `pulumi:"origin"`
+	PendingDays           pulumi.StringPtrOutput `pulumi:"pendingDays"`
+	Region                pulumi.StringOutput    `pulumi:"region"`
+	RotationEnabled       pulumi.BoolPtrOutput   `pulumi:"rotationEnabled"`
+	RotationInterval      pulumi.IntOutput       `pulumi:"rotationInterval"`
+	RotationNumber        pulumi.IntOutput       `pulumi:"rotationNumber"`
+	ScheduledDeletionDate pulumi.StringOutput    `pulumi:"scheduledDeletionDate"`
+	Tags                  pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewKey registers a new resource with the given unique name, arguments, and options.
@@ -134,101 +71,51 @@ func GetKey(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Key resources.
 type keyState struct {
-	// Creation time (time stamp) of a key.
-	CreationDate *string `pulumi:"creationDate"`
-	// Identification of a Master Key. The value 1 indicates a Default
-	// Master Key, and the value 0 indicates a key.
-	DefaultKeyFlag *string `pulumi:"defaultKeyFlag"`
-	// ID of a user domain for the key.
-	DomainId *string `pulumi:"domainId"`
-	// The enterprise project id of the kms key. Changing this creates a new key.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Expiration time.
-	ExpirationTime *string `pulumi:"expirationTime"`
-	// Specifies whether the key is enabled. Defaults to true.
-	// Changing this updates the state of existing key.
-	IsEnabled *bool `pulumi:"isEnabled"`
-	// The algorithm of the key. Valid values are AES_256, SM4, RSA_2048, RSA_3072,
-	// RSA_4096, EC_P256, EC_P384, SM2. Changing this creates a new key.
-	KeyAlgorithm *string `pulumi:"keyAlgorithm"`
-	// The alias in which to create the key. It is required when
-	// we create a new key. Changing this updates the alias of key.
-	KeyAlias *string `pulumi:"keyAlias"`
-	// The description of the key as viewed in Sber console.
-	// Changing this updates the description of key.
-	KeyDescription *string `pulumi:"keyDescription"`
-	// The globally unique identifier for the key.
-	KeyId      *string `pulumi:"keyId"`
-	KeyState   *string `pulumi:"keyState"`
-	KeyUsage   *string `pulumi:"keyUsage"`
-	KeystoreId *string `pulumi:"keystoreId"`
-	Origin     *string `pulumi:"origin"`
-	// Duration in days after which the key is deleted
-	// after destruction of the resource, must be between 7 and 1096 days. It doesn't
-	// have default value. It only be used when delete a key.
-	PendingDays *string `pulumi:"pendingDays"`
-	// The region in which to create the KMS key resource. If omitted, the provider-level region will be used. Changing this creates a new KMS key resource.
-	Region *string `pulumi:"region"`
-	// Specifies whether the key rotation is enabled. Defaults to false.
-	RotationEnabled *bool `pulumi:"rotationEnabled"`
-	// Specifies the key rotation interval. The valid value is range from 30 to 365,
-	// defaults to 365.
-	RotationInterval *int `pulumi:"rotationInterval"`
-	// The total number of key rotations.
-	RotationNumber *int `pulumi:"rotationNumber"`
-	// Scheduled deletion time (time stamp) of a key.
-	ScheduledDeletionDate *string `pulumi:"scheduledDeletionDate"`
-	// Specifies the key/value pairs to associate with the kms key.
-	Tags map[string]string `pulumi:"tags"`
+	CreationDate          *string           `pulumi:"creationDate"`
+	DefaultKeyFlag        *string           `pulumi:"defaultKeyFlag"`
+	DomainId              *string           `pulumi:"domainId"`
+	EnterpriseProjectId   *string           `pulumi:"enterpriseProjectId"`
+	ExpirationTime        *string           `pulumi:"expirationTime"`
+	IsEnabled             *bool             `pulumi:"isEnabled"`
+	KeyAlgorithm          *string           `pulumi:"keyAlgorithm"`
+	KeyAlias              *string           `pulumi:"keyAlias"`
+	KeyDescription        *string           `pulumi:"keyDescription"`
+	KeyId                 *string           `pulumi:"keyId"`
+	KeyState              *string           `pulumi:"keyState"`
+	KeyUsage              *string           `pulumi:"keyUsage"`
+	KeystoreId            *string           `pulumi:"keystoreId"`
+	Origin                *string           `pulumi:"origin"`
+	PendingDays           *string           `pulumi:"pendingDays"`
+	Region                *string           `pulumi:"region"`
+	RotationEnabled       *bool             `pulumi:"rotationEnabled"`
+	RotationInterval      *int              `pulumi:"rotationInterval"`
+	RotationNumber        *int              `pulumi:"rotationNumber"`
+	ScheduledDeletionDate *string           `pulumi:"scheduledDeletionDate"`
+	Tags                  map[string]string `pulumi:"tags"`
 }
 
 type KeyState struct {
-	// Creation time (time stamp) of a key.
-	CreationDate pulumi.StringPtrInput
-	// Identification of a Master Key. The value 1 indicates a Default
-	// Master Key, and the value 0 indicates a key.
-	DefaultKeyFlag pulumi.StringPtrInput
-	// ID of a user domain for the key.
-	DomainId pulumi.StringPtrInput
-	// The enterprise project id of the kms key. Changing this creates a new key.
-	EnterpriseProjectId pulumi.StringPtrInput
-	// Expiration time.
-	ExpirationTime pulumi.StringPtrInput
-	// Specifies whether the key is enabled. Defaults to true.
-	// Changing this updates the state of existing key.
-	IsEnabled pulumi.BoolPtrInput
-	// The algorithm of the key. Valid values are AES_256, SM4, RSA_2048, RSA_3072,
-	// RSA_4096, EC_P256, EC_P384, SM2. Changing this creates a new key.
-	KeyAlgorithm pulumi.StringPtrInput
-	// The alias in which to create the key. It is required when
-	// we create a new key. Changing this updates the alias of key.
-	KeyAlias pulumi.StringPtrInput
-	// The description of the key as viewed in Sber console.
-	// Changing this updates the description of key.
-	KeyDescription pulumi.StringPtrInput
-	// The globally unique identifier for the key.
-	KeyId      pulumi.StringPtrInput
-	KeyState   pulumi.StringPtrInput
-	KeyUsage   pulumi.StringPtrInput
-	KeystoreId pulumi.StringPtrInput
-	Origin     pulumi.StringPtrInput
-	// Duration in days after which the key is deleted
-	// after destruction of the resource, must be between 7 and 1096 days. It doesn't
-	// have default value. It only be used when delete a key.
-	PendingDays pulumi.StringPtrInput
-	// The region in which to create the KMS key resource. If omitted, the provider-level region will be used. Changing this creates a new KMS key resource.
-	Region pulumi.StringPtrInput
-	// Specifies whether the key rotation is enabled. Defaults to false.
-	RotationEnabled pulumi.BoolPtrInput
-	// Specifies the key rotation interval. The valid value is range from 30 to 365,
-	// defaults to 365.
-	RotationInterval pulumi.IntPtrInput
-	// The total number of key rotations.
-	RotationNumber pulumi.IntPtrInput
-	// Scheduled deletion time (time stamp) of a key.
+	CreationDate          pulumi.StringPtrInput
+	DefaultKeyFlag        pulumi.StringPtrInput
+	DomainId              pulumi.StringPtrInput
+	EnterpriseProjectId   pulumi.StringPtrInput
+	ExpirationTime        pulumi.StringPtrInput
+	IsEnabled             pulumi.BoolPtrInput
+	KeyAlgorithm          pulumi.StringPtrInput
+	KeyAlias              pulumi.StringPtrInput
+	KeyDescription        pulumi.StringPtrInput
+	KeyId                 pulumi.StringPtrInput
+	KeyState              pulumi.StringPtrInput
+	KeyUsage              pulumi.StringPtrInput
+	KeystoreId            pulumi.StringPtrInput
+	Origin                pulumi.StringPtrInput
+	PendingDays           pulumi.StringPtrInput
+	Region                pulumi.StringPtrInput
+	RotationEnabled       pulumi.BoolPtrInput
+	RotationInterval      pulumi.IntPtrInput
+	RotationNumber        pulumi.IntPtrInput
 	ScheduledDeletionDate pulumi.StringPtrInput
-	// Specifies the key/value pairs to associate with the kms key.
-	Tags pulumi.StringMapInput
+	Tags                  pulumi.StringMapInput
 }
 
 func (KeyState) ElementType() reflect.Type {
@@ -236,70 +123,36 @@ func (KeyState) ElementType() reflect.Type {
 }
 
 type keyArgs struct {
-	// The enterprise project id of the kms key. Changing this creates a new key.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies whether the key is enabled. Defaults to true.
-	// Changing this updates the state of existing key.
-	IsEnabled *bool `pulumi:"isEnabled"`
-	// The algorithm of the key. Valid values are AES_256, SM4, RSA_2048, RSA_3072,
-	// RSA_4096, EC_P256, EC_P384, SM2. Changing this creates a new key.
-	KeyAlgorithm *string `pulumi:"keyAlgorithm"`
-	// The alias in which to create the key. It is required when
-	// we create a new key. Changing this updates the alias of key.
-	KeyAlias string `pulumi:"keyAlias"`
-	// The description of the key as viewed in Sber console.
-	// Changing this updates the description of key.
-	KeyDescription *string `pulumi:"keyDescription"`
-	KeyUsage       *string `pulumi:"keyUsage"`
-	KeystoreId     *string `pulumi:"keystoreId"`
-	Origin         *string `pulumi:"origin"`
-	// Duration in days after which the key is deleted
-	// after destruction of the resource, must be between 7 and 1096 days. It doesn't
-	// have default value. It only be used when delete a key.
-	PendingDays *string `pulumi:"pendingDays"`
-	// The region in which to create the KMS key resource. If omitted, the provider-level region will be used. Changing this creates a new KMS key resource.
-	Region *string `pulumi:"region"`
-	// Specifies whether the key rotation is enabled. Defaults to false.
-	RotationEnabled *bool `pulumi:"rotationEnabled"`
-	// Specifies the key rotation interval. The valid value is range from 30 to 365,
-	// defaults to 365.
-	RotationInterval *int `pulumi:"rotationInterval"`
-	// Specifies the key/value pairs to associate with the kms key.
-	Tags map[string]string `pulumi:"tags"`
+	EnterpriseProjectId *string           `pulumi:"enterpriseProjectId"`
+	IsEnabled           *bool             `pulumi:"isEnabled"`
+	KeyAlgorithm        *string           `pulumi:"keyAlgorithm"`
+	KeyAlias            string            `pulumi:"keyAlias"`
+	KeyDescription      *string           `pulumi:"keyDescription"`
+	KeyUsage            *string           `pulumi:"keyUsage"`
+	KeystoreId          *string           `pulumi:"keystoreId"`
+	Origin              *string           `pulumi:"origin"`
+	PendingDays         *string           `pulumi:"pendingDays"`
+	Region              *string           `pulumi:"region"`
+	RotationEnabled     *bool             `pulumi:"rotationEnabled"`
+	RotationInterval    *int              `pulumi:"rotationInterval"`
+	Tags                map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Key resource.
 type KeyArgs struct {
-	// The enterprise project id of the kms key. Changing this creates a new key.
 	EnterpriseProjectId pulumi.StringPtrInput
-	// Specifies whether the key is enabled. Defaults to true.
-	// Changing this updates the state of existing key.
-	IsEnabled pulumi.BoolPtrInput
-	// The algorithm of the key. Valid values are AES_256, SM4, RSA_2048, RSA_3072,
-	// RSA_4096, EC_P256, EC_P384, SM2. Changing this creates a new key.
-	KeyAlgorithm pulumi.StringPtrInput
-	// The alias in which to create the key. It is required when
-	// we create a new key. Changing this updates the alias of key.
-	KeyAlias pulumi.StringInput
-	// The description of the key as viewed in Sber console.
-	// Changing this updates the description of key.
-	KeyDescription pulumi.StringPtrInput
-	KeyUsage       pulumi.StringPtrInput
-	KeystoreId     pulumi.StringPtrInput
-	Origin         pulumi.StringPtrInput
-	// Duration in days after which the key is deleted
-	// after destruction of the resource, must be between 7 and 1096 days. It doesn't
-	// have default value. It only be used when delete a key.
-	PendingDays pulumi.StringPtrInput
-	// The region in which to create the KMS key resource. If omitted, the provider-level region will be used. Changing this creates a new KMS key resource.
-	Region pulumi.StringPtrInput
-	// Specifies whether the key rotation is enabled. Defaults to false.
-	RotationEnabled pulumi.BoolPtrInput
-	// Specifies the key rotation interval. The valid value is range from 30 to 365,
-	// defaults to 365.
-	RotationInterval pulumi.IntPtrInput
-	// Specifies the key/value pairs to associate with the kms key.
-	Tags pulumi.StringMapInput
+	IsEnabled           pulumi.BoolPtrInput
+	KeyAlgorithm        pulumi.StringPtrInput
+	KeyAlias            pulumi.StringInput
+	KeyDescription      pulumi.StringPtrInput
+	KeyUsage            pulumi.StringPtrInput
+	KeystoreId          pulumi.StringPtrInput
+	Origin              pulumi.StringPtrInput
+	PendingDays         pulumi.StringPtrInput
+	Region              pulumi.StringPtrInput
+	RotationEnabled     pulumi.BoolPtrInput
+	RotationInterval    pulumi.IntPtrInput
+	Tags                pulumi.StringMapInput
 }
 
 func (KeyArgs) ElementType() reflect.Type {
@@ -389,57 +242,42 @@ func (o KeyOutput) ToKeyOutputWithContext(ctx context.Context) KeyOutput {
 	return o
 }
 
-// Creation time (time stamp) of a key.
 func (o KeyOutput) CreationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.CreationDate }).(pulumi.StringOutput)
 }
 
-// Identification of a Master Key. The value 1 indicates a Default
-// Master Key, and the value 0 indicates a key.
 func (o KeyOutput) DefaultKeyFlag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.DefaultKeyFlag }).(pulumi.StringOutput)
 }
 
-// ID of a user domain for the key.
 func (o KeyOutput) DomainId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.DomainId }).(pulumi.StringOutput)
 }
 
-// The enterprise project id of the kms key. Changing this creates a new key.
 func (o KeyOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// Expiration time.
 func (o KeyOutput) ExpirationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.ExpirationTime }).(pulumi.StringOutput)
 }
 
-// Specifies whether the key is enabled. Defaults to true.
-// Changing this updates the state of existing key.
 func (o KeyOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Key) pulumi.BoolPtrOutput { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The algorithm of the key. Valid values are AES_256, SM4, RSA_2048, RSA_3072,
-// RSA_4096, EC_P256, EC_P384, SM2. Changing this creates a new key.
 func (o KeyOutput) KeyAlgorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.KeyAlgorithm }).(pulumi.StringOutput)
 }
 
-// The alias in which to create the key. It is required when
-// we create a new key. Changing this updates the alias of key.
 func (o KeyOutput) KeyAlias() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.KeyAlias }).(pulumi.StringOutput)
 }
 
-// The description of the key as viewed in Sber console.
-// Changing this updates the description of key.
 func (o KeyOutput) KeyDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringPtrOutput { return v.KeyDescription }).(pulumi.StringPtrOutput)
 }
 
-// The globally unique identifier for the key.
 func (o KeyOutput) KeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.KeyId }).(pulumi.StringOutput)
 }
@@ -460,40 +298,30 @@ func (o KeyOutput) Origin() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.Origin }).(pulumi.StringOutput)
 }
 
-// Duration in days after which the key is deleted
-// after destruction of the resource, must be between 7 and 1096 days. It doesn't
-// have default value. It only be used when delete a key.
 func (o KeyOutput) PendingDays() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringPtrOutput { return v.PendingDays }).(pulumi.StringPtrOutput)
 }
 
-// The region in which to create the KMS key resource. If omitted, the provider-level region will be used. Changing this creates a new KMS key resource.
 func (o KeyOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Specifies whether the key rotation is enabled. Defaults to false.
 func (o KeyOutput) RotationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Key) pulumi.BoolPtrOutput { return v.RotationEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the key rotation interval. The valid value is range from 30 to 365,
-// defaults to 365.
 func (o KeyOutput) RotationInterval() pulumi.IntOutput {
 	return o.ApplyT(func(v *Key) pulumi.IntOutput { return v.RotationInterval }).(pulumi.IntOutput)
 }
 
-// The total number of key rotations.
 func (o KeyOutput) RotationNumber() pulumi.IntOutput {
 	return o.ApplyT(func(v *Key) pulumi.IntOutput { return v.RotationNumber }).(pulumi.IntOutput)
 }
 
-// Scheduled deletion time (time stamp) of a key.
 func (o KeyOutput) ScheduledDeletionDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.ScheduledDeletionDate }).(pulumi.StringOutput)
 }
 
-// Specifies the key/value pairs to associate with the kms key.
 func (o KeyOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }

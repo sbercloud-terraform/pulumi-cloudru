@@ -32,22 +32,10 @@ MYPY = False
 if not MYPY:
     class KafkaInstanceCrossVpcAccessArgsDict(TypedDict):
         advertised_ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The advertised IP Address or domain name.
-        """
         lisenter_ip: NotRequired[pulumi.Input[_builtins.str]]
         listener_ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The listener IP address.
-        """
         port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port number.
-        """
         port_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The port ID associated with the address.
-        """
 elif False:
     KafkaInstanceCrossVpcAccessArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -59,12 +47,6 @@ class KafkaInstanceCrossVpcAccessArgs:
                  listener_ip: Optional[pulumi.Input[_builtins.str]] = None,
                  port: Optional[pulumi.Input[_builtins.int]] = None,
                  port_id: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] advertised_ip: The advertised IP Address or domain name.
-        :param pulumi.Input[_builtins.str] listener_ip: The listener IP address.
-        :param pulumi.Input[_builtins.int] port: The port number.
-        :param pulumi.Input[_builtins.str] port_id: The port ID associated with the address.
-        """
         if advertised_ip is not None:
             pulumi.set(__self__, "advertised_ip", advertised_ip)
         if lisenter_ip is not None:
@@ -82,9 +64,6 @@ class KafkaInstanceCrossVpcAccessArgs:
     @_builtins.property
     @pulumi.getter(name="advertisedIp")
     def advertised_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The advertised IP Address or domain name.
-        """
         return pulumi.get(self, "advertised_ip")
 
     @advertised_ip.setter
@@ -104,9 +83,6 @@ class KafkaInstanceCrossVpcAccessArgs:
     @_builtins.property
     @pulumi.getter(name="listenerIp")
     def listener_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The listener IP address.
-        """
         return pulumi.get(self, "listener_ip")
 
     @listener_ip.setter
@@ -116,9 +92,6 @@ class KafkaInstanceCrossVpcAccessArgs:
     @_builtins.property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The port number.
-        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -128,9 +101,6 @@ class KafkaInstanceCrossVpcAccessArgs:
     @_builtins.property
     @pulumi.getter(name="portId")
     def port_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The port ID associated with the address.
-        """
         return pulumi.get(self, "port_id")
 
     @port_id.setter
@@ -141,10 +111,6 @@ class KafkaInstanceCrossVpcAccessArgs:
 if not MYPY:
     class KafkaInstanceParameterArgsDict(TypedDict):
         name: pulumi.Input[_builtins.str]
-        """
-        Specifies the name of the DMS Kafka instance. An instance name starts with a letter,
-        consists of 4 to 64 characters, and supports only letters, digits, hyphens (-) and underscores (_).
-        """
         value: pulumi.Input[_builtins.str]
 elif False:
     KafkaInstanceParameterArgsDict: TypeAlias = Mapping[str, Any]
@@ -154,20 +120,12 @@ class KafkaInstanceParameterArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the DMS Kafka instance. An instance name starts with a letter,
-               consists of 4 to 64 characters, and supports only letters, digits, hyphens (-) and underscores (_).
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the name of the DMS Kafka instance. An instance name starts with a letter,
-        consists of 4 to 64 characters, and supports only letters, digits, hyphens (-) and underscores (_).
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -431,16 +389,7 @@ class KafkaInstancePortProtocolArgs:
 if not MYPY:
     class KafkaPermissionsPolicyArgsDict(TypedDict):
         access_policy: pulumi.Input[_builtins.str]
-        """
-        Specifies the permissions type. The value can be:
-        + **all**: publish and subscribe permissions.
-        + **pub**: publish permissions.
-        + **sub**: subscribe permissions.
-        """
         user_name: pulumi.Input[_builtins.str]
-        """
-        Specifies the username.
-        """
 elif False:
     KafkaPermissionsPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -449,25 +398,12 @@ class KafkaPermissionsPolicyArgs:
     def __init__(__self__, *,
                  access_policy: pulumi.Input[_builtins.str],
                  user_name: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.str] access_policy: Specifies the permissions type. The value can be:
-               + **all**: publish and subscribe permissions.
-               + **pub**: publish permissions.
-               + **sub**: subscribe permissions.
-        :param pulumi.Input[_builtins.str] user_name: Specifies the username.
-        """
         pulumi.set(__self__, "access_policy", access_policy)
         pulumi.set(__self__, "user_name", user_name)
 
     @_builtins.property
     @pulumi.getter(name="accessPolicy")
     def access_policy(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the permissions type. The value can be:
-        + **all**: publish and subscribe permissions.
-        + **pub**: publish permissions.
-        + **sub**: subscribe permissions.
-        """
         return pulumi.get(self, "access_policy")
 
     @access_policy.setter
@@ -477,9 +413,6 @@ class KafkaPermissionsPolicyArgs:
     @_builtins.property
     @pulumi.getter(name="userName")
     def user_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the username.
-        """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
@@ -490,11 +423,6 @@ class KafkaPermissionsPolicyArgs:
 if not MYPY:
     class KafkaTopicConfigArgsDict(TypedDict):
         name: pulumi.Input[_builtins.str]
-        """
-        Specifies the name of the topic. The name starts with a letter, consists of 4 to
-        64 characters, and supports only letters, digits, hyphens (-) and underscores (_). Changing this creates a new
-        resource.
-        """
         value: pulumi.Input[_builtins.str]
 elif False:
     KafkaTopicConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -504,22 +432,12 @@ class KafkaTopicConfigArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the topic. The name starts with a letter, consists of 4 to
-               64 characters, and supports only letters, digits, hyphens (-) and underscores (_). Changing this creates a new
-               resource.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the name of the topic. The name starts with a letter, consists of 4 to
-        64 characters, and supports only letters, digits, hyphens (-) and underscores (_). Changing this creates a new
-        resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter

@@ -28,28 +28,6 @@ class RouteArgs:
                  route_table_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Route resource.
-        :param pulumi.Input[_builtins.str] destination: Specifies the destination address in the CIDR notation format,
-               for example, 192.168.200.0/24. The destination of each route must be unique and cannot overlap with any
-               subnet in the VPC. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] nexthop: Specifies the next hop.
-               + If the route type is **ecs**, the value is an ECS instance ID in the VPC.
-               + If the route type is **eni**, the value is the extension NIC of an ECS in the VPC.
-               + If the route type is **vip**, the value is a virtual IP address.
-               + If the route type is **nat**, the value is a VPN gateway ID.
-               + If the route type is **peering**, the value is a VPC peering connection ID.
-               + If the route type is **vpn**, the value is a VPN gateway ID.
-               + If the route type is **dc**, the value is a Direct Connect gateway ID.
-               + If the route type is **cc**, the value is a Cloud Connection ID.
-        :param pulumi.Input[_builtins.str] type: Specifies the route type. Currently, the value can be:
-               **ecs**, **eni**, **vip**, **nat**, **peering**, **vpn**, **dc** and **cc**.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the VPC for which a route is to be added. Changing this creates a
-               new resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the supplementary information about the route.
-               The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-        :param pulumi.Input[_builtins.str] region: The region in which to create the VPC route. If omitted, the provider-level
-               region will be used. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] route_table_id: Specifies the route table ID for which a route is to be added.
-               If the value is not set, the route will be added to the *default* route table.
         """
         pulumi.set(__self__, "destination", destination)
         pulumi.set(__self__, "nexthop", nexthop)
@@ -65,11 +43,6 @@ class RouteArgs:
     @_builtins.property
     @pulumi.getter
     def destination(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the destination address in the CIDR notation format,
-        for example, 192.168.200.0/24. The destination of each route must be unique and cannot overlap with any
-        subnet in the VPC. Changing this creates a new resource.
-        """
         return pulumi.get(self, "destination")
 
     @destination.setter
@@ -79,17 +52,6 @@ class RouteArgs:
     @_builtins.property
     @pulumi.getter
     def nexthop(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the next hop.
-        + If the route type is **ecs**, the value is an ECS instance ID in the VPC.
-        + If the route type is **eni**, the value is the extension NIC of an ECS in the VPC.
-        + If the route type is **vip**, the value is a virtual IP address.
-        + If the route type is **nat**, the value is a VPN gateway ID.
-        + If the route type is **peering**, the value is a VPC peering connection ID.
-        + If the route type is **vpn**, the value is a VPN gateway ID.
-        + If the route type is **dc**, the value is a Direct Connect gateway ID.
-        + If the route type is **cc**, the value is a Cloud Connection ID.
-        """
         return pulumi.get(self, "nexthop")
 
     @nexthop.setter
@@ -99,10 +61,6 @@ class RouteArgs:
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the route type. Currently, the value can be:
-        **ecs**, **eni**, **vip**, **nat**, **peering**, **vpn**, **dc** and **cc**.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -112,10 +70,6 @@ class RouteArgs:
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the VPC for which a route is to be added. Changing this creates a
-        new resource.
-        """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
@@ -125,10 +79,6 @@ class RouteArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the supplementary information about the route.
-        The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -138,10 +88,6 @@ class RouteArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the VPC route. If omitted, the provider-level
-        region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -151,10 +97,6 @@ class RouteArgs:
     @_builtins.property
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the route table ID for which a route is to be added.
-        If the value is not set, the route will be added to the *default* route table.
-        """
         return pulumi.get(self, "route_table_id")
 
     @route_table_id.setter
@@ -175,29 +117,6 @@ class _RouteState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Route resources.
-        :param pulumi.Input[_builtins.str] description: Specifies the supplementary information about the route.
-               The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-        :param pulumi.Input[_builtins.str] destination: Specifies the destination address in the CIDR notation format,
-               for example, 192.168.200.0/24. The destination of each route must be unique and cannot overlap with any
-               subnet in the VPC. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] nexthop: Specifies the next hop.
-               + If the route type is **ecs**, the value is an ECS instance ID in the VPC.
-               + If the route type is **eni**, the value is the extension NIC of an ECS in the VPC.
-               + If the route type is **vip**, the value is a virtual IP address.
-               + If the route type is **nat**, the value is a VPN gateway ID.
-               + If the route type is **peering**, the value is a VPC peering connection ID.
-               + If the route type is **vpn**, the value is a VPN gateway ID.
-               + If the route type is **dc**, the value is a Direct Connect gateway ID.
-               + If the route type is **cc**, the value is a Cloud Connection ID.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the VPC route. If omitted, the provider-level
-               region will be used. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] route_table_id: Specifies the route table ID for which a route is to be added.
-               If the value is not set, the route will be added to the *default* route table.
-        :param pulumi.Input[_builtins.str] route_table_name: The name of route table.
-        :param pulumi.Input[_builtins.str] type: Specifies the route type. Currently, the value can be:
-               **ecs**, **eni**, **vip**, **nat**, **peering**, **vpn**, **dc** and **cc**.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the VPC for which a route is to be added. Changing this creates a
-               new resource.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -219,10 +138,6 @@ class _RouteState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the supplementary information about the route.
-        The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -232,11 +147,6 @@ class _RouteState:
     @_builtins.property
     @pulumi.getter
     def destination(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the destination address in the CIDR notation format,
-        for example, 192.168.200.0/24. The destination of each route must be unique and cannot overlap with any
-        subnet in the VPC. Changing this creates a new resource.
-        """
         return pulumi.get(self, "destination")
 
     @destination.setter
@@ -246,17 +156,6 @@ class _RouteState:
     @_builtins.property
     @pulumi.getter
     def nexthop(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the next hop.
-        + If the route type is **ecs**, the value is an ECS instance ID in the VPC.
-        + If the route type is **eni**, the value is the extension NIC of an ECS in the VPC.
-        + If the route type is **vip**, the value is a virtual IP address.
-        + If the route type is **nat**, the value is a VPN gateway ID.
-        + If the route type is **peering**, the value is a VPC peering connection ID.
-        + If the route type is **vpn**, the value is a VPN gateway ID.
-        + If the route type is **dc**, the value is a Direct Connect gateway ID.
-        + If the route type is **cc**, the value is a Cloud Connection ID.
-        """
         return pulumi.get(self, "nexthop")
 
     @nexthop.setter
@@ -266,10 +165,6 @@ class _RouteState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the VPC route. If omitted, the provider-level
-        region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -279,10 +174,6 @@ class _RouteState:
     @_builtins.property
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the route table ID for which a route is to be added.
-        If the value is not set, the route will be added to the *default* route table.
-        """
         return pulumi.get(self, "route_table_id")
 
     @route_table_id.setter
@@ -292,9 +183,6 @@ class _RouteState:
     @_builtins.property
     @pulumi.getter(name="routeTableName")
     def route_table_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The name of route table.
-        """
         return pulumi.get(self, "route_table_name")
 
     @route_table_name.setter
@@ -304,10 +192,6 @@ class _RouteState:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the route type. Currently, the value can be:
-        **ecs**, **eni**, **vip**, **nat**, **peering**, **vpn**, **dc** and **cc**.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -317,10 +201,6 @@ class _RouteState:
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the VPC for which a route is to be added. Changing this creates a
-        new resource.
-        """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
@@ -343,78 +223,9 @@ class Route(pulumi.CustomResource):
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a VPC route resource within SberCloud.
-
-        ## Example Usage
-
-        ### Add route to the default route table
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        vpc_id = config.require_object("vpcId")
-        nexthop = config.require_object("nexthop")
-        vpc_route = sbercloud.vpc.Route("vpc_route",
-            vpc_id=vpc_id,
-            destination="192.168.0.0/16",
-            type="peering",
-            nexthop=nexthop)
-        ```
-
-        ### Add route to a custom route table
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        config = pulumi.Config()
-        vpc_id = config.require_object("vpcId")
-        nexthop = config.require_object("nexthop")
-        rtb = sbercloud.Vpc.get_route_table(vpc_id=vpc_id,
-            name="demo")
-        vpc_route = sbercloud.vpc.Route("vpc_route",
-            vpc_id=vpc_id,
-            route_table_id=rtb.id,
-            destination="172.16.8.0/24",
-            type="ecs",
-            nexthop=nexthop)
-        ```
-
-        ## Import
-
-        VPC routes can be imported using the route table ID and their `destination` separated by a slash, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Vpc/route:Route test <route_table_id>/<destination>
-        ```
-
+        Create a Route resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the supplementary information about the route.
-               The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-        :param pulumi.Input[_builtins.str] destination: Specifies the destination address in the CIDR notation format,
-               for example, 192.168.200.0/24. The destination of each route must be unique and cannot overlap with any
-               subnet in the VPC. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] nexthop: Specifies the next hop.
-               + If the route type is **ecs**, the value is an ECS instance ID in the VPC.
-               + If the route type is **eni**, the value is the extension NIC of an ECS in the VPC.
-               + If the route type is **vip**, the value is a virtual IP address.
-               + If the route type is **nat**, the value is a VPN gateway ID.
-               + If the route type is **peering**, the value is a VPC peering connection ID.
-               + If the route type is **vpn**, the value is a VPN gateway ID.
-               + If the route type is **dc**, the value is a Direct Connect gateway ID.
-               + If the route type is **cc**, the value is a Cloud Connection ID.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the VPC route. If omitted, the provider-level
-               region will be used. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] route_table_id: Specifies the route table ID for which a route is to be added.
-               If the value is not set, the route will be added to the *default* route table.
-        :param pulumi.Input[_builtins.str] type: Specifies the route type. Currently, the value can be:
-               **ecs**, **eni**, **vip**, **nat**, **peering**, **vpn**, **dc** and **cc**.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the VPC for which a route is to be added. Changing this creates a
-               new resource.
         """
         ...
     @overload
@@ -423,54 +234,7 @@ class Route(pulumi.CustomResource):
                  args: RouteArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a VPC route resource within SberCloud.
-
-        ## Example Usage
-
-        ### Add route to the default route table
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        vpc_id = config.require_object("vpcId")
-        nexthop = config.require_object("nexthop")
-        vpc_route = sbercloud.vpc.Route("vpc_route",
-            vpc_id=vpc_id,
-            destination="192.168.0.0/16",
-            type="peering",
-            nexthop=nexthop)
-        ```
-
-        ### Add route to a custom route table
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        config = pulumi.Config()
-        vpc_id = config.require_object("vpcId")
-        nexthop = config.require_object("nexthop")
-        rtb = sbercloud.Vpc.get_route_table(vpc_id=vpc_id,
-            name="demo")
-        vpc_route = sbercloud.vpc.Route("vpc_route",
-            vpc_id=vpc_id,
-            route_table_id=rtb.id,
-            destination="172.16.8.0/24",
-            type="ecs",
-            nexthop=nexthop)
-        ```
-
-        ## Import
-
-        VPC routes can be imported using the route table ID and their `destination` separated by a slash, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Vpc/route:Route test <route_table_id>/<destination>
-        ```
-
+        Create a Route resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param RouteArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -543,29 +307,6 @@ class Route(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the supplementary information about the route.
-               The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-        :param pulumi.Input[_builtins.str] destination: Specifies the destination address in the CIDR notation format,
-               for example, 192.168.200.0/24. The destination of each route must be unique and cannot overlap with any
-               subnet in the VPC. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] nexthop: Specifies the next hop.
-               + If the route type is **ecs**, the value is an ECS instance ID in the VPC.
-               + If the route type is **eni**, the value is the extension NIC of an ECS in the VPC.
-               + If the route type is **vip**, the value is a virtual IP address.
-               + If the route type is **nat**, the value is a VPN gateway ID.
-               + If the route type is **peering**, the value is a VPC peering connection ID.
-               + If the route type is **vpn**, the value is a VPN gateway ID.
-               + If the route type is **dc**, the value is a Direct Connect gateway ID.
-               + If the route type is **cc**, the value is a Cloud Connection ID.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the VPC route. If omitted, the provider-level
-               region will be used. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] route_table_id: Specifies the route table ID for which a route is to be added.
-               If the value is not set, the route will be added to the *default* route table.
-        :param pulumi.Input[_builtins.str] route_table_name: The name of route table.
-        :param pulumi.Input[_builtins.str] type: Specifies the route type. Currently, the value can be:
-               **ecs**, **eni**, **vip**, **nat**, **peering**, **vpn**, **dc** and **cc**.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the VPC for which a route is to be added. Changing this creates a
-               new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -584,79 +325,40 @@ class Route(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the supplementary information about the route.
-        The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
     def destination(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the destination address in the CIDR notation format,
-        for example, 192.168.200.0/24. The destination of each route must be unique and cannot overlap with any
-        subnet in the VPC. Changing this creates a new resource.
-        """
         return pulumi.get(self, "destination")
 
     @_builtins.property
     @pulumi.getter
     def nexthop(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the next hop.
-        + If the route type is **ecs**, the value is an ECS instance ID in the VPC.
-        + If the route type is **eni**, the value is the extension NIC of an ECS in the VPC.
-        + If the route type is **vip**, the value is a virtual IP address.
-        + If the route type is **nat**, the value is a VPN gateway ID.
-        + If the route type is **peering**, the value is a VPC peering connection ID.
-        + If the route type is **vpn**, the value is a VPN gateway ID.
-        + If the route type is **dc**, the value is a Direct Connect gateway ID.
-        + If the route type is **cc**, the value is a Cloud Connection ID.
-        """
         return pulumi.get(self, "nexthop")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the VPC route. If omitted, the provider-level
-        region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the route table ID for which a route is to be added.
-        If the value is not set, the route will be added to the *default* route table.
-        """
         return pulumi.get(self, "route_table_id")
 
     @_builtins.property
     @pulumi.getter(name="routeTableName")
     def route_table_name(self) -> pulumi.Output[_builtins.str]:
-        """
-        The name of route table.
-        """
         return pulumi.get(self, "route_table_name")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the route type. Currently, the value can be:
-        **ecs**, **eni**, **vip**, **nat**, **peering**, **vpn**, **dc** and **cc**.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the VPC for which a route is to be added. Changing this creates a
-        new resource.
-        """
         return pulumi.get(self, "vpc_id")
 

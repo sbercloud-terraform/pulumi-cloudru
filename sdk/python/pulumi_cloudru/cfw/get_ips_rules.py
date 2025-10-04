@@ -72,9 +72,6 @@ class GetIpsRulesResult:
     @_builtins.property
     @pulumi.getter(name="ipsId")
     def ips_id(self) -> Optional[_builtins.str]:
-        """
-        The IPS rule ID.
-        """
         return pulumi.get(self, "ips_id")
 
     @_builtins.property
@@ -85,9 +82,6 @@ class GetIpsRulesResult:
     @_builtins.property
     @pulumi.getter(name="ipsStatus")
     def ips_status(self) -> Optional[_builtins.str]:
-        """
-        The current status of the IPS rule.
-        """
         return pulumi.get(self, "ips_status")
 
     @_builtins.property
@@ -103,9 +97,6 @@ class GetIpsRulesResult:
     @_builtins.property
     @pulumi.getter
     def records(self) -> Sequence['outputs.GetIpsRulesRecordResult']:
-        """
-        The IPS rule list.
-        """
         return pulumi.get(self, "records")
 
     @_builtins.property
@@ -140,30 +131,7 @@ def get_ips_rules(enterprise_project_id: Optional[_builtins.str] = None,
                   region: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIpsRulesResult:
     """
-    Use this data source to get the list of CFW IPS basic protection rules.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    object_id = config.require_object("objectId")
-    test = sbercloud.Cfw.get_ips_rules(object_id=object_id)
-    ```
-
-
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID.
-    :param _builtins.str ips_id: Specifies the IPS rule ID.
-    :param _builtins.str ips_name_like: Specifies the IPS rule name.
-           This parameter supports fuzzy search.
-    :param _builtins.str ips_status: Specifies the IPS rule status.
-           The valid value can be **OBSERVE**, **ENABLE**, or **CLOSE**.
-    :param _builtins.bool is_updated_ips_rule_queried: Specifies whether to check for new update rules.
-    :param _builtins.str object_id: Specifies the protected object ID.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['enterpriseProjectId'] = enterprise_project_id
@@ -195,30 +163,7 @@ def get_ips_rules_output(enterprise_project_id: Optional[pulumi.Input[Optional[_
                          region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIpsRulesResult]:
     """
-    Use this data source to get the list of CFW IPS basic protection rules.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    object_id = config.require_object("objectId")
-    test = sbercloud.Cfw.get_ips_rules(object_id=object_id)
-    ```
-
-
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID.
-    :param _builtins.str ips_id: Specifies the IPS rule ID.
-    :param _builtins.str ips_name_like: Specifies the IPS rule name.
-           This parameter supports fuzzy search.
-    :param _builtins.str ips_status: Specifies the IPS rule status.
-           The valid value can be **OBSERVE**, **ENABLE**, or **CLOSE**.
-    :param _builtins.bool is_updated_ips_rule_queried: Specifies whether to check for new update rules.
-    :param _builtins.str object_id: Specifies the protected object ID.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['enterpriseProjectId'] = enterprise_project_id

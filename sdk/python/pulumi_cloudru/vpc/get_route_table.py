@@ -56,17 +56,11 @@ class GetRouteTableResult:
     @_builtins.property
     @pulumi.getter
     def default(self) -> _builtins.bool:
-        """
-        (Bool) - Whether the route table is default or not.
-        """
         return pulumi.get(self, "default")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
-        """
-        (String) - The description about the route.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
@@ -87,17 +81,11 @@ class GetRouteTableResult:
     @_builtins.property
     @pulumi.getter
     def routes(self) -> Sequence['outputs.GetRouteTableRouteResult']:
-        """
-        (List) - The route object list. The route object is documented below.
-        """
         return pulumi.get(self, "routes")
 
     @_builtins.property
     @pulumi.getter
     def subnets(self) -> Sequence[_builtins.str]:
-        """
-        (List) - An array of one or more subnets associating with the route table.
-        """
         return pulumi.get(self, "subnets")
 
     @_builtins.property
@@ -128,29 +116,7 @@ def get_route_table(id: Optional[_builtins.str] = None,
                     vpc_id: Optional[_builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRouteTableResult:
     """
-    Provides details about a specific VPC route table.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    vpc_id = config.require_object("vpcId")
-    # get the default route table
-    default = sbercloud.Vpc.get_route_table(vpc_id=vpc_id)
-    # get a custom route table
-    custom = sbercloud.Vpc.get_route_table(vpc_id=vpc_id,
-        name="demo")
-    ```
-
-
-    :param _builtins.str id: Specifies the ID of the route table.
-    :param _builtins.str name: Specifies the name of the route table.
-    :param _builtins.str region: The region in which to query the vpc route table.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str vpc_id: Specifies the VPC ID where the route table resides.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -175,29 +141,7 @@ def get_route_table_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] =
                            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRouteTableResult]:
     """
-    Provides details about a specific VPC route table.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    vpc_id = config.require_object("vpcId")
-    # get the default route table
-    default = sbercloud.Vpc.get_route_table(vpc_id=vpc_id)
-    # get a custom route table
-    custom = sbercloud.Vpc.get_route_table(vpc_id=vpc_id,
-        name="demo")
-    ```
-
-
-    :param _builtins.str id: Specifies the ID of the route table.
-    :param _builtins.str name: Specifies the name of the route table.
-    :param _builtins.str region: The region in which to query the vpc route table.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str vpc_id: Specifies the VPC ID where the route table resides.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id

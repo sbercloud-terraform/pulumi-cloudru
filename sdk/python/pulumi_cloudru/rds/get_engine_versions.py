@@ -62,9 +62,6 @@ class GetEngineVersionsResult:
     @_builtins.property
     @pulumi.getter
     def versions(self) -> Sequence['outputs.GetEngineVersionsVersionResult']:
-        """
-        List of RDS versions. Structure is documented below.
-        """
         return pulumi.get(self, "versions")
 
 
@@ -84,22 +81,7 @@ def get_engine_versions(region: Optional[_builtins.str] = None,
                         type: Optional[_builtins.str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEngineVersionsResult:
     """
-    Use this data source to obtain all version information of the specified engine type of SberCloud RDS.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.Rds.get_engine_versions(type="SQLServer")
-    ```
-
-
-    :param _builtins.str region: The region in which to obtain the RDS engine versions.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str type: Specifies the RDS engine type.
-           The valid values are **MySQL**, **PostgreSQL** and **SQLServer**, default to **MySQL**.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['region'] = region
@@ -116,22 +98,7 @@ def get_engine_versions_output(region: Optional[pulumi.Input[Optional[_builtins.
                                type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEngineVersionsResult]:
     """
-    Use this data source to obtain all version information of the specified engine type of SberCloud RDS.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.Rds.get_engine_versions(type="SQLServer")
-    ```
-
-
-    :param _builtins.str region: The region in which to obtain the RDS engine versions.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str type: Specifies the RDS engine type.
-           The valid values are **MySQL**, **PostgreSQL** and **SQLServer**, default to **MySQL**.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['region'] = region

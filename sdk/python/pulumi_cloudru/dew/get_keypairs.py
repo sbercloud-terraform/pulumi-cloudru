@@ -53,9 +53,6 @@ class GetKeypairsResult:
     @_builtins.property
     @pulumi.getter
     def fingerprint(self) -> Optional[_builtins.str]:
-        """
-        Indicates the fingerprint information about a keypair.
-        """
         return pulumi.get(self, "fingerprint")
 
     @_builtins.property
@@ -69,33 +66,21 @@ class GetKeypairsResult:
     @_builtins.property
     @pulumi.getter(name="isManaged")
     def is_managed(self) -> Optional[_builtins.bool]:
-        """
-        Indicates whether the private key is managed by sberCloud.
-        """
         return pulumi.get(self, "is_managed")
 
     @_builtins.property
     @pulumi.getter
     def keypairs(self) -> Sequence['outputs.GetKeypairsKeypairResult']:
-        """
-        The KPS keypairs list.
-        """
         return pulumi.get(self, "keypairs")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        Indicates the name of the keypair.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="publicKey")
     def public_key(self) -> Optional[_builtins.str]:
-        """
-        Indicates the imported OpenSSH-formatted public key.
-        """
         return pulumi.get(self, "public_key")
 
     @_builtins.property
@@ -126,26 +111,7 @@ def get_keypairs(fingerprint: Optional[_builtins.str] = None,
                  region: Optional[_builtins.str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKeypairsResult:
     """
-    Use this data source to get a list of keypairs.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    keypair_name = config.require_object("keypairName")
-    test = sbercloud.Dew.get_keypairs(name=keypair_name)
-    ```
-
-
-    :param _builtins.str fingerprint: Specifies the fingerprint of the keypair.
-    :param _builtins.bool is_managed: Indicates whether the private key is managed by sberCloud.
-    :param _builtins.str name: Specifies the name of the keypair.
-    :param _builtins.str public_key: Specifies the imported OpenSSH-formatted public key.
-    :param _builtins.str region: Specifies the region in which to obtain the keypairs. If omitted, the provider-level
-           region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['fingerprint'] = fingerprint
@@ -171,26 +137,7 @@ def get_keypairs_output(fingerprint: Optional[pulumi.Input[Optional[_builtins.st
                         region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKeypairsResult]:
     """
-    Use this data source to get a list of keypairs.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    keypair_name = config.require_object("keypairName")
-    test = sbercloud.Dew.get_keypairs(name=keypair_name)
-    ```
-
-
-    :param _builtins.str fingerprint: Specifies the fingerprint of the keypair.
-    :param _builtins.bool is_managed: Indicates whether the private key is managed by sberCloud.
-    :param _builtins.str name: Specifies the name of the keypair.
-    :param _builtins.str public_key: Specifies the imported OpenSSH-formatted public key.
-    :param _builtins.str region: Specifies the region in which to obtain the keypairs. If omitted, the provider-level
-           region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['fingerprint'] = fingerprint

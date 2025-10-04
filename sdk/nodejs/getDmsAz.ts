@@ -4,20 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get the ID of an available SberCloud DMS AZ.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const az1 = sbercloud.getDmsAz({
- *     code: "ru-moscow-1a",
- * });
- * ```
- */
 export function getDmsAz(args?: GetDmsAzArgs, opts?: pulumi.InvokeOptions): Promise<GetDmsAzResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -33,21 +19,9 @@ export function getDmsAz(args?: GetDmsAzArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getDmsAz.
  */
 export interface GetDmsAzArgs {
-    /**
-     * Indicates the code of an AZ.
-     */
     code?: string;
-    /**
-     * Indicates the name of an AZ.
-     */
     name?: string;
-    /**
-     * Indicates the port number of an AZ.
-     */
     port?: string;
-    /**
-     * The region in which to obtain the dms az. If omitted, the provider-level region will be used.
-     */
     region?: string;
 }
 
@@ -65,20 +39,6 @@ export interface GetDmsAzResult {
     readonly port: string;
     readonly region: string;
 }
-/**
- * Use this data source to get the ID of an available SberCloud DMS AZ.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const az1 = sbercloud.getDmsAz({
- *     code: "ru-moscow-1a",
- * });
- * ```
- */
 export function getDmsAzOutput(args?: GetDmsAzOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDmsAzResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -94,20 +54,8 @@ export function getDmsAzOutput(args?: GetDmsAzOutputArgs, opts?: pulumi.InvokeOu
  * A collection of arguments for invoking getDmsAz.
  */
 export interface GetDmsAzOutputArgs {
-    /**
-     * Indicates the code of an AZ.
-     */
     code?: pulumi.Input<string>;
-    /**
-     * Indicates the name of an AZ.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Indicates the port number of an AZ.
-     */
     port?: pulumi.Input<string>;
-    /**
-     * The region in which to obtain the dms az. If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
 }

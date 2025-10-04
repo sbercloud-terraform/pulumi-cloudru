@@ -11,40 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get available SberCloud CCE add-on template.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cce"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			clusterId := cfg.RequireObject("clusterId")
-//			addonName := cfg.RequireObject("addonName")
-//			addonVersion := cfg.RequireObject("addonVersion")
-//			_, err := cce.GetAddonTemplate(ctx, &cce.GetAddonTemplateArgs{
-//				ClusterId: clusterId,
-//				Name:      addonName,
-//				Version:   addonVersion,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetAddonTemplate(ctx *pulumi.Context, args *GetAddonTemplateArgs, opts ...pulumi.InvokeOption) (*GetAddonTemplateResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAddonTemplateResult
@@ -57,29 +23,21 @@ func GetAddonTemplate(ctx *pulumi.Context, args *GetAddonTemplateArgs, opts ...p
 
 // A collection of arguments for invoking getAddonTemplate.
 type GetAddonTemplateArgs struct {
-	// Specifies the ID of container cluster.
-	ClusterId string `pulumi:"clusterId"`
-	// Specifies the add-on name.
-	Name string `pulumi:"name"`
-	// Specifies the region in which to obtain the CCE add-ons. If omitted, the provider-level
-	// region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the add-on version.
-	Version string `pulumi:"version"`
+	ClusterId string  `pulumi:"clusterId"`
+	Name      string  `pulumi:"name"`
+	Region    *string `pulumi:"region"`
+	Version   string  `pulumi:"version"`
 }
 
 // A collection of values returned by getAddonTemplate.
 type GetAddonTemplateResult struct {
-	ClusterId string `pulumi:"clusterId"`
-	// The description of the add-on.
+	ClusterId   string `pulumi:"clusterId"`
 	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
-	Id     string `pulumi:"id"`
-	Name   string `pulumi:"name"`
-	Region string `pulumi:"region"`
-	// The detail configuration of the add-on template.
-	Spec string `pulumi:"spec"`
-	// Whether the add-on template is a stable version.
+	Id              string                           `pulumi:"id"`
+	Name            string                           `pulumi:"name"`
+	Region          string                           `pulumi:"region"`
+	Spec            string                           `pulumi:"spec"`
 	Stable          bool                             `pulumi:"stable"`
 	SupportVersions []GetAddonTemplateSupportVersion `pulumi:"supportVersions"`
 	Version         string                           `pulumi:"version"`
@@ -96,15 +54,10 @@ func GetAddonTemplateOutput(ctx *pulumi.Context, args GetAddonTemplateOutputArgs
 
 // A collection of arguments for invoking getAddonTemplate.
 type GetAddonTemplateOutputArgs struct {
-	// Specifies the ID of container cluster.
-	ClusterId pulumi.StringInput `pulumi:"clusterId"`
-	// Specifies the add-on name.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies the region in which to obtain the CCE add-ons. If omitted, the provider-level
-	// region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the add-on version.
-	Version pulumi.StringInput `pulumi:"version"`
+	ClusterId pulumi.StringInput    `pulumi:"clusterId"`
+	Name      pulumi.StringInput    `pulumi:"name"`
+	Region    pulumi.StringPtrInput `pulumi:"region"`
+	Version   pulumi.StringInput    `pulumi:"version"`
 }
 
 func (GetAddonTemplateOutputArgs) ElementType() reflect.Type {
@@ -130,7 +83,6 @@ func (o GetAddonTemplateResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAddonTemplateResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// The description of the add-on.
 func (o GetAddonTemplateResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAddonTemplateResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -148,12 +100,10 @@ func (o GetAddonTemplateResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAddonTemplateResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The detail configuration of the add-on template.
 func (o GetAddonTemplateResultOutput) Spec() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAddonTemplateResult) string { return v.Spec }).(pulumi.StringOutput)
 }
 
-// Whether the add-on template is a stable version.
 func (o GetAddonTemplateResultOutput) Stable() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAddonTemplateResult) bool { return v.Stable }).(pulumi.BoolOutput)
 }

@@ -6,59 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages an EIP resource within SberCloud.
- *
- * ## Example Usage
- *
- * ### EIP with Dedicated Bandwidth
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const eip1 = new sbercloud.vpc.Eip("eip_1", {
- *     publicip: {
- *         type: "5_bgp",
- *     },
- *     bandwidth: {
- *         shareType: "PER",
- *         name: "test",
- *         size: 10,
- *         chargeMode: "traffic",
- *     },
- * });
- * ```
- *
- * ### EIP with Shared Bandwidth
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const bandwidth1 = new sbercloud.vpc.Bandwidth("bandwidth_1", {
- *     name: "bandwidth_1",
- *     size: 5,
- * });
- * const eip1 = new sbercloud.vpc.Eip("eip_1", {
- *     publicip: {
- *         type: "5_bgp",
- *     },
- *     bandwidth: {
- *         shareType: "WHOLE",
- *         id: bandwidth1.id,
- *     },
- * });
- * ```
- *
- * ## Import
- *
- * EIPs can be imported using the `id`, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Vpc/eip:Eip eip_1 2c7f39f3-702b-48d1-940c-b50384177ee1
- * ```
- */
 export class Eip extends pulumi.CustomResource {
     /**
      * Get an existing Eip resource's state with the given name, ID, and optional extra
@@ -87,9 +34,6 @@ export class Eip extends pulumi.CustomResource {
         return obj['__pulumiType'] === Eip.__pulumiType;
     }
 
-    /**
-     * The IP address of the eip.
-     */
     declare public /*out*/ readonly address: pulumi.Output<string>;
     declare public /*out*/ readonly associateId: pulumi.Output<string>;
     declare public /*out*/ readonly associateType: pulumi.Output<string>;
@@ -97,27 +41,19 @@ export class Eip extends pulumi.CustomResource {
      * @deprecated Deprecated
      */
     declare public readonly autoPay: pulumi.Output<string | undefined>;
-    /**
-     * Specifies whether auto renew is enabled. Valid values are "true" and "
-     * false". Changing this creates a new resource.
-     */
     declare public readonly autoRenew: pulumi.Output<string | undefined>;
     /**
-     * The bandwidth object.
+     * The bandwidth configuration.
      */
     declare public readonly bandwidth: pulumi.Output<outputs.Vpc.EipBandwidth>;
     declare public readonly chargingMode: pulumi.Output<string>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * The enterprise project id of the elastic IP. Changing this
-     * creates a new eip.
+     * The enterprise project ID to which the EIP belongs.
      */
     declare public readonly enterpriseProjectId: pulumi.Output<string>;
     declare public /*out*/ readonly instanceId: pulumi.Output<string>;
     declare public /*out*/ readonly instanceType: pulumi.Output<string>;
-    /**
-     * The IPv6 address of the EIP.
-     */
     declare public /*out*/ readonly ipv6Address: pulumi.Output<string>;
     /**
      * The name of the EIP.
@@ -125,30 +61,17 @@ export class Eip extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     declare public readonly period: pulumi.Output<number | undefined>;
     declare public readonly periodUnit: pulumi.Output<string | undefined>;
-    /**
-     * The port ID which the EIP associated with.
-     */
     declare public /*out*/ readonly portId: pulumi.Output<string>;
-    /**
-     * The private IP address bound to the EIP.
-     */
     declare public /*out*/ readonly privateIp: pulumi.Output<string>;
     /**
-     * The elastic IP address object.
+     * The EIP configuration.
      */
     declare public readonly publicip: pulumi.Output<outputs.Vpc.EipPublicip>;
     /**
-     * The region in which to create the eip resource. If omitted, the provider-level
-     * region will be used. Changing this creates a new eip resource.
+     * The region in which to create the EIP resource.
      */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * The status of eip.
-     */
     declare public /*out*/ readonly status: pulumi.Output<string>;
-    /**
-     * Specifies the key/value pairs to associate with the elastic IP.
-     */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
@@ -227,9 +150,6 @@ export class Eip extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Eip resources.
  */
 export interface EipState {
-    /**
-     * The IP address of the eip.
-     */
     address?: pulumi.Input<string>;
     associateId?: pulumi.Input<string>;
     associateType?: pulumi.Input<string>;
@@ -237,27 +157,19 @@ export interface EipState {
      * @deprecated Deprecated
      */
     autoPay?: pulumi.Input<string>;
-    /**
-     * Specifies whether auto renew is enabled. Valid values are "true" and "
-     * false". Changing this creates a new resource.
-     */
     autoRenew?: pulumi.Input<string>;
     /**
-     * The bandwidth object.
+     * The bandwidth configuration.
      */
     bandwidth?: pulumi.Input<inputs.Vpc.EipBandwidth>;
     chargingMode?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
     /**
-     * The enterprise project id of the elastic IP. Changing this
-     * creates a new eip.
+     * The enterprise project ID to which the EIP belongs.
      */
     enterpriseProjectId?: pulumi.Input<string>;
     instanceId?: pulumi.Input<string>;
     instanceType?: pulumi.Input<string>;
-    /**
-     * The IPv6 address of the EIP.
-     */
     ipv6Address?: pulumi.Input<string>;
     /**
      * The name of the EIP.
@@ -265,30 +177,17 @@ export interface EipState {
     name?: pulumi.Input<string>;
     period?: pulumi.Input<number>;
     periodUnit?: pulumi.Input<string>;
-    /**
-     * The port ID which the EIP associated with.
-     */
     portId?: pulumi.Input<string>;
-    /**
-     * The private IP address bound to the EIP.
-     */
     privateIp?: pulumi.Input<string>;
     /**
-     * The elastic IP address object.
+     * The EIP configuration.
      */
     publicip?: pulumi.Input<inputs.Vpc.EipPublicip>;
     /**
-     * The region in which to create the eip resource. If omitted, the provider-level
-     * region will be used. Changing this creates a new eip resource.
+     * The region in which to create the EIP resource.
      */
     region?: pulumi.Input<string>;
-    /**
-     * The status of eip.
-     */
     status?: pulumi.Input<string>;
-    /**
-     * Specifies the key/value pairs to associate with the elastic IP.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     updatedAt?: pulumi.Input<string>;
 }
@@ -301,19 +200,14 @@ export interface EipArgs {
      * @deprecated Deprecated
      */
     autoPay?: pulumi.Input<string>;
-    /**
-     * Specifies whether auto renew is enabled. Valid values are "true" and "
-     * false". Changing this creates a new resource.
-     */
     autoRenew?: pulumi.Input<string>;
     /**
-     * The bandwidth object.
+     * The bandwidth configuration.
      */
     bandwidth: pulumi.Input<inputs.Vpc.EipBandwidth>;
     chargingMode?: pulumi.Input<string>;
     /**
-     * The enterprise project id of the elastic IP. Changing this
-     * creates a new eip.
+     * The enterprise project ID to which the EIP belongs.
      */
     enterpriseProjectId?: pulumi.Input<string>;
     /**
@@ -323,16 +217,12 @@ export interface EipArgs {
     period?: pulumi.Input<number>;
     periodUnit?: pulumi.Input<string>;
     /**
-     * The elastic IP address object.
+     * The EIP configuration.
      */
     publicip: pulumi.Input<inputs.Vpc.EipPublicip>;
     /**
-     * The region in which to create the eip resource. If omitted, the provider-level
-     * region will be used. Changing this creates a new eip resource.
+     * The region in which to create the EIP resource.
      */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the key/value pairs to associate with the elastic IP.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

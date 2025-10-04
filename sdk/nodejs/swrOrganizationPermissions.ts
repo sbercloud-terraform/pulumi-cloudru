@@ -6,44 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Manages user permissions for the SWR organization resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const organizationName = config.requireObject<any>("organizationName");
- * const user1 = config.requireObject<any>("user1");
- * const user2 = config.requireObject<any>("user2");
- * const test = new sbercloud.SwrOrganizationPermissions("test", {
- *     organization: organizationName,
- *     users: [
- *         {
- *             userName: user1.name,
- *             userId: user1.id,
- *             permission: "Read",
- *         },
- *         {
- *             userName: user2.name,
- *             userId: user2.id,
- *             permission: "Read",
- *         },
- *     ],
- * });
- * ```
- *
- * ## Import
- *
- * Organization Permissions can be imported using the `id` (organization name), e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:index/swrOrganizationPermissions:SwrOrganizationPermissions test terraform-test
- * ```
- */
 export class SwrOrganizationPermissions extends pulumi.CustomResource {
     /**
      * Get an existing SwrOrganizationPermissions resource's state with the given name, ID, and optional extra
@@ -72,28 +34,10 @@ export class SwrOrganizationPermissions extends pulumi.CustomResource {
         return obj['__pulumiType'] === SwrOrganizationPermissions.__pulumiType;
     }
 
-    /**
-     * The creator user name of the organization.
-     */
     declare public /*out*/ readonly creator: pulumi.Output<string>;
-    /**
-     * Specifies the name of the organization (namespace) to be accessed.
-     * Changing this creates a new resource.
-     */
     declare public readonly organization: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * The permission informations of current user.
-     */
     declare public /*out*/ readonly selfPermissions: pulumi.Output<outputs.SwrOrganizationPermissionsSelfPermission[]>;
-    /**
-     * Specifies the users to access to the organization (namespace).
-     * Structure is documented below.
-     */
     declare public readonly users: pulumi.Output<outputs.SwrOrganizationPermissionsUser[]>;
 
     /**
@@ -137,28 +81,10 @@ export class SwrOrganizationPermissions extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SwrOrganizationPermissions resources.
  */
 export interface SwrOrganizationPermissionsState {
-    /**
-     * The creator user name of the organization.
-     */
     creator?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the organization (namespace) to be accessed.
-     * Changing this creates a new resource.
-     */
     organization?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * The permission informations of current user.
-     */
     selfPermissions?: pulumi.Input<pulumi.Input<inputs.SwrOrganizationPermissionsSelfPermission>[]>;
-    /**
-     * Specifies the users to access to the organization (namespace).
-     * Structure is documented below.
-     */
     users?: pulumi.Input<pulumi.Input<inputs.SwrOrganizationPermissionsUser>[]>;
 }
 
@@ -166,19 +92,7 @@ export interface SwrOrganizationPermissionsState {
  * The set of arguments for constructing a SwrOrganizationPermissions resource.
  */
 export interface SwrOrganizationPermissionsArgs {
-    /**
-     * Specifies the name of the organization (namespace) to be accessed.
-     * Changing this creates a new resource.
-     */
     organization: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the users to access to the organization (namespace).
-     * Structure is documented below.
-     */
     users: pulumi.Input<pulumi.Input<inputs.SwrOrganizationPermissionsUser>[]>;
 }

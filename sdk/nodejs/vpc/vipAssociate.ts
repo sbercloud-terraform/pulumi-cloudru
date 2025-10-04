@@ -4,35 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Using this resource, one or more NICs (to which the ECS instance belongs) can be bound to the VIP.
- *
- * > A VIP can only have one resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const vipId = config.requireObject<any>("vipId");
- * const portIds = config.requireObject<Array<string>>("portIds");
- * const vipAssociated = new sbercloud.vpc.VipAssociate("vip_associated", {
- *     vipId: vipId,
- *     portIds: portIds,
- * });
- * ```
- *
- * ## Import
- *
- * Vip associate can be imported using the `vip_id` and port IDs separated by slashes (no limit on the number of
- * port IDs), e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Vpc/vipAssociate:VipAssociate vip_associated vip_id/port1_id/port2_id
- * ```
- */
 export class VipAssociate extends pulumi.CustomResource {
     /**
      * Get an existing VipAssociate resource's state with the given name, ID, and optional extra
@@ -61,30 +32,11 @@ export class VipAssociate extends pulumi.CustomResource {
         return obj['__pulumiType'] === VipAssociate.__pulumiType;
     }
 
-    /**
-     * The IP addresses of ports to attach the vip to.
-     */
     declare public /*out*/ readonly ipAddresses: pulumi.Output<string[]>;
-    /**
-     * An array of one or more IDs of the ports to attach the vip to.
-     */
     declare public readonly portIds: pulumi.Output<string[]>;
-    /**
-     * The region in which to create the vip associate resource. If omitted, the
-     * provider-level region will be used.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * The ID of vip to attach the ports to.
-     */
     declare public readonly vipId: pulumi.Output<string>;
-    /**
-     * The IP address in the subnet for this vip.
-     */
     declare public /*out*/ readonly vipIpAddress: pulumi.Output<string>;
-    /**
-     * The ID of the subnet this vip connects to.
-     */
     declare public /*out*/ readonly vipSubnetId: pulumi.Output<string>;
 
     /**
@@ -130,30 +82,11 @@ export class VipAssociate extends pulumi.CustomResource {
  * Input properties used for looking up and filtering VipAssociate resources.
  */
 export interface VipAssociateState {
-    /**
-     * The IP addresses of ports to attach the vip to.
-     */
     ipAddresses?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * An array of one or more IDs of the ports to attach the vip to.
-     */
     portIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The region in which to create the vip associate resource. If omitted, the
-     * provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * The ID of vip to attach the ports to.
-     */
     vipId?: pulumi.Input<string>;
-    /**
-     * The IP address in the subnet for this vip.
-     */
     vipIpAddress?: pulumi.Input<string>;
-    /**
-     * The ID of the subnet this vip connects to.
-     */
     vipSubnetId?: pulumi.Input<string>;
 }
 
@@ -161,17 +94,7 @@ export interface VipAssociateState {
  * The set of arguments for constructing a VipAssociate resource.
  */
 export interface VipAssociateArgs {
-    /**
-     * An array of one or more IDs of the ports to attach the vip to.
-     */
     portIds: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The region in which to create the vip associate resource. If omitted, the
-     * provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * The ID of vip to attach the ports to.
-     */
     vipId: pulumi.Input<string>;
 }

@@ -62,17 +62,11 @@ class GetEipsResult:
     @_builtins.property
     @pulumi.getter
     def eips(self) -> Sequence['outputs.GetEipsEipResult']:
-        """
-        Indicates a list of all EIPs found. Structure is documented below.
-        """
         return pulumi.get(self, "eips")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[_builtins.str]:
-        """
-        The the enterprise project ID of the EIP.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
@@ -91,9 +85,6 @@ class GetEipsResult:
     @_builtins.property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> Optional[_builtins.int]:
-        """
-        The ip version of the EIP.
-        """
         return pulumi.get(self, "ip_version")
 
     @_builtins.property
@@ -119,9 +110,6 @@ class GetEipsResult:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
-        """
-        The key/value pairs which associated with the EIP.
-        """
         return pulumi.get(self, "tags")
 
 
@@ -153,39 +141,7 @@ def get_eips(enterprise_project_id: Optional[_builtins.str] = None,
              tags: Optional[Mapping[str, _builtins.str]] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEipsResult:
     """
-    Use this data source to get a list of EIPs.
-
-    ## Example Usage
-
-    An example filter by name and tag
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    public_ip = config.require_object("publicIp")
-    eip = sbercloud.Eip.get_eips(public_ips=[public_ip],
-        tags={
-            "foo": "bar",
-        })
-    pulumi.export("eipIds", [__item.id for __item in eip.eips])
-    ```
-
-
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID which the desired EIP belongs to.
-    :param Sequence[_builtins.str] ids: Specifies an array of one or more IDs of the desired EIP.
-    :param _builtins.int ip_version: Specifies ip version of the desired EIP. The options are:
-    :param Sequence[_builtins.str] port_ids: Specifies an array of one or more port ids which bound to the desired EIP.
-    :param Sequence[_builtins.str] public_ips: Specifies an array of one or more public ip addresses of the desired EIP.
-    :param _builtins.str region: Specifies the region in which to obtain the EIP. If omitted, the provider-level region
-           will be used.
-    :param Mapping[str, _builtins.str] tags: Specifies the included key/value pairs which associated with the desired EIP.
-           
-           > A maximum of 10 tag keys are allowed for each query operation. Each tag key can have up to 10 tag values.
-           The tag key cannot be left blank or set to an empty string. Each tag key must be unique, and each tag value in a
-           tag must be unique, use commas(,) to separate the multiple values. An empty for values indicates any value.
-           The values are in the OR relationship.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['enterpriseProjectId'] = enterprise_project_id
@@ -220,39 +176,7 @@ def get_eips_output(enterprise_project_id: Optional[pulumi.Input[Optional[_built
                     tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEipsResult]:
     """
-    Use this data source to get a list of EIPs.
-
-    ## Example Usage
-
-    An example filter by name and tag
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    public_ip = config.require_object("publicIp")
-    eip = sbercloud.Eip.get_eips(public_ips=[public_ip],
-        tags={
-            "foo": "bar",
-        })
-    pulumi.export("eipIds", [__item.id for __item in eip.eips])
-    ```
-
-
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID which the desired EIP belongs to.
-    :param Sequence[_builtins.str] ids: Specifies an array of one or more IDs of the desired EIP.
-    :param _builtins.int ip_version: Specifies ip version of the desired EIP. The options are:
-    :param Sequence[_builtins.str] port_ids: Specifies an array of one or more port ids which bound to the desired EIP.
-    :param Sequence[_builtins.str] public_ips: Specifies an array of one or more public ip addresses of the desired EIP.
-    :param _builtins.str region: Specifies the region in which to obtain the EIP. If omitted, the provider-level region
-           will be used.
-    :param Mapping[str, _builtins.str] tags: Specifies the included key/value pairs which associated with the desired EIP.
-           
-           > A maximum of 10 tag keys are allowed for each query operation. Each tag key can have up to 10 tag values.
-           The tag key cannot be left blank or set to an empty string. Each tag key must be unique, and each tag value in a
-           tag must be unique, use commas(,) to separate the multiple values. An empty for values indicates any value.
-           The values are in the OR relationship.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['enterpriseProjectId'] = enterprise_project_id

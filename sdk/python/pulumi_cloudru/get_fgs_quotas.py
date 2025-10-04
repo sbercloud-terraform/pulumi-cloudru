@@ -49,9 +49,6 @@ class GetFgsQuotasResult:
     @_builtins.property
     @pulumi.getter
     def quotas(self) -> Sequence['outputs.GetFgsQuotasQuotaResult']:
-        """
-        All quotas that match the filter parameters.
-        """
         return pulumi.get(self, "quotas")
 
     @_builtins.property
@@ -74,11 +71,7 @@ class AwaitableGetFgsQuotasResult(GetFgsQuotasResult):
 def get_fgs_quotas(region: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFgsQuotasResult:
     """
-    Using this data source to query the list of available resource quotas for FunctionGraph service within SberCloud.
-
-
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['region'] = region
@@ -92,11 +85,7 @@ def get_fgs_quotas(region: Optional[_builtins.str] = None,
 def get_fgs_quotas_output(region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFgsQuotasResult]:
     """
-    Using this data source to query the list of available resource quotas for FunctionGraph service within SberCloud.
-
-
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['region'] = region

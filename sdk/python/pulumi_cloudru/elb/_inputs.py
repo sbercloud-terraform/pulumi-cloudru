@@ -62,22 +62,8 @@ class ListenerInsertHeadersArgs:
 if not MYPY:
     class PoolPersistenceArgsDict(TypedDict):
         type: pulumi.Input[_builtins.str]
-        """
-        The type of persistence mode. The current specification supports SOURCE_IP,
-        HTTP_COOKIE, and APP_COOKIE.
-        """
         cookie_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the cookie if persistence mode is set appropriately. Required
-        if `type = APP_COOKIE`.
-        """
         timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the sticky session timeout duration in minutes. This parameter is
-        invalid when type is set to APP_COOKIE. The value range varies depending on the protocol of the backend server group:
-        + When the protocol of the backend server group is TCP or UDP, the value ranges from 1 to 60.
-        + When the protocol of the backend server group is HTTP or HTTPS, the value ranges from 1 to 1440.
-        """
 elif False:
     PoolPersistenceArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -87,16 +73,6 @@ class PoolPersistenceArgs:
                  type: pulumi.Input[_builtins.str],
                  cookie_name: Optional[pulumi.Input[_builtins.str]] = None,
                  timeout: Optional[pulumi.Input[_builtins.int]] = None):
-        """
-        :param pulumi.Input[_builtins.str] type: The type of persistence mode. The current specification supports SOURCE_IP,
-               HTTP_COOKIE, and APP_COOKIE.
-        :param pulumi.Input[_builtins.str] cookie_name: The name of the cookie if persistence mode is set appropriately. Required
-               if `type = APP_COOKIE`.
-        :param pulumi.Input[_builtins.int] timeout: Specifies the sticky session timeout duration in minutes. This parameter is
-               invalid when type is set to APP_COOKIE. The value range varies depending on the protocol of the backend server group:
-               + When the protocol of the backend server group is TCP or UDP, the value ranges from 1 to 60.
-               + When the protocol of the backend server group is HTTP or HTTPS, the value ranges from 1 to 1440.
-        """
         pulumi.set(__self__, "type", type)
         if cookie_name is not None:
             pulumi.set(__self__, "cookie_name", cookie_name)
@@ -106,10 +82,6 @@ class PoolPersistenceArgs:
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
-        """
-        The type of persistence mode. The current specification supports SOURCE_IP,
-        HTTP_COOKIE, and APP_COOKIE.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -119,10 +91,6 @@ class PoolPersistenceArgs:
     @_builtins.property
     @pulumi.getter(name="cookieName")
     def cookie_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The name of the cookie if persistence mode is set appropriately. Required
-        if `type = APP_COOKIE`.
-        """
         return pulumi.get(self, "cookie_name")
 
     @cookie_name.setter
@@ -132,12 +100,6 @@ class PoolPersistenceArgs:
     @_builtins.property
     @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the sticky session timeout duration in minutes. This parameter is
-        invalid when type is set to APP_COOKIE. The value range varies depending on the protocol of the backend server group:
-        + When the protocol of the backend server group is TCP or UDP, the value ranges from 1 to 60.
-        + When the protocol of the backend server group is HTTP or HTTPS, the value ranges from 1 to 1440.
-        """
         return pulumi.get(self, "timeout")
 
     @timeout.setter

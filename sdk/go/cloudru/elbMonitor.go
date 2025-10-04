@@ -12,103 +12,19 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages an ELB monitor resource within Cloud.ru.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			poolId := cfg.RequireObject("poolId")
-//			_, err := sbercloud.NewElbMonitor(ctx, "monitor_1", &sbercloud.ElbMonitorArgs{
-//				PoolId:     pulumi.Any(poolId),
-//				Protocol:   pulumi.String("HTTPS"),
-//				Interval:   pulumi.Int(30),
-//				Timeout:    pulumi.Int(20),
-//				MaxRetries: pulumi.Int(8),
-//				UrlPath:    pulumi.String("/bb"),
-//				DomainName: pulumi.String("www.bb.com"),
-//				Port:       pulumi.Int(8888),
-//				StatusCode: pulumi.String("200,301,404-500,504"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// ELB monitor can be imported using the monitor `id`, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:index/elbMonitor:ElbMonitor test <id>
-// ```
 type ElbMonitor struct {
 	pulumi.CustomResourceState
 
-	// Specifies the domain name that HTTP requests are sent to during the health check.
-	// The domain name consists of 1 to 100 characters, can contain only digits, letters, hyphens (-), and periods (.) and
-	// must start with a digit or letter. The value is left blank by default, indicating that the virtual IP address of the
-	// load balancer is used as the destination address of HTTP requests. This parameter is available only when `protocol`
-	// is set to **HTTP** or **HTTPS**.
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
-	// Specifies the interval between health checks, in seconds.
-	// Value ranges from **1** to **50**.
-	Interval pulumi.IntOutput `pulumi:"interval"`
-	// Specifies the number of consecutive health checks when the health check result of
-	// a backend server changes from OFFLINE to ONLINE. Value ranges from **1** to **50**.
-	MaxRetries pulumi.IntOutput `pulumi:"maxRetries"`
-	// Specifies the ID of the backend server group for which the health check is
-	// configured. Changing this creates a new monitor.
-	PoolId pulumi.StringOutput `pulumi:"poolId"`
-	// Specifies the port used for the health check. If this parameter is left blank, a port of
-	// the backend server will be used by default.  Value ranges from **1** to **65535**.
-	Port pulumi.IntOutput `pulumi:"port"`
-	// Specifies the health check protocol. Value options: **TCP**, **UDP_CONNECT**,
-	// **HTTP**, or **HTTPS**.
-	// + If the protocol of the backend server is **QUIC**, the value can only be **UDP_CONNECT**.
-	// + If the protocol of the backend server is **UDP**, the value can only be **UDP_CONNECT**.
-	// + If the protocol of the backend server is **TCP**, the value can only be **TCP**, **HTTP**, or **HTTPS**.
-	// + If the protocol of the backend server is **HTTP**, the value can only be **TCP**, **HTTP**, or **HTTPS**.
-	// + If the protocol of the backend server is **HTTPS**, the value can only be **TCP**, **HTTP**, or **HTTPS**.
-	Protocol pulumi.StringOutput `pulumi:"protocol"`
-	// The region in which to create the ELB monitor resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new monitor.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Specifies the expected HTTP status code. This parameter will take effect only when
-	// `protocol` is set to **HTTP** or **HTTPS**. Value options are as follows:
-	// + A specific value, for example: **200**.
-	// + A list of values that are separated with commas (,), for example: **200,202**.
-	// + A value range, for example: **200-204**.
-	//
-	// Defaults to **200**.
+	Interval   pulumi.IntOutput    `pulumi:"interval"`
+	MaxRetries pulumi.IntOutput    `pulumi:"maxRetries"`
+	PoolId     pulumi.StringOutput `pulumi:"poolId"`
+	Port       pulumi.IntOutput    `pulumi:"port"`
+	Protocol   pulumi.StringOutput `pulumi:"protocol"`
+	Region     pulumi.StringOutput `pulumi:"region"`
 	StatusCode pulumi.StringOutput `pulumi:"statusCode"`
-	// Specifies the maximum time required for waiting for a response from the health check,
-	// in seconds. Value ranges from **1** to **50**. It is recommended that you set the value less than that of
-	// parameter `interval`.
-	Timeout pulumi.IntOutput `pulumi:"timeout"`
-	// Specifies the HTTP request path for the health check. The value must start with a
-	// slash (/), can contain letters, digits, hyphens (-), slash (/), periods (.), percent signs (%), hashes(#), and(&)
-	// and the special characters: `~!()*[]@$^:',+`, and the default value is **/**. This parameter is available only when
-	// `protocol` is set to **HTTP** or **HTTPS**.
-	UrlPath pulumi.StringOutput `pulumi:"urlPath"`
+	Timeout    pulumi.IntOutput    `pulumi:"timeout"`
+	UrlPath    pulumi.StringOutput `pulumi:"urlPath"`
 }
 
 // NewElbMonitor registers a new resource with the given unique name, arguments, and options.
@@ -156,101 +72,29 @@ func GetElbMonitor(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ElbMonitor resources.
 type elbMonitorState struct {
-	// Specifies the domain name that HTTP requests are sent to during the health check.
-	// The domain name consists of 1 to 100 characters, can contain only digits, letters, hyphens (-), and periods (.) and
-	// must start with a digit or letter. The value is left blank by default, indicating that the virtual IP address of the
-	// load balancer is used as the destination address of HTTP requests. This parameter is available only when `protocol`
-	// is set to **HTTP** or **HTTPS**.
 	DomainName *string `pulumi:"domainName"`
-	// Specifies the interval between health checks, in seconds.
-	// Value ranges from **1** to **50**.
-	Interval *int `pulumi:"interval"`
-	// Specifies the number of consecutive health checks when the health check result of
-	// a backend server changes from OFFLINE to ONLINE. Value ranges from **1** to **50**.
-	MaxRetries *int `pulumi:"maxRetries"`
-	// Specifies the ID of the backend server group for which the health check is
-	// configured. Changing this creates a new monitor.
-	PoolId *string `pulumi:"poolId"`
-	// Specifies the port used for the health check. If this parameter is left blank, a port of
-	// the backend server will be used by default.  Value ranges from **1** to **65535**.
-	Port *int `pulumi:"port"`
-	// Specifies the health check protocol. Value options: **TCP**, **UDP_CONNECT**,
-	// **HTTP**, or **HTTPS**.
-	// + If the protocol of the backend server is **QUIC**, the value can only be **UDP_CONNECT**.
-	// + If the protocol of the backend server is **UDP**, the value can only be **UDP_CONNECT**.
-	// + If the protocol of the backend server is **TCP**, the value can only be **TCP**, **HTTP**, or **HTTPS**.
-	// + If the protocol of the backend server is **HTTP**, the value can only be **TCP**, **HTTP**, or **HTTPS**.
-	// + If the protocol of the backend server is **HTTPS**, the value can only be **TCP**, **HTTP**, or **HTTPS**.
-	Protocol *string `pulumi:"protocol"`
-	// The region in which to create the ELB monitor resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new monitor.
-	Region *string `pulumi:"region"`
-	// Specifies the expected HTTP status code. This parameter will take effect only when
-	// `protocol` is set to **HTTP** or **HTTPS**. Value options are as follows:
-	// + A specific value, for example: **200**.
-	// + A list of values that are separated with commas (,), for example: **200,202**.
-	// + A value range, for example: **200-204**.
-	//
-	// Defaults to **200**.
+	Interval   *int    `pulumi:"interval"`
+	MaxRetries *int    `pulumi:"maxRetries"`
+	PoolId     *string `pulumi:"poolId"`
+	Port       *int    `pulumi:"port"`
+	Protocol   *string `pulumi:"protocol"`
+	Region     *string `pulumi:"region"`
 	StatusCode *string `pulumi:"statusCode"`
-	// Specifies the maximum time required for waiting for a response from the health check,
-	// in seconds. Value ranges from **1** to **50**. It is recommended that you set the value less than that of
-	// parameter `interval`.
-	Timeout *int `pulumi:"timeout"`
-	// Specifies the HTTP request path for the health check. The value must start with a
-	// slash (/), can contain letters, digits, hyphens (-), slash (/), periods (.), percent signs (%), hashes(#), and(&)
-	// and the special characters: `~!()*[]@$^:',+`, and the default value is **/**. This parameter is available only when
-	// `protocol` is set to **HTTP** or **HTTPS**.
-	UrlPath *string `pulumi:"urlPath"`
+	Timeout    *int    `pulumi:"timeout"`
+	UrlPath    *string `pulumi:"urlPath"`
 }
 
 type ElbMonitorState struct {
-	// Specifies the domain name that HTTP requests are sent to during the health check.
-	// The domain name consists of 1 to 100 characters, can contain only digits, letters, hyphens (-), and periods (.) and
-	// must start with a digit or letter. The value is left blank by default, indicating that the virtual IP address of the
-	// load balancer is used as the destination address of HTTP requests. This parameter is available only when `protocol`
-	// is set to **HTTP** or **HTTPS**.
 	DomainName pulumi.StringPtrInput
-	// Specifies the interval between health checks, in seconds.
-	// Value ranges from **1** to **50**.
-	Interval pulumi.IntPtrInput
-	// Specifies the number of consecutive health checks when the health check result of
-	// a backend server changes from OFFLINE to ONLINE. Value ranges from **1** to **50**.
+	Interval   pulumi.IntPtrInput
 	MaxRetries pulumi.IntPtrInput
-	// Specifies the ID of the backend server group for which the health check is
-	// configured. Changing this creates a new monitor.
-	PoolId pulumi.StringPtrInput
-	// Specifies the port used for the health check. If this parameter is left blank, a port of
-	// the backend server will be used by default.  Value ranges from **1** to **65535**.
-	Port pulumi.IntPtrInput
-	// Specifies the health check protocol. Value options: **TCP**, **UDP_CONNECT**,
-	// **HTTP**, or **HTTPS**.
-	// + If the protocol of the backend server is **QUIC**, the value can only be **UDP_CONNECT**.
-	// + If the protocol of the backend server is **UDP**, the value can only be **UDP_CONNECT**.
-	// + If the protocol of the backend server is **TCP**, the value can only be **TCP**, **HTTP**, or **HTTPS**.
-	// + If the protocol of the backend server is **HTTP**, the value can only be **TCP**, **HTTP**, or **HTTPS**.
-	// + If the protocol of the backend server is **HTTPS**, the value can only be **TCP**, **HTTP**, or **HTTPS**.
-	Protocol pulumi.StringPtrInput
-	// The region in which to create the ELB monitor resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new monitor.
-	Region pulumi.StringPtrInput
-	// Specifies the expected HTTP status code. This parameter will take effect only when
-	// `protocol` is set to **HTTP** or **HTTPS**. Value options are as follows:
-	// + A specific value, for example: **200**.
-	// + A list of values that are separated with commas (,), for example: **200,202**.
-	// + A value range, for example: **200-204**.
-	//
-	// Defaults to **200**.
+	PoolId     pulumi.StringPtrInput
+	Port       pulumi.IntPtrInput
+	Protocol   pulumi.StringPtrInput
+	Region     pulumi.StringPtrInput
 	StatusCode pulumi.StringPtrInput
-	// Specifies the maximum time required for waiting for a response from the health check,
-	// in seconds. Value ranges from **1** to **50**. It is recommended that you set the value less than that of
-	// parameter `interval`.
-	Timeout pulumi.IntPtrInput
-	// Specifies the HTTP request path for the health check. The value must start with a
-	// slash (/), can contain letters, digits, hyphens (-), slash (/), periods (.), percent signs (%), hashes(#), and(&)
-	// and the special characters: `~!()*[]@$^:',+`, and the default value is **/**. This parameter is available only when
-	// `protocol` is set to **HTTP** or **HTTPS**.
-	UrlPath pulumi.StringPtrInput
+	Timeout    pulumi.IntPtrInput
+	UrlPath    pulumi.StringPtrInput
 }
 
 func (ElbMonitorState) ElementType() reflect.Type {
@@ -258,102 +102,30 @@ func (ElbMonitorState) ElementType() reflect.Type {
 }
 
 type elbMonitorArgs struct {
-	// Specifies the domain name that HTTP requests are sent to during the health check.
-	// The domain name consists of 1 to 100 characters, can contain only digits, letters, hyphens (-), and periods (.) and
-	// must start with a digit or letter. The value is left blank by default, indicating that the virtual IP address of the
-	// load balancer is used as the destination address of HTTP requests. This parameter is available only when `protocol`
-	// is set to **HTTP** or **HTTPS**.
 	DomainName *string `pulumi:"domainName"`
-	// Specifies the interval between health checks, in seconds.
-	// Value ranges from **1** to **50**.
-	Interval int `pulumi:"interval"`
-	// Specifies the number of consecutive health checks when the health check result of
-	// a backend server changes from OFFLINE to ONLINE. Value ranges from **1** to **50**.
-	MaxRetries int `pulumi:"maxRetries"`
-	// Specifies the ID of the backend server group for which the health check is
-	// configured. Changing this creates a new monitor.
-	PoolId string `pulumi:"poolId"`
-	// Specifies the port used for the health check. If this parameter is left blank, a port of
-	// the backend server will be used by default.  Value ranges from **1** to **65535**.
-	Port *int `pulumi:"port"`
-	// Specifies the health check protocol. Value options: **TCP**, **UDP_CONNECT**,
-	// **HTTP**, or **HTTPS**.
-	// + If the protocol of the backend server is **QUIC**, the value can only be **UDP_CONNECT**.
-	// + If the protocol of the backend server is **UDP**, the value can only be **UDP_CONNECT**.
-	// + If the protocol of the backend server is **TCP**, the value can only be **TCP**, **HTTP**, or **HTTPS**.
-	// + If the protocol of the backend server is **HTTP**, the value can only be **TCP**, **HTTP**, or **HTTPS**.
-	// + If the protocol of the backend server is **HTTPS**, the value can only be **TCP**, **HTTP**, or **HTTPS**.
-	Protocol string `pulumi:"protocol"`
-	// The region in which to create the ELB monitor resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new monitor.
-	Region *string `pulumi:"region"`
-	// Specifies the expected HTTP status code. This parameter will take effect only when
-	// `protocol` is set to **HTTP** or **HTTPS**. Value options are as follows:
-	// + A specific value, for example: **200**.
-	// + A list of values that are separated with commas (,), for example: **200,202**.
-	// + A value range, for example: **200-204**.
-	//
-	// Defaults to **200**.
+	Interval   int     `pulumi:"interval"`
+	MaxRetries int     `pulumi:"maxRetries"`
+	PoolId     string  `pulumi:"poolId"`
+	Port       *int    `pulumi:"port"`
+	Protocol   string  `pulumi:"protocol"`
+	Region     *string `pulumi:"region"`
 	StatusCode *string `pulumi:"statusCode"`
-	// Specifies the maximum time required for waiting for a response from the health check,
-	// in seconds. Value ranges from **1** to **50**. It is recommended that you set the value less than that of
-	// parameter `interval`.
-	Timeout int `pulumi:"timeout"`
-	// Specifies the HTTP request path for the health check. The value must start with a
-	// slash (/), can contain letters, digits, hyphens (-), slash (/), periods (.), percent signs (%), hashes(#), and(&)
-	// and the special characters: `~!()*[]@$^:',+`, and the default value is **/**. This parameter is available only when
-	// `protocol` is set to **HTTP** or **HTTPS**.
-	UrlPath *string `pulumi:"urlPath"`
+	Timeout    int     `pulumi:"timeout"`
+	UrlPath    *string `pulumi:"urlPath"`
 }
 
 // The set of arguments for constructing a ElbMonitor resource.
 type ElbMonitorArgs struct {
-	// Specifies the domain name that HTTP requests are sent to during the health check.
-	// The domain name consists of 1 to 100 characters, can contain only digits, letters, hyphens (-), and periods (.) and
-	// must start with a digit or letter. The value is left blank by default, indicating that the virtual IP address of the
-	// load balancer is used as the destination address of HTTP requests. This parameter is available only when `protocol`
-	// is set to **HTTP** or **HTTPS**.
 	DomainName pulumi.StringPtrInput
-	// Specifies the interval between health checks, in seconds.
-	// Value ranges from **1** to **50**.
-	Interval pulumi.IntInput
-	// Specifies the number of consecutive health checks when the health check result of
-	// a backend server changes from OFFLINE to ONLINE. Value ranges from **1** to **50**.
+	Interval   pulumi.IntInput
 	MaxRetries pulumi.IntInput
-	// Specifies the ID of the backend server group for which the health check is
-	// configured. Changing this creates a new monitor.
-	PoolId pulumi.StringInput
-	// Specifies the port used for the health check. If this parameter is left blank, a port of
-	// the backend server will be used by default.  Value ranges from **1** to **65535**.
-	Port pulumi.IntPtrInput
-	// Specifies the health check protocol. Value options: **TCP**, **UDP_CONNECT**,
-	// **HTTP**, or **HTTPS**.
-	// + If the protocol of the backend server is **QUIC**, the value can only be **UDP_CONNECT**.
-	// + If the protocol of the backend server is **UDP**, the value can only be **UDP_CONNECT**.
-	// + If the protocol of the backend server is **TCP**, the value can only be **TCP**, **HTTP**, or **HTTPS**.
-	// + If the protocol of the backend server is **HTTP**, the value can only be **TCP**, **HTTP**, or **HTTPS**.
-	// + If the protocol of the backend server is **HTTPS**, the value can only be **TCP**, **HTTP**, or **HTTPS**.
-	Protocol pulumi.StringInput
-	// The region in which to create the ELB monitor resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new monitor.
-	Region pulumi.StringPtrInput
-	// Specifies the expected HTTP status code. This parameter will take effect only when
-	// `protocol` is set to **HTTP** or **HTTPS**. Value options are as follows:
-	// + A specific value, for example: **200**.
-	// + A list of values that are separated with commas (,), for example: **200,202**.
-	// + A value range, for example: **200-204**.
-	//
-	// Defaults to **200**.
+	PoolId     pulumi.StringInput
+	Port       pulumi.IntPtrInput
+	Protocol   pulumi.StringInput
+	Region     pulumi.StringPtrInput
 	StatusCode pulumi.StringPtrInput
-	// Specifies the maximum time required for waiting for a response from the health check,
-	// in seconds. Value ranges from **1** to **50**. It is recommended that you set the value less than that of
-	// parameter `interval`.
-	Timeout pulumi.IntInput
-	// Specifies the HTTP request path for the health check. The value must start with a
-	// slash (/), can contain letters, digits, hyphens (-), slash (/), periods (.), percent signs (%), hashes(#), and(&)
-	// and the special characters: `~!()*[]@$^:',+`, and the default value is **/**. This parameter is available only when
-	// `protocol` is set to **HTTP** or **HTTPS**.
-	UrlPath pulumi.StringPtrInput
+	Timeout    pulumi.IntInput
+	UrlPath    pulumi.StringPtrInput
 }
 
 func (ElbMonitorArgs) ElementType() reflect.Type {
@@ -443,78 +215,42 @@ func (o ElbMonitorOutput) ToElbMonitorOutputWithContext(ctx context.Context) Elb
 	return o
 }
 
-// Specifies the domain name that HTTP requests are sent to during the health check.
-// The domain name consists of 1 to 100 characters, can contain only digits, letters, hyphens (-), and periods (.) and
-// must start with a digit or letter. The value is left blank by default, indicating that the virtual IP address of the
-// load balancer is used as the destination address of HTTP requests. This parameter is available only when `protocol`
-// is set to **HTTP** or **HTTPS**.
 func (o ElbMonitorOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbMonitor) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
 }
 
-// Specifies the interval between health checks, in seconds.
-// Value ranges from **1** to **50**.
 func (o ElbMonitorOutput) Interval() pulumi.IntOutput {
 	return o.ApplyT(func(v *ElbMonitor) pulumi.IntOutput { return v.Interval }).(pulumi.IntOutput)
 }
 
-// Specifies the number of consecutive health checks when the health check result of
-// a backend server changes from OFFLINE to ONLINE. Value ranges from **1** to **50**.
 func (o ElbMonitorOutput) MaxRetries() pulumi.IntOutput {
 	return o.ApplyT(func(v *ElbMonitor) pulumi.IntOutput { return v.MaxRetries }).(pulumi.IntOutput)
 }
 
-// Specifies the ID of the backend server group for which the health check is
-// configured. Changing this creates a new monitor.
 func (o ElbMonitorOutput) PoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbMonitor) pulumi.StringOutput { return v.PoolId }).(pulumi.StringOutput)
 }
 
-// Specifies the port used for the health check. If this parameter is left blank, a port of
-// the backend server will be used by default.  Value ranges from **1** to **65535**.
 func (o ElbMonitorOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v *ElbMonitor) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
 }
 
-// Specifies the health check protocol. Value options: **TCP**, **UDP_CONNECT**,
-// **HTTP**, or **HTTPS**.
-// + If the protocol of the backend server is **QUIC**, the value can only be **UDP_CONNECT**.
-// + If the protocol of the backend server is **UDP**, the value can only be **UDP_CONNECT**.
-// + If the protocol of the backend server is **TCP**, the value can only be **TCP**, **HTTP**, or **HTTPS**.
-// + If the protocol of the backend server is **HTTP**, the value can only be **TCP**, **HTTP**, or **HTTPS**.
-// + If the protocol of the backend server is **HTTPS**, the value can only be **TCP**, **HTTP**, or **HTTPS**.
 func (o ElbMonitorOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbMonitor) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
 }
 
-// The region in which to create the ELB monitor resource. If omitted, the
-// provider-level region will be used. Changing this creates a new monitor.
 func (o ElbMonitorOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbMonitor) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Specifies the expected HTTP status code. This parameter will take effect only when
-// `protocol` is set to **HTTP** or **HTTPS**. Value options are as follows:
-// + A specific value, for example: **200**.
-// + A list of values that are separated with commas (,), for example: **200,202**.
-// + A value range, for example: **200-204**.
-//
-// Defaults to **200**.
 func (o ElbMonitorOutput) StatusCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbMonitor) pulumi.StringOutput { return v.StatusCode }).(pulumi.StringOutput)
 }
 
-// Specifies the maximum time required for waiting for a response from the health check,
-// in seconds. Value ranges from **1** to **50**. It is recommended that you set the value less than that of
-// parameter `interval`.
 func (o ElbMonitorOutput) Timeout() pulumi.IntOutput {
 	return o.ApplyT(func(v *ElbMonitor) pulumi.IntOutput { return v.Timeout }).(pulumi.IntOutput)
 }
 
-// Specifies the HTTP request path for the health check. The value must start with a
-// slash (/), can contain letters, digits, hyphens (-), slash (/), periods (.), percent signs (%), hashes(#), and(&)
-// and the special characters: `~!()*[]@$^:',+`, and the default value is **/**. This parameter is available only when
-// `protocol` is set to **HTTP** or **HTTPS**.
 func (o ElbMonitorOutput) UrlPath() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbMonitor) pulumi.StringOutput { return v.UrlPath }).(pulumi.StringOutput)
 }

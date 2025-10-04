@@ -4,24 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a custom dependency package within SberCloud FunctionGraph.
- *
- * > This resource will be deprecated in a future version. Please use `sbercloud.FgsDependencyVersion` resource to
- * replace it. For specific usage instructions, please refer to the corresponding document.
- *
- * ## Example Usage
- *
- * ## Import
- *
- * Dependencies can be imported using the `id`, e.g.:
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:FunctionGraph/dependency:Dependency test 795e722f-0c23-41b6-a189-dcd56f889cf6
- * ```
- */
 export class Dependency extends pulumi.CustomResource {
     /**
      * Get an existing Dependency resource's state with the given name, ID, and optional extra
@@ -51,12 +33,11 @@ export class Dependency extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies the dependency description.
-     * The description can contain a maximum of `512` characters.
+     * The description of the dependency package.
      */
     declare public readonly description: pulumi.Output<string>;
     /**
-     * The unique ID of the dependency package.
+     * The etag of the dependency package.
      */
     declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
@@ -64,49 +45,27 @@ export class Dependency extends pulumi.CustomResource {
      */
     declare public readonly link: pulumi.Output<string>;
     /**
-     * Specifies the dependency name.
-     * The name can contain a maximum of `96` characters and must start with a letter and end with a letter or digit.
-     * Only letters, digits, underscores (_), periods (.), and hyphens (-) are allowed.
+     * The name of the dependency package.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The base64 encoded digest of the dependency after encryption by MD5.
+     * The owner name of the dependency package.
      */
     declare public /*out*/ readonly owner: pulumi.Output<string>;
     /**
-     * Specifies the region in which to create a custom dependency package.
-     * If omitted, the provider-level region will be used. Changing this will create a new resource.
+     * The region where the dependency package is located.
      */
     declare public readonly region: pulumi.Output<string>;
     /**
-     * Specifies the dependency package runtime.
-     * The valid values are as follows:
-     * + **Java8**
-     * + **Java11**
-     * + **Node.js6.10**
-     * + **Node.js8.10**
-     * + **Node.js10.16**
-     * + **Node.js12.13**
-     * + **Node.js14.18**
-     * + **Python2.7**
-     * + **Python3.6**
-     * + **Python3.9**
-     * + **Go1.8**
-     * + **Go1.x**
-     * + **C#(.NET Core 2.0)**
-     * + **C#(.NET Core 2.1)**
-     * + **C#(.NET Core 3.1)**
-     * + **PHP7.3**
-     * + **Custom**
-     * + **http**
+     * The runtime of the dependency package.
      */
     declare public readonly runtime: pulumi.Output<string>;
     /**
-     * The dependency package size in bytes.
+     * The capacity of the dependency package.
      */
     declare public /*out*/ readonly size: pulumi.Output<number>;
     /**
-     * The dependency package version.
+     * The version of the dependency package.
      */
     declare public /*out*/ readonly version: pulumi.Output<number>;
 
@@ -160,12 +119,11 @@ export class Dependency extends pulumi.CustomResource {
  */
 export interface DependencyState {
     /**
-     * Specifies the dependency description.
-     * The description can contain a maximum of `512` characters.
+     * The description of the dependency package.
      */
     description?: pulumi.Input<string>;
     /**
-     * The unique ID of the dependency package.
+     * The etag of the dependency package.
      */
     etag?: pulumi.Input<string>;
     /**
@@ -173,49 +131,27 @@ export interface DependencyState {
      */
     link?: pulumi.Input<string>;
     /**
-     * Specifies the dependency name.
-     * The name can contain a maximum of `96` characters and must start with a letter and end with a letter or digit.
-     * Only letters, digits, underscores (_), periods (.), and hyphens (-) are allowed.
+     * The name of the dependency package.
      */
     name?: pulumi.Input<string>;
     /**
-     * The base64 encoded digest of the dependency after encryption by MD5.
+     * The owner name of the dependency package.
      */
     owner?: pulumi.Input<string>;
     /**
-     * Specifies the region in which to create a custom dependency package.
-     * If omitted, the provider-level region will be used. Changing this will create a new resource.
+     * The region where the dependency package is located.
      */
     region?: pulumi.Input<string>;
     /**
-     * Specifies the dependency package runtime.
-     * The valid values are as follows:
-     * + **Java8**
-     * + **Java11**
-     * + **Node.js6.10**
-     * + **Node.js8.10**
-     * + **Node.js10.16**
-     * + **Node.js12.13**
-     * + **Node.js14.18**
-     * + **Python2.7**
-     * + **Python3.6**
-     * + **Python3.9**
-     * + **Go1.8**
-     * + **Go1.x**
-     * + **C#(.NET Core 2.0)**
-     * + **C#(.NET Core 2.1)**
-     * + **C#(.NET Core 3.1)**
-     * + **PHP7.3**
-     * + **Custom**
-     * + **http**
+     * The runtime of the dependency package.
      */
     runtime?: pulumi.Input<string>;
     /**
-     * The dependency package size in bytes.
+     * The capacity of the dependency package.
      */
     size?: pulumi.Input<number>;
     /**
-     * The dependency package version.
+     * The version of the dependency package.
      */
     version?: pulumi.Input<number>;
 }
@@ -225,8 +161,7 @@ export interface DependencyState {
  */
 export interface DependencyArgs {
     /**
-     * Specifies the dependency description.
-     * The description can contain a maximum of `512` characters.
+     * The description of the dependency package.
      */
     description?: pulumi.Input<string>;
     /**
@@ -234,37 +169,15 @@ export interface DependencyArgs {
      */
     link: pulumi.Input<string>;
     /**
-     * Specifies the dependency name.
-     * The name can contain a maximum of `96` characters and must start with a letter and end with a letter or digit.
-     * Only letters, digits, underscores (_), periods (.), and hyphens (-) are allowed.
+     * The name of the dependency package.
      */
     name?: pulumi.Input<string>;
     /**
-     * Specifies the region in which to create a custom dependency package.
-     * If omitted, the provider-level region will be used. Changing this will create a new resource.
+     * The region where the dependency package is located.
      */
     region?: pulumi.Input<string>;
     /**
-     * Specifies the dependency package runtime.
-     * The valid values are as follows:
-     * + **Java8**
-     * + **Java11**
-     * + **Node.js6.10**
-     * + **Node.js8.10**
-     * + **Node.js10.16**
-     * + **Node.js12.13**
-     * + **Node.js14.18**
-     * + **Python2.7**
-     * + **Python3.6**
-     * + **Python3.9**
-     * + **Go1.8**
-     * + **Go1.x**
-     * + **C#(.NET Core 2.0)**
-     * + **C#(.NET Core 2.1)**
-     * + **C#(.NET Core 3.1)**
-     * + **PHP7.3**
-     * + **Custom**
-     * + **http**
+     * The runtime of the dependency package.
      */
     runtime: pulumi.Input<string>;
 }

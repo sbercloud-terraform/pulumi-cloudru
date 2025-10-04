@@ -4,33 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages RDS MySQL binlog resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const test = new sbercloud.rds.MysqlBinlog("test", {
- *     instanceId: instanceId,
- *     binlogRetentionHours: 6,
- * });
- * ```
- *
- * ## Import
- *
- * RDS MySQL binlog can be imported using the `instance id`, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:Rds/mysqlBinlog:MysqlBinlog test <instance_id>
- * ```
- */
 export class MysqlBinlog extends pulumi.CustomResource {
     /**
      * Get an existing MysqlBinlog resource's state with the given name, ID, and optional extra
@@ -59,18 +32,8 @@ export class MysqlBinlog extends pulumi.CustomResource {
         return obj['__pulumiType'] === MysqlBinlog.__pulumiType;
     }
 
-    /**
-     * Specifies the binlog retention period. Value range: `1` to `168` (7x24).
-     */
     declare public readonly binlogRetentionHours: pulumi.Output<number>;
-    /**
-     * Specifies the RDS MySQL instance ID. Changing this will create a new resource.
-     */
     declare public readonly instanceId: pulumi.Output<string>;
-    /**
-     * The region in which to create the RDS binlog resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
 
     /**
@@ -110,18 +73,8 @@ export class MysqlBinlog extends pulumi.CustomResource {
  * Input properties used for looking up and filtering MysqlBinlog resources.
  */
 export interface MysqlBinlogState {
-    /**
-     * Specifies the binlog retention period. Value range: `1` to `168` (7x24).
-     */
     binlogRetentionHours?: pulumi.Input<number>;
-    /**
-     * Specifies the RDS MySQL instance ID. Changing this will create a new resource.
-     */
     instanceId?: pulumi.Input<string>;
-    /**
-     * The region in which to create the RDS binlog resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
 }
 
@@ -129,17 +82,7 @@ export interface MysqlBinlogState {
  * The set of arguments for constructing a MysqlBinlog resource.
  */
 export interface MysqlBinlogArgs {
-    /**
-     * Specifies the binlog retention period. Value range: `1` to `168` (7x24).
-     */
     binlogRetentionHours: pulumi.Input<number>;
-    /**
-     * Specifies the RDS MySQL instance ID. Changing this will create a new resource.
-     */
     instanceId: pulumi.Input<string>;
-    /**
-     * The region in which to create the RDS binlog resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
 }

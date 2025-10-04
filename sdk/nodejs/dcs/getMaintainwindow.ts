@@ -4,20 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the ID of an available Sbercloud dcs maintainwindow.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const maintainwindow1 = sbercloud.Dcs.getMaintainwindow({
- *     seq: 1,
- * });
- * ```
- */
 export function getMaintainwindow(args?: GetMaintainwindowArgs, opts?: pulumi.InvokeOptions): Promise<GetMaintainwindowResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,25 +20,10 @@ export function getMaintainwindow(args?: GetMaintainwindowArgs, opts?: pulumi.In
  * A collection of arguments for invoking getMaintainwindow.
  */
 export interface GetMaintainwindowArgs {
-    /**
-     * Indicates the time at which a maintenance time window starts.
-     */
     begin?: string;
-    /**
-     * Indicates whether a maintenance time window is set to the default time segment.
-     */
     default?: boolean;
-    /**
-     * Indicates the time at which a maintenance time window ends.
-     */
     end?: string;
-    /**
-     * The region in which to obtain the dcs maintainwindows. If omitted, the provider-level region will be used.
-     */
     region?: string;
-    /**
-     * Indicates the sequential number of a maintenance time window.
-     */
     seq?: number;
 }
 
@@ -70,20 +41,6 @@ export interface GetMaintainwindowResult {
     readonly region: string;
     readonly seq: number;
 }
-/**
- * Use this data source to get the ID of an available Sbercloud dcs maintainwindow.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const maintainwindow1 = sbercloud.Dcs.getMaintainwindow({
- *     seq: 1,
- * });
- * ```
- */
 export function getMaintainwindowOutput(args?: GetMaintainwindowOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMaintainwindowResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -100,24 +57,9 @@ export function getMaintainwindowOutput(args?: GetMaintainwindowOutputArgs, opts
  * A collection of arguments for invoking getMaintainwindow.
  */
 export interface GetMaintainwindowOutputArgs {
-    /**
-     * Indicates the time at which a maintenance time window starts.
-     */
     begin?: pulumi.Input<string>;
-    /**
-     * Indicates whether a maintenance time window is set to the default time segment.
-     */
     default?: pulumi.Input<boolean>;
-    /**
-     * Indicates the time at which a maintenance time window ends.
-     */
     end?: pulumi.Input<string>;
-    /**
-     * The region in which to obtain the dcs maintainwindows. If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Indicates the sequential number of a maintenance time window.
-     */
     seq?: pulumi.Input<number>;
 }

@@ -27,25 +27,11 @@ class MysqlAccountArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MysqlAccount resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the rds instance id. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] password: Specifies the password of the db account. The parameter must be 8 to 32 characters
-               long and contain only letters(case-sensitive), digits, and special characters(~!@#$%^*-_=+?,()&). The value must be
-               different from `name` or `name` spelled backwards.
-        :param pulumi.Input[_builtins.str] description: Specifies remarks of the database account. The parameter must be 1 to 512
-               characters long and is supported only for MySQL 8.0.25 and later versions.
+        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS Mysql instance.
+        :param pulumi.Input[_builtins.str] password: Specifies the password of the DB account.
+        :param pulumi.Input[_builtins.str] description: Specifies remarks of the DB account.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hosts: Specifies the IP addresses that are allowed to access your DB instance.
-               + If the IP address is set to %, all IP addresses are allowed to access your instance.
-               + If the IP address is set to 10.10.10.%, all IP addresses in the subnet 10.10.10.X are allowed to access
-               your instance.
-               + Multiple IP addresses can be added.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the username of the db account. Only lowercase letters, digits,
-               hyphens (-), and underscores (_) are allowed. Changing this will create a new resource.
-               + If the database version is MySQL 5.6, the username consists of 1 to 16 characters.
-               + If the database version is MySQL 5.7 or 8.0, the username consists of 1 to 32 characters.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the rds account resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] name: Specifies the username of the DB account.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "password", password)
@@ -62,7 +48,7 @@ class MysqlAccountArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the rds instance id. Changing this will create a new resource.
+        Specifies the ID of the RDS Mysql instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -74,9 +60,7 @@ class MysqlAccountArgs:
     @pulumi.getter
     def password(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the password of the db account. The parameter must be 8 to 32 characters
-        long and contain only letters(case-sensitive), digits, and special characters(~!@#$%^*-_=+?,()&). The value must be
-        different from `name` or `name` spelled backwards.
+        Specifies the password of the DB account.
         """
         return pulumi.get(self, "password")
 
@@ -88,8 +72,7 @@ class MysqlAccountArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies remarks of the database account. The parameter must be 1 to 512
-        characters long and is supported only for MySQL 8.0.25 and later versions.
+        Specifies remarks of the DB account.
         """
         return pulumi.get(self, "description")
 
@@ -102,12 +85,6 @@ class MysqlAccountArgs:
     def hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Specifies the IP addresses that are allowed to access your DB instance.
-        + If the IP address is set to %, all IP addresses are allowed to access your instance.
-        + If the IP address is set to 10.10.10.%, all IP addresses in the subnet 10.10.10.X are allowed to access
-        your instance.
-        + Multiple IP addresses can be added.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "hosts")
 
@@ -119,10 +96,7 @@ class MysqlAccountArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the username of the db account. Only lowercase letters, digits,
-        hyphens (-), and underscores (_) are allowed. Changing this will create a new resource.
-        + If the database version is MySQL 5.6, the username consists of 1 to 16 characters.
-        + If the database version is MySQL 5.7 or 8.0, the username consists of 1 to 32 characters.
+        Specifies the username of the DB account.
         """
         return pulumi.get(self, "name")
 
@@ -133,10 +107,6 @@ class MysqlAccountArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the rds account resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -155,25 +125,11 @@ class _MysqlAccountState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MysqlAccount resources.
-        :param pulumi.Input[_builtins.str] description: Specifies remarks of the database account. The parameter must be 1 to 512
-               characters long and is supported only for MySQL 8.0.25 and later versions.
+        :param pulumi.Input[_builtins.str] description: Specifies remarks of the DB account.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hosts: Specifies the IP addresses that are allowed to access your DB instance.
-               + If the IP address is set to %, all IP addresses are allowed to access your instance.
-               + If the IP address is set to 10.10.10.%, all IP addresses in the subnet 10.10.10.X are allowed to access
-               your instance.
-               + Multiple IP addresses can be added.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the rds instance id. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the username of the db account. Only lowercase letters, digits,
-               hyphens (-), and underscores (_) are allowed. Changing this will create a new resource.
-               + If the database version is MySQL 5.6, the username consists of 1 to 16 characters.
-               + If the database version is MySQL 5.7 or 8.0, the username consists of 1 to 32 characters.
-        :param pulumi.Input[_builtins.str] password: Specifies the password of the db account. The parameter must be 8 to 32 characters
-               long and contain only letters(case-sensitive), digits, and special characters(~!@#$%^*-_=+?,()&). The value must be
-               different from `name` or `name` spelled backwards.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the rds account resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS Mysql instance.
+        :param pulumi.Input[_builtins.str] name: Specifies the username of the DB account.
+        :param pulumi.Input[_builtins.str] password: Specifies the password of the DB account.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -192,8 +148,7 @@ class _MysqlAccountState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies remarks of the database account. The parameter must be 1 to 512
-        characters long and is supported only for MySQL 8.0.25 and later versions.
+        Specifies remarks of the DB account.
         """
         return pulumi.get(self, "description")
 
@@ -206,12 +161,6 @@ class _MysqlAccountState:
     def hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Specifies the IP addresses that are allowed to access your DB instance.
-        + If the IP address is set to %, all IP addresses are allowed to access your instance.
-        + If the IP address is set to 10.10.10.%, all IP addresses in the subnet 10.10.10.X are allowed to access
-        your instance.
-        + Multiple IP addresses can be added.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "hosts")
 
@@ -223,7 +172,7 @@ class _MysqlAccountState:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the rds instance id. Changing this will create a new resource.
+        Specifies the ID of the RDS Mysql instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -235,10 +184,7 @@ class _MysqlAccountState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the username of the db account. Only lowercase letters, digits,
-        hyphens (-), and underscores (_) are allowed. Changing this will create a new resource.
-        + If the database version is MySQL 5.6, the username consists of 1 to 16 characters.
-        + If the database version is MySQL 5.7 or 8.0, the username consists of 1 to 32 characters.
+        Specifies the username of the DB account.
         """
         return pulumi.get(self, "name")
 
@@ -250,9 +196,7 @@ class _MysqlAccountState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the password of the db account. The parameter must be 8 to 32 characters
-        long and contain only letters(case-sensitive), digits, and special characters(~!@#$%^*-_=+?,()&). The value must be
-        different from `name` or `name` spelled backwards.
+        Specifies the password of the DB account.
         """
         return pulumi.get(self, "password")
 
@@ -263,10 +207,6 @@ class _MysqlAccountState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the rds account resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -288,82 +228,14 @@ class MysqlAccount(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages RDS Mysql account resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        account_password = config.require_object("accountPassword")
-        test = sbercloud.rds.MysqlAccount("test",
-            instance_id=instance_id,
-            name="test",
-            password=account_password)
-        ```
-
-        ## Import
-
-        RDS account can be imported using the `instance_id` and `name` separated by a slash, e.g.:
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Rds/mysqlAccount:MysqlAccount account_1 <instance_id>/<name>
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include: `password`. It is generally recommended
-
-        running `pulumi preview` after importing the RDS Mysql account. You can then decide if changes should be applied to
-
-        the RDS Mysql account, or the resource definition should be updated to align with the RDS Mysql account. Also you
-
-        can ignore changes as below.
-
-        hcl
-
-        resource "sbercloud_rds_mysql_account" "account_1" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              password
-            
-            ]
-
-          }
-
-        }
-
+        Create a MysqlAccount resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Specifies remarks of the database account. The parameter must be 1 to 512
-               characters long and is supported only for MySQL 8.0.25 and later versions.
+        :param pulumi.Input[_builtins.str] description: Specifies remarks of the DB account.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hosts: Specifies the IP addresses that are allowed to access your DB instance.
-               + If the IP address is set to %, all IP addresses are allowed to access your instance.
-               + If the IP address is set to 10.10.10.%, all IP addresses in the subnet 10.10.10.X are allowed to access
-               your instance.
-               + Multiple IP addresses can be added.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the rds instance id. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the username of the db account. Only lowercase letters, digits,
-               hyphens (-), and underscores (_) are allowed. Changing this will create a new resource.
-               + If the database version is MySQL 5.6, the username consists of 1 to 16 characters.
-               + If the database version is MySQL 5.7 or 8.0, the username consists of 1 to 32 characters.
-        :param pulumi.Input[_builtins.str] password: Specifies the password of the db account. The parameter must be 8 to 32 characters
-               long and contain only letters(case-sensitive), digits, and special characters(~!@#$%^*-_=+?,()&). The value must be
-               different from `name` or `name` spelled backwards.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the rds account resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS Mysql instance.
+        :param pulumi.Input[_builtins.str] name: Specifies the username of the DB account.
+        :param pulumi.Input[_builtins.str] password: Specifies the password of the DB account.
         """
         ...
     @overload
@@ -372,61 +244,7 @@ class MysqlAccount(pulumi.CustomResource):
                  args: MysqlAccountArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages RDS Mysql account resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        account_password = config.require_object("accountPassword")
-        test = sbercloud.rds.MysqlAccount("test",
-            instance_id=instance_id,
-            name="test",
-            password=account_password)
-        ```
-
-        ## Import
-
-        RDS account can be imported using the `instance_id` and `name` separated by a slash, e.g.:
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Rds/mysqlAccount:MysqlAccount account_1 <instance_id>/<name>
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include: `password`. It is generally recommended
-
-        running `pulumi preview` after importing the RDS Mysql account. You can then decide if changes should be applied to
-
-        the RDS Mysql account, or the resource definition should be updated to align with the RDS Mysql account. Also you
-
-        can ignore changes as below.
-
-        hcl
-
-        resource "sbercloud_rds_mysql_account" "account_1" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              password
-            
-            ]
-
-          }
-
-        }
-
+        Create a MysqlAccount resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param MysqlAccountArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -492,25 +310,11 @@ class MysqlAccount(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Specifies remarks of the database account. The parameter must be 1 to 512
-               characters long and is supported only for MySQL 8.0.25 and later versions.
+        :param pulumi.Input[_builtins.str] description: Specifies remarks of the DB account.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hosts: Specifies the IP addresses that are allowed to access your DB instance.
-               + If the IP address is set to %, all IP addresses are allowed to access your instance.
-               + If the IP address is set to 10.10.10.%, all IP addresses in the subnet 10.10.10.X are allowed to access
-               your instance.
-               + Multiple IP addresses can be added.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the rds instance id. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the username of the db account. Only lowercase letters, digits,
-               hyphens (-), and underscores (_) are allowed. Changing this will create a new resource.
-               + If the database version is MySQL 5.6, the username consists of 1 to 16 characters.
-               + If the database version is MySQL 5.7 or 8.0, the username consists of 1 to 32 characters.
-        :param pulumi.Input[_builtins.str] password: Specifies the password of the db account. The parameter must be 8 to 32 characters
-               long and contain only letters(case-sensitive), digits, and special characters(~!@#$%^*-_=+?,()&). The value must be
-               different from `name` or `name` spelled backwards.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the rds account resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS Mysql instance.
+        :param pulumi.Input[_builtins.str] name: Specifies the username of the DB account.
+        :param pulumi.Input[_builtins.str] password: Specifies the password of the DB account.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -528,8 +332,7 @@ class MysqlAccount(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies remarks of the database account. The parameter must be 1 to 512
-        characters long and is supported only for MySQL 8.0.25 and later versions.
+        Specifies remarks of the DB account.
         """
         return pulumi.get(self, "description")
 
@@ -538,12 +341,6 @@ class MysqlAccount(pulumi.CustomResource):
     def hosts(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
         Specifies the IP addresses that are allowed to access your DB instance.
-        + If the IP address is set to %, all IP addresses are allowed to access your instance.
-        + If the IP address is set to 10.10.10.%, all IP addresses in the subnet 10.10.10.X are allowed to access
-        your instance.
-        + Multiple IP addresses can be added.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "hosts")
 
@@ -551,7 +348,7 @@ class MysqlAccount(pulumi.CustomResource):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the rds instance id. Changing this will create a new resource.
+        Specifies the ID of the RDS Mysql instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -559,10 +356,7 @@ class MysqlAccount(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the username of the db account. Only lowercase letters, digits,
-        hyphens (-), and underscores (_) are allowed. Changing this will create a new resource.
-        + If the database version is MySQL 5.6, the username consists of 1 to 16 characters.
-        + If the database version is MySQL 5.7 or 8.0, the username consists of 1 to 32 characters.
+        Specifies the username of the DB account.
         """
         return pulumi.get(self, "name")
 
@@ -570,18 +364,12 @@ class MysqlAccount(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the password of the db account. The parameter must be 8 to 32 characters
-        long and contain only letters(case-sensitive), digits, and special characters(~!@#$%^*-_=+?,()&). The value must be
-        different from `name` or `name` spelled backwards.
+        Specifies the password of the DB account.
         """
         return pulumi.get(self, "password")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the rds account resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 

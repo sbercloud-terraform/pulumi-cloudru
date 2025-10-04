@@ -4,49 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a flow log resource under the ER instance within SberCloud.
- *
- * Before using enterprise router, define custom endpoint as shown below:
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const logGroupId = config.requireObject<any>("logGroupId");
- * const logStreamId = config.requireObject<any>("logStreamId");
- * const resourceId = config.requireObject<any>("resourceId");
- * const flowLogName = config.requireObject<any>("flowLogName");
- * const test = new sbercloud.er.FlowLog("test", {
- *     instanceId: instanceId,
- *     logStoreType: "LTS",
- *     logGroupId: logGroupId,
- *     logStreamId: logStreamId,
- *     resourceType: "attachment",
- *     resourceId: resourceId,
- *     name: flowLogName,
- *     description: "Flow log created by terraform",
- *     enabled: false,
- * });
- * ```
- *
- * ## Import
- *
- * The flow log can be imported using the related `instance_id` and their `id`, separated by a slash (/), e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:Er/flowLog:FlowLog test <instance_id>/<id>
- * ```
- */
 export class FlowLog extends pulumi.CustomResource {
     /**
      * Get an existing FlowLog resource's state with the given name, ID, and optional extra
@@ -75,66 +32,18 @@ export class FlowLog extends pulumi.CustomResource {
         return obj['__pulumiType'] === FlowLog.__pulumiType;
     }
 
-    /**
-     * The creation time of the flow log.
-     */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
-    /**
-     * Specifies the description of the flow log.
-     */
     declare public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * Specifies whether to enable the flow log function. The default value is **true**.
-     */
     declare public readonly enabled: pulumi.Output<boolean | undefined>;
-    /**
-     * Specifies the ID of the ER instance to which the flow log belongs.
-     * Changing this creates a new resource.
-     */
     declare public readonly instanceId: pulumi.Output<string>;
-    /**
-     * Specifies the LTS log group ID.
-     * Changing this creates a new resource.
-     */
     declare public readonly logGroupId: pulumi.Output<string>;
-    /**
-     * Specifies the storage type of flow log. The valid value is **LTS**.  
-     * Changing this creates a new resource.
-     */
     declare public readonly logStoreType: pulumi.Output<string>;
-    /**
-     * Specifies the LTS log stream ID.
-     * Changing this creates a new resource.
-     */
     declare public readonly logStreamId: pulumi.Output<string>;
-    /**
-     * Specifies the name of the flow log.
-     */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Specifies the resource ID to which the logs to be collected.
-     * Changing this creates a new resource.
-     */
     declare public readonly resourceId: pulumi.Output<string>;
-    /**
-     * Specifies the resource type to which the logs to be collected.
-     * The valid value is **attachment**.
-     * Changing this creates a new resource.
-     */
     declare public readonly resourceType: pulumi.Output<string>;
-    /**
-     * The current status of the flow log.
-     */
     declare public /*out*/ readonly state: pulumi.Output<string>;
-    /**
-     * The latest update time of the flow log.
-     */
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
@@ -206,66 +115,18 @@ export class FlowLog extends pulumi.CustomResource {
  * Input properties used for looking up and filtering FlowLog resources.
  */
 export interface FlowLogState {
-    /**
-     * The creation time of the flow log.
-     */
     createdAt?: pulumi.Input<string>;
-    /**
-     * Specifies the description of the flow log.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies whether to enable the flow log function. The default value is **true**.
-     */
     enabled?: pulumi.Input<boolean>;
-    /**
-     * Specifies the ID of the ER instance to which the flow log belongs.
-     * Changing this creates a new resource.
-     */
     instanceId?: pulumi.Input<string>;
-    /**
-     * Specifies the LTS log group ID.
-     * Changing this creates a new resource.
-     */
     logGroupId?: pulumi.Input<string>;
-    /**
-     * Specifies the storage type of flow log. The valid value is **LTS**.  
-     * Changing this creates a new resource.
-     */
     logStoreType?: pulumi.Input<string>;
-    /**
-     * Specifies the LTS log stream ID.
-     * Changing this creates a new resource.
-     */
     logStreamId?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the flow log.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the resource ID to which the logs to be collected.
-     * Changing this creates a new resource.
-     */
     resourceId?: pulumi.Input<string>;
-    /**
-     * Specifies the resource type to which the logs to be collected.
-     * The valid value is **attachment**.
-     * Changing this creates a new resource.
-     */
     resourceType?: pulumi.Input<string>;
-    /**
-     * The current status of the flow log.
-     */
     state?: pulumi.Input<string>;
-    /**
-     * The latest update time of the flow log.
-     */
     updatedAt?: pulumi.Input<string>;
 }
 
@@ -273,53 +134,14 @@ export interface FlowLogState {
  * The set of arguments for constructing a FlowLog resource.
  */
 export interface FlowLogArgs {
-    /**
-     * Specifies the description of the flow log.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies whether to enable the flow log function. The default value is **true**.
-     */
     enabled?: pulumi.Input<boolean>;
-    /**
-     * Specifies the ID of the ER instance to which the flow log belongs.
-     * Changing this creates a new resource.
-     */
     instanceId: pulumi.Input<string>;
-    /**
-     * Specifies the LTS log group ID.
-     * Changing this creates a new resource.
-     */
     logGroupId: pulumi.Input<string>;
-    /**
-     * Specifies the storage type of flow log. The valid value is **LTS**.  
-     * Changing this creates a new resource.
-     */
     logStoreType: pulumi.Input<string>;
-    /**
-     * Specifies the LTS log stream ID.
-     * Changing this creates a new resource.
-     */
     logStreamId: pulumi.Input<string>;
-    /**
-     * Specifies the name of the flow log.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the resource ID to which the logs to be collected.
-     * Changing this creates a new resource.
-     */
     resourceId: pulumi.Input<string>;
-    /**
-     * Specifies the resource type to which the logs to be collected.
-     * The valid value is **attachment**.
-     * Changing this creates a new resource.
-     */
     resourceType: pulumi.Input<string>;
 }

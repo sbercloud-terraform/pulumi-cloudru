@@ -6,22 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the list of CFW capture tasks.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const fwInstanceId = config.requireObject<any>("fwInstanceId");
- * const test = sbercloud.Cfw.getCaptureTasks({
- *     fwInstanceId: fwInstanceId,
- * });
- * ```
- */
 export function getCaptureTasks(args: GetCaptureTasksArgs, opts?: pulumi.InvokeOptions): Promise<GetCaptureTasksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:Cfw/getCaptureTasks:getCaptureTasks", {
@@ -34,14 +18,7 @@ export function getCaptureTasks(args: GetCaptureTasksArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getCaptureTasks.
  */
 export interface GetCaptureTasksArgs {
-    /**
-     * Specifies the ID of the firewall instance.
-     */
     fwInstanceId: string;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
 }
 
@@ -54,28 +31,9 @@ export interface GetCaptureTasksResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * List of capture task information.
-     */
     readonly records: outputs.Cfw.GetCaptureTasksRecord[];
     readonly region: string;
 }
-/**
- * Use this data source to get the list of CFW capture tasks.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const fwInstanceId = config.requireObject<any>("fwInstanceId");
- * const test = sbercloud.Cfw.getCaptureTasks({
- *     fwInstanceId: fwInstanceId,
- * });
- * ```
- */
 export function getCaptureTasksOutput(args: GetCaptureTasksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCaptureTasksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:Cfw/getCaptureTasks:getCaptureTasks", {
@@ -88,13 +46,6 @@ export function getCaptureTasksOutput(args: GetCaptureTasksOutputArgs, opts?: pu
  * A collection of arguments for invoking getCaptureTasks.
  */
 export interface GetCaptureTasksOutputArgs {
-    /**
-     * Specifies the ID of the firewall instance.
-     */
     fwInstanceId: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
 }

@@ -48,9 +48,6 @@ class GetAvailabilityZonesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
-        """
-        The names of availability zone.
-        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -73,25 +70,7 @@ class AwaitableGetAvailabilityZonesResult(GetAvailabilityZonesResult):
 def get_availability_zones(region: Optional[_builtins.str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAvailabilityZonesResult:
     """
-    Use this data source to query availability zones where ER instances can be created within SberCloud.
-
-    Before using enterprise router, define custom endpoint as shown below:
-    ```python
-    import pulumi
-    ```
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    all = sbercloud.Er.get_availability_zones()
-    ```
-
-
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['region'] = region
@@ -105,25 +84,7 @@ def get_availability_zones(region: Optional[_builtins.str] = None,
 def get_availability_zones_output(region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAvailabilityZonesResult]:
     """
-    Use this data source to query availability zones where ER instances can be created within SberCloud.
-
-    Before using enterprise router, define custom endpoint as shown below:
-    ```python
-    import pulumi
-    ```
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    all = sbercloud.Er.get_availability_zones()
-    ```
-
-
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['region'] = region

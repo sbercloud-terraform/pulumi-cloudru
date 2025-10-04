@@ -43,9 +43,6 @@ class GetDmsRocketmqBrokerResult:
     @_builtins.property
     @pulumi.getter
     def brokers(self) -> Sequence[_builtins.str]:
-        """
-        Indicates the list of the brokers.
-        """
         return pulumi.get(self, "brokers")
 
     @_builtins.property
@@ -83,12 +80,7 @@ def get_dms_rocketmq_broker(instance_id: Optional[_builtins.str] = None,
                             region: Optional[_builtins.str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDmsRocketmqBrokerResult:
     """
-    Use this data source to get the list of DMS rocketMQ broker.
-
-
-    :param _builtins.str instance_id: Specifies the ID of the rocketMQ instance.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['instanceId'] = instance_id
@@ -105,12 +97,7 @@ def get_dms_rocketmq_broker_output(instance_id: Optional[pulumi.Input[_builtins.
                                    region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDmsRocketmqBrokerResult]:
     """
-    Use this data source to get the list of DMS rocketMQ broker.
-
-
-    :param _builtins.str instance_id: Specifies the ID of the rocketMQ instance.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['instanceId'] = instance_id

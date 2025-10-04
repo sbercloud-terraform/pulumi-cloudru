@@ -48,9 +48,9 @@ class GesGraphArgs:
         :param pulumi.Input[_builtins.str] crypt_algorithm: Graph instance cryptography algorithm.
         :param pulumi.Input[_builtins.bool] enable_https: Whether to enable the security mode. This mode may damage GES performance greatly.
         :param pulumi.Input[_builtins.str] graph_size_type_index: Graph size type index.
-        :param pulumi.Input[_builtins.str] security_group_id: Indicates the security group ID.  Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] subnet_id: Indicates the subnet ID in the specified VPC.  Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] vpc_id: Indicates the VPC ID.  Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] security_group_id: The security group ID.
+        :param pulumi.Input[_builtins.str] subnet_id: The subnet ID.
+        :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
         :param pulumi.Input[_builtins.str] cpu_arch: Graph instance's CPU architecture type.
         :param pulumi.Input[_builtins.bool] enable_full_text_index: Whether to enable full-text index control for the created graph.
         :param pulumi.Input[_builtins.bool] enable_hyg: Whether to enable HyG for the graph. This parameter is available for database edition graphs only.
@@ -59,11 +59,9 @@ class GesGraphArgs:
         :param pulumi.Input['GesGraphEncryptionArgs'] encryption: Whether to enable data encryption The value can be true or false.
         :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID.
         :param pulumi.Input[_builtins.bool] keep_backup: Whether to retain the backups of a graph after it is deleted.
-        :param pulumi.Input[_builtins.str] name: Indicates the graph name.  Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] name: The graph name.
         :param pulumi.Input[_builtins.str] product_type: Graph product type
-        :param pulumi.Input['GesGraphPublicIpArgs'] public_ip: Indicates the public network access address of a graph instance.
-               Users can access the instance using the IP address from the Internet.
-        :param pulumi.Input[_builtins.str] region: Indicates the region code.  Changing this parameter will create a new resource.
+        :param pulumi.Input['GesGraphPublicIpArgs'] public_ip: The information about public IP.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the graph.
         :param pulumi.Input['GesGraphVertexIdTypeArgs'] vertex_id_type: ID type of vertices. This parameter is mandatory only for database edition graphs.
         """
@@ -146,7 +144,7 @@ class GesGraphArgs:
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Indicates the security group ID.  Changing this parameter will create a new resource.
+        The security group ID.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -158,7 +156,7 @@ class GesGraphArgs:
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Indicates the subnet ID in the specified VPC.  Changing this parameter will create a new resource.
+        The subnet ID.
         """
         return pulumi.get(self, "subnet_id")
 
@@ -170,7 +168,7 @@ class GesGraphArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Indicates the VPC ID.  Changing this parameter will create a new resource.
+        The VPC ID.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -287,7 +285,7 @@ class GesGraphArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Indicates the graph name.  Changing this parameter will create a new resource.
+        The graph name.
         """
         return pulumi.get(self, "name")
 
@@ -311,8 +309,7 @@ class GesGraphArgs:
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> Optional[pulumi.Input['GesGraphPublicIpArgs']]:
         """
-        Indicates the public network access address of a graph instance.
-        Users can access the instance using the IP address from the Internet.
+        The information about public IP.
         """
         return pulumi.get(self, "public_ip")
 
@@ -323,9 +320,6 @@ class GesGraphArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the region code.  Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -409,22 +403,17 @@ class _GesGraphState:
         :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID.
         :param pulumi.Input[_builtins.str] graph_size_type_index: Graph size type index.
         :param pulumi.Input[_builtins.bool] keep_backup: Whether to retain the backups of a graph after it is deleted.
-        :param pulumi.Input[_builtins.str] name: Indicates the graph name.  Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] private_ip: Indicates the private network access address of a graph instance.
-               Users can access the instance using the IP address through the ECS
-               deployed on the private network.
+        :param pulumi.Input[_builtins.str] name: The graph name.
+        :param pulumi.Input[_builtins.str] private_ip: Floating IP address of a graph instance.
         :param pulumi.Input[_builtins.str] product_type: Graph product type
-        :param pulumi.Input['GesGraphPublicIpArgs'] public_ip: Indicates the public network access address of a graph instance.
-               Users can access the instance using the IP address from the Internet.
-        :param pulumi.Input[_builtins.str] region: Indicates the region code.  Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] security_group_id: Indicates the security group ID.  Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] status: Indicates the OBS file import status:
-               success: Imported successfully. partiallyFailed: Partially failed. failed: Failed to import the file.
-        :param pulumi.Input[_builtins.str] subnet_id: Indicates the subnet ID in the specified VPC.  Changing this parameter will create a new resource.
+        :param pulumi.Input['GesGraphPublicIpArgs'] public_ip: The information about public IP.
+        :param pulumi.Input[_builtins.str] security_group_id: The security group ID.
+        :param pulumi.Input[_builtins.str] status: Status of a graph.
+        :param pulumi.Input[_builtins.str] subnet_id: The subnet ID.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the graph.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] traffic_ip_lists: Physical addresses of a graph instance for access from private networks.
         :param pulumi.Input['GesGraphVertexIdTypeArgs'] vertex_id_type: ID type of vertices. This parameter is mandatory only for database edition graphs.
-        :param pulumi.Input[_builtins.str] vpc_id: Indicates the VPC ID.  Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
         """
         if az_code is not None:
             pulumi.set(__self__, "az_code", az_code)
@@ -636,7 +625,7 @@ class _GesGraphState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Indicates the graph name.  Changing this parameter will create a new resource.
+        The graph name.
         """
         return pulumi.get(self, "name")
 
@@ -648,9 +637,7 @@ class _GesGraphState:
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Indicates the private network access address of a graph instance.
-        Users can access the instance using the IP address through the ECS
-        deployed on the private network.
+        Floating IP address of a graph instance.
         """
         return pulumi.get(self, "private_ip")
 
@@ -674,8 +661,7 @@ class _GesGraphState:
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> Optional[pulumi.Input['GesGraphPublicIpArgs']]:
         """
-        Indicates the public network access address of a graph instance.
-        Users can access the instance using the IP address from the Internet.
+        The information about public IP.
         """
         return pulumi.get(self, "public_ip")
 
@@ -686,9 +672,6 @@ class _GesGraphState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the region code.  Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -708,7 +691,7 @@ class _GesGraphState:
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Indicates the security group ID.  Changing this parameter will create a new resource.
+        The security group ID.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -720,8 +703,7 @@ class _GesGraphState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Indicates the OBS file import status:
-        success: Imported successfully. partiallyFailed: Partially failed. failed: Failed to import the file.
+        Status of a graph.
         """
         return pulumi.get(self, "status")
 
@@ -733,7 +715,7 @@ class _GesGraphState:
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Indicates the subnet ID in the specified VPC.  Changing this parameter will create a new resource.
+        The subnet ID.
         """
         return pulumi.get(self, "subnet_id")
 
@@ -781,7 +763,7 @@ class _GesGraphState:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Indicates the VPC ID.  Changing this parameter will create a new resource.
+        The VPC ID.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -820,10 +802,7 @@ class GesGraph(pulumi.CustomResource):
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        GES graph management
-
-        ## Example Usage
-
+        Create a GesGraph resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cpu_arch: Graph instance's CPU architecture type.
@@ -837,16 +816,14 @@ class GesGraph(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID.
         :param pulumi.Input[_builtins.str] graph_size_type_index: Graph size type index.
         :param pulumi.Input[_builtins.bool] keep_backup: Whether to retain the backups of a graph after it is deleted.
-        :param pulumi.Input[_builtins.str] name: Indicates the graph name.  Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] name: The graph name.
         :param pulumi.Input[_builtins.str] product_type: Graph product type
-        :param pulumi.Input[Union['GesGraphPublicIpArgs', 'GesGraphPublicIpArgsDict']] public_ip: Indicates the public network access address of a graph instance.
-               Users can access the instance using the IP address from the Internet.
-        :param pulumi.Input[_builtins.str] region: Indicates the region code.  Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] security_group_id: Indicates the security group ID.  Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] subnet_id: Indicates the subnet ID in the specified VPC.  Changing this parameter will create a new resource.
+        :param pulumi.Input[Union['GesGraphPublicIpArgs', 'GesGraphPublicIpArgsDict']] public_ip: The information about public IP.
+        :param pulumi.Input[_builtins.str] security_group_id: The security group ID.
+        :param pulumi.Input[_builtins.str] subnet_id: The subnet ID.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the graph.
         :param pulumi.Input[Union['GesGraphVertexIdTypeArgs', 'GesGraphVertexIdTypeArgsDict']] vertex_id_type: ID type of vertices. This parameter is mandatory only for database edition graphs.
-        :param pulumi.Input[_builtins.str] vpc_id: Indicates the VPC ID.  Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
         """
         ...
     @overload
@@ -855,10 +832,7 @@ class GesGraph(pulumi.CustomResource):
                  args: GesGraphArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        GES graph management
-
-        ## Example Usage
-
+        Create a GesGraph resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param GesGraphArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -998,22 +972,17 @@ class GesGraph(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID.
         :param pulumi.Input[_builtins.str] graph_size_type_index: Graph size type index.
         :param pulumi.Input[_builtins.bool] keep_backup: Whether to retain the backups of a graph after it is deleted.
-        :param pulumi.Input[_builtins.str] name: Indicates the graph name.  Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] private_ip: Indicates the private network access address of a graph instance.
-               Users can access the instance using the IP address through the ECS
-               deployed on the private network.
+        :param pulumi.Input[_builtins.str] name: The graph name.
+        :param pulumi.Input[_builtins.str] private_ip: Floating IP address of a graph instance.
         :param pulumi.Input[_builtins.str] product_type: Graph product type
-        :param pulumi.Input[Union['GesGraphPublicIpArgs', 'GesGraphPublicIpArgsDict']] public_ip: Indicates the public network access address of a graph instance.
-               Users can access the instance using the IP address from the Internet.
-        :param pulumi.Input[_builtins.str] region: Indicates the region code.  Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] security_group_id: Indicates the security group ID.  Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] status: Indicates the OBS file import status:
-               success: Imported successfully. partiallyFailed: Partially failed. failed: Failed to import the file.
-        :param pulumi.Input[_builtins.str] subnet_id: Indicates the subnet ID in the specified VPC.  Changing this parameter will create a new resource.
+        :param pulumi.Input[Union['GesGraphPublicIpArgs', 'GesGraphPublicIpArgsDict']] public_ip: The information about public IP.
+        :param pulumi.Input[_builtins.str] security_group_id: The security group ID.
+        :param pulumi.Input[_builtins.str] status: Status of a graph.
+        :param pulumi.Input[_builtins.str] subnet_id: The subnet ID.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the graph.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] traffic_ip_lists: Physical addresses of a graph instance for access from private networks.
         :param pulumi.Input[Union['GesGraphVertexIdTypeArgs', 'GesGraphVertexIdTypeArgsDict']] vertex_id_type: ID type of vertices. This parameter is mandatory only for database edition graphs.
-        :param pulumi.Input[_builtins.str] vpc_id: Indicates the VPC ID.  Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1152,7 +1121,7 @@ class GesGraph(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Indicates the graph name.  Changing this parameter will create a new resource.
+        The graph name.
         """
         return pulumi.get(self, "name")
 
@@ -1160,9 +1129,7 @@ class GesGraph(pulumi.CustomResource):
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> pulumi.Output[_builtins.str]:
         """
-        Indicates the private network access address of a graph instance.
-        Users can access the instance using the IP address through the ECS
-        deployed on the private network.
+        Floating IP address of a graph instance.
         """
         return pulumi.get(self, "private_ip")
 
@@ -1178,17 +1145,13 @@ class GesGraph(pulumi.CustomResource):
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> pulumi.Output['outputs.GesGraphPublicIp']:
         """
-        Indicates the public network access address of a graph instance.
-        Users can access the instance using the IP address from the Internet.
+        The information about public IP.
         """
         return pulumi.get(self, "public_ip")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates the region code.  Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
@@ -1200,7 +1163,7 @@ class GesGraph(pulumi.CustomResource):
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Indicates the security group ID.  Changing this parameter will create a new resource.
+        The security group ID.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -1208,8 +1171,7 @@ class GesGraph(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        Indicates the OBS file import status:
-        success: Imported successfully. partiallyFailed: Partially failed. failed: Failed to import the file.
+        Status of a graph.
         """
         return pulumi.get(self, "status")
 
@@ -1217,7 +1179,7 @@ class GesGraph(pulumi.CustomResource):
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Indicates the subnet ID in the specified VPC.  Changing this parameter will create a new resource.
+        The subnet ID.
         """
         return pulumi.get(self, "subnet_id")
 
@@ -1249,7 +1211,7 @@ class GesGraph(pulumi.CustomResource):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Indicates the VPC ID.  Changing this parameter will create a new resource.
+        The VPC ID.
         """
         return pulumi.get(self, "vpc_id")
 

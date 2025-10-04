@@ -11,36 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of CFW IPS rule details.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			fwInstanceId := cfg.RequireObject("fwInstanceId")
-//			_, err := cfw.GetIpsRuleDetails(ctx, &cfw.GetIpsRuleDetailsArgs{
-//				FwInstanceId: fwInstanceId,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetIpsRuleDetails(ctx *pulumi.Context, args *GetIpsRuleDetailsArgs, opts ...pulumi.InvokeOption) (*GetIpsRuleDetailsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIpsRuleDetailsResult
@@ -53,16 +23,12 @@ func GetIpsRuleDetails(ctx *pulumi.Context, args *GetIpsRuleDetailsArgs, opts ..
 
 // A collection of arguments for invoking getIpsRuleDetails.
 type GetIpsRuleDetailsArgs struct {
-	// Specifies the firewall ID.
-	FwInstanceId string `pulumi:"fwInstanceId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
+	FwInstanceId string  `pulumi:"fwInstanceId"`
+	Region       *string `pulumi:"region"`
 }
 
 // A collection of values returned by getIpsRuleDetails.
 type GetIpsRuleDetailsResult struct {
-	// The IPS information.
 	Datas        []GetIpsRuleDetailsData `pulumi:"datas"`
 	FwInstanceId string                  `pulumi:"fwInstanceId"`
 	// The provider-assigned unique ID for this managed resource.
@@ -81,11 +47,8 @@ func GetIpsRuleDetailsOutput(ctx *pulumi.Context, args GetIpsRuleDetailsOutputAr
 
 // A collection of arguments for invoking getIpsRuleDetails.
 type GetIpsRuleDetailsOutputArgs struct {
-	// Specifies the firewall ID.
-	FwInstanceId pulumi.StringInput `pulumi:"fwInstanceId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	FwInstanceId pulumi.StringInput    `pulumi:"fwInstanceId"`
+	Region       pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetIpsRuleDetailsOutputArgs) ElementType() reflect.Type {
@@ -107,7 +70,6 @@ func (o GetIpsRuleDetailsResultOutput) ToGetIpsRuleDetailsResultOutputWithContex
 	return o
 }
 
-// The IPS information.
 func (o GetIpsRuleDetailsResultOutput) Datas() GetIpsRuleDetailsDataArrayOutput {
 	return o.ApplyT(func(v GetIpsRuleDetailsResult) []GetIpsRuleDetailsData { return v.Datas }).(GetIpsRuleDetailsDataArrayOutput)
 }

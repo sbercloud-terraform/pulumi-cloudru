@@ -12,132 +12,13 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Attaches a policy to an OBS bucket resource.
-//
-// ## Example Usage
-//
-// ### Policy with OBS format
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/obs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			bucket, err := obs.NewBucket(ctx, "bucket", &obs.BucketArgs{
-//				Bucket: pulumi.String("my-test-bucket"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = obs.NewBucketPolicy(ctx, "policy", &obs.BucketPolicyArgs{
-//				Bucket: bucket.ID(),
-//				Policy: pulumi.String(`{
-//	  "Statement": [
-//	    {
-//	      "Sid": "AddPerm",
-//	      "Effect": "Allow",
-//	      "Principal": {"ID": "*"},
-//	      "Action": ["GetObject"],
-//	      "Resource": "my-test-bucket/*"
-//	    }
-//	  ]
-//	}
-//
-// `),
-//
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Policy with S3 format
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/obs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			bucket, err := obs.NewBucket(ctx, "bucket", &obs.BucketArgs{
-//				Bucket: pulumi.String("my-test-bucket"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = obs.NewBucketPolicy(ctx, "s3_policy", &obs.BucketPolicyArgs{
-//				Bucket:       bucket.ID(),
-//				PolicyFormat: pulumi.String("s3"),
-//				Policy: pulumi.String(`{
-//	  "Version": "2008-10-17",
-//	  "Id": "MYBUCKETPOLICY",
-//	  "Statement": [
-//	    {
-//	      "Sid": "IPAllow",
-//	      "Effect": "Allow",
-//	      "Principal": "*",
-//	      "Action": "s3:*",
-//	      "Resource": "arn:aws:s3:::my-test-bucket/*",
-//	      "Condition": {
-//	        "IpAddress": {"aws:SourceIp": "8.8.8.8/32"}
-//	      }
-//	    }
-//	  ]
-//	}
-//
-// `),
-//
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// OBS format bucket policy can be imported using the `<bucket>`, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Obs/bucketPolicy:BucketPolicy policy <bucket-name>
-// ```
-// S3 foramt bucket policy can be imported using the `<bucket>` and "s3" by a slash, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Obs/bucketPolicy:BucketPolicy s3_policy <bucket-name>/s3
-// ```
 type BucketPolicy struct {
 	pulumi.CustomResourceState
 
-	// Specifies the name of the bucket to which to apply the policy.
-	Bucket pulumi.StringOutput `pulumi:"bucket"`
-	// Specifies the text of the bucket policy in JSON format. For more information about
-	// obs format bucket policy, see the [Developer Guide](https://support.hc.sbercloud.ru/api/obs/obs_04_0027.html).
-	Policy pulumi.StringOutput `pulumi:"policy"`
-	// Specifies the policy format, the supported values are *obs* and *s3*. Defaults to *obs* .
+	Bucket       pulumi.StringOutput    `pulumi:"bucket"`
+	Policy       pulumi.StringOutput    `pulumi:"policy"`
 	PolicyFormat pulumi.StringPtrOutput `pulumi:"policyFormat"`
-	// The region in which to create the OBS bucket policy resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket policy resource.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Region       pulumi.StringOutput    `pulumi:"region"`
 }
 
 // NewBucketPolicy registers a new resource with the given unique name, arguments, and options.
@@ -176,27 +57,17 @@ func GetBucketPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BucketPolicy resources.
 type bucketPolicyState struct {
-	// Specifies the name of the bucket to which to apply the policy.
-	Bucket *string `pulumi:"bucket"`
-	// Specifies the text of the bucket policy in JSON format. For more information about
-	// obs format bucket policy, see the [Developer Guide](https://support.hc.sbercloud.ru/api/obs/obs_04_0027.html).
-	Policy *string `pulumi:"policy"`
-	// Specifies the policy format, the supported values are *obs* and *s3*. Defaults to *obs* .
+	Bucket       *string `pulumi:"bucket"`
+	Policy       *string `pulumi:"policy"`
 	PolicyFormat *string `pulumi:"policyFormat"`
-	// The region in which to create the OBS bucket policy resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket policy resource.
-	Region *string `pulumi:"region"`
+	Region       *string `pulumi:"region"`
 }
 
 type BucketPolicyState struct {
-	// Specifies the name of the bucket to which to apply the policy.
-	Bucket pulumi.StringPtrInput
-	// Specifies the text of the bucket policy in JSON format. For more information about
-	// obs format bucket policy, see the [Developer Guide](https://support.hc.sbercloud.ru/api/obs/obs_04_0027.html).
-	Policy pulumi.StringPtrInput
-	// Specifies the policy format, the supported values are *obs* and *s3*. Defaults to *obs* .
+	Bucket       pulumi.StringPtrInput
+	Policy       pulumi.StringPtrInput
 	PolicyFormat pulumi.StringPtrInput
-	// The region in which to create the OBS bucket policy resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket policy resource.
-	Region pulumi.StringPtrInput
+	Region       pulumi.StringPtrInput
 }
 
 func (BucketPolicyState) ElementType() reflect.Type {
@@ -204,28 +75,18 @@ func (BucketPolicyState) ElementType() reflect.Type {
 }
 
 type bucketPolicyArgs struct {
-	// Specifies the name of the bucket to which to apply the policy.
-	Bucket string `pulumi:"bucket"`
-	// Specifies the text of the bucket policy in JSON format. For more information about
-	// obs format bucket policy, see the [Developer Guide](https://support.hc.sbercloud.ru/api/obs/obs_04_0027.html).
-	Policy string `pulumi:"policy"`
-	// Specifies the policy format, the supported values are *obs* and *s3*. Defaults to *obs* .
+	Bucket       string  `pulumi:"bucket"`
+	Policy       string  `pulumi:"policy"`
 	PolicyFormat *string `pulumi:"policyFormat"`
-	// The region in which to create the OBS bucket policy resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket policy resource.
-	Region *string `pulumi:"region"`
+	Region       *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a BucketPolicy resource.
 type BucketPolicyArgs struct {
-	// Specifies the name of the bucket to which to apply the policy.
-	Bucket pulumi.StringInput
-	// Specifies the text of the bucket policy in JSON format. For more information about
-	// obs format bucket policy, see the [Developer Guide](https://support.hc.sbercloud.ru/api/obs/obs_04_0027.html).
-	Policy pulumi.StringInput
-	// Specifies the policy format, the supported values are *obs* and *s3*. Defaults to *obs* .
+	Bucket       pulumi.StringInput
+	Policy       pulumi.StringInput
 	PolicyFormat pulumi.StringPtrInput
-	// The region in which to create the OBS bucket policy resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket policy resource.
-	Region pulumi.StringPtrInput
+	Region       pulumi.StringPtrInput
 }
 
 func (BucketPolicyArgs) ElementType() reflect.Type {
@@ -315,23 +176,18 @@ func (o BucketPolicyOutput) ToBucketPolicyOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Specifies the name of the bucket to which to apply the policy.
 func (o BucketPolicyOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketPolicy) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
 }
 
-// Specifies the text of the bucket policy in JSON format. For more information about
-// obs format bucket policy, see the [Developer Guide](https://support.hc.sbercloud.ru/api/obs/obs_04_0027.html).
 func (o BucketPolicyOutput) Policy() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketPolicy) pulumi.StringOutput { return v.Policy }).(pulumi.StringOutput)
 }
 
-// Specifies the policy format, the supported values are *obs* and *s3*. Defaults to *obs* .
 func (o BucketPolicyOutput) PolicyFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketPolicy) pulumi.StringPtrOutput { return v.PolicyFormat }).(pulumi.StringPtrOutput)
 }
 
-// The region in which to create the OBS bucket policy resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket policy resource.
 func (o BucketPolicyOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketPolicy) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

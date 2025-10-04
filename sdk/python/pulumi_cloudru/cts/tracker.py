@@ -34,16 +34,6 @@ class TrackerArgs:
                  validate_file: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Tracker resource.
-        :param pulumi.Input[_builtins.str] bucket_name: Specifies the OBS bucket to which traces will be transferred.
-        :param pulumi.Input[_builtins.bool] enabled: Specifies whether tracker is enabled.
-        :param pulumi.Input[_builtins.str] file_prefix: Specifies the file name prefix to mark trace files that need to be stored
-               in an OBS bucket. The value contains 0 to 64 characters. Only letters, numbers, hyphens (-), underscores (_),
-               and periods (.) are allowed.
-        :param pulumi.Input[_builtins.str] kms_id: Specifies the ID of KMS key used for trace file encryption.
-        :param pulumi.Input[_builtins.bool] lts_enabled: Specifies whether trace analysis is enabled.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to manage the CTS system tracker resource.
-               If omitted, the provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.bool] validate_file: Specifies whether trace file verification is enabled during trace transfer.
         """
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
@@ -75,9 +65,6 @@ class TrackerArgs:
     @_builtins.property
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the OBS bucket to which traces will be transferred.
-        """
         return pulumi.get(self, "bucket_name")
 
     @bucket_name.setter
@@ -105,9 +92,6 @@ class TrackerArgs:
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether tracker is enabled.
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -126,11 +110,6 @@ class TrackerArgs:
     @_builtins.property
     @pulumi.getter(name="filePrefix")
     def file_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the file name prefix to mark trace files that need to be stored
-        in an OBS bucket. The value contains 0 to 64 characters. Only letters, numbers, hyphens (-), underscores (_),
-        and periods (.) are allowed.
-        """
         return pulumi.get(self, "file_prefix")
 
     @file_prefix.setter
@@ -149,9 +128,6 @@ class TrackerArgs:
     @_builtins.property
     @pulumi.getter(name="kmsId")
     def kms_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of KMS key used for trace file encryption.
-        """
         return pulumi.get(self, "kms_id")
 
     @kms_id.setter
@@ -161,9 +137,6 @@ class TrackerArgs:
     @_builtins.property
     @pulumi.getter(name="ltsEnabled")
     def lts_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether trace analysis is enabled.
-        """
         return pulumi.get(self, "lts_enabled")
 
     @lts_enabled.setter
@@ -182,10 +155,6 @@ class TrackerArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to manage the CTS system tracker resource.
-        If omitted, the provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -204,9 +173,6 @@ class TrackerArgs:
     @_builtins.property
     @pulumi.getter(name="validateFile")
     def validate_file(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether trace file verification is enabled during trace transfer.
-        """
         return pulumi.get(self, "validate_file")
 
     @validate_file.setter
@@ -245,20 +211,6 @@ class _TrackerState:
                  validate_file: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Tracker resources.
-        :param pulumi.Input[_builtins.str] bucket_name: Specifies the OBS bucket to which traces will be transferred.
-        :param pulumi.Input[_builtins.bool] enabled: Specifies whether tracker is enabled.
-        :param pulumi.Input[_builtins.str] file_prefix: Specifies the file name prefix to mark trace files that need to be stored
-               in an OBS bucket. The value contains 0 to 64 characters. Only letters, numbers, hyphens (-), underscores (_),
-               and periods (.) are allowed.
-        :param pulumi.Input[_builtins.str] kms_id: Specifies the ID of KMS key used for trace file encryption.
-        :param pulumi.Input[_builtins.bool] lts_enabled: Specifies whether trace analysis is enabled.
-        :param pulumi.Input[_builtins.str] name: The tracker name, only **system** is available.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to manage the CTS system tracker resource.
-               If omitted, the provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] status: The tracker status, the value can be **enabled**, **disabled** or **error**.
-        :param pulumi.Input[_builtins.bool] transfer_enabled: Whether traces will be transferred.
-        :param pulumi.Input[_builtins.str] type: The tracker type, only **system** is available.
-        :param pulumi.Input[_builtins.bool] validate_file: Specifies whether trace file verification is enabled during trace transfer.
         """
         if agency_name is not None:
             pulumi.set(__self__, "agency_name", agency_name)
@@ -325,9 +277,6 @@ class _TrackerState:
     @_builtins.property
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the OBS bucket to which traces will be transferred.
-        """
         return pulumi.get(self, "bucket_name")
 
     @bucket_name.setter
@@ -382,9 +331,6 @@ class _TrackerState:
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether tracker is enabled.
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -403,11 +349,6 @@ class _TrackerState:
     @_builtins.property
     @pulumi.getter(name="filePrefix")
     def file_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the file name prefix to mark trace files that need to be stored
-        in an OBS bucket. The value contains 0 to 64 characters. Only letters, numbers, hyphens (-), underscores (_),
-        and periods (.) are allowed.
-        """
         return pulumi.get(self, "file_prefix")
 
     @file_prefix.setter
@@ -444,9 +385,6 @@ class _TrackerState:
     @_builtins.property
     @pulumi.getter(name="kmsId")
     def kms_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of KMS key used for trace file encryption.
-        """
         return pulumi.get(self, "kms_id")
 
     @kms_id.setter
@@ -474,9 +412,6 @@ class _TrackerState:
     @_builtins.property
     @pulumi.getter(name="ltsEnabled")
     def lts_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether trace analysis is enabled.
-        """
         return pulumi.get(self, "lts_enabled")
 
     @lts_enabled.setter
@@ -486,9 +421,6 @@ class _TrackerState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The tracker name, only **system** is available.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -507,10 +439,6 @@ class _TrackerState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to manage the CTS system tracker resource.
-        If omitted, the provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -520,9 +448,6 @@ class _TrackerState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The tracker status, the value can be **enabled**, **disabled** or **error**.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -550,9 +475,6 @@ class _TrackerState:
     @_builtins.property
     @pulumi.getter(name="transferEnabled")
     def transfer_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether traces will be transferred.
-        """
         return pulumi.get(self, "transfer_enabled")
 
     @transfer_enabled.setter
@@ -562,9 +484,6 @@ class _TrackerState:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The tracker type, only **system** is available.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -574,9 +493,6 @@ class _TrackerState:
     @_builtins.property
     @pulumi.getter(name="validateFile")
     def validate_file(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether trace file verification is enabled during trace transfer.
-        """
         return pulumi.get(self, "validate_file")
 
     @validate_file.setter
@@ -605,42 +521,9 @@ class Tracker(pulumi.CustomResource):
                  validate_file: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
-        Manages CTS **system** tracker resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        bucket_name = config.require_object("bucketName")
-        tracker = sbercloud.cts.Tracker("tracker",
-            bucket_name=bucket_name,
-            file_prefix="cts",
-            lts_enabled=True)
-        ```
-
-        ## Import
-
-        CTS tracker can be imported using `name`, only __system__ is available. e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Cts/tracker:Tracker tracker system
-        ```
-
+        Create a Tracker resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] bucket_name: Specifies the OBS bucket to which traces will be transferred.
-        :param pulumi.Input[_builtins.bool] enabled: Specifies whether tracker is enabled.
-        :param pulumi.Input[_builtins.str] file_prefix: Specifies the file name prefix to mark trace files that need to be stored
-               in an OBS bucket. The value contains 0 to 64 characters. Only letters, numbers, hyphens (-), underscores (_),
-               and periods (.) are allowed.
-        :param pulumi.Input[_builtins.str] kms_id: Specifies the ID of KMS key used for trace file encryption.
-        :param pulumi.Input[_builtins.bool] lts_enabled: Specifies whether trace analysis is enabled.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to manage the CTS system tracker resource.
-               If omitted, the provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.bool] validate_file: Specifies whether trace file verification is enabled during trace transfer.
         """
         ...
     @overload
@@ -649,30 +532,7 @@ class Tracker(pulumi.CustomResource):
                  args: Optional[TrackerArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages CTS **system** tracker resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        bucket_name = config.require_object("bucketName")
-        tracker = sbercloud.cts.Tracker("tracker",
-            bucket_name=bucket_name,
-            file_prefix="cts",
-            lts_enabled=True)
-        ```
-
-        ## Import
-
-        CTS tracker can be imported using `name`, only __system__ is available. e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Cts/tracker:Tracker tracker system
-        ```
-
+        Create a Tracker resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param TrackerArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -779,20 +639,6 @@ class Tracker(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] bucket_name: Specifies the OBS bucket to which traces will be transferred.
-        :param pulumi.Input[_builtins.bool] enabled: Specifies whether tracker is enabled.
-        :param pulumi.Input[_builtins.str] file_prefix: Specifies the file name prefix to mark trace files that need to be stored
-               in an OBS bucket. The value contains 0 to 64 characters. Only letters, numbers, hyphens (-), underscores (_),
-               and periods (.) are allowed.
-        :param pulumi.Input[_builtins.str] kms_id: Specifies the ID of KMS key used for trace file encryption.
-        :param pulumi.Input[_builtins.bool] lts_enabled: Specifies whether trace analysis is enabled.
-        :param pulumi.Input[_builtins.str] name: The tracker name, only **system** is available.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to manage the CTS system tracker resource.
-               If omitted, the provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] status: The tracker status, the value can be **enabled**, **disabled** or **error**.
-        :param pulumi.Input[_builtins.bool] transfer_enabled: Whether traces will be transferred.
-        :param pulumi.Input[_builtins.str] type: The tracker type, only **system** is available.
-        :param pulumi.Input[_builtins.bool] validate_file: Specifies whether trace file verification is enabled during trace transfer.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -834,9 +680,6 @@ class Tracker(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the OBS bucket to which traces will be transferred.
-        """
         return pulumi.get(self, "bucket_name")
 
     @_builtins.property
@@ -867,9 +710,6 @@ class Tracker(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether tracker is enabled.
-        """
         return pulumi.get(self, "enabled")
 
     @_builtins.property
@@ -880,11 +720,6 @@ class Tracker(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="filePrefix")
     def file_prefix(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the file name prefix to mark trace files that need to be stored
-        in an OBS bucket. The value contains 0 to 64 characters. Only letters, numbers, hyphens (-), underscores (_),
-        and periods (.) are allowed.
-        """
         return pulumi.get(self, "file_prefix")
 
     @_builtins.property
@@ -905,9 +740,6 @@ class Tracker(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="kmsId")
     def kms_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the ID of KMS key used for trace file encryption.
-        """
         return pulumi.get(self, "kms_id")
 
     @_builtins.property
@@ -923,17 +755,11 @@ class Tracker(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="ltsEnabled")
     def lts_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether trace analysis is enabled.
-        """
         return pulumi.get(self, "lts_enabled")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        The tracker name, only **system** is available.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -944,18 +770,11 @@ class Tracker(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to manage the CTS system tracker resource.
-        If omitted, the provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
-        """
-        The tracker status, the value can be **enabled**, **disabled** or **error**.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
@@ -971,24 +790,15 @@ class Tracker(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="transferEnabled")
     def transfer_enabled(self) -> pulumi.Output[_builtins.bool]:
-        """
-        Whether traces will be transferred.
-        """
         return pulumi.get(self, "transfer_enabled")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
-        """
-        The tracker type, only **system** is available.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="validateFile")
     def validate_file(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether trace file verification is enabled during trace transfer.
-        """
         return pulumi.get(self, "validate_file")
 

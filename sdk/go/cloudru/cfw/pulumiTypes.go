@@ -19,9 +19,6 @@ type AclRuleCustomService struct {
 	// The protocol type.
 	Protocol int `pulumi:"protocol"`
 	// The source port.
-	//
-	// <a name="CustomServiceGroups"></a>
-	// The `customServiceGroups` block supports:
 	SourcePort string `pulumi:"sourcePort"`
 }
 
@@ -42,9 +39,6 @@ type AclRuleCustomServiceArgs struct {
 	// The protocol type.
 	Protocol pulumi.IntInput `pulumi:"protocol"`
 	// The source port.
-	//
-	// <a name="CustomServiceGroups"></a>
-	// The `customServiceGroups` block supports:
 	SourcePort pulumi.StringInput `pulumi:"sourcePort"`
 }
 
@@ -110,9 +104,6 @@ func (o AclRuleCustomServiceOutput) Protocol() pulumi.IntOutput {
 }
 
 // The source port.
-//
-// <a name="CustomServiceGroups"></a>
-// The `customServiceGroups` block supports:
 func (o AclRuleCustomServiceOutput) SourcePort() pulumi.StringOutput {
 	return o.ApplyT(func(v AclRuleCustomService) string { return v.SourcePort }).(pulumi.StringOutput)
 }
@@ -138,12 +129,9 @@ func (o AclRuleCustomServiceArrayOutput) Index(i pulumi.IntInput) AclRuleCustomS
 }
 
 type AclRuleCustomServiceGroups struct {
-	// The IDs of the predefined service groups.
+	// The IDs of the service groups.
 	GroupIds []string `pulumi:"groupIds"`
-	// The protocols used in the predefined service groups.
-	//
-	// <a name="SourceRegionList"></a>
-	// The `sourceRegionList` block supports:
+	// The protocols used in the service groups.
 	Protocols []int `pulumi:"protocols"`
 }
 
@@ -159,12 +147,9 @@ type AclRuleCustomServiceGroupsInput interface {
 }
 
 type AclRuleCustomServiceGroupsArgs struct {
-	// The IDs of the predefined service groups.
+	// The IDs of the service groups.
 	GroupIds pulumi.StringArrayInput `pulumi:"groupIds"`
-	// The protocols used in the predefined service groups.
-	//
-	// <a name="SourceRegionList"></a>
-	// The `sourceRegionList` block supports:
+	// The protocols used in the service groups.
 	Protocols pulumi.IntArrayInput `pulumi:"protocols"`
 }
 
@@ -245,15 +230,12 @@ func (o AclRuleCustomServiceGroupsOutput) ToAclRuleCustomServiceGroupsPtrOutputW
 	}).(AclRuleCustomServiceGroupsPtrOutput)
 }
 
-// The IDs of the predefined service groups.
+// The IDs of the service groups.
 func (o AclRuleCustomServiceGroupsOutput) GroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AclRuleCustomServiceGroups) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
 }
 
-// The protocols used in the predefined service groups.
-//
-// <a name="SourceRegionList"></a>
-// The `sourceRegionList` block supports:
+// The protocols used in the service groups.
 func (o AclRuleCustomServiceGroupsOutput) Protocols() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v AclRuleCustomServiceGroups) []int { return v.Protocols }).(pulumi.IntArrayOutput)
 }
@@ -282,7 +264,7 @@ func (o AclRuleCustomServiceGroupsPtrOutput) Elem() AclRuleCustomServiceGroupsOu
 	}).(AclRuleCustomServiceGroupsOutput)
 }
 
-// The IDs of the predefined service groups.
+// The IDs of the service groups.
 func (o AclRuleCustomServiceGroupsPtrOutput) GroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AclRuleCustomServiceGroups) []string {
 		if v == nil {
@@ -292,10 +274,7 @@ func (o AclRuleCustomServiceGroupsPtrOutput) GroupIds() pulumi.StringArrayOutput
 	}).(pulumi.StringArrayOutput)
 }
 
-// The protocols used in the predefined service groups.
-//
-// <a name="SourceRegionList"></a>
-// The `sourceRegionList` block supports:
+// The protocols used in the service groups.
 func (o AclRuleCustomServiceGroupsPtrOutput) Protocols() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *AclRuleCustomServiceGroups) []int {
 		if v == nil {
@@ -430,12 +409,9 @@ func (o AclRuleDestinationRegionListArrayOutput) Index(i pulumi.IntInput) AclRul
 }
 
 type AclRulePredefinedServiceGroups struct {
-	// The IDs of the predefined service groups.
+	// The IDs of the service groups.
 	GroupIds []string `pulumi:"groupIds"`
-	// The protocols used in the predefined service groups.
-	//
-	// <a name="SourceRegionList"></a>
-	// The `sourceRegionList` block supports:
+	// The protocols used in the service groups.
 	Protocols []int `pulumi:"protocols"`
 }
 
@@ -451,12 +427,9 @@ type AclRulePredefinedServiceGroupsInput interface {
 }
 
 type AclRulePredefinedServiceGroupsArgs struct {
-	// The IDs of the predefined service groups.
+	// The IDs of the service groups.
 	GroupIds pulumi.StringArrayInput `pulumi:"groupIds"`
-	// The protocols used in the predefined service groups.
-	//
-	// <a name="SourceRegionList"></a>
-	// The `sourceRegionList` block supports:
+	// The protocols used in the service groups.
 	Protocols pulumi.IntArrayInput `pulumi:"protocols"`
 }
 
@@ -537,15 +510,12 @@ func (o AclRulePredefinedServiceGroupsOutput) ToAclRulePredefinedServiceGroupsPt
 	}).(AclRulePredefinedServiceGroupsPtrOutput)
 }
 
-// The IDs of the predefined service groups.
+// The IDs of the service groups.
 func (o AclRulePredefinedServiceGroupsOutput) GroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AclRulePredefinedServiceGroups) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
 }
 
-// The protocols used in the predefined service groups.
-//
-// <a name="SourceRegionList"></a>
-// The `sourceRegionList` block supports:
+// The protocols used in the service groups.
 func (o AclRulePredefinedServiceGroupsOutput) Protocols() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v AclRulePredefinedServiceGroups) []int { return v.Protocols }).(pulumi.IntArrayOutput)
 }
@@ -574,7 +544,7 @@ func (o AclRulePredefinedServiceGroupsPtrOutput) Elem() AclRulePredefinedService
 	}).(AclRulePredefinedServiceGroupsOutput)
 }
 
-// The IDs of the predefined service groups.
+// The IDs of the service groups.
 func (o AclRulePredefinedServiceGroupsPtrOutput) GroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AclRulePredefinedServiceGroups) []string {
 		if v == nil {
@@ -584,10 +554,7 @@ func (o AclRulePredefinedServiceGroupsPtrOutput) GroupIds() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
-// The protocols used in the predefined service groups.
-//
-// <a name="SourceRegionList"></a>
-// The `sourceRegionList` block supports:
+// The protocols used in the service groups.
 func (o AclRulePredefinedServiceGroupsPtrOutput) Protocols() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *AclRulePredefinedServiceGroups) []int {
 		if v == nil {
@@ -599,19 +566,10 @@ func (o AclRulePredefinedServiceGroupsPtrOutput) Protocols() pulumi.IntArrayOutp
 
 type AclRuleSequence struct {
 	// Whether to pin on bottom.
-	// The options are as follows:
-	// + **0**: no;
-	// + **1**: yes;
 	Bottom *int `pulumi:"bottom"`
 	// The ID of the rule that the added rule will follow.
 	DestRuleId *string `pulumi:"destRuleId"`
 	// Whether to pin on top.
-	// The options are as follows:
-	// + **0**: no;
-	// + **1**: yes;
-	//
-	// <a name="CustomServices"></a>
-	// The `customServices` block supports:
 	Top *int `pulumi:"top"`
 }
 
@@ -628,19 +586,10 @@ type AclRuleSequenceInput interface {
 
 type AclRuleSequenceArgs struct {
 	// Whether to pin on bottom.
-	// The options are as follows:
-	// + **0**: no;
-	// + **1**: yes;
 	Bottom pulumi.IntPtrInput `pulumi:"bottom"`
 	// The ID of the rule that the added rule will follow.
 	DestRuleId pulumi.StringPtrInput `pulumi:"destRuleId"`
 	// Whether to pin on top.
-	// The options are as follows:
-	// + **0**: no;
-	// + **1**: yes;
-	//
-	// <a name="CustomServices"></a>
-	// The `customServices` block supports:
 	Top pulumi.IntPtrInput `pulumi:"top"`
 }
 
@@ -722,9 +671,6 @@ func (o AclRuleSequenceOutput) ToAclRuleSequencePtrOutputWithContext(ctx context
 }
 
 // Whether to pin on bottom.
-// The options are as follows:
-// + **0**: no;
-// + **1**: yes;
 func (o AclRuleSequenceOutput) Bottom() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AclRuleSequence) *int { return v.Bottom }).(pulumi.IntPtrOutput)
 }
@@ -735,12 +681,6 @@ func (o AclRuleSequenceOutput) DestRuleId() pulumi.StringPtrOutput {
 }
 
 // Whether to pin on top.
-// The options are as follows:
-// + **0**: no;
-// + **1**: yes;
-//
-// <a name="CustomServices"></a>
-// The `customServices` block supports:
 func (o AclRuleSequenceOutput) Top() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AclRuleSequence) *int { return v.Top }).(pulumi.IntPtrOutput)
 }
@@ -770,9 +710,6 @@ func (o AclRuleSequencePtrOutput) Elem() AclRuleSequenceOutput {
 }
 
 // Whether to pin on bottom.
-// The options are as follows:
-// + **0**: no;
-// + **1**: yes;
 func (o AclRuleSequencePtrOutput) Bottom() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AclRuleSequence) *int {
 		if v == nil {
@@ -793,12 +730,6 @@ func (o AclRuleSequencePtrOutput) DestRuleId() pulumi.StringPtrOutput {
 }
 
 // Whether to pin on top.
-// The options are as follows:
-// + **0**: no;
-// + **1**: yes;
-//
-// <a name="CustomServices"></a>
-// The `customServices` block supports:
 func (o AclRuleSequencePtrOutput) Top() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AclRuleSequence) *int {
 		if v == nil {
@@ -933,17 +864,9 @@ func (o AclRuleSourceRegionListArrayOutput) Index(i pulumi.IntInput) AclRuleSour
 }
 
 type AntiVirusScanProtocolConfig struct {
-	// The anti virus action. The valid value can be **0** (observe) or **1** (block).
+	// The antivirus action.
 	Action int `pulumi:"action"`
 	// The protocol type.
-	// The valid values are as follows:
-	// + **0**: HTTP;
-	// + **1**: SMTP;
-	// + **2**: POP3;
-	// + **3**: IMAP4;
-	// + **4**: FTP;
-	// + **5**: SMB;
-	// + **6**: Malicious Access Control;
 	ProtocolType int `pulumi:"protocolType"`
 }
 
@@ -959,17 +882,9 @@ type AntiVirusScanProtocolConfigInput interface {
 }
 
 type AntiVirusScanProtocolConfigArgs struct {
-	// The anti virus action. The valid value can be **0** (observe) or **1** (block).
+	// The antivirus action.
 	Action pulumi.IntInput `pulumi:"action"`
 	// The protocol type.
-	// The valid values are as follows:
-	// + **0**: HTTP;
-	// + **1**: SMTP;
-	// + **2**: POP3;
-	// + **3**: IMAP4;
-	// + **4**: FTP;
-	// + **5**: SMB;
-	// + **6**: Malicious Access Control;
 	ProtocolType pulumi.IntInput `pulumi:"protocolType"`
 }
 
@@ -1024,20 +939,12 @@ func (o AntiVirusScanProtocolConfigOutput) ToAntiVirusScanProtocolConfigOutputWi
 	return o
 }
 
-// The anti virus action. The valid value can be **0** (observe) or **1** (block).
+// The antivirus action.
 func (o AntiVirusScanProtocolConfigOutput) Action() pulumi.IntOutput {
 	return o.ApplyT(func(v AntiVirusScanProtocolConfig) int { return v.Action }).(pulumi.IntOutput)
 }
 
 // The protocol type.
-// The valid values are as follows:
-// + **0**: HTTP;
-// + **1**: SMTP;
-// + **2**: POP3;
-// + **3**: IMAP4;
-// + **4**: FTP;
-// + **5**: SMB;
-// + **6**: Malicious Access Control;
 func (o AntiVirusScanProtocolConfigOutput) ProtocolType() pulumi.IntOutput {
 	return o.ApplyT(func(v AntiVirusScanProtocolConfig) int { return v.ProtocolType }).(pulumi.IntOutput)
 }
@@ -1063,15 +970,9 @@ func (o AntiVirusScanProtocolConfigArrayOutput) Index(i pulumi.IntInput) AntiVir
 }
 
 type CaptureTaskDestination struct {
-	// Specifies the address.
+	// The address.
 	Address string `pulumi:"address"`
-	// Specifies the address type.
-	// The valid values are:
-	// + **0**: indicates IPv4;
-	// + **1**: indicates IPv6.
-	//
-	// <a name="Service"></a>
-	// The `service` block supports:
+	// The address type.
 	AddressType int `pulumi:"addressType"`
 }
 
@@ -1087,15 +988,9 @@ type CaptureTaskDestinationInput interface {
 }
 
 type CaptureTaskDestinationArgs struct {
-	// Specifies the address.
+	// The address.
 	Address pulumi.StringInput `pulumi:"address"`
-	// Specifies the address type.
-	// The valid values are:
-	// + **0**: indicates IPv4;
-	// + **1**: indicates IPv6.
-	//
-	// <a name="Service"></a>
-	// The `service` block supports:
+	// The address type.
 	AddressType pulumi.IntInput `pulumi:"addressType"`
 }
 
@@ -1176,18 +1071,12 @@ func (o CaptureTaskDestinationOutput) ToCaptureTaskDestinationPtrOutputWithConte
 	}).(CaptureTaskDestinationPtrOutput)
 }
 
-// Specifies the address.
+// The address.
 func (o CaptureTaskDestinationOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v CaptureTaskDestination) string { return v.Address }).(pulumi.StringOutput)
 }
 
-// Specifies the address type.
-// The valid values are:
-// + **0**: indicates IPv4;
-// + **1**: indicates IPv6.
-//
-// <a name="Service"></a>
-// The `service` block supports:
+// The address type.
 func (o CaptureTaskDestinationOutput) AddressType() pulumi.IntOutput {
 	return o.ApplyT(func(v CaptureTaskDestination) int { return v.AddressType }).(pulumi.IntOutput)
 }
@@ -1216,7 +1105,7 @@ func (o CaptureTaskDestinationPtrOutput) Elem() CaptureTaskDestinationOutput {
 	}).(CaptureTaskDestinationOutput)
 }
 
-// Specifies the address.
+// The address.
 func (o CaptureTaskDestinationPtrOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CaptureTaskDestination) *string {
 		if v == nil {
@@ -1226,13 +1115,7 @@ func (o CaptureTaskDestinationPtrOutput) Address() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the address type.
-// The valid values are:
-// + **0**: indicates IPv4;
-// + **1**: indicates IPv6.
-//
-// <a name="Service"></a>
-// The `service` block supports:
+// The address type.
 func (o CaptureTaskDestinationPtrOutput) AddressType() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *CaptureTaskDestination) *int {
 		if v == nil {
@@ -1243,17 +1126,11 @@ func (o CaptureTaskDestinationPtrOutput) AddressType() pulumi.IntPtrOutput {
 }
 
 type CaptureTaskService struct {
-	// Specifies the destination port.
+	// The destination port.
 	DestPort *string `pulumi:"destPort"`
-	// Specifies the protocol type.
-	// The valid values are:
-	// + **6**: indicates TCP;
-	// + **17**: indicates UDP;
-	// + **1**: indicates ICMP;
-	// + **58**: indicates ICMPv6;
-	// + **-1**: indicates any protocol.
+	// The protocol type.
 	Protocol int `pulumi:"protocol"`
-	// Specifies the source port.
+	// The source port.
 	SourcePort *string `pulumi:"sourcePort"`
 }
 
@@ -1269,17 +1146,11 @@ type CaptureTaskServiceInput interface {
 }
 
 type CaptureTaskServiceArgs struct {
-	// Specifies the destination port.
+	// The destination port.
 	DestPort pulumi.StringPtrInput `pulumi:"destPort"`
-	// Specifies the protocol type.
-	// The valid values are:
-	// + **6**: indicates TCP;
-	// + **17**: indicates UDP;
-	// + **1**: indicates ICMP;
-	// + **58**: indicates ICMPv6;
-	// + **-1**: indicates any protocol.
+	// The protocol type.
 	Protocol pulumi.IntInput `pulumi:"protocol"`
-	// Specifies the source port.
+	// The source port.
 	SourcePort pulumi.StringPtrInput `pulumi:"sourcePort"`
 }
 
@@ -1360,23 +1231,17 @@ func (o CaptureTaskServiceOutput) ToCaptureTaskServicePtrOutputWithContext(ctx c
 	}).(CaptureTaskServicePtrOutput)
 }
 
-// Specifies the destination port.
+// The destination port.
 func (o CaptureTaskServiceOutput) DestPort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CaptureTaskService) *string { return v.DestPort }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the protocol type.
-// The valid values are:
-// + **6**: indicates TCP;
-// + **17**: indicates UDP;
-// + **1**: indicates ICMP;
-// + **58**: indicates ICMPv6;
-// + **-1**: indicates any protocol.
+// The protocol type.
 func (o CaptureTaskServiceOutput) Protocol() pulumi.IntOutput {
 	return o.ApplyT(func(v CaptureTaskService) int { return v.Protocol }).(pulumi.IntOutput)
 }
 
-// Specifies the source port.
+// The source port.
 func (o CaptureTaskServiceOutput) SourcePort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CaptureTaskService) *string { return v.SourcePort }).(pulumi.StringPtrOutput)
 }
@@ -1405,7 +1270,7 @@ func (o CaptureTaskServicePtrOutput) Elem() CaptureTaskServiceOutput {
 	}).(CaptureTaskServiceOutput)
 }
 
-// Specifies the destination port.
+// The destination port.
 func (o CaptureTaskServicePtrOutput) DestPort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CaptureTaskService) *string {
 		if v == nil {
@@ -1415,13 +1280,7 @@ func (o CaptureTaskServicePtrOutput) DestPort() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the protocol type.
-// The valid values are:
-// + **6**: indicates TCP;
-// + **17**: indicates UDP;
-// + **1**: indicates ICMP;
-// + **58**: indicates ICMPv6;
-// + **-1**: indicates any protocol.
+// The protocol type.
 func (o CaptureTaskServicePtrOutput) Protocol() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *CaptureTaskService) *int {
 		if v == nil {
@@ -1431,7 +1290,7 @@ func (o CaptureTaskServicePtrOutput) Protocol() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the source port.
+// The source port.
 func (o CaptureTaskServicePtrOutput) SourcePort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CaptureTaskService) *string {
 		if v == nil {
@@ -1442,15 +1301,9 @@ func (o CaptureTaskServicePtrOutput) SourcePort() pulumi.StringPtrOutput {
 }
 
 type CaptureTaskSource struct {
-	// Specifies the address.
+	// The address.
 	Address string `pulumi:"address"`
-	// Specifies the address type.
-	// The valid values are:
-	// + **0**: indicates IPv4;
-	// + **1**: indicates IPv6.
-	//
-	// <a name="Service"></a>
-	// The `service` block supports:
+	// The address type.
 	AddressType int `pulumi:"addressType"`
 }
 
@@ -1466,15 +1319,9 @@ type CaptureTaskSourceInput interface {
 }
 
 type CaptureTaskSourceArgs struct {
-	// Specifies the address.
+	// The address.
 	Address pulumi.StringInput `pulumi:"address"`
-	// Specifies the address type.
-	// The valid values are:
-	// + **0**: indicates IPv4;
-	// + **1**: indicates IPv6.
-	//
-	// <a name="Service"></a>
-	// The `service` block supports:
+	// The address type.
 	AddressType pulumi.IntInput `pulumi:"addressType"`
 }
 
@@ -1555,18 +1402,12 @@ func (o CaptureTaskSourceOutput) ToCaptureTaskSourcePtrOutputWithContext(ctx con
 	}).(CaptureTaskSourcePtrOutput)
 }
 
-// Specifies the address.
+// The address.
 func (o CaptureTaskSourceOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v CaptureTaskSource) string { return v.Address }).(pulumi.StringOutput)
 }
 
-// Specifies the address type.
-// The valid values are:
-// + **0**: indicates IPv4;
-// + **1**: indicates IPv6.
-//
-// <a name="Service"></a>
-// The `service` block supports:
+// The address type.
 func (o CaptureTaskSourceOutput) AddressType() pulumi.IntOutput {
 	return o.ApplyT(func(v CaptureTaskSource) int { return v.AddressType }).(pulumi.IntOutput)
 }
@@ -1595,7 +1436,7 @@ func (o CaptureTaskSourcePtrOutput) Elem() CaptureTaskSourceOutput {
 	}).(CaptureTaskSourceOutput)
 }
 
-// Specifies the address.
+// The address.
 func (o CaptureTaskSourcePtrOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CaptureTaskSource) *string {
 		if v == nil {
@@ -1605,13 +1446,7 @@ func (o CaptureTaskSourcePtrOutput) Address() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the address type.
-// The valid values are:
-// + **0**: indicates IPv4;
-// + **1**: indicates IPv6.
-//
-// <a name="Service"></a>
-// The `service` block supports:
+// The address type.
 func (o CaptureTaskSourcePtrOutput) AddressType() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *CaptureTaskSource) *int {
 		if v == nil {
@@ -1751,8 +1586,6 @@ type EipProtectionProtectedEip struct {
 	// The IPv4 address of the protected EIP.
 	PublicIpv4 *string `pulumi:"publicIpv4"`
 	// The IPv6 address of the protected EIP.
-	//
-	// > At least one of `publicIpv4` and `publicIpv6` must be set.
 	PublicIpv6 *string `pulumi:"publicIpv6"`
 }
 
@@ -1773,8 +1606,6 @@ type EipProtectionProtectedEipArgs struct {
 	// The IPv4 address of the protected EIP.
 	PublicIpv4 pulumi.StringPtrInput `pulumi:"publicIpv4"`
 	// The IPv6 address of the protected EIP.
-	//
-	// > At least one of `publicIpv4` and `publicIpv6` must be set.
 	PublicIpv6 pulumi.StringPtrInput `pulumi:"publicIpv6"`
 }
 
@@ -1840,8 +1671,6 @@ func (o EipProtectionProtectedEipOutput) PublicIpv4() pulumi.StringPtrOutput {
 }
 
 // The IPv6 address of the protected EIP.
-//
-// > At least one of `publicIpv4` and `publicIpv6` must be set.
 func (o EipProtectionProtectedEipOutput) PublicIpv6() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EipProtectionProtectedEip) *string { return v.PublicIpv6 }).(pulumi.StringPtrOutput)
 }
@@ -1867,44 +1696,35 @@ func (o EipProtectionProtectedEipArrayOutput) Index(i pulumi.IntInput) EipProtec
 }
 
 type FirewallFlavor struct {
-	// The bandwidth of the firewall.
+	// Specifies the bandwidth of the firewall.
 	Bandwidth *int `pulumi:"bandwidth"`
-	// The default bandwidth of the firewall.
+	// Specifies the default bandwidth of the firewall.
 	DefaultBandwidth *int `pulumi:"defaultBandwidth"`
-	// The default EIP number of the firewall.
+	// Specifies the default EIP number of the firewall.
 	DefaultEipCount *int `pulumi:"defaultEipCount"`
-	// The default log storage of the firewall.
+	// Specifies the default log storage of the firewall.
 	DefaultLogStorage *int `pulumi:"defaultLogStorage"`
-	// The default VPC number of the firewall.
+	// Specifies the default VPC number of the firewall.
 	DefaultVpcCount *int `pulumi:"defaultVpcCount"`
-	// The EIP number of the firewall.
+	// Specifies the EIP number of the firewall.
 	EipCount *int `pulumi:"eipCount"`
 	// Specifies the extend bandwidth of the firewall.
-	// Only works when the chargingMode is **prePaid**.
-	// Changing this parameter will create a new resource.
 	ExtendBandwidth *int `pulumi:"extendBandwidth"`
 	// Specifies the extend EIP number of the firewall.
-	// Only works when the chargingMode is **prePaid**.
-	// Changing this parameter will create a new resource.
 	ExtendEipCount *int `pulumi:"extendEipCount"`
 	// Specifies the extend VPC number of the firewall.
-	// Only works when the chargingMode is **prePaid**.
-	// Changing this parameter will create a new resource.
 	ExtendVpcCount *int `pulumi:"extendVpcCount"`
-	// The log storage of the firewall.
+	// Specifies the log storage of the firewall.
 	LogStorage *int `pulumi:"logStorage"`
-	// The total rule count of the firewall.
+	// Specifies the total rule count of the firewall.
 	TotalRuleCount *int `pulumi:"totalRuleCount"`
-	// The used rule count of the firewall.
+	// Specifies the used rule count of the firewall.
 	UsedRuleCount *int `pulumi:"usedRuleCount"`
 	// Specifies the version of the firewall.
-	// When the chargingMode is **prePaid**: the value can be **Standard** and **Prefessional**.
-	// When the chargingMode is **postPaid**: the value can be **Prefessional**.
-	// Changing this parameter will create a new resource.
 	Version string `pulumi:"version"`
-	// The VPC bandwidth of the firewall.
+	// Specifies the VPC bandwidth of the firewall.
 	VpcBandwidth *int `pulumi:"vpcBandwidth"`
-	// The VPC number of the firewall.
+	// Specifies the VPC number of the firewall.
 	VpcCount *int `pulumi:"vpcCount"`
 }
 
@@ -1920,44 +1740,35 @@ type FirewallFlavorInput interface {
 }
 
 type FirewallFlavorArgs struct {
-	// The bandwidth of the firewall.
+	// Specifies the bandwidth of the firewall.
 	Bandwidth pulumi.IntPtrInput `pulumi:"bandwidth"`
-	// The default bandwidth of the firewall.
+	// Specifies the default bandwidth of the firewall.
 	DefaultBandwidth pulumi.IntPtrInput `pulumi:"defaultBandwidth"`
-	// The default EIP number of the firewall.
+	// Specifies the default EIP number of the firewall.
 	DefaultEipCount pulumi.IntPtrInput `pulumi:"defaultEipCount"`
-	// The default log storage of the firewall.
+	// Specifies the default log storage of the firewall.
 	DefaultLogStorage pulumi.IntPtrInput `pulumi:"defaultLogStorage"`
-	// The default VPC number of the firewall.
+	// Specifies the default VPC number of the firewall.
 	DefaultVpcCount pulumi.IntPtrInput `pulumi:"defaultVpcCount"`
-	// The EIP number of the firewall.
+	// Specifies the EIP number of the firewall.
 	EipCount pulumi.IntPtrInput `pulumi:"eipCount"`
 	// Specifies the extend bandwidth of the firewall.
-	// Only works when the chargingMode is **prePaid**.
-	// Changing this parameter will create a new resource.
 	ExtendBandwidth pulumi.IntPtrInput `pulumi:"extendBandwidth"`
 	// Specifies the extend EIP number of the firewall.
-	// Only works when the chargingMode is **prePaid**.
-	// Changing this parameter will create a new resource.
 	ExtendEipCount pulumi.IntPtrInput `pulumi:"extendEipCount"`
 	// Specifies the extend VPC number of the firewall.
-	// Only works when the chargingMode is **prePaid**.
-	// Changing this parameter will create a new resource.
 	ExtendVpcCount pulumi.IntPtrInput `pulumi:"extendVpcCount"`
-	// The log storage of the firewall.
+	// Specifies the log storage of the firewall.
 	LogStorage pulumi.IntPtrInput `pulumi:"logStorage"`
-	// The total rule count of the firewall.
+	// Specifies the total rule count of the firewall.
 	TotalRuleCount pulumi.IntPtrInput `pulumi:"totalRuleCount"`
-	// The used rule count of the firewall.
+	// Specifies the used rule count of the firewall.
 	UsedRuleCount pulumi.IntPtrInput `pulumi:"usedRuleCount"`
 	// Specifies the version of the firewall.
-	// When the chargingMode is **prePaid**: the value can be **Standard** and **Prefessional**.
-	// When the chargingMode is **postPaid**: the value can be **Prefessional**.
-	// Changing this parameter will create a new resource.
 	Version pulumi.StringInput `pulumi:"version"`
-	// The VPC bandwidth of the firewall.
+	// Specifies the VPC bandwidth of the firewall.
 	VpcBandwidth pulumi.IntPtrInput `pulumi:"vpcBandwidth"`
-	// The VPC number of the firewall.
+	// Specifies the VPC number of the firewall.
 	VpcCount pulumi.IntPtrInput `pulumi:"vpcCount"`
 }
 
@@ -2038,86 +1849,77 @@ func (o FirewallFlavorOutput) ToFirewallFlavorPtrOutputWithContext(ctx context.C
 	}).(FirewallFlavorPtrOutput)
 }
 
-// The bandwidth of the firewall.
+// Specifies the bandwidth of the firewall.
 func (o FirewallFlavorOutput) Bandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FirewallFlavor) *int { return v.Bandwidth }).(pulumi.IntPtrOutput)
 }
 
-// The default bandwidth of the firewall.
+// Specifies the default bandwidth of the firewall.
 func (o FirewallFlavorOutput) DefaultBandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FirewallFlavor) *int { return v.DefaultBandwidth }).(pulumi.IntPtrOutput)
 }
 
-// The default EIP number of the firewall.
+// Specifies the default EIP number of the firewall.
 func (o FirewallFlavorOutput) DefaultEipCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FirewallFlavor) *int { return v.DefaultEipCount }).(pulumi.IntPtrOutput)
 }
 
-// The default log storage of the firewall.
+// Specifies the default log storage of the firewall.
 func (o FirewallFlavorOutput) DefaultLogStorage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FirewallFlavor) *int { return v.DefaultLogStorage }).(pulumi.IntPtrOutput)
 }
 
-// The default VPC number of the firewall.
+// Specifies the default VPC number of the firewall.
 func (o FirewallFlavorOutput) DefaultVpcCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FirewallFlavor) *int { return v.DefaultVpcCount }).(pulumi.IntPtrOutput)
 }
 
-// The EIP number of the firewall.
+// Specifies the EIP number of the firewall.
 func (o FirewallFlavorOutput) EipCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FirewallFlavor) *int { return v.EipCount }).(pulumi.IntPtrOutput)
 }
 
 // Specifies the extend bandwidth of the firewall.
-// Only works when the chargingMode is **prePaid**.
-// Changing this parameter will create a new resource.
 func (o FirewallFlavorOutput) ExtendBandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FirewallFlavor) *int { return v.ExtendBandwidth }).(pulumi.IntPtrOutput)
 }
 
 // Specifies the extend EIP number of the firewall.
-// Only works when the chargingMode is **prePaid**.
-// Changing this parameter will create a new resource.
 func (o FirewallFlavorOutput) ExtendEipCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FirewallFlavor) *int { return v.ExtendEipCount }).(pulumi.IntPtrOutput)
 }
 
 // Specifies the extend VPC number of the firewall.
-// Only works when the chargingMode is **prePaid**.
-// Changing this parameter will create a new resource.
 func (o FirewallFlavorOutput) ExtendVpcCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FirewallFlavor) *int { return v.ExtendVpcCount }).(pulumi.IntPtrOutput)
 }
 
-// The log storage of the firewall.
+// Specifies the log storage of the firewall.
 func (o FirewallFlavorOutput) LogStorage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FirewallFlavor) *int { return v.LogStorage }).(pulumi.IntPtrOutput)
 }
 
-// The total rule count of the firewall.
+// Specifies the total rule count of the firewall.
 func (o FirewallFlavorOutput) TotalRuleCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FirewallFlavor) *int { return v.TotalRuleCount }).(pulumi.IntPtrOutput)
 }
 
-// The used rule count of the firewall.
+// Specifies the used rule count of the firewall.
 func (o FirewallFlavorOutput) UsedRuleCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FirewallFlavor) *int { return v.UsedRuleCount }).(pulumi.IntPtrOutput)
 }
 
 // Specifies the version of the firewall.
-// When the chargingMode is **prePaid**: the value can be **Standard** and **Prefessional**.
-// When the chargingMode is **postPaid**: the value can be **Prefessional**.
-// Changing this parameter will create a new resource.
 func (o FirewallFlavorOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v FirewallFlavor) string { return v.Version }).(pulumi.StringOutput)
 }
 
-// The VPC bandwidth of the firewall.
+// Specifies the VPC bandwidth of the firewall.
 func (o FirewallFlavorOutput) VpcBandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FirewallFlavor) *int { return v.VpcBandwidth }).(pulumi.IntPtrOutput)
 }
 
-// The VPC number of the firewall.
+// Specifies the VPC number of the firewall.
 func (o FirewallFlavorOutput) VpcCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FirewallFlavor) *int { return v.VpcCount }).(pulumi.IntPtrOutput)
 }
@@ -2146,7 +1948,7 @@ func (o FirewallFlavorPtrOutput) Elem() FirewallFlavorOutput {
 	}).(FirewallFlavorOutput)
 }
 
-// The bandwidth of the firewall.
+// Specifies the bandwidth of the firewall.
 func (o FirewallFlavorPtrOutput) Bandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FirewallFlavor) *int {
 		if v == nil {
@@ -2156,7 +1958,7 @@ func (o FirewallFlavorPtrOutput) Bandwidth() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The default bandwidth of the firewall.
+// Specifies the default bandwidth of the firewall.
 func (o FirewallFlavorPtrOutput) DefaultBandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FirewallFlavor) *int {
 		if v == nil {
@@ -2166,7 +1968,7 @@ func (o FirewallFlavorPtrOutput) DefaultBandwidth() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The default EIP number of the firewall.
+// Specifies the default EIP number of the firewall.
 func (o FirewallFlavorPtrOutput) DefaultEipCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FirewallFlavor) *int {
 		if v == nil {
@@ -2176,7 +1978,7 @@ func (o FirewallFlavorPtrOutput) DefaultEipCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The default log storage of the firewall.
+// Specifies the default log storage of the firewall.
 func (o FirewallFlavorPtrOutput) DefaultLogStorage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FirewallFlavor) *int {
 		if v == nil {
@@ -2186,7 +1988,7 @@ func (o FirewallFlavorPtrOutput) DefaultLogStorage() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The default VPC number of the firewall.
+// Specifies the default VPC number of the firewall.
 func (o FirewallFlavorPtrOutput) DefaultVpcCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FirewallFlavor) *int {
 		if v == nil {
@@ -2196,7 +1998,7 @@ func (o FirewallFlavorPtrOutput) DefaultVpcCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The EIP number of the firewall.
+// Specifies the EIP number of the firewall.
 func (o FirewallFlavorPtrOutput) EipCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FirewallFlavor) *int {
 		if v == nil {
@@ -2207,8 +2009,6 @@ func (o FirewallFlavorPtrOutput) EipCount() pulumi.IntPtrOutput {
 }
 
 // Specifies the extend bandwidth of the firewall.
-// Only works when the chargingMode is **prePaid**.
-// Changing this parameter will create a new resource.
 func (o FirewallFlavorPtrOutput) ExtendBandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FirewallFlavor) *int {
 		if v == nil {
@@ -2219,8 +2019,6 @@ func (o FirewallFlavorPtrOutput) ExtendBandwidth() pulumi.IntPtrOutput {
 }
 
 // Specifies the extend EIP number of the firewall.
-// Only works when the chargingMode is **prePaid**.
-// Changing this parameter will create a new resource.
 func (o FirewallFlavorPtrOutput) ExtendEipCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FirewallFlavor) *int {
 		if v == nil {
@@ -2231,8 +2029,6 @@ func (o FirewallFlavorPtrOutput) ExtendEipCount() pulumi.IntPtrOutput {
 }
 
 // Specifies the extend VPC number of the firewall.
-// Only works when the chargingMode is **prePaid**.
-// Changing this parameter will create a new resource.
 func (o FirewallFlavorPtrOutput) ExtendVpcCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FirewallFlavor) *int {
 		if v == nil {
@@ -2242,7 +2038,7 @@ func (o FirewallFlavorPtrOutput) ExtendVpcCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The log storage of the firewall.
+// Specifies the log storage of the firewall.
 func (o FirewallFlavorPtrOutput) LogStorage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FirewallFlavor) *int {
 		if v == nil {
@@ -2252,7 +2048,7 @@ func (o FirewallFlavorPtrOutput) LogStorage() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The total rule count of the firewall.
+// Specifies the total rule count of the firewall.
 func (o FirewallFlavorPtrOutput) TotalRuleCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FirewallFlavor) *int {
 		if v == nil {
@@ -2262,7 +2058,7 @@ func (o FirewallFlavorPtrOutput) TotalRuleCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The used rule count of the firewall.
+// Specifies the used rule count of the firewall.
 func (o FirewallFlavorPtrOutput) UsedRuleCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FirewallFlavor) *int {
 		if v == nil {
@@ -2273,9 +2069,6 @@ func (o FirewallFlavorPtrOutput) UsedRuleCount() pulumi.IntPtrOutput {
 }
 
 // Specifies the version of the firewall.
-// When the chargingMode is **prePaid**: the value can be **Standard** and **Prefessional**.
-// When the chargingMode is **postPaid**: the value can be **Prefessional**.
-// Changing this parameter will create a new resource.
 func (o FirewallFlavorPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallFlavor) *string {
 		if v == nil {
@@ -2285,7 +2078,7 @@ func (o FirewallFlavorPtrOutput) Version() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The VPC bandwidth of the firewall.
+// Specifies the VPC bandwidth of the firewall.
 func (o FirewallFlavorPtrOutput) VpcBandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FirewallFlavor) *int {
 		if v == nil {
@@ -2295,7 +2088,7 @@ func (o FirewallFlavorPtrOutput) VpcBandwidth() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The VPC number of the firewall.
+// Specifies the VPC number of the firewall.
 func (o FirewallFlavorPtrOutput) VpcCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FirewallFlavor) *int {
 		if v == nil {
@@ -2306,12 +2099,11 @@ func (o FirewallFlavorPtrOutput) VpcCount() pulumi.IntPtrOutput {
 }
 
 type FirewallProtectObject struct {
-	// The protected object ID.
+	// Protected object ID
 	ObjectId *string `pulumi:"objectId"`
-	// The protected object name.
+	// Protected object name
 	ObjectName *string `pulumi:"objectName"`
-	// The object type.
-	// The options are as follows: 0: north-south; 1: east-west.
+	// Project type. The options are as follows: 0: north-south; 1: east-west.
 	Type *int `pulumi:"type"`
 }
 
@@ -2327,12 +2119,11 @@ type FirewallProtectObjectInput interface {
 }
 
 type FirewallProtectObjectArgs struct {
-	// The protected object ID.
+	// Protected object ID
 	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
-	// The protected object name.
+	// Protected object name
 	ObjectName pulumi.StringPtrInput `pulumi:"objectName"`
-	// The object type.
-	// The options are as follows: 0: north-south; 1: east-west.
+	// Project type. The options are as follows: 0: north-south; 1: east-west.
 	Type pulumi.IntPtrInput `pulumi:"type"`
 }
 
@@ -2387,18 +2178,17 @@ func (o FirewallProtectObjectOutput) ToFirewallProtectObjectOutputWithContext(ct
 	return o
 }
 
-// The protected object ID.
+// Protected object ID
 func (o FirewallProtectObjectOutput) ObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallProtectObject) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
 }
 
-// The protected object name.
+// Protected object name
 func (o FirewallProtectObjectOutput) ObjectName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallProtectObject) *string { return v.ObjectName }).(pulumi.StringPtrOutput)
 }
 
-// The object type.
-// The options are as follows: 0: north-south; 1: east-west.
+// Project type. The options are as follows: 0: north-south; 1: east-west.
 func (o FirewallProtectObjectOutput) Type() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FirewallProtectObject) *int { return v.Type }).(pulumi.IntPtrOutput)
 }
@@ -2424,27 +2214,27 @@ func (o FirewallProtectObjectArrayOutput) Index(i pulumi.IntInput) FirewallProte
 }
 
 type GetAccessControlLogsRecord struct {
-	// Specifies the action. The values can be **allow** and **deny**.
+	// The action.
 	Action string `pulumi:"action"`
-	// Specifies the application protocol.
+	// The application protocol.
 	App string `pulumi:"app"`
-	// The destination city ID.
+	// The distination city ID.
 	DstCityId string `pulumi:"dstCityId"`
-	// Specifies the destination city name.
+	// The distination city name.
 	DstCityName string `pulumi:"dstCityName"`
 	// The destination host.
 	DstHost string `pulumi:"dstHost"`
-	// Specifies the destination IP address.
+	// The destination IP address.
 	DstIp string `pulumi:"dstIp"`
-	// Specifies the destination port.
+	// The destination port.
 	DstPort int `pulumi:"dstPort"`
-	// The destination province ID.
+	// The distination province ID.
 	DstProvinceId string `pulumi:"dstProvinceId"`
-	// Specifies the destination province name.
+	// The distination province name.
 	DstProvinceName string `pulumi:"dstProvinceName"`
 	// The destination region ID.
 	DstRegionId string `pulumi:"dstRegionId"`
-	// Specifies the destination region name.
+	// The destination region name.
 	DstRegionName string `pulumi:"dstRegionName"`
 	// The hit time.
 	HitTime string `pulumi:"hitTime"`
@@ -2454,23 +2244,23 @@ type GetAccessControlLogsRecord struct {
 	Protocol string `pulumi:"protocol"`
 	// The rule ID.
 	RuleId string `pulumi:"ruleId"`
-	// Specifies the rule name.
+	// The rule name.
 	RuleName string `pulumi:"ruleName"`
 	// The source city ID.
 	SrcCityId string `pulumi:"srcCityId"`
-	// Specifies the source city name.
+	// The source city name.
 	SrcCityName string `pulumi:"srcCityName"`
-	// Specifies the source IP address.
+	// The source IP address.
 	SrcIp string `pulumi:"srcIp"`
-	// Specifies the source port.
+	// The source port.
 	SrcPort int `pulumi:"srcPort"`
 	// The source province ID.
 	SrcProvinceId string `pulumi:"srcProvinceId"`
-	// Specifies the source province name.
+	// The source province name.
 	SrcProvinceName string `pulumi:"srcProvinceName"`
 	// The source region ID.
 	SrcRegionId string `pulumi:"srcRegionId"`
-	// Specifies the source region name.
+	// The source region name.
 	SrcRegionName string `pulumi:"srcRegionName"`
 }
 
@@ -2486,27 +2276,27 @@ type GetAccessControlLogsRecordInput interface {
 }
 
 type GetAccessControlLogsRecordArgs struct {
-	// Specifies the action. The values can be **allow** and **deny**.
+	// The action.
 	Action pulumi.StringInput `pulumi:"action"`
-	// Specifies the application protocol.
+	// The application protocol.
 	App pulumi.StringInput `pulumi:"app"`
-	// The destination city ID.
+	// The distination city ID.
 	DstCityId pulumi.StringInput `pulumi:"dstCityId"`
-	// Specifies the destination city name.
+	// The distination city name.
 	DstCityName pulumi.StringInput `pulumi:"dstCityName"`
 	// The destination host.
 	DstHost pulumi.StringInput `pulumi:"dstHost"`
-	// Specifies the destination IP address.
+	// The destination IP address.
 	DstIp pulumi.StringInput `pulumi:"dstIp"`
-	// Specifies the destination port.
+	// The destination port.
 	DstPort pulumi.IntInput `pulumi:"dstPort"`
-	// The destination province ID.
+	// The distination province ID.
 	DstProvinceId pulumi.StringInput `pulumi:"dstProvinceId"`
-	// Specifies the destination province name.
+	// The distination province name.
 	DstProvinceName pulumi.StringInput `pulumi:"dstProvinceName"`
 	// The destination region ID.
 	DstRegionId pulumi.StringInput `pulumi:"dstRegionId"`
-	// Specifies the destination region name.
+	// The destination region name.
 	DstRegionName pulumi.StringInput `pulumi:"dstRegionName"`
 	// The hit time.
 	HitTime pulumi.StringInput `pulumi:"hitTime"`
@@ -2516,23 +2306,23 @@ type GetAccessControlLogsRecordArgs struct {
 	Protocol pulumi.StringInput `pulumi:"protocol"`
 	// The rule ID.
 	RuleId pulumi.StringInput `pulumi:"ruleId"`
-	// Specifies the rule name.
+	// The rule name.
 	RuleName pulumi.StringInput `pulumi:"ruleName"`
 	// The source city ID.
 	SrcCityId pulumi.StringInput `pulumi:"srcCityId"`
-	// Specifies the source city name.
+	// The source city name.
 	SrcCityName pulumi.StringInput `pulumi:"srcCityName"`
-	// Specifies the source IP address.
+	// The source IP address.
 	SrcIp pulumi.StringInput `pulumi:"srcIp"`
-	// Specifies the source port.
+	// The source port.
 	SrcPort pulumi.IntInput `pulumi:"srcPort"`
 	// The source province ID.
 	SrcProvinceId pulumi.StringInput `pulumi:"srcProvinceId"`
-	// Specifies the source province name.
+	// The source province name.
 	SrcProvinceName pulumi.StringInput `pulumi:"srcProvinceName"`
 	// The source region ID.
 	SrcRegionId pulumi.StringInput `pulumi:"srcRegionId"`
-	// Specifies the source region name.
+	// The source region name.
 	SrcRegionName pulumi.StringInput `pulumi:"srcRegionName"`
 }
 
@@ -2587,22 +2377,22 @@ func (o GetAccessControlLogsRecordOutput) ToGetAccessControlLogsRecordOutputWith
 	return o
 }
 
-// Specifies the action. The values can be **allow** and **deny**.
+// The action.
 func (o GetAccessControlLogsRecordOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessControlLogsRecord) string { return v.Action }).(pulumi.StringOutput)
 }
 
-// Specifies the application protocol.
+// The application protocol.
 func (o GetAccessControlLogsRecordOutput) App() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessControlLogsRecord) string { return v.App }).(pulumi.StringOutput)
 }
 
-// The destination city ID.
+// The distination city ID.
 func (o GetAccessControlLogsRecordOutput) DstCityId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessControlLogsRecord) string { return v.DstCityId }).(pulumi.StringOutput)
 }
 
-// Specifies the destination city name.
+// The distination city name.
 func (o GetAccessControlLogsRecordOutput) DstCityName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessControlLogsRecord) string { return v.DstCityName }).(pulumi.StringOutput)
 }
@@ -2612,22 +2402,22 @@ func (o GetAccessControlLogsRecordOutput) DstHost() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessControlLogsRecord) string { return v.DstHost }).(pulumi.StringOutput)
 }
 
-// Specifies the destination IP address.
+// The destination IP address.
 func (o GetAccessControlLogsRecordOutput) DstIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessControlLogsRecord) string { return v.DstIp }).(pulumi.StringOutput)
 }
 
-// Specifies the destination port.
+// The destination port.
 func (o GetAccessControlLogsRecordOutput) DstPort() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAccessControlLogsRecord) int { return v.DstPort }).(pulumi.IntOutput)
 }
 
-// The destination province ID.
+// The distination province ID.
 func (o GetAccessControlLogsRecordOutput) DstProvinceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessControlLogsRecord) string { return v.DstProvinceId }).(pulumi.StringOutput)
 }
 
-// Specifies the destination province name.
+// The distination province name.
 func (o GetAccessControlLogsRecordOutput) DstProvinceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessControlLogsRecord) string { return v.DstProvinceName }).(pulumi.StringOutput)
 }
@@ -2637,7 +2427,7 @@ func (o GetAccessControlLogsRecordOutput) DstRegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessControlLogsRecord) string { return v.DstRegionId }).(pulumi.StringOutput)
 }
 
-// Specifies the destination region name.
+// The destination region name.
 func (o GetAccessControlLogsRecordOutput) DstRegionName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessControlLogsRecord) string { return v.DstRegionName }).(pulumi.StringOutput)
 }
@@ -2662,7 +2452,7 @@ func (o GetAccessControlLogsRecordOutput) RuleId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessControlLogsRecord) string { return v.RuleId }).(pulumi.StringOutput)
 }
 
-// Specifies the rule name.
+// The rule name.
 func (o GetAccessControlLogsRecordOutput) RuleName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessControlLogsRecord) string { return v.RuleName }).(pulumi.StringOutput)
 }
@@ -2672,17 +2462,17 @@ func (o GetAccessControlLogsRecordOutput) SrcCityId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessControlLogsRecord) string { return v.SrcCityId }).(pulumi.StringOutput)
 }
 
-// Specifies the source city name.
+// The source city name.
 func (o GetAccessControlLogsRecordOutput) SrcCityName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessControlLogsRecord) string { return v.SrcCityName }).(pulumi.StringOutput)
 }
 
-// Specifies the source IP address.
+// The source IP address.
 func (o GetAccessControlLogsRecordOutput) SrcIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessControlLogsRecord) string { return v.SrcIp }).(pulumi.StringOutput)
 }
 
-// Specifies the source port.
+// The source port.
 func (o GetAccessControlLogsRecordOutput) SrcPort() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAccessControlLogsRecord) int { return v.SrcPort }).(pulumi.IntOutput)
 }
@@ -2692,7 +2482,7 @@ func (o GetAccessControlLogsRecordOutput) SrcProvinceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessControlLogsRecord) string { return v.SrcProvinceId }).(pulumi.StringOutput)
 }
 
-// Specifies the source province name.
+// The source province name.
 func (o GetAccessControlLogsRecordOutput) SrcProvinceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessControlLogsRecord) string { return v.SrcProvinceName }).(pulumi.StringOutput)
 }
@@ -2702,7 +2492,7 @@ func (o GetAccessControlLogsRecordOutput) SrcRegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessControlLogsRecord) string { return v.SrcRegionId }).(pulumi.StringOutput)
 }
 
-// Specifies the source region name.
+// The source region name.
 func (o GetAccessControlLogsRecordOutput) SrcRegionName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessControlLogsRecord) string { return v.SrcRegionName }).(pulumi.StringOutput)
 }
@@ -2728,13 +2518,13 @@ func (o GetAccessControlLogsRecordArrayOutput) Index(i pulumi.IntInput) GetAcces
 }
 
 type GetAddressGroupMembersRecord struct {
-	// Specifies the IP address
+	// The IP address.
 	Address string `pulumi:"address"`
 	// The address type.
 	AddressType int `pulumi:"addressType"`
 	// The address group member description.
 	Description string `pulumi:"description"`
-	// Specifies the address group member ID.
+	// The ID of an address group member.
 	ItemId string `pulumi:"itemId"`
 }
 
@@ -2750,13 +2540,13 @@ type GetAddressGroupMembersRecordInput interface {
 }
 
 type GetAddressGroupMembersRecordArgs struct {
-	// Specifies the IP address
+	// The IP address.
 	Address pulumi.StringInput `pulumi:"address"`
 	// The address type.
 	AddressType pulumi.IntInput `pulumi:"addressType"`
 	// The address group member description.
 	Description pulumi.StringInput `pulumi:"description"`
-	// Specifies the address group member ID.
+	// The ID of an address group member.
 	ItemId pulumi.StringInput `pulumi:"itemId"`
 }
 
@@ -2811,7 +2601,7 @@ func (o GetAddressGroupMembersRecordOutput) ToGetAddressGroupMembersRecordOutput
 	return o
 }
 
-// Specifies the IP address
+// The IP address.
 func (o GetAddressGroupMembersRecordOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAddressGroupMembersRecord) string { return v.Address }).(pulumi.StringOutput)
 }
@@ -2826,7 +2616,7 @@ func (o GetAddressGroupMembersRecordOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAddressGroupMembersRecord) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Specifies the address group member ID.
+// The ID of an address group member.
 func (o GetAddressGroupMembersRecordOutput) ItemId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAddressGroupMembersRecord) string { return v.ItemId }).(pulumi.StringOutput)
 }
@@ -2852,16 +2642,15 @@ func (o GetAddressGroupMembersRecordArrayOutput) Index(i pulumi.IntInput) GetAdd
 }
 
 type GetAddressGroupsAddressGroup struct {
-	// Specifies the IP address type.
-	// The value can be **0** (IPv4) or **1** (IPv6).
+	// The address type.
 	AddressType int `pulumi:"addressType"`
 	// The address groups description.
 	Description string `pulumi:"description"`
 	// The ID of the IP address group.
 	Id string `pulumi:"id"`
-	// Specifies the name of the address group.
+	// The IP address group name.
 	Name string `pulumi:"name"`
-	// Specifies the protected object ID.
+	// The protected object ID.
 	ObjectId string `pulumi:"objectId"`
 	// The number of times this address group has been referenced.
 	RefCount int `pulumi:"refCount"`
@@ -2881,16 +2670,15 @@ type GetAddressGroupsAddressGroupInput interface {
 }
 
 type GetAddressGroupsAddressGroupArgs struct {
-	// Specifies the IP address type.
-	// The value can be **0** (IPv4) or **1** (IPv6).
+	// The address type.
 	AddressType pulumi.IntInput `pulumi:"addressType"`
 	// The address groups description.
 	Description pulumi.StringInput `pulumi:"description"`
 	// The ID of the IP address group.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies the name of the address group.
+	// The IP address group name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies the protected object ID.
+	// The protected object ID.
 	ObjectId pulumi.StringInput `pulumi:"objectId"`
 	// The number of times this address group has been referenced.
 	RefCount pulumi.IntInput `pulumi:"refCount"`
@@ -2949,8 +2737,7 @@ func (o GetAddressGroupsAddressGroupOutput) ToGetAddressGroupsAddressGroupOutput
 	return o
 }
 
-// Specifies the IP address type.
-// The value can be **0** (IPv4) or **1** (IPv6).
+// The address type.
 func (o GetAddressGroupsAddressGroupOutput) AddressType() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAddressGroupsAddressGroup) int { return v.AddressType }).(pulumi.IntOutput)
 }
@@ -2965,12 +2752,12 @@ func (o GetAddressGroupsAddressGroupOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAddressGroupsAddressGroup) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the address group.
+// The IP address group name.
 func (o GetAddressGroupsAddressGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAddressGroupsAddressGroup) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the protected object ID.
+// The protected object ID.
 func (o GetAddressGroupsAddressGroupOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAddressGroupsAddressGroup) string { return v.ObjectId }).(pulumi.StringOutput)
 }
@@ -3006,37 +2793,37 @@ func (o GetAddressGroupsAddressGroupArrayOutput) Index(i pulumi.IntInput) GetAdd
 }
 
 type GetAttackLogsRecord struct {
-	// The action.
+	// Then action.
 	Action string `pulumi:"action"`
-	// Specifies the application protocol.
+	// The application protocol.
 	App string `pulumi:"app"`
-	// Specifies the intrusion event rule.
+	// The attack rule.
 	AttackRule string `pulumi:"attackRule"`
-	// Specifies the attack rule ID.
+	// The attack rule ID.
 	AttackRuleId string `pulumi:"attackRuleId"`
-	// Specifies the intrusion event type.
+	// The attack type.
 	AttackType string `pulumi:"attackType"`
 	// The direction.
 	Direction string `pulumi:"direction"`
-	// The destination city ID.
+	// The distination city ID.
 	DstCityId string `pulumi:"dstCityId"`
-	// Specifies the destination city name.
+	// The distination city name.
 	DstCityName string `pulumi:"dstCityName"`
-	// Specifies the destination IP address.
+	// The destination IP address.
 	DstIp string `pulumi:"dstIp"`
-	// Specifies the destination port.
+	// The destination port.
 	DstPort int `pulumi:"dstPort"`
-	// The destination province ID.
+	// The distination province ID.
 	DstProvinceId string `pulumi:"dstProvinceId"`
-	// Specifies the destination province name.
+	// The distination province name.
 	DstProvinceName string `pulumi:"dstProvinceName"`
 	// The destination region ID.
 	DstRegionId string `pulumi:"dstRegionId"`
-	// Specifies the destination region name.
+	// The destination region name.
 	DstRegionName string `pulumi:"dstRegionName"`
 	// The event time.
 	EventTime string `pulumi:"eventTime"`
-	// Specifies the threat level.
+	// The threat level.
 	Level string `pulumi:"level"`
 	// The log ID.
 	LogId string `pulumi:"logId"`
@@ -3052,19 +2839,19 @@ type GetAttackLogsRecord struct {
 	Source string `pulumi:"source"`
 	// The source city ID.
 	SrcCityId string `pulumi:"srcCityId"`
-	// Specifies the source city name.
+	// The source city name.
 	SrcCityName string `pulumi:"srcCityName"`
-	// Specifies the source IP address.
+	// The source IP address.
 	SrcIp string `pulumi:"srcIp"`
-	// Specifies the source port.
+	// The source port.
 	SrcPort int `pulumi:"srcPort"`
 	// The source province ID.
 	SrcProvinceId string `pulumi:"srcProvinceId"`
-	// Specifies the source province name.
+	// The source province name.
 	SrcProvinceName string `pulumi:"srcProvinceName"`
 	// The source region ID.
 	SrcRegionId string `pulumi:"srcRegionId"`
-	// Specifies the source region name.
+	// The source region name.
 	SrcRegionName string `pulumi:"srcRegionName"`
 }
 
@@ -3080,37 +2867,37 @@ type GetAttackLogsRecordInput interface {
 }
 
 type GetAttackLogsRecordArgs struct {
-	// The action.
+	// Then action.
 	Action pulumi.StringInput `pulumi:"action"`
-	// Specifies the application protocol.
+	// The application protocol.
 	App pulumi.StringInput `pulumi:"app"`
-	// Specifies the intrusion event rule.
+	// The attack rule.
 	AttackRule pulumi.StringInput `pulumi:"attackRule"`
-	// Specifies the attack rule ID.
+	// The attack rule ID.
 	AttackRuleId pulumi.StringInput `pulumi:"attackRuleId"`
-	// Specifies the intrusion event type.
+	// The attack type.
 	AttackType pulumi.StringInput `pulumi:"attackType"`
 	// The direction.
 	Direction pulumi.StringInput `pulumi:"direction"`
-	// The destination city ID.
+	// The distination city ID.
 	DstCityId pulumi.StringInput `pulumi:"dstCityId"`
-	// Specifies the destination city name.
+	// The distination city name.
 	DstCityName pulumi.StringInput `pulumi:"dstCityName"`
-	// Specifies the destination IP address.
+	// The destination IP address.
 	DstIp pulumi.StringInput `pulumi:"dstIp"`
-	// Specifies the destination port.
+	// The destination port.
 	DstPort pulumi.IntInput `pulumi:"dstPort"`
-	// The destination province ID.
+	// The distination province ID.
 	DstProvinceId pulumi.StringInput `pulumi:"dstProvinceId"`
-	// Specifies the destination province name.
+	// The distination province name.
 	DstProvinceName pulumi.StringInput `pulumi:"dstProvinceName"`
 	// The destination region ID.
 	DstRegionId pulumi.StringInput `pulumi:"dstRegionId"`
-	// Specifies the destination region name.
+	// The destination region name.
 	DstRegionName pulumi.StringInput `pulumi:"dstRegionName"`
 	// The event time.
 	EventTime pulumi.StringInput `pulumi:"eventTime"`
-	// Specifies the threat level.
+	// The threat level.
 	Level pulumi.StringInput `pulumi:"level"`
 	// The log ID.
 	LogId pulumi.StringInput `pulumi:"logId"`
@@ -3126,19 +2913,19 @@ type GetAttackLogsRecordArgs struct {
 	Source pulumi.StringInput `pulumi:"source"`
 	// The source city ID.
 	SrcCityId pulumi.StringInput `pulumi:"srcCityId"`
-	// Specifies the source city name.
+	// The source city name.
 	SrcCityName pulumi.StringInput `pulumi:"srcCityName"`
-	// Specifies the source IP address.
+	// The source IP address.
 	SrcIp pulumi.StringInput `pulumi:"srcIp"`
-	// Specifies the source port.
+	// The source port.
 	SrcPort pulumi.IntInput `pulumi:"srcPort"`
 	// The source province ID.
 	SrcProvinceId pulumi.StringInput `pulumi:"srcProvinceId"`
-	// Specifies the source province name.
+	// The source province name.
 	SrcProvinceName pulumi.StringInput `pulumi:"srcProvinceName"`
 	// The source region ID.
 	SrcRegionId pulumi.StringInput `pulumi:"srcRegionId"`
-	// Specifies the source region name.
+	// The source region name.
 	SrcRegionName pulumi.StringInput `pulumi:"srcRegionName"`
 }
 
@@ -3193,27 +2980,27 @@ func (o GetAttackLogsRecordOutput) ToGetAttackLogsRecordOutputWithContext(ctx co
 	return o
 }
 
-// The action.
+// Then action.
 func (o GetAttackLogsRecordOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttackLogsRecord) string { return v.Action }).(pulumi.StringOutput)
 }
 
-// Specifies the application protocol.
+// The application protocol.
 func (o GetAttackLogsRecordOutput) App() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttackLogsRecord) string { return v.App }).(pulumi.StringOutput)
 }
 
-// Specifies the intrusion event rule.
+// The attack rule.
 func (o GetAttackLogsRecordOutput) AttackRule() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttackLogsRecord) string { return v.AttackRule }).(pulumi.StringOutput)
 }
 
-// Specifies the attack rule ID.
+// The attack rule ID.
 func (o GetAttackLogsRecordOutput) AttackRuleId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttackLogsRecord) string { return v.AttackRuleId }).(pulumi.StringOutput)
 }
 
-// Specifies the intrusion event type.
+// The attack type.
 func (o GetAttackLogsRecordOutput) AttackType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttackLogsRecord) string { return v.AttackType }).(pulumi.StringOutput)
 }
@@ -3223,32 +3010,32 @@ func (o GetAttackLogsRecordOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttackLogsRecord) string { return v.Direction }).(pulumi.StringOutput)
 }
 
-// The destination city ID.
+// The distination city ID.
 func (o GetAttackLogsRecordOutput) DstCityId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttackLogsRecord) string { return v.DstCityId }).(pulumi.StringOutput)
 }
 
-// Specifies the destination city name.
+// The distination city name.
 func (o GetAttackLogsRecordOutput) DstCityName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttackLogsRecord) string { return v.DstCityName }).(pulumi.StringOutput)
 }
 
-// Specifies the destination IP address.
+// The destination IP address.
 func (o GetAttackLogsRecordOutput) DstIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttackLogsRecord) string { return v.DstIp }).(pulumi.StringOutput)
 }
 
-// Specifies the destination port.
+// The destination port.
 func (o GetAttackLogsRecordOutput) DstPort() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAttackLogsRecord) int { return v.DstPort }).(pulumi.IntOutput)
 }
 
-// The destination province ID.
+// The distination province ID.
 func (o GetAttackLogsRecordOutput) DstProvinceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttackLogsRecord) string { return v.DstProvinceId }).(pulumi.StringOutput)
 }
 
-// Specifies the destination province name.
+// The distination province name.
 func (o GetAttackLogsRecordOutput) DstProvinceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttackLogsRecord) string { return v.DstProvinceName }).(pulumi.StringOutput)
 }
@@ -3258,7 +3045,7 @@ func (o GetAttackLogsRecordOutput) DstRegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttackLogsRecord) string { return v.DstRegionId }).(pulumi.StringOutput)
 }
 
-// Specifies the destination region name.
+// The destination region name.
 func (o GetAttackLogsRecordOutput) DstRegionName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttackLogsRecord) string { return v.DstRegionName }).(pulumi.StringOutput)
 }
@@ -3268,7 +3055,7 @@ func (o GetAttackLogsRecordOutput) EventTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttackLogsRecord) string { return v.EventTime }).(pulumi.StringOutput)
 }
 
-// Specifies the threat level.
+// The threat level.
 func (o GetAttackLogsRecordOutput) Level() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttackLogsRecord) string { return v.Level }).(pulumi.StringOutput)
 }
@@ -3308,17 +3095,17 @@ func (o GetAttackLogsRecordOutput) SrcCityId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttackLogsRecord) string { return v.SrcCityId }).(pulumi.StringOutput)
 }
 
-// Specifies the source city name.
+// The source city name.
 func (o GetAttackLogsRecordOutput) SrcCityName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttackLogsRecord) string { return v.SrcCityName }).(pulumi.StringOutput)
 }
 
-// Specifies the source IP address.
+// The source IP address.
 func (o GetAttackLogsRecordOutput) SrcIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttackLogsRecord) string { return v.SrcIp }).(pulumi.StringOutput)
 }
 
-// Specifies the source port.
+// The source port.
 func (o GetAttackLogsRecordOutput) SrcPort() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAttackLogsRecord) int { return v.SrcPort }).(pulumi.IntOutput)
 }
@@ -3328,7 +3115,7 @@ func (o GetAttackLogsRecordOutput) SrcProvinceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttackLogsRecord) string { return v.SrcProvinceId }).(pulumi.StringOutput)
 }
 
-// Specifies the source province name.
+// The source province name.
 func (o GetAttackLogsRecordOutput) SrcProvinceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttackLogsRecord) string { return v.SrcProvinceName }).(pulumi.StringOutput)
 }
@@ -3338,7 +3125,7 @@ func (o GetAttackLogsRecordOutput) SrcRegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttackLogsRecord) string { return v.SrcRegionId }).(pulumi.StringOutput)
 }
 
-// Specifies the source region name.
+// The source region name.
 func (o GetAttackLogsRecordOutput) SrcRegionName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttackLogsRecord) string { return v.SrcRegionName }).(pulumi.StringOutput)
 }
@@ -3479,28 +3266,19 @@ func (o GetAttackLogsRecordPacketMessageArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetBlackWhiteListsRecord struct {
-	// Specifies the IP address.
+	// The IP address.
 	Address string `pulumi:"address"`
-	// Specifies the IP address type.
-	// The valid value can be **0** (IPv4).
+	// The IP address type.
 	AddressType string `pulumi:"addressType"`
-	// Specifies the description.
+	// The description.
 	Description string `pulumi:"description"`
-	// Specifies the direction of a black or white address.
-	// The options are as follows:
-	// + **0**: source address;
-	// + **1**: destination address;
+	// The direction of a black or white address.
 	Direction string `pulumi:"direction"`
-	// Specifies the blacklist/whitelist ID.
+	// The blacklist/whitelist ID.
 	ListId string `pulumi:"listId"`
-	// Specifies the port.
+	// The port.
 	Port string `pulumi:"port"`
-	// Specifies The protocol type.
-	// The options are as follows:
-	// + **6**: TCP;
-	// + **17**: UDP;
-	// + **1**: ICMP;
-	// + **-1**: any protocol;
+	// The protocol type.
 	Protocol int `pulumi:"protocol"`
 }
 
@@ -3516,28 +3294,19 @@ type GetBlackWhiteListsRecordInput interface {
 }
 
 type GetBlackWhiteListsRecordArgs struct {
-	// Specifies the IP address.
+	// The IP address.
 	Address pulumi.StringInput `pulumi:"address"`
-	// Specifies the IP address type.
-	// The valid value can be **0** (IPv4).
+	// The IP address type.
 	AddressType pulumi.StringInput `pulumi:"addressType"`
-	// Specifies the description.
+	// The description.
 	Description pulumi.StringInput `pulumi:"description"`
-	// Specifies the direction of a black or white address.
-	// The options are as follows:
-	// + **0**: source address;
-	// + **1**: destination address;
+	// The direction of a black or white address.
 	Direction pulumi.StringInput `pulumi:"direction"`
-	// Specifies the blacklist/whitelist ID.
+	// The blacklist/whitelist ID.
 	ListId pulumi.StringInput `pulumi:"listId"`
-	// Specifies the port.
+	// The port.
 	Port pulumi.StringInput `pulumi:"port"`
-	// Specifies The protocol type.
-	// The options are as follows:
-	// + **6**: TCP;
-	// + **17**: UDP;
-	// + **1**: ICMP;
-	// + **-1**: any protocol;
+	// The protocol type.
 	Protocol pulumi.IntInput `pulumi:"protocol"`
 }
 
@@ -3592,46 +3361,37 @@ func (o GetBlackWhiteListsRecordOutput) ToGetBlackWhiteListsRecordOutputWithCont
 	return o
 }
 
-// Specifies the IP address.
+// The IP address.
 func (o GetBlackWhiteListsRecordOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBlackWhiteListsRecord) string { return v.Address }).(pulumi.StringOutput)
 }
 
-// Specifies the IP address type.
-// The valid value can be **0** (IPv4).
+// The IP address type.
 func (o GetBlackWhiteListsRecordOutput) AddressType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBlackWhiteListsRecord) string { return v.AddressType }).(pulumi.StringOutput)
 }
 
-// Specifies the description.
+// The description.
 func (o GetBlackWhiteListsRecordOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBlackWhiteListsRecord) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Specifies the direction of a black or white address.
-// The options are as follows:
-// + **0**: source address;
-// + **1**: destination address;
+// The direction of a black or white address.
 func (o GetBlackWhiteListsRecordOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBlackWhiteListsRecord) string { return v.Direction }).(pulumi.StringOutput)
 }
 
-// Specifies the blacklist/whitelist ID.
+// The blacklist/whitelist ID.
 func (o GetBlackWhiteListsRecordOutput) ListId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBlackWhiteListsRecord) string { return v.ListId }).(pulumi.StringOutput)
 }
 
-// Specifies the port.
+// The port.
 func (o GetBlackWhiteListsRecordOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBlackWhiteListsRecord) string { return v.Port }).(pulumi.StringOutput)
 }
 
-// Specifies The protocol type.
-// The options are as follows:
-// + **6**: TCP;
-// + **17**: UDP;
-// + **1**: ICMP;
-// + **-1**: any protocol;
+// The protocol type.
 func (o GetBlackWhiteListsRecordOutput) Protocol() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBlackWhiteListsRecord) int { return v.Protocol }).(pulumi.IntOutput)
 }
@@ -4110,33 +3870,23 @@ func (o GetCaptureTasksRecordArrayOutput) Index(i pulumi.IntInput) GetCaptureTas
 }
 
 type GetDomainNameGroupsRecord struct {
-	// Specifies the configuration status.
-	// The valid values are as follows:
-	// + **-1**: not configured.
-	// + **0**: configuration failed.
-	// + **1**: configuration succeeded.
-	// + **2**: configuration in progress.
-	// + **3**: normal.
-	// + **4**: configuration exception - domain group usage.
+	// The configuration status.
 	ConfigStatus string `pulumi:"configStatus"`
-	// The description.
+	// The domain name group description.
 	Description string `pulumi:"description"`
 	// The list of domain names.
 	DomainNames []GetDomainNameGroupsRecordDomainName `pulumi:"domainNames"`
-	// Specifies the domain name group ID.
+	// The domain name group ID.
 	GroupId string `pulumi:"groupId"`
 	// The configuration message.
 	Message string `pulumi:"message"`
-	// Specifies the name of a domain name group.
+	// The domain name group name.
 	Name string `pulumi:"name"`
-	// Specifies the domain name group reference count.
+	// The domain name group reference count.
 	RefCount string `pulumi:"refCount"`
 	// The used rule list.
 	Rules []GetDomainNameGroupsRecordRule `pulumi:"rules"`
-	// Specifies the domain name group type.
-	// The value can be:
-	// + **0**: means application type;
-	// + **1**: means network type.
+	// The domain name group type.
 	Type string `pulumi:"type"`
 }
 
@@ -4152,33 +3902,23 @@ type GetDomainNameGroupsRecordInput interface {
 }
 
 type GetDomainNameGroupsRecordArgs struct {
-	// Specifies the configuration status.
-	// The valid values are as follows:
-	// + **-1**: not configured.
-	// + **0**: configuration failed.
-	// + **1**: configuration succeeded.
-	// + **2**: configuration in progress.
-	// + **3**: normal.
-	// + **4**: configuration exception - domain group usage.
+	// The configuration status.
 	ConfigStatus pulumi.StringInput `pulumi:"configStatus"`
-	// The description.
+	// The domain name group description.
 	Description pulumi.StringInput `pulumi:"description"`
 	// The list of domain names.
 	DomainNames GetDomainNameGroupsRecordDomainNameArrayInput `pulumi:"domainNames"`
-	// Specifies the domain name group ID.
+	// The domain name group ID.
 	GroupId pulumi.StringInput `pulumi:"groupId"`
 	// The configuration message.
 	Message pulumi.StringInput `pulumi:"message"`
-	// Specifies the name of a domain name group.
+	// The domain name group name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies the domain name group reference count.
+	// The domain name group reference count.
 	RefCount pulumi.StringInput `pulumi:"refCount"`
 	// The used rule list.
 	Rules GetDomainNameGroupsRecordRuleArrayInput `pulumi:"rules"`
-	// Specifies the domain name group type.
-	// The value can be:
-	// + **0**: means application type;
-	// + **1**: means network type.
+	// The domain name group type.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -4233,19 +3973,12 @@ func (o GetDomainNameGroupsRecordOutput) ToGetDomainNameGroupsRecordOutputWithCo
 	return o
 }
 
-// Specifies the configuration status.
-// The valid values are as follows:
-// + **-1**: not configured.
-// + **0**: configuration failed.
-// + **1**: configuration succeeded.
-// + **2**: configuration in progress.
-// + **3**: normal.
-// + **4**: configuration exception - domain group usage.
+// The configuration status.
 func (o GetDomainNameGroupsRecordOutput) ConfigStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainNameGroupsRecord) string { return v.ConfigStatus }).(pulumi.StringOutput)
 }
 
-// The description.
+// The domain name group description.
 func (o GetDomainNameGroupsRecordOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainNameGroupsRecord) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -4255,7 +3988,7 @@ func (o GetDomainNameGroupsRecordOutput) DomainNames() GetDomainNameGroupsRecord
 	return o.ApplyT(func(v GetDomainNameGroupsRecord) []GetDomainNameGroupsRecordDomainName { return v.DomainNames }).(GetDomainNameGroupsRecordDomainNameArrayOutput)
 }
 
-// Specifies the domain name group ID.
+// The domain name group ID.
 func (o GetDomainNameGroupsRecordOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainNameGroupsRecord) string { return v.GroupId }).(pulumi.StringOutput)
 }
@@ -4265,12 +3998,12 @@ func (o GetDomainNameGroupsRecordOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainNameGroupsRecord) string { return v.Message }).(pulumi.StringOutput)
 }
 
-// Specifies the name of a domain name group.
+// The domain name group name.
 func (o GetDomainNameGroupsRecordOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainNameGroupsRecord) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the domain name group reference count.
+// The domain name group reference count.
 func (o GetDomainNameGroupsRecordOutput) RefCount() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainNameGroupsRecord) string { return v.RefCount }).(pulumi.StringOutput)
 }
@@ -4280,10 +4013,7 @@ func (o GetDomainNameGroupsRecordOutput) Rules() GetDomainNameGroupsRecordRuleAr
 	return o.ApplyT(func(v GetDomainNameGroupsRecord) []GetDomainNameGroupsRecordRule { return v.Rules }).(GetDomainNameGroupsRecordRuleArrayOutput)
 }
 
-// Specifies the domain name group type.
-// The value can be:
-// + **0**: means application type;
-// + **1**: means network type.
+// The domain name group type.
 func (o GetDomainNameGroupsRecordOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainNameGroupsRecord) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -4426,7 +4156,7 @@ func (o GetDomainNameGroupsRecordDomainNameArrayOutput) Index(i pulumi.IntInput)
 type GetDomainNameGroupsRecordRule struct {
 	// The rule ID.
 	Id string `pulumi:"id"`
-	// Specifies the name of a domain name group.
+	// The rule name.
 	Name string `pulumi:"name"`
 }
 
@@ -4444,7 +4174,7 @@ type GetDomainNameGroupsRecordRuleInput interface {
 type GetDomainNameGroupsRecordRuleArgs struct {
 	// The rule ID.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies the name of a domain name group.
+	// The rule name.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -4504,7 +4234,7 @@ func (o GetDomainNameGroupsRecordRuleOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainNameGroupsRecordRule) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Specifies the name of a domain name group.
+// The rule name.
 func (o GetDomainNameGroupsRecordRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainNameGroupsRecordRule) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -4530,51 +4260,31 @@ func (o GetDomainNameGroupsRecordRuleArrayOutput) Index(i pulumi.IntInput) GetDo
 }
 
 type GetFirewallsRecord struct {
-	// The billing mode. The value can be 0 (yearly/monthly) or 1 (pay-per-use).
+	// Billing mode. The value can be 0 (yearly/monthly) or 1 (pay-per-use).
 	ChargeMode int `pulumi:"chargeMode"`
-	// The engine type.
+	// Engine type
 	EngineType int `pulumi:"engineType"`
-	// The map of feature toggle.
+	// Whether to enable the feature. The options are true (yes) and false (no).
 	FeatureToggle map[string]bool `pulumi:"featureToggle"`
 	// The flavor of the firewall.
-	// The Flavor structure is documented below.
 	Flavors []GetFirewallsRecordFlavor `pulumi:"flavors"`
-	// Specifies the firewall instance ID.
-	// If not specified, the first instance will be returned.
+	// Firewall ID
 	FwInstanceId string `pulumi:"fwInstanceId"`
-	// The cluster type.
+	// Cluster type
 	HaType int `pulumi:"haType"`
-	// Whether the engine is an old engine.
+	// Whether the engine is an old engine. The options are true (yes) and false (no).
 	IsOldFirewallInstance bool `pulumi:"isOldFirewallInstance"`
-	// The firewall name.
+	// Firewall name
 	Name string `pulumi:"name"`
-	// The project list.
-	// The Protect Object structure is documented below.
+	// Project list
 	ProtectObjects []GetFirewallsRecordProtectObject `pulumi:"protectObjects"`
-	// The firewall instance resources.
-	// The Firewall Instance Resource structure is
-	// documented below.
+	// Firewall instance resources
 	Resources []GetFirewallsRecordResource `pulumi:"resources"`
-	// Specifies the service type. The value can be:
-	// + **0**: North-south firewall;
-	// + **1**: East-west firewall;
+	// Service type
 	ServiceType int `pulumi:"serviceType"`
-	// The firewall status. The options are as follows:
-	// + **-1**: waiting for payment;
-	// + **0**: creating;
-	// + **1**: deleting;
-	// + **2**: running;
-	// + **3**: upgrading;
-	// + **4**: deletion completed;
-	// + **5**: freezing;
-	// + **6**: creation failed;
-	// + **7**: deletion failed;
-	// + **8**: freezing failed;
-	// + **9**: storage in progress;
-	// + **10**: storage failed;
-	// + **11**: upgrade failed;
+	// Firewall status list. The options are as follows: -1: waiting for payment; 0: creating; 1: deleting; 2: running; 3: upgrading; 4: deletion completed; 5: freezing; 6: creation failed; 7: deletion failed; 8: freezing failed; 9: storage in progress; 10: storage failed; 11: upgrade failed
 	Status int `pulumi:"status"`
-	// Whether IPv6 is supported.
+	// Whether IPv6 is supported. The options are true (yes) and false (no).
 	SupportIpv6 bool `pulumi:"supportIpv6"`
 }
 
@@ -4590,51 +4300,31 @@ type GetFirewallsRecordInput interface {
 }
 
 type GetFirewallsRecordArgs struct {
-	// The billing mode. The value can be 0 (yearly/monthly) or 1 (pay-per-use).
+	// Billing mode. The value can be 0 (yearly/monthly) or 1 (pay-per-use).
 	ChargeMode pulumi.IntInput `pulumi:"chargeMode"`
-	// The engine type.
+	// Engine type
 	EngineType pulumi.IntInput `pulumi:"engineType"`
-	// The map of feature toggle.
+	// Whether to enable the feature. The options are true (yes) and false (no).
 	FeatureToggle pulumi.BoolMapInput `pulumi:"featureToggle"`
 	// The flavor of the firewall.
-	// The Flavor structure is documented below.
 	Flavors GetFirewallsRecordFlavorArrayInput `pulumi:"flavors"`
-	// Specifies the firewall instance ID.
-	// If not specified, the first instance will be returned.
+	// Firewall ID
 	FwInstanceId pulumi.StringInput `pulumi:"fwInstanceId"`
-	// The cluster type.
+	// Cluster type
 	HaType pulumi.IntInput `pulumi:"haType"`
-	// Whether the engine is an old engine.
+	// Whether the engine is an old engine. The options are true (yes) and false (no).
 	IsOldFirewallInstance pulumi.BoolInput `pulumi:"isOldFirewallInstance"`
-	// The firewall name.
+	// Firewall name
 	Name pulumi.StringInput `pulumi:"name"`
-	// The project list.
-	// The Protect Object structure is documented below.
+	// Project list
 	ProtectObjects GetFirewallsRecordProtectObjectArrayInput `pulumi:"protectObjects"`
-	// The firewall instance resources.
-	// The Firewall Instance Resource structure is
-	// documented below.
+	// Firewall instance resources
 	Resources GetFirewallsRecordResourceArrayInput `pulumi:"resources"`
-	// Specifies the service type. The value can be:
-	// + **0**: North-south firewall;
-	// + **1**: East-west firewall;
+	// Service type
 	ServiceType pulumi.IntInput `pulumi:"serviceType"`
-	// The firewall status. The options are as follows:
-	// + **-1**: waiting for payment;
-	// + **0**: creating;
-	// + **1**: deleting;
-	// + **2**: running;
-	// + **3**: upgrading;
-	// + **4**: deletion completed;
-	// + **5**: freezing;
-	// + **6**: creation failed;
-	// + **7**: deletion failed;
-	// + **8**: freezing failed;
-	// + **9**: storage in progress;
-	// + **10**: storage failed;
-	// + **11**: upgrade failed;
+	// Firewall status list. The options are as follows: -1: waiting for payment; 0: creating; 1: deleting; 2: running; 3: upgrading; 4: deletion completed; 5: freezing; 6: creation failed; 7: deletion failed; 8: freezing failed; 9: storage in progress; 10: storage failed; 11: upgrade failed
 	Status pulumi.IntInput `pulumi:"status"`
-	// Whether IPv6 is supported.
+	// Whether IPv6 is supported. The options are true (yes) and false (no).
 	SupportIpv6 pulumi.BoolInput `pulumi:"supportIpv6"`
 }
 
@@ -4689,87 +4379,67 @@ func (o GetFirewallsRecordOutput) ToGetFirewallsRecordOutputWithContext(ctx cont
 	return o
 }
 
-// The billing mode. The value can be 0 (yearly/monthly) or 1 (pay-per-use).
+// Billing mode. The value can be 0 (yearly/monthly) or 1 (pay-per-use).
 func (o GetFirewallsRecordOutput) ChargeMode() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFirewallsRecord) int { return v.ChargeMode }).(pulumi.IntOutput)
 }
 
-// The engine type.
+// Engine type
 func (o GetFirewallsRecordOutput) EngineType() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFirewallsRecord) int { return v.EngineType }).(pulumi.IntOutput)
 }
 
-// The map of feature toggle.
+// Whether to enable the feature. The options are true (yes) and false (no).
 func (o GetFirewallsRecordOutput) FeatureToggle() pulumi.BoolMapOutput {
 	return o.ApplyT(func(v GetFirewallsRecord) map[string]bool { return v.FeatureToggle }).(pulumi.BoolMapOutput)
 }
 
 // The flavor of the firewall.
-// The Flavor structure is documented below.
 func (o GetFirewallsRecordOutput) Flavors() GetFirewallsRecordFlavorArrayOutput {
 	return o.ApplyT(func(v GetFirewallsRecord) []GetFirewallsRecordFlavor { return v.Flavors }).(GetFirewallsRecordFlavorArrayOutput)
 }
 
-// Specifies the firewall instance ID.
-// If not specified, the first instance will be returned.
+// Firewall ID
 func (o GetFirewallsRecordOutput) FwInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallsRecord) string { return v.FwInstanceId }).(pulumi.StringOutput)
 }
 
-// The cluster type.
+// Cluster type
 func (o GetFirewallsRecordOutput) HaType() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFirewallsRecord) int { return v.HaType }).(pulumi.IntOutput)
 }
 
-// Whether the engine is an old engine.
+// Whether the engine is an old engine. The options are true (yes) and false (no).
 func (o GetFirewallsRecordOutput) IsOldFirewallInstance() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetFirewallsRecord) bool { return v.IsOldFirewallInstance }).(pulumi.BoolOutput)
 }
 
-// The firewall name.
+// Firewall name
 func (o GetFirewallsRecordOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallsRecord) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The project list.
-// The Protect Object structure is documented below.
+// Project list
 func (o GetFirewallsRecordOutput) ProtectObjects() GetFirewallsRecordProtectObjectArrayOutput {
 	return o.ApplyT(func(v GetFirewallsRecord) []GetFirewallsRecordProtectObject { return v.ProtectObjects }).(GetFirewallsRecordProtectObjectArrayOutput)
 }
 
-// The firewall instance resources.
-// The Firewall Instance Resource structure is
-// documented below.
+// Firewall instance resources
 func (o GetFirewallsRecordOutput) Resources() GetFirewallsRecordResourceArrayOutput {
 	return o.ApplyT(func(v GetFirewallsRecord) []GetFirewallsRecordResource { return v.Resources }).(GetFirewallsRecordResourceArrayOutput)
 }
 
-// Specifies the service type. The value can be:
-// + **0**: North-south firewall;
-// + **1**: East-west firewall;
+// Service type
 func (o GetFirewallsRecordOutput) ServiceType() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFirewallsRecord) int { return v.ServiceType }).(pulumi.IntOutput)
 }
 
-// The firewall status. The options are as follows:
-// + **-1**: waiting for payment;
-// + **0**: creating;
-// + **1**: deleting;
-// + **2**: running;
-// + **3**: upgrading;
-// + **4**: deletion completed;
-// + **5**: freezing;
-// + **6**: creation failed;
-// + **7**: deletion failed;
-// + **8**: freezing failed;
-// + **9**: storage in progress;
-// + **10**: storage failed;
-// + **11**: upgrade failed;
+// Firewall status list. The options are as follows: -1: waiting for payment; 0: creating; 1: deleting; 2: running; 3: upgrading; 4: deletion completed; 5: freezing; 6: creation failed; 7: deletion failed; 8: freezing failed; 9: storage in progress; 10: storage failed; 11: upgrade failed
 func (o GetFirewallsRecordOutput) Status() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFirewallsRecord) int { return v.Status }).(pulumi.IntOutput)
 }
 
-// Whether IPv6 is supported.
+// Whether IPv6 is supported. The options are true (yes) and false (no).
 func (o GetFirewallsRecordOutput) SupportIpv6() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetFirewallsRecord) bool { return v.SupportIpv6 }).(pulumi.BoolOutput)
 }
@@ -4795,16 +4465,15 @@ func (o GetFirewallsRecordArrayOutput) Index(i pulumi.IntInput) GetFirewallsReco
 }
 
 type GetFirewallsRecordFlavor struct {
-	// The bandwidth.
+	// Bandwidth
 	Bandwidth int `pulumi:"bandwidth"`
-	// The number of EIPs.
+	// Number of EIPs
 	EipCount int `pulumi:"eipCount"`
-	// The log storage.
+	// Log storage
 	LogStorage int `pulumi:"logStorage"`
-	// The firewall version. The value can be 0 (standard edition), 1 (professional edition),
-	// 2 (platinum edition), or 3 (basic edition).
+	// Firewall version. The value can be 0 (standard edition), 1 (professional edition), 2 (platinum edition), or 3 (basic edition).
 	Version int `pulumi:"version"`
-	// The number of VPCs.
+	// Number of VPCs
 	VpcCount int `pulumi:"vpcCount"`
 }
 
@@ -4820,16 +4489,15 @@ type GetFirewallsRecordFlavorInput interface {
 }
 
 type GetFirewallsRecordFlavorArgs struct {
-	// The bandwidth.
+	// Bandwidth
 	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
-	// The number of EIPs.
+	// Number of EIPs
 	EipCount pulumi.IntInput `pulumi:"eipCount"`
-	// The log storage.
+	// Log storage
 	LogStorage pulumi.IntInput `pulumi:"logStorage"`
-	// The firewall version. The value can be 0 (standard edition), 1 (professional edition),
-	// 2 (platinum edition), or 3 (basic edition).
+	// Firewall version. The value can be 0 (standard edition), 1 (professional edition), 2 (platinum edition), or 3 (basic edition).
 	Version pulumi.IntInput `pulumi:"version"`
-	// The number of VPCs.
+	// Number of VPCs
 	VpcCount pulumi.IntInput `pulumi:"vpcCount"`
 }
 
@@ -4884,28 +4552,27 @@ func (o GetFirewallsRecordFlavorOutput) ToGetFirewallsRecordFlavorOutputWithCont
 	return o
 }
 
-// The bandwidth.
+// Bandwidth
 func (o GetFirewallsRecordFlavorOutput) Bandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFirewallsRecordFlavor) int { return v.Bandwidth }).(pulumi.IntOutput)
 }
 
-// The number of EIPs.
+// Number of EIPs
 func (o GetFirewallsRecordFlavorOutput) EipCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFirewallsRecordFlavor) int { return v.EipCount }).(pulumi.IntOutput)
 }
 
-// The log storage.
+// Log storage
 func (o GetFirewallsRecordFlavorOutput) LogStorage() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFirewallsRecordFlavor) int { return v.LogStorage }).(pulumi.IntOutput)
 }
 
-// The firewall version. The value can be 0 (standard edition), 1 (professional edition),
-// 2 (platinum edition), or 3 (basic edition).
+// Firewall version. The value can be 0 (standard edition), 1 (professional edition), 2 (platinum edition), or 3 (basic edition).
 func (o GetFirewallsRecordFlavorOutput) Version() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFirewallsRecordFlavor) int { return v.Version }).(pulumi.IntOutput)
 }
 
-// The number of VPCs.
+// Number of VPCs
 func (o GetFirewallsRecordFlavorOutput) VpcCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFirewallsRecordFlavor) int { return v.VpcCount }).(pulumi.IntOutput)
 }
@@ -4931,13 +4598,11 @@ func (o GetFirewallsRecordFlavorArrayOutput) Index(i pulumi.IntInput) GetFirewal
 }
 
 type GetFirewallsRecordProtectObject struct {
-	// The protected object ID.
+	// Protected object ID
 	ObjectId string `pulumi:"objectId"`
-	// The protected object name.
+	// Protected object name
 	ObjectName string `pulumi:"objectName"`
-	// The project type. The options are as follows:
-	// + **0**: north-south;
-	// + **1**: east-west;
+	// Project type. The options are as follows: 0: north-south; 1: east-west.
 	Type int `pulumi:"type"`
 }
 
@@ -4953,13 +4618,11 @@ type GetFirewallsRecordProtectObjectInput interface {
 }
 
 type GetFirewallsRecordProtectObjectArgs struct {
-	// The protected object ID.
+	// Protected object ID
 	ObjectId pulumi.StringInput `pulumi:"objectId"`
-	// The protected object name.
+	// Protected object name
 	ObjectName pulumi.StringInput `pulumi:"objectName"`
-	// The project type. The options are as follows:
-	// + **0**: north-south;
-	// + **1**: east-west;
+	// Project type. The options are as follows: 0: north-south; 1: east-west.
 	Type pulumi.IntInput `pulumi:"type"`
 }
 
@@ -5014,19 +4677,17 @@ func (o GetFirewallsRecordProtectObjectOutput) ToGetFirewallsRecordProtectObject
 	return o
 }
 
-// The protected object ID.
+// Protected object ID
 func (o GetFirewallsRecordProtectObjectOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallsRecordProtectObject) string { return v.ObjectId }).(pulumi.StringOutput)
 }
 
-// The protected object name.
+// Protected object name
 func (o GetFirewallsRecordProtectObjectOutput) ObjectName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallsRecordProtectObject) string { return v.ObjectName }).(pulumi.StringOutput)
 }
 
-// The project type. The options are as follows:
-// + **0**: north-south;
-// + **1**: east-west;
+// Project type. The options are as follows: 0: north-south; 1: east-west.
 func (o GetFirewallsRecordProtectObjectOutput) Type() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFirewallsRecordProtectObject) int { return v.Type }).(pulumi.IntOutput)
 }
@@ -5052,22 +4713,17 @@ func (o GetFirewallsRecordProtectObjectArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetFirewallsRecordResource struct {
-	// Service type, which is used by CBC. The value is **hws.service.type.cfw**.
+	// Service type, which is used by CBC. The value is hws.service.type.cfw.
 	CloudServiceType string `pulumi:"cloudServiceType"`
-	// Resource ID.
+	// Resource ID
 	ResourceId string `pulumi:"resourceId"`
-	// Resource quantity.
+	// Resource quantity
 	ResourceSize int `pulumi:"resourceSize"`
-	// Resource unit name.
+	// Resource unit name
 	ResourceSizeMeasureId int `pulumi:"resourceSizeMeasureId"`
-	// Inventory unit code.
+	// Inventory unit code
 	ResourceSpecCode string `pulumi:"resourceSpecCode"`
-	// Resource type. The options are as follows:
-	// + **CFW**: hws.resource.type.cfw;
-	// + **EIP**: hws.resource.type.cfw.exp.eip;
-	// + **Bandwidth**: hws.resource.type.cfw.exp.bandwidth;
-	// + **VPC**: hws.resource.type.cfw.exp.vpc;
-	// + **Log storage**: hws.resource.type.cfw.exp.logaudit;
+	// Resource type. The options are as follows:1. CFW: hws.resource.type.cfw 2. EIP:hws.resource.type.cfw.exp.eip 3. Bandwidth: hws.resource.type.cfw.exp.bandwidth 4. VPC: hws.resource.type.cfw.exp.vpc 5. Log storage: hws.resource.type.cfw.exp.logaudit
 	ResourceType string `pulumi:"resourceType"`
 }
 
@@ -5083,22 +4739,17 @@ type GetFirewallsRecordResourceInput interface {
 }
 
 type GetFirewallsRecordResourceArgs struct {
-	// Service type, which is used by CBC. The value is **hws.service.type.cfw**.
+	// Service type, which is used by CBC. The value is hws.service.type.cfw.
 	CloudServiceType pulumi.StringInput `pulumi:"cloudServiceType"`
-	// Resource ID.
+	// Resource ID
 	ResourceId pulumi.StringInput `pulumi:"resourceId"`
-	// Resource quantity.
+	// Resource quantity
 	ResourceSize pulumi.IntInput `pulumi:"resourceSize"`
-	// Resource unit name.
+	// Resource unit name
 	ResourceSizeMeasureId pulumi.IntInput `pulumi:"resourceSizeMeasureId"`
-	// Inventory unit code.
+	// Inventory unit code
 	ResourceSpecCode pulumi.StringInput `pulumi:"resourceSpecCode"`
-	// Resource type. The options are as follows:
-	// + **CFW**: hws.resource.type.cfw;
-	// + **EIP**: hws.resource.type.cfw.exp.eip;
-	// + **Bandwidth**: hws.resource.type.cfw.exp.bandwidth;
-	// + **VPC**: hws.resource.type.cfw.exp.vpc;
-	// + **Log storage**: hws.resource.type.cfw.exp.logaudit;
+	// Resource type. The options are as follows:1. CFW: hws.resource.type.cfw 2. EIP:hws.resource.type.cfw.exp.eip 3. Bandwidth: hws.resource.type.cfw.exp.bandwidth 4. VPC: hws.resource.type.cfw.exp.vpc 5. Log storage: hws.resource.type.cfw.exp.logaudit
 	ResourceType pulumi.StringInput `pulumi:"resourceType"`
 }
 
@@ -5153,37 +4804,32 @@ func (o GetFirewallsRecordResourceOutput) ToGetFirewallsRecordResourceOutputWith
 	return o
 }
 
-// Service type, which is used by CBC. The value is **hws.service.type.cfw**.
+// Service type, which is used by CBC. The value is hws.service.type.cfw.
 func (o GetFirewallsRecordResourceOutput) CloudServiceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallsRecordResource) string { return v.CloudServiceType }).(pulumi.StringOutput)
 }
 
-// Resource ID.
+// Resource ID
 func (o GetFirewallsRecordResourceOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallsRecordResource) string { return v.ResourceId }).(pulumi.StringOutput)
 }
 
-// Resource quantity.
+// Resource quantity
 func (o GetFirewallsRecordResourceOutput) ResourceSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFirewallsRecordResource) int { return v.ResourceSize }).(pulumi.IntOutput)
 }
 
-// Resource unit name.
+// Resource unit name
 func (o GetFirewallsRecordResourceOutput) ResourceSizeMeasureId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFirewallsRecordResource) int { return v.ResourceSizeMeasureId }).(pulumi.IntOutput)
 }
 
-// Inventory unit code.
+// Inventory unit code
 func (o GetFirewallsRecordResourceOutput) ResourceSpecCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallsRecordResource) string { return v.ResourceSpecCode }).(pulumi.StringOutput)
 }
 
-// Resource type. The options are as follows:
-// + **CFW**: hws.resource.type.cfw;
-// + **EIP**: hws.resource.type.cfw.exp.eip;
-// + **Bandwidth**: hws.resource.type.cfw.exp.bandwidth;
-// + **VPC**: hws.resource.type.cfw.exp.vpc;
-// + **Log storage**: hws.resource.type.cfw.exp.logaudit;
+// Resource type. The options are as follows:1. CFW: hws.resource.type.cfw 2. EIP:hws.resource.type.cfw.exp.eip 3. Bandwidth: hws.resource.type.cfw.exp.bandwidth 4. VPC: hws.resource.type.cfw.exp.vpc 5. Log storage: hws.resource.type.cfw.exp.logaudit
 func (o GetFirewallsRecordResourceOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallsRecordResource) string { return v.ResourceType }).(pulumi.StringOutput)
 }
@@ -5209,32 +4855,31 @@ func (o GetFirewallsRecordResourceArrayOutput) Index(i pulumi.IntInput) GetFirew
 }
 
 type GetFlowLogsRecord struct {
-	// Specifies the application protocol.
+	// The application protocol.
 	App string `pulumi:"app"`
 	// The flow log bytes.
 	Bytes float64 `pulumi:"bytes"`
-	// Specifies the direction. The values can be **out2in** and **in2out**.
+	// The direction, which can be inbound or outbound.
 	Direction string `pulumi:"direction"`
-	// The destination city ID.
+	// The distination city ID.
 	DstCityId string `pulumi:"dstCityId"`
-	// Specifies the destination city name.
+	// The distination city name.
 	DstCityName string `pulumi:"dstCityName"`
 	// The destination host.
 	DstHost string `pulumi:"dstHost"`
-	// Specifies the destination IP address.
+	// The destination IP address.
 	DstIp string `pulumi:"dstIp"`
-	// Specifies the destination port.
+	// The destination port.
 	DstPort int `pulumi:"dstPort"`
-	// The destination province ID.
+	// The distination province ID.
 	DstProvinceId string `pulumi:"dstProvinceId"`
-	// Specifies the destination province name.
+	// The distination province name.
 	DstProvinceName string `pulumi:"dstProvinceName"`
-	// The destination region ID.
+	// The destination region id.
 	DstRegionId string `pulumi:"dstRegionId"`
-	// Specifies the destination region name.
+	// The destination region name.
 	DstRegionName string `pulumi:"dstRegionName"`
-	// Specifies the end time. The time is in UTC.
-	// The format is **yyyy-MM-dd HH:mm:ss**.
+	// The end time.
 	EndTime string `pulumi:"endTime"`
 	// The document ID.
 	LogId string `pulumi:"logId"`
@@ -5244,22 +4889,21 @@ type GetFlowLogsRecord struct {
 	Protocol string `pulumi:"protocol"`
 	// The source city ID.
 	SrcCityId string `pulumi:"srcCityId"`
-	// Specifies the source city name.
+	// The source city name.
 	SrcCityName string `pulumi:"srcCityName"`
-	// Specifies the source IP address.
+	// The source IP address.
 	SrcIp string `pulumi:"srcIp"`
-	// Specifies the source port.
+	// The source port.
 	SrcPort int `pulumi:"srcPort"`
 	// The source province ID.
 	SrcProvinceId string `pulumi:"srcProvinceId"`
-	// Specifies the source province name.
+	// The source province name.
 	SrcProvinceName string `pulumi:"srcProvinceName"`
-	// The source region ID.
+	// The source region id.
 	SrcRegionId string `pulumi:"srcRegionId"`
-	// Specifies the source region name.
+	// The source region name.
 	SrcRegionName string `pulumi:"srcRegionName"`
-	// Specifies the start time. The time is in UTC.
-	// The format is **yyyy-MM-dd HH:mm:ss**.
+	// The start time.
 	StartTime string `pulumi:"startTime"`
 }
 
@@ -5275,32 +4919,31 @@ type GetFlowLogsRecordInput interface {
 }
 
 type GetFlowLogsRecordArgs struct {
-	// Specifies the application protocol.
+	// The application protocol.
 	App pulumi.StringInput `pulumi:"app"`
 	// The flow log bytes.
 	Bytes pulumi.Float64Input `pulumi:"bytes"`
-	// Specifies the direction. The values can be **out2in** and **in2out**.
+	// The direction, which can be inbound or outbound.
 	Direction pulumi.StringInput `pulumi:"direction"`
-	// The destination city ID.
+	// The distination city ID.
 	DstCityId pulumi.StringInput `pulumi:"dstCityId"`
-	// Specifies the destination city name.
+	// The distination city name.
 	DstCityName pulumi.StringInput `pulumi:"dstCityName"`
 	// The destination host.
 	DstHost pulumi.StringInput `pulumi:"dstHost"`
-	// Specifies the destination IP address.
+	// The destination IP address.
 	DstIp pulumi.StringInput `pulumi:"dstIp"`
-	// Specifies the destination port.
+	// The destination port.
 	DstPort pulumi.IntInput `pulumi:"dstPort"`
-	// The destination province ID.
+	// The distination province ID.
 	DstProvinceId pulumi.StringInput `pulumi:"dstProvinceId"`
-	// Specifies the destination province name.
+	// The distination province name.
 	DstProvinceName pulumi.StringInput `pulumi:"dstProvinceName"`
-	// The destination region ID.
+	// The destination region id.
 	DstRegionId pulumi.StringInput `pulumi:"dstRegionId"`
-	// Specifies the destination region name.
+	// The destination region name.
 	DstRegionName pulumi.StringInput `pulumi:"dstRegionName"`
-	// Specifies the end time. The time is in UTC.
-	// The format is **yyyy-MM-dd HH:mm:ss**.
+	// The end time.
 	EndTime pulumi.StringInput `pulumi:"endTime"`
 	// The document ID.
 	LogId pulumi.StringInput `pulumi:"logId"`
@@ -5310,22 +4953,21 @@ type GetFlowLogsRecordArgs struct {
 	Protocol pulumi.StringInput `pulumi:"protocol"`
 	// The source city ID.
 	SrcCityId pulumi.StringInput `pulumi:"srcCityId"`
-	// Specifies the source city name.
+	// The source city name.
 	SrcCityName pulumi.StringInput `pulumi:"srcCityName"`
-	// Specifies the source IP address.
+	// The source IP address.
 	SrcIp pulumi.StringInput `pulumi:"srcIp"`
-	// Specifies the source port.
+	// The source port.
 	SrcPort pulumi.IntInput `pulumi:"srcPort"`
 	// The source province ID.
 	SrcProvinceId pulumi.StringInput `pulumi:"srcProvinceId"`
-	// Specifies the source province name.
+	// The source province name.
 	SrcProvinceName pulumi.StringInput `pulumi:"srcProvinceName"`
-	// The source region ID.
+	// The source region id.
 	SrcRegionId pulumi.StringInput `pulumi:"srcRegionId"`
-	// Specifies the source region name.
+	// The source region name.
 	SrcRegionName pulumi.StringInput `pulumi:"srcRegionName"`
-	// Specifies the start time. The time is in UTC.
-	// The format is **yyyy-MM-dd HH:mm:ss**.
+	// The start time.
 	StartTime pulumi.StringInput `pulumi:"startTime"`
 }
 
@@ -5380,7 +5022,7 @@ func (o GetFlowLogsRecordOutput) ToGetFlowLogsRecordOutputWithContext(ctx contex
 	return o
 }
 
-// Specifies the application protocol.
+// The application protocol.
 func (o GetFlowLogsRecordOutput) App() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowLogsRecord) string { return v.App }).(pulumi.StringOutput)
 }
@@ -5390,17 +5032,17 @@ func (o GetFlowLogsRecordOutput) Bytes() pulumi.Float64Output {
 	return o.ApplyT(func(v GetFlowLogsRecord) float64 { return v.Bytes }).(pulumi.Float64Output)
 }
 
-// Specifies the direction. The values can be **out2in** and **in2out**.
+// The direction, which can be inbound or outbound.
 func (o GetFlowLogsRecordOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowLogsRecord) string { return v.Direction }).(pulumi.StringOutput)
 }
 
-// The destination city ID.
+// The distination city ID.
 func (o GetFlowLogsRecordOutput) DstCityId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowLogsRecord) string { return v.DstCityId }).(pulumi.StringOutput)
 }
 
-// Specifies the destination city name.
+// The distination city name.
 func (o GetFlowLogsRecordOutput) DstCityName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowLogsRecord) string { return v.DstCityName }).(pulumi.StringOutput)
 }
@@ -5410,38 +5052,37 @@ func (o GetFlowLogsRecordOutput) DstHost() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowLogsRecord) string { return v.DstHost }).(pulumi.StringOutput)
 }
 
-// Specifies the destination IP address.
+// The destination IP address.
 func (o GetFlowLogsRecordOutput) DstIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowLogsRecord) string { return v.DstIp }).(pulumi.StringOutput)
 }
 
-// Specifies the destination port.
+// The destination port.
 func (o GetFlowLogsRecordOutput) DstPort() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFlowLogsRecord) int { return v.DstPort }).(pulumi.IntOutput)
 }
 
-// The destination province ID.
+// The distination province ID.
 func (o GetFlowLogsRecordOutput) DstProvinceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowLogsRecord) string { return v.DstProvinceId }).(pulumi.StringOutput)
 }
 
-// Specifies the destination province name.
+// The distination province name.
 func (o GetFlowLogsRecordOutput) DstProvinceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowLogsRecord) string { return v.DstProvinceName }).(pulumi.StringOutput)
 }
 
-// The destination region ID.
+// The destination region id.
 func (o GetFlowLogsRecordOutput) DstRegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowLogsRecord) string { return v.DstRegionId }).(pulumi.StringOutput)
 }
 
-// Specifies the destination region name.
+// The destination region name.
 func (o GetFlowLogsRecordOutput) DstRegionName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowLogsRecord) string { return v.DstRegionName }).(pulumi.StringOutput)
 }
 
-// Specifies the end time. The time is in UTC.
-// The format is **yyyy-MM-dd HH:mm:ss**.
+// The end time.
 func (o GetFlowLogsRecordOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowLogsRecord) string { return v.EndTime }).(pulumi.StringOutput)
 }
@@ -5466,17 +5107,17 @@ func (o GetFlowLogsRecordOutput) SrcCityId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowLogsRecord) string { return v.SrcCityId }).(pulumi.StringOutput)
 }
 
-// Specifies the source city name.
+// The source city name.
 func (o GetFlowLogsRecordOutput) SrcCityName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowLogsRecord) string { return v.SrcCityName }).(pulumi.StringOutput)
 }
 
-// Specifies the source IP address.
+// The source IP address.
 func (o GetFlowLogsRecordOutput) SrcIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowLogsRecord) string { return v.SrcIp }).(pulumi.StringOutput)
 }
 
-// Specifies the source port.
+// The source port.
 func (o GetFlowLogsRecordOutput) SrcPort() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFlowLogsRecord) int { return v.SrcPort }).(pulumi.IntOutput)
 }
@@ -5486,23 +5127,22 @@ func (o GetFlowLogsRecordOutput) SrcProvinceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowLogsRecord) string { return v.SrcProvinceId }).(pulumi.StringOutput)
 }
 
-// Specifies the source province name.
+// The source province name.
 func (o GetFlowLogsRecordOutput) SrcProvinceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowLogsRecord) string { return v.SrcProvinceName }).(pulumi.StringOutput)
 }
 
-// The source region ID.
+// The source region id.
 func (o GetFlowLogsRecordOutput) SrcRegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowLogsRecord) string { return v.SrcRegionId }).(pulumi.StringOutput)
 }
 
-// Specifies the source region name.
+// The source region name.
 func (o GetFlowLogsRecordOutput) SrcRegionName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowLogsRecord) string { return v.SrcRegionName }).(pulumi.StringOutput)
 }
 
-// Specifies the start time. The time is in UTC.
-// The format is **yyyy-MM-dd HH:mm:ss**.
+// The start time.
 func (o GetFlowLogsRecordOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowLogsRecord) string { return v.StartTime }).(pulumi.StringOutput)
 }
@@ -5530,40 +5170,9 @@ func (o GetFlowLogsRecordArrayOutput) Index(i pulumi.IntInput) GetFlowLogsRecord
 type GetIpsCustomRulesRecord struct {
 	// The action.
 	Action int `pulumi:"action"`
-	// Specifies the affected OS.
-	// The valid values are as follows:
-	// + **1**: Windows;
-	// + **2**: Linux;
-	// + **3**: FreeBSD;
-	// + **4**: Solaris;
-	// + **5**: Other Unix;
-	// + **6**: Network device;
-	// + **7**: MAC OS;
-	// + **8**: IOS;
-	// + **9**: Android;
-	// + **10**: Other;
+	// The affected OS.
 	AffectedOs int `pulumi:"affectedOs"`
-	// Specifies the attack type.
-	// The valid values are as follows:
-	// + **1**: access control;
-	// + **2**: vulnerability scan;
-	// + **3**: email phishing;
-	// + **4**: vulnerability exploits;
-	// + **5**: web attack;
-	// + **6**: password cracking;
-	// + **7**: hijacking attack;
-	// + **8**: protocol exception;
-	// + **9**: trojan;
-	// + **10**: worm;
-	// + **11**: buffer overflow;
-	// + **12**: hacker tool;
-	// + **13**: spyware;
-	// + **14**: DDoS flood;
-	// + **15**: application-layer DDoS attack;
-	// + **16**: other suspicious behavior;
-	// + **17**: suspicious DNS activity;
-	// + **18**: phishing;
-	// + **19**: spam;
+	// The attack type.
 	AttackType int `pulumi:"attackType"`
 	// The rule status.
 	ConfigStatus int `pulumi:"configStatus"`
@@ -5579,86 +5188,13 @@ type GetIpsCustomRulesRecord struct {
 	IpsCfwId string `pulumi:"ipsCfwId"`
 	// The ID of a rule in Hillstone.
 	IpsId string `pulumi:"ipsId"`
-	// Specifies the IPS custom rule name.
+	// The IPS rule name.
 	IpsName string `pulumi:"ipsName"`
-	// Specifies the protocol.
-	// The valid values are as follows:
-	// + **1**: FTP;
-	// + **2**: TELNET;
-	// + **3**: SMTP;
-	// + **4**: DNS-TCP;
-	// + **5**: DNS-UDP;
-	// + **6**: DHCP;
-	// + **7**: TFTP;
-	// + **8**: FINGER;
-	// + **9**: HTTP;
-	// + **10**: POP3;
-	// + **11**: SUNRPC-TCP;
-	// + **12**: SUNRPC-UDP;
-	// + **13**: NNTP;
-	// + **14**: MSRPC-TCP;
-	// + **15**: MSRPC-UDP;
-	// + **16**: NETBIOS-NAME_TCP;
-	// + **17**: NETBIOS-NAME_UDP;
-	// + **18**: NETBIOS-SMB;
-	// + **19**: NETBIOS-DATAGRAM;
-	// + **20**: IMAP4;
-	// + **21**: SNMP;
-	// + **22**: LDAP;
-	// + **23**: MSSQL;
-	// + **24**: ORACLE;
-	// + **25**: MYSQL;
-	// + **26**: VOIP-SIP-TCP;
-	// + **27**: VOIP-SIP-UDP;
-	// + **28**: VOIP-H245;
-	// + **29**: VOIP-Q931;
-	// + **30**: OTHER-TCP;
-	// + **31**: OTHER-UDP;
+	// The protocol.
 	Protocol int `pulumi:"protocol"`
-	// Specifies the severity.
-	// The valid values are as follows:
-	// + **0**: critical;
-	// + **1**: high;
-	// + **2**: medium;
-	// + **3**: low;
+	// The severity.
 	Severity int `pulumi:"severity"`
-	// Specifies the affected software.
-	// The valid values are as follows:
-	// + **1**: ADOBE;
-	// + **2**: APACHE;
-	// + **3**: APPLE;
-	// + **4**: CA;
-	// + **5**: CISCO;
-	// + **6**: GOOGLE CHROME;
-	// + **7**: HP;
-	// + **8**: IBM;
-	// + **9**: IE;
-	// + **10**: IIS;
-	// + **11**: MCAFEE;
-	// + **12**: MEDIAPLAYER;
-	// + **13**: MICROSOFT.NET;
-	// + **14**: MICROSOFT EDGE;
-	// + **15**: MICROSOFT EXCHANGE;
-	// + **16**: MICROSOFT OFFICE;
-	// + **17**: MICROSOFT OUTLOOK;
-	// + **18**: MICROSOFT SHAREPOINT;
-	// + **19**: MICROSOFT WINDOWS;
-	// + **20**: MOZILLA;
-	// + **21**: MSSQL;
-	// + **22**: MYSQL;
-	// + **23**: NOVELL;
-	// + **24**: ORACLE;
-	// + **25**: SAMBA;
-	// + **26**: SAMSUNG;
-	// + **27**: SAP;
-	// + **28**: SCADA;
-	// + **29**: SQUID;
-	// + **30**: SUN;
-	// + **31**: SYMANTEC;
-	// + **32**: TREND MICRO;
-	// + **33**: VMWARE;
-	// + **34**: WORDPRESS;
-	// + **35**: OTHER;
+	// The affected software.
 	Software int `pulumi:"software"`
 	// The source port type.
 	SrcPortType int `pulumi:"srcPortType"`
@@ -5680,40 +5216,9 @@ type GetIpsCustomRulesRecordInput interface {
 type GetIpsCustomRulesRecordArgs struct {
 	// The action.
 	Action pulumi.IntInput `pulumi:"action"`
-	// Specifies the affected OS.
-	// The valid values are as follows:
-	// + **1**: Windows;
-	// + **2**: Linux;
-	// + **3**: FreeBSD;
-	// + **4**: Solaris;
-	// + **5**: Other Unix;
-	// + **6**: Network device;
-	// + **7**: MAC OS;
-	// + **8**: IOS;
-	// + **9**: Android;
-	// + **10**: Other;
+	// The affected OS.
 	AffectedOs pulumi.IntInput `pulumi:"affectedOs"`
-	// Specifies the attack type.
-	// The valid values are as follows:
-	// + **1**: access control;
-	// + **2**: vulnerability scan;
-	// + **3**: email phishing;
-	// + **4**: vulnerability exploits;
-	// + **5**: web attack;
-	// + **6**: password cracking;
-	// + **7**: hijacking attack;
-	// + **8**: protocol exception;
-	// + **9**: trojan;
-	// + **10**: worm;
-	// + **11**: buffer overflow;
-	// + **12**: hacker tool;
-	// + **13**: spyware;
-	// + **14**: DDoS flood;
-	// + **15**: application-layer DDoS attack;
-	// + **16**: other suspicious behavior;
-	// + **17**: suspicious DNS activity;
-	// + **18**: phishing;
-	// + **19**: spam;
+	// The attack type.
 	AttackType pulumi.IntInput `pulumi:"attackType"`
 	// The rule status.
 	ConfigStatus pulumi.IntInput `pulumi:"configStatus"`
@@ -5729,86 +5234,13 @@ type GetIpsCustomRulesRecordArgs struct {
 	IpsCfwId pulumi.StringInput `pulumi:"ipsCfwId"`
 	// The ID of a rule in Hillstone.
 	IpsId pulumi.StringInput `pulumi:"ipsId"`
-	// Specifies the IPS custom rule name.
+	// The IPS rule name.
 	IpsName pulumi.StringInput `pulumi:"ipsName"`
-	// Specifies the protocol.
-	// The valid values are as follows:
-	// + **1**: FTP;
-	// + **2**: TELNET;
-	// + **3**: SMTP;
-	// + **4**: DNS-TCP;
-	// + **5**: DNS-UDP;
-	// + **6**: DHCP;
-	// + **7**: TFTP;
-	// + **8**: FINGER;
-	// + **9**: HTTP;
-	// + **10**: POP3;
-	// + **11**: SUNRPC-TCP;
-	// + **12**: SUNRPC-UDP;
-	// + **13**: NNTP;
-	// + **14**: MSRPC-TCP;
-	// + **15**: MSRPC-UDP;
-	// + **16**: NETBIOS-NAME_TCP;
-	// + **17**: NETBIOS-NAME_UDP;
-	// + **18**: NETBIOS-SMB;
-	// + **19**: NETBIOS-DATAGRAM;
-	// + **20**: IMAP4;
-	// + **21**: SNMP;
-	// + **22**: LDAP;
-	// + **23**: MSSQL;
-	// + **24**: ORACLE;
-	// + **25**: MYSQL;
-	// + **26**: VOIP-SIP-TCP;
-	// + **27**: VOIP-SIP-UDP;
-	// + **28**: VOIP-H245;
-	// + **29**: VOIP-Q931;
-	// + **30**: OTHER-TCP;
-	// + **31**: OTHER-UDP;
+	// The protocol.
 	Protocol pulumi.IntInput `pulumi:"protocol"`
-	// Specifies the severity.
-	// The valid values are as follows:
-	// + **0**: critical;
-	// + **1**: high;
-	// + **2**: medium;
-	// + **3**: low;
+	// The severity.
 	Severity pulumi.IntInput `pulumi:"severity"`
-	// Specifies the affected software.
-	// The valid values are as follows:
-	// + **1**: ADOBE;
-	// + **2**: APACHE;
-	// + **3**: APPLE;
-	// + **4**: CA;
-	// + **5**: CISCO;
-	// + **6**: GOOGLE CHROME;
-	// + **7**: HP;
-	// + **8**: IBM;
-	// + **9**: IE;
-	// + **10**: IIS;
-	// + **11**: MCAFEE;
-	// + **12**: MEDIAPLAYER;
-	// + **13**: MICROSOFT.NET;
-	// + **14**: MICROSOFT EDGE;
-	// + **15**: MICROSOFT EXCHANGE;
-	// + **16**: MICROSOFT OFFICE;
-	// + **17**: MICROSOFT OUTLOOK;
-	// + **18**: MICROSOFT SHAREPOINT;
-	// + **19**: MICROSOFT WINDOWS;
-	// + **20**: MOZILLA;
-	// + **21**: MSSQL;
-	// + **22**: MYSQL;
-	// + **23**: NOVELL;
-	// + **24**: ORACLE;
-	// + **25**: SAMBA;
-	// + **26**: SAMSUNG;
-	// + **27**: SAP;
-	// + **28**: SCADA;
-	// + **29**: SQUID;
-	// + **30**: SUN;
-	// + **31**: SYMANTEC;
-	// + **32**: TREND MICRO;
-	// + **33**: VMWARE;
-	// + **34**: WORDPRESS;
-	// + **35**: OTHER;
+	// The affected software.
 	Software pulumi.IntInput `pulumi:"software"`
 	// The source port type.
 	SrcPortType pulumi.IntInput `pulumi:"srcPortType"`
@@ -5872,43 +5304,12 @@ func (o GetIpsCustomRulesRecordOutput) Action() pulumi.IntOutput {
 	return o.ApplyT(func(v GetIpsCustomRulesRecord) int { return v.Action }).(pulumi.IntOutput)
 }
 
-// Specifies the affected OS.
-// The valid values are as follows:
-// + **1**: Windows;
-// + **2**: Linux;
-// + **3**: FreeBSD;
-// + **4**: Solaris;
-// + **5**: Other Unix;
-// + **6**: Network device;
-// + **7**: MAC OS;
-// + **8**: IOS;
-// + **9**: Android;
-// + **10**: Other;
+// The affected OS.
 func (o GetIpsCustomRulesRecordOutput) AffectedOs() pulumi.IntOutput {
 	return o.ApplyT(func(v GetIpsCustomRulesRecord) int { return v.AffectedOs }).(pulumi.IntOutput)
 }
 
-// Specifies the attack type.
-// The valid values are as follows:
-// + **1**: access control;
-// + **2**: vulnerability scan;
-// + **3**: email phishing;
-// + **4**: vulnerability exploits;
-// + **5**: web attack;
-// + **6**: password cracking;
-// + **7**: hijacking attack;
-// + **8**: protocol exception;
-// + **9**: trojan;
-// + **10**: worm;
-// + **11**: buffer overflow;
-// + **12**: hacker tool;
-// + **13**: spyware;
-// + **14**: DDoS flood;
-// + **15**: application-layer DDoS attack;
-// + **16**: other suspicious behavior;
-// + **17**: suspicious DNS activity;
-// + **18**: phishing;
-// + **19**: spam;
+// The attack type.
 func (o GetIpsCustomRulesRecordOutput) AttackType() pulumi.IntOutput {
 	return o.ApplyT(func(v GetIpsCustomRulesRecord) int { return v.AttackType }).(pulumi.IntOutput)
 }
@@ -5948,95 +5349,22 @@ func (o GetIpsCustomRulesRecordOutput) IpsId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIpsCustomRulesRecord) string { return v.IpsId }).(pulumi.StringOutput)
 }
 
-// Specifies the IPS custom rule name.
+// The IPS rule name.
 func (o GetIpsCustomRulesRecordOutput) IpsName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIpsCustomRulesRecord) string { return v.IpsName }).(pulumi.StringOutput)
 }
 
-// Specifies the protocol.
-// The valid values are as follows:
-// + **1**: FTP;
-// + **2**: TELNET;
-// + **3**: SMTP;
-// + **4**: DNS-TCP;
-// + **5**: DNS-UDP;
-// + **6**: DHCP;
-// + **7**: TFTP;
-// + **8**: FINGER;
-// + **9**: HTTP;
-// + **10**: POP3;
-// + **11**: SUNRPC-TCP;
-// + **12**: SUNRPC-UDP;
-// + **13**: NNTP;
-// + **14**: MSRPC-TCP;
-// + **15**: MSRPC-UDP;
-// + **16**: NETBIOS-NAME_TCP;
-// + **17**: NETBIOS-NAME_UDP;
-// + **18**: NETBIOS-SMB;
-// + **19**: NETBIOS-DATAGRAM;
-// + **20**: IMAP4;
-// + **21**: SNMP;
-// + **22**: LDAP;
-// + **23**: MSSQL;
-// + **24**: ORACLE;
-// + **25**: MYSQL;
-// + **26**: VOIP-SIP-TCP;
-// + **27**: VOIP-SIP-UDP;
-// + **28**: VOIP-H245;
-// + **29**: VOIP-Q931;
-// + **30**: OTHER-TCP;
-// + **31**: OTHER-UDP;
+// The protocol.
 func (o GetIpsCustomRulesRecordOutput) Protocol() pulumi.IntOutput {
 	return o.ApplyT(func(v GetIpsCustomRulesRecord) int { return v.Protocol }).(pulumi.IntOutput)
 }
 
-// Specifies the severity.
-// The valid values are as follows:
-// + **0**: critical;
-// + **1**: high;
-// + **2**: medium;
-// + **3**: low;
+// The severity.
 func (o GetIpsCustomRulesRecordOutput) Severity() pulumi.IntOutput {
 	return o.ApplyT(func(v GetIpsCustomRulesRecord) int { return v.Severity }).(pulumi.IntOutput)
 }
 
-// Specifies the affected software.
-// The valid values are as follows:
-// + **1**: ADOBE;
-// + **2**: APACHE;
-// + **3**: APPLE;
-// + **4**: CA;
-// + **5**: CISCO;
-// + **6**: GOOGLE CHROME;
-// + **7**: HP;
-// + **8**: IBM;
-// + **9**: IE;
-// + **10**: IIS;
-// + **11**: MCAFEE;
-// + **12**: MEDIAPLAYER;
-// + **13**: MICROSOFT.NET;
-// + **14**: MICROSOFT EDGE;
-// + **15**: MICROSOFT EXCHANGE;
-// + **16**: MICROSOFT OFFICE;
-// + **17**: MICROSOFT OUTLOOK;
-// + **18**: MICROSOFT SHAREPOINT;
-// + **19**: MICROSOFT WINDOWS;
-// + **20**: MOZILLA;
-// + **21**: MSSQL;
-// + **22**: MYSQL;
-// + **23**: NOVELL;
-// + **24**: ORACLE;
-// + **25**: SAMBA;
-// + **26**: SAMSUNG;
-// + **27**: SAP;
-// + **28**: SCADA;
-// + **29**: SQUID;
-// + **30**: SUN;
-// + **31**: SYMANTEC;
-// + **32**: TREND MICRO;
-// + **33**: VMWARE;
-// + **34**: WORDPRESS;
-// + **35**: OTHER;
+// The affected software.
 func (o GetIpsCustomRulesRecordOutput) Software() pulumi.IntOutput {
 	return o.ApplyT(func(v GetIpsCustomRulesRecord) int { return v.Software }).(pulumi.IntOutput)
 }
@@ -6197,7 +5525,7 @@ type GetIpsRulesRecord struct {
 	IpsCve string `pulumi:"ipsCve"`
 	// The IPS rule group.
 	IpsGroup string `pulumi:"ipsGroup"`
-	// Specifies the IPS rule ID.
+	// The IPS rule ID.
 	IpsId string `pulumi:"ipsId"`
 	// The risk level.
 	IpsLevel string `pulumi:"ipsLevel"`
@@ -6205,8 +5533,7 @@ type GetIpsRulesRecord struct {
 	IpsName string `pulumi:"ipsName"`
 	// The IPS rule type.
 	IpsRulesType string `pulumi:"ipsRulesType"`
-	// Specifies the IPS rule status.
-	// The valid value can be **OBSERVE**, **ENABLE**, or **CLOSE**.
+	// The current status of the IPS rule.
 	IpsStatus string `pulumi:"ipsStatus"`
 }
 
@@ -6232,7 +5559,7 @@ type GetIpsRulesRecordArgs struct {
 	IpsCve pulumi.StringInput `pulumi:"ipsCve"`
 	// The IPS rule group.
 	IpsGroup pulumi.StringInput `pulumi:"ipsGroup"`
-	// Specifies the IPS rule ID.
+	// The IPS rule ID.
 	IpsId pulumi.StringInput `pulumi:"ipsId"`
 	// The risk level.
 	IpsLevel pulumi.StringInput `pulumi:"ipsLevel"`
@@ -6240,8 +5567,7 @@ type GetIpsRulesRecordArgs struct {
 	IpsName pulumi.StringInput `pulumi:"ipsName"`
 	// The IPS rule type.
 	IpsRulesType pulumi.StringInput `pulumi:"ipsRulesType"`
-	// Specifies the IPS rule status.
-	// The valid value can be **OBSERVE**, **ENABLE**, or **CLOSE**.
+	// The current status of the IPS rule.
 	IpsStatus pulumi.StringInput `pulumi:"ipsStatus"`
 }
 
@@ -6321,7 +5647,7 @@ func (o GetIpsRulesRecordOutput) IpsGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIpsRulesRecord) string { return v.IpsGroup }).(pulumi.StringOutput)
 }
 
-// Specifies the IPS rule ID.
+// The IPS rule ID.
 func (o GetIpsRulesRecordOutput) IpsId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIpsRulesRecord) string { return v.IpsId }).(pulumi.StringOutput)
 }
@@ -6341,8 +5667,7 @@ func (o GetIpsRulesRecordOutput) IpsRulesType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIpsRulesRecord) string { return v.IpsRulesType }).(pulumi.StringOutput)
 }
 
-// Specifies the IPS rule status.
-// The valid value can be **OBSERVE**, **ENABLE**, or **CLOSE**.
+// The current status of the IPS rule.
 func (o GetIpsRulesRecordOutput) IpsStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIpsRulesRecord) string { return v.IpsStatus }).(pulumi.StringOutput)
 }
@@ -6368,23 +5693,17 @@ func (o GetIpsRulesRecordArrayOutput) Index(i pulumi.IntInput) GetIpsRulesRecord
 }
 
 type GetProtectionRulesRecord struct {
-	// Specifies the rule action type.
-	// The options are as follows:
-	// + **0**: allow;
-	// + **1**: deny.
+	// The rule action type.
 	ActionType string `pulumi:"actionType"`
 	// The address type.
 	AddressType int `pulumi:"addressType"`
 	// The created time of a rule.
 	CreatedDate string `pulumi:"createdDate"`
-	// The custom service description.
+	// The rule description.
 	Description string `pulumi:"description"`
-	// Specifies the destination address.
+	// The destination configuration.
 	Destinations []GetProtectionRulesRecordDestination `pulumi:"destinations"`
-	// Specifies the rule direction.
-	// The options are as follows:
-	// + **0**: inbound;
-	// + **1**: outbound.
+	// The direction of a rule.
 	Direction string `pulumi:"direction"`
 	// The last open time.
 	LastOpenTime string `pulumi:"lastOpenTime"`
@@ -6398,24 +5717,19 @@ type GetProtectionRulesRecord struct {
 	LongConnectTimeMinute int `pulumi:"longConnectTimeMinute"`
 	// The persistent connection duration (second).
 	LongConnectTimeSecond int `pulumi:"longConnectTimeSecond"`
-	// Specifies the rule name.
+	// The rule name.
 	Name string `pulumi:"name"`
-	// Specifies the rule ID.
+	// The rule ID.
 	RuleId string `pulumi:"ruleId"`
 	// The service.
 	Services []GetProtectionRulesRecordService `pulumi:"services"`
-	// Specifies the source address.
+	// The source configuration.
 	Sources []GetProtectionRulesRecordSource `pulumi:"sources"`
-	// Specifies the rule status.
-	// The options are as follows:
-	// + **0**: disabled;
-	// + **1**: enabled.
+	// The rule status.
 	Status string `pulumi:"status"`
-	// Specifies the key/value pairs to associate with the protection rule.
-	// Tags should have only one key/value pair.
+	// The tag of a rule.
 	Tags map[string]string `pulumi:"tags"`
-	// Specifies the rule type.
-	// The value can be **0** (Internet rule), **1** (VPC rule), or **2** (NAT rule).
+	// The rule type.
 	Type string `pulumi:"type"`
 }
 
@@ -6431,23 +5745,17 @@ type GetProtectionRulesRecordInput interface {
 }
 
 type GetProtectionRulesRecordArgs struct {
-	// Specifies the rule action type.
-	// The options are as follows:
-	// + **0**: allow;
-	// + **1**: deny.
+	// The rule action type.
 	ActionType pulumi.StringInput `pulumi:"actionType"`
 	// The address type.
 	AddressType pulumi.IntInput `pulumi:"addressType"`
 	// The created time of a rule.
 	CreatedDate pulumi.StringInput `pulumi:"createdDate"`
-	// The custom service description.
+	// The rule description.
 	Description pulumi.StringInput `pulumi:"description"`
-	// Specifies the destination address.
+	// The destination configuration.
 	Destinations GetProtectionRulesRecordDestinationArrayInput `pulumi:"destinations"`
-	// Specifies the rule direction.
-	// The options are as follows:
-	// + **0**: inbound;
-	// + **1**: outbound.
+	// The direction of a rule.
 	Direction pulumi.StringInput `pulumi:"direction"`
 	// The last open time.
 	LastOpenTime pulumi.StringInput `pulumi:"lastOpenTime"`
@@ -6461,24 +5769,19 @@ type GetProtectionRulesRecordArgs struct {
 	LongConnectTimeMinute pulumi.IntInput `pulumi:"longConnectTimeMinute"`
 	// The persistent connection duration (second).
 	LongConnectTimeSecond pulumi.IntInput `pulumi:"longConnectTimeSecond"`
-	// Specifies the rule name.
+	// The rule name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies the rule ID.
+	// The rule ID.
 	RuleId pulumi.StringInput `pulumi:"ruleId"`
 	// The service.
 	Services GetProtectionRulesRecordServiceArrayInput `pulumi:"services"`
-	// Specifies the source address.
+	// The source configuration.
 	Sources GetProtectionRulesRecordSourceArrayInput `pulumi:"sources"`
-	// Specifies the rule status.
-	// The options are as follows:
-	// + **0**: disabled;
-	// + **1**: enabled.
+	// The rule status.
 	Status pulumi.StringInput `pulumi:"status"`
-	// Specifies the key/value pairs to associate with the protection rule.
-	// Tags should have only one key/value pair.
+	// The tag of a rule.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// Specifies the rule type.
-	// The value can be **0** (Internet rule), **1** (VPC rule), or **2** (NAT rule).
+	// The rule type.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -6533,10 +5836,7 @@ func (o GetProtectionRulesRecordOutput) ToGetProtectionRulesRecordOutputWithCont
 	return o
 }
 
-// Specifies the rule action type.
-// The options are as follows:
-// + **0**: allow;
-// + **1**: deny.
+// The rule action type.
 func (o GetProtectionRulesRecordOutput) ActionType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProtectionRulesRecord) string { return v.ActionType }).(pulumi.StringOutput)
 }
@@ -6551,20 +5851,17 @@ func (o GetProtectionRulesRecordOutput) CreatedDate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProtectionRulesRecord) string { return v.CreatedDate }).(pulumi.StringOutput)
 }
 
-// The custom service description.
+// The rule description.
 func (o GetProtectionRulesRecordOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProtectionRulesRecord) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Specifies the destination address.
+// The destination configuration.
 func (o GetProtectionRulesRecordOutput) Destinations() GetProtectionRulesRecordDestinationArrayOutput {
 	return o.ApplyT(func(v GetProtectionRulesRecord) []GetProtectionRulesRecordDestination { return v.Destinations }).(GetProtectionRulesRecordDestinationArrayOutput)
 }
 
-// Specifies the rule direction.
-// The options are as follows:
-// + **0**: inbound;
-// + **1**: outbound.
+// The direction of a rule.
 func (o GetProtectionRulesRecordOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProtectionRulesRecord) string { return v.Direction }).(pulumi.StringOutput)
 }
@@ -6599,12 +5896,12 @@ func (o GetProtectionRulesRecordOutput) LongConnectTimeSecond() pulumi.IntOutput
 	return o.ApplyT(func(v GetProtectionRulesRecord) int { return v.LongConnectTimeSecond }).(pulumi.IntOutput)
 }
 
-// Specifies the rule name.
+// The rule name.
 func (o GetProtectionRulesRecordOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProtectionRulesRecord) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the rule ID.
+// The rule ID.
 func (o GetProtectionRulesRecordOutput) RuleId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProtectionRulesRecord) string { return v.RuleId }).(pulumi.StringOutput)
 }
@@ -6614,27 +5911,22 @@ func (o GetProtectionRulesRecordOutput) Services() GetProtectionRulesRecordServi
 	return o.ApplyT(func(v GetProtectionRulesRecord) []GetProtectionRulesRecordService { return v.Services }).(GetProtectionRulesRecordServiceArrayOutput)
 }
 
-// Specifies the source address.
+// The source configuration.
 func (o GetProtectionRulesRecordOutput) Sources() GetProtectionRulesRecordSourceArrayOutput {
 	return o.ApplyT(func(v GetProtectionRulesRecord) []GetProtectionRulesRecordSource { return v.Sources }).(GetProtectionRulesRecordSourceArrayOutput)
 }
 
-// Specifies the rule status.
-// The options are as follows:
-// + **0**: disabled;
-// + **1**: enabled.
+// The rule status.
 func (o GetProtectionRulesRecordOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProtectionRulesRecord) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Specifies the key/value pairs to associate with the protection rule.
-// Tags should have only one key/value pair.
+// The tag of a rule.
 func (o GetProtectionRulesRecordOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetProtectionRulesRecord) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Specifies the rule type.
-// The value can be **0** (Internet rule), **1** (VPC rule), or **2** (NAT rule).
+// The rule type.
 func (o GetProtectionRulesRecordOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProtectionRulesRecord) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -6660,7 +5952,7 @@ func (o GetProtectionRulesRecordArrayOutput) Index(i pulumi.IntInput) GetProtect
 }
 
 type GetProtectionRulesRecordDestination struct {
-	// The source IP address.
+	// The destination IP address.
 	Address string `pulumi:"address"`
 	// The address group.
 	AddressGroups []string `pulumi:"addressGroups"`
@@ -6668,11 +5960,11 @@ type GetProtectionRulesRecordDestination struct {
 	AddressSetId string `pulumi:"addressSetId"`
 	// The IP address group name.
 	AddressSetName string `pulumi:"addressSetName"`
-	// The address set type.
+	// The destination address set type.
 	AddressSetType int `pulumi:"addressSetType"`
-	// The address type.
+	// The destination address type.
 	AddressType int `pulumi:"addressType"`
-	// The name of the domain address.
+	// The name of the domain name address.
 	DomainAddressName string `pulumi:"domainAddressName"`
 	// The ID of the domain group.
 	DomainSetId string `pulumi:"domainSetId"`
@@ -6682,8 +5974,7 @@ type GetProtectionRulesRecordDestination struct {
 	IpAddresses []string `pulumi:"ipAddresses"`
 	// The region list of a rule.
 	RegionLists []GetProtectionRulesRecordDestinationRegionList `pulumi:"regionLists"`
-	// Specifies the rule type.
-	// The value can be **0** (Internet rule), **1** (VPC rule), or **2** (NAT rule).
+	// The destination type.
 	Type int `pulumi:"type"`
 }
 
@@ -6699,7 +5990,7 @@ type GetProtectionRulesRecordDestinationInput interface {
 }
 
 type GetProtectionRulesRecordDestinationArgs struct {
-	// The source IP address.
+	// The destination IP address.
 	Address pulumi.StringInput `pulumi:"address"`
 	// The address group.
 	AddressGroups pulumi.StringArrayInput `pulumi:"addressGroups"`
@@ -6707,11 +5998,11 @@ type GetProtectionRulesRecordDestinationArgs struct {
 	AddressSetId pulumi.StringInput `pulumi:"addressSetId"`
 	// The IP address group name.
 	AddressSetName pulumi.StringInput `pulumi:"addressSetName"`
-	// The address set type.
+	// The destination address set type.
 	AddressSetType pulumi.IntInput `pulumi:"addressSetType"`
-	// The address type.
+	// The destination address type.
 	AddressType pulumi.IntInput `pulumi:"addressType"`
-	// The name of the domain address.
+	// The name of the domain name address.
 	DomainAddressName pulumi.StringInput `pulumi:"domainAddressName"`
 	// The ID of the domain group.
 	DomainSetId pulumi.StringInput `pulumi:"domainSetId"`
@@ -6721,8 +6012,7 @@ type GetProtectionRulesRecordDestinationArgs struct {
 	IpAddresses pulumi.StringArrayInput `pulumi:"ipAddresses"`
 	// The region list of a rule.
 	RegionLists GetProtectionRulesRecordDestinationRegionListArrayInput `pulumi:"regionLists"`
-	// Specifies the rule type.
-	// The value can be **0** (Internet rule), **1** (VPC rule), or **2** (NAT rule).
+	// The destination type.
 	Type pulumi.IntInput `pulumi:"type"`
 }
 
@@ -6777,7 +6067,7 @@ func (o GetProtectionRulesRecordDestinationOutput) ToGetProtectionRulesRecordDes
 	return o
 }
 
-// The source IP address.
+// The destination IP address.
 func (o GetProtectionRulesRecordDestinationOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProtectionRulesRecordDestination) string { return v.Address }).(pulumi.StringOutput)
 }
@@ -6797,17 +6087,17 @@ func (o GetProtectionRulesRecordDestinationOutput) AddressSetName() pulumi.Strin
 	return o.ApplyT(func(v GetProtectionRulesRecordDestination) string { return v.AddressSetName }).(pulumi.StringOutput)
 }
 
-// The address set type.
+// The destination address set type.
 func (o GetProtectionRulesRecordDestinationOutput) AddressSetType() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProtectionRulesRecordDestination) int { return v.AddressSetType }).(pulumi.IntOutput)
 }
 
-// The address type.
+// The destination address type.
 func (o GetProtectionRulesRecordDestinationOutput) AddressType() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProtectionRulesRecordDestination) int { return v.AddressType }).(pulumi.IntOutput)
 }
 
-// The name of the domain address.
+// The name of the domain name address.
 func (o GetProtectionRulesRecordDestinationOutput) DomainAddressName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProtectionRulesRecordDestination) string { return v.DomainAddressName }).(pulumi.StringOutput)
 }
@@ -6834,8 +6124,7 @@ func (o GetProtectionRulesRecordDestinationOutput) RegionLists() GetProtectionRu
 	}).(GetProtectionRulesRecordDestinationRegionListArrayOutput)
 }
 
-// Specifies the rule type.
-// The value can be **0** (Internet rule), **1** (VPC rule), or **2** (NAT rule).
+// The destination type.
 func (o GetProtectionRulesRecordDestinationOutput) Type() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProtectionRulesRecordDestination) int { return v.Type }).(pulumi.IntOutput)
 }
@@ -6865,7 +6154,7 @@ type GetProtectionRulesRecordDestinationRegionList struct {
 	DescriptionCn string `pulumi:"descriptionCn"`
 	// The English description of a region.
 	DescriptionEn string `pulumi:"descriptionEn"`
-	// The region ID.
+	// The region ID of the destination.
 	RegionId string `pulumi:"regionId"`
 	// The region type.
 	RegionType int `pulumi:"regionType"`
@@ -6887,7 +6176,7 @@ type GetProtectionRulesRecordDestinationRegionListArgs struct {
 	DescriptionCn pulumi.StringInput `pulumi:"descriptionCn"`
 	// The English description of a region.
 	DescriptionEn pulumi.StringInput `pulumi:"descriptionEn"`
-	// The region ID.
+	// The region ID of the destination.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
 	// The region type.
 	RegionType pulumi.IntInput `pulumi:"regionType"`
@@ -6954,7 +6243,7 @@ func (o GetProtectionRulesRecordDestinationRegionListOutput) DescriptionEn() pul
 	return o.ApplyT(func(v GetProtectionRulesRecordDestinationRegionList) string { return v.DescriptionEn }).(pulumi.StringOutput)
 }
 
-// The region ID.
+// The region ID of the destination.
 func (o GetProtectionRulesRecordDestinationRegionListOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProtectionRulesRecordDestinationRegionList) string { return v.RegionId }).(pulumi.StringOutput)
 }
@@ -6987,9 +6276,9 @@ func (o GetProtectionRulesRecordDestinationRegionListArrayOutput) Index(i pulumi
 type GetProtectionRulesRecordService struct {
 	// The custom service.
 	CustomServices []GetProtectionRulesRecordServiceCustomService `pulumi:"customServices"`
-	// The destination port.
+	// The destination port of the service.
 	DestPort string `pulumi:"destPort"`
-	// The protocol type of the custom service.
+	// The protocol type.
 	Protocol int `pulumi:"protocol"`
 	// The protocols.
 	Protocols []int `pulumi:"protocols"`
@@ -7001,10 +6290,9 @@ type GetProtectionRulesRecordService struct {
 	ServiceSetName string `pulumi:"serviceSetName"`
 	// The service set type.
 	ServiceSetType int `pulumi:"serviceSetType"`
-	// The source port of the custom service.
+	// The source port.
 	SourcePort string `pulumi:"sourcePort"`
-	// Specifies the rule type.
-	// The value can be **0** (Internet rule), **1** (VPC rule), or **2** (NAT rule).
+	// The service input type.
 	Type int `pulumi:"type"`
 }
 
@@ -7022,9 +6310,9 @@ type GetProtectionRulesRecordServiceInput interface {
 type GetProtectionRulesRecordServiceArgs struct {
 	// The custom service.
 	CustomServices GetProtectionRulesRecordServiceCustomServiceArrayInput `pulumi:"customServices"`
-	// The destination port.
+	// The destination port of the service.
 	DestPort pulumi.StringInput `pulumi:"destPort"`
-	// The protocol type of the custom service.
+	// The protocol type.
 	Protocol pulumi.IntInput `pulumi:"protocol"`
 	// The protocols.
 	Protocols pulumi.IntArrayInput `pulumi:"protocols"`
@@ -7036,10 +6324,9 @@ type GetProtectionRulesRecordServiceArgs struct {
 	ServiceSetName pulumi.StringInput `pulumi:"serviceSetName"`
 	// The service set type.
 	ServiceSetType pulumi.IntInput `pulumi:"serviceSetType"`
-	// The source port of the custom service.
+	// The source port.
 	SourcePort pulumi.StringInput `pulumi:"sourcePort"`
-	// Specifies the rule type.
-	// The value can be **0** (Internet rule), **1** (VPC rule), or **2** (NAT rule).
+	// The service input type.
 	Type pulumi.IntInput `pulumi:"type"`
 }
 
@@ -7101,12 +6388,12 @@ func (o GetProtectionRulesRecordServiceOutput) CustomServices() GetProtectionRul
 	}).(GetProtectionRulesRecordServiceCustomServiceArrayOutput)
 }
 
-// The destination port.
+// The destination port of the service.
 func (o GetProtectionRulesRecordServiceOutput) DestPort() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProtectionRulesRecordService) string { return v.DestPort }).(pulumi.StringOutput)
 }
 
-// The protocol type of the custom service.
+// The protocol type.
 func (o GetProtectionRulesRecordServiceOutput) Protocol() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProtectionRulesRecordService) int { return v.Protocol }).(pulumi.IntOutput)
 }
@@ -7136,13 +6423,12 @@ func (o GetProtectionRulesRecordServiceOutput) ServiceSetType() pulumi.IntOutput
 	return o.ApplyT(func(v GetProtectionRulesRecordService) int { return v.ServiceSetType }).(pulumi.IntOutput)
 }
 
-// The source port of the custom service.
+// The source port.
 func (o GetProtectionRulesRecordServiceOutput) SourcePort() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProtectionRulesRecordService) string { return v.SourcePort }).(pulumi.StringOutput)
 }
 
-// Specifies the rule type.
-// The value can be **0** (Internet rule), **1** (VPC rule), or **2** (NAT rule).
+// The service input type.
 func (o GetProtectionRulesRecordServiceOutput) Type() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProtectionRulesRecordService) int { return v.Type }).(pulumi.IntOutput)
 }
@@ -7172,7 +6458,7 @@ type GetProtectionRulesRecordServiceCustomService struct {
 	Description string `pulumi:"description"`
 	// The destination port.
 	DestPort string `pulumi:"destPort"`
-	// Specifies the rule name.
+	// The custom service name.
 	Name string `pulumi:"name"`
 	// The protocol type of the custom service.
 	Protocol int `pulumi:"protocol"`
@@ -7196,7 +6482,7 @@ type GetProtectionRulesRecordServiceCustomServiceArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// The destination port.
 	DestPort pulumi.StringInput `pulumi:"destPort"`
-	// Specifies the rule name.
+	// The custom service name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The protocol type of the custom service.
 	Protocol pulumi.IntInput `pulumi:"protocol"`
@@ -7265,7 +6551,7 @@ func (o GetProtectionRulesRecordServiceCustomServiceOutput) DestPort() pulumi.St
 	return o.ApplyT(func(v GetProtectionRulesRecordServiceCustomService) string { return v.DestPort }).(pulumi.StringOutput)
 }
 
-// Specifies the rule name.
+// The custom service name.
 func (o GetProtectionRulesRecordServiceCustomServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProtectionRulesRecordServiceCustomService) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -7319,8 +6605,7 @@ type GetProtectionRulesRecordSource struct {
 	IpAddresses []string `pulumi:"ipAddresses"`
 	// The region list of a rule.
 	RegionLists []GetProtectionRulesRecordSourceRegionList `pulumi:"regionLists"`
-	// Specifies the rule type.
-	// The value can be **0** (Internet rule), **1** (VPC rule), or **2** (NAT rule).
+	// The source type.
 	Type int `pulumi:"type"`
 }
 
@@ -7354,8 +6639,7 @@ type GetProtectionRulesRecordSourceArgs struct {
 	IpAddresses pulumi.StringArrayInput `pulumi:"ipAddresses"`
 	// The region list of a rule.
 	RegionLists GetProtectionRulesRecordSourceRegionListArrayInput `pulumi:"regionLists"`
-	// Specifies the rule type.
-	// The value can be **0** (Internet rule), **1** (VPC rule), or **2** (NAT rule).
+	// The source type.
 	Type pulumi.IntInput `pulumi:"type"`
 }
 
@@ -7457,8 +6741,7 @@ func (o GetProtectionRulesRecordSourceOutput) RegionLists() GetProtectionRulesRe
 	}).(GetProtectionRulesRecordSourceRegionListArrayOutput)
 }
 
-// Specifies the rule type.
-// The value can be **0** (Internet rule), **1** (VPC rule), or **2** (NAT rule).
+// The source type.
 func (o GetProtectionRulesRecordSourceOutput) Type() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProtectionRulesRecordSource) int { return v.Type }).(pulumi.IntOutput)
 }
@@ -7716,17 +6999,13 @@ func (o GetResourceTagsTagArrayOutput) Index(i pulumi.IntInput) GetResourceTagsT
 type GetServiceGroupMembersRecord struct {
 	// The service group member description.
 	Description string `pulumi:"description"`
-	// Specifies the destination port.
+	// The destination port.
 	DestPort string `pulumi:"destPort"`
-	// Specifies the service group member ID.
+	// The service group member ID.
 	ItemId string `pulumi:"itemId"`
-	// Specifies the protocol type.
-	// The options are as follows:
-	// + **6**: TCP;
-	// + **17**: UDP;
-	// + **1**: ICMP.
+	// The protocol type.
 	Protocol int `pulumi:"protocol"`
-	// Specifies the source port.
+	// The source port.
 	SourcePort string `pulumi:"sourcePort"`
 }
 
@@ -7744,17 +7023,13 @@ type GetServiceGroupMembersRecordInput interface {
 type GetServiceGroupMembersRecordArgs struct {
 	// The service group member description.
 	Description pulumi.StringInput `pulumi:"description"`
-	// Specifies the destination port.
+	// The destination port.
 	DestPort pulumi.StringInput `pulumi:"destPort"`
-	// Specifies the service group member ID.
+	// The service group member ID.
 	ItemId pulumi.StringInput `pulumi:"itemId"`
-	// Specifies the protocol type.
-	// The options are as follows:
-	// + **6**: TCP;
-	// + **17**: UDP;
-	// + **1**: ICMP.
+	// The protocol type.
 	Protocol pulumi.IntInput `pulumi:"protocol"`
-	// Specifies the source port.
+	// The source port.
 	SourcePort pulumi.StringInput `pulumi:"sourcePort"`
 }
 
@@ -7814,26 +7089,22 @@ func (o GetServiceGroupMembersRecordOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceGroupMembersRecord) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Specifies the destination port.
+// The destination port.
 func (o GetServiceGroupMembersRecordOutput) DestPort() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceGroupMembersRecord) string { return v.DestPort }).(pulumi.StringOutput)
 }
 
-// Specifies the service group member ID.
+// The service group member ID.
 func (o GetServiceGroupMembersRecordOutput) ItemId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceGroupMembersRecord) string { return v.ItemId }).(pulumi.StringOutput)
 }
 
-// Specifies the protocol type.
-// The options are as follows:
-// + **6**: TCP;
-// + **17**: UDP;
-// + **1**: ICMP.
+// The protocol type.
 func (o GetServiceGroupMembersRecordOutput) Protocol() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceGroupMembersRecord) int { return v.Protocol }).(pulumi.IntOutput)
 }
 
-// Specifies the source port.
+// The source port.
 func (o GetServiceGroupMembersRecordOutput) SourcePort() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceGroupMembersRecord) string { return v.SourcePort }).(pulumi.StringOutput)
 }
@@ -7863,7 +7134,7 @@ type GetServiceGroupsServiceGroup struct {
 	Description string `pulumi:"description"`
 	// The service group ID.
 	Id string `pulumi:"id"`
-	// Specifies the name of the service group.
+	// The name of the service group.
 	Name string `pulumi:"name"`
 	// The protocols of the service group.
 	Protocols []int `pulumi:"protocols"`
@@ -7889,7 +7160,7 @@ type GetServiceGroupsServiceGroupArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// The service group ID.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies the name of the service group.
+	// The name of the service group.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The protocols of the service group.
 	Protocols pulumi.IntArrayInput `pulumi:"protocols"`
@@ -7960,7 +7231,7 @@ func (o GetServiceGroupsServiceGroupOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceGroupsServiceGroup) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the service group.
+// The name of the service group.
 func (o GetServiceGroupsServiceGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceGroupsServiceGroup) string { return v.Name }).(pulumi.StringOutput)
 }

@@ -12,123 +12,21 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages CTS key event notification resource within SberCloud.
-//
-// ## Example Usage
-//
-// ### Complete Notification
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cts"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			topicUrn := cfg.RequireObject("topicUrn")
-//			_, err := cts.NewNotification(ctx, "notify", &cts.NotificationArgs{
-//				Name:          pulumi.String("keyOperate_test"),
-//				OperationType: pulumi.String("complete"),
-//				SmnTopic:      pulumi.Any(topicUrn),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Customized Notification
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cts"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			topicUrn := cfg.RequireObject("topicUrn")
-//			_, err := cts.NewNotification(ctx, "notify", &cts.NotificationArgs{
-//				Name:          pulumi.String("keyOperate_test"),
-//				OperationType: pulumi.String("customized"),
-//				SmnTopic:      pulumi.Any(topicUrn),
-//				Operations: cts.NotificationOperationArray{
-//					&cts.NotificationOperationArgs{
-//						Service:  pulumi.String("ECS"),
-//						Resource: pulumi.String("ecs"),
-//						TraceNames: pulumi.StringArray{
-//							pulumi.String("createServer"),
-//							pulumi.String("deleteServer"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// CTS notifications can be imported using `name`, e.g.:
-//
-// ```sh
-// $ pulumi import sbercloud:Cts/notification:Notification tracker your_notification
-// ```
 type Notification struct {
 	pulumi.CustomResourceState
 
-	AgencyName pulumi.StringPtrOutput `pulumi:"agencyName"`
-	CreatedAt  pulumi.StringOutput    `pulumi:"createdAt"`
-	// Specifies whether notification is enabled, defaults to true.
-	//
-	// <a name="notificationOperationsObject"></a>
-	// The `operations` block supports:
-	Enabled pulumi.BoolPtrOutput        `pulumi:"enabled"`
-	Filter  NotificationFilterPtrOutput `pulumi:"filter"`
-	// Specifies the notification name. The value contains a maximum of 64 characters,
-	// and only letters, digits, underscores(_), and Chinese characters are allowed.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The notification ID in UUID format.
-	NotificationId pulumi.StringOutput `pulumi:"notificationId"`
-	// Specifies the operation type, possible options include **complete** and
-	// **customized**.
-	OperationType pulumi.StringOutput `pulumi:"operationType"`
-	// Specifies an array of users. Notifications will be sent when specified users
-	// perform specified operations. All users are selected by default.
-	// The object structure is documented below.
+	AgencyName     pulumi.StringPtrOutput               `pulumi:"agencyName"`
+	CreatedAt      pulumi.StringOutput                  `pulumi:"createdAt"`
+	Enabled        pulumi.BoolPtrOutput                 `pulumi:"enabled"`
+	Filter         NotificationFilterPtrOutput          `pulumi:"filter"`
+	Name           pulumi.StringOutput                  `pulumi:"name"`
+	NotificationId pulumi.StringOutput                  `pulumi:"notificationId"`
+	OperationType  pulumi.StringOutput                  `pulumi:"operationType"`
 	OperationUsers NotificationOperationUserArrayOutput `pulumi:"operationUsers"`
-	// Specifies an array of operations that will trigger notifications.
-	// For details, see [Supported Services and Operations](https://support.sbercloud.com/intl/en-us/usermanual-cts/cts_03_0022.html).
-	// The object structure is documented below.
-	Operations NotificationOperationArrayOutput `pulumi:"operations"`
-	// Specifies the region in which to manage the CTS notification resource.
-	// If omitted, the provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Specifies the URN of a topic.
-	SmnTopic pulumi.StringPtrOutput `pulumi:"smnTopic"`
-	// The notification status, the value can be **enabled** or **disabled**.
-	Status pulumi.StringOutput `pulumi:"status"`
+	Operations     NotificationOperationArrayOutput     `pulumi:"operations"`
+	Region         pulumi.StringOutput                  `pulumi:"region"`
+	SmnTopic       pulumi.StringPtrOutput               `pulumi:"smnTopic"`
+	Status         pulumi.StringOutput                  `pulumi:"status"`
 }
 
 // NewNotification registers a new resource with the given unique name, arguments, and options.
@@ -164,71 +62,33 @@ func GetNotification(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Notification resources.
 type notificationState struct {
-	AgencyName *string `pulumi:"agencyName"`
-	CreatedAt  *string `pulumi:"createdAt"`
-	// Specifies whether notification is enabled, defaults to true.
-	//
-	// <a name="notificationOperationsObject"></a>
-	// The `operations` block supports:
-	Enabled *bool               `pulumi:"enabled"`
-	Filter  *NotificationFilter `pulumi:"filter"`
-	// Specifies the notification name. The value contains a maximum of 64 characters,
-	// and only letters, digits, underscores(_), and Chinese characters are allowed.
-	Name *string `pulumi:"name"`
-	// The notification ID in UUID format.
-	NotificationId *string `pulumi:"notificationId"`
-	// Specifies the operation type, possible options include **complete** and
-	// **customized**.
-	OperationType *string `pulumi:"operationType"`
-	// Specifies an array of users. Notifications will be sent when specified users
-	// perform specified operations. All users are selected by default.
-	// The object structure is documented below.
+	AgencyName     *string                     `pulumi:"agencyName"`
+	CreatedAt      *string                     `pulumi:"createdAt"`
+	Enabled        *bool                       `pulumi:"enabled"`
+	Filter         *NotificationFilter         `pulumi:"filter"`
+	Name           *string                     `pulumi:"name"`
+	NotificationId *string                     `pulumi:"notificationId"`
+	OperationType  *string                     `pulumi:"operationType"`
 	OperationUsers []NotificationOperationUser `pulumi:"operationUsers"`
-	// Specifies an array of operations that will trigger notifications.
-	// For details, see [Supported Services and Operations](https://support.sbercloud.com/intl/en-us/usermanual-cts/cts_03_0022.html).
-	// The object structure is documented below.
-	Operations []NotificationOperation `pulumi:"operations"`
-	// Specifies the region in which to manage the CTS notification resource.
-	// If omitted, the provider-level region will be used. Changing this creates a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies the URN of a topic.
-	SmnTopic *string `pulumi:"smnTopic"`
-	// The notification status, the value can be **enabled** or **disabled**.
-	Status *string `pulumi:"status"`
+	Operations     []NotificationOperation     `pulumi:"operations"`
+	Region         *string                     `pulumi:"region"`
+	SmnTopic       *string                     `pulumi:"smnTopic"`
+	Status         *string                     `pulumi:"status"`
 }
 
 type NotificationState struct {
-	AgencyName pulumi.StringPtrInput
-	CreatedAt  pulumi.StringPtrInput
-	// Specifies whether notification is enabled, defaults to true.
-	//
-	// <a name="notificationOperationsObject"></a>
-	// The `operations` block supports:
-	Enabled pulumi.BoolPtrInput
-	Filter  NotificationFilterPtrInput
-	// Specifies the notification name. The value contains a maximum of 64 characters,
-	// and only letters, digits, underscores(_), and Chinese characters are allowed.
-	Name pulumi.StringPtrInput
-	// The notification ID in UUID format.
+	AgencyName     pulumi.StringPtrInput
+	CreatedAt      pulumi.StringPtrInput
+	Enabled        pulumi.BoolPtrInput
+	Filter         NotificationFilterPtrInput
+	Name           pulumi.StringPtrInput
 	NotificationId pulumi.StringPtrInput
-	// Specifies the operation type, possible options include **complete** and
-	// **customized**.
-	OperationType pulumi.StringPtrInput
-	// Specifies an array of users. Notifications will be sent when specified users
-	// perform specified operations. All users are selected by default.
-	// The object structure is documented below.
+	OperationType  pulumi.StringPtrInput
 	OperationUsers NotificationOperationUserArrayInput
-	// Specifies an array of operations that will trigger notifications.
-	// For details, see [Supported Services and Operations](https://support.sbercloud.com/intl/en-us/usermanual-cts/cts_03_0022.html).
-	// The object structure is documented below.
-	Operations NotificationOperationArrayInput
-	// Specifies the region in which to manage the CTS notification resource.
-	// If omitted, the provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringPtrInput
-	// Specifies the URN of a topic.
-	SmnTopic pulumi.StringPtrInput
-	// The notification status, the value can be **enabled** or **disabled**.
-	Status pulumi.StringPtrInput
+	Operations     NotificationOperationArrayInput
+	Region         pulumi.StringPtrInput
+	SmnTopic       pulumi.StringPtrInput
+	Status         pulumi.StringPtrInput
 }
 
 func (NotificationState) ElementType() reflect.Type {
@@ -236,62 +96,28 @@ func (NotificationState) ElementType() reflect.Type {
 }
 
 type notificationArgs struct {
-	AgencyName *string `pulumi:"agencyName"`
-	// Specifies whether notification is enabled, defaults to true.
-	//
-	// <a name="notificationOperationsObject"></a>
-	// The `operations` block supports:
-	Enabled *bool               `pulumi:"enabled"`
-	Filter  *NotificationFilter `pulumi:"filter"`
-	// Specifies the notification name. The value contains a maximum of 64 characters,
-	// and only letters, digits, underscores(_), and Chinese characters are allowed.
-	Name *string `pulumi:"name"`
-	// Specifies the operation type, possible options include **complete** and
-	// **customized**.
-	OperationType string `pulumi:"operationType"`
-	// Specifies an array of users. Notifications will be sent when specified users
-	// perform specified operations. All users are selected by default.
-	// The object structure is documented below.
+	AgencyName     *string                     `pulumi:"agencyName"`
+	Enabled        *bool                       `pulumi:"enabled"`
+	Filter         *NotificationFilter         `pulumi:"filter"`
+	Name           *string                     `pulumi:"name"`
+	OperationType  string                      `pulumi:"operationType"`
 	OperationUsers []NotificationOperationUser `pulumi:"operationUsers"`
-	// Specifies an array of operations that will trigger notifications.
-	// For details, see [Supported Services and Operations](https://support.sbercloud.com/intl/en-us/usermanual-cts/cts_03_0022.html).
-	// The object structure is documented below.
-	Operations []NotificationOperation `pulumi:"operations"`
-	// Specifies the region in which to manage the CTS notification resource.
-	// If omitted, the provider-level region will be used. Changing this creates a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies the URN of a topic.
-	SmnTopic *string `pulumi:"smnTopic"`
+	Operations     []NotificationOperation     `pulumi:"operations"`
+	Region         *string                     `pulumi:"region"`
+	SmnTopic       *string                     `pulumi:"smnTopic"`
 }
 
 // The set of arguments for constructing a Notification resource.
 type NotificationArgs struct {
-	AgencyName pulumi.StringPtrInput
-	// Specifies whether notification is enabled, defaults to true.
-	//
-	// <a name="notificationOperationsObject"></a>
-	// The `operations` block supports:
-	Enabled pulumi.BoolPtrInput
-	Filter  NotificationFilterPtrInput
-	// Specifies the notification name. The value contains a maximum of 64 characters,
-	// and only letters, digits, underscores(_), and Chinese characters are allowed.
-	Name pulumi.StringPtrInput
-	// Specifies the operation type, possible options include **complete** and
-	// **customized**.
-	OperationType pulumi.StringInput
-	// Specifies an array of users. Notifications will be sent when specified users
-	// perform specified operations. All users are selected by default.
-	// The object structure is documented below.
+	AgencyName     pulumi.StringPtrInput
+	Enabled        pulumi.BoolPtrInput
+	Filter         NotificationFilterPtrInput
+	Name           pulumi.StringPtrInput
+	OperationType  pulumi.StringInput
 	OperationUsers NotificationOperationUserArrayInput
-	// Specifies an array of operations that will trigger notifications.
-	// For details, see [Supported Services and Operations](https://support.sbercloud.com/intl/en-us/usermanual-cts/cts_03_0022.html).
-	// The object structure is documented below.
-	Operations NotificationOperationArrayInput
-	// Specifies the region in which to manage the CTS notification resource.
-	// If omitted, the provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringPtrInput
-	// Specifies the URN of a topic.
-	SmnTopic pulumi.StringPtrInput
+	Operations     NotificationOperationArrayInput
+	Region         pulumi.StringPtrInput
+	SmnTopic       pulumi.StringPtrInput
 }
 
 func (NotificationArgs) ElementType() reflect.Type {
@@ -389,10 +215,6 @@ func (o NotificationOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Notification) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Specifies whether notification is enabled, defaults to true.
-//
-// <a name="notificationOperationsObject"></a>
-// The `operations` block supports:
 func (o NotificationOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Notification) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -401,49 +223,34 @@ func (o NotificationOutput) Filter() NotificationFilterPtrOutput {
 	return o.ApplyT(func(v *Notification) NotificationFilterPtrOutput { return v.Filter }).(NotificationFilterPtrOutput)
 }
 
-// Specifies the notification name. The value contains a maximum of 64 characters,
-// and only letters, digits, underscores(_), and Chinese characters are allowed.
 func (o NotificationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Notification) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The notification ID in UUID format.
 func (o NotificationOutput) NotificationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Notification) pulumi.StringOutput { return v.NotificationId }).(pulumi.StringOutput)
 }
 
-// Specifies the operation type, possible options include **complete** and
-// **customized**.
 func (o NotificationOutput) OperationType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Notification) pulumi.StringOutput { return v.OperationType }).(pulumi.StringOutput)
 }
 
-// Specifies an array of users. Notifications will be sent when specified users
-// perform specified operations. All users are selected by default.
-// The object structure is documented below.
 func (o NotificationOutput) OperationUsers() NotificationOperationUserArrayOutput {
 	return o.ApplyT(func(v *Notification) NotificationOperationUserArrayOutput { return v.OperationUsers }).(NotificationOperationUserArrayOutput)
 }
 
-// Specifies an array of operations that will trigger notifications.
-// For details, see [Supported Services and Operations](https://support.sbercloud.com/intl/en-us/usermanual-cts/cts_03_0022.html).
-// The object structure is documented below.
 func (o NotificationOutput) Operations() NotificationOperationArrayOutput {
 	return o.ApplyT(func(v *Notification) NotificationOperationArrayOutput { return v.Operations }).(NotificationOperationArrayOutput)
 }
 
-// Specifies the region in which to manage the CTS notification resource.
-// If omitted, the provider-level region will be used. Changing this creates a new resource.
 func (o NotificationOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Notification) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Specifies the URN of a topic.
 func (o NotificationOutput) SmnTopic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Notification) pulumi.StringPtrOutput { return v.SmnTopic }).(pulumi.StringPtrOutput)
 }
 
-// The notification status, the value can be **enabled** or **disabled**.
 func (o NotificationOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Notification) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

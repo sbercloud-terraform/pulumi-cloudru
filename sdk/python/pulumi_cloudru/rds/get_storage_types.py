@@ -78,10 +78,6 @@ class GetStorageTypesResult:
     @_builtins.property
     @pulumi.getter(name="storageTypes")
     def storage_types(self) -> Sequence['outputs.GetStorageTypesStorageTypeResult']:
-        """
-        Storage type list. For details, see Data structure of the storage_type field.
-        The storage_type structure is documented below.
-        """
         return pulumi.get(self, "storage_types")
 
 
@@ -105,26 +101,7 @@ def get_storage_types(db_type: Optional[_builtins.str] = None,
                       region: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStorageTypesResult:
     """
-    Use this data source to get the list of RDS storage types.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    test = sbercloud.Rds.get_storage_types(db_type="MySQL",
-        db_version="8.0")
-    ```
-
-
-    :param _builtins.str db_type: DB engine. The valid values are **MySQL**, **PostgreSQL**, **SQLServer**.
-    :param _builtins.str db_version: DB version number.
-    :param _builtins.str instance_mode: HA mode. The valid values are **single**, **ha**, **replica**.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['dbType'] = db_type
@@ -147,26 +124,7 @@ def get_storage_types_output(db_type: Optional[pulumi.Input[_builtins.str]] = No
                              region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStorageTypesResult]:
     """
-    Use this data source to get the list of RDS storage types.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    test = sbercloud.Rds.get_storage_types(db_type="MySQL",
-        db_version="8.0")
-    ```
-
-
-    :param _builtins.str db_type: DB engine. The valid values are **MySQL**, **PostgreSQL**, **SQLServer**.
-    :param _builtins.str db_version: DB version number.
-    :param _builtins.str instance_mode: HA mode. The valid values are **single**, **ha**, **replica**.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['dbType'] = db_type

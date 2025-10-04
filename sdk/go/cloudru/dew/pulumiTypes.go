@@ -14,16 +14,11 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type GetKeypairsKeypair struct {
-	// Specifies the fingerprint of the keypair.
 	Fingerprint string `pulumi:"fingerprint"`
-	// Indicates whether the private key is managed by sberCloud.
-	IsManaged bool `pulumi:"isManaged"`
-	// Specifies the name of the keypair.
-	Name string `pulumi:"name"`
-	// Specifies the imported OpenSSH-formatted public key.
-	PublicKey string `pulumi:"publicKey"`
-	// Indicates the scope of keypair. The value can be **account**or **user**.
-	Scope string `pulumi:"scope"`
+	IsManaged   bool   `pulumi:"isManaged"`
+	Name        string `pulumi:"name"`
+	PublicKey   string `pulumi:"publicKey"`
+	Scope       string `pulumi:"scope"`
 }
 
 // GetKeypairsKeypairInput is an input type that accepts GetKeypairsKeypairArgs and GetKeypairsKeypairOutput values.
@@ -38,16 +33,11 @@ type GetKeypairsKeypairInput interface {
 }
 
 type GetKeypairsKeypairArgs struct {
-	// Specifies the fingerprint of the keypair.
 	Fingerprint pulumi.StringInput `pulumi:"fingerprint"`
-	// Indicates whether the private key is managed by sberCloud.
-	IsManaged pulumi.BoolInput `pulumi:"isManaged"`
-	// Specifies the name of the keypair.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies the imported OpenSSH-formatted public key.
-	PublicKey pulumi.StringInput `pulumi:"publicKey"`
-	// Indicates the scope of keypair. The value can be **account**or **user**.
-	Scope pulumi.StringInput `pulumi:"scope"`
+	IsManaged   pulumi.BoolInput   `pulumi:"isManaged"`
+	Name        pulumi.StringInput `pulumi:"name"`
+	PublicKey   pulumi.StringInput `pulumi:"publicKey"`
+	Scope       pulumi.StringInput `pulumi:"scope"`
 }
 
 func (GetKeypairsKeypairArgs) ElementType() reflect.Type {
@@ -101,27 +91,22 @@ func (o GetKeypairsKeypairOutput) ToGetKeypairsKeypairOutputWithContext(ctx cont
 	return o
 }
 
-// Specifies the fingerprint of the keypair.
 func (o GetKeypairsKeypairOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeypairsKeypair) string { return v.Fingerprint }).(pulumi.StringOutput)
 }
 
-// Indicates whether the private key is managed by sberCloud.
 func (o GetKeypairsKeypairOutput) IsManaged() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetKeypairsKeypair) bool { return v.IsManaged }).(pulumi.BoolOutput)
 }
 
-// Specifies the name of the keypair.
 func (o GetKeypairsKeypairOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeypairsKeypair) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the imported OpenSSH-formatted public key.
 func (o GetKeypairsKeypairOutput) PublicKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeypairsKeypair) string { return v.PublicKey }).(pulumi.StringOutput)
 }
 
-// Indicates the scope of keypair. The value can be **account**or **user**.
 func (o GetKeypairsKeypairOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeypairsKeypair) string { return v.Scope }).(pulumi.StringOutput)
 }

@@ -28,17 +28,10 @@ class DcsAccountArgs:
         """
         The set of arguments for constructing a DcsAccount resource.
         :param pulumi.Input[_builtins.str] account_name: Specifies the name of the account.
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] account_password: Specifies the password of the account.
         :param pulumi.Input[_builtins.str] account_role: Specifies the role of the account.
-               Value options:
-               + **read**: The account has read-only privilege.
-               + **write**: The account has read and write privilege.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the DCS instance.
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] description: Specifies the description of the account.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this creates a new resource.
         """
         pulumi.set(__self__, "account_name", account_name)
         pulumi.set(__self__, "account_password", account_password)
@@ -54,7 +47,6 @@ class DcsAccountArgs:
     def account_name(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the name of the account.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "account_name")
 
@@ -79,9 +71,6 @@ class DcsAccountArgs:
     def account_role(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the role of the account.
-        Value options:
-        + **read**: The account has read-only privilege.
-        + **write**: The account has read and write privilege.
         """
         return pulumi.get(self, "account_role")
 
@@ -94,7 +83,6 @@ class DcsAccountArgs:
     def instance_id(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the ID of the DCS instance.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "instance_id")
 
@@ -117,10 +105,6 @@ class DcsAccountArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -142,20 +126,12 @@ class _DcsAccountState:
         """
         Input properties used for looking up and filtering DcsAccount resources.
         :param pulumi.Input[_builtins.str] account_name: Specifies the name of the account.
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] account_password: Specifies the password of the account.
         :param pulumi.Input[_builtins.str] account_role: Specifies the role of the account.
-               Value options:
-               + **read**: The account has read-only privilege.
-               + **write**: The account has read and write privilege.
-        :param pulumi.Input[_builtins.str] account_type: Indicates the type of the account. The value can be **normal** or **default**.
+        :param pulumi.Input[_builtins.str] account_type: Indicates the type of the account.
         :param pulumi.Input[_builtins.str] description: Specifies the description of the account.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the DCS instance.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] status: Indicates the status of the account. The value can be **CREATING**, **AVAILABLE**, **CREATEFAILED**,
-               **DELETED**, **DELETEFAILED**, **DELETING**, **UPDATING** or **ERROR**.
+        :param pulumi.Input[_builtins.str] status: Indicates the status of the account.
         """
         if account_name is not None:
             pulumi.set(__self__, "account_name", account_name)
@@ -179,7 +155,6 @@ class _DcsAccountState:
     def account_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the name of the account.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "account_name")
 
@@ -204,9 +179,6 @@ class _DcsAccountState:
     def account_role(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the role of the account.
-        Value options:
-        + **read**: The account has read-only privilege.
-        + **write**: The account has read and write privilege.
         """
         return pulumi.get(self, "account_role")
 
@@ -218,7 +190,7 @@ class _DcsAccountState:
     @pulumi.getter(name="accountType")
     def account_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Indicates the type of the account. The value can be **normal** or **default**.
+        Indicates the type of the account.
         """
         return pulumi.get(self, "account_type")
 
@@ -243,7 +215,6 @@ class _DcsAccountState:
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the ID of the DCS instance.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "instance_id")
 
@@ -254,10 +225,6 @@ class _DcsAccountState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -268,8 +235,7 @@ class _DcsAccountState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Indicates the status of the account. The value can be **CREATING**, **AVAILABLE**, **CREATEFAILED**,
-        **DELETED**, **DELETEFAILED**, **DELETING**, **UPDATING** or **ERROR**.
+        Indicates the status of the account.
         """
         return pulumi.get(self, "status")
 
@@ -292,76 +258,14 @@ class DcsAccount(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a DCS account resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        test = sbercloud.DcsAccount("test",
-            instance_id=instance_id,
-            account_name="user",
-            account_role="read",
-            account_password="Terraform@123",
-            description="add account")
-        ```
-
-        ## Import
-
-        The DCS account can be imported using the DCS instance ID and the DCS account ID separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/dcsAccount:DcsAccount test <instance_id>/<id>
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include: `account_password`.
-
-        It is generally recommended running `pulumi preview` after importing the account.
-
-        You can then decide if changes should be applied to the account, or the resource definition should be updated to
-
-        align with the account. Also you can ignore changes as below.
-
-        hcl
-
-        resource "sbercloud_dcs_account" "test" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              account_password,
-            
-            ]
-
-          }
-
-        }
-
+        Create a DcsAccount resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_name: Specifies the name of the account.
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] account_password: Specifies the password of the account.
         :param pulumi.Input[_builtins.str] account_role: Specifies the role of the account.
-               Value options:
-               + **read**: The account has read-only privilege.
-               + **write**: The account has read and write privilege.
         :param pulumi.Input[_builtins.str] description: Specifies the description of the account.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the DCS instance.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this creates a new resource.
         """
         ...
     @overload
@@ -370,62 +274,7 @@ class DcsAccount(pulumi.CustomResource):
                  args: DcsAccountArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a DCS account resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        test = sbercloud.DcsAccount("test",
-            instance_id=instance_id,
-            account_name="user",
-            account_role="read",
-            account_password="Terraform@123",
-            description="add account")
-        ```
-
-        ## Import
-
-        The DCS account can be imported using the DCS instance ID and the DCS account ID separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/dcsAccount:DcsAccount test <instance_id>/<id>
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include: `account_password`.
-
-        It is generally recommended running `pulumi preview` after importing the account.
-
-        You can then decide if changes should be applied to the account, or the resource definition should be updated to
-
-        align with the account. Also you can ignore changes as below.
-
-        hcl
-
-        resource "sbercloud_dcs_account" "test" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              account_password,
-            
-            ]
-
-          }
-
-        }
-
+        Create a DcsAccount resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param DcsAccountArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -500,20 +349,12 @@ class DcsAccount(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_name: Specifies the name of the account.
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] account_password: Specifies the password of the account.
         :param pulumi.Input[_builtins.str] account_role: Specifies the role of the account.
-               Value options:
-               + **read**: The account has read-only privilege.
-               + **write**: The account has read and write privilege.
-        :param pulumi.Input[_builtins.str] account_type: Indicates the type of the account. The value can be **normal** or **default**.
+        :param pulumi.Input[_builtins.str] account_type: Indicates the type of the account.
         :param pulumi.Input[_builtins.str] description: Specifies the description of the account.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the DCS instance.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] status: Indicates the status of the account. The value can be **CREATING**, **AVAILABLE**, **CREATEFAILED**,
-               **DELETED**, **DELETEFAILED**, **DELETING**, **UPDATING** or **ERROR**.
+        :param pulumi.Input[_builtins.str] status: Indicates the status of the account.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -534,7 +375,6 @@ class DcsAccount(pulumi.CustomResource):
     def account_name(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the name of the account.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "account_name")
 
@@ -551,9 +391,6 @@ class DcsAccount(pulumi.CustomResource):
     def account_role(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the role of the account.
-        Value options:
-        + **read**: The account has read-only privilege.
-        + **write**: The account has read and write privilege.
         """
         return pulumi.get(self, "account_role")
 
@@ -561,7 +398,7 @@ class DcsAccount(pulumi.CustomResource):
     @pulumi.getter(name="accountType")
     def account_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Indicates the type of the account. The value can be **normal** or **default**.
+        Indicates the type of the account.
         """
         return pulumi.get(self, "account_type")
 
@@ -578,25 +415,19 @@ class DcsAccount(pulumi.CustomResource):
     def instance_id(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the ID of the DCS instance.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        Indicates the status of the account. The value can be **CREATING**, **AVAILABLE**, **CREATEFAILED**,
-        **DELETED**, **DELETEFAILED**, **DELETING**, **UPDATING** or **ERROR**.
+        Indicates the status of the account.
         """
         return pulumi.get(self, "status")
 

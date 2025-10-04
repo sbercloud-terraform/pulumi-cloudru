@@ -4,47 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get an enterprise project from SberCloud
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.Eps.getProject({
- *     name: "test",
- * });
- * ```
- *
- * ## Resources Supported Currently
- *
- * <!-- markdownlint-disable MD033 -->
- * Service Name | Resource Name | Sub Resource Name
- * ---- | --- | ---
- * AS  | sbercloud.As.Group |
- * CBR | sbercloud.Cbr.Vault |
- * CCE | sbercloud.Cce.Cluster | sbercloud_cce_node<br>sbercloud_cce_node_pool
- * CDM | sbercloud.Cdm.Cluster |
- * CES | sbercloud.Ces.Alarmrule |
- * DCS | sbercloud.Dcs.Instance |
- * DDS | sbercloud.Dds.Instance |
- * DMS | sbercloud_dms_kafka_instance<br>sbercloud_dms_rabbitmq_instance |
- * DNS | sbercloud_dns_ptrrecord<br>sbercloud_dns_zone |
- * ECS | sbercloud.Ecs.Instance |
- * EIP | sbercloud_vpc_eip<br>sbercloud_vpc_bandwidth |
- * ELB | sbercloud.Elb.Loadbalancer |
- * EVS | sbercloud.Evs.Volume |
- * FGS | sbercloud.FunctionGraph.Function |
- * IMS | sbercloud.Ims.Image |
- * NAT | sbercloud.Nat.Gateway | sbercloud_nat_snat_rule<br>sbercloud_nat_dnat_rule
- * OBS | sbercloud.Obs.Bucket | sbercloud_obs_bucket_object<br>sbercloud_obs_bucket_policy
- * RDS | sbercloud_rds_instance<br>sbercloud_rds_read_replica_instance |
- * SFS | sbercloud_sfs_file_system<br>sbercloud_sfs_turbo | sbercloud.Sfs.AccessRule
- * VPC | sbercloud_vpc<br>sbercloud_networking_secgroup | sbercloud_vpc_subnet<br>sbercloud_vpc_route<br>sbercloud_networking_secgroup_rule
- * <!-- markdownlint-enable MD033 -->
- */
 export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,19 +18,8 @@ export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getProject.
  */
 export interface GetProjectArgs {
-    /**
-     * Specifies the ID of an enterprise project. The value 0 indicates enterprise project default.
-     */
     id?: string;
-    /**
-     * Specifies the enterprise project name. Fuzzy search is supported.
-     */
     name?: string;
-    /**
-     * Specifies the status of an enterprise project.
-     * + 1 indicates Enabled.
-     * + 2 indicates Disabled.
-     */
     status?: number;
 }
 
@@ -79,63 +27,13 @@ export interface GetProjectArgs {
  * A collection of values returned by getProject.
  */
 export interface GetProjectResult {
-    /**
-     * Specifies the time (UTC) when the enterprise project was created. Example: 2018-05-18T06:49:06Z
-     */
     readonly createdAt: string;
-    /**
-     * Provides supplementary information about the enterprise project.
-     */
     readonly description: string;
     readonly id: string;
     readonly name: string;
     readonly status: number;
-    /**
-     * Specifies the time (UTC) when the enterprise project was modified. Example: 2018-05-28T02:21:36Z
-     */
     readonly updatedAt: string;
 }
-/**
- * Use this data source to get an enterprise project from SberCloud
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.Eps.getProject({
- *     name: "test",
- * });
- * ```
- *
- * ## Resources Supported Currently
- *
- * <!-- markdownlint-disable MD033 -->
- * Service Name | Resource Name | Sub Resource Name
- * ---- | --- | ---
- * AS  | sbercloud.As.Group |
- * CBR | sbercloud.Cbr.Vault |
- * CCE | sbercloud.Cce.Cluster | sbercloud_cce_node<br>sbercloud_cce_node_pool
- * CDM | sbercloud.Cdm.Cluster |
- * CES | sbercloud.Ces.Alarmrule |
- * DCS | sbercloud.Dcs.Instance |
- * DDS | sbercloud.Dds.Instance |
- * DMS | sbercloud_dms_kafka_instance<br>sbercloud_dms_rabbitmq_instance |
- * DNS | sbercloud_dns_ptrrecord<br>sbercloud_dns_zone |
- * ECS | sbercloud.Ecs.Instance |
- * EIP | sbercloud_vpc_eip<br>sbercloud_vpc_bandwidth |
- * ELB | sbercloud.Elb.Loadbalancer |
- * EVS | sbercloud.Evs.Volume |
- * FGS | sbercloud.FunctionGraph.Function |
- * IMS | sbercloud.Ims.Image |
- * NAT | sbercloud.Nat.Gateway | sbercloud_nat_snat_rule<br>sbercloud_nat_dnat_rule
- * OBS | sbercloud.Obs.Bucket | sbercloud_obs_bucket_object<br>sbercloud_obs_bucket_policy
- * RDS | sbercloud_rds_instance<br>sbercloud_rds_read_replica_instance |
- * SFS | sbercloud_sfs_file_system<br>sbercloud_sfs_turbo | sbercloud.Sfs.AccessRule
- * VPC | sbercloud_vpc<br>sbercloud_networking_secgroup | sbercloud_vpc_subnet<br>sbercloud_vpc_route<br>sbercloud_networking_secgroup_rule
- * <!-- markdownlint-enable MD033 -->
- */
 export function getProjectOutput(args?: GetProjectOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -150,18 +48,7 @@ export function getProjectOutput(args?: GetProjectOutputArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getProject.
  */
 export interface GetProjectOutputArgs {
-    /**
-     * Specifies the ID of an enterprise project. The value 0 indicates enterprise project default.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * Specifies the enterprise project name. Fuzzy search is supported.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the status of an enterprise project.
-     * + 1 indicates Enabled.
-     * + 2 indicates Disabled.
-     */
     status?: pulumi.Input<number>;
 }

@@ -27,14 +27,7 @@ class EipProtectionArgs:
         """
         The set of arguments for constructing a EipProtection resource.
         :param pulumi.Input[_builtins.str] object_id: The protected object ID.
-               Changing this parameter will create a new resource.
         :param pulumi.Input[Sequence[pulumi.Input['EipProtectionProtectedEipArgs']]] protected_eips: The protected EIP configurations.
-               The object structure is documented below.
-               
-               <a name="cfw_protected_eip"></a>
-               The `protected_eip` block supports:
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         pulumi.set(__self__, "object_id", object_id)
         pulumi.set(__self__, "protected_eips", protected_eips)
@@ -46,7 +39,6 @@ class EipProtectionArgs:
     def object_id(self) -> pulumi.Input[_builtins.str]:
         """
         The protected object ID.
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "object_id")
 
@@ -59,10 +51,6 @@ class EipProtectionArgs:
     def protected_eips(self) -> pulumi.Input[Sequence[pulumi.Input['EipProtectionProtectedEipArgs']]]:
         """
         The protected EIP configurations.
-        The object structure is documented below.
-
-        <a name="cfw_protected_eip"></a>
-        The `protected_eip` block supports:
         """
         return pulumi.get(self, "protected_eips")
 
@@ -73,10 +61,6 @@ class EipProtectionArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -93,14 +77,7 @@ class _EipProtectionState:
         """
         Input properties used for looking up and filtering EipProtection resources.
         :param pulumi.Input[_builtins.str] object_id: The protected object ID.
-               Changing this parameter will create a new resource.
         :param pulumi.Input[Sequence[pulumi.Input['EipProtectionProtectedEipArgs']]] protected_eips: The protected EIP configurations.
-               The object structure is documented below.
-               
-               <a name="cfw_protected_eip"></a>
-               The `protected_eip` block supports:
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         if object_id is not None:
             pulumi.set(__self__, "object_id", object_id)
@@ -114,7 +91,6 @@ class _EipProtectionState:
     def object_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The protected object ID.
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "object_id")
 
@@ -127,10 +103,6 @@ class _EipProtectionState:
     def protected_eips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EipProtectionProtectedEipArgs']]]]:
         """
         The protected EIP configurations.
-        The object structure is documented below.
-
-        <a name="cfw_protected_eip"></a>
-        The `protected_eip` block supports:
         """
         return pulumi.get(self, "protected_eips")
 
@@ -141,10 +113,6 @@ class _EipProtectionState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -163,32 +131,11 @@ class EipProtection(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages the protected EIPs under the protect object for CFW service within SberCloud.
-
-        > A protection object (`object_id`) can only create one `Cfw.EipProtection` resource for managing
-        protected EIPs.
-
-        ## Import
-
-        The protection resource can be imported using their `object_id` or `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Cfw/eipProtection:EipProtection test <id>
-        ```
-
+        Create a EipProtection resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] object_id: The protected object ID.
-               Changing this parameter will create a new resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EipProtectionProtectedEipArgs', 'EipProtectionProtectedEipArgsDict']]]] protected_eips: The protected EIP configurations.
-               The object structure is documented below.
-               
-               <a name="cfw_protected_eip"></a>
-               The `protected_eip` block supports:
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         ...
     @overload
@@ -197,21 +144,7 @@ class EipProtection(pulumi.CustomResource):
                  args: EipProtectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages the protected EIPs under the protect object for CFW service within SberCloud.
-
-        > A protection object (`object_id`) can only create one `Cfw.EipProtection` resource for managing
-        protected EIPs.
-
-        ## Import
-
-        The protection resource can be imported using their `object_id` or `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Cfw/eipProtection:EipProtection test <id>
-        ```
-
+        Create a EipProtection resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param EipProtectionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -267,14 +200,7 @@ class EipProtection(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] object_id: The protected object ID.
-               Changing this parameter will create a new resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EipProtectionProtectedEipArgs', 'EipProtectionProtectedEipArgsDict']]]] protected_eips: The protected EIP configurations.
-               The object structure is documented below.
-               
-               <a name="cfw_protected_eip"></a>
-               The `protected_eip` block supports:
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -290,7 +216,6 @@ class EipProtection(pulumi.CustomResource):
     def object_id(self) -> pulumi.Output[_builtins.str]:
         """
         The protected object ID.
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "object_id")
 
@@ -299,19 +224,11 @@ class EipProtection(pulumi.CustomResource):
     def protected_eips(self) -> pulumi.Output[Sequence['outputs.EipProtectionProtectedEip']]:
         """
         The protected EIP configurations.
-        The object structure is documented below.
-
-        <a name="cfw_protected_eip"></a>
-        The `protected_eip` block supports:
         """
         return pulumi.get(self, "protected_eips")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 

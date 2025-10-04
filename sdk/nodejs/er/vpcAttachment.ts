@@ -4,49 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a VPC attachment resource under the ER instance within SberCloud.
- *
- * Before using enterprise router, define custom endpoint as shown below:
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const vpcId = config.requireObject<any>("vpcId");
- * const subnetId = config.requireObject<any>("subnetId");
- * const attachmentName = config.requireObject<any>("attachmentName");
- * const test = new sbercloud.er.VpcAttachment("test", {
- *     instanceId: instanceId,
- *     vpcId: vpcId,
- *     subnetId: subnetId,
- *     name: attachmentName,
- *     description: "VPC attachment created by terraform",
- *     autoCreateVpcRoutes: true,
- *     tags: {
- *         foo: "bar",
- *         owner: "terraform",
- *     },
- * });
- * ```
- *
- * ## Import
- *
- * VPC attachments can be imported using their `id` and the related `instance_id`, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:Er/vpcAttachment:VpcAttachment test <instance_id>/<id>
- * ```
- */
 export class VpcAttachment extends pulumi.CustomResource {
     /**
      * Get an existing VpcAttachment resource's state with the given name, ID, and optional extra
@@ -76,14 +33,7 @@ export class VpcAttachment extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies whether to automatically configure routes for the VPC
-     * which pointing to the ER instance.
-     * The destination CIDRs of the routes are fixed as follows:
-     * + **10.0.0.0/8**
-     * + **172.16.0.0/12**
-     * + **192.168.0.0/16**
-     *
-     * The default value is false. Changing this parameter will create a new resource.
+     * Whether to automatically configure routes for the VPC which pointing to the ER instance.
      */
     declare public readonly autoCreateVpcRoutes: pulumi.Output<boolean>;
     /**
@@ -91,26 +41,19 @@ export class VpcAttachment extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * Specifies the description of the VPC attachment.  
-     * The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
+     * The description of the VPC attachment.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * Specifies the ID of the ER instance to which the VPC attachment
-     * belongs.
-     * Changing this parameter will create a new resource.
+     * The ID of the ER instance to which the VPC attachment belongs.
      */
     declare public readonly instanceId: pulumi.Output<string>;
     /**
-     * Specifies the name of the VPC attachment.  
-     * The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-     * hyphens (-) and dots (.) allowed.
+     * The name of the VPC attachment.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Specifies the region where the ER instance and the VPC attachment are
-     * located.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+     * The region where the ER instance and the VPC attachment are located.
      */
     declare public readonly region: pulumi.Output<string>;
     /**
@@ -118,21 +61,16 @@ export class VpcAttachment extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * Specifies the ID of the VPC subnet to which the VPC attachment belongs.  
-     * Changing this parameter will create a new resource.
+     * The ID of the VPC subnet to which the VPC attachment belongs.
      */
     declare public readonly subnetId: pulumi.Output<string>;
-    /**
-     * Specifies the key/value pairs to associate with the VPC attachment.
-     */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The latest update time.
      */
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
-     * Specifies the ID of the VPC to which the VPC attachment belongs.  
-     * Changing this parameter will create a new resource.
+     * The ID of the VPC to which the VPC attachment belongs.
      */
     declare public readonly vpcId: pulumi.Output<string>;
 
@@ -193,14 +131,7 @@ export class VpcAttachment extends pulumi.CustomResource {
  */
 export interface VpcAttachmentState {
     /**
-     * Specifies whether to automatically configure routes for the VPC
-     * which pointing to the ER instance.
-     * The destination CIDRs of the routes are fixed as follows:
-     * + **10.0.0.0/8**
-     * + **172.16.0.0/12**
-     * + **192.168.0.0/16**
-     *
-     * The default value is false. Changing this parameter will create a new resource.
+     * Whether to automatically configure routes for the VPC which pointing to the ER instance.
      */
     autoCreateVpcRoutes?: pulumi.Input<boolean>;
     /**
@@ -208,26 +139,19 @@ export interface VpcAttachmentState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Specifies the description of the VPC attachment.  
-     * The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
+     * The description of the VPC attachment.
      */
     description?: pulumi.Input<string>;
     /**
-     * Specifies the ID of the ER instance to which the VPC attachment
-     * belongs.
-     * Changing this parameter will create a new resource.
+     * The ID of the ER instance to which the VPC attachment belongs.
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * Specifies the name of the VPC attachment.  
-     * The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-     * hyphens (-) and dots (.) allowed.
+     * The name of the VPC attachment.
      */
     name?: pulumi.Input<string>;
     /**
-     * Specifies the region where the ER instance and the VPC attachment are
-     * located.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+     * The region where the ER instance and the VPC attachment are located.
      */
     region?: pulumi.Input<string>;
     /**
@@ -235,21 +159,16 @@ export interface VpcAttachmentState {
      */
     status?: pulumi.Input<string>;
     /**
-     * Specifies the ID of the VPC subnet to which the VPC attachment belongs.  
-     * Changing this parameter will create a new resource.
+     * The ID of the VPC subnet to which the VPC attachment belongs.
      */
     subnetId?: pulumi.Input<string>;
-    /**
-     * Specifies the key/value pairs to associate with the VPC attachment.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The latest update time.
      */
     updatedAt?: pulumi.Input<string>;
     /**
-     * Specifies the ID of the VPC to which the VPC attachment belongs.  
-     * Changing this parameter will create a new resource.
+     * The ID of the VPC to which the VPC attachment belongs.
      */
     vpcId?: pulumi.Input<string>;
 }
@@ -259,51 +178,32 @@ export interface VpcAttachmentState {
  */
 export interface VpcAttachmentArgs {
     /**
-     * Specifies whether to automatically configure routes for the VPC
-     * which pointing to the ER instance.
-     * The destination CIDRs of the routes are fixed as follows:
-     * + **10.0.0.0/8**
-     * + **172.16.0.0/12**
-     * + **192.168.0.0/16**
-     *
-     * The default value is false. Changing this parameter will create a new resource.
+     * Whether to automatically configure routes for the VPC which pointing to the ER instance.
      */
     autoCreateVpcRoutes?: pulumi.Input<boolean>;
     /**
-     * Specifies the description of the VPC attachment.  
-     * The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
+     * The description of the VPC attachment.
      */
     description?: pulumi.Input<string>;
     /**
-     * Specifies the ID of the ER instance to which the VPC attachment
-     * belongs.
-     * Changing this parameter will create a new resource.
+     * The ID of the ER instance to which the VPC attachment belongs.
      */
     instanceId: pulumi.Input<string>;
     /**
-     * Specifies the name of the VPC attachment.  
-     * The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-     * hyphens (-) and dots (.) allowed.
+     * The name of the VPC attachment.
      */
     name?: pulumi.Input<string>;
     /**
-     * Specifies the region where the ER instance and the VPC attachment are
-     * located.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+     * The region where the ER instance and the VPC attachment are located.
      */
     region?: pulumi.Input<string>;
     /**
-     * Specifies the ID of the VPC subnet to which the VPC attachment belongs.  
-     * Changing this parameter will create a new resource.
+     * The ID of the VPC subnet to which the VPC attachment belongs.
      */
     subnetId: pulumi.Input<string>;
-    /**
-     * Specifies the key/value pairs to associate with the VPC attachment.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Specifies the ID of the VPC to which the VPC attachment belongs.  
-     * Changing this parameter will create a new resource.
+     * The ID of the VPC to which the VPC attachment belongs.
      */
     vpcId: pulumi.Input<string>;
 }

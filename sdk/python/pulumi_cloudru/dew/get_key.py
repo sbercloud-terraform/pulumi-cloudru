@@ -79,9 +79,6 @@ class GetKeyResult:
     @_builtins.property
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> _builtins.str:
-        """
-        Creation time (time stamp) of a key.
-        """
         return pulumi.get(self, "creation_date")
 
     @_builtins.property
@@ -102,9 +99,6 @@ class GetKeyResult:
     @_builtins.property
     @pulumi.getter(name="expirationTime")
     def expiration_time(self) -> _builtins.str:
-        """
-        Expiration time.
-        """
         return pulumi.get(self, "expiration_time")
 
     @_builtins.property
@@ -143,41 +137,26 @@ class GetKeyResult:
     @_builtins.property
     @pulumi.getter(name="rotationEnabled")
     def rotation_enabled(self) -> _builtins.bool:
-        """
-        Indicates whether the key rotation is enabled or not.
-        """
         return pulumi.get(self, "rotation_enabled")
 
     @_builtins.property
     @pulumi.getter(name="rotationInterval")
     def rotation_interval(self) -> _builtins.int:
-        """
-        The key rotation interval. It's valid when rotation is enabled.
-        """
         return pulumi.get(self, "rotation_interval")
 
     @_builtins.property
     @pulumi.getter(name="rotationNumber")
     def rotation_number(self) -> _builtins.int:
-        """
-        The total number of key rotations. It's valid when rotation is enabled.
-        """
         return pulumi.get(self, "rotation_number")
 
     @_builtins.property
     @pulumi.getter(name="scheduledDeletionDate")
     def scheduled_deletion_date(self) -> _builtins.str:
-        """
-        Scheduled deletion time (time stamp) of a key.
-        """
         return pulumi.get(self, "scheduled_deletion_date")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Mapping[str, _builtins.str]:
-        """
-        The key/value pairs to associate with the kms key.
-        """
         return pulumi.get(self, "tags")
 
 
@@ -215,37 +194,7 @@ def get_key(default_key_flag: Optional[_builtins.str] = None,
             region: Optional[_builtins.str] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKeyResult:
     """
-    Use this data source to get the ID of an available SberCloud KMS key.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    key1 = sbercloud.Dew.get_key(key_alias="test_key",
-        key_description="test key description",
-        key_state="2",
-        key_id="af650527-a0ff-4527-aef3-c493df1f3012",
-        default_key_flag="0",
-        domain_id="b168fe00ff56492495a7d22974df2d0b")
-    ```
-
-
-    :param _builtins.str default_key_flag: Identification of a Master Key. The value "1" indicates a Default Master Key,
-           and the value "0" indicates a key. Changing this gets a new key.
-    :param _builtins.str domain_id: ID of a user domain for the key. Changing this gets a new key.
-    :param _builtins.str enterprise_project_id: The enterprise project id of the kms key.
-    :param _builtins.str key_alias: The alias in which to create the key. It is required when we create a new key.
-           Changing this gets the new key.
-    :param _builtins.str key_description: The description of the key as viewed in Huawei console. Changing this gets a
-           new key.
-    :param _builtins.str key_id: The globally unique identifier for the key. Changing this gets the new key.
-    :param _builtins.str key_state: The state of a key. "1" indicates that the key is waiting to be activated.
-           "2" indicates that the key is enabled. "3" indicates that the key is disabled. "4" indicates that the key is scheduled
-           for deletion. Changing this gets a new key.
-    :param _builtins.str region: The region in which to obtain the keys. If omitted, the provider-level region will be
-           used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['defaultKeyFlag'] = default_key_flag
@@ -286,37 +235,7 @@ def get_key_output(default_key_flag: Optional[pulumi.Input[Optional[_builtins.st
                    region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKeyResult]:
     """
-    Use this data source to get the ID of an available SberCloud KMS key.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    key1 = sbercloud.Dew.get_key(key_alias="test_key",
-        key_description="test key description",
-        key_state="2",
-        key_id="af650527-a0ff-4527-aef3-c493df1f3012",
-        default_key_flag="0",
-        domain_id="b168fe00ff56492495a7d22974df2d0b")
-    ```
-
-
-    :param _builtins.str default_key_flag: Identification of a Master Key. The value "1" indicates a Default Master Key,
-           and the value "0" indicates a key. Changing this gets a new key.
-    :param _builtins.str domain_id: ID of a user domain for the key. Changing this gets a new key.
-    :param _builtins.str enterprise_project_id: The enterprise project id of the kms key.
-    :param _builtins.str key_alias: The alias in which to create the key. It is required when we create a new key.
-           Changing this gets the new key.
-    :param _builtins.str key_description: The description of the key as viewed in Huawei console. Changing this gets a
-           new key.
-    :param _builtins.str key_id: The globally unique identifier for the key. Changing this gets the new key.
-    :param _builtins.str key_state: The state of a key. "1" indicates that the key is waiting to be activated.
-           "2" indicates that the key is enabled. "3" indicates that the key is disabled. "4" indicates that the key is scheduled
-           for deletion. Changing this gets a new key.
-    :param _builtins.str region: The region in which to obtain the keys. If omitted, the provider-level region will be
-           used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['defaultKeyFlag'] = default_key_flag

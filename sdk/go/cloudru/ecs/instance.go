@@ -12,516 +12,68 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a ECS VM instance resource within SberCloud.
-//
-// ## Example Usage
-//
-// ### Basic Instance
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/ecs"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/ims"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/vpc"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			secgroupId := cfg.RequireObject("secgroupId")
-//			myaz, err := sbercloud.GetAvailabilityZones(ctx, &cloudru.GetAvailabilityZonesArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			myflavor, err := ecs.GetFlavors(ctx, &ecs.GetFlavorsArgs{
-//				AvailabilityZone: pulumi.StringRef(myaz.Names[0]),
-//				PerformanceType:  pulumi.StringRef("normal"),
-//				CpuCoreCount:     pulumi.IntRef(2),
-//				MemorySize:       pulumi.IntRef(4),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			mynet, err := vpc.GetSubnet(ctx, &vpc.GetSubnetArgs{
-//				Name: pulumi.StringRef("subnet-default"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			myimage, err := ims.GetImage(ctx, &ims.GetImageArgs{
-//				Name:       pulumi.StringRef("Ubuntu 18.04 server 64bit"),
-//				MostRecent: pulumi.BoolRef(true),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = ecs.NewInstance(ctx, "basic", &ecs.InstanceArgs{
-//				Name:     pulumi.String("basic"),
-//				ImageId:  pulumi.String(myimage.Id),
-//				FlavorId: pulumi.String(myflavor.Ids[0]),
-//				SecurityGroupIds: pulumi.StringArray{
-//					secgroupId,
-//				},
-//				AvailabilityZone: pulumi.String(myaz.Names[0]),
-//				Networks: ecs.InstanceNetworkArray{
-//					&ecs.InstanceNetworkArgs{
-//						Uuid: pulumi.String(mynet.Id),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Instance With Associated Eip
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/ecs"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/vpc"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			secgroupId := cfg.RequireObject("secgroupId")
-//			myinstance, err := ecs.NewInstance(ctx, "myinstance", &ecs.InstanceArgs{
-//				Name:     pulumi.String("myinstance"),
-//				ImageId:  pulumi.String("ad091b52-742f-469e-8f3c-fd81cadf0743"),
-//				FlavorId: pulumi.String("s6.small.1"),
-//				KeyPair:  pulumi.String("my_key_pair_name"),
-//				SecurityGroupIds: pulumi.StringArray{
-//					secgroupId,
-//				},
-//				AvailabilityZone: pulumi.String("ru-moscow-1a"),
-//				Networks: ecs.InstanceNetworkArray{
-//					&ecs.InstanceNetworkArgs{
-//						Uuid: pulumi.String("55534eaa-533a-419d-9b40-ec427ea7195a"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			myeip, err := vpc.NewEip(ctx, "myeip", &vpc.EipArgs{
-//				Publicip: &vpc.EipPublicipArgs{
-//					Type: pulumi.String("5_bgp"),
-//				},
-//				Bandwidth: &vpc.EipBandwidthArgs{
-//					Name:       pulumi.String("test"),
-//					Size:       pulumi.Int(8),
-//					ShareType:  pulumi.String("PER"),
-//					ChargeMode: pulumi.String("traffic"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = ecs.NewEipAssociate(ctx, "associated", &ecs.EipAssociateArgs{
-//				PublicIp:   myeip.Address,
-//				InstanceId: myinstance.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Instance With Attached Volume
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/ecs"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/evs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			secgroupId := cfg.RequireObject("secgroupId")
-//			myvolume, err := evs.NewVolume(ctx, "myvolume", &evs.VolumeArgs{
-//				Name:             pulumi.String("myvolume"),
-//				AvailabilityZone: pulumi.String("ru-moscow-1a"),
-//				VolumeType:       pulumi.String("SAS"),
-//				Size:             pulumi.Int(10),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			myinstance, err := ecs.NewInstance(ctx, "myinstance", &ecs.InstanceArgs{
-//				Name:     pulumi.String("myinstance"),
-//				ImageId:  pulumi.String("ad091b52-742f-469e-8f3c-fd81cadf0743"),
-//				FlavorId: pulumi.String("s6.small.1"),
-//				KeyPair:  pulumi.String("my_key_pair_name"),
-//				SecurityGroupIds: pulumi.StringArray{
-//					secgroupId,
-//				},
-//				AvailabilityZone: pulumi.String("ru-moscow-1a"),
-//				Networks: ecs.InstanceNetworkArray{
-//					&ecs.InstanceNetworkArgs{
-//						Uuid: pulumi.String("55534eaa-533a-419d-9b40-ec427ea7195a"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = ecs.NewVolumeAttach(ctx, "attached", &ecs.VolumeAttachArgs{
-//				InstanceId: myinstance.ID(),
-//				VolumeId:   myvolume.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Instance With Multiple Data Disks
-//
-// It's possible to specify multiple `dataDisks` entries to create an instance with multiple data disks, but we can't
-// ensure the volume attached order. So it's recommended to use `Instance With Attached Volume` above.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/ecs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			secgroupId := cfg.RequireObject("secgroupId")
-//			_, err := ecs.NewInstance(ctx, "multi-disk", &ecs.InstanceArgs{
-//				Name:     pulumi.String("multi-net"),
-//				ImageId:  pulumi.String("ad091b52-742f-469e-8f3c-fd81cadf0743"),
-//				FlavorId: pulumi.String("s6.small.1"),
-//				KeyPair:  pulumi.String("my_key_pair_name"),
-//				SecurityGroupIds: pulumi.StringArray{
-//					secgroupId,
-//				},
-//				AvailabilityZone: pulumi.String("ru-moscow-1a"),
-//				SystemDiskType:   pulumi.String("SAS"),
-//				SystemDiskSize:   pulumi.Int(40),
-//				DataDisks: ecs.InstanceDataDiskArray{
-//					&ecs.InstanceDataDiskArgs{
-//						Type: pulumi.String("SAS"),
-//						Size: pulumi.Int(10),
-//					},
-//					&ecs.InstanceDataDiskArgs{
-//						Type: pulumi.String("SAS"),
-//						Size: pulumi.Int(20),
-//					},
-//				},
-//				DeleteDisksOnTermination: pulumi.Bool(true),
-//				Networks: ecs.InstanceNetworkArray{
-//					&ecs.InstanceNetworkArgs{
-//						Uuid: pulumi.String("55534eaa-533a-419d-9b40-ec427ea7195a"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Instance With Multiple Networks
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/ecs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			secgroupId := cfg.RequireObject("secgroupId")
-//			_, err := ecs.NewInstance(ctx, "multi-net", &ecs.InstanceArgs{
-//				Name:     pulumi.String("multi-net"),
-//				ImageId:  pulumi.String("ad091b52-742f-469e-8f3c-fd81cadf0743"),
-//				FlavorId: pulumi.String("s6.small.1"),
-//				KeyPair:  pulumi.String("my_key_pair_name"),
-//				SecurityGroupIds: pulumi.StringArray{
-//					secgroupId,
-//				},
-//				AvailabilityZone: pulumi.String("ru-moscow-1a"),
-//				Networks: ecs.InstanceNetworkArray{
-//					&ecs.InstanceNetworkArgs{
-//						Uuid: pulumi.String("55534eaa-533a-419d-9b40-ec427ea7195a"),
-//					},
-//					&ecs.InstanceNetworkArgs{
-//						Uuid: pulumi.String("3c4a0d74-24b9-46cf-9d7f-8b7a4dc2f65c"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Instance with User Data (cloud-init)
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/ecs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			secgroupId := cfg.RequireObject("secgroupId")
-//			_, err := ecs.NewInstance(ctx, "myinstance", &ecs.InstanceArgs{
-//				Name:     pulumi.String("instance"),
-//				ImageId:  pulumi.String("ad091b52-742f-469e-8f3c-fd81cadf0743"),
-//				FlavorId: pulumi.String("s6.small.1"),
-//				KeyPair:  pulumi.String("my_key_pair_name"),
-//				SecurityGroupIds: pulumi.StringArray{
-//					secgroupId,
-//				},
-//				AvailabilityZone: pulumi.String("ru-moscow-1a"),
-//				UserData:         pulumi.String("#cloud-config\nhostname: instance_1.example.com\nfqdn: instance_1.example.com"),
-//				Networks: ecs.InstanceNetworkArray{
-//					&ecs.InstanceNetworkArgs{
-//						Uuid: pulumi.String("55534eaa-533a-419d-9b40-ec427ea7195a"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Instances can be imported by their `id`. For example,
-//
-// ```sh
-// $ pulumi import sbercloud:Ecs/instance:Instance my_instance b11b407c-e604-4e8d-8bc4-92398320b847
-// ```
-//
-// # Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-//
-// API response, security or some other reason.
-//
-// The missing attributes include: `admin_pass`, `user_data`, `data_disks`, `scheduler_hints`, `stop_before_destroy`,
-//
-// `delete_disks_on_termination`, `delete_eip_on_termination`, `network/access_network`, `bandwidth`, `eip_type`,
-//
-// `power_action` and arguments for pre-paid and spot price.
-//
-// It is generally recommended running `pulumi preview` after importing an instance.
-//
-// # You can then decide if changes should be applied to the instance, or the resource definition should be updated to
-//
-// align with the instance. Also you can ignore changes as below.
-//
-// resource "sbercloud_compute_instance" "myinstance" {
-//
-//	  ...
-//
-//	lifecycle {
-//
-//	  ignore_changes = [
-//
-//	    user_data, data_disks,
-//
-//	  ]
-//
-//	}
-//
-// }
 type Instance struct {
 	pulumi.CustomResourceState
 
-	// The first detected Fixed IPv4 address or the Floating IP.
-	AccessIpV4 pulumi.StringOutput `pulumi:"accessIpV4"`
-	// The first detected Fixed IPv6 address.
-	AccessIpV6 pulumi.StringOutput `pulumi:"accessIpV6"`
-	// Specifies the administrative password to assign to the instance.
-	AdminPass pulumi.StringPtrOutput `pulumi:"adminPass"`
-	// Specifies the IAM agency name which is created on IAM to provide
-	// temporary credentials for ECS to access cloud services.
-	AgencyName pulumi.StringOutput `pulumi:"agencyName"`
-	// Specifies the agent list in comma-separated string.
-	// Available agents are:
-	AgentList pulumi.StringOutput `pulumi:"agentList"`
+	AccessIpV4 pulumi.StringOutput    `pulumi:"accessIpV4"`
+	AccessIpV6 pulumi.StringOutput    `pulumi:"accessIpV6"`
+	AdminPass  pulumi.StringPtrOutput `pulumi:"adminPass"`
+	AgencyName pulumi.StringOutput    `pulumi:"agencyName"`
+	AgentList  pulumi.StringOutput    `pulumi:"agentList"`
 	// Deprecated: Deprecated
-	AutoPay           pulumi.StringPtrOutput `pulumi:"autoPay"`
-	AutoRenew         pulumi.StringPtrOutput `pulumi:"autoRenew"`
-	AutoTerminateTime pulumi.StringPtrOutput `pulumi:"autoTerminateTime"`
-	// Specifies the availability zone in which to create the instance.
-	// Changing this creates a new instance.
-	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
-	// Specifies the bandwidth of an EIP that will be automatically assigned to the instance.
-	// The object structure is documented below. Changing this creates a new instance.
-	Bandwidth    InstanceBandwidthPtrOutput `pulumi:"bandwidth"`
-	ChargingMode pulumi.StringOutput        `pulumi:"chargingMode"`
-	// The creation time, in UTC format.
-	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Specifies an array of one or more data disks to attach to the instance.
-	// The dataDisks object structure is documented below. Changing this creates a new instance.
-	DataDisks InstanceDataDiskArrayOutput `pulumi:"dataDisks"`
-	// Specifies whether to delete the data disks when the instance is terminated.
-	// Defaults to *false*. This parameter is valid if `chargingMode` is set to *postPaid*, and all data disks will be deleted
-	// in *prePaid* charging mode.
-	DeleteDisksOnTermination pulumi.BoolPtrOutput `pulumi:"deleteDisksOnTermination"`
-	// Specifies whether the EIP is released when the instance is terminated.
-	// Defaults to *true*.
-	DeleteEipOnTermination pulumi.BoolPtrOutput `pulumi:"deleteEipOnTermination"`
-	// Specifies the description of the instance. The description consists of 0 to 85
-	// characters, and can't contain '<' or '>'.
-	Description pulumi.StringOutput `pulumi:"description"`
-	// Specifies the ID of an *existing* EIP assigned to the instance.
-	// This parameter and `eipType`, `bandwidth` are alternative. Changing this creates a new instance.
-	EipId pulumi.StringPtrOutput `pulumi:"eipId"`
-	// Specifies the type of an EIP that will be automatically assigned to the instance.
-	// Available values are *5_bgp* (dynamic BGP) and *5_sbgp* (static BGP). Changing this creates a new instance.
-	EipType pulumi.StringPtrOutput `pulumi:"eipType"`
-	// Specifies a unique id in UUID format of enterprise project.
-	EnterpriseProjectId pulumi.StringOutput `pulumi:"enterpriseProjectId"`
-	ExpiredTime         pulumi.StringOutput `pulumi:"expiredTime"`
-	// Specifies the flavor ID of the instance to be created.
+	AutoPay                  pulumi.StringPtrOutput      `pulumi:"autoPay"`
+	AutoRenew                pulumi.StringPtrOutput      `pulumi:"autoRenew"`
+	AutoTerminateTime        pulumi.StringPtrOutput      `pulumi:"autoTerminateTime"`
+	AvailabilityZone         pulumi.StringOutput         `pulumi:"availabilityZone"`
+	Bandwidth                InstanceBandwidthPtrOutput  `pulumi:"bandwidth"`
+	ChargingMode             pulumi.StringOutput         `pulumi:"chargingMode"`
+	CreatedAt                pulumi.StringOutput         `pulumi:"createdAt"`
+	DataDisks                InstanceDataDiskArrayOutput `pulumi:"dataDisks"`
+	DeleteDisksOnTermination pulumi.BoolPtrOutput        `pulumi:"deleteDisksOnTermination"`
+	DeleteEipOnTermination   pulumi.BoolPtrOutput        `pulumi:"deleteEipOnTermination"`
+	Description              pulumi.StringOutput         `pulumi:"description"`
+	EipId                    pulumi.StringPtrOutput      `pulumi:"eipId"`
+	EipType                  pulumi.StringPtrOutput      `pulumi:"eipType"`
+	EnterpriseProjectId      pulumi.StringOutput         `pulumi:"enterpriseProjectId"`
+	ExpiredTime              pulumi.StringOutput         `pulumi:"expiredTime"`
+	// schema: Required
 	FlavorId pulumi.StringOutput `pulumi:"flavorId"`
-	// The flavor name of the instance.
-	FlavorName pulumi.StringOutput `pulumi:"flavorName"`
-	Hostname   pulumi.StringOutput `pulumi:"hostname"`
-	// Required if `imageName` is empty. Specifies the image ID of the desired
-	// image for the instance. Changing this creates a new instance.
-	ImageId pulumi.StringOutput `pulumi:"imageId"`
-	// Required if `imageId` is empty. Specifies the name of the desired image
-	// for the instance. Changing this creates a new instance.
-	ImageName pulumi.StringOutput `pulumi:"imageName"`
-	// Specifies the SSH keypair name used for logging in to the instance.
-	KeyPair  pulumi.StringPtrOutput `pulumi:"keyPair"`
-	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
-	// Specifies a unique name for the instance. The name consists of 1 to 64 characters,
-	// including letters, digits, underscores (_), hyphens (-), and periods (.).
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies an array of one or more networks to attach to the instance. The
-	// network object structure is documented below. Changing this creates a new instance.
-	Networks   InstanceNetworkArrayOutput `pulumi:"networks"`
-	Period     pulumi.IntPtrOutput        `pulumi:"period"`
-	PeriodUnit pulumi.StringPtrOutput     `pulumi:"periodUnit"`
-	// Specifies the power action to be done for the instance.
-	// The valid values are *ON*, *OFF*, *REBOOT*, *FORCE-OFF* and *FORCE-REBOOT*.
-	//
-	// > **NOTE:** The `powerAction` is a one-time action.
-	PowerAction pulumi.StringOutput `pulumi:"powerAction"`
-	// Specifies the the private key of the keypair in use. This parameter is mandatory
-	// when replacing or unbinding a keypair and the instance is in **Running** state.
-	PrivateKey pulumi.StringPtrOutput `pulumi:"privateKey"`
-	// The EIP address that is associted to the instance.
-	PublicIp pulumi.StringOutput `pulumi:"publicIp"`
-	// Specifies the region in which to create the instance.
-	// If omitted, the provider-level region will be used. Changing this creates a new instance.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Specifies the scheduler with hints on how the instance should be launched. The
-	// available hints are described below.
-	SchedulerHints InstanceSchedulerHintArrayOutput `pulumi:"schedulerHints"`
-	// Specifies an array of one or more security group IDs to associate with the
-	// instance.
-	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
-	// An array of one or more security groups to associate with the instance.
-	SecurityGroups    pulumi.StringArrayOutput `pulumi:"securityGroups"`
-	SpotDuration      pulumi.IntPtrOutput      `pulumi:"spotDuration"`
-	SpotDurationCount pulumi.IntOutput         `pulumi:"spotDurationCount"`
-	SpotMaximumPrice  pulumi.StringPtrOutput   `pulumi:"spotMaximumPrice"`
-	// The status of the instance.
-	Status pulumi.StringOutput `pulumi:"status"`
-	// Specifies whether to try stop instance gracefully before destroying it, thus giving
-	// chance for guest OS daemons to stop correctly. If instance doesn't stop within timeout, it will be destroyed anyway.
-	StopBeforeDestroy   pulumi.BoolPtrOutput   `pulumi:"stopBeforeDestroy"`
-	SystemDiskDssPoolId pulumi.StringPtrOutput `pulumi:"systemDiskDssPoolId"`
-	// The system disk voume ID.
-	SystemDiskId       pulumi.StringOutput `pulumi:"systemDiskId"`
-	SystemDiskIops     pulumi.IntOutput    `pulumi:"systemDiskIops"`
-	SystemDiskKmsKeyId pulumi.StringOutput `pulumi:"systemDiskKmsKeyId"`
-	// Specifies the system disk size in GB, The value range is 1 to 1024.
-	// Shrinking the disk is not supported.
-	SystemDiskSize       pulumi.IntOutput `pulumi:"systemDiskSize"`
-	SystemDiskThroughput pulumi.IntOutput `pulumi:"systemDiskThroughput"`
-	// Specifies the system disk type of the instance. Defaults to `GPSSD`.
-	// Changing this creates a new instance.
-	//
-	// Available options are:
-	// + `SAS`: high I/O disk type.
-	// + `SSD`: ultra-high I/O disk type.
-	// + `ESSD`: Extreme SSD type.
-	SystemDiskType pulumi.StringOutput `pulumi:"systemDiskType"`
-	// Specifies the key/value pairs to associate with the instance.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The last update time, in UTC format.
-	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
-	// Specifies the user data to be injected during the instance creation. Text
-	// and text files can be injected. Changing this creates a new instance.
-	//
-	// > **NOTE:** If the `userData` field is specified for a Linux ECS that is created using an image with Cloud-Init
-	// installed, the `adminPass` field becomes invalid.
-	UserData pulumi.StringPtrOutput `pulumi:"userData"`
-	// Specifies a user ID, required when using keyPair in prePaid charging mode.
-	// Changing this creates a new instance.
-	UserId pulumi.StringPtrOutput `pulumi:"userId"`
-	// An array of one or more disks to attach to the instance.
-	// The volume attached object structure is documented below.
-	VolumeAttacheds InstanceVolumeAttachedArrayOutput `pulumi:"volumeAttacheds"`
+	// schema: Computed
+	FlavorName       pulumi.StringOutput              `pulumi:"flavorName"`
+	Hostname         pulumi.StringOutput              `pulumi:"hostname"`
+	ImageId          pulumi.StringOutput              `pulumi:"imageId"`
+	ImageName        pulumi.StringOutput              `pulumi:"imageName"`
+	KeyPair          pulumi.StringPtrOutput           `pulumi:"keyPair"`
+	Metadata         pulumi.StringMapOutput           `pulumi:"metadata"`
+	Name             pulumi.StringOutput              `pulumi:"name"`
+	Networks         InstanceNetworkArrayOutput       `pulumi:"networks"`
+	Period           pulumi.IntPtrOutput              `pulumi:"period"`
+	PeriodUnit       pulumi.StringPtrOutput           `pulumi:"periodUnit"`
+	PowerAction      pulumi.StringOutput              `pulumi:"powerAction"`
+	PrivateKey       pulumi.StringPtrOutput           `pulumi:"privateKey"`
+	PublicIp         pulumi.StringOutput              `pulumi:"publicIp"`
+	Region           pulumi.StringOutput              `pulumi:"region"`
+	SchedulerHints   InstanceSchedulerHintArrayOutput `pulumi:"schedulerHints"`
+	SecurityGroupIds pulumi.StringArrayOutput         `pulumi:"securityGroupIds"`
+	// schema: Computed
+	SecurityGroups       pulumi.StringArrayOutput          `pulumi:"securityGroups"`
+	SpotDuration         pulumi.IntPtrOutput               `pulumi:"spotDuration"`
+	SpotDurationCount    pulumi.IntOutput                  `pulumi:"spotDurationCount"`
+	SpotMaximumPrice     pulumi.StringPtrOutput            `pulumi:"spotMaximumPrice"`
+	Status               pulumi.StringOutput               `pulumi:"status"`
+	StopBeforeDestroy    pulumi.BoolPtrOutput              `pulumi:"stopBeforeDestroy"`
+	SystemDiskDssPoolId  pulumi.StringPtrOutput            `pulumi:"systemDiskDssPoolId"`
+	SystemDiskId         pulumi.StringOutput               `pulumi:"systemDiskId"`
+	SystemDiskIops       pulumi.IntOutput                  `pulumi:"systemDiskIops"`
+	SystemDiskKmsKeyId   pulumi.StringOutput               `pulumi:"systemDiskKmsKeyId"`
+	SystemDiskSize       pulumi.IntOutput                  `pulumi:"systemDiskSize"`
+	SystemDiskThroughput pulumi.IntOutput                  `pulumi:"systemDiskThroughput"`
+	SystemDiskType       pulumi.StringOutput               `pulumi:"systemDiskType"`
+	Tags                 pulumi.StringMapOutput            `pulumi:"tags"`
+	UpdatedAt            pulumi.StringOutput               `pulumi:"updatedAt"`
+	UserData             pulumi.StringPtrOutput            `pulumi:"userData"`
+	UserId               pulumi.StringPtrOutput            `pulumi:"userId"`
+	VolumeAttacheds      InstanceVolumeAttachedArrayOutput `pulumi:"volumeAttacheds"`
 }
 
 // NewInstance registers a new resource with the given unique name, arguments, and options.
@@ -568,271 +120,127 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
-	// The first detected Fixed IPv4 address or the Floating IP.
 	AccessIpV4 *string `pulumi:"accessIpV4"`
-	// The first detected Fixed IPv6 address.
 	AccessIpV6 *string `pulumi:"accessIpV6"`
-	// Specifies the administrative password to assign to the instance.
-	AdminPass *string `pulumi:"adminPass"`
-	// Specifies the IAM agency name which is created on IAM to provide
-	// temporary credentials for ECS to access cloud services.
+	AdminPass  *string `pulumi:"adminPass"`
 	AgencyName *string `pulumi:"agencyName"`
-	// Specifies the agent list in comma-separated string.
-	// Available agents are:
-	AgentList *string `pulumi:"agentList"`
+	AgentList  *string `pulumi:"agentList"`
 	// Deprecated: Deprecated
-	AutoPay           *string `pulumi:"autoPay"`
-	AutoRenew         *string `pulumi:"autoRenew"`
-	AutoTerminateTime *string `pulumi:"autoTerminateTime"`
-	// Specifies the availability zone in which to create the instance.
-	// Changing this creates a new instance.
-	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Specifies the bandwidth of an EIP that will be automatically assigned to the instance.
-	// The object structure is documented below. Changing this creates a new instance.
-	Bandwidth    *InstanceBandwidth `pulumi:"bandwidth"`
-	ChargingMode *string            `pulumi:"chargingMode"`
-	// The creation time, in UTC format.
-	CreatedAt *string `pulumi:"createdAt"`
-	// Specifies an array of one or more data disks to attach to the instance.
-	// The dataDisks object structure is documented below. Changing this creates a new instance.
-	DataDisks []InstanceDataDisk `pulumi:"dataDisks"`
-	// Specifies whether to delete the data disks when the instance is terminated.
-	// Defaults to *false*. This parameter is valid if `chargingMode` is set to *postPaid*, and all data disks will be deleted
-	// in *prePaid* charging mode.
-	DeleteDisksOnTermination *bool `pulumi:"deleteDisksOnTermination"`
-	// Specifies whether the EIP is released when the instance is terminated.
-	// Defaults to *true*.
-	DeleteEipOnTermination *bool `pulumi:"deleteEipOnTermination"`
-	// Specifies the description of the instance. The description consists of 0 to 85
-	// characters, and can't contain '<' or '>'.
-	Description *string `pulumi:"description"`
-	// Specifies the ID of an *existing* EIP assigned to the instance.
-	// This parameter and `eipType`, `bandwidth` are alternative. Changing this creates a new instance.
-	EipId *string `pulumi:"eipId"`
-	// Specifies the type of an EIP that will be automatically assigned to the instance.
-	// Available values are *5_bgp* (dynamic BGP) and *5_sbgp* (static BGP). Changing this creates a new instance.
-	EipType *string `pulumi:"eipType"`
-	// Specifies a unique id in UUID format of enterprise project.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	ExpiredTime         *string `pulumi:"expiredTime"`
-	// Specifies the flavor ID of the instance to be created.
+	AutoPay                  *string            `pulumi:"autoPay"`
+	AutoRenew                *string            `pulumi:"autoRenew"`
+	AutoTerminateTime        *string            `pulumi:"autoTerminateTime"`
+	AvailabilityZone         *string            `pulumi:"availabilityZone"`
+	Bandwidth                *InstanceBandwidth `pulumi:"bandwidth"`
+	ChargingMode             *string            `pulumi:"chargingMode"`
+	CreatedAt                *string            `pulumi:"createdAt"`
+	DataDisks                []InstanceDataDisk `pulumi:"dataDisks"`
+	DeleteDisksOnTermination *bool              `pulumi:"deleteDisksOnTermination"`
+	DeleteEipOnTermination   *bool              `pulumi:"deleteEipOnTermination"`
+	Description              *string            `pulumi:"description"`
+	EipId                    *string            `pulumi:"eipId"`
+	EipType                  *string            `pulumi:"eipType"`
+	EnterpriseProjectId      *string            `pulumi:"enterpriseProjectId"`
+	ExpiredTime              *string            `pulumi:"expiredTime"`
+	// schema: Required
 	FlavorId *string `pulumi:"flavorId"`
-	// The flavor name of the instance.
-	FlavorName *string `pulumi:"flavorName"`
-	Hostname   *string `pulumi:"hostname"`
-	// Required if `imageName` is empty. Specifies the image ID of the desired
-	// image for the instance. Changing this creates a new instance.
-	ImageId *string `pulumi:"imageId"`
-	// Required if `imageId` is empty. Specifies the name of the desired image
-	// for the instance. Changing this creates a new instance.
-	ImageName *string `pulumi:"imageName"`
-	// Specifies the SSH keypair name used for logging in to the instance.
-	KeyPair  *string           `pulumi:"keyPair"`
-	Metadata map[string]string `pulumi:"metadata"`
-	// Specifies a unique name for the instance. The name consists of 1 to 64 characters,
-	// including letters, digits, underscores (_), hyphens (-), and periods (.).
-	Name *string `pulumi:"name"`
-	// Specifies an array of one or more networks to attach to the instance. The
-	// network object structure is documented below. Changing this creates a new instance.
-	Networks   []InstanceNetwork `pulumi:"networks"`
-	Period     *int              `pulumi:"period"`
-	PeriodUnit *string           `pulumi:"periodUnit"`
-	// Specifies the power action to be done for the instance.
-	// The valid values are *ON*, *OFF*, *REBOOT*, *FORCE-OFF* and *FORCE-REBOOT*.
-	//
-	// > **NOTE:** The `powerAction` is a one-time action.
-	PowerAction *string `pulumi:"powerAction"`
-	// Specifies the the private key of the keypair in use. This parameter is mandatory
-	// when replacing or unbinding a keypair and the instance is in **Running** state.
-	PrivateKey *string `pulumi:"privateKey"`
-	// The EIP address that is associted to the instance.
-	PublicIp *string `pulumi:"publicIp"`
-	// Specifies the region in which to create the instance.
-	// If omitted, the provider-level region will be used. Changing this creates a new instance.
-	Region *string `pulumi:"region"`
-	// Specifies the scheduler with hints on how the instance should be launched. The
-	// available hints are described below.
-	SchedulerHints []InstanceSchedulerHint `pulumi:"schedulerHints"`
-	// Specifies an array of one or more security group IDs to associate with the
-	// instance.
-	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// An array of one or more security groups to associate with the instance.
-	SecurityGroups    []string `pulumi:"securityGroups"`
-	SpotDuration      *int     `pulumi:"spotDuration"`
-	SpotDurationCount *int     `pulumi:"spotDurationCount"`
-	SpotMaximumPrice  *string  `pulumi:"spotMaximumPrice"`
-	// The status of the instance.
-	Status *string `pulumi:"status"`
-	// Specifies whether to try stop instance gracefully before destroying it, thus giving
-	// chance for guest OS daemons to stop correctly. If instance doesn't stop within timeout, it will be destroyed anyway.
-	StopBeforeDestroy   *bool   `pulumi:"stopBeforeDestroy"`
-	SystemDiskDssPoolId *string `pulumi:"systemDiskDssPoolId"`
-	// The system disk voume ID.
-	SystemDiskId       *string `pulumi:"systemDiskId"`
-	SystemDiskIops     *int    `pulumi:"systemDiskIops"`
-	SystemDiskKmsKeyId *string `pulumi:"systemDiskKmsKeyId"`
-	// Specifies the system disk size in GB, The value range is 1 to 1024.
-	// Shrinking the disk is not supported.
-	SystemDiskSize       *int `pulumi:"systemDiskSize"`
-	SystemDiskThroughput *int `pulumi:"systemDiskThroughput"`
-	// Specifies the system disk type of the instance. Defaults to `GPSSD`.
-	// Changing this creates a new instance.
-	//
-	// Available options are:
-	// + `SAS`: high I/O disk type.
-	// + `SSD`: ultra-high I/O disk type.
-	// + `ESSD`: Extreme SSD type.
-	SystemDiskType *string `pulumi:"systemDiskType"`
-	// Specifies the key/value pairs to associate with the instance.
-	Tags map[string]string `pulumi:"tags"`
-	// The last update time, in UTC format.
-	UpdatedAt *string `pulumi:"updatedAt"`
-	// Specifies the user data to be injected during the instance creation. Text
-	// and text files can be injected. Changing this creates a new instance.
-	//
-	// > **NOTE:** If the `userData` field is specified for a Linux ECS that is created using an image with Cloud-Init
-	// installed, the `adminPass` field becomes invalid.
-	UserData *string `pulumi:"userData"`
-	// Specifies a user ID, required when using keyPair in prePaid charging mode.
-	// Changing this creates a new instance.
-	UserId *string `pulumi:"userId"`
-	// An array of one or more disks to attach to the instance.
-	// The volume attached object structure is documented below.
-	VolumeAttacheds []InstanceVolumeAttached `pulumi:"volumeAttacheds"`
+	// schema: Computed
+	FlavorName       *string                 `pulumi:"flavorName"`
+	Hostname         *string                 `pulumi:"hostname"`
+	ImageId          *string                 `pulumi:"imageId"`
+	ImageName        *string                 `pulumi:"imageName"`
+	KeyPair          *string                 `pulumi:"keyPair"`
+	Metadata         map[string]string       `pulumi:"metadata"`
+	Name             *string                 `pulumi:"name"`
+	Networks         []InstanceNetwork       `pulumi:"networks"`
+	Period           *int                    `pulumi:"period"`
+	PeriodUnit       *string                 `pulumi:"periodUnit"`
+	PowerAction      *string                 `pulumi:"powerAction"`
+	PrivateKey       *string                 `pulumi:"privateKey"`
+	PublicIp         *string                 `pulumi:"publicIp"`
+	Region           *string                 `pulumi:"region"`
+	SchedulerHints   []InstanceSchedulerHint `pulumi:"schedulerHints"`
+	SecurityGroupIds []string                `pulumi:"securityGroupIds"`
+	// schema: Computed
+	SecurityGroups       []string                 `pulumi:"securityGroups"`
+	SpotDuration         *int                     `pulumi:"spotDuration"`
+	SpotDurationCount    *int                     `pulumi:"spotDurationCount"`
+	SpotMaximumPrice     *string                  `pulumi:"spotMaximumPrice"`
+	Status               *string                  `pulumi:"status"`
+	StopBeforeDestroy    *bool                    `pulumi:"stopBeforeDestroy"`
+	SystemDiskDssPoolId  *string                  `pulumi:"systemDiskDssPoolId"`
+	SystemDiskId         *string                  `pulumi:"systemDiskId"`
+	SystemDiskIops       *int                     `pulumi:"systemDiskIops"`
+	SystemDiskKmsKeyId   *string                  `pulumi:"systemDiskKmsKeyId"`
+	SystemDiskSize       *int                     `pulumi:"systemDiskSize"`
+	SystemDiskThroughput *int                     `pulumi:"systemDiskThroughput"`
+	SystemDiskType       *string                  `pulumi:"systemDiskType"`
+	Tags                 map[string]string        `pulumi:"tags"`
+	UpdatedAt            *string                  `pulumi:"updatedAt"`
+	UserData             *string                  `pulumi:"userData"`
+	UserId               *string                  `pulumi:"userId"`
+	VolumeAttacheds      []InstanceVolumeAttached `pulumi:"volumeAttacheds"`
 }
 
 type InstanceState struct {
-	// The first detected Fixed IPv4 address or the Floating IP.
 	AccessIpV4 pulumi.StringPtrInput
-	// The first detected Fixed IPv6 address.
 	AccessIpV6 pulumi.StringPtrInput
-	// Specifies the administrative password to assign to the instance.
-	AdminPass pulumi.StringPtrInput
-	// Specifies the IAM agency name which is created on IAM to provide
-	// temporary credentials for ECS to access cloud services.
+	AdminPass  pulumi.StringPtrInput
 	AgencyName pulumi.StringPtrInput
-	// Specifies the agent list in comma-separated string.
-	// Available agents are:
-	AgentList pulumi.StringPtrInput
+	AgentList  pulumi.StringPtrInput
 	// Deprecated: Deprecated
-	AutoPay           pulumi.StringPtrInput
-	AutoRenew         pulumi.StringPtrInput
-	AutoTerminateTime pulumi.StringPtrInput
-	// Specifies the availability zone in which to create the instance.
-	// Changing this creates a new instance.
-	AvailabilityZone pulumi.StringPtrInput
-	// Specifies the bandwidth of an EIP that will be automatically assigned to the instance.
-	// The object structure is documented below. Changing this creates a new instance.
-	Bandwidth    InstanceBandwidthPtrInput
-	ChargingMode pulumi.StringPtrInput
-	// The creation time, in UTC format.
-	CreatedAt pulumi.StringPtrInput
-	// Specifies an array of one or more data disks to attach to the instance.
-	// The dataDisks object structure is documented below. Changing this creates a new instance.
-	DataDisks InstanceDataDiskArrayInput
-	// Specifies whether to delete the data disks when the instance is terminated.
-	// Defaults to *false*. This parameter is valid if `chargingMode` is set to *postPaid*, and all data disks will be deleted
-	// in *prePaid* charging mode.
+	AutoPay                  pulumi.StringPtrInput
+	AutoRenew                pulumi.StringPtrInput
+	AutoTerminateTime        pulumi.StringPtrInput
+	AvailabilityZone         pulumi.StringPtrInput
+	Bandwidth                InstanceBandwidthPtrInput
+	ChargingMode             pulumi.StringPtrInput
+	CreatedAt                pulumi.StringPtrInput
+	DataDisks                InstanceDataDiskArrayInput
 	DeleteDisksOnTermination pulumi.BoolPtrInput
-	// Specifies whether the EIP is released when the instance is terminated.
-	// Defaults to *true*.
-	DeleteEipOnTermination pulumi.BoolPtrInput
-	// Specifies the description of the instance. The description consists of 0 to 85
-	// characters, and can't contain '<' or '>'.
-	Description pulumi.StringPtrInput
-	// Specifies the ID of an *existing* EIP assigned to the instance.
-	// This parameter and `eipType`, `bandwidth` are alternative. Changing this creates a new instance.
-	EipId pulumi.StringPtrInput
-	// Specifies the type of an EIP that will be automatically assigned to the instance.
-	// Available values are *5_bgp* (dynamic BGP) and *5_sbgp* (static BGP). Changing this creates a new instance.
-	EipType pulumi.StringPtrInput
-	// Specifies a unique id in UUID format of enterprise project.
-	EnterpriseProjectId pulumi.StringPtrInput
-	ExpiredTime         pulumi.StringPtrInput
-	// Specifies the flavor ID of the instance to be created.
+	DeleteEipOnTermination   pulumi.BoolPtrInput
+	Description              pulumi.StringPtrInput
+	EipId                    pulumi.StringPtrInput
+	EipType                  pulumi.StringPtrInput
+	EnterpriseProjectId      pulumi.StringPtrInput
+	ExpiredTime              pulumi.StringPtrInput
+	// schema: Required
 	FlavorId pulumi.StringPtrInput
-	// The flavor name of the instance.
-	FlavorName pulumi.StringPtrInput
-	Hostname   pulumi.StringPtrInput
-	// Required if `imageName` is empty. Specifies the image ID of the desired
-	// image for the instance. Changing this creates a new instance.
-	ImageId pulumi.StringPtrInput
-	// Required if `imageId` is empty. Specifies the name of the desired image
-	// for the instance. Changing this creates a new instance.
-	ImageName pulumi.StringPtrInput
-	// Specifies the SSH keypair name used for logging in to the instance.
-	KeyPair  pulumi.StringPtrInput
-	Metadata pulumi.StringMapInput
-	// Specifies a unique name for the instance. The name consists of 1 to 64 characters,
-	// including letters, digits, underscores (_), hyphens (-), and periods (.).
-	Name pulumi.StringPtrInput
-	// Specifies an array of one or more networks to attach to the instance. The
-	// network object structure is documented below. Changing this creates a new instance.
-	Networks   InstanceNetworkArrayInput
-	Period     pulumi.IntPtrInput
-	PeriodUnit pulumi.StringPtrInput
-	// Specifies the power action to be done for the instance.
-	// The valid values are *ON*, *OFF*, *REBOOT*, *FORCE-OFF* and *FORCE-REBOOT*.
-	//
-	// > **NOTE:** The `powerAction` is a one-time action.
-	PowerAction pulumi.StringPtrInput
-	// Specifies the the private key of the keypair in use. This parameter is mandatory
-	// when replacing or unbinding a keypair and the instance is in **Running** state.
-	PrivateKey pulumi.StringPtrInput
-	// The EIP address that is associted to the instance.
-	PublicIp pulumi.StringPtrInput
-	// Specifies the region in which to create the instance.
-	// If omitted, the provider-level region will be used. Changing this creates a new instance.
-	Region pulumi.StringPtrInput
-	// Specifies the scheduler with hints on how the instance should be launched. The
-	// available hints are described below.
-	SchedulerHints InstanceSchedulerHintArrayInput
-	// Specifies an array of one or more security group IDs to associate with the
-	// instance.
+	// schema: Computed
+	FlavorName       pulumi.StringPtrInput
+	Hostname         pulumi.StringPtrInput
+	ImageId          pulumi.StringPtrInput
+	ImageName        pulumi.StringPtrInput
+	KeyPair          pulumi.StringPtrInput
+	Metadata         pulumi.StringMapInput
+	Name             pulumi.StringPtrInput
+	Networks         InstanceNetworkArrayInput
+	Period           pulumi.IntPtrInput
+	PeriodUnit       pulumi.StringPtrInput
+	PowerAction      pulumi.StringPtrInput
+	PrivateKey       pulumi.StringPtrInput
+	PublicIp         pulumi.StringPtrInput
+	Region           pulumi.StringPtrInput
+	SchedulerHints   InstanceSchedulerHintArrayInput
 	SecurityGroupIds pulumi.StringArrayInput
-	// An array of one or more security groups to associate with the instance.
-	SecurityGroups    pulumi.StringArrayInput
-	SpotDuration      pulumi.IntPtrInput
-	SpotDurationCount pulumi.IntPtrInput
-	SpotMaximumPrice  pulumi.StringPtrInput
-	// The status of the instance.
-	Status pulumi.StringPtrInput
-	// Specifies whether to try stop instance gracefully before destroying it, thus giving
-	// chance for guest OS daemons to stop correctly. If instance doesn't stop within timeout, it will be destroyed anyway.
-	StopBeforeDestroy   pulumi.BoolPtrInput
-	SystemDiskDssPoolId pulumi.StringPtrInput
-	// The system disk voume ID.
-	SystemDiskId       pulumi.StringPtrInput
-	SystemDiskIops     pulumi.IntPtrInput
-	SystemDiskKmsKeyId pulumi.StringPtrInput
-	// Specifies the system disk size in GB, The value range is 1 to 1024.
-	// Shrinking the disk is not supported.
+	// schema: Computed
+	SecurityGroups       pulumi.StringArrayInput
+	SpotDuration         pulumi.IntPtrInput
+	SpotDurationCount    pulumi.IntPtrInput
+	SpotMaximumPrice     pulumi.StringPtrInput
+	Status               pulumi.StringPtrInput
+	StopBeforeDestroy    pulumi.BoolPtrInput
+	SystemDiskDssPoolId  pulumi.StringPtrInput
+	SystemDiskId         pulumi.StringPtrInput
+	SystemDiskIops       pulumi.IntPtrInput
+	SystemDiskKmsKeyId   pulumi.StringPtrInput
 	SystemDiskSize       pulumi.IntPtrInput
 	SystemDiskThroughput pulumi.IntPtrInput
-	// Specifies the system disk type of the instance. Defaults to `GPSSD`.
-	// Changing this creates a new instance.
-	//
-	// Available options are:
-	// + `SAS`: high I/O disk type.
-	// + `SSD`: ultra-high I/O disk type.
-	// + `ESSD`: Extreme SSD type.
-	SystemDiskType pulumi.StringPtrInput
-	// Specifies the key/value pairs to associate with the instance.
-	Tags pulumi.StringMapInput
-	// The last update time, in UTC format.
-	UpdatedAt pulumi.StringPtrInput
-	// Specifies the user data to be injected during the instance creation. Text
-	// and text files can be injected. Changing this creates a new instance.
-	//
-	// > **NOTE:** If the `userData` field is specified for a Linux ECS that is created using an image with Cloud-Init
-	// installed, the `adminPass` field becomes invalid.
-	UserData pulumi.StringPtrInput
-	// Specifies a user ID, required when using keyPair in prePaid charging mode.
-	// Changing this creates a new instance.
-	UserId pulumi.StringPtrInput
-	// An array of one or more disks to attach to the instance.
-	// The volume attached object structure is documented below.
-	VolumeAttacheds InstanceVolumeAttachedArrayInput
+	SystemDiskType       pulumi.StringPtrInput
+	Tags                 pulumi.StringMapInput
+	UpdatedAt            pulumi.StringPtrInput
+	UserData             pulumi.StringPtrInput
+	UserId               pulumi.StringPtrInput
+	VolumeAttacheds      InstanceVolumeAttachedArrayInput
 }
 
 func (InstanceState) ElementType() reflect.Type {
@@ -840,236 +248,110 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	// Specifies the administrative password to assign to the instance.
-	AdminPass *string `pulumi:"adminPass"`
-	// Specifies the IAM agency name which is created on IAM to provide
-	// temporary credentials for ECS to access cloud services.
+	AdminPass  *string `pulumi:"adminPass"`
 	AgencyName *string `pulumi:"agencyName"`
-	// Specifies the agent list in comma-separated string.
-	// Available agents are:
-	AgentList *string `pulumi:"agentList"`
+	AgentList  *string `pulumi:"agentList"`
 	// Deprecated: Deprecated
-	AutoPay           *string `pulumi:"autoPay"`
-	AutoRenew         *string `pulumi:"autoRenew"`
-	AutoTerminateTime *string `pulumi:"autoTerminateTime"`
-	// Specifies the availability zone in which to create the instance.
-	// Changing this creates a new instance.
-	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Specifies the bandwidth of an EIP that will be automatically assigned to the instance.
-	// The object structure is documented below. Changing this creates a new instance.
-	Bandwidth    *InstanceBandwidth `pulumi:"bandwidth"`
-	ChargingMode *string            `pulumi:"chargingMode"`
-	// Specifies an array of one or more data disks to attach to the instance.
-	// The dataDisks object structure is documented below. Changing this creates a new instance.
-	DataDisks []InstanceDataDisk `pulumi:"dataDisks"`
-	// Specifies whether to delete the data disks when the instance is terminated.
-	// Defaults to *false*. This parameter is valid if `chargingMode` is set to *postPaid*, and all data disks will be deleted
-	// in *prePaid* charging mode.
-	DeleteDisksOnTermination *bool `pulumi:"deleteDisksOnTermination"`
-	// Specifies whether the EIP is released when the instance is terminated.
-	// Defaults to *true*.
-	DeleteEipOnTermination *bool `pulumi:"deleteEipOnTermination"`
-	// Specifies the description of the instance. The description consists of 0 to 85
-	// characters, and can't contain '<' or '>'.
-	Description *string `pulumi:"description"`
-	// Specifies the ID of an *existing* EIP assigned to the instance.
-	// This parameter and `eipType`, `bandwidth` are alternative. Changing this creates a new instance.
-	EipId *string `pulumi:"eipId"`
-	// Specifies the type of an EIP that will be automatically assigned to the instance.
-	// Available values are *5_bgp* (dynamic BGP) and *5_sbgp* (static BGP). Changing this creates a new instance.
-	EipType *string `pulumi:"eipType"`
-	// Specifies a unique id in UUID format of enterprise project.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the flavor ID of the instance to be created.
+	AutoPay                  *string            `pulumi:"autoPay"`
+	AutoRenew                *string            `pulumi:"autoRenew"`
+	AutoTerminateTime        *string            `pulumi:"autoTerminateTime"`
+	AvailabilityZone         *string            `pulumi:"availabilityZone"`
+	Bandwidth                *InstanceBandwidth `pulumi:"bandwidth"`
+	ChargingMode             *string            `pulumi:"chargingMode"`
+	DataDisks                []InstanceDataDisk `pulumi:"dataDisks"`
+	DeleteDisksOnTermination *bool              `pulumi:"deleteDisksOnTermination"`
+	DeleteEipOnTermination   *bool              `pulumi:"deleteEipOnTermination"`
+	Description              *string            `pulumi:"description"`
+	EipId                    *string            `pulumi:"eipId"`
+	EipType                  *string            `pulumi:"eipType"`
+	EnterpriseProjectId      *string            `pulumi:"enterpriseProjectId"`
+	// schema: Required
 	FlavorId *string `pulumi:"flavorId"`
-	// The flavor name of the instance.
-	FlavorName *string `pulumi:"flavorName"`
-	Hostname   *string `pulumi:"hostname"`
-	// Required if `imageName` is empty. Specifies the image ID of the desired
-	// image for the instance. Changing this creates a new instance.
-	ImageId *string `pulumi:"imageId"`
-	// Required if `imageId` is empty. Specifies the name of the desired image
-	// for the instance. Changing this creates a new instance.
-	ImageName *string `pulumi:"imageName"`
-	// Specifies the SSH keypair name used for logging in to the instance.
-	KeyPair  *string           `pulumi:"keyPair"`
-	Metadata map[string]string `pulumi:"metadata"`
-	// Specifies a unique name for the instance. The name consists of 1 to 64 characters,
-	// including letters, digits, underscores (_), hyphens (-), and periods (.).
-	Name *string `pulumi:"name"`
-	// Specifies an array of one or more networks to attach to the instance. The
-	// network object structure is documented below. Changing this creates a new instance.
-	Networks   []InstanceNetwork `pulumi:"networks"`
-	Period     *int              `pulumi:"period"`
-	PeriodUnit *string           `pulumi:"periodUnit"`
-	// Specifies the power action to be done for the instance.
-	// The valid values are *ON*, *OFF*, *REBOOT*, *FORCE-OFF* and *FORCE-REBOOT*.
-	//
-	// > **NOTE:** The `powerAction` is a one-time action.
-	PowerAction *string `pulumi:"powerAction"`
-	// Specifies the the private key of the keypair in use. This parameter is mandatory
-	// when replacing or unbinding a keypair and the instance is in **Running** state.
-	PrivateKey *string `pulumi:"privateKey"`
-	// Specifies the region in which to create the instance.
-	// If omitted, the provider-level region will be used. Changing this creates a new instance.
-	Region *string `pulumi:"region"`
-	// Specifies the scheduler with hints on how the instance should be launched. The
-	// available hints are described below.
-	SchedulerHints []InstanceSchedulerHint `pulumi:"schedulerHints"`
-	// Specifies an array of one or more security group IDs to associate with the
-	// instance.
-	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// An array of one or more security groups to associate with the instance.
-	SecurityGroups    []string `pulumi:"securityGroups"`
-	SpotDuration      *int     `pulumi:"spotDuration"`
-	SpotDurationCount *int     `pulumi:"spotDurationCount"`
-	SpotMaximumPrice  *string  `pulumi:"spotMaximumPrice"`
-	// Specifies whether to try stop instance gracefully before destroying it, thus giving
-	// chance for guest OS daemons to stop correctly. If instance doesn't stop within timeout, it will be destroyed anyway.
-	StopBeforeDestroy   *bool   `pulumi:"stopBeforeDestroy"`
-	SystemDiskDssPoolId *string `pulumi:"systemDiskDssPoolId"`
-	SystemDiskIops      *int    `pulumi:"systemDiskIops"`
-	SystemDiskKmsKeyId  *string `pulumi:"systemDiskKmsKeyId"`
-	// Specifies the system disk size in GB, The value range is 1 to 1024.
-	// Shrinking the disk is not supported.
-	SystemDiskSize       *int `pulumi:"systemDiskSize"`
-	SystemDiskThroughput *int `pulumi:"systemDiskThroughput"`
-	// Specifies the system disk type of the instance. Defaults to `GPSSD`.
-	// Changing this creates a new instance.
-	//
-	// Available options are:
-	// + `SAS`: high I/O disk type.
-	// + `SSD`: ultra-high I/O disk type.
-	// + `ESSD`: Extreme SSD type.
-	SystemDiskType *string `pulumi:"systemDiskType"`
-	// Specifies the key/value pairs to associate with the instance.
-	Tags map[string]string `pulumi:"tags"`
-	// Specifies the user data to be injected during the instance creation. Text
-	// and text files can be injected. Changing this creates a new instance.
-	//
-	// > **NOTE:** If the `userData` field is specified for a Linux ECS that is created using an image with Cloud-Init
-	// installed, the `adminPass` field becomes invalid.
-	UserData *string `pulumi:"userData"`
-	// Specifies a user ID, required when using keyPair in prePaid charging mode.
-	// Changing this creates a new instance.
-	UserId *string `pulumi:"userId"`
+	// schema: Computed
+	FlavorName       *string                 `pulumi:"flavorName"`
+	Hostname         *string                 `pulumi:"hostname"`
+	ImageId          *string                 `pulumi:"imageId"`
+	ImageName        *string                 `pulumi:"imageName"`
+	KeyPair          *string                 `pulumi:"keyPair"`
+	Metadata         map[string]string       `pulumi:"metadata"`
+	Name             *string                 `pulumi:"name"`
+	Networks         []InstanceNetwork       `pulumi:"networks"`
+	Period           *int                    `pulumi:"period"`
+	PeriodUnit       *string                 `pulumi:"periodUnit"`
+	PowerAction      *string                 `pulumi:"powerAction"`
+	PrivateKey       *string                 `pulumi:"privateKey"`
+	Region           *string                 `pulumi:"region"`
+	SchedulerHints   []InstanceSchedulerHint `pulumi:"schedulerHints"`
+	SecurityGroupIds []string                `pulumi:"securityGroupIds"`
+	// schema: Computed
+	SecurityGroups       []string          `pulumi:"securityGroups"`
+	SpotDuration         *int              `pulumi:"spotDuration"`
+	SpotDurationCount    *int              `pulumi:"spotDurationCount"`
+	SpotMaximumPrice     *string           `pulumi:"spotMaximumPrice"`
+	StopBeforeDestroy    *bool             `pulumi:"stopBeforeDestroy"`
+	SystemDiskDssPoolId  *string           `pulumi:"systemDiskDssPoolId"`
+	SystemDiskIops       *int              `pulumi:"systemDiskIops"`
+	SystemDiskKmsKeyId   *string           `pulumi:"systemDiskKmsKeyId"`
+	SystemDiskSize       *int              `pulumi:"systemDiskSize"`
+	SystemDiskThroughput *int              `pulumi:"systemDiskThroughput"`
+	SystemDiskType       *string           `pulumi:"systemDiskType"`
+	Tags                 map[string]string `pulumi:"tags"`
+	UserData             *string           `pulumi:"userData"`
+	UserId               *string           `pulumi:"userId"`
 }
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// Specifies the administrative password to assign to the instance.
-	AdminPass pulumi.StringPtrInput
-	// Specifies the IAM agency name which is created on IAM to provide
-	// temporary credentials for ECS to access cloud services.
+	AdminPass  pulumi.StringPtrInput
 	AgencyName pulumi.StringPtrInput
-	// Specifies the agent list in comma-separated string.
-	// Available agents are:
-	AgentList pulumi.StringPtrInput
+	AgentList  pulumi.StringPtrInput
 	// Deprecated: Deprecated
-	AutoPay           pulumi.StringPtrInput
-	AutoRenew         pulumi.StringPtrInput
-	AutoTerminateTime pulumi.StringPtrInput
-	// Specifies the availability zone in which to create the instance.
-	// Changing this creates a new instance.
-	AvailabilityZone pulumi.StringPtrInput
-	// Specifies the bandwidth of an EIP that will be automatically assigned to the instance.
-	// The object structure is documented below. Changing this creates a new instance.
-	Bandwidth    InstanceBandwidthPtrInput
-	ChargingMode pulumi.StringPtrInput
-	// Specifies an array of one or more data disks to attach to the instance.
-	// The dataDisks object structure is documented below. Changing this creates a new instance.
-	DataDisks InstanceDataDiskArrayInput
-	// Specifies whether to delete the data disks when the instance is terminated.
-	// Defaults to *false*. This parameter is valid if `chargingMode` is set to *postPaid*, and all data disks will be deleted
-	// in *prePaid* charging mode.
+	AutoPay                  pulumi.StringPtrInput
+	AutoRenew                pulumi.StringPtrInput
+	AutoTerminateTime        pulumi.StringPtrInput
+	AvailabilityZone         pulumi.StringPtrInput
+	Bandwidth                InstanceBandwidthPtrInput
+	ChargingMode             pulumi.StringPtrInput
+	DataDisks                InstanceDataDiskArrayInput
 	DeleteDisksOnTermination pulumi.BoolPtrInput
-	// Specifies whether the EIP is released when the instance is terminated.
-	// Defaults to *true*.
-	DeleteEipOnTermination pulumi.BoolPtrInput
-	// Specifies the description of the instance. The description consists of 0 to 85
-	// characters, and can't contain '<' or '>'.
-	Description pulumi.StringPtrInput
-	// Specifies the ID of an *existing* EIP assigned to the instance.
-	// This parameter and `eipType`, `bandwidth` are alternative. Changing this creates a new instance.
-	EipId pulumi.StringPtrInput
-	// Specifies the type of an EIP that will be automatically assigned to the instance.
-	// Available values are *5_bgp* (dynamic BGP) and *5_sbgp* (static BGP). Changing this creates a new instance.
-	EipType pulumi.StringPtrInput
-	// Specifies a unique id in UUID format of enterprise project.
-	EnterpriseProjectId pulumi.StringPtrInput
-	// Specifies the flavor ID of the instance to be created.
+	DeleteEipOnTermination   pulumi.BoolPtrInput
+	Description              pulumi.StringPtrInput
+	EipId                    pulumi.StringPtrInput
+	EipType                  pulumi.StringPtrInput
+	EnterpriseProjectId      pulumi.StringPtrInput
+	// schema: Required
 	FlavorId pulumi.StringPtrInput
-	// The flavor name of the instance.
-	FlavorName pulumi.StringPtrInput
-	Hostname   pulumi.StringPtrInput
-	// Required if `imageName` is empty. Specifies the image ID of the desired
-	// image for the instance. Changing this creates a new instance.
-	ImageId pulumi.StringPtrInput
-	// Required if `imageId` is empty. Specifies the name of the desired image
-	// for the instance. Changing this creates a new instance.
-	ImageName pulumi.StringPtrInput
-	// Specifies the SSH keypair name used for logging in to the instance.
-	KeyPair  pulumi.StringPtrInput
-	Metadata pulumi.StringMapInput
-	// Specifies a unique name for the instance. The name consists of 1 to 64 characters,
-	// including letters, digits, underscores (_), hyphens (-), and periods (.).
-	Name pulumi.StringPtrInput
-	// Specifies an array of one or more networks to attach to the instance. The
-	// network object structure is documented below. Changing this creates a new instance.
-	Networks   InstanceNetworkArrayInput
-	Period     pulumi.IntPtrInput
-	PeriodUnit pulumi.StringPtrInput
-	// Specifies the power action to be done for the instance.
-	// The valid values are *ON*, *OFF*, *REBOOT*, *FORCE-OFF* and *FORCE-REBOOT*.
-	//
-	// > **NOTE:** The `powerAction` is a one-time action.
-	PowerAction pulumi.StringPtrInput
-	// Specifies the the private key of the keypair in use. This parameter is mandatory
-	// when replacing or unbinding a keypair and the instance is in **Running** state.
-	PrivateKey pulumi.StringPtrInput
-	// Specifies the region in which to create the instance.
-	// If omitted, the provider-level region will be used. Changing this creates a new instance.
-	Region pulumi.StringPtrInput
-	// Specifies the scheduler with hints on how the instance should be launched. The
-	// available hints are described below.
-	SchedulerHints InstanceSchedulerHintArrayInput
-	// Specifies an array of one or more security group IDs to associate with the
-	// instance.
+	// schema: Computed
+	FlavorName       pulumi.StringPtrInput
+	Hostname         pulumi.StringPtrInput
+	ImageId          pulumi.StringPtrInput
+	ImageName        pulumi.StringPtrInput
+	KeyPair          pulumi.StringPtrInput
+	Metadata         pulumi.StringMapInput
+	Name             pulumi.StringPtrInput
+	Networks         InstanceNetworkArrayInput
+	Period           pulumi.IntPtrInput
+	PeriodUnit       pulumi.StringPtrInput
+	PowerAction      pulumi.StringPtrInput
+	PrivateKey       pulumi.StringPtrInput
+	Region           pulumi.StringPtrInput
+	SchedulerHints   InstanceSchedulerHintArrayInput
 	SecurityGroupIds pulumi.StringArrayInput
-	// An array of one or more security groups to associate with the instance.
-	SecurityGroups    pulumi.StringArrayInput
-	SpotDuration      pulumi.IntPtrInput
-	SpotDurationCount pulumi.IntPtrInput
-	SpotMaximumPrice  pulumi.StringPtrInput
-	// Specifies whether to try stop instance gracefully before destroying it, thus giving
-	// chance for guest OS daemons to stop correctly. If instance doesn't stop within timeout, it will be destroyed anyway.
-	StopBeforeDestroy   pulumi.BoolPtrInput
-	SystemDiskDssPoolId pulumi.StringPtrInput
-	SystemDiskIops      pulumi.IntPtrInput
-	SystemDiskKmsKeyId  pulumi.StringPtrInput
-	// Specifies the system disk size in GB, The value range is 1 to 1024.
-	// Shrinking the disk is not supported.
+	// schema: Computed
+	SecurityGroups       pulumi.StringArrayInput
+	SpotDuration         pulumi.IntPtrInput
+	SpotDurationCount    pulumi.IntPtrInput
+	SpotMaximumPrice     pulumi.StringPtrInput
+	StopBeforeDestroy    pulumi.BoolPtrInput
+	SystemDiskDssPoolId  pulumi.StringPtrInput
+	SystemDiskIops       pulumi.IntPtrInput
+	SystemDiskKmsKeyId   pulumi.StringPtrInput
 	SystemDiskSize       pulumi.IntPtrInput
 	SystemDiskThroughput pulumi.IntPtrInput
-	// Specifies the system disk type of the instance. Defaults to `GPSSD`.
-	// Changing this creates a new instance.
-	//
-	// Available options are:
-	// + `SAS`: high I/O disk type.
-	// + `SSD`: ultra-high I/O disk type.
-	// + `ESSD`: Extreme SSD type.
-	SystemDiskType pulumi.StringPtrInput
-	// Specifies the key/value pairs to associate with the instance.
-	Tags pulumi.StringMapInput
-	// Specifies the user data to be injected during the instance creation. Text
-	// and text files can be injected. Changing this creates a new instance.
-	//
-	// > **NOTE:** If the `userData` field is specified for a Linux ECS that is created using an image with Cloud-Init
-	// installed, the `adminPass` field becomes invalid.
-	UserData pulumi.StringPtrInput
-	// Specifies a user ID, required when using keyPair in prePaid charging mode.
-	// Changing this creates a new instance.
-	UserId pulumi.StringPtrInput
+	SystemDiskType       pulumi.StringPtrInput
+	Tags                 pulumi.StringMapInput
+	UserData             pulumi.StringPtrInput
+	UserId               pulumi.StringPtrInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {
@@ -1159,29 +441,22 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
-// The first detected Fixed IPv4 address or the Floating IP.
 func (o InstanceOutput) AccessIpV4() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AccessIpV4 }).(pulumi.StringOutput)
 }
 
-// The first detected Fixed IPv6 address.
 func (o InstanceOutput) AccessIpV6() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AccessIpV6 }).(pulumi.StringOutput)
 }
 
-// Specifies the administrative password to assign to the instance.
 func (o InstanceOutput) AdminPass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.AdminPass }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the IAM agency name which is created on IAM to provide
-// temporary credentials for ECS to access cloud services.
 func (o InstanceOutput) AgencyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AgencyName }).(pulumi.StringOutput)
 }
 
-// Specifies the agent list in comma-separated string.
-// Available agents are:
 func (o InstanceOutput) AgentList() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AgentList }).(pulumi.StringOutput)
 }
@@ -1199,14 +474,10 @@ func (o InstanceOutput) AutoTerminateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.AutoTerminateTime }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the availability zone in which to create the instance.
-// Changing this creates a new instance.
 func (o InstanceOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// Specifies the bandwidth of an EIP that will be automatically assigned to the instance.
-// The object structure is documented below. Changing this creates a new instance.
 func (o InstanceOutput) Bandwidth() InstanceBandwidthPtrOutput {
 	return o.ApplyT(func(v *Instance) InstanceBandwidthPtrOutput { return v.Bandwidth }).(InstanceBandwidthPtrOutput)
 }
@@ -1215,49 +486,34 @@ func (o InstanceOutput) ChargingMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ChargingMode }).(pulumi.StringOutput)
 }
 
-// The creation time, in UTC format.
 func (o InstanceOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Specifies an array of one or more data disks to attach to the instance.
-// The dataDisks object structure is documented below. Changing this creates a new instance.
 func (o InstanceOutput) DataDisks() InstanceDataDiskArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceDataDiskArrayOutput { return v.DataDisks }).(InstanceDataDiskArrayOutput)
 }
 
-// Specifies whether to delete the data disks when the instance is terminated.
-// Defaults to *false*. This parameter is valid if `chargingMode` is set to *postPaid*, and all data disks will be deleted
-// in *prePaid* charging mode.
 func (o InstanceOutput) DeleteDisksOnTermination() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DeleteDisksOnTermination }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies whether the EIP is released when the instance is terminated.
-// Defaults to *true*.
 func (o InstanceOutput) DeleteEipOnTermination() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DeleteEipOnTermination }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the description of the instance. The description consists of 0 to 85
-// characters, and can't contain '<' or '>'.
 func (o InstanceOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Specifies the ID of an *existing* EIP assigned to the instance.
-// This parameter and `eipType`, `bandwidth` are alternative. Changing this creates a new instance.
 func (o InstanceOutput) EipId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.EipId }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the type of an EIP that will be automatically assigned to the instance.
-// Available values are *5_bgp* (dynamic BGP) and *5_sbgp* (static BGP). Changing this creates a new instance.
 func (o InstanceOutput) EipType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.EipType }).(pulumi.StringPtrOutput)
 }
 
-// Specifies a unique id in UUID format of enterprise project.
 func (o InstanceOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
@@ -1266,12 +522,12 @@ func (o InstanceOutput) ExpiredTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ExpiredTime }).(pulumi.StringOutput)
 }
 
-// Specifies the flavor ID of the instance to be created.
+// schema: Required
 func (o InstanceOutput) FlavorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.FlavorId }).(pulumi.StringOutput)
 }
 
-// The flavor name of the instance.
+// schema: Computed
 func (o InstanceOutput) FlavorName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.FlavorName }).(pulumi.StringOutput)
 }
@@ -1280,19 +536,14 @@ func (o InstanceOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
 }
 
-// Required if `imageName` is empty. Specifies the image ID of the desired
-// image for the instance. Changing this creates a new instance.
 func (o InstanceOutput) ImageId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ImageId }).(pulumi.StringOutput)
 }
 
-// Required if `imageId` is empty. Specifies the name of the desired image
-// for the instance. Changing this creates a new instance.
 func (o InstanceOutput) ImageName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ImageName }).(pulumi.StringOutput)
 }
 
-// Specifies the SSH keypair name used for logging in to the instance.
 func (o InstanceOutput) KeyPair() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.KeyPair }).(pulumi.StringPtrOutput)
 }
@@ -1301,14 +552,10 @@ func (o InstanceOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
-// Specifies a unique name for the instance. The name consists of 1 to 64 characters,
-// including letters, digits, underscores (_), hyphens (-), and periods (.).
 func (o InstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies an array of one or more networks to attach to the instance. The
-// network object structure is documented below. Changing this creates a new instance.
 func (o InstanceOutput) Networks() InstanceNetworkArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceNetworkArrayOutput { return v.Networks }).(InstanceNetworkArrayOutput)
 }
@@ -1321,44 +568,31 @@ func (o InstanceOutput) PeriodUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.PeriodUnit }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the power action to be done for the instance.
-// The valid values are *ON*, *OFF*, *REBOOT*, *FORCE-OFF* and *FORCE-REBOOT*.
-//
-// > **NOTE:** The `powerAction` is a one-time action.
 func (o InstanceOutput) PowerAction() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PowerAction }).(pulumi.StringOutput)
 }
 
-// Specifies the the private key of the keypair in use. This parameter is mandatory
-// when replacing or unbinding a keypair and the instance is in **Running** state.
 func (o InstanceOutput) PrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.PrivateKey }).(pulumi.StringPtrOutput)
 }
 
-// The EIP address that is associted to the instance.
 func (o InstanceOutput) PublicIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PublicIp }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the instance.
-// If omitted, the provider-level region will be used. Changing this creates a new instance.
 func (o InstanceOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Specifies the scheduler with hints on how the instance should be launched. The
-// available hints are described below.
 func (o InstanceOutput) SchedulerHints() InstanceSchedulerHintArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceSchedulerHintArrayOutput { return v.SchedulerHints }).(InstanceSchedulerHintArrayOutput)
 }
 
-// Specifies an array of one or more security group IDs to associate with the
-// instance.
 func (o InstanceOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// An array of one or more security groups to associate with the instance.
+// schema: Computed
 func (o InstanceOutput) SecurityGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SecurityGroups }).(pulumi.StringArrayOutput)
 }
@@ -1375,13 +609,10 @@ func (o InstanceOutput) SpotMaximumPrice() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SpotMaximumPrice }).(pulumi.StringPtrOutput)
 }
 
-// The status of the instance.
 func (o InstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Specifies whether to try stop instance gracefully before destroying it, thus giving
-// chance for guest OS daemons to stop correctly. If instance doesn't stop within timeout, it will be destroyed anyway.
 func (o InstanceOutput) StopBeforeDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.StopBeforeDestroy }).(pulumi.BoolPtrOutput)
 }
@@ -1390,7 +621,6 @@ func (o InstanceOutput) SystemDiskDssPoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SystemDiskDssPoolId }).(pulumi.StringPtrOutput)
 }
 
-// The system disk voume ID.
 func (o InstanceOutput) SystemDiskId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SystemDiskId }).(pulumi.StringOutput)
 }
@@ -1403,8 +633,6 @@ func (o InstanceOutput) SystemDiskKmsKeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SystemDiskKmsKeyId }).(pulumi.StringOutput)
 }
 
-// Specifies the system disk size in GB, The value range is 1 to 1024.
-// Shrinking the disk is not supported.
 func (o InstanceOutput) SystemDiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.SystemDiskSize }).(pulumi.IntOutput)
 }
@@ -1413,44 +641,26 @@ func (o InstanceOutput) SystemDiskThroughput() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.SystemDiskThroughput }).(pulumi.IntOutput)
 }
 
-// Specifies the system disk type of the instance. Defaults to `GPSSD`.
-// Changing this creates a new instance.
-//
-// Available options are:
-// + `SAS`: high I/O disk type.
-// + `SSD`: ultra-high I/O disk type.
-// + `ESSD`: Extreme SSD type.
 func (o InstanceOutput) SystemDiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SystemDiskType }).(pulumi.StringOutput)
 }
 
-// Specifies the key/value pairs to associate with the instance.
 func (o InstanceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The last update time, in UTC format.
 func (o InstanceOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// Specifies the user data to be injected during the instance creation. Text
-// and text files can be injected. Changing this creates a new instance.
-//
-// > **NOTE:** If the `userData` field is specified for a Linux ECS that is created using an image with Cloud-Init
-// installed, the `adminPass` field becomes invalid.
 func (o InstanceOutput) UserData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.UserData }).(pulumi.StringPtrOutput)
 }
 
-// Specifies a user ID, required when using keyPair in prePaid charging mode.
-// Changing this creates a new instance.
 func (o InstanceOutput) UserId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.UserId }).(pulumi.StringPtrOutput)
 }
 
-// An array of one or more disks to attach to the instance.
-// The volume attached object structure is documented below.
 func (o InstanceOutput) VolumeAttacheds() InstanceVolumeAttachedArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceVolumeAttachedArrayOutput { return v.VolumeAttacheds }).(InstanceVolumeAttachedArrayOutput)
 }

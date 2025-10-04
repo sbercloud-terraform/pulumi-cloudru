@@ -12,63 +12,14 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages an RDS instance EIP associate resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/rds"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			publicIp := cfg.RequireObject("publicIp")
-//			publicIpId := cfg.RequireObject("publicIpId")
-//			_, err := rds.NewInstanceEipAssociate(ctx, "test", &rds.InstanceEipAssociateArgs{
-//				InstanceId: pulumi.Any(instanceId),
-//				PublicIp:   pulumi.Any(publicIp),
-//				PublicIpId: pulumi.Any(nodeId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The RDS instance eip associate can be imported using the `id`, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Rds/instanceEipAssociate:InstanceEipAssociate test <id>
-// ```
 type InstanceEipAssociate struct {
 	pulumi.CustomResourceState
 
 	EnableForceNew pulumi.StringPtrOutput `pulumi:"enableForceNew"`
-	// Specifies the ID of an RDS instance.
-	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Specifies the EIP address to be bound.
-	PublicIp pulumi.StringOutput `pulumi:"publicIp"`
-	// Specifies the EIP ID.
-	PublicIpId pulumi.StringOutput `pulumi:"publicIpId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
+	InstanceId     pulumi.StringOutput    `pulumi:"instanceId"`
+	PublicIp       pulumi.StringOutput    `pulumi:"publicIp"`
+	PublicIpId     pulumi.StringOutput    `pulumi:"publicIpId"`
+	Region         pulumi.StringOutput    `pulumi:"region"`
 }
 
 // NewInstanceEipAssociate registers a new resource with the given unique name, arguments, and options.
@@ -111,28 +62,18 @@ func GetInstanceEipAssociate(ctx *pulumi.Context,
 // Input properties used for looking up and filtering InstanceEipAssociate resources.
 type instanceEipAssociateState struct {
 	EnableForceNew *string `pulumi:"enableForceNew"`
-	// Specifies the ID of an RDS instance.
-	InstanceId *string `pulumi:"instanceId"`
-	// Specifies the EIP address to be bound.
-	PublicIp *string `pulumi:"publicIp"`
-	// Specifies the EIP ID.
-	PublicIpId *string `pulumi:"publicIpId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this creates a new resource.
-	Region *string `pulumi:"region"`
+	InstanceId     *string `pulumi:"instanceId"`
+	PublicIp       *string `pulumi:"publicIp"`
+	PublicIpId     *string `pulumi:"publicIpId"`
+	Region         *string `pulumi:"region"`
 }
 
 type InstanceEipAssociateState struct {
 	EnableForceNew pulumi.StringPtrInput
-	// Specifies the ID of an RDS instance.
-	InstanceId pulumi.StringPtrInput
-	// Specifies the EIP address to be bound.
-	PublicIp pulumi.StringPtrInput
-	// Specifies the EIP ID.
-	PublicIpId pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringPtrInput
+	InstanceId     pulumi.StringPtrInput
+	PublicIp       pulumi.StringPtrInput
+	PublicIpId     pulumi.StringPtrInput
+	Region         pulumi.StringPtrInput
 }
 
 func (InstanceEipAssociateState) ElementType() reflect.Type {
@@ -141,29 +82,19 @@ func (InstanceEipAssociateState) ElementType() reflect.Type {
 
 type instanceEipAssociateArgs struct {
 	EnableForceNew *string `pulumi:"enableForceNew"`
-	// Specifies the ID of an RDS instance.
-	InstanceId string `pulumi:"instanceId"`
-	// Specifies the EIP address to be bound.
-	PublicIp string `pulumi:"publicIp"`
-	// Specifies the EIP ID.
-	PublicIpId string `pulumi:"publicIpId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this creates a new resource.
-	Region *string `pulumi:"region"`
+	InstanceId     string  `pulumi:"instanceId"`
+	PublicIp       string  `pulumi:"publicIp"`
+	PublicIpId     string  `pulumi:"publicIpId"`
+	Region         *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a InstanceEipAssociate resource.
 type InstanceEipAssociateArgs struct {
 	EnableForceNew pulumi.StringPtrInput
-	// Specifies the ID of an RDS instance.
-	InstanceId pulumi.StringInput
-	// Specifies the EIP address to be bound.
-	PublicIp pulumi.StringInput
-	// Specifies the EIP ID.
-	PublicIpId pulumi.StringInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringPtrInput
+	InstanceId     pulumi.StringInput
+	PublicIp       pulumi.StringInput
+	PublicIpId     pulumi.StringInput
+	Region         pulumi.StringPtrInput
 }
 
 func (InstanceEipAssociateArgs) ElementType() reflect.Type {
@@ -257,23 +188,18 @@ func (o InstanceEipAssociateOutput) EnableForceNew() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceEipAssociate) pulumi.StringPtrOutput { return v.EnableForceNew }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the ID of an RDS instance.
 func (o InstanceEipAssociateOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceEipAssociate) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Specifies the EIP address to be bound.
 func (o InstanceEipAssociateOutput) PublicIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceEipAssociate) pulumi.StringOutput { return v.PublicIp }).(pulumi.StringOutput)
 }
 
-// Specifies the EIP ID.
 func (o InstanceEipAssociateOutput) PublicIpId() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceEipAssociate) pulumi.StringOutput { return v.PublicIpId }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used. Changing this creates a new resource.
 func (o InstanceEipAssociateOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceEipAssociate) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

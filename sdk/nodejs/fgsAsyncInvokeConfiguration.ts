@@ -6,53 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Using this resource to manage the configuration of the asynchronous invocation within HuaweiCloud.
- *
- * > A function only supports configuring one resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const functionUrn = config.requireObject<any>("functionUrn");
- * const bucketName = config.requireObject<any>("bucketName");
- * const topicUrn = config.requireObject<any>("topicUrn");
- * const test = new sbercloud.FgsAsyncInvokeConfiguration("test", {
- *     functionUrn: functionUrn,
- *     maxAsyncEventAgeInSeconds: 3500,
- *     maxAsyncRetryAttempts: 2,
- *     enableAsyncStatusLog: true,
- *     onSuccess: {
- *         destination: "OBS",
- *         param: JSON.stringify({
- *             bucket: bucketName,
- *             prefix: "/success",
- *             expires: 5,
- *         }),
- *     },
- *     onFailure: {
- *         destination: "SMN",
- *         param: JSON.stringify({
- *             topic_urn: topicUrn,
- *         }),
- *     },
- * });
- * ```
- *
- * ## Import
- *
- * The configurations can be imported using their related `function_urn`, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:index/fgsAsyncInvokeConfiguration:FgsAsyncInvokeConfiguration test <function_urn>
- * ```
- */
 export class FgsAsyncInvokeConfiguration extends pulumi.CustomResource {
     /**
      * Get an existing FgsAsyncInvokeConfiguration resource's state with the given name, ID, and optional extra
@@ -82,50 +35,40 @@ export class FgsAsyncInvokeConfiguration extends pulumi.CustomResource {
     }
 
     /**
-     * The creation time of the asynchronous invocation, in RFC3339 format.
+     * The creation time of the asynchronous invocation.
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * Specifies whether to enable asynchronous invocation status persistence.
-     *
-     * <a name="functiongraphDestinationConfig"></a>
-     * The `onSuccess` and the `onFailure` blocks support:
+     * Whether to enable asynchronous invocation status persistence.
      */
     declare public readonly enableAsyncStatusLog: pulumi.Output<boolean | undefined>;
     /**
-     * Specifies the function URN to which the asynchronous invocation belongs.
-     * Changing this will create a new resource.
+     * The function URN to which the asynchronous invocation belongs.
      */
     declare public readonly functionUrn: pulumi.Output<string>;
     /**
-     * Specifies the maximum validity period of a message.  
-     * The valid value is range from `1` to `86,400`.
+     * The maximum validity period of a message.
      */
     declare public readonly maxAsyncEventAgeInSeconds: pulumi.Output<number>;
     /**
-     * Specifies the maximum number of retry attempts to be made if
-     * asynchronous invocation fails.
-     * The valid value is range from `0` to `3`.
+     * The maximum number of retry attempts to be made if asynchronous invocation fails.
      */
     declare public readonly maxAsyncRetryAttempts: pulumi.Output<number>;
     /**
-     * Specifies the target to be invoked when a function fails to be executed due to a
-     * system error or an internal error.
-     * The object structure is documented below.
+     * The target to be invoked when a function fails to be executed due to a system error or an
+     * internal error.
      */
     declare public readonly onFailure: pulumi.Output<outputs.FgsAsyncInvokeConfigurationOnFailure | undefined>;
     /**
-     * Specifies the target to be invoked when a function is successfully executed.  
-     * The object structure is documented below.
+     * The target to be invoked when a function is successfully executed.
      */
     declare public readonly onSuccess: pulumi.Output<outputs.FgsAsyncInvokeConfigurationOnSuccess | undefined>;
     /**
-     * Specifies the region in which to configure the asynchronous invocation.  
-     * If omitted, the provider-level region will be used. Changing this will create a new resource.
+     * The region in which to configure the asynchronous invocation.
      */
     declare public readonly region: pulumi.Output<string>;
     /**
-     * The latest update time of the asynchronous invocation, in RFC3339 format.
+     * The latest update time of the asynchronous invocation.
      */
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
@@ -182,50 +125,40 @@ export class FgsAsyncInvokeConfiguration extends pulumi.CustomResource {
  */
 export interface FgsAsyncInvokeConfigurationState {
     /**
-     * The creation time of the asynchronous invocation, in RFC3339 format.
+     * The creation time of the asynchronous invocation.
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Specifies whether to enable asynchronous invocation status persistence.
-     *
-     * <a name="functiongraphDestinationConfig"></a>
-     * The `onSuccess` and the `onFailure` blocks support:
+     * Whether to enable asynchronous invocation status persistence.
      */
     enableAsyncStatusLog?: pulumi.Input<boolean>;
     /**
-     * Specifies the function URN to which the asynchronous invocation belongs.
-     * Changing this will create a new resource.
+     * The function URN to which the asynchronous invocation belongs.
      */
     functionUrn?: pulumi.Input<string>;
     /**
-     * Specifies the maximum validity period of a message.  
-     * The valid value is range from `1` to `86,400`.
+     * The maximum validity period of a message.
      */
     maxAsyncEventAgeInSeconds?: pulumi.Input<number>;
     /**
-     * Specifies the maximum number of retry attempts to be made if
-     * asynchronous invocation fails.
-     * The valid value is range from `0` to `3`.
+     * The maximum number of retry attempts to be made if asynchronous invocation fails.
      */
     maxAsyncRetryAttempts?: pulumi.Input<number>;
     /**
-     * Specifies the target to be invoked when a function fails to be executed due to a
-     * system error or an internal error.
-     * The object structure is documented below.
+     * The target to be invoked when a function fails to be executed due to a system error or an
+     * internal error.
      */
     onFailure?: pulumi.Input<inputs.FgsAsyncInvokeConfigurationOnFailure>;
     /**
-     * Specifies the target to be invoked when a function is successfully executed.  
-     * The object structure is documented below.
+     * The target to be invoked when a function is successfully executed.
      */
     onSuccess?: pulumi.Input<inputs.FgsAsyncInvokeConfigurationOnSuccess>;
     /**
-     * Specifies the region in which to configure the asynchronous invocation.  
-     * If omitted, the provider-level region will be used. Changing this will create a new resource.
+     * The region in which to configure the asynchronous invocation.
      */
     region?: pulumi.Input<string>;
     /**
-     * The latest update time of the asynchronous invocation, in RFC3339 format.
+     * The latest update time of the asynchronous invocation.
      */
     updatedAt?: pulumi.Input<string>;
 }
@@ -235,42 +168,32 @@ export interface FgsAsyncInvokeConfigurationState {
  */
 export interface FgsAsyncInvokeConfigurationArgs {
     /**
-     * Specifies whether to enable asynchronous invocation status persistence.
-     *
-     * <a name="functiongraphDestinationConfig"></a>
-     * The `onSuccess` and the `onFailure` blocks support:
+     * Whether to enable asynchronous invocation status persistence.
      */
     enableAsyncStatusLog?: pulumi.Input<boolean>;
     /**
-     * Specifies the function URN to which the asynchronous invocation belongs.
-     * Changing this will create a new resource.
+     * The function URN to which the asynchronous invocation belongs.
      */
     functionUrn: pulumi.Input<string>;
     /**
-     * Specifies the maximum validity period of a message.  
-     * The valid value is range from `1` to `86,400`.
+     * The maximum validity period of a message.
      */
     maxAsyncEventAgeInSeconds: pulumi.Input<number>;
     /**
-     * Specifies the maximum number of retry attempts to be made if
-     * asynchronous invocation fails.
-     * The valid value is range from `0` to `3`.
+     * The maximum number of retry attempts to be made if asynchronous invocation fails.
      */
     maxAsyncRetryAttempts: pulumi.Input<number>;
     /**
-     * Specifies the target to be invoked when a function fails to be executed due to a
-     * system error or an internal error.
-     * The object structure is documented below.
+     * The target to be invoked when a function fails to be executed due to a system error or an
+     * internal error.
      */
     onFailure?: pulumi.Input<inputs.FgsAsyncInvokeConfigurationOnFailure>;
     /**
-     * Specifies the target to be invoked when a function is successfully executed.  
-     * The object structure is documented below.
+     * The target to be invoked when a function is successfully executed.
      */
     onSuccess?: pulumi.Input<inputs.FgsAsyncInvokeConfigurationOnSuccess>;
     /**
-     * Specifies the region in which to configure the asynchronous invocation.  
-     * If omitted, the provider-level region will be used. Changing this will create a new resource.
+     * The region in which to configure the asynchronous invocation.
      */
     region?: pulumi.Input<string>;
 }

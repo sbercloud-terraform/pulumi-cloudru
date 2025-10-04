@@ -27,15 +27,6 @@ class VipArgs:
                  subnet_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Vip resource.
-        :param pulumi.Input[_builtins.str] network_id: Specifies the network ID of the VPC subnet to which the VIP belongs.
-               Changing this will create a new VIP resource.
-        :param pulumi.Input[_builtins.str] ip_address: Specifies the IP address desired in the subnet for this VIP.
-               Changing this will create a new VIP resource.
-        :param pulumi.Input[_builtins.int] ip_version: Specifies the IP version, either `4` (default) or `6`.
-               Changing this will create a new VIP resource.
-        :param pulumi.Input[_builtins.str] name: Specifies a unique name for the VIP.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the VIP.
-               If omitted, the provider-level region will be used. Changing this will create a new VIP resource.
         """
         pulumi.set(__self__, "network_id", network_id)
         if ip_address is not None:
@@ -55,10 +46,6 @@ class VipArgs:
     @_builtins.property
     @pulumi.getter(name="networkId")
     def network_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the network ID of the VPC subnet to which the VIP belongs.
-        Changing this will create a new VIP resource.
-        """
         return pulumi.get(self, "network_id")
 
     @network_id.setter
@@ -68,10 +55,6 @@ class VipArgs:
     @_builtins.property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the IP address desired in the subnet for this VIP.
-        Changing this will create a new VIP resource.
-        """
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
@@ -81,10 +64,6 @@ class VipArgs:
     @_builtins.property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the IP version, either `4` (default) or `6`.
-        Changing this will create a new VIP resource.
-        """
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
@@ -94,9 +73,6 @@ class VipArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies a unique name for the VIP.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -106,10 +82,6 @@ class VipArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the VIP.
-        If omitted, the provider-level region will be used. Changing this will create a new VIP resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -141,18 +113,6 @@ class _VipState:
                  subnet_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Vip resources.
-        :param pulumi.Input[_builtins.str] device_owner: The device owner of the VIP.
-        :param pulumi.Input[_builtins.str] ip_address: Specifies the IP address desired in the subnet for this VIP.
-               Changing this will create a new VIP resource.
-        :param pulumi.Input[_builtins.int] ip_version: Specifies the IP version, either `4` (default) or `6`.
-               Changing this will create a new VIP resource.
-        :param pulumi.Input[_builtins.str] mac_address: The MAC address of the VIP.
-        :param pulumi.Input[_builtins.str] name: Specifies a unique name for the VIP.
-        :param pulumi.Input[_builtins.str] network_id: Specifies the network ID of the VPC subnet to which the VIP belongs.
-               Changing this will create a new VIP resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the VIP.
-               If omitted, the provider-level region will be used. Changing this will create a new VIP resource.
-        :param pulumi.Input[_builtins.str] status: The VIP status.
         """
         if device_owner is not None:
             pulumi.set(__self__, "device_owner", device_owner)
@@ -179,9 +139,6 @@ class _VipState:
     @_builtins.property
     @pulumi.getter(name="deviceOwner")
     def device_owner(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The device owner of the VIP.
-        """
         return pulumi.get(self, "device_owner")
 
     @device_owner.setter
@@ -191,10 +148,6 @@ class _VipState:
     @_builtins.property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the IP address desired in the subnet for this VIP.
-        Changing this will create a new VIP resource.
-        """
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
@@ -204,10 +157,6 @@ class _VipState:
     @_builtins.property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the IP version, either `4` (default) or `6`.
-        Changing this will create a new VIP resource.
-        """
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
@@ -217,9 +166,6 @@ class _VipState:
     @_builtins.property
     @pulumi.getter(name="macAddress")
     def mac_address(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The MAC address of the VIP.
-        """
         return pulumi.get(self, "mac_address")
 
     @mac_address.setter
@@ -229,9 +175,6 @@ class _VipState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies a unique name for the VIP.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -241,10 +184,6 @@ class _VipState:
     @_builtins.property
     @pulumi.getter(name="networkId")
     def network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the network ID of the VPC subnet to which the VIP belongs.
-        Changing this will create a new VIP resource.
-        """
         return pulumi.get(self, "network_id")
 
     @network_id.setter
@@ -254,10 +193,6 @@ class _VipState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the VIP.
-        If omitted, the provider-level region will be used. Changing this will create a new VIP resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -267,9 +202,6 @@ class _VipState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The VIP status.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -301,27 +233,9 @@ class Vip(pulumi.CustomResource):
                  subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a network VIP resource within SberCloud VPC.
-
-        ## Import
-
-        Network VIPs can be imported using their `id`, e.g.:
-
-        ```sh
-        $ pulumi import sbercloud:Vpc/vip:Vip test ce595799-da26-4015-8db5-7733c6db292e
-        ```
-
+        Create a Vip resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] ip_address: Specifies the IP address desired in the subnet for this VIP.
-               Changing this will create a new VIP resource.
-        :param pulumi.Input[_builtins.int] ip_version: Specifies the IP version, either `4` (default) or `6`.
-               Changing this will create a new VIP resource.
-        :param pulumi.Input[_builtins.str] name: Specifies a unique name for the VIP.
-        :param pulumi.Input[_builtins.str] network_id: Specifies the network ID of the VPC subnet to which the VIP belongs.
-               Changing this will create a new VIP resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the VIP.
-               If omitted, the provider-level region will be used. Changing this will create a new VIP resource.
         """
         ...
     @overload
@@ -330,16 +244,7 @@ class Vip(pulumi.CustomResource):
                  args: VipArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a network VIP resource within SberCloud VPC.
-
-        ## Import
-
-        Network VIPs can be imported using their `id`, e.g.:
-
-        ```sh
-        $ pulumi import sbercloud:Vpc/vip:Vip test ce595799-da26-4015-8db5-7733c6db292e
-        ```
-
+        Create a Vip resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param VipArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -407,18 +312,6 @@ class Vip(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] device_owner: The device owner of the VIP.
-        :param pulumi.Input[_builtins.str] ip_address: Specifies the IP address desired in the subnet for this VIP.
-               Changing this will create a new VIP resource.
-        :param pulumi.Input[_builtins.int] ip_version: Specifies the IP version, either `4` (default) or `6`.
-               Changing this will create a new VIP resource.
-        :param pulumi.Input[_builtins.str] mac_address: The MAC address of the VIP.
-        :param pulumi.Input[_builtins.str] name: Specifies a unique name for the VIP.
-        :param pulumi.Input[_builtins.str] network_id: Specifies the network ID of the VPC subnet to which the VIP belongs.
-               Changing this will create a new VIP resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the VIP.
-               If omitted, the provider-level region will be used. Changing this will create a new VIP resource.
-        :param pulumi.Input[_builtins.str] status: The VIP status.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -438,69 +331,41 @@ class Vip(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deviceOwner")
     def device_owner(self) -> pulumi.Output[_builtins.str]:
-        """
-        The device owner of the VIP.
-        """
         return pulumi.get(self, "device_owner")
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the IP address desired in the subnet for this VIP.
-        Changing this will create a new VIP resource.
-        """
         return pulumi.get(self, "ip_address")
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> pulumi.Output[_builtins.int]:
-        """
-        Specifies the IP version, either `4` (default) or `6`.
-        Changing this will create a new VIP resource.
-        """
         return pulumi.get(self, "ip_version")
 
     @_builtins.property
     @pulumi.getter(name="macAddress")
     def mac_address(self) -> pulumi.Output[_builtins.str]:
-        """
-        The MAC address of the VIP.
-        """
         return pulumi.get(self, "mac_address")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies a unique name for the VIP.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="networkId")
     def network_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the network ID of the VPC subnet to which the VIP belongs.
-        Changing this will create a new VIP resource.
-        """
         return pulumi.get(self, "network_id")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the VIP.
-        If omitted, the provider-level region will be used. Changing this will create a new VIP resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
-        """
-        The VIP status.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property

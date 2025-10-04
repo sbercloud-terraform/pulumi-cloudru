@@ -6,34 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Manages an ELB member resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const elbPoolId = config.requireObject<any>("elbPoolId");
- * const ipv4SubnetId = config.requireObject<any>("ipv4SubnetId");
- * const member1 = new sbercloud.ElbMember("member_1", {
- *     address: "192.168.199.23",
- *     protocolPort: 8080,
- *     poolId: elbPoolId,
- *     subnetId: ipv4SubnetId,
- * });
- * ```
- *
- * ## Import
- *
- * ELB member can be imported using the pool ID and member ID separated by a slash, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:index/elbMember:ElbMember member_1 e0bd694a-abbe-450e-b329-0931fd1cc5eb/4086b0c9-b18c-4d1c-b6b8-4c56c3ad2a9e
- * ```
- */
 export class ElbMember extends pulumi.CustomResource {
     /**
      * Get an existing ElbMember resource's state with the given name, ID, and optional extra
@@ -62,50 +34,20 @@ export class ElbMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === ElbMember.__pulumiType;
     }
 
-    /**
-     * The IP address of the member to receive traffic from the load balancer.
-     * Changing this creates a new member.
-     */
     declare public readonly address: pulumi.Output<string>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     declare public /*out*/ readonly instanceId: pulumi.Output<string>;
     declare public /*out*/ readonly ipVersion: pulumi.Output<string>;
     declare public /*out*/ readonly memberType: pulumi.Output<string>;
-    /**
-     * Human-readable name for the member.
-     */
     declare public readonly name: pulumi.Output<string>;
     declare public /*out*/ readonly operatingStatus: pulumi.Output<string>;
-    /**
-     * The id of the pool that this member will be assigned to.
-     */
     declare public readonly poolId: pulumi.Output<string>;
-    /**
-     * The port on which to listen for client traffic. Changing this creates a
-     * new member.
-     */
     declare public readonly protocolPort: pulumi.Output<number>;
     declare public /*out*/ readonly reasons: pulumi.Output<outputs.ElbMemberReason[]>;
-    /**
-     * The region in which to create the ELB member resource. If omitted, the the
-     * provider-level region will be used. Changing this creates a new member.
-     */
     declare public readonly region: pulumi.Output<string>;
     declare public /*out*/ readonly statuses: pulumi.Output<outputs.ElbMemberStatus[]>;
-    /**
-     * The **IPv4 or IPv6 subnet ID** of the subnet in which to access the member.
-     * + The IPv4 or IPv6 subnet must be in the same VPC as the subnet of the load balancer.
-     * + If this parameter is not specified, **cross-VPC backend** has been enabled for the load balancer.
-     * In this case, cross-VPC backend servers must use private IPv4 addresses,
-     * and the protocol of the backend server group must be TCP, HTTP, or HTTPS.
-     */
     declare public readonly subnetId: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
-    /**
-     * A positive integer value that indicates the relative portion of traffic that this member
-     * should receive from the pool. For example, a member with a weight of 10 receives five times as much traffic as a
-     * member with a weight of 2.
-     */
     declare public readonly weight: pulumi.Output<number>;
 
     /**
@@ -169,50 +111,20 @@ export class ElbMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ElbMember resources.
  */
 export interface ElbMemberState {
-    /**
-     * The IP address of the member to receive traffic from the load balancer.
-     * Changing this creates a new member.
-     */
     address?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
     instanceId?: pulumi.Input<string>;
     ipVersion?: pulumi.Input<string>;
     memberType?: pulumi.Input<string>;
-    /**
-     * Human-readable name for the member.
-     */
     name?: pulumi.Input<string>;
     operatingStatus?: pulumi.Input<string>;
-    /**
-     * The id of the pool that this member will be assigned to.
-     */
     poolId?: pulumi.Input<string>;
-    /**
-     * The port on which to listen for client traffic. Changing this creates a
-     * new member.
-     */
     protocolPort?: pulumi.Input<number>;
     reasons?: pulumi.Input<pulumi.Input<inputs.ElbMemberReason>[]>;
-    /**
-     * The region in which to create the ELB member resource. If omitted, the the
-     * provider-level region will be used. Changing this creates a new member.
-     */
     region?: pulumi.Input<string>;
     statuses?: pulumi.Input<pulumi.Input<inputs.ElbMemberStatus>[]>;
-    /**
-     * The **IPv4 or IPv6 subnet ID** of the subnet in which to access the member.
-     * + The IPv4 or IPv6 subnet must be in the same VPC as the subnet of the load balancer.
-     * + If this parameter is not specified, **cross-VPC backend** has been enabled for the load balancer.
-     * In this case, cross-VPC backend servers must use private IPv4 addresses,
-     * and the protocol of the backend server group must be TCP, HTTP, or HTTPS.
-     */
     subnetId?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<string>;
-    /**
-     * A positive integer value that indicates the relative portion of traffic that this member
-     * should receive from the pool. For example, a member with a weight of 10 receives five times as much traffic as a
-     * member with a weight of 2.
-     */
     weight?: pulumi.Input<number>;
 }
 
@@ -220,41 +132,11 @@ export interface ElbMemberState {
  * The set of arguments for constructing a ElbMember resource.
  */
 export interface ElbMemberArgs {
-    /**
-     * The IP address of the member to receive traffic from the load balancer.
-     * Changing this creates a new member.
-     */
     address: pulumi.Input<string>;
-    /**
-     * Human-readable name for the member.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * The id of the pool that this member will be assigned to.
-     */
     poolId: pulumi.Input<string>;
-    /**
-     * The port on which to listen for client traffic. Changing this creates a
-     * new member.
-     */
     protocolPort?: pulumi.Input<number>;
-    /**
-     * The region in which to create the ELB member resource. If omitted, the the
-     * provider-level region will be used. Changing this creates a new member.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * The **IPv4 or IPv6 subnet ID** of the subnet in which to access the member.
-     * + The IPv4 or IPv6 subnet must be in the same VPC as the subnet of the load balancer.
-     * + If this parameter is not specified, **cross-VPC backend** has been enabled for the load balancer.
-     * In this case, cross-VPC backend servers must use private IPv4 addresses,
-     * and the protocol of the backend server group must be TCP, HTTP, or HTTPS.
-     */
     subnetId?: pulumi.Input<string>;
-    /**
-     * A positive integer value that indicates the relative portion of traffic that this member
-     * should receive from the pool. For example, a member with a weight of 10 receives five times as much traffic as a
-     * member with a weight of 2.
-     */
     weight?: pulumi.Input<number>;
 }

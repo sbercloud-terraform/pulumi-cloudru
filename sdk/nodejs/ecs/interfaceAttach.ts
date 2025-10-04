@@ -4,66 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Attaches a Network Interface to an Instance.
- *
- * ## Example Usage
- *
- * ### Attach a port (under the specified network) to the ECS instance and generate a random IP address
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const networkId = config.requireObject<any>("networkId");
- * const test = new sbercloud.ecs.InterfaceAttach("test", {
- *     instanceId: instanceId,
- *     networkId: networkId,
- * });
- * ```
- *
- * ### Attach a custom port to the ECS instance
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const securityGroupId = config.requireObject<any>("securityGroupId");
- * const mynet = sbercloud.Vpc.getSubnet({
- *     name: "subnet-default",
- * });
- * const myport = mynet.then(mynet => sbercloud.Vpc.getPort({
- *     networkId: mynet.id,
- *     fixedIp: "192.168.0.100",
- * }));
- * const myinstance = new sbercloud.ecs.Instance("myinstance", {
- *     name: "instance",
- *     imageId: "ad091b52-742f-469e-8f3c-fd81cadf0743",
- *     flavorId: "s6.small.1",
- *     keyPair: "my_key_pair_name",
- *     securityGroupIds: [securityGroupId],
- *     availabilityZone: "cn-north-4a",
- *     networks: [{
- *         uuid: "55534eaa-533a-419d-9b40-ec427ea7195a",
- *     }],
- * });
- * const attached = new sbercloud.ecs.InterfaceAttach("attached", {
- *     instanceId: myinstance.id,
- *     portId: myport.then(myport => myport.id),
- * });
- * ```
- *
- * ## Import
- *
- * Interface Attachments can be imported using the Instance ID and Port ID separated by a slash, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Ecs/interfaceAttach:InterfaceAttach ai_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666
- * ```
- */
 export class InterfaceAttach extends pulumi.CustomResource {
     /**
      * Get an existing InterfaceAttach resource's state with the given name, ID, and optional extra
@@ -92,50 +32,16 @@ export class InterfaceAttach extends pulumi.CustomResource {
         return obj['__pulumiType'] === InterfaceAttach.__pulumiType;
     }
 
-    /**
-     * An IP address to assosciate with the port.
-     *
-     * ->This option cannot be used with port_id. You must specify a network_id. The IP address must lie in a range on
-     * the supplied network.
-     */
     declare public readonly fixedIp: pulumi.Output<string>;
     declare public /*out*/ readonly fixedIpv6: pulumi.Output<string>;
-    /**
-     * The ID of the Instance to attach the Port or Network to.
-     */
     declare public readonly instanceId: pulumi.Output<string>;
     declare public readonly ipv6BandwidthId: pulumi.Output<string | undefined>;
     declare public readonly ipv6Enable: pulumi.Output<boolean>;
-    /**
-     * The MAC address of the NIC.
-     */
     declare public /*out*/ readonly mac: pulumi.Output<string>;
-    /**
-     * The ID of the Network to attach to an Instance. A port will be created
-     * automatically.
-     * This option and `portId` are mutually exclusive.
-     */
     declare public readonly networkId: pulumi.Output<string>;
-    /**
-     * The ID of the Port to attach to an Instance.
-     * This option and `networkId` are mutually exclusive.
-     */
     declare public readonly portId: pulumi.Output<string>;
-    /**
-     * The region in which to create the network interface attache resource. If
-     * omitted, the provider-level region will be used. Changing this creates a new network interface attache resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Specifies the list of security group IDs bound to the specified port.  
-     * Defaults to the default security group.
-     */
     declare public readonly securityGroupIds: pulumi.Output<string[]>;
-    /**
-     * Specifies whether the ECS processes only traffic that is destined specifically
-     * for it. This function is enabled by default but should be disabled if the ECS functions as a SNAT server or has a
-     * virtual IP address bound to it.
-     */
     declare public readonly sourceDestCheck: pulumi.Output<boolean | undefined>;
 
     /**
@@ -188,50 +94,16 @@ export class InterfaceAttach extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InterfaceAttach resources.
  */
 export interface InterfaceAttachState {
-    /**
-     * An IP address to assosciate with the port.
-     *
-     * ->This option cannot be used with port_id. You must specify a network_id. The IP address must lie in a range on
-     * the supplied network.
-     */
     fixedIp?: pulumi.Input<string>;
     fixedIpv6?: pulumi.Input<string>;
-    /**
-     * The ID of the Instance to attach the Port or Network to.
-     */
     instanceId?: pulumi.Input<string>;
     ipv6BandwidthId?: pulumi.Input<string>;
     ipv6Enable?: pulumi.Input<boolean>;
-    /**
-     * The MAC address of the NIC.
-     */
     mac?: pulumi.Input<string>;
-    /**
-     * The ID of the Network to attach to an Instance. A port will be created
-     * automatically.
-     * This option and `portId` are mutually exclusive.
-     */
     networkId?: pulumi.Input<string>;
-    /**
-     * The ID of the Port to attach to an Instance.
-     * This option and `networkId` are mutually exclusive.
-     */
     portId?: pulumi.Input<string>;
-    /**
-     * The region in which to create the network interface attache resource. If
-     * omitted, the provider-level region will be used. Changing this creates a new network interface attache resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the list of security group IDs bound to the specified port.  
-     * Defaults to the default security group.
-     */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies whether the ECS processes only traffic that is destined specifically
-     * for it. This function is enabled by default but should be disabled if the ECS functions as a SNAT server or has a
-     * virtual IP address bound to it.
-     */
     sourceDestCheck?: pulumi.Input<boolean>;
 }
 
@@ -239,44 +111,13 @@ export interface InterfaceAttachState {
  * The set of arguments for constructing a InterfaceAttach resource.
  */
 export interface InterfaceAttachArgs {
-    /**
-     * An IP address to assosciate with the port.
-     *
-     * ->This option cannot be used with port_id. You must specify a network_id. The IP address must lie in a range on
-     * the supplied network.
-     */
     fixedIp?: pulumi.Input<string>;
-    /**
-     * The ID of the Instance to attach the Port or Network to.
-     */
     instanceId: pulumi.Input<string>;
     ipv6BandwidthId?: pulumi.Input<string>;
     ipv6Enable?: pulumi.Input<boolean>;
-    /**
-     * The ID of the Network to attach to an Instance. A port will be created
-     * automatically.
-     * This option and `portId` are mutually exclusive.
-     */
     networkId?: pulumi.Input<string>;
-    /**
-     * The ID of the Port to attach to an Instance.
-     * This option and `networkId` are mutually exclusive.
-     */
     portId?: pulumi.Input<string>;
-    /**
-     * The region in which to create the network interface attache resource. If
-     * omitted, the provider-level region will be used. Changing this creates a new network interface attache resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the list of security group IDs bound to the specified port.  
-     * Defaults to the default security group.
-     */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies whether the ECS processes only traffic that is destined specifically
-     * for it. This function is enabled by default but should be disabled if the ECS functions as a SNAT server or has a
-     * virtual IP address bound to it.
-     */
     sourceDestCheck?: pulumi.Input<boolean>;
 }

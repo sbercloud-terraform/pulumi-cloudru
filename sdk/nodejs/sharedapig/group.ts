@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides an API gateway group resource.
- */
 export class Group extends pulumi.CustomResource {
     /**
      * Get an existing Group resource's state with the given name, ID, and optional extra
@@ -66,8 +63,7 @@ export class Group extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The region where the dedicated instance is located.  
-     * If omitted, the provider-level region will be used. Changing this creates a new gateway group resource.
+     * The region where the dedicated instance is located.
      */
     declare public readonly region: pulumi.Output<string>;
     /**
@@ -168,8 +164,7 @@ export interface GroupState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The region where the dedicated instance is located.  
-     * If omitted, the provider-level region will be used. Changing this creates a new gateway group resource.
+     * The region where the dedicated instance is located.
      */
     region?: pulumi.Input<string>;
     /**
@@ -219,8 +214,7 @@ export interface GroupArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The region where the dedicated instance is located.  
-     * If omitted, the provider-level region will be used. Changing this creates a new gateway group resource.
+     * The region where the dedicated instance is located.
      */
     region?: pulumi.Input<string>;
     /**

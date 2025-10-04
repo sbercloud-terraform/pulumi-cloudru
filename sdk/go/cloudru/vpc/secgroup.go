@@ -11,40 +11,18 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// ## Import
-//
-// Security Groups can be imported using the `id`, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Vpc/secgroup:Secgroup secgroup_1 38809219-5e8a-4852-9139-6f461c90e8bc
-// ```
 type Secgroup struct {
 	pulumi.CustomResourceState
 
-	// The creation time, in UTC format.
-	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Whether or not to delete the default
-	// egress security rules. This is `false` by default. See the below note
-	// for more information.
-	DeleteDefaultRules pulumi.BoolPtrOutput `pulumi:"deleteDefaultRules"`
-	// Description of the security group.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Specifies the enterprise project id of the security group.
-	// Changing this creates a new security group.
-	EnterpriseProjectId pulumi.StringOutput `pulumi:"enterpriseProjectId"`
-	// A unique name for the security group.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The region in which to obtain the V2 networking client.
-	// A networking client is needed to create a port. If omitted, the
-	// `region` argument of the provider is used. Changing this creates a new
-	// security group.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// The array of security group rules associating with the security group.
-	// The rule object is documented below.
-	Rules SecgroupRuleTypeArrayOutput `pulumi:"rules"`
-	Tags  pulumi.StringMapOutput      `pulumi:"tags"`
-	// The last update time, in UTC format.
-	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
+	CreatedAt           pulumi.StringOutput         `pulumi:"createdAt"`
+	DeleteDefaultRules  pulumi.BoolPtrOutput        `pulumi:"deleteDefaultRules"`
+	Description         pulumi.StringPtrOutput      `pulumi:"description"`
+	EnterpriseProjectId pulumi.StringOutput         `pulumi:"enterpriseProjectId"`
+	Name                pulumi.StringOutput         `pulumi:"name"`
+	Region              pulumi.StringOutput         `pulumi:"region"`
+	Rules               SecgroupRuleTypeArrayOutput `pulumi:"rules"`
+	Tags                pulumi.StringMapOutput      `pulumi:"tags"`
+	UpdatedAt           pulumi.StringOutput         `pulumi:"updatedAt"`
 }
 
 // NewSecgroup registers a new resource with the given unique name, arguments, and options.
@@ -77,57 +55,27 @@ func GetSecgroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Secgroup resources.
 type secgroupState struct {
-	// The creation time, in UTC format.
-	CreatedAt *string `pulumi:"createdAt"`
-	// Whether or not to delete the default
-	// egress security rules. This is `false` by default. See the below note
-	// for more information.
-	DeleteDefaultRules *bool `pulumi:"deleteDefaultRules"`
-	// Description of the security group.
-	Description *string `pulumi:"description"`
-	// Specifies the enterprise project id of the security group.
-	// Changing this creates a new security group.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// A unique name for the security group.
-	Name *string `pulumi:"name"`
-	// The region in which to obtain the V2 networking client.
-	// A networking client is needed to create a port. If omitted, the
-	// `region` argument of the provider is used. Changing this creates a new
-	// security group.
-	Region *string `pulumi:"region"`
-	// The array of security group rules associating with the security group.
-	// The rule object is documented below.
-	Rules []SecgroupRuleType `pulumi:"rules"`
-	Tags  map[string]string  `pulumi:"tags"`
-	// The last update time, in UTC format.
-	UpdatedAt *string `pulumi:"updatedAt"`
+	CreatedAt           *string            `pulumi:"createdAt"`
+	DeleteDefaultRules  *bool              `pulumi:"deleteDefaultRules"`
+	Description         *string            `pulumi:"description"`
+	EnterpriseProjectId *string            `pulumi:"enterpriseProjectId"`
+	Name                *string            `pulumi:"name"`
+	Region              *string            `pulumi:"region"`
+	Rules               []SecgroupRuleType `pulumi:"rules"`
+	Tags                map[string]string  `pulumi:"tags"`
+	UpdatedAt           *string            `pulumi:"updatedAt"`
 }
 
 type SecgroupState struct {
-	// The creation time, in UTC format.
-	CreatedAt pulumi.StringPtrInput
-	// Whether or not to delete the default
-	// egress security rules. This is `false` by default. See the below note
-	// for more information.
-	DeleteDefaultRules pulumi.BoolPtrInput
-	// Description of the security group.
-	Description pulumi.StringPtrInput
-	// Specifies the enterprise project id of the security group.
-	// Changing this creates a new security group.
+	CreatedAt           pulumi.StringPtrInput
+	DeleteDefaultRules  pulumi.BoolPtrInput
+	Description         pulumi.StringPtrInput
 	EnterpriseProjectId pulumi.StringPtrInput
-	// A unique name for the security group.
-	Name pulumi.StringPtrInput
-	// The region in which to obtain the V2 networking client.
-	// A networking client is needed to create a port. If omitted, the
-	// `region` argument of the provider is used. Changing this creates a new
-	// security group.
-	Region pulumi.StringPtrInput
-	// The array of security group rules associating with the security group.
-	// The rule object is documented below.
-	Rules SecgroupRuleTypeArrayInput
-	Tags  pulumi.StringMapInput
-	// The last update time, in UTC format.
-	UpdatedAt pulumi.StringPtrInput
+	Name                pulumi.StringPtrInput
+	Region              pulumi.StringPtrInput
+	Rules               SecgroupRuleTypeArrayInput
+	Tags                pulumi.StringMapInput
+	UpdatedAt           pulumi.StringPtrInput
 }
 
 func (SecgroupState) ElementType() reflect.Type {
@@ -135,44 +83,22 @@ func (SecgroupState) ElementType() reflect.Type {
 }
 
 type secgroupArgs struct {
-	// Whether or not to delete the default
-	// egress security rules. This is `false` by default. See the below note
-	// for more information.
-	DeleteDefaultRules *bool `pulumi:"deleteDefaultRules"`
-	// Description of the security group.
-	Description *string `pulumi:"description"`
-	// Specifies the enterprise project id of the security group.
-	// Changing this creates a new security group.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// A unique name for the security group.
-	Name *string `pulumi:"name"`
-	// The region in which to obtain the V2 networking client.
-	// A networking client is needed to create a port. If omitted, the
-	// `region` argument of the provider is used. Changing this creates a new
-	// security group.
-	Region *string           `pulumi:"region"`
-	Tags   map[string]string `pulumi:"tags"`
+	DeleteDefaultRules  *bool             `pulumi:"deleteDefaultRules"`
+	Description         *string           `pulumi:"description"`
+	EnterpriseProjectId *string           `pulumi:"enterpriseProjectId"`
+	Name                *string           `pulumi:"name"`
+	Region              *string           `pulumi:"region"`
+	Tags                map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Secgroup resource.
 type SecgroupArgs struct {
-	// Whether or not to delete the default
-	// egress security rules. This is `false` by default. See the below note
-	// for more information.
-	DeleteDefaultRules pulumi.BoolPtrInput
-	// Description of the security group.
-	Description pulumi.StringPtrInput
-	// Specifies the enterprise project id of the security group.
-	// Changing this creates a new security group.
+	DeleteDefaultRules  pulumi.BoolPtrInput
+	Description         pulumi.StringPtrInput
 	EnterpriseProjectId pulumi.StringPtrInput
-	// A unique name for the security group.
-	Name pulumi.StringPtrInput
-	// The region in which to obtain the V2 networking client.
-	// A networking client is needed to create a port. If omitted, the
-	// `region` argument of the provider is used. Changing this creates a new
-	// security group.
-	Region pulumi.StringPtrInput
-	Tags   pulumi.StringMapInput
+	Name                pulumi.StringPtrInput
+	Region              pulumi.StringPtrInput
+	Tags                pulumi.StringMapInput
 }
 
 func (SecgroupArgs) ElementType() reflect.Type {
@@ -262,44 +188,30 @@ func (o SecgroupOutput) ToSecgroupOutputWithContext(ctx context.Context) Secgrou
 	return o
 }
 
-// The creation time, in UTC format.
 func (o SecgroupOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Secgroup) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Whether or not to delete the default
-// egress security rules. This is `false` by default. See the below note
-// for more information.
 func (o SecgroupOutput) DeleteDefaultRules() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Secgroup) pulumi.BoolPtrOutput { return v.DeleteDefaultRules }).(pulumi.BoolPtrOutput)
 }
 
-// Description of the security group.
 func (o SecgroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Secgroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the enterprise project id of the security group.
-// Changing this creates a new security group.
 func (o SecgroupOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Secgroup) pulumi.StringOutput { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// A unique name for the security group.
 func (o SecgroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Secgroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The region in which to obtain the V2 networking client.
-// A networking client is needed to create a port. If omitted, the
-// `region` argument of the provider is used. Changing this creates a new
-// security group.
 func (o SecgroupOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Secgroup) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// The array of security group rules associating with the security group.
-// The rule object is documented below.
 func (o SecgroupOutput) Rules() SecgroupRuleTypeArrayOutput {
 	return o.ApplyT(func(v *Secgroup) SecgroupRuleTypeArrayOutput { return v.Rules }).(SecgroupRuleTypeArrayOutput)
 }
@@ -308,7 +220,6 @@ func (o SecgroupOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Secgroup) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The last update time, in UTC format.
 func (o SecgroupOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Secgroup) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }

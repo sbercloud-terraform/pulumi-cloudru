@@ -33,18 +33,7 @@ class VpcArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Vpc resource.
-        :param pulumi.Input[_builtins.str] cidr: Specifies the range of available subnets in the VPC. The value ranges from 10.0.0.0/8 to
-               10.255.255.0/24, 172.16.0.0/12 to 172.31.255.0/24, or 192.168.0.0/16 to 192.168.255.0/24.
-        :param pulumi.Input[_builtins.str] description: Specifies supplementary information about the VPC. The value is a string of
-               no more than 255 characters and cannot contain angle brackets (< or >).
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the VPC. Changing this
-               creates a new VPC resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the VPC. The name must be unique for a tenant. The value is a string
-               of no more than 64 characters and can contain digits, letters, underscores (_), and hyphens (-).
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the VPC. If omitted, the
-               provider-level region will be used. Changing this creates a new VPC resource.
         :param pulumi.Input[_builtins.str] secondary_cidr: schema: Deprecated; use secondary_cidrs instead
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the VPC.
         """
         pulumi.set(__self__, "cidr", cidr)
         if block_service_endpoint_states is not None:
@@ -69,10 +58,6 @@ class VpcArgs:
     @_builtins.property
     @pulumi.getter
     def cidr(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the range of available subnets in the VPC. The value ranges from 10.0.0.0/8 to
-        10.255.255.0/24, 172.16.0.0/12 to 172.31.255.0/24, or 192.168.0.0/16 to 192.168.255.0/24.
-        """
         return pulumi.get(self, "cidr")
 
     @cidr.setter
@@ -91,10 +76,6 @@ class VpcArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies supplementary information about the VPC. The value is a string of
-        no more than 255 characters and cannot contain angle brackets (< or >).
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -113,10 +94,6 @@ class VpcArgs:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the enterprise project id of the VPC. Changing this
-        creates a new VPC resource.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -126,10 +103,6 @@ class VpcArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the VPC. The name must be unique for a tenant. The value is a string
-        of no more than 64 characters and can contain digits, letters, underscores (_), and hyphens (-).
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -139,10 +112,6 @@ class VpcArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the VPC. If omitted, the
-        provider-level region will be used. Changing this creates a new VPC resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -173,9 +142,6 @@ class VpcArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs to associate with the VPC.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -200,19 +166,7 @@ class _VpcState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Vpc resources.
-        :param pulumi.Input[_builtins.str] cidr: Specifies the range of available subnets in the VPC. The value ranges from 10.0.0.0/8 to
-               10.255.255.0/24, 172.16.0.0/12 to 172.31.255.0/24, or 192.168.0.0/16 to 192.168.255.0/24.
-        :param pulumi.Input[_builtins.str] description: Specifies supplementary information about the VPC. The value is a string of
-               no more than 255 characters and cannot contain angle brackets (< or >).
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the VPC. Changing this
-               creates a new VPC resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the VPC. The name must be unique for a tenant. The value is a string
-               of no more than 64 characters and can contain digits, letters, underscores (_), and hyphens (-).
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the VPC. If omitted, the
-               provider-level region will be used. Changing this creates a new VPC resource.
         :param pulumi.Input[_builtins.str] secondary_cidr: schema: Deprecated; use secondary_cidrs instead
-        :param pulumi.Input[_builtins.str] status: The current status of the VPC. Possible values are as follows: CREATING, OK or ERROR.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the VPC.
         """
         if block_service_endpoint_states is not None:
             pulumi.set(__self__, "block_service_endpoint_states", block_service_endpoint_states)
@@ -254,10 +208,6 @@ class _VpcState:
     @_builtins.property
     @pulumi.getter
     def cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the range of available subnets in the VPC. The value ranges from 10.0.0.0/8 to
-        10.255.255.0/24, 172.16.0.0/12 to 172.31.255.0/24, or 192.168.0.0/16 to 192.168.255.0/24.
-        """
         return pulumi.get(self, "cidr")
 
     @cidr.setter
@@ -267,10 +217,6 @@ class _VpcState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies supplementary information about the VPC. The value is a string of
-        no more than 255 characters and cannot contain angle brackets (< or >).
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -289,10 +235,6 @@ class _VpcState:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the enterprise project id of the VPC. Changing this
-        creates a new VPC resource.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -302,10 +244,6 @@ class _VpcState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the VPC. The name must be unique for a tenant. The value is a string
-        of no more than 64 characters and can contain digits, letters, underscores (_), and hyphens (-).
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -315,10 +253,6 @@ class _VpcState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the VPC. If omitted, the
-        provider-level region will be used. Changing this creates a new VPC resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -359,9 +293,6 @@ class _VpcState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The current status of the VPC. Possible values are as follows: CREATING, OK or ERROR.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -371,9 +302,6 @@ class _VpcState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs to associate with the VPC.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -399,55 +327,10 @@ class Vpc(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Manages a VPC resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        vpc_name = config.get("vpcName")
-        if vpc_name is None:
-            vpc_name = "sbercloud_vpc"
-        vpc_cidr = config.get("vpcCidr")
-        if vpc_cidr is None:
-            vpc_cidr = "192.168.0.0/16"
-        vpc = sbercloud.vpc.Vpc("vpc",
-            name=vpc_name,
-            cidr=vpc_cidr)
-        vpc_with_tags = sbercloud.vpc.Vpc("vpc_with_tags",
-            name=vpc_name,
-            cidr=vpc_cidr,
-            tags={
-                "foo": "bar",
-                "key": "value",
-            })
-        ```
-
-        ## Import
-
-        VPCs can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Vpc/vpc:Vpc vpc_v1 7117d38e-4c8f-4624-a505-bd96b97d024c
-        ```
-
+        Create a Vpc resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] cidr: Specifies the range of available subnets in the VPC. The value ranges from 10.0.0.0/8 to
-               10.255.255.0/24, 172.16.0.0/12 to 172.31.255.0/24, or 192.168.0.0/16 to 192.168.255.0/24.
-        :param pulumi.Input[_builtins.str] description: Specifies supplementary information about the VPC. The value is a string of
-               no more than 255 characters and cannot contain angle brackets (< or >).
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the VPC. Changing this
-               creates a new VPC resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the VPC. The name must be unique for a tenant. The value is a string
-               of no more than 64 characters and can contain digits, letters, underscores (_), and hyphens (-).
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the VPC. If omitted, the
-               provider-level region will be used. Changing this creates a new VPC resource.
         :param pulumi.Input[_builtins.str] secondary_cidr: schema: Deprecated; use secondary_cidrs instead
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the VPC.
         """
         ...
     @overload
@@ -456,41 +339,7 @@ class Vpc(pulumi.CustomResource):
                  args: VpcArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a VPC resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        vpc_name = config.get("vpcName")
-        if vpc_name is None:
-            vpc_name = "sbercloud_vpc"
-        vpc_cidr = config.get("vpcCidr")
-        if vpc_cidr is None:
-            vpc_cidr = "192.168.0.0/16"
-        vpc = sbercloud.vpc.Vpc("vpc",
-            name=vpc_name,
-            cidr=vpc_cidr)
-        vpc_with_tags = sbercloud.vpc.Vpc("vpc_with_tags",
-            name=vpc_name,
-            cidr=vpc_cidr,
-            tags={
-                "foo": "bar",
-                "key": "value",
-            })
-        ```
-
-        ## Import
-
-        VPCs can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Vpc/vpc:Vpc vpc_v1 7117d38e-4c8f-4624-a505-bd96b97d024c
-        ```
-
+        Create a Vpc resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param VpcArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -568,19 +417,7 @@ class Vpc(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] cidr: Specifies the range of available subnets in the VPC. The value ranges from 10.0.0.0/8 to
-               10.255.255.0/24, 172.16.0.0/12 to 172.31.255.0/24, or 192.168.0.0/16 to 192.168.255.0/24.
-        :param pulumi.Input[_builtins.str] description: Specifies supplementary information about the VPC. The value is a string of
-               no more than 255 characters and cannot contain angle brackets (< or >).
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the VPC. Changing this
-               creates a new VPC resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the VPC. The name must be unique for a tenant. The value is a string
-               of no more than 64 characters and can contain digits, letters, underscores (_), and hyphens (-).
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the VPC. If omitted, the
-               provider-level region will be used. Changing this creates a new VPC resource.
         :param pulumi.Input[_builtins.str] secondary_cidr: schema: Deprecated; use secondary_cidrs instead
-        :param pulumi.Input[_builtins.str] status: The current status of the VPC. Possible values are as follows: CREATING, OK or ERROR.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the VPC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -608,19 +445,11 @@ class Vpc(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def cidr(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the range of available subnets in the VPC. The value ranges from 10.0.0.0/8 to
-        10.255.255.0/24, 172.16.0.0/12 to 172.31.255.0/24, or 192.168.0.0/16 to 192.168.255.0/24.
-        """
         return pulumi.get(self, "cidr")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies supplementary information about the VPC. The value is a string of
-        no more than 255 characters and cannot contain angle brackets (< or >).
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
@@ -631,28 +460,16 @@ class Vpc(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the enterprise project id of the VPC. Changing this
-        creates a new VPC resource.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the name of the VPC. The name must be unique for a tenant. The value is a string
-        of no more than 64 characters and can contain digits, letters, underscores (_), and hyphens (-).
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the VPC. If omitted, the
-        provider-level region will be used. Changing this creates a new VPC resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
@@ -677,16 +494,10 @@ class Vpc(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
-        """
-        The current status of the VPC. Possible values are as follows: CREATING, OK or ERROR.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        Specifies the key/value pairs to associate with the VPC.
-        """
         return pulumi.get(self, "tags")
 

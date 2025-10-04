@@ -12,84 +12,26 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a CFW lts log resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			ltsAttackLogStreamId := cfg.RequireObject("ltsAttackLogStreamId")
-//			ltsFlowLogStreamId := cfg.RequireObject("ltsFlowLogStreamId")
-//			ltsAccessLogStreamId := cfg.RequireObject("ltsAccessLogStreamId")
-//			fwInstanceId := cfg.RequireObject("fwInstanceId")
-//			ltsLogGroupId := cfg.RequireObject("ltsLogGroupId")
-//			_, err := cfw.NewLtsLog(ctx, "test", &cfw.LtsLogArgs{
-//				FwInstanceId:             pulumi.Any(fwInstanceId),
-//				LtsLogGroupId:            pulumi.Any(ltsLogGroupId),
-//				LtsAttackLogStreamEnable: pulumi.Int(1),
-//				LtsAccessLogStreamEnable: pulumi.Int(1),
-//				LtsFlowLogStreamEnable:   pulumi.Int(1),
-//				LtsAttackLogStreamId:     pulumi.Any(ltsAttackLogStreamId),
-//				LtsAccessLogStreamId:     pulumi.Any(ltsAccessLogStreamId),
-//				LtsFlowLogStreamId:       pulumi.Any(ltsFlowLogStreamId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The lts log resource can be imported using the firewall instance ID, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Cfw/ltsLog:LtsLog test <fw_instance_id>
-// ```
 type LtsLog struct {
 	pulumi.CustomResourceState
 
-	// Specifies the ID of the firewall.
-	// Changing this creates a new resource.
+	// The ID of the firewall.
 	FwInstanceId pulumi.StringOutput `pulumi:"fwInstanceId"`
-	// Specifies whether to enable the access log stream.
-	// The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+	// LTS access log stream switch.
 	LtsAccessLogStreamEnable pulumi.IntOutput `pulumi:"ltsAccessLogStreamEnable"`
-	// Specifies the access log stream ID.
+	// LTS access log stream ID.
 	LtsAccessLogStreamId pulumi.StringPtrOutput `pulumi:"ltsAccessLogStreamId"`
-	// Specifies whether to enable the attack log stream.
-	// The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+	// LTS attack log stream switch.
 	LtsAttackLogStreamEnable pulumi.IntOutput `pulumi:"ltsAttackLogStreamEnable"`
-	// Specifies the attack log stream ID.
+	// LTS attack log stream ID.
 	LtsAttackLogStreamId pulumi.StringPtrOutput `pulumi:"ltsAttackLogStreamId"`
-	// Specifies whether to enable the flow log stream.
-	// The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+	// LTS flow log stream switch.
 	LtsFlowLogStreamEnable pulumi.IntOutput `pulumi:"ltsFlowLogStreamEnable"`
-	// Specifies the flow log stream ID.
+	// LTS flow log stream ID.
 	LtsFlowLogStreamId pulumi.StringPtrOutput `pulumi:"ltsFlowLogStreamId"`
-	// Specifies the LTS log group ID.
+	// LTS log group ID.
 	LtsLogGroupId pulumi.StringOutput `pulumi:"ltsLogGroupId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Region        pulumi.StringOutput `pulumi:"region"`
 }
 
 // NewLtsLog registers a new resource with the given unique name, arguments, and options.
@@ -137,57 +79,43 @@ func GetLtsLog(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LtsLog resources.
 type ltsLogState struct {
-	// Specifies the ID of the firewall.
-	// Changing this creates a new resource.
+	// The ID of the firewall.
 	FwInstanceId *string `pulumi:"fwInstanceId"`
-	// Specifies whether to enable the access log stream.
-	// The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+	// LTS access log stream switch.
 	LtsAccessLogStreamEnable *int `pulumi:"ltsAccessLogStreamEnable"`
-	// Specifies the access log stream ID.
+	// LTS access log stream ID.
 	LtsAccessLogStreamId *string `pulumi:"ltsAccessLogStreamId"`
-	// Specifies whether to enable the attack log stream.
-	// The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+	// LTS attack log stream switch.
 	LtsAttackLogStreamEnable *int `pulumi:"ltsAttackLogStreamEnable"`
-	// Specifies the attack log stream ID.
+	// LTS attack log stream ID.
 	LtsAttackLogStreamId *string `pulumi:"ltsAttackLogStreamId"`
-	// Specifies whether to enable the flow log stream.
-	// The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+	// LTS flow log stream switch.
 	LtsFlowLogStreamEnable *int `pulumi:"ltsFlowLogStreamEnable"`
-	// Specifies the flow log stream ID.
+	// LTS flow log stream ID.
 	LtsFlowLogStreamId *string `pulumi:"ltsFlowLogStreamId"`
-	// Specifies the LTS log group ID.
+	// LTS log group ID.
 	LtsLogGroupId *string `pulumi:"ltsLogGroupId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region *string `pulumi:"region"`
+	Region        *string `pulumi:"region"`
 }
 
 type LtsLogState struct {
-	// Specifies the ID of the firewall.
-	// Changing this creates a new resource.
+	// The ID of the firewall.
 	FwInstanceId pulumi.StringPtrInput
-	// Specifies whether to enable the access log stream.
-	// The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+	// LTS access log stream switch.
 	LtsAccessLogStreamEnable pulumi.IntPtrInput
-	// Specifies the access log stream ID.
+	// LTS access log stream ID.
 	LtsAccessLogStreamId pulumi.StringPtrInput
-	// Specifies whether to enable the attack log stream.
-	// The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+	// LTS attack log stream switch.
 	LtsAttackLogStreamEnable pulumi.IntPtrInput
-	// Specifies the attack log stream ID.
+	// LTS attack log stream ID.
 	LtsAttackLogStreamId pulumi.StringPtrInput
-	// Specifies whether to enable the flow log stream.
-	// The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+	// LTS flow log stream switch.
 	LtsFlowLogStreamEnable pulumi.IntPtrInput
-	// Specifies the flow log stream ID.
+	// LTS flow log stream ID.
 	LtsFlowLogStreamId pulumi.StringPtrInput
-	// Specifies the LTS log group ID.
+	// LTS log group ID.
 	LtsLogGroupId pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region pulumi.StringPtrInput
+	Region        pulumi.StringPtrInput
 }
 
 func (LtsLogState) ElementType() reflect.Type {
@@ -195,58 +123,44 @@ func (LtsLogState) ElementType() reflect.Type {
 }
 
 type ltsLogArgs struct {
-	// Specifies the ID of the firewall.
-	// Changing this creates a new resource.
+	// The ID of the firewall.
 	FwInstanceId string `pulumi:"fwInstanceId"`
-	// Specifies whether to enable the access log stream.
-	// The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+	// LTS access log stream switch.
 	LtsAccessLogStreamEnable int `pulumi:"ltsAccessLogStreamEnable"`
-	// Specifies the access log stream ID.
+	// LTS access log stream ID.
 	LtsAccessLogStreamId *string `pulumi:"ltsAccessLogStreamId"`
-	// Specifies whether to enable the attack log stream.
-	// The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+	// LTS attack log stream switch.
 	LtsAttackLogStreamEnable int `pulumi:"ltsAttackLogStreamEnable"`
-	// Specifies the attack log stream ID.
+	// LTS attack log stream ID.
 	LtsAttackLogStreamId *string `pulumi:"ltsAttackLogStreamId"`
-	// Specifies whether to enable the flow log stream.
-	// The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+	// LTS flow log stream switch.
 	LtsFlowLogStreamEnable int `pulumi:"ltsFlowLogStreamEnable"`
-	// Specifies the flow log stream ID.
+	// LTS flow log stream ID.
 	LtsFlowLogStreamId *string `pulumi:"ltsFlowLogStreamId"`
-	// Specifies the LTS log group ID.
-	LtsLogGroupId string `pulumi:"ltsLogGroupId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region *string `pulumi:"region"`
+	// LTS log group ID.
+	LtsLogGroupId string  `pulumi:"ltsLogGroupId"`
+	Region        *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a LtsLog resource.
 type LtsLogArgs struct {
-	// Specifies the ID of the firewall.
-	// Changing this creates a new resource.
+	// The ID of the firewall.
 	FwInstanceId pulumi.StringInput
-	// Specifies whether to enable the access log stream.
-	// The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+	// LTS access log stream switch.
 	LtsAccessLogStreamEnable pulumi.IntInput
-	// Specifies the access log stream ID.
+	// LTS access log stream ID.
 	LtsAccessLogStreamId pulumi.StringPtrInput
-	// Specifies whether to enable the attack log stream.
-	// The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+	// LTS attack log stream switch.
 	LtsAttackLogStreamEnable pulumi.IntInput
-	// Specifies the attack log stream ID.
+	// LTS attack log stream ID.
 	LtsAttackLogStreamId pulumi.StringPtrInput
-	// Specifies whether to enable the flow log stream.
-	// The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+	// LTS flow log stream switch.
 	LtsFlowLogStreamEnable pulumi.IntInput
-	// Specifies the flow log stream ID.
+	// LTS flow log stream ID.
 	LtsFlowLogStreamId pulumi.StringPtrInput
-	// Specifies the LTS log group ID.
+	// LTS log group ID.
 	LtsLogGroupId pulumi.StringInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region pulumi.StringPtrInput
+	Region        pulumi.StringPtrInput
 }
 
 func (LtsLogArgs) ElementType() reflect.Type {
@@ -336,53 +250,46 @@ func (o LtsLogOutput) ToLtsLogOutputWithContext(ctx context.Context) LtsLogOutpu
 	return o
 }
 
-// Specifies the ID of the firewall.
-// Changing this creates a new resource.
+// The ID of the firewall.
 func (o LtsLogOutput) FwInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LtsLog) pulumi.StringOutput { return v.FwInstanceId }).(pulumi.StringOutput)
 }
 
-// Specifies whether to enable the access log stream.
-// The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+// LTS access log stream switch.
 func (o LtsLogOutput) LtsAccessLogStreamEnable() pulumi.IntOutput {
 	return o.ApplyT(func(v *LtsLog) pulumi.IntOutput { return v.LtsAccessLogStreamEnable }).(pulumi.IntOutput)
 }
 
-// Specifies the access log stream ID.
+// LTS access log stream ID.
 func (o LtsLogOutput) LtsAccessLogStreamId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LtsLog) pulumi.StringPtrOutput { return v.LtsAccessLogStreamId }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to enable the attack log stream.
-// The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+// LTS attack log stream switch.
 func (o LtsLogOutput) LtsAttackLogStreamEnable() pulumi.IntOutput {
 	return o.ApplyT(func(v *LtsLog) pulumi.IntOutput { return v.LtsAttackLogStreamEnable }).(pulumi.IntOutput)
 }
 
-// Specifies the attack log stream ID.
+// LTS attack log stream ID.
 func (o LtsLogOutput) LtsAttackLogStreamId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LtsLog) pulumi.StringPtrOutput { return v.LtsAttackLogStreamId }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to enable the flow log stream.
-// The valid values are `0` and `1`, where `0` means disable and `1` means enable.
+// LTS flow log stream switch.
 func (o LtsLogOutput) LtsFlowLogStreamEnable() pulumi.IntOutput {
 	return o.ApplyT(func(v *LtsLog) pulumi.IntOutput { return v.LtsFlowLogStreamEnable }).(pulumi.IntOutput)
 }
 
-// Specifies the flow log stream ID.
+// LTS flow log stream ID.
 func (o LtsLogOutput) LtsFlowLogStreamId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LtsLog) pulumi.StringPtrOutput { return v.LtsFlowLogStreamId }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the LTS log group ID.
+// LTS log group ID.
 func (o LtsLogOutput) LtsLogGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LtsLog) pulumi.StringOutput { return v.LtsLogGroupId }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used.
-// Changing this creates a new resource.
 func (o LtsLogOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *LtsLog) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

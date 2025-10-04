@@ -12,53 +12,13 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a DDS parameter template compare resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			sourceConfigurationId := cfg.RequireObject("sourceConfigurationId")
-//			targetConfigurationId := cfg.RequireObject("targetConfigurationId")
-//			_, err := sbercloud.NewDdsParameterTemplateCompare(ctx, "test", &sbercloud.DdsParameterTemplateCompareArgs{
-//				SourceConfigurationId: pulumi.Any(sourceConfigurationId),
-//				TargetConfigurationId: pulumi.Any(targetConfigurationId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type DdsParameterTemplateCompare struct {
 	pulumi.CustomResourceState
 
-	// Indicates the differences between parameters.
-	// The differences structure is documented below.
-	Differences DdsParameterTemplateCompareDifferenceArrayOutput `pulumi:"differences"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Specifies the ID of the source parameter template to be
-	// compared. Changing this parameter will create a new resource.
-	SourceConfigurationId pulumi.StringOutput `pulumi:"sourceConfigurationId"`
-	// Specifies the ID of the destination parameter template to be
-	// compared. Changing this parameter will create a new resource.
-	TargetConfigurationId pulumi.StringOutput `pulumi:"targetConfigurationId"`
+	Differences           DdsParameterTemplateCompareDifferenceArrayOutput `pulumi:"differences"`
+	Region                pulumi.StringOutput                              `pulumi:"region"`
+	SourceConfigurationId pulumi.StringOutput                              `pulumi:"sourceConfigurationId"`
+	TargetConfigurationId pulumi.StringOutput                              `pulumi:"targetConfigurationId"`
 }
 
 // NewDdsParameterTemplateCompare registers a new resource with the given unique name, arguments, and options.
@@ -97,32 +57,16 @@ func GetDdsParameterTemplateCompare(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DdsParameterTemplateCompare resources.
 type ddsParameterTemplateCompareState struct {
-	// Indicates the differences between parameters.
-	// The differences structure is documented below.
-	Differences []DdsParameterTemplateCompareDifference `pulumi:"differences"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies the ID of the source parameter template to be
-	// compared. Changing this parameter will create a new resource.
-	SourceConfigurationId *string `pulumi:"sourceConfigurationId"`
-	// Specifies the ID of the destination parameter template to be
-	// compared. Changing this parameter will create a new resource.
-	TargetConfigurationId *string `pulumi:"targetConfigurationId"`
+	Differences           []DdsParameterTemplateCompareDifference `pulumi:"differences"`
+	Region                *string                                 `pulumi:"region"`
+	SourceConfigurationId *string                                 `pulumi:"sourceConfigurationId"`
+	TargetConfigurationId *string                                 `pulumi:"targetConfigurationId"`
 }
 
 type DdsParameterTemplateCompareState struct {
-	// Indicates the differences between parameters.
-	// The differences structure is documented below.
-	Differences DdsParameterTemplateCompareDifferenceArrayInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
-	// Specifies the ID of the source parameter template to be
-	// compared. Changing this parameter will create a new resource.
+	Differences           DdsParameterTemplateCompareDifferenceArrayInput
+	Region                pulumi.StringPtrInput
 	SourceConfigurationId pulumi.StringPtrInput
-	// Specifies the ID of the destination parameter template to be
-	// compared. Changing this parameter will create a new resource.
 	TargetConfigurationId pulumi.StringPtrInput
 }
 
@@ -131,27 +75,15 @@ func (DdsParameterTemplateCompareState) ElementType() reflect.Type {
 }
 
 type ddsParameterTemplateCompareArgs struct {
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies the ID of the source parameter template to be
-	// compared. Changing this parameter will create a new resource.
-	SourceConfigurationId string `pulumi:"sourceConfigurationId"`
-	// Specifies the ID of the destination parameter template to be
-	// compared. Changing this parameter will create a new resource.
-	TargetConfigurationId string `pulumi:"targetConfigurationId"`
+	Region                *string `pulumi:"region"`
+	SourceConfigurationId string  `pulumi:"sourceConfigurationId"`
+	TargetConfigurationId string  `pulumi:"targetConfigurationId"`
 }
 
 // The set of arguments for constructing a DdsParameterTemplateCompare resource.
 type DdsParameterTemplateCompareArgs struct {
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
-	// Specifies the ID of the source parameter template to be
-	// compared. Changing this parameter will create a new resource.
+	Region                pulumi.StringPtrInput
 	SourceConfigurationId pulumi.StringInput
-	// Specifies the ID of the destination parameter template to be
-	// compared. Changing this parameter will create a new resource.
 	TargetConfigurationId pulumi.StringInput
 }
 
@@ -242,28 +174,20 @@ func (o DdsParameterTemplateCompareOutput) ToDdsParameterTemplateCompareOutputWi
 	return o
 }
 
-// Indicates the differences between parameters.
-// The differences structure is documented below.
 func (o DdsParameterTemplateCompareOutput) Differences() DdsParameterTemplateCompareDifferenceArrayOutput {
 	return o.ApplyT(func(v *DdsParameterTemplateCompare) DdsParameterTemplateCompareDifferenceArrayOutput {
 		return v.Differences
 	}).(DdsParameterTemplateCompareDifferenceArrayOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
 func (o DdsParameterTemplateCompareOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdsParameterTemplateCompare) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Specifies the ID of the source parameter template to be
-// compared. Changing this parameter will create a new resource.
 func (o DdsParameterTemplateCompareOutput) SourceConfigurationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdsParameterTemplateCompare) pulumi.StringOutput { return v.SourceConfigurationId }).(pulumi.StringOutput)
 }
 
-// Specifies the ID of the destination parameter template to be
-// compared. Changing this parameter will create a new resource.
 func (o DdsParameterTemplateCompareOutput) TargetConfigurationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdsParameterTemplateCompare) pulumi.StringOutput { return v.TargetConfigurationId }).(pulumi.StringOutput)
 }

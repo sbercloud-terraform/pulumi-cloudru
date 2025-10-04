@@ -12,65 +12,17 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages an ELB L7 Rule resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			l7policyId := cfg.RequireObject("l7policyId")
-//			_, err := sbercloud.NewElbL7rule(ctx, "l7rule_1", &sbercloud.ElbL7ruleArgs{
-//				L7policyId:  pulumi.Any(l7policyId),
-//				Type:        pulumi.String("PATH"),
-//				CompareType: pulumi.String("EQUAL_TO"),
-//				Value:       pulumi.String("/api"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// ELB L7 rule can be imported using the L7 policy ID and L7 rule ID separated by a slash, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:index/elbL7rule:ElbL7rule rule_1 e0bd694a-abbe-450e-b329-0931fd1cc5eb/4086b0c9-b18c-4d1c-b6b8-4c56c3ad2a9e
-// ```
 type ElbL7rule struct {
 	pulumi.CustomResourceState
 
-	// The comparison type for the L7 rule - can either be STARTS_WITH, EQUAL_TO or REGEX
 	CompareType pulumi.StringOutput           `pulumi:"compareType"`
 	Conditions  ElbL7ruleConditionArrayOutput `pulumi:"conditions"`
 	CreatedAt   pulumi.StringOutput           `pulumi:"createdAt"`
-	// The ID of the L7 Policy. Changing this creates a new L7 Rule.
-	L7policyId pulumi.StringOutput `pulumi:"l7policyId"`
-	// The region in which to create the L7 Rule resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new L7 Rule.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// The L7 Rule type - can either be HOST_NAME or PATH. Changing this creates a new
-	// L7 Rule.
-	Type      pulumi.StringOutput `pulumi:"type"`
-	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
-	// The value to use for the comparison.
-	Value pulumi.StringOutput `pulumi:"value"`
+	L7policyId  pulumi.StringOutput           `pulumi:"l7policyId"`
+	Region      pulumi.StringOutput           `pulumi:"region"`
+	Type        pulumi.StringOutput           `pulumi:"type"`
+	UpdatedAt   pulumi.StringOutput           `pulumi:"updatedAt"`
+	Value       pulumi.StringOutput           `pulumi:"value"`
 }
 
 // NewElbL7rule registers a new resource with the given unique name, arguments, and options.
@@ -112,39 +64,25 @@ func GetElbL7rule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ElbL7rule resources.
 type elbL7ruleState struct {
-	// The comparison type for the L7 rule - can either be STARTS_WITH, EQUAL_TO or REGEX
 	CompareType *string              `pulumi:"compareType"`
 	Conditions  []ElbL7ruleCondition `pulumi:"conditions"`
 	CreatedAt   *string              `pulumi:"createdAt"`
-	// The ID of the L7 Policy. Changing this creates a new L7 Rule.
-	L7policyId *string `pulumi:"l7policyId"`
-	// The region in which to create the L7 Rule resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new L7 Rule.
-	Region *string `pulumi:"region"`
-	// The L7 Rule type - can either be HOST_NAME or PATH. Changing this creates a new
-	// L7 Rule.
-	Type      *string `pulumi:"type"`
-	UpdatedAt *string `pulumi:"updatedAt"`
-	// The value to use for the comparison.
-	Value *string `pulumi:"value"`
+	L7policyId  *string              `pulumi:"l7policyId"`
+	Region      *string              `pulumi:"region"`
+	Type        *string              `pulumi:"type"`
+	UpdatedAt   *string              `pulumi:"updatedAt"`
+	Value       *string              `pulumi:"value"`
 }
 
 type ElbL7ruleState struct {
-	// The comparison type for the L7 rule - can either be STARTS_WITH, EQUAL_TO or REGEX
 	CompareType pulumi.StringPtrInput
 	Conditions  ElbL7ruleConditionArrayInput
 	CreatedAt   pulumi.StringPtrInput
-	// The ID of the L7 Policy. Changing this creates a new L7 Rule.
-	L7policyId pulumi.StringPtrInput
-	// The region in which to create the L7 Rule resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new L7 Rule.
-	Region pulumi.StringPtrInput
-	// The L7 Rule type - can either be HOST_NAME or PATH. Changing this creates a new
-	// L7 Rule.
-	Type      pulumi.StringPtrInput
-	UpdatedAt pulumi.StringPtrInput
-	// The value to use for the comparison.
-	Value pulumi.StringPtrInput
+	L7policyId  pulumi.StringPtrInput
+	Region      pulumi.StringPtrInput
+	Type        pulumi.StringPtrInput
+	UpdatedAt   pulumi.StringPtrInput
+	Value       pulumi.StringPtrInput
 }
 
 func (ElbL7ruleState) ElementType() reflect.Type {
@@ -152,36 +90,22 @@ func (ElbL7ruleState) ElementType() reflect.Type {
 }
 
 type elbL7ruleArgs struct {
-	// The comparison type for the L7 rule - can either be STARTS_WITH, EQUAL_TO or REGEX
 	CompareType string               `pulumi:"compareType"`
 	Conditions  []ElbL7ruleCondition `pulumi:"conditions"`
-	// The ID of the L7 Policy. Changing this creates a new L7 Rule.
-	L7policyId string `pulumi:"l7policyId"`
-	// The region in which to create the L7 Rule resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new L7 Rule.
-	Region *string `pulumi:"region"`
-	// The L7 Rule type - can either be HOST_NAME or PATH. Changing this creates a new
-	// L7 Rule.
-	Type string `pulumi:"type"`
-	// The value to use for the comparison.
-	Value *string `pulumi:"value"`
+	L7policyId  string               `pulumi:"l7policyId"`
+	Region      *string              `pulumi:"region"`
+	Type        string               `pulumi:"type"`
+	Value       *string              `pulumi:"value"`
 }
 
 // The set of arguments for constructing a ElbL7rule resource.
 type ElbL7ruleArgs struct {
-	// The comparison type for the L7 rule - can either be STARTS_WITH, EQUAL_TO or REGEX
 	CompareType pulumi.StringInput
 	Conditions  ElbL7ruleConditionArrayInput
-	// The ID of the L7 Policy. Changing this creates a new L7 Rule.
-	L7policyId pulumi.StringInput
-	// The region in which to create the L7 Rule resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new L7 Rule.
-	Region pulumi.StringPtrInput
-	// The L7 Rule type - can either be HOST_NAME or PATH. Changing this creates a new
-	// L7 Rule.
-	Type pulumi.StringInput
-	// The value to use for the comparison.
-	Value pulumi.StringPtrInput
+	L7policyId  pulumi.StringInput
+	Region      pulumi.StringPtrInput
+	Type        pulumi.StringInput
+	Value       pulumi.StringPtrInput
 }
 
 func (ElbL7ruleArgs) ElementType() reflect.Type {
@@ -271,7 +195,6 @@ func (o ElbL7ruleOutput) ToElbL7ruleOutputWithContext(ctx context.Context) ElbL7
 	return o
 }
 
-// The comparison type for the L7 rule - can either be STARTS_WITH, EQUAL_TO or REGEX
 func (o ElbL7ruleOutput) CompareType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbL7rule) pulumi.StringOutput { return v.CompareType }).(pulumi.StringOutput)
 }
@@ -284,19 +207,14 @@ func (o ElbL7ruleOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbL7rule) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// The ID of the L7 Policy. Changing this creates a new L7 Rule.
 func (o ElbL7ruleOutput) L7policyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbL7rule) pulumi.StringOutput { return v.L7policyId }).(pulumi.StringOutput)
 }
 
-// The region in which to create the L7 Rule resource. If omitted, the
-// provider-level region will be used. Changing this creates a new L7 Rule.
 func (o ElbL7ruleOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbL7rule) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// The L7 Rule type - can either be HOST_NAME or PATH. Changing this creates a new
-// L7 Rule.
 func (o ElbL7ruleOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbL7rule) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
@@ -305,7 +223,6 @@ func (o ElbL7ruleOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbL7rule) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// The value to use for the comparison.
 func (o ElbL7ruleOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbL7rule) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }

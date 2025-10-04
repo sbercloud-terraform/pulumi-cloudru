@@ -71,33 +71,21 @@ class GetBlackWhiteListsResult:
     @_builtins.property
     @pulumi.getter
     def address(self) -> Optional[_builtins.str]:
-        """
-        The IP address.
-        """
         return pulumi.get(self, "address")
 
     @_builtins.property
     @pulumi.getter(name="addressType")
     def address_type(self) -> Optional[_builtins.str]:
-        """
-        The IP address type.
-        """
         return pulumi.get(self, "address_type")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
-        """
-        The description.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
     def direction(self) -> Optional[_builtins.str]:
-        """
-        The direction of a black or white address.
-        """
         return pulumi.get(self, "direction")
 
     @_builtins.property
@@ -116,9 +104,6 @@ class GetBlackWhiteListsResult:
     @_builtins.property
     @pulumi.getter(name="listId")
     def list_id(self) -> Optional[_builtins.str]:
-        """
-        The blacklist/whitelist ID.
-        """
         return pulumi.get(self, "list_id")
 
     @_builtins.property
@@ -134,25 +119,16 @@ class GetBlackWhiteListsResult:
     @_builtins.property
     @pulumi.getter
     def port(self) -> Optional[_builtins.str]:
-        """
-        The port.
-        """
         return pulumi.get(self, "port")
 
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> Optional[_builtins.int]:
-        """
-        The protocol type.
-        """
         return pulumi.get(self, "protocol")
 
     @_builtins.property
     @pulumi.getter
     def records(self) -> Sequence['outputs.GetBlackWhiteListsRecordResult']:
-        """
-        The blacklist and whitelist records.
-        """
         return pulumi.get(self, "records")
 
     @_builtins.property
@@ -195,44 +171,7 @@ def get_black_white_lists(address: Optional[_builtins.str] = None,
                           region: Optional[_builtins.str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBlackWhiteListsResult:
     """
-    Use this data source to get the list of CFW blacklists and whitelists.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    object_id = config.require_object("objectId")
-    list_type = config.require_object("listType")
-    test = sbercloud.Cfw.get_black_white_lists(object_id=object_id,
-        list_type=list_type)
-    ```
-
-
-    :param _builtins.str address: Specifies the IP address.
-    :param _builtins.str address_type: Specifies the IP address type.
-           The valid value can be **0** (IPv4).
-    :param _builtins.str description: Specifies the description.
-    :param _builtins.str direction: Specifies the direction of a black or white address.
-           The options are as follows:
-           + **0**: source address;
-           + **1**: destination address;
-    :param _builtins.str fw_instance_id: Specifies the firewall instance ID.
-    :param _builtins.str list_id: Specifies the blacklist/whitelist ID.
-    :param _builtins.int list_type: Specifies the blacklist/whitelist type.
-           The options are `4` (blacklist) and `5` (whitelist).
-    :param _builtins.str object_id: Specifies the protected object ID.
-    :param _builtins.str port: Specifies the port.
-    :param _builtins.int protocol: Specifies The protocol type.
-           The options are as follows:
-           + **6**: TCP;
-           + **17**: UDP;
-           + **1**: ICMP;
-           + **-1**: any protocol;
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['address'] = address
@@ -276,44 +215,7 @@ def get_black_white_lists_output(address: Optional[pulumi.Input[Optional[_builti
                                  region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBlackWhiteListsResult]:
     """
-    Use this data source to get the list of CFW blacklists and whitelists.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    object_id = config.require_object("objectId")
-    list_type = config.require_object("listType")
-    test = sbercloud.Cfw.get_black_white_lists(object_id=object_id,
-        list_type=list_type)
-    ```
-
-
-    :param _builtins.str address: Specifies the IP address.
-    :param _builtins.str address_type: Specifies the IP address type.
-           The valid value can be **0** (IPv4).
-    :param _builtins.str description: Specifies the description.
-    :param _builtins.str direction: Specifies the direction of a black or white address.
-           The options are as follows:
-           + **0**: source address;
-           + **1**: destination address;
-    :param _builtins.str fw_instance_id: Specifies the firewall instance ID.
-    :param _builtins.str list_id: Specifies the blacklist/whitelist ID.
-    :param _builtins.int list_type: Specifies the blacklist/whitelist type.
-           The options are `4` (blacklist) and `5` (whitelist).
-    :param _builtins.str object_id: Specifies the protected object ID.
-    :param _builtins.str port: Specifies the port.
-    :param _builtins.int protocol: Specifies The protocol type.
-           The options are as follows:
-           + **6**: TCP;
-           + **17**: UDP;
-           + **1**: ICMP;
-           + **-1**: any protocol;
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['address'] = address

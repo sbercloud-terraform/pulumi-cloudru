@@ -30,22 +30,6 @@ class ElbMemberArgs:
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a ElbMember resource.
-        :param pulumi.Input[_builtins.str] address: The IP address of the member to receive traffic from the load balancer.
-               Changing this creates a new member.
-        :param pulumi.Input[_builtins.str] pool_id: The id of the pool that this member will be assigned to.
-        :param pulumi.Input[_builtins.str] name: Human-readable name for the member.
-        :param pulumi.Input[_builtins.int] protocol_port: The port on which to listen for client traffic. Changing this creates a
-               new member.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the ELB member resource. If omitted, the the
-               provider-level region will be used. Changing this creates a new member.
-        :param pulumi.Input[_builtins.str] subnet_id: The **IPv4 or IPv6 subnet ID** of the subnet in which to access the member.
-               + The IPv4 or IPv6 subnet must be in the same VPC as the subnet of the load balancer.
-               + If this parameter is not specified, **cross-VPC backend** has been enabled for the load balancer.
-               In this case, cross-VPC backend servers must use private IPv4 addresses,
-               and the protocol of the backend server group must be TCP, HTTP, or HTTPS.
-        :param pulumi.Input[_builtins.int] weight: A positive integer value that indicates the relative portion of traffic that this member
-               should receive from the pool. For example, a member with a weight of 10 receives five times as much traffic as a
-               member with a weight of 2.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "pool_id", pool_id)
@@ -63,10 +47,6 @@ class ElbMemberArgs:
     @_builtins.property
     @pulumi.getter
     def address(self) -> pulumi.Input[_builtins.str]:
-        """
-        The IP address of the member to receive traffic from the load balancer.
-        Changing this creates a new member.
-        """
         return pulumi.get(self, "address")
 
     @address.setter
@@ -76,9 +56,6 @@ class ElbMemberArgs:
     @_builtins.property
     @pulumi.getter(name="poolId")
     def pool_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        The id of the pool that this member will be assigned to.
-        """
         return pulumi.get(self, "pool_id")
 
     @pool_id.setter
@@ -88,9 +65,6 @@ class ElbMemberArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Human-readable name for the member.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -100,10 +74,6 @@ class ElbMemberArgs:
     @_builtins.property
     @pulumi.getter(name="protocolPort")
     def protocol_port(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The port on which to listen for client traffic. Changing this creates a
-        new member.
-        """
         return pulumi.get(self, "protocol_port")
 
     @protocol_port.setter
@@ -113,10 +83,6 @@ class ElbMemberArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the ELB member resource. If omitted, the the
-        provider-level region will be used. Changing this creates a new member.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -126,13 +92,6 @@ class ElbMemberArgs:
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The **IPv4 or IPv6 subnet ID** of the subnet in which to access the member.
-        + The IPv4 or IPv6 subnet must be in the same VPC as the subnet of the load balancer.
-        + If this parameter is not specified, **cross-VPC backend** has been enabled for the load balancer.
-        In this case, cross-VPC backend servers must use private IPv4 addresses,
-        and the protocol of the backend server group must be TCP, HTTP, or HTTPS.
-        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -142,11 +101,6 @@ class ElbMemberArgs:
     @_builtins.property
     @pulumi.getter
     def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        A positive integer value that indicates the relative portion of traffic that this member
-        should receive from the pool. For example, a member with a weight of 10 receives five times as much traffic as a
-        member with a weight of 2.
-        """
         return pulumi.get(self, "weight")
 
     @weight.setter
@@ -174,22 +128,6 @@ class _ElbMemberState:
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ElbMember resources.
-        :param pulumi.Input[_builtins.str] address: The IP address of the member to receive traffic from the load balancer.
-               Changing this creates a new member.
-        :param pulumi.Input[_builtins.str] name: Human-readable name for the member.
-        :param pulumi.Input[_builtins.str] pool_id: The id of the pool that this member will be assigned to.
-        :param pulumi.Input[_builtins.int] protocol_port: The port on which to listen for client traffic. Changing this creates a
-               new member.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the ELB member resource. If omitted, the the
-               provider-level region will be used. Changing this creates a new member.
-        :param pulumi.Input[_builtins.str] subnet_id: The **IPv4 or IPv6 subnet ID** of the subnet in which to access the member.
-               + The IPv4 or IPv6 subnet must be in the same VPC as the subnet of the load balancer.
-               + If this parameter is not specified, **cross-VPC backend** has been enabled for the load balancer.
-               In this case, cross-VPC backend servers must use private IPv4 addresses,
-               and the protocol of the backend server group must be TCP, HTTP, or HTTPS.
-        :param pulumi.Input[_builtins.int] weight: A positive integer value that indicates the relative portion of traffic that this member
-               should receive from the pool. For example, a member with a weight of 10 receives five times as much traffic as a
-               member with a weight of 2.
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -225,10 +163,6 @@ class _ElbMemberState:
     @_builtins.property
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The IP address of the member to receive traffic from the load balancer.
-        Changing this creates a new member.
-        """
         return pulumi.get(self, "address")
 
     @address.setter
@@ -274,9 +208,6 @@ class _ElbMemberState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Human-readable name for the member.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -295,9 +226,6 @@ class _ElbMemberState:
     @_builtins.property
     @pulumi.getter(name="poolId")
     def pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The id of the pool that this member will be assigned to.
-        """
         return pulumi.get(self, "pool_id")
 
     @pool_id.setter
@@ -307,10 +235,6 @@ class _ElbMemberState:
     @_builtins.property
     @pulumi.getter(name="protocolPort")
     def protocol_port(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The port on which to listen for client traffic. Changing this creates a
-        new member.
-        """
         return pulumi.get(self, "protocol_port")
 
     @protocol_port.setter
@@ -329,10 +253,6 @@ class _ElbMemberState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the ELB member resource. If omitted, the the
-        provider-level region will be used. Changing this creates a new member.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -351,13 +271,6 @@ class _ElbMemberState:
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The **IPv4 or IPv6 subnet ID** of the subnet in which to access the member.
-        + The IPv4 or IPv6 subnet must be in the same VPC as the subnet of the load balancer.
-        + If this parameter is not specified, **cross-VPC backend** has been enabled for the load balancer.
-        In this case, cross-VPC backend servers must use private IPv4 addresses,
-        and the protocol of the backend server group must be TCP, HTTP, or HTTPS.
-        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -376,11 +289,6 @@ class _ElbMemberState:
     @_builtins.property
     @pulumi.getter
     def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        A positive integer value that indicates the relative portion of traffic that this member
-        should receive from the pool. For example, a member with a weight of 10 receives five times as much traffic as a
-        member with a weight of 2.
-        """
         return pulumi.get(self, "weight")
 
     @weight.setter
@@ -403,50 +311,9 @@ class ElbMember(pulumi.CustomResource):
                  weight: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
-        Manages an ELB member resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        elb_pool_id = config.require_object("elbPoolId")
-        ipv4_subnet_id = config.require_object("ipv4SubnetId")
-        member1 = sbercloud.ElbMember("member_1",
-            address="192.168.199.23",
-            protocol_port=8080,
-            pool_id=elb_pool_id,
-            subnet_id=ipv4_subnet_id)
-        ```
-
-        ## Import
-
-        ELB member can be imported using the pool ID and member ID separated by a slash, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:index/elbMember:ElbMember member_1 e0bd694a-abbe-450e-b329-0931fd1cc5eb/4086b0c9-b18c-4d1c-b6b8-4c56c3ad2a9e
-        ```
-
+        Create a ElbMember resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] address: The IP address of the member to receive traffic from the load balancer.
-               Changing this creates a new member.
-        :param pulumi.Input[_builtins.str] name: Human-readable name for the member.
-        :param pulumi.Input[_builtins.str] pool_id: The id of the pool that this member will be assigned to.
-        :param pulumi.Input[_builtins.int] protocol_port: The port on which to listen for client traffic. Changing this creates a
-               new member.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the ELB member resource. If omitted, the the
-               provider-level region will be used. Changing this creates a new member.
-        :param pulumi.Input[_builtins.str] subnet_id: The **IPv4 or IPv6 subnet ID** of the subnet in which to access the member.
-               + The IPv4 or IPv6 subnet must be in the same VPC as the subnet of the load balancer.
-               + If this parameter is not specified, **cross-VPC backend** has been enabled for the load balancer.
-               In this case, cross-VPC backend servers must use private IPv4 addresses,
-               and the protocol of the backend server group must be TCP, HTTP, or HTTPS.
-        :param pulumi.Input[_builtins.int] weight: A positive integer value that indicates the relative portion of traffic that this member
-               should receive from the pool. For example, a member with a weight of 10 receives five times as much traffic as a
-               member with a weight of 2.
         """
         ...
     @overload
@@ -455,32 +322,7 @@ class ElbMember(pulumi.CustomResource):
                  args: ElbMemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages an ELB member resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        elb_pool_id = config.require_object("elbPoolId")
-        ipv4_subnet_id = config.require_object("ipv4SubnetId")
-        member1 = sbercloud.ElbMember("member_1",
-            address="192.168.199.23",
-            protocol_port=8080,
-            pool_id=elb_pool_id,
-            subnet_id=ipv4_subnet_id)
-        ```
-
-        ## Import
-
-        ELB member can be imported using the pool ID and member ID separated by a slash, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:index/elbMember:ElbMember member_1 e0bd694a-abbe-450e-b329-0931fd1cc5eb/4086b0c9-b18c-4d1c-b6b8-4c56c3ad2a9e
-        ```
-
+        Create a ElbMember resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ElbMemberArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -563,22 +405,6 @@ class ElbMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] address: The IP address of the member to receive traffic from the load balancer.
-               Changing this creates a new member.
-        :param pulumi.Input[_builtins.str] name: Human-readable name for the member.
-        :param pulumi.Input[_builtins.str] pool_id: The id of the pool that this member will be assigned to.
-        :param pulumi.Input[_builtins.int] protocol_port: The port on which to listen for client traffic. Changing this creates a
-               new member.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the ELB member resource. If omitted, the the
-               provider-level region will be used. Changing this creates a new member.
-        :param pulumi.Input[_builtins.str] subnet_id: The **IPv4 or IPv6 subnet ID** of the subnet in which to access the member.
-               + The IPv4 or IPv6 subnet must be in the same VPC as the subnet of the load balancer.
-               + If this parameter is not specified, **cross-VPC backend** has been enabled for the load balancer.
-               In this case, cross-VPC backend servers must use private IPv4 addresses,
-               and the protocol of the backend server group must be TCP, HTTP, or HTTPS.
-        :param pulumi.Input[_builtins.int] weight: A positive integer value that indicates the relative portion of traffic that this member
-               should receive from the pool. For example, a member with a weight of 10 receives five times as much traffic as a
-               member with a weight of 2.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -604,10 +430,6 @@ class ElbMember(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def address(self) -> pulumi.Output[_builtins.str]:
-        """
-        The IP address of the member to receive traffic from the load balancer.
-        Changing this creates a new member.
-        """
         return pulumi.get(self, "address")
 
     @_builtins.property
@@ -633,9 +455,6 @@ class ElbMember(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Human-readable name for the member.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -646,18 +465,11 @@ class ElbMember(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="poolId")
     def pool_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The id of the pool that this member will be assigned to.
-        """
         return pulumi.get(self, "pool_id")
 
     @_builtins.property
     @pulumi.getter(name="protocolPort")
     def protocol_port(self) -> pulumi.Output[_builtins.int]:
-        """
-        The port on which to listen for client traffic. Changing this creates a
-        new member.
-        """
         return pulumi.get(self, "protocol_port")
 
     @_builtins.property
@@ -668,10 +480,6 @@ class ElbMember(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the ELB member resource. If omitted, the the
-        provider-level region will be used. Changing this creates a new member.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
@@ -682,13 +490,6 @@ class ElbMember(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        The **IPv4 or IPv6 subnet ID** of the subnet in which to access the member.
-        + The IPv4 or IPv6 subnet must be in the same VPC as the subnet of the load balancer.
-        + If this parameter is not specified, **cross-VPC backend** has been enabled for the load balancer.
-        In this case, cross-VPC backend servers must use private IPv4 addresses,
-        and the protocol of the backend server group must be TCP, HTTP, or HTTPS.
-        """
         return pulumi.get(self, "subnet_id")
 
     @_builtins.property
@@ -699,10 +500,5 @@ class ElbMember(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def weight(self) -> pulumi.Output[_builtins.int]:
-        """
-        A positive integer value that indicates the relative portion of traffic that this member
-        should receive from the pool. For example, a member with a weight of 10 receives five times as much traffic as a
-        member with a weight of 2.
-        """
         return pulumi.get(self, "weight")
 

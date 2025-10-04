@@ -6,81 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages a CFW capture task resource within SberCloud.
- *
- * > **NOTE:** For the Cloud Firewall service, you can only initiate up to 20 packet capture tasks per day.
- * Beyond this limit, no additional packet capture tasks can be initiated. Furthermore, only one packet capture task can be
- * in progress at any given time.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const fwInstanceId = config.requireObject<any>("fwInstanceId");
- * const name = config.requireObject<any>("name");
- * const duration = config.requireObject<any>("duration");
- * const maxPackets = config.requireObject<any>("maxPackets");
- * const test = new sbercloud.cfw.CaptureTask("test", {
- *     fwInstanceId: fwInstanceId,
- *     name: name,
- *     duration: duration,
- *     maxPackets: maxPackets,
- *     destination: {
- *         address: "1.1.1.1",
- *         addressType: 0,
- *     },
- *     source: {
- *         address: "2.2.2.2",
- *         addressType: 0,
- *     },
- *     service: {
- *         protocol: -1,
- *     },
- * });
- * ```
- *
- * ## Import
- *
- * The capture task can be imported using `fw_instance_id`, `name`, separated by a slash, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:Cfw/captureTask:CaptureTask test <fw_instance_id>/<name>
- * ```
- *
- * Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
- *
- * API response, security or some other reason.
- *
- * The missing attributes is `stop_capture`. It is generally recommended running `pulumi preview` after importing the resource.
- *
- * You can then decide if changes should be applied to the capture task, or the resource definition should be updated to
- *
- * align with the capture task. Also you can ignore changes as below.
- *
- * hcl
- *
- * resource "sbercloud_cfw_capture_task" "test" {
- *
- *     ...
- *
- *   lifecycle {
- *
- *     ignore_changes = [
- *     
- *       stop_capture,
- *     
- *     ]
- *
- *   }
- *
- * }
- */
 export class CaptureTask extends pulumi.CustomResource {
     /**
      * Get an existing CaptureTask resource's state with the given name, ID, and optional extra
@@ -114,42 +39,33 @@ export class CaptureTask extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * Specifies the destination configuration.
-     * The destination structure is documented below.
+     * The destination configuration.
      */
     declare public readonly destination: pulumi.Output<outputs.Cfw.CaptureTaskDestination>;
     /**
-     * Specifies the capture task duration.
+     * The capture task duration.
      */
     declare public readonly duration: pulumi.Output<number>;
     declare public readonly enableForceNew: pulumi.Output<string | undefined>;
     /**
-     * Specifies the ID of the firewall instance.
+     * The ID of the firewall instance.
      */
     declare public readonly fwInstanceId: pulumi.Output<string>;
     /**
-     * Specifies the maximum number of packets captured.
-     * The Maximum value is `1,000,000`.
+     * The maximum number of packets captured.
      */
     declare public readonly maxPackets: pulumi.Output<number>;
     /**
-     * Specifies the capture task name.
+     * The capture task name.
      */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
     /**
-     * Specifies the service configuration.
-     * The service structure is documented below.
+     * The service configuration.
      */
     declare public readonly service: pulumi.Output<outputs.Cfw.CaptureTaskService>;
     /**
-     * Specifies the source configuration.
-     * The source structure is documented below.
+     * The source configuration.
      */
     declare public readonly source: pulumi.Output<outputs.Cfw.CaptureTaskSource>;
     /**
@@ -157,10 +73,7 @@ export class CaptureTask extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly status: pulumi.Output<number>;
     /**
-     * Specifies whether to stop the capture task.
-     *
-     * <a name="Address"></a>
-     * The `destination` or `source` block supports:
+     * Whether to stop the capture.
      */
     declare public readonly stopCapture: pulumi.Output<boolean | undefined>;
     /**
@@ -248,42 +161,33 @@ export interface CaptureTaskState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Specifies the destination configuration.
-     * The destination structure is documented below.
+     * The destination configuration.
      */
     destination?: pulumi.Input<inputs.Cfw.CaptureTaskDestination>;
     /**
-     * Specifies the capture task duration.
+     * The capture task duration.
      */
     duration?: pulumi.Input<number>;
     enableForceNew?: pulumi.Input<string>;
     /**
-     * Specifies the ID of the firewall instance.
+     * The ID of the firewall instance.
      */
     fwInstanceId?: pulumi.Input<string>;
     /**
-     * Specifies the maximum number of packets captured.
-     * The Maximum value is `1,000,000`.
+     * The maximum number of packets captured.
      */
     maxPackets?: pulumi.Input<number>;
     /**
-     * Specifies the capture task name.
+     * The capture task name.
      */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
-     * Specifies the service configuration.
-     * The service structure is documented below.
+     * The service configuration.
      */
     service?: pulumi.Input<inputs.Cfw.CaptureTaskService>;
     /**
-     * Specifies the source configuration.
-     * The source structure is documented below.
+     * The source configuration.
      */
     source?: pulumi.Input<inputs.Cfw.CaptureTaskSource>;
     /**
@@ -291,10 +195,7 @@ export interface CaptureTaskState {
      */
     status?: pulumi.Input<number>;
     /**
-     * Specifies whether to stop the capture task.
-     *
-     * <a name="Address"></a>
-     * The `destination` or `source` block supports:
+     * Whether to stop the capture.
      */
     stopCapture?: pulumi.Input<boolean>;
     /**
@@ -312,49 +213,37 @@ export interface CaptureTaskState {
  */
 export interface CaptureTaskArgs {
     /**
-     * Specifies the destination configuration.
-     * The destination structure is documented below.
+     * The destination configuration.
      */
     destination: pulumi.Input<inputs.Cfw.CaptureTaskDestination>;
     /**
-     * Specifies the capture task duration.
+     * The capture task duration.
      */
     duration: pulumi.Input<number>;
     enableForceNew?: pulumi.Input<string>;
     /**
-     * Specifies the ID of the firewall instance.
+     * The ID of the firewall instance.
      */
     fwInstanceId: pulumi.Input<string>;
     /**
-     * Specifies the maximum number of packets captured.
-     * The Maximum value is `1,000,000`.
+     * The maximum number of packets captured.
      */
     maxPackets: pulumi.Input<number>;
     /**
-     * Specifies the capture task name.
+     * The capture task name.
      */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
-     * Specifies the service configuration.
-     * The service structure is documented below.
+     * The service configuration.
      */
     service: pulumi.Input<inputs.Cfw.CaptureTaskService>;
     /**
-     * Specifies the source configuration.
-     * The source structure is documented below.
+     * The source configuration.
      */
     source: pulumi.Input<inputs.Cfw.CaptureTaskSource>;
     /**
-     * Specifies whether to stop the capture task.
-     *
-     * <a name="Address"></a>
-     * The `destination` or `source` block supports:
+     * Whether to stop the capture.
      */
     stopCapture?: pulumi.Input<boolean>;
 }

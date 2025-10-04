@@ -4,25 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the ID of an available SberCloud KMS key.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const key1 = sbercloud.Dew.getKey({
- *     keyAlias: "test_key",
- *     keyDescription: "test key description",
- *     keyState: "2",
- *     keyId: "af650527-a0ff-4527-aef3-c493df1f3012",
- *     defaultKeyFlag: "0",
- *     domainId: "b168fe00ff56492495a7d22974df2d0b",
- * });
- * ```
- */
 export function getKey(args?: GetKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -42,43 +23,13 @@ export function getKey(args?: GetKeyArgs, opts?: pulumi.InvokeOptions): Promise<
  * A collection of arguments for invoking getKey.
  */
 export interface GetKeyArgs {
-    /**
-     * Identification of a Master Key. The value "1" indicates a Default Master Key,
-     * and the value "0" indicates a key. Changing this gets a new key.
-     */
     defaultKeyFlag?: string;
-    /**
-     * ID of a user domain for the key. Changing this gets a new key.
-     */
     domainId?: string;
-    /**
-     * The enterprise project id of the kms key.
-     */
     enterpriseProjectId?: string;
-    /**
-     * The alias in which to create the key. It is required when we create a new key.
-     * Changing this gets the new key.
-     */
     keyAlias?: string;
-    /**
-     * The description of the key as viewed in Huawei console. Changing this gets a
-     * new key.
-     */
     keyDescription?: string;
-    /**
-     * The globally unique identifier for the key. Changing this gets the new key.
-     */
     keyId?: string;
-    /**
-     * The state of a key. "1" indicates that the key is waiting to be activated.
-     * "2" indicates that the key is enabled. "3" indicates that the key is disabled. "4" indicates that the key is scheduled
-     * for deletion. Changing this gets a new key.
-     */
     keyState?: string;
-    /**
-     * The region in which to obtain the keys. If omitted, the provider-level region will be
-     * used.
-     */
     region?: string;
 }
 
@@ -86,16 +37,10 @@ export interface GetKeyArgs {
  * A collection of values returned by getKey.
  */
 export interface GetKeyResult {
-    /**
-     * Creation time (time stamp) of a key.
-     */
     readonly creationDate: string;
     readonly defaultKeyFlag: string;
     readonly domainId: string;
     readonly enterpriseProjectId: string;
-    /**
-     * Expiration time.
-     */
     readonly expirationTime: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -106,46 +51,12 @@ export interface GetKeyResult {
     readonly keyId: string;
     readonly keyState: string;
     readonly region: string;
-    /**
-     * Indicates whether the key rotation is enabled or not.
-     */
     readonly rotationEnabled: boolean;
-    /**
-     * The key rotation interval. It's valid when rotation is enabled.
-     */
     readonly rotationInterval: number;
-    /**
-     * The total number of key rotations. It's valid when rotation is enabled.
-     */
     readonly rotationNumber: number;
-    /**
-     * Scheduled deletion time (time stamp) of a key.
-     */
     readonly scheduledDeletionDate: string;
-    /**
-     * The key/value pairs to associate with the kms key.
-     */
     readonly tags: {[key: string]: string};
 }
-/**
- * Use this data source to get the ID of an available SberCloud KMS key.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const key1 = sbercloud.Dew.getKey({
- *     keyAlias: "test_key",
- *     keyDescription: "test key description",
- *     keyState: "2",
- *     keyId: "af650527-a0ff-4527-aef3-c493df1f3012",
- *     defaultKeyFlag: "0",
- *     domainId: "b168fe00ff56492495a7d22974df2d0b",
- * });
- * ```
- */
 export function getKeyOutput(args?: GetKeyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKeyResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -165,42 +76,12 @@ export function getKeyOutput(args?: GetKeyOutputArgs, opts?: pulumi.InvokeOutput
  * A collection of arguments for invoking getKey.
  */
 export interface GetKeyOutputArgs {
-    /**
-     * Identification of a Master Key. The value "1" indicates a Default Master Key,
-     * and the value "0" indicates a key. Changing this gets a new key.
-     */
     defaultKeyFlag?: pulumi.Input<string>;
-    /**
-     * ID of a user domain for the key. Changing this gets a new key.
-     */
     domainId?: pulumi.Input<string>;
-    /**
-     * The enterprise project id of the kms key.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * The alias in which to create the key. It is required when we create a new key.
-     * Changing this gets the new key.
-     */
     keyAlias?: pulumi.Input<string>;
-    /**
-     * The description of the key as viewed in Huawei console. Changing this gets a
-     * new key.
-     */
     keyDescription?: pulumi.Input<string>;
-    /**
-     * The globally unique identifier for the key. Changing this gets the new key.
-     */
     keyId?: pulumi.Input<string>;
-    /**
-     * The state of a key. "1" indicates that the key is waiting to be activated.
-     * "2" indicates that the key is enabled. "3" indicates that the key is disabled. "4" indicates that the key is scheduled
-     * for deletion. Changing this gets a new key.
-     */
     keyState?: pulumi.Input<string>;
-    /**
-     * The region in which to obtain the keys. If omitted, the provider-level region will be
-     * used.
-     */
     region?: pulumi.Input<string>;
 }

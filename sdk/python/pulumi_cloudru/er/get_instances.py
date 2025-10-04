@@ -59,9 +59,6 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[_builtins.str]:
-        """
-        The ID of enterprise project to which the ER instance belongs.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
@@ -80,18 +77,11 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetInstancesInstanceResult']:
-        """
-        All instances that match the filter parameters.  
-        The object structure is documented below.
-        """
         return pulumi.get(self, "instances")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        The name of the ER instance.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -107,17 +97,11 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
-        """
-        The current status of the ER instance.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
-        """
-        The key/value pairs to associate with the ER instance.
-        """
         return pulumi.get(self, "tags")
 
 
@@ -147,35 +131,7 @@ def get_instances(enterprise_project_id: Optional[_builtins.str] = None,
                   tags: Optional[Mapping[str, _builtins.str]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
-    Use this data source to filter ER instances within SberCloud.
-
-    Before using enterprise router, define custom endpoint as shown below:
-    ```python
-    import pulumi
-    ```
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.Er.get_instances(tags={
-        "foo": "bar",
-    })
-    ```
-
-
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID of the ER instances to be queried.
-    :param _builtins.str instance_id: Specifies the ID used to query specified ER instance.
-    :param _builtins.str name: Specifies the name used to filter the ER instances.
-           The valid length is limited from `1` to `64`, only Chinese and English letters, digits, underscores (_) and
-           hyphens (-) are allowed.
-    :param _builtins.bool owned_by_self: Specifies whether resources belong to the current renant.
-    :param _builtins.str region: Specifies the region where the ER instances are located.  
-           If omitted, the provider-level region will be used.
-    :param _builtins.str status: Specifies the status used to filter the ER instances.
-    :param Mapping[str, _builtins.str] tags: Specifies the key/value pairs used to filter the ER instances.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['enterpriseProjectId'] = enterprise_project_id
@@ -207,35 +163,7 @@ def get_instances_output(enterprise_project_id: Optional[pulumi.Input[Optional[_
                          tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstancesResult]:
     """
-    Use this data source to filter ER instances within SberCloud.
-
-    Before using enterprise router, define custom endpoint as shown below:
-    ```python
-    import pulumi
-    ```
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.Er.get_instances(tags={
-        "foo": "bar",
-    })
-    ```
-
-
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID of the ER instances to be queried.
-    :param _builtins.str instance_id: Specifies the ID used to query specified ER instance.
-    :param _builtins.str name: Specifies the name used to filter the ER instances.
-           The valid length is limited from `1` to `64`, only Chinese and English letters, digits, underscores (_) and
-           hyphens (-) are allowed.
-    :param _builtins.bool owned_by_self: Specifies whether resources belong to the current renant.
-    :param _builtins.str region: Specifies the region where the ER instances are located.  
-           If omitted, the provider-level region will be used.
-    :param _builtins.str status: Specifies the status used to filter the ER instances.
-    :param Mapping[str, _builtins.str] tags: Specifies the key/value pairs used to filter the ER instances.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['enterpriseProjectId'] = enterprise_project_id

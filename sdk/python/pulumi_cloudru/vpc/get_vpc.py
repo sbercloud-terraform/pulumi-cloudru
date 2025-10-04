@@ -67,10 +67,6 @@ class GetVpcResult:
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
-        """
-        The supplementary information about the VPC. The value is a string of
-        no more than 255 characters and cannot contain angle brackets (< or >).
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
@@ -112,9 +108,6 @@ class GetVpcResult:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Mapping[str, _builtins.str]:
-        """
-        The key/value pairs to associate with the VPC.
-        """
         return pulumi.get(self, "tags")
 
 
@@ -144,30 +137,7 @@ def get_vpc(cidr: Optional[_builtins.str] = None,
             status: Optional[_builtins.str] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpcResult:
     """
-    sbercloud_vpc provides details about a specific VPC.
-
-    This resource can prove useful when a module accepts a vpc id as an input variable and needs to, for example, determine the CIDR block of that VPC.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    vpc_name = config.require_object("vpcName")
-    vpc = sbercloud.Vpc.get_vpc(name=vpc_name)
-    ```
-
-
-    :param _builtins.str cidr: Specifies the cidr block of the desired VPC.
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID which the desired VPC belongs to.
-    :param _builtins.str id: Specifies the id of the VPC to retrieve.
-    :param _builtins.str name: Specifies an unique name for the VPC. The value is a string of no more than 64 characters
-           and can contain digits, letters, underscores (_), and hyphens (-).
-    :param _builtins.str region: Specifies the region in which to obtain the VPC. If omitted, the provider-level region
-           will be used.
-    :param _builtins.str status: Specifies the current status of the desired VPC. The value can be CREATING, OK or ERROR.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['cidr'] = cidr
@@ -198,30 +168,7 @@ def get_vpc_output(cidr: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                    status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcResult]:
     """
-    sbercloud_vpc provides details about a specific VPC.
-
-    This resource can prove useful when a module accepts a vpc id as an input variable and needs to, for example, determine the CIDR block of that VPC.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    vpc_name = config.require_object("vpcName")
-    vpc = sbercloud.Vpc.get_vpc(name=vpc_name)
-    ```
-
-
-    :param _builtins.str cidr: Specifies the cidr block of the desired VPC.
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID which the desired VPC belongs to.
-    :param _builtins.str id: Specifies the id of the VPC to retrieve.
-    :param _builtins.str name: Specifies an unique name for the VPC. The value is a string of no more than 64 characters
-           and can contain digits, letters, underscores (_), and hyphens (-).
-    :param _builtins.str region: Specifies the region in which to obtain the VPC. If omitted, the provider-level region
-           will be used.
-    :param _builtins.str status: Specifies the current status of the desired VPC. The value can be CREATING, OK or ERROR.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['cidr'] = cidr

@@ -1604,16 +1604,11 @@ func (o CbrCheckpointBackupArrayOutput) Index(i pulumi.IntInput) CbrCheckpointBa
 }
 
 type DcsParametersConfigurationParameter struct {
-	// Indicates the parameter name.
-	Name *string `pulumi:"name"`
-	// Indicates whether a restart is required.
-	NeedRestart *bool `pulumi:"needRestart"`
-	// Indicates the parameter type.
-	Type *string `pulumi:"type"`
-	// Indicates a user permission
+	Name           *string `pulumi:"name"`
+	NeedRestart    *bool   `pulumi:"needRestart"`
+	Type           *string `pulumi:"type"`
 	UserPermission *string `pulumi:"userPermission"`
-	// Indicates the parameter value.
-	Value *string `pulumi:"value"`
+	Value          *string `pulumi:"value"`
 }
 
 // DcsParametersConfigurationParameterInput is an input type that accepts DcsParametersConfigurationParameterArgs and DcsParametersConfigurationParameterOutput values.
@@ -1628,16 +1623,11 @@ type DcsParametersConfigurationParameterInput interface {
 }
 
 type DcsParametersConfigurationParameterArgs struct {
-	// Indicates the parameter name.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Indicates whether a restart is required.
-	NeedRestart pulumi.BoolPtrInput `pulumi:"needRestart"`
-	// Indicates the parameter type.
-	Type pulumi.StringPtrInput `pulumi:"type"`
-	// Indicates a user permission
+	Name           pulumi.StringPtrInput `pulumi:"name"`
+	NeedRestart    pulumi.BoolPtrInput   `pulumi:"needRestart"`
+	Type           pulumi.StringPtrInput `pulumi:"type"`
 	UserPermission pulumi.StringPtrInput `pulumi:"userPermission"`
-	// Indicates the parameter value.
-	Value pulumi.StringPtrInput `pulumi:"value"`
+	Value          pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (DcsParametersConfigurationParameterArgs) ElementType() reflect.Type {
@@ -1691,27 +1681,22 @@ func (o DcsParametersConfigurationParameterOutput) ToDcsParametersConfigurationP
 	return o
 }
 
-// Indicates the parameter name.
 func (o DcsParametersConfigurationParameterOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DcsParametersConfigurationParameter) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether a restart is required.
 func (o DcsParametersConfigurationParameterOutput) NeedRestart() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DcsParametersConfigurationParameter) *bool { return v.NeedRestart }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates the parameter type.
 func (o DcsParametersConfigurationParameterOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DcsParametersConfigurationParameter) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// Indicates a user permission
 func (o DcsParametersConfigurationParameterOutput) UserPermission() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DcsParametersConfigurationParameter) *string { return v.UserPermission }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the parameter value.
 func (o DcsParametersConfigurationParameterOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DcsParametersConfigurationParameter) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -1737,30 +1722,19 @@ func (o DcsParametersConfigurationParameterArrayOutput) Index(i pulumi.IntInput)
 }
 
 type DcsRestoreRestoreRecord struct {
-	// ID of the backup record.
-	BackupId *string `pulumi:"backupId"`
-	// Name of the backup record.
-	BackupName *string `pulumi:"backupName"`
-	// Description of DCS instance backup.
-	BackupRemark *string `pulumi:"backupRemark"`
-	// Time at which the restoration task is created.
-	CreatedAt *string `pulumi:"createdAt"`
-	// Error code returned if DCS instance restoration fails.
-	ErrorCode *string `pulumi:"errorCode"`
-	// Restoration progress.
-	Progress *string `pulumi:"progress"`
-	// ID of the restoration record.
-	RestoreId *string `pulumi:"restoreId"`
-	// Name of the restoration record.
-	RestoreName *string `pulumi:"restoreName"`
-	// Description of DCS instance restoration.
+	BackupId           *string `pulumi:"backupId"`
+	BackupName         *string `pulumi:"backupName"`
+	BackupRemark       *string `pulumi:"backupRemark"`
+	CreatedAt          *string `pulumi:"createdAt"`
+	ErrorCode          *string `pulumi:"errorCode"`
+	Progress           *string `pulumi:"progress"`
+	RestoreId          *string `pulumi:"restoreId"`
+	RestoreName        *string `pulumi:"restoreName"`
 	RestoreRemark      *string `pulumi:"restoreRemark"`
 	SourceInstanceId   *string `pulumi:"sourceInstanceId"`
 	SourceInstanceName *string `pulumi:"sourceInstanceName"`
-	// Restoration status:
-	Status *string `pulumi:"status"`
-	// Time at which DCS instance restoration completed.
-	UpdatedAt *string `pulumi:"updatedAt"`
+	Status             *string `pulumi:"status"`
+	UpdatedAt          *string `pulumi:"updatedAt"`
 }
 
 // DcsRestoreRestoreRecordInput is an input type that accepts DcsRestoreRestoreRecordArgs and DcsRestoreRestoreRecordOutput values.
@@ -1775,30 +1749,19 @@ type DcsRestoreRestoreRecordInput interface {
 }
 
 type DcsRestoreRestoreRecordArgs struct {
-	// ID of the backup record.
-	BackupId pulumi.StringPtrInput `pulumi:"backupId"`
-	// Name of the backup record.
-	BackupName pulumi.StringPtrInput `pulumi:"backupName"`
-	// Description of DCS instance backup.
-	BackupRemark pulumi.StringPtrInput `pulumi:"backupRemark"`
-	// Time at which the restoration task is created.
-	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
-	// Error code returned if DCS instance restoration fails.
-	ErrorCode pulumi.StringPtrInput `pulumi:"errorCode"`
-	// Restoration progress.
-	Progress pulumi.StringPtrInput `pulumi:"progress"`
-	// ID of the restoration record.
-	RestoreId pulumi.StringPtrInput `pulumi:"restoreId"`
-	// Name of the restoration record.
-	RestoreName pulumi.StringPtrInput `pulumi:"restoreName"`
-	// Description of DCS instance restoration.
+	BackupId           pulumi.StringPtrInput `pulumi:"backupId"`
+	BackupName         pulumi.StringPtrInput `pulumi:"backupName"`
+	BackupRemark       pulumi.StringPtrInput `pulumi:"backupRemark"`
+	CreatedAt          pulumi.StringPtrInput `pulumi:"createdAt"`
+	ErrorCode          pulumi.StringPtrInput `pulumi:"errorCode"`
+	Progress           pulumi.StringPtrInput `pulumi:"progress"`
+	RestoreId          pulumi.StringPtrInput `pulumi:"restoreId"`
+	RestoreName        pulumi.StringPtrInput `pulumi:"restoreName"`
 	RestoreRemark      pulumi.StringPtrInput `pulumi:"restoreRemark"`
 	SourceInstanceId   pulumi.StringPtrInput `pulumi:"sourceInstanceId"`
 	SourceInstanceName pulumi.StringPtrInput `pulumi:"sourceInstanceName"`
-	// Restoration status:
-	Status pulumi.StringPtrInput `pulumi:"status"`
-	// Time at which DCS instance restoration completed.
-	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
+	Status             pulumi.StringPtrInput `pulumi:"status"`
+	UpdatedAt          pulumi.StringPtrInput `pulumi:"updatedAt"`
 }
 
 func (DcsRestoreRestoreRecordArgs) ElementType() reflect.Type {
@@ -1852,47 +1815,38 @@ func (o DcsRestoreRestoreRecordOutput) ToDcsRestoreRestoreRecordOutputWithContex
 	return o
 }
 
-// ID of the backup record.
 func (o DcsRestoreRestoreRecordOutput) BackupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DcsRestoreRestoreRecord) *string { return v.BackupId }).(pulumi.StringPtrOutput)
 }
 
-// Name of the backup record.
 func (o DcsRestoreRestoreRecordOutput) BackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DcsRestoreRestoreRecord) *string { return v.BackupName }).(pulumi.StringPtrOutput)
 }
 
-// Description of DCS instance backup.
 func (o DcsRestoreRestoreRecordOutput) BackupRemark() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DcsRestoreRestoreRecord) *string { return v.BackupRemark }).(pulumi.StringPtrOutput)
 }
 
-// Time at which the restoration task is created.
 func (o DcsRestoreRestoreRecordOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DcsRestoreRestoreRecord) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
 }
 
-// Error code returned if DCS instance restoration fails.
 func (o DcsRestoreRestoreRecordOutput) ErrorCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DcsRestoreRestoreRecord) *string { return v.ErrorCode }).(pulumi.StringPtrOutput)
 }
 
-// Restoration progress.
 func (o DcsRestoreRestoreRecordOutput) Progress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DcsRestoreRestoreRecord) *string { return v.Progress }).(pulumi.StringPtrOutput)
 }
 
-// ID of the restoration record.
 func (o DcsRestoreRestoreRecordOutput) RestoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DcsRestoreRestoreRecord) *string { return v.RestoreId }).(pulumi.StringPtrOutput)
 }
 
-// Name of the restoration record.
 func (o DcsRestoreRestoreRecordOutput) RestoreName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DcsRestoreRestoreRecord) *string { return v.RestoreName }).(pulumi.StringPtrOutput)
 }
 
-// Description of DCS instance restoration.
 func (o DcsRestoreRestoreRecordOutput) RestoreRemark() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DcsRestoreRestoreRecord) *string { return v.RestoreRemark }).(pulumi.StringPtrOutput)
 }
@@ -1905,12 +1859,10 @@ func (o DcsRestoreRestoreRecordOutput) SourceInstanceName() pulumi.StringPtrOutp
 	return o.ApplyT(func(v DcsRestoreRestoreRecord) *string { return v.SourceInstanceName }).(pulumi.StringPtrOutput)
 }
 
-// Restoration status:
 func (o DcsRestoreRestoreRecordOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DcsRestoreRestoreRecord) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// Time at which DCS instance restoration completed.
 func (o DcsRestoreRestoreRecordOutput) UpdatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DcsRestoreRestoreRecord) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
 }
@@ -1936,12 +1888,9 @@ func (o DcsRestoreRestoreRecordArrayOutput) Index(i pulumi.IntInput) DcsRestoreR
 }
 
 type DdsParameterTemplateCompareDifference struct {
-	// Indicates the parameter name.
 	ParameterName *string `pulumi:"parameterName"`
-	// Indicates the parameter value in the source parameter template.
-	SourceValue *string `pulumi:"sourceValue"`
-	// Indicates the parameter value in the destination parameter template.
-	TargetValue *string `pulumi:"targetValue"`
+	SourceValue   *string `pulumi:"sourceValue"`
+	TargetValue   *string `pulumi:"targetValue"`
 }
 
 // DdsParameterTemplateCompareDifferenceInput is an input type that accepts DdsParameterTemplateCompareDifferenceArgs and DdsParameterTemplateCompareDifferenceOutput values.
@@ -1956,12 +1905,9 @@ type DdsParameterTemplateCompareDifferenceInput interface {
 }
 
 type DdsParameterTemplateCompareDifferenceArgs struct {
-	// Indicates the parameter name.
 	ParameterName pulumi.StringPtrInput `pulumi:"parameterName"`
-	// Indicates the parameter value in the source parameter template.
-	SourceValue pulumi.StringPtrInput `pulumi:"sourceValue"`
-	// Indicates the parameter value in the destination parameter template.
-	TargetValue pulumi.StringPtrInput `pulumi:"targetValue"`
+	SourceValue   pulumi.StringPtrInput `pulumi:"sourceValue"`
+	TargetValue   pulumi.StringPtrInput `pulumi:"targetValue"`
 }
 
 func (DdsParameterTemplateCompareDifferenceArgs) ElementType() reflect.Type {
@@ -2015,17 +1961,14 @@ func (o DdsParameterTemplateCompareDifferenceOutput) ToDdsParameterTemplateCompa
 	return o
 }
 
-// Indicates the parameter name.
 func (o DdsParameterTemplateCompareDifferenceOutput) ParameterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DdsParameterTemplateCompareDifference) *string { return v.ParameterName }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the parameter value in the source parameter template.
 func (o DdsParameterTemplateCompareDifferenceOutput) SourceValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DdsParameterTemplateCompareDifference) *string { return v.SourceValue }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the parameter value in the destination parameter template.
 func (o DdsParameterTemplateCompareDifferenceOutput) TargetValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DdsParameterTemplateCompareDifference) *string { return v.TargetValue }).(pulumi.StringPtrOutput)
 }
@@ -2051,25 +1994,15 @@ func (o DdsParameterTemplateCompareDifferenceArrayOutput) Index(i pulumi.IntInpu
 }
 
 type DdsParameterTemplateCopyParameter struct {
-	// Specifies the description of replicated parameter template.
-	// The value is left blank by default. The description must consist of a maximum of **256** characters and cannot contain
-	// the carriage return character or the following special characters: >!<"&'=
-	// Changing this creates a new resource.
+	// Indicates the parameter description.
 	Description *string `pulumi:"description"`
-	// Specifies the name of replicated parameter template.
-	// The parameter template name can contain **1** to **64** characters. It can contain only letters, digits, hyphens (-),
-	// underscores (_), and periods (.).
-	// Changing this creates a new resource.
+	// Indicates the parameter name.
 	Name *string `pulumi:"name"`
 	// Indicates whether the parameter is read-only.
-	// + If the value is **true**, the parameter is read-only.
-	// + If the value is **false**, the parameter is not read-only.
 	Readonly *bool `pulumi:"readonly"`
 	// Indicates whether the instance needs to be restarted.
-	// + If the value is **true**, restart is required.
-	// + If the value is **false**, restart is not required.
 	RestartRequired *bool `pulumi:"restartRequired"`
-	// Indicates the parameter type. The value can be integer, string, boolean, float, or list.
+	// Indicates the parameter type.
 	Type *string `pulumi:"type"`
 	// Indicates the parameter value.
 	Value *string `pulumi:"value"`
@@ -2089,25 +2022,15 @@ type DdsParameterTemplateCopyParameterInput interface {
 }
 
 type DdsParameterTemplateCopyParameterArgs struct {
-	// Specifies the description of replicated parameter template.
-	// The value is left blank by default. The description must consist of a maximum of **256** characters and cannot contain
-	// the carriage return character or the following special characters: >!<"&'=
-	// Changing this creates a new resource.
+	// Indicates the parameter description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Specifies the name of replicated parameter template.
-	// The parameter template name can contain **1** to **64** characters. It can contain only letters, digits, hyphens (-),
-	// underscores (_), and periods (.).
-	// Changing this creates a new resource.
+	// Indicates the parameter name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Indicates whether the parameter is read-only.
-	// + If the value is **true**, the parameter is read-only.
-	// + If the value is **false**, the parameter is not read-only.
 	Readonly pulumi.BoolPtrInput `pulumi:"readonly"`
 	// Indicates whether the instance needs to be restarted.
-	// + If the value is **true**, restart is required.
-	// + If the value is **false**, restart is not required.
 	RestartRequired pulumi.BoolPtrInput `pulumi:"restartRequired"`
-	// Indicates the parameter type. The value can be integer, string, boolean, float, or list.
+	// Indicates the parameter type.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Indicates the parameter value.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -2166,37 +2089,27 @@ func (o DdsParameterTemplateCopyParameterOutput) ToDdsParameterTemplateCopyParam
 	return o
 }
 
-// Specifies the description of replicated parameter template.
-// The value is left blank by default. The description must consist of a maximum of **256** characters and cannot contain
-// the carriage return character or the following special characters: >!<"&'=
-// Changing this creates a new resource.
+// Indicates the parameter description.
 func (o DdsParameterTemplateCopyParameterOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DdsParameterTemplateCopyParameter) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the name of replicated parameter template.
-// The parameter template name can contain **1** to **64** characters. It can contain only letters, digits, hyphens (-),
-// underscores (_), and periods (.).
-// Changing this creates a new resource.
+// Indicates the parameter name.
 func (o DdsParameterTemplateCopyParameterOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DdsParameterTemplateCopyParameter) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Indicates whether the parameter is read-only.
-// + If the value is **true**, the parameter is read-only.
-// + If the value is **false**, the parameter is not read-only.
 func (o DdsParameterTemplateCopyParameterOutput) Readonly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DdsParameterTemplateCopyParameter) *bool { return v.Readonly }).(pulumi.BoolPtrOutput)
 }
 
 // Indicates whether the instance needs to be restarted.
-// + If the value is **true**, restart is required.
-// + If the value is **false**, restart is not required.
 func (o DdsParameterTemplateCopyParameterOutput) RestartRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DdsParameterTemplateCopyParameter) *bool { return v.RestartRequired }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates the parameter type. The value can be integer, string, boolean, float, or list.
+// Indicates the parameter type.
 func (o DdsParameterTemplateCopyParameterOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DdsParameterTemplateCopyParameter) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -2232,23 +2145,15 @@ func (o DdsParameterTemplateCopyParameterArrayOutput) Index(i pulumi.IntInput) D
 }
 
 type DdsParameterTemplateParameter struct {
-	// Specifies the parameter template description.
-	// The description must consist of a maximum of 256 characters and cannot contain the carriage
-	// return character or the following special characters: >!<"&'=.
+	// Indicates the parameter description.
 	Description *string `pulumi:"description"`
-	// Specifies the parameter template name.
-	// The value must be 1 to 64 characters, which can contain only letters, digits, hyphens (-),
-	// underscores (_), and periods (.).
+	// Indicates the parameter name.
 	Name *string `pulumi:"name"`
 	// Indicates whether the parameter is read-only.
-	// + If the value is **true**, the parameter is read-only.
-	// + If the value is **false**, the parameter is not read-only.
 	Readonly *bool `pulumi:"readonly"`
 	// Indicates whether the instance needs to be restarted.
-	// + If the value is **true**, restart is required.
-	// + If the value is **false**, restart is not required.
 	RestartRequired *bool `pulumi:"restartRequired"`
-	// Indicates the parameter type. The value can be integer, string, boolean, float, or list.
+	// Indicates the parameter type.
 	Type *string `pulumi:"type"`
 	// Indicates the parameter value.
 	Value *string `pulumi:"value"`
@@ -2268,23 +2173,15 @@ type DdsParameterTemplateParameterInput interface {
 }
 
 type DdsParameterTemplateParameterArgs struct {
-	// Specifies the parameter template description.
-	// The description must consist of a maximum of 256 characters and cannot contain the carriage
-	// return character or the following special characters: >!<"&'=.
+	// Indicates the parameter description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Specifies the parameter template name.
-	// The value must be 1 to 64 characters, which can contain only letters, digits, hyphens (-),
-	// underscores (_), and periods (.).
+	// Indicates the parameter name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Indicates whether the parameter is read-only.
-	// + If the value is **true**, the parameter is read-only.
-	// + If the value is **false**, the parameter is not read-only.
 	Readonly pulumi.BoolPtrInput `pulumi:"readonly"`
 	// Indicates whether the instance needs to be restarted.
-	// + If the value is **true**, restart is required.
-	// + If the value is **false**, restart is not required.
 	RestartRequired pulumi.BoolPtrInput `pulumi:"restartRequired"`
-	// Indicates the parameter type. The value can be integer, string, boolean, float, or list.
+	// Indicates the parameter type.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Indicates the parameter value.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -2343,35 +2240,27 @@ func (o DdsParameterTemplateParameterOutput) ToDdsParameterTemplateParameterOutp
 	return o
 }
 
-// Specifies the parameter template description.
-// The description must consist of a maximum of 256 characters and cannot contain the carriage
-// return character or the following special characters: >!<"&'=.
+// Indicates the parameter description.
 func (o DdsParameterTemplateParameterOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DdsParameterTemplateParameter) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the parameter template name.
-// The value must be 1 to 64 characters, which can contain only letters, digits, hyphens (-),
-// underscores (_), and periods (.).
+// Indicates the parameter name.
 func (o DdsParameterTemplateParameterOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DdsParameterTemplateParameter) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Indicates whether the parameter is read-only.
-// + If the value is **true**, the parameter is read-only.
-// + If the value is **false**, the parameter is not read-only.
 func (o DdsParameterTemplateParameterOutput) Readonly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DdsParameterTemplateParameter) *bool { return v.Readonly }).(pulumi.BoolPtrOutput)
 }
 
 // Indicates whether the instance needs to be restarted.
-// + If the value is **true**, restart is required.
-// + If the value is **false**, restart is not required.
 func (o DdsParameterTemplateParameterOutput) RestartRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DdsParameterTemplateParameter) *bool { return v.RestartRequired }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates the parameter type. The value can be integer, string, boolean, float, or list.
+// Indicates the parameter type.
 func (o DdsParameterTemplateParameterOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DdsParameterTemplateParameter) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -2737,11 +2626,7 @@ func (o DmsRocketmqDeadLetterResendResendResultArrayOutput) Index(i pulumi.IntIn
 }
 
 type DmsRocketmqInstanceConfig struct {
-	// Specifies the config name.
-	Name string `pulumi:"name"`
-	// Specifies the config value.
-	//
-	// > When `name` is **fileReservedTime**, `value` ranges from `1` to `720` and unit is **hour**. Defaults to `48`.
+	Name  string `pulumi:"name"`
 	Value string `pulumi:"value"`
 }
 
@@ -2757,11 +2642,7 @@ type DmsRocketmqInstanceConfigInput interface {
 }
 
 type DmsRocketmqInstanceConfigArgs struct {
-	// Specifies the config name.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies the config value.
-	//
-	// > When `name` is **fileReservedTime**, `value` ranges from `1` to `720` and unit is **hour**. Defaults to `48`.
+	Name  pulumi.StringInput `pulumi:"name"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -2816,14 +2697,10 @@ func (o DmsRocketmqInstanceConfigOutput) ToDmsRocketmqInstanceConfigOutputWithCo
 	return o
 }
 
-// Specifies the config name.
 func (o DmsRocketmqInstanceConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DmsRocketmqInstanceConfig) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the config value.
-//
-// > When `name` is **fileReservedTime**, `value` ranges from `1` to `720` and unit is **hour**. Defaults to `48`.
 func (o DmsRocketmqInstanceConfigOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v DmsRocketmqInstanceConfig) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -2849,16 +2726,12 @@ func (o DmsRocketmqInstanceConfigArrayOutput) Index(i pulumi.IntInput) DmsRocket
 }
 
 type DmsRocketmqInstanceCrossVpcAccess struct {
-	// The advertised IP Address or domain name.
 	AdvertisedIp *string `pulumi:"advertisedIp"`
 	// Deprecated: typo in lisenter_ip, please use "listenerIp" instead.
 	LisenterIp *string `pulumi:"lisenterIp"`
-	// The listener IP address.
 	ListenerIp *string `pulumi:"listenerIp"`
-	// The port number.
-	Port *int `pulumi:"port"`
-	// The port ID associated with the address.
-	PortId *string `pulumi:"portId"`
+	Port       *int    `pulumi:"port"`
+	PortId     *string `pulumi:"portId"`
 }
 
 // DmsRocketmqInstanceCrossVpcAccessInput is an input type that accepts DmsRocketmqInstanceCrossVpcAccessArgs and DmsRocketmqInstanceCrossVpcAccessOutput values.
@@ -2873,16 +2746,12 @@ type DmsRocketmqInstanceCrossVpcAccessInput interface {
 }
 
 type DmsRocketmqInstanceCrossVpcAccessArgs struct {
-	// The advertised IP Address or domain name.
 	AdvertisedIp pulumi.StringPtrInput `pulumi:"advertisedIp"`
 	// Deprecated: typo in lisenter_ip, please use "listenerIp" instead.
 	LisenterIp pulumi.StringPtrInput `pulumi:"lisenterIp"`
-	// The listener IP address.
 	ListenerIp pulumi.StringPtrInput `pulumi:"listenerIp"`
-	// The port number.
-	Port pulumi.IntPtrInput `pulumi:"port"`
-	// The port ID associated with the address.
-	PortId pulumi.StringPtrInput `pulumi:"portId"`
+	Port       pulumi.IntPtrInput    `pulumi:"port"`
+	PortId     pulumi.StringPtrInput `pulumi:"portId"`
 }
 
 func (DmsRocketmqInstanceCrossVpcAccessArgs) ElementType() reflect.Type {
@@ -2936,7 +2805,6 @@ func (o DmsRocketmqInstanceCrossVpcAccessOutput) ToDmsRocketmqInstanceCrossVpcAc
 	return o
 }
 
-// The advertised IP Address or domain name.
 func (o DmsRocketmqInstanceCrossVpcAccessOutput) AdvertisedIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DmsRocketmqInstanceCrossVpcAccess) *string { return v.AdvertisedIp }).(pulumi.StringPtrOutput)
 }
@@ -2946,17 +2814,14 @@ func (o DmsRocketmqInstanceCrossVpcAccessOutput) LisenterIp() pulumi.StringPtrOu
 	return o.ApplyT(func(v DmsRocketmqInstanceCrossVpcAccess) *string { return v.LisenterIp }).(pulumi.StringPtrOutput)
 }
 
-// The listener IP address.
 func (o DmsRocketmqInstanceCrossVpcAccessOutput) ListenerIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DmsRocketmqInstanceCrossVpcAccess) *string { return v.ListenerIp }).(pulumi.StringPtrOutput)
 }
 
-// The port number.
 func (o DmsRocketmqInstanceCrossVpcAccessOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DmsRocketmqInstanceCrossVpcAccess) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// The port ID associated with the address.
 func (o DmsRocketmqInstanceCrossVpcAccessOutput) PortId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DmsRocketmqInstanceCrossVpcAccess) *string { return v.PortId }).(pulumi.StringPtrOutput)
 }
@@ -2982,16 +2847,15 @@ func (o DmsRocketmqInstanceCrossVpcAccessArrayOutput) Index(i pulumi.IntInput) D
 }
 
 type DmsRocketmqMigrationTaskBinding struct {
-	// Specifies the message target. Changing this creates a new resource.
+	// Specifies the message target.
 	Destination *string `pulumi:"destination"`
 	// Specifies the message target type.
-	// Changing this creates a new resource.
 	DestinationType *string `pulumi:"destinationType"`
-	// Specifies the routing key. Changing this creates a new resource.
+	// Specifies the routing key.
 	RoutingKey *string `pulumi:"routingKey"`
-	// Specifies the message source. Changing this creates a new resource.
+	// Specifies the message source.
 	Source *string `pulumi:"source"`
-	// Specifies the virtual host name. Changing this creates a new resource.
+	// Specifies the virtual host name.
 	Vhost *string `pulumi:"vhost"`
 }
 
@@ -3007,16 +2871,15 @@ type DmsRocketmqMigrationTaskBindingInput interface {
 }
 
 type DmsRocketmqMigrationTaskBindingArgs struct {
-	// Specifies the message target. Changing this creates a new resource.
+	// Specifies the message target.
 	Destination pulumi.StringPtrInput `pulumi:"destination"`
 	// Specifies the message target type.
-	// Changing this creates a new resource.
 	DestinationType pulumi.StringPtrInput `pulumi:"destinationType"`
-	// Specifies the routing key. Changing this creates a new resource.
+	// Specifies the routing key.
 	RoutingKey pulumi.StringPtrInput `pulumi:"routingKey"`
-	// Specifies the message source. Changing this creates a new resource.
+	// Specifies the message source.
 	Source pulumi.StringPtrInput `pulumi:"source"`
-	// Specifies the virtual host name. Changing this creates a new resource.
+	// Specifies the virtual host name.
 	Vhost pulumi.StringPtrInput `pulumi:"vhost"`
 }
 
@@ -3071,28 +2934,27 @@ func (o DmsRocketmqMigrationTaskBindingOutput) ToDmsRocketmqMigrationTaskBinding
 	return o
 }
 
-// Specifies the message target. Changing this creates a new resource.
+// Specifies the message target.
 func (o DmsRocketmqMigrationTaskBindingOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DmsRocketmqMigrationTaskBinding) *string { return v.Destination }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the message target type.
-// Changing this creates a new resource.
 func (o DmsRocketmqMigrationTaskBindingOutput) DestinationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DmsRocketmqMigrationTaskBinding) *string { return v.DestinationType }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the routing key. Changing this creates a new resource.
+// Specifies the routing key.
 func (o DmsRocketmqMigrationTaskBindingOutput) RoutingKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DmsRocketmqMigrationTaskBinding) *string { return v.RoutingKey }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the message source. Changing this creates a new resource.
+// Specifies the message source.
 func (o DmsRocketmqMigrationTaskBindingOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DmsRocketmqMigrationTaskBinding) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the virtual host name. Changing this creates a new resource.
+// Specifies the virtual host name.
 func (o DmsRocketmqMigrationTaskBindingOutput) Vhost() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DmsRocketmqMigrationTaskBinding) *string { return v.Vhost }).(pulumi.StringPtrOutput)
 }
@@ -3119,16 +2981,12 @@ func (o DmsRocketmqMigrationTaskBindingArrayOutput) Index(i pulumi.IntInput) Dms
 
 type DmsRocketmqMigrationTaskExchange struct {
 	// Specifies whether to enable data persistence.
-	// Changing this creates a new resource.
 	Durable *bool `pulumi:"durable"`
-	// Specifies the switch name. Changing this creates a new resource.
+	// Specifies the switch name.
 	Name *string `pulumi:"name"`
-	// Specifies the exchange type. Changing this creates a new resource.
-	//
-	// <a name="RocketMQ_migration_task_bindings"></a>
-	// The `bindings` block supports:
+	// Specifies the exchange type.
 	Type *string `pulumi:"type"`
-	// Specifies the virtual host name. Changing this creates a new resource.
+	// Specifies the virtual host name.
 	Vhost *string `pulumi:"vhost"`
 }
 
@@ -3145,16 +3003,12 @@ type DmsRocketmqMigrationTaskExchangeInput interface {
 
 type DmsRocketmqMigrationTaskExchangeArgs struct {
 	// Specifies whether to enable data persistence.
-	// Changing this creates a new resource.
 	Durable pulumi.BoolPtrInput `pulumi:"durable"`
-	// Specifies the switch name. Changing this creates a new resource.
+	// Specifies the switch name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the exchange type. Changing this creates a new resource.
-	//
-	// <a name="RocketMQ_migration_task_bindings"></a>
-	// The `bindings` block supports:
+	// Specifies the exchange type.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// Specifies the virtual host name. Changing this creates a new resource.
+	// Specifies the virtual host name.
 	Vhost pulumi.StringPtrInput `pulumi:"vhost"`
 }
 
@@ -3210,25 +3064,21 @@ func (o DmsRocketmqMigrationTaskExchangeOutput) ToDmsRocketmqMigrationTaskExchan
 }
 
 // Specifies whether to enable data persistence.
-// Changing this creates a new resource.
 func (o DmsRocketmqMigrationTaskExchangeOutput) Durable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DmsRocketmqMigrationTaskExchange) *bool { return v.Durable }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the switch name. Changing this creates a new resource.
+// Specifies the switch name.
 func (o DmsRocketmqMigrationTaskExchangeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DmsRocketmqMigrationTaskExchange) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the exchange type. Changing this creates a new resource.
-//
-// <a name="RocketMQ_migration_task_bindings"></a>
-// The `bindings` block supports:
+// Specifies the exchange type.
 func (o DmsRocketmqMigrationTaskExchangeOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DmsRocketmqMigrationTaskExchange) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the virtual host name. Changing this creates a new resource.
+// Specifies the virtual host name.
 func (o DmsRocketmqMigrationTaskExchangeOutput) Vhost() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DmsRocketmqMigrationTaskExchange) *string { return v.Vhost }).(pulumi.StringPtrOutput)
 }
@@ -3255,11 +3105,10 @@ func (o DmsRocketmqMigrationTaskExchangeArrayOutput) Index(i pulumi.IntInput) Dm
 
 type DmsRocketmqMigrationTaskQueue struct {
 	// Specifies whether to enable data persistence.
-	// Changing this creates a new resource.
 	Durable *bool `pulumi:"durable"`
-	// Specifies the switch name. Changing this creates a new resource.
+	// Specifies the queue name.
 	Name *string `pulumi:"name"`
-	// Specifies the virtual host name. Changing this creates a new resource.
+	// Specifies the virtual host name.
 	Vhost *string `pulumi:"vhost"`
 }
 
@@ -3276,11 +3125,10 @@ type DmsRocketmqMigrationTaskQueueInput interface {
 
 type DmsRocketmqMigrationTaskQueueArgs struct {
 	// Specifies whether to enable data persistence.
-	// Changing this creates a new resource.
 	Durable pulumi.BoolPtrInput `pulumi:"durable"`
-	// Specifies the switch name. Changing this creates a new resource.
+	// Specifies the queue name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the virtual host name. Changing this creates a new resource.
+	// Specifies the virtual host name.
 	Vhost pulumi.StringPtrInput `pulumi:"vhost"`
 }
 
@@ -3336,17 +3184,16 @@ func (o DmsRocketmqMigrationTaskQueueOutput) ToDmsRocketmqMigrationTaskQueueOutp
 }
 
 // Specifies whether to enable data persistence.
-// Changing this creates a new resource.
 func (o DmsRocketmqMigrationTaskQueueOutput) Durable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DmsRocketmqMigrationTaskQueue) *bool { return v.Durable }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the switch name. Changing this creates a new resource.
+// Specifies the queue name.
 func (o DmsRocketmqMigrationTaskQueueOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DmsRocketmqMigrationTaskQueue) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the virtual host name. Changing this creates a new resource.
+// Specifies the virtual host name.
 func (o DmsRocketmqMigrationTaskQueueOutput) Vhost() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DmsRocketmqMigrationTaskQueue) *string { return v.Vhost }).(pulumi.StringPtrOutput)
 }
@@ -3373,31 +3220,20 @@ func (o DmsRocketmqMigrationTaskQueueArrayOutput) Index(i pulumi.IntInput) DmsRo
 
 type DmsRocketmqMigrationTaskSubscriptionGroup struct {
 	// Specifies whether to enable broadcast.
-	// Changing this creates a new resource.
 	ConsumeBroadcastEnable *bool `pulumi:"consumeBroadcastEnable"`
 	// Specifies whether to enable consumption.
-	// Changing this creates a new resource.
 	ConsumeEnable *bool `pulumi:"consumeEnable"`
-	// Specifies whether to enable consumption from the earliest
-	// offset. Changing this creates a new resource.
+	// Specifies whether to enable consumption from the earliest offset.
 	ConsumeFromMinEnable *bool `pulumi:"consumeFromMinEnable"`
 	// Specifies the name of a consumer group.
-	// Changing this creates a new resource.
 	GroupName string `pulumi:"groupName"`
 	// Specifies whether to notify changes of consumer IDs.
-	// Changing this creates a new resource.
 	NotifyConsumeridsChangedEnable *bool `pulumi:"notifyConsumeridsChangedEnable"`
 	// Specifies the maximum number of consumption retries.
-	// Changing this creates a new resource.
 	RetryMaxTimes *int `pulumi:"retryMaxTimes"`
 	// Specifies the number of retry queues.
-	// Changing this creates a new resource.
 	RetryQueueNum *int `pulumi:"retryQueueNum"`
-	// Specifies the ID of the broker selected for slow
-	// consumption. Changing this creates a new resource.
-	//
-	// <a name="RocketMQ_migration_task_vhosts"></a>
-	// The `vhosts` block supports:
+	// Specifies the ID of the broker selected for slow consumption.
 	WhichBrokerWhenConsumeSlow *int `pulumi:"whichBrokerWhenConsumeSlow"`
 }
 
@@ -3414,31 +3250,20 @@ type DmsRocketmqMigrationTaskSubscriptionGroupInput interface {
 
 type DmsRocketmqMigrationTaskSubscriptionGroupArgs struct {
 	// Specifies whether to enable broadcast.
-	// Changing this creates a new resource.
 	ConsumeBroadcastEnable pulumi.BoolPtrInput `pulumi:"consumeBroadcastEnable"`
 	// Specifies whether to enable consumption.
-	// Changing this creates a new resource.
 	ConsumeEnable pulumi.BoolPtrInput `pulumi:"consumeEnable"`
-	// Specifies whether to enable consumption from the earliest
-	// offset. Changing this creates a new resource.
+	// Specifies whether to enable consumption from the earliest offset.
 	ConsumeFromMinEnable pulumi.BoolPtrInput `pulumi:"consumeFromMinEnable"`
 	// Specifies the name of a consumer group.
-	// Changing this creates a new resource.
 	GroupName pulumi.StringInput `pulumi:"groupName"`
 	// Specifies whether to notify changes of consumer IDs.
-	// Changing this creates a new resource.
 	NotifyConsumeridsChangedEnable pulumi.BoolPtrInput `pulumi:"notifyConsumeridsChangedEnable"`
 	// Specifies the maximum number of consumption retries.
-	// Changing this creates a new resource.
 	RetryMaxTimes pulumi.IntPtrInput `pulumi:"retryMaxTimes"`
 	// Specifies the number of retry queues.
-	// Changing this creates a new resource.
 	RetryQueueNum pulumi.IntPtrInput `pulumi:"retryQueueNum"`
-	// Specifies the ID of the broker selected for slow
-	// consumption. Changing this creates a new resource.
-	//
-	// <a name="RocketMQ_migration_task_vhosts"></a>
-	// The `vhosts` block supports:
+	// Specifies the ID of the broker selected for slow consumption.
 	WhichBrokerWhenConsumeSlow pulumi.IntPtrInput `pulumi:"whichBrokerWhenConsumeSlow"`
 }
 
@@ -3494,52 +3319,41 @@ func (o DmsRocketmqMigrationTaskSubscriptionGroupOutput) ToDmsRocketmqMigrationT
 }
 
 // Specifies whether to enable broadcast.
-// Changing this creates a new resource.
 func (o DmsRocketmqMigrationTaskSubscriptionGroupOutput) ConsumeBroadcastEnable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DmsRocketmqMigrationTaskSubscriptionGroup) *bool { return v.ConsumeBroadcastEnable }).(pulumi.BoolPtrOutput)
 }
 
 // Specifies whether to enable consumption.
-// Changing this creates a new resource.
 func (o DmsRocketmqMigrationTaskSubscriptionGroupOutput) ConsumeEnable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DmsRocketmqMigrationTaskSubscriptionGroup) *bool { return v.ConsumeEnable }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies whether to enable consumption from the earliest
-// offset. Changing this creates a new resource.
+// Specifies whether to enable consumption from the earliest offset.
 func (o DmsRocketmqMigrationTaskSubscriptionGroupOutput) ConsumeFromMinEnable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DmsRocketmqMigrationTaskSubscriptionGroup) *bool { return v.ConsumeFromMinEnable }).(pulumi.BoolPtrOutput)
 }
 
 // Specifies the name of a consumer group.
-// Changing this creates a new resource.
 func (o DmsRocketmqMigrationTaskSubscriptionGroupOutput) GroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v DmsRocketmqMigrationTaskSubscriptionGroup) string { return v.GroupName }).(pulumi.StringOutput)
 }
 
 // Specifies whether to notify changes of consumer IDs.
-// Changing this creates a new resource.
 func (o DmsRocketmqMigrationTaskSubscriptionGroupOutput) NotifyConsumeridsChangedEnable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DmsRocketmqMigrationTaskSubscriptionGroup) *bool { return v.NotifyConsumeridsChangedEnable }).(pulumi.BoolPtrOutput)
 }
 
 // Specifies the maximum number of consumption retries.
-// Changing this creates a new resource.
 func (o DmsRocketmqMigrationTaskSubscriptionGroupOutput) RetryMaxTimes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DmsRocketmqMigrationTaskSubscriptionGroup) *int { return v.RetryMaxTimes }).(pulumi.IntPtrOutput)
 }
 
 // Specifies the number of retry queues.
-// Changing this creates a new resource.
 func (o DmsRocketmqMigrationTaskSubscriptionGroupOutput) RetryQueueNum() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DmsRocketmqMigrationTaskSubscriptionGroup) *int { return v.RetryQueueNum }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the ID of the broker selected for slow
-// consumption. Changing this creates a new resource.
-//
-// <a name="RocketMQ_migration_task_vhosts"></a>
-// The `vhosts` block supports:
+// Specifies the ID of the broker selected for slow consumption.
 func (o DmsRocketmqMigrationTaskSubscriptionGroupOutput) WhichBrokerWhenConsumeSlow() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DmsRocketmqMigrationTaskSubscriptionGroup) *int { return v.WhichBrokerWhenConsumeSlow }).(pulumi.IntPtrOutput)
 }
@@ -3566,26 +3380,18 @@ func (o DmsRocketmqMigrationTaskSubscriptionGroupArrayOutput) Index(i pulumi.Int
 
 type DmsRocketmqMigrationTaskTopicConfig struct {
 	// Specifies whether a message is an ordered message.
-	// Changing this creates a new resource.
 	Order *bool `pulumi:"order"`
-	// Specifies the number of permission. Changing this creates a new resource.
+	// Specifies the number of permission.
 	Perm *int `pulumi:"perm"`
 	// Specifies the number of read queues.
-	// Changing this creates a new resource.
 	ReadQueueNum *int `pulumi:"readQueueNum"`
 	// Specifies the filter type of a topic.
-	// Value options: **SINGLE_TAG**, **MULTI_TAG**. Changing this creates a new resource.
 	TopicFilterType *string `pulumi:"topicFilterType"`
-	// Specifies the topic name. Changing this creates a new resource.
+	// Specifies the topic name.
 	TopicName string `pulumi:"topicName"`
 	// Specifies the system flag of a topic.
-	// Changing this creates a new resource.
 	TopicSysFlag *int `pulumi:"topicSysFlag"`
 	// Specifies the number of write queues.
-	// Changing this creates a new resource.
-	//
-	// <a name="RocketMQ_migration_task_subscription_groups"></a>
-	// The `subscriptionGroups` block supports:
 	WriteQueueNum *int `pulumi:"writeQueueNum"`
 }
 
@@ -3602,26 +3408,18 @@ type DmsRocketmqMigrationTaskTopicConfigInput interface {
 
 type DmsRocketmqMigrationTaskTopicConfigArgs struct {
 	// Specifies whether a message is an ordered message.
-	// Changing this creates a new resource.
 	Order pulumi.BoolPtrInput `pulumi:"order"`
-	// Specifies the number of permission. Changing this creates a new resource.
+	// Specifies the number of permission.
 	Perm pulumi.IntPtrInput `pulumi:"perm"`
 	// Specifies the number of read queues.
-	// Changing this creates a new resource.
 	ReadQueueNum pulumi.IntPtrInput `pulumi:"readQueueNum"`
 	// Specifies the filter type of a topic.
-	// Value options: **SINGLE_TAG**, **MULTI_TAG**. Changing this creates a new resource.
 	TopicFilterType pulumi.StringPtrInput `pulumi:"topicFilterType"`
-	// Specifies the topic name. Changing this creates a new resource.
+	// Specifies the topic name.
 	TopicName pulumi.StringInput `pulumi:"topicName"`
 	// Specifies the system flag of a topic.
-	// Changing this creates a new resource.
 	TopicSysFlag pulumi.IntPtrInput `pulumi:"topicSysFlag"`
 	// Specifies the number of write queues.
-	// Changing this creates a new resource.
-	//
-	// <a name="RocketMQ_migration_task_subscription_groups"></a>
-	// The `subscriptionGroups` block supports:
 	WriteQueueNum pulumi.IntPtrInput `pulumi:"writeQueueNum"`
 }
 
@@ -3677,44 +3475,36 @@ func (o DmsRocketmqMigrationTaskTopicConfigOutput) ToDmsRocketmqMigrationTaskTop
 }
 
 // Specifies whether a message is an ordered message.
-// Changing this creates a new resource.
 func (o DmsRocketmqMigrationTaskTopicConfigOutput) Order() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DmsRocketmqMigrationTaskTopicConfig) *bool { return v.Order }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the number of permission. Changing this creates a new resource.
+// Specifies the number of permission.
 func (o DmsRocketmqMigrationTaskTopicConfigOutput) Perm() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DmsRocketmqMigrationTaskTopicConfig) *int { return v.Perm }).(pulumi.IntPtrOutput)
 }
 
 // Specifies the number of read queues.
-// Changing this creates a new resource.
 func (o DmsRocketmqMigrationTaskTopicConfigOutput) ReadQueueNum() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DmsRocketmqMigrationTaskTopicConfig) *int { return v.ReadQueueNum }).(pulumi.IntPtrOutput)
 }
 
 // Specifies the filter type of a topic.
-// Value options: **SINGLE_TAG**, **MULTI_TAG**. Changing this creates a new resource.
 func (o DmsRocketmqMigrationTaskTopicConfigOutput) TopicFilterType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DmsRocketmqMigrationTaskTopicConfig) *string { return v.TopicFilterType }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the topic name. Changing this creates a new resource.
+// Specifies the topic name.
 func (o DmsRocketmqMigrationTaskTopicConfigOutput) TopicName() pulumi.StringOutput {
 	return o.ApplyT(func(v DmsRocketmqMigrationTaskTopicConfig) string { return v.TopicName }).(pulumi.StringOutput)
 }
 
 // Specifies the system flag of a topic.
-// Changing this creates a new resource.
 func (o DmsRocketmqMigrationTaskTopicConfigOutput) TopicSysFlag() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DmsRocketmqMigrationTaskTopicConfig) *int { return v.TopicSysFlag }).(pulumi.IntPtrOutput)
 }
 
 // Specifies the number of write queues.
-// Changing this creates a new resource.
-//
-// <a name="RocketMQ_migration_task_subscription_groups"></a>
-// The `subscriptionGroups` block supports:
 func (o DmsRocketmqMigrationTaskTopicConfigOutput) WriteQueueNum() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DmsRocketmqMigrationTaskTopicConfig) *int { return v.WriteQueueNum }).(pulumi.IntPtrOutput)
 }
@@ -3740,7 +3530,7 @@ func (o DmsRocketmqMigrationTaskTopicConfigArrayOutput) Index(i pulumi.IntInput)
 }
 
 type DmsRocketmqMigrationTaskVhost struct {
-	// Specifies the switch name. Changing this creates a new resource.
+	// Specifies the virtual host name.
 	Name *string `pulumi:"name"`
 }
 
@@ -3756,7 +3546,7 @@ type DmsRocketmqMigrationTaskVhostInput interface {
 }
 
 type DmsRocketmqMigrationTaskVhostArgs struct {
-	// Specifies the switch name. Changing this creates a new resource.
+	// Specifies the virtual host name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -3811,7 +3601,7 @@ func (o DmsRocketmqMigrationTaskVhostOutput) ToDmsRocketmqMigrationTaskVhostOutp
 	return o
 }
 
-// Specifies the switch name. Changing this creates a new resource.
+// Specifies the virtual host name.
 func (o DmsRocketmqMigrationTaskVhostOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DmsRocketmqMigrationTaskVhost) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -3837,14 +3627,11 @@ func (o DmsRocketmqMigrationTaskVhostArrayOutput) Index(i pulumi.IntInput) DmsRo
 }
 
 type DmsRocketmqTopicBroker struct {
-	// Specifies the name of the broker.
-	//
-	// <a name="DmsRocketMQTopic_QueueRef"></a>
-	// The `queues` block supports:
+	// Indicates the name of the broker.
 	Name *string `pulumi:"name"`
-	// Indicates the read queues number of the broker. It's useless when create a topic.
+	// Indicates the read queues number of the broker.
 	ReadQueueNum *int `pulumi:"readQueueNum"`
-	// Indicates the read queues number of the broker. It's useless when create a topic.
+	// Indicates the read queues number of the broker.
 	WriteQueueNum *int `pulumi:"writeQueueNum"`
 }
 
@@ -3860,14 +3647,11 @@ type DmsRocketmqTopicBrokerInput interface {
 }
 
 type DmsRocketmqTopicBrokerArgs struct {
-	// Specifies the name of the broker.
-	//
-	// <a name="DmsRocketMQTopic_QueueRef"></a>
-	// The `queues` block supports:
+	// Indicates the name of the broker.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Indicates the read queues number of the broker. It's useless when create a topic.
+	// Indicates the read queues number of the broker.
 	ReadQueueNum pulumi.IntPtrInput `pulumi:"readQueueNum"`
-	// Indicates the read queues number of the broker. It's useless when create a topic.
+	// Indicates the read queues number of the broker.
 	WriteQueueNum pulumi.IntPtrInput `pulumi:"writeQueueNum"`
 }
 
@@ -3922,20 +3706,17 @@ func (o DmsRocketmqTopicBrokerOutput) ToDmsRocketmqTopicBrokerOutputWithContext(
 	return o
 }
 
-// Specifies the name of the broker.
-//
-// <a name="DmsRocketMQTopic_QueueRef"></a>
-// The `queues` block supports:
+// Indicates the name of the broker.
 func (o DmsRocketmqTopicBrokerOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DmsRocketmqTopicBroker) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the read queues number of the broker. It's useless when create a topic.
+// Indicates the read queues number of the broker.
 func (o DmsRocketmqTopicBrokerOutput) ReadQueueNum() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DmsRocketmqTopicBroker) *int { return v.ReadQueueNum }).(pulumi.IntPtrOutput)
 }
 
-// Indicates the read queues number of the broker. It's useless when create a topic.
+// Indicates the read queues number of the broker.
 func (o DmsRocketmqTopicBrokerOutput) WriteQueueNum() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DmsRocketmqTopicBroker) *int { return v.WriteQueueNum }).(pulumi.IntPtrOutput)
 }
@@ -4285,10 +4066,8 @@ func (o DmsRocketmqUserTopicPermArrayOutput) Index(i pulumi.IntInput) DmsRocketm
 }
 
 type ElbIpgroupIpList struct {
-	// Human-readable description for the ip.
 	Description *string `pulumi:"description"`
-	// IP address or CIDR block.
-	Ip string `pulumi:"ip"`
+	Ip          string  `pulumi:"ip"`
 }
 
 // ElbIpgroupIpListInput is an input type that accepts ElbIpgroupIpListArgs and ElbIpgroupIpListOutput values.
@@ -4303,10 +4082,8 @@ type ElbIpgroupIpListInput interface {
 }
 
 type ElbIpgroupIpListArgs struct {
-	// Human-readable description for the ip.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// IP address or CIDR block.
-	Ip pulumi.StringInput `pulumi:"ip"`
+	Ip          pulumi.StringInput    `pulumi:"ip"`
 }
 
 func (ElbIpgroupIpListArgs) ElementType() reflect.Type {
@@ -4360,12 +4137,10 @@ func (o ElbIpgroupIpListOutput) ToElbIpgroupIpListOutputWithContext(ctx context.
 	return o
 }
 
-// Human-readable description for the ip.
 func (o ElbIpgroupIpListOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElbIpgroupIpList) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// IP address or CIDR block.
 func (o ElbIpgroupIpListOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v ElbIpgroupIpList) string { return v.Ip }).(pulumi.StringOutput)
 }
@@ -7195,9 +6970,8 @@ func (o ElbL7policyRedirectUrlConfigRemoveHeadersConfigConfigArrayOutput) Index(
 }
 
 type ElbL7ruleCondition struct {
-	Key *string `pulumi:"key"`
-	// The value to use for the comparison.
-	Value string `pulumi:"value"`
+	Key   *string `pulumi:"key"`
+	Value string  `pulumi:"value"`
 }
 
 // ElbL7ruleConditionInput is an input type that accepts ElbL7ruleConditionArgs and ElbL7ruleConditionOutput values.
@@ -7212,9 +6986,8 @@ type ElbL7ruleConditionInput interface {
 }
 
 type ElbL7ruleConditionArgs struct {
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The value to use for the comparison.
-	Value pulumi.StringInput `pulumi:"value"`
+	Key   pulumi.StringPtrInput `pulumi:"key"`
+	Value pulumi.StringInput    `pulumi:"value"`
 }
 
 func (ElbL7ruleConditionArgs) ElementType() reflect.Type {
@@ -7272,7 +7045,6 @@ func (o ElbL7ruleConditionOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElbL7ruleCondition) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// The value to use for the comparison.
 func (o ElbL7ruleConditionOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ElbL7ruleCondition) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -7716,17 +7488,9 @@ func (o ElbMemberStatusReasonArrayOutput) Index(i pulumi.IntInput) ElbMemberStat
 }
 
 type ElbPoolPersistence struct {
-	// The name of the cookie if persistence mode is set appropriately. Required
-	// if `type = APP_COOKIE`.
 	CookieName *string `pulumi:"cookieName"`
-	// Specifies the sticky session timeout duration in minutes. This parameter is
-	// invalid when type is set to APP_COOKIE. The value range varies depending on the protocol of the backend server group:
-	// + When the protocol of the backend server group is TCP or UDP, the value ranges from 1 to 60.
-	// + When the protocol of the backend server group is HTTP or HTTPS, the value ranges from 1 to 1440.
-	Timeout *int `pulumi:"timeout"`
-	// The type of persistence mode. The current specification supports SOURCE_IP,
-	// HTTP_COOKIE, and APP_COOKIE.
-	Type string `pulumi:"type"`
+	Timeout    *int    `pulumi:"timeout"`
+	Type       string  `pulumi:"type"`
 }
 
 // ElbPoolPersistenceInput is an input type that accepts ElbPoolPersistenceArgs and ElbPoolPersistenceOutput values.
@@ -7741,17 +7505,9 @@ type ElbPoolPersistenceInput interface {
 }
 
 type ElbPoolPersistenceArgs struct {
-	// The name of the cookie if persistence mode is set appropriately. Required
-	// if `type = APP_COOKIE`.
 	CookieName pulumi.StringPtrInput `pulumi:"cookieName"`
-	// Specifies the sticky session timeout duration in minutes. This parameter is
-	// invalid when type is set to APP_COOKIE. The value range varies depending on the protocol of the backend server group:
-	// + When the protocol of the backend server group is TCP or UDP, the value ranges from 1 to 60.
-	// + When the protocol of the backend server group is HTTP or HTTPS, the value ranges from 1 to 1440.
-	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
-	// The type of persistence mode. The current specification supports SOURCE_IP,
-	// HTTP_COOKIE, and APP_COOKIE.
-	Type pulumi.StringInput `pulumi:"type"`
+	Timeout    pulumi.IntPtrInput    `pulumi:"timeout"`
+	Type       pulumi.StringInput    `pulumi:"type"`
 }
 
 func (ElbPoolPersistenceArgs) ElementType() reflect.Type {
@@ -7831,22 +7587,14 @@ func (o ElbPoolPersistenceOutput) ToElbPoolPersistencePtrOutputWithContext(ctx c
 	}).(ElbPoolPersistencePtrOutput)
 }
 
-// The name of the cookie if persistence mode is set appropriately. Required
-// if `type = APP_COOKIE`.
 func (o ElbPoolPersistenceOutput) CookieName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElbPoolPersistence) *string { return v.CookieName }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the sticky session timeout duration in minutes. This parameter is
-// invalid when type is set to APP_COOKIE. The value range varies depending on the protocol of the backend server group:
-// + When the protocol of the backend server group is TCP or UDP, the value ranges from 1 to 60.
-// + When the protocol of the backend server group is HTTP or HTTPS, the value ranges from 1 to 1440.
 func (o ElbPoolPersistenceOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElbPoolPersistence) *int { return v.Timeout }).(pulumi.IntPtrOutput)
 }
 
-// The type of persistence mode. The current specification supports SOURCE_IP,
-// HTTP_COOKIE, and APP_COOKIE.
 func (o ElbPoolPersistenceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ElbPoolPersistence) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -7875,8 +7623,6 @@ func (o ElbPoolPersistencePtrOutput) Elem() ElbPoolPersistenceOutput {
 	}).(ElbPoolPersistenceOutput)
 }
 
-// The name of the cookie if persistence mode is set appropriately. Required
-// if `type = APP_COOKIE`.
 func (o ElbPoolPersistencePtrOutput) CookieName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElbPoolPersistence) *string {
 		if v == nil {
@@ -7886,10 +7632,6 @@ func (o ElbPoolPersistencePtrOutput) CookieName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the sticky session timeout duration in minutes. This parameter is
-// invalid when type is set to APP_COOKIE. The value range varies depending on the protocol of the backend server group:
-// + When the protocol of the backend server group is TCP or UDP, the value ranges from 1 to 60.
-// + When the protocol of the backend server group is HTTP or HTTPS, the value ranges from 1 to 1440.
 func (o ElbPoolPersistencePtrOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElbPoolPersistence) *int {
 		if v == nil {
@@ -7899,8 +7641,6 @@ func (o ElbPoolPersistencePtrOutput) Timeout() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The type of persistence mode. The current specification supports SOURCE_IP,
-// HTTP_COOKIE, and APP_COOKIE.
 func (o ElbPoolPersistencePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElbPoolPersistence) *string {
 		if v == nil {
@@ -7911,7 +7651,6 @@ func (o ElbPoolPersistencePtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type ElbSecurityPolicyListener struct {
-	// The listener id.
 	Id *string `pulumi:"id"`
 }
 
@@ -7927,7 +7666,6 @@ type ElbSecurityPolicyListenerInput interface {
 }
 
 type ElbSecurityPolicyListenerArgs struct {
-	// The listener id.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
@@ -7982,7 +7720,6 @@ func (o ElbSecurityPolicyListenerOutput) ToElbSecurityPolicyListenerOutputWithCo
 	return o
 }
 
-// The listener id.
 func (o ElbSecurityPolicyListenerOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElbSecurityPolicyListener) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -8292,22 +8029,9 @@ func (o FgsApplicationStackResourceArrayOutput) Index(i pulumi.IntInput) FgsAppl
 }
 
 type FgsAsyncInvokeConfigurationOnFailure struct {
-	// Specifies the object type.\
-	// The valid values are as follows:
-	// + **OBS**
-	// + **SMN**
-	// + **DIS**
-	// + **FunctionGraph**
+	// The object type.
 	Destination string `pulumi:"destination"`
-	// Specifies the parameters (map object in JSON format) corresponding to the target service.
-	// + The **OBS** objects include: `bucket` (bucket name), `prefix` (object directory prefix) and `expires` (object
-	//   expiration time, the valid value ranges from `0` to `365`. If the value is `0`, the object will not expire.).
-	// + The **SMN** objects include: `topicUrn`.
-	// + The **DIS** objects include: `streamName`.
-	// + The **FunctionGraph** objects include: `funcUrn` (function URN).
-	//
-	// > If you enable the destination function, you must be ensured that the agent contains the operation authority of the
-	// corresponding service.
+	// The parameters (in JSON format) corresponding to the target service.
 	Param string `pulumi:"param"`
 }
 
@@ -8323,22 +8047,9 @@ type FgsAsyncInvokeConfigurationOnFailureInput interface {
 }
 
 type FgsAsyncInvokeConfigurationOnFailureArgs struct {
-	// Specifies the object type.\
-	// The valid values are as follows:
-	// + **OBS**
-	// + **SMN**
-	// + **DIS**
-	// + **FunctionGraph**
+	// The object type.
 	Destination pulumi.StringInput `pulumi:"destination"`
-	// Specifies the parameters (map object in JSON format) corresponding to the target service.
-	// + The **OBS** objects include: `bucket` (bucket name), `prefix` (object directory prefix) and `expires` (object
-	//   expiration time, the valid value ranges from `0` to `365`. If the value is `0`, the object will not expire.).
-	// + The **SMN** objects include: `topicUrn`.
-	// + The **DIS** objects include: `streamName`.
-	// + The **FunctionGraph** objects include: `funcUrn` (function URN).
-	//
-	// > If you enable the destination function, you must be ensured that the agent contains the operation authority of the
-	// corresponding service.
+	// The parameters (in JSON format) corresponding to the target service.
 	Param pulumi.StringInput `pulumi:"param"`
 }
 
@@ -8419,25 +8130,12 @@ func (o FgsAsyncInvokeConfigurationOnFailureOutput) ToFgsAsyncInvokeConfiguratio
 	}).(FgsAsyncInvokeConfigurationOnFailurePtrOutput)
 }
 
-// Specifies the object type.\
-// The valid values are as follows:
-// + **OBS**
-// + **SMN**
-// + **DIS**
-// + **FunctionGraph**
+// The object type.
 func (o FgsAsyncInvokeConfigurationOnFailureOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v FgsAsyncInvokeConfigurationOnFailure) string { return v.Destination }).(pulumi.StringOutput)
 }
 
-// Specifies the parameters (map object in JSON format) corresponding to the target service.
-//   - The **OBS** objects include: `bucket` (bucket name), `prefix` (object directory prefix) and `expires` (object
-//     expiration time, the valid value ranges from `0` to `365`. If the value is `0`, the object will not expire.).
-//   - The **SMN** objects include: `topicUrn`.
-//   - The **DIS** objects include: `streamName`.
-//   - The **FunctionGraph** objects include: `funcUrn` (function URN).
-//
-// > If you enable the destination function, you must be ensured that the agent contains the operation authority of the
-// corresponding service.
+// The parameters (in JSON format) corresponding to the target service.
 func (o FgsAsyncInvokeConfigurationOnFailureOutput) Param() pulumi.StringOutput {
 	return o.ApplyT(func(v FgsAsyncInvokeConfigurationOnFailure) string { return v.Param }).(pulumi.StringOutput)
 }
@@ -8466,12 +8164,7 @@ func (o FgsAsyncInvokeConfigurationOnFailurePtrOutput) Elem() FgsAsyncInvokeConf
 	}).(FgsAsyncInvokeConfigurationOnFailureOutput)
 }
 
-// Specifies the object type.\
-// The valid values are as follows:
-// + **OBS**
-// + **SMN**
-// + **DIS**
-// + **FunctionGraph**
+// The object type.
 func (o FgsAsyncInvokeConfigurationOnFailurePtrOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FgsAsyncInvokeConfigurationOnFailure) *string {
 		if v == nil {
@@ -8481,15 +8174,7 @@ func (o FgsAsyncInvokeConfigurationOnFailurePtrOutput) Destination() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the parameters (map object in JSON format) corresponding to the target service.
-//   - The **OBS** objects include: `bucket` (bucket name), `prefix` (object directory prefix) and `expires` (object
-//     expiration time, the valid value ranges from `0` to `365`. If the value is `0`, the object will not expire.).
-//   - The **SMN** objects include: `topicUrn`.
-//   - The **DIS** objects include: `streamName`.
-//   - The **FunctionGraph** objects include: `funcUrn` (function URN).
-//
-// > If you enable the destination function, you must be ensured that the agent contains the operation authority of the
-// corresponding service.
+// The parameters (in JSON format) corresponding to the target service.
 func (o FgsAsyncInvokeConfigurationOnFailurePtrOutput) Param() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FgsAsyncInvokeConfigurationOnFailure) *string {
 		if v == nil {
@@ -8500,22 +8185,9 @@ func (o FgsAsyncInvokeConfigurationOnFailurePtrOutput) Param() pulumi.StringPtrO
 }
 
 type FgsAsyncInvokeConfigurationOnSuccess struct {
-	// Specifies the object type.\
-	// The valid values are as follows:
-	// + **OBS**
-	// + **SMN**
-	// + **DIS**
-	// + **FunctionGraph**
+	// The object type.
 	Destination string `pulumi:"destination"`
-	// Specifies the parameters (map object in JSON format) corresponding to the target service.
-	// + The **OBS** objects include: `bucket` (bucket name), `prefix` (object directory prefix) and `expires` (object
-	//   expiration time, the valid value ranges from `0` to `365`. If the value is `0`, the object will not expire.).
-	// + The **SMN** objects include: `topicUrn`.
-	// + The **DIS** objects include: `streamName`.
-	// + The **FunctionGraph** objects include: `funcUrn` (function URN).
-	//
-	// > If you enable the destination function, you must be ensured that the agent contains the operation authority of the
-	// corresponding service.
+	// The parameters (in JSON format) corresponding to the target service.
 	Param string `pulumi:"param"`
 }
 
@@ -8531,22 +8203,9 @@ type FgsAsyncInvokeConfigurationOnSuccessInput interface {
 }
 
 type FgsAsyncInvokeConfigurationOnSuccessArgs struct {
-	// Specifies the object type.\
-	// The valid values are as follows:
-	// + **OBS**
-	// + **SMN**
-	// + **DIS**
-	// + **FunctionGraph**
+	// The object type.
 	Destination pulumi.StringInput `pulumi:"destination"`
-	// Specifies the parameters (map object in JSON format) corresponding to the target service.
-	// + The **OBS** objects include: `bucket` (bucket name), `prefix` (object directory prefix) and `expires` (object
-	//   expiration time, the valid value ranges from `0` to `365`. If the value is `0`, the object will not expire.).
-	// + The **SMN** objects include: `topicUrn`.
-	// + The **DIS** objects include: `streamName`.
-	// + The **FunctionGraph** objects include: `funcUrn` (function URN).
-	//
-	// > If you enable the destination function, you must be ensured that the agent contains the operation authority of the
-	// corresponding service.
+	// The parameters (in JSON format) corresponding to the target service.
 	Param pulumi.StringInput `pulumi:"param"`
 }
 
@@ -8627,25 +8286,12 @@ func (o FgsAsyncInvokeConfigurationOnSuccessOutput) ToFgsAsyncInvokeConfiguratio
 	}).(FgsAsyncInvokeConfigurationOnSuccessPtrOutput)
 }
 
-// Specifies the object type.\
-// The valid values are as follows:
-// + **OBS**
-// + **SMN**
-// + **DIS**
-// + **FunctionGraph**
+// The object type.
 func (o FgsAsyncInvokeConfigurationOnSuccessOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v FgsAsyncInvokeConfigurationOnSuccess) string { return v.Destination }).(pulumi.StringOutput)
 }
 
-// Specifies the parameters (map object in JSON format) corresponding to the target service.
-//   - The **OBS** objects include: `bucket` (bucket name), `prefix` (object directory prefix) and `expires` (object
-//     expiration time, the valid value ranges from `0` to `365`. If the value is `0`, the object will not expire.).
-//   - The **SMN** objects include: `topicUrn`.
-//   - The **DIS** objects include: `streamName`.
-//   - The **FunctionGraph** objects include: `funcUrn` (function URN).
-//
-// > If you enable the destination function, you must be ensured that the agent contains the operation authority of the
-// corresponding service.
+// The parameters (in JSON format) corresponding to the target service.
 func (o FgsAsyncInvokeConfigurationOnSuccessOutput) Param() pulumi.StringOutput {
 	return o.ApplyT(func(v FgsAsyncInvokeConfigurationOnSuccess) string { return v.Param }).(pulumi.StringOutput)
 }
@@ -8674,12 +8320,7 @@ func (o FgsAsyncInvokeConfigurationOnSuccessPtrOutput) Elem() FgsAsyncInvokeConf
 	}).(FgsAsyncInvokeConfigurationOnSuccessOutput)
 }
 
-// Specifies the object type.\
-// The valid values are as follows:
-// + **OBS**
-// + **SMN**
-// + **DIS**
-// + **FunctionGraph**
+// The object type.
 func (o FgsAsyncInvokeConfigurationOnSuccessPtrOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FgsAsyncInvokeConfigurationOnSuccess) *string {
 		if v == nil {
@@ -8689,15 +8330,7 @@ func (o FgsAsyncInvokeConfigurationOnSuccessPtrOutput) Destination() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the parameters (map object in JSON format) corresponding to the target service.
-//   - The **OBS** objects include: `bucket` (bucket name), `prefix` (object directory prefix) and `expires` (object
-//     expiration time, the valid value ranges from `0` to `365`. If the value is `0`, the object will not expire.).
-//   - The **SMN** objects include: `topicUrn`.
-//   - The **DIS** objects include: `streamName`.
-//   - The **FunctionGraph** objects include: `funcUrn` (function URN).
-//
-// > If you enable the destination function, you must be ensured that the agent contains the operation authority of the
-// corresponding service.
+// The parameters (in JSON format) corresponding to the target service.
 func (o FgsAsyncInvokeConfigurationOnSuccessPtrOutput) Param() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FgsAsyncInvokeConfigurationOnSuccess) *string {
 		if v == nil {
@@ -9020,7 +8653,7 @@ func (o GesGraphLtsOperationTracePtrOutput) EnableAudit() pulumi.BoolPtrOutput {
 }
 
 type GesGraphPublicIp struct {
-	// Indicates the ID of an EIP.  Changing this parameter will create a new resource.
+	// The EIP ID.
 	EipId *string `pulumi:"eipId"`
 	// The bind type of public IP.
 	PublicBindType *string `pulumi:"publicBindType"`
@@ -9038,7 +8671,7 @@ type GesGraphPublicIpInput interface {
 }
 
 type GesGraphPublicIpArgs struct {
-	// Indicates the ID of an EIP.  Changing this parameter will create a new resource.
+	// The EIP ID.
 	EipId pulumi.StringPtrInput `pulumi:"eipId"`
 	// The bind type of public IP.
 	PublicBindType pulumi.StringPtrInput `pulumi:"publicBindType"`
@@ -9121,7 +8754,7 @@ func (o GesGraphPublicIpOutput) ToGesGraphPublicIpPtrOutputWithContext(ctx conte
 	}).(GesGraphPublicIpPtrOutput)
 }
 
-// Indicates the ID of an EIP.  Changing this parameter will create a new resource.
+// The EIP ID.
 func (o GesGraphPublicIpOutput) EipId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GesGraphPublicIp) *string { return v.EipId }).(pulumi.StringPtrOutput)
 }
@@ -9155,7 +8788,7 @@ func (o GesGraphPublicIpPtrOutput) Elem() GesGraphPublicIpOutput {
 	}).(GesGraphPublicIpOutput)
 }
 
-// Indicates the ID of an EIP.  Changing this parameter will create a new resource.
+// The EIP ID.
 func (o GesGraphPublicIpPtrOutput) EipId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GesGraphPublicIp) *string {
 		if v == nil {
@@ -11261,12 +10894,9 @@ func (o SmnSubscriptionFilterPolicyArrayOutput) Index(i pulumi.IntInput) SmnSubs
 }
 
 type SwrOrganizationPermissionsSelfPermission struct {
-	// The permission of current user.
 	Permission *string `pulumi:"permission"`
-	// The ID of current user.
-	UserId *string `pulumi:"userId"`
-	// The name of current user.
-	UserName *string `pulumi:"userName"`
+	UserId     *string `pulumi:"userId"`
+	UserName   *string `pulumi:"userName"`
 }
 
 // SwrOrganizationPermissionsSelfPermissionInput is an input type that accepts SwrOrganizationPermissionsSelfPermissionArgs and SwrOrganizationPermissionsSelfPermissionOutput values.
@@ -11281,12 +10911,9 @@ type SwrOrganizationPermissionsSelfPermissionInput interface {
 }
 
 type SwrOrganizationPermissionsSelfPermissionArgs struct {
-	// The permission of current user.
 	Permission pulumi.StringPtrInput `pulumi:"permission"`
-	// The ID of current user.
-	UserId pulumi.StringPtrInput `pulumi:"userId"`
-	// The name of current user.
-	UserName pulumi.StringPtrInput `pulumi:"userName"`
+	UserId     pulumi.StringPtrInput `pulumi:"userId"`
+	UserName   pulumi.StringPtrInput `pulumi:"userName"`
 }
 
 func (SwrOrganizationPermissionsSelfPermissionArgs) ElementType() reflect.Type {
@@ -11340,17 +10967,14 @@ func (o SwrOrganizationPermissionsSelfPermissionOutput) ToSwrOrganizationPermiss
 	return o
 }
 
-// The permission of current user.
 func (o SwrOrganizationPermissionsSelfPermissionOutput) Permission() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwrOrganizationPermissionsSelfPermission) *string { return v.Permission }).(pulumi.StringPtrOutput)
 }
 
-// The ID of current user.
 func (o SwrOrganizationPermissionsSelfPermissionOutput) UserId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwrOrganizationPermissionsSelfPermission) *string { return v.UserId }).(pulumi.StringPtrOutput)
 }
 
-// The name of current user.
 func (o SwrOrganizationPermissionsSelfPermissionOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwrOrganizationPermissionsSelfPermission) *string { return v.UserName }).(pulumi.StringPtrOutput)
 }
@@ -11376,13 +11000,9 @@ func (o SwrOrganizationPermissionsSelfPermissionArrayOutput) Index(i pulumi.IntI
 }
 
 type SwrOrganizationPermissionsUser struct {
-	// Specifies the permission of the existing SberCloud user.
-	// The values can be **Manage**, **Write** and **Read**.
-	Permission string `pulumi:"permission"`
-	// Specifies the ID of the existing SberCloud user.
-	UserId string `pulumi:"userId"`
-	// Specifies the name of the existing SberCloud user.
-	UserName *string `pulumi:"userName"`
+	Permission string  `pulumi:"permission"`
+	UserId     string  `pulumi:"userId"`
+	UserName   *string `pulumi:"userName"`
 }
 
 // SwrOrganizationPermissionsUserInput is an input type that accepts SwrOrganizationPermissionsUserArgs and SwrOrganizationPermissionsUserOutput values.
@@ -11397,13 +11017,9 @@ type SwrOrganizationPermissionsUserInput interface {
 }
 
 type SwrOrganizationPermissionsUserArgs struct {
-	// Specifies the permission of the existing SberCloud user.
-	// The values can be **Manage**, **Write** and **Read**.
-	Permission pulumi.StringInput `pulumi:"permission"`
-	// Specifies the ID of the existing SberCloud user.
-	UserId pulumi.StringInput `pulumi:"userId"`
-	// Specifies the name of the existing SberCloud user.
-	UserName pulumi.StringPtrInput `pulumi:"userName"`
+	Permission pulumi.StringInput    `pulumi:"permission"`
+	UserId     pulumi.StringInput    `pulumi:"userId"`
+	UserName   pulumi.StringPtrInput `pulumi:"userName"`
 }
 
 func (SwrOrganizationPermissionsUserArgs) ElementType() reflect.Type {
@@ -11457,18 +11073,14 @@ func (o SwrOrganizationPermissionsUserOutput) ToSwrOrganizationPermissionsUserOu
 	return o
 }
 
-// Specifies the permission of the existing SberCloud user.
-// The values can be **Manage**, **Write** and **Read**.
 func (o SwrOrganizationPermissionsUserOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v SwrOrganizationPermissionsUser) string { return v.Permission }).(pulumi.StringOutput)
 }
 
-// Specifies the ID of the existing SberCloud user.
 func (o SwrOrganizationPermissionsUserOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v SwrOrganizationPermissionsUser) string { return v.UserId }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the existing SberCloud user.
 func (o SwrOrganizationPermissionsUserOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwrOrganizationPermissionsUser) *string { return v.UserName }).(pulumi.StringPtrOutput)
 }
@@ -11494,46 +11106,31 @@ func (o SwrOrganizationPermissionsUserArrayOutput) Index(i pulumi.IntInput) SwrO
 }
 
 type VpnConnectionIkepolicy struct {
-	// The authentication algorithm. The value can be **sha1**, **md5**,
-	// **sha2-256**, **sha2-384**, **sha2-512**. Defaults to **sha2-256**. **sha1** and **md5** are less secure,
-	// please use them with caution.
+	// The authentication algorithm, SHA1 and MD5 are less secure, please use them with caution.
 	AuthenticationAlgorithm *string `pulumi:"authenticationAlgorithm"`
 	// The authentication method during IKE negotiation.
-	// The value can be **pre-share** and **digital-envelope-v2**. Defaults to **pre-share**.
 	AuthenticationMethod *string `pulumi:"authenticationMethod"`
 	// Specifies the DH group used for key exchange in phase 1.
-	// The value can be **group1**, **group2**, **group5**, **group14**, **group15**, **group16**, **group19**, **group20**,
-	// or **group21**. Exercise caution when using **group1**, **group2**, **group5**,
-	// or **group14** as they have low security. Defaults to **group15**.
 	DhGroup *string `pulumi:"dhGroup"`
 	// Specifies the dead peer detection (DPD) object.
-	// The dpd structure is documented below.
-	//
-	// <a name="Connection_DPD"></a>
-	// The `dpd` block supports:
 	Dpd *VpnConnectionIkepolicyDpd `pulumi:"dpd"`
-	// The encryption algorithm. The value can be **3des**, **aes-128**, **aes-192**,
-	// **aes-256**, **aes-128-gcm-16**, **aes-256-gcm-16**, **aes-128-gcm-128**, **aes-256-gcm-128**. Defaults to **aes-128**.
-	// **3des** is less secure, please use it with caution.
+	// The encryption algorithm, 3DES is less secure, please use them with caution.
 	EncryptionAlgorithm *string `pulumi:"encryptionAlgorithm"`
-	// The IKE negotiation version. The value can be **v1** and **v2**. Defaults to **v2**.
+	// The IKE negotiation version.
 	IkeVersion *string `pulumi:"ikeVersion"`
-	// The lifecycle time of Ipsec tunnel in seconds.
-	// The value ranges from **60** to **604800**. Defaults to **3600**.
+	// The life cycle of SA in seconds, when the life cycle expires, IKE SA will be automatically updated.
 	LifetimeSeconds *int `pulumi:"lifetimeSeconds"`
 	// The local ID.
 	LocalId *string `pulumi:"localId"`
-	// The local ID type. The value can be **ip** or **fqdn**. Defaults to **ip**.
+	// The local ID type.
 	LocalIdType *string `pulumi:"localIdType"`
 	// The peer ID.
 	PeerId *string `pulumi:"peerId"`
-	// The peer ID type. The value can be **ip**, **fqdn** or **any**. Defaults to **ip**.
+	// The peer ID type.
 	PeerIdType *string `pulumi:"peerIdType"`
-	// The DH key group used by PFS. The value can be **group1**, **group2**, **group5**, **group14**
-	// **group16**, **group19**, **group20**, **group21**. Defaults to **group14**.
+	// The DH key group used by PFS.
 	Pfs *string `pulumi:"pfs"`
 	// The negotiation mode, only works when the ikeVersion is v1.
-	// The value can be **main** or **aggressive**. Defaults to **main**.
 	Phase1NegotiationMode *string `pulumi:"phase1NegotiationMode"`
 }
 
@@ -11549,46 +11146,31 @@ type VpnConnectionIkepolicyInput interface {
 }
 
 type VpnConnectionIkepolicyArgs struct {
-	// The authentication algorithm. The value can be **sha1**, **md5**,
-	// **sha2-256**, **sha2-384**, **sha2-512**. Defaults to **sha2-256**. **sha1** and **md5** are less secure,
-	// please use them with caution.
+	// The authentication algorithm, SHA1 and MD5 are less secure, please use them with caution.
 	AuthenticationAlgorithm pulumi.StringPtrInput `pulumi:"authenticationAlgorithm"`
 	// The authentication method during IKE negotiation.
-	// The value can be **pre-share** and **digital-envelope-v2**. Defaults to **pre-share**.
 	AuthenticationMethod pulumi.StringPtrInput `pulumi:"authenticationMethod"`
 	// Specifies the DH group used for key exchange in phase 1.
-	// The value can be **group1**, **group2**, **group5**, **group14**, **group15**, **group16**, **group19**, **group20**,
-	// or **group21**. Exercise caution when using **group1**, **group2**, **group5**,
-	// or **group14** as they have low security. Defaults to **group15**.
 	DhGroup pulumi.StringPtrInput `pulumi:"dhGroup"`
 	// Specifies the dead peer detection (DPD) object.
-	// The dpd structure is documented below.
-	//
-	// <a name="Connection_DPD"></a>
-	// The `dpd` block supports:
 	Dpd VpnConnectionIkepolicyDpdPtrInput `pulumi:"dpd"`
-	// The encryption algorithm. The value can be **3des**, **aes-128**, **aes-192**,
-	// **aes-256**, **aes-128-gcm-16**, **aes-256-gcm-16**, **aes-128-gcm-128**, **aes-256-gcm-128**. Defaults to **aes-128**.
-	// **3des** is less secure, please use it with caution.
+	// The encryption algorithm, 3DES is less secure, please use them with caution.
 	EncryptionAlgorithm pulumi.StringPtrInput `pulumi:"encryptionAlgorithm"`
-	// The IKE negotiation version. The value can be **v1** and **v2**. Defaults to **v2**.
+	// The IKE negotiation version.
 	IkeVersion pulumi.StringPtrInput `pulumi:"ikeVersion"`
-	// The lifecycle time of Ipsec tunnel in seconds.
-	// The value ranges from **60** to **604800**. Defaults to **3600**.
+	// The life cycle of SA in seconds, when the life cycle expires, IKE SA will be automatically updated.
 	LifetimeSeconds pulumi.IntPtrInput `pulumi:"lifetimeSeconds"`
 	// The local ID.
 	LocalId pulumi.StringPtrInput `pulumi:"localId"`
-	// The local ID type. The value can be **ip** or **fqdn**. Defaults to **ip**.
+	// The local ID type.
 	LocalIdType pulumi.StringPtrInput `pulumi:"localIdType"`
 	// The peer ID.
 	PeerId pulumi.StringPtrInput `pulumi:"peerId"`
-	// The peer ID type. The value can be **ip**, **fqdn** or **any**. Defaults to **ip**.
+	// The peer ID type.
 	PeerIdType pulumi.StringPtrInput `pulumi:"peerIdType"`
-	// The DH key group used by PFS. The value can be **group1**, **group2**, **group5**, **group14**
-	// **group16**, **group19**, **group20**, **group21**. Defaults to **group14**.
+	// The DH key group used by PFS.
 	Pfs pulumi.StringPtrInput `pulumi:"pfs"`
 	// The negotiation mode, only works when the ikeVersion is v1.
-	// The value can be **main** or **aggressive**. Defaults to **main**.
 	Phase1NegotiationMode pulumi.StringPtrInput `pulumi:"phase1NegotiationMode"`
 }
 
@@ -11669,50 +11251,37 @@ func (o VpnConnectionIkepolicyOutput) ToVpnConnectionIkepolicyPtrOutputWithConte
 	}).(VpnConnectionIkepolicyPtrOutput)
 }
 
-// The authentication algorithm. The value can be **sha1**, **md5**,
-// **sha2-256**, **sha2-384**, **sha2-512**. Defaults to **sha2-256**. **sha1** and **md5** are less secure,
-// please use them with caution.
+// The authentication algorithm, SHA1 and MD5 are less secure, please use them with caution.
 func (o VpnConnectionIkepolicyOutput) AuthenticationAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnConnectionIkepolicy) *string { return v.AuthenticationAlgorithm }).(pulumi.StringPtrOutput)
 }
 
 // The authentication method during IKE negotiation.
-// The value can be **pre-share** and **digital-envelope-v2**. Defaults to **pre-share**.
 func (o VpnConnectionIkepolicyOutput) AuthenticationMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnConnectionIkepolicy) *string { return v.AuthenticationMethod }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the DH group used for key exchange in phase 1.
-// The value can be **group1**, **group2**, **group5**, **group14**, **group15**, **group16**, **group19**, **group20**,
-// or **group21**. Exercise caution when using **group1**, **group2**, **group5**,
-// or **group14** as they have low security. Defaults to **group15**.
 func (o VpnConnectionIkepolicyOutput) DhGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnConnectionIkepolicy) *string { return v.DhGroup }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the dead peer detection (DPD) object.
-// The dpd structure is documented below.
-//
-// <a name="Connection_DPD"></a>
-// The `dpd` block supports:
 func (o VpnConnectionIkepolicyOutput) Dpd() VpnConnectionIkepolicyDpdPtrOutput {
 	return o.ApplyT(func(v VpnConnectionIkepolicy) *VpnConnectionIkepolicyDpd { return v.Dpd }).(VpnConnectionIkepolicyDpdPtrOutput)
 }
 
-// The encryption algorithm. The value can be **3des**, **aes-128**, **aes-192**,
-// **aes-256**, **aes-128-gcm-16**, **aes-256-gcm-16**, **aes-128-gcm-128**, **aes-256-gcm-128**. Defaults to **aes-128**.
-// **3des** is less secure, please use it with caution.
+// The encryption algorithm, 3DES is less secure, please use them with caution.
 func (o VpnConnectionIkepolicyOutput) EncryptionAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnConnectionIkepolicy) *string { return v.EncryptionAlgorithm }).(pulumi.StringPtrOutput)
 }
 
-// The IKE negotiation version. The value can be **v1** and **v2**. Defaults to **v2**.
+// The IKE negotiation version.
 func (o VpnConnectionIkepolicyOutput) IkeVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnConnectionIkepolicy) *string { return v.IkeVersion }).(pulumi.StringPtrOutput)
 }
 
-// The lifecycle time of Ipsec tunnel in seconds.
-// The value ranges from **60** to **604800**. Defaults to **3600**.
+// The life cycle of SA in seconds, when the life cycle expires, IKE SA will be automatically updated.
 func (o VpnConnectionIkepolicyOutput) LifetimeSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VpnConnectionIkepolicy) *int { return v.LifetimeSeconds }).(pulumi.IntPtrOutput)
 }
@@ -11722,7 +11291,7 @@ func (o VpnConnectionIkepolicyOutput) LocalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnConnectionIkepolicy) *string { return v.LocalId }).(pulumi.StringPtrOutput)
 }
 
-// The local ID type. The value can be **ip** or **fqdn**. Defaults to **ip**.
+// The local ID type.
 func (o VpnConnectionIkepolicyOutput) LocalIdType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnConnectionIkepolicy) *string { return v.LocalIdType }).(pulumi.StringPtrOutput)
 }
@@ -11732,19 +11301,17 @@ func (o VpnConnectionIkepolicyOutput) PeerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnConnectionIkepolicy) *string { return v.PeerId }).(pulumi.StringPtrOutput)
 }
 
-// The peer ID type. The value can be **ip**, **fqdn** or **any**. Defaults to **ip**.
+// The peer ID type.
 func (o VpnConnectionIkepolicyOutput) PeerIdType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnConnectionIkepolicy) *string { return v.PeerIdType }).(pulumi.StringPtrOutput)
 }
 
-// The DH key group used by PFS. The value can be **group1**, **group2**, **group5**, **group14**
-// **group16**, **group19**, **group20**, **group21**. Defaults to **group14**.
+// The DH key group used by PFS.
 func (o VpnConnectionIkepolicyOutput) Pfs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnConnectionIkepolicy) *string { return v.Pfs }).(pulumi.StringPtrOutput)
 }
 
 // The negotiation mode, only works when the ikeVersion is v1.
-// The value can be **main** or **aggressive**. Defaults to **main**.
 func (o VpnConnectionIkepolicyOutput) Phase1NegotiationMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnConnectionIkepolicy) *string { return v.Phase1NegotiationMode }).(pulumi.StringPtrOutput)
 }
@@ -11773,9 +11340,7 @@ func (o VpnConnectionIkepolicyPtrOutput) Elem() VpnConnectionIkepolicyOutput {
 	}).(VpnConnectionIkepolicyOutput)
 }
 
-// The authentication algorithm. The value can be **sha1**, **md5**,
-// **sha2-256**, **sha2-384**, **sha2-512**. Defaults to **sha2-256**. **sha1** and **md5** are less secure,
-// please use them with caution.
+// The authentication algorithm, SHA1 and MD5 are less secure, please use them with caution.
 func (o VpnConnectionIkepolicyPtrOutput) AuthenticationAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnConnectionIkepolicy) *string {
 		if v == nil {
@@ -11786,7 +11351,6 @@ func (o VpnConnectionIkepolicyPtrOutput) AuthenticationAlgorithm() pulumi.String
 }
 
 // The authentication method during IKE negotiation.
-// The value can be **pre-share** and **digital-envelope-v2**. Defaults to **pre-share**.
 func (o VpnConnectionIkepolicyPtrOutput) AuthenticationMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnConnectionIkepolicy) *string {
 		if v == nil {
@@ -11797,9 +11361,6 @@ func (o VpnConnectionIkepolicyPtrOutput) AuthenticationMethod() pulumi.StringPtr
 }
 
 // Specifies the DH group used for key exchange in phase 1.
-// The value can be **group1**, **group2**, **group5**, **group14**, **group15**, **group16**, **group19**, **group20**,
-// or **group21**. Exercise caution when using **group1**, **group2**, **group5**,
-// or **group14** as they have low security. Defaults to **group15**.
 func (o VpnConnectionIkepolicyPtrOutput) DhGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnConnectionIkepolicy) *string {
 		if v == nil {
@@ -11810,10 +11371,6 @@ func (o VpnConnectionIkepolicyPtrOutput) DhGroup() pulumi.StringPtrOutput {
 }
 
 // Specifies the dead peer detection (DPD) object.
-// The dpd structure is documented below.
-//
-// <a name="Connection_DPD"></a>
-// The `dpd` block supports:
 func (o VpnConnectionIkepolicyPtrOutput) Dpd() VpnConnectionIkepolicyDpdPtrOutput {
 	return o.ApplyT(func(v *VpnConnectionIkepolicy) *VpnConnectionIkepolicyDpd {
 		if v == nil {
@@ -11823,9 +11380,7 @@ func (o VpnConnectionIkepolicyPtrOutput) Dpd() VpnConnectionIkepolicyDpdPtrOutpu
 	}).(VpnConnectionIkepolicyDpdPtrOutput)
 }
 
-// The encryption algorithm. The value can be **3des**, **aes-128**, **aes-192**,
-// **aes-256**, **aes-128-gcm-16**, **aes-256-gcm-16**, **aes-128-gcm-128**, **aes-256-gcm-128**. Defaults to **aes-128**.
-// **3des** is less secure, please use it with caution.
+// The encryption algorithm, 3DES is less secure, please use them with caution.
 func (o VpnConnectionIkepolicyPtrOutput) EncryptionAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnConnectionIkepolicy) *string {
 		if v == nil {
@@ -11835,7 +11390,7 @@ func (o VpnConnectionIkepolicyPtrOutput) EncryptionAlgorithm() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// The IKE negotiation version. The value can be **v1** and **v2**. Defaults to **v2**.
+// The IKE negotiation version.
 func (o VpnConnectionIkepolicyPtrOutput) IkeVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnConnectionIkepolicy) *string {
 		if v == nil {
@@ -11845,8 +11400,7 @@ func (o VpnConnectionIkepolicyPtrOutput) IkeVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The lifecycle time of Ipsec tunnel in seconds.
-// The value ranges from **60** to **604800**. Defaults to **3600**.
+// The life cycle of SA in seconds, when the life cycle expires, IKE SA will be automatically updated.
 func (o VpnConnectionIkepolicyPtrOutput) LifetimeSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VpnConnectionIkepolicy) *int {
 		if v == nil {
@@ -11866,7 +11420,7 @@ func (o VpnConnectionIkepolicyPtrOutput) LocalId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The local ID type. The value can be **ip** or **fqdn**. Defaults to **ip**.
+// The local ID type.
 func (o VpnConnectionIkepolicyPtrOutput) LocalIdType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnConnectionIkepolicy) *string {
 		if v == nil {
@@ -11886,7 +11440,7 @@ func (o VpnConnectionIkepolicyPtrOutput) PeerId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The peer ID type. The value can be **ip**, **fqdn** or **any**. Defaults to **ip**.
+// The peer ID type.
 func (o VpnConnectionIkepolicyPtrOutput) PeerIdType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnConnectionIkepolicy) *string {
 		if v == nil {
@@ -11896,8 +11450,7 @@ func (o VpnConnectionIkepolicyPtrOutput) PeerIdType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The DH key group used by PFS. The value can be **group1**, **group2**, **group5**, **group14**
-// **group16**, **group19**, **group20**, **group21**. Defaults to **group14**.
+// The DH key group used by PFS.
 func (o VpnConnectionIkepolicyPtrOutput) Pfs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnConnectionIkepolicy) *string {
 		if v == nil {
@@ -11908,7 +11461,6 @@ func (o VpnConnectionIkepolicyPtrOutput) Pfs() pulumi.StringPtrOutput {
 }
 
 // The negotiation mode, only works when the ikeVersion is v1.
-// The value can be **main** or **aggressive**. Defaults to **main**.
 func (o VpnConnectionIkepolicyPtrOutput) Phase1NegotiationMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnConnectionIkepolicy) *string {
 		if v == nil {
@@ -11920,19 +11472,10 @@ func (o VpnConnectionIkepolicyPtrOutput) Phase1NegotiationMode() pulumi.StringPt
 
 type VpnConnectionIkepolicyDpd struct {
 	// Specifies the DPD idle timeout period.
-	// The value ranges from **10** to **3600**, in seconds. Defaults to **30**.
 	Interval *int `pulumi:"interval"`
-	// Specifies the format of DPD packets. The value can be:
-	// + **seq-hash-notify**: indicates that the payload of DPD packets is in the sequence of hash-notify;
-	// + **seq-notify-hash**: indicates that the payload of DPD packets is in the sequence of notify-hash;
-	//
-	// Defaults to **seq-hash-notify**.
-	//
-	// <a name="Connection_CreateRequestIpsecPolicy"></a>
-	// The `ipsecpolicy` block supports:
+	// Specifies the format of DPD packets.
 	Msg *string `pulumi:"msg"`
 	// Specifies the interval for retransmitting DPD packets.
-	// The value ranges from **2** to **60**, in seconds. Defaults to **15**.
 	Timeout *int `pulumi:"timeout"`
 }
 
@@ -11949,19 +11492,10 @@ type VpnConnectionIkepolicyDpdInput interface {
 
 type VpnConnectionIkepolicyDpdArgs struct {
 	// Specifies the DPD idle timeout period.
-	// The value ranges from **10** to **3600**, in seconds. Defaults to **30**.
 	Interval pulumi.IntPtrInput `pulumi:"interval"`
-	// Specifies the format of DPD packets. The value can be:
-	// + **seq-hash-notify**: indicates that the payload of DPD packets is in the sequence of hash-notify;
-	// + **seq-notify-hash**: indicates that the payload of DPD packets is in the sequence of notify-hash;
-	//
-	// Defaults to **seq-hash-notify**.
-	//
-	// <a name="Connection_CreateRequestIpsecPolicy"></a>
-	// The `ipsecpolicy` block supports:
+	// Specifies the format of DPD packets.
 	Msg pulumi.StringPtrInput `pulumi:"msg"`
 	// Specifies the interval for retransmitting DPD packets.
-	// The value ranges from **2** to **60**, in seconds. Defaults to **15**.
 	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
 }
 
@@ -12043,25 +11577,16 @@ func (o VpnConnectionIkepolicyDpdOutput) ToVpnConnectionIkepolicyDpdPtrOutputWit
 }
 
 // Specifies the DPD idle timeout period.
-// The value ranges from **10** to **3600**, in seconds. Defaults to **30**.
 func (o VpnConnectionIkepolicyDpdOutput) Interval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VpnConnectionIkepolicyDpd) *int { return v.Interval }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the format of DPD packets. The value can be:
-// + **seq-hash-notify**: indicates that the payload of DPD packets is in the sequence of hash-notify;
-// + **seq-notify-hash**: indicates that the payload of DPD packets is in the sequence of notify-hash;
-//
-// Defaults to **seq-hash-notify**.
-//
-// <a name="Connection_CreateRequestIpsecPolicy"></a>
-// The `ipsecpolicy` block supports:
+// Specifies the format of DPD packets.
 func (o VpnConnectionIkepolicyDpdOutput) Msg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnConnectionIkepolicyDpd) *string { return v.Msg }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the interval for retransmitting DPD packets.
-// The value ranges from **2** to **60**, in seconds. Defaults to **15**.
 func (o VpnConnectionIkepolicyDpdOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VpnConnectionIkepolicyDpd) *int { return v.Timeout }).(pulumi.IntPtrOutput)
 }
@@ -12091,7 +11616,6 @@ func (o VpnConnectionIkepolicyDpdPtrOutput) Elem() VpnConnectionIkepolicyDpdOutp
 }
 
 // Specifies the DPD idle timeout period.
-// The value ranges from **10** to **3600**, in seconds. Defaults to **30**.
 func (o VpnConnectionIkepolicyDpdPtrOutput) Interval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VpnConnectionIkepolicyDpd) *int {
 		if v == nil {
@@ -12101,14 +11625,7 @@ func (o VpnConnectionIkepolicyDpdPtrOutput) Interval() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the format of DPD packets. The value can be:
-// + **seq-hash-notify**: indicates that the payload of DPD packets is in the sequence of hash-notify;
-// + **seq-notify-hash**: indicates that the payload of DPD packets is in the sequence of notify-hash;
-//
-// Defaults to **seq-hash-notify**.
-//
-// <a name="Connection_CreateRequestIpsecPolicy"></a>
-// The `ipsecpolicy` block supports:
+// Specifies the format of DPD packets.
 func (o VpnConnectionIkepolicyDpdPtrOutput) Msg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnConnectionIkepolicyDpd) *string {
 		if v == nil {
@@ -12119,7 +11636,6 @@ func (o VpnConnectionIkepolicyDpdPtrOutput) Msg() pulumi.StringPtrOutput {
 }
 
 // Specifies the interval for retransmitting DPD packets.
-// The value ranges from **2** to **60**, in seconds. Defaults to **15**.
 func (o VpnConnectionIkepolicyDpdPtrOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VpnConnectionIkepolicyDpd) *int {
 		if v == nil {
@@ -12130,28 +11646,17 @@ func (o VpnConnectionIkepolicyDpdPtrOutput) Timeout() pulumi.IntPtrOutput {
 }
 
 type VpnConnectionIpsecpolicy struct {
-	// The authentication algorithm. The value can be **sha1**, **md5**,
-	// **sha2-256**, **sha2-384**, **sha2-512**. Defaults to **sha2-256**. **sha1** and **md5** are less secure,
-	// please use them with caution.
+	// The authentication algorithm, SHA1 and MD5 are less secure, please use them with caution.
 	AuthenticationAlgorithm *string `pulumi:"authenticationAlgorithm"`
 	// The encapsulation mode, only **tunnel** supported for now.
-	// Defaults to **tunnel**.
-	//
-	// <a name="Connection_PolicyRule"></a>
-	// The `policyRules` block supports:
 	EncapsulationMode *string `pulumi:"encapsulationMode"`
-	// The encryption algorithm. The value can be **3des**, **aes-128**, **aes-192**,
-	// **aes-256**, **aes-128-gcm-16**, **aes-256-gcm-16**, **aes-128-gcm-128**, **aes-256-gcm-128**. Defaults to **aes-128**.
-	// **3des** is less secure, please use it with caution.
+	// The encryption algorithm, 3DES is less secure, please use them with caution.
 	EncryptionAlgorithm *string `pulumi:"encryptionAlgorithm"`
 	// The lifecycle time of Ipsec tunnel in seconds.
-	// The value ranges from **60** to **604800**. Defaults to **3600**.
 	LifetimeSeconds *int `pulumi:"lifetimeSeconds"`
-	// The DH key group used by PFS. The value can be **group1**, **group2**, **group5**, **group14**
-	// **group16**, **group19**, **group20**, **group21**. Defaults to **group14**.
+	// The DH key group used by PFS.
 	Pfs *string `pulumi:"pfs"`
 	// The transform protocol. Only **esp** supported for now.
-	// Defaults to **esp**.
 	TransformProtocol *string `pulumi:"transformProtocol"`
 }
 
@@ -12167,28 +11672,17 @@ type VpnConnectionIpsecpolicyInput interface {
 }
 
 type VpnConnectionIpsecpolicyArgs struct {
-	// The authentication algorithm. The value can be **sha1**, **md5**,
-	// **sha2-256**, **sha2-384**, **sha2-512**. Defaults to **sha2-256**. **sha1** and **md5** are less secure,
-	// please use them with caution.
+	// The authentication algorithm, SHA1 and MD5 are less secure, please use them with caution.
 	AuthenticationAlgorithm pulumi.StringPtrInput `pulumi:"authenticationAlgorithm"`
 	// The encapsulation mode, only **tunnel** supported for now.
-	// Defaults to **tunnel**.
-	//
-	// <a name="Connection_PolicyRule"></a>
-	// The `policyRules` block supports:
 	EncapsulationMode pulumi.StringPtrInput `pulumi:"encapsulationMode"`
-	// The encryption algorithm. The value can be **3des**, **aes-128**, **aes-192**,
-	// **aes-256**, **aes-128-gcm-16**, **aes-256-gcm-16**, **aes-128-gcm-128**, **aes-256-gcm-128**. Defaults to **aes-128**.
-	// **3des** is less secure, please use it with caution.
+	// The encryption algorithm, 3DES is less secure, please use them with caution.
 	EncryptionAlgorithm pulumi.StringPtrInput `pulumi:"encryptionAlgorithm"`
 	// The lifecycle time of Ipsec tunnel in seconds.
-	// The value ranges from **60** to **604800**. Defaults to **3600**.
 	LifetimeSeconds pulumi.IntPtrInput `pulumi:"lifetimeSeconds"`
-	// The DH key group used by PFS. The value can be **group1**, **group2**, **group5**, **group14**
-	// **group16**, **group19**, **group20**, **group21**. Defaults to **group14**.
+	// The DH key group used by PFS.
 	Pfs pulumi.StringPtrInput `pulumi:"pfs"`
 	// The transform protocol. Only **esp** supported for now.
-	// Defaults to **esp**.
 	TransformProtocol pulumi.StringPtrInput `pulumi:"transformProtocol"`
 }
 
@@ -12269,43 +11763,32 @@ func (o VpnConnectionIpsecpolicyOutput) ToVpnConnectionIpsecpolicyPtrOutputWithC
 	}).(VpnConnectionIpsecpolicyPtrOutput)
 }
 
-// The authentication algorithm. The value can be **sha1**, **md5**,
-// **sha2-256**, **sha2-384**, **sha2-512**. Defaults to **sha2-256**. **sha1** and **md5** are less secure,
-// please use them with caution.
+// The authentication algorithm, SHA1 and MD5 are less secure, please use them with caution.
 func (o VpnConnectionIpsecpolicyOutput) AuthenticationAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnConnectionIpsecpolicy) *string { return v.AuthenticationAlgorithm }).(pulumi.StringPtrOutput)
 }
 
 // The encapsulation mode, only **tunnel** supported for now.
-// Defaults to **tunnel**.
-//
-// <a name="Connection_PolicyRule"></a>
-// The `policyRules` block supports:
 func (o VpnConnectionIpsecpolicyOutput) EncapsulationMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnConnectionIpsecpolicy) *string { return v.EncapsulationMode }).(pulumi.StringPtrOutput)
 }
 
-// The encryption algorithm. The value can be **3des**, **aes-128**, **aes-192**,
-// **aes-256**, **aes-128-gcm-16**, **aes-256-gcm-16**, **aes-128-gcm-128**, **aes-256-gcm-128**. Defaults to **aes-128**.
-// **3des** is less secure, please use it with caution.
+// The encryption algorithm, 3DES is less secure, please use them with caution.
 func (o VpnConnectionIpsecpolicyOutput) EncryptionAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnConnectionIpsecpolicy) *string { return v.EncryptionAlgorithm }).(pulumi.StringPtrOutput)
 }
 
 // The lifecycle time of Ipsec tunnel in seconds.
-// The value ranges from **60** to **604800**. Defaults to **3600**.
 func (o VpnConnectionIpsecpolicyOutput) LifetimeSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VpnConnectionIpsecpolicy) *int { return v.LifetimeSeconds }).(pulumi.IntPtrOutput)
 }
 
-// The DH key group used by PFS. The value can be **group1**, **group2**, **group5**, **group14**
-// **group16**, **group19**, **group20**, **group21**. Defaults to **group14**.
+// The DH key group used by PFS.
 func (o VpnConnectionIpsecpolicyOutput) Pfs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnConnectionIpsecpolicy) *string { return v.Pfs }).(pulumi.StringPtrOutput)
 }
 
 // The transform protocol. Only **esp** supported for now.
-// Defaults to **esp**.
 func (o VpnConnectionIpsecpolicyOutput) TransformProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnConnectionIpsecpolicy) *string { return v.TransformProtocol }).(pulumi.StringPtrOutput)
 }
@@ -12334,9 +11817,7 @@ func (o VpnConnectionIpsecpolicyPtrOutput) Elem() VpnConnectionIpsecpolicyOutput
 	}).(VpnConnectionIpsecpolicyOutput)
 }
 
-// The authentication algorithm. The value can be **sha1**, **md5**,
-// **sha2-256**, **sha2-384**, **sha2-512**. Defaults to **sha2-256**. **sha1** and **md5** are less secure,
-// please use them with caution.
+// The authentication algorithm, SHA1 and MD5 are less secure, please use them with caution.
 func (o VpnConnectionIpsecpolicyPtrOutput) AuthenticationAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnConnectionIpsecpolicy) *string {
 		if v == nil {
@@ -12347,10 +11828,6 @@ func (o VpnConnectionIpsecpolicyPtrOutput) AuthenticationAlgorithm() pulumi.Stri
 }
 
 // The encapsulation mode, only **tunnel** supported for now.
-// Defaults to **tunnel**.
-//
-// <a name="Connection_PolicyRule"></a>
-// The `policyRules` block supports:
 func (o VpnConnectionIpsecpolicyPtrOutput) EncapsulationMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnConnectionIpsecpolicy) *string {
 		if v == nil {
@@ -12360,9 +11837,7 @@ func (o VpnConnectionIpsecpolicyPtrOutput) EncapsulationMode() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// The encryption algorithm. The value can be **3des**, **aes-128**, **aes-192**,
-// **aes-256**, **aes-128-gcm-16**, **aes-256-gcm-16**, **aes-128-gcm-128**, **aes-256-gcm-128**. Defaults to **aes-128**.
-// **3des** is less secure, please use it with caution.
+// The encryption algorithm, 3DES is less secure, please use them with caution.
 func (o VpnConnectionIpsecpolicyPtrOutput) EncryptionAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnConnectionIpsecpolicy) *string {
 		if v == nil {
@@ -12373,7 +11848,6 @@ func (o VpnConnectionIpsecpolicyPtrOutput) EncryptionAlgorithm() pulumi.StringPt
 }
 
 // The lifecycle time of Ipsec tunnel in seconds.
-// The value ranges from **60** to **604800**. Defaults to **3600**.
 func (o VpnConnectionIpsecpolicyPtrOutput) LifetimeSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VpnConnectionIpsecpolicy) *int {
 		if v == nil {
@@ -12383,8 +11857,7 @@ func (o VpnConnectionIpsecpolicyPtrOutput) LifetimeSeconds() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// The DH key group used by PFS. The value can be **group1**, **group2**, **group5**, **group14**
-// **group16**, **group19**, **group20**, **group21**. Defaults to **group14**.
+// The DH key group used by PFS.
 func (o VpnConnectionIpsecpolicyPtrOutput) Pfs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnConnectionIpsecpolicy) *string {
 		if v == nil {
@@ -12395,7 +11868,6 @@ func (o VpnConnectionIpsecpolicyPtrOutput) Pfs() pulumi.StringPtrOutput {
 }
 
 // The transform protocol. Only **esp** supported for now.
-// Defaults to **esp**.
 func (o VpnConnectionIpsecpolicyPtrOutput) TransformProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnConnectionIpsecpolicy) *string {
 		if v == nil {
@@ -12521,48 +11993,27 @@ func (o VpnConnectionPolicyRuleArrayOutput) Index(i pulumi.IntInput) VpnConnecti
 }
 
 type VpnGatewayCertificate struct {
-	// The certificate chain of the gateway certificate.
-	CertificateChain string `pulumi:"certificateChain"`
-	// The expire time of the certificate.
-	CertificateChainExpireTime *string `pulumi:"certificateChainExpireTime"`
-	// The serial number of the certificate chain.
+	CertificateChain             string  `pulumi:"certificateChain"`
+	CertificateChainExpireTime   *string `pulumi:"certificateChainExpireTime"`
 	CertificateChainSerialNumber *string `pulumi:"certificateChainSerialNumber"`
-	// The subject of the certificate chain.
-	CertificateChainSubject *string `pulumi:"certificateChainSubject"`
-	// The expire time of the certificate.
-	CertificateExpireTime *string `pulumi:"certificateExpireTime"`
-	// The certificate ID.
-	CertificateId *string `pulumi:"certificateId"`
-	// The serial number of the certificate.
-	CertificateSerialNumber *string `pulumi:"certificateSerialNumber"`
-	// The subject of the certificate.
-	CertificateSubject *string `pulumi:"certificateSubject"`
-	// The content of the gateway certificate.
-	Content string `pulumi:"content"`
-	// The create time of the gateway certificate.
-	CreatedAt *string `pulumi:"createdAt"`
-	// The enc certificate of the gateway certificate.
-	EncCertificate string `pulumi:"encCertificate"`
-	// The expire time of the enc certificate.
-	EncCertificateExpireTime *string `pulumi:"encCertificateExpireTime"`
-	// The serial number of the enc certificate.
-	EncCertificateSerialNumber *string `pulumi:"encCertificateSerialNumber"`
-	// The subject of the enc certificate.
-	EncCertificateSubject *string `pulumi:"encCertificateSubject"`
-	// The enc private key of the gateway certificate.
-	EncPrivateKey string `pulumi:"encPrivateKey"`
-	// The issuer of the certificate.
-	Issuer *string `pulumi:"issuer"`
-	// The name of the gateway certificate.
-	Name string `pulumi:"name"`
-	// The private of the gateway certificate.
-	PrivateKey string `pulumi:"privateKey"`
-	// The signature algorithm of the certificate.
-	SignatureAlgorithm *string `pulumi:"signatureAlgorithm"`
-	// The status of the certificate.
-	Status *string `pulumi:"status"`
-	// The update time of the gateway certificate.
-	UpdatedAt *string `pulumi:"updatedAt"`
+	CertificateChainSubject      *string `pulumi:"certificateChainSubject"`
+	CertificateExpireTime        *string `pulumi:"certificateExpireTime"`
+	CertificateId                *string `pulumi:"certificateId"`
+	CertificateSerialNumber      *string `pulumi:"certificateSerialNumber"`
+	CertificateSubject           *string `pulumi:"certificateSubject"`
+	Content                      string  `pulumi:"content"`
+	CreatedAt                    *string `pulumi:"createdAt"`
+	EncCertificate               string  `pulumi:"encCertificate"`
+	EncCertificateExpireTime     *string `pulumi:"encCertificateExpireTime"`
+	EncCertificateSerialNumber   *string `pulumi:"encCertificateSerialNumber"`
+	EncCertificateSubject        *string `pulumi:"encCertificateSubject"`
+	EncPrivateKey                string  `pulumi:"encPrivateKey"`
+	Issuer                       *string `pulumi:"issuer"`
+	Name                         string  `pulumi:"name"`
+	PrivateKey                   string  `pulumi:"privateKey"`
+	SignatureAlgorithm           *string `pulumi:"signatureAlgorithm"`
+	Status                       *string `pulumi:"status"`
+	UpdatedAt                    *string `pulumi:"updatedAt"`
 }
 
 // VpnGatewayCertificateInput is an input type that accepts VpnGatewayCertificateArgs and VpnGatewayCertificateOutput values.
@@ -12577,48 +12028,27 @@ type VpnGatewayCertificateInput interface {
 }
 
 type VpnGatewayCertificateArgs struct {
-	// The certificate chain of the gateway certificate.
-	CertificateChain pulumi.StringInput `pulumi:"certificateChain"`
-	// The expire time of the certificate.
-	CertificateChainExpireTime pulumi.StringPtrInput `pulumi:"certificateChainExpireTime"`
-	// The serial number of the certificate chain.
+	CertificateChain             pulumi.StringInput    `pulumi:"certificateChain"`
+	CertificateChainExpireTime   pulumi.StringPtrInput `pulumi:"certificateChainExpireTime"`
 	CertificateChainSerialNumber pulumi.StringPtrInput `pulumi:"certificateChainSerialNumber"`
-	// The subject of the certificate chain.
-	CertificateChainSubject pulumi.StringPtrInput `pulumi:"certificateChainSubject"`
-	// The expire time of the certificate.
-	CertificateExpireTime pulumi.StringPtrInput `pulumi:"certificateExpireTime"`
-	// The certificate ID.
-	CertificateId pulumi.StringPtrInput `pulumi:"certificateId"`
-	// The serial number of the certificate.
-	CertificateSerialNumber pulumi.StringPtrInput `pulumi:"certificateSerialNumber"`
-	// The subject of the certificate.
-	CertificateSubject pulumi.StringPtrInput `pulumi:"certificateSubject"`
-	// The content of the gateway certificate.
-	Content pulumi.StringInput `pulumi:"content"`
-	// The create time of the gateway certificate.
-	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
-	// The enc certificate of the gateway certificate.
-	EncCertificate pulumi.StringInput `pulumi:"encCertificate"`
-	// The expire time of the enc certificate.
-	EncCertificateExpireTime pulumi.StringPtrInput `pulumi:"encCertificateExpireTime"`
-	// The serial number of the enc certificate.
-	EncCertificateSerialNumber pulumi.StringPtrInput `pulumi:"encCertificateSerialNumber"`
-	// The subject of the enc certificate.
-	EncCertificateSubject pulumi.StringPtrInput `pulumi:"encCertificateSubject"`
-	// The enc private key of the gateway certificate.
-	EncPrivateKey pulumi.StringInput `pulumi:"encPrivateKey"`
-	// The issuer of the certificate.
-	Issuer pulumi.StringPtrInput `pulumi:"issuer"`
-	// The name of the gateway certificate.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The private of the gateway certificate.
-	PrivateKey pulumi.StringInput `pulumi:"privateKey"`
-	// The signature algorithm of the certificate.
-	SignatureAlgorithm pulumi.StringPtrInput `pulumi:"signatureAlgorithm"`
-	// The status of the certificate.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The update time of the gateway certificate.
-	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
+	CertificateChainSubject      pulumi.StringPtrInput `pulumi:"certificateChainSubject"`
+	CertificateExpireTime        pulumi.StringPtrInput `pulumi:"certificateExpireTime"`
+	CertificateId                pulumi.StringPtrInput `pulumi:"certificateId"`
+	CertificateSerialNumber      pulumi.StringPtrInput `pulumi:"certificateSerialNumber"`
+	CertificateSubject           pulumi.StringPtrInput `pulumi:"certificateSubject"`
+	Content                      pulumi.StringInput    `pulumi:"content"`
+	CreatedAt                    pulumi.StringPtrInput `pulumi:"createdAt"`
+	EncCertificate               pulumi.StringInput    `pulumi:"encCertificate"`
+	EncCertificateExpireTime     pulumi.StringPtrInput `pulumi:"encCertificateExpireTime"`
+	EncCertificateSerialNumber   pulumi.StringPtrInput `pulumi:"encCertificateSerialNumber"`
+	EncCertificateSubject        pulumi.StringPtrInput `pulumi:"encCertificateSubject"`
+	EncPrivateKey                pulumi.StringInput    `pulumi:"encPrivateKey"`
+	Issuer                       pulumi.StringPtrInput `pulumi:"issuer"`
+	Name                         pulumi.StringInput    `pulumi:"name"`
+	PrivateKey                   pulumi.StringInput    `pulumi:"privateKey"`
+	SignatureAlgorithm           pulumi.StringPtrInput `pulumi:"signatureAlgorithm"`
+	Status                       pulumi.StringPtrInput `pulumi:"status"`
+	UpdatedAt                    pulumi.StringPtrInput `pulumi:"updatedAt"`
 }
 
 func (VpnGatewayCertificateArgs) ElementType() reflect.Type {
@@ -12698,107 +12128,86 @@ func (o VpnGatewayCertificateOutput) ToVpnGatewayCertificatePtrOutputWithContext
 	}).(VpnGatewayCertificatePtrOutput)
 }
 
-// The certificate chain of the gateway certificate.
 func (o VpnGatewayCertificateOutput) CertificateChain() pulumi.StringOutput {
 	return o.ApplyT(func(v VpnGatewayCertificate) string { return v.CertificateChain }).(pulumi.StringOutput)
 }
 
-// The expire time of the certificate.
 func (o VpnGatewayCertificateOutput) CertificateChainExpireTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnGatewayCertificate) *string { return v.CertificateChainExpireTime }).(pulumi.StringPtrOutput)
 }
 
-// The serial number of the certificate chain.
 func (o VpnGatewayCertificateOutput) CertificateChainSerialNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnGatewayCertificate) *string { return v.CertificateChainSerialNumber }).(pulumi.StringPtrOutput)
 }
 
-// The subject of the certificate chain.
 func (o VpnGatewayCertificateOutput) CertificateChainSubject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnGatewayCertificate) *string { return v.CertificateChainSubject }).(pulumi.StringPtrOutput)
 }
 
-// The expire time of the certificate.
 func (o VpnGatewayCertificateOutput) CertificateExpireTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnGatewayCertificate) *string { return v.CertificateExpireTime }).(pulumi.StringPtrOutput)
 }
 
-// The certificate ID.
 func (o VpnGatewayCertificateOutput) CertificateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnGatewayCertificate) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
 }
 
-// The serial number of the certificate.
 func (o VpnGatewayCertificateOutput) CertificateSerialNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnGatewayCertificate) *string { return v.CertificateSerialNumber }).(pulumi.StringPtrOutput)
 }
 
-// The subject of the certificate.
 func (o VpnGatewayCertificateOutput) CertificateSubject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnGatewayCertificate) *string { return v.CertificateSubject }).(pulumi.StringPtrOutput)
 }
 
-// The content of the gateway certificate.
 func (o VpnGatewayCertificateOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v VpnGatewayCertificate) string { return v.Content }).(pulumi.StringOutput)
 }
 
-// The create time of the gateway certificate.
 func (o VpnGatewayCertificateOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnGatewayCertificate) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
 }
 
-// The enc certificate of the gateway certificate.
 func (o VpnGatewayCertificateOutput) EncCertificate() pulumi.StringOutput {
 	return o.ApplyT(func(v VpnGatewayCertificate) string { return v.EncCertificate }).(pulumi.StringOutput)
 }
 
-// The expire time of the enc certificate.
 func (o VpnGatewayCertificateOutput) EncCertificateExpireTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnGatewayCertificate) *string { return v.EncCertificateExpireTime }).(pulumi.StringPtrOutput)
 }
 
-// The serial number of the enc certificate.
 func (o VpnGatewayCertificateOutput) EncCertificateSerialNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnGatewayCertificate) *string { return v.EncCertificateSerialNumber }).(pulumi.StringPtrOutput)
 }
 
-// The subject of the enc certificate.
 func (o VpnGatewayCertificateOutput) EncCertificateSubject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnGatewayCertificate) *string { return v.EncCertificateSubject }).(pulumi.StringPtrOutput)
 }
 
-// The enc private key of the gateway certificate.
 func (o VpnGatewayCertificateOutput) EncPrivateKey() pulumi.StringOutput {
 	return o.ApplyT(func(v VpnGatewayCertificate) string { return v.EncPrivateKey }).(pulumi.StringOutput)
 }
 
-// The issuer of the certificate.
 func (o VpnGatewayCertificateOutput) Issuer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnGatewayCertificate) *string { return v.Issuer }).(pulumi.StringPtrOutput)
 }
 
-// The name of the gateway certificate.
 func (o VpnGatewayCertificateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v VpnGatewayCertificate) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The private of the gateway certificate.
 func (o VpnGatewayCertificateOutput) PrivateKey() pulumi.StringOutput {
 	return o.ApplyT(func(v VpnGatewayCertificate) string { return v.PrivateKey }).(pulumi.StringOutput)
 }
 
-// The signature algorithm of the certificate.
 func (o VpnGatewayCertificateOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnGatewayCertificate) *string { return v.SignatureAlgorithm }).(pulumi.StringPtrOutput)
 }
 
-// The status of the certificate.
 func (o VpnGatewayCertificateOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnGatewayCertificate) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// The update time of the gateway certificate.
 func (o VpnGatewayCertificateOutput) UpdatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnGatewayCertificate) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
 }
@@ -12827,7 +12236,6 @@ func (o VpnGatewayCertificatePtrOutput) Elem() VpnGatewayCertificateOutput {
 	}).(VpnGatewayCertificateOutput)
 }
 
-// The certificate chain of the gateway certificate.
 func (o VpnGatewayCertificatePtrOutput) CertificateChain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayCertificate) *string {
 		if v == nil {
@@ -12837,7 +12245,6 @@ func (o VpnGatewayCertificatePtrOutput) CertificateChain() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The expire time of the certificate.
 func (o VpnGatewayCertificatePtrOutput) CertificateChainExpireTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayCertificate) *string {
 		if v == nil {
@@ -12847,7 +12254,6 @@ func (o VpnGatewayCertificatePtrOutput) CertificateChainExpireTime() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// The serial number of the certificate chain.
 func (o VpnGatewayCertificatePtrOutput) CertificateChainSerialNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayCertificate) *string {
 		if v == nil {
@@ -12857,7 +12263,6 @@ func (o VpnGatewayCertificatePtrOutput) CertificateChainSerialNumber() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// The subject of the certificate chain.
 func (o VpnGatewayCertificatePtrOutput) CertificateChainSubject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayCertificate) *string {
 		if v == nil {
@@ -12867,7 +12272,6 @@ func (o VpnGatewayCertificatePtrOutput) CertificateChainSubject() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// The expire time of the certificate.
 func (o VpnGatewayCertificatePtrOutput) CertificateExpireTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayCertificate) *string {
 		if v == nil {
@@ -12877,7 +12281,6 @@ func (o VpnGatewayCertificatePtrOutput) CertificateExpireTime() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// The certificate ID.
 func (o VpnGatewayCertificatePtrOutput) CertificateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayCertificate) *string {
 		if v == nil {
@@ -12887,7 +12290,6 @@ func (o VpnGatewayCertificatePtrOutput) CertificateId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The serial number of the certificate.
 func (o VpnGatewayCertificatePtrOutput) CertificateSerialNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayCertificate) *string {
 		if v == nil {
@@ -12897,7 +12299,6 @@ func (o VpnGatewayCertificatePtrOutput) CertificateSerialNumber() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// The subject of the certificate.
 func (o VpnGatewayCertificatePtrOutput) CertificateSubject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayCertificate) *string {
 		if v == nil {
@@ -12907,7 +12308,6 @@ func (o VpnGatewayCertificatePtrOutput) CertificateSubject() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// The content of the gateway certificate.
 func (o VpnGatewayCertificatePtrOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayCertificate) *string {
 		if v == nil {
@@ -12917,7 +12317,6 @@ func (o VpnGatewayCertificatePtrOutput) Content() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The create time of the gateway certificate.
 func (o VpnGatewayCertificatePtrOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayCertificate) *string {
 		if v == nil {
@@ -12927,7 +12326,6 @@ func (o VpnGatewayCertificatePtrOutput) CreatedAt() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The enc certificate of the gateway certificate.
 func (o VpnGatewayCertificatePtrOutput) EncCertificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayCertificate) *string {
 		if v == nil {
@@ -12937,7 +12335,6 @@ func (o VpnGatewayCertificatePtrOutput) EncCertificate() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The expire time of the enc certificate.
 func (o VpnGatewayCertificatePtrOutput) EncCertificateExpireTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayCertificate) *string {
 		if v == nil {
@@ -12947,7 +12344,6 @@ func (o VpnGatewayCertificatePtrOutput) EncCertificateExpireTime() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// The serial number of the enc certificate.
 func (o VpnGatewayCertificatePtrOutput) EncCertificateSerialNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayCertificate) *string {
 		if v == nil {
@@ -12957,7 +12353,6 @@ func (o VpnGatewayCertificatePtrOutput) EncCertificateSerialNumber() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// The subject of the enc certificate.
 func (o VpnGatewayCertificatePtrOutput) EncCertificateSubject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayCertificate) *string {
 		if v == nil {
@@ -12967,7 +12362,6 @@ func (o VpnGatewayCertificatePtrOutput) EncCertificateSubject() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// The enc private key of the gateway certificate.
 func (o VpnGatewayCertificatePtrOutput) EncPrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayCertificate) *string {
 		if v == nil {
@@ -12977,7 +12371,6 @@ func (o VpnGatewayCertificatePtrOutput) EncPrivateKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The issuer of the certificate.
 func (o VpnGatewayCertificatePtrOutput) Issuer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayCertificate) *string {
 		if v == nil {
@@ -12987,7 +12380,6 @@ func (o VpnGatewayCertificatePtrOutput) Issuer() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name of the gateway certificate.
 func (o VpnGatewayCertificatePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayCertificate) *string {
 		if v == nil {
@@ -12997,7 +12389,6 @@ func (o VpnGatewayCertificatePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The private of the gateway certificate.
 func (o VpnGatewayCertificatePtrOutput) PrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayCertificate) *string {
 		if v == nil {
@@ -13007,7 +12398,6 @@ func (o VpnGatewayCertificatePtrOutput) PrivateKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The signature algorithm of the certificate.
 func (o VpnGatewayCertificatePtrOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayCertificate) *string {
 		if v == nil {
@@ -13017,7 +12407,6 @@ func (o VpnGatewayCertificatePtrOutput) SignatureAlgorithm() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// The status of the certificate.
 func (o VpnGatewayCertificatePtrOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayCertificate) *string {
 		if v == nil {
@@ -13027,7 +12416,6 @@ func (o VpnGatewayCertificatePtrOutput) Status() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The update time of the gateway certificate.
 func (o VpnGatewayCertificatePtrOutput) UpdatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayCertificate) *string {
 		if v == nil {
@@ -13041,33 +12429,18 @@ type VpnGatewayEip1 struct {
 	// The bandwidth ID.
 	BandwidthId *string `pulumi:"bandwidthId"`
 	// The bandwidth name.
-	//
-	// Changing this parameter will create a new resource.
 	BandwidthName *string `pulumi:"bandwidthName"`
-	// Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-	// cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-	// When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-	//
-	// Changing this parameter will create a new resource.
+	// Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
 	BandwidthSize *int `pulumi:"bandwidthSize"`
 	// The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-	//
-	// Changing this parameter will create a new resource.
-	//
-	// > You can use `id` to specify an existing EIP or use `type`, `bandwidthName`, `bandwidthSize` and `chargeMode` to
-	// create a new EIP.
 	ChargeMode *string `pulumi:"chargeMode"`
 	// The public IP ID.
-	//
-	// Changing this parameter will create a new resource.
 	Id *string `pulumi:"id"`
 	// The public IP address.
 	IpAddress *string `pulumi:"ipAddress"`
 	// The public IP version.
 	IpVersion *int `pulumi:"ipVersion"`
 	// The EIP type. The value can be **5_bgp** and **5_sbgp**.
-	//
-	// Changing this parameter will create a new resource.
 	Type *string `pulumi:"type"`
 }
 
@@ -13086,33 +12459,18 @@ type VpnGatewayEip1Args struct {
 	// The bandwidth ID.
 	BandwidthId pulumi.StringPtrInput `pulumi:"bandwidthId"`
 	// The bandwidth name.
-	//
-	// Changing this parameter will create a new resource.
 	BandwidthName pulumi.StringPtrInput `pulumi:"bandwidthName"`
-	// Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-	// cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-	// When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-	//
-	// Changing this parameter will create a new resource.
+	// Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
 	BandwidthSize pulumi.IntPtrInput `pulumi:"bandwidthSize"`
 	// The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-	//
-	// Changing this parameter will create a new resource.
-	//
-	// > You can use `id` to specify an existing EIP or use `type`, `bandwidthName`, `bandwidthSize` and `chargeMode` to
-	// create a new EIP.
 	ChargeMode pulumi.StringPtrInput `pulumi:"chargeMode"`
 	// The public IP ID.
-	//
-	// Changing this parameter will create a new resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The public IP address.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
 	// The public IP version.
 	IpVersion pulumi.IntPtrInput `pulumi:"ipVersion"`
 	// The EIP type. The value can be **5_bgp** and **5_sbgp**.
-	//
-	// Changing this parameter will create a new resource.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -13199,34 +12557,21 @@ func (o VpnGatewayEip1Output) BandwidthId() pulumi.StringPtrOutput {
 }
 
 // The bandwidth name.
-//
-// Changing this parameter will create a new resource.
 func (o VpnGatewayEip1Output) BandwidthName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnGatewayEip1) *string { return v.BandwidthName }).(pulumi.StringPtrOutput)
 }
 
-// Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-// cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-// When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-//
-// Changing this parameter will create a new resource.
+// Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
 func (o VpnGatewayEip1Output) BandwidthSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VpnGatewayEip1) *int { return v.BandwidthSize }).(pulumi.IntPtrOutput)
 }
 
 // The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-//
-// Changing this parameter will create a new resource.
-//
-// > You can use `id` to specify an existing EIP or use `type`, `bandwidthName`, `bandwidthSize` and `chargeMode` to
-// create a new EIP.
 func (o VpnGatewayEip1Output) ChargeMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnGatewayEip1) *string { return v.ChargeMode }).(pulumi.StringPtrOutput)
 }
 
 // The public IP ID.
-//
-// Changing this parameter will create a new resource.
 func (o VpnGatewayEip1Output) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnGatewayEip1) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -13242,8 +12587,6 @@ func (o VpnGatewayEip1Output) IpVersion() pulumi.IntPtrOutput {
 }
 
 // The EIP type. The value can be **5_bgp** and **5_sbgp**.
-//
-// Changing this parameter will create a new resource.
 func (o VpnGatewayEip1Output) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnGatewayEip1) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -13283,8 +12626,6 @@ func (o VpnGatewayEip1PtrOutput) BandwidthId() pulumi.StringPtrOutput {
 }
 
 // The bandwidth name.
-//
-// Changing this parameter will create a new resource.
 func (o VpnGatewayEip1PtrOutput) BandwidthName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayEip1) *string {
 		if v == nil {
@@ -13294,11 +12635,7 @@ func (o VpnGatewayEip1PtrOutput) BandwidthName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-// cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-// When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-//
-// Changing this parameter will create a new resource.
+// Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
 func (o VpnGatewayEip1PtrOutput) BandwidthSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayEip1) *int {
 		if v == nil {
@@ -13309,11 +12646,6 @@ func (o VpnGatewayEip1PtrOutput) BandwidthSize() pulumi.IntPtrOutput {
 }
 
 // The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-//
-// Changing this parameter will create a new resource.
-//
-// > You can use `id` to specify an existing EIP or use `type`, `bandwidthName`, `bandwidthSize` and `chargeMode` to
-// create a new EIP.
 func (o VpnGatewayEip1PtrOutput) ChargeMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayEip1) *string {
 		if v == nil {
@@ -13324,8 +12656,6 @@ func (o VpnGatewayEip1PtrOutput) ChargeMode() pulumi.StringPtrOutput {
 }
 
 // The public IP ID.
-//
-// Changing this parameter will create a new resource.
 func (o VpnGatewayEip1PtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayEip1) *string {
 		if v == nil {
@@ -13356,8 +12686,6 @@ func (o VpnGatewayEip1PtrOutput) IpVersion() pulumi.IntPtrOutput {
 }
 
 // The EIP type. The value can be **5_bgp** and **5_sbgp**.
-//
-// Changing this parameter will create a new resource.
 func (o VpnGatewayEip1PtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayEip1) *string {
 		if v == nil {
@@ -13371,33 +12699,18 @@ type VpnGatewayEip2 struct {
 	// The bandwidth ID.
 	BandwidthId *string `pulumi:"bandwidthId"`
 	// The bandwidth name.
-	//
-	// Changing this parameter will create a new resource.
 	BandwidthName *string `pulumi:"bandwidthName"`
-	// Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-	// cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-	// When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-	//
-	// Changing this parameter will create a new resource.
+	// Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
 	BandwidthSize *int `pulumi:"bandwidthSize"`
 	// The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-	//
-	// Changing this parameter will create a new resource.
-	//
-	// > You can use `id` to specify an existing EIP or use `type`, `bandwidthName`, `bandwidthSize` and `chargeMode` to
-	// create a new EIP.
 	ChargeMode *string `pulumi:"chargeMode"`
 	// The public IP ID.
-	//
-	// Changing this parameter will create a new resource.
 	Id *string `pulumi:"id"`
 	// The public IP address.
 	IpAddress *string `pulumi:"ipAddress"`
 	// The public IP version.
 	IpVersion *int `pulumi:"ipVersion"`
 	// The EIP type. The value can be **5_bgp** and **5_sbgp**.
-	//
-	// Changing this parameter will create a new resource.
 	Type *string `pulumi:"type"`
 }
 
@@ -13416,33 +12729,18 @@ type VpnGatewayEip2Args struct {
 	// The bandwidth ID.
 	BandwidthId pulumi.StringPtrInput `pulumi:"bandwidthId"`
 	// The bandwidth name.
-	//
-	// Changing this parameter will create a new resource.
 	BandwidthName pulumi.StringPtrInput `pulumi:"bandwidthName"`
-	// Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-	// cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-	// When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-	//
-	// Changing this parameter will create a new resource.
+	// Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
 	BandwidthSize pulumi.IntPtrInput `pulumi:"bandwidthSize"`
 	// The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-	//
-	// Changing this parameter will create a new resource.
-	//
-	// > You can use `id` to specify an existing EIP or use `type`, `bandwidthName`, `bandwidthSize` and `chargeMode` to
-	// create a new EIP.
 	ChargeMode pulumi.StringPtrInput `pulumi:"chargeMode"`
 	// The public IP ID.
-	//
-	// Changing this parameter will create a new resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The public IP address.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
 	// The public IP version.
 	IpVersion pulumi.IntPtrInput `pulumi:"ipVersion"`
 	// The EIP type. The value can be **5_bgp** and **5_sbgp**.
-	//
-	// Changing this parameter will create a new resource.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -13529,34 +12827,21 @@ func (o VpnGatewayEip2Output) BandwidthId() pulumi.StringPtrOutput {
 }
 
 // The bandwidth name.
-//
-// Changing this parameter will create a new resource.
 func (o VpnGatewayEip2Output) BandwidthName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnGatewayEip2) *string { return v.BandwidthName }).(pulumi.StringPtrOutput)
 }
 
-// Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-// cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-// When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-//
-// Changing this parameter will create a new resource.
+// Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
 func (o VpnGatewayEip2Output) BandwidthSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VpnGatewayEip2) *int { return v.BandwidthSize }).(pulumi.IntPtrOutput)
 }
 
 // The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-//
-// Changing this parameter will create a new resource.
-//
-// > You can use `id` to specify an existing EIP or use `type`, `bandwidthName`, `bandwidthSize` and `chargeMode` to
-// create a new EIP.
 func (o VpnGatewayEip2Output) ChargeMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnGatewayEip2) *string { return v.ChargeMode }).(pulumi.StringPtrOutput)
 }
 
 // The public IP ID.
-//
-// Changing this parameter will create a new resource.
 func (o VpnGatewayEip2Output) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnGatewayEip2) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -13572,8 +12857,6 @@ func (o VpnGatewayEip2Output) IpVersion() pulumi.IntPtrOutput {
 }
 
 // The EIP type. The value can be **5_bgp** and **5_sbgp**.
-//
-// Changing this parameter will create a new resource.
 func (o VpnGatewayEip2Output) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnGatewayEip2) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -13613,8 +12896,6 @@ func (o VpnGatewayEip2PtrOutput) BandwidthId() pulumi.StringPtrOutput {
 }
 
 // The bandwidth name.
-//
-// Changing this parameter will create a new resource.
 func (o VpnGatewayEip2PtrOutput) BandwidthName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayEip2) *string {
 		if v == nil {
@@ -13624,11 +12905,7 @@ func (o VpnGatewayEip2PtrOutput) BandwidthName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-// cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-// When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-//
-// Changing this parameter will create a new resource.
+// Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
 func (o VpnGatewayEip2PtrOutput) BandwidthSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayEip2) *int {
 		if v == nil {
@@ -13639,11 +12916,6 @@ func (o VpnGatewayEip2PtrOutput) BandwidthSize() pulumi.IntPtrOutput {
 }
 
 // The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-//
-// Changing this parameter will create a new resource.
-//
-// > You can use `id` to specify an existing EIP or use `type`, `bandwidthName`, `bandwidthSize` and `chargeMode` to
-// create a new EIP.
 func (o VpnGatewayEip2PtrOutput) ChargeMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayEip2) *string {
 		if v == nil {
@@ -13654,8 +12926,6 @@ func (o VpnGatewayEip2PtrOutput) ChargeMode() pulumi.StringPtrOutput {
 }
 
 // The public IP ID.
-//
-// Changing this parameter will create a new resource.
 func (o VpnGatewayEip2PtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayEip2) *string {
 		if v == nil {
@@ -13686,8 +12956,6 @@ func (o VpnGatewayEip2PtrOutput) IpVersion() pulumi.IntPtrOutput {
 }
 
 // The EIP type. The value can be **5_bgp** and **5_sbgp**.
-//
-// Changing this parameter will create a new resource.
 func (o VpnGatewayEip2PtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayEip2) *string {
 		if v == nil {
@@ -13701,33 +12969,18 @@ type VpnGatewayMasterEip struct {
 	// The bandwidth ID.
 	BandwidthId *string `pulumi:"bandwidthId"`
 	// The bandwidth name.
-	//
-	// Changing this parameter will create a new resource.
 	BandwidthName *string `pulumi:"bandwidthName"`
-	// Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-	// cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-	// When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-	//
-	// Changing this parameter will create a new resource.
+	// Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
 	BandwidthSize *int `pulumi:"bandwidthSize"`
 	// The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-	//
-	// Changing this parameter will create a new resource.
-	//
-	// > You can use `id` to specify an existing EIP or use `type`, `bandwidthName`, `bandwidthSize` and `chargeMode` to
-	// create a new EIP.
 	ChargeMode *string `pulumi:"chargeMode"`
 	// The public IP ID.
-	//
-	// Changing this parameter will create a new resource.
 	Id *string `pulumi:"id"`
 	// The public IP address.
 	IpAddress *string `pulumi:"ipAddress"`
 	// The public IP version.
 	IpVersion *int `pulumi:"ipVersion"`
 	// The EIP type. The value can be **5_bgp** and **5_sbgp**.
-	//
-	// Changing this parameter will create a new resource.
 	Type *string `pulumi:"type"`
 }
 
@@ -13746,33 +12999,18 @@ type VpnGatewayMasterEipArgs struct {
 	// The bandwidth ID.
 	BandwidthId pulumi.StringPtrInput `pulumi:"bandwidthId"`
 	// The bandwidth name.
-	//
-	// Changing this parameter will create a new resource.
 	BandwidthName pulumi.StringPtrInput `pulumi:"bandwidthName"`
-	// Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-	// cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-	// When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-	//
-	// Changing this parameter will create a new resource.
+	// Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
 	BandwidthSize pulumi.IntPtrInput `pulumi:"bandwidthSize"`
 	// The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-	//
-	// Changing this parameter will create a new resource.
-	//
-	// > You can use `id` to specify an existing EIP or use `type`, `bandwidthName`, `bandwidthSize` and `chargeMode` to
-	// create a new EIP.
 	ChargeMode pulumi.StringPtrInput `pulumi:"chargeMode"`
 	// The public IP ID.
-	//
-	// Changing this parameter will create a new resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The public IP address.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
 	// The public IP version.
 	IpVersion pulumi.IntPtrInput `pulumi:"ipVersion"`
 	// The EIP type. The value can be **5_bgp** and **5_sbgp**.
-	//
-	// Changing this parameter will create a new resource.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -13859,34 +13097,21 @@ func (o VpnGatewayMasterEipOutput) BandwidthId() pulumi.StringPtrOutput {
 }
 
 // The bandwidth name.
-//
-// Changing this parameter will create a new resource.
 func (o VpnGatewayMasterEipOutput) BandwidthName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnGatewayMasterEip) *string { return v.BandwidthName }).(pulumi.StringPtrOutput)
 }
 
-// Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-// cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-// When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-//
-// Changing this parameter will create a new resource.
+// Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
 func (o VpnGatewayMasterEipOutput) BandwidthSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VpnGatewayMasterEip) *int { return v.BandwidthSize }).(pulumi.IntPtrOutput)
 }
 
 // The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-//
-// Changing this parameter will create a new resource.
-//
-// > You can use `id` to specify an existing EIP or use `type`, `bandwidthName`, `bandwidthSize` and `chargeMode` to
-// create a new EIP.
 func (o VpnGatewayMasterEipOutput) ChargeMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnGatewayMasterEip) *string { return v.ChargeMode }).(pulumi.StringPtrOutput)
 }
 
 // The public IP ID.
-//
-// Changing this parameter will create a new resource.
 func (o VpnGatewayMasterEipOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnGatewayMasterEip) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -13902,8 +13127,6 @@ func (o VpnGatewayMasterEipOutput) IpVersion() pulumi.IntPtrOutput {
 }
 
 // The EIP type. The value can be **5_bgp** and **5_sbgp**.
-//
-// Changing this parameter will create a new resource.
 func (o VpnGatewayMasterEipOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnGatewayMasterEip) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -13943,8 +13166,6 @@ func (o VpnGatewayMasterEipPtrOutput) BandwidthId() pulumi.StringPtrOutput {
 }
 
 // The bandwidth name.
-//
-// Changing this parameter will create a new resource.
 func (o VpnGatewayMasterEipPtrOutput) BandwidthName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayMasterEip) *string {
 		if v == nil {
@@ -13954,11 +13175,7 @@ func (o VpnGatewayMasterEipPtrOutput) BandwidthName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-// cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-// When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-//
-// Changing this parameter will create a new resource.
+// Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
 func (o VpnGatewayMasterEipPtrOutput) BandwidthSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayMasterEip) *int {
 		if v == nil {
@@ -13969,11 +13186,6 @@ func (o VpnGatewayMasterEipPtrOutput) BandwidthSize() pulumi.IntPtrOutput {
 }
 
 // The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-//
-// Changing this parameter will create a new resource.
-//
-// > You can use `id` to specify an existing EIP or use `type`, `bandwidthName`, `bandwidthSize` and `chargeMode` to
-// create a new EIP.
 func (o VpnGatewayMasterEipPtrOutput) ChargeMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayMasterEip) *string {
 		if v == nil {
@@ -13984,8 +13196,6 @@ func (o VpnGatewayMasterEipPtrOutput) ChargeMode() pulumi.StringPtrOutput {
 }
 
 // The public IP ID.
-//
-// Changing this parameter will create a new resource.
 func (o VpnGatewayMasterEipPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayMasterEip) *string {
 		if v == nil {
@@ -14016,8 +13226,6 @@ func (o VpnGatewayMasterEipPtrOutput) IpVersion() pulumi.IntPtrOutput {
 }
 
 // The EIP type. The value can be **5_bgp** and **5_sbgp**.
-//
-// Changing this parameter will create a new resource.
 func (o VpnGatewayMasterEipPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewayMasterEip) *string {
 		if v == nil {
@@ -14031,33 +13239,18 @@ type VpnGatewaySlaveEip struct {
 	// The bandwidth ID.
 	BandwidthId *string `pulumi:"bandwidthId"`
 	// The bandwidth name.
-	//
-	// Changing this parameter will create a new resource.
 	BandwidthName *string `pulumi:"bandwidthName"`
-	// Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-	// cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-	// When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-	//
-	// Changing this parameter will create a new resource.
+	// Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
 	BandwidthSize *int `pulumi:"bandwidthSize"`
 	// The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-	//
-	// Changing this parameter will create a new resource.
-	//
-	// > You can use `id` to specify an existing EIP or use `type`, `bandwidthName`, `bandwidthSize` and `chargeMode` to
-	// create a new EIP.
 	ChargeMode *string `pulumi:"chargeMode"`
 	// The public IP ID.
-	//
-	// Changing this parameter will create a new resource.
 	Id *string `pulumi:"id"`
 	// The public IP address.
 	IpAddress *string `pulumi:"ipAddress"`
 	// The public IP version.
 	IpVersion *int `pulumi:"ipVersion"`
 	// The EIP type. The value can be **5_bgp** and **5_sbgp**.
-	//
-	// Changing this parameter will create a new resource.
 	Type *string `pulumi:"type"`
 }
 
@@ -14076,33 +13269,18 @@ type VpnGatewaySlaveEipArgs struct {
 	// The bandwidth ID.
 	BandwidthId pulumi.StringPtrInput `pulumi:"bandwidthId"`
 	// The bandwidth name.
-	//
-	// Changing this parameter will create a new resource.
 	BandwidthName pulumi.StringPtrInput `pulumi:"bandwidthName"`
-	// Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-	// cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-	// When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-	//
-	// Changing this parameter will create a new resource.
+	// Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
 	BandwidthSize pulumi.IntPtrInput `pulumi:"bandwidthSize"`
 	// The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-	//
-	// Changing this parameter will create a new resource.
-	//
-	// > You can use `id` to specify an existing EIP or use `type`, `bandwidthName`, `bandwidthSize` and `chargeMode` to
-	// create a new EIP.
 	ChargeMode pulumi.StringPtrInput `pulumi:"chargeMode"`
 	// The public IP ID.
-	//
-	// Changing this parameter will create a new resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The public IP address.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
 	// The public IP version.
 	IpVersion pulumi.IntPtrInput `pulumi:"ipVersion"`
 	// The EIP type. The value can be **5_bgp** and **5_sbgp**.
-	//
-	// Changing this parameter will create a new resource.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -14189,34 +13367,21 @@ func (o VpnGatewaySlaveEipOutput) BandwidthId() pulumi.StringPtrOutput {
 }
 
 // The bandwidth name.
-//
-// Changing this parameter will create a new resource.
 func (o VpnGatewaySlaveEipOutput) BandwidthName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnGatewaySlaveEip) *string { return v.BandwidthName }).(pulumi.StringPtrOutput)
 }
 
-// Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-// cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-// When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-//
-// Changing this parameter will create a new resource.
+// Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
 func (o VpnGatewaySlaveEipOutput) BandwidthSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VpnGatewaySlaveEip) *int { return v.BandwidthSize }).(pulumi.IntPtrOutput)
 }
 
 // The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-//
-// Changing this parameter will create a new resource.
-//
-// > You can use `id` to specify an existing EIP or use `type`, `bandwidthName`, `bandwidthSize` and `chargeMode` to
-// create a new EIP.
 func (o VpnGatewaySlaveEipOutput) ChargeMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnGatewaySlaveEip) *string { return v.ChargeMode }).(pulumi.StringPtrOutput)
 }
 
 // The public IP ID.
-//
-// Changing this parameter will create a new resource.
 func (o VpnGatewaySlaveEipOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnGatewaySlaveEip) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -14232,8 +13397,6 @@ func (o VpnGatewaySlaveEipOutput) IpVersion() pulumi.IntPtrOutput {
 }
 
 // The EIP type. The value can be **5_bgp** and **5_sbgp**.
-//
-// Changing this parameter will create a new resource.
 func (o VpnGatewaySlaveEipOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnGatewaySlaveEip) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -14273,8 +13436,6 @@ func (o VpnGatewaySlaveEipPtrOutput) BandwidthId() pulumi.StringPtrOutput {
 }
 
 // The bandwidth name.
-//
-// Changing this parameter will create a new resource.
 func (o VpnGatewaySlaveEipPtrOutput) BandwidthName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewaySlaveEip) *string {
 		if v == nil {
@@ -14284,11 +13445,7 @@ func (o VpnGatewaySlaveEipPtrOutput) BandwidthName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-// cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-// When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-//
-// Changing this parameter will create a new resource.
+// Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
 func (o VpnGatewaySlaveEipPtrOutput) BandwidthSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VpnGatewaySlaveEip) *int {
 		if v == nil {
@@ -14299,11 +13456,6 @@ func (o VpnGatewaySlaveEipPtrOutput) BandwidthSize() pulumi.IntPtrOutput {
 }
 
 // The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-//
-// Changing this parameter will create a new resource.
-//
-// > You can use `id` to specify an existing EIP or use `type`, `bandwidthName`, `bandwidthSize` and `chargeMode` to
-// create a new EIP.
 func (o VpnGatewaySlaveEipPtrOutput) ChargeMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewaySlaveEip) *string {
 		if v == nil {
@@ -14314,8 +13466,6 @@ func (o VpnGatewaySlaveEipPtrOutput) ChargeMode() pulumi.StringPtrOutput {
 }
 
 // The public IP ID.
-//
-// Changing this parameter will create a new resource.
 func (o VpnGatewaySlaveEipPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewaySlaveEip) *string {
 		if v == nil {
@@ -14346,8 +13496,6 @@ func (o VpnGatewaySlaveEipPtrOutput) IpVersion() pulumi.IntPtrOutput {
 }
 
 // The EIP type. The value can be **5_bgp** and **5_sbgp**.
-//
-// Changing this parameter will create a new resource.
 func (o VpnGatewaySlaveEipPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpnGatewaySlaveEip) *string {
 		if v == nil {
@@ -21328,18 +20476,11 @@ func (o GetApigThrottlingPoliciesPolicyUserThrottleArrayOutput) Index(i pulumi.I
 }
 
 type GetCbhAvailabilityZonesAvailabilityZone struct {
-	// Specifies the display name of the availability zone to be queried.
 	DisplayName string `pulumi:"displayName"`
-	// Specifies the name of the availability zone to be queried.
-	Name string `pulumi:"name"`
-	// The ID of the region in which the availability zone belongs.
-	RegionId string `pulumi:"regionId"`
-	// The status of the availability zone. The value can be **Running**.
-	Status string `pulumi:"status"`
-	// The type of the availability zone. The valid values are as follows:
-	// + **Core**: Core availability zone.
-	// + **Dedicated**: Exclusive availability zone, only open to internal customers.
-	Type string `pulumi:"type"`
+	Name        string `pulumi:"name"`
+	RegionId    string `pulumi:"regionId"`
+	Status      string `pulumi:"status"`
+	Type        string `pulumi:"type"`
 }
 
 // GetCbhAvailabilityZonesAvailabilityZoneInput is an input type that accepts GetCbhAvailabilityZonesAvailabilityZoneArgs and GetCbhAvailabilityZonesAvailabilityZoneOutput values.
@@ -21354,18 +20495,11 @@ type GetCbhAvailabilityZonesAvailabilityZoneInput interface {
 }
 
 type GetCbhAvailabilityZonesAvailabilityZoneArgs struct {
-	// Specifies the display name of the availability zone to be queried.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// Specifies the name of the availability zone to be queried.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The ID of the region in which the availability zone belongs.
-	RegionId pulumi.StringInput `pulumi:"regionId"`
-	// The status of the availability zone. The value can be **Running**.
-	Status pulumi.StringInput `pulumi:"status"`
-	// The type of the availability zone. The valid values are as follows:
-	// + **Core**: Core availability zone.
-	// + **Dedicated**: Exclusive availability zone, only open to internal customers.
-	Type pulumi.StringInput `pulumi:"type"`
+	Name        pulumi.StringInput `pulumi:"name"`
+	RegionId    pulumi.StringInput `pulumi:"regionId"`
+	Status      pulumi.StringInput `pulumi:"status"`
+	Type        pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetCbhAvailabilityZonesAvailabilityZoneArgs) ElementType() reflect.Type {
@@ -21419,29 +20553,22 @@ func (o GetCbhAvailabilityZonesAvailabilityZoneOutput) ToGetCbhAvailabilityZones
 	return o
 }
 
-// Specifies the display name of the availability zone to be queried.
 func (o GetCbhAvailabilityZonesAvailabilityZoneOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbhAvailabilityZonesAvailabilityZone) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the availability zone to be queried.
 func (o GetCbhAvailabilityZonesAvailabilityZoneOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbhAvailabilityZonesAvailabilityZone) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of the region in which the availability zone belongs.
 func (o GetCbhAvailabilityZonesAvailabilityZoneOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbhAvailabilityZonesAvailabilityZone) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
-// The status of the availability zone. The value can be **Running**.
 func (o GetCbhAvailabilityZonesAvailabilityZoneOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbhAvailabilityZonesAvailabilityZone) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The type of the availability zone. The valid values are as follows:
-// + **Core**: Core availability zone.
-// + **Dedicated**: Exclusive availability zone, only open to internal customers.
 func (o GetCbhAvailabilityZonesAvailabilityZoneOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbhAvailabilityZonesAvailabilityZone) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -21467,24 +20594,14 @@ func (o GetCbhAvailabilityZonesAvailabilityZoneArrayOutput) Index(i pulumi.IntIn
 }
 
 type GetCbhFlavorsFlavor struct {
-	// Specifies the number of CBH assets.
-	Asset int `pulumi:"asset"`
-	// The size of the CBH data disk, in TB.
-	DataDiskSize float64 `pulumi:"dataDiskSize"`
-	// The disk size of the CBH system disk, in GB.
-	EcsSystemDataSize int `pulumi:"ecsSystemDataSize"`
-	// Indicates the ID of the specification.
-	Id string `pulumi:"id"`
-	// Specifies the maximum number of connections to the CBH.
-	MaxConnection int `pulumi:"maxConnection"`
-	// Specifies the memory size of the CBH, in GB.
-	Memory int `pulumi:"memory"`
-	// Specifies the type of CBH specification. The value can be:
-	// + **basic**: Standard version.
-	// + **enhance**: Professional version.
-	Type string `pulumi:"type"`
-	// Specifies the number of CPU cores of the CBH.
-	Vcpus int `pulumi:"vcpus"`
+	Asset             int     `pulumi:"asset"`
+	DataDiskSize      float64 `pulumi:"dataDiskSize"`
+	EcsSystemDataSize int     `pulumi:"ecsSystemDataSize"`
+	Id                string  `pulumi:"id"`
+	MaxConnection     int     `pulumi:"maxConnection"`
+	Memory            int     `pulumi:"memory"`
+	Type              string  `pulumi:"type"`
+	Vcpus             int     `pulumi:"vcpus"`
 }
 
 // GetCbhFlavorsFlavorInput is an input type that accepts GetCbhFlavorsFlavorArgs and GetCbhFlavorsFlavorOutput values.
@@ -21499,24 +20616,14 @@ type GetCbhFlavorsFlavorInput interface {
 }
 
 type GetCbhFlavorsFlavorArgs struct {
-	// Specifies the number of CBH assets.
-	Asset pulumi.IntInput `pulumi:"asset"`
-	// The size of the CBH data disk, in TB.
-	DataDiskSize pulumi.Float64Input `pulumi:"dataDiskSize"`
-	// The disk size of the CBH system disk, in GB.
-	EcsSystemDataSize pulumi.IntInput `pulumi:"ecsSystemDataSize"`
-	// Indicates the ID of the specification.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies the maximum number of connections to the CBH.
-	MaxConnection pulumi.IntInput `pulumi:"maxConnection"`
-	// Specifies the memory size of the CBH, in GB.
-	Memory pulumi.IntInput `pulumi:"memory"`
-	// Specifies the type of CBH specification. The value can be:
-	// + **basic**: Standard version.
-	// + **enhance**: Professional version.
-	Type pulumi.StringInput `pulumi:"type"`
-	// Specifies the number of CPU cores of the CBH.
-	Vcpus pulumi.IntInput `pulumi:"vcpus"`
+	Asset             pulumi.IntInput     `pulumi:"asset"`
+	DataDiskSize      pulumi.Float64Input `pulumi:"dataDiskSize"`
+	EcsSystemDataSize pulumi.IntInput     `pulumi:"ecsSystemDataSize"`
+	Id                pulumi.StringInput  `pulumi:"id"`
+	MaxConnection     pulumi.IntInput     `pulumi:"maxConnection"`
+	Memory            pulumi.IntInput     `pulumi:"memory"`
+	Type              pulumi.StringInput  `pulumi:"type"`
+	Vcpus             pulumi.IntInput     `pulumi:"vcpus"`
 }
 
 func (GetCbhFlavorsFlavorArgs) ElementType() reflect.Type {
@@ -21570,44 +20677,34 @@ func (o GetCbhFlavorsFlavorOutput) ToGetCbhFlavorsFlavorOutputWithContext(ctx co
 	return o
 }
 
-// Specifies the number of CBH assets.
 func (o GetCbhFlavorsFlavorOutput) Asset() pulumi.IntOutput {
 	return o.ApplyT(func(v GetCbhFlavorsFlavor) int { return v.Asset }).(pulumi.IntOutput)
 }
 
-// The size of the CBH data disk, in TB.
 func (o GetCbhFlavorsFlavorOutput) DataDiskSize() pulumi.Float64Output {
 	return o.ApplyT(func(v GetCbhFlavorsFlavor) float64 { return v.DataDiskSize }).(pulumi.Float64Output)
 }
 
-// The disk size of the CBH system disk, in GB.
 func (o GetCbhFlavorsFlavorOutput) EcsSystemDataSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetCbhFlavorsFlavor) int { return v.EcsSystemDataSize }).(pulumi.IntOutput)
 }
 
-// Indicates the ID of the specification.
 func (o GetCbhFlavorsFlavorOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbhFlavorsFlavor) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Specifies the maximum number of connections to the CBH.
 func (o GetCbhFlavorsFlavorOutput) MaxConnection() pulumi.IntOutput {
 	return o.ApplyT(func(v GetCbhFlavorsFlavor) int { return v.MaxConnection }).(pulumi.IntOutput)
 }
 
-// Specifies the memory size of the CBH, in GB.
 func (o GetCbhFlavorsFlavorOutput) Memory() pulumi.IntOutput {
 	return o.ApplyT(func(v GetCbhFlavorsFlavor) int { return v.Memory }).(pulumi.IntOutput)
 }
 
-// Specifies the type of CBH specification. The value can be:
-// + **basic**: Standard version.
-// + **enhance**: Professional version.
 func (o GetCbhFlavorsFlavorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbhFlavorsFlavor) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Specifies the number of CPU cores of the CBH.
 func (o GetCbhFlavorsFlavorOutput) Vcpus() pulumi.IntOutput {
 	return o.ApplyT(func(v GetCbhFlavorsFlavor) int { return v.Vcpus }).(pulumi.IntOutput)
 }
@@ -21635,11 +20732,11 @@ func (o GetCbhFlavorsFlavorArrayOutput) Index(i pulumi.IntInput) GetCbhFlavorsFl
 type GetCbhInstancesInstance struct {
 	// Indicates the availability zone name.
 	AvailabilityZone string `pulumi:"availabilityZone"`
-	// Specifies the specification of the instance.
+	// Indicates the specification of the instance.
 	FlavorId string `pulumi:"flavorId"`
 	// Indicates the ID of the instance.
 	Id string `pulumi:"id"`
-	// Specifies the instance name.
+	// Indicates the instance name.
 	Name string `pulumi:"name"`
 	// Indicates the private IP address of the instance.
 	PrivateIp string `pulumi:"privateIp"`
@@ -21647,15 +20744,15 @@ type GetCbhInstancesInstance struct {
 	PublicIp string `pulumi:"publicIp"`
 	// Indicates the ID of the elastic IP.
 	PublicIpId string `pulumi:"publicIpId"`
-	// Specifies the ID of a security group.
+	// Indicates the ID of a security group.
 	SecurityGroupId string `pulumi:"securityGroupId"`
 	// Indicates the status of the instance.
 	Status string `pulumi:"status"`
-	// Specifies the ID of a subnet.
+	// Indicates the ID of a subnet.
 	SubnetId string `pulumi:"subnetId"`
-	// Specifies the current version of the instance image.
+	// Indicates the current version of the instance image.
 	Version string `pulumi:"version"`
-	// Specifies the ID of a VPC.
+	// Indicates the ID of a VPC.
 	VpcId string `pulumi:"vpcId"`
 }
 
@@ -21673,11 +20770,11 @@ type GetCbhInstancesInstanceInput interface {
 type GetCbhInstancesInstanceArgs struct {
 	// Indicates the availability zone name.
 	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
-	// Specifies the specification of the instance.
+	// Indicates the specification of the instance.
 	FlavorId pulumi.StringInput `pulumi:"flavorId"`
 	// Indicates the ID of the instance.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies the instance name.
+	// Indicates the instance name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Indicates the private IP address of the instance.
 	PrivateIp pulumi.StringInput `pulumi:"privateIp"`
@@ -21685,15 +20782,15 @@ type GetCbhInstancesInstanceArgs struct {
 	PublicIp pulumi.StringInput `pulumi:"publicIp"`
 	// Indicates the ID of the elastic IP.
 	PublicIpId pulumi.StringInput `pulumi:"publicIpId"`
-	// Specifies the ID of a security group.
+	// Indicates the ID of a security group.
 	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
 	// Indicates the status of the instance.
 	Status pulumi.StringInput `pulumi:"status"`
-	// Specifies the ID of a subnet.
+	// Indicates the ID of a subnet.
 	SubnetId pulumi.StringInput `pulumi:"subnetId"`
-	// Specifies the current version of the instance image.
+	// Indicates the current version of the instance image.
 	Version pulumi.StringInput `pulumi:"version"`
-	// Specifies the ID of a VPC.
+	// Indicates the ID of a VPC.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 }
 
@@ -21753,7 +20850,7 @@ func (o GetCbhInstancesInstanceOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbhInstancesInstance) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// Specifies the specification of the instance.
+// Indicates the specification of the instance.
 func (o GetCbhInstancesInstanceOutput) FlavorId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbhInstancesInstance) string { return v.FlavorId }).(pulumi.StringOutput)
 }
@@ -21763,7 +20860,7 @@ func (o GetCbhInstancesInstanceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbhInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Specifies the instance name.
+// Indicates the instance name.
 func (o GetCbhInstancesInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbhInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -21783,7 +20880,7 @@ func (o GetCbhInstancesInstanceOutput) PublicIpId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbhInstancesInstance) string { return v.PublicIpId }).(pulumi.StringOutput)
 }
 
-// Specifies the ID of a security group.
+// Indicates the ID of a security group.
 func (o GetCbhInstancesInstanceOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbhInstancesInstance) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
@@ -21793,17 +20890,17 @@ func (o GetCbhInstancesInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbhInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Specifies the ID of a subnet.
+// Indicates the ID of a subnet.
 func (o GetCbhInstancesInstanceOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbhInstancesInstance) string { return v.SubnetId }).(pulumi.StringOutput)
 }
 
-// Specifies the current version of the instance image.
+// Indicates the current version of the instance image.
 func (o GetCbhInstancesInstanceOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbhInstancesInstance) string { return v.Version }).(pulumi.StringOutput)
 }
 
-// Specifies the ID of a VPC.
+// Indicates the ID of a VPC.
 func (o GetCbhInstancesInstanceOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbhInstancesInstance) string { return v.VpcId }).(pulumi.StringOutput)
 }
@@ -21841,7 +20938,7 @@ type GetCbrBackupChildren struct {
 	ExpiredAt string `pulumi:"expiredAt"`
 	// The extended information.
 	ExtendInfos []GetCbrBackupChildrenExtendInfo `pulumi:"extendInfos"`
-	// Specifies the backup ID.
+	// The sub-backup ID.
 	Id string `pulumi:"id"`
 	// The sub-backup name.
 	Name string `pulumi:"name"`
@@ -21863,7 +20960,7 @@ type GetCbrBackupChildren struct {
 	Type string `pulumi:"type"`
 	// The latest update time of the sub-backup.
 	UpdatedAt string `pulumi:"updatedAt"`
-	// The vault to which the backup resource belongs.
+	// The vault to which the backup sub-backup resource belongs.
 	VaultId string `pulumi:"vaultId"`
 }
 
@@ -21891,7 +20988,7 @@ type GetCbrBackupChildrenArgs struct {
 	ExpiredAt pulumi.StringInput `pulumi:"expiredAt"`
 	// The extended information.
 	ExtendInfos GetCbrBackupChildrenExtendInfoArrayInput `pulumi:"extendInfos"`
-	// Specifies the backup ID.
+	// The sub-backup ID.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The sub-backup name.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -21913,7 +21010,7 @@ type GetCbrBackupChildrenArgs struct {
 	Type pulumi.StringInput `pulumi:"type"`
 	// The latest update time of the sub-backup.
 	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
-	// The vault to which the backup resource belongs.
+	// The vault to which the backup sub-backup resource belongs.
 	VaultId pulumi.StringInput `pulumi:"vaultId"`
 }
 
@@ -21998,7 +21095,7 @@ func (o GetCbrBackupChildrenOutput) ExtendInfos() GetCbrBackupChildrenExtendInfo
 	return o.ApplyT(func(v GetCbrBackupChildren) []GetCbrBackupChildrenExtendInfo { return v.ExtendInfos }).(GetCbrBackupChildrenExtendInfoArrayOutput)
 }
 
-// Specifies the backup ID.
+// The sub-backup ID.
 func (o GetCbrBackupChildrenOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrBackupChildren) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -22053,7 +21150,7 @@ func (o GetCbrBackupChildrenOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrBackupChildren) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// The vault to which the backup resource belongs.
+// The vault to which the backup sub-backup resource belongs.
 func (o GetCbrBackupChildrenOutput) VaultId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrBackupChildren) string { return v.VaultId }).(pulumi.StringOutput)
 }
@@ -22257,7 +21354,7 @@ func (o GetCbrBackupChildrenExtendInfoArrayOutput) Index(i pulumi.IntInput) GetC
 }
 
 type GetCbrBackupChildrenReplicationRecord struct {
-	// The creation time of the sub-backup.
+	// The creation time of the replication.
 	CreatedAt string `pulumi:"createdAt"`
 	// The ID of the destination backup used for replication.
 	DestinationBackupId string `pulumi:"destinationBackupId"`
@@ -22270,9 +21367,8 @@ type GetCbrBackupChildrenReplicationRecord struct {
 	// The destination vault ID.
 	DestinationVaultId string `pulumi:"destinationVaultId"`
 	// The additional information of the replication.
-	// The object structure is documented below.
 	ExtraInfos []GetCbrBackupChildrenReplicationRecordExtraInfo `pulumi:"extraInfos"`
-	// Specifies the backup ID.
+	// The replication record ID.
 	Id string `pulumi:"id"`
 	// The ID of the source backup used for replication.
 	SourceBackupId string `pulumi:"sourceBackupId"`
@@ -22282,9 +21378,9 @@ type GetCbrBackupChildrenReplicationRecord struct {
 	SourceProjectId string `pulumi:"sourceProjectId"`
 	// The replication source region.
 	SourceRegion string `pulumi:"sourceRegion"`
-	// The sub-backup status.
+	// The replication status.
 	Status string `pulumi:"status"`
-	// The vault to which the backup resource belongs.
+	// The ID of the vault where the backup resides.
 	VaultId string `pulumi:"vaultId"`
 }
 
@@ -22300,7 +21396,7 @@ type GetCbrBackupChildrenReplicationRecordInput interface {
 }
 
 type GetCbrBackupChildrenReplicationRecordArgs struct {
-	// The creation time of the sub-backup.
+	// The creation time of the replication.
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
 	// The ID of the destination backup used for replication.
 	DestinationBackupId pulumi.StringInput `pulumi:"destinationBackupId"`
@@ -22313,9 +21409,8 @@ type GetCbrBackupChildrenReplicationRecordArgs struct {
 	// The destination vault ID.
 	DestinationVaultId pulumi.StringInput `pulumi:"destinationVaultId"`
 	// The additional information of the replication.
-	// The object structure is documented below.
 	ExtraInfos GetCbrBackupChildrenReplicationRecordExtraInfoArrayInput `pulumi:"extraInfos"`
-	// Specifies the backup ID.
+	// The replication record ID.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The ID of the source backup used for replication.
 	SourceBackupId pulumi.StringInput `pulumi:"sourceBackupId"`
@@ -22325,9 +21420,9 @@ type GetCbrBackupChildrenReplicationRecordArgs struct {
 	SourceProjectId pulumi.StringInput `pulumi:"sourceProjectId"`
 	// The replication source region.
 	SourceRegion pulumi.StringInput `pulumi:"sourceRegion"`
-	// The sub-backup status.
+	// The replication status.
 	Status pulumi.StringInput `pulumi:"status"`
-	// The vault to which the backup resource belongs.
+	// The ID of the vault where the backup resides.
 	VaultId pulumi.StringInput `pulumi:"vaultId"`
 }
 
@@ -22382,7 +21477,7 @@ func (o GetCbrBackupChildrenReplicationRecordOutput) ToGetCbrBackupChildrenRepli
 	return o
 }
 
-// The creation time of the sub-backup.
+// The creation time of the replication.
 func (o GetCbrBackupChildrenReplicationRecordOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrBackupChildrenReplicationRecord) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
@@ -22413,14 +21508,13 @@ func (o GetCbrBackupChildrenReplicationRecordOutput) DestinationVaultId() pulumi
 }
 
 // The additional information of the replication.
-// The object structure is documented below.
 func (o GetCbrBackupChildrenReplicationRecordOutput) ExtraInfos() GetCbrBackupChildrenReplicationRecordExtraInfoArrayOutput {
 	return o.ApplyT(func(v GetCbrBackupChildrenReplicationRecord) []GetCbrBackupChildrenReplicationRecordExtraInfo {
 		return v.ExtraInfos
 	}).(GetCbrBackupChildrenReplicationRecordExtraInfoArrayOutput)
 }
 
-// Specifies the backup ID.
+// The replication record ID.
 func (o GetCbrBackupChildrenReplicationRecordOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrBackupChildrenReplicationRecord) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -22445,12 +21539,12 @@ func (o GetCbrBackupChildrenReplicationRecordOutput) SourceRegion() pulumi.Strin
 	return o.ApplyT(func(v GetCbrBackupChildrenReplicationRecord) string { return v.SourceRegion }).(pulumi.StringOutput)
 }
 
-// The sub-backup status.
+// The replication status.
 func (o GetCbrBackupChildrenReplicationRecordOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrBackupChildrenReplicationRecord) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The vault to which the backup resource belongs.
+// The ID of the vault where the backup resides.
 func (o GetCbrBackupChildrenReplicationRecordOutput) VaultId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrBackupChildrenReplicationRecord) string { return v.VaultId }).(pulumi.StringOutput)
 }
@@ -22476,7 +21570,7 @@ func (o GetCbrBackupChildrenReplicationRecordArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetCbrBackupChildrenReplicationRecordExtraInfo struct {
-	// Whether the backup is automatically generated.
+	// Whether replication is automatically scheduled.
 	AutoTrigger bool `pulumi:"autoTrigger"`
 	// The destination vault ID.
 	DestinationVaultId string `pulumi:"destinationVaultId"`
@@ -22500,7 +21594,7 @@ type GetCbrBackupChildrenReplicationRecordExtraInfoInput interface {
 }
 
 type GetCbrBackupChildrenReplicationRecordExtraInfoArgs struct {
-	// Whether the backup is automatically generated.
+	// Whether replication is automatically scheduled.
 	AutoTrigger pulumi.BoolInput `pulumi:"autoTrigger"`
 	// The destination vault ID.
 	DestinationVaultId pulumi.StringInput `pulumi:"destinationVaultId"`
@@ -22563,7 +21657,7 @@ func (o GetCbrBackupChildrenReplicationRecordExtraInfoOutput) ToGetCbrBackupChil
 	return o
 }
 
-// Whether the backup is automatically generated.
+// Whether replication is automatically scheduled.
 func (o GetCbrBackupChildrenReplicationRecordExtraInfoOutput) AutoTrigger() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetCbrBackupChildrenReplicationRecordExtraInfo) bool { return v.AutoTrigger }).(pulumi.BoolOutput)
 }
@@ -22787,7 +21881,7 @@ func (o GetCbrBackupExtendInfoArrayOutput) Index(i pulumi.IntInput) GetCbrBackup
 }
 
 type GetCbrBackupReplicationRecord struct {
-	// The creation time of the sub-backup.
+	// The creation time of the replication.
 	CreatedAt string `pulumi:"createdAt"`
 	// The ID of the destination backup used for replication.
 	DestinationBackupId string `pulumi:"destinationBackupId"`
@@ -22800,9 +21894,8 @@ type GetCbrBackupReplicationRecord struct {
 	// The destination vault ID.
 	DestinationVaultId string `pulumi:"destinationVaultId"`
 	// The additional information of the replication.
-	// The object structure is documented below.
 	ExtraInfos []GetCbrBackupReplicationRecordExtraInfo `pulumi:"extraInfos"`
-	// Specifies the backup ID.
+	// The replication record ID.
 	Id string `pulumi:"id"`
 	// The ID of the source backup used for replication.
 	SourceBackupId string `pulumi:"sourceBackupId"`
@@ -22812,9 +21905,9 @@ type GetCbrBackupReplicationRecord struct {
 	SourceProjectId string `pulumi:"sourceProjectId"`
 	// The replication source region.
 	SourceRegion string `pulumi:"sourceRegion"`
-	// The sub-backup status.
+	// The replication status.
 	Status string `pulumi:"status"`
-	// The vault to which the backup resource belongs.
+	// The ID of the vault where the backup resides.
 	VaultId string `pulumi:"vaultId"`
 }
 
@@ -22830,7 +21923,7 @@ type GetCbrBackupReplicationRecordInput interface {
 }
 
 type GetCbrBackupReplicationRecordArgs struct {
-	// The creation time of the sub-backup.
+	// The creation time of the replication.
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
 	// The ID of the destination backup used for replication.
 	DestinationBackupId pulumi.StringInput `pulumi:"destinationBackupId"`
@@ -22843,9 +21936,8 @@ type GetCbrBackupReplicationRecordArgs struct {
 	// The destination vault ID.
 	DestinationVaultId pulumi.StringInput `pulumi:"destinationVaultId"`
 	// The additional information of the replication.
-	// The object structure is documented below.
 	ExtraInfos GetCbrBackupReplicationRecordExtraInfoArrayInput `pulumi:"extraInfos"`
-	// Specifies the backup ID.
+	// The replication record ID.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The ID of the source backup used for replication.
 	SourceBackupId pulumi.StringInput `pulumi:"sourceBackupId"`
@@ -22855,9 +21947,9 @@ type GetCbrBackupReplicationRecordArgs struct {
 	SourceProjectId pulumi.StringInput `pulumi:"sourceProjectId"`
 	// The replication source region.
 	SourceRegion pulumi.StringInput `pulumi:"sourceRegion"`
-	// The sub-backup status.
+	// The replication status.
 	Status pulumi.StringInput `pulumi:"status"`
-	// The vault to which the backup resource belongs.
+	// The ID of the vault where the backup resides.
 	VaultId pulumi.StringInput `pulumi:"vaultId"`
 }
 
@@ -22912,7 +22004,7 @@ func (o GetCbrBackupReplicationRecordOutput) ToGetCbrBackupReplicationRecordOutp
 	return o
 }
 
-// The creation time of the sub-backup.
+// The creation time of the replication.
 func (o GetCbrBackupReplicationRecordOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrBackupReplicationRecord) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
@@ -22943,12 +22035,11 @@ func (o GetCbrBackupReplicationRecordOutput) DestinationVaultId() pulumi.StringO
 }
 
 // The additional information of the replication.
-// The object structure is documented below.
 func (o GetCbrBackupReplicationRecordOutput) ExtraInfos() GetCbrBackupReplicationRecordExtraInfoArrayOutput {
 	return o.ApplyT(func(v GetCbrBackupReplicationRecord) []GetCbrBackupReplicationRecordExtraInfo { return v.ExtraInfos }).(GetCbrBackupReplicationRecordExtraInfoArrayOutput)
 }
 
-// Specifies the backup ID.
+// The replication record ID.
 func (o GetCbrBackupReplicationRecordOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrBackupReplicationRecord) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -22973,12 +22064,12 @@ func (o GetCbrBackupReplicationRecordOutput) SourceRegion() pulumi.StringOutput 
 	return o.ApplyT(func(v GetCbrBackupReplicationRecord) string { return v.SourceRegion }).(pulumi.StringOutput)
 }
 
-// The sub-backup status.
+// The replication status.
 func (o GetCbrBackupReplicationRecordOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrBackupReplicationRecord) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The vault to which the backup resource belongs.
+// The ID of the vault where the backup resides.
 func (o GetCbrBackupReplicationRecordOutput) VaultId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrBackupReplicationRecord) string { return v.VaultId }).(pulumi.StringOutput)
 }
@@ -23004,7 +22095,7 @@ func (o GetCbrBackupReplicationRecordArrayOutput) Index(i pulumi.IntInput) GetCb
 }
 
 type GetCbrBackupReplicationRecordExtraInfo struct {
-	// Whether the backup is automatically generated.
+	// Whether replication is automatically scheduled.
 	AutoTrigger bool `pulumi:"autoTrigger"`
 	// The destination vault ID.
 	DestinationVaultId string `pulumi:"destinationVaultId"`
@@ -23028,7 +22119,7 @@ type GetCbrBackupReplicationRecordExtraInfoInput interface {
 }
 
 type GetCbrBackupReplicationRecordExtraInfoArgs struct {
-	// Whether the backup is automatically generated.
+	// Whether replication is automatically scheduled.
 	AutoTrigger pulumi.BoolInput `pulumi:"autoTrigger"`
 	// The destination vault ID.
 	DestinationVaultId pulumi.StringInput `pulumi:"destinationVaultId"`
@@ -23091,7 +22182,7 @@ func (o GetCbrBackupReplicationRecordExtraInfoOutput) ToGetCbrBackupReplicationR
 	return o
 }
 
-// Whether the backup is automatically generated.
+// Whether replication is automatically scheduled.
 func (o GetCbrBackupReplicationRecordExtraInfoOutput) AutoTrigger() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetCbrBackupReplicationRecordExtraInfo) bool { return v.AutoTrigger }).(pulumi.BoolOutput)
 }
@@ -23137,42 +22228,31 @@ func (o GetCbrBackupReplicationRecordExtraInfoArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetCbrPoliciesPolicy struct {
-	// The vault associated with the CBR policy.
-	// The associatedVaults structure is documented below.
+	// The vault associated with the CBR policy
 	AssociatedVaults []GetCbrPoliciesPolicyAssociatedVault `pulumi:"associatedVaults"`
-	// The scheduling rule for the policy backup execution.
-	// The backupCycle structure is documented below.
+	// The scheduling rule for the CBR policy backup execution.
 	BackupCycles []GetCbrPoliciesPolicyBackupCycle `pulumi:"backupCycles"`
-	// The maximum number of retained backups. The value ranges from `2` to `99,999`.
-	// This parameter and `timePeriod` are alternative.
+	// The maximum number of retained backups.
 	BackupQuantity int `pulumi:"backupQuantity"`
 	// The ID of the replication destination project.
 	DestinationProjectId string `pulumi:"destinationProjectId"`
 	// The name of the replication destination region.
 	DestinationRegion string `pulumi:"destinationRegion"`
-	// Whether to enable the acceleration function to shorten the replication time for cross-region.
-	// The valid values are as follows:
-	// + **true**: Enabled acceleration
-	// + **false**: Not enabled acceleration
+	// Whether to enable the acceleration function to shorten the replication time for cross-region
 	EnableAcceleration bool `pulumi:"enableAcceleration"`
-	// Specifies the policy enabling status to query. The valid values are as follows:
-	// + **true**: Policy enabled
-	// + **false**: Policy not enabled
+	// Whether to enable the CBR policy.
 	Enabled bool `pulumi:"enabled"`
 	// The policy ID.
 	Id string `pulumi:"id"`
-	// The long-term retention rules, which is an advanced options of the `backupQuantity`.
-	// The longTermRetention structure is documented below.
+	// The long-term retention rules.
 	LongTermRetentions []GetCbrPoliciesPolicyLongTermRetention `pulumi:"longTermRetentions"`
-	// Specifies the policy name used to query.
+	// The policy name.
 	Name string `pulumi:"name"`
-	// The duration (in days) for retained backups. The value ranges from `2` to `99,999`.
+	// The duration (in days) for retained backups.
 	TimePeriod int `pulumi:"timePeriod"`
-	// The UTC time zone, e.g. `UTC+08:00`. Only available when `longTermRetention` is set.
+	// The UTC time zone.
 	TimeZone string `pulumi:"timeZone"`
-	// Specifies the policy type used to query. The valid values are as follows:
-	// + **backup**: Backup policy
-	// + **replication**: Replication policy
+	// The protection type of the CBR policy.
 	Type string `pulumi:"type"`
 }
 
@@ -23188,42 +22268,31 @@ type GetCbrPoliciesPolicyInput interface {
 }
 
 type GetCbrPoliciesPolicyArgs struct {
-	// The vault associated with the CBR policy.
-	// The associatedVaults structure is documented below.
+	// The vault associated with the CBR policy
 	AssociatedVaults GetCbrPoliciesPolicyAssociatedVaultArrayInput `pulumi:"associatedVaults"`
-	// The scheduling rule for the policy backup execution.
-	// The backupCycle structure is documented below.
+	// The scheduling rule for the CBR policy backup execution.
 	BackupCycles GetCbrPoliciesPolicyBackupCycleArrayInput `pulumi:"backupCycles"`
-	// The maximum number of retained backups. The value ranges from `2` to `99,999`.
-	// This parameter and `timePeriod` are alternative.
+	// The maximum number of retained backups.
 	BackupQuantity pulumi.IntInput `pulumi:"backupQuantity"`
 	// The ID of the replication destination project.
 	DestinationProjectId pulumi.StringInput `pulumi:"destinationProjectId"`
 	// The name of the replication destination region.
 	DestinationRegion pulumi.StringInput `pulumi:"destinationRegion"`
-	// Whether to enable the acceleration function to shorten the replication time for cross-region.
-	// The valid values are as follows:
-	// + **true**: Enabled acceleration
-	// + **false**: Not enabled acceleration
+	// Whether to enable the acceleration function to shorten the replication time for cross-region
 	EnableAcceleration pulumi.BoolInput `pulumi:"enableAcceleration"`
-	// Specifies the policy enabling status to query. The valid values are as follows:
-	// + **true**: Policy enabled
-	// + **false**: Policy not enabled
+	// Whether to enable the CBR policy.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// The policy ID.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The long-term retention rules, which is an advanced options of the `backupQuantity`.
-	// The longTermRetention structure is documented below.
+	// The long-term retention rules.
 	LongTermRetentions GetCbrPoliciesPolicyLongTermRetentionArrayInput `pulumi:"longTermRetentions"`
-	// Specifies the policy name used to query.
+	// The policy name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The duration (in days) for retained backups. The value ranges from `2` to `99,999`.
+	// The duration (in days) for retained backups.
 	TimePeriod pulumi.IntInput `pulumi:"timePeriod"`
-	// The UTC time zone, e.g. `UTC+08:00`. Only available when `longTermRetention` is set.
+	// The UTC time zone.
 	TimeZone pulumi.StringInput `pulumi:"timeZone"`
-	// Specifies the policy type used to query. The valid values are as follows:
-	// + **backup**: Backup policy
-	// + **replication**: Replication policy
+	// The protection type of the CBR policy.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -23278,20 +22347,17 @@ func (o GetCbrPoliciesPolicyOutput) ToGetCbrPoliciesPolicyOutputWithContext(ctx 
 	return o
 }
 
-// The vault associated with the CBR policy.
-// The associatedVaults structure is documented below.
+// The vault associated with the CBR policy
 func (o GetCbrPoliciesPolicyOutput) AssociatedVaults() GetCbrPoliciesPolicyAssociatedVaultArrayOutput {
 	return o.ApplyT(func(v GetCbrPoliciesPolicy) []GetCbrPoliciesPolicyAssociatedVault { return v.AssociatedVaults }).(GetCbrPoliciesPolicyAssociatedVaultArrayOutput)
 }
 
-// The scheduling rule for the policy backup execution.
-// The backupCycle structure is documented below.
+// The scheduling rule for the CBR policy backup execution.
 func (o GetCbrPoliciesPolicyOutput) BackupCycles() GetCbrPoliciesPolicyBackupCycleArrayOutput {
 	return o.ApplyT(func(v GetCbrPoliciesPolicy) []GetCbrPoliciesPolicyBackupCycle { return v.BackupCycles }).(GetCbrPoliciesPolicyBackupCycleArrayOutput)
 }
 
-// The maximum number of retained backups. The value ranges from `2` to `99,999`.
-// This parameter and `timePeriod` are alternative.
+// The maximum number of retained backups.
 func (o GetCbrPoliciesPolicyOutput) BackupQuantity() pulumi.IntOutput {
 	return o.ApplyT(func(v GetCbrPoliciesPolicy) int { return v.BackupQuantity }).(pulumi.IntOutput)
 }
@@ -23306,17 +22372,12 @@ func (o GetCbrPoliciesPolicyOutput) DestinationRegion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrPoliciesPolicy) string { return v.DestinationRegion }).(pulumi.StringOutput)
 }
 
-// Whether to enable the acceleration function to shorten the replication time for cross-region.
-// The valid values are as follows:
-// + **true**: Enabled acceleration
-// + **false**: Not enabled acceleration
+// Whether to enable the acceleration function to shorten the replication time for cross-region
 func (o GetCbrPoliciesPolicyOutput) EnableAcceleration() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetCbrPoliciesPolicy) bool { return v.EnableAcceleration }).(pulumi.BoolOutput)
 }
 
-// Specifies the policy enabling status to query. The valid values are as follows:
-// + **true**: Policy enabled
-// + **false**: Policy not enabled
+// Whether to enable the CBR policy.
 func (o GetCbrPoliciesPolicyOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetCbrPoliciesPolicy) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -23326,30 +22387,27 @@ func (o GetCbrPoliciesPolicyOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrPoliciesPolicy) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The long-term retention rules, which is an advanced options of the `backupQuantity`.
-// The longTermRetention structure is documented below.
+// The long-term retention rules.
 func (o GetCbrPoliciesPolicyOutput) LongTermRetentions() GetCbrPoliciesPolicyLongTermRetentionArrayOutput {
 	return o.ApplyT(func(v GetCbrPoliciesPolicy) []GetCbrPoliciesPolicyLongTermRetention { return v.LongTermRetentions }).(GetCbrPoliciesPolicyLongTermRetentionArrayOutput)
 }
 
-// Specifies the policy name used to query.
+// The policy name.
 func (o GetCbrPoliciesPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrPoliciesPolicy) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The duration (in days) for retained backups. The value ranges from `2` to `99,999`.
+// The duration (in days) for retained backups.
 func (o GetCbrPoliciesPolicyOutput) TimePeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v GetCbrPoliciesPolicy) int { return v.TimePeriod }).(pulumi.IntOutput)
 }
 
-// The UTC time zone, e.g. `UTC+08:00`. Only available when `longTermRetention` is set.
+// The UTC time zone.
 func (o GetCbrPoliciesPolicyOutput) TimeZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrPoliciesPolicy) string { return v.TimeZone }).(pulumi.StringOutput)
 }
 
-// Specifies the policy type used to query. The valid values are as follows:
-// + **backup**: Backup policy
-// + **replication**: Replication policy
+// The protection type of the CBR policy.
 func (o GetCbrPoliciesPolicyOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrPoliciesPolicy) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -23375,9 +22433,9 @@ func (o GetCbrPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetCbrPolicies
 }
 
 type GetCbrPoliciesPolicyAssociatedVault struct {
-	// The destination vault ID associated with CBR policy.
+	// The destination vault ID associated with CBR policy
 	DestinationVaultId string `pulumi:"destinationVaultId"`
-	// Specifies the vault ID of the associated policy used to query.
+	// The vault ID of the associated CBR policy
 	VaultId string `pulumi:"vaultId"`
 }
 
@@ -23393,9 +22451,9 @@ type GetCbrPoliciesPolicyAssociatedVaultInput interface {
 }
 
 type GetCbrPoliciesPolicyAssociatedVaultArgs struct {
-	// The destination vault ID associated with CBR policy.
+	// The destination vault ID associated with CBR policy
 	DestinationVaultId pulumi.StringInput `pulumi:"destinationVaultId"`
-	// Specifies the vault ID of the associated policy used to query.
+	// The vault ID of the associated CBR policy
 	VaultId pulumi.StringInput `pulumi:"vaultId"`
 }
 
@@ -23450,12 +22508,12 @@ func (o GetCbrPoliciesPolicyAssociatedVaultOutput) ToGetCbrPoliciesPolicyAssocia
 	return o
 }
 
-// The destination vault ID associated with CBR policy.
+// The destination vault ID associated with CBR policy
 func (o GetCbrPoliciesPolicyAssociatedVaultOutput) DestinationVaultId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrPoliciesPolicyAssociatedVault) string { return v.DestinationVaultId }).(pulumi.StringOutput)
 }
 
-// Specifies the vault ID of the associated policy used to query.
+// The vault ID of the associated CBR policy
 func (o GetCbrPoliciesPolicyAssociatedVaultOutput) VaultId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrPoliciesPolicyAssociatedVault) string { return v.VaultId }).(pulumi.StringOutput)
 }
@@ -23481,13 +22539,11 @@ func (o GetCbrPoliciesPolicyAssociatedVaultArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetCbrPoliciesPolicyBackupCycle struct {
-	// The weekly backup day of backup schedule. It supports seven days a week (MO, TU, WE, TH, FR, SA, SU)
-	// and this parameter is separated by a comma (,) without spaces between the date and date.
+	// The weekly backup time.
 	Days string `pulumi:"days"`
-	// The backup time. Automated backups will be triggered at the backup
-	// time. The current time is in the UTC format (HH:MM).
+	// The execution time of the policy.
 	ExecutionTimes []string `pulumi:"executionTimes"`
-	// The interval (in days) of backup schedule. The value range is `1` to `30`.
+	// The number of days between each backup.
 	Interval int `pulumi:"interval"`
 }
 
@@ -23503,13 +22559,11 @@ type GetCbrPoliciesPolicyBackupCycleInput interface {
 }
 
 type GetCbrPoliciesPolicyBackupCycleArgs struct {
-	// The weekly backup day of backup schedule. It supports seven days a week (MO, TU, WE, TH, FR, SA, SU)
-	// and this parameter is separated by a comma (,) without spaces between the date and date.
+	// The weekly backup time.
 	Days pulumi.StringInput `pulumi:"days"`
-	// The backup time. Automated backups will be triggered at the backup
-	// time. The current time is in the UTC format (HH:MM).
+	// The execution time of the policy.
 	ExecutionTimes pulumi.StringArrayInput `pulumi:"executionTimes"`
-	// The interval (in days) of backup schedule. The value range is `1` to `30`.
+	// The number of days between each backup.
 	Interval pulumi.IntInput `pulumi:"interval"`
 }
 
@@ -23564,19 +22618,17 @@ func (o GetCbrPoliciesPolicyBackupCycleOutput) ToGetCbrPoliciesPolicyBackupCycle
 	return o
 }
 
-// The weekly backup day of backup schedule. It supports seven days a week (MO, TU, WE, TH, FR, SA, SU)
-// and this parameter is separated by a comma (,) without spaces between the date and date.
+// The weekly backup time.
 func (o GetCbrPoliciesPolicyBackupCycleOutput) Days() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCbrPoliciesPolicyBackupCycle) string { return v.Days }).(pulumi.StringOutput)
 }
 
-// The backup time. Automated backups will be triggered at the backup
-// time. The current time is in the UTC format (HH:MM).
+// The execution time of the policy.
 func (o GetCbrPoliciesPolicyBackupCycleOutput) ExecutionTimes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetCbrPoliciesPolicyBackupCycle) []string { return v.ExecutionTimes }).(pulumi.StringArrayOutput)
 }
 
-// The interval (in days) of backup schedule. The value range is `1` to `30`.
+// The number of days between each backup.
 func (o GetCbrPoliciesPolicyBackupCycleOutput) Interval() pulumi.IntOutput {
 	return o.ApplyT(func(v GetCbrPoliciesPolicyBackupCycle) int { return v.Interval }).(pulumi.IntOutput)
 }
@@ -23605,7 +22657,6 @@ type GetCbrPoliciesPolicyLongTermRetention struct {
 	// The latest backup of each day is saved in the long term.
 	Daily int `pulumi:"daily"`
 	// How often (after how many incremental backups) a full backup is performed.
-	// The valid value ranges from `-1` to `100`. If `-1` is specified, full backup will not be performed.
 	FullBackupInterval int `pulumi:"fullBackupInterval"`
 	// The latest backup of each month is saved in the long term.
 	Monthly int `pulumi:"monthly"`
@@ -23630,7 +22681,6 @@ type GetCbrPoliciesPolicyLongTermRetentionArgs struct {
 	// The latest backup of each day is saved in the long term.
 	Daily pulumi.IntInput `pulumi:"daily"`
 	// How often (after how many incremental backups) a full backup is performed.
-	// The valid value ranges from `-1` to `100`. If `-1` is specified, full backup will not be performed.
 	FullBackupInterval pulumi.IntInput `pulumi:"fullBackupInterval"`
 	// The latest backup of each month is saved in the long term.
 	Monthly pulumi.IntInput `pulumi:"monthly"`
@@ -23697,7 +22747,6 @@ func (o GetCbrPoliciesPolicyLongTermRetentionOutput) Daily() pulumi.IntOutput {
 }
 
 // How often (after how many incremental backups) a full backup is performed.
-// The valid value ranges from `-1` to `100`. If `-1` is specified, full backup will not be performed.
 func (o GetCbrPoliciesPolicyLongTermRetentionOutput) FullBackupInterval() pulumi.IntOutput {
 	return o.ApplyT(func(v GetCbrPoliciesPolicyLongTermRetention) int { return v.FullBackupInterval }).(pulumi.IntOutput)
 }
@@ -23738,12 +22787,10 @@ func (o GetCbrPoliciesPolicyLongTermRetentionArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetCdmFlavorsFlavor struct {
-	Cpu string `pulumi:"cpu"`
-	// The id of the cdm flavor.
+	Cpu    string `pulumi:"cpu"`
 	Id     string `pulumi:"id"`
 	Memory string `pulumi:"memory"`
-	// The name of the cdm flavor.
-	Name string `pulumi:"name"`
+	Name   string `pulumi:"name"`
 }
 
 // GetCdmFlavorsFlavorInput is an input type that accepts GetCdmFlavorsFlavorArgs and GetCdmFlavorsFlavorOutput values.
@@ -23758,12 +22805,10 @@ type GetCdmFlavorsFlavorInput interface {
 }
 
 type GetCdmFlavorsFlavorArgs struct {
-	Cpu pulumi.StringInput `pulumi:"cpu"`
-	// The id of the cdm flavor.
+	Cpu    pulumi.StringInput `pulumi:"cpu"`
 	Id     pulumi.StringInput `pulumi:"id"`
 	Memory pulumi.StringInput `pulumi:"memory"`
-	// The name of the cdm flavor.
-	Name pulumi.StringInput `pulumi:"name"`
+	Name   pulumi.StringInput `pulumi:"name"`
 }
 
 func (GetCdmFlavorsFlavorArgs) ElementType() reflect.Type {
@@ -23821,7 +22866,6 @@ func (o GetCdmFlavorsFlavorOutput) Cpu() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCdmFlavorsFlavor) string { return v.Cpu }).(pulumi.StringOutput)
 }
 
-// The id of the cdm flavor.
 func (o GetCdmFlavorsFlavorOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCdmFlavorsFlavor) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -23830,7 +22874,6 @@ func (o GetCdmFlavorsFlavorOutput) Memory() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCdmFlavorsFlavor) string { return v.Memory }).(pulumi.StringOutput)
 }
 
-// The name of the cdm flavor.
 func (o GetCdmFlavorsFlavorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCdmFlavorsFlavor) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -24000,21 +23043,21 @@ func (o GetDcsAccountsAccountArrayOutput) Index(i pulumi.IntInput) GetDcsAccount
 type GetDmsKafkaConsumerGroupsGroup struct {
 	// Indicates the partition assignment strategy.
 	AssignmentStrategy string `pulumi:"assignmentStrategy"`
-	// Specifies the coordinator ID.
+	// Indicates the coordinator ID.
 	CoordinatorId int `pulumi:"coordinatorId"`
 	// Indicates the create time.
 	CreatedAt string `pulumi:"createdAt"`
-	// Specifies the group description.
+	// Indicates the consumer group description.
 	Description string `pulumi:"description"`
 	// Indicates the group message offsets.
 	GroupMessageOffsets []GetDmsKafkaConsumerGroupsGroupGroupMessageOffset `pulumi:"groupMessageOffsets"`
-	// Specifies the number of accumulated messages.
+	// Indicates the number of accumulated messages.
 	Lag int `pulumi:"lag"`
-	// Indicates the consumer group members
+	// Indicates the consumer group members.
 	Members []GetDmsKafkaConsumerGroupsGroupMember `pulumi:"members"`
-	// Specifies the group name.
+	// Indicates the consumer group name.
 	Name string `pulumi:"name"`
-	// Specifies the consumer group status.
+	// Indicates the consumer group status.
 	State string `pulumi:"state"`
 }
 
@@ -24032,21 +23075,21 @@ type GetDmsKafkaConsumerGroupsGroupInput interface {
 type GetDmsKafkaConsumerGroupsGroupArgs struct {
 	// Indicates the partition assignment strategy.
 	AssignmentStrategy pulumi.StringInput `pulumi:"assignmentStrategy"`
-	// Specifies the coordinator ID.
+	// Indicates the coordinator ID.
 	CoordinatorId pulumi.IntInput `pulumi:"coordinatorId"`
 	// Indicates the create time.
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// Specifies the group description.
+	// Indicates the consumer group description.
 	Description pulumi.StringInput `pulumi:"description"`
 	// Indicates the group message offsets.
 	GroupMessageOffsets GetDmsKafkaConsumerGroupsGroupGroupMessageOffsetArrayInput `pulumi:"groupMessageOffsets"`
-	// Specifies the number of accumulated messages.
+	// Indicates the number of accumulated messages.
 	Lag pulumi.IntInput `pulumi:"lag"`
-	// Indicates the consumer group members
+	// Indicates the consumer group members.
 	Members GetDmsKafkaConsumerGroupsGroupMemberArrayInput `pulumi:"members"`
-	// Specifies the group name.
+	// Indicates the consumer group name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies the consumer group status.
+	// Indicates the consumer group status.
 	State pulumi.StringInput `pulumi:"state"`
 }
 
@@ -24106,7 +23149,7 @@ func (o GetDmsKafkaConsumerGroupsGroupOutput) AssignmentStrategy() pulumi.String
 	return o.ApplyT(func(v GetDmsKafkaConsumerGroupsGroup) string { return v.AssignmentStrategy }).(pulumi.StringOutput)
 }
 
-// Specifies the coordinator ID.
+// Indicates the coordinator ID.
 func (o GetDmsKafkaConsumerGroupsGroupOutput) CoordinatorId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDmsKafkaConsumerGroupsGroup) int { return v.CoordinatorId }).(pulumi.IntOutput)
 }
@@ -24116,7 +23159,7 @@ func (o GetDmsKafkaConsumerGroupsGroupOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsKafkaConsumerGroupsGroup) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Specifies the group description.
+// Indicates the consumer group description.
 func (o GetDmsKafkaConsumerGroupsGroupOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsKafkaConsumerGroupsGroup) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -24128,22 +23171,22 @@ func (o GetDmsKafkaConsumerGroupsGroupOutput) GroupMessageOffsets() GetDmsKafkaC
 	}).(GetDmsKafkaConsumerGroupsGroupGroupMessageOffsetArrayOutput)
 }
 
-// Specifies the number of accumulated messages.
+// Indicates the number of accumulated messages.
 func (o GetDmsKafkaConsumerGroupsGroupOutput) Lag() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDmsKafkaConsumerGroupsGroup) int { return v.Lag }).(pulumi.IntOutput)
 }
 
-// Indicates the consumer group members
+// Indicates the consumer group members.
 func (o GetDmsKafkaConsumerGroupsGroupOutput) Members() GetDmsKafkaConsumerGroupsGroupMemberArrayOutput {
 	return o.ApplyT(func(v GetDmsKafkaConsumerGroupsGroup) []GetDmsKafkaConsumerGroupsGroupMember { return v.Members }).(GetDmsKafkaConsumerGroupsGroupMemberArrayOutput)
 }
 
-// Specifies the group name.
+// Indicates the consumer group name.
 func (o GetDmsKafkaConsumerGroupsGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsKafkaConsumerGroupsGroup) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the consumer group status.
+// Indicates the consumer group status.
 func (o GetDmsKafkaConsumerGroupsGroupOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsKafkaConsumerGroupsGroup) string { return v.State }).(pulumi.StringOutput)
 }
@@ -24169,7 +23212,7 @@ func (o GetDmsKafkaConsumerGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetD
 }
 
 type GetDmsKafkaConsumerGroupsGroupGroupMessageOffset struct {
-	// Specifies the number of accumulated messages.
+	// Indicates the number of accumulated messages.
 	Lag int `pulumi:"lag"`
 	// Indicates the message current offset.
 	MessageCurrentOffset int `pulumi:"messageCurrentOffset"`
@@ -24193,7 +23236,7 @@ type GetDmsKafkaConsumerGroupsGroupGroupMessageOffsetInput interface {
 }
 
 type GetDmsKafkaConsumerGroupsGroupGroupMessageOffsetArgs struct {
-	// Specifies the number of accumulated messages.
+	// Indicates the number of accumulated messages.
 	Lag pulumi.IntInput `pulumi:"lag"`
 	// Indicates the message current offset.
 	MessageCurrentOffset pulumi.IntInput `pulumi:"messageCurrentOffset"`
@@ -24256,7 +23299,7 @@ func (o GetDmsKafkaConsumerGroupsGroupGroupMessageOffsetOutput) ToGetDmsKafkaCon
 	return o
 }
 
-// Specifies the number of accumulated messages.
+// Indicates the number of accumulated messages.
 func (o GetDmsKafkaConsumerGroupsGroupGroupMessageOffsetOutput) Lag() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDmsKafkaConsumerGroupsGroupGroupMessageOffset) int { return v.Lag }).(pulumi.IntOutput)
 }
@@ -24542,11 +23585,9 @@ type GetDmsKafkaMessagesMessage struct {
 	Key string `pulumi:"key"`
 	// Indicates the message ID.
 	MessageId string `pulumi:"messageId"`
-	// Specifies the message offset.
-	// This parameter is mandatory when you query the message content by offset.
+	// Indicates the message offset.
 	MessageOffset int `pulumi:"messageOffset"`
-	// Specifies the partition.
-	// This parameter is mandatory when you query the message content by offset.
+	// Indicates the partition where the message is located.
 	Partition int `pulumi:"partition"`
 	// Indicates the message size.
 	Size int `pulumi:"size"`
@@ -24578,11 +23619,9 @@ type GetDmsKafkaMessagesMessageArgs struct {
 	Key pulumi.StringInput `pulumi:"key"`
 	// Indicates the message ID.
 	MessageId pulumi.StringInput `pulumi:"messageId"`
-	// Specifies the message offset.
-	// This parameter is mandatory when you query the message content by offset.
+	// Indicates the message offset.
 	MessageOffset pulumi.IntInput `pulumi:"messageOffset"`
-	// Specifies the partition.
-	// This parameter is mandatory when you query the message content by offset.
+	// Indicates the partition where the message is located.
 	Partition pulumi.IntInput `pulumi:"partition"`
 	// Indicates the message size.
 	Size pulumi.IntInput `pulumi:"size"`
@@ -24665,14 +23704,12 @@ func (o GetDmsKafkaMessagesMessageOutput) MessageId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsKafkaMessagesMessage) string { return v.MessageId }).(pulumi.StringOutput)
 }
 
-// Specifies the message offset.
-// This parameter is mandatory when you query the message content by offset.
+// Indicates the message offset.
 func (o GetDmsKafkaMessagesMessageOutput) MessageOffset() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDmsKafkaMessagesMessage) int { return v.MessageOffset }).(pulumi.IntOutput)
 }
 
-// Specifies the partition.
-// This parameter is mandatory when you query the message content by offset.
+// Indicates the partition where the message is located.
 func (o GetDmsKafkaMessagesMessageOutput) Partition() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDmsKafkaMessagesMessage) int { return v.Partition }).(pulumi.IntOutput)
 }
@@ -24722,9 +23759,9 @@ type GetDmsKafkaUsersUser struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// Indicates whether the application is the default application.
 	DefaultApp bool `pulumi:"defaultApp"`
-	// Specifies the user description.
+	// Indicates the description.
 	Description string `pulumi:"description"`
-	// Specifies the user name.
+	// Indicates the username.
 	Name string `pulumi:"name"`
 	// Indicates the user role.
 	Role string `pulumi:"role"`
@@ -24746,9 +23783,9 @@ type GetDmsKafkaUsersUserArgs struct {
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
 	// Indicates whether the application is the default application.
 	DefaultApp pulumi.BoolInput `pulumi:"defaultApp"`
-	// Specifies the user description.
+	// Indicates the description.
 	Description pulumi.StringInput `pulumi:"description"`
-	// Specifies the user name.
+	// Indicates the username.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Indicates the user role.
 	Role pulumi.StringInput `pulumi:"role"`
@@ -24815,12 +23852,12 @@ func (o GetDmsKafkaUsersUserOutput) DefaultApp() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDmsKafkaUsersUser) bool { return v.DefaultApp }).(pulumi.BoolOutput)
 }
 
-// Specifies the user description.
+// Indicates the description.
 func (o GetDmsKafkaUsersUserOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsKafkaUsersUser) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Specifies the user name.
+// Indicates the username.
 func (o GetDmsKafkaUsersUserOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsKafkaUsersUser) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -24851,25 +23888,14 @@ func (o GetDmsKafkaUsersUserArrayOutput) Index(i pulumi.IntInput) GetDmsKafkaUse
 }
 
 type GetDmsRabbitmqFlavorsFlavor struct {
-	// Indicates the list of supported CPU architectures.
-	ArchTypes []string `pulumi:"archTypes"`
-	// Indicates the list of supported billing modes.
-	ChargingModes []string `pulumi:"chargingModes"`
-	// Indicates the flavor ID.
-	Id string `pulumi:"id"`
-	// Indicates the list of supported disk IO types.
-	// The object structure is documented below.
-	Ios []GetDmsRabbitmqFlavorsFlavorIo `pulumi:"ios"`
-	// Indicates the function property details.
-	// The object structure is documented below.
-	Properties []GetDmsRabbitmqFlavorsFlavorProperty `pulumi:"properties"`
-	// Indicates the list of features supported by the current specification.
-	// The object structure is documented below.
+	ArchTypes       []string                                    `pulumi:"archTypes"`
+	ChargingModes   []string                                    `pulumi:"chargingModes"`
+	Id              string                                      `pulumi:"id"`
+	Ios             []GetDmsRabbitmqFlavorsFlavorIo             `pulumi:"ios"`
+	Properties      []GetDmsRabbitmqFlavorsFlavorProperty       `pulumi:"properties"`
 	SupportFeatures []GetDmsRabbitmqFlavorsFlavorSupportFeature `pulumi:"supportFeatures"`
-	// Specifies flavor type. The valid values are **single** and **cluster**.
-	Type string `pulumi:"type"`
-	// Indicates the underlying VM specification.
-	VmSpecification string `pulumi:"vmSpecification"`
+	Type            string                                      `pulumi:"type"`
+	VmSpecification string                                      `pulumi:"vmSpecification"`
 }
 
 // GetDmsRabbitmqFlavorsFlavorInput is an input type that accepts GetDmsRabbitmqFlavorsFlavorArgs and GetDmsRabbitmqFlavorsFlavorOutput values.
@@ -24884,25 +23910,14 @@ type GetDmsRabbitmqFlavorsFlavorInput interface {
 }
 
 type GetDmsRabbitmqFlavorsFlavorArgs struct {
-	// Indicates the list of supported CPU architectures.
-	ArchTypes pulumi.StringArrayInput `pulumi:"archTypes"`
-	// Indicates the list of supported billing modes.
-	ChargingModes pulumi.StringArrayInput `pulumi:"chargingModes"`
-	// Indicates the flavor ID.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Indicates the list of supported disk IO types.
-	// The object structure is documented below.
-	Ios GetDmsRabbitmqFlavorsFlavorIoArrayInput `pulumi:"ios"`
-	// Indicates the function property details.
-	// The object structure is documented below.
-	Properties GetDmsRabbitmqFlavorsFlavorPropertyArrayInput `pulumi:"properties"`
-	// Indicates the list of features supported by the current specification.
-	// The object structure is documented below.
+	ArchTypes       pulumi.StringArrayInput                             `pulumi:"archTypes"`
+	ChargingModes   pulumi.StringArrayInput                             `pulumi:"chargingModes"`
+	Id              pulumi.StringInput                                  `pulumi:"id"`
+	Ios             GetDmsRabbitmqFlavorsFlavorIoArrayInput             `pulumi:"ios"`
+	Properties      GetDmsRabbitmqFlavorsFlavorPropertyArrayInput       `pulumi:"properties"`
 	SupportFeatures GetDmsRabbitmqFlavorsFlavorSupportFeatureArrayInput `pulumi:"supportFeatures"`
-	// Specifies flavor type. The valid values are **single** and **cluster**.
-	Type pulumi.StringInput `pulumi:"type"`
-	// Indicates the underlying VM specification.
-	VmSpecification pulumi.StringInput `pulumi:"vmSpecification"`
+	Type            pulumi.StringInput                                  `pulumi:"type"`
+	VmSpecification pulumi.StringInput                                  `pulumi:"vmSpecification"`
 }
 
 func (GetDmsRabbitmqFlavorsFlavorArgs) ElementType() reflect.Type {
@@ -24956,47 +23971,36 @@ func (o GetDmsRabbitmqFlavorsFlavorOutput) ToGetDmsRabbitmqFlavorsFlavorOutputWi
 	return o
 }
 
-// Indicates the list of supported CPU architectures.
 func (o GetDmsRabbitmqFlavorsFlavorOutput) ArchTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsFlavor) []string { return v.ArchTypes }).(pulumi.StringArrayOutput)
 }
 
-// Indicates the list of supported billing modes.
 func (o GetDmsRabbitmqFlavorsFlavorOutput) ChargingModes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsFlavor) []string { return v.ChargingModes }).(pulumi.StringArrayOutput)
 }
 
-// Indicates the flavor ID.
 func (o GetDmsRabbitmqFlavorsFlavorOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsFlavor) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Indicates the list of supported disk IO types.
-// The object structure is documented below.
 func (o GetDmsRabbitmqFlavorsFlavorOutput) Ios() GetDmsRabbitmqFlavorsFlavorIoArrayOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsFlavor) []GetDmsRabbitmqFlavorsFlavorIo { return v.Ios }).(GetDmsRabbitmqFlavorsFlavorIoArrayOutput)
 }
 
-// Indicates the function property details.
-// The object structure is documented below.
 func (o GetDmsRabbitmqFlavorsFlavorOutput) Properties() GetDmsRabbitmqFlavorsFlavorPropertyArrayOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsFlavor) []GetDmsRabbitmqFlavorsFlavorProperty { return v.Properties }).(GetDmsRabbitmqFlavorsFlavorPropertyArrayOutput)
 }
 
-// Indicates the list of features supported by the current specification.
-// The object structure is documented below.
 func (o GetDmsRabbitmqFlavorsFlavorOutput) SupportFeatures() GetDmsRabbitmqFlavorsFlavorSupportFeatureArrayOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsFlavor) []GetDmsRabbitmqFlavorsFlavorSupportFeature {
 		return v.SupportFeatures
 	}).(GetDmsRabbitmqFlavorsFlavorSupportFeatureArrayOutput)
 }
 
-// Specifies flavor type. The valid values are **single** and **cluster**.
 func (o GetDmsRabbitmqFlavorsFlavorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsFlavor) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Indicates the underlying VM specification.
 func (o GetDmsRabbitmqFlavorsFlavorOutput) VmSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsFlavor) string { return v.VmSpecification }).(pulumi.StringOutput)
 }
@@ -25022,15 +24026,9 @@ func (o GetDmsRabbitmqFlavorsFlavorArrayOutput) Index(i pulumi.IntInput) GetDmsR
 }
 
 type GetDmsRabbitmqFlavorsFlavorIo struct {
-	// Specifies the list of availability zones with available resources.
-	AvailabilityZones []string `pulumi:"availabilityZones"`
-	// Specifies the disk IO encoding.
-	// + **dms.physical.storage.high.v2**: Type of the disk that uses high I/O.
-	// + **dms.physical.storage.ultra.v2**: Type of the disk that uses ultra-high I/O.
-	StorageSpecCode string `pulumi:"storageSpecCode"`
-	// Specifies flavor type. The valid values are **single** and **cluster**.
-	Type string `pulumi:"type"`
-	// Indicates the list of unavailability zones with available resources.
+	AvailabilityZones   []string `pulumi:"availabilityZones"`
+	StorageSpecCode     string   `pulumi:"storageSpecCode"`
+	Type                string   `pulumi:"type"`
 	UnavailabilityZones []string `pulumi:"unavailabilityZones"`
 }
 
@@ -25046,15 +24044,9 @@ type GetDmsRabbitmqFlavorsFlavorIoInput interface {
 }
 
 type GetDmsRabbitmqFlavorsFlavorIoArgs struct {
-	// Specifies the list of availability zones with available resources.
-	AvailabilityZones pulumi.StringArrayInput `pulumi:"availabilityZones"`
-	// Specifies the disk IO encoding.
-	// + **dms.physical.storage.high.v2**: Type of the disk that uses high I/O.
-	// + **dms.physical.storage.ultra.v2**: Type of the disk that uses ultra-high I/O.
-	StorageSpecCode pulumi.StringInput `pulumi:"storageSpecCode"`
-	// Specifies flavor type. The valid values are **single** and **cluster**.
-	Type pulumi.StringInput `pulumi:"type"`
-	// Indicates the list of unavailability zones with available resources.
+	AvailabilityZones   pulumi.StringArrayInput `pulumi:"availabilityZones"`
+	StorageSpecCode     pulumi.StringInput      `pulumi:"storageSpecCode"`
+	Type                pulumi.StringInput      `pulumi:"type"`
 	UnavailabilityZones pulumi.StringArrayInput `pulumi:"unavailabilityZones"`
 }
 
@@ -25109,24 +24101,18 @@ func (o GetDmsRabbitmqFlavorsFlavorIoOutput) ToGetDmsRabbitmqFlavorsFlavorIoOutp
 	return o
 }
 
-// Specifies the list of availability zones with available resources.
 func (o GetDmsRabbitmqFlavorsFlavorIoOutput) AvailabilityZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsFlavorIo) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the disk IO encoding.
-// + **dms.physical.storage.high.v2**: Type of the disk that uses high I/O.
-// + **dms.physical.storage.ultra.v2**: Type of the disk that uses ultra-high I/O.
 func (o GetDmsRabbitmqFlavorsFlavorIoOutput) StorageSpecCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsFlavorIo) string { return v.StorageSpecCode }).(pulumi.StringOutput)
 }
 
-// Specifies flavor type. The valid values are **single** and **cluster**.
 func (o GetDmsRabbitmqFlavorsFlavorIoOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsFlavorIo) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Indicates the list of unavailability zones with available resources.
 func (o GetDmsRabbitmqFlavorsFlavorIoOutput) UnavailabilityZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsFlavorIo) []string { return v.UnavailabilityZones }).(pulumi.StringArrayOutput)
 }
@@ -25152,24 +24138,15 @@ func (o GetDmsRabbitmqFlavorsFlavorIoArrayOutput) Index(i pulumi.IntInput) GetDm
 }
 
 type GetDmsRabbitmqFlavorsFlavorProperty struct {
-	// Indicates the flavor ID alias.
-	FlavorAlias string `pulumi:"flavorAlias"`
-	// Indicates the maximum bandwidth per broker.
-	MaxBandwidthPerBroker int `pulumi:"maxBandwidthPerBroker"`
-	// Indicates the maximum number of brokers.
-	MaxBroker int `pulumi:"maxBroker"`
-	// Indicates the maximum number of consumers per broker.
-	MaxConsumerPerBroker int `pulumi:"maxConsumerPerBroker"`
-	// Indicates the maximum number of partitions per broker.
-	MaxPartitionPerBroker int `pulumi:"maxPartitionPerBroker"`
-	// Indicates the maximum storage per node. The unit is GB.
-	MaxStoragePerNode int `pulumi:"maxStoragePerNode"`
-	// Indicates the maximum TPS per broker.
-	MaxTpsPerBroker int `pulumi:"maxTpsPerBroker"`
-	// Indicates the minimum number of brokers.
-	MinBroker int `pulumi:"minBroker"`
-	// Indicates the minimum storage per node. The unit is GB.
-	MinStoragePerNode int `pulumi:"minStoragePerNode"`
+	FlavorAlias           string `pulumi:"flavorAlias"`
+	MaxBandwidthPerBroker int    `pulumi:"maxBandwidthPerBroker"`
+	MaxBroker             int    `pulumi:"maxBroker"`
+	MaxConsumerPerBroker  int    `pulumi:"maxConsumerPerBroker"`
+	MaxPartitionPerBroker int    `pulumi:"maxPartitionPerBroker"`
+	MaxStoragePerNode     int    `pulumi:"maxStoragePerNode"`
+	MaxTpsPerBroker       int    `pulumi:"maxTpsPerBroker"`
+	MinBroker             int    `pulumi:"minBroker"`
+	MinStoragePerNode     int    `pulumi:"minStoragePerNode"`
 }
 
 // GetDmsRabbitmqFlavorsFlavorPropertyInput is an input type that accepts GetDmsRabbitmqFlavorsFlavorPropertyArgs and GetDmsRabbitmqFlavorsFlavorPropertyOutput values.
@@ -25184,24 +24161,15 @@ type GetDmsRabbitmqFlavorsFlavorPropertyInput interface {
 }
 
 type GetDmsRabbitmqFlavorsFlavorPropertyArgs struct {
-	// Indicates the flavor ID alias.
-	FlavorAlias pulumi.StringInput `pulumi:"flavorAlias"`
-	// Indicates the maximum bandwidth per broker.
-	MaxBandwidthPerBroker pulumi.IntInput `pulumi:"maxBandwidthPerBroker"`
-	// Indicates the maximum number of brokers.
-	MaxBroker pulumi.IntInput `pulumi:"maxBroker"`
-	// Indicates the maximum number of consumers per broker.
-	MaxConsumerPerBroker pulumi.IntInput `pulumi:"maxConsumerPerBroker"`
-	// Indicates the maximum number of partitions per broker.
-	MaxPartitionPerBroker pulumi.IntInput `pulumi:"maxPartitionPerBroker"`
-	// Indicates the maximum storage per node. The unit is GB.
-	MaxStoragePerNode pulumi.IntInput `pulumi:"maxStoragePerNode"`
-	// Indicates the maximum TPS per broker.
-	MaxTpsPerBroker pulumi.IntInput `pulumi:"maxTpsPerBroker"`
-	// Indicates the minimum number of brokers.
-	MinBroker pulumi.IntInput `pulumi:"minBroker"`
-	// Indicates the minimum storage per node. The unit is GB.
-	MinStoragePerNode pulumi.IntInput `pulumi:"minStoragePerNode"`
+	FlavorAlias           pulumi.StringInput `pulumi:"flavorAlias"`
+	MaxBandwidthPerBroker pulumi.IntInput    `pulumi:"maxBandwidthPerBroker"`
+	MaxBroker             pulumi.IntInput    `pulumi:"maxBroker"`
+	MaxConsumerPerBroker  pulumi.IntInput    `pulumi:"maxConsumerPerBroker"`
+	MaxPartitionPerBroker pulumi.IntInput    `pulumi:"maxPartitionPerBroker"`
+	MaxStoragePerNode     pulumi.IntInput    `pulumi:"maxStoragePerNode"`
+	MaxTpsPerBroker       pulumi.IntInput    `pulumi:"maxTpsPerBroker"`
+	MinBroker             pulumi.IntInput    `pulumi:"minBroker"`
+	MinStoragePerNode     pulumi.IntInput    `pulumi:"minStoragePerNode"`
 }
 
 func (GetDmsRabbitmqFlavorsFlavorPropertyArgs) ElementType() reflect.Type {
@@ -25255,47 +24223,38 @@ func (o GetDmsRabbitmqFlavorsFlavorPropertyOutput) ToGetDmsRabbitmqFlavorsFlavor
 	return o
 }
 
-// Indicates the flavor ID alias.
 func (o GetDmsRabbitmqFlavorsFlavorPropertyOutput) FlavorAlias() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsFlavorProperty) string { return v.FlavorAlias }).(pulumi.StringOutput)
 }
 
-// Indicates the maximum bandwidth per broker.
 func (o GetDmsRabbitmqFlavorsFlavorPropertyOutput) MaxBandwidthPerBroker() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsFlavorProperty) int { return v.MaxBandwidthPerBroker }).(pulumi.IntOutput)
 }
 
-// Indicates the maximum number of brokers.
 func (o GetDmsRabbitmqFlavorsFlavorPropertyOutput) MaxBroker() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsFlavorProperty) int { return v.MaxBroker }).(pulumi.IntOutput)
 }
 
-// Indicates the maximum number of consumers per broker.
 func (o GetDmsRabbitmqFlavorsFlavorPropertyOutput) MaxConsumerPerBroker() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsFlavorProperty) int { return v.MaxConsumerPerBroker }).(pulumi.IntOutput)
 }
 
-// Indicates the maximum number of partitions per broker.
 func (o GetDmsRabbitmqFlavorsFlavorPropertyOutput) MaxPartitionPerBroker() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsFlavorProperty) int { return v.MaxPartitionPerBroker }).(pulumi.IntOutput)
 }
 
-// Indicates the maximum storage per node. The unit is GB.
 func (o GetDmsRabbitmqFlavorsFlavorPropertyOutput) MaxStoragePerNode() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsFlavorProperty) int { return v.MaxStoragePerNode }).(pulumi.IntOutput)
 }
 
-// Indicates the maximum TPS per broker.
 func (o GetDmsRabbitmqFlavorsFlavorPropertyOutput) MaxTpsPerBroker() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsFlavorProperty) int { return v.MaxTpsPerBroker }).(pulumi.IntOutput)
 }
 
-// Indicates the minimum number of brokers.
 func (o GetDmsRabbitmqFlavorsFlavorPropertyOutput) MinBroker() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsFlavorProperty) int { return v.MinBroker }).(pulumi.IntOutput)
 }
 
-// Indicates the minimum storage per node. The unit is GB.
 func (o GetDmsRabbitmqFlavorsFlavorPropertyOutput) MinStoragePerNode() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsFlavorProperty) int { return v.MinStoragePerNode }).(pulumi.IntOutput)
 }
@@ -25321,10 +24280,7 @@ func (o GetDmsRabbitmqFlavorsFlavorPropertyArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetDmsRabbitmqFlavorsFlavorSupportFeature struct {
-	// Indicates the function name, e.g. **connector_obs**.
-	Name string `pulumi:"name"`
-	// Indicates the function property details.
-	// The object structure is documented below.
+	Name       string                                              `pulumi:"name"`
 	Properties []GetDmsRabbitmqFlavorsFlavorSupportFeatureProperty `pulumi:"properties"`
 }
 
@@ -25340,10 +24296,7 @@ type GetDmsRabbitmqFlavorsFlavorSupportFeatureInput interface {
 }
 
 type GetDmsRabbitmqFlavorsFlavorSupportFeatureArgs struct {
-	// Indicates the function name, e.g. **connector_obs**.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Indicates the function property details.
-	// The object structure is documented below.
+	Name       pulumi.StringInput                                          `pulumi:"name"`
 	Properties GetDmsRabbitmqFlavorsFlavorSupportFeaturePropertyArrayInput `pulumi:"properties"`
 }
 
@@ -25398,13 +24351,10 @@ func (o GetDmsRabbitmqFlavorsFlavorSupportFeatureOutput) ToGetDmsRabbitmqFlavors
 	return o
 }
 
-// Indicates the function name, e.g. **connector_obs**.
 func (o GetDmsRabbitmqFlavorsFlavorSupportFeatureOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsFlavorSupportFeature) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Indicates the function property details.
-// The object structure is documented below.
 func (o GetDmsRabbitmqFlavorsFlavorSupportFeatureOutput) Properties() GetDmsRabbitmqFlavorsFlavorSupportFeaturePropertyArrayOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsFlavorSupportFeature) []GetDmsRabbitmqFlavorsFlavorSupportFeatureProperty {
 		return v.Properties
@@ -25432,13 +24382,9 @@ func (o GetDmsRabbitmqFlavorsFlavorSupportFeatureArrayOutput) Index(i pulumi.Int
 }
 
 type GetDmsRabbitmqFlavorsFlavorSupportFeatureProperty struct {
-	// Indicates the maximum number of nodes for the dump function.
 	MaxNode int `pulumi:"maxNode"`
-	// Indicates the maximum number of tasks for the dump function.
 	MaxTask int `pulumi:"maxTask"`
-	// Indicates the minimum number of nodes for the dump function.
 	MinNode int `pulumi:"minNode"`
-	// Indicates the minimum number of tasks for the dump function.
 	MinTask int `pulumi:"minTask"`
 }
 
@@ -25454,13 +24400,9 @@ type GetDmsRabbitmqFlavorsFlavorSupportFeaturePropertyInput interface {
 }
 
 type GetDmsRabbitmqFlavorsFlavorSupportFeaturePropertyArgs struct {
-	// Indicates the maximum number of nodes for the dump function.
 	MaxNode pulumi.IntInput `pulumi:"maxNode"`
-	// Indicates the maximum number of tasks for the dump function.
 	MaxTask pulumi.IntInput `pulumi:"maxTask"`
-	// Indicates the minimum number of nodes for the dump function.
 	MinNode pulumi.IntInput `pulumi:"minNode"`
-	// Indicates the minimum number of tasks for the dump function.
 	MinTask pulumi.IntInput `pulumi:"minTask"`
 }
 
@@ -25515,22 +24457,18 @@ func (o GetDmsRabbitmqFlavorsFlavorSupportFeaturePropertyOutput) ToGetDmsRabbitm
 	return o
 }
 
-// Indicates the maximum number of nodes for the dump function.
 func (o GetDmsRabbitmqFlavorsFlavorSupportFeaturePropertyOutput) MaxNode() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsFlavorSupportFeatureProperty) int { return v.MaxNode }).(pulumi.IntOutput)
 }
 
-// Indicates the maximum number of tasks for the dump function.
 func (o GetDmsRabbitmqFlavorsFlavorSupportFeaturePropertyOutput) MaxTask() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsFlavorSupportFeatureProperty) int { return v.MaxTask }).(pulumi.IntOutput)
 }
 
-// Indicates the minimum number of nodes for the dump function.
 func (o GetDmsRabbitmqFlavorsFlavorSupportFeaturePropertyOutput) MinNode() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsFlavorSupportFeatureProperty) int { return v.MinNode }).(pulumi.IntOutput)
 }
 
-// Indicates the minimum number of tasks for the dump function.
 func (o GetDmsRabbitmqFlavorsFlavorSupportFeaturePropertyOutput) MinTask() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDmsRabbitmqFlavorsFlavorSupportFeatureProperty) int { return v.MinTask }).(pulumi.IntOutput)
 }
@@ -25680,18 +24618,12 @@ func (o GetDmsRocketmqConsumerGroupAccessUsersPolicyArrayOutput) Index(i pulumi.
 }
 
 type GetDmsRocketmqConsumerGroupsGroup struct {
-	// Specifies whether to broadcast the consumer group. Defaults to **false**.
-	Broadcast bool `pulumi:"broadcast"`
-	// Indicates the list of associated brokers of the consumer group.
-	Brokers []string `pulumi:"brokers"`
-	// Indicates the description of the consumer group.
-	Description string `pulumi:"description"`
-	// Specifies the consumer group is enabled or not. Defaults to **true**.
-	Enabled bool `pulumi:"enabled"`
-	// Specifies the name of the consumer group.
-	Name string `pulumi:"name"`
-	// Specifies the maximum number of retry times.
-	RetryMaxTimes int `pulumi:"retryMaxTimes"`
+	Broadcast     bool     `pulumi:"broadcast"`
+	Brokers       []string `pulumi:"brokers"`
+	Description   string   `pulumi:"description"`
+	Enabled       bool     `pulumi:"enabled"`
+	Name          string   `pulumi:"name"`
+	RetryMaxTimes int      `pulumi:"retryMaxTimes"`
 }
 
 // GetDmsRocketmqConsumerGroupsGroupInput is an input type that accepts GetDmsRocketmqConsumerGroupsGroupArgs and GetDmsRocketmqConsumerGroupsGroupOutput values.
@@ -25706,18 +24638,12 @@ type GetDmsRocketmqConsumerGroupsGroupInput interface {
 }
 
 type GetDmsRocketmqConsumerGroupsGroupArgs struct {
-	// Specifies whether to broadcast the consumer group. Defaults to **false**.
-	Broadcast pulumi.BoolInput `pulumi:"broadcast"`
-	// Indicates the list of associated brokers of the consumer group.
-	Brokers pulumi.StringArrayInput `pulumi:"brokers"`
-	// Indicates the description of the consumer group.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Specifies the consumer group is enabled or not. Defaults to **true**.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// Specifies the name of the consumer group.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies the maximum number of retry times.
-	RetryMaxTimes pulumi.IntInput `pulumi:"retryMaxTimes"`
+	Broadcast     pulumi.BoolInput        `pulumi:"broadcast"`
+	Brokers       pulumi.StringArrayInput `pulumi:"brokers"`
+	Description   pulumi.StringInput      `pulumi:"description"`
+	Enabled       pulumi.BoolInput        `pulumi:"enabled"`
+	Name          pulumi.StringInput      `pulumi:"name"`
+	RetryMaxTimes pulumi.IntInput         `pulumi:"retryMaxTimes"`
 }
 
 func (GetDmsRocketmqConsumerGroupsGroupArgs) ElementType() reflect.Type {
@@ -25771,32 +24697,26 @@ func (o GetDmsRocketmqConsumerGroupsGroupOutput) ToGetDmsRocketmqConsumerGroupsG
 	return o
 }
 
-// Specifies whether to broadcast the consumer group. Defaults to **false**.
 func (o GetDmsRocketmqConsumerGroupsGroupOutput) Broadcast() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDmsRocketmqConsumerGroupsGroup) bool { return v.Broadcast }).(pulumi.BoolOutput)
 }
 
-// Indicates the list of associated brokers of the consumer group.
 func (o GetDmsRocketmqConsumerGroupsGroupOutput) Brokers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDmsRocketmqConsumerGroupsGroup) []string { return v.Brokers }).(pulumi.StringArrayOutput)
 }
 
-// Indicates the description of the consumer group.
 func (o GetDmsRocketmqConsumerGroupsGroupOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqConsumerGroupsGroup) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Specifies the consumer group is enabled or not. Defaults to **true**.
 func (o GetDmsRocketmqConsumerGroupsGroupOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDmsRocketmqConsumerGroupsGroup) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Specifies the name of the consumer group.
 func (o GetDmsRocketmqConsumerGroupsGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqConsumerGroupsGroup) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the maximum number of retry times.
 func (o GetDmsRocketmqConsumerGroupsGroupOutput) RetryMaxTimes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDmsRocketmqConsumerGroupsGroup) int { return v.RetryMaxTimes }).(pulumi.IntOutput)
 }
@@ -25961,7 +24881,7 @@ type GetDmsRocketmqConsumersClientSubscription struct {
 	Expression string `pulumi:"expression"`
 	// Indicates the name of the subscribed topic.
 	Topic string `pulumi:"topic"`
-	// Indicates the subscription type. The value can be **TAG** and **SQL92**.
+	// Indicates the subscription type.
 	Type string `pulumi:"type"`
 }
 
@@ -25981,7 +24901,7 @@ type GetDmsRocketmqConsumersClientSubscriptionArgs struct {
 	Expression pulumi.StringInput `pulumi:"expression"`
 	// Indicates the name of the subscribed topic.
 	Topic pulumi.StringInput `pulumi:"topic"`
-	// Indicates the subscription type. The value can be **TAG** and **SQL92**.
+	// Indicates the subscription type.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -26046,7 +24966,7 @@ func (o GetDmsRocketmqConsumersClientSubscriptionOutput) Topic() pulumi.StringOu
 	return o.ApplyT(func(v GetDmsRocketmqConsumersClientSubscription) string { return v.Topic }).(pulumi.StringOutput)
 }
 
-// Indicates the subscription type. The value can be **TAG** and **SQL92**.
+// Indicates the subscription type.
 func (o GetDmsRocketmqConsumersClientSubscriptionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqConsumersClientSubscription) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -26074,7 +24994,7 @@ func (o GetDmsRocketmqConsumersClientSubscriptionArrayOutput) Index(i pulumi.Int
 type GetDmsRocketmqExtendFlavorsFlavor struct {
 	// Indicates the list of supported CPU architectures.
 	ArchTypes []string `pulumi:"archTypes"`
-	// Indicates the list of availability zones with available resources.
+	// Indicates the AZs where there are available resources.
 	AvailableZones []string `pulumi:"availableZones"`
 	// Indicates the billing code.
 	BillingCode string `pulumi:"billingCode"`
@@ -26084,13 +25004,13 @@ type GetDmsRocketmqExtendFlavorsFlavor struct {
 	Id string `pulumi:"id"`
 	// Indicates the list of supported disk IO types.
 	Ios []GetDmsRocketmqExtendFlavorsFlavorIo `pulumi:"ios"`
-	// Indicates the key-value pair of a feature.
+	// Indicates the properties of the current specification.
 	Properties []GetDmsRocketmqExtendFlavorsFlavorProperty `pulumi:"properties"`
 	// Indicates the supported features.
 	SupportFeatures []GetDmsRocketmqExtendFlavorsFlavorSupportFeature `pulumi:"supportFeatures"`
-	// Specifies the flavor type.
+	// Indicates the flavor type.
 	Type string `pulumi:"type"`
-	// Indicates the list of unavailability zones with available resources.
+	// Indicates the AZs where resources are unavailable.
 	UnavailableZones []string `pulumi:"unavailableZones"`
 	// Indicates the underlying VM specification.
 	VmSpecification string `pulumi:"vmSpecification"`
@@ -26110,7 +25030,7 @@ type GetDmsRocketmqExtendFlavorsFlavorInput interface {
 type GetDmsRocketmqExtendFlavorsFlavorArgs struct {
 	// Indicates the list of supported CPU architectures.
 	ArchTypes pulumi.StringArrayInput `pulumi:"archTypes"`
-	// Indicates the list of availability zones with available resources.
+	// Indicates the AZs where there are available resources.
 	AvailableZones pulumi.StringArrayInput `pulumi:"availableZones"`
 	// Indicates the billing code.
 	BillingCode pulumi.StringInput `pulumi:"billingCode"`
@@ -26120,13 +25040,13 @@ type GetDmsRocketmqExtendFlavorsFlavorArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// Indicates the list of supported disk IO types.
 	Ios GetDmsRocketmqExtendFlavorsFlavorIoArrayInput `pulumi:"ios"`
-	// Indicates the key-value pair of a feature.
+	// Indicates the properties of the current specification.
 	Properties GetDmsRocketmqExtendFlavorsFlavorPropertyArrayInput `pulumi:"properties"`
 	// Indicates the supported features.
 	SupportFeatures GetDmsRocketmqExtendFlavorsFlavorSupportFeatureArrayInput `pulumi:"supportFeatures"`
-	// Specifies the flavor type.
+	// Indicates the flavor type.
 	Type pulumi.StringInput `pulumi:"type"`
-	// Indicates the list of unavailability zones with available resources.
+	// Indicates the AZs where resources are unavailable.
 	UnavailableZones pulumi.StringArrayInput `pulumi:"unavailableZones"`
 	// Indicates the underlying VM specification.
 	VmSpecification pulumi.StringInput `pulumi:"vmSpecification"`
@@ -26188,7 +25108,7 @@ func (o GetDmsRocketmqExtendFlavorsFlavorOutput) ArchTypes() pulumi.StringArrayO
 	return o.ApplyT(func(v GetDmsRocketmqExtendFlavorsFlavor) []string { return v.ArchTypes }).(pulumi.StringArrayOutput)
 }
 
-// Indicates the list of availability zones with available resources.
+// Indicates the AZs where there are available resources.
 func (o GetDmsRocketmqExtendFlavorsFlavorOutput) AvailableZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDmsRocketmqExtendFlavorsFlavor) []string { return v.AvailableZones }).(pulumi.StringArrayOutput)
 }
@@ -26213,7 +25133,7 @@ func (o GetDmsRocketmqExtendFlavorsFlavorOutput) Ios() GetDmsRocketmqExtendFlavo
 	return o.ApplyT(func(v GetDmsRocketmqExtendFlavorsFlavor) []GetDmsRocketmqExtendFlavorsFlavorIo { return v.Ios }).(GetDmsRocketmqExtendFlavorsFlavorIoArrayOutput)
 }
 
-// Indicates the key-value pair of a feature.
+// Indicates the properties of the current specification.
 func (o GetDmsRocketmqExtendFlavorsFlavorOutput) Properties() GetDmsRocketmqExtendFlavorsFlavorPropertyArrayOutput {
 	return o.ApplyT(func(v GetDmsRocketmqExtendFlavorsFlavor) []GetDmsRocketmqExtendFlavorsFlavorProperty {
 		return v.Properties
@@ -26227,12 +25147,12 @@ func (o GetDmsRocketmqExtendFlavorsFlavorOutput) SupportFeatures() GetDmsRocketm
 	}).(GetDmsRocketmqExtendFlavorsFlavorSupportFeatureArrayOutput)
 }
 
-// Specifies the flavor type.
+// Indicates the flavor type.
 func (o GetDmsRocketmqExtendFlavorsFlavorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqExtendFlavorsFlavor) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Indicates the list of unavailability zones with available resources.
+// Indicates the AZs where resources are unavailable.
 func (o GetDmsRocketmqExtendFlavorsFlavorOutput) UnavailableZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDmsRocketmqExtendFlavorsFlavor) []string { return v.UnavailableZones }).(pulumi.StringArrayOutput)
 }
@@ -26265,9 +25185,9 @@ func (o GetDmsRocketmqExtendFlavorsFlavorArrayOutput) Index(i pulumi.IntInput) G
 type GetDmsRocketmqExtendFlavorsFlavorIo struct {
 	// Indicates the list of availability zones with available resources.
 	AvailableZones []string `pulumi:"availableZones"`
-	// Specifies the disk IO encoding, e.g. **dms.physical.storage.high.v2**.
+	// Indicates the disk IO encoding.
 	StorageSpecCode string `pulumi:"storageSpecCode"`
-	// Specifies the flavor type.
+	// Indicates the disk type.
 	Type string `pulumi:"type"`
 	// Indicates the list of unavailability zones with available resources.
 	UnavailableZones []string `pulumi:"unavailableZones"`
@@ -26287,9 +25207,9 @@ type GetDmsRocketmqExtendFlavorsFlavorIoInput interface {
 type GetDmsRocketmqExtendFlavorsFlavorIoArgs struct {
 	// Indicates the list of availability zones with available resources.
 	AvailableZones pulumi.StringArrayInput `pulumi:"availableZones"`
-	// Specifies the disk IO encoding, e.g. **dms.physical.storage.high.v2**.
+	// Indicates the disk IO encoding.
 	StorageSpecCode pulumi.StringInput `pulumi:"storageSpecCode"`
-	// Specifies the flavor type.
+	// Indicates the disk type.
 	Type pulumi.StringInput `pulumi:"type"`
 	// Indicates the list of unavailability zones with available resources.
 	UnavailableZones pulumi.StringArrayInput `pulumi:"unavailableZones"`
@@ -26351,12 +25271,12 @@ func (o GetDmsRocketmqExtendFlavorsFlavorIoOutput) AvailableZones() pulumi.Strin
 	return o.ApplyT(func(v GetDmsRocketmqExtendFlavorsFlavorIo) []string { return v.AvailableZones }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the disk IO encoding, e.g. **dms.physical.storage.high.v2**.
+// Indicates the disk IO encoding.
 func (o GetDmsRocketmqExtendFlavorsFlavorIoOutput) StorageSpecCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqExtendFlavorsFlavorIo) string { return v.StorageSpecCode }).(pulumi.StringOutput)
 }
 
-// Specifies the flavor type.
+// Indicates the disk type.
 func (o GetDmsRocketmqExtendFlavorsFlavorIoOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqExtendFlavorsFlavorIo) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -26660,17 +25580,14 @@ type GetDmsRocketmqFlavorsFlavor struct {
 	// Indicates the ID of the flavor.
 	Id string `pulumi:"id"`
 	// Indicates the list of disk IO types.
-	// The ios structure is documented below.
 	Ios []GetDmsRocketmqFlavorsFlavorIo `pulumi:"ios"`
-	// Indicates the list of the function property details.
-	// The properties structure is documented below.
+	// Indicates the list of the properties of the current specification.
 	Properties []GetDmsRocketmqFlavorsFlavorProperty `pulumi:"properties"`
 	// Indicates the list of features supported by the current specification.
-	// The supportFeatures structure is documented below.
 	SupportFeatures []GetDmsRocketmqFlavorsFlavorSupportFeature `pulumi:"supportFeatures"`
-	// Specifies the type of the flavor. Value options: **single** and **cluster**.
+	// Indicates the type of the flavor.
 	Type string `pulumi:"type"`
-	// Indicates the underlying VM specification, e.g. **c6.large.2**
+	// Indicates the underlying VM specification.
 	VmSpecification string `pulumi:"vmSpecification"`
 }
 
@@ -26693,17 +25610,14 @@ type GetDmsRocketmqFlavorsFlavorArgs struct {
 	// Indicates the ID of the flavor.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Indicates the list of disk IO types.
-	// The ios structure is documented below.
 	Ios GetDmsRocketmqFlavorsFlavorIoArrayInput `pulumi:"ios"`
-	// Indicates the list of the function property details.
-	// The properties structure is documented below.
+	// Indicates the list of the properties of the current specification.
 	Properties GetDmsRocketmqFlavorsFlavorPropertyArrayInput `pulumi:"properties"`
 	// Indicates the list of features supported by the current specification.
-	// The supportFeatures structure is documented below.
 	SupportFeatures GetDmsRocketmqFlavorsFlavorSupportFeatureArrayInput `pulumi:"supportFeatures"`
-	// Specifies the type of the flavor. Value options: **single** and **cluster**.
+	// Indicates the type of the flavor.
 	Type pulumi.StringInput `pulumi:"type"`
-	// Indicates the underlying VM specification, e.g. **c6.large.2**
+	// Indicates the underlying VM specification.
 	VmSpecification pulumi.StringInput `pulumi:"vmSpecification"`
 }
 
@@ -26774,31 +25688,28 @@ func (o GetDmsRocketmqFlavorsFlavorOutput) Id() pulumi.StringOutput {
 }
 
 // Indicates the list of disk IO types.
-// The ios structure is documented below.
 func (o GetDmsRocketmqFlavorsFlavorOutput) Ios() GetDmsRocketmqFlavorsFlavorIoArrayOutput {
 	return o.ApplyT(func(v GetDmsRocketmqFlavorsFlavor) []GetDmsRocketmqFlavorsFlavorIo { return v.Ios }).(GetDmsRocketmqFlavorsFlavorIoArrayOutput)
 }
 
-// Indicates the list of the function property details.
-// The properties structure is documented below.
+// Indicates the list of the properties of the current specification.
 func (o GetDmsRocketmqFlavorsFlavorOutput) Properties() GetDmsRocketmqFlavorsFlavorPropertyArrayOutput {
 	return o.ApplyT(func(v GetDmsRocketmqFlavorsFlavor) []GetDmsRocketmqFlavorsFlavorProperty { return v.Properties }).(GetDmsRocketmqFlavorsFlavorPropertyArrayOutput)
 }
 
 // Indicates the list of features supported by the current specification.
-// The supportFeatures structure is documented below.
 func (o GetDmsRocketmqFlavorsFlavorOutput) SupportFeatures() GetDmsRocketmqFlavorsFlavorSupportFeatureArrayOutput {
 	return o.ApplyT(func(v GetDmsRocketmqFlavorsFlavor) []GetDmsRocketmqFlavorsFlavorSupportFeature {
 		return v.SupportFeatures
 	}).(GetDmsRocketmqFlavorsFlavorSupportFeatureArrayOutput)
 }
 
-// Specifies the type of the flavor. Value options: **single** and **cluster**.
+// Indicates the type of the flavor.
 func (o GetDmsRocketmqFlavorsFlavorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqFlavorsFlavor) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Indicates the underlying VM specification, e.g. **c6.large.2**
+// Indicates the underlying VM specification.
 func (o GetDmsRocketmqFlavorsFlavorOutput) VmSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqFlavorsFlavor) string { return v.VmSpecification }).(pulumi.StringOutput)
 }
@@ -26824,14 +25735,11 @@ func (o GetDmsRocketmqFlavorsFlavorArrayOutput) Index(i pulumi.IntInput) GetDmsR
 }
 
 type GetDmsRocketmqFlavorsFlavorIo struct {
-	// Specifies the list of availability zone names.
+	// Indicates the list of availability zone names.
 	AvailabilityZones []string `pulumi:"availabilityZones"`
-	// Specifies the disk IO encoding.
-	// Value options:
-	// + **dms.physical.storage.high.v2**: Type of the disk that uses high I/O.
-	// + **dms.physical.storage.ultra.v2**: Type of the disk that uses ultra-high I/O.
+	// Indicates the disk IO encoding.
 	StorageSpecCode string `pulumi:"storageSpecCode"`
-	// Specifies the type of the flavor. Value options: **single** and **cluster**.
+	// Indicates the disk type.
 	Type string `pulumi:"type"`
 	// Indicates the list of unavailability zone names.
 	UnavailabilityZones []string `pulumi:"unavailabilityZones"`
@@ -26849,14 +25757,11 @@ type GetDmsRocketmqFlavorsFlavorIoInput interface {
 }
 
 type GetDmsRocketmqFlavorsFlavorIoArgs struct {
-	// Specifies the list of availability zone names.
+	// Indicates the list of availability zone names.
 	AvailabilityZones pulumi.StringArrayInput `pulumi:"availabilityZones"`
-	// Specifies the disk IO encoding.
-	// Value options:
-	// + **dms.physical.storage.high.v2**: Type of the disk that uses high I/O.
-	// + **dms.physical.storage.ultra.v2**: Type of the disk that uses ultra-high I/O.
+	// Indicates the disk IO encoding.
 	StorageSpecCode pulumi.StringInput `pulumi:"storageSpecCode"`
-	// Specifies the type of the flavor. Value options: **single** and **cluster**.
+	// Indicates the disk type.
 	Type pulumi.StringInput `pulumi:"type"`
 	// Indicates the list of unavailability zone names.
 	UnavailabilityZones pulumi.StringArrayInput `pulumi:"unavailabilityZones"`
@@ -26913,20 +25818,17 @@ func (o GetDmsRocketmqFlavorsFlavorIoOutput) ToGetDmsRocketmqFlavorsFlavorIoOutp
 	return o
 }
 
-// Specifies the list of availability zone names.
+// Indicates the list of availability zone names.
 func (o GetDmsRocketmqFlavorsFlavorIoOutput) AvailabilityZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDmsRocketmqFlavorsFlavorIo) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the disk IO encoding.
-// Value options:
-// + **dms.physical.storage.high.v2**: Type of the disk that uses high I/O.
-// + **dms.physical.storage.ultra.v2**: Type of the disk that uses ultra-high I/O.
+// Indicates the disk IO encoding.
 func (o GetDmsRocketmqFlavorsFlavorIoOutput) StorageSpecCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqFlavorsFlavorIo) string { return v.StorageSpecCode }).(pulumi.StringOutput)
 }
 
-// Specifies the type of the flavor. Value options: **single** and **cluster**.
+// Indicates the disk type.
 func (o GetDmsRocketmqFlavorsFlavorIoOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqFlavorsFlavorIo) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -27126,10 +26028,9 @@ func (o GetDmsRocketmqFlavorsFlavorPropertyArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetDmsRocketmqFlavorsFlavorSupportFeature struct {
-	// Indicates the function name, e.g. **connector_obs**.
+	// Indicates the function name.
 	Name string `pulumi:"name"`
 	// Indicates the list of the function property details.
-	// The properties structure is documented below.
 	Properties []GetDmsRocketmqFlavorsFlavorSupportFeatureProperty `pulumi:"properties"`
 }
 
@@ -27145,10 +26046,9 @@ type GetDmsRocketmqFlavorsFlavorSupportFeatureInput interface {
 }
 
 type GetDmsRocketmqFlavorsFlavorSupportFeatureArgs struct {
-	// Indicates the function name, e.g. **connector_obs**.
+	// Indicates the function name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Indicates the list of the function property details.
-	// The properties structure is documented below.
 	Properties GetDmsRocketmqFlavorsFlavorSupportFeaturePropertyArrayInput `pulumi:"properties"`
 }
 
@@ -27203,13 +26103,12 @@ func (o GetDmsRocketmqFlavorsFlavorSupportFeatureOutput) ToGetDmsRocketmqFlavors
 	return o
 }
 
-// Indicates the function name, e.g. **connector_obs**.
+// Indicates the function name.
 func (o GetDmsRocketmqFlavorsFlavorSupportFeatureOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqFlavorsFlavorSupportFeature) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Indicates the list of the function property details.
-// The properties structure is documented below.
 func (o GetDmsRocketmqFlavorsFlavorSupportFeatureOutput) Properties() GetDmsRocketmqFlavorsFlavorSupportFeaturePropertyArrayOutput {
 	return o.ApplyT(func(v GetDmsRocketmqFlavorsFlavorSupportFeature) []GetDmsRocketmqFlavorsFlavorSupportFeatureProperty {
 		return v.Properties
@@ -27361,15 +26260,13 @@ func (o GetDmsRocketmqFlavorsFlavorSupportFeaturePropertyArrayOutput) Index(i pu
 }
 
 type GetDmsRocketmqInstancesInstance struct {
-	// Indicates the list of availability zone names, where
-	// instance brokers reside and which has available resources.
+	// Indicates the list of availability zone names.
 	AvailabilityZones []string `pulumi:"availabilityZones"`
 	// Indicates the service data address.
 	BrokerAddress string `pulumi:"brokerAddress"`
-	// Specifies the broker numbers. Defaults to 1.
+	// Indicates the broker numbers.
 	BrokerNum int `pulumi:"brokerNum"`
 	// Indicates the Cross-VPC access information.
-	// The CrossVpc structure is documented below.
 	CrossVpcAccesses []GetDmsRocketmqInstancesInstanceCrossVpcAccess `pulumi:"crossVpcAccesses"`
 	// Indicates the description of the DMS RocketMQ instance.
 	Description string `pulumi:"description"`
@@ -27383,17 +26280,17 @@ type GetDmsRocketmqInstancesInstance struct {
 	FlavorId string `pulumi:"flavorId"`
 	// Indicates the ID of the DMS RocketMQ instance.
 	Id string `pulumi:"id"`
-	// Indicates whether to support IPv6. Defaults to false.
+	// Indicates whether to support IPv6.
 	Ipv6Enable bool `pulumi:"ipv6Enable"`
 	// Indicates the time at which the maintenance window starts. The format is HH:mm:ss.
 	MaintainBegin string `pulumi:"maintainBegin"`
 	// Indicates the time at which the maintenance window ends. The format is HH:mm:ss.
 	MaintainEnd string `pulumi:"maintainEnd"`
-	// Specifies the name of the DMS RocketMQ instance.
+	// Indicates the name of the DMS RocketMQ instance.
 	Name string `pulumi:"name"`
 	// Indicates the metadata address.
 	NamesrvAddress string `pulumi:"namesrvAddress"`
-	// Indicates the whether billing based on new specifications is enabled.
+	// Indicates whether billing based on new specifications is enabled.
 	NewSpecBillingEnable bool `pulumi:"newSpecBillingEnable"`
 	// Indicates the node quantity.
 	NodeNum int `pulumi:"nodeNum"`
@@ -27404,19 +26301,16 @@ type GetDmsRocketmqInstancesInstance struct {
 	// Indicates the public IP address.
 	PublicipAddress string `pulumi:"publicipAddress"`
 	// Indicates the ID of the EIP bound to the instance.
-	// Use commas (,) to separate multiple EIP IDs.
-	// This parameter is mandatory if public access is enabled (that is, enablePublicip is set to true).
 	PublicipId string `pulumi:"publicipId"`
 	// Indicates the resource specifications.
 	ResourceSpecCode string `pulumi:"resourceSpecCode"`
 	// Indicates the ID of a security group.
 	SecurityGroupId string `pulumi:"securityGroupId"`
-	// Indicates the instance specification. For a cluster DMS RocketMQ instance, VM specifications
-	// and the number of nodes are returned.
+	// Indicates the instance specification.
 	Specification string `pulumi:"specification"`
-	// Indicates whether the RocketMQ SASL_SSL is enabled. Defaults to false.
+	// Indicates whether the RocketMQ SASL_SSL is enabled.
 	SslEnable bool `pulumi:"sslEnable"`
-	// Specifies the status of the DMS RocketMQ instance.
+	// Indicates the status of the DMS RocketMQ instance.
 	Status string `pulumi:"status"`
 	// Indicates the message storage capacity. Unit: GB.
 	StorageSpace int `pulumi:"storageSpace"`
@@ -27424,7 +26318,7 @@ type GetDmsRocketmqInstancesInstance struct {
 	StorageSpecCode string `pulumi:"storageSpecCode"`
 	// Indicates the ID of a subnet.
 	SubnetId string `pulumi:"subnetId"`
-	// Indicates the DMS RocketMQ instance type.
+	// Indicates the DMS RocketMQ instance type. Value: cluster.
 	Type string `pulumi:"type"`
 	// Indicates the used message storage space. Unit: GB.
 	UsedStorageSpace int `pulumi:"usedStorageSpace"`
@@ -27444,15 +26338,13 @@ type GetDmsRocketmqInstancesInstanceInput interface {
 }
 
 type GetDmsRocketmqInstancesInstanceArgs struct {
-	// Indicates the list of availability zone names, where
-	// instance brokers reside and which has available resources.
+	// Indicates the list of availability zone names.
 	AvailabilityZones pulumi.StringArrayInput `pulumi:"availabilityZones"`
 	// Indicates the service data address.
 	BrokerAddress pulumi.StringInput `pulumi:"brokerAddress"`
-	// Specifies the broker numbers. Defaults to 1.
+	// Indicates the broker numbers.
 	BrokerNum pulumi.IntInput `pulumi:"brokerNum"`
 	// Indicates the Cross-VPC access information.
-	// The CrossVpc structure is documented below.
 	CrossVpcAccesses GetDmsRocketmqInstancesInstanceCrossVpcAccessArrayInput `pulumi:"crossVpcAccesses"`
 	// Indicates the description of the DMS RocketMQ instance.
 	Description pulumi.StringInput `pulumi:"description"`
@@ -27466,17 +26358,17 @@ type GetDmsRocketmqInstancesInstanceArgs struct {
 	FlavorId pulumi.StringInput `pulumi:"flavorId"`
 	// Indicates the ID of the DMS RocketMQ instance.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Indicates whether to support IPv6. Defaults to false.
+	// Indicates whether to support IPv6.
 	Ipv6Enable pulumi.BoolInput `pulumi:"ipv6Enable"`
 	// Indicates the time at which the maintenance window starts. The format is HH:mm:ss.
 	MaintainBegin pulumi.StringInput `pulumi:"maintainBegin"`
 	// Indicates the time at which the maintenance window ends. The format is HH:mm:ss.
 	MaintainEnd pulumi.StringInput `pulumi:"maintainEnd"`
-	// Specifies the name of the DMS RocketMQ instance.
+	// Indicates the name of the DMS RocketMQ instance.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Indicates the metadata address.
 	NamesrvAddress pulumi.StringInput `pulumi:"namesrvAddress"`
-	// Indicates the whether billing based on new specifications is enabled.
+	// Indicates whether billing based on new specifications is enabled.
 	NewSpecBillingEnable pulumi.BoolInput `pulumi:"newSpecBillingEnable"`
 	// Indicates the node quantity.
 	NodeNum pulumi.IntInput `pulumi:"nodeNum"`
@@ -27487,19 +26379,16 @@ type GetDmsRocketmqInstancesInstanceArgs struct {
 	// Indicates the public IP address.
 	PublicipAddress pulumi.StringInput `pulumi:"publicipAddress"`
 	// Indicates the ID of the EIP bound to the instance.
-	// Use commas (,) to separate multiple EIP IDs.
-	// This parameter is mandatory if public access is enabled (that is, enablePublicip is set to true).
 	PublicipId pulumi.StringInput `pulumi:"publicipId"`
 	// Indicates the resource specifications.
 	ResourceSpecCode pulumi.StringInput `pulumi:"resourceSpecCode"`
 	// Indicates the ID of a security group.
 	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
-	// Indicates the instance specification. For a cluster DMS RocketMQ instance, VM specifications
-	// and the number of nodes are returned.
+	// Indicates the instance specification.
 	Specification pulumi.StringInput `pulumi:"specification"`
-	// Indicates whether the RocketMQ SASL_SSL is enabled. Defaults to false.
+	// Indicates whether the RocketMQ SASL_SSL is enabled.
 	SslEnable pulumi.BoolInput `pulumi:"sslEnable"`
-	// Specifies the status of the DMS RocketMQ instance.
+	// Indicates the status of the DMS RocketMQ instance.
 	Status pulumi.StringInput `pulumi:"status"`
 	// Indicates the message storage capacity. Unit: GB.
 	StorageSpace pulumi.IntInput `pulumi:"storageSpace"`
@@ -27507,7 +26396,7 @@ type GetDmsRocketmqInstancesInstanceArgs struct {
 	StorageSpecCode pulumi.StringInput `pulumi:"storageSpecCode"`
 	// Indicates the ID of a subnet.
 	SubnetId pulumi.StringInput `pulumi:"subnetId"`
-	// Indicates the DMS RocketMQ instance type.
+	// Indicates the DMS RocketMQ instance type. Value: cluster.
 	Type pulumi.StringInput `pulumi:"type"`
 	// Indicates the used message storage space. Unit: GB.
 	UsedStorageSpace pulumi.IntInput `pulumi:"usedStorageSpace"`
@@ -27566,8 +26455,7 @@ func (o GetDmsRocketmqInstancesInstanceOutput) ToGetDmsRocketmqInstancesInstance
 	return o
 }
 
-// Indicates the list of availability zone names, where
-// instance brokers reside and which has available resources.
+// Indicates the list of availability zone names.
 func (o GetDmsRocketmqInstancesInstanceOutput) AvailabilityZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDmsRocketmqInstancesInstance) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }
@@ -27577,13 +26465,12 @@ func (o GetDmsRocketmqInstancesInstanceOutput) BrokerAddress() pulumi.StringOutp
 	return o.ApplyT(func(v GetDmsRocketmqInstancesInstance) string { return v.BrokerAddress }).(pulumi.StringOutput)
 }
 
-// Specifies the broker numbers. Defaults to 1.
+// Indicates the broker numbers.
 func (o GetDmsRocketmqInstancesInstanceOutput) BrokerNum() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDmsRocketmqInstancesInstance) int { return v.BrokerNum }).(pulumi.IntOutput)
 }
 
 // Indicates the Cross-VPC access information.
-// The CrossVpc structure is documented below.
 func (o GetDmsRocketmqInstancesInstanceOutput) CrossVpcAccesses() GetDmsRocketmqInstancesInstanceCrossVpcAccessArrayOutput {
 	return o.ApplyT(func(v GetDmsRocketmqInstancesInstance) []GetDmsRocketmqInstancesInstanceCrossVpcAccess {
 		return v.CrossVpcAccesses
@@ -27620,7 +26507,7 @@ func (o GetDmsRocketmqInstancesInstanceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Indicates whether to support IPv6. Defaults to false.
+// Indicates whether to support IPv6.
 func (o GetDmsRocketmqInstancesInstanceOutput) Ipv6Enable() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDmsRocketmqInstancesInstance) bool { return v.Ipv6Enable }).(pulumi.BoolOutput)
 }
@@ -27635,7 +26522,7 @@ func (o GetDmsRocketmqInstancesInstanceOutput) MaintainEnd() pulumi.StringOutput
 	return o.ApplyT(func(v GetDmsRocketmqInstancesInstance) string { return v.MaintainEnd }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the DMS RocketMQ instance.
+// Indicates the name of the DMS RocketMQ instance.
 func (o GetDmsRocketmqInstancesInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -27645,7 +26532,7 @@ func (o GetDmsRocketmqInstancesInstanceOutput) NamesrvAddress() pulumi.StringOut
 	return o.ApplyT(func(v GetDmsRocketmqInstancesInstance) string { return v.NamesrvAddress }).(pulumi.StringOutput)
 }
 
-// Indicates the whether billing based on new specifications is enabled.
+// Indicates whether billing based on new specifications is enabled.
 func (o GetDmsRocketmqInstancesInstanceOutput) NewSpecBillingEnable() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDmsRocketmqInstancesInstance) bool { return v.NewSpecBillingEnable }).(pulumi.BoolOutput)
 }
@@ -27671,8 +26558,6 @@ func (o GetDmsRocketmqInstancesInstanceOutput) PublicipAddress() pulumi.StringOu
 }
 
 // Indicates the ID of the EIP bound to the instance.
-// Use commas (,) to separate multiple EIP IDs.
-// This parameter is mandatory if public access is enabled (that is, enablePublicip is set to true).
 func (o GetDmsRocketmqInstancesInstanceOutput) PublicipId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqInstancesInstance) string { return v.PublicipId }).(pulumi.StringOutput)
 }
@@ -27687,18 +26572,17 @@ func (o GetDmsRocketmqInstancesInstanceOutput) SecurityGroupId() pulumi.StringOu
 	return o.ApplyT(func(v GetDmsRocketmqInstancesInstance) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
-// Indicates the instance specification. For a cluster DMS RocketMQ instance, VM specifications
-// and the number of nodes are returned.
+// Indicates the instance specification.
 func (o GetDmsRocketmqInstancesInstanceOutput) Specification() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqInstancesInstance) string { return v.Specification }).(pulumi.StringOutput)
 }
 
-// Indicates whether the RocketMQ SASL_SSL is enabled. Defaults to false.
+// Indicates whether the RocketMQ SASL_SSL is enabled.
 func (o GetDmsRocketmqInstancesInstanceOutput) SslEnable() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDmsRocketmqInstancesInstance) bool { return v.SslEnable }).(pulumi.BoolOutput)
 }
 
-// Specifies the status of the DMS RocketMQ instance.
+// Indicates the status of the DMS RocketMQ instance.
 func (o GetDmsRocketmqInstancesInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -27718,7 +26602,7 @@ func (o GetDmsRocketmqInstancesInstanceOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqInstancesInstance) string { return v.SubnetId }).(pulumi.StringOutput)
 }
 
-// Indicates the DMS RocketMQ instance type.
+// Indicates the DMS RocketMQ instance type. Value: cluster.
 func (o GetDmsRocketmqInstancesInstanceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqInstancesInstance) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -27754,16 +26638,12 @@ func (o GetDmsRocketmqInstancesInstanceArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetDmsRocketmqInstancesInstanceCrossVpcAccess struct {
-	// Indicates the advertised IP.
 	AdvertisedIp string `pulumi:"advertisedIp"`
 	// Deprecated: typo in lisenter_ip, please use "listenerIp" instead.
 	LisenterIp string `pulumi:"lisenterIp"`
-	// Indicates the IP of the listener.
 	ListenerIp string `pulumi:"listenerIp"`
-	// Indicates the port.
-	Port int `pulumi:"port"`
-	// Indicates the port ID associated with the address.
-	PortId string `pulumi:"portId"`
+	Port       int    `pulumi:"port"`
+	PortId     string `pulumi:"portId"`
 }
 
 // GetDmsRocketmqInstancesInstanceCrossVpcAccessInput is an input type that accepts GetDmsRocketmqInstancesInstanceCrossVpcAccessArgs and GetDmsRocketmqInstancesInstanceCrossVpcAccessOutput values.
@@ -27778,16 +26658,12 @@ type GetDmsRocketmqInstancesInstanceCrossVpcAccessInput interface {
 }
 
 type GetDmsRocketmqInstancesInstanceCrossVpcAccessArgs struct {
-	// Indicates the advertised IP.
 	AdvertisedIp pulumi.StringInput `pulumi:"advertisedIp"`
 	// Deprecated: typo in lisenter_ip, please use "listenerIp" instead.
 	LisenterIp pulumi.StringInput `pulumi:"lisenterIp"`
-	// Indicates the IP of the listener.
 	ListenerIp pulumi.StringInput `pulumi:"listenerIp"`
-	// Indicates the port.
-	Port pulumi.IntInput `pulumi:"port"`
-	// Indicates the port ID associated with the address.
-	PortId pulumi.StringInput `pulumi:"portId"`
+	Port       pulumi.IntInput    `pulumi:"port"`
+	PortId     pulumi.StringInput `pulumi:"portId"`
 }
 
 func (GetDmsRocketmqInstancesInstanceCrossVpcAccessArgs) ElementType() reflect.Type {
@@ -27841,7 +26717,6 @@ func (o GetDmsRocketmqInstancesInstanceCrossVpcAccessOutput) ToGetDmsRocketmqIns
 	return o
 }
 
-// Indicates the advertised IP.
 func (o GetDmsRocketmqInstancesInstanceCrossVpcAccessOutput) AdvertisedIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqInstancesInstanceCrossVpcAccess) string { return v.AdvertisedIp }).(pulumi.StringOutput)
 }
@@ -27851,17 +26726,14 @@ func (o GetDmsRocketmqInstancesInstanceCrossVpcAccessOutput) LisenterIp() pulumi
 	return o.ApplyT(func(v GetDmsRocketmqInstancesInstanceCrossVpcAccess) string { return v.LisenterIp }).(pulumi.StringOutput)
 }
 
-// Indicates the IP of the listener.
 func (o GetDmsRocketmqInstancesInstanceCrossVpcAccessOutput) ListenerIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqInstancesInstanceCrossVpcAccess) string { return v.ListenerIp }).(pulumi.StringOutput)
 }
 
-// Indicates the port.
 func (o GetDmsRocketmqInstancesInstanceCrossVpcAccessOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDmsRocketmqInstancesInstanceCrossVpcAccess) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// Indicates the port ID associated with the address.
 func (o GetDmsRocketmqInstancesInstanceCrossVpcAccessOutput) PortId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqInstancesInstanceCrossVpcAccess) string { return v.PortId }).(pulumi.StringOutput)
 }
@@ -27892,11 +26764,6 @@ type GetDmsRocketmqMessageTracesTrace struct {
 	// Specifies the IP address of the host that generates the message.
 	ClientHost string `pulumi:"clientHost"`
 	// Specifies the consumption status.
-	// + **0**: successful
-	// + **1**: timeout
-	// + **2**: abnormal
-	// + **3**: null
-	// + **5**: failed
 	ConsumeStatus float64 `pulumi:"consumeStatus"`
 	// Specifies the time spent.
 	CostTime float64 `pulumi:"costTime"`
@@ -27951,11 +26818,6 @@ type GetDmsRocketmqMessageTracesTraceArgs struct {
 	// Specifies the IP address of the host that generates the message.
 	ClientHost pulumi.StringInput `pulumi:"clientHost"`
 	// Specifies the consumption status.
-	// + **0**: successful
-	// + **1**: timeout
-	// + **2**: abnormal
-	// + **3**: null
-	// + **5**: failed
 	ConsumeStatus pulumi.Float64Input `pulumi:"consumeStatus"`
 	// Specifies the time spent.
 	CostTime pulumi.Float64Input `pulumi:"costTime"`
@@ -28055,11 +26917,6 @@ func (o GetDmsRocketmqMessageTracesTraceOutput) ClientHost() pulumi.StringOutput
 }
 
 // Specifies the consumption status.
-// + **0**: successful
-// + **1**: timeout
-// + **2**: abnormal
-// + **3**: null
-// + **5**: failed
 func (o GetDmsRocketmqMessageTracesTraceOutput) ConsumeStatus() pulumi.Float64Output {
 	return o.ApplyT(func(v GetDmsRocketmqMessageTracesTrace) float64 { return v.ConsumeStatus }).(pulumi.Float64Output)
 }
@@ -28170,7 +27027,7 @@ func (o GetDmsRocketmqMessageTracesTraceArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetDmsRocketmqMessagesMessage struct {
-	// Indicates the message body. Only return when querying message by message ID.
+	// Indicates the message body.
 	Body string `pulumi:"body"`
 	// Indicates the message body checksum.
 	BodyCrc int `pulumi:"bodyCrc"`
@@ -28178,10 +27035,9 @@ type GetDmsRocketmqMessagesMessage struct {
 	BornHost string `pulumi:"bornHost"`
 	// Indicates the message generated time.
 	BornTime string `pulumi:"bornTime"`
-	// Specifies the message ID.
+	// Indicates the message ID.
 	MessageId string `pulumi:"messageId"`
 	// Indicates the property list.
-	// The propertyList structure is documented below.
 	PropertyLists []GetDmsRocketmqMessagesMessagePropertyList `pulumi:"propertyLists"`
 	// Indicates the queue ID.
 	QueueId int `pulumi:"queueId"`
@@ -28209,7 +27065,7 @@ type GetDmsRocketmqMessagesMessageInput interface {
 }
 
 type GetDmsRocketmqMessagesMessageArgs struct {
-	// Indicates the message body. Only return when querying message by message ID.
+	// Indicates the message body.
 	Body pulumi.StringInput `pulumi:"body"`
 	// Indicates the message body checksum.
 	BodyCrc pulumi.IntInput `pulumi:"bodyCrc"`
@@ -28217,10 +27073,9 @@ type GetDmsRocketmqMessagesMessageArgs struct {
 	BornHost pulumi.StringInput `pulumi:"bornHost"`
 	// Indicates the message generated time.
 	BornTime pulumi.StringInput `pulumi:"bornTime"`
-	// Specifies the message ID.
+	// Indicates the message ID.
 	MessageId pulumi.StringInput `pulumi:"messageId"`
 	// Indicates the property list.
-	// The propertyList structure is documented below.
 	PropertyLists GetDmsRocketmqMessagesMessagePropertyListArrayInput `pulumi:"propertyLists"`
 	// Indicates the queue ID.
 	QueueId pulumi.IntInput `pulumi:"queueId"`
@@ -28287,7 +27142,7 @@ func (o GetDmsRocketmqMessagesMessageOutput) ToGetDmsRocketmqMessagesMessageOutp
 	return o
 }
 
-// Indicates the message body. Only return when querying message by message ID.
+// Indicates the message body.
 func (o GetDmsRocketmqMessagesMessageOutput) Body() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqMessagesMessage) string { return v.Body }).(pulumi.StringOutput)
 }
@@ -28307,13 +27162,12 @@ func (o GetDmsRocketmqMessagesMessageOutput) BornTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqMessagesMessage) string { return v.BornTime }).(pulumi.StringOutput)
 }
 
-// Specifies the message ID.
+// Indicates the message ID.
 func (o GetDmsRocketmqMessagesMessageOutput) MessageId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqMessagesMessage) string { return v.MessageId }).(pulumi.StringOutput)
 }
 
 // Indicates the property list.
-// The propertyList structure is documented below.
 func (o GetDmsRocketmqMessagesMessageOutput) PropertyLists() GetDmsRocketmqMessagesMessagePropertyListArrayOutput {
 	return o.ApplyT(func(v GetDmsRocketmqMessagesMessage) []GetDmsRocketmqMessagesMessagePropertyList {
 		return v.PropertyLists
@@ -28479,14 +27333,13 @@ func (o GetDmsRocketmqMessagesMessagePropertyListArrayOutput) Index(i pulumi.Int
 type GetDmsRocketmqMigrationTasksTask struct {
 	// Indicates the ID of a metadata migration task.
 	Id string `pulumi:"id"`
-	// Specifies the RocketMQ migration task name.
+	// Indicates the name of a metadata migration task.
 	Name string `pulumi:"name"`
 	// Indicates the start time of a metadata migration task.
 	StartDate string `pulumi:"startDate"`
 	// Indicates the status of a metadata migration task.
 	Status string `pulumi:"status"`
-	// Specifies the RocketMQ migration task type.
-	// Valid values are **rocketmq** and **rabbitToRocket**.
+	// Indicates the metadata migration task type.
 	Type string `pulumi:"type"`
 }
 
@@ -28504,14 +27357,13 @@ type GetDmsRocketmqMigrationTasksTaskInput interface {
 type GetDmsRocketmqMigrationTasksTaskArgs struct {
 	// Indicates the ID of a metadata migration task.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies the RocketMQ migration task name.
+	// Indicates the name of a metadata migration task.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Indicates the start time of a metadata migration task.
 	StartDate pulumi.StringInput `pulumi:"startDate"`
 	// Indicates the status of a metadata migration task.
 	Status pulumi.StringInput `pulumi:"status"`
-	// Specifies the RocketMQ migration task type.
-	// Valid values are **rocketmq** and **rabbitToRocket**.
+	// Indicates the metadata migration task type.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -28571,7 +27423,7 @@ func (o GetDmsRocketmqMigrationTasksTaskOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqMigrationTasksTask) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Specifies the RocketMQ migration task name.
+// Indicates the name of a metadata migration task.
 func (o GetDmsRocketmqMigrationTasksTaskOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqMigrationTasksTask) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -28586,8 +27438,7 @@ func (o GetDmsRocketmqMigrationTasksTaskOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqMigrationTasksTask) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Specifies the RocketMQ migration task type.
-// Valid values are **rocketmq** and **rabbitToRocket**.
+// Indicates the metadata migration task type.
 func (o GetDmsRocketmqMigrationTasksTaskOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqMigrationTasksTask) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -28737,17 +27588,11 @@ func (o GetDmsRocketmqTopicAccessUsersPolicyArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetDmsRocketmqTopicsTopic struct {
-	// The list of brokers.
-	// The brokers structure is documented below.
-	Brokers []GetDmsRocketmqTopicsTopicBroker `pulumi:"brokers"`
-	// Specifies the topic name.
-	Name string `pulumi:"name"`
-	// Specifies the permission. Value options: **sub**, **pub** or **all**.
-	Permission string `pulumi:"permission"`
-	// Specifies the number of total read queue.
-	TotalReadQueueNum int `pulumi:"totalReadQueueNum"`
-	// Specifies the number of total write queue.
-	TotalWriteQueueNum int `pulumi:"totalWriteQueueNum"`
+	Brokers            []GetDmsRocketmqTopicsTopicBroker `pulumi:"brokers"`
+	Name               string                            `pulumi:"name"`
+	Permission         string                            `pulumi:"permission"`
+	TotalReadQueueNum  int                               `pulumi:"totalReadQueueNum"`
+	TotalWriteQueueNum int                               `pulumi:"totalWriteQueueNum"`
 }
 
 // GetDmsRocketmqTopicsTopicInput is an input type that accepts GetDmsRocketmqTopicsTopicArgs and GetDmsRocketmqTopicsTopicOutput values.
@@ -28762,17 +27607,11 @@ type GetDmsRocketmqTopicsTopicInput interface {
 }
 
 type GetDmsRocketmqTopicsTopicArgs struct {
-	// The list of brokers.
-	// The brokers structure is documented below.
-	Brokers GetDmsRocketmqTopicsTopicBrokerArrayInput `pulumi:"brokers"`
-	// Specifies the topic name.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies the permission. Value options: **sub**, **pub** or **all**.
-	Permission pulumi.StringInput `pulumi:"permission"`
-	// Specifies the number of total read queue.
-	TotalReadQueueNum pulumi.IntInput `pulumi:"totalReadQueueNum"`
-	// Specifies the number of total write queue.
-	TotalWriteQueueNum pulumi.IntInput `pulumi:"totalWriteQueueNum"`
+	Brokers            GetDmsRocketmqTopicsTopicBrokerArrayInput `pulumi:"brokers"`
+	Name               pulumi.StringInput                        `pulumi:"name"`
+	Permission         pulumi.StringInput                        `pulumi:"permission"`
+	TotalReadQueueNum  pulumi.IntInput                           `pulumi:"totalReadQueueNum"`
+	TotalWriteQueueNum pulumi.IntInput                           `pulumi:"totalWriteQueueNum"`
 }
 
 func (GetDmsRocketmqTopicsTopicArgs) ElementType() reflect.Type {
@@ -28826,28 +27665,22 @@ func (o GetDmsRocketmqTopicsTopicOutput) ToGetDmsRocketmqTopicsTopicOutputWithCo
 	return o
 }
 
-// The list of brokers.
-// The brokers structure is documented below.
 func (o GetDmsRocketmqTopicsTopicOutput) Brokers() GetDmsRocketmqTopicsTopicBrokerArrayOutput {
 	return o.ApplyT(func(v GetDmsRocketmqTopicsTopic) []GetDmsRocketmqTopicsTopicBroker { return v.Brokers }).(GetDmsRocketmqTopicsTopicBrokerArrayOutput)
 }
 
-// Specifies the topic name.
 func (o GetDmsRocketmqTopicsTopicOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqTopicsTopic) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the permission. Value options: **sub**, **pub** or **all**.
 func (o GetDmsRocketmqTopicsTopicOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqTopicsTopic) string { return v.Permission }).(pulumi.StringOutput)
 }
 
-// Specifies the number of total read queue.
 func (o GetDmsRocketmqTopicsTopicOutput) TotalReadQueueNum() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDmsRocketmqTopicsTopic) int { return v.TotalReadQueueNum }).(pulumi.IntOutput)
 }
 
-// Specifies the number of total write queue.
 func (o GetDmsRocketmqTopicsTopicOutput) TotalWriteQueueNum() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDmsRocketmqTopicsTopic) int { return v.TotalWriteQueueNum }).(pulumi.IntOutput)
 }
@@ -28873,12 +27706,9 @@ func (o GetDmsRocketmqTopicsTopicArrayOutput) Index(i pulumi.IntInput) GetDmsRoc
 }
 
 type GetDmsRocketmqTopicsTopicBroker struct {
-	// Indicates the broker name.
-	BrokerName string `pulumi:"brokerName"`
-	// Indicates the number of read queue.
-	ReadQueueNum int `pulumi:"readQueueNum"`
-	// Indicates the number of write queue.
-	WriteQueueNum int `pulumi:"writeQueueNum"`
+	BrokerName    string `pulumi:"brokerName"`
+	ReadQueueNum  int    `pulumi:"readQueueNum"`
+	WriteQueueNum int    `pulumi:"writeQueueNum"`
 }
 
 // GetDmsRocketmqTopicsTopicBrokerInput is an input type that accepts GetDmsRocketmqTopicsTopicBrokerArgs and GetDmsRocketmqTopicsTopicBrokerOutput values.
@@ -28893,12 +27723,9 @@ type GetDmsRocketmqTopicsTopicBrokerInput interface {
 }
 
 type GetDmsRocketmqTopicsTopicBrokerArgs struct {
-	// Indicates the broker name.
-	BrokerName pulumi.StringInput `pulumi:"brokerName"`
-	// Indicates the number of read queue.
-	ReadQueueNum pulumi.IntInput `pulumi:"readQueueNum"`
-	// Indicates the number of write queue.
-	WriteQueueNum pulumi.IntInput `pulumi:"writeQueueNum"`
+	BrokerName    pulumi.StringInput `pulumi:"brokerName"`
+	ReadQueueNum  pulumi.IntInput    `pulumi:"readQueueNum"`
+	WriteQueueNum pulumi.IntInput    `pulumi:"writeQueueNum"`
 }
 
 func (GetDmsRocketmqTopicsTopicBrokerArgs) ElementType() reflect.Type {
@@ -28952,17 +27779,14 @@ func (o GetDmsRocketmqTopicsTopicBrokerOutput) ToGetDmsRocketmqTopicsTopicBroker
 	return o
 }
 
-// Indicates the broker name.
 func (o GetDmsRocketmqTopicsTopicBrokerOutput) BrokerName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqTopicsTopicBroker) string { return v.BrokerName }).(pulumi.StringOutput)
 }
 
-// Indicates the number of read queue.
 func (o GetDmsRocketmqTopicsTopicBrokerOutput) ReadQueueNum() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDmsRocketmqTopicsTopicBroker) int { return v.ReadQueueNum }).(pulumi.IntOutput)
 }
 
-// Indicates the number of write queue.
 func (o GetDmsRocketmqTopicsTopicBrokerOutput) WriteQueueNum() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDmsRocketmqTopicsTopicBroker) int { return v.WriteQueueNum }).(pulumi.IntOutput)
 }
@@ -28988,24 +27812,13 @@ func (o GetDmsRocketmqTopicsTopicBrokerArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetDmsRocketmqUsersUser struct {
-	// Specifies the user name.
-	AccessKey string `pulumi:"accessKey"`
-	// Specifies whether the user is an administrator.
-	Admin bool `pulumi:"admin"`
-	// Specifies the default consumer group permissions.
-	// Value options: **SUB**, **DENY**.
-	DefaultGroupPerm string `pulumi:"defaultGroupPerm"`
-	// Specifies the default topic permissions.
-	// Value options: **PUB|SUB**, **PUB**, **SUB**, **DENY**.
-	DefaultTopicPerm string `pulumi:"defaultTopicPerm"`
-	// The list of the special consumer group permissions.
-	// The groupPerms structure is documented below.
-	GroupPerms []GetDmsRocketmqUsersUserGroupPerm `pulumi:"groupPerms"`
-	// The list of the special topic permissions.
-	// The topicPerms structure is documented below.
-	TopicPerms []GetDmsRocketmqUsersUserTopicPerm `pulumi:"topicPerms"`
-	// Specifies the IP address whitelist.
-	WhiteRemoteAddress string `pulumi:"whiteRemoteAddress"`
+	AccessKey          string                             `pulumi:"accessKey"`
+	Admin              bool                               `pulumi:"admin"`
+	DefaultGroupPerm   string                             `pulumi:"defaultGroupPerm"`
+	DefaultTopicPerm   string                             `pulumi:"defaultTopicPerm"`
+	GroupPerms         []GetDmsRocketmqUsersUserGroupPerm `pulumi:"groupPerms"`
+	TopicPerms         []GetDmsRocketmqUsersUserTopicPerm `pulumi:"topicPerms"`
+	WhiteRemoteAddress string                             `pulumi:"whiteRemoteAddress"`
 }
 
 // GetDmsRocketmqUsersUserInput is an input type that accepts GetDmsRocketmqUsersUserArgs and GetDmsRocketmqUsersUserOutput values.
@@ -29020,24 +27833,13 @@ type GetDmsRocketmqUsersUserInput interface {
 }
 
 type GetDmsRocketmqUsersUserArgs struct {
-	// Specifies the user name.
-	AccessKey pulumi.StringInput `pulumi:"accessKey"`
-	// Specifies whether the user is an administrator.
-	Admin pulumi.BoolInput `pulumi:"admin"`
-	// Specifies the default consumer group permissions.
-	// Value options: **SUB**, **DENY**.
-	DefaultGroupPerm pulumi.StringInput `pulumi:"defaultGroupPerm"`
-	// Specifies the default topic permissions.
-	// Value options: **PUB|SUB**, **PUB**, **SUB**, **DENY**.
-	DefaultTopicPerm pulumi.StringInput `pulumi:"defaultTopicPerm"`
-	// The list of the special consumer group permissions.
-	// The groupPerms structure is documented below.
-	GroupPerms GetDmsRocketmqUsersUserGroupPermArrayInput `pulumi:"groupPerms"`
-	// The list of the special topic permissions.
-	// The topicPerms structure is documented below.
-	TopicPerms GetDmsRocketmqUsersUserTopicPermArrayInput `pulumi:"topicPerms"`
-	// Specifies the IP address whitelist.
-	WhiteRemoteAddress pulumi.StringInput `pulumi:"whiteRemoteAddress"`
+	AccessKey          pulumi.StringInput                         `pulumi:"accessKey"`
+	Admin              pulumi.BoolInput                           `pulumi:"admin"`
+	DefaultGroupPerm   pulumi.StringInput                         `pulumi:"defaultGroupPerm"`
+	DefaultTopicPerm   pulumi.StringInput                         `pulumi:"defaultTopicPerm"`
+	GroupPerms         GetDmsRocketmqUsersUserGroupPermArrayInput `pulumi:"groupPerms"`
+	TopicPerms         GetDmsRocketmqUsersUserTopicPermArrayInput `pulumi:"topicPerms"`
+	WhiteRemoteAddress pulumi.StringInput                         `pulumi:"whiteRemoteAddress"`
 }
 
 func (GetDmsRocketmqUsersUserArgs) ElementType() reflect.Type {
@@ -29091,41 +27893,30 @@ func (o GetDmsRocketmqUsersUserOutput) ToGetDmsRocketmqUsersUserOutputWithContex
 	return o
 }
 
-// Specifies the user name.
 func (o GetDmsRocketmqUsersUserOutput) AccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqUsersUser) string { return v.AccessKey }).(pulumi.StringOutput)
 }
 
-// Specifies whether the user is an administrator.
 func (o GetDmsRocketmqUsersUserOutput) Admin() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDmsRocketmqUsersUser) bool { return v.Admin }).(pulumi.BoolOutput)
 }
 
-// Specifies the default consumer group permissions.
-// Value options: **SUB**, **DENY**.
 func (o GetDmsRocketmqUsersUserOutput) DefaultGroupPerm() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqUsersUser) string { return v.DefaultGroupPerm }).(pulumi.StringOutput)
 }
 
-// Specifies the default topic permissions.
-// Value options: **PUB|SUB**, **PUB**, **SUB**, **DENY**.
 func (o GetDmsRocketmqUsersUserOutput) DefaultTopicPerm() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqUsersUser) string { return v.DefaultTopicPerm }).(pulumi.StringOutput)
 }
 
-// The list of the special consumer group permissions.
-// The groupPerms structure is documented below.
 func (o GetDmsRocketmqUsersUserOutput) GroupPerms() GetDmsRocketmqUsersUserGroupPermArrayOutput {
 	return o.ApplyT(func(v GetDmsRocketmqUsersUser) []GetDmsRocketmqUsersUserGroupPerm { return v.GroupPerms }).(GetDmsRocketmqUsersUserGroupPermArrayOutput)
 }
 
-// The list of the special topic permissions.
-// The topicPerms structure is documented below.
 func (o GetDmsRocketmqUsersUserOutput) TopicPerms() GetDmsRocketmqUsersUserTopicPermArrayOutput {
 	return o.ApplyT(func(v GetDmsRocketmqUsersUser) []GetDmsRocketmqUsersUserTopicPerm { return v.TopicPerms }).(GetDmsRocketmqUsersUserTopicPermArrayOutput)
 }
 
-// Specifies the IP address whitelist.
 func (o GetDmsRocketmqUsersUserOutput) WhiteRemoteAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqUsersUser) string { return v.WhiteRemoteAddress }).(pulumi.StringOutput)
 }
@@ -29151,10 +27942,7 @@ func (o GetDmsRocketmqUsersUserArrayOutput) Index(i pulumi.IntInput) GetDmsRocke
 }
 
 type GetDmsRocketmqUsersUserGroupPerm struct {
-	// Indicates the name of consumer group.
 	Name string `pulumi:"name"`
-	// Indicates the permissions of consumer group.
-	// Value options: **SUB**, **DENY**.
 	Perm string `pulumi:"perm"`
 }
 
@@ -29170,10 +27958,7 @@ type GetDmsRocketmqUsersUserGroupPermInput interface {
 }
 
 type GetDmsRocketmqUsersUserGroupPermArgs struct {
-	// Indicates the name of consumer group.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Indicates the permissions of consumer group.
-	// Value options: **SUB**, **DENY**.
 	Perm pulumi.StringInput `pulumi:"perm"`
 }
 
@@ -29228,13 +28013,10 @@ func (o GetDmsRocketmqUsersUserGroupPermOutput) ToGetDmsRocketmqUsersUserGroupPe
 	return o
 }
 
-// Indicates the name of consumer group.
 func (o GetDmsRocketmqUsersUserGroupPermOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqUsersUserGroupPerm) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Indicates the permissions of consumer group.
-// Value options: **SUB**, **DENY**.
 func (o GetDmsRocketmqUsersUserGroupPermOutput) Perm() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqUsersUserGroupPerm) string { return v.Perm }).(pulumi.StringOutput)
 }
@@ -29260,10 +28042,7 @@ func (o GetDmsRocketmqUsersUserGroupPermArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetDmsRocketmqUsersUserTopicPerm struct {
-	// Indicates the name of consumer group.
 	Name string `pulumi:"name"`
-	// Indicates the permissions of consumer group.
-	// Value options: **SUB**, **DENY**.
 	Perm string `pulumi:"perm"`
 }
 
@@ -29279,10 +28058,7 @@ type GetDmsRocketmqUsersUserTopicPermInput interface {
 }
 
 type GetDmsRocketmqUsersUserTopicPermArgs struct {
-	// Indicates the name of consumer group.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Indicates the permissions of consumer group.
-	// Value options: **SUB**, **DENY**.
 	Perm pulumi.StringInput `pulumi:"perm"`
 }
 
@@ -29337,13 +28113,10 @@ func (o GetDmsRocketmqUsersUserTopicPermOutput) ToGetDmsRocketmqUsersUserTopicPe
 	return o
 }
 
-// Indicates the name of consumer group.
 func (o GetDmsRocketmqUsersUserTopicPermOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqUsersUserTopicPerm) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Indicates the permissions of consumer group.
-// Value options: **SUB**, **DENY**.
 func (o GetDmsRocketmqUsersUserTopicPermOutput) Perm() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqUsersUserTopicPerm) string { return v.Perm }).(pulumi.StringOutput)
 }
@@ -29369,26 +28142,19 @@ func (o GetDmsRocketmqUsersUserTopicPermArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetElbFlavorsFlavor struct {
-	// Specifies the bandwidth size(Mbit/s) in the flavor.
-	Bandwidth int `pulumi:"bandwidth"`
-	Category  int `pulumi:"category"`
-	// Specifies the cps in the flavor.
-	Cps           int  `pulumi:"cps"`
-	FlavorSoldOut bool `pulumi:"flavorSoldOut"`
-	HttpsCps      int  `pulumi:"httpsCps"`
-	// ID of the flavor.
-	Id  string `pulumi:"id"`
-	Lcu int    `pulumi:"lcu"`
-	// Specifies the maximum connections in the flavor.
-	MaxConnections int `pulumi:"maxConnections"`
-	// Name of the flavor.
+	Bandwidth         int    `pulumi:"bandwidth"`
+	Category          int    `pulumi:"category"`
+	Cps               int    `pulumi:"cps"`
+	FlavorSoldOut     bool   `pulumi:"flavorSoldOut"`
+	HttpsCps          int    `pulumi:"httpsCps"`
+	Id                string `pulumi:"id"`
+	Lcu               int    `pulumi:"lcu"`
+	MaxConnections    int    `pulumi:"maxConnections"`
 	Name              string `pulumi:"name"`
 	PublicBorderGroup string `pulumi:"publicBorderGroup"`
-	// Specifies the qps in the L7 flavor.
-	Qps    int  `pulumi:"qps"`
-	Shared bool `pulumi:"shared"`
-	// Specifies the flavor type. Valid values are L4 and L7.
-	Type string `pulumi:"type"`
+	Qps               int    `pulumi:"qps"`
+	Shared            bool   `pulumi:"shared"`
+	Type              string `pulumi:"type"`
 }
 
 // GetElbFlavorsFlavorInput is an input type that accepts GetElbFlavorsFlavorArgs and GetElbFlavorsFlavorOutput values.
@@ -29403,26 +28169,19 @@ type GetElbFlavorsFlavorInput interface {
 }
 
 type GetElbFlavorsFlavorArgs struct {
-	// Specifies the bandwidth size(Mbit/s) in the flavor.
-	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
-	Category  pulumi.IntInput `pulumi:"category"`
-	// Specifies the cps in the flavor.
-	Cps           pulumi.IntInput  `pulumi:"cps"`
-	FlavorSoldOut pulumi.BoolInput `pulumi:"flavorSoldOut"`
-	HttpsCps      pulumi.IntInput  `pulumi:"httpsCps"`
-	// ID of the flavor.
-	Id  pulumi.StringInput `pulumi:"id"`
-	Lcu pulumi.IntInput    `pulumi:"lcu"`
-	// Specifies the maximum connections in the flavor.
-	MaxConnections pulumi.IntInput `pulumi:"maxConnections"`
-	// Name of the flavor.
+	Bandwidth         pulumi.IntInput    `pulumi:"bandwidth"`
+	Category          pulumi.IntInput    `pulumi:"category"`
+	Cps               pulumi.IntInput    `pulumi:"cps"`
+	FlavorSoldOut     pulumi.BoolInput   `pulumi:"flavorSoldOut"`
+	HttpsCps          pulumi.IntInput    `pulumi:"httpsCps"`
+	Id                pulumi.StringInput `pulumi:"id"`
+	Lcu               pulumi.IntInput    `pulumi:"lcu"`
+	MaxConnections    pulumi.IntInput    `pulumi:"maxConnections"`
 	Name              pulumi.StringInput `pulumi:"name"`
 	PublicBorderGroup pulumi.StringInput `pulumi:"publicBorderGroup"`
-	// Specifies the qps in the L7 flavor.
-	Qps    pulumi.IntInput  `pulumi:"qps"`
-	Shared pulumi.BoolInput `pulumi:"shared"`
-	// Specifies the flavor type. Valid values are L4 and L7.
-	Type pulumi.StringInput `pulumi:"type"`
+	Qps               pulumi.IntInput    `pulumi:"qps"`
+	Shared            pulumi.BoolInput   `pulumi:"shared"`
+	Type              pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetElbFlavorsFlavorArgs) ElementType() reflect.Type {
@@ -29476,7 +28235,6 @@ func (o GetElbFlavorsFlavorOutput) ToGetElbFlavorsFlavorOutputWithContext(ctx co
 	return o
 }
 
-// Specifies the bandwidth size(Mbit/s) in the flavor.
 func (o GetElbFlavorsFlavorOutput) Bandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v GetElbFlavorsFlavor) int { return v.Bandwidth }).(pulumi.IntOutput)
 }
@@ -29485,7 +28243,6 @@ func (o GetElbFlavorsFlavorOutput) Category() pulumi.IntOutput {
 	return o.ApplyT(func(v GetElbFlavorsFlavor) int { return v.Category }).(pulumi.IntOutput)
 }
 
-// Specifies the cps in the flavor.
 func (o GetElbFlavorsFlavorOutput) Cps() pulumi.IntOutput {
 	return o.ApplyT(func(v GetElbFlavorsFlavor) int { return v.Cps }).(pulumi.IntOutput)
 }
@@ -29498,7 +28255,6 @@ func (o GetElbFlavorsFlavorOutput) HttpsCps() pulumi.IntOutput {
 	return o.ApplyT(func(v GetElbFlavorsFlavor) int { return v.HttpsCps }).(pulumi.IntOutput)
 }
 
-// ID of the flavor.
 func (o GetElbFlavorsFlavorOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetElbFlavorsFlavor) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -29507,12 +28263,10 @@ func (o GetElbFlavorsFlavorOutput) Lcu() pulumi.IntOutput {
 	return o.ApplyT(func(v GetElbFlavorsFlavor) int { return v.Lcu }).(pulumi.IntOutput)
 }
 
-// Specifies the maximum connections in the flavor.
 func (o GetElbFlavorsFlavorOutput) MaxConnections() pulumi.IntOutput {
 	return o.ApplyT(func(v GetElbFlavorsFlavor) int { return v.MaxConnections }).(pulumi.IntOutput)
 }
 
-// Name of the flavor.
 func (o GetElbFlavorsFlavorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetElbFlavorsFlavor) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -29521,7 +28275,6 @@ func (o GetElbFlavorsFlavorOutput) PublicBorderGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v GetElbFlavorsFlavor) string { return v.PublicBorderGroup }).(pulumi.StringOutput)
 }
 
-// Specifies the qps in the L7 flavor.
 func (o GetElbFlavorsFlavorOutput) Qps() pulumi.IntOutput {
 	return o.ApplyT(func(v GetElbFlavorsFlavor) int { return v.Qps }).(pulumi.IntOutput)
 }
@@ -29530,7 +28283,6 @@ func (o GetElbFlavorsFlavorOutput) Shared() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetElbFlavorsFlavor) bool { return v.Shared }).(pulumi.BoolOutput)
 }
 
-// Specifies the flavor type. Valid values are L4 and L7.
 func (o GetElbFlavorsFlavorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetElbFlavorsFlavor) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -29562,37 +28314,35 @@ type GetElbPoolsPool struct {
 	// The timeout of the delayed logout in seconds.
 	ConnectionDrainTimeout int    `pulumi:"connectionDrainTimeout"`
 	CreatedAt              string `pulumi:"createdAt"`
-	// Specifies the description of the ELB pool.
+	// The description of pool.
 	Description         string `pulumi:"description"`
 	EnterpriseProjectId string `pulumi:"enterpriseProjectId"`
-	// Specifies the health monitor ID of the ELB pool.
+	// The health monitor ID of the ELB pool.
 	HealthmonitorId string `pulumi:"healthmonitorId"`
-	// The listener, loadbalancer or member ID.
+	// The pool ID.
 	Id string `pulumi:"id"`
-	// The IP version of the LB pool.
+	// The IP version of pool.
 	IpVersion string `pulumi:"ipVersion"`
-	// Specifies the method of the ELB pool. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
-	// or SOURCE_IP.
+	// The method of the ELB pool.
 	LbMethod string `pulumi:"lbMethod"`
-	// The listener list. The object structure is documented below.
+	// Listener list. For details, see Data structure of the listener field.
 	Listeners []GetElbPoolsPoolListener `pulumi:"listeners"`
-	// The loadbalancer list. The object structure is documented below.
+	// Loadbalancer list. For details, see Data structure of the loadbalancer field.
 	Loadbalancers                  []GetElbPoolsPoolLoadbalancer `pulumi:"loadbalancers"`
 	MemberDeletionProtectionEnable bool                          `pulumi:"memberDeletionProtectionEnable"`
-	// The member list. The object structure is documented below.
+	// Loadbalancer list. For details, see Data structure of the members field.
 	Members []GetElbPoolsPoolMember `pulumi:"members"`
 	// The timeout of the delayed logout in seconds.
 	MinimumHealthyMemberCount int `pulumi:"minimumHealthyMemberCount"`
-	// Specifies the name of the ELB pool.
+	// The pool name.
 	Name string `pulumi:"name"`
-	// Indicates whether connections in the same session will be processed by the same pool member or not.
-	// The object structure is documented below.
+	// Whether connections in the same session will be processed by the same pool member or not.
 	Persistences []GetElbPoolsPoolPersistence `pulumi:"persistences"`
 	// The reason for update protection.
 	ProtectionReason string `pulumi:"protectionReason"`
 	// The protection status for update.
 	ProtectionStatus string `pulumi:"protectionStatus"`
-	// Specifies the protocol of the ELB pool. This can either be TCP, UDP or HTTP.
+	// The protocol of pool.
 	Protocol              string                               `pulumi:"protocol"`
 	PublicBorderGroup     string                               `pulumi:"publicBorderGroup"`
 	QuicCidHashStrategies []GetElbPoolsPoolQuicCidHashStrategy `pulumi:"quicCidHashStrategies"`
@@ -29600,7 +28350,7 @@ type GetElbPoolsPool struct {
 	SlowStartDuration int `pulumi:"slowStartDuration"`
 	// Whether to enable slow start.
 	SlowStartEnabled bool `pulumi:"slowStartEnabled"`
-	// The type of persistence mode.
+	// The type of the backend server group.
 	Type      string `pulumi:"type"`
 	UpdatedAt string `pulumi:"updatedAt"`
 	// The ID of the VPC where the backend server group works.
@@ -29625,37 +28375,35 @@ type GetElbPoolsPoolArgs struct {
 	// The timeout of the delayed logout in seconds.
 	ConnectionDrainTimeout pulumi.IntInput    `pulumi:"connectionDrainTimeout"`
 	CreatedAt              pulumi.StringInput `pulumi:"createdAt"`
-	// Specifies the description of the ELB pool.
+	// The description of pool.
 	Description         pulumi.StringInput `pulumi:"description"`
 	EnterpriseProjectId pulumi.StringInput `pulumi:"enterpriseProjectId"`
-	// Specifies the health monitor ID of the ELB pool.
+	// The health monitor ID of the ELB pool.
 	HealthmonitorId pulumi.StringInput `pulumi:"healthmonitorId"`
-	// The listener, loadbalancer or member ID.
+	// The pool ID.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The IP version of the LB pool.
+	// The IP version of pool.
 	IpVersion pulumi.StringInput `pulumi:"ipVersion"`
-	// Specifies the method of the ELB pool. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
-	// or SOURCE_IP.
+	// The method of the ELB pool.
 	LbMethod pulumi.StringInput `pulumi:"lbMethod"`
-	// The listener list. The object structure is documented below.
+	// Listener list. For details, see Data structure of the listener field.
 	Listeners GetElbPoolsPoolListenerArrayInput `pulumi:"listeners"`
-	// The loadbalancer list. The object structure is documented below.
+	// Loadbalancer list. For details, see Data structure of the loadbalancer field.
 	Loadbalancers                  GetElbPoolsPoolLoadbalancerArrayInput `pulumi:"loadbalancers"`
 	MemberDeletionProtectionEnable pulumi.BoolInput                      `pulumi:"memberDeletionProtectionEnable"`
-	// The member list. The object structure is documented below.
+	// Loadbalancer list. For details, see Data structure of the members field.
 	Members GetElbPoolsPoolMemberArrayInput `pulumi:"members"`
 	// The timeout of the delayed logout in seconds.
 	MinimumHealthyMemberCount pulumi.IntInput `pulumi:"minimumHealthyMemberCount"`
-	// Specifies the name of the ELB pool.
+	// The pool name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Indicates whether connections in the same session will be processed by the same pool member or not.
-	// The object structure is documented below.
+	// Whether connections in the same session will be processed by the same pool member or not.
 	Persistences GetElbPoolsPoolPersistenceArrayInput `pulumi:"persistences"`
 	// The reason for update protection.
 	ProtectionReason pulumi.StringInput `pulumi:"protectionReason"`
 	// The protection status for update.
 	ProtectionStatus pulumi.StringInput `pulumi:"protectionStatus"`
-	// Specifies the protocol of the ELB pool. This can either be TCP, UDP or HTTP.
+	// The protocol of pool.
 	Protocol              pulumi.StringInput                           `pulumi:"protocol"`
 	PublicBorderGroup     pulumi.StringInput                           `pulumi:"publicBorderGroup"`
 	QuicCidHashStrategies GetElbPoolsPoolQuicCidHashStrategyArrayInput `pulumi:"quicCidHashStrategies"`
@@ -29663,7 +28411,7 @@ type GetElbPoolsPoolArgs struct {
 	SlowStartDuration pulumi.IntInput `pulumi:"slowStartDuration"`
 	// Whether to enable slow start.
 	SlowStartEnabled pulumi.BoolInput `pulumi:"slowStartEnabled"`
-	// The type of persistence mode.
+	// The type of the backend server group.
 	Type      pulumi.StringInput `pulumi:"type"`
 	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
 	// The ID of the VPC where the backend server group works.
@@ -29739,7 +28487,7 @@ func (o GetElbPoolsPoolOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetElbPoolsPool) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Specifies the description of the ELB pool.
+// The description of pool.
 func (o GetElbPoolsPoolOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetElbPoolsPool) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -29748,33 +28496,32 @@ func (o GetElbPoolsPoolOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetElbPoolsPool) string { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// Specifies the health monitor ID of the ELB pool.
+// The health monitor ID of the ELB pool.
 func (o GetElbPoolsPoolOutput) HealthmonitorId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetElbPoolsPool) string { return v.HealthmonitorId }).(pulumi.StringOutput)
 }
 
-// The listener, loadbalancer or member ID.
+// The pool ID.
 func (o GetElbPoolsPoolOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetElbPoolsPool) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The IP version of the LB pool.
+// The IP version of pool.
 func (o GetElbPoolsPoolOutput) IpVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetElbPoolsPool) string { return v.IpVersion }).(pulumi.StringOutput)
 }
 
-// Specifies the method of the ELB pool. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
-// or SOURCE_IP.
+// The method of the ELB pool.
 func (o GetElbPoolsPoolOutput) LbMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v GetElbPoolsPool) string { return v.LbMethod }).(pulumi.StringOutput)
 }
 
-// The listener list. The object structure is documented below.
+// Listener list. For details, see Data structure of the listener field.
 func (o GetElbPoolsPoolOutput) Listeners() GetElbPoolsPoolListenerArrayOutput {
 	return o.ApplyT(func(v GetElbPoolsPool) []GetElbPoolsPoolListener { return v.Listeners }).(GetElbPoolsPoolListenerArrayOutput)
 }
 
-// The loadbalancer list. The object structure is documented below.
+// Loadbalancer list. For details, see Data structure of the loadbalancer field.
 func (o GetElbPoolsPoolOutput) Loadbalancers() GetElbPoolsPoolLoadbalancerArrayOutput {
 	return o.ApplyT(func(v GetElbPoolsPool) []GetElbPoolsPoolLoadbalancer { return v.Loadbalancers }).(GetElbPoolsPoolLoadbalancerArrayOutput)
 }
@@ -29783,7 +28530,7 @@ func (o GetElbPoolsPoolOutput) MemberDeletionProtectionEnable() pulumi.BoolOutpu
 	return o.ApplyT(func(v GetElbPoolsPool) bool { return v.MemberDeletionProtectionEnable }).(pulumi.BoolOutput)
 }
 
-// The member list. The object structure is documented below.
+// Loadbalancer list. For details, see Data structure of the members field.
 func (o GetElbPoolsPoolOutput) Members() GetElbPoolsPoolMemberArrayOutput {
 	return o.ApplyT(func(v GetElbPoolsPool) []GetElbPoolsPoolMember { return v.Members }).(GetElbPoolsPoolMemberArrayOutput)
 }
@@ -29793,13 +28540,12 @@ func (o GetElbPoolsPoolOutput) MinimumHealthyMemberCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetElbPoolsPool) int { return v.MinimumHealthyMemberCount }).(pulumi.IntOutput)
 }
 
-// Specifies the name of the ELB pool.
+// The pool name.
 func (o GetElbPoolsPoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetElbPoolsPool) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Indicates whether connections in the same session will be processed by the same pool member or not.
-// The object structure is documented below.
+// Whether connections in the same session will be processed by the same pool member or not.
 func (o GetElbPoolsPoolOutput) Persistences() GetElbPoolsPoolPersistenceArrayOutput {
 	return o.ApplyT(func(v GetElbPoolsPool) []GetElbPoolsPoolPersistence { return v.Persistences }).(GetElbPoolsPoolPersistenceArrayOutput)
 }
@@ -29814,7 +28560,7 @@ func (o GetElbPoolsPoolOutput) ProtectionStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetElbPoolsPool) string { return v.ProtectionStatus }).(pulumi.StringOutput)
 }
 
-// Specifies the protocol of the ELB pool. This can either be TCP, UDP or HTTP.
+// The protocol of pool.
 func (o GetElbPoolsPoolOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v GetElbPoolsPool) string { return v.Protocol }).(pulumi.StringOutput)
 }
@@ -29837,7 +28583,7 @@ func (o GetElbPoolsPoolOutput) SlowStartEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetElbPoolsPool) bool { return v.SlowStartEnabled }).(pulumi.BoolOutput)
 }
 
-// The type of persistence mode.
+// The type of the backend server group.
 func (o GetElbPoolsPoolOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetElbPoolsPool) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -29872,7 +28618,7 @@ func (o GetElbPoolsPoolArrayOutput) Index(i pulumi.IntInput) GetElbPoolsPoolOutp
 }
 
 type GetElbPoolsPoolListener struct {
-	// The listener, loadbalancer or member ID.
+	// The listener ID.
 	Id string `pulumi:"id"`
 }
 
@@ -29888,7 +28634,7 @@ type GetElbPoolsPoolListenerInput interface {
 }
 
 type GetElbPoolsPoolListenerArgs struct {
-	// The listener, loadbalancer or member ID.
+	// The listener ID.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -29943,7 +28689,7 @@ func (o GetElbPoolsPoolListenerOutput) ToGetElbPoolsPoolListenerOutputWithContex
 	return o
 }
 
-// The listener, loadbalancer or member ID.
+// The listener ID.
 func (o GetElbPoolsPoolListenerOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetElbPoolsPoolListener) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -29969,7 +28715,7 @@ func (o GetElbPoolsPoolListenerArrayOutput) Index(i pulumi.IntInput) GetElbPools
 }
 
 type GetElbPoolsPoolLoadbalancer struct {
-	// The listener, loadbalancer or member ID.
+	// The loadbalancer ID.
 	Id string `pulumi:"id"`
 }
 
@@ -29985,7 +28731,7 @@ type GetElbPoolsPoolLoadbalancerInput interface {
 }
 
 type GetElbPoolsPoolLoadbalancerArgs struct {
-	// The listener, loadbalancer or member ID.
+	// The loadbalancer ID.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -30040,7 +28786,7 @@ func (o GetElbPoolsPoolLoadbalancerOutput) ToGetElbPoolsPoolLoadbalancerOutputWi
 	return o
 }
 
-// The listener, loadbalancer or member ID.
+// The loadbalancer ID.
 func (o GetElbPoolsPoolLoadbalancerOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetElbPoolsPoolLoadbalancer) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -30066,7 +28812,7 @@ func (o GetElbPoolsPoolLoadbalancerArrayOutput) Index(i pulumi.IntInput) GetElbP
 }
 
 type GetElbPoolsPoolMember struct {
-	// The listener, loadbalancer or member ID.
+	// The member ID.
 	Id string `pulumi:"id"`
 }
 
@@ -30082,7 +28828,7 @@ type GetElbPoolsPoolMemberInput interface {
 }
 
 type GetElbPoolsPoolMemberArgs struct {
-	// The listener, loadbalancer or member ID.
+	// The member ID.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -30137,7 +28883,7 @@ func (o GetElbPoolsPoolMemberOutput) ToGetElbPoolsPoolMemberOutputWithContext(ct
 	return o
 }
 
-// The listener, loadbalancer or member ID.
+// The member ID.
 func (o GetElbPoolsPoolMemberOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetElbPoolsPoolMember) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -30378,7 +29124,7 @@ func (o GetElbPoolsPoolQuicCidHashStrategyArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetFgsApplicationTemplatesTemplate struct {
-	// Specifies the category used to query the application templates.
+	// The template category.
 	Category string `pulumi:"category"`
 	// The description of template.
 	Description string `pulumi:"description"`
@@ -30386,27 +29132,7 @@ type GetFgsApplicationTemplatesTemplate struct {
 	Id string `pulumi:"id"`
 	// The template name.
 	Name string `pulumi:"name"`
-	// Specifies the runtime name used to query the application templates.\
-	// The valid values are as follows:
-	// + **Node.js6.10**
-	// + **Node.js8.10**
-	// + **Node.js10.16**
-	// + **Node.js12.13**
-	// + **Node.js14.18**
-	// + **Node.js16.17**
-	// + **Node.js18.15**
-	// + **Python2.7**
-	// + **Python3.6**
-	// + **Python3.9**
-	// + **Python3.10**
-	// + **Java8**
-	// + **Java11**
-	// + **Go1.x**
-	// + **C#(.NET Core 2.1)**
-	// + **C#(.NET Core 3.1)**
-	// + **http**
-	// + **PHP7.3**
-	// + **Custom**
+	// The template runtime.
 	Runtime string `pulumi:"runtime"`
 	// The type of the function application.
 	Type string `pulumi:"type"`
@@ -30424,7 +29150,7 @@ type GetFgsApplicationTemplatesTemplateInput interface {
 }
 
 type GetFgsApplicationTemplatesTemplateArgs struct {
-	// Specifies the category used to query the application templates.
+	// The template category.
 	Category pulumi.StringInput `pulumi:"category"`
 	// The description of template.
 	Description pulumi.StringInput `pulumi:"description"`
@@ -30432,27 +29158,7 @@ type GetFgsApplicationTemplatesTemplateArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The template name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies the runtime name used to query the application templates.\
-	// The valid values are as follows:
-	// + **Node.js6.10**
-	// + **Node.js8.10**
-	// + **Node.js10.16**
-	// + **Node.js12.13**
-	// + **Node.js14.18**
-	// + **Node.js16.17**
-	// + **Node.js18.15**
-	// + **Python2.7**
-	// + **Python3.6**
-	// + **Python3.9**
-	// + **Python3.10**
-	// + **Java8**
-	// + **Java11**
-	// + **Go1.x**
-	// + **C#(.NET Core 2.1)**
-	// + **C#(.NET Core 3.1)**
-	// + **http**
-	// + **PHP7.3**
-	// + **Custom**
+	// The template runtime.
 	Runtime pulumi.StringInput `pulumi:"runtime"`
 	// The type of the function application.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -30509,7 +29215,7 @@ func (o GetFgsApplicationTemplatesTemplateOutput) ToGetFgsApplicationTemplatesTe
 	return o
 }
 
-// Specifies the category used to query the application templates.
+// The template category.
 func (o GetFgsApplicationTemplatesTemplateOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFgsApplicationTemplatesTemplate) string { return v.Category }).(pulumi.StringOutput)
 }
@@ -30529,27 +29235,7 @@ func (o GetFgsApplicationTemplatesTemplateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFgsApplicationTemplatesTemplate) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the runtime name used to query the application templates.\
-// The valid values are as follows:
-// + **Node.js6.10**
-// + **Node.js8.10**
-// + **Node.js10.16**
-// + **Node.js12.13**
-// + **Node.js14.18**
-// + **Node.js16.17**
-// + **Node.js18.15**
-// + **Python2.7**
-// + **Python3.6**
-// + **Python3.9**
-// + **Python3.10**
-// + **Java8**
-// + **Java11**
-// + **Go1.x**
-// + **C#(.NET Core 2.1)**
-// + **C#(.NET Core 3.1)**
-// + **http**
-// + **PHP7.3**
-// + **Custom**
+// The template runtime.
 func (o GetFgsApplicationTemplatesTemplateOutput) Runtime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFgsApplicationTemplatesTemplate) string { return v.Runtime }).(pulumi.StringOutput)
 }
@@ -30580,18 +29266,15 @@ func (o GetFgsApplicationTemplatesTemplateArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetFgsApplicationsApplication struct {
-	// Specifies the description of the application to be queried.
+	// The latest update time of the application, in RFC3339 format.
 	Description string `pulumi:"description"`
 	// The ID of application.
 	Id string `pulumi:"id"`
-	// Specifies the application name used to query specified application.
+	// The name of application.
 	Name string `pulumi:"name"`
-	// Specifies the status of the application to be queried.\
-	// The valid values are as follows:
-	// + **success**: The application created successfully.
-	// + **repoFail**: The application repository creation failed.
+	// The status of application.
 	Status string `pulumi:"status"`
-	// The latest update time of the application, in RFC3339 format.
+	// The description of application.
 	UpdatedAt string `pulumi:"updatedAt"`
 }
 
@@ -30607,18 +29290,15 @@ type GetFgsApplicationsApplicationInput interface {
 }
 
 type GetFgsApplicationsApplicationArgs struct {
-	// Specifies the description of the application to be queried.
+	// The latest update time of the application, in RFC3339 format.
 	Description pulumi.StringInput `pulumi:"description"`
 	// The ID of application.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies the application name used to query specified application.
+	// The name of application.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies the status of the application to be queried.\
-	// The valid values are as follows:
-	// + **success**: The application created successfully.
-	// + **repoFail**: The application repository creation failed.
+	// The status of application.
 	Status pulumi.StringInput `pulumi:"status"`
-	// The latest update time of the application, in RFC3339 format.
+	// The description of application.
 	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
 }
 
@@ -30673,7 +29353,7 @@ func (o GetFgsApplicationsApplicationOutput) ToGetFgsApplicationsApplicationOutp
 	return o
 }
 
-// Specifies the description of the application to be queried.
+// The latest update time of the application, in RFC3339 format.
 func (o GetFgsApplicationsApplicationOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFgsApplicationsApplication) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -30683,20 +29363,17 @@ func (o GetFgsApplicationsApplicationOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFgsApplicationsApplication) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Specifies the application name used to query specified application.
+// The name of application.
 func (o GetFgsApplicationsApplicationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFgsApplicationsApplication) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the status of the application to be queried.\
-// The valid values are as follows:
-// + **success**: The application created successfully.
-// + **repoFail**: The application repository creation failed.
+// The status of application.
 func (o GetFgsApplicationsApplicationOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFgsApplicationsApplication) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The latest update time of the application, in RFC3339 format.
+// The description of application.
 func (o GetFgsApplicationsApplicationOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFgsApplicationsApplication) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
@@ -30722,7 +29399,7 @@ func (o GetFgsApplicationsApplicationArrayOutput) Index(i pulumi.IntInput) GetFg
 }
 
 type GetFgsDependencyVersionsVersion struct {
-	// Specifies the ID of the dependency package to which the versions belong.
+	// The ID of the dependency package corresponding to the version.
 	DependencyId string `pulumi:"dependencyId"`
 	// The name of the dependency package corresponding to the version.
 	DependencyName string `pulumi:"dependencyName"`
@@ -30734,32 +29411,13 @@ type GetFgsDependencyVersionsVersion struct {
 	Id string `pulumi:"id"`
 	// The OBS bucket path where the dependency package version is located.
 	Link string `pulumi:"link"`
-	// The dependency owner, `public` indicates a public dependency.
+	// The dependency owner, public indicates a public dependency.
 	Owner string `pulumi:"owner"`
-	// Specifies the runtime of the dependency package version.\
-	// The valid values are as follows:
-	// + **Java8**
-	// + **Java11**
-	// + **Node.js6.10**
-	// + **Node.js8.10**
-	// + **Node.js10.16**
-	// + **Node.js12.13**
-	// + **Node.js14.18**
-	// + **Python2.7**
-	// + **Python3.6**
-	// + **Python3.9**
-	// + **Go1.8**
-	// + **Go1.x**
-	// + **C#(.NET Core 2.0)**
-	// + **C#(.NET Core 2.1)**
-	// + **C#(.NET Core 3.1)**
-	// + **Custom**
-	// + **PHP 7.3**
-	// + **http**
+	// The runtime of the dependency package version.
 	Runtime string `pulumi:"runtime"`
 	// The size of the ZIP file used by the dependency package version, in bytes.
 	Size int `pulumi:"size"`
-	// Specifies the version of the dependency package.
+	// The dependency package version.
 	Version int `pulumi:"version"`
 }
 
@@ -30775,7 +29433,7 @@ type GetFgsDependencyVersionsVersionInput interface {
 }
 
 type GetFgsDependencyVersionsVersionArgs struct {
-	// Specifies the ID of the dependency package to which the versions belong.
+	// The ID of the dependency package corresponding to the version.
 	DependencyId pulumi.StringInput `pulumi:"dependencyId"`
 	// The name of the dependency package corresponding to the version.
 	DependencyName pulumi.StringInput `pulumi:"dependencyName"`
@@ -30787,32 +29445,13 @@ type GetFgsDependencyVersionsVersionArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The OBS bucket path where the dependency package version is located.
 	Link pulumi.StringInput `pulumi:"link"`
-	// The dependency owner, `public` indicates a public dependency.
+	// The dependency owner, public indicates a public dependency.
 	Owner pulumi.StringInput `pulumi:"owner"`
-	// Specifies the runtime of the dependency package version.\
-	// The valid values are as follows:
-	// + **Java8**
-	// + **Java11**
-	// + **Node.js6.10**
-	// + **Node.js8.10**
-	// + **Node.js10.16**
-	// + **Node.js12.13**
-	// + **Node.js14.18**
-	// + **Python2.7**
-	// + **Python3.6**
-	// + **Python3.9**
-	// + **Go1.8**
-	// + **Go1.x**
-	// + **C#(.NET Core 2.0)**
-	// + **C#(.NET Core 2.1)**
-	// + **C#(.NET Core 3.1)**
-	// + **Custom**
-	// + **PHP 7.3**
-	// + **http**
+	// The runtime of the dependency package version.
 	Runtime pulumi.StringInput `pulumi:"runtime"`
 	// The size of the ZIP file used by the dependency package version, in bytes.
 	Size pulumi.IntInput `pulumi:"size"`
-	// Specifies the version of the dependency package.
+	// The dependency package version.
 	Version pulumi.IntInput `pulumi:"version"`
 }
 
@@ -30867,7 +29506,7 @@ func (o GetFgsDependencyVersionsVersionOutput) ToGetFgsDependencyVersionsVersion
 	return o
 }
 
-// Specifies the ID of the dependency package to which the versions belong.
+// The ID of the dependency package corresponding to the version.
 func (o GetFgsDependencyVersionsVersionOutput) DependencyId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFgsDependencyVersionsVersion) string { return v.DependencyId }).(pulumi.StringOutput)
 }
@@ -30897,31 +29536,12 @@ func (o GetFgsDependencyVersionsVersionOutput) Link() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFgsDependencyVersionsVersion) string { return v.Link }).(pulumi.StringOutput)
 }
 
-// The dependency owner, `public` indicates a public dependency.
+// The dependency owner, public indicates a public dependency.
 func (o GetFgsDependencyVersionsVersionOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFgsDependencyVersionsVersion) string { return v.Owner }).(pulumi.StringOutput)
 }
 
-// Specifies the runtime of the dependency package version.\
-// The valid values are as follows:
-// + **Java8**
-// + **Java11**
-// + **Node.js6.10**
-// + **Node.js8.10**
-// + **Node.js10.16**
-// + **Node.js12.13**
-// + **Node.js14.18**
-// + **Python2.7**
-// + **Python3.6**
-// + **Python3.9**
-// + **Go1.8**
-// + **Go1.x**
-// + **C#(.NET Core 2.0)**
-// + **C#(.NET Core 2.1)**
-// + **C#(.NET Core 3.1)**
-// + **Custom**
-// + **PHP 7.3**
-// + **http**
+// The runtime of the dependency package version.
 func (o GetFgsDependencyVersionsVersionOutput) Runtime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFgsDependencyVersionsVersion) string { return v.Runtime }).(pulumi.StringOutput)
 }
@@ -30931,7 +29551,7 @@ func (o GetFgsDependencyVersionsVersionOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFgsDependencyVersionsVersion) int { return v.Size }).(pulumi.IntOutput)
 }
 
-// Specifies the version of the dependency package.
+// The dependency package version.
 func (o GetFgsDependencyVersionsVersionOutput) Version() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFgsDependencyVersionsVersion) int { return v.Version }).(pulumi.IntOutput)
 }
@@ -31078,30 +29698,9 @@ type GetFgsFunctionTriggersTrigger struct {
 	EventData string `pulumi:"eventData"`
 	// The ID of the function trigger.
 	Id string `pulumi:"id"`
-	// Specifies status of the function trigger.
-	// The valid values are as follows:
-	// + **ACTIVE**
-	// + **DISABLED**
+	// The current status of the function trigger.
 	Status string `pulumi:"status"`
-	// Specifies type of the function trigger.
-	// The valid values are as follows:
-	// + **TIMER**
-	// + **APIG**
-	// + **CTS**
-	// + **DDS**
-	// + **DMS**
-	// + **DIS**
-	// + **LTS**
-	// + **OBS**
-	// + **SMN**
-	// + **KAFKA**
-	// + **RABBITMQ**
-	// + **DEDICATEDGATEWAY**
-	// + **OPENSOURCEKAFKA**
-	// + **APIC**
-	// + **GAUSSMONGO**
-	// + **EVENTGRID**
-	// + **IOTDA**
+	// The type of the function trigger.
 	Type string `pulumi:"type"`
 	// The latest update time of the function trigger, in RFC3339 format.
 	UpdatedAt string `pulumi:"updatedAt"`
@@ -31125,30 +29724,9 @@ type GetFgsFunctionTriggersTriggerArgs struct {
 	EventData pulumi.StringInput `pulumi:"eventData"`
 	// The ID of the function trigger.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies status of the function trigger.
-	// The valid values are as follows:
-	// + **ACTIVE**
-	// + **DISABLED**
+	// The current status of the function trigger.
 	Status pulumi.StringInput `pulumi:"status"`
-	// Specifies type of the function trigger.
-	// The valid values are as follows:
-	// + **TIMER**
-	// + **APIG**
-	// + **CTS**
-	// + **DDS**
-	// + **DMS**
-	// + **DIS**
-	// + **LTS**
-	// + **OBS**
-	// + **SMN**
-	// + **KAFKA**
-	// + **RABBITMQ**
-	// + **DEDICATEDGATEWAY**
-	// + **OPENSOURCEKAFKA**
-	// + **APIC**
-	// + **GAUSSMONGO**
-	// + **EVENTGRID**
-	// + **IOTDA**
+	// The type of the function trigger.
 	Type pulumi.StringInput `pulumi:"type"`
 	// The latest update time of the function trigger, in RFC3339 format.
 	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
@@ -31220,33 +29798,12 @@ func (o GetFgsFunctionTriggersTriggerOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFgsFunctionTriggersTrigger) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Specifies status of the function trigger.
-// The valid values are as follows:
-// + **ACTIVE**
-// + **DISABLED**
+// The current status of the function trigger.
 func (o GetFgsFunctionTriggersTriggerOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFgsFunctionTriggersTrigger) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Specifies type of the function trigger.
-// The valid values are as follows:
-// + **TIMER**
-// + **APIG**
-// + **CTS**
-// + **DDS**
-// + **DMS**
-// + **DIS**
-// + **LTS**
-// + **OBS**
-// + **SMN**
-// + **KAFKA**
-// + **RABBITMQ**
-// + **DEDICATEDGATEWAY**
-// + **OPENSOURCEKAFKA**
-// + **APIC**
-// + **GAUSSMONGO**
-// + **EVENTGRID**
-// + **IOTDA**
+// The type of the function trigger.
 func (o GetFgsFunctionTriggersTriggerOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFgsFunctionTriggersTrigger) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -31284,10 +29841,6 @@ type GetFgsFunctionsFunction struct {
 	// The name of the function file.
 	CodeFilename string `pulumi:"codeFilename"`
 	// The function code type.
-	// + **inline**: inline code.
-	// + **zip**: ZIP file.
-	// + **jar**: JAR file or java functions.
-	// + **obs**: function code stored in an OBS bucket.
 	CodeType string `pulumi:"codeType"`
 	// The code URL.
 	CodeUrl string `pulumi:"codeUrl"`
@@ -31295,7 +29848,7 @@ type GetFgsFunctionsFunction struct {
 	Description string `pulumi:"description"`
 	// The custom user data (key/value pairs) defined to be encrypted for the function.
 	EncryptedUserData string `pulumi:"encryptedUserData"`
-	// Specifies the ID of the enterprise project to which the functions belong.
+	// The enterprise project ID to which the function belongs.
 	EnterpriseProjectId string `pulumi:"enterpriseProjectId"`
 	// The functionGraph version.
 	FunctiongraphVersion string `pulumi:"functiongraphVersion"`
@@ -31311,41 +29864,19 @@ type GetFgsFunctionsFunction struct {
 	LogStreamId string `pulumi:"logStreamId"`
 	// The maximum number of instances for a single function.
 	MaxInstanceNum string `pulumi:"maxInstanceNum"`
-	// The memory size allocated to the function, the unit is MB.
+	// The memory size(MB) allocated to the function.
 	MemorySize int `pulumi:"memorySize"`
-	// Specifies the function name used to query the specified function.
+	// The function name.
 	Name string `pulumi:"name"`
 	// The network ID of subnet to which the function belongs.
 	NetworkId string `pulumi:"networkId"`
-	// The package name that the function used.
+	// The package name that function used.
 	Package string `pulumi:"package"`
-	// Specifies the dependency package runtime used to query the functions.\
-	// The valid values are as follows:
-	// + **Java8**
-	// + **Java11**
-	// + **Node.js6.10**
-	// + **Node.js8.10**
-	// + **Node.js10.16**
-	// + **Node.js12.13**
-	// + **Node.js14.18**
-	// + **Node.js16.17**
-	// + **Node.js18.15**
-	// + **Python2.7**
-	// + **Python3.6**
-	// + **Python3.9**
-	// + **Python3.10**
-	// + **Go1.x**
-	// + **C#(.NET Core 2.1)**
-	// + **C#(.NET Core 3.1)**
-	// + **Custom**
-	// + **PHP7.3**
-	// + **http**
-	// + **Custom Image**
-	// + **Cangjie1.0**
+	// The dependency package runtime of the function.
 	Runtime string `pulumi:"runtime"`
 	// The timeout interval of the function.
 	Timeout int `pulumi:"timeout"`
-	// Specifies the function URN used to query the specified function.
+	// The function URN.
 	Urn string `pulumi:"urn"`
 	// The custom user data (key/value pairs) defined for the function.
 	UserData string `pulumi:"userData"`
@@ -31374,10 +29905,6 @@ type GetFgsFunctionsFunctionArgs struct {
 	// The name of the function file.
 	CodeFilename pulumi.StringInput `pulumi:"codeFilename"`
 	// The function code type.
-	// + **inline**: inline code.
-	// + **zip**: ZIP file.
-	// + **jar**: JAR file or java functions.
-	// + **obs**: function code stored in an OBS bucket.
 	CodeType pulumi.StringInput `pulumi:"codeType"`
 	// The code URL.
 	CodeUrl pulumi.StringInput `pulumi:"codeUrl"`
@@ -31385,7 +29912,7 @@ type GetFgsFunctionsFunctionArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// The custom user data (key/value pairs) defined to be encrypted for the function.
 	EncryptedUserData pulumi.StringInput `pulumi:"encryptedUserData"`
-	// Specifies the ID of the enterprise project to which the functions belong.
+	// The enterprise project ID to which the function belongs.
 	EnterpriseProjectId pulumi.StringInput `pulumi:"enterpriseProjectId"`
 	// The functionGraph version.
 	FunctiongraphVersion pulumi.StringInput `pulumi:"functiongraphVersion"`
@@ -31401,41 +29928,19 @@ type GetFgsFunctionsFunctionArgs struct {
 	LogStreamId pulumi.StringInput `pulumi:"logStreamId"`
 	// The maximum number of instances for a single function.
 	MaxInstanceNum pulumi.StringInput `pulumi:"maxInstanceNum"`
-	// The memory size allocated to the function, the unit is MB.
+	// The memory size(MB) allocated to the function.
 	MemorySize pulumi.IntInput `pulumi:"memorySize"`
-	// Specifies the function name used to query the specified function.
+	// The function name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The network ID of subnet to which the function belongs.
 	NetworkId pulumi.StringInput `pulumi:"networkId"`
-	// The package name that the function used.
+	// The package name that function used.
 	Package pulumi.StringInput `pulumi:"package"`
-	// Specifies the dependency package runtime used to query the functions.\
-	// The valid values are as follows:
-	// + **Java8**
-	// + **Java11**
-	// + **Node.js6.10**
-	// + **Node.js8.10**
-	// + **Node.js10.16**
-	// + **Node.js12.13**
-	// + **Node.js14.18**
-	// + **Node.js16.17**
-	// + **Node.js18.15**
-	// + **Python2.7**
-	// + **Python3.6**
-	// + **Python3.9**
-	// + **Python3.10**
-	// + **Go1.x**
-	// + **C#(.NET Core 2.1)**
-	// + **C#(.NET Core 3.1)**
-	// + **Custom**
-	// + **PHP7.3**
-	// + **http**
-	// + **Custom Image**
-	// + **Cangjie1.0**
+	// The dependency package runtime of the function.
 	Runtime pulumi.StringInput `pulumi:"runtime"`
 	// The timeout interval of the function.
 	Timeout pulumi.IntInput `pulumi:"timeout"`
-	// Specifies the function URN used to query the specified function.
+	// The function URN.
 	Urn pulumi.StringInput `pulumi:"urn"`
 	// The custom user data (key/value pairs) defined for the function.
 	UserData pulumi.StringInput `pulumi:"userData"`
@@ -31512,10 +30017,6 @@ func (o GetFgsFunctionsFunctionOutput) CodeFilename() pulumi.StringOutput {
 }
 
 // The function code type.
-// + **inline**: inline code.
-// + **zip**: ZIP file.
-// + **jar**: JAR file or java functions.
-// + **obs**: function code stored in an OBS bucket.
 func (o GetFgsFunctionsFunctionOutput) CodeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFgsFunctionsFunction) string { return v.CodeType }).(pulumi.StringOutput)
 }
@@ -31535,7 +30036,7 @@ func (o GetFgsFunctionsFunctionOutput) EncryptedUserData() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFgsFunctionsFunction) string { return v.EncryptedUserData }).(pulumi.StringOutput)
 }
 
-// Specifies the ID of the enterprise project to which the functions belong.
+// The enterprise project ID to which the function belongs.
 func (o GetFgsFunctionsFunctionOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFgsFunctionsFunction) string { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
@@ -31575,12 +30076,12 @@ func (o GetFgsFunctionsFunctionOutput) MaxInstanceNum() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFgsFunctionsFunction) string { return v.MaxInstanceNum }).(pulumi.StringOutput)
 }
 
-// The memory size allocated to the function, the unit is MB.
+// The memory size(MB) allocated to the function.
 func (o GetFgsFunctionsFunctionOutput) MemorySize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFgsFunctionsFunction) int { return v.MemorySize }).(pulumi.IntOutput)
 }
 
-// Specifies the function name used to query the specified function.
+// The function name.
 func (o GetFgsFunctionsFunctionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFgsFunctionsFunction) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -31590,34 +30091,12 @@ func (o GetFgsFunctionsFunctionOutput) NetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFgsFunctionsFunction) string { return v.NetworkId }).(pulumi.StringOutput)
 }
 
-// The package name that the function used.
+// The package name that function used.
 func (o GetFgsFunctionsFunctionOutput) Package() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFgsFunctionsFunction) string { return v.Package }).(pulumi.StringOutput)
 }
 
-// Specifies the dependency package runtime used to query the functions.\
-// The valid values are as follows:
-// + **Java8**
-// + **Java11**
-// + **Node.js6.10**
-// + **Node.js8.10**
-// + **Node.js10.16**
-// + **Node.js12.13**
-// + **Node.js14.18**
-// + **Node.js16.17**
-// + **Node.js18.15**
-// + **Python2.7**
-// + **Python3.6**
-// + **Python3.9**
-// + **Python3.10**
-// + **Go1.x**
-// + **C#(.NET Core 2.1)**
-// + **C#(.NET Core 3.1)**
-// + **Custom**
-// + **PHP7.3**
-// + **http**
-// + **Custom Image**
-// + **Cangjie1.0**
+// The dependency package runtime of the function.
 func (o GetFgsFunctionsFunctionOutput) Runtime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFgsFunctionsFunction) string { return v.Runtime }).(pulumi.StringOutput)
 }
@@ -31627,7 +30106,7 @@ func (o GetFgsFunctionsFunctionOutput) Timeout() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFgsFunctionsFunction) int { return v.Timeout }).(pulumi.IntOutput)
 }
 
-// Specifies the function URN used to query the specified function.
+// The function URN.
 func (o GetFgsFunctionsFunctionOutput) Urn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFgsFunctionsFunction) string { return v.Urn }).(pulumi.StringOutput)
 }
@@ -31671,15 +30150,6 @@ type GetFgsQuotasQuota struct {
 	// The number of available quota.
 	Limit int `pulumi:"limit"`
 	// The resource type corresponding to quota.
-	// + **fgs_func_scale_down_timeout**: Release time of idle function instances in FunctionGraph `v1`.
-	// + **fgs_func_occurs**: Indicates instance quota for functions in FunctionGraph `v1` and reserved instance quota for
-	//   functions in FunctionGraph `v2`.
-	// + **fgs_func_pat_idle_time**: Release time of idle PAT in VPC function.
-	// + **fgs_func_num**: User function quantity quota.
-	// + **fgs_func_code_size**: Total code size quota of user functions.
-	// + **fgs_workflow_num**: Function flow quantity quota.
-	// + **fgs_on_demand_instance_limit**: Maximum number of instances per function in FunctionGraph `v2`.
-	// + **fgs_func_qos_limit**: Instance quantity quota of user functions.
 	Type string `pulumi:"type"`
 	// The unit of usage.
 	Unit string `pulumi:"unit"`
@@ -31702,15 +30172,6 @@ type GetFgsQuotasQuotaArgs struct {
 	// The number of available quota.
 	Limit pulumi.IntInput `pulumi:"limit"`
 	// The resource type corresponding to quota.
-	// + **fgs_func_scale_down_timeout**: Release time of idle function instances in FunctionGraph `v1`.
-	// + **fgs_func_occurs**: Indicates instance quota for functions in FunctionGraph `v1` and reserved instance quota for
-	//   functions in FunctionGraph `v2`.
-	// + **fgs_func_pat_idle_time**: Release time of idle PAT in VPC function.
-	// + **fgs_func_num**: User function quantity quota.
-	// + **fgs_func_code_size**: Total code size quota of user functions.
-	// + **fgs_workflow_num**: Function flow quantity quota.
-	// + **fgs_on_demand_instance_limit**: Maximum number of instances per function in FunctionGraph `v2`.
-	// + **fgs_func_qos_limit**: Instance quantity quota of user functions.
 	Type pulumi.StringInput `pulumi:"type"`
 	// The unit of usage.
 	Unit pulumi.StringInput `pulumi:"unit"`
@@ -31775,15 +30236,6 @@ func (o GetFgsQuotasQuotaOutput) Limit() pulumi.IntOutput {
 }
 
 // The resource type corresponding to quota.
-//   - **fgs_func_scale_down_timeout**: Release time of idle function instances in FunctionGraph `v1`.
-//   - **fgs_func_occurs**: Indicates instance quota for functions in FunctionGraph `v1` and reserved instance quota for
-//     functions in FunctionGraph `v2`.
-//   - **fgs_func_pat_idle_time**: Release time of idle PAT in VPC function.
-//   - **fgs_func_num**: User function quantity quota.
-//   - **fgs_func_code_size**: Total code size quota of user functions.
-//   - **fgs_workflow_num**: Function flow quantity quota.
-//   - **fgs_on_demand_instance_limit**: Maximum number of instances per function in FunctionGraph `v2`.
-//   - **fgs_func_qos_limit**: Instance quantity quota of user functions.
 func (o GetFgsQuotasQuotaOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFgsQuotasQuota) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -31824,7 +30276,6 @@ type GetKpsFailedTasksTask struct {
 	// The name of the keypair associated with the task.
 	KeypairName string `pulumi:"keypairName"`
 	// The operation type of the task.
-	// The value can be **FAILED_RESET**, **FAILED_REPLACE** or **FAILED_UNBIND**.
 	OperateType string `pulumi:"operateType"`
 	// The ID of the instance associated with the task.
 	ServerId string `pulumi:"serverId"`
@@ -31855,7 +30306,6 @@ type GetKpsFailedTasksTaskArgs struct {
 	// The name of the keypair associated with the task.
 	KeypairName pulumi.StringInput `pulumi:"keypairName"`
 	// The operation type of the task.
-	// The value can be **FAILED_RESET**, **FAILED_REPLACE** or **FAILED_UNBIND**.
 	OperateType pulumi.StringInput `pulumi:"operateType"`
 	// The ID of the instance associated with the task.
 	ServerId pulumi.StringInput `pulumi:"serverId"`
@@ -31931,7 +30381,6 @@ func (o GetKpsFailedTasksTaskOutput) KeypairName() pulumi.StringOutput {
 }
 
 // The operation type of the task.
-// The value can be **FAILED_RESET**, **FAILED_REPLACE** or **FAILED_UNBIND**.
 func (o GetKpsFailedTasksTaskOutput) OperateType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKpsFailedTasksTask) string { return v.OperateType }).(pulumi.StringOutput)
 }
@@ -31987,7 +30436,6 @@ type GetKpsRunningTasksTask struct {
 	// The name of the keypair associated with the task.
 	KeypairName string `pulumi:"keypairName"`
 	// The operation type of the task.
-	// The value can be **RUNNING**.
 	OperateType string `pulumi:"operateType"`
 	// The ID of the instance associated with the task.
 	ServerId string `pulumi:"serverId"`
@@ -32014,7 +30462,6 @@ type GetKpsRunningTasksTaskArgs struct {
 	// The name of the keypair associated with the task.
 	KeypairName pulumi.StringInput `pulumi:"keypairName"`
 	// The operation type of the task.
-	// The value can be **RUNNING**.
 	OperateType pulumi.StringInput `pulumi:"operateType"`
 	// The ID of the instance associated with the task.
 	ServerId pulumi.StringInput `pulumi:"serverId"`
@@ -32086,7 +30533,6 @@ func (o GetKpsRunningTasksTaskOutput) KeypairName() pulumi.StringOutput {
 }
 
 // The operation type of the task.
-// The value can be **RUNNING**.
 func (o GetKpsRunningTasksTaskOutput) OperateType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKpsRunningTasksTask) string { return v.OperateType }).(pulumi.StringOutput)
 }
@@ -33076,20 +31522,13 @@ func (o GetSfsTurboPermRulesRuleArrayOutput) Index(i pulumi.IntInput) GetSfsTurb
 }
 
 type GetVpnConnectionHealthChecksConnectionHealthCheck struct {
-	// Specifies the ID of the VPN connection.
-	ConnectionId string `pulumi:"connectionId"`
-	// Specifies the destination IP of the VPN connection health check.
+	ConnectionId  string `pulumi:"connectionId"`
 	DestinationIp string `pulumi:"destinationIp"`
-	// The ID of the connection health check.
-	Id string `pulumi:"id"`
-	// The proto type of the connection health check.
-	ProtoType string `pulumi:"protoType"`
-	// Specifies the source IP of the VPN connection health check.
-	SourceIp string `pulumi:"sourceIp"`
-	// Specifies the status of the VPN connection health check.
-	Status string `pulumi:"status"`
-	// The type of the connection health check.
-	Type string `pulumi:"type"`
+	Id            string `pulumi:"id"`
+	ProtoType     string `pulumi:"protoType"`
+	SourceIp      string `pulumi:"sourceIp"`
+	Status        string `pulumi:"status"`
+	Type          string `pulumi:"type"`
 }
 
 // GetVpnConnectionHealthChecksConnectionHealthCheckInput is an input type that accepts GetVpnConnectionHealthChecksConnectionHealthCheckArgs and GetVpnConnectionHealthChecksConnectionHealthCheckOutput values.
@@ -33104,20 +31543,13 @@ type GetVpnConnectionHealthChecksConnectionHealthCheckInput interface {
 }
 
 type GetVpnConnectionHealthChecksConnectionHealthCheckArgs struct {
-	// Specifies the ID of the VPN connection.
-	ConnectionId pulumi.StringInput `pulumi:"connectionId"`
-	// Specifies the destination IP of the VPN connection health check.
+	ConnectionId  pulumi.StringInput `pulumi:"connectionId"`
 	DestinationIp pulumi.StringInput `pulumi:"destinationIp"`
-	// The ID of the connection health check.
-	Id pulumi.StringInput `pulumi:"id"`
-	// The proto type of the connection health check.
-	ProtoType pulumi.StringInput `pulumi:"protoType"`
-	// Specifies the source IP of the VPN connection health check.
-	SourceIp pulumi.StringInput `pulumi:"sourceIp"`
-	// Specifies the status of the VPN connection health check.
-	Status pulumi.StringInput `pulumi:"status"`
-	// The type of the connection health check.
-	Type pulumi.StringInput `pulumi:"type"`
+	Id            pulumi.StringInput `pulumi:"id"`
+	ProtoType     pulumi.StringInput `pulumi:"protoType"`
+	SourceIp      pulumi.StringInput `pulumi:"sourceIp"`
+	Status        pulumi.StringInput `pulumi:"status"`
+	Type          pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetVpnConnectionHealthChecksConnectionHealthCheckArgs) ElementType() reflect.Type {
@@ -33171,37 +31603,30 @@ func (o GetVpnConnectionHealthChecksConnectionHealthCheckOutput) ToGetVpnConnect
 	return o
 }
 
-// Specifies the ID of the VPN connection.
 func (o GetVpnConnectionHealthChecksConnectionHealthCheckOutput) ConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionHealthChecksConnectionHealthCheck) string { return v.ConnectionId }).(pulumi.StringOutput)
 }
 
-// Specifies the destination IP of the VPN connection health check.
 func (o GetVpnConnectionHealthChecksConnectionHealthCheckOutput) DestinationIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionHealthChecksConnectionHealthCheck) string { return v.DestinationIp }).(pulumi.StringOutput)
 }
 
-// The ID of the connection health check.
 func (o GetVpnConnectionHealthChecksConnectionHealthCheckOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionHealthChecksConnectionHealthCheck) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The proto type of the connection health check.
 func (o GetVpnConnectionHealthChecksConnectionHealthCheckOutput) ProtoType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionHealthChecksConnectionHealthCheck) string { return v.ProtoType }).(pulumi.StringOutput)
 }
 
-// Specifies the source IP of the VPN connection health check.
 func (o GetVpnConnectionHealthChecksConnectionHealthCheckOutput) SourceIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionHealthChecksConnectionHealthCheck) string { return v.SourceIp }).(pulumi.StringOutput)
 }
 
-// Specifies the status of the VPN connection health check.
 func (o GetVpnConnectionHealthChecksConnectionHealthCheckOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionHealthChecksConnectionHealthCheck) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The type of the connection health check.
 func (o GetVpnConnectionHealthChecksConnectionHealthCheckOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionHealthChecksConnectionHealthCheck) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -33227,44 +31652,25 @@ func (o GetVpnConnectionHealthChecksConnectionHealthCheckArrayOutput) Index(i pu
 }
 
 type GetVpnConnectionsConnection struct {
-	// Indicates the connection monitor ID of the connection.
-	ConnectionMonitorId string `pulumi:"connectionMonitorId"`
-	// The created time.
-	CreatedAt string `pulumi:"createdAt"`
-	// Indicates the customer gateway ID of the connection.
-	CustomerGatewayId string `pulumi:"customerGatewayId"`
-	// Indicates the enable nqa of the connection.
-	EnableNqa bool `pulumi:"enableNqa"`
-	// Indicates the enterprise project ID of the connection.
-	EnterpriseProjectId string `pulumi:"enterpriseProjectId"`
-	// Specifies the gateway ID of the VPN connection.
-	GatewayId string `pulumi:"gatewayId"`
-	// Specifies the gateway IP of the VPN connection.
-	GatewayIp string `pulumi:"gatewayIp"`
-	// Indicates the ha role of the connection.
-	HaRole string `pulumi:"haRole"`
-	// Indicates the ID of the connection.
-	Id string `pulumi:"id"`
-	// Indicates the ikepolicy information of the connection.
-	Ikepolicies []GetVpnConnectionsConnectionIkepolicy `pulumi:"ikepolicies"`
-	// Indicates the ipsecpolicy information of the connection.
-	Ipsecpolicies []GetVpnConnectionsConnectionIpsecpolicy `pulumi:"ipsecpolicies"`
-	// Specifies the name of the VPN connection.
-	Name string `pulumi:"name"`
-	// Indicates the peer subnets of the connection.
-	PeerSubnets []string `pulumi:"peerSubnets"`
-	// Indicates the policy rules information of the connection.
-	PolicyRules []GetVpnConnectionsConnectionPolicyRule `pulumi:"policyRules"`
-	// Specifies the status of the VPN connection.
-	Status string `pulumi:"status"`
-	// Indicates the tunnel local address of the connection.
-	TunnelLocalAddress string `pulumi:"tunnelLocalAddress"`
-	// Indicates the tunnel peer address of the connection.
-	TunnelPeerAddress string `pulumi:"tunnelPeerAddress"`
-	// The last updated time.
-	UpdatedAt string `pulumi:"updatedAt"`
-	// Specifies the VPN type of the VPN connection.
-	VpnType string `pulumi:"vpnType"`
+	ConnectionMonitorId string                                   `pulumi:"connectionMonitorId"`
+	CreatedAt           string                                   `pulumi:"createdAt"`
+	CustomerGatewayId   string                                   `pulumi:"customerGatewayId"`
+	EnableNqa           bool                                     `pulumi:"enableNqa"`
+	EnterpriseProjectId string                                   `pulumi:"enterpriseProjectId"`
+	GatewayId           string                                   `pulumi:"gatewayId"`
+	GatewayIp           string                                   `pulumi:"gatewayIp"`
+	HaRole              string                                   `pulumi:"haRole"`
+	Id                  string                                   `pulumi:"id"`
+	Ikepolicies         []GetVpnConnectionsConnectionIkepolicy   `pulumi:"ikepolicies"`
+	Ipsecpolicies       []GetVpnConnectionsConnectionIpsecpolicy `pulumi:"ipsecpolicies"`
+	Name                string                                   `pulumi:"name"`
+	PeerSubnets         []string                                 `pulumi:"peerSubnets"`
+	PolicyRules         []GetVpnConnectionsConnectionPolicyRule  `pulumi:"policyRules"`
+	Status              string                                   `pulumi:"status"`
+	TunnelLocalAddress  string                                   `pulumi:"tunnelLocalAddress"`
+	TunnelPeerAddress   string                                   `pulumi:"tunnelPeerAddress"`
+	UpdatedAt           string                                   `pulumi:"updatedAt"`
+	VpnType             string                                   `pulumi:"vpnType"`
 }
 
 // GetVpnConnectionsConnectionInput is an input type that accepts GetVpnConnectionsConnectionArgs and GetVpnConnectionsConnectionOutput values.
@@ -33279,44 +31685,25 @@ type GetVpnConnectionsConnectionInput interface {
 }
 
 type GetVpnConnectionsConnectionArgs struct {
-	// Indicates the connection monitor ID of the connection.
-	ConnectionMonitorId pulumi.StringInput `pulumi:"connectionMonitorId"`
-	// The created time.
-	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// Indicates the customer gateway ID of the connection.
-	CustomerGatewayId pulumi.StringInput `pulumi:"customerGatewayId"`
-	// Indicates the enable nqa of the connection.
-	EnableNqa pulumi.BoolInput `pulumi:"enableNqa"`
-	// Indicates the enterprise project ID of the connection.
-	EnterpriseProjectId pulumi.StringInput `pulumi:"enterpriseProjectId"`
-	// Specifies the gateway ID of the VPN connection.
-	GatewayId pulumi.StringInput `pulumi:"gatewayId"`
-	// Specifies the gateway IP of the VPN connection.
-	GatewayIp pulumi.StringInput `pulumi:"gatewayIp"`
-	// Indicates the ha role of the connection.
-	HaRole pulumi.StringInput `pulumi:"haRole"`
-	// Indicates the ID of the connection.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Indicates the ikepolicy information of the connection.
-	Ikepolicies GetVpnConnectionsConnectionIkepolicyArrayInput `pulumi:"ikepolicies"`
-	// Indicates the ipsecpolicy information of the connection.
-	Ipsecpolicies GetVpnConnectionsConnectionIpsecpolicyArrayInput `pulumi:"ipsecpolicies"`
-	// Specifies the name of the VPN connection.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Indicates the peer subnets of the connection.
-	PeerSubnets pulumi.StringArrayInput `pulumi:"peerSubnets"`
-	// Indicates the policy rules information of the connection.
-	PolicyRules GetVpnConnectionsConnectionPolicyRuleArrayInput `pulumi:"policyRules"`
-	// Specifies the status of the VPN connection.
-	Status pulumi.StringInput `pulumi:"status"`
-	// Indicates the tunnel local address of the connection.
-	TunnelLocalAddress pulumi.StringInput `pulumi:"tunnelLocalAddress"`
-	// Indicates the tunnel peer address of the connection.
-	TunnelPeerAddress pulumi.StringInput `pulumi:"tunnelPeerAddress"`
-	// The last updated time.
-	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
-	// Specifies the VPN type of the VPN connection.
-	VpnType pulumi.StringInput `pulumi:"vpnType"`
+	ConnectionMonitorId pulumi.StringInput                               `pulumi:"connectionMonitorId"`
+	CreatedAt           pulumi.StringInput                               `pulumi:"createdAt"`
+	CustomerGatewayId   pulumi.StringInput                               `pulumi:"customerGatewayId"`
+	EnableNqa           pulumi.BoolInput                                 `pulumi:"enableNqa"`
+	EnterpriseProjectId pulumi.StringInput                               `pulumi:"enterpriseProjectId"`
+	GatewayId           pulumi.StringInput                               `pulumi:"gatewayId"`
+	GatewayIp           pulumi.StringInput                               `pulumi:"gatewayIp"`
+	HaRole              pulumi.StringInput                               `pulumi:"haRole"`
+	Id                  pulumi.StringInput                               `pulumi:"id"`
+	Ikepolicies         GetVpnConnectionsConnectionIkepolicyArrayInput   `pulumi:"ikepolicies"`
+	Ipsecpolicies       GetVpnConnectionsConnectionIpsecpolicyArrayInput `pulumi:"ipsecpolicies"`
+	Name                pulumi.StringInput                               `pulumi:"name"`
+	PeerSubnets         pulumi.StringArrayInput                          `pulumi:"peerSubnets"`
+	PolicyRules         GetVpnConnectionsConnectionPolicyRuleArrayInput  `pulumi:"policyRules"`
+	Status              pulumi.StringInput                               `pulumi:"status"`
+	TunnelLocalAddress  pulumi.StringInput                               `pulumi:"tunnelLocalAddress"`
+	TunnelPeerAddress   pulumi.StringInput                               `pulumi:"tunnelPeerAddress"`
+	UpdatedAt           pulumi.StringInput                               `pulumi:"updatedAt"`
+	VpnType             pulumi.StringInput                               `pulumi:"vpnType"`
 }
 
 func (GetVpnConnectionsConnectionArgs) ElementType() reflect.Type {
@@ -33370,97 +31757,78 @@ func (o GetVpnConnectionsConnectionOutput) ToGetVpnConnectionsConnectionOutputWi
 	return o
 }
 
-// Indicates the connection monitor ID of the connection.
 func (o GetVpnConnectionsConnectionOutput) ConnectionMonitorId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnection) string { return v.ConnectionMonitorId }).(pulumi.StringOutput)
 }
 
-// The created time.
 func (o GetVpnConnectionsConnectionOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnection) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Indicates the customer gateway ID of the connection.
 func (o GetVpnConnectionsConnectionOutput) CustomerGatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnection) string { return v.CustomerGatewayId }).(pulumi.StringOutput)
 }
 
-// Indicates the enable nqa of the connection.
 func (o GetVpnConnectionsConnectionOutput) EnableNqa() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnection) bool { return v.EnableNqa }).(pulumi.BoolOutput)
 }
 
-// Indicates the enterprise project ID of the connection.
 func (o GetVpnConnectionsConnectionOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnection) string { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// Specifies the gateway ID of the VPN connection.
 func (o GetVpnConnectionsConnectionOutput) GatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnection) string { return v.GatewayId }).(pulumi.StringOutput)
 }
 
-// Specifies the gateway IP of the VPN connection.
 func (o GetVpnConnectionsConnectionOutput) GatewayIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnection) string { return v.GatewayIp }).(pulumi.StringOutput)
 }
 
-// Indicates the ha role of the connection.
 func (o GetVpnConnectionsConnectionOutput) HaRole() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnection) string { return v.HaRole }).(pulumi.StringOutput)
 }
 
-// Indicates the ID of the connection.
 func (o GetVpnConnectionsConnectionOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnection) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Indicates the ikepolicy information of the connection.
 func (o GetVpnConnectionsConnectionOutput) Ikepolicies() GetVpnConnectionsConnectionIkepolicyArrayOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnection) []GetVpnConnectionsConnectionIkepolicy { return v.Ikepolicies }).(GetVpnConnectionsConnectionIkepolicyArrayOutput)
 }
 
-// Indicates the ipsecpolicy information of the connection.
 func (o GetVpnConnectionsConnectionOutput) Ipsecpolicies() GetVpnConnectionsConnectionIpsecpolicyArrayOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnection) []GetVpnConnectionsConnectionIpsecpolicy { return v.Ipsecpolicies }).(GetVpnConnectionsConnectionIpsecpolicyArrayOutput)
 }
 
-// Specifies the name of the VPN connection.
 func (o GetVpnConnectionsConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnection) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Indicates the peer subnets of the connection.
 func (o GetVpnConnectionsConnectionOutput) PeerSubnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnection) []string { return v.PeerSubnets }).(pulumi.StringArrayOutput)
 }
 
-// Indicates the policy rules information of the connection.
 func (o GetVpnConnectionsConnectionOutput) PolicyRules() GetVpnConnectionsConnectionPolicyRuleArrayOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnection) []GetVpnConnectionsConnectionPolicyRule { return v.PolicyRules }).(GetVpnConnectionsConnectionPolicyRuleArrayOutput)
 }
 
-// Specifies the status of the VPN connection.
 func (o GetVpnConnectionsConnectionOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnection) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Indicates the tunnel local address of the connection.
 func (o GetVpnConnectionsConnectionOutput) TunnelLocalAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnection) string { return v.TunnelLocalAddress }).(pulumi.StringOutput)
 }
 
-// Indicates the tunnel peer address of the connection.
 func (o GetVpnConnectionsConnectionOutput) TunnelPeerAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnection) string { return v.TunnelPeerAddress }).(pulumi.StringOutput)
 }
 
-// The last updated time.
 func (o GetVpnConnectionsConnectionOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnection) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// Specifies the VPN type of the VPN connection.
 func (o GetVpnConnectionsConnectionOutput) VpnType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnection) string { return v.VpnType }).(pulumi.StringOutput)
 }
@@ -33486,30 +31854,18 @@ func (o GetVpnConnectionsConnectionArrayOutput) Index(i pulumi.IntInput) GetVpnC
 }
 
 type GetVpnConnectionsConnectionIkepolicy struct {
-	// Indicates the authentication algorithm of the ikepolicy certificate.
-	AuthenticationAlgorithm string `pulumi:"authenticationAlgorithm"`
-	// Indicates the souauthentication methodrce of the ikepolicy certificate.
-	AuthenticationMethod string `pulumi:"authenticationMethod"`
-	// Indicates the dh group of the ikepolicy certificate.
-	DhGroup string `pulumi:"dhGroup"`
-	// Indicates the dpd information of the ikepolicy certificate.
-	Dpds []GetVpnConnectionsConnectionIkepolicyDpd `pulumi:"dpds"`
-	// Indicates the encryption algorithm of the ikepolicy certificate.
-	EncryptionAlgorithm string `pulumi:"encryptionAlgorithm"`
-	// Indicates the ike version of the ikepolicy certificate.
-	IkeVersion string `pulumi:"ikeVersion"`
-	// Indicates the lifetime seconds of the ipsecpolicy certificate.
-	LifetimeSeconds int `pulumi:"lifetimeSeconds"`
-	// Indicates the local ID of the ikepolicy certificate.
-	LocalId string `pulumi:"localId"`
-	// Indicates the local ID type of the ikepolicy certificate.
-	LocalIdType string `pulumi:"localIdType"`
-	// Indicates the peer ID of the ikepolicy certificate.
-	PeerId string `pulumi:"peerId"`
-	// Indicates the peer ID type of the ikepolicy certificate.
-	PeerIdType string `pulumi:"peerIdType"`
-	// Indicates the phase1 negotiation mode of the ikepolicy certificate.
-	Phase1NegotiationMode string `pulumi:"phase1NegotiationMode"`
+	AuthenticationAlgorithm string                                    `pulumi:"authenticationAlgorithm"`
+	AuthenticationMethod    string                                    `pulumi:"authenticationMethod"`
+	DhGroup                 string                                    `pulumi:"dhGroup"`
+	Dpds                    []GetVpnConnectionsConnectionIkepolicyDpd `pulumi:"dpds"`
+	EncryptionAlgorithm     string                                    `pulumi:"encryptionAlgorithm"`
+	IkeVersion              string                                    `pulumi:"ikeVersion"`
+	LifetimeSeconds         int                                       `pulumi:"lifetimeSeconds"`
+	LocalId                 string                                    `pulumi:"localId"`
+	LocalIdType             string                                    `pulumi:"localIdType"`
+	PeerId                  string                                    `pulumi:"peerId"`
+	PeerIdType              string                                    `pulumi:"peerIdType"`
+	Phase1NegotiationMode   string                                    `pulumi:"phase1NegotiationMode"`
 }
 
 // GetVpnConnectionsConnectionIkepolicyInput is an input type that accepts GetVpnConnectionsConnectionIkepolicyArgs and GetVpnConnectionsConnectionIkepolicyOutput values.
@@ -33524,30 +31880,18 @@ type GetVpnConnectionsConnectionIkepolicyInput interface {
 }
 
 type GetVpnConnectionsConnectionIkepolicyArgs struct {
-	// Indicates the authentication algorithm of the ikepolicy certificate.
-	AuthenticationAlgorithm pulumi.StringInput `pulumi:"authenticationAlgorithm"`
-	// Indicates the souauthentication methodrce of the ikepolicy certificate.
-	AuthenticationMethod pulumi.StringInput `pulumi:"authenticationMethod"`
-	// Indicates the dh group of the ikepolicy certificate.
-	DhGroup pulumi.StringInput `pulumi:"dhGroup"`
-	// Indicates the dpd information of the ikepolicy certificate.
-	Dpds GetVpnConnectionsConnectionIkepolicyDpdArrayInput `pulumi:"dpds"`
-	// Indicates the encryption algorithm of the ikepolicy certificate.
-	EncryptionAlgorithm pulumi.StringInput `pulumi:"encryptionAlgorithm"`
-	// Indicates the ike version of the ikepolicy certificate.
-	IkeVersion pulumi.StringInput `pulumi:"ikeVersion"`
-	// Indicates the lifetime seconds of the ipsecpolicy certificate.
-	LifetimeSeconds pulumi.IntInput `pulumi:"lifetimeSeconds"`
-	// Indicates the local ID of the ikepolicy certificate.
-	LocalId pulumi.StringInput `pulumi:"localId"`
-	// Indicates the local ID type of the ikepolicy certificate.
-	LocalIdType pulumi.StringInput `pulumi:"localIdType"`
-	// Indicates the peer ID of the ikepolicy certificate.
-	PeerId pulumi.StringInput `pulumi:"peerId"`
-	// Indicates the peer ID type of the ikepolicy certificate.
-	PeerIdType pulumi.StringInput `pulumi:"peerIdType"`
-	// Indicates the phase1 negotiation mode of the ikepolicy certificate.
-	Phase1NegotiationMode pulumi.StringInput `pulumi:"phase1NegotiationMode"`
+	AuthenticationAlgorithm pulumi.StringInput                                `pulumi:"authenticationAlgorithm"`
+	AuthenticationMethod    pulumi.StringInput                                `pulumi:"authenticationMethod"`
+	DhGroup                 pulumi.StringInput                                `pulumi:"dhGroup"`
+	Dpds                    GetVpnConnectionsConnectionIkepolicyDpdArrayInput `pulumi:"dpds"`
+	EncryptionAlgorithm     pulumi.StringInput                                `pulumi:"encryptionAlgorithm"`
+	IkeVersion              pulumi.StringInput                                `pulumi:"ikeVersion"`
+	LifetimeSeconds         pulumi.IntInput                                   `pulumi:"lifetimeSeconds"`
+	LocalId                 pulumi.StringInput                                `pulumi:"localId"`
+	LocalIdType             pulumi.StringInput                                `pulumi:"localIdType"`
+	PeerId                  pulumi.StringInput                                `pulumi:"peerId"`
+	PeerIdType              pulumi.StringInput                                `pulumi:"peerIdType"`
+	Phase1NegotiationMode   pulumi.StringInput                                `pulumi:"phase1NegotiationMode"`
 }
 
 func (GetVpnConnectionsConnectionIkepolicyArgs) ElementType() reflect.Type {
@@ -33601,62 +31945,50 @@ func (o GetVpnConnectionsConnectionIkepolicyOutput) ToGetVpnConnectionsConnectio
 	return o
 }
 
-// Indicates the authentication algorithm of the ikepolicy certificate.
 func (o GetVpnConnectionsConnectionIkepolicyOutput) AuthenticationAlgorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnectionIkepolicy) string { return v.AuthenticationAlgorithm }).(pulumi.StringOutput)
 }
 
-// Indicates the souauthentication methodrce of the ikepolicy certificate.
 func (o GetVpnConnectionsConnectionIkepolicyOutput) AuthenticationMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnectionIkepolicy) string { return v.AuthenticationMethod }).(pulumi.StringOutput)
 }
 
-// Indicates the dh group of the ikepolicy certificate.
 func (o GetVpnConnectionsConnectionIkepolicyOutput) DhGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnectionIkepolicy) string { return v.DhGroup }).(pulumi.StringOutput)
 }
 
-// Indicates the dpd information of the ikepolicy certificate.
 func (o GetVpnConnectionsConnectionIkepolicyOutput) Dpds() GetVpnConnectionsConnectionIkepolicyDpdArrayOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnectionIkepolicy) []GetVpnConnectionsConnectionIkepolicyDpd { return v.Dpds }).(GetVpnConnectionsConnectionIkepolicyDpdArrayOutput)
 }
 
-// Indicates the encryption algorithm of the ikepolicy certificate.
 func (o GetVpnConnectionsConnectionIkepolicyOutput) EncryptionAlgorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnectionIkepolicy) string { return v.EncryptionAlgorithm }).(pulumi.StringOutput)
 }
 
-// Indicates the ike version of the ikepolicy certificate.
 func (o GetVpnConnectionsConnectionIkepolicyOutput) IkeVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnectionIkepolicy) string { return v.IkeVersion }).(pulumi.StringOutput)
 }
 
-// Indicates the lifetime seconds of the ipsecpolicy certificate.
 func (o GetVpnConnectionsConnectionIkepolicyOutput) LifetimeSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnectionIkepolicy) int { return v.LifetimeSeconds }).(pulumi.IntOutput)
 }
 
-// Indicates the local ID of the ikepolicy certificate.
 func (o GetVpnConnectionsConnectionIkepolicyOutput) LocalId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnectionIkepolicy) string { return v.LocalId }).(pulumi.StringOutput)
 }
 
-// Indicates the local ID type of the ikepolicy certificate.
 func (o GetVpnConnectionsConnectionIkepolicyOutput) LocalIdType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnectionIkepolicy) string { return v.LocalIdType }).(pulumi.StringOutput)
 }
 
-// Indicates the peer ID of the ikepolicy certificate.
 func (o GetVpnConnectionsConnectionIkepolicyOutput) PeerId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnectionIkepolicy) string { return v.PeerId }).(pulumi.StringOutput)
 }
 
-// Indicates the peer ID type of the ikepolicy certificate.
 func (o GetVpnConnectionsConnectionIkepolicyOutput) PeerIdType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnectionIkepolicy) string { return v.PeerIdType }).(pulumi.StringOutput)
 }
 
-// Indicates the phase1 negotiation mode of the ikepolicy certificate.
 func (o GetVpnConnectionsConnectionIkepolicyOutput) Phase1NegotiationMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnectionIkepolicy) string { return v.Phase1NegotiationMode }).(pulumi.StringOutput)
 }
@@ -33682,12 +32014,9 @@ func (o GetVpnConnectionsConnectionIkepolicyArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetVpnConnectionsConnectionIkepolicyDpd struct {
-	// Indicates the interval of the dpd certificate.
-	Interval int `pulumi:"interval"`
-	// Indicates the msg of the dpd certificate.
-	Msg string `pulumi:"msg"`
-	// Indicates the timeout of the dpd certificate.
-	Timeout int `pulumi:"timeout"`
+	Interval int    `pulumi:"interval"`
+	Msg      string `pulumi:"msg"`
+	Timeout  int    `pulumi:"timeout"`
 }
 
 // GetVpnConnectionsConnectionIkepolicyDpdInput is an input type that accepts GetVpnConnectionsConnectionIkepolicyDpdArgs and GetVpnConnectionsConnectionIkepolicyDpdOutput values.
@@ -33702,12 +32031,9 @@ type GetVpnConnectionsConnectionIkepolicyDpdInput interface {
 }
 
 type GetVpnConnectionsConnectionIkepolicyDpdArgs struct {
-	// Indicates the interval of the dpd certificate.
-	Interval pulumi.IntInput `pulumi:"interval"`
-	// Indicates the msg of the dpd certificate.
-	Msg pulumi.StringInput `pulumi:"msg"`
-	// Indicates the timeout of the dpd certificate.
-	Timeout pulumi.IntInput `pulumi:"timeout"`
+	Interval pulumi.IntInput    `pulumi:"interval"`
+	Msg      pulumi.StringInput `pulumi:"msg"`
+	Timeout  pulumi.IntInput    `pulumi:"timeout"`
 }
 
 func (GetVpnConnectionsConnectionIkepolicyDpdArgs) ElementType() reflect.Type {
@@ -33761,17 +32087,14 @@ func (o GetVpnConnectionsConnectionIkepolicyDpdOutput) ToGetVpnConnectionsConnec
 	return o
 }
 
-// Indicates the interval of the dpd certificate.
 func (o GetVpnConnectionsConnectionIkepolicyDpdOutput) Interval() pulumi.IntOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnectionIkepolicyDpd) int { return v.Interval }).(pulumi.IntOutput)
 }
 
-// Indicates the msg of the dpd certificate.
 func (o GetVpnConnectionsConnectionIkepolicyDpdOutput) Msg() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnectionIkepolicyDpd) string { return v.Msg }).(pulumi.StringOutput)
 }
 
-// Indicates the timeout of the dpd certificate.
 func (o GetVpnConnectionsConnectionIkepolicyDpdOutput) Timeout() pulumi.IntOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnectionIkepolicyDpd) int { return v.Timeout }).(pulumi.IntOutput)
 }
@@ -33797,18 +32120,12 @@ func (o GetVpnConnectionsConnectionIkepolicyDpdArrayOutput) Index(i pulumi.IntIn
 }
 
 type GetVpnConnectionsConnectionIpsecpolicy struct {
-	// Indicates the authentication algorithm of the ikepolicy certificate.
 	AuthenticationAlgorithm string `pulumi:"authenticationAlgorithm"`
-	// Indicates the encapsulation mode of the ipsecpolicy certificate.
-	EncapsulationMode string `pulumi:"encapsulationMode"`
-	// Indicates the encryption algorithm of the ikepolicy certificate.
-	EncryptionAlgorithm string `pulumi:"encryptionAlgorithm"`
-	// Indicates the lifetime seconds of the ipsecpolicy certificate.
-	LifetimeSeconds int `pulumi:"lifetimeSeconds"`
-	// Indicates the pfs of the ipsecpolicy certificate.
-	Pfs string `pulumi:"pfs"`
-	// Indicates the transform protocol of the ipsecpolicy certificate.
-	TransformProtocol string `pulumi:"transformProtocol"`
+	EncapsulationMode       string `pulumi:"encapsulationMode"`
+	EncryptionAlgorithm     string `pulumi:"encryptionAlgorithm"`
+	LifetimeSeconds         int    `pulumi:"lifetimeSeconds"`
+	Pfs                     string `pulumi:"pfs"`
+	TransformProtocol       string `pulumi:"transformProtocol"`
 }
 
 // GetVpnConnectionsConnectionIpsecpolicyInput is an input type that accepts GetVpnConnectionsConnectionIpsecpolicyArgs and GetVpnConnectionsConnectionIpsecpolicyOutput values.
@@ -33823,18 +32140,12 @@ type GetVpnConnectionsConnectionIpsecpolicyInput interface {
 }
 
 type GetVpnConnectionsConnectionIpsecpolicyArgs struct {
-	// Indicates the authentication algorithm of the ikepolicy certificate.
 	AuthenticationAlgorithm pulumi.StringInput `pulumi:"authenticationAlgorithm"`
-	// Indicates the encapsulation mode of the ipsecpolicy certificate.
-	EncapsulationMode pulumi.StringInput `pulumi:"encapsulationMode"`
-	// Indicates the encryption algorithm of the ikepolicy certificate.
-	EncryptionAlgorithm pulumi.StringInput `pulumi:"encryptionAlgorithm"`
-	// Indicates the lifetime seconds of the ipsecpolicy certificate.
-	LifetimeSeconds pulumi.IntInput `pulumi:"lifetimeSeconds"`
-	// Indicates the pfs of the ipsecpolicy certificate.
-	Pfs pulumi.StringInput `pulumi:"pfs"`
-	// Indicates the transform protocol of the ipsecpolicy certificate.
-	TransformProtocol pulumi.StringInput `pulumi:"transformProtocol"`
+	EncapsulationMode       pulumi.StringInput `pulumi:"encapsulationMode"`
+	EncryptionAlgorithm     pulumi.StringInput `pulumi:"encryptionAlgorithm"`
+	LifetimeSeconds         pulumi.IntInput    `pulumi:"lifetimeSeconds"`
+	Pfs                     pulumi.StringInput `pulumi:"pfs"`
+	TransformProtocol       pulumi.StringInput `pulumi:"transformProtocol"`
 }
 
 func (GetVpnConnectionsConnectionIpsecpolicyArgs) ElementType() reflect.Type {
@@ -33888,32 +32199,26 @@ func (o GetVpnConnectionsConnectionIpsecpolicyOutput) ToGetVpnConnectionsConnect
 	return o
 }
 
-// Indicates the authentication algorithm of the ikepolicy certificate.
 func (o GetVpnConnectionsConnectionIpsecpolicyOutput) AuthenticationAlgorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnectionIpsecpolicy) string { return v.AuthenticationAlgorithm }).(pulumi.StringOutput)
 }
 
-// Indicates the encapsulation mode of the ipsecpolicy certificate.
 func (o GetVpnConnectionsConnectionIpsecpolicyOutput) EncapsulationMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnectionIpsecpolicy) string { return v.EncapsulationMode }).(pulumi.StringOutput)
 }
 
-// Indicates the encryption algorithm of the ikepolicy certificate.
 func (o GetVpnConnectionsConnectionIpsecpolicyOutput) EncryptionAlgorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnectionIpsecpolicy) string { return v.EncryptionAlgorithm }).(pulumi.StringOutput)
 }
 
-// Indicates the lifetime seconds of the ipsecpolicy certificate.
 func (o GetVpnConnectionsConnectionIpsecpolicyOutput) LifetimeSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnectionIpsecpolicy) int { return v.LifetimeSeconds }).(pulumi.IntOutput)
 }
 
-// Indicates the pfs of the ipsecpolicy certificate.
 func (o GetVpnConnectionsConnectionIpsecpolicyOutput) Pfs() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnectionIpsecpolicy) string { return v.Pfs }).(pulumi.StringOutput)
 }
 
-// Indicates the transform protocol of the ipsecpolicy certificate.
 func (o GetVpnConnectionsConnectionIpsecpolicyOutput) TransformProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnectionIpsecpolicy) string { return v.TransformProtocol }).(pulumi.StringOutput)
 }
@@ -33939,12 +32244,9 @@ func (o GetVpnConnectionsConnectionIpsecpolicyArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetVpnConnectionsConnectionPolicyRule struct {
-	// Indicates the destination of the policy rules certificate.
 	Destinations []string `pulumi:"destinations"`
-	// Indicates the rule index of the policy rules.
-	RuleIndex int `pulumi:"ruleIndex"`
-	// Indicates the source of the policy rules certificate.
-	Source string `pulumi:"source"`
+	RuleIndex    int      `pulumi:"ruleIndex"`
+	Source       string   `pulumi:"source"`
 }
 
 // GetVpnConnectionsConnectionPolicyRuleInput is an input type that accepts GetVpnConnectionsConnectionPolicyRuleArgs and GetVpnConnectionsConnectionPolicyRuleOutput values.
@@ -33959,12 +32261,9 @@ type GetVpnConnectionsConnectionPolicyRuleInput interface {
 }
 
 type GetVpnConnectionsConnectionPolicyRuleArgs struct {
-	// Indicates the destination of the policy rules certificate.
 	Destinations pulumi.StringArrayInput `pulumi:"destinations"`
-	// Indicates the rule index of the policy rules.
-	RuleIndex pulumi.IntInput `pulumi:"ruleIndex"`
-	// Indicates the source of the policy rules certificate.
-	Source pulumi.StringInput `pulumi:"source"`
+	RuleIndex    pulumi.IntInput         `pulumi:"ruleIndex"`
+	Source       pulumi.StringInput      `pulumi:"source"`
 }
 
 func (GetVpnConnectionsConnectionPolicyRuleArgs) ElementType() reflect.Type {
@@ -34018,17 +32317,14 @@ func (o GetVpnConnectionsConnectionPolicyRuleOutput) ToGetVpnConnectionsConnecti
 	return o
 }
 
-// Indicates the destination of the policy rules certificate.
 func (o GetVpnConnectionsConnectionPolicyRuleOutput) Destinations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnectionPolicyRule) []string { return v.Destinations }).(pulumi.StringArrayOutput)
 }
 
-// Indicates the rule index of the policy rules.
 func (o GetVpnConnectionsConnectionPolicyRuleOutput) RuleIndex() pulumi.IntOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnectionPolicyRule) int { return v.RuleIndex }).(pulumi.IntOutput)
 }
 
-// Indicates the source of the policy rules certificate.
 func (o GetVpnConnectionsConnectionPolicyRuleOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsConnectionPolicyRule) string { return v.Source }).(pulumi.StringOutput)
 }
@@ -34054,28 +32350,16 @@ func (o GetVpnConnectionsConnectionPolicyRuleArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetVpnCustomerGatewaysCustomerGateway struct {
-	// Specifies the BGP ASN number of the customer gateway, only works when the routeMode is
-	// **bgp**. The value ranges from **1** to **4294967295**.
-	Asn int `pulumi:"asn"`
-	// Indicates the ca certificate information of the customer gateway.
-	// The caCertificate structure is documented below.
+	Asn            int                                                  `pulumi:"asn"`
 	CaCertificates []GetVpnCustomerGatewaysCustomerGatewayCaCertificate `pulumi:"caCertificates"`
-	// The created time.
-	CreatedAt string `pulumi:"createdAt"`
-	// Indicates the ID of the customer gateway.
-	Id string `pulumi:"id"`
-	// Indicates the idType of the customer gateway.
-	IdType string `pulumi:"idType"`
-	// Indicates the idValue of the customer gateway.
-	IdValue string `pulumi:"idValue"`
-	// Specifies the IP address of the customer gateway.
-	Ip string `pulumi:"ip"`
-	// Specifies the customer gateway name.
-	Name string `pulumi:"name"`
-	// Specifies the route mode of the customer gateway. The value can be **static** and **bgp**.
-	RouteMode string `pulumi:"routeMode"`
-	// The last updated time.
-	UpdatedAt string `pulumi:"updatedAt"`
+	CreatedAt      string                                               `pulumi:"createdAt"`
+	Id             string                                               `pulumi:"id"`
+	IdType         string                                               `pulumi:"idType"`
+	IdValue        string                                               `pulumi:"idValue"`
+	Ip             string                                               `pulumi:"ip"`
+	Name           string                                               `pulumi:"name"`
+	RouteMode      string                                               `pulumi:"routeMode"`
+	UpdatedAt      string                                               `pulumi:"updatedAt"`
 }
 
 // GetVpnCustomerGatewaysCustomerGatewayInput is an input type that accepts GetVpnCustomerGatewaysCustomerGatewayArgs and GetVpnCustomerGatewaysCustomerGatewayOutput values.
@@ -34090,28 +32374,16 @@ type GetVpnCustomerGatewaysCustomerGatewayInput interface {
 }
 
 type GetVpnCustomerGatewaysCustomerGatewayArgs struct {
-	// Specifies the BGP ASN number of the customer gateway, only works when the routeMode is
-	// **bgp**. The value ranges from **1** to **4294967295**.
-	Asn pulumi.IntInput `pulumi:"asn"`
-	// Indicates the ca certificate information of the customer gateway.
-	// The caCertificate structure is documented below.
+	Asn            pulumi.IntInput                                              `pulumi:"asn"`
 	CaCertificates GetVpnCustomerGatewaysCustomerGatewayCaCertificateArrayInput `pulumi:"caCertificates"`
-	// The created time.
-	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// Indicates the ID of the customer gateway.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Indicates the idType of the customer gateway.
-	IdType pulumi.StringInput `pulumi:"idType"`
-	// Indicates the idValue of the customer gateway.
-	IdValue pulumi.StringInput `pulumi:"idValue"`
-	// Specifies the IP address of the customer gateway.
-	Ip pulumi.StringInput `pulumi:"ip"`
-	// Specifies the customer gateway name.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies the route mode of the customer gateway. The value can be **static** and **bgp**.
-	RouteMode pulumi.StringInput `pulumi:"routeMode"`
-	// The last updated time.
-	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	CreatedAt      pulumi.StringInput                                           `pulumi:"createdAt"`
+	Id             pulumi.StringInput                                           `pulumi:"id"`
+	IdType         pulumi.StringInput                                           `pulumi:"idType"`
+	IdValue        pulumi.StringInput                                           `pulumi:"idValue"`
+	Ip             pulumi.StringInput                                           `pulumi:"ip"`
+	Name           pulumi.StringInput                                           `pulumi:"name"`
+	RouteMode      pulumi.StringInput                                           `pulumi:"routeMode"`
+	UpdatedAt      pulumi.StringInput                                           `pulumi:"updatedAt"`
 }
 
 func (GetVpnCustomerGatewaysCustomerGatewayArgs) ElementType() reflect.Type {
@@ -34165,56 +32437,44 @@ func (o GetVpnCustomerGatewaysCustomerGatewayOutput) ToGetVpnCustomerGatewaysCus
 	return o
 }
 
-// Specifies the BGP ASN number of the customer gateway, only works when the routeMode is
-// **bgp**. The value ranges from **1** to **4294967295**.
 func (o GetVpnCustomerGatewaysCustomerGatewayOutput) Asn() pulumi.IntOutput {
 	return o.ApplyT(func(v GetVpnCustomerGatewaysCustomerGateway) int { return v.Asn }).(pulumi.IntOutput)
 }
 
-// Indicates the ca certificate information of the customer gateway.
-// The caCertificate structure is documented below.
 func (o GetVpnCustomerGatewaysCustomerGatewayOutput) CaCertificates() GetVpnCustomerGatewaysCustomerGatewayCaCertificateArrayOutput {
 	return o.ApplyT(func(v GetVpnCustomerGatewaysCustomerGateway) []GetVpnCustomerGatewaysCustomerGatewayCaCertificate {
 		return v.CaCertificates
 	}).(GetVpnCustomerGatewaysCustomerGatewayCaCertificateArrayOutput)
 }
 
-// The created time.
 func (o GetVpnCustomerGatewaysCustomerGatewayOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnCustomerGatewaysCustomerGateway) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Indicates the ID of the customer gateway.
 func (o GetVpnCustomerGatewaysCustomerGatewayOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnCustomerGatewaysCustomerGateway) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Indicates the idType of the customer gateway.
 func (o GetVpnCustomerGatewaysCustomerGatewayOutput) IdType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnCustomerGatewaysCustomerGateway) string { return v.IdType }).(pulumi.StringOutput)
 }
 
-// Indicates the idValue of the customer gateway.
 func (o GetVpnCustomerGatewaysCustomerGatewayOutput) IdValue() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnCustomerGatewaysCustomerGateway) string { return v.IdValue }).(pulumi.StringOutput)
 }
 
-// Specifies the IP address of the customer gateway.
 func (o GetVpnCustomerGatewaysCustomerGatewayOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnCustomerGatewaysCustomerGateway) string { return v.Ip }).(pulumi.StringOutput)
 }
 
-// Specifies the customer gateway name.
 func (o GetVpnCustomerGatewaysCustomerGatewayOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnCustomerGatewaysCustomerGateway) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the route mode of the customer gateway. The value can be **static** and **bgp**.
 func (o GetVpnCustomerGatewaysCustomerGatewayOutput) RouteMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnCustomerGatewaysCustomerGateway) string { return v.RouteMode }).(pulumi.StringOutput)
 }
 
-// The last updated time.
 func (o GetVpnCustomerGatewaysCustomerGatewayOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnCustomerGatewaysCustomerGateway) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
@@ -34240,18 +32500,12 @@ func (o GetVpnCustomerGatewaysCustomerGatewayArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetVpnCustomerGatewaysCustomerGatewayCaCertificate struct {
-	// Indicates the expire time of the customer gateway certificate.
-	ExpireTime string `pulumi:"expireTime"`
-	// Indicates whether the customer gateway certificate is updatable.
-	IsUpdatable bool `pulumi:"isUpdatable"`
-	// Indicates the issuer of the customer gateway certificate.
-	Issuer string `pulumi:"issuer"`
-	// Indicates the serial number of the customer gateway certificate.
-	SerialNumber string `pulumi:"serialNumber"`
-	// Indicates the signature algorithm of the customer gateway certificate.
+	ExpireTime         string `pulumi:"expireTime"`
+	IsUpdatable        bool   `pulumi:"isUpdatable"`
+	Issuer             string `pulumi:"issuer"`
+	SerialNumber       string `pulumi:"serialNumber"`
 	SignatureAlgorithm string `pulumi:"signatureAlgorithm"`
-	// Indicates the subject of the customer gateway certificate.
-	Subject string `pulumi:"subject"`
+	Subject            string `pulumi:"subject"`
 }
 
 // GetVpnCustomerGatewaysCustomerGatewayCaCertificateInput is an input type that accepts GetVpnCustomerGatewaysCustomerGatewayCaCertificateArgs and GetVpnCustomerGatewaysCustomerGatewayCaCertificateOutput values.
@@ -34266,18 +32520,12 @@ type GetVpnCustomerGatewaysCustomerGatewayCaCertificateInput interface {
 }
 
 type GetVpnCustomerGatewaysCustomerGatewayCaCertificateArgs struct {
-	// Indicates the expire time of the customer gateway certificate.
-	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
-	// Indicates whether the customer gateway certificate is updatable.
-	IsUpdatable pulumi.BoolInput `pulumi:"isUpdatable"`
-	// Indicates the issuer of the customer gateway certificate.
-	Issuer pulumi.StringInput `pulumi:"issuer"`
-	// Indicates the serial number of the customer gateway certificate.
-	SerialNumber pulumi.StringInput `pulumi:"serialNumber"`
-	// Indicates the signature algorithm of the customer gateway certificate.
+	ExpireTime         pulumi.StringInput `pulumi:"expireTime"`
+	IsUpdatable        pulumi.BoolInput   `pulumi:"isUpdatable"`
+	Issuer             pulumi.StringInput `pulumi:"issuer"`
+	SerialNumber       pulumi.StringInput `pulumi:"serialNumber"`
 	SignatureAlgorithm pulumi.StringInput `pulumi:"signatureAlgorithm"`
-	// Indicates the subject of the customer gateway certificate.
-	Subject pulumi.StringInput `pulumi:"subject"`
+	Subject            pulumi.StringInput `pulumi:"subject"`
 }
 
 func (GetVpnCustomerGatewaysCustomerGatewayCaCertificateArgs) ElementType() reflect.Type {
@@ -34331,32 +32579,26 @@ func (o GetVpnCustomerGatewaysCustomerGatewayCaCertificateOutput) ToGetVpnCustom
 	return o
 }
 
-// Indicates the expire time of the customer gateway certificate.
 func (o GetVpnCustomerGatewaysCustomerGatewayCaCertificateOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnCustomerGatewaysCustomerGatewayCaCertificate) string { return v.ExpireTime }).(pulumi.StringOutput)
 }
 
-// Indicates whether the customer gateway certificate is updatable.
 func (o GetVpnCustomerGatewaysCustomerGatewayCaCertificateOutput) IsUpdatable() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetVpnCustomerGatewaysCustomerGatewayCaCertificate) bool { return v.IsUpdatable }).(pulumi.BoolOutput)
 }
 
-// Indicates the issuer of the customer gateway certificate.
 func (o GetVpnCustomerGatewaysCustomerGatewayCaCertificateOutput) Issuer() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnCustomerGatewaysCustomerGatewayCaCertificate) string { return v.Issuer }).(pulumi.StringOutput)
 }
 
-// Indicates the serial number of the customer gateway certificate.
 func (o GetVpnCustomerGatewaysCustomerGatewayCaCertificateOutput) SerialNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnCustomerGatewaysCustomerGatewayCaCertificate) string { return v.SerialNumber }).(pulumi.StringOutput)
 }
 
-// Indicates the signature algorithm of the customer gateway certificate.
 func (o GetVpnCustomerGatewaysCustomerGatewayCaCertificateOutput) SignatureAlgorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnCustomerGatewaysCustomerGatewayCaCertificate) string { return v.SignatureAlgorithm }).(pulumi.StringOutput)
 }
 
-// Indicates the subject of the customer gateway certificate.
 func (o GetVpnCustomerGatewaysCustomerGatewayCaCertificateOutput) Subject() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnCustomerGatewaysCustomerGatewayCaCertificate) string { return v.Subject }).(pulumi.StringOutput)
 }
@@ -34388,23 +32630,20 @@ type GetVpnGatewaysGateway struct {
 	AccessSubnetId string `pulumi:"accessSubnetId"`
 	// The ID of the access VPC.
 	AccessVpcId string `pulumi:"accessVpcId"`
-	// Specifies the attachment type of the gateway.
-	// The value can be: **vpc** and **er**.
+	// The attachment type.
 	AttachmentType string `pulumi:"attachmentType"`
 	// The availability zone IDs.
 	AvailabilityZones []string `pulumi:"availabilityZones"`
 	// The ASN number of BGP
 	BgpAsn int `pulumi:"bgpAsn"`
-	// The VPC network segment used by the VPN gateway.
+	// The VPC network segment used by the VPN gateway
 	ConnectSubnet string `pulumi:"connectSubnet"`
 	// The max number of connections.
 	ConnectionNumber int `pulumi:"connectionNumber"`
 	// The create time.
-	CreatedAt string `pulumi:"createdAt"`
-	// The EIPs used by the fateway.
-	// The eips structure is documented below.
-	Eips []GetVpnGatewaysGatewayEip `pulumi:"eips"`
-	// Specifies the enterprise project ID of the gateway.
+	CreatedAt string                     `pulumi:"createdAt"`
+	Eips      []GetVpnGatewaysGatewayEip `pulumi:"eips"`
+	// The enterprise project ID
 	EnterpriseProjectId string `pulumi:"enterpriseProjectId"`
 	// The ER attachment ID.
 	ErAttachmentId string `pulumi:"erAttachmentId"`
@@ -34413,16 +32652,14 @@ type GetVpnGatewaysGateway struct {
 	// The flavor of the VPN gateway.
 	Flavor string `pulumi:"flavor"`
 	// The HA mode.
-	// The value can be: **active-active** and **active-standby**.
 	HaMode string `pulumi:"haMode"`
-	// The public IP ID.
+	// The ID of the gateway
 	Id string `pulumi:"id"`
 	// The local subnets.
 	LocalSubnets []string `pulumi:"localSubnets"`
-	// Specifies the name of the gateway.
+	// The name of the gateway.
 	Name string `pulumi:"name"`
-	// Specifies the network type of the gateway.
-	// The value can be: **public** and **private**.
+	// The network type of the gateway.
 	NetworkType string `pulumi:"networkType"`
 	// The status of the gateway.
 	Status string `pulumi:"status"`
@@ -34454,23 +32691,20 @@ type GetVpnGatewaysGatewayArgs struct {
 	AccessSubnetId pulumi.StringInput `pulumi:"accessSubnetId"`
 	// The ID of the access VPC.
 	AccessVpcId pulumi.StringInput `pulumi:"accessVpcId"`
-	// Specifies the attachment type of the gateway.
-	// The value can be: **vpc** and **er**.
+	// The attachment type.
 	AttachmentType pulumi.StringInput `pulumi:"attachmentType"`
 	// The availability zone IDs.
 	AvailabilityZones pulumi.StringArrayInput `pulumi:"availabilityZones"`
 	// The ASN number of BGP
 	BgpAsn pulumi.IntInput `pulumi:"bgpAsn"`
-	// The VPC network segment used by the VPN gateway.
+	// The VPC network segment used by the VPN gateway
 	ConnectSubnet pulumi.StringInput `pulumi:"connectSubnet"`
 	// The max number of connections.
 	ConnectionNumber pulumi.IntInput `pulumi:"connectionNumber"`
 	// The create time.
-	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// The EIPs used by the fateway.
-	// The eips structure is documented below.
-	Eips GetVpnGatewaysGatewayEipArrayInput `pulumi:"eips"`
-	// Specifies the enterprise project ID of the gateway.
+	CreatedAt pulumi.StringInput                 `pulumi:"createdAt"`
+	Eips      GetVpnGatewaysGatewayEipArrayInput `pulumi:"eips"`
+	// The enterprise project ID
 	EnterpriseProjectId pulumi.StringInput `pulumi:"enterpriseProjectId"`
 	// The ER attachment ID.
 	ErAttachmentId pulumi.StringInput `pulumi:"erAttachmentId"`
@@ -34479,16 +32713,14 @@ type GetVpnGatewaysGatewayArgs struct {
 	// The flavor of the VPN gateway.
 	Flavor pulumi.StringInput `pulumi:"flavor"`
 	// The HA mode.
-	// The value can be: **active-active** and **active-standby**.
 	HaMode pulumi.StringInput `pulumi:"haMode"`
-	// The public IP ID.
+	// The ID of the gateway
 	Id pulumi.StringInput `pulumi:"id"`
 	// The local subnets.
 	LocalSubnets pulumi.StringArrayInput `pulumi:"localSubnets"`
-	// Specifies the name of the gateway.
+	// The name of the gateway.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies the network type of the gateway.
-	// The value can be: **public** and **private**.
+	// The network type of the gateway.
 	NetworkType pulumi.StringInput `pulumi:"networkType"`
 	// The status of the gateway.
 	Status pulumi.StringInput `pulumi:"status"`
@@ -34568,8 +32800,7 @@ func (o GetVpnGatewaysGatewayOutput) AccessVpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnGatewaysGateway) string { return v.AccessVpcId }).(pulumi.StringOutput)
 }
 
-// Specifies the attachment type of the gateway.
-// The value can be: **vpc** and **er**.
+// The attachment type.
 func (o GetVpnGatewaysGatewayOutput) AttachmentType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnGatewaysGateway) string { return v.AttachmentType }).(pulumi.StringOutput)
 }
@@ -34584,7 +32815,7 @@ func (o GetVpnGatewaysGatewayOutput) BgpAsn() pulumi.IntOutput {
 	return o.ApplyT(func(v GetVpnGatewaysGateway) int { return v.BgpAsn }).(pulumi.IntOutput)
 }
 
-// The VPC network segment used by the VPN gateway.
+// The VPC network segment used by the VPN gateway
 func (o GetVpnGatewaysGatewayOutput) ConnectSubnet() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnGatewaysGateway) string { return v.ConnectSubnet }).(pulumi.StringOutput)
 }
@@ -34599,13 +32830,11 @@ func (o GetVpnGatewaysGatewayOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnGatewaysGateway) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// The EIPs used by the fateway.
-// The eips structure is documented below.
 func (o GetVpnGatewaysGatewayOutput) Eips() GetVpnGatewaysGatewayEipArrayOutput {
 	return o.ApplyT(func(v GetVpnGatewaysGateway) []GetVpnGatewaysGatewayEip { return v.Eips }).(GetVpnGatewaysGatewayEipArrayOutput)
 }
 
-// Specifies the enterprise project ID of the gateway.
+// The enterprise project ID
 func (o GetVpnGatewaysGatewayOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnGatewaysGateway) string { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
@@ -34626,12 +32855,11 @@ func (o GetVpnGatewaysGatewayOutput) Flavor() pulumi.StringOutput {
 }
 
 // The HA mode.
-// The value can be: **active-active** and **active-standby**.
 func (o GetVpnGatewaysGatewayOutput) HaMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnGatewaysGateway) string { return v.HaMode }).(pulumi.StringOutput)
 }
 
-// The public IP ID.
+// The ID of the gateway
 func (o GetVpnGatewaysGatewayOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnGatewaysGateway) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -34641,13 +32869,12 @@ func (o GetVpnGatewaysGatewayOutput) LocalSubnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVpnGatewaysGateway) []string { return v.LocalSubnets }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the name of the gateway.
+// The name of the gateway.
 func (o GetVpnGatewaysGatewayOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnGatewaysGateway) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the network type of the gateway.
-// The value can be: **public** and **private**.
+// The network type of the gateway.
 func (o GetVpnGatewaysGatewayOutput) NetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnGatewaysGateway) string { return v.NetworkType }).(pulumi.StringOutput)
 }
@@ -34708,7 +32935,7 @@ type GetVpnGatewaysGatewayEip struct {
 	BandwidthSize int `pulumi:"bandwidthSize"`
 	// The billing info.
 	BillingInfo string `pulumi:"billingInfo"`
-	// The charge mode of the bandwidth.
+	// The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
 	ChargeMode string `pulumi:"chargeMode"`
 	// The public IP ID.
 	Id string `pulumi:"id"`
@@ -34716,7 +32943,7 @@ type GetVpnGatewaysGatewayEip struct {
 	IpAddress string `pulumi:"ipAddress"`
 	// The public IP version.
 	IpVersion int `pulumi:"ipVersion"`
-	// The EIP type.
+	// The EIP type. The value can be **5_bgp** and **5_sbgp**.
 	Type string `pulumi:"type"`
 }
 
@@ -34742,7 +32969,7 @@ type GetVpnGatewaysGatewayEipArgs struct {
 	BandwidthSize pulumi.IntInput `pulumi:"bandwidthSize"`
 	// The billing info.
 	BillingInfo pulumi.StringInput `pulumi:"billingInfo"`
-	// The charge mode of the bandwidth.
+	// The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
 	ChargeMode pulumi.StringInput `pulumi:"chargeMode"`
 	// The public IP ID.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -34750,7 +32977,7 @@ type GetVpnGatewaysGatewayEipArgs struct {
 	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
 	// The public IP version.
 	IpVersion pulumi.IntInput `pulumi:"ipVersion"`
-	// The EIP type.
+	// The EIP type. The value can be **5_bgp** and **5_sbgp**.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -34830,7 +33057,7 @@ func (o GetVpnGatewaysGatewayEipOutput) BillingInfo() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnGatewaysGatewayEip) string { return v.BillingInfo }).(pulumi.StringOutput)
 }
 
-// The charge mode of the bandwidth.
+// The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
 func (o GetVpnGatewaysGatewayEipOutput) ChargeMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnGatewaysGatewayEip) string { return v.ChargeMode }).(pulumi.StringOutput)
 }
@@ -34850,7 +33077,7 @@ func (o GetVpnGatewaysGatewayEipOutput) IpVersion() pulumi.IntOutput {
 	return o.ApplyT(func(v GetVpnGatewaysGatewayEip) int { return v.IpVersion }).(pulumi.IntOutput)
 }
 
-// The EIP type.
+// The EIP type. The value can be **5_bgp** and **5_sbgp**.
 func (o GetVpnGatewaysGatewayEipOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnGatewaysGatewayEip) string { return v.Type }).(pulumi.StringOutput)
 }

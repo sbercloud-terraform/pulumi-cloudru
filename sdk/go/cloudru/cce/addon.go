@@ -12,69 +12,16 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Provides a CCE add-on resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cce"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			clusterId := cfg.RequireObject("clusterId")
-//			_, err := cce.NewAddon(ctx, "addon_test", &cce.AddonArgs{
-//				ClusterId:    pulumi.Any(clusterId),
-//				TemplateName: pulumi.String("metrics-server"),
-//				Version:      pulumi.String("1.1.10"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// CCE add-on can be imported using the cluster ID and add-on ID separated by a slash, e.g.:
-//
-// ```sh
-// $ pulumi import sbercloud:Cce/addon:Addon my_addon bb6923e4-b16e-11eb-b0cd-0255ac101da1/c7ecb230-b16f-11eb-b3b6-0255ac1015a3
-// ```
 type Addon struct {
 	pulumi.CustomResourceState
 
-	// Specifies the cluster ID.
-	// Changing this parameter will create a new resource.
-	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// Description of add-on instance.
-	Description pulumi.StringOutput `pulumi:"description"`
-	// Specifies the region in which to create the CCE add-on resource.
-	// If omitted, the provider-level region will be used. Changing this creates a new CCE add-on resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Add-on status information.
-	Status pulumi.StringOutput `pulumi:"status"`
-	// Specifies the name of the add-on template.
-	// Changing this parameter will create a new resource.
-	TemplateName pulumi.StringOutput `pulumi:"templateName"`
-	// Specifies the add-on template installation parameters.
-	// These parameters vary depending on the add-on. Structure is documented below.
-	// Changing this parameter will create a new resource.
-	Values AddonValuesPtrOutput `pulumi:"values"`
-	// Specifies the version of the add-on.
-	// Changing this parameter will create a new resource.
-	Version pulumi.StringOutput `pulumi:"version"`
+	ClusterId    pulumi.StringOutput  `pulumi:"clusterId"`
+	Description  pulumi.StringOutput  `pulumi:"description"`
+	Region       pulumi.StringOutput  `pulumi:"region"`
+	Status       pulumi.StringOutput  `pulumi:"status"`
+	TemplateName pulumi.StringOutput  `pulumi:"templateName"`
+	Values       AddonValuesPtrOutput `pulumi:"values"`
+	Version      pulumi.StringOutput  `pulumi:"version"`
 }
 
 // NewAddon registers a new resource with the given unique name, arguments, and options.
@@ -113,49 +60,23 @@ func GetAddon(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Addon resources.
 type addonState struct {
-	// Specifies the cluster ID.
-	// Changing this parameter will create a new resource.
-	ClusterId *string `pulumi:"clusterId"`
-	// Description of add-on instance.
-	Description *string `pulumi:"description"`
-	// Specifies the region in which to create the CCE add-on resource.
-	// If omitted, the provider-level region will be used. Changing this creates a new CCE add-on resource.
-	Region *string `pulumi:"region"`
-	// Add-on status information.
-	Status *string `pulumi:"status"`
-	// Specifies the name of the add-on template.
-	// Changing this parameter will create a new resource.
-	TemplateName *string `pulumi:"templateName"`
-	// Specifies the add-on template installation parameters.
-	// These parameters vary depending on the add-on. Structure is documented below.
-	// Changing this parameter will create a new resource.
-	Values *AddonValues `pulumi:"values"`
-	// Specifies the version of the add-on.
-	// Changing this parameter will create a new resource.
-	Version *string `pulumi:"version"`
+	ClusterId    *string      `pulumi:"clusterId"`
+	Description  *string      `pulumi:"description"`
+	Region       *string      `pulumi:"region"`
+	Status       *string      `pulumi:"status"`
+	TemplateName *string      `pulumi:"templateName"`
+	Values       *AddonValues `pulumi:"values"`
+	Version      *string      `pulumi:"version"`
 }
 
 type AddonState struct {
-	// Specifies the cluster ID.
-	// Changing this parameter will create a new resource.
-	ClusterId pulumi.StringPtrInput
-	// Description of add-on instance.
-	Description pulumi.StringPtrInput
-	// Specifies the region in which to create the CCE add-on resource.
-	// If omitted, the provider-level region will be used. Changing this creates a new CCE add-on resource.
-	Region pulumi.StringPtrInput
-	// Add-on status information.
-	Status pulumi.StringPtrInput
-	// Specifies the name of the add-on template.
-	// Changing this parameter will create a new resource.
+	ClusterId    pulumi.StringPtrInput
+	Description  pulumi.StringPtrInput
+	Region       pulumi.StringPtrInput
+	Status       pulumi.StringPtrInput
 	TemplateName pulumi.StringPtrInput
-	// Specifies the add-on template installation parameters.
-	// These parameters vary depending on the add-on. Structure is documented below.
-	// Changing this parameter will create a new resource.
-	Values AddonValuesPtrInput
-	// Specifies the version of the add-on.
-	// Changing this parameter will create a new resource.
-	Version pulumi.StringPtrInput
+	Values       AddonValuesPtrInput
+	Version      pulumi.StringPtrInput
 }
 
 func (AddonState) ElementType() reflect.Type {
@@ -163,42 +84,20 @@ func (AddonState) ElementType() reflect.Type {
 }
 
 type addonArgs struct {
-	// Specifies the cluster ID.
-	// Changing this parameter will create a new resource.
-	ClusterId string `pulumi:"clusterId"`
-	// Specifies the region in which to create the CCE add-on resource.
-	// If omitted, the provider-level region will be used. Changing this creates a new CCE add-on resource.
-	Region *string `pulumi:"region"`
-	// Specifies the name of the add-on template.
-	// Changing this parameter will create a new resource.
-	TemplateName string `pulumi:"templateName"`
-	// Specifies the add-on template installation parameters.
-	// These parameters vary depending on the add-on. Structure is documented below.
-	// Changing this parameter will create a new resource.
-	Values *AddonValues `pulumi:"values"`
-	// Specifies the version of the add-on.
-	// Changing this parameter will create a new resource.
-	Version *string `pulumi:"version"`
+	ClusterId    string       `pulumi:"clusterId"`
+	Region       *string      `pulumi:"region"`
+	TemplateName string       `pulumi:"templateName"`
+	Values       *AddonValues `pulumi:"values"`
+	Version      *string      `pulumi:"version"`
 }
 
 // The set of arguments for constructing a Addon resource.
 type AddonArgs struct {
-	// Specifies the cluster ID.
-	// Changing this parameter will create a new resource.
-	ClusterId pulumi.StringInput
-	// Specifies the region in which to create the CCE add-on resource.
-	// If omitted, the provider-level region will be used. Changing this creates a new CCE add-on resource.
-	Region pulumi.StringPtrInput
-	// Specifies the name of the add-on template.
-	// Changing this parameter will create a new resource.
+	ClusterId    pulumi.StringInput
+	Region       pulumi.StringPtrInput
 	TemplateName pulumi.StringInput
-	// Specifies the add-on template installation parameters.
-	// These parameters vary depending on the add-on. Structure is documented below.
-	// Changing this parameter will create a new resource.
-	Values AddonValuesPtrInput
-	// Specifies the version of the add-on.
-	// Changing this parameter will create a new resource.
-	Version pulumi.StringPtrInput
+	Values       AddonValuesPtrInput
+	Version      pulumi.StringPtrInput
 }
 
 func (AddonArgs) ElementType() reflect.Type {
@@ -288,43 +187,30 @@ func (o AddonOutput) ToAddonOutputWithContext(ctx context.Context) AddonOutput {
 	return o
 }
 
-// Specifies the cluster ID.
-// Changing this parameter will create a new resource.
 func (o AddonOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Addon) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// Description of add-on instance.
 func (o AddonOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Addon) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the CCE add-on resource.
-// If omitted, the provider-level region will be used. Changing this creates a new CCE add-on resource.
 func (o AddonOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Addon) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Add-on status information.
 func (o AddonOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Addon) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the add-on template.
-// Changing this parameter will create a new resource.
 func (o AddonOutput) TemplateName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Addon) pulumi.StringOutput { return v.TemplateName }).(pulumi.StringOutput)
 }
 
-// Specifies the add-on template installation parameters.
-// These parameters vary depending on the add-on. Structure is documented below.
-// Changing this parameter will create a new resource.
 func (o AddonOutput) Values() AddonValuesPtrOutput {
 	return o.ApplyT(func(v *Addon) AddonValuesPtrOutput { return v.Values }).(AddonValuesPtrOutput)
 }
 
-// Specifies the version of the add-on.
-// Changing this parameter will create a new resource.
 func (o AddonOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v *Addon) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
 }

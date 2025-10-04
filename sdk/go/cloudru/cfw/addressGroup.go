@@ -12,69 +12,18 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a CFW IP address group resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := cfg.RequireObject("name")
-//			description := cfg.RequireObject("description")
-//			test, err := cfw.GetFirewalls(ctx, &cfw.GetFirewallsArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cfw.NewAddressGroup(ctx, "test", &cfw.AddressGroupArgs{
-//				ObjectId:    pulumi.String(test.Records[0].ProtectObjects[0].ObjectId),
-//				Name:        pulumi.Any(name),
-//				Description: pulumi.Any(description),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The ipaddressgroup can be imported using the `id`, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Cfw/addressGroup:AddressGroup test 0ce123456a00f2591fabc00385ff1234
-// ```
 type AddressGroup struct {
 	pulumi.CustomResourceState
 
-	// The address type. The value can be **0** (IPv4) or **1** (IPv6).
+	// schema: Computed; Specifies the Address type.
 	AddressType pulumi.IntOutput `pulumi:"addressType"`
 	// Specifies the Address group description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Specifies the IP address group name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Specifies the protected object ID.
-	//
-	// Changing this parameter will create a new resource.
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Region   pulumi.StringOutput `pulumi:"region"`
 }
 
 // NewAddressGroup registers a new resource with the given unique name, arguments, and options.
@@ -110,35 +59,27 @@ func GetAddressGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AddressGroup resources.
 type addressGroupState struct {
-	// The address type. The value can be **0** (IPv4) or **1** (IPv6).
+	// schema: Computed; Specifies the Address type.
 	AddressType *int `pulumi:"addressType"`
 	// Specifies the Address group description.
 	Description *string `pulumi:"description"`
 	// Specifies the IP address group name.
 	Name *string `pulumi:"name"`
 	// Specifies the protected object ID.
-	//
-	// Changing this parameter will create a new resource.
 	ObjectId *string `pulumi:"objectId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
+	Region   *string `pulumi:"region"`
 }
 
 type AddressGroupState struct {
-	// The address type. The value can be **0** (IPv4) or **1** (IPv6).
+	// schema: Computed; Specifies the Address type.
 	AddressType pulumi.IntPtrInput
 	// Specifies the Address group description.
 	Description pulumi.StringPtrInput
 	// Specifies the IP address group name.
 	Name pulumi.StringPtrInput
 	// Specifies the protected object ID.
-	//
-	// Changing this parameter will create a new resource.
 	ObjectId pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
+	Region   pulumi.StringPtrInput
 }
 
 func (AddressGroupState) ElementType() reflect.Type {
@@ -146,36 +87,28 @@ func (AddressGroupState) ElementType() reflect.Type {
 }
 
 type addressGroupArgs struct {
-	// The address type. The value can be **0** (IPv4) or **1** (IPv6).
+	// schema: Computed; Specifies the Address type.
 	AddressType *int `pulumi:"addressType"`
 	// Specifies the Address group description.
 	Description *string `pulumi:"description"`
 	// Specifies the IP address group name.
 	Name *string `pulumi:"name"`
 	// Specifies the protected object ID.
-	//
-	// Changing this parameter will create a new resource.
-	ObjectId string `pulumi:"objectId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
+	ObjectId string  `pulumi:"objectId"`
+	Region   *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a AddressGroup resource.
 type AddressGroupArgs struct {
-	// The address type. The value can be **0** (IPv4) or **1** (IPv6).
+	// schema: Computed; Specifies the Address type.
 	AddressType pulumi.IntPtrInput
 	// Specifies the Address group description.
 	Description pulumi.StringPtrInput
 	// Specifies the IP address group name.
 	Name pulumi.StringPtrInput
 	// Specifies the protected object ID.
-	//
-	// Changing this parameter will create a new resource.
 	ObjectId pulumi.StringInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
+	Region   pulumi.StringPtrInput
 }
 
 func (AddressGroupArgs) ElementType() reflect.Type {
@@ -265,7 +198,7 @@ func (o AddressGroupOutput) ToAddressGroupOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The address type. The value can be **0** (IPv4) or **1** (IPv6).
+// schema: Computed; Specifies the Address type.
 func (o AddressGroupOutput) AddressType() pulumi.IntOutput {
 	return o.ApplyT(func(v *AddressGroup) pulumi.IntOutput { return v.AddressType }).(pulumi.IntOutput)
 }
@@ -281,14 +214,10 @@ func (o AddressGroupOutput) Name() pulumi.StringOutput {
 }
 
 // Specifies the protected object ID.
-//
-// Changing this parameter will create a new resource.
 func (o AddressGroupOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AddressGroup) pulumi.StringOutput { return v.ObjectId }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
 func (o AddressGroupOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *AddressGroup) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

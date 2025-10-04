@@ -35,32 +35,6 @@ class ServiceDiscoveryRuleArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServiceDiscoveryRule resource.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceDiscoveryRuleDiscoveryRuleArgs']]] discovery_rules: Specifies the discovery rule. If the array contains multiple conditions, only the
-               processes that meet all the conditions will be matched. If the value of `check_type` is **cmdLine**, set the value of
-               `check_mode` to **contain**. `check_content` is in the format of ["xxx"], indicating that the process must contain
-               the xxx parameter. If the value of `check_type` is **env**, set the value of `check_mode` to **contain**.
-               `check_content` is in the format of ["k1","v1"], indicating that the process must contain the environment variable
-               whose name is k1 and value is v1. If the value of `check_type` is **scope**, set the value of `check_mode`
-               to **equals**. `check_content` is in the format of ["hostId1","hostId2"], indicating that the rule takes effect only
-               on specified nodes. If no nodes are specified, the rule applies to all nodes of the project.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] log_file_suffixes: Specifies the log file suffix. This is a list of strings.
-               The values can be: **log**, **trace**, and **out**.
-        :param pulumi.Input['ServiceDiscoveryRuleNameRulesArgs'] name_rules: Specifies the naming rules for discovered services and applications.
-               The object structure is documented below.
-        :param pulumi.Input[_builtins.str] service_type: Specifies the service type, which is used only for rule classification and UI display.
-               You can enter any field. For example, enter Java or Python by technology stack, or enter collector or database by function.
-        :param pulumi.Input[_builtins.bool] detect_log_enabled: Specifies whether to enable log collection. The default value is true.
-        :param pulumi.Input[_builtins.bool] discovery_rule_enabled: Specifies whether the rule is enabled. The default value is true.
-        :param pulumi.Input[_builtins.bool] is_default_rule: Specifies whether the rule is the default one. The default value is false.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceDiscoveryRuleLogPathRuleArgs']]] log_path_rules: Specifies the log path configuration rule. If cmdLineHash is a fixed string,
-               logs in the specified log path or log file are collected. Otherwise, only the files whose names end with
-               .log or .trace are collected. If the value of `name_type` is **cmdLineHash**, args is in the format of ["00001"] and
-               value is in the format of ["/xxx/xx.log"], indicating that the log path is /xxx/xx.log when the startup command is 00001.
-        :param pulumi.Input[_builtins.str] name: Specifies the rule name, which contains 4 to 63 characters. It must start
-               with a lowercase letter but cannot end with a hyphen (-). Only digits, lowercase letters, and hyphens are allowed.
-        :param pulumi.Input[_builtins.int] priority: Specifies the rule priority. Value range: 1 to 9999. The default value is 9999.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the service discovery rule resource. If omitted,
-               the provider-level region will be used. Changing this creates a new resource.
         """
         pulumi.set(__self__, "discovery_rules", discovery_rules)
         pulumi.set(__self__, "log_file_suffixes", log_file_suffixes)
@@ -86,16 +60,6 @@ class ServiceDiscoveryRuleArgs:
     @_builtins.property
     @pulumi.getter(name="discoveryRules")
     def discovery_rules(self) -> pulumi.Input[Sequence[pulumi.Input['ServiceDiscoveryRuleDiscoveryRuleArgs']]]:
-        """
-        Specifies the discovery rule. If the array contains multiple conditions, only the
-        processes that meet all the conditions will be matched. If the value of `check_type` is **cmdLine**, set the value of
-        `check_mode` to **contain**. `check_content` is in the format of ["xxx"], indicating that the process must contain
-        the xxx parameter. If the value of `check_type` is **env**, set the value of `check_mode` to **contain**.
-        `check_content` is in the format of ["k1","v1"], indicating that the process must contain the environment variable
-        whose name is k1 and value is v1. If the value of `check_type` is **scope**, set the value of `check_mode`
-        to **equals**. `check_content` is in the format of ["hostId1","hostId2"], indicating that the rule takes effect only
-        on specified nodes. If no nodes are specified, the rule applies to all nodes of the project.
-        """
         return pulumi.get(self, "discovery_rules")
 
     @discovery_rules.setter
@@ -105,10 +69,6 @@ class ServiceDiscoveryRuleArgs:
     @_builtins.property
     @pulumi.getter(name="logFileSuffixes")
     def log_file_suffixes(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        Specifies the log file suffix. This is a list of strings.
-        The values can be: **log**, **trace**, and **out**.
-        """
         return pulumi.get(self, "log_file_suffixes")
 
     @log_file_suffixes.setter
@@ -118,10 +78,6 @@ class ServiceDiscoveryRuleArgs:
     @_builtins.property
     @pulumi.getter(name="nameRules")
     def name_rules(self) -> pulumi.Input['ServiceDiscoveryRuleNameRulesArgs']:
-        """
-        Specifies the naming rules for discovered services and applications.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "name_rules")
 
     @name_rules.setter
@@ -131,10 +87,6 @@ class ServiceDiscoveryRuleArgs:
     @_builtins.property
     @pulumi.getter(name="serviceType")
     def service_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the service type, which is used only for rule classification and UI display.
-        You can enter any field. For example, enter Java or Python by technology stack, or enter collector or database by function.
-        """
         return pulumi.get(self, "service_type")
 
     @service_type.setter
@@ -153,9 +105,6 @@ class ServiceDiscoveryRuleArgs:
     @_builtins.property
     @pulumi.getter(name="detectLogEnabled")
     def detect_log_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to enable log collection. The default value is true.
-        """
         return pulumi.get(self, "detect_log_enabled")
 
     @detect_log_enabled.setter
@@ -165,9 +114,6 @@ class ServiceDiscoveryRuleArgs:
     @_builtins.property
     @pulumi.getter(name="discoveryRuleEnabled")
     def discovery_rule_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether the rule is enabled. The default value is true.
-        """
         return pulumi.get(self, "discovery_rule_enabled")
 
     @discovery_rule_enabled.setter
@@ -177,9 +123,6 @@ class ServiceDiscoveryRuleArgs:
     @_builtins.property
     @pulumi.getter(name="isDefaultRule")
     def is_default_rule(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether the rule is the default one. The default value is false.
-        """
         return pulumi.get(self, "is_default_rule")
 
     @is_default_rule.setter
@@ -189,12 +132,6 @@ class ServiceDiscoveryRuleArgs:
     @_builtins.property
     @pulumi.getter(name="logPathRules")
     def log_path_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceDiscoveryRuleLogPathRuleArgs']]]]:
-        """
-        Specifies the log path configuration rule. If cmdLineHash is a fixed string,
-        logs in the specified log path or log file are collected. Otherwise, only the files whose names end with
-        .log or .trace are collected. If the value of `name_type` is **cmdLineHash**, args is in the format of ["00001"] and
-        value is in the format of ["/xxx/xx.log"], indicating that the log path is /xxx/xx.log when the startup command is 00001.
-        """
         return pulumi.get(self, "log_path_rules")
 
     @log_path_rules.setter
@@ -204,10 +141,6 @@ class ServiceDiscoveryRuleArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the rule name, which contains 4 to 63 characters. It must start
-        with a lowercase letter but cannot end with a hyphen (-). Only digits, lowercase letters, and hyphens are allowed.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -217,9 +150,6 @@ class ServiceDiscoveryRuleArgs:
     @_builtins.property
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the rule priority. Value range: 1 to 9999. The default value is 9999.
-        """
         return pulumi.get(self, "priority")
 
     @priority.setter
@@ -229,10 +159,6 @@ class ServiceDiscoveryRuleArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the service discovery rule resource. If omitted,
-        the provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -259,33 +185,6 @@ class _ServiceDiscoveryRuleState:
                  service_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceDiscoveryRule resources.
-        :param pulumi.Input[_builtins.bool] detect_log_enabled: Specifies whether to enable log collection. The default value is true.
-        :param pulumi.Input[_builtins.bool] discovery_rule_enabled: Specifies whether the rule is enabled. The default value is true.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceDiscoveryRuleDiscoveryRuleArgs']]] discovery_rules: Specifies the discovery rule. If the array contains multiple conditions, only the
-               processes that meet all the conditions will be matched. If the value of `check_type` is **cmdLine**, set the value of
-               `check_mode` to **contain**. `check_content` is in the format of ["xxx"], indicating that the process must contain
-               the xxx parameter. If the value of `check_type` is **env**, set the value of `check_mode` to **contain**.
-               `check_content` is in the format of ["k1","v1"], indicating that the process must contain the environment variable
-               whose name is k1 and value is v1. If the value of `check_type` is **scope**, set the value of `check_mode`
-               to **equals**. `check_content` is in the format of ["hostId1","hostId2"], indicating that the rule takes effect only
-               on specified nodes. If no nodes are specified, the rule applies to all nodes of the project.
-        :param pulumi.Input[_builtins.bool] is_default_rule: Specifies whether the rule is the default one. The default value is false.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] log_file_suffixes: Specifies the log file suffix. This is a list of strings.
-               The values can be: **log**, **trace**, and **out**.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceDiscoveryRuleLogPathRuleArgs']]] log_path_rules: Specifies the log path configuration rule. If cmdLineHash is a fixed string,
-               logs in the specified log path or log file are collected. Otherwise, only the files whose names end with
-               .log or .trace are collected. If the value of `name_type` is **cmdLineHash**, args is in the format of ["00001"] and
-               value is in the format of ["/xxx/xx.log"], indicating that the log path is /xxx/xx.log when the startup command is 00001.
-        :param pulumi.Input[_builtins.str] name: Specifies the rule name, which contains 4 to 63 characters. It must start
-               with a lowercase letter but cannot end with a hyphen (-). Only digits, lowercase letters, and hyphens are allowed.
-        :param pulumi.Input['ServiceDiscoveryRuleNameRulesArgs'] name_rules: Specifies the naming rules for discovered services and applications.
-               The object structure is documented below.
-        :param pulumi.Input[_builtins.int] priority: Specifies the rule priority. Value range: 1 to 9999. The default value is 9999.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the service discovery rule resource. If omitted,
-               the provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] rule_id: The rule ID in uuid format.
-        :param pulumi.Input[_builtins.str] service_type: Specifies the service type, which is used only for rule classification and UI display.
-               You can enter any field. For example, enter Java or Python by technology stack, or enter collector or database by function.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -337,9 +236,6 @@ class _ServiceDiscoveryRuleState:
     @_builtins.property
     @pulumi.getter(name="detectLogEnabled")
     def detect_log_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to enable log collection. The default value is true.
-        """
         return pulumi.get(self, "detect_log_enabled")
 
     @detect_log_enabled.setter
@@ -349,9 +245,6 @@ class _ServiceDiscoveryRuleState:
     @_builtins.property
     @pulumi.getter(name="discoveryRuleEnabled")
     def discovery_rule_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether the rule is enabled. The default value is true.
-        """
         return pulumi.get(self, "discovery_rule_enabled")
 
     @discovery_rule_enabled.setter
@@ -361,16 +254,6 @@ class _ServiceDiscoveryRuleState:
     @_builtins.property
     @pulumi.getter(name="discoveryRules")
     def discovery_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceDiscoveryRuleDiscoveryRuleArgs']]]]:
-        """
-        Specifies the discovery rule. If the array contains multiple conditions, only the
-        processes that meet all the conditions will be matched. If the value of `check_type` is **cmdLine**, set the value of
-        `check_mode` to **contain**. `check_content` is in the format of ["xxx"], indicating that the process must contain
-        the xxx parameter. If the value of `check_type` is **env**, set the value of `check_mode` to **contain**.
-        `check_content` is in the format of ["k1","v1"], indicating that the process must contain the environment variable
-        whose name is k1 and value is v1. If the value of `check_type` is **scope**, set the value of `check_mode`
-        to **equals**. `check_content` is in the format of ["hostId1","hostId2"], indicating that the rule takes effect only
-        on specified nodes. If no nodes are specified, the rule applies to all nodes of the project.
-        """
         return pulumi.get(self, "discovery_rules")
 
     @discovery_rules.setter
@@ -380,9 +263,6 @@ class _ServiceDiscoveryRuleState:
     @_builtins.property
     @pulumi.getter(name="isDefaultRule")
     def is_default_rule(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether the rule is the default one. The default value is false.
-        """
         return pulumi.get(self, "is_default_rule")
 
     @is_default_rule.setter
@@ -392,10 +272,6 @@ class _ServiceDiscoveryRuleState:
     @_builtins.property
     @pulumi.getter(name="logFileSuffixes")
     def log_file_suffixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the log file suffix. This is a list of strings.
-        The values can be: **log**, **trace**, and **out**.
-        """
         return pulumi.get(self, "log_file_suffixes")
 
     @log_file_suffixes.setter
@@ -405,12 +281,6 @@ class _ServiceDiscoveryRuleState:
     @_builtins.property
     @pulumi.getter(name="logPathRules")
     def log_path_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceDiscoveryRuleLogPathRuleArgs']]]]:
-        """
-        Specifies the log path configuration rule. If cmdLineHash is a fixed string,
-        logs in the specified log path or log file are collected. Otherwise, only the files whose names end with
-        .log or .trace are collected. If the value of `name_type` is **cmdLineHash**, args is in the format of ["00001"] and
-        value is in the format of ["/xxx/xx.log"], indicating that the log path is /xxx/xx.log when the startup command is 00001.
-        """
         return pulumi.get(self, "log_path_rules")
 
     @log_path_rules.setter
@@ -420,10 +290,6 @@ class _ServiceDiscoveryRuleState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the rule name, which contains 4 to 63 characters. It must start
-        with a lowercase letter but cannot end with a hyphen (-). Only digits, lowercase letters, and hyphens are allowed.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -433,10 +299,6 @@ class _ServiceDiscoveryRuleState:
     @_builtins.property
     @pulumi.getter(name="nameRules")
     def name_rules(self) -> Optional[pulumi.Input['ServiceDiscoveryRuleNameRulesArgs']]:
-        """
-        Specifies the naming rules for discovered services and applications.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "name_rules")
 
     @name_rules.setter
@@ -446,9 +308,6 @@ class _ServiceDiscoveryRuleState:
     @_builtins.property
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the rule priority. Value range: 1 to 9999. The default value is 9999.
-        """
         return pulumi.get(self, "priority")
 
     @priority.setter
@@ -458,10 +317,6 @@ class _ServiceDiscoveryRuleState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the service discovery rule resource. If omitted,
-        the provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -471,9 +326,6 @@ class _ServiceDiscoveryRuleState:
     @_builtins.property
     @pulumi.getter(name="ruleId")
     def rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The rule ID in uuid format.
-        """
         return pulumi.get(self, "rule_id")
 
     @rule_id.setter
@@ -483,10 +335,6 @@ class _ServiceDiscoveryRuleState:
     @_builtins.property
     @pulumi.getter(name="serviceType")
     def service_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the service type, which is used only for rule classification and UI display.
-        You can enter any field. For example, enter Java or Python by technology stack, or enter collector or database by function.
-        """
         return pulumi.get(self, "service_type")
 
     @service_type.setter
@@ -514,82 +362,9 @@ class ServiceDiscoveryRule(pulumi.CustomResource):
                  service_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages an AOM service discovery rule resource within SberCloud.
-
-        ## Example Usage
-
-        ### Basic example
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        discovery_rule = sbercloud.aom.ServiceDiscoveryRule("discovery_rule",
-            name="test-rule",
-            priority=9999,
-            detect_log_enabled=True,
-            discovery_rule_enabled=True,
-            is_default_rule=False,
-            log_file_suffixes=["log"],
-            service_type="Java",
-            discovery_rules=[{
-                "check_contents": ["java"],
-                "check_mode": "contain",
-                "check_type": "cmdLine",
-            }],
-            log_path_rules=[{
-                "name_type": "cmdLineHash",
-                "args": ["java"],
-                "values": ["/tmp/log"],
-            }],
-            name_rules={
-                "service_name_rules": [{
-                    "name_type": "str",
-                    "args": ["java"],
-                }],
-                "application_name_rules": [{
-                    "name_type": "str",
-                    "args": ["java"],
-                }],
-            })
-        ```
-
-        ## Import
-
-        AOM service discovery rules can be imported using the `name`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Aom/serviceDiscoveryRule:ServiceDiscoveryRule alarm_rule rule_name
-        ```
-
+        Create a ServiceDiscoveryRule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] detect_log_enabled: Specifies whether to enable log collection. The default value is true.
-        :param pulumi.Input[_builtins.bool] discovery_rule_enabled: Specifies whether the rule is enabled. The default value is true.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceDiscoveryRuleDiscoveryRuleArgs', 'ServiceDiscoveryRuleDiscoveryRuleArgsDict']]]] discovery_rules: Specifies the discovery rule. If the array contains multiple conditions, only the
-               processes that meet all the conditions will be matched. If the value of `check_type` is **cmdLine**, set the value of
-               `check_mode` to **contain**. `check_content` is in the format of ["xxx"], indicating that the process must contain
-               the xxx parameter. If the value of `check_type` is **env**, set the value of `check_mode` to **contain**.
-               `check_content` is in the format of ["k1","v1"], indicating that the process must contain the environment variable
-               whose name is k1 and value is v1. If the value of `check_type` is **scope**, set the value of `check_mode`
-               to **equals**. `check_content` is in the format of ["hostId1","hostId2"], indicating that the rule takes effect only
-               on specified nodes. If no nodes are specified, the rule applies to all nodes of the project.
-        :param pulumi.Input[_builtins.bool] is_default_rule: Specifies whether the rule is the default one. The default value is false.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] log_file_suffixes: Specifies the log file suffix. This is a list of strings.
-               The values can be: **log**, **trace**, and **out**.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceDiscoveryRuleLogPathRuleArgs', 'ServiceDiscoveryRuleLogPathRuleArgsDict']]]] log_path_rules: Specifies the log path configuration rule. If cmdLineHash is a fixed string,
-               logs in the specified log path or log file are collected. Otherwise, only the files whose names end with
-               .log or .trace are collected. If the value of `name_type` is **cmdLineHash**, args is in the format of ["00001"] and
-               value is in the format of ["/xxx/xx.log"], indicating that the log path is /xxx/xx.log when the startup command is 00001.
-        :param pulumi.Input[_builtins.str] name: Specifies the rule name, which contains 4 to 63 characters. It must start
-               with a lowercase letter but cannot end with a hyphen (-). Only digits, lowercase letters, and hyphens are allowed.
-        :param pulumi.Input[Union['ServiceDiscoveryRuleNameRulesArgs', 'ServiceDiscoveryRuleNameRulesArgsDict']] name_rules: Specifies the naming rules for discovered services and applications.
-               The object structure is documented below.
-        :param pulumi.Input[_builtins.int] priority: Specifies the rule priority. Value range: 1 to 9999. The default value is 9999.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the service discovery rule resource. If omitted,
-               the provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] service_type: Specifies the service type, which is used only for rule classification and UI display.
-               You can enter any field. For example, enter Java or Python by technology stack, or enter collector or database by function.
         """
         ...
     @overload
@@ -598,54 +373,7 @@ class ServiceDiscoveryRule(pulumi.CustomResource):
                  args: ServiceDiscoveryRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages an AOM service discovery rule resource within SberCloud.
-
-        ## Example Usage
-
-        ### Basic example
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        discovery_rule = sbercloud.aom.ServiceDiscoveryRule("discovery_rule",
-            name="test-rule",
-            priority=9999,
-            detect_log_enabled=True,
-            discovery_rule_enabled=True,
-            is_default_rule=False,
-            log_file_suffixes=["log"],
-            service_type="Java",
-            discovery_rules=[{
-                "check_contents": ["java"],
-                "check_mode": "contain",
-                "check_type": "cmdLine",
-            }],
-            log_path_rules=[{
-                "name_type": "cmdLineHash",
-                "args": ["java"],
-                "values": ["/tmp/log"],
-            }],
-            name_rules={
-                "service_name_rules": [{
-                    "name_type": "str",
-                    "args": ["java"],
-                }],
-                "application_name_rules": [{
-                    "name_type": "str",
-                    "args": ["java"],
-                }],
-            })
-        ```
-
-        ## Import
-
-        AOM service discovery rules can be imported using the `name`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Aom/serviceDiscoveryRule:ServiceDiscoveryRule alarm_rule rule_name
-        ```
-
+        Create a ServiceDiscoveryRule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ServiceDiscoveryRuleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -735,33 +463,6 @@ class ServiceDiscoveryRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] detect_log_enabled: Specifies whether to enable log collection. The default value is true.
-        :param pulumi.Input[_builtins.bool] discovery_rule_enabled: Specifies whether the rule is enabled. The default value is true.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceDiscoveryRuleDiscoveryRuleArgs', 'ServiceDiscoveryRuleDiscoveryRuleArgsDict']]]] discovery_rules: Specifies the discovery rule. If the array contains multiple conditions, only the
-               processes that meet all the conditions will be matched. If the value of `check_type` is **cmdLine**, set the value of
-               `check_mode` to **contain**. `check_content` is in the format of ["xxx"], indicating that the process must contain
-               the xxx parameter. If the value of `check_type` is **env**, set the value of `check_mode` to **contain**.
-               `check_content` is in the format of ["k1","v1"], indicating that the process must contain the environment variable
-               whose name is k1 and value is v1. If the value of `check_type` is **scope**, set the value of `check_mode`
-               to **equals**. `check_content` is in the format of ["hostId1","hostId2"], indicating that the rule takes effect only
-               on specified nodes. If no nodes are specified, the rule applies to all nodes of the project.
-        :param pulumi.Input[_builtins.bool] is_default_rule: Specifies whether the rule is the default one. The default value is false.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] log_file_suffixes: Specifies the log file suffix. This is a list of strings.
-               The values can be: **log**, **trace**, and **out**.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceDiscoveryRuleLogPathRuleArgs', 'ServiceDiscoveryRuleLogPathRuleArgsDict']]]] log_path_rules: Specifies the log path configuration rule. If cmdLineHash is a fixed string,
-               logs in the specified log path or log file are collected. Otherwise, only the files whose names end with
-               .log or .trace are collected. If the value of `name_type` is **cmdLineHash**, args is in the format of ["00001"] and
-               value is in the format of ["/xxx/xx.log"], indicating that the log path is /xxx/xx.log when the startup command is 00001.
-        :param pulumi.Input[_builtins.str] name: Specifies the rule name, which contains 4 to 63 characters. It must start
-               with a lowercase letter but cannot end with a hyphen (-). Only digits, lowercase letters, and hyphens are allowed.
-        :param pulumi.Input[Union['ServiceDiscoveryRuleNameRulesArgs', 'ServiceDiscoveryRuleNameRulesArgsDict']] name_rules: Specifies the naming rules for discovered services and applications.
-               The object structure is documented below.
-        :param pulumi.Input[_builtins.int] priority: Specifies the rule priority. Value range: 1 to 9999. The default value is 9999.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the service discovery rule resource. If omitted,
-               the provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] rule_id: The rule ID in uuid format.
-        :param pulumi.Input[_builtins.str] service_type: Specifies the service type, which is used only for rule classification and UI display.
-               You can enter any field. For example, enter Java or Python by technology stack, or enter collector or database by function.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -796,111 +497,60 @@ class ServiceDiscoveryRule(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="detectLogEnabled")
     def detect_log_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether to enable log collection. The default value is true.
-        """
         return pulumi.get(self, "detect_log_enabled")
 
     @_builtins.property
     @pulumi.getter(name="discoveryRuleEnabled")
     def discovery_rule_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether the rule is enabled. The default value is true.
-        """
         return pulumi.get(self, "discovery_rule_enabled")
 
     @_builtins.property
     @pulumi.getter(name="discoveryRules")
     def discovery_rules(self) -> pulumi.Output[Sequence['outputs.ServiceDiscoveryRuleDiscoveryRule']]:
-        """
-        Specifies the discovery rule. If the array contains multiple conditions, only the
-        processes that meet all the conditions will be matched. If the value of `check_type` is **cmdLine**, set the value of
-        `check_mode` to **contain**. `check_content` is in the format of ["xxx"], indicating that the process must contain
-        the xxx parameter. If the value of `check_type` is **env**, set the value of `check_mode` to **contain**.
-        `check_content` is in the format of ["k1","v1"], indicating that the process must contain the environment variable
-        whose name is k1 and value is v1. If the value of `check_type` is **scope**, set the value of `check_mode`
-        to **equals**. `check_content` is in the format of ["hostId1","hostId2"], indicating that the rule takes effect only
-        on specified nodes. If no nodes are specified, the rule applies to all nodes of the project.
-        """
         return pulumi.get(self, "discovery_rules")
 
     @_builtins.property
     @pulumi.getter(name="isDefaultRule")
     def is_default_rule(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether the rule is the default one. The default value is false.
-        """
         return pulumi.get(self, "is_default_rule")
 
     @_builtins.property
     @pulumi.getter(name="logFileSuffixes")
     def log_file_suffixes(self) -> pulumi.Output[Sequence[_builtins.str]]:
-        """
-        Specifies the log file suffix. This is a list of strings.
-        The values can be: **log**, **trace**, and **out**.
-        """
         return pulumi.get(self, "log_file_suffixes")
 
     @_builtins.property
     @pulumi.getter(name="logPathRules")
     def log_path_rules(self) -> pulumi.Output[Optional[Sequence['outputs.ServiceDiscoveryRuleLogPathRule']]]:
-        """
-        Specifies the log path configuration rule. If cmdLineHash is a fixed string,
-        logs in the specified log path or log file are collected. Otherwise, only the files whose names end with
-        .log or .trace are collected. If the value of `name_type` is **cmdLineHash**, args is in the format of ["00001"] and
-        value is in the format of ["/xxx/xx.log"], indicating that the log path is /xxx/xx.log when the startup command is 00001.
-        """
         return pulumi.get(self, "log_path_rules")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the rule name, which contains 4 to 63 characters. It must start
-        with a lowercase letter but cannot end with a hyphen (-). Only digits, lowercase letters, and hyphens are allowed.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="nameRules")
     def name_rules(self) -> pulumi.Output['outputs.ServiceDiscoveryRuleNameRules']:
-        """
-        Specifies the naming rules for discovered services and applications.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "name_rules")
 
     @_builtins.property
     @pulumi.getter
     def priority(self) -> pulumi.Output[Optional[_builtins.int]]:
-        """
-        Specifies the rule priority. Value range: 1 to 9999. The default value is 9999.
-        """
         return pulumi.get(self, "priority")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the service discovery rule resource. If omitted,
-        the provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="ruleId")
     def rule_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The rule ID in uuid format.
-        """
         return pulumi.get(self, "rule_id")
 
     @_builtins.property
     @pulumi.getter(name="serviceType")
     def service_type(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the service type, which is used only for rule classification and UI display.
-        You can enter any field. For example, enter Java or Python by technology stack, or enter collector or database by function.
-        """
         return pulumi.get(self, "service_type")
 

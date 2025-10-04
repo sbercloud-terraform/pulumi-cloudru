@@ -12,129 +12,35 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages an EIP resource within SberCloud.
-//
-// ## Example Usage
-//
-// ### EIP with Dedicated Bandwidth
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/vpc"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vpc.NewEip(ctx, "eip_1", &vpc.EipArgs{
-//				Publicip: &vpc.EipPublicipArgs{
-//					Type: pulumi.String("5_bgp"),
-//				},
-//				Bandwidth: &vpc.EipBandwidthArgs{
-//					ShareType:  pulumi.String("PER"),
-//					Name:       pulumi.String("test"),
-//					Size:       pulumi.Int(10),
-//					ChargeMode: pulumi.String("traffic"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### EIP with Shared Bandwidth
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/vpc"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			bandwidth1, err := vpc.NewBandwidth(ctx, "bandwidth_1", &vpc.BandwidthArgs{
-//				Name: pulumi.String("bandwidth_1"),
-//				Size: pulumi.Int(5),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = vpc.NewEip(ctx, "eip_1", &vpc.EipArgs{
-//				Publicip: &vpc.EipPublicipArgs{
-//					Type: pulumi.String("5_bgp"),
-//				},
-//				Bandwidth: &vpc.EipBandwidthArgs{
-//					ShareType: pulumi.String("WHOLE"),
-//					Id:        bandwidth1.ID(),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// EIPs can be imported using the `id`, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Vpc/eip:Eip eip_1 2c7f39f3-702b-48d1-940c-b50384177ee1
-// ```
 type Eip struct {
 	pulumi.CustomResourceState
 
-	// The IP address of the eip.
 	Address       pulumi.StringOutput `pulumi:"address"`
 	AssociateId   pulumi.StringOutput `pulumi:"associateId"`
 	AssociateType pulumi.StringOutput `pulumi:"associateType"`
 	// Deprecated: Deprecated
-	AutoPay pulumi.StringPtrOutput `pulumi:"autoPay"`
-	// Specifies whether auto renew is enabled. Valid values are "true" and "
-	// false". Changing this creates a new resource.
+	AutoPay   pulumi.StringPtrOutput `pulumi:"autoPay"`
 	AutoRenew pulumi.StringPtrOutput `pulumi:"autoRenew"`
-	// The bandwidth object.
+	// The bandwidth configuration.
 	Bandwidth    EipBandwidthOutput  `pulumi:"bandwidth"`
 	ChargingMode pulumi.StringOutput `pulumi:"chargingMode"`
 	CreatedAt    pulumi.StringOutput `pulumi:"createdAt"`
-	// The enterprise project id of the elastic IP. Changing this
-	// creates a new eip.
+	// The enterprise project ID to which the EIP belongs.
 	EnterpriseProjectId pulumi.StringOutput `pulumi:"enterpriseProjectId"`
 	InstanceId          pulumi.StringOutput `pulumi:"instanceId"`
 	InstanceType        pulumi.StringOutput `pulumi:"instanceType"`
-	// The IPv6 address of the EIP.
-	Ipv6Address pulumi.StringOutput `pulumi:"ipv6Address"`
+	Ipv6Address         pulumi.StringOutput `pulumi:"ipv6Address"`
 	// The name of the EIP.
 	Name       pulumi.StringOutput    `pulumi:"name"`
 	Period     pulumi.IntPtrOutput    `pulumi:"period"`
 	PeriodUnit pulumi.StringPtrOutput `pulumi:"periodUnit"`
-	// The port ID which the EIP associated with.
-	PortId pulumi.StringOutput `pulumi:"portId"`
-	// The private IP address bound to the EIP.
-	PrivateIp pulumi.StringOutput `pulumi:"privateIp"`
-	// The elastic IP address object.
+	PortId     pulumi.StringOutput    `pulumi:"portId"`
+	PrivateIp  pulumi.StringOutput    `pulumi:"privateIp"`
+	// The EIP configuration.
 	Publicip EipPublicipOutput `pulumi:"publicip"`
-	// The region in which to create the eip resource. If omitted, the provider-level
-	// region will be used. Changing this creates a new eip resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// The status of eip.
-	Status pulumi.StringOutput `pulumi:"status"`
-	// Specifies the key/value pairs to associate with the elastic IP.
+	// The region in which to create the EIP resource.
+	Region    pulumi.StringOutput    `pulumi:"region"`
+	Status    pulumi.StringOutput    `pulumi:"status"`
 	Tags      pulumi.StringMapOutput `pulumi:"tags"`
 	UpdatedAt pulumi.StringOutput    `pulumi:"updatedAt"`
 }
@@ -175,83 +81,63 @@ func GetEip(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Eip resources.
 type eipState struct {
-	// The IP address of the eip.
 	Address       *string `pulumi:"address"`
 	AssociateId   *string `pulumi:"associateId"`
 	AssociateType *string `pulumi:"associateType"`
 	// Deprecated: Deprecated
-	AutoPay *string `pulumi:"autoPay"`
-	// Specifies whether auto renew is enabled. Valid values are "true" and "
-	// false". Changing this creates a new resource.
+	AutoPay   *string `pulumi:"autoPay"`
 	AutoRenew *string `pulumi:"autoRenew"`
-	// The bandwidth object.
+	// The bandwidth configuration.
 	Bandwidth    *EipBandwidth `pulumi:"bandwidth"`
 	ChargingMode *string       `pulumi:"chargingMode"`
 	CreatedAt    *string       `pulumi:"createdAt"`
-	// The enterprise project id of the elastic IP. Changing this
-	// creates a new eip.
+	// The enterprise project ID to which the EIP belongs.
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
 	InstanceId          *string `pulumi:"instanceId"`
 	InstanceType        *string `pulumi:"instanceType"`
-	// The IPv6 address of the EIP.
-	Ipv6Address *string `pulumi:"ipv6Address"`
+	Ipv6Address         *string `pulumi:"ipv6Address"`
 	// The name of the EIP.
 	Name       *string `pulumi:"name"`
 	Period     *int    `pulumi:"period"`
 	PeriodUnit *string `pulumi:"periodUnit"`
-	// The port ID which the EIP associated with.
-	PortId *string `pulumi:"portId"`
-	// The private IP address bound to the EIP.
-	PrivateIp *string `pulumi:"privateIp"`
-	// The elastic IP address object.
+	PortId     *string `pulumi:"portId"`
+	PrivateIp  *string `pulumi:"privateIp"`
+	// The EIP configuration.
 	Publicip *EipPublicip `pulumi:"publicip"`
-	// The region in which to create the eip resource. If omitted, the provider-level
-	// region will be used. Changing this creates a new eip resource.
-	Region *string `pulumi:"region"`
-	// The status of eip.
-	Status *string `pulumi:"status"`
-	// Specifies the key/value pairs to associate with the elastic IP.
+	// The region in which to create the EIP resource.
+	Region    *string           `pulumi:"region"`
+	Status    *string           `pulumi:"status"`
 	Tags      map[string]string `pulumi:"tags"`
 	UpdatedAt *string           `pulumi:"updatedAt"`
 }
 
 type EipState struct {
-	// The IP address of the eip.
 	Address       pulumi.StringPtrInput
 	AssociateId   pulumi.StringPtrInput
 	AssociateType pulumi.StringPtrInput
 	// Deprecated: Deprecated
-	AutoPay pulumi.StringPtrInput
-	// Specifies whether auto renew is enabled. Valid values are "true" and "
-	// false". Changing this creates a new resource.
+	AutoPay   pulumi.StringPtrInput
 	AutoRenew pulumi.StringPtrInput
-	// The bandwidth object.
+	// The bandwidth configuration.
 	Bandwidth    EipBandwidthPtrInput
 	ChargingMode pulumi.StringPtrInput
 	CreatedAt    pulumi.StringPtrInput
-	// The enterprise project id of the elastic IP. Changing this
-	// creates a new eip.
+	// The enterprise project ID to which the EIP belongs.
 	EnterpriseProjectId pulumi.StringPtrInput
 	InstanceId          pulumi.StringPtrInput
 	InstanceType        pulumi.StringPtrInput
-	// The IPv6 address of the EIP.
-	Ipv6Address pulumi.StringPtrInput
+	Ipv6Address         pulumi.StringPtrInput
 	// The name of the EIP.
 	Name       pulumi.StringPtrInput
 	Period     pulumi.IntPtrInput
 	PeriodUnit pulumi.StringPtrInput
-	// The port ID which the EIP associated with.
-	PortId pulumi.StringPtrInput
-	// The private IP address bound to the EIP.
-	PrivateIp pulumi.StringPtrInput
-	// The elastic IP address object.
+	PortId     pulumi.StringPtrInput
+	PrivateIp  pulumi.StringPtrInput
+	// The EIP configuration.
 	Publicip EipPublicipPtrInput
-	// The region in which to create the eip resource. If omitted, the provider-level
-	// region will be used. Changing this creates a new eip resource.
-	Region pulumi.StringPtrInput
-	// The status of eip.
-	Status pulumi.StringPtrInput
-	// Specifies the key/value pairs to associate with the elastic IP.
+	// The region in which to create the EIP resource.
+	Region    pulumi.StringPtrInput
+	Status    pulumi.StringPtrInput
 	Tags      pulumi.StringMapInput
 	UpdatedAt pulumi.StringPtrInput
 }
@@ -262,53 +148,43 @@ func (EipState) ElementType() reflect.Type {
 
 type eipArgs struct {
 	// Deprecated: Deprecated
-	AutoPay *string `pulumi:"autoPay"`
-	// Specifies whether auto renew is enabled. Valid values are "true" and "
-	// false". Changing this creates a new resource.
+	AutoPay   *string `pulumi:"autoPay"`
 	AutoRenew *string `pulumi:"autoRenew"`
-	// The bandwidth object.
+	// The bandwidth configuration.
 	Bandwidth    EipBandwidth `pulumi:"bandwidth"`
 	ChargingMode *string      `pulumi:"chargingMode"`
-	// The enterprise project id of the elastic IP. Changing this
-	// creates a new eip.
+	// The enterprise project ID to which the EIP belongs.
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
 	// The name of the EIP.
 	Name       *string `pulumi:"name"`
 	Period     *int    `pulumi:"period"`
 	PeriodUnit *string `pulumi:"periodUnit"`
-	// The elastic IP address object.
+	// The EIP configuration.
 	Publicip EipPublicip `pulumi:"publicip"`
-	// The region in which to create the eip resource. If omitted, the provider-level
-	// region will be used. Changing this creates a new eip resource.
-	Region *string `pulumi:"region"`
-	// Specifies the key/value pairs to associate with the elastic IP.
-	Tags map[string]string `pulumi:"tags"`
+	// The region in which to create the EIP resource.
+	Region *string           `pulumi:"region"`
+	Tags   map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Eip resource.
 type EipArgs struct {
 	// Deprecated: Deprecated
-	AutoPay pulumi.StringPtrInput
-	// Specifies whether auto renew is enabled. Valid values are "true" and "
-	// false". Changing this creates a new resource.
+	AutoPay   pulumi.StringPtrInput
 	AutoRenew pulumi.StringPtrInput
-	// The bandwidth object.
+	// The bandwidth configuration.
 	Bandwidth    EipBandwidthInput
 	ChargingMode pulumi.StringPtrInput
-	// The enterprise project id of the elastic IP. Changing this
-	// creates a new eip.
+	// The enterprise project ID to which the EIP belongs.
 	EnterpriseProjectId pulumi.StringPtrInput
 	// The name of the EIP.
 	Name       pulumi.StringPtrInput
 	Period     pulumi.IntPtrInput
 	PeriodUnit pulumi.StringPtrInput
-	// The elastic IP address object.
+	// The EIP configuration.
 	Publicip EipPublicipInput
-	// The region in which to create the eip resource. If omitted, the provider-level
-	// region will be used. Changing this creates a new eip resource.
+	// The region in which to create the EIP resource.
 	Region pulumi.StringPtrInput
-	// Specifies the key/value pairs to associate with the elastic IP.
-	Tags pulumi.StringMapInput
+	Tags   pulumi.StringMapInput
 }
 
 func (EipArgs) ElementType() reflect.Type {
@@ -398,7 +274,6 @@ func (o EipOutput) ToEipOutputWithContext(ctx context.Context) EipOutput {
 	return o
 }
 
-// The IP address of the eip.
 func (o EipOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
 }
@@ -416,13 +291,11 @@ func (o EipOutput) AutoPay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Eip) pulumi.StringPtrOutput { return v.AutoPay }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether auto renew is enabled. Valid values are "true" and "
-// false". Changing this creates a new resource.
 func (o EipOutput) AutoRenew() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Eip) pulumi.StringPtrOutput { return v.AutoRenew }).(pulumi.StringPtrOutput)
 }
 
-// The bandwidth object.
+// The bandwidth configuration.
 func (o EipOutput) Bandwidth() EipBandwidthOutput {
 	return o.ApplyT(func(v *Eip) EipBandwidthOutput { return v.Bandwidth }).(EipBandwidthOutput)
 }
@@ -435,8 +308,7 @@ func (o EipOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// The enterprise project id of the elastic IP. Changing this
-// creates a new eip.
+// The enterprise project ID to which the EIP belongs.
 func (o EipOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
@@ -449,7 +321,6 @@ func (o EipOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
 }
 
-// The IPv6 address of the EIP.
 func (o EipOutput) Ipv6Address() pulumi.StringOutput {
 	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.Ipv6Address }).(pulumi.StringOutput)
 }
@@ -467,33 +338,28 @@ func (o EipOutput) PeriodUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Eip) pulumi.StringPtrOutput { return v.PeriodUnit }).(pulumi.StringPtrOutput)
 }
 
-// The port ID which the EIP associated with.
 func (o EipOutput) PortId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.PortId }).(pulumi.StringOutput)
 }
 
-// The private IP address bound to the EIP.
 func (o EipOutput) PrivateIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.PrivateIp }).(pulumi.StringOutput)
 }
 
-// The elastic IP address object.
+// The EIP configuration.
 func (o EipOutput) Publicip() EipPublicipOutput {
 	return o.ApplyT(func(v *Eip) EipPublicipOutput { return v.Publicip }).(EipPublicipOutput)
 }
 
-// The region in which to create the eip resource. If omitted, the provider-level
-// region will be used. Changing this creates a new eip resource.
+// The region in which to create the EIP resource.
 func (o EipOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// The status of eip.
 func (o EipOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Specifies the key/value pairs to associate with the elastic IP.
 func (o EipOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Eip) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }

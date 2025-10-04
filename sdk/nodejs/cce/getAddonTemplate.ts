@@ -6,26 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get available SberCloud CCE add-on template.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const clusterId = config.requireObject<any>("clusterId");
- * const addonName = config.requireObject<any>("addonName");
- * const addonVersion = config.requireObject<any>("addonVersion");
- * const test = sbercloud.Cce.getAddonTemplate({
- *     clusterId: clusterId,
- *     name: addonName,
- *     version: addonVersion,
- * });
- * ```
- */
 export function getAddonTemplate(args: GetAddonTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetAddonTemplateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:Cce/getAddonTemplate:getAddonTemplate", {
@@ -40,22 +20,9 @@ export function getAddonTemplate(args: GetAddonTemplateArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getAddonTemplate.
  */
 export interface GetAddonTemplateArgs {
-    /**
-     * Specifies the ID of container cluster.
-     */
     clusterId: string;
-    /**
-     * Specifies the add-on name.
-     */
     name: string;
-    /**
-     * Specifies the region in which to obtain the CCE add-ons. If omitted, the provider-level
-     * region will be used.
-     */
     region?: string;
-    /**
-     * Specifies the add-on version.
-     */
     version: string;
 }
 
@@ -64,9 +31,6 @@ export interface GetAddonTemplateArgs {
  */
 export interface GetAddonTemplateResult {
     readonly clusterId: string;
-    /**
-     * The description of the add-on.
-     */
     readonly description: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -74,37 +38,11 @@ export interface GetAddonTemplateResult {
     readonly id: string;
     readonly name: string;
     readonly region: string;
-    /**
-     * The detail configuration of the add-on template.
-     */
     readonly spec: string;
-    /**
-     * Whether the add-on template is a stable version.
-     */
     readonly stable: boolean;
     readonly supportVersions: outputs.Cce.GetAddonTemplateSupportVersion[];
     readonly version: string;
 }
-/**
- * Use this data source to get available SberCloud CCE add-on template.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const clusterId = config.requireObject<any>("clusterId");
- * const addonName = config.requireObject<any>("addonName");
- * const addonVersion = config.requireObject<any>("addonVersion");
- * const test = sbercloud.Cce.getAddonTemplate({
- *     clusterId: clusterId,
- *     name: addonName,
- *     version: addonVersion,
- * });
- * ```
- */
 export function getAddonTemplateOutput(args: GetAddonTemplateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAddonTemplateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:Cce/getAddonTemplate:getAddonTemplate", {
@@ -119,21 +57,8 @@ export function getAddonTemplateOutput(args: GetAddonTemplateOutputArgs, opts?: 
  * A collection of arguments for invoking getAddonTemplate.
  */
 export interface GetAddonTemplateOutputArgs {
-    /**
-     * Specifies the ID of container cluster.
-     */
     clusterId: pulumi.Input<string>;
-    /**
-     * Specifies the add-on name.
-     */
     name: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to obtain the CCE add-ons. If omitted, the provider-level
-     * region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the add-on version.
-     */
     version: pulumi.Input<string>;
 }

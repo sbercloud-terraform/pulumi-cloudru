@@ -46,9 +46,6 @@ class GetRegionsResult:
     @_builtins.property
     @pulumi.getter
     def data(self) -> _builtins.str:
-        """
-        The region list.
-        """
         return pulumi.get(self, "data")
 
     @_builtins.property
@@ -93,24 +90,7 @@ def get_regions(enterprise_project_id: Optional[_builtins.str] = None,
                 region: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionsResult:
     """
-    Use this data source to get the list of CFW regions.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    fw_instance_id = config.require_object("fwInstanceId")
-    test = sbercloud.Cfw.get_regions(fw_instance_id=fw_instance_id)
-    ```
-
-
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID.
-    :param _builtins.str fw_instance_id: Specifies the firewall ID.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['enterpriseProjectId'] = enterprise_project_id
@@ -130,24 +110,7 @@ def get_regions_output(enterprise_project_id: Optional[pulumi.Input[Optional[_bu
                        region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionsResult]:
     """
-    Use this data source to get the list of CFW regions.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    fw_instance_id = config.require_object("fwInstanceId")
-    test = sbercloud.Cfw.get_regions(fw_instance_id=fw_instance_id)
-    ```
-
-
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID.
-    :param _builtins.str fw_instance_id: Specifies the firewall ID.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['enterpriseProjectId'] = enterprise_project_id

@@ -12,46 +12,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a RDS manual backup resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/rds"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			backupName := cfg.RequireObject("backupName")
-//			_, err := rds.NewBackup(ctx, "test", &rds.BackupArgs{
-//				InstanceId: pulumi.Any(instanceId),
-//				Name:       pulumi.Any(backupName),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The rds manual backup can be imported using the instance ID and the backup ID separated by a slash, e.g.:
-//
-// ```sh
-// $ pulumi import sbercloud:Rds/backup:Backup test 1ce123456a00f2591fabc00385ff1235/0ce123456a00f2591fabc00385ff1234
-// ```
 type Backup struct {
 	pulumi.CustomResourceState
 
@@ -59,40 +19,20 @@ type Backup struct {
 	AssociatedWithDdm pulumi.BoolOutput `pulumi:"associatedWithDdm"`
 	// Backup start time in the "yyyy-mm-ddThh:mm:ssZ" format.
 	BeginTime pulumi.StringOutput `pulumi:"beginTime"`
-	// List of self-built Microsoft SQL Server databases that are partially
-	// backed up.
-	// (Only Microsoft SQL Server supports partial backups.).
-	//
-	// Changing this parameter will create a new resource.
-	// The BackupDatabase structure is documented below.
-	//
-	// <a name="Backup_BackupDatabase"></a>
-	// The `BackupDatabase` block supports:
+	// List of self-built Microsoft SQL Server databases that are partially backed up.
 	Databases BackupDatabaseArrayOutput `pulumi:"databases"`
-	// The description about the backup.\
-	// It contains a maximum of 256 characters and cannot contain the following special characters: >!<"&'=.
-	//
-	// Changing this parameter will create a new resource.
+	// The description about the backup.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Backup end time in the "yyyy-mm-ddThh:mm:ssZ" format.
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
-	// Instance ID. This resource works only with Postgre SQL databases.
-	//
-	// Changing this parameter will create a new resource.
+	// Instance ID.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Database to be backed up for Microsoft SQL Server.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// Backup name.
+	Name   pulumi.StringOutput `pulumi:"name"`
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Backup size in KB.
 	Size pulumi.IntOutput `pulumi:"size"`
-	// Backup status.\
-	// The options are as follows:
-	// + **BUILDING**: Backup in progress.
-	// + **COMPLETED**: Backup completed.
-	// + **FAILED**: Backup failed.
-	// + **DELETING**: Backup being deleted.
+	// Backup status.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -133,40 +73,20 @@ type backupState struct {
 	AssociatedWithDdm *bool `pulumi:"associatedWithDdm"`
 	// Backup start time in the "yyyy-mm-ddThh:mm:ssZ" format.
 	BeginTime *string `pulumi:"beginTime"`
-	// List of self-built Microsoft SQL Server databases that are partially
-	// backed up.
-	// (Only Microsoft SQL Server supports partial backups.).
-	//
-	// Changing this parameter will create a new resource.
-	// The BackupDatabase structure is documented below.
-	//
-	// <a name="Backup_BackupDatabase"></a>
-	// The `BackupDatabase` block supports:
+	// List of self-built Microsoft SQL Server databases that are partially backed up.
 	Databases []BackupDatabase `pulumi:"databases"`
-	// The description about the backup.\
-	// It contains a maximum of 256 characters and cannot contain the following special characters: >!<"&'=.
-	//
-	// Changing this parameter will create a new resource.
+	// The description about the backup.
 	Description *string `pulumi:"description"`
 	// Backup end time in the "yyyy-mm-ddThh:mm:ssZ" format.
 	EndTime *string `pulumi:"endTime"`
-	// Instance ID. This resource works only with Postgre SQL databases.
-	//
-	// Changing this parameter will create a new resource.
+	// Instance ID.
 	InstanceId *string `pulumi:"instanceId"`
-	// Database to be backed up for Microsoft SQL Server.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// Backup name.
+	Name   *string `pulumi:"name"`
 	Region *string `pulumi:"region"`
 	// Backup size in KB.
 	Size *int `pulumi:"size"`
-	// Backup status.\
-	// The options are as follows:
-	// + **BUILDING**: Backup in progress.
-	// + **COMPLETED**: Backup completed.
-	// + **FAILED**: Backup failed.
-	// + **DELETING**: Backup being deleted.
+	// Backup status.
 	Status *string `pulumi:"status"`
 }
 
@@ -175,40 +95,20 @@ type BackupState struct {
 	AssociatedWithDdm pulumi.BoolPtrInput
 	// Backup start time in the "yyyy-mm-ddThh:mm:ssZ" format.
 	BeginTime pulumi.StringPtrInput
-	// List of self-built Microsoft SQL Server databases that are partially
-	// backed up.
-	// (Only Microsoft SQL Server supports partial backups.).
-	//
-	// Changing this parameter will create a new resource.
-	// The BackupDatabase structure is documented below.
-	//
-	// <a name="Backup_BackupDatabase"></a>
-	// The `BackupDatabase` block supports:
+	// List of self-built Microsoft SQL Server databases that are partially backed up.
 	Databases BackupDatabaseArrayInput
-	// The description about the backup.\
-	// It contains a maximum of 256 characters and cannot contain the following special characters: >!<"&'=.
-	//
-	// Changing this parameter will create a new resource.
+	// The description about the backup.
 	Description pulumi.StringPtrInput
 	// Backup end time in the "yyyy-mm-ddThh:mm:ssZ" format.
 	EndTime pulumi.StringPtrInput
-	// Instance ID. This resource works only with Postgre SQL databases.
-	//
-	// Changing this parameter will create a new resource.
+	// Instance ID.
 	InstanceId pulumi.StringPtrInput
-	// Database to be backed up for Microsoft SQL Server.
-	Name pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// Backup name.
+	Name   pulumi.StringPtrInput
 	Region pulumi.StringPtrInput
 	// Backup size in KB.
 	Size pulumi.IntPtrInput
-	// Backup status.\
-	// The options are as follows:
-	// + **BUILDING**: Backup in progress.
-	// + **COMPLETED**: Backup completed.
-	// + **FAILED**: Backup failed.
-	// + **DELETING**: Backup being deleted.
+	// Backup status.
 	Status pulumi.StringPtrInput
 }
 
@@ -217,57 +117,27 @@ func (BackupState) ElementType() reflect.Type {
 }
 
 type backupArgs struct {
-	// List of self-built Microsoft SQL Server databases that are partially
-	// backed up.
-	// (Only Microsoft SQL Server supports partial backups.).
-	//
-	// Changing this parameter will create a new resource.
-	// The BackupDatabase structure is documented below.
-	//
-	// <a name="Backup_BackupDatabase"></a>
-	// The `BackupDatabase` block supports:
+	// List of self-built Microsoft SQL Server databases that are partially backed up.
 	Databases []BackupDatabase `pulumi:"databases"`
-	// The description about the backup.\
-	// It contains a maximum of 256 characters and cannot contain the following special characters: >!<"&'=.
-	//
-	// Changing this parameter will create a new resource.
+	// The description about the backup.
 	Description *string `pulumi:"description"`
-	// Instance ID. This resource works only with Postgre SQL databases.
-	//
-	// Changing this parameter will create a new resource.
+	// Instance ID.
 	InstanceId string `pulumi:"instanceId"`
-	// Database to be backed up for Microsoft SQL Server.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// Backup name.
+	Name   *string `pulumi:"name"`
 	Region *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a Backup resource.
 type BackupArgs struct {
-	// List of self-built Microsoft SQL Server databases that are partially
-	// backed up.
-	// (Only Microsoft SQL Server supports partial backups.).
-	//
-	// Changing this parameter will create a new resource.
-	// The BackupDatabase structure is documented below.
-	//
-	// <a name="Backup_BackupDatabase"></a>
-	// The `BackupDatabase` block supports:
+	// List of self-built Microsoft SQL Server databases that are partially backed up.
 	Databases BackupDatabaseArrayInput
-	// The description about the backup.\
-	// It contains a maximum of 256 characters and cannot contain the following special characters: >!<"&'=.
-	//
-	// Changing this parameter will create a new resource.
+	// The description about the backup.
 	Description pulumi.StringPtrInput
-	// Instance ID. This resource works only with Postgre SQL databases.
-	//
-	// Changing this parameter will create a new resource.
+	// Instance ID.
 	InstanceId pulumi.StringInput
-	// Database to be backed up for Microsoft SQL Server.
-	Name pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// Backup name.
+	Name   pulumi.StringPtrInput
 	Region pulumi.StringPtrInput
 }
 
@@ -368,23 +238,12 @@ func (o BackupOutput) BeginTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.BeginTime }).(pulumi.StringOutput)
 }
 
-// List of self-built Microsoft SQL Server databases that are partially
-// backed up.
-// (Only Microsoft SQL Server supports partial backups.).
-//
-// Changing this parameter will create a new resource.
-// The BackupDatabase structure is documented below.
-//
-// <a name="Backup_BackupDatabase"></a>
-// The `BackupDatabase` block supports:
+// List of self-built Microsoft SQL Server databases that are partially backed up.
 func (o BackupOutput) Databases() BackupDatabaseArrayOutput {
 	return o.ApplyT(func(v *Backup) BackupDatabaseArrayOutput { return v.Databases }).(BackupDatabaseArrayOutput)
 }
 
-// The description about the backup.\
-// It contains a maximum of 256 characters and cannot contain the following special characters: >!<"&'=.
-//
-// Changing this parameter will create a new resource.
+// The description about the backup.
 func (o BackupOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
@@ -394,20 +253,16 @@ func (o BackupOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
 }
 
-// Instance ID. This resource works only with Postgre SQL databases.
-//
-// Changing this parameter will create a new resource.
+// Instance ID.
 func (o BackupOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Database to be backed up for Microsoft SQL Server.
+// Backup name.
 func (o BackupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
 func (o BackupOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
@@ -417,12 +272,7 @@ func (o BackupOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v *Backup) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
 }
 
-// Backup status.\
-// The options are as follows:
-// + **BUILDING**: Backup in progress.
-// + **COMPLETED**: Backup completed.
-// + **FAILED**: Backup failed.
-// + **DELETING**: Backup being deleted.
+// Backup status.
 func (o BackupOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

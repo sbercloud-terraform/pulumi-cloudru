@@ -35,33 +35,6 @@ class MonitorArgs:
                  url_path: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Monitor resource.
-        :param pulumi.Input[_builtins.int] delay: Specifies the maximum time between health checks in the unit of second. The value ranges
-               from 1 to 50.
-        :param pulumi.Input[_builtins.int] max_retries: Specifies the maximum number of consecutive health checks after which the backend
-               servers are declared *healthy*. The value ranges from 1 to 10.
-               
-               > Backend servers can be declared *unhealthy* after **three** consecutive health checks that detect these backend
-               servers are unhealthy, regardless of the value set for `max_retries`. The health check time window is determined
-               by [Health Check Time Window](https://support.sbercloud.com/intl/en-us/usermanual-elb/elb_ug_hc_0001.html#section4).
-        :param pulumi.Input[_builtins.str] pool_id: Specifies the id of the pool that this monitor will be assigned to. Changing
-               this creates a new monitor.
-        :param pulumi.Input[_builtins.int] timeout: Specifies the health check timeout duration in the unit of second.
-               The value ranges from 1 to 50 and must be less than the `delay` value.
-        :param pulumi.Input[_builtins.str] type: Specifies the monitor protocol.
-               The value can be *TCP*, *UDP_CONNECT*, or *HTTP*.
-               If the listener protocol is UDP, the monitor protocol must be *UDP_CONNECT*. Changing this creates a new monitor.
-        :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the monitor.
-        :param pulumi.Input[_builtins.str] expected_codes: Specifies the expected HTTP status code. Required for HTTP type.
-               You can either specify a single status like "200", or a range like "200-202".
-        :param pulumi.Input[_builtins.str] http_method: Specifies the HTTP request method. Required for HTTP type.
-               The default value is *GET*.
-        :param pulumi.Input[_builtins.str] name: Specifies the health check name. The value contains a maximum of 255 characters.
-        :param pulumi.Input[_builtins.int] port: Specifies the health check port. The port number ranges from 1 to 65535. If not specified,
-               the port of the backend server will be used as the health check port.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the ELB monitor resource. If omitted, the
-               provider-level region will be used. Changing this creates a new monitor.
-        :param pulumi.Input[_builtins.str] url_path: Specifies the HTTP request path for the health check. Required for HTTP type.
-               The value starts with a slash (/) and contains a maximum of 255 characters.
         """
         pulumi.set(__self__, "delay", delay)
         pulumi.set(__self__, "max_retries", max_retries)
@@ -96,10 +69,6 @@ class MonitorArgs:
     @_builtins.property
     @pulumi.getter
     def delay(self) -> pulumi.Input[_builtins.int]:
-        """
-        Specifies the maximum time between health checks in the unit of second. The value ranges
-        from 1 to 50.
-        """
         return pulumi.get(self, "delay")
 
     @delay.setter
@@ -109,14 +78,6 @@ class MonitorArgs:
     @_builtins.property
     @pulumi.getter(name="maxRetries")
     def max_retries(self) -> pulumi.Input[_builtins.int]:
-        """
-        Specifies the maximum number of consecutive health checks after which the backend
-        servers are declared *healthy*. The value ranges from 1 to 10.
-
-        > Backend servers can be declared *unhealthy* after **three** consecutive health checks that detect these backend
-        servers are unhealthy, regardless of the value set for `max_retries`. The health check time window is determined
-        by [Health Check Time Window](https://support.sbercloud.com/intl/en-us/usermanual-elb/elb_ug_hc_0001.html#section4).
-        """
         return pulumi.get(self, "max_retries")
 
     @max_retries.setter
@@ -126,10 +87,6 @@ class MonitorArgs:
     @_builtins.property
     @pulumi.getter(name="poolId")
     def pool_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the id of the pool that this monitor will be assigned to. Changing
-        this creates a new monitor.
-        """
         return pulumi.get(self, "pool_id")
 
     @pool_id.setter
@@ -139,10 +96,6 @@ class MonitorArgs:
     @_builtins.property
     @pulumi.getter
     def timeout(self) -> pulumi.Input[_builtins.int]:
-        """
-        Specifies the health check timeout duration in the unit of second.
-        The value ranges from 1 to 50 and must be less than the `delay` value.
-        """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
@@ -152,11 +105,6 @@ class MonitorArgs:
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the monitor protocol.
-        The value can be *TCP*, *UDP_CONNECT*, or *HTTP*.
-        If the listener protocol is UDP, the monitor protocol must be *UDP_CONNECT*. Changing this creates a new monitor.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -167,9 +115,6 @@ class MonitorArgs:
     @pulumi.getter(name="adminStateUp")
     @_utilities.deprecated("""tenant_id is deprecated""")
     def admin_state_up(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        The administrative state of the monitor.
-        """
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
@@ -188,10 +133,6 @@ class MonitorArgs:
     @_builtins.property
     @pulumi.getter(name="expectedCodes")
     def expected_codes(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the expected HTTP status code. Required for HTTP type.
-        You can either specify a single status like "200", or a range like "200-202".
-        """
         return pulumi.get(self, "expected_codes")
 
     @expected_codes.setter
@@ -201,10 +142,6 @@ class MonitorArgs:
     @_builtins.property
     @pulumi.getter(name="httpMethod")
     def http_method(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the HTTP request method. Required for HTTP type.
-        The default value is *GET*.
-        """
         return pulumi.get(self, "http_method")
 
     @http_method.setter
@@ -214,9 +151,6 @@ class MonitorArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the health check name. The value contains a maximum of 255 characters.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -226,10 +160,6 @@ class MonitorArgs:
     @_builtins.property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the health check port. The port number ranges from 1 to 65535. If not specified,
-        the port of the backend server will be used as the health check port.
-        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -239,10 +169,6 @@ class MonitorArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the ELB monitor resource. If omitted, the
-        provider-level region will be used. Changing this creates a new monitor.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -262,10 +188,6 @@ class MonitorArgs:
     @_builtins.property
     @pulumi.getter(name="urlPath")
     def url_path(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the HTTP request path for the health check. Required for HTTP type.
-        The value starts with a slash (/) and contains a maximum of 255 characters.
-        """
         return pulumi.get(self, "url_path")
 
     @url_path.setter
@@ -292,33 +214,6 @@ class _MonitorState:
                  url_path: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Monitor resources.
-        :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the monitor.
-        :param pulumi.Input[_builtins.int] delay: Specifies the maximum time between health checks in the unit of second. The value ranges
-               from 1 to 50.
-        :param pulumi.Input[_builtins.str] expected_codes: Specifies the expected HTTP status code. Required for HTTP type.
-               You can either specify a single status like "200", or a range like "200-202".
-        :param pulumi.Input[_builtins.str] http_method: Specifies the HTTP request method. Required for HTTP type.
-               The default value is *GET*.
-        :param pulumi.Input[_builtins.int] max_retries: Specifies the maximum number of consecutive health checks after which the backend
-               servers are declared *healthy*. The value ranges from 1 to 10.
-               
-               > Backend servers can be declared *unhealthy* after **three** consecutive health checks that detect these backend
-               servers are unhealthy, regardless of the value set for `max_retries`. The health check time window is determined
-               by [Health Check Time Window](https://support.sbercloud.com/intl/en-us/usermanual-elb/elb_ug_hc_0001.html#section4).
-        :param pulumi.Input[_builtins.str] name: Specifies the health check name. The value contains a maximum of 255 characters.
-        :param pulumi.Input[_builtins.str] pool_id: Specifies the id of the pool that this monitor will be assigned to. Changing
-               this creates a new monitor.
-        :param pulumi.Input[_builtins.int] port: Specifies the health check port. The port number ranges from 1 to 65535. If not specified,
-               the port of the backend server will be used as the health check port.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the ELB monitor resource. If omitted, the
-               provider-level region will be used. Changing this creates a new monitor.
-        :param pulumi.Input[_builtins.int] timeout: Specifies the health check timeout duration in the unit of second.
-               The value ranges from 1 to 50 and must be less than the `delay` value.
-        :param pulumi.Input[_builtins.str] type: Specifies the monitor protocol.
-               The value can be *TCP*, *UDP_CONNECT*, or *HTTP*.
-               If the listener protocol is UDP, the monitor protocol must be *UDP_CONNECT*. Changing this creates a new monitor.
-        :param pulumi.Input[_builtins.str] url_path: Specifies the HTTP request path for the health check. Required for HTTP type.
-               The value starts with a slash (/) and contains a maximum of 255 characters.
         """
         if admin_state_up is not None:
             warnings.warn("""tenant_id is deprecated""", DeprecationWarning)
@@ -359,9 +254,6 @@ class _MonitorState:
     @pulumi.getter(name="adminStateUp")
     @_utilities.deprecated("""tenant_id is deprecated""")
     def admin_state_up(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        The administrative state of the monitor.
-        """
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
@@ -371,10 +263,6 @@ class _MonitorState:
     @_builtins.property
     @pulumi.getter
     def delay(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the maximum time between health checks in the unit of second. The value ranges
-        from 1 to 50.
-        """
         return pulumi.get(self, "delay")
 
     @delay.setter
@@ -393,10 +281,6 @@ class _MonitorState:
     @_builtins.property
     @pulumi.getter(name="expectedCodes")
     def expected_codes(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the expected HTTP status code. Required for HTTP type.
-        You can either specify a single status like "200", or a range like "200-202".
-        """
         return pulumi.get(self, "expected_codes")
 
     @expected_codes.setter
@@ -406,10 +290,6 @@ class _MonitorState:
     @_builtins.property
     @pulumi.getter(name="httpMethod")
     def http_method(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the HTTP request method. Required for HTTP type.
-        The default value is *GET*.
-        """
         return pulumi.get(self, "http_method")
 
     @http_method.setter
@@ -419,14 +299,6 @@ class _MonitorState:
     @_builtins.property
     @pulumi.getter(name="maxRetries")
     def max_retries(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the maximum number of consecutive health checks after which the backend
-        servers are declared *healthy*. The value ranges from 1 to 10.
-
-        > Backend servers can be declared *unhealthy* after **three** consecutive health checks that detect these backend
-        servers are unhealthy, regardless of the value set for `max_retries`. The health check time window is determined
-        by [Health Check Time Window](https://support.sbercloud.com/intl/en-us/usermanual-elb/elb_ug_hc_0001.html#section4).
-        """
         return pulumi.get(self, "max_retries")
 
     @max_retries.setter
@@ -436,9 +308,6 @@ class _MonitorState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the health check name. The value contains a maximum of 255 characters.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -448,10 +317,6 @@ class _MonitorState:
     @_builtins.property
     @pulumi.getter(name="poolId")
     def pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the id of the pool that this monitor will be assigned to. Changing
-        this creates a new monitor.
-        """
         return pulumi.get(self, "pool_id")
 
     @pool_id.setter
@@ -461,10 +326,6 @@ class _MonitorState:
     @_builtins.property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the health check port. The port number ranges from 1 to 65535. If not specified,
-        the port of the backend server will be used as the health check port.
-        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -474,10 +335,6 @@ class _MonitorState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the ELB monitor resource. If omitted, the
-        provider-level region will be used. Changing this creates a new monitor.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -497,10 +354,6 @@ class _MonitorState:
     @_builtins.property
     @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the health check timeout duration in the unit of second.
-        The value ranges from 1 to 50 and must be less than the `delay` value.
-        """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
@@ -510,11 +363,6 @@ class _MonitorState:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the monitor protocol.
-        The value can be *TCP*, *UDP_CONNECT*, or *HTTP*.
-        If the listener protocol is UDP, the monitor protocol must be *UDP_CONNECT*. Changing this creates a new monitor.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -524,10 +372,6 @@ class _MonitorState:
     @_builtins.property
     @pulumi.getter(name="urlPath")
     def url_path(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the HTTP request path for the health check. Required for HTTP type.
-        The value starts with a slash (/) and contains a maximum of 255 characters.
-        """
         return pulumi.get(self, "url_path")
 
     @url_path.setter
@@ -557,91 +401,9 @@ class Monitor(pulumi.CustomResource):
                  url_path: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages an ELB monitor resource within SberCloud.
-
-        ## Example Usage
-
-        ### TCP Health Check
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        monitor_tcp = sbercloud.elb.Monitor("monitor_tcp",
-            pool_id=pool_id,
-            type="TCP",
-            delay=5,
-            timeout=3,
-            max_retries=3)
-        ```
-
-        ### UDP Health Check
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        monitor_udp = sbercloud.elb.Monitor("monitor_udp",
-            pool_id=pool_id,
-            type="UDP_CONNECT",
-            delay=5,
-            timeout=3,
-            max_retries=3)
-        ```
-
-        ### HTTP Health Check
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        monitor_http = sbercloud.elb.Monitor("monitor_http",
-            pool_id=pool_id,
-            type="HTTP",
-            delay=5,
-            timeout=3,
-            max_retries=3,
-            url_path="/test",
-            expected_codes="200-202")
-        ```
-
-        ## Import
-
-        ELB monitor can be imported using the monitor ID, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Elb/monitor:Monitor monitor_1 5c20fdad-7288-11eb-b817-0255ac10158b
-        ```
-
+        Create a Monitor resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the monitor.
-        :param pulumi.Input[_builtins.int] delay: Specifies the maximum time between health checks in the unit of second. The value ranges
-               from 1 to 50.
-        :param pulumi.Input[_builtins.str] expected_codes: Specifies the expected HTTP status code. Required for HTTP type.
-               You can either specify a single status like "200", or a range like "200-202".
-        :param pulumi.Input[_builtins.str] http_method: Specifies the HTTP request method. Required for HTTP type.
-               The default value is *GET*.
-        :param pulumi.Input[_builtins.int] max_retries: Specifies the maximum number of consecutive health checks after which the backend
-               servers are declared *healthy*. The value ranges from 1 to 10.
-               
-               > Backend servers can be declared *unhealthy* after **three** consecutive health checks that detect these backend
-               servers are unhealthy, regardless of the value set for `max_retries`. The health check time window is determined
-               by [Health Check Time Window](https://support.sbercloud.com/intl/en-us/usermanual-elb/elb_ug_hc_0001.html#section4).
-        :param pulumi.Input[_builtins.str] name: Specifies the health check name. The value contains a maximum of 255 characters.
-        :param pulumi.Input[_builtins.str] pool_id: Specifies the id of the pool that this monitor will be assigned to. Changing
-               this creates a new monitor.
-        :param pulumi.Input[_builtins.int] port: Specifies the health check port. The port number ranges from 1 to 65535. If not specified,
-               the port of the backend server will be used as the health check port.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the ELB monitor resource. If omitted, the
-               provider-level region will be used. Changing this creates a new monitor.
-        :param pulumi.Input[_builtins.int] timeout: Specifies the health check timeout duration in the unit of second.
-               The value ranges from 1 to 50 and must be less than the `delay` value.
-        :param pulumi.Input[_builtins.str] type: Specifies the monitor protocol.
-               The value can be *TCP*, *UDP_CONNECT*, or *HTTP*.
-               If the listener protocol is UDP, the monitor protocol must be *UDP_CONNECT*. Changing this creates a new monitor.
-        :param pulumi.Input[_builtins.str] url_path: Specifies the HTTP request path for the health check. Required for HTTP type.
-               The value starts with a slash (/) and contains a maximum of 255 characters.
         """
         ...
     @overload
@@ -650,62 +412,7 @@ class Monitor(pulumi.CustomResource):
                  args: MonitorArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages an ELB monitor resource within SberCloud.
-
-        ## Example Usage
-
-        ### TCP Health Check
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        monitor_tcp = sbercloud.elb.Monitor("monitor_tcp",
-            pool_id=pool_id,
-            type="TCP",
-            delay=5,
-            timeout=3,
-            max_retries=3)
-        ```
-
-        ### UDP Health Check
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        monitor_udp = sbercloud.elb.Monitor("monitor_udp",
-            pool_id=pool_id,
-            type="UDP_CONNECT",
-            delay=5,
-            timeout=3,
-            max_retries=3)
-        ```
-
-        ### HTTP Health Check
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        monitor_http = sbercloud.elb.Monitor("monitor_http",
-            pool_id=pool_id,
-            type="HTTP",
-            delay=5,
-            timeout=3,
-            max_retries=3,
-            url_path="/test",
-            expected_codes="200-202")
-        ```
-
-        ## Import
-
-        ELB monitor can be imported using the monitor ID, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Elb/monitor:Monitor monitor_1 5c20fdad-7288-11eb-b817-0255ac10158b
-        ```
-
+        Create a Monitor resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param MonitorArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -799,33 +506,6 @@ class Monitor(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the monitor.
-        :param pulumi.Input[_builtins.int] delay: Specifies the maximum time between health checks in the unit of second. The value ranges
-               from 1 to 50.
-        :param pulumi.Input[_builtins.str] expected_codes: Specifies the expected HTTP status code. Required for HTTP type.
-               You can either specify a single status like "200", or a range like "200-202".
-        :param pulumi.Input[_builtins.str] http_method: Specifies the HTTP request method. Required for HTTP type.
-               The default value is *GET*.
-        :param pulumi.Input[_builtins.int] max_retries: Specifies the maximum number of consecutive health checks after which the backend
-               servers are declared *healthy*. The value ranges from 1 to 10.
-               
-               > Backend servers can be declared *unhealthy* after **three** consecutive health checks that detect these backend
-               servers are unhealthy, regardless of the value set for `max_retries`. The health check time window is determined
-               by [Health Check Time Window](https://support.sbercloud.com/intl/en-us/usermanual-elb/elb_ug_hc_0001.html#section4).
-        :param pulumi.Input[_builtins.str] name: Specifies the health check name. The value contains a maximum of 255 characters.
-        :param pulumi.Input[_builtins.str] pool_id: Specifies the id of the pool that this monitor will be assigned to. Changing
-               this creates a new monitor.
-        :param pulumi.Input[_builtins.int] port: Specifies the health check port. The port number ranges from 1 to 65535. If not specified,
-               the port of the backend server will be used as the health check port.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the ELB monitor resource. If omitted, the
-               provider-level region will be used. Changing this creates a new monitor.
-        :param pulumi.Input[_builtins.int] timeout: Specifies the health check timeout duration in the unit of second.
-               The value ranges from 1 to 50 and must be less than the `delay` value.
-        :param pulumi.Input[_builtins.str] type: Specifies the monitor protocol.
-               The value can be *TCP*, *UDP_CONNECT*, or *HTTP*.
-               If the listener protocol is UDP, the monitor protocol must be *UDP_CONNECT*. Changing this creates a new monitor.
-        :param pulumi.Input[_builtins.str] url_path: Specifies the HTTP request path for the health check. Required for HTTP type.
-               The value starts with a slash (/) and contains a maximum of 255 characters.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -851,18 +531,11 @@ class Monitor(pulumi.CustomResource):
     @pulumi.getter(name="adminStateUp")
     @_utilities.deprecated("""tenant_id is deprecated""")
     def admin_state_up(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        The administrative state of the monitor.
-        """
         return pulumi.get(self, "admin_state_up")
 
     @_builtins.property
     @pulumi.getter
     def delay(self) -> pulumi.Output[_builtins.int]:
-        """
-        Specifies the maximum time between health checks in the unit of second. The value ranges
-        from 1 to 50.
-        """
         return pulumi.get(self, "delay")
 
     @_builtins.property
@@ -873,67 +546,36 @@ class Monitor(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="expectedCodes")
     def expected_codes(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the expected HTTP status code. Required for HTTP type.
-        You can either specify a single status like "200", or a range like "200-202".
-        """
         return pulumi.get(self, "expected_codes")
 
     @_builtins.property
     @pulumi.getter(name="httpMethod")
     def http_method(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the HTTP request method. Required for HTTP type.
-        The default value is *GET*.
-        """
         return pulumi.get(self, "http_method")
 
     @_builtins.property
     @pulumi.getter(name="maxRetries")
     def max_retries(self) -> pulumi.Output[_builtins.int]:
-        """
-        Specifies the maximum number of consecutive health checks after which the backend
-        servers are declared *healthy*. The value ranges from 1 to 10.
-
-        > Backend servers can be declared *unhealthy* after **three** consecutive health checks that detect these backend
-        servers are unhealthy, regardless of the value set for `max_retries`. The health check time window is determined
-        by [Health Check Time Window](https://support.sbercloud.com/intl/en-us/usermanual-elb/elb_ug_hc_0001.html#section4).
-        """
         return pulumi.get(self, "max_retries")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the health check name. The value contains a maximum of 255 characters.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="poolId")
     def pool_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the id of the pool that this monitor will be assigned to. Changing
-        this creates a new monitor.
-        """
         return pulumi.get(self, "pool_id")
 
     @_builtins.property
     @pulumi.getter
     def port(self) -> pulumi.Output[Optional[_builtins.int]]:
-        """
-        Specifies the health check port. The port number ranges from 1 to 65535. If not specified,
-        the port of the backend server will be used as the health check port.
-        """
         return pulumi.get(self, "port")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the ELB monitor resource. If omitted, the
-        provider-level region will be used. Changing this creates a new monitor.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
@@ -945,28 +587,15 @@ class Monitor(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def timeout(self) -> pulumi.Output[_builtins.int]:
-        """
-        Specifies the health check timeout duration in the unit of second.
-        The value ranges from 1 to 50 and must be less than the `delay` value.
-        """
         return pulumi.get(self, "timeout")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the monitor protocol.
-        The value can be *TCP*, *UDP_CONNECT*, or *HTTP*.
-        If the listener protocol is UDP, the monitor protocol must be *UDP_CONNECT*. Changing this creates a new monitor.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="urlPath")
     def url_path(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the HTTP request path for the health check. Required for HTTP type.
-        The value starts with a slash (/) and contains a maximum of 255 characters.
-        """
         return pulumi.get(self, "url_path")
 

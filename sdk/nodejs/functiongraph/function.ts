@@ -6,70 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages a Function resource within SberCloud.
- *
- * ## Example Usage
- *
- * ### With base64 func code
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const f1 = new sbercloud.functiongraph.Function("f_1", {
- *     name: "func_1",
- *     app: "default",
- *     agency: "test",
- *     description: "fuction test",
- *     handler: "test.handler",
- *     memorySize: 128,
- *     timeout: 3,
- *     runtime: "Python2.7",
- *     codeType: "inline",
- *     funcCode: "aW1wb3J0IGpzb24KZGVmIGhhbmRsZXIgKGV2ZW50LCBjb250ZXh0KToKICAgIG91dHB1dCA9ICdIZWxsbyBtZXNzYWdlOiAnICsganNvbi5kdW1wcyhldmVudCkKICAgIHJldHVybiBvdXRwdXQ=",
- * });
- * ```
- *
- * ### With text code
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const f1 = new sbercloud.functiongraph.Function("f_1", {
- *     name: "func_1",
- *     app: "default",
- *     agency: "test",
- *     description: "fuction test",
- *     handler: "test.handler",
- *     memorySize: 128,
- *     timeout: 3,
- *     runtime: "Python2.7",
- *     codeType: "inline",
- *     funcCode: `# -*- coding:utf-8 -*-
- * import json
- * def handler (event, context):
- *     return {
- *         "statusCode": 200,
- *         "isBase64Encoded": False,
- *         "body": json.dumps(event),
- *         "headers": {
- *             "Content-Type": "application/json"
- *         }
- *     }
- * `,
- * });
- * ```
- *
- * ## Import
- *
- * Functions can be imported using the `id`, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:FunctionGraph/function:Function my-func 7117d38e-4c8f-4624-a505-bd96b97d024c
- * ```
- */
 export class Function extends pulumi.CustomResource {
     /**
      * Get an existing Function resource's state with the given name, ID, and optional extra
@@ -99,15 +35,15 @@ export class Function extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies the agency. This parameter is mandatory if the function needs to access other cloud services.
+     * The agency configuration of the function.
      */
     declare public readonly agency: pulumi.Output<string | undefined>;
     /**
-     * Specifies the group to which the function belongs.
+     * The group to which the function belongs.
      */
     declare public readonly app: pulumi.Output<string | undefined>;
     /**
-     * Specifies An execution agency enables you to obtain a token or an AK/SK for accessing other cloud services.
+     * The execution agency enables you to obtain a token or an AK/SK for accessing other cloud services.
      */
     declare public readonly appAgency: pulumi.Output<string>;
     /**
@@ -115,17 +51,15 @@ export class Function extends pulumi.CustomResource {
      */
     declare public readonly codeEncryptKmsKeyId: pulumi.Output<string | undefined>;
     /**
-     * Specifies the name of a function file, This field is mandatory only when coeType is
-     * set to jar or zip.
+     * The name of the function file.
      */
     declare public readonly codeFilename: pulumi.Output<string>;
     /**
-     * Specifies the function code type, which can be inline: inline code, zip: ZIP file,
-     * jar: JAR file or java functions, obs: function code stored in an OBS bucket.
+     * The code type of the function.
      */
     declare public readonly codeType: pulumi.Output<string>;
     /**
-     * Specifies the code url. This parameter is mandatory when codeType is set to obs.
+     * The URL where the function code is stored in OBS.
      */
     declare public readonly codeUrl: pulumi.Output<string | undefined>;
     /**
@@ -137,11 +71,11 @@ export class Function extends pulumi.CustomResource {
      */
     declare public readonly customImage: pulumi.Output<outputs.FunctionGraph.FunctionCustomImage>;
     /**
-     * Specifies the dependencies of the function.
+     * The ID list of the dependencies.
      */
     declare public readonly dependLists: pulumi.Output<string[]>;
     /**
-     * Specifies the description of the function.
+     * The description of the function.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
@@ -169,8 +103,7 @@ export class Function extends pulumi.CustomResource {
      */
     declare public readonly encryptedUserData: pulumi.Output<string | undefined>;
     /**
-     * Specifies the enterprise project id of the function.
-     * Changing this creates a new function.
+     * The ID of the enterprise project to which the function belongs.
      */
     declare public readonly enterpriseProjectId: pulumi.Output<string>;
     /**
@@ -178,12 +111,11 @@ export class Function extends pulumi.CustomResource {
      */
     declare public readonly ephemeralStorage: pulumi.Output<number>;
     /**
-     * Specifies the function code. When codeType is set to inline, zip, or jar, this parameter is mandatory,
-     * and the code can be encoded using Base64 or just with the text code.
+     * The function code.
      */
     declare public readonly funcCode: pulumi.Output<string | undefined>;
     /**
-     * Specifies the file system list. The `funcMounts` object structure is documented below.
+     * The list of function mount configuration.
      */
     declare public readonly funcMounts: pulumi.Output<outputs.FunctionGraph.FunctionFuncMount[]>;
     /**
@@ -199,7 +131,7 @@ export class Function extends pulumi.CustomResource {
      */
     declare public readonly gpuType: pulumi.Output<string | undefined>;
     /**
-     * Specifies the entry point of the function.
+     * The entry point of the function.
      */
     declare public readonly handler: pulumi.Output<string>;
     /**
@@ -207,11 +139,11 @@ export class Function extends pulumi.CustomResource {
      */
     declare public readonly heartbeatHandler: pulumi.Output<string | undefined>;
     /**
-     * Specifies the initializer of the function.
+     * The initializer of the function.
      */
     declare public readonly initializerHandler: pulumi.Output<string>;
     /**
-     * Specifies the maximum duration the function can be initialized. Value range: 1s to 300s.
+     * The maximum duration the function can be initialized.
      */
     declare public readonly initializerTimeout: pulumi.Output<number>;
     /**
@@ -248,19 +180,19 @@ export class Function extends pulumi.CustomResource {
      */
     declare public readonly maxInstanceNum: pulumi.Output<string>;
     /**
-     * Specifies the memory size(MB) allocated to the function.
+     * The memory size allocated to the function, in MByte (MB).
      */
     declare public readonly memorySize: pulumi.Output<number>;
     /**
-     * Specifies the user group ID, a non-0 integer from –1 to 65534. Default to -1.
+     * The mount user group ID.
      */
     declare public readonly mountUserGroupId: pulumi.Output<number>;
     /**
-     * Specifies the user ID, a non-0 integer from –1 to 65534. Default to -1.
+     * The mount user ID.
      */
     declare public readonly mountUserId: pulumi.Output<number>;
     /**
-     * Specifies the name of the function.
+     * The name of the function.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -268,7 +200,7 @@ export class Function extends pulumi.CustomResource {
      */
     declare public readonly networkController: pulumi.Output<outputs.FunctionGraph.FunctionNetworkController | undefined>;
     /**
-     * Specifies the ID of subnet.
+     * The network ID of subnet.
      */
     declare public readonly networkId: pulumi.Output<string | undefined>;
     /**
@@ -289,8 +221,7 @@ export class Function extends pulumi.CustomResource {
      */
     declare public readonly preStopTimeout: pulumi.Output<number | undefined>;
     /**
-     * Specifies the region in which to create the Function resource.
-     * If omitted, the provider-level region will be used. Changing this creates a new Function resource.
+     * The region where the function is located.
      */
     declare public readonly region: pulumi.Output<string>;
     /**
@@ -306,7 +237,7 @@ export class Function extends pulumi.CustomResource {
      */
     declare public readonly restoreHookTimeout: pulumi.Output<number | undefined>;
     /**
-     * Specifies the environment for executing the function.
+     * The environment for executing the function.
      */
     declare public readonly runtime: pulumi.Output<string>;
     /**
@@ -314,11 +245,11 @@ export class Function extends pulumi.CustomResource {
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Specifies the timeout interval of the function, ranges from 3s to 900s.
+     * The timeout interval of the function, in seconds.
      */
     declare public readonly timeout: pulumi.Output<number>;
     /**
-     * Uniform Resource Name
+     * The URN (Uniform Resource Name) of the function.
      */
     declare public /*out*/ readonly urn: pulumi.Output<string>;
     /**
@@ -330,7 +261,7 @@ export class Function extends pulumi.CustomResource {
      */
     declare public readonly userDataEncryptKmsKeyId: pulumi.Output<string | undefined>;
     /**
-     * The version of the function
+     * The version of the function.
      */
     declare public /*out*/ readonly version: pulumi.Output<string>;
     /**
@@ -338,7 +269,7 @@ export class Function extends pulumi.CustomResource {
      */
     declare public readonly versions: pulumi.Output<outputs.FunctionGraph.FunctionVersion[] | undefined>;
     /**
-     * Specifies the ID of VPC.
+     * The ID of the VPC to which the function belongs.
      */
     declare public readonly vpcId: pulumi.Output<string | undefined>;
     /**
@@ -503,15 +434,15 @@ export class Function extends pulumi.CustomResource {
  */
 export interface FunctionState {
     /**
-     * Specifies the agency. This parameter is mandatory if the function needs to access other cloud services.
+     * The agency configuration of the function.
      */
     agency?: pulumi.Input<string>;
     /**
-     * Specifies the group to which the function belongs.
+     * The group to which the function belongs.
      */
     app?: pulumi.Input<string>;
     /**
-     * Specifies An execution agency enables you to obtain a token or an AK/SK for accessing other cloud services.
+     * The execution agency enables you to obtain a token or an AK/SK for accessing other cloud services.
      */
     appAgency?: pulumi.Input<string>;
     /**
@@ -519,17 +450,15 @@ export interface FunctionState {
      */
     codeEncryptKmsKeyId?: pulumi.Input<string>;
     /**
-     * Specifies the name of a function file, This field is mandatory only when coeType is
-     * set to jar or zip.
+     * The name of the function file.
      */
     codeFilename?: pulumi.Input<string>;
     /**
-     * Specifies the function code type, which can be inline: inline code, zip: ZIP file,
-     * jar: JAR file or java functions, obs: function code stored in an OBS bucket.
+     * The code type of the function.
      */
     codeType?: pulumi.Input<string>;
     /**
-     * Specifies the code url. This parameter is mandatory when codeType is set to obs.
+     * The URL where the function code is stored in OBS.
      */
     codeUrl?: pulumi.Input<string>;
     /**
@@ -541,11 +470,11 @@ export interface FunctionState {
      */
     customImage?: pulumi.Input<inputs.FunctionGraph.FunctionCustomImage>;
     /**
-     * Specifies the dependencies of the function.
+     * The ID list of the dependencies.
      */
     dependLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Specifies the description of the function.
+     * The description of the function.
      */
     description?: pulumi.Input<string>;
     /**
@@ -573,8 +502,7 @@ export interface FunctionState {
      */
     encryptedUserData?: pulumi.Input<string>;
     /**
-     * Specifies the enterprise project id of the function.
-     * Changing this creates a new function.
+     * The ID of the enterprise project to which the function belongs.
      */
     enterpriseProjectId?: pulumi.Input<string>;
     /**
@@ -582,12 +510,11 @@ export interface FunctionState {
      */
     ephemeralStorage?: pulumi.Input<number>;
     /**
-     * Specifies the function code. When codeType is set to inline, zip, or jar, this parameter is mandatory,
-     * and the code can be encoded using Base64 or just with the text code.
+     * The function code.
      */
     funcCode?: pulumi.Input<string>;
     /**
-     * Specifies the file system list. The `funcMounts` object structure is documented below.
+     * The list of function mount configuration.
      */
     funcMounts?: pulumi.Input<pulumi.Input<inputs.FunctionGraph.FunctionFuncMount>[]>;
     /**
@@ -603,7 +530,7 @@ export interface FunctionState {
      */
     gpuType?: pulumi.Input<string>;
     /**
-     * Specifies the entry point of the function.
+     * The entry point of the function.
      */
     handler?: pulumi.Input<string>;
     /**
@@ -611,11 +538,11 @@ export interface FunctionState {
      */
     heartbeatHandler?: pulumi.Input<string>;
     /**
-     * Specifies the initializer of the function.
+     * The initializer of the function.
      */
     initializerHandler?: pulumi.Input<string>;
     /**
-     * Specifies the maximum duration the function can be initialized. Value range: 1s to 300s.
+     * The maximum duration the function can be initialized.
      */
     initializerTimeout?: pulumi.Input<number>;
     /**
@@ -652,19 +579,19 @@ export interface FunctionState {
      */
     maxInstanceNum?: pulumi.Input<string>;
     /**
-     * Specifies the memory size(MB) allocated to the function.
+     * The memory size allocated to the function, in MByte (MB).
      */
     memorySize?: pulumi.Input<number>;
     /**
-     * Specifies the user group ID, a non-0 integer from –1 to 65534. Default to -1.
+     * The mount user group ID.
      */
     mountUserGroupId?: pulumi.Input<number>;
     /**
-     * Specifies the user ID, a non-0 integer from –1 to 65534. Default to -1.
+     * The mount user ID.
      */
     mountUserId?: pulumi.Input<number>;
     /**
-     * Specifies the name of the function.
+     * The name of the function.
      */
     name?: pulumi.Input<string>;
     /**
@@ -672,7 +599,7 @@ export interface FunctionState {
      */
     networkController?: pulumi.Input<inputs.FunctionGraph.FunctionNetworkController>;
     /**
-     * Specifies the ID of subnet.
+     * The network ID of subnet.
      */
     networkId?: pulumi.Input<string>;
     /**
@@ -693,8 +620,7 @@ export interface FunctionState {
      */
     preStopTimeout?: pulumi.Input<number>;
     /**
-     * Specifies the region in which to create the Function resource.
-     * If omitted, the provider-level region will be used. Changing this creates a new Function resource.
+     * The region where the function is located.
      */
     region?: pulumi.Input<string>;
     /**
@@ -710,7 +636,7 @@ export interface FunctionState {
      */
     restoreHookTimeout?: pulumi.Input<number>;
     /**
-     * Specifies the environment for executing the function.
+     * The environment for executing the function.
      */
     runtime?: pulumi.Input<string>;
     /**
@@ -718,11 +644,11 @@ export interface FunctionState {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Specifies the timeout interval of the function, ranges from 3s to 900s.
+     * The timeout interval of the function, in seconds.
      */
     timeout?: pulumi.Input<number>;
     /**
-     * Uniform Resource Name
+     * The URN (Uniform Resource Name) of the function.
      */
     urn?: pulumi.Input<string>;
     /**
@@ -734,7 +660,7 @@ export interface FunctionState {
      */
     userDataEncryptKmsKeyId?: pulumi.Input<string>;
     /**
-     * The version of the function
+     * The version of the function.
      */
     version?: pulumi.Input<string>;
     /**
@@ -742,7 +668,7 @@ export interface FunctionState {
      */
     versions?: pulumi.Input<pulumi.Input<inputs.FunctionGraph.FunctionVersion>[]>;
     /**
-     * Specifies the ID of VPC.
+     * The ID of the VPC to which the function belongs.
      */
     vpcId?: pulumi.Input<string>;
     /**
@@ -756,15 +682,15 @@ export interface FunctionState {
  */
 export interface FunctionArgs {
     /**
-     * Specifies the agency. This parameter is mandatory if the function needs to access other cloud services.
+     * The agency configuration of the function.
      */
     agency?: pulumi.Input<string>;
     /**
-     * Specifies the group to which the function belongs.
+     * The group to which the function belongs.
      */
     app?: pulumi.Input<string>;
     /**
-     * Specifies An execution agency enables you to obtain a token or an AK/SK for accessing other cloud services.
+     * The execution agency enables you to obtain a token or an AK/SK for accessing other cloud services.
      */
     appAgency?: pulumi.Input<string>;
     /**
@@ -772,17 +698,15 @@ export interface FunctionArgs {
      */
     codeEncryptKmsKeyId?: pulumi.Input<string>;
     /**
-     * Specifies the name of a function file, This field is mandatory only when coeType is
-     * set to jar or zip.
+     * The name of the function file.
      */
     codeFilename?: pulumi.Input<string>;
     /**
-     * Specifies the function code type, which can be inline: inline code, zip: ZIP file,
-     * jar: JAR file or java functions, obs: function code stored in an OBS bucket.
+     * The code type of the function.
      */
     codeType?: pulumi.Input<string>;
     /**
-     * Specifies the code url. This parameter is mandatory when codeType is set to obs.
+     * The URL where the function code is stored in OBS.
      */
     codeUrl?: pulumi.Input<string>;
     /**
@@ -794,11 +718,11 @@ export interface FunctionArgs {
      */
     customImage?: pulumi.Input<inputs.FunctionGraph.FunctionCustomImage>;
     /**
-     * Specifies the dependencies of the function.
+     * The ID list of the dependencies.
      */
     dependLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Specifies the description of the function.
+     * The description of the function.
      */
     description?: pulumi.Input<string>;
     /**
@@ -826,8 +750,7 @@ export interface FunctionArgs {
      */
     encryptedUserData?: pulumi.Input<string>;
     /**
-     * Specifies the enterprise project id of the function.
-     * Changing this creates a new function.
+     * The ID of the enterprise project to which the function belongs.
      */
     enterpriseProjectId?: pulumi.Input<string>;
     /**
@@ -835,12 +758,11 @@ export interface FunctionArgs {
      */
     ephemeralStorage?: pulumi.Input<number>;
     /**
-     * Specifies the function code. When codeType is set to inline, zip, or jar, this parameter is mandatory,
-     * and the code can be encoded using Base64 or just with the text code.
+     * The function code.
      */
     funcCode?: pulumi.Input<string>;
     /**
-     * Specifies the file system list. The `funcMounts` object structure is documented below.
+     * The list of function mount configuration.
      */
     funcMounts?: pulumi.Input<pulumi.Input<inputs.FunctionGraph.FunctionFuncMount>[]>;
     /**
@@ -856,7 +778,7 @@ export interface FunctionArgs {
      */
     gpuType?: pulumi.Input<string>;
     /**
-     * Specifies the entry point of the function.
+     * The entry point of the function.
      */
     handler?: pulumi.Input<string>;
     /**
@@ -864,11 +786,11 @@ export interface FunctionArgs {
      */
     heartbeatHandler?: pulumi.Input<string>;
     /**
-     * Specifies the initializer of the function.
+     * The initializer of the function.
      */
     initializerHandler?: pulumi.Input<string>;
     /**
-     * Specifies the maximum duration the function can be initialized. Value range: 1s to 300s.
+     * The maximum duration the function can be initialized.
      */
     initializerTimeout?: pulumi.Input<number>;
     /**
@@ -900,19 +822,19 @@ export interface FunctionArgs {
      */
     maxInstanceNum?: pulumi.Input<string>;
     /**
-     * Specifies the memory size(MB) allocated to the function.
+     * The memory size allocated to the function, in MByte (MB).
      */
     memorySize: pulumi.Input<number>;
     /**
-     * Specifies the user group ID, a non-0 integer from –1 to 65534. Default to -1.
+     * The mount user group ID.
      */
     mountUserGroupId?: pulumi.Input<number>;
     /**
-     * Specifies the user ID, a non-0 integer from –1 to 65534. Default to -1.
+     * The mount user ID.
      */
     mountUserId?: pulumi.Input<number>;
     /**
-     * Specifies the name of the function.
+     * The name of the function.
      */
     name?: pulumi.Input<string>;
     /**
@@ -920,7 +842,7 @@ export interface FunctionArgs {
      */
     networkController?: pulumi.Input<inputs.FunctionGraph.FunctionNetworkController>;
     /**
-     * Specifies the ID of subnet.
+     * The network ID of subnet.
      */
     networkId?: pulumi.Input<string>;
     /**
@@ -941,8 +863,7 @@ export interface FunctionArgs {
      */
     preStopTimeout?: pulumi.Input<number>;
     /**
-     * Specifies the region in which to create the Function resource.
-     * If omitted, the provider-level region will be used. Changing this creates a new Function resource.
+     * The region where the function is located.
      */
     region?: pulumi.Input<string>;
     /**
@@ -958,7 +879,7 @@ export interface FunctionArgs {
      */
     restoreHookTimeout?: pulumi.Input<number>;
     /**
-     * Specifies the environment for executing the function.
+     * The environment for executing the function.
      */
     runtime: pulumi.Input<string>;
     /**
@@ -966,7 +887,7 @@ export interface FunctionArgs {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Specifies the timeout interval of the function, ranges from 3s to 900s.
+     * The timeout interval of the function, in seconds.
      */
     timeout: pulumi.Input<number>;
     /**
@@ -982,7 +903,7 @@ export interface FunctionArgs {
      */
     versions?: pulumi.Input<pulumi.Input<inputs.FunctionGraph.FunctionVersion>[]>;
     /**
-     * Specifies the ID of VPC.
+     * The ID of the VPC to which the function belongs.
      */
     vpcId?: pulumi.Input<string>;
     /**

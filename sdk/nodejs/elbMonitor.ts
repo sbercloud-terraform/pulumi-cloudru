@@ -4,40 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Manages an ELB monitor resource within Cloud.ru.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const poolId = config.requireObject<any>("poolId");
- * const monitor1 = new sbercloud.ElbMonitor("monitor_1", {
- *     poolId: poolId,
- *     protocol: "HTTPS",
- *     interval: 30,
- *     timeout: 20,
- *     maxRetries: 8,
- *     urlPath: "/bb",
- *     domainName: "www.bb.com",
- *     port: 8888,
- *     statusCode: "200,301,404-500,504",
- * });
- * ```
- *
- * ## Import
- *
- * ELB monitor can be imported using the monitor `id`, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:index/elbMonitor:ElbMonitor test <id>
- * ```
- */
 export class ElbMonitor extends pulumi.CustomResource {
     /**
      * Get an existing ElbMonitor resource's state with the given name, ID, and optional extra
@@ -66,71 +32,15 @@ export class ElbMonitor extends pulumi.CustomResource {
         return obj['__pulumiType'] === ElbMonitor.__pulumiType;
     }
 
-    /**
-     * Specifies the domain name that HTTP requests are sent to during the health check.
-     * The domain name consists of 1 to 100 characters, can contain only digits, letters, hyphens (-), and periods (.) and
-     * must start with a digit or letter. The value is left blank by default, indicating that the virtual IP address of the
-     * load balancer is used as the destination address of HTTP requests. This parameter is available only when `protocol`
-     * is set to **HTTP** or **HTTPS**.
-     */
     declare public readonly domainName: pulumi.Output<string>;
-    /**
-     * Specifies the interval between health checks, in seconds.
-     * Value ranges from **1** to **50**.
-     */
     declare public readonly interval: pulumi.Output<number>;
-    /**
-     * Specifies the number of consecutive health checks when the health check result of
-     * a backend server changes from OFFLINE to ONLINE. Value ranges from **1** to **50**.
-     */
     declare public readonly maxRetries: pulumi.Output<number>;
-    /**
-     * Specifies the ID of the backend server group for which the health check is
-     * configured. Changing this creates a new monitor.
-     */
     declare public readonly poolId: pulumi.Output<string>;
-    /**
-     * Specifies the port used for the health check. If this parameter is left blank, a port of
-     * the backend server will be used by default.  Value ranges from **1** to **65535**.
-     */
     declare public readonly port: pulumi.Output<number>;
-    /**
-     * Specifies the health check protocol. Value options: **TCP**, **UDP_CONNECT**,
-     * **HTTP**, or **HTTPS**.
-     * + If the protocol of the backend server is **QUIC**, the value can only be **UDP_CONNECT**.
-     * + If the protocol of the backend server is **UDP**, the value can only be **UDP_CONNECT**.
-     * + If the protocol of the backend server is **TCP**, the value can only be **TCP**, **HTTP**, or **HTTPS**.
-     * + If the protocol of the backend server is **HTTP**, the value can only be **TCP**, **HTTP**, or **HTTPS**.
-     * + If the protocol of the backend server is **HTTPS**, the value can only be **TCP**, **HTTP**, or **HTTPS**.
-     */
     declare public readonly protocol: pulumi.Output<string>;
-    /**
-     * The region in which to create the ELB monitor resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new monitor.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Specifies the expected HTTP status code. This parameter will take effect only when
-     * `protocol` is set to **HTTP** or **HTTPS**. Value options are as follows:
-     * + A specific value, for example: **200**.
-     * + A list of values that are separated with commas (,), for example: **200,202**.
-     * + A value range, for example: **200-204**.
-     *
-     * Defaults to **200**.
-     */
     declare public readonly statusCode: pulumi.Output<string>;
-    /**
-     * Specifies the maximum time required for waiting for a response from the health check,
-     * in seconds. Value ranges from **1** to **50**. It is recommended that you set the value less than that of
-     * parameter `interval`.
-     */
     declare public readonly timeout: pulumi.Output<number>;
-    /**
-     * Specifies the HTTP request path for the health check. The value must start with a
-     * slash (/), can contain letters, digits, hyphens (-), slash (/), periods (.), percent signs (%), hashes(#), and(&)
-     * and the special characters: `~!()*[]@$^:',+`, and the default value is **&#47;**. This parameter is available only when
-     * `protocol` is set to **HTTP** or **HTTPS**.
-     */
     declare public readonly urlPath: pulumi.Output<string>;
 
     /**
@@ -193,71 +103,15 @@ export class ElbMonitor extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ElbMonitor resources.
  */
 export interface ElbMonitorState {
-    /**
-     * Specifies the domain name that HTTP requests are sent to during the health check.
-     * The domain name consists of 1 to 100 characters, can contain only digits, letters, hyphens (-), and periods (.) and
-     * must start with a digit or letter. The value is left blank by default, indicating that the virtual IP address of the
-     * load balancer is used as the destination address of HTTP requests. This parameter is available only when `protocol`
-     * is set to **HTTP** or **HTTPS**.
-     */
     domainName?: pulumi.Input<string>;
-    /**
-     * Specifies the interval between health checks, in seconds.
-     * Value ranges from **1** to **50**.
-     */
     interval?: pulumi.Input<number>;
-    /**
-     * Specifies the number of consecutive health checks when the health check result of
-     * a backend server changes from OFFLINE to ONLINE. Value ranges from **1** to **50**.
-     */
     maxRetries?: pulumi.Input<number>;
-    /**
-     * Specifies the ID of the backend server group for which the health check is
-     * configured. Changing this creates a new monitor.
-     */
     poolId?: pulumi.Input<string>;
-    /**
-     * Specifies the port used for the health check. If this parameter is left blank, a port of
-     * the backend server will be used by default.  Value ranges from **1** to **65535**.
-     */
     port?: pulumi.Input<number>;
-    /**
-     * Specifies the health check protocol. Value options: **TCP**, **UDP_CONNECT**,
-     * **HTTP**, or **HTTPS**.
-     * + If the protocol of the backend server is **QUIC**, the value can only be **UDP_CONNECT**.
-     * + If the protocol of the backend server is **UDP**, the value can only be **UDP_CONNECT**.
-     * + If the protocol of the backend server is **TCP**, the value can only be **TCP**, **HTTP**, or **HTTPS**.
-     * + If the protocol of the backend server is **HTTP**, the value can only be **TCP**, **HTTP**, or **HTTPS**.
-     * + If the protocol of the backend server is **HTTPS**, the value can only be **TCP**, **HTTP**, or **HTTPS**.
-     */
     protocol?: pulumi.Input<string>;
-    /**
-     * The region in which to create the ELB monitor resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new monitor.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the expected HTTP status code. This parameter will take effect only when
-     * `protocol` is set to **HTTP** or **HTTPS**. Value options are as follows:
-     * + A specific value, for example: **200**.
-     * + A list of values that are separated with commas (,), for example: **200,202**.
-     * + A value range, for example: **200-204**.
-     *
-     * Defaults to **200**.
-     */
     statusCode?: pulumi.Input<string>;
-    /**
-     * Specifies the maximum time required for waiting for a response from the health check,
-     * in seconds. Value ranges from **1** to **50**. It is recommended that you set the value less than that of
-     * parameter `interval`.
-     */
     timeout?: pulumi.Input<number>;
-    /**
-     * Specifies the HTTP request path for the health check. The value must start with a
-     * slash (/), can contain letters, digits, hyphens (-), slash (/), periods (.), percent signs (%), hashes(#), and(&)
-     * and the special characters: `~!()*[]@$^:',+`, and the default value is **&#47;**. This parameter is available only when
-     * `protocol` is set to **HTTP** or **HTTPS**.
-     */
     urlPath?: pulumi.Input<string>;
 }
 
@@ -265,70 +119,14 @@ export interface ElbMonitorState {
  * The set of arguments for constructing a ElbMonitor resource.
  */
 export interface ElbMonitorArgs {
-    /**
-     * Specifies the domain name that HTTP requests are sent to during the health check.
-     * The domain name consists of 1 to 100 characters, can contain only digits, letters, hyphens (-), and periods (.) and
-     * must start with a digit or letter. The value is left blank by default, indicating that the virtual IP address of the
-     * load balancer is used as the destination address of HTTP requests. This parameter is available only when `protocol`
-     * is set to **HTTP** or **HTTPS**.
-     */
     domainName?: pulumi.Input<string>;
-    /**
-     * Specifies the interval between health checks, in seconds.
-     * Value ranges from **1** to **50**.
-     */
     interval: pulumi.Input<number>;
-    /**
-     * Specifies the number of consecutive health checks when the health check result of
-     * a backend server changes from OFFLINE to ONLINE. Value ranges from **1** to **50**.
-     */
     maxRetries: pulumi.Input<number>;
-    /**
-     * Specifies the ID of the backend server group for which the health check is
-     * configured. Changing this creates a new monitor.
-     */
     poolId: pulumi.Input<string>;
-    /**
-     * Specifies the port used for the health check. If this parameter is left blank, a port of
-     * the backend server will be used by default.  Value ranges from **1** to **65535**.
-     */
     port?: pulumi.Input<number>;
-    /**
-     * Specifies the health check protocol. Value options: **TCP**, **UDP_CONNECT**,
-     * **HTTP**, or **HTTPS**.
-     * + If the protocol of the backend server is **QUIC**, the value can only be **UDP_CONNECT**.
-     * + If the protocol of the backend server is **UDP**, the value can only be **UDP_CONNECT**.
-     * + If the protocol of the backend server is **TCP**, the value can only be **TCP**, **HTTP**, or **HTTPS**.
-     * + If the protocol of the backend server is **HTTP**, the value can only be **TCP**, **HTTP**, or **HTTPS**.
-     * + If the protocol of the backend server is **HTTPS**, the value can only be **TCP**, **HTTP**, or **HTTPS**.
-     */
     protocol: pulumi.Input<string>;
-    /**
-     * The region in which to create the ELB monitor resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new monitor.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the expected HTTP status code. This parameter will take effect only when
-     * `protocol` is set to **HTTP** or **HTTPS**. Value options are as follows:
-     * + A specific value, for example: **200**.
-     * + A list of values that are separated with commas (,), for example: **200,202**.
-     * + A value range, for example: **200-204**.
-     *
-     * Defaults to **200**.
-     */
     statusCode?: pulumi.Input<string>;
-    /**
-     * Specifies the maximum time required for waiting for a response from the health check,
-     * in seconds. Value ranges from **1** to **50**. It is recommended that you set the value less than that of
-     * parameter `interval`.
-     */
     timeout: pulumi.Input<number>;
-    /**
-     * Specifies the HTTP request path for the health check. The value must start with a
-     * slash (/), can contain letters, digits, hyphens (-), slash (/), periods (.), percent signs (%), hashes(#), and(&)
-     * and the special characters: `~!()*[]@$^:',+`, and the default value is **&#47;**. This parameter is available only when
-     * `protocol` is set to **HTTP** or **HTTPS**.
-     */
     urlPath?: pulumi.Input<string>;
 }

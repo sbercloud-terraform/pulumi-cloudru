@@ -70,17 +70,11 @@ class GetAddressGroupsResult:
     @_builtins.property
     @pulumi.getter(name="addressGroups")
     def address_groups(self) -> Sequence['outputs.GetAddressGroupsAddressGroupResult']:
-        """
-        The IP address group list.
-        """
         return pulumi.get(self, "address_groups")
 
     @_builtins.property
     @pulumi.getter(name="addressType")
     def address_type(self) -> Optional[_builtins.str]:
-        """
-        The address type.
-        """
         return pulumi.get(self, "address_type")
 
     @_builtins.property
@@ -109,17 +103,11 @@ class GetAddressGroupsResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        The IP address group name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="objectId")
     def object_id(self) -> _builtins.str:
-        """
-        The protected object ID.
-        """
         return pulumi.get(self, "object_id")
 
     @_builtins.property
@@ -163,33 +151,7 @@ def get_address_groups(address: Optional[_builtins.str] = None,
                        region: Optional[_builtins.str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAddressGroupsResult:
     """
-    Use this data source to get the list of CFW address groups.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    object_id = config.require_object("objectId")
-    test = sbercloud.Cfw.get_address_groups(object_id=object_id)
-    ```
-
-
-    :param _builtins.str address: Specifies IP address of the IP address group.
-    :param _builtins.str address_type: Specifies the IP address type.
-           The value can be **0** (IPv4) or **1** (IPv6).
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project id to which the IP address group belongs.
-    :param _builtins.str fw_instance_id: Specifies the firewall instance ID.
-    :param _builtins.str key_word: Specifies the keyword of the address group description.
-    :param _builtins.str name: Specifies the name of the address group.
-    :param _builtins.str object_id: Specifies the protected object ID.
-    :param _builtins.int query_address_set_type: Specifies the address group type of the query.
-           + **0:** indicates a custom IP address group.
-           + **1:** indicates a predefined IP address group.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['address'] = address
@@ -227,33 +189,7 @@ def get_address_groups_output(address: Optional[pulumi.Input[Optional[_builtins.
                               region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAddressGroupsResult]:
     """
-    Use this data source to get the list of CFW address groups.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    object_id = config.require_object("objectId")
-    test = sbercloud.Cfw.get_address_groups(object_id=object_id)
-    ```
-
-
-    :param _builtins.str address: Specifies IP address of the IP address group.
-    :param _builtins.str address_type: Specifies the IP address type.
-           The value can be **0** (IPv4) or **1** (IPv6).
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project id to which the IP address group belongs.
-    :param _builtins.str fw_instance_id: Specifies the firewall instance ID.
-    :param _builtins.str key_word: Specifies the keyword of the address group description.
-    :param _builtins.str name: Specifies the name of the address group.
-    :param _builtins.str object_id: Specifies the protected object ID.
-    :param _builtins.int query_address_set_type: Specifies the address group type of the query.
-           + **0:** indicates a custom IP address group.
-           + **1:** indicates a predefined IP address group.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['address'] = address

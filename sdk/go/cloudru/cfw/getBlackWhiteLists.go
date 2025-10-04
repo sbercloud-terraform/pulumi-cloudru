@@ -11,38 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of CFW blacklists and whitelists.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			objectId := cfg.RequireObject("objectId")
-//			listType := cfg.RequireObject("listType")
-//			_, err := cfw.GetBlackWhiteLists(ctx, &cfw.GetBlackWhiteListsArgs{
-//				ObjectId: objectId,
-//				ListType: listType,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetBlackWhiteLists(ctx *pulumi.Context, args *GetBlackWhiteListsArgs, opts ...pulumi.InvokeOption) (*GetBlackWhiteListsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBlackWhiteListsResult
@@ -55,65 +23,35 @@ func GetBlackWhiteLists(ctx *pulumi.Context, args *GetBlackWhiteListsArgs, opts 
 
 // A collection of arguments for invoking getBlackWhiteLists.
 type GetBlackWhiteListsArgs struct {
-	// Specifies the IP address.
-	Address *string `pulumi:"address"`
-	// Specifies the IP address type.
-	// The valid value can be **0** (IPv4).
-	AddressType *string `pulumi:"addressType"`
-	// Specifies the description.
-	Description *string `pulumi:"description"`
-	// Specifies the direction of a black or white address.
-	// The options are as follows:
-	// + **0**: source address;
-	// + **1**: destination address;
-	Direction *string `pulumi:"direction"`
-	// Specifies the firewall instance ID.
+	Address      *string `pulumi:"address"`
+	AddressType  *string `pulumi:"addressType"`
+	Description  *string `pulumi:"description"`
+	Direction    *string `pulumi:"direction"`
 	FwInstanceId *string `pulumi:"fwInstanceId"`
-	// Specifies the blacklist/whitelist ID.
-	ListId *string `pulumi:"listId"`
-	// Specifies the blacklist/whitelist type.
-	// The options are `4` (blacklist) and `5` (whitelist).
-	ListType int `pulumi:"listType"`
-	// Specifies the protected object ID.
-	ObjectId string `pulumi:"objectId"`
-	// Specifies the port.
-	Port *string `pulumi:"port"`
-	// Specifies The protocol type.
-	// The options are as follows:
-	// + **6**: TCP;
-	// + **17**: UDP;
-	// + **1**: ICMP;
-	// + **-1**: any protocol;
-	Protocol *int `pulumi:"protocol"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
+	ListId       *string `pulumi:"listId"`
+	ListType     int     `pulumi:"listType"`
+	ObjectId     string  `pulumi:"objectId"`
+	Port         *string `pulumi:"port"`
+	Protocol     *int    `pulumi:"protocol"`
+	Region       *string `pulumi:"region"`
 }
 
 // A collection of values returned by getBlackWhiteLists.
 type GetBlackWhiteListsResult struct {
-	// The IP address.
-	Address *string `pulumi:"address"`
-	// The IP address type.
-	AddressType *string `pulumi:"addressType"`
-	// The description.
-	Description *string `pulumi:"description"`
-	// The direction of a black or white address.
+	Address      *string `pulumi:"address"`
+	AddressType  *string `pulumi:"addressType"`
+	Description  *string `pulumi:"description"`
 	Direction    *string `pulumi:"direction"`
 	FwInstanceId *string `pulumi:"fwInstanceId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The blacklist/whitelist ID.
-	ListId   *string `pulumi:"listId"`
-	ListType int     `pulumi:"listType"`
-	ObjectId string  `pulumi:"objectId"`
-	// The port.
-	Port *string `pulumi:"port"`
-	// The protocol type.
-	Protocol *int `pulumi:"protocol"`
-	// The blacklist and whitelist records.
-	Records []GetBlackWhiteListsRecord `pulumi:"records"`
-	Region  string                     `pulumi:"region"`
+	Id       string                     `pulumi:"id"`
+	ListId   *string                    `pulumi:"listId"`
+	ListType int                        `pulumi:"listType"`
+	ObjectId string                     `pulumi:"objectId"`
+	Port     *string                    `pulumi:"port"`
+	Protocol *int                       `pulumi:"protocol"`
+	Records  []GetBlackWhiteListsRecord `pulumi:"records"`
+	Region   string                     `pulumi:"region"`
 }
 
 func GetBlackWhiteListsOutput(ctx *pulumi.Context, args GetBlackWhiteListsOutputArgs, opts ...pulumi.InvokeOption) GetBlackWhiteListsResultOutput {
@@ -127,39 +65,17 @@ func GetBlackWhiteListsOutput(ctx *pulumi.Context, args GetBlackWhiteListsOutput
 
 // A collection of arguments for invoking getBlackWhiteLists.
 type GetBlackWhiteListsOutputArgs struct {
-	// Specifies the IP address.
-	Address pulumi.StringPtrInput `pulumi:"address"`
-	// Specifies the IP address type.
-	// The valid value can be **0** (IPv4).
-	AddressType pulumi.StringPtrInput `pulumi:"addressType"`
-	// Specifies the description.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Specifies the direction of a black or white address.
-	// The options are as follows:
-	// + **0**: source address;
-	// + **1**: destination address;
-	Direction pulumi.StringPtrInput `pulumi:"direction"`
-	// Specifies the firewall instance ID.
+	Address      pulumi.StringPtrInput `pulumi:"address"`
+	AddressType  pulumi.StringPtrInput `pulumi:"addressType"`
+	Description  pulumi.StringPtrInput `pulumi:"description"`
+	Direction    pulumi.StringPtrInput `pulumi:"direction"`
 	FwInstanceId pulumi.StringPtrInput `pulumi:"fwInstanceId"`
-	// Specifies the blacklist/whitelist ID.
-	ListId pulumi.StringPtrInput `pulumi:"listId"`
-	// Specifies the blacklist/whitelist type.
-	// The options are `4` (blacklist) and `5` (whitelist).
-	ListType pulumi.IntInput `pulumi:"listType"`
-	// Specifies the protected object ID.
-	ObjectId pulumi.StringInput `pulumi:"objectId"`
-	// Specifies the port.
-	Port pulumi.StringPtrInput `pulumi:"port"`
-	// Specifies The protocol type.
-	// The options are as follows:
-	// + **6**: TCP;
-	// + **17**: UDP;
-	// + **1**: ICMP;
-	// + **-1**: any protocol;
-	Protocol pulumi.IntPtrInput `pulumi:"protocol"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	ListId       pulumi.StringPtrInput `pulumi:"listId"`
+	ListType     pulumi.IntInput       `pulumi:"listType"`
+	ObjectId     pulumi.StringInput    `pulumi:"objectId"`
+	Port         pulumi.StringPtrInput `pulumi:"port"`
+	Protocol     pulumi.IntPtrInput    `pulumi:"protocol"`
+	Region       pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetBlackWhiteListsOutputArgs) ElementType() reflect.Type {
@@ -181,22 +97,18 @@ func (o GetBlackWhiteListsResultOutput) ToGetBlackWhiteListsResultOutputWithCont
 	return o
 }
 
-// The IP address.
 func (o GetBlackWhiteListsResultOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBlackWhiteListsResult) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
 
-// The IP address type.
 func (o GetBlackWhiteListsResultOutput) AddressType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBlackWhiteListsResult) *string { return v.AddressType }).(pulumi.StringPtrOutput)
 }
 
-// The description.
 func (o GetBlackWhiteListsResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBlackWhiteListsResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The direction of a black or white address.
 func (o GetBlackWhiteListsResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBlackWhiteListsResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
@@ -210,7 +122,6 @@ func (o GetBlackWhiteListsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBlackWhiteListsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The blacklist/whitelist ID.
 func (o GetBlackWhiteListsResultOutput) ListId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBlackWhiteListsResult) *string { return v.ListId }).(pulumi.StringPtrOutput)
 }
@@ -223,17 +134,14 @@ func (o GetBlackWhiteListsResultOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBlackWhiteListsResult) string { return v.ObjectId }).(pulumi.StringOutput)
 }
 
-// The port.
 func (o GetBlackWhiteListsResultOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBlackWhiteListsResult) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
-// The protocol type.
 func (o GetBlackWhiteListsResultOutput) Protocol() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetBlackWhiteListsResult) *int { return v.Protocol }).(pulumi.IntPtrOutput)
 }
 
-// The blacklist and whitelist records.
 func (o GetBlackWhiteListsResultOutput) Records() GetBlackWhiteListsRecordArrayOutput {
 	return o.ApplyT(func(v GetBlackWhiteListsResult) []GetBlackWhiteListsRecord { return v.Records }).(GetBlackWhiteListsRecordArrayOutput)
 }

@@ -4,79 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Manages a CBH HA instance resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const name = config.requireObject<any>("name");
- * const flavorId = config.requireObject<any>("flavorId");
- * const vpcId = config.requireObject<any>("vpcId");
- * const subnetId = config.requireObject<any>("subnetId");
- * const securityGroupId = config.requireObject<any>("securityGroupId");
- * const masterAvailabilityZone = config.requireObject<any>("masterAvailabilityZone");
- * const slaveAvailabilityZone = config.requireObject<any>("slaveAvailabilityZone");
- * const password = config.requireObject<any>("password");
- * const test = new sbercloud.CbhHaInstance("test", {
- *     name: name,
- *     flavorId: flavorId,
- *     vpcId: vpcId,
- *     subnetId: subnetId,
- *     securityGroupId: securityGroupId,
- *     masterAvailabilityZone: masterAvailabilityZone,
- *     slaveAvailabilityZone: slaveAvailabilityZone,
- *     password: password,
- *     chargingMode: "prePaid",
- *     periodUnit: "month",
- *     period: 1,
- * });
- * ```
- *
- * ## Import
- *
- * The CBH HA instance can be imported using the master instance ID and the slave instance ID, separated by a slash, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:index/cbhHaInstance:CbhHaInstance test <master_id>/<slave_id>
- * ```
- *
- * Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
- *
- * API response, security or some other reason. The missing attributes include: `charging_mode`, `period`, `period_unit`,
- *
- * `auto_renew`, `password`, `ipv6_enable`, `attach_disk_size`, `power_action`.
- *
- * It is generally recommended running `pulumi preview` after importing an instance.
- *
- * You can then decide if changes should be applied to the instance, or the resource definition should be updated
- *
- * to align with the instance. Also, you can ignore changes as below.
- *
- * hcl
- *
- * resource "sbercloud_cbh_ha_instance" "test" {
- *
- *     ...
- *
- *   lifecycle {
- *
- *     ignore_changes = [
- *     
- *       charging_mode, period, period_unit, auto_renew, password, ipv6_enable, attach_disk_size, power_action,
- *     
- *     ]
- *
- *   }
- *
- * }
- */
 export class CbhHaInstance extends pulumi.CustomResource {
     /**
      * Get an existing CbhHaInstance resource's state with the given name, ID, and optional extra
@@ -107,65 +34,38 @@ export class CbhHaInstance extends pulumi.CustomResource {
 
     /**
      * Specifies the size of the additional data disk for the CBH HA instance.
-     * The unit is TB. It refers to the additional disk size added on top of the existing disk. And the sum of the built-in
-     * disk of the instance flavor and the additional disk cannot exceed **300TB**.
-     *
-     * > 1. Storage expansion is a high-risk operation, with a certain risk of failure.
-     * <br/>2. Expansion failure may affect the usability of the instance. Please ensure to back up your data.
      */
     declare public readonly attachDiskSize: pulumi.Output<number | undefined>;
     /**
-     * Specifies whether auto-renew is enabled.
-     * Valid values are **true** and **false**. Defaults to **false**.
+     * Specifies whether auto renew is enabled.
      */
     declare public readonly autoRenew: pulumi.Output<string | undefined>;
     /**
      * Specifies the charging mode of the CBH HA instance.
-     * The options are as follows:
-     * + **postPaid**: pas-as-you-go.
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly chargingMode: pulumi.Output<string>;
     /**
-     * The data disk size of the CBH HA instance. The unit is TB. It represents the sum of the
-     * disks that come with the flavor and the disks that have already been expanded.
+     * The data disk size of the CBH HA instance.
      */
     declare public /*out*/ readonly dataDiskSize: pulumi.Output<number>;
     /**
      * Specifies the enterprise project ID to which the CBH HA instance belongs.
-     * For enterprise users, if omitted, default enterprise project will be used.
      */
     declare public readonly enterpriseProjectId: pulumi.Output<string>;
     /**
-     * Specifies the product ID of the CBH server. When updating the flavor, it can only be
-     * changed to a higher flavor.
-     *
-     * > 1. The flavor change is a high-risk operation, with a certain risk of failure.
-     * <br/>2. Flavor change failing may impact the usability of the instance. Please be sure to back up your data.
+     * Specifies the product ID of the CBH server.
      */
     declare public readonly flavorId: pulumi.Output<string>;
     /**
      * Specifies the floating IP address of the CBH HA instance.
-     *
-     * > 1. For the parameters `masterPrivateIp`, `slavePrivateIp`, and `floatingIp`, if none of them are specified,
-     * a new IP address will be assigned to each. If one is specified, then the other two must also be specified.
-     * <br>2. The CBH HA instance will automatically create two elastic network card based on `masterPrivateIp` and
-     * `slavePrivateIp`, they will be deleted as the CBH HA instance is deleted. But if the `masterPrivateIp` and
-     * `slavePrivateIp` parameters is updated, the elastic network card resources corresponding to the original master
-     * private IP and slave private IP will remain, you need to manually delete them in the console.
      */
     declare public readonly floatingIp: pulumi.Output<string>;
     /**
-     * Specifies whether the IPv6 network is enabled. Defaults to **false**.
-     *
-     * Changing this parameter will create a new resource.
+     * Specifies whether the IPv6 network is enabled.
      */
     declare public readonly ipv6Enable: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the availability zone name of the master instance.
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly masterAvailabilityZone: pulumi.Output<string>;
     /**
@@ -177,49 +77,23 @@ export class CbhHaInstance extends pulumi.CustomResource {
      */
     declare public readonly masterPrivateIp: pulumi.Output<string>;
     /**
-     * Specifies the name of the CBH HA instance. The field can contain `1` to `64`
-     * characters. Only letters, digits, underscores (_), and hyphens (-) are allowed.
-     *
-     * Changing this parameter will create a new resource.
+     * Specifies the name of the CBH HA instance.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Specifies the password for logging in to the management console. The value of the
-     * field has the following restrictions:
-     * + The value of the field must contain `8` to `32` characters.
-     * + The value of the field must contain at least three of the following: letters, digits, and special characters
-     * (!@$%^-_=+[{}]:,./?~#*).
-     * + The value of the field cannot contain the username or the username spelled backwards.
+     * Specifies the password for logging in to the management console.
      */
     declare public readonly password: pulumi.Output<string>;
     /**
      * Specifies the charging period of the CBH HA instance.
-     * If `periodUnit` is set to **month**, the value ranges from 1 to 9.
-     * If `periodUnit` is set to **year**, the value ranges from 1 to 3.
-     *
-     * This parameter is required, but it has no effect, since sbercloud doesn't have pre-paid billing type
-     * Changing this parameter will create a new resource.
      */
     declare public readonly period: pulumi.Output<number>;
     /**
      * Specifies the charging period unit of the CBH HA instance.
-     * Valid values are *month* and *year*.
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly periodUnit: pulumi.Output<string>;
     /**
      * Specifies the power action after the CBH HA instance is created.
-     * The valid values are as follows:
-     * + **start**: Startup instance.
-     * + **stop**: Shutdown instance.
-     * + **soft-reboot**: Normal reboot, shut down virtual machine service.
-     * + **hard-reboot**: Force reboot, reboot virtual machine.
-     *
-     * > The usage of `powerAction` has some limitations:
-     * <br/>1. The **start** operation can only be performed when the instance status is **SHUTOFF**.
-     * <br/>2. The **stop**, **soft-reboot**, and **hard-reboot** operations can only be performed when the instance status
-     * is **ACTIVE**.
      */
     declare public readonly powerAction: pulumi.Output<string | undefined>;
     /**
@@ -232,18 +106,14 @@ export class CbhHaInstance extends pulumi.CustomResource {
     declare public readonly publicIpId: pulumi.Output<string | undefined>;
     /**
      * Specifies the region in which to create the CBH HA instance.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
     declare public readonly region: pulumi.Output<string>;
     /**
-     * Specifies the IDs of the security group. Multiple security group IDs are
-     * separated by commas (,) without spaces.
+     * Specifies the IDs of the security group.
      */
     declare public readonly securityGroupId: pulumi.Output<string>;
     /**
      * Specifies the availability zone name of the slave instance.
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly slaveAvailabilityZone: pulumi.Output<string>;
     /**
@@ -262,9 +132,6 @@ export class CbhHaInstance extends pulumi.CustomResource {
      * Specifies the ID of a subnet.
      */
     declare public readonly subnetId: pulumi.Output<string>;
-    /**
-     * Specifies the key/value pairs to associate with the CBH HA instance.
-     */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The current version of the CBH HA instance image.
@@ -390,65 +257,38 @@ export class CbhHaInstance extends pulumi.CustomResource {
 export interface CbhHaInstanceState {
     /**
      * Specifies the size of the additional data disk for the CBH HA instance.
-     * The unit is TB. It refers to the additional disk size added on top of the existing disk. And the sum of the built-in
-     * disk of the instance flavor and the additional disk cannot exceed **300TB**.
-     *
-     * > 1. Storage expansion is a high-risk operation, with a certain risk of failure.
-     * <br/>2. Expansion failure may affect the usability of the instance. Please ensure to back up your data.
      */
     attachDiskSize?: pulumi.Input<number>;
     /**
-     * Specifies whether auto-renew is enabled.
-     * Valid values are **true** and **false**. Defaults to **false**.
+     * Specifies whether auto renew is enabled.
      */
     autoRenew?: pulumi.Input<string>;
     /**
      * Specifies the charging mode of the CBH HA instance.
-     * The options are as follows:
-     * + **postPaid**: pas-as-you-go.
-     *
-     * Changing this parameter will create a new resource.
      */
     chargingMode?: pulumi.Input<string>;
     /**
-     * The data disk size of the CBH HA instance. The unit is TB. It represents the sum of the
-     * disks that come with the flavor and the disks that have already been expanded.
+     * The data disk size of the CBH HA instance.
      */
     dataDiskSize?: pulumi.Input<number>;
     /**
      * Specifies the enterprise project ID to which the CBH HA instance belongs.
-     * For enterprise users, if omitted, default enterprise project will be used.
      */
     enterpriseProjectId?: pulumi.Input<string>;
     /**
-     * Specifies the product ID of the CBH server. When updating the flavor, it can only be
-     * changed to a higher flavor.
-     *
-     * > 1. The flavor change is a high-risk operation, with a certain risk of failure.
-     * <br/>2. Flavor change failing may impact the usability of the instance. Please be sure to back up your data.
+     * Specifies the product ID of the CBH server.
      */
     flavorId?: pulumi.Input<string>;
     /**
      * Specifies the floating IP address of the CBH HA instance.
-     *
-     * > 1. For the parameters `masterPrivateIp`, `slavePrivateIp`, and `floatingIp`, if none of them are specified,
-     * a new IP address will be assigned to each. If one is specified, then the other two must also be specified.
-     * <br>2. The CBH HA instance will automatically create two elastic network card based on `masterPrivateIp` and
-     * `slavePrivateIp`, they will be deleted as the CBH HA instance is deleted. But if the `masterPrivateIp` and
-     * `slavePrivateIp` parameters is updated, the elastic network card resources corresponding to the original master
-     * private IP and slave private IP will remain, you need to manually delete them in the console.
      */
     floatingIp?: pulumi.Input<string>;
     /**
-     * Specifies whether the IPv6 network is enabled. Defaults to **false**.
-     *
-     * Changing this parameter will create a new resource.
+     * Specifies whether the IPv6 network is enabled.
      */
     ipv6Enable?: pulumi.Input<boolean>;
     /**
      * Specifies the availability zone name of the master instance.
-     *
-     * Changing this parameter will create a new resource.
      */
     masterAvailabilityZone?: pulumi.Input<string>;
     /**
@@ -460,49 +300,23 @@ export interface CbhHaInstanceState {
      */
     masterPrivateIp?: pulumi.Input<string>;
     /**
-     * Specifies the name of the CBH HA instance. The field can contain `1` to `64`
-     * characters. Only letters, digits, underscores (_), and hyphens (-) are allowed.
-     *
-     * Changing this parameter will create a new resource.
+     * Specifies the name of the CBH HA instance.
      */
     name?: pulumi.Input<string>;
     /**
-     * Specifies the password for logging in to the management console. The value of the
-     * field has the following restrictions:
-     * + The value of the field must contain `8` to `32` characters.
-     * + The value of the field must contain at least three of the following: letters, digits, and special characters
-     * (!@$%^-_=+[{}]:,./?~#*).
-     * + The value of the field cannot contain the username or the username spelled backwards.
+     * Specifies the password for logging in to the management console.
      */
     password?: pulumi.Input<string>;
     /**
      * Specifies the charging period of the CBH HA instance.
-     * If `periodUnit` is set to **month**, the value ranges from 1 to 9.
-     * If `periodUnit` is set to **year**, the value ranges from 1 to 3.
-     *
-     * This parameter is required, but it has no effect, since sbercloud doesn't have pre-paid billing type
-     * Changing this parameter will create a new resource.
      */
     period?: pulumi.Input<number>;
     /**
      * Specifies the charging period unit of the CBH HA instance.
-     * Valid values are *month* and *year*.
-     *
-     * Changing this parameter will create a new resource.
      */
     periodUnit?: pulumi.Input<string>;
     /**
      * Specifies the power action after the CBH HA instance is created.
-     * The valid values are as follows:
-     * + **start**: Startup instance.
-     * + **stop**: Shutdown instance.
-     * + **soft-reboot**: Normal reboot, shut down virtual machine service.
-     * + **hard-reboot**: Force reboot, reboot virtual machine.
-     *
-     * > The usage of `powerAction` has some limitations:
-     * <br/>1. The **start** operation can only be performed when the instance status is **SHUTOFF**.
-     * <br/>2. The **stop**, **soft-reboot**, and **hard-reboot** operations can only be performed when the instance status
-     * is **ACTIVE**.
      */
     powerAction?: pulumi.Input<string>;
     /**
@@ -515,18 +329,14 @@ export interface CbhHaInstanceState {
     publicIpId?: pulumi.Input<string>;
     /**
      * Specifies the region in which to create the CBH HA instance.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
     region?: pulumi.Input<string>;
     /**
-     * Specifies the IDs of the security group. Multiple security group IDs are
-     * separated by commas (,) without spaces.
+     * Specifies the IDs of the security group.
      */
     securityGroupId?: pulumi.Input<string>;
     /**
      * Specifies the availability zone name of the slave instance.
-     *
-     * Changing this parameter will create a new resource.
      */
     slaveAvailabilityZone?: pulumi.Input<string>;
     /**
@@ -545,9 +355,6 @@ export interface CbhHaInstanceState {
      * Specifies the ID of a subnet.
      */
     subnetId?: pulumi.Input<string>;
-    /**
-     * Specifies the key/value pairs to associate with the CBH HA instance.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The current version of the CBH HA instance image.
@@ -565,60 +372,34 @@ export interface CbhHaInstanceState {
 export interface CbhHaInstanceArgs {
     /**
      * Specifies the size of the additional data disk for the CBH HA instance.
-     * The unit is TB. It refers to the additional disk size added on top of the existing disk. And the sum of the built-in
-     * disk of the instance flavor and the additional disk cannot exceed **300TB**.
-     *
-     * > 1. Storage expansion is a high-risk operation, with a certain risk of failure.
-     * <br/>2. Expansion failure may affect the usability of the instance. Please ensure to back up your data.
      */
     attachDiskSize?: pulumi.Input<number>;
     /**
-     * Specifies whether auto-renew is enabled.
-     * Valid values are **true** and **false**. Defaults to **false**.
+     * Specifies whether auto renew is enabled.
      */
     autoRenew?: pulumi.Input<string>;
     /**
      * Specifies the charging mode of the CBH HA instance.
-     * The options are as follows:
-     * + **postPaid**: pas-as-you-go.
-     *
-     * Changing this parameter will create a new resource.
      */
     chargingMode: pulumi.Input<string>;
     /**
      * Specifies the enterprise project ID to which the CBH HA instance belongs.
-     * For enterprise users, if omitted, default enterprise project will be used.
      */
     enterpriseProjectId?: pulumi.Input<string>;
     /**
-     * Specifies the product ID of the CBH server. When updating the flavor, it can only be
-     * changed to a higher flavor.
-     *
-     * > 1. The flavor change is a high-risk operation, with a certain risk of failure.
-     * <br/>2. Flavor change failing may impact the usability of the instance. Please be sure to back up your data.
+     * Specifies the product ID of the CBH server.
      */
     flavorId: pulumi.Input<string>;
     /**
      * Specifies the floating IP address of the CBH HA instance.
-     *
-     * > 1. For the parameters `masterPrivateIp`, `slavePrivateIp`, and `floatingIp`, if none of them are specified,
-     * a new IP address will be assigned to each. If one is specified, then the other two must also be specified.
-     * <br>2. The CBH HA instance will automatically create two elastic network card based on `masterPrivateIp` and
-     * `slavePrivateIp`, they will be deleted as the CBH HA instance is deleted. But if the `masterPrivateIp` and
-     * `slavePrivateIp` parameters is updated, the elastic network card resources corresponding to the original master
-     * private IP and slave private IP will remain, you need to manually delete them in the console.
      */
     floatingIp?: pulumi.Input<string>;
     /**
-     * Specifies whether the IPv6 network is enabled. Defaults to **false**.
-     *
-     * Changing this parameter will create a new resource.
+     * Specifies whether the IPv6 network is enabled.
      */
     ipv6Enable?: pulumi.Input<boolean>;
     /**
      * Specifies the availability zone name of the master instance.
-     *
-     * Changing this parameter will create a new resource.
      */
     masterAvailabilityZone: pulumi.Input<string>;
     /**
@@ -626,49 +407,23 @@ export interface CbhHaInstanceArgs {
      */
     masterPrivateIp?: pulumi.Input<string>;
     /**
-     * Specifies the name of the CBH HA instance. The field can contain `1` to `64`
-     * characters. Only letters, digits, underscores (_), and hyphens (-) are allowed.
-     *
-     * Changing this parameter will create a new resource.
+     * Specifies the name of the CBH HA instance.
      */
     name?: pulumi.Input<string>;
     /**
-     * Specifies the password for logging in to the management console. The value of the
-     * field has the following restrictions:
-     * + The value of the field must contain `8` to `32` characters.
-     * + The value of the field must contain at least three of the following: letters, digits, and special characters
-     * (!@$%^-_=+[{}]:,./?~#*).
-     * + The value of the field cannot contain the username or the username spelled backwards.
+     * Specifies the password for logging in to the management console.
      */
     password: pulumi.Input<string>;
     /**
      * Specifies the charging period of the CBH HA instance.
-     * If `periodUnit` is set to **month**, the value ranges from 1 to 9.
-     * If `periodUnit` is set to **year**, the value ranges from 1 to 3.
-     *
-     * This parameter is required, but it has no effect, since sbercloud doesn't have pre-paid billing type
-     * Changing this parameter will create a new resource.
      */
     period: pulumi.Input<number>;
     /**
      * Specifies the charging period unit of the CBH HA instance.
-     * Valid values are *month* and *year*.
-     *
-     * Changing this parameter will create a new resource.
      */
     periodUnit: pulumi.Input<string>;
     /**
      * Specifies the power action after the CBH HA instance is created.
-     * The valid values are as follows:
-     * + **start**: Startup instance.
-     * + **stop**: Shutdown instance.
-     * + **soft-reboot**: Normal reboot, shut down virtual machine service.
-     * + **hard-reboot**: Force reboot, reboot virtual machine.
-     *
-     * > The usage of `powerAction` has some limitations:
-     * <br/>1. The **start** operation can only be performed when the instance status is **SHUTOFF**.
-     * <br/>2. The **stop**, **soft-reboot**, and **hard-reboot** operations can only be performed when the instance status
-     * is **ACTIVE**.
      */
     powerAction?: pulumi.Input<string>;
     /**
@@ -677,18 +432,14 @@ export interface CbhHaInstanceArgs {
     publicIpId?: pulumi.Input<string>;
     /**
      * Specifies the region in which to create the CBH HA instance.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
     region?: pulumi.Input<string>;
     /**
-     * Specifies the IDs of the security group. Multiple security group IDs are
-     * separated by commas (,) without spaces.
+     * Specifies the IDs of the security group.
      */
     securityGroupId: pulumi.Input<string>;
     /**
      * Specifies the availability zone name of the slave instance.
-     *
-     * Changing this parameter will create a new resource.
      */
     slaveAvailabilityZone: pulumi.Input<string>;
     /**
@@ -699,9 +450,6 @@ export interface CbhHaInstanceArgs {
      * Specifies the ID of a subnet.
      */
     subnetId: pulumi.Input<string>;
-    /**
-     * Specifies the key/value pairs to associate with the CBH HA instance.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Specifies the ID of a VPC.

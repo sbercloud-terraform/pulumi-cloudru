@@ -12,136 +12,24 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a custom dependency version within SberCloud.
-//
-// > We recommend using this resource to replace the `FunctionGraph.Dependency` resource for managing dependency
-// packages. You can migrate smoothly because the parameter behavior of the two resources is consistent.
-//
-// ## Example Usage
-//
-// ### Create a custom dependency version using an OBS bucket path where the ZIP file is located
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			dependencyName := cfg.RequireObject("dependencyName")
-//			customDependencyLocation := cfg.RequireObject("customDependencyLocation")
-//			_, err := sbercloud.NewFgsDependencyVersion(ctx, "test", &sbercloud.FgsDependencyVersionArgs{
-//				Name:    pulumi.Any(dependencyName),
-//				Runtime: pulumi.String("Python3.6"),
-//				Link:    pulumi.Any(customDependencyLocation),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Dependency version can be imported using the resource `id`, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:index/fgsDependencyVersion:FgsDependencyVersion test <id>
-// ```
-//
-// Or using related dependency package `name` and the `version` number, separated by a slash (/), e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:index/fgsDependencyVersion:FgsDependencyVersion test <name>/<version>
-// ```
-//
-// # Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-//
-// API response, security or some other reason. The missing attributes include: `link`.
-//
-// It is generally recommended running `pulumi preview` after importing a dependency package.
-//
-// # You can then decide if changes should be applied to the resource, or the resource definition should be updated to
-//
-// align with the dependency package. Also you can ignore changes as below.
-//
-// hcl
-//
-// resource "sbercloud_fgs_dependency_version" "test" {
-//
-//	...
-//
-//	lifecycle {
-//
-//	  ignore_changes = [
-//
-//	    link,
-//
-//	  ]
-//
-//	}
-//
-// }
 type FgsDependencyVersion struct {
 	pulumi.CustomResourceState
 
 	// The ID of the dependency package corresponding to the version.
 	DependencyId pulumi.StringOutput `pulumi:"dependencyId"`
-	// Specifies the description of the custom dependency version.\
-	// The description can contain a maximum of `512` characters.
-	// Changing this will create a new resource.
+	// The description of the custom dependency version.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The unique ID of the dependency.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The OBS bucket path where the dependency package is located.
 	Link pulumi.StringOutput `pulumi:"link"`
-	// Specifies the name of the custom dependency package to which the version
-	// belongs.
-	// The name can contain a maximum of `96` characters and must start with a letter and end with a letter or digit.
-	// Only letters, digits, underscores (_), periods (.), and hyphens (-) are allowed.
-	// Changing this will create a new resource.
+	// The name of the custom dependency package to which the version belongs.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The dependency owner, **public** indicates a public dependency.
+	// The dependency owner, public indicates a public dependency.
 	Owner pulumi.StringOutput `pulumi:"owner"`
-	// Specifies the region where the custom dependency version is located.\
-	// If omitted, the provider-level region will be used. Changing this will create a new resource.
+	// The region where the custom dependency version is located.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// Specifies the runtime of the custom dependency version.
-	// The valid values are as follows:
-	// + **Java8**
-	// + **Java11**
-	// + **Node.js6.10**
-	// + **Node.js8.10**
-	// + **Node.js10.16**
-	// + **Node.js12.13**
-	// + **Node.js14.18**
-	// + **Python2.7**
-	// + **Python3.6**
-	// + **Python3.9**
-	// + **Go1.8**
-	// + **Go1.x**
-	// + **C#(.NET Core 2.0)**
-	// + **C#(.NET Core 2.1)**
-	// + **C#(.NET Core 3.1)**
-	// + **Custom**
-	// + **PHP 7.3**
-	// + **http**
-	//
-	// Changing this will create a new resource.
+	// The runtime of the custom dependency package version.
 	Runtime pulumi.StringOutput `pulumi:"runtime"`
 	// The dependency size, in bytes.
 	Size pulumi.IntOutput `pulumi:"size"`
@@ -189,47 +77,19 @@ func GetFgsDependencyVersion(ctx *pulumi.Context,
 type fgsDependencyVersionState struct {
 	// The ID of the dependency package corresponding to the version.
 	DependencyId *string `pulumi:"dependencyId"`
-	// Specifies the description of the custom dependency version.\
-	// The description can contain a maximum of `512` characters.
-	// Changing this will create a new resource.
+	// The description of the custom dependency version.
 	Description *string `pulumi:"description"`
 	// The unique ID of the dependency.
 	Etag *string `pulumi:"etag"`
 	// The OBS bucket path where the dependency package is located.
 	Link *string `pulumi:"link"`
-	// Specifies the name of the custom dependency package to which the version
-	// belongs.
-	// The name can contain a maximum of `96` characters and must start with a letter and end with a letter or digit.
-	// Only letters, digits, underscores (_), periods (.), and hyphens (-) are allowed.
-	// Changing this will create a new resource.
+	// The name of the custom dependency package to which the version belongs.
 	Name *string `pulumi:"name"`
-	// The dependency owner, **public** indicates a public dependency.
+	// The dependency owner, public indicates a public dependency.
 	Owner *string `pulumi:"owner"`
-	// Specifies the region where the custom dependency version is located.\
-	// If omitted, the provider-level region will be used. Changing this will create a new resource.
+	// The region where the custom dependency version is located.
 	Region *string `pulumi:"region"`
-	// Specifies the runtime of the custom dependency version.
-	// The valid values are as follows:
-	// + **Java8**
-	// + **Java11**
-	// + **Node.js6.10**
-	// + **Node.js8.10**
-	// + **Node.js10.16**
-	// + **Node.js12.13**
-	// + **Node.js14.18**
-	// + **Python2.7**
-	// + **Python3.6**
-	// + **Python3.9**
-	// + **Go1.8**
-	// + **Go1.x**
-	// + **C#(.NET Core 2.0)**
-	// + **C#(.NET Core 2.1)**
-	// + **C#(.NET Core 3.1)**
-	// + **Custom**
-	// + **PHP 7.3**
-	// + **http**
-	//
-	// Changing this will create a new resource.
+	// The runtime of the custom dependency package version.
 	Runtime *string `pulumi:"runtime"`
 	// The dependency size, in bytes.
 	Size *int `pulumi:"size"`
@@ -242,47 +102,19 @@ type fgsDependencyVersionState struct {
 type FgsDependencyVersionState struct {
 	// The ID of the dependency package corresponding to the version.
 	DependencyId pulumi.StringPtrInput
-	// Specifies the description of the custom dependency version.\
-	// The description can contain a maximum of `512` characters.
-	// Changing this will create a new resource.
+	// The description of the custom dependency version.
 	Description pulumi.StringPtrInput
 	// The unique ID of the dependency.
 	Etag pulumi.StringPtrInput
 	// The OBS bucket path where the dependency package is located.
 	Link pulumi.StringPtrInput
-	// Specifies the name of the custom dependency package to which the version
-	// belongs.
-	// The name can contain a maximum of `96` characters and must start with a letter and end with a letter or digit.
-	// Only letters, digits, underscores (_), periods (.), and hyphens (-) are allowed.
-	// Changing this will create a new resource.
+	// The name of the custom dependency package to which the version belongs.
 	Name pulumi.StringPtrInput
-	// The dependency owner, **public** indicates a public dependency.
+	// The dependency owner, public indicates a public dependency.
 	Owner pulumi.StringPtrInput
-	// Specifies the region where the custom dependency version is located.\
-	// If omitted, the provider-level region will be used. Changing this will create a new resource.
+	// The region where the custom dependency version is located.
 	Region pulumi.StringPtrInput
-	// Specifies the runtime of the custom dependency version.
-	// The valid values are as follows:
-	// + **Java8**
-	// + **Java11**
-	// + **Node.js6.10**
-	// + **Node.js8.10**
-	// + **Node.js10.16**
-	// + **Node.js12.13**
-	// + **Node.js14.18**
-	// + **Python2.7**
-	// + **Python3.6**
-	// + **Python3.9**
-	// + **Go1.8**
-	// + **Go1.x**
-	// + **C#(.NET Core 2.0)**
-	// + **C#(.NET Core 2.1)**
-	// + **C#(.NET Core 3.1)**
-	// + **Custom**
-	// + **PHP 7.3**
-	// + **http**
-	//
-	// Changing this will create a new resource.
+	// The runtime of the custom dependency package version.
 	Runtime pulumi.StringPtrInput
 	// The dependency size, in bytes.
 	Size pulumi.IntPtrInput
@@ -297,85 +129,29 @@ func (FgsDependencyVersionState) ElementType() reflect.Type {
 }
 
 type fgsDependencyVersionArgs struct {
-	// Specifies the description of the custom dependency version.\
-	// The description can contain a maximum of `512` characters.
-	// Changing this will create a new resource.
+	// The description of the custom dependency version.
 	Description *string `pulumi:"description"`
 	// The OBS bucket path where the dependency package is located.
 	Link string `pulumi:"link"`
-	// Specifies the name of the custom dependency package to which the version
-	// belongs.
-	// The name can contain a maximum of `96` characters and must start with a letter and end with a letter or digit.
-	// Only letters, digits, underscores (_), periods (.), and hyphens (-) are allowed.
-	// Changing this will create a new resource.
+	// The name of the custom dependency package to which the version belongs.
 	Name *string `pulumi:"name"`
-	// Specifies the region where the custom dependency version is located.\
-	// If omitted, the provider-level region will be used. Changing this will create a new resource.
+	// The region where the custom dependency version is located.
 	Region *string `pulumi:"region"`
-	// Specifies the runtime of the custom dependency version.
-	// The valid values are as follows:
-	// + **Java8**
-	// + **Java11**
-	// + **Node.js6.10**
-	// + **Node.js8.10**
-	// + **Node.js10.16**
-	// + **Node.js12.13**
-	// + **Node.js14.18**
-	// + **Python2.7**
-	// + **Python3.6**
-	// + **Python3.9**
-	// + **Go1.8**
-	// + **Go1.x**
-	// + **C#(.NET Core 2.0)**
-	// + **C#(.NET Core 2.1)**
-	// + **C#(.NET Core 3.1)**
-	// + **Custom**
-	// + **PHP 7.3**
-	// + **http**
-	//
-	// Changing this will create a new resource.
+	// The runtime of the custom dependency package version.
 	Runtime string `pulumi:"runtime"`
 }
 
 // The set of arguments for constructing a FgsDependencyVersion resource.
 type FgsDependencyVersionArgs struct {
-	// Specifies the description of the custom dependency version.\
-	// The description can contain a maximum of `512` characters.
-	// Changing this will create a new resource.
+	// The description of the custom dependency version.
 	Description pulumi.StringPtrInput
 	// The OBS bucket path where the dependency package is located.
 	Link pulumi.StringInput
-	// Specifies the name of the custom dependency package to which the version
-	// belongs.
-	// The name can contain a maximum of `96` characters and must start with a letter and end with a letter or digit.
-	// Only letters, digits, underscores (_), periods (.), and hyphens (-) are allowed.
-	// Changing this will create a new resource.
+	// The name of the custom dependency package to which the version belongs.
 	Name pulumi.StringPtrInput
-	// Specifies the region where the custom dependency version is located.\
-	// If omitted, the provider-level region will be used. Changing this will create a new resource.
+	// The region where the custom dependency version is located.
 	Region pulumi.StringPtrInput
-	// Specifies the runtime of the custom dependency version.
-	// The valid values are as follows:
-	// + **Java8**
-	// + **Java11**
-	// + **Node.js6.10**
-	// + **Node.js8.10**
-	// + **Node.js10.16**
-	// + **Node.js12.13**
-	// + **Node.js14.18**
-	// + **Python2.7**
-	// + **Python3.6**
-	// + **Python3.9**
-	// + **Go1.8**
-	// + **Go1.x**
-	// + **C#(.NET Core 2.0)**
-	// + **C#(.NET Core 2.1)**
-	// + **C#(.NET Core 3.1)**
-	// + **Custom**
-	// + **PHP 7.3**
-	// + **http**
-	//
-	// Changing this will create a new resource.
+	// The runtime of the custom dependency package version.
 	Runtime pulumi.StringInput
 }
 
@@ -471,9 +247,7 @@ func (o FgsDependencyVersionOutput) DependencyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FgsDependencyVersion) pulumi.StringOutput { return v.DependencyId }).(pulumi.StringOutput)
 }
 
-// Specifies the description of the custom dependency version.\
-// The description can contain a maximum of `512` characters.
-// Changing this will create a new resource.
+// The description of the custom dependency version.
 func (o FgsDependencyVersionOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *FgsDependencyVersion) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
@@ -488,48 +262,22 @@ func (o FgsDependencyVersionOutput) Link() pulumi.StringOutput {
 	return o.ApplyT(func(v *FgsDependencyVersion) pulumi.StringOutput { return v.Link }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the custom dependency package to which the version
-// belongs.
-// The name can contain a maximum of `96` characters and must start with a letter and end with a letter or digit.
-// Only letters, digits, underscores (_), periods (.), and hyphens (-) are allowed.
-// Changing this will create a new resource.
+// The name of the custom dependency package to which the version belongs.
 func (o FgsDependencyVersionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FgsDependencyVersion) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The dependency owner, **public** indicates a public dependency.
+// The dependency owner, public indicates a public dependency.
 func (o FgsDependencyVersionOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *FgsDependencyVersion) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }
 
-// Specifies the region where the custom dependency version is located.\
-// If omitted, the provider-level region will be used. Changing this will create a new resource.
+// The region where the custom dependency version is located.
 func (o FgsDependencyVersionOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *FgsDependencyVersion) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Specifies the runtime of the custom dependency version.
-// The valid values are as follows:
-// + **Java8**
-// + **Java11**
-// + **Node.js6.10**
-// + **Node.js8.10**
-// + **Node.js10.16**
-// + **Node.js12.13**
-// + **Node.js14.18**
-// + **Python2.7**
-// + **Python3.6**
-// + **Python3.9**
-// + **Go1.8**
-// + **Go1.x**
-// + **C#(.NET Core 2.0)**
-// + **C#(.NET Core 2.1)**
-// + **C#(.NET Core 3.1)**
-// + **Custom**
-// + **PHP 7.3**
-// + **http**
-//
-// Changing this will create a new resource.
+// The runtime of the custom dependency package version.
 func (o FgsDependencyVersionOutput) Runtime() pulumi.StringOutput {
 	return o.ApplyT(func(v *FgsDependencyVersion) pulumi.StringOutput { return v.Runtime }).(pulumi.StringOutput)
 }

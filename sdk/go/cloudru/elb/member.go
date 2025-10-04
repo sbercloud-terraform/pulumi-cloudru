@@ -12,73 +12,23 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages an ELB member resource within SberCloud. This is an alternative to `sbercloudLbMemberV2`
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/elb"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := elb.NewMember(ctx, "member_1", &elb.MemberArgs{
-//				Address:      pulumi.String("192.168.199.23"),
-//				ProtocolPort: pulumi.Int(8080),
-//				PoolId:       pulumi.Any(poolId),
-//				SubnetId:     pulumi.Any(subnetId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// ELB member can be imported using the pool ID and member ID separated by a slash, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Elb/member:Member member_1 e0bd694a-abbe-450e-b329-0931fd1cc5eb/4086b0c9-b18c-4d1c-b6b8-4c56c3ad2a9e
-// ```
 type Member struct {
 	pulumi.CustomResourceState
 
-	// The IP address of the member to receive traffic from the load balancer.
-	// Changing this creates a new member.
 	Address pulumi.StringOutput `pulumi:"address"`
-	// The administrative state of the member.
-	// A valid value is true (UP) or false (DOWN).
+	// schema: Deprecated
 	AdminStateUp        pulumi.BoolPtrOutput `pulumi:"adminStateUp"`
 	BackendServerStatus pulumi.BoolOutput    `pulumi:"backendServerStatus"`
-	// Human-readable name for the member.
-	Name            pulumi.StringOutput `pulumi:"name"`
-	OperatingStatus pulumi.StringOutput `pulumi:"operatingStatus"`
-	// The id of the pool that this member will be assigned to.
-	PoolId pulumi.StringOutput `pulumi:"poolId"`
-	// The port on which to listen for client traffic. Changing this creates a
-	// new member.
-	ProtocolPort pulumi.IntOutput `pulumi:"protocolPort"`
-	// The region in which to create the ELB member resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new member.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// The subnet in which to access the member
+	Name                pulumi.StringOutput  `pulumi:"name"`
+	OperatingStatus     pulumi.StringOutput  `pulumi:"operatingStatus"`
+	PoolId              pulumi.StringOutput  `pulumi:"poolId"`
+	ProtocolPort        pulumi.IntOutput     `pulumi:"protocolPort"`
+	Region              pulumi.StringOutput  `pulumi:"region"`
+	// the IPv4 subnet ID of the subnet in which to access the member
 	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
 	// Deprecated: tenant_id is deprecated
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
-	// A positive integer value that indicates the relative portion of traffic that this member
-	// should receive from the pool. For example, a member with a weight of 10 receives five times as much traffic as a
-	// member with a weight of 2.
-	Weight pulumi.IntOutput `pulumi:"weight"`
+	Weight   pulumi.IntOutput    `pulumi:"weight"`
 }
 
 // NewMember registers a new resource with the given unique name, arguments, and options.
@@ -123,61 +73,37 @@ func GetMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Member resources.
 type memberState struct {
-	// The IP address of the member to receive traffic from the load balancer.
-	// Changing this creates a new member.
 	Address *string `pulumi:"address"`
-	// The administrative state of the member.
-	// A valid value is true (UP) or false (DOWN).
-	AdminStateUp        *bool `pulumi:"adminStateUp"`
-	BackendServerStatus *bool `pulumi:"backendServerStatus"`
-	// Human-readable name for the member.
-	Name            *string `pulumi:"name"`
-	OperatingStatus *string `pulumi:"operatingStatus"`
-	// The id of the pool that this member will be assigned to.
-	PoolId *string `pulumi:"poolId"`
-	// The port on which to listen for client traffic. Changing this creates a
-	// new member.
-	ProtocolPort *int `pulumi:"protocolPort"`
-	// The region in which to create the ELB member resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new member.
-	Region *string `pulumi:"region"`
-	// The subnet in which to access the member
+	// schema: Deprecated
+	AdminStateUp        *bool   `pulumi:"adminStateUp"`
+	BackendServerStatus *bool   `pulumi:"backendServerStatus"`
+	Name                *string `pulumi:"name"`
+	OperatingStatus     *string `pulumi:"operatingStatus"`
+	PoolId              *string `pulumi:"poolId"`
+	ProtocolPort        *int    `pulumi:"protocolPort"`
+	Region              *string `pulumi:"region"`
+	// the IPv4 subnet ID of the subnet in which to access the member
 	SubnetId *string `pulumi:"subnetId"`
 	// Deprecated: tenant_id is deprecated
 	TenantId *string `pulumi:"tenantId"`
-	// A positive integer value that indicates the relative portion of traffic that this member
-	// should receive from the pool. For example, a member with a weight of 10 receives five times as much traffic as a
-	// member with a weight of 2.
-	Weight *int `pulumi:"weight"`
+	Weight   *int    `pulumi:"weight"`
 }
 
 type MemberState struct {
-	// The IP address of the member to receive traffic from the load balancer.
-	// Changing this creates a new member.
 	Address pulumi.StringPtrInput
-	// The administrative state of the member.
-	// A valid value is true (UP) or false (DOWN).
+	// schema: Deprecated
 	AdminStateUp        pulumi.BoolPtrInput
 	BackendServerStatus pulumi.BoolPtrInput
-	// Human-readable name for the member.
-	Name            pulumi.StringPtrInput
-	OperatingStatus pulumi.StringPtrInput
-	// The id of the pool that this member will be assigned to.
-	PoolId pulumi.StringPtrInput
-	// The port on which to listen for client traffic. Changing this creates a
-	// new member.
-	ProtocolPort pulumi.IntPtrInput
-	// The region in which to create the ELB member resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new member.
-	Region pulumi.StringPtrInput
-	// The subnet in which to access the member
+	Name                pulumi.StringPtrInput
+	OperatingStatus     pulumi.StringPtrInput
+	PoolId              pulumi.StringPtrInput
+	ProtocolPort        pulumi.IntPtrInput
+	Region              pulumi.StringPtrInput
+	// the IPv4 subnet ID of the subnet in which to access the member
 	SubnetId pulumi.StringPtrInput
 	// Deprecated: tenant_id is deprecated
 	TenantId pulumi.StringPtrInput
-	// A positive integer value that indicates the relative portion of traffic that this member
-	// should receive from the pool. For example, a member with a weight of 10 receives five times as much traffic as a
-	// member with a weight of 2.
-	Weight pulumi.IntPtrInput
+	Weight   pulumi.IntPtrInput
 }
 
 func (MemberState) ElementType() reflect.Type {
@@ -185,58 +111,34 @@ func (MemberState) ElementType() reflect.Type {
 }
 
 type memberArgs struct {
-	// The IP address of the member to receive traffic from the load balancer.
-	// Changing this creates a new member.
 	Address string `pulumi:"address"`
-	// The administrative state of the member.
-	// A valid value is true (UP) or false (DOWN).
-	AdminStateUp *bool `pulumi:"adminStateUp"`
-	// Human-readable name for the member.
-	Name *string `pulumi:"name"`
-	// The id of the pool that this member will be assigned to.
-	PoolId string `pulumi:"poolId"`
-	// The port on which to listen for client traffic. Changing this creates a
-	// new member.
-	ProtocolPort int `pulumi:"protocolPort"`
-	// The region in which to create the ELB member resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new member.
-	Region *string `pulumi:"region"`
-	// The subnet in which to access the member
+	// schema: Deprecated
+	AdminStateUp *bool   `pulumi:"adminStateUp"`
+	Name         *string `pulumi:"name"`
+	PoolId       string  `pulumi:"poolId"`
+	ProtocolPort int     `pulumi:"protocolPort"`
+	Region       *string `pulumi:"region"`
+	// the IPv4 subnet ID of the subnet in which to access the member
 	SubnetId string `pulumi:"subnetId"`
 	// Deprecated: tenant_id is deprecated
 	TenantId *string `pulumi:"tenantId"`
-	// A positive integer value that indicates the relative portion of traffic that this member
-	// should receive from the pool. For example, a member with a weight of 10 receives five times as much traffic as a
-	// member with a weight of 2.
-	Weight *int `pulumi:"weight"`
+	Weight   *int    `pulumi:"weight"`
 }
 
 // The set of arguments for constructing a Member resource.
 type MemberArgs struct {
-	// The IP address of the member to receive traffic from the load balancer.
-	// Changing this creates a new member.
 	Address pulumi.StringInput
-	// The administrative state of the member.
-	// A valid value is true (UP) or false (DOWN).
+	// schema: Deprecated
 	AdminStateUp pulumi.BoolPtrInput
-	// Human-readable name for the member.
-	Name pulumi.StringPtrInput
-	// The id of the pool that this member will be assigned to.
-	PoolId pulumi.StringInput
-	// The port on which to listen for client traffic. Changing this creates a
-	// new member.
+	Name         pulumi.StringPtrInput
+	PoolId       pulumi.StringInput
 	ProtocolPort pulumi.IntInput
-	// The region in which to create the ELB member resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new member.
-	Region pulumi.StringPtrInput
-	// The subnet in which to access the member
+	Region       pulumi.StringPtrInput
+	// the IPv4 subnet ID of the subnet in which to access the member
 	SubnetId pulumi.StringInput
 	// Deprecated: tenant_id is deprecated
 	TenantId pulumi.StringPtrInput
-	// A positive integer value that indicates the relative portion of traffic that this member
-	// should receive from the pool. For example, a member with a weight of 10 receives five times as much traffic as a
-	// member with a weight of 2.
-	Weight pulumi.IntPtrInput
+	Weight   pulumi.IntPtrInput
 }
 
 func (MemberArgs) ElementType() reflect.Type {
@@ -326,14 +228,11 @@ func (o MemberOutput) ToMemberOutputWithContext(ctx context.Context) MemberOutpu
 	return o
 }
 
-// The IP address of the member to receive traffic from the load balancer.
-// Changing this creates a new member.
 func (o MemberOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v *Member) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
 }
 
-// The administrative state of the member.
-// A valid value is true (UP) or false (DOWN).
+// schema: Deprecated
 func (o MemberOutput) AdminStateUp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Member) pulumi.BoolPtrOutput { return v.AdminStateUp }).(pulumi.BoolPtrOutput)
 }
@@ -342,7 +241,6 @@ func (o MemberOutput) BackendServerStatus() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Member) pulumi.BoolOutput { return v.BackendServerStatus }).(pulumi.BoolOutput)
 }
 
-// Human-readable name for the member.
 func (o MemberOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Member) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -351,24 +249,19 @@ func (o MemberOutput) OperatingStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Member) pulumi.StringOutput { return v.OperatingStatus }).(pulumi.StringOutput)
 }
 
-// The id of the pool that this member will be assigned to.
 func (o MemberOutput) PoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Member) pulumi.StringOutput { return v.PoolId }).(pulumi.StringOutput)
 }
 
-// The port on which to listen for client traffic. Changing this creates a
-// new member.
 func (o MemberOutput) ProtocolPort() pulumi.IntOutput {
 	return o.ApplyT(func(v *Member) pulumi.IntOutput { return v.ProtocolPort }).(pulumi.IntOutput)
 }
 
-// The region in which to create the ELB member resource. If omitted, the
-// provider-level region will be used. Changing this creates a new member.
 func (o MemberOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Member) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// The subnet in which to access the member
+// the IPv4 subnet ID of the subnet in which to access the member
 func (o MemberOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Member) pulumi.StringOutput { return v.SubnetId }).(pulumi.StringOutput)
 }
@@ -378,9 +271,6 @@ func (o MemberOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Member) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
 }
 
-// A positive integer value that indicates the relative portion of traffic that this member
-// should receive from the pool. For example, a member with a weight of 10 receives five times as much traffic as a
-// member with a weight of 2.
 func (o MemberOutput) Weight() pulumi.IntOutput {
 	return o.ApplyT(func(v *Member) pulumi.IntOutput { return v.Weight }).(pulumi.IntOutput)
 }

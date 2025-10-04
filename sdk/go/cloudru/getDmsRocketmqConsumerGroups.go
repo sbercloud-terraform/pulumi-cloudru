@@ -11,7 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of DMS rocketMQ consumer groups.
 func GetDmsRocketmqConsumerGroups(ctx *pulumi.Context, args *GetDmsRocketmqConsumerGroupsArgs, opts ...pulumi.InvokeOption) (*GetDmsRocketmqConsumerGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDmsRocketmqConsumerGroupsResult
@@ -24,38 +23,25 @@ func GetDmsRocketmqConsumerGroups(ctx *pulumi.Context, args *GetDmsRocketmqConsu
 
 // A collection of arguments for invoking getDmsRocketmqConsumerGroups.
 type GetDmsRocketmqConsumerGroupsArgs struct {
-	// Specifies whether to broadcast the consumer group. Defaults to **false**.
-	Broadcast *bool `pulumi:"broadcast"`
-	// Specifies the consumer group is enabled or not. Defaults to **true**.
-	Enabled *bool `pulumi:"enabled"`
-	// Specifies the ID of the rocketMQ instance.
-	InstanceId string `pulumi:"instanceId"`
-	// Specifies the name of the consumer group.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies the maximum number of retry times.
-	RetryMaxTimes *int `pulumi:"retryMaxTimes"`
+	Broadcast     *bool   `pulumi:"broadcast"`
+	Enabled       *bool   `pulumi:"enabled"`
+	InstanceId    string  `pulumi:"instanceId"`
+	Name          *string `pulumi:"name"`
+	Region        *string `pulumi:"region"`
+	RetryMaxTimes *int    `pulumi:"retryMaxTimes"`
 }
 
 // A collection of values returned by getDmsRocketmqConsumerGroups.
 type GetDmsRocketmqConsumerGroupsResult struct {
-	// Indicates whether to broadcast the consumer group.
-	Broadcast *bool `pulumi:"broadcast"`
-	// Indicates the consumer group is enabled or not.
-	Enabled *bool `pulumi:"enabled"`
-	// The list of consumer groups.
-	// The groups structure is documented below.
-	Groups []GetDmsRocketmqConsumerGroupsGroup `pulumi:"groups"`
+	Broadcast *bool                               `pulumi:"broadcast"`
+	Enabled   *bool                               `pulumi:"enabled"`
+	Groups    []GetDmsRocketmqConsumerGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string `pulumi:"id"`
-	InstanceId string `pulumi:"instanceId"`
-	// Indicates the name of the consumer group.
-	Name   *string `pulumi:"name"`
-	Region string  `pulumi:"region"`
-	// Indicates the maximum number of retry times.
-	RetryMaxTimes *int `pulumi:"retryMaxTimes"`
+	Id            string  `pulumi:"id"`
+	InstanceId    string  `pulumi:"instanceId"`
+	Name          *string `pulumi:"name"`
+	Region        string  `pulumi:"region"`
+	RetryMaxTimes *int    `pulumi:"retryMaxTimes"`
 }
 
 func GetDmsRocketmqConsumerGroupsOutput(ctx *pulumi.Context, args GetDmsRocketmqConsumerGroupsOutputArgs, opts ...pulumi.InvokeOption) GetDmsRocketmqConsumerGroupsResultOutput {
@@ -69,19 +55,12 @@ func GetDmsRocketmqConsumerGroupsOutput(ctx *pulumi.Context, args GetDmsRocketmq
 
 // A collection of arguments for invoking getDmsRocketmqConsumerGroups.
 type GetDmsRocketmqConsumerGroupsOutputArgs struct {
-	// Specifies whether to broadcast the consumer group. Defaults to **false**.
-	Broadcast pulumi.BoolPtrInput `pulumi:"broadcast"`
-	// Specifies the consumer group is enabled or not. Defaults to **true**.
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Specifies the ID of the rocketMQ instance.
-	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// Specifies the name of the consumer group.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the maximum number of retry times.
-	RetryMaxTimes pulumi.IntPtrInput `pulumi:"retryMaxTimes"`
+	Broadcast     pulumi.BoolPtrInput   `pulumi:"broadcast"`
+	Enabled       pulumi.BoolPtrInput   `pulumi:"enabled"`
+	InstanceId    pulumi.StringInput    `pulumi:"instanceId"`
+	Name          pulumi.StringPtrInput `pulumi:"name"`
+	Region        pulumi.StringPtrInput `pulumi:"region"`
+	RetryMaxTimes pulumi.IntPtrInput    `pulumi:"retryMaxTimes"`
 }
 
 func (GetDmsRocketmqConsumerGroupsOutputArgs) ElementType() reflect.Type {
@@ -103,18 +82,14 @@ func (o GetDmsRocketmqConsumerGroupsResultOutput) ToGetDmsRocketmqConsumerGroups
 	return o
 }
 
-// Indicates whether to broadcast the consumer group.
 func (o GetDmsRocketmqConsumerGroupsResultOutput) Broadcast() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetDmsRocketmqConsumerGroupsResult) *bool { return v.Broadcast }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates the consumer group is enabled or not.
 func (o GetDmsRocketmqConsumerGroupsResultOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetDmsRocketmqConsumerGroupsResult) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The list of consumer groups.
-// The groups structure is documented below.
 func (o GetDmsRocketmqConsumerGroupsResultOutput) Groups() GetDmsRocketmqConsumerGroupsGroupArrayOutput {
 	return o.ApplyT(func(v GetDmsRocketmqConsumerGroupsResult) []GetDmsRocketmqConsumerGroupsGroup { return v.Groups }).(GetDmsRocketmqConsumerGroupsGroupArrayOutput)
 }
@@ -128,7 +103,6 @@ func (o GetDmsRocketmqConsumerGroupsResultOutput) InstanceId() pulumi.StringOutp
 	return o.ApplyT(func(v GetDmsRocketmqConsumerGroupsResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Indicates the name of the consumer group.
 func (o GetDmsRocketmqConsumerGroupsResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDmsRocketmqConsumerGroupsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -137,7 +111,6 @@ func (o GetDmsRocketmqConsumerGroupsResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqConsumerGroupsResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// Indicates the maximum number of retry times.
 func (o GetDmsRocketmqConsumerGroupsResultOutput) RetryMaxTimes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetDmsRocketmqConsumerGroupsResult) *int { return v.RetryMaxTimes }).(pulumi.IntPtrOutput)
 }

@@ -107,33 +107,21 @@ class GetClusterResult:
     @_builtins.property
     @pulumi.getter(name="authenticationMode")
     def authentication_mode(self) -> _builtins.str:
-        """
-        Authentication mode of the cluster, possible values are x509 and rbac. Defaults to **rbac**.
-        """
         return pulumi.get(self, "authentication_mode")
 
     @_builtins.property
     @pulumi.getter(name="billingMode")
     def billing_mode(self) -> _builtins.int:
-        """
-        Charging mode of the cluster.
-        """
         return pulumi.get(self, "billing_mode")
 
     @_builtins.property
     @pulumi.getter(name="certificateClusters")
     def certificate_clusters(self) -> Sequence['outputs.GetClusterCertificateClusterResult']:
-        """
-        The certificate clusters. Structure is documented below.
-        """
         return pulumi.get(self, "certificate_clusters")
 
     @_builtins.property
     @pulumi.getter(name="certificateUsers")
     def certificate_users(self) -> Sequence['outputs.GetClusterCertificateUserResult']:
-        """
-        The certificate users. Structure is documented below.
-        """
         return pulumi.get(self, "certificate_users")
 
     @_builtins.property
@@ -144,81 +132,51 @@ class GetClusterResult:
     @_builtins.property
     @pulumi.getter(name="clusterVersion")
     def cluster_version(self) -> _builtins.str:
-        """
-        The version of cluster in string format.
-        """
         return pulumi.get(self, "cluster_version")
 
     @_builtins.property
     @pulumi.getter(name="containerNetworkCidr")
     def container_network_cidr(self) -> _builtins.str:
-        """
-        The container network segment.
-        """
         return pulumi.get(self, "container_network_cidr")
 
     @_builtins.property
     @pulumi.getter(name="containerNetworkType")
     def container_network_type(self) -> _builtins.str:
-        """
-        The container network type: **overlay_l2** , **underlay_ipvlan**, **vpc-router** or **eni**.
-        """
         return pulumi.get(self, "container_network_type")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
-        """
-        Cluster description.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
     def endpoints(self) -> Sequence['outputs.GetClusterEndpointResult']:
-        """
-        The access addresses of kube-apiserver in the cluster. Structure is documented below.
-        """
         return pulumi.get(self, "endpoints")
 
     @_builtins.property
     @pulumi.getter(name="eniSubnetCidr")
     def eni_subnet_cidr(self) -> _builtins.str:
-        """
-        ENI network segment. Specified when creating a CCE Turbo cluster.
-        """
         return pulumi.get(self, "eni_subnet_cidr")
 
     @_builtins.property
     @pulumi.getter(name="eniSubnetId")
     def eni_subnet_id(self) -> _builtins.str:
-        """
-        The **IPv4 subnet ID** of the subnet where the ENI resides. Specified when creating a CCE Turbo cluster.
-        """
         return pulumi.get(self, "eni_subnet_id")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> _builtins.str:
-        """
-        The enterprise project ID of the CCE cluster.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> _builtins.str:
-        """
-        The cluster specification in string format.
-        """
         return pulumi.get(self, "flavor_id")
 
     @_builtins.property
     @pulumi.getter(name="highwaySubnetId")
     def highway_subnet_id(self) -> _builtins.str:
-        """
-        The ID of the high speed network used to create bare metal nodes.
-        """
         return pulumi.get(self, "highway_subnet_id")
 
     @_builtins.property
@@ -229,25 +187,16 @@ class GetClusterResult:
     @_builtins.property
     @pulumi.getter(name="kubeConfigRaw")
     def kube_config_raw(self) -> _builtins.str:
-        """
-        Raw Kubernetes config to be used by kubectl and other compatible tools.
-        """
         return pulumi.get(self, "kube_config_raw")
 
     @_builtins.property
     @pulumi.getter
     def masters(self) -> Sequence['outputs.GetClusterMasterResult']:
-        """
-        Advanced configuration of master nodes. Structure is documented below.
-        """
         return pulumi.get(self, "masters")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        The user name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -258,17 +207,11 @@ class GetClusterResult:
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> _builtins.str:
-        """
-        Security group ID of the cluster.
-        """
         return pulumi.get(self, "security_group_id")
 
     @_builtins.property
     @pulumi.getter(name="serviceNetworkCidr")
     def service_network_cidr(self) -> _builtins.str:
-        """
-        The service network segment.
-        """
         return pulumi.get(self, "service_network_cidr")
 
     @_builtins.property
@@ -279,9 +222,6 @@ class GetClusterResult:
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> _builtins.str:
-        """
-        The ID of the subnet used to create the node.
-        """
         return pulumi.get(self, "subnet_id")
 
     @_builtins.property
@@ -331,28 +271,7 @@ def get_cluster(cluster_type: Optional[_builtins.str] = None,
                 vpc_id: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterResult:
     """
-    Provides details about the cluster and obtains certificate for accessing cluster information.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    cluster_name = config.require_object("clusterName")
-    cluster = sbercloud.Cce.get_cluster(name=cluster_name,
-        status="Available")
-    ```
-
-
-    :param _builtins.str cluster_type: Specifies the type of the cluster. Possible values: **VirtualMachine**, **ARM64**.
-    :param _builtins.str id: Specifies the ID of the cluster.
-    :param _builtins.str name: Specifies the name of the cluster.
-    :param _builtins.str region: Specifies the region in which to obtain the CCE cluster. If omitted, the provider-level
-           region will be used.
-    :param _builtins.str status: Specifies the status of the cluster.
-    :param _builtins.str vpc_id: Specifies the VPC ID to which the cluster belongs.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterType'] = cluster_type
@@ -398,28 +317,7 @@ def get_cluster_output(cluster_type: Optional[pulumi.Input[Optional[_builtins.st
                        vpc_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterResult]:
     """
-    Provides details about the cluster and obtains certificate for accessing cluster information.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    cluster_name = config.require_object("clusterName")
-    cluster = sbercloud.Cce.get_cluster(name=cluster_name,
-        status="Available")
-    ```
-
-
-    :param _builtins.str cluster_type: Specifies the type of the cluster. Possible values: **VirtualMachine**, **ARM64**.
-    :param _builtins.str id: Specifies the ID of the cluster.
-    :param _builtins.str name: Specifies the name of the cluster.
-    :param _builtins.str region: Specifies the region in which to obtain the CCE cluster. If omitted, the provider-level
-           region will be used.
-    :param _builtins.str status: Specifies the status of the cluster.
-    :param _builtins.str vpc_id: Specifies the VPC ID to which the cluster belongs.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterType'] = cluster_type

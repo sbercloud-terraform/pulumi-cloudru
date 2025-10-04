@@ -62,20 +62,8 @@ class NotificationFilterArgs:
 if not MYPY:
     class NotificationOperationArgsDict(TypedDict):
         resource: pulumi.Input[_builtins.str]
-        """
-        Specifies the resource type.
-        """
         service: pulumi.Input[_builtins.str]
-        """
-        Specifies the cloud service.
-        """
         trace_names: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Specifies an array of trace names.
-
-        <a name="notification_operation_users_object"></a>
-        The `operation_users` block supports:
-        """
 elif False:
     NotificationOperationArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -85,14 +73,6 @@ class NotificationOperationArgs:
                  resource: pulumi.Input[_builtins.str],
                  service: pulumi.Input[_builtins.str],
                  trace_names: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
-        """
-        :param pulumi.Input[_builtins.str] resource: Specifies the resource type.
-        :param pulumi.Input[_builtins.str] service: Specifies the cloud service.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] trace_names: Specifies an array of trace names.
-               
-               <a name="notification_operation_users_object"></a>
-               The `operation_users` block supports:
-        """
         pulumi.set(__self__, "resource", resource)
         pulumi.set(__self__, "service", service)
         pulumi.set(__self__, "trace_names", trace_names)
@@ -100,9 +80,6 @@ class NotificationOperationArgs:
     @_builtins.property
     @pulumi.getter
     def resource(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the resource type.
-        """
         return pulumi.get(self, "resource")
 
     @resource.setter
@@ -112,9 +89,6 @@ class NotificationOperationArgs:
     @_builtins.property
     @pulumi.getter
     def service(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the cloud service.
-        """
         return pulumi.get(self, "service")
 
     @service.setter
@@ -124,12 +98,6 @@ class NotificationOperationArgs:
     @_builtins.property
     @pulumi.getter(name="traceNames")
     def trace_names(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        Specifies an array of trace names.
-
-        <a name="notification_operation_users_object"></a>
-        The `operation_users` block supports:
-        """
         return pulumi.get(self, "trace_names")
 
     @trace_names.setter
@@ -140,13 +108,7 @@ class NotificationOperationArgs:
 if not MYPY:
     class NotificationOperationUserArgsDict(TypedDict):
         group: pulumi.Input[_builtins.str]
-        """
-        Specifies the IAM user group name.
-        """
         users: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Specifies an array of IAM users in the group.
-        """
 elif False:
     NotificationOperationUserArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -155,19 +117,12 @@ class NotificationOperationUserArgs:
     def __init__(__self__, *,
                  group: pulumi.Input[_builtins.str],
                  users: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
-        """
-        :param pulumi.Input[_builtins.str] group: Specifies the IAM user group name.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] users: Specifies an array of IAM users in the group.
-        """
         pulumi.set(__self__, "group", group)
         pulumi.set(__self__, "users", users)
 
     @_builtins.property
     @pulumi.getter
     def group(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the IAM user group name.
-        """
         return pulumi.get(self, "group")
 
     @group.setter
@@ -177,9 +132,6 @@ class NotificationOperationUserArgs:
     @_builtins.property
     @pulumi.getter
     def users(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        Specifies an array of IAM users in the group.
-        """
         return pulumi.get(self, "users")
 
     @users.setter

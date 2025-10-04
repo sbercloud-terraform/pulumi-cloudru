@@ -12,208 +12,13 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a CFW firewall resource within SberCloud.
-//
-// ## Example Usage
-//
-// ### Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cfw.NewFirewall(ctx, "test", &cfw.FirewallArgs{
-//				Name: pulumi.String("test"),
-//				Flavor: &cfw.FirewallFlavorArgs{
-//					Version: pulumi.String("Professional"),
-//				},
-//				Tags: pulumi.StringMap{
-//					"key": pulumi.String("value"),
-//					"foo": pulumi.String("bar"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### PrePaid firewall
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cfw.NewFirewall(ctx, "test", &cfw.FirewallArgs{
-//				Name: pulumi.String("test"),
-//				Flavor: &cfw.FirewallFlavorArgs{
-//					Version: pulumi.String("Professional"),
-//				},
-//				Tags: pulumi.StringMap{
-//					"key": pulumi.String("value"),
-//					"foo": pulumi.String("bar"),
-//				},
-//				ChargingMode: pulumi.String("prePaid"),
-//				PeriodUnit:   pulumi.String("month"),
-//				Period:       pulumi.Int(1),
-//				AutoRenew:    pulumi.String("false"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### firewall with east-west firewall
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cfw.NewFirewall(ctx, "test", &cfw.FirewallArgs{
-//				Name:                           pulumi.String("test"),
-//				EastWestFirewallInspectionCidr: pulumi.String("172.16.1.0/24"),
-//				EastWestFirewallErId:           pulumi.Any(testSbercloudErInstance.Id),
-//				EastWestFirewallMode:           pulumi.String("er"),
-//				Flavor: &cfw.FirewallFlavorArgs{
-//					Version: pulumi.String("Professional"),
-//				},
-//				Tags: pulumi.StringMap{
-//					"key": pulumi.String("value"),
-//					"foo": pulumi.String("bar"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### firewall with IPS switch and IPS protection mode
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cfw.NewFirewall(ctx, "test", &cfw.FirewallArgs{
-//				Name: pulumi.String("test"),
-//				Flavor: &cfw.FirewallFlavorArgs{
-//					Version: pulumi.String("Professional"),
-//				},
-//				Tags: pulumi.StringMap{
-//					"key": pulumi.String("value"),
-//					"foo": pulumi.String("bar"),
-//				},
-//				ChargingMode:      pulumi.String("prePaid"),
-//				PeriodUnit:        pulumi.String("month"),
-//				Period:            pulumi.Int(1),
-//				AutoRenew:         pulumi.String("false"),
-//				IpsSwitchStatus:   pulumi.Int(1),
-//				IpsProtectionMode: pulumi.Int(1),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The firewall can be imported using the `id`, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Cfw/firewall:Firewall test 6cb1ce47-9990-447e-b071-d167c5393871
-// ```
-//
-// # Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-//
-// API response, security or some other reason. The missing attributes include:
-//
-// `period_unit`, `period` and `auto_renew`. It is generally
-//
-// recommended running `pulumi preview` after importing an CFW firewall. You can then decide if changes should be applied to
-//
-// the firewall, or the resource definition should be updated to align with the firewall. Also you can ignore changes as
-//
-// below.
-//
-// hcl
-//
-// resource "sbercloud_cfw_firewall" "test" {
-//
-//	  ...
-//
-//	lifecycle {
-//
-//	  ignore_changes = [
-//
-//	    period_unit, period, auto_renew
-//
-//	  ]
-//
-//	}
-//
-// }
 type Firewall struct {
 	pulumi.CustomResourceState
 
-	// Specifies whether auto renew is enabled.
-	// Valid values are **true** and **false**. Defaults to **false**.
-	//
-	// Changing this parameter will create a new resource.
 	AutoRenew pulumi.StringPtrOutput `pulumi:"autoRenew"`
-	// Specifies the charging mode of the firewall.
-	// Valid values are **prePaid** and **postPaid**, defaults to **postPaid**.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the charging mode.
 	ChargingMode pulumi.StringPtrOutput `pulumi:"chargingMode"`
-	// Enterprise Router and Firewall Connection ID.
+	// Enterprise Router and Firewall Connection ID
 	EastWestFirewallErAttachmentId pulumi.StringOutput `pulumi:"eastWestFirewallErAttachmentId"`
 	// Specifies the ER ID of the east-west firewall.
 	EastWestFirewallErId pulumi.StringOutput `pulumi:"eastWestFirewallErId"`
@@ -222,56 +27,28 @@ type Firewall struct {
 	// The east-west firewall inspection VPC ID.
 	EastWestFirewallInspectionVpcId pulumi.StringOutput `pulumi:"eastWestFirewallInspectionVpcId"`
 	// Specifies the mode of the east-west firewall.
-	// The value can be: **er**.
 	EastWestFirewallMode pulumi.StringOutput `pulumi:"eastWestFirewallMode"`
 	// Specifies the protection statue of the east-west firewall.
-	// The value can be: `0`(enabled) and `1`(disabled). Defaults to `0`.
 	EastWestFirewallStatus pulumi.IntPtrOutput `pulumi:"eastWestFirewallStatus"`
 	// The engine type
 	EngineType pulumi.IntOutput `pulumi:"engineType"`
 	// Specifies the enterprise project ID of the firewall.
-	//
-	// Changing this parameter will create a new resource.
 	EnterpriseProjectId pulumi.StringOutput `pulumi:"enterpriseProjectId"`
 	// Specifies the flavor of the firewall.
-	// Changing this parameter will create a new resource.
-	// The flavor structure is documented below.
 	Flavor FirewallFlavorOutput `pulumi:"flavor"`
 	// The HA type.
 	HaType pulumi.IntOutput `pulumi:"haType"`
-	// Specifies the IPS protection mode of the firewall. Defaults to `0`.
-	//
-	// Valid values are as follows:
-	// + **0**: Observation Mode.
-	// + **1**: Strict Mode.
-	// + **2**: Medium Mode.
-	// + **3**: Loose Mode.
+	// Specifies the IPS protection mode of the firewall.
 	IpsProtectionMode pulumi.IntPtrOutput `pulumi:"ipsProtectionMode"`
 	// Specifies the IPS patch switch status of the firewall.
-	// The value can be `0`(disabled) and `1`(enabled). Defaults to `0`.
 	IpsSwitchStatus pulumi.IntPtrOutput `pulumi:"ipsSwitchStatus"`
 	// Specifies the firewall name.
-	//
-	// Changing this parameter will create a new resource.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the charging period.
-	// If `periodUnit` is set to **month**, the value ranges from 1 to 9.
-	// If `periodUnit` is set to **year**, the value ranges from 1 to 3.
-	// This parameter is mandatory if `chargingMode` is set to **prePaid**.
-	//
-	// Changing this parameter will create a new resource.
-	Period pulumi.IntPtrOutput `pulumi:"period"`
-	// Specifies the charging period unit.
-	// Valid values are **month** and **year**. This parameter is mandatory if `chargingMode` is set to **prePaid**.
-	//
-	// Changing this parameter will create a new resource.
+	Name       pulumi.StringOutput    `pulumi:"name"`
+	Period     pulumi.IntPtrOutput    `pulumi:"period"`
 	PeriodUnit pulumi.StringPtrOutput `pulumi:"periodUnit"`
 	// The protect objects list.
-	// The protectObjects structure is documented below.
 	ProtectObjects FirewallProtectObjectArrayOutput `pulumi:"protectObjects"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Region         pulumi.StringOutput              `pulumi:"region"`
 	// The service type.
 	ServiceType pulumi.IntOutput `pulumi:"serviceType"`
 	// The firewall status.
@@ -279,9 +56,6 @@ type Firewall struct {
 	// Whether IPv6 is supported.
 	SupportIpv6 pulumi.BoolOutput `pulumi:"supportIpv6"`
 	// Specifies the key/value pairs to associate with the firewall.
-	//
-	// <a name="Firewall_Flavor"></a>
-	// The `flavor` block supports:
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
@@ -318,17 +92,10 @@ func GetFirewall(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Firewall resources.
 type firewallState struct {
-	// Specifies whether auto renew is enabled.
-	// Valid values are **true** and **false**. Defaults to **false**.
-	//
-	// Changing this parameter will create a new resource.
 	AutoRenew *string `pulumi:"autoRenew"`
-	// Specifies the charging mode of the firewall.
-	// Valid values are **prePaid** and **postPaid**, defaults to **postPaid**.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the charging mode.
 	ChargingMode *string `pulumi:"chargingMode"`
-	// Enterprise Router and Firewall Connection ID.
+	// Enterprise Router and Firewall Connection ID
 	EastWestFirewallErAttachmentId *string `pulumi:"eastWestFirewallErAttachmentId"`
 	// Specifies the ER ID of the east-west firewall.
 	EastWestFirewallErId *string `pulumi:"eastWestFirewallErId"`
@@ -337,56 +104,28 @@ type firewallState struct {
 	// The east-west firewall inspection VPC ID.
 	EastWestFirewallInspectionVpcId *string `pulumi:"eastWestFirewallInspectionVpcId"`
 	// Specifies the mode of the east-west firewall.
-	// The value can be: **er**.
 	EastWestFirewallMode *string `pulumi:"eastWestFirewallMode"`
 	// Specifies the protection statue of the east-west firewall.
-	// The value can be: `0`(enabled) and `1`(disabled). Defaults to `0`.
 	EastWestFirewallStatus *int `pulumi:"eastWestFirewallStatus"`
 	// The engine type
 	EngineType *int `pulumi:"engineType"`
 	// Specifies the enterprise project ID of the firewall.
-	//
-	// Changing this parameter will create a new resource.
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
 	// Specifies the flavor of the firewall.
-	// Changing this parameter will create a new resource.
-	// The flavor structure is documented below.
 	Flavor *FirewallFlavor `pulumi:"flavor"`
 	// The HA type.
 	HaType *int `pulumi:"haType"`
-	// Specifies the IPS protection mode of the firewall. Defaults to `0`.
-	//
-	// Valid values are as follows:
-	// + **0**: Observation Mode.
-	// + **1**: Strict Mode.
-	// + **2**: Medium Mode.
-	// + **3**: Loose Mode.
+	// Specifies the IPS protection mode of the firewall.
 	IpsProtectionMode *int `pulumi:"ipsProtectionMode"`
 	// Specifies the IPS patch switch status of the firewall.
-	// The value can be `0`(disabled) and `1`(enabled). Defaults to `0`.
 	IpsSwitchStatus *int `pulumi:"ipsSwitchStatus"`
 	// Specifies the firewall name.
-	//
-	// Changing this parameter will create a new resource.
-	Name *string `pulumi:"name"`
-	// Specifies the charging period.
-	// If `periodUnit` is set to **month**, the value ranges from 1 to 9.
-	// If `periodUnit` is set to **year**, the value ranges from 1 to 3.
-	// This parameter is mandatory if `chargingMode` is set to **prePaid**.
-	//
-	// Changing this parameter will create a new resource.
-	Period *int `pulumi:"period"`
-	// Specifies the charging period unit.
-	// Valid values are **month** and **year**. This parameter is mandatory if `chargingMode` is set to **prePaid**.
-	//
-	// Changing this parameter will create a new resource.
+	Name       *string `pulumi:"name"`
+	Period     *int    `pulumi:"period"`
 	PeriodUnit *string `pulumi:"periodUnit"`
 	// The protect objects list.
-	// The protectObjects structure is documented below.
 	ProtectObjects []FirewallProtectObject `pulumi:"protectObjects"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
+	Region         *string                 `pulumi:"region"`
 	// The service type.
 	ServiceType *int `pulumi:"serviceType"`
 	// The firewall status.
@@ -394,24 +133,14 @@ type firewallState struct {
 	// Whether IPv6 is supported.
 	SupportIpv6 *bool `pulumi:"supportIpv6"`
 	// Specifies the key/value pairs to associate with the firewall.
-	//
-	// <a name="Firewall_Flavor"></a>
-	// The `flavor` block supports:
 	Tags map[string]string `pulumi:"tags"`
 }
 
 type FirewallState struct {
-	// Specifies whether auto renew is enabled.
-	// Valid values are **true** and **false**. Defaults to **false**.
-	//
-	// Changing this parameter will create a new resource.
 	AutoRenew pulumi.StringPtrInput
-	// Specifies the charging mode of the firewall.
-	// Valid values are **prePaid** and **postPaid**, defaults to **postPaid**.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the charging mode.
 	ChargingMode pulumi.StringPtrInput
-	// Enterprise Router and Firewall Connection ID.
+	// Enterprise Router and Firewall Connection ID
 	EastWestFirewallErAttachmentId pulumi.StringPtrInput
 	// Specifies the ER ID of the east-west firewall.
 	EastWestFirewallErId pulumi.StringPtrInput
@@ -420,56 +149,28 @@ type FirewallState struct {
 	// The east-west firewall inspection VPC ID.
 	EastWestFirewallInspectionVpcId pulumi.StringPtrInput
 	// Specifies the mode of the east-west firewall.
-	// The value can be: **er**.
 	EastWestFirewallMode pulumi.StringPtrInput
 	// Specifies the protection statue of the east-west firewall.
-	// The value can be: `0`(enabled) and `1`(disabled). Defaults to `0`.
 	EastWestFirewallStatus pulumi.IntPtrInput
 	// The engine type
 	EngineType pulumi.IntPtrInput
 	// Specifies the enterprise project ID of the firewall.
-	//
-	// Changing this parameter will create a new resource.
 	EnterpriseProjectId pulumi.StringPtrInput
 	// Specifies the flavor of the firewall.
-	// Changing this parameter will create a new resource.
-	// The flavor structure is documented below.
 	Flavor FirewallFlavorPtrInput
 	// The HA type.
 	HaType pulumi.IntPtrInput
-	// Specifies the IPS protection mode of the firewall. Defaults to `0`.
-	//
-	// Valid values are as follows:
-	// + **0**: Observation Mode.
-	// + **1**: Strict Mode.
-	// + **2**: Medium Mode.
-	// + **3**: Loose Mode.
+	// Specifies the IPS protection mode of the firewall.
 	IpsProtectionMode pulumi.IntPtrInput
 	// Specifies the IPS patch switch status of the firewall.
-	// The value can be `0`(disabled) and `1`(enabled). Defaults to `0`.
 	IpsSwitchStatus pulumi.IntPtrInput
 	// Specifies the firewall name.
-	//
-	// Changing this parameter will create a new resource.
-	Name pulumi.StringPtrInput
-	// Specifies the charging period.
-	// If `periodUnit` is set to **month**, the value ranges from 1 to 9.
-	// If `periodUnit` is set to **year**, the value ranges from 1 to 3.
-	// This parameter is mandatory if `chargingMode` is set to **prePaid**.
-	//
-	// Changing this parameter will create a new resource.
-	Period pulumi.IntPtrInput
-	// Specifies the charging period unit.
-	// Valid values are **month** and **year**. This parameter is mandatory if `chargingMode` is set to **prePaid**.
-	//
-	// Changing this parameter will create a new resource.
+	Name       pulumi.StringPtrInput
+	Period     pulumi.IntPtrInput
 	PeriodUnit pulumi.StringPtrInput
 	// The protect objects list.
-	// The protectObjects structure is documented below.
 	ProtectObjects FirewallProtectObjectArrayInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
+	Region         pulumi.StringPtrInput
 	// The service type.
 	ServiceType pulumi.IntPtrInput
 	// The firewall status.
@@ -477,9 +178,6 @@ type FirewallState struct {
 	// Whether IPv6 is supported.
 	SupportIpv6 pulumi.BoolPtrInput
 	// Specifies the key/value pairs to associate with the firewall.
-	//
-	// <a name="Firewall_Flavor"></a>
-	// The `flavor` block supports:
 	Tags pulumi.StringMapInput
 }
 
@@ -488,135 +186,61 @@ func (FirewallState) ElementType() reflect.Type {
 }
 
 type firewallArgs struct {
-	// Specifies whether auto renew is enabled.
-	// Valid values are **true** and **false**. Defaults to **false**.
-	//
-	// Changing this parameter will create a new resource.
 	AutoRenew *string `pulumi:"autoRenew"`
-	// Specifies the charging mode of the firewall.
-	// Valid values are **prePaid** and **postPaid**, defaults to **postPaid**.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the charging mode.
 	ChargingMode *string `pulumi:"chargingMode"`
 	// Specifies the ER ID of the east-west firewall.
 	EastWestFirewallErId *string `pulumi:"eastWestFirewallErId"`
 	// Specifies the inspection cidr of the east-west firewall.
 	EastWestFirewallInspectionCidr *string `pulumi:"eastWestFirewallInspectionCidr"`
 	// Specifies the mode of the east-west firewall.
-	// The value can be: **er**.
 	EastWestFirewallMode *string `pulumi:"eastWestFirewallMode"`
 	// Specifies the protection statue of the east-west firewall.
-	// The value can be: `0`(enabled) and `1`(disabled). Defaults to `0`.
 	EastWestFirewallStatus *int `pulumi:"eastWestFirewallStatus"`
 	// Specifies the enterprise project ID of the firewall.
-	//
-	// Changing this parameter will create a new resource.
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
 	// Specifies the flavor of the firewall.
-	// Changing this parameter will create a new resource.
-	// The flavor structure is documented below.
 	Flavor FirewallFlavor `pulumi:"flavor"`
-	// Specifies the IPS protection mode of the firewall. Defaults to `0`.
-	//
-	// Valid values are as follows:
-	// + **0**: Observation Mode.
-	// + **1**: Strict Mode.
-	// + **2**: Medium Mode.
-	// + **3**: Loose Mode.
+	// Specifies the IPS protection mode of the firewall.
 	IpsProtectionMode *int `pulumi:"ipsProtectionMode"`
 	// Specifies the IPS patch switch status of the firewall.
-	// The value can be `0`(disabled) and `1`(enabled). Defaults to `0`.
 	IpsSwitchStatus *int `pulumi:"ipsSwitchStatus"`
 	// Specifies the firewall name.
-	//
-	// Changing this parameter will create a new resource.
-	Name *string `pulumi:"name"`
-	// Specifies the charging period.
-	// If `periodUnit` is set to **month**, the value ranges from 1 to 9.
-	// If `periodUnit` is set to **year**, the value ranges from 1 to 3.
-	// This parameter is mandatory if `chargingMode` is set to **prePaid**.
-	//
-	// Changing this parameter will create a new resource.
-	Period *int `pulumi:"period"`
-	// Specifies the charging period unit.
-	// Valid values are **month** and **year**. This parameter is mandatory if `chargingMode` is set to **prePaid**.
-	//
-	// Changing this parameter will create a new resource.
+	Name       *string `pulumi:"name"`
+	Period     *int    `pulumi:"period"`
 	PeriodUnit *string `pulumi:"periodUnit"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
+	Region     *string `pulumi:"region"`
 	// Specifies the key/value pairs to associate with the firewall.
-	//
-	// <a name="Firewall_Flavor"></a>
-	// The `flavor` block supports:
 	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Firewall resource.
 type FirewallArgs struct {
-	// Specifies whether auto renew is enabled.
-	// Valid values are **true** and **false**. Defaults to **false**.
-	//
-	// Changing this parameter will create a new resource.
 	AutoRenew pulumi.StringPtrInput
-	// Specifies the charging mode of the firewall.
-	// Valid values are **prePaid** and **postPaid**, defaults to **postPaid**.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the charging mode.
 	ChargingMode pulumi.StringPtrInput
 	// Specifies the ER ID of the east-west firewall.
 	EastWestFirewallErId pulumi.StringPtrInput
 	// Specifies the inspection cidr of the east-west firewall.
 	EastWestFirewallInspectionCidr pulumi.StringPtrInput
 	// Specifies the mode of the east-west firewall.
-	// The value can be: **er**.
 	EastWestFirewallMode pulumi.StringPtrInput
 	// Specifies the protection statue of the east-west firewall.
-	// The value can be: `0`(enabled) and `1`(disabled). Defaults to `0`.
 	EastWestFirewallStatus pulumi.IntPtrInput
 	// Specifies the enterprise project ID of the firewall.
-	//
-	// Changing this parameter will create a new resource.
 	EnterpriseProjectId pulumi.StringPtrInput
 	// Specifies the flavor of the firewall.
-	// Changing this parameter will create a new resource.
-	// The flavor structure is documented below.
 	Flavor FirewallFlavorInput
-	// Specifies the IPS protection mode of the firewall. Defaults to `0`.
-	//
-	// Valid values are as follows:
-	// + **0**: Observation Mode.
-	// + **1**: Strict Mode.
-	// + **2**: Medium Mode.
-	// + **3**: Loose Mode.
+	// Specifies the IPS protection mode of the firewall.
 	IpsProtectionMode pulumi.IntPtrInput
 	// Specifies the IPS patch switch status of the firewall.
-	// The value can be `0`(disabled) and `1`(enabled). Defaults to `0`.
 	IpsSwitchStatus pulumi.IntPtrInput
 	// Specifies the firewall name.
-	//
-	// Changing this parameter will create a new resource.
-	Name pulumi.StringPtrInput
-	// Specifies the charging period.
-	// If `periodUnit` is set to **month**, the value ranges from 1 to 9.
-	// If `periodUnit` is set to **year**, the value ranges from 1 to 3.
-	// This parameter is mandatory if `chargingMode` is set to **prePaid**.
-	//
-	// Changing this parameter will create a new resource.
-	Period pulumi.IntPtrInput
-	// Specifies the charging period unit.
-	// Valid values are **month** and **year**. This parameter is mandatory if `chargingMode` is set to **prePaid**.
-	//
-	// Changing this parameter will create a new resource.
+	Name       pulumi.StringPtrInput
+	Period     pulumi.IntPtrInput
 	PeriodUnit pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
+	Region     pulumi.StringPtrInput
 	// Specifies the key/value pairs to associate with the firewall.
-	//
-	// <a name="Firewall_Flavor"></a>
-	// The `flavor` block supports:
 	Tags pulumi.StringMapInput
 }
 
@@ -707,23 +331,16 @@ func (o FirewallOutput) ToFirewallOutputWithContext(ctx context.Context) Firewal
 	return o
 }
 
-// Specifies whether auto renew is enabled.
-// Valid values are **true** and **false**. Defaults to **false**.
-//
-// Changing this parameter will create a new resource.
 func (o FirewallOutput) AutoRenew() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.StringPtrOutput { return v.AutoRenew }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the charging mode of the firewall.
-// Valid values are **prePaid** and **postPaid**, defaults to **postPaid**.
-//
-// Changing this parameter will create a new resource.
+// Specifies the charging mode.
 func (o FirewallOutput) ChargingMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.StringPtrOutput { return v.ChargingMode }).(pulumi.StringPtrOutput)
 }
 
-// Enterprise Router and Firewall Connection ID.
+// Enterprise Router and Firewall Connection ID
 func (o FirewallOutput) EastWestFirewallErAttachmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.EastWestFirewallErAttachmentId }).(pulumi.StringOutput)
 }
@@ -744,13 +361,11 @@ func (o FirewallOutput) EastWestFirewallInspectionVpcId() pulumi.StringOutput {
 }
 
 // Specifies the mode of the east-west firewall.
-// The value can be: **er**.
 func (o FirewallOutput) EastWestFirewallMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.EastWestFirewallMode }).(pulumi.StringOutput)
 }
 
 // Specifies the protection statue of the east-west firewall.
-// The value can be: `0`(enabled) and `1`(disabled). Defaults to `0`.
 func (o FirewallOutput) EastWestFirewallStatus() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.IntPtrOutput { return v.EastWestFirewallStatus }).(pulumi.IntPtrOutput)
 }
@@ -761,15 +376,11 @@ func (o FirewallOutput) EngineType() pulumi.IntOutput {
 }
 
 // Specifies the enterprise project ID of the firewall.
-//
-// Changing this parameter will create a new resource.
 func (o FirewallOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
 // Specifies the flavor of the firewall.
-// Changing this parameter will create a new resource.
-// The flavor structure is documented below.
 func (o FirewallOutput) Flavor() FirewallFlavorOutput {
 	return o.ApplyT(func(v *Firewall) FirewallFlavorOutput { return v.Flavor }).(FirewallFlavorOutput)
 }
@@ -779,56 +390,34 @@ func (o FirewallOutput) HaType() pulumi.IntOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.IntOutput { return v.HaType }).(pulumi.IntOutput)
 }
 
-// Specifies the IPS protection mode of the firewall. Defaults to `0`.
-//
-// Valid values are as follows:
-// + **0**: Observation Mode.
-// + **1**: Strict Mode.
-// + **2**: Medium Mode.
-// + **3**: Loose Mode.
+// Specifies the IPS protection mode of the firewall.
 func (o FirewallOutput) IpsProtectionMode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.IntPtrOutput { return v.IpsProtectionMode }).(pulumi.IntPtrOutput)
 }
 
 // Specifies the IPS patch switch status of the firewall.
-// The value can be `0`(disabled) and `1`(enabled). Defaults to `0`.
 func (o FirewallOutput) IpsSwitchStatus() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.IntPtrOutput { return v.IpsSwitchStatus }).(pulumi.IntPtrOutput)
 }
 
 // Specifies the firewall name.
-//
-// Changing this parameter will create a new resource.
 func (o FirewallOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the charging period.
-// If `periodUnit` is set to **month**, the value ranges from 1 to 9.
-// If `periodUnit` is set to **year**, the value ranges from 1 to 3.
-// This parameter is mandatory if `chargingMode` is set to **prePaid**.
-//
-// Changing this parameter will create a new resource.
 func (o FirewallOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the charging period unit.
-// Valid values are **month** and **year**. This parameter is mandatory if `chargingMode` is set to **prePaid**.
-//
-// Changing this parameter will create a new resource.
 func (o FirewallOutput) PeriodUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.StringPtrOutput { return v.PeriodUnit }).(pulumi.StringPtrOutput)
 }
 
 // The protect objects list.
-// The protectObjects structure is documented below.
 func (o FirewallOutput) ProtectObjects() FirewallProtectObjectArrayOutput {
 	return o.ApplyT(func(v *Firewall) FirewallProtectObjectArrayOutput { return v.ProtectObjects }).(FirewallProtectObjectArrayOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
 func (o FirewallOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
@@ -849,9 +438,6 @@ func (o FirewallOutput) SupportIpv6() pulumi.BoolOutput {
 }
 
 // Specifies the key/value pairs to associate with the firewall.
-//
-// <a name="Firewall_Flavor"></a>
-// The `flavor` block supports:
 func (o FirewallOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }

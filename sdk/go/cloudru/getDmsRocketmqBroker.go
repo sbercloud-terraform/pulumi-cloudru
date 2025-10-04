@@ -11,7 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of DMS rocketMQ broker.
 func GetDmsRocketmqBroker(ctx *pulumi.Context, args *GetDmsRocketmqBrokerArgs, opts ...pulumi.InvokeOption) (*GetDmsRocketmqBrokerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDmsRocketmqBrokerResult
@@ -24,16 +23,12 @@ func GetDmsRocketmqBroker(ctx *pulumi.Context, args *GetDmsRocketmqBrokerArgs, o
 
 // A collection of arguments for invoking getDmsRocketmqBroker.
 type GetDmsRocketmqBrokerArgs struct {
-	// Specifies the ID of the rocketMQ instance.
-	InstanceId string `pulumi:"instanceId"`
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
+	InstanceId string  `pulumi:"instanceId"`
+	Region     *string `pulumi:"region"`
 }
 
 // A collection of values returned by getDmsRocketmqBroker.
 type GetDmsRocketmqBrokerResult struct {
-	// Indicates the list of the brokers.
 	Brokers []string `pulumi:"brokers"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string `pulumi:"id"`
@@ -52,11 +47,8 @@ func GetDmsRocketmqBrokerOutput(ctx *pulumi.Context, args GetDmsRocketmqBrokerOu
 
 // A collection of arguments for invoking getDmsRocketmqBroker.
 type GetDmsRocketmqBrokerOutputArgs struct {
-	// Specifies the ID of the rocketMQ instance.
-	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
+	Region     pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetDmsRocketmqBrokerOutputArgs) ElementType() reflect.Type {
@@ -78,7 +70,6 @@ func (o GetDmsRocketmqBrokerResultOutput) ToGetDmsRocketmqBrokerResultOutputWith
 	return o
 }
 
-// Indicates the list of the brokers.
 func (o GetDmsRocketmqBrokerResultOutput) Brokers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDmsRocketmqBrokerResult) []string { return v.Brokers }).(pulumi.StringArrayOutput)
 }

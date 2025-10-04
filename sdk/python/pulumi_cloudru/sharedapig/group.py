@@ -37,8 +37,7 @@ class GroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GroupEnvironmentArgs']]] environments: The array of one or more environments of the associated group.
         :param pulumi.Input[_builtins.bool] force_destroy: Whether to delete all sub-resources (for API) from this group.
         :param pulumi.Input[_builtins.str] name: The group name.
-        :param pulumi.Input[_builtins.str] region: The region where the dedicated instance is located.  
-               If omitted, the provider-level region will be used. Changing this creates a new gateway group resource.
+        :param pulumi.Input[_builtins.str] region: The region where the dedicated instance is located.
         :param pulumi.Input[Sequence[pulumi.Input['GroupUrlDomainArgs']]] url_domains: The associated domain information of the group.
         """
         pulumi.set(__self__, "instance_id", instance_id)
@@ -133,8 +132,7 @@ class GroupArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The region where the dedicated instance is located.  
-        If omitted, the provider-level region will be used. Changing this creates a new gateway group resource.
+        The region where the dedicated instance is located.
         """
         return pulumi.get(self, "region")
 
@@ -179,8 +177,7 @@ class _GroupState:
         :param pulumi.Input[_builtins.bool] force_destroy: Whether to delete all sub-resources (for API) from this group.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the dedicated instance to which the group belongs.
         :param pulumi.Input[_builtins.str] name: The group name.
-        :param pulumi.Input[_builtins.str] region: The region where the dedicated instance is located.  
-               If omitted, the provider-level region will be used. Changing this creates a new gateway group resource.
+        :param pulumi.Input[_builtins.str] region: The region where the dedicated instance is located.
         :param pulumi.Input[_builtins.str] registration_time: The registration time.
         :param pulumi.Input[_builtins.str] update_time: The latest update time of the group.
         :param pulumi.Input[_builtins.str] updated_at: The latest update time of the group, in RFC3339 format.
@@ -299,8 +296,7 @@ class _GroupState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The region where the dedicated instance is located.  
-        If omitted, the provider-level region will be used. Changing this creates a new gateway group resource.
+        The region where the dedicated instance is located.
         """
         return pulumi.get(self, "region")
 
@@ -373,8 +369,7 @@ class Group(pulumi.CustomResource):
                  url_domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupUrlDomainArgs', 'GroupUrlDomainArgsDict']]]]] = None,
                  __props__=None):
         """
-        Provides an API gateway group resource.
-
+        Create a Group resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The group description.
@@ -383,8 +378,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] force_destroy: Whether to delete all sub-resources (for API) from this group.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the dedicated instance to which the group belongs.
         :param pulumi.Input[_builtins.str] name: The group name.
-        :param pulumi.Input[_builtins.str] region: The region where the dedicated instance is located.  
-               If omitted, the provider-level region will be used. Changing this creates a new gateway group resource.
+        :param pulumi.Input[_builtins.str] region: The region where the dedicated instance is located.
         :param pulumi.Input[Sequence[pulumi.Input[Union['GroupUrlDomainArgs', 'GroupUrlDomainArgsDict']]]] url_domains: The associated domain information of the group.
         """
         ...
@@ -394,8 +388,7 @@ class Group(pulumi.CustomResource):
                  args: GroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an API gateway group resource.
-
+        Create a Group resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param GroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -478,8 +471,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] force_destroy: Whether to delete all sub-resources (for API) from this group.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the dedicated instance to which the group belongs.
         :param pulumi.Input[_builtins.str] name: The group name.
-        :param pulumi.Input[_builtins.str] region: The region where the dedicated instance is located.  
-               If omitted, the provider-level region will be used. Changing this creates a new gateway group resource.
+        :param pulumi.Input[_builtins.str] region: The region where the dedicated instance is located.
         :param pulumi.Input[_builtins.str] registration_time: The registration time.
         :param pulumi.Input[_builtins.str] update_time: The latest update time of the group.
         :param pulumi.Input[_builtins.str] updated_at: The latest update time of the group, in RFC3339 format.
@@ -563,8 +555,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
         """
-        The region where the dedicated instance is located.  
-        If omitted, the provider-level region will be used. Changing this creates a new gateway group resource.
+        The region where the dedicated instance is located.
         """
         return pulumi.get(self, "region")
 

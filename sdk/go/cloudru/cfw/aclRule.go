@@ -12,361 +12,24 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a CFW ACL rule resource within SberCloud.
-//
-// ## Example Usage
-//
-// ### Create a basic rule
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := cfg.RequireObject("name")
-//			description := cfg.RequireObject("description")
-//			objectId := cfg.RequireObject("objectId")
-//			_, err := cfw.NewAclRule(ctx, "test", &cfw.AclRuleArgs{
-//				Name:              pulumi.Any(name),
-//				ObjectId:          pulumi.Any(objectId),
-//				Description:       pulumi.Any(description),
-//				Type:              pulumi.Int(0),
-//				AddressType:       pulumi.Int(0),
-//				ActionType:        pulumi.Int(0),
-//				LongConnectEnable: pulumi.Int(0),
-//				Status:            pulumi.Int(1),
-//				SourceAddresses: pulumi.StringArray{
-//					pulumi.String("1.1.1.1"),
-//				},
-//				DestinationAddresses: pulumi.StringArray{
-//					pulumi.String("1.1.1.2"),
-//				},
-//				CustomServices: cfw.AclRuleCustomServiceArray{
-//					&cfw.AclRuleCustomServiceArgs{
-//						Protocol:   pulumi.Int(6),
-//						SourcePort: pulumi.String("81"),
-//						DestPort:   pulumi.String("82"),
-//					},
-//				},
-//				Sequence: &cfw.AclRuleSequenceArgs{
-//					Top: pulumi.Int(1),
-//				},
-//				Tags: pulumi.StringMap{
-//					"key": pulumi.String("value"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Create a rule with the source address using the region list
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := cfg.RequireObject("name")
-//			description := cfg.RequireObject("description")
-//			objectId := cfg.RequireObject("objectId")
-//			_, err := cfw.NewAclRule(ctx, "test", &cfw.AclRuleArgs{
-//				Name:              pulumi.Any(name),
-//				ObjectId:          pulumi.Any(objectId),
-//				Description:       pulumi.Any(description),
-//				Type:              pulumi.Int(0),
-//				AddressType:       pulumi.Int(0),
-//				ActionType:        pulumi.Int(0),
-//				LongConnectEnable: pulumi.Int(0),
-//				Status:            pulumi.Int(1),
-//				SourceRegionLists: cfw.AclRuleSourceRegionListArray{
-//					&cfw.AclRuleSourceRegionListArgs{
-//						DescriptionCn: pulumi.String("中国"),
-//						DescriptionEn: pulumi.String("Chinese Mainland"),
-//						RegionId:      pulumi.String("CN"),
-//						RegionType:    pulumi.Int(0),
-//					},
-//				},
-//				DestinationAddresses: pulumi.StringArray{
-//					pulumi.String("1.1.1.2"),
-//				},
-//				CustomServices: cfw.AclRuleCustomServiceArray{
-//					&cfw.AclRuleCustomServiceArgs{
-//						Protocol:   pulumi.Int(6),
-//						SourcePort: pulumi.String("81"),
-//						DestPort:   pulumi.String("82"),
-//					},
-//				},
-//				Sequence: &cfw.AclRuleSequenceArgs{
-//					Top: pulumi.Int(1),
-//				},
-//				Tags: pulumi.StringMap{
-//					"key": pulumi.String("value"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Create a rule with the custom service groups
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := cfg.RequireObject("name")
-//			description := cfg.RequireObject("description")
-//			objectId := cfg.RequireObject("objectId")
-//			serviceGroupId := cfg.RequireObject("serviceGroupId")
-//			protocol := cfg.RequireObject("protocol")
-//			_, err := cfw.NewAclRule(ctx, "test", &cfw.AclRuleArgs{
-//				Name:              pulumi.Any(name),
-//				ObjectId:          pulumi.Any(objectId),
-//				Description:       pulumi.Any(description),
-//				Type:              pulumi.Int(0),
-//				AddressType:       pulumi.Int(0),
-//				ActionType:        pulumi.Int(0),
-//				LongConnectEnable: pulumi.Int(0),
-//				Status:            pulumi.Int(1),
-//				SourceAddresses: pulumi.StringArray{
-//					pulumi.String("1.1.1.1"),
-//				},
-//				DestinationAddresses: pulumi.StringArray{
-//					pulumi.String("1.1.1.2"),
-//				},
-//				CustomServiceGroups: &cfw.AclRuleCustomServiceGroupsArgs{
-//					Protocols: pulumi.IntArray{
-//						protocol,
-//					},
-//					GroupIds: pulumi.StringArray{
-//						serviceGroupId,
-//					},
-//				},
-//				Sequence: &cfw.AclRuleSequenceArgs{
-//					Top: pulumi.Int(1),
-//				},
-//				Tags: pulumi.StringMap{
-//					"key": pulumi.String("value"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Create a rule with any service
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := cfg.RequireObject("name")
-//			description := cfg.RequireObject("description")
-//			objectId := cfg.RequireObject("objectId")
-//			serviceGroupId := cfg.RequireObject("serviceGroupId")
-//			protocol := cfg.RequireObject("protocol")
-//			_, err := cfw.NewAclRule(ctx, "test", &cfw.AclRuleArgs{
-//				Name:              pulumi.Any(name),
-//				ObjectId:          pulumi.Any(objectId),
-//				Description:       pulumi.Any(description),
-//				Type:              pulumi.Int(0),
-//				AddressType:       pulumi.Int(0),
-//				ActionType:        pulumi.Int(0),
-//				LongConnectEnable: pulumi.Int(0),
-//				Status:            pulumi.Int(1),
-//				SourceAddresses: pulumi.StringArray{
-//					pulumi.String("1.1.1.1"),
-//				},
-//				DestinationAddresses: pulumi.StringArray{
-//					pulumi.String("1.1.1.2"),
-//				},
-//				Sequence: &cfw.AclRuleSequenceArgs{
-//					Top: pulumi.Int(1),
-//				},
-//				Tags: pulumi.StringMap{
-//					"key": pulumi.String("value"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Create a rule with any source address
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := cfg.RequireObject("name")
-//			description := cfg.RequireObject("description")
-//			objectId := cfg.RequireObject("objectId")
-//			serviceGroupId := cfg.RequireObject("serviceGroupId")
-//			protocol := cfg.RequireObject("protocol")
-//			_, err := cfw.NewAclRule(ctx, "test", &cfw.AclRuleArgs{
-//				Name:              pulumi.Any(name),
-//				ObjectId:          pulumi.Any(objectId),
-//				Description:       pulumi.Any(description),
-//				Type:              pulumi.Int(0),
-//				AddressType:       pulumi.Int(0),
-//				ActionType:        pulumi.Int(0),
-//				LongConnectEnable: pulumi.Int(0),
-//				Status:            pulumi.Int(1),
-//				DestinationAddresses: pulumi.StringArray{
-//					pulumi.String("1.1.1.2"),
-//				},
-//				CustomServices: cfw.AclRuleCustomServiceArray{
-//					&cfw.AclRuleCustomServiceArgs{
-//						Protocol:   pulumi.Int(6),
-//						SourcePort: pulumi.String("81"),
-//						DestPort:   pulumi.String("82"),
-//					},
-//				},
-//				Sequence: &cfw.AclRuleSequenceArgs{
-//					Top: pulumi.Int(1),
-//				},
-//				Tags: pulumi.StringMap{
-//					"key": pulumi.String("value"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The ACL rule can be imported using `object_id`, `id`, separated by a slash, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Cfw/aclRule:AclRule test <object_id>/<id>
-// ```
-//
-// # Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-//
-// API response, security or some other reason.
-//
-// The missing attributes include: `sequence`, `type`, `predefined_service_groups` and `source_predefined_groups`.
-//
-// It is generally recommended running `pulumi preview` after importing the resource.
-//
-// # You can then decide if changes should be applied to the instance, or the resource definition should be updated to
-//
-// align with the instance. Also you can ignore changes as below.
-//
-// hcl
-//
-// resource "sbercloud_cfw_acl_rule" "test" {
-//
-//	  ...
-//
-//	lifecycle {
-//
-//	  ignore_changes = [
-//
-//	    sequence, type, predefined_service_groups, source_predefined_groups,
-//
-//	  ]
-//
-//	}
-//
-// }
 type AclRule struct {
 	pulumi.CustomResourceState
 
 	// The action type.
-	// The value can be `0` (allow), `1` (deny).
 	ActionType pulumi.IntOutput `pulumi:"actionType"`
 	// The address type.
-	// The value can be `0` (IPv4), `1` (IPv6).
 	AddressType pulumi.IntOutput `pulumi:"addressType"`
 	// The application list.
-	// The valid value can be **HTTP**, **HTTPS**, **TLS1**, **DNS**, **SSH**, **MYSQL**, **SMTP**, **RDP**, **RDPS**,
-	// **VNC**, **POP3**, **IMAP4**, **SMTPS**, **POP3S**, **FTPS**, **ANY**, **BGP** and so on.
 	Applications pulumi.StringArrayOutput `pulumi:"applications"`
 	// The custom service group list.
-	// The customServiceGroups structure is documented below.
 	CustomServiceGroups AclRuleCustomServiceGroupsPtrOutput `pulumi:"customServiceGroups"`
 	// The custom service configuration.
-	// The customServices structure is documented below.
 	CustomServices AclRuleCustomServiceArrayOutput `pulumi:"customServices"`
 	// The rule description.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The destination address group list.
 	DestinationAddressGroups pulumi.StringArrayOutput `pulumi:"destinationAddressGroups"`
 	// The destination address type.
-	// The value can be `0` (IPv4), `1` (IPv6).
 	DestinationAddressType pulumi.IntPtrOutput `pulumi:"destinationAddressType"`
 	// The destination IP address list.
 	DestinationAddresses pulumi.StringArrayOutput `pulumi:"destinationAddresses"`
@@ -377,16 +40,10 @@ type AclRule struct {
 	// The destination domain group name.
 	DestinationDomainGroupName pulumi.StringPtrOutput `pulumi:"destinationDomainGroupName"`
 	// The destination domain group type.
-	// The options are as follows:
-	// + **4**: application domain name group;
-	// + **6**: network domain name group;
 	DestinationDomainGroupType pulumi.IntPtrOutput `pulumi:"destinationDomainGroupType"`
 	// The destination region list.
-	// The destinationRegionList structure is documented below.
 	DestinationRegionLists AclRuleDestinationRegionListArrayOutput `pulumi:"destinationRegionLists"`
-	// The rule direction. The options are as follows:
-	// + **0**: inbound;
-	// + **1**: outbound;
+	// The rule direction.
 	Direction      pulumi.IntOutput       `pulumi:"direction"`
 	EnableForceNew pulumi.StringPtrOutput `pulumi:"enableForceNew"`
 	// Whether to support persistent connections.
@@ -402,41 +59,27 @@ type AclRule struct {
 	// The protected object ID.
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
 	// The predefined service group list.
-	// The predefinedServiceGroups structure is documented below.
 	PredefinedServiceGroups AclRulePredefinedServiceGroupsPtrOutput `pulumi:"predefinedServiceGroups"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Region                  pulumi.StringOutput                     `pulumi:"region"`
 	// The number of times the ACL rule is hit.
-	// Setting the value to **0** will clear the hit count. Value options: **0**.
 	RuleHitCount pulumi.StringOutput `pulumi:"ruleHitCount"`
 	// The sequence configuration.
-	// The sequence structure is documented below.
 	Sequence AclRuleSequenceOutput `pulumi:"sequence"`
 	// The source address group list.
 	SourceAddressGroups pulumi.StringArrayOutput `pulumi:"sourceAddressGroups"`
 	// The source address type.
-	// The value can be `0` (IPv4), `1` (IPv6).
 	SourceAddressType pulumi.IntPtrOutput `pulumi:"sourceAddressType"`
 	// The source IP address list.
 	SourceAddresses pulumi.StringArrayOutput `pulumi:"sourceAddresses"`
 	// The source predefined address group list.
 	SourcePredefinedGroups pulumi.StringArrayOutput `pulumi:"sourcePredefinedGroups"`
 	// The source region list.
-	// The sourceRegionList structure is documented below.
 	SourceRegionLists AclRuleSourceRegionListArrayOutput `pulumi:"sourceRegionLists"`
-	// The rule status. The options are as follows:
-	// + **0**: disabled;
-	// + **1**: enabled;
+	// The rule status.
 	Status pulumi.IntOutput `pulumi:"status"`
 	// The key/value pairs to associate with the ACL rule.
-	//
-	// <a name="Sequence"></a>
-	// The `sequence` block supports:
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The rule type.
-	// The value can be `0` (Internet rule), `1` (VPC rule), or `2` (NAT rule).
 	Type pulumi.IntOutput `pulumi:"type"`
 }
 
@@ -492,27 +135,20 @@ func GetAclRule(ctx *pulumi.Context,
 // Input properties used for looking up and filtering AclRule resources.
 type aclRuleState struct {
 	// The action type.
-	// The value can be `0` (allow), `1` (deny).
 	ActionType *int `pulumi:"actionType"`
 	// The address type.
-	// The value can be `0` (IPv4), `1` (IPv6).
 	AddressType *int `pulumi:"addressType"`
 	// The application list.
-	// The valid value can be **HTTP**, **HTTPS**, **TLS1**, **DNS**, **SSH**, **MYSQL**, **SMTP**, **RDP**, **RDPS**,
-	// **VNC**, **POP3**, **IMAP4**, **SMTPS**, **POP3S**, **FTPS**, **ANY**, **BGP** and so on.
 	Applications []string `pulumi:"applications"`
 	// The custom service group list.
-	// The customServiceGroups structure is documented below.
 	CustomServiceGroups *AclRuleCustomServiceGroups `pulumi:"customServiceGroups"`
 	// The custom service configuration.
-	// The customServices structure is documented below.
 	CustomServices []AclRuleCustomService `pulumi:"customServices"`
 	// The rule description.
 	Description *string `pulumi:"description"`
 	// The destination address group list.
 	DestinationAddressGroups []string `pulumi:"destinationAddressGroups"`
 	// The destination address type.
-	// The value can be `0` (IPv4), `1` (IPv6).
 	DestinationAddressType *int `pulumi:"destinationAddressType"`
 	// The destination IP address list.
 	DestinationAddresses []string `pulumi:"destinationAddresses"`
@@ -523,16 +159,10 @@ type aclRuleState struct {
 	// The destination domain group name.
 	DestinationDomainGroupName *string `pulumi:"destinationDomainGroupName"`
 	// The destination domain group type.
-	// The options are as follows:
-	// + **4**: application domain name group;
-	// + **6**: network domain name group;
 	DestinationDomainGroupType *int `pulumi:"destinationDomainGroupType"`
 	// The destination region list.
-	// The destinationRegionList structure is documented below.
 	DestinationRegionLists []AclRuleDestinationRegionList `pulumi:"destinationRegionLists"`
-	// The rule direction. The options are as follows:
-	// + **0**: inbound;
-	// + **1**: outbound;
+	// The rule direction.
 	Direction      *int    `pulumi:"direction"`
 	EnableForceNew *string `pulumi:"enableForceNew"`
 	// Whether to support persistent connections.
@@ -548,67 +178,46 @@ type aclRuleState struct {
 	// The protected object ID.
 	ObjectId *string `pulumi:"objectId"`
 	// The predefined service group list.
-	// The predefinedServiceGroups structure is documented below.
 	PredefinedServiceGroups *AclRulePredefinedServiceGroups `pulumi:"predefinedServiceGroups"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region *string `pulumi:"region"`
+	Region                  *string                         `pulumi:"region"`
 	// The number of times the ACL rule is hit.
-	// Setting the value to **0** will clear the hit count. Value options: **0**.
 	RuleHitCount *string `pulumi:"ruleHitCount"`
 	// The sequence configuration.
-	// The sequence structure is documented below.
 	Sequence *AclRuleSequence `pulumi:"sequence"`
 	// The source address group list.
 	SourceAddressGroups []string `pulumi:"sourceAddressGroups"`
 	// The source address type.
-	// The value can be `0` (IPv4), `1` (IPv6).
 	SourceAddressType *int `pulumi:"sourceAddressType"`
 	// The source IP address list.
 	SourceAddresses []string `pulumi:"sourceAddresses"`
 	// The source predefined address group list.
 	SourcePredefinedGroups []string `pulumi:"sourcePredefinedGroups"`
 	// The source region list.
-	// The sourceRegionList structure is documented below.
 	SourceRegionLists []AclRuleSourceRegionList `pulumi:"sourceRegionLists"`
-	// The rule status. The options are as follows:
-	// + **0**: disabled;
-	// + **1**: enabled;
+	// The rule status.
 	Status *int `pulumi:"status"`
 	// The key/value pairs to associate with the ACL rule.
-	//
-	// <a name="Sequence"></a>
-	// The `sequence` block supports:
 	Tags map[string]string `pulumi:"tags"`
 	// The rule type.
-	// The value can be `0` (Internet rule), `1` (VPC rule), or `2` (NAT rule).
 	Type *int `pulumi:"type"`
 }
 
 type AclRuleState struct {
 	// The action type.
-	// The value can be `0` (allow), `1` (deny).
 	ActionType pulumi.IntPtrInput
 	// The address type.
-	// The value can be `0` (IPv4), `1` (IPv6).
 	AddressType pulumi.IntPtrInput
 	// The application list.
-	// The valid value can be **HTTP**, **HTTPS**, **TLS1**, **DNS**, **SSH**, **MYSQL**, **SMTP**, **RDP**, **RDPS**,
-	// **VNC**, **POP3**, **IMAP4**, **SMTPS**, **POP3S**, **FTPS**, **ANY**, **BGP** and so on.
 	Applications pulumi.StringArrayInput
 	// The custom service group list.
-	// The customServiceGroups structure is documented below.
 	CustomServiceGroups AclRuleCustomServiceGroupsPtrInput
 	// The custom service configuration.
-	// The customServices structure is documented below.
 	CustomServices AclRuleCustomServiceArrayInput
 	// The rule description.
 	Description pulumi.StringPtrInput
 	// The destination address group list.
 	DestinationAddressGroups pulumi.StringArrayInput
 	// The destination address type.
-	// The value can be `0` (IPv4), `1` (IPv6).
 	DestinationAddressType pulumi.IntPtrInput
 	// The destination IP address list.
 	DestinationAddresses pulumi.StringArrayInput
@@ -619,16 +228,10 @@ type AclRuleState struct {
 	// The destination domain group name.
 	DestinationDomainGroupName pulumi.StringPtrInput
 	// The destination domain group type.
-	// The options are as follows:
-	// + **4**: application domain name group;
-	// + **6**: network domain name group;
 	DestinationDomainGroupType pulumi.IntPtrInput
 	// The destination region list.
-	// The destinationRegionList structure is documented below.
 	DestinationRegionLists AclRuleDestinationRegionListArrayInput
-	// The rule direction. The options are as follows:
-	// + **0**: inbound;
-	// + **1**: outbound;
+	// The rule direction.
 	Direction      pulumi.IntPtrInput
 	EnableForceNew pulumi.StringPtrInput
 	// Whether to support persistent connections.
@@ -644,41 +247,27 @@ type AclRuleState struct {
 	// The protected object ID.
 	ObjectId pulumi.StringPtrInput
 	// The predefined service group list.
-	// The predefinedServiceGroups structure is documented below.
 	PredefinedServiceGroups AclRulePredefinedServiceGroupsPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region pulumi.StringPtrInput
+	Region                  pulumi.StringPtrInput
 	// The number of times the ACL rule is hit.
-	// Setting the value to **0** will clear the hit count. Value options: **0**.
 	RuleHitCount pulumi.StringPtrInput
 	// The sequence configuration.
-	// The sequence structure is documented below.
 	Sequence AclRuleSequencePtrInput
 	// The source address group list.
 	SourceAddressGroups pulumi.StringArrayInput
 	// The source address type.
-	// The value can be `0` (IPv4), `1` (IPv6).
 	SourceAddressType pulumi.IntPtrInput
 	// The source IP address list.
 	SourceAddresses pulumi.StringArrayInput
 	// The source predefined address group list.
 	SourcePredefinedGroups pulumi.StringArrayInput
 	// The source region list.
-	// The sourceRegionList structure is documented below.
 	SourceRegionLists AclRuleSourceRegionListArrayInput
-	// The rule status. The options are as follows:
-	// + **0**: disabled;
-	// + **1**: enabled;
+	// The rule status.
 	Status pulumi.IntPtrInput
 	// The key/value pairs to associate with the ACL rule.
-	//
-	// <a name="Sequence"></a>
-	// The `sequence` block supports:
 	Tags pulumi.StringMapInput
 	// The rule type.
-	// The value can be `0` (Internet rule), `1` (VPC rule), or `2` (NAT rule).
 	Type pulumi.IntPtrInput
 }
 
@@ -688,27 +277,20 @@ func (AclRuleState) ElementType() reflect.Type {
 
 type aclRuleArgs struct {
 	// The action type.
-	// The value can be `0` (allow), `1` (deny).
 	ActionType int `pulumi:"actionType"`
 	// The address type.
-	// The value can be `0` (IPv4), `1` (IPv6).
 	AddressType int `pulumi:"addressType"`
 	// The application list.
-	// The valid value can be **HTTP**, **HTTPS**, **TLS1**, **DNS**, **SSH**, **MYSQL**, **SMTP**, **RDP**, **RDPS**,
-	// **VNC**, **POP3**, **IMAP4**, **SMTPS**, **POP3S**, **FTPS**, **ANY**, **BGP** and so on.
 	Applications []string `pulumi:"applications"`
 	// The custom service group list.
-	// The customServiceGroups structure is documented below.
 	CustomServiceGroups *AclRuleCustomServiceGroups `pulumi:"customServiceGroups"`
 	// The custom service configuration.
-	// The customServices structure is documented below.
 	CustomServices []AclRuleCustomService `pulumi:"customServices"`
 	// The rule description.
 	Description *string `pulumi:"description"`
 	// The destination address group list.
 	DestinationAddressGroups []string `pulumi:"destinationAddressGroups"`
 	// The destination address type.
-	// The value can be `0` (IPv4), `1` (IPv6).
 	DestinationAddressType *int `pulumi:"destinationAddressType"`
 	// The destination IP address list.
 	DestinationAddresses []string `pulumi:"destinationAddresses"`
@@ -719,16 +301,10 @@ type aclRuleArgs struct {
 	// The destination domain group name.
 	DestinationDomainGroupName *string `pulumi:"destinationDomainGroupName"`
 	// The destination domain group type.
-	// The options are as follows:
-	// + **4**: application domain name group;
-	// + **6**: network domain name group;
 	DestinationDomainGroupType *int `pulumi:"destinationDomainGroupType"`
 	// The destination region list.
-	// The destinationRegionList structure is documented below.
 	DestinationRegionLists []AclRuleDestinationRegionList `pulumi:"destinationRegionLists"`
-	// The rule direction. The options are as follows:
-	// + **0**: inbound;
-	// + **1**: outbound;
+	// The rule direction.
 	Direction      *int    `pulumi:"direction"`
 	EnableForceNew *string `pulumi:"enableForceNew"`
 	// Whether to support persistent connections.
@@ -744,68 +320,47 @@ type aclRuleArgs struct {
 	// The protected object ID.
 	ObjectId string `pulumi:"objectId"`
 	// The predefined service group list.
-	// The predefinedServiceGroups structure is documented below.
 	PredefinedServiceGroups *AclRulePredefinedServiceGroups `pulumi:"predefinedServiceGroups"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region *string `pulumi:"region"`
+	Region                  *string                         `pulumi:"region"`
 	// The number of times the ACL rule is hit.
-	// Setting the value to **0** will clear the hit count. Value options: **0**.
 	RuleHitCount *string `pulumi:"ruleHitCount"`
 	// The sequence configuration.
-	// The sequence structure is documented below.
 	Sequence AclRuleSequence `pulumi:"sequence"`
 	// The source address group list.
 	SourceAddressGroups []string `pulumi:"sourceAddressGroups"`
 	// The source address type.
-	// The value can be `0` (IPv4), `1` (IPv6).
 	SourceAddressType *int `pulumi:"sourceAddressType"`
 	// The source IP address list.
 	SourceAddresses []string `pulumi:"sourceAddresses"`
 	// The source predefined address group list.
 	SourcePredefinedGroups []string `pulumi:"sourcePredefinedGroups"`
 	// The source region list.
-	// The sourceRegionList structure is documented below.
 	SourceRegionLists []AclRuleSourceRegionList `pulumi:"sourceRegionLists"`
-	// The rule status. The options are as follows:
-	// + **0**: disabled;
-	// + **1**: enabled;
+	// The rule status.
 	Status int `pulumi:"status"`
 	// The key/value pairs to associate with the ACL rule.
-	//
-	// <a name="Sequence"></a>
-	// The `sequence` block supports:
 	Tags map[string]string `pulumi:"tags"`
 	// The rule type.
-	// The value can be `0` (Internet rule), `1` (VPC rule), or `2` (NAT rule).
 	Type int `pulumi:"type"`
 }
 
 // The set of arguments for constructing a AclRule resource.
 type AclRuleArgs struct {
 	// The action type.
-	// The value can be `0` (allow), `1` (deny).
 	ActionType pulumi.IntInput
 	// The address type.
-	// The value can be `0` (IPv4), `1` (IPv6).
 	AddressType pulumi.IntInput
 	// The application list.
-	// The valid value can be **HTTP**, **HTTPS**, **TLS1**, **DNS**, **SSH**, **MYSQL**, **SMTP**, **RDP**, **RDPS**,
-	// **VNC**, **POP3**, **IMAP4**, **SMTPS**, **POP3S**, **FTPS**, **ANY**, **BGP** and so on.
 	Applications pulumi.StringArrayInput
 	// The custom service group list.
-	// The customServiceGroups structure is documented below.
 	CustomServiceGroups AclRuleCustomServiceGroupsPtrInput
 	// The custom service configuration.
-	// The customServices structure is documented below.
 	CustomServices AclRuleCustomServiceArrayInput
 	// The rule description.
 	Description pulumi.StringPtrInput
 	// The destination address group list.
 	DestinationAddressGroups pulumi.StringArrayInput
 	// The destination address type.
-	// The value can be `0` (IPv4), `1` (IPv6).
 	DestinationAddressType pulumi.IntPtrInput
 	// The destination IP address list.
 	DestinationAddresses pulumi.StringArrayInput
@@ -816,16 +371,10 @@ type AclRuleArgs struct {
 	// The destination domain group name.
 	DestinationDomainGroupName pulumi.StringPtrInput
 	// The destination domain group type.
-	// The options are as follows:
-	// + **4**: application domain name group;
-	// + **6**: network domain name group;
 	DestinationDomainGroupType pulumi.IntPtrInput
 	// The destination region list.
-	// The destinationRegionList structure is documented below.
 	DestinationRegionLists AclRuleDestinationRegionListArrayInput
-	// The rule direction. The options are as follows:
-	// + **0**: inbound;
-	// + **1**: outbound;
+	// The rule direction.
 	Direction      pulumi.IntPtrInput
 	EnableForceNew pulumi.StringPtrInput
 	// Whether to support persistent connections.
@@ -841,41 +390,27 @@ type AclRuleArgs struct {
 	// The protected object ID.
 	ObjectId pulumi.StringInput
 	// The predefined service group list.
-	// The predefinedServiceGroups structure is documented below.
 	PredefinedServiceGroups AclRulePredefinedServiceGroupsPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region pulumi.StringPtrInput
+	Region                  pulumi.StringPtrInput
 	// The number of times the ACL rule is hit.
-	// Setting the value to **0** will clear the hit count. Value options: **0**.
 	RuleHitCount pulumi.StringPtrInput
 	// The sequence configuration.
-	// The sequence structure is documented below.
 	Sequence AclRuleSequenceInput
 	// The source address group list.
 	SourceAddressGroups pulumi.StringArrayInput
 	// The source address type.
-	// The value can be `0` (IPv4), `1` (IPv6).
 	SourceAddressType pulumi.IntPtrInput
 	// The source IP address list.
 	SourceAddresses pulumi.StringArrayInput
 	// The source predefined address group list.
 	SourcePredefinedGroups pulumi.StringArrayInput
 	// The source region list.
-	// The sourceRegionList structure is documented below.
 	SourceRegionLists AclRuleSourceRegionListArrayInput
-	// The rule status. The options are as follows:
-	// + **0**: disabled;
-	// + **1**: enabled;
+	// The rule status.
 	Status pulumi.IntInput
 	// The key/value pairs to associate with the ACL rule.
-	//
-	// <a name="Sequence"></a>
-	// The `sequence` block supports:
 	Tags pulumi.StringMapInput
 	// The rule type.
-	// The value can be `0` (Internet rule), `1` (VPC rule), or `2` (NAT rule).
 	Type pulumi.IntInput
 }
 
@@ -967,32 +502,26 @@ func (o AclRuleOutput) ToAclRuleOutputWithContext(ctx context.Context) AclRuleOu
 }
 
 // The action type.
-// The value can be `0` (allow), `1` (deny).
 func (o AclRuleOutput) ActionType() pulumi.IntOutput {
 	return o.ApplyT(func(v *AclRule) pulumi.IntOutput { return v.ActionType }).(pulumi.IntOutput)
 }
 
 // The address type.
-// The value can be `0` (IPv4), `1` (IPv6).
 func (o AclRuleOutput) AddressType() pulumi.IntOutput {
 	return o.ApplyT(func(v *AclRule) pulumi.IntOutput { return v.AddressType }).(pulumi.IntOutput)
 }
 
 // The application list.
-// The valid value can be **HTTP**, **HTTPS**, **TLS1**, **DNS**, **SSH**, **MYSQL**, **SMTP**, **RDP**, **RDPS**,
-// **VNC**, **POP3**, **IMAP4**, **SMTPS**, **POP3S**, **FTPS**, **ANY**, **BGP** and so on.
 func (o AclRuleOutput) Applications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AclRule) pulumi.StringArrayOutput { return v.Applications }).(pulumi.StringArrayOutput)
 }
 
 // The custom service group list.
-// The customServiceGroups structure is documented below.
 func (o AclRuleOutput) CustomServiceGroups() AclRuleCustomServiceGroupsPtrOutput {
 	return o.ApplyT(func(v *AclRule) AclRuleCustomServiceGroupsPtrOutput { return v.CustomServiceGroups }).(AclRuleCustomServiceGroupsPtrOutput)
 }
 
 // The custom service configuration.
-// The customServices structure is documented below.
 func (o AclRuleOutput) CustomServices() AclRuleCustomServiceArrayOutput {
 	return o.ApplyT(func(v *AclRule) AclRuleCustomServiceArrayOutput { return v.CustomServices }).(AclRuleCustomServiceArrayOutput)
 }
@@ -1008,7 +537,6 @@ func (o AclRuleOutput) DestinationAddressGroups() pulumi.StringArrayOutput {
 }
 
 // The destination address type.
-// The value can be `0` (IPv4), `1` (IPv6).
 func (o AclRuleOutput) DestinationAddressType() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AclRule) pulumi.IntPtrOutput { return v.DestinationAddressType }).(pulumi.IntPtrOutput)
 }
@@ -1034,22 +562,16 @@ func (o AclRuleOutput) DestinationDomainGroupName() pulumi.StringPtrOutput {
 }
 
 // The destination domain group type.
-// The options are as follows:
-// + **4**: application domain name group;
-// + **6**: network domain name group;
 func (o AclRuleOutput) DestinationDomainGroupType() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AclRule) pulumi.IntPtrOutput { return v.DestinationDomainGroupType }).(pulumi.IntPtrOutput)
 }
 
 // The destination region list.
-// The destinationRegionList structure is documented below.
 func (o AclRuleOutput) DestinationRegionLists() AclRuleDestinationRegionListArrayOutput {
 	return o.ApplyT(func(v *AclRule) AclRuleDestinationRegionListArrayOutput { return v.DestinationRegionLists }).(AclRuleDestinationRegionListArrayOutput)
 }
 
-// The rule direction. The options are as follows:
-// + **0**: inbound;
-// + **1**: outbound;
+// The rule direction.
 func (o AclRuleOutput) Direction() pulumi.IntOutput {
 	return o.ApplyT(func(v *AclRule) pulumi.IntOutput { return v.Direction }).(pulumi.IntOutput)
 }
@@ -1089,26 +611,20 @@ func (o AclRuleOutput) ObjectId() pulumi.StringOutput {
 }
 
 // The predefined service group list.
-// The predefinedServiceGroups structure is documented below.
 func (o AclRuleOutput) PredefinedServiceGroups() AclRulePredefinedServiceGroupsPtrOutput {
 	return o.ApplyT(func(v *AclRule) AclRulePredefinedServiceGroupsPtrOutput { return v.PredefinedServiceGroups }).(AclRulePredefinedServiceGroupsPtrOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used.
-// Changing this creates a new resource.
 func (o AclRuleOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *AclRule) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // The number of times the ACL rule is hit.
-// Setting the value to **0** will clear the hit count. Value options: **0**.
 func (o AclRuleOutput) RuleHitCount() pulumi.StringOutput {
 	return o.ApplyT(func(v *AclRule) pulumi.StringOutput { return v.RuleHitCount }).(pulumi.StringOutput)
 }
 
 // The sequence configuration.
-// The sequence structure is documented below.
 func (o AclRuleOutput) Sequence() AclRuleSequenceOutput {
 	return o.ApplyT(func(v *AclRule) AclRuleSequenceOutput { return v.Sequence }).(AclRuleSequenceOutput)
 }
@@ -1119,7 +635,6 @@ func (o AclRuleOutput) SourceAddressGroups() pulumi.StringArrayOutput {
 }
 
 // The source address type.
-// The value can be `0` (IPv4), `1` (IPv6).
 func (o AclRuleOutput) SourceAddressType() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AclRule) pulumi.IntPtrOutput { return v.SourceAddressType }).(pulumi.IntPtrOutput)
 }
@@ -1135,28 +650,21 @@ func (o AclRuleOutput) SourcePredefinedGroups() pulumi.StringArrayOutput {
 }
 
 // The source region list.
-// The sourceRegionList structure is documented below.
 func (o AclRuleOutput) SourceRegionLists() AclRuleSourceRegionListArrayOutput {
 	return o.ApplyT(func(v *AclRule) AclRuleSourceRegionListArrayOutput { return v.SourceRegionLists }).(AclRuleSourceRegionListArrayOutput)
 }
 
-// The rule status. The options are as follows:
-// + **0**: disabled;
-// + **1**: enabled;
+// The rule status.
 func (o AclRuleOutput) Status() pulumi.IntOutput {
 	return o.ApplyT(func(v *AclRule) pulumi.IntOutput { return v.Status }).(pulumi.IntOutput)
 }
 
 // The key/value pairs to associate with the ACL rule.
-//
-// <a name="Sequence"></a>
-// The `sequence` block supports:
 func (o AclRuleOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AclRule) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The rule type.
-// The value can be `0` (Internet rule), `1` (VPC rule), or `2` (NAT rule).
 func (o AclRuleOutput) Type() pulumi.IntOutput {
 	return o.ApplyT(func(v *AclRule) pulumi.IntOutput { return v.Type }).(pulumi.IntOutput)
 }

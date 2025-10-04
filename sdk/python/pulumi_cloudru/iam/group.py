@@ -23,8 +23,6 @@ class GroupArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Group resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the group.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the group.The length is less than or equal to 64 bytes.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -34,9 +32,6 @@ class GroupArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the description of the group.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -46,9 +41,6 @@ class GroupArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the group.The length is less than or equal to 64 bytes.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -63,8 +55,6 @@ class _GroupState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Group resources.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the group.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the group.The length is less than or equal to 64 bytes.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -74,9 +64,6 @@ class _GroupState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the description of the group.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -86,9 +73,6 @@ class _GroupState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the group.The length is less than or equal to 64 bytes.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -106,33 +90,9 @@ class Group(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a User Group resource within SberCloud IAM service.
-
-        Note: You _must_ have admin privileges in your SberCloud cloud to use this resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        group1 = sbercloud.iam.Group("group_1",
-            name="group_1",
-            description="This is a test group")
-        ```
-
-        ## Import
-
-        Groups can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Iam/group:Group group_1 89c60255-9bd6-460c-822a-e2b959ede9d2
-        ```
-
+        Create a Group resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the group.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the group.The length is less than or equal to 64 bytes.
         """
         ...
     @overload
@@ -141,29 +101,7 @@ class Group(pulumi.CustomResource):
                  args: Optional[GroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a User Group resource within SberCloud IAM service.
-
-        Note: You _must_ have admin privileges in your SberCloud cloud to use this resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        group1 = sbercloud.iam.Group("group_1",
-            name="group_1",
-            description="This is a test group")
-        ```
-
-        ## Import
-
-        Groups can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Iam/group:Group group_1 89c60255-9bd6-460c-822a-e2b959ede9d2
-        ```
-
+        Create a Group resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param GroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -211,8 +149,6 @@ class Group(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the group.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the group.The length is less than or equal to 64 bytes.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -225,16 +161,10 @@ class Group(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the description of the group.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the name of the group.The length is less than or equal to 64 bytes.
-        """
         return pulumi.get(self, "name")
 

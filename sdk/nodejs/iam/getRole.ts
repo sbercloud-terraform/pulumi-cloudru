@@ -4,18 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const authAdmin = sbercloud.Iam.getRole({
- *     name: "secu_admin",
- * });
- * ```
- */
 export function getRole(args?: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -29,15 +17,7 @@ export function getRole(args?: GetRoleArgs, opts?: pulumi.InvokeOptions): Promis
  * A collection of arguments for invoking getRole.
  */
 export interface GetRoleArgs {
-    /**
-     * Specifies the display name of the role displayed on the console.
-     * It is recommended to use this parameter instead of `name` and required if `name` is not specified.
-     */
     displayName?: string;
-    /**
-     * Specifies the name of the role for internal use.
-     * It's required if `displayName` is not specified.
-     */
     name?: string;
 }
 
@@ -45,13 +25,7 @@ export interface GetRoleArgs {
  * A collection of values returned by getRole.
  */
 export interface GetRoleResult {
-    /**
-     * The service catalog of the policy.
-     */
     readonly catalog: string;
-    /**
-     * The description of the policy.
-     */
     readonly description: string;
     readonly displayName: string;
     /**
@@ -59,27 +33,9 @@ export interface GetRoleResult {
      */
     readonly id: string;
     readonly name: string;
-    /**
-     * The content of the policy.
-     */
     readonly policy: string;
-    /**
-     * The display mode of the policy.
-     */
     readonly type: string;
 }
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const authAdmin = sbercloud.Iam.getRole({
- *     name: "secu_admin",
- * });
- * ```
- */
 export function getRoleOutput(args?: GetRoleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRoleResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -93,14 +49,6 @@ export function getRoleOutput(args?: GetRoleOutputArgs, opts?: pulumi.InvokeOutp
  * A collection of arguments for invoking getRole.
  */
 export interface GetRoleOutputArgs {
-    /**
-     * Specifies the display name of the role displayed on the console.
-     * It is recommended to use this parameter instead of `name` and required if `name` is not specified.
-     */
     displayName?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the role for internal use.
-     * It's required if `displayName` is not specified.
-     */
     name?: pulumi.Input<string>;
 }

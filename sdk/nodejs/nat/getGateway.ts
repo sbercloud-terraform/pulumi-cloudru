@@ -4,20 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the information of an available SberCloud NAT gateway.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const natgateway = sbercloud.Nat.getGateway({
- *     name: "tf_test_natgateway",
- * });
- * ```
- */
 export function getGateway(args?: GetGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -40,53 +26,20 @@ export function getGateway(args?: GetGatewayArgs, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getGateway.
  */
 export interface GetGatewayArgs {
-    /**
-     * Specifies the description of the nat
-     * gateway. The value contains 0 to 255 characters, and angle brackets (<)
-     * and (>) are not allowed.
-     */
     description?: string;
-    /**
-     * Specifies the enterprise project
-     * ID of the NAT gateway.
-     */
     enterpriseProjectId?: string;
-    /**
-     * Specifies the ID of the NAT gateway.
-     */
     id?: string;
     /**
-     * Specifies the network ID of the
-     * downstream interface (the next hop of the DVR) of the NAT gateway.
-     *
      * @deprecated use subnetId instead
      */
     internalNetworkId?: string;
-    /**
-     * Specifies the nat gateway name. The name can
-     * contain only digits, letters, underscores (_), and hyphens(-).
-     */
     name?: string;
-    /**
-     * Specifies the region in which to create the Nat
-     * gateway resource. If omitted, the provider-level region will be used.
-     */
     region?: string;
     /**
-     * Specifies the ID of the router this nat
-     * gateway belongs to.
-     *
      * @deprecated use vpcId instead
      */
     routerId?: string;
-    /**
-     * The NAT gateway type.
-     * The value can be:
-     */
     spec?: string;
-    /**
-     * Specifies the status of the NAT gateway.
-     */
     status?: string;
     subnetId?: string;
     vpcId?: string;
@@ -114,20 +67,6 @@ export interface GetGatewayResult {
     readonly subnetId: string;
     readonly vpcId: string;
 }
-/**
- * Use this data source to get the information of an available SberCloud NAT gateway.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const natgateway = sbercloud.Nat.getGateway({
- *     name: "tf_test_natgateway",
- * });
- * ```
- */
 export function getGatewayOutput(args?: GetGatewayOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGatewayResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -150,53 +89,20 @@ export function getGatewayOutput(args?: GetGatewayOutputArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getGateway.
  */
 export interface GetGatewayOutputArgs {
-    /**
-     * Specifies the description of the nat
-     * gateway. The value contains 0 to 255 characters, and angle brackets (<)
-     * and (>) are not allowed.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies the enterprise project
-     * ID of the NAT gateway.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of the NAT gateway.
-     */
     id?: pulumi.Input<string>;
     /**
-     * Specifies the network ID of the
-     * downstream interface (the next hop of the DVR) of the NAT gateway.
-     *
      * @deprecated use subnetId instead
      */
     internalNetworkId?: pulumi.Input<string>;
-    /**
-     * Specifies the nat gateway name. The name can
-     * contain only digits, letters, underscores (_), and hyphens(-).
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the Nat
-     * gateway resource. If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
     /**
-     * Specifies the ID of the router this nat
-     * gateway belongs to.
-     *
      * @deprecated use vpcId instead
      */
     routerId?: pulumi.Input<string>;
-    /**
-     * The NAT gateway type.
-     * The value can be:
-     */
     spec?: pulumi.Input<string>;
-    /**
-     * Specifies the status of the NAT gateway.
-     */
     status?: pulumi.Input<string>;
     subnetId?: pulumi.Input<string>;
     vpcId?: pulumi.Input<string>;

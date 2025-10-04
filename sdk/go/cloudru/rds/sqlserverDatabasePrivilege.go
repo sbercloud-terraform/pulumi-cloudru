@@ -12,82 +12,15 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages RDS SQL Server database privilege resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/rds"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			dbName := cfg.RequireObject("dbName")
-//			userName1 := cfg.RequireObject("userName1")
-//			userName2 := cfg.RequireObject("userName2")
-//			_, err := rds.NewSqlserverDatabasePrivilege(ctx, "test", &rds.SqlserverDatabasePrivilegeArgs{
-//				InstanceId: pulumi.Any(instanceId),
-//				DbName:     pulumi.Any(dbName),
-//				Users: rds.SqlserverDatabasePrivilegeUserArray{
-//					&rds.SqlserverDatabasePrivilegeUserArgs{
-//						Name:     pulumi.Any(userName1),
-//						Readonly: pulumi.Bool(true),
-//					},
-//					&rds.SqlserverDatabasePrivilegeUserArgs{
-//						Name:     pulumi.Any(userName2),
-//						Readonly: pulumi.Bool(false),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The RDS SQL Server database privilege can be imported using the `instance_id` and `db_name` separated by a slash, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Rds/sqlserverDatabasePrivilege:SqlserverDatabasePrivilege test <instance_id>/<db_name>
-// ```
 type SqlserverDatabasePrivilege struct {
 	pulumi.CustomResourceState
 
 	// Specifies the database name.
-	//
-	// Changing this parameter will create a new resource.
 	DbName pulumi.StringOutput `pulumi:"dbName"`
 	// Specifies the ID of the RDS SQL Server instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Region     pulumi.StringOutput `pulumi:"region"`
 	// Specifies the account that associated with the database
-	//
-	// -> **NOTE:** The account of **rdsuser** is system account, it can not be managed, and it will not be obtained.
-	//
-	// The users structure is documented below.
-	//
-	// <a name="SQLServerDatabasePrivilege_CreateUser"></a>
-	// The `users` block supports:
 	Users SqlserverDatabasePrivilegeUserArrayOutput `pulumi:"users"`
 }
 
@@ -131,47 +64,21 @@ func GetSqlserverDatabasePrivilege(ctx *pulumi.Context,
 // Input properties used for looking up and filtering SqlserverDatabasePrivilege resources.
 type sqlserverDatabasePrivilegeState struct {
 	// Specifies the database name.
-	//
-	// Changing this parameter will create a new resource.
 	DbName *string `pulumi:"dbName"`
 	// Specifies the ID of the RDS SQL Server instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId *string `pulumi:"instanceId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
+	Region     *string `pulumi:"region"`
 	// Specifies the account that associated with the database
-	//
-	// -> **NOTE:** The account of **rdsuser** is system account, it can not be managed, and it will not be obtained.
-	//
-	// The users structure is documented below.
-	//
-	// <a name="SQLServerDatabasePrivilege_CreateUser"></a>
-	// The `users` block supports:
 	Users []SqlserverDatabasePrivilegeUser `pulumi:"users"`
 }
 
 type SqlserverDatabasePrivilegeState struct {
 	// Specifies the database name.
-	//
-	// Changing this parameter will create a new resource.
 	DbName pulumi.StringPtrInput
 	// Specifies the ID of the RDS SQL Server instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
+	Region     pulumi.StringPtrInput
 	// Specifies the account that associated with the database
-	//
-	// -> **NOTE:** The account of **rdsuser** is system account, it can not be managed, and it will not be obtained.
-	//
-	// The users structure is documented below.
-	//
-	// <a name="SQLServerDatabasePrivilege_CreateUser"></a>
-	// The `users` block supports:
 	Users SqlserverDatabasePrivilegeUserArrayInput
 }
 
@@ -181,48 +88,22 @@ func (SqlserverDatabasePrivilegeState) ElementType() reflect.Type {
 
 type sqlserverDatabasePrivilegeArgs struct {
 	// Specifies the database name.
-	//
-	// Changing this parameter will create a new resource.
 	DbName string `pulumi:"dbName"`
 	// Specifies the ID of the RDS SQL Server instance.
-	//
-	// Changing this parameter will create a new resource.
-	InstanceId string `pulumi:"instanceId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
+	InstanceId string  `pulumi:"instanceId"`
+	Region     *string `pulumi:"region"`
 	// Specifies the account that associated with the database
-	//
-	// -> **NOTE:** The account of **rdsuser** is system account, it can not be managed, and it will not be obtained.
-	//
-	// The users structure is documented below.
-	//
-	// <a name="SQLServerDatabasePrivilege_CreateUser"></a>
-	// The `users` block supports:
 	Users []SqlserverDatabasePrivilegeUser `pulumi:"users"`
 }
 
 // The set of arguments for constructing a SqlserverDatabasePrivilege resource.
 type SqlserverDatabasePrivilegeArgs struct {
 	// Specifies the database name.
-	//
-	// Changing this parameter will create a new resource.
 	DbName pulumi.StringInput
 	// Specifies the ID of the RDS SQL Server instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId pulumi.StringInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
+	Region     pulumi.StringPtrInput
 	// Specifies the account that associated with the database
-	//
-	// -> **NOTE:** The account of **rdsuser** is system account, it can not be managed, and it will not be obtained.
-	//
-	// The users structure is documented below.
-	//
-	// <a name="SQLServerDatabasePrivilege_CreateUser"></a>
-	// The `users` block supports:
 	Users SqlserverDatabasePrivilegeUserArrayInput
 }
 
@@ -314,33 +195,20 @@ func (o SqlserverDatabasePrivilegeOutput) ToSqlserverDatabasePrivilegeOutputWith
 }
 
 // Specifies the database name.
-//
-// Changing this parameter will create a new resource.
 func (o SqlserverDatabasePrivilegeOutput) DbName() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlserverDatabasePrivilege) pulumi.StringOutput { return v.DbName }).(pulumi.StringOutput)
 }
 
 // Specifies the ID of the RDS SQL Server instance.
-//
-// Changing this parameter will create a new resource.
 func (o SqlserverDatabasePrivilegeOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlserverDatabasePrivilege) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
 func (o SqlserverDatabasePrivilegeOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlserverDatabasePrivilege) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // Specifies the account that associated with the database
-//
-// -> **NOTE:** The account of **rdsuser** is system account, it can not be managed, and it will not be obtained.
-//
-// The users structure is documented below.
-//
-// <a name="SQLServerDatabasePrivilege_CreateUser"></a>
-// The `users` block supports:
 func (o SqlserverDatabasePrivilegeOutput) Users() SqlserverDatabasePrivilegeUserArrayOutput {
 	return o.ApplyT(func(v *SqlserverDatabasePrivilege) SqlserverDatabasePrivilegeUserArrayOutput { return v.Users }).(SqlserverDatabasePrivilegeUserArrayOutput)
 }

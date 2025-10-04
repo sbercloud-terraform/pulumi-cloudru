@@ -54,9 +54,6 @@ class GetTagsResult:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Sequence['outputs.GetTagsTagResult']:
-        """
-        The tag list.
-        """
         return pulumi.get(self, "tags")
 
 
@@ -74,20 +71,7 @@ class AwaitableGetTagsResult(GetTagsResult):
 def get_tags(region: Optional[_builtins.str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTagsResult:
     """
-    Use this data source to get the list of CFW tags.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.Cfw.get_tags()
-    ```
-
-
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['region'] = region
@@ -101,20 +85,7 @@ def get_tags(region: Optional[_builtins.str] = None,
 def get_tags_output(region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTagsResult]:
     """
-    Use this data source to get the list of CFW tags.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.Cfw.get_tags()
-    ```
-
-
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['region'] = region

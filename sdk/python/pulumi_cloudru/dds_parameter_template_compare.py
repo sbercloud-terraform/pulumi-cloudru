@@ -26,12 +26,6 @@ class DdsParameterTemplateCompareArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DdsParameterTemplateCompare resource.
-        :param pulumi.Input[_builtins.str] source_configuration_id: Specifies the ID of the source parameter template to be
-               compared. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] target_configuration_id: Specifies the ID of the destination parameter template to be
-               compared. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         pulumi.set(__self__, "source_configuration_id", source_configuration_id)
         pulumi.set(__self__, "target_configuration_id", target_configuration_id)
@@ -41,10 +35,6 @@ class DdsParameterTemplateCompareArgs:
     @_builtins.property
     @pulumi.getter(name="sourceConfigurationId")
     def source_configuration_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the ID of the source parameter template to be
-        compared. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "source_configuration_id")
 
     @source_configuration_id.setter
@@ -54,10 +44,6 @@ class DdsParameterTemplateCompareArgs:
     @_builtins.property
     @pulumi.getter(name="targetConfigurationId")
     def target_configuration_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the ID of the destination parameter template to be
-        compared. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "target_configuration_id")
 
     @target_configuration_id.setter
@@ -67,10 +53,6 @@ class DdsParameterTemplateCompareArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -87,14 +69,6 @@ class _DdsParameterTemplateCompareState:
                  target_configuration_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DdsParameterTemplateCompare resources.
-        :param pulumi.Input[Sequence[pulumi.Input['DdsParameterTemplateCompareDifferenceArgs']]] differences: Indicates the differences between parameters.
-               The differences structure is documented below.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] source_configuration_id: Specifies the ID of the source parameter template to be
-               compared. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] target_configuration_id: Specifies the ID of the destination parameter template to be
-               compared. Changing this parameter will create a new resource.
         """
         if differences is not None:
             pulumi.set(__self__, "differences", differences)
@@ -108,10 +82,6 @@ class _DdsParameterTemplateCompareState:
     @_builtins.property
     @pulumi.getter
     def differences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DdsParameterTemplateCompareDifferenceArgs']]]]:
-        """
-        Indicates the differences between parameters.
-        The differences structure is documented below.
-        """
         return pulumi.get(self, "differences")
 
     @differences.setter
@@ -121,10 +91,6 @@ class _DdsParameterTemplateCompareState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -134,10 +100,6 @@ class _DdsParameterTemplateCompareState:
     @_builtins.property
     @pulumi.getter(name="sourceConfigurationId")
     def source_configuration_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of the source parameter template to be
-        compared. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "source_configuration_id")
 
     @source_configuration_id.setter
@@ -147,10 +109,6 @@ class _DdsParameterTemplateCompareState:
     @_builtins.property
     @pulumi.getter(name="targetConfigurationId")
     def target_configuration_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of the destination parameter template to be
-        compared. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "target_configuration_id")
 
     @target_configuration_id.setter
@@ -169,30 +127,9 @@ class DdsParameterTemplateCompare(pulumi.CustomResource):
                  target_configuration_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a DDS parameter template compare resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        source_configuration_id = config.require_object("sourceConfigurationId")
-        target_configuration_id = config.require_object("targetConfigurationId")
-        test = sbercloud.DdsParameterTemplateCompare("test",
-            source_configuration_id=source_configuration_id,
-            target_configuration_id=target_configuration_id)
-        ```
-
+        Create a DdsParameterTemplateCompare resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] source_configuration_id: Specifies the ID of the source parameter template to be
-               compared. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] target_configuration_id: Specifies the ID of the destination parameter template to be
-               compared. Changing this parameter will create a new resource.
         """
         ...
     @overload
@@ -201,22 +138,7 @@ class DdsParameterTemplateCompare(pulumi.CustomResource):
                  args: DdsParameterTemplateCompareArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a DDS parameter template compare resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        source_configuration_id = config.require_object("sourceConfigurationId")
-        target_configuration_id = config.require_object("targetConfigurationId")
-        test = sbercloud.DdsParameterTemplateCompare("test",
-            source_configuration_id=source_configuration_id,
-            target_configuration_id=target_configuration_id)
-        ```
-
+        Create a DdsParameterTemplateCompare resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param DdsParameterTemplateCompareArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -273,14 +195,6 @@ class DdsParameterTemplateCompare(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DdsParameterTemplateCompareDifferenceArgs', 'DdsParameterTemplateCompareDifferenceArgsDict']]]] differences: Indicates the differences between parameters.
-               The differences structure is documented below.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] source_configuration_id: Specifies the ID of the source parameter template to be
-               compared. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] target_configuration_id: Specifies the ID of the destination parameter template to be
-               compared. Changing this parameter will create a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -295,36 +209,20 @@ class DdsParameterTemplateCompare(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def differences(self) -> pulumi.Output[Sequence['outputs.DdsParameterTemplateCompareDifference']]:
-        """
-        Indicates the differences between parameters.
-        The differences structure is documented below.
-        """
         return pulumi.get(self, "differences")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="sourceConfigurationId")
     def source_configuration_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the ID of the source parameter template to be
-        compared. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "source_configuration_id")
 
     @_builtins.property
     @pulumi.getter(name="targetConfigurationId")
     def target_configuration_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the ID of the destination parameter template to be
-        compared. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "target_configuration_id")
 

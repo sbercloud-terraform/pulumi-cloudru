@@ -12,134 +12,29 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages RDS PostgreSQL database resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/rds"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			_, err := rds.NewPgDatabase(ctx, "test", &rds.PgDatabaseArgs{
-//				InstanceId: pulumi.Any(instanceId),
-//				Name:       pulumi.String("test"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The RDS postgresql database can be imported using the `instance_id` and `name` separated by a slash, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Rds/pgDatabase:PgDatabase test <instance_id>/<name>
-// ```
-//
-// # Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-//
-// API response, security or some other reason. The missing attributes include: `template`, `is_revoke_public_privilege`
-//
-// `lc_ctype`. It is generally recommended running `pulumi preview` after importing the RDS PostgreSQL database. You can
-//
-// then decide if changes should be applied to the RDS PostgreSQL database, or the resource definition should be updated
-//
-// to align with the RDS PostgreSQL database. Also you can ignore changes as below.
-//
-// hcl
-//
-// resource "sbercloud_rds_pg_database" "account_1" {
-//
-//	  ...
-//
-//	lifecycle {
-//
-//	  ignore_changes = [
-//
-//	    template, is_revoke_public_privilege, lc_ctype,
-//
-//	  ]
-//
-//	}
-//
-// }
 type PgDatabase struct {
 	pulumi.CustomResourceState
 
 	// Specifies the database character set.
-	// For details, see [documentation](https://www.postgresql.org/docs/16/infoschema-character-sets.html).
-	// Defaults to **UTF8**.
-	//
-	// Changing this parameter will create a new resource.
 	CharacterSet pulumi.StringOutput `pulumi:"characterSet"`
-	// Specifies the database description. The value contains 0 to 512 characters.
+	// Specifies the database description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Specifies the ID of the RDS PostgreSQL instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Specifies whether to revoke the PUBLIC CREATE permission of
-	// the public schema.
-	// + **true**: indicates that the permission will be revoked.
-	// + **false**: indicates that the permission will not be revoked.
-	//
-	// Defaults to **false**.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies whether to revoke the PUBLIC CREATE permission of the public schema.
 	IsRevokePublicPrivilege pulumi.BoolOutput `pulumi:"isRevokePublicPrivilege"`
 	// Specifies the database collocation.
-	// Defaults to **en_US.UTF-8**.
-	//
-	// > **NOTE:** For different collation rules, the execution result of a statement may be different.
-	// <br/> For example, the execution result of select 'a'>'A'; is false when this parameter is set to
-	// **en_US.utf8** and is true when this parameter is set to 'C'. If a database is migrated from "O" to
-	// PostgreSQL, this parameter needs to be set to 'C' to meet your expectations. You can query the supported
-	// collation rules from the pgCollation table.
-	//
-	// Changing this parameter will create a new resource.
 	LcCollate pulumi.StringOutput `pulumi:"lcCollate"`
 	// Specifies the database classification.
-	// Defaults to: **en_US.UTF-8**.
-	//
-	// Changing this parameter will create a new resource.
 	LcCtype pulumi.StringOutput `pulumi:"lcCtype"`
-	// Specifies the database name. The value contains 1 to 63 characters, including
-	// letters, digits, and underscores (_). It cannot start with pg or a digit, and must be different from RDS for
-	// PostgreSQL template library names. RDS for PostgreSQL template libraries include **postgres**, **template0**, and
-	// **template1**.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the database name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the database user. The value must be an existing username and must be different
-	// from system usernames. Defaults to **root**.
-	Owner pulumi.StringOutput `pulumi:"owner"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// Specifies the database user.
+	Owner  pulumi.StringOutput `pulumi:"owner"`
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Indicates the database size, in bytes.
 	Size pulumi.IntOutput `pulumi:"size"`
-	// Specifies the name of the database template. Value options: **template0**,
-	// **template1**. Defaults to **template1**.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the name of the database template.
 	Template pulumi.StringOutput `pulumi:"template"`
 }
 
@@ -177,121 +72,49 @@ func GetPgDatabase(ctx *pulumi.Context,
 // Input properties used for looking up and filtering PgDatabase resources.
 type pgDatabaseState struct {
 	// Specifies the database character set.
-	// For details, see [documentation](https://www.postgresql.org/docs/16/infoschema-character-sets.html).
-	// Defaults to **UTF8**.
-	//
-	// Changing this parameter will create a new resource.
 	CharacterSet *string `pulumi:"characterSet"`
-	// Specifies the database description. The value contains 0 to 512 characters.
+	// Specifies the database description.
 	Description *string `pulumi:"description"`
 	// Specifies the ID of the RDS PostgreSQL instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId *string `pulumi:"instanceId"`
-	// Specifies whether to revoke the PUBLIC CREATE permission of
-	// the public schema.
-	// + **true**: indicates that the permission will be revoked.
-	// + **false**: indicates that the permission will not be revoked.
-	//
-	// Defaults to **false**.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies whether to revoke the PUBLIC CREATE permission of the public schema.
 	IsRevokePublicPrivilege *bool `pulumi:"isRevokePublicPrivilege"`
 	// Specifies the database collocation.
-	// Defaults to **en_US.UTF-8**.
-	//
-	// > **NOTE:** For different collation rules, the execution result of a statement may be different.
-	// <br/> For example, the execution result of select 'a'>'A'; is false when this parameter is set to
-	// **en_US.utf8** and is true when this parameter is set to 'C'. If a database is migrated from "O" to
-	// PostgreSQL, this parameter needs to be set to 'C' to meet your expectations. You can query the supported
-	// collation rules from the pgCollation table.
-	//
-	// Changing this parameter will create a new resource.
 	LcCollate *string `pulumi:"lcCollate"`
 	// Specifies the database classification.
-	// Defaults to: **en_US.UTF-8**.
-	//
-	// Changing this parameter will create a new resource.
 	LcCtype *string `pulumi:"lcCtype"`
-	// Specifies the database name. The value contains 1 to 63 characters, including
-	// letters, digits, and underscores (_). It cannot start with pg or a digit, and must be different from RDS for
-	// PostgreSQL template library names. RDS for PostgreSQL template libraries include **postgres**, **template0**, and
-	// **template1**.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the database name.
 	Name *string `pulumi:"name"`
-	// Specifies the database user. The value must be an existing username and must be different
-	// from system usernames. Defaults to **root**.
-	Owner *string `pulumi:"owner"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// Specifies the database user.
+	Owner  *string `pulumi:"owner"`
 	Region *string `pulumi:"region"`
 	// Indicates the database size, in bytes.
 	Size *int `pulumi:"size"`
-	// Specifies the name of the database template. Value options: **template0**,
-	// **template1**. Defaults to **template1**.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the name of the database template.
 	Template *string `pulumi:"template"`
 }
 
 type PgDatabaseState struct {
 	// Specifies the database character set.
-	// For details, see [documentation](https://www.postgresql.org/docs/16/infoschema-character-sets.html).
-	// Defaults to **UTF8**.
-	//
-	// Changing this parameter will create a new resource.
 	CharacterSet pulumi.StringPtrInput
-	// Specifies the database description. The value contains 0 to 512 characters.
+	// Specifies the database description.
 	Description pulumi.StringPtrInput
 	// Specifies the ID of the RDS PostgreSQL instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId pulumi.StringPtrInput
-	// Specifies whether to revoke the PUBLIC CREATE permission of
-	// the public schema.
-	// + **true**: indicates that the permission will be revoked.
-	// + **false**: indicates that the permission will not be revoked.
-	//
-	// Defaults to **false**.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies whether to revoke the PUBLIC CREATE permission of the public schema.
 	IsRevokePublicPrivilege pulumi.BoolPtrInput
 	// Specifies the database collocation.
-	// Defaults to **en_US.UTF-8**.
-	//
-	// > **NOTE:** For different collation rules, the execution result of a statement may be different.
-	// <br/> For example, the execution result of select 'a'>'A'; is false when this parameter is set to
-	// **en_US.utf8** and is true when this parameter is set to 'C'. If a database is migrated from "O" to
-	// PostgreSQL, this parameter needs to be set to 'C' to meet your expectations. You can query the supported
-	// collation rules from the pgCollation table.
-	//
-	// Changing this parameter will create a new resource.
 	LcCollate pulumi.StringPtrInput
 	// Specifies the database classification.
-	// Defaults to: **en_US.UTF-8**.
-	//
-	// Changing this parameter will create a new resource.
 	LcCtype pulumi.StringPtrInput
-	// Specifies the database name. The value contains 1 to 63 characters, including
-	// letters, digits, and underscores (_). It cannot start with pg or a digit, and must be different from RDS for
-	// PostgreSQL template library names. RDS for PostgreSQL template libraries include **postgres**, **template0**, and
-	// **template1**.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the database name.
 	Name pulumi.StringPtrInput
-	// Specifies the database user. The value must be an existing username and must be different
-	// from system usernames. Defaults to **root**.
-	Owner pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// Specifies the database user.
+	Owner  pulumi.StringPtrInput
 	Region pulumi.StringPtrInput
 	// Indicates the database size, in bytes.
 	Size pulumi.IntPtrInput
-	// Specifies the name of the database template. Value options: **template0**,
-	// **template1**. Defaults to **template1**.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the name of the database template.
 	Template pulumi.StringPtrInput
 }
 
@@ -301,118 +124,46 @@ func (PgDatabaseState) ElementType() reflect.Type {
 
 type pgDatabaseArgs struct {
 	// Specifies the database character set.
-	// For details, see [documentation](https://www.postgresql.org/docs/16/infoschema-character-sets.html).
-	// Defaults to **UTF8**.
-	//
-	// Changing this parameter will create a new resource.
 	CharacterSet *string `pulumi:"characterSet"`
-	// Specifies the database description. The value contains 0 to 512 characters.
+	// Specifies the database description.
 	Description *string `pulumi:"description"`
 	// Specifies the ID of the RDS PostgreSQL instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId string `pulumi:"instanceId"`
-	// Specifies whether to revoke the PUBLIC CREATE permission of
-	// the public schema.
-	// + **true**: indicates that the permission will be revoked.
-	// + **false**: indicates that the permission will not be revoked.
-	//
-	// Defaults to **false**.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies whether to revoke the PUBLIC CREATE permission of the public schema.
 	IsRevokePublicPrivilege *bool `pulumi:"isRevokePublicPrivilege"`
 	// Specifies the database collocation.
-	// Defaults to **en_US.UTF-8**.
-	//
-	// > **NOTE:** For different collation rules, the execution result of a statement may be different.
-	// <br/> For example, the execution result of select 'a'>'A'; is false when this parameter is set to
-	// **en_US.utf8** and is true when this parameter is set to 'C'. If a database is migrated from "O" to
-	// PostgreSQL, this parameter needs to be set to 'C' to meet your expectations. You can query the supported
-	// collation rules from the pgCollation table.
-	//
-	// Changing this parameter will create a new resource.
 	LcCollate *string `pulumi:"lcCollate"`
 	// Specifies the database classification.
-	// Defaults to: **en_US.UTF-8**.
-	//
-	// Changing this parameter will create a new resource.
 	LcCtype *string `pulumi:"lcCtype"`
-	// Specifies the database name. The value contains 1 to 63 characters, including
-	// letters, digits, and underscores (_). It cannot start with pg or a digit, and must be different from RDS for
-	// PostgreSQL template library names. RDS for PostgreSQL template libraries include **postgres**, **template0**, and
-	// **template1**.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the database name.
 	Name *string `pulumi:"name"`
-	// Specifies the database user. The value must be an existing username and must be different
-	// from system usernames. Defaults to **root**.
-	Owner *string `pulumi:"owner"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// Specifies the database user.
+	Owner  *string `pulumi:"owner"`
 	Region *string `pulumi:"region"`
-	// Specifies the name of the database template. Value options: **template0**,
-	// **template1**. Defaults to **template1**.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the name of the database template.
 	Template *string `pulumi:"template"`
 }
 
 // The set of arguments for constructing a PgDatabase resource.
 type PgDatabaseArgs struct {
 	// Specifies the database character set.
-	// For details, see [documentation](https://www.postgresql.org/docs/16/infoschema-character-sets.html).
-	// Defaults to **UTF8**.
-	//
-	// Changing this parameter will create a new resource.
 	CharacterSet pulumi.StringPtrInput
-	// Specifies the database description. The value contains 0 to 512 characters.
+	// Specifies the database description.
 	Description pulumi.StringPtrInput
 	// Specifies the ID of the RDS PostgreSQL instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId pulumi.StringInput
-	// Specifies whether to revoke the PUBLIC CREATE permission of
-	// the public schema.
-	// + **true**: indicates that the permission will be revoked.
-	// + **false**: indicates that the permission will not be revoked.
-	//
-	// Defaults to **false**.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies whether to revoke the PUBLIC CREATE permission of the public schema.
 	IsRevokePublicPrivilege pulumi.BoolPtrInput
 	// Specifies the database collocation.
-	// Defaults to **en_US.UTF-8**.
-	//
-	// > **NOTE:** For different collation rules, the execution result of a statement may be different.
-	// <br/> For example, the execution result of select 'a'>'A'; is false when this parameter is set to
-	// **en_US.utf8** and is true when this parameter is set to 'C'. If a database is migrated from "O" to
-	// PostgreSQL, this parameter needs to be set to 'C' to meet your expectations. You can query the supported
-	// collation rules from the pgCollation table.
-	//
-	// Changing this parameter will create a new resource.
 	LcCollate pulumi.StringPtrInput
 	// Specifies the database classification.
-	// Defaults to: **en_US.UTF-8**.
-	//
-	// Changing this parameter will create a new resource.
 	LcCtype pulumi.StringPtrInput
-	// Specifies the database name. The value contains 1 to 63 characters, including
-	// letters, digits, and underscores (_). It cannot start with pg or a digit, and must be different from RDS for
-	// PostgreSQL template library names. RDS for PostgreSQL template libraries include **postgres**, **template0**, and
-	// **template1**.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the database name.
 	Name pulumi.StringPtrInput
-	// Specifies the database user. The value must be an existing username and must be different
-	// from system usernames. Defaults to **root**.
-	Owner pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// Specifies the database user.
+	Owner  pulumi.StringPtrInput
 	Region pulumi.StringPtrInput
-	// Specifies the name of the database template. Value options: **template0**,
-	// **template1**. Defaults to **template1**.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the name of the database template.
 	Template pulumi.StringPtrInput
 }
 
@@ -504,78 +255,45 @@ func (o PgDatabaseOutput) ToPgDatabaseOutputWithContext(ctx context.Context) PgD
 }
 
 // Specifies the database character set.
-// For details, see [documentation](https://www.postgresql.org/docs/16/infoschema-character-sets.html).
-// Defaults to **UTF8**.
-//
-// Changing this parameter will create a new resource.
 func (o PgDatabaseOutput) CharacterSet() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgDatabase) pulumi.StringOutput { return v.CharacterSet }).(pulumi.StringOutput)
 }
 
-// Specifies the database description. The value contains 0 to 512 characters.
+// Specifies the database description.
 func (o PgDatabaseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgDatabase) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the ID of the RDS PostgreSQL instance.
-//
-// Changing this parameter will create a new resource.
 func (o PgDatabaseOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgDatabase) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Specifies whether to revoke the PUBLIC CREATE permission of
-// the public schema.
-// + **true**: indicates that the permission will be revoked.
-// + **false**: indicates that the permission will not be revoked.
-//
-// Defaults to **false**.
-//
-// Changing this parameter will create a new resource.
+// Specifies whether to revoke the PUBLIC CREATE permission of the public schema.
 func (o PgDatabaseOutput) IsRevokePublicPrivilege() pulumi.BoolOutput {
 	return o.ApplyT(func(v *PgDatabase) pulumi.BoolOutput { return v.IsRevokePublicPrivilege }).(pulumi.BoolOutput)
 }
 
 // Specifies the database collocation.
-// Defaults to **en_US.UTF-8**.
-//
-// > **NOTE:** For different collation rules, the execution result of a statement may be different.
-// <br/> For example, the execution result of select 'a'>'A'; is false when this parameter is set to
-// **en_US.utf8** and is true when this parameter is set to 'C'. If a database is migrated from "O" to
-// PostgreSQL, this parameter needs to be set to 'C' to meet your expectations. You can query the supported
-// collation rules from the pgCollation table.
-//
-// Changing this parameter will create a new resource.
 func (o PgDatabaseOutput) LcCollate() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgDatabase) pulumi.StringOutput { return v.LcCollate }).(pulumi.StringOutput)
 }
 
 // Specifies the database classification.
-// Defaults to: **en_US.UTF-8**.
-//
-// Changing this parameter will create a new resource.
 func (o PgDatabaseOutput) LcCtype() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgDatabase) pulumi.StringOutput { return v.LcCtype }).(pulumi.StringOutput)
 }
 
-// Specifies the database name. The value contains 1 to 63 characters, including
-// letters, digits, and underscores (_). It cannot start with pg or a digit, and must be different from RDS for
-// PostgreSQL template library names. RDS for PostgreSQL template libraries include **postgres**, **template0**, and
-// **template1**.
-//
-// Changing this parameter will create a new resource.
+// Specifies the database name.
 func (o PgDatabaseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgDatabase) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the database user. The value must be an existing username and must be different
-// from system usernames. Defaults to **root**.
+// Specifies the database user.
 func (o PgDatabaseOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgDatabase) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
 func (o PgDatabaseOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgDatabase) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
@@ -585,10 +303,7 @@ func (o PgDatabaseOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v *PgDatabase) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
 }
 
-// Specifies the name of the database template. Value options: **template0**,
-// **template1**. Defaults to **template1**.
-//
-// Changing this parameter will create a new resource.
+// Specifies the name of the database template.
 func (o PgDatabaseOutput) Template() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgDatabase) pulumi.StringOutput { return v.Template }).(pulumi.StringOutput)
 }

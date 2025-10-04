@@ -14,24 +14,9 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type InstanceBackupStrategy struct {
-	// Specifies the number of days to retain the generated backup files. The value range is
-	// from 0 to 732.
-	// + If this parameter is set to 0, the automated backup policy is not set.
-	// + If this parameter is not transferred, the automated backup policy is enabled by default. Backup files are stored
-	//   for seven days by default.
-	KeepDays int `pulumi:"keepDays"`
-	// Specifies the charging period of the instance.
-	// If `periodUnit` is set to *month*, the value ranges from 1 to 9.
-	// If `periodUnit` is set to *year*, the value ranges from 1 to 3.
-	// This parameter is mandatory if `chargingMode` is set to *prePaid*.
-	// Changing this creates a new instance.
-	Period *string `pulumi:"period"`
-	// Specifies the backup time window. Automated backups will be triggered during the
-	// backup time window. The value cannot be empty. It must be a valid value in the
-	// "hh:mm-HH:MM" format. The current time is in the UTC format.
-	// + The HH value must be 1 greater than the hh value.
-	// + The values from mm and MM must be the same and must be set to any of the following 00, 15, 30, or 45.
-	StartTime string `pulumi:"startTime"`
+	KeepDays  int     `pulumi:"keepDays"`
+	Period    *string `pulumi:"period"`
+	StartTime string  `pulumi:"startTime"`
 }
 
 // InstanceBackupStrategyInput is an input type that accepts InstanceBackupStrategyArgs and InstanceBackupStrategyOutput values.
@@ -46,24 +31,9 @@ type InstanceBackupStrategyInput interface {
 }
 
 type InstanceBackupStrategyArgs struct {
-	// Specifies the number of days to retain the generated backup files. The value range is
-	// from 0 to 732.
-	// + If this parameter is set to 0, the automated backup policy is not set.
-	// + If this parameter is not transferred, the automated backup policy is enabled by default. Backup files are stored
-	//   for seven days by default.
-	KeepDays pulumi.IntInput `pulumi:"keepDays"`
-	// Specifies the charging period of the instance.
-	// If `periodUnit` is set to *month*, the value ranges from 1 to 9.
-	// If `periodUnit` is set to *year*, the value ranges from 1 to 3.
-	// This parameter is mandatory if `chargingMode` is set to *prePaid*.
-	// Changing this creates a new instance.
-	Period pulumi.StringPtrInput `pulumi:"period"`
-	// Specifies the backup time window. Automated backups will be triggered during the
-	// backup time window. The value cannot be empty. It must be a valid value in the
-	// "hh:mm-HH:MM" format. The current time is in the UTC format.
-	// + The HH value must be 1 greater than the hh value.
-	// + The values from mm and MM must be the same and must be set to any of the following 00, 15, 30, or 45.
-	StartTime pulumi.StringInput `pulumi:"startTime"`
+	KeepDays  pulumi.IntInput       `pulumi:"keepDays"`
+	Period    pulumi.StringPtrInput `pulumi:"period"`
+	StartTime pulumi.StringInput    `pulumi:"startTime"`
 }
 
 func (InstanceBackupStrategyArgs) ElementType() reflect.Type {
@@ -143,29 +113,14 @@ func (o InstanceBackupStrategyOutput) ToInstanceBackupStrategyPtrOutputWithConte
 	}).(InstanceBackupStrategyPtrOutput)
 }
 
-// Specifies the number of days to retain the generated backup files. The value range is
-// from 0 to 732.
-//   - If this parameter is set to 0, the automated backup policy is not set.
-//   - If this parameter is not transferred, the automated backup policy is enabled by default. Backup files are stored
-//     for seven days by default.
 func (o InstanceBackupStrategyOutput) KeepDays() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceBackupStrategy) int { return v.KeepDays }).(pulumi.IntOutput)
 }
 
-// Specifies the charging period of the instance.
-// If `periodUnit` is set to *month*, the value ranges from 1 to 9.
-// If `periodUnit` is set to *year*, the value ranges from 1 to 3.
-// This parameter is mandatory if `chargingMode` is set to *prePaid*.
-// Changing this creates a new instance.
 func (o InstanceBackupStrategyOutput) Period() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceBackupStrategy) *string { return v.Period }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the backup time window. Automated backups will be triggered during the
-// backup time window. The value cannot be empty. It must be a valid value in the
-// "hh:mm-HH:MM" format. The current time is in the UTC format.
-// + The HH value must be 1 greater than the hh value.
-// + The values from mm and MM must be the same and must be set to any of the following 00, 15, 30, or 45.
 func (o InstanceBackupStrategyOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceBackupStrategy) string { return v.StartTime }).(pulumi.StringOutput)
 }
@@ -194,11 +149,6 @@ func (o InstanceBackupStrategyPtrOutput) Elem() InstanceBackupStrategyOutput {
 	}).(InstanceBackupStrategyOutput)
 }
 
-// Specifies the number of days to retain the generated backup files. The value range is
-// from 0 to 732.
-//   - If this parameter is set to 0, the automated backup policy is not set.
-//   - If this parameter is not transferred, the automated backup policy is enabled by default. Backup files are stored
-//     for seven days by default.
 func (o InstanceBackupStrategyPtrOutput) KeepDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceBackupStrategy) *int {
 		if v == nil {
@@ -208,11 +158,6 @@ func (o InstanceBackupStrategyPtrOutput) KeepDays() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the charging period of the instance.
-// If `periodUnit` is set to *month*, the value ranges from 1 to 9.
-// If `periodUnit` is set to *year*, the value ranges from 1 to 3.
-// This parameter is mandatory if `chargingMode` is set to *prePaid*.
-// Changing this creates a new instance.
 func (o InstanceBackupStrategyPtrOutput) Period() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceBackupStrategy) *string {
 		if v == nil {
@@ -222,11 +167,6 @@ func (o InstanceBackupStrategyPtrOutput) Period() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the backup time window. Automated backups will be triggered during the
-// backup time window. The value cannot be empty. It must be a valid value in the
-// "hh:mm-HH:MM" format. The current time is in the UTC format.
-// + The HH value must be 1 greater than the hh value.
-// + The values from mm and MM must be the same and must be set to any of the following 00, 15, 30, or 45.
 func (o InstanceBackupStrategyPtrOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceBackupStrategy) *string {
 		if v == nil {
@@ -237,14 +177,7 @@ func (o InstanceBackupStrategyPtrOutput) StartTime() pulumi.StringPtrOutput {
 }
 
 type InstanceConfiguration struct {
-	// Specifies the ID of the template.
-	// Changing this creates a new instance.
-	Id string `pulumi:"id"`
-	// Specifies the node type. Valid value:
-	// + For a Community Edition cluster instance, the value can be **mongos**, **shard** or **config**.
-	// + For a Community Edition replica set instance, the value is **replica**.
-	// + For a Community Edition single node instance, the value is **single**.
-	//   Changing this creates a new instance.
+	Id   string `pulumi:"id"`
 	Type string `pulumi:"type"`
 }
 
@@ -260,14 +193,7 @@ type InstanceConfigurationInput interface {
 }
 
 type InstanceConfigurationArgs struct {
-	// Specifies the ID of the template.
-	// Changing this creates a new instance.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies the node type. Valid value:
-	// + For a Community Edition cluster instance, the value can be **mongos**, **shard** or **config**.
-	// + For a Community Edition replica set instance, the value is **replica**.
-	// + For a Community Edition single node instance, the value is **single**.
-	//   Changing this creates a new instance.
+	Id   pulumi.StringInput `pulumi:"id"`
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -322,17 +248,10 @@ func (o InstanceConfigurationOutput) ToInstanceConfigurationOutputWithContext(ct
 	return o
 }
 
-// Specifies the ID of the template.
-// Changing this creates a new instance.
 func (o InstanceConfigurationOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceConfiguration) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Specifies the node type. Valid value:
-//   - For a Community Edition cluster instance, the value can be **mongos**, **shard** or **config**.
-//   - For a Community Edition replica set instance, the value is **replica**.
-//   - For a Community Edition single node instance, the value is **single**.
-//     Changing this creates a new instance.
 func (o InstanceConfigurationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceConfiguration) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -358,15 +277,9 @@ func (o InstanceConfigurationArrayOutput) Index(i pulumi.IntInput) InstanceConfi
 }
 
 type InstanceDatastore struct {
-	// Specifies the storage engine of the DB instance.
-	// If `version` is set to `3.2`, `3.4`, or `4.0`, the value is **wiredTiger**.
-	// If `periodUnit` is set to `4.2`, or `4.4`, the value is **rocksDB**.
 	StorageEngine *string `pulumi:"storageEngine"`
-	// Specifies the DB engine. **DDS-Community** is supported.
-	Type string `pulumi:"type"`
-	// Specifies the DB instance version. For the Community Edition, the valid
-	// values are `3.2`, `3.4`, `4.0`, `4.2`, or `4.4`.
-	Version string `pulumi:"version"`
+	Type          string  `pulumi:"type"`
+	Version       string  `pulumi:"version"`
 }
 
 // InstanceDatastoreInput is an input type that accepts InstanceDatastoreArgs and InstanceDatastoreOutput values.
@@ -381,15 +294,9 @@ type InstanceDatastoreInput interface {
 }
 
 type InstanceDatastoreArgs struct {
-	// Specifies the storage engine of the DB instance.
-	// If `version` is set to `3.2`, `3.4`, or `4.0`, the value is **wiredTiger**.
-	// If `periodUnit` is set to `4.2`, or `4.4`, the value is **rocksDB**.
 	StorageEngine pulumi.StringPtrInput `pulumi:"storageEngine"`
-	// Specifies the DB engine. **DDS-Community** is supported.
-	Type pulumi.StringInput `pulumi:"type"`
-	// Specifies the DB instance version. For the Community Edition, the valid
-	// values are `3.2`, `3.4`, `4.0`, `4.2`, or `4.4`.
-	Version pulumi.StringInput `pulumi:"version"`
+	Type          pulumi.StringInput    `pulumi:"type"`
+	Version       pulumi.StringInput    `pulumi:"version"`
 }
 
 func (InstanceDatastoreArgs) ElementType() reflect.Type {
@@ -469,20 +376,14 @@ func (o InstanceDatastoreOutput) ToInstanceDatastorePtrOutputWithContext(ctx con
 	}).(InstanceDatastorePtrOutput)
 }
 
-// Specifies the storage engine of the DB instance.
-// If `version` is set to `3.2`, `3.4`, or `4.0`, the value is **wiredTiger**.
-// If `periodUnit` is set to `4.2`, or `4.4`, the value is **rocksDB**.
 func (o InstanceDatastoreOutput) StorageEngine() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDatastore) *string { return v.StorageEngine }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the DB engine. **DDS-Community** is supported.
 func (o InstanceDatastoreOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceDatastore) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Specifies the DB instance version. For the Community Edition, the valid
-// values are `3.2`, `3.4`, `4.0`, `4.2`, or `4.4`.
 func (o InstanceDatastoreOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceDatastore) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -511,9 +412,6 @@ func (o InstanceDatastorePtrOutput) Elem() InstanceDatastoreOutput {
 	}).(InstanceDatastoreOutput)
 }
 
-// Specifies the storage engine of the DB instance.
-// If `version` is set to `3.2`, `3.4`, or `4.0`, the value is **wiredTiger**.
-// If `periodUnit` is set to `4.2`, or `4.4`, the value is **rocksDB**.
 func (o InstanceDatastorePtrOutput) StorageEngine() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceDatastore) *string {
 		if v == nil {
@@ -523,7 +421,6 @@ func (o InstanceDatastorePtrOutput) StorageEngine() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the DB engine. **DDS-Community** is supported.
 func (o InstanceDatastorePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceDatastore) *string {
 		if v == nil {
@@ -533,8 +430,6 @@ func (o InstanceDatastorePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the DB instance version. For the Community Edition, the valid
-// values are `3.2`, `3.4`, `4.0`, `4.2`, or `4.4`.
 func (o InstanceDatastorePtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceDatastore) *string {
 		if v == nil {
@@ -545,34 +440,11 @@ func (o InstanceDatastorePtrOutput) Version() pulumi.StringPtrOutput {
 }
 
 type InstanceFlavor struct {
-	// Specifies the node quantity. Valid value:
-	// + In a Community Edition cluster instance,the number of mongos ranges from 2 to 16.
-	// + In a Community Edition cluster instance,the number of shards ranges from 2 to 16.
-	// + In an Enhanced Edition cluster instance, the number of shards ranges from 2 to 12.
-	// + config: the value is 1.
-	// + replica: the value is 1.
-	// + single: The value is 1. This parameter can be updated when the value of `type` is mongos or shard.
-	Num int `pulumi:"num"`
-	// Specifies the disk size. The value must be a multiple of 10. The unit is GB. This parameter
-	// is mandatory for nodes except mongos and invalid for mongos. This parameter can be updated when the value of `type` is
-	// shard, replica or single.
-	Size *int `pulumi:"size"`
-	// Specifies the resource specification code. In a cluster instance, multiple
-	// specifications need to be specified. All specifications must be of the same series, that is, general-purpose (s6),
-	// enhanced (c3), or enhanced II (c6). For example:
-	// + dds.mongodb.s6.large.4.mongos and dds.mongodb.s6.large.4.config have the same specifications.
-	// + dds.mongodb.s6.large.4.mongos and dds.mongodb.c3.large.4.config are not of the same specifications. This parameter
-	//   can be updated when the value of `type` is mongos, shard, replica or single.
-	SpecCode string `pulumi:"specCode"`
-	// Specifies the disk type.
-	// Valid value: **ULTRAHIGH** which indicates the type SSD.
-	Storage *string `pulumi:"storage"`
-	// Specifies the node type. Valid value:
-	// + For a Community Edition cluster instance, the value can be **mongos**, **shard**, or **config**.
-	// + For an Enhanced Edition cluster instance, the value is **shard**.
-	// + For a Community Edition replica set instance, the value is **replica**.
-	// + For a Community Edition single node instance, the value is **single**.
-	Type string `pulumi:"type"`
+	Num      int     `pulumi:"num"`
+	Size     *int    `pulumi:"size"`
+	SpecCode string  `pulumi:"specCode"`
+	Storage  *string `pulumi:"storage"`
+	Type     string  `pulumi:"type"`
 }
 
 // InstanceFlavorInput is an input type that accepts InstanceFlavorArgs and InstanceFlavorOutput values.
@@ -587,34 +459,11 @@ type InstanceFlavorInput interface {
 }
 
 type InstanceFlavorArgs struct {
-	// Specifies the node quantity. Valid value:
-	// + In a Community Edition cluster instance,the number of mongos ranges from 2 to 16.
-	// + In a Community Edition cluster instance,the number of shards ranges from 2 to 16.
-	// + In an Enhanced Edition cluster instance, the number of shards ranges from 2 to 12.
-	// + config: the value is 1.
-	// + replica: the value is 1.
-	// + single: The value is 1. This parameter can be updated when the value of `type` is mongos or shard.
-	Num pulumi.IntInput `pulumi:"num"`
-	// Specifies the disk size. The value must be a multiple of 10. The unit is GB. This parameter
-	// is mandatory for nodes except mongos and invalid for mongos. This parameter can be updated when the value of `type` is
-	// shard, replica or single.
-	Size pulumi.IntPtrInput `pulumi:"size"`
-	// Specifies the resource specification code. In a cluster instance, multiple
-	// specifications need to be specified. All specifications must be of the same series, that is, general-purpose (s6),
-	// enhanced (c3), or enhanced II (c6). For example:
-	// + dds.mongodb.s6.large.4.mongos and dds.mongodb.s6.large.4.config have the same specifications.
-	// + dds.mongodb.s6.large.4.mongos and dds.mongodb.c3.large.4.config are not of the same specifications. This parameter
-	//   can be updated when the value of `type` is mongos, shard, replica or single.
-	SpecCode pulumi.StringInput `pulumi:"specCode"`
-	// Specifies the disk type.
-	// Valid value: **ULTRAHIGH** which indicates the type SSD.
-	Storage pulumi.StringPtrInput `pulumi:"storage"`
-	// Specifies the node type. Valid value:
-	// + For a Community Edition cluster instance, the value can be **mongos**, **shard**, or **config**.
-	// + For an Enhanced Edition cluster instance, the value is **shard**.
-	// + For a Community Edition replica set instance, the value is **replica**.
-	// + For a Community Edition single node instance, the value is **single**.
-	Type pulumi.StringInput `pulumi:"type"`
+	Num      pulumi.IntInput       `pulumi:"num"`
+	Size     pulumi.IntPtrInput    `pulumi:"size"`
+	SpecCode pulumi.StringInput    `pulumi:"specCode"`
+	Storage  pulumi.StringPtrInput `pulumi:"storage"`
+	Type     pulumi.StringInput    `pulumi:"type"`
 }
 
 func (InstanceFlavorArgs) ElementType() reflect.Type {
@@ -668,45 +517,22 @@ func (o InstanceFlavorOutput) ToInstanceFlavorOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Specifies the node quantity. Valid value:
-// + In a Community Edition cluster instance,the number of mongos ranges from 2 to 16.
-// + In a Community Edition cluster instance,the number of shards ranges from 2 to 16.
-// + In an Enhanced Edition cluster instance, the number of shards ranges from 2 to 12.
-// + config: the value is 1.
-// + replica: the value is 1.
-// + single: The value is 1. This parameter can be updated when the value of `type` is mongos or shard.
 func (o InstanceFlavorOutput) Num() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceFlavor) int { return v.Num }).(pulumi.IntOutput)
 }
 
-// Specifies the disk size. The value must be a multiple of 10. The unit is GB. This parameter
-// is mandatory for nodes except mongos and invalid for mongos. This parameter can be updated when the value of `type` is
-// shard, replica or single.
 func (o InstanceFlavorOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceFlavor) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the resource specification code. In a cluster instance, multiple
-// specifications need to be specified. All specifications must be of the same series, that is, general-purpose (s6),
-// enhanced (c3), or enhanced II (c6). For example:
-//   - dds.mongodb.s6.large.4.mongos and dds.mongodb.s6.large.4.config have the same specifications.
-//   - dds.mongodb.s6.large.4.mongos and dds.mongodb.c3.large.4.config are not of the same specifications. This parameter
-//     can be updated when the value of `type` is mongos, shard, replica or single.
 func (o InstanceFlavorOutput) SpecCode() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceFlavor) string { return v.SpecCode }).(pulumi.StringOutput)
 }
 
-// Specifies the disk type.
-// Valid value: **ULTRAHIGH** which indicates the type SSD.
 func (o InstanceFlavorOutput) Storage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceFlavor) *string { return v.Storage }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the node type. Valid value:
-// + For a Community Edition cluster instance, the value can be **mongos**, **shard**, or **config**.
-// + For an Enhanced Edition cluster instance, the value is **shard**.
-// + For a Community Edition replica set instance, the value is **replica**.
-// + For a Community Edition single node instance, the value is **single**.
 func (o InstanceFlavorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceFlavor) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -732,22 +558,13 @@ func (o InstanceFlavorArrayOutput) Index(i pulumi.IntInput) InstanceFlavorOutput
 }
 
 type InstanceGroup struct {
-	// Indicates the node ID.
-	Id *string `pulumi:"id"`
-	// Specifies the DB instance name. The DB instance name of the same type is unique in the
-	// same tenant.
-	Name *string `pulumi:"name"`
-	// Indicates the instance nodes information. Structure is documented below.
-	Nodes []InstanceGroupNode `pulumi:"nodes"`
-	// Specifies the disk size. The value must be a multiple of 10. The unit is GB. This parameter
-	// is mandatory for nodes except mongos and invalid for mongos. This parameter can be updated when the value of `type` is
-	// shard, replica or single.
-	Size *string `pulumi:"size"`
-	// Indicates the node status.
-	Status *string `pulumi:"status"`
-	// Indicates the node type.
-	Type *string `pulumi:"type"`
-	Used *string `pulumi:"used"`
+	Id     *string             `pulumi:"id"`
+	Name   *string             `pulumi:"name"`
+	Nodes  []InstanceGroupNode `pulumi:"nodes"`
+	Size   *string             `pulumi:"size"`
+	Status *string             `pulumi:"status"`
+	Type   *string             `pulumi:"type"`
+	Used   *string             `pulumi:"used"`
 }
 
 // InstanceGroupInput is an input type that accepts InstanceGroupArgs and InstanceGroupOutput values.
@@ -762,22 +579,13 @@ type InstanceGroupInput interface {
 }
 
 type InstanceGroupArgs struct {
-	// Indicates the node ID.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Specifies the DB instance name. The DB instance name of the same type is unique in the
-	// same tenant.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Indicates the instance nodes information. Structure is documented below.
-	Nodes InstanceGroupNodeArrayInput `pulumi:"nodes"`
-	// Specifies the disk size. The value must be a multiple of 10. The unit is GB. This parameter
-	// is mandatory for nodes except mongos and invalid for mongos. This parameter can be updated when the value of `type` is
-	// shard, replica or single.
-	Size pulumi.StringPtrInput `pulumi:"size"`
-	// Indicates the node status.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-	// Indicates the node type.
-	Type pulumi.StringPtrInput `pulumi:"type"`
-	Used pulumi.StringPtrInput `pulumi:"used"`
+	Id     pulumi.StringPtrInput       `pulumi:"id"`
+	Name   pulumi.StringPtrInput       `pulumi:"name"`
+	Nodes  InstanceGroupNodeArrayInput `pulumi:"nodes"`
+	Size   pulumi.StringPtrInput       `pulumi:"size"`
+	Status pulumi.StringPtrInput       `pulumi:"status"`
+	Type   pulumi.StringPtrInput       `pulumi:"type"`
+	Used   pulumi.StringPtrInput       `pulumi:"used"`
 }
 
 func (InstanceGroupArgs) ElementType() reflect.Type {
@@ -831,35 +639,26 @@ func (o InstanceGroupOutput) ToInstanceGroupOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Indicates the node ID.
 func (o InstanceGroupOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceGroup) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the DB instance name. The DB instance name of the same type is unique in the
-// same tenant.
 func (o InstanceGroupOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceGroup) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the instance nodes information. Structure is documented below.
 func (o InstanceGroupOutput) Nodes() InstanceGroupNodeArrayOutput {
 	return o.ApplyT(func(v InstanceGroup) []InstanceGroupNode { return v.Nodes }).(InstanceGroupNodeArrayOutput)
 }
 
-// Specifies the disk size. The value must be a multiple of 10. The unit is GB. This parameter
-// is mandatory for nodes except mongos and invalid for mongos. This parameter can be updated when the value of `type` is
-// shard, replica or single.
 func (o InstanceGroupOutput) Size() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceGroup) *string { return v.Size }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the node status.
 func (o InstanceGroupOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceGroup) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the node type.
 func (o InstanceGroupOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceGroup) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -891,14 +690,11 @@ func (o InstanceGroupArrayOutput) Index(i pulumi.IntInput) InstanceGroupOutput {
 type InstanceGroupNode struct {
 	// Indicates the node ID.
 	Id *string `pulumi:"id"`
-	// Specifies the DB instance name. The DB instance name of the same type is unique in the
-	// same tenant.
+	// Indicates the node name.
 	Name *string `pulumi:"name"`
-	// Indicates the private IP address of a node. This parameter is valid only for mongos nodes, replica set
-	// instances, and single node instances.
+	// Indicates the private IP address of a node.
 	PrivateIp *string `pulumi:"privateIp"`
-	// Indicates the EIP that has been bound on a node. This parameter is valid only for mongos nodes of
-	// cluster instances, primary nodes and secondary nodes of replica set instances, and single node instances.
+	// Indicates the EIP that has been bound on a node.
 	PublicIp *string `pulumi:"publicIp"`
 	// Indicates the node role.
 	Role *string `pulumi:"role"`
@@ -922,14 +718,11 @@ type InstanceGroupNodeInput interface {
 type InstanceGroupNodeArgs struct {
 	// Indicates the node ID.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Specifies the DB instance name. The DB instance name of the same type is unique in the
-	// same tenant.
+	// Indicates the node name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Indicates the private IP address of a node. This parameter is valid only for mongos nodes, replica set
-	// instances, and single node instances.
+	// Indicates the private IP address of a node.
 	PrivateIp pulumi.StringPtrInput `pulumi:"privateIp"`
-	// Indicates the EIP that has been bound on a node. This parameter is valid only for mongos nodes of
-	// cluster instances, primary nodes and secondary nodes of replica set instances, and single node instances.
+	// Indicates the EIP that has been bound on a node.
 	PublicIp pulumi.StringPtrInput `pulumi:"publicIp"`
 	// Indicates the node role.
 	Role pulumi.StringPtrInput `pulumi:"role"`
@@ -995,20 +788,17 @@ func (o InstanceGroupNodeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceGroupNode) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the DB instance name. The DB instance name of the same type is unique in the
-// same tenant.
+// Indicates the node name.
 func (o InstanceGroupNodeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceGroupNode) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the private IP address of a node. This parameter is valid only for mongos nodes, replica set
-// instances, and single node instances.
+// Indicates the private IP address of a node.
 func (o InstanceGroupNodeOutput) PrivateIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceGroupNode) *string { return v.PrivateIp }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the EIP that has been bound on a node. This parameter is valid only for mongos nodes of
-// cluster instances, primary nodes and secondary nodes of replica set instances, and single node instances.
+// Indicates the EIP that has been bound on a node.
 func (o InstanceGroupNodeOutput) PublicIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceGroupNode) *string { return v.PublicIp }).(pulumi.StringPtrOutput)
 }
@@ -1051,14 +841,11 @@ func (o InstanceGroupNodeArrayOutput) Index(i pulumi.IntInput) InstanceGroupNode
 type InstanceNode struct {
 	// Indicates the node ID.
 	Id *string `pulumi:"id"`
-	// Specifies the DB instance name. The DB instance name of the same type is unique in the
-	// same tenant.
+	// Indicates the node name.
 	Name *string `pulumi:"name"`
-	// Indicates the private IP address of a node. This parameter is valid only for mongos nodes, replica set
-	// instances, and single node instances.
+	// Indicates the private IP address of a node.
 	PrivateIp *string `pulumi:"privateIp"`
-	// Indicates the EIP that has been bound on a node. This parameter is valid only for mongos nodes of
-	// cluster instances, primary nodes and secondary nodes of replica set instances, and single node instances.
+	// Indicates the EIP that has been bound on a node.
 	PublicIp *string `pulumi:"publicIp"`
 	// Indicates the node role.
 	Role *string `pulumi:"role"`
@@ -1082,14 +869,11 @@ type InstanceNodeInput interface {
 type InstanceNodeArgs struct {
 	// Indicates the node ID.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Specifies the DB instance name. The DB instance name of the same type is unique in the
-	// same tenant.
+	// Indicates the node name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Indicates the private IP address of a node. This parameter is valid only for mongos nodes, replica set
-	// instances, and single node instances.
+	// Indicates the private IP address of a node.
 	PrivateIp pulumi.StringPtrInput `pulumi:"privateIp"`
-	// Indicates the EIP that has been bound on a node. This parameter is valid only for mongos nodes of
-	// cluster instances, primary nodes and secondary nodes of replica set instances, and single node instances.
+	// Indicates the EIP that has been bound on a node.
 	PublicIp pulumi.StringPtrInput `pulumi:"publicIp"`
 	// Indicates the node role.
 	Role pulumi.StringPtrInput `pulumi:"role"`
@@ -1155,20 +939,17 @@ func (o InstanceNodeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNode) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the DB instance name. The DB instance name of the same type is unique in the
-// same tenant.
+// Indicates the node name.
 func (o InstanceNodeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNode) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the private IP address of a node. This parameter is valid only for mongos nodes, replica set
-// instances, and single node instances.
+// Indicates the private IP address of a node.
 func (o InstanceNodeOutput) PrivateIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNode) *string { return v.PrivateIp }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the EIP that has been bound on a node. This parameter is valid only for mongos nodes of
-// cluster instances, primary nodes and secondary nodes of replica set instances, and single node instances.
+// Indicates the EIP that has been bound on a node.
 func (o InstanceNodeOutput) PublicIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNode) *string { return v.PublicIp }).(pulumi.StringPtrOutput)
 }
@@ -1209,13 +990,10 @@ func (o InstanceNodeArrayOutput) Index(i pulumi.IntInput) InstanceNodeOutput {
 }
 
 type GetFlavorsFlavor struct {
-	// Specifies the ram of the dds flavor in GB.
 	Memory   string `pulumi:"memory"`
 	SpecCode string `pulumi:"specCode"`
-	// Specifies the type of the dds falvor. "mongos", "shard", "config", "replica" and "single" are supported.
-	Type string `pulumi:"type"`
-	// Specifies the vcpus of the dds flavor.
-	Vcpus string `pulumi:"vcpus"`
+	Type     string `pulumi:"type"`
+	Vcpus    string `pulumi:"vcpus"`
 }
 
 // GetFlavorsFlavorInput is an input type that accepts GetFlavorsFlavorArgs and GetFlavorsFlavorOutput values.
@@ -1230,13 +1008,10 @@ type GetFlavorsFlavorInput interface {
 }
 
 type GetFlavorsFlavorArgs struct {
-	// Specifies the ram of the dds flavor in GB.
 	Memory   pulumi.StringInput `pulumi:"memory"`
 	SpecCode pulumi.StringInput `pulumi:"specCode"`
-	// Specifies the type of the dds falvor. "mongos", "shard", "config", "replica" and "single" are supported.
-	Type pulumi.StringInput `pulumi:"type"`
-	// Specifies the vcpus of the dds flavor.
-	Vcpus pulumi.StringInput `pulumi:"vcpus"`
+	Type     pulumi.StringInput `pulumi:"type"`
+	Vcpus    pulumi.StringInput `pulumi:"vcpus"`
 }
 
 func (GetFlavorsFlavorArgs) ElementType() reflect.Type {
@@ -1290,7 +1065,6 @@ func (o GetFlavorsFlavorOutput) ToGetFlavorsFlavorOutputWithContext(ctx context.
 	return o
 }
 
-// Specifies the ram of the dds flavor in GB.
 func (o GetFlavorsFlavorOutput) Memory() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) string { return v.Memory }).(pulumi.StringOutput)
 }
@@ -1299,12 +1073,10 @@ func (o GetFlavorsFlavorOutput) SpecCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) string { return v.SpecCode }).(pulumi.StringOutput)
 }
 
-// Specifies the type of the dds falvor. "mongos", "shard", "config", "replica" and "single" are supported.
 func (o GetFlavorsFlavorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Specifies the vcpus of the dds flavor.
 func (o GetFlavorsFlavorOutput) Vcpus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) string { return v.Vcpus }).(pulumi.StringOutput)
 }

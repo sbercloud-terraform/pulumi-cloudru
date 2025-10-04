@@ -12,90 +12,24 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a DDS parameter template resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := cfg.RequireObject("name")
-//			parameterValues := cfg.RequireObject("parameterValues")
-//			nodeType := cfg.RequireObject("nodeType")
-//			nodeVersion := cfg.RequireObject("nodeVersion")
-//			_, err := sbercloud.NewDdsParameterTemplate(ctx, "test", &sbercloud.DdsParameterTemplateArgs{
-//				Name:            pulumi.Any(name),
-//				ParameterValues: pulumi.Any(parameterValues),
-//				NodeType:        pulumi.Any(nodeType),
-//				NodeVersion:     pulumi.Any(nodeVersion),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The DDS parameter template can be imported using the `id`, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:index/ddsParameterTemplate:DdsParameterTemplate test <tempalate_id>
-// ```
 type DdsParameterTemplate struct {
 	pulumi.CustomResourceState
 
-	// The create time of the parameter template.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Specifies the parameter template description.
-	// The description must consist of a maximum of 256 characters and cannot contain the carriage
-	// return character or the following special characters: >!<"&'=.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Specifies the parameter template name.
-	// The value must be 1 to 64 characters, which can contain only letters, digits, hyphens (-),
-	// underscores (_), and periods (.).
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the node type of parameter template. Valid value:
-	// + **mongos**: the mongos node type.
-	// + **shard**: the shard node type.
-	// + **config**: the config node type.
-	// + **replica**: the replica node type.
-	// + **single**: the single node type.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the node type of parameter template.
 	NodeType pulumi.StringOutput `pulumi:"nodeType"`
 	// Specifies the database version.
-	// The value can be **4.4**, **4.2**, **4.0**, **3.4** or **3.2**.
-	//
-	// Changing this parameter will create a new resource.
 	NodeVersion pulumi.StringOutput `pulumi:"nodeVersion"`
 	// Specifies the mapping between parameter names and parameter values.
-	// You can customize parameter values based on the parameters in the default parameter template.
 	ParameterValues pulumi.StringMapOutput `pulumi:"parameterValues"`
 	// Indicates the parameters defined by users based on the default parameter templates.
-	// The Parameter structure is documented below.
 	Parameters DdsParameterTemplateParameterArrayOutput `pulumi:"parameters"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// The update time of the parameter template.
-	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
+	Region     pulumi.StringOutput                      `pulumi:"region"`
+	UpdatedAt  pulumi.StringOutput                      `pulumi:"updatedAt"`
 }
 
 // NewDdsParameterTemplate registers a new resource with the given unique name, arguments, and options.
@@ -134,79 +68,39 @@ func GetDdsParameterTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DdsParameterTemplate resources.
 type ddsParameterTemplateState struct {
-	// The create time of the parameter template.
 	CreatedAt *string `pulumi:"createdAt"`
 	// Specifies the parameter template description.
-	// The description must consist of a maximum of 256 characters and cannot contain the carriage
-	// return character or the following special characters: >!<"&'=.
 	Description *string `pulumi:"description"`
 	// Specifies the parameter template name.
-	// The value must be 1 to 64 characters, which can contain only letters, digits, hyphens (-),
-	// underscores (_), and periods (.).
 	Name *string `pulumi:"name"`
-	// Specifies the node type of parameter template. Valid value:
-	// + **mongos**: the mongos node type.
-	// + **shard**: the shard node type.
-	// + **config**: the config node type.
-	// + **replica**: the replica node type.
-	// + **single**: the single node type.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the node type of parameter template.
 	NodeType *string `pulumi:"nodeType"`
 	// Specifies the database version.
-	// The value can be **4.4**, **4.2**, **4.0**, **3.4** or **3.2**.
-	//
-	// Changing this parameter will create a new resource.
 	NodeVersion *string `pulumi:"nodeVersion"`
 	// Specifies the mapping between parameter names and parameter values.
-	// You can customize parameter values based on the parameters in the default parameter template.
 	ParameterValues map[string]string `pulumi:"parameterValues"`
 	// Indicates the parameters defined by users based on the default parameter templates.
-	// The Parameter structure is documented below.
 	Parameters []DdsParameterTemplateParameter `pulumi:"parameters"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
-	// The update time of the parameter template.
-	UpdatedAt *string `pulumi:"updatedAt"`
+	Region     *string                         `pulumi:"region"`
+	UpdatedAt  *string                         `pulumi:"updatedAt"`
 }
 
 type DdsParameterTemplateState struct {
-	// The create time of the parameter template.
 	CreatedAt pulumi.StringPtrInput
 	// Specifies the parameter template description.
-	// The description must consist of a maximum of 256 characters and cannot contain the carriage
-	// return character or the following special characters: >!<"&'=.
 	Description pulumi.StringPtrInput
 	// Specifies the parameter template name.
-	// The value must be 1 to 64 characters, which can contain only letters, digits, hyphens (-),
-	// underscores (_), and periods (.).
 	Name pulumi.StringPtrInput
-	// Specifies the node type of parameter template. Valid value:
-	// + **mongos**: the mongos node type.
-	// + **shard**: the shard node type.
-	// + **config**: the config node type.
-	// + **replica**: the replica node type.
-	// + **single**: the single node type.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the node type of parameter template.
 	NodeType pulumi.StringPtrInput
 	// Specifies the database version.
-	// The value can be **4.4**, **4.2**, **4.0**, **3.4** or **3.2**.
-	//
-	// Changing this parameter will create a new resource.
 	NodeVersion pulumi.StringPtrInput
 	// Specifies the mapping between parameter names and parameter values.
-	// You can customize parameter values based on the parameters in the default parameter template.
 	ParameterValues pulumi.StringMapInput
 	// Indicates the parameters defined by users based on the default parameter templates.
-	// The Parameter structure is documented below.
 	Parameters DdsParameterTemplateParameterArrayInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
-	// The update time of the parameter template.
-	UpdatedAt pulumi.StringPtrInput
+	Region     pulumi.StringPtrInput
+	UpdatedAt  pulumi.StringPtrInput
 }
 
 func (DdsParameterTemplateState) ElementType() reflect.Type {
@@ -215,65 +109,31 @@ func (DdsParameterTemplateState) ElementType() reflect.Type {
 
 type ddsParameterTemplateArgs struct {
 	// Specifies the parameter template description.
-	// The description must consist of a maximum of 256 characters and cannot contain the carriage
-	// return character or the following special characters: >!<"&'=.
 	Description *string `pulumi:"description"`
 	// Specifies the parameter template name.
-	// The value must be 1 to 64 characters, which can contain only letters, digits, hyphens (-),
-	// underscores (_), and periods (.).
 	Name *string `pulumi:"name"`
-	// Specifies the node type of parameter template. Valid value:
-	// + **mongos**: the mongos node type.
-	// + **shard**: the shard node type.
-	// + **config**: the config node type.
-	// + **replica**: the replica node type.
-	// + **single**: the single node type.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the node type of parameter template.
 	NodeType string `pulumi:"nodeType"`
 	// Specifies the database version.
-	// The value can be **4.4**, **4.2**, **4.0**, **3.4** or **3.2**.
-	//
-	// Changing this parameter will create a new resource.
 	NodeVersion string `pulumi:"nodeVersion"`
 	// Specifies the mapping between parameter names and parameter values.
-	// You can customize parameter values based on the parameters in the default parameter template.
 	ParameterValues map[string]string `pulumi:"parameterValues"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
+	Region          *string           `pulumi:"region"`
 }
 
 // The set of arguments for constructing a DdsParameterTemplate resource.
 type DdsParameterTemplateArgs struct {
 	// Specifies the parameter template description.
-	// The description must consist of a maximum of 256 characters and cannot contain the carriage
-	// return character or the following special characters: >!<"&'=.
 	Description pulumi.StringPtrInput
 	// Specifies the parameter template name.
-	// The value must be 1 to 64 characters, which can contain only letters, digits, hyphens (-),
-	// underscores (_), and periods (.).
 	Name pulumi.StringPtrInput
-	// Specifies the node type of parameter template. Valid value:
-	// + **mongos**: the mongos node type.
-	// + **shard**: the shard node type.
-	// + **config**: the config node type.
-	// + **replica**: the replica node type.
-	// + **single**: the single node type.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the node type of parameter template.
 	NodeType pulumi.StringInput
 	// Specifies the database version.
-	// The value can be **4.4**, **4.2**, **4.0**, **3.4** or **3.2**.
-	//
-	// Changing this parameter will create a new resource.
 	NodeVersion pulumi.StringInput
 	// Specifies the mapping between parameter names and parameter values.
-	// You can customize parameter values based on the parameters in the default parameter template.
 	ParameterValues pulumi.StringMapInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
+	Region          pulumi.StringPtrInput
 }
 
 func (DdsParameterTemplateArgs) ElementType() reflect.Type {
@@ -363,64 +223,44 @@ func (o DdsParameterTemplateOutput) ToDdsParameterTemplateOutputWithContext(ctx 
 	return o
 }
 
-// The create time of the parameter template.
 func (o DdsParameterTemplateOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdsParameterTemplate) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
 // Specifies the parameter template description.
-// The description must consist of a maximum of 256 characters and cannot contain the carriage
-// return character or the following special characters: >!<"&'=.
 func (o DdsParameterTemplateOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DdsParameterTemplate) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the parameter template name.
-// The value must be 1 to 64 characters, which can contain only letters, digits, hyphens (-),
-// underscores (_), and periods (.).
 func (o DdsParameterTemplateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdsParameterTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the node type of parameter template. Valid value:
-// + **mongos**: the mongos node type.
-// + **shard**: the shard node type.
-// + **config**: the config node type.
-// + **replica**: the replica node type.
-// + **single**: the single node type.
-//
-// Changing this parameter will create a new resource.
+// Specifies the node type of parameter template.
 func (o DdsParameterTemplateOutput) NodeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdsParameterTemplate) pulumi.StringOutput { return v.NodeType }).(pulumi.StringOutput)
 }
 
 // Specifies the database version.
-// The value can be **4.4**, **4.2**, **4.0**, **3.4** or **3.2**.
-//
-// Changing this parameter will create a new resource.
 func (o DdsParameterTemplateOutput) NodeVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdsParameterTemplate) pulumi.StringOutput { return v.NodeVersion }).(pulumi.StringOutput)
 }
 
 // Specifies the mapping between parameter names and parameter values.
-// You can customize parameter values based on the parameters in the default parameter template.
 func (o DdsParameterTemplateOutput) ParameterValues() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DdsParameterTemplate) pulumi.StringMapOutput { return v.ParameterValues }).(pulumi.StringMapOutput)
 }
 
 // Indicates the parameters defined by users based on the default parameter templates.
-// The Parameter structure is documented below.
 func (o DdsParameterTemplateOutput) Parameters() DdsParameterTemplateParameterArrayOutput {
 	return o.ApplyT(func(v *DdsParameterTemplate) DdsParameterTemplateParameterArrayOutput { return v.Parameters }).(DdsParameterTemplateParameterArrayOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
 func (o DdsParameterTemplateOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdsParameterTemplate) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// The update time of the parameter template.
 func (o DdsParameterTemplateOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdsParameterTemplate) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }

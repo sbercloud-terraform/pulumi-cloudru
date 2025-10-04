@@ -4,50 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a User resource within SberCloud IAM service.
- *
- * Note: You _must_ have admin privileges in your SberCloud cloud to use this resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const user1 = new sbercloud.iam.User("user_1", {
- *     name: "user_1",
- *     description: "A user",
- *     password: "password123!",
- * });
- * ```
- *
- * ## Import
- *
- * Users can be imported using the `id`, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Iam/user:User user_1 89c60255-9bd6-460c-822a-e2b959ede9d2
- * ```
- *
- * But due to the security reason, `password` can not be imported, you can ignore it as below.
- *
- * resource "sbercloud_identity_user" "user_1" {
- *
- *   ...
- *
- *   lifecycle {
- *
- *     ignore_changes = [
- *     
- *       "password",
- *     
- *     ]
- *
- *   }
- *
- * }
- */
 export class User extends pulumi.CustomResource {
     /**
      * Get an existing User resource's state with the given name, ID, and optional extra
@@ -76,65 +32,20 @@ export class User extends pulumi.CustomResource {
         return obj['__pulumiType'] === User.__pulumiType;
     }
 
-    /**
-     * Specifies the access type of the user. Available values are:
-     * + default: support both programmatic and management console access.
-     * + programmatic: only support programmatic access.
-     * + console: only support management console access.
-     */
     declare public readonly accessType: pulumi.Output<string>;
-    /**
-     * Specifies the country code. The country code of the Chinese mainland is 0086. This
-     * parameter must be used together with `phone`.
-     */
     declare public readonly countryCode: pulumi.Output<string | undefined>;
-    /**
-     * The time when the IAM user was created.
-     */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
-    /**
-     * Specifies the description of the user.
-     */
     declare public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the email address with a maximum of 255 characters.
-     */
     declare public readonly email: pulumi.Output<string | undefined>;
-    /**
-     * Specifies whether the user is enabled or disabled. Valid values are `true` and `false`.
-     */
     declare public readonly enabled: pulumi.Output<boolean | undefined>;
     declare public readonly externalIdentityId: pulumi.Output<string | undefined>;
     declare public readonly externalIdentityType: pulumi.Output<string>;
-    /**
-     * The tiem when the IAM user last login.
-     */
     declare public /*out*/ readonly lastLogin: pulumi.Output<string>;
     declare public readonly loginProtectVerificationMethod: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the name of the user. The user name consists of 5 to 32 characters. It can
-     * contain only uppercase letters, lowercase letters, digits, spaces, and special characters (-_) and cannot start with a
-     * digit.
-     */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * Specifies the password for the user with 6 to 32 characters. It must contain at least
-     * two of the following character types: uppercase letters, lowercase letters, digits, and special characters.
-     */
     declare public readonly password: pulumi.Output<string | undefined>;
-    /**
-     * Indicates the password strength.
-     */
     declare public /*out*/ readonly passwordStrength: pulumi.Output<string>;
-    /**
-     * Specifies the mobile number with a maximum of 32 digits. This parameter must be used
-     * together with `countryCode`.
-     */
     declare public readonly phone: pulumi.Output<string | undefined>;
-    /**
-     * Specifies whether or not the password should be reset. By default, the password is asked
-     * to reset at the first login.
-     */
     declare public readonly pwdReset: pulumi.Output<boolean | undefined>;
 
     /**
@@ -194,65 +105,20 @@ export class User extends pulumi.CustomResource {
  * Input properties used for looking up and filtering User resources.
  */
 export interface UserState {
-    /**
-     * Specifies the access type of the user. Available values are:
-     * + default: support both programmatic and management console access.
-     * + programmatic: only support programmatic access.
-     * + console: only support management console access.
-     */
     accessType?: pulumi.Input<string>;
-    /**
-     * Specifies the country code. The country code of the Chinese mainland is 0086. This
-     * parameter must be used together with `phone`.
-     */
     countryCode?: pulumi.Input<string>;
-    /**
-     * The time when the IAM user was created.
-     */
     createTime?: pulumi.Input<string>;
-    /**
-     * Specifies the description of the user.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies the email address with a maximum of 255 characters.
-     */
     email?: pulumi.Input<string>;
-    /**
-     * Specifies whether the user is enabled or disabled. Valid values are `true` and `false`.
-     */
     enabled?: pulumi.Input<boolean>;
     externalIdentityId?: pulumi.Input<string>;
     externalIdentityType?: pulumi.Input<string>;
-    /**
-     * The tiem when the IAM user last login.
-     */
     lastLogin?: pulumi.Input<string>;
     loginProtectVerificationMethod?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the user. The user name consists of 5 to 32 characters. It can
-     * contain only uppercase letters, lowercase letters, digits, spaces, and special characters (-_) and cannot start with a
-     * digit.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the password for the user with 6 to 32 characters. It must contain at least
-     * two of the following character types: uppercase letters, lowercase letters, digits, and special characters.
-     */
     password?: pulumi.Input<string>;
-    /**
-     * Indicates the password strength.
-     */
     passwordStrength?: pulumi.Input<string>;
-    /**
-     * Specifies the mobile number with a maximum of 32 digits. This parameter must be used
-     * together with `countryCode`.
-     */
     phone?: pulumi.Input<string>;
-    /**
-     * Specifies whether or not the password should be reset. By default, the password is asked
-     * to reset at the first login.
-     */
     pwdReset?: pulumi.Input<boolean>;
 }
 
@@ -260,52 +126,16 @@ export interface UserState {
  * The set of arguments for constructing a User resource.
  */
 export interface UserArgs {
-    /**
-     * Specifies the access type of the user. Available values are:
-     * + default: support both programmatic and management console access.
-     * + programmatic: only support programmatic access.
-     * + console: only support management console access.
-     */
     accessType?: pulumi.Input<string>;
-    /**
-     * Specifies the country code. The country code of the Chinese mainland is 0086. This
-     * parameter must be used together with `phone`.
-     */
     countryCode?: pulumi.Input<string>;
-    /**
-     * Specifies the description of the user.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies the email address with a maximum of 255 characters.
-     */
     email?: pulumi.Input<string>;
-    /**
-     * Specifies whether the user is enabled or disabled. Valid values are `true` and `false`.
-     */
     enabled?: pulumi.Input<boolean>;
     externalIdentityId?: pulumi.Input<string>;
     externalIdentityType?: pulumi.Input<string>;
     loginProtectVerificationMethod?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the user. The user name consists of 5 to 32 characters. It can
-     * contain only uppercase letters, lowercase letters, digits, spaces, and special characters (-_) and cannot start with a
-     * digit.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the password for the user with 6 to 32 characters. It must contain at least
-     * two of the following character types: uppercase letters, lowercase letters, digits, and special characters.
-     */
     password?: pulumi.Input<string>;
-    /**
-     * Specifies the mobile number with a maximum of 32 digits. This parameter must be used
-     * together with `countryCode`.
-     */
     phone?: pulumi.Input<string>;
-    /**
-     * Specifies whether or not the password should be reset. By default, the password is asked
-     * to reset at the first login.
-     */
     pwdReset?: pulumi.Input<boolean>;
 }

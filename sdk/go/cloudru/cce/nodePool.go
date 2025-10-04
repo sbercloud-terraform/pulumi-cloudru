@@ -12,394 +12,61 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Add a node pool to a container cluster.
-//
-// ## Example Usage
-//
-// ### Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cce"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			clusterId := cfg.RequireObject("clusterId")
-//			keyPair := cfg.RequireObject("keyPair")
-//			availabilityZone := cfg.RequireObject("availabilityZone")
-//			_, err := cce.NewNodePool(ctx, "node_pool", &cce.NodePoolArgs{
-//				ClusterId:             pulumi.Any(clusterId),
-//				Name:                  pulumi.String("testpool"),
-//				Os:                    pulumi.String("EulerOS 2.5"),
-//				InitialNodeCount:      pulumi.Int(2),
-//				FlavorId:              pulumi.String("s3.large.4"),
-//				AvailabilityZone:      pulumi.Any(availabilityZone),
-//				KeyPair:               pulumi.Any(keypair),
-//				ScallEnable:           pulumi.Bool(true),
-//				MinNodeCount:          pulumi.Int(1),
-//				MaxNodeCount:          pulumi.Int(10),
-//				ScaleDownCooldownTime: pulumi.Int(100),
-//				Priority:              pulumi.Int(1),
-//				Type:                  pulumi.String("vm"),
-//				RootVolume: &cce.NodePoolRootVolumeArgs{
-//					Size:       pulumi.Int(40),
-//					Volumetype: pulumi.String("SAS"),
-//				},
-//				DataVolumes: cce.NodePoolDataVolumeArray{
-//					&cce.NodePoolDataVolumeArgs{
-//						Size:       pulumi.Int(100),
-//						Volumetype: pulumi.String("SAS"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### PrePaid node pool
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cce"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			clusterId := cfg.RequireObject("clusterId")
-//			keyPair := cfg.RequireObject("keyPair")
-//			availabilityZone := cfg.RequireObject("availabilityZone")
-//			_, err := cce.NewNodePool(ctx, "node_pool", &cce.NodePoolArgs{
-//				ClusterId:             pulumi.Any(clusterId),
-//				Name:                  pulumi.String("testpool"),
-//				Os:                    pulumi.String("EulerOS 2.5"),
-//				InitialNodeCount:      pulumi.Int(2),
-//				FlavorId:              pulumi.String("s3.large.4"),
-//				AvailabilityZone:      pulumi.Any(availabilityZone),
-//				KeyPair:               pulumi.Any(keypair),
-//				ScallEnable:           pulumi.Bool(true),
-//				MinNodeCount:          pulumi.Int(1),
-//				MaxNodeCount:          pulumi.Int(10),
-//				ScaleDownCooldownTime: pulumi.Int(100),
-//				Priority:              pulumi.Int(1),
-//				Type:                  pulumi.String("vm"),
-//				ChargingMode:          pulumi.String("prePaid"),
-//				PeriodUnit:            pulumi.String("month"),
-//				Period:                pulumi.Int(1),
-//				RootVolume: &cce.NodePoolRootVolumeArgs{
-//					Size:       pulumi.Int(40),
-//					Volumetype: pulumi.String("SAS"),
-//				},
-//				DataVolumes: cce.NodePoolDataVolumeArray{
-//					&cce.NodePoolDataVolumeArgs{
-//						Size:       pulumi.Int(100),
-//						Volumetype: pulumi.String("SAS"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// > You need to remove all nodes in the node pool on the console, before deleting a prepaid node pool.
-//
-// ## Node pool with extension scale groups
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cce"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			clusterId := cfg.RequireObject("clusterId")
-//			keyPair := cfg.RequireObject("keyPair")
-//			availabilityZone1 := cfg.RequireObject("availabilityZone1")
-//			availabilityZone2 := cfg.RequireObject("availabilityZone2")
-//			_, err := cce.NewNodePool(ctx, "node_pool", &cce.NodePoolArgs{
-//				ClusterId:             pulumi.Any(clusterId),
-//				Name:                  pulumi.String("testpool"),
-//				Os:                    pulumi.String("EulerOS 2.5"),
-//				InitialNodeCount:      pulumi.Int(2),
-//				FlavorId:              pulumi.String("s3.large.4"),
-//				AvailabilityZone:      pulumi.Any(availabilityZone1),
-//				KeyPair:               pulumi.Any(keypair),
-//				ScallEnable:           pulumi.Bool(true),
-//				MinNodeCount:          pulumi.Int(1),
-//				MaxNodeCount:          pulumi.Int(10),
-//				ScaleDownCooldownTime: pulumi.Int(100),
-//				Priority:              pulumi.Int(1),
-//				Type:                  pulumi.String("vm"),
-//				RootVolume: &cce.NodePoolRootVolumeArgs{
-//					Size:       pulumi.Int(40),
-//					Volumetype: pulumi.String("SAS"),
-//				},
-//				DataVolumes: cce.NodePoolDataVolumeArray{
-//					&cce.NodePoolDataVolumeArgs{
-//						Size:       pulumi.Int(100),
-//						Volumetype: pulumi.String("SAS"),
-//					},
-//				},
-//				ExtensionScaleGroups: cce.NodePoolExtensionScaleGroupArray{
-//					&cce.NodePoolExtensionScaleGroupArgs{
-//						Metadata: &cce.NodePoolExtensionScaleGroupMetadataArgs{
-//							Name: pulumi.String("group1"),
-//						},
-//						Spec: &cce.NodePoolExtensionScaleGroupSpecArgs{
-//							Flavor: pulumi.String("s3.large.4"),
-//							Az:     pulumi.Any(availabilityZone1),
-//							Autoscaling: &cce.NodePoolExtensionScaleGroupSpecAutoscalingArgs{
-//								ExtensionPriority: pulumi.Int(1),
-//								Enable:            pulumi.Bool(true),
-//							},
-//						},
-//					},
-//					&cce.NodePoolExtensionScaleGroupArgs{
-//						Metadata: &cce.NodePoolExtensionScaleGroupMetadataArgs{
-//							Name: pulumi.String("group2"),
-//						},
-//						Spec: &cce.NodePoolExtensionScaleGroupSpecArgs{
-//							Flavor: pulumi.String("s3.xlarge.4"),
-//							Az:     pulumi.Any(availabilityZone1),
-//							Autoscaling: &cce.NodePoolExtensionScaleGroupSpecAutoscalingArgs{
-//								ExtensionPriority: pulumi.Int(1),
-//								Enable:            pulumi.Bool(true),
-//							},
-//						},
-//					},
-//					&cce.NodePoolExtensionScaleGroupArgs{
-//						Metadata: &cce.NodePoolExtensionScaleGroupMetadataArgs{
-//							Name: pulumi.String("group3"),
-//						},
-//						Spec: &cce.NodePoolExtensionScaleGroupSpecArgs{
-//							Flavor: pulumi.String("s3.xlarge.4"),
-//							Az:     pulumi.Any(availabilityZone2),
-//							Autoscaling: &cce.NodePoolExtensionScaleGroupSpecAutoscalingArgs{
-//								ExtensionPriority: pulumi.Int(1),
-//								Enable:            pulumi.Bool(true),
-//							},
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// CCE node pool can be imported using the cluster ID and node pool ID separated by a slash, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Cce/nodePool:NodePool my_node_pool <cluster_id>/<id>
-// ```
-//
-// # Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-//
-// API response, security or some other reason. The missing attributes include:
-//
-// `password`, `extend_params`, `taints`, `initial_node_count`, `pod_security_groups` and `extension_scale_groups`.
-//
-// It is generally recommended running `pulumi preview` after importing a node pool.
-//
-// # You can then decide if changes should be applied to the node pool, or the resource
-//
-// definition should be updated to align with the node pool. Also you can ignore changes as below.
-//
-// hcl
-//
-// resource "sbercloud_cce_node_pool" "my_node_pool" {
-//
-//	...
-//
-//	lifecycle {
-//
-//	  ignore_changes = [
-//
-//	    password, extend_params,
-//
-//	  ]
-//
-//	}
-//
-// }
 type NodePool struct {
 	pulumi.CustomResourceState
 
-	// Specifies whether auto renew is enabled. Valid values are "true" and "false".
-	// Changing this parameter will create a new resource.
-	AutoRenew pulumi.StringOutput `pulumi:"autoRenew"`
-	// Specifies the name of the available partition (AZ). Default value
-	// is random to create nodes in a random AZ in the node pool. Changing this parameter will create a new resource.
-	AvailabilityZone pulumi.StringPtrOutput `pulumi:"availabilityZone"`
-	// Billing mode of a node.
-	BillingMode pulumi.IntOutput `pulumi:"billingMode"`
-	// Specifies the charging mode of the CCE node pool. Valid values are
-	// *prePaid* and *postPaid*, defaults to *postPaid*. Changing this parameter will create a new resource.
-	ChargingMode pulumi.StringOutput `pulumi:"chargingMode"`
-	// Specifies the cluster ID.
-	// Changing this parameter will create a new resource.
-	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// The current number of the nodes.
-	CurrentNodeCount pulumi.IntOutput `pulumi:"currentNodeCount"`
-	// Specifies the configuration of the data disks.
-	// The structure is described below. Changing this parameter will create a new resource.
-	DataVolumes NodePoolDataVolumeArrayOutput `pulumi:"dataVolumes"`
-	// Specifies the ECS group ID. If specified, the node will be created under
-	// the cloud server group. Changing this parameter will create a new resource.
-	EcsGroupId     pulumi.StringPtrOutput `pulumi:"ecsGroupId"`
-	EnableForceNew pulumi.StringPtrOutput `pulumi:"enableForceNew"`
-	// Specifies the enterprise project ID of the node pool.
-	// If updated, the new value will apply only to new nodes.
-	EnterpriseProjectId pulumi.StringOutput `pulumi:"enterpriseProjectId"`
+	AutoRenew           pulumi.StringOutput           `pulumi:"autoRenew"`
+	AvailabilityZone    pulumi.StringPtrOutput        `pulumi:"availabilityZone"`
+	BillingMode         pulumi.IntOutput              `pulumi:"billingMode"`
+	ChargingMode        pulumi.StringOutput           `pulumi:"chargingMode"`
+	ClusterId           pulumi.StringOutput           `pulumi:"clusterId"`
+	CurrentNodeCount    pulumi.IntOutput              `pulumi:"currentNodeCount"`
+	DataVolumes         NodePoolDataVolumeArrayOutput `pulumi:"dataVolumes"`
+	EcsGroupId          pulumi.StringPtrOutput        `pulumi:"ecsGroupId"`
+	EnableForceNew      pulumi.StringPtrOutput        `pulumi:"enableForceNew"`
+	EnterpriseProjectId pulumi.StringOutput           `pulumi:"enterpriseProjectId"`
 	// schema: Deprecated; This parameter has been replaced by the 'extend_params' parameter.
-	ExtendParam pulumi.StringMapOutput `pulumi:"extendParam"`
-	// Specifies the extended parameters.
-	// The object structure is documented below.
-	// Changing this parameter will create a new resource.
-	ExtendParams NodePoolExtendParamsOutput `pulumi:"extendParams"`
-	// Specifies the configurations of extended scaling groups in the node pool.
-	// The object structure is documented below.
-	ExtensionScaleGroups NodePoolExtensionScaleGroupArrayOutput `pulumi:"extensionScaleGroups"`
-	// Specifies the flavor ID. Changing this parameter will create a new
-	// resource.
-	FlavorId pulumi.StringOutput `pulumi:"flavorId"`
-	// Specifies the hostname config of the kubernetes node,
-	// which is supported by clusters of v1.23.6-r0 to v1.25 or clusters of v1.25.2-r0 or later versions.
-	// The object structure is documented below.
-	// Changing this parameter will create a new resource.
-	HostnameConfig NodePoolHostnameConfigOutput `pulumi:"hostnameConfig"`
-	// Specifies the initial number of expected nodes in the node pool.
-	// This parameter can be also used to manually scale the node count afterwards.
-	InitialNodeCount pulumi.IntOutput `pulumi:"initialNodeCount"`
-	// Specifies the custom initialization flags.
-	InitializedConditions pulumi.StringArrayOutput `pulumi:"initializedConditions"`
-	// Specifies the key pair name when logging in to select the key pair mode.
-	// This parameter and `password` are alternative. Changing this parameter will create a new resource.
-	KeyPair pulumi.StringPtrOutput `pulumi:"keyPair"`
-	// Specifies the label policy on existing nodes.
-	// The value can be **ignore** and **refresh**, defaults to **refresh**.
-	LabelPolicyOnExistingNodes pulumi.StringOutput `pulumi:"labelPolicyOnExistingNodes"`
-	// Specifies the tags of a Kubernetes node, key/value pair format.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Specifies the maximum number of nodes allowed if auto scaling is enabled.
-	MaxNodeCount pulumi.IntPtrOutput `pulumi:"maxNodeCount"`
+	ExtendParam                pulumi.StringMapOutput                 `pulumi:"extendParam"`
+	ExtendParams               NodePoolExtendParamsOutput             `pulumi:"extendParams"`
+	ExtensionScaleGroups       NodePoolExtensionScaleGroupArrayOutput `pulumi:"extensionScaleGroups"`
+	FlavorId                   pulumi.StringOutput                    `pulumi:"flavorId"`
+	HostnameConfig             NodePoolHostnameConfigOutput           `pulumi:"hostnameConfig"`
+	InitialNodeCount           pulumi.IntOutput                       `pulumi:"initialNodeCount"`
+	InitializedConditions      pulumi.StringArrayOutput               `pulumi:"initializedConditions"`
+	KeyPair                    pulumi.StringPtrOutput                 `pulumi:"keyPair"`
+	LabelPolicyOnExistingNodes pulumi.StringOutput                    `pulumi:"labelPolicyOnExistingNodes"`
+	Labels                     pulumi.StringMapOutput                 `pulumi:"labels"`
+	MaxNodeCount               pulumi.IntPtrOutput                    `pulumi:"maxNodeCount"`
 	// schema: Deprecated; This parameter can be configured in the 'extend_params' parameter.
-	MaxPods pulumi.IntOutput `pulumi:"maxPods"`
-	// Specifies the minimum number of nodes allowed if auto scaling is enabled.
-	MinNodeCount pulumi.IntPtrOutput `pulumi:"minNodeCount"`
-	// Specifies the node pool name.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the operating system of the node.
-	// The value can be **EulerOS 2.9** and **CentOS 7.6** e.g. For more details,
-	// please see [documentation](https://support.hc.sbercloud.ru/usermanual/cce/cce_10_0476.html).
-	// This parameter is required when the `nodeImageId` in `extendParams` is not specified.
-	Os        pulumi.StringOutput    `pulumi:"os"`
-	Partition pulumi.StringPtrOutput `pulumi:"partition"`
-	// Specifies the root password when logging in to select the password mode.
-	// The password consists of 8 to 26 characters and must contain at least three of following: uppercase letters,
-	// lowercase letters, digits, special characters(!@$%^-_=+[{}]:,./?~#*).
-	// This parameter can be plain or salted and is alternative to `keyPair`.
-	// Changing this parameter will create a new resource.
-	Password pulumi.StringPtrOutput `pulumi:"password"`
-	// Specifies the charging period of the CCE node pool. If `periodUnit` is set to
-	// *month*, the value ranges from 1 to 9. If `periodUnit` is set to *year*, the value ranges from 1 to 3. This parameter
-	// is mandatory if `chargingMode` is set to *prePaid*. Changing this parameter will create a new resource.
-	Period pulumi.IntPtrOutput `pulumi:"period"`
-	// Specifies the charging period unit of the CCE node pool.
-	// Valid values are *month* and *year*. This parameter is mandatory if `chargingMode` is set to *prePaid*.
-	// Changing this parameter will create a new resource.
-	PeriodUnit pulumi.StringPtrOutput `pulumi:"periodUnit"`
-	// Specifies the list of security group IDs for the pod.
-	// Only supported in CCE Turbo clusters of v1.19 and above. Changing this parameter will create a new resource.
+	MaxPods           pulumi.IntOutput         `pulumi:"maxPods"`
+	MinNodeCount      pulumi.IntPtrOutput      `pulumi:"minNodeCount"`
+	Name              pulumi.StringOutput      `pulumi:"name"`
+	Os                pulumi.StringOutput      `pulumi:"os"`
+	Partition         pulumi.StringPtrOutput   `pulumi:"partition"`
+	Password          pulumi.StringPtrOutput   `pulumi:"password"`
+	Period            pulumi.IntPtrOutput      `pulumi:"period"`
+	PeriodUnit        pulumi.StringPtrOutput   `pulumi:"periodUnit"`
 	PodSecurityGroups pulumi.StringArrayOutput `pulumi:"podSecurityGroups"`
 	// schema: Deprecated; This parameter can be configured in the 'extend_params' parameter.
 	Postinstall pulumi.StringPtrOutput `pulumi:"postinstall"`
 	// schema: Deprecated; This parameter can be configured in the 'extend_params' parameter.
-	Preinstall pulumi.StringPtrOutput `pulumi:"preinstall"`
-	// Specifies the weight of the node pool.
-	// A node pool with a higher weight has a higher priority during scaling.
-	Priority pulumi.IntPtrOutput `pulumi:"priority"`
-	// The region in which to create the CCE pool resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new CCE node pool resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Specifies the configuration of the system disk.
-	// The structure is described below. Changing this parameter will create a new resource.
-	RootVolume NodePoolRootVolumeOutput `pulumi:"rootVolume"`
-	// Specifies the runtime of the CCE node pool. Valid values are *docker* and
-	// *containerd*. Changing this creates a new resource.
-	Runtime pulumi.StringOutput `pulumi:"runtime"`
-	// Specifies the time interval between two scaling operations, in minutes.
-	ScaleDownCooldownTime pulumi.IntPtrOutput `pulumi:"scaleDownCooldownTime"`
-	// Specifies whether to enable auto scaling.
-	// If Autoscaler is enabled, install the autoscaler add-on to use the auto scaling feature.
-	ScallEnable pulumi.BoolPtrOutput `pulumi:"scallEnable"`
-	// Specifies the list of custom security group IDs for the node pool.
-	// If specified, the nodes will be put in these security groups. When specifying a security group, do not modify
-	// the rules of the port on which CCE running depends. For details, see
-	// [documentation](https://support.hc.sbercloud.ru/usermanual/cce/cce_faq_00265.html).
-	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
-	// Node status information.
-	Status pulumi.StringOutput `pulumi:"status"`
-	// Specifies the disk initialization management parameter.
-	// If omitted, disks are managed based on the DockerLVMConfigOverride parameter in extendParam.
-	// This parameter is supported for clusters of v1.15.11 and later. Changing this parameter will create a new resource.
-	Storage NodePoolStoragePtrOutput `pulumi:"storage"`
-	// Specifies the ID of the subnet to which the NIC belongs.
-	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
-	// Specifies the ID list of the subnet to which the NIC belongs.
-	SubnetLists pulumi.StringArrayOutput `pulumi:"subnetLists"`
-	// Specifies the tag policy on existing nodes.
-	// The value can be **ignore** and **refresh**, defaults to **ignore**.
-	TagPolicyOnExistingNodes pulumi.StringOutput `pulumi:"tagPolicyOnExistingNodes"`
-	// Specifies the tags of a VM node, key/value pair format.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Specifies the taint policy on existing nodes.
-	// The value can be **ignore** and **refresh**, defaults to **refresh**.
-	TaintPolicyOnExistingNodes pulumi.StringOutput `pulumi:"taintPolicyOnExistingNodes"`
-	// Specifies the taints configuration of the nodes to set anti-affinity.
-	// The structure is described below.
-	Taints NodePoolTaintArrayOutput `pulumi:"taints"`
-	// Specifies the node pool type. Possible values are: **vm** and **ElasticBMS**.
-	Type pulumi.StringOutput `pulumi:"type"`
+	Preinstall                 pulumi.StringPtrOutput   `pulumi:"preinstall"`
+	Priority                   pulumi.IntPtrOutput      `pulumi:"priority"`
+	Region                     pulumi.StringOutput      `pulumi:"region"`
+	RootVolume                 NodePoolRootVolumeOutput `pulumi:"rootVolume"`
+	Runtime                    pulumi.StringOutput      `pulumi:"runtime"`
+	ScaleDownCooldownTime      pulumi.IntPtrOutput      `pulumi:"scaleDownCooldownTime"`
+	ScallEnable                pulumi.BoolPtrOutput     `pulumi:"scallEnable"`
+	SecurityGroups             pulumi.StringArrayOutput `pulumi:"securityGroups"`
+	Status                     pulumi.StringOutput      `pulumi:"status"`
+	Storage                    NodePoolStoragePtrOutput `pulumi:"storage"`
+	SubnetId                   pulumi.StringOutput      `pulumi:"subnetId"`
+	SubnetLists                pulumi.StringArrayOutput `pulumi:"subnetLists"`
+	TagPolicyOnExistingNodes   pulumi.StringOutput      `pulumi:"tagPolicyOnExistingNodes"`
+	Tags                       pulumi.StringMapOutput   `pulumi:"tags"`
+	TaintPolicyOnExistingNodes pulumi.StringOutput      `pulumi:"taintPolicyOnExistingNodes"`
+	Taints                     NodePoolTaintArrayOutput `pulumi:"taints"`
+	Type                       pulumi.StringOutput      `pulumi:"type"`
 }
 
 // NewNodePool registers a new resource with the given unique name, arguments, and options.
@@ -451,281 +118,113 @@ func GetNodePool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NodePool resources.
 type nodePoolState struct {
-	// Specifies whether auto renew is enabled. Valid values are "true" and "false".
-	// Changing this parameter will create a new resource.
-	AutoRenew *string `pulumi:"autoRenew"`
-	// Specifies the name of the available partition (AZ). Default value
-	// is random to create nodes in a random AZ in the node pool. Changing this parameter will create a new resource.
-	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Billing mode of a node.
-	BillingMode *int `pulumi:"billingMode"`
-	// Specifies the charging mode of the CCE node pool. Valid values are
-	// *prePaid* and *postPaid*, defaults to *postPaid*. Changing this parameter will create a new resource.
-	ChargingMode *string `pulumi:"chargingMode"`
-	// Specifies the cluster ID.
-	// Changing this parameter will create a new resource.
-	ClusterId *string `pulumi:"clusterId"`
-	// The current number of the nodes.
-	CurrentNodeCount *int `pulumi:"currentNodeCount"`
-	// Specifies the configuration of the data disks.
-	// The structure is described below. Changing this parameter will create a new resource.
-	DataVolumes []NodePoolDataVolume `pulumi:"dataVolumes"`
-	// Specifies the ECS group ID. If specified, the node will be created under
-	// the cloud server group. Changing this parameter will create a new resource.
-	EcsGroupId     *string `pulumi:"ecsGroupId"`
-	EnableForceNew *string `pulumi:"enableForceNew"`
-	// Specifies the enterprise project ID of the node pool.
-	// If updated, the new value will apply only to new nodes.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
+	AutoRenew           *string              `pulumi:"autoRenew"`
+	AvailabilityZone    *string              `pulumi:"availabilityZone"`
+	BillingMode         *int                 `pulumi:"billingMode"`
+	ChargingMode        *string              `pulumi:"chargingMode"`
+	ClusterId           *string              `pulumi:"clusterId"`
+	CurrentNodeCount    *int                 `pulumi:"currentNodeCount"`
+	DataVolumes         []NodePoolDataVolume `pulumi:"dataVolumes"`
+	EcsGroupId          *string              `pulumi:"ecsGroupId"`
+	EnableForceNew      *string              `pulumi:"enableForceNew"`
+	EnterpriseProjectId *string              `pulumi:"enterpriseProjectId"`
 	// schema: Deprecated; This parameter has been replaced by the 'extend_params' parameter.
-	ExtendParam map[string]string `pulumi:"extendParam"`
-	// Specifies the extended parameters.
-	// The object structure is documented below.
-	// Changing this parameter will create a new resource.
-	ExtendParams *NodePoolExtendParams `pulumi:"extendParams"`
-	// Specifies the configurations of extended scaling groups in the node pool.
-	// The object structure is documented below.
-	ExtensionScaleGroups []NodePoolExtensionScaleGroup `pulumi:"extensionScaleGroups"`
-	// Specifies the flavor ID. Changing this parameter will create a new
-	// resource.
-	FlavorId *string `pulumi:"flavorId"`
-	// Specifies the hostname config of the kubernetes node,
-	// which is supported by clusters of v1.23.6-r0 to v1.25 or clusters of v1.25.2-r0 or later versions.
-	// The object structure is documented below.
-	// Changing this parameter will create a new resource.
-	HostnameConfig *NodePoolHostnameConfig `pulumi:"hostnameConfig"`
-	// Specifies the initial number of expected nodes in the node pool.
-	// This parameter can be also used to manually scale the node count afterwards.
-	InitialNodeCount *int `pulumi:"initialNodeCount"`
-	// Specifies the custom initialization flags.
-	InitializedConditions []string `pulumi:"initializedConditions"`
-	// Specifies the key pair name when logging in to select the key pair mode.
-	// This parameter and `password` are alternative. Changing this parameter will create a new resource.
-	KeyPair *string `pulumi:"keyPair"`
-	// Specifies the label policy on existing nodes.
-	// The value can be **ignore** and **refresh**, defaults to **refresh**.
-	LabelPolicyOnExistingNodes *string `pulumi:"labelPolicyOnExistingNodes"`
-	// Specifies the tags of a Kubernetes node, key/value pair format.
-	Labels map[string]string `pulumi:"labels"`
-	// Specifies the maximum number of nodes allowed if auto scaling is enabled.
-	MaxNodeCount *int `pulumi:"maxNodeCount"`
+	ExtendParam                map[string]string             `pulumi:"extendParam"`
+	ExtendParams               *NodePoolExtendParams         `pulumi:"extendParams"`
+	ExtensionScaleGroups       []NodePoolExtensionScaleGroup `pulumi:"extensionScaleGroups"`
+	FlavorId                   *string                       `pulumi:"flavorId"`
+	HostnameConfig             *NodePoolHostnameConfig       `pulumi:"hostnameConfig"`
+	InitialNodeCount           *int                          `pulumi:"initialNodeCount"`
+	InitializedConditions      []string                      `pulumi:"initializedConditions"`
+	KeyPair                    *string                       `pulumi:"keyPair"`
+	LabelPolicyOnExistingNodes *string                       `pulumi:"labelPolicyOnExistingNodes"`
+	Labels                     map[string]string             `pulumi:"labels"`
+	MaxNodeCount               *int                          `pulumi:"maxNodeCount"`
 	// schema: Deprecated; This parameter can be configured in the 'extend_params' parameter.
-	MaxPods *int `pulumi:"maxPods"`
-	// Specifies the minimum number of nodes allowed if auto scaling is enabled.
-	MinNodeCount *int `pulumi:"minNodeCount"`
-	// Specifies the node pool name.
-	Name *string `pulumi:"name"`
-	// Specifies the operating system of the node.
-	// The value can be **EulerOS 2.9** and **CentOS 7.6** e.g. For more details,
-	// please see [documentation](https://support.hc.sbercloud.ru/usermanual/cce/cce_10_0476.html).
-	// This parameter is required when the `nodeImageId` in `extendParams` is not specified.
-	Os        *string `pulumi:"os"`
-	Partition *string `pulumi:"partition"`
-	// Specifies the root password when logging in to select the password mode.
-	// The password consists of 8 to 26 characters and must contain at least three of following: uppercase letters,
-	// lowercase letters, digits, special characters(!@$%^-_=+[{}]:,./?~#*).
-	// This parameter can be plain or salted and is alternative to `keyPair`.
-	// Changing this parameter will create a new resource.
-	Password *string `pulumi:"password"`
-	// Specifies the charging period of the CCE node pool. If `periodUnit` is set to
-	// *month*, the value ranges from 1 to 9. If `periodUnit` is set to *year*, the value ranges from 1 to 3. This parameter
-	// is mandatory if `chargingMode` is set to *prePaid*. Changing this parameter will create a new resource.
-	Period *int `pulumi:"period"`
-	// Specifies the charging period unit of the CCE node pool.
-	// Valid values are *month* and *year*. This parameter is mandatory if `chargingMode` is set to *prePaid*.
-	// Changing this parameter will create a new resource.
-	PeriodUnit *string `pulumi:"periodUnit"`
-	// Specifies the list of security group IDs for the pod.
-	// Only supported in CCE Turbo clusters of v1.19 and above. Changing this parameter will create a new resource.
+	MaxPods           *int     `pulumi:"maxPods"`
+	MinNodeCount      *int     `pulumi:"minNodeCount"`
+	Name              *string  `pulumi:"name"`
+	Os                *string  `pulumi:"os"`
+	Partition         *string  `pulumi:"partition"`
+	Password          *string  `pulumi:"password"`
+	Period            *int     `pulumi:"period"`
+	PeriodUnit        *string  `pulumi:"periodUnit"`
 	PodSecurityGroups []string `pulumi:"podSecurityGroups"`
 	// schema: Deprecated; This parameter can be configured in the 'extend_params' parameter.
 	Postinstall *string `pulumi:"postinstall"`
 	// schema: Deprecated; This parameter can be configured in the 'extend_params' parameter.
-	Preinstall *string `pulumi:"preinstall"`
-	// Specifies the weight of the node pool.
-	// A node pool with a higher weight has a higher priority during scaling.
-	Priority *int `pulumi:"priority"`
-	// The region in which to create the CCE pool resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new CCE node pool resource.
-	Region *string `pulumi:"region"`
-	// Specifies the configuration of the system disk.
-	// The structure is described below. Changing this parameter will create a new resource.
-	RootVolume *NodePoolRootVolume `pulumi:"rootVolume"`
-	// Specifies the runtime of the CCE node pool. Valid values are *docker* and
-	// *containerd*. Changing this creates a new resource.
-	Runtime *string `pulumi:"runtime"`
-	// Specifies the time interval between two scaling operations, in minutes.
-	ScaleDownCooldownTime *int `pulumi:"scaleDownCooldownTime"`
-	// Specifies whether to enable auto scaling.
-	// If Autoscaler is enabled, install the autoscaler add-on to use the auto scaling feature.
-	ScallEnable *bool `pulumi:"scallEnable"`
-	// Specifies the list of custom security group IDs for the node pool.
-	// If specified, the nodes will be put in these security groups. When specifying a security group, do not modify
-	// the rules of the port on which CCE running depends. For details, see
-	// [documentation](https://support.hc.sbercloud.ru/usermanual/cce/cce_faq_00265.html).
-	SecurityGroups []string `pulumi:"securityGroups"`
-	// Node status information.
-	Status *string `pulumi:"status"`
-	// Specifies the disk initialization management parameter.
-	// If omitted, disks are managed based on the DockerLVMConfigOverride parameter in extendParam.
-	// This parameter is supported for clusters of v1.15.11 and later. Changing this parameter will create a new resource.
-	Storage *NodePoolStorage `pulumi:"storage"`
-	// Specifies the ID of the subnet to which the NIC belongs.
-	SubnetId *string `pulumi:"subnetId"`
-	// Specifies the ID list of the subnet to which the NIC belongs.
-	SubnetLists []string `pulumi:"subnetLists"`
-	// Specifies the tag policy on existing nodes.
-	// The value can be **ignore** and **refresh**, defaults to **ignore**.
-	TagPolicyOnExistingNodes *string `pulumi:"tagPolicyOnExistingNodes"`
-	// Specifies the tags of a VM node, key/value pair format.
-	Tags map[string]string `pulumi:"tags"`
-	// Specifies the taint policy on existing nodes.
-	// The value can be **ignore** and **refresh**, defaults to **refresh**.
-	TaintPolicyOnExistingNodes *string `pulumi:"taintPolicyOnExistingNodes"`
-	// Specifies the taints configuration of the nodes to set anti-affinity.
-	// The structure is described below.
-	Taints []NodePoolTaint `pulumi:"taints"`
-	// Specifies the node pool type. Possible values are: **vm** and **ElasticBMS**.
-	Type *string `pulumi:"type"`
+	Preinstall                 *string             `pulumi:"preinstall"`
+	Priority                   *int                `pulumi:"priority"`
+	Region                     *string             `pulumi:"region"`
+	RootVolume                 *NodePoolRootVolume `pulumi:"rootVolume"`
+	Runtime                    *string             `pulumi:"runtime"`
+	ScaleDownCooldownTime      *int                `pulumi:"scaleDownCooldownTime"`
+	ScallEnable                *bool               `pulumi:"scallEnable"`
+	SecurityGroups             []string            `pulumi:"securityGroups"`
+	Status                     *string             `pulumi:"status"`
+	Storage                    *NodePoolStorage    `pulumi:"storage"`
+	SubnetId                   *string             `pulumi:"subnetId"`
+	SubnetLists                []string            `pulumi:"subnetLists"`
+	TagPolicyOnExistingNodes   *string             `pulumi:"tagPolicyOnExistingNodes"`
+	Tags                       map[string]string   `pulumi:"tags"`
+	TaintPolicyOnExistingNodes *string             `pulumi:"taintPolicyOnExistingNodes"`
+	Taints                     []NodePoolTaint     `pulumi:"taints"`
+	Type                       *string             `pulumi:"type"`
 }
 
 type NodePoolState struct {
-	// Specifies whether auto renew is enabled. Valid values are "true" and "false".
-	// Changing this parameter will create a new resource.
-	AutoRenew pulumi.StringPtrInput
-	// Specifies the name of the available partition (AZ). Default value
-	// is random to create nodes in a random AZ in the node pool. Changing this parameter will create a new resource.
-	AvailabilityZone pulumi.StringPtrInput
-	// Billing mode of a node.
-	BillingMode pulumi.IntPtrInput
-	// Specifies the charging mode of the CCE node pool. Valid values are
-	// *prePaid* and *postPaid*, defaults to *postPaid*. Changing this parameter will create a new resource.
-	ChargingMode pulumi.StringPtrInput
-	// Specifies the cluster ID.
-	// Changing this parameter will create a new resource.
-	ClusterId pulumi.StringPtrInput
-	// The current number of the nodes.
-	CurrentNodeCount pulumi.IntPtrInput
-	// Specifies the configuration of the data disks.
-	// The structure is described below. Changing this parameter will create a new resource.
-	DataVolumes NodePoolDataVolumeArrayInput
-	// Specifies the ECS group ID. If specified, the node will be created under
-	// the cloud server group. Changing this parameter will create a new resource.
-	EcsGroupId     pulumi.StringPtrInput
-	EnableForceNew pulumi.StringPtrInput
-	// Specifies the enterprise project ID of the node pool.
-	// If updated, the new value will apply only to new nodes.
+	AutoRenew           pulumi.StringPtrInput
+	AvailabilityZone    pulumi.StringPtrInput
+	BillingMode         pulumi.IntPtrInput
+	ChargingMode        pulumi.StringPtrInput
+	ClusterId           pulumi.StringPtrInput
+	CurrentNodeCount    pulumi.IntPtrInput
+	DataVolumes         NodePoolDataVolumeArrayInput
+	EcsGroupId          pulumi.StringPtrInput
+	EnableForceNew      pulumi.StringPtrInput
 	EnterpriseProjectId pulumi.StringPtrInput
 	// schema: Deprecated; This parameter has been replaced by the 'extend_params' parameter.
-	ExtendParam pulumi.StringMapInput
-	// Specifies the extended parameters.
-	// The object structure is documented below.
-	// Changing this parameter will create a new resource.
-	ExtendParams NodePoolExtendParamsPtrInput
-	// Specifies the configurations of extended scaling groups in the node pool.
-	// The object structure is documented below.
-	ExtensionScaleGroups NodePoolExtensionScaleGroupArrayInput
-	// Specifies the flavor ID. Changing this parameter will create a new
-	// resource.
-	FlavorId pulumi.StringPtrInput
-	// Specifies the hostname config of the kubernetes node,
-	// which is supported by clusters of v1.23.6-r0 to v1.25 or clusters of v1.25.2-r0 or later versions.
-	// The object structure is documented below.
-	// Changing this parameter will create a new resource.
-	HostnameConfig NodePoolHostnameConfigPtrInput
-	// Specifies the initial number of expected nodes in the node pool.
-	// This parameter can be also used to manually scale the node count afterwards.
-	InitialNodeCount pulumi.IntPtrInput
-	// Specifies the custom initialization flags.
-	InitializedConditions pulumi.StringArrayInput
-	// Specifies the key pair name when logging in to select the key pair mode.
-	// This parameter and `password` are alternative. Changing this parameter will create a new resource.
-	KeyPair pulumi.StringPtrInput
-	// Specifies the label policy on existing nodes.
-	// The value can be **ignore** and **refresh**, defaults to **refresh**.
+	ExtendParam                pulumi.StringMapInput
+	ExtendParams               NodePoolExtendParamsPtrInput
+	ExtensionScaleGroups       NodePoolExtensionScaleGroupArrayInput
+	FlavorId                   pulumi.StringPtrInput
+	HostnameConfig             NodePoolHostnameConfigPtrInput
+	InitialNodeCount           pulumi.IntPtrInput
+	InitializedConditions      pulumi.StringArrayInput
+	KeyPair                    pulumi.StringPtrInput
 	LabelPolicyOnExistingNodes pulumi.StringPtrInput
-	// Specifies the tags of a Kubernetes node, key/value pair format.
-	Labels pulumi.StringMapInput
-	// Specifies the maximum number of nodes allowed if auto scaling is enabled.
-	MaxNodeCount pulumi.IntPtrInput
+	Labels                     pulumi.StringMapInput
+	MaxNodeCount               pulumi.IntPtrInput
 	// schema: Deprecated; This parameter can be configured in the 'extend_params' parameter.
-	MaxPods pulumi.IntPtrInput
-	// Specifies the minimum number of nodes allowed if auto scaling is enabled.
-	MinNodeCount pulumi.IntPtrInput
-	// Specifies the node pool name.
-	Name pulumi.StringPtrInput
-	// Specifies the operating system of the node.
-	// The value can be **EulerOS 2.9** and **CentOS 7.6** e.g. For more details,
-	// please see [documentation](https://support.hc.sbercloud.ru/usermanual/cce/cce_10_0476.html).
-	// This parameter is required when the `nodeImageId` in `extendParams` is not specified.
-	Os        pulumi.StringPtrInput
-	Partition pulumi.StringPtrInput
-	// Specifies the root password when logging in to select the password mode.
-	// The password consists of 8 to 26 characters and must contain at least three of following: uppercase letters,
-	// lowercase letters, digits, special characters(!@$%^-_=+[{}]:,./?~#*).
-	// This parameter can be plain or salted and is alternative to `keyPair`.
-	// Changing this parameter will create a new resource.
-	Password pulumi.StringPtrInput
-	// Specifies the charging period of the CCE node pool. If `periodUnit` is set to
-	// *month*, the value ranges from 1 to 9. If `periodUnit` is set to *year*, the value ranges from 1 to 3. This parameter
-	// is mandatory if `chargingMode` is set to *prePaid*. Changing this parameter will create a new resource.
-	Period pulumi.IntPtrInput
-	// Specifies the charging period unit of the CCE node pool.
-	// Valid values are *month* and *year*. This parameter is mandatory if `chargingMode` is set to *prePaid*.
-	// Changing this parameter will create a new resource.
-	PeriodUnit pulumi.StringPtrInput
-	// Specifies the list of security group IDs for the pod.
-	// Only supported in CCE Turbo clusters of v1.19 and above. Changing this parameter will create a new resource.
+	MaxPods           pulumi.IntPtrInput
+	MinNodeCount      pulumi.IntPtrInput
+	Name              pulumi.StringPtrInput
+	Os                pulumi.StringPtrInput
+	Partition         pulumi.StringPtrInput
+	Password          pulumi.StringPtrInput
+	Period            pulumi.IntPtrInput
+	PeriodUnit        pulumi.StringPtrInput
 	PodSecurityGroups pulumi.StringArrayInput
 	// schema: Deprecated; This parameter can be configured in the 'extend_params' parameter.
 	Postinstall pulumi.StringPtrInput
 	// schema: Deprecated; This parameter can be configured in the 'extend_params' parameter.
-	Preinstall pulumi.StringPtrInput
-	// Specifies the weight of the node pool.
-	// A node pool with a higher weight has a higher priority during scaling.
-	Priority pulumi.IntPtrInput
-	// The region in which to create the CCE pool resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new CCE node pool resource.
-	Region pulumi.StringPtrInput
-	// Specifies the configuration of the system disk.
-	// The structure is described below. Changing this parameter will create a new resource.
-	RootVolume NodePoolRootVolumePtrInput
-	// Specifies the runtime of the CCE node pool. Valid values are *docker* and
-	// *containerd*. Changing this creates a new resource.
-	Runtime pulumi.StringPtrInput
-	// Specifies the time interval between two scaling operations, in minutes.
-	ScaleDownCooldownTime pulumi.IntPtrInput
-	// Specifies whether to enable auto scaling.
-	// If Autoscaler is enabled, install the autoscaler add-on to use the auto scaling feature.
-	ScallEnable pulumi.BoolPtrInput
-	// Specifies the list of custom security group IDs for the node pool.
-	// If specified, the nodes will be put in these security groups. When specifying a security group, do not modify
-	// the rules of the port on which CCE running depends. For details, see
-	// [documentation](https://support.hc.sbercloud.ru/usermanual/cce/cce_faq_00265.html).
-	SecurityGroups pulumi.StringArrayInput
-	// Node status information.
-	Status pulumi.StringPtrInput
-	// Specifies the disk initialization management parameter.
-	// If omitted, disks are managed based on the DockerLVMConfigOverride parameter in extendParam.
-	// This parameter is supported for clusters of v1.15.11 and later. Changing this parameter will create a new resource.
-	Storage NodePoolStoragePtrInput
-	// Specifies the ID of the subnet to which the NIC belongs.
-	SubnetId pulumi.StringPtrInput
-	// Specifies the ID list of the subnet to which the NIC belongs.
-	SubnetLists pulumi.StringArrayInput
-	// Specifies the tag policy on existing nodes.
-	// The value can be **ignore** and **refresh**, defaults to **ignore**.
-	TagPolicyOnExistingNodes pulumi.StringPtrInput
-	// Specifies the tags of a VM node, key/value pair format.
-	Tags pulumi.StringMapInput
-	// Specifies the taint policy on existing nodes.
-	// The value can be **ignore** and **refresh**, defaults to **refresh**.
+	Preinstall                 pulumi.StringPtrInput
+	Priority                   pulumi.IntPtrInput
+	Region                     pulumi.StringPtrInput
+	RootVolume                 NodePoolRootVolumePtrInput
+	Runtime                    pulumi.StringPtrInput
+	ScaleDownCooldownTime      pulumi.IntPtrInput
+	ScallEnable                pulumi.BoolPtrInput
+	SecurityGroups             pulumi.StringArrayInput
+	Status                     pulumi.StringPtrInput
+	Storage                    NodePoolStoragePtrInput
+	SubnetId                   pulumi.StringPtrInput
+	SubnetLists                pulumi.StringArrayInput
+	TagPolicyOnExistingNodes   pulumi.StringPtrInput
+	Tags                       pulumi.StringMapInput
 	TaintPolicyOnExistingNodes pulumi.StringPtrInput
-	// Specifies the taints configuration of the nodes to set anti-affinity.
-	// The structure is described below.
-	Taints NodePoolTaintArrayInput
-	// Specifies the node pool type. Possible values are: **vm** and **ElasticBMS**.
-	Type pulumi.StringPtrInput
+	Taints                     NodePoolTaintArrayInput
+	Type                       pulumi.StringPtrInput
 }
 
 func (NodePoolState) ElementType() reflect.Type {
@@ -733,270 +232,108 @@ func (NodePoolState) ElementType() reflect.Type {
 }
 
 type nodePoolArgs struct {
-	// Specifies whether auto renew is enabled. Valid values are "true" and "false".
-	// Changing this parameter will create a new resource.
-	AutoRenew *string `pulumi:"autoRenew"`
-	// Specifies the name of the available partition (AZ). Default value
-	// is random to create nodes in a random AZ in the node pool. Changing this parameter will create a new resource.
-	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Specifies the charging mode of the CCE node pool. Valid values are
-	// *prePaid* and *postPaid*, defaults to *postPaid*. Changing this parameter will create a new resource.
-	ChargingMode *string `pulumi:"chargingMode"`
-	// Specifies the cluster ID.
-	// Changing this parameter will create a new resource.
-	ClusterId string `pulumi:"clusterId"`
-	// Specifies the configuration of the data disks.
-	// The structure is described below. Changing this parameter will create a new resource.
-	DataVolumes []NodePoolDataVolume `pulumi:"dataVolumes"`
-	// Specifies the ECS group ID. If specified, the node will be created under
-	// the cloud server group. Changing this parameter will create a new resource.
-	EcsGroupId     *string `pulumi:"ecsGroupId"`
-	EnableForceNew *string `pulumi:"enableForceNew"`
-	// Specifies the enterprise project ID of the node pool.
-	// If updated, the new value will apply only to new nodes.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
+	AutoRenew           *string              `pulumi:"autoRenew"`
+	AvailabilityZone    *string              `pulumi:"availabilityZone"`
+	ChargingMode        *string              `pulumi:"chargingMode"`
+	ClusterId           string               `pulumi:"clusterId"`
+	DataVolumes         []NodePoolDataVolume `pulumi:"dataVolumes"`
+	EcsGroupId          *string              `pulumi:"ecsGroupId"`
+	EnableForceNew      *string              `pulumi:"enableForceNew"`
+	EnterpriseProjectId *string              `pulumi:"enterpriseProjectId"`
 	// schema: Deprecated; This parameter has been replaced by the 'extend_params' parameter.
-	ExtendParam map[string]string `pulumi:"extendParam"`
-	// Specifies the extended parameters.
-	// The object structure is documented below.
-	// Changing this parameter will create a new resource.
-	ExtendParams *NodePoolExtendParams `pulumi:"extendParams"`
-	// Specifies the configurations of extended scaling groups in the node pool.
-	// The object structure is documented below.
-	ExtensionScaleGroups []NodePoolExtensionScaleGroup `pulumi:"extensionScaleGroups"`
-	// Specifies the flavor ID. Changing this parameter will create a new
-	// resource.
-	FlavorId string `pulumi:"flavorId"`
-	// Specifies the hostname config of the kubernetes node,
-	// which is supported by clusters of v1.23.6-r0 to v1.25 or clusters of v1.25.2-r0 or later versions.
-	// The object structure is documented below.
-	// Changing this parameter will create a new resource.
-	HostnameConfig *NodePoolHostnameConfig `pulumi:"hostnameConfig"`
-	// Specifies the initial number of expected nodes in the node pool.
-	// This parameter can be also used to manually scale the node count afterwards.
-	InitialNodeCount int `pulumi:"initialNodeCount"`
-	// Specifies the custom initialization flags.
-	InitializedConditions []string `pulumi:"initializedConditions"`
-	// Specifies the key pair name when logging in to select the key pair mode.
-	// This parameter and `password` are alternative. Changing this parameter will create a new resource.
-	KeyPair *string `pulumi:"keyPair"`
-	// Specifies the label policy on existing nodes.
-	// The value can be **ignore** and **refresh**, defaults to **refresh**.
-	LabelPolicyOnExistingNodes *string `pulumi:"labelPolicyOnExistingNodes"`
-	// Specifies the tags of a Kubernetes node, key/value pair format.
-	Labels map[string]string `pulumi:"labels"`
-	// Specifies the maximum number of nodes allowed if auto scaling is enabled.
-	MaxNodeCount *int `pulumi:"maxNodeCount"`
+	ExtendParam                map[string]string             `pulumi:"extendParam"`
+	ExtendParams               *NodePoolExtendParams         `pulumi:"extendParams"`
+	ExtensionScaleGroups       []NodePoolExtensionScaleGroup `pulumi:"extensionScaleGroups"`
+	FlavorId                   string                        `pulumi:"flavorId"`
+	HostnameConfig             *NodePoolHostnameConfig       `pulumi:"hostnameConfig"`
+	InitialNodeCount           int                           `pulumi:"initialNodeCount"`
+	InitializedConditions      []string                      `pulumi:"initializedConditions"`
+	KeyPair                    *string                       `pulumi:"keyPair"`
+	LabelPolicyOnExistingNodes *string                       `pulumi:"labelPolicyOnExistingNodes"`
+	Labels                     map[string]string             `pulumi:"labels"`
+	MaxNodeCount               *int                          `pulumi:"maxNodeCount"`
 	// schema: Deprecated; This parameter can be configured in the 'extend_params' parameter.
-	MaxPods *int `pulumi:"maxPods"`
-	// Specifies the minimum number of nodes allowed if auto scaling is enabled.
-	MinNodeCount *int `pulumi:"minNodeCount"`
-	// Specifies the node pool name.
-	Name *string `pulumi:"name"`
-	// Specifies the operating system of the node.
-	// The value can be **EulerOS 2.9** and **CentOS 7.6** e.g. For more details,
-	// please see [documentation](https://support.hc.sbercloud.ru/usermanual/cce/cce_10_0476.html).
-	// This parameter is required when the `nodeImageId` in `extendParams` is not specified.
-	Os        *string `pulumi:"os"`
-	Partition *string `pulumi:"partition"`
-	// Specifies the root password when logging in to select the password mode.
-	// The password consists of 8 to 26 characters and must contain at least three of following: uppercase letters,
-	// lowercase letters, digits, special characters(!@$%^-_=+[{}]:,./?~#*).
-	// This parameter can be plain or salted and is alternative to `keyPair`.
-	// Changing this parameter will create a new resource.
-	Password *string `pulumi:"password"`
-	// Specifies the charging period of the CCE node pool. If `periodUnit` is set to
-	// *month*, the value ranges from 1 to 9. If `periodUnit` is set to *year*, the value ranges from 1 to 3. This parameter
-	// is mandatory if `chargingMode` is set to *prePaid*. Changing this parameter will create a new resource.
-	Period *int `pulumi:"period"`
-	// Specifies the charging period unit of the CCE node pool.
-	// Valid values are *month* and *year*. This parameter is mandatory if `chargingMode` is set to *prePaid*.
-	// Changing this parameter will create a new resource.
-	PeriodUnit *string `pulumi:"periodUnit"`
-	// Specifies the list of security group IDs for the pod.
-	// Only supported in CCE Turbo clusters of v1.19 and above. Changing this parameter will create a new resource.
+	MaxPods           *int     `pulumi:"maxPods"`
+	MinNodeCount      *int     `pulumi:"minNodeCount"`
+	Name              *string  `pulumi:"name"`
+	Os                *string  `pulumi:"os"`
+	Partition         *string  `pulumi:"partition"`
+	Password          *string  `pulumi:"password"`
+	Period            *int     `pulumi:"period"`
+	PeriodUnit        *string  `pulumi:"periodUnit"`
 	PodSecurityGroups []string `pulumi:"podSecurityGroups"`
 	// schema: Deprecated; This parameter can be configured in the 'extend_params' parameter.
 	Postinstall *string `pulumi:"postinstall"`
 	// schema: Deprecated; This parameter can be configured in the 'extend_params' parameter.
-	Preinstall *string `pulumi:"preinstall"`
-	// Specifies the weight of the node pool.
-	// A node pool with a higher weight has a higher priority during scaling.
-	Priority *int `pulumi:"priority"`
-	// The region in which to create the CCE pool resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new CCE node pool resource.
-	Region *string `pulumi:"region"`
-	// Specifies the configuration of the system disk.
-	// The structure is described below. Changing this parameter will create a new resource.
-	RootVolume NodePoolRootVolume `pulumi:"rootVolume"`
-	// Specifies the runtime of the CCE node pool. Valid values are *docker* and
-	// *containerd*. Changing this creates a new resource.
-	Runtime *string `pulumi:"runtime"`
-	// Specifies the time interval between two scaling operations, in minutes.
-	ScaleDownCooldownTime *int `pulumi:"scaleDownCooldownTime"`
-	// Specifies whether to enable auto scaling.
-	// If Autoscaler is enabled, install the autoscaler add-on to use the auto scaling feature.
-	ScallEnable *bool `pulumi:"scallEnable"`
-	// Specifies the list of custom security group IDs for the node pool.
-	// If specified, the nodes will be put in these security groups. When specifying a security group, do not modify
-	// the rules of the port on which CCE running depends. For details, see
-	// [documentation](https://support.hc.sbercloud.ru/usermanual/cce/cce_faq_00265.html).
-	SecurityGroups []string `pulumi:"securityGroups"`
-	// Specifies the disk initialization management parameter.
-	// If omitted, disks are managed based on the DockerLVMConfigOverride parameter in extendParam.
-	// This parameter is supported for clusters of v1.15.11 and later. Changing this parameter will create a new resource.
-	Storage *NodePoolStorage `pulumi:"storage"`
-	// Specifies the ID of the subnet to which the NIC belongs.
-	SubnetId *string `pulumi:"subnetId"`
-	// Specifies the ID list of the subnet to which the NIC belongs.
-	SubnetLists []string `pulumi:"subnetLists"`
-	// Specifies the tag policy on existing nodes.
-	// The value can be **ignore** and **refresh**, defaults to **ignore**.
-	TagPolicyOnExistingNodes *string `pulumi:"tagPolicyOnExistingNodes"`
-	// Specifies the tags of a VM node, key/value pair format.
-	Tags map[string]string `pulumi:"tags"`
-	// Specifies the taint policy on existing nodes.
-	// The value can be **ignore** and **refresh**, defaults to **refresh**.
-	TaintPolicyOnExistingNodes *string `pulumi:"taintPolicyOnExistingNodes"`
-	// Specifies the taints configuration of the nodes to set anti-affinity.
-	// The structure is described below.
-	Taints []NodePoolTaint `pulumi:"taints"`
-	// Specifies the node pool type. Possible values are: **vm** and **ElasticBMS**.
-	Type *string `pulumi:"type"`
+	Preinstall                 *string            `pulumi:"preinstall"`
+	Priority                   *int               `pulumi:"priority"`
+	Region                     *string            `pulumi:"region"`
+	RootVolume                 NodePoolRootVolume `pulumi:"rootVolume"`
+	Runtime                    *string            `pulumi:"runtime"`
+	ScaleDownCooldownTime      *int               `pulumi:"scaleDownCooldownTime"`
+	ScallEnable                *bool              `pulumi:"scallEnable"`
+	SecurityGroups             []string           `pulumi:"securityGroups"`
+	Storage                    *NodePoolStorage   `pulumi:"storage"`
+	SubnetId                   *string            `pulumi:"subnetId"`
+	SubnetLists                []string           `pulumi:"subnetLists"`
+	TagPolicyOnExistingNodes   *string            `pulumi:"tagPolicyOnExistingNodes"`
+	Tags                       map[string]string  `pulumi:"tags"`
+	TaintPolicyOnExistingNodes *string            `pulumi:"taintPolicyOnExistingNodes"`
+	Taints                     []NodePoolTaint    `pulumi:"taints"`
+	Type                       *string            `pulumi:"type"`
 }
 
 // The set of arguments for constructing a NodePool resource.
 type NodePoolArgs struct {
-	// Specifies whether auto renew is enabled. Valid values are "true" and "false".
-	// Changing this parameter will create a new resource.
-	AutoRenew pulumi.StringPtrInput
-	// Specifies the name of the available partition (AZ). Default value
-	// is random to create nodes in a random AZ in the node pool. Changing this parameter will create a new resource.
-	AvailabilityZone pulumi.StringPtrInput
-	// Specifies the charging mode of the CCE node pool. Valid values are
-	// *prePaid* and *postPaid*, defaults to *postPaid*. Changing this parameter will create a new resource.
-	ChargingMode pulumi.StringPtrInput
-	// Specifies the cluster ID.
-	// Changing this parameter will create a new resource.
-	ClusterId pulumi.StringInput
-	// Specifies the configuration of the data disks.
-	// The structure is described below. Changing this parameter will create a new resource.
-	DataVolumes NodePoolDataVolumeArrayInput
-	// Specifies the ECS group ID. If specified, the node will be created under
-	// the cloud server group. Changing this parameter will create a new resource.
-	EcsGroupId     pulumi.StringPtrInput
-	EnableForceNew pulumi.StringPtrInput
-	// Specifies the enterprise project ID of the node pool.
-	// If updated, the new value will apply only to new nodes.
+	AutoRenew           pulumi.StringPtrInput
+	AvailabilityZone    pulumi.StringPtrInput
+	ChargingMode        pulumi.StringPtrInput
+	ClusterId           pulumi.StringInput
+	DataVolumes         NodePoolDataVolumeArrayInput
+	EcsGroupId          pulumi.StringPtrInput
+	EnableForceNew      pulumi.StringPtrInput
 	EnterpriseProjectId pulumi.StringPtrInput
 	// schema: Deprecated; This parameter has been replaced by the 'extend_params' parameter.
-	ExtendParam pulumi.StringMapInput
-	// Specifies the extended parameters.
-	// The object structure is documented below.
-	// Changing this parameter will create a new resource.
-	ExtendParams NodePoolExtendParamsPtrInput
-	// Specifies the configurations of extended scaling groups in the node pool.
-	// The object structure is documented below.
-	ExtensionScaleGroups NodePoolExtensionScaleGroupArrayInput
-	// Specifies the flavor ID. Changing this parameter will create a new
-	// resource.
-	FlavorId pulumi.StringInput
-	// Specifies the hostname config of the kubernetes node,
-	// which is supported by clusters of v1.23.6-r0 to v1.25 or clusters of v1.25.2-r0 or later versions.
-	// The object structure is documented below.
-	// Changing this parameter will create a new resource.
-	HostnameConfig NodePoolHostnameConfigPtrInput
-	// Specifies the initial number of expected nodes in the node pool.
-	// This parameter can be also used to manually scale the node count afterwards.
-	InitialNodeCount pulumi.IntInput
-	// Specifies the custom initialization flags.
-	InitializedConditions pulumi.StringArrayInput
-	// Specifies the key pair name when logging in to select the key pair mode.
-	// This parameter and `password` are alternative. Changing this parameter will create a new resource.
-	KeyPair pulumi.StringPtrInput
-	// Specifies the label policy on existing nodes.
-	// The value can be **ignore** and **refresh**, defaults to **refresh**.
+	ExtendParam                pulumi.StringMapInput
+	ExtendParams               NodePoolExtendParamsPtrInput
+	ExtensionScaleGroups       NodePoolExtensionScaleGroupArrayInput
+	FlavorId                   pulumi.StringInput
+	HostnameConfig             NodePoolHostnameConfigPtrInput
+	InitialNodeCount           pulumi.IntInput
+	InitializedConditions      pulumi.StringArrayInput
+	KeyPair                    pulumi.StringPtrInput
 	LabelPolicyOnExistingNodes pulumi.StringPtrInput
-	// Specifies the tags of a Kubernetes node, key/value pair format.
-	Labels pulumi.StringMapInput
-	// Specifies the maximum number of nodes allowed if auto scaling is enabled.
-	MaxNodeCount pulumi.IntPtrInput
+	Labels                     pulumi.StringMapInput
+	MaxNodeCount               pulumi.IntPtrInput
 	// schema: Deprecated; This parameter can be configured in the 'extend_params' parameter.
-	MaxPods pulumi.IntPtrInput
-	// Specifies the minimum number of nodes allowed if auto scaling is enabled.
-	MinNodeCount pulumi.IntPtrInput
-	// Specifies the node pool name.
-	Name pulumi.StringPtrInput
-	// Specifies the operating system of the node.
-	// The value can be **EulerOS 2.9** and **CentOS 7.6** e.g. For more details,
-	// please see [documentation](https://support.hc.sbercloud.ru/usermanual/cce/cce_10_0476.html).
-	// This parameter is required when the `nodeImageId` in `extendParams` is not specified.
-	Os        pulumi.StringPtrInput
-	Partition pulumi.StringPtrInput
-	// Specifies the root password when logging in to select the password mode.
-	// The password consists of 8 to 26 characters and must contain at least three of following: uppercase letters,
-	// lowercase letters, digits, special characters(!@$%^-_=+[{}]:,./?~#*).
-	// This parameter can be plain or salted and is alternative to `keyPair`.
-	// Changing this parameter will create a new resource.
-	Password pulumi.StringPtrInput
-	// Specifies the charging period of the CCE node pool. If `periodUnit` is set to
-	// *month*, the value ranges from 1 to 9. If `periodUnit` is set to *year*, the value ranges from 1 to 3. This parameter
-	// is mandatory if `chargingMode` is set to *prePaid*. Changing this parameter will create a new resource.
-	Period pulumi.IntPtrInput
-	// Specifies the charging period unit of the CCE node pool.
-	// Valid values are *month* and *year*. This parameter is mandatory if `chargingMode` is set to *prePaid*.
-	// Changing this parameter will create a new resource.
-	PeriodUnit pulumi.StringPtrInput
-	// Specifies the list of security group IDs for the pod.
-	// Only supported in CCE Turbo clusters of v1.19 and above. Changing this parameter will create a new resource.
+	MaxPods           pulumi.IntPtrInput
+	MinNodeCount      pulumi.IntPtrInput
+	Name              pulumi.StringPtrInput
+	Os                pulumi.StringPtrInput
+	Partition         pulumi.StringPtrInput
+	Password          pulumi.StringPtrInput
+	Period            pulumi.IntPtrInput
+	PeriodUnit        pulumi.StringPtrInput
 	PodSecurityGroups pulumi.StringArrayInput
 	// schema: Deprecated; This parameter can be configured in the 'extend_params' parameter.
 	Postinstall pulumi.StringPtrInput
 	// schema: Deprecated; This parameter can be configured in the 'extend_params' parameter.
-	Preinstall pulumi.StringPtrInput
-	// Specifies the weight of the node pool.
-	// A node pool with a higher weight has a higher priority during scaling.
-	Priority pulumi.IntPtrInput
-	// The region in which to create the CCE pool resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new CCE node pool resource.
-	Region pulumi.StringPtrInput
-	// Specifies the configuration of the system disk.
-	// The structure is described below. Changing this parameter will create a new resource.
-	RootVolume NodePoolRootVolumeInput
-	// Specifies the runtime of the CCE node pool. Valid values are *docker* and
-	// *containerd*. Changing this creates a new resource.
-	Runtime pulumi.StringPtrInput
-	// Specifies the time interval between two scaling operations, in minutes.
-	ScaleDownCooldownTime pulumi.IntPtrInput
-	// Specifies whether to enable auto scaling.
-	// If Autoscaler is enabled, install the autoscaler add-on to use the auto scaling feature.
-	ScallEnable pulumi.BoolPtrInput
-	// Specifies the list of custom security group IDs for the node pool.
-	// If specified, the nodes will be put in these security groups. When specifying a security group, do not modify
-	// the rules of the port on which CCE running depends. For details, see
-	// [documentation](https://support.hc.sbercloud.ru/usermanual/cce/cce_faq_00265.html).
-	SecurityGroups pulumi.StringArrayInput
-	// Specifies the disk initialization management parameter.
-	// If omitted, disks are managed based on the DockerLVMConfigOverride parameter in extendParam.
-	// This parameter is supported for clusters of v1.15.11 and later. Changing this parameter will create a new resource.
-	Storage NodePoolStoragePtrInput
-	// Specifies the ID of the subnet to which the NIC belongs.
-	SubnetId pulumi.StringPtrInput
-	// Specifies the ID list of the subnet to which the NIC belongs.
-	SubnetLists pulumi.StringArrayInput
-	// Specifies the tag policy on existing nodes.
-	// The value can be **ignore** and **refresh**, defaults to **ignore**.
-	TagPolicyOnExistingNodes pulumi.StringPtrInput
-	// Specifies the tags of a VM node, key/value pair format.
-	Tags pulumi.StringMapInput
-	// Specifies the taint policy on existing nodes.
-	// The value can be **ignore** and **refresh**, defaults to **refresh**.
+	Preinstall                 pulumi.StringPtrInput
+	Priority                   pulumi.IntPtrInput
+	Region                     pulumi.StringPtrInput
+	RootVolume                 NodePoolRootVolumeInput
+	Runtime                    pulumi.StringPtrInput
+	ScaleDownCooldownTime      pulumi.IntPtrInput
+	ScallEnable                pulumi.BoolPtrInput
+	SecurityGroups             pulumi.StringArrayInput
+	Storage                    NodePoolStoragePtrInput
+	SubnetId                   pulumi.StringPtrInput
+	SubnetLists                pulumi.StringArrayInput
+	TagPolicyOnExistingNodes   pulumi.StringPtrInput
+	Tags                       pulumi.StringMapInput
 	TaintPolicyOnExistingNodes pulumi.StringPtrInput
-	// Specifies the taints configuration of the nodes to set anti-affinity.
-	// The structure is described below.
-	Taints NodePoolTaintArrayInput
-	// Specifies the node pool type. Possible values are: **vm** and **ElasticBMS**.
-	Type pulumi.StringPtrInput
+	Taints                     NodePoolTaintArrayInput
+	Type                       pulumi.StringPtrInput
 }
 
 func (NodePoolArgs) ElementType() reflect.Type {
@@ -1086,48 +423,34 @@ func (o NodePoolOutput) ToNodePoolOutputWithContext(ctx context.Context) NodePoo
 	return o
 }
 
-// Specifies whether auto renew is enabled. Valid values are "true" and "false".
-// Changing this parameter will create a new resource.
 func (o NodePoolOutput) AutoRenew() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.AutoRenew }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the available partition (AZ). Default value
-// is random to create nodes in a random AZ in the node pool. Changing this parameter will create a new resource.
 func (o NodePoolOutput) AvailabilityZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
 }
 
-// Billing mode of a node.
 func (o NodePoolOutput) BillingMode() pulumi.IntOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.IntOutput { return v.BillingMode }).(pulumi.IntOutput)
 }
 
-// Specifies the charging mode of the CCE node pool. Valid values are
-// *prePaid* and *postPaid*, defaults to *postPaid*. Changing this parameter will create a new resource.
 func (o NodePoolOutput) ChargingMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.ChargingMode }).(pulumi.StringOutput)
 }
 
-// Specifies the cluster ID.
-// Changing this parameter will create a new resource.
 func (o NodePoolOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// The current number of the nodes.
 func (o NodePoolOutput) CurrentNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.IntOutput { return v.CurrentNodeCount }).(pulumi.IntOutput)
 }
 
-// Specifies the configuration of the data disks.
-// The structure is described below. Changing this parameter will create a new resource.
 func (o NodePoolOutput) DataVolumes() NodePoolDataVolumeArrayOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolDataVolumeArrayOutput { return v.DataVolumes }).(NodePoolDataVolumeArrayOutput)
 }
 
-// Specifies the ECS group ID. If specified, the node will be created under
-// the cloud server group. Changing this parameter will create a new resource.
 func (o NodePoolOutput) EcsGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.EcsGroupId }).(pulumi.StringPtrOutput)
 }
@@ -1136,8 +459,6 @@ func (o NodePoolOutput) EnableForceNew() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.EnableForceNew }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the enterprise project ID of the node pool.
-// If updated, the new value will apply only to new nodes.
 func (o NodePoolOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
@@ -1147,62 +468,42 @@ func (o NodePoolOutput) ExtendParam() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringMapOutput { return v.ExtendParam }).(pulumi.StringMapOutput)
 }
 
-// Specifies the extended parameters.
-// The object structure is documented below.
-// Changing this parameter will create a new resource.
 func (o NodePoolOutput) ExtendParams() NodePoolExtendParamsOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolExtendParamsOutput { return v.ExtendParams }).(NodePoolExtendParamsOutput)
 }
 
-// Specifies the configurations of extended scaling groups in the node pool.
-// The object structure is documented below.
 func (o NodePoolOutput) ExtensionScaleGroups() NodePoolExtensionScaleGroupArrayOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolExtensionScaleGroupArrayOutput { return v.ExtensionScaleGroups }).(NodePoolExtensionScaleGroupArrayOutput)
 }
 
-// Specifies the flavor ID. Changing this parameter will create a new
-// resource.
 func (o NodePoolOutput) FlavorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.FlavorId }).(pulumi.StringOutput)
 }
 
-// Specifies the hostname config of the kubernetes node,
-// which is supported by clusters of v1.23.6-r0 to v1.25 or clusters of v1.25.2-r0 or later versions.
-// The object structure is documented below.
-// Changing this parameter will create a new resource.
 func (o NodePoolOutput) HostnameConfig() NodePoolHostnameConfigOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolHostnameConfigOutput { return v.HostnameConfig }).(NodePoolHostnameConfigOutput)
 }
 
-// Specifies the initial number of expected nodes in the node pool.
-// This parameter can be also used to manually scale the node count afterwards.
 func (o NodePoolOutput) InitialNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.IntOutput { return v.InitialNodeCount }).(pulumi.IntOutput)
 }
 
-// Specifies the custom initialization flags.
 func (o NodePoolOutput) InitializedConditions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringArrayOutput { return v.InitializedConditions }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the key pair name when logging in to select the key pair mode.
-// This parameter and `password` are alternative. Changing this parameter will create a new resource.
 func (o NodePoolOutput) KeyPair() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.KeyPair }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the label policy on existing nodes.
-// The value can be **ignore** and **refresh**, defaults to **refresh**.
 func (o NodePoolOutput) LabelPolicyOnExistingNodes() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.LabelPolicyOnExistingNodes }).(pulumi.StringOutput)
 }
 
-// Specifies the tags of a Kubernetes node, key/value pair format.
 func (o NodePoolOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Specifies the maximum number of nodes allowed if auto scaling is enabled.
 func (o NodePoolOutput) MaxNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.IntPtrOutput { return v.MaxNodeCount }).(pulumi.IntPtrOutput)
 }
@@ -1212,20 +513,14 @@ func (o NodePoolOutput) MaxPods() pulumi.IntOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.IntOutput { return v.MaxPods }).(pulumi.IntOutput)
 }
 
-// Specifies the minimum number of nodes allowed if auto scaling is enabled.
 func (o NodePoolOutput) MinNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.IntPtrOutput { return v.MinNodeCount }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the node pool name.
 func (o NodePoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the operating system of the node.
-// The value can be **EulerOS 2.9** and **CentOS 7.6** e.g. For more details,
-// please see [documentation](https://support.hc.sbercloud.ru/usermanual/cce/cce_10_0476.html).
-// This parameter is required when the `nodeImageId` in `extendParams` is not specified.
 func (o NodePoolOutput) Os() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.Os }).(pulumi.StringOutput)
 }
@@ -1234,31 +529,18 @@ func (o NodePoolOutput) Partition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.Partition }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the root password when logging in to select the password mode.
-// The password consists of 8 to 26 characters and must contain at least three of following: uppercase letters,
-// lowercase letters, digits, special characters(!@$%^-_=+[{}]:,./?~#*).
-// This parameter can be plain or salted and is alternative to `keyPair`.
-// Changing this parameter will create a new resource.
 func (o NodePoolOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the charging period of the CCE node pool. If `periodUnit` is set to
-// *month*, the value ranges from 1 to 9. If `periodUnit` is set to *year*, the value ranges from 1 to 3. This parameter
-// is mandatory if `chargingMode` is set to *prePaid*. Changing this parameter will create a new resource.
 func (o NodePoolOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the charging period unit of the CCE node pool.
-// Valid values are *month* and *year*. This parameter is mandatory if `chargingMode` is set to *prePaid*.
-// Changing this parameter will create a new resource.
 func (o NodePoolOutput) PeriodUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.PeriodUnit }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the list of security group IDs for the pod.
-// Only supported in CCE Turbo clusters of v1.19 and above. Changing this parameter will create a new resource.
 func (o NodePoolOutput) PodSecurityGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringArrayOutput { return v.PodSecurityGroups }).(pulumi.StringArrayOutput)
 }
@@ -1273,95 +555,66 @@ func (o NodePoolOutput) Preinstall() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.Preinstall }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the weight of the node pool.
-// A node pool with a higher weight has a higher priority during scaling.
 func (o NodePoolOutput) Priority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.IntPtrOutput { return v.Priority }).(pulumi.IntPtrOutput)
 }
 
-// The region in which to create the CCE pool resource. If omitted, the
-// provider-level region will be used. Changing this creates a new CCE node pool resource.
 func (o NodePoolOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Specifies the configuration of the system disk.
-// The structure is described below. Changing this parameter will create a new resource.
 func (o NodePoolOutput) RootVolume() NodePoolRootVolumeOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolRootVolumeOutput { return v.RootVolume }).(NodePoolRootVolumeOutput)
 }
 
-// Specifies the runtime of the CCE node pool. Valid values are *docker* and
-// *containerd*. Changing this creates a new resource.
 func (o NodePoolOutput) Runtime() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.Runtime }).(pulumi.StringOutput)
 }
 
-// Specifies the time interval between two scaling operations, in minutes.
 func (o NodePoolOutput) ScaleDownCooldownTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.IntPtrOutput { return v.ScaleDownCooldownTime }).(pulumi.IntPtrOutput)
 }
 
-// Specifies whether to enable auto scaling.
-// If Autoscaler is enabled, install the autoscaler add-on to use the auto scaling feature.
 func (o NodePoolOutput) ScallEnable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.ScallEnable }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the list of custom security group IDs for the node pool.
-// If specified, the nodes will be put in these security groups. When specifying a security group, do not modify
-// the rules of the port on which CCE running depends. For details, see
-// [documentation](https://support.hc.sbercloud.ru/usermanual/cce/cce_faq_00265.html).
 func (o NodePoolOutput) SecurityGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringArrayOutput { return v.SecurityGroups }).(pulumi.StringArrayOutput)
 }
 
-// Node status information.
 func (o NodePoolOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Specifies the disk initialization management parameter.
-// If omitted, disks are managed based on the DockerLVMConfigOverride parameter in extendParam.
-// This parameter is supported for clusters of v1.15.11 and later. Changing this parameter will create a new resource.
 func (o NodePoolOutput) Storage() NodePoolStoragePtrOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolStoragePtrOutput { return v.Storage }).(NodePoolStoragePtrOutput)
 }
 
-// Specifies the ID of the subnet to which the NIC belongs.
 func (o NodePoolOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.SubnetId }).(pulumi.StringOutput)
 }
 
-// Specifies the ID list of the subnet to which the NIC belongs.
 func (o NodePoolOutput) SubnetLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringArrayOutput { return v.SubnetLists }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the tag policy on existing nodes.
-// The value can be **ignore** and **refresh**, defaults to **ignore**.
 func (o NodePoolOutput) TagPolicyOnExistingNodes() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.TagPolicyOnExistingNodes }).(pulumi.StringOutput)
 }
 
-// Specifies the tags of a VM node, key/value pair format.
 func (o NodePoolOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Specifies the taint policy on existing nodes.
-// The value can be **ignore** and **refresh**, defaults to **refresh**.
 func (o NodePoolOutput) TaintPolicyOnExistingNodes() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.TaintPolicyOnExistingNodes }).(pulumi.StringOutput)
 }
 
-// Specifies the taints configuration of the nodes to set anti-affinity.
-// The structure is described below.
 func (o NodePoolOutput) Taints() NodePoolTaintArrayOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolTaintArrayOutput { return v.Taints }).(NodePoolTaintArrayOutput)
 }
 
-// Specifies the node pool type. Possible values are: **vm** and **ElasticBMS**.
 func (o NodePoolOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -4,41 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages an ELB loadbalancer resource within SberCloud.
- *
- * ## Example Usage
- *
- * ### Basic Loadbalancer
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const lb1 = new sbercloud.elb.Loadbalancer("lb_1", {vipSubnetId: "d9415786-5f1a-428b-b35f-2f1523e146d2"});
- * ```
- *
- * ### Loadbalancer With EIP
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const lb1 = new sbercloud.elb.Loadbalancer("lb_1", {vipSubnetId: "d9415786-5f1a-428b-b35f-2f1523e146d2"});
- * const eip1 = new sbercloud.NetworkingEipAssociate("eip_1", {
- *     publicIp: "1.2.3.4",
- *     portId: lb1.vipPortId,
- * });
- * ```
- *
- * ## Import
- *
- * Load balancers can be imported using the `id`, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Elb/loadbalancer:Loadbalancer test 3e3632db-36c6-4b28-a92e-e72e6562daa6
- * ```
- */
 export class Loadbalancer extends pulumi.CustomResource {
     /**
      * Get an existing Loadbalancer resource's state with the given name, ID, and optional extra
@@ -68,22 +33,14 @@ export class Loadbalancer extends pulumi.CustomResource {
     }
 
     /**
-     * The administrative state of the loadbalancer. A valid value is true (UP) or
-     * false (DOWN).
+     * schema: Deprecated
      */
     declare public readonly adminStateUp: pulumi.Output<boolean | undefined>;
     declare public readonly autoRenew: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly chargeMode: pulumi.Output<string>;
     declare public readonly chargingMode: pulumi.Output<string>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
-    /**
-     * Human-readable description for the loadbalancer.
-     */
     declare public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * The enterprise project id of the loadbalancer. Changing this
-     * creates a new loadbalancer.
-     */
     declare public readonly enterpriseProjectId: pulumi.Output<string>;
     /**
      * schema: Deprecated
@@ -94,46 +51,27 @@ export class Loadbalancer extends pulumi.CustomResource {
      * schema: Deprecated
      */
     declare public readonly loadbalancerProvider: pulumi.Output<string>;
-    /**
-     * Human-readable name for the loadbalancer. Does not have to be unique.
-     */
     declare public readonly name: pulumi.Output<string>;
     declare public readonly period: pulumi.Output<number | undefined>;
     declare public readonly periodUnit: pulumi.Output<string | undefined>;
     declare public readonly protectionReason: pulumi.Output<string | undefined>;
     declare public readonly protectionStatus: pulumi.Output<string>;
     declare public /*out*/ readonly publicIp: pulumi.Output<string>;
-    /**
-     * The region in which to create the loadbalancer resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new loadbalancer.
-     */
     declare public readonly region: pulumi.Output<string>;
     /**
      * schema: Deprecated
      */
     declare public readonly securityGroupIds: pulumi.Output<string[]>;
-    /**
-     * The key/value pairs to associate with the loadbalancer.
-     */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * @deprecated tenant_id is deprecated
      */
     declare public readonly tenantId: pulumi.Output<string>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
-    /**
-     * The ip address of the load balancer. Changing this creates a new
-     * loadbalancer.
-     */
     declare public readonly vipAddress: pulumi.Output<string>;
-    /**
-     * The Port ID of the Load Balancer IP.
-     */
     declare public /*out*/ readonly vipPortId: pulumi.Output<string>;
     /**
-     * The network on which to allocate the loadbalancer's address. A tenant
-     * can only create Loadbalancers on networks authorized by policy (e.g. networks that belong to them or networks that are
-     * shared). Changing this creates a new loadbalancer.
+     * the IPv4 subnet ID of the subnet where the load balancer works
      */
     declare public readonly vipSubnetId: pulumi.Output<string>;
 
@@ -214,22 +152,14 @@ export class Loadbalancer extends pulumi.CustomResource {
  */
 export interface LoadbalancerState {
     /**
-     * The administrative state of the loadbalancer. A valid value is true (UP) or
-     * false (DOWN).
+     * schema: Deprecated
      */
     adminStateUp?: pulumi.Input<boolean>;
     autoRenew?: pulumi.Input<string>;
     chargeMode?: pulumi.Input<string>;
     chargingMode?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
-    /**
-     * Human-readable description for the loadbalancer.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * The enterprise project id of the loadbalancer. Changing this
-     * creates a new loadbalancer.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
     /**
      * schema: Deprecated
@@ -240,46 +170,27 @@ export interface LoadbalancerState {
      * schema: Deprecated
      */
     loadbalancerProvider?: pulumi.Input<string>;
-    /**
-     * Human-readable name for the loadbalancer. Does not have to be unique.
-     */
     name?: pulumi.Input<string>;
     period?: pulumi.Input<number>;
     periodUnit?: pulumi.Input<string>;
     protectionReason?: pulumi.Input<string>;
     protectionStatus?: pulumi.Input<string>;
     publicIp?: pulumi.Input<string>;
-    /**
-     * The region in which to create the loadbalancer resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new loadbalancer.
-     */
     region?: pulumi.Input<string>;
     /**
      * schema: Deprecated
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The key/value pairs to associate with the loadbalancer.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * @deprecated tenant_id is deprecated
      */
     tenantId?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<string>;
-    /**
-     * The ip address of the load balancer. Changing this creates a new
-     * loadbalancer.
-     */
     vipAddress?: pulumi.Input<string>;
-    /**
-     * The Port ID of the Load Balancer IP.
-     */
     vipPortId?: pulumi.Input<string>;
     /**
-     * The network on which to allocate the loadbalancer's address. A tenant
-     * can only create Loadbalancers on networks authorized by policy (e.g. networks that belong to them or networks that are
-     * shared). Changing this creates a new loadbalancer.
+     * the IPv4 subnet ID of the subnet where the load balancer works
      */
     vipSubnetId?: pulumi.Input<string>;
 }
@@ -289,20 +200,12 @@ export interface LoadbalancerState {
  */
 export interface LoadbalancerArgs {
     /**
-     * The administrative state of the loadbalancer. A valid value is true (UP) or
-     * false (DOWN).
+     * schema: Deprecated
      */
     adminStateUp?: pulumi.Input<boolean>;
     autoRenew?: pulumi.Input<string>;
     chargingMode?: pulumi.Input<string>;
-    /**
-     * Human-readable description for the loadbalancer.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * The enterprise project id of the loadbalancer. Changing this
-     * creates a new loadbalancer.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
     /**
      * schema: Deprecated
@@ -312,40 +215,24 @@ export interface LoadbalancerArgs {
      * schema: Deprecated
      */
     loadbalancerProvider?: pulumi.Input<string>;
-    /**
-     * Human-readable name for the loadbalancer. Does not have to be unique.
-     */
     name?: pulumi.Input<string>;
     period?: pulumi.Input<number>;
     periodUnit?: pulumi.Input<string>;
     protectionReason?: pulumi.Input<string>;
     protectionStatus?: pulumi.Input<string>;
-    /**
-     * The region in which to create the loadbalancer resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new loadbalancer.
-     */
     region?: pulumi.Input<string>;
     /**
      * schema: Deprecated
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The key/value pairs to associate with the loadbalancer.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * @deprecated tenant_id is deprecated
      */
     tenantId?: pulumi.Input<string>;
-    /**
-     * The ip address of the load balancer. Changing this creates a new
-     * loadbalancer.
-     */
     vipAddress?: pulumi.Input<string>;
     /**
-     * The network on which to allocate the loadbalancer's address. A tenant
-     * can only create Loadbalancers on networks authorized by policy (e.g. networks that belong to them or networks that are
-     * shared). Changing this creates a new loadbalancer.
+     * the IPv4 subnet ID of the subnet where the load balancer works
      */
     vipSubnetId: pulumi.Input<string>;
 }

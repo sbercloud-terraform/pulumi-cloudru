@@ -12,125 +12,20 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages an OBS bucket acl resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			bucket := cfg.RequireObject("bucket")
-//			account1 := cfg.RequireObject("account1")
-//			account2 := cfg.RequireObject("account2")
-//			_, err := sbercloud.NewObsBucketAcl(ctx, "test", &sbercloud.ObsBucketAclArgs{
-//				Bucket: pulumi.Any(bucket),
-//				OwnerPermission: &cloudru.ObsBucketAclOwnerPermissionArgs{
-//					AccessToBuckets: pulumi.StringArray{
-//						pulumi.String("READ"),
-//						pulumi.String("WRITE"),
-//					},
-//					AccessToAcls: pulumi.StringArray{
-//						pulumi.String("READ_ACP"),
-//						pulumi.String("WRITE_ACP"),
-//					},
-//				},
-//				AccountPermissions: cloudru.ObsBucketAclAccountPermissionArray{
-//					&cloudru.ObsBucketAclAccountPermissionArgs{
-//						AccessToBuckets: pulumi.StringArray{
-//							pulumi.String("READ"),
-//							pulumi.String("WRITE"),
-//						},
-//						AccessToAcls: pulumi.StringArray{
-//							pulumi.String("READ_ACP"),
-//							pulumi.String("WRITE_ACP"),
-//						},
-//						AccountId: pulumi.Any(account1),
-//					},
-//					&cloudru.ObsBucketAclAccountPermissionArgs{
-//						AccessToBuckets: pulumi.StringArray{
-//							pulumi.String("READ"),
-//						},
-//						AccessToAcls: pulumi.StringArray{
-//							pulumi.String("READ_ACP"),
-//							pulumi.String("WRITE_ACP"),
-//						},
-//						AccountId: pulumi.Any(account2),
-//					},
-//				},
-//				PublicPermission: &cloudru.ObsBucketAclPublicPermissionArgs{
-//					AccessToBuckets: pulumi.StringArray{
-//						pulumi.String("READ"),
-//						pulumi.String("WRITE"),
-//					},
-//				},
-//				LogDeliveryUserPermission: &cloudru.ObsBucketAclLogDeliveryUserPermissionArgs{
-//					AccessToBuckets: pulumi.StringArray{
-//						pulumi.String("READ"),
-//						pulumi.String("WRITE"),
-//					},
-//					AccessToAcls: pulumi.StringArray{
-//						pulumi.String("READ_ACP"),
-//						pulumi.String("WRITE_ACP"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The obs bucket acl can be imported using the `bucket`, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:index/obsBucketAcl:ObsBucketAcl test <bucket-name>
-// ```
 type ObsBucketAcl struct {
 	pulumi.CustomResourceState
 
 	// Specifies the account permissions.
-	// The accountPermissionStruct structure is documented below.
-	//
-	// <a name="OBSBucketAcl_permission_struct"></a>
-	// The `permissionStruct` block supports:
 	AccountPermissions ObsBucketAclAccountPermissionArrayOutput `pulumi:"accountPermissions"`
 	// Specifies the name of the bucket to which to set the acl.
-	//
-	// Changing this parameter will create a new resource.
 	Bucket pulumi.StringOutput `pulumi:"bucket"`
 	// Specifies the log delivery user permission.
-	// The permissionStruct structure is documented below.
 	LogDeliveryUserPermission ObsBucketAclLogDeliveryUserPermissionPtrOutput `pulumi:"logDeliveryUserPermission"`
-	// Specifies the bucket owner permission. If omitted, the current obs bucket acl
-	// owner permission will not be changed.
-	// The permissionStruct structure is documented below.
+	// Specifies the bucket owner permission.
 	OwnerPermission ObsBucketAclOwnerPermissionOutput `pulumi:"ownerPermission"`
 	// Specifies the public permission.
-	// The permissionStruct structure is documented below.
 	PublicPermission ObsBucketAclPublicPermissionPtrOutput `pulumi:"publicPermission"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	//
-	// Changing this parameter will create a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Region           pulumi.StringOutput                   `pulumi:"region"`
 }
 
 // NewObsBucketAcl registers a new resource with the given unique name, arguments, and options.
@@ -167,58 +62,30 @@ func GetObsBucketAcl(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ObsBucketAcl resources.
 type obsBucketAclState struct {
 	// Specifies the account permissions.
-	// The accountPermissionStruct structure is documented below.
-	//
-	// <a name="OBSBucketAcl_permission_struct"></a>
-	// The `permissionStruct` block supports:
 	AccountPermissions []ObsBucketAclAccountPermission `pulumi:"accountPermissions"`
 	// Specifies the name of the bucket to which to set the acl.
-	//
-	// Changing this parameter will create a new resource.
 	Bucket *string `pulumi:"bucket"`
 	// Specifies the log delivery user permission.
-	// The permissionStruct structure is documented below.
 	LogDeliveryUserPermission *ObsBucketAclLogDeliveryUserPermission `pulumi:"logDeliveryUserPermission"`
-	// Specifies the bucket owner permission. If omitted, the current obs bucket acl
-	// owner permission will not be changed.
-	// The permissionStruct structure is documented below.
+	// Specifies the bucket owner permission.
 	OwnerPermission *ObsBucketAclOwnerPermission `pulumi:"ownerPermission"`
 	// Specifies the public permission.
-	// The permissionStruct structure is documented below.
 	PublicPermission *ObsBucketAclPublicPermission `pulumi:"publicPermission"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	//
-	// Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
+	Region           *string                       `pulumi:"region"`
 }
 
 type ObsBucketAclState struct {
 	// Specifies the account permissions.
-	// The accountPermissionStruct structure is documented below.
-	//
-	// <a name="OBSBucketAcl_permission_struct"></a>
-	// The `permissionStruct` block supports:
 	AccountPermissions ObsBucketAclAccountPermissionArrayInput
 	// Specifies the name of the bucket to which to set the acl.
-	//
-	// Changing this parameter will create a new resource.
 	Bucket pulumi.StringPtrInput
 	// Specifies the log delivery user permission.
-	// The permissionStruct structure is documented below.
 	LogDeliveryUserPermission ObsBucketAclLogDeliveryUserPermissionPtrInput
-	// Specifies the bucket owner permission. If omitted, the current obs bucket acl
-	// owner permission will not be changed.
-	// The permissionStruct structure is documented below.
+	// Specifies the bucket owner permission.
 	OwnerPermission ObsBucketAclOwnerPermissionPtrInput
 	// Specifies the public permission.
-	// The permissionStruct structure is documented below.
 	PublicPermission ObsBucketAclPublicPermissionPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	//
-	// Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
+	Region           pulumi.StringPtrInput
 }
 
 func (ObsBucketAclState) ElementType() reflect.Type {
@@ -227,59 +94,31 @@ func (ObsBucketAclState) ElementType() reflect.Type {
 
 type obsBucketAclArgs struct {
 	// Specifies the account permissions.
-	// The accountPermissionStruct structure is documented below.
-	//
-	// <a name="OBSBucketAcl_permission_struct"></a>
-	// The `permissionStruct` block supports:
 	AccountPermissions []ObsBucketAclAccountPermission `pulumi:"accountPermissions"`
 	// Specifies the name of the bucket to which to set the acl.
-	//
-	// Changing this parameter will create a new resource.
 	Bucket string `pulumi:"bucket"`
 	// Specifies the log delivery user permission.
-	// The permissionStruct structure is documented below.
 	LogDeliveryUserPermission *ObsBucketAclLogDeliveryUserPermission `pulumi:"logDeliveryUserPermission"`
-	// Specifies the bucket owner permission. If omitted, the current obs bucket acl
-	// owner permission will not be changed.
-	// The permissionStruct structure is documented below.
+	// Specifies the bucket owner permission.
 	OwnerPermission *ObsBucketAclOwnerPermission `pulumi:"ownerPermission"`
 	// Specifies the public permission.
-	// The permissionStruct structure is documented below.
 	PublicPermission *ObsBucketAclPublicPermission `pulumi:"publicPermission"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	//
-	// Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
+	Region           *string                       `pulumi:"region"`
 }
 
 // The set of arguments for constructing a ObsBucketAcl resource.
 type ObsBucketAclArgs struct {
 	// Specifies the account permissions.
-	// The accountPermissionStruct structure is documented below.
-	//
-	// <a name="OBSBucketAcl_permission_struct"></a>
-	// The `permissionStruct` block supports:
 	AccountPermissions ObsBucketAclAccountPermissionArrayInput
 	// Specifies the name of the bucket to which to set the acl.
-	//
-	// Changing this parameter will create a new resource.
 	Bucket pulumi.StringInput
 	// Specifies the log delivery user permission.
-	// The permissionStruct structure is documented below.
 	LogDeliveryUserPermission ObsBucketAclLogDeliveryUserPermissionPtrInput
-	// Specifies the bucket owner permission. If omitted, the current obs bucket acl
-	// owner permission will not be changed.
-	// The permissionStruct structure is documented below.
+	// Specifies the bucket owner permission.
 	OwnerPermission ObsBucketAclOwnerPermissionPtrInput
 	// Specifies the public permission.
-	// The permissionStruct structure is documented below.
 	PublicPermission ObsBucketAclPublicPermissionPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	//
-	// Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
+	Region           pulumi.StringPtrInput
 }
 
 func (ObsBucketAclArgs) ElementType() reflect.Type {
@@ -370,46 +209,32 @@ func (o ObsBucketAclOutput) ToObsBucketAclOutputWithContext(ctx context.Context)
 }
 
 // Specifies the account permissions.
-// The accountPermissionStruct structure is documented below.
-//
-// <a name="OBSBucketAcl_permission_struct"></a>
-// The `permissionStruct` block supports:
 func (o ObsBucketAclOutput) AccountPermissions() ObsBucketAclAccountPermissionArrayOutput {
 	return o.ApplyT(func(v *ObsBucketAcl) ObsBucketAclAccountPermissionArrayOutput { return v.AccountPermissions }).(ObsBucketAclAccountPermissionArrayOutput)
 }
 
 // Specifies the name of the bucket to which to set the acl.
-//
-// Changing this parameter will create a new resource.
 func (o ObsBucketAclOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObsBucketAcl) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
 }
 
 // Specifies the log delivery user permission.
-// The permissionStruct structure is documented below.
 func (o ObsBucketAclOutput) LogDeliveryUserPermission() ObsBucketAclLogDeliveryUserPermissionPtrOutput {
 	return o.ApplyT(func(v *ObsBucketAcl) ObsBucketAclLogDeliveryUserPermissionPtrOutput {
 		return v.LogDeliveryUserPermission
 	}).(ObsBucketAclLogDeliveryUserPermissionPtrOutput)
 }
 
-// Specifies the bucket owner permission. If omitted, the current obs bucket acl
-// owner permission will not be changed.
-// The permissionStruct structure is documented below.
+// Specifies the bucket owner permission.
 func (o ObsBucketAclOutput) OwnerPermission() ObsBucketAclOwnerPermissionOutput {
 	return o.ApplyT(func(v *ObsBucketAcl) ObsBucketAclOwnerPermissionOutput { return v.OwnerPermission }).(ObsBucketAclOwnerPermissionOutput)
 }
 
 // Specifies the public permission.
-// The permissionStruct structure is documented below.
 func (o ObsBucketAclOutput) PublicPermission() ObsBucketAclPublicPermissionPtrOutput {
 	return o.ApplyT(func(v *ObsBucketAcl) ObsBucketAclPublicPermissionPtrOutput { return v.PublicPermission }).(ObsBucketAclPublicPermissionPtrOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used.
-//
-// Changing this parameter will create a new resource.
 func (o ObsBucketAclOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObsBucketAcl) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

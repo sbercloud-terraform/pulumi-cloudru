@@ -67,10 +67,6 @@ class GetAttachmentsResult:
     @_builtins.property
     @pulumi.getter
     def attachments(self) -> Sequence['outputs.GetAttachmentsAttachmentResult']:
-        """
-        All attachments that match the filter parameters.  
-        The object structure is documented below.
-        """
         return pulumi.get(self, "attachments")
 
     @_builtins.property
@@ -89,9 +85,6 @@ class GetAttachmentsResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        The attachment name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -102,33 +95,21 @@ class GetAttachmentsResult:
     @_builtins.property
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> Optional[_builtins.str]:
-        """
-        The associated resource ID.
-        """
         return pulumi.get(self, "resource_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
-        """
-        The current status of the attachment.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
-        """
-        The key/value pairs to associate with the attachment.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
-        """
-        The attachment type.
-        """
         return pulumi.get(self, "type")
 
 
@@ -160,48 +141,7 @@ def get_attachments(attachment_id: Optional[_builtins.str] = None,
                     type: Optional[_builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAttachmentsResult:
     """
-    Use this data source to filter ER attachments within SberCloud.
-
-    Before using enterprise router, define custom endpoint as shown below:
-    ```python
-    import pulumi
-    ```
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    test = sbercloud.Er.get_attachments(instance_id=instance_id,
-        tags={
-            "foo": "bar",
-        })
-    ```
-
-
-    :param _builtins.str attachment_id: Specifies the specified attachment ID used to query.
-    :param _builtins.str instance_id: Specifies the ER instance ID to which the attachment belongs.
-    :param _builtins.str name: Specifies the name used to filter the attachments.
-    :param _builtins.str region: Specifies the region where the ER attachments are located.  
-           If omitted, the provider-level region will be used.
-    :param _builtins.str resource_id: Specifies the associated resource ID used to filter the attachments.
-    :param _builtins.str status: Specifies the status used to filter the attachments.
-           The valid values are as follows:
-           + **available**
-           + **failed**
-           + **pending_acceptance**
-           + **rejected**
-    :param Mapping[str, _builtins.str] tags: The key/value pairs used to filter the attachments.
-    :param _builtins.str type: Specifies the resource type to be filtered.  
-           The valid values are as follows:
-           + **vpc**: Virtual private cloud.
-           + **vpn**: VPN gateway.
-           + **vgw**: Virtual gateway of cloud private line.
-           + **peering**: Peering connection, through the cloud connection (CC) to load ERs in different regions to create a
-           peering connection.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['attachmentId'] = attachment_id
@@ -236,48 +176,7 @@ def get_attachments_output(attachment_id: Optional[pulumi.Input[Optional[_builti
                            type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAttachmentsResult]:
     """
-    Use this data source to filter ER attachments within SberCloud.
-
-    Before using enterprise router, define custom endpoint as shown below:
-    ```python
-    import pulumi
-    ```
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    test = sbercloud.Er.get_attachments(instance_id=instance_id,
-        tags={
-            "foo": "bar",
-        })
-    ```
-
-
-    :param _builtins.str attachment_id: Specifies the specified attachment ID used to query.
-    :param _builtins.str instance_id: Specifies the ER instance ID to which the attachment belongs.
-    :param _builtins.str name: Specifies the name used to filter the attachments.
-    :param _builtins.str region: Specifies the region where the ER attachments are located.  
-           If omitted, the provider-level region will be used.
-    :param _builtins.str resource_id: Specifies the associated resource ID used to filter the attachments.
-    :param _builtins.str status: Specifies the status used to filter the attachments.
-           The valid values are as follows:
-           + **available**
-           + **failed**
-           + **pending_acceptance**
-           + **rejected**
-    :param Mapping[str, _builtins.str] tags: The key/value pairs used to filter the attachments.
-    :param _builtins.str type: Specifies the resource type to be filtered.  
-           The valid values are as follows:
-           + **vpc**: Virtual private cloud.
-           + **vpn**: VPN gateway.
-           + **vgw**: Virtual gateway of cloud private line.
-           + **peering**: Peering connection, through the cloud connection (CC) to load ERs in different regions to create a
-           peering connection.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['attachmentId'] = attachment_id

@@ -4,78 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Attaches a policy to an OBS bucket resource.
- *
- * ## Example Usage
- *
- * ### Policy with OBS format
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const bucket = new sbercloud.obs.Bucket("bucket", {bucket: "my-test-bucket"});
- * const policy = new sbercloud.obs.BucketPolicy("policy", {
- *     bucket: bucket.id,
- *     policy: `{
- *   "Statement": [
- *     {
- *       "Sid": "AddPerm",
- *       "Effect": "Allow",
- *       "Principal": {"ID": "*"},
- *       "Action": ["GetObject"],
- *       "Resource": "my-test-bucket/*"
- *     } 
- *   ]
- * }
- * `,
- * });
- * ```
- *
- * ### Policy with S3 format
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const bucket = new sbercloud.obs.Bucket("bucket", {bucket: "my-test-bucket"});
- * const s3Policy = new sbercloud.obs.BucketPolicy("s3_policy", {
- *     bucket: bucket.id,
- *     policyFormat: "s3",
- *     policy: `{
- *   "Version": "2008-10-17",
- *   "Id": "MYBUCKETPOLICY",
- *   "Statement": [
- *     {
- *       "Sid": "IPAllow",
- *       "Effect": "Allow",
- *       "Principal": "*",
- *       "Action": "s3:*",
- *       "Resource": "arn:aws:s3:::my-test-bucket/*",
- *       "Condition": {
- *         "IpAddress": {"aws:SourceIp": "8.8.8.8/32"}
- *       }
- *     }
- *   ]
- * }
- * `,
- * });
- * ```
- *
- * ## Import
- *
- * OBS format bucket policy can be imported using the `<bucket>`, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Obs/bucketPolicy:BucketPolicy policy <bucket-name>
- * ```
- * S3 foramt bucket policy can be imported using the `<bucket>` and "s3" by a slash, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Obs/bucketPolicy:BucketPolicy s3_policy <bucket-name>/s3
- * ```
- */
 export class BucketPolicy extends pulumi.CustomResource {
     /**
      * Get an existing BucketPolicy resource's state with the given name, ID, and optional extra
@@ -104,22 +32,9 @@ export class BucketPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === BucketPolicy.__pulumiType;
     }
 
-    /**
-     * Specifies the name of the bucket to which to apply the policy.
-     */
     declare public readonly bucket: pulumi.Output<string>;
-    /**
-     * Specifies the text of the bucket policy in JSON format. For more information about
-     * obs format bucket policy, see the [Developer Guide](https://support.hc.sbercloud.ru/api/obs/obs_04_0027.html).
-     */
     declare public readonly policy: pulumi.Output<string>;
-    /**
-     * Specifies the policy format, the supported values are *obs* and *s3*. Defaults to *obs* .
-     */
     declare public readonly policyFormat: pulumi.Output<string | undefined>;
-    /**
-     * The region in which to create the OBS bucket policy resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket policy resource.
-     */
     declare public readonly region: pulumi.Output<string>;
 
     /**
@@ -161,22 +76,9 @@ export class BucketPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering BucketPolicy resources.
  */
 export interface BucketPolicyState {
-    /**
-     * Specifies the name of the bucket to which to apply the policy.
-     */
     bucket?: pulumi.Input<string>;
-    /**
-     * Specifies the text of the bucket policy in JSON format. For more information about
-     * obs format bucket policy, see the [Developer Guide](https://support.hc.sbercloud.ru/api/obs/obs_04_0027.html).
-     */
     policy?: pulumi.Input<string>;
-    /**
-     * Specifies the policy format, the supported values are *obs* and *s3*. Defaults to *obs* .
-     */
     policyFormat?: pulumi.Input<string>;
-    /**
-     * The region in which to create the OBS bucket policy resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket policy resource.
-     */
     region?: pulumi.Input<string>;
 }
 
@@ -184,21 +86,8 @@ export interface BucketPolicyState {
  * The set of arguments for constructing a BucketPolicy resource.
  */
 export interface BucketPolicyArgs {
-    /**
-     * Specifies the name of the bucket to which to apply the policy.
-     */
     bucket: pulumi.Input<string>;
-    /**
-     * Specifies the text of the bucket policy in JSON format. For more information about
-     * obs format bucket policy, see the [Developer Guide](https://support.hc.sbercloud.ru/api/obs/obs_04_0027.html).
-     */
     policy: pulumi.Input<string>;
-    /**
-     * Specifies the policy format, the supported values are *obs* and *s3*. Defaults to *obs* .
-     */
     policyFormat?: pulumi.Input<string>;
-    /**
-     * The region in which to create the OBS bucket policy resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket policy resource.
-     */
     region?: pulumi.Input<string>;
 }

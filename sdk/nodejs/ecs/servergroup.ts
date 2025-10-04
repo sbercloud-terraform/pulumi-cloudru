@@ -4,33 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages Server Group resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const instanceDemo = sbercloud.Ecs.getInstance({
- *     name: "ecs-servergroup-demo",
- * });
- * const test_sg = new sbercloud.ecs.Servergroup("test-sg", {
- *     name: "my-sg",
- *     policies: ["anti-affinity"],
- *     members: [instanceDemo.then(instanceDemo => instanceDemo.id)],
- * });
- * ```
- *
- * ## Import
- *
- * Server Groups can be imported using the `id`, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Ecs/servergroup:Servergroup test-sg 1bc30ee9-9d5b-4c30-bdd5-7f1e663f5edf
- * ```
- */
 export class Servergroup extends pulumi.CustomResource {
     /**
      * Get an existing Servergroup resource's state with the given name, ID, and optional extra
@@ -63,28 +36,12 @@ export class Servergroup extends pulumi.CustomResource {
      * schema: Internal
      */
     declare public /*out*/ readonly faultDomains: pulumi.Output<string[]>;
-    /**
-     * Specifies an array of one or more instance ID to attach server group.
-     */
     declare public readonly members: pulumi.Output<string[]>;
-    /**
-     * Specifies a unique name for the server group. This parameter can contain a
-     * maximum of 255 characters, which may consist of letters, digits, underscores (_), and hyphens (-). Changing this
-     * creates a new server group.
-     */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Specifies the set of policies for the server group. Only *anti-affinity*
-     * policies are supported.
-     *
-     * + `anti-affinity`: All ECS in this group must be deployed on different hosts. Changing this creates a new server
-     * group.
+     * schema: Required
      */
     declare public readonly policies: pulumi.Output<string[] | undefined>;
-    /**
-     * Specifies the region in which to create the server group resource. If omitted,
-     * the provider-level region will be used. Changing this creates a new server group.
-     */
     declare public readonly region: pulumi.Output<string>;
 
     /**
@@ -126,28 +83,12 @@ export interface ServergroupState {
      * schema: Internal
      */
     faultDomains?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies an array of one or more instance ID to attach server group.
-     */
     members?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies a unique name for the server group. This parameter can contain a
-     * maximum of 255 characters, which may consist of letters, digits, underscores (_), and hyphens (-). Changing this
-     * creates a new server group.
-     */
     name?: pulumi.Input<string>;
     /**
-     * Specifies the set of policies for the server group. Only *anti-affinity*
-     * policies are supported.
-     *
-     * + `anti-affinity`: All ECS in this group must be deployed on different hosts. Changing this creates a new server
-     * group.
+     * schema: Required
      */
     policies?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the region in which to create the server group resource. If omitted,
-     * the provider-level region will be used. Changing this creates a new server group.
-     */
     region?: pulumi.Input<string>;
 }
 
@@ -155,27 +96,11 @@ export interface ServergroupState {
  * The set of arguments for constructing a Servergroup resource.
  */
 export interface ServergroupArgs {
-    /**
-     * Specifies an array of one or more instance ID to attach server group.
-     */
     members?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies a unique name for the server group. This parameter can contain a
-     * maximum of 255 characters, which may consist of letters, digits, underscores (_), and hyphens (-). Changing this
-     * creates a new server group.
-     */
     name?: pulumi.Input<string>;
     /**
-     * Specifies the set of policies for the server group. Only *anti-affinity*
-     * policies are supported.
-     *
-     * + `anti-affinity`: All ECS in this group must be deployed on different hosts. Changing this creates a new server
-     * group.
+     * schema: Required
      */
     policies?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the region in which to create the server group resource. If omitted,
-     * the provider-level region will be used. Changing this creates a new server group.
-     */
     region?: pulumi.Input<string>;
 }

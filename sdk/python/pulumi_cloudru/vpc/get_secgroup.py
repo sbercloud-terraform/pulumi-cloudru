@@ -59,17 +59,11 @@ class GetSecgroupResult:
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> _builtins.str:
-        """
-        The creation time, in UTC format.
-        """
         return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
-        """
-        The supplementary information about the security group rule.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
@@ -98,10 +92,6 @@ class GetSecgroupResult:
     @_builtins.property
     @pulumi.getter
     def rules(self) -> Sequence['outputs.GetSecgroupRuleResult']:
-        """
-        The array of security group rules associating with the security group.
-        The rule object is documented below.
-        """
         return pulumi.get(self, "rules")
 
     @_builtins.property
@@ -112,9 +102,6 @@ class GetSecgroupResult:
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> _builtins.str:
-        """
-        The last update time, in UTC format.
-        """
         return pulumi.get(self, "updated_at")
 
 
@@ -141,23 +128,7 @@ def get_secgroup(enterprise_project_id: Optional[_builtins.str] = None,
                  secgroup_id: Optional[_builtins.str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecgroupResult:
     """
-    Use this data source to get the ID of an available SberCloud security group.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    secgroup = sbercloud.Vpc.get_secgroup(name="tf_test_secgroup")
-    ```
-
-
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID of the security group.
-    :param _builtins.str name: Specifies the name of the security group.
-    :param _builtins.str region: Specifies the region in which to obtain the security group. If omitted, the
-           provider-level region will be used.
-    :param _builtins.str secgroup_id: Specifiest he ID of the security group.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['enterpriseProjectId'] = enterprise_project_id
@@ -183,23 +154,7 @@ def get_secgroup_output(enterprise_project_id: Optional[pulumi.Input[Optional[_b
                         secgroup_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecgroupResult]:
     """
-    Use this data source to get the ID of an available SberCloud security group.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    secgroup = sbercloud.Vpc.get_secgroup(name="tf_test_secgroup")
-    ```
-
-
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID of the security group.
-    :param _builtins.str name: Specifies the name of the security group.
-    :param _builtins.str region: Specifies the region in which to obtain the security group. If omitted, the
-           provider-level region will be used.
-    :param _builtins.str secgroup_id: Specifiest he ID of the security group.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['enterpriseProjectId'] = enterprise_project_id

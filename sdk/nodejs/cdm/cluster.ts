@@ -6,69 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages CDM cluster resource within SberCloud.
- *
- * ## Example Usage
- *
- * ### create a cdm cluster
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const name = config.requireObject<any>("name");
- * const flavorId = config.requireObject<any>("flavorId");
- * const availabilityZone = config.requireObject<any>("availabilityZone");
- * const vpcId = config.requireObject<any>("vpcId");
- * const subnetId = config.requireObject<any>("subnetId");
- * const secgroupId = config.requireObject<any>("secgroupId");
- * const test = sbercloud.getCdmFlavors({});
- * const cluster = new sbercloud.cdm.Cluster("cluster", {
- *     name: name,
- *     availabilityZone: availabilityZone,
- *     flavorId: test.then(test => test.flavors?.[0]?.id),
- *     subnetId: subnetId,
- *     vpcId: vpcId,
- *     securityGroupId: secgroupId,
- * });
- * ```
- *
- * ## Import
- *
- * Clusters can be imported by `id`. For example,
- *
- * ```sh
- * $ pulumi import sbercloud:Cdm/cluster:Cluster test b11b407c-e604-4e8d-8bc4-92398320b847
- * ```
- *
- * Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
- *
- * API response, security or some other reason. The missing attributes include: `email` and `phone_num`.
- *
- * It is generally recommended running `pulumi preview` after importing a cluster.
- *
- * You can then decide if changes should be applied to the cluster, or the resource definition
- *
- * should be updated to align with the cluster. Also you can ignore changes as below.
- *
- * resource "sbercloud_cdm_cluster" "test" {
- *
- *     ...
- *
- *   lifecycle {
- *
- *     ignore_changes = [
- *     
- *       email, phone_num,
- *     
- *     ]
- *
- *   }
- *
- * }
- */
 export class Cluster extends pulumi.CustomResource {
     /**
      * Get an existing Cluster resource's state with the given name, ID, and optional extra
@@ -97,96 +34,25 @@ export class Cluster extends pulumi.CustomResource {
         return obj['__pulumiType'] === Cluster.__pulumiType;
     }
 
-    /**
-     * Specifies available zone.
-     * Changing this parameter will create a new resource.
-     */
     declare public readonly availabilityZone: pulumi.Output<string>;
-    /**
-     * Create time. The format is: `YYYY-MM-DDThh:mm:ss`.
-     */
     declare public /*out*/ readonly created: pulumi.Output<string>;
-    /**
-     * Specifies email address for receiving notifications when a table/file migration
-     * job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
-     */
     declare public readonly emails: pulumi.Output<string[] | undefined>;
-    /**
-     * Specifies the enterprise project id.
-     * Changing this parameter will create a new resource.
-     */
     declare public readonly enterpriseProjectId: pulumi.Output<string>;
-    /**
-     * Specifies flavor id. Changing this parameter will create a new resource.
-     */
     declare public readonly flavorId: pulumi.Output<string>;
     declare public /*out*/ readonly flavorName: pulumi.Output<string>;
-    /**
-     * Instance list. Structure is documented below.
-     */
     declare public /*out*/ readonly instances: pulumi.Output<outputs.Cdm.ClusterInstance[]>;
-    /**
-     * Specifies Whether to enable auto shutdown. The auto shutdown and scheduled
-     * startup/shutdown functions cannot be enabled at the same time. When auto shutdown is enabled, if no job is running in
-     * the cluster and no scheduled job is created, a cluster will be automatically shut down 15 minutes after it starts
-     * running to reduce costs. The default value is `false`. Changing this parameter will create a new resource.
-     */
     declare public readonly isAutoOff: pulumi.Output<boolean>;
-    /**
-     * Specifies cluster name. Changing this parameter will create a new resource.
-     */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * Specifies phone number for receiving notifications when a table/file
-     * migration job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
-     */
     declare public readonly phoneNums: pulumi.Output<string[] | undefined>;
-    /**
-     * EIP bound to the cluster.
-     */
     declare public /*out*/ readonly publicEndpoint: pulumi.Output<string>;
-    /**
-     * Public IP.
-     */
     declare public /*out*/ readonly publicIp: pulumi.Output<string>;
-    /**
-     * The region in which to create the cluster resource. If omitted, the
-     * provider-level region will be used. Changing this parameter will create a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Specifies time for scheduled startup of a CDM cluster.
-     * The CDM cluster starts at this time every day. The scheduled startup/shutdown and auto shutdown function cannot be
-     * enabled at the same time. The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
-     */
     declare public readonly scheduleBootTime: pulumi.Output<string>;
-    /**
-     * Specifies time for scheduled shutdown of a CDM cluster.
-     * The system shuts down directly at this time every day without waiting for unfinished jobs to complete.
-     * The scheduled startup/shutdown and auto shutdown function cannot be enabled at the same time.
-     * The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
-     */
     declare public readonly scheduleOffTime: pulumi.Output<string>;
-    /**
-     * Specifies security group ID.
-     * Changing this parameter will create a new resource.
-     */
     declare public readonly securityGroupId: pulumi.Output<string>;
-    /**
-     * Status.
-     */
     declare public /*out*/ readonly status: pulumi.Output<string>;
-    /**
-     * Specifies subnet ID. Changing this parameter will create a new resource.
-     */
     declare public readonly subnetId: pulumi.Output<string>;
-    /**
-     * Specifies the cluster version. Changing this parameter will create a new resource.
-     */
     declare public readonly version: pulumi.Output<string>;
-    /**
-     * Specifies VPC ID. Changing this parameter will create a new resource.
-     */
     declare public readonly vpcId: pulumi.Output<string>;
 
     /**
@@ -269,96 +135,25 @@ export class Cluster extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Cluster resources.
  */
 export interface ClusterState {
-    /**
-     * Specifies available zone.
-     * Changing this parameter will create a new resource.
-     */
     availabilityZone?: pulumi.Input<string>;
-    /**
-     * Create time. The format is: `YYYY-MM-DDThh:mm:ss`.
-     */
     created?: pulumi.Input<string>;
-    /**
-     * Specifies email address for receiving notifications when a table/file migration
-     * job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
-     */
     emails?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the enterprise project id.
-     * Changing this parameter will create a new resource.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Specifies flavor id. Changing this parameter will create a new resource.
-     */
     flavorId?: pulumi.Input<string>;
     flavorName?: pulumi.Input<string>;
-    /**
-     * Instance list. Structure is documented below.
-     */
     instances?: pulumi.Input<pulumi.Input<inputs.Cdm.ClusterInstance>[]>;
-    /**
-     * Specifies Whether to enable auto shutdown. The auto shutdown and scheduled
-     * startup/shutdown functions cannot be enabled at the same time. When auto shutdown is enabled, if no job is running in
-     * the cluster and no scheduled job is created, a cluster will be automatically shut down 15 minutes after it starts
-     * running to reduce costs. The default value is `false`. Changing this parameter will create a new resource.
-     */
     isAutoOff?: pulumi.Input<boolean>;
-    /**
-     * Specifies cluster name. Changing this parameter will create a new resource.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies phone number for receiving notifications when a table/file
-     * migration job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
-     */
     phoneNums?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * EIP bound to the cluster.
-     */
     publicEndpoint?: pulumi.Input<string>;
-    /**
-     * Public IP.
-     */
     publicIp?: pulumi.Input<string>;
-    /**
-     * The region in which to create the cluster resource. If omitted, the
-     * provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies time for scheduled startup of a CDM cluster.
-     * The CDM cluster starts at this time every day. The scheduled startup/shutdown and auto shutdown function cannot be
-     * enabled at the same time. The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
-     */
     scheduleBootTime?: pulumi.Input<string>;
-    /**
-     * Specifies time for scheduled shutdown of a CDM cluster.
-     * The system shuts down directly at this time every day without waiting for unfinished jobs to complete.
-     * The scheduled startup/shutdown and auto shutdown function cannot be enabled at the same time.
-     * The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
-     */
     scheduleOffTime?: pulumi.Input<string>;
-    /**
-     * Specifies security group ID.
-     * Changing this parameter will create a new resource.
-     */
     securityGroupId?: pulumi.Input<string>;
-    /**
-     * Status.
-     */
     status?: pulumi.Input<string>;
-    /**
-     * Specifies subnet ID. Changing this parameter will create a new resource.
-     */
     subnetId?: pulumi.Input<string>;
-    /**
-     * Specifies the cluster version. Changing this parameter will create a new resource.
-     */
     version?: pulumi.Input<string>;
-    /**
-     * Specifies VPC ID. Changing this parameter will create a new resource.
-     */
     vpcId?: pulumi.Input<string>;
 }
 
@@ -366,74 +161,18 @@ export interface ClusterState {
  * The set of arguments for constructing a Cluster resource.
  */
 export interface ClusterArgs {
-    /**
-     * Specifies available zone.
-     * Changing this parameter will create a new resource.
-     */
     availabilityZone: pulumi.Input<string>;
-    /**
-     * Specifies email address for receiving notifications when a table/file migration
-     * job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
-     */
     emails?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the enterprise project id.
-     * Changing this parameter will create a new resource.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Specifies flavor id. Changing this parameter will create a new resource.
-     */
     flavorId: pulumi.Input<string>;
-    /**
-     * Specifies Whether to enable auto shutdown. The auto shutdown and scheduled
-     * startup/shutdown functions cannot be enabled at the same time. When auto shutdown is enabled, if no job is running in
-     * the cluster and no scheduled job is created, a cluster will be automatically shut down 15 minutes after it starts
-     * running to reduce costs. The default value is `false`. Changing this parameter will create a new resource.
-     */
     isAutoOff?: pulumi.Input<boolean>;
-    /**
-     * Specifies cluster name. Changing this parameter will create a new resource.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies phone number for receiving notifications when a table/file
-     * migration job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
-     */
     phoneNums?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The region in which to create the cluster resource. If omitted, the
-     * provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies time for scheduled startup of a CDM cluster.
-     * The CDM cluster starts at this time every day. The scheduled startup/shutdown and auto shutdown function cannot be
-     * enabled at the same time. The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
-     */
     scheduleBootTime?: pulumi.Input<string>;
-    /**
-     * Specifies time for scheduled shutdown of a CDM cluster.
-     * The system shuts down directly at this time every day without waiting for unfinished jobs to complete.
-     * The scheduled startup/shutdown and auto shutdown function cannot be enabled at the same time.
-     * The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
-     */
     scheduleOffTime?: pulumi.Input<string>;
-    /**
-     * Specifies security group ID.
-     * Changing this parameter will create a new resource.
-     */
     securityGroupId: pulumi.Input<string>;
-    /**
-     * Specifies subnet ID. Changing this parameter will create a new resource.
-     */
     subnetId: pulumi.Input<string>;
-    /**
-     * Specifies the cluster version. Changing this parameter will create a new resource.
-     */
     version?: pulumi.Input<string>;
-    /**
-     * Specifies VPC ID. Changing this parameter will create a new resource.
-     */
     vpcId: pulumi.Input<string>;
 }

@@ -11,51 +11,11 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a User Group resource within SberCloud IAM service.
-//
-// Note: You _must_ have admin privileges in your SberCloud cloud to use this resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/iam"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := iam.NewGroup(ctx, "group_1", &iam.GroupArgs{
-//				Name:        pulumi.String("group_1"),
-//				Description: pulumi.String("This is a test group"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Groups can be imported using the `id`, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Iam/group:Group group_1 89c60255-9bd6-460c-822a-e2b959ede9d2
-// ```
 type Group struct {
 	pulumi.CustomResourceState
 
-	// Specifies the description of the group.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Specifies the name of the group.The length is less than or equal to 64 bytes.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name        pulumi.StringOutput    `pulumi:"name"`
 }
 
 // NewGroup registers a new resource with the given unique name, arguments, and options.
@@ -88,17 +48,13 @@ func GetGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Group resources.
 type groupState struct {
-	// Specifies the description of the group.
 	Description *string `pulumi:"description"`
-	// Specifies the name of the group.The length is less than or equal to 64 bytes.
-	Name *string `pulumi:"name"`
+	Name        *string `pulumi:"name"`
 }
 
 type GroupState struct {
-	// Specifies the description of the group.
 	Description pulumi.StringPtrInput
-	// Specifies the name of the group.The length is less than or equal to 64 bytes.
-	Name pulumi.StringPtrInput
+	Name        pulumi.StringPtrInput
 }
 
 func (GroupState) ElementType() reflect.Type {
@@ -106,18 +62,14 @@ func (GroupState) ElementType() reflect.Type {
 }
 
 type groupArgs struct {
-	// Specifies the description of the group.
 	Description *string `pulumi:"description"`
-	// Specifies the name of the group.The length is less than or equal to 64 bytes.
-	Name *string `pulumi:"name"`
+	Name        *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a Group resource.
 type GroupArgs struct {
-	// Specifies the description of the group.
 	Description pulumi.StringPtrInput
-	// Specifies the name of the group.The length is less than or equal to 64 bytes.
-	Name pulumi.StringPtrInput
+	Name        pulumi.StringPtrInput
 }
 
 func (GroupArgs) ElementType() reflect.Type {
@@ -207,12 +159,10 @@ func (o GroupOutput) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
 	return o
 }
 
-// Specifies the description of the group.
 func (o GroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the name of the group.The length is less than or equal to 64 bytes.
 func (o GroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

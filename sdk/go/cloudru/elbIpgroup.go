@@ -12,59 +12,17 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a Dedicated ELB Ip Group resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sbercloud.NewElbIpgroup(ctx, "basic", &sbercloud.ElbIpgroupArgs{
-//				Name:        pulumi.String("basic"),
-//				Description: pulumi.String("basic example"),
-//				IpLists: cloudru.ElbIpgroupIpListArray{
-//					&cloudru.ElbIpgroupIpListArgs{
-//						Ip:          pulumi.String("192.168.10.10"),
-//						Description: pulumi.String("ECS01"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type ElbIpgroup struct {
 	pulumi.CustomResourceState
 
-	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Human-readable description for the ip group.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The enterprise project id of the ip group. Changing this
-	// creates a new ip group.
-	EnterpriseProjectId pulumi.StringOutput `pulumi:"enterpriseProjectId"`
-	// Specifies an array of one or more ip addresses. The ipList object structure is
-	// documented below.
-	IpLists     ElbIpgroupIpListArrayOutput `pulumi:"ipLists"`
-	ListenerIds pulumi.StringArrayOutput    `pulumi:"listenerIds"`
-	// Human-readable name for the ip group.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The region in which to create the ip group resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new ip group.
-	Region    pulumi.StringOutput `pulumi:"region"`
-	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
+	CreatedAt           pulumi.StringOutput         `pulumi:"createdAt"`
+	Description         pulumi.StringPtrOutput      `pulumi:"description"`
+	EnterpriseProjectId pulumi.StringOutput         `pulumi:"enterpriseProjectId"`
+	IpLists             ElbIpgroupIpListArrayOutput `pulumi:"ipLists"`
+	ListenerIds         pulumi.StringArrayOutput    `pulumi:"listenerIds"`
+	Name                pulumi.StringOutput         `pulumi:"name"`
+	Region              pulumi.StringOutput         `pulumi:"region"`
+	UpdatedAt           pulumi.StringOutput         `pulumi:"updatedAt"`
 }
 
 // NewElbIpgroup registers a new resource with the given unique name, arguments, and options.
@@ -100,41 +58,25 @@ func GetElbIpgroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ElbIpgroup resources.
 type elbIpgroupState struct {
-	CreatedAt *string `pulumi:"createdAt"`
-	// Human-readable description for the ip group.
-	Description *string `pulumi:"description"`
-	// The enterprise project id of the ip group. Changing this
-	// creates a new ip group.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies an array of one or more ip addresses. The ipList object structure is
-	// documented below.
-	IpLists     []ElbIpgroupIpList `pulumi:"ipLists"`
-	ListenerIds []string           `pulumi:"listenerIds"`
-	// Human-readable name for the ip group.
-	Name *string `pulumi:"name"`
-	// The region in which to create the ip group resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new ip group.
-	Region    *string `pulumi:"region"`
-	UpdatedAt *string `pulumi:"updatedAt"`
+	CreatedAt           *string            `pulumi:"createdAt"`
+	Description         *string            `pulumi:"description"`
+	EnterpriseProjectId *string            `pulumi:"enterpriseProjectId"`
+	IpLists             []ElbIpgroupIpList `pulumi:"ipLists"`
+	ListenerIds         []string           `pulumi:"listenerIds"`
+	Name                *string            `pulumi:"name"`
+	Region              *string            `pulumi:"region"`
+	UpdatedAt           *string            `pulumi:"updatedAt"`
 }
 
 type ElbIpgroupState struct {
-	CreatedAt pulumi.StringPtrInput
-	// Human-readable description for the ip group.
-	Description pulumi.StringPtrInput
-	// The enterprise project id of the ip group. Changing this
-	// creates a new ip group.
+	CreatedAt           pulumi.StringPtrInput
+	Description         pulumi.StringPtrInput
 	EnterpriseProjectId pulumi.StringPtrInput
-	// Specifies an array of one or more ip addresses. The ipList object structure is
-	// documented below.
-	IpLists     ElbIpgroupIpListArrayInput
-	ListenerIds pulumi.StringArrayInput
-	// Human-readable name for the ip group.
-	Name pulumi.StringPtrInput
-	// The region in which to create the ip group resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new ip group.
-	Region    pulumi.StringPtrInput
-	UpdatedAt pulumi.StringPtrInput
+	IpLists             ElbIpgroupIpListArrayInput
+	ListenerIds         pulumi.StringArrayInput
+	Name                pulumi.StringPtrInput
+	Region              pulumi.StringPtrInput
+	UpdatedAt           pulumi.StringPtrInput
 }
 
 func (ElbIpgroupState) ElementType() reflect.Type {
@@ -142,36 +84,20 @@ func (ElbIpgroupState) ElementType() reflect.Type {
 }
 
 type elbIpgroupArgs struct {
-	// Human-readable description for the ip group.
-	Description *string `pulumi:"description"`
-	// The enterprise project id of the ip group. Changing this
-	// creates a new ip group.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies an array of one or more ip addresses. The ipList object structure is
-	// documented below.
-	IpLists []ElbIpgroupIpList `pulumi:"ipLists"`
-	// Human-readable name for the ip group.
-	Name *string `pulumi:"name"`
-	// The region in which to create the ip group resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new ip group.
-	Region *string `pulumi:"region"`
+	Description         *string            `pulumi:"description"`
+	EnterpriseProjectId *string            `pulumi:"enterpriseProjectId"`
+	IpLists             []ElbIpgroupIpList `pulumi:"ipLists"`
+	Name                *string            `pulumi:"name"`
+	Region              *string            `pulumi:"region"`
 }
 
 // The set of arguments for constructing a ElbIpgroup resource.
 type ElbIpgroupArgs struct {
-	// Human-readable description for the ip group.
-	Description pulumi.StringPtrInput
-	// The enterprise project id of the ip group. Changing this
-	// creates a new ip group.
+	Description         pulumi.StringPtrInput
 	EnterpriseProjectId pulumi.StringPtrInput
-	// Specifies an array of one or more ip addresses. The ipList object structure is
-	// documented below.
-	IpLists ElbIpgroupIpListArrayInput
-	// Human-readable name for the ip group.
-	Name pulumi.StringPtrInput
-	// The region in which to create the ip group resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new ip group.
-	Region pulumi.StringPtrInput
+	IpLists             ElbIpgroupIpListArrayInput
+	Name                pulumi.StringPtrInput
+	Region              pulumi.StringPtrInput
 }
 
 func (ElbIpgroupArgs) ElementType() reflect.Type {
@@ -265,19 +191,14 @@ func (o ElbIpgroupOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbIpgroup) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Human-readable description for the ip group.
 func (o ElbIpgroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElbIpgroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The enterprise project id of the ip group. Changing this
-// creates a new ip group.
 func (o ElbIpgroupOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbIpgroup) pulumi.StringOutput { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// Specifies an array of one or more ip addresses. The ipList object structure is
-// documented below.
 func (o ElbIpgroupOutput) IpLists() ElbIpgroupIpListArrayOutput {
 	return o.ApplyT(func(v *ElbIpgroup) ElbIpgroupIpListArrayOutput { return v.IpLists }).(ElbIpgroupIpListArrayOutput)
 }
@@ -286,13 +207,10 @@ func (o ElbIpgroupOutput) ListenerIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ElbIpgroup) pulumi.StringArrayOutput { return v.ListenerIds }).(pulumi.StringArrayOutput)
 }
 
-// Human-readable name for the ip group.
 func (o ElbIpgroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbIpgroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The region in which to create the ip group resource. If omitted, the
-// provider-level region will be used. Changing this creates a new ip group.
 func (o ElbIpgroupOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbIpgroup) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

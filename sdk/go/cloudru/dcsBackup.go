@@ -12,90 +12,31 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a DCS backup resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			dcsInstanceId := cfg.RequireObject("dcsInstanceId")
-//			_, err := sbercloud.NewDcsBackup(ctx, "test", &sbercloud.DcsBackupArgs{
-//				InstanceId: pulumi.Any(dcsInstanceId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The DCS backup can be imported using the DCS instance ID and backup ID separated by a slash, e.g.:
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:index/dcsBackup:DcsBackup test <instance_id>/<backup_id>
-// ```
 type DcsBackup struct {
 	pulumi.CustomResourceState
 
 	// Specifies the format of the DCS instance backup.
-	// Value options: **aof**, **rdb**. Default to rdb.
-	//
-	// Changing this parameter will create a new resource.
 	BackupFormat pulumi.StringOutput `pulumi:"backupFormat"`
 	// Indicates the ID of the DCS instance backup.
 	BackupId pulumi.StringOutput `pulumi:"backupId"`
-	// Indicates the time when the backup task is created. The format is yyyy-mm-dd hh:mm:ss.
-	// The value is in UTC format.
+	// Indicates the time when the backup task is created.
 	BeginTime pulumi.StringOutput `pulumi:"beginTime"`
 	// Specifies the description of DCS instance backup.
-	//
-	// Changing this parameter will create a new resource.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Indicates the time at which DCS instance backup is completed. The format is yyyy-mm-dd hh:mm:ss.
-	// The value is in UTC format.
+	// Indicates the time at which DCS instance backup is completed.
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
 	// Specifies the ID of the DCS instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// Indicates whether restoration is supported. Value Options: **TRUE**, **FALSE**.
 	IsSupportRestore pulumi.StringOutput `pulumi:"isSupportRestore"`
 	// Indicates the backup name.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	Name   pulumi.StringOutput `pulumi:"name"`
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Indicates the size of the backup file (byte).
 	Size pulumi.IntOutput `pulumi:"size"`
-	// Indicates the backup status. Valid value:
-	// + **waiting**: The task is waiting to begin.
-	// + **backuping**: DCS instance backup is in progress.
-	// + **succeed**: DCS instance backup succeeded.
-	// + **failed**: DCS instance backup failed.
-	// + **expired**: The backup file has expired.
-	// + **deleted**: The backup file has been deleted manually.
+	// Indicates the backup status.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Indicates the backup type. Valid value:
-	// + **manual**: indicates manual backup.
-	// + **auto**: indicates automatic backup.
+	// Indicates the backup type.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -133,91 +74,53 @@ func GetDcsBackup(ctx *pulumi.Context,
 // Input properties used for looking up and filtering DcsBackup resources.
 type dcsBackupState struct {
 	// Specifies the format of the DCS instance backup.
-	// Value options: **aof**, **rdb**. Default to rdb.
-	//
-	// Changing this parameter will create a new resource.
 	BackupFormat *string `pulumi:"backupFormat"`
 	// Indicates the ID of the DCS instance backup.
 	BackupId *string `pulumi:"backupId"`
-	// Indicates the time when the backup task is created. The format is yyyy-mm-dd hh:mm:ss.
-	// The value is in UTC format.
+	// Indicates the time when the backup task is created.
 	BeginTime *string `pulumi:"beginTime"`
 	// Specifies the description of DCS instance backup.
-	//
-	// Changing this parameter will create a new resource.
 	Description *string `pulumi:"description"`
-	// Indicates the time at which DCS instance backup is completed. The format is yyyy-mm-dd hh:mm:ss.
-	// The value is in UTC format.
+	// Indicates the time at which DCS instance backup is completed.
 	EndTime *string `pulumi:"endTime"`
 	// Specifies the ID of the DCS instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId *string `pulumi:"instanceId"`
 	// Indicates whether restoration is supported. Value Options: **TRUE**, **FALSE**.
 	IsSupportRestore *string `pulumi:"isSupportRestore"`
 	// Indicates the backup name.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	Name   *string `pulumi:"name"`
 	Region *string `pulumi:"region"`
 	// Indicates the size of the backup file (byte).
 	Size *int `pulumi:"size"`
-	// Indicates the backup status. Valid value:
-	// + **waiting**: The task is waiting to begin.
-	// + **backuping**: DCS instance backup is in progress.
-	// + **succeed**: DCS instance backup succeeded.
-	// + **failed**: DCS instance backup failed.
-	// + **expired**: The backup file has expired.
-	// + **deleted**: The backup file has been deleted manually.
+	// Indicates the backup status.
 	Status *string `pulumi:"status"`
-	// Indicates the backup type. Valid value:
-	// + **manual**: indicates manual backup.
-	// + **auto**: indicates automatic backup.
+	// Indicates the backup type.
 	Type *string `pulumi:"type"`
 }
 
 type DcsBackupState struct {
 	// Specifies the format of the DCS instance backup.
-	// Value options: **aof**, **rdb**. Default to rdb.
-	//
-	// Changing this parameter will create a new resource.
 	BackupFormat pulumi.StringPtrInput
 	// Indicates the ID of the DCS instance backup.
 	BackupId pulumi.StringPtrInput
-	// Indicates the time when the backup task is created. The format is yyyy-mm-dd hh:mm:ss.
-	// The value is in UTC format.
+	// Indicates the time when the backup task is created.
 	BeginTime pulumi.StringPtrInput
 	// Specifies the description of DCS instance backup.
-	//
-	// Changing this parameter will create a new resource.
 	Description pulumi.StringPtrInput
-	// Indicates the time at which DCS instance backup is completed. The format is yyyy-mm-dd hh:mm:ss.
-	// The value is in UTC format.
+	// Indicates the time at which DCS instance backup is completed.
 	EndTime pulumi.StringPtrInput
 	// Specifies the ID of the DCS instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId pulumi.StringPtrInput
 	// Indicates whether restoration is supported. Value Options: **TRUE**, **FALSE**.
 	IsSupportRestore pulumi.StringPtrInput
 	// Indicates the backup name.
-	Name pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	Name   pulumi.StringPtrInput
 	Region pulumi.StringPtrInput
 	// Indicates the size of the backup file (byte).
 	Size pulumi.IntPtrInput
-	// Indicates the backup status. Valid value:
-	// + **waiting**: The task is waiting to begin.
-	// + **backuping**: DCS instance backup is in progress.
-	// + **succeed**: DCS instance backup succeeded.
-	// + **failed**: DCS instance backup failed.
-	// + **expired**: The backup file has expired.
-	// + **deleted**: The backup file has been deleted manually.
+	// Indicates the backup status.
 	Status pulumi.StringPtrInput
-	// Indicates the backup type. Valid value:
-	// + **manual**: indicates manual backup.
-	// + **auto**: indicates automatic backup.
+	// Indicates the backup type.
 	Type pulumi.StringPtrInput
 }
 
@@ -227,41 +130,23 @@ func (DcsBackupState) ElementType() reflect.Type {
 
 type dcsBackupArgs struct {
 	// Specifies the format of the DCS instance backup.
-	// Value options: **aof**, **rdb**. Default to rdb.
-	//
-	// Changing this parameter will create a new resource.
 	BackupFormat *string `pulumi:"backupFormat"`
 	// Specifies the description of DCS instance backup.
-	//
-	// Changing this parameter will create a new resource.
 	Description *string `pulumi:"description"`
 	// Specifies the ID of the DCS instance.
-	//
-	// Changing this parameter will create a new resource.
-	InstanceId string `pulumi:"instanceId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
+	InstanceId string  `pulumi:"instanceId"`
+	Region     *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a DcsBackup resource.
 type DcsBackupArgs struct {
 	// Specifies the format of the DCS instance backup.
-	// Value options: **aof**, **rdb**. Default to rdb.
-	//
-	// Changing this parameter will create a new resource.
 	BackupFormat pulumi.StringPtrInput
 	// Specifies the description of DCS instance backup.
-	//
-	// Changing this parameter will create a new resource.
 	Description pulumi.StringPtrInput
 	// Specifies the ID of the DCS instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId pulumi.StringInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
+	Region     pulumi.StringPtrInput
 }
 
 func (DcsBackupArgs) ElementType() reflect.Type {
@@ -352,9 +237,6 @@ func (o DcsBackupOutput) ToDcsBackupOutputWithContext(ctx context.Context) DcsBa
 }
 
 // Specifies the format of the DCS instance backup.
-// Value options: **aof**, **rdb**. Default to rdb.
-//
-// Changing this parameter will create a new resource.
 func (o DcsBackupOutput) BackupFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v *DcsBackup) pulumi.StringOutput { return v.BackupFormat }).(pulumi.StringOutput)
 }
@@ -364,28 +246,22 @@ func (o DcsBackupOutput) BackupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DcsBackup) pulumi.StringOutput { return v.BackupId }).(pulumi.StringOutput)
 }
 
-// Indicates the time when the backup task is created. The format is yyyy-mm-dd hh:mm:ss.
-// The value is in UTC format.
+// Indicates the time when the backup task is created.
 func (o DcsBackupOutput) BeginTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *DcsBackup) pulumi.StringOutput { return v.BeginTime }).(pulumi.StringOutput)
 }
 
 // Specifies the description of DCS instance backup.
-//
-// Changing this parameter will create a new resource.
 func (o DcsBackupOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *DcsBackup) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Indicates the time at which DCS instance backup is completed. The format is yyyy-mm-dd hh:mm:ss.
-// The value is in UTC format.
+// Indicates the time at which DCS instance backup is completed.
 func (o DcsBackupOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *DcsBackup) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
 }
 
 // Specifies the ID of the DCS instance.
-//
-// Changing this parameter will create a new resource.
 func (o DcsBackupOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DcsBackup) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -400,8 +276,6 @@ func (o DcsBackupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DcsBackup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
 func (o DcsBackupOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *DcsBackup) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
@@ -411,20 +285,12 @@ func (o DcsBackupOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v *DcsBackup) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
 }
 
-// Indicates the backup status. Valid value:
-// + **waiting**: The task is waiting to begin.
-// + **backuping**: DCS instance backup is in progress.
-// + **succeed**: DCS instance backup succeeded.
-// + **failed**: DCS instance backup failed.
-// + **expired**: The backup file has expired.
-// + **deleted**: The backup file has been deleted manually.
+// Indicates the backup status.
 func (o DcsBackupOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *DcsBackup) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Indicates the backup type. Valid value:
-// + **manual**: indicates manual backup.
-// + **auto**: indicates automatic backup.
+// Indicates the backup type.
 func (o DcsBackupOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *DcsBackup) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

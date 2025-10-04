@@ -11,44 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get a list of VPN connections.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			status := cfg.RequireObject("status")
-//			name := cfg.RequireObject("name")
-//			vpnType := cfg.RequireObject("vpnType")
-//			gatewayId := cfg.RequireObject("gatewayId")
-//			gatewayIp := cfg.RequireObject("gatewayIp")
-//			_, err := sbercloud.GetVpnConnections(ctx, &cloudru.GetVpnConnectionsArgs{
-//				Status:    pulumi.StringRef(status),
-//				Name:      pulumi.StringRef(name),
-//				VpnType:   pulumi.StringRef(vpnType),
-//				GatewayId: pulumi.StringRef(gatewayId),
-//				GatewayIp: pulumi.StringRef(gatewayIp),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetVpnConnections(ctx *pulumi.Context, args *GetVpnConnectionsArgs, opts ...pulumi.InvokeOption) (*GetVpnConnectionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVpnConnectionsResult
@@ -61,41 +23,26 @@ func GetVpnConnections(ctx *pulumi.Context, args *GetVpnConnectionsArgs, opts ..
 
 // A collection of arguments for invoking getVpnConnections.
 type GetVpnConnectionsArgs struct {
-	// Specifies the ID of the VPN connection.
 	ConnectionId *string `pulumi:"connectionId"`
-	// Specifies the gateway ID of the VPN connection.
-	GatewayId *string `pulumi:"gatewayId"`
-	// Specifies the gateway IP of the VPN connection.
-	GatewayIp *string `pulumi:"gatewayIp"`
-	// Specifies the name of the VPN connection.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to obtain the VPN customer gateways.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the status of the VPN connection.
-	Status *string `pulumi:"status"`
-	// Specifies the VPN type of the VPN connection.
-	VpnType *string `pulumi:"vpnType"`
+	GatewayId    *string `pulumi:"gatewayId"`
+	GatewayIp    *string `pulumi:"gatewayIp"`
+	Name         *string `pulumi:"name"`
+	Region       *string `pulumi:"region"`
+	Status       *string `pulumi:"status"`
+	VpnType      *string `pulumi:"vpnType"`
 }
 
 // A collection of values returned by getVpnConnections.
 type GetVpnConnectionsResult struct {
-	ConnectionId *string `pulumi:"connectionId"`
-	// All resource connection that match the filter parameters.
-	// The connections structure is documented below.
-	Connections []GetVpnConnectionsConnection `pulumi:"connections"`
-	// Indicates the gateway ID of the connection.
-	GatewayId *string `pulumi:"gatewayId"`
-	// Indicates the gateway IP of the connection.
-	GatewayIp *string `pulumi:"gatewayIp"`
+	ConnectionId *string                       `pulumi:"connectionId"`
+	Connections  []GetVpnConnectionsConnection `pulumi:"connections"`
+	GatewayId    *string                       `pulumi:"gatewayId"`
+	GatewayIp    *string                       `pulumi:"gatewayIp"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Indicates the name of the connection.
-	Name   *string `pulumi:"name"`
-	Region string  `pulumi:"region"`
-	// Indicates the status of the connection.
-	Status *string `pulumi:"status"`
-	// Indicates the VPN type of the connection.
+	Id      string  `pulumi:"id"`
+	Name    *string `pulumi:"name"`
+	Region  string  `pulumi:"region"`
+	Status  *string `pulumi:"status"`
 	VpnType *string `pulumi:"vpnType"`
 }
 
@@ -110,21 +57,13 @@ func GetVpnConnectionsOutput(ctx *pulumi.Context, args GetVpnConnectionsOutputAr
 
 // A collection of arguments for invoking getVpnConnections.
 type GetVpnConnectionsOutputArgs struct {
-	// Specifies the ID of the VPN connection.
 	ConnectionId pulumi.StringPtrInput `pulumi:"connectionId"`
-	// Specifies the gateway ID of the VPN connection.
-	GatewayId pulumi.StringPtrInput `pulumi:"gatewayId"`
-	// Specifies the gateway IP of the VPN connection.
-	GatewayIp pulumi.StringPtrInput `pulumi:"gatewayIp"`
-	// Specifies the name of the VPN connection.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the region in which to obtain the VPN customer gateways.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the status of the VPN connection.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-	// Specifies the VPN type of the VPN connection.
-	VpnType pulumi.StringPtrInput `pulumi:"vpnType"`
+	GatewayId    pulumi.StringPtrInput `pulumi:"gatewayId"`
+	GatewayIp    pulumi.StringPtrInput `pulumi:"gatewayIp"`
+	Name         pulumi.StringPtrInput `pulumi:"name"`
+	Region       pulumi.StringPtrInput `pulumi:"region"`
+	Status       pulumi.StringPtrInput `pulumi:"status"`
+	VpnType      pulumi.StringPtrInput `pulumi:"vpnType"`
 }
 
 func (GetVpnConnectionsOutputArgs) ElementType() reflect.Type {
@@ -150,18 +89,14 @@ func (o GetVpnConnectionsResultOutput) ConnectionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpnConnectionsResult) *string { return v.ConnectionId }).(pulumi.StringPtrOutput)
 }
 
-// All resource connection that match the filter parameters.
-// The connections structure is documented below.
 func (o GetVpnConnectionsResultOutput) Connections() GetVpnConnectionsConnectionArrayOutput {
 	return o.ApplyT(func(v GetVpnConnectionsResult) []GetVpnConnectionsConnection { return v.Connections }).(GetVpnConnectionsConnectionArrayOutput)
 }
 
-// Indicates the gateway ID of the connection.
 func (o GetVpnConnectionsResultOutput) GatewayId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpnConnectionsResult) *string { return v.GatewayId }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the gateway IP of the connection.
 func (o GetVpnConnectionsResultOutput) GatewayIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpnConnectionsResult) *string { return v.GatewayIp }).(pulumi.StringPtrOutput)
 }
@@ -171,7 +106,6 @@ func (o GetVpnConnectionsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Indicates the name of the connection.
 func (o GetVpnConnectionsResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpnConnectionsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -180,12 +114,10 @@ func (o GetVpnConnectionsResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// Indicates the status of the connection.
 func (o GetVpnConnectionsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpnConnectionsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the VPN type of the connection.
 func (o GetVpnConnectionsResultOutput) VpnType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpnConnectionsResult) *string { return v.VpnType }).(pulumi.StringPtrOutput)
 }

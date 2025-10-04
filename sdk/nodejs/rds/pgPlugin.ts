@@ -4,35 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages RDS for PostgreSQL plugin on the databases within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const databaseName = config.requireObject<any>("databaseName");
- * const test = new sbercloud.rds.PgPlugin("test", {
- *     instanceId: instanceId,
- *     databaseName: databaseName,
- *     name: "pgaudit",
- * });
- * ```
- *
- * ## Import
- *
- * The RDS for PostgreSQL plugin can be imported using the `instance_id`, `database_name` and `name` separated by slashs, e.g.:
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:Rds/pgPlugin:PgPlugin test <instance_id>/<database_name>/<name>
- * ```
- */
 export class PgPlugin extends pulumi.CustomResource {
     /**
      * Get an existing PgPlugin resource's state with the given name, ID, and optional extra
@@ -61,37 +32,12 @@ export class PgPlugin extends pulumi.CustomResource {
         return obj['__pulumiType'] === PgPlugin.__pulumiType;
     }
 
-    /**
-     * Specifies the database name.
-     * Changing this parameter will create a new resource.
-     */
     declare public readonly databaseName: pulumi.Output<string>;
-    /**
-     * The plugin description.
-     */
     declare public /*out*/ readonly description: pulumi.Output<string>;
-    /**
-     * Specifies the PostgreSQL instance ID.
-     * Changing this parameter will create a new resource.
-     */
     declare public readonly instanceId: pulumi.Output<string>;
-    /**
-     * Specifies the plugin name.
-     * Changing this parameter will create a new resource.
-     */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Dependent preloaded library.
-     */
     declare public /*out*/ readonly sharedPreloadLibraries: pulumi.Output<string>;
-    /**
-     * The plugin version.
-     */
     declare public /*out*/ readonly version: pulumi.Output<string>;
 
     /**
@@ -139,37 +85,12 @@ export class PgPlugin extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PgPlugin resources.
  */
 export interface PgPluginState {
-    /**
-     * Specifies the database name.
-     * Changing this parameter will create a new resource.
-     */
     databaseName?: pulumi.Input<string>;
-    /**
-     * The plugin description.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies the PostgreSQL instance ID.
-     * Changing this parameter will create a new resource.
-     */
     instanceId?: pulumi.Input<string>;
-    /**
-     * Specifies the plugin name.
-     * Changing this parameter will create a new resource.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Dependent preloaded library.
-     */
     sharedPreloadLibraries?: pulumi.Input<string>;
-    /**
-     * The plugin version.
-     */
     version?: pulumi.Input<string>;
 }
 
@@ -177,24 +98,8 @@ export interface PgPluginState {
  * The set of arguments for constructing a PgPlugin resource.
  */
 export interface PgPluginArgs {
-    /**
-     * Specifies the database name.
-     * Changing this parameter will create a new resource.
-     */
     databaseName: pulumi.Input<string>;
-    /**
-     * Specifies the PostgreSQL instance ID.
-     * Changing this parameter will create a new resource.
-     */
     instanceId: pulumi.Input<string>;
-    /**
-     * Specifies the plugin name.
-     * Changing this parameter will create a new resource.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
 }

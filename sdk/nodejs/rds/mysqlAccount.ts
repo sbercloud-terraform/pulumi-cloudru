@@ -4,63 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages RDS Mysql account resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const accountPassword = config.requireObject<any>("accountPassword");
- * const test = new sbercloud.rds.MysqlAccount("test", {
- *     instanceId: instanceId,
- *     name: "test",
- *     password: accountPassword,
- * });
- * ```
- *
- * ## Import
- *
- * RDS account can be imported using the `instance_id` and `name` separated by a slash, e.g.:
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:Rds/mysqlAccount:MysqlAccount account_1 <instance_id>/<name>
- * ```
- *
- * Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
- *
- * API response, security or some other reason. The missing attributes include: `password`. It is generally recommended
- *
- * running `pulumi preview` after importing the RDS Mysql account. You can then decide if changes should be applied to
- *
- * the RDS Mysql account, or the resource definition should be updated to align with the RDS Mysql account. Also you
- *
- * can ignore changes as below.
- *
- * hcl
- *
- * resource "sbercloud_rds_mysql_account" "account_1" {
- *
- *     ...
- *
- *   lifecycle {
- *
- *     ignore_changes = [
- *     
- *       password
- *     
- *     ]
- *
- *   }
- *
- * }
- */
 export class MysqlAccount extends pulumi.CustomResource {
     /**
      * Get an existing MysqlAccount resource's state with the given name, ID, and optional extra
@@ -90,41 +33,25 @@ export class MysqlAccount extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies remarks of the database account. The parameter must be 1 to 512
-     * characters long and is supported only for MySQL 8.0.25 and later versions.
+     * Specifies remarks of the DB account.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specifies the IP addresses that are allowed to access your DB instance.
-     * + If the IP address is set to %, all IP addresses are allowed to access your instance.
-     * + If the IP address is set to 10.10.10.%, all IP addresses in the subnet 10.10.10.X are allowed to access
-     * your instance.
-     * + Multiple IP addresses can be added.
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly hosts: pulumi.Output<string[]>;
     /**
-     * Specifies the rds instance id. Changing this will create a new resource.
+     * Specifies the ID of the RDS Mysql instance.
      */
     declare public readonly instanceId: pulumi.Output<string>;
     /**
-     * Specifies the username of the db account. Only lowercase letters, digits,
-     * hyphens (-), and underscores (_) are allowed. Changing this will create a new resource.
-     * + If the database version is MySQL 5.6, the username consists of 1 to 16 characters.
-     * + If the database version is MySQL 5.7 or 8.0, the username consists of 1 to 32 characters.
+     * Specifies the username of the DB account.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Specifies the password of the db account. The parameter must be 8 to 32 characters
-     * long and contain only letters(case-sensitive), digits, and special characters(~!@#$%^*-_=+?,()&). The value must be
-     * different from `name` or `name` spelled backwards.
+     * Specifies the password of the DB account.
      */
     declare public readonly password: pulumi.Output<string>;
-    /**
-     * The region in which to create the rds account resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
 
     /**
@@ -173,41 +100,25 @@ export class MysqlAccount extends pulumi.CustomResource {
  */
 export interface MysqlAccountState {
     /**
-     * Specifies remarks of the database account. The parameter must be 1 to 512
-     * characters long and is supported only for MySQL 8.0.25 and later versions.
+     * Specifies remarks of the DB account.
      */
     description?: pulumi.Input<string>;
     /**
      * Specifies the IP addresses that are allowed to access your DB instance.
-     * + If the IP address is set to %, all IP addresses are allowed to access your instance.
-     * + If the IP address is set to 10.10.10.%, all IP addresses in the subnet 10.10.10.X are allowed to access
-     * your instance.
-     * + Multiple IP addresses can be added.
-     *
-     * Changing this parameter will create a new resource.
      */
     hosts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Specifies the rds instance id. Changing this will create a new resource.
+     * Specifies the ID of the RDS Mysql instance.
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * Specifies the username of the db account. Only lowercase letters, digits,
-     * hyphens (-), and underscores (_) are allowed. Changing this will create a new resource.
-     * + If the database version is MySQL 5.6, the username consists of 1 to 16 characters.
-     * + If the database version is MySQL 5.7 or 8.0, the username consists of 1 to 32 characters.
+     * Specifies the username of the DB account.
      */
     name?: pulumi.Input<string>;
     /**
-     * Specifies the password of the db account. The parameter must be 8 to 32 characters
-     * long and contain only letters(case-sensitive), digits, and special characters(~!@#$%^*-_=+?,()&). The value must be
-     * different from `name` or `name` spelled backwards.
+     * Specifies the password of the DB account.
      */
     password?: pulumi.Input<string>;
-    /**
-     * The region in which to create the rds account resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
 }
 
@@ -216,40 +127,24 @@ export interface MysqlAccountState {
  */
 export interface MysqlAccountArgs {
     /**
-     * Specifies remarks of the database account. The parameter must be 1 to 512
-     * characters long and is supported only for MySQL 8.0.25 and later versions.
+     * Specifies remarks of the DB account.
      */
     description?: pulumi.Input<string>;
     /**
      * Specifies the IP addresses that are allowed to access your DB instance.
-     * + If the IP address is set to %, all IP addresses are allowed to access your instance.
-     * + If the IP address is set to 10.10.10.%, all IP addresses in the subnet 10.10.10.X are allowed to access
-     * your instance.
-     * + Multiple IP addresses can be added.
-     *
-     * Changing this parameter will create a new resource.
      */
     hosts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Specifies the rds instance id. Changing this will create a new resource.
+     * Specifies the ID of the RDS Mysql instance.
      */
     instanceId: pulumi.Input<string>;
     /**
-     * Specifies the username of the db account. Only lowercase letters, digits,
-     * hyphens (-), and underscores (_) are allowed. Changing this will create a new resource.
-     * + If the database version is MySQL 5.6, the username consists of 1 to 16 characters.
-     * + If the database version is MySQL 5.7 or 8.0, the username consists of 1 to 32 characters.
+     * Specifies the username of the DB account.
      */
     name?: pulumi.Input<string>;
     /**
-     * Specifies the password of the db account. The parameter must be 8 to 32 characters
-     * long and contain only letters(case-sensitive), digits, and special characters(~!@#$%^*-_=+?,()&). The value must be
-     * different from `name` or `name` spelled backwards.
+     * Specifies the password of the DB account.
      */
     password: pulumi.Input<string>;
-    /**
-     * The region in which to create the rds account resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
 }

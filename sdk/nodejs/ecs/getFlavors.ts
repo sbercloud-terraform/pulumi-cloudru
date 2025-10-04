@@ -6,49 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the ID of the available Compute Flavors.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const flavors = sbercloud.Ecs.getFlavors({
- *     availabilityZone: "ru-moscow-1a",
- *     performanceType: "normal",
- *     cpuCoreCount: 2,
- *     memorySize: 4,
- * });
- * // Create ECS instance with the first matched flavor
- * const instance = new sbercloud.ecs.Instance("instance", {flavorId: flavors.then(flavors => flavors.ids?.[0])});
- * ```
- *
- * ### Additional Examples
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const flavors = sbercloud.Ecs.getFlavors({
- *     availabilityZone: "ru-moscow-1a",
- *     performanceType: "normal",
- *     cpuCoreCount: 2,
- *     memorySize: 4,
- * });
- * // Create ECS instance with the first matched flavor
- * const instance = new sbercloud.ecs.Instance("instance", {flavorId: flavors.then(flavors => flavors.ids?.[0])});
- * ```
- *
- * ## subcategory: "Elastic Cloud Server (ECS)"
- *
- * ***
- *
- * # sbercloud\_compute\_flavors
- *
- * Use this data source to get the ID of the available Compute Flavors.
- */
 export function getFlavors(args?: GetFlavorsArgs, opts?: pulumi.InvokeOptions): Promise<GetFlavorsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -67,29 +24,11 @@ export function getFlavors(args?: GetFlavorsArgs, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getFlavors.
  */
 export interface GetFlavorsArgs {
-    /**
-     * Specifies the AZ name.
-     */
     availabilityZone?: string;
-    /**
-     * Specifies the number of vCPUs in the ECS flavor.
-     */
     cpuCoreCount?: number;
-    /**
-     * Specifies the generation of an ECS type.
-     */
     generation?: string;
-    /**
-     * Specifies the memory size(GB) in the ECS flavor.
-     */
     memorySize?: number;
-    /**
-     * Specifies the ECS flavor type.
-     */
     performanceType?: string;
-    /**
-     * The region in which to obtain the flavors. If omitted, the provider-level region will be used.
-     */
     region?: string;
     storageType?: string;
 }
@@ -106,58 +45,12 @@ export interface GetFlavorsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * A list of flavor IDs.
-     */
     readonly ids: string[];
     readonly memorySize?: number;
     readonly performanceType?: string;
     readonly region: string;
     readonly storageType?: string;
 }
-/**
- * Use this data source to get the ID of the available Compute Flavors.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const flavors = sbercloud.Ecs.getFlavors({
- *     availabilityZone: "ru-moscow-1a",
- *     performanceType: "normal",
- *     cpuCoreCount: 2,
- *     memorySize: 4,
- * });
- * // Create ECS instance with the first matched flavor
- * const instance = new sbercloud.ecs.Instance("instance", {flavorId: flavors.then(flavors => flavors.ids?.[0])});
- * ```
- *
- * ### Additional Examples
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const flavors = sbercloud.Ecs.getFlavors({
- *     availabilityZone: "ru-moscow-1a",
- *     performanceType: "normal",
- *     cpuCoreCount: 2,
- *     memorySize: 4,
- * });
- * // Create ECS instance with the first matched flavor
- * const instance = new sbercloud.ecs.Instance("instance", {flavorId: flavors.then(flavors => flavors.ids?.[0])});
- * ```
- *
- * ## subcategory: "Elastic Cloud Server (ECS)"
- *
- * ***
- *
- * # sbercloud\_compute\_flavors
- *
- * Use this data source to get the ID of the available Compute Flavors.
- */
 export function getFlavorsOutput(args?: GetFlavorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFlavorsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -176,29 +69,11 @@ export function getFlavorsOutput(args?: GetFlavorsOutputArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getFlavors.
  */
 export interface GetFlavorsOutputArgs {
-    /**
-     * Specifies the AZ name.
-     */
     availabilityZone?: pulumi.Input<string>;
-    /**
-     * Specifies the number of vCPUs in the ECS flavor.
-     */
     cpuCoreCount?: pulumi.Input<number>;
-    /**
-     * Specifies the generation of an ECS type.
-     */
     generation?: pulumi.Input<string>;
-    /**
-     * Specifies the memory size(GB) in the ECS flavor.
-     */
     memorySize?: pulumi.Input<number>;
-    /**
-     * Specifies the ECS flavor type.
-     */
     performanceType?: pulumi.Input<string>;
-    /**
-     * The region in which to obtain the flavors. If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
     storageType?: pulumi.Input<string>;
 }

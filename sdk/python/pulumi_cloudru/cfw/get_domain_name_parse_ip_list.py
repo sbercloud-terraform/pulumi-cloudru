@@ -63,9 +63,6 @@ class GetDomainNameParseIpListResult:
     @_builtins.property
     @pulumi.getter
     def datas(self) -> Sequence[_builtins.str]:
-        """
-        The IP address list for domain name resolution.
-        """
         return pulumi.get(self, "datas")
 
     @_builtins.property
@@ -133,44 +130,7 @@ def get_domain_name_parse_ip_list(address_type: Optional[_builtins.str] = None,
                                   region: Optional[_builtins.str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainNameParseIpListResult:
     """
-    Use this data source to get the DNS resolution result of a domain name.
-
-    ## Example Usage
-
-    ### DNS resolution result of a domain name
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.Cfw.get_domain_name_parse_ip_list(domain_name="www.cloud.ru")
-    ```
-
-    ### DNS resolution result of a domain name in a domain name group
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    fw_instance_id = config.require_object("fwInstanceId")
-    domain_name_group_id = config.require_object("domainNameGroupId")
-    domain_address_id = config.require_object("domainAddressId")
-    test = sbercloud.Cfw.get_domain_name_parse_ip_list(fw_instance_id=fw_instance_id,
-        group_id=domain_name_group_id,
-        domain_address_id=domain_address_id)
-    ```
-
-
-    :param _builtins.str address_type: Specifies the address type.
-           The valid value can be **0** (IPv4) or **1** (IPv6).
-    :param _builtins.str domain_address_id: Specifies the domain name ID in a domain name group.
-    :param _builtins.str domain_name: Specifies the domain name.
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID.
-    :param _builtins.str fw_instance_id: Specifies the firewall ID.
-    :param _builtins.str group_id: Specifies the domain name group ID.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['addressType'] = address_type
@@ -202,44 +162,7 @@ def get_domain_name_parse_ip_list_output(address_type: Optional[pulumi.Input[Opt
                                          region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDomainNameParseIpListResult]:
     """
-    Use this data source to get the DNS resolution result of a domain name.
-
-    ## Example Usage
-
-    ### DNS resolution result of a domain name
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.Cfw.get_domain_name_parse_ip_list(domain_name="www.cloud.ru")
-    ```
-
-    ### DNS resolution result of a domain name in a domain name group
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    fw_instance_id = config.require_object("fwInstanceId")
-    domain_name_group_id = config.require_object("domainNameGroupId")
-    domain_address_id = config.require_object("domainAddressId")
-    test = sbercloud.Cfw.get_domain_name_parse_ip_list(fw_instance_id=fw_instance_id,
-        group_id=domain_name_group_id,
-        domain_address_id=domain_address_id)
-    ```
-
-
-    :param _builtins.str address_type: Specifies the address type.
-           The valid value can be **0** (IPv4) or **1** (IPv6).
-    :param _builtins.str domain_address_id: Specifies the domain name ID in a domain name group.
-    :param _builtins.str domain_name: Specifies the domain name.
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID.
-    :param _builtins.str fw_instance_id: Specifies the firewall ID.
-    :param _builtins.str group_id: Specifies the domain name group ID.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['addressType'] = address_type

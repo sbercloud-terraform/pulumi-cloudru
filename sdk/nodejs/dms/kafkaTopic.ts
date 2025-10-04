@@ -6,32 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages a DMS kafka topic resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const kafkaInstanceId = config.requireObject<any>("kafkaInstanceId");
- * const topic = new sbercloud.dms.KafkaTopic("topic", {
- *     instanceId: kafkaInstanceId,
- *     name: "topic_1",
- *     partitions: 20,
- * });
- * ```
- *
- * ## Import
- *
- * DMS kafka topics can be imported using the kafka instance ID and topic name separated by a slash, e.g.:
- *
- * ```sh
- * $ pulumi import sbercloud:Dms/kafkaTopic:KafkaTopic topic c8057fe5-23a8-46ef-ad83-c0055b4e0c5c/topic_1
- * ```
- */
 export class KafkaTopic extends pulumi.CustomResource {
     /**
      * Get an existing KafkaTopic resource's state with the given name, ID, and optional extra
@@ -60,47 +34,18 @@ export class KafkaTopic extends pulumi.CustomResource {
         return obj['__pulumiType'] === KafkaTopic.__pulumiType;
     }
 
-    /**
-     * Specifies the aging time in hours. The value ranges from 1 to 168 and defaults to 72.
-     */
     declare public readonly agingTime: pulumi.Output<number>;
     declare public readonly configs: pulumi.Output<outputs.Dms.KafkaTopicConfig[]>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     declare public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the ID of the DMS kafka instance to which the topic belongs.
-     * Changing this creates a new resource.
-     */
     declare public readonly instanceId: pulumi.Output<string>;
-    /**
-     * Specifies the name of the topic. The name starts with a letter, consists of 4 to
-     * 64 characters, and supports only letters, digits, hyphens (-) and underscores (_). Changing this creates a new
-     * resource.
-     */
     declare public readonly name: pulumi.Output<string>;
     declare public readonly newPartitionBrokers: pulumi.Output<number[] | undefined>;
-    /**
-     * Specifies the partition number. The value ranges from 1 to 100.
-     */
     declare public readonly partitions: pulumi.Output<number>;
     declare public /*out*/ readonly policiesOnly: pulumi.Output<boolean>;
-    /**
-     * The region in which to create the DMS kafka topic resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Specifies the replica number. The value ranges from 1 to 3 and defaults to 3.
-     * Changing this creates a new resource.
-     */
     declare public readonly replicas: pulumi.Output<number>;
-    /**
-     * Whether or not to enable synchronous flushing.
-     */
     declare public readonly syncFlushing: pulumi.Output<boolean>;
-    /**
-     * Whether or not to enable synchronous replication.
-     */
     declare public readonly syncReplication: pulumi.Output<boolean>;
     declare public /*out*/ readonly type: pulumi.Output<string>;
 
@@ -163,47 +108,18 @@ export class KafkaTopic extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KafkaTopic resources.
  */
 export interface KafkaTopicState {
-    /**
-     * Specifies the aging time in hours. The value ranges from 1 to 168 and defaults to 72.
-     */
     agingTime?: pulumi.Input<number>;
     configs?: pulumi.Input<pulumi.Input<inputs.Dms.KafkaTopicConfig>[]>;
     createdAt?: pulumi.Input<string>;
     description?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of the DMS kafka instance to which the topic belongs.
-     * Changing this creates a new resource.
-     */
     instanceId?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the topic. The name starts with a letter, consists of 4 to
-     * 64 characters, and supports only letters, digits, hyphens (-) and underscores (_). Changing this creates a new
-     * resource.
-     */
     name?: pulumi.Input<string>;
     newPartitionBrokers?: pulumi.Input<pulumi.Input<number>[]>;
-    /**
-     * Specifies the partition number. The value ranges from 1 to 100.
-     */
     partitions?: pulumi.Input<number>;
     policiesOnly?: pulumi.Input<boolean>;
-    /**
-     * The region in which to create the DMS kafka topic resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the replica number. The value ranges from 1 to 3 and defaults to 3.
-     * Changing this creates a new resource.
-     */
     replicas?: pulumi.Input<number>;
-    /**
-     * Whether or not to enable synchronous flushing.
-     */
     syncFlushing?: pulumi.Input<boolean>;
-    /**
-     * Whether or not to enable synchronous replication.
-     */
     syncReplication?: pulumi.Input<boolean>;
     type?: pulumi.Input<string>;
 }
@@ -212,44 +128,15 @@ export interface KafkaTopicState {
  * The set of arguments for constructing a KafkaTopic resource.
  */
 export interface KafkaTopicArgs {
-    /**
-     * Specifies the aging time in hours. The value ranges from 1 to 168 and defaults to 72.
-     */
     agingTime?: pulumi.Input<number>;
     configs?: pulumi.Input<pulumi.Input<inputs.Dms.KafkaTopicConfig>[]>;
     description?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of the DMS kafka instance to which the topic belongs.
-     * Changing this creates a new resource.
-     */
     instanceId: pulumi.Input<string>;
-    /**
-     * Specifies the name of the topic. The name starts with a letter, consists of 4 to
-     * 64 characters, and supports only letters, digits, hyphens (-) and underscores (_). Changing this creates a new
-     * resource.
-     */
     name?: pulumi.Input<string>;
     newPartitionBrokers?: pulumi.Input<pulumi.Input<number>[]>;
-    /**
-     * Specifies the partition number. The value ranges from 1 to 100.
-     */
     partitions: pulumi.Input<number>;
-    /**
-     * The region in which to create the DMS kafka topic resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the replica number. The value ranges from 1 to 3 and defaults to 3.
-     * Changing this creates a new resource.
-     */
     replicas?: pulumi.Input<number>;
-    /**
-     * Whether or not to enable synchronous flushing.
-     */
     syncFlushing?: pulumi.Input<boolean>;
-    /**
-     * Whether or not to enable synchronous replication.
-     */
     syncReplication?: pulumi.Input<boolean>;
 }

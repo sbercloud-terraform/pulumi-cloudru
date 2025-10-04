@@ -11,56 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of flow logs.
-//
-// Before using enterprise router, define custom endpoint as shown below:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/er"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			resourceId := cfg.RequireObject("resourceId")
-//			_, err := er.GetFlowLogs(ctx, &er.GetFlowLogsArgs{
-//				InstanceId: instanceId,
-//				ResourceId: pulumi.StringRef(resourceId),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetFlowLogs(ctx *pulumi.Context, args *GetFlowLogsArgs, opts ...pulumi.InvokeOption) (*GetFlowLogsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFlowLogsResult
@@ -73,56 +23,33 @@ func GetFlowLogs(ctx *pulumi.Context, args *GetFlowLogsArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getFlowLogs.
 type GetFlowLogsArgs struct {
-	// Specifies the switch status of the flow log.
-	// The value can be **true** and **false**.
-	Enabled *string `pulumi:"enabled"`
-	// Specifies the ID of the flow log.
-	FlowLogId *string `pulumi:"flowLogId"`
-	// Specifies the ID of the ER instance to which the flow logs belong.
-	InstanceId string `pulumi:"instanceId"`
-	// Specifies the ID of the log group to which the flow logs belong.
-	LogGroupId *string `pulumi:"logGroupId"`
-	// Specifies the ID of the log stream to which the flow logs belong.
-	LogStreamId *string `pulumi:"logStreamId"`
-	// Specifies the name of the flow log.
-	Name *string `pulumi:"name"`
-	// Specifies the region where the flow logs are located.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the ID of the attachment to which the flow logs belong.
-	ResourceId *string `pulumi:"resourceId"`
-	// Specifies the type of the flow logs.
-	// The valid values are as follows:
-	// + **attachment**: The flow logs type are attachment.
+	Enabled      *string `pulumi:"enabled"`
+	FlowLogId    *string `pulumi:"flowLogId"`
+	InstanceId   string  `pulumi:"instanceId"`
+	LogGroupId   *string `pulumi:"logGroupId"`
+	LogStreamId  *string `pulumi:"logStreamId"`
+	Name         *string `pulumi:"name"`
+	Region       *string `pulumi:"region"`
+	ResourceId   *string `pulumi:"resourceId"`
 	ResourceType *string `pulumi:"resourceType"`
-	// Specifies the status of the flow logs.
-	Status *string `pulumi:"status"`
+	Status       *string `pulumi:"status"`
 }
 
 // A collection of values returned by getFlowLogs.
 type GetFlowLogsResult struct {
-	// The switch of the flow log.
-	Enabled   *string `pulumi:"enabled"`
-	FlowLogId *string `pulumi:"flowLogId"`
-	// The list ot the flow logs.
-	// The flowLogs structure is documented below.
-	FlowLogs []GetFlowLogsFlowLog `pulumi:"flowLogs"`
+	Enabled   *string              `pulumi:"enabled"`
+	FlowLogId *string              `pulumi:"flowLogId"`
+	FlowLogs  []GetFlowLogsFlowLog `pulumi:"flowLogs"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string `pulumi:"id"`
-	InstanceId string `pulumi:"instanceId"`
-	// The ID of the log group to which the flow log belongs.
-	LogGroupId *string `pulumi:"logGroupId"`
-	// The ID of the log stream to which the flow log belongs.
-	LogStreamId *string `pulumi:"logStreamId"`
-	// The name of the flow log.
-	Name   *string `pulumi:"name"`
-	Region *string `pulumi:"region"`
-	// The ID of the attachment to which the flow log belongs.
-	ResourceId *string `pulumi:"resourceId"`
-	// The type of the flow log.
+	Id           string  `pulumi:"id"`
+	InstanceId   string  `pulumi:"instanceId"`
+	LogGroupId   *string `pulumi:"logGroupId"`
+	LogStreamId  *string `pulumi:"logStreamId"`
+	Name         *string `pulumi:"name"`
+	Region       *string `pulumi:"region"`
+	ResourceId   *string `pulumi:"resourceId"`
 	ResourceType *string `pulumi:"resourceType"`
-	// The status of the flow log.
-	Status *string `pulumi:"status"`
+	Status       *string `pulumi:"status"`
 }
 
 func GetFlowLogsOutput(ctx *pulumi.Context, args GetFlowLogsOutputArgs, opts ...pulumi.InvokeOption) GetFlowLogsResultOutput {
@@ -136,30 +63,16 @@ func GetFlowLogsOutput(ctx *pulumi.Context, args GetFlowLogsOutputArgs, opts ...
 
 // A collection of arguments for invoking getFlowLogs.
 type GetFlowLogsOutputArgs struct {
-	// Specifies the switch status of the flow log.
-	// The value can be **true** and **false**.
-	Enabled pulumi.StringPtrInput `pulumi:"enabled"`
-	// Specifies the ID of the flow log.
-	FlowLogId pulumi.StringPtrInput `pulumi:"flowLogId"`
-	// Specifies the ID of the ER instance to which the flow logs belong.
-	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// Specifies the ID of the log group to which the flow logs belong.
-	LogGroupId pulumi.StringPtrInput `pulumi:"logGroupId"`
-	// Specifies the ID of the log stream to which the flow logs belong.
-	LogStreamId pulumi.StringPtrInput `pulumi:"logStreamId"`
-	// Specifies the name of the flow log.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the region where the flow logs are located.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the ID of the attachment to which the flow logs belong.
-	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
-	// Specifies the type of the flow logs.
-	// The valid values are as follows:
-	// + **attachment**: The flow logs type are attachment.
+	Enabled      pulumi.StringPtrInput `pulumi:"enabled"`
+	FlowLogId    pulumi.StringPtrInput `pulumi:"flowLogId"`
+	InstanceId   pulumi.StringInput    `pulumi:"instanceId"`
+	LogGroupId   pulumi.StringPtrInput `pulumi:"logGroupId"`
+	LogStreamId  pulumi.StringPtrInput `pulumi:"logStreamId"`
+	Name         pulumi.StringPtrInput `pulumi:"name"`
+	Region       pulumi.StringPtrInput `pulumi:"region"`
+	ResourceId   pulumi.StringPtrInput `pulumi:"resourceId"`
 	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
-	// Specifies the status of the flow logs.
-	Status pulumi.StringPtrInput `pulumi:"status"`
+	Status       pulumi.StringPtrInput `pulumi:"status"`
 }
 
 func (GetFlowLogsOutputArgs) ElementType() reflect.Type {
@@ -181,7 +94,6 @@ func (o GetFlowLogsResultOutput) ToGetFlowLogsResultOutputWithContext(ctx contex
 	return o
 }
 
-// The switch of the flow log.
 func (o GetFlowLogsResultOutput) Enabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlowLogsResult) *string { return v.Enabled }).(pulumi.StringPtrOutput)
 }
@@ -190,8 +102,6 @@ func (o GetFlowLogsResultOutput) FlowLogId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlowLogsResult) *string { return v.FlowLogId }).(pulumi.StringPtrOutput)
 }
 
-// The list ot the flow logs.
-// The flowLogs structure is documented below.
 func (o GetFlowLogsResultOutput) FlowLogs() GetFlowLogsFlowLogArrayOutput {
 	return o.ApplyT(func(v GetFlowLogsResult) []GetFlowLogsFlowLog { return v.FlowLogs }).(GetFlowLogsFlowLogArrayOutput)
 }
@@ -205,17 +115,14 @@ func (o GetFlowLogsResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowLogsResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// The ID of the log group to which the flow log belongs.
 func (o GetFlowLogsResultOutput) LogGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlowLogsResult) *string { return v.LogGroupId }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the log stream to which the flow log belongs.
 func (o GetFlowLogsResultOutput) LogStreamId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlowLogsResult) *string { return v.LogStreamId }).(pulumi.StringPtrOutput)
 }
 
-// The name of the flow log.
 func (o GetFlowLogsResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlowLogsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -224,17 +131,14 @@ func (o GetFlowLogsResultOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlowLogsResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the attachment to which the flow log belongs.
 func (o GetFlowLogsResultOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlowLogsResult) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
 }
 
-// The type of the flow log.
 func (o GetFlowLogsResultOutput) ResourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlowLogsResult) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
 }
 
-// The status of the flow log.
 func (o GetFlowLogsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlowLogsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

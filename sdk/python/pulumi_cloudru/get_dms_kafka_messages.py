@@ -93,25 +93,16 @@ class GetDmsKafkaMessagesResult:
     @_builtins.property
     @pulumi.getter(name="messageOffset")
     def message_offset(self) -> Optional[_builtins.str]:
-        """
-        Indicates the message offset.
-        """
         return pulumi.get(self, "message_offset")
 
     @_builtins.property
     @pulumi.getter
     def messages(self) -> Sequence['outputs.GetDmsKafkaMessagesMessageResult']:
-        """
-        Indicates the message list.
-        """
         return pulumi.get(self, "messages")
 
     @_builtins.property
     @pulumi.getter
     def partition(self) -> Optional[_builtins.str]:
-        """
-        Indicates the partition where the message is located.
-        """
         return pulumi.get(self, "partition")
 
     @_builtins.property
@@ -160,80 +151,7 @@ def get_dms_kafka_messages(download: Optional[_builtins.bool] = None,
                            topic: Optional[_builtins.str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDmsKafkaMessagesResult:
     """
-    Use this data source to get the list of Kafka messages.
-
-    ## Example Usage
-
-    ### Query messages by creation time
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    topic = config.require_object("topic")
-    start_time = config.require_object("startTime")
-    end_time = config.require_object("endTime")
-    test = sbercloud.get_dms_kafka_messages(instance_id=instance_id,
-        topic=topic,
-        start_time=start_time,
-        end_time=end_time)
-    ```
-
-    ### Query messages by content's keyword, a maximum of 10 messages can be returned
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    topic = config.require_object("topic")
-    start_time = config.require_object("startTime")
-    end_time = config.require_object("endTime")
-    keyword = config.require_object("keyword")
-    test = sbercloud.get_dms_kafka_messages(instance_id=instance_id,
-        topic=topic,
-        start_time=start_time,
-        end_time=end_time,
-        keyword=keyword)
-    ```
-
-    ### Query messages content by offset
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    topic = config.require_object("topic")
-    partition = config.require_object("partition")
-    message_offset = config.require_object("messageOffset")
-    test = sbercloud.get_dms_kafka_messages(instance_id=instance_id,
-        topic=topic,
-        partition=partition,
-        message_offset=message_offset)
-    ```
-
-
-    :param _builtins.bool download: Whether download is required.
-           If it is **false**, the big message will be truncated. Defaults to **false**.
-    :param _builtins.str end_time: Specifies the end time, a Unix timestamp in millisecond.
-           This parameter is mandatory when you query the message creation time.
-    :param _builtins.str instance_id: Specifies the instance ID.
-    :param _builtins.str keyword: Specifies the keyword.
-           If it's specified, a maximum of **10** messages can be returned.
-    :param _builtins.str message_offset: Specifies the message offset.
-           This parameter is mandatory when you query the message content by offset.
-    :param _builtins.str partition: Specifies the partition.
-           This parameter is mandatory when you query the message content by offset.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str start_time: Specifies the start time, a Unix timestamp in millisecond.
-           This parameter is mandatory when you query the message creation time.
-    :param _builtins.str topic: Specifies the topic name.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['download'] = download
@@ -271,80 +189,7 @@ def get_dms_kafka_messages_output(download: Optional[pulumi.Input[Optional[_buil
                                   topic: Optional[pulumi.Input[_builtins.str]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDmsKafkaMessagesResult]:
     """
-    Use this data source to get the list of Kafka messages.
-
-    ## Example Usage
-
-    ### Query messages by creation time
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    topic = config.require_object("topic")
-    start_time = config.require_object("startTime")
-    end_time = config.require_object("endTime")
-    test = sbercloud.get_dms_kafka_messages(instance_id=instance_id,
-        topic=topic,
-        start_time=start_time,
-        end_time=end_time)
-    ```
-
-    ### Query messages by content's keyword, a maximum of 10 messages can be returned
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    topic = config.require_object("topic")
-    start_time = config.require_object("startTime")
-    end_time = config.require_object("endTime")
-    keyword = config.require_object("keyword")
-    test = sbercloud.get_dms_kafka_messages(instance_id=instance_id,
-        topic=topic,
-        start_time=start_time,
-        end_time=end_time,
-        keyword=keyword)
-    ```
-
-    ### Query messages content by offset
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    topic = config.require_object("topic")
-    partition = config.require_object("partition")
-    message_offset = config.require_object("messageOffset")
-    test = sbercloud.get_dms_kafka_messages(instance_id=instance_id,
-        topic=topic,
-        partition=partition,
-        message_offset=message_offset)
-    ```
-
-
-    :param _builtins.bool download: Whether download is required.
-           If it is **false**, the big message will be truncated. Defaults to **false**.
-    :param _builtins.str end_time: Specifies the end time, a Unix timestamp in millisecond.
-           This parameter is mandatory when you query the message creation time.
-    :param _builtins.str instance_id: Specifies the instance ID.
-    :param _builtins.str keyword: Specifies the keyword.
-           If it's specified, a maximum of **10** messages can be returned.
-    :param _builtins.str message_offset: Specifies the message offset.
-           This parameter is mandatory when you query the message content by offset.
-    :param _builtins.str partition: Specifies the partition.
-           This parameter is mandatory when you query the message content by offset.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str start_time: Specifies the start time, a Unix timestamp in millisecond.
-           This parameter is mandatory when you query the message creation time.
-    :param _builtins.str topic: Specifies the topic name.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['download'] = download

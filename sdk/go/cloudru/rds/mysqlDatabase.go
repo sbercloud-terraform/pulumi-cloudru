@@ -12,68 +12,17 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages RDS Mysql database resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/rds"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			_, err := rds.NewMysqlDatabase(ctx, "test", &rds.MysqlDatabaseArgs{
-//				InstanceId:   pulumi.Any(instanceId),
-//				Name:         pulumi.String("test"),
-//				CharacterSet: pulumi.String("utf8"),
-//				Description:  pulumi.String("test database"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// RDS database can be imported using the `instance id` and `name` separated by slash, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Rds/mysqlDatabase:MysqlDatabase database_1 <instance_id>/<name>
-// ```
 type MysqlDatabase struct {
 	pulumi.CustomResourceState
 
-	// Specifies the character set used by the database, For example **utf8**,
-	// **gbk**, **ascii**, etc. Changing this will create a new resource.
+	// Specifies the character set used by the database.
 	CharacterSet pulumi.StringOutput `pulumi:"characterSet"`
-	// Specifies the database description. The value can contain `0` to `512` characters.
-	// This parameter takes effect only for DB instances whose kernel versions are at least **5.6.51.3**, **5.7.33.1**,
-	// or **8.0.21.4**.
+	// Specifies the database description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Specifies the RDS instance ID. Changing this will create a new resource.
+	// Specifies the ID of the RDS Mysql instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Specifies the database name. The database name contains `1` to `64`
-	// characters. The name can only consist of lowercase letters, digits, hyphens (-), underscores (_) and dollar signs
-	// ($). The total number of hyphens (-) and dollar signs ($) cannot exceed `10`. RDS for **MySQL 8.0** does not
-	// support dollar signs ($). Changing this will create a new resource.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The region in which to create the RDS database resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
+	// Specifies the database name.
+	Name   pulumi.StringOutput `pulumi:"name"`
 	Region pulumi.StringOutput `pulumi:"region"`
 }
 
@@ -113,42 +62,26 @@ func GetMysqlDatabase(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MysqlDatabase resources.
 type mysqlDatabaseState struct {
-	// Specifies the character set used by the database, For example **utf8**,
-	// **gbk**, **ascii**, etc. Changing this will create a new resource.
+	// Specifies the character set used by the database.
 	CharacterSet *string `pulumi:"characterSet"`
-	// Specifies the database description. The value can contain `0` to `512` characters.
-	// This parameter takes effect only for DB instances whose kernel versions are at least **5.6.51.3**, **5.7.33.1**,
-	// or **8.0.21.4**.
+	// Specifies the database description.
 	Description *string `pulumi:"description"`
-	// Specifies the RDS instance ID. Changing this will create a new resource.
+	// Specifies the ID of the RDS Mysql instance.
 	InstanceId *string `pulumi:"instanceId"`
-	// Specifies the database name. The database name contains `1` to `64`
-	// characters. The name can only consist of lowercase letters, digits, hyphens (-), underscores (_) and dollar signs
-	// ($). The total number of hyphens (-) and dollar signs ($) cannot exceed `10`. RDS for **MySQL 8.0** does not
-	// support dollar signs ($). Changing this will create a new resource.
-	Name *string `pulumi:"name"`
-	// The region in which to create the RDS database resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
+	// Specifies the database name.
+	Name   *string `pulumi:"name"`
 	Region *string `pulumi:"region"`
 }
 
 type MysqlDatabaseState struct {
-	// Specifies the character set used by the database, For example **utf8**,
-	// **gbk**, **ascii**, etc. Changing this will create a new resource.
+	// Specifies the character set used by the database.
 	CharacterSet pulumi.StringPtrInput
-	// Specifies the database description. The value can contain `0` to `512` characters.
-	// This parameter takes effect only for DB instances whose kernel versions are at least **5.6.51.3**, **5.7.33.1**,
-	// or **8.0.21.4**.
+	// Specifies the database description.
 	Description pulumi.StringPtrInput
-	// Specifies the RDS instance ID. Changing this will create a new resource.
+	// Specifies the ID of the RDS Mysql instance.
 	InstanceId pulumi.StringPtrInput
-	// Specifies the database name. The database name contains `1` to `64`
-	// characters. The name can only consist of lowercase letters, digits, hyphens (-), underscores (_) and dollar signs
-	// ($). The total number of hyphens (-) and dollar signs ($) cannot exceed `10`. RDS for **MySQL 8.0** does not
-	// support dollar signs ($). Changing this will create a new resource.
-	Name pulumi.StringPtrInput
-	// The region in which to create the RDS database resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
+	// Specifies the database name.
+	Name   pulumi.StringPtrInput
 	Region pulumi.StringPtrInput
 }
 
@@ -157,43 +90,27 @@ func (MysqlDatabaseState) ElementType() reflect.Type {
 }
 
 type mysqlDatabaseArgs struct {
-	// Specifies the character set used by the database, For example **utf8**,
-	// **gbk**, **ascii**, etc. Changing this will create a new resource.
+	// Specifies the character set used by the database.
 	CharacterSet string `pulumi:"characterSet"`
-	// Specifies the database description. The value can contain `0` to `512` characters.
-	// This parameter takes effect only for DB instances whose kernel versions are at least **5.6.51.3**, **5.7.33.1**,
-	// or **8.0.21.4**.
+	// Specifies the database description.
 	Description *string `pulumi:"description"`
-	// Specifies the RDS instance ID. Changing this will create a new resource.
+	// Specifies the ID of the RDS Mysql instance.
 	InstanceId string `pulumi:"instanceId"`
-	// Specifies the database name. The database name contains `1` to `64`
-	// characters. The name can only consist of lowercase letters, digits, hyphens (-), underscores (_) and dollar signs
-	// ($). The total number of hyphens (-) and dollar signs ($) cannot exceed `10`. RDS for **MySQL 8.0** does not
-	// support dollar signs ($). Changing this will create a new resource.
-	Name *string `pulumi:"name"`
-	// The region in which to create the RDS database resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
+	// Specifies the database name.
+	Name   *string `pulumi:"name"`
 	Region *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a MysqlDatabase resource.
 type MysqlDatabaseArgs struct {
-	// Specifies the character set used by the database, For example **utf8**,
-	// **gbk**, **ascii**, etc. Changing this will create a new resource.
+	// Specifies the character set used by the database.
 	CharacterSet pulumi.StringInput
-	// Specifies the database description. The value can contain `0` to `512` characters.
-	// This parameter takes effect only for DB instances whose kernel versions are at least **5.6.51.3**, **5.7.33.1**,
-	// or **8.0.21.4**.
+	// Specifies the database description.
 	Description pulumi.StringPtrInput
-	// Specifies the RDS instance ID. Changing this will create a new resource.
+	// Specifies the ID of the RDS Mysql instance.
 	InstanceId pulumi.StringInput
-	// Specifies the database name. The database name contains `1` to `64`
-	// characters. The name can only consist of lowercase letters, digits, hyphens (-), underscores (_) and dollar signs
-	// ($). The total number of hyphens (-) and dollar signs ($) cannot exceed `10`. RDS for **MySQL 8.0** does not
-	// support dollar signs ($). Changing this will create a new resource.
-	Name pulumi.StringPtrInput
-	// The region in which to create the RDS database resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
+	// Specifies the database name.
+	Name   pulumi.StringPtrInput
 	Region pulumi.StringPtrInput
 }
 
@@ -284,34 +201,26 @@ func (o MysqlDatabaseOutput) ToMysqlDatabaseOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Specifies the character set used by the database, For example **utf8**,
-// **gbk**, **ascii**, etc. Changing this will create a new resource.
+// Specifies the character set used by the database.
 func (o MysqlDatabaseOutput) CharacterSet() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlDatabase) pulumi.StringOutput { return v.CharacterSet }).(pulumi.StringOutput)
 }
 
-// Specifies the database description. The value can contain `0` to `512` characters.
-// This parameter takes effect only for DB instances whose kernel versions are at least **5.6.51.3**, **5.7.33.1**,
-// or **8.0.21.4**.
+// Specifies the database description.
 func (o MysqlDatabaseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MysqlDatabase) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the RDS instance ID. Changing this will create a new resource.
+// Specifies the ID of the RDS Mysql instance.
 func (o MysqlDatabaseOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlDatabase) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Specifies the database name. The database name contains `1` to `64`
-// characters. The name can only consist of lowercase letters, digits, hyphens (-), underscores (_) and dollar signs
-// ($). The total number of hyphens (-) and dollar signs ($) cannot exceed `10`. RDS for **MySQL 8.0** does not
-// support dollar signs ($). Changing this will create a new resource.
+// Specifies the database name.
 func (o MysqlDatabaseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlDatabase) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The region in which to create the RDS database resource. If omitted, the
-// provider-level region will be used. Changing this creates a new resource.
 func (o MysqlDatabaseOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlDatabase) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

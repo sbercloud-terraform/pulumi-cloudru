@@ -6,46 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Manages DMS RocketMQ user resources within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const test = new sbercloud.DmsRocketmqUser("test", {
- *     instanceId: instanceId,
- *     accessKey: "user_test",
- *     secretKey: "abcdefg",
- *     whiteRemoteAddress: "10.10.10.10",
- *     admin: false,
- *     defaultTopicPerm: "PUB",
- *     defaultGroupPerm: "PUB",
- *     topicPerms: [{
- *         name: "topic_name",
- *         perm: "PUB",
- *     }],
- *     groupPerms: [{
- *         name: "group_name",
- *         perm: "PUB",
- *     }],
- * });
- * ```
- *
- * ## Import
- *
- * The rocketmq user can be imported using the rocketMQ `instance_id` and user `access_key` separated by a slash, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:index/dmsRocketmqUser:DmsRocketmqUser test <instance_id>/<access_key>
- * ```
- */
 export class DmsRocketmqUser extends pulumi.CustomResource {
     /**
      * Get an existing DmsRocketmqUser resource's state with the given name, ID, and optional extra
@@ -75,9 +35,7 @@ export class DmsRocketmqUser extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies the name of the user, which starts with a letter, consists of 7
-     * to 64 characters and can contain only letters, digits, hyphens (-), and underscores (_).
-     * Changing this parameter will create a new resource.
+     * Specifies the access key of the user.
      */
     declare public readonly accessKey: pulumi.Output<string>;
     /**
@@ -96,37 +54,19 @@ export class DmsRocketmqUser extends pulumi.CustomResource {
     declare public readonly defaultTopicPerm: pulumi.Output<string>;
     /**
      * Specifies the special consumer group permissions.
-     * The permission structure is documented below.
-     *
-     * <a name="DmsRocketMQUser_PermsRef"></a>
-     * The `topicPerms` and `groupPerms` block supports:
      */
     declare public readonly groupPerms: pulumi.Output<outputs.DmsRocketmqUserGroupPerm[]>;
     /**
      * Specifies the ID of the rocketMQ instance.
-     * Changing this parameter will create a new resource.
      */
     declare public readonly instanceId: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
     /**
-     * Specifies the password of the user. Use 8 to 32 characters. Contain at
-     * least three of the following character types:
-     * + Uppercase letters.
-     * + Lowercase letters.
-     * + Digits.
-     * + Special characters \`~!@#$%^&*()-_=+\|[{}];:'"",<.>/?. Cannot be the `accessKey` or the `accessKey` spelled
-     * backwards.
-     *
-     * Changing this parameter will create a new resource.
+     * Specifies the secret key of the user.
      */
     declare public readonly secretKey: pulumi.Output<string>;
     /**
      * Specifies the special topic permissions.
-     * The permission structure is documented below.
      */
     declare public readonly topicPerms: pulumi.Output<outputs.DmsRocketmqUserTopicPerm[]>;
     /**
@@ -189,9 +129,7 @@ export class DmsRocketmqUser extends pulumi.CustomResource {
  */
 export interface DmsRocketmqUserState {
     /**
-     * Specifies the name of the user, which starts with a letter, consists of 7
-     * to 64 characters and can contain only letters, digits, hyphens (-), and underscores (_).
-     * Changing this parameter will create a new resource.
+     * Specifies the access key of the user.
      */
     accessKey?: pulumi.Input<string>;
     /**
@@ -210,37 +148,19 @@ export interface DmsRocketmqUserState {
     defaultTopicPerm?: pulumi.Input<string>;
     /**
      * Specifies the special consumer group permissions.
-     * The permission structure is documented below.
-     *
-     * <a name="DmsRocketMQUser_PermsRef"></a>
-     * The `topicPerms` and `groupPerms` block supports:
      */
     groupPerms?: pulumi.Input<pulumi.Input<inputs.DmsRocketmqUserGroupPerm>[]>;
     /**
      * Specifies the ID of the rocketMQ instance.
-     * Changing this parameter will create a new resource.
      */
     instanceId?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
-     * Specifies the password of the user. Use 8 to 32 characters. Contain at
-     * least three of the following character types:
-     * + Uppercase letters.
-     * + Lowercase letters.
-     * + Digits.
-     * + Special characters \`~!@#$%^&*()-_=+\|[{}];:'"",<.>/?. Cannot be the `accessKey` or the `accessKey` spelled
-     * backwards.
-     *
-     * Changing this parameter will create a new resource.
+     * Specifies the secret key of the user.
      */
     secretKey?: pulumi.Input<string>;
     /**
      * Specifies the special topic permissions.
-     * The permission structure is documented below.
      */
     topicPerms?: pulumi.Input<pulumi.Input<inputs.DmsRocketmqUserTopicPerm>[]>;
     /**
@@ -254,9 +174,7 @@ export interface DmsRocketmqUserState {
  */
 export interface DmsRocketmqUserArgs {
     /**
-     * Specifies the name of the user, which starts with a letter, consists of 7
-     * to 64 characters and can contain only letters, digits, hyphens (-), and underscores (_).
-     * Changing this parameter will create a new resource.
+     * Specifies the access key of the user.
      */
     accessKey: pulumi.Input<string>;
     /**
@@ -275,37 +193,19 @@ export interface DmsRocketmqUserArgs {
     defaultTopicPerm?: pulumi.Input<string>;
     /**
      * Specifies the special consumer group permissions.
-     * The permission structure is documented below.
-     *
-     * <a name="DmsRocketMQUser_PermsRef"></a>
-     * The `topicPerms` and `groupPerms` block supports:
      */
     groupPerms?: pulumi.Input<pulumi.Input<inputs.DmsRocketmqUserGroupPerm>[]>;
     /**
      * Specifies the ID of the rocketMQ instance.
-     * Changing this parameter will create a new resource.
      */
     instanceId: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
-     * Specifies the password of the user. Use 8 to 32 characters. Contain at
-     * least three of the following character types:
-     * + Uppercase letters.
-     * + Lowercase letters.
-     * + Digits.
-     * + Special characters \`~!@#$%^&*()-_=+\|[{}];:'"",<.>/?. Cannot be the `accessKey` or the `accessKey` spelled
-     * backwards.
-     *
-     * Changing this parameter will create a new resource.
+     * Specifies the secret key of the user.
      */
     secretKey: pulumi.Input<string>;
     /**
      * Specifies the special topic permissions.
-     * The permission structure is documented below.
      */
     topicPerms?: pulumi.Input<pulumi.Input<inputs.DmsRocketmqUserTopicPerm>[]>;
     /**

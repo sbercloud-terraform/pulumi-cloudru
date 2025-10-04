@@ -64,9 +64,6 @@ class GetVpnGatewayAvailabilityZonesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
-        """
-        The names of the availability zones.
-        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -93,26 +90,7 @@ def get_vpn_gateway_availability_zones(attachment_type: Optional[_builtins.str] 
                                        region: Optional[_builtins.str] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpnGatewayAvailabilityZonesResult:
     """
-    Use this data source to get the list of VPN gateway availability zones.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    flavor = config.require_object("flavor")
-    test = sbercloud.get_vpn_gateway_availability_zones(flavor=flavor)
-    ```
-
-
-    :param _builtins.str attachment_type: Specifies the attachment type.
-           The value can be **vpc** and **er**. Defaults to **vpc**.
-    :param _builtins.str flavor: Specifies the flavor name.
-           The value can be **Basic**, **Professional1**, **Professional2** and **GM**.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['attachmentType'] = attachment_type
@@ -132,26 +110,7 @@ def get_vpn_gateway_availability_zones_output(attachment_type: Optional[pulumi.I
                                               region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpnGatewayAvailabilityZonesResult]:
     """
-    Use this data source to get the list of VPN gateway availability zones.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    flavor = config.require_object("flavor")
-    test = sbercloud.get_vpn_gateway_availability_zones(flavor=flavor)
-    ```
-
-
-    :param _builtins.str attachment_type: Specifies the attachment type.
-           The value can be **vpc** and **er**. Defaults to **vpc**.
-    :param _builtins.str flavor: Specifies the flavor name.
-           The value can be **Basic**, **Professional1**, **Professional2** and **GM**.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['attachmentType'] = attachment_type

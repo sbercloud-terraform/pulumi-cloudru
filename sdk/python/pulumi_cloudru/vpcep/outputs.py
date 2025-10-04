@@ -49,13 +49,6 @@ class ServiceConnection(dict):
                  endpoint_id: Optional[_builtins.str] = None,
                  packet_id: Optional[_builtins.int] = None,
                  status: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str description: Specifies the description of the VPC endpoint service.
-        :param _builtins.str domain_id: The user's domain ID.
-        :param _builtins.str endpoint_id: The unique ID of the VPC endpoint.
-        :param _builtins.int packet_id: The packet ID of the VPC endpoint.
-        :param _builtins.str status: The connection status of the VPC endpoint.
-        """
         if description is not None:
             pulumi.set(__self__, "description", description)
         if domain_id is not None:
@@ -70,41 +63,26 @@ class ServiceConnection(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
-        """
-        Specifies the description of the VPC endpoint service.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="domainId")
     def domain_id(self) -> Optional[_builtins.str]:
-        """
-        The user's domain ID.
-        """
         return pulumi.get(self, "domain_id")
 
     @_builtins.property
     @pulumi.getter(name="endpointId")
     def endpoint_id(self) -> Optional[_builtins.str]:
-        """
-        The unique ID of the VPC endpoint.
-        """
         return pulumi.get(self, "endpoint_id")
 
     @_builtins.property
     @pulumi.getter(name="packetId")
     def packet_id(self) -> Optional[_builtins.int]:
-        """
-        The packet ID of the VPC endpoint.
-        """
         return pulumi.get(self, "packet_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
-        """
-        The connection status of the VPC endpoint.
-        """
         return pulumi.get(self, "status")
 
 
@@ -134,11 +112,8 @@ class ServicePortMapping(dict):
                  service_port: Optional[_builtins.int] = None,
                  terminal_port: Optional[_builtins.int] = None):
         """
-        :param _builtins.str protocol: Specifies the protocol used in port mappings. Only **TCP** is supported.
-        :param _builtins.int service_port: Specifies the port for accessing the VPC endpoint service. This port is provided by
-               the backend service to provide services. The value ranges from 1 to 65535.
-        :param _builtins.int terminal_port: Specifies the port for accessing the VPC endpoint. This port is provided by the VPC
-               endpoint, allowing you to access the VPC endpoint service. The value ranges from 1 to 65535.
+        :param _builtins.int service_port: schema: Required
+        :param _builtins.int terminal_port: schema: Required
         """
         if protocol is not None:
             pulumi.set(__self__, "protocol", protocol)
@@ -150,17 +125,13 @@ class ServicePortMapping(dict):
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> Optional[_builtins.str]:
-        """
-        Specifies the protocol used in port mappings. Only **TCP** is supported.
-        """
         return pulumi.get(self, "protocol")
 
     @_builtins.property
     @pulumi.getter(name="servicePort")
     def service_port(self) -> Optional[_builtins.int]:
         """
-        Specifies the port for accessing the VPC endpoint service. This port is provided by
-        the backend service to provide services. The value ranges from 1 to 65535.
+        schema: Required
         """
         return pulumi.get(self, "service_port")
 
@@ -168,8 +139,7 @@ class ServicePortMapping(dict):
     @pulumi.getter(name="terminalPort")
     def terminal_port(self) -> Optional[_builtins.int]:
         """
-        Specifies the port for accessing the VPC endpoint. This port is provided by the VPC
-        endpoint, allowing you to access the VPC endpoint service. The value ranges from 1 to 65535.
+        schema: Required
         """
         return pulumi.get(self, "terminal_port")
 

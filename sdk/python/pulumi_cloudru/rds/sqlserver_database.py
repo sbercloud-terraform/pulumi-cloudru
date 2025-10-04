@@ -25,16 +25,7 @@ class SqlserverDatabaseArgs:
         """
         The set of arguments for constructing a SqlserverDatabase resource.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS SQLServer instance.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the database name. The database name can contain 1 to 64 characters,
-               and can include letters, digits, hyphens (-), underscores (_), and periods (.). It cannot start or end with an RDS for
-               SQL Server system database name. RDS for SQL Server system databases include **master**, **msdb**, **model**,
-               **tempdb**, **resource**, and **rdsadmin**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] name: Specifies the database name.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         if name is not None:
@@ -47,8 +38,6 @@ class SqlserverDatabaseArgs:
     def instance_id(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the ID of the RDS SQLServer instance.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "instance_id")
 
@@ -60,12 +49,7 @@ class SqlserverDatabaseArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the database name. The database name can contain 1 to 64 characters,
-        and can include letters, digits, hyphens (-), underscores (_), and periods (.). It cannot start or end with an RDS for
-        SQL Server system database name. RDS for SQL Server system databases include **master**, **msdb**, **model**,
-        **tempdb**, **resource**, and **rdsadmin**.
-
-        Changing this parameter will create a new resource.
+        Specifies the database name.
         """
         return pulumi.get(self, "name")
 
@@ -76,10 +60,6 @@ class SqlserverDatabaseArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -99,21 +79,8 @@ class _SqlserverDatabaseState:
         Input properties used for looking up and filtering SqlserverDatabase resources.
         :param pulumi.Input[_builtins.str] character_set: Indicates the character set used by the database.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS SQLServer instance.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the database name. The database name can contain 1 to 64 characters,
-               and can include letters, digits, hyphens (-), underscores (_), and periods (.). It cannot start or end with an RDS for
-               SQL Server system database name. RDS for SQL Server system databases include **master**, **msdb**, **model**,
-               **tempdb**, **resource**, and **rdsadmin**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] state: Indicates the database status. Its value can be any of the following:
-               + **Creating**: The database is being created.
-               + **Running**: The database is running.
-               + **Deleting**: The database is being deleted.
-               + **Not Exists**: The database does not exist.
+        :param pulumi.Input[_builtins.str] name: Specifies the database name.
+        :param pulumi.Input[_builtins.str] state: Indicates the database status.
         """
         if character_set is not None:
             pulumi.set(__self__, "character_set", character_set)
@@ -143,8 +110,6 @@ class _SqlserverDatabaseState:
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the ID of the RDS SQLServer instance.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "instance_id")
 
@@ -156,12 +121,7 @@ class _SqlserverDatabaseState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the database name. The database name can contain 1 to 64 characters,
-        and can include letters, digits, hyphens (-), underscores (_), and periods (.). It cannot start or end with an RDS for
-        SQL Server system database name. RDS for SQL Server system databases include **master**, **msdb**, **model**,
-        **tempdb**, **resource**, and **rdsadmin**.
-
-        Changing this parameter will create a new resource.
+        Specifies the database name.
         """
         return pulumi.get(self, "name")
 
@@ -172,10 +132,6 @@ class _SqlserverDatabaseState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -186,11 +142,7 @@ class _SqlserverDatabaseState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Indicates the database status. Its value can be any of the following:
-        + **Creating**: The database is being created.
-        + **Running**: The database is running.
-        + **Deleting**: The database is being deleted.
-        + **Not Exists**: The database does not exist.
+        Indicates the database status.
         """
         return pulumi.get(self, "state")
 
@@ -210,44 +162,11 @@ class SqlserverDatabase(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages RDS SQLServer database resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        test = sbercloud.rds.SqlserverDatabase("test",
-            instance_id=instance_id,
-            name="test")
-        ```
-
-        ## Import
-
-        The RDS sqlserver database can be imported using the `instance_id` and `name` separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Rds/sqlserverDatabase:SqlserverDatabase test <instance_id>/<name>
-        ```
-
+        Create a SqlserverDatabase resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS SQLServer instance.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the database name. The database name can contain 1 to 64 characters,
-               and can include letters, digits, hyphens (-), underscores (_), and periods (.). It cannot start or end with an RDS for
-               SQL Server system database name. RDS for SQL Server system databases include **master**, **msdb**, **model**,
-               **tempdb**, **resource**, and **rdsadmin**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] name: Specifies the database name.
         """
         ...
     @overload
@@ -256,31 +175,7 @@ class SqlserverDatabase(pulumi.CustomResource):
                  args: SqlserverDatabaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages RDS SQLServer database resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        test = sbercloud.rds.SqlserverDatabase("test",
-            instance_id=instance_id,
-            name="test")
-        ```
-
-        ## Import
-
-        The RDS sqlserver database can be imported using the `instance_id` and `name` separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Rds/sqlserverDatabase:SqlserverDatabase test <instance_id>/<name>
-        ```
-
+        Create a SqlserverDatabase resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param SqlserverDatabaseArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -339,21 +234,8 @@ class SqlserverDatabase(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] character_set: Indicates the character set used by the database.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS SQLServer instance.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the database name. The database name can contain 1 to 64 characters,
-               and can include letters, digits, hyphens (-), underscores (_), and periods (.). It cannot start or end with an RDS for
-               SQL Server system database name. RDS for SQL Server system databases include **master**, **msdb**, **model**,
-               **tempdb**, **resource**, and **rdsadmin**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] state: Indicates the database status. Its value can be any of the following:
-               + **Creating**: The database is being created.
-               + **Running**: The database is running.
-               + **Deleting**: The database is being deleted.
-               + **Not Exists**: The database does not exist.
+        :param pulumi.Input[_builtins.str] name: Specifies the database name.
+        :param pulumi.Input[_builtins.str] state: Indicates the database status.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -379,8 +261,6 @@ class SqlserverDatabase(pulumi.CustomResource):
     def instance_id(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the ID of the RDS SQLServer instance.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "instance_id")
 
@@ -388,33 +268,20 @@ class SqlserverDatabase(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the database name. The database name can contain 1 to 64 characters,
-        and can include letters, digits, hyphens (-), underscores (_), and periods (.). It cannot start or end with an RDS for
-        SQL Server system database name. RDS for SQL Server system databases include **master**, **msdb**, **model**,
-        **tempdb**, **resource**, and **rdsadmin**.
-
-        Changing this parameter will create a new resource.
+        Specifies the database name.
         """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter
     def state(self) -> pulumi.Output[_builtins.str]:
         """
-        Indicates the database status. Its value can be any of the following:
-        + **Creating**: The database is being created.
-        + **Running**: The database is running.
-        + **Deleting**: The database is being deleted.
-        + **Not Exists**: The database does not exist.
+        Indicates the database status.
         """
         return pulumi.get(self, "state")
 

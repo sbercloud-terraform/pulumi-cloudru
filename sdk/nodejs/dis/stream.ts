@@ -51,7 +51,7 @@ export class Stream extends pulumi.CustomResource {
     declare public /*out*/ readonly streamId: pulumi.Output<string>;
     declare public readonly streamName: pulumi.Output<string>;
     declare public readonly streamType: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     declare public /*out*/ readonly writablePartitionCount: pulumi.Output<number>;
 
     /**

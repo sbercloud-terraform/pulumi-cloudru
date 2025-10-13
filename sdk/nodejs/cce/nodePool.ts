@@ -49,9 +49,10 @@ export class NodePool extends pulumi.CustomResource {
      */
     declare public readonly extendParam: pulumi.Output<{[key: string]: string} | undefined>;
     declare public readonly extendParams: pulumi.Output<outputs.Cce.NodePoolExtendParams>;
-    declare public readonly extensionScaleGroups: pulumi.Output<outputs.Cce.NodePoolExtensionScaleGroup[] | undefined>;
+    declare public readonly extensionScaleGroups: pulumi.Output<outputs.Cce.NodePoolExtensionScaleGroup[]>;
     declare public readonly flavorId: pulumi.Output<string>;
     declare public readonly hostnameConfig: pulumi.Output<outputs.Cce.NodePoolHostnameConfig>;
+    declare public readonly ignoreInitialNodeCount: pulumi.Output<boolean | undefined>;
     declare public readonly initialNodeCount: pulumi.Output<number>;
     declare public readonly initializedConditions: pulumi.Output<string[]>;
     declare public readonly keyPair: pulumi.Output<string | undefined>;
@@ -90,7 +91,7 @@ export class NodePool extends pulumi.CustomResource {
     declare public readonly subnetId: pulumi.Output<string>;
     declare public readonly subnetLists: pulumi.Output<string[] | undefined>;
     declare public readonly tagPolicyOnExistingNodes: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     declare public readonly taintPolicyOnExistingNodes: pulumi.Output<string>;
     declare public readonly taints: pulumi.Output<outputs.Cce.NodePoolTaint[] | undefined>;
     declare public readonly type: pulumi.Output<string>;
@@ -123,6 +124,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["extensionScaleGroups"] = state?.extensionScaleGroups;
             resourceInputs["flavorId"] = state?.flavorId;
             resourceInputs["hostnameConfig"] = state?.hostnameConfig;
+            resourceInputs["ignoreInitialNodeCount"] = state?.ignoreInitialNodeCount;
             resourceInputs["initialNodeCount"] = state?.initialNodeCount;
             resourceInputs["initializedConditions"] = state?.initializedConditions;
             resourceInputs["keyPair"] = state?.keyPair;
@@ -183,6 +185,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["extensionScaleGroups"] = args?.extensionScaleGroups;
             resourceInputs["flavorId"] = args?.flavorId;
             resourceInputs["hostnameConfig"] = args?.hostnameConfig;
+            resourceInputs["ignoreInitialNodeCount"] = args?.ignoreInitialNodeCount;
             resourceInputs["initialNodeCount"] = args?.initialNodeCount;
             resourceInputs["initializedConditions"] = args?.initializedConditions;
             resourceInputs["keyPair"] = args?.keyPair;
@@ -248,6 +251,7 @@ export interface NodePoolState {
     extensionScaleGroups?: pulumi.Input<pulumi.Input<inputs.Cce.NodePoolExtensionScaleGroup>[]>;
     flavorId?: pulumi.Input<string>;
     hostnameConfig?: pulumi.Input<inputs.Cce.NodePoolHostnameConfig>;
+    ignoreInitialNodeCount?: pulumi.Input<boolean>;
     initialNodeCount?: pulumi.Input<number>;
     initializedConditions?: pulumi.Input<pulumi.Input<string>[]>;
     keyPair?: pulumi.Input<string>;
@@ -312,6 +316,7 @@ export interface NodePoolArgs {
     extensionScaleGroups?: pulumi.Input<pulumi.Input<inputs.Cce.NodePoolExtensionScaleGroup>[]>;
     flavorId: pulumi.Input<string>;
     hostnameConfig?: pulumi.Input<inputs.Cce.NodePoolHostnameConfig>;
+    ignoreInitialNodeCount?: pulumi.Input<boolean>;
     initialNodeCount: pulumi.Input<number>;
     initializedConditions?: pulumi.Input<pulumi.Input<string>[]>;
     keyPair?: pulumi.Input<string>;

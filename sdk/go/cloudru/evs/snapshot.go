@@ -102,9 +102,12 @@ type snapshotArgs struct {
 	Description *string           `pulumi:"description"`
 	Force       *bool             `pulumi:"force"`
 	Metadata    map[string]string `pulumi:"metadata"`
-	Name        *string           `pulumi:"name"`
-	Region      *string           `pulumi:"region"`
-	VolumeId    string            `pulumi:"volumeId"`
+	// The script configuration value of this change is also the original value used for comparison with
+	//  the new value next time the change is made. The corresponding parameter name is 'metadata'.
+	MetadataOrigin map[string]string `pulumi:"metadataOrigin"`
+	Name           *string           `pulumi:"name"`
+	Region         *string           `pulumi:"region"`
+	VolumeId       string            `pulumi:"volumeId"`
 }
 
 // The set of arguments for constructing a Snapshot resource.
@@ -112,9 +115,12 @@ type SnapshotArgs struct {
 	Description pulumi.StringPtrInput
 	Force       pulumi.BoolPtrInput
 	Metadata    pulumi.StringMapInput
-	Name        pulumi.StringPtrInput
-	Region      pulumi.StringPtrInput
-	VolumeId    pulumi.StringInput
+	// The script configuration value of this change is also the original value used for comparison with
+	//  the new value next time the change is made. The corresponding parameter name is 'metadata'.
+	MetadataOrigin pulumi.StringMapInput
+	Name           pulumi.StringPtrInput
+	Region         pulumi.StringPtrInput
+	VolumeId       pulumi.StringInput
 }
 
 func (SnapshotArgs) ElementType() reflect.Type {

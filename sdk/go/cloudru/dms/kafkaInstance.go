@@ -56,43 +56,46 @@ type KafkaInstance struct {
 	// Deprecated: Deprecated
 	ManagerUser pulumi.StringPtrOutput `pulumi:"managerUser"`
 	// Deprecated: typo in manegement_connect_address, please use "managementConnectAddress" instead.
-	ManegementConnectAddress pulumi.StringOutput                  `pulumi:"manegementConnectAddress"`
-	MessageQueryInstEnable   pulumi.BoolOutput                    `pulumi:"messageQueryInstEnable"`
-	Name                     pulumi.StringOutput                  `pulumi:"name"`
-	NetworkId                pulumi.StringOutput                  `pulumi:"networkId"`
-	NewTenantIps             pulumi.StringArrayOutput             `pulumi:"newTenantIps"`
-	NodeNum                  pulumi.IntOutput                     `pulumi:"nodeNum"`
-	Parameters               KafkaInstanceParameterArrayOutput    `pulumi:"parameters"`
-	PartitionNum             pulumi.IntOutput                     `pulumi:"partitionNum"`
-	Password                 pulumi.StringPtrOutput               `pulumi:"password"`
-	Period                   pulumi.IntPtrOutput                  `pulumi:"period"`
-	PeriodUnit               pulumi.StringPtrOutput               `pulumi:"periodUnit"`
-	PodConnectAddress        pulumi.StringOutput                  `pulumi:"podConnectAddress"`
-	Port                     pulumi.IntOutput                     `pulumi:"port"`
-	PortProtocols            KafkaInstancePortProtocolArrayOutput `pulumi:"portProtocols"`
-	ProductId                pulumi.StringPtrOutput               `pulumi:"productId"`
-	PublicBandwidth          pulumi.IntOutput                     `pulumi:"publicBandwidth"`
-	PublicIpAddresses        pulumi.StringArrayOutput             `pulumi:"publicIpAddresses"`
-	PublicIpIds              pulumi.StringArrayOutput             `pulumi:"publicIpIds"`
-	Region                   pulumi.StringOutput                  `pulumi:"region"`
-	ResourceSpecCode         pulumi.StringOutput                  `pulumi:"resourceSpecCode"`
-	RetentionPolicy          pulumi.StringOutput                  `pulumi:"retentionPolicy"`
-	SecurityGroupId          pulumi.StringOutput                  `pulumi:"securityGroupId"`
-	SecurityProtocol         pulumi.StringPtrOutput               `pulumi:"securityProtocol"`
-	SslEnable                pulumi.BoolOutput                    `pulumi:"sslEnable"`
-	SslTwoWayEnable          pulumi.BoolOutput                    `pulumi:"sslTwoWayEnable"`
-	Status                   pulumi.StringOutput                  `pulumi:"status"`
-	StorageResourceId        pulumi.StringOutput                  `pulumi:"storageResourceId"`
-	StorageSpace             pulumi.IntOutput                     `pulumi:"storageSpace"`
-	StorageSpecCode          pulumi.StringOutput                  `pulumi:"storageSpecCode"`
-	StorageType              pulumi.StringOutput                  `pulumi:"storageType"`
-	Tags                     pulumi.StringMapOutput               `pulumi:"tags"`
-	Type                     pulumi.StringOutput                  `pulumi:"type"`
-	UsedStorageSpace         pulumi.IntOutput                     `pulumi:"usedStorageSpace"`
-	UserId                   pulumi.StringOutput                  `pulumi:"userId"`
-	UserName                 pulumi.StringOutput                  `pulumi:"userName"`
-	VpcClientPlain           pulumi.BoolOutput                    `pulumi:"vpcClientPlain"`
-	VpcId                    pulumi.StringOutput                  `pulumi:"vpcId"`
+	ManegementConnectAddress pulumi.StringOutput               `pulumi:"manegementConnectAddress"`
+	MessageQueryInstEnable   pulumi.BoolOutput                 `pulumi:"messageQueryInstEnable"`
+	Name                     pulumi.StringOutput               `pulumi:"name"`
+	NetworkId                pulumi.StringOutput               `pulumi:"networkId"`
+	NewTenantIps             pulumi.StringArrayOutput          `pulumi:"newTenantIps"`
+	NodeNum                  pulumi.IntOutput                  `pulumi:"nodeNum"`
+	Parameters               KafkaInstanceParameterArrayOutput `pulumi:"parameters"`
+	PartitionNum             pulumi.IntOutput                  `pulumi:"partitionNum"`
+	Password                 pulumi.StringPtrOutput            `pulumi:"password"`
+	Period                   pulumi.IntPtrOutput               `pulumi:"period"`
+	PeriodUnit               pulumi.StringPtrOutput            `pulumi:"periodUnit"`
+	PodConnectAddress        pulumi.StringOutput               `pulumi:"podConnectAddress"`
+	Port                     pulumi.IntOutput                  `pulumi:"port"`
+	// The port protocol information of the Kafka instance.
+	PortProtocol KafkaInstancePortProtocolOutput `pulumi:"portProtocol"`
+	// Use portProtocol instead.
+	PortProtocols     KafkaInstancePortProtocolArrayOutput `pulumi:"portProtocols"`
+	ProductId         pulumi.StringPtrOutput               `pulumi:"productId"`
+	PublicBandwidth   pulumi.IntOutput                     `pulumi:"publicBandwidth"`
+	PublicIpAddresses pulumi.StringArrayOutput             `pulumi:"publicIpAddresses"`
+	PublicIpIds       pulumi.StringArrayOutput             `pulumi:"publicIpIds"`
+	Region            pulumi.StringOutput                  `pulumi:"region"`
+	ResourceSpecCode  pulumi.StringOutput                  `pulumi:"resourceSpecCode"`
+	RetentionPolicy   pulumi.StringOutput                  `pulumi:"retentionPolicy"`
+	SecurityGroupId   pulumi.StringOutput                  `pulumi:"securityGroupId"`
+	SecurityProtocol  pulumi.StringPtrOutput               `pulumi:"securityProtocol"`
+	SslEnable         pulumi.BoolOutput                    `pulumi:"sslEnable"`
+	SslTwoWayEnable   pulumi.BoolOutput                    `pulumi:"sslTwoWayEnable"`
+	Status            pulumi.StringOutput                  `pulumi:"status"`
+	StorageResourceId pulumi.StringOutput                  `pulumi:"storageResourceId"`
+	StorageSpace      pulumi.IntOutput                     `pulumi:"storageSpace"`
+	StorageSpecCode   pulumi.StringOutput                  `pulumi:"storageSpecCode"`
+	StorageType       pulumi.StringOutput                  `pulumi:"storageType"`
+	Tags              pulumi.StringMapOutput               `pulumi:"tags"`
+	Type              pulumi.StringOutput                  `pulumi:"type"`
+	UsedStorageSpace  pulumi.IntOutput                     `pulumi:"usedStorageSpace"`
+	UserId            pulumi.StringOutput                  `pulumi:"userId"`
+	UserName          pulumi.StringOutput                  `pulumi:"userName"`
+	VpcClientPlain    pulumi.BoolOutput                    `pulumi:"vpcClientPlain"`
+	VpcId             pulumi.StringOutput                  `pulumi:"vpcId"`
 }
 
 // NewKafkaInstance registers a new resource with the given unique name, arguments, and options.
@@ -196,43 +199,46 @@ type kafkaInstanceState struct {
 	// Deprecated: Deprecated
 	ManagerUser *string `pulumi:"managerUser"`
 	// Deprecated: typo in manegement_connect_address, please use "managementConnectAddress" instead.
-	ManegementConnectAddress *string                     `pulumi:"manegementConnectAddress"`
-	MessageQueryInstEnable   *bool                       `pulumi:"messageQueryInstEnable"`
-	Name                     *string                     `pulumi:"name"`
-	NetworkId                *string                     `pulumi:"networkId"`
-	NewTenantIps             []string                    `pulumi:"newTenantIps"`
-	NodeNum                  *int                        `pulumi:"nodeNum"`
-	Parameters               []KafkaInstanceParameter    `pulumi:"parameters"`
-	PartitionNum             *int                        `pulumi:"partitionNum"`
-	Password                 *string                     `pulumi:"password"`
-	Period                   *int                        `pulumi:"period"`
-	PeriodUnit               *string                     `pulumi:"periodUnit"`
-	PodConnectAddress        *string                     `pulumi:"podConnectAddress"`
-	Port                     *int                        `pulumi:"port"`
-	PortProtocols            []KafkaInstancePortProtocol `pulumi:"portProtocols"`
-	ProductId                *string                     `pulumi:"productId"`
-	PublicBandwidth          *int                        `pulumi:"publicBandwidth"`
-	PublicIpAddresses        []string                    `pulumi:"publicIpAddresses"`
-	PublicIpIds              []string                    `pulumi:"publicIpIds"`
-	Region                   *string                     `pulumi:"region"`
-	ResourceSpecCode         *string                     `pulumi:"resourceSpecCode"`
-	RetentionPolicy          *string                     `pulumi:"retentionPolicy"`
-	SecurityGroupId          *string                     `pulumi:"securityGroupId"`
-	SecurityProtocol         *string                     `pulumi:"securityProtocol"`
-	SslEnable                *bool                       `pulumi:"sslEnable"`
-	SslTwoWayEnable          *bool                       `pulumi:"sslTwoWayEnable"`
-	Status                   *string                     `pulumi:"status"`
-	StorageResourceId        *string                     `pulumi:"storageResourceId"`
-	StorageSpace             *int                        `pulumi:"storageSpace"`
-	StorageSpecCode          *string                     `pulumi:"storageSpecCode"`
-	StorageType              *string                     `pulumi:"storageType"`
-	Tags                     map[string]string           `pulumi:"tags"`
-	Type                     *string                     `pulumi:"type"`
-	UsedStorageSpace         *int                        `pulumi:"usedStorageSpace"`
-	UserId                   *string                     `pulumi:"userId"`
-	UserName                 *string                     `pulumi:"userName"`
-	VpcClientPlain           *bool                       `pulumi:"vpcClientPlain"`
-	VpcId                    *string                     `pulumi:"vpcId"`
+	ManegementConnectAddress *string                  `pulumi:"manegementConnectAddress"`
+	MessageQueryInstEnable   *bool                    `pulumi:"messageQueryInstEnable"`
+	Name                     *string                  `pulumi:"name"`
+	NetworkId                *string                  `pulumi:"networkId"`
+	NewTenantIps             []string                 `pulumi:"newTenantIps"`
+	NodeNum                  *int                     `pulumi:"nodeNum"`
+	Parameters               []KafkaInstanceParameter `pulumi:"parameters"`
+	PartitionNum             *int                     `pulumi:"partitionNum"`
+	Password                 *string                  `pulumi:"password"`
+	Period                   *int                     `pulumi:"period"`
+	PeriodUnit               *string                  `pulumi:"periodUnit"`
+	PodConnectAddress        *string                  `pulumi:"podConnectAddress"`
+	Port                     *int                     `pulumi:"port"`
+	// The port protocol information of the Kafka instance.
+	PortProtocol *KafkaInstancePortProtocol `pulumi:"portProtocol"`
+	// Use portProtocol instead.
+	PortProtocols     []KafkaInstancePortProtocol `pulumi:"portProtocols"`
+	ProductId         *string                     `pulumi:"productId"`
+	PublicBandwidth   *int                        `pulumi:"publicBandwidth"`
+	PublicIpAddresses []string                    `pulumi:"publicIpAddresses"`
+	PublicIpIds       []string                    `pulumi:"publicIpIds"`
+	Region            *string                     `pulumi:"region"`
+	ResourceSpecCode  *string                     `pulumi:"resourceSpecCode"`
+	RetentionPolicy   *string                     `pulumi:"retentionPolicy"`
+	SecurityGroupId   *string                     `pulumi:"securityGroupId"`
+	SecurityProtocol  *string                     `pulumi:"securityProtocol"`
+	SslEnable         *bool                       `pulumi:"sslEnable"`
+	SslTwoWayEnable   *bool                       `pulumi:"sslTwoWayEnable"`
+	Status            *string                     `pulumi:"status"`
+	StorageResourceId *string                     `pulumi:"storageResourceId"`
+	StorageSpace      *int                        `pulumi:"storageSpace"`
+	StorageSpecCode   *string                     `pulumi:"storageSpecCode"`
+	StorageType       *string                     `pulumi:"storageType"`
+	Tags              map[string]string           `pulumi:"tags"`
+	Type              *string                     `pulumi:"type"`
+	UsedStorageSpace  *int                        `pulumi:"usedStorageSpace"`
+	UserId            *string                     `pulumi:"userId"`
+	UserName          *string                     `pulumi:"userName"`
+	VpcClientPlain    *bool                       `pulumi:"vpcClientPlain"`
+	VpcId             *string                     `pulumi:"vpcId"`
 }
 
 type KafkaInstanceState struct {
@@ -290,30 +296,33 @@ type KafkaInstanceState struct {
 	PeriodUnit               pulumi.StringPtrInput
 	PodConnectAddress        pulumi.StringPtrInput
 	Port                     pulumi.IntPtrInput
-	PortProtocols            KafkaInstancePortProtocolArrayInput
-	ProductId                pulumi.StringPtrInput
-	PublicBandwidth          pulumi.IntPtrInput
-	PublicIpAddresses        pulumi.StringArrayInput
-	PublicIpIds              pulumi.StringArrayInput
-	Region                   pulumi.StringPtrInput
-	ResourceSpecCode         pulumi.StringPtrInput
-	RetentionPolicy          pulumi.StringPtrInput
-	SecurityGroupId          pulumi.StringPtrInput
-	SecurityProtocol         pulumi.StringPtrInput
-	SslEnable                pulumi.BoolPtrInput
-	SslTwoWayEnable          pulumi.BoolPtrInput
-	Status                   pulumi.StringPtrInput
-	StorageResourceId        pulumi.StringPtrInput
-	StorageSpace             pulumi.IntPtrInput
-	StorageSpecCode          pulumi.StringPtrInput
-	StorageType              pulumi.StringPtrInput
-	Tags                     pulumi.StringMapInput
-	Type                     pulumi.StringPtrInput
-	UsedStorageSpace         pulumi.IntPtrInput
-	UserId                   pulumi.StringPtrInput
-	UserName                 pulumi.StringPtrInput
-	VpcClientPlain           pulumi.BoolPtrInput
-	VpcId                    pulumi.StringPtrInput
+	// The port protocol information of the Kafka instance.
+	PortProtocol KafkaInstancePortProtocolPtrInput
+	// Use portProtocol instead.
+	PortProtocols     KafkaInstancePortProtocolArrayInput
+	ProductId         pulumi.StringPtrInput
+	PublicBandwidth   pulumi.IntPtrInput
+	PublicIpAddresses pulumi.StringArrayInput
+	PublicIpIds       pulumi.StringArrayInput
+	Region            pulumi.StringPtrInput
+	ResourceSpecCode  pulumi.StringPtrInput
+	RetentionPolicy   pulumi.StringPtrInput
+	SecurityGroupId   pulumi.StringPtrInput
+	SecurityProtocol  pulumi.StringPtrInput
+	SslEnable         pulumi.BoolPtrInput
+	SslTwoWayEnable   pulumi.BoolPtrInput
+	Status            pulumi.StringPtrInput
+	StorageResourceId pulumi.StringPtrInput
+	StorageSpace      pulumi.IntPtrInput
+	StorageSpecCode   pulumi.StringPtrInput
+	StorageType       pulumi.StringPtrInput
+	Tags              pulumi.StringMapInput
+	Type              pulumi.StringPtrInput
+	UsedStorageSpace  pulumi.IntPtrInput
+	UserId            pulumi.StringPtrInput
+	UserName          pulumi.StringPtrInput
+	VpcClientPlain    pulumi.BoolPtrInput
+	VpcId             pulumi.StringPtrInput
 }
 
 func (KafkaInstanceState) ElementType() reflect.Type {
@@ -348,26 +357,28 @@ type kafkaInstanceArgs struct {
 	// Deprecated: Deprecated
 	ManagerPassword *string `pulumi:"managerPassword"`
 	// Deprecated: Deprecated
-	ManagerUser      *string                  `pulumi:"managerUser"`
-	Name             *string                  `pulumi:"name"`
-	NetworkId        string                   `pulumi:"networkId"`
-	NewTenantIps     []string                 `pulumi:"newTenantIps"`
-	Parameters       []KafkaInstanceParameter `pulumi:"parameters"`
-	Password         *string                  `pulumi:"password"`
-	Period           *int                     `pulumi:"period"`
-	PeriodUnit       *string                  `pulumi:"periodUnit"`
-	ProductId        *string                  `pulumi:"productId"`
-	PublicIpIds      []string                 `pulumi:"publicIpIds"`
-	Region           *string                  `pulumi:"region"`
-	RetentionPolicy  *string                  `pulumi:"retentionPolicy"`
-	SecurityGroupId  string                   `pulumi:"securityGroupId"`
-	SecurityProtocol *string                  `pulumi:"securityProtocol"`
-	SslEnable        *bool                    `pulumi:"sslEnable"`
-	StorageSpace     *int                     `pulumi:"storageSpace"`
-	StorageSpecCode  string                   `pulumi:"storageSpecCode"`
-	Tags             map[string]string        `pulumi:"tags"`
-	VpcClientPlain   *bool                    `pulumi:"vpcClientPlain"`
-	VpcId            string                   `pulumi:"vpcId"`
+	ManagerUser  *string                  `pulumi:"managerUser"`
+	Name         *string                  `pulumi:"name"`
+	NetworkId    string                   `pulumi:"networkId"`
+	NewTenantIps []string                 `pulumi:"newTenantIps"`
+	Parameters   []KafkaInstanceParameter `pulumi:"parameters"`
+	Password     *string                  `pulumi:"password"`
+	Period       *int                     `pulumi:"period"`
+	PeriodUnit   *string                  `pulumi:"periodUnit"`
+	// The port protocol information of the Kafka instance.
+	PortProtocol     *KafkaInstancePortProtocol `pulumi:"portProtocol"`
+	ProductId        *string                    `pulumi:"productId"`
+	PublicIpIds      []string                   `pulumi:"publicIpIds"`
+	Region           *string                    `pulumi:"region"`
+	RetentionPolicy  *string                    `pulumi:"retentionPolicy"`
+	SecurityGroupId  string                     `pulumi:"securityGroupId"`
+	SecurityProtocol *string                    `pulumi:"securityProtocol"`
+	SslEnable        *bool                      `pulumi:"sslEnable"`
+	StorageSpace     *int                       `pulumi:"storageSpace"`
+	StorageSpecCode  string                     `pulumi:"storageSpecCode"`
+	Tags             map[string]string          `pulumi:"tags"`
+	VpcClientPlain   *bool                      `pulumi:"vpcClientPlain"`
+	VpcId            string                     `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a KafkaInstance resource.
@@ -399,14 +410,16 @@ type KafkaInstanceArgs struct {
 	// Deprecated: Deprecated
 	ManagerPassword pulumi.StringPtrInput
 	// Deprecated: Deprecated
-	ManagerUser      pulumi.StringPtrInput
-	Name             pulumi.StringPtrInput
-	NetworkId        pulumi.StringInput
-	NewTenantIps     pulumi.StringArrayInput
-	Parameters       KafkaInstanceParameterArrayInput
-	Password         pulumi.StringPtrInput
-	Period           pulumi.IntPtrInput
-	PeriodUnit       pulumi.StringPtrInput
+	ManagerUser  pulumi.StringPtrInput
+	Name         pulumi.StringPtrInput
+	NetworkId    pulumi.StringInput
+	NewTenantIps pulumi.StringArrayInput
+	Parameters   KafkaInstanceParameterArrayInput
+	Password     pulumi.StringPtrInput
+	Period       pulumi.IntPtrInput
+	PeriodUnit   pulumi.StringPtrInput
+	// The port protocol information of the Kafka instance.
+	PortProtocol     KafkaInstancePortProtocolPtrInput
 	ProductId        pulumi.StringPtrInput
 	PublicIpIds      pulumi.StringArrayInput
 	Region           pulumi.StringPtrInput
@@ -700,6 +713,12 @@ func (o KafkaInstanceOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v *KafkaInstance) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
 }
 
+// The port protocol information of the Kafka instance.
+func (o KafkaInstanceOutput) PortProtocol() KafkaInstancePortProtocolOutput {
+	return o.ApplyT(func(v *KafkaInstance) KafkaInstancePortProtocolOutput { return v.PortProtocol }).(KafkaInstancePortProtocolOutput)
+}
+
+// Use portProtocol instead.
 func (o KafkaInstanceOutput) PortProtocols() KafkaInstancePortProtocolArrayOutput {
 	return o.ApplyT(func(v *KafkaInstance) KafkaInstancePortProtocolArrayOutput { return v.PortProtocols }).(KafkaInstancePortProtocolArrayOutput)
 }

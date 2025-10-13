@@ -77,10 +77,6 @@ export class Vault extends pulumi.CustomResource {
      */
     declare public readonly isMultiAz: pulumi.Output<boolean>;
     /**
-     * Locked status of the vault.
-     */
-    declare public readonly locked: pulumi.Output<boolean>;
-    /**
      * The name of the vault.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -122,7 +118,7 @@ export class Vault extends pulumi.CustomResource {
      * The name of the bucket for the vault.
      */
     declare public /*out*/ readonly storage: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     /**
      * The type of the vault.
      */
@@ -157,7 +153,6 @@ export class Vault extends pulumi.CustomResource {
             resourceInputs["consistentLevel"] = state?.consistentLevel;
             resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
             resourceInputs["isMultiAz"] = state?.isMultiAz;
-            resourceInputs["locked"] = state?.locked;
             resourceInputs["name"] = state?.name;
             resourceInputs["period"] = state?.period;
             resourceInputs["periodUnit"] = state?.periodUnit;
@@ -195,7 +190,6 @@ export class Vault extends pulumi.CustomResource {
             resourceInputs["consistentLevel"] = args?.consistentLevel;
             resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
             resourceInputs["isMultiAz"] = args?.isMultiAz;
-            resourceInputs["locked"] = args?.locked;
             resourceInputs["name"] = args?.name;
             resourceInputs["period"] = args?.period;
             resourceInputs["periodUnit"] = args?.periodUnit;
@@ -264,10 +258,6 @@ export interface VaultState {
      * Whether multiple availability zones are used for backing up.
      */
     isMultiAz?: pulumi.Input<boolean>;
-    /**
-     * Locked status of the vault.
-     */
-    locked?: pulumi.Input<boolean>;
     /**
      * The name of the vault.
      */
@@ -363,10 +353,6 @@ export interface VaultArgs {
      * Whether multiple availability zones are used for backing up.
      */
     isMultiAz?: pulumi.Input<boolean>;
-    /**
-     * Locked status of the vault.
-     */
-    locked?: pulumi.Input<boolean>;
     /**
      * The name of the vault.
      */

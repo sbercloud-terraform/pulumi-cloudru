@@ -69,7 +69,7 @@ export class VpnCustomerGateway extends pulumi.CustomResource {
     declare public /*out*/ readonly serialNumber: pulumi.Output<string>;
     declare public /*out*/ readonly signatureAlgorithm: pulumi.Output<string>;
     declare public /*out*/ readonly subject: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     /**
      * The update time.
      */

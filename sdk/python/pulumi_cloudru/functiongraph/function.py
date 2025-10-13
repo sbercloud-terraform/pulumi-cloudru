@@ -58,6 +58,7 @@ class FunctionArgs:
                  log_stream_id: Optional[pulumi.Input[_builtins.str]] = None,
                  log_stream_name: Optional[pulumi.Input[_builtins.str]] = None,
                  lts_custom_tag: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 lts_custom_tag_origin: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  max_instance_num: Optional[pulumi.Input[_builtins.str]] = None,
                  mount_user_group_id: Optional[pulumi.Input[_builtins.int]] = None,
                  mount_user_id: Optional[pulumi.Input[_builtins.int]] = None,
@@ -117,6 +118,8 @@ class FunctionArgs:
         :param pulumi.Input[_builtins.str] log_stream_id: The LTS stream ID for collecting logs.
         :param pulumi.Input[_builtins.str] log_stream_name: The LTS stream name for collecting logs.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] lts_custom_tag: The custom tags configuration that used to filter the LTS logs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] lts_custom_tag_origin: The script configuration value of this change is also the original value used for comparison with
+                the new value next time the change is made. The corresponding parameter name is 'lts_custom_tag'.
         :param pulumi.Input[_builtins.str] max_instance_num: The maximum number of instances of the function.
         :param pulumi.Input[_builtins.int] mount_user_group_id: The mount user group ID.
         :param pulumi.Input[_builtins.int] mount_user_id: The mount user ID.
@@ -208,6 +211,8 @@ class FunctionArgs:
             pulumi.set(__self__, "log_stream_name", log_stream_name)
         if lts_custom_tag is not None:
             pulumi.set(__self__, "lts_custom_tag", lts_custom_tag)
+        if lts_custom_tag_origin is not None:
+            pulumi.set(__self__, "lts_custom_tag_origin", lts_custom_tag_origin)
         if max_instance_num is not None:
             pulumi.set(__self__, "max_instance_num", max_instance_num)
         if mount_user_group_id is not None:
@@ -698,6 +703,19 @@ class FunctionArgs:
     @lts_custom_tag.setter
     def lts_custom_tag(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "lts_custom_tag", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ltsCustomTagOrigin")
+    def lts_custom_tag_origin(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The script configuration value of this change is also the original value used for comparison with
+         the new value next time the change is made. The corresponding parameter name is 'lts_custom_tag'.
+        """
+        return pulumi.get(self, "lts_custom_tag_origin")
+
+    @lts_custom_tag_origin.setter
+    def lts_custom_tag_origin(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "lts_custom_tag_origin", value)
 
     @_builtins.property
     @pulumi.getter(name="maxInstanceNum")
@@ -1949,6 +1967,7 @@ class Function(pulumi.CustomResource):
                  log_stream_id: Optional[pulumi.Input[_builtins.str]] = None,
                  log_stream_name: Optional[pulumi.Input[_builtins.str]] = None,
                  lts_custom_tag: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 lts_custom_tag_origin: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  max_instance_num: Optional[pulumi.Input[_builtins.str]] = None,
                  memory_size: Optional[pulumi.Input[_builtins.int]] = None,
                  mount_user_group_id: Optional[pulumi.Input[_builtins.int]] = None,
@@ -2011,6 +2030,8 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] log_stream_id: The LTS stream ID for collecting logs.
         :param pulumi.Input[_builtins.str] log_stream_name: The LTS stream name for collecting logs.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] lts_custom_tag: The custom tags configuration that used to filter the LTS logs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] lts_custom_tag_origin: The script configuration value of this change is also the original value used for comparison with
+                the new value next time the change is made. The corresponding parameter name is 'lts_custom_tag'.
         :param pulumi.Input[_builtins.str] max_instance_num: The maximum number of instances of the function.
         :param pulumi.Input[_builtins.int] memory_size: The memory size allocated to the function, in MByte (MB).
         :param pulumi.Input[_builtins.int] mount_user_group_id: The mount user group ID.
@@ -2091,6 +2112,7 @@ class Function(pulumi.CustomResource):
                  log_stream_id: Optional[pulumi.Input[_builtins.str]] = None,
                  log_stream_name: Optional[pulumi.Input[_builtins.str]] = None,
                  lts_custom_tag: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 lts_custom_tag_origin: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  max_instance_num: Optional[pulumi.Input[_builtins.str]] = None,
                  memory_size: Optional[pulumi.Input[_builtins.int]] = None,
                  mount_user_group_id: Optional[pulumi.Input[_builtins.int]] = None,
@@ -2157,6 +2179,7 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["log_stream_id"] = log_stream_id
             __props__.__dict__["log_stream_name"] = log_stream_name
             __props__.__dict__["lts_custom_tag"] = lts_custom_tag
+            __props__.__dict__["lts_custom_tag_origin"] = lts_custom_tag_origin
             __props__.__dict__["max_instance_num"] = max_instance_num
             if memory_size is None and not opts.urn:
                 raise TypeError("Missing required property 'memory_size'")
@@ -2186,7 +2209,6 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["versions"] = versions
             __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["xrole"] = xrole
-            __props__.__dict__["lts_custom_tag_origin"] = None
             __props__.__dict__["urn"] = None
             __props__.__dict__["version"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["encryptedUserData"])
@@ -2493,7 +2515,7 @@ class Function(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="enableAuthInHeader")
-    def enable_auth_in_header(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def enable_auth_in_header(self) -> pulumi.Output[_builtins.bool]:
         """
         Whether the authentication in the request header is enabled.
         """
@@ -2501,7 +2523,7 @@ class Function(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="enableClassIsolation")
-    def enable_class_isolation(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def enable_class_isolation(self) -> pulumi.Output[_builtins.bool]:
         """
         Whether the class isolation is enabled for the JAVA runtime functions.
         """
@@ -2509,7 +2531,7 @@ class Function(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="enableDynamicMemory")
-    def enable_dynamic_memory(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def enable_dynamic_memory(self) -> pulumi.Output[_builtins.bool]:
         """
         Whether the dynamic memory configuration is enabled.
         """
@@ -2517,7 +2539,7 @@ class Function(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="enableLtsLog")
-    def enable_lts_log(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def enable_lts_log(self) -> pulumi.Output[_builtins.bool]:
         """
         Whether to enable the LTS log.
         """
@@ -2621,7 +2643,7 @@ class Function(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="isStatefulFunction")
-    def is_stateful_function(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def is_stateful_function(self) -> pulumi.Output[_builtins.bool]:
         """
         Whether the function is a stateful function.
         """
@@ -2661,7 +2683,7 @@ class Function(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="ltsCustomTag")
-    def lts_custom_tag(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+    def lts_custom_tag(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The custom tags configuration that used to filter the LTS logs.
         """
@@ -2805,7 +2827,7 @@ class Function(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+    def tags(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The key/value pairs to associate with the function.
         """

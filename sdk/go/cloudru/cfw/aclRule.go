@@ -76,9 +76,8 @@ type AclRule struct {
 	// The source region list.
 	SourceRegionLists AclRuleSourceRegionListArrayOutput `pulumi:"sourceRegionLists"`
 	// The rule status.
-	Status pulumi.IntOutput `pulumi:"status"`
-	// The key/value pairs to associate with the ACL rule.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Status pulumi.IntOutput       `pulumi:"status"`
+	Tags   pulumi.StringMapOutput `pulumi:"tags"`
 	// The rule type.
 	Type pulumi.IntOutput `pulumi:"type"`
 }
@@ -195,9 +194,8 @@ type aclRuleState struct {
 	// The source region list.
 	SourceRegionLists []AclRuleSourceRegionList `pulumi:"sourceRegionLists"`
 	// The rule status.
-	Status *int `pulumi:"status"`
-	// The key/value pairs to associate with the ACL rule.
-	Tags map[string]string `pulumi:"tags"`
+	Status *int              `pulumi:"status"`
+	Tags   map[string]string `pulumi:"tags"`
 	// The rule type.
 	Type *int `pulumi:"type"`
 }
@@ -265,8 +263,7 @@ type AclRuleState struct {
 	SourceRegionLists AclRuleSourceRegionListArrayInput
 	// The rule status.
 	Status pulumi.IntPtrInput
-	// The key/value pairs to associate with the ACL rule.
-	Tags pulumi.StringMapInput
+	Tags   pulumi.StringMapInput
 	// The rule type.
 	Type pulumi.IntPtrInput
 }
@@ -337,9 +334,8 @@ type aclRuleArgs struct {
 	// The source region list.
 	SourceRegionLists []AclRuleSourceRegionList `pulumi:"sourceRegionLists"`
 	// The rule status.
-	Status int `pulumi:"status"`
-	// The key/value pairs to associate with the ACL rule.
-	Tags map[string]string `pulumi:"tags"`
+	Status int               `pulumi:"status"`
+	Tags   map[string]string `pulumi:"tags"`
 	// The rule type.
 	Type int `pulumi:"type"`
 }
@@ -408,8 +404,7 @@ type AclRuleArgs struct {
 	SourceRegionLists AclRuleSourceRegionListArrayInput
 	// The rule status.
 	Status pulumi.IntInput
-	// The key/value pairs to associate with the ACL rule.
-	Tags pulumi.StringMapInput
+	Tags   pulumi.StringMapInput
 	// The rule type.
 	Type pulumi.IntInput
 }
@@ -659,7 +654,6 @@ func (o AclRuleOutput) Status() pulumi.IntOutput {
 	return o.ApplyT(func(v *AclRule) pulumi.IntOutput { return v.Status }).(pulumi.IntOutput)
 }
 
-// The key/value pairs to associate with the ACL rule.
 func (o AclRuleOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AclRule) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }

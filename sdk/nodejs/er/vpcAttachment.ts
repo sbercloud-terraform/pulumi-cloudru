@@ -64,7 +64,7 @@ export class VpcAttachment extends pulumi.CustomResource {
      * The ID of the VPC subnet to which the VPC attachment belongs.
      */
     declare public readonly subnetId: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     /**
      * The latest update time.
      */

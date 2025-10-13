@@ -24,6 +24,7 @@ class TurboArgs:
                  size: pulumi.Input[_builtins.int],
                  subnet_id: pulumi.Input[_builtins.str],
                  vpc_id: pulumi.Input[_builtins.str],
+                 auto_create_security_group_rules: Optional[pulumi.Input[_builtins.str]] = None,
                  auto_renew: Optional[pulumi.Input[_builtins.str]] = None,
                  backup_id: Optional[pulumi.Input[_builtins.str]] = None,
                  charging_mode: Optional[pulumi.Input[_builtins.str]] = None,
@@ -49,6 +50,8 @@ class TurboArgs:
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "subnet_id", subnet_id)
         pulumi.set(__self__, "vpc_id", vpc_id)
+        if auto_create_security_group_rules is not None:
+            pulumi.set(__self__, "auto_create_security_group_rules", auto_create_security_group_rules)
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if backup_id is not None:
@@ -128,6 +131,15 @@ class TurboArgs:
     @vpc_id.setter
     def vpc_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "vpc_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoCreateSecurityGroupRules")
+    def auto_create_security_group_rules(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "auto_create_security_group_rules")
+
+    @auto_create_security_group_rules.setter
+    def auto_create_security_group_rules(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "auto_create_security_group_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
@@ -286,6 +298,7 @@ class TurboArgs:
 @pulumi.input_type
 class _TurboState:
     def __init__(__self__, *,
+                 auto_create_security_group_rules: Optional[pulumi.Input[_builtins.str]] = None,
                  auto_renew: Optional[pulumi.Input[_builtins.str]] = None,
                  availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  available_capacity: Optional[pulumi.Input[_builtins.str]] = None,
@@ -315,6 +328,8 @@ class _TurboState:
         """
         Input properties used for looking up and filtering Turbo resources.
         """
+        if auto_create_security_group_rules is not None:
+            pulumi.set(__self__, "auto_create_security_group_rules", auto_create_security_group_rules)
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if availability_zone is not None:
@@ -367,6 +382,15 @@ class _TurboState:
             pulumi.set(__self__, "version", version)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @_builtins.property
+    @pulumi.getter(name="autoCreateSecurityGroupRules")
+    def auto_create_security_group_rules(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "auto_create_security_group_rules")
+
+    @auto_create_security_group_rules.setter
+    def auto_create_security_group_rules(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "auto_create_security_group_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
@@ -609,6 +633,7 @@ class Turbo(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_create_security_group_rules: Optional[pulumi.Input[_builtins.str]] = None,
                  auto_renew: Optional[pulumi.Input[_builtins.str]] = None,
                  availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  backup_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -660,6 +685,7 @@ class Turbo(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_create_security_group_rules: Optional[pulumi.Input[_builtins.str]] = None,
                  auto_renew: Optional[pulumi.Input[_builtins.str]] = None,
                  availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  backup_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -691,6 +717,7 @@ class Turbo(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TurboArgs.__new__(TurboArgs)
 
+            __props__.__dict__["auto_create_security_group_rules"] = auto_create_security_group_rules
             __props__.__dict__["auto_renew"] = auto_renew
             if availability_zone is None and not opts.urn:
                 raise TypeError("Missing required property 'availability_zone'")
@@ -737,6 +764,7 @@ class Turbo(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            auto_create_security_group_rules: Optional[pulumi.Input[_builtins.str]] = None,
             auto_renew: Optional[pulumi.Input[_builtins.str]] = None,
             availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
             available_capacity: Optional[pulumi.Input[_builtins.str]] = None,
@@ -775,6 +803,7 @@ class Turbo(pulumi.CustomResource):
 
         __props__ = _TurboState.__new__(_TurboState)
 
+        __props__.__dict__["auto_create_security_group_rules"] = auto_create_security_group_rules
         __props__.__dict__["auto_renew"] = auto_renew
         __props__.__dict__["availability_zone"] = availability_zone
         __props__.__dict__["available_capacity"] = available_capacity
@@ -802,6 +831,11 @@ class Turbo(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         __props__.__dict__["vpc_id"] = vpc_id
         return Turbo(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="autoCreateSecurityGroupRules")
+    def auto_create_security_group_rules(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "auto_create_security_group_rules")
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
@@ -920,7 +954,7 @@ class Turbo(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+    def tags(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         return pulumi.get(self, "tags")
 
     @_builtins.property

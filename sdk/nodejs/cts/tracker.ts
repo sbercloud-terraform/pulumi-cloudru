@@ -54,7 +54,7 @@ export class Tracker extends pulumi.CustomResource {
     declare public readonly region: pulumi.Output<string>;
     declare public /*out*/ readonly status: pulumi.Output<string>;
     declare public /*out*/ readonly streamId: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     declare public /*out*/ readonly transferEnabled: pulumi.Output<boolean>;
     declare public /*out*/ readonly type: pulumi.Output<string>;
     declare public readonly validateFile: pulumi.Output<boolean | undefined>;

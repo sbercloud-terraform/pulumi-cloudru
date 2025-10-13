@@ -72,7 +72,7 @@ export class Eip extends pulumi.CustomResource {
      */
     declare public readonly region: pulumi.Output<string>;
     declare public /*out*/ readonly status: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**

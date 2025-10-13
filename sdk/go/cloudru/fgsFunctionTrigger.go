@@ -15,6 +15,8 @@ import (
 type FgsFunctionTrigger struct {
 	pulumi.CustomResourceState
 
+	// Whether to cascade delete the related EG event subscription of the function trigger.
+	CascadeDeleteEgSubscription pulumi.BoolPtrOutput `pulumi:"cascadeDeleteEgSubscription"`
 	// The creation time of the function trigger.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The detailed configuration of the function trigger event, in JSON format.
@@ -70,6 +72,8 @@ func GetFgsFunctionTrigger(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FgsFunctionTrigger resources.
 type fgsFunctionTriggerState struct {
+	// Whether to cascade delete the related EG event subscription of the function trigger.
+	CascadeDeleteEgSubscription *bool `pulumi:"cascadeDeleteEgSubscription"`
 	// The creation time of the function trigger.
 	CreatedAt *string `pulumi:"createdAt"`
 	// The detailed configuration of the function trigger event, in JSON format.
@@ -87,6 +91,8 @@ type fgsFunctionTriggerState struct {
 }
 
 type FgsFunctionTriggerState struct {
+	// Whether to cascade delete the related EG event subscription of the function trigger.
+	CascadeDeleteEgSubscription pulumi.BoolPtrInput
 	// The creation time of the function trigger.
 	CreatedAt pulumi.StringPtrInput
 	// The detailed configuration of the function trigger event, in JSON format.
@@ -108,6 +114,8 @@ func (FgsFunctionTriggerState) ElementType() reflect.Type {
 }
 
 type fgsFunctionTriggerArgs struct {
+	// Whether to cascade delete the related EG event subscription of the function trigger.
+	CascadeDeleteEgSubscription *bool `pulumi:"cascadeDeleteEgSubscription"`
 	// The detailed configuration of the function trigger event, in JSON format.
 	EventData string `pulumi:"eventData"`
 	// The function URN to which the function trigger belongs.
@@ -122,6 +130,8 @@ type fgsFunctionTriggerArgs struct {
 
 // The set of arguments for constructing a FgsFunctionTrigger resource.
 type FgsFunctionTriggerArgs struct {
+	// Whether to cascade delete the related EG event subscription of the function trigger.
+	CascadeDeleteEgSubscription pulumi.BoolPtrInput
 	// The detailed configuration of the function trigger event, in JSON format.
 	EventData pulumi.StringInput
 	// The function URN to which the function trigger belongs.
@@ -219,6 +229,11 @@ func (o FgsFunctionTriggerOutput) ToFgsFunctionTriggerOutput() FgsFunctionTrigge
 
 func (o FgsFunctionTriggerOutput) ToFgsFunctionTriggerOutputWithContext(ctx context.Context) FgsFunctionTriggerOutput {
 	return o
+}
+
+// Whether to cascade delete the related EG event subscription of the function trigger.
+func (o FgsFunctionTriggerOutput) CascadeDeleteEgSubscription() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FgsFunctionTrigger) pulumi.BoolPtrOutput { return v.CascadeDeleteEgSubscription }).(pulumi.BoolPtrOutput)
 }
 
 // The creation time of the function trigger.

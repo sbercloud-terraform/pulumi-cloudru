@@ -55,7 +55,7 @@ export class Job extends pulumi.CustomResource {
     declare public readonly sourceDb: pulumi.Output<outputs.Drs.JobSourceDb>;
     declare public readonly startTime: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly status: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     declare public readonly type: pulumi.Output<string>;
 
     /**

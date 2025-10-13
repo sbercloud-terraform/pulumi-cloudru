@@ -33,6 +33,16 @@ __all__ = [
     'CbrBackupShareMemberArgsDict',
     'CbrCheckpointBackupArgs',
     'CbrCheckpointBackupArgsDict',
+    'CceClusterUpgradeAddonArgs',
+    'CceClusterUpgradeAddonArgsDict',
+    'CceClusterUpgradeAddonValuesArgs',
+    'CceClusterUpgradeAddonValuesArgsDict',
+    'CceClusterUpgradeStrategyArgs',
+    'CceClusterUpgradeStrategyArgsDict',
+    'CceClusterUpgradeStrategyInPlaceRollingUpdateArgs',
+    'CceClusterUpgradeStrategyInPlaceRollingUpdateArgsDict',
+    'CceNodesRemoveNodeArgs',
+    'CceNodesRemoveNodeArgsDict',
     'DcsParametersConfigurationParameterArgs',
     'DcsParametersConfigurationParameterArgsDict',
     'DcsRestoreRestoreRecordArgs',
@@ -145,6 +155,14 @@ __all__ = [
     'GesGraphPublicIpArgsDict',
     'GesGraphVertexIdTypeArgs',
     'GesGraphVertexIdTypeArgsDict',
+    'KpsKeypairAssociateServerArgs',
+    'KpsKeypairAssociateServerArgsDict',
+    'KpsKeypairAssociateServerAuthArgs',
+    'KpsKeypairAssociateServerAuthArgsDict',
+    'KpsKeypairDisassociateServerArgs',
+    'KpsKeypairDisassociateServerArgsDict',
+    'KpsKeypairDisassociateServerAuthArgs',
+    'KpsKeypairDisassociateServerAuthArgsDict',
     'ObsBucketAclAccountPermissionArgs',
     'ObsBucketAclAccountPermissionArgsDict',
     'ObsBucketAclLogDeliveryUserPermissionArgs',
@@ -1328,6 +1346,194 @@ class CbrCheckpointBackupArgs:
     @updated_at.setter
     def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
+
+
+if not MYPY:
+    class CceClusterUpgradeAddonArgsDict(TypedDict):
+        addon_template_name: pulumi.Input[_builtins.str]
+        operation: pulumi.Input[_builtins.str]
+        version: pulumi.Input[_builtins.str]
+        values: NotRequired[pulumi.Input['CceClusterUpgradeAddonValuesArgsDict']]
+elif False:
+    CceClusterUpgradeAddonArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CceClusterUpgradeAddonArgs:
+    def __init__(__self__, *,
+                 addon_template_name: pulumi.Input[_builtins.str],
+                 operation: pulumi.Input[_builtins.str],
+                 version: pulumi.Input[_builtins.str],
+                 values: Optional[pulumi.Input['CceClusterUpgradeAddonValuesArgs']] = None):
+        pulumi.set(__self__, "addon_template_name", addon_template_name)
+        pulumi.set(__self__, "operation", operation)
+        pulumi.set(__self__, "version", version)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter(name="addonTemplateName")
+    def addon_template_name(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "addon_template_name")
+
+    @addon_template_name.setter
+    def addon_template_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "addon_template_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operation(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "operation")
+
+    @operation.setter
+    def operation(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "operation", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "version", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input['CceClusterUpgradeAddonValuesArgs']]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input['CceClusterUpgradeAddonValuesArgs']]):
+        pulumi.set(self, "values", value)
+
+
+if not MYPY:
+    class CceClusterUpgradeAddonValuesArgsDict(TypedDict):
+        basic_json: NotRequired[pulumi.Input[_builtins.str]]
+        custom_json: NotRequired[pulumi.Input[_builtins.str]]
+        flavor_json: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    CceClusterUpgradeAddonValuesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CceClusterUpgradeAddonValuesArgs:
+    def __init__(__self__, *,
+                 basic_json: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_json: Optional[pulumi.Input[_builtins.str]] = None,
+                 flavor_json: Optional[pulumi.Input[_builtins.str]] = None):
+        if basic_json is not None:
+            pulumi.set(__self__, "basic_json", basic_json)
+        if custom_json is not None:
+            pulumi.set(__self__, "custom_json", custom_json)
+        if flavor_json is not None:
+            pulumi.set(__self__, "flavor_json", flavor_json)
+
+    @_builtins.property
+    @pulumi.getter(name="basicJson")
+    def basic_json(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "basic_json")
+
+    @basic_json.setter
+    def basic_json(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "basic_json", value)
+
+    @_builtins.property
+    @pulumi.getter(name="customJson")
+    def custom_json(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "custom_json")
+
+    @custom_json.setter
+    def custom_json(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "custom_json", value)
+
+    @_builtins.property
+    @pulumi.getter(name="flavorJson")
+    def flavor_json(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "flavor_json")
+
+    @flavor_json.setter
+    def flavor_json(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "flavor_json", value)
+
+
+if not MYPY:
+    class CceClusterUpgradeStrategyArgsDict(TypedDict):
+        type: pulumi.Input[_builtins.str]
+        in_place_rolling_update: NotRequired[pulumi.Input['CceClusterUpgradeStrategyInPlaceRollingUpdateArgsDict']]
+elif False:
+    CceClusterUpgradeStrategyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CceClusterUpgradeStrategyArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[_builtins.str],
+                 in_place_rolling_update: Optional[pulumi.Input['CceClusterUpgradeStrategyInPlaceRollingUpdateArgs']] = None):
+        pulumi.set(__self__, "type", type)
+        if in_place_rolling_update is not None:
+            pulumi.set(__self__, "in_place_rolling_update", in_place_rolling_update)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inPlaceRollingUpdate")
+    def in_place_rolling_update(self) -> Optional[pulumi.Input['CceClusterUpgradeStrategyInPlaceRollingUpdateArgs']]:
+        return pulumi.get(self, "in_place_rolling_update")
+
+    @in_place_rolling_update.setter
+    def in_place_rolling_update(self, value: Optional[pulumi.Input['CceClusterUpgradeStrategyInPlaceRollingUpdateArgs']]):
+        pulumi.set(self, "in_place_rolling_update", value)
+
+
+if not MYPY:
+    class CceClusterUpgradeStrategyInPlaceRollingUpdateArgsDict(TypedDict):
+        user_defined_step: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CceClusterUpgradeStrategyInPlaceRollingUpdateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CceClusterUpgradeStrategyInPlaceRollingUpdateArgs:
+    def __init__(__self__, *,
+                 user_defined_step: Optional[pulumi.Input[_builtins.int]] = None):
+        if user_defined_step is not None:
+            pulumi.set(__self__, "user_defined_step", user_defined_step)
+
+    @_builtins.property
+    @pulumi.getter(name="userDefinedStep")
+    def user_defined_step(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "user_defined_step")
+
+    @user_defined_step.setter
+    def user_defined_step(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "user_defined_step", value)
+
+
+if not MYPY:
+    class CceNodesRemoveNodeArgsDict(TypedDict):
+        uid: pulumi.Input[_builtins.str]
+elif False:
+    CceNodesRemoveNodeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CceNodesRemoveNodeArgs:
+    def __init__(__self__, *,
+                 uid: pulumi.Input[_builtins.str]):
+        pulumi.set(__self__, "uid", uid)
+
+    @_builtins.property
+    @pulumi.getter
+    def uid(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "uid")
+
+    @uid.setter
+    def uid(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "uid", value)
 
 
 if not MYPY:
@@ -4813,6 +5019,272 @@ class GesGraphVertexIdTypeArgs:
     @id_type.setter
     def id_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "id_type", value)
+
+
+if not MYPY:
+    class KpsKeypairAssociateServerArgsDict(TypedDict):
+        id: pulumi.Input[_builtins.str]
+        """
+        Specifies ID of the ECS.
+        """
+        auth: NotRequired[pulumi.Input['KpsKeypairAssociateServerAuthArgsDict']]
+        """
+        Specifies the authentication information.
+        """
+        disable_password: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Specifies whether the password is disabled.
+        """
+        port: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Specifies the SSH listening port.
+        """
+elif False:
+    KpsKeypairAssociateServerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class KpsKeypairAssociateServerArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[_builtins.str],
+                 auth: Optional[pulumi.Input['KpsKeypairAssociateServerAuthArgs']] = None,
+                 disable_password: Optional[pulumi.Input[_builtins.bool]] = None,
+                 port: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] id: Specifies ID of the ECS.
+        :param pulumi.Input['KpsKeypairAssociateServerAuthArgs'] auth: Specifies the authentication information.
+        :param pulumi.Input[_builtins.bool] disable_password: Specifies whether the password is disabled.
+        :param pulumi.Input[_builtins.int] port: Specifies the SSH listening port.
+        """
+        pulumi.set(__self__, "id", id)
+        if auth is not None:
+            pulumi.set(__self__, "auth", auth)
+        if disable_password is not None:
+            pulumi.set(__self__, "disable_password", disable_password)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Specifies ID of the ECS.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def auth(self) -> Optional[pulumi.Input['KpsKeypairAssociateServerAuthArgs']]:
+        """
+        Specifies the authentication information.
+        """
+        return pulumi.get(self, "auth")
+
+    @auth.setter
+    def auth(self, value: Optional[pulumi.Input['KpsKeypairAssociateServerAuthArgs']]):
+        pulumi.set(self, "auth", value)
+
+    @_builtins.property
+    @pulumi.getter(name="disablePassword")
+    def disable_password(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies whether the password is disabled.
+        """
+        return pulumi.get(self, "disable_password")
+
+    @disable_password.setter
+    def disable_password(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disable_password", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Specifies the SSH listening port.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "port", value)
+
+
+if not MYPY:
+    class KpsKeypairAssociateServerAuthArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Specifies the value of the key.
+        """
+        type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Specifies the value of the authentication type.
+        """
+elif False:
+    KpsKeypairAssociateServerAuthArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class KpsKeypairAssociateServerAuthArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[_builtins.str]] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] key: Specifies the value of the key.
+        :param pulumi.Input[_builtins.str] type: Specifies the value of the authentication type.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies the value of the key.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies the value of the authentication type.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class KpsKeypairDisassociateServerArgsDict(TypedDict):
+        id: pulumi.Input[_builtins.str]
+        """
+        Specifies ID of the ECS.
+        """
+        auth: NotRequired[pulumi.Input['KpsKeypairDisassociateServerAuthArgsDict']]
+        """
+        Specifies the authentication type.
+        """
+        port: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Specifies the SSH listening port.
+        """
+elif False:
+    KpsKeypairDisassociateServerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class KpsKeypairDisassociateServerArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[_builtins.str],
+                 auth: Optional[pulumi.Input['KpsKeypairDisassociateServerAuthArgs']] = None,
+                 port: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] id: Specifies ID of the ECS.
+        :param pulumi.Input['KpsKeypairDisassociateServerAuthArgs'] auth: Specifies the authentication type.
+        :param pulumi.Input[_builtins.int] port: Specifies the SSH listening port.
+        """
+        pulumi.set(__self__, "id", id)
+        if auth is not None:
+            pulumi.set(__self__, "auth", auth)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Specifies ID of the ECS.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def auth(self) -> Optional[pulumi.Input['KpsKeypairDisassociateServerAuthArgs']]:
+        """
+        Specifies the authentication type.
+        """
+        return pulumi.get(self, "auth")
+
+    @auth.setter
+    def auth(self, value: Optional[pulumi.Input['KpsKeypairDisassociateServerAuthArgs']]):
+        pulumi.set(self, "auth", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Specifies the SSH listening port.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "port", value)
+
+
+if not MYPY:
+    class KpsKeypairDisassociateServerAuthArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Specifies the value of the key.
+        """
+        type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Specifies the value of an enumeration type.
+        """
+elif False:
+    KpsKeypairDisassociateServerAuthArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class KpsKeypairDisassociateServerAuthArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[_builtins.str]] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] key: Specifies the value of the key.
+        :param pulumi.Input[_builtins.str] type: Specifies the value of an enumeration type.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies the value of the key.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies the value of an enumeration type.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
 
 
 if not MYPY:

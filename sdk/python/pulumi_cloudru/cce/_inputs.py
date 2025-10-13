@@ -1820,25 +1820,37 @@ class NodePoolExtensionScaleGroupArgs:
 
 if not MYPY:
     class NodePoolExtensionScaleGroupMetadataArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
+        name: pulumi.Input[_builtins.str]
+        uid: NotRequired[pulumi.Input[_builtins.str]]
 elif False:
     NodePoolExtensionScaleGroupMetadataArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NodePoolExtensionScaleGroupMetadataArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+                 name: pulumi.Input[_builtins.str],
+                 uid: Optional[pulumi.Input[_builtins.str]] = None):
+        pulumi.set(__self__, "name", name)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[_builtins.str]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "uid")
+
+    @uid.setter
+    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "uid", value)
 
 
 if not MYPY:

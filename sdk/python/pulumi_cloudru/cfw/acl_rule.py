@@ -88,7 +88,6 @@ class AclRuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] source_addresses: The source IP address list.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] source_predefined_groups: The source predefined address group list.
         :param pulumi.Input[Sequence[pulumi.Input['AclRuleSourceRegionListArgs']]] source_region_lists: The source region list.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the ACL rule.
         """
         pulumi.set(__self__, "action_type", action_type)
         pulumi.set(__self__, "address_type", address_type)
@@ -545,9 +544,6 @@ class AclRuleArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        The key/value pairs to associate with the ACL rule.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -624,7 +620,6 @@ class _AclRuleState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] source_predefined_groups: The source predefined address group list.
         :param pulumi.Input[Sequence[pulumi.Input['AclRuleSourceRegionListArgs']]] source_region_lists: The source region list.
         :param pulumi.Input[_builtins.int] status: The rule status.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the ACL rule.
         :param pulumi.Input[_builtins.int] type: The rule type.
         """
         if action_type is not None:
@@ -1077,9 +1072,6 @@ class _AclRuleState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        The key/value pairs to associate with the ACL rule.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -1174,7 +1166,6 @@ class AclRule(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] source_predefined_groups: The source predefined address group list.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AclRuleSourceRegionListArgs', 'AclRuleSourceRegionListArgsDict']]]] source_region_lists: The source region list.
         :param pulumi.Input[_builtins.int] status: The rule status.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the ACL rule.
         :param pulumi.Input[_builtins.int] type: The rule type.
         """
         ...
@@ -1372,7 +1363,6 @@ class AclRule(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] source_predefined_groups: The source predefined address group list.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AclRuleSourceRegionListArgs', 'AclRuleSourceRegionListArgsDict']]]] source_region_lists: The source region list.
         :param pulumi.Input[_builtins.int] status: The rule status.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the ACL rule.
         :param pulumi.Input[_builtins.int] type: The rule type.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1667,10 +1657,7 @@ class AclRule(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        The key/value pairs to associate with the ACL rule.
-        """
+    def tags(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         return pulumi.get(self, "tags")
 
     @_builtins.property

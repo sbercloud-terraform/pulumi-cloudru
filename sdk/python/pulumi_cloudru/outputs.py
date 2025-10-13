@@ -25,6 +25,11 @@ __all__ = [
     'ApigChannelMicroserviceCseConfig',
     'CbrBackupShareMember',
     'CbrCheckpointBackup',
+    'CceClusterUpgradeAddon',
+    'CceClusterUpgradeAddonValues',
+    'CceClusterUpgradeStrategy',
+    'CceClusterUpgradeStrategyInPlaceRollingUpdate',
+    'CceNodesRemoveNode',
     'DcsParametersConfigurationParameter',
     'DcsRestoreRestoreRecord',
     'DdsParameterTemplateCompareDifference',
@@ -81,6 +86,10 @@ __all__ = [
     'GesGraphLtsOperationTrace',
     'GesGraphPublicIp',
     'GesGraphVertexIdType',
+    'KpsKeypairAssociateServer',
+    'KpsKeypairAssociateServerAuth',
+    'KpsKeypairDisassociateServer',
+    'KpsKeypairDisassociateServerAuth',
     'ObsBucketAclAccountPermission',
     'ObsBucketAclLogDeliveryUserPermission',
     'ObsBucketAclOwnerPermission',
@@ -199,6 +208,8 @@ __all__ = [
     'GetDmsRocketmqUsersUserResult',
     'GetDmsRocketmqUsersUserGroupPermResult',
     'GetDmsRocketmqUsersUserTopicPermResult',
+    'GetDnsZonesZoneResult',
+    'GetDnsZonesZoneRouterResult',
     'GetElbFlavorsFlavorResult',
     'GetElbPoolsPoolResult',
     'GetElbPoolsPoolListenerResult',
@@ -1097,6 +1108,186 @@ class CbrCheckpointBackup(dict):
         The latest update time of the backup.
         """
         return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class CceClusterUpgradeAddon(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "addonTemplateName":
+            suggest = "addon_template_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CceClusterUpgradeAddon. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CceClusterUpgradeAddon.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CceClusterUpgradeAddon.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 addon_template_name: _builtins.str,
+                 operation: _builtins.str,
+                 version: _builtins.str,
+                 values: Optional['outputs.CceClusterUpgradeAddonValues'] = None):
+        pulumi.set(__self__, "addon_template_name", addon_template_name)
+        pulumi.set(__self__, "operation", operation)
+        pulumi.set(__self__, "version", version)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter(name="addonTemplateName")
+    def addon_template_name(self) -> _builtins.str:
+        return pulumi.get(self, "addon_template_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def operation(self) -> _builtins.str:
+        return pulumi.get(self, "operation")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.str:
+        return pulumi.get(self, "version")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Optional['outputs.CceClusterUpgradeAddonValues']:
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class CceClusterUpgradeAddonValues(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "basicJson":
+            suggest = "basic_json"
+        elif key == "customJson":
+            suggest = "custom_json"
+        elif key == "flavorJson":
+            suggest = "flavor_json"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CceClusterUpgradeAddonValues. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CceClusterUpgradeAddonValues.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CceClusterUpgradeAddonValues.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 basic_json: Optional[_builtins.str] = None,
+                 custom_json: Optional[_builtins.str] = None,
+                 flavor_json: Optional[_builtins.str] = None):
+        if basic_json is not None:
+            pulumi.set(__self__, "basic_json", basic_json)
+        if custom_json is not None:
+            pulumi.set(__self__, "custom_json", custom_json)
+        if flavor_json is not None:
+            pulumi.set(__self__, "flavor_json", flavor_json)
+
+    @_builtins.property
+    @pulumi.getter(name="basicJson")
+    def basic_json(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "basic_json")
+
+    @_builtins.property
+    @pulumi.getter(name="customJson")
+    def custom_json(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "custom_json")
+
+    @_builtins.property
+    @pulumi.getter(name="flavorJson")
+    def flavor_json(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "flavor_json")
+
+
+@pulumi.output_type
+class CceClusterUpgradeStrategy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "inPlaceRollingUpdate":
+            suggest = "in_place_rolling_update"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CceClusterUpgradeStrategy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CceClusterUpgradeStrategy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CceClusterUpgradeStrategy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 type: _builtins.str,
+                 in_place_rolling_update: Optional['outputs.CceClusterUpgradeStrategyInPlaceRollingUpdate'] = None):
+        pulumi.set(__self__, "type", type)
+        if in_place_rolling_update is not None:
+            pulumi.set(__self__, "in_place_rolling_update", in_place_rolling_update)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="inPlaceRollingUpdate")
+    def in_place_rolling_update(self) -> Optional['outputs.CceClusterUpgradeStrategyInPlaceRollingUpdate']:
+        return pulumi.get(self, "in_place_rolling_update")
+
+
+@pulumi.output_type
+class CceClusterUpgradeStrategyInPlaceRollingUpdate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "userDefinedStep":
+            suggest = "user_defined_step"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CceClusterUpgradeStrategyInPlaceRollingUpdate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CceClusterUpgradeStrategyInPlaceRollingUpdate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CceClusterUpgradeStrategyInPlaceRollingUpdate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 user_defined_step: Optional[_builtins.int] = None):
+        if user_defined_step is not None:
+            pulumi.set(__self__, "user_defined_step", user_defined_step)
+
+    @_builtins.property
+    @pulumi.getter(name="userDefinedStep")
+    def user_defined_step(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "user_defined_step")
+
+
+@pulumi.output_type
+class CceNodesRemoveNode(dict):
+    def __init__(__self__, *,
+                 uid: _builtins.str):
+        pulumi.set(__self__, "uid", uid)
+
+    @_builtins.property
+    @pulumi.getter
+    def uid(self) -> _builtins.str:
+        return pulumi.get(self, "uid")
 
 
 @pulumi.output_type
@@ -3841,6 +4032,181 @@ class GesGraphVertexIdType(dict):
         Vertex ID type.
         """
         return pulumi.get(self, "id_type")
+
+
+@pulumi.output_type
+class KpsKeypairAssociateServer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "disablePassword":
+            suggest = "disable_password"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KpsKeypairAssociateServer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KpsKeypairAssociateServer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KpsKeypairAssociateServer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 auth: Optional['outputs.KpsKeypairAssociateServerAuth'] = None,
+                 disable_password: Optional[_builtins.bool] = None,
+                 port: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str id: Specifies ID of the ECS.
+        :param 'KpsKeypairAssociateServerAuthArgs' auth: Specifies the authentication information.
+        :param _builtins.bool disable_password: Specifies whether the password is disabled.
+        :param _builtins.int port: Specifies the SSH listening port.
+        """
+        pulumi.set(__self__, "id", id)
+        if auth is not None:
+            pulumi.set(__self__, "auth", auth)
+        if disable_password is not None:
+            pulumi.set(__self__, "disable_password", disable_password)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Specifies ID of the ECS.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def auth(self) -> Optional['outputs.KpsKeypairAssociateServerAuth']:
+        """
+        Specifies the authentication information.
+        """
+        return pulumi.get(self, "auth")
+
+    @_builtins.property
+    @pulumi.getter(name="disablePassword")
+    def disable_password(self) -> Optional[_builtins.bool]:
+        """
+        Specifies whether the password is disabled.
+        """
+        return pulumi.get(self, "disable_password")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        Specifies the SSH listening port.
+        """
+        return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class KpsKeypairAssociateServerAuth(dict):
+    def __init__(__self__, *,
+                 key: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: Specifies the value of the key.
+        :param _builtins.str type: Specifies the value of the authentication type.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[_builtins.str]:
+        """
+        Specifies the value of the key.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Specifies the value of the authentication type.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class KpsKeypairDisassociateServer(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 auth: Optional['outputs.KpsKeypairDisassociateServerAuth'] = None,
+                 port: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str id: Specifies ID of the ECS.
+        :param 'KpsKeypairDisassociateServerAuthArgs' auth: Specifies the authentication type.
+        :param _builtins.int port: Specifies the SSH listening port.
+        """
+        pulumi.set(__self__, "id", id)
+        if auth is not None:
+            pulumi.set(__self__, "auth", auth)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Specifies ID of the ECS.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def auth(self) -> Optional['outputs.KpsKeypairDisassociateServerAuth']:
+        """
+        Specifies the authentication type.
+        """
+        return pulumi.get(self, "auth")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        Specifies the SSH listening port.
+        """
+        return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class KpsKeypairDisassociateServerAuth(dict):
+    def __init__(__self__, *,
+                 key: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: Specifies the value of the key.
+        :param _builtins.str type: Specifies the value of an enumeration type.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[_builtins.str]:
+        """
+        Specifies the value of the key.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Specifies the value of an enumeration type.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -13900,6 +14266,214 @@ class GetDmsRocketmqUsersUserTopicPermResult(dict):
     @pulumi.getter
     def perm(self) -> _builtins.str:
         return pulumi.get(self, "perm")
+
+
+@pulumi.output_type
+class GetDnsZonesZoneResult(dict):
+    def __init__(__self__, *,
+                 created_at: _builtins.str,
+                 description: _builtins.str,
+                 email: _builtins.str,
+                 enterprise_project_id: _builtins.str,
+                 id: _builtins.str,
+                 masters: Sequence[_builtins.str],
+                 name: _builtins.str,
+                 pool_id: _builtins.str,
+                 proxy_pattern: _builtins.str,
+                 record_num: _builtins.int,
+                 routers: Sequence['outputs.GetDnsZonesZoneRouterResult'],
+                 status: _builtins.str,
+                 tags: Mapping[str, _builtins.str],
+                 ttl: _builtins.int,
+                 updated_at: _builtins.str,
+                 zone_type: _builtins.str):
+        """
+        :param _builtins.str created_at: The creation time of the zone, in RFC3339 format.
+        :param _builtins.str description: The zone description.
+        :param _builtins.str email: The email address of the administrator managing the zone.
+        :param _builtins.str enterprise_project_id: The enterprise project ID.
+        :param _builtins.str id: The zone ID.
+        :param Sequence[_builtins.str] masters: The master DNS servers, from which the slave servers get DNS information.
+        :param _builtins.str name: The zone name.
+        :param _builtins.str pool_id: The creation time of the zone, in RFC3339 format.
+        :param _builtins.str proxy_pattern: The recursive resolution proxy mode for subdomains of the private zone.
+        :param _builtins.int record_num: The number of record sets in the zone.
+        :param Sequence['GetDnsZonesZoneRouterArgs'] routers: The list of VPCs associated with the zone.
+        :param _builtins.str status: The zone status.
+        :param _builtins.int ttl: The time to live (TTL) of the zone.
+        :param _builtins.str updated_at: The latest update time of the zone, in RFC3339 format.
+        :param _builtins.str zone_type: The zone type.
+        """
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "enterprise_project_id", enterprise_project_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "masters", masters)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "pool_id", pool_id)
+        pulumi.set(__self__, "proxy_pattern", proxy_pattern)
+        pulumi.set(__self__, "record_num", record_num)
+        pulumi.set(__self__, "routers", routers)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "ttl", ttl)
+        pulumi.set(__self__, "updated_at", updated_at)
+        pulumi.set(__self__, "zone_type", zone_type)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        The creation time of the zone, in RFC3339 format.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The zone description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def email(self) -> _builtins.str:
+        """
+        The email address of the administrator managing the zone.
+        """
+        return pulumi.get(self, "email")
+
+    @_builtins.property
+    @pulumi.getter(name="enterpriseProjectId")
+    def enterprise_project_id(self) -> _builtins.str:
+        """
+        The enterprise project ID.
+        """
+        return pulumi.get(self, "enterprise_project_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The zone ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def masters(self) -> Sequence[_builtins.str]:
+        """
+        The master DNS servers, from which the slave servers get DNS information.
+        """
+        return pulumi.get(self, "masters")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The zone name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="poolId")
+    def pool_id(self) -> _builtins.str:
+        """
+        The creation time of the zone, in RFC3339 format.
+        """
+        return pulumi.get(self, "pool_id")
+
+    @_builtins.property
+    @pulumi.getter(name="proxyPattern")
+    def proxy_pattern(self) -> _builtins.str:
+        """
+        The recursive resolution proxy mode for subdomains of the private zone.
+        """
+        return pulumi.get(self, "proxy_pattern")
+
+    @_builtins.property
+    @pulumi.getter(name="recordNum")
+    def record_num(self) -> _builtins.int:
+        """
+        The number of record sets in the zone.
+        """
+        return pulumi.get(self, "record_num")
+
+    @_builtins.property
+    @pulumi.getter
+    def routers(self) -> Sequence['outputs.GetDnsZonesZoneRouterResult']:
+        """
+        The list of VPCs associated with the zone.
+        """
+        return pulumi.get(self, "routers")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The zone status.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
+    def ttl(self) -> _builtins.int:
+        """
+        The time to live (TTL) of the zone.
+        """
+        return pulumi.get(self, "ttl")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        The latest update time of the zone, in RFC3339 format.
+        """
+        return pulumi.get(self, "updated_at")
+
+    @_builtins.property
+    @pulumi.getter(name="zoneType")
+    def zone_type(self) -> _builtins.str:
+        """
+        The zone type.
+        """
+        return pulumi.get(self, "zone_type")
+
+
+@pulumi.output_type
+class GetDnsZonesZoneRouterResult(dict):
+    def __init__(__self__, *,
+                 router_id: _builtins.str,
+                 router_region: _builtins.str):
+        """
+        :param _builtins.str router_id: The ID of the VPC associated with the zone.
+        :param _builtins.str router_region: The region of the VPC.
+        """
+        pulumi.set(__self__, "router_id", router_id)
+        pulumi.set(__self__, "router_region", router_region)
+
+    @_builtins.property
+    @pulumi.getter(name="routerId")
+    def router_id(self) -> _builtins.str:
+        """
+        The ID of the VPC associated with the zone.
+        """
+        return pulumi.get(self, "router_id")
+
+    @_builtins.property
+    @pulumi.getter(name="routerRegion")
+    def router_region(self) -> _builtins.str:
+        """
+        The region of the VPC.
+        """
+        return pulumi.get(self, "router_region")
 
 
 @pulumi.output_type

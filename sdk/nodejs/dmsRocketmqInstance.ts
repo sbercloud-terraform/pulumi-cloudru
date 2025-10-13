@@ -163,7 +163,11 @@ export class DmsRocketmqInstance extends pulumi.CustomResource {
      * Specifies the ID of a subnet
      */
     declare public readonly subnetId: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The TLS mode of the instance.
+     */
+    declare public readonly tlsMode: pulumi.Output<string>;
     /**
      * Indicates the DMS RocketMQ instance type. Value: cluster.
      */
@@ -227,6 +231,7 @@ export class DmsRocketmqInstance extends pulumi.CustomResource {
             resourceInputs["storageSpecCode"] = state?.storageSpecCode;
             resourceInputs["subnetId"] = state?.subnetId;
             resourceInputs["tags"] = state?.tags;
+            resourceInputs["tlsMode"] = state?.tlsMode;
             resourceInputs["type"] = state?.type;
             resourceInputs["usedStorageSpace"] = state?.usedStorageSpace;
             resourceInputs["vpcId"] = state?.vpcId;
@@ -280,6 +285,7 @@ export class DmsRocketmqInstance extends pulumi.CustomResource {
             resourceInputs["storageSpecCode"] = args?.storageSpecCode;
             resourceInputs["subnetId"] = args?.subnetId;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["tlsMode"] = args?.tlsMode;
             resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["brokerAddress"] = undefined /*out*/;
             resourceInputs["crossVpcAccesses"] = undefined /*out*/;
@@ -437,6 +443,10 @@ export interface DmsRocketmqInstanceState {
     subnetId?: pulumi.Input<string>;
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * The TLS mode of the instance.
+     */
+    tlsMode?: pulumi.Input<string>;
+    /**
      * Indicates the DMS RocketMQ instance type. Value: cluster.
      */
     type?: pulumi.Input<string>;
@@ -534,6 +544,10 @@ export interface DmsRocketmqInstanceArgs {
      */
     subnetId: pulumi.Input<string>;
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The TLS mode of the instance.
+     */
+    tlsMode?: pulumi.Input<string>;
     /**
      * Specifies the ID of a VPC
      */

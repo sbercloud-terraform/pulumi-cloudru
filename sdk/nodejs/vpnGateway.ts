@@ -110,7 +110,7 @@ export class VpnGateway extends pulumi.CustomResource {
      * The status of VPN gateway.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     /**
      * The update time.
      */

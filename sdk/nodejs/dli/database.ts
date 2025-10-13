@@ -37,7 +37,7 @@ export class Database extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     declare public readonly owner: pulumi.Output<string>;
     declare public readonly region: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a Database resource with the given unique name, arguments, and options.

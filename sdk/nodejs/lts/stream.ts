@@ -42,7 +42,7 @@ export class Stream extends pulumi.CustomResource {
     declare public readonly isFavorite: pulumi.Output<boolean | undefined>;
     declare public readonly region: pulumi.Output<string>;
     declare public readonly streamName: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     declare public readonly ttlInDays: pulumi.Output<number>;
 
     /**

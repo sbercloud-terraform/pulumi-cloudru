@@ -33,6 +33,10 @@ export class FgsFunctionTrigger extends pulumi.CustomResource {
     }
 
     /**
+     * Whether to cascade delete the related EG event subscription of the function trigger.
+     */
+    declare public readonly cascadeDeleteEgSubscription: pulumi.Output<boolean | undefined>;
+    /**
      * The creation time of the function trigger.
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
@@ -74,6 +78,7 @@ export class FgsFunctionTrigger extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FgsFunctionTriggerState | undefined;
+            resourceInputs["cascadeDeleteEgSubscription"] = state?.cascadeDeleteEgSubscription;
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["eventData"] = state?.eventData;
             resourceInputs["functionUrn"] = state?.functionUrn;
@@ -92,6 +97,7 @@ export class FgsFunctionTrigger extends pulumi.CustomResource {
             if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
+            resourceInputs["cascadeDeleteEgSubscription"] = args?.cascadeDeleteEgSubscription;
             resourceInputs["eventData"] = args?.eventData;
             resourceInputs["functionUrn"] = args?.functionUrn;
             resourceInputs["region"] = args?.region;
@@ -109,6 +115,10 @@ export class FgsFunctionTrigger extends pulumi.CustomResource {
  * Input properties used for looking up and filtering FgsFunctionTrigger resources.
  */
 export interface FgsFunctionTriggerState {
+    /**
+     * Whether to cascade delete the related EG event subscription of the function trigger.
+     */
+    cascadeDeleteEgSubscription?: pulumi.Input<boolean>;
     /**
      * The creation time of the function trigger.
      */
@@ -143,6 +153,10 @@ export interface FgsFunctionTriggerState {
  * The set of arguments for constructing a FgsFunctionTrigger resource.
  */
 export interface FgsFunctionTriggerArgs {
+    /**
+     * Whether to cascade delete the related EG event subscription of the function trigger.
+     */
+    cascadeDeleteEgSubscription?: pulumi.Input<boolean>;
     /**
      * The detailed configuration of the function trigger event, in JSON format.
      */

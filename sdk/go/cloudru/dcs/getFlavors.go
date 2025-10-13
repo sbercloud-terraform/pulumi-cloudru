@@ -28,6 +28,7 @@ type GetFlavorsArgs struct {
 	CpuArchitecture *string  `pulumi:"cpuArchitecture"`
 	Engine          *string  `pulumi:"engine"`
 	EngineVersion   *string  `pulumi:"engineVersion"`
+	InstanceId      *string  `pulumi:"instanceId"`
 	Name            *string  `pulumi:"name"`
 	Region          *string  `pulumi:"region"`
 }
@@ -41,9 +42,10 @@ type GetFlavorsResult struct {
 	EngineVersion   *string            `pulumi:"engineVersion"`
 	Flavors         []GetFlavorsFlavor `pulumi:"flavors"`
 	// The provider-assigned unique ID for this managed resource.
-	Id     string  `pulumi:"id"`
-	Name   *string `pulumi:"name"`
-	Region string  `pulumi:"region"`
+	Id         string  `pulumi:"id"`
+	InstanceId *string `pulumi:"instanceId"`
+	Name       *string `pulumi:"name"`
+	Region     string  `pulumi:"region"`
 }
 
 func GetFlavorsOutput(ctx *pulumi.Context, args GetFlavorsOutputArgs, opts ...pulumi.InvokeOption) GetFlavorsResultOutput {
@@ -62,6 +64,7 @@ type GetFlavorsOutputArgs struct {
 	CpuArchitecture pulumi.StringPtrInput  `pulumi:"cpuArchitecture"`
 	Engine          pulumi.StringPtrInput  `pulumi:"engine"`
 	EngineVersion   pulumi.StringPtrInput  `pulumi:"engineVersion"`
+	InstanceId      pulumi.StringPtrInput  `pulumi:"instanceId"`
 	Name            pulumi.StringPtrInput  `pulumi:"name"`
 	Region          pulumi.StringPtrInput  `pulumi:"region"`
 }
@@ -112,6 +115,10 @@ func (o GetFlavorsResultOutput) Flavors() GetFlavorsFlavorArrayOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o GetFlavorsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetFlavorsResultOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFlavorsResult) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
 }
 
 func (o GetFlavorsResultOutput) Name() pulumi.StringPtrOutput {

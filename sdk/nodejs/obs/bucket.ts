@@ -55,7 +55,7 @@ export class Bucket extends pulumi.CustomResource {
     declare public readonly sseAlgorithm: pulumi.Output<string>;
     declare public readonly storageClass: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly storageInfos: pulumi.Output<outputs.Obs.BucketStorageInfo[]>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     declare public readonly userDomainNames: pulumi.Output<string[]>;
     declare public readonly versioning: pulumi.Output<boolean | undefined>;
     declare public readonly website: pulumi.Output<outputs.Obs.BucketWebsite | undefined>;

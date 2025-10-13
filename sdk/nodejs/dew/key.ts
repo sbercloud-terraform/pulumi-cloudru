@@ -52,7 +52,7 @@ export class Key extends pulumi.CustomResource {
     declare public readonly rotationInterval: pulumi.Output<number>;
     declare public /*out*/ readonly rotationNumber: pulumi.Output<number>;
     declare public /*out*/ readonly scheduledDeletionDate: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a Key resource with the given unique name, arguments, and options.

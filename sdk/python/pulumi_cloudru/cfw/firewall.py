@@ -48,7 +48,6 @@ class FirewallArgs:
         :param pulumi.Input[_builtins.int] ips_protection_mode: Specifies the IPS protection mode of the firewall.
         :param pulumi.Input[_builtins.int] ips_switch_status: Specifies the IPS patch switch status of the firewall.
         :param pulumi.Input[_builtins.str] name: Specifies the firewall name.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the firewall.
         """
         pulumi.set(__self__, "flavor", flavor)
         if auto_renew is not None:
@@ -239,9 +238,6 @@ class FirewallArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs to associate with the firewall.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -295,7 +291,6 @@ class _FirewallState:
         :param pulumi.Input[_builtins.int] service_type: The service type.
         :param pulumi.Input[_builtins.int] status: The firewall status.
         :param pulumi.Input[_builtins.bool] support_ipv6: Whether IPv6 is supported.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the firewall.
         """
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
@@ -599,9 +594,6 @@ class _FirewallState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs to associate with the firewall.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -645,7 +637,6 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] ips_protection_mode: Specifies the IPS protection mode of the firewall.
         :param pulumi.Input[_builtins.int] ips_switch_status: Specifies the IPS patch switch status of the firewall.
         :param pulumi.Input[_builtins.str] name: Specifies the firewall name.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the firewall.
         """
         ...
     @overload
@@ -777,7 +768,6 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] service_type: The service type.
         :param pulumi.Input[_builtins.int] status: The firewall status.
         :param pulumi.Input[_builtins.bool] support_ipv6: Whether IPv6 is supported.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the firewall.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -974,9 +964,6 @@ class Firewall(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        Specifies the key/value pairs to associate with the firewall.
-        """
+    def tags(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         return pulumi.get(self, "tags")
 

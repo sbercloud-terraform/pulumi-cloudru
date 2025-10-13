@@ -85,6 +85,8 @@ type DmsRocketmqInstance struct {
 	// Specifies the ID of a subnet
 	SubnetId pulumi.StringOutput    `pulumi:"subnetId"`
 	Tags     pulumi.StringMapOutput `pulumi:"tags"`
+	// The TLS mode of the instance.
+	TlsMode pulumi.StringOutput `pulumi:"tlsMode"`
 	// Indicates the DMS RocketMQ instance type. Value: cluster.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Indicates the used message storage space. Unit: GB.
@@ -217,6 +219,8 @@ type dmsRocketmqInstanceState struct {
 	// Specifies the ID of a subnet
 	SubnetId *string           `pulumi:"subnetId"`
 	Tags     map[string]string `pulumi:"tags"`
+	// The TLS mode of the instance.
+	TlsMode *string `pulumi:"tlsMode"`
 	// Indicates the DMS RocketMQ instance type. Value: cluster.
 	Type *string `pulumi:"type"`
 	// Indicates the used message storage space. Unit: GB.
@@ -296,6 +300,8 @@ type DmsRocketmqInstanceState struct {
 	// Specifies the ID of a subnet
 	SubnetId pulumi.StringPtrInput
 	Tags     pulumi.StringMapInput
+	// The TLS mode of the instance.
+	TlsMode pulumi.StringPtrInput
 	// Indicates the DMS RocketMQ instance type. Value: cluster.
 	Type pulumi.StringPtrInput
 	// Indicates the used message storage space. Unit: GB.
@@ -353,6 +359,8 @@ type dmsRocketmqInstanceArgs struct {
 	// Specifies the ID of a subnet
 	SubnetId string            `pulumi:"subnetId"`
 	Tags     map[string]string `pulumi:"tags"`
+	// The TLS mode of the instance.
+	TlsMode *string `pulumi:"tlsMode"`
 	// Specifies the ID of a VPC
 	VpcId string `pulumi:"vpcId"`
 }
@@ -403,6 +411,8 @@ type DmsRocketmqInstanceArgs struct {
 	// Specifies the ID of a subnet
 	SubnetId pulumi.StringInput
 	Tags     pulumi.StringMapInput
+	// The TLS mode of the instance.
+	TlsMode pulumi.StringPtrInput
 	// Specifies the ID of a VPC
 	VpcId pulumi.StringInput
 }
@@ -674,6 +684,11 @@ func (o DmsRocketmqInstanceOutput) SubnetId() pulumi.StringOutput {
 
 func (o DmsRocketmqInstanceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DmsRocketmqInstance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The TLS mode of the instance.
+func (o DmsRocketmqInstanceOutput) TlsMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *DmsRocketmqInstance) pulumi.StringOutput { return v.TlsMode }).(pulumi.StringOutput)
 }
 
 // Indicates the DMS RocketMQ instance type. Value: cluster.

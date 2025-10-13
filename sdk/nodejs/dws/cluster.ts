@@ -137,10 +137,7 @@ export class Cluster extends pulumi.CustomResource {
      * Sub-status of clusters in the AVAILABLE state.
      */
     declare public /*out*/ readonly subStatus: pulumi.Output<string>;
-    /**
-     * The key/value pairs to associate with the cluster.
-     */
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     /**
      * Cluster management task.
      */
@@ -393,9 +390,6 @@ export interface ClusterState {
      * Sub-status of clusters in the AVAILABLE state.
      */
     subStatus?: pulumi.Input<string>;
-    /**
-     * The key/value pairs to associate with the cluster.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Cluster management task.
@@ -498,9 +492,6 @@ export interface ClusterArgs {
      * The security group ID.
      */
     securityGroupId: pulumi.Input<string>;
-    /**
-     * The key/value pairs to associate with the cluster.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Administrator username for logging in to a data warehouse cluster.

@@ -21,6 +21,7 @@ class VolumeAttachArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[_builtins.str],
                  volume_id: pulumi.Input[_builtins.str],
+                 delete_on_termination: Optional[pulumi.Input[_builtins.str]] = None,
                  device: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -28,6 +29,8 @@ class VolumeAttachArgs:
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "volume_id", volume_id)
+        if delete_on_termination is not None:
+            pulumi.set(__self__, "delete_on_termination", delete_on_termination)
         if device is not None:
             pulumi.set(__self__, "device", device)
         if region is not None:
@@ -52,6 +55,15 @@ class VolumeAttachArgs:
         pulumi.set(self, "volume_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="deleteOnTermination")
+    def delete_on_termination(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "delete_on_termination")
+
+    @delete_on_termination.setter
+    def delete_on_termination(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delete_on_termination", value)
+
+    @_builtins.property
     @pulumi.getter
     def device(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "device")
@@ -73,6 +85,7 @@ class VolumeAttachArgs:
 @pulumi.input_type
 class _VolumeAttachState:
     def __init__(__self__, *,
+                 delete_on_termination: Optional[pulumi.Input[_builtins.str]] = None,
                  device: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  pci_address: Optional[pulumi.Input[_builtins.str]] = None,
@@ -81,6 +94,8 @@ class _VolumeAttachState:
         """
         Input properties used for looking up and filtering VolumeAttach resources.
         """
+        if delete_on_termination is not None:
+            pulumi.set(__self__, "delete_on_termination", delete_on_termination)
         if device is not None:
             pulumi.set(__self__, "device", device)
         if instance_id is not None:
@@ -91,6 +106,15 @@ class _VolumeAttachState:
             pulumi.set(__self__, "region", region)
         if volume_id is not None:
             pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="deleteOnTermination")
+    def delete_on_termination(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "delete_on_termination")
+
+    @delete_on_termination.setter
+    def delete_on_termination(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delete_on_termination", value)
 
     @_builtins.property
     @pulumi.getter
@@ -144,6 +168,7 @@ class VolumeAttach(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 delete_on_termination: Optional[pulumi.Input[_builtins.str]] = None,
                  device: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -177,6 +202,7 @@ class VolumeAttach(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 delete_on_termination: Optional[pulumi.Input[_builtins.str]] = None,
                  device: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -190,6 +216,7 @@ class VolumeAttach(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = VolumeAttachArgs.__new__(VolumeAttachArgs)
 
+            __props__.__dict__["delete_on_termination"] = delete_on_termination
             __props__.__dict__["device"] = device
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
@@ -209,6 +236,7 @@ class VolumeAttach(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            delete_on_termination: Optional[pulumi.Input[_builtins.str]] = None,
             device: Optional[pulumi.Input[_builtins.str]] = None,
             instance_id: Optional[pulumi.Input[_builtins.str]] = None,
             pci_address: Optional[pulumi.Input[_builtins.str]] = None,
@@ -226,12 +254,18 @@ class VolumeAttach(pulumi.CustomResource):
 
         __props__ = _VolumeAttachState.__new__(_VolumeAttachState)
 
+        __props__.__dict__["delete_on_termination"] = delete_on_termination
         __props__.__dict__["device"] = device
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["pci_address"] = pci_address
         __props__.__dict__["region"] = region
         __props__.__dict__["volume_id"] = volume_id
         return VolumeAttach(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="deleteOnTermination")
+    def delete_on_termination(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "delete_on_termination")
 
     @_builtins.property
     @pulumi.getter

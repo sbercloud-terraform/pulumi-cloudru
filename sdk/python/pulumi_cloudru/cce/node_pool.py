@@ -36,6 +36,7 @@ class NodePoolArgs:
                  extend_params: Optional[pulumi.Input['NodePoolExtendParamsArgs']] = None,
                  extension_scale_groups: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolExtensionScaleGroupArgs']]]] = None,
                  hostname_config: Optional[pulumi.Input['NodePoolHostnameConfigArgs']] = None,
+                 ignore_initial_node_count: Optional[pulumi.Input[_builtins.bool]] = None,
                  initialized_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  key_pair: Optional[pulumi.Input[_builtins.str]] = None,
                  label_policy_on_existing_nodes: Optional[pulumi.Input[_builtins.str]] = None,
@@ -99,6 +100,8 @@ class NodePoolArgs:
             pulumi.set(__self__, "extension_scale_groups", extension_scale_groups)
         if hostname_config is not None:
             pulumi.set(__self__, "hostname_config", hostname_config)
+        if ignore_initial_node_count is not None:
+            pulumi.set(__self__, "ignore_initial_node_count", ignore_initial_node_count)
         if initialized_conditions is not None:
             pulumi.set(__self__, "initialized_conditions", initialized_conditions)
         if key_pair is not None:
@@ -297,6 +300,15 @@ class NodePoolArgs:
     @hostname_config.setter
     def hostname_config(self, value: Optional[pulumi.Input['NodePoolHostnameConfigArgs']]):
         pulumi.set(self, "hostname_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreInitialNodeCount")
+    def ignore_initial_node_count(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "ignore_initial_node_count")
+
+    @ignore_initial_node_count.setter
+    def ignore_initial_node_count(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "ignore_initial_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="initializedConditions")
@@ -596,6 +608,7 @@ class _NodePoolState:
                  extension_scale_groups: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolExtensionScaleGroupArgs']]]] = None,
                  flavor_id: Optional[pulumi.Input[_builtins.str]] = None,
                  hostname_config: Optional[pulumi.Input['NodePoolHostnameConfigArgs']] = None,
+                 ignore_initial_node_count: Optional[pulumi.Input[_builtins.bool]] = None,
                  initial_node_count: Optional[pulumi.Input[_builtins.int]] = None,
                  initialized_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  key_pair: Optional[pulumi.Input[_builtins.str]] = None,
@@ -666,6 +679,8 @@ class _NodePoolState:
             pulumi.set(__self__, "flavor_id", flavor_id)
         if hostname_config is not None:
             pulumi.set(__self__, "hostname_config", hostname_config)
+        if ignore_initial_node_count is not None:
+            pulumi.set(__self__, "ignore_initial_node_count", ignore_initial_node_count)
         if initial_node_count is not None:
             pulumi.set(__self__, "initial_node_count", initial_node_count)
         if initialized_conditions is not None:
@@ -870,6 +885,15 @@ class _NodePoolState:
     @hostname_config.setter
     def hostname_config(self, value: Optional[pulumi.Input['NodePoolHostnameConfigArgs']]):
         pulumi.set(self, "hostname_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreInitialNodeCount")
+    def ignore_initial_node_count(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "ignore_initial_node_count")
+
+    @ignore_initial_node_count.setter
+    def ignore_initial_node_count(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "ignore_initial_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="initialNodeCount")
@@ -1197,6 +1221,7 @@ class NodePool(pulumi.CustomResource):
                  extension_scale_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodePoolExtensionScaleGroupArgs', 'NodePoolExtensionScaleGroupArgsDict']]]]] = None,
                  flavor_id: Optional[pulumi.Input[_builtins.str]] = None,
                  hostname_config: Optional[pulumi.Input[Union['NodePoolHostnameConfigArgs', 'NodePoolHostnameConfigArgsDict']]] = None,
+                 ignore_initial_node_count: Optional[pulumi.Input[_builtins.bool]] = None,
                  initial_node_count: Optional[pulumi.Input[_builtins.int]] = None,
                  initialized_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  key_pair: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1275,6 +1300,7 @@ class NodePool(pulumi.CustomResource):
                  extension_scale_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodePoolExtensionScaleGroupArgs', 'NodePoolExtensionScaleGroupArgsDict']]]]] = None,
                  flavor_id: Optional[pulumi.Input[_builtins.str]] = None,
                  hostname_config: Optional[pulumi.Input[Union['NodePoolHostnameConfigArgs', 'NodePoolHostnameConfigArgsDict']]] = None,
+                 ignore_initial_node_count: Optional[pulumi.Input[_builtins.bool]] = None,
                  initial_node_count: Optional[pulumi.Input[_builtins.int]] = None,
                  initialized_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  key_pair: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1333,6 +1359,7 @@ class NodePool(pulumi.CustomResource):
                 raise TypeError("Missing required property 'flavor_id'")
             __props__.__dict__["flavor_id"] = flavor_id
             __props__.__dict__["hostname_config"] = hostname_config
+            __props__.__dict__["ignore_initial_node_count"] = ignore_initial_node_count
             if initial_node_count is None and not opts.urn:
                 raise TypeError("Missing required property 'initial_node_count'")
             __props__.__dict__["initial_node_count"] = initial_node_count
@@ -1399,6 +1426,7 @@ class NodePool(pulumi.CustomResource):
             extension_scale_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodePoolExtensionScaleGroupArgs', 'NodePoolExtensionScaleGroupArgsDict']]]]] = None,
             flavor_id: Optional[pulumi.Input[_builtins.str]] = None,
             hostname_config: Optional[pulumi.Input[Union['NodePoolHostnameConfigArgs', 'NodePoolHostnameConfigArgsDict']]] = None,
+            ignore_initial_node_count: Optional[pulumi.Input[_builtins.bool]] = None,
             initial_node_count: Optional[pulumi.Input[_builtins.int]] = None,
             initialized_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             key_pair: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1463,6 +1491,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["extension_scale_groups"] = extension_scale_groups
         __props__.__dict__["flavor_id"] = flavor_id
         __props__.__dict__["hostname_config"] = hostname_config
+        __props__.__dict__["ignore_initial_node_count"] = ignore_initial_node_count
         __props__.__dict__["initial_node_count"] = initial_node_count
         __props__.__dict__["initialized_conditions"] = initialized_conditions
         __props__.__dict__["key_pair"] = key_pair
@@ -1563,7 +1592,7 @@ class NodePool(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="extensionScaleGroups")
-    def extension_scale_groups(self) -> pulumi.Output[Optional[Sequence['outputs.NodePoolExtensionScaleGroup']]]:
+    def extension_scale_groups(self) -> pulumi.Output[Sequence['outputs.NodePoolExtensionScaleGroup']]:
         return pulumi.get(self, "extension_scale_groups")
 
     @_builtins.property
@@ -1575,6 +1604,11 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter(name="hostnameConfig")
     def hostname_config(self) -> pulumi.Output['outputs.NodePoolHostnameConfig']:
         return pulumi.get(self, "hostname_config")
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreInitialNodeCount")
+    def ignore_initial_node_count(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        return pulumi.get(self, "ignore_initial_node_count")
 
     @_builtins.property
     @pulumi.getter(name="initialNodeCount")
@@ -1732,7 +1766,7 @@ class NodePool(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+    def tags(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         return pulumi.get(self, "tags")
 
     @_builtins.property

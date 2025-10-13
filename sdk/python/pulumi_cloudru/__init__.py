@@ -8,6 +8,11 @@ import typing
 # Export this package's modules as members:
 from .apig_acl_policy import *
 from .apig_acl_policy_associate import *
+from .apig_api_action import *
+from .apig_api_batch_action import *
+from .apig_api_check import *
+from .apig_api_debug import *
+from .apig_api_version_unpublish import *
 from .apig_appcode import *
 from .apig_application_acl import *
 from .apig_application_authorization import *
@@ -22,6 +27,7 @@ from .apig_instance_feature import *
 from .apig_instance_routes import *
 from .apig_plugin import *
 from .apig_plugin_associate import *
+from .apig_plugin_batch_apis_associate import *
 from .apig_signature import *
 from .apig_signature_associate import *
 from .cbh_asset_agency_authorization import *
@@ -30,6 +36,8 @@ from .cbh_instance import *
 from .cbr_backup_share import *
 from .cbr_backup_share_accepter import *
 from .cbr_checkpoint import *
+from .cce_cluster_upgrade import *
+from .cce_nodes_remove import *
 from .css_configuration import *
 from .dcs_account import *
 from .dcs_backup import *
@@ -121,6 +129,7 @@ from .get_dms_rocketmq_topic_access_users import *
 from .get_dms_rocketmq_topic_consumer_groups import *
 from .get_dms_rocketmq_topics import *
 from .get_dms_rocketmq_users import *
+from .get_dns_zones import *
 from .get_elb_certificate import *
 from .get_elb_flavors import *
 from .get_elb_pools import *
@@ -149,6 +158,8 @@ from .identity_group_membership_v3 import *
 from .identity_group_v3 import *
 from .identity_role_assignment_v3 import *
 from .identity_user_v3 import *
+from .kps_keypair_associate import *
+from .kps_keypair_disassociate import *
 from .networking_eip_associate import *
 from .obs_bucket_acl import *
 from .provider import *
@@ -1577,6 +1588,46 @@ _utilities.register(
  },
  {
   "pkg": "sbercloud",
+  "mod": "index/apigApiAction",
+  "fqn": "pulumi_cloudru",
+  "classes": {
+   "sbercloud:index/apigApiAction:ApigApiAction": "ApigApiAction"
+  }
+ },
+ {
+  "pkg": "sbercloud",
+  "mod": "index/apigApiBatchAction",
+  "fqn": "pulumi_cloudru",
+  "classes": {
+   "sbercloud:index/apigApiBatchAction:ApigApiBatchAction": "ApigApiBatchAction"
+  }
+ },
+ {
+  "pkg": "sbercloud",
+  "mod": "index/apigApiCheck",
+  "fqn": "pulumi_cloudru",
+  "classes": {
+   "sbercloud:index/apigApiCheck:ApigApiCheck": "ApigApiCheck"
+  }
+ },
+ {
+  "pkg": "sbercloud",
+  "mod": "index/apigApiDebug",
+  "fqn": "pulumi_cloudru",
+  "classes": {
+   "sbercloud:index/apigApiDebug:ApigApiDebug": "ApigApiDebug"
+  }
+ },
+ {
+  "pkg": "sbercloud",
+  "mod": "index/apigApiVersionUnpublish",
+  "fqn": "pulumi_cloudru",
+  "classes": {
+   "sbercloud:index/apigApiVersionUnpublish:ApigApiVersionUnpublish": "ApigApiVersionUnpublish"
+  }
+ },
+ {
+  "pkg": "sbercloud",
   "mod": "index/apigAppcode",
   "fqn": "pulumi_cloudru",
   "classes": {
@@ -1689,6 +1740,14 @@ _utilities.register(
  },
  {
   "pkg": "sbercloud",
+  "mod": "index/apigPluginBatchApisAssociate",
+  "fqn": "pulumi_cloudru",
+  "classes": {
+   "sbercloud:index/apigPluginBatchApisAssociate:ApigPluginBatchApisAssociate": "ApigPluginBatchApisAssociate"
+  }
+ },
+ {
+  "pkg": "sbercloud",
   "mod": "index/apigSignature",
   "fqn": "pulumi_cloudru",
   "classes": {
@@ -1749,6 +1808,22 @@ _utilities.register(
   "fqn": "pulumi_cloudru",
   "classes": {
    "sbercloud:index/cbrCheckpoint:CbrCheckpoint": "CbrCheckpoint"
+  }
+ },
+ {
+  "pkg": "sbercloud",
+  "mod": "index/cceClusterUpgrade",
+  "fqn": "pulumi_cloudru",
+  "classes": {
+   "sbercloud:index/cceClusterUpgrade:CceClusterUpgrade": "CceClusterUpgrade"
+  }
+ },
+ {
+  "pkg": "sbercloud",
+  "mod": "index/cceNodesRemove",
+  "fqn": "pulumi_cloudru",
+  "classes": {
+   "sbercloud:index/cceNodesRemove:CceNodesRemove": "CceNodesRemove"
   }
  },
  {
@@ -2101,6 +2176,22 @@ _utilities.register(
   "fqn": "pulumi_cloudru",
   "classes": {
    "sbercloud:index/identityUserV3:IdentityUserV3": "IdentityUserV3"
+  }
+ },
+ {
+  "pkg": "sbercloud",
+  "mod": "index/kpsKeypairAssociate",
+  "fqn": "pulumi_cloudru",
+  "classes": {
+   "sbercloud:index/kpsKeypairAssociate:KpsKeypairAssociate": "KpsKeypairAssociate"
+  }
+ },
+ {
+  "pkg": "sbercloud",
+  "mod": "index/kpsKeypairDisassociate",
+  "fqn": "pulumi_cloudru",
+  "classes": {
+   "sbercloud:index/kpsKeypairDisassociate:KpsKeypairDisassociate": "KpsKeypairDisassociate"
   }
  },
  {

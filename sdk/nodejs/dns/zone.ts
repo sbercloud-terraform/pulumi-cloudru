@@ -39,6 +39,14 @@ export class Zone extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
+     * Specifies whether to enable DNSSEC for a public zone.
+     */
+    declare public readonly dnssec: pulumi.Output<string>;
+    /**
+     * Indicates the DNSSEC infos.
+     */
+    declare public /*out*/ readonly dnssecInfos: pulumi.Output<outputs.Dns.ZoneDnssecInfo[]>;
+    /**
      * The email address of the administrator managing the zone.
      */
     declare public readonly email: pulumi.Output<string>;
@@ -67,7 +75,7 @@ export class Zone extends pulumi.CustomResource {
     /**
      * The key/value pairs to associate with the zone.
      */
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     /**
      * The time to live (TTL) of the zone.
      */
@@ -91,6 +99,8 @@ export class Zone extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ZoneState | undefined;
             resourceInputs["description"] = state?.description;
+            resourceInputs["dnssec"] = state?.dnssec;
+            resourceInputs["dnssecInfos"] = state?.dnssecInfos;
             resourceInputs["email"] = state?.email;
             resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
             resourceInputs["masters"] = state?.masters;
@@ -105,6 +115,7 @@ export class Zone extends pulumi.CustomResource {
         } else {
             const args = argsOrState as ZoneArgs | undefined;
             resourceInputs["description"] = args?.description;
+            resourceInputs["dnssec"] = args?.dnssec;
             resourceInputs["email"] = args?.email;
             resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
             resourceInputs["name"] = args?.name;
@@ -115,6 +126,7 @@ export class Zone extends pulumi.CustomResource {
             resourceInputs["tags"] = args?.tags;
             resourceInputs["ttl"] = args?.ttl;
             resourceInputs["zoneType"] = args?.zoneType;
+            resourceInputs["dnssecInfos"] = undefined /*out*/;
             resourceInputs["masters"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -130,6 +142,14 @@ export interface ZoneState {
      * The description of the zone.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable DNSSEC for a public zone.
+     */
+    dnssec?: pulumi.Input<string>;
+    /**
+     * Indicates the DNSSEC infos.
+     */
+    dnssecInfos?: pulumi.Input<pulumi.Input<inputs.Dns.ZoneDnssecInfo>[]>;
     /**
      * The email address of the administrator managing the zone.
      */
@@ -178,6 +198,10 @@ export interface ZoneArgs {
      * The description of the zone.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable DNSSEC for a public zone.
+     */
+    dnssec?: pulumi.Input<string>;
     /**
      * The email address of the administrator managing the zone.
      */

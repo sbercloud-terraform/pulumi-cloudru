@@ -64,7 +64,7 @@ export class RouteTable extends pulumi.CustomResource {
      * The current status of the route table.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     /**
      * The latest update time.
      */

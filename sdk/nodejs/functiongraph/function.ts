@@ -85,19 +85,19 @@ export class Function extends pulumi.CustomResource {
     /**
      * Whether the authentication in the request header is enabled.
      */
-    declare public readonly enableAuthInHeader: pulumi.Output<boolean | undefined>;
+    declare public readonly enableAuthInHeader: pulumi.Output<boolean>;
     /**
      * Whether the class isolation is enabled for the JAVA runtime functions.
      */
-    declare public readonly enableClassIsolation: pulumi.Output<boolean | undefined>;
+    declare public readonly enableClassIsolation: pulumi.Output<boolean>;
     /**
      * Whether the dynamic memory configuration is enabled.
      */
-    declare public readonly enableDynamicMemory: pulumi.Output<boolean | undefined>;
+    declare public readonly enableDynamicMemory: pulumi.Output<boolean>;
     /**
      * Whether to enable the LTS log.
      */
-    declare public readonly enableLtsLog: pulumi.Output<boolean | undefined>;
+    declare public readonly enableLtsLog: pulumi.Output<boolean>;
     /**
      * The key/value information defined to be encrypted for the function.
      */
@@ -149,7 +149,7 @@ export class Function extends pulumi.CustomResource {
     /**
      * Whether the function is a stateful function.
      */
-    declare public readonly isStatefulFunction: pulumi.Output<boolean | undefined>;
+    declare public readonly isStatefulFunction: pulumi.Output<boolean>;
     /**
      * The LTS group ID for collecting logs.
      */
@@ -169,12 +169,12 @@ export class Function extends pulumi.CustomResource {
     /**
      * The custom tags configuration that used to filter the LTS logs.
      */
-    declare public readonly ltsCustomTag: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly ltsCustomTag: pulumi.Output<{[key: string]: string}>;
     /**
      * The script configuration value of this change is also the original value used for comparison with
      *  the new value next time the change is made. The corresponding parameter name is 'lts_custom_tag'.
      */
-    declare public /*out*/ readonly ltsCustomTagOrigin: pulumi.Output<{[key: string]: string}>;
+    declare public readonly ltsCustomTagOrigin: pulumi.Output<{[key: string]: string}>;
     /**
      * The maximum number of instances of the function.
      */
@@ -243,7 +243,7 @@ export class Function extends pulumi.CustomResource {
     /**
      * The key/value pairs to associate with the function.
      */
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     /**
      * The timeout interval of the function, in seconds.
      */
@@ -395,6 +395,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["logStreamId"] = args?.logStreamId;
             resourceInputs["logStreamName"] = args?.logStreamName;
             resourceInputs["ltsCustomTag"] = args?.ltsCustomTag;
+            resourceInputs["ltsCustomTagOrigin"] = args?.ltsCustomTagOrigin;
             resourceInputs["maxInstanceNum"] = args?.maxInstanceNum;
             resourceInputs["memorySize"] = args?.memorySize;
             resourceInputs["mountUserGroupId"] = args?.mountUserGroupId;
@@ -418,7 +419,6 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["versions"] = args?.versions;
             resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["xrole"] = args?.xrole;
-            resourceInputs["ltsCustomTagOrigin"] = undefined /*out*/;
             resourceInputs["urn"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
         }
@@ -817,6 +817,11 @@ export interface FunctionArgs {
      * The custom tags configuration that used to filter the LTS logs.
      */
     ltsCustomTag?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The script configuration value of this change is also the original value used for comparison with
+     *  the new value next time the change is made. The corresponding parameter name is 'lts_custom_tag'.
+     */
+    ltsCustomTagOrigin?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The maximum number of instances of the function.
      */

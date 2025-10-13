@@ -23,19 +23,24 @@ class ApigApplicationAuthorizationArgs:
                  application_id: pulumi.Input[_builtins.str],
                  env_id: pulumi.Input[_builtins.str],
                  instance_id: pulumi.Input[_builtins.str],
+                 api_ids_origins: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApigApplicationAuthorization resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_ids: The authorized API IDs
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_ids: The list of API IDs to be authorized for the application.
         :param pulumi.Input[_builtins.str] application_id: The ID of the application authorized to access the APIs.
         :param pulumi.Input[_builtins.str] env_id: The environment ID where the APIs were published.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the dedicated instance to which the application and APIs belong.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_ids_origins: The script configuration value of this change is also the original value used for comparison with
+               the new value next time the change is made. The corresponding parameter name is 'api_ids'.
         :param pulumi.Input[_builtins.str] region: The region where the application and APPCODEs are located.
         """
         pulumi.set(__self__, "api_ids", api_ids)
         pulumi.set(__self__, "application_id", application_id)
         pulumi.set(__self__, "env_id", env_id)
         pulumi.set(__self__, "instance_id", instance_id)
+        if api_ids_origins is not None:
+            pulumi.set(__self__, "api_ids_origins", api_ids_origins)
         if region is not None:
             pulumi.set(__self__, "region", region)
 
@@ -43,7 +48,7 @@ class ApigApplicationAuthorizationArgs:
     @pulumi.getter(name="apiIds")
     def api_ids(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        The authorized API IDs
+        The list of API IDs to be authorized for the application.
         """
         return pulumi.get(self, "api_ids")
 
@@ -88,6 +93,19 @@ class ApigApplicationAuthorizationArgs:
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="apiIdsOrigins")
+    def api_ids_origins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The script configuration value of this change is also the original value used for comparison with
+        the new value next time the change is made. The corresponding parameter name is 'api_ids'.
+        """
+        return pulumi.get(self, "api_ids_origins")
+
+    @api_ids_origins.setter
+    def api_ids_origins(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "api_ids_origins", value)
+
+    @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -104,13 +122,16 @@ class ApigApplicationAuthorizationArgs:
 class _ApigApplicationAuthorizationState:
     def __init__(__self__, *,
                  api_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 api_ids_origins: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  application_id: Optional[pulumi.Input[_builtins.str]] = None,
                  env_id: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApigApplicationAuthorization resources.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_ids: The authorized API IDs
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_ids: The list of API IDs to be authorized for the application.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_ids_origins: The script configuration value of this change is also the original value used for comparison with
+               the new value next time the change is made. The corresponding parameter name is 'api_ids'.
         :param pulumi.Input[_builtins.str] application_id: The ID of the application authorized to access the APIs.
         :param pulumi.Input[_builtins.str] env_id: The environment ID where the APIs were published.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the dedicated instance to which the application and APIs belong.
@@ -118,6 +139,8 @@ class _ApigApplicationAuthorizationState:
         """
         if api_ids is not None:
             pulumi.set(__self__, "api_ids", api_ids)
+        if api_ids_origins is not None:
+            pulumi.set(__self__, "api_ids_origins", api_ids_origins)
         if application_id is not None:
             pulumi.set(__self__, "application_id", application_id)
         if env_id is not None:
@@ -131,13 +154,26 @@ class _ApigApplicationAuthorizationState:
     @pulumi.getter(name="apiIds")
     def api_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The authorized API IDs
+        The list of API IDs to be authorized for the application.
         """
         return pulumi.get(self, "api_ids")
 
     @api_ids.setter
     def api_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "api_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="apiIdsOrigins")
+    def api_ids_origins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The script configuration value of this change is also the original value used for comparison with
+        the new value next time the change is made. The corresponding parameter name is 'api_ids'.
+        """
+        return pulumi.get(self, "api_ids_origins")
+
+    @api_ids_origins.setter
+    def api_ids_origins(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "api_ids_origins", value)
 
     @_builtins.property
     @pulumi.getter(name="applicationId")
@@ -195,6 +231,7 @@ class ApigApplicationAuthorization(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 api_ids_origins: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  application_id: Optional[pulumi.Input[_builtins.str]] = None,
                  env_id: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -204,7 +241,9 @@ class ApigApplicationAuthorization(pulumi.CustomResource):
         Create a ApigApplicationAuthorization resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_ids: The authorized API IDs
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_ids: The list of API IDs to be authorized for the application.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_ids_origins: The script configuration value of this change is also the original value used for comparison with
+               the new value next time the change is made. The corresponding parameter name is 'api_ids'.
         :param pulumi.Input[_builtins.str] application_id: The ID of the application authorized to access the APIs.
         :param pulumi.Input[_builtins.str] env_id: The environment ID where the APIs were published.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the dedicated instance to which the application and APIs belong.
@@ -234,6 +273,7 @@ class ApigApplicationAuthorization(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 api_ids_origins: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  application_id: Optional[pulumi.Input[_builtins.str]] = None,
                  env_id: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -250,6 +290,7 @@ class ApigApplicationAuthorization(pulumi.CustomResource):
             if api_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'api_ids'")
             __props__.__dict__["api_ids"] = api_ids
+            __props__.__dict__["api_ids_origins"] = api_ids_origins
             if application_id is None and not opts.urn:
                 raise TypeError("Missing required property 'application_id'")
             __props__.__dict__["application_id"] = application_id
@@ -271,6 +312,7 @@ class ApigApplicationAuthorization(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             api_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            api_ids_origins: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             application_id: Optional[pulumi.Input[_builtins.str]] = None,
             env_id: Optional[pulumi.Input[_builtins.str]] = None,
             instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -282,7 +324,9 @@ class ApigApplicationAuthorization(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_ids: The authorized API IDs
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_ids: The list of API IDs to be authorized for the application.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_ids_origins: The script configuration value of this change is also the original value used for comparison with
+               the new value next time the change is made. The corresponding parameter name is 'api_ids'.
         :param pulumi.Input[_builtins.str] application_id: The ID of the application authorized to access the APIs.
         :param pulumi.Input[_builtins.str] env_id: The environment ID where the APIs were published.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the dedicated instance to which the application and APIs belong.
@@ -293,6 +337,7 @@ class ApigApplicationAuthorization(pulumi.CustomResource):
         __props__ = _ApigApplicationAuthorizationState.__new__(_ApigApplicationAuthorizationState)
 
         __props__.__dict__["api_ids"] = api_ids
+        __props__.__dict__["api_ids_origins"] = api_ids_origins
         __props__.__dict__["application_id"] = application_id
         __props__.__dict__["env_id"] = env_id
         __props__.__dict__["instance_id"] = instance_id
@@ -303,9 +348,18 @@ class ApigApplicationAuthorization(pulumi.CustomResource):
     @pulumi.getter(name="apiIds")
     def api_ids(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        The authorized API IDs
+        The list of API IDs to be authorized for the application.
         """
         return pulumi.get(self, "api_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="apiIdsOrigins")
+    def api_ids_origins(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        The script configuration value of this change is also the original value used for comparison with
+        the new value next time the change is made. The corresponding parameter name is 'api_ids'.
+        """
+        return pulumi.get(self, "api_ids_origins")
 
     @_builtins.property
     @pulumi.getter(name="applicationId")

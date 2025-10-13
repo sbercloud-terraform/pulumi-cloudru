@@ -69,7 +69,7 @@ export class Volume extends pulumi.CustomResource {
     declare public readonly size: pulumi.Output<number>;
     declare public readonly snapshotId: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly status: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     declare public readonly throughput: pulumi.Output<number>;
     declare public /*out*/ readonly throughputAttributes: pulumi.Output<outputs.Evs.VolumeThroughputAttribute[]>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;

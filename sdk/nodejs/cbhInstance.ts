@@ -113,7 +113,7 @@ export class CbhInstance extends pulumi.CustomResource {
      * Specifies the ID of a subnet.
      */
     declare public readonly subnetId: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     /**
      * Indicates the current version of the instance image.
      */

@@ -33,9 +33,14 @@ export class ApigApplicationAuthorization extends pulumi.CustomResource {
     }
 
     /**
-     * The authorized API IDs
+     * The list of API IDs to be authorized for the application.
      */
     declare public readonly apiIds: pulumi.Output<string[]>;
+    /**
+     * The script configuration value of this change is also the original value used for comparison with
+     * the new value next time the change is made. The corresponding parameter name is 'api_ids'.
+     */
+    declare public readonly apiIdsOrigins: pulumi.Output<string[]>;
     /**
      * The ID of the application authorized to access the APIs.
      */
@@ -67,6 +72,7 @@ export class ApigApplicationAuthorization extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ApigApplicationAuthorizationState | undefined;
             resourceInputs["apiIds"] = state?.apiIds;
+            resourceInputs["apiIdsOrigins"] = state?.apiIdsOrigins;
             resourceInputs["applicationId"] = state?.applicationId;
             resourceInputs["envId"] = state?.envId;
             resourceInputs["instanceId"] = state?.instanceId;
@@ -86,6 +92,7 @@ export class ApigApplicationAuthorization extends pulumi.CustomResource {
                 throw new Error("Missing required property 'instanceId'");
             }
             resourceInputs["apiIds"] = args?.apiIds;
+            resourceInputs["apiIdsOrigins"] = args?.apiIdsOrigins;
             resourceInputs["applicationId"] = args?.applicationId;
             resourceInputs["envId"] = args?.envId;
             resourceInputs["instanceId"] = args?.instanceId;
@@ -101,9 +108,14 @@ export class ApigApplicationAuthorization extends pulumi.CustomResource {
  */
 export interface ApigApplicationAuthorizationState {
     /**
-     * The authorized API IDs
+     * The list of API IDs to be authorized for the application.
      */
     apiIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The script configuration value of this change is also the original value used for comparison with
+     * the new value next time the change is made. The corresponding parameter name is 'api_ids'.
+     */
+    apiIdsOrigins?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the application authorized to access the APIs.
      */
@@ -127,9 +139,14 @@ export interface ApigApplicationAuthorizationState {
  */
 export interface ApigApplicationAuthorizationArgs {
     /**
-     * The authorized API IDs
+     * The list of API IDs to be authorized for the application.
      */
     apiIds: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The script configuration value of this change is also the original value used for comparison with
+     * the new value next time the change is made. The corresponding parameter name is 'api_ids'.
+     */
+    apiIdsOrigins?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the application authorized to access the APIs.
      */

@@ -51,7 +51,7 @@ export class Vpc extends pulumi.CustomResource {
     declare public readonly secondaryCidr: pulumi.Output<string | undefined>;
     declare public readonly secondaryCidrs: pulumi.Output<string[]>;
     declare public /*out*/ readonly status: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a Vpc resource with the given unique name, arguments, and options.

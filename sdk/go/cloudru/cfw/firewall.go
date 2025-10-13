@@ -54,9 +54,8 @@ type Firewall struct {
 	// The firewall status.
 	Status pulumi.IntOutput `pulumi:"status"`
 	// Whether IPv6 is supported.
-	SupportIpv6 pulumi.BoolOutput `pulumi:"supportIpv6"`
-	// Specifies the key/value pairs to associate with the firewall.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	SupportIpv6 pulumi.BoolOutput      `pulumi:"supportIpv6"`
+	Tags        pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewFirewall registers a new resource with the given unique name, arguments, and options.
@@ -131,9 +130,8 @@ type firewallState struct {
 	// The firewall status.
 	Status *int `pulumi:"status"`
 	// Whether IPv6 is supported.
-	SupportIpv6 *bool `pulumi:"supportIpv6"`
-	// Specifies the key/value pairs to associate with the firewall.
-	Tags map[string]string `pulumi:"tags"`
+	SupportIpv6 *bool             `pulumi:"supportIpv6"`
+	Tags        map[string]string `pulumi:"tags"`
 }
 
 type FirewallState struct {
@@ -177,8 +175,7 @@ type FirewallState struct {
 	Status pulumi.IntPtrInput
 	// Whether IPv6 is supported.
 	SupportIpv6 pulumi.BoolPtrInput
-	// Specifies the key/value pairs to associate with the firewall.
-	Tags pulumi.StringMapInput
+	Tags        pulumi.StringMapInput
 }
 
 func (FirewallState) ElementType() reflect.Type {
@@ -206,12 +203,11 @@ type firewallArgs struct {
 	// Specifies the IPS patch switch status of the firewall.
 	IpsSwitchStatus *int `pulumi:"ipsSwitchStatus"`
 	// Specifies the firewall name.
-	Name       *string `pulumi:"name"`
-	Period     *int    `pulumi:"period"`
-	PeriodUnit *string `pulumi:"periodUnit"`
-	Region     *string `pulumi:"region"`
-	// Specifies the key/value pairs to associate with the firewall.
-	Tags map[string]string `pulumi:"tags"`
+	Name       *string           `pulumi:"name"`
+	Period     *int              `pulumi:"period"`
+	PeriodUnit *string           `pulumi:"periodUnit"`
+	Region     *string           `pulumi:"region"`
+	Tags       map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Firewall resource.
@@ -240,8 +236,7 @@ type FirewallArgs struct {
 	Period     pulumi.IntPtrInput
 	PeriodUnit pulumi.StringPtrInput
 	Region     pulumi.StringPtrInput
-	// Specifies the key/value pairs to associate with the firewall.
-	Tags pulumi.StringMapInput
+	Tags       pulumi.StringMapInput
 }
 
 func (FirewallArgs) ElementType() reflect.Type {
@@ -437,7 +432,6 @@ func (o FirewallOutput) SupportIpv6() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.BoolOutput { return v.SupportIpv6 }).(pulumi.BoolOutput)
 }
 
-// Specifies the key/value pairs to associate with the firewall.
 func (o FirewallOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }

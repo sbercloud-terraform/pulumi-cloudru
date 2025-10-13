@@ -67,7 +67,7 @@ export class Cluster extends pulumi.CustomResource {
     declare public readonly streamingCoreNodes: pulumi.Output<outputs.Mrs.ClusterStreamingCoreNodes | undefined>;
     declare public readonly streamingTaskNodes: pulumi.Output<outputs.Mrs.ClusterStreamingTaskNodes | undefined>;
     declare public readonly subnetId: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     declare public readonly templateId: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly totalNodeNumber: pulumi.Output<number>;
     declare public readonly type: pulumi.Output<string | undefined>;

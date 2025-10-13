@@ -15,6 +15,7 @@ export function getFlavors(args?: GetFlavorsArgs, opts?: pulumi.InvokeOptions): 
         "cpuArchitecture": args.cpuArchitecture,
         "engine": args.engine,
         "engineVersion": args.engineVersion,
+        "instanceId": args.instanceId,
         "name": args.name,
         "region": args.region,
     }, opts);
@@ -29,6 +30,7 @@ export interface GetFlavorsArgs {
     cpuArchitecture?: string;
     engine?: string;
     engineVersion?: string;
+    instanceId?: string;
     name?: string;
     region?: string;
 }
@@ -47,6 +49,7 @@ export interface GetFlavorsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly instanceId?: string;
     readonly name?: string;
     readonly region: string;
 }
@@ -59,6 +62,7 @@ export function getFlavorsOutput(args?: GetFlavorsOutputArgs, opts?: pulumi.Invo
         "cpuArchitecture": args.cpuArchitecture,
         "engine": args.engine,
         "engineVersion": args.engineVersion,
+        "instanceId": args.instanceId,
         "name": args.name,
         "region": args.region,
     }, opts);
@@ -73,6 +77,7 @@ export interface GetFlavorsOutputArgs {
     cpuArchitecture?: pulumi.Input<string>;
     engine?: pulumi.Input<string>;
     engineVersion?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
 }

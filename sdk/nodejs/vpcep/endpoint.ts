@@ -44,7 +44,7 @@ export class Endpoint extends pulumi.CustomResource {
     declare public /*out*/ readonly serviceName: pulumi.Output<string>;
     declare public /*out*/ readonly serviceType: pulumi.Output<string>;
     declare public /*out*/ readonly status: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     declare public readonly vpcId: pulumi.Output<string>;
     declare public readonly whitelists: pulumi.Output<string[] | undefined>;
 

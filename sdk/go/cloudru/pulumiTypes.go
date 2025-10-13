@@ -1603,6 +1603,658 @@ func (o CbrCheckpointBackupArrayOutput) Index(i pulumi.IntInput) CbrCheckpointBa
 	}).(CbrCheckpointBackupOutput)
 }
 
+type CceClusterUpgradeAddon struct {
+	AddonTemplateName string                        `pulumi:"addonTemplateName"`
+	Operation         string                        `pulumi:"operation"`
+	Values            *CceClusterUpgradeAddonValues `pulumi:"values"`
+	Version           string                        `pulumi:"version"`
+}
+
+// CceClusterUpgradeAddonInput is an input type that accepts CceClusterUpgradeAddonArgs and CceClusterUpgradeAddonOutput values.
+// You can construct a concrete instance of `CceClusterUpgradeAddonInput` via:
+//
+//	CceClusterUpgradeAddonArgs{...}
+type CceClusterUpgradeAddonInput interface {
+	pulumi.Input
+
+	ToCceClusterUpgradeAddonOutput() CceClusterUpgradeAddonOutput
+	ToCceClusterUpgradeAddonOutputWithContext(context.Context) CceClusterUpgradeAddonOutput
+}
+
+type CceClusterUpgradeAddonArgs struct {
+	AddonTemplateName pulumi.StringInput                   `pulumi:"addonTemplateName"`
+	Operation         pulumi.StringInput                   `pulumi:"operation"`
+	Values            CceClusterUpgradeAddonValuesPtrInput `pulumi:"values"`
+	Version           pulumi.StringInput                   `pulumi:"version"`
+}
+
+func (CceClusterUpgradeAddonArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CceClusterUpgradeAddon)(nil)).Elem()
+}
+
+func (i CceClusterUpgradeAddonArgs) ToCceClusterUpgradeAddonOutput() CceClusterUpgradeAddonOutput {
+	return i.ToCceClusterUpgradeAddonOutputWithContext(context.Background())
+}
+
+func (i CceClusterUpgradeAddonArgs) ToCceClusterUpgradeAddonOutputWithContext(ctx context.Context) CceClusterUpgradeAddonOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CceClusterUpgradeAddonOutput)
+}
+
+// CceClusterUpgradeAddonArrayInput is an input type that accepts CceClusterUpgradeAddonArray and CceClusterUpgradeAddonArrayOutput values.
+// You can construct a concrete instance of `CceClusterUpgradeAddonArrayInput` via:
+//
+//	CceClusterUpgradeAddonArray{ CceClusterUpgradeAddonArgs{...} }
+type CceClusterUpgradeAddonArrayInput interface {
+	pulumi.Input
+
+	ToCceClusterUpgradeAddonArrayOutput() CceClusterUpgradeAddonArrayOutput
+	ToCceClusterUpgradeAddonArrayOutputWithContext(context.Context) CceClusterUpgradeAddonArrayOutput
+}
+
+type CceClusterUpgradeAddonArray []CceClusterUpgradeAddonInput
+
+func (CceClusterUpgradeAddonArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CceClusterUpgradeAddon)(nil)).Elem()
+}
+
+func (i CceClusterUpgradeAddonArray) ToCceClusterUpgradeAddonArrayOutput() CceClusterUpgradeAddonArrayOutput {
+	return i.ToCceClusterUpgradeAddonArrayOutputWithContext(context.Background())
+}
+
+func (i CceClusterUpgradeAddonArray) ToCceClusterUpgradeAddonArrayOutputWithContext(ctx context.Context) CceClusterUpgradeAddonArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CceClusterUpgradeAddonArrayOutput)
+}
+
+type CceClusterUpgradeAddonOutput struct{ *pulumi.OutputState }
+
+func (CceClusterUpgradeAddonOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CceClusterUpgradeAddon)(nil)).Elem()
+}
+
+func (o CceClusterUpgradeAddonOutput) ToCceClusterUpgradeAddonOutput() CceClusterUpgradeAddonOutput {
+	return o
+}
+
+func (o CceClusterUpgradeAddonOutput) ToCceClusterUpgradeAddonOutputWithContext(ctx context.Context) CceClusterUpgradeAddonOutput {
+	return o
+}
+
+func (o CceClusterUpgradeAddonOutput) AddonTemplateName() pulumi.StringOutput {
+	return o.ApplyT(func(v CceClusterUpgradeAddon) string { return v.AddonTemplateName }).(pulumi.StringOutput)
+}
+
+func (o CceClusterUpgradeAddonOutput) Operation() pulumi.StringOutput {
+	return o.ApplyT(func(v CceClusterUpgradeAddon) string { return v.Operation }).(pulumi.StringOutput)
+}
+
+func (o CceClusterUpgradeAddonOutput) Values() CceClusterUpgradeAddonValuesPtrOutput {
+	return o.ApplyT(func(v CceClusterUpgradeAddon) *CceClusterUpgradeAddonValues { return v.Values }).(CceClusterUpgradeAddonValuesPtrOutput)
+}
+
+func (o CceClusterUpgradeAddonOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v CceClusterUpgradeAddon) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type CceClusterUpgradeAddonArrayOutput struct{ *pulumi.OutputState }
+
+func (CceClusterUpgradeAddonArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CceClusterUpgradeAddon)(nil)).Elem()
+}
+
+func (o CceClusterUpgradeAddonArrayOutput) ToCceClusterUpgradeAddonArrayOutput() CceClusterUpgradeAddonArrayOutput {
+	return o
+}
+
+func (o CceClusterUpgradeAddonArrayOutput) ToCceClusterUpgradeAddonArrayOutputWithContext(ctx context.Context) CceClusterUpgradeAddonArrayOutput {
+	return o
+}
+
+func (o CceClusterUpgradeAddonArrayOutput) Index(i pulumi.IntInput) CceClusterUpgradeAddonOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CceClusterUpgradeAddon {
+		return vs[0].([]CceClusterUpgradeAddon)[vs[1].(int)]
+	}).(CceClusterUpgradeAddonOutput)
+}
+
+type CceClusterUpgradeAddonValues struct {
+	BasicJson  *string `pulumi:"basicJson"`
+	CustomJson *string `pulumi:"customJson"`
+	FlavorJson *string `pulumi:"flavorJson"`
+}
+
+// CceClusterUpgradeAddonValuesInput is an input type that accepts CceClusterUpgradeAddonValuesArgs and CceClusterUpgradeAddonValuesOutput values.
+// You can construct a concrete instance of `CceClusterUpgradeAddonValuesInput` via:
+//
+//	CceClusterUpgradeAddonValuesArgs{...}
+type CceClusterUpgradeAddonValuesInput interface {
+	pulumi.Input
+
+	ToCceClusterUpgradeAddonValuesOutput() CceClusterUpgradeAddonValuesOutput
+	ToCceClusterUpgradeAddonValuesOutputWithContext(context.Context) CceClusterUpgradeAddonValuesOutput
+}
+
+type CceClusterUpgradeAddonValuesArgs struct {
+	BasicJson  pulumi.StringPtrInput `pulumi:"basicJson"`
+	CustomJson pulumi.StringPtrInput `pulumi:"customJson"`
+	FlavorJson pulumi.StringPtrInput `pulumi:"flavorJson"`
+}
+
+func (CceClusterUpgradeAddonValuesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CceClusterUpgradeAddonValues)(nil)).Elem()
+}
+
+func (i CceClusterUpgradeAddonValuesArgs) ToCceClusterUpgradeAddonValuesOutput() CceClusterUpgradeAddonValuesOutput {
+	return i.ToCceClusterUpgradeAddonValuesOutputWithContext(context.Background())
+}
+
+func (i CceClusterUpgradeAddonValuesArgs) ToCceClusterUpgradeAddonValuesOutputWithContext(ctx context.Context) CceClusterUpgradeAddonValuesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CceClusterUpgradeAddonValuesOutput)
+}
+
+func (i CceClusterUpgradeAddonValuesArgs) ToCceClusterUpgradeAddonValuesPtrOutput() CceClusterUpgradeAddonValuesPtrOutput {
+	return i.ToCceClusterUpgradeAddonValuesPtrOutputWithContext(context.Background())
+}
+
+func (i CceClusterUpgradeAddonValuesArgs) ToCceClusterUpgradeAddonValuesPtrOutputWithContext(ctx context.Context) CceClusterUpgradeAddonValuesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CceClusterUpgradeAddonValuesOutput).ToCceClusterUpgradeAddonValuesPtrOutputWithContext(ctx)
+}
+
+// CceClusterUpgradeAddonValuesPtrInput is an input type that accepts CceClusterUpgradeAddonValuesArgs, CceClusterUpgradeAddonValuesPtr and CceClusterUpgradeAddonValuesPtrOutput values.
+// You can construct a concrete instance of `CceClusterUpgradeAddonValuesPtrInput` via:
+//
+//	        CceClusterUpgradeAddonValuesArgs{...}
+//
+//	or:
+//
+//	        nil
+type CceClusterUpgradeAddonValuesPtrInput interface {
+	pulumi.Input
+
+	ToCceClusterUpgradeAddonValuesPtrOutput() CceClusterUpgradeAddonValuesPtrOutput
+	ToCceClusterUpgradeAddonValuesPtrOutputWithContext(context.Context) CceClusterUpgradeAddonValuesPtrOutput
+}
+
+type cceClusterUpgradeAddonValuesPtrType CceClusterUpgradeAddonValuesArgs
+
+func CceClusterUpgradeAddonValuesPtr(v *CceClusterUpgradeAddonValuesArgs) CceClusterUpgradeAddonValuesPtrInput {
+	return (*cceClusterUpgradeAddonValuesPtrType)(v)
+}
+
+func (*cceClusterUpgradeAddonValuesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CceClusterUpgradeAddonValues)(nil)).Elem()
+}
+
+func (i *cceClusterUpgradeAddonValuesPtrType) ToCceClusterUpgradeAddonValuesPtrOutput() CceClusterUpgradeAddonValuesPtrOutput {
+	return i.ToCceClusterUpgradeAddonValuesPtrOutputWithContext(context.Background())
+}
+
+func (i *cceClusterUpgradeAddonValuesPtrType) ToCceClusterUpgradeAddonValuesPtrOutputWithContext(ctx context.Context) CceClusterUpgradeAddonValuesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CceClusterUpgradeAddonValuesPtrOutput)
+}
+
+type CceClusterUpgradeAddonValuesOutput struct{ *pulumi.OutputState }
+
+func (CceClusterUpgradeAddonValuesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CceClusterUpgradeAddonValues)(nil)).Elem()
+}
+
+func (o CceClusterUpgradeAddonValuesOutput) ToCceClusterUpgradeAddonValuesOutput() CceClusterUpgradeAddonValuesOutput {
+	return o
+}
+
+func (o CceClusterUpgradeAddonValuesOutput) ToCceClusterUpgradeAddonValuesOutputWithContext(ctx context.Context) CceClusterUpgradeAddonValuesOutput {
+	return o
+}
+
+func (o CceClusterUpgradeAddonValuesOutput) ToCceClusterUpgradeAddonValuesPtrOutput() CceClusterUpgradeAddonValuesPtrOutput {
+	return o.ToCceClusterUpgradeAddonValuesPtrOutputWithContext(context.Background())
+}
+
+func (o CceClusterUpgradeAddonValuesOutput) ToCceClusterUpgradeAddonValuesPtrOutputWithContext(ctx context.Context) CceClusterUpgradeAddonValuesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CceClusterUpgradeAddonValues) *CceClusterUpgradeAddonValues {
+		return &v
+	}).(CceClusterUpgradeAddonValuesPtrOutput)
+}
+
+func (o CceClusterUpgradeAddonValuesOutput) BasicJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CceClusterUpgradeAddonValues) *string { return v.BasicJson }).(pulumi.StringPtrOutput)
+}
+
+func (o CceClusterUpgradeAddonValuesOutput) CustomJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CceClusterUpgradeAddonValues) *string { return v.CustomJson }).(pulumi.StringPtrOutput)
+}
+
+func (o CceClusterUpgradeAddonValuesOutput) FlavorJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CceClusterUpgradeAddonValues) *string { return v.FlavorJson }).(pulumi.StringPtrOutput)
+}
+
+type CceClusterUpgradeAddonValuesPtrOutput struct{ *pulumi.OutputState }
+
+func (CceClusterUpgradeAddonValuesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CceClusterUpgradeAddonValues)(nil)).Elem()
+}
+
+func (o CceClusterUpgradeAddonValuesPtrOutput) ToCceClusterUpgradeAddonValuesPtrOutput() CceClusterUpgradeAddonValuesPtrOutput {
+	return o
+}
+
+func (o CceClusterUpgradeAddonValuesPtrOutput) ToCceClusterUpgradeAddonValuesPtrOutputWithContext(ctx context.Context) CceClusterUpgradeAddonValuesPtrOutput {
+	return o
+}
+
+func (o CceClusterUpgradeAddonValuesPtrOutput) Elem() CceClusterUpgradeAddonValuesOutput {
+	return o.ApplyT(func(v *CceClusterUpgradeAddonValues) CceClusterUpgradeAddonValues {
+		if v != nil {
+			return *v
+		}
+		var ret CceClusterUpgradeAddonValues
+		return ret
+	}).(CceClusterUpgradeAddonValuesOutput)
+}
+
+func (o CceClusterUpgradeAddonValuesPtrOutput) BasicJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CceClusterUpgradeAddonValues) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BasicJson
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CceClusterUpgradeAddonValuesPtrOutput) CustomJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CceClusterUpgradeAddonValues) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomJson
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CceClusterUpgradeAddonValuesPtrOutput) FlavorJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CceClusterUpgradeAddonValues) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FlavorJson
+	}).(pulumi.StringPtrOutput)
+}
+
+type CceClusterUpgradeStrategy struct {
+	InPlaceRollingUpdate *CceClusterUpgradeStrategyInPlaceRollingUpdate `pulumi:"inPlaceRollingUpdate"`
+	Type                 string                                         `pulumi:"type"`
+}
+
+// CceClusterUpgradeStrategyInput is an input type that accepts CceClusterUpgradeStrategyArgs and CceClusterUpgradeStrategyOutput values.
+// You can construct a concrete instance of `CceClusterUpgradeStrategyInput` via:
+//
+//	CceClusterUpgradeStrategyArgs{...}
+type CceClusterUpgradeStrategyInput interface {
+	pulumi.Input
+
+	ToCceClusterUpgradeStrategyOutput() CceClusterUpgradeStrategyOutput
+	ToCceClusterUpgradeStrategyOutputWithContext(context.Context) CceClusterUpgradeStrategyOutput
+}
+
+type CceClusterUpgradeStrategyArgs struct {
+	InPlaceRollingUpdate CceClusterUpgradeStrategyInPlaceRollingUpdatePtrInput `pulumi:"inPlaceRollingUpdate"`
+	Type                 pulumi.StringInput                                    `pulumi:"type"`
+}
+
+func (CceClusterUpgradeStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CceClusterUpgradeStrategy)(nil)).Elem()
+}
+
+func (i CceClusterUpgradeStrategyArgs) ToCceClusterUpgradeStrategyOutput() CceClusterUpgradeStrategyOutput {
+	return i.ToCceClusterUpgradeStrategyOutputWithContext(context.Background())
+}
+
+func (i CceClusterUpgradeStrategyArgs) ToCceClusterUpgradeStrategyOutputWithContext(ctx context.Context) CceClusterUpgradeStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CceClusterUpgradeStrategyOutput)
+}
+
+func (i CceClusterUpgradeStrategyArgs) ToCceClusterUpgradeStrategyPtrOutput() CceClusterUpgradeStrategyPtrOutput {
+	return i.ToCceClusterUpgradeStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i CceClusterUpgradeStrategyArgs) ToCceClusterUpgradeStrategyPtrOutputWithContext(ctx context.Context) CceClusterUpgradeStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CceClusterUpgradeStrategyOutput).ToCceClusterUpgradeStrategyPtrOutputWithContext(ctx)
+}
+
+// CceClusterUpgradeStrategyPtrInput is an input type that accepts CceClusterUpgradeStrategyArgs, CceClusterUpgradeStrategyPtr and CceClusterUpgradeStrategyPtrOutput values.
+// You can construct a concrete instance of `CceClusterUpgradeStrategyPtrInput` via:
+//
+//	        CceClusterUpgradeStrategyArgs{...}
+//
+//	or:
+//
+//	        nil
+type CceClusterUpgradeStrategyPtrInput interface {
+	pulumi.Input
+
+	ToCceClusterUpgradeStrategyPtrOutput() CceClusterUpgradeStrategyPtrOutput
+	ToCceClusterUpgradeStrategyPtrOutputWithContext(context.Context) CceClusterUpgradeStrategyPtrOutput
+}
+
+type cceClusterUpgradeStrategyPtrType CceClusterUpgradeStrategyArgs
+
+func CceClusterUpgradeStrategyPtr(v *CceClusterUpgradeStrategyArgs) CceClusterUpgradeStrategyPtrInput {
+	return (*cceClusterUpgradeStrategyPtrType)(v)
+}
+
+func (*cceClusterUpgradeStrategyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CceClusterUpgradeStrategy)(nil)).Elem()
+}
+
+func (i *cceClusterUpgradeStrategyPtrType) ToCceClusterUpgradeStrategyPtrOutput() CceClusterUpgradeStrategyPtrOutput {
+	return i.ToCceClusterUpgradeStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i *cceClusterUpgradeStrategyPtrType) ToCceClusterUpgradeStrategyPtrOutputWithContext(ctx context.Context) CceClusterUpgradeStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CceClusterUpgradeStrategyPtrOutput)
+}
+
+type CceClusterUpgradeStrategyOutput struct{ *pulumi.OutputState }
+
+func (CceClusterUpgradeStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CceClusterUpgradeStrategy)(nil)).Elem()
+}
+
+func (o CceClusterUpgradeStrategyOutput) ToCceClusterUpgradeStrategyOutput() CceClusterUpgradeStrategyOutput {
+	return o
+}
+
+func (o CceClusterUpgradeStrategyOutput) ToCceClusterUpgradeStrategyOutputWithContext(ctx context.Context) CceClusterUpgradeStrategyOutput {
+	return o
+}
+
+func (o CceClusterUpgradeStrategyOutput) ToCceClusterUpgradeStrategyPtrOutput() CceClusterUpgradeStrategyPtrOutput {
+	return o.ToCceClusterUpgradeStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o CceClusterUpgradeStrategyOutput) ToCceClusterUpgradeStrategyPtrOutputWithContext(ctx context.Context) CceClusterUpgradeStrategyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CceClusterUpgradeStrategy) *CceClusterUpgradeStrategy {
+		return &v
+	}).(CceClusterUpgradeStrategyPtrOutput)
+}
+
+func (o CceClusterUpgradeStrategyOutput) InPlaceRollingUpdate() CceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutput {
+	return o.ApplyT(func(v CceClusterUpgradeStrategy) *CceClusterUpgradeStrategyInPlaceRollingUpdate {
+		return v.InPlaceRollingUpdate
+	}).(CceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutput)
+}
+
+func (o CceClusterUpgradeStrategyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v CceClusterUpgradeStrategy) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type CceClusterUpgradeStrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (CceClusterUpgradeStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CceClusterUpgradeStrategy)(nil)).Elem()
+}
+
+func (o CceClusterUpgradeStrategyPtrOutput) ToCceClusterUpgradeStrategyPtrOutput() CceClusterUpgradeStrategyPtrOutput {
+	return o
+}
+
+func (o CceClusterUpgradeStrategyPtrOutput) ToCceClusterUpgradeStrategyPtrOutputWithContext(ctx context.Context) CceClusterUpgradeStrategyPtrOutput {
+	return o
+}
+
+func (o CceClusterUpgradeStrategyPtrOutput) Elem() CceClusterUpgradeStrategyOutput {
+	return o.ApplyT(func(v *CceClusterUpgradeStrategy) CceClusterUpgradeStrategy {
+		if v != nil {
+			return *v
+		}
+		var ret CceClusterUpgradeStrategy
+		return ret
+	}).(CceClusterUpgradeStrategyOutput)
+}
+
+func (o CceClusterUpgradeStrategyPtrOutput) InPlaceRollingUpdate() CceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutput {
+	return o.ApplyT(func(v *CceClusterUpgradeStrategy) *CceClusterUpgradeStrategyInPlaceRollingUpdate {
+		if v == nil {
+			return nil
+		}
+		return v.InPlaceRollingUpdate
+	}).(CceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutput)
+}
+
+func (o CceClusterUpgradeStrategyPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CceClusterUpgradeStrategy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type CceClusterUpgradeStrategyInPlaceRollingUpdate struct {
+	UserDefinedStep *int `pulumi:"userDefinedStep"`
+}
+
+// CceClusterUpgradeStrategyInPlaceRollingUpdateInput is an input type that accepts CceClusterUpgradeStrategyInPlaceRollingUpdateArgs and CceClusterUpgradeStrategyInPlaceRollingUpdateOutput values.
+// You can construct a concrete instance of `CceClusterUpgradeStrategyInPlaceRollingUpdateInput` via:
+//
+//	CceClusterUpgradeStrategyInPlaceRollingUpdateArgs{...}
+type CceClusterUpgradeStrategyInPlaceRollingUpdateInput interface {
+	pulumi.Input
+
+	ToCceClusterUpgradeStrategyInPlaceRollingUpdateOutput() CceClusterUpgradeStrategyInPlaceRollingUpdateOutput
+	ToCceClusterUpgradeStrategyInPlaceRollingUpdateOutputWithContext(context.Context) CceClusterUpgradeStrategyInPlaceRollingUpdateOutput
+}
+
+type CceClusterUpgradeStrategyInPlaceRollingUpdateArgs struct {
+	UserDefinedStep pulumi.IntPtrInput `pulumi:"userDefinedStep"`
+}
+
+func (CceClusterUpgradeStrategyInPlaceRollingUpdateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CceClusterUpgradeStrategyInPlaceRollingUpdate)(nil)).Elem()
+}
+
+func (i CceClusterUpgradeStrategyInPlaceRollingUpdateArgs) ToCceClusterUpgradeStrategyInPlaceRollingUpdateOutput() CceClusterUpgradeStrategyInPlaceRollingUpdateOutput {
+	return i.ToCceClusterUpgradeStrategyInPlaceRollingUpdateOutputWithContext(context.Background())
+}
+
+func (i CceClusterUpgradeStrategyInPlaceRollingUpdateArgs) ToCceClusterUpgradeStrategyInPlaceRollingUpdateOutputWithContext(ctx context.Context) CceClusterUpgradeStrategyInPlaceRollingUpdateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CceClusterUpgradeStrategyInPlaceRollingUpdateOutput)
+}
+
+func (i CceClusterUpgradeStrategyInPlaceRollingUpdateArgs) ToCceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutput() CceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutput {
+	return i.ToCceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutputWithContext(context.Background())
+}
+
+func (i CceClusterUpgradeStrategyInPlaceRollingUpdateArgs) ToCceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutputWithContext(ctx context.Context) CceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CceClusterUpgradeStrategyInPlaceRollingUpdateOutput).ToCceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutputWithContext(ctx)
+}
+
+// CceClusterUpgradeStrategyInPlaceRollingUpdatePtrInput is an input type that accepts CceClusterUpgradeStrategyInPlaceRollingUpdateArgs, CceClusterUpgradeStrategyInPlaceRollingUpdatePtr and CceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutput values.
+// You can construct a concrete instance of `CceClusterUpgradeStrategyInPlaceRollingUpdatePtrInput` via:
+//
+//	        CceClusterUpgradeStrategyInPlaceRollingUpdateArgs{...}
+//
+//	or:
+//
+//	        nil
+type CceClusterUpgradeStrategyInPlaceRollingUpdatePtrInput interface {
+	pulumi.Input
+
+	ToCceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutput() CceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutput
+	ToCceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutputWithContext(context.Context) CceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutput
+}
+
+type cceClusterUpgradeStrategyInPlaceRollingUpdatePtrType CceClusterUpgradeStrategyInPlaceRollingUpdateArgs
+
+func CceClusterUpgradeStrategyInPlaceRollingUpdatePtr(v *CceClusterUpgradeStrategyInPlaceRollingUpdateArgs) CceClusterUpgradeStrategyInPlaceRollingUpdatePtrInput {
+	return (*cceClusterUpgradeStrategyInPlaceRollingUpdatePtrType)(v)
+}
+
+func (*cceClusterUpgradeStrategyInPlaceRollingUpdatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CceClusterUpgradeStrategyInPlaceRollingUpdate)(nil)).Elem()
+}
+
+func (i *cceClusterUpgradeStrategyInPlaceRollingUpdatePtrType) ToCceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutput() CceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutput {
+	return i.ToCceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutputWithContext(context.Background())
+}
+
+func (i *cceClusterUpgradeStrategyInPlaceRollingUpdatePtrType) ToCceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutputWithContext(ctx context.Context) CceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutput)
+}
+
+type CceClusterUpgradeStrategyInPlaceRollingUpdateOutput struct{ *pulumi.OutputState }
+
+func (CceClusterUpgradeStrategyInPlaceRollingUpdateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CceClusterUpgradeStrategyInPlaceRollingUpdate)(nil)).Elem()
+}
+
+func (o CceClusterUpgradeStrategyInPlaceRollingUpdateOutput) ToCceClusterUpgradeStrategyInPlaceRollingUpdateOutput() CceClusterUpgradeStrategyInPlaceRollingUpdateOutput {
+	return o
+}
+
+func (o CceClusterUpgradeStrategyInPlaceRollingUpdateOutput) ToCceClusterUpgradeStrategyInPlaceRollingUpdateOutputWithContext(ctx context.Context) CceClusterUpgradeStrategyInPlaceRollingUpdateOutput {
+	return o
+}
+
+func (o CceClusterUpgradeStrategyInPlaceRollingUpdateOutput) ToCceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutput() CceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutput {
+	return o.ToCceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutputWithContext(context.Background())
+}
+
+func (o CceClusterUpgradeStrategyInPlaceRollingUpdateOutput) ToCceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutputWithContext(ctx context.Context) CceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CceClusterUpgradeStrategyInPlaceRollingUpdate) *CceClusterUpgradeStrategyInPlaceRollingUpdate {
+		return &v
+	}).(CceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutput)
+}
+
+func (o CceClusterUpgradeStrategyInPlaceRollingUpdateOutput) UserDefinedStep() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CceClusterUpgradeStrategyInPlaceRollingUpdate) *int { return v.UserDefinedStep }).(pulumi.IntPtrOutput)
+}
+
+type CceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutput struct{ *pulumi.OutputState }
+
+func (CceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CceClusterUpgradeStrategyInPlaceRollingUpdate)(nil)).Elem()
+}
+
+func (o CceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutput) ToCceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutput() CceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutput {
+	return o
+}
+
+func (o CceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutput) ToCceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutputWithContext(ctx context.Context) CceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutput {
+	return o
+}
+
+func (o CceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutput) Elem() CceClusterUpgradeStrategyInPlaceRollingUpdateOutput {
+	return o.ApplyT(func(v *CceClusterUpgradeStrategyInPlaceRollingUpdate) CceClusterUpgradeStrategyInPlaceRollingUpdate {
+		if v != nil {
+			return *v
+		}
+		var ret CceClusterUpgradeStrategyInPlaceRollingUpdate
+		return ret
+	}).(CceClusterUpgradeStrategyInPlaceRollingUpdateOutput)
+}
+
+func (o CceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutput) UserDefinedStep() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CceClusterUpgradeStrategyInPlaceRollingUpdate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.UserDefinedStep
+	}).(pulumi.IntPtrOutput)
+}
+
+type CceNodesRemoveNode struct {
+	Uid string `pulumi:"uid"`
+}
+
+// CceNodesRemoveNodeInput is an input type that accepts CceNodesRemoveNodeArgs and CceNodesRemoveNodeOutput values.
+// You can construct a concrete instance of `CceNodesRemoveNodeInput` via:
+//
+//	CceNodesRemoveNodeArgs{...}
+type CceNodesRemoveNodeInput interface {
+	pulumi.Input
+
+	ToCceNodesRemoveNodeOutput() CceNodesRemoveNodeOutput
+	ToCceNodesRemoveNodeOutputWithContext(context.Context) CceNodesRemoveNodeOutput
+}
+
+type CceNodesRemoveNodeArgs struct {
+	Uid pulumi.StringInput `pulumi:"uid"`
+}
+
+func (CceNodesRemoveNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CceNodesRemoveNode)(nil)).Elem()
+}
+
+func (i CceNodesRemoveNodeArgs) ToCceNodesRemoveNodeOutput() CceNodesRemoveNodeOutput {
+	return i.ToCceNodesRemoveNodeOutputWithContext(context.Background())
+}
+
+func (i CceNodesRemoveNodeArgs) ToCceNodesRemoveNodeOutputWithContext(ctx context.Context) CceNodesRemoveNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CceNodesRemoveNodeOutput)
+}
+
+// CceNodesRemoveNodeArrayInput is an input type that accepts CceNodesRemoveNodeArray and CceNodesRemoveNodeArrayOutput values.
+// You can construct a concrete instance of `CceNodesRemoveNodeArrayInput` via:
+//
+//	CceNodesRemoveNodeArray{ CceNodesRemoveNodeArgs{...} }
+type CceNodesRemoveNodeArrayInput interface {
+	pulumi.Input
+
+	ToCceNodesRemoveNodeArrayOutput() CceNodesRemoveNodeArrayOutput
+	ToCceNodesRemoveNodeArrayOutputWithContext(context.Context) CceNodesRemoveNodeArrayOutput
+}
+
+type CceNodesRemoveNodeArray []CceNodesRemoveNodeInput
+
+func (CceNodesRemoveNodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CceNodesRemoveNode)(nil)).Elem()
+}
+
+func (i CceNodesRemoveNodeArray) ToCceNodesRemoveNodeArrayOutput() CceNodesRemoveNodeArrayOutput {
+	return i.ToCceNodesRemoveNodeArrayOutputWithContext(context.Background())
+}
+
+func (i CceNodesRemoveNodeArray) ToCceNodesRemoveNodeArrayOutputWithContext(ctx context.Context) CceNodesRemoveNodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CceNodesRemoveNodeArrayOutput)
+}
+
+type CceNodesRemoveNodeOutput struct{ *pulumi.OutputState }
+
+func (CceNodesRemoveNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CceNodesRemoveNode)(nil)).Elem()
+}
+
+func (o CceNodesRemoveNodeOutput) ToCceNodesRemoveNodeOutput() CceNodesRemoveNodeOutput {
+	return o
+}
+
+func (o CceNodesRemoveNodeOutput) ToCceNodesRemoveNodeOutputWithContext(ctx context.Context) CceNodesRemoveNodeOutput {
+	return o
+}
+
+func (o CceNodesRemoveNodeOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v CceNodesRemoveNode) string { return v.Uid }).(pulumi.StringOutput)
+}
+
+type CceNodesRemoveNodeArrayOutput struct{ *pulumi.OutputState }
+
+func (CceNodesRemoveNodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CceNodesRemoveNode)(nil)).Elem()
+}
+
+func (o CceNodesRemoveNodeArrayOutput) ToCceNodesRemoveNodeArrayOutput() CceNodesRemoveNodeArrayOutput {
+	return o
+}
+
+func (o CceNodesRemoveNodeArrayOutput) ToCceNodesRemoveNodeArrayOutputWithContext(ctx context.Context) CceNodesRemoveNodeArrayOutput {
+	return o
+}
+
+func (o CceNodesRemoveNodeArrayOutput) Index(i pulumi.IntInput) CceNodesRemoveNodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CceNodesRemoveNode {
+		return vs[0].([]CceNodesRemoveNode)[vs[1].(int)]
+	}).(CceNodesRemoveNodeOutput)
+}
+
 type DcsParametersConfigurationParameter struct {
 	Name           *string `pulumi:"name"`
 	NeedRestart    *bool   `pulumi:"needRestart"`
@@ -8961,6 +9613,687 @@ func (o GesGraphVertexIdTypePtrOutput) IdType() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.IdType
+	}).(pulumi.StringPtrOutput)
+}
+
+type KpsKeypairAssociateServer struct {
+	// Specifies the authentication information.
+	Auth *KpsKeypairAssociateServerAuth `pulumi:"auth"`
+	// Specifies whether the password is disabled.
+	DisablePassword *bool `pulumi:"disablePassword"`
+	// Specifies ID of the ECS.
+	Id string `pulumi:"id"`
+	// Specifies the SSH listening port.
+	Port *int `pulumi:"port"`
+}
+
+// KpsKeypairAssociateServerInput is an input type that accepts KpsKeypairAssociateServerArgs and KpsKeypairAssociateServerOutput values.
+// You can construct a concrete instance of `KpsKeypairAssociateServerInput` via:
+//
+//	KpsKeypairAssociateServerArgs{...}
+type KpsKeypairAssociateServerInput interface {
+	pulumi.Input
+
+	ToKpsKeypairAssociateServerOutput() KpsKeypairAssociateServerOutput
+	ToKpsKeypairAssociateServerOutputWithContext(context.Context) KpsKeypairAssociateServerOutput
+}
+
+type KpsKeypairAssociateServerArgs struct {
+	// Specifies the authentication information.
+	Auth KpsKeypairAssociateServerAuthPtrInput `pulumi:"auth"`
+	// Specifies whether the password is disabled.
+	DisablePassword pulumi.BoolPtrInput `pulumi:"disablePassword"`
+	// Specifies ID of the ECS.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Specifies the SSH listening port.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (KpsKeypairAssociateServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KpsKeypairAssociateServer)(nil)).Elem()
+}
+
+func (i KpsKeypairAssociateServerArgs) ToKpsKeypairAssociateServerOutput() KpsKeypairAssociateServerOutput {
+	return i.ToKpsKeypairAssociateServerOutputWithContext(context.Background())
+}
+
+func (i KpsKeypairAssociateServerArgs) ToKpsKeypairAssociateServerOutputWithContext(ctx context.Context) KpsKeypairAssociateServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KpsKeypairAssociateServerOutput)
+}
+
+func (i KpsKeypairAssociateServerArgs) ToKpsKeypairAssociateServerPtrOutput() KpsKeypairAssociateServerPtrOutput {
+	return i.ToKpsKeypairAssociateServerPtrOutputWithContext(context.Background())
+}
+
+func (i KpsKeypairAssociateServerArgs) ToKpsKeypairAssociateServerPtrOutputWithContext(ctx context.Context) KpsKeypairAssociateServerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KpsKeypairAssociateServerOutput).ToKpsKeypairAssociateServerPtrOutputWithContext(ctx)
+}
+
+// KpsKeypairAssociateServerPtrInput is an input type that accepts KpsKeypairAssociateServerArgs, KpsKeypairAssociateServerPtr and KpsKeypairAssociateServerPtrOutput values.
+// You can construct a concrete instance of `KpsKeypairAssociateServerPtrInput` via:
+//
+//	        KpsKeypairAssociateServerArgs{...}
+//
+//	or:
+//
+//	        nil
+type KpsKeypairAssociateServerPtrInput interface {
+	pulumi.Input
+
+	ToKpsKeypairAssociateServerPtrOutput() KpsKeypairAssociateServerPtrOutput
+	ToKpsKeypairAssociateServerPtrOutputWithContext(context.Context) KpsKeypairAssociateServerPtrOutput
+}
+
+type kpsKeypairAssociateServerPtrType KpsKeypairAssociateServerArgs
+
+func KpsKeypairAssociateServerPtr(v *KpsKeypairAssociateServerArgs) KpsKeypairAssociateServerPtrInput {
+	return (*kpsKeypairAssociateServerPtrType)(v)
+}
+
+func (*kpsKeypairAssociateServerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KpsKeypairAssociateServer)(nil)).Elem()
+}
+
+func (i *kpsKeypairAssociateServerPtrType) ToKpsKeypairAssociateServerPtrOutput() KpsKeypairAssociateServerPtrOutput {
+	return i.ToKpsKeypairAssociateServerPtrOutputWithContext(context.Background())
+}
+
+func (i *kpsKeypairAssociateServerPtrType) ToKpsKeypairAssociateServerPtrOutputWithContext(ctx context.Context) KpsKeypairAssociateServerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KpsKeypairAssociateServerPtrOutput)
+}
+
+type KpsKeypairAssociateServerOutput struct{ *pulumi.OutputState }
+
+func (KpsKeypairAssociateServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KpsKeypairAssociateServer)(nil)).Elem()
+}
+
+func (o KpsKeypairAssociateServerOutput) ToKpsKeypairAssociateServerOutput() KpsKeypairAssociateServerOutput {
+	return o
+}
+
+func (o KpsKeypairAssociateServerOutput) ToKpsKeypairAssociateServerOutputWithContext(ctx context.Context) KpsKeypairAssociateServerOutput {
+	return o
+}
+
+func (o KpsKeypairAssociateServerOutput) ToKpsKeypairAssociateServerPtrOutput() KpsKeypairAssociateServerPtrOutput {
+	return o.ToKpsKeypairAssociateServerPtrOutputWithContext(context.Background())
+}
+
+func (o KpsKeypairAssociateServerOutput) ToKpsKeypairAssociateServerPtrOutputWithContext(ctx context.Context) KpsKeypairAssociateServerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KpsKeypairAssociateServer) *KpsKeypairAssociateServer {
+		return &v
+	}).(KpsKeypairAssociateServerPtrOutput)
+}
+
+// Specifies the authentication information.
+func (o KpsKeypairAssociateServerOutput) Auth() KpsKeypairAssociateServerAuthPtrOutput {
+	return o.ApplyT(func(v KpsKeypairAssociateServer) *KpsKeypairAssociateServerAuth { return v.Auth }).(KpsKeypairAssociateServerAuthPtrOutput)
+}
+
+// Specifies whether the password is disabled.
+func (o KpsKeypairAssociateServerOutput) DisablePassword() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v KpsKeypairAssociateServer) *bool { return v.DisablePassword }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies ID of the ECS.
+func (o KpsKeypairAssociateServerOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v KpsKeypairAssociateServer) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Specifies the SSH listening port.
+func (o KpsKeypairAssociateServerOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v KpsKeypairAssociateServer) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type KpsKeypairAssociateServerPtrOutput struct{ *pulumi.OutputState }
+
+func (KpsKeypairAssociateServerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KpsKeypairAssociateServer)(nil)).Elem()
+}
+
+func (o KpsKeypairAssociateServerPtrOutput) ToKpsKeypairAssociateServerPtrOutput() KpsKeypairAssociateServerPtrOutput {
+	return o
+}
+
+func (o KpsKeypairAssociateServerPtrOutput) ToKpsKeypairAssociateServerPtrOutputWithContext(ctx context.Context) KpsKeypairAssociateServerPtrOutput {
+	return o
+}
+
+func (o KpsKeypairAssociateServerPtrOutput) Elem() KpsKeypairAssociateServerOutput {
+	return o.ApplyT(func(v *KpsKeypairAssociateServer) KpsKeypairAssociateServer {
+		if v != nil {
+			return *v
+		}
+		var ret KpsKeypairAssociateServer
+		return ret
+	}).(KpsKeypairAssociateServerOutput)
+}
+
+// Specifies the authentication information.
+func (o KpsKeypairAssociateServerPtrOutput) Auth() KpsKeypairAssociateServerAuthPtrOutput {
+	return o.ApplyT(func(v *KpsKeypairAssociateServer) *KpsKeypairAssociateServerAuth {
+		if v == nil {
+			return nil
+		}
+		return v.Auth
+	}).(KpsKeypairAssociateServerAuthPtrOutput)
+}
+
+// Specifies whether the password is disabled.
+func (o KpsKeypairAssociateServerPtrOutput) DisablePassword() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KpsKeypairAssociateServer) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisablePassword
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies ID of the ECS.
+func (o KpsKeypairAssociateServerPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KpsKeypairAssociateServer) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the SSH listening port.
+func (o KpsKeypairAssociateServerPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *KpsKeypairAssociateServer) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+type KpsKeypairAssociateServerAuth struct {
+	// Specifies the value of the key.
+	Key *string `pulumi:"key"`
+	// Specifies the value of the authentication type.
+	Type *string `pulumi:"type"`
+}
+
+// KpsKeypairAssociateServerAuthInput is an input type that accepts KpsKeypairAssociateServerAuthArgs and KpsKeypairAssociateServerAuthOutput values.
+// You can construct a concrete instance of `KpsKeypairAssociateServerAuthInput` via:
+//
+//	KpsKeypairAssociateServerAuthArgs{...}
+type KpsKeypairAssociateServerAuthInput interface {
+	pulumi.Input
+
+	ToKpsKeypairAssociateServerAuthOutput() KpsKeypairAssociateServerAuthOutput
+	ToKpsKeypairAssociateServerAuthOutputWithContext(context.Context) KpsKeypairAssociateServerAuthOutput
+}
+
+type KpsKeypairAssociateServerAuthArgs struct {
+	// Specifies the value of the key.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Specifies the value of the authentication type.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (KpsKeypairAssociateServerAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KpsKeypairAssociateServerAuth)(nil)).Elem()
+}
+
+func (i KpsKeypairAssociateServerAuthArgs) ToKpsKeypairAssociateServerAuthOutput() KpsKeypairAssociateServerAuthOutput {
+	return i.ToKpsKeypairAssociateServerAuthOutputWithContext(context.Background())
+}
+
+func (i KpsKeypairAssociateServerAuthArgs) ToKpsKeypairAssociateServerAuthOutputWithContext(ctx context.Context) KpsKeypairAssociateServerAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KpsKeypairAssociateServerAuthOutput)
+}
+
+func (i KpsKeypairAssociateServerAuthArgs) ToKpsKeypairAssociateServerAuthPtrOutput() KpsKeypairAssociateServerAuthPtrOutput {
+	return i.ToKpsKeypairAssociateServerAuthPtrOutputWithContext(context.Background())
+}
+
+func (i KpsKeypairAssociateServerAuthArgs) ToKpsKeypairAssociateServerAuthPtrOutputWithContext(ctx context.Context) KpsKeypairAssociateServerAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KpsKeypairAssociateServerAuthOutput).ToKpsKeypairAssociateServerAuthPtrOutputWithContext(ctx)
+}
+
+// KpsKeypairAssociateServerAuthPtrInput is an input type that accepts KpsKeypairAssociateServerAuthArgs, KpsKeypairAssociateServerAuthPtr and KpsKeypairAssociateServerAuthPtrOutput values.
+// You can construct a concrete instance of `KpsKeypairAssociateServerAuthPtrInput` via:
+//
+//	        KpsKeypairAssociateServerAuthArgs{...}
+//
+//	or:
+//
+//	        nil
+type KpsKeypairAssociateServerAuthPtrInput interface {
+	pulumi.Input
+
+	ToKpsKeypairAssociateServerAuthPtrOutput() KpsKeypairAssociateServerAuthPtrOutput
+	ToKpsKeypairAssociateServerAuthPtrOutputWithContext(context.Context) KpsKeypairAssociateServerAuthPtrOutput
+}
+
+type kpsKeypairAssociateServerAuthPtrType KpsKeypairAssociateServerAuthArgs
+
+func KpsKeypairAssociateServerAuthPtr(v *KpsKeypairAssociateServerAuthArgs) KpsKeypairAssociateServerAuthPtrInput {
+	return (*kpsKeypairAssociateServerAuthPtrType)(v)
+}
+
+func (*kpsKeypairAssociateServerAuthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KpsKeypairAssociateServerAuth)(nil)).Elem()
+}
+
+func (i *kpsKeypairAssociateServerAuthPtrType) ToKpsKeypairAssociateServerAuthPtrOutput() KpsKeypairAssociateServerAuthPtrOutput {
+	return i.ToKpsKeypairAssociateServerAuthPtrOutputWithContext(context.Background())
+}
+
+func (i *kpsKeypairAssociateServerAuthPtrType) ToKpsKeypairAssociateServerAuthPtrOutputWithContext(ctx context.Context) KpsKeypairAssociateServerAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KpsKeypairAssociateServerAuthPtrOutput)
+}
+
+type KpsKeypairAssociateServerAuthOutput struct{ *pulumi.OutputState }
+
+func (KpsKeypairAssociateServerAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KpsKeypairAssociateServerAuth)(nil)).Elem()
+}
+
+func (o KpsKeypairAssociateServerAuthOutput) ToKpsKeypairAssociateServerAuthOutput() KpsKeypairAssociateServerAuthOutput {
+	return o
+}
+
+func (o KpsKeypairAssociateServerAuthOutput) ToKpsKeypairAssociateServerAuthOutputWithContext(ctx context.Context) KpsKeypairAssociateServerAuthOutput {
+	return o
+}
+
+func (o KpsKeypairAssociateServerAuthOutput) ToKpsKeypairAssociateServerAuthPtrOutput() KpsKeypairAssociateServerAuthPtrOutput {
+	return o.ToKpsKeypairAssociateServerAuthPtrOutputWithContext(context.Background())
+}
+
+func (o KpsKeypairAssociateServerAuthOutput) ToKpsKeypairAssociateServerAuthPtrOutputWithContext(ctx context.Context) KpsKeypairAssociateServerAuthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KpsKeypairAssociateServerAuth) *KpsKeypairAssociateServerAuth {
+		return &v
+	}).(KpsKeypairAssociateServerAuthPtrOutput)
+}
+
+// Specifies the value of the key.
+func (o KpsKeypairAssociateServerAuthOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KpsKeypairAssociateServerAuth) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the value of the authentication type.
+func (o KpsKeypairAssociateServerAuthOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KpsKeypairAssociateServerAuth) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type KpsKeypairAssociateServerAuthPtrOutput struct{ *pulumi.OutputState }
+
+func (KpsKeypairAssociateServerAuthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KpsKeypairAssociateServerAuth)(nil)).Elem()
+}
+
+func (o KpsKeypairAssociateServerAuthPtrOutput) ToKpsKeypairAssociateServerAuthPtrOutput() KpsKeypairAssociateServerAuthPtrOutput {
+	return o
+}
+
+func (o KpsKeypairAssociateServerAuthPtrOutput) ToKpsKeypairAssociateServerAuthPtrOutputWithContext(ctx context.Context) KpsKeypairAssociateServerAuthPtrOutput {
+	return o
+}
+
+func (o KpsKeypairAssociateServerAuthPtrOutput) Elem() KpsKeypairAssociateServerAuthOutput {
+	return o.ApplyT(func(v *KpsKeypairAssociateServerAuth) KpsKeypairAssociateServerAuth {
+		if v != nil {
+			return *v
+		}
+		var ret KpsKeypairAssociateServerAuth
+		return ret
+	}).(KpsKeypairAssociateServerAuthOutput)
+}
+
+// Specifies the value of the key.
+func (o KpsKeypairAssociateServerAuthPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KpsKeypairAssociateServerAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the value of the authentication type.
+func (o KpsKeypairAssociateServerAuthPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KpsKeypairAssociateServerAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type KpsKeypairDisassociateServer struct {
+	// Specifies the authentication type.
+	Auth *KpsKeypairDisassociateServerAuth `pulumi:"auth"`
+	// Specifies ID of the ECS.
+	Id string `pulumi:"id"`
+	// Specifies the SSH listening port.
+	Port *int `pulumi:"port"`
+}
+
+// KpsKeypairDisassociateServerInput is an input type that accepts KpsKeypairDisassociateServerArgs and KpsKeypairDisassociateServerOutput values.
+// You can construct a concrete instance of `KpsKeypairDisassociateServerInput` via:
+//
+//	KpsKeypairDisassociateServerArgs{...}
+type KpsKeypairDisassociateServerInput interface {
+	pulumi.Input
+
+	ToKpsKeypairDisassociateServerOutput() KpsKeypairDisassociateServerOutput
+	ToKpsKeypairDisassociateServerOutputWithContext(context.Context) KpsKeypairDisassociateServerOutput
+}
+
+type KpsKeypairDisassociateServerArgs struct {
+	// Specifies the authentication type.
+	Auth KpsKeypairDisassociateServerAuthPtrInput `pulumi:"auth"`
+	// Specifies ID of the ECS.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Specifies the SSH listening port.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (KpsKeypairDisassociateServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KpsKeypairDisassociateServer)(nil)).Elem()
+}
+
+func (i KpsKeypairDisassociateServerArgs) ToKpsKeypairDisassociateServerOutput() KpsKeypairDisassociateServerOutput {
+	return i.ToKpsKeypairDisassociateServerOutputWithContext(context.Background())
+}
+
+func (i KpsKeypairDisassociateServerArgs) ToKpsKeypairDisassociateServerOutputWithContext(ctx context.Context) KpsKeypairDisassociateServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KpsKeypairDisassociateServerOutput)
+}
+
+func (i KpsKeypairDisassociateServerArgs) ToKpsKeypairDisassociateServerPtrOutput() KpsKeypairDisassociateServerPtrOutput {
+	return i.ToKpsKeypairDisassociateServerPtrOutputWithContext(context.Background())
+}
+
+func (i KpsKeypairDisassociateServerArgs) ToKpsKeypairDisassociateServerPtrOutputWithContext(ctx context.Context) KpsKeypairDisassociateServerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KpsKeypairDisassociateServerOutput).ToKpsKeypairDisassociateServerPtrOutputWithContext(ctx)
+}
+
+// KpsKeypairDisassociateServerPtrInput is an input type that accepts KpsKeypairDisassociateServerArgs, KpsKeypairDisassociateServerPtr and KpsKeypairDisassociateServerPtrOutput values.
+// You can construct a concrete instance of `KpsKeypairDisassociateServerPtrInput` via:
+//
+//	        KpsKeypairDisassociateServerArgs{...}
+//
+//	or:
+//
+//	        nil
+type KpsKeypairDisassociateServerPtrInput interface {
+	pulumi.Input
+
+	ToKpsKeypairDisassociateServerPtrOutput() KpsKeypairDisassociateServerPtrOutput
+	ToKpsKeypairDisassociateServerPtrOutputWithContext(context.Context) KpsKeypairDisassociateServerPtrOutput
+}
+
+type kpsKeypairDisassociateServerPtrType KpsKeypairDisassociateServerArgs
+
+func KpsKeypairDisassociateServerPtr(v *KpsKeypairDisassociateServerArgs) KpsKeypairDisassociateServerPtrInput {
+	return (*kpsKeypairDisassociateServerPtrType)(v)
+}
+
+func (*kpsKeypairDisassociateServerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KpsKeypairDisassociateServer)(nil)).Elem()
+}
+
+func (i *kpsKeypairDisassociateServerPtrType) ToKpsKeypairDisassociateServerPtrOutput() KpsKeypairDisassociateServerPtrOutput {
+	return i.ToKpsKeypairDisassociateServerPtrOutputWithContext(context.Background())
+}
+
+func (i *kpsKeypairDisassociateServerPtrType) ToKpsKeypairDisassociateServerPtrOutputWithContext(ctx context.Context) KpsKeypairDisassociateServerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KpsKeypairDisassociateServerPtrOutput)
+}
+
+type KpsKeypairDisassociateServerOutput struct{ *pulumi.OutputState }
+
+func (KpsKeypairDisassociateServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KpsKeypairDisassociateServer)(nil)).Elem()
+}
+
+func (o KpsKeypairDisassociateServerOutput) ToKpsKeypairDisassociateServerOutput() KpsKeypairDisassociateServerOutput {
+	return o
+}
+
+func (o KpsKeypairDisassociateServerOutput) ToKpsKeypairDisassociateServerOutputWithContext(ctx context.Context) KpsKeypairDisassociateServerOutput {
+	return o
+}
+
+func (o KpsKeypairDisassociateServerOutput) ToKpsKeypairDisassociateServerPtrOutput() KpsKeypairDisassociateServerPtrOutput {
+	return o.ToKpsKeypairDisassociateServerPtrOutputWithContext(context.Background())
+}
+
+func (o KpsKeypairDisassociateServerOutput) ToKpsKeypairDisassociateServerPtrOutputWithContext(ctx context.Context) KpsKeypairDisassociateServerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KpsKeypairDisassociateServer) *KpsKeypairDisassociateServer {
+		return &v
+	}).(KpsKeypairDisassociateServerPtrOutput)
+}
+
+// Specifies the authentication type.
+func (o KpsKeypairDisassociateServerOutput) Auth() KpsKeypairDisassociateServerAuthPtrOutput {
+	return o.ApplyT(func(v KpsKeypairDisassociateServer) *KpsKeypairDisassociateServerAuth { return v.Auth }).(KpsKeypairDisassociateServerAuthPtrOutput)
+}
+
+// Specifies ID of the ECS.
+func (o KpsKeypairDisassociateServerOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v KpsKeypairDisassociateServer) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Specifies the SSH listening port.
+func (o KpsKeypairDisassociateServerOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v KpsKeypairDisassociateServer) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type KpsKeypairDisassociateServerPtrOutput struct{ *pulumi.OutputState }
+
+func (KpsKeypairDisassociateServerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KpsKeypairDisassociateServer)(nil)).Elem()
+}
+
+func (o KpsKeypairDisassociateServerPtrOutput) ToKpsKeypairDisassociateServerPtrOutput() KpsKeypairDisassociateServerPtrOutput {
+	return o
+}
+
+func (o KpsKeypairDisassociateServerPtrOutput) ToKpsKeypairDisassociateServerPtrOutputWithContext(ctx context.Context) KpsKeypairDisassociateServerPtrOutput {
+	return o
+}
+
+func (o KpsKeypairDisassociateServerPtrOutput) Elem() KpsKeypairDisassociateServerOutput {
+	return o.ApplyT(func(v *KpsKeypairDisassociateServer) KpsKeypairDisassociateServer {
+		if v != nil {
+			return *v
+		}
+		var ret KpsKeypairDisassociateServer
+		return ret
+	}).(KpsKeypairDisassociateServerOutput)
+}
+
+// Specifies the authentication type.
+func (o KpsKeypairDisassociateServerPtrOutput) Auth() KpsKeypairDisassociateServerAuthPtrOutput {
+	return o.ApplyT(func(v *KpsKeypairDisassociateServer) *KpsKeypairDisassociateServerAuth {
+		if v == nil {
+			return nil
+		}
+		return v.Auth
+	}).(KpsKeypairDisassociateServerAuthPtrOutput)
+}
+
+// Specifies ID of the ECS.
+func (o KpsKeypairDisassociateServerPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KpsKeypairDisassociateServer) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the SSH listening port.
+func (o KpsKeypairDisassociateServerPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *KpsKeypairDisassociateServer) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+type KpsKeypairDisassociateServerAuth struct {
+	// Specifies the value of the key.
+	Key *string `pulumi:"key"`
+	// Specifies the value of an enumeration type.
+	Type *string `pulumi:"type"`
+}
+
+// KpsKeypairDisassociateServerAuthInput is an input type that accepts KpsKeypairDisassociateServerAuthArgs and KpsKeypairDisassociateServerAuthOutput values.
+// You can construct a concrete instance of `KpsKeypairDisassociateServerAuthInput` via:
+//
+//	KpsKeypairDisassociateServerAuthArgs{...}
+type KpsKeypairDisassociateServerAuthInput interface {
+	pulumi.Input
+
+	ToKpsKeypairDisassociateServerAuthOutput() KpsKeypairDisassociateServerAuthOutput
+	ToKpsKeypairDisassociateServerAuthOutputWithContext(context.Context) KpsKeypairDisassociateServerAuthOutput
+}
+
+type KpsKeypairDisassociateServerAuthArgs struct {
+	// Specifies the value of the key.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Specifies the value of an enumeration type.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (KpsKeypairDisassociateServerAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KpsKeypairDisassociateServerAuth)(nil)).Elem()
+}
+
+func (i KpsKeypairDisassociateServerAuthArgs) ToKpsKeypairDisassociateServerAuthOutput() KpsKeypairDisassociateServerAuthOutput {
+	return i.ToKpsKeypairDisassociateServerAuthOutputWithContext(context.Background())
+}
+
+func (i KpsKeypairDisassociateServerAuthArgs) ToKpsKeypairDisassociateServerAuthOutputWithContext(ctx context.Context) KpsKeypairDisassociateServerAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KpsKeypairDisassociateServerAuthOutput)
+}
+
+func (i KpsKeypairDisassociateServerAuthArgs) ToKpsKeypairDisassociateServerAuthPtrOutput() KpsKeypairDisassociateServerAuthPtrOutput {
+	return i.ToKpsKeypairDisassociateServerAuthPtrOutputWithContext(context.Background())
+}
+
+func (i KpsKeypairDisassociateServerAuthArgs) ToKpsKeypairDisassociateServerAuthPtrOutputWithContext(ctx context.Context) KpsKeypairDisassociateServerAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KpsKeypairDisassociateServerAuthOutput).ToKpsKeypairDisassociateServerAuthPtrOutputWithContext(ctx)
+}
+
+// KpsKeypairDisassociateServerAuthPtrInput is an input type that accepts KpsKeypairDisassociateServerAuthArgs, KpsKeypairDisassociateServerAuthPtr and KpsKeypairDisassociateServerAuthPtrOutput values.
+// You can construct a concrete instance of `KpsKeypairDisassociateServerAuthPtrInput` via:
+//
+//	        KpsKeypairDisassociateServerAuthArgs{...}
+//
+//	or:
+//
+//	        nil
+type KpsKeypairDisassociateServerAuthPtrInput interface {
+	pulumi.Input
+
+	ToKpsKeypairDisassociateServerAuthPtrOutput() KpsKeypairDisassociateServerAuthPtrOutput
+	ToKpsKeypairDisassociateServerAuthPtrOutputWithContext(context.Context) KpsKeypairDisassociateServerAuthPtrOutput
+}
+
+type kpsKeypairDisassociateServerAuthPtrType KpsKeypairDisassociateServerAuthArgs
+
+func KpsKeypairDisassociateServerAuthPtr(v *KpsKeypairDisassociateServerAuthArgs) KpsKeypairDisassociateServerAuthPtrInput {
+	return (*kpsKeypairDisassociateServerAuthPtrType)(v)
+}
+
+func (*kpsKeypairDisassociateServerAuthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KpsKeypairDisassociateServerAuth)(nil)).Elem()
+}
+
+func (i *kpsKeypairDisassociateServerAuthPtrType) ToKpsKeypairDisassociateServerAuthPtrOutput() KpsKeypairDisassociateServerAuthPtrOutput {
+	return i.ToKpsKeypairDisassociateServerAuthPtrOutputWithContext(context.Background())
+}
+
+func (i *kpsKeypairDisassociateServerAuthPtrType) ToKpsKeypairDisassociateServerAuthPtrOutputWithContext(ctx context.Context) KpsKeypairDisassociateServerAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KpsKeypairDisassociateServerAuthPtrOutput)
+}
+
+type KpsKeypairDisassociateServerAuthOutput struct{ *pulumi.OutputState }
+
+func (KpsKeypairDisassociateServerAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KpsKeypairDisassociateServerAuth)(nil)).Elem()
+}
+
+func (o KpsKeypairDisassociateServerAuthOutput) ToKpsKeypairDisassociateServerAuthOutput() KpsKeypairDisassociateServerAuthOutput {
+	return o
+}
+
+func (o KpsKeypairDisassociateServerAuthOutput) ToKpsKeypairDisassociateServerAuthOutputWithContext(ctx context.Context) KpsKeypairDisassociateServerAuthOutput {
+	return o
+}
+
+func (o KpsKeypairDisassociateServerAuthOutput) ToKpsKeypairDisassociateServerAuthPtrOutput() KpsKeypairDisassociateServerAuthPtrOutput {
+	return o.ToKpsKeypairDisassociateServerAuthPtrOutputWithContext(context.Background())
+}
+
+func (o KpsKeypairDisassociateServerAuthOutput) ToKpsKeypairDisassociateServerAuthPtrOutputWithContext(ctx context.Context) KpsKeypairDisassociateServerAuthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KpsKeypairDisassociateServerAuth) *KpsKeypairDisassociateServerAuth {
+		return &v
+	}).(KpsKeypairDisassociateServerAuthPtrOutput)
+}
+
+// Specifies the value of the key.
+func (o KpsKeypairDisassociateServerAuthOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KpsKeypairDisassociateServerAuth) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the value of an enumeration type.
+func (o KpsKeypairDisassociateServerAuthOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KpsKeypairDisassociateServerAuth) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type KpsKeypairDisassociateServerAuthPtrOutput struct{ *pulumi.OutputState }
+
+func (KpsKeypairDisassociateServerAuthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KpsKeypairDisassociateServerAuth)(nil)).Elem()
+}
+
+func (o KpsKeypairDisassociateServerAuthPtrOutput) ToKpsKeypairDisassociateServerAuthPtrOutput() KpsKeypairDisassociateServerAuthPtrOutput {
+	return o
+}
+
+func (o KpsKeypairDisassociateServerAuthPtrOutput) ToKpsKeypairDisassociateServerAuthPtrOutputWithContext(ctx context.Context) KpsKeypairDisassociateServerAuthPtrOutput {
+	return o
+}
+
+func (o KpsKeypairDisassociateServerAuthPtrOutput) Elem() KpsKeypairDisassociateServerAuthOutput {
+	return o.ApplyT(func(v *KpsKeypairDisassociateServerAuth) KpsKeypairDisassociateServerAuth {
+		if v != nil {
+			return *v
+		}
+		var ret KpsKeypairDisassociateServerAuth
+		return ret
+	}).(KpsKeypairDisassociateServerAuthOutput)
+}
+
+// Specifies the value of the key.
+func (o KpsKeypairDisassociateServerAuthPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KpsKeypairDisassociateServerAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the value of an enumeration type.
+func (o KpsKeypairDisassociateServerAuthPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KpsKeypairDisassociateServerAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -28141,6 +29474,341 @@ func (o GetDmsRocketmqUsersUserTopicPermArrayOutput) Index(i pulumi.IntInput) Ge
 	}).(GetDmsRocketmqUsersUserTopicPermOutput)
 }
 
+type GetDnsZonesZone struct {
+	// The creation time of the zone, in RFC3339 format.
+	CreatedAt string `pulumi:"createdAt"`
+	// The zone description.
+	Description string `pulumi:"description"`
+	// The email address of the administrator managing the zone.
+	Email string `pulumi:"email"`
+	// The enterprise project ID.
+	EnterpriseProjectId string `pulumi:"enterpriseProjectId"`
+	// The zone ID.
+	Id string `pulumi:"id"`
+	// The master DNS servers, from which the slave servers get DNS information.
+	Masters []string `pulumi:"masters"`
+	// The zone name.
+	Name string `pulumi:"name"`
+	// The creation time of the zone, in RFC3339 format.
+	PoolId string `pulumi:"poolId"`
+	// The recursive resolution proxy mode for subdomains of the private zone.
+	ProxyPattern string `pulumi:"proxyPattern"`
+	// The number of record sets in the zone.
+	RecordNum int `pulumi:"recordNum"`
+	// The list of VPCs associated with the zone.
+	Routers []GetDnsZonesZoneRouter `pulumi:"routers"`
+	// The zone status.
+	Status string            `pulumi:"status"`
+	Tags   map[string]string `pulumi:"tags"`
+	// The time to live (TTL) of the zone.
+	Ttl int `pulumi:"ttl"`
+	// The latest update time of the zone, in RFC3339 format.
+	UpdatedAt string `pulumi:"updatedAt"`
+	// The zone type.
+	ZoneType string `pulumi:"zoneType"`
+}
+
+// GetDnsZonesZoneInput is an input type that accepts GetDnsZonesZoneArgs and GetDnsZonesZoneOutput values.
+// You can construct a concrete instance of `GetDnsZonesZoneInput` via:
+//
+//	GetDnsZonesZoneArgs{...}
+type GetDnsZonesZoneInput interface {
+	pulumi.Input
+
+	ToGetDnsZonesZoneOutput() GetDnsZonesZoneOutput
+	ToGetDnsZonesZoneOutputWithContext(context.Context) GetDnsZonesZoneOutput
+}
+
+type GetDnsZonesZoneArgs struct {
+	// The creation time of the zone, in RFC3339 format.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// The zone description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The email address of the administrator managing the zone.
+	Email pulumi.StringInput `pulumi:"email"`
+	// The enterprise project ID.
+	EnterpriseProjectId pulumi.StringInput `pulumi:"enterpriseProjectId"`
+	// The zone ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The master DNS servers, from which the slave servers get DNS information.
+	Masters pulumi.StringArrayInput `pulumi:"masters"`
+	// The zone name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The creation time of the zone, in RFC3339 format.
+	PoolId pulumi.StringInput `pulumi:"poolId"`
+	// The recursive resolution proxy mode for subdomains of the private zone.
+	ProxyPattern pulumi.StringInput `pulumi:"proxyPattern"`
+	// The number of record sets in the zone.
+	RecordNum pulumi.IntInput `pulumi:"recordNum"`
+	// The list of VPCs associated with the zone.
+	Routers GetDnsZonesZoneRouterArrayInput `pulumi:"routers"`
+	// The zone status.
+	Status pulumi.StringInput    `pulumi:"status"`
+	Tags   pulumi.StringMapInput `pulumi:"tags"`
+	// The time to live (TTL) of the zone.
+	Ttl pulumi.IntInput `pulumi:"ttl"`
+	// The latest update time of the zone, in RFC3339 format.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// The zone type.
+	ZoneType pulumi.StringInput `pulumi:"zoneType"`
+}
+
+func (GetDnsZonesZoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDnsZonesZone)(nil)).Elem()
+}
+
+func (i GetDnsZonesZoneArgs) ToGetDnsZonesZoneOutput() GetDnsZonesZoneOutput {
+	return i.ToGetDnsZonesZoneOutputWithContext(context.Background())
+}
+
+func (i GetDnsZonesZoneArgs) ToGetDnsZonesZoneOutputWithContext(ctx context.Context) GetDnsZonesZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDnsZonesZoneOutput)
+}
+
+// GetDnsZonesZoneArrayInput is an input type that accepts GetDnsZonesZoneArray and GetDnsZonesZoneArrayOutput values.
+// You can construct a concrete instance of `GetDnsZonesZoneArrayInput` via:
+//
+//	GetDnsZonesZoneArray{ GetDnsZonesZoneArgs{...} }
+type GetDnsZonesZoneArrayInput interface {
+	pulumi.Input
+
+	ToGetDnsZonesZoneArrayOutput() GetDnsZonesZoneArrayOutput
+	ToGetDnsZonesZoneArrayOutputWithContext(context.Context) GetDnsZonesZoneArrayOutput
+}
+
+type GetDnsZonesZoneArray []GetDnsZonesZoneInput
+
+func (GetDnsZonesZoneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDnsZonesZone)(nil)).Elem()
+}
+
+func (i GetDnsZonesZoneArray) ToGetDnsZonesZoneArrayOutput() GetDnsZonesZoneArrayOutput {
+	return i.ToGetDnsZonesZoneArrayOutputWithContext(context.Background())
+}
+
+func (i GetDnsZonesZoneArray) ToGetDnsZonesZoneArrayOutputWithContext(ctx context.Context) GetDnsZonesZoneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDnsZonesZoneArrayOutput)
+}
+
+type GetDnsZonesZoneOutput struct{ *pulumi.OutputState }
+
+func (GetDnsZonesZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDnsZonesZone)(nil)).Elem()
+}
+
+func (o GetDnsZonesZoneOutput) ToGetDnsZonesZoneOutput() GetDnsZonesZoneOutput {
+	return o
+}
+
+func (o GetDnsZonesZoneOutput) ToGetDnsZonesZoneOutputWithContext(ctx context.Context) GetDnsZonesZoneOutput {
+	return o
+}
+
+// The creation time of the zone, in RFC3339 format.
+func (o GetDnsZonesZoneOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDnsZonesZone) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The zone description.
+func (o GetDnsZonesZoneOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDnsZonesZone) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The email address of the administrator managing the zone.
+func (o GetDnsZonesZoneOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDnsZonesZone) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// The enterprise project ID.
+func (o GetDnsZonesZoneOutput) EnterpriseProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDnsZonesZone) string { return v.EnterpriseProjectId }).(pulumi.StringOutput)
+}
+
+// The zone ID.
+func (o GetDnsZonesZoneOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDnsZonesZone) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The master DNS servers, from which the slave servers get DNS information.
+func (o GetDnsZonesZoneOutput) Masters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDnsZonesZone) []string { return v.Masters }).(pulumi.StringArrayOutput)
+}
+
+// The zone name.
+func (o GetDnsZonesZoneOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDnsZonesZone) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The creation time of the zone, in RFC3339 format.
+func (o GetDnsZonesZoneOutput) PoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDnsZonesZone) string { return v.PoolId }).(pulumi.StringOutput)
+}
+
+// The recursive resolution proxy mode for subdomains of the private zone.
+func (o GetDnsZonesZoneOutput) ProxyPattern() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDnsZonesZone) string { return v.ProxyPattern }).(pulumi.StringOutput)
+}
+
+// The number of record sets in the zone.
+func (o GetDnsZonesZoneOutput) RecordNum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDnsZonesZone) int { return v.RecordNum }).(pulumi.IntOutput)
+}
+
+// The list of VPCs associated with the zone.
+func (o GetDnsZonesZoneOutput) Routers() GetDnsZonesZoneRouterArrayOutput {
+	return o.ApplyT(func(v GetDnsZonesZone) []GetDnsZonesZoneRouter { return v.Routers }).(GetDnsZonesZoneRouterArrayOutput)
+}
+
+// The zone status.
+func (o GetDnsZonesZoneOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDnsZonesZone) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o GetDnsZonesZoneOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetDnsZonesZone) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The time to live (TTL) of the zone.
+func (o GetDnsZonesZoneOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDnsZonesZone) int { return v.Ttl }).(pulumi.IntOutput)
+}
+
+// The latest update time of the zone, in RFC3339 format.
+func (o GetDnsZonesZoneOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDnsZonesZone) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// The zone type.
+func (o GetDnsZonesZoneOutput) ZoneType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDnsZonesZone) string { return v.ZoneType }).(pulumi.StringOutput)
+}
+
+type GetDnsZonesZoneArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDnsZonesZoneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDnsZonesZone)(nil)).Elem()
+}
+
+func (o GetDnsZonesZoneArrayOutput) ToGetDnsZonesZoneArrayOutput() GetDnsZonesZoneArrayOutput {
+	return o
+}
+
+func (o GetDnsZonesZoneArrayOutput) ToGetDnsZonesZoneArrayOutputWithContext(ctx context.Context) GetDnsZonesZoneArrayOutput {
+	return o
+}
+
+func (o GetDnsZonesZoneArrayOutput) Index(i pulumi.IntInput) GetDnsZonesZoneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDnsZonesZone {
+		return vs[0].([]GetDnsZonesZone)[vs[1].(int)]
+	}).(GetDnsZonesZoneOutput)
+}
+
+type GetDnsZonesZoneRouter struct {
+	// The ID of the VPC associated with the zone.
+	RouterId string `pulumi:"routerId"`
+	// The region of the VPC.
+	RouterRegion string `pulumi:"routerRegion"`
+}
+
+// GetDnsZonesZoneRouterInput is an input type that accepts GetDnsZonesZoneRouterArgs and GetDnsZonesZoneRouterOutput values.
+// You can construct a concrete instance of `GetDnsZonesZoneRouterInput` via:
+//
+//	GetDnsZonesZoneRouterArgs{...}
+type GetDnsZonesZoneRouterInput interface {
+	pulumi.Input
+
+	ToGetDnsZonesZoneRouterOutput() GetDnsZonesZoneRouterOutput
+	ToGetDnsZonesZoneRouterOutputWithContext(context.Context) GetDnsZonesZoneRouterOutput
+}
+
+type GetDnsZonesZoneRouterArgs struct {
+	// The ID of the VPC associated with the zone.
+	RouterId pulumi.StringInput `pulumi:"routerId"`
+	// The region of the VPC.
+	RouterRegion pulumi.StringInput `pulumi:"routerRegion"`
+}
+
+func (GetDnsZonesZoneRouterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDnsZonesZoneRouter)(nil)).Elem()
+}
+
+func (i GetDnsZonesZoneRouterArgs) ToGetDnsZonesZoneRouterOutput() GetDnsZonesZoneRouterOutput {
+	return i.ToGetDnsZonesZoneRouterOutputWithContext(context.Background())
+}
+
+func (i GetDnsZonesZoneRouterArgs) ToGetDnsZonesZoneRouterOutputWithContext(ctx context.Context) GetDnsZonesZoneRouterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDnsZonesZoneRouterOutput)
+}
+
+// GetDnsZonesZoneRouterArrayInput is an input type that accepts GetDnsZonesZoneRouterArray and GetDnsZonesZoneRouterArrayOutput values.
+// You can construct a concrete instance of `GetDnsZonesZoneRouterArrayInput` via:
+//
+//	GetDnsZonesZoneRouterArray{ GetDnsZonesZoneRouterArgs{...} }
+type GetDnsZonesZoneRouterArrayInput interface {
+	pulumi.Input
+
+	ToGetDnsZonesZoneRouterArrayOutput() GetDnsZonesZoneRouterArrayOutput
+	ToGetDnsZonesZoneRouterArrayOutputWithContext(context.Context) GetDnsZonesZoneRouterArrayOutput
+}
+
+type GetDnsZonesZoneRouterArray []GetDnsZonesZoneRouterInput
+
+func (GetDnsZonesZoneRouterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDnsZonesZoneRouter)(nil)).Elem()
+}
+
+func (i GetDnsZonesZoneRouterArray) ToGetDnsZonesZoneRouterArrayOutput() GetDnsZonesZoneRouterArrayOutput {
+	return i.ToGetDnsZonesZoneRouterArrayOutputWithContext(context.Background())
+}
+
+func (i GetDnsZonesZoneRouterArray) ToGetDnsZonesZoneRouterArrayOutputWithContext(ctx context.Context) GetDnsZonesZoneRouterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDnsZonesZoneRouterArrayOutput)
+}
+
+type GetDnsZonesZoneRouterOutput struct{ *pulumi.OutputState }
+
+func (GetDnsZonesZoneRouterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDnsZonesZoneRouter)(nil)).Elem()
+}
+
+func (o GetDnsZonesZoneRouterOutput) ToGetDnsZonesZoneRouterOutput() GetDnsZonesZoneRouterOutput {
+	return o
+}
+
+func (o GetDnsZonesZoneRouterOutput) ToGetDnsZonesZoneRouterOutputWithContext(ctx context.Context) GetDnsZonesZoneRouterOutput {
+	return o
+}
+
+// The ID of the VPC associated with the zone.
+func (o GetDnsZonesZoneRouterOutput) RouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDnsZonesZoneRouter) string { return v.RouterId }).(pulumi.StringOutput)
+}
+
+// The region of the VPC.
+func (o GetDnsZonesZoneRouterOutput) RouterRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDnsZonesZoneRouter) string { return v.RouterRegion }).(pulumi.StringOutput)
+}
+
+type GetDnsZonesZoneRouterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDnsZonesZoneRouterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDnsZonesZoneRouter)(nil)).Elem()
+}
+
+func (o GetDnsZonesZoneRouterArrayOutput) ToGetDnsZonesZoneRouterArrayOutput() GetDnsZonesZoneRouterArrayOutput {
+	return o
+}
+
+func (o GetDnsZonesZoneRouterArrayOutput) ToGetDnsZonesZoneRouterArrayOutputWithContext(ctx context.Context) GetDnsZonesZoneRouterArrayOutput {
+	return o
+}
+
+func (o GetDnsZonesZoneRouterArrayOutput) Index(i pulumi.IntInput) GetDnsZonesZoneRouterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDnsZonesZoneRouter {
+		return vs[0].([]GetDnsZonesZoneRouter)[vs[1].(int)]
+	}).(GetDnsZonesZoneRouterOutput)
+}
+
 type GetElbFlavorsFlavor struct {
 	Bandwidth         int    `pulumi:"bandwidth"`
 	Category          int    `pulumi:"category"`
@@ -33121,6 +34789,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CbrBackupShareMemberArrayInput)(nil)).Elem(), CbrBackupShareMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CbrCheckpointBackupInput)(nil)).Elem(), CbrCheckpointBackupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CbrCheckpointBackupArrayInput)(nil)).Elem(), CbrCheckpointBackupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CceClusterUpgradeAddonInput)(nil)).Elem(), CceClusterUpgradeAddonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CceClusterUpgradeAddonArrayInput)(nil)).Elem(), CceClusterUpgradeAddonArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CceClusterUpgradeAddonValuesInput)(nil)).Elem(), CceClusterUpgradeAddonValuesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CceClusterUpgradeAddonValuesPtrInput)(nil)).Elem(), CceClusterUpgradeAddonValuesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CceClusterUpgradeStrategyInput)(nil)).Elem(), CceClusterUpgradeStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CceClusterUpgradeStrategyPtrInput)(nil)).Elem(), CceClusterUpgradeStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CceClusterUpgradeStrategyInPlaceRollingUpdateInput)(nil)).Elem(), CceClusterUpgradeStrategyInPlaceRollingUpdateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CceClusterUpgradeStrategyInPlaceRollingUpdatePtrInput)(nil)).Elem(), CceClusterUpgradeStrategyInPlaceRollingUpdateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CceNodesRemoveNodeInput)(nil)).Elem(), CceNodesRemoveNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CceNodesRemoveNodeArrayInput)(nil)).Elem(), CceNodesRemoveNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DcsParametersConfigurationParameterInput)(nil)).Elem(), DcsParametersConfigurationParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DcsParametersConfigurationParameterArrayInput)(nil)).Elem(), DcsParametersConfigurationParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DcsRestoreRestoreRecordInput)(nil)).Elem(), DcsRestoreRestoreRecordArgs{})
@@ -33233,6 +34911,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GesGraphPublicIpPtrInput)(nil)).Elem(), GesGraphPublicIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GesGraphVertexIdTypeInput)(nil)).Elem(), GesGraphVertexIdTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GesGraphVertexIdTypePtrInput)(nil)).Elem(), GesGraphVertexIdTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KpsKeypairAssociateServerInput)(nil)).Elem(), KpsKeypairAssociateServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KpsKeypairAssociateServerPtrInput)(nil)).Elem(), KpsKeypairAssociateServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KpsKeypairAssociateServerAuthInput)(nil)).Elem(), KpsKeypairAssociateServerAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KpsKeypairAssociateServerAuthPtrInput)(nil)).Elem(), KpsKeypairAssociateServerAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KpsKeypairDisassociateServerInput)(nil)).Elem(), KpsKeypairDisassociateServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KpsKeypairDisassociateServerPtrInput)(nil)).Elem(), KpsKeypairDisassociateServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KpsKeypairDisassociateServerAuthInput)(nil)).Elem(), KpsKeypairDisassociateServerAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KpsKeypairDisassociateServerAuthPtrInput)(nil)).Elem(), KpsKeypairDisassociateServerAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObsBucketAclAccountPermissionInput)(nil)).Elem(), ObsBucketAclAccountPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObsBucketAclAccountPermissionArrayInput)(nil)).Elem(), ObsBucketAclAccountPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObsBucketAclLogDeliveryUserPermissionInput)(nil)).Elem(), ObsBucketAclLogDeliveryUserPermissionArgs{})
@@ -33471,6 +35157,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDmsRocketmqUsersUserGroupPermArrayInput)(nil)).Elem(), GetDmsRocketmqUsersUserGroupPermArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDmsRocketmqUsersUserTopicPermInput)(nil)).Elem(), GetDmsRocketmqUsersUserTopicPermArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDmsRocketmqUsersUserTopicPermArrayInput)(nil)).Elem(), GetDmsRocketmqUsersUserTopicPermArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDnsZonesZoneInput)(nil)).Elem(), GetDnsZonesZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDnsZonesZoneArrayInput)(nil)).Elem(), GetDnsZonesZoneArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDnsZonesZoneRouterInput)(nil)).Elem(), GetDnsZonesZoneRouterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDnsZonesZoneRouterArrayInput)(nil)).Elem(), GetDnsZonesZoneRouterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetElbFlavorsFlavorInput)(nil)).Elem(), GetElbFlavorsFlavorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetElbFlavorsFlavorArrayInput)(nil)).Elem(), GetElbFlavorsFlavorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetElbPoolsPoolInput)(nil)).Elem(), GetElbPoolsPoolArgs{})
@@ -33555,6 +35245,16 @@ func init() {
 	pulumi.RegisterOutputType(CbrBackupShareMemberArrayOutput{})
 	pulumi.RegisterOutputType(CbrCheckpointBackupOutput{})
 	pulumi.RegisterOutputType(CbrCheckpointBackupArrayOutput{})
+	pulumi.RegisterOutputType(CceClusterUpgradeAddonOutput{})
+	pulumi.RegisterOutputType(CceClusterUpgradeAddonArrayOutput{})
+	pulumi.RegisterOutputType(CceClusterUpgradeAddonValuesOutput{})
+	pulumi.RegisterOutputType(CceClusterUpgradeAddonValuesPtrOutput{})
+	pulumi.RegisterOutputType(CceClusterUpgradeStrategyOutput{})
+	pulumi.RegisterOutputType(CceClusterUpgradeStrategyPtrOutput{})
+	pulumi.RegisterOutputType(CceClusterUpgradeStrategyInPlaceRollingUpdateOutput{})
+	pulumi.RegisterOutputType(CceClusterUpgradeStrategyInPlaceRollingUpdatePtrOutput{})
+	pulumi.RegisterOutputType(CceNodesRemoveNodeOutput{})
+	pulumi.RegisterOutputType(CceNodesRemoveNodeArrayOutput{})
 	pulumi.RegisterOutputType(DcsParametersConfigurationParameterOutput{})
 	pulumi.RegisterOutputType(DcsParametersConfigurationParameterArrayOutput{})
 	pulumi.RegisterOutputType(DcsRestoreRestoreRecordOutput{})
@@ -33667,6 +35367,14 @@ func init() {
 	pulumi.RegisterOutputType(GesGraphPublicIpPtrOutput{})
 	pulumi.RegisterOutputType(GesGraphVertexIdTypeOutput{})
 	pulumi.RegisterOutputType(GesGraphVertexIdTypePtrOutput{})
+	pulumi.RegisterOutputType(KpsKeypairAssociateServerOutput{})
+	pulumi.RegisterOutputType(KpsKeypairAssociateServerPtrOutput{})
+	pulumi.RegisterOutputType(KpsKeypairAssociateServerAuthOutput{})
+	pulumi.RegisterOutputType(KpsKeypairAssociateServerAuthPtrOutput{})
+	pulumi.RegisterOutputType(KpsKeypairDisassociateServerOutput{})
+	pulumi.RegisterOutputType(KpsKeypairDisassociateServerPtrOutput{})
+	pulumi.RegisterOutputType(KpsKeypairDisassociateServerAuthOutput{})
+	pulumi.RegisterOutputType(KpsKeypairDisassociateServerAuthPtrOutput{})
 	pulumi.RegisterOutputType(ObsBucketAclAccountPermissionOutput{})
 	pulumi.RegisterOutputType(ObsBucketAclAccountPermissionArrayOutput{})
 	pulumi.RegisterOutputType(ObsBucketAclLogDeliveryUserPermissionOutput{})
@@ -33905,6 +35613,10 @@ func init() {
 	pulumi.RegisterOutputType(GetDmsRocketmqUsersUserGroupPermArrayOutput{})
 	pulumi.RegisterOutputType(GetDmsRocketmqUsersUserTopicPermOutput{})
 	pulumi.RegisterOutputType(GetDmsRocketmqUsersUserTopicPermArrayOutput{})
+	pulumi.RegisterOutputType(GetDnsZonesZoneOutput{})
+	pulumi.RegisterOutputType(GetDnsZonesZoneArrayOutput{})
+	pulumi.RegisterOutputType(GetDnsZonesZoneRouterOutput{})
+	pulumi.RegisterOutputType(GetDnsZonesZoneRouterArrayOutput{})
 	pulumi.RegisterOutputType(GetElbFlavorsFlavorOutput{})
 	pulumi.RegisterOutputType(GetElbFlavorsFlavorArrayOutput{})
 	pulumi.RegisterOutputType(GetElbPoolsPoolOutput{})

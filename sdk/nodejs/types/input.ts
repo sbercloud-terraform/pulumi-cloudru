@@ -240,6 +240,32 @@ export interface CbrCheckpointBackup {
     updatedAt?: pulumi.Input<string>;
 }
 
+export interface CceClusterUpgradeAddon {
+    addonTemplateName: pulumi.Input<string>;
+    operation: pulumi.Input<string>;
+    values?: pulumi.Input<inputs.CceClusterUpgradeAddonValues>;
+    version: pulumi.Input<string>;
+}
+
+export interface CceClusterUpgradeAddonValues {
+    basicJson?: pulumi.Input<string>;
+    customJson?: pulumi.Input<string>;
+    flavorJson?: pulumi.Input<string>;
+}
+
+export interface CceClusterUpgradeStrategy {
+    inPlaceRollingUpdate?: pulumi.Input<inputs.CceClusterUpgradeStrategyInPlaceRollingUpdate>;
+    type: pulumi.Input<string>;
+}
+
+export interface CceClusterUpgradeStrategyInPlaceRollingUpdate {
+    userDefinedStep?: pulumi.Input<number>;
+}
+
+export interface CceNodesRemoveNode {
+    uid: pulumi.Input<string>;
+}
+
 export interface DcsParametersConfigurationParameter {
     name?: pulumi.Input<string>;
     needRestart?: pulumi.Input<boolean>;
@@ -834,6 +860,62 @@ export interface GesGraphVertexIdType {
      * Vertex ID type.
      */
     idType?: pulumi.Input<string>;
+}
+
+export interface KpsKeypairAssociateServer {
+    /**
+     * Specifies the authentication information.
+     */
+    auth?: pulumi.Input<inputs.KpsKeypairAssociateServerAuth>;
+    /**
+     * Specifies whether the password is disabled.
+     */
+    disablePassword?: pulumi.Input<boolean>;
+    /**
+     * Specifies ID of the ECS.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * Specifies the SSH listening port.
+     */
+    port?: pulumi.Input<number>;
+}
+
+export interface KpsKeypairAssociateServerAuth {
+    /**
+     * Specifies the value of the key.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * Specifies the value of the authentication type.
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface KpsKeypairDisassociateServer {
+    /**
+     * Specifies the authentication type.
+     */
+    auth?: pulumi.Input<inputs.KpsKeypairDisassociateServerAuth>;
+    /**
+     * Specifies ID of the ECS.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * Specifies the SSH listening port.
+     */
+    port?: pulumi.Input<number>;
+}
+
+export interface KpsKeypairDisassociateServerAuth {
+    /**
+     * Specifies the value of the key.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * Specifies the value of an enumeration type.
+     */
+    type?: pulumi.Input<string>;
 }
 
 export interface ObsBucketAclAccountPermission {
@@ -1708,7 +1790,8 @@ export namespace Cce {
     }
 
     export interface NodePoolExtensionScaleGroupMetadata {
-        name?: pulumi.Input<string>;
+        name: pulumi.Input<string>;
+        uid?: pulumi.Input<string>;
     }
 
     export interface NodePoolExtensionScaleGroupSpec {
@@ -3158,6 +3241,53 @@ export namespace Dms {
 }
 
 export namespace Dns {
+    export interface ZoneDnssecInfo {
+        /**
+         * Indicates the creation time. Format is **yyyy-MM-dd'T'HH:mm:ss.SSS**.
+         */
+        createdAt?: pulumi.Input<string>;
+        /**
+         * Indicates the digest.
+         */
+        digest?: pulumi.Input<string>;
+        /**
+         * Indicates the digest algorithm.
+         */
+        digestAlgorithm?: pulumi.Input<string>;
+        /**
+         * Indicates the digest type.
+         */
+        digestType?: pulumi.Input<number>;
+        /**
+         * Indicates the DS record.
+         */
+        dsRecord?: pulumi.Input<string>;
+        /**
+         * Indicates the flag.
+         */
+        flag?: pulumi.Input<number>;
+        /**
+         * Indicates the key tag.
+         */
+        keyTag?: pulumi.Input<number>;
+        /**
+         * Indicates the public key.
+         */
+        kskPublicKey?: pulumi.Input<string>;
+        /**
+         * Indicates the signature algorithm.
+         */
+        signature?: pulumi.Input<string>;
+        /**
+         * Indicates the signature type.
+         */
+        signatureType?: pulumi.Input<number>;
+        /**
+         * Indicates the update time. Format is **yyyy-MM-dd'T'HH:mm:ss.SSS**.
+         */
+        updatedAt?: pulumi.Input<string>;
+    }
+
     export interface ZoneRouter {
         /**
          * The ID of the associated VPC.
@@ -3322,6 +3452,10 @@ export namespace Ecs {
         snapshotId?: pulumi.Input<string>;
         throughput?: pulumi.Input<number>;
         type: pulumi.Input<string>;
+    }
+
+    export interface InstanceEnclaveOptions {
+        enabled: pulumi.Input<boolean>;
     }
 
     export interface InstanceNetwork {

@@ -110,10 +110,7 @@ export class Firewall extends pulumi.CustomResource {
      * Whether IPv6 is supported.
      */
     declare public /*out*/ readonly supportIpv6: pulumi.Output<boolean>;
-    /**
-     * Specifies the key/value pairs to associate with the firewall.
-     */
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a Firewall resource with the given unique name, arguments, and options.
@@ -265,9 +262,6 @@ export interface FirewallState {
      * Whether IPv6 is supported.
      */
     supportIpv6?: pulumi.Input<boolean>;
-    /**
-     * Specifies the key/value pairs to associate with the firewall.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -319,8 +313,5 @@ export interface FirewallArgs {
     period?: pulumi.Input<number>;
     periodUnit?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the key/value pairs to associate with the firewall.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

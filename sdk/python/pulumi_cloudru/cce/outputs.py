@@ -1497,14 +1497,21 @@ class NodePoolExtensionScaleGroup(dict):
 @pulumi.output_type
 class NodePoolExtensionScaleGroupMetadata(dict):
     def __init__(__self__, *,
-                 name: Optional[_builtins.str] = None):
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+                 name: _builtins.str,
+                 uid: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "name", name)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
+    def name(self) -> _builtins.str:
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def uid(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "uid")
 
 
 @pulumi.output_type

@@ -67,9 +67,8 @@ type Cluster struct {
 	// The cluster status.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Sub-status of clusters in the AVAILABLE state.
-	SubStatus pulumi.StringOutput `pulumi:"subStatus"`
-	// The key/value pairs to associate with the cluster.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	SubStatus pulumi.StringOutput    `pulumi:"subStatus"`
+	Tags      pulumi.StringMapOutput `pulumi:"tags"`
 	// Cluster management task.
 	TaskStatus pulumi.StringOutput `pulumi:"taskStatus"`
 	// The updated time of the cluster.
@@ -198,9 +197,8 @@ type clusterState struct {
 	// The cluster status.
 	Status *string `pulumi:"status"`
 	// Sub-status of clusters in the AVAILABLE state.
-	SubStatus *string `pulumi:"subStatus"`
-	// The key/value pairs to associate with the cluster.
-	Tags map[string]string `pulumi:"tags"`
+	SubStatus *string           `pulumi:"subStatus"`
+	Tags      map[string]string `pulumi:"tags"`
 	// Cluster management task.
 	TaskStatus *string `pulumi:"taskStatus"`
 	// The updated time of the cluster.
@@ -270,8 +268,7 @@ type ClusterState struct {
 	Status pulumi.StringPtrInput
 	// Sub-status of clusters in the AVAILABLE state.
 	SubStatus pulumi.StringPtrInput
-	// The key/value pairs to associate with the cluster.
-	Tags pulumi.StringMapInput
+	Tags      pulumi.StringMapInput
 	// Cluster management task.
 	TaskStatus pulumi.StringPtrInput
 	// The updated time of the cluster.
@@ -327,9 +324,8 @@ type clusterArgs struct {
 	PublicIp *ClusterPublicIp `pulumi:"publicIp"`
 	Region   *string          `pulumi:"region"`
 	// The security group ID.
-	SecurityGroupId string `pulumi:"securityGroupId"`
-	// The key/value pairs to associate with the cluster.
-	Tags map[string]string `pulumi:"tags"`
+	SecurityGroupId string            `pulumi:"securityGroupId"`
+	Tags            map[string]string `pulumi:"tags"`
 	// Administrator username for logging in to a data warehouse cluster.
 	UserName string `pulumi:"userName"`
 	// Administrator password for logging in to a data warehouse cluster.
@@ -379,8 +375,7 @@ type ClusterArgs struct {
 	Region   pulumi.StringPtrInput
 	// The security group ID.
 	SecurityGroupId pulumi.StringInput
-	// The key/value pairs to associate with the cluster.
-	Tags pulumi.StringMapInput
+	Tags            pulumi.StringMapInput
 	// Administrator username for logging in to a data warehouse cluster.
 	UserName pulumi.StringInput
 	// Administrator password for logging in to a data warehouse cluster.
@@ -616,7 +611,6 @@ func (o ClusterOutput) SubStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.SubStatus }).(pulumi.StringOutput)
 }
 
-// The key/value pairs to associate with the cluster.
 func (o ClusterOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }

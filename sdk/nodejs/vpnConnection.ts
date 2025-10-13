@@ -82,7 +82,7 @@ export class VpnConnection extends pulumi.CustomResource {
      * The status of the VPN connection.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     /**
      * The local tunnel address.
      */

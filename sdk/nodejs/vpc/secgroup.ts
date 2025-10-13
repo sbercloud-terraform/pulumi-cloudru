@@ -41,7 +41,7 @@ export class Secgroup extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     declare public readonly region: pulumi.Output<string>;
     declare public /*out*/ readonly rules: pulumi.Output<outputs.Vpc.SecgroupRule[]>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**

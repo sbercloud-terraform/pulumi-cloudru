@@ -13,6 +13,193 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ZoneDnssecInfo struct {
+	// Indicates the creation time. Format is **yyyy-MM-dd'T'HH:mm:ss.SSS**.
+	CreatedAt *string `pulumi:"createdAt"`
+	// Indicates the digest.
+	Digest *string `pulumi:"digest"`
+	// Indicates the digest algorithm.
+	DigestAlgorithm *string `pulumi:"digestAlgorithm"`
+	// Indicates the digest type.
+	DigestType *int `pulumi:"digestType"`
+	// Indicates the DS record.
+	DsRecord *string `pulumi:"dsRecord"`
+	// Indicates the flag.
+	Flag *int `pulumi:"flag"`
+	// Indicates the key tag.
+	KeyTag *int `pulumi:"keyTag"`
+	// Indicates the public key.
+	KskPublicKey *string `pulumi:"kskPublicKey"`
+	// Indicates the signature algorithm.
+	Signature *string `pulumi:"signature"`
+	// Indicates the signature type.
+	SignatureType *int `pulumi:"signatureType"`
+	// Indicates the update time. Format is **yyyy-MM-dd'T'HH:mm:ss.SSS**.
+	UpdatedAt *string `pulumi:"updatedAt"`
+}
+
+// ZoneDnssecInfoInput is an input type that accepts ZoneDnssecInfoArgs and ZoneDnssecInfoOutput values.
+// You can construct a concrete instance of `ZoneDnssecInfoInput` via:
+//
+//	ZoneDnssecInfoArgs{...}
+type ZoneDnssecInfoInput interface {
+	pulumi.Input
+
+	ToZoneDnssecInfoOutput() ZoneDnssecInfoOutput
+	ToZoneDnssecInfoOutputWithContext(context.Context) ZoneDnssecInfoOutput
+}
+
+type ZoneDnssecInfoArgs struct {
+	// Indicates the creation time. Format is **yyyy-MM-dd'T'HH:mm:ss.SSS**.
+	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// Indicates the digest.
+	Digest pulumi.StringPtrInput `pulumi:"digest"`
+	// Indicates the digest algorithm.
+	DigestAlgorithm pulumi.StringPtrInput `pulumi:"digestAlgorithm"`
+	// Indicates the digest type.
+	DigestType pulumi.IntPtrInput `pulumi:"digestType"`
+	// Indicates the DS record.
+	DsRecord pulumi.StringPtrInput `pulumi:"dsRecord"`
+	// Indicates the flag.
+	Flag pulumi.IntPtrInput `pulumi:"flag"`
+	// Indicates the key tag.
+	KeyTag pulumi.IntPtrInput `pulumi:"keyTag"`
+	// Indicates the public key.
+	KskPublicKey pulumi.StringPtrInput `pulumi:"kskPublicKey"`
+	// Indicates the signature algorithm.
+	Signature pulumi.StringPtrInput `pulumi:"signature"`
+	// Indicates the signature type.
+	SignatureType pulumi.IntPtrInput `pulumi:"signatureType"`
+	// Indicates the update time. Format is **yyyy-MM-dd'T'HH:mm:ss.SSS**.
+	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
+}
+
+func (ZoneDnssecInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneDnssecInfo)(nil)).Elem()
+}
+
+func (i ZoneDnssecInfoArgs) ToZoneDnssecInfoOutput() ZoneDnssecInfoOutput {
+	return i.ToZoneDnssecInfoOutputWithContext(context.Background())
+}
+
+func (i ZoneDnssecInfoArgs) ToZoneDnssecInfoOutputWithContext(ctx context.Context) ZoneDnssecInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneDnssecInfoOutput)
+}
+
+// ZoneDnssecInfoArrayInput is an input type that accepts ZoneDnssecInfoArray and ZoneDnssecInfoArrayOutput values.
+// You can construct a concrete instance of `ZoneDnssecInfoArrayInput` via:
+//
+//	ZoneDnssecInfoArray{ ZoneDnssecInfoArgs{...} }
+type ZoneDnssecInfoArrayInput interface {
+	pulumi.Input
+
+	ToZoneDnssecInfoArrayOutput() ZoneDnssecInfoArrayOutput
+	ToZoneDnssecInfoArrayOutputWithContext(context.Context) ZoneDnssecInfoArrayOutput
+}
+
+type ZoneDnssecInfoArray []ZoneDnssecInfoInput
+
+func (ZoneDnssecInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZoneDnssecInfo)(nil)).Elem()
+}
+
+func (i ZoneDnssecInfoArray) ToZoneDnssecInfoArrayOutput() ZoneDnssecInfoArrayOutput {
+	return i.ToZoneDnssecInfoArrayOutputWithContext(context.Background())
+}
+
+func (i ZoneDnssecInfoArray) ToZoneDnssecInfoArrayOutputWithContext(ctx context.Context) ZoneDnssecInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneDnssecInfoArrayOutput)
+}
+
+type ZoneDnssecInfoOutput struct{ *pulumi.OutputState }
+
+func (ZoneDnssecInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneDnssecInfo)(nil)).Elem()
+}
+
+func (o ZoneDnssecInfoOutput) ToZoneDnssecInfoOutput() ZoneDnssecInfoOutput {
+	return o
+}
+
+func (o ZoneDnssecInfoOutput) ToZoneDnssecInfoOutputWithContext(ctx context.Context) ZoneDnssecInfoOutput {
+	return o
+}
+
+// Indicates the creation time. Format is **yyyy-MM-dd'T'HH:mm:ss.SSS**.
+func (o ZoneDnssecInfoOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneDnssecInfo) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// Indicates the digest.
+func (o ZoneDnssecInfoOutput) Digest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneDnssecInfo) *string { return v.Digest }).(pulumi.StringPtrOutput)
+}
+
+// Indicates the digest algorithm.
+func (o ZoneDnssecInfoOutput) DigestAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneDnssecInfo) *string { return v.DigestAlgorithm }).(pulumi.StringPtrOutput)
+}
+
+// Indicates the digest type.
+func (o ZoneDnssecInfoOutput) DigestType() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ZoneDnssecInfo) *int { return v.DigestType }).(pulumi.IntPtrOutput)
+}
+
+// Indicates the DS record.
+func (o ZoneDnssecInfoOutput) DsRecord() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneDnssecInfo) *string { return v.DsRecord }).(pulumi.StringPtrOutput)
+}
+
+// Indicates the flag.
+func (o ZoneDnssecInfoOutput) Flag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ZoneDnssecInfo) *int { return v.Flag }).(pulumi.IntPtrOutput)
+}
+
+// Indicates the key tag.
+func (o ZoneDnssecInfoOutput) KeyTag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ZoneDnssecInfo) *int { return v.KeyTag }).(pulumi.IntPtrOutput)
+}
+
+// Indicates the public key.
+func (o ZoneDnssecInfoOutput) KskPublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneDnssecInfo) *string { return v.KskPublicKey }).(pulumi.StringPtrOutput)
+}
+
+// Indicates the signature algorithm.
+func (o ZoneDnssecInfoOutput) Signature() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneDnssecInfo) *string { return v.Signature }).(pulumi.StringPtrOutput)
+}
+
+// Indicates the signature type.
+func (o ZoneDnssecInfoOutput) SignatureType() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ZoneDnssecInfo) *int { return v.SignatureType }).(pulumi.IntPtrOutput)
+}
+
+// Indicates the update time. Format is **yyyy-MM-dd'T'HH:mm:ss.SSS**.
+func (o ZoneDnssecInfoOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneDnssecInfo) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+}
+
+type ZoneDnssecInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (ZoneDnssecInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZoneDnssecInfo)(nil)).Elem()
+}
+
+func (o ZoneDnssecInfoArrayOutput) ToZoneDnssecInfoArrayOutput() ZoneDnssecInfoArrayOutput {
+	return o
+}
+
+func (o ZoneDnssecInfoArrayOutput) ToZoneDnssecInfoArrayOutputWithContext(ctx context.Context) ZoneDnssecInfoArrayOutput {
+	return o
+}
+
+func (o ZoneDnssecInfoArrayOutput) Index(i pulumi.IntInput) ZoneDnssecInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ZoneDnssecInfo {
+		return vs[0].([]ZoneDnssecInfo)[vs[1].(int)]
+	}).(ZoneDnssecInfoOutput)
+}
+
 type ZoneRouter struct {
 	// The ID of the associated VPC.
 	RouterId string `pulumi:"routerId"`
@@ -120,8 +307,12 @@ func (o ZoneRouterArrayOutput) Index(i pulumi.IntInput) ZoneRouterOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneDnssecInfoInput)(nil)).Elem(), ZoneDnssecInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneDnssecInfoArrayInput)(nil)).Elem(), ZoneDnssecInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneRouterInput)(nil)).Elem(), ZoneRouterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneRouterArrayInput)(nil)).Elem(), ZoneRouterArray{})
+	pulumi.RegisterOutputType(ZoneDnssecInfoOutput{})
+	pulumi.RegisterOutputType(ZoneDnssecInfoArrayOutput{})
 	pulumi.RegisterOutputType(ZoneRouterOutput{})
 	pulumi.RegisterOutputType(ZoneRouterArrayOutput{})
 }

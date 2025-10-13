@@ -32,6 +32,7 @@ export class Turbo extends pulumi.CustomResource {
         return obj['__pulumiType'] === Turbo.__pulumiType;
     }
 
+    declare public readonly autoCreateSecurityGroupRules: pulumi.Output<string | undefined>;
     declare public readonly autoRenew: pulumi.Output<string | undefined>;
     declare public readonly availabilityZone: pulumi.Output<string>;
     declare public /*out*/ readonly availableCapacity: pulumi.Output<string>;
@@ -55,7 +56,7 @@ export class Turbo extends pulumi.CustomResource {
     declare public readonly size: pulumi.Output<number>;
     declare public /*out*/ readonly status: pulumi.Output<string>;
     declare public readonly subnetId: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     declare public /*out*/ readonly version: pulumi.Output<string>;
     declare public readonly vpcId: pulumi.Output<string>;
 
@@ -72,6 +73,7 @@ export class Turbo extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TurboState | undefined;
+            resourceInputs["autoCreateSecurityGroupRules"] = state?.autoCreateSecurityGroupRules;
             resourceInputs["autoRenew"] = state?.autoRenew;
             resourceInputs["availabilityZone"] = state?.availabilityZone;
             resourceInputs["availableCapacity"] = state?.availableCapacity;
@@ -115,6 +117,7 @@ export class Turbo extends pulumi.CustomResource {
             if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
+            resourceInputs["autoCreateSecurityGroupRules"] = args?.autoCreateSecurityGroupRules;
             resourceInputs["autoRenew"] = args?.autoRenew;
             resourceInputs["availabilityZone"] = args?.availabilityZone;
             resourceInputs["backupId"] = args?.backupId;
@@ -151,6 +154,7 @@ export class Turbo extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Turbo resources.
  */
 export interface TurboState {
+    autoCreateSecurityGroupRules?: pulumi.Input<string>;
     autoRenew?: pulumi.Input<string>;
     availabilityZone?: pulumi.Input<string>;
     availableCapacity?: pulumi.Input<string>;
@@ -183,6 +187,7 @@ export interface TurboState {
  * The set of arguments for constructing a Turbo resource.
  */
 export interface TurboArgs {
+    autoCreateSecurityGroupRules?: pulumi.Input<string>;
     autoRenew?: pulumi.Input<string>;
     availabilityZone: pulumi.Input<string>;
     backupId?: pulumi.Input<string>;

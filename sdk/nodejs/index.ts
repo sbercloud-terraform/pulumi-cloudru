@@ -15,6 +15,31 @@ export type ApigAclPolicyAssociate = import("./apigAclPolicyAssociate").ApigAclP
 export const ApigAclPolicyAssociate: typeof import("./apigAclPolicyAssociate").ApigAclPolicyAssociate = null as any;
 utilities.lazyLoad(exports, ["ApigAclPolicyAssociate"], () => require("./apigAclPolicyAssociate"));
 
+export { ApigApiActionArgs, ApigApiActionState } from "./apigApiAction";
+export type ApigApiAction = import("./apigApiAction").ApigApiAction;
+export const ApigApiAction: typeof import("./apigApiAction").ApigApiAction = null as any;
+utilities.lazyLoad(exports, ["ApigApiAction"], () => require("./apigApiAction"));
+
+export { ApigApiBatchActionArgs, ApigApiBatchActionState } from "./apigApiBatchAction";
+export type ApigApiBatchAction = import("./apigApiBatchAction").ApigApiBatchAction;
+export const ApigApiBatchAction: typeof import("./apigApiBatchAction").ApigApiBatchAction = null as any;
+utilities.lazyLoad(exports, ["ApigApiBatchAction"], () => require("./apigApiBatchAction"));
+
+export { ApigApiCheckArgs, ApigApiCheckState } from "./apigApiCheck";
+export type ApigApiCheck = import("./apigApiCheck").ApigApiCheck;
+export const ApigApiCheck: typeof import("./apigApiCheck").ApigApiCheck = null as any;
+utilities.lazyLoad(exports, ["ApigApiCheck"], () => require("./apigApiCheck"));
+
+export { ApigApiDebugArgs, ApigApiDebugState } from "./apigApiDebug";
+export type ApigApiDebug = import("./apigApiDebug").ApigApiDebug;
+export const ApigApiDebug: typeof import("./apigApiDebug").ApigApiDebug = null as any;
+utilities.lazyLoad(exports, ["ApigApiDebug"], () => require("./apigApiDebug"));
+
+export { ApigApiVersionUnpublishArgs, ApigApiVersionUnpublishState } from "./apigApiVersionUnpublish";
+export type ApigApiVersionUnpublish = import("./apigApiVersionUnpublish").ApigApiVersionUnpublish;
+export const ApigApiVersionUnpublish: typeof import("./apigApiVersionUnpublish").ApigApiVersionUnpublish = null as any;
+utilities.lazyLoad(exports, ["ApigApiVersionUnpublish"], () => require("./apigApiVersionUnpublish"));
+
 export { ApigAppcodeArgs, ApigAppcodeState } from "./apigAppcode";
 export type ApigAppcode = import("./apigAppcode").ApigAppcode;
 export const ApigAppcode: typeof import("./apigAppcode").ApigAppcode = null as any;
@@ -85,6 +110,11 @@ export type ApigPluginAssociate = import("./apigPluginAssociate").ApigPluginAsso
 export const ApigPluginAssociate: typeof import("./apigPluginAssociate").ApigPluginAssociate = null as any;
 utilities.lazyLoad(exports, ["ApigPluginAssociate"], () => require("./apigPluginAssociate"));
 
+export { ApigPluginBatchApisAssociateArgs, ApigPluginBatchApisAssociateState } from "./apigPluginBatchApisAssociate";
+export type ApigPluginBatchApisAssociate = import("./apigPluginBatchApisAssociate").ApigPluginBatchApisAssociate;
+export const ApigPluginBatchApisAssociate: typeof import("./apigPluginBatchApisAssociate").ApigPluginBatchApisAssociate = null as any;
+utilities.lazyLoad(exports, ["ApigPluginBatchApisAssociate"], () => require("./apigPluginBatchApisAssociate"));
+
 export { ApigSignatureArgs, ApigSignatureState } from "./apigSignature";
 export type ApigSignature = import("./apigSignature").ApigSignature;
 export const ApigSignature: typeof import("./apigSignature").ApigSignature = null as any;
@@ -124,6 +154,16 @@ export { CbrCheckpointArgs, CbrCheckpointState } from "./cbrCheckpoint";
 export type CbrCheckpoint = import("./cbrCheckpoint").CbrCheckpoint;
 export const CbrCheckpoint: typeof import("./cbrCheckpoint").CbrCheckpoint = null as any;
 utilities.lazyLoad(exports, ["CbrCheckpoint"], () => require("./cbrCheckpoint"));
+
+export { CceClusterUpgradeArgs, CceClusterUpgradeState } from "./cceClusterUpgrade";
+export type CceClusterUpgrade = import("./cceClusterUpgrade").CceClusterUpgrade;
+export const CceClusterUpgrade: typeof import("./cceClusterUpgrade").CceClusterUpgrade = null as any;
+utilities.lazyLoad(exports, ["CceClusterUpgrade"], () => require("./cceClusterUpgrade"));
+
+export { CceNodesRemoveArgs, CceNodesRemoveState } from "./cceNodesRemove";
+export type CceNodesRemove = import("./cceNodesRemove").CceNodesRemove;
+export const CceNodesRemove: typeof import("./cceNodesRemove").CceNodesRemove = null as any;
+utilities.lazyLoad(exports, ["CceNodesRemove"], () => require("./cceNodesRemove"));
 
 export { CssConfigurationArgs, CssConfigurationState } from "./cssConfiguration";
 export type CssConfiguration = import("./cssConfiguration").CssConfiguration;
@@ -580,6 +620,11 @@ export const getDmsRocketmqUsers: typeof import("./getDmsRocketmqUsers").getDmsR
 export const getDmsRocketmqUsersOutput: typeof import("./getDmsRocketmqUsers").getDmsRocketmqUsersOutput = null as any;
 utilities.lazyLoad(exports, ["getDmsRocketmqUsers","getDmsRocketmqUsersOutput"], () => require("./getDmsRocketmqUsers"));
 
+export { GetDnsZonesArgs, GetDnsZonesResult, GetDnsZonesOutputArgs } from "./getDnsZones";
+export const getDnsZones: typeof import("./getDnsZones").getDnsZones = null as any;
+export const getDnsZonesOutput: typeof import("./getDnsZones").getDnsZonesOutput = null as any;
+utilities.lazyLoad(exports, ["getDnsZones","getDnsZonesOutput"], () => require("./getDnsZones"));
+
 export { GetElbCertificateArgs, GetElbCertificateResult, GetElbCertificateOutputArgs } from "./getElbCertificate";
 export const getElbCertificate: typeof import("./getElbCertificate").getElbCertificate = null as any;
 export const getElbCertificateOutput: typeof import("./getElbCertificate").getElbCertificateOutput = null as any;
@@ -719,6 +764,16 @@ export { IdentityUserV3Args, IdentityUserV3State } from "./identityUserV3";
 export type IdentityUserV3 = import("./identityUserV3").IdentityUserV3;
 export const IdentityUserV3: typeof import("./identityUserV3").IdentityUserV3 = null as any;
 utilities.lazyLoad(exports, ["IdentityUserV3"], () => require("./identityUserV3"));
+
+export { KpsKeypairAssociateArgs, KpsKeypairAssociateState } from "./kpsKeypairAssociate";
+export type KpsKeypairAssociate = import("./kpsKeypairAssociate").KpsKeypairAssociate;
+export const KpsKeypairAssociate: typeof import("./kpsKeypairAssociate").KpsKeypairAssociate = null as any;
+utilities.lazyLoad(exports, ["KpsKeypairAssociate"], () => require("./kpsKeypairAssociate"));
+
+export { KpsKeypairDisassociateArgs, KpsKeypairDisassociateState } from "./kpsKeypairDisassociate";
+export type KpsKeypairDisassociate = import("./kpsKeypairDisassociate").KpsKeypairDisassociate;
+export const KpsKeypairDisassociate: typeof import("./kpsKeypairDisassociate").KpsKeypairDisassociate = null as any;
+utilities.lazyLoad(exports, ["KpsKeypairDisassociate"], () => require("./kpsKeypairDisassociate"));
 
 export { NetworkingEipAssociateArgs, NetworkingEipAssociateState } from "./networkingEipAssociate";
 export type NetworkingEipAssociate = import("./networkingEipAssociate").NetworkingEipAssociate;
@@ -907,6 +962,16 @@ const _module = {
                 return new ApigAclPolicy(name, <any>undefined, { urn })
             case "sbercloud:index/apigAclPolicyAssociate:ApigAclPolicyAssociate":
                 return new ApigAclPolicyAssociate(name, <any>undefined, { urn })
+            case "sbercloud:index/apigApiAction:ApigApiAction":
+                return new ApigApiAction(name, <any>undefined, { urn })
+            case "sbercloud:index/apigApiBatchAction:ApigApiBatchAction":
+                return new ApigApiBatchAction(name, <any>undefined, { urn })
+            case "sbercloud:index/apigApiCheck:ApigApiCheck":
+                return new ApigApiCheck(name, <any>undefined, { urn })
+            case "sbercloud:index/apigApiDebug:ApigApiDebug":
+                return new ApigApiDebug(name, <any>undefined, { urn })
+            case "sbercloud:index/apigApiVersionUnpublish:ApigApiVersionUnpublish":
+                return new ApigApiVersionUnpublish(name, <any>undefined, { urn })
             case "sbercloud:index/apigAppcode:ApigAppcode":
                 return new ApigAppcode(name, <any>undefined, { urn })
             case "sbercloud:index/apigApplicationAcl:ApigApplicationAcl":
@@ -935,6 +1000,8 @@ const _module = {
                 return new ApigPlugin(name, <any>undefined, { urn })
             case "sbercloud:index/apigPluginAssociate:ApigPluginAssociate":
                 return new ApigPluginAssociate(name, <any>undefined, { urn })
+            case "sbercloud:index/apigPluginBatchApisAssociate:ApigPluginBatchApisAssociate":
+                return new ApigPluginBatchApisAssociate(name, <any>undefined, { urn })
             case "sbercloud:index/apigSignature:ApigSignature":
                 return new ApigSignature(name, <any>undefined, { urn })
             case "sbercloud:index/apigSignatureAssociate:ApigSignatureAssociate":
@@ -951,6 +1018,10 @@ const _module = {
                 return new CbrBackupShareAccepter(name, <any>undefined, { urn })
             case "sbercloud:index/cbrCheckpoint:CbrCheckpoint":
                 return new CbrCheckpoint(name, <any>undefined, { urn })
+            case "sbercloud:index/cceClusterUpgrade:CceClusterUpgrade":
+                return new CceClusterUpgrade(name, <any>undefined, { urn })
+            case "sbercloud:index/cceNodesRemove:CceNodesRemove":
+                return new CceNodesRemove(name, <any>undefined, { urn })
             case "sbercloud:index/cssConfiguration:CssConfiguration":
                 return new CssConfiguration(name, <any>undefined, { urn })
             case "sbercloud:index/dcsAccount:DcsAccount":
@@ -1039,6 +1110,10 @@ const _module = {
                 return new IdentityRoleAssignmentV3(name, <any>undefined, { urn })
             case "sbercloud:index/identityUserV3:IdentityUserV3":
                 return new IdentityUserV3(name, <any>undefined, { urn })
+            case "sbercloud:index/kpsKeypairAssociate:KpsKeypairAssociate":
+                return new KpsKeypairAssociate(name, <any>undefined, { urn })
+            case "sbercloud:index/kpsKeypairDisassociate:KpsKeypairDisassociate":
+                return new KpsKeypairDisassociate(name, <any>undefined, { urn })
             case "sbercloud:index/networkingEipAssociate:NetworkingEipAssociate":
                 return new NetworkingEipAssociate(name, <any>undefined, { urn })
             case "sbercloud:index/obsBucketAcl:ObsBucketAcl":
@@ -1082,6 +1157,11 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("sbercloud", "index/apigAclPolicy", _module)
 pulumi.runtime.registerResourceModule("sbercloud", "index/apigAclPolicyAssociate", _module)
+pulumi.runtime.registerResourceModule("sbercloud", "index/apigApiAction", _module)
+pulumi.runtime.registerResourceModule("sbercloud", "index/apigApiBatchAction", _module)
+pulumi.runtime.registerResourceModule("sbercloud", "index/apigApiCheck", _module)
+pulumi.runtime.registerResourceModule("sbercloud", "index/apigApiDebug", _module)
+pulumi.runtime.registerResourceModule("sbercloud", "index/apigApiVersionUnpublish", _module)
 pulumi.runtime.registerResourceModule("sbercloud", "index/apigAppcode", _module)
 pulumi.runtime.registerResourceModule("sbercloud", "index/apigApplicationAcl", _module)
 pulumi.runtime.registerResourceModule("sbercloud", "index/apigApplicationAuthorization", _module)
@@ -1096,6 +1176,7 @@ pulumi.runtime.registerResourceModule("sbercloud", "index/apigInstanceFeature", 
 pulumi.runtime.registerResourceModule("sbercloud", "index/apigInstanceRoutes", _module)
 pulumi.runtime.registerResourceModule("sbercloud", "index/apigPlugin", _module)
 pulumi.runtime.registerResourceModule("sbercloud", "index/apigPluginAssociate", _module)
+pulumi.runtime.registerResourceModule("sbercloud", "index/apigPluginBatchApisAssociate", _module)
 pulumi.runtime.registerResourceModule("sbercloud", "index/apigSignature", _module)
 pulumi.runtime.registerResourceModule("sbercloud", "index/apigSignatureAssociate", _module)
 pulumi.runtime.registerResourceModule("sbercloud", "index/cbhAssetAgencyAuthorization", _module)
@@ -1104,6 +1185,8 @@ pulumi.runtime.registerResourceModule("sbercloud", "index/cbhInstance", _module)
 pulumi.runtime.registerResourceModule("sbercloud", "index/cbrBackupShare", _module)
 pulumi.runtime.registerResourceModule("sbercloud", "index/cbrBackupShareAccepter", _module)
 pulumi.runtime.registerResourceModule("sbercloud", "index/cbrCheckpoint", _module)
+pulumi.runtime.registerResourceModule("sbercloud", "index/cceClusterUpgrade", _module)
+pulumi.runtime.registerResourceModule("sbercloud", "index/cceNodesRemove", _module)
 pulumi.runtime.registerResourceModule("sbercloud", "index/cssConfiguration", _module)
 pulumi.runtime.registerResourceModule("sbercloud", "index/dcsAccount", _module)
 pulumi.runtime.registerResourceModule("sbercloud", "index/dcsBackup", _module)
@@ -1148,6 +1231,8 @@ pulumi.runtime.registerResourceModule("sbercloud", "index/identityGroupMembershi
 pulumi.runtime.registerResourceModule("sbercloud", "index/identityGroupV3", _module)
 pulumi.runtime.registerResourceModule("sbercloud", "index/identityRoleAssignmentV3", _module)
 pulumi.runtime.registerResourceModule("sbercloud", "index/identityUserV3", _module)
+pulumi.runtime.registerResourceModule("sbercloud", "index/kpsKeypairAssociate", _module)
+pulumi.runtime.registerResourceModule("sbercloud", "index/kpsKeypairDisassociate", _module)
 pulumi.runtime.registerResourceModule("sbercloud", "index/networkingEipAssociate", _module)
 pulumi.runtime.registerResourceModule("sbercloud", "index/obsBucketAcl", _module)
 pulumi.runtime.registerResourceModule("sbercloud", "index/sfsTurboDataTask", _module)

@@ -55,6 +55,7 @@ export class Instance extends pulumi.CustomResource {
     declare public readonly description: pulumi.Output<string>;
     declare public readonly eipId: pulumi.Output<string | undefined>;
     declare public readonly eipType: pulumi.Output<string | undefined>;
+    declare public readonly enclaveOptions: pulumi.Output<outputs.Ecs.InstanceEnclaveOptions>;
     declare public readonly enterpriseProjectId: pulumi.Output<string>;
     declare public /*out*/ readonly expiredTime: pulumi.Output<string>;
     /**
@@ -96,7 +97,7 @@ export class Instance extends pulumi.CustomResource {
     declare public readonly systemDiskSize: pulumi.Output<number>;
     declare public readonly systemDiskThroughput: pulumi.Output<number>;
     declare public readonly systemDiskType: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     declare public readonly userData: pulumi.Output<string | undefined>;
     declare public readonly userId: pulumi.Output<string | undefined>;
@@ -133,6 +134,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["eipId"] = state?.eipId;
             resourceInputs["eipType"] = state?.eipType;
+            resourceInputs["enclaveOptions"] = state?.enclaveOptions;
             resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
             resourceInputs["expiredTime"] = state?.expiredTime;
             resourceInputs["flavorId"] = state?.flavorId;
@@ -190,6 +192,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["eipId"] = args?.eipId;
             resourceInputs["eipType"] = args?.eipType;
+            resourceInputs["enclaveOptions"] = args?.enclaveOptions;
             resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
             resourceInputs["flavorId"] = args?.flavorId;
             resourceInputs["flavorName"] = args?.flavorName;
@@ -263,6 +266,7 @@ export interface InstanceState {
     description?: pulumi.Input<string>;
     eipId?: pulumi.Input<string>;
     eipType?: pulumi.Input<string>;
+    enclaveOptions?: pulumi.Input<inputs.Ecs.InstanceEnclaveOptions>;
     enterpriseProjectId?: pulumi.Input<string>;
     expiredTime?: pulumi.Input<string>;
     /**
@@ -333,6 +337,7 @@ export interface InstanceArgs {
     description?: pulumi.Input<string>;
     eipId?: pulumi.Input<string>;
     eipType?: pulumi.Input<string>;
+    enclaveOptions?: pulumi.Input<inputs.Ecs.InstanceEnclaveOptions>;
     enterpriseProjectId?: pulumi.Input<string>;
     /**
      * schema: Required

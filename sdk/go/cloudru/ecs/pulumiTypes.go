@@ -336,6 +336,139 @@ func (o InstanceDataDiskArrayOutput) Index(i pulumi.IntInput) InstanceDataDiskOu
 	}).(InstanceDataDiskOutput)
 }
 
+type InstanceEnclaveOptions struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// InstanceEnclaveOptionsInput is an input type that accepts InstanceEnclaveOptionsArgs and InstanceEnclaveOptionsOutput values.
+// You can construct a concrete instance of `InstanceEnclaveOptionsInput` via:
+//
+//	InstanceEnclaveOptionsArgs{...}
+type InstanceEnclaveOptionsInput interface {
+	pulumi.Input
+
+	ToInstanceEnclaveOptionsOutput() InstanceEnclaveOptionsOutput
+	ToInstanceEnclaveOptionsOutputWithContext(context.Context) InstanceEnclaveOptionsOutput
+}
+
+type InstanceEnclaveOptionsArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (InstanceEnclaveOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceEnclaveOptions)(nil)).Elem()
+}
+
+func (i InstanceEnclaveOptionsArgs) ToInstanceEnclaveOptionsOutput() InstanceEnclaveOptionsOutput {
+	return i.ToInstanceEnclaveOptionsOutputWithContext(context.Background())
+}
+
+func (i InstanceEnclaveOptionsArgs) ToInstanceEnclaveOptionsOutputWithContext(ctx context.Context) InstanceEnclaveOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceEnclaveOptionsOutput)
+}
+
+func (i InstanceEnclaveOptionsArgs) ToInstanceEnclaveOptionsPtrOutput() InstanceEnclaveOptionsPtrOutput {
+	return i.ToInstanceEnclaveOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceEnclaveOptionsArgs) ToInstanceEnclaveOptionsPtrOutputWithContext(ctx context.Context) InstanceEnclaveOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceEnclaveOptionsOutput).ToInstanceEnclaveOptionsPtrOutputWithContext(ctx)
+}
+
+// InstanceEnclaveOptionsPtrInput is an input type that accepts InstanceEnclaveOptionsArgs, InstanceEnclaveOptionsPtr and InstanceEnclaveOptionsPtrOutput values.
+// You can construct a concrete instance of `InstanceEnclaveOptionsPtrInput` via:
+//
+//	        InstanceEnclaveOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceEnclaveOptionsPtrInput interface {
+	pulumi.Input
+
+	ToInstanceEnclaveOptionsPtrOutput() InstanceEnclaveOptionsPtrOutput
+	ToInstanceEnclaveOptionsPtrOutputWithContext(context.Context) InstanceEnclaveOptionsPtrOutput
+}
+
+type instanceEnclaveOptionsPtrType InstanceEnclaveOptionsArgs
+
+func InstanceEnclaveOptionsPtr(v *InstanceEnclaveOptionsArgs) InstanceEnclaveOptionsPtrInput {
+	return (*instanceEnclaveOptionsPtrType)(v)
+}
+
+func (*instanceEnclaveOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceEnclaveOptions)(nil)).Elem()
+}
+
+func (i *instanceEnclaveOptionsPtrType) ToInstanceEnclaveOptionsPtrOutput() InstanceEnclaveOptionsPtrOutput {
+	return i.ToInstanceEnclaveOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceEnclaveOptionsPtrType) ToInstanceEnclaveOptionsPtrOutputWithContext(ctx context.Context) InstanceEnclaveOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceEnclaveOptionsPtrOutput)
+}
+
+type InstanceEnclaveOptionsOutput struct{ *pulumi.OutputState }
+
+func (InstanceEnclaveOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceEnclaveOptions)(nil)).Elem()
+}
+
+func (o InstanceEnclaveOptionsOutput) ToInstanceEnclaveOptionsOutput() InstanceEnclaveOptionsOutput {
+	return o
+}
+
+func (o InstanceEnclaveOptionsOutput) ToInstanceEnclaveOptionsOutputWithContext(ctx context.Context) InstanceEnclaveOptionsOutput {
+	return o
+}
+
+func (o InstanceEnclaveOptionsOutput) ToInstanceEnclaveOptionsPtrOutput() InstanceEnclaveOptionsPtrOutput {
+	return o.ToInstanceEnclaveOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceEnclaveOptionsOutput) ToInstanceEnclaveOptionsPtrOutputWithContext(ctx context.Context) InstanceEnclaveOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceEnclaveOptions) *InstanceEnclaveOptions {
+		return &v
+	}).(InstanceEnclaveOptionsPtrOutput)
+}
+
+func (o InstanceEnclaveOptionsOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v InstanceEnclaveOptions) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type InstanceEnclaveOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceEnclaveOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceEnclaveOptions)(nil)).Elem()
+}
+
+func (o InstanceEnclaveOptionsPtrOutput) ToInstanceEnclaveOptionsPtrOutput() InstanceEnclaveOptionsPtrOutput {
+	return o
+}
+
+func (o InstanceEnclaveOptionsPtrOutput) ToInstanceEnclaveOptionsPtrOutputWithContext(ctx context.Context) InstanceEnclaveOptionsPtrOutput {
+	return o
+}
+
+func (o InstanceEnclaveOptionsPtrOutput) Elem() InstanceEnclaveOptionsOutput {
+	return o.ApplyT(func(v *InstanceEnclaveOptions) InstanceEnclaveOptions {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceEnclaveOptions
+		return ret
+	}).(InstanceEnclaveOptionsOutput)
+}
+
+func (o InstanceEnclaveOptionsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceEnclaveOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type InstanceNetwork struct {
 	AccessNetwork *bool   `pulumi:"accessNetwork"`
 	FixedIpV4     *string `pulumi:"fixedIpV4"`
@@ -1841,6 +1974,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceBandwidthPtrInput)(nil)).Elem(), InstanceBandwidthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDataDiskInput)(nil)).Elem(), InstanceDataDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDataDiskArrayInput)(nil)).Elem(), InstanceDataDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceEnclaveOptionsInput)(nil)).Elem(), InstanceEnclaveOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceEnclaveOptionsPtrInput)(nil)).Elem(), InstanceEnclaveOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkInput)(nil)).Elem(), InstanceNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkArrayInput)(nil)).Elem(), InstanceNetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSchedulerHintInput)(nil)).Elem(), InstanceSchedulerHintArgs{})
@@ -1869,6 +2004,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceBandwidthPtrOutput{})
 	pulumi.RegisterOutputType(InstanceDataDiskOutput{})
 	pulumi.RegisterOutputType(InstanceDataDiskArrayOutput{})
+	pulumi.RegisterOutputType(InstanceEnclaveOptionsOutput{})
+	pulumi.RegisterOutputType(InstanceEnclaveOptionsPtrOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkArrayOutput{})
 	pulumi.RegisterOutputType(InstanceSchedulerHintOutput{})

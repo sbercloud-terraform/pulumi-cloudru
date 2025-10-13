@@ -63,7 +63,7 @@ export interface GetInstancesResult {
     readonly name?: string;
     readonly region?: string;
     readonly status?: string;
-    readonly tags?: {[key: string]: string};
+    readonly tags: {[key: string]: string};
 }
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstancesResult> {
     args = args || {};

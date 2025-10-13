@@ -19,6 +19,8 @@ __all__ = [
     'InstanceBandwidthArgsDict',
     'InstanceDataDiskArgs',
     'InstanceDataDiskArgsDict',
+    'InstanceEnclaveOptionsArgs',
+    'InstanceEnclaveOptionsArgsDict',
     'InstanceNetworkArgs',
     'InstanceNetworkArgsDict',
     'InstanceSchedulerHintArgs',
@@ -200,6 +202,28 @@ class InstanceDataDiskArgs:
     @throughput.setter
     def throughput(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "throughput", value)
+
+
+if not MYPY:
+    class InstanceEnclaveOptionsArgsDict(TypedDict):
+        enabled: pulumi.Input[_builtins.bool]
+elif False:
+    InstanceEnclaveOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceEnclaveOptionsArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool]):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
 
 
 if not MYPY:

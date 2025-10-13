@@ -45,7 +45,8 @@ class DmsRocketmqInstanceArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  retention_policy: Optional[pulumi.Input[_builtins.bool]] = None,
                  ssl_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tls_mode: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DmsRocketmqInstance resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: Specifies the list of availability zone names
@@ -67,6 +68,7 @@ class DmsRocketmqInstanceArgs:
         :param pulumi.Input[_builtins.str] publicip_id: Specifies the ID of the EIP bound to the instance.
         :param pulumi.Input[_builtins.bool] retention_policy: Specifies whether access control is enabled.
         :param pulumi.Input[_builtins.bool] ssl_enable: Specifies whether the RocketMQ SASL_SSL is enabled.
+        :param pulumi.Input[_builtins.str] tls_mode: The TLS mode of the instance.
         """
         pulumi.set(__self__, "availability_zones", availability_zones)
         pulumi.set(__self__, "engine_version", engine_version)
@@ -113,6 +115,8 @@ class DmsRocketmqInstanceArgs:
             pulumi.set(__self__, "ssl_enable", ssl_enable)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tls_mode is not None:
+            pulumi.set(__self__, "tls_mode", tls_mode)
 
     @_builtins.property
     @pulumi.getter(name="availabilityZones")
@@ -397,6 +401,18 @@ class DmsRocketmqInstanceArgs:
     def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
+    @_builtins.property
+    @pulumi.getter(name="tlsMode")
+    def tls_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The TLS mode of the instance.
+        """
+        return pulumi.get(self, "tls_mode")
+
+    @tls_mode.setter
+    def tls_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "tls_mode", value)
+
 
 @pulumi.input_type
 class _DmsRocketmqInstanceState:
@@ -438,6 +454,7 @@ class _DmsRocketmqInstanceState:
                  storage_spec_code: Optional[pulumi.Input[_builtins.str]] = None,
                  subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tls_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  used_storage_space: Optional[pulumi.Input[_builtins.int]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
@@ -474,6 +491,7 @@ class _DmsRocketmqInstanceState:
         :param pulumi.Input[_builtins.int] storage_space: Specifies the message storage capacity, Unit: GB.
         :param pulumi.Input[_builtins.str] storage_spec_code: Specifies the storage I/O specification
         :param pulumi.Input[_builtins.str] subnet_id: Specifies the ID of a subnet
+        :param pulumi.Input[_builtins.str] tls_mode: The TLS mode of the instance.
         :param pulumi.Input[_builtins.str] type: Indicates the DMS RocketMQ instance type. Value: cluster.
         :param pulumi.Input[_builtins.int] used_storage_space: Indicates the used message storage space. Unit: GB.
         :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of a VPC
@@ -555,6 +573,8 @@ class _DmsRocketmqInstanceState:
             pulumi.set(__self__, "subnet_id", subnet_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tls_mode is not None:
+            pulumi.set(__self__, "tls_mode", tls_mode)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if used_storage_space is not None:
@@ -988,6 +1008,18 @@ class _DmsRocketmqInstanceState:
         pulumi.set(self, "tags", value)
 
     @_builtins.property
+    @pulumi.getter(name="tlsMode")
+    def tls_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The TLS mode of the instance.
+        """
+        return pulumi.get(self, "tls_mode")
+
+    @tls_mode.setter
+    def tls_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "tls_mode", value)
+
+    @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -1054,6 +1086,7 @@ class DmsRocketmqInstance(pulumi.CustomResource):
                  storage_spec_code: Optional[pulumi.Input[_builtins.str]] = None,
                  subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tls_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -1078,6 +1111,7 @@ class DmsRocketmqInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] storage_space: Specifies the message storage capacity, Unit: GB.
         :param pulumi.Input[_builtins.str] storage_spec_code: Specifies the storage I/O specification
         :param pulumi.Input[_builtins.str] subnet_id: Specifies the ID of a subnet
+        :param pulumi.Input[_builtins.str] tls_mode: The TLS mode of the instance.
         :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of a VPC
         """
         ...
@@ -1127,6 +1161,7 @@ class DmsRocketmqInstance(pulumi.CustomResource):
                  storage_spec_code: Optional[pulumi.Input[_builtins.str]] = None,
                  subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tls_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1175,6 +1210,7 @@ class DmsRocketmqInstance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'subnet_id'")
             __props__.__dict__["subnet_id"] = subnet_id
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["tls_mode"] = tls_mode
             if vpc_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_id'")
             __props__.__dict__["vpc_id"] = vpc_id
@@ -1240,6 +1276,7 @@ class DmsRocketmqInstance(pulumi.CustomResource):
             storage_spec_code: Optional[pulumi.Input[_builtins.str]] = None,
             subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            tls_mode: Optional[pulumi.Input[_builtins.str]] = None,
             type: Optional[pulumi.Input[_builtins.str]] = None,
             used_storage_space: Optional[pulumi.Input[_builtins.int]] = None,
             vpc_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'DmsRocketmqInstance':
@@ -1281,6 +1318,7 @@ class DmsRocketmqInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] storage_space: Specifies the message storage capacity, Unit: GB.
         :param pulumi.Input[_builtins.str] storage_spec_code: Specifies the storage I/O specification
         :param pulumi.Input[_builtins.str] subnet_id: Specifies the ID of a subnet
+        :param pulumi.Input[_builtins.str] tls_mode: The TLS mode of the instance.
         :param pulumi.Input[_builtins.str] type: Indicates the DMS RocketMQ instance type. Value: cluster.
         :param pulumi.Input[_builtins.int] used_storage_space: Indicates the used message storage space. Unit: GB.
         :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of a VPC
@@ -1326,6 +1364,7 @@ class DmsRocketmqInstance(pulumi.CustomResource):
         __props__.__dict__["storage_spec_code"] = storage_spec_code
         __props__.__dict__["subnet_id"] = subnet_id
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["tls_mode"] = tls_mode
         __props__.__dict__["type"] = type
         __props__.__dict__["used_storage_space"] = used_storage_space
         __props__.__dict__["vpc_id"] = vpc_id
@@ -1605,8 +1644,16 @@ class DmsRocketmqInstance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+    def tags(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="tlsMode")
+    def tls_mode(self) -> pulumi.Output[_builtins.str]:
+        """
+        The TLS mode of the instance.
+        """
+        return pulumi.get(self, "tls_mode")
 
     @_builtins.property
     @pulumi.getter

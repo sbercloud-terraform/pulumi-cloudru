@@ -238,6 +238,27 @@
                     }
                 }
             },
+            "sbercloud_apig_api_action": {
+                "current": "sbercloud:index/apigApiAction:ApigApiAction",
+                "majorVersion": 1
+            },
+            "sbercloud_apig_api_batch_action": {
+                "current": "sbercloud:index/apigApiBatchAction:ApigApiBatchAction",
+                "majorVersion": 1,
+                "fields": {
+                    "apis": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "sbercloud_apig_api_check": {
+                "current": "sbercloud:index/apigApiCheck:ApigApiCheck",
+                "majorVersion": 1
+            },
+            "sbercloud_apig_api_debug": {
+                "current": "sbercloud:index/apigApiDebug:ApigApiDebug",
+                "majorVersion": 1
+            },
             "sbercloud_apig_api_publishment": {
                 "current": "sbercloud:DedicatedApig/apiPublishment:ApiPublishment",
                 "majorVersion": 1,
@@ -246,6 +267,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "sbercloud_apig_api_version_unpublish": {
+                "current": "sbercloud:index/apigApiVersionUnpublish:ApigApiVersionUnpublish",
+                "majorVersion": 1
             },
             "sbercloud_apig_appcode": {
                 "current": "sbercloud:index/apigAppcode:ApigAppcode",
@@ -274,6 +299,9 @@
                 "majorVersion": 1,
                 "fields": {
                     "api_ids": {
+                        "maxItemsOne": false
+                    },
+                    "api_ids_origin": {
                         "maxItemsOne": false
                     }
                 }
@@ -417,6 +445,21 @@
                 "majorVersion": 1,
                 "fields": {
                     "api_ids": {
+                        "maxItemsOne": false
+                    },
+                    "api_ids_origin": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "sbercloud_apig_plugin_batch_apis_associate": {
+                "current": "sbercloud:index/apigPluginBatchApisAssociate:ApigPluginBatchApisAssociate",
+                "majorVersion": 1,
+                "fields": {
+                    "api_ids": {
+                        "maxItemsOne": false
+                    },
+                    "api_ids_origin": {
                         "maxItemsOne": false
                     }
                 }
@@ -678,6 +721,32 @@
                     }
                 }
             },
+            "sbercloud_cce_cluster_upgrade": {
+                "current": "sbercloud:index/cceClusterUpgrade:CceClusterUpgrade",
+                "majorVersion": 1,
+                "fields": {
+                    "addons": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "strategy": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "in_place_rolling_update": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "sbercloud_cce_namespace": {
                 "current": "sbercloud:Cce/namespace:Namespace",
                 "majorVersion": 1
@@ -857,6 +926,15 @@
                         "maxItemsOne": false
                     },
                     "taints": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "sbercloud_cce_nodes_remove": {
+                "current": "sbercloud:index/cceNodesRemove:CceNodesRemove",
+                "majorVersion": 1,
+                "fields": {
+                    "nodes": {
                         "maxItemsOne": false
                     }
                 }
@@ -1112,6 +1190,9 @@
                     },
                     "data_disks": {
                         "maxItemsOne": false
+                    },
+                    "enclave_options": {
+                        "maxItemsOne": true
                     },
                     "network": {
                         "maxItemsOne": false
@@ -1558,6 +1639,9 @@
                     "parameters": {
                         "maxItemsOne": false
                     },
+                    "port_protocol": {
+                        "maxItemsOne": true
+                    },
                     "port_protocols": {
                         "maxItemsOne": false
                     },
@@ -1728,6 +1812,9 @@
                 "current": "sbercloud:Dns/zone:Zone",
                 "majorVersion": 1,
                 "fields": {
+                    "dnssec_infos": {
+                        "maxItemsOne": false
+                    },
                     "masters": {
                         "maxItemsOne": false
                     },
@@ -2337,6 +2424,38 @@
             "sbercloud_kps_keypair": {
                 "current": "sbercloud:Dew/keypair:Keypair",
                 "majorVersion": 1
+            },
+            "sbercloud_kps_keypair_associate": {
+                "current": "sbercloud:index/kpsKeypairAssociate:KpsKeypairAssociate",
+                "majorVersion": 1,
+                "fields": {
+                    "server": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "auth": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "sbercloud_kps_keypair_disassociate": {
+                "current": "sbercloud:index/kpsKeypairDisassociate:KpsKeypairDisassociate",
+                "majorVersion": 1,
+                "fields": {
+                    "server": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "auth": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "sbercloud_lb_certificate": {
                 "current": "sbercloud:Elb/certificate:Certificate",
@@ -4715,6 +4834,25 @@
                                     "maxItemsOne": false
                                 },
                                 "topic_perms": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "sbercloud_dns_zones": {
+                "current": "sbercloud:index/getDnsZones:getDnsZones",
+                "majorVersion": 1,
+                "fields": {
+                    "zones": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "masters": {
+                                    "maxItemsOne": false
+                                },
+                                "routers": {
                                     "maxItemsOne": false
                                 }
                             }

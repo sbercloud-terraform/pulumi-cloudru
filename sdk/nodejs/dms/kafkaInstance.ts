@@ -104,6 +104,13 @@ export class KafkaInstance extends pulumi.CustomResource {
     declare public readonly periodUnit: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly podConnectAddress: pulumi.Output<string>;
     declare public /*out*/ readonly port: pulumi.Output<number>;
+    /**
+     * The port protocol information of the Kafka instance.
+     */
+    declare public readonly portProtocol: pulumi.Output<outputs.Dms.KafkaInstancePortProtocol>;
+    /**
+     * Use portProtocol instead.
+     */
     declare public /*out*/ readonly portProtocols: pulumi.Output<outputs.Dms.KafkaInstancePortProtocol[]>;
     declare public readonly productId: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly publicBandwidth: pulumi.Output<number>;
@@ -121,7 +128,7 @@ export class KafkaInstance extends pulumi.CustomResource {
     declare public readonly storageSpace: pulumi.Output<number>;
     declare public readonly storageSpecCode: pulumi.Output<string>;
     declare public /*out*/ readonly storageType: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     declare public /*out*/ readonly type: pulumi.Output<string>;
     declare public /*out*/ readonly usedStorageSpace: pulumi.Output<number>;
     declare public /*out*/ readonly userId: pulumi.Output<string>;
@@ -188,6 +195,7 @@ export class KafkaInstance extends pulumi.CustomResource {
             resourceInputs["periodUnit"] = state?.periodUnit;
             resourceInputs["podConnectAddress"] = state?.podConnectAddress;
             resourceInputs["port"] = state?.port;
+            resourceInputs["portProtocol"] = state?.portProtocol;
             resourceInputs["portProtocols"] = state?.portProtocols;
             resourceInputs["productId"] = state?.productId;
             resourceInputs["publicBandwidth"] = state?.publicBandwidth;
@@ -258,6 +266,7 @@ export class KafkaInstance extends pulumi.CustomResource {
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["period"] = args?.period;
             resourceInputs["periodUnit"] = args?.periodUnit;
+            resourceInputs["portProtocol"] = args?.portProtocol;
             resourceInputs["productId"] = args?.productId;
             resourceInputs["publicIpIds"] = args?.publicIpIds;
             resourceInputs["region"] = args?.region;
@@ -381,6 +390,13 @@ export interface KafkaInstanceState {
     periodUnit?: pulumi.Input<string>;
     podConnectAddress?: pulumi.Input<string>;
     port?: pulumi.Input<number>;
+    /**
+     * The port protocol information of the Kafka instance.
+     */
+    portProtocol?: pulumi.Input<inputs.Dms.KafkaInstancePortProtocol>;
+    /**
+     * Use portProtocol instead.
+     */
     portProtocols?: pulumi.Input<pulumi.Input<inputs.Dms.KafkaInstancePortProtocol>[]>;
     productId?: pulumi.Input<string>;
     publicBandwidth?: pulumi.Input<number>;
@@ -458,6 +474,10 @@ export interface KafkaInstanceArgs {
     password?: pulumi.Input<string>;
     period?: pulumi.Input<number>;
     periodUnit?: pulumi.Input<string>;
+    /**
+     * The port protocol information of the Kafka instance.
+     */
+    portProtocol?: pulumi.Input<inputs.Dms.KafkaInstancePortProtocol>;
     productId?: pulumi.Input<string>;
     publicIpIds?: pulumi.Input<pulumi.Input<string>[]>;
     region?: pulumi.Input<string>;

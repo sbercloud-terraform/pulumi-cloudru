@@ -82,7 +82,7 @@ export class RabbitmqInstance extends pulumi.CustomResource {
     declare public /*out*/ readonly status: pulumi.Output<string>;
     declare public readonly storageSpace: pulumi.Output<number>;
     declare public readonly storageSpecCode: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     declare public /*out*/ readonly type: pulumi.Output<string>;
     declare public /*out*/ readonly usedStorageSpace: pulumi.Output<number>;
     declare public /*out*/ readonly userId: pulumi.Output<string>;

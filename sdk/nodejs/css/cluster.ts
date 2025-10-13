@@ -89,7 +89,7 @@ export class Cluster extends pulumi.CustomResource {
      * schema: Required
      */
     declare public readonly subnetId: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
      * schema: Required

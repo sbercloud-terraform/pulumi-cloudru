@@ -57,7 +57,7 @@ export class Listener extends pulumi.CustomResource {
     declare public readonly protocolPort: pulumi.Output<number>;
     declare public readonly region: pulumi.Output<string>;
     declare public readonly sniContainerRefs: pulumi.Output<string[]>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     /**
      * @deprecated tenant_id is deprecated
      */

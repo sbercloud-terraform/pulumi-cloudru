@@ -21,21 +21,22 @@ type Instance struct {
 	AgencyName pulumi.StringOutput    `pulumi:"agencyName"`
 	AgentList  pulumi.StringOutput    `pulumi:"agentList"`
 	// Deprecated: Deprecated
-	AutoPay                  pulumi.StringPtrOutput      `pulumi:"autoPay"`
-	AutoRenew                pulumi.StringPtrOutput      `pulumi:"autoRenew"`
-	AutoTerminateTime        pulumi.StringPtrOutput      `pulumi:"autoTerminateTime"`
-	AvailabilityZone         pulumi.StringOutput         `pulumi:"availabilityZone"`
-	Bandwidth                InstanceBandwidthPtrOutput  `pulumi:"bandwidth"`
-	ChargingMode             pulumi.StringOutput         `pulumi:"chargingMode"`
-	CreatedAt                pulumi.StringOutput         `pulumi:"createdAt"`
-	DataDisks                InstanceDataDiskArrayOutput `pulumi:"dataDisks"`
-	DeleteDisksOnTermination pulumi.BoolPtrOutput        `pulumi:"deleteDisksOnTermination"`
-	DeleteEipOnTermination   pulumi.BoolPtrOutput        `pulumi:"deleteEipOnTermination"`
-	Description              pulumi.StringOutput         `pulumi:"description"`
-	EipId                    pulumi.StringPtrOutput      `pulumi:"eipId"`
-	EipType                  pulumi.StringPtrOutput      `pulumi:"eipType"`
-	EnterpriseProjectId      pulumi.StringOutput         `pulumi:"enterpriseProjectId"`
-	ExpiredTime              pulumi.StringOutput         `pulumi:"expiredTime"`
+	AutoPay                  pulumi.StringPtrOutput       `pulumi:"autoPay"`
+	AutoRenew                pulumi.StringPtrOutput       `pulumi:"autoRenew"`
+	AutoTerminateTime        pulumi.StringPtrOutput       `pulumi:"autoTerminateTime"`
+	AvailabilityZone         pulumi.StringOutput          `pulumi:"availabilityZone"`
+	Bandwidth                InstanceBandwidthPtrOutput   `pulumi:"bandwidth"`
+	ChargingMode             pulumi.StringOutput          `pulumi:"chargingMode"`
+	CreatedAt                pulumi.StringOutput          `pulumi:"createdAt"`
+	DataDisks                InstanceDataDiskArrayOutput  `pulumi:"dataDisks"`
+	DeleteDisksOnTermination pulumi.BoolPtrOutput         `pulumi:"deleteDisksOnTermination"`
+	DeleteEipOnTermination   pulumi.BoolPtrOutput         `pulumi:"deleteEipOnTermination"`
+	Description              pulumi.StringOutput          `pulumi:"description"`
+	EipId                    pulumi.StringPtrOutput       `pulumi:"eipId"`
+	EipType                  pulumi.StringPtrOutput       `pulumi:"eipType"`
+	EnclaveOptions           InstanceEnclaveOptionsOutput `pulumi:"enclaveOptions"`
+	EnterpriseProjectId      pulumi.StringOutput          `pulumi:"enterpriseProjectId"`
+	ExpiredTime              pulumi.StringOutput          `pulumi:"expiredTime"`
 	// schema: Required
 	FlavorId pulumi.StringOutput `pulumi:"flavorId"`
 	// schema: Computed
@@ -126,21 +127,22 @@ type instanceState struct {
 	AgencyName *string `pulumi:"agencyName"`
 	AgentList  *string `pulumi:"agentList"`
 	// Deprecated: Deprecated
-	AutoPay                  *string            `pulumi:"autoPay"`
-	AutoRenew                *string            `pulumi:"autoRenew"`
-	AutoTerminateTime        *string            `pulumi:"autoTerminateTime"`
-	AvailabilityZone         *string            `pulumi:"availabilityZone"`
-	Bandwidth                *InstanceBandwidth `pulumi:"bandwidth"`
-	ChargingMode             *string            `pulumi:"chargingMode"`
-	CreatedAt                *string            `pulumi:"createdAt"`
-	DataDisks                []InstanceDataDisk `pulumi:"dataDisks"`
-	DeleteDisksOnTermination *bool              `pulumi:"deleteDisksOnTermination"`
-	DeleteEipOnTermination   *bool              `pulumi:"deleteEipOnTermination"`
-	Description              *string            `pulumi:"description"`
-	EipId                    *string            `pulumi:"eipId"`
-	EipType                  *string            `pulumi:"eipType"`
-	EnterpriseProjectId      *string            `pulumi:"enterpriseProjectId"`
-	ExpiredTime              *string            `pulumi:"expiredTime"`
+	AutoPay                  *string                 `pulumi:"autoPay"`
+	AutoRenew                *string                 `pulumi:"autoRenew"`
+	AutoTerminateTime        *string                 `pulumi:"autoTerminateTime"`
+	AvailabilityZone         *string                 `pulumi:"availabilityZone"`
+	Bandwidth                *InstanceBandwidth      `pulumi:"bandwidth"`
+	ChargingMode             *string                 `pulumi:"chargingMode"`
+	CreatedAt                *string                 `pulumi:"createdAt"`
+	DataDisks                []InstanceDataDisk      `pulumi:"dataDisks"`
+	DeleteDisksOnTermination *bool                   `pulumi:"deleteDisksOnTermination"`
+	DeleteEipOnTermination   *bool                   `pulumi:"deleteEipOnTermination"`
+	Description              *string                 `pulumi:"description"`
+	EipId                    *string                 `pulumi:"eipId"`
+	EipType                  *string                 `pulumi:"eipType"`
+	EnclaveOptions           *InstanceEnclaveOptions `pulumi:"enclaveOptions"`
+	EnterpriseProjectId      *string                 `pulumi:"enterpriseProjectId"`
+	ExpiredTime              *string                 `pulumi:"expiredTime"`
 	// schema: Required
 	FlavorId *string `pulumi:"flavorId"`
 	// schema: Computed
@@ -201,6 +203,7 @@ type InstanceState struct {
 	Description              pulumi.StringPtrInput
 	EipId                    pulumi.StringPtrInput
 	EipType                  pulumi.StringPtrInput
+	EnclaveOptions           InstanceEnclaveOptionsPtrInput
 	EnterpriseProjectId      pulumi.StringPtrInput
 	ExpiredTime              pulumi.StringPtrInput
 	// schema: Required
@@ -252,19 +255,20 @@ type instanceArgs struct {
 	AgencyName *string `pulumi:"agencyName"`
 	AgentList  *string `pulumi:"agentList"`
 	// Deprecated: Deprecated
-	AutoPay                  *string            `pulumi:"autoPay"`
-	AutoRenew                *string            `pulumi:"autoRenew"`
-	AutoTerminateTime        *string            `pulumi:"autoTerminateTime"`
-	AvailabilityZone         *string            `pulumi:"availabilityZone"`
-	Bandwidth                *InstanceBandwidth `pulumi:"bandwidth"`
-	ChargingMode             *string            `pulumi:"chargingMode"`
-	DataDisks                []InstanceDataDisk `pulumi:"dataDisks"`
-	DeleteDisksOnTermination *bool              `pulumi:"deleteDisksOnTermination"`
-	DeleteEipOnTermination   *bool              `pulumi:"deleteEipOnTermination"`
-	Description              *string            `pulumi:"description"`
-	EipId                    *string            `pulumi:"eipId"`
-	EipType                  *string            `pulumi:"eipType"`
-	EnterpriseProjectId      *string            `pulumi:"enterpriseProjectId"`
+	AutoPay                  *string                 `pulumi:"autoPay"`
+	AutoRenew                *string                 `pulumi:"autoRenew"`
+	AutoTerminateTime        *string                 `pulumi:"autoTerminateTime"`
+	AvailabilityZone         *string                 `pulumi:"availabilityZone"`
+	Bandwidth                *InstanceBandwidth      `pulumi:"bandwidth"`
+	ChargingMode             *string                 `pulumi:"chargingMode"`
+	DataDisks                []InstanceDataDisk      `pulumi:"dataDisks"`
+	DeleteDisksOnTermination *bool                   `pulumi:"deleteDisksOnTermination"`
+	DeleteEipOnTermination   *bool                   `pulumi:"deleteEipOnTermination"`
+	Description              *string                 `pulumi:"description"`
+	EipId                    *string                 `pulumi:"eipId"`
+	EipType                  *string                 `pulumi:"eipType"`
+	EnclaveOptions           *InstanceEnclaveOptions `pulumi:"enclaveOptions"`
+	EnterpriseProjectId      *string                 `pulumi:"enterpriseProjectId"`
 	// schema: Required
 	FlavorId *string `pulumi:"flavorId"`
 	// schema: Computed
@@ -318,6 +322,7 @@ type InstanceArgs struct {
 	Description              pulumi.StringPtrInput
 	EipId                    pulumi.StringPtrInput
 	EipType                  pulumi.StringPtrInput
+	EnclaveOptions           InstanceEnclaveOptionsPtrInput
 	EnterpriseProjectId      pulumi.StringPtrInput
 	// schema: Required
 	FlavorId pulumi.StringPtrInput
@@ -512,6 +517,10 @@ func (o InstanceOutput) EipId() pulumi.StringPtrOutput {
 
 func (o InstanceOutput) EipType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.EipType }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceOutput) EnclaveOptions() InstanceEnclaveOptionsOutput {
+	return o.ApplyT(func(v *Instance) InstanceEnclaveOptionsOutput { return v.EnclaveOptions }).(InstanceEnclaveOptionsOutput)
 }
 
 func (o InstanceOutput) EnterpriseProjectId() pulumi.StringOutput {

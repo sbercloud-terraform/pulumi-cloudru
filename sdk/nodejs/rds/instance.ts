@@ -82,7 +82,7 @@ export class Instance extends pulumi.CustomResource {
     declare public /*out*/ readonly status: pulumi.Output<string>;
     declare public readonly subnetId: pulumi.Output<string>;
     declare public readonly switchStrategy: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     declare public readonly tdeEnabled: pulumi.Output<boolean>;
     declare public readonly timeZone: pulumi.Output<string>;
     declare public readonly volume: pulumi.Output<outputs.Rds.InstanceVolume>;

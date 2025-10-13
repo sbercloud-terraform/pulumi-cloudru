@@ -24,7 +24,9 @@ class SubnetArgs:
                  vpc_id: pulumi.Input[_builtins.str],
                  availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 dhcp_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
                  dhcp_enable: Optional[pulumi.Input[_builtins.bool]] = None,
+                 dhcp_ipv6_lease_time: Optional[pulumi.Input[_builtins.str]] = None,
                  dhcp_lease_time: Optional[pulumi.Input[_builtins.str]] = None,
                  dns_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ipv6_enable: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -44,8 +46,12 @@ class SubnetArgs:
             pulumi.set(__self__, "availability_zone", availability_zone)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if dhcp_domain_name is not None:
+            pulumi.set(__self__, "dhcp_domain_name", dhcp_domain_name)
         if dhcp_enable is not None:
             pulumi.set(__self__, "dhcp_enable", dhcp_enable)
+        if dhcp_ipv6_lease_time is not None:
+            pulumi.set(__self__, "dhcp_ipv6_lease_time", dhcp_ipv6_lease_time)
         if dhcp_lease_time is not None:
             pulumi.set(__self__, "dhcp_lease_time", dhcp_lease_time)
         if dns_lists is not None:
@@ -111,6 +117,15 @@ class SubnetArgs:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="dhcpDomainName")
+    def dhcp_domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "dhcp_domain_name")
+
+    @dhcp_domain_name.setter
+    def dhcp_domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "dhcp_domain_name", value)
+
+    @_builtins.property
     @pulumi.getter(name="dhcpEnable")
     def dhcp_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
         return pulumi.get(self, "dhcp_enable")
@@ -118,6 +133,15 @@ class SubnetArgs:
     @dhcp_enable.setter
     def dhcp_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "dhcp_enable", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dhcpIpv6LeaseTime")
+    def dhcp_ipv6_lease_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "dhcp_ipv6_lease_time")
+
+    @dhcp_ipv6_lease_time.setter
+    def dhcp_ipv6_lease_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "dhcp_ipv6_lease_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dhcpLeaseTime")
@@ -207,7 +231,9 @@ class _SubnetState:
                  availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  cidr: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 dhcp_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
                  dhcp_enable: Optional[pulumi.Input[_builtins.bool]] = None,
+                 dhcp_ipv6_lease_time: Optional[pulumi.Input[_builtins.str]] = None,
                  dhcp_lease_time: Optional[pulumi.Input[_builtins.str]] = None,
                  dns_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
@@ -234,8 +260,12 @@ class _SubnetState:
             pulumi.set(__self__, "cidr", cidr)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if dhcp_domain_name is not None:
+            pulumi.set(__self__, "dhcp_domain_name", dhcp_domain_name)
         if dhcp_enable is not None:
             pulumi.set(__self__, "dhcp_enable", dhcp_enable)
+        if dhcp_ipv6_lease_time is not None:
+            pulumi.set(__self__, "dhcp_ipv6_lease_time", dhcp_ipv6_lease_time)
         if dhcp_lease_time is not None:
             pulumi.set(__self__, "dhcp_lease_time", dhcp_lease_time)
         if dns_lists is not None:
@@ -297,6 +327,15 @@ class _SubnetState:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="dhcpDomainName")
+    def dhcp_domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "dhcp_domain_name")
+
+    @dhcp_domain_name.setter
+    def dhcp_domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "dhcp_domain_name", value)
+
+    @_builtins.property
     @pulumi.getter(name="dhcpEnable")
     def dhcp_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
         return pulumi.get(self, "dhcp_enable")
@@ -304,6 +343,15 @@ class _SubnetState:
     @dhcp_enable.setter
     def dhcp_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "dhcp_enable", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dhcpIpv6LeaseTime")
+    def dhcp_ipv6_lease_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "dhcp_ipv6_lease_time")
+
+    @dhcp_ipv6_lease_time.setter
+    def dhcp_ipv6_lease_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "dhcp_ipv6_lease_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dhcpLeaseTime")
@@ -462,7 +510,9 @@ class Subnet(pulumi.CustomResource):
                  availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  cidr: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 dhcp_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
                  dhcp_enable: Optional[pulumi.Input[_builtins.bool]] = None,
+                 dhcp_ipv6_lease_time: Optional[pulumi.Input[_builtins.str]] = None,
                  dhcp_lease_time: Optional[pulumi.Input[_builtins.str]] = None,
                  dns_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
@@ -506,7 +556,9 @@ class Subnet(pulumi.CustomResource):
                  availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  cidr: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 dhcp_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
                  dhcp_enable: Optional[pulumi.Input[_builtins.bool]] = None,
+                 dhcp_ipv6_lease_time: Optional[pulumi.Input[_builtins.str]] = None,
                  dhcp_lease_time: Optional[pulumi.Input[_builtins.str]] = None,
                  dns_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
@@ -532,7 +584,9 @@ class Subnet(pulumi.CustomResource):
                 raise TypeError("Missing required property 'cidr'")
             __props__.__dict__["cidr"] = cidr
             __props__.__dict__["description"] = description
+            __props__.__dict__["dhcp_domain_name"] = dhcp_domain_name
             __props__.__dict__["dhcp_enable"] = dhcp_enable
+            __props__.__dict__["dhcp_ipv6_lease_time"] = dhcp_ipv6_lease_time
             __props__.__dict__["dhcp_lease_time"] = dhcp_lease_time
             __props__.__dict__["dns_lists"] = dns_lists
             if gateway_ip is None and not opts.urn:
@@ -566,7 +620,9 @@ class Subnet(pulumi.CustomResource):
             availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
             cidr: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
+            dhcp_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
             dhcp_enable: Optional[pulumi.Input[_builtins.bool]] = None,
+            dhcp_ipv6_lease_time: Optional[pulumi.Input[_builtins.str]] = None,
             dhcp_lease_time: Optional[pulumi.Input[_builtins.str]] = None,
             dns_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
@@ -599,7 +655,9 @@ class Subnet(pulumi.CustomResource):
         __props__.__dict__["availability_zone"] = availability_zone
         __props__.__dict__["cidr"] = cidr
         __props__.__dict__["description"] = description
+        __props__.__dict__["dhcp_domain_name"] = dhcp_domain_name
         __props__.__dict__["dhcp_enable"] = dhcp_enable
+        __props__.__dict__["dhcp_ipv6_lease_time"] = dhcp_ipv6_lease_time
         __props__.__dict__["dhcp_lease_time"] = dhcp_lease_time
         __props__.__dict__["dns_lists"] = dns_lists
         __props__.__dict__["gateway_ip"] = gateway_ip
@@ -634,9 +692,19 @@ class Subnet(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @_builtins.property
+    @pulumi.getter(name="dhcpDomainName")
+    def dhcp_domain_name(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "dhcp_domain_name")
+
+    @_builtins.property
     @pulumi.getter(name="dhcpEnable")
     def dhcp_enable(self) -> pulumi.Output[Optional[_builtins.bool]]:
         return pulumi.get(self, "dhcp_enable")
+
+    @_builtins.property
+    @pulumi.getter(name="dhcpIpv6LeaseTime")
+    def dhcp_ipv6_lease_time(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "dhcp_ipv6_lease_time")
 
     @_builtins.property
     @pulumi.getter(name="dhcpLeaseTime")
@@ -713,7 +781,7 @@ class Subnet(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+    def tags(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         return pulumi.get(self, "tags")
 
     @_builtins.property

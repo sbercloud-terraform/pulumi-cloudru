@@ -41,7 +41,7 @@ export interface GetRouteTablesResult {
     readonly region: string;
     readonly routeTableId?: string;
     readonly routeTables: outputs.Er.GetRouteTablesRouteTable[];
-    readonly tags?: {[key: string]: string};
+    readonly tags: {[key: string]: string};
 }
 export function getRouteTablesOutput(args: GetRouteTablesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRouteTablesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

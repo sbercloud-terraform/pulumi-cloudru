@@ -85,7 +85,7 @@ export class ElbLoadbalancer extends pulumi.CustomResource {
     declare public /*out*/ readonly publicBorderGroup: pulumi.Output<string>;
     declare public readonly region: pulumi.Output<string>;
     declare public readonly sharetype: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     declare public readonly vpcId: pulumi.Output<string>;
     declare public readonly wafFailureAction: pulumi.Output<string>;

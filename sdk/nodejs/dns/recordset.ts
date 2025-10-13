@@ -36,7 +36,7 @@ export class Recordset extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     declare public readonly records: pulumi.Output<string[]>;
     declare public readonly region: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     declare public readonly ttl: pulumi.Output<number | undefined>;
     declare public readonly type: pulumi.Output<string>;
     declare public readonly zoneId: pulumi.Output<string>;

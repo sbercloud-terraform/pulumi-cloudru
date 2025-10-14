@@ -609,7 +609,7 @@ class _FirewallState:
         pulumi.set(self, "tags", value)
 
 
-@pulumi.type_token("sbercloud:Cfw/firewall:Firewall")
+@pulumi.type_token("cloudru:Cfw/firewall:Firewall")
 class Firewall(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -720,7 +720,7 @@ class Firewall(pulumi.CustomResource):
             __props__.__dict__["status"] = None
             __props__.__dict__["support_ipv6"] = None
         super(Firewall, __self__).__init__(
-            'sbercloud:Cfw/firewall:Firewall',
+            'cloudru:Cfw/firewall:Firewall',
             resource_name,
             __props__,
             opts)

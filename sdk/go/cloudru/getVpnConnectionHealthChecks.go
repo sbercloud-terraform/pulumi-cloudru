@@ -14,7 +14,7 @@ import (
 func GetVpnConnectionHealthChecks(ctx *pulumi.Context, args *GetVpnConnectionHealthChecksArgs, opts ...pulumi.InvokeOption) (*GetVpnConnectionHealthChecksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVpnConnectionHealthChecksResult
-	err := ctx.Invoke("sbercloud:index/getVpnConnectionHealthChecks:getVpnConnectionHealthChecks", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getVpnConnectionHealthChecks:getVpnConnectionHealthChecks", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -47,7 +47,7 @@ func GetVpnConnectionHealthChecksOutput(ctx *pulumi.Context, args GetVpnConnecti
 		ApplyT(func(v interface{}) (GetVpnConnectionHealthChecksResultOutput, error) {
 			args := v.(GetVpnConnectionHealthChecksArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getVpnConnectionHealthChecks:getVpnConnectionHealthChecks", args, GetVpnConnectionHealthChecksResultOutput{}, options).(GetVpnConnectionHealthChecksResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getVpnConnectionHealthChecks:getVpnConnectionHealthChecks", args, GetVpnConnectionHealthChecksResultOutput{}, options).(GetVpnConnectionHealthChecksResultOutput), nil
 		}).(GetVpnConnectionHealthChecksResultOutput)
 }
 

@@ -17,7 +17,7 @@ from . import outputs
 
 import types
 
-__config__ = pulumi.Config('sbercloud')
+__config__ = pulumi.Config('cloudru')
 
 
 class _ExportableConfig(types.ModuleType):

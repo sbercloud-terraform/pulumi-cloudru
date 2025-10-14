@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 export function getRole(args?: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Iam/getRole:getRole", {
+    return pulumi.runtime.invoke("cloudru:Iam/getRole:getRole", {
         "displayName": args.displayName,
         "name": args.name,
     }, opts);
@@ -39,7 +39,7 @@ export interface GetRoleResult {
 export function getRoleOutput(args?: GetRoleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRoleResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Iam/getRole:getRole", {
+    return pulumi.runtime.invokeOutput("cloudru:Iam/getRole:getRole", {
         "displayName": args.displayName,
         "name": args.name,
     }, opts);

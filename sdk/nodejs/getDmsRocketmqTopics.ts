@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 export function getDmsRocketmqTopics(args: GetDmsRocketmqTopicsArgs, opts?: pulumi.InvokeOptions): Promise<GetDmsRocketmqTopicsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getDmsRocketmqTopics:getDmsRocketmqTopics", {
+    return pulumi.runtime.invoke("cloudru:index/getDmsRocketmqTopics:getDmsRocketmqTopics", {
         "instanceId": args.instanceId,
         "name": args.name,
         "permission": args.permission,
@@ -48,7 +48,7 @@ export interface GetDmsRocketmqTopicsResult {
 }
 export function getDmsRocketmqTopicsOutput(args: GetDmsRocketmqTopicsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDmsRocketmqTopicsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getDmsRocketmqTopics:getDmsRocketmqTopics", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getDmsRocketmqTopics:getDmsRocketmqTopics", {
         "instanceId": args.instanceId,
         "name": args.name,
         "permission": args.permission,

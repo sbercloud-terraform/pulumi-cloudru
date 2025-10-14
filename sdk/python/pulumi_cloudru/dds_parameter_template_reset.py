@@ -87,7 +87,7 @@ class _DdsParameterTemplateResetState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:index/ddsParameterTemplateReset:DdsParameterTemplateReset")
+@pulumi.type_token("cloudru:index/ddsParameterTemplateReset:DdsParameterTemplateReset")
 class DdsParameterTemplateReset(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -141,7 +141,7 @@ class DdsParameterTemplateReset(pulumi.CustomResource):
             __props__.__dict__["configuration_id"] = configuration_id
             __props__.__dict__["region"] = region
         super(DdsParameterTemplateReset, __self__).__init__(
-            'sbercloud:index/ddsParameterTemplateReset:DdsParameterTemplateReset',
+            'cloudru:index/ddsParameterTemplateReset:DdsParameterTemplateReset',
             resource_name,
             __props__,
             opts)

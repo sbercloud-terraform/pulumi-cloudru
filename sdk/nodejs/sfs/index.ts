@@ -35,17 +35,17 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "sbercloud:Sfs/accessRule:AccessRule":
+            case "cloudru:Sfs/accessRule:AccessRule":
                 return new AccessRule(name, <any>undefined, { urn })
-            case "sbercloud:Sfs/fileSystem:FileSystem":
+            case "cloudru:Sfs/fileSystem:FileSystem":
                 return new FileSystem(name, <any>undefined, { urn })
-            case "sbercloud:Sfs/turbo:Turbo":
+            case "cloudru:Sfs/turbo:Turbo":
                 return new Turbo(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("sbercloud", "Sfs/accessRule", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Sfs/fileSystem", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Sfs/turbo", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Sfs/accessRule", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Sfs/fileSystem", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Sfs/turbo", _module)

@@ -41,7 +41,7 @@ func NewMysqlDatabase(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MysqlDatabase
-	err := ctx.RegisterResource("sbercloud:Rds/mysqlDatabase:MysqlDatabase", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Rds/mysqlDatabase:MysqlDatabase", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -53,7 +53,7 @@ func NewMysqlDatabase(ctx *pulumi.Context,
 func GetMysqlDatabase(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *MysqlDatabaseState, opts ...pulumi.ResourceOption) (*MysqlDatabase, error) {
 	var resource MysqlDatabase
-	err := ctx.ReadResource("sbercloud:Rds/mysqlDatabase:MysqlDatabase", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Rds/mysqlDatabase:MysqlDatabase", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

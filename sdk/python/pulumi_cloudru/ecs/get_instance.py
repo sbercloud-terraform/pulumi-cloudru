@@ -277,7 +277,7 @@ def get_instance(enterprise_project_id: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['tags'] = tags
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Ecs/getInstance:getInstance', __args__, opts=opts, typ=GetInstanceResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Ecs/getInstance:getInstance', __args__, opts=opts, typ=GetInstanceResult).value
 
     return AwaitableGetInstanceResult(
         availability_zone=pulumi.get(__ret__, 'availability_zone'),
@@ -324,7 +324,7 @@ def get_instance_output(enterprise_project_id: Optional[pulumi.Input[Optional[_b
     __args__['region'] = region
     __args__['tags'] = tags
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Ecs/getInstance:getInstance', __args__, opts=opts, typ=GetInstanceResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Ecs/getInstance:getInstance', __args__, opts=opts, typ=GetInstanceResult)
     return __ret__.apply(lambda __response__: GetInstanceResult(
         availability_zone=pulumi.get(__response__, 'availability_zone'),
         charging_mode=pulumi.get(__response__, 'charging_mode'),

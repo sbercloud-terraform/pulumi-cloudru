@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 export function getDmsRocketmqUsers(args: GetDmsRocketmqUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetDmsRocketmqUsersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getDmsRocketmqUsers:getDmsRocketmqUsers", {
+    return pulumi.runtime.invoke("cloudru:index/getDmsRocketmqUsers:getDmsRocketmqUsers", {
         "accessKey": args.accessKey,
         "admin": args.admin,
         "defaultGroupPerm": args.defaultGroupPerm,
@@ -51,7 +51,7 @@ export interface GetDmsRocketmqUsersResult {
 }
 export function getDmsRocketmqUsersOutput(args: GetDmsRocketmqUsersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDmsRocketmqUsersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getDmsRocketmqUsers:getDmsRocketmqUsers", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getDmsRocketmqUsers:getDmsRocketmqUsers", {
         "accessKey": args.accessKey,
         "admin": args.admin,
         "defaultGroupPerm": args.defaultGroupPerm,

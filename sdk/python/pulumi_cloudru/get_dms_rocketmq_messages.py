@@ -142,7 +142,7 @@ def get_dms_rocketmq_messages(end_time: Optional[_builtins.str] = None,
     __args__['startTime'] = start_time
     __args__['topic'] = topic
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getDmsRocketmqMessages:getDmsRocketmqMessages', __args__, opts=opts, typ=GetDmsRocketmqMessagesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getDmsRocketmqMessages:getDmsRocketmqMessages', __args__, opts=opts, typ=GetDmsRocketmqMessagesResult).value
 
     return AwaitableGetDmsRocketmqMessagesResult(
         end_time=pulumi.get(__ret__, 'end_time'),
@@ -174,7 +174,7 @@ def get_dms_rocketmq_messages_output(end_time: Optional[pulumi.Input[Optional[_b
     __args__['startTime'] = start_time
     __args__['topic'] = topic
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getDmsRocketmqMessages:getDmsRocketmqMessages', __args__, opts=opts, typ=GetDmsRocketmqMessagesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getDmsRocketmqMessages:getDmsRocketmqMessages', __args__, opts=opts, typ=GetDmsRocketmqMessagesResult)
     return __ret__.apply(lambda __response__: GetDmsRocketmqMessagesResult(
         end_time=pulumi.get(__response__, 'end_time'),
         id=pulumi.get(__response__, 'id'),

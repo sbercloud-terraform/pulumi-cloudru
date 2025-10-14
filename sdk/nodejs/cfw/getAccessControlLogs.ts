@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 export function getAccessControlLogs(args: GetAccessControlLogsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessControlLogsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Cfw/getAccessControlLogs:getAccessControlLogs", {
+    return pulumi.runtime.invoke("cloudru:Cfw/getAccessControlLogs:getAccessControlLogs", {
         "action": args.action,
         "app": args.app,
         "dstCityName": args.dstCityName,
@@ -84,7 +84,7 @@ export interface GetAccessControlLogsResult {
 }
 export function getAccessControlLogsOutput(args: GetAccessControlLogsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccessControlLogsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Cfw/getAccessControlLogs:getAccessControlLogs", {
+    return pulumi.runtime.invokeOutput("cloudru:Cfw/getAccessControlLogs:getAccessControlLogs", {
         "action": args.action,
         "app": args.app,
         "dstCityName": args.dstCityName,

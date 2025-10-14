@@ -14,7 +14,7 @@ import (
 func LookupInstance(ctx *pulumi.Context, args *LookupInstanceArgs, opts ...pulumi.InvokeOption) (*LookupInstanceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupInstanceResult
-	err := ctx.Invoke("sbercloud:Ecs/getInstance:getInstance", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Ecs/getInstance:getInstance", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -66,7 +66,7 @@ func LookupInstanceOutput(ctx *pulumi.Context, args LookupInstanceOutputArgs, op
 		ApplyT(func(v interface{}) (LookupInstanceResultOutput, error) {
 			args := v.(LookupInstanceArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Ecs/getInstance:getInstance", args, LookupInstanceResultOutput{}, options).(LookupInstanceResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Ecs/getInstance:getInstance", args, LookupInstanceResultOutput{}, options).(LookupInstanceResultOutput), nil
 		}).(LookupInstanceResultOutput)
 }
 

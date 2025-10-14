@@ -48,7 +48,7 @@ func NewSqlserverAccount(ctx *pulumi.Context,
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SqlserverAccount
-	err := ctx.RegisterResource("sbercloud:Rds/sqlserverAccount:SqlserverAccount", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Rds/sqlserverAccount:SqlserverAccount", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -60,7 +60,7 @@ func NewSqlserverAccount(ctx *pulumi.Context,
 func GetSqlserverAccount(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *SqlserverAccountState, opts ...pulumi.ResourceOption) (*SqlserverAccount, error) {
 	var resource SqlserverAccount
-	err := ctx.ReadResource("sbercloud:Rds/sqlserverAccount:SqlserverAccount", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Rds/sqlserverAccount:SqlserverAccount", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

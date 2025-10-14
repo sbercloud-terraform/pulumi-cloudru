@@ -151,7 +151,7 @@ def get_flavors(arch_type: Optional[_builtins.str] = None,
     __args__['storageSpecCode'] = storage_spec_code
     __args__['type'] = type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Dms/getFlavors:getFlavors', __args__, opts=opts, typ=GetFlavorsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Dms/getFlavors:getFlavors', __args__, opts=opts, typ=GetFlavorsResult).value
 
     return AwaitableGetFlavorsResult(
         arch_type=pulumi.get(__ret__, 'arch_type'),
@@ -184,7 +184,7 @@ def get_flavors_output(arch_type: Optional[pulumi.Input[Optional[_builtins.str]]
     __args__['storageSpecCode'] = storage_spec_code
     __args__['type'] = type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Dms/getFlavors:getFlavors', __args__, opts=opts, typ=GetFlavorsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Dms/getFlavors:getFlavors', __args__, opts=opts, typ=GetFlavorsResult)
     return __ret__.apply(lambda __response__: GetFlavorsResult(
         arch_type=pulumi.get(__response__, 'arch_type'),
         availability_zones=pulumi.get(__response__, 'availability_zones'),

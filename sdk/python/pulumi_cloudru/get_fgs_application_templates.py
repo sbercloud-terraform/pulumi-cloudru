@@ -98,7 +98,7 @@ def get_fgs_application_templates(category: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['runtime'] = runtime
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getFgsApplicationTemplates:getFgsApplicationTemplates', __args__, opts=opts, typ=GetFgsApplicationTemplatesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getFgsApplicationTemplates:getFgsApplicationTemplates', __args__, opts=opts, typ=GetFgsApplicationTemplatesResult).value
 
     return AwaitableGetFgsApplicationTemplatesResult(
         category=pulumi.get(__ret__, 'category'),
@@ -118,7 +118,7 @@ def get_fgs_application_templates_output(category: Optional[pulumi.Input[Optiona
     __args__['region'] = region
     __args__['runtime'] = runtime
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getFgsApplicationTemplates:getFgsApplicationTemplates', __args__, opts=opts, typ=GetFgsApplicationTemplatesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getFgsApplicationTemplates:getFgsApplicationTemplates', __args__, opts=opts, typ=GetFgsApplicationTemplatesResult)
     return __ret__.apply(lambda __response__: GetFgsApplicationTemplatesResult(
         category=pulumi.get(__response__, 'category'),
         id=pulumi.get(__response__, 'id'),

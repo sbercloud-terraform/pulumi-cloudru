@@ -784,7 +784,7 @@ class _VolumeState:
         pulumi.set(self, "wwn", value)
 
 
-@pulumi.type_token("sbercloud:Evs/volume:Volume")
+@pulumi.type_token("cloudru:Evs/volume:Volume")
 class Volume(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -919,7 +919,7 @@ class Volume(pulumi.CustomResource):
             __props__.__dict__["updated_at"] = None
             __props__.__dict__["wwn"] = None
         super(Volume, __self__).__init__(
-            'sbercloud:Evs/volume:Volume',
+            'cloudru:Evs/volume:Volume',
             resource_name,
             __props__,
             opts)

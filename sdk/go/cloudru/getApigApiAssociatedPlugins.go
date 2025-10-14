@@ -14,7 +14,7 @@ import (
 func GetApigApiAssociatedPlugins(ctx *pulumi.Context, args *GetApigApiAssociatedPluginsArgs, opts ...pulumi.InvokeOption) (*GetApigApiAssociatedPluginsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetApigApiAssociatedPluginsResult
-	err := ctx.Invoke("sbercloud:index/getApigApiAssociatedPlugins:getApigApiAssociatedPlugins", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getApigApiAssociatedPlugins:getApigApiAssociatedPlugins", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -53,7 +53,7 @@ func GetApigApiAssociatedPluginsOutput(ctx *pulumi.Context, args GetApigApiAssoc
 		ApplyT(func(v interface{}) (GetApigApiAssociatedPluginsResultOutput, error) {
 			args := v.(GetApigApiAssociatedPluginsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getApigApiAssociatedPlugins:getApigApiAssociatedPlugins", args, GetApigApiAssociatedPluginsResultOutput{}, options).(GetApigApiAssociatedPluginsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getApigApiAssociatedPlugins:getApigApiAssociatedPlugins", args, GetApigApiAssociatedPluginsResultOutput{}, options).(GetApigApiAssociatedPluginsResultOutput), nil
 		}).(GetApigApiAssociatedPluginsResultOutput)
 }
 

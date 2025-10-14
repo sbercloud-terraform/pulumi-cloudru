@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 export function getFgsApplicationTemplates(args?: GetFgsApplicationTemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetFgsApplicationTemplatesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getFgsApplicationTemplates:getFgsApplicationTemplates", {
+    return pulumi.runtime.invoke("cloudru:index/getFgsApplicationTemplates:getFgsApplicationTemplates", {
         "category": args.category,
         "region": args.region,
         "runtime": args.runtime,
@@ -41,7 +41,7 @@ export interface GetFgsApplicationTemplatesResult {
 export function getFgsApplicationTemplatesOutput(args?: GetFgsApplicationTemplatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFgsApplicationTemplatesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getFgsApplicationTemplates:getFgsApplicationTemplates", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getFgsApplicationTemplates:getFgsApplicationTemplates", {
         "category": args.category,
         "region": args.region,
         "runtime": args.runtime,

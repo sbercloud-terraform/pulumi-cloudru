@@ -106,7 +106,7 @@ func NewApi(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Api
-	err := ctx.RegisterResource("sbercloud:SharedApig/api:Api", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:SharedApig/api:Api", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -118,7 +118,7 @@ func NewApi(ctx *pulumi.Context,
 func GetApi(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ApiState, opts ...pulumi.ResourceOption) (*Api, error) {
 	var resource Api
-	err := ctx.ReadResource("sbercloud:SharedApig/api:Api", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:SharedApig/api:Api", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

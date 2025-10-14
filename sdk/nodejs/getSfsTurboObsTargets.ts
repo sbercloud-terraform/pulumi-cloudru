@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 export function getSfsTurboObsTargets(args: GetSfsTurboObsTargetsArgs, opts?: pulumi.InvokeOptions): Promise<GetSfsTurboObsTargetsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getSfsTurboObsTargets:getSfsTurboObsTargets", {
+    return pulumi.runtime.invoke("cloudru:index/getSfsTurboObsTargets:getSfsTurboObsTargets", {
         "bucket": args.bucket,
         "region": args.region,
         "shareId": args.shareId,
@@ -45,7 +45,7 @@ export interface GetSfsTurboObsTargetsResult {
 }
 export function getSfsTurboObsTargetsOutput(args: GetSfsTurboObsTargetsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSfsTurboObsTargetsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getSfsTurboObsTargets:getSfsTurboObsTargets", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getSfsTurboObsTargets:getSfsTurboObsTargets", {
         "bucket": args.bucket,
         "region": args.region,
         "shareId": args.shareId,

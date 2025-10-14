@@ -175,7 +175,7 @@ def get_vaults(auto_expand_enabled: Optional[_builtins.bool] = None,
     __args__['status'] = status
     __args__['type'] = type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Cbr/getVaults:getVaults', __args__, opts=opts, typ=GetVaultsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Cbr/getVaults:getVaults', __args__, opts=opts, typ=GetVaultsResult).value
 
     return AwaitableGetVaultsResult(
         auto_expand_enabled=pulumi.get(__ret__, 'auto_expand_enabled'),
@@ -216,7 +216,7 @@ def get_vaults_output(auto_expand_enabled: Optional[pulumi.Input[Optional[_built
     __args__['status'] = status
     __args__['type'] = type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Cbr/getVaults:getVaults', __args__, opts=opts, typ=GetVaultsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Cbr/getVaults:getVaults', __args__, opts=opts, typ=GetVaultsResult)
     return __ret__.apply(lambda __response__: GetVaultsResult(
         auto_expand_enabled=pulumi.get(__response__, 'auto_expand_enabled'),
         consistent_level=pulumi.get(__response__, 'consistent_level'),

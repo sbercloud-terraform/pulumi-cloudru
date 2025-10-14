@@ -39,7 +39,7 @@ func NewVip(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Vip
-	err := ctx.RegisterResource("sbercloud:Vpc/vip:Vip", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Vpc/vip:Vip", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func NewVip(ctx *pulumi.Context,
 func GetVip(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *VipState, opts ...pulumi.ResourceOption) (*Vip, error) {
 	var resource Vip
-	err := ctx.ReadResource("sbercloud:Vpc/vip:Vip", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Vpc/vip:Vip", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

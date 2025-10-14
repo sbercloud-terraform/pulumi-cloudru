@@ -14,7 +14,7 @@ import (
 func GetClusters(ctx *pulumi.Context, args *GetClustersArgs, opts ...pulumi.InvokeOption) (*GetClustersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetClustersResult
-	err := ctx.Invoke("sbercloud:Cce/getClusters:getClusters", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Cce/getClusters:getClusters", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -52,7 +52,7 @@ func GetClustersOutput(ctx *pulumi.Context, args GetClustersOutputArgs, opts ...
 		ApplyT(func(v interface{}) (GetClustersResultOutput, error) {
 			args := v.(GetClustersArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Cce/getClusters:getClusters", args, GetClustersResultOutput{}, options).(GetClustersResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Cce/getClusters:getClusters", args, GetClustersResultOutput{}, options).(GetClustersResultOutput), nil
 		}).(GetClustersResultOutput)
 }
 

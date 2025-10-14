@@ -48,7 +48,7 @@ func NewImage(ctx *pulumi.Context,
 
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Image
-	err := ctx.RegisterResource("sbercloud:Ims/image:Image", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Ims/image:Image", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -60,7 +60,7 @@ func NewImage(ctx *pulumi.Context,
 func GetImage(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ImageState, opts ...pulumi.ResourceOption) (*Image, error) {
 	var resource Image
-	err := ctx.ReadResource("sbercloud:Ims/image:Image", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Ims/image:Image", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

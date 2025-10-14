@@ -246,7 +246,7 @@ class _PackageState:
         pulumi.set(self, "updated_at", value)
 
 
-@pulumi.type_token("sbercloud:Dli/package:Package")
+@pulumi.type_token("cloudru:Dli/package:Package")
 class Package(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -320,7 +320,7 @@ class Package(pulumi.CustomResource):
             __props__.__dict__["status"] = None
             __props__.__dict__["updated_at"] = None
         super(Package, __self__).__init__(
-            'sbercloud:Dli/package:Package',
+            'cloudru:Dli/package:Package',
             resource_name,
             __props__,
             opts)

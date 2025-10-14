@@ -120,7 +120,7 @@ def get_dependencies(is_versions_query_allowed: Optional[_builtins.bool] = None,
     __args__['runtime'] = runtime
     __args__['type'] = type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:FunctionGraph/getDependencies:getDependencies', __args__, opts=opts, typ=GetDependenciesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:FunctionGraph/getDependencies:getDependencies', __args__, opts=opts, typ=GetDependenciesResult).value
 
     return AwaitableGetDependenciesResult(
         id=pulumi.get(__ret__, 'id'),
@@ -146,7 +146,7 @@ def get_dependencies_output(is_versions_query_allowed: Optional[pulumi.Input[Opt
     __args__['runtime'] = runtime
     __args__['type'] = type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:FunctionGraph/getDependencies:getDependencies', __args__, opts=opts, typ=GetDependenciesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:FunctionGraph/getDependencies:getDependencies', __args__, opts=opts, typ=GetDependenciesResult)
     return __ret__.apply(lambda __response__: GetDependenciesResult(
         id=pulumi.get(__response__, 'id'),
         is_versions_query_allowed=pulumi.get(__response__, 'is_versions_query_allowed'),

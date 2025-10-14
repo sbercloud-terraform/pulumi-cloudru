@@ -19,7 +19,7 @@ export class Turbo extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Sfs/turbo:Turbo';
+    public static readonly __pulumiType = 'cloudru:Sfs/turbo:Turbo';
 
     /**
      * Returns true if the given object is an instance of Turbo.  This is designed to work even

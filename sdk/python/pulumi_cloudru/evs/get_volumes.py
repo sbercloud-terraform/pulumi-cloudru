@@ -252,7 +252,7 @@ def get_volumes(availability_zone: Optional[_builtins.str] = None,
     __args__['volumeId'] = volume_id
     __args__['volumeTypeId'] = volume_type_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Evs/getVolumes:getVolumes', __args__, opts=opts, typ=GetVolumesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Evs/getVolumes:getVolumes', __args__, opts=opts, typ=GetVolumesResult).value
 
     return AwaitableGetVolumesResult(
         availability_zone=pulumi.get(__ret__, 'availability_zone'),
@@ -314,7 +314,7 @@ def get_volumes_output(availability_zone: Optional[pulumi.Input[Optional[_builti
     __args__['volumeId'] = volume_id
     __args__['volumeTypeId'] = volume_type_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Evs/getVolumes:getVolumes', __args__, opts=opts, typ=GetVolumesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Evs/getVolumes:getVolumes', __args__, opts=opts, typ=GetVolumesResult)
     return __ret__.apply(lambda __response__: GetVolumesResult(
         availability_zone=pulumi.get(__response__, 'availability_zone'),
         dedicated_storage_id=pulumi.get(__response__, 'dedicated_storage_id'),

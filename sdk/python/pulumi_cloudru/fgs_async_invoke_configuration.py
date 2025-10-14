@@ -291,7 +291,7 @@ class _FgsAsyncInvokeConfigurationState:
         pulumi.set(self, "updated_at", value)
 
 
-@pulumi.type_token("sbercloud:index/fgsAsyncInvokeConfiguration:FgsAsyncInvokeConfiguration")
+@pulumi.type_token("cloudru:index/fgsAsyncInvokeConfiguration:FgsAsyncInvokeConfiguration")
 class FgsAsyncInvokeConfiguration(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -373,7 +373,7 @@ class FgsAsyncInvokeConfiguration(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["updated_at"] = None
         super(FgsAsyncInvokeConfiguration, __self__).__init__(
-            'sbercloud:index/fgsAsyncInvokeConfiguration:FgsAsyncInvokeConfiguration',
+            'cloudru:index/fgsAsyncInvokeConfiguration:FgsAsyncInvokeConfiguration',
             resource_name,
             __props__,
             opts)

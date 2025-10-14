@@ -560,7 +560,7 @@ class _SparkJobState:
         pulumi.set(self, "specification", value)
 
 
-@pulumi.type_token("sbercloud:Dli/sparkJob:SparkJob")
+@pulumi.type_token("cloudru:Dli/sparkJob:SparkJob")
 class SparkJob(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -674,7 +674,7 @@ class SparkJob(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["owner"] = None
         super(SparkJob, __self__).__init__(
-            'sbercloud:Dli/sparkJob:SparkJob',
+            'cloudru:Dli/sparkJob:SparkJob',
             resource_name,
             __props__,
             opts)

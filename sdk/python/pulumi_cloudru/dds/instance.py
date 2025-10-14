@@ -891,7 +891,7 @@ class _InstanceState:
         pulumi.set(self, "vpc_id", value)
 
 
-@pulumi.type_token("sbercloud:Dds/instance:Instance")
+@pulumi.type_token("cloudru:Dds/instance:Instance")
 class Instance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -1055,7 +1055,7 @@ class Instance(pulumi.CustomResource):
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Instance, __self__).__init__(
-            'sbercloud:Dds/instance:Instance',
+            'cloudru:Dds/instance:Instance',
             resource_name,
             __props__,
             opts)

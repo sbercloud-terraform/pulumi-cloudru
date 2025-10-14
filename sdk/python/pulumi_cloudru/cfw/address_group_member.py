@@ -214,7 +214,7 @@ class _AddressGroupMemberState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:Cfw/addressGroupMember:AddressGroupMember")
+@pulumi.type_token("cloudru:Cfw/addressGroupMember:AddressGroupMember")
 class AddressGroupMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -286,7 +286,7 @@ class AddressGroupMember(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["region"] = region
         super(AddressGroupMember, __self__).__init__(
-            'sbercloud:Cfw/addressGroupMember:AddressGroupMember',
+            'cloudru:Cfw/addressGroupMember:AddressGroupMember',
             resource_name,
             __props__,
             opts)

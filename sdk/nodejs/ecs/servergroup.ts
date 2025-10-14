@@ -19,7 +19,7 @@ export class Servergroup extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Ecs/servergroup:Servergroup';
+    public static readonly __pulumiType = 'cloudru:Ecs/servergroup:Servergroup';
 
     /**
      * Returns true if the given object is an instance of Servergroup.  This is designed to work even

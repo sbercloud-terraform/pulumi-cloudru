@@ -131,7 +131,7 @@ def get_turbos(enterprise_project_id: Optional[_builtins.str] = None,
     __args__['shareType'] = share_type
     __args__['size'] = size
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Sfs/getTurbos:getTurbos', __args__, opts=opts, typ=GetTurbosResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Sfs/getTurbos:getTurbos', __args__, opts=opts, typ=GetTurbosResult).value
 
     return AwaitableGetTurbosResult(
         enterprise_project_id=pulumi.get(__ret__, 'enterprise_project_id'),
@@ -160,7 +160,7 @@ def get_turbos_output(enterprise_project_id: Optional[pulumi.Input[Optional[_bui
     __args__['shareType'] = share_type
     __args__['size'] = size
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Sfs/getTurbos:getTurbos', __args__, opts=opts, typ=GetTurbosResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Sfs/getTurbos:getTurbos', __args__, opts=opts, typ=GetTurbosResult)
     return __ret__.apply(lambda __response__: GetTurbosResult(
         enterprise_project_id=pulumi.get(__response__, 'enterprise_project_id'),
         id=pulumi.get(__response__, 'id'),

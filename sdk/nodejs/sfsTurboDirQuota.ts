@@ -19,7 +19,7 @@ export class SfsTurboDirQuota extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/sfsTurboDirQuota:SfsTurboDirQuota';
+    public static readonly __pulumiType = 'cloudru:index/sfsTurboDirQuota:SfsTurboDirQuota';
 
     /**
      * Returns true if the given object is an instance of SfsTurboDirQuota.  This is designed to work even

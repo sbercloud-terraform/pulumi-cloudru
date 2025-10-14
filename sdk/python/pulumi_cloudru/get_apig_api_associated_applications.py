@@ -142,7 +142,7 @@ def get_apig_api_associated_applications(api_id: Optional[_builtins.str] = None,
     __args__['name'] = name
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getApigApiAssociatedApplications:getApigApiAssociatedApplications', __args__, opts=opts, typ=GetApigApiAssociatedApplicationsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getApigApiAssociatedApplications:getApigApiAssociatedApplications', __args__, opts=opts, typ=GetApigApiAssociatedApplicationsResult).value
 
     return AwaitableGetApigApiAssociatedApplicationsResult(
         api_id=pulumi.get(__ret__, 'api_id'),
@@ -174,7 +174,7 @@ def get_apig_api_associated_applications_output(api_id: Optional[pulumi.Input[_b
     __args__['name'] = name
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getApigApiAssociatedApplications:getApigApiAssociatedApplications', __args__, opts=opts, typ=GetApigApiAssociatedApplicationsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getApigApiAssociatedApplications:getApigApiAssociatedApplications', __args__, opts=opts, typ=GetApigApiAssociatedApplicationsResult)
     return __ret__.apply(lambda __response__: GetApigApiAssociatedApplicationsResult(
         api_id=pulumi.get(__response__, 'api_id'),
         application_id=pulumi.get(__response__, 'application_id'),

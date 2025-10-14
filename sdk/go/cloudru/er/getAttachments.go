@@ -14,7 +14,7 @@ import (
 func GetAttachments(ctx *pulumi.Context, args *GetAttachmentsArgs, opts ...pulumi.InvokeOption) (*GetAttachmentsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAttachmentsResult
-	err := ctx.Invoke("sbercloud:Er/getAttachments:getAttachments", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Er/getAttachments:getAttachments", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -53,7 +53,7 @@ func GetAttachmentsOutput(ctx *pulumi.Context, args GetAttachmentsOutputArgs, op
 		ApplyT(func(v interface{}) (GetAttachmentsResultOutput, error) {
 			args := v.(GetAttachmentsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Er/getAttachments:getAttachments", args, GetAttachmentsResultOutput{}, options).(GetAttachmentsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Er/getAttachments:getAttachments", args, GetAttachmentsResultOutput{}, options).(GetAttachmentsResultOutput), nil
 		}).(GetAttachmentsResultOutput)
 }
 

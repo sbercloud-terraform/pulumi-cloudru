@@ -825,7 +825,7 @@ class _VpnGatewayState:
         pulumi.set(self, "vpc_id", value)
 
 
-@pulumi.type_token("sbercloud:index/vpnGateway:VpnGateway")
+@pulumi.type_token("cloudru:index/vpnGateway:VpnGateway")
 class VpnGateway(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -965,7 +965,7 @@ class VpnGateway(pulumi.CustomResource):
             __props__.__dict__["used_connection_group"] = None
             __props__.__dict__["used_connection_number"] = None
         super(VpnGateway, __self__).__init__(
-            'sbercloud:index/vpnGateway:VpnGateway',
+            'cloudru:index/vpnGateway:VpnGateway',
             resource_name,
             __props__,
             opts)

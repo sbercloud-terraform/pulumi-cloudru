@@ -222,7 +222,7 @@ def get_sfs_file_system_v2(id: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['status'] = status
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getSfsFileSystemV2:getSfsFileSystemV2', __args__, opts=opts, typ=GetSfsFileSystemV2Result).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getSfsFileSystemV2:getSfsFileSystemV2', __args__, opts=opts, typ=GetSfsFileSystemV2Result).value
 
     return AwaitableGetSfsFileSystemV2Result(
         access_level=pulumi.get(__ret__, 'access_level'),
@@ -258,7 +258,7 @@ def get_sfs_file_system_v2_output(id: Optional[pulumi.Input[Optional[_builtins.s
     __args__['region'] = region
     __args__['status'] = status
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getSfsFileSystemV2:getSfsFileSystemV2', __args__, opts=opts, typ=GetSfsFileSystemV2Result)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getSfsFileSystemV2:getSfsFileSystemV2', __args__, opts=opts, typ=GetSfsFileSystemV2Result)
     return __ret__.apply(lambda __response__: GetSfsFileSystemV2Result(
         access_level=pulumi.get(__response__, 'access_level'),
         access_to=pulumi.get(__response__, 'access_to'),

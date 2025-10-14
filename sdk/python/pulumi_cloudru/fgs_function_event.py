@@ -174,7 +174,7 @@ class _FgsFunctionEventState:
         pulumi.set(self, "updated_at", value)
 
 
-@pulumi.type_token("sbercloud:index/fgsFunctionEvent:FgsFunctionEvent")
+@pulumi.type_token("cloudru:index/fgsFunctionEvent:FgsFunctionEvent")
 class FgsFunctionEvent(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -240,7 +240,7 @@ class FgsFunctionEvent(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["updated_at"] = None
         super(FgsFunctionEvent, __self__).__init__(
-            'sbercloud:index/fgsFunctionEvent:FgsFunctionEvent',
+            'cloudru:index/fgsFunctionEvent:FgsFunctionEvent',
             resource_name,
             __props__,
             opts)

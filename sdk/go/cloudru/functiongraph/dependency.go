@@ -50,7 +50,7 @@ func NewDependency(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Dependency
-	err := ctx.RegisterResource("sbercloud:FunctionGraph/dependency:Dependency", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:FunctionGraph/dependency:Dependency", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -62,7 +62,7 @@ func NewDependency(ctx *pulumi.Context,
 func GetDependency(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *DependencyState, opts ...pulumi.ResourceOption) (*Dependency, error) {
 	var resource Dependency
-	err := ctx.ReadResource("sbercloud:FunctionGraph/dependency:Dependency", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:FunctionGraph/dependency:Dependency", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

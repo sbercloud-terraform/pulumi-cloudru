@@ -49,7 +49,7 @@ func NewSecgroupRule(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SecgroupRule
-	err := ctx.RegisterResource("sbercloud:Vpc/secgroupRule:SecgroupRule", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Vpc/secgroupRule:SecgroupRule", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -61,7 +61,7 @@ func NewSecgroupRule(ctx *pulumi.Context,
 func GetSecgroupRule(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *SecgroupRuleState, opts ...pulumi.ResourceOption) (*SecgroupRule, error) {
 	var resource SecgroupRule
-	err := ctx.ReadResource("sbercloud:Vpc/secgroupRule:SecgroupRule", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Vpc/secgroupRule:SecgroupRule", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

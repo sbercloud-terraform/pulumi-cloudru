@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 export function getDmsRocketmqConsumerGroups(args: GetDmsRocketmqConsumerGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDmsRocketmqConsumerGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getDmsRocketmqConsumerGroups:getDmsRocketmqConsumerGroups", {
+    return pulumi.runtime.invoke("cloudru:index/getDmsRocketmqConsumerGroups:getDmsRocketmqConsumerGroups", {
         "broadcast": args.broadcast,
         "enabled": args.enabled,
         "instanceId": args.instanceId,
@@ -48,7 +48,7 @@ export interface GetDmsRocketmqConsumerGroupsResult {
 }
 export function getDmsRocketmqConsumerGroupsOutput(args: GetDmsRocketmqConsumerGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDmsRocketmqConsumerGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getDmsRocketmqConsumerGroups:getDmsRocketmqConsumerGroups", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getDmsRocketmqConsumerGroups:getDmsRocketmqConsumerGroups", {
         "broadcast": args.broadcast,
         "enabled": args.enabled,
         "instanceId": args.instanceId,

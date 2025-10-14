@@ -87,7 +87,7 @@ def get_sfs_turbo_du_tasks(region: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['shareId'] = share_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getSfsTurboDuTasks:getSfsTurboDuTasks', __args__, opts=opts, typ=GetSfsTurboDuTasksResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getSfsTurboDuTasks:getSfsTurboDuTasks', __args__, opts=opts, typ=GetSfsTurboDuTasksResult).value
 
     return AwaitableGetSfsTurboDuTasksResult(
         id=pulumi.get(__ret__, 'id'),
@@ -104,7 +104,7 @@ def get_sfs_turbo_du_tasks_output(region: Optional[pulumi.Input[Optional[_builti
     __args__['region'] = region
     __args__['shareId'] = share_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getSfsTurboDuTasks:getSfsTurboDuTasks', __args__, opts=opts, typ=GetSfsTurboDuTasksResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getSfsTurboDuTasks:getSfsTurboDuTasks', __args__, opts=opts, typ=GetSfsTurboDuTasksResult)
     return __ret__.apply(lambda __response__: GetSfsTurboDuTasksResult(
         id=pulumi.get(__response__, 'id'),
         region=pulumi.get(__response__, 'region'),

@@ -14,7 +14,7 @@ import (
 func GetApigThrottlingPolicies(ctx *pulumi.Context, args *GetApigThrottlingPoliciesArgs, opts ...pulumi.InvokeOption) (*GetApigThrottlingPoliciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetApigThrottlingPoliciesResult
-	err := ctx.Invoke("sbercloud:index/getApigThrottlingPolicies:getApigThrottlingPolicies", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getApigThrottlingPolicies:getApigThrottlingPolicies", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -47,7 +47,7 @@ func GetApigThrottlingPoliciesOutput(ctx *pulumi.Context, args GetApigThrottling
 		ApplyT(func(v interface{}) (GetApigThrottlingPoliciesResultOutput, error) {
 			args := v.(GetApigThrottlingPoliciesArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getApigThrottlingPolicies:getApigThrottlingPolicies", args, GetApigThrottlingPoliciesResultOutput{}, options).(GetApigThrottlingPoliciesResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getApigThrottlingPolicies:getApigThrottlingPolicies", args, GetApigThrottlingPoliciesResultOutput{}, options).(GetApigThrottlingPoliciesResultOutput), nil
 		}).(GetApigThrottlingPoliciesResultOutput)
 }
 

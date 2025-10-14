@@ -21,7 +21,7 @@ export class DmsKafkaMessageProduce extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/dmsKafkaMessageProduce:DmsKafkaMessageProduce';
+    public static readonly __pulumiType = 'cloudru:index/dmsKafkaMessageProduce:DmsKafkaMessageProduce';
 
     /**
      * Returns true if the given object is an instance of DmsKafkaMessageProduce.  This is designed to work even

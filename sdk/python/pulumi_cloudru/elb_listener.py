@@ -1124,7 +1124,7 @@ class _ElbListenerState:
         pulumi.set(self, "updated_at", value)
 
 
-@pulumi.type_token("sbercloud:index/elbListener:ElbListener")
+@pulumi.type_token("cloudru:index/elbListener:ElbListener")
 class ElbListener(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -1308,7 +1308,7 @@ class ElbListener(pulumi.CustomResource):
             __props__.__dict__["enterprise_project_id"] = None
             __props__.__dict__["updated_at"] = None
         super(ElbListener, __self__).__init__(
-            'sbercloud:index/elbListener:ElbListener',
+            'cloudru:index/elbListener:ElbListener',
             resource_name,
             __props__,
             opts)

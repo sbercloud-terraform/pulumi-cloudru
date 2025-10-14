@@ -142,7 +142,7 @@ def get_instances(enterprise_project_id: Optional[_builtins.str] = None,
     __args__['status'] = status
     __args__['tags'] = tags
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Er/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Er/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult).value
 
     return AwaitableGetInstancesResult(
         enterprise_project_id=pulumi.get(__ret__, 'enterprise_project_id'),
@@ -174,7 +174,7 @@ def get_instances_output(enterprise_project_id: Optional[pulumi.Input[Optional[_
     __args__['status'] = status
     __args__['tags'] = tags
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Er/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Er/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult)
     return __ret__.apply(lambda __response__: GetInstancesResult(
         enterprise_project_id=pulumi.get(__response__, 'enterprise_project_id'),
         id=pulumi.get(__response__, 'id'),

@@ -988,7 +988,7 @@ class _ApiState:
         pulumi.set(self, "web_policies", value)
 
 
-@pulumi.type_token("sbercloud:SharedApig/api:Api")
+@pulumi.type_token("cloudru:SharedApig/api:Api")
 class Api(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -1163,7 +1163,7 @@ class Api(pulumi.CustomResource):
             __props__.__dict__["registered_at"] = None
             __props__.__dict__["updated_at"] = None
         super(Api, __self__).__init__(
-            'sbercloud:SharedApig/api:Api',
+            'cloudru:SharedApig/api:Api',
             resource_name,
             __props__,
             opts)

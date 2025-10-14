@@ -14,7 +14,7 @@ import (
 func GetCaptureTaskResults(ctx *pulumi.Context, args *GetCaptureTaskResultsArgs, opts ...pulumi.InvokeOption) (*GetCaptureTaskResultsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCaptureTaskResultsResult
-	err := ctx.Invoke("sbercloud:Cfw/getCaptureTaskResults:getCaptureTaskResults", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Cfw/getCaptureTaskResults:getCaptureTaskResults", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func GetCaptureTaskResultsOutput(ctx *pulumi.Context, args GetCaptureTaskResults
 		ApplyT(func(v interface{}) (GetCaptureTaskResultsResultOutput, error) {
 			args := v.(GetCaptureTaskResultsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Cfw/getCaptureTaskResults:getCaptureTaskResults", args, GetCaptureTaskResultsResultOutput{}, options).(GetCaptureTaskResultsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Cfw/getCaptureTaskResults:getCaptureTaskResults", args, GetCaptureTaskResultsResultOutput{}, options).(GetCaptureTaskResultsResultOutput), nil
 		}).(GetCaptureTaskResultsResultOutput)
 }
 

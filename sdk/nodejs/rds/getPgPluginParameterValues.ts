@@ -6,7 +6,7 @@ import * as utilities from "../utilities";
 
 export function getPgPluginParameterValues(args: GetPgPluginParameterValuesArgs, opts?: pulumi.InvokeOptions): Promise<GetPgPluginParameterValuesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Rds/getPgPluginParameterValues:getPgPluginParameterValues", {
+    return pulumi.runtime.invoke("cloudru:Rds/getPgPluginParameterValues:getPgPluginParameterValues", {
         "instanceId": args.instanceId,
         "name": args.name,
         "region": args.region,
@@ -37,7 +37,7 @@ export interface GetPgPluginParameterValuesResult {
 }
 export function getPgPluginParameterValuesOutput(args: GetPgPluginParameterValuesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPgPluginParameterValuesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Rds/getPgPluginParameterValues:getPgPluginParameterValues", {
+    return pulumi.runtime.invokeOutput("cloudru:Rds/getPgPluginParameterValues:getPgPluginParameterValues", {
         "instanceId": args.instanceId,
         "name": args.name,
         "region": args.region,

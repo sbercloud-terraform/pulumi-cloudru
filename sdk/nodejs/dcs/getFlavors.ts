@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 export function getFlavors(args?: GetFlavorsArgs, opts?: pulumi.InvokeOptions): Promise<GetFlavorsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Dcs/getFlavors:getFlavors", {
+    return pulumi.runtime.invoke("cloudru:Dcs/getFlavors:getFlavors", {
         "cacheMode": args.cacheMode,
         "capacity": args.capacity,
         "cpuArchitecture": args.cpuArchitecture,
@@ -53,7 +53,7 @@ export interface GetFlavorsResult {
 export function getFlavorsOutput(args?: GetFlavorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFlavorsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Dcs/getFlavors:getFlavors", {
+    return pulumi.runtime.invokeOutput("cloudru:Dcs/getFlavors:getFlavors", {
         "cacheMode": args.cacheMode,
         "capacity": args.capacity,
         "cpuArchitecture": args.cpuArchitecture,

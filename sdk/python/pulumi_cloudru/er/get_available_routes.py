@@ -109,7 +109,7 @@ def get_available_routes(destination: Optional[_builtins.str] = None,
     __args__['resourceType'] = resource_type
     __args__['routeTableId'] = route_table_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Er/getAvailableRoutes:getAvailableRoutes', __args__, opts=opts, typ=GetAvailableRoutesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Er/getAvailableRoutes:getAvailableRoutes', __args__, opts=opts, typ=GetAvailableRoutesResult).value
 
     return AwaitableGetAvailableRoutesResult(
         destination=pulumi.get(__ret__, 'destination'),
@@ -132,7 +132,7 @@ def get_available_routes_output(destination: Optional[pulumi.Input[Optional[_bui
     __args__['resourceType'] = resource_type
     __args__['routeTableId'] = route_table_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Er/getAvailableRoutes:getAvailableRoutes', __args__, opts=opts, typ=GetAvailableRoutesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Er/getAvailableRoutes:getAvailableRoutes', __args__, opts=opts, typ=GetAvailableRoutesResult)
     return __ret__.apply(lambda __response__: GetAvailableRoutesResult(
         destination=pulumi.get(__response__, 'destination'),
         id=pulumi.get(__response__, 'id'),

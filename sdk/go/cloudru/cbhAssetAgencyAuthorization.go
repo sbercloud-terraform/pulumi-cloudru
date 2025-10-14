@@ -35,7 +35,7 @@ func NewCbhAssetAgencyAuthorization(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CbhAssetAgencyAuthorization
-	err := ctx.RegisterResource("sbercloud:index/cbhAssetAgencyAuthorization:CbhAssetAgencyAuthorization", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/cbhAssetAgencyAuthorization:CbhAssetAgencyAuthorization", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -47,7 +47,7 @@ func NewCbhAssetAgencyAuthorization(ctx *pulumi.Context,
 func GetCbhAssetAgencyAuthorization(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *CbhAssetAgencyAuthorizationState, opts ...pulumi.ResourceOption) (*CbhAssetAgencyAuthorization, error) {
 	var resource CbhAssetAgencyAuthorization
-	err := ctx.ReadResource("sbercloud:index/cbhAssetAgencyAuthorization:CbhAssetAgencyAuthorization", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/cbhAssetAgencyAuthorization:CbhAssetAgencyAuthorization", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

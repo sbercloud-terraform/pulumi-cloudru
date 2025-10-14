@@ -14,7 +14,7 @@ import (
 func LookupVpc(ctx *pulumi.Context, args *LookupVpcArgs, opts ...pulumi.InvokeOption) (*LookupVpcResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVpcResult
-	err := ctx.Invoke("sbercloud:Vpc/getVpc:getVpc", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Vpc/getVpc:getVpc", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func LookupVpcOutput(ctx *pulumi.Context, args LookupVpcOutputArgs, opts ...pulu
 		ApplyT(func(v interface{}) (LookupVpcResultOutput, error) {
 			args := v.(LookupVpcArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Vpc/getVpc:getVpc", args, LookupVpcResultOutput{}, options).(LookupVpcResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Vpc/getVpc:getVpc", args, LookupVpcResultOutput{}, options).(LookupVpcResultOutput), nil
 		}).(LookupVpcResultOutput)
 }
 

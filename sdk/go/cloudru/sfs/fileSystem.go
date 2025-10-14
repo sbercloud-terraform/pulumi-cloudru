@@ -47,7 +47,7 @@ func NewFileSystem(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FileSystem
-	err := ctx.RegisterResource("sbercloud:Sfs/fileSystem:FileSystem", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Sfs/fileSystem:FileSystem", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -59,7 +59,7 @@ func NewFileSystem(ctx *pulumi.Context,
 func GetFileSystem(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *FileSystemState, opts ...pulumi.ResourceOption) (*FileSystem, error) {
 	var resource FileSystem
-	err := ctx.ReadResource("sbercloud:Sfs/fileSystem:FileSystem", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Sfs/fileSystem:FileSystem", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

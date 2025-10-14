@@ -19,7 +19,7 @@ export class EipAssociate extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Ecs/eipAssociate:EipAssociate';
+    public static readonly __pulumiType = 'cloudru:Ecs/eipAssociate:EipAssociate';
 
     /**
      * Returns true if the given object is an instance of EipAssociate.  This is designed to work even

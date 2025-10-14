@@ -67,7 +67,7 @@ func NewTurbo(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Turbo
-	err := ctx.RegisterResource("sbercloud:Sfs/turbo:Turbo", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Sfs/turbo:Turbo", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -79,7 +79,7 @@ func NewTurbo(ctx *pulumi.Context,
 func GetTurbo(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *TurboState, opts ...pulumi.ResourceOption) (*Turbo, error) {
 	var resource Turbo
-	err := ctx.ReadResource("sbercloud:Sfs/turbo:Turbo", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Sfs/turbo:Turbo", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

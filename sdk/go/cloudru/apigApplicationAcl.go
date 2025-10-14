@@ -48,7 +48,7 @@ func NewApigApplicationAcl(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApigApplicationAcl
-	err := ctx.RegisterResource("sbercloud:index/apigApplicationAcl:ApigApplicationAcl", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/apigApplicationAcl:ApigApplicationAcl", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -60,7 +60,7 @@ func NewApigApplicationAcl(ctx *pulumi.Context,
 func GetApigApplicationAcl(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ApigApplicationAclState, opts ...pulumi.ResourceOption) (*ApigApplicationAcl, error) {
 	var resource ApigApplicationAcl
-	err := ctx.ReadResource("sbercloud:index/apigApplicationAcl:ApigApplicationAcl", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/apigApplicationAcl:ApigApplicationAcl", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

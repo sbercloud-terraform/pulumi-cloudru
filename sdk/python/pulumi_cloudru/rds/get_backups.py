@@ -142,7 +142,7 @@ def get_backups(backup_id: Optional[_builtins.str] = None,
     __args__['name'] = name
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Rds/getBackups:getBackups', __args__, opts=opts, typ=GetBackupsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Rds/getBackups:getBackups', __args__, opts=opts, typ=GetBackupsResult).value
 
     return AwaitableGetBackupsResult(
         backup_id=pulumi.get(__ret__, 'backup_id'),
@@ -174,7 +174,7 @@ def get_backups_output(backup_id: Optional[pulumi.Input[Optional[_builtins.str]]
     __args__['name'] = name
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Rds/getBackups:getBackups', __args__, opts=opts, typ=GetBackupsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Rds/getBackups:getBackups', __args__, opts=opts, typ=GetBackupsResult)
     return __ret__.apply(lambda __response__: GetBackupsResult(
         backup_id=pulumi.get(__response__, 'backup_id'),
         backup_type=pulumi.get(__response__, 'backup_type'),

@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 export function getSfsTurboDataTasks(args: GetSfsTurboDataTasksArgs, opts?: pulumi.InvokeOptions): Promise<GetSfsTurboDataTasksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getSfsTurboDataTasks:getSfsTurboDataTasks", {
+    return pulumi.runtime.invoke("cloudru:index/getSfsTurboDataTasks:getSfsTurboDataTasks", {
         "region": args.region,
         "shareId": args.shareId,
         "status": args.status,
@@ -42,7 +42,7 @@ export interface GetSfsTurboDataTasksResult {
 }
 export function getSfsTurboDataTasksOutput(args: GetSfsTurboDataTasksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSfsTurboDataTasksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getSfsTurboDataTasks:getSfsTurboDataTasks", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getSfsTurboDataTasks:getSfsTurboDataTasks", {
         "region": args.region,
         "shareId": args.shareId,
         "status": args.status,

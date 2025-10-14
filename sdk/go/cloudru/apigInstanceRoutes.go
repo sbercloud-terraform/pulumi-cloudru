@@ -38,7 +38,7 @@ func NewApigInstanceRoutes(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApigInstanceRoutes
-	err := ctx.RegisterResource("sbercloud:index/apigInstanceRoutes:ApigInstanceRoutes", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/apigInstanceRoutes:ApigInstanceRoutes", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -50,7 +50,7 @@ func NewApigInstanceRoutes(ctx *pulumi.Context,
 func GetApigInstanceRoutes(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ApigInstanceRoutesState, opts ...pulumi.ResourceOption) (*ApigInstanceRoutes, error) {
 	var resource ApigInstanceRoutes
-	err := ctx.ReadResource("sbercloud:index/apigInstanceRoutes:ApigInstanceRoutes", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/apigInstanceRoutes:ApigInstanceRoutes", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

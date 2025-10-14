@@ -14,7 +14,7 @@ import (
 func LookupGateway(ctx *pulumi.Context, args *LookupGatewayArgs, opts ...pulumi.InvokeOption) (*LookupGatewayResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGatewayResult
-	err := ctx.Invoke("sbercloud:Nat/getGateway:getGateway", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Nat/getGateway:getGateway", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -60,7 +60,7 @@ func LookupGatewayOutput(ctx *pulumi.Context, args LookupGatewayOutputArgs, opts
 		ApplyT(func(v interface{}) (LookupGatewayResultOutput, error) {
 			args := v.(LookupGatewayArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Nat/getGateway:getGateway", args, LookupGatewayResultOutput{}, options).(LookupGatewayResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Nat/getGateway:getGateway", args, LookupGatewayResultOutput{}, options).(LookupGatewayResultOutput), nil
 		}).(LookupGatewayResultOutput)
 }
 

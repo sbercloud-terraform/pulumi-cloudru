@@ -437,7 +437,7 @@ class _ClusterState:
         pulumi.set(self, "vpc_id", value)
 
 
-@pulumi.type_token("sbercloud:Cdm/cluster:Cluster")
+@pulumi.type_token("cloudru:Cdm/cluster:Cluster")
 class Cluster(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -540,7 +540,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["public_ip"] = None
             __props__.__dict__["status"] = None
         super(Cluster, __self__).__init__(
-            'sbercloud:Cdm/cluster:Cluster',
+            'cloudru:Cdm/cluster:Cluster',
             resource_name,
             __props__,
             opts)

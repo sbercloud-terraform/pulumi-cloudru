@@ -14,7 +14,7 @@ import (
 func GetApigApiBasicConfigurations(ctx *pulumi.Context, args *GetApigApiBasicConfigurationsArgs, opts ...pulumi.InvokeOption) (*GetApigApiBasicConfigurationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetApigApiBasicConfigurationsResult
-	err := ctx.Invoke("sbercloud:index/getApigApiBasicConfigurations:getApigApiBasicConfigurations", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getApigApiBasicConfigurations:getApigApiBasicConfigurations", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -67,7 +67,7 @@ func GetApigApiBasicConfigurationsOutput(ctx *pulumi.Context, args GetApigApiBas
 		ApplyT(func(v interface{}) (GetApigApiBasicConfigurationsResultOutput, error) {
 			args := v.(GetApigApiBasicConfigurationsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getApigApiBasicConfigurations:getApigApiBasicConfigurations", args, GetApigApiBasicConfigurationsResultOutput{}, options).(GetApigApiBasicConfigurationsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getApigApiBasicConfigurations:getApigApiBasicConfigurations", args, GetApigApiBasicConfigurationsResultOutput{}, options).(GetApigApiBasicConfigurationsResultOutput), nil
 		}).(GetApigApiBasicConfigurationsResultOutput)
 }
 

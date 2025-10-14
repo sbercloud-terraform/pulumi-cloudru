@@ -217,7 +217,7 @@ class _ObsBucketAclState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:index/obsBucketAcl:ObsBucketAcl")
+@pulumi.type_token("cloudru:index/obsBucketAcl:ObsBucketAcl")
 class ObsBucketAcl(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -287,7 +287,7 @@ class ObsBucketAcl(pulumi.CustomResource):
             __props__.__dict__["public_permission"] = public_permission
             __props__.__dict__["region"] = region
         super(ObsBucketAcl, __self__).__init__(
-            'sbercloud:index/obsBucketAcl:ObsBucketAcl',
+            'cloudru:index/obsBucketAcl:ObsBucketAcl',
             resource_name,
             __props__,
             opts)

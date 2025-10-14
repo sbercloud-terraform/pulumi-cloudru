@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 export function getSfsTurboDuTasks(args: GetSfsTurboDuTasksArgs, opts?: pulumi.InvokeOptions): Promise<GetSfsTurboDuTasksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getSfsTurboDuTasks:getSfsTurboDuTasks", {
+    return pulumi.runtime.invoke("cloudru:index/getSfsTurboDuTasks:getSfsTurboDuTasks", {
         "region": args.region,
         "shareId": args.shareId,
     }, opts);
@@ -36,7 +36,7 @@ export interface GetSfsTurboDuTasksResult {
 }
 export function getSfsTurboDuTasksOutput(args: GetSfsTurboDuTasksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSfsTurboDuTasksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getSfsTurboDuTasks:getSfsTurboDuTasks", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getSfsTurboDuTasks:getSfsTurboDuTasks", {
         "region": args.region,
         "shareId": args.shareId,
     }, opts);

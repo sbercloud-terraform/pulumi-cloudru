@@ -13,70 +13,70 @@ var _ = internal.GetEnvOrDefault
 
 // The access key of the SberCloud to use.
 func GetAccessKey(ctx *pulumi.Context) string {
-	return config.Get(ctx, "sbercloud:accessKey")
+	return config.Get(ctx, "cloudru:accessKey")
 }
 
 // The name of the Account to login with.
 func GetAccountName(ctx *pulumi.Context) string {
-	return config.Get(ctx, "sbercloud:accountName")
+	return config.Get(ctx, "cloudru:accountName")
 }
 func GetAssumeRole(ctx *pulumi.Context) string {
-	return config.Get(ctx, "sbercloud:assumeRole")
+	return config.Get(ctx, "cloudru:assumeRole")
 }
 
 // The Identity authentication URL.
 func GetAuthUrl(ctx *pulumi.Context) string {
-	return config.Get(ctx, "sbercloud:authUrl")
+	return config.Get(ctx, "cloudru:authUrl")
 }
 func GetDomainId(ctx *pulumi.Context) string {
-	return config.Get(ctx, "sbercloud:domainId")
+	return config.Get(ctx, "cloudru:domainId")
 }
 func GetDomainName(ctx *pulumi.Context) string {
-	return config.Get(ctx, "sbercloud:domainName")
+	return config.Get(ctx, "cloudru:domainName")
 }
 
 // The custom endpoints used to override the default endpoint URL.
 func GetEndpoints(ctx *pulumi.Context) string {
-	return config.Get(ctx, "sbercloud:endpoints")
+	return config.Get(ctx, "cloudru:endpoints")
 }
 func GetEnterpriseProjectId(ctx *pulumi.Context) string {
-	return config.Get(ctx, "sbercloud:enterpriseProjectId")
+	return config.Get(ctx, "cloudru:enterpriseProjectId")
 }
 
 // Trust self-signed certificates.
 func GetInsecure(ctx *pulumi.Context) bool {
-	return config.GetBool(ctx, "sbercloud:insecure")
+	return config.GetBool(ctx, "cloudru:insecure")
 }
 func GetMaxRetries(ctx *pulumi.Context) int {
-	return config.GetInt(ctx, "sbercloud:maxRetries")
+	return config.GetInt(ctx, "cloudru:maxRetries")
 }
 
 // Password to login with.
 func GetPassword(ctx *pulumi.Context) string {
-	return config.Get(ctx, "sbercloud:password")
+	return config.Get(ctx, "cloudru:password")
 }
 
 // The name of the Project to login with.
 func GetProjectName(ctx *pulumi.Context) string {
-	return config.Get(ctx, "sbercloud:projectName")
+	return config.Get(ctx, "cloudru:projectName")
 }
 
 // The SberCloud region to connect to.
 func GetRegion(ctx *pulumi.Context) string {
-	return config.Get(ctx, "sbercloud:region")
+	return config.Get(ctx, "cloudru:region")
 }
 
 // The secret key of the SberCloud to use.
 func GetSecretKey(ctx *pulumi.Context) string {
-	return config.Get(ctx, "sbercloud:secretKey")
+	return config.Get(ctx, "cloudru:secretKey")
 }
 
 // The security token to authenticate with a temporary security credential.
 func GetSecurityToken(ctx *pulumi.Context) string {
-	return config.Get(ctx, "sbercloud:securityToken")
+	return config.Get(ctx, "cloudru:securityToken")
 }
 
 // Username to login with.
 func GetUserName(ctx *pulumi.Context) string {
-	return config.Get(ctx, "sbercloud:userName")
+	return config.Get(ctx, "cloudru:userName")
 }

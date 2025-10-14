@@ -153,7 +153,7 @@ def get_attachments(attachment_id: Optional[_builtins.str] = None,
     __args__['tags'] = tags
     __args__['type'] = type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Er/getAttachments:getAttachments', __args__, opts=opts, typ=GetAttachmentsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Er/getAttachments:getAttachments', __args__, opts=opts, typ=GetAttachmentsResult).value
 
     return AwaitableGetAttachmentsResult(
         attachment_id=pulumi.get(__ret__, 'attachment_id'),
@@ -188,7 +188,7 @@ def get_attachments_output(attachment_id: Optional[pulumi.Input[Optional[_builti
     __args__['tags'] = tags
     __args__['type'] = type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Er/getAttachments:getAttachments', __args__, opts=opts, typ=GetAttachmentsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Er/getAttachments:getAttachments', __args__, opts=opts, typ=GetAttachmentsResult)
     return __ret__.apply(lambda __response__: GetAttachmentsResult(
         attachment_id=pulumi.get(__response__, 'attachment_id'),
         attachments=pulumi.get(__response__, 'attachments'),

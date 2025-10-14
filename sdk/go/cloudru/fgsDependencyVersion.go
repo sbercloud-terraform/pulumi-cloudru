@@ -54,7 +54,7 @@ func NewFgsDependencyVersion(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FgsDependencyVersion
-	err := ctx.RegisterResource("sbercloud:index/fgsDependencyVersion:FgsDependencyVersion", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/fgsDependencyVersion:FgsDependencyVersion", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -66,7 +66,7 @@ func NewFgsDependencyVersion(ctx *pulumi.Context,
 func GetFgsDependencyVersion(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *FgsDependencyVersionState, opts ...pulumi.ResourceOption) (*FgsDependencyVersion, error) {
 	var resource FgsDependencyVersion
-	err := ctx.ReadResource("sbercloud:index/fgsDependencyVersion:FgsDependencyVersion", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/fgsDependencyVersion:FgsDependencyVersion", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

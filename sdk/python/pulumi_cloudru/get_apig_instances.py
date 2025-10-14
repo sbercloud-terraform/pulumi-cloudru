@@ -120,7 +120,7 @@ def get_apig_instances(enterprise_project_id: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['status'] = status
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getApigInstances:getApigInstances', __args__, opts=opts, typ=GetApigInstancesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getApigInstances:getApigInstances', __args__, opts=opts, typ=GetApigInstancesResult).value
 
     return AwaitableGetApigInstancesResult(
         enterprise_project_id=pulumi.get(__ret__, 'enterprise_project_id'),
@@ -146,7 +146,7 @@ def get_apig_instances_output(enterprise_project_id: Optional[pulumi.Input[Optio
     __args__['region'] = region
     __args__['status'] = status
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getApigInstances:getApigInstances', __args__, opts=opts, typ=GetApigInstancesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getApigInstances:getApigInstances', __args__, opts=opts, typ=GetApigInstancesResult)
     return __ret__.apply(lambda __response__: GetApigInstancesResult(
         enterprise_project_id=pulumi.get(__response__, 'enterprise_project_id'),
         id=pulumi.get(__response__, 'id'),

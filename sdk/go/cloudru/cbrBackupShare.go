@@ -38,7 +38,7 @@ func NewCbrBackupShare(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CbrBackupShare
-	err := ctx.RegisterResource("sbercloud:index/cbrBackupShare:CbrBackupShare", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/cbrBackupShare:CbrBackupShare", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -50,7 +50,7 @@ func NewCbrBackupShare(ctx *pulumi.Context,
 func GetCbrBackupShare(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *CbrBackupShareState, opts ...pulumi.ResourceOption) (*CbrBackupShare, error) {
 	var resource CbrBackupShare
-	err := ctx.ReadResource("sbercloud:index/cbrBackupShare:CbrBackupShare", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/cbrBackupShare:CbrBackupShare", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

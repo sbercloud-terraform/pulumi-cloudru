@@ -603,7 +603,7 @@ class _TurboState:
         pulumi.set(self, "vpc_id", value)
 
 
-@pulumi.type_token("sbercloud:Sfs/turbo:Turbo")
+@pulumi.type_token("cloudru:Sfs/turbo:Turbo")
 class Turbo(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -728,7 +728,7 @@ class Turbo(pulumi.CustomResource):
             __props__.__dict__["status"] = None
             __props__.__dict__["version"] = None
         super(Turbo, __self__).__init__(
-            'sbercloud:Sfs/turbo:Turbo',
+            'cloudru:Sfs/turbo:Turbo',
             resource_name,
             __props__,
             opts)

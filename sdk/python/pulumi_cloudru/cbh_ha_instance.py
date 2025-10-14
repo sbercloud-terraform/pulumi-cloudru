@@ -814,7 +814,7 @@ class _CbhHaInstanceState:
         pulumi.set(self, "vpc_id", value)
 
 
-@pulumi.type_token("sbercloud:index/cbhHaInstance:CbhHaInstance")
+@pulumi.type_token("cloudru:index/cbhHaInstance:CbhHaInstance")
 class CbhHaInstance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -974,7 +974,7 @@ class CbhHaInstance(pulumi.CustomResource):
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(CbhHaInstance, __self__).__init__(
-            'sbercloud:index/cbhHaInstance:CbhHaInstance',
+            'cloudru:index/cbhHaInstance:CbhHaInstance',
             resource_name,
             __props__,
             opts)

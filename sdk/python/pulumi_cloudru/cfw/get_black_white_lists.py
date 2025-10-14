@@ -186,7 +186,7 @@ def get_black_white_lists(address: Optional[_builtins.str] = None,
     __args__['protocol'] = protocol
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Cfw/getBlackWhiteLists:getBlackWhiteLists', __args__, opts=opts, typ=GetBlackWhiteListsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Cfw/getBlackWhiteLists:getBlackWhiteLists', __args__, opts=opts, typ=GetBlackWhiteListsResult).value
 
     return AwaitableGetBlackWhiteListsResult(
         address=pulumi.get(__ret__, 'address'),
@@ -230,7 +230,7 @@ def get_black_white_lists_output(address: Optional[pulumi.Input[Optional[_builti
     __args__['protocol'] = protocol
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Cfw/getBlackWhiteLists:getBlackWhiteLists', __args__, opts=opts, typ=GetBlackWhiteListsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Cfw/getBlackWhiteLists:getBlackWhiteLists', __args__, opts=opts, typ=GetBlackWhiteListsResult)
     return __ret__.apply(lambda __response__: GetBlackWhiteListsResult(
         address=pulumi.get(__response__, 'address'),
         address_type=pulumi.get(__response__, 'address_type'),

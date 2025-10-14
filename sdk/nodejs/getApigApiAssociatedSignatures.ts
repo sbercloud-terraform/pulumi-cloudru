@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 export function getApigApiAssociatedSignatures(args: GetApigApiAssociatedSignaturesArgs, opts?: pulumi.InvokeOptions): Promise<GetApigApiAssociatedSignaturesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getApigApiAssociatedSignatures:getApigApiAssociatedSignatures", {
+    return pulumi.runtime.invoke("cloudru:index/getApigApiAssociatedSignatures:getApigApiAssociatedSignatures", {
         "apiId": args.apiId,
         "envId": args.envId,
         "envName": args.envName,
@@ -54,7 +54,7 @@ export interface GetApigApiAssociatedSignaturesResult {
 }
 export function getApigApiAssociatedSignaturesOutput(args: GetApigApiAssociatedSignaturesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApigApiAssociatedSignaturesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getApigApiAssociatedSignatures:getApigApiAssociatedSignatures", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getApigApiAssociatedSignatures:getApigApiAssociatedSignatures", {
         "apiId": args.apiId,
         "envId": args.envId,
         "envName": args.envName,

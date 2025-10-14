@@ -40,7 +40,7 @@ func NewInterfaceAttach(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource InterfaceAttach
-	err := ctx.RegisterResource("sbercloud:Ecs/interfaceAttach:InterfaceAttach", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Ecs/interfaceAttach:InterfaceAttach", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -52,7 +52,7 @@ func NewInterfaceAttach(ctx *pulumi.Context,
 func GetInterfaceAttach(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *InterfaceAttachState, opts ...pulumi.ResourceOption) (*InterfaceAttach, error) {
 	var resource InterfaceAttach
-	err := ctx.ReadResource("sbercloud:Ecs/interfaceAttach:InterfaceAttach", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Ecs/interfaceAttach:InterfaceAttach", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

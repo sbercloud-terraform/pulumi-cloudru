@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 export function getKeypairs(args?: GetKeypairsArgs, opts?: pulumi.InvokeOptions): Promise<GetKeypairsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Dew/getKeypairs:getKeypairs", {
+    return pulumi.runtime.invoke("cloudru:Dew/getKeypairs:getKeypairs", {
         "fingerprint": args.fingerprint,
         "isManaged": args.isManaged,
         "name": args.name,
@@ -47,7 +47,7 @@ export interface GetKeypairsResult {
 export function getKeypairsOutput(args?: GetKeypairsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKeypairsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Dew/getKeypairs:getKeypairs", {
+    return pulumi.runtime.invokeOutput("cloudru:Dew/getKeypairs:getKeypairs", {
         "fingerprint": args.fingerprint,
         "isManaged": args.isManaged,
         "name": args.name,

@@ -120,7 +120,7 @@ def get_dms_rocketmq_migration_tasks(instance_id: Optional[_builtins.str] = None
     __args__['taskId'] = task_id
     __args__['type'] = type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getDmsRocketmqMigrationTasks:getDmsRocketmqMigrationTasks', __args__, opts=opts, typ=GetDmsRocketmqMigrationTasksResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getDmsRocketmqMigrationTasks:getDmsRocketmqMigrationTasks', __args__, opts=opts, typ=GetDmsRocketmqMigrationTasksResult).value
 
     return AwaitableGetDmsRocketmqMigrationTasksResult(
         id=pulumi.get(__ret__, 'id'),
@@ -146,7 +146,7 @@ def get_dms_rocketmq_migration_tasks_output(instance_id: Optional[pulumi.Input[_
     __args__['taskId'] = task_id
     __args__['type'] = type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getDmsRocketmqMigrationTasks:getDmsRocketmqMigrationTasks', __args__, opts=opts, typ=GetDmsRocketmqMigrationTasksResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getDmsRocketmqMigrationTasks:getDmsRocketmqMigrationTasks', __args__, opts=opts, typ=GetDmsRocketmqMigrationTasksResult)
     return __ret__.apply(lambda __response__: GetDmsRocketmqMigrationTasksResult(
         id=pulumi.get(__response__, 'id'),
         instance_id=pulumi.get(__response__, 'instance_id'),

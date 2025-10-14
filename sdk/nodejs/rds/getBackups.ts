@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 export function getBackups(args: GetBackupsArgs, opts?: pulumi.InvokeOptions): Promise<GetBackupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Rds/getBackups:getBackups", {
+    return pulumi.runtime.invoke("cloudru:Rds/getBackups:getBackups", {
         "backupId": args.backupId,
         "backupType": args.backupType,
         "beginTime": args.beginTime,
@@ -51,7 +51,7 @@ export interface GetBackupsResult {
 }
 export function getBackupsOutput(args: GetBackupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBackupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Rds/getBackups:getBackups", {
+    return pulumi.runtime.invokeOutput("cloudru:Rds/getBackups:getBackups", {
         "backupId": args.backupId,
         "backupType": args.backupType,
         "beginTime": args.beginTime,

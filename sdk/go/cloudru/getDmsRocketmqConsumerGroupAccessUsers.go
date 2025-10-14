@@ -14,7 +14,7 @@ import (
 func GetDmsRocketmqConsumerGroupAccessUsers(ctx *pulumi.Context, args *GetDmsRocketmqConsumerGroupAccessUsersArgs, opts ...pulumi.InvokeOption) (*GetDmsRocketmqConsumerGroupAccessUsersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDmsRocketmqConsumerGroupAccessUsersResult
-	err := ctx.Invoke("sbercloud:index/getDmsRocketmqConsumerGroupAccessUsers:getDmsRocketmqConsumerGroupAccessUsers", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getDmsRocketmqConsumerGroupAccessUsers:getDmsRocketmqConsumerGroupAccessUsers", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -43,7 +43,7 @@ func GetDmsRocketmqConsumerGroupAccessUsersOutput(ctx *pulumi.Context, args GetD
 		ApplyT(func(v interface{}) (GetDmsRocketmqConsumerGroupAccessUsersResultOutput, error) {
 			args := v.(GetDmsRocketmqConsumerGroupAccessUsersArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getDmsRocketmqConsumerGroupAccessUsers:getDmsRocketmqConsumerGroupAccessUsers", args, GetDmsRocketmqConsumerGroupAccessUsersResultOutput{}, options).(GetDmsRocketmqConsumerGroupAccessUsersResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getDmsRocketmqConsumerGroupAccessUsers:getDmsRocketmqConsumerGroupAccessUsers", args, GetDmsRocketmqConsumerGroupAccessUsersResultOutput{}, options).(GetDmsRocketmqConsumerGroupAccessUsersResultOutput), nil
 		}).(GetDmsRocketmqConsumerGroupAccessUsersResultOutput)
 }
 

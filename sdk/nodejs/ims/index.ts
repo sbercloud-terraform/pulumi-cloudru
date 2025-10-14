@@ -25,11 +25,11 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "sbercloud:Ims/image:Image":
+            case "cloudru:Ims/image:Image":
                 return new Image(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("sbercloud", "Ims/image", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Ims/image", _module)

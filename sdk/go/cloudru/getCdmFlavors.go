@@ -14,7 +14,7 @@ import (
 func GetCdmFlavors(ctx *pulumi.Context, args *GetCdmFlavorsArgs, opts ...pulumi.InvokeOption) (*GetCdmFlavorsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCdmFlavorsResult
-	err := ctx.Invoke("sbercloud:index/getCdmFlavors:getCdmFlavors", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getCdmFlavors:getCdmFlavors", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -40,7 +40,7 @@ func GetCdmFlavorsOutput(ctx *pulumi.Context, args GetCdmFlavorsOutputArgs, opts
 		ApplyT(func(v interface{}) (GetCdmFlavorsResultOutput, error) {
 			args := v.(GetCdmFlavorsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getCdmFlavors:getCdmFlavors", args, GetCdmFlavorsResultOutput{}, options).(GetCdmFlavorsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getCdmFlavors:getCdmFlavors", args, GetCdmFlavorsResultOutput{}, options).(GetCdmFlavorsResultOutput), nil
 		}).(GetCdmFlavorsResultOutput)
 }
 

@@ -222,7 +222,7 @@ def get_file_system(id: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['status'] = status
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Sfs/getFileSystem:getFileSystem', __args__, opts=opts, typ=GetFileSystemResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Sfs/getFileSystem:getFileSystem', __args__, opts=opts, typ=GetFileSystemResult).value
 
     return AwaitableGetFileSystemResult(
         access_level=pulumi.get(__ret__, 'access_level'),
@@ -258,7 +258,7 @@ def get_file_system_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] =
     __args__['region'] = region
     __args__['status'] = status
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Sfs/getFileSystem:getFileSystem', __args__, opts=opts, typ=GetFileSystemResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Sfs/getFileSystem:getFileSystem', __args__, opts=opts, typ=GetFileSystemResult)
     return __ret__.apply(lambda __response__: GetFileSystemResult(
         access_level=pulumi.get(__response__, 'access_level'),
         access_to=pulumi.get(__response__, 'access_to'),

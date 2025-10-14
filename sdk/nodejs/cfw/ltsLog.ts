@@ -19,7 +19,7 @@ export class LtsLog extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Cfw/ltsLog:LtsLog';
+    public static readonly __pulumiType = 'cloudru:Cfw/ltsLog:LtsLog';
 
     /**
      * Returns true if the given object is an instance of LtsLog.  This is designed to work even

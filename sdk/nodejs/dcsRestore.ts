@@ -21,7 +21,7 @@ export class DcsRestore extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/dcsRestore:DcsRestore';
+    public static readonly __pulumiType = 'cloudru:index/dcsRestore:DcsRestore';
 
     /**
      * Returns true if the given object is an instance of DcsRestore.  This is designed to work even

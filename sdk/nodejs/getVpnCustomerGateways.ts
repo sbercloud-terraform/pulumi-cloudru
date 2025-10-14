@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 export function getVpnCustomerGateways(args?: GetVpnCustomerGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetVpnCustomerGatewaysResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getVpnCustomerGateways:getVpnCustomerGateways", {
+    return pulumi.runtime.invoke("cloudru:index/getVpnCustomerGateways:getVpnCustomerGateways", {
         "asn": args.asn,
         "customerGatewayId": args.customerGatewayId,
         "ip": args.ip,
@@ -50,7 +50,7 @@ export interface GetVpnCustomerGatewaysResult {
 export function getVpnCustomerGatewaysOutput(args?: GetVpnCustomerGatewaysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpnCustomerGatewaysResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getVpnCustomerGateways:getVpnCustomerGateways", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getVpnCustomerGateways:getVpnCustomerGateways", {
         "asn": args.asn,
         "customerGatewayId": args.customerGatewayId,
         "ip": args.ip,

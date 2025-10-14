@@ -21,7 +21,7 @@ export class SwrOrganizationPermissions extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/swrOrganizationPermissions:SwrOrganizationPermissions';
+    public static readonly __pulumiType = 'cloudru:index/swrOrganizationPermissions:SwrOrganizationPermissions';
 
     /**
      * Returns true if the given object is an instance of SwrOrganizationPermissions.  This is designed to work even

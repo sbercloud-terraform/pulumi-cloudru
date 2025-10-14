@@ -19,7 +19,7 @@ export class PeeringConnection extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Vpc/peeringConnection:PeeringConnection';
+    public static readonly __pulumiType = 'cloudru:Vpc/peeringConnection:PeeringConnection';
 
     /**
      * Returns true if the given object is an instance of PeeringConnection.  This is designed to work even

@@ -775,7 +775,7 @@ class _NodeAttachState:
         pulumi.set(self, "taints", value)
 
 
-@pulumi.type_token("sbercloud:Cce/nodeAttach:NodeAttach")
+@pulumi.type_token("cloudru:Cce/nodeAttach:NodeAttach")
 class NodeAttach(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -915,7 +915,7 @@ class NodeAttach(pulumi.CustomResource):
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password", "privateKey"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(NodeAttach, __self__).__init__(
-            'sbercloud:Cce/nodeAttach:NodeAttach',
+            'cloudru:Cce/nodeAttach:NodeAttach',
             resource_name,
             __props__,
             opts)

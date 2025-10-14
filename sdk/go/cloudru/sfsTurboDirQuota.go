@@ -45,7 +45,7 @@ func NewSfsTurboDirQuota(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SfsTurboDirQuota
-	err := ctx.RegisterResource("sbercloud:index/sfsTurboDirQuota:SfsTurboDirQuota", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/sfsTurboDirQuota:SfsTurboDirQuota", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -57,7 +57,7 @@ func NewSfsTurboDirQuota(ctx *pulumi.Context,
 func GetSfsTurboDirQuota(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *SfsTurboDirQuotaState, opts ...pulumi.ResourceOption) (*SfsTurboDirQuota, error) {
 	var resource SfsTurboDirQuota
-	err := ctx.ReadResource("sbercloud:index/sfsTurboDirQuota:SfsTurboDirQuota", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/sfsTurboDirQuota:SfsTurboDirQuota", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

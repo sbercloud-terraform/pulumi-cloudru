@@ -14,7 +14,7 @@ import (
 func GetApigEnvironmentVariables(ctx *pulumi.Context, args *GetApigEnvironmentVariablesArgs, opts ...pulumi.InvokeOption) (*GetApigEnvironmentVariablesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetApigEnvironmentVariablesResult
-	err := ctx.Invoke("sbercloud:index/getApigEnvironmentVariables:getApigEnvironmentVariables", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getApigEnvironmentVariables:getApigEnvironmentVariables", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -47,7 +47,7 @@ func GetApigEnvironmentVariablesOutput(ctx *pulumi.Context, args GetApigEnvironm
 		ApplyT(func(v interface{}) (GetApigEnvironmentVariablesResultOutput, error) {
 			args := v.(GetApigEnvironmentVariablesArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getApigEnvironmentVariables:getApigEnvironmentVariables", args, GetApigEnvironmentVariablesResultOutput{}, options).(GetApigEnvironmentVariablesResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getApigEnvironmentVariables:getApigEnvironmentVariables", args, GetApigEnvironmentVariablesResultOutput{}, options).(GetApigEnvironmentVariablesResultOutput), nil
 		}).(GetApigEnvironmentVariablesResultOutput)
 }
 

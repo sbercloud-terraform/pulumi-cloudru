@@ -14,7 +14,7 @@ import (
 func GetListeners(ctx *pulumi.Context, args *GetListenersArgs, opts ...pulumi.InvokeOption) (*GetListenersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetListenersResult
-	err := ctx.Invoke("sbercloud:Elb/getListeners:getListeners", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Elb/getListeners:getListeners", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -63,7 +63,7 @@ func GetListenersOutput(ctx *pulumi.Context, args GetListenersOutputArgs, opts .
 		ApplyT(func(v interface{}) (GetListenersResultOutput, error) {
 			args := v.(GetListenersArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Elb/getListeners:getListeners", args, GetListenersResultOutput{}, options).(GetListenersResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Elb/getListeners:getListeners", args, GetListenersResultOutput{}, options).(GetListenersResultOutput), nil
 		}).(GetListenersResultOutput)
 }
 

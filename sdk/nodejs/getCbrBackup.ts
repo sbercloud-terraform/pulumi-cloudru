@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 export function getCbrBackup(args: GetCbrBackupArgs, opts?: pulumi.InvokeOptions): Promise<GetCbrBackupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getCbrBackup:getCbrBackup", {
+    return pulumi.runtime.invoke("cloudru:index/getCbrBackup:getCbrBackup", {
         "id": args.id,
         "region": args.region,
     }, opts);
@@ -50,7 +50,7 @@ export interface GetCbrBackupResult {
 }
 export function getCbrBackupOutput(args: GetCbrBackupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCbrBackupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getCbrBackup:getCbrBackup", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getCbrBackup:getCbrBackup", {
         "id": args.id,
         "region": args.region,
     }, opts);

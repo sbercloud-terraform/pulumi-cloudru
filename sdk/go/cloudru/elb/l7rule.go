@@ -48,7 +48,7 @@ func NewL7rule(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource L7rule
-	err := ctx.RegisterResource("sbercloud:Elb/l7rule:L7rule", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Elb/l7rule:L7rule", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -60,7 +60,7 @@ func NewL7rule(ctx *pulumi.Context,
 func GetL7rule(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *L7ruleState, opts ...pulumi.ResourceOption) (*L7rule, error) {
 	var resource L7rule
-	err := ctx.ReadResource("sbercloud:Elb/l7rule:L7rule", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Elb/l7rule:L7rule", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 export function getFlavors(args?: GetFlavorsArgs, opts?: pulumi.InvokeOptions): Promise<GetFlavorsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Ecs/getFlavors:getFlavors", {
+    return pulumi.runtime.invoke("cloudru:Ecs/getFlavors:getFlavors", {
         "availabilityZone": args.availabilityZone,
         "cpuCoreCount": args.cpuCoreCount,
         "generation": args.generation,
@@ -54,7 +54,7 @@ export interface GetFlavorsResult {
 export function getFlavorsOutput(args?: GetFlavorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFlavorsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Ecs/getFlavors:getFlavors", {
+    return pulumi.runtime.invokeOutput("cloudru:Ecs/getFlavors:getFlavors", {
         "availabilityZone": args.availabilityZone,
         "cpuCoreCount": args.cpuCoreCount,
         "generation": args.generation,

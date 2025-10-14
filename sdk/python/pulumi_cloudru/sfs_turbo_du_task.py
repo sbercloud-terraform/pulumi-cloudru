@@ -152,7 +152,7 @@ class _SfsTurboDuTaskState:
         pulumi.set(self, "status", value)
 
 
-@pulumi.type_token("sbercloud:index/sfsTurboDuTask:SfsTurboDuTask")
+@pulumi.type_token("cloudru:index/sfsTurboDuTask:SfsTurboDuTask")
 class SfsTurboDuTask(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -214,7 +214,7 @@ class SfsTurboDuTask(pulumi.CustomResource):
             __props__.__dict__["end_time"] = None
             __props__.__dict__["status"] = None
         super(SfsTurboDuTask, __self__).__init__(
-            'sbercloud:index/sfsTurboDuTask:SfsTurboDuTask',
+            'cloudru:index/sfsTurboDuTask:SfsTurboDuTask',
             resource_name,
             __props__,
             opts)

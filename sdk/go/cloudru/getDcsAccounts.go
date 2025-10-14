@@ -14,7 +14,7 @@ import (
 func GetDcsAccounts(ctx *pulumi.Context, args *GetDcsAccountsArgs, opts ...pulumi.InvokeOption) (*GetDcsAccountsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDcsAccountsResult
-	err := ctx.Invoke("sbercloud:index/getDcsAccounts:getDcsAccounts", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getDcsAccounts:getDcsAccounts", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func GetDcsAccountsOutput(ctx *pulumi.Context, args GetDcsAccountsOutputArgs, op
 		ApplyT(func(v interface{}) (GetDcsAccountsResultOutput, error) {
 			args := v.(GetDcsAccountsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getDcsAccounts:getDcsAccounts", args, GetDcsAccountsResultOutput{}, options).(GetDcsAccountsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getDcsAccounts:getDcsAccounts", args, GetDcsAccountsResultOutput{}, options).(GetDcsAccountsResultOutput), nil
 		}).(GetDcsAccountsResultOutput)
 }
 

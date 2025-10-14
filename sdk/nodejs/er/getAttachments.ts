@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 export function getAttachments(args: GetAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetAttachmentsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Er/getAttachments:getAttachments", {
+    return pulumi.runtime.invoke("cloudru:Er/getAttachments:getAttachments", {
         "attachmentId": args.attachmentId,
         "instanceId": args.instanceId,
         "name": args.name,
@@ -54,7 +54,7 @@ export interface GetAttachmentsResult {
 }
 export function getAttachmentsOutput(args: GetAttachmentsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAttachmentsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Er/getAttachments:getAttachments", {
+    return pulumi.runtime.invokeOutput("cloudru:Er/getAttachments:getAttachments", {
         "attachmentId": args.attachmentId,
         "instanceId": args.instanceId,
         "name": args.name,

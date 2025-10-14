@@ -50,7 +50,7 @@ func NewCssConfiguration(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CssConfiguration
-	err := ctx.RegisterResource("sbercloud:index/cssConfiguration:CssConfiguration", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/cssConfiguration:CssConfiguration", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -62,7 +62,7 @@ func NewCssConfiguration(ctx *pulumi.Context,
 func GetCssConfiguration(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *CssConfigurationState, opts ...pulumi.ResourceOption) (*CssConfiguration, error) {
 	var resource CssConfiguration
-	err := ctx.ReadResource("sbercloud:index/cssConfiguration:CssConfiguration", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/cssConfiguration:CssConfiguration", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

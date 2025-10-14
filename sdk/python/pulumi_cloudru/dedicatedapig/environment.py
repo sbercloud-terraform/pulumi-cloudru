@@ -195,7 +195,7 @@ class _EnvironmentState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:DedicatedApig/environment:Environment")
+@pulumi.type_token("cloudru:DedicatedApig/environment:Environment")
 class Environment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -260,7 +260,7 @@ class Environment(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["created_at"] = None
         super(Environment, __self__).__init__(
-            'sbercloud:DedicatedApig/environment:Environment',
+            'cloudru:DedicatedApig/environment:Environment',
             resource_name,
             __props__,
             opts)

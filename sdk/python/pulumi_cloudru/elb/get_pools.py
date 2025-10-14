@@ -186,7 +186,7 @@ def get_pools(description: Optional[_builtins.str] = None,
     __args__['protocol'] = protocol
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Elb/getPools:getPools', __args__, opts=opts, typ=GetPoolsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Elb/getPools:getPools', __args__, opts=opts, typ=GetPoolsResult).value
 
     return AwaitableGetPoolsResult(
         description=pulumi.get(__ret__, 'description'),
@@ -230,7 +230,7 @@ def get_pools_output(description: Optional[pulumi.Input[Optional[_builtins.str]]
     __args__['protocol'] = protocol
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Elb/getPools:getPools', __args__, opts=opts, typ=GetPoolsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Elb/getPools:getPools', __args__, opts=opts, typ=GetPoolsResult)
     return __ret__.apply(lambda __response__: GetPoolsResult(
         description=pulumi.get(__response__, 'description'),
         enterprise_project_id=pulumi.get(__response__, 'enterprise_project_id'),

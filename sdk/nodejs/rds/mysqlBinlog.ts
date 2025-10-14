@@ -19,7 +19,7 @@ export class MysqlBinlog extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Rds/mysqlBinlog:MysqlBinlog';
+    public static readonly __pulumiType = 'cloudru:Rds/mysqlBinlog:MysqlBinlog';
 
     /**
      * Returns true if the given object is an instance of MysqlBinlog.  This is designed to work even

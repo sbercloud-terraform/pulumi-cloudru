@@ -43,7 +43,7 @@ func NewSfsTurboPermRule(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SfsTurboPermRule
-	err := ctx.RegisterResource("sbercloud:index/sfsTurboPermRule:SfsTurboPermRule", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/sfsTurboPermRule:SfsTurboPermRule", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -55,7 +55,7 @@ func NewSfsTurboPermRule(ctx *pulumi.Context,
 func GetSfsTurboPermRule(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *SfsTurboPermRuleState, opts ...pulumi.ResourceOption) (*SfsTurboPermRule, error) {
 	var resource SfsTurboPermRule
-	err := ctx.ReadResource("sbercloud:index/sfsTurboPermRule:SfsTurboPermRule", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/sfsTurboPermRule:SfsTurboPermRule", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

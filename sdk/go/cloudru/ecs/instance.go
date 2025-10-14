@@ -99,7 +99,7 @@ func NewInstance(ctx *pulumi.Context,
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Instance
-	err := ctx.RegisterResource("sbercloud:Ecs/instance:Instance", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Ecs/instance:Instance", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -111,7 +111,7 @@ func NewInstance(ctx *pulumi.Context,
 func GetInstance(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *InstanceState, opts ...pulumi.ResourceOption) (*Instance, error) {
 	var resource Instance
-	err := ctx.ReadResource("sbercloud:Ecs/instance:Instance", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Ecs/instance:Instance", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -115,7 +115,7 @@ def get_pg_plugin_parameter_value_range(instance_id: Optional[_builtins.str] = N
     __args__['name'] = name
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Rds/getPgPluginParameterValueRange:getPgPluginParameterValueRange', __args__, opts=opts, typ=GetPgPluginParameterValueRangeResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Rds/getPgPluginParameterValueRange:getPgPluginParameterValueRange', __args__, opts=opts, typ=GetPgPluginParameterValueRangeResult).value
 
     return AwaitableGetPgPluginParameterValueRangeResult(
         default_values=pulumi.get(__ret__, 'default_values'),
@@ -137,7 +137,7 @@ def get_pg_plugin_parameter_value_range_output(instance_id: Optional[pulumi.Inpu
     __args__['name'] = name
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Rds/getPgPluginParameterValueRange:getPgPluginParameterValueRange', __args__, opts=opts, typ=GetPgPluginParameterValueRangeResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Rds/getPgPluginParameterValueRange:getPgPluginParameterValueRange', __args__, opts=opts, typ=GetPgPluginParameterValueRangeResult)
     return __ret__.apply(lambda __response__: GetPgPluginParameterValueRangeResult(
         default_values=pulumi.get(__response__, 'default_values'),
         id=pulumi.get(__response__, 'id'),

@@ -46,7 +46,7 @@ func NewResponse(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Response
-	err := ctx.RegisterResource("sbercloud:DedicatedApig/response:Response", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:DedicatedApig/response:Response", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -58,7 +58,7 @@ func NewResponse(ctx *pulumi.Context,
 func GetResponse(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ResponseState, opts ...pulumi.ResourceOption) (*Response, error) {
 	var resource Response
-	err := ctx.ReadResource("sbercloud:DedicatedApig/response:Response", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:DedicatedApig/response:Response", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

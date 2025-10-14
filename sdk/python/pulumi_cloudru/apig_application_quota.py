@@ -276,7 +276,7 @@ class _ApigApplicationQuotaState:
         pulumi.set(self, "time_unit", value)
 
 
-@pulumi.type_token("sbercloud:index/apigApplicationQuota:ApigApplicationQuota")
+@pulumi.type_token("cloudru:index/apigApplicationQuota:ApigApplicationQuota")
 class ApigApplicationQuota(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -358,7 +358,7 @@ class ApigApplicationQuota(pulumi.CustomResource):
             __props__.__dict__["bind_num"] = None
             __props__.__dict__["created_at"] = None
         super(ApigApplicationQuota, __self__).__init__(
-            'sbercloud:index/apigApplicationQuota:ApigApplicationQuota',
+            'cloudru:index/apigApplicationQuota:ApigApplicationQuota',
             resource_name,
             __props__,
             opts)

@@ -446,7 +446,7 @@ class _InstanceState:
         pulumi.set(self, "updated_at", value)
 
 
-@pulumi.type_token("sbercloud:Er/instance:Instance")
+@pulumi.type_token("cloudru:Er/instance:Instance")
 class Instance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -544,7 +544,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["status"] = None
             __props__.__dict__["updated_at"] = None
         super(Instance, __self__).__init__(
-            'sbercloud:Er/instance:Instance',
+            'cloudru:Er/instance:Instance',
             resource_name,
             __props__,
             opts)

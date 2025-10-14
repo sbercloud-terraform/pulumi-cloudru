@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 export function getFlaovrs(args?: GetFlaovrsArgs, opts?: pulumi.InvokeOptions): Promise<GetFlaovrsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Dws/getFlaovrs:getFlaovrs", {
+    return pulumi.runtime.invoke("cloudru:Dws/getFlaovrs:getFlaovrs", {
         "availabilityZone": args.availabilityZone,
         "datastoreType": args.datastoreType,
         "memory": args.memory,
@@ -47,7 +47,7 @@ export interface GetFlaovrsResult {
 export function getFlaovrsOutput(args?: GetFlaovrsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFlaovrsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Dws/getFlaovrs:getFlaovrs", {
+    return pulumi.runtime.invokeOutput("cloudru:Dws/getFlaovrs:getFlaovrs", {
         "availabilityZone": args.availabilityZone,
         "datastoreType": args.datastoreType,
         "memory": args.memory,

@@ -1390,7 +1390,7 @@ class _NodeState:
         pulumi.set(self, "taints", value)
 
 
-@pulumi.type_token("sbercloud:Cce/node:Node")
+@pulumi.type_token("cloudru:Cce/node:Node")
 class Node(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -1608,7 +1608,7 @@ class Node(pulumi.CustomResource):
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password", "privateKey"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Node, __self__).__init__(
-            'sbercloud:Cce/node:Node',
+            'cloudru:Cce/node:Node',
             resource_name,
             __props__,
             opts)

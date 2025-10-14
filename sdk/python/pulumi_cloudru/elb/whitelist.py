@@ -159,7 +159,7 @@ class _WhitelistState:
         pulumi.set(self, "whitelist", value)
 
 
-@pulumi.type_token("sbercloud:Elb/whitelist:Whitelist")
+@pulumi.type_token("cloudru:Elb/whitelist:Whitelist")
 class Whitelist(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -221,7 +221,7 @@ class Whitelist(pulumi.CustomResource):
             __props__.__dict__["tenant_id"] = tenant_id
             __props__.__dict__["whitelist"] = whitelist
         super(Whitelist, __self__).__init__(
-            'sbercloud:Elb/whitelist:Whitelist',
+            'cloudru:Elb/whitelist:Whitelist',
             resource_name,
             __props__,
             opts)

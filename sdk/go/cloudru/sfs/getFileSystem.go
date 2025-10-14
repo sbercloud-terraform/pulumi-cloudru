@@ -14,7 +14,7 @@ import (
 func LookupFileSystem(ctx *pulumi.Context, args *LookupFileSystemArgs, opts ...pulumi.InvokeOption) (*LookupFileSystemResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFileSystemResult
-	err := ctx.Invoke("sbercloud:Sfs/getFileSystem:getFileSystem", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Sfs/getFileSystem:getFileSystem", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -57,7 +57,7 @@ func LookupFileSystemOutput(ctx *pulumi.Context, args LookupFileSystemOutputArgs
 		ApplyT(func(v interface{}) (LookupFileSystemResultOutput, error) {
 			args := v.(LookupFileSystemArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Sfs/getFileSystem:getFileSystem", args, LookupFileSystemResultOutput{}, options).(LookupFileSystemResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Sfs/getFileSystem:getFileSystem", args, LookupFileSystemResultOutput{}, options).(LookupFileSystemResultOutput), nil
 		}).(LookupFileSystemResultOutput)
 }
 

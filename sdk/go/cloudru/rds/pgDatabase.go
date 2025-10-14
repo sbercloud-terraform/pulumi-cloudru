@@ -50,7 +50,7 @@ func NewPgDatabase(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PgDatabase
-	err := ctx.RegisterResource("sbercloud:Rds/pgDatabase:PgDatabase", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Rds/pgDatabase:PgDatabase", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -62,7 +62,7 @@ func NewPgDatabase(ctx *pulumi.Context,
 func GetPgDatabase(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *PgDatabaseState, opts ...pulumi.ResourceOption) (*PgDatabase, error) {
 	var resource PgDatabase
-	err := ctx.ReadResource("sbercloud:Rds/pgDatabase:PgDatabase", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Rds/pgDatabase:PgDatabase", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

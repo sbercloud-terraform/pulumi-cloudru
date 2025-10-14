@@ -14,7 +14,7 @@ import (
 func GetDomainNameParseIpList(ctx *pulumi.Context, args *GetDomainNameParseIpListArgs, opts ...pulumi.InvokeOption) (*GetDomainNameParseIpListResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDomainNameParseIpListResult
-	err := ctx.Invoke("sbercloud:Cfw/getDomainNameParseIpList:getDomainNameParseIpList", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Cfw/getDomainNameParseIpList:getDomainNameParseIpList", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func GetDomainNameParseIpListOutput(ctx *pulumi.Context, args GetDomainNameParse
 		ApplyT(func(v interface{}) (GetDomainNameParseIpListResultOutput, error) {
 			args := v.(GetDomainNameParseIpListArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Cfw/getDomainNameParseIpList:getDomainNameParseIpList", args, GetDomainNameParseIpListResultOutput{}, options).(GetDomainNameParseIpListResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Cfw/getDomainNameParseIpList:getDomainNameParseIpList", args, GetDomainNameParseIpListResultOutput{}, options).(GetDomainNameParseIpListResultOutput), nil
 		}).(GetDomainNameParseIpListResultOutput)
 }
 

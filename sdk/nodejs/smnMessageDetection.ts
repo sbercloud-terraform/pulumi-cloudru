@@ -19,7 +19,7 @@ export class SmnMessageDetection extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/smnMessageDetection:SmnMessageDetection';
+    public static readonly __pulumiType = 'cloudru:index/smnMessageDetection:SmnMessageDetection';
 
     /**
      * Returns true if the given object is an instance of SmnMessageDetection.  This is designed to work even

@@ -131,7 +131,7 @@ def get_dms_rocketmq_topics(instance_id: Optional[_builtins.str] = None,
     __args__['totalReadQueueNum'] = total_read_queue_num
     __args__['totalWriteQueueNum'] = total_write_queue_num
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getDmsRocketmqTopics:getDmsRocketmqTopics', __args__, opts=opts, typ=GetDmsRocketmqTopicsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getDmsRocketmqTopics:getDmsRocketmqTopics', __args__, opts=opts, typ=GetDmsRocketmqTopicsResult).value
 
     return AwaitableGetDmsRocketmqTopicsResult(
         id=pulumi.get(__ret__, 'id'),
@@ -160,7 +160,7 @@ def get_dms_rocketmq_topics_output(instance_id: Optional[pulumi.Input[_builtins.
     __args__['totalReadQueueNum'] = total_read_queue_num
     __args__['totalWriteQueueNum'] = total_write_queue_num
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getDmsRocketmqTopics:getDmsRocketmqTopics', __args__, opts=opts, typ=GetDmsRocketmqTopicsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getDmsRocketmqTopics:getDmsRocketmqTopics', __args__, opts=opts, typ=GetDmsRocketmqTopicsResult)
     return __ret__.apply(lambda __response__: GetDmsRocketmqTopicsResult(
         id=pulumi.get(__response__, 'id'),
         instance_id=pulumi.get(__response__, 'instance_id'),

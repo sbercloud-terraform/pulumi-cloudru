@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 export function getRoutes(args?: GetRoutesArgs, opts?: pulumi.InvokeOptions): Promise<GetRoutesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Vpc/getRoutes:getRoutes", {
+    return pulumi.runtime.invoke("cloudru:Vpc/getRoutes:getRoutes", {
         "destination": args.destination,
         "region": args.region,
         "type": args.type,
@@ -44,7 +44,7 @@ export interface GetRoutesResult {
 export function getRoutesOutput(args?: GetRoutesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRoutesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Vpc/getRoutes:getRoutes", {
+    return pulumi.runtime.invokeOutput("cloudru:Vpc/getRoutes:getRoutes", {
         "destination": args.destination,
         "region": args.region,
         "type": args.type,

@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 export function getPgSqlLimits(args: GetPgSqlLimitsArgs, opts?: pulumi.InvokeOptions): Promise<GetPgSqlLimitsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Rds/getPgSqlLimits:getPgSqlLimits", {
+    return pulumi.runtime.invoke("cloudru:Rds/getPgSqlLimits:getPgSqlLimits", {
         "dbName": args.dbName,
         "instanceId": args.instanceId,
         "isEffective": args.isEffective,
@@ -60,7 +60,7 @@ export interface GetPgSqlLimitsResult {
 }
 export function getPgSqlLimitsOutput(args: GetPgSqlLimitsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPgSqlLimitsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Rds/getPgSqlLimits:getPgSqlLimits", {
+    return pulumi.runtime.invokeOutput("cloudru:Rds/getPgSqlLimits:getPgSqlLimits", {
         "dbName": args.dbName,
         "instanceId": args.instanceId,
         "isEffective": args.isEffective,

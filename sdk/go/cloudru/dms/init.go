@@ -21,15 +21,15 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "sbercloud:Dms/kafkaInstance:KafkaInstance":
+	case "cloudru:Dms/kafkaInstance:KafkaInstance":
 		r = &KafkaInstance{}
-	case "sbercloud:Dms/kafkaPermissions:KafkaPermissions":
+	case "cloudru:Dms/kafkaPermissions:KafkaPermissions":
 		r = &KafkaPermissions{}
-	case "sbercloud:Dms/kafkaTopic:KafkaTopic":
+	case "cloudru:Dms/kafkaTopic:KafkaTopic":
 		r = &KafkaTopic{}
-	case "sbercloud:Dms/kafkaUser:KafkaUser":
+	case "cloudru:Dms/kafkaUser:KafkaUser":
 		r = &KafkaUser{}
-	case "sbercloud:Dms/rabbitmqInstance:RabbitmqInstance":
+	case "cloudru:Dms/rabbitmqInstance:RabbitmqInstance":
 		r = &RabbitmqInstance{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
@@ -45,27 +45,27 @@ func init() {
 		version = semver.Version{Major: 1}
 	}
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Dms/kafkaInstance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Dms/kafkaPermissions",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Dms/kafkaTopic",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Dms/kafkaUser",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Dms/rabbitmqInstance",
 		&module{version},
 	)

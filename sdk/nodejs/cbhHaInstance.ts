@@ -19,7 +19,7 @@ export class CbhHaInstance extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/cbhHaInstance:CbhHaInstance';
+    public static readonly __pulumiType = 'cloudru:index/cbhHaInstance:CbhHaInstance';
 
     /**
      * Returns true if the given object is an instance of CbhHaInstance.  This is designed to work even

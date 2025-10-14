@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Dms/getInstances:getInstances", {
+    return pulumi.runtime.invoke("cloudru:Dms/getInstances:getInstances", {
         "enterpriseProjectId": args.enterpriseProjectId,
         "fuzzyMatch": args.fuzzyMatch,
         "includeFailure": args.includeFailure,
@@ -53,7 +53,7 @@ export interface GetInstancesResult {
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Dms/getInstances:getInstances", {
+    return pulumi.runtime.invokeOutput("cloudru:Dms/getInstances:getInstances", {
         "enterpriseProjectId": args.enterpriseProjectId,
         "fuzzyMatch": args.fuzzyMatch,
         "includeFailure": args.includeFailure,

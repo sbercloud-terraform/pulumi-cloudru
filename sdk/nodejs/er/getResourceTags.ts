@@ -6,7 +6,7 @@ import * as utilities from "../utilities";
 
 export function getResourceTags(args: GetResourceTagsArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceTagsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Er/getResourceTags:getResourceTags", {
+    return pulumi.runtime.invoke("cloudru:Er/getResourceTags:getResourceTags", {
         "region": args.region,
         "resourceId": args.resourceId,
         "resourceType": args.resourceType,
@@ -37,7 +37,7 @@ export interface GetResourceTagsResult {
 }
 export function getResourceTagsOutput(args: GetResourceTagsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetResourceTagsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Er/getResourceTags:getResourceTags", {
+    return pulumi.runtime.invokeOutput("cloudru:Er/getResourceTags:getResourceTags", {
         "region": args.region,
         "resourceId": args.resourceId,
         "resourceType": args.resourceType,

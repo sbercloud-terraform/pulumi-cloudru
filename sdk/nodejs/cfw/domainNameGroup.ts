@@ -21,7 +21,7 @@ export class DomainNameGroup extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Cfw/domainNameGroup:DomainNameGroup';
+    public static readonly __pulumiType = 'cloudru:Cfw/domainNameGroup:DomainNameGroup';
 
     /**
      * Returns true if the given object is an instance of DomainNameGroup.  This is designed to work even

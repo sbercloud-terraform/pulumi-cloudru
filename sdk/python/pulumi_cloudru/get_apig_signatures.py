@@ -131,7 +131,7 @@ def get_apig_signatures(algorithm: Optional[_builtins.str] = None,
     __args__['signatureId'] = signature_id
     __args__['type'] = type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getApigSignatures:getApigSignatures', __args__, opts=opts, typ=GetApigSignaturesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getApigSignatures:getApigSignatures', __args__, opts=opts, typ=GetApigSignaturesResult).value
 
     return AwaitableGetApigSignaturesResult(
         algorithm=pulumi.get(__ret__, 'algorithm'),
@@ -160,7 +160,7 @@ def get_apig_signatures_output(algorithm: Optional[pulumi.Input[Optional[_builti
     __args__['signatureId'] = signature_id
     __args__['type'] = type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getApigSignatures:getApigSignatures', __args__, opts=opts, typ=GetApigSignaturesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getApigSignatures:getApigSignatures', __args__, opts=opts, typ=GetApigSignaturesResult)
     return __ret__.apply(lambda __response__: GetApigSignaturesResult(
         algorithm=pulumi.get(__response__, 'algorithm'),
         id=pulumi.get(__response__, 'id'),

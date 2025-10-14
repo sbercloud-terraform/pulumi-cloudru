@@ -189,7 +189,7 @@ class _ParametergroupState:
         pulumi.set(self, "values", value)
 
 
-@pulumi.type_token("sbercloud:Rds/parametergroup:Parametergroup")
+@pulumi.type_token("cloudru:Rds/parametergroup:Parametergroup")
 class Parametergroup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -254,7 +254,7 @@ class Parametergroup(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["updated_at"] = None
         super(Parametergroup, __self__).__init__(
-            'sbercloud:Rds/parametergroup:Parametergroup',
+            'cloudru:Rds/parametergroup:Parametergroup',
             resource_name,
             __props__,
             opts)

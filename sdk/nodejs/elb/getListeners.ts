@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 export function getListeners(args?: GetListenersArgs, opts?: pulumi.InvokeOptions): Promise<GetListenersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Elb/getListeners:getListeners", {
+    return pulumi.runtime.invoke("cloudru:Elb/getListeners:getListeners", {
         "clientCaTlsContainerRef": args.clientCaTlsContainerRef,
         "defaultPoolId": args.defaultPoolId,
         "defaultTlsContainerRef": args.defaultTlsContainerRef,
@@ -71,7 +71,7 @@ export interface GetListenersResult {
 export function getListenersOutput(args?: GetListenersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetListenersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Elb/getListeners:getListeners", {
+    return pulumi.runtime.invokeOutput("cloudru:Elb/getListeners:getListeners", {
         "clientCaTlsContainerRef": args.clientCaTlsContainerRef,
         "defaultPoolId": args.defaultPoolId,
         "defaultTlsContainerRef": args.defaultTlsContainerRef,

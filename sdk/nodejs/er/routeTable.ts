@@ -19,7 +19,7 @@ export class RouteTable extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Er/routeTable:RouteTable';
+    public static readonly __pulumiType = 'cloudru:Er/routeTable:RouteTable';
 
     /**
      * Returns true if the given object is an instance of RouteTable.  This is designed to work even

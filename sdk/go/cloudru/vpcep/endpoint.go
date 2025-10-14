@@ -50,7 +50,7 @@ func NewEndpoint(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Endpoint
-	err := ctx.RegisterResource("sbercloud:Vpcep/endpoint:Endpoint", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Vpcep/endpoint:Endpoint", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -62,7 +62,7 @@ func NewEndpoint(ctx *pulumi.Context,
 func GetEndpoint(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *EndpointState, opts ...pulumi.ResourceOption) (*Endpoint, error) {
 	var resource Endpoint
-	err := ctx.ReadResource("sbercloud:Vpcep/endpoint:Endpoint", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Vpcep/endpoint:Endpoint", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

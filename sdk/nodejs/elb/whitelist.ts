@@ -19,7 +19,7 @@ export class Whitelist extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Elb/whitelist:Whitelist';
+    public static readonly __pulumiType = 'cloudru:Elb/whitelist:Whitelist';
 
     /**
      * Returns true if the given object is an instance of Whitelist.  This is designed to work even

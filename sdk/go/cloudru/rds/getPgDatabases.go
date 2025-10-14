@@ -14,7 +14,7 @@ import (
 func GetPgDatabases(ctx *pulumi.Context, args *GetPgDatabasesArgs, opts ...pulumi.InvokeOption) (*GetPgDatabasesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPgDatabasesResult
-	err := ctx.Invoke("sbercloud:Rds/getPgDatabases:getPgDatabases", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Rds/getPgDatabases:getPgDatabases", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func GetPgDatabasesOutput(ctx *pulumi.Context, args GetPgDatabasesOutputArgs, op
 		ApplyT(func(v interface{}) (GetPgDatabasesResultOutput, error) {
 			args := v.(GetPgDatabasesArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Rds/getPgDatabases:getPgDatabases", args, GetPgDatabasesResultOutput{}, options).(GetPgDatabasesResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Rds/getPgDatabases:getPgDatabases", args, GetPgDatabasesResultOutput{}, options).(GetPgDatabasesResultOutput), nil
 		}).(GetPgDatabasesResultOutput)
 }
 

@@ -37,7 +37,7 @@ func NewPgHba(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PgHba
-	err := ctx.RegisterResource("sbercloud:Rds/pgHba:PgHba", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Rds/pgHba:PgHba", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -49,7 +49,7 @@ func NewPgHba(ctx *pulumi.Context,
 func GetPgHba(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *PgHbaState, opts ...pulumi.ResourceOption) (*PgHba, error) {
 	var resource PgHba
-	err := ctx.ReadResource("sbercloud:Rds/pgHba:PgHba", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Rds/pgHba:PgHba", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

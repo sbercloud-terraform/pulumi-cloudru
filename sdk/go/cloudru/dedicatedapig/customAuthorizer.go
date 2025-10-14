@@ -58,7 +58,7 @@ func NewCustomAuthorizer(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CustomAuthorizer
-	err := ctx.RegisterResource("sbercloud:DedicatedApig/customAuthorizer:CustomAuthorizer", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:DedicatedApig/customAuthorizer:CustomAuthorizer", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -70,7 +70,7 @@ func NewCustomAuthorizer(ctx *pulumi.Context,
 func GetCustomAuthorizer(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *CustomAuthorizerState, opts ...pulumi.ResourceOption) (*CustomAuthorizer, error) {
 	var resource CustomAuthorizer
-	err := ctx.ReadResource("sbercloud:DedicatedApig/customAuthorizer:CustomAuthorizer", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:DedicatedApig/customAuthorizer:CustomAuthorizer", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

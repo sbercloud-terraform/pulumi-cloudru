@@ -14,7 +14,7 @@ import (
 func LookupRouteTable(ctx *pulumi.Context, args *LookupRouteTableArgs, opts ...pulumi.InvokeOption) (*LookupRouteTableResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRouteTableResult
-	err := ctx.Invoke("sbercloud:Vpc/getRouteTable:getRouteTable", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Vpc/getRouteTable:getRouteTable", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -46,7 +46,7 @@ func LookupRouteTableOutput(ctx *pulumi.Context, args LookupRouteTableOutputArgs
 		ApplyT(func(v interface{}) (LookupRouteTableResultOutput, error) {
 			args := v.(LookupRouteTableArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Vpc/getRouteTable:getRouteTable", args, LookupRouteTableResultOutput{}, options).(LookupRouteTableResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Vpc/getRouteTable:getRouteTable", args, LookupRouteTableResultOutput{}, options).(LookupRouteTableResultOutput), nil
 		}).(LookupRouteTableResultOutput)
 }
 

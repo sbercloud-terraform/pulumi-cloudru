@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 export function getApigEndpointConnections(args: GetApigEndpointConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<GetApigEndpointConnectionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getApigEndpointConnections:getApigEndpointConnections", {
+    return pulumi.runtime.invoke("cloudru:index/getApigEndpointConnections:getApigEndpointConnections", {
         "endpointId": args.endpointId,
         "instanceId": args.instanceId,
         "packetId": args.packetId,
@@ -45,7 +45,7 @@ export interface GetApigEndpointConnectionsResult {
 }
 export function getApigEndpointConnectionsOutput(args: GetApigEndpointConnectionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApigEndpointConnectionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getApigEndpointConnections:getApigEndpointConnections", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getApigEndpointConnections:getApigEndpointConnections", {
         "endpointId": args.endpointId,
         "instanceId": args.instanceId,
         "packetId": args.packetId,

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 export function getSubnets(args?: GetSubnetsArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Vpc/getSubnets:getSubnets", {
+    return pulumi.runtime.invoke("cloudru:Vpc/getSubnets:getSubnets", {
         "availabilityZone": args.availabilityZone,
         "cidr": args.cidr,
         "gatewayIp": args.gatewayIp,
@@ -61,7 +61,7 @@ export interface GetSubnetsResult {
 export function getSubnetsOutput(args?: GetSubnetsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSubnetsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Vpc/getSubnets:getSubnets", {
+    return pulumi.runtime.invokeOutput("cloudru:Vpc/getSubnets:getSubnets", {
         "availabilityZone": args.availabilityZone,
         "cidr": args.cidr,
         "gatewayIp": args.gatewayIp,

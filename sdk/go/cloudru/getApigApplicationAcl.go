@@ -14,7 +14,7 @@ import (
 func LookupApigApplicationAcl(ctx *pulumi.Context, args *LookupApigApplicationAclArgs, opts ...pulumi.InvokeOption) (*LookupApigApplicationAclResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupApigApplicationAclResult
-	err := ctx.Invoke("sbercloud:index/getApigApplicationAcl:getApigApplicationAcl", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getApigApplicationAcl:getApigApplicationAcl", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -44,7 +44,7 @@ func LookupApigApplicationAclOutput(ctx *pulumi.Context, args LookupApigApplicat
 		ApplyT(func(v interface{}) (LookupApigApplicationAclResultOutput, error) {
 			args := v.(LookupApigApplicationAclArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getApigApplicationAcl:getApigApplicationAcl", args, LookupApigApplicationAclResultOutput{}, options).(LookupApigApplicationAclResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getApigApplicationAcl:getApigApplicationAcl", args, LookupApigApplicationAclResultOutput{}, options).(LookupApigApplicationAclResultOutput), nil
 		}).(LookupApigApplicationAclResultOutput)
 }
 

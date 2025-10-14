@@ -14,7 +14,7 @@ import (
 func GetApigApiAssociatedSignatures(ctx *pulumi.Context, args *GetApigApiAssociatedSignaturesArgs, opts ...pulumi.InvokeOption) (*GetApigApiAssociatedSignaturesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetApigApiAssociatedSignaturesResult
-	err := ctx.Invoke("sbercloud:index/getApigApiAssociatedSignatures:getApigApiAssociatedSignatures", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getApigApiAssociatedSignatures:getApigApiAssociatedSignatures", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -53,7 +53,7 @@ func GetApigApiAssociatedSignaturesOutput(ctx *pulumi.Context, args GetApigApiAs
 		ApplyT(func(v interface{}) (GetApigApiAssociatedSignaturesResultOutput, error) {
 			args := v.(GetApigApiAssociatedSignaturesArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getApigApiAssociatedSignatures:getApigApiAssociatedSignatures", args, GetApigApiAssociatedSignaturesResultOutput{}, options).(GetApigApiAssociatedSignaturesResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getApigApiAssociatedSignatures:getApigApiAssociatedSignatures", args, GetApigApiAssociatedSignaturesResultOutput{}, options).(GetApigApiAssociatedSignaturesResultOutput), nil
 		}).(GetApigApiAssociatedSignaturesResultOutput)
 }
 

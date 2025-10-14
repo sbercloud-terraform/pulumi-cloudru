@@ -14,7 +14,7 @@ import (
 func GetPgAccounts(ctx *pulumi.Context, args *GetPgAccountsArgs, opts ...pulumi.InvokeOption) (*GetPgAccountsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPgAccountsResult
-	err := ctx.Invoke("sbercloud:Rds/getPgAccounts:getPgAccounts", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Rds/getPgAccounts:getPgAccounts", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -43,7 +43,7 @@ func GetPgAccountsOutput(ctx *pulumi.Context, args GetPgAccountsOutputArgs, opts
 		ApplyT(func(v interface{}) (GetPgAccountsResultOutput, error) {
 			args := v.(GetPgAccountsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Rds/getPgAccounts:getPgAccounts", args, GetPgAccountsResultOutput{}, options).(GetPgAccountsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Rds/getPgAccounts:getPgAccounts", args, GetPgAccountsResultOutput{}, options).(GetPgAccountsResultOutput), nil
 		}).(GetPgAccountsResultOutput)
 }
 

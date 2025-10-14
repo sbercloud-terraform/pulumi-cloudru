@@ -198,7 +198,7 @@ def get_eip(enterprise_project_id: Optional[_builtins.str] = None,
     __args__['publicIp'] = public_ip
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Eip/getEip:getEip', __args__, opts=opts, typ=GetEipResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Eip/getEip:getEip', __args__, opts=opts, typ=GetEipResult).value
 
     return AwaitableGetEipResult(
         bandwidth_id=pulumi.get(__ret__, 'bandwidth_id'),
@@ -231,7 +231,7 @@ def get_eip_output(enterprise_project_id: Optional[pulumi.Input[Optional[_builti
     __args__['publicIp'] = public_ip
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Eip/getEip:getEip', __args__, opts=opts, typ=GetEipResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Eip/getEip:getEip', __args__, opts=opts, typ=GetEipResult)
     return __ret__.apply(lambda __response__: GetEipResult(
         bandwidth_id=pulumi.get(__response__, 'bandwidth_id'),
         bandwidth_name=pulumi.get(__response__, 'bandwidth_name'),

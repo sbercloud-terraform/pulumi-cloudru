@@ -164,7 +164,7 @@ def get_service_group_members(dest_port: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['sourcePort'] = source_port
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Cfw/getServiceGroupMembers:getServiceGroupMembers', __args__, opts=opts, typ=GetServiceGroupMembersResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Cfw/getServiceGroupMembers:getServiceGroupMembers', __args__, opts=opts, typ=GetServiceGroupMembersResult).value
 
     return AwaitableGetServiceGroupMembersResult(
         dest_port=pulumi.get(__ret__, 'dest_port'),
@@ -202,7 +202,7 @@ def get_service_group_members_output(dest_port: Optional[pulumi.Input[Optional[_
     __args__['region'] = region
     __args__['sourcePort'] = source_port
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Cfw/getServiceGroupMembers:getServiceGroupMembers', __args__, opts=opts, typ=GetServiceGroupMembersResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Cfw/getServiceGroupMembers:getServiceGroupMembers', __args__, opts=opts, typ=GetServiceGroupMembersResult)
     return __ret__.apply(lambda __response__: GetServiceGroupMembersResult(
         dest_port=pulumi.get(__response__, 'dest_port'),
         fw_instance_id=pulumi.get(__response__, 'fw_instance_id'),

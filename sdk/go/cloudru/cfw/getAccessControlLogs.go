@@ -14,7 +14,7 @@ import (
 func GetAccessControlLogs(ctx *pulumi.Context, args *GetAccessControlLogsArgs, opts ...pulumi.InvokeOption) (*GetAccessControlLogsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccessControlLogsResult
-	err := ctx.Invoke("sbercloud:Cfw/getAccessControlLogs:getAccessControlLogs", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Cfw/getAccessControlLogs:getAccessControlLogs", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -73,7 +73,7 @@ func GetAccessControlLogsOutput(ctx *pulumi.Context, args GetAccessControlLogsOu
 		ApplyT(func(v interface{}) (GetAccessControlLogsResultOutput, error) {
 			args := v.(GetAccessControlLogsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Cfw/getAccessControlLogs:getAccessControlLogs", args, GetAccessControlLogsResultOutput{}, options).(GetAccessControlLogsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Cfw/getAccessControlLogs:getAccessControlLogs", args, GetAccessControlLogsResultOutput{}, options).(GetAccessControlLogsResultOutput), nil
 		}).(GetAccessControlLogsResultOutput)
 }
 

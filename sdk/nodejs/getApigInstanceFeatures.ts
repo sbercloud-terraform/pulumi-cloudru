@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 export function getApigInstanceFeatures(args: GetApigInstanceFeaturesArgs, opts?: pulumi.InvokeOptions): Promise<GetApigInstanceFeaturesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getApigInstanceFeatures:getApigInstanceFeatures", {
+    return pulumi.runtime.invoke("cloudru:index/getApigInstanceFeatures:getApigInstanceFeatures", {
         "instanceId": args.instanceId,
         "name": args.name,
         "region": args.region,
@@ -39,7 +39,7 @@ export interface GetApigInstanceFeaturesResult {
 }
 export function getApigInstanceFeaturesOutput(args: GetApigInstanceFeaturesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApigInstanceFeaturesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getApigInstanceFeatures:getApigInstanceFeatures", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getApigInstanceFeatures:getApigInstanceFeatures", {
         "instanceId": args.instanceId,
         "name": args.name,
         "region": args.region,

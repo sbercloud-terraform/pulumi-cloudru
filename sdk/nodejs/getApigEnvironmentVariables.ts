@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 export function getApigEnvironmentVariables(args: GetApigEnvironmentVariablesArgs, opts?: pulumi.InvokeOptions): Promise<GetApigEnvironmentVariablesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getApigEnvironmentVariables:getApigEnvironmentVariables", {
+    return pulumi.runtime.invoke("cloudru:index/getApigEnvironmentVariables:getApigEnvironmentVariables", {
         "envId": args.envId,
         "groupId": args.groupId,
         "instanceId": args.instanceId,
@@ -45,7 +45,7 @@ export interface GetApigEnvironmentVariablesResult {
 }
 export function getApigEnvironmentVariablesOutput(args: GetApigEnvironmentVariablesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApigEnvironmentVariablesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getApigEnvironmentVariables:getApigEnvironmentVariables", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getApigEnvironmentVariables:getApigEnvironmentVariables", {
         "envId": args.envId,
         "groupId": args.groupId,
         "instanceId": args.instanceId,

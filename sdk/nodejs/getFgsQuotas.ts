@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 export function getFgsQuotas(args?: GetFgsQuotasArgs, opts?: pulumi.InvokeOptions): Promise<GetFgsQuotasResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getFgsQuotas:getFgsQuotas", {
+    return pulumi.runtime.invoke("cloudru:index/getFgsQuotas:getFgsQuotas", {
         "region": args.region,
     }, opts);
 }
@@ -35,7 +35,7 @@ export interface GetFgsQuotasResult {
 export function getFgsQuotasOutput(args?: GetFgsQuotasOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFgsQuotasResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getFgsQuotas:getFgsQuotas", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getFgsQuotas:getFgsQuotas", {
         "region": args.region,
     }, opts);
 }

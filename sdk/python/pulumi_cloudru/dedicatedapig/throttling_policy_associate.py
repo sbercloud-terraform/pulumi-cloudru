@@ -157,7 +157,7 @@ class _ThrottlingPolicyAssociateState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:DedicatedApig/throttlingPolicyAssociate:ThrottlingPolicyAssociate")
+@pulumi.type_token("cloudru:DedicatedApig/throttlingPolicyAssociate:ThrottlingPolicyAssociate")
 class ThrottlingPolicyAssociate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -224,7 +224,7 @@ class ThrottlingPolicyAssociate(pulumi.CustomResource):
             __props__.__dict__["publish_ids"] = publish_ids
             __props__.__dict__["region"] = region
         super(ThrottlingPolicyAssociate, __self__).__init__(
-            'sbercloud:DedicatedApig/throttlingPolicyAssociate:ThrottlingPolicyAssociate',
+            'cloudru:DedicatedApig/throttlingPolicyAssociate:ThrottlingPolicyAssociate',
             resource_name,
             __props__,
             opts)

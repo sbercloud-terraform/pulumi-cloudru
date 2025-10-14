@@ -21,7 +21,7 @@ export class ElbListener extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/elbListener:ElbListener';
+    public static readonly __pulumiType = 'cloudru:index/elbListener:ElbListener';
 
     /**
      * Returns true if the given object is an instance of ElbListener.  This is designed to work even

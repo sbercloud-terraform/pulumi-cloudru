@@ -134,7 +134,7 @@ func NewKafkaInstance(ctx *pulumi.Context,
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource KafkaInstance
-	err := ctx.RegisterResource("sbercloud:Dms/kafkaInstance:KafkaInstance", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Dms/kafkaInstance:KafkaInstance", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -146,7 +146,7 @@ func NewKafkaInstance(ctx *pulumi.Context,
 func GetKafkaInstance(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *KafkaInstanceState, opts ...pulumi.ResourceOption) (*KafkaInstance, error) {
 	var resource KafkaInstance
-	err := ctx.ReadResource("sbercloud:Dms/kafkaInstance:KafkaInstance", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Dms/kafkaInstance:KafkaInstance", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -120,7 +120,7 @@ def get_flaovrs(availability_zone: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['vcpus'] = vcpus
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Dws/getFlaovrs:getFlaovrs', __args__, opts=opts, typ=GetFlaovrsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Dws/getFlaovrs:getFlaovrs', __args__, opts=opts, typ=GetFlaovrsResult).value
 
     return AwaitableGetFlaovrsResult(
         availability_zone=pulumi.get(__ret__, 'availability_zone'),
@@ -146,7 +146,7 @@ def get_flaovrs_output(availability_zone: Optional[pulumi.Input[Optional[_builti
     __args__['region'] = region
     __args__['vcpus'] = vcpus
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Dws/getFlaovrs:getFlaovrs', __args__, opts=opts, typ=GetFlaovrsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Dws/getFlaovrs:getFlaovrs', __args__, opts=opts, typ=GetFlaovrsResult)
     return __ret__.apply(lambda __response__: GetFlaovrsResult(
         availability_zone=pulumi.get(__response__, 'availability_zone'),
         datastore_type=pulumi.get(__response__, 'datastore_type'),

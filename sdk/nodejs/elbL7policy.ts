@@ -21,7 +21,7 @@ export class ElbL7policy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/elbL7policy:ElbL7policy';
+    public static readonly __pulumiType = 'cloudru:index/elbL7policy:ElbL7policy';
 
     /**
      * Returns true if the given object is an instance of ElbL7policy.  This is designed to work even

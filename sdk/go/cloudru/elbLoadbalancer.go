@@ -80,7 +80,7 @@ func NewElbLoadbalancer(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ElbLoadbalancer
-	err := ctx.RegisterResource("sbercloud:index/elbLoadbalancer:ElbLoadbalancer", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/elbLoadbalancer:ElbLoadbalancer", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -92,7 +92,7 @@ func NewElbLoadbalancer(ctx *pulumi.Context,
 func GetElbLoadbalancer(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ElbLoadbalancerState, opts ...pulumi.ResourceOption) (*ElbLoadbalancer, error) {
 	var resource ElbLoadbalancer
-	err := ctx.ReadResource("sbercloud:index/elbLoadbalancer:ElbLoadbalancer", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/elbLoadbalancer:ElbLoadbalancer", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

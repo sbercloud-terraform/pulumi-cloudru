@@ -19,7 +19,7 @@ export class SfsTurboDir extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/sfsTurboDir:SfsTurboDir';
+    public static readonly __pulumiType = 'cloudru:index/sfsTurboDir:SfsTurboDir';
 
     /**
      * Returns true if the given object is an instance of SfsTurboDir.  This is designed to work even

@@ -131,7 +131,7 @@ def get_dms_rocketmq_consumer_groups(broadcast: Optional[_builtins.bool] = None,
     __args__['region'] = region
     __args__['retryMaxTimes'] = retry_max_times
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getDmsRocketmqConsumerGroups:getDmsRocketmqConsumerGroups', __args__, opts=opts, typ=GetDmsRocketmqConsumerGroupsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getDmsRocketmqConsumerGroups:getDmsRocketmqConsumerGroups', __args__, opts=opts, typ=GetDmsRocketmqConsumerGroupsResult).value
 
     return AwaitableGetDmsRocketmqConsumerGroupsResult(
         broadcast=pulumi.get(__ret__, 'broadcast'),
@@ -160,7 +160,7 @@ def get_dms_rocketmq_consumer_groups_output(broadcast: Optional[pulumi.Input[Opt
     __args__['region'] = region
     __args__['retryMaxTimes'] = retry_max_times
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getDmsRocketmqConsumerGroups:getDmsRocketmqConsumerGroups', __args__, opts=opts, typ=GetDmsRocketmqConsumerGroupsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getDmsRocketmqConsumerGroups:getDmsRocketmqConsumerGroups', __args__, opts=opts, typ=GetDmsRocketmqConsumerGroupsResult)
     return __ret__.apply(lambda __response__: GetDmsRocketmqConsumerGroupsResult(
         broadcast=pulumi.get(__response__, 'broadcast'),
         enabled=pulumi.get(__response__, 'enabled'),

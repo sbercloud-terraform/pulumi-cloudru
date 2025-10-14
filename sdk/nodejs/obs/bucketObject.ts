@@ -19,7 +19,7 @@ export class BucketObject extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Obs/bucketObject:BucketObject';
+    public static readonly __pulumiType = 'cloudru:Obs/bucketObject:BucketObject';
 
     /**
      * Returns true if the given object is an instance of BucketObject.  This is designed to work even

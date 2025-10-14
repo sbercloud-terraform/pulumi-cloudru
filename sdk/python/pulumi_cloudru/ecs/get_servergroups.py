@@ -87,7 +87,7 @@ def get_servergroups(name: Optional[_builtins.str] = None,
     __args__['name'] = name
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Ecs/getServergroups:getServergroups', __args__, opts=opts, typ=GetServergroupsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Ecs/getServergroups:getServergroups', __args__, opts=opts, typ=GetServergroupsResult).value
 
     return AwaitableGetServergroupsResult(
         id=pulumi.get(__ret__, 'id'),
@@ -104,7 +104,7 @@ def get_servergroups_output(name: Optional[pulumi.Input[Optional[_builtins.str]]
     __args__['name'] = name
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Ecs/getServergroups:getServergroups', __args__, opts=opts, typ=GetServergroupsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Ecs/getServergroups:getServergroups', __args__, opts=opts, typ=GetServergroupsResult)
     return __ret__.apply(lambda __response__: GetServergroupsResult(
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),

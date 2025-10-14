@@ -19,7 +19,7 @@ export class AttachmentAccepter extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Er/attachmentAccepter:AttachmentAccepter';
+    public static readonly __pulumiType = 'cloudru:Er/attachmentAccepter:AttachmentAccepter';
 
     /**
      * Returns true if the given object is an instance of AttachmentAccepter.  This is designed to work even

@@ -14,7 +14,7 @@ import (
 func LookupImage(ctx *pulumi.Context, args *LookupImageArgs, opts ...pulumi.InvokeOption) (*LookupImageResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupImageResult
-	err := ctx.Invoke("sbercloud:Ims/getImage:getImage", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Ims/getImage:getImage", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -96,7 +96,7 @@ func LookupImageOutput(ctx *pulumi.Context, args LookupImageOutputArgs, opts ...
 		ApplyT(func(v interface{}) (LookupImageResultOutput, error) {
 			args := v.(LookupImageArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Ims/getImage:getImage", args, LookupImageResultOutput{}, options).(LookupImageResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Ims/getImage:getImage", args, LookupImageResultOutput{}, options).(LookupImageResultOutput), nil
 		}).(LookupImageResultOutput)
 }
 

@@ -21,7 +21,7 @@ export class Volume extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Evs/volume:Volume';
+    public static readonly __pulumiType = 'cloudru:Evs/volume:Volume';
 
     /**
      * Returns true if the given object is an instance of Volume.  This is designed to work even

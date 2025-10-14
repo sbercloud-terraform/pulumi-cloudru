@@ -56,7 +56,7 @@ func NewSubnet(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Subnet
-	err := ctx.RegisterResource("sbercloud:Vpc/subnet:Subnet", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Vpc/subnet:Subnet", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -68,7 +68,7 @@ func NewSubnet(ctx *pulumi.Context,
 func GetSubnet(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *SubnetState, opts ...pulumi.ResourceOption) (*Subnet, error) {
 	var resource Subnet
-	err := ctx.ReadResource("sbercloud:Vpc/subnet:Subnet", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Vpc/subnet:Subnet", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

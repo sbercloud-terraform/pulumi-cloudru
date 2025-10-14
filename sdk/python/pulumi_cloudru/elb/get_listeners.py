@@ -208,7 +208,7 @@ def get_listeners(client_ca_tls_container_ref: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['tlsCiphersPolicy'] = tls_ciphers_policy
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Elb/getListeners:getListeners', __args__, opts=opts, typ=GetListenersResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Elb/getListeners:getListeners', __args__, opts=opts, typ=GetListenersResult).value
 
     return AwaitableGetListenersResult(
         client_ca_tls_container_ref=pulumi.get(__ret__, 'client_ca_tls_container_ref'),
@@ -258,7 +258,7 @@ def get_listeners_output(client_ca_tls_container_ref: Optional[pulumi.Input[Opti
     __args__['region'] = region
     __args__['tlsCiphersPolicy'] = tls_ciphers_policy
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Elb/getListeners:getListeners', __args__, opts=opts, typ=GetListenersResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Elb/getListeners:getListeners', __args__, opts=opts, typ=GetListenersResult)
     return __ret__.apply(lambda __response__: GetListenersResult(
         client_ca_tls_container_ref=pulumi.get(__response__, 'client_ca_tls_container_ref'),
         default_pool_id=pulumi.get(__response__, 'default_pool_id'),

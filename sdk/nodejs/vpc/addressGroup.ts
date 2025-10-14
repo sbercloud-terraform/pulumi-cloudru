@@ -21,7 +21,7 @@ export class AddressGroup extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Vpc/addressGroup:AddressGroup';
+    public static readonly __pulumiType = 'cloudru:Vpc/addressGroup:AddressGroup';
 
     /**
      * Returns true if the given object is an instance of AddressGroup.  This is designed to work even

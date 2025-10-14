@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 export function getFgsDependencyVersions(args: GetFgsDependencyVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetFgsDependencyVersionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getFgsDependencyVersions:getFgsDependencyVersions", {
+    return pulumi.runtime.invoke("cloudru:index/getFgsDependencyVersions:getFgsDependencyVersions", {
         "dependencyId": args.dependencyId,
         "region": args.region,
         "runtime": args.runtime,
@@ -45,7 +45,7 @@ export interface GetFgsDependencyVersionsResult {
 }
 export function getFgsDependencyVersionsOutput(args: GetFgsDependencyVersionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFgsDependencyVersionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getFgsDependencyVersions:getFgsDependencyVersions", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getFgsDependencyVersions:getFgsDependencyVersions", {
         "dependencyId": args.dependencyId,
         "region": args.region,
         "runtime": args.runtime,

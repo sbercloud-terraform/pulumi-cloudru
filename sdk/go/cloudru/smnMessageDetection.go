@@ -47,7 +47,7 @@ func NewSmnMessageDetection(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SmnMessageDetection
-	err := ctx.RegisterResource("sbercloud:index/smnMessageDetection:SmnMessageDetection", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/smnMessageDetection:SmnMessageDetection", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -59,7 +59,7 @@ func NewSmnMessageDetection(ctx *pulumi.Context,
 func GetSmnMessageDetection(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *SmnMessageDetectionState, opts ...pulumi.ResourceOption) (*SmnMessageDetection, error) {
 	var resource SmnMessageDetection
-	err := ctx.ReadResource("sbercloud:index/smnMessageDetection:SmnMessageDetection", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/smnMessageDetection:SmnMessageDetection", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

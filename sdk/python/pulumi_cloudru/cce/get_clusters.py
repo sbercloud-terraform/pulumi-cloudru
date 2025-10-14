@@ -151,7 +151,7 @@ def get_clusters(cluster_id: Optional[_builtins.str] = None,
     __args__['status'] = status
     __args__['vpcId'] = vpc_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Cce/getClusters:getClusters', __args__, opts=opts, typ=GetClustersResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Cce/getClusters:getClusters', __args__, opts=opts, typ=GetClustersResult).value
 
     return AwaitableGetClustersResult(
         cluster_id=pulumi.get(__ret__, 'cluster_id'),
@@ -184,7 +184,7 @@ def get_clusters_output(cluster_id: Optional[pulumi.Input[Optional[_builtins.str
     __args__['status'] = status
     __args__['vpcId'] = vpc_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Cce/getClusters:getClusters', __args__, opts=opts, typ=GetClustersResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Cce/getClusters:getClusters', __args__, opts=opts, typ=GetClustersResult)
     return __ret__.apply(lambda __response__: GetClustersResult(
         cluster_id=pulumi.get(__response__, 'cluster_id'),
         cluster_type=pulumi.get(__response__, 'cluster_type'),

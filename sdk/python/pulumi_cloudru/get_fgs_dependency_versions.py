@@ -120,7 +120,7 @@ def get_fgs_dependency_versions(dependency_id: Optional[_builtins.str] = None,
     __args__['version'] = version
     __args__['versionId'] = version_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getFgsDependencyVersions:getFgsDependencyVersions', __args__, opts=opts, typ=GetFgsDependencyVersionsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getFgsDependencyVersions:getFgsDependencyVersions', __args__, opts=opts, typ=GetFgsDependencyVersionsResult).value
 
     return AwaitableGetFgsDependencyVersionsResult(
         dependency_id=pulumi.get(__ret__, 'dependency_id'),
@@ -146,7 +146,7 @@ def get_fgs_dependency_versions_output(dependency_id: Optional[pulumi.Input[_bui
     __args__['version'] = version
     __args__['versionId'] = version_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getFgsDependencyVersions:getFgsDependencyVersions', __args__, opts=opts, typ=GetFgsDependencyVersionsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getFgsDependencyVersions:getFgsDependencyVersions', __args__, opts=opts, typ=GetFgsDependencyVersionsResult)
     return __ret__.apply(lambda __response__: GetFgsDependencyVersionsResult(
         dependency_id=pulumi.get(__response__, 'dependency_id'),
         id=pulumi.get(__response__, 'id'),

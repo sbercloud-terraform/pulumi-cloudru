@@ -162,7 +162,7 @@ class _AccessRuleState:
         pulumi.set(self, "status", value)
 
 
-@pulumi.type_token("sbercloud:Sfs/accessRule:AccessRule")
+@pulumi.type_token("cloudru:Sfs/accessRule:AccessRule")
 class AccessRule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -227,7 +227,7 @@ class AccessRule(pulumi.CustomResource):
             __props__.__dict__["sfs_id"] = sfs_id
             __props__.__dict__["status"] = None
         super(AccessRule, __self__).__init__(
-            'sbercloud:Sfs/accessRule:AccessRule',
+            'cloudru:Sfs/accessRule:AccessRule',
             resource_name,
             __props__,
             opts)

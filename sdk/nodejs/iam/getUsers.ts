@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Iam/getUsers:getUsers", {
+    return pulumi.runtime.invoke("cloudru:Iam/getUsers:getUsers", {
         "enabled": args.enabled,
         "name": args.name,
     }, opts);
@@ -38,7 +38,7 @@ export interface GetUsersResult {
 export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUsersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Iam/getUsers:getUsers", {
+    return pulumi.runtime.invokeOutput("cloudru:Iam/getUsers:getUsers", {
         "enabled": args.enabled,
         "name": args.name,
     }, opts);

@@ -19,7 +19,7 @@ export class Association extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Er/association:Association';
+    public static readonly __pulumiType = 'cloudru:Er/association:Association';
 
     /**
      * Returns true if the given object is an instance of Association.  This is designed to work even

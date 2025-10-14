@@ -6,7 +6,7 @@ import * as utilities from "../utilities";
 
 export function getDataKey(args: GetDataKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetDataKeyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Dew/getDataKey:getDataKey", {
+    return pulumi.runtime.invoke("cloudru:Dew/getDataKey:getDataKey", {
         "datakeyLength": args.datakeyLength,
         "encryptionContext": args.encryptionContext,
         "keyId": args.keyId,
@@ -41,7 +41,7 @@ export interface GetDataKeyResult {
 }
 export function getDataKeyOutput(args: GetDataKeyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDataKeyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Dew/getDataKey:getDataKey", {
+    return pulumi.runtime.invokeOutput("cloudru:Dew/getDataKey:getDataKey", {
         "datakeyLength": args.datakeyLength,
         "encryptionContext": args.encryptionContext,
         "keyId": args.keyId,

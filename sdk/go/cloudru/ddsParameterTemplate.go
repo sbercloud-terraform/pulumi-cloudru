@@ -47,7 +47,7 @@ func NewDdsParameterTemplate(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DdsParameterTemplate
-	err := ctx.RegisterResource("sbercloud:index/ddsParameterTemplate:DdsParameterTemplate", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/ddsParameterTemplate:DdsParameterTemplate", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -59,7 +59,7 @@ func NewDdsParameterTemplate(ctx *pulumi.Context,
 func GetDdsParameterTemplate(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *DdsParameterTemplateState, opts ...pulumi.ResourceOption) (*DdsParameterTemplate, error) {
 	var resource DdsParameterTemplate
-	err := ctx.ReadResource("sbercloud:index/ddsParameterTemplate:DdsParameterTemplate", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/ddsParameterTemplate:DdsParameterTemplate", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

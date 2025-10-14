@@ -166,7 +166,7 @@ def get_gateway(description: Optional[_builtins.str] = None,
     __args__['subnetId'] = subnet_id
     __args__['vpcId'] = vpc_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Nat/getGateway:getGateway', __args__, opts=opts, typ=GetGatewayResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Nat/getGateway:getGateway', __args__, opts=opts, typ=GetGatewayResult).value
 
     return AwaitableGetGatewayResult(
         description=pulumi.get(__ret__, 'description'),
@@ -208,7 +208,7 @@ def get_gateway_output(description: Optional[pulumi.Input[Optional[_builtins.str
     __args__['subnetId'] = subnet_id
     __args__['vpcId'] = vpc_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Nat/getGateway:getGateway', __args__, opts=opts, typ=GetGatewayResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Nat/getGateway:getGateway', __args__, opts=opts, typ=GetGatewayResult)
     return __ret__.apply(lambda __response__: GetGatewayResult(
         description=pulumi.get(__response__, 'description'),
         enterprise_project_id=pulumi.get(__response__, 'enterprise_project_id'),

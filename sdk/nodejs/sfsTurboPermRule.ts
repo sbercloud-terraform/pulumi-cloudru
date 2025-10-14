@@ -19,7 +19,7 @@ export class SfsTurboPermRule extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/sfsTurboPermRule:SfsTurboPermRule';
+    public static readonly __pulumiType = 'cloudru:index/sfsTurboPermRule:SfsTurboPermRule';
 
     /**
      * Returns true if the given object is an instance of SfsTurboPermRule.  This is designed to work even

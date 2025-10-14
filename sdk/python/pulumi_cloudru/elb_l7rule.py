@@ -199,7 +199,7 @@ class _ElbL7ruleState:
         pulumi.set(self, "value", value)
 
 
-@pulumi.type_token("sbercloud:index/elbL7rule:ElbL7rule")
+@pulumi.type_token("cloudru:index/elbL7rule:ElbL7rule")
 class ElbL7rule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -270,7 +270,7 @@ class ElbL7rule(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["updated_at"] = None
         super(ElbL7rule, __self__).__init__(
-            'sbercloud:index/elbL7rule:ElbL7rule',
+            'cloudru:index/elbL7rule:ElbL7rule',
             resource_name,
             __props__,
             opts)

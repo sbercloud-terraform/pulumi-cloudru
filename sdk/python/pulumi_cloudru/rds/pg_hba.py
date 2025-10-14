@@ -120,7 +120,7 @@ class _PgHbaState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:Rds/pgHba:PgHba")
+@pulumi.type_token("cloudru:Rds/pgHba:PgHba")
 class PgHba(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -180,7 +180,7 @@ class PgHba(pulumi.CustomResource):
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["region"] = region
         super(PgHba, __self__).__init__(
-            'sbercloud:Rds/pgHba:PgHba',
+            'cloudru:Rds/pgHba:PgHba',
             resource_name,
             __props__,
             opts)

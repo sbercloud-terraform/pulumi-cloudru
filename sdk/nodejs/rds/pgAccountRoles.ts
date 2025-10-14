@@ -19,7 +19,7 @@ export class PgAccountRoles extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Rds/pgAccountRoles:PgAccountRoles';
+    public static readonly __pulumiType = 'cloudru:Rds/pgAccountRoles:PgAccountRoles';
 
     /**
      * Returns true if the given object is an instance of PgAccountRoles.  This is designed to work even

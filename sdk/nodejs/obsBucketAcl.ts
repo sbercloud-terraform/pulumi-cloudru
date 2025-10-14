@@ -21,7 +21,7 @@ export class ObsBucketAcl extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/obsBucketAcl:ObsBucketAcl';
+    public static readonly __pulumiType = 'cloudru:index/obsBucketAcl:ObsBucketAcl';
 
     /**
      * Returns true if the given object is an instance of ObsBucketAcl.  This is designed to work even

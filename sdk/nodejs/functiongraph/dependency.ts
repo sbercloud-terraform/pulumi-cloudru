@@ -19,7 +19,7 @@ export class Dependency extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:FunctionGraph/dependency:Dependency';
+    public static readonly __pulumiType = 'cloudru:FunctionGraph/dependency:Dependency';
 
     /**
      * Returns true if the given object is an instance of Dependency.  This is designed to work even

@@ -19,7 +19,7 @@ export class VpnConnectionHealthCheck extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/vpnConnectionHealthCheck:VpnConnectionHealthCheck';
+    public static readonly __pulumiType = 'cloudru:index/vpnConnectionHealthCheck:VpnConnectionHealthCheck';
 
     /**
      * Returns true if the given object is an instance of VpnConnectionHealthCheck.  This is designed to work even

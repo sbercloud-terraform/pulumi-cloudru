@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 export function getIpsRules(args: GetIpsRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetIpsRulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Cfw/getIpsRules:getIpsRules", {
+    return pulumi.runtime.invoke("cloudru:Cfw/getIpsRules:getIpsRules", {
         "enterpriseProjectId": args.enterpriseProjectId,
         "ipsId": args.ipsId,
         "ipsNameLike": args.ipsNameLike,
@@ -51,7 +51,7 @@ export interface GetIpsRulesResult {
 }
 export function getIpsRulesOutput(args: GetIpsRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIpsRulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Cfw/getIpsRules:getIpsRules", {
+    return pulumi.runtime.invokeOutput("cloudru:Cfw/getIpsRules:getIpsRules", {
         "enterpriseProjectId": args.enterpriseProjectId,
         "ipsId": args.ipsId,
         "ipsNameLike": args.ipsNameLike,

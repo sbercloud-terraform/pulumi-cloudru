@@ -19,7 +19,7 @@ export class ElbCertificate extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/elbCertificate:ElbCertificate';
+    public static readonly __pulumiType = 'cloudru:index/elbCertificate:ElbCertificate';
 
     /**
      * Returns true if the given object is an instance of ElbCertificate.  This is designed to work even

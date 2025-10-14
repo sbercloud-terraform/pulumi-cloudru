@@ -105,32 +105,32 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "sbercloud:Er/association:Association":
+            case "cloudru:Er/association:Association":
                 return new Association(name, <any>undefined, { urn })
-            case "sbercloud:Er/attachmentAccepter:AttachmentAccepter":
+            case "cloudru:Er/attachmentAccepter:AttachmentAccepter":
                 return new AttachmentAccepter(name, <any>undefined, { urn })
-            case "sbercloud:Er/flowLog:FlowLog":
+            case "cloudru:Er/flowLog:FlowLog":
                 return new FlowLog(name, <any>undefined, { urn })
-            case "sbercloud:Er/instance:Instance":
+            case "cloudru:Er/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
-            case "sbercloud:Er/propagation:Propagation":
+            case "cloudru:Er/propagation:Propagation":
                 return new Propagation(name, <any>undefined, { urn })
-            case "sbercloud:Er/routeTable:RouteTable":
+            case "cloudru:Er/routeTable:RouteTable":
                 return new RouteTable(name, <any>undefined, { urn })
-            case "sbercloud:Er/staticRoute:StaticRoute":
+            case "cloudru:Er/staticRoute:StaticRoute":
                 return new StaticRoute(name, <any>undefined, { urn })
-            case "sbercloud:Er/vpcAttachment:VpcAttachment":
+            case "cloudru:Er/vpcAttachment:VpcAttachment":
                 return new VpcAttachment(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("sbercloud", "Er/association", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Er/attachmentAccepter", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Er/flowLog", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Er/instance", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Er/propagation", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Er/routeTable", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Er/staticRoute", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Er/vpcAttachment", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Er/association", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Er/attachmentAccepter", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Er/flowLog", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Er/instance", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Er/propagation", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Er/routeTable", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Er/staticRoute", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Er/vpcAttachment", _module)

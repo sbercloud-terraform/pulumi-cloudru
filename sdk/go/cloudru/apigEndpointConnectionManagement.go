@@ -44,7 +44,7 @@ func NewApigEndpointConnectionManagement(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApigEndpointConnectionManagement
-	err := ctx.RegisterResource("sbercloud:index/apigEndpointConnectionManagement:ApigEndpointConnectionManagement", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/apigEndpointConnectionManagement:ApigEndpointConnectionManagement", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -56,7 +56,7 @@ func NewApigEndpointConnectionManagement(ctx *pulumi.Context,
 func GetApigEndpointConnectionManagement(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ApigEndpointConnectionManagementState, opts ...pulumi.ResourceOption) (*ApigEndpointConnectionManagement, error) {
 	var resource ApigEndpointConnectionManagement
-	err := ctx.ReadResource("sbercloud:index/apigEndpointConnectionManagement:ApigEndpointConnectionManagement", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/apigEndpointConnectionManagement:ApigEndpointConnectionManagement", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

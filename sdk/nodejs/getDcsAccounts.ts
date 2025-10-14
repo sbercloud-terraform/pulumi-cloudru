@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 export function getDcsAccounts(args: GetDcsAccountsArgs, opts?: pulumi.InvokeOptions): Promise<GetDcsAccountsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getDcsAccounts:getDcsAccounts", {
+    return pulumi.runtime.invoke("cloudru:index/getDcsAccounts:getDcsAccounts", {
         "accountName": args.accountName,
         "accountRole": args.accountRole,
         "accountType": args.accountType,
@@ -51,7 +51,7 @@ export interface GetDcsAccountsResult {
 }
 export function getDcsAccountsOutput(args: GetDcsAccountsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDcsAccountsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getDcsAccounts:getDcsAccounts", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getDcsAccounts:getDcsAccounts", {
         "accountName": args.accountName,
         "accountRole": args.accountRole,
         "accountType": args.accountType,

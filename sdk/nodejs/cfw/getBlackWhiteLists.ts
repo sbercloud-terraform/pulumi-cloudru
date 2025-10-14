@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 export function getBlackWhiteLists(args: GetBlackWhiteListsArgs, opts?: pulumi.InvokeOptions): Promise<GetBlackWhiteListsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Cfw/getBlackWhiteLists:getBlackWhiteLists", {
+    return pulumi.runtime.invoke("cloudru:Cfw/getBlackWhiteLists:getBlackWhiteLists", {
         "address": args.address,
         "addressType": args.addressType,
         "description": args.description,
@@ -63,7 +63,7 @@ export interface GetBlackWhiteListsResult {
 }
 export function getBlackWhiteListsOutput(args: GetBlackWhiteListsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBlackWhiteListsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Cfw/getBlackWhiteLists:getBlackWhiteLists", {
+    return pulumi.runtime.invokeOutput("cloudru:Cfw/getBlackWhiteLists:getBlackWhiteLists", {
         "address": args.address,
         "addressType": args.addressType,
         "description": args.description,

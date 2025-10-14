@@ -287,7 +287,7 @@ class _ApiPublishmentState:
         pulumi.set(self, "version_id", value)
 
 
-@pulumi.type_token("sbercloud:DedicatedApig/apiPublishment:ApiPublishment")
+@pulumi.type_token("cloudru:DedicatedApig/apiPublishment:ApiPublishment")
 class ApiPublishment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -366,7 +366,7 @@ class ApiPublishment(pulumi.CustomResource):
             __props__.__dict__["publish_id"] = None
             __props__.__dict__["published_at"] = None
         super(ApiPublishment, __self__).__init__(
-            'sbercloud:DedicatedApig/apiPublishment:ApiPublishment',
+            'cloudru:DedicatedApig/apiPublishment:ApiPublishment',
             resource_name,
             __props__,
             opts)

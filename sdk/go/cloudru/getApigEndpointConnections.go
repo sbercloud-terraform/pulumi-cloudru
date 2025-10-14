@@ -14,7 +14,7 @@ import (
 func GetApigEndpointConnections(ctx *pulumi.Context, args *GetApigEndpointConnectionsArgs, opts ...pulumi.InvokeOption) (*GetApigEndpointConnectionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetApigEndpointConnectionsResult
-	err := ctx.Invoke("sbercloud:index/getApigEndpointConnections:getApigEndpointConnections", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getApigEndpointConnections:getApigEndpointConnections", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -47,7 +47,7 @@ func GetApigEndpointConnectionsOutput(ctx *pulumi.Context, args GetApigEndpointC
 		ApplyT(func(v interface{}) (GetApigEndpointConnectionsResultOutput, error) {
 			args := v.(GetApigEndpointConnectionsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getApigEndpointConnections:getApigEndpointConnections", args, GetApigEndpointConnectionsResultOutput{}, options).(GetApigEndpointConnectionsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getApigEndpointConnections:getApigEndpointConnections", args, GetApigEndpointConnectionsResultOutput{}, options).(GetApigEndpointConnectionsResultOutput), nil
 		}).(GetApigEndpointConnectionsResultOutput)
 }
 

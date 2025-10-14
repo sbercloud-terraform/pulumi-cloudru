@@ -14,7 +14,7 @@ import (
 func GetApigSignatures(ctx *pulumi.Context, args *GetApigSignaturesArgs, opts ...pulumi.InvokeOption) (*GetApigSignaturesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetApigSignaturesResult
-	err := ctx.Invoke("sbercloud:index/getApigSignatures:getApigSignatures", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getApigSignatures:getApigSignatures", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -49,7 +49,7 @@ func GetApigSignaturesOutput(ctx *pulumi.Context, args GetApigSignaturesOutputAr
 		ApplyT(func(v interface{}) (GetApigSignaturesResultOutput, error) {
 			args := v.(GetApigSignaturesArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getApigSignatures:getApigSignatures", args, GetApigSignaturesResultOutput{}, options).(GetApigSignaturesResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getApigSignatures:getApigSignatures", args, GetApigSignaturesResultOutput{}, options).(GetApigSignaturesResultOutput), nil
 		}).(GetApigSignaturesResultOutput)
 }
 

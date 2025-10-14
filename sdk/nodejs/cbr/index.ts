@@ -25,14 +25,14 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "sbercloud:Cbr/policy:Policy":
+            case "cloudru:Cbr/policy:Policy":
                 return new Policy(name, <any>undefined, { urn })
-            case "sbercloud:Cbr/vault:Vault":
+            case "cloudru:Cbr/vault:Vault":
                 return new Vault(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("sbercloud", "Cbr/policy", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Cbr/vault", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Cbr/policy", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Cbr/vault", _module)

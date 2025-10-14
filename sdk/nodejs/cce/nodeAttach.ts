@@ -21,7 +21,7 @@ export class NodeAttach extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Cce/nodeAttach:NodeAttach';
+    public static readonly __pulumiType = 'cloudru:Cce/nodeAttach:NodeAttach';
 
     /**
      * Returns true if the given object is an instance of NodeAttach.  This is designed to work even

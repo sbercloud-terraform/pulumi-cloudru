@@ -294,7 +294,7 @@ class _AclRuleState:
         pulumi.set(self, "source_port", value)
 
 
-@pulumi.type_token("sbercloud:NetworkAcl/aclRule:AclRule")
+@pulumi.type_token("cloudru:NetworkAcl/aclRule:AclRule")
 class AclRule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -376,7 +376,7 @@ class AclRule(pulumi.CustomResource):
             __props__.__dict__["source_ip_address"] = source_ip_address
             __props__.__dict__["source_port"] = source_port
         super(AclRule, __self__).__init__(
-            'sbercloud:NetworkAcl/aclRule:AclRule',
+            'cloudru:NetworkAcl/aclRule:AclRule',
             resource_name,
             __props__,
             opts)

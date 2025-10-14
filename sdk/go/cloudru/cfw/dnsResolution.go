@@ -38,7 +38,7 @@ func NewDnsResolution(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DnsResolution
-	err := ctx.RegisterResource("sbercloud:Cfw/dnsResolution:DnsResolution", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Cfw/dnsResolution:DnsResolution", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -50,7 +50,7 @@ func NewDnsResolution(ctx *pulumi.Context,
 func GetDnsResolution(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *DnsResolutionState, opts ...pulumi.ResourceOption) (*DnsResolution, error) {
 	var resource DnsResolution
-	err := ctx.ReadResource("sbercloud:Cfw/dnsResolution:DnsResolution", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Cfw/dnsResolution:DnsResolution", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

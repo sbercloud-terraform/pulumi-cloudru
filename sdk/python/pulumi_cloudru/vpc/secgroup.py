@@ -214,7 +214,7 @@ class _SecgroupState:
         pulumi.set(self, "updated_at", value)
 
 
-@pulumi.type_token("sbercloud:Vpc/secgroup:Secgroup")
+@pulumi.type_token("cloudru:Vpc/secgroup:Secgroup")
 class Secgroup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -280,7 +280,7 @@ class Secgroup(pulumi.CustomResource):
             __props__.__dict__["rules"] = None
             __props__.__dict__["updated_at"] = None
         super(Secgroup, __self__).__init__(
-            'sbercloud:Vpc/secgroup:Secgroup',
+            'cloudru:Vpc/secgroup:Secgroup',
             resource_name,
             __props__,
             opts)

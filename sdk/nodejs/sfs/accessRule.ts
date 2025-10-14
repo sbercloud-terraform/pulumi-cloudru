@@ -19,7 +19,7 @@ export class AccessRule extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Sfs/accessRule:AccessRule';
+    public static readonly __pulumiType = 'cloudru:Sfs/accessRule:AccessRule';
 
     /**
      * Returns true if the given object is an instance of AccessRule.  This is designed to work even

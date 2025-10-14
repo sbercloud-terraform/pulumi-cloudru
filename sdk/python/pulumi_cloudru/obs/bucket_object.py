@@ -318,7 +318,7 @@ class _BucketObjectState:
         pulumi.set(self, "version_id", value)
 
 
-@pulumi.type_token("sbercloud:Obs/bucketObject:BucketObject")
+@pulumi.type_token("cloudru:Obs/bucketObject:BucketObject")
 class BucketObject(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -402,7 +402,7 @@ class BucketObject(pulumi.CustomResource):
             __props__.__dict__["size"] = None
             __props__.__dict__["version_id"] = None
         super(BucketObject, __self__).__init__(
-            'sbercloud:Obs/bucketObject:BucketObject',
+            'cloudru:Obs/bucketObject:BucketObject',
             resource_name,
             __props__,
             opts)

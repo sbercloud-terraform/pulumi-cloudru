@@ -37,7 +37,7 @@ func NewNetworkingEipAssociate(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NetworkingEipAssociate
-	err := ctx.RegisterResource("sbercloud:index/networkingEipAssociate:NetworkingEipAssociate", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/networkingEipAssociate:NetworkingEipAssociate", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -49,7 +49,7 @@ func NewNetworkingEipAssociate(ctx *pulumi.Context,
 func GetNetworkingEipAssociate(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *NetworkingEipAssociateState, opts ...pulumi.ResourceOption) (*NetworkingEipAssociate, error) {
 	var resource NetworkingEipAssociate
-	err := ctx.ReadResource("sbercloud:index/networkingEipAssociate:NetworkingEipAssociate", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/networkingEipAssociate:NetworkingEipAssociate", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

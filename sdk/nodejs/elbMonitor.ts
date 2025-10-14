@@ -19,7 +19,7 @@ export class ElbMonitor extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/elbMonitor:ElbMonitor';
+    public static readonly __pulumiType = 'cloudru:index/elbMonitor:ElbMonitor';
 
     /**
      * Returns true if the given object is an instance of ElbMonitor.  This is designed to work even

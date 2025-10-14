@@ -53,7 +53,7 @@ func NewApplication(ctx *pulumi.Context,
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Application
-	err := ctx.RegisterResource("sbercloud:DedicatedApig/application:Application", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:DedicatedApig/application:Application", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -65,7 +65,7 @@ func NewApplication(ctx *pulumi.Context,
 func GetApplication(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ApplicationState, opts ...pulumi.ResourceOption) (*Application, error) {
 	var resource Application
-	err := ctx.ReadResource("sbercloud:DedicatedApig/application:Application", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:DedicatedApig/application:Application", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

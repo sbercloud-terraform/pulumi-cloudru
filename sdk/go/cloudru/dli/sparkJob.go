@@ -55,7 +55,7 @@ func NewSparkJob(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SparkJob
-	err := ctx.RegisterResource("sbercloud:Dli/sparkJob:SparkJob", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Dli/sparkJob:SparkJob", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -67,7 +67,7 @@ func NewSparkJob(ctx *pulumi.Context,
 func GetSparkJob(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *SparkJobState, opts ...pulumi.ResourceOption) (*SparkJob, error) {
 	var resource SparkJob
-	err := ctx.ReadResource("sbercloud:Dli/sparkJob:SparkJob", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Dli/sparkJob:SparkJob", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

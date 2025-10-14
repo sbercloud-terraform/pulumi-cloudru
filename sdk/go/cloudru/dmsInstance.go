@@ -88,7 +88,7 @@ func NewDmsInstance(ctx *pulumi.Context,
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DmsInstance
-	err := ctx.RegisterResource("sbercloud:index/dmsInstance:DmsInstance", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/dmsInstance:DmsInstance", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -100,7 +100,7 @@ func NewDmsInstance(ctx *pulumi.Context,
 func GetDmsInstance(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *DmsInstanceState, opts ...pulumi.ResourceOption) (*DmsInstance, error) {
 	var resource DmsInstance
-	err := ctx.ReadResource("sbercloud:index/dmsInstance:DmsInstance", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/dmsInstance:DmsInstance", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

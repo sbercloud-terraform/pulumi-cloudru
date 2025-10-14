@@ -140,7 +140,7 @@ def get_nodes(cluster_id: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['status'] = status
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Cce/getNodes:getNodes', __args__, opts=opts, typ=GetNodesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Cce/getNodes:getNodes', __args__, opts=opts, typ=GetNodesResult).value
 
     return AwaitableGetNodesResult(
         cluster_id=pulumi.get(__ret__, 'cluster_id'),
@@ -170,7 +170,7 @@ def get_nodes_output(cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
     __args__['region'] = region
     __args__['status'] = status
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Cce/getNodes:getNodes', __args__, opts=opts, typ=GetNodesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Cce/getNodes:getNodes', __args__, opts=opts, typ=GetNodesResult)
     return __ret__.apply(lambda __response__: GetNodesResult(
         cluster_id=pulumi.get(__response__, 'cluster_id'),
         id=pulumi.get(__response__, 'id'),

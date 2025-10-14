@@ -175,7 +175,7 @@ class _PeeringConnectionAccepterState:
         pulumi.set(self, "vpc_peering_connection_id", value)
 
 
-@pulumi.type_token("sbercloud:Vpc/peeringConnectionAccepter:PeeringConnectionAccepter")
+@pulumi.type_token("cloudru:Vpc/peeringConnectionAccepter:PeeringConnectionAccepter")
 class PeeringConnectionAccepter(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -237,7 +237,7 @@ class PeeringConnectionAccepter(pulumi.CustomResource):
             __props__.__dict__["status"] = None
             __props__.__dict__["vpc_id"] = None
         super(PeeringConnectionAccepter, __self__).__init__(
-            'sbercloud:Vpc/peeringConnectionAccepter:PeeringConnectionAccepter',
+            'cloudru:Vpc/peeringConnectionAccepter:PeeringConnectionAccepter',
             resource_name,
             __props__,
             opts)

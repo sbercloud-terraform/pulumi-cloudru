@@ -75,7 +75,7 @@ def get_ids(region: Optional[_builtins.str] = None,
     __args__ = dict()
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Vpc/getIds:getIds', __args__, opts=opts, typ=GetIdsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Vpc/getIds:getIds', __args__, opts=opts, typ=GetIdsResult).value
 
     return AwaitableGetIdsResult(
         id=pulumi.get(__ret__, 'id'),
@@ -89,7 +89,7 @@ def get_ids_output(region: Optional[pulumi.Input[Optional[_builtins.str]]] = Non
     __args__ = dict()
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Vpc/getIds:getIds', __args__, opts=opts, typ=GetIdsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Vpc/getIds:getIds', __args__, opts=opts, typ=GetIdsResult)
     return __ret__.apply(lambda __response__: GetIdsResult(
         id=pulumi.get(__response__, 'id'),
         ids=pulumi.get(__response__, 'ids'),

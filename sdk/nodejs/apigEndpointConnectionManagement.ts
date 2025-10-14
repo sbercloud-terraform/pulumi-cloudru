@@ -19,7 +19,7 @@ export class ApigEndpointConnectionManagement extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/apigEndpointConnectionManagement:ApigEndpointConnectionManagement';
+    public static readonly __pulumiType = 'cloudru:index/apigEndpointConnectionManagement:ApigEndpointConnectionManagement';
 
     /**
      * Returns true if the given object is an instance of ApigEndpointConnectionManagement.  This is designed to work even

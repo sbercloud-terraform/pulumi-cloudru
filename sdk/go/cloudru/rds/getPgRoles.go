@@ -14,7 +14,7 @@ import (
 func GetPgRoles(ctx *pulumi.Context, args *GetPgRolesArgs, opts ...pulumi.InvokeOption) (*GetPgRolesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPgRolesResult
-	err := ctx.Invoke("sbercloud:Rds/getPgRoles:getPgRoles", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Rds/getPgRoles:getPgRoles", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -43,7 +43,7 @@ func GetPgRolesOutput(ctx *pulumi.Context, args GetPgRolesOutputArgs, opts ...pu
 		ApplyT(func(v interface{}) (GetPgRolesResultOutput, error) {
 			args := v.(GetPgRolesArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Rds/getPgRoles:getPgRoles", args, GetPgRolesResultOutput{}, options).(GetPgRolesResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Rds/getPgRoles:getPgRoles", args, GetPgRolesResultOutput{}, options).(GetPgRolesResultOutput), nil
 		}).(GetPgRolesResultOutput)
 }
 

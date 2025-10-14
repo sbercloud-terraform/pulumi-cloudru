@@ -21,31 +21,31 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "sbercloud:Vpc/addressGroup:AddressGroup":
+	case "cloudru:Vpc/addressGroup:AddressGroup":
 		r = &AddressGroup{}
-	case "sbercloud:Vpc/bandwidth:Bandwidth":
+	case "cloudru:Vpc/bandwidth:Bandwidth":
 		r = &Bandwidth{}
-	case "sbercloud:Vpc/eip:Eip":
+	case "cloudru:Vpc/eip:Eip":
 		r = &Eip{}
-	case "sbercloud:Vpc/peeringConnection:PeeringConnection":
+	case "cloudru:Vpc/peeringConnection:PeeringConnection":
 		r = &PeeringConnection{}
-	case "sbercloud:Vpc/peeringConnectionAccepter:PeeringConnectionAccepter":
+	case "cloudru:Vpc/peeringConnectionAccepter:PeeringConnectionAccepter":
 		r = &PeeringConnectionAccepter{}
-	case "sbercloud:Vpc/route:Route":
+	case "cloudru:Vpc/route:Route":
 		r = &Route{}
-	case "sbercloud:Vpc/routeTable:RouteTable":
+	case "cloudru:Vpc/routeTable:RouteTable":
 		r = &RouteTable{}
-	case "sbercloud:Vpc/secgroup:Secgroup":
+	case "cloudru:Vpc/secgroup:Secgroup":
 		r = &Secgroup{}
-	case "sbercloud:Vpc/secgroupRule:SecgroupRule":
+	case "cloudru:Vpc/secgroupRule:SecgroupRule":
 		r = &SecgroupRule{}
-	case "sbercloud:Vpc/subnet:Subnet":
+	case "cloudru:Vpc/subnet:Subnet":
 		r = &Subnet{}
-	case "sbercloud:Vpc/vip:Vip":
+	case "cloudru:Vpc/vip:Vip":
 		r = &Vip{}
-	case "sbercloud:Vpc/vipAssociate:VipAssociate":
+	case "cloudru:Vpc/vipAssociate:VipAssociate":
 		r = &VipAssociate{}
-	case "sbercloud:Vpc/vpc:Vpc":
+	case "cloudru:Vpc/vpc:Vpc":
 		r = &Vpc{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
@@ -61,67 +61,67 @@ func init() {
 		version = semver.Version{Major: 1}
 	}
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Vpc/addressGroup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Vpc/bandwidth",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Vpc/eip",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Vpc/peeringConnection",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Vpc/peeringConnectionAccepter",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Vpc/route",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Vpc/routeTable",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Vpc/secgroup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Vpc/secgroupRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Vpc/subnet",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Vpc/vip",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Vpc/vipAssociate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Vpc/vpc",
 		&module{version},
 	)

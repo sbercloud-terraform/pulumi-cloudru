@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 export function getSfsFileSystemV2(args?: GetSfsFileSystemV2Args, opts?: pulumi.InvokeOptions): Promise<GetSfsFileSystemV2Result> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getSfsFileSystemV2:getSfsFileSystemV2", {
+    return pulumi.runtime.invoke("cloudru:index/getSfsFileSystemV2:getSfsFileSystemV2", {
         "id": args.id,
         "name": args.name,
         "region": args.region,
@@ -52,7 +52,7 @@ export interface GetSfsFileSystemV2Result {
 export function getSfsFileSystemV2Output(args?: GetSfsFileSystemV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSfsFileSystemV2Result> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getSfsFileSystemV2:getSfsFileSystemV2", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getSfsFileSystemV2:getSfsFileSystemV2", {
         "id": args.id,
         "name": args.name,
         "region": args.region,

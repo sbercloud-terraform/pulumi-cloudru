@@ -14,7 +14,7 @@ import (
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupProjectResult
-	err := ctx.Invoke("sbercloud:Eps/getProject:getProject", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Eps/getProject:getProject", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -43,7 +43,7 @@ func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts
 		ApplyT(func(v interface{}) (LookupProjectResultOutput, error) {
 			args := v.(LookupProjectArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Eps/getProject:getProject", args, LookupProjectResultOutput{}, options).(LookupProjectResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Eps/getProject:getProject", args, LookupProjectResultOutput{}, options).(LookupProjectResultOutput), nil
 		}).(LookupProjectResultOutput)
 }
 

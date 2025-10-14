@@ -76,7 +76,7 @@ def get_kps_failed_tasks(region: Optional[_builtins.str] = None,
     __args__ = dict()
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getKpsFailedTasks:getKpsFailedTasks', __args__, opts=opts, typ=GetKpsFailedTasksResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getKpsFailedTasks:getKpsFailedTasks', __args__, opts=opts, typ=GetKpsFailedTasksResult).value
 
     return AwaitableGetKpsFailedTasksResult(
         id=pulumi.get(__ret__, 'id'),
@@ -90,7 +90,7 @@ def get_kps_failed_tasks_output(region: Optional[pulumi.Input[Optional[_builtins
     __args__ = dict()
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getKpsFailedTasks:getKpsFailedTasks', __args__, opts=opts, typ=GetKpsFailedTasksResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getKpsFailedTasks:getKpsFailedTasks', __args__, opts=opts, typ=GetKpsFailedTasksResult)
     return __ret__.apply(lambda __response__: GetKpsFailedTasksResult(
         id=pulumi.get(__response__, 'id'),
         region=pulumi.get(__response__, 'region'),

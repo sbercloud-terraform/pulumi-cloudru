@@ -131,7 +131,7 @@ def get_associations(attachment_id: Optional[_builtins.str] = None,
     __args__['routeTableId'] = route_table_id
     __args__['status'] = status
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Er/getAssociations:getAssociations', __args__, opts=opts, typ=GetAssociationsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Er/getAssociations:getAssociations', __args__, opts=opts, typ=GetAssociationsResult).value
 
     return AwaitableGetAssociationsResult(
         associations=pulumi.get(__ret__, 'associations'),
@@ -160,7 +160,7 @@ def get_associations_output(attachment_id: Optional[pulumi.Input[Optional[_built
     __args__['routeTableId'] = route_table_id
     __args__['status'] = status
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Er/getAssociations:getAssociations', __args__, opts=opts, typ=GetAssociationsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Er/getAssociations:getAssociations', __args__, opts=opts, typ=GetAssociationsResult)
     return __ret__.apply(lambda __response__: GetAssociationsResult(
         associations=pulumi.get(__response__, 'associations'),
         attachment_id=pulumi.get(__response__, 'attachment_id'),

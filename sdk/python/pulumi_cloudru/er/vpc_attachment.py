@@ -325,7 +325,7 @@ class _VpcAttachmentState:
         pulumi.set(self, "vpc_id", value)
 
 
-@pulumi.type_token("sbercloud:Er/vpcAttachment:VpcAttachment")
+@pulumi.type_token("cloudru:Er/vpcAttachment:VpcAttachment")
 class VpcAttachment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -410,7 +410,7 @@ class VpcAttachment(pulumi.CustomResource):
             __props__.__dict__["status"] = None
             __props__.__dict__["updated_at"] = None
         super(VpcAttachment, __self__).__init__(
-            'sbercloud:Er/vpcAttachment:VpcAttachment',
+            'cloudru:Er/vpcAttachment:VpcAttachment',
             resource_name,
             __props__,
             opts)

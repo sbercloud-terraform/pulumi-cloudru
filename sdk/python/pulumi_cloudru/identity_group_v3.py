@@ -80,7 +80,7 @@ class _IdentityGroupV3State:
         pulumi.set(self, "name", value)
 
 
-@pulumi.type_token("sbercloud:index/identityGroupV3:IdentityGroupV3")
+@pulumi.type_token("cloudru:index/identityGroupV3:IdentityGroupV3")
 class IdentityGroupV3(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -131,7 +131,7 @@ class IdentityGroupV3(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
         super(IdentityGroupV3, __self__).__init__(
-            'sbercloud:index/identityGroupV3:IdentityGroupV3',
+            'cloudru:index/identityGroupV3:IdentityGroupV3',
             resource_name,
             __props__,
             opts)

@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 export function getSfsTurboPermRules(args: GetSfsTurboPermRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetSfsTurboPermRulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getSfsTurboPermRules:getSfsTurboPermRules", {
+    return pulumi.runtime.invoke("cloudru:index/getSfsTurboPermRules:getSfsTurboPermRules", {
         "region": args.region,
         "shareId": args.shareId,
     }, opts);
@@ -36,7 +36,7 @@ export interface GetSfsTurboPermRulesResult {
 }
 export function getSfsTurboPermRulesOutput(args: GetSfsTurboPermRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSfsTurboPermRulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getSfsTurboPermRules:getSfsTurboPermRules", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getSfsTurboPermRules:getSfsTurboPermRules", {
         "region": args.region,
         "shareId": args.shareId,
     }, opts);

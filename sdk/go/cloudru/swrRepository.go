@@ -40,7 +40,7 @@ func NewSwrRepository(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SwrRepository
-	err := ctx.RegisterResource("sbercloud:index/swrRepository:SwrRepository", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/swrRepository:SwrRepository", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -52,7 +52,7 @@ func NewSwrRepository(ctx *pulumi.Context,
 func GetSwrRepository(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *SwrRepositoryState, opts ...pulumi.ResourceOption) (*SwrRepository, error) {
 	var resource SwrRepository
-	err := ctx.ReadResource("sbercloud:index/swrRepository:SwrRepository", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/swrRepository:SwrRepository", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

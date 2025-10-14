@@ -50,7 +50,7 @@ func NewKey(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Key
-	err := ctx.RegisterResource("sbercloud:Dew/key:Key", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Dew/key:Key", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -62,7 +62,7 @@ func NewKey(ctx *pulumi.Context,
 func GetKey(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *KeyState, opts ...pulumi.ResourceOption) (*Key, error) {
 	var resource Key
-	err := ctx.ReadResource("sbercloud:Dew/key:Key", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Dew/key:Key", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

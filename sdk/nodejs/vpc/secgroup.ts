@@ -21,7 +21,7 @@ export class Secgroup extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Vpc/secgroup:Secgroup';
+    public static readonly __pulumiType = 'cloudru:Vpc/secgroup:Secgroup';
 
     /**
      * Returns true if the given object is an instance of Secgroup.  This is designed to work even

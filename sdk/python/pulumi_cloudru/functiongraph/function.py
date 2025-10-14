@@ -1909,7 +1909,7 @@ class _FunctionState:
         pulumi.set(self, "xrole", value)
 
 
-@pulumi.type_token("sbercloud:FunctionGraph/function:Function")
+@pulumi.type_token("cloudru:FunctionGraph/function:Function")
 class Function(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -2192,7 +2192,7 @@ class Function(pulumi.CustomResource):
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["encryptedUserData"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Function, __self__).__init__(
-            'sbercloud:FunctionGraph/function:Function',
+            'cloudru:FunctionGraph/function:Function',
             resource_name,
             __props__,
             opts)

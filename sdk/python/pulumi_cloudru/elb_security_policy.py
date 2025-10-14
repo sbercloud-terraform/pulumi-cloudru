@@ -256,7 +256,7 @@ class _ElbSecurityPolicyState:
         pulumi.set(self, "updated_at", value)
 
 
-@pulumi.type_token("sbercloud:index/elbSecurityPolicy:ElbSecurityPolicy")
+@pulumi.type_token("cloudru:index/elbSecurityPolicy:ElbSecurityPolicy")
 class ElbSecurityPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -331,7 +331,7 @@ class ElbSecurityPolicy(pulumi.CustomResource):
             __props__.__dict__["listeners"] = None
             __props__.__dict__["updated_at"] = None
         super(ElbSecurityPolicy, __self__).__init__(
-            'sbercloud:index/elbSecurityPolicy:ElbSecurityPolicy',
+            'cloudru:index/elbSecurityPolicy:ElbSecurityPolicy',
             resource_name,
             __props__,
             opts)

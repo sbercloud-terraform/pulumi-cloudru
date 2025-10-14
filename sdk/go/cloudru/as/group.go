@@ -83,7 +83,7 @@ func NewGroup(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Group
-	err := ctx.RegisterResource("sbercloud:As/group:Group", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:As/group:Group", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -95,7 +95,7 @@ func NewGroup(ctx *pulumi.Context,
 func GetGroup(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *GroupState, opts ...pulumi.ResourceOption) (*Group, error) {
 	var resource Group
-	err := ctx.ReadResource("sbercloud:As/group:Group", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:As/group:Group", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

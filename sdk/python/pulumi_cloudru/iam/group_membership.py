@@ -78,7 +78,7 @@ class _GroupMembershipState:
         pulumi.set(self, "users", value)
 
 
-@pulumi.type_token("sbercloud:Iam/groupMembership:GroupMembership")
+@pulumi.type_token("cloudru:Iam/groupMembership:GroupMembership")
 class GroupMembership(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -133,7 +133,7 @@ class GroupMembership(pulumi.CustomResource):
                 raise TypeError("Missing required property 'users'")
             __props__.__dict__["users"] = users
         super(GroupMembership, __self__).__init__(
-            'sbercloud:Iam/groupMembership:GroupMembership',
+            'cloudru:Iam/groupMembership:GroupMembership',
             resource_name,
             __props__,
             opts)

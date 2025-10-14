@@ -42,7 +42,7 @@ func NewIpsRuleModeChange(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource IpsRuleModeChange
-	err := ctx.RegisterResource("sbercloud:Cfw/ipsRuleModeChange:IpsRuleModeChange", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Cfw/ipsRuleModeChange:IpsRuleModeChange", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -54,7 +54,7 @@ func NewIpsRuleModeChange(ctx *pulumi.Context,
 func GetIpsRuleModeChange(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *IpsRuleModeChangeState, opts ...pulumi.ResourceOption) (*IpsRuleModeChange, error) {
 	var resource IpsRuleModeChange
-	err := ctx.ReadResource("sbercloud:Cfw/ipsRuleModeChange:IpsRuleModeChange", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Cfw/ipsRuleModeChange:IpsRuleModeChange", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

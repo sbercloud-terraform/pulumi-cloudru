@@ -432,7 +432,7 @@ class _CustomAuthorizerState:
         pulumi.set(self, "user_data", value)
 
 
-@pulumi.type_token("sbercloud:DedicatedApig/customAuthorizer:CustomAuthorizer")
+@pulumi.type_token("cloudru:DedicatedApig/customAuthorizer:CustomAuthorizer")
 class CustomAuthorizer(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -530,7 +530,7 @@ class CustomAuthorizer(pulumi.CustomResource):
             __props__.__dict__["user_data"] = user_data
             __props__.__dict__["created_at"] = None
         super(CustomAuthorizer, __self__).__init__(
-            'sbercloud:DedicatedApig/customAuthorizer:CustomAuthorizer',
+            'cloudru:DedicatedApig/customAuthorizer:CustomAuthorizer',
             resource_name,
             __props__,
             opts)

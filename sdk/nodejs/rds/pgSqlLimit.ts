@@ -19,7 +19,7 @@ export class PgSqlLimit extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Rds/pgSqlLimit:PgSqlLimit';
+    public static readonly __pulumiType = 'cloudru:Rds/pgSqlLimit:PgSqlLimit';
 
     /**
      * Returns true if the given object is an instance of PgSqlLimit.  This is designed to work even

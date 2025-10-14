@@ -19,7 +19,7 @@ export class ApigApplicationAuthorization extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/apigApplicationAuthorization:ApigApplicationAuthorization';
+    public static readonly __pulumiType = 'cloudru:index/apigApplicationAuthorization:ApigApplicationAuthorization';
 
     /**
      * Returns true if the given object is an instance of ApigApplicationAuthorization.  This is designed to work even

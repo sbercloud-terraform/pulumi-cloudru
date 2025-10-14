@@ -30,17 +30,17 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "sbercloud:Nat/dnatRule:DnatRule":
+            case "cloudru:Nat/dnatRule:DnatRule":
                 return new DnatRule(name, <any>undefined, { urn })
-            case "sbercloud:Nat/gateway:Gateway":
+            case "cloudru:Nat/gateway:Gateway":
                 return new Gateway(name, <any>undefined, { urn })
-            case "sbercloud:Nat/snatRule:SnatRule":
+            case "cloudru:Nat/snatRule:SnatRule":
                 return new SnatRule(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("sbercloud", "Nat/dnatRule", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Nat/gateway", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Nat/snatRule", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Nat/dnatRule", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Nat/gateway", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Nat/snatRule", _module)

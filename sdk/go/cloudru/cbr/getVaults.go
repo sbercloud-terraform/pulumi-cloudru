@@ -14,7 +14,7 @@ import (
 func GetVaults(ctx *pulumi.Context, args *GetVaultsArgs, opts ...pulumi.InvokeOption) (*GetVaultsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVaultsResult
-	err := ctx.Invoke("sbercloud:Cbr/getVaults:getVaults", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Cbr/getVaults:getVaults", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -57,7 +57,7 @@ func GetVaultsOutput(ctx *pulumi.Context, args GetVaultsOutputArgs, opts ...pulu
 		ApplyT(func(v interface{}) (GetVaultsResultOutput, error) {
 			args := v.(GetVaultsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Cbr/getVaults:getVaults", args, GetVaultsResultOutput{}, options).(GetVaultsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Cbr/getVaults:getVaults", args, GetVaultsResultOutput{}, options).(GetVaultsResultOutput), nil
 		}).(GetVaultsResultOutput)
 }
 

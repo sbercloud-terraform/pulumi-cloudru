@@ -37,7 +37,7 @@ func NewElbIpgroup(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ElbIpgroup
-	err := ctx.RegisterResource("sbercloud:index/elbIpgroup:ElbIpgroup", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/elbIpgroup:ElbIpgroup", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -49,7 +49,7 @@ func NewElbIpgroup(ctx *pulumi.Context,
 func GetElbIpgroup(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ElbIpgroupState, opts ...pulumi.ResourceOption) (*ElbIpgroup, error) {
 	var resource ElbIpgroup
-	err := ctx.ReadResource("sbercloud:index/elbIpgroup:ElbIpgroup", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/elbIpgroup:ElbIpgroup", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -263,7 +263,7 @@ class _RouteTableState:
         pulumi.set(self, "updated_at", value)
 
 
-@pulumi.type_token("sbercloud:Er/routeTable:RouteTable")
+@pulumi.type_token("cloudru:Er/routeTable:RouteTable")
 class RouteTable(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -334,7 +334,7 @@ class RouteTable(pulumi.CustomResource):
             __props__.__dict__["status"] = None
             __props__.__dict__["updated_at"] = None
         super(RouteTable, __self__).__init__(
-            'sbercloud:Er/routeTable:RouteTable',
+            'cloudru:Er/routeTable:RouteTable',
             resource_name,
             __props__,
             opts)

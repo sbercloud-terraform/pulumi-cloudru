@@ -34,7 +34,7 @@ func NewSecgroup(ctx *pulumi.Context,
 
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Secgroup
-	err := ctx.RegisterResource("sbercloud:Vpc/secgroup:Secgroup", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Vpc/secgroup:Secgroup", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -46,7 +46,7 @@ func NewSecgroup(ctx *pulumi.Context,
 func GetSecgroup(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *SecgroupState, opts ...pulumi.ResourceOption) (*Secgroup, error) {
 	var resource Secgroup
-	err := ctx.ReadResource("sbercloud:Vpc/secgroup:Secgroup", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Vpc/secgroup:Secgroup", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

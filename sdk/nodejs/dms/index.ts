@@ -55,23 +55,23 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "sbercloud:Dms/kafkaInstance:KafkaInstance":
+            case "cloudru:Dms/kafkaInstance:KafkaInstance":
                 return new KafkaInstance(name, <any>undefined, { urn })
-            case "sbercloud:Dms/kafkaPermissions:KafkaPermissions":
+            case "cloudru:Dms/kafkaPermissions:KafkaPermissions":
                 return new KafkaPermissions(name, <any>undefined, { urn })
-            case "sbercloud:Dms/kafkaTopic:KafkaTopic":
+            case "cloudru:Dms/kafkaTopic:KafkaTopic":
                 return new KafkaTopic(name, <any>undefined, { urn })
-            case "sbercloud:Dms/kafkaUser:KafkaUser":
+            case "cloudru:Dms/kafkaUser:KafkaUser":
                 return new KafkaUser(name, <any>undefined, { urn })
-            case "sbercloud:Dms/rabbitmqInstance:RabbitmqInstance":
+            case "cloudru:Dms/rabbitmqInstance:RabbitmqInstance":
                 return new RabbitmqInstance(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("sbercloud", "Dms/kafkaInstance", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Dms/kafkaPermissions", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Dms/kafkaTopic", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Dms/kafkaUser", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Dms/rabbitmqInstance", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Dms/kafkaInstance", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Dms/kafkaPermissions", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Dms/kafkaTopic", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Dms/kafkaUser", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Dms/rabbitmqInstance", _module)

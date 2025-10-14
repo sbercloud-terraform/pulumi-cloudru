@@ -19,7 +19,7 @@ export class ApigPluginAssociate extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/apigPluginAssociate:ApigPluginAssociate';
+    public static readonly __pulumiType = 'cloudru:index/apigPluginAssociate:ApigPluginAssociate';
 
     /**
      * Returns true if the given object is an instance of ApigPluginAssociate.  This is designed to work even

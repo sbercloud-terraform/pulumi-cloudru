@@ -211,7 +211,7 @@ class _AccessKeyState:
         pulumi.set(self, "user_name", value)
 
 
-@pulumi.type_token("sbercloud:Iam/accessKey:AccessKey")
+@pulumi.type_token("cloudru:Iam/accessKey:AccessKey")
 class AccessKey(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -280,7 +280,7 @@ class AccessKey(pulumi.CustomResource):
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["secret"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(AccessKey, __self__).__init__(
-            'sbercloud:Iam/accessKey:AccessKey',
+            'cloudru:Iam/accessKey:AccessKey',
             resource_name,
             __props__,
             opts)

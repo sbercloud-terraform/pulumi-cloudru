@@ -40,7 +40,7 @@ func NewCbrBackupShareAccepter(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CbrBackupShareAccepter
-	err := ctx.RegisterResource("sbercloud:index/cbrBackupShareAccepter:CbrBackupShareAccepter", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/cbrBackupShareAccepter:CbrBackupShareAccepter", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -52,7 +52,7 @@ func NewCbrBackupShareAccepter(ctx *pulumi.Context,
 func GetCbrBackupShareAccepter(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *CbrBackupShareAccepterState, opts ...pulumi.ResourceOption) (*CbrBackupShareAccepter, error) {
 	var resource CbrBackupShareAccepter
-	err := ctx.ReadResource("sbercloud:index/cbrBackupShareAccepter:CbrBackupShareAccepter", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/cbrBackupShareAccepter:CbrBackupShareAccepter", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

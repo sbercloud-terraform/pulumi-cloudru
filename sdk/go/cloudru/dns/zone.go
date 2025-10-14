@@ -47,7 +47,7 @@ func NewZone(ctx *pulumi.Context,
 
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Zone
-	err := ctx.RegisterResource("sbercloud:Dns/zone:Zone", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Dns/zone:Zone", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -59,7 +59,7 @@ func NewZone(ctx *pulumi.Context,
 func GetZone(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ZoneState, opts ...pulumi.ResourceOption) (*Zone, error) {
 	var resource Zone
-	err := ctx.ReadResource("sbercloud:Dns/zone:Zone", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Dns/zone:Zone", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

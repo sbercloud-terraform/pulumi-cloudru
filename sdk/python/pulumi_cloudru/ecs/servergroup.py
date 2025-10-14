@@ -152,7 +152,7 @@ class _ServergroupState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:Ecs/servergroup:Servergroup")
+@pulumi.type_token("cloudru:Ecs/servergroup:Servergroup")
 class Servergroup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -211,7 +211,7 @@ class Servergroup(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["fault_domains"] = None
         super(Servergroup, __self__).__init__(
-            'sbercloud:Ecs/servergroup:Servergroup',
+            'cloudru:Ecs/servergroup:Servergroup',
             resource_name,
             __props__,
             opts)

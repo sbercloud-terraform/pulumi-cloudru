@@ -14,7 +14,7 @@ import (
 func GetEnvironments(ctx *pulumi.Context, args *GetEnvironmentsArgs, opts ...pulumi.InvokeOption) (*GetEnvironmentsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEnvironmentsResult
-	err := ctx.Invoke("sbercloud:DedicatedApig/getEnvironments:getEnvironments", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:DedicatedApig/getEnvironments:getEnvironments", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -43,7 +43,7 @@ func GetEnvironmentsOutput(ctx *pulumi.Context, args GetEnvironmentsOutputArgs, 
 		ApplyT(func(v interface{}) (GetEnvironmentsResultOutput, error) {
 			args := v.(GetEnvironmentsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:DedicatedApig/getEnvironments:getEnvironments", args, GetEnvironmentsResultOutput{}, options).(GetEnvironmentsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:DedicatedApig/getEnvironments:getEnvironments", args, GetEnvironmentsResultOutput{}, options).(GetEnvironmentsResultOutput), nil
 		}).(GetEnvironmentsResultOutput)
 }
 

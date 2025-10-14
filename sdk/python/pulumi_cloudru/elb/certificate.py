@@ -259,7 +259,7 @@ class _CertificateState:
         pulumi.set(self, "update_time", value)
 
 
-@pulumi.type_token("sbercloud:Elb/certificate:Certificate")
+@pulumi.type_token("cloudru:Elb/certificate:Certificate")
 class Certificate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -335,7 +335,7 @@ class Certificate(pulumi.CustomResource):
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["certificate", "privateKey"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Certificate, __self__).__init__(
-            'sbercloud:Elb/certificate:Certificate',
+            'cloudru:Elb/certificate:Certificate',
             resource_name,
             __props__,
             opts)

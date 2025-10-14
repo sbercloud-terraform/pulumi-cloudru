@@ -47,7 +47,7 @@ func NewElbMember(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ElbMember
-	err := ctx.RegisterResource("sbercloud:index/elbMember:ElbMember", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/elbMember:ElbMember", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -59,7 +59,7 @@ func NewElbMember(ctx *pulumi.Context,
 func GetElbMember(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ElbMemberState, opts ...pulumi.ResourceOption) (*ElbMember, error) {
 	var resource ElbMember
-	err := ctx.ReadResource("sbercloud:index/elbMember:ElbMember", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/elbMember:ElbMember", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

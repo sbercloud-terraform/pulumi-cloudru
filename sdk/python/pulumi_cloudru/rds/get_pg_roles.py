@@ -97,7 +97,7 @@ def get_pg_roles(account: Optional[_builtins.str] = None,
     __args__['instanceId'] = instance_id
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Rds/getPgRoles:getPgRoles', __args__, opts=opts, typ=GetPgRolesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Rds/getPgRoles:getPgRoles', __args__, opts=opts, typ=GetPgRolesResult).value
 
     return AwaitableGetPgRolesResult(
         account=pulumi.get(__ret__, 'account'),
@@ -117,7 +117,7 @@ def get_pg_roles_output(account: Optional[pulumi.Input[Optional[_builtins.str]]]
     __args__['instanceId'] = instance_id
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Rds/getPgRoles:getPgRoles', __args__, opts=opts, typ=GetPgRolesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Rds/getPgRoles:getPgRoles', __args__, opts=opts, typ=GetPgRolesResult)
     return __ret__.apply(lambda __response__: GetPgRolesResult(
         account=pulumi.get(__response__, 'account'),
         id=pulumi.get(__response__, 'id'),

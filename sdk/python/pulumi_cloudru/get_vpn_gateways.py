@@ -131,7 +131,7 @@ def get_vpn_gateways(attachment_type: Optional[_builtins.str] = None,
     __args__['networkType'] = network_type
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getVpnGateways:getVpnGateways', __args__, opts=opts, typ=GetVpnGatewaysResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getVpnGateways:getVpnGateways', __args__, opts=opts, typ=GetVpnGatewaysResult).value
 
     return AwaitableGetVpnGatewaysResult(
         attachment_type=pulumi.get(__ret__, 'attachment_type'),
@@ -160,7 +160,7 @@ def get_vpn_gateways_output(attachment_type: Optional[pulumi.Input[Optional[_bui
     __args__['networkType'] = network_type
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getVpnGateways:getVpnGateways', __args__, opts=opts, typ=GetVpnGatewaysResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getVpnGateways:getVpnGateways', __args__, opts=opts, typ=GetVpnGatewaysResult)
     return __ret__.apply(lambda __response__: GetVpnGatewaysResult(
         attachment_type=pulumi.get(__response__, 'attachment_type'),
         enterprise_project_id=pulumi.get(__response__, 'enterprise_project_id'),

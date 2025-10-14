@@ -14,7 +14,7 @@ import (
 func GetApigAclPolicies(ctx *pulumi.Context, args *GetApigAclPoliciesArgs, opts ...pulumi.InvokeOption) (*GetApigAclPoliciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetApigAclPoliciesResult
-	err := ctx.Invoke("sbercloud:index/getApigAclPolicies:getApigAclPolicies", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getApigAclPolicies:getApigAclPolicies", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -49,7 +49,7 @@ func GetApigAclPoliciesOutput(ctx *pulumi.Context, args GetApigAclPoliciesOutput
 		ApplyT(func(v interface{}) (GetApigAclPoliciesResultOutput, error) {
 			args := v.(GetApigAclPoliciesArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getApigAclPolicies:getApigAclPolicies", args, GetApigAclPoliciesResultOutput{}, options).(GetApigAclPoliciesResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getApigAclPolicies:getApigAclPolicies", args, GetApigAclPoliciesResultOutput{}, options).(GetApigAclPoliciesResultOutput), nil
 		}).(GetApigAclPoliciesResultOutput)
 }
 

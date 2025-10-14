@@ -19,7 +19,7 @@ export class ApigCertificate extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/apigCertificate:ApigCertificate';
+    public static readonly __pulumiType = 'cloudru:index/apigCertificate:ApigCertificate';
 
     /**
      * Returns true if the given object is an instance of ApigCertificate.  This is designed to work even

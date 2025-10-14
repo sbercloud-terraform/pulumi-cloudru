@@ -582,7 +582,7 @@ class _ReadReplicaInstanceState:
         pulumi.set(self, "vpc_id", value)
 
 
-@pulumi.type_token("sbercloud:Rds/readReplicaInstance:ReadReplicaInstance")
+@pulumi.type_token("cloudru:Rds/readReplicaInstance:ReadReplicaInstance")
 class ReadReplicaInstance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -701,7 +701,7 @@ class ReadReplicaInstance(pulumi.CustomResource):
             __props__.__dict__["type"] = None
             __props__.__dict__["vpc_id"] = None
         super(ReadReplicaInstance, __self__).__init__(
-            'sbercloud:Rds/readReplicaInstance:ReadReplicaInstance',
+            'cloudru:Rds/readReplicaInstance:ReadReplicaInstance',
             resource_name,
             __props__,
             opts)

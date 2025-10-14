@@ -19,7 +19,7 @@ export class ApigApplicationAcl extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/apigApplicationAcl:ApigApplicationAcl';
+    public static readonly __pulumiType = 'cloudru:index/apigApplicationAcl:ApigApplicationAcl';
 
     /**
      * Returns true if the given object is an instance of ApigApplicationAcl.  This is designed to work even

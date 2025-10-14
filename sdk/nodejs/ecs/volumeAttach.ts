@@ -19,7 +19,7 @@ export class VolumeAttach extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Ecs/volumeAttach:VolumeAttach';
+    public static readonly __pulumiType = 'cloudru:Ecs/volumeAttach:VolumeAttach';
 
     /**
      * Returns true if the given object is an instance of VolumeAttach.  This is designed to work even

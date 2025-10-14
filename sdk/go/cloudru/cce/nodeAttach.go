@@ -85,7 +85,7 @@ func NewNodeAttach(ctx *pulumi.Context,
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NodeAttach
-	err := ctx.RegisterResource("sbercloud:Cce/nodeAttach:NodeAttach", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Cce/nodeAttach:NodeAttach", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -97,7 +97,7 @@ func NewNodeAttach(ctx *pulumi.Context,
 func GetNodeAttach(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *NodeAttachState, opts ...pulumi.ResourceOption) (*NodeAttach, error) {
 	var resource NodeAttach
-	err := ctx.ReadResource("sbercloud:Cce/nodeAttach:NodeAttach", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Cce/nodeAttach:NodeAttach", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

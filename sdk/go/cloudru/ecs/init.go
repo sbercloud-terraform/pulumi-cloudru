@@ -21,17 +21,17 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "sbercloud:Ecs/eipAssociate:EipAssociate":
+	case "cloudru:Ecs/eipAssociate:EipAssociate":
 		r = &EipAssociate{}
-	case "sbercloud:Ecs/instance:Instance":
+	case "cloudru:Ecs/instance:Instance":
 		r = &Instance{}
-	case "sbercloud:Ecs/interfaceAttach:InterfaceAttach":
+	case "cloudru:Ecs/interfaceAttach:InterfaceAttach":
 		r = &InterfaceAttach{}
-	case "sbercloud:Ecs/keypair:Keypair":
+	case "cloudru:Ecs/keypair:Keypair":
 		r = &Keypair{}
-	case "sbercloud:Ecs/servergroup:Servergroup":
+	case "cloudru:Ecs/servergroup:Servergroup":
 		r = &Servergroup{}
-	case "sbercloud:Ecs/volumeAttach:VolumeAttach":
+	case "cloudru:Ecs/volumeAttach:VolumeAttach":
 		r = &VolumeAttach{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
@@ -47,32 +47,32 @@ func init() {
 		version = semver.Version{Major: 1}
 	}
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Ecs/eipAssociate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Ecs/instance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Ecs/interfaceAttach",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Ecs/keypair",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Ecs/servergroup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Ecs/volumeAttach",
 		&module{version},
 	)

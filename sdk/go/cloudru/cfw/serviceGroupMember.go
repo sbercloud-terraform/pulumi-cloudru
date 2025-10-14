@@ -51,7 +51,7 @@ func NewServiceGroupMember(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ServiceGroupMember
-	err := ctx.RegisterResource("sbercloud:Cfw/serviceGroupMember:ServiceGroupMember", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Cfw/serviceGroupMember:ServiceGroupMember", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -63,7 +63,7 @@ func NewServiceGroupMember(ctx *pulumi.Context,
 func GetServiceGroupMember(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ServiceGroupMemberState, opts ...pulumi.ResourceOption) (*ServiceGroupMember, error) {
 	var resource ServiceGroupMember
-	err := ctx.ReadResource("sbercloud:Cfw/serviceGroupMember:ServiceGroupMember", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Cfw/serviceGroupMember:ServiceGroupMember", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

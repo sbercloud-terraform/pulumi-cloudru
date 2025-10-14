@@ -41,7 +41,7 @@ func NewDmsRocketmqDeadLetterResend(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DmsRocketmqDeadLetterResend
-	err := ctx.RegisterResource("sbercloud:index/dmsRocketmqDeadLetterResend:DmsRocketmqDeadLetterResend", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/dmsRocketmqDeadLetterResend:DmsRocketmqDeadLetterResend", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -53,7 +53,7 @@ func NewDmsRocketmqDeadLetterResend(ctx *pulumi.Context,
 func GetDmsRocketmqDeadLetterResend(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *DmsRocketmqDeadLetterResendState, opts ...pulumi.ResourceOption) (*DmsRocketmqDeadLetterResend, error) {
 	var resource DmsRocketmqDeadLetterResend
-	err := ctx.ReadResource("sbercloud:index/dmsRocketmqDeadLetterResend:DmsRocketmqDeadLetterResend", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/dmsRocketmqDeadLetterResend:DmsRocketmqDeadLetterResend", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

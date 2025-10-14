@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 export function getProtectionRules(args: GetProtectionRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetProtectionRulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Cfw/getProtectionRules:getProtectionRules", {
+    return pulumi.runtime.invoke("cloudru:Cfw/getProtectionRules:getProtectionRules", {
         "actionType": args.actionType,
         "destination": args.destination,
         "direction": args.direction,
@@ -66,7 +66,7 @@ export interface GetProtectionRulesResult {
 }
 export function getProtectionRulesOutput(args: GetProtectionRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProtectionRulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Cfw/getProtectionRules:getProtectionRules", {
+    return pulumi.runtime.invokeOutput("cloudru:Cfw/getProtectionRules:getProtectionRules", {
         "actionType": args.actionType,
         "destination": args.destination,
         "direction": args.direction,

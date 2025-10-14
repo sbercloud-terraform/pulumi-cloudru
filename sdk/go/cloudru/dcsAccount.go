@@ -60,7 +60,7 @@ func NewDcsAccount(ctx *pulumi.Context,
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DcsAccount
-	err := ctx.RegisterResource("sbercloud:index/dcsAccount:DcsAccount", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/dcsAccount:DcsAccount", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -72,7 +72,7 @@ func NewDcsAccount(ctx *pulumi.Context,
 func GetDcsAccount(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *DcsAccountState, opts ...pulumi.ResourceOption) (*DcsAccount, error) {
 	var resource DcsAccount
-	err := ctx.ReadResource("sbercloud:index/dcsAccount:DcsAccount", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/dcsAccount:DcsAccount", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

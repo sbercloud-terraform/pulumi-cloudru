@@ -14,7 +14,7 @@ import (
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupClusterResult
-	err := ctx.Invoke("sbercloud:Cce/getCluster:getCluster", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Cce/getCluster:getCluster", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -65,7 +65,7 @@ func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts
 		ApplyT(func(v interface{}) (LookupClusterResultOutput, error) {
 			args := v.(LookupClusterArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Cce/getCluster:getCluster", args, LookupClusterResultOutput{}, options).(LookupClusterResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Cce/getCluster:getCluster", args, LookupClusterResultOutput{}, options).(LookupClusterResultOutput), nil
 		}).(LookupClusterResultOutput)
 }
 

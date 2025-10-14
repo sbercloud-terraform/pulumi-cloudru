@@ -47,7 +47,7 @@ func NewUser(ctx *pulumi.Context,
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource User
-	err := ctx.RegisterResource("sbercloud:Iam/user:User", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Iam/user:User", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -59,7 +59,7 @@ func NewUser(ctx *pulumi.Context,
 func GetUser(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *UserState, opts ...pulumi.ResourceOption) (*User, error) {
 	var resource User
-	err := ctx.ReadResource("sbercloud:Iam/user:User", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Iam/user:User", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

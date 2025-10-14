@@ -19,7 +19,7 @@ export class DcsBackup extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/dcsBackup:DcsBackup';
+    public static readonly __pulumiType = 'cloudru:index/dcsBackup:DcsBackup';
 
     /**
      * Returns true if the given object is an instance of DcsBackup.  This is designed to work even

@@ -97,7 +97,7 @@ def get_resource_tags(region: Optional[_builtins.str] = None,
     __args__['resourceId'] = resource_id
     __args__['resourceType'] = resource_type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Er/getResourceTags:getResourceTags', __args__, opts=opts, typ=GetResourceTagsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Er/getResourceTags:getResourceTags', __args__, opts=opts, typ=GetResourceTagsResult).value
 
     return AwaitableGetResourceTagsResult(
         id=pulumi.get(__ret__, 'id'),
@@ -117,7 +117,7 @@ def get_resource_tags_output(region: Optional[pulumi.Input[Optional[_builtins.st
     __args__['resourceId'] = resource_id
     __args__['resourceType'] = resource_type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Er/getResourceTags:getResourceTags', __args__, opts=opts, typ=GetResourceTagsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Er/getResourceTags:getResourceTags', __args__, opts=opts, typ=GetResourceTagsResult)
     return __ret__.apply(lambda __response__: GetResourceTagsResult(
         id=pulumi.get(__response__, 'id'),
         region=pulumi.get(__response__, 'region'),

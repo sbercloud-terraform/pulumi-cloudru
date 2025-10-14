@@ -120,7 +120,7 @@ def get_sfs_turbo_obs_targets(bucket: Optional[_builtins.str] = None,
     __args__['status'] = status
     __args__['targetId'] = target_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getSfsTurboObsTargets:getSfsTurboObsTargets', __args__, opts=opts, typ=GetSfsTurboObsTargetsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getSfsTurboObsTargets:getSfsTurboObsTargets', __args__, opts=opts, typ=GetSfsTurboObsTargetsResult).value
 
     return AwaitableGetSfsTurboObsTargetsResult(
         bucket=pulumi.get(__ret__, 'bucket'),
@@ -146,7 +146,7 @@ def get_sfs_turbo_obs_targets_output(bucket: Optional[pulumi.Input[Optional[_bui
     __args__['status'] = status
     __args__['targetId'] = target_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getSfsTurboObsTargets:getSfsTurboObsTargets', __args__, opts=opts, typ=GetSfsTurboObsTargetsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getSfsTurboObsTargets:getSfsTurboObsTargets', __args__, opts=opts, typ=GetSfsTurboObsTargetsResult)
     return __ret__.apply(lambda __response__: GetSfsTurboObsTargetsResult(
         bucket=pulumi.get(__response__, 'bucket'),
         id=pulumi.get(__response__, 'id'),

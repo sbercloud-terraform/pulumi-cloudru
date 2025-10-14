@@ -19,7 +19,7 @@ export class ApigInstanceRoutes extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/apigInstanceRoutes:ApigInstanceRoutes';
+    public static readonly __pulumiType = 'cloudru:index/apigInstanceRoutes:ApigInstanceRoutes';
 
     /**
      * Returns true if the given object is an instance of ApigInstanceRoutes.  This is designed to work even

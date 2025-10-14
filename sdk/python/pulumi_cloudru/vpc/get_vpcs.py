@@ -130,7 +130,7 @@ def get_vpcs(cidr: Optional[_builtins.str] = None,
     __args__['status'] = status
     __args__['tags'] = tags
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Vpc/getVpcs:getVpcs', __args__, opts=opts, typ=GetVpcsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Vpc/getVpcs:getVpcs', __args__, opts=opts, typ=GetVpcsResult).value
 
     return AwaitableGetVpcsResult(
         cidr=pulumi.get(__ret__, 'cidr'),
@@ -161,7 +161,7 @@ def get_vpcs_output(cidr: Optional[pulumi.Input[Optional[_builtins.str]]] = None
     __args__['status'] = status
     __args__['tags'] = tags
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Vpc/getVpcs:getVpcs', __args__, opts=opts, typ=GetVpcsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Vpc/getVpcs:getVpcs', __args__, opts=opts, typ=GetVpcsResult)
     return __ret__.apply(lambda __response__: GetVpcsResult(
         cidr=pulumi.get(__response__, 'cidr'),
         enterprise_project_id=pulumi.get(__response__, 'enterprise_project_id'),

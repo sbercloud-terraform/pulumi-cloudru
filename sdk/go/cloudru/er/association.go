@@ -51,7 +51,7 @@ func NewAssociation(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Association
-	err := ctx.RegisterResource("sbercloud:Er/association:Association", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Er/association:Association", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -63,7 +63,7 @@ func NewAssociation(ctx *pulumi.Context,
 func GetAssociation(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *AssociationState, opts ...pulumi.ResourceOption) (*Association, error) {
 	var resource Association
-	err := ctx.ReadResource("sbercloud:Er/association:Association", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Er/association:Association", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

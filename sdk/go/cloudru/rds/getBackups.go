@@ -14,7 +14,7 @@ import (
 func GetBackups(ctx *pulumi.Context, args *GetBackupsArgs, opts ...pulumi.InvokeOption) (*GetBackupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBackupsResult
-	err := ctx.Invoke("sbercloud:Rds/getBackups:getBackups", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Rds/getBackups:getBackups", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func GetBackupsOutput(ctx *pulumi.Context, args GetBackupsOutputArgs, opts ...pu
 		ApplyT(func(v interface{}) (GetBackupsResultOutput, error) {
 			args := v.(GetBackupsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Rds/getBackups:getBackups", args, GetBackupsResultOutput{}, options).(GetBackupsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Rds/getBackups:getBackups", args, GetBackupsResultOutput{}, options).(GetBackupsResultOutput), nil
 		}).(GetBackupsResultOutput)
 }
 

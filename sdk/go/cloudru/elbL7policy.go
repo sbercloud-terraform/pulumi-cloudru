@@ -46,7 +46,7 @@ func NewElbL7policy(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ElbL7policy
-	err := ctx.RegisterResource("sbercloud:index/elbL7policy:ElbL7policy", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/elbL7policy:ElbL7policy", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -58,7 +58,7 @@ func NewElbL7policy(ctx *pulumi.Context,
 func GetElbL7policy(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ElbL7policyState, opts ...pulumi.ResourceOption) (*ElbL7policy, error) {
 	var resource ElbL7policy
-	err := ctx.ReadResource("sbercloud:index/elbL7policy:ElbL7policy", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/elbL7policy:ElbL7policy", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

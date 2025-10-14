@@ -342,7 +342,7 @@ class _ServiceDiscoveryRuleState:
         pulumi.set(self, "service_type", value)
 
 
-@pulumi.type_token("sbercloud:Aom/serviceDiscoveryRule:ServiceDiscoveryRule")
+@pulumi.type_token("cloudru:Aom/serviceDiscoveryRule:ServiceDiscoveryRule")
 class ServiceDiscoveryRule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -433,7 +433,7 @@ class ServiceDiscoveryRule(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["rule_id"] = None
         super(ServiceDiscoveryRule, __self__).__init__(
-            'sbercloud:Aom/serviceDiscoveryRule:ServiceDiscoveryRule',
+            'cloudru:Aom/serviceDiscoveryRule:ServiceDiscoveryRule',
             resource_name,
             __props__,
             opts)

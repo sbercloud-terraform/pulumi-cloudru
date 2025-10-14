@@ -188,7 +188,7 @@ class _ApigPluginAssociateState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:index/apigPluginAssociate:ApigPluginAssociate")
+@pulumi.type_token("cloudru:index/apigPluginAssociate:ApigPluginAssociate")
 class ApigPluginAssociate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -261,7 +261,7 @@ class ApigPluginAssociate(pulumi.CustomResource):
             __props__.__dict__["plugin_id"] = plugin_id
             __props__.__dict__["region"] = region
         super(ApigPluginAssociate, __self__).__init__(
-            'sbercloud:index/apigPluginAssociate:ApigPluginAssociate',
+            'cloudru:index/apigPluginAssociate:ApigPluginAssociate',
             resource_name,
             __props__,
             opts)

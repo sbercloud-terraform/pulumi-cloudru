@@ -186,7 +186,7 @@ def get_ips_custom_rules(action_type: Optional[_builtins.int] = None,
     __args__['severity'] = severity
     __args__['software'] = software
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Cfw/getIpsCustomRules:getIpsCustomRules', __args__, opts=opts, typ=GetIpsCustomRulesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Cfw/getIpsCustomRules:getIpsCustomRules', __args__, opts=opts, typ=GetIpsCustomRulesResult).value
 
     return AwaitableGetIpsCustomRulesResult(
         action_type=pulumi.get(__ret__, 'action_type'),
@@ -230,7 +230,7 @@ def get_ips_custom_rules_output(action_type: Optional[pulumi.Input[Optional[_bui
     __args__['severity'] = severity
     __args__['software'] = software
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Cfw/getIpsCustomRules:getIpsCustomRules', __args__, opts=opts, typ=GetIpsCustomRulesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Cfw/getIpsCustomRules:getIpsCustomRules', __args__, opts=opts, typ=GetIpsCustomRulesResult)
     return __ret__.apply(lambda __response__: GetIpsCustomRulesResult(
         action_type=pulumi.get(__response__, 'action_type'),
         affected_os=pulumi.get(__response__, 'affected_os'),

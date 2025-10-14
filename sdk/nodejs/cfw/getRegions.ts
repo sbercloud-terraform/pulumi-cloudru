@@ -6,7 +6,7 @@ import * as utilities from "../utilities";
 
 export function getRegions(args: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Cfw/getRegions:getRegions", {
+    return pulumi.runtime.invoke("cloudru:Cfw/getRegions:getRegions", {
         "enterpriseProjectId": args.enterpriseProjectId,
         "fwInstanceId": args.fwInstanceId,
         "region": args.region,
@@ -37,7 +37,7 @@ export interface GetRegionsResult {
 }
 export function getRegionsOutput(args: GetRegionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Cfw/getRegions:getRegions", {
+    return pulumi.runtime.invokeOutput("cloudru:Cfw/getRegions:getRegions", {
         "enterpriseProjectId": args.enterpriseProjectId,
         "fwInstanceId": args.fwInstanceId,
         "region": args.region,

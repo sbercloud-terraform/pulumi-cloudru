@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 export function getFgsFunctionTriggers(args: GetFgsFunctionTriggersArgs, opts?: pulumi.InvokeOptions): Promise<GetFgsFunctionTriggersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getFgsFunctionTriggers:getFgsFunctionTriggers", {
+    return pulumi.runtime.invoke("cloudru:index/getFgsFunctionTriggers:getFgsFunctionTriggers", {
         "endTime": args.endTime,
         "functionUrn": args.functionUrn,
         "region": args.region,
@@ -51,7 +51,7 @@ export interface GetFgsFunctionTriggersResult {
 }
 export function getFgsFunctionTriggersOutput(args: GetFgsFunctionTriggersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFgsFunctionTriggersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getFgsFunctionTriggers:getFgsFunctionTriggers", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getFgsFunctionTriggers:getFgsFunctionTriggers", {
         "endTime": args.endTime,
         "functionUrn": args.functionUrn,
         "region": args.region,

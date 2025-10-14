@@ -21,7 +21,7 @@ export class SmnSubscription extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/smnSubscription:SmnSubscription';
+    public static readonly __pulumiType = 'cloudru:index/smnSubscription:SmnSubscription';
 
     /**
      * Returns true if the given object is an instance of SmnSubscription.  This is designed to work even

@@ -14,7 +14,7 @@ import (
 func GetAvailabilityZones(ctx *pulumi.Context, args *GetAvailabilityZonesArgs, opts ...pulumi.InvokeOption) (*GetAvailabilityZonesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAvailabilityZonesResult
-	err := ctx.Invoke("sbercloud:Er/getAvailabilityZones:getAvailabilityZones", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Er/getAvailabilityZones:getAvailabilityZones", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -39,7 +39,7 @@ func GetAvailabilityZonesOutput(ctx *pulumi.Context, args GetAvailabilityZonesOu
 		ApplyT(func(v interface{}) (GetAvailabilityZonesResultOutput, error) {
 			args := v.(GetAvailabilityZonesArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Er/getAvailabilityZones:getAvailabilityZones", args, GetAvailabilityZonesResultOutput{}, options).(GetAvailabilityZonesResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Er/getAvailabilityZones:getAvailabilityZones", args, GetAvailabilityZonesResultOutput{}, options).(GetAvailabilityZonesResultOutput), nil
 		}).(GetAvailabilityZonesResultOutput)
 }
 

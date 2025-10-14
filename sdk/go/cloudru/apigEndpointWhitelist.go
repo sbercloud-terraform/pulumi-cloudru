@@ -38,7 +38,7 @@ func NewApigEndpointWhitelist(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApigEndpointWhitelist
-	err := ctx.RegisterResource("sbercloud:index/apigEndpointWhitelist:ApigEndpointWhitelist", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/apigEndpointWhitelist:ApigEndpointWhitelist", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -50,7 +50,7 @@ func NewApigEndpointWhitelist(ctx *pulumi.Context,
 func GetApigEndpointWhitelist(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ApigEndpointWhitelistState, opts ...pulumi.ResourceOption) (*ApigEndpointWhitelist, error) {
 	var resource ApigEndpointWhitelist
-	err := ctx.ReadResource("sbercloud:index/apigEndpointWhitelist:ApigEndpointWhitelist", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/apigEndpointWhitelist:ApigEndpointWhitelist", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

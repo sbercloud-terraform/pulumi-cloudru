@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Rds/getInstances:getInstances", {
+    return pulumi.runtime.invoke("cloudru:Rds/getInstances:getInstances", {
         "datastoreType": args.datastoreType,
         "enterpriseProjectId": args.enterpriseProjectId,
         "name": args.name,
@@ -53,7 +53,7 @@ export interface GetInstancesResult {
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Rds/getInstances:getInstances", {
+    return pulumi.runtime.invokeOutput("cloudru:Rds/getInstances:getInstances", {
         "datastoreType": args.datastoreType,
         "enterpriseProjectId": args.enterpriseProjectId,
         "name": args.name,

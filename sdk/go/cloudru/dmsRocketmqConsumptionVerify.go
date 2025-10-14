@@ -37,7 +37,7 @@ func NewDmsRocketmqConsumptionVerify(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DmsRocketmqConsumptionVerify
-	err := ctx.RegisterResource("sbercloud:index/dmsRocketmqConsumptionVerify:DmsRocketmqConsumptionVerify", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/dmsRocketmqConsumptionVerify:DmsRocketmqConsumptionVerify", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -49,7 +49,7 @@ func NewDmsRocketmqConsumptionVerify(ctx *pulumi.Context,
 func GetDmsRocketmqConsumptionVerify(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *DmsRocketmqConsumptionVerifyState, opts ...pulumi.ResourceOption) (*DmsRocketmqConsumptionVerify, error) {
 	var resource DmsRocketmqConsumptionVerify
-	err := ctx.ReadResource("sbercloud:index/dmsRocketmqConsumptionVerify:DmsRocketmqConsumptionVerify", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/dmsRocketmqConsumptionVerify:DmsRocketmqConsumptionVerify", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 export function getIds(args?: GetIdsArgs, opts?: pulumi.InvokeOptions): Promise<GetIdsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Vpc/getIds:getIds", {
+    return pulumi.runtime.invoke("cloudru:Vpc/getIds:getIds", {
         "region": args.region,
     }, opts);
 }
@@ -33,7 +33,7 @@ export interface GetIdsResult {
 export function getIdsOutput(args?: GetIdsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIdsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Vpc/getIds:getIds", {
+    return pulumi.runtime.invokeOutput("cloudru:Vpc/getIds:getIds", {
         "region": args.region,
     }, opts);
 }

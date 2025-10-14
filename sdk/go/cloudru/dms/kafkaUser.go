@@ -47,7 +47,7 @@ func NewKafkaUser(ctx *pulumi.Context,
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource KafkaUser
-	err := ctx.RegisterResource("sbercloud:Dms/kafkaUser:KafkaUser", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Dms/kafkaUser:KafkaUser", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -59,7 +59,7 @@ func NewKafkaUser(ctx *pulumi.Context,
 func GetKafkaUser(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *KafkaUserState, opts ...pulumi.ResourceOption) (*KafkaUser, error) {
 	var resource KafkaUser
-	err := ctx.ReadResource("sbercloud:Dms/kafkaUser:KafkaUser", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Dms/kafkaUser:KafkaUser", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -14,7 +14,7 @@ import (
 func GetSubnetIds(ctx *pulumi.Context, args *GetSubnetIdsArgs, opts ...pulumi.InvokeOption) (*GetSubnetIdsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSubnetIdsResult
-	err := ctx.Invoke("sbercloud:Vpc/getSubnetIds:getSubnetIds", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Vpc/getSubnetIds:getSubnetIds", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -41,7 +41,7 @@ func GetSubnetIdsOutput(ctx *pulumi.Context, args GetSubnetIdsOutputArgs, opts .
 		ApplyT(func(v interface{}) (GetSubnetIdsResultOutput, error) {
 			args := v.(GetSubnetIdsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Vpc/getSubnetIds:getSubnetIds", args, GetSubnetIdsResultOutput{}, options).(GetSubnetIdsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Vpc/getSubnetIds:getSubnetIds", args, GetSubnetIdsResultOutput{}, options).(GetSubnetIdsResultOutput), nil
 		}).(GetSubnetIdsResultOutput)
 }
 

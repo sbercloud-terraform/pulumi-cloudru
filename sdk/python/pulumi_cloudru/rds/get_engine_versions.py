@@ -87,7 +87,7 @@ def get_engine_versions(region: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['type'] = type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Rds/getEngineVersions:getEngineVersions', __args__, opts=opts, typ=GetEngineVersionsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Rds/getEngineVersions:getEngineVersions', __args__, opts=opts, typ=GetEngineVersionsResult).value
 
     return AwaitableGetEngineVersionsResult(
         id=pulumi.get(__ret__, 'id'),
@@ -104,7 +104,7 @@ def get_engine_versions_output(region: Optional[pulumi.Input[Optional[_builtins.
     __args__['region'] = region
     __args__['type'] = type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Rds/getEngineVersions:getEngineVersions', __args__, opts=opts, typ=GetEngineVersionsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Rds/getEngineVersions:getEngineVersions', __args__, opts=opts, typ=GetEngineVersionsResult)
     return __ret__.apply(lambda __response__: GetEngineVersionsResult(
         id=pulumi.get(__response__, 'id'),
         region=pulumi.get(__response__, 'region'),

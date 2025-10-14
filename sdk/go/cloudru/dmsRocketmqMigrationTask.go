@@ -60,7 +60,7 @@ func NewDmsRocketmqMigrationTask(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DmsRocketmqMigrationTask
-	err := ctx.RegisterResource("sbercloud:index/dmsRocketmqMigrationTask:DmsRocketmqMigrationTask", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/dmsRocketmqMigrationTask:DmsRocketmqMigrationTask", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -72,7 +72,7 @@ func NewDmsRocketmqMigrationTask(ctx *pulumi.Context,
 func GetDmsRocketmqMigrationTask(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *DmsRocketmqMigrationTaskState, opts ...pulumi.ResourceOption) (*DmsRocketmqMigrationTask, error) {
 	var resource DmsRocketmqMigrationTask
-	err := ctx.ReadResource("sbercloud:index/dmsRocketmqMigrationTask:DmsRocketmqMigrationTask", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/dmsRocketmqMigrationTask:DmsRocketmqMigrationTask", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

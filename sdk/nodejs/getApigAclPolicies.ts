@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 export function getApigAclPolicies(args: GetApigAclPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetApigAclPoliciesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getApigAclPolicies:getApigAclPolicies", {
+    return pulumi.runtime.invoke("cloudru:index/getApigAclPolicies:getApigAclPolicies", {
         "entityType": args.entityType,
         "instanceId": args.instanceId,
         "name": args.name,
@@ -48,7 +48,7 @@ export interface GetApigAclPoliciesResult {
 }
 export function getApigAclPoliciesOutput(args: GetApigAclPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApigAclPoliciesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getApigAclPolicies:getApigAclPolicies", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getApigAclPolicies:getApigAclPolicies", {
         "entityType": args.entityType,
         "instanceId": args.instanceId,
         "name": args.name,

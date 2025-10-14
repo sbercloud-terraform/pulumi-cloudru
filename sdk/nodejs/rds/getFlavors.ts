@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 export function getFlavors(args: GetFlavorsArgs, opts?: pulumi.InvokeOptions): Promise<GetFlavorsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Rds/getFlavors:getFlavors", {
+    return pulumi.runtime.invoke("cloudru:Rds/getFlavors:getFlavors", {
         "availabilityZone": args.availabilityZone,
         "dbType": args.dbType,
         "dbVersion": args.dbVersion,
@@ -54,7 +54,7 @@ export interface GetFlavorsResult {
 }
 export function getFlavorsOutput(args: GetFlavorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFlavorsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Rds/getFlavors:getFlavors", {
+    return pulumi.runtime.invokeOutput("cloudru:Rds/getFlavors:getFlavors", {
         "availabilityZone": args.availabilityZone,
         "dbType": args.dbType,
         "dbVersion": args.dbVersion,

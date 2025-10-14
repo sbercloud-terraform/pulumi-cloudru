@@ -44,7 +44,7 @@ func NewDmsKafkaConsumerGroup(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DmsKafkaConsumerGroup
-	err := ctx.RegisterResource("sbercloud:index/dmsKafkaConsumerGroup:DmsKafkaConsumerGroup", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/dmsKafkaConsumerGroup:DmsKafkaConsumerGroup", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -56,7 +56,7 @@ func NewDmsKafkaConsumerGroup(ctx *pulumi.Context,
 func GetDmsKafkaConsumerGroup(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *DmsKafkaConsumerGroupState, opts ...pulumi.ResourceOption) (*DmsKafkaConsumerGroup, error) {
 	var resource DmsKafkaConsumerGroup
-	err := ctx.ReadResource("sbercloud:index/dmsKafkaConsumerGroup:DmsKafkaConsumerGroup", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/dmsKafkaConsumerGroup:DmsKafkaConsumerGroup", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -38,7 +38,7 @@ func NewApigInstanceFeature(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApigInstanceFeature
-	err := ctx.RegisterResource("sbercloud:index/apigInstanceFeature:ApigInstanceFeature", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/apigInstanceFeature:ApigInstanceFeature", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -50,7 +50,7 @@ func NewApigInstanceFeature(ctx *pulumi.Context,
 func GetApigInstanceFeature(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ApigInstanceFeatureState, opts ...pulumi.ResourceOption) (*ApigInstanceFeature, error) {
 	var resource ApigInstanceFeature
-	err := ctx.ReadResource("sbercloud:index/apigInstanceFeature:ApigInstanceFeature", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/apigInstanceFeature:ApigInstanceFeature", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

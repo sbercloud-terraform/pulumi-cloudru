@@ -14,7 +14,7 @@ import (
 func GetBlackWhiteLists(ctx *pulumi.Context, args *GetBlackWhiteListsArgs, opts ...pulumi.InvokeOption) (*GetBlackWhiteListsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBlackWhiteListsResult
-	err := ctx.Invoke("sbercloud:Cfw/getBlackWhiteLists:getBlackWhiteLists", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Cfw/getBlackWhiteLists:getBlackWhiteLists", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -59,7 +59,7 @@ func GetBlackWhiteListsOutput(ctx *pulumi.Context, args GetBlackWhiteListsOutput
 		ApplyT(func(v interface{}) (GetBlackWhiteListsResultOutput, error) {
 			args := v.(GetBlackWhiteListsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Cfw/getBlackWhiteLists:getBlackWhiteLists", args, GetBlackWhiteListsResultOutput{}, options).(GetBlackWhiteListsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Cfw/getBlackWhiteLists:getBlackWhiteLists", args, GetBlackWhiteListsResultOutput{}, options).(GetBlackWhiteListsResultOutput), nil
 		}).(GetBlackWhiteListsResultOutput)
 }
 

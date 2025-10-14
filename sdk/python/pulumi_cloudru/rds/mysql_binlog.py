@@ -102,7 +102,7 @@ class _MysqlBinlogState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:Rds/mysqlBinlog:MysqlBinlog")
+@pulumi.type_token("cloudru:Rds/mysqlBinlog:MysqlBinlog")
 class MysqlBinlog(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -160,7 +160,7 @@ class MysqlBinlog(pulumi.CustomResource):
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["region"] = region
         super(MysqlBinlog, __self__).__init__(
-            'sbercloud:Rds/mysqlBinlog:MysqlBinlog',
+            'cloudru:Rds/mysqlBinlog:MysqlBinlog',
             resource_name,
             __props__,
             opts)

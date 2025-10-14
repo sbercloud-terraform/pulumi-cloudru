@@ -152,7 +152,7 @@ class _AntiVirusState:
         pulumi.set(self, "scan_protocol_configs", value)
 
 
-@pulumi.type_token("sbercloud:Cfw/antiVirus:AntiVirus")
+@pulumi.type_token("cloudru:Cfw/antiVirus:AntiVirus")
 class AntiVirus(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -216,7 +216,7 @@ class AntiVirus(pulumi.CustomResource):
                 raise TypeError("Missing required property 'scan_protocol_configs'")
             __props__.__dict__["scan_protocol_configs"] = scan_protocol_configs
         super(AntiVirus, __self__).__init__(
-            'sbercloud:Cfw/antiVirus:AntiVirus',
+            'cloudru:Cfw/antiVirus:AntiVirus',
             resource_name,
             __props__,
             opts)

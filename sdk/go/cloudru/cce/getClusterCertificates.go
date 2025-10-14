@@ -14,7 +14,7 @@ import (
 func GetClusterCertificates(ctx *pulumi.Context, args *GetClusterCertificatesArgs, opts ...pulumi.InvokeOption) (*GetClusterCertificatesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetClusterCertificatesResult
-	err := ctx.Invoke("sbercloud:Cce/getClusterCertificates:getClusterCertificates", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Cce/getClusterCertificates:getClusterCertificates", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -47,7 +47,7 @@ func GetClusterCertificatesOutput(ctx *pulumi.Context, args GetClusterCertificat
 		ApplyT(func(v interface{}) (GetClusterCertificatesResultOutput, error) {
 			args := v.(GetClusterCertificatesArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Cce/getClusterCertificates:getClusterCertificates", args, GetClusterCertificatesResultOutput{}, options).(GetClusterCertificatesResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Cce/getClusterCertificates:getClusterCertificates", args, GetClusterCertificatesResultOutput{}, options).(GetClusterCertificatesResultOutput), nil
 		}).(GetClusterCertificatesResultOutput)
 }
 

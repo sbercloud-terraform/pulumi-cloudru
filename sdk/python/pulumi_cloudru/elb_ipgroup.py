@@ -189,7 +189,7 @@ class _ElbIpgroupState:
         pulumi.set(self, "updated_at", value)
 
 
-@pulumi.type_token("sbercloud:index/elbIpgroup:ElbIpgroup")
+@pulumi.type_token("cloudru:index/elbIpgroup:ElbIpgroup")
 class ElbIpgroup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -254,7 +254,7 @@ class ElbIpgroup(pulumi.CustomResource):
             __props__.__dict__["listener_ids"] = None
             __props__.__dict__["updated_at"] = None
         super(ElbIpgroup, __self__).__init__(
-            'sbercloud:index/elbIpgroup:ElbIpgroup',
+            'cloudru:index/elbIpgroup:ElbIpgroup',
             resource_name,
             __props__,
             opts)

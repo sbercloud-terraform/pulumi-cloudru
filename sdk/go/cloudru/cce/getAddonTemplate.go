@@ -14,7 +14,7 @@ import (
 func GetAddonTemplate(ctx *pulumi.Context, args *GetAddonTemplateArgs, opts ...pulumi.InvokeOption) (*GetAddonTemplateResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAddonTemplateResult
-	err := ctx.Invoke("sbercloud:Cce/getAddonTemplate:getAddonTemplate", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Cce/getAddonTemplate:getAddonTemplate", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -48,7 +48,7 @@ func GetAddonTemplateOutput(ctx *pulumi.Context, args GetAddonTemplateOutputArgs
 		ApplyT(func(v interface{}) (GetAddonTemplateResultOutput, error) {
 			args := v.(GetAddonTemplateArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Cce/getAddonTemplate:getAddonTemplate", args, GetAddonTemplateResultOutput{}, options).(GetAddonTemplateResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Cce/getAddonTemplate:getAddonTemplate", args, GetAddonTemplateResultOutput{}, options).(GetAddonTemplateResultOutput), nil
 		}).(GetAddonTemplateResultOutput)
 }
 

@@ -14,7 +14,7 @@ import (
 func LookupSubnet(ctx *pulumi.Context, args *LookupSubnetArgs, opts ...pulumi.InvokeOption) (*LookupSubnetResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSubnetResult
-	err := ctx.Invoke("sbercloud:Vpc/getSubnet:getSubnet", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Vpc/getSubnet:getSubnet", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -63,7 +63,7 @@ func LookupSubnetOutput(ctx *pulumi.Context, args LookupSubnetOutputArgs, opts .
 		ApplyT(func(v interface{}) (LookupSubnetResultOutput, error) {
 			args := v.(LookupSubnetArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Vpc/getSubnet:getSubnet", args, LookupSubnetResultOutput{}, options).(LookupSubnetResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Vpc/getSubnet:getSubnet", args, LookupSubnetResultOutput{}, options).(LookupSubnetResultOutput), nil
 		}).(LookupSubnetResultOutput)
 }
 

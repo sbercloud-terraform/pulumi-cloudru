@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 export function getAddressGroups(args: GetAddressGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Cfw/getAddressGroups:getAddressGroups", {
+    return pulumi.runtime.invoke("cloudru:Cfw/getAddressGroups:getAddressGroups", {
         "address": args.address,
         "addressType": args.addressType,
         "enterpriseProjectId": args.enterpriseProjectId,
@@ -57,7 +57,7 @@ export interface GetAddressGroupsResult {
 }
 export function getAddressGroupsOutput(args: GetAddressGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAddressGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Cfw/getAddressGroups:getAddressGroups", {
+    return pulumi.runtime.invokeOutput("cloudru:Cfw/getAddressGroups:getAddressGroups", {
         "address": args.address,
         "addressType": args.addressType,
         "enterpriseProjectId": args.enterpriseProjectId,

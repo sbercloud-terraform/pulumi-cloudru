@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 export function getApigThrottlingPolicies(args: GetApigThrottlingPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetApigThrottlingPoliciesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getApigThrottlingPolicies:getApigThrottlingPolicies", {
+    return pulumi.runtime.invoke("cloudru:index/getApigThrottlingPolicies:getApigThrottlingPolicies", {
         "instanceId": args.instanceId,
         "name": args.name,
         "policyId": args.policyId,
@@ -45,7 +45,7 @@ export interface GetApigThrottlingPoliciesResult {
 }
 export function getApigThrottlingPoliciesOutput(args: GetApigThrottlingPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApigThrottlingPoliciesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getApigThrottlingPolicies:getApigThrottlingPolicies", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getApigThrottlingPolicies:getApigThrottlingPolicies", {
         "instanceId": args.instanceId,
         "name": args.name,
         "policyId": args.policyId,

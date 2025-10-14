@@ -14,7 +14,7 @@ import (
 func GetVpnCustomerGateways(ctx *pulumi.Context, args *GetVpnCustomerGatewaysArgs, opts ...pulumi.InvokeOption) (*GetVpnCustomerGatewaysResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVpnCustomerGatewaysResult
-	err := ctx.Invoke("sbercloud:index/getVpnCustomerGateways:getVpnCustomerGateways", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getVpnCustomerGateways:getVpnCustomerGateways", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -49,7 +49,7 @@ func GetVpnCustomerGatewaysOutput(ctx *pulumi.Context, args GetVpnCustomerGatewa
 		ApplyT(func(v interface{}) (GetVpnCustomerGatewaysResultOutput, error) {
 			args := v.(GetVpnCustomerGatewaysArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getVpnCustomerGateways:getVpnCustomerGateways", args, GetVpnCustomerGatewaysResultOutput{}, options).(GetVpnCustomerGatewaysResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getVpnCustomerGateways:getVpnCustomerGateways", args, GetVpnCustomerGatewaysResultOutput{}, options).(GetVpnCustomerGatewaysResultOutput), nil
 		}).(GetVpnCustomerGatewaysResultOutput)
 }
 

@@ -14,7 +14,7 @@ import (
 func GetDomainNameGroups(ctx *pulumi.Context, args *GetDomainNameGroupsArgs, opts ...pulumi.InvokeOption) (*GetDomainNameGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDomainNameGroupsResult
-	err := ctx.Invoke("sbercloud:Cfw/getDomainNameGroups:getDomainNameGroups", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Cfw/getDomainNameGroups:getDomainNameGroups", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -57,7 +57,7 @@ func GetDomainNameGroupsOutput(ctx *pulumi.Context, args GetDomainNameGroupsOutp
 		ApplyT(func(v interface{}) (GetDomainNameGroupsResultOutput, error) {
 			args := v.(GetDomainNameGroupsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Cfw/getDomainNameGroups:getDomainNameGroups", args, GetDomainNameGroupsResultOutput{}, options).(GetDomainNameGroupsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Cfw/getDomainNameGroups:getDomainNameGroups", args, GetDomainNameGroupsResultOutput{}, options).(GetDomainNameGroupsResultOutput), nil
 		}).(GetDomainNameGroupsResultOutput)
 }
 

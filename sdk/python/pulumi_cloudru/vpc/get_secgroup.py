@@ -136,7 +136,7 @@ def get_secgroup(enterprise_project_id: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['secgroupId'] = secgroup_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Vpc/getSecgroup:getSecgroup', __args__, opts=opts, typ=GetSecgroupResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Vpc/getSecgroup:getSecgroup', __args__, opts=opts, typ=GetSecgroupResult).value
 
     return AwaitableGetSecgroupResult(
         created_at=pulumi.get(__ret__, 'created_at'),
@@ -162,7 +162,7 @@ def get_secgroup_output(enterprise_project_id: Optional[pulumi.Input[Optional[_b
     __args__['region'] = region
     __args__['secgroupId'] = secgroup_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Vpc/getSecgroup:getSecgroup', __args__, opts=opts, typ=GetSecgroupResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Vpc/getSecgroup:getSecgroup', __args__, opts=opts, typ=GetSecgroupResult)
     return __ret__.apply(lambda __response__: GetSecgroupResult(
         created_at=pulumi.get(__response__, 'created_at'),
         description=pulumi.get(__response__, 'description'),

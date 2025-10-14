@@ -42,7 +42,7 @@ func NewAttachmentAccepter(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AttachmentAccepter
-	err := ctx.RegisterResource("sbercloud:Er/attachmentAccepter:AttachmentAccepter", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Er/attachmentAccepter:AttachmentAccepter", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -54,7 +54,7 @@ func NewAttachmentAccepter(ctx *pulumi.Context,
 func GetAttachmentAccepter(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *AttachmentAccepterState, opts ...pulumi.ResourceOption) (*AttachmentAccepter, error) {
 	var resource AttachmentAccepter
-	err := ctx.ReadResource("sbercloud:Er/attachmentAccepter:AttachmentAccepter", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Er/attachmentAccepter:AttachmentAccepter", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

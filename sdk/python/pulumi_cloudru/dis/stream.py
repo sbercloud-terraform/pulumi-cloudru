@@ -416,7 +416,7 @@ class _StreamState:
         pulumi.set(self, "writable_partition_count", value)
 
 
-@pulumi.type_token("sbercloud:Dis/stream:Stream")
+@pulumi.type_token("cloudru:Dis/stream:Stream")
 class Stream(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -510,7 +510,7 @@ class Stream(pulumi.CustomResource):
             __props__.__dict__["stream_id"] = None
             __props__.__dict__["writable_partition_count"] = None
         super(Stream, __self__).__init__(
-            'sbercloud:Dis/stream:Stream',
+            'cloudru:Dis/stream:Stream',
             resource_name,
             __props__,
             opts)

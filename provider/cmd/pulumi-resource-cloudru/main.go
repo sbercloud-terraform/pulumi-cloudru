@@ -28,5 +28,5 @@ var pulumiSchema []byte
 
 func main() {
 	// Modify the path to point to the new provider
-	tfbridge.Main("sbercloud", version.Version, sbercloud.Provider(), pulumiSchema)
+	tfbridge.Main("cloudru", version.Version, sbercloud.Provider(), pulumiSchema)
 }

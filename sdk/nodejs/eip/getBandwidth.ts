@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 export function getBandwidth(args: GetBandwidthArgs, opts?: pulumi.InvokeOptions): Promise<GetBandwidthResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Eip/getBandwidth:getBandwidth", {
+    return pulumi.runtime.invoke("cloudru:Eip/getBandwidth:getBandwidth", {
         "enterpriseProjectId": args.enterpriseProjectId,
         "name": args.name,
         "region": args.region,
@@ -46,7 +46,7 @@ export interface GetBandwidthResult {
 }
 export function getBandwidthOutput(args: GetBandwidthOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBandwidthResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Eip/getBandwidth:getBandwidth", {
+    return pulumi.runtime.invokeOutput("cloudru:Eip/getBandwidth:getBandwidth", {
         "enterpriseProjectId": args.enterpriseProjectId,
         "name": args.name,
         "region": args.region,

@@ -535,7 +535,7 @@ class _ListenerState:
         pulumi.set(self, "updated_at", value)
 
 
-@pulumi.type_token("sbercloud:Elb/listener:Listener")
+@pulumi.type_token("cloudru:Elb/listener:Listener")
 class Listener(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -645,7 +645,7 @@ class Listener(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["updated_at"] = None
         super(Listener, __self__).__init__(
-            'sbercloud:Elb/listener:Listener',
+            'cloudru:Elb/listener:Listener',
             resource_name,
             __props__,
             opts)

@@ -19,7 +19,7 @@ export class SfsTurboDataTask extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/sfsTurboDataTask:SfsTurboDataTask';
+    public static readonly __pulumiType = 'cloudru:index/sfsTurboDataTask:SfsTurboDataTask';
 
     /**
      * Returns true if the given object is an instance of SfsTurboDataTask.  This is designed to work even

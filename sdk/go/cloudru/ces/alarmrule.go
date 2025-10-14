@@ -51,7 +51,7 @@ func NewAlarmrule(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Alarmrule
-	err := ctx.RegisterResource("sbercloud:Ces/alarmrule:Alarmrule", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Ces/alarmrule:Alarmrule", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -63,7 +63,7 @@ func NewAlarmrule(ctx *pulumi.Context,
 func GetAlarmrule(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *AlarmruleState, opts ...pulumi.ResourceOption) (*Alarmrule, error) {
 	var resource Alarmrule
-	err := ctx.ReadResource("sbercloud:Ces/alarmrule:Alarmrule", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Ces/alarmrule:Alarmrule", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

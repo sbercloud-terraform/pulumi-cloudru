@@ -234,7 +234,7 @@ def get_subnet(availability_zone: Optional[_builtins.str] = None,
     __args__['status'] = status
     __args__['vpcId'] = vpc_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Vpc/getSubnet:getSubnet', __args__, opts=opts, typ=GetSubnetResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Vpc/getSubnet:getSubnet', __args__, opts=opts, typ=GetSubnetResult).value
 
     return AwaitableGetSubnetResult(
         availability_zone=pulumi.get(__ret__, 'availability_zone'),
@@ -282,7 +282,7 @@ def get_subnet_output(availability_zone: Optional[pulumi.Input[Optional[_builtin
     __args__['status'] = status
     __args__['vpcId'] = vpc_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Vpc/getSubnet:getSubnet', __args__, opts=opts, typ=GetSubnetResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Vpc/getSubnet:getSubnet', __args__, opts=opts, typ=GetSubnetResult)
     return __ret__.apply(lambda __response__: GetSubnetResult(
         availability_zone=pulumi.get(__response__, 'availability_zone'),
         cidr=pulumi.get(__response__, 'cidr'),

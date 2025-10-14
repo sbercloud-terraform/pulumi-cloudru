@@ -19,7 +19,7 @@ export class Database extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Dli/database:Database';
+    public static readonly __pulumiType = 'cloudru:Dli/database:Database';
 
     /**
      * Returns true if the given object is an instance of Database.  This is designed to work even

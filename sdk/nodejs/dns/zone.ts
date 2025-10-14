@@ -21,7 +21,7 @@ export class Zone extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Dns/zone:Zone';
+    public static readonly __pulumiType = 'cloudru:Dns/zone:Zone';
 
     /**
      * Returns true if the given object is an instance of Zone.  This is designed to work even

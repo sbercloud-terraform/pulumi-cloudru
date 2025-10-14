@@ -51,7 +51,7 @@ func NewElbMonitor(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ElbMonitor
-	err := ctx.RegisterResource("sbercloud:index/elbMonitor:ElbMonitor", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/elbMonitor:ElbMonitor", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -63,7 +63,7 @@ func NewElbMonitor(ctx *pulumi.Context,
 func GetElbMonitor(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ElbMonitorState, opts ...pulumi.ResourceOption) (*ElbMonitor, error) {
 	var resource ElbMonitor
-	err := ctx.ReadResource("sbercloud:index/elbMonitor:ElbMonitor", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/elbMonitor:ElbMonitor", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

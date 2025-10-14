@@ -75,35 +75,35 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "sbercloud:Elb/certificate:Certificate":
+            case "cloudru:Elb/certificate:Certificate":
                 return new Certificate(name, <any>undefined, { urn })
-            case "sbercloud:Elb/l7policy:L7policy":
+            case "cloudru:Elb/l7policy:L7policy":
                 return new L7policy(name, <any>undefined, { urn })
-            case "sbercloud:Elb/l7rule:L7rule":
+            case "cloudru:Elb/l7rule:L7rule":
                 return new L7rule(name, <any>undefined, { urn })
-            case "sbercloud:Elb/listener:Listener":
+            case "cloudru:Elb/listener:Listener":
                 return new Listener(name, <any>undefined, { urn })
-            case "sbercloud:Elb/loadbalancer:Loadbalancer":
+            case "cloudru:Elb/loadbalancer:Loadbalancer":
                 return new Loadbalancer(name, <any>undefined, { urn })
-            case "sbercloud:Elb/member:Member":
+            case "cloudru:Elb/member:Member":
                 return new Member(name, <any>undefined, { urn })
-            case "sbercloud:Elb/monitor:Monitor":
+            case "cloudru:Elb/monitor:Monitor":
                 return new Monitor(name, <any>undefined, { urn })
-            case "sbercloud:Elb/pool:Pool":
+            case "cloudru:Elb/pool:Pool":
                 return new Pool(name, <any>undefined, { urn })
-            case "sbercloud:Elb/whitelist:Whitelist":
+            case "cloudru:Elb/whitelist:Whitelist":
                 return new Whitelist(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("sbercloud", "Elb/certificate", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Elb/l7policy", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Elb/l7rule", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Elb/listener", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Elb/loadbalancer", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Elb/member", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Elb/monitor", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Elb/pool", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Elb/whitelist", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Elb/certificate", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Elb/l7policy", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Elb/l7rule", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Elb/listener", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Elb/loadbalancer", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Elb/member", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Elb/monitor", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Elb/pool", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Elb/whitelist", _module)

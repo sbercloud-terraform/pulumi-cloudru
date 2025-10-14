@@ -19,7 +19,7 @@ export class AlarmConfig extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Cfw/alarmConfig:AlarmConfig';
+    public static readonly __pulumiType = 'cloudru:Cfw/alarmConfig:AlarmConfig';
 
     /**
      * Returns true if the given object is an instance of AlarmConfig.  This is designed to work even

@@ -128,7 +128,7 @@ class _ConfigurationState:
         pulumi.set(self, "status", value)
 
 
-@pulumi.type_token("sbercloud:As/configuration:Configuration")
+@pulumi.type_token("cloudru:As/configuration:Configuration")
 class Configuration(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -188,7 +188,7 @@ class Configuration(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["status"] = None
         super(Configuration, __self__).__init__(
-            'sbercloud:As/configuration:Configuration',
+            'cloudru:As/configuration:Configuration',
             resource_name,
             __props__,
             opts)

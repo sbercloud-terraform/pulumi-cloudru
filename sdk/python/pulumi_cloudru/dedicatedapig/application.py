@@ -287,7 +287,7 @@ class _ApplicationState:
         pulumi.set(self, "updated_at", value)
 
 
-@pulumi.type_token("sbercloud:DedicatedApig/application:Application")
+@pulumi.type_token("cloudru:DedicatedApig/application:Application")
 class Application(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -364,7 +364,7 @@ class Application(pulumi.CustomResource):
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["appSecret"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Application, __self__).__init__(
-            'sbercloud:DedicatedApig/application:Application',
+            'cloudru:DedicatedApig/application:Application',
             resource_name,
             __props__,
             opts)

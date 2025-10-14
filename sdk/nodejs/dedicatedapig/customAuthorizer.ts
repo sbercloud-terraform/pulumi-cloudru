@@ -21,7 +21,7 @@ export class CustomAuthorizer extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:DedicatedApig/customAuthorizer:CustomAuthorizer';
+    public static readonly __pulumiType = 'cloudru:DedicatedApig/customAuthorizer:CustomAuthorizer';
 
     /**
      * Returns true if the given object is an instance of CustomAuthorizer.  This is designed to work even

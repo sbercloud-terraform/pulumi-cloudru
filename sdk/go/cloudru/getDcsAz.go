@@ -14,7 +14,7 @@ import (
 func GetDcsAz(ctx *pulumi.Context, args *GetDcsAzArgs, opts ...pulumi.InvokeOption) (*GetDcsAzResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDcsAzResult
-	err := ctx.Invoke("sbercloud:index/getDcsAz:getDcsAz", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getDcsAz:getDcsAz", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -44,7 +44,7 @@ func GetDcsAzOutput(ctx *pulumi.Context, args GetDcsAzOutputArgs, opts ...pulumi
 		ApplyT(func(v interface{}) (GetDcsAzResultOutput, error) {
 			args := v.(GetDcsAzArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getDcsAz:getDcsAz", args, GetDcsAzResultOutput{}, options).(GetDcsAzResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getDcsAz:getDcsAz", args, GetDcsAzResultOutput{}, options).(GetDcsAzResultOutput), nil
 		}).(GetDcsAzResultOutput)
 }
 

@@ -97,7 +97,7 @@ def get_dms_rocketmq_topic_consumer_groups(instance_id: Optional[_builtins.str] 
     __args__['region'] = region
     __args__['topicName'] = topic_name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getDmsRocketmqTopicConsumerGroups:getDmsRocketmqTopicConsumerGroups', __args__, opts=opts, typ=GetDmsRocketmqTopicConsumerGroupsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getDmsRocketmqTopicConsumerGroups:getDmsRocketmqTopicConsumerGroups', __args__, opts=opts, typ=GetDmsRocketmqTopicConsumerGroupsResult).value
 
     return AwaitableGetDmsRocketmqTopicConsumerGroupsResult(
         groups=pulumi.get(__ret__, 'groups'),
@@ -117,7 +117,7 @@ def get_dms_rocketmq_topic_consumer_groups_output(instance_id: Optional[pulumi.I
     __args__['region'] = region
     __args__['topicName'] = topic_name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getDmsRocketmqTopicConsumerGroups:getDmsRocketmqTopicConsumerGroups', __args__, opts=opts, typ=GetDmsRocketmqTopicConsumerGroupsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getDmsRocketmqTopicConsumerGroups:getDmsRocketmqTopicConsumerGroups', __args__, opts=opts, typ=GetDmsRocketmqTopicConsumerGroupsResult)
     return __ret__.apply(lambda __response__: GetDmsRocketmqTopicConsumerGroupsResult(
         groups=pulumi.get(__response__, 'groups'),
         id=pulumi.get(__response__, 'id'),

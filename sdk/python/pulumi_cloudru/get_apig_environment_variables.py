@@ -120,7 +120,7 @@ def get_apig_environment_variables(env_id: Optional[_builtins.str] = None,
     __args__['name'] = name
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getApigEnvironmentVariables:getApigEnvironmentVariables', __args__, opts=opts, typ=GetApigEnvironmentVariablesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getApigEnvironmentVariables:getApigEnvironmentVariables', __args__, opts=opts, typ=GetApigEnvironmentVariablesResult).value
 
     return AwaitableGetApigEnvironmentVariablesResult(
         env_id=pulumi.get(__ret__, 'env_id'),
@@ -146,7 +146,7 @@ def get_apig_environment_variables_output(env_id: Optional[pulumi.Input[Optional
     __args__['name'] = name
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getApigEnvironmentVariables:getApigEnvironmentVariables', __args__, opts=opts, typ=GetApigEnvironmentVariablesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getApigEnvironmentVariables:getApigEnvironmentVariables', __args__, opts=opts, typ=GetApigEnvironmentVariablesResult)
     return __ret__.apply(lambda __response__: GetApigEnvironmentVariablesResult(
         env_id=pulumi.get(__response__, 'env_id'),
         group_id=pulumi.get(__response__, 'group_id'),

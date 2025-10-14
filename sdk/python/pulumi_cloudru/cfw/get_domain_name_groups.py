@@ -175,7 +175,7 @@ def get_domain_name_groups(config_status: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['type'] = type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Cfw/getDomainNameGroups:getDomainNameGroups', __args__, opts=opts, typ=GetDomainNameGroupsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Cfw/getDomainNameGroups:getDomainNameGroups', __args__, opts=opts, typ=GetDomainNameGroupsResult).value
 
     return AwaitableGetDomainNameGroupsResult(
         config_status=pulumi.get(__ret__, 'config_status'),
@@ -216,7 +216,7 @@ def get_domain_name_groups_output(config_status: Optional[pulumi.Input[Optional[
     __args__['region'] = region
     __args__['type'] = type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Cfw/getDomainNameGroups:getDomainNameGroups', __args__, opts=opts, typ=GetDomainNameGroupsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Cfw/getDomainNameGroups:getDomainNameGroups', __args__, opts=opts, typ=GetDomainNameGroupsResult)
     return __ret__.apply(lambda __response__: GetDomainNameGroupsResult(
         config_status=pulumi.get(__response__, 'config_status'),
         enterprise_project_id=pulumi.get(__response__, 'enterprise_project_id'),

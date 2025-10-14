@@ -225,7 +225,7 @@ class _ProviderState:
         pulumi.set(self, "status", value)
 
 
-@pulumi.type_token("sbercloud:Iam/provider:Provider")
+@pulumi.type_token("cloudru:Iam/provider:Provider")
 class Provider(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -295,7 +295,7 @@ class Provider(pulumi.CustomResource):
             __props__.__dict__["conversion_rules"] = None
             __props__.__dict__["login_link"] = None
         super(Provider, __self__).__init__(
-            'sbercloud:Iam/provider:Provider',
+            'cloudru:Iam/provider:Provider',
             resource_name,
             __props__,
             opts)

@@ -20,14 +20,14 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "sbercloud:NetworkAcl/acl:Acl":
+            case "cloudru:NetworkAcl/acl:Acl":
                 return new Acl(name, <any>undefined, { urn })
-            case "sbercloud:NetworkAcl/aclRule:AclRule":
+            case "cloudru:NetworkAcl/aclRule:AclRule":
                 return new AclRule(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("sbercloud", "NetworkAcl/acl", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "NetworkAcl/aclRule", _module)
+pulumi.runtime.registerResourceModule("cloudru", "NetworkAcl/acl", _module)
+pulumi.runtime.registerResourceModule("cloudru", "NetworkAcl/aclRule", _module)

@@ -261,7 +261,7 @@ class ProviderArgs:
         pulumi.set(self, "user_name", value)
 
 
-@pulumi.type_token("pulumi:providers:sbercloud")
+@pulumi.type_token("pulumi:providers:cloudru")
 class Provider(pulumi.ProviderResource):
     @overload
     def __init__(__self__,
@@ -375,7 +375,7 @@ class Provider(pulumi.ProviderResource):
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
-            'sbercloud',
+            'cloudru',
             resource_name,
             __props__,
             opts)
@@ -485,5 +485,5 @@ class Provider(pulumi.ProviderResource):
         """
         __args__ = dict()
         __args__['__self__'] = __self__
-        return pulumi.runtime.call('pulumi:providers:sbercloud/terraformConfig', __args__, res=__self__, typ=Provider.TerraformConfigResult)
+        return pulumi.runtime.call('pulumi:providers:cloudru/terraformConfig', __args__, res=__self__, typ=Provider.TerraformConfigResult)
 

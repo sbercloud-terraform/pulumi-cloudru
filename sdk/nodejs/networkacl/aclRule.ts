@@ -19,7 +19,7 @@ export class AclRule extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:NetworkAcl/aclRule:AclRule';
+    public static readonly __pulumiType = 'cloudru:NetworkAcl/aclRule:AclRule';
 
     /**
      * Returns true if the given object is an instance of AclRule.  This is designed to work even

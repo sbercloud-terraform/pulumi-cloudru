@@ -57,7 +57,7 @@ func NewApigSignature(ctx *pulumi.Context,
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApigSignature
-	err := ctx.RegisterResource("sbercloud:index/apigSignature:ApigSignature", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/apigSignature:ApigSignature", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -69,7 +69,7 @@ func NewApigSignature(ctx *pulumi.Context,
 func GetApigSignature(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ApigSignatureState, opts ...pulumi.ResourceOption) (*ApigSignature, error) {
 	var resource ApigSignature
-	err := ctx.ReadResource("sbercloud:index/apigSignature:ApigSignature", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/apigSignature:ApigSignature", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

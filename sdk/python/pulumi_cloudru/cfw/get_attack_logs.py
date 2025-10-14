@@ -296,7 +296,7 @@ def get_attack_logs(app: Optional[_builtins.str] = None,
     __args__['srcRegionName'] = src_region_name
     __args__['startTime'] = start_time
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Cfw/getAttackLogs:getAttackLogs', __args__, opts=opts, typ=GetAttackLogsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Cfw/getAttackLogs:getAttackLogs', __args__, opts=opts, typ=GetAttackLogsResult).value
 
     return AwaitableGetAttackLogsResult(
         app=pulumi.get(__ret__, 'app'),
@@ -370,7 +370,7 @@ def get_attack_logs_output(app: Optional[pulumi.Input[Optional[_builtins.str]]] 
     __args__['srcRegionName'] = src_region_name
     __args__['startTime'] = start_time
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Cfw/getAttackLogs:getAttackLogs', __args__, opts=opts, typ=GetAttackLogsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Cfw/getAttackLogs:getAttackLogs', __args__, opts=opts, typ=GetAttackLogsResult)
     return __ret__.apply(lambda __response__: GetAttackLogsResult(
         app=pulumi.get(__response__, 'app'),
         attack_rule=pulumi.get(__response__, 'attack_rule'),

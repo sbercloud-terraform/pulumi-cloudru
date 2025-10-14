@@ -256,7 +256,7 @@ class _CbrCheckpointState:
         pulumi.set(self, "vault_id", value)
 
 
-@pulumi.type_token("sbercloud:index/cbrCheckpoint:CbrCheckpoint")
+@pulumi.type_token("cloudru:index/cbrCheckpoint:CbrCheckpoint")
 class CbrCheckpoint(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -331,7 +331,7 @@ class CbrCheckpoint(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["status"] = None
         super(CbrCheckpoint, __self__).__init__(
-            'sbercloud:index/cbrCheckpoint:CbrCheckpoint',
+            'cloudru:index/cbrCheckpoint:CbrCheckpoint',
             resource_name,
             __props__,
             opts)

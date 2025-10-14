@@ -20,14 +20,14 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "sbercloud:Mrs/cluster:cluster":
+            case "cloudru:Mrs/cluster:cluster":
                 return new Cluster(name, <any>undefined, { urn })
-            case "sbercloud:Mrs/job:Job":
+            case "cloudru:Mrs/job:Job":
                 return new Job(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("sbercloud", "Mrs/cluster", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Mrs/job", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Mrs/cluster", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Mrs/job", _module)

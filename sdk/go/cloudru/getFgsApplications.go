@@ -14,7 +14,7 @@ import (
 func GetFgsApplications(ctx *pulumi.Context, args *GetFgsApplicationsArgs, opts ...pulumi.InvokeOption) (*GetFgsApplicationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFgsApplicationsResult
-	err := ctx.Invoke("sbercloud:index/getFgsApplications:getFgsApplications", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getFgsApplications:getFgsApplications", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -47,7 +47,7 @@ func GetFgsApplicationsOutput(ctx *pulumi.Context, args GetFgsApplicationsOutput
 		ApplyT(func(v interface{}) (GetFgsApplicationsResultOutput, error) {
 			args := v.(GetFgsApplicationsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getFgsApplications:getFgsApplications", args, GetFgsApplicationsResultOutput{}, options).(GetFgsApplicationsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getFgsApplications:getFgsApplications", args, GetFgsApplicationsResultOutput{}, options).(GetFgsApplicationsResultOutput), nil
 		}).(GetFgsApplicationsResultOutput)
 }
 

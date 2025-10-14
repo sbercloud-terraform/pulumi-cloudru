@@ -175,7 +175,7 @@ def get_pg_sql_limits(db_name: Optional[_builtins.str] = None,
     __args__['searchPath'] = search_path
     __args__['sqlLimitId'] = sql_limit_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Rds/getPgSqlLimits:getPgSqlLimits', __args__, opts=opts, typ=GetPgSqlLimitsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Rds/getPgSqlLimits:getPgSqlLimits', __args__, opts=opts, typ=GetPgSqlLimitsResult).value
 
     return AwaitableGetPgSqlLimitsResult(
         db_name=pulumi.get(__ret__, 'db_name'),
@@ -216,7 +216,7 @@ def get_pg_sql_limits_output(db_name: Optional[pulumi.Input[_builtins.str]] = No
     __args__['searchPath'] = search_path
     __args__['sqlLimitId'] = sql_limit_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Rds/getPgSqlLimits:getPgSqlLimits', __args__, opts=opts, typ=GetPgSqlLimitsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Rds/getPgSqlLimits:getPgSqlLimits', __args__, opts=opts, typ=GetPgSqlLimitsResult)
     return __ret__.apply(lambda __response__: GetPgSqlLimitsResult(
         db_name=pulumi.get(__response__, 'db_name'),
         id=pulumi.get(__response__, 'id'),

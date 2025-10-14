@@ -34,7 +34,7 @@ func NewGroupMembership(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GroupMembership
-	err := ctx.RegisterResource("sbercloud:Iam/groupMembership:GroupMembership", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Iam/groupMembership:GroupMembership", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -46,7 +46,7 @@ func NewGroupMembership(ctx *pulumi.Context,
 func GetGroupMembership(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *GroupMembershipState, opts ...pulumi.ResourceOption) (*GroupMembership, error) {
 	var resource GroupMembership
-	err := ctx.ReadResource("sbercloud:Iam/groupMembership:GroupMembership", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Iam/groupMembership:GroupMembership", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

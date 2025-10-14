@@ -109,7 +109,7 @@ def get_quotas(instance_id: Optional[_builtins.str] = None,
     __args__['routeTableId'] = route_table_id
     __args__['type'] = type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Er/getQuotas:getQuotas', __args__, opts=opts, typ=GetQuotasResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Er/getQuotas:getQuotas', __args__, opts=opts, typ=GetQuotasResult).value
 
     return AwaitableGetQuotasResult(
         id=pulumi.get(__ret__, 'id'),
@@ -132,7 +132,7 @@ def get_quotas_output(instance_id: Optional[pulumi.Input[Optional[_builtins.str]
     __args__['routeTableId'] = route_table_id
     __args__['type'] = type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Er/getQuotas:getQuotas', __args__, opts=opts, typ=GetQuotasResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Er/getQuotas:getQuotas', __args__, opts=opts, typ=GetQuotasResult)
     return __ret__.apply(lambda __response__: GetQuotasResult(
         id=pulumi.get(__response__, 'id'),
         instance_id=pulumi.get(__response__, 'instance_id'),

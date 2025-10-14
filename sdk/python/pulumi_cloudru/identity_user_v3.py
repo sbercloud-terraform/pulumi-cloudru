@@ -356,7 +356,7 @@ class _IdentityUserV3State:
         pulumi.set(self, "pwd_reset", value)
 
 
-@pulumi.type_token("sbercloud:index/identityUserV3:IdentityUserV3")
+@pulumi.type_token("cloudru:index/identityUserV3:IdentityUserV3")
 class IdentityUserV3(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -442,7 +442,7 @@ class IdentityUserV3(pulumi.CustomResource):
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(IdentityUserV3, __self__).__init__(
-            'sbercloud:index/identityUserV3:IdentityUserV3',
+            'cloudru:index/identityUserV3:IdentityUserV3',
             resource_name,
             __props__,
             opts)

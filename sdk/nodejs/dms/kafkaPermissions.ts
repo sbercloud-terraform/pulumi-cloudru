@@ -21,7 +21,7 @@ export class KafkaPermissions extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Dms/kafkaPermissions:KafkaPermissions';
+    public static readonly __pulumiType = 'cloudru:Dms/kafkaPermissions:KafkaPermissions';
 
     /**
      * Returns true if the given object is an instance of KafkaPermissions.  This is designed to work even

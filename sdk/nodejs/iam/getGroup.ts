@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 export function getGroup(args?: GetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Iam/getGroup:getGroup", {
+    return pulumi.runtime.invoke("cloudru:Iam/getGroup:getGroup", {
         "description": args.description,
         "id": args.id,
         "name": args.name,
@@ -38,7 +38,7 @@ export interface GetGroupResult {
 export function getGroupOutput(args?: GetGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Iam/getGroup:getGroup", {
+    return pulumi.runtime.invokeOutput("cloudru:Iam/getGroup:getGroup", {
         "description": args.description,
         "id": args.id,
         "name": args.name,

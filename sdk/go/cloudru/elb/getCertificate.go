@@ -14,7 +14,7 @@ import (
 func LookupCertificate(ctx *pulumi.Context, args *LookupCertificateArgs, opts ...pulumi.InvokeOption) (*LookupCertificateResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCertificateResult
-	err := ctx.Invoke("sbercloud:Elb/getCertificate:getCertificate", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Elb/getCertificate:getCertificate", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -45,7 +45,7 @@ func LookupCertificateOutput(ctx *pulumi.Context, args LookupCertificateOutputAr
 		ApplyT(func(v interface{}) (LookupCertificateResultOutput, error) {
 			args := v.(LookupCertificateArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Elb/getCertificate:getCertificate", args, LookupCertificateResultOutput{}, options).(LookupCertificateResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Elb/getCertificate:getCertificate", args, LookupCertificateResultOutput{}, options).(LookupCertificateResultOutput), nil
 		}).(LookupCertificateResultOutput)
 }
 

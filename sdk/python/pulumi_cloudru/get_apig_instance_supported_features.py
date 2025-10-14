@@ -86,7 +86,7 @@ def get_apig_instance_supported_features(instance_id: Optional[_builtins.str] = 
     __args__['instanceId'] = instance_id
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getApigInstanceSupportedFeatures:getApigInstanceSupportedFeatures', __args__, opts=opts, typ=GetApigInstanceSupportedFeaturesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getApigInstanceSupportedFeatures:getApigInstanceSupportedFeatures', __args__, opts=opts, typ=GetApigInstanceSupportedFeaturesResult).value
 
     return AwaitableGetApigInstanceSupportedFeaturesResult(
         features=pulumi.get(__ret__, 'features'),
@@ -103,7 +103,7 @@ def get_apig_instance_supported_features_output(instance_id: Optional[pulumi.Inp
     __args__['instanceId'] = instance_id
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getApigInstanceSupportedFeatures:getApigInstanceSupportedFeatures', __args__, opts=opts, typ=GetApigInstanceSupportedFeaturesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getApigInstanceSupportedFeatures:getApigInstanceSupportedFeatures', __args__, opts=opts, typ=GetApigInstanceSupportedFeaturesResult)
     return __ret__.apply(lambda __response__: GetApigInstanceSupportedFeaturesResult(
         features=pulumi.get(__response__, 'features'),
         id=pulumi.get(__response__, 'id'),

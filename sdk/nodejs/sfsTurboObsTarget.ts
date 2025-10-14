@@ -21,7 +21,7 @@ export class SfsTurboObsTarget extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/sfsTurboObsTarget:SfsTurboObsTarget';
+    public static readonly __pulumiType = 'cloudru:index/sfsTurboObsTarget:SfsTurboObsTarget';
 
     /**
      * Returns true if the given object is an instance of SfsTurboObsTarget.  This is designed to work even

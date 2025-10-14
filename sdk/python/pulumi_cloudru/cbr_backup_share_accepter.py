@@ -142,7 +142,7 @@ class _CbrBackupShareAccepterState:
         pulumi.set(self, "vault_id", value)
 
 
-@pulumi.type_token("sbercloud:index/cbrBackupShareAccepter:CbrBackupShareAccepter")
+@pulumi.type_token("cloudru:index/cbrBackupShareAccepter:CbrBackupShareAccepter")
 class CbrBackupShareAccepter(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -204,7 +204,7 @@ class CbrBackupShareAccepter(pulumi.CustomResource):
             __props__.__dict__["vault_id"] = vault_id
             __props__.__dict__["source_project_id"] = None
         super(CbrBackupShareAccepter, __self__).__init__(
-            'sbercloud:index/cbrBackupShareAccepter:CbrBackupShareAccepter',
+            'cloudru:index/cbrBackupShareAccepter:CbrBackupShareAccepter',
             resource_name,
             __props__,
             opts)

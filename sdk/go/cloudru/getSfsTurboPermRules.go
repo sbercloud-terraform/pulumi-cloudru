@@ -14,7 +14,7 @@ import (
 func GetSfsTurboPermRules(ctx *pulumi.Context, args *GetSfsTurboPermRulesArgs, opts ...pulumi.InvokeOption) (*GetSfsTurboPermRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSfsTurboPermRulesResult
-	err := ctx.Invoke("sbercloud:index/getSfsTurboPermRules:getSfsTurboPermRules", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getSfsTurboPermRules:getSfsTurboPermRules", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -41,7 +41,7 @@ func GetSfsTurboPermRulesOutput(ctx *pulumi.Context, args GetSfsTurboPermRulesOu
 		ApplyT(func(v interface{}) (GetSfsTurboPermRulesResultOutput, error) {
 			args := v.(GetSfsTurboPermRulesArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getSfsTurboPermRules:getSfsTurboPermRules", args, GetSfsTurboPermRulesResultOutput{}, options).(GetSfsTurboPermRulesResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getSfsTurboPermRules:getSfsTurboPermRules", args, GetSfsTurboPermRulesResultOutput{}, options).(GetSfsTurboPermRulesResultOutput), nil
 		}).(GetSfsTurboPermRulesResultOutput)
 }
 

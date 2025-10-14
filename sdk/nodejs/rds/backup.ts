@@ -21,7 +21,7 @@ export class Backup extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Rds/backup:Backup';
+    public static readonly __pulumiType = 'cloudru:Rds/backup:Backup';
 
     /**
      * Returns true if the given object is an instance of Backup.  This is designed to work even

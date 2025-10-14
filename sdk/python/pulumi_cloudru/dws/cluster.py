@@ -974,7 +974,7 @@ class _ClusterState:
         pulumi.set(self, "vpc_id", value)
 
 
-@pulumi.type_token("sbercloud:Dws/cluster:Cluster")
+@pulumi.type_token("cloudru:Dws/cluster:Cluster")
 class Cluster(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -1145,7 +1145,7 @@ class Cluster(pulumi.CustomResource):
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["userPwd"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Cluster, __self__).__init__(
-            'sbercloud:Dws/cluster:Cluster',
+            'cloudru:Dws/cluster:Cluster',
             resource_name,
             __props__,
             opts)

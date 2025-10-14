@@ -38,7 +38,7 @@ func NewProvider(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
-	err := ctx.RegisterResource("sbercloud:Iam/provider:Provider", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Iam/provider:Provider", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -50,7 +50,7 @@ func NewProvider(ctx *pulumi.Context,
 func GetProvider(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ProviderState, opts ...pulumi.ResourceOption) (*Provider, error) {
 	var resource Provider
-	err := ctx.ReadResource("sbercloud:Iam/provider:Provider", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Iam/provider:Provider", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

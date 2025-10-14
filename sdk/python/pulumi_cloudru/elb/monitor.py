@@ -379,7 +379,7 @@ class _MonitorState:
         pulumi.set(self, "url_path", value)
 
 
-@pulumi.type_token("sbercloud:Elb/monitor:Monitor")
+@pulumi.type_token("cloudru:Elb/monitor:Monitor")
 class Monitor(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -476,7 +476,7 @@ class Monitor(pulumi.CustomResource):
             __props__.__dict__["type"] = type
             __props__.__dict__["url_path"] = url_path
         super(Monitor, __self__).__init__(
-            'sbercloud:Elb/monitor:Monitor',
+            'cloudru:Elb/monitor:Monitor',
             resource_name,
             __props__,
             opts)

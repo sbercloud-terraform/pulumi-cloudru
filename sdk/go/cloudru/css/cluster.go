@@ -84,7 +84,7 @@ func NewCluster(ctx *pulumi.Context,
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Cluster
-	err := ctx.RegisterResource("sbercloud:Css/cluster:Cluster", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Css/cluster:Cluster", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -96,7 +96,7 @@ func NewCluster(ctx *pulumi.Context,
 func GetCluster(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ClusterState, opts ...pulumi.ResourceOption) (*Cluster, error) {
 	var resource Cluster
-	err := ctx.ReadResource("sbercloud:Css/cluster:Cluster", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Css/cluster:Cluster", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -14,7 +14,7 @@ import (
 func GetFlowLogs(ctx *pulumi.Context, args *GetFlowLogsArgs, opts ...pulumi.InvokeOption) (*GetFlowLogsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFlowLogsResult
-	err := ctx.Invoke("sbercloud:Cfw/getFlowLogs:getFlowLogs", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Cfw/getFlowLogs:getFlowLogs", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -71,7 +71,7 @@ func GetFlowLogsOutput(ctx *pulumi.Context, args GetFlowLogsOutputArgs, opts ...
 		ApplyT(func(v interface{}) (GetFlowLogsResultOutput, error) {
 			args := v.(GetFlowLogsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Cfw/getFlowLogs:getFlowLogs", args, GetFlowLogsResultOutput{}, options).(GetFlowLogsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Cfw/getFlowLogs:getFlowLogs", args, GetFlowLogsResultOutput{}, options).(GetFlowLogsResultOutput), nil
 		}).(GetFlowLogsResultOutput)
 }
 

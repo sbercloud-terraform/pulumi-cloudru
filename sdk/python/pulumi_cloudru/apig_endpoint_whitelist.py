@@ -126,7 +126,7 @@ class _ApigEndpointWhitelistState:
         pulumi.set(self, "whitelists", value)
 
 
-@pulumi.type_token("sbercloud:index/apigEndpointWhitelist:ApigEndpointWhitelist")
+@pulumi.type_token("cloudru:index/apigEndpointWhitelist:ApigEndpointWhitelist")
 class ApigEndpointWhitelist(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -187,7 +187,7 @@ class ApigEndpointWhitelist(pulumi.CustomResource):
                 raise TypeError("Missing required property 'whitelists'")
             __props__.__dict__["whitelists"] = whitelists
         super(ApigEndpointWhitelist, __self__).__init__(
-            'sbercloud:index/apigEndpointWhitelist:ApigEndpointWhitelist',
+            'cloudru:index/apigEndpointWhitelist:ApigEndpointWhitelist',
             resource_name,
             __props__,
             opts)

@@ -42,7 +42,7 @@ func NewFgsFunctionEvent(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FgsFunctionEvent
-	err := ctx.RegisterResource("sbercloud:index/fgsFunctionEvent:FgsFunctionEvent", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/fgsFunctionEvent:FgsFunctionEvent", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -54,7 +54,7 @@ func NewFgsFunctionEvent(ctx *pulumi.Context,
 func GetFgsFunctionEvent(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *FgsFunctionEventState, opts ...pulumi.ResourceOption) (*FgsFunctionEvent, error) {
 	var resource FgsFunctionEvent
-	err := ctx.ReadResource("sbercloud:index/fgsFunctionEvent:FgsFunctionEvent", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/fgsFunctionEvent:FgsFunctionEvent", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

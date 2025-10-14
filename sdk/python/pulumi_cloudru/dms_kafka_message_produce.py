@@ -151,7 +151,7 @@ class _DmsKafkaMessageProduceState:
         pulumi.set(self, "topic", value)
 
 
-@pulumi.type_token("sbercloud:index/dmsKafkaMessageProduce:DmsKafkaMessageProduce")
+@pulumi.type_token("cloudru:index/dmsKafkaMessageProduce:DmsKafkaMessageProduce")
 class DmsKafkaMessageProduce(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -217,7 +217,7 @@ class DmsKafkaMessageProduce(pulumi.CustomResource):
                 raise TypeError("Missing required property 'topic'")
             __props__.__dict__["topic"] = topic
         super(DmsKafkaMessageProduce, __self__).__init__(
-            'sbercloud:index/dmsKafkaMessageProduce:DmsKafkaMessageProduce',
+            'cloudru:index/dmsKafkaMessageProduce:DmsKafkaMessageProduce',
             resource_name,
             __props__,
             opts)

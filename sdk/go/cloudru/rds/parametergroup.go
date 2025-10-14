@@ -37,7 +37,7 @@ func NewParametergroup(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Parametergroup
-	err := ctx.RegisterResource("sbercloud:Rds/parametergroup:Parametergroup", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Rds/parametergroup:Parametergroup", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -49,7 +49,7 @@ func NewParametergroup(ctx *pulumi.Context,
 func GetParametergroup(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ParametergroupState, opts ...pulumi.ResourceOption) (*Parametergroup, error) {
 	var resource Parametergroup
-	err := ctx.ReadResource("sbercloud:Rds/parametergroup:Parametergroup", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Rds/parametergroup:Parametergroup", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

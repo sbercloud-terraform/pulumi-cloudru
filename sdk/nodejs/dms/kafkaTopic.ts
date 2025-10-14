@@ -21,7 +21,7 @@ export class KafkaTopic extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Dms/kafkaTopic:KafkaTopic';
+    public static readonly __pulumiType = 'cloudru:Dms/kafkaTopic:KafkaTopic';
 
     /**
      * Returns true if the given object is an instance of KafkaTopic.  This is designed to work even

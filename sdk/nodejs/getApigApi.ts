@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 export function getApigApi(args: GetApigApiArgs, opts?: pulumi.InvokeOptions): Promise<GetApigApiResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getApigApi:getApigApi", {
+    return pulumi.runtime.invoke("cloudru:index/getApigApi:getApigApi", {
         "apiId": args.apiId,
         "instanceId": args.instanceId,
         "region": args.region,
@@ -72,7 +72,7 @@ export interface GetApigApiResult {
 }
 export function getApigApiOutput(args: GetApigApiOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApigApiResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getApigApi:getApigApi", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getApigApi:getApigApi", {
         "apiId": args.apiId,
         "instanceId": args.instanceId,
         "region": args.region,

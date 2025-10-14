@@ -1024,7 +1024,7 @@ class _DmsRocketmqInstanceState:
         pulumi.set(self, "vpc_id", value)
 
 
-@pulumi.type_token("sbercloud:index/dmsRocketmqInstance:DmsRocketmqInstance")
+@pulumi.type_token("cloudru:index/dmsRocketmqInstance:DmsRocketmqInstance")
 class DmsRocketmqInstance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -1194,7 +1194,7 @@ class DmsRocketmqInstance(pulumi.CustomResource):
             __props__.__dict__["type"] = None
             __props__.__dict__["used_storage_space"] = None
         super(DmsRocketmqInstance, __self__).__init__(
-            'sbercloud:index/dmsRocketmqInstance:DmsRocketmqInstance',
+            'cloudru:index/dmsRocketmqInstance:DmsRocketmqInstance',
             resource_name,
             __props__,
             opts)

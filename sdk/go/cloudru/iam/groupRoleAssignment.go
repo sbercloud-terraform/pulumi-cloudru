@@ -37,7 +37,7 @@ func NewGroupRoleAssignment(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GroupRoleAssignment
-	err := ctx.RegisterResource("sbercloud:Iam/groupRoleAssignment:GroupRoleAssignment", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Iam/groupRoleAssignment:GroupRoleAssignment", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -49,7 +49,7 @@ func NewGroupRoleAssignment(ctx *pulumi.Context,
 func GetGroupRoleAssignment(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *GroupRoleAssignmentState, opts ...pulumi.ResourceOption) (*GroupRoleAssignment, error) {
 	var resource GroupRoleAssignment
-	err := ctx.ReadResource("sbercloud:Iam/groupRoleAssignment:GroupRoleAssignment", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Iam/groupRoleAssignment:GroupRoleAssignment", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

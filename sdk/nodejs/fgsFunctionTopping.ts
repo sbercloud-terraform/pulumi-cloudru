@@ -19,7 +19,7 @@ export class FgsFunctionTopping extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/fgsFunctionTopping:FgsFunctionTopping';
+    public static readonly __pulumiType = 'cloudru:index/fgsFunctionTopping:FgsFunctionTopping';
 
     /**
      * Returns true if the given object is an instance of FgsFunctionTopping.  This is designed to work even

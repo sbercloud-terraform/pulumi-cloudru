@@ -19,7 +19,7 @@ export class FgsLtsLogEnable extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/fgsLtsLogEnable:FgsLtsLogEnable';
+    public static readonly __pulumiType = 'cloudru:index/fgsLtsLogEnable:FgsLtsLogEnable';
 
     /**
      * Returns true if the given object is an instance of FgsLtsLogEnable.  This is designed to work even

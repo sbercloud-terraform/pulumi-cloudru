@@ -131,7 +131,7 @@ def get_propagations(attachment_id: Optional[_builtins.str] = None,
     __args__['routeTableId'] = route_table_id
     __args__['status'] = status
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Er/getPropagations:getPropagations', __args__, opts=opts, typ=GetPropagationsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Er/getPropagations:getPropagations', __args__, opts=opts, typ=GetPropagationsResult).value
 
     return AwaitableGetPropagationsResult(
         attachment_id=pulumi.get(__ret__, 'attachment_id'),
@@ -160,7 +160,7 @@ def get_propagations_output(attachment_id: Optional[pulumi.Input[Optional[_built
     __args__['routeTableId'] = route_table_id
     __args__['status'] = status
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Er/getPropagations:getPropagations', __args__, opts=opts, typ=GetPropagationsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Er/getPropagations:getPropagations', __args__, opts=opts, typ=GetPropagationsResult)
     return __ret__.apply(lambda __response__: GetPropagationsResult(
         attachment_id=pulumi.get(__response__, 'attachment_id'),
         attachment_type=pulumi.get(__response__, 'attachment_type'),

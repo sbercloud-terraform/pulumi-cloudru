@@ -70,7 +70,7 @@ func NewCaptureTask(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CaptureTask
-	err := ctx.RegisterResource("sbercloud:Cfw/captureTask:CaptureTask", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Cfw/captureTask:CaptureTask", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -82,7 +82,7 @@ func NewCaptureTask(ctx *pulumi.Context,
 func GetCaptureTask(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *CaptureTaskState, opts ...pulumi.ResourceOption) (*CaptureTask, error) {
 	var resource CaptureTask
-	err := ctx.ReadResource("sbercloud:Cfw/captureTask:CaptureTask", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Cfw/captureTask:CaptureTask", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

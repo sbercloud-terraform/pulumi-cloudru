@@ -43,7 +43,7 @@ func NewMysqlDatabaseTableRestore(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MysqlDatabaseTableRestore
-	err := ctx.RegisterResource("sbercloud:Rds/mysqlDatabaseTableRestore:MysqlDatabaseTableRestore", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Rds/mysqlDatabaseTableRestore:MysqlDatabaseTableRestore", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -55,7 +55,7 @@ func NewMysqlDatabaseTableRestore(ctx *pulumi.Context,
 func GetMysqlDatabaseTableRestore(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *MysqlDatabaseTableRestoreState, opts ...pulumi.ResourceOption) (*MysqlDatabaseTableRestore, error) {
 	var resource MysqlDatabaseTableRestore
-	err := ctx.ReadResource("sbercloud:Rds/mysqlDatabaseTableRestore:MysqlDatabaseTableRestore", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Rds/mysqlDatabaseTableRestore:MysqlDatabaseTableRestore", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -267,7 +267,7 @@ class _PvcState:
         pulumi.set(self, "storage_class_name", value)
 
 
-@pulumi.type_token("sbercloud:Cce/pvc:Pvc")
+@pulumi.type_token("cloudru:Cce/pvc:Pvc")
 class Pvc(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -351,7 +351,7 @@ class Pvc(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["status"] = None
         super(Pvc, __self__).__init__(
-            'sbercloud:Cce/pvc:Pvc',
+            'cloudru:Cce/pvc:Pvc',
             resource_name,
             __props__,
             opts)

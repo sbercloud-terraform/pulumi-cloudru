@@ -80,7 +80,7 @@ class _ProviderConversionState:
         pulumi.set(self, "provider_id", value)
 
 
-@pulumi.type_token("sbercloud:Iam/providerConversion:ProviderConversion")
+@pulumi.type_token("cloudru:Iam/providerConversion:ProviderConversion")
 class ProviderConversion(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -135,7 +135,7 @@ class ProviderConversion(pulumi.CustomResource):
                 raise TypeError("Missing required property 'provider_id'")
             __props__.__dict__["provider_id"] = provider_id
         super(ProviderConversion, __self__).__init__(
-            'sbercloud:Iam/providerConversion:ProviderConversion',
+            'cloudru:Iam/providerConversion:ProviderConversion',
             resource_name,
             __props__,
             opts)

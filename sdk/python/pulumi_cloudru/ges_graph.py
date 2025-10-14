@@ -772,7 +772,7 @@ class _GesGraphState:
         pulumi.set(self, "vpc_id", value)
 
 
-@pulumi.type_token("sbercloud:index/gesGraph:GesGraph")
+@pulumi.type_token("cloudru:index/gesGraph:GesGraph")
 class GesGraph(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -918,7 +918,7 @@ class GesGraph(pulumi.CustomResource):
             __props__.__dict__["status"] = None
             __props__.__dict__["traffic_ip_lists"] = None
         super(GesGraph, __self__).__init__(
-            'sbercloud:index/gesGraph:GesGraph',
+            'cloudru:index/gesGraph:GesGraph',
             resource_name,
             __props__,
             opts)

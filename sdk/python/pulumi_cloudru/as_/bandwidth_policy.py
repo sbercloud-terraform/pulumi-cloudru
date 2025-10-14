@@ -423,7 +423,7 @@ class _BandwidthPolicyState:
         pulumi.set(self, "status", value)
 
 
-@pulumi.type_token("sbercloud:As/bandwidthPolicy:BandwidthPolicy")
+@pulumi.type_token("cloudru:As/bandwidthPolicy:BandwidthPolicy")
 class BandwidthPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -519,7 +519,7 @@ class BandwidthPolicy(pulumi.CustomResource):
             __props__.__dict__["scaling_resource_type"] = None
             __props__.__dict__["status"] = None
         super(BandwidthPolicy, __self__).__init__(
-            'sbercloud:As/bandwidthPolicy:BandwidthPolicy',
+            'cloudru:As/bandwidthPolicy:BandwidthPolicy',
             resource_name,
             __props__,
             opts)

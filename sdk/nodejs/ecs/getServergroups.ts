@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 export function getServergroups(args?: GetServergroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetServergroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Ecs/getServergroups:getServergroups", {
+    return pulumi.runtime.invoke("cloudru:Ecs/getServergroups:getServergroups", {
         "name": args.name,
         "region": args.region,
     }, opts);
@@ -38,7 +38,7 @@ export interface GetServergroupsResult {
 export function getServergroupsOutput(args?: GetServergroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServergroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Ecs/getServergroups:getServergroups", {
+    return pulumi.runtime.invokeOutput("cloudru:Ecs/getServergroups:getServergroups", {
         "name": args.name,
         "region": args.region,
     }, opts);

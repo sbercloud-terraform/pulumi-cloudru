@@ -61,7 +61,7 @@ func NewApigChannel(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApigChannel
-	err := ctx.RegisterResource("sbercloud:index/apigChannel:ApigChannel", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/apigChannel:ApigChannel", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -73,7 +73,7 @@ func NewApigChannel(ctx *pulumi.Context,
 func GetApigChannel(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ApigChannelState, opts ...pulumi.ResourceOption) (*ApigChannel, error) {
 	var resource ApigChannel
-	err := ctx.ReadResource("sbercloud:index/apigChannel:ApigChannel", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/apigChannel:ApigChannel", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

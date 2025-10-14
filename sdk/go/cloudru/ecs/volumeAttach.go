@@ -37,7 +37,7 @@ func NewVolumeAttach(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource VolumeAttach
-	err := ctx.RegisterResource("sbercloud:Ecs/volumeAttach:VolumeAttach", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Ecs/volumeAttach:VolumeAttach", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -49,7 +49,7 @@ func NewVolumeAttach(ctx *pulumi.Context,
 func GetVolumeAttach(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *VolumeAttachState, opts ...pulumi.ResourceOption) (*VolumeAttach, error) {
 	var resource VolumeAttach
-	err := ctx.ReadResource("sbercloud:Ecs/volumeAttach:VolumeAttach", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Ecs/volumeAttach:VolumeAttach", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

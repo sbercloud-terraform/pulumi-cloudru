@@ -365,7 +365,7 @@ class _SecgroupRuleState:
         pulumi.set(self, "security_group_id", value)
 
 
-@pulumi.type_token("sbercloud:Vpc/secgroupRule:SecgroupRule")
+@pulumi.type_token("cloudru:Vpc/secgroupRule:SecgroupRule")
 class SecgroupRule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -458,7 +458,7 @@ class SecgroupRule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'security_group_id'")
             __props__.__dict__["security_group_id"] = security_group_id
         super(SecgroupRule, __self__).__init__(
-            'sbercloud:Vpc/secgroupRule:SecgroupRule',
+            'cloudru:Vpc/secgroupRule:SecgroupRule',
             resource_name,
             __props__,
             opts)

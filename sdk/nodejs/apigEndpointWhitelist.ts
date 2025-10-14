@@ -19,7 +19,7 @@ export class ApigEndpointWhitelist extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/apigEndpointWhitelist:ApigEndpointWhitelist';
+    public static readonly __pulumiType = 'cloudru:index/apigEndpointWhitelist:ApigEndpointWhitelist';
 
     /**
      * Returns true if the given object is an instance of ApigEndpointWhitelist.  This is designed to work even

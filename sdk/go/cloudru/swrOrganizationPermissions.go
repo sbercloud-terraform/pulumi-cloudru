@@ -37,7 +37,7 @@ func NewSwrOrganizationPermissions(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SwrOrganizationPermissions
-	err := ctx.RegisterResource("sbercloud:index/swrOrganizationPermissions:SwrOrganizationPermissions", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/swrOrganizationPermissions:SwrOrganizationPermissions", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -49,7 +49,7 @@ func NewSwrOrganizationPermissions(ctx *pulumi.Context,
 func GetSwrOrganizationPermissions(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *SwrOrganizationPermissionsState, opts ...pulumi.ResourceOption) (*SwrOrganizationPermissions, error) {
 	var resource SwrOrganizationPermissions
-	err := ctx.ReadResource("sbercloud:index/swrOrganizationPermissions:SwrOrganizationPermissions", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/swrOrganizationPermissions:SwrOrganizationPermissions", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

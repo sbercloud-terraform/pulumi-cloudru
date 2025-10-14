@@ -20,14 +20,14 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "sbercloud:SharedApig/api:Api":
+            case "cloudru:SharedApig/api:Api":
                 return new Api(name, <any>undefined, { urn })
-            case "sbercloud:SharedApig/group:Group":
+            case "cloudru:SharedApig/group:Group":
                 return new Group(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("sbercloud", "SharedApig/api", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "SharedApig/group", _module)
+pulumi.runtime.registerResourceModule("cloudru", "SharedApig/api", _module)
+pulumi.runtime.registerResourceModule("cloudru", "SharedApig/group", _module)

@@ -14,7 +14,7 @@ import (
 func GetTags(ctx *pulumi.Context, args *GetTagsArgs, opts ...pulumi.InvokeOption) (*GetTagsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTagsResult
-	err := ctx.Invoke("sbercloud:Cfw/getTags:getTags", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Cfw/getTags:getTags", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -39,7 +39,7 @@ func GetTagsOutput(ctx *pulumi.Context, args GetTagsOutputArgs, opts ...pulumi.I
 		ApplyT(func(v interface{}) (GetTagsResultOutput, error) {
 			args := v.(GetTagsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Cfw/getTags:getTags", args, GetTagsResultOutput{}, options).(GetTagsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Cfw/getTags:getTags", args, GetTagsResultOutput{}, options).(GetTagsResultOutput), nil
 		}).(GetTagsResultOutput)
 }
 

@@ -224,7 +224,7 @@ class _AclState:
         pulumi.set(self, "subnets", value)
 
 
-@pulumi.type_token("sbercloud:NetworkAcl/acl:Acl")
+@pulumi.type_token("cloudru:NetworkAcl/acl:Acl")
 class Acl(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -291,7 +291,7 @@ class Acl(pulumi.CustomResource):
             __props__.__dict__["ports"] = None
             __props__.__dict__["status"] = None
         super(Acl, __self__).__init__(
-            'sbercloud:NetworkAcl/acl:Acl',
+            'cloudru:NetworkAcl/acl:Acl',
             resource_name,
             __props__,
             opts)

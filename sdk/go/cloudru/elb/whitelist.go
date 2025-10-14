@@ -35,7 +35,7 @@ func NewWhitelist(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Whitelist
-	err := ctx.RegisterResource("sbercloud:Elb/whitelist:Whitelist", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Elb/whitelist:Whitelist", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -47,7 +47,7 @@ func NewWhitelist(ctx *pulumi.Context,
 func GetWhitelist(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *WhitelistState, opts ...pulumi.ResourceOption) (*Whitelist, error) {
 	var resource Whitelist
-	err := ctx.ReadResource("sbercloud:Elb/whitelist:Whitelist", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Elb/whitelist:Whitelist", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

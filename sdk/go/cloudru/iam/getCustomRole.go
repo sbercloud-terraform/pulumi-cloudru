@@ -14,7 +14,7 @@ import (
 func GetCustomRole(ctx *pulumi.Context, args *GetCustomRoleArgs, opts ...pulumi.InvokeOption) (*GetCustomRoleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCustomRoleResult
-	err := ctx.Invoke("sbercloud:Iam/getCustomRole:getCustomRole", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Iam/getCustomRole:getCustomRole", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -48,7 +48,7 @@ func GetCustomRoleOutput(ctx *pulumi.Context, args GetCustomRoleOutputArgs, opts
 		ApplyT(func(v interface{}) (GetCustomRoleResultOutput, error) {
 			args := v.(GetCustomRoleArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Iam/getCustomRole:getCustomRole", args, GetCustomRoleResultOutput{}, options).(GetCustomRoleResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Iam/getCustomRole:getCustomRole", args, GetCustomRoleResultOutput{}, options).(GetCustomRoleResultOutput), nil
 		}).(GetCustomRoleResultOutput)
 }
 

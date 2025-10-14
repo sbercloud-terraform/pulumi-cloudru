@@ -176,7 +176,7 @@ class _AddonState:
         pulumi.set(self, "version", value)
 
 
-@pulumi.type_token("sbercloud:Cce/addon:Addon")
+@pulumi.type_token("cloudru:Cce/addon:Addon")
 class Addon(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -242,7 +242,7 @@ class Addon(pulumi.CustomResource):
             __props__.__dict__["description"] = None
             __props__.__dict__["status"] = None
         super(Addon, __self__).__init__(
-            'sbercloud:Cce/addon:Addon',
+            'cloudru:Cce/addon:Addon',
             resource_name,
             __props__,
             opts)

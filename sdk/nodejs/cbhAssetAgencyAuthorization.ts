@@ -19,7 +19,7 @@ export class CbhAssetAgencyAuthorization extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/cbhAssetAgencyAuthorization:CbhAssetAgencyAuthorization';
+    public static readonly __pulumiType = 'cloudru:index/cbhAssetAgencyAuthorization:CbhAssetAgencyAuthorization';
 
     /**
      * Returns true if the given object is an instance of CbhAssetAgencyAuthorization.  This is designed to work even

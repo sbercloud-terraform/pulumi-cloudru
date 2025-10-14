@@ -807,7 +807,7 @@ class _VaultState:
         pulumi.set(self, "used", value)
 
 
-@pulumi.type_token("sbercloud:Cbr/vault:Vault")
+@pulumi.type_token("cloudru:Cbr/vault:Vault")
 class Vault(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -949,7 +949,7 @@ class Vault(pulumi.CustomResource):
             __props__.__dict__["storage"] = None
             __props__.__dict__["used"] = None
         super(Vault, __self__).__init__(
-            'sbercloud:Cbr/vault:Vault',
+            'cloudru:Cbr/vault:Vault',
             resource_name,
             __props__,
             opts)

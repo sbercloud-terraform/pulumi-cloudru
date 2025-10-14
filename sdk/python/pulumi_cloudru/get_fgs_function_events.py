@@ -87,7 +87,7 @@ def get_fgs_function_events(function_urn: Optional[_builtins.str] = None,
     __args__['functionUrn'] = function_urn
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getFgsFunctionEvents:getFgsFunctionEvents', __args__, opts=opts, typ=GetFgsFunctionEventsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getFgsFunctionEvents:getFgsFunctionEvents', __args__, opts=opts, typ=GetFgsFunctionEventsResult).value
 
     return AwaitableGetFgsFunctionEventsResult(
         events=pulumi.get(__ret__, 'events'),
@@ -104,7 +104,7 @@ def get_fgs_function_events_output(function_urn: Optional[pulumi.Input[_builtins
     __args__['functionUrn'] = function_urn
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getFgsFunctionEvents:getFgsFunctionEvents', __args__, opts=opts, typ=GetFgsFunctionEventsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getFgsFunctionEvents:getFgsFunctionEvents', __args__, opts=opts, typ=GetFgsFunctionEventsResult)
     return __ret__.apply(lambda __response__: GetFgsFunctionEventsResult(
         events=pulumi.get(__response__, 'events'),
         function_urn=pulumi.get(__response__, 'function_urn'),

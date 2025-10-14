@@ -170,7 +170,7 @@ class _GroupState:
         pulumi.set(self, "ttl_in_days", value)
 
 
-@pulumi.type_token("sbercloud:Lts/group:Group")
+@pulumi.type_token("cloudru:Lts/group:Group")
 class Group(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -236,7 +236,7 @@ class Group(pulumi.CustomResource):
             __props__.__dict__["ttl_in_days"] = ttl_in_days
             __props__.__dict__["created_at"] = None
         super(Group, __self__).__init__(
-            'sbercloud:Lts/group:Group',
+            'cloudru:Lts/group:Group',
             resource_name,
             __props__,
             opts)

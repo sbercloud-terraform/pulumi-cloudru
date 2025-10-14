@@ -14,7 +14,7 @@ import (
 func GetApigInstanceSupportedFeatures(ctx *pulumi.Context, args *GetApigInstanceSupportedFeaturesArgs, opts ...pulumi.InvokeOption) (*GetApigInstanceSupportedFeaturesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetApigInstanceSupportedFeaturesResult
-	err := ctx.Invoke("sbercloud:index/getApigInstanceSupportedFeatures:getApigInstanceSupportedFeatures", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getApigInstanceSupportedFeatures:getApigInstanceSupportedFeatures", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -41,7 +41,7 @@ func GetApigInstanceSupportedFeaturesOutput(ctx *pulumi.Context, args GetApigIns
 		ApplyT(func(v interface{}) (GetApigInstanceSupportedFeaturesResultOutput, error) {
 			args := v.(GetApigInstanceSupportedFeaturesArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getApigInstanceSupportedFeatures:getApigInstanceSupportedFeatures", args, GetApigInstanceSupportedFeaturesResultOutput{}, options).(GetApigInstanceSupportedFeaturesResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getApigInstanceSupportedFeatures:getApigInstanceSupportedFeatures", args, GetApigInstanceSupportedFeaturesResultOutput{}, options).(GetApigInstanceSupportedFeaturesResultOutput), nil
 		}).(GetApigInstanceSupportedFeaturesResultOutput)
 }
 

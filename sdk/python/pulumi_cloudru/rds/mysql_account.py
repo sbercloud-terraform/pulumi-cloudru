@@ -214,7 +214,7 @@ class _MysqlAccountState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:Rds/mysqlAccount:MysqlAccount")
+@pulumi.type_token("cloudru:Rds/mysqlAccount:MysqlAccount")
 class MysqlAccount(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -288,7 +288,7 @@ class MysqlAccount(pulumi.CustomResource):
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(MysqlAccount, __self__).__init__(
-            'sbercloud:Rds/mysqlAccount:MysqlAccount',
+            'cloudru:Rds/mysqlAccount:MysqlAccount',
             resource_name,
             __props__,
             opts)

@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 export function getPort(args?: GetPortArgs, opts?: pulumi.InvokeOptions): Promise<GetPortResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Vpc/getPort:getPort", {
+    return pulumi.runtime.invoke("cloudru:Vpc/getPort:getPort", {
         "adminStateUp": args.adminStateUp,
         "deviceId": args.deviceId,
         "deviceOwner": args.deviceOwner,
@@ -89,7 +89,7 @@ export interface GetPortResult {
 export function getPortOutput(args?: GetPortOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPortResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Vpc/getPort:getPort", {
+    return pulumi.runtime.invokeOutput("cloudru:Vpc/getPort:getPort", {
         "adminStateUp": args.adminStateUp,
         "deviceId": args.deviceId,
         "deviceOwner": args.deviceOwner,

@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 export function getDmsKafkaUsers(args: GetDmsKafkaUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetDmsKafkaUsersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getDmsKafkaUsers:getDmsKafkaUsers", {
+    return pulumi.runtime.invoke("cloudru:index/getDmsKafkaUsers:getDmsKafkaUsers", {
         "description": args.description,
         "instanceId": args.instanceId,
         "name": args.name,
@@ -42,7 +42,7 @@ export interface GetDmsKafkaUsersResult {
 }
 export function getDmsKafkaUsersOutput(args: GetDmsKafkaUsersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDmsKafkaUsersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getDmsKafkaUsers:getDmsKafkaUsers", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getDmsKafkaUsers:getDmsKafkaUsers", {
         "description": args.description,
         "instanceId": args.instanceId,
         "name": args.name,

@@ -175,7 +175,7 @@ def get_flow_logs(enabled: Optional[_builtins.str] = None,
     __args__['resourceType'] = resource_type
     __args__['status'] = status
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Er/getFlowLogs:getFlowLogs', __args__, opts=opts, typ=GetFlowLogsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Er/getFlowLogs:getFlowLogs', __args__, opts=opts, typ=GetFlowLogsResult).value
 
     return AwaitableGetFlowLogsResult(
         enabled=pulumi.get(__ret__, 'enabled'),
@@ -216,7 +216,7 @@ def get_flow_logs_output(enabled: Optional[pulumi.Input[Optional[_builtins.str]]
     __args__['resourceType'] = resource_type
     __args__['status'] = status
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Er/getFlowLogs:getFlowLogs', __args__, opts=opts, typ=GetFlowLogsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Er/getFlowLogs:getFlowLogs', __args__, opts=opts, typ=GetFlowLogsResult)
     return __ret__.apply(lambda __response__: GetFlowLogsResult(
         enabled=pulumi.get(__response__, 'enabled'),
         flow_log_id=pulumi.get(__response__, 'flow_log_id'),

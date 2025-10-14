@@ -120,7 +120,7 @@ def get_dms_rocketmq_instances(exact_match_name: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['status'] = status
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getDmsRocketmqInstances:getDmsRocketmqInstances', __args__, opts=opts, typ=GetDmsRocketmqInstancesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getDmsRocketmqInstances:getDmsRocketmqInstances', __args__, opts=opts, typ=GetDmsRocketmqInstancesResult).value
 
     return AwaitableGetDmsRocketmqInstancesResult(
         exact_match_name=pulumi.get(__ret__, 'exact_match_name'),
@@ -146,7 +146,7 @@ def get_dms_rocketmq_instances_output(exact_match_name: Optional[pulumi.Input[Op
     __args__['region'] = region
     __args__['status'] = status
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getDmsRocketmqInstances:getDmsRocketmqInstances', __args__, opts=opts, typ=GetDmsRocketmqInstancesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getDmsRocketmqInstances:getDmsRocketmqInstances', __args__, opts=opts, typ=GetDmsRocketmqInstancesResult)
     return __ret__.apply(lambda __response__: GetDmsRocketmqInstancesResult(
         exact_match_name=pulumi.get(__response__, 'exact_match_name'),
         id=pulumi.get(__response__, 'id'),

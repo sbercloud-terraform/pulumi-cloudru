@@ -14,7 +14,7 @@ import (
 func GetCbrBackup(ctx *pulumi.Context, args *GetCbrBackupArgs, opts ...pulumi.InvokeOption) (*GetCbrBackupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCbrBackupResult
-	err := ctx.Invoke("sbercloud:index/getCbrBackup:getCbrBackup", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getCbrBackup:getCbrBackup", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -57,7 +57,7 @@ func GetCbrBackupOutput(ctx *pulumi.Context, args GetCbrBackupOutputArgs, opts .
 		ApplyT(func(v interface{}) (GetCbrBackupResultOutput, error) {
 			args := v.(GetCbrBackupArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getCbrBackup:getCbrBackup", args, GetCbrBackupResultOutput{}, options).(GetCbrBackupResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getCbrBackup:getCbrBackup", args, GetCbrBackupResultOutput{}, options).(GetCbrBackupResultOutput), nil
 		}).(GetCbrBackupResultOutput)
 }
 

@@ -20,14 +20,14 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "sbercloud:Dns/recordset:Recordset":
+            case "cloudru:Dns/recordset:Recordset":
                 return new Recordset(name, <any>undefined, { urn })
-            case "sbercloud:Dns/zone:Zone":
+            case "cloudru:Dns/zone:Zone":
                 return new Zone(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("sbercloud", "Dns/recordset", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Dns/zone", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Dns/recordset", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Dns/zone", _module)

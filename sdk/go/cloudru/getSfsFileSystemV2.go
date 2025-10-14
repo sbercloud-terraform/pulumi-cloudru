@@ -14,7 +14,7 @@ import (
 func GetSfsFileSystemV2(ctx *pulumi.Context, args *GetSfsFileSystemV2Args, opts ...pulumi.InvokeOption) (*GetSfsFileSystemV2Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSfsFileSystemV2Result
-	err := ctx.Invoke("sbercloud:index/getSfsFileSystemV2:getSfsFileSystemV2", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getSfsFileSystemV2:getSfsFileSystemV2", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -57,7 +57,7 @@ func GetSfsFileSystemV2Output(ctx *pulumi.Context, args GetSfsFileSystemV2Output
 		ApplyT(func(v interface{}) (GetSfsFileSystemV2ResultOutput, error) {
 			args := v.(GetSfsFileSystemV2Args)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getSfsFileSystemV2:getSfsFileSystemV2", args, GetSfsFileSystemV2ResultOutput{}, options).(GetSfsFileSystemV2ResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getSfsFileSystemV2:getSfsFileSystemV2", args, GetSfsFileSystemV2ResultOutput{}, options).(GetSfsFileSystemV2ResultOutput), nil
 		}).(GetSfsFileSystemV2ResultOutput)
 }
 

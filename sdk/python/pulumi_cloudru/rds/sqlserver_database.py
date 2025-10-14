@@ -151,7 +151,7 @@ class _SqlserverDatabaseState:
         pulumi.set(self, "state", value)
 
 
-@pulumi.type_token("sbercloud:Rds/sqlserverDatabase:SqlserverDatabase")
+@pulumi.type_token("cloudru:Rds/sqlserverDatabase:SqlserverDatabase")
 class SqlserverDatabase(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -211,7 +211,7 @@ class SqlserverDatabase(pulumi.CustomResource):
             __props__.__dict__["character_set"] = None
             __props__.__dict__["state"] = None
         super(SqlserverDatabase, __self__).__init__(
-            'sbercloud:Rds/sqlserverDatabase:SqlserverDatabase',
+            'cloudru:Rds/sqlserverDatabase:SqlserverDatabase',
             resource_name,
             __props__,
             opts)

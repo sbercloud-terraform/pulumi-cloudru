@@ -76,7 +76,7 @@ def get_fgs_quotas(region: Optional[_builtins.str] = None,
     __args__ = dict()
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getFgsQuotas:getFgsQuotas', __args__, opts=opts, typ=GetFgsQuotasResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getFgsQuotas:getFgsQuotas', __args__, opts=opts, typ=GetFgsQuotasResult).value
 
     return AwaitableGetFgsQuotasResult(
         id=pulumi.get(__ret__, 'id'),
@@ -90,7 +90,7 @@ def get_fgs_quotas_output(region: Optional[pulumi.Input[Optional[_builtins.str]]
     __args__ = dict()
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getFgsQuotas:getFgsQuotas', __args__, opts=opts, typ=GetFgsQuotasResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getFgsQuotas:getFgsQuotas', __args__, opts=opts, typ=GetFgsQuotasResult)
     return __ret__.apply(lambda __response__: GetFgsQuotasResult(
         id=pulumi.get(__response__, 'id'),
         quotas=pulumi.get(__response__, 'quotas'),

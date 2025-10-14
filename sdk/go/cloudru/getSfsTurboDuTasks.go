@@ -14,7 +14,7 @@ import (
 func GetSfsTurboDuTasks(ctx *pulumi.Context, args *GetSfsTurboDuTasksArgs, opts ...pulumi.InvokeOption) (*GetSfsTurboDuTasksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSfsTurboDuTasksResult
-	err := ctx.Invoke("sbercloud:index/getSfsTurboDuTasks:getSfsTurboDuTasks", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getSfsTurboDuTasks:getSfsTurboDuTasks", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -41,7 +41,7 @@ func GetSfsTurboDuTasksOutput(ctx *pulumi.Context, args GetSfsTurboDuTasksOutput
 		ApplyT(func(v interface{}) (GetSfsTurboDuTasksResultOutput, error) {
 			args := v.(GetSfsTurboDuTasksArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getSfsTurboDuTasks:getSfsTurboDuTasks", args, GetSfsTurboDuTasksResultOutput{}, options).(GetSfsTurboDuTasksResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getSfsTurboDuTasks:getSfsTurboDuTasks", args, GetSfsTurboDuTasksResultOutput{}, options).(GetSfsTurboDuTasksResultOutput), nil
 		}).(GetSfsTurboDuTasksResultOutput)
 }
 

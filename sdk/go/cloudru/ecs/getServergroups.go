@@ -14,7 +14,7 @@ import (
 func GetServergroups(ctx *pulumi.Context, args *GetServergroupsArgs, opts ...pulumi.InvokeOption) (*GetServergroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServergroupsResult
-	err := ctx.Invoke("sbercloud:Ecs/getServergroups:getServergroups", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Ecs/getServergroups:getServergroups", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -41,7 +41,7 @@ func GetServergroupsOutput(ctx *pulumi.Context, args GetServergroupsOutputArgs, 
 		ApplyT(func(v interface{}) (GetServergroupsResultOutput, error) {
 			args := v.(GetServergroupsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Ecs/getServergroups:getServergroups", args, GetServergroupsResultOutput{}, options).(GetServergroupsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Ecs/getServergroups:getServergroups", args, GetServergroupsResultOutput{}, options).(GetServergroupsResultOutput), nil
 		}).(GetServergroupsResultOutput)
 }
 

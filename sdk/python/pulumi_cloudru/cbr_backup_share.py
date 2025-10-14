@@ -128,7 +128,7 @@ class _CbrBackupShareState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:index/cbrBackupShare:CbrBackupShare")
+@pulumi.type_token("cloudru:index/cbrBackupShare:CbrBackupShare")
 class CbrBackupShare(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -189,7 +189,7 @@ class CbrBackupShare(pulumi.CustomResource):
             __props__.__dict__["members"] = members
             __props__.__dict__["region"] = region
         super(CbrBackupShare, __self__).__init__(
-            'sbercloud:index/cbrBackupShare:CbrBackupShare',
+            'cloudru:index/cbrBackupShare:CbrBackupShare',
             resource_name,
             __props__,
             opts)

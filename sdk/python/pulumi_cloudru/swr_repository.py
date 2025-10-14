@@ -235,7 +235,7 @@ class _SwrRepositoryState:
         pulumi.set(self, "size", value)
 
 
-@pulumi.type_token("sbercloud:index/swrRepository:SwrRepository")
+@pulumi.type_token("cloudru:index/swrRepository:SwrRepository")
 class SwrRepository(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -305,7 +305,7 @@ class SwrRepository(pulumi.CustomResource):
             __props__.__dict__["repository_id"] = None
             __props__.__dict__["size"] = None
         super(SwrRepository, __self__).__init__(
-            'sbercloud:index/swrRepository:SwrRepository',
+            'cloudru:index/swrRepository:SwrRepository',
             resource_name,
             __props__,
             opts)

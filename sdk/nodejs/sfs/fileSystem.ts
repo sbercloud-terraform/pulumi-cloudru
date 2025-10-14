@@ -21,7 +21,7 @@ export class FileSystem extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Sfs/fileSystem:FileSystem';
+    public static readonly __pulumiType = 'cloudru:Sfs/fileSystem:FileSystem';
 
     /**
      * Returns true if the given object is an instance of FileSystem.  This is designed to work even

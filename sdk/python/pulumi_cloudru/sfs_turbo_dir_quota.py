@@ -214,7 +214,7 @@ class _SfsTurboDirQuotaState:
         pulumi.set(self, "used_inode", value)
 
 
-@pulumi.type_token("sbercloud:index/sfsTurboDirQuota:SfsTurboDirQuota")
+@pulumi.type_token("cloudru:index/sfsTurboDirQuota:SfsTurboDirQuota")
 class SfsTurboDirQuota(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -284,7 +284,7 @@ class SfsTurboDirQuota(pulumi.CustomResource):
             __props__.__dict__["used_capacity"] = None
             __props__.__dict__["used_inode"] = None
         super(SfsTurboDirQuota, __self__).__init__(
-            'sbercloud:index/sfsTurboDirQuota:SfsTurboDirQuota',
+            'cloudru:index/sfsTurboDirQuota:SfsTurboDirQuota',
             resource_name,
             __props__,
             opts)

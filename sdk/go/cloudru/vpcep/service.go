@@ -55,7 +55,7 @@ func NewService(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Service
-	err := ctx.RegisterResource("sbercloud:Vpcep/service:Service", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Vpcep/service:Service", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -67,7 +67,7 @@ func NewService(ctx *pulumi.Context,
 func GetService(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ServiceState, opts ...pulumi.ResourceOption) (*Service, error) {
 	var resource Service
-	err := ctx.ReadResource("sbercloud:Vpcep/service:Service", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Vpcep/service:Service", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

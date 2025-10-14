@@ -6,7 +6,7 @@ import * as utilities from "./utilities";
 
 export function getDmsRocketmqTopicConsumerGroups(args: GetDmsRocketmqTopicConsumerGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDmsRocketmqTopicConsumerGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getDmsRocketmqTopicConsumerGroups:getDmsRocketmqTopicConsumerGroups", {
+    return pulumi.runtime.invoke("cloudru:index/getDmsRocketmqTopicConsumerGroups:getDmsRocketmqTopicConsumerGroups", {
         "instanceId": args.instanceId,
         "region": args.region,
         "topicName": args.topicName,
@@ -37,7 +37,7 @@ export interface GetDmsRocketmqTopicConsumerGroupsResult {
 }
 export function getDmsRocketmqTopicConsumerGroupsOutput(args: GetDmsRocketmqTopicConsumerGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDmsRocketmqTopicConsumerGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getDmsRocketmqTopicConsumerGroups:getDmsRocketmqTopicConsumerGroups", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getDmsRocketmqTopicConsumerGroups:getDmsRocketmqTopicConsumerGroups", {
         "instanceId": args.instanceId,
         "region": args.region,
         "topicName": args.topicName,

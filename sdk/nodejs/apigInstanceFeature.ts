@@ -19,7 +19,7 @@ export class ApigInstanceFeature extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/apigInstanceFeature:ApigInstanceFeature';
+    public static readonly __pulumiType = 'cloudru:index/apigInstanceFeature:ApigInstanceFeature';
 
     /**
      * Returns true if the given object is an instance of ApigInstanceFeature.  This is designed to work even

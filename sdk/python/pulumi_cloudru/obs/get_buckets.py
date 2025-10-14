@@ -98,7 +98,7 @@ def get_buckets(bucket: Optional[_builtins.str] = None,
     __args__['enterpriseProjectId'] = enterprise_project_id
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Obs/getBuckets:getBuckets', __args__, opts=opts, typ=GetBucketsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Obs/getBuckets:getBuckets', __args__, opts=opts, typ=GetBucketsResult).value
 
     return AwaitableGetBucketsResult(
         bucket=pulumi.get(__ret__, 'bucket'),
@@ -118,7 +118,7 @@ def get_buckets_output(bucket: Optional[pulumi.Input[Optional[_builtins.str]]] =
     __args__['enterpriseProjectId'] = enterprise_project_id
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Obs/getBuckets:getBuckets', __args__, opts=opts, typ=GetBucketsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Obs/getBuckets:getBuckets', __args__, opts=opts, typ=GetBucketsResult)
     return __ret__.apply(lambda __response__: GetBucketsResult(
         bucket=pulumi.get(__response__, 'bucket'),
         buckets=pulumi.get(__response__, 'buckets'),

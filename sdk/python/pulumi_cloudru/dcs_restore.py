@@ -139,7 +139,7 @@ class _DcsRestoreState:
         pulumi.set(self, "restore_records", value)
 
 
-@pulumi.type_token("sbercloud:index/dcsRestore:DcsRestore")
+@pulumi.type_token("cloudru:index/dcsRestore:DcsRestore")
 class DcsRestore(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -203,7 +203,7 @@ class DcsRestore(pulumi.CustomResource):
             __props__.__dict__["remark"] = remark
             __props__.__dict__["restore_records"] = None
         super(DcsRestore, __self__).__init__(
-            'sbercloud:index/dcsRestore:DcsRestore',
+            'cloudru:index/dcsRestore:DcsRestore',
             resource_name,
             __props__,
             opts)

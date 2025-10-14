@@ -124,7 +124,7 @@ def get_route_table(id: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['vpcId'] = vpc_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Vpc/getRouteTable:getRouteTable', __args__, opts=opts, typ=GetRouteTableResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Vpc/getRouteTable:getRouteTable', __args__, opts=opts, typ=GetRouteTableResult).value
 
     return AwaitableGetRouteTableResult(
         default=pulumi.get(__ret__, 'default'),
@@ -149,7 +149,7 @@ def get_route_table_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] =
     __args__['region'] = region
     __args__['vpcId'] = vpc_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Vpc/getRouteTable:getRouteTable', __args__, opts=opts, typ=GetRouteTableResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Vpc/getRouteTable:getRouteTable', __args__, opts=opts, typ=GetRouteTableResult)
     return __ret__.apply(lambda __response__: GetRouteTableResult(
         default=pulumi.get(__response__, 'default'),
         description=pulumi.get(__response__, 'description'),

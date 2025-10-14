@@ -353,7 +353,7 @@ class _GroupState:
         pulumi.set(self, "url_domains", value)
 
 
-@pulumi.type_token("sbercloud:SharedApig/group:Group")
+@pulumi.type_token("cloudru:SharedApig/group:Group")
 class Group(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -436,7 +436,7 @@ class Group(pulumi.CustomResource):
             __props__.__dict__["update_time"] = None
             __props__.__dict__["updated_at"] = None
         super(Group, __self__).__init__(
-            'sbercloud:SharedApig/group:Group',
+            'cloudru:SharedApig/group:Group',
             resource_name,
             __props__,
             opts)

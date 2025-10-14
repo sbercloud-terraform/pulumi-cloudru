@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 export function getKey(args?: GetKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Dew/getKey:getKey", {
+    return pulumi.runtime.invoke("cloudru:Dew/getKey:getKey", {
         "defaultKeyFlag": args.defaultKeyFlag,
         "domainId": args.domainId,
         "enterpriseProjectId": args.enterpriseProjectId,
@@ -60,7 +60,7 @@ export interface GetKeyResult {
 export function getKeyOutput(args?: GetKeyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKeyResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Dew/getKey:getKey", {
+    return pulumi.runtime.invokeOutput("cloudru:Dew/getKey:getKey", {
         "defaultKeyFlag": args.defaultKeyFlag,
         "domainId": args.domainId,
         "enterpriseProjectId": args.enterpriseProjectId,

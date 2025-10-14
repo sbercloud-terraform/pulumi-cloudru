@@ -185,53 +185,53 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "sbercloud:Cfw/aclRule:AclRule":
+            case "cloudru:Cfw/aclRule:AclRule":
                 return new AclRule(name, <any>undefined, { urn })
-            case "sbercloud:Cfw/addressGroup:AddressGroup":
+            case "cloudru:Cfw/addressGroup:AddressGroup":
                 return new AddressGroup(name, <any>undefined, { urn })
-            case "sbercloud:Cfw/addressGroupMember:AddressGroupMember":
+            case "cloudru:Cfw/addressGroupMember:AddressGroupMember":
                 return new AddressGroupMember(name, <any>undefined, { urn })
-            case "sbercloud:Cfw/alarmConfig:AlarmConfig":
+            case "cloudru:Cfw/alarmConfig:AlarmConfig":
                 return new AlarmConfig(name, <any>undefined, { urn })
-            case "sbercloud:Cfw/antiVirus:AntiVirus":
+            case "cloudru:Cfw/antiVirus:AntiVirus":
                 return new AntiVirus(name, <any>undefined, { urn })
-            case "sbercloud:Cfw/blackWhiteList:BlackWhiteList":
+            case "cloudru:Cfw/blackWhiteList:BlackWhiteList":
                 return new BlackWhiteList(name, <any>undefined, { urn })
-            case "sbercloud:Cfw/captureTask:CaptureTask":
+            case "cloudru:Cfw/captureTask:CaptureTask":
                 return new CaptureTask(name, <any>undefined, { urn })
-            case "sbercloud:Cfw/dnsResolution:DnsResolution":
+            case "cloudru:Cfw/dnsResolution:DnsResolution":
                 return new DnsResolution(name, <any>undefined, { urn })
-            case "sbercloud:Cfw/domainNameGroup:DomainNameGroup":
+            case "cloudru:Cfw/domainNameGroup:DomainNameGroup":
                 return new DomainNameGroup(name, <any>undefined, { urn })
-            case "sbercloud:Cfw/eipProtection:EipProtection":
+            case "cloudru:Cfw/eipProtection:EipProtection":
                 return new EipProtection(name, <any>undefined, { urn })
-            case "sbercloud:Cfw/firewall:Firewall":
+            case "cloudru:Cfw/firewall:Firewall":
                 return new Firewall(name, <any>undefined, { urn })
-            case "sbercloud:Cfw/ipsRuleModeChange:IpsRuleModeChange":
+            case "cloudru:Cfw/ipsRuleModeChange:IpsRuleModeChange":
                 return new IpsRuleModeChange(name, <any>undefined, { urn })
-            case "sbercloud:Cfw/ltsLog:LtsLog":
+            case "cloudru:Cfw/ltsLog:LtsLog":
                 return new LtsLog(name, <any>undefined, { urn })
-            case "sbercloud:Cfw/serviceGroup:ServiceGroup":
+            case "cloudru:Cfw/serviceGroup:ServiceGroup":
                 return new ServiceGroup(name, <any>undefined, { urn })
-            case "sbercloud:Cfw/serviceGroupMember:ServiceGroupMember":
+            case "cloudru:Cfw/serviceGroupMember:ServiceGroupMember":
                 return new ServiceGroupMember(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("sbercloud", "Cfw/aclRule", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Cfw/addressGroup", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Cfw/addressGroupMember", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Cfw/alarmConfig", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Cfw/antiVirus", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Cfw/blackWhiteList", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Cfw/captureTask", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Cfw/dnsResolution", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Cfw/domainNameGroup", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Cfw/eipProtection", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Cfw/firewall", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Cfw/ipsRuleModeChange", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Cfw/ltsLog", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Cfw/serviceGroup", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Cfw/serviceGroupMember", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Cfw/aclRule", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Cfw/addressGroup", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Cfw/addressGroupMember", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Cfw/alarmConfig", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Cfw/antiVirus", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Cfw/blackWhiteList", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Cfw/captureTask", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Cfw/dnsResolution", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Cfw/domainNameGroup", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Cfw/eipProtection", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Cfw/firewall", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Cfw/ipsRuleModeChange", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Cfw/ltsLog", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Cfw/serviceGroup", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Cfw/serviceGroupMember", _module)

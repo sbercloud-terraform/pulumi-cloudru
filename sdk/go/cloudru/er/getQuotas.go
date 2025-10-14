@@ -14,7 +14,7 @@ import (
 func GetQuotas(ctx *pulumi.Context, args *GetQuotasArgs, opts ...pulumi.InvokeOption) (*GetQuotasResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetQuotasResult
-	err := ctx.Invoke("sbercloud:Er/getQuotas:getQuotas", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Er/getQuotas:getQuotas", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -45,7 +45,7 @@ func GetQuotasOutput(ctx *pulumi.Context, args GetQuotasOutputArgs, opts ...pulu
 		ApplyT(func(v interface{}) (GetQuotasResultOutput, error) {
 			args := v.(GetQuotasArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Er/getQuotas:getQuotas", args, GetQuotasResultOutput{}, options).(GetQuotasResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Er/getQuotas:getQuotas", args, GetQuotasResultOutput{}, options).(GetQuotasResultOutput), nil
 		}).(GetQuotasResultOutput)
 }
 

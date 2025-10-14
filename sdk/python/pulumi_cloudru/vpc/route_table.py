@@ -177,7 +177,7 @@ class _RouteTableState:
         pulumi.set(self, "vpc_id", value)
 
 
-@pulumi.type_token("sbercloud:Vpc/routeTable:RouteTable")
+@pulumi.type_token("cloudru:Vpc/routeTable:RouteTable")
 class RouteTable(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -242,7 +242,7 @@ class RouteTable(pulumi.CustomResource):
                 raise TypeError("Missing required property 'vpc_id'")
             __props__.__dict__["vpc_id"] = vpc_id
         super(RouteTable, __self__).__init__(
-            'sbercloud:Vpc/routeTable:RouteTable',
+            'cloudru:Vpc/routeTable:RouteTable',
             resource_name,
             __props__,
             opts)

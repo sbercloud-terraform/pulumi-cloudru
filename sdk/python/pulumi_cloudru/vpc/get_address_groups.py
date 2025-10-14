@@ -120,7 +120,7 @@ def get_address_groups(description: Optional[_builtins.str] = None,
     __args__['name'] = name
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Vpc/getAddressGroups:getAddressGroups', __args__, opts=opts, typ=GetAddressGroupsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Vpc/getAddressGroups:getAddressGroups', __args__, opts=opts, typ=GetAddressGroupsResult).value
 
     return AwaitableGetAddressGroupsResult(
         address_groups=pulumi.get(__ret__, 'address_groups'),
@@ -146,7 +146,7 @@ def get_address_groups_output(description: Optional[pulumi.Input[Optional[_built
     __args__['name'] = name
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Vpc/getAddressGroups:getAddressGroups', __args__, opts=opts, typ=GetAddressGroupsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Vpc/getAddressGroups:getAddressGroups', __args__, opts=opts, typ=GetAddressGroupsResult)
     return __ret__.apply(lambda __response__: GetAddressGroupsResult(
         address_groups=pulumi.get(__response__, 'address_groups'),
         description=pulumi.get(__response__, 'description'),

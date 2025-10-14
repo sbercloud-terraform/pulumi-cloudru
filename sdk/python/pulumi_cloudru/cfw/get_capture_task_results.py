@@ -156,7 +156,7 @@ def get_capture_task_results(fw_instance_id: Optional[_builtins.str] = None,
     __args__['taskId'] = task_id
     __args__['type'] = type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Cfw/getCaptureTaskResults:getCaptureTaskResults', __args__, opts=opts, typ=GetCaptureTaskResultsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Cfw/getCaptureTaskResults:getCaptureTaskResults', __args__, opts=opts, typ=GetCaptureTaskResultsResult).value
 
     return AwaitableGetCaptureTaskResultsResult(
         captcha=pulumi.get(__ret__, 'captcha'),
@@ -186,7 +186,7 @@ def get_capture_task_results_output(fw_instance_id: Optional[pulumi.Input[_built
     __args__['taskId'] = task_id
     __args__['type'] = type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Cfw/getCaptureTaskResults:getCaptureTaskResults', __args__, opts=opts, typ=GetCaptureTaskResultsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Cfw/getCaptureTaskResults:getCaptureTaskResults', __args__, opts=opts, typ=GetCaptureTaskResultsResult)
     return __ret__.apply(lambda __response__: GetCaptureTaskResultsResult(
         captcha=pulumi.get(__response__, 'captcha'),
         expires=pulumi.get(__response__, 'expires'),

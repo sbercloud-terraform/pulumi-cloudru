@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 export function getApigCustomAuthorizers(args: GetApigCustomAuthorizersArgs, opts?: pulumi.InvokeOptions): Promise<GetApigCustomAuthorizersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getApigCustomAuthorizers:getApigCustomAuthorizers", {
+    return pulumi.runtime.invoke("cloudru:index/getApigCustomAuthorizers:getApigCustomAuthorizers", {
         "authorizerId": args.authorizerId,
         "instanceId": args.instanceId,
         "name": args.name,
@@ -45,7 +45,7 @@ export interface GetApigCustomAuthorizersResult {
 }
 export function getApigCustomAuthorizersOutput(args: GetApigCustomAuthorizersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApigCustomAuthorizersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getApigCustomAuthorizers:getApigCustomAuthorizers", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getApigCustomAuthorizers:getApigCustomAuthorizers", {
         "authorizerId": args.authorizerId,
         "instanceId": args.instanceId,
         "name": args.name,

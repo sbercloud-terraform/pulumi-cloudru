@@ -428,7 +428,7 @@ def get_image(architecture: Optional[_builtins.str] = None,
     __args__['tag'] = tag
     __args__['visibility'] = visibility
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Ims/getImage:getImage', __args__, opts=opts, typ=GetImageResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Ims/getImage:getImage', __args__, opts=opts, typ=GetImageResult).value
 
     return AwaitableGetImageResult(
         active_at=pulumi.get(__ret__, 'active_at'),
@@ -513,7 +513,7 @@ def get_image_output(architecture: Optional[pulumi.Input[Optional[_builtins.str]
     __args__['tag'] = tag
     __args__['visibility'] = visibility
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Ims/getImage:getImage', __args__, opts=opts, typ=GetImageResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Ims/getImage:getImage', __args__, opts=opts, typ=GetImageResult)
     return __ret__.apply(lambda __response__: GetImageResult(
         active_at=pulumi.get(__response__, 'active_at'),
         architecture=pulumi.get(__response__, 'architecture'),

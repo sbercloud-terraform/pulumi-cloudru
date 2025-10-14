@@ -38,7 +38,7 @@ func NewVpnConnectionHealthCheck(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource VpnConnectionHealthCheck
-	err := ctx.RegisterResource("sbercloud:index/vpnConnectionHealthCheck:VpnConnectionHealthCheck", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/vpnConnectionHealthCheck:VpnConnectionHealthCheck", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -50,7 +50,7 @@ func NewVpnConnectionHealthCheck(ctx *pulumi.Context,
 func GetVpnConnectionHealthCheck(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *VpnConnectionHealthCheckState, opts ...pulumi.ResourceOption) (*VpnConnectionHealthCheck, error) {
 	var resource VpnConnectionHealthCheck
-	err := ctx.ReadResource("sbercloud:index/vpnConnectionHealthCheck:VpnConnectionHealthCheck", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/vpnConnectionHealthCheck:VpnConnectionHealthCheck", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

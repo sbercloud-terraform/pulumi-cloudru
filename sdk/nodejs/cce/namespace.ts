@@ -19,7 +19,7 @@ export class Namespace extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Cce/namespace:Namespace';
+    public static readonly __pulumiType = 'cloudru:Cce/namespace:Namespace';
 
     /**
      * Returns true if the given object is an instance of Namespace.  This is designed to work even

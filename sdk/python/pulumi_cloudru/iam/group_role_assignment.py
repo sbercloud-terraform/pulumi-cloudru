@@ -150,7 +150,7 @@ class _GroupRoleAssignmentState:
         pulumi.set(self, "role_id", value)
 
 
-@pulumi.type_token("sbercloud:Iam/groupRoleAssignment:GroupRoleAssignment")
+@pulumi.type_token("cloudru:Iam/groupRoleAssignment:GroupRoleAssignment")
 class GroupRoleAssignment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -214,7 +214,7 @@ class GroupRoleAssignment(pulumi.CustomResource):
                 raise TypeError("Missing required property 'role_id'")
             __props__.__dict__["role_id"] = role_id
         super(GroupRoleAssignment, __self__).__init__(
-            'sbercloud:Iam/groupRoleAssignment:GroupRoleAssignment',
+            'cloudru:Iam/groupRoleAssignment:GroupRoleAssignment',
             resource_name,
             __props__,
             opts)

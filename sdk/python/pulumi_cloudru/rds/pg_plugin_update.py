@@ -149,7 +149,7 @@ class _PgPluginUpdateState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:Rds/pgPluginUpdate:PgPluginUpdate")
+@pulumi.type_token("cloudru:Rds/pgPluginUpdate:PgPluginUpdate")
 class PgPluginUpdate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -215,7 +215,7 @@ class PgPluginUpdate(pulumi.CustomResource):
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["region"] = region
         super(PgPluginUpdate, __self__).__init__(
-            'sbercloud:Rds/pgPluginUpdate:PgPluginUpdate',
+            'cloudru:Rds/pgPluginUpdate:PgPluginUpdate',
             resource_name,
             __props__,
             opts)

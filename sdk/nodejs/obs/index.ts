@@ -35,17 +35,17 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "sbercloud:Obs/bucket:Bucket":
+            case "cloudru:Obs/bucket:Bucket":
                 return new Bucket(name, <any>undefined, { urn })
-            case "sbercloud:Obs/bucketObject:BucketObject":
+            case "cloudru:Obs/bucketObject:BucketObject":
                 return new BucketObject(name, <any>undefined, { urn })
-            case "sbercloud:Obs/bucketPolicy:BucketPolicy":
+            case "cloudru:Obs/bucketPolicy:BucketPolicy":
                 return new BucketPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("sbercloud", "Obs/bucket", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Obs/bucketObject", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Obs/bucketPolicy", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Obs/bucket", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Obs/bucketObject", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Obs/bucketPolicy", _module)

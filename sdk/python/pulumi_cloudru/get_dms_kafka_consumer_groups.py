@@ -142,7 +142,7 @@ def get_dms_kafka_consumer_groups(coordinator_id: Optional[_builtins.int] = None
     __args__['region'] = region
     __args__['state'] = state
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getDmsKafkaConsumerGroups:getDmsKafkaConsumerGroups', __args__, opts=opts, typ=GetDmsKafkaConsumerGroupsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getDmsKafkaConsumerGroups:getDmsKafkaConsumerGroups', __args__, opts=opts, typ=GetDmsKafkaConsumerGroupsResult).value
 
     return AwaitableGetDmsKafkaConsumerGroupsResult(
         coordinator_id=pulumi.get(__ret__, 'coordinator_id'),
@@ -174,7 +174,7 @@ def get_dms_kafka_consumer_groups_output(coordinator_id: Optional[pulumi.Input[O
     __args__['region'] = region
     __args__['state'] = state
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getDmsKafkaConsumerGroups:getDmsKafkaConsumerGroups', __args__, opts=opts, typ=GetDmsKafkaConsumerGroupsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getDmsKafkaConsumerGroups:getDmsKafkaConsumerGroups', __args__, opts=opts, typ=GetDmsKafkaConsumerGroupsResult)
     return __ret__.apply(lambda __response__: GetDmsKafkaConsumerGroupsResult(
         coordinator_id=pulumi.get(__response__, 'coordinator_id'),
         description=pulumi.get(__response__, 'description'),

@@ -120,7 +120,7 @@ def get_apig_endpoint_connections(endpoint_id: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['status'] = status
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getApigEndpointConnections:getApigEndpointConnections', __args__, opts=opts, typ=GetApigEndpointConnectionsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getApigEndpointConnections:getApigEndpointConnections', __args__, opts=opts, typ=GetApigEndpointConnectionsResult).value
 
     return AwaitableGetApigEndpointConnectionsResult(
         connections=pulumi.get(__ret__, 'connections'),
@@ -146,7 +146,7 @@ def get_apig_endpoint_connections_output(endpoint_id: Optional[pulumi.Input[Opti
     __args__['region'] = region
     __args__['status'] = status
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getApigEndpointConnections:getApigEndpointConnections', __args__, opts=opts, typ=GetApigEndpointConnectionsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getApigEndpointConnections:getApigEndpointConnections', __args__, opts=opts, typ=GetApigEndpointConnectionsResult)
     return __ret__.apply(lambda __response__: GetApigEndpointConnectionsResult(
         connections=pulumi.get(__response__, 'connections'),
         endpoint_id=pulumi.get(__response__, 'endpoint_id'),

@@ -55,7 +55,7 @@ func NewApiPublishment(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApiPublishment
-	err := ctx.RegisterResource("sbercloud:DedicatedApig/apiPublishment:ApiPublishment", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:DedicatedApig/apiPublishment:ApiPublishment", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -67,7 +67,7 @@ func NewApiPublishment(ctx *pulumi.Context,
 func GetApiPublishment(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ApiPublishmentState, opts ...pulumi.ResourceOption) (*ApiPublishment, error) {
 	var resource ApiPublishment
-	err := ctx.ReadResource("sbercloud:DedicatedApig/apiPublishment:ApiPublishment", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:DedicatedApig/apiPublishment:ApiPublishment", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -21,7 +21,7 @@ export class SqlserverDatabasePrivilege extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Rds/sqlserverDatabasePrivilege:SqlserverDatabasePrivilege';
+    public static readonly __pulumiType = 'cloudru:Rds/sqlserverDatabasePrivilege:SqlserverDatabasePrivilege';
 
     /**
      * Returns true if the given object is an instance of SqlserverDatabasePrivilege.  This is designed to work even

@@ -221,7 +221,7 @@ class _SmnMessageDetectionState:
         pulumi.set(self, "topic_urn", value)
 
 
-@pulumi.type_token("sbercloud:index/smnMessageDetection:SmnMessageDetection")
+@pulumi.type_token("cloudru:index/smnMessageDetection:SmnMessageDetection")
 class SmnMessageDetection(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -295,7 +295,7 @@ class SmnMessageDetection(pulumi.CustomResource):
             __props__.__dict__["topic_urn"] = topic_urn
             __props__.__dict__["result"] = None
         super(SmnMessageDetection, __self__).__init__(
-            'sbercloud:index/smnMessageDetection:SmnMessageDetection',
+            'cloudru:index/smnMessageDetection:SmnMessageDetection',
             resource_name,
             __props__,
             opts)

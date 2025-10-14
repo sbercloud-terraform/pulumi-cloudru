@@ -131,7 +131,7 @@ def get_flavors(memory: Optional[_builtins.int] = None,
     __args__['vcpus'] = vcpus
     __args__['version'] = version
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Css/getFlavors:getFlavors', __args__, opts=opts, typ=GetFlavorsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Css/getFlavors:getFlavors', __args__, opts=opts, typ=GetFlavorsResult).value
 
     return AwaitableGetFlavorsResult(
         flavors=pulumi.get(__ret__, 'flavors'),
@@ -160,7 +160,7 @@ def get_flavors_output(memory: Optional[pulumi.Input[Optional[_builtins.int]]] =
     __args__['vcpus'] = vcpus
     __args__['version'] = version
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Css/getFlavors:getFlavors', __args__, opts=opts, typ=GetFlavorsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Css/getFlavors:getFlavors', __args__, opts=opts, typ=GetFlavorsResult)
     return __ret__.apply(lambda __response__: GetFlavorsResult(
         flavors=pulumi.get(__response__, 'flavors'),
         id=pulumi.get(__response__, 'id'),

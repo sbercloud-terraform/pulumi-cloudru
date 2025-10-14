@@ -57,7 +57,7 @@ func NewFlowLog(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FlowLog
-	err := ctx.RegisterResource("sbercloud:Er/flowLog:FlowLog", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Er/flowLog:FlowLog", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -69,7 +69,7 @@ func NewFlowLog(ctx *pulumi.Context,
 func GetFlowLog(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *FlowLogState, opts ...pulumi.ResourceOption) (*FlowLog, error) {
 	var resource FlowLog
-	err := ctx.ReadResource("sbercloud:Er/flowLog:FlowLog", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Er/flowLog:FlowLog", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

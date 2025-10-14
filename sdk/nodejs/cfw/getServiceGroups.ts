@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 export function getServiceGroups(args: GetServiceGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Cfw/getServiceGroups:getServiceGroups", {
+    return pulumi.runtime.invoke("cloudru:Cfw/getServiceGroups:getServiceGroups", {
         "enterpriseProjectId": args.enterpriseProjectId,
         "fwInstanceId": args.fwInstanceId,
         "keyWord": args.keyWord,
@@ -48,7 +48,7 @@ export interface GetServiceGroupsResult {
 }
 export function getServiceGroupsOutput(args: GetServiceGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServiceGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Cfw/getServiceGroups:getServiceGroups", {
+    return pulumi.runtime.invokeOutput("cloudru:Cfw/getServiceGroups:getServiceGroups", {
         "enterpriseProjectId": args.enterpriseProjectId,
         "fwInstanceId": args.fwInstanceId,
         "keyWord": args.keyWord,

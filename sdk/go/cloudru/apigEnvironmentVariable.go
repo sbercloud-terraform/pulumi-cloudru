@@ -50,7 +50,7 @@ func NewApigEnvironmentVariable(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApigEnvironmentVariable
-	err := ctx.RegisterResource("sbercloud:index/apigEnvironmentVariable:ApigEnvironmentVariable", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/apigEnvironmentVariable:ApigEnvironmentVariable", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -62,7 +62,7 @@ func NewApigEnvironmentVariable(ctx *pulumi.Context,
 func GetApigEnvironmentVariable(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ApigEnvironmentVariableState, opts ...pulumi.ResourceOption) (*ApigEnvironmentVariable, error) {
 	var resource ApigEnvironmentVariable
-	err := ctx.ReadResource("sbercloud:index/apigEnvironmentVariable:ApigEnvironmentVariable", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/apigEnvironmentVariable:ApigEnvironmentVariable", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

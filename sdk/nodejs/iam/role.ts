@@ -19,7 +19,7 @@ export class Role extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Iam/role:Role';
+    public static readonly __pulumiType = 'cloudru:Iam/role:Role';
 
     /**
      * Returns true if the given object is an instance of Role.  This is designed to work even

@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 declare var exports: any;
-const __config = new pulumi.Config("sbercloud");
+const __config = new pulumi.Config("cloudru");
 
 /**
  * The access key of the SberCloud to use.

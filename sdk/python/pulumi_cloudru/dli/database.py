@@ -176,7 +176,7 @@ class _DatabaseState:
         pulumi.set(self, "tags", value)
 
 
-@pulumi.type_token("sbercloud:Dli/database:Database")
+@pulumi.type_token("cloudru:Dli/database:Database")
 class Database(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -239,7 +239,7 @@ class Database(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["tags"] = tags
         super(Database, __self__).__init__(
-            'sbercloud:Dli/database:Database',
+            'cloudru:Dli/database:Database',
             resource_name,
             __props__,
             opts)

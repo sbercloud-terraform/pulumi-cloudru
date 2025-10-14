@@ -113,7 +113,7 @@ def get_dcs_product(region: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['specCode'] = spec_code
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getDcsProduct:getDcsProduct', __args__, opts=opts, typ=GetDcsProductResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getDcsProduct:getDcsProduct', __args__, opts=opts, typ=GetDcsProductResult).value
 
     return AwaitableGetDcsProductResult(
         cache_mode=pulumi.get(__ret__, 'cache_mode'),
@@ -133,7 +133,7 @@ def get_dcs_product_output(region: Optional[pulumi.Input[Optional[_builtins.str]
     __args__['region'] = region
     __args__['specCode'] = spec_code
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getDcsProduct:getDcsProduct', __args__, opts=opts, typ=GetDcsProductResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getDcsProduct:getDcsProduct', __args__, opts=opts, typ=GetDcsProductResult)
     return __ret__.apply(lambda __response__: GetDcsProductResult(
         cache_mode=pulumi.get(__response__, 'cache_mode'),
         capacity=pulumi.get(__response__, 'capacity'),

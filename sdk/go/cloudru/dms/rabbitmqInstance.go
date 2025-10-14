@@ -93,7 +93,7 @@ func NewRabbitmqInstance(ctx *pulumi.Context,
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RabbitmqInstance
-	err := ctx.RegisterResource("sbercloud:Dms/rabbitmqInstance:RabbitmqInstance", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Dms/rabbitmqInstance:RabbitmqInstance", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -105,7 +105,7 @@ func NewRabbitmqInstance(ctx *pulumi.Context,
 func GetRabbitmqInstance(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *RabbitmqInstanceState, opts ...pulumi.ResourceOption) (*RabbitmqInstance, error) {
 	var resource RabbitmqInstance
-	err := ctx.ReadResource("sbercloud:Dms/rabbitmqInstance:RabbitmqInstance", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Dms/rabbitmqInstance:RabbitmqInstance", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

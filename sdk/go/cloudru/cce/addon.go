@@ -39,7 +39,7 @@ func NewAddon(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Addon
-	err := ctx.RegisterResource("sbercloud:Cce/addon:Addon", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Cce/addon:Addon", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func NewAddon(ctx *pulumi.Context,
 func GetAddon(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *AddonState, opts ...pulumi.ResourceOption) (*Addon, error) {
 	var resource Addon
-	err := ctx.ReadResource("sbercloud:Cce/addon:Addon", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Cce/addon:Addon", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

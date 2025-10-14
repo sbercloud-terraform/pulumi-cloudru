@@ -39,7 +39,7 @@ func NewKafkaPermissions(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource KafkaPermissions
-	err := ctx.RegisterResource("sbercloud:Dms/kafkaPermissions:KafkaPermissions", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Dms/kafkaPermissions:KafkaPermissions", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func NewKafkaPermissions(ctx *pulumi.Context,
 func GetKafkaPermissions(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *KafkaPermissionsState, opts ...pulumi.ResourceOption) (*KafkaPermissions, error) {
 	var resource KafkaPermissions
-	err := ctx.ReadResource("sbercloud:Dms/kafkaPermissions:KafkaPermissions", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Dms/kafkaPermissions:KafkaPermissions", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

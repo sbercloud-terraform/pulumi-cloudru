@@ -128,7 +128,7 @@ class _SwrOrganizationPermissionsState:
         pulumi.set(self, "users", value)
 
 
-@pulumi.type_token("sbercloud:index/swrOrganizationPermissions:SwrOrganizationPermissions")
+@pulumi.type_token("cloudru:index/swrOrganizationPermissions:SwrOrganizationPermissions")
 class SwrOrganizationPermissions(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -188,7 +188,7 @@ class SwrOrganizationPermissions(pulumi.CustomResource):
             __props__.__dict__["creator"] = None
             __props__.__dict__["self_permissions"] = None
         super(SwrOrganizationPermissions, __self__).__init__(
-            'sbercloud:index/swrOrganizationPermissions:SwrOrganizationPermissions',
+            'cloudru:index/swrOrganizationPermissions:SwrOrganizationPermissions',
             resource_name,
             __props__,
             opts)

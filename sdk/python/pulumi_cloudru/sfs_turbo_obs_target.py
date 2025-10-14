@@ -175,7 +175,7 @@ class _SfsTurboObsTargetState:
         pulumi.set(self, "status", value)
 
 
-@pulumi.type_token("sbercloud:index/sfsTurboObsTarget:SfsTurboObsTarget")
+@pulumi.type_token("cloudru:index/sfsTurboObsTarget:SfsTurboObsTarget")
 class SfsTurboObsTarget(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -243,7 +243,7 @@ class SfsTurboObsTarget(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["status"] = None
         super(SfsTurboObsTarget, __self__).__init__(
-            'sbercloud:index/sfsTurboObsTarget:SfsTurboObsTarget',
+            'cloudru:index/sfsTurboObsTarget:SfsTurboObsTarget',
             resource_name,
             __props__,
             opts)

@@ -302,7 +302,7 @@ class _FlowLogState:
         pulumi.set(self, "updated_at", value)
 
 
-@pulumi.type_token("sbercloud:Er/flowLog:FlowLog")
+@pulumi.type_token("cloudru:Er/flowLog:FlowLog")
 class FlowLog(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -392,7 +392,7 @@ class FlowLog(pulumi.CustomResource):
             __props__.__dict__["state"] = None
             __props__.__dict__["updated_at"] = None
         super(FlowLog, __self__).__init__(
-            'sbercloud:Er/flowLog:FlowLog',
+            'cloudru:Er/flowLog:FlowLog',
             resource_name,
             __props__,
             opts)

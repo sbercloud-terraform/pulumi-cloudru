@@ -469,7 +469,7 @@ class _QueueState:
         pulumi.set(self, "vpc_cidr", value)
 
 
-@pulumi.type_token("sbercloud:Dli/queue:Queue")
+@pulumi.type_token("cloudru:Dli/queue:Queue")
 class Queue(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -568,7 +568,7 @@ class Queue(pulumi.CustomResource):
             __props__.__dict__["vpc_cidr"] = vpc_cidr
             __props__.__dict__["create_time"] = None
         super(Queue, __self__).__init__(
-            'sbercloud:Dli/queue:Queue',
+            'cloudru:Dli/queue:Queue',
             resource_name,
             __props__,
             opts)

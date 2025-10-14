@@ -165,7 +165,7 @@ class _ApigEndpointConnectionManagementState:
         pulumi.set(self, "status", value)
 
 
-@pulumi.type_token("sbercloud:index/apigEndpointConnectionManagement:ApigEndpointConnectionManagement")
+@pulumi.type_token("cloudru:index/apigEndpointConnectionManagement:ApigEndpointConnectionManagement")
 class ApigEndpointConnectionManagement(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -232,7 +232,7 @@ class ApigEndpointConnectionManagement(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["status"] = None
         super(ApigEndpointConnectionManagement, __self__).__init__(
-            'sbercloud:index/apigEndpointConnectionManagement:ApigEndpointConnectionManagement',
+            'cloudru:index/apigEndpointConnectionManagement:ApigEndpointConnectionManagement',
             resource_name,
             __props__,
             opts)

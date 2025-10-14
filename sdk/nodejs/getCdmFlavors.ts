@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 export function getCdmFlavors(args?: GetCdmFlavorsArgs, opts?: pulumi.InvokeOptions): Promise<GetCdmFlavorsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getCdmFlavors:getCdmFlavors", {
+    return pulumi.runtime.invoke("cloudru:index/getCdmFlavors:getCdmFlavors", {
         "region": args.region,
     }, opts);
 }
@@ -36,7 +36,7 @@ export interface GetCdmFlavorsResult {
 export function getCdmFlavorsOutput(args?: GetCdmFlavorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCdmFlavorsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getCdmFlavors:getCdmFlavors", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getCdmFlavors:getCdmFlavors", {
         "region": args.region,
     }, opts);
 }

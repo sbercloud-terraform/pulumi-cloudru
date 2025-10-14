@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 export function getFirewalls(args?: GetFirewallsArgs, opts?: pulumi.InvokeOptions): Promise<GetFirewallsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Cfw/getFirewalls:getFirewalls", {
+    return pulumi.runtime.invoke("cloudru:Cfw/getFirewalls:getFirewalls", {
         "fwInstanceId": args.fwInstanceId,
         "region": args.region,
         "serviceType": args.serviceType,
@@ -41,7 +41,7 @@ export interface GetFirewallsResult {
 export function getFirewallsOutput(args?: GetFirewallsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFirewallsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Cfw/getFirewalls:getFirewalls", {
+    return pulumi.runtime.invokeOutput("cloudru:Cfw/getFirewalls:getFirewalls", {
         "fwInstanceId": args.fwInstanceId,
         "region": args.region,
         "serviceType": args.serviceType,

@@ -190,7 +190,7 @@ class _IpsRuleModeChangeState:
         pulumi.set(self, "status", value)
 
 
-@pulumi.type_token("sbercloud:Cfw/ipsRuleModeChange:IpsRuleModeChange")
+@pulumi.type_token("cloudru:Cfw/ipsRuleModeChange:IpsRuleModeChange")
 class IpsRuleModeChange(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -259,7 +259,7 @@ class IpsRuleModeChange(pulumi.CustomResource):
                 raise TypeError("Missing required property 'status'")
             __props__.__dict__["status"] = status
         super(IpsRuleModeChange, __self__).__init__(
-            'sbercloud:Cfw/ipsRuleModeChange:IpsRuleModeChange',
+            'cloudru:Cfw/ipsRuleModeChange:IpsRuleModeChange',
             resource_name,
             __props__,
             opts)

@@ -48,7 +48,7 @@ func NewCbrCheckpoint(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CbrCheckpoint
-	err := ctx.RegisterResource("sbercloud:index/cbrCheckpoint:CbrCheckpoint", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/cbrCheckpoint:CbrCheckpoint", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -60,7 +60,7 @@ func NewCbrCheckpoint(ctx *pulumi.Context,
 func GetCbrCheckpoint(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *CbrCheckpointState, opts ...pulumi.ResourceOption) (*CbrCheckpoint, error) {
 	var resource CbrCheckpoint
-	err := ctx.ReadResource("sbercloud:index/cbrCheckpoint:CbrCheckpoint", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/cbrCheckpoint:CbrCheckpoint", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -439,7 +439,7 @@ class _KeyState:
         pulumi.set(self, "tags", value)
 
 
-@pulumi.type_token("sbercloud:Dew/key:Key")
+@pulumi.type_token("cloudru:Dew/key:Key")
 class Key(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -533,7 +533,7 @@ class Key(pulumi.CustomResource):
             __props__.__dict__["rotation_number"] = None
             __props__.__dict__["scheduled_deletion_date"] = None
         super(Key, __self__).__init__(
-            'sbercloud:Dew/key:Key',
+            'cloudru:Dew/key:Key',
             resource_name,
             __props__,
             opts)

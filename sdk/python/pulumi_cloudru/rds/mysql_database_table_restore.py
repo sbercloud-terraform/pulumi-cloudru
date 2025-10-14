@@ -216,7 +216,7 @@ class _MysqlDatabaseTableRestoreState:
         pulumi.set(self, "restore_time", value)
 
 
-@pulumi.type_token("sbercloud:Rds/mysqlDatabaseTableRestore:MysqlDatabaseTableRestore")
+@pulumi.type_token("cloudru:Rds/mysqlDatabaseTableRestore:MysqlDatabaseTableRestore")
 class MysqlDatabaseTableRestore(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -288,7 +288,7 @@ class MysqlDatabaseTableRestore(pulumi.CustomResource):
                 raise TypeError("Missing required property 'restore_time'")
             __props__.__dict__["restore_time"] = restore_time
         super(MysqlDatabaseTableRestore, __self__).__init__(
-            'sbercloud:Rds/mysqlDatabaseTableRestore:MysqlDatabaseTableRestore',
+            'cloudru:Rds/mysqlDatabaseTableRestore:MysqlDatabaseTableRestore',
             resource_name,
             __props__,
             opts)

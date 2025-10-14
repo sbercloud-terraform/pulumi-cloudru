@@ -286,7 +286,7 @@ class _ApigSignatureState:
         pulumi.set(self, "updated_at", value)
 
 
-@pulumi.type_token("sbercloud:index/apigSignature:ApigSignature")
+@pulumi.type_token("cloudru:index/apigSignature:ApigSignature")
 class ApigSignature(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -367,7 +367,7 @@ class ApigSignature(pulumi.CustomResource):
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["secret"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ApigSignature, __self__).__init__(
-            'sbercloud:index/apigSignature:ApigSignature',
+            'cloudru:index/apigSignature:ApigSignature',
             resource_name,
             __props__,
             opts)

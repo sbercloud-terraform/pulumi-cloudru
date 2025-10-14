@@ -15,13 +15,13 @@
 package cloudru
 
 import (
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	"path"
 
 	// Allow embedding bridge-metadata.json in the provider.
 	_ "embed"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/sbercloud-terraform/terraform-provider-sbercloud/sbercloud" // Import the upstream provider
 
@@ -29,7 +29,7 @@ import (
 )
 
 const (
-	mainPkg          = "sbercloud"
+	mainPkg          = "cloudru"
 	mainMod          = "index"
 	dedicatedApigMod = "DedicatedApig" // ?
 	sharedApigMod    = "SharedApig"    // ?

@@ -206,7 +206,7 @@ def get_key(default_key_flag: Optional[_builtins.str] = None,
     __args__['keyState'] = key_state
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Dew/getKey:getKey', __args__, opts=opts, typ=GetKeyResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Dew/getKey:getKey', __args__, opts=opts, typ=GetKeyResult).value
 
     return AwaitableGetKeyResult(
         creation_date=pulumi.get(__ret__, 'creation_date'),
@@ -247,7 +247,7 @@ def get_key_output(default_key_flag: Optional[pulumi.Input[Optional[_builtins.st
     __args__['keyState'] = key_state
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Dew/getKey:getKey', __args__, opts=opts, typ=GetKeyResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Dew/getKey:getKey', __args__, opts=opts, typ=GetKeyResult)
     return __ret__.apply(lambda __response__: GetKeyResult(
         creation_date=pulumi.get(__response__, 'creation_date'),
         default_key_flag=pulumi.get(__response__, 'default_key_flag'),

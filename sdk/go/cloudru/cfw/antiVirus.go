@@ -39,7 +39,7 @@ func NewAntiVirus(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AntiVirus
-	err := ctx.RegisterResource("sbercloud:Cfw/antiVirus:AntiVirus", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Cfw/antiVirus:AntiVirus", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func NewAntiVirus(ctx *pulumi.Context,
 func GetAntiVirus(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *AntiVirusState, opts ...pulumi.ResourceOption) (*AntiVirus, error) {
 	var resource AntiVirus
-	err := ctx.ReadResource("sbercloud:Cfw/antiVirus:AntiVirus", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Cfw/antiVirus:AntiVirus", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -14,7 +14,7 @@ import (
 func GetEip(ctx *pulumi.Context, args *GetEipArgs, opts ...pulumi.InvokeOption) (*GetEipResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEipResult
-	err := ctx.Invoke("sbercloud:Eip/getEip:getEip", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Eip/getEip:getEip", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -55,7 +55,7 @@ func GetEipOutput(ctx *pulumi.Context, args GetEipOutputArgs, opts ...pulumi.Inv
 		ApplyT(func(v interface{}) (GetEipResultOutput, error) {
 			args := v.(GetEipArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Eip/getEip:getEip", args, GetEipResultOutput{}, options).(GetEipResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Eip/getEip:getEip", args, GetEipResultOutput{}, options).(GetEipResultOutput), nil
 		}).(GetEipResultOutput)
 }
 

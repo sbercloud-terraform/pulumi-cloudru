@@ -37,7 +37,7 @@ func NewConfiguration(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Configuration
-	err := ctx.RegisterResource("sbercloud:As/configuration:Configuration", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:As/configuration:Configuration", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -49,7 +49,7 @@ func NewConfiguration(ctx *pulumi.Context,
 func GetConfiguration(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ConfigurationState, opts ...pulumi.ResourceOption) (*Configuration, error) {
 	var resource Configuration
-	err := ctx.ReadResource("sbercloud:As/configuration:Configuration", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:As/configuration:Configuration", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

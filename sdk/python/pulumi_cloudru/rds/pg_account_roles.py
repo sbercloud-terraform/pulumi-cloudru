@@ -149,7 +149,7 @@ class _PgAccountRolesState:
         pulumi.set(self, "user", value)
 
 
-@pulumi.type_token("sbercloud:Rds/pgAccountRoles:PgAccountRoles")
+@pulumi.type_token("cloudru:Rds/pgAccountRoles:PgAccountRoles")
 class PgAccountRoles(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -215,7 +215,7 @@ class PgAccountRoles(pulumi.CustomResource):
                 raise TypeError("Missing required property 'user'")
             __props__.__dict__["user"] = user
         super(PgAccountRoles, __self__).__init__(
-            'sbercloud:Rds/pgAccountRoles:PgAccountRoles',
+            'cloudru:Rds/pgAccountRoles:PgAccountRoles',
             resource_name,
             __props__,
             opts)

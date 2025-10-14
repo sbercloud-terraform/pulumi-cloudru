@@ -6,7 +6,7 @@ import * as utilities from "../utilities";
 
 export function getSubnetIds(args: GetSubnetIdsArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetIdsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Vpc/getSubnetIds:getSubnetIds", {
+    return pulumi.runtime.invoke("cloudru:Vpc/getSubnetIds:getSubnetIds", {
         "region": args.region,
         "vpcId": args.vpcId,
     }, opts);
@@ -34,7 +34,7 @@ export interface GetSubnetIdsResult {
 }
 export function getSubnetIdsOutput(args: GetSubnetIdsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSubnetIdsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Vpc/getSubnetIds:getSubnetIds", {
+    return pulumi.runtime.invokeOutput("cloudru:Vpc/getSubnetIds:getSubnetIds", {
         "region": args.region,
         "vpcId": args.vpcId,
     }, opts);

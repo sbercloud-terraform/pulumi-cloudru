@@ -37,7 +37,7 @@ func NewIdentityRoleAssignmentV3(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource IdentityRoleAssignmentV3
-	err := ctx.RegisterResource("sbercloud:index/identityRoleAssignmentV3:IdentityRoleAssignmentV3", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/identityRoleAssignmentV3:IdentityRoleAssignmentV3", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -49,7 +49,7 @@ func NewIdentityRoleAssignmentV3(ctx *pulumi.Context,
 func GetIdentityRoleAssignmentV3(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *IdentityRoleAssignmentV3State, opts ...pulumi.ResourceOption) (*IdentityRoleAssignmentV3, error) {
 	var resource IdentityRoleAssignmentV3
-	err := ctx.ReadResource("sbercloud:index/identityRoleAssignmentV3:IdentityRoleAssignmentV3", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/identityRoleAssignmentV3:IdentityRoleAssignmentV3", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

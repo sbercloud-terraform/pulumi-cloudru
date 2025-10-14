@@ -407,7 +407,7 @@ class _DmsRocketmqMigrationTaskState:
         pulumi.set(self, "vhosts", value)
 
 
-@pulumi.type_token("sbercloud:index/dmsRocketmqMigrationTask:DmsRocketmqMigrationTask")
+@pulumi.type_token("cloudru:index/dmsRocketmqMigrationTask:DmsRocketmqMigrationTask")
 class DmsRocketmqMigrationTask(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -503,7 +503,7 @@ class DmsRocketmqMigrationTask(pulumi.CustomResource):
             __props__.__dict__["start_date"] = None
             __props__.__dict__["status"] = None
         super(DmsRocketmqMigrationTask, __self__).__init__(
-            'sbercloud:index/dmsRocketmqMigrationTask:DmsRocketmqMigrationTask',
+            'cloudru:index/dmsRocketmqMigrationTask:DmsRocketmqMigrationTask',
             resource_name,
             __props__,
             opts)

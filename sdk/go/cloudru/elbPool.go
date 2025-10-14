@@ -58,7 +58,7 @@ func NewElbPool(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ElbPool
-	err := ctx.RegisterResource("sbercloud:index/elbPool:ElbPool", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/elbPool:ElbPool", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -70,7 +70,7 @@ func NewElbPool(ctx *pulumi.Context,
 func GetElbPool(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ElbPoolState, opts ...pulumi.ResourceOption) (*ElbPool, error) {
 	var resource ElbPool
-	err := ctx.ReadResource("sbercloud:index/elbPool:ElbPool", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/elbPool:ElbPool", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

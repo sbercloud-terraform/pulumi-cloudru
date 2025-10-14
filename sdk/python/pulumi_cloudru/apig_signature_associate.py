@@ -157,7 +157,7 @@ class _ApigSignatureAssociateState:
         pulumi.set(self, "signature_id", value)
 
 
-@pulumi.type_token("sbercloud:index/apigSignatureAssociate:ApigSignatureAssociate")
+@pulumi.type_token("cloudru:index/apigSignatureAssociate:ApigSignatureAssociate")
 class ApigSignatureAssociate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -224,7 +224,7 @@ class ApigSignatureAssociate(pulumi.CustomResource):
                 raise TypeError("Missing required property 'signature_id'")
             __props__.__dict__["signature_id"] = signature_id
         super(ApigSignatureAssociate, __self__).__init__(
-            'sbercloud:index/apigSignatureAssociate:ApigSignatureAssociate',
+            'cloudru:index/apigSignatureAssociate:ApigSignatureAssociate',
             resource_name,
             __props__,
             opts)

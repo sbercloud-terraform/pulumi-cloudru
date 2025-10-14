@@ -97,7 +97,7 @@ func NewNodePool(ctx *pulumi.Context,
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NodePool
-	err := ctx.RegisterResource("sbercloud:Cce/nodePool:NodePool", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Cce/nodePool:NodePool", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -109,7 +109,7 @@ func NewNodePool(ctx *pulumi.Context,
 func GetNodePool(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *NodePoolState, opts ...pulumi.ResourceOption) (*NodePool, error) {
 	var resource NodePool
-	err := ctx.ReadResource("sbercloud:Cce/nodePool:NodePool", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Cce/nodePool:NodePool", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

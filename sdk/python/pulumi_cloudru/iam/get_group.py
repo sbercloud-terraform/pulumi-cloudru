@@ -95,7 +95,7 @@ def get_group(description: Optional[_builtins.str] = None,
     __args__['id'] = id
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Iam/getGroup:getGroup', __args__, opts=opts, typ=GetGroupResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Iam/getGroup:getGroup', __args__, opts=opts, typ=GetGroupResult).value
 
     return AwaitableGetGroupResult(
         description=pulumi.get(__ret__, 'description'),
@@ -115,7 +115,7 @@ def get_group_output(description: Optional[pulumi.Input[Optional[_builtins.str]]
     __args__['id'] = id
     __args__['name'] = name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Iam/getGroup:getGroup', __args__, opts=opts, typ=GetGroupResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Iam/getGroup:getGroup', __args__, opts=opts, typ=GetGroupResult)
     return __ret__.apply(lambda __response__: GetGroupResult(
         description=pulumi.get(__response__, 'description'),
         domain_id=pulumi.get(__response__, 'domain_id'),

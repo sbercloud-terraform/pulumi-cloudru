@@ -19,7 +19,7 @@ export class StaticRoute extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Er/staticRoute:StaticRoute';
+    public static readonly __pulumiType = 'cloudru:Er/staticRoute:StaticRoute';
 
     /**
      * Returns true if the given object is an instance of StaticRoute.  This is designed to work even

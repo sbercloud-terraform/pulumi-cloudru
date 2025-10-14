@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 export function getPublicServices(args?: GetPublicServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetPublicServicesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Vpcep/getPublicServices:getPublicServices", {
+    return pulumi.runtime.invoke("cloudru:Vpcep/getPublicServices:getPublicServices", {
         "region": args.region,
         "serviceId": args.serviceId,
         "serviceName": args.serviceName,
@@ -41,7 +41,7 @@ export interface GetPublicServicesResult {
 export function getPublicServicesOutput(args?: GetPublicServicesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPublicServicesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Vpcep/getPublicServices:getPublicServices", {
+    return pulumi.runtime.invokeOutput("cloudru:Vpcep/getPublicServices:getPublicServices", {
         "region": args.region,
         "serviceId": args.serviceId,
         "serviceName": args.serviceName,

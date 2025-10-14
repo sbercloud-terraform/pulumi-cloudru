@@ -399,7 +399,7 @@ class _SnatRuleState:
         pulumi.set(self, "subnet_id", value)
 
 
-@pulumi.type_token("sbercloud:Nat/snatRule:SnatRule")
+@pulumi.type_token("cloudru:Nat/snatRule:SnatRule")
 class SnatRule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -486,7 +486,7 @@ class SnatRule(pulumi.CustomResource):
             __props__.__dict__["global_eip_address"] = None
             __props__.__dict__["status"] = None
         super(SnatRule, __self__).__init__(
-            'sbercloud:Nat/snatRule:SnatRule',
+            'cloudru:Nat/snatRule:SnatRule',
             resource_name,
             __props__,
             opts)

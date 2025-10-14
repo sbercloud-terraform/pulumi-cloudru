@@ -29,7 +29,7 @@ func NewKeypair(ctx *pulumi.Context,
 
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Keypair
-	err := ctx.RegisterResource("sbercloud:Ecs/keypair:Keypair", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Ecs/keypair:Keypair", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -41,7 +41,7 @@ func NewKeypair(ctx *pulumi.Context,
 func GetKeypair(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *KeypairState, opts ...pulumi.ResourceOption) (*Keypair, error) {
 	var resource Keypair
-	err := ctx.ReadResource("sbercloud:Ecs/keypair:Keypair", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Ecs/keypair:Keypair", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

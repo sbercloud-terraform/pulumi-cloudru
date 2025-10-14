@@ -142,7 +142,7 @@ def get_dms_rocketmq_users(access_key: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['whiteRemoteAddress'] = white_remote_address
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getDmsRocketmqUsers:getDmsRocketmqUsers', __args__, opts=opts, typ=GetDmsRocketmqUsersResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getDmsRocketmqUsers:getDmsRocketmqUsers', __args__, opts=opts, typ=GetDmsRocketmqUsersResult).value
 
     return AwaitableGetDmsRocketmqUsersResult(
         access_key=pulumi.get(__ret__, 'access_key'),
@@ -174,7 +174,7 @@ def get_dms_rocketmq_users_output(access_key: Optional[pulumi.Input[Optional[_bu
     __args__['region'] = region
     __args__['whiteRemoteAddress'] = white_remote_address
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getDmsRocketmqUsers:getDmsRocketmqUsers', __args__, opts=opts, typ=GetDmsRocketmqUsersResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getDmsRocketmqUsers:getDmsRocketmqUsers', __args__, opts=opts, typ=GetDmsRocketmqUsersResult)
     return __ret__.apply(lambda __response__: GetDmsRocketmqUsersResult(
         access_key=pulumi.get(__response__, 'access_key'),
         admin=pulumi.get(__response__, 'admin'),

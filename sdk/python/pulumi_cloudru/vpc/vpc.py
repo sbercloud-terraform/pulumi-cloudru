@@ -309,7 +309,7 @@ class _VpcState:
         pulumi.set(self, "tags", value)
 
 
-@pulumi.type_token("sbercloud:Vpc/vpc:Vpc")
+@pulumi.type_token("cloudru:Vpc/vpc:Vpc")
 class Vpc(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -389,7 +389,7 @@ class Vpc(pulumi.CustomResource):
             __props__.__dict__["routes"] = None
             __props__.__dict__["status"] = None
         super(Vpc, __self__).__init__(
-            'sbercloud:Vpc/vpc:Vpc',
+            'cloudru:Vpc/vpc:Vpc',
             resource_name,
             __props__,
             opts)

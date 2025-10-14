@@ -21,7 +21,7 @@ export class ProviderConversion extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Iam/providerConversion:ProviderConversion';
+    public static readonly __pulumiType = 'cloudru:Iam/providerConversion:ProviderConversion';
 
     /**
      * Returns true if the given object is an instance of ProviderConversion.  This is designed to work even

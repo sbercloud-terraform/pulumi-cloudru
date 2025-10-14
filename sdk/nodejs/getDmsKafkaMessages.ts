@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 export function getDmsKafkaMessages(args: GetDmsKafkaMessagesArgs, opts?: pulumi.InvokeOptions): Promise<GetDmsKafkaMessagesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getDmsKafkaMessages:getDmsKafkaMessages", {
+    return pulumi.runtime.invoke("cloudru:index/getDmsKafkaMessages:getDmsKafkaMessages", {
         "download": args.download,
         "endTime": args.endTime,
         "instanceId": args.instanceId,
@@ -57,7 +57,7 @@ export interface GetDmsKafkaMessagesResult {
 }
 export function getDmsKafkaMessagesOutput(args: GetDmsKafkaMessagesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDmsKafkaMessagesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getDmsKafkaMessages:getDmsKafkaMessages", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getDmsKafkaMessages:getDmsKafkaMessages", {
         "download": args.download,
         "endTime": args.endTime,
         "instanceId": args.instanceId,

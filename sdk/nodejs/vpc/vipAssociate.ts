@@ -19,7 +19,7 @@ export class VipAssociate extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Vpc/vipAssociate:VipAssociate';
+    public static readonly __pulumiType = 'cloudru:Vpc/vipAssociate:VipAssociate';
 
     /**
      * Returns true if the given object is an instance of VipAssociate.  This is designed to work even

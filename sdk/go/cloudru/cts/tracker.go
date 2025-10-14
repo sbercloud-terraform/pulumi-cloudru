@@ -51,7 +51,7 @@ func NewTracker(ctx *pulumi.Context,
 
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Tracker
-	err := ctx.RegisterResource("sbercloud:Cts/tracker:Tracker", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Cts/tracker:Tracker", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -63,7 +63,7 @@ func NewTracker(ctx *pulumi.Context,
 func GetTracker(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *TrackerState, opts ...pulumi.ResourceOption) (*Tracker, error) {
 	var resource Tracker
-	err := ctx.ReadResource("sbercloud:Cts/tracker:Tracker", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Cts/tracker:Tracker", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

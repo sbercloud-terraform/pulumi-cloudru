@@ -14,7 +14,7 @@ import (
 func GetMaintainwindow(ctx *pulumi.Context, args *GetMaintainwindowArgs, opts ...pulumi.InvokeOption) (*GetMaintainwindowResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMaintainwindowResult
-	err := ctx.Invoke("sbercloud:Dms/getMaintainwindow:getMaintainwindow", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Dms/getMaintainwindow:getMaintainwindow", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -46,7 +46,7 @@ func GetMaintainwindowOutput(ctx *pulumi.Context, args GetMaintainwindowOutputAr
 		ApplyT(func(v interface{}) (GetMaintainwindowResultOutput, error) {
 			args := v.(GetMaintainwindowArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Dms/getMaintainwindow:getMaintainwindow", args, GetMaintainwindowResultOutput{}, options).(GetMaintainwindowResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Dms/getMaintainwindow:getMaintainwindow", args, GetMaintainwindowResultOutput{}, options).(GetMaintainwindowResultOutput), nil
 		}).(GetMaintainwindowResultOutput)
 }
 

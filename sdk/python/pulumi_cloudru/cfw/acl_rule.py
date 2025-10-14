@@ -1099,7 +1099,7 @@ class _AclRuleState:
         pulumi.set(self, "type", value)
 
 
-@pulumi.type_token("sbercloud:Cfw/aclRule:AclRule")
+@pulumi.type_token("cloudru:Cfw/aclRule:AclRule")
 class AclRule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -1292,7 +1292,7 @@ class AclRule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
         super(AclRule, __self__).__init__(
-            'sbercloud:Cfw/aclRule:AclRule',
+            'cloudru:Cfw/aclRule:AclRule',
             resource_name,
             __props__,
             opts)

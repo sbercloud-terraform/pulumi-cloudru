@@ -19,7 +19,7 @@ export class Package extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Dli/package:Package';
+    public static readonly __pulumiType = 'cloudru:Dli/package:Package';
 
     /**
      * Returns true if the given object is an instance of Package.  This is designed to work even

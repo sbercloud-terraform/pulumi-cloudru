@@ -21,7 +21,7 @@ export class DmsRocketmqMigrationTask extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/dmsRocketmqMigrationTask:DmsRocketmqMigrationTask';
+    public static readonly __pulumiType = 'cloudru:index/dmsRocketmqMigrationTask:DmsRocketmqMigrationTask';
 
     /**
      * Returns true if the given object is an instance of DmsRocketmqMigrationTask.  This is designed to work even

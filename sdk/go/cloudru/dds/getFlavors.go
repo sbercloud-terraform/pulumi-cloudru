@@ -14,7 +14,7 @@ import (
 func GetFlavors(ctx *pulumi.Context, args *GetFlavorsArgs, opts ...pulumi.InvokeOption) (*GetFlavorsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFlavorsResult
-	err := ctx.Invoke("sbercloud:Dds/getFlavors:getFlavors", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Dds/getFlavors:getFlavors", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -47,7 +47,7 @@ func GetFlavorsOutput(ctx *pulumi.Context, args GetFlavorsOutputArgs, opts ...pu
 		ApplyT(func(v interface{}) (GetFlavorsResultOutput, error) {
 			args := v.(GetFlavorsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Dds/getFlavors:getFlavors", args, GetFlavorsResultOutput{}, options).(GetFlavorsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Dds/getFlavors:getFlavors", args, GetFlavorsResultOutput{}, options).(GetFlavorsResultOutput), nil
 		}).(GetFlavorsResultOutput)
 }
 

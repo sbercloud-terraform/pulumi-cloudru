@@ -416,7 +416,7 @@ class _PolicyState:
         pulumi.set(self, "type", value)
 
 
-@pulumi.type_token("sbercloud:Cbr/policy:Policy")
+@pulumi.type_token("cloudru:Cbr/policy:Policy")
 class Policy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -513,7 +513,7 @@ class Policy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
         super(Policy, __self__).__init__(
-            'sbercloud:Cbr/policy:Policy',
+            'cloudru:Cbr/policy:Policy',
             resource_name,
             __props__,
             opts)

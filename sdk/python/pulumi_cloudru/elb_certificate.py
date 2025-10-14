@@ -367,7 +367,7 @@ class _ElbCertificateState:
         pulumi.set(self, "update_time", value)
 
 
-@pulumi.type_token("sbercloud:index/elbCertificate:ElbCertificate")
+@pulumi.type_token("cloudru:index/elbCertificate:ElbCertificate")
 class ElbCertificate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -453,7 +453,7 @@ class ElbCertificate(pulumi.CustomResource):
             __props__.__dict__["subject_alternative_names"] = None
             __props__.__dict__["update_time"] = None
         super(ElbCertificate, __self__).__init__(
-            'sbercloud:index/elbCertificate:ElbCertificate',
+            'cloudru:index/elbCertificate:ElbCertificate',
             resource_name,
             __props__,
             opts)

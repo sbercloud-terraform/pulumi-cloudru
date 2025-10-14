@@ -38,7 +38,7 @@ func NewAccessRule(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccessRule
-	err := ctx.RegisterResource("sbercloud:Sfs/accessRule:AccessRule", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Sfs/accessRule:AccessRule", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -50,7 +50,7 @@ func NewAccessRule(ctx *pulumi.Context,
 func GetAccessRule(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *AccessRuleState, opts ...pulumi.ResourceOption) (*AccessRule, error) {
 	var resource AccessRule
-	err := ctx.ReadResource("sbercloud:Sfs/accessRule:AccessRule", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Sfs/accessRule:AccessRule", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

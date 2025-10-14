@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 export function getAssociations(args: GetAssociationsArgs, opts?: pulumi.InvokeOptions): Promise<GetAssociationsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Er/getAssociations:getAssociations", {
+    return pulumi.runtime.invoke("cloudru:Er/getAssociations:getAssociations", {
         "attachmentId": args.attachmentId,
         "attachmentType": args.attachmentType,
         "instanceId": args.instanceId,
@@ -48,7 +48,7 @@ export interface GetAssociationsResult {
 }
 export function getAssociationsOutput(args: GetAssociationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAssociationsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Er/getAssociations:getAssociations", {
+    return pulumi.runtime.invokeOutput("cloudru:Er/getAssociations:getAssociations", {
         "attachmentId": args.attachmentId,
         "attachmentType": args.attachmentType,
         "instanceId": args.instanceId,

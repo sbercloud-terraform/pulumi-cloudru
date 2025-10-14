@@ -164,7 +164,7 @@ def get_dms_kafka_messages(download: Optional[_builtins.bool] = None,
     __args__['startTime'] = start_time
     __args__['topic'] = topic
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getDmsKafkaMessages:getDmsKafkaMessages', __args__, opts=opts, typ=GetDmsKafkaMessagesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getDmsKafkaMessages:getDmsKafkaMessages', __args__, opts=opts, typ=GetDmsKafkaMessagesResult).value
 
     return AwaitableGetDmsKafkaMessagesResult(
         download=pulumi.get(__ret__, 'download'),
@@ -202,7 +202,7 @@ def get_dms_kafka_messages_output(download: Optional[pulumi.Input[Optional[_buil
     __args__['startTime'] = start_time
     __args__['topic'] = topic
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getDmsKafkaMessages:getDmsKafkaMessages', __args__, opts=opts, typ=GetDmsKafkaMessagesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getDmsKafkaMessages:getDmsKafkaMessages', __args__, opts=opts, typ=GetDmsKafkaMessagesResult)
     return __ret__.apply(lambda __response__: GetDmsKafkaMessagesResult(
         download=pulumi.get(__response__, 'download'),
         end_time=pulumi.get(__response__, 'end_time'),

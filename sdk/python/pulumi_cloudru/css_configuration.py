@@ -375,7 +375,7 @@ class _CssConfigurationState:
         pulumi.set(self, "thread_pool_force_merge_size", value)
 
 
-@pulumi.type_token("sbercloud:index/cssConfiguration:CssConfiguration")
+@pulumi.type_token("cloudru:index/cssConfiguration:CssConfiguration")
 class CssConfiguration(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -465,7 +465,7 @@ class CssConfiguration(pulumi.CustomResource):
             __props__.__dict__["reindex_remote_whitelist"] = reindex_remote_whitelist
             __props__.__dict__["thread_pool_force_merge_size"] = thread_pool_force_merge_size
         super(CssConfiguration, __self__).__init__(
-            'sbercloud:index/cssConfiguration:CssConfiguration',
+            'cloudru:index/cssConfiguration:CssConfiguration',
             resource_name,
             __props__,
             opts)

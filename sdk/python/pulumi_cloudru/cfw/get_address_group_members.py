@@ -142,7 +142,7 @@ def get_address_group_members(address: Optional[_builtins.str] = None,
     __args__['queryAddressSetType'] = query_address_set_type
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Cfw/getAddressGroupMembers:getAddressGroupMembers', __args__, opts=opts, typ=GetAddressGroupMembersResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Cfw/getAddressGroupMembers:getAddressGroupMembers', __args__, opts=opts, typ=GetAddressGroupMembersResult).value
 
     return AwaitableGetAddressGroupMembersResult(
         address=pulumi.get(__ret__, 'address'),
@@ -174,7 +174,7 @@ def get_address_group_members_output(address: Optional[pulumi.Input[Optional[_bu
     __args__['queryAddressSetType'] = query_address_set_type
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Cfw/getAddressGroupMembers:getAddressGroupMembers', __args__, opts=opts, typ=GetAddressGroupMembersResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Cfw/getAddressGroupMembers:getAddressGroupMembers', __args__, opts=opts, typ=GetAddressGroupMembersResult)
     return __ret__.apply(lambda __response__: GetAddressGroupMembersResult(
         address=pulumi.get(__response__, 'address'),
         fw_instance_id=pulumi.get(__response__, 'fw_instance_id'),

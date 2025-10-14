@@ -304,7 +304,7 @@ class _SmnTopicState:
         pulumi.set(self, "users_publish_allowed", value)
 
 
-@pulumi.type_token("sbercloud:index/smnTopic:SmnTopic")
+@pulumi.type_token("cloudru:index/smnTopic:SmnTopic")
 class SmnTopic(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -381,7 +381,7 @@ class SmnTopic(pulumi.CustomResource):
             __props__.__dict__["topic_urn"] = None
             __props__.__dict__["update_time"] = None
         super(SmnTopic, __self__).__init__(
-            'sbercloud:index/smnTopic:SmnTopic',
+            'cloudru:index/smnTopic:SmnTopic',
             resource_name,
             __props__,
             opts)

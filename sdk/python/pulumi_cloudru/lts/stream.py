@@ -230,7 +230,7 @@ class _StreamState:
         pulumi.set(self, "ttl_in_days", value)
 
 
-@pulumi.type_token("sbercloud:Lts/stream:Stream")
+@pulumi.type_token("cloudru:Lts/stream:Stream")
 class Stream(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -303,7 +303,7 @@ class Stream(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["filter_count"] = None
         super(Stream, __self__).__init__(
-            'sbercloud:Lts/stream:Stream',
+            'cloudru:Lts/stream:Stream',
             resource_name,
             __props__,
             opts)

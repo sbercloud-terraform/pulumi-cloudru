@@ -19,7 +19,7 @@ export class Tracker extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Cts/tracker:Tracker';
+    public static readonly __pulumiType = 'cloudru:Cts/tracker:Tracker';
 
     /**
      * Returns true if the given object is an instance of Tracker.  This is designed to work even

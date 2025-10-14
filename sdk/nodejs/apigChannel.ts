@@ -21,7 +21,7 @@ export class ApigChannel extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/apigChannel:ApigChannel';
+    public static readonly __pulumiType = 'cloudru:index/apigChannel:ApigChannel';
 
     /**
      * Returns true if the given object is an instance of ApigChannel.  This is designed to work even

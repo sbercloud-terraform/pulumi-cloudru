@@ -193,7 +193,7 @@ class _DmsRocketmqConsumptionVerifyState:
         pulumi.set(self, "topic", value)
 
 
-@pulumi.type_token("sbercloud:index/dmsRocketmqConsumptionVerify:DmsRocketmqConsumptionVerify")
+@pulumi.type_token("cloudru:index/dmsRocketmqConsumptionVerify:DmsRocketmqConsumptionVerify")
 class DmsRocketmqConsumptionVerify(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -259,7 +259,7 @@ class DmsRocketmqConsumptionVerify(pulumi.CustomResource):
             __props__.__dict__["topic"] = topic
             __props__.__dict__["resend_results"] = None
         super(DmsRocketmqConsumptionVerify, __self__).__init__(
-            'sbercloud:index/dmsRocketmqConsumptionVerify:DmsRocketmqConsumptionVerify',
+            'cloudru:index/dmsRocketmqConsumptionVerify:DmsRocketmqConsumptionVerify',
             resource_name,
             __props__,
             opts)

@@ -21,7 +21,7 @@ export class EipProtection extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Cfw/eipProtection:EipProtection';
+    public static readonly __pulumiType = 'cloudru:Cfw/eipProtection:EipProtection';
 
     /**
      * Returns true if the given object is an instance of EipProtection.  This is designed to work even

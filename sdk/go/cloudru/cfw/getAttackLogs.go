@@ -14,7 +14,7 @@ import (
 func GetAttackLogs(ctx *pulumi.Context, args *GetAttackLogsArgs, opts ...pulumi.InvokeOption) (*GetAttackLogsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAttackLogsResult
-	err := ctx.Invoke("sbercloud:Cfw/getAttackLogs:getAttackLogs", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Cfw/getAttackLogs:getAttackLogs", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -79,7 +79,7 @@ func GetAttackLogsOutput(ctx *pulumi.Context, args GetAttackLogsOutputArgs, opts
 		ApplyT(func(v interface{}) (GetAttackLogsResultOutput, error) {
 			args := v.(GetAttackLogsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Cfw/getAttackLogs:getAttackLogs", args, GetAttackLogsResultOutput{}, options).(GetAttackLogsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Cfw/getAttackLogs:getAttackLogs", args, GetAttackLogsResultOutput{}, options).(GetAttackLogsResultOutput), nil
 		}).(GetAttackLogsResultOutput)
 }
 

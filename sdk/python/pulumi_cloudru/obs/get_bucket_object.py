@@ -142,7 +142,7 @@ def get_bucket_object(bucket: Optional[_builtins.str] = None,
     __args__['key'] = key
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Obs/getBucketObject:getBucketObject', __args__, opts=opts, typ=GetBucketObjectResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Obs/getBucketObject:getBucketObject', __args__, opts=opts, typ=GetBucketObjectResult).value
 
     return AwaitableGetBucketObjectResult(
         body=pulumi.get(__ret__, 'body'),
@@ -167,7 +167,7 @@ def get_bucket_object_output(bucket: Optional[pulumi.Input[_builtins.str]] = Non
     __args__['key'] = key
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Obs/getBucketObject:getBucketObject', __args__, opts=opts, typ=GetBucketObjectResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Obs/getBucketObject:getBucketObject', __args__, opts=opts, typ=GetBucketObjectResult)
     return __ret__.apply(lambda __response__: GetBucketObjectResult(
         body=pulumi.get(__response__, 'body'),
         bucket=pulumi.get(__response__, 'bucket'),

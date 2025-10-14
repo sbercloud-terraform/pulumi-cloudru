@@ -14,7 +14,7 @@ import (
 func GetApigApplicationQuotas(ctx *pulumi.Context, args *GetApigApplicationQuotasArgs, opts ...pulumi.InvokeOption) (*GetApigApplicationQuotasResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetApigApplicationQuotasResult
-	err := ctx.Invoke("sbercloud:index/getApigApplicationQuotas:getApigApplicationQuotas", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getApigApplicationQuotas:getApigApplicationQuotas", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -45,7 +45,7 @@ func GetApigApplicationQuotasOutput(ctx *pulumi.Context, args GetApigApplication
 		ApplyT(func(v interface{}) (GetApigApplicationQuotasResultOutput, error) {
 			args := v.(GetApigApplicationQuotasArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getApigApplicationQuotas:getApigApplicationQuotas", args, GetApigApplicationQuotasResultOutput{}, options).(GetApigApplicationQuotasResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getApigApplicationQuotas:getApigApplicationQuotas", args, GetApigApplicationQuotasResultOutput{}, options).(GetApigApplicationQuotasResultOutput), nil
 		}).(GetApigApplicationQuotasResultOutput)
 }
 

@@ -197,7 +197,7 @@ def get_protection_rules(action_type: Optional[_builtins.str] = None,
     __args__['tags'] = tags
     __args__['type'] = type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Cfw/getProtectionRules:getProtectionRules', __args__, opts=opts, typ=GetProtectionRulesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Cfw/getProtectionRules:getProtectionRules', __args__, opts=opts, typ=GetProtectionRulesResult).value
 
     return AwaitableGetProtectionRulesResult(
         action_type=pulumi.get(__ret__, 'action_type'),
@@ -244,7 +244,7 @@ def get_protection_rules_output(action_type: Optional[pulumi.Input[Optional[_bui
     __args__['tags'] = tags
     __args__['type'] = type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Cfw/getProtectionRules:getProtectionRules', __args__, opts=opts, typ=GetProtectionRulesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Cfw/getProtectionRules:getProtectionRules', __args__, opts=opts, typ=GetProtectionRulesResult)
     return __ret__.apply(lambda __response__: GetProtectionRulesResult(
         action_type=pulumi.get(__response__, 'action_type'),
         destination=pulumi.get(__response__, 'destination'),

@@ -183,7 +183,7 @@ class _DnsResolutionState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:Cfw/dnsResolution:DnsResolution")
+@pulumi.type_token("cloudru:Cfw/dnsResolution:DnsResolution")
 class DnsResolution(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -249,7 +249,7 @@ class DnsResolution(pulumi.CustomResource):
             __props__.__dict__["health_check_domain_name"] = health_check_domain_name
             __props__.__dict__["region"] = region
         super(DnsResolution, __self__).__init__(
-            'sbercloud:Cfw/dnsResolution:DnsResolution',
+            'cloudru:Cfw/dnsResolution:DnsResolution',
             resource_name,
             __props__,
             opts)

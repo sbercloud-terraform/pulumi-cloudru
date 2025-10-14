@@ -131,7 +131,7 @@ def get_cbr_policies(enabled: Optional[_builtins.bool] = None,
     __args__['type'] = type
     __args__['vaultId'] = vault_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getCbrPolicies:getCbrPolicies', __args__, opts=opts, typ=GetCbrPoliciesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getCbrPolicies:getCbrPolicies', __args__, opts=opts, typ=GetCbrPoliciesResult).value
 
     return AwaitableGetCbrPoliciesResult(
         enabled=pulumi.get(__ret__, 'enabled'),
@@ -160,7 +160,7 @@ def get_cbr_policies_output(enabled: Optional[pulumi.Input[Optional[_builtins.bo
     __args__['type'] = type
     __args__['vaultId'] = vault_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getCbrPolicies:getCbrPolicies', __args__, opts=opts, typ=GetCbrPoliciesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getCbrPolicies:getCbrPolicies', __args__, opts=opts, typ=GetCbrPoliciesResult)
     return __ret__.apply(lambda __response__: GetCbrPoliciesResult(
         enabled=pulumi.get(__response__, 'enabled'),
         id=pulumi.get(__response__, 'id'),

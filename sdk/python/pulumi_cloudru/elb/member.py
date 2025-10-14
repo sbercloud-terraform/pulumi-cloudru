@@ -292,7 +292,7 @@ class _MemberState:
         pulumi.set(self, "weight", value)
 
 
-@pulumi.type_token("sbercloud:Elb/member:Member")
+@pulumi.type_token("cloudru:Elb/member:Member")
 class Member(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -376,7 +376,7 @@ class Member(pulumi.CustomResource):
             __props__.__dict__["backend_server_status"] = None
             __props__.__dict__["operating_status"] = None
         super(Member, __self__).__init__(
-            'sbercloud:Elb/member:Member',
+            'cloudru:Elb/member:Member',
             resource_name,
             __props__,
             opts)

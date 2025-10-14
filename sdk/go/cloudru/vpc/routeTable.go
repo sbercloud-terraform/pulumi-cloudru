@@ -35,7 +35,7 @@ func NewRouteTable(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RouteTable
-	err := ctx.RegisterResource("sbercloud:Vpc/routeTable:RouteTable", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Vpc/routeTable:RouteTable", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -47,7 +47,7 @@ func NewRouteTable(ctx *pulumi.Context,
 func GetRouteTable(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *RouteTableState, opts ...pulumi.ResourceOption) (*RouteTable, error) {
 	var resource RouteTable
-	err := ctx.ReadResource("sbercloud:Vpc/routeTable:RouteTable", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Vpc/routeTable:RouteTable", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

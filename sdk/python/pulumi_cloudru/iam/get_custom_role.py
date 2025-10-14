@@ -127,7 +127,7 @@ def get_custom_role(description: Optional[_builtins.str] = None,
     __args__['references'] = references
     __args__['type'] = type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Iam/getCustomRole:getCustomRole', __args__, opts=opts, typ=GetCustomRoleResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Iam/getCustomRole:getCustomRole', __args__, opts=opts, typ=GetCustomRoleResult).value
 
     return AwaitableGetCustomRoleResult(
         catalog=pulumi.get(__ret__, 'catalog'),
@@ -156,7 +156,7 @@ def get_custom_role_output(description: Optional[pulumi.Input[Optional[_builtins
     __args__['references'] = references
     __args__['type'] = type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Iam/getCustomRole:getCustomRole', __args__, opts=opts, typ=GetCustomRoleResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Iam/getCustomRole:getCustomRole', __args__, opts=opts, typ=GetCustomRoleResult)
     return __ret__.apply(lambda __response__: GetCustomRoleResult(
         catalog=pulumi.get(__response__, 'catalog'),
         description=pulumi.get(__response__, 'description'),

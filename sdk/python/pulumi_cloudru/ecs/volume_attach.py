@@ -138,7 +138,7 @@ class _VolumeAttachState:
         pulumi.set(self, "volume_id", value)
 
 
-@pulumi.type_token("sbercloud:Ecs/volumeAttach:VolumeAttach")
+@pulumi.type_token("cloudru:Ecs/volumeAttach:VolumeAttach")
 class VolumeAttach(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -200,7 +200,7 @@ class VolumeAttach(pulumi.CustomResource):
             __props__.__dict__["volume_id"] = volume_id
             __props__.__dict__["pci_address"] = None
         super(VolumeAttach, __self__).__init__(
-            'sbercloud:Ecs/volumeAttach:VolumeAttach',
+            'cloudru:Ecs/volumeAttach:VolumeAttach',
             resource_name,
             __props__,
             opts)

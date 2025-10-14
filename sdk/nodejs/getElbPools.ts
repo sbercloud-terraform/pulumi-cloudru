@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 export function getElbPools(args?: GetElbPoolsArgs, opts?: pulumi.InvokeOptions): Promise<GetElbPoolsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getElbPools:getElbPools", {
+    return pulumi.runtime.invoke("cloudru:index/getElbPools:getElbPools", {
         "anyPortEnable": args.anyPortEnable,
         "connectionDrain": args.connectionDrain,
         "description": args.description,
@@ -104,7 +104,7 @@ export interface GetElbPoolsResult {
 export function getElbPoolsOutput(args?: GetElbPoolsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetElbPoolsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getElbPools:getElbPools", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getElbPools:getElbPools", {
         "anyPortEnable": args.anyPortEnable,
         "connectionDrain": args.connectionDrain,
         "description": args.description,

@@ -14,7 +14,7 @@ import (
 func GetVpnConnections(ctx *pulumi.Context, args *GetVpnConnectionsArgs, opts ...pulumi.InvokeOption) (*GetVpnConnectionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVpnConnectionsResult
-	err := ctx.Invoke("sbercloud:index/getVpnConnections:getVpnConnections", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getVpnConnections:getVpnConnections", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func GetVpnConnectionsOutput(ctx *pulumi.Context, args GetVpnConnectionsOutputAr
 		ApplyT(func(v interface{}) (GetVpnConnectionsResultOutput, error) {
 			args := v.(GetVpnConnectionsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getVpnConnections:getVpnConnections", args, GetVpnConnectionsResultOutput{}, options).(GetVpnConnectionsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getVpnConnections:getVpnConnections", args, GetVpnConnectionsResultOutput{}, options).(GetVpnConnectionsResultOutput), nil
 		}).(GetVpnConnectionsResultOutput)
 }
 

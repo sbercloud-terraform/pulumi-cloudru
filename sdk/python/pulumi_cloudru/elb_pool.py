@@ -608,7 +608,7 @@ class _ElbPoolState:
         pulumi.set(self, "vpc_id", value)
 
 
-@pulumi.type_token("sbercloud:index/elbPool:ElbPool")
+@pulumi.type_token("cloudru:index/elbPool:ElbPool")
 class ElbPool(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -727,7 +727,7 @@ class ElbPool(pulumi.CustomResource):
             __props__.__dict__["monitor_id"] = None
             __props__.__dict__["updated_at"] = None
         super(ElbPool, __self__).__init__(
-            'sbercloud:index/elbPool:ElbPool',
+            'cloudru:index/elbPool:ElbPool',
             resource_name,
             __props__,
             opts)

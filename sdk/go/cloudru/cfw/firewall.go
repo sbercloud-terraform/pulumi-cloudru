@@ -71,7 +71,7 @@ func NewFirewall(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Firewall
-	err := ctx.RegisterResource("sbercloud:Cfw/firewall:Firewall", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Cfw/firewall:Firewall", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -83,7 +83,7 @@ func NewFirewall(ctx *pulumi.Context,
 func GetFirewall(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *FirewallState, opts ...pulumi.ResourceOption) (*Firewall, error) {
 	var resource Firewall
-	err := ctx.ReadResource("sbercloud:Cfw/firewall:Firewall", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Cfw/firewall:Firewall", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

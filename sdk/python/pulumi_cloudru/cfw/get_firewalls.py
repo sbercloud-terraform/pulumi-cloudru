@@ -98,7 +98,7 @@ def get_firewalls(fw_instance_id: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['serviceType'] = service_type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Cfw/getFirewalls:getFirewalls', __args__, opts=opts, typ=GetFirewallsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Cfw/getFirewalls:getFirewalls', __args__, opts=opts, typ=GetFirewallsResult).value
 
     return AwaitableGetFirewallsResult(
         fw_instance_id=pulumi.get(__ret__, 'fw_instance_id'),
@@ -118,7 +118,7 @@ def get_firewalls_output(fw_instance_id: Optional[pulumi.Input[Optional[_builtin
     __args__['region'] = region
     __args__['serviceType'] = service_type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Cfw/getFirewalls:getFirewalls', __args__, opts=opts, typ=GetFirewallsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Cfw/getFirewalls:getFirewalls', __args__, opts=opts, typ=GetFirewallsResult)
     return __ret__.apply(lambda __response__: GetFirewallsResult(
         fw_instance_id=pulumi.get(__response__, 'fw_instance_id'),
         id=pulumi.get(__response__, 'id'),

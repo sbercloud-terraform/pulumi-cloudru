@@ -149,7 +149,7 @@ class _AttachmentAccepterState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:Er/attachmentAccepter:AttachmentAccepter")
+@pulumi.type_token("cloudru:Er/attachmentAccepter:AttachmentAccepter")
 class AttachmentAccepter(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -215,7 +215,7 @@ class AttachmentAccepter(pulumi.CustomResource):
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["region"] = region
         super(AttachmentAccepter, __self__).__init__(
-            'sbercloud:Er/attachmentAccepter:AttachmentAccepter',
+            'cloudru:Er/attachmentAccepter:AttachmentAccepter',
             resource_name,
             __props__,
             opts)

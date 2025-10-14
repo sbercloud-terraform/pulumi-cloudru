@@ -19,7 +19,7 @@ export class BlackWhiteList extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Cfw/blackWhiteList:BlackWhiteList';
+    public static readonly __pulumiType = 'cloudru:Cfw/blackWhiteList:BlackWhiteList';
 
     /**
      * Returns true if the given object is an instance of BlackWhiteList.  This is designed to work even

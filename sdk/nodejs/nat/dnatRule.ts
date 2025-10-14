@@ -19,7 +19,7 @@ export class DnatRule extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Nat/dnatRule:DnatRule';
+    public static readonly __pulumiType = 'cloudru:Nat/dnatRule:DnatRule';
 
     /**
      * Returns true if the given object is an instance of DnatRule.  This is designed to work even

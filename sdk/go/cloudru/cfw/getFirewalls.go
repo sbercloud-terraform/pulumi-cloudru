@@ -14,7 +14,7 @@ import (
 func GetFirewalls(ctx *pulumi.Context, args *GetFirewallsArgs, opts ...pulumi.InvokeOption) (*GetFirewallsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFirewallsResult
-	err := ctx.Invoke("sbercloud:Cfw/getFirewalls:getFirewalls", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Cfw/getFirewalls:getFirewalls", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -43,7 +43,7 @@ func GetFirewallsOutput(ctx *pulumi.Context, args GetFirewallsOutputArgs, opts .
 		ApplyT(func(v interface{}) (GetFirewallsResultOutput, error) {
 			args := v.(GetFirewallsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Cfw/getFirewalls:getFirewalls", args, GetFirewallsResultOutput{}, options).(GetFirewallsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Cfw/getFirewalls:getFirewalls", args, GetFirewallsResultOutput{}, options).(GetFirewallsResultOutput), nil
 		}).(GetFirewallsResultOutput)
 }
 

@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 export function getCbhAvailabilityZones(args?: GetCbhAvailabilityZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetCbhAvailabilityZonesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getCbhAvailabilityZones:getCbhAvailabilityZones", {
+    return pulumi.runtime.invoke("cloudru:index/getCbhAvailabilityZones:getCbhAvailabilityZones", {
         "displayName": args.displayName,
         "name": args.name,
         "region": args.region,
@@ -41,7 +41,7 @@ export interface GetCbhAvailabilityZonesResult {
 export function getCbhAvailabilityZonesOutput(args?: GetCbhAvailabilityZonesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCbhAvailabilityZonesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getCbhAvailabilityZones:getCbhAvailabilityZones", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getCbhAvailabilityZones:getCbhAvailabilityZones", {
         "displayName": args.displayName,
         "name": args.name,
         "region": args.region,

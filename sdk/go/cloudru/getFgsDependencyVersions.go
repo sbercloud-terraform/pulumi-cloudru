@@ -14,7 +14,7 @@ import (
 func GetFgsDependencyVersions(ctx *pulumi.Context, args *GetFgsDependencyVersionsArgs, opts ...pulumi.InvokeOption) (*GetFgsDependencyVersionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFgsDependencyVersionsResult
-	err := ctx.Invoke("sbercloud:index/getFgsDependencyVersions:getFgsDependencyVersions", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getFgsDependencyVersions:getFgsDependencyVersions", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -47,7 +47,7 @@ func GetFgsDependencyVersionsOutput(ctx *pulumi.Context, args GetFgsDependencyVe
 		ApplyT(func(v interface{}) (GetFgsDependencyVersionsResultOutput, error) {
 			args := v.(GetFgsDependencyVersionsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getFgsDependencyVersions:getFgsDependencyVersions", args, GetFgsDependencyVersionsResultOutput{}, options).(GetFgsDependencyVersionsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getFgsDependencyVersions:getFgsDependencyVersions", args, GetFgsDependencyVersionsResultOutput{}, options).(GetFgsDependencyVersionsResultOutput), nil
 		}).(GetFgsDependencyVersionsResultOutput)
 }
 

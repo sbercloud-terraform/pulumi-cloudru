@@ -306,7 +306,7 @@ class _BlackWhiteListState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:Cfw/blackWhiteList:BlackWhiteList")
+@pulumi.type_token("cloudru:Cfw/blackWhiteList:BlackWhiteList")
 class BlackWhiteList(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -398,7 +398,7 @@ class BlackWhiteList(pulumi.CustomResource):
             __props__.__dict__["protocol"] = protocol
             __props__.__dict__["region"] = region
         super(BlackWhiteList, __self__).__init__(
-            'sbercloud:Cfw/blackWhiteList:BlackWhiteList',
+            'cloudru:Cfw/blackWhiteList:BlackWhiteList',
             resource_name,
             __props__,
             opts)

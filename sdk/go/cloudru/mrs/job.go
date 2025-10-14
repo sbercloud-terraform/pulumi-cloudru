@@ -45,7 +45,7 @@ func NewJob(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Job
-	err := ctx.RegisterResource("sbercloud:Mrs/job:Job", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Mrs/job:Job", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -57,7 +57,7 @@ func NewJob(ctx *pulumi.Context,
 func GetJob(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *JobState, opts ...pulumi.ResourceOption) (*Job, error) {
 	var resource Job
-	err := ctx.ReadResource("sbercloud:Mrs/job:Job", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Mrs/job:Job", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

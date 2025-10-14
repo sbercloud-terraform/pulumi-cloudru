@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 export function getTurbos(args?: GetTurbosArgs, opts?: pulumi.InvokeOptions): Promise<GetTurbosResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Sfs/getTurbos:getTurbos", {
+    return pulumi.runtime.invoke("cloudru:Sfs/getTurbos:getTurbos", {
         "enterpriseProjectId": args.enterpriseProjectId,
         "name": args.name,
         "region": args.region,
@@ -50,7 +50,7 @@ export interface GetTurbosResult {
 export function getTurbosOutput(args?: GetTurbosOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTurbosResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Sfs/getTurbos:getTurbos", {
+    return pulumi.runtime.invokeOutput("cloudru:Sfs/getTurbos:getTurbos", {
         "enterpriseProjectId": args.enterpriseProjectId,
         "name": args.name,
         "region": args.region,

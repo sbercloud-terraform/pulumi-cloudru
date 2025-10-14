@@ -14,7 +14,7 @@ import (
 func GetVolumes(ctx *pulumi.Context, args *GetVolumesArgs, opts ...pulumi.InvokeOption) (*GetVolumesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVolumesResult
-	err := ctx.Invoke("sbercloud:Evs/getVolumes:getVolumes", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Evs/getVolumes:getVolumes", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -71,7 +71,7 @@ func GetVolumesOutput(ctx *pulumi.Context, args GetVolumesOutputArgs, opts ...pu
 		ApplyT(func(v interface{}) (GetVolumesResultOutput, error) {
 			args := v.(GetVolumesArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Evs/getVolumes:getVolumes", args, GetVolumesResultOutput{}, options).(GetVolumesResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Evs/getVolumes:getVolumes", args, GetVolumesResultOutput{}, options).(GetVolumesResultOutput), nil
 		}).(GetVolumesResultOutput)
 }
 

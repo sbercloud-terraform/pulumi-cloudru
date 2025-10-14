@@ -51,7 +51,7 @@ func NewQueue(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Queue
-	err := ctx.RegisterResource("sbercloud:Dli/queue:Queue", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Dli/queue:Queue", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -63,7 +63,7 @@ func NewQueue(ctx *pulumi.Context,
 func GetQueue(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *QueueState, opts ...pulumi.ResourceOption) (*Queue, error) {
 	var resource Queue
-	err := ctx.ReadResource("sbercloud:Dli/queue:Queue", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Dli/queue:Queue", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

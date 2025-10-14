@@ -208,7 +208,7 @@ class _RouteState:
         pulumi.set(self, "vpc_id", value)
 
 
-@pulumi.type_token("sbercloud:Vpc/route:Route")
+@pulumi.type_token("cloudru:Vpc/route:Route")
 class Route(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -283,7 +283,7 @@ class Route(pulumi.CustomResource):
             __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["route_table_name"] = None
         super(Route, __self__).__init__(
-            'sbercloud:Vpc/route:Route',
+            'cloudru:Vpc/route:Route',
             resource_name,
             __props__,
             opts)

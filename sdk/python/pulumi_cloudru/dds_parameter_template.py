@@ -256,7 +256,7 @@ class _DdsParameterTemplateState:
         pulumi.set(self, "updated_at", value)
 
 
-@pulumi.type_token("sbercloud:index/ddsParameterTemplate:DdsParameterTemplate")
+@pulumi.type_token("cloudru:index/ddsParameterTemplate:DdsParameterTemplate")
 class DdsParameterTemplate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -331,7 +331,7 @@ class DdsParameterTemplate(pulumi.CustomResource):
             __props__.__dict__["parameters"] = None
             __props__.__dict__["updated_at"] = None
         super(DdsParameterTemplate, __self__).__init__(
-            'sbercloud:index/ddsParameterTemplate:DdsParameterTemplate',
+            'cloudru:index/ddsParameterTemplate:DdsParameterTemplate',
             resource_name,
             __props__,
             opts)

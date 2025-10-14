@@ -147,7 +147,7 @@ def get_vpc(cidr: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['status'] = status
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Vpc/getVpc:getVpc', __args__, opts=opts, typ=GetVpcResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Vpc/getVpc:getVpc', __args__, opts=opts, typ=GetVpcResult).value
 
     return AwaitableGetVpcResult(
         cidr=pulumi.get(__ret__, 'cidr'),
@@ -178,7 +178,7 @@ def get_vpc_output(cidr: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
     __args__['region'] = region
     __args__['status'] = status
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Vpc/getVpc:getVpc', __args__, opts=opts, typ=GetVpcResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Vpc/getVpc:getVpc', __args__, opts=opts, typ=GetVpcResult)
     return __ret__.apply(lambda __response__: GetVpcResult(
         cidr=pulumi.get(__response__, 'cidr'),
         description=pulumi.get(__response__, 'description'),

@@ -14,7 +14,7 @@ import (
 func LookupRole(ctx *pulumi.Context, args *LookupRoleArgs, opts ...pulumi.InvokeOption) (*LookupRoleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRoleResult
-	err := ctx.Invoke("sbercloud:Iam/getRole:getRole", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Iam/getRole:getRole", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -44,7 +44,7 @@ func LookupRoleOutput(ctx *pulumi.Context, args LookupRoleOutputArgs, opts ...pu
 		ApplyT(func(v interface{}) (LookupRoleResultOutput, error) {
 			args := v.(LookupRoleArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Iam/getRole:getRole", args, LookupRoleResultOutput{}, options).(LookupRoleResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Iam/getRole:getRole", args, LookupRoleResultOutput{}, options).(LookupRoleResultOutput), nil
 		}).(LookupRoleResultOutput)
 }
 

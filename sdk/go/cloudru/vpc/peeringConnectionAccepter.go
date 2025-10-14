@@ -38,7 +38,7 @@ func NewPeeringConnectionAccepter(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PeeringConnectionAccepter
-	err := ctx.RegisterResource("sbercloud:Vpc/peeringConnectionAccepter:PeeringConnectionAccepter", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Vpc/peeringConnectionAccepter:PeeringConnectionAccepter", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -50,7 +50,7 @@ func NewPeeringConnectionAccepter(ctx *pulumi.Context,
 func GetPeeringConnectionAccepter(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *PeeringConnectionAccepterState, opts ...pulumi.ResourceOption) (*PeeringConnectionAccepter, error) {
 	var resource PeeringConnectionAccepter
-	err := ctx.ReadResource("sbercloud:Vpc/peeringConnectionAccepter:PeeringConnectionAccepter", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Vpc/peeringConnectionAccepter:PeeringConnectionAccepter", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -142,7 +142,7 @@ def get_vpn_connections(connection_id: Optional[_builtins.str] = None,
     __args__['status'] = status
     __args__['vpnType'] = vpn_type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getVpnConnections:getVpnConnections', __args__, opts=opts, typ=GetVpnConnectionsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getVpnConnections:getVpnConnections', __args__, opts=opts, typ=GetVpnConnectionsResult).value
 
     return AwaitableGetVpnConnectionsResult(
         connection_id=pulumi.get(__ret__, 'connection_id'),
@@ -174,7 +174,7 @@ def get_vpn_connections_output(connection_id: Optional[pulumi.Input[Optional[_bu
     __args__['status'] = status
     __args__['vpnType'] = vpn_type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getVpnConnections:getVpnConnections', __args__, opts=opts, typ=GetVpnConnectionsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getVpnConnections:getVpnConnections', __args__, opts=opts, typ=GetVpnConnectionsResult)
     return __ret__.apply(lambda __response__: GetVpnConnectionsResult(
         connection_id=pulumi.get(__response__, 'connection_id'),
         connections=pulumi.get(__response__, 'connections'),

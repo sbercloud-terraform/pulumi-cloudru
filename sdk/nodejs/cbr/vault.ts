@@ -21,7 +21,7 @@ export class Vault extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Cbr/vault:Vault';
+    public static readonly __pulumiType = 'cloudru:Cbr/vault:Vault';
 
     /**
      * Returns true if the given object is an instance of Vault.  This is designed to work even

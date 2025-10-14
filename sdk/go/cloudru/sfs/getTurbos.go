@@ -14,7 +14,7 @@ import (
 func GetTurbos(ctx *pulumi.Context, args *GetTurbosArgs, opts ...pulumi.InvokeOption) (*GetTurbosResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTurbosResult
-	err := ctx.Invoke("sbercloud:Sfs/getTurbos:getTurbos", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Sfs/getTurbos:getTurbos", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -49,7 +49,7 @@ func GetTurbosOutput(ctx *pulumi.Context, args GetTurbosOutputArgs, opts ...pulu
 		ApplyT(func(v interface{}) (GetTurbosResultOutput, error) {
 			args := v.(GetTurbosArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Sfs/getTurbos:getTurbos", args, GetTurbosResultOutput{}, options).(GetTurbosResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Sfs/getTurbos:getTurbos", args, GetTurbosResultOutput{}, options).(GetTurbosResultOutput), nil
 		}).(GetTurbosResultOutput)
 }
 

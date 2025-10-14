@@ -109,7 +109,7 @@ def get_routes(destination: Optional[_builtins.str] = None,
     __args__['type'] = type
     __args__['vpcId'] = vpc_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Vpc/getRoutes:getRoutes', __args__, opts=opts, typ=GetRoutesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Vpc/getRoutes:getRoutes', __args__, opts=opts, typ=GetRoutesResult).value
 
     return AwaitableGetRoutesResult(
         destination=pulumi.get(__ret__, 'destination'),
@@ -132,7 +132,7 @@ def get_routes_output(destination: Optional[pulumi.Input[Optional[_builtins.str]
     __args__['type'] = type
     __args__['vpcId'] = vpc_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Vpc/getRoutes:getRoutes', __args__, opts=opts, typ=GetRoutesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Vpc/getRoutes:getRoutes', __args__, opts=opts, typ=GetRoutesResult)
     return __ret__.apply(lambda __response__: GetRoutesResult(
         destination=pulumi.get(__response__, 'destination'),
         id=pulumi.get(__response__, 'id'),

@@ -113,7 +113,7 @@ def get_role(display_name: Optional[_builtins.str] = None,
     __args__['displayName'] = display_name
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Iam/getRole:getRole', __args__, opts=opts, typ=GetRoleResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Iam/getRole:getRole', __args__, opts=opts, typ=GetRoleResult).value
 
     return AwaitableGetRoleResult(
         catalog=pulumi.get(__ret__, 'catalog'),
@@ -133,7 +133,7 @@ def get_role_output(display_name: Optional[pulumi.Input[Optional[_builtins.str]]
     __args__['displayName'] = display_name
     __args__['name'] = name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Iam/getRole:getRole', __args__, opts=opts, typ=GetRoleResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Iam/getRole:getRole', __args__, opts=opts, typ=GetRoleResult)
     return __ret__.apply(lambda __response__: GetRoleResult(
         catalog=pulumi.get(__response__, 'catalog'),
         description=pulumi.get(__response__, 'description'),

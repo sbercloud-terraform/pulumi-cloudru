@@ -19,7 +19,7 @@ export class DmsRocketmqMessageOffsetReset extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/dmsRocketmqMessageOffsetReset:DmsRocketmqMessageOffsetReset';
+    public static readonly __pulumiType = 'cloudru:index/dmsRocketmqMessageOffsetReset:DmsRocketmqMessageOffsetReset';
 
     /**
      * Returns true if the given object is an instance of DmsRocketmqMessageOffsetReset.  This is designed to work even

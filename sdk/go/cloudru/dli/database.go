@@ -31,7 +31,7 @@ func NewDatabase(ctx *pulumi.Context,
 
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Database
-	err := ctx.RegisterResource("sbercloud:Dli/database:Database", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Dli/database:Database", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -43,7 +43,7 @@ func NewDatabase(ctx *pulumi.Context,
 func GetDatabase(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *DatabaseState, opts ...pulumi.ResourceOption) (*Database, error) {
 	var resource Database
-	err := ctx.ReadResource("sbercloud:Dli/database:Database", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Dli/database:Database", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

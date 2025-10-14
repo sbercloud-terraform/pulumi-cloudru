@@ -19,7 +19,7 @@ export class GroupRoleAssignment extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Iam/groupRoleAssignment:GroupRoleAssignment';
+    public static readonly __pulumiType = 'cloudru:Iam/groupRoleAssignment:GroupRoleAssignment';
 
     /**
      * Returns true if the given object is an instance of GroupRoleAssignment.  This is designed to work even

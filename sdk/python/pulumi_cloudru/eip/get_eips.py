@@ -153,7 +153,7 @@ def get_eips(enterprise_project_id: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['tags'] = tags
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Eip/getEips:getEips', __args__, opts=opts, typ=GetEipsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Eip/getEips:getEips', __args__, opts=opts, typ=GetEipsResult).value
 
     return AwaitableGetEipsResult(
         eips=pulumi.get(__ret__, 'eips'),
@@ -188,7 +188,7 @@ def get_eips_output(enterprise_project_id: Optional[pulumi.Input[Optional[_built
     __args__['region'] = region
     __args__['tags'] = tags
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Eip/getEips:getEips', __args__, opts=opts, typ=GetEipsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Eip/getEips:getEips', __args__, opts=opts, typ=GetEipsResult)
     return __ret__.apply(lambda __response__: GetEipsResult(
         eips=pulumi.get(__response__, 'eips'),
         enterprise_project_id=pulumi.get(__response__, 'enterprise_project_id'),

@@ -19,7 +19,7 @@ export class PgDatabase extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Rds/pgDatabase:PgDatabase';
+    public static readonly __pulumiType = 'cloudru:Rds/pgDatabase:PgDatabase';
 
     /**
      * Returns true if the given object is an instance of PgDatabase.  This is designed to work even

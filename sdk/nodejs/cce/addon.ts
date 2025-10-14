@@ -21,7 +21,7 @@ export class Addon extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Cce/addon:Addon';
+    public static readonly __pulumiType = 'cloudru:Cce/addon:Addon';
 
     /**
      * Returns true if the given object is an instance of Addon.  This is designed to work even

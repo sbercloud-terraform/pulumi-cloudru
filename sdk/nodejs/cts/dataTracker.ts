@@ -19,7 +19,7 @@ export class DataTracker extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Cts/dataTracker:DataTracker';
+    public static readonly __pulumiType = 'cloudru:Cts/dataTracker:DataTracker';
 
     /**
      * Returns true if the given object is an instance of DataTracker.  This is designed to work even

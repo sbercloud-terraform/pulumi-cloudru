@@ -279,7 +279,7 @@ class _DcsBackupState:
         pulumi.set(self, "type", value)
 
 
-@pulumi.type_token("sbercloud:index/dcsBackup:DcsBackup")
+@pulumi.type_token("cloudru:index/dcsBackup:DcsBackup")
 class DcsBackup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -349,7 +349,7 @@ class DcsBackup(pulumi.CustomResource):
             __props__.__dict__["status"] = None
             __props__.__dict__["type"] = None
         super(DcsBackup, __self__).__init__(
-            'sbercloud:index/dcsBackup:DcsBackup',
+            'cloudru:index/dcsBackup:DcsBackup',
             resource_name,
             __props__,
             opts)

@@ -87,7 +87,7 @@ def get_resource_tags(fw_instance_id: Optional[_builtins.str] = None,
     __args__['fwInstanceId'] = fw_instance_id
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Cfw/getResourceTags:getResourceTags', __args__, opts=opts, typ=GetResourceTagsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Cfw/getResourceTags:getResourceTags', __args__, opts=opts, typ=GetResourceTagsResult).value
 
     return AwaitableGetResourceTagsResult(
         fw_instance_id=pulumi.get(__ret__, 'fw_instance_id'),
@@ -104,7 +104,7 @@ def get_resource_tags_output(fw_instance_id: Optional[pulumi.Input[_builtins.str
     __args__['fwInstanceId'] = fw_instance_id
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Cfw/getResourceTags:getResourceTags', __args__, opts=opts, typ=GetResourceTagsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Cfw/getResourceTags:getResourceTags', __args__, opts=opts, typ=GetResourceTagsResult)
     return __ret__.apply(lambda __response__: GetResourceTagsResult(
         fw_instance_id=pulumi.get(__response__, 'fw_instance_id'),
         id=pulumi.get(__response__, 'id'),

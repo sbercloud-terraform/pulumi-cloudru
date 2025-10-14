@@ -27,7 +27,7 @@ func NewFgsLtsLogEnable(ctx *pulumi.Context,
 
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FgsLtsLogEnable
-	err := ctx.RegisterResource("sbercloud:index/fgsLtsLogEnable:FgsLtsLogEnable", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/fgsLtsLogEnable:FgsLtsLogEnable", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -39,7 +39,7 @@ func NewFgsLtsLogEnable(ctx *pulumi.Context,
 func GetFgsLtsLogEnable(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *FgsLtsLogEnableState, opts ...pulumi.ResourceOption) (*FgsLtsLogEnable, error) {
 	var resource FgsLtsLogEnable
-	err := ctx.ReadResource("sbercloud:index/fgsLtsLogEnable:FgsLtsLogEnable", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/fgsLtsLogEnable:FgsLtsLogEnable", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

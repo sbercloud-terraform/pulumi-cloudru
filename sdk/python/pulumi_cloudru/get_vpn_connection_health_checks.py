@@ -120,7 +120,7 @@ def get_vpn_connection_health_checks(connection_id: Optional[_builtins.str] = No
     __args__['sourceIp'] = source_ip
     __args__['status'] = status
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getVpnConnectionHealthChecks:getVpnConnectionHealthChecks', __args__, opts=opts, typ=GetVpnConnectionHealthChecksResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getVpnConnectionHealthChecks:getVpnConnectionHealthChecks', __args__, opts=opts, typ=GetVpnConnectionHealthChecksResult).value
 
     return AwaitableGetVpnConnectionHealthChecksResult(
         connection_health_checks=pulumi.get(__ret__, 'connection_health_checks'),
@@ -146,7 +146,7 @@ def get_vpn_connection_health_checks_output(connection_id: Optional[pulumi.Input
     __args__['sourceIp'] = source_ip
     __args__['status'] = status
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getVpnConnectionHealthChecks:getVpnConnectionHealthChecks', __args__, opts=opts, typ=GetVpnConnectionHealthChecksResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getVpnConnectionHealthChecks:getVpnConnectionHealthChecks', __args__, opts=opts, typ=GetVpnConnectionHealthChecksResult)
     return __ret__.apply(lambda __response__: GetVpnConnectionHealthChecksResult(
         connection_health_checks=pulumi.get(__response__, 'connection_health_checks'),
         connection_id=pulumi.get(__response__, 'connection_id'),

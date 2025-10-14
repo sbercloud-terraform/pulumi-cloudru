@@ -228,7 +228,7 @@ def get_port(admin_state_up: Optional[_builtins.bool] = None,
     __args__['status'] = status
     __args__['tenantId'] = tenant_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Vpc/getPort:getPort', __args__, opts=opts, typ=GetPortResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Vpc/getPort:getPort', __args__, opts=opts, typ=GetPortResult).value
 
     return AwaitableGetPortResult(
         admin_state_up=pulumi.get(__ret__, 'admin_state_up'),
@@ -280,7 +280,7 @@ def get_port_output(admin_state_up: Optional[pulumi.Input[Optional[_builtins.boo
     __args__['status'] = status
     __args__['tenantId'] = tenant_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Vpc/getPort:getPort', __args__, opts=opts, typ=GetPortResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Vpc/getPort:getPort', __args__, opts=opts, typ=GetPortResult)
     return __ret__.apply(lambda __response__: GetPortResult(
         admin_state_up=pulumi.get(__response__, 'admin_state_up'),
         all_allowed_ips=pulumi.get(__response__, 'all_allowed_ips'),

@@ -39,7 +39,7 @@ func NewPgPlugin(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PgPlugin
-	err := ctx.RegisterResource("sbercloud:Rds/pgPlugin:PgPlugin", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Rds/pgPlugin:PgPlugin", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func NewPgPlugin(ctx *pulumi.Context,
 func GetPgPlugin(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *PgPluginState, opts ...pulumi.ResourceOption) (*PgPlugin, error) {
 	var resource PgPlugin
-	err := ctx.ReadResource("sbercloud:Rds/pgPlugin:PgPlugin", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Rds/pgPlugin:PgPlugin", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

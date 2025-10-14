@@ -19,7 +19,7 @@ export class DmsRocketmqConsumerGroup extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/dmsRocketmqConsumerGroup:DmsRocketmqConsumerGroup';
+    public static readonly __pulumiType = 'cloudru:index/dmsRocketmqConsumerGroup:DmsRocketmqConsumerGroup';
 
     /**
      * Returns true if the given object is an instance of DmsRocketmqConsumerGroup.  This is designed to work even

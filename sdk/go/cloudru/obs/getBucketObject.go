@@ -14,7 +14,7 @@ import (
 func LookupBucketObject(ctx *pulumi.Context, args *LookupBucketObjectArgs, opts ...pulumi.InvokeOption) (*LookupBucketObjectResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupBucketObjectResult
-	err := ctx.Invoke("sbercloud:Obs/getBucketObject:getBucketObject", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Obs/getBucketObject:getBucketObject", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -48,7 +48,7 @@ func LookupBucketObjectOutput(ctx *pulumi.Context, args LookupBucketObjectOutput
 		ApplyT(func(v interface{}) (LookupBucketObjectResultOutput, error) {
 			args := v.(LookupBucketObjectArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Obs/getBucketObject:getBucketObject", args, LookupBucketObjectResultOutput{}, options).(LookupBucketObjectResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Obs/getBucketObject:getBucketObject", args, LookupBucketObjectResultOutput{}, options).(LookupBucketObjectResultOutput), nil
 		}).(LookupBucketObjectResultOutput)
 }
 

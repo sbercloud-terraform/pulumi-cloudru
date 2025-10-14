@@ -54,7 +54,7 @@ func NewFgsAsyncInvokeConfiguration(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FgsAsyncInvokeConfiguration
-	err := ctx.RegisterResource("sbercloud:index/fgsAsyncInvokeConfiguration:FgsAsyncInvokeConfiguration", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/fgsAsyncInvokeConfiguration:FgsAsyncInvokeConfiguration", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -66,7 +66,7 @@ func NewFgsAsyncInvokeConfiguration(ctx *pulumi.Context,
 func GetFgsAsyncInvokeConfiguration(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *FgsAsyncInvokeConfigurationState, opts ...pulumi.ResourceOption) (*FgsAsyncInvokeConfiguration, error) {
 	var resource FgsAsyncInvokeConfiguration
-	err := ctx.ReadResource("sbercloud:index/fgsAsyncInvokeConfiguration:FgsAsyncInvokeConfiguration", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/fgsAsyncInvokeConfiguration:FgsAsyncInvokeConfiguration", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

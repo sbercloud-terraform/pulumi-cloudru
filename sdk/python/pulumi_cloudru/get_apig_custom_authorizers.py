@@ -120,7 +120,7 @@ def get_apig_custom_authorizers(authorizer_id: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['type'] = type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getApigCustomAuthorizers:getApigCustomAuthorizers', __args__, opts=opts, typ=GetApigCustomAuthorizersResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getApigCustomAuthorizers:getApigCustomAuthorizers', __args__, opts=opts, typ=GetApigCustomAuthorizersResult).value
 
     return AwaitableGetApigCustomAuthorizersResult(
         authorizer_id=pulumi.get(__ret__, 'authorizer_id'),
@@ -146,7 +146,7 @@ def get_apig_custom_authorizers_output(authorizer_id: Optional[pulumi.Input[Opti
     __args__['region'] = region
     __args__['type'] = type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getApigCustomAuthorizers:getApigCustomAuthorizers', __args__, opts=opts, typ=GetApigCustomAuthorizersResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getApigCustomAuthorizers:getApigCustomAuthorizers', __args__, opts=opts, typ=GetApigCustomAuthorizersResult)
     return __ret__.apply(lambda __response__: GetApigCustomAuthorizersResult(
         authorizer_id=pulumi.get(__response__, 'authorizer_id'),
         authorizers=pulumi.get(__response__, 'authorizers'),

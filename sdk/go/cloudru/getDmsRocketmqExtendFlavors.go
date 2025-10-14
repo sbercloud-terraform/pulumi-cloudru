@@ -14,7 +14,7 @@ import (
 func GetDmsRocketmqExtendFlavors(ctx *pulumi.Context, args *GetDmsRocketmqExtendFlavorsArgs, opts ...pulumi.InvokeOption) (*GetDmsRocketmqExtendFlavorsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDmsRocketmqExtendFlavorsResult
-	err := ctx.Invoke("sbercloud:index/getDmsRocketmqExtendFlavors:getDmsRocketmqExtendFlavors", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getDmsRocketmqExtendFlavors:getDmsRocketmqExtendFlavors", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -50,7 +50,7 @@ func GetDmsRocketmqExtendFlavorsOutput(ctx *pulumi.Context, args GetDmsRocketmqE
 		ApplyT(func(v interface{}) (GetDmsRocketmqExtendFlavorsResultOutput, error) {
 			args := v.(GetDmsRocketmqExtendFlavorsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getDmsRocketmqExtendFlavors:getDmsRocketmqExtendFlavors", args, GetDmsRocketmqExtendFlavorsResultOutput{}, options).(GetDmsRocketmqExtendFlavorsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getDmsRocketmqExtendFlavors:getDmsRocketmqExtendFlavors", args, GetDmsRocketmqExtendFlavorsResultOutput{}, options).(GetDmsRocketmqExtendFlavorsResultOutput), nil
 		}).(GetDmsRocketmqExtendFlavorsResultOutput)
 }
 

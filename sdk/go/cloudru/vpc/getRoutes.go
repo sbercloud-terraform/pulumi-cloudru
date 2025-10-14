@@ -14,7 +14,7 @@ import (
 func GetRoutes(ctx *pulumi.Context, args *GetRoutesArgs, opts ...pulumi.InvokeOption) (*GetRoutesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRoutesResult
-	err := ctx.Invoke("sbercloud:Vpc/getRoutes:getRoutes", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Vpc/getRoutes:getRoutes", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -45,7 +45,7 @@ func GetRoutesOutput(ctx *pulumi.Context, args GetRoutesOutputArgs, opts ...pulu
 		ApplyT(func(v interface{}) (GetRoutesResultOutput, error) {
 			args := v.(GetRoutesArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Vpc/getRoutes:getRoutes", args, GetRoutesResultOutput{}, options).(GetRoutesResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Vpc/getRoutes:getRoutes", args, GetRoutesResultOutput{}, options).(GetRoutesResultOutput), nil
 		}).(GetRoutesResultOutput)
 }
 

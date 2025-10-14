@@ -375,7 +375,7 @@ class _AlarmruleState:
         pulumi.set(self, "update_time", value)
 
 
-@pulumi.type_token("sbercloud:Ces/alarmrule:Alarmrule")
+@pulumi.type_token("cloudru:Ces/alarmrule:Alarmrule")
 class Alarmrule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -467,7 +467,7 @@ class Alarmrule(pulumi.CustomResource):
             __props__.__dict__["alarm_state"] = None
             __props__.__dict__["update_time"] = None
         super(Alarmrule, __self__).__init__(
-            'sbercloud:Ces/alarmrule:Alarmrule',
+            'cloudru:Ces/alarmrule:Alarmrule',
             resource_name,
             __props__,
             opts)

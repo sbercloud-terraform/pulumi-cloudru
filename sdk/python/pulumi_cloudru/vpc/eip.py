@@ -476,7 +476,7 @@ class _EipState:
         pulumi.set(self, "updated_at", value)
 
 
-@pulumi.type_token("sbercloud:Vpc/eip:Eip")
+@pulumi.type_token("cloudru:Vpc/eip:Eip")
 class Eip(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -574,7 +574,7 @@ class Eip(pulumi.CustomResource):
             __props__.__dict__["status"] = None
             __props__.__dict__["updated_at"] = None
         super(Eip, __self__).__init__(
-            'sbercloud:Vpc/eip:Eip',
+            'cloudru:Vpc/eip:Eip',
             resource_name,
             __props__,
             opts)

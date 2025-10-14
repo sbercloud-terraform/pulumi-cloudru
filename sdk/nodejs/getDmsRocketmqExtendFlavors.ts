@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 export function getDmsRocketmqExtendFlavors(args: GetDmsRocketmqExtendFlavorsArgs, opts?: pulumi.InvokeOptions): Promise<GetDmsRocketmqExtendFlavorsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getDmsRocketmqExtendFlavors:getDmsRocketmqExtendFlavors", {
+    return pulumi.runtime.invoke("cloudru:index/getDmsRocketmqExtendFlavors:getDmsRocketmqExtendFlavors", {
         "archType": args.archType,
         "chargingMode": args.chargingMode,
         "instanceId": args.instanceId,
@@ -49,7 +49,7 @@ export interface GetDmsRocketmqExtendFlavorsResult {
 }
 export function getDmsRocketmqExtendFlavorsOutput(args: GetDmsRocketmqExtendFlavorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDmsRocketmqExtendFlavorsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getDmsRocketmqExtendFlavors:getDmsRocketmqExtendFlavors", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getDmsRocketmqExtendFlavors:getDmsRocketmqExtendFlavors", {
         "archType": args.archType,
         "chargingMode": args.chargingMode,
         "instanceId": args.instanceId,

@@ -128,7 +128,7 @@ class _KeypairState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:Ecs/keypair:Keypair")
+@pulumi.type_token("cloudru:Ecs/keypair:Keypair")
 class Keypair(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -185,7 +185,7 @@ class Keypair(pulumi.CustomResource):
             __props__.__dict__["public_key"] = public_key
             __props__.__dict__["region"] = region
         super(Keypair, __self__).__init__(
-            'sbercloud:Ecs/keypair:Keypair',
+            'cloudru:Ecs/keypair:Keypair',
             resource_name,
             __props__,
             opts)

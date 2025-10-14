@@ -19,7 +19,7 @@ export class ApigApplicationQuota extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/apigApplicationQuota:ApigApplicationQuota';
+    public static readonly __pulumiType = 'cloudru:index/apigApplicationQuota:ApigApplicationQuota';
 
     /**
      * Returns true if the given object is an instance of ApigApplicationQuota.  This is designed to work even

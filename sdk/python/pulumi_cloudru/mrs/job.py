@@ -294,7 +294,7 @@ class _JobState:
         pulumi.set(self, "type", value)
 
 
-@pulumi.type_token("sbercloud:Mrs/job:Job")
+@pulumi.type_token("cloudru:Mrs/job:Job")
 class Job(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -374,7 +374,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["status"] = None
             __props__.__dict__["submit_time"] = None
         super(Job, __self__).__init__(
-            'sbercloud:Mrs/job:Job',
+            'cloudru:Mrs/job:Job',
             resource_name,
             __props__,
             opts)

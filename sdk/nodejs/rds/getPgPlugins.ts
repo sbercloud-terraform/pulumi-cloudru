@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 export function getPgPlugins(args: GetPgPluginsArgs, opts?: pulumi.InvokeOptions): Promise<GetPgPluginsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Rds/getPgPlugins:getPgPlugins", {
+    return pulumi.runtime.invoke("cloudru:Rds/getPgPlugins:getPgPlugins", {
         "created": args.created,
         "databaseName": args.databaseName,
         "instanceId": args.instanceId,
@@ -48,7 +48,7 @@ export interface GetPgPluginsResult {
 }
 export function getPgPluginsOutput(args: GetPgPluginsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPgPluginsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Rds/getPgPlugins:getPgPlugins", {
+    return pulumi.runtime.invokeOutput("cloudru:Rds/getPgPlugins:getPgPlugins", {
         "created": args.created,
         "databaseName": args.databaseName,
         "instanceId": args.instanceId,

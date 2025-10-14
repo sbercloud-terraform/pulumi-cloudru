@@ -46,7 +46,7 @@ func NewElbCertificate(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ElbCertificate
-	err := ctx.RegisterResource("sbercloud:index/elbCertificate:ElbCertificate", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/elbCertificate:ElbCertificate", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -58,7 +58,7 @@ func NewElbCertificate(ctx *pulumi.Context,
 func GetElbCertificate(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ElbCertificateState, opts ...pulumi.ResourceOption) (*ElbCertificate, error) {
 	var resource ElbCertificate
-	err := ctx.ReadResource("sbercloud:index/elbCertificate:ElbCertificate", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/elbCertificate:ElbCertificate", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

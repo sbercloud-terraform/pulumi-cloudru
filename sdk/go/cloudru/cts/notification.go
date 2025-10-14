@@ -41,7 +41,7 @@ func NewNotification(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Notification
-	err := ctx.RegisterResource("sbercloud:Cts/notification:Notification", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Cts/notification:Notification", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -53,7 +53,7 @@ func NewNotification(ctx *pulumi.Context,
 func GetNotification(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *NotificationState, opts ...pulumi.ResourceOption) (*Notification, error) {
 	var resource Notification
-	err := ctx.ReadResource("sbercloud:Cts/notification:Notification", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Cts/notification:Notification", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

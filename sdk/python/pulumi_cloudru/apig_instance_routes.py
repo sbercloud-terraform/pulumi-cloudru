@@ -126,7 +126,7 @@ class _ApigInstanceRoutesState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:index/apigInstanceRoutes:ApigInstanceRoutes")
+@pulumi.type_token("cloudru:index/apigInstanceRoutes:ApigInstanceRoutes")
 class ApigInstanceRoutes(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -187,7 +187,7 @@ class ApigInstanceRoutes(pulumi.CustomResource):
             __props__.__dict__["nexthops"] = nexthops
             __props__.__dict__["region"] = region
         super(ApigInstanceRoutes, __self__).__init__(
-            'sbercloud:index/apigInstanceRoutes:ApigInstanceRoutes',
+            'cloudru:index/apigInstanceRoutes:ApigInstanceRoutes',
             resource_name,
             __props__,
             opts)

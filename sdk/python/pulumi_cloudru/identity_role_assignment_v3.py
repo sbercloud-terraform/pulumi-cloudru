@@ -150,7 +150,7 @@ class _IdentityRoleAssignmentV3State:
         pulumi.set(self, "role_id", value)
 
 
-@pulumi.type_token("sbercloud:index/identityRoleAssignmentV3:IdentityRoleAssignmentV3")
+@pulumi.type_token("cloudru:index/identityRoleAssignmentV3:IdentityRoleAssignmentV3")
 class IdentityRoleAssignmentV3(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -214,7 +214,7 @@ class IdentityRoleAssignmentV3(pulumi.CustomResource):
                 raise TypeError("Missing required property 'role_id'")
             __props__.__dict__["role_id"] = role_id
         super(IdentityRoleAssignmentV3, __self__).__init__(
-            'sbercloud:index/identityRoleAssignmentV3:IdentityRoleAssignmentV3',
+            'cloudru:index/identityRoleAssignmentV3:IdentityRoleAssignmentV3',
             resource_name,
             __props__,
             opts)

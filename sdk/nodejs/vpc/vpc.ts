@@ -21,7 +21,7 @@ export class Vpc extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Vpc/vpc:Vpc';
+    public static readonly __pulumiType = 'cloudru:Vpc/vpc:Vpc';
 
     /**
      * Returns true if the given object is an instance of Vpc.  This is designed to work even

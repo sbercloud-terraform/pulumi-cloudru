@@ -39,7 +39,7 @@ func NewDcsParameters(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DcsParameters
-	err := ctx.RegisterResource("sbercloud:index/dcsParameters:DcsParameters", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/dcsParameters:DcsParameters", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func NewDcsParameters(ctx *pulumi.Context,
 func GetDcsParameters(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *DcsParametersState, opts ...pulumi.ResourceOption) (*DcsParameters, error) {
 	var resource DcsParameters
-	err := ctx.ReadResource("sbercloud:index/dcsParameters:DcsParameters", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/dcsParameters:DcsParameters", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

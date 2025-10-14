@@ -19,7 +19,7 @@ export class PgPluginUpdate extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Rds/pgPluginUpdate:PgPluginUpdate';
+    public static readonly __pulumiType = 'cloudru:Rds/pgPluginUpdate:PgPluginUpdate';
 
     /**
      * Returns true if the given object is an instance of PgPluginUpdate.  This is designed to work even

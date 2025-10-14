@@ -142,7 +142,7 @@ def get_apig_channels(channel_id: Optional[_builtins.str] = None,
     __args__['preciseSearch'] = precise_search
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getApigChannels:getApigChannels', __args__, opts=opts, typ=GetApigChannelsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getApigChannels:getApigChannels', __args__, opts=opts, typ=GetApigChannelsResult).value
 
     return AwaitableGetApigChannelsResult(
         channel_id=pulumi.get(__ret__, 'channel_id'),
@@ -174,7 +174,7 @@ def get_apig_channels_output(channel_id: Optional[pulumi.Input[Optional[_builtin
     __args__['preciseSearch'] = precise_search
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getApigChannels:getApigChannels', __args__, opts=opts, typ=GetApigChannelsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getApigChannels:getApigChannels', __args__, opts=opts, typ=GetApigChannelsResult)
     return __ret__.apply(lambda __response__: GetApigChannelsResult(
         channel_id=pulumi.get(__response__, 'channel_id'),
         id=pulumi.get(__response__, 'id'),

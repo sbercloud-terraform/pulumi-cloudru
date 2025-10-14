@@ -98,7 +98,7 @@ def get_apig_appcodes(application_id: Optional[_builtins.str] = None,
     __args__['instanceId'] = instance_id
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getApigAppcodes:getApigAppcodes', __args__, opts=opts, typ=GetApigAppcodesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getApigAppcodes:getApigAppcodes', __args__, opts=opts, typ=GetApigAppcodesResult).value
 
     return AwaitableGetApigAppcodesResult(
         appcodes=pulumi.get(__ret__, 'appcodes'),
@@ -118,7 +118,7 @@ def get_apig_appcodes_output(application_id: Optional[pulumi.Input[_builtins.str
     __args__['instanceId'] = instance_id
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getApigAppcodes:getApigAppcodes', __args__, opts=opts, typ=GetApigAppcodesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getApigAppcodes:getApigAppcodes', __args__, opts=opts, typ=GetApigAppcodesResult)
     return __ret__.apply(lambda __response__: GetApigAppcodesResult(
         appcodes=pulumi.get(__response__, 'appcodes'),
         application_id=pulumi.get(__response__, 'application_id'),

@@ -159,7 +159,7 @@ class _ApigApplicationQuotaAssociateState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:index/apigApplicationQuotaAssociate:ApigApplicationQuotaAssociate")
+@pulumi.type_token("cloudru:index/apigApplicationQuotaAssociate:ApigApplicationQuotaAssociate")
 class ApigApplicationQuotaAssociate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -226,7 +226,7 @@ class ApigApplicationQuotaAssociate(pulumi.CustomResource):
             __props__.__dict__["quota_id"] = quota_id
             __props__.__dict__["region"] = region
         super(ApigApplicationQuotaAssociate, __self__).__init__(
-            'sbercloud:index/apigApplicationQuotaAssociate:ApigApplicationQuotaAssociate',
+            'cloudru:index/apigApplicationQuotaAssociate:ApigApplicationQuotaAssociate',
             resource_name,
             __props__,
             opts)

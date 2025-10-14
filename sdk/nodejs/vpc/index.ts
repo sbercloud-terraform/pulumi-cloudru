@@ -140,47 +140,47 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "sbercloud:Vpc/addressGroup:AddressGroup":
+            case "cloudru:Vpc/addressGroup:AddressGroup":
                 return new AddressGroup(name, <any>undefined, { urn })
-            case "sbercloud:Vpc/bandwidth:Bandwidth":
+            case "cloudru:Vpc/bandwidth:Bandwidth":
                 return new Bandwidth(name, <any>undefined, { urn })
-            case "sbercloud:Vpc/eip:Eip":
+            case "cloudru:Vpc/eip:Eip":
                 return new Eip(name, <any>undefined, { urn })
-            case "sbercloud:Vpc/peeringConnection:PeeringConnection":
+            case "cloudru:Vpc/peeringConnection:PeeringConnection":
                 return new PeeringConnection(name, <any>undefined, { urn })
-            case "sbercloud:Vpc/peeringConnectionAccepter:PeeringConnectionAccepter":
+            case "cloudru:Vpc/peeringConnectionAccepter:PeeringConnectionAccepter":
                 return new PeeringConnectionAccepter(name, <any>undefined, { urn })
-            case "sbercloud:Vpc/route:Route":
+            case "cloudru:Vpc/route:Route":
                 return new Route(name, <any>undefined, { urn })
-            case "sbercloud:Vpc/routeTable:RouteTable":
+            case "cloudru:Vpc/routeTable:RouteTable":
                 return new RouteTable(name, <any>undefined, { urn })
-            case "sbercloud:Vpc/secgroup:Secgroup":
+            case "cloudru:Vpc/secgroup:Secgroup":
                 return new Secgroup(name, <any>undefined, { urn })
-            case "sbercloud:Vpc/secgroupRule:SecgroupRule":
+            case "cloudru:Vpc/secgroupRule:SecgroupRule":
                 return new SecgroupRule(name, <any>undefined, { urn })
-            case "sbercloud:Vpc/subnet:Subnet":
+            case "cloudru:Vpc/subnet:Subnet":
                 return new Subnet(name, <any>undefined, { urn })
-            case "sbercloud:Vpc/vip:Vip":
+            case "cloudru:Vpc/vip:Vip":
                 return new Vip(name, <any>undefined, { urn })
-            case "sbercloud:Vpc/vipAssociate:VipAssociate":
+            case "cloudru:Vpc/vipAssociate:VipAssociate":
                 return new VipAssociate(name, <any>undefined, { urn })
-            case "sbercloud:Vpc/vpc:Vpc":
+            case "cloudru:Vpc/vpc:Vpc":
                 return new Vpc(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("sbercloud", "Vpc/addressGroup", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Vpc/bandwidth", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Vpc/eip", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Vpc/peeringConnection", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Vpc/peeringConnectionAccepter", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Vpc/route", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Vpc/routeTable", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Vpc/secgroup", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Vpc/secgroupRule", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Vpc/subnet", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Vpc/vip", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Vpc/vipAssociate", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Vpc/vpc", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Vpc/addressGroup", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Vpc/bandwidth", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Vpc/eip", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Vpc/peeringConnection", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Vpc/peeringConnectionAccepter", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Vpc/route", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Vpc/routeTable", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Vpc/secgroup", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Vpc/secgroupRule", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Vpc/subnet", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Vpc/vip", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Vpc/vipAssociate", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Vpc/vpc", _module)

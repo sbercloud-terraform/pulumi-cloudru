@@ -64,7 +64,7 @@ func NewReadReplicaInstance(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ReadReplicaInstance
-	err := ctx.RegisterResource("sbercloud:Rds/readReplicaInstance:ReadReplicaInstance", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Rds/readReplicaInstance:ReadReplicaInstance", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -76,7 +76,7 @@ func NewReadReplicaInstance(ctx *pulumi.Context,
 func GetReadReplicaInstance(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ReadReplicaInstanceState, opts ...pulumi.ResourceOption) (*ReadReplicaInstance, error) {
 	var resource ReadReplicaInstance
-	err := ctx.ReadResource("sbercloud:Rds/readReplicaInstance:ReadReplicaInstance", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Rds/readReplicaInstance:ReadReplicaInstance", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

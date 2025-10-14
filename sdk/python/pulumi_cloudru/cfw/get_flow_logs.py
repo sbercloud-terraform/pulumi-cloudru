@@ -252,7 +252,7 @@ def get_flow_logs(app: Optional[_builtins.str] = None,
     __args__['srcRegionName'] = src_region_name
     __args__['startTime'] = start_time
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Cfw/getFlowLogs:getFlowLogs', __args__, opts=opts, typ=GetFlowLogsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Cfw/getFlowLogs:getFlowLogs', __args__, opts=opts, typ=GetFlowLogsResult).value
 
     return AwaitableGetFlowLogsResult(
         app=pulumi.get(__ret__, 'app'),
@@ -314,7 +314,7 @@ def get_flow_logs_output(app: Optional[pulumi.Input[Optional[_builtins.str]]] = 
     __args__['srcRegionName'] = src_region_name
     __args__['startTime'] = start_time
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Cfw/getFlowLogs:getFlowLogs', __args__, opts=opts, typ=GetFlowLogsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Cfw/getFlowLogs:getFlowLogs', __args__, opts=opts, typ=GetFlowLogsResult)
     return __ret__.apply(lambda __response__: GetFlowLogsResult(
         app=pulumi.get(__response__, 'app'),
         direction=pulumi.get(__response__, 'direction'),

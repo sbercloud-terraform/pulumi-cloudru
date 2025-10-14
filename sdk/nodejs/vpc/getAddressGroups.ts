@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 export function getAddressGroups(args?: GetAddressGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressGroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Vpc/getAddressGroups:getAddressGroups", {
+    return pulumi.runtime.invoke("cloudru:Vpc/getAddressGroups:getAddressGroups", {
         "description": args.description,
         "groupId": args.groupId,
         "ipVersion": args.ipVersion,
@@ -47,7 +47,7 @@ export interface GetAddressGroupsResult {
 export function getAddressGroupsOutput(args?: GetAddressGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAddressGroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Vpc/getAddressGroups:getAddressGroups", {
+    return pulumi.runtime.invokeOutput("cloudru:Vpc/getAddressGroups:getAddressGroups", {
         "description": args.description,
         "groupId": args.groupId,
         "ipVersion": args.ipVersion,

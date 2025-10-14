@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 export function getApigGroups(args: GetApigGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetApigGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getApigGroups:getApigGroups", {
+    return pulumi.runtime.invoke("cloudru:index/getApigGroups:getApigGroups", {
         "groupId": args.groupId,
         "instanceId": args.instanceId,
         "name": args.name,
@@ -42,7 +42,7 @@ export interface GetApigGroupsResult {
 }
 export function getApigGroupsOutput(args: GetApigGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApigGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getApigGroups:getApigGroups", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getApigGroups:getApigGroups", {
         "groupId": args.groupId,
         "instanceId": args.instanceId,
         "name": args.name,

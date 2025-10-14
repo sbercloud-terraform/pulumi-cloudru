@@ -63,7 +63,7 @@ func NewThrottlingPolicy(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ThrottlingPolicy
-	err := ctx.RegisterResource("sbercloud:DedicatedApig/throttlingPolicy:ThrottlingPolicy", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:DedicatedApig/throttlingPolicy:ThrottlingPolicy", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -75,7 +75,7 @@ func NewThrottlingPolicy(ctx *pulumi.Context,
 func GetThrottlingPolicy(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ThrottlingPolicyState, opts ...pulumi.ResourceOption) (*ThrottlingPolicy, error) {
 	var resource ThrottlingPolicy
-	err := ctx.ReadResource("sbercloud:DedicatedApig/throttlingPolicy:ThrottlingPolicy", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:DedicatedApig/throttlingPolicy:ThrottlingPolicy", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

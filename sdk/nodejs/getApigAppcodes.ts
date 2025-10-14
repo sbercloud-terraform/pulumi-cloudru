@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 export function getApigAppcodes(args: GetApigAppcodesArgs, opts?: pulumi.InvokeOptions): Promise<GetApigAppcodesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getApigAppcodes:getApigAppcodes", {
+    return pulumi.runtime.invoke("cloudru:index/getApigAppcodes:getApigAppcodes", {
         "applicationId": args.applicationId,
         "instanceId": args.instanceId,
         "region": args.region,
@@ -39,7 +39,7 @@ export interface GetApigAppcodesResult {
 }
 export function getApigAppcodesOutput(args: GetApigAppcodesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApigAppcodesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getApigAppcodes:getApigAppcodes", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getApigAppcodes:getApigAppcodes", {
         "applicationId": args.applicationId,
         "instanceId": args.instanceId,
         "region": args.region,

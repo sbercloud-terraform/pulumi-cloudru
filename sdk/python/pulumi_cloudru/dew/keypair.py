@@ -332,7 +332,7 @@ class _KeypairState:
         pulumi.set(self, "user_id", value)
 
 
-@pulumi.type_token("sbercloud:Dew/keypair:Keypair")
+@pulumi.type_token("cloudru:Dew/keypair:Keypair")
 class Keypair(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -415,7 +415,7 @@ class Keypair(pulumi.CustomResource):
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["privateKey"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Keypair, __self__).__init__(
-            'sbercloud:Dew/keypair:Keypair',
+            'cloudru:Dew/keypair:Keypair',
             resource_name,
             __props__,
             opts)

@@ -266,7 +266,7 @@ class _AgencyState:
         pulumi.set(self, "project_roles", value)
 
 
-@pulumi.type_token("sbercloud:Iam/agency:Agency")
+@pulumi.type_token("cloudru:Iam/agency:Agency")
 class Agency(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -339,7 +339,7 @@ class Agency(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["expire_time"] = None
         super(Agency, __self__).__init__(
-            'sbercloud:Iam/agency:Agency',
+            'cloudru:Iam/agency:Agency',
             resource_name,
             __props__,
             opts)

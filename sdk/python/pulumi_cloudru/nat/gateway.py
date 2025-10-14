@@ -551,7 +551,7 @@ class _GatewayState:
         pulumi.set(self, "vpc_id", value)
 
 
-@pulumi.type_token("sbercloud:Nat/gateway:Gateway")
+@pulumi.type_token("cloudru:Nat/gateway:Gateway")
 class Gateway(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -660,7 +660,7 @@ class Gateway(pulumi.CustomResource):
             __props__.__dict__["snat_rule_public_ip_limit"] = None
             __props__.__dict__["status"] = None
         super(Gateway, __self__).__init__(
-            'sbercloud:Nat/gateway:Gateway',
+            'cloudru:Nat/gateway:Gateway',
             resource_name,
             __props__,
             opts)

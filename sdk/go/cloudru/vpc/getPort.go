@@ -14,7 +14,7 @@ import (
 func GetPort(ctx *pulumi.Context, args *GetPortArgs, opts ...pulumi.InvokeOption) (*GetPortResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPortResult
-	err := ctx.Invoke("sbercloud:Vpc/getPort:getPort", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Vpc/getPort:getPort", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -71,7 +71,7 @@ func GetPortOutput(ctx *pulumi.Context, args GetPortOutputArgs, opts ...pulumi.I
 		ApplyT(func(v interface{}) (GetPortResultOutput, error) {
 			args := v.(GetPortArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Vpc/getPort:getPort", args, GetPortResultOutput{}, options).(GetPortResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Vpc/getPort:getPort", args, GetPortResultOutput{}, options).(GetPortResultOutput), nil
 		}).(GetPortResultOutput)
 }
 

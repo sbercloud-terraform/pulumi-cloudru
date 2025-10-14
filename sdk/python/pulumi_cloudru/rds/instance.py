@@ -1163,7 +1163,7 @@ class _InstanceState:
         pulumi.set(self, "vpc_id", value)
 
 
-@pulumi.type_token("sbercloud:Rds/instance:Instance")
+@pulumi.type_token("cloudru:Rds/instance:Instance")
 class Instance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -1360,7 +1360,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["public_ips"] = None
             __props__.__dict__["status"] = None
         super(Instance, __self__).__init__(
-            'sbercloud:Rds/instance:Instance',
+            'cloudru:Rds/instance:Instance',
             resource_name,
             __props__,
             opts)

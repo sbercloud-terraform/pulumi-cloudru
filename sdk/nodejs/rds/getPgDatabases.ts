@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 export function getPgDatabases(args: GetPgDatabasesArgs, opts?: pulumi.InvokeOptions): Promise<GetPgDatabasesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Rds/getPgDatabases:getPgDatabases", {
+    return pulumi.runtime.invoke("cloudru:Rds/getPgDatabases:getPgDatabases", {
         "characterSet": args.characterSet,
         "instanceId": args.instanceId,
         "lcCollate": args.lcCollate,
@@ -51,7 +51,7 @@ export interface GetPgDatabasesResult {
 }
 export function getPgDatabasesOutput(args: GetPgDatabasesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPgDatabasesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Rds/getPgDatabases:getPgDatabases", {
+    return pulumi.runtime.invokeOutput("cloudru:Rds/getPgDatabases:getPgDatabases", {
         "characterSet": args.characterSet,
         "instanceId": args.instanceId,
         "lcCollate": args.lcCollate,

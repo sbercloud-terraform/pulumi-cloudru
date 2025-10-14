@@ -14,7 +14,7 @@ import (
 func GetElbFlavors(ctx *pulumi.Context, args *GetElbFlavorsArgs, opts ...pulumi.InvokeOption) (*GetElbFlavorsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetElbFlavorsResult
-	err := ctx.Invoke("sbercloud:index/getElbFlavors:getElbFlavors", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getElbFlavors:getElbFlavors", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -64,7 +64,7 @@ func GetElbFlavorsOutput(ctx *pulumi.Context, args GetElbFlavorsOutputArgs, opts
 		ApplyT(func(v interface{}) (GetElbFlavorsResultOutput, error) {
 			args := v.(GetElbFlavorsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getElbFlavors:getElbFlavors", args, GetElbFlavorsResultOutput{}, options).(GetElbFlavorsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getElbFlavors:getElbFlavors", args, GetElbFlavorsResultOutput{}, options).(GetElbFlavorsResultOutput), nil
 		}).(GetElbFlavorsResultOutput)
 }
 

@@ -14,7 +14,7 @@ import (
 func GetDmsRocketmqMessages(ctx *pulumi.Context, args *GetDmsRocketmqMessagesArgs, opts ...pulumi.InvokeOption) (*GetDmsRocketmqMessagesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDmsRocketmqMessagesResult
-	err := ctx.Invoke("sbercloud:index/getDmsRocketmqMessages:getDmsRocketmqMessages", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getDmsRocketmqMessages:getDmsRocketmqMessages", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func GetDmsRocketmqMessagesOutput(ctx *pulumi.Context, args GetDmsRocketmqMessag
 		ApplyT(func(v interface{}) (GetDmsRocketmqMessagesResultOutput, error) {
 			args := v.(GetDmsRocketmqMessagesArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getDmsRocketmqMessages:getDmsRocketmqMessages", args, GetDmsRocketmqMessagesResultOutput{}, options).(GetDmsRocketmqMessagesResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getDmsRocketmqMessages:getDmsRocketmqMessages", args, GetDmsRocketmqMessagesResultOutput{}, options).(GetDmsRocketmqMessagesResultOutput), nil
 		}).(GetDmsRocketmqMessagesResultOutput)
 }
 

@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 export function getDmsRabbitmqFlavors(args?: GetDmsRabbitmqFlavorsArgs, opts?: pulumi.InvokeOptions): Promise<GetDmsRabbitmqFlavorsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getDmsRabbitmqFlavors:getDmsRabbitmqFlavors", {
+    return pulumi.runtime.invoke("cloudru:index/getDmsRabbitmqFlavors:getDmsRabbitmqFlavors", {
         "archType": args.archType,
         "availabilityZones": args.availabilityZones,
         "chargingMode": args.chargingMode,
@@ -54,7 +54,7 @@ export interface GetDmsRabbitmqFlavorsResult {
 export function getDmsRabbitmqFlavorsOutput(args?: GetDmsRabbitmqFlavorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDmsRabbitmqFlavorsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getDmsRabbitmqFlavors:getDmsRabbitmqFlavors", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getDmsRabbitmqFlavors:getDmsRabbitmqFlavors", {
         "archType": args.archType,
         "availabilityZones": args.availabilityZones,
         "chargingMode": args.chargingMode,

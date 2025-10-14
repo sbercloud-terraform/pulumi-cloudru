@@ -140,7 +140,7 @@ def get_dms_rocketmq_extend_flavors(arch_type: Optional[_builtins.str] = None,
     __args__['storageSpecCode'] = storage_spec_code
     __args__['type'] = type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getDmsRocketmqExtendFlavors:getDmsRocketmqExtendFlavors', __args__, opts=opts, typ=GetDmsRocketmqExtendFlavorsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getDmsRocketmqExtendFlavors:getDmsRocketmqExtendFlavors', __args__, opts=opts, typ=GetDmsRocketmqExtendFlavorsResult).value
 
     return AwaitableGetDmsRocketmqExtendFlavorsResult(
         arch_type=pulumi.get(__ret__, 'arch_type'),
@@ -170,7 +170,7 @@ def get_dms_rocketmq_extend_flavors_output(arch_type: Optional[pulumi.Input[Opti
     __args__['storageSpecCode'] = storage_spec_code
     __args__['type'] = type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getDmsRocketmqExtendFlavors:getDmsRocketmqExtendFlavors', __args__, opts=opts, typ=GetDmsRocketmqExtendFlavorsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getDmsRocketmqExtendFlavors:getDmsRocketmqExtendFlavors', __args__, opts=opts, typ=GetDmsRocketmqExtendFlavorsResult)
     return __ret__.apply(lambda __response__: GetDmsRocketmqExtendFlavorsResult(
         arch_type=pulumi.get(__response__, 'arch_type'),
         charging_mode=pulumi.get(__response__, 'charging_mode'),

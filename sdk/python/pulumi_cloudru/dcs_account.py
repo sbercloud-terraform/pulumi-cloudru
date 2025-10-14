@@ -244,7 +244,7 @@ class _DcsAccountState:
         pulumi.set(self, "status", value)
 
 
-@pulumi.type_token("sbercloud:index/dcsAccount:DcsAccount")
+@pulumi.type_token("cloudru:index/dcsAccount:DcsAccount")
 class DcsAccount(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -324,7 +324,7 @@ class DcsAccount(pulumi.CustomResource):
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountPassword"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(DcsAccount, __self__).__init__(
-            'sbercloud:index/dcsAccount:DcsAccount',
+            'cloudru:index/dcsAccount:DcsAccount',
             resource_name,
             __props__,
             opts)

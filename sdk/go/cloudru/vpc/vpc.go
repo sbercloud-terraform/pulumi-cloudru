@@ -43,7 +43,7 @@ func NewVpc(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Vpc
-	err := ctx.RegisterResource("sbercloud:Vpc/vpc:Vpc", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Vpc/vpc:Vpc", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -55,7 +55,7 @@ func NewVpc(ctx *pulumi.Context,
 func GetVpc(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *VpcState, opts ...pulumi.ResourceOption) (*Vpc, error) {
 	var resource Vpc
-	err := ctx.ReadResource("sbercloud:Vpc/vpc:Vpc", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Vpc/vpc:Vpc", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

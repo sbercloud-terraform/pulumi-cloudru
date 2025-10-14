@@ -21,7 +21,7 @@ export class CaptureTask extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Cfw/captureTask:CaptureTask';
+    public static readonly __pulumiType = 'cloudru:Cfw/captureTask:CaptureTask';
 
     /**
      * Returns true if the given object is an instance of CaptureTask.  This is designed to work even

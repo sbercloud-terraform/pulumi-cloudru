@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 export function getDependencies(args?: GetDependenciesArgs, opts?: pulumi.InvokeOptions): Promise<GetDependenciesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:FunctionGraph/getDependencies:getDependencies", {
+    return pulumi.runtime.invoke("cloudru:FunctionGraph/getDependencies:getDependencies", {
         "isVersionsQueryAllowed": args.isVersionsQueryAllowed,
         "name": args.name,
         "region": args.region,
@@ -47,7 +47,7 @@ export interface GetDependenciesResult {
 export function getDependenciesOutput(args?: GetDependenciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDependenciesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:FunctionGraph/getDependencies:getDependencies", {
+    return pulumi.runtime.invokeOutput("cloudru:FunctionGraph/getDependencies:getDependencies", {
         "isVersionsQueryAllowed": args.isVersionsQueryAllowed,
         "name": args.name,
         "region": args.region,

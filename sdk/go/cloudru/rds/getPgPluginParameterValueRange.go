@@ -14,7 +14,7 @@ import (
 func GetPgPluginParameterValueRange(ctx *pulumi.Context, args *GetPgPluginParameterValueRangeArgs, opts ...pulumi.InvokeOption) (*GetPgPluginParameterValueRangeResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPgPluginParameterValueRangeResult
-	err := ctx.Invoke("sbercloud:Rds/getPgPluginParameterValueRange:getPgPluginParameterValueRange", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Rds/getPgPluginParameterValueRange:getPgPluginParameterValueRange", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -45,7 +45,7 @@ func GetPgPluginParameterValueRangeOutput(ctx *pulumi.Context, args GetPgPluginP
 		ApplyT(func(v interface{}) (GetPgPluginParameterValueRangeResultOutput, error) {
 			args := v.(GetPgPluginParameterValueRangeArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Rds/getPgPluginParameterValueRange:getPgPluginParameterValueRange", args, GetPgPluginParameterValueRangeResultOutput{}, options).(GetPgPluginParameterValueRangeResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Rds/getPgPluginParameterValueRange:getPgPluginParameterValueRange", args, GetPgPluginParameterValueRangeResultOutput{}, options).(GetPgPluginParameterValueRangeResultOutput), nil
 		}).(GetPgPluginParameterValueRangeResultOutput)
 }
 

@@ -14,7 +14,7 @@ import (
 func GetRegions(ctx *pulumi.Context, args *GetRegionsArgs, opts ...pulumi.InvokeOption) (*GetRegionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRegionsResult
-	err := ctx.Invoke("sbercloud:Cfw/getRegions:getRegions", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Cfw/getRegions:getRegions", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -43,7 +43,7 @@ func GetRegionsOutput(ctx *pulumi.Context, args GetRegionsOutputArgs, opts ...pu
 		ApplyT(func(v interface{}) (GetRegionsResultOutput, error) {
 			args := v.(GetRegionsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Cfw/getRegions:getRegions", args, GetRegionsResultOutput{}, options).(GetRegionsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Cfw/getRegions:getRegions", args, GetRegionsResultOutput{}, options).(GetRegionsResultOutput), nil
 		}).(GetRegionsResultOutput)
 }
 

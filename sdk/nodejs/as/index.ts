@@ -30,20 +30,20 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "sbercloud:As/bandwidthPolicy:BandwidthPolicy":
+            case "cloudru:As/bandwidthPolicy:BandwidthPolicy":
                 return new BandwidthPolicy(name, <any>undefined, { urn })
-            case "sbercloud:As/configuration:Configuration":
+            case "cloudru:As/configuration:Configuration":
                 return new Configuration(name, <any>undefined, { urn })
-            case "sbercloud:As/group:Group":
+            case "cloudru:As/group:Group":
                 return new Group(name, <any>undefined, { urn })
-            case "sbercloud:As/policy:Policy":
+            case "cloudru:As/policy:Policy":
                 return new Policy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("sbercloud", "As/bandwidthPolicy", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "As/configuration", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "As/group", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "As/policy", _module)
+pulumi.runtime.registerResourceModule("cloudru", "As/bandwidthPolicy", _module)
+pulumi.runtime.registerResourceModule("cloudru", "As/configuration", _module)
+pulumi.runtime.registerResourceModule("cloudru", "As/group", _module)
+pulumi.runtime.registerResourceModule("cloudru", "As/policy", _module)

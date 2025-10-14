@@ -131,7 +131,7 @@ def get_fgs_functions(enterprise_project_id: Optional[_builtins.str] = None,
     __args__['runtime'] = runtime
     __args__['urn'] = urn
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getFgsFunctions:getFgsFunctions', __args__, opts=opts, typ=GetFgsFunctionsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getFgsFunctions:getFgsFunctions', __args__, opts=opts, typ=GetFgsFunctionsResult).value
 
     return AwaitableGetFgsFunctionsResult(
         enterprise_project_id=pulumi.get(__ret__, 'enterprise_project_id'),
@@ -160,7 +160,7 @@ def get_fgs_functions_output(enterprise_project_id: Optional[pulumi.Input[Option
     __args__['runtime'] = runtime
     __args__['urn'] = urn
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getFgsFunctions:getFgsFunctions', __args__, opts=opts, typ=GetFgsFunctionsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getFgsFunctions:getFgsFunctions', __args__, opts=opts, typ=GetFgsFunctionsResult)
     return __ret__.apply(lambda __response__: GetFgsFunctionsResult(
         enterprise_project_id=pulumi.get(__response__, 'enterprise_project_id'),
         functions=pulumi.get(__response__, 'functions'),

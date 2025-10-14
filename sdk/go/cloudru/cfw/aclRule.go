@@ -113,7 +113,7 @@ func NewAclRule(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AclRule
-	err := ctx.RegisterResource("sbercloud:Cfw/aclRule:AclRule", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Cfw/aclRule:AclRule", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -125,7 +125,7 @@ func NewAclRule(ctx *pulumi.Context,
 func GetAclRule(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *AclRuleState, opts ...pulumi.ResourceOption) (*AclRule, error) {
 	var resource AclRule
-	err := ctx.ReadResource("sbercloud:Cfw/aclRule:AclRule", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Cfw/aclRule:AclRule", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

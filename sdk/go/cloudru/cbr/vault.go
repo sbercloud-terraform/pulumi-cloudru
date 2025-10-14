@@ -86,7 +86,7 @@ func NewVault(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Vault
-	err := ctx.RegisterResource("sbercloud:Cbr/vault:Vault", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Cbr/vault:Vault", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -98,7 +98,7 @@ func NewVault(ctx *pulumi.Context,
 func GetVault(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *VaultState, opts ...pulumi.ResourceOption) (*Vault, error) {
 	var resource Vault
-	err := ctx.ReadResource("sbercloud:Cbr/vault:Vault", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Cbr/vault:Vault", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

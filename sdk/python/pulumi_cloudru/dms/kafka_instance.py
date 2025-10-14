@@ -1417,7 +1417,7 @@ class _KafkaInstanceState:
         pulumi.set(self, "vpc_id", value)
 
 
-@pulumi.type_token("sbercloud:Dms/kafkaInstance:KafkaInstance")
+@pulumi.type_token("cloudru:Dms/kafkaInstance:KafkaInstance")
 class KafkaInstance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -1628,7 +1628,7 @@ class KafkaInstance(pulumi.CustomResource):
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["kmsEncryptedPassword", "managerPassword", "password"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(KafkaInstance, __self__).__init__(
-            'sbercloud:Dms/kafkaInstance:KafkaInstance',
+            'cloudru:Dms/kafkaInstance:KafkaInstance',
             resource_name,
             __props__,
             opts)

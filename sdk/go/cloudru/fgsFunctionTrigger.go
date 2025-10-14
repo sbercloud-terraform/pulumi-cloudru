@@ -49,7 +49,7 @@ func NewFgsFunctionTrigger(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FgsFunctionTrigger
-	err := ctx.RegisterResource("sbercloud:index/fgsFunctionTrigger:FgsFunctionTrigger", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/fgsFunctionTrigger:FgsFunctionTrigger", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -61,7 +61,7 @@ func NewFgsFunctionTrigger(ctx *pulumi.Context,
 func GetFgsFunctionTrigger(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *FgsFunctionTriggerState, opts ...pulumi.ResourceOption) (*FgsFunctionTrigger, error) {
 	var resource FgsFunctionTrigger
-	err := ctx.ReadResource("sbercloud:index/fgsFunctionTrigger:FgsFunctionTrigger", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/fgsFunctionTrigger:FgsFunctionTrigger", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

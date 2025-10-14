@@ -60,7 +60,7 @@ func NewEip(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Eip
-	err := ctx.RegisterResource("sbercloud:Vpc/eip:Eip", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Vpc/eip:Eip", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -72,7 +72,7 @@ func NewEip(ctx *pulumi.Context,
 func GetEip(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *EipState, opts ...pulumi.ResourceOption) (*Eip, error) {
 	var resource Eip
-	err := ctx.ReadResource("sbercloud:Vpc/eip:Eip", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Vpc/eip:Eip", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

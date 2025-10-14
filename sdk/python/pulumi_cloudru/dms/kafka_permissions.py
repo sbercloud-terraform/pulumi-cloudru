@@ -127,7 +127,7 @@ class _KafkaPermissionsState:
         pulumi.set(self, "topic_name", value)
 
 
-@pulumi.type_token("sbercloud:Dms/kafkaPermissions:KafkaPermissions")
+@pulumi.type_token("cloudru:Dms/kafkaPermissions:KafkaPermissions")
 class KafkaPermissions(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -190,7 +190,7 @@ class KafkaPermissions(pulumi.CustomResource):
                 raise TypeError("Missing required property 'topic_name'")
             __props__.__dict__["topic_name"] = topic_name
         super(KafkaPermissions, __self__).__init__(
-            'sbercloud:Dms/kafkaPermissions:KafkaPermissions',
+            'cloudru:Dms/kafkaPermissions:KafkaPermissions',
             resource_name,
             __props__,
             opts)

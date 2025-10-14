@@ -106,7 +106,7 @@ def get_apig_application_acl(application_id: Optional[_builtins.str] = None,
     __args__['instanceId'] = instance_id
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getApigApplicationAcl:getApigApplicationAcl', __args__, opts=opts, typ=GetApigApplicationAclResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getApigApplicationAcl:getApigApplicationAcl', __args__, opts=opts, typ=GetApigApplicationAclResult).value
 
     return AwaitableGetApigApplicationAclResult(
         application_id=pulumi.get(__ret__, 'application_id'),
@@ -127,7 +127,7 @@ def get_apig_application_acl_output(application_id: Optional[pulumi.Input[_built
     __args__['instanceId'] = instance_id
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getApigApplicationAcl:getApigApplicationAcl', __args__, opts=opts, typ=GetApigApplicationAclResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getApigApplicationAcl:getApigApplicationAcl', __args__, opts=opts, typ=GetApigApplicationAclResult)
     return __ret__.apply(lambda __response__: GetApigApplicationAclResult(
         application_id=pulumi.get(__response__, 'application_id'),
         id=pulumi.get(__response__, 'id'),

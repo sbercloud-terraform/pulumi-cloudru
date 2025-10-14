@@ -21,7 +21,7 @@ export class DcsParameters extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/dcsParameters:DcsParameters';
+    public static readonly __pulumiType = 'cloudru:index/dcsParameters:DcsParameters';
 
     /**
      * Returns true if the given object is an instance of DcsParameters.  This is designed to work even

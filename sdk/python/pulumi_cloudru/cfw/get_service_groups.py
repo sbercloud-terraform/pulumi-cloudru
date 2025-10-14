@@ -131,7 +131,7 @@ def get_service_groups(enterprise_project_id: Optional[_builtins.str] = None,
     __args__['objectId'] = object_id
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Cfw/getServiceGroups:getServiceGroups', __args__, opts=opts, typ=GetServiceGroupsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Cfw/getServiceGroups:getServiceGroups', __args__, opts=opts, typ=GetServiceGroupsResult).value
 
     return AwaitableGetServiceGroupsResult(
         enterprise_project_id=pulumi.get(__ret__, 'enterprise_project_id'),
@@ -160,7 +160,7 @@ def get_service_groups_output(enterprise_project_id: Optional[pulumi.Input[Optio
     __args__['objectId'] = object_id
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Cfw/getServiceGroups:getServiceGroups', __args__, opts=opts, typ=GetServiceGroupsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Cfw/getServiceGroups:getServiceGroups', __args__, opts=opts, typ=GetServiceGroupsResult)
     return __ret__.apply(lambda __response__: GetServiceGroupsResult(
         enterprise_project_id=pulumi.get(__response__, 'enterprise_project_id'),
         fw_instance_id=pulumi.get(__response__, 'fw_instance_id'),

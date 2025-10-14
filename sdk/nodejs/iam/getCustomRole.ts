@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 export function getCustomRole(args?: GetCustomRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomRoleResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Iam/getCustomRole:getCustomRole", {
+    return pulumi.runtime.invoke("cloudru:Iam/getCustomRole:getCustomRole", {
         "description": args.description,
         "domainId": args.domainId,
         "id": args.id,
@@ -45,7 +45,7 @@ export interface GetCustomRoleResult {
 export function getCustomRoleOutput(args?: GetCustomRoleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomRoleResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Iam/getCustomRole:getCustomRole", {
+    return pulumi.runtime.invokeOutput("cloudru:Iam/getCustomRole:getCustomRole", {
         "description": args.description,
         "domainId": args.domainId,
         "id": args.id,

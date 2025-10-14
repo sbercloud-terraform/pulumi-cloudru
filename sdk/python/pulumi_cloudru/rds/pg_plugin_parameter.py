@@ -182,7 +182,7 @@ class _PgPluginParameterState:
         pulumi.set(self, "values", value)
 
 
-@pulumi.type_token("sbercloud:Rds/pgPluginParameter:PgPluginParameter")
+@pulumi.type_token("cloudru:Rds/pgPluginParameter:PgPluginParameter")
 class PgPluginParameter(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -248,7 +248,7 @@ class PgPluginParameter(pulumi.CustomResource):
             __props__.__dict__["default_values"] = None
             __props__.__dict__["restart_required"] = None
         super(PgPluginParameter, __self__).__init__(
-            'sbercloud:Rds/pgPluginParameter:PgPluginParameter',
+            'cloudru:Rds/pgPluginParameter:PgPluginParameter',
             resource_name,
             __props__,
             opts)

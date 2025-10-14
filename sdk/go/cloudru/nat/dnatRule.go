@@ -64,7 +64,7 @@ func NewDnatRule(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DnatRule
-	err := ctx.RegisterResource("sbercloud:Nat/dnatRule:DnatRule", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Nat/dnatRule:DnatRule", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -76,7 +76,7 @@ func NewDnatRule(ctx *pulumi.Context,
 func GetDnatRule(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *DnatRuleState, opts ...pulumi.ResourceOption) (*DnatRule, error) {
 	var resource DnatRule
-	err := ctx.ReadResource("sbercloud:Nat/dnatRule:DnatRule", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Nat/dnatRule:DnatRule", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -131,7 +131,7 @@ def get_pg_plugins(created: Optional[_builtins.bool] = None,
     __args__['region'] = region
     __args__['version'] = version
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Rds/getPgPlugins:getPgPlugins', __args__, opts=opts, typ=GetPgPluginsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Rds/getPgPlugins:getPgPlugins', __args__, opts=opts, typ=GetPgPluginsResult).value
 
     return AwaitableGetPgPluginsResult(
         created=pulumi.get(__ret__, 'created'),
@@ -160,7 +160,7 @@ def get_pg_plugins_output(created: Optional[pulumi.Input[Optional[_builtins.bool
     __args__['region'] = region
     __args__['version'] = version
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Rds/getPgPlugins:getPgPlugins', __args__, opts=opts, typ=GetPgPluginsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Rds/getPgPlugins:getPgPlugins', __args__, opts=opts, typ=GetPgPluginsResult)
     return __ret__.apply(lambda __response__: GetPgPluginsResult(
         created=pulumi.get(__response__, 'created'),
         database_name=pulumi.get(__response__, 'database_name'),

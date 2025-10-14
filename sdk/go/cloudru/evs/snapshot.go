@@ -42,7 +42,7 @@ func NewSnapshot(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Snapshot
-	err := ctx.RegisterResource("sbercloud:Evs/snapshot:Snapshot", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Evs/snapshot:Snapshot", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -54,7 +54,7 @@ func NewSnapshot(ctx *pulumi.Context,
 func GetSnapshot(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *SnapshotState, opts ...pulumi.ResourceOption) (*Snapshot, error) {
 	var resource Snapshot
-	err := ctx.ReadResource("sbercloud:Evs/snapshot:Snapshot", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Evs/snapshot:Snapshot", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

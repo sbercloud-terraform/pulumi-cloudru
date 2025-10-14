@@ -246,7 +246,7 @@ def get_node(cluster_id: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['status'] = status
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Cce/getNode:getNode', __args__, opts=opts, typ=GetNodeResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Cce/getNode:getNode', __args__, opts=opts, typ=GetNodeResult).value
 
     return AwaitableGetNodeResult(
         availability_zone=pulumi.get(__ret__, 'availability_zone'),
@@ -286,7 +286,7 @@ def get_node_output(cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
     __args__['region'] = region
     __args__['status'] = status
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Cce/getNode:getNode', __args__, opts=opts, typ=GetNodeResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Cce/getNode:getNode', __args__, opts=opts, typ=GetNodeResult)
     return __ret__.apply(lambda __response__: GetNodeResult(
         availability_zone=pulumi.get(__response__, 'availability_zone'),
         billing_mode=pulumi.get(__response__, 'billing_mode'),

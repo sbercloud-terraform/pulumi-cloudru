@@ -32,7 +32,7 @@ func NewServergroup(ctx *pulumi.Context,
 
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Servergroup
-	err := ctx.RegisterResource("sbercloud:Ecs/servergroup:Servergroup", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Ecs/servergroup:Servergroup", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -44,7 +44,7 @@ func NewServergroup(ctx *pulumi.Context,
 func GetServergroup(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ServergroupState, opts ...pulumi.ResourceOption) (*Servergroup, error) {
 	var resource Servergroup
-	err := ctx.ReadResource("sbercloud:Ecs/servergroup:Servergroup", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Ecs/servergroup:Servergroup", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -19,7 +19,7 @@ export class IpsRuleModeChange extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Cfw/ipsRuleModeChange:IpsRuleModeChange';
+    public static readonly __pulumiType = 'cloudru:Cfw/ipsRuleModeChange:IpsRuleModeChange';
 
     /**
      * Returns true if the given object is an instance of IpsRuleModeChange.  This is designed to work even

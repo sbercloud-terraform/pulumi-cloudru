@@ -252,7 +252,7 @@ def get_images(__support_agent_list: Optional[_builtins.str] = None,
     __args__['tag'] = tag
     __args__['visibility'] = visibility
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Ims/getImages:getImages', __args__, opts=opts, typ=GetImagesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Ims/getImages:getImages', __args__, opts=opts, typ=GetImagesResult).value
 
     return AwaitableGetImagesResult(
         __support_agent_list=pulumi.get(__ret__, '__support_agent_list'),
@@ -314,7 +314,7 @@ def get_images_output(__support_agent_list: Optional[pulumi.Input[Optional[_buil
     __args__['tag'] = tag
     __args__['visibility'] = visibility
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Ims/getImages:getImages', __args__, opts=opts, typ=GetImagesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Ims/getImages:getImages', __args__, opts=opts, typ=GetImagesResult)
     return __ret__.apply(lambda __response__: GetImagesResult(
         __support_agent_list=pulumi.get(__response__, '__support_agent_list'),
         architecture=pulumi.get(__response__, 'architecture'),

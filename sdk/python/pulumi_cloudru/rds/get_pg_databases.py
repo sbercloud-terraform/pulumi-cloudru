@@ -142,7 +142,7 @@ def get_pg_databases(character_set: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['size'] = size
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Rds/getPgDatabases:getPgDatabases', __args__, opts=opts, typ=GetPgDatabasesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Rds/getPgDatabases:getPgDatabases', __args__, opts=opts, typ=GetPgDatabasesResult).value
 
     return AwaitableGetPgDatabasesResult(
         character_set=pulumi.get(__ret__, 'character_set'),
@@ -174,7 +174,7 @@ def get_pg_databases_output(character_set: Optional[pulumi.Input[Optional[_built
     __args__['region'] = region
     __args__['size'] = size
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Rds/getPgDatabases:getPgDatabases', __args__, opts=opts, typ=GetPgDatabasesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Rds/getPgDatabases:getPgDatabases', __args__, opts=opts, typ=GetPgDatabasesResult)
     return __ret__.apply(lambda __response__: GetPgDatabasesResult(
         character_set=pulumi.get(__response__, 'character_set'),
         databases=pulumi.get(__response__, 'databases'),

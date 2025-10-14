@@ -21,7 +21,7 @@ export class VpnConnection extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/vpnConnection:VpnConnection';
+    public static readonly __pulumiType = 'cloudru:index/vpnConnection:VpnConnection';
 
     /**
      * Returns true if the given object is an instance of VpnConnection.  This is designed to work even

@@ -19,7 +19,7 @@ export class SqlAudit extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Rds/sqlAudit:SqlAudit';
+    public static readonly __pulumiType = 'cloudru:Rds/sqlAudit:SqlAudit';
 
     /**
      * Returns true if the given object is an instance of SqlAudit.  This is designed to work even

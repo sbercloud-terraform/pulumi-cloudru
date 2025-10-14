@@ -19,7 +19,7 @@ export class Member extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Elb/member:Member';
+    public static readonly __pulumiType = 'cloudru:Elb/member:Member';
 
     /**
      * Returns true if the given object is an instance of Member.  This is designed to work even

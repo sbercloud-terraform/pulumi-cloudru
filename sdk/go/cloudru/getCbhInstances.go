@@ -14,7 +14,7 @@ import (
 func GetCbhInstances(ctx *pulumi.Context, args *GetCbhInstancesArgs, opts ...pulumi.InvokeOption) (*GetCbhInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCbhInstancesResult
-	err := ctx.Invoke("sbercloud:index/getCbhInstances:getCbhInstances", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getCbhInstances:getCbhInstances", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func GetCbhInstancesOutput(ctx *pulumi.Context, args GetCbhInstancesOutputArgs, 
 		ApplyT(func(v interface{}) (GetCbhInstancesResultOutput, error) {
 			args := v.(GetCbhInstancesArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getCbhInstances:getCbhInstances", args, GetCbhInstancesResultOutput{}, options).(GetCbhInstancesResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getCbhInstances:getCbhInstances", args, GetCbhInstancesResultOutput{}, options).(GetCbhInstancesResultOutput), nil
 		}).(GetCbhInstancesResultOutput)
 }
 

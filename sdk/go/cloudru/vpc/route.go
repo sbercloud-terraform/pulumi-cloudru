@@ -46,7 +46,7 @@ func NewRoute(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Route
-	err := ctx.RegisterResource("sbercloud:Vpc/route:Route", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Vpc/route:Route", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -58,7 +58,7 @@ func NewRoute(ctx *pulumi.Context,
 func GetRoute(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *RouteState, opts ...pulumi.ResourceOption) (*Route, error) {
 	var resource Route
-	err := ctx.ReadResource("sbercloud:Vpc/route:Route", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Vpc/route:Route", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

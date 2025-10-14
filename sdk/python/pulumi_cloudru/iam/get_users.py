@@ -87,7 +87,7 @@ def get_users(enabled: Optional[_builtins.bool] = None,
     __args__['enabled'] = enabled
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Iam/getUsers:getUsers', __args__, opts=opts, typ=GetUsersResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Iam/getUsers:getUsers', __args__, opts=opts, typ=GetUsersResult).value
 
     return AwaitableGetUsersResult(
         enabled=pulumi.get(__ret__, 'enabled'),
@@ -104,7 +104,7 @@ def get_users_output(enabled: Optional[pulumi.Input[Optional[_builtins.bool]]] =
     __args__['enabled'] = enabled
     __args__['name'] = name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Iam/getUsers:getUsers', __args__, opts=opts, typ=GetUsersResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Iam/getUsers:getUsers', __args__, opts=opts, typ=GetUsersResult)
     return __ret__.apply(lambda __response__: GetUsersResult(
         enabled=pulumi.get(__response__, 'enabled'),
         id=pulumi.get(__response__, 'id'),

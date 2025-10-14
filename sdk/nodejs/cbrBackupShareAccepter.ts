@@ -19,7 +19,7 @@ export class CbrBackupShareAccepter extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/cbrBackupShareAccepter:CbrBackupShareAccepter';
+    public static readonly __pulumiType = 'cloudru:index/cbrBackupShareAccepter:CbrBackupShareAccepter';
 
     /**
      * Returns true if the given object is an instance of CbrBackupShareAccepter.  This is designed to work even

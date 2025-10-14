@@ -14,7 +14,7 @@ import (
 func GetElbPools(ctx *pulumi.Context, args *GetElbPoolsArgs, opts ...pulumi.InvokeOption) (*GetElbPoolsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetElbPoolsResult
-	err := ctx.Invoke("sbercloud:index/getElbPools:getElbPools", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getElbPools:getElbPools", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -85,7 +85,7 @@ func GetElbPoolsOutput(ctx *pulumi.Context, args GetElbPoolsOutputArgs, opts ...
 		ApplyT(func(v interface{}) (GetElbPoolsResultOutput, error) {
 			args := v.(GetElbPoolsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getElbPools:getElbPools", args, GetElbPoolsResultOutput{}, options).(GetElbPoolsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getElbPools:getElbPools", args, GetElbPoolsResultOutput{}, options).(GetElbPoolsResultOutput), nil
 		}).(GetElbPoolsResultOutput)
 }
 

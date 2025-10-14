@@ -39,7 +39,7 @@ func NewSfsTurboDuTask(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SfsTurboDuTask
-	err := ctx.RegisterResource("sbercloud:index/sfsTurboDuTask:SfsTurboDuTask", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/sfsTurboDuTask:SfsTurboDuTask", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func NewSfsTurboDuTask(ctx *pulumi.Context,
 func GetSfsTurboDuTask(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *SfsTurboDuTaskState, opts ...pulumi.ResourceOption) (*SfsTurboDuTask, error) {
 	var resource SfsTurboDuTask
-	err := ctx.ReadResource("sbercloud:index/sfsTurboDuTask:SfsTurboDuTask", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/sfsTurboDuTask:SfsTurboDuTask", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

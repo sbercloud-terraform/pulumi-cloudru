@@ -42,7 +42,7 @@ func NewStream(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Stream
-	err := ctx.RegisterResource("sbercloud:Lts/stream:Stream", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Lts/stream:Stream", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -54,7 +54,7 @@ func NewStream(ctx *pulumi.Context,
 func GetStream(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *StreamState, opts ...pulumi.ResourceOption) (*Stream, error) {
 	var resource Stream
-	err := ctx.ReadResource("sbercloud:Lts/stream:Stream", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Lts/stream:Stream", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -14,7 +14,7 @@ import (
 func GetApigCustomAuthorizers(ctx *pulumi.Context, args *GetApigCustomAuthorizersArgs, opts ...pulumi.InvokeOption) (*GetApigCustomAuthorizersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetApigCustomAuthorizersResult
-	err := ctx.Invoke("sbercloud:index/getApigCustomAuthorizers:getApigCustomAuthorizers", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getApigCustomAuthorizers:getApigCustomAuthorizers", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -47,7 +47,7 @@ func GetApigCustomAuthorizersOutput(ctx *pulumi.Context, args GetApigCustomAutho
 		ApplyT(func(v interface{}) (GetApigCustomAuthorizersResultOutput, error) {
 			args := v.(GetApigCustomAuthorizersArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getApigCustomAuthorizers:getApigCustomAuthorizers", args, GetApigCustomAuthorizersResultOutput{}, options).(GetApigCustomAuthorizersResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getApigCustomAuthorizers:getApigCustomAuthorizers", args, GetApigCustomAuthorizersResultOutput{}, options).(GetApigCustomAuthorizersResultOutput), nil
 		}).(GetApigCustomAuthorizersResultOutput)
 }
 

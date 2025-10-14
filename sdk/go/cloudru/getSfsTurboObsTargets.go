@@ -14,7 +14,7 @@ import (
 func GetSfsTurboObsTargets(ctx *pulumi.Context, args *GetSfsTurboObsTargetsArgs, opts ...pulumi.InvokeOption) (*GetSfsTurboObsTargetsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSfsTurboObsTargetsResult
-	err := ctx.Invoke("sbercloud:index/getSfsTurboObsTargets:getSfsTurboObsTargets", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getSfsTurboObsTargets:getSfsTurboObsTargets", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -47,7 +47,7 @@ func GetSfsTurboObsTargetsOutput(ctx *pulumi.Context, args GetSfsTurboObsTargets
 		ApplyT(func(v interface{}) (GetSfsTurboObsTargetsResultOutput, error) {
 			args := v.(GetSfsTurboObsTargetsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getSfsTurboObsTargets:getSfsTurboObsTargets", args, GetSfsTurboObsTargetsResultOutput{}, options).(GetSfsTurboObsTargetsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getSfsTurboObsTargets:getSfsTurboObsTargets", args, GetSfsTurboObsTargetsResultOutput{}, options).(GetSfsTurboObsTargetsResultOutput), nil
 		}).(GetSfsTurboObsTargetsResultOutput)
 }
 

@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 export function getLoadbalancer(args?: GetLoadbalancerArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadbalancerResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Elb/getLoadbalancer:getLoadbalancer", {
+    return pulumi.runtime.invoke("cloudru:Elb/getLoadbalancer:getLoadbalancer", {
         "description": args.description,
         "enterpriseProjectId": args.enterpriseProjectId,
         "id": args.id,
@@ -52,7 +52,7 @@ export interface GetLoadbalancerResult {
 export function getLoadbalancerOutput(args?: GetLoadbalancerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLoadbalancerResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Elb/getLoadbalancer:getLoadbalancer", {
+    return pulumi.runtime.invokeOutput("cloudru:Elb/getLoadbalancer:getLoadbalancer", {
         "description": args.description,
         "enterpriseProjectId": args.enterpriseProjectId,
         "id": args.id,

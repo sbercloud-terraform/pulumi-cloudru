@@ -199,7 +199,7 @@ class _NamespaceState:
         pulumi.set(self, "status", value)
 
 
-@pulumi.type_token("sbercloud:Cce/namespace:Namespace")
+@pulumi.type_token("cloudru:Cce/namespace:Namespace")
 class Namespace(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -266,7 +266,7 @@ class Namespace(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["status"] = None
         super(Namespace, __self__).__init__(
-            'sbercloud:Cce/namespace:Namespace',
+            'cloudru:Cce/namespace:Namespace',
             resource_name,
             __props__,
             opts)

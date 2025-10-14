@@ -120,7 +120,7 @@ class _EipProtectionState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:Cfw/eipProtection:EipProtection")
+@pulumi.type_token("cloudru:Cfw/eipProtection:EipProtection")
 class EipProtection(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -180,7 +180,7 @@ class EipProtection(pulumi.CustomResource):
             __props__.__dict__["protected_eips"] = protected_eips
             __props__.__dict__["region"] = region
         super(EipProtection, __self__).__init__(
-            'sbercloud:Cfw/eipProtection:EipProtection',
+            'cloudru:Cfw/eipProtection:EipProtection',
             resource_name,
             __props__,
             opts)

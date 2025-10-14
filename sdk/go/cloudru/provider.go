@@ -57,7 +57,7 @@ func NewProvider(ctx *pulumi.Context,
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
-	err := ctx.RegisterResource("pulumi:providers:sbercloud", name, args, &resource, opts...)
+	err := ctx.RegisterResource("pulumi:providers:cloudru", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -131,7 +131,7 @@ func (ProviderArgs) ElementType() reflect.Type {
 
 // This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.
 func (r *Provider) TerraformConfig(ctx *pulumi.Context) (ProviderTerraformConfigResultOutput, error) {
-	out, err := ctx.Call("pulumi:providers:sbercloud/terraformConfig", nil, ProviderTerraformConfigResultOutput{}, r)
+	out, err := ctx.Call("pulumi:providers:cloudru/terraformConfig", nil, ProviderTerraformConfigResultOutput{}, r)
 	if err != nil {
 		return ProviderTerraformConfigResultOutput{}, err
 	}

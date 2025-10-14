@@ -21,21 +21,21 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "sbercloud:Er/association:Association":
+	case "cloudru:Er/association:Association":
 		r = &Association{}
-	case "sbercloud:Er/attachmentAccepter:AttachmentAccepter":
+	case "cloudru:Er/attachmentAccepter:AttachmentAccepter":
 		r = &AttachmentAccepter{}
-	case "sbercloud:Er/flowLog:FlowLog":
+	case "cloudru:Er/flowLog:FlowLog":
 		r = &FlowLog{}
-	case "sbercloud:Er/instance:Instance":
+	case "cloudru:Er/instance:Instance":
 		r = &Instance{}
-	case "sbercloud:Er/propagation:Propagation":
+	case "cloudru:Er/propagation:Propagation":
 		r = &Propagation{}
-	case "sbercloud:Er/routeTable:RouteTable":
+	case "cloudru:Er/routeTable:RouteTable":
 		r = &RouteTable{}
-	case "sbercloud:Er/staticRoute:StaticRoute":
+	case "cloudru:Er/staticRoute:StaticRoute":
 		r = &StaticRoute{}
-	case "sbercloud:Er/vpcAttachment:VpcAttachment":
+	case "cloudru:Er/vpcAttachment:VpcAttachment":
 		r = &VpcAttachment{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
@@ -51,42 +51,42 @@ func init() {
 		version = semver.Version{Major: 1}
 	}
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Er/association",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Er/attachmentAccepter",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Er/flowLog",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Er/instance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Er/propagation",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Er/routeTable",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Er/staticRoute",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Er/vpcAttachment",
 		&module{version},
 	)

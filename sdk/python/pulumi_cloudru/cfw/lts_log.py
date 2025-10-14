@@ -307,7 +307,7 @@ class _LtsLogState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:Cfw/ltsLog:LtsLog")
+@pulumi.type_token("cloudru:Cfw/ltsLog:LtsLog")
 class LtsLog(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -397,7 +397,7 @@ class LtsLog(pulumi.CustomResource):
             __props__.__dict__["lts_log_group_id"] = lts_log_group_id
             __props__.__dict__["region"] = region
         super(LtsLog, __self__).__init__(
-            'sbercloud:Cfw/ltsLog:LtsLog',
+            'cloudru:Cfw/ltsLog:LtsLog',
             resource_name,
             __props__,
             opts)

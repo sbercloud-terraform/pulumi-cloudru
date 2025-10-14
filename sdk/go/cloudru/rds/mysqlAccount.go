@@ -50,7 +50,7 @@ func NewMysqlAccount(ctx *pulumi.Context,
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MysqlAccount
-	err := ctx.RegisterResource("sbercloud:Rds/mysqlAccount:MysqlAccount", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Rds/mysqlAccount:MysqlAccount", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -62,7 +62,7 @@ func NewMysqlAccount(ctx *pulumi.Context,
 func GetMysqlAccount(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *MysqlAccountState, opts ...pulumi.ResourceOption) (*MysqlAccount, error) {
 	var resource MysqlAccount
-	err := ctx.ReadResource("sbercloud:Rds/mysqlAccount:MysqlAccount", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Rds/mysqlAccount:MysqlAccount", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

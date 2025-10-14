@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 export function getFgsFunctionEvents(args: GetFgsFunctionEventsArgs, opts?: pulumi.InvokeOptions): Promise<GetFgsFunctionEventsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getFgsFunctionEvents:getFgsFunctionEvents", {
+    return pulumi.runtime.invoke("cloudru:index/getFgsFunctionEvents:getFgsFunctionEvents", {
         "functionUrn": args.functionUrn,
         "region": args.region,
     }, opts);
@@ -36,7 +36,7 @@ export interface GetFgsFunctionEventsResult {
 }
 export function getFgsFunctionEventsOutput(args: GetFgsFunctionEventsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFgsFunctionEventsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getFgsFunctionEvents:getFgsFunctionEvents", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getFgsFunctionEvents:getFgsFunctionEvents", {
         "functionUrn": args.functionUrn,
         "region": args.region,
     }, opts);

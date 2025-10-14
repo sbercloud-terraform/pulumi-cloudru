@@ -14,7 +14,7 @@ import (
 func GetPropagations(ctx *pulumi.Context, args *GetPropagationsArgs, opts ...pulumi.InvokeOption) (*GetPropagationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPropagationsResult
-	err := ctx.Invoke("sbercloud:Er/getPropagations:getPropagations", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Er/getPropagations:getPropagations", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -49,7 +49,7 @@ func GetPropagationsOutput(ctx *pulumi.Context, args GetPropagationsOutputArgs, 
 		ApplyT(func(v interface{}) (GetPropagationsResultOutput, error) {
 			args := v.(GetPropagationsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Er/getPropagations:getPropagations", args, GetPropagationsResultOutput{}, options).(GetPropagationsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Er/getPropagations:getPropagations", args, GetPropagationsResultOutput{}, options).(GetPropagationsResultOutput), nil
 		}).(GetPropagationsResultOutput)
 }
 

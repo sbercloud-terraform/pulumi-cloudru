@@ -60,26 +60,26 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "sbercloud:Ecs/eipAssociate:EipAssociate":
+            case "cloudru:Ecs/eipAssociate:EipAssociate":
                 return new EipAssociate(name, <any>undefined, { urn })
-            case "sbercloud:Ecs/instance:Instance":
+            case "cloudru:Ecs/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
-            case "sbercloud:Ecs/interfaceAttach:InterfaceAttach":
+            case "cloudru:Ecs/interfaceAttach:InterfaceAttach":
                 return new InterfaceAttach(name, <any>undefined, { urn })
-            case "sbercloud:Ecs/keypair:Keypair":
+            case "cloudru:Ecs/keypair:Keypair":
                 return new Keypair(name, <any>undefined, { urn })
-            case "sbercloud:Ecs/servergroup:Servergroup":
+            case "cloudru:Ecs/servergroup:Servergroup":
                 return new Servergroup(name, <any>undefined, { urn })
-            case "sbercloud:Ecs/volumeAttach:VolumeAttach":
+            case "cloudru:Ecs/volumeAttach:VolumeAttach":
                 return new VolumeAttach(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("sbercloud", "Ecs/eipAssociate", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Ecs/instance", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Ecs/interfaceAttach", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Ecs/keypair", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Ecs/servergroup", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Ecs/volumeAttach", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Ecs/eipAssociate", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Ecs/instance", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Ecs/interfaceAttach", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Ecs/keypair", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Ecs/servergroup", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Ecs/volumeAttach", _module)

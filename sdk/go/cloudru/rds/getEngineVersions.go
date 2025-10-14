@@ -14,7 +14,7 @@ import (
 func GetEngineVersions(ctx *pulumi.Context, args *GetEngineVersionsArgs, opts ...pulumi.InvokeOption) (*GetEngineVersionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEngineVersionsResult
-	err := ctx.Invoke("sbercloud:Rds/getEngineVersions:getEngineVersions", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Rds/getEngineVersions:getEngineVersions", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -41,7 +41,7 @@ func GetEngineVersionsOutput(ctx *pulumi.Context, args GetEngineVersionsOutputAr
 		ApplyT(func(v interface{}) (GetEngineVersionsResultOutput, error) {
 			args := v.(GetEngineVersionsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Rds/getEngineVersions:getEngineVersions", args, GetEngineVersionsResultOutput{}, options).(GetEngineVersionsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Rds/getEngineVersions:getEngineVersions", args, GetEngineVersionsResultOutput{}, options).(GetEngineVersionsResultOutput), nil
 		}).(GetEngineVersionsResultOutput)
 }
 

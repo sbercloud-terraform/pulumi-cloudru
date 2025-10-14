@@ -21,7 +21,7 @@ export class Pool extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Elb/pool:Pool';
+    public static readonly __pulumiType = 'cloudru:Elb/pool:Pool';
 
     /**
      * Returns true if the given object is an instance of Pool.  This is designed to work even

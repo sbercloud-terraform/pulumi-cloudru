@@ -42,7 +42,7 @@ func NewApigAppcode(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApigAppcode
-	err := ctx.RegisterResource("sbercloud:index/apigAppcode:ApigAppcode", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/apigAppcode:ApigAppcode", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -54,7 +54,7 @@ func NewApigAppcode(ctx *pulumi.Context,
 func GetApigAppcode(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ApigAppcodeState, opts ...pulumi.ResourceOption) (*ApigAppcode, error) {
 	var resource ApigAppcode
-	err := ctx.ReadResource("sbercloud:index/apigAppcode:ApigAppcode", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/apigAppcode:ApigAppcode", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

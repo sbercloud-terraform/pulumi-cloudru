@@ -43,7 +43,7 @@ func NewEnvironment(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Environment
-	err := ctx.RegisterResource("sbercloud:DedicatedApig/environment:Environment", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:DedicatedApig/environment:Environment", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -55,7 +55,7 @@ func NewEnvironment(ctx *pulumi.Context,
 func GetEnvironment(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *EnvironmentState, opts ...pulumi.ResourceOption) (*Environment, error) {
 	var resource Environment
-	err := ctx.ReadResource("sbercloud:DedicatedApig/environment:Environment", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:DedicatedApig/environment:Environment", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

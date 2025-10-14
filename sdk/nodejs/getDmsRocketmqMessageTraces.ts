@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 export function getDmsRocketmqMessageTraces(args: GetDmsRocketmqMessageTracesArgs, opts?: pulumi.InvokeOptions): Promise<GetDmsRocketmqMessageTracesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getDmsRocketmqMessageTraces:getDmsRocketmqMessageTraces", {
+    return pulumi.runtime.invoke("cloudru:index/getDmsRocketmqMessageTraces:getDmsRocketmqMessageTraces", {
         "instanceId": args.instanceId,
         "messageId": args.messageId,
         "region": args.region,
@@ -39,7 +39,7 @@ export interface GetDmsRocketmqMessageTracesResult {
 }
 export function getDmsRocketmqMessageTracesOutput(args: GetDmsRocketmqMessageTracesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDmsRocketmqMessageTracesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getDmsRocketmqMessageTraces:getDmsRocketmqMessageTraces", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getDmsRocketmqMessageTraces:getDmsRocketmqMessageTraces", {
         "instanceId": args.instanceId,
         "messageId": args.messageId,
         "region": args.region,

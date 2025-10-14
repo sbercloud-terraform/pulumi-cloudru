@@ -54,7 +54,7 @@ func NewBucket(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Bucket
-	err := ctx.RegisterResource("sbercloud:Obs/bucket:Bucket", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Obs/bucket:Bucket", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -66,7 +66,7 @@ func NewBucket(ctx *pulumi.Context,
 func GetBucket(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *BucketState, opts ...pulumi.ResourceOption) (*Bucket, error) {
 	var resource Bucket
-	err := ctx.ReadResource("sbercloud:Obs/bucket:Bucket", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Obs/bucket:Bucket", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

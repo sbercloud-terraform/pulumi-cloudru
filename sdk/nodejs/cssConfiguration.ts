@@ -19,7 +19,7 @@ export class CssConfiguration extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/cssConfiguration:CssConfiguration';
+    public static readonly __pulumiType = 'cloudru:index/cssConfiguration:CssConfiguration';
 
     /**
      * Returns true if the given object is an instance of CssConfiguration.  This is designed to work even

@@ -117,7 +117,7 @@ func NewNode(ctx *pulumi.Context,
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Node
-	err := ctx.RegisterResource("sbercloud:Cce/node:Node", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Cce/node:Node", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -129,7 +129,7 @@ func NewNode(ctx *pulumi.Context,
 func GetNode(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *NodeState, opts ...pulumi.ResourceOption) (*Node, error) {
 	var resource Node
-	err := ctx.ReadResource("sbercloud:Cce/node:Node", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Cce/node:Node", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

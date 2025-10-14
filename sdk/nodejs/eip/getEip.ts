@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 export function getEip(args?: GetEipArgs, opts?: pulumi.InvokeOptions): Promise<GetEipResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Eip/getEip:getEip", {
+    return pulumi.runtime.invoke("cloudru:Eip/getEip:getEip", {
         "enterpriseProjectId": args.enterpriseProjectId,
         "portId": args.portId,
         "publicIp": args.publicIp,
@@ -52,7 +52,7 @@ export interface GetEipResult {
 export function getEipOutput(args?: GetEipOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEipResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Eip/getEip:getEip", {
+    return pulumi.runtime.invokeOutput("cloudru:Eip/getEip:getEip", {
         "enterpriseProjectId": args.enterpriseProjectId,
         "portId": args.portId,
         "publicIp": args.publicIp,

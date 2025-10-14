@@ -19,7 +19,7 @@ export class Project extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Eps/project:Project';
+    public static readonly __pulumiType = 'cloudru:Eps/project:Project';
 
     /**
      * Returns true if the given object is an instance of Project.  This is designed to work even

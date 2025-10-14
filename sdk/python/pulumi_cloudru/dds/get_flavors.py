@@ -120,7 +120,7 @@ def get_flavors(engine_name: Optional[_builtins.str] = None,
     __args__['type'] = type
     __args__['vcpus'] = vcpus
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Dds/getFlavors:getFlavors', __args__, opts=opts, typ=GetFlavorsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Dds/getFlavors:getFlavors', __args__, opts=opts, typ=GetFlavorsResult).value
 
     return AwaitableGetFlavorsResult(
         engine_name=pulumi.get(__ret__, 'engine_name'),
@@ -146,7 +146,7 @@ def get_flavors_output(engine_name: Optional[pulumi.Input[_builtins.str]] = None
     __args__['type'] = type
     __args__['vcpus'] = vcpus
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Dds/getFlavors:getFlavors', __args__, opts=opts, typ=GetFlavorsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Dds/getFlavors:getFlavors', __args__, opts=opts, typ=GetFlavorsResult)
     return __ret__.apply(lambda __response__: GetFlavorsResult(
         engine_name=pulumi.get(__response__, 'engine_name'),
         flavors=pulumi.get(__response__, 'flavors'),

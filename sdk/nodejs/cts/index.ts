@@ -25,17 +25,17 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "sbercloud:Cts/dataTracker:DataTracker":
+            case "cloudru:Cts/dataTracker:DataTracker":
                 return new DataTracker(name, <any>undefined, { urn })
-            case "sbercloud:Cts/notification:Notification":
+            case "cloudru:Cts/notification:Notification":
                 return new Notification(name, <any>undefined, { urn })
-            case "sbercloud:Cts/tracker:Tracker":
+            case "cloudru:Cts/tracker:Tracker":
                 return new Tracker(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("sbercloud", "Cts/dataTracker", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Cts/notification", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Cts/tracker", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Cts/dataTracker", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Cts/notification", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Cts/tracker", _module)

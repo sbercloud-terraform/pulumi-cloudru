@@ -271,7 +271,7 @@ class _InterfaceAttachState:
         pulumi.set(self, "source_dest_check", value)
 
 
-@pulumi.type_token("sbercloud:Ecs/interfaceAttach:InterfaceAttach")
+@pulumi.type_token("cloudru:Ecs/interfaceAttach:InterfaceAttach")
 class InterfaceAttach(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -347,7 +347,7 @@ class InterfaceAttach(pulumi.CustomResource):
             __props__.__dict__["fixed_ipv6"] = None
             __props__.__dict__["mac"] = None
         super(InterfaceAttach, __self__).__init__(
-            'sbercloud:Ecs/interfaceAttach:InterfaceAttach',
+            'cloudru:Ecs/interfaceAttach:InterfaceAttach',
             resource_name,
             __props__,
             opts)

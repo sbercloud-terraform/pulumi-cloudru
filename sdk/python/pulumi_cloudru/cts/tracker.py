@@ -500,7 +500,7 @@ class _TrackerState:
         pulumi.set(self, "validate_file", value)
 
 
-@pulumi.type_token("sbercloud:Cts/tracker:Tracker")
+@pulumi.type_token("cloudru:Cts/tracker:Tracker")
 class Tracker(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -597,7 +597,7 @@ class Tracker(pulumi.CustomResource):
             __props__.__dict__["transfer_enabled"] = None
             __props__.__dict__["type"] = None
         super(Tracker, __self__).__init__(
-            'sbercloud:Cts/tracker:Tracker',
+            'cloudru:Cts/tracker:Tracker',
             resource_name,
             __props__,
             opts)

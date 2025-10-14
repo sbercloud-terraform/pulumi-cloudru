@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  */
 export class Provider extends pulumi.ProviderResource {
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud';
+    public static readonly __pulumiType = 'cloudru';
 
     /**
      * Returns true if the given object is an instance of Provider.  This is designed to work even
@@ -105,7 +105,7 @@ export class Provider extends pulumi.ProviderResource {
      * This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.
      */
     terraformConfig(): pulumi.Output<Provider.TerraformConfigResult> {
-        return pulumi.runtime.call("pulumi:providers:sbercloud/terraformConfig", {
+        return pulumi.runtime.call("pulumi:providers:cloudru/terraformConfig", {
             "__self__": this,
         }, this);
     }

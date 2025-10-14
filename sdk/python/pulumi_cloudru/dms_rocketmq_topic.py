@@ -337,7 +337,7 @@ class _DmsRocketmqTopicState:
         pulumi.set(self, "total_write_queue_num", value)
 
 
-@pulumi.type_token("sbercloud:index/dmsRocketmqTopic:DmsRocketmqTopic")
+@pulumi.type_token("cloudru:index/dmsRocketmqTopic:DmsRocketmqTopic")
 class DmsRocketmqTopic(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -422,7 +422,7 @@ class DmsRocketmqTopic(pulumi.CustomResource):
             __props__.__dict__["total_read_queue_num"] = total_read_queue_num
             __props__.__dict__["total_write_queue_num"] = total_write_queue_num
         super(DmsRocketmqTopic, __self__).__init__(
-            'sbercloud:index/dmsRocketmqTopic:DmsRocketmqTopic',
+            'cloudru:index/dmsRocketmqTopic:DmsRocketmqTopic',
             resource_name,
             __props__,
             opts)

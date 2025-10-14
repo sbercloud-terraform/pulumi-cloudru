@@ -351,7 +351,7 @@ class _DmsRocketmqUserState:
         pulumi.set(self, "white_remote_address", value)
 
 
-@pulumi.type_token("sbercloud:index/dmsRocketmqUser:DmsRocketmqUser")
+@pulumi.type_token("cloudru:index/dmsRocketmqUser:DmsRocketmqUser")
 class DmsRocketmqUser(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -443,7 +443,7 @@ class DmsRocketmqUser(pulumi.CustomResource):
             __props__.__dict__["topic_perms"] = topic_perms
             __props__.__dict__["white_remote_address"] = white_remote_address
         super(DmsRocketmqUser, __self__).__init__(
-            'sbercloud:index/dmsRocketmqUser:DmsRocketmqUser',
+            'cloudru:index/dmsRocketmqUser:DmsRocketmqUser',
             resource_name,
             __props__,
             opts)

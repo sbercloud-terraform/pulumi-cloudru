@@ -87,7 +87,7 @@ def get_sfs_turbo_perm_rules(region: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['shareId'] = share_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getSfsTurboPermRules:getSfsTurboPermRules', __args__, opts=opts, typ=GetSfsTurboPermRulesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getSfsTurboPermRules:getSfsTurboPermRules', __args__, opts=opts, typ=GetSfsTurboPermRulesResult).value
 
     return AwaitableGetSfsTurboPermRulesResult(
         id=pulumi.get(__ret__, 'id'),
@@ -104,7 +104,7 @@ def get_sfs_turbo_perm_rules_output(region: Optional[pulumi.Input[Optional[_buil
     __args__['region'] = region
     __args__['shareId'] = share_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getSfsTurboPermRules:getSfsTurboPermRules', __args__, opts=opts, typ=GetSfsTurboPermRulesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getSfsTurboPermRules:getSfsTurboPermRules', __args__, opts=opts, typ=GetSfsTurboPermRulesResult)
     return __ret__.apply(lambda __response__: GetSfsTurboPermRulesResult(
         id=pulumi.get(__response__, 'id'),
         region=pulumi.get(__response__, 'region'),

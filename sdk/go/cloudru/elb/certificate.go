@@ -51,7 +51,7 @@ func NewCertificate(ctx *pulumi.Context,
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Certificate
-	err := ctx.RegisterResource("sbercloud:Elb/certificate:Certificate", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Elb/certificate:Certificate", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -63,7 +63,7 @@ func NewCertificate(ctx *pulumi.Context,
 func GetCertificate(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *CertificateState, opts ...pulumi.ResourceOption) (*Certificate, error) {
 	var resource Certificate
-	err := ctx.ReadResource("sbercloud:Elb/certificate:Certificate", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Elb/certificate:Certificate", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

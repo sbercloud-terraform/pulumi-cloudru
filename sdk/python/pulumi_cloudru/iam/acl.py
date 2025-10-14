@@ -105,7 +105,7 @@ class _AclState:
         pulumi.set(self, "type", value)
 
 
-@pulumi.type_token("sbercloud:Iam/acl:Acl")
+@pulumi.type_token("cloudru:Iam/acl:Acl")
 class Acl(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -161,7 +161,7 @@ class Acl(pulumi.CustomResource):
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
         super(Acl, __self__).__init__(
-            'sbercloud:Iam/acl:Acl',
+            'cloudru:Iam/acl:Acl',
             resource_name,
             __props__,
             opts)

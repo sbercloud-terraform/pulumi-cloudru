@@ -221,7 +221,7 @@ class _RecordsetState:
         pulumi.set(self, "zone_id", value)
 
 
-@pulumi.type_token("sbercloud:Dns/recordset:Recordset")
+@pulumi.type_token("cloudru:Dns/recordset:Recordset")
 class Recordset(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -296,7 +296,7 @@ class Recordset(pulumi.CustomResource):
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
         super(Recordset, __self__).__init__(
-            'sbercloud:Dns/recordset:Recordset',
+            'cloudru:Dns/recordset:Recordset',
             resource_name,
             __props__,
             opts)

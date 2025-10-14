@@ -48,7 +48,7 @@ func NewApigApplicationAuthorization(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApigApplicationAuthorization
-	err := ctx.RegisterResource("sbercloud:index/apigApplicationAuthorization:ApigApplicationAuthorization", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/apigApplicationAuthorization:ApigApplicationAuthorization", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -60,7 +60,7 @@ func NewApigApplicationAuthorization(ctx *pulumi.Context,
 func GetApigApplicationAuthorization(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ApigApplicationAuthorizationState, opts ...pulumi.ResourceOption) (*ApigApplicationAuthorization, error) {
 	var resource ApigApplicationAuthorization
-	err := ctx.ReadResource("sbercloud:index/apigApplicationAuthorization:ApigApplicationAuthorization", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/apigApplicationAuthorization:ApigApplicationAuthorization", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

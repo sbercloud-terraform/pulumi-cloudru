@@ -106,7 +106,7 @@ func NewCbhInstance(ctx *pulumi.Context,
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CbhInstance
-	err := ctx.RegisterResource("sbercloud:index/cbhInstance:CbhInstance", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/cbhInstance:CbhInstance", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -118,7 +118,7 @@ func NewCbhInstance(ctx *pulumi.Context,
 func GetCbhInstance(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *CbhInstanceState, opts ...pulumi.ResourceOption) (*CbhInstance, error) {
 	var resource CbhInstance
-	err := ctx.ReadResource("sbercloud:index/cbhInstance:CbhInstance", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/cbhInstance:CbhInstance", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -180,74 +180,74 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "sbercloud:Rds/backup:Backup":
+            case "cloudru:Rds/backup:Backup":
                 return new Backup(name, <any>undefined, { urn })
-            case "sbercloud:Rds/instance:Instance":
+            case "cloudru:Rds/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
-            case "sbercloud:Rds/instanceEipAssociate:InstanceEipAssociate":
+            case "cloudru:Rds/instanceEipAssociate:InstanceEipAssociate":
                 return new InstanceEipAssociate(name, <any>undefined, { urn })
-            case "sbercloud:Rds/mysqlAccount:MysqlAccount":
+            case "cloudru:Rds/mysqlAccount:MysqlAccount":
                 return new MysqlAccount(name, <any>undefined, { urn })
-            case "sbercloud:Rds/mysqlBinlog:MysqlBinlog":
+            case "cloudru:Rds/mysqlBinlog:MysqlBinlog":
                 return new MysqlBinlog(name, <any>undefined, { urn })
-            case "sbercloud:Rds/mysqlDatabase:MysqlDatabase":
+            case "cloudru:Rds/mysqlDatabase:MysqlDatabase":
                 return new MysqlDatabase(name, <any>undefined, { urn })
-            case "sbercloud:Rds/mysqlDatabasePrivilege:MysqlDatabasePrivilege":
+            case "cloudru:Rds/mysqlDatabasePrivilege:MysqlDatabasePrivilege":
                 return new MysqlDatabasePrivilege(name, <any>undefined, { urn })
-            case "sbercloud:Rds/mysqlDatabaseTableRestore:MysqlDatabaseTableRestore":
+            case "cloudru:Rds/mysqlDatabaseTableRestore:MysqlDatabaseTableRestore":
                 return new MysqlDatabaseTableRestore(name, <any>undefined, { urn })
-            case "sbercloud:Rds/parametergroup:Parametergroup":
+            case "cloudru:Rds/parametergroup:Parametergroup":
                 return new Parametergroup(name, <any>undefined, { urn })
-            case "sbercloud:Rds/pgAccount:PgAccount":
+            case "cloudru:Rds/pgAccount:PgAccount":
                 return new PgAccount(name, <any>undefined, { urn })
-            case "sbercloud:Rds/pgAccountRoles:PgAccountRoles":
+            case "cloudru:Rds/pgAccountRoles:PgAccountRoles":
                 return new PgAccountRoles(name, <any>undefined, { urn })
-            case "sbercloud:Rds/pgDatabase:PgDatabase":
+            case "cloudru:Rds/pgDatabase:PgDatabase":
                 return new PgDatabase(name, <any>undefined, { urn })
-            case "sbercloud:Rds/pgHba:PgHba":
+            case "cloudru:Rds/pgHba:PgHba":
                 return new PgHba(name, <any>undefined, { urn })
-            case "sbercloud:Rds/pgPlugin:PgPlugin":
+            case "cloudru:Rds/pgPlugin:PgPlugin":
                 return new PgPlugin(name, <any>undefined, { urn })
-            case "sbercloud:Rds/pgPluginParameter:PgPluginParameter":
+            case "cloudru:Rds/pgPluginParameter:PgPluginParameter":
                 return new PgPluginParameter(name, <any>undefined, { urn })
-            case "sbercloud:Rds/pgPluginUpdate:PgPluginUpdate":
+            case "cloudru:Rds/pgPluginUpdate:PgPluginUpdate":
                 return new PgPluginUpdate(name, <any>undefined, { urn })
-            case "sbercloud:Rds/pgSqlLimit:PgSqlLimit":
+            case "cloudru:Rds/pgSqlLimit:PgSqlLimit":
                 return new PgSqlLimit(name, <any>undefined, { urn })
-            case "sbercloud:Rds/readReplicaInstance:ReadReplicaInstance":
+            case "cloudru:Rds/readReplicaInstance:ReadReplicaInstance":
                 return new ReadReplicaInstance(name, <any>undefined, { urn })
-            case "sbercloud:Rds/sqlAudit:SqlAudit":
+            case "cloudru:Rds/sqlAudit:SqlAudit":
                 return new SqlAudit(name, <any>undefined, { urn })
-            case "sbercloud:Rds/sqlserverAccount:SqlserverAccount":
+            case "cloudru:Rds/sqlserverAccount:SqlserverAccount":
                 return new SqlserverAccount(name, <any>undefined, { urn })
-            case "sbercloud:Rds/sqlserverDatabase:SqlserverDatabase":
+            case "cloudru:Rds/sqlserverDatabase:SqlserverDatabase":
                 return new SqlserverDatabase(name, <any>undefined, { urn })
-            case "sbercloud:Rds/sqlserverDatabasePrivilege:SqlserverDatabasePrivilege":
+            case "cloudru:Rds/sqlserverDatabasePrivilege:SqlserverDatabasePrivilege":
                 return new SqlserverDatabasePrivilege(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("sbercloud", "Rds/backup", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Rds/instance", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Rds/instanceEipAssociate", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Rds/mysqlAccount", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Rds/mysqlBinlog", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Rds/mysqlDatabase", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Rds/mysqlDatabasePrivilege", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Rds/mysqlDatabaseTableRestore", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Rds/parametergroup", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Rds/pgAccount", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Rds/pgAccountRoles", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Rds/pgDatabase", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Rds/pgHba", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Rds/pgPlugin", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Rds/pgPluginParameter", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Rds/pgPluginUpdate", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Rds/pgSqlLimit", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Rds/readReplicaInstance", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Rds/sqlAudit", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Rds/sqlserverAccount", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Rds/sqlserverDatabase", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Rds/sqlserverDatabasePrivilege", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Rds/backup", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Rds/instance", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Rds/instanceEipAssociate", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Rds/mysqlAccount", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Rds/mysqlBinlog", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Rds/mysqlDatabase", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Rds/mysqlDatabasePrivilege", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Rds/mysqlDatabaseTableRestore", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Rds/parametergroup", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Rds/pgAccount", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Rds/pgAccountRoles", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Rds/pgDatabase", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Rds/pgHba", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Rds/pgPlugin", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Rds/pgPluginParameter", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Rds/pgPluginUpdate", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Rds/pgSqlLimit", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Rds/readReplicaInstance", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Rds/sqlAudit", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Rds/sqlserverAccount", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Rds/sqlserverDatabase", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Rds/sqlserverDatabasePrivilege", _module)

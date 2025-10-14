@@ -40,7 +40,7 @@ func NewDmsKafkaMessageProduce(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DmsKafkaMessageProduce
-	err := ctx.RegisterResource("sbercloud:index/dmsKafkaMessageProduce:DmsKafkaMessageProduce", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/dmsKafkaMessageProduce:DmsKafkaMessageProduce", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -52,7 +52,7 @@ func NewDmsKafkaMessageProduce(ctx *pulumi.Context,
 func GetDmsKafkaMessageProduce(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *DmsKafkaMessageProduceState, opts ...pulumi.ResourceOption) (*DmsKafkaMessageProduce, error) {
 	var resource DmsKafkaMessageProduce
-	err := ctx.ReadResource("sbercloud:index/dmsKafkaMessageProduce:DmsKafkaMessageProduce", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/dmsKafkaMessageProduce:DmsKafkaMessageProduce", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

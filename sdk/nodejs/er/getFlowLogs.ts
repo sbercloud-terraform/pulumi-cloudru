@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 export function getFlowLogs(args: GetFlowLogsArgs, opts?: pulumi.InvokeOptions): Promise<GetFlowLogsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Er/getFlowLogs:getFlowLogs", {
+    return pulumi.runtime.invoke("cloudru:Er/getFlowLogs:getFlowLogs", {
         "enabled": args.enabled,
         "flowLogId": args.flowLogId,
         "instanceId": args.instanceId,
@@ -60,7 +60,7 @@ export interface GetFlowLogsResult {
 }
 export function getFlowLogsOutput(args: GetFlowLogsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFlowLogsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Er/getFlowLogs:getFlowLogs", {
+    return pulumi.runtime.invokeOutput("cloudru:Er/getFlowLogs:getFlowLogs", {
         "enabled": args.enabled,
         "flowLogId": args.flowLogId,
         "instanceId": args.instanceId,

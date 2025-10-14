@@ -19,7 +19,7 @@ export class DmsInstance extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/dmsInstance:DmsInstance';
+    public static readonly __pulumiType = 'cloudru:index/dmsInstance:DmsInstance';
 
     /**
      * Returns true if the given object is an instance of DmsInstance.  This is designed to work even

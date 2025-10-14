@@ -113,7 +113,7 @@ def get_elb_certificate(name: Optional[_builtins.str] = None,
     __args__['name'] = name
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getElbCertificate:getElbCertificate', __args__, opts=opts, typ=GetElbCertificateResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getElbCertificate:getElbCertificate', __args__, opts=opts, typ=GetElbCertificateResult).value
 
     return AwaitableGetElbCertificateResult(
         description=pulumi.get(__ret__, 'description'),
@@ -133,7 +133,7 @@ def get_elb_certificate_output(name: Optional[pulumi.Input[_builtins.str]] = Non
     __args__['name'] = name
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getElbCertificate:getElbCertificate', __args__, opts=opts, typ=GetElbCertificateResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getElbCertificate:getElbCertificate', __args__, opts=opts, typ=GetElbCertificateResult)
     return __ret__.apply(lambda __response__: GetElbCertificateResult(
         description=pulumi.get(__response__, 'description'),
         domain=pulumi.get(__response__, 'domain'),

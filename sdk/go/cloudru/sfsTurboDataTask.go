@@ -49,7 +49,7 @@ func NewSfsTurboDataTask(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SfsTurboDataTask
-	err := ctx.RegisterResource("sbercloud:index/sfsTurboDataTask:SfsTurboDataTask", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/sfsTurboDataTask:SfsTurboDataTask", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -61,7 +61,7 @@ func NewSfsTurboDataTask(ctx *pulumi.Context,
 func GetSfsTurboDataTask(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *SfsTurboDataTaskState, opts ...pulumi.ResourceOption) (*SfsTurboDataTask, error) {
 	var resource SfsTurboDataTask
-	err := ctx.ReadResource("sbercloud:index/sfsTurboDataTask:SfsTurboDataTask", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/sfsTurboDataTask:SfsTurboDataTask", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

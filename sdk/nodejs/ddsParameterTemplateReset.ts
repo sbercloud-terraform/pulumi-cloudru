@@ -19,7 +19,7 @@ export class DdsParameterTemplateReset extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/ddsParameterTemplateReset:DdsParameterTemplateReset';
+    public static readonly __pulumiType = 'cloudru:index/ddsParameterTemplateReset:DdsParameterTemplateReset';
 
     /**
      * Returns true if the given object is an instance of DdsParameterTemplateReset.  This is designed to work even

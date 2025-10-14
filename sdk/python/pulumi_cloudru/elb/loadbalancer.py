@@ -583,7 +583,7 @@ class _LoadbalancerState:
         pulumi.set(self, "vip_subnet_id", value)
 
 
-@pulumi.type_token("sbercloud:Elb/loadbalancer:Loadbalancer")
+@pulumi.type_token("cloudru:Elb/loadbalancer:Loadbalancer")
 class Loadbalancer(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -695,7 +695,7 @@ class Loadbalancer(pulumi.CustomResource):
             __props__.__dict__["updated_at"] = None
             __props__.__dict__["vip_port_id"] = None
         super(Loadbalancer, __self__).__init__(
-            'sbercloud:Elb/loadbalancer:Loadbalancer',
+            'cloudru:Elb/loadbalancer:Loadbalancer',
             resource_name,
             __props__,
             opts)

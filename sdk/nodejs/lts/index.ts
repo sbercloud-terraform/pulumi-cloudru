@@ -20,14 +20,14 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "sbercloud:Lts/group:Group":
+            case "cloudru:Lts/group:Group":
                 return new Group(name, <any>undefined, { urn })
-            case "sbercloud:Lts/stream:Stream":
+            case "cloudru:Lts/stream:Stream":
                 return new Stream(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("sbercloud", "Lts/group", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Lts/stream", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Lts/group", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Lts/stream", _module)

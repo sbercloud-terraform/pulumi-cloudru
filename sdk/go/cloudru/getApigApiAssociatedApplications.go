@@ -14,7 +14,7 @@ import (
 func GetApigApiAssociatedApplications(ctx *pulumi.Context, args *GetApigApiAssociatedApplicationsArgs, opts ...pulumi.InvokeOption) (*GetApigApiAssociatedApplicationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetApigApiAssociatedApplicationsResult
-	err := ctx.Invoke("sbercloud:index/getApigApiAssociatedApplications:getApigApiAssociatedApplications", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getApigApiAssociatedApplications:getApigApiAssociatedApplications", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func GetApigApiAssociatedApplicationsOutput(ctx *pulumi.Context, args GetApigApi
 		ApplyT(func(v interface{}) (GetApigApiAssociatedApplicationsResultOutput, error) {
 			args := v.(GetApigApiAssociatedApplicationsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getApigApiAssociatedApplications:getApigApiAssociatedApplications", args, GetApigApiAssociatedApplicationsResultOutput{}, options).(GetApigApiAssociatedApplicationsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getApigApiAssociatedApplications:getApigApiAssociatedApplications", args, GetApigApiAssociatedApplicationsResultOutput{}, options).(GetApigApiAssociatedApplicationsResultOutput), nil
 		}).(GetApigApiAssociatedApplicationsResultOutput)
 }
 

@@ -188,7 +188,7 @@ class _ApigApplicationAclState:
         pulumi.set(self, "values", value)
 
 
-@pulumi.type_token("sbercloud:index/apigApplicationAcl:ApigApplicationAcl")
+@pulumi.type_token("cloudru:index/apigApplicationAcl:ApigApplicationAcl")
 class ApigApplicationAcl(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -261,7 +261,7 @@ class ApigApplicationAcl(pulumi.CustomResource):
                 raise TypeError("Missing required property 'values'")
             __props__.__dict__["values"] = values
         super(ApigApplicationAcl, __self__).__init__(
-            'sbercloud:index/apigApplicationAcl:ApigApplicationAcl',
+            'cloudru:index/apigApplicationAcl:ApigApplicationAcl',
             resource_name,
             __props__,
             opts)

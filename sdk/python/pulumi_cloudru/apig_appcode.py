@@ -174,7 +174,7 @@ class _ApigAppcodeState:
         pulumi.set(self, "value", value)
 
 
-@pulumi.type_token("sbercloud:index/apigAppcode:ApigAppcode")
+@pulumi.type_token("cloudru:index/apigAppcode:ApigAppcode")
 class ApigAppcode(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -240,7 +240,7 @@ class ApigAppcode(pulumi.CustomResource):
             __props__.__dict__["value"] = value
             __props__.__dict__["created_at"] = None
         super(ApigAppcode, __self__).__init__(
-            'sbercloud:index/apigAppcode:ApigAppcode',
+            'cloudru:index/apigAppcode:ApigAppcode',
             resource_name,
             __props__,
             opts)

@@ -244,7 +244,7 @@ class _ServiceGroupMemberState:
         pulumi.set(self, "source_port", value)
 
 
-@pulumi.type_token("sbercloud:Cfw/serviceGroupMember:ServiceGroupMember")
+@pulumi.type_token("cloudru:Cfw/serviceGroupMember:ServiceGroupMember")
 class ServiceGroupMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -324,7 +324,7 @@ class ServiceGroupMember(pulumi.CustomResource):
                 raise TypeError("Missing required property 'source_port'")
             __props__.__dict__["source_port"] = source_port
         super(ServiceGroupMember, __self__).__init__(
-            'sbercloud:Cfw/serviceGroupMember:ServiceGroupMember',
+            'cloudru:Cfw/serviceGroupMember:ServiceGroupMember',
             resource_name,
             __props__,
             opts)

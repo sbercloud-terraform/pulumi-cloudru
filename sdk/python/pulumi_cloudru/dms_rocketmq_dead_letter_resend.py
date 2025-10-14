@@ -143,7 +143,7 @@ class _DmsRocketmqDeadLetterResendState:
         pulumi.set(self, "topic", value)
 
 
-@pulumi.type_token("sbercloud:index/dmsRocketmqDeadLetterResend:DmsRocketmqDeadLetterResend")
+@pulumi.type_token("cloudru:index/dmsRocketmqDeadLetterResend:DmsRocketmqDeadLetterResend")
 class DmsRocketmqDeadLetterResend(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -207,7 +207,7 @@ class DmsRocketmqDeadLetterResend(pulumi.CustomResource):
             __props__.__dict__["topic"] = topic
             __props__.__dict__["resend_results"] = None
         super(DmsRocketmqDeadLetterResend, __self__).__init__(
-            'sbercloud:index/dmsRocketmqDeadLetterResend:DmsRocketmqDeadLetterResend',
+            'cloudru:index/dmsRocketmqDeadLetterResend:DmsRocketmqDeadLetterResend',
             resource_name,
             __props__,
             opts)

@@ -19,7 +19,7 @@ export class FgsFunctionTrigger extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/fgsFunctionTrigger:FgsFunctionTrigger';
+    public static readonly __pulumiType = 'cloudru:index/fgsFunctionTrigger:FgsFunctionTrigger';
 
     /**
      * Returns true if the given object is an instance of FgsFunctionTrigger.  This is designed to work even

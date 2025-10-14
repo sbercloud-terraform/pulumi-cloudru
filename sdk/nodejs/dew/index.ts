@@ -35,14 +35,14 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "sbercloud:Dew/key:Key":
+            case "cloudru:Dew/key:Key":
                 return new Key(name, <any>undefined, { urn })
-            case "sbercloud:Dew/keypair:Keypair":
+            case "cloudru:Dew/keypair:Keypair":
                 return new Keypair(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("sbercloud", "Dew/key", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Dew/keypair", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Dew/key", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Dew/keypair", _module)

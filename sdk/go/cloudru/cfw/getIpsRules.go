@@ -14,7 +14,7 @@ import (
 func GetIpsRules(ctx *pulumi.Context, args *GetIpsRulesArgs, opts ...pulumi.InvokeOption) (*GetIpsRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIpsRulesResult
-	err := ctx.Invoke("sbercloud:Cfw/getIpsRules:getIpsRules", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Cfw/getIpsRules:getIpsRules", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func GetIpsRulesOutput(ctx *pulumi.Context, args GetIpsRulesOutputArgs, opts ...
 		ApplyT(func(v interface{}) (GetIpsRulesResultOutput, error) {
 			args := v.(GetIpsRulesArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Cfw/getIpsRules:getIpsRules", args, GetIpsRulesResultOutput{}, options).(GetIpsRulesResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Cfw/getIpsRules:getIpsRules", args, GetIpsRulesResultOutput{}, options).(GetIpsRulesResultOutput), nil
 		}).(GetIpsRulesResultOutput)
 }
 

@@ -19,7 +19,7 @@ export class Subnet extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Vpc/subnet:Subnet';
+    public static readonly __pulumiType = 'cloudru:Vpc/subnet:Subnet';
 
     /**
      * Returns true if the given object is an instance of Subnet.  This is designed to work even

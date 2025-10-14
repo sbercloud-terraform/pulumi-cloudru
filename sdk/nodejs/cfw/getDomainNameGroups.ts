@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 export function getDomainNameGroups(args: GetDomainNameGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainNameGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Cfw/getDomainNameGroups:getDomainNameGroups", {
+    return pulumi.runtime.invoke("cloudru:Cfw/getDomainNameGroups:getDomainNameGroups", {
         "configStatus": args.configStatus,
         "enterpriseProjectId": args.enterpriseProjectId,
         "fwInstanceId": args.fwInstanceId,
@@ -60,7 +60,7 @@ export interface GetDomainNameGroupsResult {
 }
 export function getDomainNameGroupsOutput(args: GetDomainNameGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDomainNameGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Cfw/getDomainNameGroups:getDomainNameGroups", {
+    return pulumi.runtime.invokeOutput("cloudru:Cfw/getDomainNameGroups:getDomainNameGroups", {
         "configStatus": args.configStatus,
         "enterpriseProjectId": args.enterpriseProjectId,
         "fwInstanceId": args.fwInstanceId,

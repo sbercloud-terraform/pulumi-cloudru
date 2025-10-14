@@ -40,7 +40,7 @@ func NewInstanceEipAssociate(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource InstanceEipAssociate
-	err := ctx.RegisterResource("sbercloud:Rds/instanceEipAssociate:InstanceEipAssociate", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Rds/instanceEipAssociate:InstanceEipAssociate", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -52,7 +52,7 @@ func NewInstanceEipAssociate(ctx *pulumi.Context,
 func GetInstanceEipAssociate(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *InstanceEipAssociateState, opts ...pulumi.ResourceOption) (*InstanceEipAssociate, error) {
 	var resource InstanceEipAssociate
-	err := ctx.ReadResource("sbercloud:Rds/instanceEipAssociate:InstanceEipAssociate", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Rds/instanceEipAssociate:InstanceEipAssociate", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

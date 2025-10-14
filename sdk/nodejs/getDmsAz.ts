@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 export function getDmsAz(args?: GetDmsAzArgs, opts?: pulumi.InvokeOptions): Promise<GetDmsAzResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getDmsAz:getDmsAz", {
+    return pulumi.runtime.invoke("cloudru:index/getDmsAz:getDmsAz", {
         "code": args.code,
         "name": args.name,
         "port": args.port,
@@ -42,7 +42,7 @@ export interface GetDmsAzResult {
 export function getDmsAzOutput(args?: GetDmsAzOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDmsAzResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getDmsAz:getDmsAz", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getDmsAz:getDmsAz", {
         "code": args.code,
         "name": args.name,
         "port": args.port,

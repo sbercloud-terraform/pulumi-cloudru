@@ -49,7 +49,7 @@ func NewDmsRocketmqConsumerGroup(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DmsRocketmqConsumerGroup
-	err := ctx.RegisterResource("sbercloud:index/dmsRocketmqConsumerGroup:DmsRocketmqConsumerGroup", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/dmsRocketmqConsumerGroup:DmsRocketmqConsumerGroup", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -61,7 +61,7 @@ func NewDmsRocketmqConsumerGroup(ctx *pulumi.Context,
 func GetDmsRocketmqConsumerGroup(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *DmsRocketmqConsumerGroupState, opts ...pulumi.ResourceOption) (*DmsRocketmqConsumerGroup, error) {
 	var resource DmsRocketmqConsumerGroup
-	err := ctx.ReadResource("sbercloud:index/dmsRocketmqConsumerGroup:DmsRocketmqConsumerGroup", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/dmsRocketmqConsumerGroup:DmsRocketmqConsumerGroup", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

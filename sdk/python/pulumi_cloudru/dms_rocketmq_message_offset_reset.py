@@ -148,7 +148,7 @@ class _DmsRocketmqMessageOffsetResetState:
         pulumi.set(self, "topic", value)
 
 
-@pulumi.type_token("sbercloud:index/dmsRocketmqMessageOffsetReset:DmsRocketmqMessageOffsetReset")
+@pulumi.type_token("cloudru:index/dmsRocketmqMessageOffsetReset:DmsRocketmqMessageOffsetReset")
 class DmsRocketmqMessageOffsetReset(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -216,7 +216,7 @@ class DmsRocketmqMessageOffsetReset(pulumi.CustomResource):
                 raise TypeError("Missing required property 'topic'")
             __props__.__dict__["topic"] = topic
         super(DmsRocketmqMessageOffsetReset, __self__).__init__(
-            'sbercloud:index/dmsRocketmqMessageOffsetReset:DmsRocketmqMessageOffsetReset',
+            'cloudru:index/dmsRocketmqMessageOffsetReset:DmsRocketmqMessageOffsetReset',
             resource_name,
             __props__,
             opts)

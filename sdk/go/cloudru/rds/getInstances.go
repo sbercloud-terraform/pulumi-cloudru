@@ -14,7 +14,7 @@ import (
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstancesResult
-	err := ctx.Invoke("sbercloud:Rds/getInstances:getInstances", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Rds/getInstances:getInstances", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts .
 		ApplyT(func(v interface{}) (GetInstancesResultOutput, error) {
 			args := v.(GetInstancesArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Rds/getInstances:getInstances", args, GetInstancesResultOutput{}, options).(GetInstancesResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Rds/getInstances:getInstances", args, GetInstancesResultOutput{}, options).(GetInstancesResultOutput), nil
 		}).(GetInstancesResultOutput)
 }
 

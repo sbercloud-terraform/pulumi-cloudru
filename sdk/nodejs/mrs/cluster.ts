@@ -21,7 +21,7 @@ export class Cluster extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Mrs/cluster:cluster';
+    public static readonly __pulumiType = 'cloudru:Mrs/cluster:cluster';
 
     /**
      * Returns true if the given object is an instance of Cluster.  This is designed to work even

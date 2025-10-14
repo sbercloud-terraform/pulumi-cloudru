@@ -899,7 +899,7 @@ class _GroupState:
         pulumi.set(self, "vpc_id", value)
 
 
-@pulumi.type_token("sbercloud:As/group:Group")
+@pulumi.type_token("cloudru:As/group:Group")
 class Group(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -1053,7 +1053,7 @@ class Group(pulumi.CustomResource):
             __props__.__dict__["scaling_configuration_name"] = None
             __props__.__dict__["status"] = None
         super(Group, __self__).__init__(
-            'sbercloud:As/group:Group',
+            'cloudru:As/group:Group',
             resource_name,
             __props__,
             opts)

@@ -148,7 +148,7 @@ class _SfsTurboPermRuleState:
         pulumi.set(self, "user_type", value)
 
 
-@pulumi.type_token("sbercloud:index/sfsTurboPermRule:SfsTurboPermRule")
+@pulumi.type_token("cloudru:index/sfsTurboPermRule:SfsTurboPermRule")
 class SfsTurboPermRule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -216,7 +216,7 @@ class SfsTurboPermRule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'user_type'")
             __props__.__dict__["user_type"] = user_type
         super(SfsTurboPermRule, __self__).__init__(
-            'sbercloud:index/sfsTurboPermRule:SfsTurboPermRule',
+            'cloudru:index/sfsTurboPermRule:SfsTurboPermRule',
             resource_name,
             __props__,
             opts)

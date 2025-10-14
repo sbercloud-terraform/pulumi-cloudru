@@ -34,7 +34,7 @@ func NewIdentityGroupMembershipV3(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource IdentityGroupMembershipV3
-	err := ctx.RegisterResource("sbercloud:index/identityGroupMembershipV3:IdentityGroupMembershipV3", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/identityGroupMembershipV3:IdentityGroupMembershipV3", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -46,7 +46,7 @@ func NewIdentityGroupMembershipV3(ctx *pulumi.Context,
 func GetIdentityGroupMembershipV3(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *IdentityGroupMembershipV3State, opts ...pulumi.ResourceOption) (*IdentityGroupMembershipV3, error) {
 	var resource IdentityGroupMembershipV3
-	err := ctx.ReadResource("sbercloud:index/identityGroupMembershipV3:IdentityGroupMembershipV3", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/identityGroupMembershipV3:IdentityGroupMembershipV3", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

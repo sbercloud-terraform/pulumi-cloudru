@@ -267,7 +267,7 @@ class _ElbMonitorState:
         pulumi.set(self, "url_path", value)
 
 
-@pulumi.type_token("sbercloud:index/elbMonitor:ElbMonitor")
+@pulumi.type_token("cloudru:index/elbMonitor:ElbMonitor")
 class ElbMonitor(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -352,7 +352,7 @@ class ElbMonitor(pulumi.CustomResource):
             __props__.__dict__["timeout"] = timeout
             __props__.__dict__["url_path"] = url_path
         super(ElbMonitor, __self__).__init__(
-            'sbercloud:index/elbMonitor:ElbMonitor',
+            'cloudru:index/elbMonitor:ElbMonitor',
             resource_name,
             __props__,
             opts)

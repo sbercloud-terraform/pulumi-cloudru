@@ -97,7 +97,7 @@ def get_vpn_gateway_availability_zones(attachment_type: Optional[_builtins.str] 
     __args__['flavor'] = flavor
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getVpnGatewayAvailabilityZones:getVpnGatewayAvailabilityZones', __args__, opts=opts, typ=GetVpnGatewayAvailabilityZonesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getVpnGatewayAvailabilityZones:getVpnGatewayAvailabilityZones', __args__, opts=opts, typ=GetVpnGatewayAvailabilityZonesResult).value
 
     return AwaitableGetVpnGatewayAvailabilityZonesResult(
         attachment_type=pulumi.get(__ret__, 'attachment_type'),
@@ -117,7 +117,7 @@ def get_vpn_gateway_availability_zones_output(attachment_type: Optional[pulumi.I
     __args__['flavor'] = flavor
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getVpnGatewayAvailabilityZones:getVpnGatewayAvailabilityZones', __args__, opts=opts, typ=GetVpnGatewayAvailabilityZonesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getVpnGatewayAvailabilityZones:getVpnGatewayAvailabilityZones', __args__, opts=opts, typ=GetVpnGatewayAvailabilityZonesResult)
     return __ret__.apply(lambda __response__: GetVpnGatewayAvailabilityZonesResult(
         attachment_type=pulumi.get(__response__, 'attachment_type'),
         flavor=pulumi.get(__response__, 'flavor'),

@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 export function getIdentityRoleV3(args?: GetIdentityRoleV3Args, opts?: pulumi.InvokeOptions): Promise<GetIdentityRoleV3Result> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getIdentityRoleV3:getIdentityRoleV3", {
+    return pulumi.runtime.invoke("cloudru:index/getIdentityRoleV3:getIdentityRoleV3", {
         "displayName": args.displayName,
         "name": args.name,
     }, opts);
@@ -39,7 +39,7 @@ export interface GetIdentityRoleV3Result {
 export function getIdentityRoleV3Output(args?: GetIdentityRoleV3OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIdentityRoleV3Result> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getIdentityRoleV3:getIdentityRoleV3", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getIdentityRoleV3:getIdentityRoleV3", {
         "displayName": args.displayName,
         "name": args.name,
     }, opts);

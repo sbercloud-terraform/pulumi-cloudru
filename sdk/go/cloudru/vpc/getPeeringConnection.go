@@ -14,7 +14,7 @@ import (
 func LookupPeeringConnection(ctx *pulumi.Context, args *LookupPeeringConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPeeringConnectionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPeeringConnectionResult
-	err := ctx.Invoke("sbercloud:Vpc/getPeeringConnection:getPeeringConnection", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Vpc/getPeeringConnection:getPeeringConnection", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -49,7 +49,7 @@ func LookupPeeringConnectionOutput(ctx *pulumi.Context, args LookupPeeringConnec
 		ApplyT(func(v interface{}) (LookupPeeringConnectionResultOutput, error) {
 			args := v.(LookupPeeringConnectionArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Vpc/getPeeringConnection:getPeeringConnection", args, LookupPeeringConnectionResultOutput{}, options).(LookupPeeringConnectionResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Vpc/getPeeringConnection:getPeeringConnection", args, LookupPeeringConnectionResultOutput{}, options).(LookupPeeringConnectionResultOutput), nil
 		}).(LookupPeeringConnectionResultOutput)
 }
 

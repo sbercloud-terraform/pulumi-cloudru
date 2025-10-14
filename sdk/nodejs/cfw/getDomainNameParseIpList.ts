@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 export function getDomainNameParseIpList(args?: GetDomainNameParseIpListArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainNameParseIpListResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Cfw/getDomainNameParseIpList:getDomainNameParseIpList", {
+    return pulumi.runtime.invoke("cloudru:Cfw/getDomainNameParseIpList:getDomainNameParseIpList", {
         "addressType": args.addressType,
         "domainAddressId": args.domainAddressId,
         "domainName": args.domainName,
@@ -51,7 +51,7 @@ export interface GetDomainNameParseIpListResult {
 export function getDomainNameParseIpListOutput(args?: GetDomainNameParseIpListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDomainNameParseIpListResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Cfw/getDomainNameParseIpList:getDomainNameParseIpList", {
+    return pulumi.runtime.invokeOutput("cloudru:Cfw/getDomainNameParseIpList:getDomainNameParseIpList", {
         "addressType": args.addressType,
         "domainAddressId": args.domainAddressId,
         "domainName": args.domainName,

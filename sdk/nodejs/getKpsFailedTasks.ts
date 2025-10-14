@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 export function getKpsFailedTasks(args?: GetKpsFailedTasksArgs, opts?: pulumi.InvokeOptions): Promise<GetKpsFailedTasksResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getKpsFailedTasks:getKpsFailedTasks", {
+    return pulumi.runtime.invoke("cloudru:index/getKpsFailedTasks:getKpsFailedTasks", {
         "region": args.region,
     }, opts);
 }
@@ -35,7 +35,7 @@ export interface GetKpsFailedTasksResult {
 export function getKpsFailedTasksOutput(args?: GetKpsFailedTasksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKpsFailedTasksResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getKpsFailedTasks:getKpsFailedTasks", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getKpsFailedTasks:getKpsFailedTasks", {
         "region": args.region,
     }, opts);
 }

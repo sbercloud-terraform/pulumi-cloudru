@@ -19,7 +19,7 @@ export class SnatRule extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Nat/snatRule:SnatRule';
+    public static readonly __pulumiType = 'cloudru:Nat/snatRule:SnatRule';
 
     /**
      * Returns true if the given object is an instance of SnatRule.  This is designed to work even

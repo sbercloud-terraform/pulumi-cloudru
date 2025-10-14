@@ -85,7 +85,7 @@ def get_cdm_flavors(region: Optional[_builtins.str] = None,
     __args__ = dict()
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getCdmFlavors:getCdmFlavors', __args__, opts=opts, typ=GetCdmFlavorsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getCdmFlavors:getCdmFlavors', __args__, opts=opts, typ=GetCdmFlavorsResult).value
 
     return AwaitableGetCdmFlavorsResult(
         flavors=pulumi.get(__ret__, 'flavors'),
@@ -100,7 +100,7 @@ def get_cdm_flavors_output(region: Optional[pulumi.Input[Optional[_builtins.str]
     __args__ = dict()
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getCdmFlavors:getCdmFlavors', __args__, opts=opts, typ=GetCdmFlavorsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getCdmFlavors:getCdmFlavors', __args__, opts=opts, typ=GetCdmFlavorsResult)
     return __ret__.apply(lambda __response__: GetCdmFlavorsResult(
         flavors=pulumi.get(__response__, 'flavors'),
         id=pulumi.get(__response__, 'id'),

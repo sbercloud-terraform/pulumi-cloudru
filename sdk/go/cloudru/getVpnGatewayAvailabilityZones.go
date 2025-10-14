@@ -14,7 +14,7 @@ import (
 func GetVpnGatewayAvailabilityZones(ctx *pulumi.Context, args *GetVpnGatewayAvailabilityZonesArgs, opts ...pulumi.InvokeOption) (*GetVpnGatewayAvailabilityZonesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVpnGatewayAvailabilityZonesResult
-	err := ctx.Invoke("sbercloud:index/getVpnGatewayAvailabilityZones:getVpnGatewayAvailabilityZones", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getVpnGatewayAvailabilityZones:getVpnGatewayAvailabilityZones", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -43,7 +43,7 @@ func GetVpnGatewayAvailabilityZonesOutput(ctx *pulumi.Context, args GetVpnGatewa
 		ApplyT(func(v interface{}) (GetVpnGatewayAvailabilityZonesResultOutput, error) {
 			args := v.(GetVpnGatewayAvailabilityZonesArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getVpnGatewayAvailabilityZones:getVpnGatewayAvailabilityZones", args, GetVpnGatewayAvailabilityZonesResultOutput{}, options).(GetVpnGatewayAvailabilityZonesResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getVpnGatewayAvailabilityZones:getVpnGatewayAvailabilityZones", args, GetVpnGatewayAvailabilityZonesResultOutput{}, options).(GetVpnGatewayAvailabilityZonesResultOutput), nil
 		}).(GetVpnGatewayAvailabilityZonesResultOutput)
 }
 

@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 export function getGateway(args?: GetGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Nat/getGateway:getGateway", {
+    return pulumi.runtime.invoke("cloudru:Nat/getGateway:getGateway", {
         "description": args.description,
         "enterpriseProjectId": args.enterpriseProjectId,
         "id": args.id,
@@ -70,7 +70,7 @@ export interface GetGatewayResult {
 export function getGatewayOutput(args?: GetGatewayOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGatewayResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Nat/getGateway:getGateway", {
+    return pulumi.runtime.invokeOutput("cloudru:Nat/getGateway:getGateway", {
         "description": args.description,
         "enterpriseProjectId": args.enterpriseProjectId,
         "id": args.id,

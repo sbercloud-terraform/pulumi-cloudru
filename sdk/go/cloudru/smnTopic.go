@@ -39,7 +39,7 @@ func NewSmnTopic(ctx *pulumi.Context,
 
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SmnTopic
-	err := ctx.RegisterResource("sbercloud:index/smnTopic:SmnTopic", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/smnTopic:SmnTopic", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func NewSmnTopic(ctx *pulumi.Context,
 func GetSmnTopic(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *SmnTopicState, opts ...pulumi.ResourceOption) (*SmnTopic, error) {
 	var resource SmnTopic
-	err := ctx.ReadResource("sbercloud:index/smnTopic:SmnTopic", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/smnTopic:SmnTopic", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

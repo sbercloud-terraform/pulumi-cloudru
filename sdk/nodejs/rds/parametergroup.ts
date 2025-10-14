@@ -21,7 +21,7 @@ export class Parametergroup extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Rds/parametergroup:Parametergroup';
+    public static readonly __pulumiType = 'cloudru:Rds/parametergroup:Parametergroup';
 
     /**
      * Returns true if the given object is an instance of Parametergroup.  This is designed to work even

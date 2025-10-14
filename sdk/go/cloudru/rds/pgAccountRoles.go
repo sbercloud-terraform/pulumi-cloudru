@@ -42,7 +42,7 @@ func NewPgAccountRoles(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PgAccountRoles
-	err := ctx.RegisterResource("sbercloud:Rds/pgAccountRoles:PgAccountRoles", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Rds/pgAccountRoles:PgAccountRoles", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -54,7 +54,7 @@ func NewPgAccountRoles(ctx *pulumi.Context,
 func GetPgAccountRoles(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *PgAccountRolesState, opts ...pulumi.ResourceOption) (*PgAccountRoles, error) {
 	var resource PgAccountRoles
-	err := ctx.ReadResource("sbercloud:Rds/pgAccountRoles:PgAccountRoles", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Rds/pgAccountRoles:PgAccountRoles", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -116,7 +116,7 @@ class _DdsParameterTemplateCompareState:
         pulumi.set(self, "target_configuration_id", value)
 
 
-@pulumi.type_token("sbercloud:index/ddsParameterTemplateCompare:DdsParameterTemplateCompare")
+@pulumi.type_token("cloudru:index/ddsParameterTemplateCompare:DdsParameterTemplateCompare")
 class DdsParameterTemplateCompare(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -175,7 +175,7 @@ class DdsParameterTemplateCompare(pulumi.CustomResource):
             __props__.__dict__["target_configuration_id"] = target_configuration_id
             __props__.__dict__["differences"] = None
         super(DdsParameterTemplateCompare, __self__).__init__(
-            'sbercloud:index/ddsParameterTemplateCompare:DdsParameterTemplateCompare',
+            'cloudru:index/ddsParameterTemplateCompare:DdsParameterTemplateCompare',
             resource_name,
             __props__,
             opts)

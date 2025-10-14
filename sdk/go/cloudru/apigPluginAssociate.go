@@ -48,7 +48,7 @@ func NewApigPluginAssociate(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApigPluginAssociate
-	err := ctx.RegisterResource("sbercloud:index/apigPluginAssociate:ApigPluginAssociate", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/apigPluginAssociate:ApigPluginAssociate", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -60,7 +60,7 @@ func NewApigPluginAssociate(ctx *pulumi.Context,
 func GetApigPluginAssociate(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ApigPluginAssociateState, opts ...pulumi.ResourceOption) (*ApigPluginAssociate, error) {
 	var resource ApigPluginAssociate
-	err := ctx.ReadResource("sbercloud:index/apigPluginAssociate:ApigPluginAssociate", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/apigPluginAssociate:ApigPluginAssociate", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

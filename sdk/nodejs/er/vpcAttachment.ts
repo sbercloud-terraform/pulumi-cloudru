@@ -19,7 +19,7 @@ export class VpcAttachment extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Er/vpcAttachment:VpcAttachment';
+    public static readonly __pulumiType = 'cloudru:Er/vpcAttachment:VpcAttachment';
 
     /**
      * Returns true if the given object is an instance of VpcAttachment.  This is designed to work even

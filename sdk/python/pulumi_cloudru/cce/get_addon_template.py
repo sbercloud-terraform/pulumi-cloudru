@@ -136,7 +136,7 @@ def get_addon_template(cluster_id: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['version'] = version
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Cce/getAddonTemplate:getAddonTemplate', __args__, opts=opts, typ=GetAddonTemplateResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Cce/getAddonTemplate:getAddonTemplate', __args__, opts=opts, typ=GetAddonTemplateResult).value
 
     return AwaitableGetAddonTemplateResult(
         cluster_id=pulumi.get(__ret__, 'cluster_id'),
@@ -162,7 +162,7 @@ def get_addon_template_output(cluster_id: Optional[pulumi.Input[_builtins.str]] 
     __args__['region'] = region
     __args__['version'] = version
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Cce/getAddonTemplate:getAddonTemplate', __args__, opts=opts, typ=GetAddonTemplateResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Cce/getAddonTemplate:getAddonTemplate', __args__, opts=opts, typ=GetAddonTemplateResult)
     return __ret__.apply(lambda __response__: GetAddonTemplateResult(
         cluster_id=pulumi.get(__response__, 'cluster_id'),
         description=pulumi.get(__response__, 'description'),

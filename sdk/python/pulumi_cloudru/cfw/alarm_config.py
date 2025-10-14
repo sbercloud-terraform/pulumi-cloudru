@@ -337,7 +337,7 @@ class _AlarmConfigState:
         pulumi.set(self, "username", value)
 
 
-@pulumi.type_token("sbercloud:Cfw/alarmConfig:AlarmConfig")
+@pulumi.type_token("cloudru:Cfw/alarmConfig:AlarmConfig")
 class AlarmConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -433,7 +433,7 @@ class AlarmConfig(pulumi.CustomResource):
             __props__.__dict__["language"] = None
             __props__.__dict__["username"] = None
         super(AlarmConfig, __self__).__init__(
-            'sbercloud:Cfw/alarmConfig:AlarmConfig',
+            'cloudru:Cfw/alarmConfig:AlarmConfig',
             resource_name,
             __props__,
             opts)

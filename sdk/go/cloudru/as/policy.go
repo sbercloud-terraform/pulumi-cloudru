@@ -46,7 +46,7 @@ func NewPolicy(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Policy
-	err := ctx.RegisterResource("sbercloud:As/policy:Policy", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:As/policy:Policy", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -58,7 +58,7 @@ func NewPolicy(ctx *pulumi.Context,
 func GetPolicy(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *PolicyState, opts ...pulumi.ResourceOption) (*Policy, error) {
 	var resource Policy
-	err := ctx.ReadResource("sbercloud:As/policy:Policy", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:As/policy:Policy", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

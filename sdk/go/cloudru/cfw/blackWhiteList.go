@@ -61,7 +61,7 @@ func NewBlackWhiteList(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource BlackWhiteList
-	err := ctx.RegisterResource("sbercloud:Cfw/blackWhiteList:BlackWhiteList", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Cfw/blackWhiteList:BlackWhiteList", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -73,7 +73,7 @@ func NewBlackWhiteList(ctx *pulumi.Context,
 func GetBlackWhiteList(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *BlackWhiteListState, opts ...pulumi.ResourceOption) (*BlackWhiteList, error) {
 	var resource BlackWhiteList
-	err := ctx.ReadResource("sbercloud:Cfw/blackWhiteList:BlackWhiteList", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Cfw/blackWhiteList:BlackWhiteList", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

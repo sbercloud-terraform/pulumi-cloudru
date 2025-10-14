@@ -478,7 +478,7 @@ class _DnatRuleState:
         pulumi.set(self, "status", value)
 
 
-@pulumi.type_token("sbercloud:Nat/dnatRule:DnatRule")
+@pulumi.type_token("cloudru:Nat/dnatRule:DnatRule")
 class DnatRule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -579,7 +579,7 @@ class DnatRule(pulumi.CustomResource):
             __props__.__dict__["global_eip_address"] = None
             __props__.__dict__["status"] = None
         super(DnatRule, __self__).__init__(
-            'sbercloud:Nat/dnatRule:DnatRule',
+            'cloudru:Nat/dnatRule:DnatRule',
             resource_name,
             __props__,
             opts)

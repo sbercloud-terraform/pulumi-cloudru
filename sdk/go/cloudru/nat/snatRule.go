@@ -57,7 +57,7 @@ func NewSnatRule(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SnatRule
-	err := ctx.RegisterResource("sbercloud:Nat/snatRule:SnatRule", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Nat/snatRule:SnatRule", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -69,7 +69,7 @@ func NewSnatRule(ctx *pulumi.Context,
 func GetSnatRule(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *SnatRuleState, opts ...pulumi.ResourceOption) (*SnatRule, error) {
 	var resource SnatRule
-	err := ctx.ReadResource("sbercloud:Nat/snatRule:SnatRule", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Nat/snatRule:SnatRule", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

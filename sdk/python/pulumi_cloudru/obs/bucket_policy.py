@@ -126,7 +126,7 @@ class _BucketPolicyState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:Obs/bucketPolicy:BucketPolicy")
+@pulumi.type_token("cloudru:Obs/bucketPolicy:BucketPolicy")
 class BucketPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -187,7 +187,7 @@ class BucketPolicy(pulumi.CustomResource):
             __props__.__dict__["policy_format"] = policy_format
             __props__.__dict__["region"] = region
         super(BucketPolicy, __self__).__init__(
-            'sbercloud:Obs/bucketPolicy:BucketPolicy',
+            'cloudru:Obs/bucketPolicy:BucketPolicy',
             resource_name,
             __props__,
             opts)

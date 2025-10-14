@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 export function getAvailabilityZones(args?: GetAvailabilityZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetAvailabilityZonesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Er/getAvailabilityZones:getAvailabilityZones", {
+    return pulumi.runtime.invoke("cloudru:Er/getAvailabilityZones:getAvailabilityZones", {
         "region": args.region,
     }, opts);
 }
@@ -33,7 +33,7 @@ export interface GetAvailabilityZonesResult {
 export function getAvailabilityZonesOutput(args?: GetAvailabilityZonesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAvailabilityZonesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Er/getAvailabilityZones:getAvailabilityZones", {
+    return pulumi.runtime.invokeOutput("cloudru:Er/getAvailabilityZones:getAvailabilityZones", {
         "region": args.region,
     }, opts);
 }

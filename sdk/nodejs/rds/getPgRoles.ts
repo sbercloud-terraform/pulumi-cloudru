@@ -6,7 +6,7 @@ import * as utilities from "../utilities";
 
 export function getPgRoles(args: GetPgRolesArgs, opts?: pulumi.InvokeOptions): Promise<GetPgRolesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Rds/getPgRoles:getPgRoles", {
+    return pulumi.runtime.invoke("cloudru:Rds/getPgRoles:getPgRoles", {
         "account": args.account,
         "instanceId": args.instanceId,
         "region": args.region,
@@ -37,7 +37,7 @@ export interface GetPgRolesResult {
 }
 export function getPgRolesOutput(args: GetPgRolesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPgRolesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Rds/getPgRoles:getPgRoles", {
+    return pulumi.runtime.invokeOutput("cloudru:Rds/getPgRoles:getPgRoles", {
         "account": args.account,
         "instanceId": args.instanceId,
         "region": args.region,

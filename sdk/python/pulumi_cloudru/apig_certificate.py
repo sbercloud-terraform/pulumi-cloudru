@@ -318,7 +318,7 @@ class _ApigCertificateState:
         pulumi.set(self, "type", value)
 
 
-@pulumi.type_token("sbercloud:index/apigCertificate:ApigCertificate")
+@pulumi.type_token("cloudru:index/apigCertificate:ApigCertificate")
 class ApigCertificate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -401,7 +401,7 @@ class ApigCertificate(pulumi.CustomResource):
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["content", "privateKey", "trustedRootCa"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ApigCertificate, __self__).__init__(
-            'sbercloud:index/apigCertificate:ApigCertificate',
+            'cloudru:index/apigCertificate:ApigCertificate',
             resource_name,
             __props__,
             opts)

@@ -21,7 +21,7 @@ export class DmsRocketmqConsumptionVerify extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/dmsRocketmqConsumptionVerify:DmsRocketmqConsumptionVerify';
+    public static readonly __pulumiType = 'cloudru:index/dmsRocketmqConsumptionVerify:DmsRocketmqConsumptionVerify';
 
     /**
      * Returns true if the given object is an instance of DmsRocketmqConsumptionVerify.  This is designed to work even

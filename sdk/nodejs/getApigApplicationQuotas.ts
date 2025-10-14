@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 export function getApigApplicationQuotas(args: GetApigApplicationQuotasArgs, opts?: pulumi.InvokeOptions): Promise<GetApigApplicationQuotasResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getApigApplicationQuotas:getApigApplicationQuotas", {
+    return pulumi.runtime.invoke("cloudru:index/getApigApplicationQuotas:getApigApplicationQuotas", {
         "instanceId": args.instanceId,
         "name": args.name,
         "quotaId": args.quotaId,
@@ -42,7 +42,7 @@ export interface GetApigApplicationQuotasResult {
 }
 export function getApigApplicationQuotasOutput(args: GetApigApplicationQuotasOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApigApplicationQuotasResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getApigApplicationQuotas:getApigApplicationQuotas", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getApigApplicationQuotas:getApigApplicationQuotas", {
         "instanceId": args.instanceId,
         "name": args.name,
         "quotaId": args.quotaId,

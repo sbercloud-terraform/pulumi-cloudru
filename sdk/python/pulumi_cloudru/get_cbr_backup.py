@@ -237,7 +237,7 @@ def get_cbr_backup(id: Optional[_builtins.str] = None,
     __args__['id'] = id
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getCbrBackup:getCbrBackup', __args__, opts=opts, typ=GetCbrBackupResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getCbrBackup:getCbrBackup', __args__, opts=opts, typ=GetCbrBackupResult).value
 
     return AwaitableGetCbrBackupResult(
         checkpoint_id=pulumi.get(__ret__, 'checkpoint_id'),
@@ -271,7 +271,7 @@ def get_cbr_backup_output(id: Optional[pulumi.Input[_builtins.str]] = None,
     __args__['id'] = id
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getCbrBackup:getCbrBackup', __args__, opts=opts, typ=GetCbrBackupResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getCbrBackup:getCbrBackup', __args__, opts=opts, typ=GetCbrBackupResult)
     return __ret__.apply(lambda __response__: GetCbrBackupResult(
         checkpoint_id=pulumi.get(__response__, 'checkpoint_id'),
         childrens=pulumi.get(__response__, 'childrens'),

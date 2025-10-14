@@ -14,7 +14,7 @@ import (
 func GetApigChannels(ctx *pulumi.Context, args *GetApigChannelsArgs, opts ...pulumi.InvokeOption) (*GetApigChannelsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetApigChannelsResult
-	err := ctx.Invoke("sbercloud:index/getApigChannels:getApigChannels", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getApigChannels:getApigChannels", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func GetApigChannelsOutput(ctx *pulumi.Context, args GetApigChannelsOutputArgs, 
 		ApplyT(func(v interface{}) (GetApigChannelsResultOutput, error) {
 			args := v.(GetApigChannelsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getApigChannels:getApigChannels", args, GetApigChannelsResultOutput{}, options).(GetApigChannelsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getApigChannels:getApigChannels", args, GetApigChannelsResultOutput{}, options).(GetApigChannelsResultOutput), nil
 		}).(GetApigChannelsResultOutput)
 }
 

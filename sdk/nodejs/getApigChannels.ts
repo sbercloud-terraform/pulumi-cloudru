@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 export function getApigChannels(args: GetApigChannelsArgs, opts?: pulumi.InvokeOptions): Promise<GetApigChannelsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getApigChannels:getApigChannels", {
+    return pulumi.runtime.invoke("cloudru:index/getApigChannels:getApigChannels", {
         "channelId": args.channelId,
         "instanceId": args.instanceId,
         "memberGroupId": args.memberGroupId,
@@ -51,7 +51,7 @@ export interface GetApigChannelsResult {
 }
 export function getApigChannelsOutput(args: GetApigChannelsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApigChannelsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getApigChannels:getApigChannels", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getApigChannels:getApigChannels", {
         "channelId": args.channelId,
         "instanceId": args.instanceId,
         "memberGroupId": args.memberGroupId,

@@ -50,7 +50,7 @@ func NewStaticRoute(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource StaticRoute
-	err := ctx.RegisterResource("sbercloud:Er/staticRoute:StaticRoute", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Er/staticRoute:StaticRoute", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -62,7 +62,7 @@ func NewStaticRoute(ctx *pulumi.Context,
 func GetStaticRoute(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *StaticRouteState, opts ...pulumi.ResourceOption) (*StaticRoute, error) {
 	var resource StaticRoute
-	err := ctx.ReadResource("sbercloud:Er/staticRoute:StaticRoute", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Er/staticRoute:StaticRoute", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

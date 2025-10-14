@@ -43,7 +43,7 @@ func NewDmsRocketmqMessageOffsetReset(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DmsRocketmqMessageOffsetReset
-	err := ctx.RegisterResource("sbercloud:index/dmsRocketmqMessageOffsetReset:DmsRocketmqMessageOffsetReset", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/dmsRocketmqMessageOffsetReset:DmsRocketmqMessageOffsetReset", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -55,7 +55,7 @@ func NewDmsRocketmqMessageOffsetReset(ctx *pulumi.Context,
 func GetDmsRocketmqMessageOffsetReset(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *DmsRocketmqMessageOffsetResetState, opts ...pulumi.ResourceOption) (*DmsRocketmqMessageOffsetReset, error) {
 	var resource DmsRocketmqMessageOffsetReset
-	err := ctx.ReadResource("sbercloud:index/dmsRocketmqMessageOffsetReset:DmsRocketmqMessageOffsetReset", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/dmsRocketmqMessageOffsetReset:DmsRocketmqMessageOffsetReset", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

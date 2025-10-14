@@ -240,7 +240,7 @@ class _L7ruleState:
         pulumi.set(self, "value", value)
 
 
-@pulumi.type_token("sbercloud:Elb/l7rule:L7rule")
+@pulumi.type_token("cloudru:Elb/l7rule:L7rule")
 class L7rule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -318,7 +318,7 @@ class L7rule(pulumi.CustomResource):
             __props__.__dict__["value"] = value
             __props__.__dict__["listener_id"] = None
         super(L7rule, __self__).__init__(
-            'sbercloud:Elb/l7rule:L7rule',
+            'cloudru:Elb/l7rule:L7rule',
             resource_name,
             __props__,
             opts)

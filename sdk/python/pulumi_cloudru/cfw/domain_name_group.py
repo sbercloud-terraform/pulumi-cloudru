@@ -295,7 +295,7 @@ class _DomainNameGroupState:
         pulumi.set(self, "type", value)
 
 
-@pulumi.type_token("sbercloud:Cfw/domainNameGroup:DomainNameGroup")
+@pulumi.type_token("cloudru:Cfw/domainNameGroup:DomainNameGroup")
 class DomainNameGroup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -376,7 +376,7 @@ class DomainNameGroup(pulumi.CustomResource):
             __props__.__dict__["message"] = None
             __props__.__dict__["ref_count"] = None
         super(DomainNameGroup, __self__).__init__(
-            'sbercloud:Cfw/domainNameGroup:DomainNameGroup',
+            'cloudru:Cfw/domainNameGroup:DomainNameGroup',
             resource_name,
             __props__,
             opts)

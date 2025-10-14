@@ -1178,7 +1178,7 @@ class _NodePoolState:
         pulumi.set(self, "type", value)
 
 
-@pulumi.type_token("sbercloud:Cce/nodePool:NodePool")
+@pulumi.type_token("cloudru:Cce/nodePool:NodePool")
 class NodePool(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -1375,7 +1375,7 @@ class NodePool(pulumi.CustomResource):
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(NodePool, __self__).__init__(
-            'sbercloud:Cce/nodePool:NodePool',
+            'cloudru:Cce/nodePool:NodePool',
             resource_name,
             __props__,
             opts)

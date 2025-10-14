@@ -14,7 +14,7 @@ import (
 func GetIds(ctx *pulumi.Context, args *GetIdsArgs, opts ...pulumi.InvokeOption) (*GetIdsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIdsResult
-	err := ctx.Invoke("sbercloud:Vpc/getIds:getIds", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Vpc/getIds:getIds", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -39,7 +39,7 @@ func GetIdsOutput(ctx *pulumi.Context, args GetIdsOutputArgs, opts ...pulumi.Inv
 		ApplyT(func(v interface{}) (GetIdsResultOutput, error) {
 			args := v.(GetIdsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Vpc/getIds:getIds", args, GetIdsResultOutput{}, options).(GetIdsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Vpc/getIds:getIds", args, GetIdsResultOutput{}, options).(GetIdsResultOutput), nil
 		}).(GetIdsResultOutput)
 }
 

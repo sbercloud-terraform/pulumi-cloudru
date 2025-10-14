@@ -265,7 +265,7 @@ class _BackupState:
         pulumi.set(self, "status", value)
 
 
-@pulumi.type_token("sbercloud:Rds/backup:Backup")
+@pulumi.type_token("cloudru:Rds/backup:Backup")
 class Backup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -336,7 +336,7 @@ class Backup(pulumi.CustomResource):
             __props__.__dict__["size"] = None
             __props__.__dict__["status"] = None
         super(Backup, __self__).__init__(
-            'sbercloud:Rds/backup:Backup',
+            'cloudru:Rds/backup:Backup',
             resource_name,
             __props__,
             opts)

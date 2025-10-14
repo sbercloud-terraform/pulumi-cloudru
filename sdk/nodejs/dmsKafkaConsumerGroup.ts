@@ -19,7 +19,7 @@ export class DmsKafkaConsumerGroup extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/dmsKafkaConsumerGroup:DmsKafkaConsumerGroup';
+    public static readonly __pulumiType = 'cloudru:index/dmsKafkaConsumerGroup:DmsKafkaConsumerGroup';
 
     /**
      * Returns true if the given object is an instance of DmsKafkaConsumerGroup.  This is designed to work even

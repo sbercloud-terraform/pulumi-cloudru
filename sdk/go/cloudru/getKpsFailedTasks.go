@@ -14,7 +14,7 @@ import (
 func GetKpsFailedTasks(ctx *pulumi.Context, args *GetKpsFailedTasksArgs, opts ...pulumi.InvokeOption) (*GetKpsFailedTasksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKpsFailedTasksResult
-	err := ctx.Invoke("sbercloud:index/getKpsFailedTasks:getKpsFailedTasks", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getKpsFailedTasks:getKpsFailedTasks", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -39,7 +39,7 @@ func GetKpsFailedTasksOutput(ctx *pulumi.Context, args GetKpsFailedTasksOutputAr
 		ApplyT(func(v interface{}) (GetKpsFailedTasksResultOutput, error) {
 			args := v.(GetKpsFailedTasksArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getKpsFailedTasks:getKpsFailedTasks", args, GetKpsFailedTasksResultOutput{}, options).(GetKpsFailedTasksResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getKpsFailedTasks:getKpsFailedTasks", args, GetKpsFailedTasksResultOutput{}, options).(GetKpsFailedTasksResultOutput), nil
 		}).(GetKpsFailedTasksResultOutput)
 }
 

@@ -72,7 +72,7 @@ func NewGateway(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Gateway
-	err := ctx.RegisterResource("sbercloud:Nat/gateway:Gateway", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Nat/gateway:Gateway", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -84,7 +84,7 @@ func NewGateway(ctx *pulumi.Context,
 func GetGateway(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *GatewayState, opts ...pulumi.ResourceOption) (*Gateway, error) {
 	var resource Gateway
-	err := ctx.ReadResource("sbercloud:Nat/gateway:Gateway", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Nat/gateway:Gateway", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

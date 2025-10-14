@@ -221,7 +221,7 @@ class _FgsFunctionTriggerState:
         pulumi.set(self, "updated_at", value)
 
 
-@pulumi.type_token("sbercloud:index/fgsFunctionTrigger:FgsFunctionTrigger")
+@pulumi.type_token("cloudru:index/fgsFunctionTrigger:FgsFunctionTrigger")
 class FgsFunctionTrigger(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -294,7 +294,7 @@ class FgsFunctionTrigger(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["updated_at"] = None
         super(FgsFunctionTrigger, __self__).__init__(
-            'sbercloud:index/fgsFunctionTrigger:FgsFunctionTrigger',
+            'cloudru:index/fgsFunctionTrigger:FgsFunctionTrigger',
             resource_name,
             __props__,
             opts)

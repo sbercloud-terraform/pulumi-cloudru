@@ -142,7 +142,7 @@ def get_instances(datastore_type: Optional[_builtins.str] = None,
     __args__['type'] = type
     __args__['vpcId'] = vpc_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Rds/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Rds/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult).value
 
     return AwaitableGetInstancesResult(
         datastore_type=pulumi.get(__ret__, 'datastore_type'),
@@ -174,7 +174,7 @@ def get_instances_output(datastore_type: Optional[pulumi.Input[Optional[_builtin
     __args__['type'] = type
     __args__['vpcId'] = vpc_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Rds/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Rds/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult)
     return __ret__.apply(lambda __response__: GetInstancesResult(
         datastore_type=pulumi.get(__response__, 'datastore_type'),
         enterprise_project_id=pulumi.get(__response__, 'enterprise_project_id'),

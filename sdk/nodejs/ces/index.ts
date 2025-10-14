@@ -15,11 +15,11 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "sbercloud:Ces/alarmrule:Alarmrule":
+            case "cloudru:Ces/alarmrule:Alarmrule":
                 return new Alarmrule(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("sbercloud", "Ces/alarmrule", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Ces/alarmrule", _module)

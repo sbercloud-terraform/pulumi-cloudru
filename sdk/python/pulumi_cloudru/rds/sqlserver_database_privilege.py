@@ -151,7 +151,7 @@ class _SqlserverDatabasePrivilegeState:
         pulumi.set(self, "users", value)
 
 
-@pulumi.type_token("sbercloud:Rds/sqlserverDatabasePrivilege:SqlserverDatabasePrivilege")
+@pulumi.type_token("cloudru:Rds/sqlserverDatabasePrivilege:SqlserverDatabasePrivilege")
 class SqlserverDatabasePrivilege(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -217,7 +217,7 @@ class SqlserverDatabasePrivilege(pulumi.CustomResource):
                 raise TypeError("Missing required property 'users'")
             __props__.__dict__["users"] = users
         super(SqlserverDatabasePrivilege, __self__).__init__(
-            'sbercloud:Rds/sqlserverDatabasePrivilege:SqlserverDatabasePrivilege',
+            'cloudru:Rds/sqlserverDatabasePrivilege:SqlserverDatabasePrivilege',
             resource_name,
             __props__,
             opts)

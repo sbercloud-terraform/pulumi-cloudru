@@ -142,7 +142,7 @@ def get_dcs_accounts(account_name: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['status'] = status
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getDcsAccounts:getDcsAccounts', __args__, opts=opts, typ=GetDcsAccountsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getDcsAccounts:getDcsAccounts', __args__, opts=opts, typ=GetDcsAccountsResult).value
 
     return AwaitableGetDcsAccountsResult(
         account_name=pulumi.get(__ret__, 'account_name'),
@@ -174,7 +174,7 @@ def get_dcs_accounts_output(account_name: Optional[pulumi.Input[Optional[_builti
     __args__['region'] = region
     __args__['status'] = status
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getDcsAccounts:getDcsAccounts', __args__, opts=opts, typ=GetDcsAccountsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getDcsAccounts:getDcsAccounts', __args__, opts=opts, typ=GetDcsAccountsResult)
     return __ret__.apply(lambda __response__: GetDcsAccountsResult(
         account_name=pulumi.get(__response__, 'account_name'),
         account_role=pulumi.get(__response__, 'account_role'),

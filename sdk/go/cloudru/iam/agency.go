@@ -37,7 +37,7 @@ func NewAgency(ctx *pulumi.Context,
 
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Agency
-	err := ctx.RegisterResource("sbercloud:Iam/agency:Agency", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Iam/agency:Agency", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -49,7 +49,7 @@ func NewAgency(ctx *pulumi.Context,
 func GetAgency(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *AgencyState, opts ...pulumi.ResourceOption) (*Agency, error) {
 	var resource Agency
-	err := ctx.ReadResource("sbercloud:Iam/agency:Agency", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Iam/agency:Agency", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

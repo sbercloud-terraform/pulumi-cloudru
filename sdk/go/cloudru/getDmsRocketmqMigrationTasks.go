@@ -14,7 +14,7 @@ import (
 func GetDmsRocketmqMigrationTasks(ctx *pulumi.Context, args *GetDmsRocketmqMigrationTasksArgs, opts ...pulumi.InvokeOption) (*GetDmsRocketmqMigrationTasksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDmsRocketmqMigrationTasksResult
-	err := ctx.Invoke("sbercloud:index/getDmsRocketmqMigrationTasks:getDmsRocketmqMigrationTasks", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getDmsRocketmqMigrationTasks:getDmsRocketmqMigrationTasks", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -47,7 +47,7 @@ func GetDmsRocketmqMigrationTasksOutput(ctx *pulumi.Context, args GetDmsRocketmq
 		ApplyT(func(v interface{}) (GetDmsRocketmqMigrationTasksResultOutput, error) {
 			args := v.(GetDmsRocketmqMigrationTasksArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getDmsRocketmqMigrationTasks:getDmsRocketmqMigrationTasks", args, GetDmsRocketmqMigrationTasksResultOutput{}, options).(GetDmsRocketmqMigrationTasksResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getDmsRocketmqMigrationTasks:getDmsRocketmqMigrationTasks", args, GetDmsRocketmqMigrationTasksResultOutput{}, options).(GetDmsRocketmqMigrationTasksResultOutput), nil
 		}).(GetDmsRocketmqMigrationTasksResultOutput)
 }
 

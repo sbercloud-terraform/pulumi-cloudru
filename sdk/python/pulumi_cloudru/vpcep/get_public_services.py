@@ -98,7 +98,7 @@ def get_public_services(region: Optional[_builtins.str] = None,
     __args__['serviceId'] = service_id
     __args__['serviceName'] = service_name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Vpcep/getPublicServices:getPublicServices', __args__, opts=opts, typ=GetPublicServicesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Vpcep/getPublicServices:getPublicServices', __args__, opts=opts, typ=GetPublicServicesResult).value
 
     return AwaitableGetPublicServicesResult(
         id=pulumi.get(__ret__, 'id'),
@@ -118,7 +118,7 @@ def get_public_services_output(region: Optional[pulumi.Input[Optional[_builtins.
     __args__['serviceId'] = service_id
     __args__['serviceName'] = service_name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Vpcep/getPublicServices:getPublicServices', __args__, opts=opts, typ=GetPublicServicesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Vpcep/getPublicServices:getPublicServices', __args__, opts=opts, typ=GetPublicServicesResult)
     return __ret__.apply(lambda __response__: GetPublicServicesResult(
         id=pulumi.get(__response__, 'id'),
         region=pulumi.get(__response__, 'region'),

@@ -285,7 +285,7 @@ class _NotificationState:
         pulumi.set(self, "status", value)
 
 
-@pulumi.type_token("sbercloud:Cts/notification:Notification")
+@pulumi.type_token("cloudru:Cts/notification:Notification")
 class Notification(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -362,7 +362,7 @@ class Notification(pulumi.CustomResource):
             __props__.__dict__["notification_id"] = None
             __props__.__dict__["status"] = None
         super(Notification, __self__).__init__(
-            'sbercloud:Cts/notification:Notification',
+            'cloudru:Cts/notification:Notification',
             resource_name,
             __props__,
             opts)

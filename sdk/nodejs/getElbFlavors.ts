@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 export function getElbFlavors(args?: GetElbFlavorsArgs, opts?: pulumi.InvokeOptions): Promise<GetElbFlavorsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getElbFlavors:getElbFlavors", {
+    return pulumi.runtime.invoke("cloudru:index/getElbFlavors:getElbFlavors", {
         "bandwidth": args.bandwidth,
         "category": args.category,
         "cps": args.cps,
@@ -72,7 +72,7 @@ export interface GetElbFlavorsResult {
 export function getElbFlavorsOutput(args?: GetElbFlavorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetElbFlavorsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getElbFlavors:getElbFlavors", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getElbFlavors:getElbFlavors", {
         "bandwidth": args.bandwidth,
         "category": args.category,
         "cps": args.cps,

@@ -109,7 +109,7 @@ def get_dms_kafka_users(description: Optional[_builtins.str] = None,
     __args__['name'] = name
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getDmsKafkaUsers:getDmsKafkaUsers', __args__, opts=opts, typ=GetDmsKafkaUsersResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getDmsKafkaUsers:getDmsKafkaUsers', __args__, opts=opts, typ=GetDmsKafkaUsersResult).value
 
     return AwaitableGetDmsKafkaUsersResult(
         description=pulumi.get(__ret__, 'description'),
@@ -132,7 +132,7 @@ def get_dms_kafka_users_output(description: Optional[pulumi.Input[Optional[_buil
     __args__['name'] = name
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getDmsKafkaUsers:getDmsKafkaUsers', __args__, opts=opts, typ=GetDmsKafkaUsersResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getDmsKafkaUsers:getDmsKafkaUsers', __args__, opts=opts, typ=GetDmsKafkaUsersResult)
     return __ret__.apply(lambda __response__: GetDmsKafkaUsersResult(
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),

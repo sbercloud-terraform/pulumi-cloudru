@@ -142,7 +142,7 @@ def get_fgs_function_triggers(end_time: Optional[_builtins.str] = None,
     __args__['triggerId'] = trigger_id
     __args__['type'] = type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getFgsFunctionTriggers:getFgsFunctionTriggers', __args__, opts=opts, typ=GetFgsFunctionTriggersResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getFgsFunctionTriggers:getFgsFunctionTriggers', __args__, opts=opts, typ=GetFgsFunctionTriggersResult).value
 
     return AwaitableGetFgsFunctionTriggersResult(
         end_time=pulumi.get(__ret__, 'end_time'),
@@ -174,7 +174,7 @@ def get_fgs_function_triggers_output(end_time: Optional[pulumi.Input[Optional[_b
     __args__['triggerId'] = trigger_id
     __args__['type'] = type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getFgsFunctionTriggers:getFgsFunctionTriggers', __args__, opts=opts, typ=GetFgsFunctionTriggersResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getFgsFunctionTriggers:getFgsFunctionTriggers', __args__, opts=opts, typ=GetFgsFunctionTriggersResult)
     return __ret__.apply(lambda __response__: GetFgsFunctionTriggersResult(
         end_time=pulumi.get(__response__, 'end_time'),
         function_urn=pulumi.get(__response__, 'function_urn'),

@@ -14,7 +14,7 @@ import (
 func GetDmsKafkaMessages(ctx *pulumi.Context, args *GetDmsKafkaMessagesArgs, opts ...pulumi.InvokeOption) (*GetDmsKafkaMessagesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDmsKafkaMessagesResult
-	err := ctx.Invoke("sbercloud:index/getDmsKafkaMessages:getDmsKafkaMessages", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getDmsKafkaMessages:getDmsKafkaMessages", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -55,7 +55,7 @@ func GetDmsKafkaMessagesOutput(ctx *pulumi.Context, args GetDmsKafkaMessagesOutp
 		ApplyT(func(v interface{}) (GetDmsKafkaMessagesResultOutput, error) {
 			args := v.(GetDmsKafkaMessagesArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getDmsKafkaMessages:getDmsKafkaMessages", args, GetDmsKafkaMessagesResultOutput{}, options).(GetDmsKafkaMessagesResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getDmsKafkaMessages:getDmsKafkaMessages", args, GetDmsKafkaMessagesResultOutput{}, options).(GetDmsKafkaMessagesResultOutput), nil
 		}).(GetDmsKafkaMessagesResultOutput)
 }
 

@@ -21,7 +21,7 @@ export class ElbSecurityPolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/elbSecurityPolicy:ElbSecurityPolicy';
+    public static readonly __pulumiType = 'cloudru:index/elbSecurityPolicy:ElbSecurityPolicy';
 
     /**
      * Returns true if the given object is an instance of ElbSecurityPolicy.  This is designed to work even

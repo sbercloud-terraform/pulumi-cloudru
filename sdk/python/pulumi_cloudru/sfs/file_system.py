@@ -405,7 +405,7 @@ class _FileSystemState:
         pulumi.set(self, "tags", value)
 
 
-@pulumi.type_token("sbercloud:Sfs/fileSystem:FileSystem")
+@pulumi.type_token("cloudru:Sfs/fileSystem:FileSystem")
 class FileSystem(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -496,7 +496,7 @@ class FileSystem(pulumi.CustomResource):
             __props__.__dict__["share_access_id"] = None
             __props__.__dict__["status"] = None
         super(FileSystem, __self__).__init__(
-            'sbercloud:Sfs/fileSystem:FileSystem',
+            'cloudru:Sfs/fileSystem:FileSystem',
             resource_name,
             __props__,
             opts)

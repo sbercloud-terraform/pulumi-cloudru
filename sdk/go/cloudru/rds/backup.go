@@ -48,7 +48,7 @@ func NewBackup(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Backup
-	err := ctx.RegisterResource("sbercloud:Rds/backup:Backup", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Rds/backup:Backup", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -60,7 +60,7 @@ func NewBackup(ctx *pulumi.Context,
 func GetBackup(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *BackupState, opts ...pulumi.ResourceOption) (*Backup, error) {
 	var resource Backup
-	err := ctx.ReadResource("sbercloud:Rds/backup:Backup", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Rds/backup:Backup", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

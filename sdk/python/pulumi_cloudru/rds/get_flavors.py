@@ -153,7 +153,7 @@ def get_flavors(availability_zone: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['vcpus'] = vcpus
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Rds/getFlavors:getFlavors', __args__, opts=opts, typ=GetFlavorsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Rds/getFlavors:getFlavors', __args__, opts=opts, typ=GetFlavorsResult).value
 
     return AwaitableGetFlavorsResult(
         availability_zone=pulumi.get(__ret__, 'availability_zone'),
@@ -188,7 +188,7 @@ def get_flavors_output(availability_zone: Optional[pulumi.Input[Optional[_builti
     __args__['region'] = region
     __args__['vcpus'] = vcpus
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Rds/getFlavors:getFlavors', __args__, opts=opts, typ=GetFlavorsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Rds/getFlavors:getFlavors', __args__, opts=opts, typ=GetFlavorsResult)
     return __ret__.apply(lambda __response__: GetFlavorsResult(
         availability_zone=pulumi.get(__response__, 'availability_zone'),
         db_type=pulumi.get(__response__, 'db_type'),

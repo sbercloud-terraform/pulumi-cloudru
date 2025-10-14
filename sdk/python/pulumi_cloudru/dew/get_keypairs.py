@@ -120,7 +120,7 @@ def get_keypairs(fingerprint: Optional[_builtins.str] = None,
     __args__['publicKey'] = public_key
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Dew/getKeypairs:getKeypairs', __args__, opts=opts, typ=GetKeypairsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Dew/getKeypairs:getKeypairs', __args__, opts=opts, typ=GetKeypairsResult).value
 
     return AwaitableGetKeypairsResult(
         fingerprint=pulumi.get(__ret__, 'fingerprint'),
@@ -146,7 +146,7 @@ def get_keypairs_output(fingerprint: Optional[pulumi.Input[Optional[_builtins.st
     __args__['publicKey'] = public_key
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Dew/getKeypairs:getKeypairs', __args__, opts=opts, typ=GetKeypairsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Dew/getKeypairs:getKeypairs', __args__, opts=opts, typ=GetKeypairsResult)
     return __ret__.apply(lambda __response__: GetKeypairsResult(
         fingerprint=pulumi.get(__response__, 'fingerprint'),
         id=pulumi.get(__response__, 'id'),

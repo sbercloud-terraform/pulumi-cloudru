@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Promise<GetImagesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Ims/getImages:getImages", {
+    return pulumi.runtime.invoke("cloudru:Ims/getImages:getImages", {
         "__supportAgentList": args.__supportAgentList,
         "architecture": args.architecture,
         "enterpriseProjectId": args.enterpriseProjectId,
@@ -83,7 +83,7 @@ export interface GetImagesResult {
 export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetImagesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Ims/getImages:getImages", {
+    return pulumi.runtime.invokeOutput("cloudru:Ims/getImages:getImages", {
         "__supportAgentList": args.__supportAgentList,
         "architecture": args.architecture,
         "enterpriseProjectId": args.enterpriseProjectId,

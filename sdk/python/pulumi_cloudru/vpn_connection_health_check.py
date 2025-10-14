@@ -135,7 +135,7 @@ class _VpnConnectionHealthCheckState:
         pulumi.set(self, "status", value)
 
 
-@pulumi.type_token("sbercloud:index/vpnConnectionHealthCheck:VpnConnectionHealthCheck")
+@pulumi.type_token("cloudru:index/vpnConnectionHealthCheck:VpnConnectionHealthCheck")
 class VpnConnectionHealthCheck(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -192,7 +192,7 @@ class VpnConnectionHealthCheck(pulumi.CustomResource):
             __props__.__dict__["source_ip"] = None
             __props__.__dict__["status"] = None
         super(VpnConnectionHealthCheck, __self__).__init__(
-            'sbercloud:index/vpnConnectionHealthCheck:VpnConnectionHealthCheck',
+            'cloudru:index/vpnConnectionHealthCheck:VpnConnectionHealthCheck',
             resource_name,
             __props__,
             opts)

@@ -33,7 +33,7 @@ func NewFgsFunctionTopping(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FgsFunctionTopping
-	err := ctx.RegisterResource("sbercloud:index/fgsFunctionTopping:FgsFunctionTopping", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/fgsFunctionTopping:FgsFunctionTopping", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -45,7 +45,7 @@ func NewFgsFunctionTopping(ctx *pulumi.Context,
 func GetFgsFunctionTopping(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *FgsFunctionToppingState, opts ...pulumi.ResourceOption) (*FgsFunctionTopping, error) {
 	var resource FgsFunctionTopping
-	err := ctx.ReadResource("sbercloud:index/fgsFunctionTopping:FgsFunctionTopping", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/fgsFunctionTopping:FgsFunctionTopping", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

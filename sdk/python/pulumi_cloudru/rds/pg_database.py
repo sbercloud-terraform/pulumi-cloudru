@@ -359,7 +359,7 @@ class _PgDatabaseState:
         pulumi.set(self, "template", value)
 
 
-@pulumi.type_token("sbercloud:Rds/pgDatabase:PgDatabase")
+@pulumi.type_token("cloudru:Rds/pgDatabase:PgDatabase")
 class PgDatabase(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -446,7 +446,7 @@ class PgDatabase(pulumi.CustomResource):
             __props__.__dict__["template"] = template
             __props__.__dict__["size"] = None
         super(PgDatabase, __self__).__init__(
-            'sbercloud:Rds/pgDatabase:PgDatabase',
+            'cloudru:Rds/pgDatabase:PgDatabase',
             resource_name,
             __props__,
             opts)

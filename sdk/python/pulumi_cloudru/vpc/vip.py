@@ -219,7 +219,7 @@ class _VipState:
         pulumi.set(self, "subnet_id", value)
 
 
-@pulumi.type_token("sbercloud:Vpc/vip:Vip")
+@pulumi.type_token("cloudru:Vpc/vip:Vip")
 class Vip(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -287,7 +287,7 @@ class Vip(pulumi.CustomResource):
             __props__.__dict__["mac_address"] = None
             __props__.__dict__["status"] = None
         super(Vip, __self__).__init__(
-            'sbercloud:Vpc/vip:Vip',
+            'cloudru:Vpc/vip:Vip',
             resource_name,
             __props__,
             opts)

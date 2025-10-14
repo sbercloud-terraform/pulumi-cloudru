@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 export function getEnvironments(args: GetEnvironmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetEnvironmentsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:DedicatedApig/getEnvironments:getEnvironments", {
+    return pulumi.runtime.invoke("cloudru:DedicatedApig/getEnvironments:getEnvironments", {
         "instanceId": args.instanceId,
         "name": args.name,
         "region": args.region,
@@ -39,7 +39,7 @@ export interface GetEnvironmentsResult {
 }
 export function getEnvironmentsOutput(args: GetEnvironmentsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEnvironmentsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:DedicatedApig/getEnvironments:getEnvironments", {
+    return pulumi.runtime.invokeOutput("cloudru:DedicatedApig/getEnvironments:getEnvironments", {
         "instanceId": args.instanceId,
         "name": args.name,
         "region": args.region,

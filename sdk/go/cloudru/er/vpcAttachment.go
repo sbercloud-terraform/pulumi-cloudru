@@ -56,7 +56,7 @@ func NewVpcAttachment(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource VpcAttachment
-	err := ctx.RegisterResource("sbercloud:Er/vpcAttachment:VpcAttachment", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Er/vpcAttachment:VpcAttachment", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -68,7 +68,7 @@ func NewVpcAttachment(ctx *pulumi.Context,
 func GetVpcAttachment(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *VpcAttachmentState, opts ...pulumi.ResourceOption) (*VpcAttachment, error) {
 	var resource VpcAttachment
-	err := ctx.ReadResource("sbercloud:Er/vpcAttachment:VpcAttachment", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Er/vpcAttachment:VpcAttachment", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

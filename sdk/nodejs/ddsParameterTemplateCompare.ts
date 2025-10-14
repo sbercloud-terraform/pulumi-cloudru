@@ -21,7 +21,7 @@ export class DdsParameterTemplateCompare extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/ddsParameterTemplateCompare:DdsParameterTemplateCompare';
+    public static readonly __pulumiType = 'cloudru:index/ddsParameterTemplateCompare:DdsParameterTemplateCompare';
 
     /**
      * Returns true if the given object is an instance of DdsParameterTemplateCompare.  This is designed to work even

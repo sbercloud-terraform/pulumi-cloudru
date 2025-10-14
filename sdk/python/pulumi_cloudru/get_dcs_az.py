@@ -99,7 +99,7 @@ def get_dcs_az(code: Optional[_builtins.str] = None,
     __args__['port'] = port
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getDcsAz:getDcsAz', __args__, opts=opts, typ=GetDcsAzResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getDcsAz:getDcsAz', __args__, opts=opts, typ=GetDcsAzResult).value
 
     return AwaitableGetDcsAzResult(
         code=pulumi.get(__ret__, 'code'),
@@ -121,7 +121,7 @@ def get_dcs_az_output(code: Optional[pulumi.Input[Optional[_builtins.str]]] = No
     __args__['port'] = port
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getDcsAz:getDcsAz', __args__, opts=opts, typ=GetDcsAzResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getDcsAz:getDcsAz', __args__, opts=opts, typ=GetDcsAzResult)
     return __ret__.apply(lambda __response__: GetDcsAzResult(
         code=pulumi.get(__response__, 'code'),
         id=pulumi.get(__response__, 'id'),

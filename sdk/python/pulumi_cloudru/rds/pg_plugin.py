@@ -162,7 +162,7 @@ class _PgPluginState:
         pulumi.set(self, "version", value)
 
 
-@pulumi.type_token("sbercloud:Rds/pgPlugin:PgPlugin")
+@pulumi.type_token("cloudru:Rds/pgPlugin:PgPlugin")
 class PgPlugin(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -226,7 +226,7 @@ class PgPlugin(pulumi.CustomResource):
             __props__.__dict__["shared_preload_libraries"] = None
             __props__.__dict__["version"] = None
         super(PgPlugin, __self__).__init__(
-            'sbercloud:Rds/pgPlugin:PgPlugin',
+            'cloudru:Rds/pgPlugin:PgPlugin',
             resource_name,
             __props__,
             opts)

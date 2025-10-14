@@ -14,7 +14,7 @@ import (
 func GetDcsProduct(ctx *pulumi.Context, args *GetDcsProductArgs, opts ...pulumi.InvokeOption) (*GetDcsProductResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDcsProductResult
-	err := ctx.Invoke("sbercloud:index/getDcsProduct:getDcsProduct", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getDcsProduct:getDcsProduct", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -44,7 +44,7 @@ func GetDcsProductOutput(ctx *pulumi.Context, args GetDcsProductOutputArgs, opts
 		ApplyT(func(v interface{}) (GetDcsProductResultOutput, error) {
 			args := v.(GetDcsProductArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getDcsProduct:getDcsProduct", args, GetDcsProductResultOutput{}, options).(GetDcsProductResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getDcsProduct:getDcsProduct", args, GetDcsProductResultOutput{}, options).(GetDcsProductResultOutput), nil
 		}).(GetDcsProductResultOutput)
 }
 

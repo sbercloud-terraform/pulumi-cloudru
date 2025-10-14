@@ -1051,7 +1051,7 @@ class _ElbLoadbalancerState:
         pulumi.set(self, "waf_failure_action", value)
 
 
-@pulumi.type_token("sbercloud:index/elbLoadbalancer:ElbLoadbalancer")
+@pulumi.type_token("cloudru:index/elbLoadbalancer:ElbLoadbalancer")
 class ElbLoadbalancer(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -1218,7 +1218,7 @@ class ElbLoadbalancer(pulumi.CustomResource):
             __props__.__dict__["public_border_group"] = None
             __props__.__dict__["updated_at"] = None
         super(ElbLoadbalancer, __self__).__init__(
-            'sbercloud:index/elbLoadbalancer:ElbLoadbalancer',
+            'cloudru:index/elbLoadbalancer:ElbLoadbalancer',
             resource_name,
             __props__,
             opts)

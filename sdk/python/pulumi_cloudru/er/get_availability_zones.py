@@ -75,7 +75,7 @@ def get_availability_zones(region: Optional[_builtins.str] = None,
     __args__ = dict()
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Er/getAvailabilityZones:getAvailabilityZones', __args__, opts=opts, typ=GetAvailabilityZonesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Er/getAvailabilityZones:getAvailabilityZones', __args__, opts=opts, typ=GetAvailabilityZonesResult).value
 
     return AwaitableGetAvailabilityZonesResult(
         id=pulumi.get(__ret__, 'id'),
@@ -89,7 +89,7 @@ def get_availability_zones_output(region: Optional[pulumi.Input[Optional[_builti
     __args__ = dict()
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Er/getAvailabilityZones:getAvailabilityZones', __args__, opts=opts, typ=GetAvailabilityZonesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Er/getAvailabilityZones:getAvailabilityZones', __args__, opts=opts, typ=GetAvailabilityZonesResult)
     return __ret__.apply(lambda __response__: GetAvailabilityZonesResult(
         id=pulumi.get(__response__, 'id'),
         names=pulumi.get(__response__, 'names'),

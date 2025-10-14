@@ -14,7 +14,7 @@ import (
 func GetStorageTypes(ctx *pulumi.Context, args *GetStorageTypesArgs, opts ...pulumi.InvokeOption) (*GetStorageTypesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetStorageTypesResult
-	err := ctx.Invoke("sbercloud:Rds/getStorageTypes:getStorageTypes", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Rds/getStorageTypes:getStorageTypes", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -45,7 +45,7 @@ func GetStorageTypesOutput(ctx *pulumi.Context, args GetStorageTypesOutputArgs, 
 		ApplyT(func(v interface{}) (GetStorageTypesResultOutput, error) {
 			args := v.(GetStorageTypesArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Rds/getStorageTypes:getStorageTypes", args, GetStorageTypesResultOutput{}, options).(GetStorageTypesResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Rds/getStorageTypes:getStorageTypes", args, GetStorageTypesResultOutput{}, options).(GetStorageTypesResultOutput), nil
 		}).(GetStorageTypesResultOutput)
 }
 

@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 export function getVpnGateways(args?: GetVpnGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetVpnGatewaysResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getVpnGateways:getVpnGateways", {
+    return pulumi.runtime.invoke("cloudru:index/getVpnGateways:getVpnGateways", {
         "attachmentType": args.attachmentType,
         "enterpriseProjectId": args.enterpriseProjectId,
         "gatewayId": args.gatewayId,
@@ -50,7 +50,7 @@ export interface GetVpnGatewaysResult {
 export function getVpnGatewaysOutput(args?: GetVpnGatewaysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpnGatewaysResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getVpnGateways:getVpnGateways", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getVpnGateways:getVpnGateways", {
         "attachmentType": args.attachmentType,
         "enterpriseProjectId": args.enterpriseProjectId,
         "gatewayId": args.gatewayId,

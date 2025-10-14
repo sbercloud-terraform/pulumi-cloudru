@@ -42,7 +42,7 @@ func NewSfsTurboObsTarget(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SfsTurboObsTarget
-	err := ctx.RegisterResource("sbercloud:index/sfsTurboObsTarget:SfsTurboObsTarget", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/sfsTurboObsTarget:SfsTurboObsTarget", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -54,7 +54,7 @@ func NewSfsTurboObsTarget(ctx *pulumi.Context,
 func GetSfsTurboObsTarget(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *SfsTurboObsTargetState, opts ...pulumi.ResourceOption) (*SfsTurboObsTarget, error) {
 	var resource SfsTurboObsTarget
-	err := ctx.ReadResource("sbercloud:index/sfsTurboObsTarget:SfsTurboObsTarget", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/sfsTurboObsTarget:SfsTurboObsTarget", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

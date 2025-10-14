@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Eps/getProject:getProject", {
+    return pulumi.runtime.invoke("cloudru:Eps/getProject:getProject", {
         "id": args.id,
         "name": args.name,
         "status": args.status,
@@ -37,7 +37,7 @@ export interface GetProjectResult {
 export function getProjectOutput(args?: GetProjectOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Eps/getProject:getProject", {
+    return pulumi.runtime.invokeOutput("cloudru:Eps/getProject:getProject", {
         "id": args.id,
         "name": args.name,
         "status": args.status,

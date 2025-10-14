@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 export function getVaults(args?: GetVaultsArgs, opts?: pulumi.InvokeOptions): Promise<GetVaultsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Cbr/getVaults:getVaults", {
+    return pulumi.runtime.invoke("cloudru:Cbr/getVaults:getVaults", {
         "autoExpandEnabled": args.autoExpandEnabled,
         "consistentLevel": args.consistentLevel,
         "enterpriseProjectId": args.enterpriseProjectId,
@@ -62,7 +62,7 @@ export interface GetVaultsResult {
 export function getVaultsOutput(args?: GetVaultsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVaultsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Cbr/getVaults:getVaults", {
+    return pulumi.runtime.invokeOutput("cloudru:Cbr/getVaults:getVaults", {
         "autoExpandEnabled": args.autoExpandEnabled,
         "consistentLevel": args.consistentLevel,
         "enterpriseProjectId": args.enterpriseProjectId,

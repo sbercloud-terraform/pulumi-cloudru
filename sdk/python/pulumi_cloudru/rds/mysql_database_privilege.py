@@ -151,7 +151,7 @@ class _MysqlDatabasePrivilegeState:
         pulumi.set(self, "users", value)
 
 
-@pulumi.type_token("sbercloud:Rds/mysqlDatabasePrivilege:MysqlDatabasePrivilege")
+@pulumi.type_token("cloudru:Rds/mysqlDatabasePrivilege:MysqlDatabasePrivilege")
 class MysqlDatabasePrivilege(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -217,7 +217,7 @@ class MysqlDatabasePrivilege(pulumi.CustomResource):
                 raise TypeError("Missing required property 'users'")
             __props__.__dict__["users"] = users
         super(MysqlDatabasePrivilege, __self__).__init__(
-            'sbercloud:Rds/mysqlDatabasePrivilege:MysqlDatabasePrivilege',
+            'cloudru:Rds/mysqlDatabasePrivilege:MysqlDatabasePrivilege',
             resource_name,
             __props__,
             opts)

@@ -296,7 +296,7 @@ class _ElbMemberState:
         pulumi.set(self, "weight", value)
 
 
-@pulumi.type_token("sbercloud:index/elbMember:ElbMember")
+@pulumi.type_token("cloudru:index/elbMember:ElbMember")
 class ElbMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -374,7 +374,7 @@ class ElbMember(pulumi.CustomResource):
             __props__.__dict__["statuses"] = None
             __props__.__dict__["updated_at"] = None
         super(ElbMember, __self__).__init__(
-            'sbercloud:index/elbMember:ElbMember',
+            'cloudru:index/elbMember:ElbMember',
             resource_name,
             __props__,
             opts)

@@ -95,44 +95,44 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "sbercloud:Iam/accessKey:AccessKey":
+            case "cloudru:Iam/accessKey:AccessKey":
                 return new AccessKey(name, <any>undefined, { urn })
-            case "sbercloud:Iam/acl:Acl":
+            case "cloudru:Iam/acl:Acl":
                 return new Acl(name, <any>undefined, { urn })
-            case "sbercloud:Iam/agency:Agency":
+            case "cloudru:Iam/agency:Agency":
                 return new Agency(name, <any>undefined, { urn })
-            case "sbercloud:Iam/group:Group":
+            case "cloudru:Iam/group:Group":
                 return new Group(name, <any>undefined, { urn })
-            case "sbercloud:Iam/groupMembership:GroupMembership":
+            case "cloudru:Iam/groupMembership:GroupMembership":
                 return new GroupMembership(name, <any>undefined, { urn })
-            case "sbercloud:Iam/groupRoleAssignment:GroupRoleAssignment":
+            case "cloudru:Iam/groupRoleAssignment:GroupRoleAssignment":
                 return new GroupRoleAssignment(name, <any>undefined, { urn })
-            case "sbercloud:Iam/project:Project":
+            case "cloudru:Iam/project:Project":
                 return new Project(name, <any>undefined, { urn })
-            case "sbercloud:Iam/provider:Provider":
+            case "cloudru:Iam/provider:Provider":
                 return new Provider(name, <any>undefined, { urn })
-            case "sbercloud:Iam/providerConversion:ProviderConversion":
+            case "cloudru:Iam/providerConversion:ProviderConversion":
                 return new ProviderConversion(name, <any>undefined, { urn })
-            case "sbercloud:Iam/role:Role":
+            case "cloudru:Iam/role:Role":
                 return new Role(name, <any>undefined, { urn })
-            case "sbercloud:Iam/roleAssignment:RoleAssignment":
+            case "cloudru:Iam/roleAssignment:RoleAssignment":
                 return new RoleAssignment(name, <any>undefined, { urn })
-            case "sbercloud:Iam/user:User":
+            case "cloudru:Iam/user:User":
                 return new User(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("sbercloud", "Iam/accessKey", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Iam/acl", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Iam/agency", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Iam/group", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Iam/groupMembership", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Iam/groupRoleAssignment", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Iam/project", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Iam/provider", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Iam/providerConversion", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Iam/role", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Iam/roleAssignment", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Iam/user", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Iam/accessKey", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Iam/acl", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Iam/agency", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Iam/group", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Iam/groupMembership", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Iam/groupRoleAssignment", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Iam/project", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Iam/provider", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Iam/providerConversion", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Iam/role", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Iam/roleAssignment", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Iam/user", _module)

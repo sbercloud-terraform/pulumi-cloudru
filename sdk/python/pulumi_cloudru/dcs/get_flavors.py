@@ -142,7 +142,7 @@ def get_flavors(cache_mode: Optional[_builtins.str] = None,
     __args__['name'] = name
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Dcs/getFlavors:getFlavors', __args__, opts=opts, typ=GetFlavorsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Dcs/getFlavors:getFlavors', __args__, opts=opts, typ=GetFlavorsResult).value
 
     return AwaitableGetFlavorsResult(
         cache_mode=pulumi.get(__ret__, 'cache_mode'),
@@ -174,7 +174,7 @@ def get_flavors_output(cache_mode: Optional[pulumi.Input[Optional[_builtins.str]
     __args__['name'] = name
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Dcs/getFlavors:getFlavors', __args__, opts=opts, typ=GetFlavorsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Dcs/getFlavors:getFlavors', __args__, opts=opts, typ=GetFlavorsResult)
     return __ret__.apply(lambda __response__: GetFlavorsResult(
         cache_mode=pulumi.get(__response__, 'cache_mode'),
         capacity=pulumi.get(__response__, 'capacity'),

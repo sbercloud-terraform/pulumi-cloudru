@@ -36,7 +36,7 @@ func NewDdsParameterTemplateCompare(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DdsParameterTemplateCompare
-	err := ctx.RegisterResource("sbercloud:index/ddsParameterTemplateCompare:DdsParameterTemplateCompare", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/ddsParameterTemplateCompare:DdsParameterTemplateCompare", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -48,7 +48,7 @@ func NewDdsParameterTemplateCompare(ctx *pulumi.Context,
 func GetDdsParameterTemplateCompare(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *DdsParameterTemplateCompareState, opts ...pulumi.ResourceOption) (*DdsParameterTemplateCompare, error) {
 	var resource DdsParameterTemplateCompare
-	err := ctx.ReadResource("sbercloud:index/ddsParameterTemplateCompare:DdsParameterTemplateCompare", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/ddsParameterTemplateCompare:DdsParameterTemplateCompare", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

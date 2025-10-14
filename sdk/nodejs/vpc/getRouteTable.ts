@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 export function getRouteTable(args: GetRouteTableArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteTableResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Vpc/getRouteTable:getRouteTable", {
+    return pulumi.runtime.invoke("cloudru:Vpc/getRouteTable:getRouteTable", {
         "id": args.id,
         "name": args.name,
         "region": args.region,
@@ -41,7 +41,7 @@ export interface GetRouteTableResult {
 }
 export function getRouteTableOutput(args: GetRouteTableOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRouteTableResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Vpc/getRouteTable:getRouteTable", {
+    return pulumi.runtime.invokeOutput("cloudru:Vpc/getRouteTable:getRouteTable", {
         "id": args.id,
         "name": args.name,
         "region": args.region,

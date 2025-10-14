@@ -254,7 +254,7 @@ class _DependencyState:
         pulumi.set(self, "version", value)
 
 
-@pulumi.type_token("sbercloud:FunctionGraph/dependency:Dependency")
+@pulumi.type_token("cloudru:FunctionGraph/dependency:Dependency")
 class Dependency(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -327,7 +327,7 @@ class Dependency(pulumi.CustomResource):
             __props__.__dict__["size"] = None
             __props__.__dict__["version"] = None
         super(Dependency, __self__).__init__(
-            'sbercloud:FunctionGraph/dependency:Dependency',
+            'cloudru:FunctionGraph/dependency:Dependency',
             resource_name,
             __props__,
             opts)

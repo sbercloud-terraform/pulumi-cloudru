@@ -43,7 +43,7 @@ func NewSfsTurboDir(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SfsTurboDir
-	err := ctx.RegisterResource("sbercloud:index/sfsTurboDir:SfsTurboDir", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/sfsTurboDir:SfsTurboDir", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -55,7 +55,7 @@ func NewSfsTurboDir(ctx *pulumi.Context,
 func GetSfsTurboDir(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *SfsTurboDirState, opts ...pulumi.ResourceOption) (*SfsTurboDir, error) {
 	var resource SfsTurboDir
-	err := ctx.ReadResource("sbercloud:index/sfsTurboDir:SfsTurboDir", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/sfsTurboDir:SfsTurboDir", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

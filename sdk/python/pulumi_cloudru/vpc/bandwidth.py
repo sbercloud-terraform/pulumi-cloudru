@@ -357,7 +357,7 @@ class _BandwidthState:
         pulumi.set(self, "updated_at", value)
 
 
-@pulumi.type_token("sbercloud:Vpc/bandwidth:Bandwidth")
+@pulumi.type_token("cloudru:Vpc/bandwidth:Bandwidth")
 class Bandwidth(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -442,7 +442,7 @@ class Bandwidth(pulumi.CustomResource):
             __props__.__dict__["status"] = None
             __props__.__dict__["updated_at"] = None
         super(Bandwidth, __self__).__init__(
-            'sbercloud:Vpc/bandwidth:Bandwidth',
+            'cloudru:Vpc/bandwidth:Bandwidth',
             resource_name,
             __props__,
             opts)

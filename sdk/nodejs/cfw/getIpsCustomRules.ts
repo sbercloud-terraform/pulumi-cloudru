@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 export function getIpsCustomRules(args: GetIpsCustomRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetIpsCustomRulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Cfw/getIpsCustomRules:getIpsCustomRules", {
+    return pulumi.runtime.invoke("cloudru:Cfw/getIpsCustomRules:getIpsCustomRules", {
         "actionType": args.actionType,
         "affectedOs": args.affectedOs,
         "attackType": args.attackType,
@@ -63,7 +63,7 @@ export interface GetIpsCustomRulesResult {
 }
 export function getIpsCustomRulesOutput(args: GetIpsCustomRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIpsCustomRulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Cfw/getIpsCustomRules:getIpsCustomRules", {
+    return pulumi.runtime.invokeOutput("cloudru:Cfw/getIpsCustomRules:getIpsCustomRules", {
         "actionType": args.actionType,
         "affectedOs": args.affectedOs,
         "attackType": args.attackType,

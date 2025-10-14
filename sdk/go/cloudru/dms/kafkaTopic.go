@@ -46,7 +46,7 @@ func NewKafkaTopic(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource KafkaTopic
-	err := ctx.RegisterResource("sbercloud:Dms/kafkaTopic:KafkaTopic", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Dms/kafkaTopic:KafkaTopic", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -58,7 +58,7 @@ func NewKafkaTopic(ctx *pulumi.Context,
 func GetKafkaTopic(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *KafkaTopicState, opts ...pulumi.ResourceOption) (*KafkaTopic, error) {
 	var resource KafkaTopic
-	err := ctx.ReadResource("sbercloud:Dms/kafkaTopic:KafkaTopic", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Dms/kafkaTopic:KafkaTopic", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

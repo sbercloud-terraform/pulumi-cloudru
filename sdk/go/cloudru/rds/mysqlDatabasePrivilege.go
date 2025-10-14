@@ -42,7 +42,7 @@ func NewMysqlDatabasePrivilege(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MysqlDatabasePrivilege
-	err := ctx.RegisterResource("sbercloud:Rds/mysqlDatabasePrivilege:MysqlDatabasePrivilege", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Rds/mysqlDatabasePrivilege:MysqlDatabasePrivilege", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -54,7 +54,7 @@ func NewMysqlDatabasePrivilege(ctx *pulumi.Context,
 func GetMysqlDatabasePrivilege(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *MysqlDatabasePrivilegeState, opts ...pulumi.ResourceOption) (*MysqlDatabasePrivilege, error) {
 	var resource MysqlDatabasePrivilege
-	err := ctx.ReadResource("sbercloud:Rds/mysqlDatabasePrivilege:MysqlDatabasePrivilege", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Rds/mysqlDatabasePrivilege:MysqlDatabasePrivilege", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

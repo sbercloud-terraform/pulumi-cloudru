@@ -108,7 +108,7 @@ def get_dms_az(code: Optional[_builtins.str] = None,
     __args__['port'] = port
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getDmsAz:getDmsAz', __args__, opts=opts, typ=GetDmsAzResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getDmsAz:getDmsAz', __args__, opts=opts, typ=GetDmsAzResult).value
 
     return AwaitableGetDmsAzResult(
         code=pulumi.get(__ret__, 'code'),
@@ -131,7 +131,7 @@ def get_dms_az_output(code: Optional[pulumi.Input[Optional[_builtins.str]]] = No
     __args__['port'] = port
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getDmsAz:getDmsAz', __args__, opts=opts, typ=GetDmsAzResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getDmsAz:getDmsAz', __args__, opts=opts, typ=GetDmsAzResult)
     return __ret__.apply(lambda __response__: GetDmsAzResult(
         code=pulumi.get(__response__, 'code'),
         id=pulumi.get(__response__, 'id'),

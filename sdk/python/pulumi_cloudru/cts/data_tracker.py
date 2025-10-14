@@ -487,7 +487,7 @@ class _DataTrackerState:
         pulumi.set(self, "validate_file", value)
 
 
-@pulumi.type_token("sbercloud:Cts/dataTracker:DataTracker")
+@pulumi.type_token("cloudru:Cts/dataTracker:DataTracker")
 class DataTracker(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -585,7 +585,7 @@ class DataTracker(pulumi.CustomResource):
             __props__.__dict__["transfer_enabled"] = None
             __props__.__dict__["type"] = None
         super(DataTracker, __self__).__init__(
-            'sbercloud:Cts/dataTracker:DataTracker',
+            'cloudru:Cts/dataTracker:DataTracker',
             resource_name,
             __props__,
             opts)

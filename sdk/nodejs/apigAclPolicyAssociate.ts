@@ -19,7 +19,7 @@ export class ApigAclPolicyAssociate extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/apigAclPolicyAssociate:ApigAclPolicyAssociate';
+    public static readonly __pulumiType = 'cloudru:index/apigAclPolicyAssociate:ApigAclPolicyAssociate';
 
     /**
      * Returns true if the given object is an instance of ApigAclPolicyAssociate.  This is designed to work even

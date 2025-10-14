@@ -14,7 +14,7 @@ import (
 func GetBuckets(ctx *pulumi.Context, args *GetBucketsArgs, opts ...pulumi.InvokeOption) (*GetBucketsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBucketsResult
-	err := ctx.Invoke("sbercloud:Obs/getBuckets:getBuckets", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Obs/getBuckets:getBuckets", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -43,7 +43,7 @@ func GetBucketsOutput(ctx *pulumi.Context, args GetBucketsOutputArgs, opts ...pu
 		ApplyT(func(v interface{}) (GetBucketsResultOutput, error) {
 			args := v.(GetBucketsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Obs/getBuckets:getBuckets", args, GetBucketsResultOutput{}, options).(GetBucketsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Obs/getBuckets:getBuckets", args, GetBucketsResultOutput{}, options).(GetBucketsResultOutput), nil
 		}).(GetBucketsResultOutput)
 }
 

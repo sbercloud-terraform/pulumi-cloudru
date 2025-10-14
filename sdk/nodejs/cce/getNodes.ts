@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 export function getNodes(args: GetNodesArgs, opts?: pulumi.InvokeOptions): Promise<GetNodesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Cce/getNodes:getNodes", {
+    return pulumi.runtime.invoke("cloudru:Cce/getNodes:getNodes", {
         "clusterId": args.clusterId,
         "ignoreDetails": args.ignoreDetails,
         "name": args.name,
@@ -49,7 +49,7 @@ export interface GetNodesResult {
 }
 export function getNodesOutput(args: GetNodesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNodesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Cce/getNodes:getNodes", {
+    return pulumi.runtime.invokeOutput("cloudru:Cce/getNodes:getNodes", {
         "clusterId": args.clusterId,
         "ignoreDetails": args.ignoreDetails,
         "name": args.name,

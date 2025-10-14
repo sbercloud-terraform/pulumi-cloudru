@@ -15,11 +15,11 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "sbercloud:Dis/stream:Stream":
+            case "cloudru:Dis/stream:Stream":
                 return new Stream(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("sbercloud", "Dis/stream", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Dis/stream", _module)

@@ -62,7 +62,7 @@ func NewBandwidthPolicy(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource BandwidthPolicy
-	err := ctx.RegisterResource("sbercloud:As/bandwidthPolicy:BandwidthPolicy", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:As/bandwidthPolicy:BandwidthPolicy", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -74,7 +74,7 @@ func NewBandwidthPolicy(ctx *pulumi.Context,
 func GetBandwidthPolicy(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *BandwidthPolicyState, opts ...pulumi.ResourceOption) (*BandwidthPolicy, error) {
 	var resource BandwidthPolicy
-	err := ctx.ReadResource("sbercloud:As/bandwidthPolicy:BandwidthPolicy", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:As/bandwidthPolicy:BandwidthPolicy", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

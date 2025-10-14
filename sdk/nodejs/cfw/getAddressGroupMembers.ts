@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 export function getAddressGroupMembers(args: GetAddressGroupMembersArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressGroupMembersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Cfw/getAddressGroupMembers:getAddressGroupMembers", {
+    return pulumi.runtime.invoke("cloudru:Cfw/getAddressGroupMembers:getAddressGroupMembers", {
         "address": args.address,
         "fwInstanceId": args.fwInstanceId,
         "groupId": args.groupId,
@@ -51,7 +51,7 @@ export interface GetAddressGroupMembersResult {
 }
 export function getAddressGroupMembersOutput(args: GetAddressGroupMembersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAddressGroupMembersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Cfw/getAddressGroupMembers:getAddressGroupMembers", {
+    return pulumi.runtime.invokeOutput("cloudru:Cfw/getAddressGroupMembers:getAddressGroupMembers", {
         "address": args.address,
         "fwInstanceId": args.fwInstanceId,
         "groupId": args.groupId,

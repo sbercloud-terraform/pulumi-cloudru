@@ -109,7 +109,7 @@ def get_storage_types(db_type: Optional[_builtins.str] = None,
     __args__['instanceMode'] = instance_mode
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Rds/getStorageTypes:getStorageTypes', __args__, opts=opts, typ=GetStorageTypesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Rds/getStorageTypes:getStorageTypes', __args__, opts=opts, typ=GetStorageTypesResult).value
 
     return AwaitableGetStorageTypesResult(
         db_type=pulumi.get(__ret__, 'db_type'),
@@ -132,7 +132,7 @@ def get_storage_types_output(db_type: Optional[pulumi.Input[_builtins.str]] = No
     __args__['instanceMode'] = instance_mode
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Rds/getStorageTypes:getStorageTypes', __args__, opts=opts, typ=GetStorageTypesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Rds/getStorageTypes:getStorageTypes', __args__, opts=opts, typ=GetStorageTypesResult)
     return __ret__.apply(lambda __response__: GetStorageTypesResult(
         db_type=pulumi.get(__response__, 'db_type'),
         db_version=pulumi.get(__response__, 'db_version'),

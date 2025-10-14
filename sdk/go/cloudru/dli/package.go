@@ -43,7 +43,7 @@ func NewPackage(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Package
-	err := ctx.RegisterResource("sbercloud:Dli/package:Package", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Dli/package:Package", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -55,7 +55,7 @@ func NewPackage(ctx *pulumi.Context,
 func GetPackage(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *PackageState, opts ...pulumi.ResourceOption) (*Package, error) {
 	var resource Package
-	err := ctx.ReadResource("sbercloud:Dli/package:Package", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Dli/package:Package", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

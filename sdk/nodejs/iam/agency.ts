@@ -21,7 +21,7 @@ export class Agency extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Iam/agency:Agency';
+    public static readonly __pulumiType = 'cloudru:Iam/agency:Agency';
 
     /**
      * Returns true if the given object is an instance of Agency.  This is designed to work even

@@ -52,7 +52,7 @@ func NewPvc(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Pvc
-	err := ctx.RegisterResource("sbercloud:Cce/pvc:Pvc", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Cce/pvc:Pvc", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -64,7 +64,7 @@ func NewPvc(ctx *pulumi.Context,
 func GetPvc(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *PvcState, opts ...pulumi.ResourceOption) (*Pvc, error) {
 	var resource Pvc
-	err := ctx.ReadResource("sbercloud:Cce/pvc:Pvc", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Cce/pvc:Pvc", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

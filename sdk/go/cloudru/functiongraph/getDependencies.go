@@ -14,7 +14,7 @@ import (
 func GetDependencies(ctx *pulumi.Context, args *GetDependenciesArgs, opts ...pulumi.InvokeOption) (*GetDependenciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDependenciesResult
-	err := ctx.Invoke("sbercloud:FunctionGraph/getDependencies:getDependencies", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:FunctionGraph/getDependencies:getDependencies", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -47,7 +47,7 @@ func GetDependenciesOutput(ctx *pulumi.Context, args GetDependenciesOutputArgs, 
 		ApplyT(func(v interface{}) (GetDependenciesResultOutput, error) {
 			args := v.(GetDependenciesArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:FunctionGraph/getDependencies:getDependencies", args, GetDependenciesResultOutput{}, options).(GetDependenciesResultOutput), nil
+			return ctx.InvokeOutput("cloudru:FunctionGraph/getDependencies:getDependencies", args, GetDependenciesResultOutput{}, options).(GetDependenciesResultOutput), nil
 		}).(GetDependenciesResultOutput)
 }
 

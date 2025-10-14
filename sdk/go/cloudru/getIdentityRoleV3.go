@@ -14,7 +14,7 @@ import (
 func GetIdentityRoleV3(ctx *pulumi.Context, args *GetIdentityRoleV3Args, opts ...pulumi.InvokeOption) (*GetIdentityRoleV3Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIdentityRoleV3Result
-	err := ctx.Invoke("sbercloud:index/getIdentityRoleV3:getIdentityRoleV3", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getIdentityRoleV3:getIdentityRoleV3", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -44,7 +44,7 @@ func GetIdentityRoleV3Output(ctx *pulumi.Context, args GetIdentityRoleV3OutputAr
 		ApplyT(func(v interface{}) (GetIdentityRoleV3ResultOutput, error) {
 			args := v.(GetIdentityRoleV3Args)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getIdentityRoleV3:getIdentityRoleV3", args, GetIdentityRoleV3ResultOutput{}, options).(GetIdentityRoleV3ResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getIdentityRoleV3:getIdentityRoleV3", args, GetIdentityRoleV3ResultOutput{}, options).(GetIdentityRoleV3ResultOutput), nil
 		}).(GetIdentityRoleV3ResultOutput)
 }
 

@@ -186,7 +186,7 @@ class _SqlAuditState:
         pulumi.set(self, "reserve_auditlogs", value)
 
 
-@pulumi.type_token("sbercloud:Rds/sqlAudit:SqlAudit")
+@pulumi.type_token("cloudru:Rds/sqlAudit:SqlAudit")
 class SqlAudit(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -255,7 +255,7 @@ class SqlAudit(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["reserve_auditlogs"] = reserve_auditlogs
         super(SqlAudit, __self__).__init__(
-            'sbercloud:Rds/sqlAudit:SqlAudit',
+            'cloudru:Rds/sqlAudit:SqlAudit',
             resource_name,
             __props__,
             opts)

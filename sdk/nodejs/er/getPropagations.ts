@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 export function getPropagations(args: GetPropagationsArgs, opts?: pulumi.InvokeOptions): Promise<GetPropagationsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Er/getPropagations:getPropagations", {
+    return pulumi.runtime.invoke("cloudru:Er/getPropagations:getPropagations", {
         "attachmentId": args.attachmentId,
         "attachmentType": args.attachmentType,
         "instanceId": args.instanceId,
@@ -48,7 +48,7 @@ export interface GetPropagationsResult {
 }
 export function getPropagationsOutput(args: GetPropagationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPropagationsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Er/getPropagations:getPropagations", {
+    return pulumi.runtime.invokeOutput("cloudru:Er/getPropagations:getPropagations", {
         "attachmentId": args.attachmentId,
         "attachmentType": args.attachmentType,
         "instanceId": args.instanceId,

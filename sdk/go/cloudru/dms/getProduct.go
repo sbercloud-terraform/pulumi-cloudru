@@ -14,7 +14,7 @@ import (
 func GetProduct(ctx *pulumi.Context, args *GetProductArgs, opts ...pulumi.InvokeOption) (*GetProductResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProductResult
-	err := ctx.Invoke("sbercloud:Dms/getProduct:getProduct", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Dms/getProduct:getProduct", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -63,7 +63,7 @@ func GetProductOutput(ctx *pulumi.Context, args GetProductOutputArgs, opts ...pu
 		ApplyT(func(v interface{}) (GetProductResultOutput, error) {
 			args := v.(GetProductArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Dms/getProduct:getProduct", args, GetProductResultOutput{}, options).(GetProductResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Dms/getProduct:getProduct", args, GetProductResultOutput{}, options).(GetProductResultOutput), nil
 		}).(GetProductResultOutput)
 }
 

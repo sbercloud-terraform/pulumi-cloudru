@@ -68,7 +68,7 @@ func NewAlarmConfig(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AlarmConfig
-	err := ctx.RegisterResource("sbercloud:Cfw/alarmConfig:AlarmConfig", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Cfw/alarmConfig:AlarmConfig", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -80,7 +80,7 @@ func NewAlarmConfig(ctx *pulumi.Context,
 func GetAlarmConfig(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *AlarmConfigState, opts ...pulumi.ResourceOption) (*AlarmConfig, error) {
 	var resource AlarmConfig
-	err := ctx.ReadResource("sbercloud:Cfw/alarmConfig:AlarmConfig", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Cfw/alarmConfig:AlarmConfig", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

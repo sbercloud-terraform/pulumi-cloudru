@@ -120,7 +120,7 @@ def get_apig_throttling_policies(instance_id: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['type'] = type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getApigThrottlingPolicies:getApigThrottlingPolicies', __args__, opts=opts, typ=GetApigThrottlingPoliciesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getApigThrottlingPolicies:getApigThrottlingPolicies', __args__, opts=opts, typ=GetApigThrottlingPoliciesResult).value
 
     return AwaitableGetApigThrottlingPoliciesResult(
         id=pulumi.get(__ret__, 'id'),
@@ -146,7 +146,7 @@ def get_apig_throttling_policies_output(instance_id: Optional[pulumi.Input[_buil
     __args__['region'] = region
     __args__['type'] = type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getApigThrottlingPolicies:getApigThrottlingPolicies', __args__, opts=opts, typ=GetApigThrottlingPoliciesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getApigThrottlingPolicies:getApigThrottlingPolicies', __args__, opts=opts, typ=GetApigThrottlingPoliciesResult)
     return __ret__.apply(lambda __response__: GetApigThrottlingPoliciesResult(
         id=pulumi.get(__response__, 'id'),
         instance_id=pulumi.get(__response__, 'instance_id'),

@@ -19,7 +19,7 @@ export class SqlserverAccount extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Rds/sqlserverAccount:SqlserverAccount';
+    public static readonly __pulumiType = 'cloudru:Rds/sqlserverAccount:SqlserverAccount';
 
     /**
      * Returns true if the given object is an instance of SqlserverAccount.  This is designed to work even

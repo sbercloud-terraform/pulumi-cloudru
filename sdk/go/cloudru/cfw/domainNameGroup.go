@@ -54,7 +54,7 @@ func NewDomainNameGroup(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DomainNameGroup
-	err := ctx.RegisterResource("sbercloud:Cfw/domainNameGroup:DomainNameGroup", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Cfw/domainNameGroup:DomainNameGroup", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -66,7 +66,7 @@ func NewDomainNameGroup(ctx *pulumi.Context,
 func GetDomainNameGroup(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *DomainNameGroupState, opts ...pulumi.ResourceOption) (*DomainNameGroup, error) {
 	var resource DomainNameGroup
-	err := ctx.ReadResource("sbercloud:Cfw/domainNameGroup:DomainNameGroup", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Cfw/domainNameGroup:DomainNameGroup", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

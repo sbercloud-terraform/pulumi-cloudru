@@ -415,7 +415,7 @@ class _ApigChannelState:
         pulumi.set(self, "type", value)
 
 
-@pulumi.type_token("sbercloud:index/apigChannel:ApigChannel")
+@pulumi.type_token("cloudru:index/apigChannel:ApigChannel")
 class ApigChannel(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -512,7 +512,7 @@ class ApigChannel(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["status"] = None
         super(ApigChannel, __self__).__init__(
-            'sbercloud:index/apigChannel:ApigChannel',
+            'cloudru:index/apigChannel:ApigChannel',
             resource_name,
             __props__,
             opts)

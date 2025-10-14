@@ -182,7 +182,7 @@ class _MysqlDatabaseState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:Rds/mysqlDatabase:MysqlDatabase")
+@pulumi.type_token("cloudru:Rds/mysqlDatabase:MysqlDatabase")
 class MysqlDatabase(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -250,7 +250,7 @@ class MysqlDatabase(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["region"] = region
         super(MysqlDatabase, __self__).__init__(
-            'sbercloud:Rds/mysqlDatabase:MysqlDatabase',
+            'cloudru:Rds/mysqlDatabase:MysqlDatabase',
             resource_name,
             __props__,
             opts)

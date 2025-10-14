@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 export function getCbhFlavors(args?: GetCbhFlavorsArgs, opts?: pulumi.InvokeOptions): Promise<GetCbhFlavorsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getCbhFlavors:getCbhFlavors", {
+    return pulumi.runtime.invoke("cloudru:index/getCbhFlavors:getCbhFlavors", {
         "action": args.action,
         "asset": args.asset,
         "flavorId": args.flavorId,
@@ -59,7 +59,7 @@ export interface GetCbhFlavorsResult {
 export function getCbhFlavorsOutput(args?: GetCbhFlavorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCbhFlavorsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getCbhFlavors:getCbhFlavors", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getCbhFlavors:getCbhFlavors", {
         "action": args.action,
         "asset": args.asset,
         "flavorId": args.flavorId,

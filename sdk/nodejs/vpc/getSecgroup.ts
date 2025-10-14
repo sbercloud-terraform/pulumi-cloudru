@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 export function getSecgroup(args?: GetSecgroupArgs, opts?: pulumi.InvokeOptions): Promise<GetSecgroupResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Vpc/getSecgroup:getSecgroup", {
+    return pulumi.runtime.invoke("cloudru:Vpc/getSecgroup:getSecgroup", {
         "enterpriseProjectId": args.enterpriseProjectId,
         "name": args.name,
         "region": args.region,
@@ -47,7 +47,7 @@ export interface GetSecgroupResult {
 export function getSecgroupOutput(args?: GetSecgroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecgroupResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Vpc/getSecgroup:getSecgroup", {
+    return pulumi.runtime.invokeOutput("cloudru:Vpc/getSecgroup:getSecgroup", {
         "enterpriseProjectId": args.enterpriseProjectId,
         "name": args.name,
         "region": args.region,

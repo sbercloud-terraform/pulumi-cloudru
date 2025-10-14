@@ -221,7 +221,7 @@ class _PropagationState:
         pulumi.set(self, "updated_at", value)
 
 
-@pulumi.type_token("sbercloud:Er/propagation:Propagation")
+@pulumi.type_token("cloudru:Er/propagation:Propagation")
 class Propagation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -292,7 +292,7 @@ class Propagation(pulumi.CustomResource):
             __props__.__dict__["status"] = None
             __props__.__dict__["updated_at"] = None
         super(Propagation, __self__).__init__(
-            'sbercloud:Er/propagation:Propagation',
+            'cloudru:Er/propagation:Propagation',
             resource_name,
             __props__,
             opts)

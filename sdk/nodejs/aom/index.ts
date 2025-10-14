@@ -15,11 +15,11 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "sbercloud:Aom/serviceDiscoveryRule:ServiceDiscoveryRule":
+            case "cloudru:Aom/serviceDiscoveryRule:ServiceDiscoveryRule":
                 return new ServiceDiscoveryRule(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("sbercloud", "Aom/serviceDiscoveryRule", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Aom/serviceDiscoveryRule", _module)

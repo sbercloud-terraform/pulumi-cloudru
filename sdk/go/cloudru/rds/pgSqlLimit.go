@@ -59,7 +59,7 @@ func NewPgSqlLimit(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PgSqlLimit
-	err := ctx.RegisterResource("sbercloud:Rds/pgSqlLimit:PgSqlLimit", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Rds/pgSqlLimit:PgSqlLimit", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -71,7 +71,7 @@ func NewPgSqlLimit(ctx *pulumi.Context,
 func GetPgSqlLimit(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *PgSqlLimitState, opts ...pulumi.ResourceOption) (*PgSqlLimit, error) {
 	var resource PgSqlLimit
-	err := ctx.ReadResource("sbercloud:Rds/pgSqlLimit:PgSqlLimit", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Rds/pgSqlLimit:PgSqlLimit", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

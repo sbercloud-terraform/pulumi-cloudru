@@ -14,7 +14,7 @@ import (
 func GetProjects(ctx *pulumi.Context, args *GetProjectsArgs, opts ...pulumi.InvokeOption) (*GetProjectsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectsResult
-	err := ctx.Invoke("sbercloud:Iam/getProjects:getProjects", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Iam/getProjects:getProjects", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -39,7 +39,7 @@ func GetProjectsOutput(ctx *pulumi.Context, args GetProjectsOutputArgs, opts ...
 		ApplyT(func(v interface{}) (GetProjectsResultOutput, error) {
 			args := v.(GetProjectsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Iam/getProjects:getProjects", args, GetProjectsResultOutput{}, options).(GetProjectsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Iam/getProjects:getProjects", args, GetProjectsResultOutput{}, options).(GetProjectsResultOutput), nil
 		}).(GetProjectsResultOutput)
 }
 

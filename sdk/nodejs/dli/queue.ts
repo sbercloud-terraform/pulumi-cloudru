@@ -21,7 +21,7 @@ export class Queue extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Dli/queue:Queue';
+    public static readonly __pulumiType = 'cloudru:Dli/queue:Queue';
 
     /**
      * Returns true if the given object is an instance of Queue.  This is designed to work even

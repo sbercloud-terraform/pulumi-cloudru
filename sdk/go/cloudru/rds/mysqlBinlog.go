@@ -35,7 +35,7 @@ func NewMysqlBinlog(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MysqlBinlog
-	err := ctx.RegisterResource("sbercloud:Rds/mysqlBinlog:MysqlBinlog", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Rds/mysqlBinlog:MysqlBinlog", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -47,7 +47,7 @@ func NewMysqlBinlog(ctx *pulumi.Context,
 func GetMysqlBinlog(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *MysqlBinlogState, opts ...pulumi.ResourceOption) (*MysqlBinlog, error) {
 	var resource MysqlBinlog
-	err := ctx.ReadResource("sbercloud:Rds/mysqlBinlog:MysqlBinlog", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Rds/mysqlBinlog:MysqlBinlog", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

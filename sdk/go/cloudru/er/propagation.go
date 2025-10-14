@@ -51,7 +51,7 @@ func NewPropagation(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Propagation
-	err := ctx.RegisterResource("sbercloud:Er/propagation:Propagation", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Er/propagation:Propagation", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -63,7 +63,7 @@ func NewPropagation(ctx *pulumi.Context,
 func GetPropagation(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *PropagationState, opts ...pulumi.ResourceOption) (*Propagation, error) {
 	var resource Propagation
-	err := ctx.ReadResource("sbercloud:Er/propagation:Propagation", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Er/propagation:Propagation", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

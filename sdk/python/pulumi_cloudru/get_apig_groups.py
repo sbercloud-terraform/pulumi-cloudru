@@ -109,7 +109,7 @@ def get_apig_groups(group_id: Optional[_builtins.str] = None,
     __args__['name'] = name
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getApigGroups:getApigGroups', __args__, opts=opts, typ=GetApigGroupsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getApigGroups:getApigGroups', __args__, opts=opts, typ=GetApigGroupsResult).value
 
     return AwaitableGetApigGroupsResult(
         group_id=pulumi.get(__ret__, 'group_id'),
@@ -132,7 +132,7 @@ def get_apig_groups_output(group_id: Optional[pulumi.Input[Optional[_builtins.st
     __args__['name'] = name
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getApigGroups:getApigGroups', __args__, opts=opts, typ=GetApigGroupsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getApigGroups:getApigGroups', __args__, opts=opts, typ=GetApigGroupsResult)
     return __ret__.apply(lambda __response__: GetApigGroupsResult(
         group_id=pulumi.get(__response__, 'group_id'),
         groups=pulumi.get(__response__, 'groups'),

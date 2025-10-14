@@ -46,7 +46,7 @@ func NewSmnSubscription(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SmnSubscription
-	err := ctx.RegisterResource("sbercloud:index/smnSubscription:SmnSubscription", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/smnSubscription:SmnSubscription", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -58,7 +58,7 @@ func NewSmnSubscription(ctx *pulumi.Context,
 func GetSmnSubscription(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *SmnSubscriptionState, opts ...pulumi.ResourceOption) (*SmnSubscription, error) {
 	var resource SmnSubscription
-	err := ctx.ReadResource("sbercloud:index/smnSubscription:SmnSubscription", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/smnSubscription:SmnSubscription", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

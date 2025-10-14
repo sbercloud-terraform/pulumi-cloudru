@@ -19,7 +19,7 @@ export class Route extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Vpc/route:Route';
+    public static readonly __pulumiType = 'cloudru:Vpc/route:Route';
 
     /**
      * Returns true if the given object is an instance of Route.  This is designed to work even

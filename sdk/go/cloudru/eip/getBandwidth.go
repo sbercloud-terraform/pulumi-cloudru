@@ -14,7 +14,7 @@ import (
 func GetBandwidth(ctx *pulumi.Context, args *GetBandwidthArgs, opts ...pulumi.InvokeOption) (*GetBandwidthResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBandwidthResult
-	err := ctx.Invoke("sbercloud:Eip/getBandwidth:getBandwidth", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Eip/getBandwidth:getBandwidth", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -49,7 +49,7 @@ func GetBandwidthOutput(ctx *pulumi.Context, args GetBandwidthOutputArgs, opts .
 		ApplyT(func(v interface{}) (GetBandwidthResultOutput, error) {
 			args := v.(GetBandwidthArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Eip/getBandwidth:getBandwidth", args, GetBandwidthResultOutput{}, options).(GetBandwidthResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Eip/getBandwidth:getBandwidth", args, GetBandwidthResultOutput{}, options).(GetBandwidthResultOutput), nil
 		}).(GetBandwidthResultOutput)
 }
 

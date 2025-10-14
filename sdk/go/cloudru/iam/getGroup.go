@@ -14,7 +14,7 @@ import (
 func LookupGroup(ctx *pulumi.Context, args *LookupGroupArgs, opts ...pulumi.InvokeOption) (*LookupGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGroupResult
-	err := ctx.Invoke("sbercloud:Iam/getGroup:getGroup", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Iam/getGroup:getGroup", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -42,7 +42,7 @@ func LookupGroupOutput(ctx *pulumi.Context, args LookupGroupOutputArgs, opts ...
 		ApplyT(func(v interface{}) (LookupGroupResultOutput, error) {
 			args := v.(LookupGroupArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Iam/getGroup:getGroup", args, LookupGroupResultOutput{}, options).(LookupGroupResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Iam/getGroup:getGroup", args, LookupGroupResultOutput{}, options).(LookupGroupResultOutput), nil
 		}).(LookupGroupResultOutput)
 }
 

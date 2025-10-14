@@ -14,7 +14,7 @@ import (
 func GetProtectionRules(ctx *pulumi.Context, args *GetProtectionRulesArgs, opts ...pulumi.InvokeOption) (*GetProtectionRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProtectionRulesResult
-	err := ctx.Invoke("sbercloud:Cfw/getProtectionRules:getProtectionRules", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Cfw/getProtectionRules:getProtectionRules", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -61,7 +61,7 @@ func GetProtectionRulesOutput(ctx *pulumi.Context, args GetProtectionRulesOutput
 		ApplyT(func(v interface{}) (GetProtectionRulesResultOutput, error) {
 			args := v.(GetProtectionRulesArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Cfw/getProtectionRules:getProtectionRules", args, GetProtectionRulesResultOutput{}, options).(GetProtectionRulesResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Cfw/getProtectionRules:getProtectionRules", args, GetProtectionRulesResultOutput{}, options).(GetProtectionRulesResultOutput), nil
 		}).(GetProtectionRulesResultOutput)
 }
 

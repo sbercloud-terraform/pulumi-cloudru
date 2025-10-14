@@ -110,7 +110,7 @@ def get_maintainwindow(begin: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['seq'] = seq
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Dms/getMaintainwindow:getMaintainwindow', __args__, opts=opts, typ=GetMaintainwindowResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Dms/getMaintainwindow:getMaintainwindow', __args__, opts=opts, typ=GetMaintainwindowResult).value
 
     return AwaitableGetMaintainwindowResult(
         begin=pulumi.get(__ret__, 'begin'),
@@ -135,7 +135,7 @@ def get_maintainwindow_output(begin: Optional[pulumi.Input[Optional[_builtins.st
     __args__['region'] = region
     __args__['seq'] = seq
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Dms/getMaintainwindow:getMaintainwindow', __args__, opts=opts, typ=GetMaintainwindowResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Dms/getMaintainwindow:getMaintainwindow', __args__, opts=opts, typ=GetMaintainwindowResult)
     return __ret__.apply(lambda __response__: GetMaintainwindowResult(
         begin=pulumi.get(__response__, 'begin'),
         default=pulumi.get(__response__, 'default'),

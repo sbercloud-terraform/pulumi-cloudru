@@ -14,7 +14,7 @@ import (
 func GetKeypairs(ctx *pulumi.Context, args *GetKeypairsArgs, opts ...pulumi.InvokeOption) (*GetKeypairsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKeypairsResult
-	err := ctx.Invoke("sbercloud:Dew/getKeypairs:getKeypairs", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Dew/getKeypairs:getKeypairs", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -47,7 +47,7 @@ func GetKeypairsOutput(ctx *pulumi.Context, args GetKeypairsOutputArgs, opts ...
 		ApplyT(func(v interface{}) (GetKeypairsResultOutput, error) {
 			args := v.(GetKeypairsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Dew/getKeypairs:getKeypairs", args, GetKeypairsResultOutput{}, options).(GetKeypairsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Dew/getKeypairs:getKeypairs", args, GetKeypairsResultOutput{}, options).(GetKeypairsResultOutput), nil
 		}).(GetKeypairsResultOutput)
 }
 

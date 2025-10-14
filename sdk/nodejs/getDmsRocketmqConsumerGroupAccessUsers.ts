@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 export function getDmsRocketmqConsumerGroupAccessUsers(args: GetDmsRocketmqConsumerGroupAccessUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetDmsRocketmqConsumerGroupAccessUsersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getDmsRocketmqConsumerGroupAccessUsers:getDmsRocketmqConsumerGroupAccessUsers", {
+    return pulumi.runtime.invoke("cloudru:index/getDmsRocketmqConsumerGroupAccessUsers:getDmsRocketmqConsumerGroupAccessUsers", {
         "group": args.group,
         "instanceId": args.instanceId,
         "region": args.region,
@@ -39,7 +39,7 @@ export interface GetDmsRocketmqConsumerGroupAccessUsersResult {
 }
 export function getDmsRocketmqConsumerGroupAccessUsersOutput(args: GetDmsRocketmqConsumerGroupAccessUsersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDmsRocketmqConsumerGroupAccessUsersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getDmsRocketmqConsumerGroupAccessUsers:getDmsRocketmqConsumerGroupAccessUsers", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getDmsRocketmqConsumerGroupAccessUsers:getDmsRocketmqConsumerGroupAccessUsers", {
         "group": args.group,
         "instanceId": args.instanceId,
         "region": args.region,

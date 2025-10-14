@@ -98,7 +98,7 @@ def get_dms_rocketmq_topic_access_users(instance_id: Optional[_builtins.str] = N
     __args__['region'] = region
     __args__['topic'] = topic
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getDmsRocketmqTopicAccessUsers:getDmsRocketmqTopicAccessUsers', __args__, opts=opts, typ=GetDmsRocketmqTopicAccessUsersResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getDmsRocketmqTopicAccessUsers:getDmsRocketmqTopicAccessUsers', __args__, opts=opts, typ=GetDmsRocketmqTopicAccessUsersResult).value
 
     return AwaitableGetDmsRocketmqTopicAccessUsersResult(
         id=pulumi.get(__ret__, 'id'),
@@ -118,7 +118,7 @@ def get_dms_rocketmq_topic_access_users_output(instance_id: Optional[pulumi.Inpu
     __args__['region'] = region
     __args__['topic'] = topic
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getDmsRocketmqTopicAccessUsers:getDmsRocketmqTopicAccessUsers', __args__, opts=opts, typ=GetDmsRocketmqTopicAccessUsersResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getDmsRocketmqTopicAccessUsers:getDmsRocketmqTopicAccessUsers', __args__, opts=opts, typ=GetDmsRocketmqTopicAccessUsersResult)
     return __ret__.apply(lambda __response__: GetDmsRocketmqTopicAccessUsersResult(
         id=pulumi.get(__response__, 'id'),
         instance_id=pulumi.get(__response__, 'instance_id'),

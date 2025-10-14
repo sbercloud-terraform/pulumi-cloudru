@@ -19,7 +19,7 @@ export class Endpoint extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Vpcep/endpoint:Endpoint';
+    public static readonly __pulumiType = 'cloudru:Vpcep/endpoint:Endpoint';
 
     /**
      * Returns true if the given object is an instance of Endpoint.  This is designed to work even

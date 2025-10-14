@@ -25,14 +25,14 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "sbercloud:FunctionGraph/dependency:Dependency":
+            case "cloudru:FunctionGraph/dependency:Dependency":
                 return new Dependency(name, <any>undefined, { urn })
-            case "sbercloud:FunctionGraph/function:Function":
+            case "cloudru:FunctionGraph/function:Function":
                 return new Function(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("sbercloud", "FunctionGraph/dependency", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "FunctionGraph/function", _module)
+pulumi.runtime.registerResourceModule("cloudru", "FunctionGraph/dependency", _module)
+pulumi.runtime.registerResourceModule("cloudru", "FunctionGraph/function", _module)

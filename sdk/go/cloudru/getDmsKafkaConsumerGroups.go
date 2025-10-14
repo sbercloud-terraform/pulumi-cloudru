@@ -14,7 +14,7 @@ import (
 func GetDmsKafkaConsumerGroups(ctx *pulumi.Context, args *GetDmsKafkaConsumerGroupsArgs, opts ...pulumi.InvokeOption) (*GetDmsKafkaConsumerGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDmsKafkaConsumerGroupsResult
-	err := ctx.Invoke("sbercloud:index/getDmsKafkaConsumerGroups:getDmsKafkaConsumerGroups", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getDmsKafkaConsumerGroups:getDmsKafkaConsumerGroups", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func GetDmsKafkaConsumerGroupsOutput(ctx *pulumi.Context, args GetDmsKafkaConsum
 		ApplyT(func(v interface{}) (GetDmsKafkaConsumerGroupsResultOutput, error) {
 			args := v.(GetDmsKafkaConsumerGroupsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getDmsKafkaConsumerGroups:getDmsKafkaConsumerGroups", args, GetDmsKafkaConsumerGroupsResultOutput{}, options).(GetDmsKafkaConsumerGroupsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getDmsKafkaConsumerGroups:getDmsKafkaConsumerGroups", args, GetDmsKafkaConsumerGroupsResultOutput{}, options).(GetDmsKafkaConsumerGroupsResultOutput), nil
 		}).(GetDmsKafkaConsumerGroupsResultOutput)
 }
 

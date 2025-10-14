@@ -14,7 +14,7 @@ import (
 func LookupKey(ctx *pulumi.Context, args *LookupKeyArgs, opts ...pulumi.InvokeOption) (*LookupKeyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupKeyResult
-	err := ctx.Invoke("sbercloud:Dew/getKey:getKey", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Dew/getKey:getKey", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -59,7 +59,7 @@ func LookupKeyOutput(ctx *pulumi.Context, args LookupKeyOutputArgs, opts ...pulu
 		ApplyT(func(v interface{}) (LookupKeyResultOutput, error) {
 			args := v.(LookupKeyArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Dew/getKey:getKey", args, LookupKeyResultOutput{}, options).(LookupKeyResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Dew/getKey:getKey", args, LookupKeyResultOutput{}, options).(LookupKeyResultOutput), nil
 		}).(LookupKeyResultOutput)
 }
 

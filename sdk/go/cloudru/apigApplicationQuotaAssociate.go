@@ -43,7 +43,7 @@ func NewApigApplicationQuotaAssociate(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApigApplicationQuotaAssociate
-	err := ctx.RegisterResource("sbercloud:index/apigApplicationQuotaAssociate:ApigApplicationQuotaAssociate", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/apigApplicationQuotaAssociate:ApigApplicationQuotaAssociate", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -55,7 +55,7 @@ func NewApigApplicationQuotaAssociate(ctx *pulumi.Context,
 func GetApigApplicationQuotaAssociate(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ApigApplicationQuotaAssociateState, opts ...pulumi.ResourceOption) (*ApigApplicationQuotaAssociate, error) {
 	var resource ApigApplicationQuotaAssociate
-	err := ctx.ReadResource("sbercloud:index/apigApplicationQuotaAssociate:ApigApplicationQuotaAssociate", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/apigApplicationQuotaAssociate:ApigApplicationQuotaAssociate", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

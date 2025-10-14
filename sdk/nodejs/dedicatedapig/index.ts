@@ -65,38 +65,38 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "sbercloud:DedicatedApig/api:Api":
+            case "cloudru:DedicatedApig/api:Api":
                 return new Api(name, <any>undefined, { urn })
-            case "sbercloud:DedicatedApig/apiPublishment:ApiPublishment":
+            case "cloudru:DedicatedApig/apiPublishment:ApiPublishment":
                 return new ApiPublishment(name, <any>undefined, { urn })
-            case "sbercloud:DedicatedApig/application:Application":
+            case "cloudru:DedicatedApig/application:Application":
                 return new Application(name, <any>undefined, { urn })
-            case "sbercloud:DedicatedApig/customAuthorizer:CustomAuthorizer":
+            case "cloudru:DedicatedApig/customAuthorizer:CustomAuthorizer":
                 return new CustomAuthorizer(name, <any>undefined, { urn })
-            case "sbercloud:DedicatedApig/environment:Environment":
+            case "cloudru:DedicatedApig/environment:Environment":
                 return new Environment(name, <any>undefined, { urn })
-            case "sbercloud:DedicatedApig/group:Group":
+            case "cloudru:DedicatedApig/group:Group":
                 return new Group(name, <any>undefined, { urn })
-            case "sbercloud:DedicatedApig/instance:Instance":
+            case "cloudru:DedicatedApig/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
-            case "sbercloud:DedicatedApig/response:Response":
+            case "cloudru:DedicatedApig/response:Response":
                 return new Response(name, <any>undefined, { urn })
-            case "sbercloud:DedicatedApig/throttlingPolicy:ThrottlingPolicy":
+            case "cloudru:DedicatedApig/throttlingPolicy:ThrottlingPolicy":
                 return new ThrottlingPolicy(name, <any>undefined, { urn })
-            case "sbercloud:DedicatedApig/throttlingPolicyAssociate:ThrottlingPolicyAssociate":
+            case "cloudru:DedicatedApig/throttlingPolicyAssociate:ThrottlingPolicyAssociate":
                 return new ThrottlingPolicyAssociate(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("sbercloud", "DedicatedApig/api", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "DedicatedApig/apiPublishment", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "DedicatedApig/application", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "DedicatedApig/customAuthorizer", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "DedicatedApig/environment", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "DedicatedApig/group", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "DedicatedApig/instance", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "DedicatedApig/response", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "DedicatedApig/throttlingPolicy", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "DedicatedApig/throttlingPolicyAssociate", _module)
+pulumi.runtime.registerResourceModule("cloudru", "DedicatedApig/api", _module)
+pulumi.runtime.registerResourceModule("cloudru", "DedicatedApig/apiPublishment", _module)
+pulumi.runtime.registerResourceModule("cloudru", "DedicatedApig/application", _module)
+pulumi.runtime.registerResourceModule("cloudru", "DedicatedApig/customAuthorizer", _module)
+pulumi.runtime.registerResourceModule("cloudru", "DedicatedApig/environment", _module)
+pulumi.runtime.registerResourceModule("cloudru", "DedicatedApig/group", _module)
+pulumi.runtime.registerResourceModule("cloudru", "DedicatedApig/instance", _module)
+pulumi.runtime.registerResourceModule("cloudru", "DedicatedApig/response", _module)
+pulumi.runtime.registerResourceModule("cloudru", "DedicatedApig/throttlingPolicy", _module)
+pulumi.runtime.registerResourceModule("cloudru", "DedicatedApig/throttlingPolicyAssociate", _module)

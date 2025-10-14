@@ -21,7 +21,7 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "sbercloud:Eps/project:Project":
+	case "cloudru:Eps/project:Project":
 		r = &Project{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
@@ -37,7 +37,7 @@ func init() {
 		version = semver.Version{Major: 1}
 	}
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Eps/project",
 		&module{version},
 	)

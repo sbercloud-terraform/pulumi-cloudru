@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 export function getPeeringConnection(args?: GetPeeringConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetPeeringConnectionResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Vpc/getPeeringConnection:getPeeringConnection", {
+    return pulumi.runtime.invoke("cloudru:Vpc/getPeeringConnection:getPeeringConnection", {
         "id": args.id,
         "name": args.name,
         "peerTenantId": args.peerTenantId,
@@ -47,7 +47,7 @@ export interface GetPeeringConnectionResult {
 export function getPeeringConnectionOutput(args?: GetPeeringConnectionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPeeringConnectionResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Vpc/getPeeringConnection:getPeeringConnection", {
+    return pulumi.runtime.invokeOutput("cloudru:Vpc/getPeeringConnection:getPeeringConnection", {
         "id": args.id,
         "name": args.name,
         "peerTenantId": args.peerTenantId,

@@ -187,7 +187,7 @@ class _NetworkingEipAssociateState:
         pulumi.set(self, "status", value)
 
 
-@pulumi.type_token("sbercloud:index/networkingEipAssociate:NetworkingEipAssociate")
+@pulumi.type_token("cloudru:index/networkingEipAssociate:NetworkingEipAssociate")
 class NetworkingEipAssociate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -252,7 +252,7 @@ class NetworkingEipAssociate(pulumi.CustomResource):
             __props__.__dict__["public_ipv6"] = None
             __props__.__dict__["status"] = None
         super(NetworkingEipAssociate, __self__).__init__(
-            'sbercloud:index/networkingEipAssociate:NetworkingEipAssociate',
+            'cloudru:index/networkingEipAssociate:NetworkingEipAssociate',
             resource_name,
             __props__,
             opts)

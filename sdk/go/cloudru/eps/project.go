@@ -33,7 +33,7 @@ func NewProject(ctx *pulumi.Context,
 
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Project
-	err := ctx.RegisterResource("sbercloud:Eps/project:Project", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Eps/project:Project", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -45,7 +45,7 @@ func NewProject(ctx *pulumi.Context,
 func GetProject(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ProjectState, opts ...pulumi.ResourceOption) (*Project, error) {
 	var resource Project
-	err := ctx.ReadResource("sbercloud:Eps/project:Project", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Eps/project:Project", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

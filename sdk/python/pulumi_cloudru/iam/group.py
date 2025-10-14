@@ -80,7 +80,7 @@ class _GroupState:
         pulumi.set(self, "name", value)
 
 
-@pulumi.type_token("sbercloud:Iam/group:Group")
+@pulumi.type_token("cloudru:Iam/group:Group")
 class Group(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -131,7 +131,7 @@ class Group(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
         super(Group, __self__).__init__(
-            'sbercloud:Iam/group:Group',
+            'cloudru:Iam/group:Group',
             resource_name,
             __props__,
             opts)

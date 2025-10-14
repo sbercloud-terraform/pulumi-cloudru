@@ -109,7 +109,7 @@ def get_apig_application_quotas(instance_id: Optional[_builtins.str] = None,
     __args__['quotaId'] = quota_id
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getApigApplicationQuotas:getApigApplicationQuotas', __args__, opts=opts, typ=GetApigApplicationQuotasResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getApigApplicationQuotas:getApigApplicationQuotas', __args__, opts=opts, typ=GetApigApplicationQuotasResult).value
 
     return AwaitableGetApigApplicationQuotasResult(
         id=pulumi.get(__ret__, 'id'),
@@ -132,7 +132,7 @@ def get_apig_application_quotas_output(instance_id: Optional[pulumi.Input[_built
     __args__['quotaId'] = quota_id
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getApigApplicationQuotas:getApigApplicationQuotas', __args__, opts=opts, typ=GetApigApplicationQuotasResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getApigApplicationQuotas:getApigApplicationQuotas', __args__, opts=opts, typ=GetApigApplicationQuotasResult)
     return __ret__.apply(lambda __response__: GetApigApplicationQuotasResult(
         id=pulumi.get(__response__, 'id'),
         instance_id=pulumi.get(__response__, 'instance_id'),

@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 export function getCbrPolicies(args?: GetCbrPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetCbrPoliciesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getCbrPolicies:getCbrPolicies", {
+    return pulumi.runtime.invoke("cloudru:index/getCbrPolicies:getCbrPolicies", {
         "enabled": args.enabled,
         "name": args.name,
         "policyId": args.policyId,
@@ -50,7 +50,7 @@ export interface GetCbrPoliciesResult {
 export function getCbrPoliciesOutput(args?: GetCbrPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCbrPoliciesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getCbrPolicies:getCbrPolicies", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getCbrPolicies:getCbrPolicies", {
         "enabled": args.enabled,
         "name": args.name,
         "policyId": args.policyId,

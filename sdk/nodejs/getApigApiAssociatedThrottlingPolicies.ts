@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 export function getApigApiAssociatedThrottlingPolicies(args: GetApigApiAssociatedThrottlingPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetApigApiAssociatedThrottlingPoliciesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getApigApiAssociatedThrottlingPolicies:getApigApiAssociatedThrottlingPolicies", {
+    return pulumi.runtime.invoke("cloudru:index/getApigApiAssociatedThrottlingPolicies:getApigApiAssociatedThrottlingPolicies", {
         "apiId": args.apiId,
         "envName": args.envName,
         "instanceId": args.instanceId,
@@ -54,7 +54,7 @@ export interface GetApigApiAssociatedThrottlingPoliciesResult {
 }
 export function getApigApiAssociatedThrottlingPoliciesOutput(args: GetApigApiAssociatedThrottlingPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApigApiAssociatedThrottlingPoliciesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getApigApiAssociatedThrottlingPolicies:getApigApiAssociatedThrottlingPolicies", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getApigApiAssociatedThrottlingPolicies:getApigApiAssociatedThrottlingPolicies", {
         "apiId": args.apiId,
         "envName": args.envName,
         "instanceId": args.instanceId,

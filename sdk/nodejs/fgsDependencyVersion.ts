@@ -19,7 +19,7 @@ export class FgsDependencyVersion extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/fgsDependencyVersion:FgsDependencyVersion';
+    public static readonly __pulumiType = 'cloudru:index/fgsDependencyVersion:FgsDependencyVersion';
 
     /**
      * Returns true if the given object is an instance of FgsDependencyVersion.  This is designed to work even

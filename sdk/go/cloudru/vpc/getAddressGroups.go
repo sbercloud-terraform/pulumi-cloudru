@@ -14,7 +14,7 @@ import (
 func GetAddressGroups(ctx *pulumi.Context, args *GetAddressGroupsArgs, opts ...pulumi.InvokeOption) (*GetAddressGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAddressGroupsResult
-	err := ctx.Invoke("sbercloud:Vpc/getAddressGroups:getAddressGroups", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Vpc/getAddressGroups:getAddressGroups", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -47,7 +47,7 @@ func GetAddressGroupsOutput(ctx *pulumi.Context, args GetAddressGroupsOutputArgs
 		ApplyT(func(v interface{}) (GetAddressGroupsResultOutput, error) {
 			args := v.(GetAddressGroupsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Vpc/getAddressGroups:getAddressGroups", args, GetAddressGroupsResultOutput{}, options).(GetAddressGroupsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Vpc/getAddressGroups:getAddressGroups", args, GetAddressGroupsResultOutput{}, options).(GetAddressGroupsResultOutput), nil
 		}).(GetAddressGroupsResultOutput)
 }
 

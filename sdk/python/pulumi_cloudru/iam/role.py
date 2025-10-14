@@ -137,7 +137,7 @@ class _RoleState:
         pulumi.set(self, "type", value)
 
 
-@pulumi.type_token("sbercloud:Iam/role:Role")
+@pulumi.type_token("cloudru:Iam/role:Role")
 class Role(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -201,7 +201,7 @@ class Role(pulumi.CustomResource):
             __props__.__dict__["type"] = type
             __props__.__dict__["references"] = None
         super(Role, __self__).__init__(
-            'sbercloud:Iam/role:Role',
+            'cloudru:Iam/role:Role',
             resource_name,
             __props__,
             opts)

@@ -150,7 +150,7 @@ class _RoleAssignmentState:
         pulumi.set(self, "role_id", value)
 
 
-@pulumi.type_token("sbercloud:Iam/roleAssignment:RoleAssignment")
+@pulumi.type_token("cloudru:Iam/roleAssignment:RoleAssignment")
 class RoleAssignment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -214,7 +214,7 @@ class RoleAssignment(pulumi.CustomResource):
                 raise TypeError("Missing required property 'role_id'")
             __props__.__dict__["role_id"] = role_id
         super(RoleAssignment, __self__).__init__(
-            'sbercloud:Iam/roleAssignment:RoleAssignment',
+            'cloudru:Iam/roleAssignment:RoleAssignment',
             resource_name,
             __props__,
             opts)

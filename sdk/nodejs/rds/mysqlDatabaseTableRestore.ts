@@ -21,7 +21,7 @@ export class MysqlDatabaseTableRestore extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Rds/mysqlDatabaseTableRestore:MysqlDatabaseTableRestore';
+    public static readonly __pulumiType = 'cloudru:Rds/mysqlDatabaseTableRestore:MysqlDatabaseTableRestore';
 
     /**
      * Returns true if the given object is an instance of MysqlDatabaseTableRestore.  This is designed to work even

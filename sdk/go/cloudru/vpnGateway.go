@@ -80,7 +80,7 @@ func NewVpnGateway(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource VpnGateway
-	err := ctx.RegisterResource("sbercloud:index/vpnGateway:VpnGateway", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/vpnGateway:VpnGateway", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -92,7 +92,7 @@ func NewVpnGateway(ctx *pulumi.Context,
 func GetVpnGateway(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *VpnGatewayState, opts ...pulumi.ResourceOption) (*VpnGateway, error) {
 	var resource VpnGateway
-	err := ctx.ReadResource("sbercloud:index/vpnGateway:VpnGateway", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/vpnGateway:VpnGateway", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

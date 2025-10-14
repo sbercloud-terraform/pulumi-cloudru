@@ -14,7 +14,7 @@ import (
 func LookupLoadbalancer(ctx *pulumi.Context, args *LookupLoadbalancerArgs, opts ...pulumi.InvokeOption) (*LookupLoadbalancerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupLoadbalancerResult
-	err := ctx.Invoke("sbercloud:Elb/getLoadbalancer:getLoadbalancer", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Elb/getLoadbalancer:getLoadbalancer", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -53,7 +53,7 @@ func LookupLoadbalancerOutput(ctx *pulumi.Context, args LookupLoadbalancerOutput
 		ApplyT(func(v interface{}) (LookupLoadbalancerResultOutput, error) {
 			args := v.(LookupLoadbalancerArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Elb/getLoadbalancer:getLoadbalancer", args, LookupLoadbalancerResultOutput{}, options).(LookupLoadbalancerResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Elb/getLoadbalancer:getLoadbalancer", args, LookupLoadbalancerResultOutput{}, options).(LookupLoadbalancerResultOutput), nil
 		}).(LookupLoadbalancerResultOutput)
 }
 

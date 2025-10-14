@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 export function getInstance(args?: GetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Ecs/getInstance:getInstance", {
+    return pulumi.runtime.invoke("cloudru:Ecs/getInstance:getInstance", {
         "enterpriseProjectId": args.enterpriseProjectId,
         "fixedIpV4": args.fixedIpV4,
         "flavorId": args.flavorId,
@@ -68,7 +68,7 @@ export interface GetInstanceResult {
 export function getInstanceOutput(args?: GetInstanceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Ecs/getInstance:getInstance", {
+    return pulumi.runtime.invokeOutput("cloudru:Ecs/getInstance:getInstance", {
         "enterpriseProjectId": args.enterpriseProjectId,
         "fixedIpV4": args.fixedIpV4,
         "flavorId": args.flavorId,

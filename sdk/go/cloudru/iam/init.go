@@ -21,29 +21,29 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "sbercloud:Iam/accessKey:AccessKey":
+	case "cloudru:Iam/accessKey:AccessKey":
 		r = &AccessKey{}
-	case "sbercloud:Iam/acl:Acl":
+	case "cloudru:Iam/acl:Acl":
 		r = &Acl{}
-	case "sbercloud:Iam/agency:Agency":
+	case "cloudru:Iam/agency:Agency":
 		r = &Agency{}
-	case "sbercloud:Iam/group:Group":
+	case "cloudru:Iam/group:Group":
 		r = &Group{}
-	case "sbercloud:Iam/groupMembership:GroupMembership":
+	case "cloudru:Iam/groupMembership:GroupMembership":
 		r = &GroupMembership{}
-	case "sbercloud:Iam/groupRoleAssignment:GroupRoleAssignment":
+	case "cloudru:Iam/groupRoleAssignment:GroupRoleAssignment":
 		r = &GroupRoleAssignment{}
-	case "sbercloud:Iam/project:Project":
+	case "cloudru:Iam/project:Project":
 		r = &Project{}
-	case "sbercloud:Iam/provider:Provider":
+	case "cloudru:Iam/provider:Provider":
 		r = &Provider{}
-	case "sbercloud:Iam/providerConversion:ProviderConversion":
+	case "cloudru:Iam/providerConversion:ProviderConversion":
 		r = &ProviderConversion{}
-	case "sbercloud:Iam/role:Role":
+	case "cloudru:Iam/role:Role":
 		r = &Role{}
-	case "sbercloud:Iam/roleAssignment:RoleAssignment":
+	case "cloudru:Iam/roleAssignment:RoleAssignment":
 		r = &RoleAssignment{}
-	case "sbercloud:Iam/user:User":
+	case "cloudru:Iam/user:User":
 		r = &User{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
@@ -59,62 +59,62 @@ func init() {
 		version = semver.Version{Major: 1}
 	}
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Iam/accessKey",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Iam/acl",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Iam/agency",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Iam/group",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Iam/groupMembership",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Iam/groupRoleAssignment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Iam/project",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Iam/provider",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Iam/providerConversion",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Iam/role",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Iam/roleAssignment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Iam/user",
 		&module{version},
 	)

@@ -310,7 +310,7 @@ class _DmsRocketmqConsumerGroupState:
         pulumi.set(self, "retry_max_times", value)
 
 
-@pulumi.type_token("sbercloud:index/dmsRocketmqConsumerGroup:DmsRocketmqConsumerGroup")
+@pulumi.type_token("cloudru:index/dmsRocketmqConsumerGroup:DmsRocketmqConsumerGroup")
 class DmsRocketmqConsumerGroup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -394,7 +394,7 @@ class DmsRocketmqConsumerGroup(pulumi.CustomResource):
                 raise TypeError("Missing required property 'retry_max_times'")
             __props__.__dict__["retry_max_times"] = retry_max_times
         super(DmsRocketmqConsumerGroup, __self__).__init__(
-            'sbercloud:index/dmsRocketmqConsumerGroup:DmsRocketmqConsumerGroup',
+            'cloudru:index/dmsRocketmqConsumerGroup:DmsRocketmqConsumerGroup',
             resource_name,
             __props__,
             opts)

@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 export function getVpnConnectionHealthChecks(args?: GetVpnConnectionHealthChecksArgs, opts?: pulumi.InvokeOptions): Promise<GetVpnConnectionHealthChecksResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getVpnConnectionHealthChecks:getVpnConnectionHealthChecks", {
+    return pulumi.runtime.invoke("cloudru:index/getVpnConnectionHealthChecks:getVpnConnectionHealthChecks", {
         "connectionId": args.connectionId,
         "destinationIp": args.destinationIp,
         "region": args.region,
@@ -47,7 +47,7 @@ export interface GetVpnConnectionHealthChecksResult {
 export function getVpnConnectionHealthChecksOutput(args?: GetVpnConnectionHealthChecksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpnConnectionHealthChecksResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getVpnConnectionHealthChecks:getVpnConnectionHealthChecks", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getVpnConnectionHealthChecks:getVpnConnectionHealthChecks", {
         "connectionId": args.connectionId,
         "destinationIp": args.destinationIp,
         "region": args.region,

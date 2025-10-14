@@ -386,7 +386,7 @@ class _ServiceState:
         pulumi.set(self, "vpc_id", value)
 
 
-@pulumi.type_token("sbercloud:Vpcep/service:Service")
+@pulumi.type_token("cloudru:Vpcep/service:Service")
 class Service(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -482,7 +482,7 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["service_name"] = None
             __props__.__dict__["status"] = None
         super(Service, __self__).__init__(
-            'sbercloud:Vpcep/service:Service',
+            'cloudru:Vpcep/service:Service',
             resource_name,
             __props__,
             opts)

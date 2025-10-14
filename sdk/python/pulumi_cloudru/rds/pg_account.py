@@ -232,7 +232,7 @@ class _PgAccountState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:Rds/pgAccount:PgAccount")
+@pulumi.type_token("cloudru:Rds/pgAccount:PgAccount")
 class PgAccount(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -307,7 +307,7 @@ class PgAccount(pulumi.CustomResource):
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(PgAccount, __self__).__init__(
-            'sbercloud:Rds/pgAccount:PgAccount',
+            'cloudru:Rds/pgAccount:PgAccount',
             resource_name,
             __props__,
             opts)

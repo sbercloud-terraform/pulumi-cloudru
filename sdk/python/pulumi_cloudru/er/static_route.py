@@ -254,7 +254,7 @@ class _StaticRouteState:
         pulumi.set(self, "updated_at", value)
 
 
-@pulumi.type_token("sbercloud:Er/staticRoute:StaticRoute")
+@pulumi.type_token("cloudru:Er/staticRoute:StaticRoute")
 class StaticRoute(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -327,7 +327,7 @@ class StaticRoute(pulumi.CustomResource):
             __props__.__dict__["type"] = None
             __props__.__dict__["updated_at"] = None
         super(StaticRoute, __self__).__init__(
-            'sbercloud:Er/staticRoute:StaticRoute',
+            'cloudru:Er/staticRoute:StaticRoute',
             resource_name,
             __props__,
             opts)

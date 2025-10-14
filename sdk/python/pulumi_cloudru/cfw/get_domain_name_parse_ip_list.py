@@ -141,7 +141,7 @@ def get_domain_name_parse_ip_list(address_type: Optional[_builtins.str] = None,
     __args__['groupId'] = group_id
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Cfw/getDomainNameParseIpList:getDomainNameParseIpList', __args__, opts=opts, typ=GetDomainNameParseIpListResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Cfw/getDomainNameParseIpList:getDomainNameParseIpList', __args__, opts=opts, typ=GetDomainNameParseIpListResult).value
 
     return AwaitableGetDomainNameParseIpListResult(
         address_type=pulumi.get(__ret__, 'address_type'),
@@ -173,7 +173,7 @@ def get_domain_name_parse_ip_list_output(address_type: Optional[pulumi.Input[Opt
     __args__['groupId'] = group_id
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Cfw/getDomainNameParseIpList:getDomainNameParseIpList', __args__, opts=opts, typ=GetDomainNameParseIpListResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Cfw/getDomainNameParseIpList:getDomainNameParseIpList', __args__, opts=opts, typ=GetDomainNameParseIpListResult)
     return __ret__.apply(lambda __response__: GetDomainNameParseIpListResult(
         address_type=pulumi.get(__response__, 'address_type'),
         datas=pulumi.get(__response__, 'datas'),

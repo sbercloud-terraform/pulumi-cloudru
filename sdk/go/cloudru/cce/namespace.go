@@ -37,7 +37,7 @@ func NewNamespace(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Namespace
-	err := ctx.RegisterResource("sbercloud:Cce/namespace:Namespace", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Cce/namespace:Namespace", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -49,7 +49,7 @@ func NewNamespace(ctx *pulumi.Context,
 func GetNamespace(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *NamespaceState, opts ...pulumi.ResourceOption) (*Namespace, error) {
 	var resource Namespace
-	err := ctx.ReadResource("sbercloud:Cce/namespace:Namespace", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Cce/namespace:Namespace", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

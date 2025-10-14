@@ -129,7 +129,7 @@ def get_peering_connection(id: Optional[_builtins.str] = None,
     __args__['status'] = status
     __args__['vpcId'] = vpc_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Vpc/getPeeringConnection:getPeeringConnection', __args__, opts=opts, typ=GetPeeringConnectionResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Vpc/getPeeringConnection:getPeeringConnection', __args__, opts=opts, typ=GetPeeringConnectionResult).value
 
     return AwaitableGetPeeringConnectionResult(
         description=pulumi.get(__ret__, 'description'),
@@ -160,7 +160,7 @@ def get_peering_connection_output(id: Optional[pulumi.Input[Optional[_builtins.s
     __args__['status'] = status
     __args__['vpcId'] = vpc_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Vpc/getPeeringConnection:getPeeringConnection', __args__, opts=opts, typ=GetPeeringConnectionResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Vpc/getPeeringConnection:getPeeringConnection', __args__, opts=opts, typ=GetPeeringConnectionResult)
     return __ret__.apply(lambda __response__: GetPeeringConnectionResult(
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),

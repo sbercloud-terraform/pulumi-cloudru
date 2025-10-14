@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 export function getCaptureTasks(args: GetCaptureTasksArgs, opts?: pulumi.InvokeOptions): Promise<GetCaptureTasksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Cfw/getCaptureTasks:getCaptureTasks", {
+    return pulumi.runtime.invoke("cloudru:Cfw/getCaptureTasks:getCaptureTasks", {
         "fwInstanceId": args.fwInstanceId,
         "region": args.region,
     }, opts);
@@ -36,7 +36,7 @@ export interface GetCaptureTasksResult {
 }
 export function getCaptureTasksOutput(args: GetCaptureTasksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCaptureTasksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Cfw/getCaptureTasks:getCaptureTasks", {
+    return pulumi.runtime.invokeOutput("cloudru:Cfw/getCaptureTasks:getCaptureTasks", {
         "fwInstanceId": args.fwInstanceId,
         "region": args.region,
     }, opts);

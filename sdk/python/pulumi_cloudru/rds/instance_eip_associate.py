@@ -149,7 +149,7 @@ class _InstanceEipAssociateState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:Rds/instanceEipAssociate:InstanceEipAssociate")
+@pulumi.type_token("cloudru:Rds/instanceEipAssociate:InstanceEipAssociate")
 class InstanceEipAssociate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -215,7 +215,7 @@ class InstanceEipAssociate(pulumi.CustomResource):
             __props__.__dict__["public_ip_id"] = public_ip_id
             __props__.__dict__["region"] = region
         super(InstanceEipAssociate, __self__).__init__(
-            'sbercloud:Rds/instanceEipAssociate:InstanceEipAssociate',
+            'cloudru:Rds/instanceEipAssociate:InstanceEipAssociate',
             resource_name,
             __props__,
             opts)

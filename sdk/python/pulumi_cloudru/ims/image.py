@@ -512,7 +512,7 @@ class _ImageState:
         pulumi.set(self, "volume_id", value)
 
 
-@pulumi.type_token("sbercloud:Ims/image:Image")
+@pulumi.type_token("cloudru:Ims/image:Image")
 class Image(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -614,7 +614,7 @@ class Image(pulumi.CustomResource):
             __props__.__dict__["status"] = None
             __props__.__dict__["visibility"] = None
         super(Image, __self__).__init__(
-            'sbercloud:Ims/image:Image',
+            'cloudru:Ims/image:Image',
             resource_name,
             __props__,
             opts)

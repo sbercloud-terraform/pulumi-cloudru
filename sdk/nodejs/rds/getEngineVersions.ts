@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 export function getEngineVersions(args?: GetEngineVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetEngineVersionsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Rds/getEngineVersions:getEngineVersions", {
+    return pulumi.runtime.invoke("cloudru:Rds/getEngineVersions:getEngineVersions", {
         "region": args.region,
         "type": args.type,
     }, opts);
@@ -38,7 +38,7 @@ export interface GetEngineVersionsResult {
 export function getEngineVersionsOutput(args?: GetEngineVersionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEngineVersionsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Rds/getEngineVersions:getEngineVersions", {
+    return pulumi.runtime.invokeOutput("cloudru:Rds/getEngineVersions:getEngineVersions", {
         "region": args.region,
         "type": args.type,
     }, opts);

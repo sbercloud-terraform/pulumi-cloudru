@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 export function getClusterCertificates(args: GetClusterCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterCertificatesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Cce/getClusterCertificates:getClusterCertificates", {
+    return pulumi.runtime.invoke("cloudru:Cce/getClusterCertificates:getClusterCertificates", {
         "clusterId": args.clusterId,
         "duration": args.duration,
         "region": args.region,
@@ -43,7 +43,7 @@ export interface GetClusterCertificatesResult {
 }
 export function getClusterCertificatesOutput(args: GetClusterCertificatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClusterCertificatesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Cce/getClusterCertificates:getClusterCertificates", {
+    return pulumi.runtime.invokeOutput("cloudru:Cce/getClusterCertificates:getClusterCertificates", {
         "clusterId": args.clusterId,
         "duration": args.duration,
         "region": args.region,

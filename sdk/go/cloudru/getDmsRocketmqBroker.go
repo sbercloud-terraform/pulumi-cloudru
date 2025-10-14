@@ -14,7 +14,7 @@ import (
 func GetDmsRocketmqBroker(ctx *pulumi.Context, args *GetDmsRocketmqBrokerArgs, opts ...pulumi.InvokeOption) (*GetDmsRocketmqBrokerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDmsRocketmqBrokerResult
-	err := ctx.Invoke("sbercloud:index/getDmsRocketmqBroker:getDmsRocketmqBroker", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getDmsRocketmqBroker:getDmsRocketmqBroker", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -41,7 +41,7 @@ func GetDmsRocketmqBrokerOutput(ctx *pulumi.Context, args GetDmsRocketmqBrokerOu
 		ApplyT(func(v interface{}) (GetDmsRocketmqBrokerResultOutput, error) {
 			args := v.(GetDmsRocketmqBrokerArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getDmsRocketmqBroker:getDmsRocketmqBroker", args, GetDmsRocketmqBrokerResultOutput{}, options).(GetDmsRocketmqBrokerResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getDmsRocketmqBroker:getDmsRocketmqBroker", args, GetDmsRocketmqBrokerResultOutput{}, options).(GetDmsRocketmqBrokerResultOutput), nil
 		}).(GetDmsRocketmqBrokerResultOutput)
 }
 

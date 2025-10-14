@@ -14,7 +14,7 @@ import (
 func GetEips(ctx *pulumi.Context, args *GetEipsArgs, opts ...pulumi.InvokeOption) (*GetEipsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEipsResult
-	err := ctx.Invoke("sbercloud:Eip/getEips:getEips", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Eip/getEips:getEips", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -53,7 +53,7 @@ func GetEipsOutput(ctx *pulumi.Context, args GetEipsOutputArgs, opts ...pulumi.I
 		ApplyT(func(v interface{}) (GetEipsResultOutput, error) {
 			args := v.(GetEipsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Eip/getEips:getEips", args, GetEipsResultOutput{}, options).(GetEipsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Eip/getEips:getEips", args, GetEipsResultOutput{}, options).(GetEipsResultOutput), nil
 		}).(GetEipsResultOutput)
 }
 

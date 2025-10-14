@@ -19,7 +19,7 @@ export class Propagation extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Er/propagation:Propagation';
+    public static readonly __pulumiType = 'cloudru:Er/propagation:Propagation';
 
     /**
      * Returns true if the given object is an instance of Propagation.  This is designed to work even

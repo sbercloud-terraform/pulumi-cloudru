@@ -21,49 +21,49 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "sbercloud:Rds/backup:Backup":
+	case "cloudru:Rds/backup:Backup":
 		r = &Backup{}
-	case "sbercloud:Rds/instance:Instance":
+	case "cloudru:Rds/instance:Instance":
 		r = &Instance{}
-	case "sbercloud:Rds/instanceEipAssociate:InstanceEipAssociate":
+	case "cloudru:Rds/instanceEipAssociate:InstanceEipAssociate":
 		r = &InstanceEipAssociate{}
-	case "sbercloud:Rds/mysqlAccount:MysqlAccount":
+	case "cloudru:Rds/mysqlAccount:MysqlAccount":
 		r = &MysqlAccount{}
-	case "sbercloud:Rds/mysqlBinlog:MysqlBinlog":
+	case "cloudru:Rds/mysqlBinlog:MysqlBinlog":
 		r = &MysqlBinlog{}
-	case "sbercloud:Rds/mysqlDatabase:MysqlDatabase":
+	case "cloudru:Rds/mysqlDatabase:MysqlDatabase":
 		r = &MysqlDatabase{}
-	case "sbercloud:Rds/mysqlDatabasePrivilege:MysqlDatabasePrivilege":
+	case "cloudru:Rds/mysqlDatabasePrivilege:MysqlDatabasePrivilege":
 		r = &MysqlDatabasePrivilege{}
-	case "sbercloud:Rds/mysqlDatabaseTableRestore:MysqlDatabaseTableRestore":
+	case "cloudru:Rds/mysqlDatabaseTableRestore:MysqlDatabaseTableRestore":
 		r = &MysqlDatabaseTableRestore{}
-	case "sbercloud:Rds/parametergroup:Parametergroup":
+	case "cloudru:Rds/parametergroup:Parametergroup":
 		r = &Parametergroup{}
-	case "sbercloud:Rds/pgAccount:PgAccount":
+	case "cloudru:Rds/pgAccount:PgAccount":
 		r = &PgAccount{}
-	case "sbercloud:Rds/pgAccountRoles:PgAccountRoles":
+	case "cloudru:Rds/pgAccountRoles:PgAccountRoles":
 		r = &PgAccountRoles{}
-	case "sbercloud:Rds/pgDatabase:PgDatabase":
+	case "cloudru:Rds/pgDatabase:PgDatabase":
 		r = &PgDatabase{}
-	case "sbercloud:Rds/pgHba:PgHba":
+	case "cloudru:Rds/pgHba:PgHba":
 		r = &PgHba{}
-	case "sbercloud:Rds/pgPlugin:PgPlugin":
+	case "cloudru:Rds/pgPlugin:PgPlugin":
 		r = &PgPlugin{}
-	case "sbercloud:Rds/pgPluginParameter:PgPluginParameter":
+	case "cloudru:Rds/pgPluginParameter:PgPluginParameter":
 		r = &PgPluginParameter{}
-	case "sbercloud:Rds/pgPluginUpdate:PgPluginUpdate":
+	case "cloudru:Rds/pgPluginUpdate:PgPluginUpdate":
 		r = &PgPluginUpdate{}
-	case "sbercloud:Rds/pgSqlLimit:PgSqlLimit":
+	case "cloudru:Rds/pgSqlLimit:PgSqlLimit":
 		r = &PgSqlLimit{}
-	case "sbercloud:Rds/readReplicaInstance:ReadReplicaInstance":
+	case "cloudru:Rds/readReplicaInstance:ReadReplicaInstance":
 		r = &ReadReplicaInstance{}
-	case "sbercloud:Rds/sqlAudit:SqlAudit":
+	case "cloudru:Rds/sqlAudit:SqlAudit":
 		r = &SqlAudit{}
-	case "sbercloud:Rds/sqlserverAccount:SqlserverAccount":
+	case "cloudru:Rds/sqlserverAccount:SqlserverAccount":
 		r = &SqlserverAccount{}
-	case "sbercloud:Rds/sqlserverDatabase:SqlserverDatabase":
+	case "cloudru:Rds/sqlserverDatabase:SqlserverDatabase":
 		r = &SqlserverDatabase{}
-	case "sbercloud:Rds/sqlserverDatabasePrivilege:SqlserverDatabasePrivilege":
+	case "cloudru:Rds/sqlserverDatabasePrivilege:SqlserverDatabasePrivilege":
 		r = &SqlserverDatabasePrivilege{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
@@ -79,112 +79,112 @@ func init() {
 		version = semver.Version{Major: 1}
 	}
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Rds/backup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Rds/instance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Rds/instanceEipAssociate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Rds/mysqlAccount",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Rds/mysqlBinlog",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Rds/mysqlDatabase",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Rds/mysqlDatabasePrivilege",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Rds/mysqlDatabaseTableRestore",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Rds/parametergroup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Rds/pgAccount",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Rds/pgAccountRoles",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Rds/pgDatabase",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Rds/pgHba",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Rds/pgPlugin",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Rds/pgPluginParameter",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Rds/pgPluginUpdate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Rds/pgSqlLimit",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Rds/readReplicaInstance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Rds/sqlAudit",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Rds/sqlserverAccount",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Rds/sqlserverDatabase",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Rds/sqlserverDatabasePrivilege",
 		&module{version},
 	)

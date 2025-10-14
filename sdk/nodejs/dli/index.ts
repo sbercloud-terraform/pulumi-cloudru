@@ -30,20 +30,20 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "sbercloud:Dli/database:Database":
+            case "cloudru:Dli/database:Database":
                 return new Database(name, <any>undefined, { urn })
-            case "sbercloud:Dli/package:Package":
+            case "cloudru:Dli/package:Package":
                 return new Package(name, <any>undefined, { urn })
-            case "sbercloud:Dli/queue:Queue":
+            case "cloudru:Dli/queue:Queue":
                 return new Queue(name, <any>undefined, { urn })
-            case "sbercloud:Dli/sparkJob:SparkJob":
+            case "cloudru:Dli/sparkJob:SparkJob":
                 return new SparkJob(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("sbercloud", "Dli/database", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Dli/package", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Dli/queue", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Dli/sparkJob", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Dli/database", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Dli/package", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Dli/queue", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Dli/sparkJob", _module)

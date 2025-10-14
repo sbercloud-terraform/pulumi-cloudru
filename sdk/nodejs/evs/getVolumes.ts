@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 export function getVolumes(args?: GetVolumesArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Evs/getVolumes:getVolumes", {
+    return pulumi.runtime.invoke("cloudru:Evs/getVolumes:getVolumes", {
         "availabilityZone": args.availabilityZone,
         "dedicatedStorageId": args.dedicatedStorageId,
         "dedicatedStorageName": args.dedicatedStorageName,
@@ -83,7 +83,7 @@ export interface GetVolumesResult {
 export function getVolumesOutput(args?: GetVolumesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVolumesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Evs/getVolumes:getVolumes", {
+    return pulumi.runtime.invokeOutput("cloudru:Evs/getVolumes:getVolumes", {
         "availabilityZone": args.availabilityZone,
         "dedicatedStorageId": args.dedicatedStorageId,
         "dedicatedStorageName": args.dedicatedStorageName,

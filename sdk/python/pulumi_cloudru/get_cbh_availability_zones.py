@@ -98,7 +98,7 @@ def get_cbh_availability_zones(display_name: Optional[_builtins.str] = None,
     __args__['name'] = name
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getCbhAvailabilityZones:getCbhAvailabilityZones', __args__, opts=opts, typ=GetCbhAvailabilityZonesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getCbhAvailabilityZones:getCbhAvailabilityZones', __args__, opts=opts, typ=GetCbhAvailabilityZonesResult).value
 
     return AwaitableGetCbhAvailabilityZonesResult(
         availability_zones=pulumi.get(__ret__, 'availability_zones'),
@@ -118,7 +118,7 @@ def get_cbh_availability_zones_output(display_name: Optional[pulumi.Input[Option
     __args__['name'] = name
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getCbhAvailabilityZones:getCbhAvailabilityZones', __args__, opts=opts, typ=GetCbhAvailabilityZonesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getCbhAvailabilityZones:getCbhAvailabilityZones', __args__, opts=opts, typ=GetCbhAvailabilityZonesResult)
     return __ret__.apply(lambda __response__: GetCbhAvailabilityZonesResult(
         availability_zones=pulumi.get(__response__, 'availability_zones'),
         display_name=pulumi.get(__response__, 'display_name'),

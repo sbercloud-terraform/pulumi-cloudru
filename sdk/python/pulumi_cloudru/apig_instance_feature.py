@@ -183,7 +183,7 @@ class _ApigInstanceFeatureState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:index/apigInstanceFeature:ApigInstanceFeature")
+@pulumi.type_token("cloudru:index/apigInstanceFeature:ApigInstanceFeature")
 class ApigInstanceFeature(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -249,7 +249,7 @@ class ApigInstanceFeature(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["region"] = region
         super(ApigInstanceFeature, __self__).__init__(
-            'sbercloud:index/apigInstanceFeature:ApigInstanceFeature',
+            'cloudru:index/apigInstanceFeature:ApigInstanceFeature',
             resource_name,
             __props__,
             opts)

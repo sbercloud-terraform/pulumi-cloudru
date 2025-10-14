@@ -71,7 +71,7 @@ func NewVolume(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Volume
-	err := ctx.RegisterResource("sbercloud:Evs/volume:Volume", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Evs/volume:Volume", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -83,7 +83,7 @@ func NewVolume(ctx *pulumi.Context,
 func GetVolume(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *VolumeState, opts ...pulumi.ResourceOption) (*Volume, error) {
 	var resource Volume
-	err := ctx.ReadResource("sbercloud:Evs/volume:Volume", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Evs/volume:Volume", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

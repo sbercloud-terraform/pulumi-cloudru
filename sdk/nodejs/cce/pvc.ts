@@ -19,7 +19,7 @@ export class Pvc extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Cce/pvc:Pvc';
+    public static readonly __pulumiType = 'cloudru:Cce/pvc:Pvc';
 
     /**
      * Returns true if the given object is an instance of Pvc.  This is designed to work even

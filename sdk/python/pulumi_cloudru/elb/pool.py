@@ -348,7 +348,7 @@ class _PoolState:
         pulumi.set(self, "tenant_id", value)
 
 
-@pulumi.type_token("sbercloud:Elb/pool:Pool")
+@pulumi.type_token("cloudru:Elb/pool:Pool")
 class Pool(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -434,7 +434,7 @@ class Pool(pulumi.CustomResource):
             __props__.__dict__["tenant_id"] = tenant_id
             __props__.__dict__["monitor_id"] = None
         super(Pool, __self__).__init__(
-            'sbercloud:Elb/pool:Pool',
+            'cloudru:Elb/pool:Pool',
             resource_name,
             __props__,
             opts)

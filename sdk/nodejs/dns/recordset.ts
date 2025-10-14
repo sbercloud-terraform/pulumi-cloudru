@@ -19,7 +19,7 @@ export class Recordset extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Dns/recordset:Recordset';
+    public static readonly __pulumiType = 'cloudru:Dns/recordset:Recordset';
 
     /**
      * Returns true if the given object is an instance of Recordset.  This is designed to work even

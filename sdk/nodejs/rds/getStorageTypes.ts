@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 export function getStorageTypes(args: GetStorageTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetStorageTypesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Rds/getStorageTypes:getStorageTypes", {
+    return pulumi.runtime.invoke("cloudru:Rds/getStorageTypes:getStorageTypes", {
         "dbType": args.dbType,
         "dbVersion": args.dbVersion,
         "instanceMode": args.instanceMode,
@@ -42,7 +42,7 @@ export interface GetStorageTypesResult {
 }
 export function getStorageTypesOutput(args: GetStorageTypesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStorageTypesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Rds/getStorageTypes:getStorageTypes", {
+    return pulumi.runtime.invokeOutput("cloudru:Rds/getStorageTypes:getStorageTypes", {
         "dbType": args.dbType,
         "dbVersion": args.dbVersion,
         "instanceMode": args.instanceMode,

@@ -157,7 +157,7 @@ class _ApigAclPolicyAssociateState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:index/apigAclPolicyAssociate:ApigAclPolicyAssociate")
+@pulumi.type_token("cloudru:index/apigAclPolicyAssociate:ApigAclPolicyAssociate")
 class ApigAclPolicyAssociate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -224,7 +224,7 @@ class ApigAclPolicyAssociate(pulumi.CustomResource):
             __props__.__dict__["publish_ids"] = publish_ids
             __props__.__dict__["region"] = region
         super(ApigAclPolicyAssociate, __self__).__init__(
-            'sbercloud:index/apigAclPolicyAssociate:ApigAclPolicyAssociate',
+            'cloudru:index/apigAclPolicyAssociate:ApigAclPolicyAssociate',
             resource_name,
             __props__,
             opts)

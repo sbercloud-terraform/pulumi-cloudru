@@ -581,7 +581,7 @@ class _VpnConnectionState:
         pulumi.set(self, "vpn_type", value)
 
 
-@pulumi.type_token("sbercloud:index/vpnConnection:VpnConnection")
+@pulumi.type_token("cloudru:index/vpnConnection:VpnConnection")
 class VpnConnection(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -702,7 +702,7 @@ class VpnConnection(pulumi.CustomResource):
             __props__.__dict__["status"] = None
             __props__.__dict__["updated_at"] = None
         super(VpnConnection, __self__).__init__(
-            'sbercloud:index/vpnConnection:VpnConnection',
+            'cloudru:index/vpnConnection:VpnConnection',
             resource_name,
             __props__,
             opts)

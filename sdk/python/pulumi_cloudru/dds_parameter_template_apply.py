@@ -118,7 +118,7 @@ class _DdsParameterTemplateApplyState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:index/ddsParameterTemplateApply:DdsParameterTemplateApply")
+@pulumi.type_token("cloudru:index/ddsParameterTemplateApply:DdsParameterTemplateApply")
 class DdsParameterTemplateApply(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -178,7 +178,7 @@ class DdsParameterTemplateApply(pulumi.CustomResource):
             __props__.__dict__["entity_ids"] = entity_ids
             __props__.__dict__["region"] = region
         super(DdsParameterTemplateApply, __self__).__init__(
-            'sbercloud:index/ddsParameterTemplateApply:DdsParameterTemplateApply',
+            'cloudru:index/ddsParameterTemplateApply:DdsParameterTemplateApply',
             resource_name,
             __props__,
             opts)

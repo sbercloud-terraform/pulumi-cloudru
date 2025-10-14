@@ -69,7 +69,7 @@ func NewApigCertificate(ctx *pulumi.Context,
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApigCertificate
-	err := ctx.RegisterResource("sbercloud:index/apigCertificate:ApigCertificate", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/apigCertificate:ApigCertificate", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -81,7 +81,7 @@ func NewApigCertificate(ctx *pulumi.Context,
 func GetApigCertificate(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ApigCertificateState, opts ...pulumi.ResourceOption) (*ApigCertificate, error) {
 	var resource ApigCertificate
-	err := ctx.ReadResource("sbercloud:index/apigCertificate:ApigCertificate", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/apigCertificate:ApigCertificate", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

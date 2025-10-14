@@ -19,7 +19,7 @@ export class FlowLog extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Er/flowLog:FlowLog';
+    public static readonly __pulumiType = 'cloudru:Er/flowLog:FlowLog';
 
     /**
      * Returns true if the given object is an instance of FlowLog.  This is designed to work even

@@ -19,7 +19,7 @@ export class ThrottlingPolicyAssociate extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:DedicatedApig/throttlingPolicyAssociate:ThrottlingPolicyAssociate';
+    public static readonly __pulumiType = 'cloudru:DedicatedApig/throttlingPolicyAssociate:ThrottlingPolicyAssociate';
 
     /**
      * Returns true if the given object is an instance of ThrottlingPolicyAssociate.  This is designed to work even

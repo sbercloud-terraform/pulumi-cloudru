@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 export function getDcsProduct(args?: GetDcsProductArgs, opts?: pulumi.InvokeOptions): Promise<GetDcsProductResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getDcsProduct:getDcsProduct", {
+    return pulumi.runtime.invoke("cloudru:index/getDcsProduct:getDcsProduct", {
         "region": args.region,
         "specCode": args.specCode,
     }, opts);
@@ -39,7 +39,7 @@ export interface GetDcsProductResult {
 export function getDcsProductOutput(args?: GetDcsProductOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDcsProductResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getDcsProduct:getDcsProduct", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getDcsProduct:getDcsProduct", {
         "region": args.region,
         "specCode": args.specCode,
     }, opts);

@@ -6,7 +6,7 @@ import * as utilities from "./utilities";
 
 export function getVpnGatewayAvailabilityZones(args: GetVpnGatewayAvailabilityZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetVpnGatewayAvailabilityZonesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getVpnGatewayAvailabilityZones:getVpnGatewayAvailabilityZones", {
+    return pulumi.runtime.invoke("cloudru:index/getVpnGatewayAvailabilityZones:getVpnGatewayAvailabilityZones", {
         "attachmentType": args.attachmentType,
         "flavor": args.flavor,
         "region": args.region,
@@ -37,7 +37,7 @@ export interface GetVpnGatewayAvailabilityZonesResult {
 }
 export function getVpnGatewayAvailabilityZonesOutput(args: GetVpnGatewayAvailabilityZonesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpnGatewayAvailabilityZonesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getVpnGatewayAvailabilityZones:getVpnGatewayAvailabilityZones", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getVpnGatewayAvailabilityZones:getVpnGatewayAvailabilityZones", {
         "attachmentType": args.attachmentType,
         "flavor": args.flavor,
         "region": args.region,

@@ -78,7 +78,7 @@ class _IdentityGroupMembershipV3State:
         pulumi.set(self, "users", value)
 
 
-@pulumi.type_token("sbercloud:index/identityGroupMembershipV3:IdentityGroupMembershipV3")
+@pulumi.type_token("cloudru:index/identityGroupMembershipV3:IdentityGroupMembershipV3")
 class IdentityGroupMembershipV3(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -133,7 +133,7 @@ class IdentityGroupMembershipV3(pulumi.CustomResource):
                 raise TypeError("Missing required property 'users'")
             __props__.__dict__["users"] = users
         super(IdentityGroupMembershipV3, __self__).__init__(
-            'sbercloud:index/identityGroupMembershipV3:IdentityGroupMembershipV3',
+            'cloudru:index/identityGroupMembershipV3:IdentityGroupMembershipV3',
             resource_name,
             __props__,
             opts)

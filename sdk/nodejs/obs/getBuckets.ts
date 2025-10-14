@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 export function getBuckets(args?: GetBucketsArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Obs/getBuckets:getBuckets", {
+    return pulumi.runtime.invoke("cloudru:Obs/getBuckets:getBuckets", {
         "bucket": args.bucket,
         "enterpriseProjectId": args.enterpriseProjectId,
         "region": args.region,
@@ -41,7 +41,7 @@ export interface GetBucketsResult {
 export function getBucketsOutput(args?: GetBucketsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBucketsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Obs/getBuckets:getBuckets", {
+    return pulumi.runtime.invokeOutput("cloudru:Obs/getBuckets:getBuckets", {
         "bucket": args.bucket,
         "enterpriseProjectId": args.enterpriseProjectId,
         "region": args.region,

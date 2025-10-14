@@ -286,7 +286,7 @@ class _FgsDependencyVersionState:
         pulumi.set(self, "version_id", value)
 
 
-@pulumi.type_token("sbercloud:index/fgsDependencyVersion:FgsDependencyVersion")
+@pulumi.type_token("cloudru:index/fgsDependencyVersion:FgsDependencyVersion")
 class FgsDependencyVersion(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -361,7 +361,7 @@ class FgsDependencyVersion(pulumi.CustomResource):
             __props__.__dict__["version"] = None
             __props__.__dict__["version_id"] = None
         super(FgsDependencyVersion, __self__).__init__(
-            'sbercloud:index/fgsDependencyVersion:FgsDependencyVersion',
+            'cloudru:index/fgsDependencyVersion:FgsDependencyVersion',
             resource_name,
             __props__,
             opts)

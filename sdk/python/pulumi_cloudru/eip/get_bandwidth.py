@@ -145,7 +145,7 @@ def get_bandwidth(enterprise_project_id: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['size'] = size
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Eip/getBandwidth:getBandwidth', __args__, opts=opts, typ=GetBandwidthResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Eip/getBandwidth:getBandwidth', __args__, opts=opts, typ=GetBandwidthResult).value
 
     return AwaitableGetBandwidthResult(
         bandwidth_type=pulumi.get(__ret__, 'bandwidth_type'),
@@ -172,7 +172,7 @@ def get_bandwidth_output(enterprise_project_id: Optional[pulumi.Input[Optional[_
     __args__['region'] = region
     __args__['size'] = size
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Eip/getBandwidth:getBandwidth', __args__, opts=opts, typ=GetBandwidthResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Eip/getBandwidth:getBandwidth', __args__, opts=opts, typ=GetBandwidthResult)
     return __ret__.apply(lambda __response__: GetBandwidthResult(
         bandwidth_type=pulumi.get(__response__, 'bandwidth_type'),
         charge_mode=pulumi.get(__response__, 'charge_mode'),

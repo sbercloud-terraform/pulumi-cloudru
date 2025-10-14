@@ -86,7 +86,7 @@ def get_subnet_ids(region: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['vpcId'] = vpc_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Vpc/getSubnetIds:getSubnetIds', __args__, opts=opts, typ=GetSubnetIdsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Vpc/getSubnetIds:getSubnetIds', __args__, opts=opts, typ=GetSubnetIdsResult).value
 
     return AwaitableGetSubnetIdsResult(
         id=pulumi.get(__ret__, 'id'),
@@ -103,7 +103,7 @@ def get_subnet_ids_output(region: Optional[pulumi.Input[Optional[_builtins.str]]
     __args__['region'] = region
     __args__['vpcId'] = vpc_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Vpc/getSubnetIds:getSubnetIds', __args__, opts=opts, typ=GetSubnetIdsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Vpc/getSubnetIds:getSubnetIds', __args__, opts=opts, typ=GetSubnetIdsResult)
     return __ret__.apply(lambda __response__: GetSubnetIdsResult(
         id=pulumi.get(__response__, 'id'),
         ids=pulumi.get(__response__, 'ids'),

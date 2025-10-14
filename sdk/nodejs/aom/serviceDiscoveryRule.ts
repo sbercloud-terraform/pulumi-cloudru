@@ -21,7 +21,7 @@ export class ServiceDiscoveryRule extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Aom/serviceDiscoveryRule:ServiceDiscoveryRule';
+    public static readonly __pulumiType = 'cloudru:Aom/serviceDiscoveryRule:ServiceDiscoveryRule';
 
     /**
      * Returns true if the given object is an instance of ServiceDiscoveryRule.  This is designed to work even

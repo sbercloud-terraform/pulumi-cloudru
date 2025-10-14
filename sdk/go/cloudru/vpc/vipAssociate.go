@@ -38,7 +38,7 @@ func NewVipAssociate(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource VipAssociate
-	err := ctx.RegisterResource("sbercloud:Vpc/vipAssociate:VipAssociate", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Vpc/vipAssociate:VipAssociate", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -50,7 +50,7 @@ func NewVipAssociate(ctx *pulumi.Context,
 func GetVipAssociate(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *VipAssociateState, opts ...pulumi.ResourceOption) (*VipAssociate, error) {
 	var resource VipAssociate
-	err := ctx.ReadResource("sbercloud:Vpc/vipAssociate:VipAssociate", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Vpc/vipAssociate:VipAssociate", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

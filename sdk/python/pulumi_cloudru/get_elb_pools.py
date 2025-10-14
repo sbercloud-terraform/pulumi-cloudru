@@ -329,7 +329,7 @@ def get_elb_pools(any_port_enable: Optional[_builtins.str] = None,
     __args__['type'] = type
     __args__['vpcId'] = vpc_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getElbPools:getElbPools', __args__, opts=opts, typ=GetElbPoolsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getElbPools:getElbPools', __args__, opts=opts, typ=GetElbPoolsResult).value
 
     return AwaitableGetElbPoolsResult(
         any_port_enable=pulumi.get(__ret__, 'any_port_enable'),
@@ -412,7 +412,7 @@ def get_elb_pools_output(any_port_enable: Optional[pulumi.Input[Optional[_builti
     __args__['type'] = type
     __args__['vpcId'] = vpc_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getElbPools:getElbPools', __args__, opts=opts, typ=GetElbPoolsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getElbPools:getElbPools', __args__, opts=opts, typ=GetElbPoolsResult)
     return __ret__.apply(lambda __response__: GetElbPoolsResult(
         any_port_enable=pulumi.get(__response__, 'any_port_enable'),
         connection_drain=pulumi.get(__response__, 'connection_drain'),

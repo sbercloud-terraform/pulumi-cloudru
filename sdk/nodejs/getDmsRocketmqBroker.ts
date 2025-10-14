@@ -6,7 +6,7 @@ import * as utilities from "./utilities";
 
 export function getDmsRocketmqBroker(args: GetDmsRocketmqBrokerArgs, opts?: pulumi.InvokeOptions): Promise<GetDmsRocketmqBrokerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getDmsRocketmqBroker:getDmsRocketmqBroker", {
+    return pulumi.runtime.invoke("cloudru:index/getDmsRocketmqBroker:getDmsRocketmqBroker", {
         "instanceId": args.instanceId,
         "region": args.region,
     }, opts);
@@ -34,7 +34,7 @@ export interface GetDmsRocketmqBrokerResult {
 }
 export function getDmsRocketmqBrokerOutput(args: GetDmsRocketmqBrokerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDmsRocketmqBrokerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getDmsRocketmqBroker:getDmsRocketmqBroker", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getDmsRocketmqBroker:getDmsRocketmqBroker", {
         "instanceId": args.instanceId,
         "region": args.region,
     }, opts);

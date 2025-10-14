@@ -453,7 +453,7 @@ class _SubnetState:
         pulumi.set(self, "vpc_id", value)
 
 
-@pulumi.type_token("sbercloud:Vpc/subnet:Subnet")
+@pulumi.type_token("cloudru:Vpc/subnet:Subnet")
 class Subnet(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -554,7 +554,7 @@ class Subnet(pulumi.CustomResource):
             __props__.__dict__["ipv6_subnet_id"] = None
             __props__.__dict__["subnet_id"] = None
         super(Subnet, __self__).__init__(
-            'sbercloud:Vpc/subnet:Subnet',
+            'cloudru:Vpc/subnet:Subnet',
             resource_name,
             __props__,
             opts)

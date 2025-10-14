@@ -126,7 +126,7 @@ func NewDmsRocketmqInstance(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DmsRocketmqInstance
-	err := ctx.RegisterResource("sbercloud:index/dmsRocketmqInstance:DmsRocketmqInstance", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/dmsRocketmqInstance:DmsRocketmqInstance", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -138,7 +138,7 @@ func NewDmsRocketmqInstance(ctx *pulumi.Context,
 func GetDmsRocketmqInstance(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *DmsRocketmqInstanceState, opts ...pulumi.ResourceOption) (*DmsRocketmqInstance, error) {
 	var resource DmsRocketmqInstance
-	err := ctx.ReadResource("sbercloud:index/dmsRocketmqInstance:DmsRocketmqInstance", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/dmsRocketmqInstance:DmsRocketmqInstance", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

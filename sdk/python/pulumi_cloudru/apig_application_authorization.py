@@ -188,7 +188,7 @@ class _ApigApplicationAuthorizationState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:index/apigApplicationAuthorization:ApigApplicationAuthorization")
+@pulumi.type_token("cloudru:index/apigApplicationAuthorization:ApigApplicationAuthorization")
 class ApigApplicationAuthorization(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -261,7 +261,7 @@ class ApigApplicationAuthorization(pulumi.CustomResource):
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["region"] = region
         super(ApigApplicationAuthorization, __self__).__init__(
-            'sbercloud:index/apigApplicationAuthorization:ApigApplicationAuthorization',
+            'cloudru:index/apigApplicationAuthorization:ApigApplicationAuthorization',
             resource_name,
             __props__,
             opts)

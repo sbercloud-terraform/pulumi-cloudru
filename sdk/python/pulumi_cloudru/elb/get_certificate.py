@@ -115,7 +115,7 @@ def get_certificate(name: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['type'] = type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Elb/getCertificate:getCertificate', __args__, opts=opts, typ=GetCertificateResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Elb/getCertificate:getCertificate', __args__, opts=opts, typ=GetCertificateResult).value
 
     return AwaitableGetCertificateResult(
         description=pulumi.get(__ret__, 'description'),
@@ -137,7 +137,7 @@ def get_certificate_output(name: Optional[pulumi.Input[_builtins.str]] = None,
     __args__['region'] = region
     __args__['type'] = type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Elb/getCertificate:getCertificate', __args__, opts=opts, typ=GetCertificateResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Elb/getCertificate:getCertificate', __args__, opts=opts, typ=GetCertificateResult)
     return __ret__.apply(lambda __response__: GetCertificateResult(
         description=pulumi.get(__response__, 'description'),
         domain=pulumi.get(__response__, 'domain'),

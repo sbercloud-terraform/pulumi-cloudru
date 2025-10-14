@@ -103,7 +103,7 @@ def get_project(id: Optional[_builtins.str] = None,
     __args__['name'] = name
     __args__['status'] = status
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Eps/getProject:getProject', __args__, opts=opts, typ=GetProjectResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Eps/getProject:getProject', __args__, opts=opts, typ=GetProjectResult).value
 
     return AwaitableGetProjectResult(
         created_at=pulumi.get(__ret__, 'created_at'),
@@ -124,7 +124,7 @@ def get_project_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = Non
     __args__['name'] = name
     __args__['status'] = status
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Eps/getProject:getProject', __args__, opts=opts, typ=GetProjectResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Eps/getProject:getProject', __args__, opts=opts, typ=GetProjectResult)
     return __ret__.apply(lambda __response__: GetProjectResult(
         created_at=pulumi.get(__response__, 'created_at'),
         description=pulumi.get(__response__, 'description'),

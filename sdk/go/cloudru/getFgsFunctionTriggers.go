@@ -14,7 +14,7 @@ import (
 func GetFgsFunctionTriggers(ctx *pulumi.Context, args *GetFgsFunctionTriggersArgs, opts ...pulumi.InvokeOption) (*GetFgsFunctionTriggersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFgsFunctionTriggersResult
-	err := ctx.Invoke("sbercloud:index/getFgsFunctionTriggers:getFgsFunctionTriggers", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getFgsFunctionTriggers:getFgsFunctionTriggers", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func GetFgsFunctionTriggersOutput(ctx *pulumi.Context, args GetFgsFunctionTrigge
 		ApplyT(func(v interface{}) (GetFgsFunctionTriggersResultOutput, error) {
 			args := v.(GetFgsFunctionTriggersArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getFgsFunctionTriggers:getFgsFunctionTriggers", args, GetFgsFunctionTriggersResultOutput{}, options).(GetFgsFunctionTriggersResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getFgsFunctionTriggers:getFgsFunctionTriggers", args, GetFgsFunctionTriggersResultOutput{}, options).(GetFgsFunctionTriggersResultOutput), nil
 		}).(GetFgsFunctionTriggersResultOutput)
 }
 

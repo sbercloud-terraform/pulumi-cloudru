@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 export function getDmsKafkaConsumerGroups(args: GetDmsKafkaConsumerGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDmsKafkaConsumerGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getDmsKafkaConsumerGroups:getDmsKafkaConsumerGroups", {
+    return pulumi.runtime.invoke("cloudru:index/getDmsKafkaConsumerGroups:getDmsKafkaConsumerGroups", {
         "coordinatorId": args.coordinatorId,
         "description": args.description,
         "instanceId": args.instanceId,
@@ -51,7 +51,7 @@ export interface GetDmsKafkaConsumerGroupsResult {
 }
 export function getDmsKafkaConsumerGroupsOutput(args: GetDmsKafkaConsumerGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDmsKafkaConsumerGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getDmsKafkaConsumerGroups:getDmsKafkaConsumerGroups", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getDmsKafkaConsumerGroups:getDmsKafkaConsumerGroups", {
         "coordinatorId": args.coordinatorId,
         "description": args.description,
         "instanceId": args.instanceId,

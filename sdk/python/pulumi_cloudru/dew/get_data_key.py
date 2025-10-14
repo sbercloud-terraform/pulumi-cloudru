@@ -117,7 +117,7 @@ def get_data_key(datakey_length: Optional[_builtins.str] = None,
     __args__['keyId'] = key_id
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Dew/getDataKey:getDataKey', __args__, opts=opts, typ=GetDataKeyResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Dew/getDataKey:getDataKey', __args__, opts=opts, typ=GetDataKeyResult).value
 
     return AwaitableGetDataKeyResult(
         cipher_text=pulumi.get(__ret__, 'cipher_text'),
@@ -141,7 +141,7 @@ def get_data_key_output(datakey_length: Optional[pulumi.Input[_builtins.str]] = 
     __args__['keyId'] = key_id
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Dew/getDataKey:getDataKey', __args__, opts=opts, typ=GetDataKeyResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Dew/getDataKey:getDataKey', __args__, opts=opts, typ=GetDataKeyResult)
     return __ret__.apply(lambda __response__: GetDataKeyResult(
         cipher_text=pulumi.get(__response__, 'cipher_text'),
         datakey_length=pulumi.get(__response__, 'datakey_length'),

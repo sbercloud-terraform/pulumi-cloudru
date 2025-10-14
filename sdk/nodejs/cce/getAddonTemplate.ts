@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 export function getAddonTemplate(args: GetAddonTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetAddonTemplateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Cce/getAddonTemplate:getAddonTemplate", {
+    return pulumi.runtime.invoke("cloudru:Cce/getAddonTemplate:getAddonTemplate", {
         "clusterId": args.clusterId,
         "name": args.name,
         "region": args.region,
@@ -45,7 +45,7 @@ export interface GetAddonTemplateResult {
 }
 export function getAddonTemplateOutput(args: GetAddonTemplateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAddonTemplateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Cce/getAddonTemplate:getAddonTemplate", {
+    return pulumi.runtime.invokeOutput("cloudru:Cce/getAddonTemplate:getAddonTemplate", {
         "clusterId": args.clusterId,
         "name": args.name,
         "region": args.region,

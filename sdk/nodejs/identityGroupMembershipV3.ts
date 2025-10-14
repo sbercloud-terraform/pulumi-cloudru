@@ -19,7 +19,7 @@ export class IdentityGroupMembershipV3 extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/identityGroupMembershipV3:IdentityGroupMembershipV3';
+    public static readonly __pulumiType = 'cloudru:index/identityGroupMembershipV3:IdentityGroupMembershipV3';
 
     /**
      * Returns true if the given object is an instance of IdentityGroupMembershipV3.  This is designed to work even

@@ -76,7 +76,7 @@ def get_kps_running_tasks(region: Optional[_builtins.str] = None,
     __args__ = dict()
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getKpsRunningTasks:getKpsRunningTasks', __args__, opts=opts, typ=GetKpsRunningTasksResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getKpsRunningTasks:getKpsRunningTasks', __args__, opts=opts, typ=GetKpsRunningTasksResult).value
 
     return AwaitableGetKpsRunningTasksResult(
         id=pulumi.get(__ret__, 'id'),
@@ -90,7 +90,7 @@ def get_kps_running_tasks_output(region: Optional[pulumi.Input[Optional[_builtin
     __args__ = dict()
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getKpsRunningTasks:getKpsRunningTasks', __args__, opts=opts, typ=GetKpsRunningTasksResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getKpsRunningTasks:getKpsRunningTasks', __args__, opts=opts, typ=GetKpsRunningTasksResult)
     return __ret__.apply(lambda __response__: GetKpsRunningTasksResult(
         id=pulumi.get(__response__, 'id'),
         region=pulumi.get(__response__, 'region'),

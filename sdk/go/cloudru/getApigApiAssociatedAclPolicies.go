@@ -14,7 +14,7 @@ import (
 func GetApigApiAssociatedAclPolicies(ctx *pulumi.Context, args *GetApigApiAssociatedAclPoliciesArgs, opts ...pulumi.InvokeOption) (*GetApigApiAssociatedAclPoliciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetApigApiAssociatedAclPoliciesResult
-	err := ctx.Invoke("sbercloud:index/getApigApiAssociatedAclPolicies:getApigApiAssociatedAclPolicies", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getApigApiAssociatedAclPolicies:getApigApiAssociatedAclPolicies", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -55,7 +55,7 @@ func GetApigApiAssociatedAclPoliciesOutput(ctx *pulumi.Context, args GetApigApiA
 		ApplyT(func(v interface{}) (GetApigApiAssociatedAclPoliciesResultOutput, error) {
 			args := v.(GetApigApiAssociatedAclPoliciesArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getApigApiAssociatedAclPolicies:getApigApiAssociatedAclPolicies", args, GetApigApiAssociatedAclPoliciesResultOutput{}, options).(GetApigApiAssociatedAclPoliciesResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getApigApiAssociatedAclPolicies:getApigApiAssociatedAclPolicies", args, GetApigApiAssociatedAclPoliciesResultOutput{}, options).(GetApigApiAssociatedAclPoliciesResultOutput), nil
 		}).(GetApigApiAssociatedAclPoliciesResultOutput)
 }
 

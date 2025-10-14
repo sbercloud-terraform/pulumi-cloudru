@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 export function getApigInstances(args?: GetApigInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetApigInstancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getApigInstances:getApigInstances", {
+    return pulumi.runtime.invoke("cloudru:index/getApigInstances:getApigInstances", {
         "enterpriseProjectId": args.enterpriseProjectId,
         "instanceId": args.instanceId,
         "name": args.name,
@@ -47,7 +47,7 @@ export interface GetApigInstancesResult {
 export function getApigInstancesOutput(args?: GetApigInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApigInstancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getApigInstances:getApigInstances", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getApigInstances:getApigInstances", {
         "enterpriseProjectId": args.enterpriseProjectId,
         "instanceId": args.instanceId,
         "name": args.name,

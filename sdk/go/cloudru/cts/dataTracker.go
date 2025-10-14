@@ -54,7 +54,7 @@ func NewDataTracker(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DataTracker
-	err := ctx.RegisterResource("sbercloud:Cts/dataTracker:DataTracker", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Cts/dataTracker:DataTracker", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -66,7 +66,7 @@ func NewDataTracker(ctx *pulumi.Context,
 func GetDataTracker(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *DataTrackerState, opts ...pulumi.ResourceOption) (*DataTracker, error) {
 	var resource DataTracker
-	err := ctx.ReadResource("sbercloud:Cts/dataTracker:DataTracker", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Cts/dataTracker:DataTracker", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

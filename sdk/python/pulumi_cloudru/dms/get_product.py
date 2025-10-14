@@ -197,7 +197,7 @@ def get_product(availability_zones: Optional[Sequence[_builtins.str]] = None,
     __args__['version'] = version
     __args__['vmSpecification'] = vm_specification
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Dms/getProduct:getProduct', __args__, opts=opts, typ=GetProductResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Dms/getProduct:getProduct', __args__, opts=opts, typ=GetProductResult).value
 
     return AwaitableGetProductResult(
         availability_zones=pulumi.get(__ret__, 'availability_zones'),
@@ -244,7 +244,7 @@ def get_product_output(availability_zones: Optional[pulumi.Input[Optional[Sequen
     __args__['version'] = version
     __args__['vmSpecification'] = vm_specification
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Dms/getProduct:getProduct', __args__, opts=opts, typ=GetProductResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Dms/getProduct:getProduct', __args__, opts=opts, typ=GetProductResult)
     return __ret__.apply(lambda __response__: GetProductResult(
         availability_zones=pulumi.get(__response__, 'availability_zones'),
         bandwidth=pulumi.get(__response__, 'bandwidth'),

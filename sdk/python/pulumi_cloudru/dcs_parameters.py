@@ -115,7 +115,7 @@ class _DcsParametersState:
         pulumi.set(self, "project_id", value)
 
 
-@pulumi.type_token("sbercloud:index/dcsParameters:DcsParameters")
+@pulumi.type_token("cloudru:index/dcsParameters:DcsParameters")
 class DcsParameters(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -176,7 +176,7 @@ class DcsParameters(pulumi.CustomResource):
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["configuration_parameters"] = None
         super(DcsParameters, __self__).__init__(
-            'sbercloud:index/dcsParameters:DcsParameters',
+            'cloudru:index/dcsParameters:DcsParameters',
             resource_name,
             __props__,
             opts)

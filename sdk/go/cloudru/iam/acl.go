@@ -32,7 +32,7 @@ func NewAcl(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Acl
-	err := ctx.RegisterResource("sbercloud:Iam/acl:Acl", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Iam/acl:Acl", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -44,7 +44,7 @@ func NewAcl(ctx *pulumi.Context,
 func GetAcl(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *AclState, opts ...pulumi.ResourceOption) (*Acl, error) {
 	var resource Acl
-	err := ctx.ReadResource("sbercloud:Iam/acl:Acl", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Iam/acl:Acl", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

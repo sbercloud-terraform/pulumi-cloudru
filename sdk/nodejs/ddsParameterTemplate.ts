@@ -21,7 +21,7 @@ export class DdsParameterTemplate extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/ddsParameterTemplate:DdsParameterTemplate';
+    public static readonly __pulumiType = 'cloudru:index/ddsParameterTemplate:DdsParameterTemplate';
 
     /**
      * Returns true if the given object is an instance of DdsParameterTemplate.  This is designed to work even

@@ -98,7 +98,7 @@ def get_dms_rocketmq_message_traces(instance_id: Optional[_builtins.str] = None,
     __args__['messageId'] = message_id
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getDmsRocketmqMessageTraces:getDmsRocketmqMessageTraces', __args__, opts=opts, typ=GetDmsRocketmqMessageTracesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getDmsRocketmqMessageTraces:getDmsRocketmqMessageTraces', __args__, opts=opts, typ=GetDmsRocketmqMessageTracesResult).value
 
     return AwaitableGetDmsRocketmqMessageTracesResult(
         id=pulumi.get(__ret__, 'id'),
@@ -118,7 +118,7 @@ def get_dms_rocketmq_message_traces_output(instance_id: Optional[pulumi.Input[_b
     __args__['messageId'] = message_id
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getDmsRocketmqMessageTraces:getDmsRocketmqMessageTraces', __args__, opts=opts, typ=GetDmsRocketmqMessageTracesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getDmsRocketmqMessageTraces:getDmsRocketmqMessageTraces', __args__, opts=opts, typ=GetDmsRocketmqMessageTracesResult)
     return __ret__.apply(lambda __response__: GetDmsRocketmqMessageTracesResult(
         id=pulumi.get(__response__, 'id'),
         instance_id=pulumi.get(__response__, 'instance_id'),

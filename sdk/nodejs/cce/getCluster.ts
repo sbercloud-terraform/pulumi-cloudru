@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 export function getCluster(args?: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Cce/getCluster:getCluster", {
+    return pulumi.runtime.invoke("cloudru:Cce/getCluster:getCluster", {
         "clusterType": args.clusterType,
         "id": args.id,
         "name": args.name,
@@ -64,7 +64,7 @@ export interface GetClusterResult {
 export function getClusterOutput(args?: GetClusterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClusterResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Cce/getCluster:getCluster", {
+    return pulumi.runtime.invokeOutput("cloudru:Cce/getCluster:getCluster", {
         "clusterType": args.clusterType,
         "id": args.id,
         "name": args.name,

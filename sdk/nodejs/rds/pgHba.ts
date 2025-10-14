@@ -21,7 +21,7 @@ export class PgHba extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Rds/pgHba:PgHba';
+    public static readonly __pulumiType = 'cloudru:Rds/pgHba:PgHba';
 
     /**
      * Returns true if the given object is an instance of PgHba.  This is designed to work even

@@ -14,7 +14,7 @@ import (
 func GetApigInstances(ctx *pulumi.Context, args *GetApigInstancesArgs, opts ...pulumi.InvokeOption) (*GetApigInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetApigInstancesResult
-	err := ctx.Invoke("sbercloud:index/getApigInstances:getApigInstances", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getApigInstances:getApigInstances", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -47,7 +47,7 @@ func GetApigInstancesOutput(ctx *pulumi.Context, args GetApigInstancesOutputArgs
 		ApplyT(func(v interface{}) (GetApigInstancesResultOutput, error) {
 			args := v.(GetApigInstancesArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getApigInstances:getApigInstances", args, GetApigInstancesResultOutput{}, options).(GetApigInstancesResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getApigInstances:getApigInstances", args, GetApigInstancesResultOutput{}, options).(GetApigInstancesResultOutput), nil
 		}).(GetApigInstancesResultOutput)
 }
 

@@ -290,7 +290,7 @@ class _FgsApplicationState:
         pulumi.set(self, "template_id", value)
 
 
-@pulumi.type_token("sbercloud:index/fgsApplication:FgsApplication")
+@pulumi.type_token("cloudru:index/fgsApplication:FgsApplication")
 class FgsApplication(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -363,7 +363,7 @@ class FgsApplication(pulumi.CustomResource):
             __props__.__dict__["stack_resources"] = None
             __props__.__dict__["status"] = None
         super(FgsApplication, __self__).__init__(
-            'sbercloud:index/fgsApplication:FgsApplication',
+            'cloudru:index/fgsApplication:FgsApplication',
             resource_name,
             __props__,
             opts)

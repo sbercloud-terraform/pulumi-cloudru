@@ -43,7 +43,7 @@ func NewRecordset(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Recordset
-	err := ctx.RegisterResource("sbercloud:Dns/recordset:Recordset", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Dns/recordset:Recordset", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -55,7 +55,7 @@ func NewRecordset(ctx *pulumi.Context,
 func GetRecordset(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *RecordsetState, opts ...pulumi.ResourceOption) (*Recordset, error) {
 	var resource Recordset
-	err := ctx.ReadResource("sbercloud:Dns/recordset:Recordset", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Dns/recordset:Recordset", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

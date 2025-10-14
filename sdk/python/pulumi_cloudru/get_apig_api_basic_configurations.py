@@ -230,7 +230,7 @@ def get_apig_api_basic_configurations(api_id: Optional[_builtins.str] = None,
     __args__['type'] = type
     __args__['vpcChannelName'] = vpc_channel_name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getApigApiBasicConfigurations:getApigApiBasicConfigurations', __args__, opts=opts, typ=GetApigApiBasicConfigurationsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getApigApiBasicConfigurations:getApigApiBasicConfigurations', __args__, opts=opts, typ=GetApigApiBasicConfigurationsResult).value
 
     return AwaitableGetApigApiBasicConfigurationsResult(
         api_id=pulumi.get(__ret__, 'api_id'),
@@ -286,7 +286,7 @@ def get_apig_api_basic_configurations_output(api_id: Optional[pulumi.Input[Optio
     __args__['type'] = type
     __args__['vpcChannelName'] = vpc_channel_name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getApigApiBasicConfigurations:getApigApiBasicConfigurations', __args__, opts=opts, typ=GetApigApiBasicConfigurationsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getApigApiBasicConfigurations:getApigApiBasicConfigurations', __args__, opts=opts, typ=GetApigApiBasicConfigurationsResult)
     return __ret__.apply(lambda __response__: GetApigApiBasicConfigurationsResult(
         api_id=pulumi.get(__response__, 'api_id'),
         backend_type=pulumi.get(__response__, 'backend_type'),

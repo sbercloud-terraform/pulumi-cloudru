@@ -224,7 +224,7 @@ class _ResponseState:
         pulumi.set(self, "updated_at", value)
 
 
-@pulumi.type_token("sbercloud:DedicatedApig/response:Response")
+@pulumi.type_token("cloudru:DedicatedApig/response:Response")
 class Response(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -295,7 +295,7 @@ class Response(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["updated_at"] = None
         super(Response, __self__).__init__(
-            'sbercloud:DedicatedApig/response:Response',
+            'cloudru:DedicatedApig/response:Response',
             resource_name,
             __props__,
             opts)

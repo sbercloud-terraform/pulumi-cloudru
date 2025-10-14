@@ -158,7 +158,7 @@ def get_loadbalancer(description: Optional[_builtins.str] = None,
     __args__['vipAddress'] = vip_address
     __args__['vipSubnetId'] = vip_subnet_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Elb/getLoadbalancer:getLoadbalancer', __args__, opts=opts, typ=GetLoadbalancerResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Elb/getLoadbalancer:getLoadbalancer', __args__, opts=opts, typ=GetLoadbalancerResult).value
 
     return AwaitableGetLoadbalancerResult(
         description=pulumi.get(__ret__, 'description'),
@@ -194,7 +194,7 @@ def get_loadbalancer_output(description: Optional[pulumi.Input[Optional[_builtin
     __args__['vipAddress'] = vip_address
     __args__['vipSubnetId'] = vip_subnet_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Elb/getLoadbalancer:getLoadbalancer', __args__, opts=opts, typ=GetLoadbalancerResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Elb/getLoadbalancer:getLoadbalancer', __args__, opts=opts, typ=GetLoadbalancerResult)
     return __ret__.apply(lambda __response__: GetLoadbalancerResult(
         description=pulumi.get(__response__, 'description'),
         enterprise_project_id=pulumi.get(__response__, 'enterprise_project_id'),

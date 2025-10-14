@@ -412,7 +412,7 @@ class _VpnCustomerGatewayState:
         pulumi.set(self, "updated_at", value)
 
 
-@pulumi.type_token("sbercloud:index/vpnCustomerGateway:VpnCustomerGateway")
+@pulumi.type_token("cloudru:index/vpnCustomerGateway:VpnCustomerGateway")
 class VpnCustomerGateway(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -499,7 +499,7 @@ class VpnCustomerGateway(pulumi.CustomResource):
             __props__.__dict__["subject"] = None
             __props__.__dict__["updated_at"] = None
         super(VpnCustomerGateway, __self__).__init__(
-            'sbercloud:index/vpnCustomerGateway:VpnCustomerGateway',
+            'cloudru:index/vpnCustomerGateway:VpnCustomerGateway',
             resource_name,
             __props__,
             opts)

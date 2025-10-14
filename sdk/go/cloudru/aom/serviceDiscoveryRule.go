@@ -52,7 +52,7 @@ func NewServiceDiscoveryRule(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ServiceDiscoveryRule
-	err := ctx.RegisterResource("sbercloud:Aom/serviceDiscoveryRule:ServiceDiscoveryRule", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Aom/serviceDiscoveryRule:ServiceDiscoveryRule", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -64,7 +64,7 @@ func NewServiceDiscoveryRule(ctx *pulumi.Context,
 func GetServiceDiscoveryRule(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ServiceDiscoveryRuleState, opts ...pulumi.ResourceOption) (*ServiceDiscoveryRule, error) {
 	var resource ServiceDiscoveryRule
-	err := ctx.ReadResource("sbercloud:Aom/serviceDiscoveryRule:ServiceDiscoveryRule", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Aom/serviceDiscoveryRule:ServiceDiscoveryRule", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -1277,7 +1277,7 @@ class _InstanceState:
         pulumi.set(self, "volume_attacheds", value)
 
 
-@pulumi.type_token("sbercloud:Ecs/instance:Instance")
+@pulumi.type_token("cloudru:Ecs/instance:Instance")
 class Instance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -1476,7 +1476,7 @@ class Instance(pulumi.CustomResource):
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["adminPass", "privateKey"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Instance, __self__).__init__(
-            'sbercloud:Ecs/instance:Instance',
+            'cloudru:Ecs/instance:Instance',
             resource_name,
             __props__,
             opts)

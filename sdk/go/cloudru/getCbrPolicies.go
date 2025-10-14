@@ -14,7 +14,7 @@ import (
 func GetCbrPolicies(ctx *pulumi.Context, args *GetCbrPoliciesArgs, opts ...pulumi.InvokeOption) (*GetCbrPoliciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCbrPoliciesResult
-	err := ctx.Invoke("sbercloud:index/getCbrPolicies:getCbrPolicies", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getCbrPolicies:getCbrPolicies", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -49,7 +49,7 @@ func GetCbrPoliciesOutput(ctx *pulumi.Context, args GetCbrPoliciesOutputArgs, op
 		ApplyT(func(v interface{}) (GetCbrPoliciesResultOutput, error) {
 			args := v.(GetCbrPoliciesArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getCbrPolicies:getCbrPolicies", args, GetCbrPoliciesResultOutput{}, options).(GetCbrPoliciesResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getCbrPolicies:getCbrPolicies", args, GetCbrPoliciesResultOutput{}, options).(GetCbrPoliciesResultOutput), nil
 		}).(GetCbrPoliciesResultOutput)
 }
 

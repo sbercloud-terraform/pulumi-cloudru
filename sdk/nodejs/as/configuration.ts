@@ -21,7 +21,7 @@ export class Configuration extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:As/configuration:Configuration';
+    public static readonly __pulumiType = 'cloudru:As/configuration:Configuration';
 
     /**
      * Returns true if the given object is an instance of Configuration.  This is designed to work even

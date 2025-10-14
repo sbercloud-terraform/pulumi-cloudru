@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 export function getAttackLogs(args: GetAttackLogsArgs, opts?: pulumi.InvokeOptions): Promise<GetAttackLogsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Cfw/getAttackLogs:getAttackLogs", {
+    return pulumi.runtime.invoke("cloudru:Cfw/getAttackLogs:getAttackLogs", {
         "app": args.app,
         "attackRule": args.attackRule,
         "attackRuleId": args.attackRuleId,
@@ -93,7 +93,7 @@ export interface GetAttackLogsResult {
 }
 export function getAttackLogsOutput(args: GetAttackLogsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAttackLogsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Cfw/getAttackLogs:getAttackLogs", {
+    return pulumi.runtime.invokeOutput("cloudru:Cfw/getAttackLogs:getAttackLogs", {
         "app": args.app,
         "attackRule": args.attackRule,
         "attackRuleId": args.attackRuleId,

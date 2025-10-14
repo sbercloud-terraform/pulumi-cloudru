@@ -19,7 +19,7 @@ export class Vip extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Vpc/vip:Vip';
+    public static readonly __pulumiType = 'cloudru:Vpc/vip:Vip';
 
     /**
      * Returns true if the given object is an instance of Vip.  This is designed to work even

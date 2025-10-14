@@ -58,7 +58,7 @@ func NewLtsLog(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource LtsLog
-	err := ctx.RegisterResource("sbercloud:Cfw/ltsLog:LtsLog", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Cfw/ltsLog:LtsLog", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -70,7 +70,7 @@ func NewLtsLog(ctx *pulumi.Context,
 func GetLtsLog(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *LtsLogState, opts ...pulumi.ResourceOption) (*LtsLog, error) {
 	var resource LtsLog
-	err := ctx.ReadResource("sbercloud:Cfw/ltsLog:LtsLog", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Cfw/ltsLog:LtsLog", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

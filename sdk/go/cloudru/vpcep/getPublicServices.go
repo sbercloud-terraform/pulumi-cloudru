@@ -14,7 +14,7 @@ import (
 func GetPublicServices(ctx *pulumi.Context, args *GetPublicServicesArgs, opts ...pulumi.InvokeOption) (*GetPublicServicesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPublicServicesResult
-	err := ctx.Invoke("sbercloud:Vpcep/getPublicServices:getPublicServices", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Vpcep/getPublicServices:getPublicServices", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -43,7 +43,7 @@ func GetPublicServicesOutput(ctx *pulumi.Context, args GetPublicServicesOutputAr
 		ApplyT(func(v interface{}) (GetPublicServicesResultOutput, error) {
 			args := v.(GetPublicServicesArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Vpcep/getPublicServices:getPublicServices", args, GetPublicServicesResultOutput{}, options).(GetPublicServicesResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Vpcep/getPublicServices:getPublicServices", args, GetPublicServicesResultOutput{}, options).(GetPublicServicesResultOutput), nil
 		}).(GetPublicServicesResultOutput)
 }
 

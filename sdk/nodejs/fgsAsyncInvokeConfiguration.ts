@@ -21,7 +21,7 @@ export class FgsAsyncInvokeConfiguration extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/fgsAsyncInvokeConfiguration:FgsAsyncInvokeConfiguration';
+    public static readonly __pulumiType = 'cloudru:index/fgsAsyncInvokeConfiguration:FgsAsyncInvokeConfiguration';
 
     /**
      * Returns true if the given object is an instance of FgsAsyncInvokeConfiguration.  This is designed to work even

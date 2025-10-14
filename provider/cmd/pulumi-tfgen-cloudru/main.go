@@ -23,5 +23,5 @@ import (
 
 func main() {
 	// Modify the path to point to the new provider
-	tfgen.Main("sbercloud", version.Version, sbercloud.Provider())
+	tfgen.Main("cloudru", version.Version, sbercloud.Provider())
 }

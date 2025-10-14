@@ -166,7 +166,7 @@ class _SqlserverAccountState:
         pulumi.set(self, "state", value)
 
 
-@pulumi.type_token("sbercloud:Rds/sqlserverAccount:SqlserverAccount")
+@pulumi.type_token("cloudru:Rds/sqlserverAccount:SqlserverAccount")
 class SqlserverAccount(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -233,7 +233,7 @@ class SqlserverAccount(pulumi.CustomResource):
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(SqlserverAccount, __self__).__init__(
-            'sbercloud:Rds/sqlserverAccount:SqlserverAccount',
+            'cloudru:Rds/sqlserverAccount:SqlserverAccount',
             resource_name,
             __props__,
             opts)

@@ -332,7 +332,7 @@ class _KafkaTopicState:
         pulumi.set(self, "type", value)
 
 
-@pulumi.type_token("sbercloud:Dms/kafkaTopic:KafkaTopic")
+@pulumi.type_token("cloudru:Dms/kafkaTopic:KafkaTopic")
 class KafkaTopic(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -417,7 +417,7 @@ class KafkaTopic(pulumi.CustomResource):
             __props__.__dict__["policies_only"] = None
             __props__.__dict__["type"] = None
         super(KafkaTopic, __self__).__init__(
-            'sbercloud:Dms/kafkaTopic:KafkaTopic',
+            'cloudru:Dms/kafkaTopic:KafkaTopic',
             resource_name,
             __props__,
             opts)

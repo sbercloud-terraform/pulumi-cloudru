@@ -14,7 +14,7 @@ import (
 func LookupNodePool(ctx *pulumi.Context, args *LookupNodePoolArgs, opts ...pulumi.InvokeOption) (*LookupNodePoolResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNodePoolResult
-	err := ctx.Invoke("sbercloud:Cce/getNodePool:getNodePool", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Cce/getNodePool:getNodePool", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -67,7 +67,7 @@ func LookupNodePoolOutput(ctx *pulumi.Context, args LookupNodePoolOutputArgs, op
 		ApplyT(func(v interface{}) (LookupNodePoolResultOutput, error) {
 			args := v.(LookupNodePoolArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Cce/getNodePool:getNodePool", args, LookupNodePoolResultOutput{}, options).(LookupNodePoolResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Cce/getNodePool:getNodePool", args, LookupNodePoolResultOutput{}, options).(LookupNodePoolResultOutput), nil
 		}).(LookupNodePoolResultOutput)
 }
 

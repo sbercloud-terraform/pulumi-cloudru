@@ -220,7 +220,7 @@ class _ApigEnvironmentVariableState:
         pulumi.set(self, "value", value)
 
 
-@pulumi.type_token("sbercloud:index/apigEnvironmentVariable:ApigEnvironmentVariable")
+@pulumi.type_token("cloudru:index/apigEnvironmentVariable:ApigEnvironmentVariable")
 class ApigEnvironmentVariable(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -297,7 +297,7 @@ class ApigEnvironmentVariable(pulumi.CustomResource):
                 raise TypeError("Missing required property 'value'")
             __props__.__dict__["value"] = value
         super(ApigEnvironmentVariable, __self__).__init__(
-            'sbercloud:index/apigEnvironmentVariable:ApigEnvironmentVariable',
+            'cloudru:index/apigEnvironmentVariable:ApigEnvironmentVariable',
             resource_name,
             __props__,
             opts)

@@ -37,7 +37,7 @@ func NewEipProtection(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EipProtection
-	err := ctx.RegisterResource("sbercloud:Cfw/eipProtection:EipProtection", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Cfw/eipProtection:EipProtection", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -49,7 +49,7 @@ func NewEipProtection(ctx *pulumi.Context,
 func GetEipProtection(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *EipProtectionState, opts ...pulumi.ResourceOption) (*EipProtection, error) {
 	var resource EipProtection
-	err := ctx.ReadResource("sbercloud:Cfw/eipProtection:EipProtection", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Cfw/eipProtection:EipProtection", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

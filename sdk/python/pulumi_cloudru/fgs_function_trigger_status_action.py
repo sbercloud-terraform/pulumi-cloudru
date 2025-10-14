@@ -243,7 +243,7 @@ class _FgsFunctionTriggerStatusActionState:
         pulumi.set(self, "trigger_type_code", value)
 
 
-@pulumi.type_token("sbercloud:index/fgsFunctionTriggerStatusAction:FgsFunctionTriggerStatusAction")
+@pulumi.type_token("cloudru:index/fgsFunctionTriggerStatusAction:FgsFunctionTriggerStatusAction")
 class FgsFunctionTriggerStatusAction(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -325,7 +325,7 @@ class FgsFunctionTriggerStatusAction(pulumi.CustomResource):
                 raise TypeError("Missing required property 'trigger_type_code'")
             __props__.__dict__["trigger_type_code"] = trigger_type_code
         super(FgsFunctionTriggerStatusAction, __self__).__init__(
-            'sbercloud:index/fgsFunctionTriggerStatusAction:FgsFunctionTriggerStatusAction',
+            'cloudru:index/fgsFunctionTriggerStatusAction:FgsFunctionTriggerStatusAction',
             resource_name,
             __props__,
             opts)

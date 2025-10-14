@@ -86,7 +86,7 @@ def get_dms_rocketmq_broker(instance_id: Optional[_builtins.str] = None,
     __args__['instanceId'] = instance_id
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getDmsRocketmqBroker:getDmsRocketmqBroker', __args__, opts=opts, typ=GetDmsRocketmqBrokerResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getDmsRocketmqBroker:getDmsRocketmqBroker', __args__, opts=opts, typ=GetDmsRocketmqBrokerResult).value
 
     return AwaitableGetDmsRocketmqBrokerResult(
         brokers=pulumi.get(__ret__, 'brokers'),
@@ -103,7 +103,7 @@ def get_dms_rocketmq_broker_output(instance_id: Optional[pulumi.Input[_builtins.
     __args__['instanceId'] = instance_id
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getDmsRocketmqBroker:getDmsRocketmqBroker', __args__, opts=opts, typ=GetDmsRocketmqBrokerResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getDmsRocketmqBroker:getDmsRocketmqBroker', __args__, opts=opts, typ=GetDmsRocketmqBrokerResult)
     return __ret__.apply(lambda __response__: GetDmsRocketmqBrokerResult(
         brokers=pulumi.get(__response__, 'brokers'),
         id=pulumi.get(__response__, 'id'),

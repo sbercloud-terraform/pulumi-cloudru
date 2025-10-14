@@ -241,7 +241,7 @@ class _SnapshotState:
         pulumi.set(self, "volume_id", value)
 
 
-@pulumi.type_token("sbercloud:Evs/snapshot:Snapshot")
+@pulumi.type_token("cloudru:Evs/snapshot:Snapshot")
 class Snapshot(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -311,7 +311,7 @@ class Snapshot(pulumi.CustomResource):
             __props__.__dict__["status"] = None
             __props__.__dict__["updated_at"] = None
         super(Snapshot, __self__).__init__(
-            'sbercloud:Evs/snapshot:Snapshot',
+            'cloudru:Evs/snapshot:Snapshot',
             resource_name,
             __props__,
             opts)

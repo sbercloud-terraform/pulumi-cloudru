@@ -21,7 +21,7 @@ export class GesGraph extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/gesGraph:GesGraph';
+    public static readonly __pulumiType = 'cloudru:index/gesGraph:GesGraph';
 
     /**
      * Returns true if the given object is an instance of GesGraph.  This is designed to work even

@@ -21,19 +21,19 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "sbercloud:Cce/addon:Addon":
+	case "cloudru:Cce/addon:Addon":
 		r = &Addon{}
-	case "sbercloud:Cce/cluster:Cluster":
+	case "cloudru:Cce/cluster:Cluster":
 		r = &Cluster{}
-	case "sbercloud:Cce/namespace:Namespace":
+	case "cloudru:Cce/namespace:Namespace":
 		r = &Namespace{}
-	case "sbercloud:Cce/node:Node":
+	case "cloudru:Cce/node:Node":
 		r = &Node{}
-	case "sbercloud:Cce/nodeAttach:NodeAttach":
+	case "cloudru:Cce/nodeAttach:NodeAttach":
 		r = &NodeAttach{}
-	case "sbercloud:Cce/nodePool:NodePool":
+	case "cloudru:Cce/nodePool:NodePool":
 		r = &NodePool{}
-	case "sbercloud:Cce/pvc:Pvc":
+	case "cloudru:Cce/pvc:Pvc":
 		r = &Pvc{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
@@ -49,37 +49,37 @@ func init() {
 		version = semver.Version{Major: 1}
 	}
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Cce/addon",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Cce/cluster",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Cce/namespace",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Cce/node",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Cce/nodeAttach",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Cce/nodePool",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Cce/pvc",
 		&module{version},
 	)

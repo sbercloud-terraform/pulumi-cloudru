@@ -14,7 +14,7 @@ import (
 func GetDmsRabbitmqFlavors(ctx *pulumi.Context, args *GetDmsRabbitmqFlavorsArgs, opts ...pulumi.InvokeOption) (*GetDmsRabbitmqFlavorsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDmsRabbitmqFlavorsResult
-	err := ctx.Invoke("sbercloud:index/getDmsRabbitmqFlavors:getDmsRabbitmqFlavors", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getDmsRabbitmqFlavors:getDmsRabbitmqFlavors", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -52,7 +52,7 @@ func GetDmsRabbitmqFlavorsOutput(ctx *pulumi.Context, args GetDmsRabbitmqFlavors
 		ApplyT(func(v interface{}) (GetDmsRabbitmqFlavorsResultOutput, error) {
 			args := v.(GetDmsRabbitmqFlavorsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getDmsRabbitmqFlavors:getDmsRabbitmqFlavors", args, GetDmsRabbitmqFlavorsResultOutput{}, options).(GetDmsRabbitmqFlavorsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getDmsRabbitmqFlavors:getDmsRabbitmqFlavors", args, GetDmsRabbitmqFlavorsResultOutput{}, options).(GetDmsRabbitmqFlavorsResultOutput), nil
 		}).(GetDmsRabbitmqFlavorsResultOutput)
 }
 

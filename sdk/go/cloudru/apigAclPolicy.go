@@ -52,7 +52,7 @@ func NewApigAclPolicy(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApigAclPolicy
-	err := ctx.RegisterResource("sbercloud:index/apigAclPolicy:ApigAclPolicy", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/apigAclPolicy:ApigAclPolicy", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -64,7 +64,7 @@ func NewApigAclPolicy(ctx *pulumi.Context,
 func GetApigAclPolicy(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ApigAclPolicyState, opts ...pulumi.ResourceOption) (*ApigAclPolicy, error) {
 	var resource ApigAclPolicy
-	err := ctx.ReadResource("sbercloud:index/apigAclPolicy:ApigAclPolicy", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/apigAclPolicy:ApigAclPolicy", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

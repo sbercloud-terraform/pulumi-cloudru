@@ -40,7 +40,7 @@ func NewObsBucketAcl(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ObsBucketAcl
-	err := ctx.RegisterResource("sbercloud:index/obsBucketAcl:ObsBucketAcl", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/obsBucketAcl:ObsBucketAcl", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -52,7 +52,7 @@ func NewObsBucketAcl(ctx *pulumi.Context,
 func GetObsBucketAcl(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ObsBucketAclState, opts ...pulumi.ResourceOption) (*ObsBucketAcl, error) {
 	var resource ObsBucketAcl
-	err := ctx.ReadResource("sbercloud:index/obsBucketAcl:ObsBucketAcl", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/obsBucketAcl:ObsBucketAcl", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -19,7 +19,7 @@ export class Loadbalancer extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Elb/loadbalancer:Loadbalancer';
+    public static readonly __pulumiType = 'cloudru:Elb/loadbalancer:Loadbalancer';
 
     /**
      * Returns true if the given object is an instance of Loadbalancer.  This is designed to work even

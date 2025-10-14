@@ -21,25 +21,25 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "sbercloud:DedicatedApig/api:Api":
+	case "cloudru:DedicatedApig/api:Api":
 		r = &Api{}
-	case "sbercloud:DedicatedApig/apiPublishment:ApiPublishment":
+	case "cloudru:DedicatedApig/apiPublishment:ApiPublishment":
 		r = &ApiPublishment{}
-	case "sbercloud:DedicatedApig/application:Application":
+	case "cloudru:DedicatedApig/application:Application":
 		r = &Application{}
-	case "sbercloud:DedicatedApig/customAuthorizer:CustomAuthorizer":
+	case "cloudru:DedicatedApig/customAuthorizer:CustomAuthorizer":
 		r = &CustomAuthorizer{}
-	case "sbercloud:DedicatedApig/environment:Environment":
+	case "cloudru:DedicatedApig/environment:Environment":
 		r = &Environment{}
-	case "sbercloud:DedicatedApig/group:Group":
+	case "cloudru:DedicatedApig/group:Group":
 		r = &Group{}
-	case "sbercloud:DedicatedApig/instance:Instance":
+	case "cloudru:DedicatedApig/instance:Instance":
 		r = &Instance{}
-	case "sbercloud:DedicatedApig/response:Response":
+	case "cloudru:DedicatedApig/response:Response":
 		r = &Response{}
-	case "sbercloud:DedicatedApig/throttlingPolicy:ThrottlingPolicy":
+	case "cloudru:DedicatedApig/throttlingPolicy:ThrottlingPolicy":
 		r = &ThrottlingPolicy{}
-	case "sbercloud:DedicatedApig/throttlingPolicyAssociate:ThrottlingPolicyAssociate":
+	case "cloudru:DedicatedApig/throttlingPolicyAssociate:ThrottlingPolicyAssociate":
 		r = &ThrottlingPolicyAssociate{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
@@ -55,52 +55,52 @@ func init() {
 		version = semver.Version{Major: 1}
 	}
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"DedicatedApig/api",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"DedicatedApig/apiPublishment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"DedicatedApig/application",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"DedicatedApig/customAuthorizer",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"DedicatedApig/environment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"DedicatedApig/group",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"DedicatedApig/instance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"DedicatedApig/response",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"DedicatedApig/throttlingPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"DedicatedApig/throttlingPolicyAssociate",
 		&module{version},
 	)

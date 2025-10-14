@@ -87,7 +87,7 @@ def get_capture_tasks(fw_instance_id: Optional[_builtins.str] = None,
     __args__['fwInstanceId'] = fw_instance_id
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Cfw/getCaptureTasks:getCaptureTasks', __args__, opts=opts, typ=GetCaptureTasksResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Cfw/getCaptureTasks:getCaptureTasks', __args__, opts=opts, typ=GetCaptureTasksResult).value
 
     return AwaitableGetCaptureTasksResult(
         fw_instance_id=pulumi.get(__ret__, 'fw_instance_id'),
@@ -104,7 +104,7 @@ def get_capture_tasks_output(fw_instance_id: Optional[pulumi.Input[_builtins.str
     __args__['fwInstanceId'] = fw_instance_id
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Cfw/getCaptureTasks:getCaptureTasks', __args__, opts=opts, typ=GetCaptureTasksResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Cfw/getCaptureTasks:getCaptureTasks', __args__, opts=opts, typ=GetCaptureTasksResult)
     return __ret__.apply(lambda __response__: GetCaptureTasksResult(
         fw_instance_id=pulumi.get(__response__, 'fw_instance_id'),
         id=pulumi.get(__response__, 'id'),

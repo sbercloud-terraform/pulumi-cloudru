@@ -113,7 +113,7 @@ def get_identity_role_v3(display_name: Optional[_builtins.str] = None,
     __args__['displayName'] = display_name
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getIdentityRoleV3:getIdentityRoleV3', __args__, opts=opts, typ=GetIdentityRoleV3Result).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getIdentityRoleV3:getIdentityRoleV3', __args__, opts=opts, typ=GetIdentityRoleV3Result).value
 
     return AwaitableGetIdentityRoleV3Result(
         catalog=pulumi.get(__ret__, 'catalog'),
@@ -133,7 +133,7 @@ def get_identity_role_v3_output(display_name: Optional[pulumi.Input[Optional[_bu
     __args__['displayName'] = display_name
     __args__['name'] = name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getIdentityRoleV3:getIdentityRoleV3', __args__, opts=opts, typ=GetIdentityRoleV3Result)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getIdentityRoleV3:getIdentityRoleV3', __args__, opts=opts, typ=GetIdentityRoleV3Result)
     return __ret__.apply(lambda __response__: GetIdentityRoleV3Result(
         catalog=pulumi.get(__response__, 'catalog'),
         description=pulumi.get(__response__, 'description'),

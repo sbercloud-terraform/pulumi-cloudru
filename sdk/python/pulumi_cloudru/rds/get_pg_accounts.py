@@ -98,7 +98,7 @@ def get_pg_accounts(instance_id: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['userName'] = user_name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Rds/getPgAccounts:getPgAccounts', __args__, opts=opts, typ=GetPgAccountsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Rds/getPgAccounts:getPgAccounts', __args__, opts=opts, typ=GetPgAccountsResult).value
 
     return AwaitableGetPgAccountsResult(
         id=pulumi.get(__ret__, 'id'),
@@ -118,7 +118,7 @@ def get_pg_accounts_output(instance_id: Optional[pulumi.Input[_builtins.str]] = 
     __args__['region'] = region
     __args__['userName'] = user_name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Rds/getPgAccounts:getPgAccounts', __args__, opts=opts, typ=GetPgAccountsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Rds/getPgAccounts:getPgAccounts', __args__, opts=opts, typ=GetPgAccountsResult)
     return __ret__.apply(lambda __response__: GetPgAccountsResult(
         id=pulumi.get(__response__, 'id'),
         instance_id=pulumi.get(__response__, 'instance_id'),

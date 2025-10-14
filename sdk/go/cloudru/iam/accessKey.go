@@ -43,7 +43,7 @@ func NewAccessKey(ctx *pulumi.Context,
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccessKey
-	err := ctx.RegisterResource("sbercloud:Iam/accessKey:AccessKey", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Iam/accessKey:AccessKey", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -55,7 +55,7 @@ func NewAccessKey(ctx *pulumi.Context,
 func GetAccessKey(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *AccessKeyState, opts ...pulumi.ResourceOption) (*AccessKey, error) {
 	var resource AccessKey
-	err := ctx.ReadResource("sbercloud:Iam/accessKey:AccessKey", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Iam/accessKey:AccessKey", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

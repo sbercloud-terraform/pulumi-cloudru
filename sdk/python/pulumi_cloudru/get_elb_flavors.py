@@ -217,7 +217,7 @@ def get_elb_flavors(bandwidth: Optional[_builtins.int] = None,
     __args__['shared'] = shared
     __args__['type'] = type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getElbFlavors:getElbFlavors', __args__, opts=opts, typ=GetElbFlavorsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getElbFlavors:getElbFlavors', __args__, opts=opts, typ=GetElbFlavorsResult).value
 
     return AwaitableGetElbFlavorsResult(
         bandwidth=pulumi.get(__ret__, 'bandwidth'),
@@ -268,7 +268,7 @@ def get_elb_flavors_output(bandwidth: Optional[pulumi.Input[Optional[_builtins.i
     __args__['shared'] = shared
     __args__['type'] = type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getElbFlavors:getElbFlavors', __args__, opts=opts, typ=GetElbFlavorsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getElbFlavors:getElbFlavors', __args__, opts=opts, typ=GetElbFlavorsResult)
     return __ret__.apply(lambda __response__: GetElbFlavorsResult(
         bandwidth=pulumi.get(__response__, 'bandwidth'),
         category=pulumi.get(__response__, 'category'),

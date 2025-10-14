@@ -14,7 +14,7 @@ import (
 func GetUsers(ctx *pulumi.Context, args *GetUsersArgs, opts ...pulumi.InvokeOption) (*GetUsersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetUsersResult
-	err := ctx.Invoke("sbercloud:Iam/getUsers:getUsers", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Iam/getUsers:getUsers", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -41,7 +41,7 @@ func GetUsersOutput(ctx *pulumi.Context, args GetUsersOutputArgs, opts ...pulumi
 		ApplyT(func(v interface{}) (GetUsersResultOutput, error) {
 			args := v.(GetUsersArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Iam/getUsers:getUsers", args, GetUsersResultOutput{}, options).(GetUsersResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Iam/getUsers:getUsers", args, GetUsersResultOutput{}, options).(GetUsersResultOutput), nil
 		}).(GetUsersResultOutput)
 }
 

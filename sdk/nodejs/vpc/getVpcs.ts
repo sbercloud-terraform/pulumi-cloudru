@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 export function getVpcs(args?: GetVpcsArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Vpc/getVpcs:getVpcs", {
+    return pulumi.runtime.invoke("cloudru:Vpc/getVpcs:getVpcs", {
         "cidr": args.cidr,
         "enterpriseProjectId": args.enterpriseProjectId,
         "id": args.id,
@@ -49,7 +49,7 @@ export interface GetVpcsResult {
 export function getVpcsOutput(args?: GetVpcsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpcsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Vpc/getVpcs:getVpcs", {
+    return pulumi.runtime.invokeOutput("cloudru:Vpc/getVpcs:getVpcs", {
         "cidr": args.cidr,
         "enterpriseProjectId": args.enterpriseProjectId,
         "id": args.id,

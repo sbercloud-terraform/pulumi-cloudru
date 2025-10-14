@@ -6,7 +6,7 @@ import * as utilities from "./utilities";
 
 export function getElbCertificate(args: GetElbCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetElbCertificateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getElbCertificate:getElbCertificate", {
+    return pulumi.runtime.invoke("cloudru:index/getElbCertificate:getElbCertificate", {
         "name": args.name,
         "region": args.region,
     }, opts);
@@ -37,7 +37,7 @@ export interface GetElbCertificateResult {
 }
 export function getElbCertificateOutput(args: GetElbCertificateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetElbCertificateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getElbCertificate:getElbCertificate", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getElbCertificate:getElbCertificate", {
         "name": args.name,
         "region": args.region,
     }, opts);

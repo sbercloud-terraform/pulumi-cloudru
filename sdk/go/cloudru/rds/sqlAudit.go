@@ -42,7 +42,7 @@ func NewSqlAudit(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SqlAudit
-	err := ctx.RegisterResource("sbercloud:Rds/sqlAudit:SqlAudit", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Rds/sqlAudit:SqlAudit", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -54,7 +54,7 @@ func NewSqlAudit(ctx *pulumi.Context,
 func GetSqlAudit(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *SqlAuditState, opts ...pulumi.ResourceOption) (*SqlAudit, error) {
 	var resource SqlAudit
-	err := ctx.ReadResource("sbercloud:Rds/sqlAudit:SqlAudit", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Rds/sqlAudit:SqlAudit", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

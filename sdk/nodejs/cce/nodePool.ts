@@ -21,7 +21,7 @@ export class NodePool extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Cce/nodePool:NodePool';
+    public static readonly __pulumiType = 'cloudru:Cce/nodePool:NodePool';
 
     /**
      * Returns true if the given object is an instance of NodePool.  This is designed to work even

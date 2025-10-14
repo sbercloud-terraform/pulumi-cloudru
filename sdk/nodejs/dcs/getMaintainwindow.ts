@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 export function getMaintainwindow(args?: GetMaintainwindowArgs, opts?: pulumi.InvokeOptions): Promise<GetMaintainwindowResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Dcs/getMaintainwindow:getMaintainwindow", {
+    return pulumi.runtime.invoke("cloudru:Dcs/getMaintainwindow:getMaintainwindow", {
         "begin": args.begin,
         "default": args.default,
         "end": args.end,
@@ -44,7 +44,7 @@ export interface GetMaintainwindowResult {
 export function getMaintainwindowOutput(args?: GetMaintainwindowOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMaintainwindowResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Dcs/getMaintainwindow:getMaintainwindow", {
+    return pulumi.runtime.invokeOutput("cloudru:Dcs/getMaintainwindow:getMaintainwindow", {
         "begin": args.begin,
         "default": args.default,
         "end": args.end,

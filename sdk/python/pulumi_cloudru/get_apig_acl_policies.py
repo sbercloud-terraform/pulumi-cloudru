@@ -131,7 +131,7 @@ def get_apig_acl_policies(entity_type: Optional[_builtins.str] = None,
     __args__['region'] = region
     __args__['type'] = type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getApigAclPolicies:getApigAclPolicies', __args__, opts=opts, typ=GetApigAclPoliciesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getApigAclPolicies:getApigAclPolicies', __args__, opts=opts, typ=GetApigAclPoliciesResult).value
 
     return AwaitableGetApigAclPoliciesResult(
         entity_type=pulumi.get(__ret__, 'entity_type'),
@@ -160,7 +160,7 @@ def get_apig_acl_policies_output(entity_type: Optional[pulumi.Input[Optional[_bu
     __args__['region'] = region
     __args__['type'] = type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getApigAclPolicies:getApigAclPolicies', __args__, opts=opts, typ=GetApigAclPoliciesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getApigAclPolicies:getApigAclPolicies', __args__, opts=opts, typ=GetApigAclPoliciesResult)
     return __ret__.apply(lambda __response__: GetApigAclPoliciesResult(
         entity_type=pulumi.get(__response__, 'entity_type'),
         id=pulumi.get(__response__, 'id'),

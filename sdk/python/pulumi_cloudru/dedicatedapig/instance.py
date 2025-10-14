@@ -794,7 +794,7 @@ class _InstanceState:
         pulumi.set(self, "vpcep_service_name", value)
 
 
-@pulumi.type_token("sbercloud:DedicatedApig/instance:Instance")
+@pulumi.type_token("cloudru:DedicatedApig/instance:Instance")
 class Instance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -933,7 +933,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["vpc_ingress_address"] = None
             __props__.__dict__["vpcep_service_address"] = None
         super(Instance, __self__).__init__(
-            'sbercloud:DedicatedApig/instance:Instance',
+            'cloudru:DedicatedApig/instance:Instance',
             resource_name,
             __props__,
             opts)

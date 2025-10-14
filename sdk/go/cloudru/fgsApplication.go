@@ -45,7 +45,7 @@ func NewFgsApplication(ctx *pulumi.Context,
 
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FgsApplication
-	err := ctx.RegisterResource("sbercloud:index/fgsApplication:FgsApplication", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/fgsApplication:FgsApplication", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -57,7 +57,7 @@ func NewFgsApplication(ctx *pulumi.Context,
 func GetFgsApplication(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *FgsApplicationState, opts ...pulumi.ResourceOption) (*FgsApplication, error) {
 	var resource FgsApplication
-	err := ctx.ReadResource("sbercloud:index/fgsApplication:FgsApplication", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/fgsApplication:FgsApplication", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -236,7 +236,7 @@ class _ApigAclPolicyState:
         pulumi.set(self, "value", value)
 
 
-@pulumi.type_token("sbercloud:index/apigAclPolicy:ApigAclPolicy")
+@pulumi.type_token("cloudru:index/apigAclPolicy:ApigAclPolicy")
 class ApigAclPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -314,7 +314,7 @@ class ApigAclPolicy(pulumi.CustomResource):
             __props__.__dict__["value"] = value
             __props__.__dict__["updated_at"] = None
         super(ApigAclPolicy, __self__).__init__(
-            'sbercloud:index/apigAclPolicy:ApigAclPolicy',
+            'cloudru:index/apigAclPolicy:ApigAclPolicy',
             resource_name,
             __props__,
             opts)

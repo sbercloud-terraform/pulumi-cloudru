@@ -14,7 +14,7 @@ import (
 func GetApigGroups(ctx *pulumi.Context, args *GetApigGroupsArgs, opts ...pulumi.InvokeOption) (*GetApigGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetApigGroupsResult
-	err := ctx.Invoke("sbercloud:index/getApigGroups:getApigGroups", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getApigGroups:getApigGroups", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -45,7 +45,7 @@ func GetApigGroupsOutput(ctx *pulumi.Context, args GetApigGroupsOutputArgs, opts
 		ApplyT(func(v interface{}) (GetApigGroupsResultOutput, error) {
 			args := v.(GetApigGroupsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getApigGroups:getApigGroups", args, GetApigGroupsResultOutput{}, options).(GetApigGroupsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getApigGroups:getApigGroups", args, GetApigGroupsResultOutput{}, options).(GetApigGroupsResultOutput), nil
 		}).(GetApigGroupsResultOutput)
 }
 

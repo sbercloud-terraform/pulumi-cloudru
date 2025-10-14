@@ -14,7 +14,7 @@ import (
 func GetPgSqlLimits(ctx *pulumi.Context, args *GetPgSqlLimitsArgs, opts ...pulumi.InvokeOption) (*GetPgSqlLimitsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPgSqlLimitsResult
-	err := ctx.Invoke("sbercloud:Rds/getPgSqlLimits:getPgSqlLimits", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Rds/getPgSqlLimits:getPgSqlLimits", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -57,7 +57,7 @@ func GetPgSqlLimitsOutput(ctx *pulumi.Context, args GetPgSqlLimitsOutputArgs, op
 		ApplyT(func(v interface{}) (GetPgSqlLimitsResultOutput, error) {
 			args := v.(GetPgSqlLimitsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Rds/getPgSqlLimits:getPgSqlLimits", args, GetPgSqlLimitsResultOutput{}, options).(GetPgSqlLimitsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Rds/getPgSqlLimits:getPgSqlLimits", args, GetPgSqlLimitsResultOutput{}, options).(GetPgSqlLimitsResultOutput), nil
 		}).(GetPgSqlLimitsResultOutput)
 }
 

@@ -14,7 +14,7 @@ import (
 func GetAvailableRoutes(ctx *pulumi.Context, args *GetAvailableRoutesArgs, opts ...pulumi.InvokeOption) (*GetAvailableRoutesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAvailableRoutesResult
-	err := ctx.Invoke("sbercloud:Er/getAvailableRoutes:getAvailableRoutes", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Er/getAvailableRoutes:getAvailableRoutes", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -45,7 +45,7 @@ func GetAvailableRoutesOutput(ctx *pulumi.Context, args GetAvailableRoutesOutput
 		ApplyT(func(v interface{}) (GetAvailableRoutesResultOutput, error) {
 			args := v.(GetAvailableRoutesArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Er/getAvailableRoutes:getAvailableRoutes", args, GetAvailableRoutesResultOutput{}, options).(GetAvailableRoutesResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Er/getAvailableRoutes:getAvailableRoutes", args, GetAvailableRoutesResultOutput{}, options).(GetAvailableRoutesResultOutput), nil
 		}).(GetAvailableRoutesResultOutput)
 }
 

@@ -142,7 +142,7 @@ def get_cbh_instances(flavor_id: Optional[_builtins.str] = None,
     __args__['version'] = version
     __args__['vpcId'] = vpc_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getCbhInstances:getCbhInstances', __args__, opts=opts, typ=GetCbhInstancesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getCbhInstances:getCbhInstances', __args__, opts=opts, typ=GetCbhInstancesResult).value
 
     return AwaitableGetCbhInstancesResult(
         flavor_id=pulumi.get(__ret__, 'flavor_id'),
@@ -174,7 +174,7 @@ def get_cbh_instances_output(flavor_id: Optional[pulumi.Input[Optional[_builtins
     __args__['version'] = version
     __args__['vpcId'] = vpc_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getCbhInstances:getCbhInstances', __args__, opts=opts, typ=GetCbhInstancesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getCbhInstances:getCbhInstances', __args__, opts=opts, typ=GetCbhInstancesResult)
     return __ret__.apply(lambda __response__: GetCbhInstancesResult(
         flavor_id=pulumi.get(__response__, 'flavor_id'),
         id=pulumi.get(__response__, 'id'),

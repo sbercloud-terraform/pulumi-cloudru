@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 export function getDmsRocketmqInstances(args?: GetDmsRocketmqInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetDmsRocketmqInstancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getDmsRocketmqInstances:getDmsRocketmqInstances", {
+    return pulumi.runtime.invoke("cloudru:index/getDmsRocketmqInstances:getDmsRocketmqInstances", {
         "exactMatchName": args.exactMatchName,
         "instanceId": args.instanceId,
         "name": args.name,
@@ -47,7 +47,7 @@ export interface GetDmsRocketmqInstancesResult {
 export function getDmsRocketmqInstancesOutput(args?: GetDmsRocketmqInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDmsRocketmqInstancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getDmsRocketmqInstances:getDmsRocketmqInstances", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getDmsRocketmqInstances:getDmsRocketmqInstances", {
         "exactMatchName": args.exactMatchName,
         "instanceId": args.instanceId,
         "name": args.name,

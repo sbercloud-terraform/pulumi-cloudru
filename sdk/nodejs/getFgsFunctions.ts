@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 export function getFgsFunctions(args?: GetFgsFunctionsArgs, opts?: pulumi.InvokeOptions): Promise<GetFgsFunctionsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getFgsFunctions:getFgsFunctions", {
+    return pulumi.runtime.invoke("cloudru:index/getFgsFunctions:getFgsFunctions", {
         "enterpriseProjectId": args.enterpriseProjectId,
         "name": args.name,
         "packageName": args.packageName,
@@ -50,7 +50,7 @@ export interface GetFgsFunctionsResult {
 export function getFgsFunctionsOutput(args?: GetFgsFunctionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFgsFunctionsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getFgsFunctions:getFgsFunctions", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getFgsFunctions:getFgsFunctions", {
         "enterpriseProjectId": args.enterpriseProjectId,
         "name": args.name,
         "packageName": args.packageName,

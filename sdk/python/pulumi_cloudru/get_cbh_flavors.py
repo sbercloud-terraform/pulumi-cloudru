@@ -164,7 +164,7 @@ def get_cbh_flavors(action: Optional[_builtins.str] = None,
     __args__['type'] = type
     __args__['vcpus'] = vcpus
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getCbhFlavors:getCbhFlavors', __args__, opts=opts, typ=GetCbhFlavorsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getCbhFlavors:getCbhFlavors', __args__, opts=opts, typ=GetCbhFlavorsResult).value
 
     return AwaitableGetCbhFlavorsResult(
         action=pulumi.get(__ret__, 'action'),
@@ -202,7 +202,7 @@ def get_cbh_flavors_output(action: Optional[pulumi.Input[Optional[_builtins.str]
     __args__['type'] = type
     __args__['vcpus'] = vcpus
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getCbhFlavors:getCbhFlavors', __args__, opts=opts, typ=GetCbhFlavorsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getCbhFlavors:getCbhFlavors', __args__, opts=opts, typ=GetCbhFlavorsResult)
     return __ret__.apply(lambda __response__: GetCbhFlavorsResult(
         action=pulumi.get(__response__, 'action'),
         asset=pulumi.get(__response__, 'asset'),

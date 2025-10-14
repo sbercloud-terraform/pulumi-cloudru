@@ -128,7 +128,7 @@ class _ProjectState:
         pulumi.set(self, "status", value)
 
 
-@pulumi.type_token("sbercloud:Iam/project:Project")
+@pulumi.type_token("cloudru:Iam/project:Project")
 class Project(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -184,7 +184,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["enabled"] = None
             __props__.__dict__["parent_id"] = None
         super(Project, __self__).__init__(
-            'sbercloud:Iam/project:Project',
+            'cloudru:Iam/project:Project',
             resource_name,
             __props__,
             opts)

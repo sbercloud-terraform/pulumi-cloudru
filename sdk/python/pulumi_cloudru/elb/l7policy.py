@@ -278,7 +278,7 @@ class _L7policyState:
         pulumi.set(self, "tenant_id", value)
 
 
-@pulumi.type_token("sbercloud:Elb/l7policy:L7policy")
+@pulumi.type_token("cloudru:Elb/l7policy:L7policy")
 class L7policy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -357,7 +357,7 @@ class L7policy(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["tenant_id"] = tenant_id
         super(L7policy, __self__).__init__(
-            'sbercloud:Elb/l7policy:L7policy',
+            'cloudru:Elb/l7policy:L7policy',
             resource_name,
             __props__,
             opts)

@@ -396,7 +396,7 @@ class _CaptureTaskState:
         pulumi.set(self, "updated_at", value)
 
 
-@pulumi.type_token("sbercloud:Cfw/captureTask:CaptureTask")
+@pulumi.type_token("cloudru:Cfw/captureTask:CaptureTask")
 class CaptureTask(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -495,7 +495,7 @@ class CaptureTask(pulumi.CustomResource):
             __props__.__dict__["task_id"] = None
             __props__.__dict__["updated_at"] = None
         super(CaptureTask, __self__).__init__(
-            'sbercloud:Cfw/captureTask:CaptureTask',
+            'cloudru:Cfw/captureTask:CaptureTask',
             resource_name,
             __props__,
             opts)

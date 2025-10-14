@@ -188,7 +188,7 @@ class _ProjectState:
         pulumi.set(self, "updated_at", value)
 
 
-@pulumi.type_token("sbercloud:Eps/project:Project")
+@pulumi.type_token("cloudru:Eps/project:Project")
 class Project(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -251,7 +251,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["status"] = None
             __props__.__dict__["updated_at"] = None
         super(Project, __self__).__init__(
-            'sbercloud:Eps/project:Project',
+            'cloudru:Eps/project:Project',
             resource_name,
             __props__,
             opts)

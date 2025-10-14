@@ -64,7 +64,7 @@ class _FgsLtsLogEnableState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:index/fgsLtsLogEnable:FgsLtsLogEnable")
+@pulumi.type_token("cloudru:index/fgsLtsLogEnable:FgsLtsLogEnable")
 class FgsLtsLogEnable(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -113,7 +113,7 @@ class FgsLtsLogEnable(pulumi.CustomResource):
 
             __props__.__dict__["region"] = region
         super(FgsLtsLogEnable, __self__).__init__(
-            'sbercloud:index/fgsLtsLogEnable:FgsLtsLogEnable',
+            'cloudru:index/fgsLtsLogEnable:FgsLtsLogEnable',
             resource_name,
             __props__,
             opts)

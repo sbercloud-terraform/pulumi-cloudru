@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 export function getFlavors(args: GetFlavorsArgs, opts?: pulumi.InvokeOptions): Promise<GetFlavorsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Dds/getFlavors:getFlavors", {
+    return pulumi.runtime.invoke("cloudru:Dds/getFlavors:getFlavors", {
         "engineName": args.engineName,
         "memory": args.memory,
         "region": args.region,
@@ -45,7 +45,7 @@ export interface GetFlavorsResult {
 }
 export function getFlavorsOutput(args: GetFlavorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFlavorsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Dds/getFlavors:getFlavors", {
+    return pulumi.runtime.invokeOutput("cloudru:Dds/getFlavors:getFlavors", {
         "engineName": args.engineName,
         "memory": args.memory,
         "region": args.region,

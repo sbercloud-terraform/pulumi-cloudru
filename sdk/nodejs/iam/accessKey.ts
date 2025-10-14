@@ -19,7 +19,7 @@ export class AccessKey extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Iam/accessKey:AccessKey';
+    public static readonly __pulumiType = 'cloudru:Iam/accessKey:AccessKey';
 
     /**
      * Returns true if the given object is an instance of AccessKey.  This is designed to work even

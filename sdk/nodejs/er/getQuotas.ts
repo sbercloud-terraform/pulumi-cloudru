@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 export function getQuotas(args?: GetQuotasArgs, opts?: pulumi.InvokeOptions): Promise<GetQuotasResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Er/getQuotas:getQuotas", {
+    return pulumi.runtime.invoke("cloudru:Er/getQuotas:getQuotas", {
         "instanceId": args.instanceId,
         "region": args.region,
         "routeTableId": args.routeTableId,
@@ -44,7 +44,7 @@ export interface GetQuotasResult {
 export function getQuotasOutput(args?: GetQuotasOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetQuotasResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Er/getQuotas:getQuotas", {
+    return pulumi.runtime.invokeOutput("cloudru:Er/getQuotas:getQuotas", {
         "instanceId": args.instanceId,
         "region": args.region,
         "routeTableId": args.routeTableId,

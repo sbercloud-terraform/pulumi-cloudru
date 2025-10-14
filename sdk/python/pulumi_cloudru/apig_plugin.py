@@ -253,7 +253,7 @@ class _ApigPluginState:
         pulumi.set(self, "updated_at", value)
 
 
-@pulumi.type_token("sbercloud:index/apigPlugin:ApigPlugin")
+@pulumi.type_token("cloudru:index/apigPlugin:ApigPlugin")
 class ApigPlugin(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -330,7 +330,7 @@ class ApigPlugin(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["updated_at"] = None
         super(ApigPlugin, __self__).__init__(
-            'sbercloud:index/apigPlugin:ApigPlugin',
+            'cloudru:index/apigPlugin:ApigPlugin',
             resource_name,
             __props__,
             opts)

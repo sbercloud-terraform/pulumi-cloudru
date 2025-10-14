@@ -134,7 +134,7 @@ def get_cluster_certificates(cluster_id: Optional[_builtins.str] = None,
     __args__['duration'] = duration
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Cce/getClusterCertificates:getClusterCertificates', __args__, opts=opts, typ=GetClusterCertificatesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Cce/getClusterCertificates:getClusterCertificates', __args__, opts=opts, typ=GetClusterCertificatesResult).value
 
     return AwaitableGetClusterCertificatesResult(
         cluster_id=pulumi.get(__ret__, 'cluster_id'),
@@ -158,7 +158,7 @@ def get_cluster_certificates_output(cluster_id: Optional[pulumi.Input[_builtins.
     __args__['duration'] = duration
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Cce/getClusterCertificates:getClusterCertificates', __args__, opts=opts, typ=GetClusterCertificatesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Cce/getClusterCertificates:getClusterCertificates', __args__, opts=opts, typ=GetClusterCertificatesResult)
     return __ret__.apply(lambda __response__: GetClusterCertificatesResult(
         cluster_id=pulumi.get(__response__, 'cluster_id'),
         clusters=pulumi.get(__response__, 'clusters'),

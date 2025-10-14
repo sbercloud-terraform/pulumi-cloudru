@@ -6,7 +6,7 @@ import * as utilities from "../utilities";
 
 export function getProduct(args: GetProductArgs, opts?: pulumi.InvokeOptions): Promise<GetProductResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Dms/getProduct:getProduct", {
+    return pulumi.runtime.invoke("cloudru:Dms/getProduct:getProduct", {
         "availabilityZones": args.availabilityZones,
         "bandwidth": args.bandwidth,
         "engine": args.engine,
@@ -70,7 +70,7 @@ export interface GetProductResult {
 }
 export function getProductOutput(args: GetProductOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProductResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Dms/getProduct:getProduct", {
+    return pulumi.runtime.invokeOutput("cloudru:Dms/getProduct:getProduct", {
         "availabilityZones": args.availabilityZones,
         "bandwidth": args.bandwidth,
         "engine": args.engine,

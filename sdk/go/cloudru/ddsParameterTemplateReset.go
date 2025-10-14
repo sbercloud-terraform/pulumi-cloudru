@@ -32,7 +32,7 @@ func NewDdsParameterTemplateReset(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DdsParameterTemplateReset
-	err := ctx.RegisterResource("sbercloud:index/ddsParameterTemplateReset:DdsParameterTemplateReset", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/ddsParameterTemplateReset:DdsParameterTemplateReset", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -44,7 +44,7 @@ func NewDdsParameterTemplateReset(ctx *pulumi.Context,
 func GetDdsParameterTemplateReset(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *DdsParameterTemplateResetState, opts ...pulumi.ResourceOption) (*DdsParameterTemplateReset, error) {
 	var resource DdsParameterTemplateReset
-	err := ctx.ReadResource("sbercloud:index/ddsParameterTemplateReset:DdsParameterTemplateReset", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/ddsParameterTemplateReset:DdsParameterTemplateReset", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

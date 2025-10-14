@@ -386,7 +386,7 @@ class _ZoneState:
         pulumi.set(self, "zone_type", value)
 
 
-@pulumi.type_token("sbercloud:Dns/zone:Zone")
+@pulumi.type_token("cloudru:Dns/zone:Zone")
 class Zone(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -474,7 +474,7 @@ class Zone(pulumi.CustomResource):
             __props__.__dict__["zone_type"] = zone_type
             __props__.__dict__["masters"] = None
         super(Zone, __self__).__init__(
-            'sbercloud:Dns/zone:Zone',
+            'cloudru:Dns/zone:Zone',
             resource_name,
             __props__,
             opts)

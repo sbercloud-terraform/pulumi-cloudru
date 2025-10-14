@@ -340,7 +340,7 @@ class _PgSqlLimitState:
         pulumi.set(self, "switch", value)
 
 
-@pulumi.type_token("sbercloud:Rds/pgSqlLimit:PgSqlLimit")
+@pulumi.type_token("cloudru:Rds/pgSqlLimit:PgSqlLimit")
 class PgSqlLimit(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -430,7 +430,7 @@ class PgSqlLimit(pulumi.CustomResource):
             __props__.__dict__["is_effective"] = None
             __props__.__dict__["sql_limit_id"] = None
         super(PgSqlLimit, __self__).__init__(
-            'sbercloud:Rds/pgSqlLimit:PgSqlLimit',
+            'cloudru:Rds/pgSqlLimit:PgSqlLimit',
             resource_name,
             __props__,
             opts)

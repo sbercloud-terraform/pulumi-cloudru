@@ -197,7 +197,7 @@ def get_instances(availability_zone: Optional[_builtins.str] = None,
     __args__['status'] = status
     __args__['tags'] = tags
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Ecs/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Ecs/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult).value
 
     return AwaitableGetInstancesResult(
         availability_zone=pulumi.get(__ret__, 'availability_zone'),
@@ -244,7 +244,7 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[_buil
     __args__['status'] = status
     __args__['tags'] = tags
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Ecs/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Ecs/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult)
     return __ret__.apply(lambda __response__: GetInstancesResult(
         availability_zone=pulumi.get(__response__, 'availability_zone'),
         enterprise_project_id=pulumi.get(__response__, 'enterprise_project_id'),

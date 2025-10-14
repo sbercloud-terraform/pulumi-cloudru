@@ -93,7 +93,7 @@ func NewGesGraph(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GesGraph
-	err := ctx.RegisterResource("sbercloud:index/gesGraph:GesGraph", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/gesGraph:GesGraph", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -105,7 +105,7 @@ func NewGesGraph(ctx *pulumi.Context,
 func GetGesGraph(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *GesGraphState, opts ...pulumi.ResourceOption) (*GesGraph, error) {
 	var resource GesGraph
-	err := ctx.ReadResource("sbercloud:index/gesGraph:GesGraph", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/gesGraph:GesGraph", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

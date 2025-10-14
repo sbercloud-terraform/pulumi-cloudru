@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 export function getIpsRuleDetails(args: GetIpsRuleDetailsArgs, opts?: pulumi.InvokeOptions): Promise<GetIpsRuleDetailsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Cfw/getIpsRuleDetails:getIpsRuleDetails", {
+    return pulumi.runtime.invoke("cloudru:Cfw/getIpsRuleDetails:getIpsRuleDetails", {
         "fwInstanceId": args.fwInstanceId,
         "region": args.region,
     }, opts);
@@ -36,7 +36,7 @@ export interface GetIpsRuleDetailsResult {
 }
 export function getIpsRuleDetailsOutput(args: GetIpsRuleDetailsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIpsRuleDetailsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Cfw/getIpsRuleDetails:getIpsRuleDetails", {
+    return pulumi.runtime.invokeOutput("cloudru:Cfw/getIpsRuleDetails:getIpsRuleDetails", {
         "fwInstanceId": args.fwInstanceId,
         "region": args.region,
     }, opts);

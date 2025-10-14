@@ -14,7 +14,7 @@ import (
 func GetAssociations(ctx *pulumi.Context, args *GetAssociationsArgs, opts ...pulumi.InvokeOption) (*GetAssociationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAssociationsResult
-	err := ctx.Invoke("sbercloud:Er/getAssociations:getAssociations", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Er/getAssociations:getAssociations", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -49,7 +49,7 @@ func GetAssociationsOutput(ctx *pulumi.Context, args GetAssociationsOutputArgs, 
 		ApplyT(func(v interface{}) (GetAssociationsResultOutput, error) {
 			args := v.(GetAssociationsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Er/getAssociations:getAssociations", args, GetAssociationsResultOutput{}, options).(GetAssociationsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Er/getAssociations:getAssociations", args, GetAssociationsResultOutput{}, options).(GetAssociationsResultOutput), nil
 		}).(GetAssociationsResultOutput)
 }
 

@@ -14,7 +14,7 @@ import (
 func GetKpsRunningTasks(ctx *pulumi.Context, args *GetKpsRunningTasksArgs, opts ...pulumi.InvokeOption) (*GetKpsRunningTasksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKpsRunningTasksResult
-	err := ctx.Invoke("sbercloud:index/getKpsRunningTasks:getKpsRunningTasks", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getKpsRunningTasks:getKpsRunningTasks", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -39,7 +39,7 @@ func GetKpsRunningTasksOutput(ctx *pulumi.Context, args GetKpsRunningTasksOutput
 		ApplyT(func(v interface{}) (GetKpsRunningTasksResultOutput, error) {
 			args := v.(GetKpsRunningTasksArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getKpsRunningTasks:getKpsRunningTasks", args, GetKpsRunningTasksResultOutput{}, options).(GetKpsRunningTasksResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getKpsRunningTasks:getKpsRunningTasks", args, GetKpsRunningTasksResultOutput{}, options).(GetKpsRunningTasksResultOutput), nil
 		}).(GetKpsRunningTasksResultOutput)
 }
 

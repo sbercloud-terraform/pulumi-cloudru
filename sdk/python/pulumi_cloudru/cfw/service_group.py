@@ -151,7 +151,7 @@ class _ServiceGroupState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:Cfw/serviceGroup:ServiceGroup")
+@pulumi.type_token("cloudru:Cfw/serviceGroup:ServiceGroup")
 class ServiceGroup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -213,7 +213,7 @@ class ServiceGroup(pulumi.CustomResource):
             __props__.__dict__["object_id"] = object_id
             __props__.__dict__["region"] = region
         super(ServiceGroup, __self__).__init__(
-            'sbercloud:Cfw/serviceGroup:ServiceGroup',
+            'cloudru:Cfw/serviceGroup:ServiceGroup',
             resource_name,
             __props__,
             opts)

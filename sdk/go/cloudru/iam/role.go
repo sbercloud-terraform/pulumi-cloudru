@@ -40,7 +40,7 @@ func NewRole(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Role
-	err := ctx.RegisterResource("sbercloud:Iam/role:Role", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Iam/role:Role", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -52,7 +52,7 @@ func NewRole(ctx *pulumi.Context,
 func GetRole(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *RoleState, opts ...pulumi.ResourceOption) (*Role, error) {
 	var resource Role
-	err := ctx.ReadResource("sbercloud:Iam/role:Role", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Iam/role:Role", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

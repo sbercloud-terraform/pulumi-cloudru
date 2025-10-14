@@ -98,7 +98,7 @@ def get_environments(instance_id: Optional[_builtins.str] = None,
     __args__['name'] = name
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:DedicatedApig/getEnvironments:getEnvironments', __args__, opts=opts, typ=GetEnvironmentsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:DedicatedApig/getEnvironments:getEnvironments', __args__, opts=opts, typ=GetEnvironmentsResult).value
 
     return AwaitableGetEnvironmentsResult(
         environments=pulumi.get(__ret__, 'environments'),
@@ -118,7 +118,7 @@ def get_environments_output(instance_id: Optional[pulumi.Input[_builtins.str]] =
     __args__['name'] = name
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:DedicatedApig/getEnvironments:getEnvironments', __args__, opts=opts, typ=GetEnvironmentsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:DedicatedApig/getEnvironments:getEnvironments', __args__, opts=opts, typ=GetEnvironmentsResult)
     return __ret__.apply(lambda __response__: GetEnvironmentsResult(
         environments=pulumi.get(__response__, 'environments'),
         id=pulumi.get(__response__, 'id'),

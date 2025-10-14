@@ -227,7 +227,7 @@ class _SmnSubscriptionState:
         pulumi.set(self, "topic_urn", value)
 
 
-@pulumi.type_token("sbercloud:index/smnSubscription:SmnSubscription")
+@pulumi.type_token("cloudru:index/smnSubscription:SmnSubscription")
 class SmnSubscription(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -300,7 +300,7 @@ class SmnSubscription(pulumi.CustomResource):
             __props__.__dict__["status"] = None
             __props__.__dict__["subscription_urn"] = None
         super(SmnSubscription, __self__).__init__(
-            'sbercloud:index/smnSubscription:SmnSubscription',
+            'cloudru:index/smnSubscription:SmnSubscription',
             resource_name,
             __props__,
             opts)

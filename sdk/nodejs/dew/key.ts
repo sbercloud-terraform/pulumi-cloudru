@@ -19,7 +19,7 @@ export class Key extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Dew/key:Key';
+    public static readonly __pulumiType = 'cloudru:Dew/key:Key';
 
     /**
      * Returns true if the given object is an instance of Key.  This is designed to work even

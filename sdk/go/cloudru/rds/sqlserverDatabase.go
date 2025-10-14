@@ -38,7 +38,7 @@ func NewSqlserverDatabase(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SqlserverDatabase
-	err := ctx.RegisterResource("sbercloud:Rds/sqlserverDatabase:SqlserverDatabase", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Rds/sqlserverDatabase:SqlserverDatabase", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -50,7 +50,7 @@ func NewSqlserverDatabase(ctx *pulumi.Context,
 func GetSqlserverDatabase(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *SqlserverDatabaseState, opts ...pulumi.ResourceOption) (*SqlserverDatabase, error) {
 	var resource SqlserverDatabase
-	err := ctx.ReadResource("sbercloud:Rds/sqlserverDatabase:SqlserverDatabase", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Rds/sqlserverDatabase:SqlserverDatabase", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

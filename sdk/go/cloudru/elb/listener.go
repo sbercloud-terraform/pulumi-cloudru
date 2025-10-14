@@ -59,7 +59,7 @@ func NewListener(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Listener
-	err := ctx.RegisterResource("sbercloud:Elb/listener:Listener", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Elb/listener:Listener", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -71,7 +71,7 @@ func NewListener(ctx *pulumi.Context,
 func GetListener(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ListenerState, opts ...pulumi.ResourceOption) (*Listener, error) {
 	var resource Listener
-	err := ctx.ReadResource("sbercloud:Elb/listener:Listener", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Elb/listener:Listener", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

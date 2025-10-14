@@ -97,7 +97,7 @@ def get_regions(enterprise_project_id: Optional[_builtins.str] = None,
     __args__['fwInstanceId'] = fw_instance_id
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Cfw/getRegions:getRegions', __args__, opts=opts, typ=GetRegionsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Cfw/getRegions:getRegions', __args__, opts=opts, typ=GetRegionsResult).value
 
     return AwaitableGetRegionsResult(
         data=pulumi.get(__ret__, 'data'),
@@ -117,7 +117,7 @@ def get_regions_output(enterprise_project_id: Optional[pulumi.Input[Optional[_bu
     __args__['fwInstanceId'] = fw_instance_id
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Cfw/getRegions:getRegions', __args__, opts=opts, typ=GetRegionsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Cfw/getRegions:getRegions', __args__, opts=opts, typ=GetRegionsResult)
     return __ret__.apply(lambda __response__: GetRegionsResult(
         data=pulumi.get(__response__, 'data'),
         enterprise_project_id=pulumi.get(__response__, 'enterprise_project_id'),

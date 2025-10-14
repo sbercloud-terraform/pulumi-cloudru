@@ -21,35 +21,35 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "sbercloud:Cfw/aclRule:AclRule":
+	case "cloudru:Cfw/aclRule:AclRule":
 		r = &AclRule{}
-	case "sbercloud:Cfw/addressGroup:AddressGroup":
+	case "cloudru:Cfw/addressGroup:AddressGroup":
 		r = &AddressGroup{}
-	case "sbercloud:Cfw/addressGroupMember:AddressGroupMember":
+	case "cloudru:Cfw/addressGroupMember:AddressGroupMember":
 		r = &AddressGroupMember{}
-	case "sbercloud:Cfw/alarmConfig:AlarmConfig":
+	case "cloudru:Cfw/alarmConfig:AlarmConfig":
 		r = &AlarmConfig{}
-	case "sbercloud:Cfw/antiVirus:AntiVirus":
+	case "cloudru:Cfw/antiVirus:AntiVirus":
 		r = &AntiVirus{}
-	case "sbercloud:Cfw/blackWhiteList:BlackWhiteList":
+	case "cloudru:Cfw/blackWhiteList:BlackWhiteList":
 		r = &BlackWhiteList{}
-	case "sbercloud:Cfw/captureTask:CaptureTask":
+	case "cloudru:Cfw/captureTask:CaptureTask":
 		r = &CaptureTask{}
-	case "sbercloud:Cfw/dnsResolution:DnsResolution":
+	case "cloudru:Cfw/dnsResolution:DnsResolution":
 		r = &DnsResolution{}
-	case "sbercloud:Cfw/domainNameGroup:DomainNameGroup":
+	case "cloudru:Cfw/domainNameGroup:DomainNameGroup":
 		r = &DomainNameGroup{}
-	case "sbercloud:Cfw/eipProtection:EipProtection":
+	case "cloudru:Cfw/eipProtection:EipProtection":
 		r = &EipProtection{}
-	case "sbercloud:Cfw/firewall:Firewall":
+	case "cloudru:Cfw/firewall:Firewall":
 		r = &Firewall{}
-	case "sbercloud:Cfw/ipsRuleModeChange:IpsRuleModeChange":
+	case "cloudru:Cfw/ipsRuleModeChange:IpsRuleModeChange":
 		r = &IpsRuleModeChange{}
-	case "sbercloud:Cfw/ltsLog:LtsLog":
+	case "cloudru:Cfw/ltsLog:LtsLog":
 		r = &LtsLog{}
-	case "sbercloud:Cfw/serviceGroup:ServiceGroup":
+	case "cloudru:Cfw/serviceGroup:ServiceGroup":
 		r = &ServiceGroup{}
-	case "sbercloud:Cfw/serviceGroupMember:ServiceGroupMember":
+	case "cloudru:Cfw/serviceGroupMember:ServiceGroupMember":
 		r = &ServiceGroupMember{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
@@ -65,77 +65,77 @@ func init() {
 		version = semver.Version{Major: 1}
 	}
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Cfw/aclRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Cfw/addressGroup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Cfw/addressGroupMember",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Cfw/alarmConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Cfw/antiVirus",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Cfw/blackWhiteList",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Cfw/captureTask",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Cfw/dnsResolution",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Cfw/domainNameGroup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Cfw/eipProtection",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Cfw/firewall",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Cfw/ipsRuleModeChange",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Cfw/ltsLog",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Cfw/serviceGroup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Cfw/serviceGroupMember",
 		&module{version},
 	)

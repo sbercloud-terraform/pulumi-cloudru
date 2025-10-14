@@ -281,7 +281,7 @@ def get_cluster(cluster_type: Optional[_builtins.str] = None,
     __args__['status'] = status
     __args__['vpcId'] = vpc_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Cce/getCluster:getCluster', __args__, opts=opts, typ=GetClusterResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Cce/getCluster:getCluster', __args__, opts=opts, typ=GetClusterResult).value
 
     return AwaitableGetClusterResult(
         authentication_mode=pulumi.get(__ret__, 'authentication_mode'),
@@ -327,7 +327,7 @@ def get_cluster_output(cluster_type: Optional[pulumi.Input[Optional[_builtins.st
     __args__['status'] = status
     __args__['vpcId'] = vpc_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Cce/getCluster:getCluster', __args__, opts=opts, typ=GetClusterResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Cce/getCluster:getCluster', __args__, opts=opts, typ=GetClusterResult)
     return __ret__.apply(lambda __response__: GetClusterResult(
         authentication_mode=pulumi.get(__response__, 'authentication_mode'),
         billing_mode=pulumi.get(__response__, 'billing_mode'),

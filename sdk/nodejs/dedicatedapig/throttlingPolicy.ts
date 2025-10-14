@@ -21,7 +21,7 @@ export class ThrottlingPolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:DedicatedApig/throttlingPolicy:ThrottlingPolicy';
+    public static readonly __pulumiType = 'cloudru:DedicatedApig/throttlingPolicy:ThrottlingPolicy';
 
     /**
      * Returns true if the given object is an instance of ThrottlingPolicy.  This is designed to work even

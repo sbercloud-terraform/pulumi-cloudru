@@ -19,7 +19,7 @@ export class Keypair extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Ecs/keypair:Keypair';
+    public static readonly __pulumiType = 'cloudru:Ecs/keypair:Keypair';
 
     /**
      * Returns true if the given object is an instance of Keypair.  This is designed to work even

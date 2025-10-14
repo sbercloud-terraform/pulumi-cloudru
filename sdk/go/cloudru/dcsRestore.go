@@ -40,7 +40,7 @@ func NewDcsRestore(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DcsRestore
-	err := ctx.RegisterResource("sbercloud:index/dcsRestore:DcsRestore", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/dcsRestore:DcsRestore", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -52,7 +52,7 @@ func NewDcsRestore(ctx *pulumi.Context,
 func GetDcsRestore(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *DcsRestoreState, opts ...pulumi.ResourceOption) (*DcsRestore, error) {
 	var resource DcsRestore
-	err := ctx.ReadResource("sbercloud:index/dcsRestore:DcsRestore", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/dcsRestore:DcsRestore", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

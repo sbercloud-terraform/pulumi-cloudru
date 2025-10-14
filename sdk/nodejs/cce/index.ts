@@ -80,29 +80,29 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "sbercloud:Cce/addon:Addon":
+            case "cloudru:Cce/addon:Addon":
                 return new Addon(name, <any>undefined, { urn })
-            case "sbercloud:Cce/cluster:Cluster":
+            case "cloudru:Cce/cluster:Cluster":
                 return new Cluster(name, <any>undefined, { urn })
-            case "sbercloud:Cce/namespace:Namespace":
+            case "cloudru:Cce/namespace:Namespace":
                 return new Namespace(name, <any>undefined, { urn })
-            case "sbercloud:Cce/node:Node":
+            case "cloudru:Cce/node:Node":
                 return new Node(name, <any>undefined, { urn })
-            case "sbercloud:Cce/nodeAttach:NodeAttach":
+            case "cloudru:Cce/nodeAttach:NodeAttach":
                 return new NodeAttach(name, <any>undefined, { urn })
-            case "sbercloud:Cce/nodePool:NodePool":
+            case "cloudru:Cce/nodePool:NodePool":
                 return new NodePool(name, <any>undefined, { urn })
-            case "sbercloud:Cce/pvc:Pvc":
+            case "cloudru:Cce/pvc:Pvc":
                 return new Pvc(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("sbercloud", "Cce/addon", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Cce/cluster", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Cce/namespace", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Cce/node", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Cce/nodeAttach", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Cce/nodePool", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Cce/pvc", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Cce/addon", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Cce/cluster", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Cce/namespace", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Cce/node", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Cce/nodeAttach", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Cce/nodePool", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Cce/pvc", _module)

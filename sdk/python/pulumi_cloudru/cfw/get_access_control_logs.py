@@ -263,7 +263,7 @@ def get_access_control_logs(action: Optional[_builtins.str] = None,
     __args__['srcRegionName'] = src_region_name
     __args__['startTime'] = start_time
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Cfw/getAccessControlLogs:getAccessControlLogs', __args__, opts=opts, typ=GetAccessControlLogsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Cfw/getAccessControlLogs:getAccessControlLogs', __args__, opts=opts, typ=GetAccessControlLogsResult).value
 
     return AwaitableGetAccessControlLogsResult(
         action=pulumi.get(__ret__, 'action'),
@@ -328,7 +328,7 @@ def get_access_control_logs_output(action: Optional[pulumi.Input[Optional[_built
     __args__['srcRegionName'] = src_region_name
     __args__['startTime'] = start_time
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Cfw/getAccessControlLogs:getAccessControlLogs', __args__, opts=opts, typ=GetAccessControlLogsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Cfw/getAccessControlLogs:getAccessControlLogs', __args__, opts=opts, typ=GetAccessControlLogsResult)
     return __ret__.apply(lambda __response__: GetAccessControlLogsResult(
         action=pulumi.get(__response__, 'action'),
         app=pulumi.get(__response__, 'app'),

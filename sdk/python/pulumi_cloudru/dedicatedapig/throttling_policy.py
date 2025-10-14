@@ -463,7 +463,7 @@ class _ThrottlingPolicyState:
         pulumi.set(self, "user_throttles", value)
 
 
-@pulumi.type_token("sbercloud:DedicatedApig/throttlingPolicy:ThrottlingPolicy")
+@pulumi.type_token("cloudru:DedicatedApig/throttlingPolicy:ThrottlingPolicy")
 class ThrottlingPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -567,7 +567,7 @@ class ThrottlingPolicy(pulumi.CustomResource):
             __props__.__dict__["user_throttles"] = user_throttles
             __props__.__dict__["created_at"] = None
         super(ThrottlingPolicy, __self__).__init__(
-            'sbercloud:DedicatedApig/throttlingPolicy:ThrottlingPolicy',
+            'cloudru:DedicatedApig/throttlingPolicy:ThrottlingPolicy',
             resource_name,
             __props__,
             opts)

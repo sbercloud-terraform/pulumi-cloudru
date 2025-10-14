@@ -215,7 +215,7 @@ class _DmsKafkaConsumerGroupState:
         pulumi.set(self, "state", value)
 
 
-@pulumi.type_token("sbercloud:index/dmsKafkaConsumerGroup:DmsKafkaConsumerGroup")
+@pulumi.type_token("cloudru:index/dmsKafkaConsumerGroup:DmsKafkaConsumerGroup")
 class DmsKafkaConsumerGroup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -281,7 +281,7 @@ class DmsKafkaConsumerGroup(pulumi.CustomResource):
             __props__.__dict__["lag"] = None
             __props__.__dict__["state"] = None
         super(DmsKafkaConsumerGroup, __self__).__init__(
-            'sbercloud:index/dmsKafkaConsumerGroup:DmsKafkaConsumerGroup',
+            'cloudru:index/dmsKafkaConsumerGroup:DmsKafkaConsumerGroup',
             resource_name,
             __props__,
             opts)

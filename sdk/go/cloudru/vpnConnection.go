@@ -76,7 +76,7 @@ func NewVpnConnection(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource VpnConnection
-	err := ctx.RegisterResource("sbercloud:index/vpnConnection:VpnConnection", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/vpnConnection:VpnConnection", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -88,7 +88,7 @@ func NewVpnConnection(ctx *pulumi.Context,
 func GetVpnConnection(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *VpnConnectionState, opts ...pulumi.ResourceOption) (*VpnConnection, error) {
 	var resource VpnConnection
-	err := ctx.ReadResource("sbercloud:index/vpnConnection:VpnConnection", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/vpnConnection:VpnConnection", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -14,7 +14,7 @@ import (
 func GetServiceGroups(ctx *pulumi.Context, args *GetServiceGroupsArgs, opts ...pulumi.InvokeOption) (*GetServiceGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServiceGroupsResult
-	err := ctx.Invoke("sbercloud:Cfw/getServiceGroups:getServiceGroups", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:Cfw/getServiceGroups:getServiceGroups", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -49,7 +49,7 @@ func GetServiceGroupsOutput(ctx *pulumi.Context, args GetServiceGroupsOutputArgs
 		ApplyT(func(v interface{}) (GetServiceGroupsResultOutput, error) {
 			args := v.(GetServiceGroupsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:Cfw/getServiceGroups:getServiceGroups", args, GetServiceGroupsResultOutput{}, options).(GetServiceGroupsResultOutput), nil
+			return ctx.InvokeOutput("cloudru:Cfw/getServiceGroups:getServiceGroups", args, GetServiceGroupsResultOutput{}, options).(GetServiceGroupsResultOutput), nil
 		}).(GetServiceGroupsResultOutput)
 }
 

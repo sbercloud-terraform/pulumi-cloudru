@@ -14,7 +14,7 @@ import (
 func GetDmsRocketmqTopicAccessUsers(ctx *pulumi.Context, args *GetDmsRocketmqTopicAccessUsersArgs, opts ...pulumi.InvokeOption) (*GetDmsRocketmqTopicAccessUsersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDmsRocketmqTopicAccessUsersResult
-	err := ctx.Invoke("sbercloud:index/getDmsRocketmqTopicAccessUsers:getDmsRocketmqTopicAccessUsers", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getDmsRocketmqTopicAccessUsers:getDmsRocketmqTopicAccessUsers", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -43,7 +43,7 @@ func GetDmsRocketmqTopicAccessUsersOutput(ctx *pulumi.Context, args GetDmsRocket
 		ApplyT(func(v interface{}) (GetDmsRocketmqTopicAccessUsersResultOutput, error) {
 			args := v.(GetDmsRocketmqTopicAccessUsersArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getDmsRocketmqTopicAccessUsers:getDmsRocketmqTopicAccessUsers", args, GetDmsRocketmqTopicAccessUsersResultOutput{}, options).(GetDmsRocketmqTopicAccessUsersResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getDmsRocketmqTopicAccessUsers:getDmsRocketmqTopicAccessUsers", args, GetDmsRocketmqTopicAccessUsersResultOutput{}, options).(GetDmsRocketmqTopicAccessUsersResultOutput), nil
 		}).(GetDmsRocketmqTopicAccessUsersResultOutput)
 }
 

@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 export function getPgAccounts(args: GetPgAccountsArgs, opts?: pulumi.InvokeOptions): Promise<GetPgAccountsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:Rds/getPgAccounts:getPgAccounts", {
+    return pulumi.runtime.invoke("cloudru:Rds/getPgAccounts:getPgAccounts", {
         "instanceId": args.instanceId,
         "region": args.region,
         "userName": args.userName,
@@ -39,7 +39,7 @@ export interface GetPgAccountsResult {
 }
 export function getPgAccountsOutput(args: GetPgAccountsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPgAccountsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:Rds/getPgAccounts:getPgAccounts", {
+    return pulumi.runtime.invokeOutput("cloudru:Rds/getPgAccounts:getPgAccounts", {
         "instanceId": args.instanceId,
         "region": args.region,
         "userName": args.userName,

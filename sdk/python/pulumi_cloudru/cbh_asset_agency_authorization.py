@@ -102,7 +102,7 @@ class _CbhAssetAgencyAuthorizationState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:index/cbhAssetAgencyAuthorization:CbhAssetAgencyAuthorization")
+@pulumi.type_token("cloudru:index/cbhAssetAgencyAuthorization:CbhAssetAgencyAuthorization")
 class CbhAssetAgencyAuthorization(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -160,7 +160,7 @@ class CbhAssetAgencyAuthorization(pulumi.CustomResource):
             __props__.__dict__["kms"] = kms
             __props__.__dict__["region"] = region
         super(CbhAssetAgencyAuthorization, __self__).__init__(
-            'sbercloud:index/cbhAssetAgencyAuthorization:CbhAssetAgencyAuthorization',
+            'cloudru:index/cbhAssetAgencyAuthorization:CbhAssetAgencyAuthorization',
             resource_name,
             __props__,
             opts)

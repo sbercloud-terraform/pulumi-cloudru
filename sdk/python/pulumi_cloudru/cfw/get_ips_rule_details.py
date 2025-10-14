@@ -87,7 +87,7 @@ def get_ips_rule_details(fw_instance_id: Optional[_builtins.str] = None,
     __args__['fwInstanceId'] = fw_instance_id
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:Cfw/getIpsRuleDetails:getIpsRuleDetails', __args__, opts=opts, typ=GetIpsRuleDetailsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:Cfw/getIpsRuleDetails:getIpsRuleDetails', __args__, opts=opts, typ=GetIpsRuleDetailsResult).value
 
     return AwaitableGetIpsRuleDetailsResult(
         datas=pulumi.get(__ret__, 'datas'),
@@ -104,7 +104,7 @@ def get_ips_rule_details_output(fw_instance_id: Optional[pulumi.Input[_builtins.
     __args__['fwInstanceId'] = fw_instance_id
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:Cfw/getIpsRuleDetails:getIpsRuleDetails', __args__, opts=opts, typ=GetIpsRuleDetailsResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:Cfw/getIpsRuleDetails:getIpsRuleDetails', __args__, opts=opts, typ=GetIpsRuleDetailsResult)
     return __ret__.apply(lambda __response__: GetIpsRuleDetailsResult(
         datas=pulumi.get(__response__, 'datas'),
         fw_instance_id=pulumi.get(__response__, 'fw_instance_id'),

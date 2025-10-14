@@ -34,7 +34,7 @@ func NewAddressGroup(ctx *pulumi.Context,
 
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AddressGroup
-	err := ctx.RegisterResource("sbercloud:Vpc/addressGroup:AddressGroup", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Vpc/addressGroup:AddressGroup", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -46,7 +46,7 @@ func NewAddressGroup(ctx *pulumi.Context,
 func GetAddressGroup(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *AddressGroupState, opts ...pulumi.ResourceOption) (*AddressGroup, error) {
 	var resource AddressGroup
-	err := ctx.ReadResource("sbercloud:Vpc/addressGroup:AddressGroup", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Vpc/addressGroup:AddressGroup", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

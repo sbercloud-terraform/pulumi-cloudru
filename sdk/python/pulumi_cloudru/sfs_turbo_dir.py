@@ -214,7 +214,7 @@ class _SfsTurboDirState:
         pulumi.set(self, "uid", value)
 
 
-@pulumi.type_token("sbercloud:index/sfsTurboDir:SfsTurboDir")
+@pulumi.type_token("cloudru:index/sfsTurboDir:SfsTurboDir")
 class SfsTurboDir(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -286,7 +286,7 @@ class SfsTurboDir(pulumi.CustomResource):
             __props__.__dict__["share_id"] = share_id
             __props__.__dict__["uid"] = uid
         super(SfsTurboDir, __self__).__init__(
-            'sbercloud:index/sfsTurboDir:SfsTurboDir',
+            'cloudru:index/sfsTurboDir:SfsTurboDir',
             resource_name,
             __props__,
             opts)

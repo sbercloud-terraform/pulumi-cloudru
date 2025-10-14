@@ -95,7 +95,7 @@ class _FgsFunctionToppingState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:index/fgsFunctionTopping:FgsFunctionTopping")
+@pulumi.type_token("cloudru:index/fgsFunctionTopping:FgsFunctionTopping")
 class FgsFunctionTopping(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -150,7 +150,7 @@ class FgsFunctionTopping(pulumi.CustomResource):
             __props__.__dict__["function_urn"] = function_urn
             __props__.__dict__["region"] = region
         super(FgsFunctionTopping, __self__).__init__(
-            'sbercloud:index/fgsFunctionTopping:FgsFunctionTopping',
+            'cloudru:index/fgsFunctionTopping:FgsFunctionTopping',
             resource_name,
             __props__,
             opts)

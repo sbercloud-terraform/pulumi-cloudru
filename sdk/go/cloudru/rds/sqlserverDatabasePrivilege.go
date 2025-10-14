@@ -42,7 +42,7 @@ func NewSqlserverDatabasePrivilege(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SqlserverDatabasePrivilege
-	err := ctx.RegisterResource("sbercloud:Rds/sqlserverDatabasePrivilege:SqlserverDatabasePrivilege", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:Rds/sqlserverDatabasePrivilege:SqlserverDatabasePrivilege", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -54,7 +54,7 @@ func NewSqlserverDatabasePrivilege(ctx *pulumi.Context,
 func GetSqlserverDatabasePrivilege(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *SqlserverDatabasePrivilegeState, opts ...pulumi.ResourceOption) (*SqlserverDatabasePrivilege, error) {
 	var resource SqlserverDatabasePrivilege
-	err := ctx.ReadResource("sbercloud:Rds/sqlserverDatabasePrivilege:SqlserverDatabasePrivilege", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:Rds/sqlserverDatabasePrivilege:SqlserverDatabasePrivilege", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

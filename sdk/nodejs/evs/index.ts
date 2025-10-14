@@ -25,14 +25,14 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "sbercloud:Evs/snapshot:Snapshot":
+            case "cloudru:Evs/snapshot:Snapshot":
                 return new Snapshot(name, <any>undefined, { urn })
-            case "sbercloud:Evs/volume:Volume":
+            case "cloudru:Evs/volume:Volume":
                 return new Volume(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("sbercloud", "Evs/snapshot", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "Evs/volume", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Evs/snapshot", _module)
+pulumi.runtime.registerResourceModule("cloudru", "Evs/volume", _module)

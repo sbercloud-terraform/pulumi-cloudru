@@ -21,23 +21,23 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "sbercloud:Elb/certificate:Certificate":
+	case "cloudru:Elb/certificate:Certificate":
 		r = &Certificate{}
-	case "sbercloud:Elb/l7policy:L7policy":
+	case "cloudru:Elb/l7policy:L7policy":
 		r = &L7policy{}
-	case "sbercloud:Elb/l7rule:L7rule":
+	case "cloudru:Elb/l7rule:L7rule":
 		r = &L7rule{}
-	case "sbercloud:Elb/listener:Listener":
+	case "cloudru:Elb/listener:Listener":
 		r = &Listener{}
-	case "sbercloud:Elb/loadbalancer:Loadbalancer":
+	case "cloudru:Elb/loadbalancer:Loadbalancer":
 		r = &Loadbalancer{}
-	case "sbercloud:Elb/member:Member":
+	case "cloudru:Elb/member:Member":
 		r = &Member{}
-	case "sbercloud:Elb/monitor:Monitor":
+	case "cloudru:Elb/monitor:Monitor":
 		r = &Monitor{}
-	case "sbercloud:Elb/pool:Pool":
+	case "cloudru:Elb/pool:Pool":
 		r = &Pool{}
-	case "sbercloud:Elb/whitelist:Whitelist":
+	case "cloudru:Elb/whitelist:Whitelist":
 		r = &Whitelist{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
@@ -53,47 +53,47 @@ func init() {
 		version = semver.Version{Major: 1}
 	}
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Elb/certificate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Elb/l7policy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Elb/l7rule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Elb/listener",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Elb/loadbalancer",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Elb/member",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Elb/monitor",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Elb/pool",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"Elb/whitelist",
 		&module{version},
 	)

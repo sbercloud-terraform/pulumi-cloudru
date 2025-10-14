@@ -221,7 +221,7 @@ class _AssociationState:
         pulumi.set(self, "updated_at", value)
 
 
-@pulumi.type_token("sbercloud:Er/association:Association")
+@pulumi.type_token("cloudru:Er/association:Association")
 class Association(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -292,7 +292,7 @@ class Association(pulumi.CustomResource):
             __props__.__dict__["status"] = None
             __props__.__dict__["updated_at"] = None
         super(Association, __self__).__init__(
-            'sbercloud:Er/association:Association',
+            'cloudru:Er/association:Association',
             resource_name,
             __props__,
             opts)

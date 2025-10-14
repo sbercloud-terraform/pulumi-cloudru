@@ -21,7 +21,7 @@ export class Bandwidth extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Vpc/bandwidth:Bandwidth';
+    public static readonly __pulumiType = 'cloudru:Vpc/bandwidth:Bandwidth';
 
     /**
      * Returns true if the given object is an instance of Bandwidth.  This is designed to work even

@@ -21,7 +21,7 @@ export class Firewall extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:Cfw/firewall:Firewall';
+    public static readonly __pulumiType = 'cloudru:Cfw/firewall:Firewall';
 
     /**
      * Returns true if the given object is an instance of Firewall.  This is designed to work even

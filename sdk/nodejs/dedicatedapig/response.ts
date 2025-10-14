@@ -21,7 +21,7 @@ export class Response extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:DedicatedApig/response:Response';
+    public static readonly __pulumiType = 'cloudru:DedicatedApig/response:Response';
 
     /**
      * Returns true if the given object is an instance of Response.  This is designed to work even

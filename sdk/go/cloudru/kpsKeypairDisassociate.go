@@ -34,7 +34,7 @@ func NewKpsKeypairDisassociate(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource KpsKeypairDisassociate
-	err := ctx.RegisterResource("sbercloud:index/kpsKeypairDisassociate:KpsKeypairDisassociate", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/kpsKeypairDisassociate:KpsKeypairDisassociate", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -46,7 +46,7 @@ func NewKpsKeypairDisassociate(ctx *pulumi.Context,
 func GetKpsKeypairDisassociate(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *KpsKeypairDisassociateState, opts ...pulumi.ResourceOption) (*KpsKeypairDisassociate, error) {
 	var resource KpsKeypairDisassociate
-	err := ctx.ReadResource("sbercloud:index/kpsKeypairDisassociate:KpsKeypairDisassociate", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/kpsKeypairDisassociate:KpsKeypairDisassociate", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

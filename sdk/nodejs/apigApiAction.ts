@@ -19,7 +19,7 @@ export class ApigApiAction extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/apigApiAction:ApigApiAction';
+    public static readonly __pulumiType = 'cloudru:index/apigApiAction:ApigApiAction';
 
     /**
      * Returns true if the given object is an instance of ApigApiAction.  This is designed to work even

@@ -450,7 +450,7 @@ class _ApigApiDebugState:
         pulumi.set(self, "stage", value)
 
 
-@pulumi.type_token("sbercloud:index/apigApiDebug:ApigApiDebug")
+@pulumi.type_token("cloudru:index/apigApiDebug:ApigApiDebug")
 class ApigApiDebug(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -557,7 +557,7 @@ class ApigApiDebug(pulumi.CustomResource):
             __props__.__dict__["request"] = None
             __props__.__dict__["response"] = None
         super(ApigApiDebug, __self__).__init__(
-            'sbercloud:index/apigApiDebug:ApigApiDebug',
+            'cloudru:index/apigApiDebug:ApigApiDebug',
             resource_name,
             __props__,
             opts)

@@ -2,7 +2,7 @@
     "auto-aliasing": {
         "resources": {
             "sbercloud_aom_service_discovery_rule": {
-                "current": "sbercloud:Aom/serviceDiscoveryRule:ServiceDiscoveryRule",
+                "current": "cloudru:Aom/serviceDiscoveryRule:ServiceDiscoveryRule",
                 "majorVersion": 1,
                 "fields": {
                     "discovery_rules": {
@@ -67,7 +67,7 @@
                 }
             },
             "sbercloud_api_gateway_api": {
-                "current": "sbercloud:SharedApig/api:Api",
+                "current": "cloudru:SharedApig/api:Api",
                 "majorVersion": 1,
                 "fields": {
                     "backend_params": {
@@ -137,7 +137,7 @@
                 }
             },
             "sbercloud_api_gateway_group": {
-                "current": "sbercloud:SharedApig/group:Group",
+                "current": "cloudru:SharedApig/group:Group",
                 "majorVersion": 1,
                 "fields": {
                     "environment": {
@@ -156,11 +156,11 @@
                 }
             },
             "sbercloud_apig_acl_policy": {
-                "current": "sbercloud:index/apigAclPolicy:ApigAclPolicy",
+                "current": "cloudru:index/apigAclPolicy:ApigAclPolicy",
                 "majorVersion": 1
             },
             "sbercloud_apig_acl_policy_associate": {
-                "current": "sbercloud:index/apigAclPolicyAssociate:ApigAclPolicyAssociate",
+                "current": "cloudru:index/apigAclPolicyAssociate:ApigAclPolicyAssociate",
                 "majorVersion": 1,
                 "fields": {
                     "publish_ids": {
@@ -169,7 +169,7 @@
                 }
             },
             "sbercloud_apig_api": {
-                "current": "sbercloud:DedicatedApig/api:Api",
+                "current": "cloudru:DedicatedApig/api:Api",
                 "majorVersion": 1,
                 "fields": {
                     "backend_params": {
@@ -239,11 +239,11 @@
                 }
             },
             "sbercloud_apig_api_action": {
-                "current": "sbercloud:index/apigApiAction:ApigApiAction",
+                "current": "cloudru:index/apigApiAction:ApigApiAction",
                 "majorVersion": 1
             },
             "sbercloud_apig_api_batch_action": {
-                "current": "sbercloud:index/apigApiBatchAction:ApigApiBatchAction",
+                "current": "cloudru:index/apigApiBatchAction:ApigApiBatchAction",
                 "majorVersion": 1,
                 "fields": {
                     "apis": {
@@ -252,15 +252,15 @@
                 }
             },
             "sbercloud_apig_api_check": {
-                "current": "sbercloud:index/apigApiCheck:ApigApiCheck",
+                "current": "cloudru:index/apigApiCheck:ApigApiCheck",
                 "majorVersion": 1
             },
             "sbercloud_apig_api_debug": {
-                "current": "sbercloud:index/apigApiDebug:ApigApiDebug",
+                "current": "cloudru:index/apigApiDebug:ApigApiDebug",
                 "majorVersion": 1
             },
             "sbercloud_apig_api_publishment": {
-                "current": "sbercloud:DedicatedApig/apiPublishment:ApiPublishment",
+                "current": "cloudru:DedicatedApig/apiPublishment:ApiPublishment",
                 "majorVersion": 1,
                 "fields": {
                     "histories": {
@@ -269,15 +269,15 @@
                 }
             },
             "sbercloud_apig_api_version_unpublish": {
-                "current": "sbercloud:index/apigApiVersionUnpublish:ApigApiVersionUnpublish",
+                "current": "cloudru:index/apigApiVersionUnpublish:ApigApiVersionUnpublish",
                 "majorVersion": 1
             },
             "sbercloud_apig_appcode": {
-                "current": "sbercloud:index/apigAppcode:ApigAppcode",
+                "current": "cloudru:index/apigAppcode:ApigAppcode",
                 "majorVersion": 1
             },
             "sbercloud_apig_application": {
-                "current": "sbercloud:DedicatedApig/application:Application",
+                "current": "cloudru:DedicatedApig/application:Application",
                 "majorVersion": 1,
                 "fields": {
                     "app_codes": {
@@ -286,7 +286,7 @@
                 }
             },
             "sbercloud_apig_application_acl": {
-                "current": "sbercloud:index/apigApplicationAcl:ApigApplicationAcl",
+                "current": "cloudru:index/apigApplicationAcl:ApigApplicationAcl",
                 "majorVersion": 1,
                 "fields": {
                     "values": {
@@ -295,7 +295,7 @@
                 }
             },
             "sbercloud_apig_application_authorization": {
-                "current": "sbercloud:index/apigApplicationAuthorization:ApigApplicationAuthorization",
+                "current": "cloudru:index/apigApplicationAuthorization:ApigApplicationAuthorization",
                 "majorVersion": 1,
                 "fields": {
                     "api_ids": {
@@ -307,11 +307,11 @@
                 }
             },
             "sbercloud_apig_application_quota": {
-                "current": "sbercloud:index/apigApplicationQuota:ApigApplicationQuota",
+                "current": "cloudru:index/apigApplicationQuota:ApigApplicationQuota",
                 "majorVersion": 1
             },
             "sbercloud_apig_application_quota_associate": {
-                "current": "sbercloud:index/apigApplicationQuotaAssociate:ApigApplicationQuotaAssociate",
+                "current": "cloudru:index/apigApplicationQuotaAssociate:ApigApplicationQuotaAssociate",
                 "majorVersion": 1,
                 "fields": {
                     "applications": {
@@ -320,7 +320,7 @@
                 }
             },
             "sbercloud_apig_certificate": {
-                "current": "sbercloud:index/apigCertificate:ApigCertificate",
+                "current": "cloudru:index/apigCertificate:ApigCertificate",
                 "majorVersion": 1,
                 "fields": {
                     "sans": {
@@ -329,7 +329,7 @@
                 }
             },
             "sbercloud_apig_channel": {
-                "current": "sbercloud:index/apigChannel:ApigChannel",
+                "current": "cloudru:index/apigChannel:ApigChannel",
                 "majorVersion": 1,
                 "fields": {
                     "health_check": {
@@ -357,7 +357,7 @@
                 }
             },
             "sbercloud_apig_custom_authorizer": {
-                "current": "sbercloud:DedicatedApig/customAuthorizer:CustomAuthorizer",
+                "current": "cloudru:DedicatedApig/customAuthorizer:CustomAuthorizer",
                 "majorVersion": 1,
                 "fields": {
                     "identity": {
@@ -366,11 +366,11 @@
                 }
             },
             "sbercloud_apig_endpoint_connection_management": {
-                "current": "sbercloud:index/apigEndpointConnectionManagement:ApigEndpointConnectionManagement",
+                "current": "cloudru:index/apigEndpointConnectionManagement:ApigEndpointConnectionManagement",
                 "majorVersion": 1
             },
             "sbercloud_apig_endpoint_whitelist": {
-                "current": "sbercloud:index/apigEndpointWhitelist:ApigEndpointWhitelist",
+                "current": "cloudru:index/apigEndpointWhitelist:ApigEndpointWhitelist",
                 "majorVersion": 1,
                 "fields": {
                     "whitelists": {
@@ -379,15 +379,15 @@
                 }
             },
             "sbercloud_apig_environment": {
-                "current": "sbercloud:DedicatedApig/environment:Environment",
+                "current": "cloudru:DedicatedApig/environment:Environment",
                 "majorVersion": 1
             },
             "sbercloud_apig_environment_variable": {
-                "current": "sbercloud:index/apigEnvironmentVariable:ApigEnvironmentVariable",
+                "current": "cloudru:index/apigEnvironmentVariable:ApigEnvironmentVariable",
                 "majorVersion": 1
             },
             "sbercloud_apig_group": {
-                "current": "sbercloud:DedicatedApig/group:Group",
+                "current": "cloudru:DedicatedApig/group:Group",
                 "majorVersion": 1,
                 "fields": {
                     "environment": {
@@ -406,7 +406,7 @@
                 }
             },
             "sbercloud_apig_instance": {
-                "current": "sbercloud:DedicatedApig/instance:Instance",
+                "current": "cloudru:DedicatedApig/instance:Instance",
                 "majorVersion": 1,
                 "fields": {
                     "availability_zones": {
@@ -424,11 +424,11 @@
                 }
             },
             "sbercloud_apig_instance_feature": {
-                "current": "sbercloud:index/apigInstanceFeature:ApigInstanceFeature",
+                "current": "cloudru:index/apigInstanceFeature:ApigInstanceFeature",
                 "majorVersion": 1
             },
             "sbercloud_apig_instance_routes": {
-                "current": "sbercloud:index/apigInstanceRoutes:ApigInstanceRoutes",
+                "current": "cloudru:index/apigInstanceRoutes:ApigInstanceRoutes",
                 "majorVersion": 1,
                 "fields": {
                     "nexthops": {
@@ -437,11 +437,11 @@
                 }
             },
             "sbercloud_apig_plugin": {
-                "current": "sbercloud:index/apigPlugin:ApigPlugin",
+                "current": "cloudru:index/apigPlugin:ApigPlugin",
                 "majorVersion": 1
             },
             "sbercloud_apig_plugin_associate": {
-                "current": "sbercloud:index/apigPluginAssociate:ApigPluginAssociate",
+                "current": "cloudru:index/apigPluginAssociate:ApigPluginAssociate",
                 "majorVersion": 1,
                 "fields": {
                     "api_ids": {
@@ -453,7 +453,7 @@
                 }
             },
             "sbercloud_apig_plugin_batch_apis_associate": {
-                "current": "sbercloud:index/apigPluginBatchApisAssociate:ApigPluginBatchApisAssociate",
+                "current": "cloudru:index/apigPluginBatchApisAssociate:ApigPluginBatchApisAssociate",
                 "majorVersion": 1,
                 "fields": {
                     "api_ids": {
@@ -465,7 +465,7 @@
                 }
             },
             "sbercloud_apig_response": {
-                "current": "sbercloud:DedicatedApig/response:Response",
+                "current": "cloudru:DedicatedApig/response:Response",
                 "majorVersion": 1,
                 "fields": {
                     "rule": {
@@ -481,11 +481,11 @@
                 }
             },
             "sbercloud_apig_signature": {
-                "current": "sbercloud:index/apigSignature:ApigSignature",
+                "current": "cloudru:index/apigSignature:ApigSignature",
                 "majorVersion": 1
             },
             "sbercloud_apig_signature_associate": {
-                "current": "sbercloud:index/apigSignatureAssociate:ApigSignatureAssociate",
+                "current": "cloudru:index/apigSignatureAssociate:ApigSignatureAssociate",
                 "majorVersion": 1,
                 "fields": {
                     "publish_ids": {
@@ -494,7 +494,7 @@
                 }
             },
             "sbercloud_apig_throttling_policy": {
-                "current": "sbercloud:DedicatedApig/throttlingPolicy:ThrottlingPolicy",
+                "current": "cloudru:DedicatedApig/throttlingPolicy:ThrottlingPolicy",
                 "majorVersion": 1,
                 "fields": {
                     "app_throttles": {
@@ -506,7 +506,7 @@
                 }
             },
             "sbercloud_apig_throttling_policy_associate": {
-                "current": "sbercloud:DedicatedApig/throttlingPolicyAssociate:ThrottlingPolicyAssociate",
+                "current": "cloudru:DedicatedApig/throttlingPolicyAssociate:ThrottlingPolicyAssociate",
                 "majorVersion": 1,
                 "fields": {
                     "publish_ids": {
@@ -515,7 +515,7 @@
                 }
             },
             "sbercloud_as_bandwidth_policy": {
-                "current": "sbercloud:As/bandwidthPolicy:BandwidthPolicy",
+                "current": "cloudru:As/bandwidthPolicy:BandwidthPolicy",
                 "majorVersion": 1,
                 "fields": {
                     "interval_alarm_actions": {
@@ -533,7 +533,7 @@
                 }
             },
             "sbercloud_as_configuration": {
-                "current": "sbercloud:As/configuration:Configuration",
+                "current": "cloudru:As/configuration:Configuration",
                 "majorVersion": 1,
                 "fields": {
                     "instance_config": {
@@ -572,7 +572,7 @@
                 }
             },
             "sbercloud_as_group": {
-                "current": "sbercloud:As/group:Group",
+                "current": "cloudru:As/group:Group",
                 "majorVersion": 1,
                 "fields": {
                     "availability_zones": {
@@ -599,7 +599,7 @@
                 }
             },
             "sbercloud_as_policy": {
-                "current": "sbercloud:As/policy:Policy",
+                "current": "cloudru:As/policy:Policy",
                 "majorVersion": 1,
                 "fields": {
                     "scaling_policy_action": {
@@ -611,19 +611,19 @@
                 }
             },
             "sbercloud_cbh_asset_agency_authorization": {
-                "current": "sbercloud:index/cbhAssetAgencyAuthorization:CbhAssetAgencyAuthorization",
+                "current": "cloudru:index/cbhAssetAgencyAuthorization:CbhAssetAgencyAuthorization",
                 "majorVersion": 1
             },
             "sbercloud_cbh_ha_instance": {
-                "current": "sbercloud:index/cbhHaInstance:CbhHaInstance",
+                "current": "cloudru:index/cbhHaInstance:CbhHaInstance",
                 "majorVersion": 1
             },
             "sbercloud_cbh_instance": {
-                "current": "sbercloud:index/cbhInstance:CbhInstance",
+                "current": "cloudru:index/cbhInstance:CbhInstance",
                 "majorVersion": 1
             },
             "sbercloud_cbr_backup_share": {
-                "current": "sbercloud:index/cbrBackupShare:CbrBackupShare",
+                "current": "cloudru:index/cbrBackupShare:CbrBackupShare",
                 "majorVersion": 1,
                 "fields": {
                     "members": {
@@ -632,11 +632,11 @@
                 }
             },
             "sbercloud_cbr_backup_share_accepter": {
-                "current": "sbercloud:index/cbrBackupShareAccepter:CbrBackupShareAccepter",
+                "current": "cloudru:index/cbrBackupShareAccepter:CbrBackupShareAccepter",
                 "majorVersion": 1
             },
             "sbercloud_cbr_checkpoint": {
-                "current": "sbercloud:index/cbrCheckpoint:CbrCheckpoint",
+                "current": "cloudru:index/cbrCheckpoint:CbrCheckpoint",
                 "majorVersion": 1,
                 "fields": {
                     "backups": {
@@ -645,7 +645,7 @@
                 }
             },
             "sbercloud_cbr_policy": {
-                "current": "sbercloud:Cbr/policy:Policy",
+                "current": "cloudru:Cbr/policy:Policy",
                 "majorVersion": 1,
                 "fields": {
                     "backup_cycle": {
@@ -664,7 +664,7 @@
                 }
             },
             "sbercloud_cbr_vault": {
-                "current": "sbercloud:Cbr/vault:Vault",
+                "current": "cloudru:Cbr/vault:Vault",
                 "majorVersion": 1,
                 "fields": {
                     "policy": {
@@ -686,7 +686,7 @@
                 }
             },
             "sbercloud_cce_addon": {
-                "current": "sbercloud:Cce/addon:Addon",
+                "current": "cloudru:Cce/addon:Addon",
                 "majorVersion": 1,
                 "fields": {
                     "values": {
@@ -695,7 +695,7 @@
                 }
             },
             "sbercloud_cce_cluster": {
-                "current": "sbercloud:Cce/cluster:Cluster",
+                "current": "cloudru:Cce/cluster:Cluster",
                 "majorVersion": 1,
                 "fields": {
                     "certificate_clusters": {
@@ -722,7 +722,7 @@
                 }
             },
             "sbercloud_cce_cluster_upgrade": {
-                "current": "sbercloud:index/cceClusterUpgrade:CceClusterUpgrade",
+                "current": "cloudru:index/cceClusterUpgrade:CceClusterUpgrade",
                 "majorVersion": 1,
                 "fields": {
                     "addons": {
@@ -748,11 +748,11 @@
                 }
             },
             "sbercloud_cce_namespace": {
-                "current": "sbercloud:Cce/namespace:Namespace",
+                "current": "cloudru:Cce/namespace:Namespace",
                 "majorVersion": 1
             },
             "sbercloud_cce_node": {
-                "current": "sbercloud:Cce/node:Node",
+                "current": "cloudru:Cce/node:Node",
                 "majorVersion": 1,
                 "fields": {
                     "data_volumes": {
@@ -805,7 +805,7 @@
                 }
             },
             "sbercloud_cce_node_attach": {
-                "current": "sbercloud:Cce/nodeAttach:NodeAttach",
+                "current": "cloudru:Cce/nodeAttach:NodeAttach",
                 "majorVersion": 1,
                 "fields": {
                     "data_volumes": {
@@ -852,7 +852,7 @@
                 }
             },
             "sbercloud_cce_node_pool": {
-                "current": "sbercloud:Cce/nodePool:NodePool",
+                "current": "cloudru:Cce/nodePool:NodePool",
                 "majorVersion": 1,
                 "fields": {
                     "data_volumes": {
@@ -931,7 +931,7 @@
                 }
             },
             "sbercloud_cce_nodes_remove": {
-                "current": "sbercloud:index/cceNodesRemove:CceNodesRemove",
+                "current": "cloudru:index/cceNodesRemove:CceNodesRemove",
                 "majorVersion": 1,
                 "fields": {
                     "nodes": {
@@ -940,7 +940,7 @@
                 }
             },
             "sbercloud_cce_pvc": {
-                "current": "sbercloud:Cce/pvc:Pvc",
+                "current": "cloudru:Cce/pvc:Pvc",
                 "majorVersion": 1,
                 "fields": {
                     "access_modes": {
@@ -949,7 +949,7 @@
                 }
             },
             "sbercloud_cdm_cluster": {
-                "current": "sbercloud:Cdm/cluster:Cluster",
+                "current": "cloudru:Cdm/cluster:Cluster",
                 "majorVersion": 1,
                 "fields": {
                     "email": {
@@ -964,7 +964,7 @@
                 }
             },
             "sbercloud_ces_alarmrule": {
-                "current": "sbercloud:Ces/alarmrule:Alarmrule",
+                "current": "cloudru:Ces/alarmrule:Alarmrule",
                 "majorVersion": 1,
                 "fields": {
                     "alarm_actions": {
@@ -1013,7 +1013,7 @@
                 }
             },
             "sbercloud_cfw_acl_rule": {
-                "current": "sbercloud:Cfw/aclRule:AclRule",
+                "current": "cloudru:Cfw/aclRule:AclRule",
                 "majorVersion": 1,
                 "fields": {
                     "applications": {
@@ -1075,19 +1075,19 @@
                 }
             },
             "sbercloud_cfw_address_group": {
-                "current": "sbercloud:Cfw/addressGroup:AddressGroup",
+                "current": "cloudru:Cfw/addressGroup:AddressGroup",
                 "majorVersion": 1
             },
             "sbercloud_cfw_address_group_member": {
-                "current": "sbercloud:Cfw/addressGroupMember:AddressGroupMember",
+                "current": "cloudru:Cfw/addressGroupMember:AddressGroupMember",
                 "majorVersion": 1
             },
             "sbercloud_cfw_alarm_config": {
-                "current": "sbercloud:Cfw/alarmConfig:AlarmConfig",
+                "current": "cloudru:Cfw/alarmConfig:AlarmConfig",
                 "majorVersion": 1
             },
             "sbercloud_cfw_anti_virus": {
-                "current": "sbercloud:Cfw/antiVirus:AntiVirus",
+                "current": "cloudru:Cfw/antiVirus:AntiVirus",
                 "majorVersion": 1,
                 "fields": {
                     "scan_protocol_configs": {
@@ -1096,11 +1096,11 @@
                 }
             },
             "sbercloud_cfw_black_white_list": {
-                "current": "sbercloud:Cfw/blackWhiteList:BlackWhiteList",
+                "current": "cloudru:Cfw/blackWhiteList:BlackWhiteList",
                 "majorVersion": 1
             },
             "sbercloud_cfw_capture_task": {
-                "current": "sbercloud:Cfw/captureTask:CaptureTask",
+                "current": "cloudru:Cfw/captureTask:CaptureTask",
                 "majorVersion": 1,
                 "fields": {
                     "destination": {
@@ -1115,7 +1115,7 @@
                 }
             },
             "sbercloud_cfw_dns_resolution": {
-                "current": "sbercloud:Cfw/dnsResolution:DnsResolution",
+                "current": "cloudru:Cfw/dnsResolution:DnsResolution",
                 "majorVersion": 1,
                 "fields": {
                     "custom_dns_servers": {
@@ -1127,7 +1127,7 @@
                 }
             },
             "sbercloud_cfw_domain_name_group": {
-                "current": "sbercloud:Cfw/domainNameGroup:DomainNameGroup",
+                "current": "cloudru:Cfw/domainNameGroup:DomainNameGroup",
                 "majorVersion": 1,
                 "fields": {
                     "domain_names": {
@@ -1136,7 +1136,7 @@
                 }
             },
             "sbercloud_cfw_eip_protection": {
-                "current": "sbercloud:Cfw/eipProtection:EipProtection",
+                "current": "cloudru:Cfw/eipProtection:EipProtection",
                 "majorVersion": 1,
                 "fields": {
                     "protected_eip": {
@@ -1145,7 +1145,7 @@
                 }
             },
             "sbercloud_cfw_firewall": {
-                "current": "sbercloud:Cfw/firewall:Firewall",
+                "current": "cloudru:Cfw/firewall:Firewall",
                 "majorVersion": 1,
                 "fields": {
                     "flavor": {
@@ -1157,7 +1157,7 @@
                 }
             },
             "sbercloud_cfw_ips_rule_mode_change": {
-                "current": "sbercloud:Cfw/ipsRuleModeChange:IpsRuleModeChange",
+                "current": "cloudru:Cfw/ipsRuleModeChange:IpsRuleModeChange",
                 "majorVersion": 1,
                 "fields": {
                     "ips_ids": {
@@ -1166,23 +1166,23 @@
                 }
             },
             "sbercloud_cfw_lts_log": {
-                "current": "sbercloud:Cfw/ltsLog:LtsLog",
+                "current": "cloudru:Cfw/ltsLog:LtsLog",
                 "majorVersion": 1
             },
             "sbercloud_cfw_service_group": {
-                "current": "sbercloud:Cfw/serviceGroup:ServiceGroup",
+                "current": "cloudru:Cfw/serviceGroup:ServiceGroup",
                 "majorVersion": 1
             },
             "sbercloud_cfw_service_group_member": {
-                "current": "sbercloud:Cfw/serviceGroupMember:ServiceGroupMember",
+                "current": "cloudru:Cfw/serviceGroupMember:ServiceGroupMember",
                 "majorVersion": 1
             },
             "sbercloud_compute_eip_associate": {
-                "current": "sbercloud:Ecs/eipAssociate:EipAssociate",
+                "current": "cloudru:Ecs/eipAssociate:EipAssociate",
                 "majorVersion": 1
             },
             "sbercloud_compute_instance": {
-                "current": "sbercloud:Ecs/instance:Instance",
+                "current": "cloudru:Ecs/instance:Instance",
                 "majorVersion": 1,
                 "fields": {
                     "bandwidth": {
@@ -1212,7 +1212,7 @@
                 }
             },
             "sbercloud_compute_interface_attach": {
-                "current": "sbercloud:Ecs/interfaceAttach:InterfaceAttach",
+                "current": "cloudru:Ecs/interfaceAttach:InterfaceAttach",
                 "majorVersion": 1,
                 "fields": {
                     "security_group_ids": {
@@ -1221,11 +1221,11 @@
                 }
             },
             "sbercloud_compute_keypair": {
-                "current": "sbercloud:Ecs/keypair:Keypair",
+                "current": "cloudru:Ecs/keypair:Keypair",
                 "majorVersion": 1
             },
             "sbercloud_compute_servergroup": {
-                "current": "sbercloud:Ecs/servergroup:Servergroup",
+                "current": "cloudru:Ecs/servergroup:Servergroup",
                 "majorVersion": 1,
                 "fields": {
                     "fault_domains": {
@@ -1240,11 +1240,11 @@
                 }
             },
             "sbercloud_compute_volume_attach": {
-                "current": "sbercloud:Ecs/volumeAttach:VolumeAttach",
+                "current": "cloudru:Ecs/volumeAttach:VolumeAttach",
                 "majorVersion": 1
             },
             "sbercloud_css_cluster": {
-                "current": "sbercloud:Css/cluster:Cluster",
+                "current": "cloudru:Css/cluster:Cluster",
                 "majorVersion": 1,
                 "fields": {
                     "backup_strategy": {
@@ -1337,11 +1337,11 @@
                 }
             },
             "sbercloud_css_configuration": {
-                "current": "sbercloud:index/cssConfiguration:CssConfiguration",
+                "current": "cloudru:index/cssConfiguration:CssConfiguration",
                 "majorVersion": 1
             },
             "sbercloud_cts_data_tracker": {
-                "current": "sbercloud:Cts/dataTracker:DataTracker",
+                "current": "cloudru:Cts/dataTracker:DataTracker",
                 "majorVersion": 1,
                 "fields": {
                     "data_operation": {
@@ -1350,7 +1350,7 @@
                 }
             },
             "sbercloud_cts_notification": {
-                "current": "sbercloud:Cts/notification:Notification",
+                "current": "cloudru:Cts/notification:Notification",
                 "majorVersion": 1,
                 "fields": {
                     "filter": {
@@ -1386,7 +1386,7 @@
                 }
             },
             "sbercloud_cts_tracker": {
-                "current": "sbercloud:Cts/tracker:Tracker",
+                "current": "cloudru:Cts/tracker:Tracker",
                 "majorVersion": 1,
                 "fields": {
                     "exclude_service": {
@@ -1395,15 +1395,15 @@
                 }
             },
             "sbercloud_dcs_account": {
-                "current": "sbercloud:index/dcsAccount:DcsAccount",
+                "current": "cloudru:index/dcsAccount:DcsAccount",
                 "majorVersion": 1
             },
             "sbercloud_dcs_backup": {
-                "current": "sbercloud:index/dcsBackup:DcsBackup",
+                "current": "cloudru:index/dcsBackup:DcsBackup",
                 "majorVersion": 1
             },
             "sbercloud_dcs_instance": {
-                "current": "sbercloud:Dcs/instance:Instance",
+                "current": "cloudru:Dcs/instance:Instance",
                 "majorVersion": 1,
                 "fields": {
                     "availability_zones": {
@@ -1450,7 +1450,7 @@
                 }
             },
             "sbercloud_dcs_parameters": {
-                "current": "sbercloud:index/dcsParameters:DcsParameters",
+                "current": "cloudru:index/dcsParameters:DcsParameters",
                 "majorVersion": 1,
                 "fields": {
                     "configuration_parameters": {
@@ -1459,7 +1459,7 @@
                 }
             },
             "sbercloud_dcs_restore": {
-                "current": "sbercloud:index/dcsRestore:DcsRestore",
+                "current": "cloudru:index/dcsRestore:DcsRestore",
                 "majorVersion": 1,
                 "fields": {
                     "restore_records": {
@@ -1468,7 +1468,7 @@
                 }
             },
             "sbercloud_dds_instance": {
-                "current": "sbercloud:Dds/instance:Instance",
+                "current": "cloudru:Dds/instance:Instance",
                 "majorVersion": 1,
                 "fields": {
                     "backup_strategy": {
@@ -1502,7 +1502,7 @@
                 }
             },
             "sbercloud_dds_parameter_template": {
-                "current": "sbercloud:index/ddsParameterTemplate:DdsParameterTemplate",
+                "current": "cloudru:index/ddsParameterTemplate:DdsParameterTemplate",
                 "majorVersion": 1,
                 "fields": {
                     "parameters": {
@@ -1511,7 +1511,7 @@
                 }
             },
             "sbercloud_dds_parameter_template_apply": {
-                "current": "sbercloud:index/ddsParameterTemplateApply:DdsParameterTemplateApply",
+                "current": "cloudru:index/ddsParameterTemplateApply:DdsParameterTemplateApply",
                 "majorVersion": 1,
                 "fields": {
                     "entity_ids": {
@@ -1520,7 +1520,7 @@
                 }
             },
             "sbercloud_dds_parameter_template_compare": {
-                "current": "sbercloud:index/ddsParameterTemplateCompare:DdsParameterTemplateCompare",
+                "current": "cloudru:index/ddsParameterTemplateCompare:DdsParameterTemplateCompare",
                 "majorVersion": 1,
                 "fields": {
                     "differences": {
@@ -1529,7 +1529,7 @@
                 }
             },
             "sbercloud_dds_parameter_template_copy": {
-                "current": "sbercloud:index/ddsParameterTemplateCopy:DdsParameterTemplateCopy",
+                "current": "cloudru:index/ddsParameterTemplateCopy:DdsParameterTemplateCopy",
                 "majorVersion": 1,
                 "fields": {
                     "parameters": {
@@ -1538,11 +1538,11 @@
                 }
             },
             "sbercloud_dds_parameter_template_reset": {
-                "current": "sbercloud:index/ddsParameterTemplateReset:DdsParameterTemplateReset",
+                "current": "cloudru:index/ddsParameterTemplateReset:DdsParameterTemplateReset",
                 "majorVersion": 1
             },
             "sbercloud_dis_stream": {
-                "current": "sbercloud:Dis/stream:Stream",
+                "current": "cloudru:Dis/stream:Stream",
                 "majorVersion": 1,
                 "fields": {
                     "partitions": {
@@ -1551,15 +1551,15 @@
                 }
             },
             "sbercloud_dli_database": {
-                "current": "sbercloud:Dli/database:Database",
+                "current": "cloudru:Dli/database:Database",
                 "majorVersion": 1
             },
             "sbercloud_dli_package": {
-                "current": "sbercloud:Dli/package:Package",
+                "current": "cloudru:Dli/package:Package",
                 "majorVersion": 1
             },
             "sbercloud_dli_queue": {
-                "current": "sbercloud:Dli/queue:Queue",
+                "current": "cloudru:Dli/queue:Queue",
                 "majorVersion": 1,
                 "fields": {
                     "scaling_policies": {
@@ -1571,7 +1571,7 @@
                 }
             },
             "sbercloud_dli_spark_job": {
-                "current": "sbercloud:Dli/sparkJob:SparkJob",
+                "current": "cloudru:Dli/sparkJob:SparkJob",
                 "majorVersion": 1,
                 "fields": {
                     "app_parameters": {
@@ -1602,7 +1602,7 @@
                 }
             },
             "sbercloud_dms_instance": {
-                "current": "sbercloud:index/dmsInstance:DmsInstance",
+                "current": "cloudru:index/dmsInstance:DmsInstance",
                 "majorVersion": 1,
                 "fields": {
                     "available_zones": {
@@ -1611,11 +1611,11 @@
                 }
             },
             "sbercloud_dms_kafka_consumer_group": {
-                "current": "sbercloud:index/dmsKafkaConsumerGroup:DmsKafkaConsumerGroup",
+                "current": "cloudru:index/dmsKafkaConsumerGroup:DmsKafkaConsumerGroup",
                 "majorVersion": 1
             },
             "sbercloud_dms_kafka_instance": {
-                "current": "sbercloud:Dms/kafkaInstance:KafkaInstance",
+                "current": "cloudru:Dms/kafkaInstance:KafkaInstance",
                 "majorVersion": 1,
                 "fields": {
                     "availability_zones": {
@@ -1654,7 +1654,7 @@
                 }
             },
             "sbercloud_dms_kafka_message_produce": {
-                "current": "sbercloud:index/dmsKafkaMessageProduce:DmsKafkaMessageProduce",
+                "current": "cloudru:index/dmsKafkaMessageProduce:DmsKafkaMessageProduce",
                 "majorVersion": 1,
                 "fields": {
                     "property_list": {
@@ -1663,7 +1663,7 @@
                 }
             },
             "sbercloud_dms_kafka_permissions": {
-                "current": "sbercloud:Dms/kafkaPermissions:KafkaPermissions",
+                "current": "cloudru:Dms/kafkaPermissions:KafkaPermissions",
                 "majorVersion": 1,
                 "fields": {
                     "policies": {
@@ -1672,7 +1672,7 @@
                 }
             },
             "sbercloud_dms_kafka_topic": {
-                "current": "sbercloud:Dms/kafkaTopic:KafkaTopic",
+                "current": "cloudru:Dms/kafkaTopic:KafkaTopic",
                 "majorVersion": 1,
                 "fields": {
                     "configs": {
@@ -1684,11 +1684,11 @@
                 }
             },
             "sbercloud_dms_kafka_user": {
-                "current": "sbercloud:Dms/kafkaUser:KafkaUser",
+                "current": "cloudru:Dms/kafkaUser:KafkaUser",
                 "majorVersion": 1
             },
             "sbercloud_dms_rabbitmq_instance": {
-                "current": "sbercloud:Dms/rabbitmqInstance:RabbitmqInstance",
+                "current": "cloudru:Dms/rabbitmqInstance:RabbitmqInstance",
                 "majorVersion": 1,
                 "fields": {
                     "availability_zones": {
@@ -1700,7 +1700,7 @@
                 }
             },
             "sbercloud_dms_rocketmq_consumer_group": {
-                "current": "sbercloud:index/dmsRocketmqConsumerGroup:DmsRocketmqConsumerGroup",
+                "current": "cloudru:index/dmsRocketmqConsumerGroup:DmsRocketmqConsumerGroup",
                 "majorVersion": 1,
                 "fields": {
                     "brokers": {
@@ -1709,7 +1709,7 @@
                 }
             },
             "sbercloud_dms_rocketmq_consumption_verify": {
-                "current": "sbercloud:index/dmsRocketmqConsumptionVerify:DmsRocketmqConsumptionVerify",
+                "current": "cloudru:index/dmsRocketmqConsumptionVerify:DmsRocketmqConsumptionVerify",
                 "majorVersion": 1,
                 "fields": {
                     "message_id_list": {
@@ -1721,7 +1721,7 @@
                 }
             },
             "sbercloud_dms_rocketmq_dead_letter_resend": {
-                "current": "sbercloud:index/dmsRocketmqDeadLetterResend:DmsRocketmqDeadLetterResend",
+                "current": "cloudru:index/dmsRocketmqDeadLetterResend:DmsRocketmqDeadLetterResend",
                 "majorVersion": 1,
                 "fields": {
                     "message_id_list": {
@@ -1733,7 +1733,7 @@
                 }
             },
             "sbercloud_dms_rocketmq_instance": {
-                "current": "sbercloud:index/dmsRocketmqInstance:DmsRocketmqInstance",
+                "current": "cloudru:index/dmsRocketmqInstance:DmsRocketmqInstance",
                 "majorVersion": 1,
                 "fields": {
                     "availability_zones": {
@@ -1748,11 +1748,11 @@
                 }
             },
             "sbercloud_dms_rocketmq_message_offset_reset": {
-                "current": "sbercloud:index/dmsRocketmqMessageOffsetReset:DmsRocketmqMessageOffsetReset",
+                "current": "cloudru:index/dmsRocketmqMessageOffsetReset:DmsRocketmqMessageOffsetReset",
                 "majorVersion": 1
             },
             "sbercloud_dms_rocketmq_migration_task": {
-                "current": "sbercloud:index/dmsRocketmqMigrationTask:DmsRocketmqMigrationTask",
+                "current": "cloudru:index/dmsRocketmqMigrationTask:DmsRocketmqMigrationTask",
                 "majorVersion": 1,
                 "fields": {
                     "bindings": {
@@ -1776,7 +1776,7 @@
                 }
             },
             "sbercloud_dms_rocketmq_topic": {
-                "current": "sbercloud:index/dmsRocketmqTopic:DmsRocketmqTopic",
+                "current": "cloudru:index/dmsRocketmqTopic:DmsRocketmqTopic",
                 "majorVersion": 1,
                 "fields": {
                     "brokers": {
@@ -1788,7 +1788,7 @@
                 }
             },
             "sbercloud_dms_rocketmq_user": {
-                "current": "sbercloud:index/dmsRocketmqUser:DmsRocketmqUser",
+                "current": "cloudru:index/dmsRocketmqUser:DmsRocketmqUser",
                 "majorVersion": 1,
                 "fields": {
                     "group_perms": {
@@ -1800,7 +1800,7 @@
                 }
             },
             "sbercloud_dns_recordset": {
-                "current": "sbercloud:Dns/recordset:Recordset",
+                "current": "cloudru:Dns/recordset:Recordset",
                 "majorVersion": 1,
                 "fields": {
                     "records": {
@@ -1809,7 +1809,7 @@
                 }
             },
             "sbercloud_dns_zone": {
-                "current": "sbercloud:Dns/zone:Zone",
+                "current": "cloudru:Dns/zone:Zone",
                 "majorVersion": 1,
                 "fields": {
                     "dnssec_infos": {
@@ -1824,7 +1824,7 @@
                 }
             },
             "sbercloud_drs_job": {
-                "current": "sbercloud:Drs/job:Job",
+                "current": "cloudru:Drs/job:Job",
                 "majorVersion": 1,
                 "fields": {
                     "destination_db": {
@@ -1839,7 +1839,7 @@
                 }
             },
             "sbercloud_dws_cluster": {
-                "current": "sbercloud:Dws/cluster:Cluster",
+                "current": "cloudru:Dws/cluster:Cluster",
                 "majorVersion": 1,
                 "fields": {
                     "elb": {
@@ -1866,7 +1866,7 @@
                 }
             },
             "sbercloud_elb_certificate": {
-                "current": "sbercloud:index/elbCertificate:ElbCertificate",
+                "current": "cloudru:index/elbCertificate:ElbCertificate",
                 "majorVersion": 1,
                 "fields": {
                     "subject_alternative_names": {
@@ -1875,7 +1875,7 @@
                 }
             },
             "sbercloud_elb_ipgroup": {
-                "current": "sbercloud:index/elbIpgroup:ElbIpgroup",
+                "current": "cloudru:index/elbIpgroup:ElbIpgroup",
                 "majorVersion": 1,
                 "fields": {
                     "ip_list": {
@@ -1887,7 +1887,7 @@
                 }
             },
             "sbercloud_elb_l7policy": {
-                "current": "sbercloud:index/elbL7policy:ElbL7policy",
+                "current": "cloudru:index/elbL7policy:ElbL7policy",
                 "majorVersion": 1,
                 "fields": {
                     "fixed_response_config": {
@@ -1989,7 +1989,7 @@
                 }
             },
             "sbercloud_elb_l7rule": {
-                "current": "sbercloud:index/elbL7rule:ElbL7rule",
+                "current": "cloudru:index/elbL7rule:ElbL7rule",
                 "majorVersion": 1,
                 "fields": {
                     "conditions": {
@@ -1998,7 +1998,7 @@
                 }
             },
             "sbercloud_elb_listener": {
-                "current": "sbercloud:index/elbListener:ElbListener",
+                "current": "cloudru:index/elbListener:ElbListener",
                 "majorVersion": 1,
                 "fields": {
                     "port_ranges": {
@@ -2010,7 +2010,7 @@
                 }
             },
             "sbercloud_elb_loadbalancer": {
-                "current": "sbercloud:index/elbLoadbalancer:ElbLoadbalancer",
+                "current": "cloudru:index/elbLoadbalancer:ElbLoadbalancer",
                 "majorVersion": 1,
                 "fields": {
                     "availability_zone": {
@@ -2022,7 +2022,7 @@
                 }
             },
             "sbercloud_elb_member": {
-                "current": "sbercloud:index/elbMember:ElbMember",
+                "current": "cloudru:index/elbMember:ElbMember",
                 "majorVersion": 1,
                 "fields": {
                     "reason": {
@@ -2041,11 +2041,11 @@
                 }
             },
             "sbercloud_elb_monitor": {
-                "current": "sbercloud:index/elbMonitor:ElbMonitor",
+                "current": "cloudru:index/elbMonitor:ElbMonitor",
                 "majorVersion": 1
             },
             "sbercloud_elb_pool": {
-                "current": "sbercloud:index/elbPool:ElbPool",
+                "current": "cloudru:index/elbPool:ElbPool",
                 "majorVersion": 1,
                 "fields": {
                     "persistence": {
@@ -2054,7 +2054,7 @@
                 }
             },
             "sbercloud_elb_security_policy": {
-                "current": "sbercloud:index/elbSecurityPolicy:ElbSecurityPolicy",
+                "current": "cloudru:index/elbSecurityPolicy:ElbSecurityPolicy",
                 "majorVersion": 1,
                 "fields": {
                     "ciphers": {
@@ -2069,23 +2069,23 @@
                 }
             },
             "sbercloud_enterprise_project": {
-                "current": "sbercloud:Eps/project:Project",
+                "current": "cloudru:Eps/project:Project",
                 "majorVersion": 1
             },
             "sbercloud_er_association": {
-                "current": "sbercloud:Er/association:Association",
+                "current": "cloudru:Er/association:Association",
                 "majorVersion": 1
             },
             "sbercloud_er_attachment_accepter": {
-                "current": "sbercloud:Er/attachmentAccepter:AttachmentAccepter",
+                "current": "cloudru:Er/attachmentAccepter:AttachmentAccepter",
                 "majorVersion": 1
             },
             "sbercloud_er_flow_log": {
-                "current": "sbercloud:Er/flowLog:FlowLog",
+                "current": "cloudru:Er/flowLog:FlowLog",
                 "majorVersion": 1
             },
             "sbercloud_er_instance": {
-                "current": "sbercloud:Er/instance:Instance",
+                "current": "cloudru:Er/instance:Instance",
                 "majorVersion": 1,
                 "fields": {
                     "availability_zones": {
@@ -2094,27 +2094,27 @@
                 }
             },
             "sbercloud_er_propagation": {
-                "current": "sbercloud:Er/propagation:Propagation",
+                "current": "cloudru:Er/propagation:Propagation",
                 "majorVersion": 1
             },
             "sbercloud_er_route_table": {
-                "current": "sbercloud:Er/routeTable:RouteTable",
+                "current": "cloudru:Er/routeTable:RouteTable",
                 "majorVersion": 1
             },
             "sbercloud_er_static_route": {
-                "current": "sbercloud:Er/staticRoute:StaticRoute",
+                "current": "cloudru:Er/staticRoute:StaticRoute",
                 "majorVersion": 1
             },
             "sbercloud_er_vpc_attachment": {
-                "current": "sbercloud:Er/vpcAttachment:VpcAttachment",
+                "current": "cloudru:Er/vpcAttachment:VpcAttachment",
                 "majorVersion": 1
             },
             "sbercloud_evs_snapshot": {
-                "current": "sbercloud:Evs/snapshot:Snapshot",
+                "current": "cloudru:Evs/snapshot:Snapshot",
                 "majorVersion": 1
             },
             "sbercloud_evs_volume": {
-                "current": "sbercloud:Evs/volume:Volume",
+                "current": "cloudru:Evs/volume:Volume",
                 "majorVersion": 1,
                 "fields": {
                     "attachment": {
@@ -2132,7 +2132,7 @@
                 }
             },
             "sbercloud_fgs_application": {
-                "current": "sbercloud:index/fgsApplication:FgsApplication",
+                "current": "cloudru:index/fgsApplication:FgsApplication",
                 "majorVersion": 1,
                 "fields": {
                     "repository": {
@@ -2144,7 +2144,7 @@
                 }
             },
             "sbercloud_fgs_async_invoke_configuration": {
-                "current": "sbercloud:index/fgsAsyncInvokeConfiguration:FgsAsyncInvokeConfiguration",
+                "current": "cloudru:index/fgsAsyncInvokeConfiguration:FgsAsyncInvokeConfiguration",
                 "majorVersion": 1,
                 "fields": {
                     "on_failure": {
@@ -2156,15 +2156,15 @@
                 }
             },
             "sbercloud_fgs_dependency": {
-                "current": "sbercloud:FunctionGraph/dependency:Dependency",
+                "current": "cloudru:FunctionGraph/dependency:Dependency",
                 "majorVersion": 1
             },
             "sbercloud_fgs_dependency_version": {
-                "current": "sbercloud:index/fgsDependencyVersion:FgsDependencyVersion",
+                "current": "cloudru:index/fgsDependencyVersion:FgsDependencyVersion",
                 "majorVersion": 1
             },
             "sbercloud_fgs_function": {
-                "current": "sbercloud:FunctionGraph/function:Function",
+                "current": "cloudru:FunctionGraph/function:Function",
                 "majorVersion": 1,
                 "fields": {
                     "custom_image": {
@@ -2219,27 +2219,27 @@
                 }
             },
             "sbercloud_fgs_function_event": {
-                "current": "sbercloud:index/fgsFunctionEvent:FgsFunctionEvent",
+                "current": "cloudru:index/fgsFunctionEvent:FgsFunctionEvent",
                 "majorVersion": 1
             },
             "sbercloud_fgs_function_topping": {
-                "current": "sbercloud:index/fgsFunctionTopping:FgsFunctionTopping",
+                "current": "cloudru:index/fgsFunctionTopping:FgsFunctionTopping",
                 "majorVersion": 1
             },
             "sbercloud_fgs_function_trigger": {
-                "current": "sbercloud:index/fgsFunctionTrigger:FgsFunctionTrigger",
+                "current": "cloudru:index/fgsFunctionTrigger:FgsFunctionTrigger",
                 "majorVersion": 1
             },
             "sbercloud_fgs_function_trigger_status_action": {
-                "current": "sbercloud:index/fgsFunctionTriggerStatusAction:FgsFunctionTriggerStatusAction",
+                "current": "cloudru:index/fgsFunctionTriggerStatusAction:FgsFunctionTriggerStatusAction",
                 "majorVersion": 1
             },
             "sbercloud_fgs_lts_log_enable": {
-                "current": "sbercloud:index/fgsLtsLogEnable:FgsLtsLogEnable",
+                "current": "cloudru:index/fgsLtsLogEnable:FgsLtsLogEnable",
                 "majorVersion": 1
             },
             "sbercloud_ges_graph": {
-                "current": "sbercloud:index/gesGraph:GesGraph",
+                "current": "cloudru:index/gesGraph:GesGraph",
                 "majorVersion": 1,
                 "fields": {
                     "encryption": {
@@ -2260,11 +2260,11 @@
                 }
             },
             "sbercloud_identity_access_key": {
-                "current": "sbercloud:Iam/accessKey:AccessKey",
+                "current": "cloudru:Iam/accessKey:AccessKey",
                 "majorVersion": 1
             },
             "sbercloud_identity_acl": {
-                "current": "sbercloud:Iam/acl:Acl",
+                "current": "cloudru:Iam/acl:Acl",
                 "majorVersion": 1,
                 "fields": {
                     "ip_cidrs": {
@@ -2276,7 +2276,7 @@
                 }
             },
             "sbercloud_identity_agency": {
-                "current": "sbercloud:Iam/agency:Agency",
+                "current": "cloudru:Iam/agency:Agency",
                 "majorVersion": 1,
                 "fields": {
                     "all_resources_roles": {
@@ -2298,11 +2298,11 @@
                 }
             },
             "sbercloud_identity_group": {
-                "current": "sbercloud:Iam/group:Group",
+                "current": "cloudru:Iam/group:Group",
                 "majorVersion": 1
             },
             "sbercloud_identity_group_membership": {
-                "current": "sbercloud:Iam/groupMembership:GroupMembership",
+                "current": "cloudru:Iam/groupMembership:GroupMembership",
                 "majorVersion": 1,
                 "fields": {
                     "users": {
@@ -2311,7 +2311,7 @@
                 }
             },
             "sbercloud_identity_group_membership_v3": {
-                "current": "sbercloud:index/identityGroupMembershipV3:IdentityGroupMembershipV3",
+                "current": "cloudru:index/identityGroupMembershipV3:IdentityGroupMembershipV3",
                 "majorVersion": 1,
                 "fields": {
                     "users": {
@@ -2320,19 +2320,19 @@
                 }
             },
             "sbercloud_identity_group_role_assignment": {
-                "current": "sbercloud:Iam/groupRoleAssignment:GroupRoleAssignment",
+                "current": "cloudru:Iam/groupRoleAssignment:GroupRoleAssignment",
                 "majorVersion": 1
             },
             "sbercloud_identity_group_v3": {
-                "current": "sbercloud:index/identityGroupV3:IdentityGroupV3",
+                "current": "cloudru:index/identityGroupV3:IdentityGroupV3",
                 "majorVersion": 1
             },
             "sbercloud_identity_project": {
-                "current": "sbercloud:Iam/project:Project",
+                "current": "cloudru:Iam/project:Project",
                 "majorVersion": 1
             },
             "sbercloud_identity_provider": {
-                "current": "sbercloud:Iam/provider:Provider",
+                "current": "cloudru:Iam/provider:Provider",
                 "majorVersion": 1,
                 "fields": {
                     "access_config": {
@@ -2368,7 +2368,7 @@
                 }
             },
             "sbercloud_identity_provider_conversion": {
-                "current": "sbercloud:Iam/providerConversion:ProviderConversion",
+                "current": "cloudru:Iam/providerConversion:ProviderConversion",
                 "majorVersion": 1,
                 "fields": {
                     "conversion_rules": {
@@ -2394,39 +2394,39 @@
                 }
             },
             "sbercloud_identity_role": {
-                "current": "sbercloud:Iam/role:Role",
+                "current": "cloudru:Iam/role:Role",
                 "majorVersion": 1
             },
             "sbercloud_identity_role_assignment": {
-                "current": "sbercloud:Iam/roleAssignment:RoleAssignment",
+                "current": "cloudru:Iam/roleAssignment:RoleAssignment",
                 "majorVersion": 1
             },
             "sbercloud_identity_role_assignment_v3": {
-                "current": "sbercloud:index/identityRoleAssignmentV3:IdentityRoleAssignmentV3",
+                "current": "cloudru:index/identityRoleAssignmentV3:IdentityRoleAssignmentV3",
                 "majorVersion": 1
             },
             "sbercloud_identity_user": {
-                "current": "sbercloud:Iam/user:User",
+                "current": "cloudru:Iam/user:User",
                 "majorVersion": 1
             },
             "sbercloud_identity_user_v3": {
-                "current": "sbercloud:index/identityUserV3:IdentityUserV3",
+                "current": "cloudru:index/identityUserV3:IdentityUserV3",
                 "majorVersion": 1
             },
             "sbercloud_images_image": {
-                "current": "sbercloud:Ims/image:Image",
+                "current": "cloudru:Ims/image:Image",
                 "majorVersion": 1
             },
             "sbercloud_kms_key": {
-                "current": "sbercloud:Dew/key:Key",
+                "current": "cloudru:Dew/key:Key",
                 "majorVersion": 1
             },
             "sbercloud_kps_keypair": {
-                "current": "sbercloud:Dew/keypair:Keypair",
+                "current": "cloudru:Dew/keypair:Keypair",
                 "majorVersion": 1
             },
             "sbercloud_kps_keypair_associate": {
-                "current": "sbercloud:index/kpsKeypairAssociate:KpsKeypairAssociate",
+                "current": "cloudru:index/kpsKeypairAssociate:KpsKeypairAssociate",
                 "majorVersion": 1,
                 "fields": {
                     "server": {
@@ -2442,7 +2442,7 @@
                 }
             },
             "sbercloud_kps_keypair_disassociate": {
-                "current": "sbercloud:index/kpsKeypairDisassociate:KpsKeypairDisassociate",
+                "current": "cloudru:index/kpsKeypairDisassociate:KpsKeypairDisassociate",
                 "majorVersion": 1,
                 "fields": {
                     "server": {
@@ -2458,19 +2458,19 @@
                 }
             },
             "sbercloud_lb_certificate": {
-                "current": "sbercloud:Elb/certificate:Certificate",
+                "current": "cloudru:Elb/certificate:Certificate",
                 "majorVersion": 1
             },
             "sbercloud_lb_l7policy": {
-                "current": "sbercloud:Elb/l7policy:L7policy",
+                "current": "cloudru:Elb/l7policy:L7policy",
                 "majorVersion": 1
             },
             "sbercloud_lb_l7rule": {
-                "current": "sbercloud:Elb/l7rule:L7rule",
+                "current": "cloudru:Elb/l7rule:L7rule",
                 "majorVersion": 1
             },
             "sbercloud_lb_listener": {
-                "current": "sbercloud:Elb/listener:Listener",
+                "current": "cloudru:Elb/listener:Listener",
                 "majorVersion": 1,
                 "fields": {
                     "insert_headers": {
@@ -2482,7 +2482,7 @@
                 }
             },
             "sbercloud_lb_loadbalancer": {
-                "current": "sbercloud:Elb/loadbalancer:Loadbalancer",
+                "current": "cloudru:Elb/loadbalancer:Loadbalancer",
                 "majorVersion": 1,
                 "fields": {
                     "security_group_ids": {
@@ -2491,15 +2491,15 @@
                 }
             },
             "sbercloud_lb_member": {
-                "current": "sbercloud:Elb/member:Member",
+                "current": "cloudru:Elb/member:Member",
                 "majorVersion": 1
             },
             "sbercloud_lb_monitor": {
-                "current": "sbercloud:Elb/monitor:Monitor",
+                "current": "cloudru:Elb/monitor:Monitor",
                 "majorVersion": 1
             },
             "sbercloud_lb_pool": {
-                "current": "sbercloud:Elb/pool:Pool",
+                "current": "cloudru:Elb/pool:Pool",
                 "majorVersion": 1,
                 "fields": {
                     "persistence": {
@@ -2508,19 +2508,19 @@
                 }
             },
             "sbercloud_lb_whitelist": {
-                "current": "sbercloud:Elb/whitelist:Whitelist",
+                "current": "cloudru:Elb/whitelist:Whitelist",
                 "majorVersion": 1
             },
             "sbercloud_lts_group": {
-                "current": "sbercloud:Lts/group:Group",
+                "current": "cloudru:Lts/group:Group",
                 "majorVersion": 1
             },
             "sbercloud_lts_stream": {
-                "current": "sbercloud:Lts/stream:Stream",
+                "current": "cloudru:Lts/stream:Stream",
                 "majorVersion": 1
             },
             "sbercloud_mapreduce_cluster": {
-                "current": "sbercloud:Mrs/cluster:cluster",
+                "current": "cloudru:Mrs/cluster:cluster",
                 "majorVersion": 1,
                 "fields": {
                     "analysis_core_nodes": {
@@ -2636,15 +2636,15 @@
                 }
             },
             "sbercloud_mapreduce_job": {
-                "current": "sbercloud:Mrs/job:Job",
+                "current": "cloudru:Mrs/job:Job",
                 "majorVersion": 1
             },
             "sbercloud_nat_dnat_rule": {
-                "current": "sbercloud:Nat/dnatRule:DnatRule",
+                "current": "cloudru:Nat/dnatRule:DnatRule",
                 "majorVersion": 1
             },
             "sbercloud_nat_gateway": {
-                "current": "sbercloud:Nat/gateway:Gateway",
+                "current": "cloudru:Nat/gateway:Gateway",
                 "majorVersion": 1,
                 "fields": {
                     "session_conf": {
@@ -2653,11 +2653,11 @@
                 }
             },
             "sbercloud_nat_snat_rule": {
-                "current": "sbercloud:Nat/snatRule:SnatRule",
+                "current": "cloudru:Nat/snatRule:SnatRule",
                 "majorVersion": 1
             },
             "sbercloud_network_acl": {
-                "current": "sbercloud:NetworkAcl/acl:Acl",
+                "current": "cloudru:NetworkAcl/acl:Acl",
                 "majorVersion": 1,
                 "fields": {
                     "inbound_rules": {
@@ -2675,15 +2675,15 @@
                 }
             },
             "sbercloud_network_acl_rule": {
-                "current": "sbercloud:NetworkAcl/aclRule:AclRule",
+                "current": "cloudru:NetworkAcl/aclRule:AclRule",
                 "majorVersion": 1
             },
             "sbercloud_networking_eip_associate": {
-                "current": "sbercloud:index/networkingEipAssociate:NetworkingEipAssociate",
+                "current": "cloudru:index/networkingEipAssociate:NetworkingEipAssociate",
                 "majorVersion": 1
             },
             "sbercloud_networking_secgroup": {
-                "current": "sbercloud:Vpc/secgroup:Secgroup",
+                "current": "cloudru:Vpc/secgroup:Secgroup",
                 "majorVersion": 1,
                 "fields": {
                     "rules": {
@@ -2692,15 +2692,15 @@
                 }
             },
             "sbercloud_networking_secgroup_rule": {
-                "current": "sbercloud:Vpc/secgroupRule:SecgroupRule",
+                "current": "cloudru:Vpc/secgroupRule:SecgroupRule",
                 "majorVersion": 1
             },
             "sbercloud_networking_vip": {
-                "current": "sbercloud:Vpc/vip:Vip",
+                "current": "cloudru:Vpc/vip:Vip",
                 "majorVersion": 1
             },
             "sbercloud_networking_vip_associate": {
-                "current": "sbercloud:Vpc/vipAssociate:VipAssociate",
+                "current": "cloudru:Vpc/vipAssociate:VipAssociate",
                 "majorVersion": 1,
                 "fields": {
                     "ip_addresses": {
@@ -2712,7 +2712,7 @@
                 }
             },
             "sbercloud_obs_bucket": {
-                "current": "sbercloud:Obs/bucket:Bucket",
+                "current": "cloudru:Obs/bucket:Bucket",
                 "majorVersion": 1,
                 "fields": {
                     "cors_rule": {
@@ -2771,7 +2771,7 @@
                 }
             },
             "sbercloud_obs_bucket_acl": {
-                "current": "sbercloud:index/obsBucketAcl:ObsBucketAcl",
+                "current": "cloudru:index/obsBucketAcl:ObsBucketAcl",
                 "majorVersion": 1,
                 "fields": {
                     "account_permission": {
@@ -2829,15 +2829,15 @@
                 }
             },
             "sbercloud_obs_bucket_object": {
-                "current": "sbercloud:Obs/bucketObject:BucketObject",
+                "current": "cloudru:Obs/bucketObject:BucketObject",
                 "majorVersion": 1
             },
             "sbercloud_obs_bucket_policy": {
-                "current": "sbercloud:Obs/bucketPolicy:BucketPolicy",
+                "current": "cloudru:Obs/bucketPolicy:BucketPolicy",
                 "majorVersion": 1
             },
             "sbercloud_rds_backup": {
-                "current": "sbercloud:Rds/backup:Backup",
+                "current": "cloudru:Rds/backup:Backup",
                 "majorVersion": 1,
                 "fields": {
                     "databases": {
@@ -2846,7 +2846,7 @@
                 }
             },
             "sbercloud_rds_instance": {
-                "current": "sbercloud:Rds/instance:Instance",
+                "current": "cloudru:Rds/instance:Instance",
                 "majorVersion": 1,
                 "fields": {
                     "availability_zone": {
@@ -2885,11 +2885,11 @@
                 }
             },
             "sbercloud_rds_instance_eip_associate": {
-                "current": "sbercloud:Rds/instanceEipAssociate:InstanceEipAssociate",
+                "current": "cloudru:Rds/instanceEipAssociate:InstanceEipAssociate",
                 "majorVersion": 1
             },
             "sbercloud_rds_mysql_account": {
-                "current": "sbercloud:Rds/mysqlAccount:MysqlAccount",
+                "current": "cloudru:Rds/mysqlAccount:MysqlAccount",
                 "majorVersion": 1,
                 "fields": {
                     "hosts": {
@@ -2898,15 +2898,15 @@
                 }
             },
             "sbercloud_rds_mysql_binlog": {
-                "current": "sbercloud:Rds/mysqlBinlog:MysqlBinlog",
+                "current": "cloudru:Rds/mysqlBinlog:MysqlBinlog",
                 "majorVersion": 1
             },
             "sbercloud_rds_mysql_database": {
-                "current": "sbercloud:Rds/mysqlDatabase:MysqlDatabase",
+                "current": "cloudru:Rds/mysqlDatabase:MysqlDatabase",
                 "majorVersion": 1
             },
             "sbercloud_rds_mysql_database_privilege": {
-                "current": "sbercloud:Rds/mysqlDatabasePrivilege:MysqlDatabasePrivilege",
+                "current": "cloudru:Rds/mysqlDatabasePrivilege:MysqlDatabasePrivilege",
                 "majorVersion": 1,
                 "fields": {
                     "users": {
@@ -2915,7 +2915,7 @@
                 }
             },
             "sbercloud_rds_mysql_database_table_restore": {
-                "current": "sbercloud:Rds/mysqlDatabaseTableRestore:MysqlDatabaseTableRestore",
+                "current": "cloudru:Rds/mysqlDatabaseTableRestore:MysqlDatabaseTableRestore",
                 "majorVersion": 1,
                 "fields": {
                     "databases": {
@@ -2934,7 +2934,7 @@
                 }
             },
             "sbercloud_rds_parametergroup": {
-                "current": "sbercloud:Rds/parametergroup:Parametergroup",
+                "current": "cloudru:Rds/parametergroup:Parametergroup",
                 "majorVersion": 1,
                 "fields": {
                     "configuration_parameters": {
@@ -2946,7 +2946,7 @@
                 }
             },
             "sbercloud_rds_pg_account": {
-                "current": "sbercloud:Rds/pgAccount:PgAccount",
+                "current": "cloudru:Rds/pgAccount:PgAccount",
                 "majorVersion": 1,
                 "fields": {
                     "attributes": {
@@ -2958,7 +2958,7 @@
                 }
             },
             "sbercloud_rds_pg_account_roles": {
-                "current": "sbercloud:Rds/pgAccountRoles:PgAccountRoles",
+                "current": "cloudru:Rds/pgAccountRoles:PgAccountRoles",
                 "majorVersion": 1,
                 "fields": {
                     "roles": {
@@ -2967,11 +2967,11 @@
                 }
             },
             "sbercloud_rds_pg_database": {
-                "current": "sbercloud:Rds/pgDatabase:PgDatabase",
+                "current": "cloudru:Rds/pgDatabase:PgDatabase",
                 "majorVersion": 1
             },
             "sbercloud_rds_pg_hba": {
-                "current": "sbercloud:Rds/pgHba:PgHba",
+                "current": "cloudru:Rds/pgHba:PgHba",
                 "majorVersion": 1,
                 "fields": {
                     "host_based_authentications": {
@@ -2980,11 +2980,11 @@
                 }
             },
             "sbercloud_rds_pg_plugin": {
-                "current": "sbercloud:Rds/pgPlugin:PgPlugin",
+                "current": "cloudru:Rds/pgPlugin:PgPlugin",
                 "majorVersion": 1
             },
             "sbercloud_rds_pg_plugin_parameter": {
-                "current": "sbercloud:Rds/pgPluginParameter:PgPluginParameter",
+                "current": "cloudru:Rds/pgPluginParameter:PgPluginParameter",
                 "majorVersion": 1,
                 "fields": {
                     "default_values": {
@@ -2996,15 +2996,15 @@
                 }
             },
             "sbercloud_rds_pg_plugin_update": {
-                "current": "sbercloud:Rds/pgPluginUpdate:PgPluginUpdate",
+                "current": "cloudru:Rds/pgPluginUpdate:PgPluginUpdate",
                 "majorVersion": 1
             },
             "sbercloud_rds_pg_sql_limit": {
-                "current": "sbercloud:Rds/pgSqlLimit:PgSqlLimit",
+                "current": "cloudru:Rds/pgSqlLimit:PgSqlLimit",
                 "majorVersion": 1
             },
             "sbercloud_rds_read_replica_instance": {
-                "current": "sbercloud:Rds/readReplicaInstance:ReadReplicaInstance",
+                "current": "cloudru:Rds/readReplicaInstance:ReadReplicaInstance",
                 "majorVersion": 1,
                 "fields": {
                     "db": {
@@ -3025,7 +3025,7 @@
                 }
             },
             "sbercloud_rds_sql_audit": {
-                "current": "sbercloud:Rds/sqlAudit:SqlAudit",
+                "current": "cloudru:Rds/sqlAudit:SqlAudit",
                 "majorVersion": 1,
                 "fields": {
                     "audit_types": {
@@ -3034,15 +3034,15 @@
                 }
             },
             "sbercloud_rds_sqlserver_account": {
-                "current": "sbercloud:Rds/sqlserverAccount:SqlserverAccount",
+                "current": "cloudru:Rds/sqlserverAccount:SqlserverAccount",
                 "majorVersion": 1
             },
             "sbercloud_rds_sqlserver_database": {
-                "current": "sbercloud:Rds/sqlserverDatabase:SqlserverDatabase",
+                "current": "cloudru:Rds/sqlserverDatabase:SqlserverDatabase",
                 "majorVersion": 1
             },
             "sbercloud_rds_sqlserver_database_privilege": {
-                "current": "sbercloud:Rds/sqlserverDatabasePrivilege:SqlserverDatabasePrivilege",
+                "current": "cloudru:Rds/sqlserverDatabasePrivilege:SqlserverDatabasePrivilege",
                 "majorVersion": 1,
                 "fields": {
                     "users": {
@@ -3051,11 +3051,11 @@
                 }
             },
             "sbercloud_sfs_access_rule": {
-                "current": "sbercloud:Sfs/accessRule:AccessRule",
+                "current": "cloudru:Sfs/accessRule:AccessRule",
                 "majorVersion": 1
             },
             "sbercloud_sfs_file_system": {
-                "current": "sbercloud:Sfs/fileSystem:FileSystem",
+                "current": "cloudru:Sfs/fileSystem:FileSystem",
                 "majorVersion": 1,
                 "fields": {
                     "access_rules": {
@@ -3064,23 +3064,23 @@
                 }
             },
             "sbercloud_sfs_turbo": {
-                "current": "sbercloud:Sfs/turbo:Turbo",
+                "current": "cloudru:Sfs/turbo:Turbo",
                 "majorVersion": 1
             },
             "sbercloud_sfs_turbo_data_task": {
-                "current": "sbercloud:index/sfsTurboDataTask:SfsTurboDataTask",
+                "current": "cloudru:index/sfsTurboDataTask:SfsTurboDataTask",
                 "majorVersion": 1
             },
             "sbercloud_sfs_turbo_dir": {
-                "current": "sbercloud:index/sfsTurboDir:SfsTurboDir",
+                "current": "cloudru:index/sfsTurboDir:SfsTurboDir",
                 "majorVersion": 1
             },
             "sbercloud_sfs_turbo_dir_quota": {
-                "current": "sbercloud:index/sfsTurboDirQuota:SfsTurboDirQuota",
+                "current": "cloudru:index/sfsTurboDirQuota:SfsTurboDirQuota",
                 "majorVersion": 1
             },
             "sbercloud_sfs_turbo_du_task": {
-                "current": "sbercloud:index/sfsTurboDuTask:SfsTurboDuTask",
+                "current": "cloudru:index/sfsTurboDuTask:SfsTurboDuTask",
                 "majorVersion": 1,
                 "fields": {
                     "dir_usage": {
@@ -3096,7 +3096,7 @@
                 }
             },
             "sbercloud_sfs_turbo_obs_target": {
-                "current": "sbercloud:index/sfsTurboObsTarget:SfsTurboObsTarget",
+                "current": "cloudru:index/sfsTurboObsTarget:SfsTurboObsTarget",
                 "majorVersion": 1,
                 "fields": {
                     "obs": {
@@ -3129,15 +3129,15 @@
                 }
             },
             "sbercloud_sfs_turbo_perm_rule": {
-                "current": "sbercloud:index/sfsTurboPermRule:SfsTurboPermRule",
+                "current": "cloudru:index/sfsTurboPermRule:SfsTurboPermRule",
                 "majorVersion": 1
             },
             "sbercloud_smn_message_detection": {
-                "current": "sbercloud:index/smnMessageDetection:SmnMessageDetection",
+                "current": "cloudru:index/smnMessageDetection:SmnMessageDetection",
                 "majorVersion": 1
             },
             "sbercloud_smn_subscription": {
-                "current": "sbercloud:index/smnSubscription:SmnSubscription",
+                "current": "cloudru:index/smnSubscription:SmnSubscription",
                 "majorVersion": 1,
                 "fields": {
                     "extension": {
@@ -3156,15 +3156,15 @@
                 }
             },
             "sbercloud_smn_topic": {
-                "current": "sbercloud:index/smnTopic:SmnTopic",
+                "current": "cloudru:index/smnTopic:SmnTopic",
                 "majorVersion": 1
             },
             "sbercloud_swr_organization": {
-                "current": "sbercloud:index/swrOrganization:SwrOrganization",
+                "current": "cloudru:index/swrOrganization:SwrOrganization",
                 "majorVersion": 1
             },
             "sbercloud_swr_organization_permissions": {
-                "current": "sbercloud:index/swrOrganizationPermissions:SwrOrganizationPermissions",
+                "current": "cloudru:index/swrOrganizationPermissions:SwrOrganizationPermissions",
                 "majorVersion": 1,
                 "fields": {
                     "self_permission": {
@@ -3176,11 +3176,11 @@
                 }
             },
             "sbercloud_swr_repository": {
-                "current": "sbercloud:index/swrRepository:SwrRepository",
+                "current": "cloudru:index/swrRepository:SwrRepository",
                 "majorVersion": 1
             },
             "sbercloud_vpc": {
-                "current": "sbercloud:Vpc/vpc:Vpc",
+                "current": "cloudru:Vpc/vpc:Vpc",
                 "majorVersion": 1,
                 "fields": {
                     "routes": {
@@ -3192,7 +3192,7 @@
                 }
             },
             "sbercloud_vpc_address_group": {
-                "current": "sbercloud:Vpc/addressGroup:AddressGroup",
+                "current": "cloudru:Vpc/addressGroup:AddressGroup",
                 "majorVersion": 1,
                 "fields": {
                     "addresses": {
@@ -3204,7 +3204,7 @@
                 }
             },
             "sbercloud_vpc_bandwidth": {
-                "current": "sbercloud:Vpc/bandwidth:Bandwidth",
+                "current": "cloudru:Vpc/bandwidth:Bandwidth",
                 "majorVersion": 1,
                 "fields": {
                     "publicips": {
@@ -3213,7 +3213,7 @@
                 }
             },
             "sbercloud_vpc_eip": {
-                "current": "sbercloud:Vpc/eip:Eip",
+                "current": "cloudru:Vpc/eip:Eip",
                 "majorVersion": 1,
                 "fields": {
                     "bandwidth": {
@@ -3225,19 +3225,19 @@
                 }
             },
             "sbercloud_vpc_peering_connection": {
-                "current": "sbercloud:Vpc/peeringConnection:PeeringConnection",
+                "current": "cloudru:Vpc/peeringConnection:PeeringConnection",
                 "majorVersion": 1
             },
             "sbercloud_vpc_peering_connection_accepter": {
-                "current": "sbercloud:Vpc/peeringConnectionAccepter:PeeringConnectionAccepter",
+                "current": "cloudru:Vpc/peeringConnectionAccepter:PeeringConnectionAccepter",
                 "majorVersion": 1
             },
             "sbercloud_vpc_route": {
-                "current": "sbercloud:Vpc/route:Route",
+                "current": "cloudru:Vpc/route:Route",
                 "majorVersion": 1
             },
             "sbercloud_vpc_route_table": {
-                "current": "sbercloud:Vpc/routeTable:RouteTable",
+                "current": "cloudru:Vpc/routeTable:RouteTable",
                 "majorVersion": 1,
                 "fields": {
                     "route": {
@@ -3249,7 +3249,7 @@
                 }
             },
             "sbercloud_vpc_subnet": {
-                "current": "sbercloud:Vpc/subnet:Subnet",
+                "current": "cloudru:Vpc/subnet:Subnet",
                 "majorVersion": 1,
                 "fields": {
                     "dns_list": {
@@ -3258,7 +3258,7 @@
                 }
             },
             "sbercloud_vpcep_endpoint": {
-                "current": "sbercloud:Vpcep/endpoint:Endpoint",
+                "current": "cloudru:Vpcep/endpoint:Endpoint",
                 "majorVersion": 1,
                 "fields": {
                     "whitelist": {
@@ -3267,7 +3267,7 @@
                 }
             },
             "sbercloud_vpcep_service": {
-                "current": "sbercloud:Vpcep/service:Service",
+                "current": "cloudru:Vpcep/service:Service",
                 "majorVersion": 1,
                 "fields": {
                     "connections": {
@@ -3285,7 +3285,7 @@
                 }
             },
             "sbercloud_vpn_connection": {
-                "current": "sbercloud:index/vpnConnection:VpnConnection",
+                "current": "cloudru:index/vpnConnection:VpnConnection",
                 "majorVersion": 1,
                 "fields": {
                     "ikepolicy": {
@@ -3317,15 +3317,15 @@
                 }
             },
             "sbercloud_vpn_connection_health_check": {
-                "current": "sbercloud:index/vpnConnectionHealthCheck:VpnConnectionHealthCheck",
+                "current": "cloudru:index/vpnConnectionHealthCheck:VpnConnectionHealthCheck",
                 "majorVersion": 1
             },
             "sbercloud_vpn_customer_gateway": {
-                "current": "sbercloud:index/vpnCustomerGateway:VpnCustomerGateway",
+                "current": "cloudru:index/vpnCustomerGateway:VpnCustomerGateway",
                 "majorVersion": 1
             },
             "sbercloud_vpn_gateway": {
-                "current": "sbercloud:index/vpnGateway:VpnGateway",
+                "current": "cloudru:index/vpnGateway:VpnGateway",
                 "majorVersion": 1,
                 "fields": {
                     "availability_zones": {
@@ -3354,7 +3354,7 @@
         },
         "datasources": {
             "sbercloud_apig_acl_policies": {
-                "current": "sbercloud:index/getApigAclPolicies:getApigAclPolicies",
+                "current": "cloudru:index/getApigAclPolicies:getApigAclPolicies",
                 "majorVersion": 1,
                 "fields": {
                     "policies": {
@@ -3363,7 +3363,7 @@
                 }
             },
             "sbercloud_apig_api": {
-                "current": "sbercloud:index/getApigApi:getApigApi",
+                "current": "cloudru:index/getApigApi:getApigApi",
                 "majorVersion": 1,
                 "fields": {
                     "backend_params": {
@@ -3426,7 +3426,7 @@
                 }
             },
             "sbercloud_apig_api_associated_acl_policies": {
-                "current": "sbercloud:index/getApigApiAssociatedAclPolicies:getApigApiAssociatedAclPolicies",
+                "current": "cloudru:index/getApigApiAssociatedAclPolicies:getApigApiAssociatedAclPolicies",
                 "majorVersion": 1,
                 "fields": {
                     "policies": {
@@ -3435,7 +3435,7 @@
                 }
             },
             "sbercloud_apig_api_associated_applications": {
-                "current": "sbercloud:index/getApigApiAssociatedApplications:getApigApiAssociatedApplications",
+                "current": "cloudru:index/getApigApiAssociatedApplications:getApigApiAssociatedApplications",
                 "majorVersion": 1,
                 "fields": {
                     "applications": {
@@ -3444,7 +3444,7 @@
                 }
             },
             "sbercloud_apig_api_associated_plugins": {
-                "current": "sbercloud:index/getApigApiAssociatedPlugins:getApigApiAssociatedPlugins",
+                "current": "cloudru:index/getApigApiAssociatedPlugins:getApigApiAssociatedPlugins",
                 "majorVersion": 1,
                 "fields": {
                     "plugins": {
@@ -3453,7 +3453,7 @@
                 }
             },
             "sbercloud_apig_api_associated_signatures": {
-                "current": "sbercloud:index/getApigApiAssociatedSignatures:getApigApiAssociatedSignatures",
+                "current": "cloudru:index/getApigApiAssociatedSignatures:getApigApiAssociatedSignatures",
                 "majorVersion": 1,
                 "fields": {
                     "signatures": {
@@ -3462,7 +3462,7 @@
                 }
             },
             "sbercloud_apig_api_associated_throttling_policies": {
-                "current": "sbercloud:index/getApigApiAssociatedThrottlingPolicies:getApigApiAssociatedThrottlingPolicies",
+                "current": "cloudru:index/getApigApiAssociatedThrottlingPolicies:getApigApiAssociatedThrottlingPolicies",
                 "majorVersion": 1,
                 "fields": {
                     "policies": {
@@ -3481,7 +3481,7 @@
                 }
             },
             "sbercloud_apig_api_basic_configurations": {
-                "current": "sbercloud:index/getApigApiBasicConfigurations:getApigApiBasicConfigurations",
+                "current": "cloudru:index/getApigApiBasicConfigurations:getApigApiBasicConfigurations",
                 "majorVersion": 1,
                 "fields": {
                     "configurations": {
@@ -3497,7 +3497,7 @@
                 }
             },
             "sbercloud_apig_appcodes": {
-                "current": "sbercloud:index/getApigAppcodes:getApigAppcodes",
+                "current": "cloudru:index/getApigAppcodes:getApigAppcodes",
                 "majorVersion": 1,
                 "fields": {
                     "appcodes": {
@@ -3506,7 +3506,7 @@
                 }
             },
             "sbercloud_apig_application_acl": {
-                "current": "sbercloud:index/getApigApplicationAcl:getApigApplicationAcl",
+                "current": "cloudru:index/getApigApplicationAcl:getApigApplicationAcl",
                 "majorVersion": 1,
                 "fields": {
                     "values": {
@@ -3515,7 +3515,7 @@
                 }
             },
             "sbercloud_apig_application_quotas": {
-                "current": "sbercloud:index/getApigApplicationQuotas:getApigApplicationQuotas",
+                "current": "cloudru:index/getApigApplicationQuotas:getApigApplicationQuotas",
                 "majorVersion": 1,
                 "fields": {
                     "quotas": {
@@ -3524,7 +3524,7 @@
                 }
             },
             "sbercloud_apig_applications": {
-                "current": "sbercloud:index/getApigApplications:getApigApplications",
+                "current": "cloudru:index/getApigApplications:getApigApplications",
                 "majorVersion": 1,
                 "fields": {
                     "applications": {
@@ -3533,7 +3533,7 @@
                 }
             },
             "sbercloud_apig_channels": {
-                "current": "sbercloud:index/getApigChannels:getApigChannels",
+                "current": "cloudru:index/getApigChannels:getApigChannels",
                 "majorVersion": 1,
                 "fields": {
                     "vpc_channels": {
@@ -3556,7 +3556,7 @@
                 }
             },
             "sbercloud_apig_custom_authorizers": {
-                "current": "sbercloud:index/getApigCustomAuthorizers:getApigCustomAuthorizers",
+                "current": "cloudru:index/getApigCustomAuthorizers:getApigCustomAuthorizers",
                 "majorVersion": 1,
                 "fields": {
                     "authorizers": {
@@ -3572,7 +3572,7 @@
                 }
             },
             "sbercloud_apig_endpoint_connections": {
-                "current": "sbercloud:index/getApigEndpointConnections:getApigEndpointConnections",
+                "current": "cloudru:index/getApigEndpointConnections:getApigEndpointConnections",
                 "majorVersion": 1,
                 "fields": {
                     "connections": {
@@ -3581,7 +3581,7 @@
                 }
             },
             "sbercloud_apig_environment_variables": {
-                "current": "sbercloud:index/getApigEnvironmentVariables:getApigEnvironmentVariables",
+                "current": "cloudru:index/getApigEnvironmentVariables:getApigEnvironmentVariables",
                 "majorVersion": 1,
                 "fields": {
                     "variables": {
@@ -3590,7 +3590,7 @@
                 }
             },
             "sbercloud_apig_environments": {
-                "current": "sbercloud:DedicatedApig/getEnvironments:getEnvironments",
+                "current": "cloudru:DedicatedApig/getEnvironments:getEnvironments",
                 "majorVersion": 1,
                 "fields": {
                     "environments": {
@@ -3599,7 +3599,7 @@
                 }
             },
             "sbercloud_apig_groups": {
-                "current": "sbercloud:index/getApigGroups:getApigGroups",
+                "current": "cloudru:index/getApigGroups:getApigGroups",
                 "majorVersion": 1,
                 "fields": {
                     "groups": {
@@ -3628,7 +3628,7 @@
                 }
             },
             "sbercloud_apig_instance_features": {
-                "current": "sbercloud:index/getApigInstanceFeatures:getApigInstanceFeatures",
+                "current": "cloudru:index/getApigInstanceFeatures:getApigInstanceFeatures",
                 "majorVersion": 1,
                 "fields": {
                     "features": {
@@ -3637,7 +3637,7 @@
                 }
             },
             "sbercloud_apig_instance_supported_features": {
-                "current": "sbercloud:index/getApigInstanceSupportedFeatures:getApigInstanceSupportedFeatures",
+                "current": "cloudru:index/getApigInstanceSupportedFeatures:getApigInstanceSupportedFeatures",
                 "majorVersion": 1,
                 "fields": {
                     "features": {
@@ -3646,7 +3646,7 @@
                 }
             },
             "sbercloud_apig_instances": {
-                "current": "sbercloud:index/getApigInstances:getApigInstances",
+                "current": "cloudru:index/getApigInstances:getApigInstances",
                 "majorVersion": 1,
                 "fields": {
                     "instances": {
@@ -3655,7 +3655,7 @@
                 }
             },
             "sbercloud_apig_signatures": {
-                "current": "sbercloud:index/getApigSignatures:getApigSignatures",
+                "current": "cloudru:index/getApigSignatures:getApigSignatures",
                 "majorVersion": 1,
                 "fields": {
                     "signatures": {
@@ -3664,7 +3664,7 @@
                 }
             },
             "sbercloud_apig_throttling_policies": {
-                "current": "sbercloud:index/getApigThrottlingPolicies:getApigThrottlingPolicies",
+                "current": "cloudru:index/getApigThrottlingPolicies:getApigThrottlingPolicies",
                 "majorVersion": 1,
                 "fields": {
                     "policies": {
@@ -3683,7 +3683,7 @@
                 }
             },
             "sbercloud_availability_zones": {
-                "current": "sbercloud:index/getAvailabilityZones:getAvailabilityZones",
+                "current": "cloudru:index/getAvailabilityZones:getAvailabilityZones",
                 "majorVersion": 1,
                 "fields": {
                     "names": {
@@ -3692,7 +3692,7 @@
                 }
             },
             "sbercloud_cbh_availability_zones": {
-                "current": "sbercloud:index/getCbhAvailabilityZones:getCbhAvailabilityZones",
+                "current": "cloudru:index/getCbhAvailabilityZones:getCbhAvailabilityZones",
                 "majorVersion": 1,
                 "fields": {
                     "availability_zones": {
@@ -3701,7 +3701,7 @@
                 }
             },
             "sbercloud_cbh_flavors": {
-                "current": "sbercloud:index/getCbhFlavors:getCbhFlavors",
+                "current": "cloudru:index/getCbhFlavors:getCbhFlavors",
                 "majorVersion": 1,
                 "fields": {
                     "flavors": {
@@ -3710,7 +3710,7 @@
                 }
             },
             "sbercloud_cbh_instances": {
-                "current": "sbercloud:index/getCbhInstances:getCbhInstances",
+                "current": "cloudru:index/getCbhInstances:getCbhInstances",
                 "majorVersion": 1,
                 "fields": {
                     "instances": {
@@ -3719,7 +3719,7 @@
                 }
             },
             "sbercloud_cbr_backup": {
-                "current": "sbercloud:index/getCbrBackup:getCbrBackup",
+                "current": "cloudru:index/getCbrBackup:getCbrBackup",
                 "majorVersion": 1,
                 "fields": {
                     "children": {
@@ -3772,7 +3772,7 @@
                 }
             },
             "sbercloud_cbr_policies": {
-                "current": "sbercloud:index/getCbrPolicies:getCbrPolicies",
+                "current": "cloudru:index/getCbrPolicies:getCbrPolicies",
                 "majorVersion": 1,
                 "fields": {
                     "policies": {
@@ -3801,7 +3801,7 @@
                 }
             },
             "sbercloud_cbr_vaults": {
-                "current": "sbercloud:Cbr/getVaults:getVaults",
+                "current": "cloudru:Cbr/getVaults:getVaults",
                 "majorVersion": 1,
                 "fields": {
                     "vaults": {
@@ -3827,7 +3827,7 @@
                 }
             },
             "sbercloud_cce_addon_template": {
-                "current": "sbercloud:Cce/getAddonTemplate:getAddonTemplate",
+                "current": "cloudru:Cce/getAddonTemplate:getAddonTemplate",
                 "majorVersion": 1,
                 "fields": {
                     "support_version": {
@@ -3846,7 +3846,7 @@
                 }
             },
             "sbercloud_cce_cluster": {
-                "current": "sbercloud:Cce/getCluster:getCluster",
+                "current": "cloudru:Cce/getCluster:getCluster",
                 "majorVersion": 1,
                 "fields": {
                     "certificate_clusters": {
@@ -3864,7 +3864,7 @@
                 }
             },
             "sbercloud_cce_cluster_certificate": {
-                "current": "sbercloud:Cce/getClusterCertificates:getClusterCertificates",
+                "current": "cloudru:Cce/getClusterCertificates:getClusterCertificates",
                 "majorVersion": 1,
                 "fields": {
                     "clusters": {
@@ -3879,7 +3879,7 @@
                 }
             },
             "sbercloud_cce_clusters": {
-                "current": "sbercloud:Cce/getClusters:getClusters",
+                "current": "cloudru:Cce/getClusters:getClusters",
                 "majorVersion": 1,
                 "fields": {
                     "clusters": {
@@ -3907,7 +3907,7 @@
                 }
             },
             "sbercloud_cce_node": {
-                "current": "sbercloud:Cce/getNode:getNode",
+                "current": "cloudru:Cce/getNode:getNode",
                 "majorVersion": 1,
                 "fields": {
                     "data_volumes": {
@@ -3922,7 +3922,7 @@
                 }
             },
             "sbercloud_cce_node_pool": {
-                "current": "sbercloud:Cce/getNodePool:getNodePool",
+                "current": "cloudru:Cce/getNodePool:getNodePool",
                 "majorVersion": 1,
                 "fields": {
                     "data_volumes": {
@@ -3937,7 +3937,7 @@
                 }
             },
             "sbercloud_cce_nodes": {
-                "current": "sbercloud:Cce/getNodes:getNodes",
+                "current": "cloudru:Cce/getNodes:getNodes",
                 "majorVersion": 1,
                 "fields": {
                     "ids": {
@@ -3962,7 +3962,7 @@
                 }
             },
             "sbercloud_cdm_flavors": {
-                "current": "sbercloud:index/getCdmFlavors:getCdmFlavors",
+                "current": "cloudru:index/getCdmFlavors:getCdmFlavors",
                 "majorVersion": 1,
                 "fields": {
                     "flavors": {
@@ -3971,7 +3971,7 @@
                 }
             },
             "sbercloud_cfw_access_control_logs": {
-                "current": "sbercloud:Cfw/getAccessControlLogs:getAccessControlLogs",
+                "current": "cloudru:Cfw/getAccessControlLogs:getAccessControlLogs",
                 "majorVersion": 1,
                 "fields": {
                     "records": {
@@ -3980,7 +3980,7 @@
                 }
             },
             "sbercloud_cfw_address_group_members": {
-                "current": "sbercloud:Cfw/getAddressGroupMembers:getAddressGroupMembers",
+                "current": "cloudru:Cfw/getAddressGroupMembers:getAddressGroupMembers",
                 "majorVersion": 1,
                 "fields": {
                     "records": {
@@ -3989,7 +3989,7 @@
                 }
             },
             "sbercloud_cfw_address_groups": {
-                "current": "sbercloud:Cfw/getAddressGroups:getAddressGroups",
+                "current": "cloudru:Cfw/getAddressGroups:getAddressGroups",
                 "majorVersion": 1,
                 "fields": {
                     "address_groups": {
@@ -3998,7 +3998,7 @@
                 }
             },
             "sbercloud_cfw_attack_logs": {
-                "current": "sbercloud:Cfw/getAttackLogs:getAttackLogs",
+                "current": "cloudru:Cfw/getAttackLogs:getAttackLogs",
                 "majorVersion": 1,
                 "fields": {
                     "records": {
@@ -4021,7 +4021,7 @@
                 }
             },
             "sbercloud_cfw_black_white_lists": {
-                "current": "sbercloud:Cfw/getBlackWhiteLists:getBlackWhiteLists",
+                "current": "cloudru:Cfw/getBlackWhiteLists:getBlackWhiteLists",
                 "majorVersion": 1,
                 "fields": {
                     "records": {
@@ -4030,7 +4030,7 @@
                 }
             },
             "sbercloud_cfw_capture_task_results": {
-                "current": "sbercloud:Cfw/getCaptureTaskResults:getCaptureTaskResults",
+                "current": "cloudru:Cfw/getCaptureTaskResults:getCaptureTaskResults",
                 "majorVersion": 1,
                 "fields": {
                     "file_list": {
@@ -4045,7 +4045,7 @@
                 }
             },
             "sbercloud_cfw_capture_tasks": {
-                "current": "sbercloud:Cfw/getCaptureTasks:getCaptureTasks",
+                "current": "cloudru:Cfw/getCaptureTasks:getCaptureTasks",
                 "majorVersion": 1,
                 "fields": {
                     "records": {
@@ -4054,7 +4054,7 @@
                 }
             },
             "sbercloud_cfw_domain_name_groups": {
-                "current": "sbercloud:Cfw/getDomainNameGroups:getDomainNameGroups",
+                "current": "cloudru:Cfw/getDomainNameGroups:getDomainNameGroups",
                 "majorVersion": 1,
                 "fields": {
                     "records": {
@@ -4073,7 +4073,7 @@
                 }
             },
             "sbercloud_cfw_domain_name_parse_ip_list": {
-                "current": "sbercloud:Cfw/getDomainNameParseIpList:getDomainNameParseIpList",
+                "current": "cloudru:Cfw/getDomainNameParseIpList:getDomainNameParseIpList",
                 "majorVersion": 1,
                 "fields": {
                     "data": {
@@ -4082,7 +4082,7 @@
                 }
             },
             "sbercloud_cfw_firewalls": {
-                "current": "sbercloud:Cfw/getFirewalls:getFirewalls",
+                "current": "cloudru:Cfw/getFirewalls:getFirewalls",
                 "majorVersion": 1,
                 "fields": {
                     "records": {
@@ -4104,7 +4104,7 @@
                 }
             },
             "sbercloud_cfw_flow_logs": {
-                "current": "sbercloud:Cfw/getFlowLogs:getFlowLogs",
+                "current": "cloudru:Cfw/getFlowLogs:getFlowLogs",
                 "majorVersion": 1,
                 "fields": {
                     "records": {
@@ -4113,7 +4113,7 @@
                 }
             },
             "sbercloud_cfw_ips_custom_rules": {
-                "current": "sbercloud:Cfw/getIpsCustomRules:getIpsCustomRules",
+                "current": "cloudru:Cfw/getIpsCustomRules:getIpsCustomRules",
                 "majorVersion": 1,
                 "fields": {
                     "records": {
@@ -4122,7 +4122,7 @@
                 }
             },
             "sbercloud_cfw_ips_rule_details": {
-                "current": "sbercloud:Cfw/getIpsRuleDetails:getIpsRuleDetails",
+                "current": "cloudru:Cfw/getIpsRuleDetails:getIpsRuleDetails",
                 "majorVersion": 1,
                 "fields": {
                     "data": {
@@ -4131,7 +4131,7 @@
                 }
             },
             "sbercloud_cfw_ips_rules": {
-                "current": "sbercloud:Cfw/getIpsRules:getIpsRules",
+                "current": "cloudru:Cfw/getIpsRules:getIpsRules",
                 "majorVersion": 1,
                 "fields": {
                     "records": {
@@ -4140,7 +4140,7 @@
                 }
             },
             "sbercloud_cfw_protection_rules": {
-                "current": "sbercloud:Cfw/getProtectionRules:getProtectionRules",
+                "current": "cloudru:Cfw/getProtectionRules:getProtectionRules",
                 "majorVersion": 1,
                 "fields": {
                     "records": {
@@ -4201,11 +4201,11 @@
                 }
             },
             "sbercloud_cfw_regions": {
-                "current": "sbercloud:Cfw/getRegions:getRegions",
+                "current": "cloudru:Cfw/getRegions:getRegions",
                 "majorVersion": 1
             },
             "sbercloud_cfw_resource_tags": {
-                "current": "sbercloud:Cfw/getResourceTags:getResourceTags",
+                "current": "cloudru:Cfw/getResourceTags:getResourceTags",
                 "majorVersion": 1,
                 "fields": {
                     "tags": {
@@ -4214,7 +4214,7 @@
                 }
             },
             "sbercloud_cfw_service_group_members": {
-                "current": "sbercloud:Cfw/getServiceGroupMembers:getServiceGroupMembers",
+                "current": "cloudru:Cfw/getServiceGroupMembers:getServiceGroupMembers",
                 "majorVersion": 1,
                 "fields": {
                     "records": {
@@ -4223,7 +4223,7 @@
                 }
             },
             "sbercloud_cfw_service_groups": {
-                "current": "sbercloud:Cfw/getServiceGroups:getServiceGroups",
+                "current": "cloudru:Cfw/getServiceGroups:getServiceGroups",
                 "majorVersion": 1,
                 "fields": {
                     "service_groups": {
@@ -4239,7 +4239,7 @@
                 }
             },
             "sbercloud_cfw_tags": {
-                "current": "sbercloud:Cfw/getTags:getTags",
+                "current": "cloudru:Cfw/getTags:getTags",
                 "majorVersion": 1,
                 "fields": {
                     "tags": {
@@ -4255,7 +4255,7 @@
                 }
             },
             "sbercloud_compute_flavors": {
-                "current": "sbercloud:Ecs/getFlavors:getFlavors",
+                "current": "cloudru:Ecs/getFlavors:getFlavors",
                 "majorVersion": 1,
                 "fields": {
                     "flavors": {
@@ -4267,7 +4267,7 @@
                 }
             },
             "sbercloud_compute_instance": {
-                "current": "sbercloud:Ecs/getInstance:getInstance",
+                "current": "cloudru:Ecs/getInstance:getInstance",
                 "majorVersion": 1,
                 "fields": {
                     "network": {
@@ -4288,7 +4288,7 @@
                 }
             },
             "sbercloud_compute_instances": {
-                "current": "sbercloud:Ecs/getInstances:getInstances",
+                "current": "cloudru:Ecs/getInstances:getInstances",
                 "majorVersion": 1,
                 "fields": {
                     "instances": {
@@ -4313,7 +4313,7 @@
                 }
             },
             "sbercloud_compute_servergroups": {
-                "current": "sbercloud:Ecs/getServergroups:getServergroups",
+                "current": "cloudru:Ecs/getServergroups:getServergroups",
                 "majorVersion": 1,
                 "fields": {
                     "servergroups": {
@@ -4332,7 +4332,7 @@
                 }
             },
             "sbercloud_css_flavors": {
-                "current": "sbercloud:Css/getFlavors:getFlavors",
+                "current": "cloudru:Css/getFlavors:getFlavors",
                 "majorVersion": 1,
                 "fields": {
                     "flavors": {
@@ -4341,7 +4341,7 @@
                 }
             },
             "sbercloud_dcs_accounts": {
-                "current": "sbercloud:index/getDcsAccounts:getDcsAccounts",
+                "current": "cloudru:index/getDcsAccounts:getDcsAccounts",
                 "majorVersion": 1,
                 "fields": {
                     "accounts": {
@@ -4350,11 +4350,11 @@
                 }
             },
             "sbercloud_dcs_az": {
-                "current": "sbercloud:index/getDcsAz:getDcsAz",
+                "current": "cloudru:index/getDcsAz:getDcsAz",
                 "majorVersion": 1
             },
             "sbercloud_dcs_flavors": {
-                "current": "sbercloud:Dcs/getFlavors:getFlavors",
+                "current": "cloudru:Dcs/getFlavors:getFlavors",
                 "majorVersion": 1,
                 "fields": {
                     "flavors": {
@@ -4373,15 +4373,15 @@
                 }
             },
             "sbercloud_dcs_maintainwindow": {
-                "current": "sbercloud:Dcs/getMaintainwindow:getMaintainwindow",
+                "current": "cloudru:Dcs/getMaintainwindow:getMaintainwindow",
                 "majorVersion": 1
             },
             "sbercloud_dcs_product": {
-                "current": "sbercloud:index/getDcsProduct:getDcsProduct",
+                "current": "cloudru:index/getDcsProduct:getDcsProduct",
                 "majorVersion": 1
             },
             "sbercloud_dds_flavors": {
-                "current": "sbercloud:Dds/getFlavors:getFlavors",
+                "current": "cloudru:Dds/getFlavors:getFlavors",
                 "majorVersion": 1,
                 "fields": {
                     "flavors": {
@@ -4390,11 +4390,11 @@
                 }
             },
             "sbercloud_dms_az": {
-                "current": "sbercloud:index/getDmsAz:getDmsAz",
+                "current": "cloudru:index/getDmsAz:getDmsAz",
                 "majorVersion": 1
             },
             "sbercloud_dms_kafka_consumer_groups": {
-                "current": "sbercloud:index/getDmsKafkaConsumerGroups:getDmsKafkaConsumerGroups",
+                "current": "cloudru:index/getDmsKafkaConsumerGroups:getDmsKafkaConsumerGroups",
                 "majorVersion": 1,
                 "fields": {
                     "groups": {
@@ -4427,7 +4427,7 @@
                 }
             },
             "sbercloud_dms_kafka_flavors": {
-                "current": "sbercloud:Dms/getFlavors:getFlavors",
+                "current": "cloudru:Dms/getFlavors:getFlavors",
                 "majorVersion": 1,
                 "fields": {
                     "availability_zones": {
@@ -4478,7 +4478,7 @@
                 }
             },
             "sbercloud_dms_kafka_instances": {
-                "current": "sbercloud:Dms/getInstances:getInstances",
+                "current": "cloudru:Dms/getInstances:getInstances",
                 "majorVersion": 1,
                 "fields": {
                     "instances": {
@@ -4503,7 +4503,7 @@
                 }
             },
             "sbercloud_dms_kafka_messages": {
-                "current": "sbercloud:index/getDmsKafkaMessages:getDmsKafkaMessages",
+                "current": "cloudru:index/getDmsKafkaMessages:getDmsKafkaMessages",
                 "majorVersion": 1,
                 "fields": {
                     "messages": {
@@ -4512,7 +4512,7 @@
                 }
             },
             "sbercloud_dms_kafka_users": {
-                "current": "sbercloud:index/getDmsKafkaUsers:getDmsKafkaUsers",
+                "current": "cloudru:index/getDmsKafkaUsers:getDmsKafkaUsers",
                 "majorVersion": 1,
                 "fields": {
                     "users": {
@@ -4521,11 +4521,11 @@
                 }
             },
             "sbercloud_dms_maintainwindow": {
-                "current": "sbercloud:Dms/getMaintainwindow:getMaintainwindow",
+                "current": "cloudru:Dms/getMaintainwindow:getMaintainwindow",
                 "majorVersion": 1
             },
             "sbercloud_dms_product": {
-                "current": "sbercloud:Dms/getProduct:getProduct",
+                "current": "cloudru:Dms/getProduct:getProduct",
                 "majorVersion": 1,
                 "fields": {
                     "availability_zones": {
@@ -4537,7 +4537,7 @@
                 }
             },
             "sbercloud_dms_rabbitmq_flavors": {
-                "current": "sbercloud:index/getDmsRabbitmqFlavors:getDmsRabbitmqFlavors",
+                "current": "cloudru:index/getDmsRabbitmqFlavors:getDmsRabbitmqFlavors",
                 "majorVersion": 1,
                 "fields": {
                     "availability_zones": {
@@ -4588,7 +4588,7 @@
                 }
             },
             "sbercloud_dms_rocketmq_broker": {
-                "current": "sbercloud:index/getDmsRocketmqBroker:getDmsRocketmqBroker",
+                "current": "cloudru:index/getDmsRocketmqBroker:getDmsRocketmqBroker",
                 "majorVersion": 1,
                 "fields": {
                     "brokers": {
@@ -4597,7 +4597,7 @@
                 }
             },
             "sbercloud_dms_rocketmq_consumer_group_access_users": {
-                "current": "sbercloud:index/getDmsRocketmqConsumerGroupAccessUsers:getDmsRocketmqConsumerGroupAccessUsers",
+                "current": "cloudru:index/getDmsRocketmqConsumerGroupAccessUsers:getDmsRocketmqConsumerGroupAccessUsers",
                 "majorVersion": 1,
                 "fields": {
                     "policies": {
@@ -4606,7 +4606,7 @@
                 }
             },
             "sbercloud_dms_rocketmq_consumer_groups": {
-                "current": "sbercloud:index/getDmsRocketmqConsumerGroups:getDmsRocketmqConsumerGroups",
+                "current": "cloudru:index/getDmsRocketmqConsumerGroups:getDmsRocketmqConsumerGroups",
                 "majorVersion": 1,
                 "fields": {
                     "groups": {
@@ -4622,7 +4622,7 @@
                 }
             },
             "sbercloud_dms_rocketmq_consumers": {
-                "current": "sbercloud:index/getDmsRocketmqConsumers:getDmsRocketmqConsumers",
+                "current": "cloudru:index/getDmsRocketmqConsumers:getDmsRocketmqConsumers",
                 "majorVersion": 1,
                 "fields": {
                     "clients": {
@@ -4638,7 +4638,7 @@
                 }
             },
             "sbercloud_dms_rocketmq_extend_flavors": {
-                "current": "sbercloud:index/getDmsRocketmqExtendFlavors:getDmsRocketmqExtendFlavors",
+                "current": "cloudru:index/getDmsRocketmqExtendFlavors:getDmsRocketmqExtendFlavors",
                 "majorVersion": 1,
                 "fields": {
                     "flavors": {
@@ -4685,7 +4685,7 @@
                 }
             },
             "sbercloud_dms_rocketmq_flavors": {
-                "current": "sbercloud:index/getDmsRocketmqFlavors:getDmsRocketmqFlavors",
+                "current": "cloudru:index/getDmsRocketmqFlavors:getDmsRocketmqFlavors",
                 "majorVersion": 1,
                 "fields": {
                     "availability_zones": {
@@ -4736,7 +4736,7 @@
                 }
             },
             "sbercloud_dms_rocketmq_instances": {
-                "current": "sbercloud:index/getDmsRocketmqInstances:getDmsRocketmqInstances",
+                "current": "cloudru:index/getDmsRocketmqInstances:getDmsRocketmqInstances",
                 "majorVersion": 1,
                 "fields": {
                     "instances": {
@@ -4755,7 +4755,7 @@
                 }
             },
             "sbercloud_dms_rocketmq_message_traces": {
-                "current": "sbercloud:index/getDmsRocketmqMessageTraces:getDmsRocketmqMessageTraces",
+                "current": "cloudru:index/getDmsRocketmqMessageTraces:getDmsRocketmqMessageTraces",
                 "majorVersion": 1,
                 "fields": {
                     "traces": {
@@ -4764,7 +4764,7 @@
                 }
             },
             "sbercloud_dms_rocketmq_messages": {
-                "current": "sbercloud:index/getDmsRocketmqMessages:getDmsRocketmqMessages",
+                "current": "cloudru:index/getDmsRocketmqMessages:getDmsRocketmqMessages",
                 "majorVersion": 1,
                 "fields": {
                     "messages": {
@@ -4780,7 +4780,7 @@
                 }
             },
             "sbercloud_dms_rocketmq_migration_tasks": {
-                "current": "sbercloud:index/getDmsRocketmqMigrationTasks:getDmsRocketmqMigrationTasks",
+                "current": "cloudru:index/getDmsRocketmqMigrationTasks:getDmsRocketmqMigrationTasks",
                 "majorVersion": 1,
                 "fields": {
                     "tasks": {
@@ -4789,7 +4789,7 @@
                 }
             },
             "sbercloud_dms_rocketmq_topic_access_users": {
-                "current": "sbercloud:index/getDmsRocketmqTopicAccessUsers:getDmsRocketmqTopicAccessUsers",
+                "current": "cloudru:index/getDmsRocketmqTopicAccessUsers:getDmsRocketmqTopicAccessUsers",
                 "majorVersion": 1,
                 "fields": {
                     "policies": {
@@ -4798,7 +4798,7 @@
                 }
             },
             "sbercloud_dms_rocketmq_topic_consumer_groups": {
-                "current": "sbercloud:index/getDmsRocketmqTopicConsumerGroups:getDmsRocketmqTopicConsumerGroups",
+                "current": "cloudru:index/getDmsRocketmqTopicConsumerGroups:getDmsRocketmqTopicConsumerGroups",
                 "majorVersion": 1,
                 "fields": {
                     "groups": {
@@ -4807,7 +4807,7 @@
                 }
             },
             "sbercloud_dms_rocketmq_topics": {
-                "current": "sbercloud:index/getDmsRocketmqTopics:getDmsRocketmqTopics",
+                "current": "cloudru:index/getDmsRocketmqTopics:getDmsRocketmqTopics",
                 "majorVersion": 1,
                 "fields": {
                     "topics": {
@@ -4823,7 +4823,7 @@
                 }
             },
             "sbercloud_dms_rocketmq_users": {
-                "current": "sbercloud:index/getDmsRocketmqUsers:getDmsRocketmqUsers",
+                "current": "cloudru:index/getDmsRocketmqUsers:getDmsRocketmqUsers",
                 "majorVersion": 1,
                 "fields": {
                     "users": {
@@ -4842,7 +4842,7 @@
                 }
             },
             "sbercloud_dns_zones": {
-                "current": "sbercloud:index/getDnsZones:getDnsZones",
+                "current": "cloudru:index/getDnsZones:getDnsZones",
                 "majorVersion": 1,
                 "fields": {
                     "zones": {
@@ -4861,7 +4861,7 @@
                 }
             },
             "sbercloud_dws_flavors": {
-                "current": "sbercloud:Dws/getFlaovrs:getFlaovrs",
+                "current": "cloudru:Dws/getFlaovrs:getFlaovrs",
                 "majorVersion": 1,
                 "fields": {
                     "flavors": {
@@ -4880,11 +4880,11 @@
                 }
             },
             "sbercloud_elb_certificate": {
-                "current": "sbercloud:index/getElbCertificate:getElbCertificate",
+                "current": "cloudru:index/getElbCertificate:getElbCertificate",
                 "majorVersion": 1
             },
             "sbercloud_elb_flavors": {
-                "current": "sbercloud:index/getElbFlavors:getElbFlavors",
+                "current": "cloudru:index/getElbFlavors:getElbFlavors",
                 "majorVersion": 1,
                 "fields": {
                     "flavors": {
@@ -4896,7 +4896,7 @@
                 }
             },
             "sbercloud_elb_pools": {
-                "current": "sbercloud:index/getElbPools:getElbPools",
+                "current": "cloudru:index/getElbPools:getElbPools",
                 "majorVersion": 1,
                 "fields": {
                     "pools": {
@@ -4924,11 +4924,11 @@
                 }
             },
             "sbercloud_enterprise_project": {
-                "current": "sbercloud:Eps/getProject:getProject",
+                "current": "cloudru:Eps/getProject:getProject",
                 "majorVersion": 1
             },
             "sbercloud_er_associations": {
-                "current": "sbercloud:Er/getAssociations:getAssociations",
+                "current": "cloudru:Er/getAssociations:getAssociations",
                 "majorVersion": 1,
                 "fields": {
                     "associations": {
@@ -4937,7 +4937,7 @@
                 }
             },
             "sbercloud_er_attachments": {
-                "current": "sbercloud:Er/getAttachments:getAttachments",
+                "current": "cloudru:Er/getAttachments:getAttachments",
                 "majorVersion": 1,
                 "fields": {
                     "attachments": {
@@ -4946,7 +4946,7 @@
                 }
             },
             "sbercloud_er_availability_zones": {
-                "current": "sbercloud:Er/getAvailabilityZones:getAvailabilityZones",
+                "current": "cloudru:Er/getAvailabilityZones:getAvailabilityZones",
                 "majorVersion": 1,
                 "fields": {
                     "names": {
@@ -4955,7 +4955,7 @@
                 }
             },
             "sbercloud_er_available_routes": {
-                "current": "sbercloud:Er/getAvailableRoutes:getAvailableRoutes",
+                "current": "cloudru:Er/getAvailableRoutes:getAvailableRoutes",
                 "majorVersion": 1,
                 "fields": {
                     "routes": {
@@ -4971,7 +4971,7 @@
                 }
             },
             "sbercloud_er_flow_logs": {
-                "current": "sbercloud:Er/getFlowLogs:getFlowLogs",
+                "current": "cloudru:Er/getFlowLogs:getFlowLogs",
                 "majorVersion": 1,
                 "fields": {
                     "flow_logs": {
@@ -4980,7 +4980,7 @@
                 }
             },
             "sbercloud_er_instances": {
-                "current": "sbercloud:Er/getInstances:getInstances",
+                "current": "cloudru:Er/getInstances:getInstances",
                 "majorVersion": 1,
                 "fields": {
                     "instances": {
@@ -4996,7 +4996,7 @@
                 }
             },
             "sbercloud_er_propagations": {
-                "current": "sbercloud:Er/getPropagations:getPropagations",
+                "current": "cloudru:Er/getPropagations:getPropagations",
                 "majorVersion": 1,
                 "fields": {
                     "propagations": {
@@ -5005,7 +5005,7 @@
                 }
             },
             "sbercloud_er_quotas": {
-                "current": "sbercloud:Er/getQuotas:getQuotas",
+                "current": "cloudru:Er/getQuotas:getQuotas",
                 "majorVersion": 1,
                 "fields": {
                     "quotas": {
@@ -5014,11 +5014,11 @@
                 }
             },
             "sbercloud_er_resource_tags": {
-                "current": "sbercloud:Er/getResourceTags:getResourceTags",
+                "current": "cloudru:Er/getResourceTags:getResourceTags",
                 "majorVersion": 1
             },
             "sbercloud_er_route_tables": {
-                "current": "sbercloud:Er/getRouteTables:getRouteTables",
+                "current": "cloudru:Er/getRouteTables:getRouteTables",
                 "majorVersion": 1,
                 "fields": {
                     "route_tables": {
@@ -5047,7 +5047,7 @@
                 }
             },
             "sbercloud_er_tags": {
-                "current": "sbercloud:Er/getTags:getTags",
+                "current": "cloudru:Er/getTags:getTags",
                 "majorVersion": 1,
                 "fields": {
                     "tags": {
@@ -5063,7 +5063,7 @@
                 }
             },
             "sbercloud_evs_volumes": {
-                "current": "sbercloud:Evs/getVolumes:getVolumes",
+                "current": "cloudru:Evs/getVolumes:getVolumes",
                 "majorVersion": 1,
                 "fields": {
                     "volumes": {
@@ -5088,7 +5088,7 @@
                 }
             },
             "sbercloud_fgs_application_templates": {
-                "current": "sbercloud:index/getFgsApplicationTemplates:getFgsApplicationTemplates",
+                "current": "cloudru:index/getFgsApplicationTemplates:getFgsApplicationTemplates",
                 "majorVersion": 1,
                 "fields": {
                     "templates": {
@@ -5097,7 +5097,7 @@
                 }
             },
             "sbercloud_fgs_applications": {
-                "current": "sbercloud:index/getFgsApplications:getFgsApplications",
+                "current": "cloudru:index/getFgsApplications:getFgsApplications",
                 "majorVersion": 1,
                 "fields": {
                     "applications": {
@@ -5106,7 +5106,7 @@
                 }
             },
             "sbercloud_fgs_dependencies": {
-                "current": "sbercloud:FunctionGraph/getDependencies:getDependencies",
+                "current": "cloudru:FunctionGraph/getDependencies:getDependencies",
                 "majorVersion": 1,
                 "fields": {
                     "packages": {
@@ -5122,7 +5122,7 @@
                 }
             },
             "sbercloud_fgs_dependency_versions": {
-                "current": "sbercloud:index/getFgsDependencyVersions:getFgsDependencyVersions",
+                "current": "cloudru:index/getFgsDependencyVersions:getFgsDependencyVersions",
                 "majorVersion": 1,
                 "fields": {
                     "versions": {
@@ -5131,7 +5131,7 @@
                 }
             },
             "sbercloud_fgs_function_events": {
-                "current": "sbercloud:index/getFgsFunctionEvents:getFgsFunctionEvents",
+                "current": "cloudru:index/getFgsFunctionEvents:getFgsFunctionEvents",
                 "majorVersion": 1,
                 "fields": {
                     "events": {
@@ -5140,7 +5140,7 @@
                 }
             },
             "sbercloud_fgs_function_triggers": {
-                "current": "sbercloud:index/getFgsFunctionTriggers:getFgsFunctionTriggers",
+                "current": "cloudru:index/getFgsFunctionTriggers:getFgsFunctionTriggers",
                 "majorVersion": 1,
                 "fields": {
                     "triggers": {
@@ -5149,7 +5149,7 @@
                 }
             },
             "sbercloud_fgs_functions": {
-                "current": "sbercloud:index/getFgsFunctions:getFgsFunctions",
+                "current": "cloudru:index/getFgsFunctions:getFgsFunctions",
                 "majorVersion": 1,
                 "fields": {
                     "functions": {
@@ -5158,7 +5158,7 @@
                 }
             },
             "sbercloud_fgs_quotas": {
-                "current": "sbercloud:index/getFgsQuotas:getFgsQuotas",
+                "current": "cloudru:index/getFgsQuotas:getFgsQuotas",
                 "majorVersion": 1,
                 "fields": {
                     "quotas": {
@@ -5167,11 +5167,11 @@
                 }
             },
             "sbercloud_identity_custom_role": {
-                "current": "sbercloud:Iam/getCustomRole:getCustomRole",
+                "current": "cloudru:Iam/getCustomRole:getCustomRole",
                 "majorVersion": 1
             },
             "sbercloud_identity_group": {
-                "current": "sbercloud:Iam/getGroup:getGroup",
+                "current": "cloudru:Iam/getGroup:getGroup",
                 "majorVersion": 1,
                 "fields": {
                     "users": {
@@ -5180,7 +5180,7 @@
                 }
             },
             "sbercloud_identity_projects": {
-                "current": "sbercloud:Iam/getProjects:getProjects",
+                "current": "cloudru:Iam/getProjects:getProjects",
                 "majorVersion": 1,
                 "fields": {
                     "projects": {
@@ -5189,15 +5189,15 @@
                 }
             },
             "sbercloud_identity_role": {
-                "current": "sbercloud:Iam/getRole:getRole",
+                "current": "cloudru:Iam/getRole:getRole",
                 "majorVersion": 1
             },
             "sbercloud_identity_role_v3": {
-                "current": "sbercloud:index/getIdentityRoleV3:getIdentityRoleV3",
+                "current": "cloudru:index/getIdentityRoleV3:getIdentityRoleV3",
                 "majorVersion": 1
             },
             "sbercloud_identity_users": {
-                "current": "sbercloud:Iam/getUsers:getUsers",
+                "current": "cloudru:Iam/getUsers:getUsers",
                 "majorVersion": 1,
                 "fields": {
                     "users": {
@@ -5213,11 +5213,11 @@
                 }
             },
             "sbercloud_images_image": {
-                "current": "sbercloud:Ims/getImage:getImage",
+                "current": "cloudru:Ims/getImage:getImage",
                 "majorVersion": 1
             },
             "sbercloud_images_images": {
-                "current": "sbercloud:Ims/getImages:getImages",
+                "current": "cloudru:Ims/getImages:getImages",
                 "majorVersion": 1,
                 "fields": {
                     "images": {
@@ -5226,15 +5226,15 @@
                 }
             },
             "sbercloud_kms_data_key": {
-                "current": "sbercloud:Dew/getDataKey:getDataKey",
+                "current": "cloudru:Dew/getDataKey:getDataKey",
                 "majorVersion": 1
             },
             "sbercloud_kms_key": {
-                "current": "sbercloud:Dew/getKey:getKey",
+                "current": "cloudru:Dew/getKey:getKey",
                 "majorVersion": 1
             },
             "sbercloud_kps_failed_tasks": {
-                "current": "sbercloud:index/getKpsFailedTasks:getKpsFailedTasks",
+                "current": "cloudru:index/getKpsFailedTasks:getKpsFailedTasks",
                 "majorVersion": 1,
                 "fields": {
                     "tasks": {
@@ -5243,7 +5243,7 @@
                 }
             },
             "sbercloud_kps_keypairs": {
-                "current": "sbercloud:Dew/getKeypairs:getKeypairs",
+                "current": "cloudru:Dew/getKeypairs:getKeypairs",
                 "majorVersion": 1,
                 "fields": {
                     "keypairs": {
@@ -5252,7 +5252,7 @@
                 }
             },
             "sbercloud_kps_running_tasks": {
-                "current": "sbercloud:index/getKpsRunningTasks:getKpsRunningTasks",
+                "current": "cloudru:index/getKpsRunningTasks:getKpsRunningTasks",
                 "majorVersion": 1,
                 "fields": {
                     "tasks": {
@@ -5261,11 +5261,11 @@
                 }
             },
             "sbercloud_lb_certificate": {
-                "current": "sbercloud:Elb/getCertificate:getCertificate",
+                "current": "cloudru:Elb/getCertificate:getCertificate",
                 "majorVersion": 1
             },
             "sbercloud_lb_listeners": {
-                "current": "sbercloud:Elb/getListeners:getListeners",
+                "current": "cloudru:Elb/getListeners:getListeners",
                 "majorVersion": 1,
                 "fields": {
                     "listeners": {
@@ -5287,11 +5287,11 @@
                 }
             },
             "sbercloud_lb_loadbalancer": {
-                "current": "sbercloud:Elb/getLoadbalancer:getLoadbalancer",
+                "current": "cloudru:Elb/getLoadbalancer:getLoadbalancer",
                 "majorVersion": 1
             },
             "sbercloud_lb_pools": {
-                "current": "sbercloud:Elb/getPools:getPools",
+                "current": "cloudru:Elb/getPools:getPools",
                 "majorVersion": 1,
                 "fields": {
                     "pools": {
@@ -5316,11 +5316,11 @@
                 }
             },
             "sbercloud_nat_gateway": {
-                "current": "sbercloud:Nat/getGateway:getGateway",
+                "current": "cloudru:Nat/getGateway:getGateway",
                 "majorVersion": 1
             },
             "sbercloud_networking_port": {
-                "current": "sbercloud:Vpc/getPort:getPort",
+                "current": "cloudru:Vpc/getPort:getPort",
                 "majorVersion": 1,
                 "fields": {
                     "all_allowed_ips": {
@@ -5338,7 +5338,7 @@
                 }
             },
             "sbercloud_networking_secgroup": {
-                "current": "sbercloud:Vpc/getSecgroup:getSecgroup",
+                "current": "cloudru:Vpc/getSecgroup:getSecgroup",
                 "majorVersion": 1,
                 "fields": {
                     "rules": {
@@ -5347,7 +5347,7 @@
                 }
             },
             "sbercloud_networking_secgroups": {
-                "current": "sbercloud:Vpc/getSecgroups:getSecgroups",
+                "current": "cloudru:Vpc/getSecgroups:getSecgroups",
                 "majorVersion": 1,
                 "fields": {
                     "security_groups": {
@@ -5356,11 +5356,11 @@
                 }
             },
             "sbercloud_obs_bucket_object": {
-                "current": "sbercloud:Obs/getBucketObject:getBucketObject",
+                "current": "cloudru:Obs/getBucketObject:getBucketObject",
                 "majorVersion": 1
             },
             "sbercloud_obs_buckets": {
-                "current": "sbercloud:Obs/getBuckets:getBuckets",
+                "current": "cloudru:Obs/getBuckets:getBuckets",
                 "majorVersion": 1,
                 "fields": {
                     "buckets": {
@@ -5369,7 +5369,7 @@
                 }
             },
             "sbercloud_rds_backups": {
-                "current": "sbercloud:Rds/getBackups:getBackups",
+                "current": "cloudru:Rds/getBackups:getBackups",
                 "majorVersion": 1,
                 "fields": {
                     "backups": {
@@ -5388,7 +5388,7 @@
                 }
             },
             "sbercloud_rds_engine_versions": {
-                "current": "sbercloud:Rds/getEngineVersions:getEngineVersions",
+                "current": "cloudru:Rds/getEngineVersions:getEngineVersions",
                 "majorVersion": 1,
                 "fields": {
                     "versions": {
@@ -5397,7 +5397,7 @@
                 }
             },
             "sbercloud_rds_flavors": {
-                "current": "sbercloud:Rds/getFlavors:getFlavors",
+                "current": "cloudru:Rds/getFlavors:getFlavors",
                 "majorVersion": 1,
                 "fields": {
                     "flavors": {
@@ -5416,7 +5416,7 @@
                 }
             },
             "sbercloud_rds_instances": {
-                "current": "sbercloud:Rds/getInstances:getInstances",
+                "current": "cloudru:Rds/getInstances:getInstances",
                 "majorVersion": 1,
                 "fields": {
                     "instances": {
@@ -5450,7 +5450,7 @@
                 }
             },
             "sbercloud_rds_pg_accounts": {
-                "current": "sbercloud:Rds/getPgAccounts:getPgAccounts",
+                "current": "cloudru:Rds/getPgAccounts:getPgAccounts",
                 "majorVersion": 1,
                 "fields": {
                     "users": {
@@ -5469,7 +5469,7 @@
                 }
             },
             "sbercloud_rds_pg_databases": {
-                "current": "sbercloud:Rds/getPgDatabases:getPgDatabases",
+                "current": "cloudru:Rds/getPgDatabases:getPgDatabases",
                 "majorVersion": 1,
                 "fields": {
                     "databases": {
@@ -5478,7 +5478,7 @@
                 }
             },
             "sbercloud_rds_pg_plugin_parameter_value_range": {
-                "current": "sbercloud:Rds/getPgPluginParameterValueRange:getPgPluginParameterValueRange",
+                "current": "cloudru:Rds/getPgPluginParameterValueRange:getPgPluginParameterValueRange",
                 "majorVersion": 1,
                 "fields": {
                     "default_values": {
@@ -5490,7 +5490,7 @@
                 }
             },
             "sbercloud_rds_pg_plugin_parameter_values": {
-                "current": "sbercloud:Rds/getPgPluginParameterValues:getPgPluginParameterValues",
+                "current": "cloudru:Rds/getPgPluginParameterValues:getPgPluginParameterValues",
                 "majorVersion": 1,
                 "fields": {
                     "values": {
@@ -5499,7 +5499,7 @@
                 }
             },
             "sbercloud_rds_pg_plugins": {
-                "current": "sbercloud:Rds/getPgPlugins:getPgPlugins",
+                "current": "cloudru:Rds/getPgPlugins:getPgPlugins",
                 "majorVersion": 1,
                 "fields": {
                     "plugins": {
@@ -5508,7 +5508,7 @@
                 }
             },
             "sbercloud_rds_pg_roles": {
-                "current": "sbercloud:Rds/getPgRoles:getPgRoles",
+                "current": "cloudru:Rds/getPgRoles:getPgRoles",
                 "majorVersion": 1,
                 "fields": {
                     "roles": {
@@ -5517,7 +5517,7 @@
                 }
             },
             "sbercloud_rds_pg_sql_limits": {
-                "current": "sbercloud:Rds/getPgSqlLimits:getPgSqlLimits",
+                "current": "cloudru:Rds/getPgSqlLimits:getPgSqlLimits",
                 "majorVersion": 1,
                 "fields": {
                     "sql_limits": {
@@ -5526,7 +5526,7 @@
                 }
             },
             "sbercloud_rds_storage_types": {
-                "current": "sbercloud:Rds/getStorageTypes:getStorageTypes",
+                "current": "cloudru:Rds/getStorageTypes:getStorageTypes",
                 "majorVersion": 1,
                 "fields": {
                     "storage_types": {
@@ -5542,15 +5542,15 @@
                 }
             },
             "sbercloud_sfs_file_system": {
-                "current": "sbercloud:Sfs/getFileSystem:getFileSystem",
+                "current": "cloudru:Sfs/getFileSystem:getFileSystem",
                 "majorVersion": 1
             },
             "sbercloud_sfs_file_system_v2": {
-                "current": "sbercloud:index/getSfsFileSystemV2:getSfsFileSystemV2",
+                "current": "cloudru:index/getSfsFileSystemV2:getSfsFileSystemV2",
                 "majorVersion": 1
             },
             "sbercloud_sfs_turbo_data_tasks": {
-                "current": "sbercloud:index/getSfsTurboDataTasks:getSfsTurboDataTasks",
+                "current": "cloudru:index/getSfsTurboDataTasks:getSfsTurboDataTasks",
                 "majorVersion": 1,
                 "fields": {
                     "tasks": {
@@ -5559,7 +5559,7 @@
                 }
             },
             "sbercloud_sfs_turbo_du_tasks": {
-                "current": "sbercloud:index/getSfsTurboDuTasks:getSfsTurboDuTasks",
+                "current": "cloudru:index/getSfsTurboDuTasks:getSfsTurboDuTasks",
                 "majorVersion": 1,
                 "fields": {
                     "tasks": {
@@ -5582,7 +5582,7 @@
                 }
             },
             "sbercloud_sfs_turbo_obs_targets": {
-                "current": "sbercloud:index/getSfsTurboObsTargets:getSfsTurboObsTargets",
+                "current": "cloudru:index/getSfsTurboObsTargets:getSfsTurboObsTargets",
                 "majorVersion": 1,
                 "fields": {
                     "targets": {
@@ -5598,7 +5598,7 @@
                 }
             },
             "sbercloud_sfs_turbo_perm_rules": {
-                "current": "sbercloud:index/getSfsTurboPermRules:getSfsTurboPermRules",
+                "current": "cloudru:index/getSfsTurboPermRules:getSfsTurboPermRules",
                 "majorVersion": 1,
                 "fields": {
                     "rules": {
@@ -5607,7 +5607,7 @@
                 }
             },
             "sbercloud_sfs_turbos": {
-                "current": "sbercloud:Sfs/getTurbos:getTurbos",
+                "current": "cloudru:Sfs/getTurbos:getTurbos",
                 "majorVersion": 1,
                 "fields": {
                     "turbos": {
@@ -5616,7 +5616,7 @@
                 }
             },
             "sbercloud_vpc": {
-                "current": "sbercloud:Vpc/getVpc:getVpc",
+                "current": "cloudru:Vpc/getVpc:getVpc",
                 "majorVersion": 1,
                 "fields": {
                     "routes": {
@@ -5628,7 +5628,7 @@
                 }
             },
             "sbercloud_vpc_address_groups": {
-                "current": "sbercloud:Vpc/getAddressGroups:getAddressGroups",
+                "current": "cloudru:Vpc/getAddressGroups:getAddressGroups",
                 "majorVersion": 1,
                 "fields": {
                     "address_groups": {
@@ -5647,7 +5647,7 @@
                 }
             },
             "sbercloud_vpc_bandwidth": {
-                "current": "sbercloud:Eip/getBandwidth:getBandwidth",
+                "current": "cloudru:Eip/getBandwidth:getBandwidth",
                 "majorVersion": 1,
                 "fields": {
                     "publicips": {
@@ -5656,11 +5656,11 @@
                 }
             },
             "sbercloud_vpc_eip": {
-                "current": "sbercloud:Eip/getEip:getEip",
+                "current": "cloudru:Eip/getEip:getEip",
                 "majorVersion": 1
             },
             "sbercloud_vpc_eips": {
-                "current": "sbercloud:Eip/getEips:getEips",
+                "current": "cloudru:Eip/getEips:getEips",
                 "majorVersion": 1,
                 "fields": {
                     "eips": {
@@ -5681,7 +5681,7 @@
                 }
             },
             "sbercloud_vpc_ids": {
-                "current": "sbercloud:Vpc/getIds:getIds",
+                "current": "cloudru:Vpc/getIds:getIds",
                 "majorVersion": 1,
                 "fields": {
                     "ids": {
@@ -5690,15 +5690,15 @@
                 }
             },
             "sbercloud_vpc_peering_connection": {
-                "current": "sbercloud:Vpc/getPeeringConnection:getPeeringConnection",
+                "current": "cloudru:Vpc/getPeeringConnection:getPeeringConnection",
                 "majorVersion": 1
             },
             "sbercloud_vpc_route": {
-                "current": "sbercloud:index/getVpcRoute:getVpcRoute",
+                "current": "cloudru:index/getVpcRoute:getVpcRoute",
                 "majorVersion": 1
             },
             "sbercloud_vpc_route_table": {
-                "current": "sbercloud:Vpc/getRouteTable:getRouteTable",
+                "current": "cloudru:Vpc/getRouteTable:getRouteTable",
                 "majorVersion": 1,
                 "fields": {
                     "route": {
@@ -5710,7 +5710,7 @@
                 }
             },
             "sbercloud_vpc_routes": {
-                "current": "sbercloud:Vpc/getRoutes:getRoutes",
+                "current": "cloudru:Vpc/getRoutes:getRoutes",
                 "majorVersion": 1,
                 "fields": {
                     "routes": {
@@ -5719,7 +5719,7 @@
                 }
             },
             "sbercloud_vpc_subnet": {
-                "current": "sbercloud:Vpc/getSubnet:getSubnet",
+                "current": "cloudru:Vpc/getSubnet:getSubnet",
                 "majorVersion": 1,
                 "fields": {
                     "dns_list": {
@@ -5728,7 +5728,7 @@
                 }
             },
             "sbercloud_vpc_subnet_ids": {
-                "current": "sbercloud:Vpc/getSubnetIds:getSubnetIds",
+                "current": "cloudru:Vpc/getSubnetIds:getSubnetIds",
                 "majorVersion": 1,
                 "fields": {
                     "ids": {
@@ -5737,7 +5737,7 @@
                 }
             },
             "sbercloud_vpc_subnets": {
-                "current": "sbercloud:Vpc/getSubnets:getSubnets",
+                "current": "cloudru:Vpc/getSubnets:getSubnets",
                 "majorVersion": 1,
                 "fields": {
                     "subnets": {
@@ -5753,7 +5753,7 @@
                 }
             },
             "sbercloud_vpcep_public_services": {
-                "current": "sbercloud:Vpcep/getPublicServices:getPublicServices",
+                "current": "cloudru:Vpcep/getPublicServices:getPublicServices",
                 "majorVersion": 1,
                 "fields": {
                     "services": {
@@ -5762,7 +5762,7 @@
                 }
             },
             "sbercloud_vpcs": {
-                "current": "sbercloud:Vpc/getVpcs:getVpcs",
+                "current": "cloudru:Vpc/getVpcs:getVpcs",
                 "majorVersion": 1,
                 "fields": {
                     "vpcs": {
@@ -5778,7 +5778,7 @@
                 }
             },
             "sbercloud_vpn_connection_health_checks": {
-                "current": "sbercloud:index/getVpnConnectionHealthChecks:getVpnConnectionHealthChecks",
+                "current": "cloudru:index/getVpnConnectionHealthChecks:getVpnConnectionHealthChecks",
                 "majorVersion": 1,
                 "fields": {
                     "connection_health_checks": {
@@ -5787,7 +5787,7 @@
                 }
             },
             "sbercloud_vpn_connections": {
-                "current": "sbercloud:index/getVpnConnections:getVpnConnections",
+                "current": "cloudru:index/getVpnConnections:getVpnConnections",
                 "majorVersion": 1,
                 "fields": {
                     "connections": {
@@ -5826,7 +5826,7 @@
                 }
             },
             "sbercloud_vpn_customer_gateways": {
-                "current": "sbercloud:index/getVpnCustomerGateways:getVpnCustomerGateways",
+                "current": "cloudru:index/getVpnCustomerGateways:getVpnCustomerGateways",
                 "majorVersion": 1,
                 "fields": {
                     "customer_gateways": {
@@ -5842,7 +5842,7 @@
                 }
             },
             "sbercloud_vpn_gateway_availability_zones": {
-                "current": "sbercloud:index/getVpnGatewayAvailabilityZones:getVpnGatewayAvailabilityZones",
+                "current": "cloudru:index/getVpnGatewayAvailabilityZones:getVpnGatewayAvailabilityZones",
                 "majorVersion": 1,
                 "fields": {
                     "names": {
@@ -5851,7 +5851,7 @@
                 }
             },
             "sbercloud_vpn_gateways": {
-                "current": "sbercloud:index/getVpnGateways:getVpnGateways",
+                "current": "cloudru:index/getVpnGateways:getVpnGateways",
                 "majorVersion": 1,
                 "fields": {
                     "gateways": {

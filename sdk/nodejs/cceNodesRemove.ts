@@ -21,7 +21,7 @@ export class CceNodesRemove extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/cceNodesRemove:CceNodesRemove';
+    public static readonly __pulumiType = 'cloudru:index/cceNodesRemove:CceNodesRemove';
 
     /**
      * Returns true if the given object is an instance of CceNodesRemove.  This is designed to work even

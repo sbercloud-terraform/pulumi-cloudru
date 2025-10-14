@@ -50,7 +50,7 @@ func NewApigApiCheck(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApigApiCheck
-	err := ctx.RegisterResource("sbercloud:index/apigApiCheck:ApigApiCheck", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/apigApiCheck:ApigApiCheck", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -62,7 +62,7 @@ func NewApigApiCheck(ctx *pulumi.Context,
 func GetApigApiCheck(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ApigApiCheckState, opts ...pulumi.ResourceOption) (*ApigApiCheck, error) {
 	var resource ApigApiCheck
-	err := ctx.ReadResource("sbercloud:index/apigApiCheck:ApigApiCheck", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/apigApiCheck:ApigApiCheck", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

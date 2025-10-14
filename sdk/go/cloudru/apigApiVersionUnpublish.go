@@ -39,7 +39,7 @@ func NewApigApiVersionUnpublish(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApigApiVersionUnpublish
-	err := ctx.RegisterResource("sbercloud:index/apigApiVersionUnpublish:ApigApiVersionUnpublish", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/apigApiVersionUnpublish:ApigApiVersionUnpublish", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func NewApigApiVersionUnpublish(ctx *pulumi.Context,
 func GetApigApiVersionUnpublish(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ApigApiVersionUnpublishState, opts ...pulumi.ResourceOption) (*ApigApiVersionUnpublish, error) {
 	var resource ApigApiVersionUnpublish
-	err := ctx.ReadResource("sbercloud:index/apigApiVersionUnpublish:ApigApiVersionUnpublish", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/apigApiVersionUnpublish:ApigApiVersionUnpublish", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

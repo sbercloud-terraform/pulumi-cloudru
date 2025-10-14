@@ -152,7 +152,7 @@ class _KpsKeypairAssociateState:
         pulumi.set(self, "server", value)
 
 
-@pulumi.type_token("sbercloud:index/kpsKeypairAssociate:KpsKeypairAssociate")
+@pulumi.type_token("cloudru:index/kpsKeypairAssociate:KpsKeypairAssociate")
 class KpsKeypairAssociate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -216,7 +216,7 @@ class KpsKeypairAssociate(pulumi.CustomResource):
                 raise TypeError("Missing required property 'server'")
             __props__.__dict__["server"] = server
         super(KpsKeypairAssociate, __self__).__init__(
-            'sbercloud:index/kpsKeypairAssociate:KpsKeypairAssociate',
+            'cloudru:index/kpsKeypairAssociate:KpsKeypairAssociate',
             resource_name,
             __props__,
             opts)

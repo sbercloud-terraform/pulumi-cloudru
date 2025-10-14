@@ -186,7 +186,7 @@ def get_dns_zones(enterprise_project_id: Optional[_builtins.str] = None,
     __args__['zoneId'] = zone_id
     __args__['zoneType'] = zone_type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('sbercloud:index/getDnsZones:getDnsZones', __args__, opts=opts, typ=GetDnsZonesResult).value
+    __ret__ = pulumi.runtime.invoke('cloudru:index/getDnsZones:getDnsZones', __args__, opts=opts, typ=GetDnsZonesResult).value
 
     return AwaitableGetDnsZonesResult(
         enterprise_project_id=pulumi.get(__ret__, 'enterprise_project_id'),
@@ -230,7 +230,7 @@ def get_dns_zones_output(enterprise_project_id: Optional[pulumi.Input[Optional[_
     __args__['zoneId'] = zone_id
     __args__['zoneType'] = zone_type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('sbercloud:index/getDnsZones:getDnsZones', __args__, opts=opts, typ=GetDnsZonesResult)
+    __ret__ = pulumi.runtime.invoke_output('cloudru:index/getDnsZones:getDnsZones', __args__, opts=opts, typ=GetDnsZonesResult)
     return __ret__.apply(lambda __response__: GetDnsZonesResult(
         enterprise_project_id=pulumi.get(__response__, 'enterprise_project_id'),
         id=pulumi.get(__response__, 'id'),

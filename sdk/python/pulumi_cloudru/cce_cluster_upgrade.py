@@ -295,7 +295,7 @@ class _CceClusterUpgradeState:
         pulumi.set(self, "target_version", value)
 
 
-@pulumi.type_token("sbercloud:index/cceClusterUpgrade:CceClusterUpgrade")
+@pulumi.type_token("cloudru:index/cceClusterUpgrade:CceClusterUpgrade")
 class CceClusterUpgrade(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -379,7 +379,7 @@ class CceClusterUpgrade(pulumi.CustomResource):
                 raise TypeError("Missing required property 'target_version'")
             __props__.__dict__["target_version"] = target_version
         super(CceClusterUpgrade, __self__).__init__(
-            'sbercloud:index/cceClusterUpgrade:CceClusterUpgrade',
+            'cloudru:index/cceClusterUpgrade:CceClusterUpgrade',
             resource_name,
             __props__,
             opts)

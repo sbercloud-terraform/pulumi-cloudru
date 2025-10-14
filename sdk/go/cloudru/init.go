@@ -21,197 +21,197 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "sbercloud:index/apigAclPolicy:ApigAclPolicy":
+	case "cloudru:index/apigAclPolicy:ApigAclPolicy":
 		r = &ApigAclPolicy{}
-	case "sbercloud:index/apigAclPolicyAssociate:ApigAclPolicyAssociate":
+	case "cloudru:index/apigAclPolicyAssociate:ApigAclPolicyAssociate":
 		r = &ApigAclPolicyAssociate{}
-	case "sbercloud:index/apigApiAction:ApigApiAction":
+	case "cloudru:index/apigApiAction:ApigApiAction":
 		r = &ApigApiAction{}
-	case "sbercloud:index/apigApiBatchAction:ApigApiBatchAction":
+	case "cloudru:index/apigApiBatchAction:ApigApiBatchAction":
 		r = &ApigApiBatchAction{}
-	case "sbercloud:index/apigApiCheck:ApigApiCheck":
+	case "cloudru:index/apigApiCheck:ApigApiCheck":
 		r = &ApigApiCheck{}
-	case "sbercloud:index/apigApiDebug:ApigApiDebug":
+	case "cloudru:index/apigApiDebug:ApigApiDebug":
 		r = &ApigApiDebug{}
-	case "sbercloud:index/apigApiVersionUnpublish:ApigApiVersionUnpublish":
+	case "cloudru:index/apigApiVersionUnpublish:ApigApiVersionUnpublish":
 		r = &ApigApiVersionUnpublish{}
-	case "sbercloud:index/apigAppcode:ApigAppcode":
+	case "cloudru:index/apigAppcode:ApigAppcode":
 		r = &ApigAppcode{}
-	case "sbercloud:index/apigApplicationAcl:ApigApplicationAcl":
+	case "cloudru:index/apigApplicationAcl:ApigApplicationAcl":
 		r = &ApigApplicationAcl{}
-	case "sbercloud:index/apigApplicationAuthorization:ApigApplicationAuthorization":
+	case "cloudru:index/apigApplicationAuthorization:ApigApplicationAuthorization":
 		r = &ApigApplicationAuthorization{}
-	case "sbercloud:index/apigApplicationQuota:ApigApplicationQuota":
+	case "cloudru:index/apigApplicationQuota:ApigApplicationQuota":
 		r = &ApigApplicationQuota{}
-	case "sbercloud:index/apigApplicationQuotaAssociate:ApigApplicationQuotaAssociate":
+	case "cloudru:index/apigApplicationQuotaAssociate:ApigApplicationQuotaAssociate":
 		r = &ApigApplicationQuotaAssociate{}
-	case "sbercloud:index/apigCertificate:ApigCertificate":
+	case "cloudru:index/apigCertificate:ApigCertificate":
 		r = &ApigCertificate{}
-	case "sbercloud:index/apigChannel:ApigChannel":
+	case "cloudru:index/apigChannel:ApigChannel":
 		r = &ApigChannel{}
-	case "sbercloud:index/apigEndpointConnectionManagement:ApigEndpointConnectionManagement":
+	case "cloudru:index/apigEndpointConnectionManagement:ApigEndpointConnectionManagement":
 		r = &ApigEndpointConnectionManagement{}
-	case "sbercloud:index/apigEndpointWhitelist:ApigEndpointWhitelist":
+	case "cloudru:index/apigEndpointWhitelist:ApigEndpointWhitelist":
 		r = &ApigEndpointWhitelist{}
-	case "sbercloud:index/apigEnvironmentVariable:ApigEnvironmentVariable":
+	case "cloudru:index/apigEnvironmentVariable:ApigEnvironmentVariable":
 		r = &ApigEnvironmentVariable{}
-	case "sbercloud:index/apigInstanceFeature:ApigInstanceFeature":
+	case "cloudru:index/apigInstanceFeature:ApigInstanceFeature":
 		r = &ApigInstanceFeature{}
-	case "sbercloud:index/apigInstanceRoutes:ApigInstanceRoutes":
+	case "cloudru:index/apigInstanceRoutes:ApigInstanceRoutes":
 		r = &ApigInstanceRoutes{}
-	case "sbercloud:index/apigPlugin:ApigPlugin":
+	case "cloudru:index/apigPlugin:ApigPlugin":
 		r = &ApigPlugin{}
-	case "sbercloud:index/apigPluginAssociate:ApigPluginAssociate":
+	case "cloudru:index/apigPluginAssociate:ApigPluginAssociate":
 		r = &ApigPluginAssociate{}
-	case "sbercloud:index/apigPluginBatchApisAssociate:ApigPluginBatchApisAssociate":
+	case "cloudru:index/apigPluginBatchApisAssociate:ApigPluginBatchApisAssociate":
 		r = &ApigPluginBatchApisAssociate{}
-	case "sbercloud:index/apigSignature:ApigSignature":
+	case "cloudru:index/apigSignature:ApigSignature":
 		r = &ApigSignature{}
-	case "sbercloud:index/apigSignatureAssociate:ApigSignatureAssociate":
+	case "cloudru:index/apigSignatureAssociate:ApigSignatureAssociate":
 		r = &ApigSignatureAssociate{}
-	case "sbercloud:index/cbhAssetAgencyAuthorization:CbhAssetAgencyAuthorization":
+	case "cloudru:index/cbhAssetAgencyAuthorization:CbhAssetAgencyAuthorization":
 		r = &CbhAssetAgencyAuthorization{}
-	case "sbercloud:index/cbhHaInstance:CbhHaInstance":
+	case "cloudru:index/cbhHaInstance:CbhHaInstance":
 		r = &CbhHaInstance{}
-	case "sbercloud:index/cbhInstance:CbhInstance":
+	case "cloudru:index/cbhInstance:CbhInstance":
 		r = &CbhInstance{}
-	case "sbercloud:index/cbrBackupShare:CbrBackupShare":
+	case "cloudru:index/cbrBackupShare:CbrBackupShare":
 		r = &CbrBackupShare{}
-	case "sbercloud:index/cbrBackupShareAccepter:CbrBackupShareAccepter":
+	case "cloudru:index/cbrBackupShareAccepter:CbrBackupShareAccepter":
 		r = &CbrBackupShareAccepter{}
-	case "sbercloud:index/cbrCheckpoint:CbrCheckpoint":
+	case "cloudru:index/cbrCheckpoint:CbrCheckpoint":
 		r = &CbrCheckpoint{}
-	case "sbercloud:index/cceClusterUpgrade:CceClusterUpgrade":
+	case "cloudru:index/cceClusterUpgrade:CceClusterUpgrade":
 		r = &CceClusterUpgrade{}
-	case "sbercloud:index/cceNodesRemove:CceNodesRemove":
+	case "cloudru:index/cceNodesRemove:CceNodesRemove":
 		r = &CceNodesRemove{}
-	case "sbercloud:index/cssConfiguration:CssConfiguration":
+	case "cloudru:index/cssConfiguration:CssConfiguration":
 		r = &CssConfiguration{}
-	case "sbercloud:index/dcsAccount:DcsAccount":
+	case "cloudru:index/dcsAccount:DcsAccount":
 		r = &DcsAccount{}
-	case "sbercloud:index/dcsBackup:DcsBackup":
+	case "cloudru:index/dcsBackup:DcsBackup":
 		r = &DcsBackup{}
-	case "sbercloud:index/dcsParameters:DcsParameters":
+	case "cloudru:index/dcsParameters:DcsParameters":
 		r = &DcsParameters{}
-	case "sbercloud:index/dcsRestore:DcsRestore":
+	case "cloudru:index/dcsRestore:DcsRestore":
 		r = &DcsRestore{}
-	case "sbercloud:index/ddsParameterTemplate:DdsParameterTemplate":
+	case "cloudru:index/ddsParameterTemplate:DdsParameterTemplate":
 		r = &DdsParameterTemplate{}
-	case "sbercloud:index/ddsParameterTemplateApply:DdsParameterTemplateApply":
+	case "cloudru:index/ddsParameterTemplateApply:DdsParameterTemplateApply":
 		r = &DdsParameterTemplateApply{}
-	case "sbercloud:index/ddsParameterTemplateCompare:DdsParameterTemplateCompare":
+	case "cloudru:index/ddsParameterTemplateCompare:DdsParameterTemplateCompare":
 		r = &DdsParameterTemplateCompare{}
-	case "sbercloud:index/ddsParameterTemplateCopy:DdsParameterTemplateCopy":
+	case "cloudru:index/ddsParameterTemplateCopy:DdsParameterTemplateCopy":
 		r = &DdsParameterTemplateCopy{}
-	case "sbercloud:index/ddsParameterTemplateReset:DdsParameterTemplateReset":
+	case "cloudru:index/ddsParameterTemplateReset:DdsParameterTemplateReset":
 		r = &DdsParameterTemplateReset{}
-	case "sbercloud:index/dmsInstance:DmsInstance":
+	case "cloudru:index/dmsInstance:DmsInstance":
 		r = &DmsInstance{}
-	case "sbercloud:index/dmsKafkaConsumerGroup:DmsKafkaConsumerGroup":
+	case "cloudru:index/dmsKafkaConsumerGroup:DmsKafkaConsumerGroup":
 		r = &DmsKafkaConsumerGroup{}
-	case "sbercloud:index/dmsKafkaMessageProduce:DmsKafkaMessageProduce":
+	case "cloudru:index/dmsKafkaMessageProduce:DmsKafkaMessageProduce":
 		r = &DmsKafkaMessageProduce{}
-	case "sbercloud:index/dmsRocketmqConsumerGroup:DmsRocketmqConsumerGroup":
+	case "cloudru:index/dmsRocketmqConsumerGroup:DmsRocketmqConsumerGroup":
 		r = &DmsRocketmqConsumerGroup{}
-	case "sbercloud:index/dmsRocketmqConsumptionVerify:DmsRocketmqConsumptionVerify":
+	case "cloudru:index/dmsRocketmqConsumptionVerify:DmsRocketmqConsumptionVerify":
 		r = &DmsRocketmqConsumptionVerify{}
-	case "sbercloud:index/dmsRocketmqDeadLetterResend:DmsRocketmqDeadLetterResend":
+	case "cloudru:index/dmsRocketmqDeadLetterResend:DmsRocketmqDeadLetterResend":
 		r = &DmsRocketmqDeadLetterResend{}
-	case "sbercloud:index/dmsRocketmqInstance:DmsRocketmqInstance":
+	case "cloudru:index/dmsRocketmqInstance:DmsRocketmqInstance":
 		r = &DmsRocketmqInstance{}
-	case "sbercloud:index/dmsRocketmqMessageOffsetReset:DmsRocketmqMessageOffsetReset":
+	case "cloudru:index/dmsRocketmqMessageOffsetReset:DmsRocketmqMessageOffsetReset":
 		r = &DmsRocketmqMessageOffsetReset{}
-	case "sbercloud:index/dmsRocketmqMigrationTask:DmsRocketmqMigrationTask":
+	case "cloudru:index/dmsRocketmqMigrationTask:DmsRocketmqMigrationTask":
 		r = &DmsRocketmqMigrationTask{}
-	case "sbercloud:index/dmsRocketmqTopic:DmsRocketmqTopic":
+	case "cloudru:index/dmsRocketmqTopic:DmsRocketmqTopic":
 		r = &DmsRocketmqTopic{}
-	case "sbercloud:index/dmsRocketmqUser:DmsRocketmqUser":
+	case "cloudru:index/dmsRocketmqUser:DmsRocketmqUser":
 		r = &DmsRocketmqUser{}
-	case "sbercloud:index/elbCertificate:ElbCertificate":
+	case "cloudru:index/elbCertificate:ElbCertificate":
 		r = &ElbCertificate{}
-	case "sbercloud:index/elbIpgroup:ElbIpgroup":
+	case "cloudru:index/elbIpgroup:ElbIpgroup":
 		r = &ElbIpgroup{}
-	case "sbercloud:index/elbL7policy:ElbL7policy":
+	case "cloudru:index/elbL7policy:ElbL7policy":
 		r = &ElbL7policy{}
-	case "sbercloud:index/elbL7rule:ElbL7rule":
+	case "cloudru:index/elbL7rule:ElbL7rule":
 		r = &ElbL7rule{}
-	case "sbercloud:index/elbListener:ElbListener":
+	case "cloudru:index/elbListener:ElbListener":
 		r = &ElbListener{}
-	case "sbercloud:index/elbLoadbalancer:ElbLoadbalancer":
+	case "cloudru:index/elbLoadbalancer:ElbLoadbalancer":
 		r = &ElbLoadbalancer{}
-	case "sbercloud:index/elbMember:ElbMember":
+	case "cloudru:index/elbMember:ElbMember":
 		r = &ElbMember{}
-	case "sbercloud:index/elbMonitor:ElbMonitor":
+	case "cloudru:index/elbMonitor:ElbMonitor":
 		r = &ElbMonitor{}
-	case "sbercloud:index/elbPool:ElbPool":
+	case "cloudru:index/elbPool:ElbPool":
 		r = &ElbPool{}
-	case "sbercloud:index/elbSecurityPolicy:ElbSecurityPolicy":
+	case "cloudru:index/elbSecurityPolicy:ElbSecurityPolicy":
 		r = &ElbSecurityPolicy{}
-	case "sbercloud:index/fgsApplication:FgsApplication":
+	case "cloudru:index/fgsApplication:FgsApplication":
 		r = &FgsApplication{}
-	case "sbercloud:index/fgsAsyncInvokeConfiguration:FgsAsyncInvokeConfiguration":
+	case "cloudru:index/fgsAsyncInvokeConfiguration:FgsAsyncInvokeConfiguration":
 		r = &FgsAsyncInvokeConfiguration{}
-	case "sbercloud:index/fgsDependencyVersion:FgsDependencyVersion":
+	case "cloudru:index/fgsDependencyVersion:FgsDependencyVersion":
 		r = &FgsDependencyVersion{}
-	case "sbercloud:index/fgsFunctionEvent:FgsFunctionEvent":
+	case "cloudru:index/fgsFunctionEvent:FgsFunctionEvent":
 		r = &FgsFunctionEvent{}
-	case "sbercloud:index/fgsFunctionTopping:FgsFunctionTopping":
+	case "cloudru:index/fgsFunctionTopping:FgsFunctionTopping":
 		r = &FgsFunctionTopping{}
-	case "sbercloud:index/fgsFunctionTrigger:FgsFunctionTrigger":
+	case "cloudru:index/fgsFunctionTrigger:FgsFunctionTrigger":
 		r = &FgsFunctionTrigger{}
-	case "sbercloud:index/fgsFunctionTriggerStatusAction:FgsFunctionTriggerStatusAction":
+	case "cloudru:index/fgsFunctionTriggerStatusAction:FgsFunctionTriggerStatusAction":
 		r = &FgsFunctionTriggerStatusAction{}
-	case "sbercloud:index/fgsLtsLogEnable:FgsLtsLogEnable":
+	case "cloudru:index/fgsLtsLogEnable:FgsLtsLogEnable":
 		r = &FgsLtsLogEnable{}
-	case "sbercloud:index/gesGraph:GesGraph":
+	case "cloudru:index/gesGraph:GesGraph":
 		r = &GesGraph{}
-	case "sbercloud:index/identityGroupMembershipV3:IdentityGroupMembershipV3":
+	case "cloudru:index/identityGroupMembershipV3:IdentityGroupMembershipV3":
 		r = &IdentityGroupMembershipV3{}
-	case "sbercloud:index/identityGroupV3:IdentityGroupV3":
+	case "cloudru:index/identityGroupV3:IdentityGroupV3":
 		r = &IdentityGroupV3{}
-	case "sbercloud:index/identityRoleAssignmentV3:IdentityRoleAssignmentV3":
+	case "cloudru:index/identityRoleAssignmentV3:IdentityRoleAssignmentV3":
 		r = &IdentityRoleAssignmentV3{}
-	case "sbercloud:index/identityUserV3:IdentityUserV3":
+	case "cloudru:index/identityUserV3:IdentityUserV3":
 		r = &IdentityUserV3{}
-	case "sbercloud:index/kpsKeypairAssociate:KpsKeypairAssociate":
+	case "cloudru:index/kpsKeypairAssociate:KpsKeypairAssociate":
 		r = &KpsKeypairAssociate{}
-	case "sbercloud:index/kpsKeypairDisassociate:KpsKeypairDisassociate":
+	case "cloudru:index/kpsKeypairDisassociate:KpsKeypairDisassociate":
 		r = &KpsKeypairDisassociate{}
-	case "sbercloud:index/networkingEipAssociate:NetworkingEipAssociate":
+	case "cloudru:index/networkingEipAssociate:NetworkingEipAssociate":
 		r = &NetworkingEipAssociate{}
-	case "sbercloud:index/obsBucketAcl:ObsBucketAcl":
+	case "cloudru:index/obsBucketAcl:ObsBucketAcl":
 		r = &ObsBucketAcl{}
-	case "sbercloud:index/sfsTurboDataTask:SfsTurboDataTask":
+	case "cloudru:index/sfsTurboDataTask:SfsTurboDataTask":
 		r = &SfsTurboDataTask{}
-	case "sbercloud:index/sfsTurboDir:SfsTurboDir":
+	case "cloudru:index/sfsTurboDir:SfsTurboDir":
 		r = &SfsTurboDir{}
-	case "sbercloud:index/sfsTurboDirQuota:SfsTurboDirQuota":
+	case "cloudru:index/sfsTurboDirQuota:SfsTurboDirQuota":
 		r = &SfsTurboDirQuota{}
-	case "sbercloud:index/sfsTurboDuTask:SfsTurboDuTask":
+	case "cloudru:index/sfsTurboDuTask:SfsTurboDuTask":
 		r = &SfsTurboDuTask{}
-	case "sbercloud:index/sfsTurboObsTarget:SfsTurboObsTarget":
+	case "cloudru:index/sfsTurboObsTarget:SfsTurboObsTarget":
 		r = &SfsTurboObsTarget{}
-	case "sbercloud:index/sfsTurboPermRule:SfsTurboPermRule":
+	case "cloudru:index/sfsTurboPermRule:SfsTurboPermRule":
 		r = &SfsTurboPermRule{}
-	case "sbercloud:index/smnMessageDetection:SmnMessageDetection":
+	case "cloudru:index/smnMessageDetection:SmnMessageDetection":
 		r = &SmnMessageDetection{}
-	case "sbercloud:index/smnSubscription:SmnSubscription":
+	case "cloudru:index/smnSubscription:SmnSubscription":
 		r = &SmnSubscription{}
-	case "sbercloud:index/smnTopic:SmnTopic":
+	case "cloudru:index/smnTopic:SmnTopic":
 		r = &SmnTopic{}
-	case "sbercloud:index/swrOrganization:SwrOrganization":
+	case "cloudru:index/swrOrganization:SwrOrganization":
 		r = &SwrOrganization{}
-	case "sbercloud:index/swrOrganizationPermissions:SwrOrganizationPermissions":
+	case "cloudru:index/swrOrganizationPermissions:SwrOrganizationPermissions":
 		r = &SwrOrganizationPermissions{}
-	case "sbercloud:index/swrRepository:SwrRepository":
+	case "cloudru:index/swrRepository:SwrRepository":
 		r = &SwrRepository{}
-	case "sbercloud:index/vpnConnection:VpnConnection":
+	case "cloudru:index/vpnConnection:VpnConnection":
 		r = &VpnConnection{}
-	case "sbercloud:index/vpnConnectionHealthCheck:VpnConnectionHealthCheck":
+	case "cloudru:index/vpnConnectionHealthCheck:VpnConnectionHealthCheck":
 		r = &VpnConnectionHealthCheck{}
-	case "sbercloud:index/vpnCustomerGateway:VpnCustomerGateway":
+	case "cloudru:index/vpnCustomerGateway:VpnCustomerGateway":
 		r = &VpnCustomerGateway{}
-	case "sbercloud:index/vpnGateway:VpnGateway":
+	case "cloudru:index/vpnGateway:VpnGateway":
 		r = &VpnGateway{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
@@ -230,7 +230,7 @@ func (p *pkg) Version() semver.Version {
 }
 
 func (p *pkg) ConstructProvider(ctx *pulumi.Context, name, typ, urn string) (pulumi.ProviderResource, error) {
-	if typ != "pulumi:providers:sbercloud" {
+	if typ != "pulumi:providers:cloudru" {
 		return nil, fmt.Errorf("unknown provider type: %s", typ)
 	}
 
@@ -245,487 +245,487 @@ func init() {
 		version = semver.Version{Major: 1}
 	}
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/apigAclPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/apigAclPolicyAssociate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/apigApiAction",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/apigApiBatchAction",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/apigApiCheck",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/apigApiDebug",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/apigApiVersionUnpublish",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/apigAppcode",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/apigApplicationAcl",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/apigApplicationAuthorization",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/apigApplicationQuota",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/apigApplicationQuotaAssociate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/apigCertificate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/apigChannel",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/apigEndpointConnectionManagement",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/apigEndpointWhitelist",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/apigEnvironmentVariable",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/apigInstanceFeature",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/apigInstanceRoutes",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/apigPlugin",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/apigPluginAssociate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/apigPluginBatchApisAssociate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/apigSignature",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/apigSignatureAssociate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/cbhAssetAgencyAuthorization",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/cbhHaInstance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/cbhInstance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/cbrBackupShare",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/cbrBackupShareAccepter",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/cbrCheckpoint",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/cceClusterUpgrade",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/cceNodesRemove",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/cssConfiguration",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/dcsAccount",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/dcsBackup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/dcsParameters",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/dcsRestore",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/ddsParameterTemplate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/ddsParameterTemplateApply",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/ddsParameterTemplateCompare",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/ddsParameterTemplateCopy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/ddsParameterTemplateReset",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/dmsInstance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/dmsKafkaConsumerGroup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/dmsKafkaMessageProduce",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/dmsRocketmqConsumerGroup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/dmsRocketmqConsumptionVerify",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/dmsRocketmqDeadLetterResend",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/dmsRocketmqInstance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/dmsRocketmqMessageOffsetReset",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/dmsRocketmqMigrationTask",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/dmsRocketmqTopic",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/dmsRocketmqUser",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/elbCertificate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/elbIpgroup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/elbL7policy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/elbL7rule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/elbListener",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/elbLoadbalancer",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/elbMember",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/elbMonitor",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/elbPool",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/elbSecurityPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/fgsApplication",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/fgsAsyncInvokeConfiguration",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/fgsDependencyVersion",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/fgsFunctionEvent",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/fgsFunctionTopping",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/fgsFunctionTrigger",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/fgsFunctionTriggerStatusAction",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/fgsLtsLogEnable",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/gesGraph",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/identityGroupMembershipV3",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/identityGroupV3",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/identityRoleAssignmentV3",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/identityUserV3",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/kpsKeypairAssociate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/kpsKeypairDisassociate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/networkingEipAssociate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/obsBucketAcl",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/sfsTurboDataTask",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/sfsTurboDir",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/sfsTurboDirQuota",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/sfsTurboDuTask",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/sfsTurboObsTarget",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/sfsTurboPermRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/smnMessageDetection",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/smnSubscription",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/smnTopic",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/swrOrganization",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/swrOrganizationPermissions",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/swrRepository",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/vpnConnection",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/vpnConnectionHealthCheck",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/vpnCustomerGateway",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
-		"sbercloud",
+		"cloudru",
 		"index/vpnGateway",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(
-		"sbercloud",
+		"cloudru",
 		&pkg{version},
 	)
 }

@@ -19,7 +19,7 @@ export class ApigPluginBatchApisAssociate extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/apigPluginBatchApisAssociate:ApigPluginBatchApisAssociate';
+    public static readonly __pulumiType = 'cloudru:index/apigPluginBatchApisAssociate:ApigPluginBatchApisAssociate';
 
     /**
      * Returns true if the given object is an instance of ApigPluginBatchApisAssociate.  This is designed to work even

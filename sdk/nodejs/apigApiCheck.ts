@@ -19,7 +19,7 @@ export class ApigApiCheck extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/apigApiCheck:ApigApiCheck';
+    public static readonly __pulumiType = 'cloudru:index/apigApiCheck:ApigApiCheck';
 
     /**
      * Returns true if the given object is an instance of ApigApiCheck.  This is designed to work even

@@ -39,7 +39,7 @@ func NewKpsKeypairAssociate(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource KpsKeypairAssociate
-	err := ctx.RegisterResource("sbercloud:index/kpsKeypairAssociate:KpsKeypairAssociate", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/kpsKeypairAssociate:KpsKeypairAssociate", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func NewKpsKeypairAssociate(ctx *pulumi.Context,
 func GetKpsKeypairAssociate(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *KpsKeypairAssociateState, opts ...pulumi.ResourceOption) (*KpsKeypairAssociate, error) {
 	var resource KpsKeypairAssociate
-	err := ctx.ReadResource("sbercloud:index/kpsKeypairAssociate:KpsKeypairAssociate", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/kpsKeypairAssociate:KpsKeypairAssociate", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

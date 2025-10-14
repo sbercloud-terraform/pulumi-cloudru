@@ -51,7 +51,7 @@ func NewApigPluginBatchApisAssociate(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApigPluginBatchApisAssociate
-	err := ctx.RegisterResource("sbercloud:index/apigPluginBatchApisAssociate:ApigPluginBatchApisAssociate", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/apigPluginBatchApisAssociate:ApigPluginBatchApisAssociate", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -63,7 +63,7 @@ func NewApigPluginBatchApisAssociate(ctx *pulumi.Context,
 func GetApigPluginBatchApisAssociate(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ApigPluginBatchApisAssociateState, opts ...pulumi.ResourceOption) (*ApigPluginBatchApisAssociate, error) {
 	var resource ApigPluginBatchApisAssociate
-	err := ctx.ReadResource("sbercloud:index/apigPluginBatchApisAssociate:ApigPluginBatchApisAssociate", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/apigPluginBatchApisAssociate:ApigPluginBatchApisAssociate", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

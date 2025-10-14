@@ -59,7 +59,7 @@ func NewApigApiAction(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApigApiAction
-	err := ctx.RegisterResource("sbercloud:index/apigApiAction:ApigApiAction", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/apigApiAction:ApigApiAction", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -71,7 +71,7 @@ func NewApigApiAction(ctx *pulumi.Context,
 func GetApigApiAction(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ApigApiActionState, opts ...pulumi.ResourceOption) (*ApigApiAction, error) {
 	var resource ApigApiAction
-	err := ctx.ReadResource("sbercloud:index/apigApiAction:ApigApiAction", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/apigApiAction:ApigApiAction", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

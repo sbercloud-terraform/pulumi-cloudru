@@ -121,7 +121,7 @@ class _KpsKeypairDisassociateState:
         pulumi.set(self, "server", value)
 
 
-@pulumi.type_token("sbercloud:index/kpsKeypairDisassociate:KpsKeypairDisassociate")
+@pulumi.type_token("cloudru:index/kpsKeypairDisassociate:KpsKeypairDisassociate")
 class KpsKeypairDisassociate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -179,7 +179,7 @@ class KpsKeypairDisassociate(pulumi.CustomResource):
                 raise TypeError("Missing required property 'server'")
             __props__.__dict__["server"] = server
         super(KpsKeypairDisassociate, __self__).__init__(
-            'sbercloud:index/kpsKeypairDisassociate:KpsKeypairDisassociate',
+            'cloudru:index/kpsKeypairDisassociate:KpsKeypairDisassociate',
             resource_name,
             __props__,
             opts)

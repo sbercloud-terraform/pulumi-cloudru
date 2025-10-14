@@ -128,7 +128,7 @@ class _CceNodesRemoveState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:index/cceNodesRemove:CceNodesRemove")
+@pulumi.type_token("cloudru:index/cceNodesRemove:CceNodesRemove")
 class CceNodesRemove(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -189,7 +189,7 @@ class CceNodesRemove(pulumi.CustomResource):
             __props__.__dict__["nodes"] = nodes
             __props__.__dict__["region"] = region
         super(CceNodesRemove, __self__).__init__(
-            'sbercloud:index/cceNodesRemove:CceNodesRemove',
+            'cloudru:index/cceNodesRemove:CceNodesRemove',
             resource_name,
             __props__,
             opts)

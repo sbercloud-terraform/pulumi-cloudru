@@ -21,7 +21,7 @@ export class CceClusterUpgrade extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/cceClusterUpgrade:CceClusterUpgrade';
+    public static readonly __pulumiType = 'cloudru:index/cceClusterUpgrade:CceClusterUpgrade';
 
     /**
      * Returns true if the given object is an instance of CceClusterUpgrade.  This is designed to work even

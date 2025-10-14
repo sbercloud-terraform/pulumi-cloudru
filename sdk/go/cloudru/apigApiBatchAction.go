@@ -50,7 +50,7 @@ func NewApigApiBatchAction(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApigApiBatchAction
-	err := ctx.RegisterResource("sbercloud:index/apigApiBatchAction:ApigApiBatchAction", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/apigApiBatchAction:ApigApiBatchAction", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -62,7 +62,7 @@ func NewApigApiBatchAction(ctx *pulumi.Context,
 func GetApigApiBatchAction(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ApigApiBatchActionState, opts ...pulumi.ResourceOption) (*ApigApiBatchAction, error) {
 	var resource ApigApiBatchAction
-	err := ctx.ReadResource("sbercloud:index/apigApiBatchAction:ApigApiBatchAction", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/apigApiBatchAction:ApigApiBatchAction", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

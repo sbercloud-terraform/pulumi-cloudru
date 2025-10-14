@@ -150,7 +150,7 @@ class _ApigApiVersionUnpublishState:
         pulumi.set(self, "version_id", value)
 
 
-@pulumi.type_token("sbercloud:index/apigApiVersionUnpublish:ApigApiVersionUnpublish")
+@pulumi.type_token("cloudru:index/apigApiVersionUnpublish:ApigApiVersionUnpublish")
 class ApigApiVersionUnpublish(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -214,7 +214,7 @@ class ApigApiVersionUnpublish(pulumi.CustomResource):
                 raise TypeError("Missing required property 'version_id'")
             __props__.__dict__["version_id"] = version_id
         super(ApigApiVersionUnpublish, __self__).__init__(
-            'sbercloud:index/apigApiVersionUnpublish:ApigApiVersionUnpublish',
+            'cloudru:index/apigApiVersionUnpublish:ApigApiVersionUnpublish',
             resource_name,
             __props__,
             opts)

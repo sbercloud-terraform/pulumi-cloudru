@@ -73,7 +73,7 @@ func NewApigApiDebug(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApigApiDebug
-	err := ctx.RegisterResource("sbercloud:index/apigApiDebug:ApigApiDebug", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/apigApiDebug:ApigApiDebug", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -85,7 +85,7 @@ func NewApigApiDebug(ctx *pulumi.Context,
 func GetApigApiDebug(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ApigApiDebugState, opts ...pulumi.ResourceOption) (*ApigApiDebug, error) {
 	var resource ApigApiDebug
-	err := ctx.ReadResource("sbercloud:index/apigApiDebug:ApigApiDebug", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/apigApiDebug:ApigApiDebug", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

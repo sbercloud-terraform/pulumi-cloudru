@@ -14,7 +14,7 @@ import (
 func GetDnsZones(ctx *pulumi.Context, args *GetDnsZonesArgs, opts ...pulumi.InvokeOption) (*GetDnsZonesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDnsZonesResult
-	err := ctx.Invoke("sbercloud:index/getDnsZones:getDnsZones", args, &rv, opts...)
+	err := ctx.Invoke("cloudru:index/getDnsZones:getDnsZones", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -59,7 +59,7 @@ func GetDnsZonesOutput(ctx *pulumi.Context, args GetDnsZonesOutputArgs, opts ...
 		ApplyT(func(v interface{}) (GetDnsZonesResultOutput, error) {
 			args := v.(GetDnsZonesArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sbercloud:index/getDnsZones:getDnsZones", args, GetDnsZonesResultOutput{}, options).(GetDnsZonesResultOutput), nil
+			return ctx.InvokeOutput("cloudru:index/getDnsZones:getDnsZones", args, GetDnsZonesResultOutput{}, options).(GetDnsZonesResultOutput), nil
 		}).(GetDnsZonesResultOutput)
 }
 

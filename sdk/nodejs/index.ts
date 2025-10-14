@@ -958,303 +958,303 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "sbercloud:index/apigAclPolicy:ApigAclPolicy":
+            case "cloudru:index/apigAclPolicy:ApigAclPolicy":
                 return new ApigAclPolicy(name, <any>undefined, { urn })
-            case "sbercloud:index/apigAclPolicyAssociate:ApigAclPolicyAssociate":
+            case "cloudru:index/apigAclPolicyAssociate:ApigAclPolicyAssociate":
                 return new ApigAclPolicyAssociate(name, <any>undefined, { urn })
-            case "sbercloud:index/apigApiAction:ApigApiAction":
+            case "cloudru:index/apigApiAction:ApigApiAction":
                 return new ApigApiAction(name, <any>undefined, { urn })
-            case "sbercloud:index/apigApiBatchAction:ApigApiBatchAction":
+            case "cloudru:index/apigApiBatchAction:ApigApiBatchAction":
                 return new ApigApiBatchAction(name, <any>undefined, { urn })
-            case "sbercloud:index/apigApiCheck:ApigApiCheck":
+            case "cloudru:index/apigApiCheck:ApigApiCheck":
                 return new ApigApiCheck(name, <any>undefined, { urn })
-            case "sbercloud:index/apigApiDebug:ApigApiDebug":
+            case "cloudru:index/apigApiDebug:ApigApiDebug":
                 return new ApigApiDebug(name, <any>undefined, { urn })
-            case "sbercloud:index/apigApiVersionUnpublish:ApigApiVersionUnpublish":
+            case "cloudru:index/apigApiVersionUnpublish:ApigApiVersionUnpublish":
                 return new ApigApiVersionUnpublish(name, <any>undefined, { urn })
-            case "sbercloud:index/apigAppcode:ApigAppcode":
+            case "cloudru:index/apigAppcode:ApigAppcode":
                 return new ApigAppcode(name, <any>undefined, { urn })
-            case "sbercloud:index/apigApplicationAcl:ApigApplicationAcl":
+            case "cloudru:index/apigApplicationAcl:ApigApplicationAcl":
                 return new ApigApplicationAcl(name, <any>undefined, { urn })
-            case "sbercloud:index/apigApplicationAuthorization:ApigApplicationAuthorization":
+            case "cloudru:index/apigApplicationAuthorization:ApigApplicationAuthorization":
                 return new ApigApplicationAuthorization(name, <any>undefined, { urn })
-            case "sbercloud:index/apigApplicationQuota:ApigApplicationQuota":
+            case "cloudru:index/apigApplicationQuota:ApigApplicationQuota":
                 return new ApigApplicationQuota(name, <any>undefined, { urn })
-            case "sbercloud:index/apigApplicationQuotaAssociate:ApigApplicationQuotaAssociate":
+            case "cloudru:index/apigApplicationQuotaAssociate:ApigApplicationQuotaAssociate":
                 return new ApigApplicationQuotaAssociate(name, <any>undefined, { urn })
-            case "sbercloud:index/apigCertificate:ApigCertificate":
+            case "cloudru:index/apigCertificate:ApigCertificate":
                 return new ApigCertificate(name, <any>undefined, { urn })
-            case "sbercloud:index/apigChannel:ApigChannel":
+            case "cloudru:index/apigChannel:ApigChannel":
                 return new ApigChannel(name, <any>undefined, { urn })
-            case "sbercloud:index/apigEndpointConnectionManagement:ApigEndpointConnectionManagement":
+            case "cloudru:index/apigEndpointConnectionManagement:ApigEndpointConnectionManagement":
                 return new ApigEndpointConnectionManagement(name, <any>undefined, { urn })
-            case "sbercloud:index/apigEndpointWhitelist:ApigEndpointWhitelist":
+            case "cloudru:index/apigEndpointWhitelist:ApigEndpointWhitelist":
                 return new ApigEndpointWhitelist(name, <any>undefined, { urn })
-            case "sbercloud:index/apigEnvironmentVariable:ApigEnvironmentVariable":
+            case "cloudru:index/apigEnvironmentVariable:ApigEnvironmentVariable":
                 return new ApigEnvironmentVariable(name, <any>undefined, { urn })
-            case "sbercloud:index/apigInstanceFeature:ApigInstanceFeature":
+            case "cloudru:index/apigInstanceFeature:ApigInstanceFeature":
                 return new ApigInstanceFeature(name, <any>undefined, { urn })
-            case "sbercloud:index/apigInstanceRoutes:ApigInstanceRoutes":
+            case "cloudru:index/apigInstanceRoutes:ApigInstanceRoutes":
                 return new ApigInstanceRoutes(name, <any>undefined, { urn })
-            case "sbercloud:index/apigPlugin:ApigPlugin":
+            case "cloudru:index/apigPlugin:ApigPlugin":
                 return new ApigPlugin(name, <any>undefined, { urn })
-            case "sbercloud:index/apigPluginAssociate:ApigPluginAssociate":
+            case "cloudru:index/apigPluginAssociate:ApigPluginAssociate":
                 return new ApigPluginAssociate(name, <any>undefined, { urn })
-            case "sbercloud:index/apigPluginBatchApisAssociate:ApigPluginBatchApisAssociate":
+            case "cloudru:index/apigPluginBatchApisAssociate:ApigPluginBatchApisAssociate":
                 return new ApigPluginBatchApisAssociate(name, <any>undefined, { urn })
-            case "sbercloud:index/apigSignature:ApigSignature":
+            case "cloudru:index/apigSignature:ApigSignature":
                 return new ApigSignature(name, <any>undefined, { urn })
-            case "sbercloud:index/apigSignatureAssociate:ApigSignatureAssociate":
+            case "cloudru:index/apigSignatureAssociate:ApigSignatureAssociate":
                 return new ApigSignatureAssociate(name, <any>undefined, { urn })
-            case "sbercloud:index/cbhAssetAgencyAuthorization:CbhAssetAgencyAuthorization":
+            case "cloudru:index/cbhAssetAgencyAuthorization:CbhAssetAgencyAuthorization":
                 return new CbhAssetAgencyAuthorization(name, <any>undefined, { urn })
-            case "sbercloud:index/cbhHaInstance:CbhHaInstance":
+            case "cloudru:index/cbhHaInstance:CbhHaInstance":
                 return new CbhHaInstance(name, <any>undefined, { urn })
-            case "sbercloud:index/cbhInstance:CbhInstance":
+            case "cloudru:index/cbhInstance:CbhInstance":
                 return new CbhInstance(name, <any>undefined, { urn })
-            case "sbercloud:index/cbrBackupShare:CbrBackupShare":
+            case "cloudru:index/cbrBackupShare:CbrBackupShare":
                 return new CbrBackupShare(name, <any>undefined, { urn })
-            case "sbercloud:index/cbrBackupShareAccepter:CbrBackupShareAccepter":
+            case "cloudru:index/cbrBackupShareAccepter:CbrBackupShareAccepter":
                 return new CbrBackupShareAccepter(name, <any>undefined, { urn })
-            case "sbercloud:index/cbrCheckpoint:CbrCheckpoint":
+            case "cloudru:index/cbrCheckpoint:CbrCheckpoint":
                 return new CbrCheckpoint(name, <any>undefined, { urn })
-            case "sbercloud:index/cceClusterUpgrade:CceClusterUpgrade":
+            case "cloudru:index/cceClusterUpgrade:CceClusterUpgrade":
                 return new CceClusterUpgrade(name, <any>undefined, { urn })
-            case "sbercloud:index/cceNodesRemove:CceNodesRemove":
+            case "cloudru:index/cceNodesRemove:CceNodesRemove":
                 return new CceNodesRemove(name, <any>undefined, { urn })
-            case "sbercloud:index/cssConfiguration:CssConfiguration":
+            case "cloudru:index/cssConfiguration:CssConfiguration":
                 return new CssConfiguration(name, <any>undefined, { urn })
-            case "sbercloud:index/dcsAccount:DcsAccount":
+            case "cloudru:index/dcsAccount:DcsAccount":
                 return new DcsAccount(name, <any>undefined, { urn })
-            case "sbercloud:index/dcsBackup:DcsBackup":
+            case "cloudru:index/dcsBackup:DcsBackup":
                 return new DcsBackup(name, <any>undefined, { urn })
-            case "sbercloud:index/dcsParameters:DcsParameters":
+            case "cloudru:index/dcsParameters:DcsParameters":
                 return new DcsParameters(name, <any>undefined, { urn })
-            case "sbercloud:index/dcsRestore:DcsRestore":
+            case "cloudru:index/dcsRestore:DcsRestore":
                 return new DcsRestore(name, <any>undefined, { urn })
-            case "sbercloud:index/ddsParameterTemplate:DdsParameterTemplate":
+            case "cloudru:index/ddsParameterTemplate:DdsParameterTemplate":
                 return new DdsParameterTemplate(name, <any>undefined, { urn })
-            case "sbercloud:index/ddsParameterTemplateApply:DdsParameterTemplateApply":
+            case "cloudru:index/ddsParameterTemplateApply:DdsParameterTemplateApply":
                 return new DdsParameterTemplateApply(name, <any>undefined, { urn })
-            case "sbercloud:index/ddsParameterTemplateCompare:DdsParameterTemplateCompare":
+            case "cloudru:index/ddsParameterTemplateCompare:DdsParameterTemplateCompare":
                 return new DdsParameterTemplateCompare(name, <any>undefined, { urn })
-            case "sbercloud:index/ddsParameterTemplateCopy:DdsParameterTemplateCopy":
+            case "cloudru:index/ddsParameterTemplateCopy:DdsParameterTemplateCopy":
                 return new DdsParameterTemplateCopy(name, <any>undefined, { urn })
-            case "sbercloud:index/ddsParameterTemplateReset:DdsParameterTemplateReset":
+            case "cloudru:index/ddsParameterTemplateReset:DdsParameterTemplateReset":
                 return new DdsParameterTemplateReset(name, <any>undefined, { urn })
-            case "sbercloud:index/dmsInstance:DmsInstance":
+            case "cloudru:index/dmsInstance:DmsInstance":
                 return new DmsInstance(name, <any>undefined, { urn })
-            case "sbercloud:index/dmsKafkaConsumerGroup:DmsKafkaConsumerGroup":
+            case "cloudru:index/dmsKafkaConsumerGroup:DmsKafkaConsumerGroup":
                 return new DmsKafkaConsumerGroup(name, <any>undefined, { urn })
-            case "sbercloud:index/dmsKafkaMessageProduce:DmsKafkaMessageProduce":
+            case "cloudru:index/dmsKafkaMessageProduce:DmsKafkaMessageProduce":
                 return new DmsKafkaMessageProduce(name, <any>undefined, { urn })
-            case "sbercloud:index/dmsRocketmqConsumerGroup:DmsRocketmqConsumerGroup":
+            case "cloudru:index/dmsRocketmqConsumerGroup:DmsRocketmqConsumerGroup":
                 return new DmsRocketmqConsumerGroup(name, <any>undefined, { urn })
-            case "sbercloud:index/dmsRocketmqConsumptionVerify:DmsRocketmqConsumptionVerify":
+            case "cloudru:index/dmsRocketmqConsumptionVerify:DmsRocketmqConsumptionVerify":
                 return new DmsRocketmqConsumptionVerify(name, <any>undefined, { urn })
-            case "sbercloud:index/dmsRocketmqDeadLetterResend:DmsRocketmqDeadLetterResend":
+            case "cloudru:index/dmsRocketmqDeadLetterResend:DmsRocketmqDeadLetterResend":
                 return new DmsRocketmqDeadLetterResend(name, <any>undefined, { urn })
-            case "sbercloud:index/dmsRocketmqInstance:DmsRocketmqInstance":
+            case "cloudru:index/dmsRocketmqInstance:DmsRocketmqInstance":
                 return new DmsRocketmqInstance(name, <any>undefined, { urn })
-            case "sbercloud:index/dmsRocketmqMessageOffsetReset:DmsRocketmqMessageOffsetReset":
+            case "cloudru:index/dmsRocketmqMessageOffsetReset:DmsRocketmqMessageOffsetReset":
                 return new DmsRocketmqMessageOffsetReset(name, <any>undefined, { urn })
-            case "sbercloud:index/dmsRocketmqMigrationTask:DmsRocketmqMigrationTask":
+            case "cloudru:index/dmsRocketmqMigrationTask:DmsRocketmqMigrationTask":
                 return new DmsRocketmqMigrationTask(name, <any>undefined, { urn })
-            case "sbercloud:index/dmsRocketmqTopic:DmsRocketmqTopic":
+            case "cloudru:index/dmsRocketmqTopic:DmsRocketmqTopic":
                 return new DmsRocketmqTopic(name, <any>undefined, { urn })
-            case "sbercloud:index/dmsRocketmqUser:DmsRocketmqUser":
+            case "cloudru:index/dmsRocketmqUser:DmsRocketmqUser":
                 return new DmsRocketmqUser(name, <any>undefined, { urn })
-            case "sbercloud:index/elbCertificate:ElbCertificate":
+            case "cloudru:index/elbCertificate:ElbCertificate":
                 return new ElbCertificate(name, <any>undefined, { urn })
-            case "sbercloud:index/elbIpgroup:ElbIpgroup":
+            case "cloudru:index/elbIpgroup:ElbIpgroup":
                 return new ElbIpgroup(name, <any>undefined, { urn })
-            case "sbercloud:index/elbL7policy:ElbL7policy":
+            case "cloudru:index/elbL7policy:ElbL7policy":
                 return new ElbL7policy(name, <any>undefined, { urn })
-            case "sbercloud:index/elbL7rule:ElbL7rule":
+            case "cloudru:index/elbL7rule:ElbL7rule":
                 return new ElbL7rule(name, <any>undefined, { urn })
-            case "sbercloud:index/elbListener:ElbListener":
+            case "cloudru:index/elbListener:ElbListener":
                 return new ElbListener(name, <any>undefined, { urn })
-            case "sbercloud:index/elbLoadbalancer:ElbLoadbalancer":
+            case "cloudru:index/elbLoadbalancer:ElbLoadbalancer":
                 return new ElbLoadbalancer(name, <any>undefined, { urn })
-            case "sbercloud:index/elbMember:ElbMember":
+            case "cloudru:index/elbMember:ElbMember":
                 return new ElbMember(name, <any>undefined, { urn })
-            case "sbercloud:index/elbMonitor:ElbMonitor":
+            case "cloudru:index/elbMonitor:ElbMonitor":
                 return new ElbMonitor(name, <any>undefined, { urn })
-            case "sbercloud:index/elbPool:ElbPool":
+            case "cloudru:index/elbPool:ElbPool":
                 return new ElbPool(name, <any>undefined, { urn })
-            case "sbercloud:index/elbSecurityPolicy:ElbSecurityPolicy":
+            case "cloudru:index/elbSecurityPolicy:ElbSecurityPolicy":
                 return new ElbSecurityPolicy(name, <any>undefined, { urn })
-            case "sbercloud:index/fgsApplication:FgsApplication":
+            case "cloudru:index/fgsApplication:FgsApplication":
                 return new FgsApplication(name, <any>undefined, { urn })
-            case "sbercloud:index/fgsAsyncInvokeConfiguration:FgsAsyncInvokeConfiguration":
+            case "cloudru:index/fgsAsyncInvokeConfiguration:FgsAsyncInvokeConfiguration":
                 return new FgsAsyncInvokeConfiguration(name, <any>undefined, { urn })
-            case "sbercloud:index/fgsDependencyVersion:FgsDependencyVersion":
+            case "cloudru:index/fgsDependencyVersion:FgsDependencyVersion":
                 return new FgsDependencyVersion(name, <any>undefined, { urn })
-            case "sbercloud:index/fgsFunctionEvent:FgsFunctionEvent":
+            case "cloudru:index/fgsFunctionEvent:FgsFunctionEvent":
                 return new FgsFunctionEvent(name, <any>undefined, { urn })
-            case "sbercloud:index/fgsFunctionTopping:FgsFunctionTopping":
+            case "cloudru:index/fgsFunctionTopping:FgsFunctionTopping":
                 return new FgsFunctionTopping(name, <any>undefined, { urn })
-            case "sbercloud:index/fgsFunctionTrigger:FgsFunctionTrigger":
+            case "cloudru:index/fgsFunctionTrigger:FgsFunctionTrigger":
                 return new FgsFunctionTrigger(name, <any>undefined, { urn })
-            case "sbercloud:index/fgsFunctionTriggerStatusAction:FgsFunctionTriggerStatusAction":
+            case "cloudru:index/fgsFunctionTriggerStatusAction:FgsFunctionTriggerStatusAction":
                 return new FgsFunctionTriggerStatusAction(name, <any>undefined, { urn })
-            case "sbercloud:index/fgsLtsLogEnable:FgsLtsLogEnable":
+            case "cloudru:index/fgsLtsLogEnable:FgsLtsLogEnable":
                 return new FgsLtsLogEnable(name, <any>undefined, { urn })
-            case "sbercloud:index/gesGraph:GesGraph":
+            case "cloudru:index/gesGraph:GesGraph":
                 return new GesGraph(name, <any>undefined, { urn })
-            case "sbercloud:index/identityGroupMembershipV3:IdentityGroupMembershipV3":
+            case "cloudru:index/identityGroupMembershipV3:IdentityGroupMembershipV3":
                 return new IdentityGroupMembershipV3(name, <any>undefined, { urn })
-            case "sbercloud:index/identityGroupV3:IdentityGroupV3":
+            case "cloudru:index/identityGroupV3:IdentityGroupV3":
                 return new IdentityGroupV3(name, <any>undefined, { urn })
-            case "sbercloud:index/identityRoleAssignmentV3:IdentityRoleAssignmentV3":
+            case "cloudru:index/identityRoleAssignmentV3:IdentityRoleAssignmentV3":
                 return new IdentityRoleAssignmentV3(name, <any>undefined, { urn })
-            case "sbercloud:index/identityUserV3:IdentityUserV3":
+            case "cloudru:index/identityUserV3:IdentityUserV3":
                 return new IdentityUserV3(name, <any>undefined, { urn })
-            case "sbercloud:index/kpsKeypairAssociate:KpsKeypairAssociate":
+            case "cloudru:index/kpsKeypairAssociate:KpsKeypairAssociate":
                 return new KpsKeypairAssociate(name, <any>undefined, { urn })
-            case "sbercloud:index/kpsKeypairDisassociate:KpsKeypairDisassociate":
+            case "cloudru:index/kpsKeypairDisassociate:KpsKeypairDisassociate":
                 return new KpsKeypairDisassociate(name, <any>undefined, { urn })
-            case "sbercloud:index/networkingEipAssociate:NetworkingEipAssociate":
+            case "cloudru:index/networkingEipAssociate:NetworkingEipAssociate":
                 return new NetworkingEipAssociate(name, <any>undefined, { urn })
-            case "sbercloud:index/obsBucketAcl:ObsBucketAcl":
+            case "cloudru:index/obsBucketAcl:ObsBucketAcl":
                 return new ObsBucketAcl(name, <any>undefined, { urn })
-            case "sbercloud:index/sfsTurboDataTask:SfsTurboDataTask":
+            case "cloudru:index/sfsTurboDataTask:SfsTurboDataTask":
                 return new SfsTurboDataTask(name, <any>undefined, { urn })
-            case "sbercloud:index/sfsTurboDir:SfsTurboDir":
+            case "cloudru:index/sfsTurboDir:SfsTurboDir":
                 return new SfsTurboDir(name, <any>undefined, { urn })
-            case "sbercloud:index/sfsTurboDirQuota:SfsTurboDirQuota":
+            case "cloudru:index/sfsTurboDirQuota:SfsTurboDirQuota":
                 return new SfsTurboDirQuota(name, <any>undefined, { urn })
-            case "sbercloud:index/sfsTurboDuTask:SfsTurboDuTask":
+            case "cloudru:index/sfsTurboDuTask:SfsTurboDuTask":
                 return new SfsTurboDuTask(name, <any>undefined, { urn })
-            case "sbercloud:index/sfsTurboObsTarget:SfsTurboObsTarget":
+            case "cloudru:index/sfsTurboObsTarget:SfsTurboObsTarget":
                 return new SfsTurboObsTarget(name, <any>undefined, { urn })
-            case "sbercloud:index/sfsTurboPermRule:SfsTurboPermRule":
+            case "cloudru:index/sfsTurboPermRule:SfsTurboPermRule":
                 return new SfsTurboPermRule(name, <any>undefined, { urn })
-            case "sbercloud:index/smnMessageDetection:SmnMessageDetection":
+            case "cloudru:index/smnMessageDetection:SmnMessageDetection":
                 return new SmnMessageDetection(name, <any>undefined, { urn })
-            case "sbercloud:index/smnSubscription:SmnSubscription":
+            case "cloudru:index/smnSubscription:SmnSubscription":
                 return new SmnSubscription(name, <any>undefined, { urn })
-            case "sbercloud:index/smnTopic:SmnTopic":
+            case "cloudru:index/smnTopic:SmnTopic":
                 return new SmnTopic(name, <any>undefined, { urn })
-            case "sbercloud:index/swrOrganization:SwrOrganization":
+            case "cloudru:index/swrOrganization:SwrOrganization":
                 return new SwrOrganization(name, <any>undefined, { urn })
-            case "sbercloud:index/swrOrganizationPermissions:SwrOrganizationPermissions":
+            case "cloudru:index/swrOrganizationPermissions:SwrOrganizationPermissions":
                 return new SwrOrganizationPermissions(name, <any>undefined, { urn })
-            case "sbercloud:index/swrRepository:SwrRepository":
+            case "cloudru:index/swrRepository:SwrRepository":
                 return new SwrRepository(name, <any>undefined, { urn })
-            case "sbercloud:index/vpnConnection:VpnConnection":
+            case "cloudru:index/vpnConnection:VpnConnection":
                 return new VpnConnection(name, <any>undefined, { urn })
-            case "sbercloud:index/vpnConnectionHealthCheck:VpnConnectionHealthCheck":
+            case "cloudru:index/vpnConnectionHealthCheck:VpnConnectionHealthCheck":
                 return new VpnConnectionHealthCheck(name, <any>undefined, { urn })
-            case "sbercloud:index/vpnCustomerGateway:VpnCustomerGateway":
+            case "cloudru:index/vpnCustomerGateway:VpnCustomerGateway":
                 return new VpnCustomerGateway(name, <any>undefined, { urn })
-            case "sbercloud:index/vpnGateway:VpnGateway":
+            case "cloudru:index/vpnGateway:VpnGateway":
                 return new VpnGateway(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("sbercloud", "index/apigAclPolicy", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/apigAclPolicyAssociate", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/apigApiAction", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/apigApiBatchAction", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/apigApiCheck", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/apigApiDebug", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/apigApiVersionUnpublish", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/apigAppcode", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/apigApplicationAcl", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/apigApplicationAuthorization", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/apigApplicationQuota", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/apigApplicationQuotaAssociate", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/apigCertificate", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/apigChannel", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/apigEndpointConnectionManagement", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/apigEndpointWhitelist", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/apigEnvironmentVariable", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/apigInstanceFeature", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/apigInstanceRoutes", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/apigPlugin", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/apigPluginAssociate", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/apigPluginBatchApisAssociate", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/apigSignature", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/apigSignatureAssociate", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/cbhAssetAgencyAuthorization", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/cbhHaInstance", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/cbhInstance", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/cbrBackupShare", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/cbrBackupShareAccepter", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/cbrCheckpoint", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/cceClusterUpgrade", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/cceNodesRemove", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/cssConfiguration", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/dcsAccount", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/dcsBackup", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/dcsParameters", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/dcsRestore", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/ddsParameterTemplate", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/ddsParameterTemplateApply", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/ddsParameterTemplateCompare", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/ddsParameterTemplateCopy", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/ddsParameterTemplateReset", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/dmsInstance", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/dmsKafkaConsumerGroup", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/dmsKafkaMessageProduce", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/dmsRocketmqConsumerGroup", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/dmsRocketmqConsumptionVerify", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/dmsRocketmqDeadLetterResend", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/dmsRocketmqInstance", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/dmsRocketmqMessageOffsetReset", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/dmsRocketmqMigrationTask", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/dmsRocketmqTopic", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/dmsRocketmqUser", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/elbCertificate", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/elbIpgroup", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/elbL7policy", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/elbL7rule", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/elbListener", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/elbLoadbalancer", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/elbMember", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/elbMonitor", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/elbPool", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/elbSecurityPolicy", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/fgsApplication", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/fgsAsyncInvokeConfiguration", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/fgsDependencyVersion", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/fgsFunctionEvent", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/fgsFunctionTopping", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/fgsFunctionTrigger", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/fgsFunctionTriggerStatusAction", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/fgsLtsLogEnable", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/gesGraph", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/identityGroupMembershipV3", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/identityGroupV3", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/identityRoleAssignmentV3", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/identityUserV3", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/kpsKeypairAssociate", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/kpsKeypairDisassociate", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/networkingEipAssociate", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/obsBucketAcl", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/sfsTurboDataTask", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/sfsTurboDir", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/sfsTurboDirQuota", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/sfsTurboDuTask", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/sfsTurboObsTarget", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/sfsTurboPermRule", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/smnMessageDetection", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/smnSubscription", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/smnTopic", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/swrOrganization", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/swrOrganizationPermissions", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/swrRepository", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/vpnConnection", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/vpnConnectionHealthCheck", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/vpnCustomerGateway", _module)
-pulumi.runtime.registerResourceModule("sbercloud", "index/vpnGateway", _module)
-pulumi.runtime.registerResourcePackage("sbercloud", {
+pulumi.runtime.registerResourceModule("cloudru", "index/apigAclPolicy", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/apigAclPolicyAssociate", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/apigApiAction", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/apigApiBatchAction", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/apigApiCheck", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/apigApiDebug", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/apigApiVersionUnpublish", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/apigAppcode", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/apigApplicationAcl", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/apigApplicationAuthorization", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/apigApplicationQuota", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/apigApplicationQuotaAssociate", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/apigCertificate", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/apigChannel", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/apigEndpointConnectionManagement", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/apigEndpointWhitelist", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/apigEnvironmentVariable", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/apigInstanceFeature", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/apigInstanceRoutes", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/apigPlugin", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/apigPluginAssociate", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/apigPluginBatchApisAssociate", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/apigSignature", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/apigSignatureAssociate", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/cbhAssetAgencyAuthorization", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/cbhHaInstance", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/cbhInstance", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/cbrBackupShare", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/cbrBackupShareAccepter", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/cbrCheckpoint", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/cceClusterUpgrade", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/cceNodesRemove", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/cssConfiguration", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/dcsAccount", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/dcsBackup", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/dcsParameters", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/dcsRestore", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/ddsParameterTemplate", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/ddsParameterTemplateApply", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/ddsParameterTemplateCompare", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/ddsParameterTemplateCopy", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/ddsParameterTemplateReset", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/dmsInstance", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/dmsKafkaConsumerGroup", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/dmsKafkaMessageProduce", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/dmsRocketmqConsumerGroup", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/dmsRocketmqConsumptionVerify", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/dmsRocketmqDeadLetterResend", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/dmsRocketmqInstance", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/dmsRocketmqMessageOffsetReset", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/dmsRocketmqMigrationTask", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/dmsRocketmqTopic", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/dmsRocketmqUser", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/elbCertificate", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/elbIpgroup", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/elbL7policy", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/elbL7rule", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/elbListener", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/elbLoadbalancer", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/elbMember", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/elbMonitor", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/elbPool", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/elbSecurityPolicy", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/fgsApplication", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/fgsAsyncInvokeConfiguration", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/fgsDependencyVersion", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/fgsFunctionEvent", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/fgsFunctionTopping", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/fgsFunctionTrigger", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/fgsFunctionTriggerStatusAction", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/fgsLtsLogEnable", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/gesGraph", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/identityGroupMembershipV3", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/identityGroupV3", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/identityRoleAssignmentV3", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/identityUserV3", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/kpsKeypairAssociate", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/kpsKeypairDisassociate", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/networkingEipAssociate", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/obsBucketAcl", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/sfsTurboDataTask", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/sfsTurboDir", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/sfsTurboDirQuota", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/sfsTurboDuTask", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/sfsTurboObsTarget", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/sfsTurboPermRule", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/smnMessageDetection", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/smnSubscription", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/smnTopic", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/swrOrganization", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/swrOrganizationPermissions", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/swrRepository", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/vpnConnection", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/vpnConnectionHealthCheck", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/vpnCustomerGateway", _module)
+pulumi.runtime.registerResourceModule("cloudru", "index/vpnGateway", _module)
+pulumi.runtime.registerResourcePackage("cloudru", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {
-        if (type !== "pulumi:providers:sbercloud") {
+        if (type !== "pulumi:providers:cloudru") {
             throw new Error(`unknown provider type ${type}`);
         }
         return new Provider(name, <any>undefined, { urn });

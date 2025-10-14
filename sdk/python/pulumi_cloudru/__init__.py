@@ -307,2035 +307,2035 @@ _utilities.register(
     resource_modules="""
 [
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Aom/serviceDiscoveryRule",
   "fqn": "pulumi_cloudru.aom",
   "classes": {
-   "sbercloud:Aom/serviceDiscoveryRule:ServiceDiscoveryRule": "ServiceDiscoveryRule"
+   "cloudru:Aom/serviceDiscoveryRule:ServiceDiscoveryRule": "ServiceDiscoveryRule"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "As/bandwidthPolicy",
   "fqn": "pulumi_cloudru.as_",
   "classes": {
-   "sbercloud:As/bandwidthPolicy:BandwidthPolicy": "BandwidthPolicy"
+   "cloudru:As/bandwidthPolicy:BandwidthPolicy": "BandwidthPolicy"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "As/configuration",
   "fqn": "pulumi_cloudru.as_",
   "classes": {
-   "sbercloud:As/configuration:Configuration": "Configuration"
+   "cloudru:As/configuration:Configuration": "Configuration"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "As/group",
   "fqn": "pulumi_cloudru.as_",
   "classes": {
-   "sbercloud:As/group:Group": "Group"
+   "cloudru:As/group:Group": "Group"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "As/policy",
   "fqn": "pulumi_cloudru.as_",
   "classes": {
-   "sbercloud:As/policy:Policy": "Policy"
+   "cloudru:As/policy:Policy": "Policy"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Cbr/policy",
   "fqn": "pulumi_cloudru.cbr",
   "classes": {
-   "sbercloud:Cbr/policy:Policy": "Policy"
+   "cloudru:Cbr/policy:Policy": "Policy"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Cbr/vault",
   "fqn": "pulumi_cloudru.cbr",
   "classes": {
-   "sbercloud:Cbr/vault:Vault": "Vault"
+   "cloudru:Cbr/vault:Vault": "Vault"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Cce/addon",
   "fqn": "pulumi_cloudru.cce",
   "classes": {
-   "sbercloud:Cce/addon:Addon": "Addon"
+   "cloudru:Cce/addon:Addon": "Addon"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Cce/cluster",
   "fqn": "pulumi_cloudru.cce",
   "classes": {
-   "sbercloud:Cce/cluster:Cluster": "Cluster"
+   "cloudru:Cce/cluster:Cluster": "Cluster"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Cce/namespace",
   "fqn": "pulumi_cloudru.cce",
   "classes": {
-   "sbercloud:Cce/namespace:Namespace": "Namespace"
+   "cloudru:Cce/namespace:Namespace": "Namespace"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Cce/node",
   "fqn": "pulumi_cloudru.cce",
   "classes": {
-   "sbercloud:Cce/node:Node": "Node"
+   "cloudru:Cce/node:Node": "Node"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Cce/nodeAttach",
   "fqn": "pulumi_cloudru.cce",
   "classes": {
-   "sbercloud:Cce/nodeAttach:NodeAttach": "NodeAttach"
+   "cloudru:Cce/nodeAttach:NodeAttach": "NodeAttach"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Cce/nodePool",
   "fqn": "pulumi_cloudru.cce",
   "classes": {
-   "sbercloud:Cce/nodePool:NodePool": "NodePool"
+   "cloudru:Cce/nodePool:NodePool": "NodePool"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Cce/pvc",
   "fqn": "pulumi_cloudru.cce",
   "classes": {
-   "sbercloud:Cce/pvc:Pvc": "Pvc"
+   "cloudru:Cce/pvc:Pvc": "Pvc"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Cdm/cluster",
   "fqn": "pulumi_cloudru.cdm",
   "classes": {
-   "sbercloud:Cdm/cluster:Cluster": "Cluster"
+   "cloudru:Cdm/cluster:Cluster": "Cluster"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Ces/alarmrule",
   "fqn": "pulumi_cloudru.ces",
   "classes": {
-   "sbercloud:Ces/alarmrule:Alarmrule": "Alarmrule"
+   "cloudru:Ces/alarmrule:Alarmrule": "Alarmrule"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Cfw/aclRule",
   "fqn": "pulumi_cloudru.cfw",
   "classes": {
-   "sbercloud:Cfw/aclRule:AclRule": "AclRule"
+   "cloudru:Cfw/aclRule:AclRule": "AclRule"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Cfw/addressGroup",
   "fqn": "pulumi_cloudru.cfw",
   "classes": {
-   "sbercloud:Cfw/addressGroup:AddressGroup": "AddressGroup"
+   "cloudru:Cfw/addressGroup:AddressGroup": "AddressGroup"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Cfw/addressGroupMember",
   "fqn": "pulumi_cloudru.cfw",
   "classes": {
-   "sbercloud:Cfw/addressGroupMember:AddressGroupMember": "AddressGroupMember"
+   "cloudru:Cfw/addressGroupMember:AddressGroupMember": "AddressGroupMember"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Cfw/alarmConfig",
   "fqn": "pulumi_cloudru.cfw",
   "classes": {
-   "sbercloud:Cfw/alarmConfig:AlarmConfig": "AlarmConfig"
+   "cloudru:Cfw/alarmConfig:AlarmConfig": "AlarmConfig"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Cfw/antiVirus",
   "fqn": "pulumi_cloudru.cfw",
   "classes": {
-   "sbercloud:Cfw/antiVirus:AntiVirus": "AntiVirus"
+   "cloudru:Cfw/antiVirus:AntiVirus": "AntiVirus"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Cfw/blackWhiteList",
   "fqn": "pulumi_cloudru.cfw",
   "classes": {
-   "sbercloud:Cfw/blackWhiteList:BlackWhiteList": "BlackWhiteList"
+   "cloudru:Cfw/blackWhiteList:BlackWhiteList": "BlackWhiteList"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Cfw/captureTask",
   "fqn": "pulumi_cloudru.cfw",
   "classes": {
-   "sbercloud:Cfw/captureTask:CaptureTask": "CaptureTask"
+   "cloudru:Cfw/captureTask:CaptureTask": "CaptureTask"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Cfw/dnsResolution",
   "fqn": "pulumi_cloudru.cfw",
   "classes": {
-   "sbercloud:Cfw/dnsResolution:DnsResolution": "DnsResolution"
+   "cloudru:Cfw/dnsResolution:DnsResolution": "DnsResolution"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Cfw/domainNameGroup",
   "fqn": "pulumi_cloudru.cfw",
   "classes": {
-   "sbercloud:Cfw/domainNameGroup:DomainNameGroup": "DomainNameGroup"
+   "cloudru:Cfw/domainNameGroup:DomainNameGroup": "DomainNameGroup"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Cfw/eipProtection",
   "fqn": "pulumi_cloudru.cfw",
   "classes": {
-   "sbercloud:Cfw/eipProtection:EipProtection": "EipProtection"
+   "cloudru:Cfw/eipProtection:EipProtection": "EipProtection"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Cfw/firewall",
   "fqn": "pulumi_cloudru.cfw",
   "classes": {
-   "sbercloud:Cfw/firewall:Firewall": "Firewall"
+   "cloudru:Cfw/firewall:Firewall": "Firewall"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Cfw/ipsRuleModeChange",
   "fqn": "pulumi_cloudru.cfw",
   "classes": {
-   "sbercloud:Cfw/ipsRuleModeChange:IpsRuleModeChange": "IpsRuleModeChange"
+   "cloudru:Cfw/ipsRuleModeChange:IpsRuleModeChange": "IpsRuleModeChange"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Cfw/ltsLog",
   "fqn": "pulumi_cloudru.cfw",
   "classes": {
-   "sbercloud:Cfw/ltsLog:LtsLog": "LtsLog"
+   "cloudru:Cfw/ltsLog:LtsLog": "LtsLog"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Cfw/serviceGroup",
   "fqn": "pulumi_cloudru.cfw",
   "classes": {
-   "sbercloud:Cfw/serviceGroup:ServiceGroup": "ServiceGroup"
+   "cloudru:Cfw/serviceGroup:ServiceGroup": "ServiceGroup"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Cfw/serviceGroupMember",
   "fqn": "pulumi_cloudru.cfw",
   "classes": {
-   "sbercloud:Cfw/serviceGroupMember:ServiceGroupMember": "ServiceGroupMember"
+   "cloudru:Cfw/serviceGroupMember:ServiceGroupMember": "ServiceGroupMember"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Css/cluster",
   "fqn": "pulumi_cloudru.css",
   "classes": {
-   "sbercloud:Css/cluster:Cluster": "Cluster"
+   "cloudru:Css/cluster:Cluster": "Cluster"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Cts/dataTracker",
   "fqn": "pulumi_cloudru.cts",
   "classes": {
-   "sbercloud:Cts/dataTracker:DataTracker": "DataTracker"
+   "cloudru:Cts/dataTracker:DataTracker": "DataTracker"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Cts/notification",
   "fqn": "pulumi_cloudru.cts",
   "classes": {
-   "sbercloud:Cts/notification:Notification": "Notification"
+   "cloudru:Cts/notification:Notification": "Notification"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Cts/tracker",
   "fqn": "pulumi_cloudru.cts",
   "classes": {
-   "sbercloud:Cts/tracker:Tracker": "Tracker"
+   "cloudru:Cts/tracker:Tracker": "Tracker"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Dcs/instance",
   "fqn": "pulumi_cloudru.dcs",
   "classes": {
-   "sbercloud:Dcs/instance:Instance": "Instance"
+   "cloudru:Dcs/instance:Instance": "Instance"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Dds/instance",
   "fqn": "pulumi_cloudru.dds",
   "classes": {
-   "sbercloud:Dds/instance:Instance": "Instance"
+   "cloudru:Dds/instance:Instance": "Instance"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "DedicatedApig/api",
   "fqn": "pulumi_cloudru.dedicatedapig",
   "classes": {
-   "sbercloud:DedicatedApig/api:Api": "Api"
+   "cloudru:DedicatedApig/api:Api": "Api"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "DedicatedApig/apiPublishment",
   "fqn": "pulumi_cloudru.dedicatedapig",
   "classes": {
-   "sbercloud:DedicatedApig/apiPublishment:ApiPublishment": "ApiPublishment"
+   "cloudru:DedicatedApig/apiPublishment:ApiPublishment": "ApiPublishment"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "DedicatedApig/application",
   "fqn": "pulumi_cloudru.dedicatedapig",
   "classes": {
-   "sbercloud:DedicatedApig/application:Application": "Application"
+   "cloudru:DedicatedApig/application:Application": "Application"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "DedicatedApig/customAuthorizer",
   "fqn": "pulumi_cloudru.dedicatedapig",
   "classes": {
-   "sbercloud:DedicatedApig/customAuthorizer:CustomAuthorizer": "CustomAuthorizer"
+   "cloudru:DedicatedApig/customAuthorizer:CustomAuthorizer": "CustomAuthorizer"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "DedicatedApig/environment",
   "fqn": "pulumi_cloudru.dedicatedapig",
   "classes": {
-   "sbercloud:DedicatedApig/environment:Environment": "Environment"
+   "cloudru:DedicatedApig/environment:Environment": "Environment"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "DedicatedApig/group",
   "fqn": "pulumi_cloudru.dedicatedapig",
   "classes": {
-   "sbercloud:DedicatedApig/group:Group": "Group"
+   "cloudru:DedicatedApig/group:Group": "Group"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "DedicatedApig/instance",
   "fqn": "pulumi_cloudru.dedicatedapig",
   "classes": {
-   "sbercloud:DedicatedApig/instance:Instance": "Instance"
+   "cloudru:DedicatedApig/instance:Instance": "Instance"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "DedicatedApig/response",
   "fqn": "pulumi_cloudru.dedicatedapig",
   "classes": {
-   "sbercloud:DedicatedApig/response:Response": "Response"
+   "cloudru:DedicatedApig/response:Response": "Response"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "DedicatedApig/throttlingPolicy",
   "fqn": "pulumi_cloudru.dedicatedapig",
   "classes": {
-   "sbercloud:DedicatedApig/throttlingPolicy:ThrottlingPolicy": "ThrottlingPolicy"
+   "cloudru:DedicatedApig/throttlingPolicy:ThrottlingPolicy": "ThrottlingPolicy"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "DedicatedApig/throttlingPolicyAssociate",
   "fqn": "pulumi_cloudru.dedicatedapig",
   "classes": {
-   "sbercloud:DedicatedApig/throttlingPolicyAssociate:ThrottlingPolicyAssociate": "ThrottlingPolicyAssociate"
+   "cloudru:DedicatedApig/throttlingPolicyAssociate:ThrottlingPolicyAssociate": "ThrottlingPolicyAssociate"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Dew/key",
   "fqn": "pulumi_cloudru.dew",
   "classes": {
-   "sbercloud:Dew/key:Key": "Key"
+   "cloudru:Dew/key:Key": "Key"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Dew/keypair",
   "fqn": "pulumi_cloudru.dew",
   "classes": {
-   "sbercloud:Dew/keypair:Keypair": "Keypair"
+   "cloudru:Dew/keypair:Keypair": "Keypair"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Dis/stream",
   "fqn": "pulumi_cloudru.dis",
   "classes": {
-   "sbercloud:Dis/stream:Stream": "Stream"
+   "cloudru:Dis/stream:Stream": "Stream"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Dli/database",
   "fqn": "pulumi_cloudru.dli",
   "classes": {
-   "sbercloud:Dli/database:Database": "Database"
+   "cloudru:Dli/database:Database": "Database"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Dli/package",
   "fqn": "pulumi_cloudru.dli",
   "classes": {
-   "sbercloud:Dli/package:Package": "Package"
+   "cloudru:Dli/package:Package": "Package"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Dli/queue",
   "fqn": "pulumi_cloudru.dli",
   "classes": {
-   "sbercloud:Dli/queue:Queue": "Queue"
+   "cloudru:Dli/queue:Queue": "Queue"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Dli/sparkJob",
   "fqn": "pulumi_cloudru.dli",
   "classes": {
-   "sbercloud:Dli/sparkJob:SparkJob": "SparkJob"
+   "cloudru:Dli/sparkJob:SparkJob": "SparkJob"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Dms/kafkaInstance",
   "fqn": "pulumi_cloudru.dms",
   "classes": {
-   "sbercloud:Dms/kafkaInstance:KafkaInstance": "KafkaInstance"
+   "cloudru:Dms/kafkaInstance:KafkaInstance": "KafkaInstance"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Dms/kafkaPermissions",
   "fqn": "pulumi_cloudru.dms",
   "classes": {
-   "sbercloud:Dms/kafkaPermissions:KafkaPermissions": "KafkaPermissions"
+   "cloudru:Dms/kafkaPermissions:KafkaPermissions": "KafkaPermissions"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Dms/kafkaTopic",
   "fqn": "pulumi_cloudru.dms",
   "classes": {
-   "sbercloud:Dms/kafkaTopic:KafkaTopic": "KafkaTopic"
+   "cloudru:Dms/kafkaTopic:KafkaTopic": "KafkaTopic"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Dms/kafkaUser",
   "fqn": "pulumi_cloudru.dms",
   "classes": {
-   "sbercloud:Dms/kafkaUser:KafkaUser": "KafkaUser"
+   "cloudru:Dms/kafkaUser:KafkaUser": "KafkaUser"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Dms/rabbitmqInstance",
   "fqn": "pulumi_cloudru.dms",
   "classes": {
-   "sbercloud:Dms/rabbitmqInstance:RabbitmqInstance": "RabbitmqInstance"
+   "cloudru:Dms/rabbitmqInstance:RabbitmqInstance": "RabbitmqInstance"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Dns/recordset",
   "fqn": "pulumi_cloudru.dns",
   "classes": {
-   "sbercloud:Dns/recordset:Recordset": "Recordset"
+   "cloudru:Dns/recordset:Recordset": "Recordset"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Dns/zone",
   "fqn": "pulumi_cloudru.dns",
   "classes": {
-   "sbercloud:Dns/zone:Zone": "Zone"
+   "cloudru:Dns/zone:Zone": "Zone"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Drs/job",
   "fqn": "pulumi_cloudru.drs",
   "classes": {
-   "sbercloud:Drs/job:Job": "Job"
+   "cloudru:Drs/job:Job": "Job"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Dws/cluster",
   "fqn": "pulumi_cloudru.dws",
   "classes": {
-   "sbercloud:Dws/cluster:Cluster": "Cluster"
+   "cloudru:Dws/cluster:Cluster": "Cluster"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Ecs/eipAssociate",
   "fqn": "pulumi_cloudru.ecs",
   "classes": {
-   "sbercloud:Ecs/eipAssociate:EipAssociate": "EipAssociate"
+   "cloudru:Ecs/eipAssociate:EipAssociate": "EipAssociate"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Ecs/instance",
   "fqn": "pulumi_cloudru.ecs",
   "classes": {
-   "sbercloud:Ecs/instance:Instance": "Instance"
+   "cloudru:Ecs/instance:Instance": "Instance"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Ecs/interfaceAttach",
   "fqn": "pulumi_cloudru.ecs",
   "classes": {
-   "sbercloud:Ecs/interfaceAttach:InterfaceAttach": "InterfaceAttach"
+   "cloudru:Ecs/interfaceAttach:InterfaceAttach": "InterfaceAttach"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Ecs/keypair",
   "fqn": "pulumi_cloudru.ecs",
   "classes": {
-   "sbercloud:Ecs/keypair:Keypair": "Keypair"
+   "cloudru:Ecs/keypair:Keypair": "Keypair"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Ecs/servergroup",
   "fqn": "pulumi_cloudru.ecs",
   "classes": {
-   "sbercloud:Ecs/servergroup:Servergroup": "Servergroup"
+   "cloudru:Ecs/servergroup:Servergroup": "Servergroup"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Ecs/volumeAttach",
   "fqn": "pulumi_cloudru.ecs",
   "classes": {
-   "sbercloud:Ecs/volumeAttach:VolumeAttach": "VolumeAttach"
+   "cloudru:Ecs/volumeAttach:VolumeAttach": "VolumeAttach"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Elb/certificate",
   "fqn": "pulumi_cloudru.elb",
   "classes": {
-   "sbercloud:Elb/certificate:Certificate": "Certificate"
+   "cloudru:Elb/certificate:Certificate": "Certificate"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Elb/l7policy",
   "fqn": "pulumi_cloudru.elb",
   "classes": {
-   "sbercloud:Elb/l7policy:L7policy": "L7policy"
+   "cloudru:Elb/l7policy:L7policy": "L7policy"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Elb/l7rule",
   "fqn": "pulumi_cloudru.elb",
   "classes": {
-   "sbercloud:Elb/l7rule:L7rule": "L7rule"
+   "cloudru:Elb/l7rule:L7rule": "L7rule"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Elb/listener",
   "fqn": "pulumi_cloudru.elb",
   "classes": {
-   "sbercloud:Elb/listener:Listener": "Listener"
+   "cloudru:Elb/listener:Listener": "Listener"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Elb/loadbalancer",
   "fqn": "pulumi_cloudru.elb",
   "classes": {
-   "sbercloud:Elb/loadbalancer:Loadbalancer": "Loadbalancer"
+   "cloudru:Elb/loadbalancer:Loadbalancer": "Loadbalancer"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Elb/member",
   "fqn": "pulumi_cloudru.elb",
   "classes": {
-   "sbercloud:Elb/member:Member": "Member"
+   "cloudru:Elb/member:Member": "Member"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Elb/monitor",
   "fqn": "pulumi_cloudru.elb",
   "classes": {
-   "sbercloud:Elb/monitor:Monitor": "Monitor"
+   "cloudru:Elb/monitor:Monitor": "Monitor"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Elb/pool",
   "fqn": "pulumi_cloudru.elb",
   "classes": {
-   "sbercloud:Elb/pool:Pool": "Pool"
+   "cloudru:Elb/pool:Pool": "Pool"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Elb/whitelist",
   "fqn": "pulumi_cloudru.elb",
   "classes": {
-   "sbercloud:Elb/whitelist:Whitelist": "Whitelist"
+   "cloudru:Elb/whitelist:Whitelist": "Whitelist"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Eps/project",
   "fqn": "pulumi_cloudru.eps",
   "classes": {
-   "sbercloud:Eps/project:Project": "Project"
+   "cloudru:Eps/project:Project": "Project"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Er/association",
   "fqn": "pulumi_cloudru.er",
   "classes": {
-   "sbercloud:Er/association:Association": "Association"
+   "cloudru:Er/association:Association": "Association"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Er/attachmentAccepter",
   "fqn": "pulumi_cloudru.er",
   "classes": {
-   "sbercloud:Er/attachmentAccepter:AttachmentAccepter": "AttachmentAccepter"
+   "cloudru:Er/attachmentAccepter:AttachmentAccepter": "AttachmentAccepter"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Er/flowLog",
   "fqn": "pulumi_cloudru.er",
   "classes": {
-   "sbercloud:Er/flowLog:FlowLog": "FlowLog"
+   "cloudru:Er/flowLog:FlowLog": "FlowLog"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Er/instance",
   "fqn": "pulumi_cloudru.er",
   "classes": {
-   "sbercloud:Er/instance:Instance": "Instance"
+   "cloudru:Er/instance:Instance": "Instance"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Er/propagation",
   "fqn": "pulumi_cloudru.er",
   "classes": {
-   "sbercloud:Er/propagation:Propagation": "Propagation"
+   "cloudru:Er/propagation:Propagation": "Propagation"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Er/routeTable",
   "fqn": "pulumi_cloudru.er",
   "classes": {
-   "sbercloud:Er/routeTable:RouteTable": "RouteTable"
+   "cloudru:Er/routeTable:RouteTable": "RouteTable"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Er/staticRoute",
   "fqn": "pulumi_cloudru.er",
   "classes": {
-   "sbercloud:Er/staticRoute:StaticRoute": "StaticRoute"
+   "cloudru:Er/staticRoute:StaticRoute": "StaticRoute"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Er/vpcAttachment",
   "fqn": "pulumi_cloudru.er",
   "classes": {
-   "sbercloud:Er/vpcAttachment:VpcAttachment": "VpcAttachment"
+   "cloudru:Er/vpcAttachment:VpcAttachment": "VpcAttachment"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Evs/snapshot",
   "fqn": "pulumi_cloudru.evs",
   "classes": {
-   "sbercloud:Evs/snapshot:Snapshot": "Snapshot"
+   "cloudru:Evs/snapshot:Snapshot": "Snapshot"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Evs/volume",
   "fqn": "pulumi_cloudru.evs",
   "classes": {
-   "sbercloud:Evs/volume:Volume": "Volume"
+   "cloudru:Evs/volume:Volume": "Volume"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "FunctionGraph/dependency",
   "fqn": "pulumi_cloudru.functiongraph",
   "classes": {
-   "sbercloud:FunctionGraph/dependency:Dependency": "Dependency"
+   "cloudru:FunctionGraph/dependency:Dependency": "Dependency"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "FunctionGraph/function",
   "fqn": "pulumi_cloudru.functiongraph",
   "classes": {
-   "sbercloud:FunctionGraph/function:Function": "Function"
+   "cloudru:FunctionGraph/function:Function": "Function"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Iam/accessKey",
   "fqn": "pulumi_cloudru.iam",
   "classes": {
-   "sbercloud:Iam/accessKey:AccessKey": "AccessKey"
+   "cloudru:Iam/accessKey:AccessKey": "AccessKey"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Iam/acl",
   "fqn": "pulumi_cloudru.iam",
   "classes": {
-   "sbercloud:Iam/acl:Acl": "Acl"
+   "cloudru:Iam/acl:Acl": "Acl"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Iam/agency",
   "fqn": "pulumi_cloudru.iam",
   "classes": {
-   "sbercloud:Iam/agency:Agency": "Agency"
+   "cloudru:Iam/agency:Agency": "Agency"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Iam/group",
   "fqn": "pulumi_cloudru.iam",
   "classes": {
-   "sbercloud:Iam/group:Group": "Group"
+   "cloudru:Iam/group:Group": "Group"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Iam/groupMembership",
   "fqn": "pulumi_cloudru.iam",
   "classes": {
-   "sbercloud:Iam/groupMembership:GroupMembership": "GroupMembership"
+   "cloudru:Iam/groupMembership:GroupMembership": "GroupMembership"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Iam/groupRoleAssignment",
   "fqn": "pulumi_cloudru.iam",
   "classes": {
-   "sbercloud:Iam/groupRoleAssignment:GroupRoleAssignment": "GroupRoleAssignment"
+   "cloudru:Iam/groupRoleAssignment:GroupRoleAssignment": "GroupRoleAssignment"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Iam/project",
   "fqn": "pulumi_cloudru.iam",
   "classes": {
-   "sbercloud:Iam/project:Project": "Project"
+   "cloudru:Iam/project:Project": "Project"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Iam/provider",
   "fqn": "pulumi_cloudru.iam",
   "classes": {
-   "sbercloud:Iam/provider:Provider": "Provider"
+   "cloudru:Iam/provider:Provider": "Provider"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Iam/providerConversion",
   "fqn": "pulumi_cloudru.iam",
   "classes": {
-   "sbercloud:Iam/providerConversion:ProviderConversion": "ProviderConversion"
+   "cloudru:Iam/providerConversion:ProviderConversion": "ProviderConversion"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Iam/role",
   "fqn": "pulumi_cloudru.iam",
   "classes": {
-   "sbercloud:Iam/role:Role": "Role"
+   "cloudru:Iam/role:Role": "Role"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Iam/roleAssignment",
   "fqn": "pulumi_cloudru.iam",
   "classes": {
-   "sbercloud:Iam/roleAssignment:RoleAssignment": "RoleAssignment"
+   "cloudru:Iam/roleAssignment:RoleAssignment": "RoleAssignment"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Iam/user",
   "fqn": "pulumi_cloudru.iam",
   "classes": {
-   "sbercloud:Iam/user:User": "User"
+   "cloudru:Iam/user:User": "User"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Ims/image",
   "fqn": "pulumi_cloudru.ims",
   "classes": {
-   "sbercloud:Ims/image:Image": "Image"
+   "cloudru:Ims/image:Image": "Image"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Lts/group",
   "fqn": "pulumi_cloudru.lts",
   "classes": {
-   "sbercloud:Lts/group:Group": "Group"
+   "cloudru:Lts/group:Group": "Group"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Lts/stream",
   "fqn": "pulumi_cloudru.lts",
   "classes": {
-   "sbercloud:Lts/stream:Stream": "Stream"
+   "cloudru:Lts/stream:Stream": "Stream"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Mrs/cluster",
   "fqn": "pulumi_cloudru.mrs",
   "classes": {
-   "sbercloud:Mrs/cluster:cluster": "Cluster"
+   "cloudru:Mrs/cluster:cluster": "Cluster"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Mrs/job",
   "fqn": "pulumi_cloudru.mrs",
   "classes": {
-   "sbercloud:Mrs/job:Job": "Job"
+   "cloudru:Mrs/job:Job": "Job"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Nat/dnatRule",
   "fqn": "pulumi_cloudru.nat",
   "classes": {
-   "sbercloud:Nat/dnatRule:DnatRule": "DnatRule"
+   "cloudru:Nat/dnatRule:DnatRule": "DnatRule"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Nat/gateway",
   "fqn": "pulumi_cloudru.nat",
   "classes": {
-   "sbercloud:Nat/gateway:Gateway": "Gateway"
+   "cloudru:Nat/gateway:Gateway": "Gateway"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Nat/snatRule",
   "fqn": "pulumi_cloudru.nat",
   "classes": {
-   "sbercloud:Nat/snatRule:SnatRule": "SnatRule"
+   "cloudru:Nat/snatRule:SnatRule": "SnatRule"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "NetworkAcl/acl",
   "fqn": "pulumi_cloudru.networkacl",
   "classes": {
-   "sbercloud:NetworkAcl/acl:Acl": "Acl"
+   "cloudru:NetworkAcl/acl:Acl": "Acl"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "NetworkAcl/aclRule",
   "fqn": "pulumi_cloudru.networkacl",
   "classes": {
-   "sbercloud:NetworkAcl/aclRule:AclRule": "AclRule"
+   "cloudru:NetworkAcl/aclRule:AclRule": "AclRule"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Obs/bucket",
   "fqn": "pulumi_cloudru.obs",
   "classes": {
-   "sbercloud:Obs/bucket:Bucket": "Bucket"
+   "cloudru:Obs/bucket:Bucket": "Bucket"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Obs/bucketObject",
   "fqn": "pulumi_cloudru.obs",
   "classes": {
-   "sbercloud:Obs/bucketObject:BucketObject": "BucketObject"
+   "cloudru:Obs/bucketObject:BucketObject": "BucketObject"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Obs/bucketPolicy",
   "fqn": "pulumi_cloudru.obs",
   "classes": {
-   "sbercloud:Obs/bucketPolicy:BucketPolicy": "BucketPolicy"
+   "cloudru:Obs/bucketPolicy:BucketPolicy": "BucketPolicy"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Rds/backup",
   "fqn": "pulumi_cloudru.rds",
   "classes": {
-   "sbercloud:Rds/backup:Backup": "Backup"
+   "cloudru:Rds/backup:Backup": "Backup"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Rds/instance",
   "fqn": "pulumi_cloudru.rds",
   "classes": {
-   "sbercloud:Rds/instance:Instance": "Instance"
+   "cloudru:Rds/instance:Instance": "Instance"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Rds/instanceEipAssociate",
   "fqn": "pulumi_cloudru.rds",
   "classes": {
-   "sbercloud:Rds/instanceEipAssociate:InstanceEipAssociate": "InstanceEipAssociate"
+   "cloudru:Rds/instanceEipAssociate:InstanceEipAssociate": "InstanceEipAssociate"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Rds/mysqlAccount",
   "fqn": "pulumi_cloudru.rds",
   "classes": {
-   "sbercloud:Rds/mysqlAccount:MysqlAccount": "MysqlAccount"
+   "cloudru:Rds/mysqlAccount:MysqlAccount": "MysqlAccount"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Rds/mysqlBinlog",
   "fqn": "pulumi_cloudru.rds",
   "classes": {
-   "sbercloud:Rds/mysqlBinlog:MysqlBinlog": "MysqlBinlog"
+   "cloudru:Rds/mysqlBinlog:MysqlBinlog": "MysqlBinlog"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Rds/mysqlDatabase",
   "fqn": "pulumi_cloudru.rds",
   "classes": {
-   "sbercloud:Rds/mysqlDatabase:MysqlDatabase": "MysqlDatabase"
+   "cloudru:Rds/mysqlDatabase:MysqlDatabase": "MysqlDatabase"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Rds/mysqlDatabasePrivilege",
   "fqn": "pulumi_cloudru.rds",
   "classes": {
-   "sbercloud:Rds/mysqlDatabasePrivilege:MysqlDatabasePrivilege": "MysqlDatabasePrivilege"
+   "cloudru:Rds/mysqlDatabasePrivilege:MysqlDatabasePrivilege": "MysqlDatabasePrivilege"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Rds/mysqlDatabaseTableRestore",
   "fqn": "pulumi_cloudru.rds",
   "classes": {
-   "sbercloud:Rds/mysqlDatabaseTableRestore:MysqlDatabaseTableRestore": "MysqlDatabaseTableRestore"
+   "cloudru:Rds/mysqlDatabaseTableRestore:MysqlDatabaseTableRestore": "MysqlDatabaseTableRestore"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Rds/parametergroup",
   "fqn": "pulumi_cloudru.rds",
   "classes": {
-   "sbercloud:Rds/parametergroup:Parametergroup": "Parametergroup"
+   "cloudru:Rds/parametergroup:Parametergroup": "Parametergroup"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Rds/pgAccount",
   "fqn": "pulumi_cloudru.rds",
   "classes": {
-   "sbercloud:Rds/pgAccount:PgAccount": "PgAccount"
+   "cloudru:Rds/pgAccount:PgAccount": "PgAccount"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Rds/pgAccountRoles",
   "fqn": "pulumi_cloudru.rds",
   "classes": {
-   "sbercloud:Rds/pgAccountRoles:PgAccountRoles": "PgAccountRoles"
+   "cloudru:Rds/pgAccountRoles:PgAccountRoles": "PgAccountRoles"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Rds/pgDatabase",
   "fqn": "pulumi_cloudru.rds",
   "classes": {
-   "sbercloud:Rds/pgDatabase:PgDatabase": "PgDatabase"
+   "cloudru:Rds/pgDatabase:PgDatabase": "PgDatabase"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Rds/pgHba",
   "fqn": "pulumi_cloudru.rds",
   "classes": {
-   "sbercloud:Rds/pgHba:PgHba": "PgHba"
+   "cloudru:Rds/pgHba:PgHba": "PgHba"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Rds/pgPlugin",
   "fqn": "pulumi_cloudru.rds",
   "classes": {
-   "sbercloud:Rds/pgPlugin:PgPlugin": "PgPlugin"
+   "cloudru:Rds/pgPlugin:PgPlugin": "PgPlugin"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Rds/pgPluginParameter",
   "fqn": "pulumi_cloudru.rds",
   "classes": {
-   "sbercloud:Rds/pgPluginParameter:PgPluginParameter": "PgPluginParameter"
+   "cloudru:Rds/pgPluginParameter:PgPluginParameter": "PgPluginParameter"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Rds/pgPluginUpdate",
   "fqn": "pulumi_cloudru.rds",
   "classes": {
-   "sbercloud:Rds/pgPluginUpdate:PgPluginUpdate": "PgPluginUpdate"
+   "cloudru:Rds/pgPluginUpdate:PgPluginUpdate": "PgPluginUpdate"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Rds/pgSqlLimit",
   "fqn": "pulumi_cloudru.rds",
   "classes": {
-   "sbercloud:Rds/pgSqlLimit:PgSqlLimit": "PgSqlLimit"
+   "cloudru:Rds/pgSqlLimit:PgSqlLimit": "PgSqlLimit"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Rds/readReplicaInstance",
   "fqn": "pulumi_cloudru.rds",
   "classes": {
-   "sbercloud:Rds/readReplicaInstance:ReadReplicaInstance": "ReadReplicaInstance"
+   "cloudru:Rds/readReplicaInstance:ReadReplicaInstance": "ReadReplicaInstance"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Rds/sqlAudit",
   "fqn": "pulumi_cloudru.rds",
   "classes": {
-   "sbercloud:Rds/sqlAudit:SqlAudit": "SqlAudit"
+   "cloudru:Rds/sqlAudit:SqlAudit": "SqlAudit"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Rds/sqlserverAccount",
   "fqn": "pulumi_cloudru.rds",
   "classes": {
-   "sbercloud:Rds/sqlserverAccount:SqlserverAccount": "SqlserverAccount"
+   "cloudru:Rds/sqlserverAccount:SqlserverAccount": "SqlserverAccount"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Rds/sqlserverDatabase",
   "fqn": "pulumi_cloudru.rds",
   "classes": {
-   "sbercloud:Rds/sqlserverDatabase:SqlserverDatabase": "SqlserverDatabase"
+   "cloudru:Rds/sqlserverDatabase:SqlserverDatabase": "SqlserverDatabase"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Rds/sqlserverDatabasePrivilege",
   "fqn": "pulumi_cloudru.rds",
   "classes": {
-   "sbercloud:Rds/sqlserverDatabasePrivilege:SqlserverDatabasePrivilege": "SqlserverDatabasePrivilege"
+   "cloudru:Rds/sqlserverDatabasePrivilege:SqlserverDatabasePrivilege": "SqlserverDatabasePrivilege"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Sfs/accessRule",
   "fqn": "pulumi_cloudru.sfs",
   "classes": {
-   "sbercloud:Sfs/accessRule:AccessRule": "AccessRule"
+   "cloudru:Sfs/accessRule:AccessRule": "AccessRule"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Sfs/fileSystem",
   "fqn": "pulumi_cloudru.sfs",
   "classes": {
-   "sbercloud:Sfs/fileSystem:FileSystem": "FileSystem"
+   "cloudru:Sfs/fileSystem:FileSystem": "FileSystem"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Sfs/turbo",
   "fqn": "pulumi_cloudru.sfs",
   "classes": {
-   "sbercloud:Sfs/turbo:Turbo": "Turbo"
+   "cloudru:Sfs/turbo:Turbo": "Turbo"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "SharedApig/api",
   "fqn": "pulumi_cloudru.sharedapig",
   "classes": {
-   "sbercloud:SharedApig/api:Api": "Api"
+   "cloudru:SharedApig/api:Api": "Api"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "SharedApig/group",
   "fqn": "pulumi_cloudru.sharedapig",
   "classes": {
-   "sbercloud:SharedApig/group:Group": "Group"
+   "cloudru:SharedApig/group:Group": "Group"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Vpc/addressGroup",
   "fqn": "pulumi_cloudru.vpc",
   "classes": {
-   "sbercloud:Vpc/addressGroup:AddressGroup": "AddressGroup"
+   "cloudru:Vpc/addressGroup:AddressGroup": "AddressGroup"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Vpc/bandwidth",
   "fqn": "pulumi_cloudru.vpc",
   "classes": {
-   "sbercloud:Vpc/bandwidth:Bandwidth": "Bandwidth"
+   "cloudru:Vpc/bandwidth:Bandwidth": "Bandwidth"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Vpc/eip",
   "fqn": "pulumi_cloudru.vpc",
   "classes": {
-   "sbercloud:Vpc/eip:Eip": "Eip"
+   "cloudru:Vpc/eip:Eip": "Eip"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Vpc/peeringConnection",
   "fqn": "pulumi_cloudru.vpc",
   "classes": {
-   "sbercloud:Vpc/peeringConnection:PeeringConnection": "PeeringConnection"
+   "cloudru:Vpc/peeringConnection:PeeringConnection": "PeeringConnection"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Vpc/peeringConnectionAccepter",
   "fqn": "pulumi_cloudru.vpc",
   "classes": {
-   "sbercloud:Vpc/peeringConnectionAccepter:PeeringConnectionAccepter": "PeeringConnectionAccepter"
+   "cloudru:Vpc/peeringConnectionAccepter:PeeringConnectionAccepter": "PeeringConnectionAccepter"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Vpc/route",
   "fqn": "pulumi_cloudru.vpc",
   "classes": {
-   "sbercloud:Vpc/route:Route": "Route"
+   "cloudru:Vpc/route:Route": "Route"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Vpc/routeTable",
   "fqn": "pulumi_cloudru.vpc",
   "classes": {
-   "sbercloud:Vpc/routeTable:RouteTable": "RouteTable"
+   "cloudru:Vpc/routeTable:RouteTable": "RouteTable"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Vpc/secgroup",
   "fqn": "pulumi_cloudru.vpc",
   "classes": {
-   "sbercloud:Vpc/secgroup:Secgroup": "Secgroup"
+   "cloudru:Vpc/secgroup:Secgroup": "Secgroup"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Vpc/secgroupRule",
   "fqn": "pulumi_cloudru.vpc",
   "classes": {
-   "sbercloud:Vpc/secgroupRule:SecgroupRule": "SecgroupRule"
+   "cloudru:Vpc/secgroupRule:SecgroupRule": "SecgroupRule"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Vpc/subnet",
   "fqn": "pulumi_cloudru.vpc",
   "classes": {
-   "sbercloud:Vpc/subnet:Subnet": "Subnet"
+   "cloudru:Vpc/subnet:Subnet": "Subnet"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Vpc/vip",
   "fqn": "pulumi_cloudru.vpc",
   "classes": {
-   "sbercloud:Vpc/vip:Vip": "Vip"
+   "cloudru:Vpc/vip:Vip": "Vip"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Vpc/vipAssociate",
   "fqn": "pulumi_cloudru.vpc",
   "classes": {
-   "sbercloud:Vpc/vipAssociate:VipAssociate": "VipAssociate"
+   "cloudru:Vpc/vipAssociate:VipAssociate": "VipAssociate"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Vpc/vpc",
   "fqn": "pulumi_cloudru.vpc",
   "classes": {
-   "sbercloud:Vpc/vpc:Vpc": "Vpc"
+   "cloudru:Vpc/vpc:Vpc": "Vpc"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Vpcep/endpoint",
   "fqn": "pulumi_cloudru.vpcep",
   "classes": {
-   "sbercloud:Vpcep/endpoint:Endpoint": "Endpoint"
+   "cloudru:Vpcep/endpoint:Endpoint": "Endpoint"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "Vpcep/service",
   "fqn": "pulumi_cloudru.vpcep",
   "classes": {
-   "sbercloud:Vpcep/service:Service": "Service"
+   "cloudru:Vpcep/service:Service": "Service"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/apigAclPolicy",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/apigAclPolicy:ApigAclPolicy": "ApigAclPolicy"
+   "cloudru:index/apigAclPolicy:ApigAclPolicy": "ApigAclPolicy"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/apigAclPolicyAssociate",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/apigAclPolicyAssociate:ApigAclPolicyAssociate": "ApigAclPolicyAssociate"
+   "cloudru:index/apigAclPolicyAssociate:ApigAclPolicyAssociate": "ApigAclPolicyAssociate"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/apigApiAction",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/apigApiAction:ApigApiAction": "ApigApiAction"
+   "cloudru:index/apigApiAction:ApigApiAction": "ApigApiAction"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/apigApiBatchAction",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/apigApiBatchAction:ApigApiBatchAction": "ApigApiBatchAction"
+   "cloudru:index/apigApiBatchAction:ApigApiBatchAction": "ApigApiBatchAction"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/apigApiCheck",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/apigApiCheck:ApigApiCheck": "ApigApiCheck"
+   "cloudru:index/apigApiCheck:ApigApiCheck": "ApigApiCheck"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/apigApiDebug",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/apigApiDebug:ApigApiDebug": "ApigApiDebug"
+   "cloudru:index/apigApiDebug:ApigApiDebug": "ApigApiDebug"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/apigApiVersionUnpublish",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/apigApiVersionUnpublish:ApigApiVersionUnpublish": "ApigApiVersionUnpublish"
+   "cloudru:index/apigApiVersionUnpublish:ApigApiVersionUnpublish": "ApigApiVersionUnpublish"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/apigAppcode",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/apigAppcode:ApigAppcode": "ApigAppcode"
+   "cloudru:index/apigAppcode:ApigAppcode": "ApigAppcode"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/apigApplicationAcl",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/apigApplicationAcl:ApigApplicationAcl": "ApigApplicationAcl"
+   "cloudru:index/apigApplicationAcl:ApigApplicationAcl": "ApigApplicationAcl"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/apigApplicationAuthorization",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/apigApplicationAuthorization:ApigApplicationAuthorization": "ApigApplicationAuthorization"
+   "cloudru:index/apigApplicationAuthorization:ApigApplicationAuthorization": "ApigApplicationAuthorization"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/apigApplicationQuota",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/apigApplicationQuota:ApigApplicationQuota": "ApigApplicationQuota"
+   "cloudru:index/apigApplicationQuota:ApigApplicationQuota": "ApigApplicationQuota"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/apigApplicationQuotaAssociate",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/apigApplicationQuotaAssociate:ApigApplicationQuotaAssociate": "ApigApplicationQuotaAssociate"
+   "cloudru:index/apigApplicationQuotaAssociate:ApigApplicationQuotaAssociate": "ApigApplicationQuotaAssociate"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/apigCertificate",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/apigCertificate:ApigCertificate": "ApigCertificate"
+   "cloudru:index/apigCertificate:ApigCertificate": "ApigCertificate"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/apigChannel",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/apigChannel:ApigChannel": "ApigChannel"
+   "cloudru:index/apigChannel:ApigChannel": "ApigChannel"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/apigEndpointConnectionManagement",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/apigEndpointConnectionManagement:ApigEndpointConnectionManagement": "ApigEndpointConnectionManagement"
+   "cloudru:index/apigEndpointConnectionManagement:ApigEndpointConnectionManagement": "ApigEndpointConnectionManagement"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/apigEndpointWhitelist",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/apigEndpointWhitelist:ApigEndpointWhitelist": "ApigEndpointWhitelist"
+   "cloudru:index/apigEndpointWhitelist:ApigEndpointWhitelist": "ApigEndpointWhitelist"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/apigEnvironmentVariable",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/apigEnvironmentVariable:ApigEnvironmentVariable": "ApigEnvironmentVariable"
+   "cloudru:index/apigEnvironmentVariable:ApigEnvironmentVariable": "ApigEnvironmentVariable"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/apigInstanceFeature",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/apigInstanceFeature:ApigInstanceFeature": "ApigInstanceFeature"
+   "cloudru:index/apigInstanceFeature:ApigInstanceFeature": "ApigInstanceFeature"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/apigInstanceRoutes",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/apigInstanceRoutes:ApigInstanceRoutes": "ApigInstanceRoutes"
+   "cloudru:index/apigInstanceRoutes:ApigInstanceRoutes": "ApigInstanceRoutes"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/apigPlugin",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/apigPlugin:ApigPlugin": "ApigPlugin"
+   "cloudru:index/apigPlugin:ApigPlugin": "ApigPlugin"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/apigPluginAssociate",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/apigPluginAssociate:ApigPluginAssociate": "ApigPluginAssociate"
+   "cloudru:index/apigPluginAssociate:ApigPluginAssociate": "ApigPluginAssociate"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/apigPluginBatchApisAssociate",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/apigPluginBatchApisAssociate:ApigPluginBatchApisAssociate": "ApigPluginBatchApisAssociate"
+   "cloudru:index/apigPluginBatchApisAssociate:ApigPluginBatchApisAssociate": "ApigPluginBatchApisAssociate"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/apigSignature",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/apigSignature:ApigSignature": "ApigSignature"
+   "cloudru:index/apigSignature:ApigSignature": "ApigSignature"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/apigSignatureAssociate",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/apigSignatureAssociate:ApigSignatureAssociate": "ApigSignatureAssociate"
+   "cloudru:index/apigSignatureAssociate:ApigSignatureAssociate": "ApigSignatureAssociate"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/cbhAssetAgencyAuthorization",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/cbhAssetAgencyAuthorization:CbhAssetAgencyAuthorization": "CbhAssetAgencyAuthorization"
+   "cloudru:index/cbhAssetAgencyAuthorization:CbhAssetAgencyAuthorization": "CbhAssetAgencyAuthorization"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/cbhHaInstance",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/cbhHaInstance:CbhHaInstance": "CbhHaInstance"
+   "cloudru:index/cbhHaInstance:CbhHaInstance": "CbhHaInstance"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/cbhInstance",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/cbhInstance:CbhInstance": "CbhInstance"
+   "cloudru:index/cbhInstance:CbhInstance": "CbhInstance"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/cbrBackupShare",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/cbrBackupShare:CbrBackupShare": "CbrBackupShare"
+   "cloudru:index/cbrBackupShare:CbrBackupShare": "CbrBackupShare"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/cbrBackupShareAccepter",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/cbrBackupShareAccepter:CbrBackupShareAccepter": "CbrBackupShareAccepter"
+   "cloudru:index/cbrBackupShareAccepter:CbrBackupShareAccepter": "CbrBackupShareAccepter"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/cbrCheckpoint",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/cbrCheckpoint:CbrCheckpoint": "CbrCheckpoint"
+   "cloudru:index/cbrCheckpoint:CbrCheckpoint": "CbrCheckpoint"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/cceClusterUpgrade",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/cceClusterUpgrade:CceClusterUpgrade": "CceClusterUpgrade"
+   "cloudru:index/cceClusterUpgrade:CceClusterUpgrade": "CceClusterUpgrade"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/cceNodesRemove",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/cceNodesRemove:CceNodesRemove": "CceNodesRemove"
+   "cloudru:index/cceNodesRemove:CceNodesRemove": "CceNodesRemove"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/cssConfiguration",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/cssConfiguration:CssConfiguration": "CssConfiguration"
+   "cloudru:index/cssConfiguration:CssConfiguration": "CssConfiguration"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/dcsAccount",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/dcsAccount:DcsAccount": "DcsAccount"
+   "cloudru:index/dcsAccount:DcsAccount": "DcsAccount"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/dcsBackup",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/dcsBackup:DcsBackup": "DcsBackup"
+   "cloudru:index/dcsBackup:DcsBackup": "DcsBackup"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/dcsParameters",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/dcsParameters:DcsParameters": "DcsParameters"
+   "cloudru:index/dcsParameters:DcsParameters": "DcsParameters"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/dcsRestore",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/dcsRestore:DcsRestore": "DcsRestore"
+   "cloudru:index/dcsRestore:DcsRestore": "DcsRestore"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/ddsParameterTemplate",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/ddsParameterTemplate:DdsParameterTemplate": "DdsParameterTemplate"
+   "cloudru:index/ddsParameterTemplate:DdsParameterTemplate": "DdsParameterTemplate"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/ddsParameterTemplateApply",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/ddsParameterTemplateApply:DdsParameterTemplateApply": "DdsParameterTemplateApply"
+   "cloudru:index/ddsParameterTemplateApply:DdsParameterTemplateApply": "DdsParameterTemplateApply"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/ddsParameterTemplateCompare",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/ddsParameterTemplateCompare:DdsParameterTemplateCompare": "DdsParameterTemplateCompare"
+   "cloudru:index/ddsParameterTemplateCompare:DdsParameterTemplateCompare": "DdsParameterTemplateCompare"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/ddsParameterTemplateCopy",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/ddsParameterTemplateCopy:DdsParameterTemplateCopy": "DdsParameterTemplateCopy"
+   "cloudru:index/ddsParameterTemplateCopy:DdsParameterTemplateCopy": "DdsParameterTemplateCopy"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/ddsParameterTemplateReset",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/ddsParameterTemplateReset:DdsParameterTemplateReset": "DdsParameterTemplateReset"
+   "cloudru:index/ddsParameterTemplateReset:DdsParameterTemplateReset": "DdsParameterTemplateReset"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/dmsInstance",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/dmsInstance:DmsInstance": "DmsInstance"
+   "cloudru:index/dmsInstance:DmsInstance": "DmsInstance"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/dmsKafkaConsumerGroup",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/dmsKafkaConsumerGroup:DmsKafkaConsumerGroup": "DmsKafkaConsumerGroup"
+   "cloudru:index/dmsKafkaConsumerGroup:DmsKafkaConsumerGroup": "DmsKafkaConsumerGroup"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/dmsKafkaMessageProduce",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/dmsKafkaMessageProduce:DmsKafkaMessageProduce": "DmsKafkaMessageProduce"
+   "cloudru:index/dmsKafkaMessageProduce:DmsKafkaMessageProduce": "DmsKafkaMessageProduce"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/dmsRocketmqConsumerGroup",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/dmsRocketmqConsumerGroup:DmsRocketmqConsumerGroup": "DmsRocketmqConsumerGroup"
+   "cloudru:index/dmsRocketmqConsumerGroup:DmsRocketmqConsumerGroup": "DmsRocketmqConsumerGroup"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/dmsRocketmqConsumptionVerify",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/dmsRocketmqConsumptionVerify:DmsRocketmqConsumptionVerify": "DmsRocketmqConsumptionVerify"
+   "cloudru:index/dmsRocketmqConsumptionVerify:DmsRocketmqConsumptionVerify": "DmsRocketmqConsumptionVerify"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/dmsRocketmqDeadLetterResend",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/dmsRocketmqDeadLetterResend:DmsRocketmqDeadLetterResend": "DmsRocketmqDeadLetterResend"
+   "cloudru:index/dmsRocketmqDeadLetterResend:DmsRocketmqDeadLetterResend": "DmsRocketmqDeadLetterResend"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/dmsRocketmqInstance",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/dmsRocketmqInstance:DmsRocketmqInstance": "DmsRocketmqInstance"
+   "cloudru:index/dmsRocketmqInstance:DmsRocketmqInstance": "DmsRocketmqInstance"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/dmsRocketmqMessageOffsetReset",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/dmsRocketmqMessageOffsetReset:DmsRocketmqMessageOffsetReset": "DmsRocketmqMessageOffsetReset"
+   "cloudru:index/dmsRocketmqMessageOffsetReset:DmsRocketmqMessageOffsetReset": "DmsRocketmqMessageOffsetReset"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/dmsRocketmqMigrationTask",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/dmsRocketmqMigrationTask:DmsRocketmqMigrationTask": "DmsRocketmqMigrationTask"
+   "cloudru:index/dmsRocketmqMigrationTask:DmsRocketmqMigrationTask": "DmsRocketmqMigrationTask"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/dmsRocketmqTopic",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/dmsRocketmqTopic:DmsRocketmqTopic": "DmsRocketmqTopic"
+   "cloudru:index/dmsRocketmqTopic:DmsRocketmqTopic": "DmsRocketmqTopic"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/dmsRocketmqUser",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/dmsRocketmqUser:DmsRocketmqUser": "DmsRocketmqUser"
+   "cloudru:index/dmsRocketmqUser:DmsRocketmqUser": "DmsRocketmqUser"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/elbCertificate",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/elbCertificate:ElbCertificate": "ElbCertificate"
+   "cloudru:index/elbCertificate:ElbCertificate": "ElbCertificate"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/elbIpgroup",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/elbIpgroup:ElbIpgroup": "ElbIpgroup"
+   "cloudru:index/elbIpgroup:ElbIpgroup": "ElbIpgroup"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/elbL7policy",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/elbL7policy:ElbL7policy": "ElbL7policy"
+   "cloudru:index/elbL7policy:ElbL7policy": "ElbL7policy"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/elbL7rule",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/elbL7rule:ElbL7rule": "ElbL7rule"
+   "cloudru:index/elbL7rule:ElbL7rule": "ElbL7rule"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/elbListener",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/elbListener:ElbListener": "ElbListener"
+   "cloudru:index/elbListener:ElbListener": "ElbListener"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/elbLoadbalancer",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/elbLoadbalancer:ElbLoadbalancer": "ElbLoadbalancer"
+   "cloudru:index/elbLoadbalancer:ElbLoadbalancer": "ElbLoadbalancer"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/elbMember",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/elbMember:ElbMember": "ElbMember"
+   "cloudru:index/elbMember:ElbMember": "ElbMember"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/elbMonitor",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/elbMonitor:ElbMonitor": "ElbMonitor"
+   "cloudru:index/elbMonitor:ElbMonitor": "ElbMonitor"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/elbPool",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/elbPool:ElbPool": "ElbPool"
+   "cloudru:index/elbPool:ElbPool": "ElbPool"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/elbSecurityPolicy",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/elbSecurityPolicy:ElbSecurityPolicy": "ElbSecurityPolicy"
+   "cloudru:index/elbSecurityPolicy:ElbSecurityPolicy": "ElbSecurityPolicy"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/fgsApplication",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/fgsApplication:FgsApplication": "FgsApplication"
+   "cloudru:index/fgsApplication:FgsApplication": "FgsApplication"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/fgsAsyncInvokeConfiguration",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/fgsAsyncInvokeConfiguration:FgsAsyncInvokeConfiguration": "FgsAsyncInvokeConfiguration"
+   "cloudru:index/fgsAsyncInvokeConfiguration:FgsAsyncInvokeConfiguration": "FgsAsyncInvokeConfiguration"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/fgsDependencyVersion",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/fgsDependencyVersion:FgsDependencyVersion": "FgsDependencyVersion"
+   "cloudru:index/fgsDependencyVersion:FgsDependencyVersion": "FgsDependencyVersion"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/fgsFunctionEvent",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/fgsFunctionEvent:FgsFunctionEvent": "FgsFunctionEvent"
+   "cloudru:index/fgsFunctionEvent:FgsFunctionEvent": "FgsFunctionEvent"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/fgsFunctionTopping",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/fgsFunctionTopping:FgsFunctionTopping": "FgsFunctionTopping"
+   "cloudru:index/fgsFunctionTopping:FgsFunctionTopping": "FgsFunctionTopping"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/fgsFunctionTrigger",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/fgsFunctionTrigger:FgsFunctionTrigger": "FgsFunctionTrigger"
+   "cloudru:index/fgsFunctionTrigger:FgsFunctionTrigger": "FgsFunctionTrigger"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/fgsFunctionTriggerStatusAction",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/fgsFunctionTriggerStatusAction:FgsFunctionTriggerStatusAction": "FgsFunctionTriggerStatusAction"
+   "cloudru:index/fgsFunctionTriggerStatusAction:FgsFunctionTriggerStatusAction": "FgsFunctionTriggerStatusAction"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/fgsLtsLogEnable",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/fgsLtsLogEnable:FgsLtsLogEnable": "FgsLtsLogEnable"
+   "cloudru:index/fgsLtsLogEnable:FgsLtsLogEnable": "FgsLtsLogEnable"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/gesGraph",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/gesGraph:GesGraph": "GesGraph"
+   "cloudru:index/gesGraph:GesGraph": "GesGraph"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/identityGroupMembershipV3",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/identityGroupMembershipV3:IdentityGroupMembershipV3": "IdentityGroupMembershipV3"
+   "cloudru:index/identityGroupMembershipV3:IdentityGroupMembershipV3": "IdentityGroupMembershipV3"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/identityGroupV3",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/identityGroupV3:IdentityGroupV3": "IdentityGroupV3"
+   "cloudru:index/identityGroupV3:IdentityGroupV3": "IdentityGroupV3"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/identityRoleAssignmentV3",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/identityRoleAssignmentV3:IdentityRoleAssignmentV3": "IdentityRoleAssignmentV3"
+   "cloudru:index/identityRoleAssignmentV3:IdentityRoleAssignmentV3": "IdentityRoleAssignmentV3"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/identityUserV3",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/identityUserV3:IdentityUserV3": "IdentityUserV3"
+   "cloudru:index/identityUserV3:IdentityUserV3": "IdentityUserV3"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/kpsKeypairAssociate",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/kpsKeypairAssociate:KpsKeypairAssociate": "KpsKeypairAssociate"
+   "cloudru:index/kpsKeypairAssociate:KpsKeypairAssociate": "KpsKeypairAssociate"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/kpsKeypairDisassociate",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/kpsKeypairDisassociate:KpsKeypairDisassociate": "KpsKeypairDisassociate"
+   "cloudru:index/kpsKeypairDisassociate:KpsKeypairDisassociate": "KpsKeypairDisassociate"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/networkingEipAssociate",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/networkingEipAssociate:NetworkingEipAssociate": "NetworkingEipAssociate"
+   "cloudru:index/networkingEipAssociate:NetworkingEipAssociate": "NetworkingEipAssociate"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/obsBucketAcl",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/obsBucketAcl:ObsBucketAcl": "ObsBucketAcl"
+   "cloudru:index/obsBucketAcl:ObsBucketAcl": "ObsBucketAcl"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/sfsTurboDataTask",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/sfsTurboDataTask:SfsTurboDataTask": "SfsTurboDataTask"
+   "cloudru:index/sfsTurboDataTask:SfsTurboDataTask": "SfsTurboDataTask"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/sfsTurboDir",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/sfsTurboDir:SfsTurboDir": "SfsTurboDir"
+   "cloudru:index/sfsTurboDir:SfsTurboDir": "SfsTurboDir"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/sfsTurboDirQuota",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/sfsTurboDirQuota:SfsTurboDirQuota": "SfsTurboDirQuota"
+   "cloudru:index/sfsTurboDirQuota:SfsTurboDirQuota": "SfsTurboDirQuota"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/sfsTurboDuTask",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/sfsTurboDuTask:SfsTurboDuTask": "SfsTurboDuTask"
+   "cloudru:index/sfsTurboDuTask:SfsTurboDuTask": "SfsTurboDuTask"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/sfsTurboObsTarget",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/sfsTurboObsTarget:SfsTurboObsTarget": "SfsTurboObsTarget"
+   "cloudru:index/sfsTurboObsTarget:SfsTurboObsTarget": "SfsTurboObsTarget"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/sfsTurboPermRule",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/sfsTurboPermRule:SfsTurboPermRule": "SfsTurboPermRule"
+   "cloudru:index/sfsTurboPermRule:SfsTurboPermRule": "SfsTurboPermRule"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/smnMessageDetection",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/smnMessageDetection:SmnMessageDetection": "SmnMessageDetection"
+   "cloudru:index/smnMessageDetection:SmnMessageDetection": "SmnMessageDetection"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/smnSubscription",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/smnSubscription:SmnSubscription": "SmnSubscription"
+   "cloudru:index/smnSubscription:SmnSubscription": "SmnSubscription"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/smnTopic",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/smnTopic:SmnTopic": "SmnTopic"
+   "cloudru:index/smnTopic:SmnTopic": "SmnTopic"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/swrOrganization",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/swrOrganization:SwrOrganization": "SwrOrganization"
+   "cloudru:index/swrOrganization:SwrOrganization": "SwrOrganization"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/swrOrganizationPermissions",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/swrOrganizationPermissions:SwrOrganizationPermissions": "SwrOrganizationPermissions"
+   "cloudru:index/swrOrganizationPermissions:SwrOrganizationPermissions": "SwrOrganizationPermissions"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/swrRepository",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/swrRepository:SwrRepository": "SwrRepository"
+   "cloudru:index/swrRepository:SwrRepository": "SwrRepository"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/vpnConnection",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/vpnConnection:VpnConnection": "VpnConnection"
+   "cloudru:index/vpnConnection:VpnConnection": "VpnConnection"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/vpnConnectionHealthCheck",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/vpnConnectionHealthCheck:VpnConnectionHealthCheck": "VpnConnectionHealthCheck"
+   "cloudru:index/vpnConnectionHealthCheck:VpnConnectionHealthCheck": "VpnConnectionHealthCheck"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/vpnCustomerGateway",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/vpnCustomerGateway:VpnCustomerGateway": "VpnCustomerGateway"
+   "cloudru:index/vpnCustomerGateway:VpnCustomerGateway": "VpnCustomerGateway"
   }
  },
  {
-  "pkg": "sbercloud",
+  "pkg": "cloudru",
   "mod": "index/vpnGateway",
   "fqn": "pulumi_cloudru",
   "classes": {
-   "sbercloud:index/vpnGateway:VpnGateway": "VpnGateway"
+   "cloudru:index/vpnGateway:VpnGateway": "VpnGateway"
   }
  }
 ]
@@ -2343,8 +2343,8 @@ _utilities.register(
     resource_packages="""
 [
  {
-  "pkg": "sbercloud",
-  "token": "pulumi:providers:sbercloud",
+  "pkg": "cloudru",
+  "token": "pulumi:providers:cloudru",
   "fqn": "pulumi_cloudru",
   "class": "Provider"
  }

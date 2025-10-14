@@ -308,7 +308,7 @@ class _ApigApiActionState:
         pulumi.set(self, "version_id", value)
 
 
-@pulumi.type_token("sbercloud:index/apigApiAction:ApigApiAction")
+@pulumi.type_token("cloudru:index/apigApiAction:ApigApiAction")
 class ApigApiAction(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -392,7 +392,7 @@ class ApigApiAction(pulumi.CustomResource):
             __props__.__dict__["publish_time"] = None
             __props__.__dict__["version_id"] = None
         super(ApigApiAction, __self__).__init__(
-            'sbercloud:index/apigApiAction:ApigApiAction',
+            'cloudru:index/apigApiAction:ApigApiAction',
             resource_name,
             __props__,
             opts)

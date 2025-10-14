@@ -21,7 +21,7 @@ export class KpsKeypairAssociate extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/kpsKeypairAssociate:KpsKeypairAssociate';
+    public static readonly __pulumiType = 'cloudru:index/kpsKeypairAssociate:KpsKeypairAssociate';
 
     /**
      * Returns true if the given object is an instance of KpsKeypairAssociate.  This is designed to work even

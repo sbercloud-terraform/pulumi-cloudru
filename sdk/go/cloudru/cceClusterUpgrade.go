@@ -46,7 +46,7 @@ func NewCceClusterUpgrade(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CceClusterUpgrade
-	err := ctx.RegisterResource("sbercloud:index/cceClusterUpgrade:CceClusterUpgrade", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/cceClusterUpgrade:CceClusterUpgrade", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -58,7 +58,7 @@ func NewCceClusterUpgrade(ctx *pulumi.Context,
 func GetCceClusterUpgrade(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *CceClusterUpgradeState, opts ...pulumi.ResourceOption) (*CceClusterUpgrade, error) {
 	var resource CceClusterUpgrade
-	err := ctx.ReadResource("sbercloud:index/cceClusterUpgrade:CceClusterUpgrade", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/cceClusterUpgrade:CceClusterUpgrade", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

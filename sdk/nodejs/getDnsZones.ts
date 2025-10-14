@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 export function getDnsZones(args: GetDnsZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsZonesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("sbercloud:index/getDnsZones:getDnsZones", {
+    return pulumi.runtime.invoke("cloudru:index/getDnsZones:getDnsZones", {
         "enterpriseProjectId": args.enterpriseProjectId,
         "name": args.name,
         "region": args.region,
@@ -63,7 +63,7 @@ export interface GetDnsZonesResult {
 }
 export function getDnsZonesOutput(args: GetDnsZonesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDnsZonesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("sbercloud:index/getDnsZones:getDnsZones", {
+    return pulumi.runtime.invokeOutput("cloudru:index/getDnsZones:getDnsZones", {
         "enterpriseProjectId": args.enterpriseProjectId,
         "name": args.name,
         "region": args.region,

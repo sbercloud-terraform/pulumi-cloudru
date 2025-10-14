@@ -36,7 +36,7 @@ func NewCceNodesRemove(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CceNodesRemove
-	err := ctx.RegisterResource("sbercloud:index/cceNodesRemove:CceNodesRemove", name, args, &resource, opts...)
+	err := ctx.RegisterResource("cloudru:index/cceNodesRemove:CceNodesRemove", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -48,7 +48,7 @@ func NewCceNodesRemove(ctx *pulumi.Context,
 func GetCceNodesRemove(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *CceNodesRemoveState, opts ...pulumi.ResourceOption) (*CceNodesRemove, error) {
 	var resource CceNodesRemove
-	err := ctx.ReadResource("sbercloud:index/cceNodesRemove:CceNodesRemove", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("cloudru:index/cceNodesRemove:CceNodesRemove", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

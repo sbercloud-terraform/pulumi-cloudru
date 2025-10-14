@@ -19,7 +19,7 @@ export class ApigApiBatchAction extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/apigApiBatchAction:ApigApiBatchAction';
+    public static readonly __pulumiType = 'cloudru:index/apigApiBatchAction:ApigApiBatchAction';
 
     /**
      * Returns true if the given object is an instance of ApigApiBatchAction.  This is designed to work even

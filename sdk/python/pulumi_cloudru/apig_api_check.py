@@ -334,7 +334,7 @@ class _ApigApiCheckState:
         pulumi.set(self, "type", value)
 
 
-@pulumi.type_token("sbercloud:index/apigApiCheck:ApigApiCheck")
+@pulumi.type_token("cloudru:index/apigApiCheck:ApigApiCheck")
 class ApigApiCheck(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -421,7 +421,7 @@ class ApigApiCheck(pulumi.CustomResource):
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
         super(ApigApiCheck, __self__).__init__(
-            'sbercloud:index/apigApiCheck:ApigApiCheck',
+            'cloudru:index/apigApiCheck:ApigApiCheck',
             resource_name,
             __props__,
             opts)

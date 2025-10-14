@@ -277,7 +277,7 @@ class _ApigApiBatchActionState:
         pulumi.set(self, "remark", value)
 
 
-@pulumi.type_token("sbercloud:index/apigApiBatchAction:ApigApiBatchAction")
+@pulumi.type_token("cloudru:index/apigApiBatchAction:ApigApiBatchAction")
 class ApigApiBatchAction(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -359,7 +359,7 @@ class ApigApiBatchAction(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["remark"] = remark
         super(ApigApiBatchAction, __self__).__init__(
-            'sbercloud:index/apigApiBatchAction:ApigApiBatchAction',
+            'cloudru:index/apigApiBatchAction:ApigApiBatchAction',
             resource_name,
             __props__,
             opts)

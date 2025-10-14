@@ -224,7 +224,7 @@ class _ApigPluginBatchApisAssociateState:
         pulumi.set(self, "region", value)
 
 
-@pulumi.type_token("sbercloud:index/apigPluginBatchApisAssociate:ApigPluginBatchApisAssociate")
+@pulumi.type_token("cloudru:index/apigPluginBatchApisAssociate:ApigPluginBatchApisAssociate")
 class ApigPluginBatchApisAssociate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -302,7 +302,7 @@ class ApigPluginBatchApisAssociate(pulumi.CustomResource):
             __props__.__dict__["plugin_id"] = plugin_id
             __props__.__dict__["region"] = region
         super(ApigPluginBatchApisAssociate, __self__).__init__(
-            'sbercloud:index/apigPluginBatchApisAssociate:ApigPluginBatchApisAssociate',
+            'cloudru:index/apigPluginBatchApisAssociate:ApigPluginBatchApisAssociate',
             resource_name,
             __props__,
             opts)

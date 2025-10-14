@@ -19,7 +19,7 @@ export class ApigApiDebug extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sbercloud:index/apigApiDebug:ApigApiDebug';
+    public static readonly __pulumiType = 'cloudru:index/apigApiDebug:ApigApiDebug';
 
     /**
      * Returns true if the given object is an instance of ApigApiDebug.  This is designed to work even

@@ -51,7 +51,7 @@ export class FileSystem extends pulumi.CustomResource {
     declare public readonly shareProto: pulumi.Output<string | undefined>;
     declare public readonly size: pulumi.Output<number>;
     declare public /*out*/ readonly status: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a FileSystem resource with the given unique name, arguments, and options.

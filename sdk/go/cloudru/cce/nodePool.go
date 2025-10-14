@@ -31,6 +31,7 @@ type NodePool struct {
 	ExtensionScaleGroups       NodePoolExtensionScaleGroupArrayOutput `pulumi:"extensionScaleGroups"`
 	FlavorId                   pulumi.StringOutput                    `pulumi:"flavorId"`
 	HostnameConfig             NodePoolHostnameConfigOutput           `pulumi:"hostnameConfig"`
+	IgnoreInitialNodeCount     pulumi.BoolPtrOutput                   `pulumi:"ignoreInitialNodeCount"`
 	InitialNodeCount           pulumi.IntOutput                       `pulumi:"initialNodeCount"`
 	InitializedConditions      pulumi.StringArrayOutput               `pulumi:"initializedConditions"`
 	KeyPair                    pulumi.StringPtrOutput                 `pulumi:"keyPair"`
@@ -134,6 +135,7 @@ type nodePoolState struct {
 	ExtensionScaleGroups       []NodePoolExtensionScaleGroup `pulumi:"extensionScaleGroups"`
 	FlavorId                   *string                       `pulumi:"flavorId"`
 	HostnameConfig             *NodePoolHostnameConfig       `pulumi:"hostnameConfig"`
+	IgnoreInitialNodeCount     *bool                         `pulumi:"ignoreInitialNodeCount"`
 	InitialNodeCount           *int                          `pulumi:"initialNodeCount"`
 	InitializedConditions      []string                      `pulumi:"initializedConditions"`
 	KeyPair                    *string                       `pulumi:"keyPair"`
@@ -189,6 +191,7 @@ type NodePoolState struct {
 	ExtensionScaleGroups       NodePoolExtensionScaleGroupArrayInput
 	FlavorId                   pulumi.StringPtrInput
 	HostnameConfig             NodePoolHostnameConfigPtrInput
+	IgnoreInitialNodeCount     pulumi.BoolPtrInput
 	InitialNodeCount           pulumi.IntPtrInput
 	InitializedConditions      pulumi.StringArrayInput
 	KeyPair                    pulumi.StringPtrInput
@@ -246,6 +249,7 @@ type nodePoolArgs struct {
 	ExtensionScaleGroups       []NodePoolExtensionScaleGroup `pulumi:"extensionScaleGroups"`
 	FlavorId                   string                        `pulumi:"flavorId"`
 	HostnameConfig             *NodePoolHostnameConfig       `pulumi:"hostnameConfig"`
+	IgnoreInitialNodeCount     *bool                         `pulumi:"ignoreInitialNodeCount"`
 	InitialNodeCount           int                           `pulumi:"initialNodeCount"`
 	InitializedConditions      []string                      `pulumi:"initializedConditions"`
 	KeyPair                    *string                       `pulumi:"keyPair"`
@@ -299,6 +303,7 @@ type NodePoolArgs struct {
 	ExtensionScaleGroups       NodePoolExtensionScaleGroupArrayInput
 	FlavorId                   pulumi.StringInput
 	HostnameConfig             NodePoolHostnameConfigPtrInput
+	IgnoreInitialNodeCount     pulumi.BoolPtrInput
 	InitialNodeCount           pulumi.IntInput
 	InitializedConditions      pulumi.StringArrayInput
 	KeyPair                    pulumi.StringPtrInput
@@ -482,6 +487,10 @@ func (o NodePoolOutput) FlavorId() pulumi.StringOutput {
 
 func (o NodePoolOutput) HostnameConfig() NodePoolHostnameConfigOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolHostnameConfigOutput { return v.HostnameConfig }).(NodePoolHostnameConfigOutput)
+}
+
+func (o NodePoolOutput) IgnoreInitialNodeCount() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.IgnoreInitialNodeCount }).(pulumi.BoolPtrOutput)
 }
 
 func (o NodePoolOutput) InitialNodeCount() pulumi.IntOutput {

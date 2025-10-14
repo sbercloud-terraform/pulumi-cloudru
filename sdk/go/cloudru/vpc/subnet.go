@@ -15,23 +15,25 @@ import (
 type Subnet struct {
 	pulumi.CustomResourceState
 
-	AvailabilityZone pulumi.StringOutput      `pulumi:"availabilityZone"`
-	Cidr             pulumi.StringOutput      `pulumi:"cidr"`
-	Description      pulumi.StringPtrOutput   `pulumi:"description"`
-	DhcpEnable       pulumi.BoolPtrOutput     `pulumi:"dhcpEnable"`
-	DhcpLeaseTime    pulumi.StringOutput      `pulumi:"dhcpLeaseTime"`
-	DnsLists         pulumi.StringArrayOutput `pulumi:"dnsLists"`
-	GatewayIp        pulumi.StringOutput      `pulumi:"gatewayIp"`
-	Ipv4SubnetId     pulumi.StringOutput      `pulumi:"ipv4SubnetId"`
-	Ipv6Cidr         pulumi.StringOutput      `pulumi:"ipv6Cidr"`
-	Ipv6Enable       pulumi.BoolPtrOutput     `pulumi:"ipv6Enable"`
-	Ipv6Gateway      pulumi.StringOutput      `pulumi:"ipv6Gateway"`
-	Ipv6SubnetId     pulumi.StringOutput      `pulumi:"ipv6SubnetId"`
-	Name             pulumi.StringOutput      `pulumi:"name"`
-	NtpServerAddress pulumi.StringPtrOutput   `pulumi:"ntpServerAddress"`
-	PrimaryDns       pulumi.StringOutput      `pulumi:"primaryDns"`
-	Region           pulumi.StringOutput      `pulumi:"region"`
-	SecondaryDns     pulumi.StringOutput      `pulumi:"secondaryDns"`
+	AvailabilityZone  pulumi.StringOutput      `pulumi:"availabilityZone"`
+	Cidr              pulumi.StringOutput      `pulumi:"cidr"`
+	Description       pulumi.StringPtrOutput   `pulumi:"description"`
+	DhcpDomainName    pulumi.StringPtrOutput   `pulumi:"dhcpDomainName"`
+	DhcpEnable        pulumi.BoolPtrOutput     `pulumi:"dhcpEnable"`
+	DhcpIpv6LeaseTime pulumi.StringOutput      `pulumi:"dhcpIpv6LeaseTime"`
+	DhcpLeaseTime     pulumi.StringOutput      `pulumi:"dhcpLeaseTime"`
+	DnsLists          pulumi.StringArrayOutput `pulumi:"dnsLists"`
+	GatewayIp         pulumi.StringOutput      `pulumi:"gatewayIp"`
+	Ipv4SubnetId      pulumi.StringOutput      `pulumi:"ipv4SubnetId"`
+	Ipv6Cidr          pulumi.StringOutput      `pulumi:"ipv6Cidr"`
+	Ipv6Enable        pulumi.BoolPtrOutput     `pulumi:"ipv6Enable"`
+	Ipv6Gateway       pulumi.StringOutput      `pulumi:"ipv6Gateway"`
+	Ipv6SubnetId      pulumi.StringOutput      `pulumi:"ipv6SubnetId"`
+	Name              pulumi.StringOutput      `pulumi:"name"`
+	NtpServerAddress  pulumi.StringPtrOutput   `pulumi:"ntpServerAddress"`
+	PrimaryDns        pulumi.StringOutput      `pulumi:"primaryDns"`
+	Region            pulumi.StringOutput      `pulumi:"region"`
+	SecondaryDns      pulumi.StringOutput      `pulumi:"secondaryDns"`
 	// schema: Deprecated
 	SubnetId pulumi.StringOutput    `pulumi:"subnetId"`
 	Tags     pulumi.StringMapOutput `pulumi:"tags"`
@@ -77,23 +79,25 @@ func GetSubnet(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Subnet resources.
 type subnetState struct {
-	AvailabilityZone *string  `pulumi:"availabilityZone"`
-	Cidr             *string  `pulumi:"cidr"`
-	Description      *string  `pulumi:"description"`
-	DhcpEnable       *bool    `pulumi:"dhcpEnable"`
-	DhcpLeaseTime    *string  `pulumi:"dhcpLeaseTime"`
-	DnsLists         []string `pulumi:"dnsLists"`
-	GatewayIp        *string  `pulumi:"gatewayIp"`
-	Ipv4SubnetId     *string  `pulumi:"ipv4SubnetId"`
-	Ipv6Cidr         *string  `pulumi:"ipv6Cidr"`
-	Ipv6Enable       *bool    `pulumi:"ipv6Enable"`
-	Ipv6Gateway      *string  `pulumi:"ipv6Gateway"`
-	Ipv6SubnetId     *string  `pulumi:"ipv6SubnetId"`
-	Name             *string  `pulumi:"name"`
-	NtpServerAddress *string  `pulumi:"ntpServerAddress"`
-	PrimaryDns       *string  `pulumi:"primaryDns"`
-	Region           *string  `pulumi:"region"`
-	SecondaryDns     *string  `pulumi:"secondaryDns"`
+	AvailabilityZone  *string  `pulumi:"availabilityZone"`
+	Cidr              *string  `pulumi:"cidr"`
+	Description       *string  `pulumi:"description"`
+	DhcpDomainName    *string  `pulumi:"dhcpDomainName"`
+	DhcpEnable        *bool    `pulumi:"dhcpEnable"`
+	DhcpIpv6LeaseTime *string  `pulumi:"dhcpIpv6LeaseTime"`
+	DhcpLeaseTime     *string  `pulumi:"dhcpLeaseTime"`
+	DnsLists          []string `pulumi:"dnsLists"`
+	GatewayIp         *string  `pulumi:"gatewayIp"`
+	Ipv4SubnetId      *string  `pulumi:"ipv4SubnetId"`
+	Ipv6Cidr          *string  `pulumi:"ipv6Cidr"`
+	Ipv6Enable        *bool    `pulumi:"ipv6Enable"`
+	Ipv6Gateway       *string  `pulumi:"ipv6Gateway"`
+	Ipv6SubnetId      *string  `pulumi:"ipv6SubnetId"`
+	Name              *string  `pulumi:"name"`
+	NtpServerAddress  *string  `pulumi:"ntpServerAddress"`
+	PrimaryDns        *string  `pulumi:"primaryDns"`
+	Region            *string  `pulumi:"region"`
+	SecondaryDns      *string  `pulumi:"secondaryDns"`
 	// schema: Deprecated
 	SubnetId *string           `pulumi:"subnetId"`
 	Tags     map[string]string `pulumi:"tags"`
@@ -101,23 +105,25 @@ type subnetState struct {
 }
 
 type SubnetState struct {
-	AvailabilityZone pulumi.StringPtrInput
-	Cidr             pulumi.StringPtrInput
-	Description      pulumi.StringPtrInput
-	DhcpEnable       pulumi.BoolPtrInput
-	DhcpLeaseTime    pulumi.StringPtrInput
-	DnsLists         pulumi.StringArrayInput
-	GatewayIp        pulumi.StringPtrInput
-	Ipv4SubnetId     pulumi.StringPtrInput
-	Ipv6Cidr         pulumi.StringPtrInput
-	Ipv6Enable       pulumi.BoolPtrInput
-	Ipv6Gateway      pulumi.StringPtrInput
-	Ipv6SubnetId     pulumi.StringPtrInput
-	Name             pulumi.StringPtrInput
-	NtpServerAddress pulumi.StringPtrInput
-	PrimaryDns       pulumi.StringPtrInput
-	Region           pulumi.StringPtrInput
-	SecondaryDns     pulumi.StringPtrInput
+	AvailabilityZone  pulumi.StringPtrInput
+	Cidr              pulumi.StringPtrInput
+	Description       pulumi.StringPtrInput
+	DhcpDomainName    pulumi.StringPtrInput
+	DhcpEnable        pulumi.BoolPtrInput
+	DhcpIpv6LeaseTime pulumi.StringPtrInput
+	DhcpLeaseTime     pulumi.StringPtrInput
+	DnsLists          pulumi.StringArrayInput
+	GatewayIp         pulumi.StringPtrInput
+	Ipv4SubnetId      pulumi.StringPtrInput
+	Ipv6Cidr          pulumi.StringPtrInput
+	Ipv6Enable        pulumi.BoolPtrInput
+	Ipv6Gateway       pulumi.StringPtrInput
+	Ipv6SubnetId      pulumi.StringPtrInput
+	Name              pulumi.StringPtrInput
+	NtpServerAddress  pulumi.StringPtrInput
+	PrimaryDns        pulumi.StringPtrInput
+	Region            pulumi.StringPtrInput
+	SecondaryDns      pulumi.StringPtrInput
 	// schema: Deprecated
 	SubnetId pulumi.StringPtrInput
 	Tags     pulumi.StringMapInput
@@ -129,40 +135,44 @@ func (SubnetState) ElementType() reflect.Type {
 }
 
 type subnetArgs struct {
-	AvailabilityZone *string           `pulumi:"availabilityZone"`
-	Cidr             string            `pulumi:"cidr"`
-	Description      *string           `pulumi:"description"`
-	DhcpEnable       *bool             `pulumi:"dhcpEnable"`
-	DhcpLeaseTime    *string           `pulumi:"dhcpLeaseTime"`
-	DnsLists         []string          `pulumi:"dnsLists"`
-	GatewayIp        string            `pulumi:"gatewayIp"`
-	Ipv6Enable       *bool             `pulumi:"ipv6Enable"`
-	Name             *string           `pulumi:"name"`
-	NtpServerAddress *string           `pulumi:"ntpServerAddress"`
-	PrimaryDns       *string           `pulumi:"primaryDns"`
-	Region           *string           `pulumi:"region"`
-	SecondaryDns     *string           `pulumi:"secondaryDns"`
-	Tags             map[string]string `pulumi:"tags"`
-	VpcId            string            `pulumi:"vpcId"`
+	AvailabilityZone  *string           `pulumi:"availabilityZone"`
+	Cidr              string            `pulumi:"cidr"`
+	Description       *string           `pulumi:"description"`
+	DhcpDomainName    *string           `pulumi:"dhcpDomainName"`
+	DhcpEnable        *bool             `pulumi:"dhcpEnable"`
+	DhcpIpv6LeaseTime *string           `pulumi:"dhcpIpv6LeaseTime"`
+	DhcpLeaseTime     *string           `pulumi:"dhcpLeaseTime"`
+	DnsLists          []string          `pulumi:"dnsLists"`
+	GatewayIp         string            `pulumi:"gatewayIp"`
+	Ipv6Enable        *bool             `pulumi:"ipv6Enable"`
+	Name              *string           `pulumi:"name"`
+	NtpServerAddress  *string           `pulumi:"ntpServerAddress"`
+	PrimaryDns        *string           `pulumi:"primaryDns"`
+	Region            *string           `pulumi:"region"`
+	SecondaryDns      *string           `pulumi:"secondaryDns"`
+	Tags              map[string]string `pulumi:"tags"`
+	VpcId             string            `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a Subnet resource.
 type SubnetArgs struct {
-	AvailabilityZone pulumi.StringPtrInput
-	Cidr             pulumi.StringInput
-	Description      pulumi.StringPtrInput
-	DhcpEnable       pulumi.BoolPtrInput
-	DhcpLeaseTime    pulumi.StringPtrInput
-	DnsLists         pulumi.StringArrayInput
-	GatewayIp        pulumi.StringInput
-	Ipv6Enable       pulumi.BoolPtrInput
-	Name             pulumi.StringPtrInput
-	NtpServerAddress pulumi.StringPtrInput
-	PrimaryDns       pulumi.StringPtrInput
-	Region           pulumi.StringPtrInput
-	SecondaryDns     pulumi.StringPtrInput
-	Tags             pulumi.StringMapInput
-	VpcId            pulumi.StringInput
+	AvailabilityZone  pulumi.StringPtrInput
+	Cidr              pulumi.StringInput
+	Description       pulumi.StringPtrInput
+	DhcpDomainName    pulumi.StringPtrInput
+	DhcpEnable        pulumi.BoolPtrInput
+	DhcpIpv6LeaseTime pulumi.StringPtrInput
+	DhcpLeaseTime     pulumi.StringPtrInput
+	DnsLists          pulumi.StringArrayInput
+	GatewayIp         pulumi.StringInput
+	Ipv6Enable        pulumi.BoolPtrInput
+	Name              pulumi.StringPtrInput
+	NtpServerAddress  pulumi.StringPtrInput
+	PrimaryDns        pulumi.StringPtrInput
+	Region            pulumi.StringPtrInput
+	SecondaryDns      pulumi.StringPtrInput
+	Tags              pulumi.StringMapInput
+	VpcId             pulumi.StringInput
 }
 
 func (SubnetArgs) ElementType() reflect.Type {
@@ -264,8 +274,16 @@ func (o SubnetOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Subnet) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+func (o SubnetOutput) DhcpDomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.StringPtrOutput { return v.DhcpDomainName }).(pulumi.StringPtrOutput)
+}
+
 func (o SubnetOutput) DhcpEnable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Subnet) pulumi.BoolPtrOutput { return v.DhcpEnable }).(pulumi.BoolPtrOutput)
+}
+
+func (o SubnetOutput) DhcpIpv6LeaseTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.StringOutput { return v.DhcpIpv6LeaseTime }).(pulumi.StringOutput)
 }
 
 func (o SubnetOutput) DhcpLeaseTime() pulumi.StringOutput {

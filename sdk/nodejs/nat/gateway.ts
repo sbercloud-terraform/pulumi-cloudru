@@ -98,7 +98,7 @@ export class Gateway extends pulumi.CustomResource {
      * The network ID of the downstream interface (the next hop of the DVR) of the NAT gateway.
      */
     declare public readonly subnetId: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     /**
      * The ID of the VPC to which the NAT gateway belongs.
      */

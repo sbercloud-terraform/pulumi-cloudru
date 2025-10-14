@@ -40,7 +40,7 @@ export class Package extends pulumi.CustomResource {
     declare public readonly owner: pulumi.Output<string>;
     declare public readonly region: pulumi.Output<string>;
     declare public /*out*/ readonly status: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     declare public readonly type: pulumi.Output<string>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 

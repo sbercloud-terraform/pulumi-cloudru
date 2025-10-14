@@ -33,9 +33,14 @@ export class ApigPluginAssociate extends pulumi.CustomResource {
     }
 
     /**
-     * The APIs bound by the plugin.
+     * The list of API IDs to be bound by the plugin.
      */
     declare public readonly apiIds: pulumi.Output<string[]>;
+    /**
+     * The script configuration value of this change is also the original value used for comparison with
+     * the new value next time the change is made. The corresponding parameter name is 'api_ids'.
+     */
+    declare public readonly apiIdsOrigins: pulumi.Output<string[]>;
     /**
      * The environment ID where the API was published.
      */
@@ -67,6 +72,7 @@ export class ApigPluginAssociate extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ApigPluginAssociateState | undefined;
             resourceInputs["apiIds"] = state?.apiIds;
+            resourceInputs["apiIdsOrigins"] = state?.apiIdsOrigins;
             resourceInputs["envId"] = state?.envId;
             resourceInputs["instanceId"] = state?.instanceId;
             resourceInputs["pluginId"] = state?.pluginId;
@@ -86,6 +92,7 @@ export class ApigPluginAssociate extends pulumi.CustomResource {
                 throw new Error("Missing required property 'pluginId'");
             }
             resourceInputs["apiIds"] = args?.apiIds;
+            resourceInputs["apiIdsOrigins"] = args?.apiIdsOrigins;
             resourceInputs["envId"] = args?.envId;
             resourceInputs["instanceId"] = args?.instanceId;
             resourceInputs["pluginId"] = args?.pluginId;
@@ -101,9 +108,14 @@ export class ApigPluginAssociate extends pulumi.CustomResource {
  */
 export interface ApigPluginAssociateState {
     /**
-     * The APIs bound by the plugin.
+     * The list of API IDs to be bound by the plugin.
      */
     apiIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The script configuration value of this change is also the original value used for comparison with
+     * the new value next time the change is made. The corresponding parameter name is 'api_ids'.
+     */
+    apiIdsOrigins?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The environment ID where the API was published.
      */
@@ -127,9 +139,14 @@ export interface ApigPluginAssociateState {
  */
 export interface ApigPluginAssociateArgs {
     /**
-     * The APIs bound by the plugin.
+     * The list of API IDs to be bound by the plugin.
      */
     apiIds: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The script configuration value of this change is also the original value used for comparison with
+     * the new value next time the change is made. The corresponding parameter name is 'api_ids'.
+     */
+    apiIdsOrigins?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The environment ID where the API was published.
      */

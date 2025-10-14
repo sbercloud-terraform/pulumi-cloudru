@@ -53,6 +53,7 @@ class KafkaInstanceArgs:
                  password: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  period_unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 port_protocol: Optional[pulumi.Input['KafkaInstancePortProtocolArgs']] = None,
                  product_id: Optional[pulumi.Input[_builtins.str]] = None,
                  public_ip_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -66,6 +67,7 @@ class KafkaInstanceArgs:
         The set of arguments for constructing a KafkaInstance resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: schema: Required
         :param pulumi.Input[_builtins.str] kms_encrypted_password: schema: Internal
+        :param pulumi.Input['KafkaInstancePortProtocolArgs'] port_protocol: The port protocol information of the Kafka instance.
         """
         pulumi.set(__self__, "engine_version", engine_version)
         pulumi.set(__self__, "network_id", network_id)
@@ -138,6 +140,8 @@ class KafkaInstanceArgs:
             pulumi.set(__self__, "period", period)
         if period_unit is not None:
             pulumi.set(__self__, "period_unit", period_unit)
+        if port_protocol is not None:
+            pulumi.set(__self__, "port_protocol", port_protocol)
         if product_id is not None:
             pulumi.set(__self__, "product_id", product_id)
         if public_ip_ids is not None:
@@ -456,6 +460,18 @@ class KafkaInstanceArgs:
         pulumi.set(self, "period_unit", value)
 
     @_builtins.property
+    @pulumi.getter(name="portProtocol")
+    def port_protocol(self) -> Optional[pulumi.Input['KafkaInstancePortProtocolArgs']]:
+        """
+        The port protocol information of the Kafka instance.
+        """
+        return pulumi.get(self, "port_protocol")
+
+    @port_protocol.setter
+    def port_protocol(self, value: Optional[pulumi.Input['KafkaInstancePortProtocolArgs']]):
+        pulumi.set(self, "port_protocol", value)
+
+    @_builtins.property
     @pulumi.getter(name="productId")
     def product_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "product_id")
@@ -586,6 +602,7 @@ class _KafkaInstanceState:
                  period_unit: Optional[pulumi.Input[_builtins.str]] = None,
                  pod_connect_address: Optional[pulumi.Input[_builtins.str]] = None,
                  port: Optional[pulumi.Input[_builtins.int]] = None,
+                 port_protocol: Optional[pulumi.Input['KafkaInstancePortProtocolArgs']] = None,
                  port_protocols: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaInstancePortProtocolArgs']]]] = None,
                  product_id: Optional[pulumi.Input[_builtins.str]] = None,
                  public_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
@@ -614,6 +631,8 @@ class _KafkaInstanceState:
         Input properties used for looking up and filtering KafkaInstance resources.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: schema: Required
         :param pulumi.Input[_builtins.str] kms_encrypted_password: schema: Internal
+        :param pulumi.Input['KafkaInstancePortProtocolArgs'] port_protocol: The port protocol information of the Kafka instance.
+        :param pulumi.Input[Sequence[pulumi.Input['KafkaInstancePortProtocolArgs']]] port_protocols: Use port_protocol instead.
         """
         if access_user is not None:
             pulumi.set(__self__, "access_user", access_user)
@@ -725,6 +744,8 @@ class _KafkaInstanceState:
             pulumi.set(__self__, "pod_connect_address", pod_connect_address)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_protocol is not None:
+            pulumi.set(__self__, "port_protocol", port_protocol)
         if port_protocols is not None:
             pulumi.set(__self__, "port_protocols", port_protocols)
         if product_id is not None:
@@ -1201,8 +1222,23 @@ class _KafkaInstanceState:
         pulumi.set(self, "port", value)
 
     @_builtins.property
+    @pulumi.getter(name="portProtocol")
+    def port_protocol(self) -> Optional[pulumi.Input['KafkaInstancePortProtocolArgs']]:
+        """
+        The port protocol information of the Kafka instance.
+        """
+        return pulumi.get(self, "port_protocol")
+
+    @port_protocol.setter
+    def port_protocol(self, value: Optional[pulumi.Input['KafkaInstancePortProtocolArgs']]):
+        pulumi.set(self, "port_protocol", value)
+
+    @_builtins.property
     @pulumi.getter(name="portProtocols")
     def port_protocols(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KafkaInstancePortProtocolArgs']]]]:
+        """
+        Use port_protocol instead.
+        """
         return pulumi.get(self, "port_protocols")
 
     @port_protocols.setter
@@ -1452,6 +1488,7 @@ class KafkaInstance(pulumi.CustomResource):
                  password: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  period_unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 port_protocol: Optional[pulumi.Input[Union['KafkaInstancePortProtocolArgs', 'KafkaInstancePortProtocolArgsDict']]] = None,
                  product_id: Optional[pulumi.Input[_builtins.str]] = None,
                  public_ip_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1471,6 +1508,7 @@ class KafkaInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: schema: Required
         :param pulumi.Input[_builtins.str] kms_encrypted_password: schema: Internal
+        :param pulumi.Input[Union['KafkaInstancePortProtocolArgs', 'KafkaInstancePortProtocolArgsDict']] port_protocol: The port protocol information of the Kafka instance.
         """
         ...
     @overload
@@ -1524,6 +1562,7 @@ class KafkaInstance(pulumi.CustomResource):
                  password: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  period_unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 port_protocol: Optional[pulumi.Input[Union['KafkaInstancePortProtocolArgs', 'KafkaInstancePortProtocolArgsDict']]] = None,
                  product_id: Optional[pulumi.Input[_builtins.str]] = None,
                  public_ip_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1578,6 +1617,7 @@ class KafkaInstance(pulumi.CustomResource):
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["period"] = period
             __props__.__dict__["period_unit"] = period_unit
+            __props__.__dict__["port_protocol"] = port_protocol
             __props__.__dict__["product_id"] = product_id
             __props__.__dict__["public_ip_ids"] = public_ip_ids
             __props__.__dict__["region"] = region
@@ -1683,6 +1723,7 @@ class KafkaInstance(pulumi.CustomResource):
             period_unit: Optional[pulumi.Input[_builtins.str]] = None,
             pod_connect_address: Optional[pulumi.Input[_builtins.str]] = None,
             port: Optional[pulumi.Input[_builtins.int]] = None,
+            port_protocol: Optional[pulumi.Input[Union['KafkaInstancePortProtocolArgs', 'KafkaInstancePortProtocolArgsDict']]] = None,
             port_protocols: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KafkaInstancePortProtocolArgs', 'KafkaInstancePortProtocolArgsDict']]]]] = None,
             product_id: Optional[pulumi.Input[_builtins.str]] = None,
             public_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
@@ -1716,6 +1757,8 @@ class KafkaInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: schema: Required
         :param pulumi.Input[_builtins.str] kms_encrypted_password: schema: Internal
+        :param pulumi.Input[Union['KafkaInstancePortProtocolArgs', 'KafkaInstancePortProtocolArgsDict']] port_protocol: The port protocol information of the Kafka instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KafkaInstancePortProtocolArgs', 'KafkaInstancePortProtocolArgsDict']]]] port_protocols: Use port_protocol instead.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1767,6 +1810,7 @@ class KafkaInstance(pulumi.CustomResource):
         __props__.__dict__["period_unit"] = period_unit
         __props__.__dict__["pod_connect_address"] = pod_connect_address
         __props__.__dict__["port"] = port
+        __props__.__dict__["port_protocol"] = port_protocol
         __props__.__dict__["port_protocols"] = port_protocols
         __props__.__dict__["product_id"] = product_id
         __props__.__dict__["public_bandwidth"] = public_bandwidth
@@ -2036,8 +2080,19 @@ class KafkaInstance(pulumi.CustomResource):
         return pulumi.get(self, "port")
 
     @_builtins.property
+    @pulumi.getter(name="portProtocol")
+    def port_protocol(self) -> pulumi.Output['outputs.KafkaInstancePortProtocol']:
+        """
+        The port protocol information of the Kafka instance.
+        """
+        return pulumi.get(self, "port_protocol")
+
+    @_builtins.property
     @pulumi.getter(name="portProtocols")
     def port_protocols(self) -> pulumi.Output[Sequence['outputs.KafkaInstancePortProtocol']]:
+        """
+        Use port_protocol instead.
+        """
         return pulumi.get(self, "port_protocols")
 
     @_builtins.property
@@ -2122,7 +2177,7 @@ class KafkaInstance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+    def tags(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         return pulumi.get(self, "tags")
 
     @_builtins.property

@@ -15,11 +15,12 @@ import (
 type VolumeAttach struct {
 	pulumi.CustomResourceState
 
-	Device     pulumi.StringOutput `pulumi:"device"`
-	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	PciAddress pulumi.StringOutput `pulumi:"pciAddress"`
-	Region     pulumi.StringOutput `pulumi:"region"`
-	VolumeId   pulumi.StringOutput `pulumi:"volumeId"`
+	DeleteOnTermination pulumi.StringOutput `pulumi:"deleteOnTermination"`
+	Device              pulumi.StringOutput `pulumi:"device"`
+	InstanceId          pulumi.StringOutput `pulumi:"instanceId"`
+	PciAddress          pulumi.StringOutput `pulumi:"pciAddress"`
+	Region              pulumi.StringOutput `pulumi:"region"`
+	VolumeId            pulumi.StringOutput `pulumi:"volumeId"`
 }
 
 // NewVolumeAttach registers a new resource with the given unique name, arguments, and options.
@@ -58,19 +59,21 @@ func GetVolumeAttach(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering VolumeAttach resources.
 type volumeAttachState struct {
-	Device     *string `pulumi:"device"`
-	InstanceId *string `pulumi:"instanceId"`
-	PciAddress *string `pulumi:"pciAddress"`
-	Region     *string `pulumi:"region"`
-	VolumeId   *string `pulumi:"volumeId"`
+	DeleteOnTermination *string `pulumi:"deleteOnTermination"`
+	Device              *string `pulumi:"device"`
+	InstanceId          *string `pulumi:"instanceId"`
+	PciAddress          *string `pulumi:"pciAddress"`
+	Region              *string `pulumi:"region"`
+	VolumeId            *string `pulumi:"volumeId"`
 }
 
 type VolumeAttachState struct {
-	Device     pulumi.StringPtrInput
-	InstanceId pulumi.StringPtrInput
-	PciAddress pulumi.StringPtrInput
-	Region     pulumi.StringPtrInput
-	VolumeId   pulumi.StringPtrInput
+	DeleteOnTermination pulumi.StringPtrInput
+	Device              pulumi.StringPtrInput
+	InstanceId          pulumi.StringPtrInput
+	PciAddress          pulumi.StringPtrInput
+	Region              pulumi.StringPtrInput
+	VolumeId            pulumi.StringPtrInput
 }
 
 func (VolumeAttachState) ElementType() reflect.Type {
@@ -78,18 +81,20 @@ func (VolumeAttachState) ElementType() reflect.Type {
 }
 
 type volumeAttachArgs struct {
-	Device     *string `pulumi:"device"`
-	InstanceId string  `pulumi:"instanceId"`
-	Region     *string `pulumi:"region"`
-	VolumeId   string  `pulumi:"volumeId"`
+	DeleteOnTermination *string `pulumi:"deleteOnTermination"`
+	Device              *string `pulumi:"device"`
+	InstanceId          string  `pulumi:"instanceId"`
+	Region              *string `pulumi:"region"`
+	VolumeId            string  `pulumi:"volumeId"`
 }
 
 // The set of arguments for constructing a VolumeAttach resource.
 type VolumeAttachArgs struct {
-	Device     pulumi.StringPtrInput
-	InstanceId pulumi.StringInput
-	Region     pulumi.StringPtrInput
-	VolumeId   pulumi.StringInput
+	DeleteOnTermination pulumi.StringPtrInput
+	Device              pulumi.StringPtrInput
+	InstanceId          pulumi.StringInput
+	Region              pulumi.StringPtrInput
+	VolumeId            pulumi.StringInput
 }
 
 func (VolumeAttachArgs) ElementType() reflect.Type {
@@ -177,6 +182,10 @@ func (o VolumeAttachOutput) ToVolumeAttachOutput() VolumeAttachOutput {
 
 func (o VolumeAttachOutput) ToVolumeAttachOutputWithContext(ctx context.Context) VolumeAttachOutput {
 	return o
+}
+
+func (o VolumeAttachOutput) DeleteOnTermination() pulumi.StringOutput {
+	return o.ApplyT(func(v *VolumeAttach) pulumi.StringOutput { return v.DeleteOnTermination }).(pulumi.StringOutput)
 }
 
 func (o VolumeAttachOutput) Device() pulumi.StringOutput {

@@ -35,7 +35,9 @@ export class Subnet extends pulumi.CustomResource {
     declare public readonly availabilityZone: pulumi.Output<string>;
     declare public readonly cidr: pulumi.Output<string>;
     declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly dhcpDomainName: pulumi.Output<string | undefined>;
     declare public readonly dhcpEnable: pulumi.Output<boolean | undefined>;
+    declare public readonly dhcpIpv6LeaseTime: pulumi.Output<string>;
     declare public readonly dhcpLeaseTime: pulumi.Output<string>;
     declare public readonly dnsLists: pulumi.Output<string[]>;
     declare public readonly gatewayIp: pulumi.Output<string>;
@@ -53,7 +55,7 @@ export class Subnet extends pulumi.CustomResource {
      * schema: Deprecated
      */
     declare public /*out*/ readonly subnetId: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     declare public readonly vpcId: pulumi.Output<string>;
 
     /**
@@ -72,7 +74,9 @@ export class Subnet extends pulumi.CustomResource {
             resourceInputs["availabilityZone"] = state?.availabilityZone;
             resourceInputs["cidr"] = state?.cidr;
             resourceInputs["description"] = state?.description;
+            resourceInputs["dhcpDomainName"] = state?.dhcpDomainName;
             resourceInputs["dhcpEnable"] = state?.dhcpEnable;
+            resourceInputs["dhcpIpv6LeaseTime"] = state?.dhcpIpv6LeaseTime;
             resourceInputs["dhcpLeaseTime"] = state?.dhcpLeaseTime;
             resourceInputs["dnsLists"] = state?.dnsLists;
             resourceInputs["gatewayIp"] = state?.gatewayIp;
@@ -103,7 +107,9 @@ export class Subnet extends pulumi.CustomResource {
             resourceInputs["availabilityZone"] = args?.availabilityZone;
             resourceInputs["cidr"] = args?.cidr;
             resourceInputs["description"] = args?.description;
+            resourceInputs["dhcpDomainName"] = args?.dhcpDomainName;
             resourceInputs["dhcpEnable"] = args?.dhcpEnable;
+            resourceInputs["dhcpIpv6LeaseTime"] = args?.dhcpIpv6LeaseTime;
             resourceInputs["dhcpLeaseTime"] = args?.dhcpLeaseTime;
             resourceInputs["dnsLists"] = args?.dnsLists;
             resourceInputs["gatewayIp"] = args?.gatewayIp;
@@ -133,7 +139,9 @@ export interface SubnetState {
     availabilityZone?: pulumi.Input<string>;
     cidr?: pulumi.Input<string>;
     description?: pulumi.Input<string>;
+    dhcpDomainName?: pulumi.Input<string>;
     dhcpEnable?: pulumi.Input<boolean>;
+    dhcpIpv6LeaseTime?: pulumi.Input<string>;
     dhcpLeaseTime?: pulumi.Input<string>;
     dnsLists?: pulumi.Input<pulumi.Input<string>[]>;
     gatewayIp?: pulumi.Input<string>;
@@ -162,7 +170,9 @@ export interface SubnetArgs {
     availabilityZone?: pulumi.Input<string>;
     cidr: pulumi.Input<string>;
     description?: pulumi.Input<string>;
+    dhcpDomainName?: pulumi.Input<string>;
     dhcpEnable?: pulumi.Input<boolean>;
+    dhcpIpv6LeaseTime?: pulumi.Input<string>;
     dhcpLeaseTime?: pulumi.Input<string>;
     dnsLists?: pulumi.Input<pulumi.Input<string>[]>;
     gatewayIp: pulumi.Input<string>;

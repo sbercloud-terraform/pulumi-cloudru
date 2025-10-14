@@ -27,7 +27,7 @@ class GetFlavorsResult:
     """
     A collection of values returned by getFlavors.
     """
-    def __init__(__self__, cache_mode=None, capacity=None, cpu_architecture=None, engine=None, engine_version=None, flavors=None, id=None, name=None, region=None):
+    def __init__(__self__, cache_mode=None, capacity=None, cpu_architecture=None, engine=None, engine_version=None, flavors=None, id=None, instance_id=None, name=None, region=None):
         if cache_mode and not isinstance(cache_mode, str):
             raise TypeError("Expected argument 'cache_mode' to be a str")
         pulumi.set(__self__, "cache_mode", cache_mode)
@@ -49,6 +49,9 @@ class GetFlavorsResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if instance_id and not isinstance(instance_id, str):
+            raise TypeError("Expected argument 'instance_id' to be a str")
+        pulumi.set(__self__, "instance_id", instance_id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -95,6 +98,11 @@ class GetFlavorsResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "instance_id")
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "name")
@@ -118,6 +126,7 @@ class AwaitableGetFlavorsResult(GetFlavorsResult):
             engine_version=self.engine_version,
             flavors=self.flavors,
             id=self.id,
+            instance_id=self.instance_id,
             name=self.name,
             region=self.region)
 
@@ -127,6 +136,7 @@ def get_flavors(cache_mode: Optional[_builtins.str] = None,
                 cpu_architecture: Optional[_builtins.str] = None,
                 engine: Optional[_builtins.str] = None,
                 engine_version: Optional[_builtins.str] = None,
+                instance_id: Optional[_builtins.str] = None,
                 name: Optional[_builtins.str] = None,
                 region: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFlavorsResult:
@@ -139,6 +149,7 @@ def get_flavors(cache_mode: Optional[_builtins.str] = None,
     __args__['cpuArchitecture'] = cpu_architecture
     __args__['engine'] = engine
     __args__['engineVersion'] = engine_version
+    __args__['instanceId'] = instance_id
     __args__['name'] = name
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -152,6 +163,7 @@ def get_flavors(cache_mode: Optional[_builtins.str] = None,
         engine_version=pulumi.get(__ret__, 'engine_version'),
         flavors=pulumi.get(__ret__, 'flavors'),
         id=pulumi.get(__ret__, 'id'),
+        instance_id=pulumi.get(__ret__, 'instance_id'),
         name=pulumi.get(__ret__, 'name'),
         region=pulumi.get(__ret__, 'region'))
 def get_flavors_output(cache_mode: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -159,6 +171,7 @@ def get_flavors_output(cache_mode: Optional[pulumi.Input[Optional[_builtins.str]
                        cpu_architecture: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        engine: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        engine_version: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                       instance_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFlavorsResult]:
@@ -171,6 +184,7 @@ def get_flavors_output(cache_mode: Optional[pulumi.Input[Optional[_builtins.str]
     __args__['cpuArchitecture'] = cpu_architecture
     __args__['engine'] = engine
     __args__['engineVersion'] = engine_version
+    __args__['instanceId'] = instance_id
     __args__['name'] = name
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -183,5 +197,6 @@ def get_flavors_output(cache_mode: Optional[pulumi.Input[Optional[_builtins.str]
         engine_version=pulumi.get(__response__, 'engine_version'),
         flavors=pulumi.get(__response__, 'flavors'),
         id=pulumi.get(__response__, 'id'),
+        instance_id=pulumi.get(__response__, 'instance_id'),
         name=pulumi.get(__response__, 'name'),
         region=pulumi.get(__response__, 'region')))

@@ -37,6 +37,7 @@ class InstanceArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  eip_id: Optional[pulumi.Input[_builtins.str]] = None,
                  eip_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 enclave_options: Optional[pulumi.Input['InstanceEnclaveOptionsArgs']] = None,
                  enterprise_project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  flavor_id: Optional[pulumi.Input[_builtins.str]] = None,
                  flavor_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -107,6 +108,8 @@ class InstanceArgs:
             pulumi.set(__self__, "eip_id", eip_id)
         if eip_type is not None:
             pulumi.set(__self__, "eip_type", eip_type)
+        if enclave_options is not None:
+            pulumi.set(__self__, "enclave_options", enclave_options)
         if enterprise_project_id is not None:
             pulumi.set(__self__, "enterprise_project_id", enterprise_project_id)
         if flavor_id is not None:
@@ -312,6 +315,15 @@ class InstanceArgs:
     @eip_type.setter
     def eip_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "eip_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enclaveOptions")
+    def enclave_options(self) -> Optional[pulumi.Input['InstanceEnclaveOptionsArgs']]:
+        return pulumi.get(self, "enclave_options")
+
+    @enclave_options.setter
+    def enclave_options(self, value: Optional[pulumi.Input['InstanceEnclaveOptionsArgs']]):
+        pulumi.set(self, "enclave_options", value)
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
@@ -614,6 +626,7 @@ class _InstanceState:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  eip_id: Optional[pulumi.Input[_builtins.str]] = None,
                  eip_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 enclave_options: Optional[pulumi.Input['InstanceEnclaveOptionsArgs']] = None,
                  enterprise_project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  expired_time: Optional[pulumi.Input[_builtins.str]] = None,
                  flavor_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -696,6 +709,8 @@ class _InstanceState:
             pulumi.set(__self__, "eip_id", eip_id)
         if eip_type is not None:
             pulumi.set(__self__, "eip_type", eip_type)
+        if enclave_options is not None:
+            pulumi.set(__self__, "enclave_options", enclave_options)
         if enterprise_project_id is not None:
             pulumi.set(__self__, "enterprise_project_id", enterprise_project_id)
         if expired_time is not None:
@@ -933,6 +948,15 @@ class _InstanceState:
     @eip_type.setter
     def eip_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "eip_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enclaveOptions")
+    def enclave_options(self) -> Optional[pulumi.Input['InstanceEnclaveOptionsArgs']]:
+        return pulumi.get(self, "enclave_options")
+
+    @enclave_options.setter
+    def enclave_options(self, value: Optional[pulumi.Input['InstanceEnclaveOptionsArgs']]):
+        pulumi.set(self, "enclave_options", value)
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
@@ -1298,6 +1322,7 @@ class Instance(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  eip_id: Optional[pulumi.Input[_builtins.str]] = None,
                  eip_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 enclave_options: Optional[pulumi.Input[Union['InstanceEnclaveOptionsArgs', 'InstanceEnclaveOptionsArgsDict']]] = None,
                  enterprise_project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  flavor_id: Optional[pulumi.Input[_builtins.str]] = None,
                  flavor_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1376,6 +1401,7 @@ class Instance(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  eip_id: Optional[pulumi.Input[_builtins.str]] = None,
                  eip_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 enclave_options: Optional[pulumi.Input[Union['InstanceEnclaveOptionsArgs', 'InstanceEnclaveOptionsArgsDict']]] = None,
                  enterprise_project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  flavor_id: Optional[pulumi.Input[_builtins.str]] = None,
                  flavor_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1431,6 +1457,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["eip_id"] = eip_id
             __props__.__dict__["eip_type"] = eip_type
+            __props__.__dict__["enclave_options"] = enclave_options
             __props__.__dict__["enterprise_project_id"] = enterprise_project_id
             __props__.__dict__["flavor_id"] = flavor_id
             __props__.__dict__["flavor_name"] = flavor_name
@@ -1503,6 +1530,7 @@ class Instance(pulumi.CustomResource):
             description: Optional[pulumi.Input[_builtins.str]] = None,
             eip_id: Optional[pulumi.Input[_builtins.str]] = None,
             eip_type: Optional[pulumi.Input[_builtins.str]] = None,
+            enclave_options: Optional[pulumi.Input[Union['InstanceEnclaveOptionsArgs', 'InstanceEnclaveOptionsArgsDict']]] = None,
             enterprise_project_id: Optional[pulumi.Input[_builtins.str]] = None,
             expired_time: Optional[pulumi.Input[_builtins.str]] = None,
             flavor_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1573,6 +1601,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["eip_id"] = eip_id
         __props__.__dict__["eip_type"] = eip_type
+        __props__.__dict__["enclave_options"] = enclave_options
         __props__.__dict__["enterprise_project_id"] = enterprise_project_id
         __props__.__dict__["expired_time"] = expired_time
         __props__.__dict__["flavor_id"] = flavor_id
@@ -1702,6 +1731,11 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="eipType")
     def eip_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "eip_type")
+
+    @_builtins.property
+    @pulumi.getter(name="enclaveOptions")
+    def enclave_options(self) -> pulumi.Output['outputs.InstanceEnclaveOptions']:
+        return pulumi.get(self, "enclave_options")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
@@ -1874,7 +1908,7 @@ class Instance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+    def tags(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         return pulumi.get(self, "tags")
 
     @_builtins.property

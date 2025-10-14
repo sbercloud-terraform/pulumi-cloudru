@@ -98,7 +98,7 @@ export class Group extends pulumi.CustomResource {
     declare public readonly scalingGroupName: pulumi.Output<string>;
     declare public readonly securityGroups: pulumi.Output<outputs.As.GroupSecurityGroup[]>;
     declare public /*out*/ readonly status: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     declare public readonly vpcId: pulumi.Output<string>;
 
     /**

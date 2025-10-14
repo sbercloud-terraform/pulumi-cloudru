@@ -128,7 +128,7 @@ export class Node extends pulumi.CustomResource {
     declare public /*out*/ readonly status: pulumi.Output<string>;
     declare public readonly storage: pulumi.Output<outputs.Cce.NodeStorage | undefined>;
     declare public readonly subnetId: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     declare public readonly taints: pulumi.Output<outputs.Cce.NodeTaint[] | undefined>;
 
     /**

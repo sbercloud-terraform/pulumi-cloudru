@@ -15,32 +15,33 @@ import (
 type Turbo struct {
 	pulumi.CustomResourceState
 
-	AutoRenew           pulumi.StringPtrOutput `pulumi:"autoRenew"`
-	AvailabilityZone    pulumi.StringOutput    `pulumi:"availabilityZone"`
-	AvailableCapacity   pulumi.StringOutput    `pulumi:"availableCapacity"`
-	BackupId            pulumi.StringOutput    `pulumi:"backupId"`
-	ChargingMode        pulumi.StringOutput    `pulumi:"chargingMode"`
-	CryptKeyId          pulumi.StringPtrOutput `pulumi:"cryptKeyId"`
-	DedicatedFlavor     pulumi.StringPtrOutput `pulumi:"dedicatedFlavor"`
-	DedicatedStorageId  pulumi.StringPtrOutput `pulumi:"dedicatedStorageId"`
-	Enhanced            pulumi.BoolOutput      `pulumi:"enhanced"`
-	EnterpriseProjectId pulumi.StringOutput    `pulumi:"enterpriseProjectId"`
-	ExportLocation      pulumi.StringOutput    `pulumi:"exportLocation"`
-	HpcBandwidth        pulumi.StringOutput    `pulumi:"hpcBandwidth"`
-	HpcCacheBandwidth   pulumi.StringOutput    `pulumi:"hpcCacheBandwidth"`
-	Name                pulumi.StringOutput    `pulumi:"name"`
-	Period              pulumi.IntPtrOutput    `pulumi:"period"`
-	PeriodUnit          pulumi.StringPtrOutput `pulumi:"periodUnit"`
-	Region              pulumi.StringOutput    `pulumi:"region"`
-	SecurityGroupId     pulumi.StringOutput    `pulumi:"securityGroupId"`
-	ShareProto          pulumi.StringPtrOutput `pulumi:"shareProto"`
-	ShareType           pulumi.StringPtrOutput `pulumi:"shareType"`
-	Size                pulumi.IntOutput       `pulumi:"size"`
-	Status              pulumi.StringOutput    `pulumi:"status"`
-	SubnetId            pulumi.StringOutput    `pulumi:"subnetId"`
-	Tags                pulumi.StringMapOutput `pulumi:"tags"`
-	Version             pulumi.StringOutput    `pulumi:"version"`
-	VpcId               pulumi.StringOutput    `pulumi:"vpcId"`
+	AutoCreateSecurityGroupRules pulumi.StringPtrOutput `pulumi:"autoCreateSecurityGroupRules"`
+	AutoRenew                    pulumi.StringPtrOutput `pulumi:"autoRenew"`
+	AvailabilityZone             pulumi.StringOutput    `pulumi:"availabilityZone"`
+	AvailableCapacity            pulumi.StringOutput    `pulumi:"availableCapacity"`
+	BackupId                     pulumi.StringOutput    `pulumi:"backupId"`
+	ChargingMode                 pulumi.StringOutput    `pulumi:"chargingMode"`
+	CryptKeyId                   pulumi.StringPtrOutput `pulumi:"cryptKeyId"`
+	DedicatedFlavor              pulumi.StringPtrOutput `pulumi:"dedicatedFlavor"`
+	DedicatedStorageId           pulumi.StringPtrOutput `pulumi:"dedicatedStorageId"`
+	Enhanced                     pulumi.BoolOutput      `pulumi:"enhanced"`
+	EnterpriseProjectId          pulumi.StringOutput    `pulumi:"enterpriseProjectId"`
+	ExportLocation               pulumi.StringOutput    `pulumi:"exportLocation"`
+	HpcBandwidth                 pulumi.StringOutput    `pulumi:"hpcBandwidth"`
+	HpcCacheBandwidth            pulumi.StringOutput    `pulumi:"hpcCacheBandwidth"`
+	Name                         pulumi.StringOutput    `pulumi:"name"`
+	Period                       pulumi.IntPtrOutput    `pulumi:"period"`
+	PeriodUnit                   pulumi.StringPtrOutput `pulumi:"periodUnit"`
+	Region                       pulumi.StringOutput    `pulumi:"region"`
+	SecurityGroupId              pulumi.StringOutput    `pulumi:"securityGroupId"`
+	ShareProto                   pulumi.StringPtrOutput `pulumi:"shareProto"`
+	ShareType                    pulumi.StringPtrOutput `pulumi:"shareType"`
+	Size                         pulumi.IntOutput       `pulumi:"size"`
+	Status                       pulumi.StringOutput    `pulumi:"status"`
+	SubnetId                     pulumi.StringOutput    `pulumi:"subnetId"`
+	Tags                         pulumi.StringMapOutput `pulumi:"tags"`
+	Version                      pulumi.StringOutput    `pulumi:"version"`
+	VpcId                        pulumi.StringOutput    `pulumi:"vpcId"`
 }
 
 // NewTurbo registers a new resource with the given unique name, arguments, and options.
@@ -88,61 +89,63 @@ func GetTurbo(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Turbo resources.
 type turboState struct {
-	AutoRenew           *string           `pulumi:"autoRenew"`
-	AvailabilityZone    *string           `pulumi:"availabilityZone"`
-	AvailableCapacity   *string           `pulumi:"availableCapacity"`
-	BackupId            *string           `pulumi:"backupId"`
-	ChargingMode        *string           `pulumi:"chargingMode"`
-	CryptKeyId          *string           `pulumi:"cryptKeyId"`
-	DedicatedFlavor     *string           `pulumi:"dedicatedFlavor"`
-	DedicatedStorageId  *string           `pulumi:"dedicatedStorageId"`
-	Enhanced            *bool             `pulumi:"enhanced"`
-	EnterpriseProjectId *string           `pulumi:"enterpriseProjectId"`
-	ExportLocation      *string           `pulumi:"exportLocation"`
-	HpcBandwidth        *string           `pulumi:"hpcBandwidth"`
-	HpcCacheBandwidth   *string           `pulumi:"hpcCacheBandwidth"`
-	Name                *string           `pulumi:"name"`
-	Period              *int              `pulumi:"period"`
-	PeriodUnit          *string           `pulumi:"periodUnit"`
-	Region              *string           `pulumi:"region"`
-	SecurityGroupId     *string           `pulumi:"securityGroupId"`
-	ShareProto          *string           `pulumi:"shareProto"`
-	ShareType           *string           `pulumi:"shareType"`
-	Size                *int              `pulumi:"size"`
-	Status              *string           `pulumi:"status"`
-	SubnetId            *string           `pulumi:"subnetId"`
-	Tags                map[string]string `pulumi:"tags"`
-	Version             *string           `pulumi:"version"`
-	VpcId               *string           `pulumi:"vpcId"`
+	AutoCreateSecurityGroupRules *string           `pulumi:"autoCreateSecurityGroupRules"`
+	AutoRenew                    *string           `pulumi:"autoRenew"`
+	AvailabilityZone             *string           `pulumi:"availabilityZone"`
+	AvailableCapacity            *string           `pulumi:"availableCapacity"`
+	BackupId                     *string           `pulumi:"backupId"`
+	ChargingMode                 *string           `pulumi:"chargingMode"`
+	CryptKeyId                   *string           `pulumi:"cryptKeyId"`
+	DedicatedFlavor              *string           `pulumi:"dedicatedFlavor"`
+	DedicatedStorageId           *string           `pulumi:"dedicatedStorageId"`
+	Enhanced                     *bool             `pulumi:"enhanced"`
+	EnterpriseProjectId          *string           `pulumi:"enterpriseProjectId"`
+	ExportLocation               *string           `pulumi:"exportLocation"`
+	HpcBandwidth                 *string           `pulumi:"hpcBandwidth"`
+	HpcCacheBandwidth            *string           `pulumi:"hpcCacheBandwidth"`
+	Name                         *string           `pulumi:"name"`
+	Period                       *int              `pulumi:"period"`
+	PeriodUnit                   *string           `pulumi:"periodUnit"`
+	Region                       *string           `pulumi:"region"`
+	SecurityGroupId              *string           `pulumi:"securityGroupId"`
+	ShareProto                   *string           `pulumi:"shareProto"`
+	ShareType                    *string           `pulumi:"shareType"`
+	Size                         *int              `pulumi:"size"`
+	Status                       *string           `pulumi:"status"`
+	SubnetId                     *string           `pulumi:"subnetId"`
+	Tags                         map[string]string `pulumi:"tags"`
+	Version                      *string           `pulumi:"version"`
+	VpcId                        *string           `pulumi:"vpcId"`
 }
 
 type TurboState struct {
-	AutoRenew           pulumi.StringPtrInput
-	AvailabilityZone    pulumi.StringPtrInput
-	AvailableCapacity   pulumi.StringPtrInput
-	BackupId            pulumi.StringPtrInput
-	ChargingMode        pulumi.StringPtrInput
-	CryptKeyId          pulumi.StringPtrInput
-	DedicatedFlavor     pulumi.StringPtrInput
-	DedicatedStorageId  pulumi.StringPtrInput
-	Enhanced            pulumi.BoolPtrInput
-	EnterpriseProjectId pulumi.StringPtrInput
-	ExportLocation      pulumi.StringPtrInput
-	HpcBandwidth        pulumi.StringPtrInput
-	HpcCacheBandwidth   pulumi.StringPtrInput
-	Name                pulumi.StringPtrInput
-	Period              pulumi.IntPtrInput
-	PeriodUnit          pulumi.StringPtrInput
-	Region              pulumi.StringPtrInput
-	SecurityGroupId     pulumi.StringPtrInput
-	ShareProto          pulumi.StringPtrInput
-	ShareType           pulumi.StringPtrInput
-	Size                pulumi.IntPtrInput
-	Status              pulumi.StringPtrInput
-	SubnetId            pulumi.StringPtrInput
-	Tags                pulumi.StringMapInput
-	Version             pulumi.StringPtrInput
-	VpcId               pulumi.StringPtrInput
+	AutoCreateSecurityGroupRules pulumi.StringPtrInput
+	AutoRenew                    pulumi.StringPtrInput
+	AvailabilityZone             pulumi.StringPtrInput
+	AvailableCapacity            pulumi.StringPtrInput
+	BackupId                     pulumi.StringPtrInput
+	ChargingMode                 pulumi.StringPtrInput
+	CryptKeyId                   pulumi.StringPtrInput
+	DedicatedFlavor              pulumi.StringPtrInput
+	DedicatedStorageId           pulumi.StringPtrInput
+	Enhanced                     pulumi.BoolPtrInput
+	EnterpriseProjectId          pulumi.StringPtrInput
+	ExportLocation               pulumi.StringPtrInput
+	HpcBandwidth                 pulumi.StringPtrInput
+	HpcCacheBandwidth            pulumi.StringPtrInput
+	Name                         pulumi.StringPtrInput
+	Period                       pulumi.IntPtrInput
+	PeriodUnit                   pulumi.StringPtrInput
+	Region                       pulumi.StringPtrInput
+	SecurityGroupId              pulumi.StringPtrInput
+	ShareProto                   pulumi.StringPtrInput
+	ShareType                    pulumi.StringPtrInput
+	Size                         pulumi.IntPtrInput
+	Status                       pulumi.StringPtrInput
+	SubnetId                     pulumi.StringPtrInput
+	Tags                         pulumi.StringMapInput
+	Version                      pulumi.StringPtrInput
+	VpcId                        pulumi.StringPtrInput
 }
 
 func (TurboState) ElementType() reflect.Type {
@@ -150,54 +153,56 @@ func (TurboState) ElementType() reflect.Type {
 }
 
 type turboArgs struct {
-	AutoRenew           *string           `pulumi:"autoRenew"`
-	AvailabilityZone    string            `pulumi:"availabilityZone"`
-	BackupId            *string           `pulumi:"backupId"`
-	ChargingMode        *string           `pulumi:"chargingMode"`
-	CryptKeyId          *string           `pulumi:"cryptKeyId"`
-	DedicatedFlavor     *string           `pulumi:"dedicatedFlavor"`
-	DedicatedStorageId  *string           `pulumi:"dedicatedStorageId"`
-	Enhanced            *bool             `pulumi:"enhanced"`
-	EnterpriseProjectId *string           `pulumi:"enterpriseProjectId"`
-	HpcBandwidth        *string           `pulumi:"hpcBandwidth"`
-	HpcCacheBandwidth   *string           `pulumi:"hpcCacheBandwidth"`
-	Name                *string           `pulumi:"name"`
-	Period              *int              `pulumi:"period"`
-	PeriodUnit          *string           `pulumi:"periodUnit"`
-	Region              *string           `pulumi:"region"`
-	SecurityGroupId     string            `pulumi:"securityGroupId"`
-	ShareProto          *string           `pulumi:"shareProto"`
-	ShareType           *string           `pulumi:"shareType"`
-	Size                int               `pulumi:"size"`
-	SubnetId            string            `pulumi:"subnetId"`
-	Tags                map[string]string `pulumi:"tags"`
-	VpcId               string            `pulumi:"vpcId"`
+	AutoCreateSecurityGroupRules *string           `pulumi:"autoCreateSecurityGroupRules"`
+	AutoRenew                    *string           `pulumi:"autoRenew"`
+	AvailabilityZone             string            `pulumi:"availabilityZone"`
+	BackupId                     *string           `pulumi:"backupId"`
+	ChargingMode                 *string           `pulumi:"chargingMode"`
+	CryptKeyId                   *string           `pulumi:"cryptKeyId"`
+	DedicatedFlavor              *string           `pulumi:"dedicatedFlavor"`
+	DedicatedStorageId           *string           `pulumi:"dedicatedStorageId"`
+	Enhanced                     *bool             `pulumi:"enhanced"`
+	EnterpriseProjectId          *string           `pulumi:"enterpriseProjectId"`
+	HpcBandwidth                 *string           `pulumi:"hpcBandwidth"`
+	HpcCacheBandwidth            *string           `pulumi:"hpcCacheBandwidth"`
+	Name                         *string           `pulumi:"name"`
+	Period                       *int              `pulumi:"period"`
+	PeriodUnit                   *string           `pulumi:"periodUnit"`
+	Region                       *string           `pulumi:"region"`
+	SecurityGroupId              string            `pulumi:"securityGroupId"`
+	ShareProto                   *string           `pulumi:"shareProto"`
+	ShareType                    *string           `pulumi:"shareType"`
+	Size                         int               `pulumi:"size"`
+	SubnetId                     string            `pulumi:"subnetId"`
+	Tags                         map[string]string `pulumi:"tags"`
+	VpcId                        string            `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a Turbo resource.
 type TurboArgs struct {
-	AutoRenew           pulumi.StringPtrInput
-	AvailabilityZone    pulumi.StringInput
-	BackupId            pulumi.StringPtrInput
-	ChargingMode        pulumi.StringPtrInput
-	CryptKeyId          pulumi.StringPtrInput
-	DedicatedFlavor     pulumi.StringPtrInput
-	DedicatedStorageId  pulumi.StringPtrInput
-	Enhanced            pulumi.BoolPtrInput
-	EnterpriseProjectId pulumi.StringPtrInput
-	HpcBandwidth        pulumi.StringPtrInput
-	HpcCacheBandwidth   pulumi.StringPtrInput
-	Name                pulumi.StringPtrInput
-	Period              pulumi.IntPtrInput
-	PeriodUnit          pulumi.StringPtrInput
-	Region              pulumi.StringPtrInput
-	SecurityGroupId     pulumi.StringInput
-	ShareProto          pulumi.StringPtrInput
-	ShareType           pulumi.StringPtrInput
-	Size                pulumi.IntInput
-	SubnetId            pulumi.StringInput
-	Tags                pulumi.StringMapInput
-	VpcId               pulumi.StringInput
+	AutoCreateSecurityGroupRules pulumi.StringPtrInput
+	AutoRenew                    pulumi.StringPtrInput
+	AvailabilityZone             pulumi.StringInput
+	BackupId                     pulumi.StringPtrInput
+	ChargingMode                 pulumi.StringPtrInput
+	CryptKeyId                   pulumi.StringPtrInput
+	DedicatedFlavor              pulumi.StringPtrInput
+	DedicatedStorageId           pulumi.StringPtrInput
+	Enhanced                     pulumi.BoolPtrInput
+	EnterpriseProjectId          pulumi.StringPtrInput
+	HpcBandwidth                 pulumi.StringPtrInput
+	HpcCacheBandwidth            pulumi.StringPtrInput
+	Name                         pulumi.StringPtrInput
+	Period                       pulumi.IntPtrInput
+	PeriodUnit                   pulumi.StringPtrInput
+	Region                       pulumi.StringPtrInput
+	SecurityGroupId              pulumi.StringInput
+	ShareProto                   pulumi.StringPtrInput
+	ShareType                    pulumi.StringPtrInput
+	Size                         pulumi.IntInput
+	SubnetId                     pulumi.StringInput
+	Tags                         pulumi.StringMapInput
+	VpcId                        pulumi.StringInput
 }
 
 func (TurboArgs) ElementType() reflect.Type {
@@ -285,6 +290,10 @@ func (o TurboOutput) ToTurboOutput() TurboOutput {
 
 func (o TurboOutput) ToTurboOutputWithContext(ctx context.Context) TurboOutput {
 	return o
+}
+
+func (o TurboOutput) AutoCreateSecurityGroupRules() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Turbo) pulumi.StringPtrOutput { return v.AutoCreateSecurityGroupRules }).(pulumi.StringPtrOutput)
 }
 
 func (o TurboOutput) AutoRenew() pulumi.StringPtrOutput {

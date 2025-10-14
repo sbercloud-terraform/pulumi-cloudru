@@ -35,7 +35,6 @@ class VaultArgs:
                  consistent_level: Optional[pulumi.Input[_builtins.str]] = None,
                  enterprise_project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  is_multi_az: Optional[pulumi.Input[_builtins.bool]] = None,
-                 locked: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  period_unit: Optional[pulumi.Input[_builtins.str]] = None,
@@ -57,7 +56,6 @@ class VaultArgs:
         :param pulumi.Input[_builtins.str] consistent_level: The consistent level (specification) of the vault.
         :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID to which the vault belongs.
         :param pulumi.Input[_builtins.bool] is_multi_az: Whether multiple availability zones are used for backing up.
-        :param pulumi.Input[_builtins.bool] locked: Locked status of the vault.
         :param pulumi.Input[_builtins.str] name: The name of the vault.
         :param pulumi.Input[Sequence[pulumi.Input['VaultPolicyArgs']]] policies: The policy details to associate with the CBR vault.
         :param pulumi.Input[_builtins.str] policy_id: schema:Deprecated; Using parameter 'policy' instead.
@@ -92,8 +90,6 @@ class VaultArgs:
             pulumi.set(__self__, "enterprise_project_id", enterprise_project_id)
         if is_multi_az is not None:
             pulumi.set(__self__, "is_multi_az", is_multi_az)
-        if locked is not None:
-            pulumi.set(__self__, "locked", locked)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if period is not None:
@@ -273,18 +269,6 @@ class VaultArgs:
 
     @_builtins.property
     @pulumi.getter
-    def locked(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Locked status of the vault.
-        """
-        return pulumi.get(self, "locked")
-
-    @locked.setter
-    def locked(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "locked", value)
-
-    @_builtins.property
-    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The name of the vault.
@@ -386,7 +370,6 @@ class _VaultState:
                  consistent_level: Optional[pulumi.Input[_builtins.str]] = None,
                  enterprise_project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  is_multi_az: Optional[pulumi.Input[_builtins.bool]] = None,
-                 locked: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  period_unit: Optional[pulumi.Input[_builtins.str]] = None,
@@ -413,7 +396,6 @@ class _VaultState:
         :param pulumi.Input[_builtins.str] consistent_level: The consistent level (specification) of the vault.
         :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID to which the vault belongs.
         :param pulumi.Input[_builtins.bool] is_multi_az: Whether multiple availability zones are used for backing up.
-        :param pulumi.Input[_builtins.bool] locked: Locked status of the vault.
         :param pulumi.Input[_builtins.str] name: The name of the vault.
         :param pulumi.Input[Sequence[pulumi.Input['VaultPolicyArgs']]] policies: The policy details to associate with the CBR vault.
         :param pulumi.Input[_builtins.str] policy_id: schema:Deprecated; Using parameter 'policy' instead.
@@ -454,8 +436,6 @@ class _VaultState:
             pulumi.set(__self__, "enterprise_project_id", enterprise_project_id)
         if is_multi_az is not None:
             pulumi.set(__self__, "is_multi_az", is_multi_az)
-        if locked is not None:
-            pulumi.set(__self__, "locked", locked)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if period is not None:
@@ -622,18 +602,6 @@ class _VaultState:
     @is_multi_az.setter
     def is_multi_az(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "is_multi_az", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def locked(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Locked status of the vault.
-        """
-        return pulumi.get(self, "locked")
-
-    @locked.setter
-    def locked(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "locked", value)
 
     @_builtins.property
     @pulumi.getter
@@ -824,7 +792,6 @@ class Vault(pulumi.CustomResource):
                  consistent_level: Optional[pulumi.Input[_builtins.str]] = None,
                  enterprise_project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  is_multi_az: Optional[pulumi.Input[_builtins.bool]] = None,
-                 locked: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  period_unit: Optional[pulumi.Input[_builtins.str]] = None,
@@ -849,7 +816,6 @@ class Vault(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] consistent_level: The consistent level (specification) of the vault.
         :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID to which the vault belongs.
         :param pulumi.Input[_builtins.bool] is_multi_az: Whether multiple availability zones are used for backing up.
-        :param pulumi.Input[_builtins.bool] locked: Locked status of the vault.
         :param pulumi.Input[_builtins.str] name: The name of the vault.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VaultPolicyArgs', 'VaultPolicyArgsDict']]]] policies: The policy details to associate with the CBR vault.
         :param pulumi.Input[_builtins.str] policy_id: schema:Deprecated; Using parameter 'policy' instead.
@@ -893,7 +859,6 @@ class Vault(pulumi.CustomResource):
                  consistent_level: Optional[pulumi.Input[_builtins.str]] = None,
                  enterprise_project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  is_multi_az: Optional[pulumi.Input[_builtins.bool]] = None,
-                 locked: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  period_unit: Optional[pulumi.Input[_builtins.str]] = None,
@@ -925,7 +890,6 @@ class Vault(pulumi.CustomResource):
             __props__.__dict__["consistent_level"] = consistent_level
             __props__.__dict__["enterprise_project_id"] = enterprise_project_id
             __props__.__dict__["is_multi_az"] = is_multi_az
-            __props__.__dict__["locked"] = locked
             __props__.__dict__["name"] = name
             __props__.__dict__["period"] = period
             __props__.__dict__["period_unit"] = period_unit
@@ -970,7 +934,6 @@ class Vault(pulumi.CustomResource):
             consistent_level: Optional[pulumi.Input[_builtins.str]] = None,
             enterprise_project_id: Optional[pulumi.Input[_builtins.str]] = None,
             is_multi_az: Optional[pulumi.Input[_builtins.bool]] = None,
-            locked: Optional[pulumi.Input[_builtins.bool]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             period: Optional[pulumi.Input[_builtins.int]] = None,
             period_unit: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1002,7 +965,6 @@ class Vault(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] consistent_level: The consistent level (specification) of the vault.
         :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID to which the vault belongs.
         :param pulumi.Input[_builtins.bool] is_multi_az: Whether multiple availability zones are used for backing up.
-        :param pulumi.Input[_builtins.bool] locked: Locked status of the vault.
         :param pulumi.Input[_builtins.str] name: The name of the vault.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VaultPolicyArgs', 'VaultPolicyArgsDict']]]] policies: The policy details to associate with the CBR vault.
         :param pulumi.Input[_builtins.str] policy_id: schema:Deprecated; Using parameter 'policy' instead.
@@ -1032,7 +994,6 @@ class Vault(pulumi.CustomResource):
         __props__.__dict__["consistent_level"] = consistent_level
         __props__.__dict__["enterprise_project_id"] = enterprise_project_id
         __props__.__dict__["is_multi_az"] = is_multi_az
-        __props__.__dict__["locked"] = locked
         __props__.__dict__["name"] = name
         __props__.__dict__["period"] = period
         __props__.__dict__["period_unit"] = period_unit
@@ -1140,14 +1101,6 @@ class Vault(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def locked(self) -> pulumi.Output[_builtins.bool]:
-        """
-        Locked status of the vault.
-        """
-        return pulumi.get(self, "locked")
-
-    @_builtins.property
-    @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
         The name of the vault.
@@ -1238,7 +1191,7 @@ class Vault(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+    def tags(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         return pulumi.get(self, "tags")
 
     @_builtins.property

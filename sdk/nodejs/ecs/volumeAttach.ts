@@ -32,6 +32,7 @@ export class VolumeAttach extends pulumi.CustomResource {
         return obj['__pulumiType'] === VolumeAttach.__pulumiType;
     }
 
+    declare public readonly deleteOnTermination: pulumi.Output<string>;
     declare public readonly device: pulumi.Output<string>;
     declare public readonly instanceId: pulumi.Output<string>;
     declare public /*out*/ readonly pciAddress: pulumi.Output<string>;
@@ -51,6 +52,7 @@ export class VolumeAttach extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VolumeAttachState | undefined;
+            resourceInputs["deleteOnTermination"] = state?.deleteOnTermination;
             resourceInputs["device"] = state?.device;
             resourceInputs["instanceId"] = state?.instanceId;
             resourceInputs["pciAddress"] = state?.pciAddress;
@@ -64,6 +66,7 @@ export class VolumeAttach extends pulumi.CustomResource {
             if (args?.volumeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'volumeId'");
             }
+            resourceInputs["deleteOnTermination"] = args?.deleteOnTermination;
             resourceInputs["device"] = args?.device;
             resourceInputs["instanceId"] = args?.instanceId;
             resourceInputs["region"] = args?.region;
@@ -79,6 +82,7 @@ export class VolumeAttach extends pulumi.CustomResource {
  * Input properties used for looking up and filtering VolumeAttach resources.
  */
 export interface VolumeAttachState {
+    deleteOnTermination?: pulumi.Input<string>;
     device?: pulumi.Input<string>;
     instanceId?: pulumi.Input<string>;
     pciAddress?: pulumi.Input<string>;
@@ -90,6 +94,7 @@ export interface VolumeAttachState {
  * The set of arguments for constructing a VolumeAttach resource.
  */
 export interface VolumeAttachArgs {
+    deleteOnTermination?: pulumi.Input<string>;
     device?: pulumi.Input<string>;
     instanceId: pulumi.Input<string>;
     region?: pulumi.Input<string>;

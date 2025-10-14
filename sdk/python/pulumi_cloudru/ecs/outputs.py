@@ -18,6 +18,7 @@ from . import outputs
 __all__ = [
     'InstanceBandwidth',
     'InstanceDataDisk',
+    'InstanceEnclaveOptions',
     'InstanceNetwork',
     'InstanceSchedulerHint',
     'InstanceVolumeAttached',
@@ -175,6 +176,18 @@ class InstanceDataDisk(dict):
     @pulumi.getter
     def throughput(self) -> Optional[_builtins.int]:
         return pulumi.get(self, "throughput")
+
+
+@pulumi.output_type
+class InstanceEnclaveOptions(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

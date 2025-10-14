@@ -61,7 +61,7 @@ export interface GetInstanceResult {
     readonly securityGroups: string[];
     readonly status: string;
     readonly systemDiskId: string;
-    readonly tags?: {[key: string]: string};
+    readonly tags: {[key: string]: string};
     readonly userData: string;
     readonly volumeAttacheds: outputs.Ecs.GetInstanceVolumeAttached[];
 }

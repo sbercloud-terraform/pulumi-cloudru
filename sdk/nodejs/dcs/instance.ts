@@ -127,7 +127,7 @@ export class Instance extends pulumi.CustomResource {
     declare public /*out*/ readonly subnetCidr: pulumi.Output<string>;
     declare public readonly subnetId: pulumi.Output<string>;
     declare public /*out*/ readonly subnetName: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     declare public readonly templateId: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly transparentClientIpEnable: pulumi.Output<boolean>;
     declare public /*out*/ readonly usedMemory: pulumi.Output<number>;

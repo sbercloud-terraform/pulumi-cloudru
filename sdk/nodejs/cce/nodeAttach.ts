@@ -77,7 +77,7 @@ export class NodeAttach extends pulumi.CustomResource {
     declare public readonly storage: pulumi.Output<outputs.Cce.NodeAttachStorage | undefined>;
     declare public /*out*/ readonly subnetId: pulumi.Output<string>;
     declare public readonly systemDiskKmsKeyId: pulumi.Output<string | undefined>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     declare public readonly taints: pulumi.Output<outputs.Cce.NodeAttachTaint[] | undefined>;
 
     /**

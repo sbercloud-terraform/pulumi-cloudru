@@ -22,6 +22,7 @@ class FgsFunctionTriggerArgs:
                  event_data: pulumi.Input[_builtins.str],
                  function_urn: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
+                 cascade_delete_eg_subscription: Optional[pulumi.Input[_builtins.bool]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -29,12 +30,15 @@ class FgsFunctionTriggerArgs:
         :param pulumi.Input[_builtins.str] event_data: The detailed configuration of the function trigger event, in JSON format.
         :param pulumi.Input[_builtins.str] function_urn: The function URN to which the function trigger belongs.
         :param pulumi.Input[_builtins.str] type: The type of the function trigger.
+        :param pulumi.Input[_builtins.bool] cascade_delete_eg_subscription: Whether to cascade delete the related EG event subscription of the function trigger.
         :param pulumi.Input[_builtins.str] region: The region where the function trigger is located.
         :param pulumi.Input[_builtins.str] status: The expected status of the function trigger.
         """
         pulumi.set(__self__, "event_data", event_data)
         pulumi.set(__self__, "function_urn", function_urn)
         pulumi.set(__self__, "type", type)
+        if cascade_delete_eg_subscription is not None:
+            pulumi.set(__self__, "cascade_delete_eg_subscription", cascade_delete_eg_subscription)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if status is not None:
@@ -77,6 +81,18 @@ class FgsFunctionTriggerArgs:
         pulumi.set(self, "type", value)
 
     @_builtins.property
+    @pulumi.getter(name="cascadeDeleteEgSubscription")
+    def cascade_delete_eg_subscription(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to cascade delete the related EG event subscription of the function trigger.
+        """
+        return pulumi.get(self, "cascade_delete_eg_subscription")
+
+    @cascade_delete_eg_subscription.setter
+    def cascade_delete_eg_subscription(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "cascade_delete_eg_subscription", value)
+
+    @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -104,6 +120,7 @@ class FgsFunctionTriggerArgs:
 @pulumi.input_type
 class _FgsFunctionTriggerState:
     def __init__(__self__, *,
+                 cascade_delete_eg_subscription: Optional[pulumi.Input[_builtins.bool]] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  event_data: Optional[pulumi.Input[_builtins.str]] = None,
                  function_urn: Optional[pulumi.Input[_builtins.str]] = None,
@@ -113,6 +130,7 @@ class _FgsFunctionTriggerState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FgsFunctionTrigger resources.
+        :param pulumi.Input[_builtins.bool] cascade_delete_eg_subscription: Whether to cascade delete the related EG event subscription of the function trigger.
         :param pulumi.Input[_builtins.str] created_at: The creation time of the function trigger.
         :param pulumi.Input[_builtins.str] event_data: The detailed configuration of the function trigger event, in JSON format.
         :param pulumi.Input[_builtins.str] function_urn: The function URN to which the function trigger belongs.
@@ -121,6 +139,8 @@ class _FgsFunctionTriggerState:
         :param pulumi.Input[_builtins.str] type: The type of the function trigger.
         :param pulumi.Input[_builtins.str] updated_at: The latest update time of the function trigger.
         """
+        if cascade_delete_eg_subscription is not None:
+            pulumi.set(__self__, "cascade_delete_eg_subscription", cascade_delete_eg_subscription)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
         if event_data is not None:
@@ -135,6 +155,18 @@ class _FgsFunctionTriggerState:
             pulumi.set(__self__, "type", type)
         if updated_at is not None:
             pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter(name="cascadeDeleteEgSubscription")
+    def cascade_delete_eg_subscription(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to cascade delete the related EG event subscription of the function trigger.
+        """
+        return pulumi.get(self, "cascade_delete_eg_subscription")
+
+    @cascade_delete_eg_subscription.setter
+    def cascade_delete_eg_subscription(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "cascade_delete_eg_subscription", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
@@ -227,6 +259,7 @@ class FgsFunctionTrigger(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cascade_delete_eg_subscription: Optional[pulumi.Input[_builtins.bool]] = None,
                  event_data: Optional[pulumi.Input[_builtins.str]] = None,
                  function_urn: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -237,6 +270,7 @@ class FgsFunctionTrigger(pulumi.CustomResource):
         Create a FgsFunctionTrigger resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] cascade_delete_eg_subscription: Whether to cascade delete the related EG event subscription of the function trigger.
         :param pulumi.Input[_builtins.str] event_data: The detailed configuration of the function trigger event, in JSON format.
         :param pulumi.Input[_builtins.str] function_urn: The function URN to which the function trigger belongs.
         :param pulumi.Input[_builtins.str] region: The region where the function trigger is located.
@@ -266,6 +300,7 @@ class FgsFunctionTrigger(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cascade_delete_eg_subscription: Optional[pulumi.Input[_builtins.bool]] = None,
                  event_data: Optional[pulumi.Input[_builtins.str]] = None,
                  function_urn: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -280,6 +315,7 @@ class FgsFunctionTrigger(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FgsFunctionTriggerArgs.__new__(FgsFunctionTriggerArgs)
 
+            __props__.__dict__["cascade_delete_eg_subscription"] = cascade_delete_eg_subscription
             if event_data is None and not opts.urn:
                 raise TypeError("Missing required property 'event_data'")
             __props__.__dict__["event_data"] = event_data
@@ -303,6 +339,7 @@ class FgsFunctionTrigger(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            cascade_delete_eg_subscription: Optional[pulumi.Input[_builtins.bool]] = None,
             created_at: Optional[pulumi.Input[_builtins.str]] = None,
             event_data: Optional[pulumi.Input[_builtins.str]] = None,
             function_urn: Optional[pulumi.Input[_builtins.str]] = None,
@@ -317,6 +354,7 @@ class FgsFunctionTrigger(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] cascade_delete_eg_subscription: Whether to cascade delete the related EG event subscription of the function trigger.
         :param pulumi.Input[_builtins.str] created_at: The creation time of the function trigger.
         :param pulumi.Input[_builtins.str] event_data: The detailed configuration of the function trigger event, in JSON format.
         :param pulumi.Input[_builtins.str] function_urn: The function URN to which the function trigger belongs.
@@ -329,6 +367,7 @@ class FgsFunctionTrigger(pulumi.CustomResource):
 
         __props__ = _FgsFunctionTriggerState.__new__(_FgsFunctionTriggerState)
 
+        __props__.__dict__["cascade_delete_eg_subscription"] = cascade_delete_eg_subscription
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["event_data"] = event_data
         __props__.__dict__["function_urn"] = function_urn
@@ -337,6 +376,14 @@ class FgsFunctionTrigger(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         __props__.__dict__["updated_at"] = updated_at
         return FgsFunctionTrigger(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="cascadeDeleteEgSubscription")
+    def cascade_delete_eg_subscription(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to cascade delete the related EG event subscription of the function trigger.
+        """
+        return pulumi.get(self, "cascade_delete_eg_subscription")
 
     @_builtins.property
     @pulumi.getter(name="createdAt")

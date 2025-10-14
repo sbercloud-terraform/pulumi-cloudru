@@ -56,7 +56,7 @@ export class ReadReplicaInstance extends pulumi.CustomResource {
     declare public readonly sslEnable: pulumi.Output<boolean>;
     declare public /*out*/ readonly status: pulumi.Output<string>;
     declare public /*out*/ readonly subnetId: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     declare public /*out*/ readonly type: pulumi.Output<string>;
     declare public readonly volume: pulumi.Output<outputs.Rds.ReadReplicaInstanceVolume>;
     declare public /*out*/ readonly vpcId: pulumi.Output<string>;

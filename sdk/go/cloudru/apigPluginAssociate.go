@@ -15,8 +15,11 @@ import (
 type ApigPluginAssociate struct {
 	pulumi.CustomResourceState
 
-	// The APIs bound by the plugin.
+	// The list of API IDs to be bound by the plugin.
 	ApiIds pulumi.StringArrayOutput `pulumi:"apiIds"`
+	// The script configuration value of this change is also the original value used for comparison with
+	// the new value next time the change is made. The corresponding parameter name is 'api_ids'.
+	ApiIdsOrigins pulumi.StringArrayOutput `pulumi:"apiIdsOrigins"`
 	// The environment ID where the API was published.
 	EnvId pulumi.StringOutput `pulumi:"envId"`
 	// The ID of the dedicated instance to which the plugin belongs.
@@ -69,8 +72,11 @@ func GetApigPluginAssociate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApigPluginAssociate resources.
 type apigPluginAssociateState struct {
-	// The APIs bound by the plugin.
+	// The list of API IDs to be bound by the plugin.
 	ApiIds []string `pulumi:"apiIds"`
+	// The script configuration value of this change is also the original value used for comparison with
+	// the new value next time the change is made. The corresponding parameter name is 'api_ids'.
+	ApiIdsOrigins []string `pulumi:"apiIdsOrigins"`
 	// The environment ID where the API was published.
 	EnvId *string `pulumi:"envId"`
 	// The ID of the dedicated instance to which the plugin belongs.
@@ -82,8 +88,11 @@ type apigPluginAssociateState struct {
 }
 
 type ApigPluginAssociateState struct {
-	// The APIs bound by the plugin.
+	// The list of API IDs to be bound by the plugin.
 	ApiIds pulumi.StringArrayInput
+	// The script configuration value of this change is also the original value used for comparison with
+	// the new value next time the change is made. The corresponding parameter name is 'api_ids'.
+	ApiIdsOrigins pulumi.StringArrayInput
 	// The environment ID where the API was published.
 	EnvId pulumi.StringPtrInput
 	// The ID of the dedicated instance to which the plugin belongs.
@@ -99,8 +108,11 @@ func (ApigPluginAssociateState) ElementType() reflect.Type {
 }
 
 type apigPluginAssociateArgs struct {
-	// The APIs bound by the plugin.
+	// The list of API IDs to be bound by the plugin.
 	ApiIds []string `pulumi:"apiIds"`
+	// The script configuration value of this change is also the original value used for comparison with
+	// the new value next time the change is made. The corresponding parameter name is 'api_ids'.
+	ApiIdsOrigins []string `pulumi:"apiIdsOrigins"`
 	// The environment ID where the API was published.
 	EnvId string `pulumi:"envId"`
 	// The ID of the dedicated instance to which the plugin belongs.
@@ -113,8 +125,11 @@ type apigPluginAssociateArgs struct {
 
 // The set of arguments for constructing a ApigPluginAssociate resource.
 type ApigPluginAssociateArgs struct {
-	// The APIs bound by the plugin.
+	// The list of API IDs to be bound by the plugin.
 	ApiIds pulumi.StringArrayInput
+	// The script configuration value of this change is also the original value used for comparison with
+	// the new value next time the change is made. The corresponding parameter name is 'api_ids'.
+	ApiIdsOrigins pulumi.StringArrayInput
 	// The environment ID where the API was published.
 	EnvId pulumi.StringInput
 	// The ID of the dedicated instance to which the plugin belongs.
@@ -212,9 +227,15 @@ func (o ApigPluginAssociateOutput) ToApigPluginAssociateOutputWithContext(ctx co
 	return o
 }
 
-// The APIs bound by the plugin.
+// The list of API IDs to be bound by the plugin.
 func (o ApigPluginAssociateOutput) ApiIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ApigPluginAssociate) pulumi.StringArrayOutput { return v.ApiIds }).(pulumi.StringArrayOutput)
+}
+
+// The script configuration value of this change is also the original value used for comparison with
+// the new value next time the change is made. The corresponding parameter name is 'api_ids'.
+func (o ApigPluginAssociateOutput) ApiIdsOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApigPluginAssociate) pulumi.StringArrayOutput { return v.ApiIdsOrigins }).(pulumi.StringArrayOutput)
 }
 
 // The environment ID where the API was published.

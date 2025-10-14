@@ -44,7 +44,7 @@ export class SmnTopic extends pulumi.CustomResource {
     declare public /*out*/ readonly pushPolicy: pulumi.Output<number>;
     declare public readonly region: pulumi.Output<string>;
     declare public readonly servicesPublishAllowed: pulumi.Output<string | undefined>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     declare public /*out*/ readonly topicUrn: pulumi.Output<string>;
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     declare public readonly usersPublishAllowed: pulumi.Output<string | undefined>;

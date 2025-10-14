@@ -132,7 +132,7 @@ export class CbhHaInstance extends pulumi.CustomResource {
      * Specifies the ID of a subnet.
      */
     declare public readonly subnetId: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     /**
      * The current version of the CBH HA instance image.
      */

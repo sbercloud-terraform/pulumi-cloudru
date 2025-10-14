@@ -118,7 +118,7 @@ export class Cluster extends pulumi.CustomResource {
     declare public /*out*/ readonly status: pulumi.Output<string>;
     declare public readonly subnetId: pulumi.Output<string>;
     declare public readonly supportIstio: pulumi.Output<boolean>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     declare public readonly timezone: pulumi.Output<string>;
     declare public readonly vpcId: pulumi.Output<string>;
 

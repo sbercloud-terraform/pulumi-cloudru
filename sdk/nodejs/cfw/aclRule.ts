@@ -156,10 +156,7 @@ export class AclRule extends pulumi.CustomResource {
      * The rule status.
      */
     declare public readonly status: pulumi.Output<number>;
-    /**
-     * The key/value pairs to associate with the ACL rule.
-     */
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     /**
      * The rule type.
      */
@@ -401,9 +398,6 @@ export interface AclRuleState {
      * The rule status.
      */
     status?: pulumi.Input<number>;
-    /**
-     * The key/value pairs to associate with the ACL rule.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The rule type.
@@ -537,9 +531,6 @@ export interface AclRuleArgs {
      * The rule status.
      */
     status: pulumi.Input<number>;
-    /**
-     * The key/value pairs to associate with the ACL rule.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The rule type.

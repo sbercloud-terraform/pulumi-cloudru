@@ -39,7 +39,7 @@ export class Group extends pulumi.CustomResource {
     declare public readonly enterpriseProjectId: pulumi.Output<string>;
     declare public readonly groupName: pulumi.Output<string>;
     declare public readonly region: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     declare public readonly ttlInDays: pulumi.Output<number>;
 
     /**

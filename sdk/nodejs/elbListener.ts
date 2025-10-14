@@ -78,7 +78,7 @@ export class ElbListener extends pulumi.CustomResource {
     declare public readonly sniCertificates: pulumi.Output<string[] | undefined>;
     declare public readonly sniMatchAlgo: pulumi.Output<string>;
     declare public readonly sslEarlyDataEnable: pulumi.Output<boolean | undefined>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     declare public readonly tlsCiphersPolicy: pulumi.Output<string>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 

@@ -15,8 +15,11 @@ import (
 type ApigApplicationAuthorization struct {
 	pulumi.CustomResourceState
 
-	// The authorized API IDs
+	// The list of API IDs to be authorized for the application.
 	ApiIds pulumi.StringArrayOutput `pulumi:"apiIds"`
+	// The script configuration value of this change is also the original value used for comparison with
+	// the new value next time the change is made. The corresponding parameter name is 'api_ids'.
+	ApiIdsOrigins pulumi.StringArrayOutput `pulumi:"apiIdsOrigins"`
 	// The ID of the application authorized to access the APIs.
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
 	// The environment ID where the APIs were published.
@@ -69,8 +72,11 @@ func GetApigApplicationAuthorization(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApigApplicationAuthorization resources.
 type apigApplicationAuthorizationState struct {
-	// The authorized API IDs
+	// The list of API IDs to be authorized for the application.
 	ApiIds []string `pulumi:"apiIds"`
+	// The script configuration value of this change is also the original value used for comparison with
+	// the new value next time the change is made. The corresponding parameter name is 'api_ids'.
+	ApiIdsOrigins []string `pulumi:"apiIdsOrigins"`
 	// The ID of the application authorized to access the APIs.
 	ApplicationId *string `pulumi:"applicationId"`
 	// The environment ID where the APIs were published.
@@ -82,8 +88,11 @@ type apigApplicationAuthorizationState struct {
 }
 
 type ApigApplicationAuthorizationState struct {
-	// The authorized API IDs
+	// The list of API IDs to be authorized for the application.
 	ApiIds pulumi.StringArrayInput
+	// The script configuration value of this change is also the original value used for comparison with
+	// the new value next time the change is made. The corresponding parameter name is 'api_ids'.
+	ApiIdsOrigins pulumi.StringArrayInput
 	// The ID of the application authorized to access the APIs.
 	ApplicationId pulumi.StringPtrInput
 	// The environment ID where the APIs were published.
@@ -99,8 +108,11 @@ func (ApigApplicationAuthorizationState) ElementType() reflect.Type {
 }
 
 type apigApplicationAuthorizationArgs struct {
-	// The authorized API IDs
+	// The list of API IDs to be authorized for the application.
 	ApiIds []string `pulumi:"apiIds"`
+	// The script configuration value of this change is also the original value used for comparison with
+	// the new value next time the change is made. The corresponding parameter name is 'api_ids'.
+	ApiIdsOrigins []string `pulumi:"apiIdsOrigins"`
 	// The ID of the application authorized to access the APIs.
 	ApplicationId string `pulumi:"applicationId"`
 	// The environment ID where the APIs were published.
@@ -113,8 +125,11 @@ type apigApplicationAuthorizationArgs struct {
 
 // The set of arguments for constructing a ApigApplicationAuthorization resource.
 type ApigApplicationAuthorizationArgs struct {
-	// The authorized API IDs
+	// The list of API IDs to be authorized for the application.
 	ApiIds pulumi.StringArrayInput
+	// The script configuration value of this change is also the original value used for comparison with
+	// the new value next time the change is made. The corresponding parameter name is 'api_ids'.
+	ApiIdsOrigins pulumi.StringArrayInput
 	// The ID of the application authorized to access the APIs.
 	ApplicationId pulumi.StringInput
 	// The environment ID where the APIs were published.
@@ -212,9 +227,15 @@ func (o ApigApplicationAuthorizationOutput) ToApigApplicationAuthorizationOutput
 	return o
 }
 
-// The authorized API IDs
+// The list of API IDs to be authorized for the application.
 func (o ApigApplicationAuthorizationOutput) ApiIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ApigApplicationAuthorization) pulumi.StringArrayOutput { return v.ApiIds }).(pulumi.StringArrayOutput)
+}
+
+// The script configuration value of this change is also the original value used for comparison with
+// the new value next time the change is made. The corresponding parameter name is 'api_ids'.
+func (o ApigApplicationAuthorizationOutput) ApiIdsOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApigApplicationAuthorization) pulumi.StringArrayOutput { return v.ApiIdsOrigins }).(pulumi.StringArrayOutput)
 }
 
 // The ID of the application authorized to access the APIs.

@@ -68,7 +68,6 @@ class ClusterArgs:
         :param pulumi.Input[_builtins.str] name: The cluster name.
         :param pulumi.Input[_builtins.int] number_of_cn: schema: Required
         :param pulumi.Input[_builtins.int] port: Service port of a cluster (8000 to 10000). The default value is 8000.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the cluster.
         :param pulumi.Input[_builtins.str] version: schema: Required
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
@@ -375,9 +374,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        The key/value pairs to associate with the cluster.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -472,7 +468,6 @@ class _ClusterState:
         :param pulumi.Input[_builtins.str] security_group_id: The security group ID.
         :param pulumi.Input[_builtins.str] status: The cluster status.
         :param pulumi.Input[_builtins.str] sub_status: Sub-status of clusters in the AVAILABLE state.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the cluster.
         :param pulumi.Input[_builtins.str] task_status: Cluster management task.
         :param pulumi.Input[_builtins.str] updated: The updated time of the cluster.
         :param pulumi.Input[_builtins.str] user_name: Administrator username for logging in to a data warehouse cluster.
@@ -883,9 +878,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        The key/value pairs to associate with the cluster.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -1027,7 +1019,6 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] number_of_node: Number of nodes in a cluster.
         :param pulumi.Input[_builtins.int] port: Service port of a cluster (8000 to 10000). The default value is 8000.
         :param pulumi.Input[_builtins.str] security_group_id: The security group ID.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the cluster.
         :param pulumi.Input[_builtins.str] user_name: Administrator username for logging in to a data warehouse cluster.
         :param pulumi.Input[_builtins.str] user_pwd: Administrator password for logging in to a data warehouse cluster.
         :param pulumi.Input[_builtins.str] version: schema: Required
@@ -1222,7 +1213,6 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] security_group_id: The security group ID.
         :param pulumi.Input[_builtins.str] status: The cluster status.
         :param pulumi.Input[_builtins.str] sub_status: Sub-status of clusters in the AVAILABLE state.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the cluster.
         :param pulumi.Input[_builtins.str] task_status: Cluster management task.
         :param pulumi.Input[_builtins.str] updated: The updated time of the cluster.
         :param pulumi.Input[_builtins.str] user_name: Administrator username for logging in to a data warehouse cluster.
@@ -1489,10 +1479,7 @@ class Cluster(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        The key/value pairs to associate with the cluster.
-        """
+    def tags(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         return pulumi.get(self, "tags")
 
     @_builtins.property

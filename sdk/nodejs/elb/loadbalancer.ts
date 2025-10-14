@@ -62,7 +62,7 @@ export class Loadbalancer extends pulumi.CustomResource {
      * schema: Deprecated
      */
     declare public readonly securityGroupIds: pulumi.Output<string[]>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     /**
      * @deprecated tenant_id is deprecated
      */

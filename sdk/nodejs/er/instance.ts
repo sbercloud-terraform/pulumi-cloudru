@@ -81,7 +81,7 @@ export class Instance extends pulumi.CustomResource {
      * Current status of the router.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     /**
      * The latest update time.
      */

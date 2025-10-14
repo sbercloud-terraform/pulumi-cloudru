@@ -40,7 +40,7 @@ export class Snapshot extends pulumi.CustomResource {
      * The script configuration value of this change is also the original value used for comparison with
      *  the new value next time the change is made. The corresponding parameter name is 'metadata'.
      */
-    declare public /*out*/ readonly metadataOrigin: pulumi.Output<{[key: string]: string}>;
+    declare public readonly metadataOrigin: pulumi.Output<{[key: string]: string}>;
     declare public readonly name: pulumi.Output<string>;
     declare public readonly region: pulumi.Output<string>;
     declare public /*out*/ readonly size: pulumi.Output<number>;
@@ -80,11 +80,11 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["force"] = args?.force;
             resourceInputs["metadata"] = args?.metadata;
+            resourceInputs["metadataOrigin"] = args?.metadataOrigin;
             resourceInputs["name"] = args?.name;
             resourceInputs["region"] = args?.region;
             resourceInputs["volumeId"] = args?.volumeId;
             resourceInputs["createdAt"] = undefined /*out*/;
-            resourceInputs["metadataOrigin"] = undefined /*out*/;
             resourceInputs["size"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
@@ -122,6 +122,11 @@ export interface SnapshotArgs {
     description?: pulumi.Input<string>;
     force?: pulumi.Input<boolean>;
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The script configuration value of this change is also the original value used for comparison with
+     *  the new value next time the change is made. The corresponding parameter name is 'metadata'.
+     */
+    metadataOrigin?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     name?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
     volumeId: pulumi.Input<string>;

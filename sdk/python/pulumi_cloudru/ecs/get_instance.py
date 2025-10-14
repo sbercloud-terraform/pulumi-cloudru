@@ -211,7 +211,7 @@ class GetInstanceResult:
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+    def tags(self) -> Mapping[str, _builtins.str]:
         return pulumi.get(self, "tags")
 
     @_builtins.property

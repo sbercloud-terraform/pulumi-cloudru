@@ -240,6 +240,32 @@ export interface CbrCheckpointBackup {
     updatedAt: string;
 }
 
+export interface CceClusterUpgradeAddon {
+    addonTemplateName: string;
+    operation: string;
+    values?: outputs.CceClusterUpgradeAddonValues;
+    version: string;
+}
+
+export interface CceClusterUpgradeAddonValues {
+    basicJson?: string;
+    customJson?: string;
+    flavorJson?: string;
+}
+
+export interface CceClusterUpgradeStrategy {
+    inPlaceRollingUpdate?: outputs.CceClusterUpgradeStrategyInPlaceRollingUpdate;
+    type: string;
+}
+
+export interface CceClusterUpgradeStrategyInPlaceRollingUpdate {
+    userDefinedStep?: number;
+}
+
+export interface CceNodesRemoveNode {
+    uid: string;
+}
+
 export interface DcsParametersConfigurationParameter {
     name: string;
     needRestart: boolean;
@@ -3741,6 +3767,81 @@ export interface GetDmsRocketmqUsersUserTopicPerm {
     perm: string;
 }
 
+export interface GetDnsZonesZone {
+    /**
+     * The creation time of the zone, in RFC3339 format.
+     */
+    createdAt: string;
+    /**
+     * The zone description.
+     */
+    description: string;
+    /**
+     * The email address of the administrator managing the zone.
+     */
+    email: string;
+    /**
+     * The enterprise project ID.
+     */
+    enterpriseProjectId: string;
+    /**
+     * The zone ID.
+     */
+    id: string;
+    /**
+     * The master DNS servers, from which the slave servers get DNS information.
+     */
+    masters: string[];
+    /**
+     * The zone name.
+     */
+    name: string;
+    /**
+     * The creation time of the zone, in RFC3339 format.
+     */
+    poolId: string;
+    /**
+     * The recursive resolution proxy mode for subdomains of the private zone.
+     */
+    proxyPattern: string;
+    /**
+     * The number of record sets in the zone.
+     */
+    recordNum: number;
+    /**
+     * The list of VPCs associated with the zone.
+     */
+    routers: outputs.GetDnsZonesZoneRouter[];
+    /**
+     * The zone status.
+     */
+    status: string;
+    tags: {[key: string]: string};
+    /**
+     * The time to live (TTL) of the zone.
+     */
+    ttl: number;
+    /**
+     * The latest update time of the zone, in RFC3339 format.
+     */
+    updatedAt: string;
+    /**
+     * The zone type.
+     */
+    zoneType: string;
+}
+
+export interface GetDnsZonesZoneRouter {
+    /**
+     * The ID of the VPC associated with the zone.
+     */
+    routerId: string;
+    /**
+     * The region of the VPC.
+     */
+    routerRegion: string;
+}
+
 export interface GetElbFlavorsFlavor {
     bandwidth: number;
     category: number;
@@ -4603,6 +4704,62 @@ export interface GetVpnGatewaysGatewayEip {
      * The EIP type. The value can be **5_bgp** and **5_sbgp**.
      */
     type: string;
+}
+
+export interface KpsKeypairAssociateServer {
+    /**
+     * Specifies the authentication information.
+     */
+    auth?: outputs.KpsKeypairAssociateServerAuth;
+    /**
+     * Specifies whether the password is disabled.
+     */
+    disablePassword?: boolean;
+    /**
+     * Specifies ID of the ECS.
+     */
+    id: string;
+    /**
+     * Specifies the SSH listening port.
+     */
+    port?: number;
+}
+
+export interface KpsKeypairAssociateServerAuth {
+    /**
+     * Specifies the value of the key.
+     */
+    key?: string;
+    /**
+     * Specifies the value of the authentication type.
+     */
+    type?: string;
+}
+
+export interface KpsKeypairDisassociateServer {
+    /**
+     * Specifies the authentication type.
+     */
+    auth?: outputs.KpsKeypairDisassociateServerAuth;
+    /**
+     * Specifies ID of the ECS.
+     */
+    id: string;
+    /**
+     * Specifies the SSH listening port.
+     */
+    port?: number;
+}
+
+export interface KpsKeypairDisassociateServerAuth {
+    /**
+     * Specifies the value of the key.
+     */
+    key?: string;
+    /**
+     * Specifies the value of an enumeration type.
+     */
+    type?: string;
 }
 
 export interface ObsBucketAclAccountPermission {
@@ -5722,31 +5879,32 @@ export namespace Cce {
     }
 
     export interface NodePoolExtensionScaleGroup {
-        metadata?: outputs.Cce.NodePoolExtensionScaleGroupMetadata;
-        spec?: outputs.Cce.NodePoolExtensionScaleGroupSpec;
+        metadata: outputs.Cce.NodePoolExtensionScaleGroupMetadata;
+        spec: outputs.Cce.NodePoolExtensionScaleGroupSpec;
     }
 
     export interface NodePoolExtensionScaleGroupMetadata {
-        name?: string;
+        name: string;
+        uid: string;
     }
 
     export interface NodePoolExtensionScaleGroupSpec {
-        autoscaling?: outputs.Cce.NodePoolExtensionScaleGroupSpecAutoscaling;
-        az?: string;
-        capacityReservationSpecification?: outputs.Cce.NodePoolExtensionScaleGroupSpecCapacityReservationSpecification;
-        flavor?: string;
+        autoscaling: outputs.Cce.NodePoolExtensionScaleGroupSpecAutoscaling;
+        az: string;
+        capacityReservationSpecification: outputs.Cce.NodePoolExtensionScaleGroupSpecCapacityReservationSpecification;
+        flavor: string;
     }
 
     export interface NodePoolExtensionScaleGroupSpecAutoscaling {
-        enable?: boolean;
-        extensionPriority?: number;
-        maxNodeCount?: number;
-        minNodeCount?: number;
+        enable: boolean;
+        extensionPriority: number;
+        maxNodeCount: number;
+        minNodeCount: number;
     }
 
     export interface NodePoolExtensionScaleGroupSpecCapacityReservationSpecification {
-        id?: string;
-        preference?: string;
+        id: string;
+        preference: string;
     }
 
     export interface NodePoolHostnameConfig {
@@ -8503,6 +8661,53 @@ export namespace Dms {
 }
 
 export namespace Dns {
+    export interface ZoneDnssecInfo {
+        /**
+         * Indicates the creation time. Format is **yyyy-MM-dd'T'HH:mm:ss.SSS**.
+         */
+        createdAt: string;
+        /**
+         * Indicates the digest.
+         */
+        digest: string;
+        /**
+         * Indicates the digest algorithm.
+         */
+        digestAlgorithm: string;
+        /**
+         * Indicates the digest type.
+         */
+        digestType: number;
+        /**
+         * Indicates the DS record.
+         */
+        dsRecord: string;
+        /**
+         * Indicates the flag.
+         */
+        flag: number;
+        /**
+         * Indicates the key tag.
+         */
+        keyTag: number;
+        /**
+         * Indicates the public key.
+         */
+        kskPublicKey: string;
+        /**
+         * Indicates the signature algorithm.
+         */
+        signature: string;
+        /**
+         * Indicates the signature type.
+         */
+        signatureType: number;
+        /**
+         * Indicates the update time. Format is **yyyy-MM-dd'T'HH:mm:ss.SSS**.
+         */
+        updatedAt: string;
+    }
+
     export interface ZoneRouter {
         /**
          * The ID of the associated VPC.
@@ -8804,6 +9009,10 @@ export namespace Ecs {
         snapshotId?: string;
         throughput?: number;
         type: string;
+    }
+
+    export interface InstanceEnclaveOptions {
+        enabled: boolean;
     }
 
     export interface InstanceNetwork {
@@ -9703,8 +9912,8 @@ export namespace Iam {
         authorizationEndpoint: string;
         clientId: string;
         providerUrl: string;
-        responseMode?: string;
-        responseType?: string;
+        responseMode: string;
+        responseType: string;
         scopes: string[];
         signingKey: string;
     }

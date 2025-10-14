@@ -126,7 +126,7 @@ export class Instance extends pulumi.CustomResource {
      * The supported features of the dedicated instance.
      */
     declare public /*out*/ readonly supportedFeatures: pulumi.Output<string[]>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     /**
      * The ID of the VPC used to create the dedicated instance.
      */

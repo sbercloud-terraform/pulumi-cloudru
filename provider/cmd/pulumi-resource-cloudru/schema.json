@@ -1627,15 +1627,37 @@
                     "$ref": "#/types/sbercloud:Cce/NodePoolExtensionScaleGroupSpec:NodePoolExtensionScaleGroupSpec"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "metadata",
+                        "spec"
+                    ]
+                }
+            }
         },
         "sbercloud:Cce/NodePoolExtensionScaleGroupMetadata:NodePoolExtensionScaleGroupMetadata": {
             "properties": {
                 "name": {
                     "type": "string"
+                },
+                "uid": {
+                    "type": "string"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "name",
+                        "uid"
+                    ]
+                }
+            }
         },
         "sbercloud:Cce/NodePoolExtensionScaleGroupSpec:NodePoolExtensionScaleGroupSpec": {
             "properties": {
@@ -1652,7 +1674,17 @@
                     "type": "string"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "autoscaling",
+                        "az",
+                        "capacityReservationSpecification",
+                        "flavor"
+                    ]
+                }
+            }
         },
         "sbercloud:Cce/NodePoolExtensionScaleGroupSpecAutoscaling:NodePoolExtensionScaleGroupSpecAutoscaling": {
             "properties": {
@@ -1669,7 +1701,17 @@
                     "type": "integer"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enable",
+                        "extensionPriority",
+                        "maxNodeCount",
+                        "minNodeCount"
+                    ]
+                }
+            }
         },
         "sbercloud:Cce/NodePoolExtensionScaleGroupSpecCapacityReservationSpecification:NodePoolExtensionScaleGroupSpecCapacityReservationSpecification": {
             "properties": {
@@ -1680,7 +1722,15 @@
                     "type": "string"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "id",
+                        "preference"
+                    ]
+                }
+            }
         },
         "sbercloud:Cce/NodePoolHostnameConfig:NodePoolHostnameConfig": {
             "properties": {
@@ -7689,6 +7739,72 @@
                 }
             }
         },
+        "sbercloud:Dns/ZoneDnssecInfo:ZoneDnssecInfo": {
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "Indicates the creation time. Format is **yyyy-MM-dd'T'HH:mm:ss.SSS**.\n"
+                },
+                "digest": {
+                    "type": "string",
+                    "description": "Indicates the digest.\n"
+                },
+                "digestAlgorithm": {
+                    "type": "string",
+                    "description": "Indicates the digest algorithm.\n"
+                },
+                "digestType": {
+                    "type": "integer",
+                    "description": "Indicates the digest type.\n"
+                },
+                "dsRecord": {
+                    "type": "string",
+                    "description": "Indicates the DS record.\n"
+                },
+                "flag": {
+                    "type": "integer",
+                    "description": "Indicates the flag.\n"
+                },
+                "keyTag": {
+                    "type": "integer",
+                    "description": "Indicates the key tag.\n"
+                },
+                "kskPublicKey": {
+                    "type": "string",
+                    "description": "Indicates the public key.\n"
+                },
+                "signature": {
+                    "type": "string",
+                    "description": "Indicates the signature algorithm.\n"
+                },
+                "signatureType": {
+                    "type": "integer",
+                    "description": "Indicates the signature type.\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "Indicates the update time. Format is **yyyy-MM-dd'T'HH:mm:ss.SSS**.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "createdAt",
+                        "digest",
+                        "digestAlgorithm",
+                        "digestType",
+                        "dsRecord",
+                        "flag",
+                        "keyTag",
+                        "kskPublicKey",
+                        "signature",
+                        "signatureType",
+                        "updatedAt"
+                    ]
+                }
+            }
+        },
         "sbercloud:Dns/ZoneRouter:ZoneRouter": {
             "properties": {
                 "routerId": {
@@ -8210,6 +8326,18 @@
             "required": [
                 "size",
                 "type"
+            ]
+        },
+        "sbercloud:Ecs/InstanceEnclaveOptions:InstanceEnclaveOptions": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
             ]
         },
         "sbercloud:Ecs/InstanceNetwork:InstanceNetwork": {
@@ -10570,6 +10698,8 @@
                         "authorizationEndpoint",
                         "clientId",
                         "providerUrl",
+                        "responseMode",
+                        "responseType",
                         "scopes",
                         "signingKey"
                     ]
@@ -14968,6 +15098,75 @@
                 }
             }
         },
+        "sbercloud:index/CceClusterUpgradeAddon:CceClusterUpgradeAddon": {
+            "properties": {
+                "addonTemplateName": {
+                    "type": "string"
+                },
+                "operation": {
+                    "type": "string"
+                },
+                "values": {
+                    "$ref": "#/types/sbercloud:index/CceClusterUpgradeAddonValues:CceClusterUpgradeAddonValues"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "addonTemplateName",
+                "operation",
+                "version"
+            ]
+        },
+        "sbercloud:index/CceClusterUpgradeAddonValues:CceClusterUpgradeAddonValues": {
+            "properties": {
+                "basicJson": {
+                    "type": "string"
+                },
+                "customJson": {
+                    "type": "string"
+                },
+                "flavorJson": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "sbercloud:index/CceClusterUpgradeStrategy:CceClusterUpgradeStrategy": {
+            "properties": {
+                "inPlaceRollingUpdate": {
+                    "$ref": "#/types/sbercloud:index/CceClusterUpgradeStrategyInPlaceRollingUpdate:CceClusterUpgradeStrategyInPlaceRollingUpdate"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ]
+        },
+        "sbercloud:index/CceClusterUpgradeStrategyInPlaceRollingUpdate:CceClusterUpgradeStrategyInPlaceRollingUpdate": {
+            "properties": {
+                "userDefinedStep": {
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "sbercloud:index/CceNodesRemoveNode:CceNodesRemoveNode": {
+            "properties": {
+                "uid": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "uid"
+            ]
+        },
         "sbercloud:index/DcsParametersConfigurationParameter:DcsParametersConfigurationParameter": {
             "properties": {
                 "name": {
@@ -16340,6 +16539,76 @@
                     ]
                 }
             }
+        },
+        "sbercloud:index/KpsKeypairAssociateServer:KpsKeypairAssociateServer": {
+            "properties": {
+                "auth": {
+                    "$ref": "#/types/sbercloud:index/KpsKeypairAssociateServerAuth:KpsKeypairAssociateServerAuth",
+                    "description": "Specifies the authentication information.\n"
+                },
+                "disablePassword": {
+                    "type": "boolean",
+                    "description": "Specifies whether the password is disabled.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Specifies ID of the ECS.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "Specifies the SSH listening port.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id"
+            ]
+        },
+        "sbercloud:index/KpsKeypairAssociateServerAuth:KpsKeypairAssociateServerAuth": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "Specifies the value of the key.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Specifies the value of the authentication type.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sbercloud:index/KpsKeypairDisassociateServer:KpsKeypairDisassociateServer": {
+            "properties": {
+                "auth": {
+                    "$ref": "#/types/sbercloud:index/KpsKeypairDisassociateServerAuth:KpsKeypairDisassociateServerAuth",
+                    "description": "Specifies the authentication type.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Specifies ID of the ECS.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "Specifies the SSH listening port.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id"
+            ]
+        },
+        "sbercloud:index/KpsKeypairDisassociateServerAuth:KpsKeypairDisassociateServerAuth": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "Specifies the value of the key.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Specifies the value of an enumeration type.\n"
+                }
+            },
+            "type": "object"
         },
         "sbercloud:index/ObsBucketAclAccountPermission:ObsBucketAclAccountPermission": {
             "properties": {
@@ -22065,6 +22334,128 @@
                 }
             }
         },
+        "sbercloud:index/getDnsZonesZone:getDnsZonesZone": {
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "The creation time of the zone, in RFC3339 format.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The zone description.\n"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "The email address of the administrator managing the zone.\n"
+                },
+                "enterpriseProjectId": {
+                    "type": "string",
+                    "description": "The enterprise project ID.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The zone ID.\n"
+                },
+                "masters": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The master DNS servers, from which the slave servers get DNS information.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The zone name.\n"
+                },
+                "poolId": {
+                    "type": "string",
+                    "description": "The creation time of the zone, in RFC3339 format.\n"
+                },
+                "proxyPattern": {
+                    "type": "string",
+                    "description": "The recursive resolution proxy mode for subdomains of the private zone.\n"
+                },
+                "recordNum": {
+                    "type": "integer",
+                    "description": "The number of record sets in the zone.\n"
+                },
+                "routers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sbercloud:index/getDnsZonesZoneRouter:getDnsZonesZoneRouter"
+                    },
+                    "description": "The list of VPCs associated with the zone.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The zone status.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "ttl": {
+                    "type": "integer",
+                    "description": "The time to live (TTL) of the zone.\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "The latest update time of the zone, in RFC3339 format.\n"
+                },
+                "zoneType": {
+                    "type": "string",
+                    "description": "The zone type.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "createdAt",
+                "description",
+                "email",
+                "enterpriseProjectId",
+                "id",
+                "masters",
+                "name",
+                "poolId",
+                "proxyPattern",
+                "recordNum",
+                "routers",
+                "status",
+                "tags",
+                "ttl",
+                "updatedAt",
+                "zoneType"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "sbercloud:index/getDnsZonesZoneRouter:getDnsZonesZoneRouter": {
+            "properties": {
+                "routerId": {
+                    "type": "string",
+                    "description": "The ID of the VPC associated with the zone.\n"
+                },
+                "routerRegion": {
+                    "type": "string",
+                    "description": "The region of the VPC.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "routerId",
+                "routerRegion"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "sbercloud:index/getElbFlavorsFlavor:getElbFlavorsFlavor": {
             "properties": {
                 "bandwidth": {
@@ -24479,6 +24870,7 @@
                 "scalingGroupName",
                 "securityGroups",
                 "status",
+                "tags",
                 "vpcId"
             ],
             "inputProperties": {
@@ -25111,10 +25503,6 @@
                     "type": "boolean",
                     "description": "Whether multiple availability zones are used for backing up."
                 },
-                "locked": {
-                    "type": "boolean",
-                    "description": "Locked status of the vault."
-                },
                 "name": {
                     "type": "string",
                     "description": "The name of the vault."
@@ -25191,7 +25579,6 @@
                 "cloudType",
                 "enterpriseProjectId",
                 "isMultiAz",
-                "locked",
                 "name",
                 "policies",
                 "protectionType",
@@ -25201,6 +25588,7 @@
                 "specCode",
                 "status",
                 "storage",
+                "tags",
                 "type",
                 "used"
             ],
@@ -25254,10 +25642,6 @@
                     "type": "boolean",
                     "description": "Whether multiple availability zones are used for backing up.",
                     "willReplaceOnChanges": true
-                },
-                "locked": {
-                    "type": "boolean",
-                    "description": "Locked status of the vault."
                 },
                 "name": {
                     "type": "string",
@@ -25376,10 +25760,6 @@
                         "type": "boolean",
                         "description": "Whether multiple availability zones are used for backing up.",
                         "willReplaceOnChanges": true
-                    },
-                    "locked": {
-                        "type": "boolean",
-                        "description": "Locked status of the vault."
                     },
                     "name": {
                         "type": "string",
@@ -25787,6 +26167,7 @@
                 "status",
                 "subnetId",
                 "supportIstio",
+                "tags",
                 "timezone",
                 "vpcId"
             ],
@@ -26609,7 +26990,8 @@
                 "runtime",
                 "serverId",
                 "status",
-                "subnetId"
+                "subnetId",
+                "tags"
             ],
             "inputProperties": {
                 "annotations": {
@@ -27183,7 +27565,8 @@
                 "runtime",
                 "serverId",
                 "status",
-                "subnetId"
+                "subnetId",
+                "tags"
             ],
             "inputProperties": {
                 "clusterId": {
@@ -27487,6 +27870,9 @@
                 "hostnameConfig": {
                     "$ref": "#/types/sbercloud:Cce/NodePoolHostnameConfig:NodePoolHostnameConfig"
                 },
+                "ignoreInitialNodeCount": {
+                    "type": "boolean"
+                },
                 "initialNodeCount": {
                     "type": "integer"
                 },
@@ -27621,6 +28007,7 @@
                 "dataVolumes",
                 "enterpriseProjectId",
                 "extendParams",
+                "extensionScaleGroups",
                 "flavorId",
                 "hostnameConfig",
                 "initialNodeCount",
@@ -27636,6 +28023,7 @@
                 "status",
                 "subnetId",
                 "tagPolicyOnExistingNodes",
+                "tags",
                 "taintPolicyOnExistingNodes",
                 "type"
             ],
@@ -27688,6 +28076,9 @@
                 },
                 "hostnameConfig": {
                     "$ref": "#/types/sbercloud:Cce/NodePoolHostnameConfig:NodePoolHostnameConfig"
+                },
+                "ignoreInitialNodeCount": {
+                    "type": "boolean"
                 },
                 "initialNodeCount": {
                     "type": "integer"
@@ -27875,6 +28266,9 @@
                     },
                     "hostnameConfig": {
                         "$ref": "#/types/sbercloud:Cce/NodePoolHostnameConfig:NodePoolHostnameConfig"
+                    },
+                    "ignoreInitialNodeCount": {
+                        "type": "boolean"
                     },
                     "initialNodeCount": {
                         "type": "integer"
@@ -28775,8 +29169,7 @@
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
-                    },
-                    "description": "The key/value pairs to associate with the ACL rule."
+                    }
                 },
                 "type": {
                     "type": "integer",
@@ -28798,6 +29191,7 @@
                 "ruleHitCount",
                 "sequence",
                 "status",
+                "tags",
                 "type"
             ],
             "inputProperties": {
@@ -28959,8 +29353,7 @@
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
-                    },
-                    "description": "The key/value pairs to associate with the ACL rule."
+                    }
                 },
                 "type": {
                     "type": "integer",
@@ -29137,8 +29530,7 @@
                         "type": "object",
                         "additionalProperties": {
                             "type": "string"
-                        },
-                        "description": "The key/value pairs to associate with the ACL rule."
+                        }
                     },
                     "type": {
                         "type": "integer",
@@ -30301,8 +30693,7 @@
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
-                    },
-                    "description": "Specifies the key/value pairs to associate with the firewall."
+                    }
                 }
             },
             "required": [
@@ -30320,7 +30711,8 @@
                 "region",
                 "serviceType",
                 "status",
-                "supportIpv6"
+                "supportIpv6",
+                "tags"
             ],
             "inputProperties": {
                 "autoRenew": {
@@ -30387,8 +30779,7 @@
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
-                    },
-                    "description": "Specifies the key/value pairs to associate with the firewall."
+                    }
                 }
             },
             "requiredInputs": [
@@ -30496,8 +30887,7 @@
                         "type": "object",
                         "additionalProperties": {
                             "type": "string"
-                        },
-                        "description": "Specifies the key/value pairs to associate with the firewall."
+                        }
                     }
                 },
                 "type": "object"
@@ -31083,6 +31473,7 @@
                 "securityGroupId",
                 "status",
                 "subnetId",
+                "tags",
                 "updatedAt",
                 "vpcId",
                 "vpcepEndpointId",
@@ -31443,6 +31834,7 @@
                 "region",
                 "status",
                 "streamId",
+                "tags",
                 "transferEnabled",
                 "type"
             ],
@@ -31833,6 +32225,7 @@
                 "region",
                 "status",
                 "streamId",
+                "tags",
                 "transferEnabled",
                 "type"
             ],
@@ -32252,6 +32645,7 @@
                 "subnetCidr",
                 "subnetId",
                 "subnetName",
+                "tags",
                 "transparentClientIpEnable",
                 "usedMemory",
                 "userId",
@@ -32875,6 +33269,7 @@
                 "slowLogDesensitization",
                 "status",
                 "subnetId",
+                "tags",
                 "timeZone",
                 "updatedAt",
                 "vpcId"
@@ -34543,6 +34938,7 @@
                 "status",
                 "subnetId",
                 "supportedFeatures",
+                "tags",
                 "vpcId",
                 "vpcIngressAddress",
                 "vpcepServiceAddress",
@@ -35293,7 +35689,8 @@
                 "region",
                 "rotationInterval",
                 "rotationNumber",
-                "scheduledDeletionDate"
+                "scheduledDeletionDate",
+                "tags"
             ],
             "inputProperties": {
                 "enterpriseProjectId": {
@@ -35662,6 +36059,7 @@
                 "streamId",
                 "streamName",
                 "streamType",
+                "tags",
                 "writablePartitionCount"
             ],
             "inputProperties": {
@@ -35832,7 +36230,8 @@
                 "enterpriseProjectId",
                 "name",
                 "owner",
-                "region"
+                "region",
+                "tags"
             ],
             "inputProperties": {
                 "description": {
@@ -35942,6 +36341,7 @@
                 "owner",
                 "region",
                 "status",
+                "tags",
                 "type",
                 "updatedAt"
             ],
@@ -36103,6 +36503,7 @@
                 "region",
                 "resourceMode",
                 "scalingPolicies",
+                "tags",
                 "vpcCidr"
             ],
             "inputProperties": {
@@ -36762,11 +37163,16 @@
                 "port": {
                     "type": "integer"
                 },
+                "portProtocol": {
+                    "$ref": "#/types/sbercloud:Dms/KafkaInstancePortProtocol:KafkaInstancePortProtocol",
+                    "description": "The port protocol information of the Kafka instance."
+                },
                 "portProtocols": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sbercloud:Dms/KafkaInstancePortProtocol:KafkaInstancePortProtocol"
-                    }
+                    },
+                    "description": "Use port_protocol instead."
                 },
                 "productId": {
                     "type": "string"
@@ -36881,6 +37287,7 @@
                 "partitionNum",
                 "podConnectAddress",
                 "port",
+                "portProtocol",
                 "portProtocols",
                 "publicBandwidth",
                 "publicIpAddresses",
@@ -36895,6 +37302,7 @@
                 "storageSpace",
                 "storageSpecCode",
                 "storageType",
+                "tags",
                 "type",
                 "usedStorageSpace",
                 "userId",
@@ -36904,8 +37312,7 @@
             ],
             "inputProperties": {
                 "accessUser": {
-                    "type": "string",
-                    "willReplaceOnChanges": true
+                    "type": "string"
                 },
                 "archType": {
                     "type": "string",
@@ -36962,8 +37369,7 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "willReplaceOnChanges": true
+                    }
                 },
                 "engineVersion": {
                     "type": "string",
@@ -37032,6 +37438,10 @@
                     "type": "string",
                     "willReplaceOnChanges": true
                 },
+                "portProtocol": {
+                    "$ref": "#/types/sbercloud:Dms/KafkaInstancePortProtocol:KafkaInstancePortProtocol",
+                    "description": "The port protocol information of the Kafka instance."
+                },
                 "productId": {
                     "type": "string"
                 },
@@ -37092,8 +37502,7 @@
                 "description": "Input properties used for looking up and filtering KafkaInstance resources.\n",
                 "properties": {
                     "accessUser": {
-                        "type": "string",
-                        "willReplaceOnChanges": true
+                        "type": "string"
                     },
                     "archType": {
                         "type": "string",
@@ -37168,8 +37577,7 @@
                         "type": "array",
                         "items": {
                             "type": "string"
-                        },
-                        "willReplaceOnChanges": true
+                        }
                     },
                     "engine": {
                         "type": "string"
@@ -37276,11 +37684,16 @@
                     "port": {
                         "type": "integer"
                     },
+                    "portProtocol": {
+                        "$ref": "#/types/sbercloud:Dms/KafkaInstancePortProtocol:KafkaInstancePortProtocol",
+                        "description": "The port protocol information of the Kafka instance."
+                    },
                     "portProtocols": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/sbercloud:Dms/KafkaInstancePortProtocol:KafkaInstancePortProtocol"
-                        }
+                        },
+                        "description": "Use port_protocol instead."
                     },
                     "productId": {
                         "type": "string"
@@ -37891,6 +38304,7 @@
                 "status",
                 "storageSpace",
                 "storageSpecCode",
+                "tags",
                 "type",
                 "usedStorageSpace",
                 "userId",
@@ -38213,6 +38627,7 @@
                 "name",
                 "records",
                 "region",
+                "tags",
                 "type",
                 "zoneId"
             ],
@@ -38304,6 +38719,17 @@
                     "type": "string",
                     "description": "The description of the zone."
                 },
+                "dnssec": {
+                    "type": "string",
+                    "description": "Specifies whether to enable DNSSEC for a public zone."
+                },
+                "dnssecInfos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sbercloud:Dns/ZoneDnssecInfo:ZoneDnssecInfo"
+                    },
+                    "description": "Indicates the DNSSEC infos."
+                },
                 "email": {
                     "type": "string",
                     "description": "The email address of the administrator managing the zone."
@@ -38357,18 +38783,25 @@
                 }
             },
             "required": [
+                "dnssec",
+                "dnssecInfos",
                 "email",
                 "enterpriseProjectId",
                 "masters",
                 "name",
                 "proxyPattern",
                 "region",
-                "status"
+                "status",
+                "tags"
             ],
             "inputProperties": {
                 "description": {
                     "type": "string",
                     "description": "The description of the zone."
+                },
+                "dnssec": {
+                    "type": "string",
+                    "description": "Specifies whether to enable DNSSEC for a public zone."
                 },
                 "email": {
                     "type": "string",
@@ -38386,8 +38819,7 @@
                 },
                 "proxyPattern": {
                     "type": "string",
-                    "description": "The recursive resolution proxy mode for subdomains of the private zone.",
-                    "willReplaceOnChanges": true
+                    "description": "The recursive resolution proxy mode for subdomains of the private zone."
                 },
                 "region": {
                     "type": "string",
@@ -38427,6 +38859,17 @@
                         "type": "string",
                         "description": "The description of the zone."
                     },
+                    "dnssec": {
+                        "type": "string",
+                        "description": "Specifies whether to enable DNSSEC for a public zone."
+                    },
+                    "dnssecInfos": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sbercloud:Dns/ZoneDnssecInfo:ZoneDnssecInfo"
+                        },
+                        "description": "Indicates the DNSSEC infos."
+                    },
                     "email": {
                         "type": "string",
                         "description": "The email address of the administrator managing the zone."
@@ -38450,8 +38893,7 @@
                     },
                     "proxyPattern": {
                         "type": "string",
-                        "description": "The recursive resolution proxy mode for subdomains of the private zone.",
-                        "willReplaceOnChanges": true
+                        "description": "The recursive resolution proxy mode for subdomains of the private zone."
                     },
                     "region": {
                         "type": "string",
@@ -38576,6 +39018,7 @@
                 "region",
                 "sourceDb",
                 "status",
+                "tags",
                 "type"
             ],
             "inputProperties": {
@@ -38894,8 +39337,7 @@
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
-                    },
-                    "description": "The key/value pairs to associate with the cluster."
+                    }
                 },
                 "taskStatus": {
                     "type": "string",
@@ -38947,6 +39389,7 @@
                 "securityGroupId",
                 "status",
                 "subStatus",
+                "tags",
                 "taskStatus",
                 "updated",
                 "userName",
@@ -39043,8 +39486,7 @@
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
-                    },
-                    "description": "The key/value pairs to associate with the cluster."
+                    }
                 },
                 "userName": {
                     "type": "string",
@@ -39221,8 +39663,7 @@
                         "type": "object",
                         "additionalProperties": {
                             "type": "string"
-                        },
-                        "description": "The key/value pairs to associate with the cluster."
+                        }
                     },
                     "taskStatus": {
                         "type": "string",
@@ -39403,6 +39844,9 @@
                 "eipType": {
                     "type": "string"
                 },
+                "enclaveOptions": {
+                    "$ref": "#/types/sbercloud:Ecs/InstanceEnclaveOptions:InstanceEnclaveOptions"
+                },
                 "enterpriseProjectId": {
                     "type": "string"
                 },
@@ -39549,6 +39993,7 @@
                 "chargingMode",
                 "createdAt",
                 "description",
+                "enclaveOptions",
                 "enterpriseProjectId",
                 "expiredTime",
                 "flavorId",
@@ -39572,6 +40017,7 @@
                 "systemDiskSize",
                 "systemDiskThroughput",
                 "systemDiskType",
+                "tags",
                 "updatedAt",
                 "volumeAttacheds"
             ],
@@ -39631,6 +40077,10 @@
                 },
                 "eipType": {
                     "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "enclaveOptions": {
+                    "$ref": "#/types/sbercloud:Ecs/InstanceEnclaveOptions:InstanceEnclaveOptions",
                     "willReplaceOnChanges": true
                 },
                 "enterpriseProjectId": {
@@ -39834,6 +40284,10 @@
                     },
                     "eipType": {
                         "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "enclaveOptions": {
+                        "$ref": "#/types/sbercloud:Ecs/InstanceEnclaveOptions:InstanceEnclaveOptions",
                         "willReplaceOnChanges": true
                     },
                     "enterpriseProjectId": {
@@ -40292,6 +40746,9 @@
         },
         "sbercloud:Ecs/volumeAttach:VolumeAttach": {
             "properties": {
+                "deleteOnTermination": {
+                    "type": "string"
+                },
                 "device": {
                     "type": "string"
                 },
@@ -40309,6 +40766,7 @@
                 }
             },
             "required": [
+                "deleteOnTermination",
                 "device",
                 "instanceId",
                 "pciAddress",
@@ -40316,6 +40774,9 @@
                 "volumeId"
             ],
             "inputProperties": {
+                "deleteOnTermination": {
+                    "type": "string"
+                },
                 "device": {
                     "type": "string"
                 },
@@ -40339,6 +40800,9 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering VolumeAttach resources.\n",
                 "properties": {
+                    "deleteOnTermination": {
+                        "type": "string"
+                    },
                     "device": {
                         "type": "string"
                     },
@@ -40822,6 +41286,7 @@
                 "protocolPort",
                 "region",
                 "sniContainerRefs",
+                "tags",
                 "tenantId",
                 "tlsCiphersPolicy",
                 "updatedAt"
@@ -41079,6 +41544,7 @@
                 "publicIp",
                 "region",
                 "securityGroupIds",
+                "tags",
                 "tenantId",
                 "updatedAt",
                 "vipAddress",
@@ -42313,6 +42779,7 @@
                 "name",
                 "region",
                 "status",
+                "tags",
                 "updatedAt"
             ],
             "inputProperties": {
@@ -42616,6 +43083,7 @@
                 "name",
                 "region",
                 "status",
+                "tags",
                 "updatedAt"
             ],
             "inputProperties": {
@@ -42878,6 +43346,7 @@
                 "region",
                 "status",
                 "subnetId",
+                "tags",
                 "updatedAt",
                 "vpcId"
             ],
@@ -43052,6 +43521,13 @@
                         "type": "string"
                     },
                     "willReplaceOnChanges": true
+                },
+                "metadataOrigin": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The script configuration value of this change is also the original value used for comparison with\n the new value next time the change is made. The corresponding parameter name is 'metadata'."
                 },
                 "name": {
                     "type": "string"
@@ -43276,6 +43752,7 @@
                 "serviceType",
                 "size",
                 "status",
+                "tags",
                 "throughput",
                 "throughputAttributes",
                 "updatedAt",
@@ -43931,6 +44408,10 @@
                 "customImage",
                 "dependLists",
                 "dnsList",
+                "enableAuthInHeader",
+                "enableClassIsolation",
+                "enableDynamicMemory",
+                "enableLtsLog",
                 "enterpriseProjectId",
                 "ephemeralStorage",
                 "funcMounts",
@@ -43938,10 +44419,12 @@
                 "handler",
                 "initializerHandler",
                 "initializerTimeout",
+                "isStatefulFunction",
                 "logGroupId",
                 "logGroupName",
                 "logStreamId",
                 "logStreamName",
+                "ltsCustomTag",
                 "ltsCustomTagOrigin",
                 "maxInstanceNum",
                 "memorySize",
@@ -43950,6 +44433,7 @@
                 "name",
                 "region",
                 "runtime",
+                "tags",
                 "timeout",
                 "urn",
                 "version"
@@ -44102,6 +44586,13 @@
                         "type": "string"
                     },
                     "description": "The custom tags configuration that used to filter the LTS logs."
+                },
+                "ltsCustomTagOrigin": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The script configuration value of this change is also the original value used for comparison with\n the new value next time the change is made. The corresponding parameter name is 'lts_custom_tag'."
                 },
                 "maxInstanceNum": {
                     "type": "string",
@@ -45547,6 +46038,7 @@
                 "osVersion",
                 "region",
                 "status",
+                "tags",
                 "visibility",
                 "volumeId"
             ],
@@ -45739,6 +46231,7 @@
                 "enterpriseProjectId",
                 "groupName",
                 "region",
+                "tags",
                 "ttlInDays"
             ],
             "inputProperties": {
@@ -45842,6 +46335,7 @@
                 "groupId",
                 "region",
                 "streamName",
+                "tags",
                 "ttlInDays"
             ],
             "inputProperties": {
@@ -46085,6 +46579,7 @@
                 "securityGroupIds",
                 "status",
                 "subnetId",
+                "tags",
                 "totalNodeNumber",
                 "updateTime",
                 "version",
@@ -46906,6 +47401,7 @@
                 "spec",
                 "status",
                 "subnetId",
+                "tags",
                 "vpcId"
             ],
             "inputProperties": {
@@ -47624,6 +48120,7 @@
                 "region",
                 "sseAlgorithm",
                 "storageInfos",
+                "tags",
                 "userDomainNames"
             ],
             "inputProperties": {
@@ -48375,6 +48872,7 @@
                 "status",
                 "subnetId",
                 "switchStrategy",
+                "tags",
                 "tdeEnabled",
                 "timeZone",
                 "volume",
@@ -50355,6 +50853,7 @@
                 "sslEnable",
                 "status",
                 "subnetId",
+                "tags",
                 "type",
                 "volume",
                 "vpcId"
@@ -51045,7 +51544,8 @@
                 "region",
                 "shareAccessId",
                 "size",
-                "status"
+                "status",
+                "tags"
             ],
             "inputProperties": {
                 "accessLevel": {
@@ -51179,6 +51679,9 @@
         },
         "sbercloud:Sfs/turbo:Turbo": {
             "properties": {
+                "autoCreateSecurityGroupRules": {
+                    "type": "string"
+                },
                 "autoRenew": {
                     "type": "string"
                 },
@@ -51277,10 +51780,14 @@
                 "size",
                 "status",
                 "subnetId",
+                "tags",
                 "version",
                 "vpcId"
             ],
             "inputProperties": {
+                "autoCreateSecurityGroupRules": {
+                    "type": "string"
+                },
                 "autoRenew": {
                     "type": "string"
                 },
@@ -51377,6 +51884,9 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Turbo resources.\n",
                 "properties": {
+                    "autoCreateSecurityGroupRules": {
+                        "type": "string"
+                    },
                     "autoRenew": {
                         "type": "string"
                     },
@@ -52517,6 +53027,7 @@
                 "publicip",
                 "region",
                 "status",
+                "tags",
                 "updatedAt"
             ],
             "inputProperties": {
@@ -53081,6 +53592,7 @@
                 "name",
                 "region",
                 "rules",
+                "tags",
                 "updatedAt"
             ],
             "inputProperties": {
@@ -53349,8 +53861,14 @@
                 "description": {
                     "type": "string"
                 },
+                "dhcpDomainName": {
+                    "type": "string"
+                },
                 "dhcpEnable": {
                     "type": "boolean"
+                },
+                "dhcpIpv6LeaseTime": {
+                    "type": "string"
                 },
                 "dhcpLeaseTime": {
                     "type": "string"
@@ -53411,6 +53929,7 @@
             "required": [
                 "availabilityZone",
                 "cidr",
+                "dhcpIpv6LeaseTime",
                 "dhcpLeaseTime",
                 "dnsLists",
                 "gatewayIp",
@@ -53423,6 +53942,7 @@
                 "region",
                 "secondaryDns",
                 "subnetId",
+                "tags",
                 "vpcId"
             ],
             "inputProperties": {
@@ -53437,8 +53957,14 @@
                 "description": {
                     "type": "string"
                 },
+                "dhcpDomainName": {
+                    "type": "string"
+                },
                 "dhcpEnable": {
                     "type": "boolean"
+                },
+                "dhcpIpv6LeaseTime": {
+                    "type": "string"
                 },
                 "dhcpLeaseTime": {
                     "type": "string"
@@ -53502,8 +54028,14 @@
                     "description": {
                         "type": "string"
                     },
+                    "dhcpDomainName": {
+                        "type": "string"
+                    },
                     "dhcpEnable": {
                         "type": "boolean"
+                    },
+                    "dhcpIpv6LeaseTime": {
+                        "type": "string"
                     },
                     "dhcpLeaseTime": {
                         "type": "string"
@@ -53824,7 +54356,8 @@
                 "region",
                 "routes",
                 "secondaryCidrs",
-                "status"
+                "status",
+                "tags"
             ],
             "inputProperties": {
                 "blockServiceEndpointStates": {
@@ -53989,6 +54522,7 @@
                 "serviceName",
                 "serviceType",
                 "status",
+                "tags",
                 "vpcId"
             ],
             "inputProperties": {
@@ -54186,6 +54720,7 @@
                 "serverType",
                 "serviceName",
                 "status",
+                "tags",
                 "vpcId"
             ],
             "inputProperties": {
@@ -54526,6 +55061,682 @@
                 "type": "object"
             }
         },
+        "sbercloud:index/apigApiAction:ApigApiAction": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "The operation on the API will be performed."
+                },
+                "apiId": {
+                    "type": "string",
+                    "description": "The ID of the API to be published."
+                },
+                "apiName": {
+                    "type": "string",
+                    "description": "The name of the API."
+                },
+                "enableForceNew": {
+                    "type": "string"
+                },
+                "envId": {
+                    "type": "string",
+                    "description": "The ID of the environment to which the API will be published."
+                },
+                "instanceId": {
+                    "type": "string",
+                    "description": "The ID of the dedicated instance to which the API belongs."
+                },
+                "publishId": {
+                    "type": "string",
+                    "description": "The ID of the publish record."
+                },
+                "publishTime": {
+                    "type": "string",
+                    "description": "The time when the API was published, in UTC format."
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region where the APIG instance to which the API belongs is located."
+                },
+                "remark": {
+                    "type": "string",
+                    "description": "The description of the publish action."
+                },
+                "versionId": {
+                    "type": "string",
+                    "description": "The version ID of the online API."
+                }
+            },
+            "required": [
+                "action",
+                "apiId",
+                "apiName",
+                "envId",
+                "instanceId",
+                "publishId",
+                "publishTime",
+                "region",
+                "versionId"
+            ],
+            "inputProperties": {
+                "action": {
+                    "type": "string",
+                    "description": "The operation on the API will be performed."
+                },
+                "apiId": {
+                    "type": "string",
+                    "description": "The ID of the API to be published."
+                },
+                "enableForceNew": {
+                    "type": "string"
+                },
+                "envId": {
+                    "type": "string",
+                    "description": "The ID of the environment to which the API will be published."
+                },
+                "instanceId": {
+                    "type": "string",
+                    "description": "The ID of the dedicated instance to which the API belongs."
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region where the APIG instance to which the API belongs is located.",
+                    "willReplaceOnChanges": true
+                },
+                "remark": {
+                    "type": "string",
+                    "description": "The description of the publish action."
+                }
+            },
+            "requiredInputs": [
+                "action",
+                "apiId",
+                "envId",
+                "instanceId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ApigApiAction resources.\n",
+                "properties": {
+                    "action": {
+                        "type": "string",
+                        "description": "The operation on the API will be performed."
+                    },
+                    "apiId": {
+                        "type": "string",
+                        "description": "The ID of the API to be published."
+                    },
+                    "apiName": {
+                        "type": "string",
+                        "description": "The name of the API."
+                    },
+                    "enableForceNew": {
+                        "type": "string"
+                    },
+                    "envId": {
+                        "type": "string",
+                        "description": "The ID of the environment to which the API will be published."
+                    },
+                    "instanceId": {
+                        "type": "string",
+                        "description": "The ID of the dedicated instance to which the API belongs."
+                    },
+                    "publishId": {
+                        "type": "string",
+                        "description": "The ID of the publish record."
+                    },
+                    "publishTime": {
+                        "type": "string",
+                        "description": "The time when the API was published, in UTC format."
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region where the APIG instance to which the API belongs is located.",
+                        "willReplaceOnChanges": true
+                    },
+                    "remark": {
+                        "type": "string",
+                        "description": "The description of the publish action."
+                    },
+                    "versionId": {
+                        "type": "string",
+                        "description": "The version ID of the online API."
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sbercloud:index/apigApiBatchAction:ApigApiBatchAction": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "The action to perform on the APIs."
+                },
+                "apis": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of API IDs to perform the action on."
+                },
+                "enableForceNew": {
+                    "type": "string"
+                },
+                "envId": {
+                    "type": "string",
+                    "description": "The ID of the environment where the action will be performed."
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The ID of the API group."
+                },
+                "instanceId": {
+                    "type": "string",
+                    "description": "The ID of the dedicated instance to which the APIs belong."
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region where the APIG instance to which the API belongs is located"
+                },
+                "remark": {
+                    "type": "string",
+                    "description": "The remark for the batch operation."
+                }
+            },
+            "required": [
+                "action",
+                "envId",
+                "instanceId",
+                "region"
+            ],
+            "inputProperties": {
+                "action": {
+                    "type": "string",
+                    "description": "The action to perform on the APIs."
+                },
+                "apis": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of API IDs to perform the action on."
+                },
+                "enableForceNew": {
+                    "type": "string"
+                },
+                "envId": {
+                    "type": "string",
+                    "description": "The ID of the environment where the action will be performed."
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The ID of the API group."
+                },
+                "instanceId": {
+                    "type": "string",
+                    "description": "The ID of the dedicated instance to which the APIs belong."
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region where the APIG instance to which the API belongs is located",
+                    "willReplaceOnChanges": true
+                },
+                "remark": {
+                    "type": "string",
+                    "description": "The remark for the batch operation."
+                }
+            },
+            "requiredInputs": [
+                "action",
+                "envId",
+                "instanceId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ApigApiBatchAction resources.\n",
+                "properties": {
+                    "action": {
+                        "type": "string",
+                        "description": "The action to perform on the APIs."
+                    },
+                    "apis": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of API IDs to perform the action on."
+                    },
+                    "enableForceNew": {
+                        "type": "string"
+                    },
+                    "envId": {
+                        "type": "string",
+                        "description": "The ID of the environment where the action will be performed."
+                    },
+                    "groupId": {
+                        "type": "string",
+                        "description": "The ID of the API group."
+                    },
+                    "instanceId": {
+                        "type": "string",
+                        "description": "The ID of the dedicated instance to which the APIs belong."
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region where the APIG instance to which the API belongs is located",
+                        "willReplaceOnChanges": true
+                    },
+                    "remark": {
+                        "type": "string",
+                        "description": "The remark for the batch operation."
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sbercloud:index/apigApiCheck:ApigApiCheck": {
+            "properties": {
+                "apiId": {
+                    "type": "string",
+                    "description": "The ID of the API to be excluded from the check."
+                },
+                "enableForceNew": {
+                    "type": "string"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The ID of the group to which the API belongs."
+                },
+                "instanceId": {
+                    "type": "string",
+                    "description": "The ID of the dedicated instance to which the API belongs."
+                },
+                "matchMode": {
+                    "type": "string",
+                    "description": "The matching mode of the API."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the API."
+                },
+                "region": {
+                    "type": "string"
+                },
+                "reqMethod": {
+                    "type": "string",
+                    "description": "The request method of the API."
+                },
+                "reqUri": {
+                    "type": "string",
+                    "description": "The request path of the API."
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the API to be checked."
+                }
+            },
+            "required": [
+                "instanceId",
+                "name",
+                "region",
+                "type"
+            ],
+            "inputProperties": {
+                "apiId": {
+                    "type": "string",
+                    "description": "The ID of the API to be excluded from the check."
+                },
+                "enableForceNew": {
+                    "type": "string"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The ID of the group to which the API belongs."
+                },
+                "instanceId": {
+                    "type": "string",
+                    "description": "The ID of the dedicated instance to which the API belongs."
+                },
+                "matchMode": {
+                    "type": "string",
+                    "description": "The matching mode of the API."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the API."
+                },
+                "region": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "reqMethod": {
+                    "type": "string",
+                    "description": "The request method of the API."
+                },
+                "reqUri": {
+                    "type": "string",
+                    "description": "The request path of the API."
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the API to be checked."
+                }
+            },
+            "requiredInputs": [
+                "instanceId",
+                "type"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ApigApiCheck resources.\n",
+                "properties": {
+                    "apiId": {
+                        "type": "string",
+                        "description": "The ID of the API to be excluded from the check."
+                    },
+                    "enableForceNew": {
+                        "type": "string"
+                    },
+                    "groupId": {
+                        "type": "string",
+                        "description": "The ID of the group to which the API belongs."
+                    },
+                    "instanceId": {
+                        "type": "string",
+                        "description": "The ID of the dedicated instance to which the API belongs."
+                    },
+                    "matchMode": {
+                        "type": "string",
+                        "description": "The matching mode of the API."
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the API."
+                    },
+                    "region": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "reqMethod": {
+                        "type": "string",
+                        "description": "The request method of the API."
+                    },
+                    "reqUri": {
+                        "type": "string",
+                        "description": "The request path of the API."
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of the API to be checked."
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sbercloud:index/apigApiDebug:ApigApiDebug": {
+            "properties": {
+                "apiId": {
+                    "type": "string",
+                    "description": "The ID of the API to be debugged."
+                },
+                "body": {
+                    "type": "string",
+                    "description": "The request message body of the API."
+                },
+                "enableForceNew": {
+                    "type": "string"
+                },
+                "header": {
+                    "type": "string",
+                    "description": "The request header parameters of the API, in JSON format."
+                },
+                "instanceId": {
+                    "type": "string",
+                    "description": "The ID of the dedicated instance to which the API belongs."
+                },
+                "latency": {
+                    "type": "integer",
+                    "description": "The debug latency in milliseconds."
+                },
+                "method": {
+                    "type": "string",
+                    "description": "The request method of the API."
+                },
+                "mode": {
+                    "type": "string",
+                    "description": "The debug mode."
+                },
+                "path": {
+                    "type": "string",
+                    "description": "The request path of the API."
+                },
+                "query": {
+                    "type": "string",
+                    "description": "The request query parameters of the API, in JSON format."
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region where the dedicated instance to which the API belongs is located."
+                },
+                "request": {
+                    "type": "string",
+                    "description": "The debug request message content."
+                },
+                "response": {
+                    "type": "string",
+                    "description": "The debug response message content."
+                },
+                "scheme": {
+                    "type": "string",
+                    "description": "The request protocol."
+                },
+                "stage": {
+                    "type": "string",
+                    "description": "The runtime environment for debug request."
+                }
+            },
+            "required": [
+                "apiId",
+                "instanceId",
+                "latency",
+                "method",
+                "mode",
+                "path",
+                "region",
+                "request",
+                "response",
+                "scheme"
+            ],
+            "inputProperties": {
+                "apiId": {
+                    "type": "string",
+                    "description": "The ID of the API to be debugged."
+                },
+                "body": {
+                    "type": "string",
+                    "description": "The request message body of the API."
+                },
+                "enableForceNew": {
+                    "type": "string"
+                },
+                "header": {
+                    "type": "string",
+                    "description": "The request header parameters of the API, in JSON format."
+                },
+                "instanceId": {
+                    "type": "string",
+                    "description": "The ID of the dedicated instance to which the API belongs."
+                },
+                "method": {
+                    "type": "string",
+                    "description": "The request method of the API."
+                },
+                "mode": {
+                    "type": "string",
+                    "description": "The debug mode."
+                },
+                "path": {
+                    "type": "string",
+                    "description": "The request path of the API."
+                },
+                "query": {
+                    "type": "string",
+                    "description": "The request query parameters of the API, in JSON format."
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region where the dedicated instance to which the API belongs is located.",
+                    "willReplaceOnChanges": true
+                },
+                "scheme": {
+                    "type": "string",
+                    "description": "The request protocol."
+                },
+                "stage": {
+                    "type": "string",
+                    "description": "The runtime environment for debug request."
+                }
+            },
+            "requiredInputs": [
+                "apiId",
+                "instanceId",
+                "method",
+                "mode",
+                "path",
+                "scheme"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ApigApiDebug resources.\n",
+                "properties": {
+                    "apiId": {
+                        "type": "string",
+                        "description": "The ID of the API to be debugged."
+                    },
+                    "body": {
+                        "type": "string",
+                        "description": "The request message body of the API."
+                    },
+                    "enableForceNew": {
+                        "type": "string"
+                    },
+                    "header": {
+                        "type": "string",
+                        "description": "The request header parameters of the API, in JSON format."
+                    },
+                    "instanceId": {
+                        "type": "string",
+                        "description": "The ID of the dedicated instance to which the API belongs."
+                    },
+                    "latency": {
+                        "type": "integer",
+                        "description": "The debug latency in milliseconds."
+                    },
+                    "method": {
+                        "type": "string",
+                        "description": "The request method of the API."
+                    },
+                    "mode": {
+                        "type": "string",
+                        "description": "The debug mode."
+                    },
+                    "path": {
+                        "type": "string",
+                        "description": "The request path of the API."
+                    },
+                    "query": {
+                        "type": "string",
+                        "description": "The request query parameters of the API, in JSON format."
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region where the dedicated instance to which the API belongs is located.",
+                        "willReplaceOnChanges": true
+                    },
+                    "request": {
+                        "type": "string",
+                        "description": "The debug request message content."
+                    },
+                    "response": {
+                        "type": "string",
+                        "description": "The debug response message content."
+                    },
+                    "scheme": {
+                        "type": "string",
+                        "description": "The request protocol."
+                    },
+                    "stage": {
+                        "type": "string",
+                        "description": "The runtime environment for debug request."
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sbercloud:index/apigApiVersionUnpublish:ApigApiVersionUnpublish": {
+            "properties": {
+                "enableForceNew": {
+                    "type": "string"
+                },
+                "instanceId": {
+                    "type": "string",
+                    "description": "The ID of the dedicated instance to which the API version belongs."
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region where the dedicated instance to which the API version belongs is located."
+                },
+                "versionId": {
+                    "type": "string",
+                    "description": "The ID of the API version to be offline."
+                }
+            },
+            "required": [
+                "instanceId",
+                "region",
+                "versionId"
+            ],
+            "inputProperties": {
+                "enableForceNew": {
+                    "type": "string"
+                },
+                "instanceId": {
+                    "type": "string",
+                    "description": "The ID of the dedicated instance to which the API version belongs."
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region where the dedicated instance to which the API version belongs is located.",
+                    "willReplaceOnChanges": true
+                },
+                "versionId": {
+                    "type": "string",
+                    "description": "The ID of the API version to be offline."
+                }
+            },
+            "requiredInputs": [
+                "instanceId",
+                "versionId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ApigApiVersionUnpublish resources.\n",
+                "properties": {
+                    "enableForceNew": {
+                        "type": "string"
+                    },
+                    "instanceId": {
+                        "type": "string",
+                        "description": "The ID of the dedicated instance to which the API version belongs."
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region where the dedicated instance to which the API version belongs is located.",
+                        "willReplaceOnChanges": true
+                    },
+                    "versionId": {
+                        "type": "string",
+                        "description": "The ID of the API version to be offline."
+                    }
+                },
+                "type": "object"
+            }
+        },
         "sbercloud:index/apigAppcode:ApigAppcode": {
             "properties": {
                 "applicationId": {
@@ -54720,7 +55931,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The authorized API IDs"
+                    "description": "The list of API IDs to be authorized for the application."
+                },
+                "apiIdsOrigins": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The script configuration value of this change is also the original value used for comparison with\nthe new value next time the change is made. The corresponding parameter name is 'api_ids'."
                 },
                 "applicationId": {
                     "type": "string",
@@ -54741,6 +55959,7 @@
             },
             "required": [
                 "apiIds",
+                "apiIdsOrigins",
                 "applicationId",
                 "envId",
                 "instanceId",
@@ -54752,7 +55971,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The authorized API IDs"
+                    "description": "The list of API IDs to be authorized for the application."
+                },
+                "apiIdsOrigins": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The script configuration value of this change is also the original value used for comparison with\nthe new value next time the change is made. The corresponding parameter name is 'api_ids'."
                 },
                 "applicationId": {
                     "type": "string",
@@ -54789,7 +56015,14 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The authorized API IDs"
+                        "description": "The list of API IDs to be authorized for the application."
+                    },
+                    "apiIdsOrigins": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The script configuration value of this change is also the original value used for comparison with\nthe new value next time the change is made. The corresponding parameter name is 'api_ids'."
                     },
                     "applicationId": {
                         "type": "string",
@@ -55939,7 +57172,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The APIs bound by the plugin."
+                    "description": "The list of API IDs to be bound by the plugin."
+                },
+                "apiIdsOrigins": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The script configuration value of this change is also the original value used for comparison with\nthe new value next time the change is made. The corresponding parameter name is 'api_ids'."
                 },
                 "envId": {
                     "type": "string",
@@ -55960,6 +57200,7 @@
             },
             "required": [
                 "apiIds",
+                "apiIdsOrigins",
                 "envId",
                 "instanceId",
                 "pluginId",
@@ -55971,7 +57212,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The APIs bound by the plugin."
+                    "description": "The list of API IDs to be bound by the plugin."
+                },
+                "apiIdsOrigins": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The script configuration value of this change is also the original value used for comparison with\nthe new value next time the change is made. The corresponding parameter name is 'api_ids'."
                 },
                 "envId": {
                     "type": "string",
@@ -56008,7 +57256,138 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The APIs bound by the plugin."
+                        "description": "The list of API IDs to be bound by the plugin."
+                    },
+                    "apiIdsOrigins": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The script configuration value of this change is also the original value used for comparison with\nthe new value next time the change is made. The corresponding parameter name is 'api_ids'."
+                    },
+                    "envId": {
+                        "type": "string",
+                        "description": "The environment ID where the API was published.",
+                        "willReplaceOnChanges": true
+                    },
+                    "instanceId": {
+                        "type": "string",
+                        "description": "The ID of the dedicated instance to which the plugin belongs.",
+                        "willReplaceOnChanges": true
+                    },
+                    "pluginId": {
+                        "type": "string",
+                        "description": "The plugin ID.",
+                        "willReplaceOnChanges": true
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region where the plugin is located.",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sbercloud:index/apigPluginBatchApisAssociate:ApigPluginBatchApisAssociate": {
+            "properties": {
+                "apiIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of API IDs to be bound by the plugin."
+                },
+                "apiIdsOrigins": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The script configuration value of this change is also the original value used for comparison with\nthe new value next time the change is made. The corresponding parameter name is 'api_ids'."
+                },
+                "envId": {
+                    "type": "string",
+                    "description": "The environment ID where the API was published."
+                },
+                "instanceId": {
+                    "type": "string",
+                    "description": "The ID of the dedicated instance to which the plugin belongs."
+                },
+                "pluginId": {
+                    "type": "string",
+                    "description": "The plugin ID."
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region where the plugin is located."
+                }
+            },
+            "required": [
+                "apiIds",
+                "apiIdsOrigins",
+                "envId",
+                "instanceId",
+                "pluginId",
+                "region"
+            ],
+            "inputProperties": {
+                "apiIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of API IDs to be bound by the plugin."
+                },
+                "apiIdsOrigins": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The script configuration value of this change is also the original value used for comparison with\nthe new value next time the change is made. The corresponding parameter name is 'api_ids'."
+                },
+                "envId": {
+                    "type": "string",
+                    "description": "The environment ID where the API was published.",
+                    "willReplaceOnChanges": true
+                },
+                "instanceId": {
+                    "type": "string",
+                    "description": "The ID of the dedicated instance to which the plugin belongs.",
+                    "willReplaceOnChanges": true
+                },
+                "pluginId": {
+                    "type": "string",
+                    "description": "The plugin ID.",
+                    "willReplaceOnChanges": true
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region where the plugin is located.",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "apiIds",
+                "envId",
+                "instanceId",
+                "pluginId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ApigPluginBatchApisAssociate resources.\n",
+                "properties": {
+                    "apiIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of API IDs to be bound by the plugin."
+                    },
+                    "apiIdsOrigins": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The script configuration value of this change is also the original value used for comparison with\nthe new value next time the change is made. The corresponding parameter name is 'api_ids'."
                     },
                     "envId": {
                         "type": "string",
@@ -56443,6 +57822,7 @@
                 "slavePrivateIp",
                 "status",
                 "subnetId",
+                "tags",
                 "version",
                 "vpcId"
             ],
@@ -56807,6 +58187,7 @@
                 "status",
                 "subnetAddress",
                 "subnetId",
+                "tags",
                 "version",
                 "vpcId"
             ],
@@ -57293,6 +58674,225 @@
                     "vaultId": {
                         "type": "string",
                         "description": "The ID of the vault where the checkpoint to create.",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sbercloud:index/cceClusterUpgrade:CceClusterUpgrade": {
+            "properties": {
+                "addons": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sbercloud:index/CceClusterUpgradeAddon:CceClusterUpgradeAddon"
+                    }
+                },
+                "clusterId": {
+                    "type": "string"
+                },
+                "currentVersion": {
+                    "type": "string"
+                },
+                "enableForceNew": {
+                    "type": "string"
+                },
+                "isPostcheck": {
+                    "type": "boolean"
+                },
+                "isSnapshot": {
+                    "type": "boolean"
+                },
+                "nodeOrder": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "nodepoolOrder": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "integer"
+                    }
+                },
+                "region": {
+                    "type": "string"
+                },
+                "strategy": {
+                    "$ref": "#/types/sbercloud:index/CceClusterUpgradeStrategy:CceClusterUpgradeStrategy"
+                },
+                "targetVersion": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "clusterId",
+                "region",
+                "strategy",
+                "targetVersion"
+            ],
+            "inputProperties": {
+                "addons": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sbercloud:index/CceClusterUpgradeAddon:CceClusterUpgradeAddon"
+                    }
+                },
+                "clusterId": {
+                    "type": "string"
+                },
+                "currentVersion": {
+                    "type": "string"
+                },
+                "enableForceNew": {
+                    "type": "string"
+                },
+                "isPostcheck": {
+                    "type": "boolean"
+                },
+                "isSnapshot": {
+                    "type": "boolean"
+                },
+                "nodeOrder": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "nodepoolOrder": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "integer"
+                    }
+                },
+                "region": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "strategy": {
+                    "$ref": "#/types/sbercloud:index/CceClusterUpgradeStrategy:CceClusterUpgradeStrategy"
+                },
+                "targetVersion": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "clusterId",
+                "strategy",
+                "targetVersion"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering CceClusterUpgrade resources.\n",
+                "properties": {
+                    "addons": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sbercloud:index/CceClusterUpgradeAddon:CceClusterUpgradeAddon"
+                        }
+                    },
+                    "clusterId": {
+                        "type": "string"
+                    },
+                    "currentVersion": {
+                        "type": "string"
+                    },
+                    "enableForceNew": {
+                        "type": "string"
+                    },
+                    "isPostcheck": {
+                        "type": "boolean"
+                    },
+                    "isSnapshot": {
+                        "type": "boolean"
+                    },
+                    "nodeOrder": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "nodepoolOrder": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "integer"
+                        }
+                    },
+                    "region": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "strategy": {
+                        "$ref": "#/types/sbercloud:index/CceClusterUpgradeStrategy:CceClusterUpgradeStrategy"
+                    },
+                    "targetVersion": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sbercloud:index/cceNodesRemove:CceNodesRemove": {
+            "properties": {
+                "clusterId": {
+                    "type": "string"
+                },
+                "enableForceNew": {
+                    "type": "string"
+                },
+                "nodes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sbercloud:index/CceNodesRemoveNode:CceNodesRemoveNode"
+                    }
+                },
+                "region": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "clusterId",
+                "nodes",
+                "region"
+            ],
+            "inputProperties": {
+                "clusterId": {
+                    "type": "string"
+                },
+                "enableForceNew": {
+                    "type": "string"
+                },
+                "nodes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sbercloud:index/CceNodesRemoveNode:CceNodesRemoveNode"
+                    }
+                },
+                "region": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "clusterId",
+                "nodes"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering CceNodesRemove resources.\n",
+                "properties": {
+                    "clusterId": {
+                        "type": "string"
+                    },
+                    "enableForceNew": {
+                        "type": "string"
+                    },
+                    "nodes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sbercloud:index/CceNodesRemoveNode:CceNodesRemoveNode"
+                        }
+                    },
+                    "region": {
+                        "type": "string",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -58455,6 +60055,7 @@
                 "storageSpecCode",
                 "subnetId",
                 "subnetName",
+                "tags",
                 "type",
                 "usedStorageSpace",
                 "userId",
@@ -59347,6 +60948,10 @@
                         "type": "string"
                     }
                 },
+                "tlsMode": {
+                    "type": "string",
+                    "description": "The TLS mode of the instance."
+                },
                 "type": {
                     "type": "string",
                     "description": "Indicates the DMS RocketMQ instance type. Value: cluster."
@@ -59390,6 +60995,8 @@
                 "storageSpace",
                 "storageSpecCode",
                 "subnetId",
+                "tags",
+                "tlsMode",
                 "type",
                 "usedStorageSpace",
                 "vpcId"
@@ -59504,6 +61111,10 @@
                     "additionalProperties": {
                         "type": "string"
                     }
+                },
+                "tlsMode": {
+                    "type": "string",
+                    "description": "The TLS mode of the instance."
                 },
                 "vpcId": {
                     "type": "string",
@@ -59687,6 +61298,10 @@
                         "additionalProperties": {
                             "type": "string"
                         }
+                    },
+                    "tlsMode": {
+                        "type": "string",
+                        "description": "The TLS mode of the instance."
                     },
                     "type": {
                         "type": "string",
@@ -61144,6 +62759,7 @@
                 "requestTimeout",
                 "responseTimeout",
                 "sniMatchAlgo",
+                "tags",
                 "tlsCiphersPolicy",
                 "updatedAt"
             ],
@@ -61654,6 +63270,7 @@
                 "publicBorderGroup",
                 "region",
                 "sharetype",
+                "tags",
                 "updatedAt",
                 "vpcId",
                 "wafFailureAction"
@@ -63214,6 +64831,10 @@
         },
         "sbercloud:index/fgsFunctionTrigger:FgsFunctionTrigger": {
             "properties": {
+                "cascadeDeleteEgSubscription": {
+                    "type": "boolean",
+                    "description": "Whether to cascade delete the related EG event subscription of the function trigger."
+                },
                 "createdAt": {
                     "type": "string",
                     "description": "The creation time of the function trigger."
@@ -63253,6 +64874,10 @@
                 "updatedAt"
             ],
             "inputProperties": {
+                "cascadeDeleteEgSubscription": {
+                    "type": "boolean",
+                    "description": "Whether to cascade delete the related EG event subscription of the function trigger."
+                },
                 "eventData": {
                     "type": "string",
                     "description": "The detailed configuration of the function trigger event, in JSON format."
@@ -63285,6 +64910,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering FgsFunctionTrigger resources.\n",
                 "properties": {
+                    "cascadeDeleteEgSubscription": {
+                        "type": "boolean",
+                        "description": "Whether to cascade delete the related EG event subscription of the function trigger."
+                    },
                     "createdAt": {
                         "type": "string",
                         "description": "The creation time of the function trigger."
@@ -64150,6 +65779,124 @@
                     },
                     "pwdReset": {
                         "type": "boolean"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sbercloud:index/kpsKeypairAssociate:KpsKeypairAssociate": {
+            "properties": {
+                "enableForceNew": {
+                    "type": "string"
+                },
+                "keypairName": {
+                    "type": "string",
+                    "description": "Specifies the name of SSH keypair."
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Specifies the region in which to query the resource."
+                },
+                "server": {
+                    "$ref": "#/types/sbercloud:index/KpsKeypairAssociateServer:KpsKeypairAssociateServer",
+                    "description": "Specifies the ECS information."
+                }
+            },
+            "required": [
+                "keypairName",
+                "region",
+                "server"
+            ],
+            "inputProperties": {
+                "enableForceNew": {
+                    "type": "string"
+                },
+                "keypairName": {
+                    "type": "string",
+                    "description": "Specifies the name of SSH keypair."
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Specifies the region in which to query the resource."
+                },
+                "server": {
+                    "$ref": "#/types/sbercloud:index/KpsKeypairAssociateServer:KpsKeypairAssociateServer",
+                    "description": "Specifies the ECS information."
+                }
+            },
+            "requiredInputs": [
+                "keypairName",
+                "server"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering KpsKeypairAssociate resources.\n",
+                "properties": {
+                    "enableForceNew": {
+                        "type": "string"
+                    },
+                    "keypairName": {
+                        "type": "string",
+                        "description": "Specifies the name of SSH keypair."
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "Specifies the region in which to query the resource."
+                    },
+                    "server": {
+                        "$ref": "#/types/sbercloud:index/KpsKeypairAssociateServer:KpsKeypairAssociateServer",
+                        "description": "Specifies the ECS information."
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sbercloud:index/kpsKeypairDisassociate:KpsKeypairDisassociate": {
+            "properties": {
+                "enableForceNew": {
+                    "type": "string"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Specifies the region in which to query the resource."
+                },
+                "server": {
+                    "$ref": "#/types/sbercloud:index/KpsKeypairDisassociateServer:KpsKeypairDisassociateServer",
+                    "description": "Specifies the ECS information."
+                }
+            },
+            "required": [
+                "region",
+                "server"
+            ],
+            "inputProperties": {
+                "enableForceNew": {
+                    "type": "string"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Specifies the region in which to query the resource."
+                },
+                "server": {
+                    "$ref": "#/types/sbercloud:index/KpsKeypairDisassociateServer:KpsKeypairDisassociateServer",
+                    "description": "Specifies the ECS information."
+                }
+            },
+            "requiredInputs": [
+                "server"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering KpsKeypairDisassociate resources.\n",
+                "properties": {
+                    "enableForceNew": {
+                        "type": "string"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "Specifies the region in which to query the resource."
+                    },
+                    "server": {
+                        "$ref": "#/types/sbercloud:index/KpsKeypairDisassociateServer:KpsKeypairDisassociateServer",
+                        "description": "Specifies the ECS information."
                     }
                 },
                 "type": "object"
@@ -65230,6 +66977,7 @@
                 "name",
                 "pushPolicy",
                 "region",
+                "tags",
                 "topicUrn",
                 "updateTime"
             ],
@@ -65680,6 +67428,7 @@
                 "psk",
                 "region",
                 "status",
+                "tags",
                 "tunnelLocalAddress",
                 "tunnelPeerAddress",
                 "updatedAt",
@@ -66018,6 +67767,7 @@
                 "serialNumber",
                 "signatureAlgorithm",
                 "subject",
+                "tags",
                 "updatedAt"
             ],
             "inputProperties": {
@@ -66288,6 +68038,7 @@
                 "region",
                 "slaveEip",
                 "status",
+                "tags",
                 "updatedAt",
                 "usedConnectionGroup",
                 "usedConnectionNumber",
@@ -69172,6 +70923,9 @@
                     "engineVersion": {
                         "type": "string"
                     },
+                    "instanceId": {
+                        "type": "string"
+                    },
                     "name": {
                         "type": "string"
                     },
@@ -69207,6 +70961,9 @@
                     },
                     "id": {
                         "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "instanceId": {
                         "type": "string"
                     },
                     "name": {
@@ -70235,6 +71992,7 @@
                     "securityGroups",
                     "status",
                     "systemDiskId",
+                    "tags",
                     "userData",
                     "volumeAttacheds",
                     "id"
@@ -70343,6 +72101,7 @@
                 },
                 "required": [
                     "instances",
+                    "tags",
                     "id"
                 ],
                 "type": "object"
@@ -71713,6 +73472,7 @@
                     "instanceId",
                     "region",
                     "routeTables",
+                    "tags",
                     "id"
                 ],
                 "type": "object"
@@ -78287,6 +80047,105 @@
                     "instanceId",
                     "region",
                     "users",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "sbercloud:index/getDnsZones:getDnsZones": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getDnsZones.\n",
+                "properties": {
+                    "enterpriseProjectId": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "region": {
+                        "type": "string"
+                    },
+                    "routerId": {
+                        "type": "string"
+                    },
+                    "searchMode": {
+                        "type": "string"
+                    },
+                    "sortDir": {
+                        "type": "string"
+                    },
+                    "sortKey": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "tags": {
+                        "type": "string"
+                    },
+                    "zoneId": {
+                        "type": "string"
+                    },
+                    "zoneType": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "zoneType"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getDnsZones.\n",
+                "properties": {
+                    "enterpriseProjectId": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "region": {
+                        "type": "string"
+                    },
+                    "routerId": {
+                        "type": "string"
+                    },
+                    "searchMode": {
+                        "type": "string"
+                    },
+                    "sortDir": {
+                        "type": "string"
+                    },
+                    "sortKey": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "tags": {
+                        "type": "string"
+                    },
+                    "zoneId": {
+                        "type": "string"
+                    },
+                    "zoneType": {
+                        "type": "string"
+                    },
+                    "zones": {
+                        "items": {
+                            "$ref": "#/types/sbercloud:index/getDnsZonesZone:getDnsZonesZone"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "region",
+                    "zoneType",
+                    "zones",
                     "id"
                 ],
                 "type": "object"

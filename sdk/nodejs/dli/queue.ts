@@ -61,7 +61,7 @@ export class Queue extends pulumi.CustomResource {
      * @deprecated subnet_cidr is Deprecated
      */
     declare public readonly subnetCidr: pulumi.Output<string | undefined>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     /**
      * The CIDR block of the queue.
      */

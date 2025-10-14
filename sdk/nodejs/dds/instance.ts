@@ -75,7 +75,7 @@ export class Instance extends pulumi.CustomResource {
     declare public readonly ssl: pulumi.Output<boolean | undefined>;
     declare public /*out*/ readonly status: pulumi.Output<string>;
     declare public readonly subnetId: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     declare public /*out*/ readonly timeZone: pulumi.Output<string>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     declare public readonly vpcId: pulumi.Output<string>;

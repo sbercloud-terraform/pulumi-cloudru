@@ -16,6 +16,10 @@ type Zone struct {
 
 	// The description of the zone.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Specifies whether to enable DNSSEC for a public zone.
+	Dnssec pulumi.StringOutput `pulumi:"dnssec"`
+	// Indicates the DNSSEC infos.
+	DnssecInfos ZoneDnssecInfoArrayOutput `pulumi:"dnssecInfos"`
 	// The email address of the administrator managing the zone.
 	Email pulumi.StringOutput `pulumi:"email"`
 	// The enterprise project ID of the zone.
@@ -70,6 +74,10 @@ func GetZone(ctx *pulumi.Context,
 type zoneState struct {
 	// The description of the zone.
 	Description *string `pulumi:"description"`
+	// Specifies whether to enable DNSSEC for a public zone.
+	Dnssec *string `pulumi:"dnssec"`
+	// Indicates the DNSSEC infos.
+	DnssecInfos []ZoneDnssecInfo `pulumi:"dnssecInfos"`
 	// The email address of the administrator managing the zone.
 	Email *string `pulumi:"email"`
 	// The enterprise project ID of the zone.
@@ -95,6 +103,10 @@ type zoneState struct {
 type ZoneState struct {
 	// The description of the zone.
 	Description pulumi.StringPtrInput
+	// Specifies whether to enable DNSSEC for a public zone.
+	Dnssec pulumi.StringPtrInput
+	// Indicates the DNSSEC infos.
+	DnssecInfos ZoneDnssecInfoArrayInput
 	// The email address of the administrator managing the zone.
 	Email pulumi.StringPtrInput
 	// The enterprise project ID of the zone.
@@ -124,6 +136,8 @@ func (ZoneState) ElementType() reflect.Type {
 type zoneArgs struct {
 	// The description of the zone.
 	Description *string `pulumi:"description"`
+	// Specifies whether to enable DNSSEC for a public zone.
+	Dnssec *string `pulumi:"dnssec"`
 	// The email address of the administrator managing the zone.
 	Email *string `pulumi:"email"`
 	// The enterprise project ID of the zone.
@@ -148,6 +162,8 @@ type zoneArgs struct {
 type ZoneArgs struct {
 	// The description of the zone.
 	Description pulumi.StringPtrInput
+	// Specifies whether to enable DNSSEC for a public zone.
+	Dnssec pulumi.StringPtrInput
 	// The email address of the administrator managing the zone.
 	Email pulumi.StringPtrInput
 	// The enterprise project ID of the zone.
@@ -258,6 +274,16 @@ func (o ZoneOutput) ToZoneOutputWithContext(ctx context.Context) ZoneOutput {
 // The description of the zone.
 func (o ZoneOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to enable DNSSEC for a public zone.
+func (o ZoneOutput) Dnssec() pulumi.StringOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Dnssec }).(pulumi.StringOutput)
+}
+
+// Indicates the DNSSEC infos.
+func (o ZoneOutput) DnssecInfos() ZoneDnssecInfoArrayOutput {
+	return o.ApplyT(func(v *Zone) ZoneDnssecInfoArrayOutput { return v.DnssecInfos }).(ZoneDnssecInfoArrayOutput)
 }
 
 // The email address of the administrator managing the zone.

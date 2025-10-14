@@ -3286,7 +3286,8 @@ func (o NodePoolExtensionScaleGroupArrayOutput) Index(i pulumi.IntInput) NodePoo
 }
 
 type NodePoolExtensionScaleGroupMetadata struct {
-	Name *string `pulumi:"name"`
+	Name string  `pulumi:"name"`
+	Uid  *string `pulumi:"uid"`
 }
 
 // NodePoolExtensionScaleGroupMetadataInput is an input type that accepts NodePoolExtensionScaleGroupMetadataArgs and NodePoolExtensionScaleGroupMetadataOutput values.
@@ -3301,7 +3302,8 @@ type NodePoolExtensionScaleGroupMetadataInput interface {
 }
 
 type NodePoolExtensionScaleGroupMetadataArgs struct {
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name pulumi.StringInput    `pulumi:"name"`
+	Uid  pulumi.StringPtrInput `pulumi:"uid"`
 }
 
 func (NodePoolExtensionScaleGroupMetadataArgs) ElementType() reflect.Type {
@@ -3381,8 +3383,12 @@ func (o NodePoolExtensionScaleGroupMetadataOutput) ToNodePoolExtensionScaleGroup
 	}).(NodePoolExtensionScaleGroupMetadataPtrOutput)
 }
 
-func (o NodePoolExtensionScaleGroupMetadataOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NodePoolExtensionScaleGroupMetadata) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o NodePoolExtensionScaleGroupMetadataOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NodePoolExtensionScaleGroupMetadata) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o NodePoolExtensionScaleGroupMetadataOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolExtensionScaleGroupMetadata) *string { return v.Uid }).(pulumi.StringPtrOutput)
 }
 
 type NodePoolExtensionScaleGroupMetadataPtrOutput struct{ *pulumi.OutputState }
@@ -3414,7 +3420,16 @@ func (o NodePoolExtensionScaleGroupMetadataPtrOutput) Name() pulumi.StringPtrOut
 		if v == nil {
 			return nil
 		}
-		return v.Name
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o NodePoolExtensionScaleGroupMetadataPtrOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolExtensionScaleGroupMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uid
 	}).(pulumi.StringPtrOutput)
 }
 

@@ -40,13 +40,13 @@ type Function struct {
 	// The private DNS configuration of the function network.
 	DnsList pulumi.StringOutput `pulumi:"dnsList"`
 	// Whether the authentication in the request header is enabled.
-	EnableAuthInHeader pulumi.BoolPtrOutput `pulumi:"enableAuthInHeader"`
+	EnableAuthInHeader pulumi.BoolOutput `pulumi:"enableAuthInHeader"`
 	// Whether the class isolation is enabled for the JAVA runtime functions.
-	EnableClassIsolation pulumi.BoolPtrOutput `pulumi:"enableClassIsolation"`
+	EnableClassIsolation pulumi.BoolOutput `pulumi:"enableClassIsolation"`
 	// Whether the dynamic memory configuration is enabled.
-	EnableDynamicMemory pulumi.BoolPtrOutput `pulumi:"enableDynamicMemory"`
+	EnableDynamicMemory pulumi.BoolOutput `pulumi:"enableDynamicMemory"`
 	// Whether to enable the LTS log.
-	EnableLtsLog pulumi.BoolPtrOutput `pulumi:"enableLtsLog"`
+	EnableLtsLog pulumi.BoolOutput `pulumi:"enableLtsLog"`
 	// The key/value information defined to be encrypted for the function.
 	EncryptedUserData pulumi.StringPtrOutput `pulumi:"encryptedUserData"`
 	// The ID of the enterprise project to which the function belongs.
@@ -72,7 +72,7 @@ type Function struct {
 	// The maximum duration the function can be initialized.
 	InitializerTimeout pulumi.IntOutput `pulumi:"initializerTimeout"`
 	// Whether the function is a stateful function.
-	IsStatefulFunction pulumi.BoolPtrOutput `pulumi:"isStatefulFunction"`
+	IsStatefulFunction pulumi.BoolOutput `pulumi:"isStatefulFunction"`
 	// The LTS group ID for collecting logs.
 	LogGroupId pulumi.StringOutput `pulumi:"logGroupId"`
 	// The LTS group name for collecting logs.
@@ -507,6 +507,9 @@ type functionArgs struct {
 	LogStreamName *string `pulumi:"logStreamName"`
 	// The custom tags configuration that used to filter the LTS logs.
 	LtsCustomTag map[string]string `pulumi:"ltsCustomTag"`
+	// The script configuration value of this change is also the original value used for comparison with
+	//  the new value next time the change is made. The corresponding parameter name is 'lts_custom_tag'.
+	LtsCustomTagOrigin map[string]string `pulumi:"ltsCustomTagOrigin"`
 	// The maximum number of instances of the function.
 	MaxInstanceNum *string `pulumi:"maxInstanceNum"`
 	// The memory size allocated to the function, in MByte (MB).
@@ -626,6 +629,9 @@ type FunctionArgs struct {
 	LogStreamName pulumi.StringPtrInput
 	// The custom tags configuration that used to filter the LTS logs.
 	LtsCustomTag pulumi.StringMapInput
+	// The script configuration value of this change is also the original value used for comparison with
+	//  the new value next time the change is made. The corresponding parameter name is 'lts_custom_tag'.
+	LtsCustomTagOrigin pulumi.StringMapInput
 	// The maximum number of instances of the function.
 	MaxInstanceNum pulumi.StringPtrInput
 	// The memory size allocated to the function, in MByte (MB).
@@ -823,23 +829,23 @@ func (o FunctionOutput) DnsList() pulumi.StringOutput {
 }
 
 // Whether the authentication in the request header is enabled.
-func (o FunctionOutput) EnableAuthInHeader() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Function) pulumi.BoolPtrOutput { return v.EnableAuthInHeader }).(pulumi.BoolPtrOutput)
+func (o FunctionOutput) EnableAuthInHeader() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Function) pulumi.BoolOutput { return v.EnableAuthInHeader }).(pulumi.BoolOutput)
 }
 
 // Whether the class isolation is enabled for the JAVA runtime functions.
-func (o FunctionOutput) EnableClassIsolation() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Function) pulumi.BoolPtrOutput { return v.EnableClassIsolation }).(pulumi.BoolPtrOutput)
+func (o FunctionOutput) EnableClassIsolation() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Function) pulumi.BoolOutput { return v.EnableClassIsolation }).(pulumi.BoolOutput)
 }
 
 // Whether the dynamic memory configuration is enabled.
-func (o FunctionOutput) EnableDynamicMemory() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Function) pulumi.BoolPtrOutput { return v.EnableDynamicMemory }).(pulumi.BoolPtrOutput)
+func (o FunctionOutput) EnableDynamicMemory() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Function) pulumi.BoolOutput { return v.EnableDynamicMemory }).(pulumi.BoolOutput)
 }
 
 // Whether to enable the LTS log.
-func (o FunctionOutput) EnableLtsLog() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Function) pulumi.BoolPtrOutput { return v.EnableLtsLog }).(pulumi.BoolPtrOutput)
+func (o FunctionOutput) EnableLtsLog() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Function) pulumi.BoolOutput { return v.EnableLtsLog }).(pulumi.BoolOutput)
 }
 
 // The key/value information defined to be encrypted for the function.
@@ -903,8 +909,8 @@ func (o FunctionOutput) InitializerTimeout() pulumi.IntOutput {
 }
 
 // Whether the function is a stateful function.
-func (o FunctionOutput) IsStatefulFunction() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Function) pulumi.BoolPtrOutput { return v.IsStatefulFunction }).(pulumi.BoolPtrOutput)
+func (o FunctionOutput) IsStatefulFunction() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Function) pulumi.BoolOutput { return v.IsStatefulFunction }).(pulumi.BoolOutput)
 }
 
 // The LTS group ID for collecting logs.

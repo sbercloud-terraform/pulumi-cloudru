@@ -25,6 +25,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ApigAclPolicy{}
 	case "sbercloud:index/apigAclPolicyAssociate:ApigAclPolicyAssociate":
 		r = &ApigAclPolicyAssociate{}
+	case "sbercloud:index/apigApiAction:ApigApiAction":
+		r = &ApigApiAction{}
+	case "sbercloud:index/apigApiBatchAction:ApigApiBatchAction":
+		r = &ApigApiBatchAction{}
+	case "sbercloud:index/apigApiCheck:ApigApiCheck":
+		r = &ApigApiCheck{}
+	case "sbercloud:index/apigApiDebug:ApigApiDebug":
+		r = &ApigApiDebug{}
+	case "sbercloud:index/apigApiVersionUnpublish:ApigApiVersionUnpublish":
+		r = &ApigApiVersionUnpublish{}
 	case "sbercloud:index/apigAppcode:ApigAppcode":
 		r = &ApigAppcode{}
 	case "sbercloud:index/apigApplicationAcl:ApigApplicationAcl":
@@ -53,6 +63,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ApigPlugin{}
 	case "sbercloud:index/apigPluginAssociate:ApigPluginAssociate":
 		r = &ApigPluginAssociate{}
+	case "sbercloud:index/apigPluginBatchApisAssociate:ApigPluginBatchApisAssociate":
+		r = &ApigPluginBatchApisAssociate{}
 	case "sbercloud:index/apigSignature:ApigSignature":
 		r = &ApigSignature{}
 	case "sbercloud:index/apigSignatureAssociate:ApigSignatureAssociate":
@@ -69,6 +81,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CbrBackupShareAccepter{}
 	case "sbercloud:index/cbrCheckpoint:CbrCheckpoint":
 		r = &CbrCheckpoint{}
+	case "sbercloud:index/cceClusterUpgrade:CceClusterUpgrade":
+		r = &CceClusterUpgrade{}
+	case "sbercloud:index/cceNodesRemove:CceNodesRemove":
+		r = &CceNodesRemove{}
 	case "sbercloud:index/cssConfiguration:CssConfiguration":
 		r = &CssConfiguration{}
 	case "sbercloud:index/dcsAccount:DcsAccount":
@@ -157,6 +173,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IdentityRoleAssignmentV3{}
 	case "sbercloud:index/identityUserV3:IdentityUserV3":
 		r = &IdentityUserV3{}
+	case "sbercloud:index/kpsKeypairAssociate:KpsKeypairAssociate":
+		r = &KpsKeypairAssociate{}
+	case "sbercloud:index/kpsKeypairDisassociate:KpsKeypairDisassociate":
+		r = &KpsKeypairDisassociate{}
 	case "sbercloud:index/networkingEipAssociate:NetworkingEipAssociate":
 		r = &NetworkingEipAssociate{}
 	case "sbercloud:index/obsBucketAcl:ObsBucketAcl":
@@ -236,6 +256,31 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"sbercloud",
+		"index/apigApiAction",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sbercloud",
+		"index/apigApiBatchAction",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sbercloud",
+		"index/apigApiCheck",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sbercloud",
+		"index/apigApiDebug",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sbercloud",
+		"index/apigApiVersionUnpublish",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sbercloud",
 		"index/apigAppcode",
 		&module{version},
 	)
@@ -306,6 +351,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"sbercloud",
+		"index/apigPluginBatchApisAssociate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sbercloud",
 		"index/apigSignature",
 		&module{version},
 	)
@@ -342,6 +392,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"sbercloud",
 		"index/cbrCheckpoint",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sbercloud",
+		"index/cceClusterUpgrade",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sbercloud",
+		"index/cceNodesRemove",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -562,6 +622,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"sbercloud",
 		"index/identityUserV3",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sbercloud",
+		"index/kpsKeypairAssociate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sbercloud",
+		"index/kpsKeypairDisassociate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

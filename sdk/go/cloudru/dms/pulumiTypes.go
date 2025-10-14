@@ -299,6 +299,47 @@ func (i KafkaInstancePortProtocolArgs) ToKafkaInstancePortProtocolOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaInstancePortProtocolOutput)
 }
 
+func (i KafkaInstancePortProtocolArgs) ToKafkaInstancePortProtocolPtrOutput() KafkaInstancePortProtocolPtrOutput {
+	return i.ToKafkaInstancePortProtocolPtrOutputWithContext(context.Background())
+}
+
+func (i KafkaInstancePortProtocolArgs) ToKafkaInstancePortProtocolPtrOutputWithContext(ctx context.Context) KafkaInstancePortProtocolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaInstancePortProtocolOutput).ToKafkaInstancePortProtocolPtrOutputWithContext(ctx)
+}
+
+// KafkaInstancePortProtocolPtrInput is an input type that accepts KafkaInstancePortProtocolArgs, KafkaInstancePortProtocolPtr and KafkaInstancePortProtocolPtrOutput values.
+// You can construct a concrete instance of `KafkaInstancePortProtocolPtrInput` via:
+//
+//	        KafkaInstancePortProtocolArgs{...}
+//
+//	or:
+//
+//	        nil
+type KafkaInstancePortProtocolPtrInput interface {
+	pulumi.Input
+
+	ToKafkaInstancePortProtocolPtrOutput() KafkaInstancePortProtocolPtrOutput
+	ToKafkaInstancePortProtocolPtrOutputWithContext(context.Context) KafkaInstancePortProtocolPtrOutput
+}
+
+type kafkaInstancePortProtocolPtrType KafkaInstancePortProtocolArgs
+
+func KafkaInstancePortProtocolPtr(v *KafkaInstancePortProtocolArgs) KafkaInstancePortProtocolPtrInput {
+	return (*kafkaInstancePortProtocolPtrType)(v)
+}
+
+func (*kafkaInstancePortProtocolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaInstancePortProtocol)(nil)).Elem()
+}
+
+func (i *kafkaInstancePortProtocolPtrType) ToKafkaInstancePortProtocolPtrOutput() KafkaInstancePortProtocolPtrOutput {
+	return i.ToKafkaInstancePortProtocolPtrOutputWithContext(context.Background())
+}
+
+func (i *kafkaInstancePortProtocolPtrType) ToKafkaInstancePortProtocolPtrOutputWithContext(ctx context.Context) KafkaInstancePortProtocolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaInstancePortProtocolPtrOutput)
+}
+
 // KafkaInstancePortProtocolArrayInput is an input type that accepts KafkaInstancePortProtocolArray and KafkaInstancePortProtocolArrayOutput values.
 // You can construct a concrete instance of `KafkaInstancePortProtocolArrayInput` via:
 //
@@ -336,6 +377,16 @@ func (o KafkaInstancePortProtocolOutput) ToKafkaInstancePortProtocolOutput() Kaf
 
 func (o KafkaInstancePortProtocolOutput) ToKafkaInstancePortProtocolOutputWithContext(ctx context.Context) KafkaInstancePortProtocolOutput {
 	return o
+}
+
+func (o KafkaInstancePortProtocolOutput) ToKafkaInstancePortProtocolPtrOutput() KafkaInstancePortProtocolPtrOutput {
+	return o.ToKafkaInstancePortProtocolPtrOutputWithContext(context.Background())
+}
+
+func (o KafkaInstancePortProtocolOutput) ToKafkaInstancePortProtocolPtrOutputWithContext(ctx context.Context) KafkaInstancePortProtocolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KafkaInstancePortProtocol) *KafkaInstancePortProtocol {
+		return &v
+	}).(KafkaInstancePortProtocolPtrOutput)
 }
 
 func (o KafkaInstancePortProtocolOutput) PrivatePlainAddress() pulumi.StringPtrOutput {
@@ -408,6 +459,192 @@ func (o KafkaInstancePortProtocolOutput) PublicSaslSslDomainName() pulumi.String
 
 func (o KafkaInstancePortProtocolOutput) PublicSaslSslEnable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v KafkaInstancePortProtocol) *bool { return v.PublicSaslSslEnable }).(pulumi.BoolPtrOutput)
+}
+
+type KafkaInstancePortProtocolPtrOutput struct{ *pulumi.OutputState }
+
+func (KafkaInstancePortProtocolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaInstancePortProtocol)(nil)).Elem()
+}
+
+func (o KafkaInstancePortProtocolPtrOutput) ToKafkaInstancePortProtocolPtrOutput() KafkaInstancePortProtocolPtrOutput {
+	return o
+}
+
+func (o KafkaInstancePortProtocolPtrOutput) ToKafkaInstancePortProtocolPtrOutputWithContext(ctx context.Context) KafkaInstancePortProtocolPtrOutput {
+	return o
+}
+
+func (o KafkaInstancePortProtocolPtrOutput) Elem() KafkaInstancePortProtocolOutput {
+	return o.ApplyT(func(v *KafkaInstancePortProtocol) KafkaInstancePortProtocol {
+		if v != nil {
+			return *v
+		}
+		var ret KafkaInstancePortProtocol
+		return ret
+	}).(KafkaInstancePortProtocolOutput)
+}
+
+func (o KafkaInstancePortProtocolPtrOutput) PrivatePlainAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaInstancePortProtocol) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivatePlainAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o KafkaInstancePortProtocolPtrOutput) PrivatePlainDomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaInstancePortProtocol) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivatePlainDomainName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o KafkaInstancePortProtocolPtrOutput) PrivatePlainEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KafkaInstancePortProtocol) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PrivatePlainEnable
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o KafkaInstancePortProtocolPtrOutput) PrivateSaslPlaintextAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaInstancePortProtocol) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateSaslPlaintextAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o KafkaInstancePortProtocolPtrOutput) PrivateSaslPlaintextDomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaInstancePortProtocol) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateSaslPlaintextDomainName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o KafkaInstancePortProtocolPtrOutput) PrivateSaslPlaintextEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KafkaInstancePortProtocol) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateSaslPlaintextEnable
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o KafkaInstancePortProtocolPtrOutput) PrivateSaslSslAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaInstancePortProtocol) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateSaslSslAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o KafkaInstancePortProtocolPtrOutput) PrivateSaslSslDomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaInstancePortProtocol) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateSaslSslDomainName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o KafkaInstancePortProtocolPtrOutput) PrivateSaslSslEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KafkaInstancePortProtocol) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateSaslSslEnable
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o KafkaInstancePortProtocolPtrOutput) PublicPlainAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaInstancePortProtocol) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicPlainAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o KafkaInstancePortProtocolPtrOutput) PublicPlainDomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaInstancePortProtocol) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicPlainDomainName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o KafkaInstancePortProtocolPtrOutput) PublicPlainEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KafkaInstancePortProtocol) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PublicPlainEnable
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o KafkaInstancePortProtocolPtrOutput) PublicSaslPlaintextAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaInstancePortProtocol) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicSaslPlaintextAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o KafkaInstancePortProtocolPtrOutput) PublicSaslPlaintextDomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaInstancePortProtocol) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicSaslPlaintextDomainName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o KafkaInstancePortProtocolPtrOutput) PublicSaslPlaintextEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KafkaInstancePortProtocol) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PublicSaslPlaintextEnable
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o KafkaInstancePortProtocolPtrOutput) PublicSaslSslAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaInstancePortProtocol) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicSaslSslAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o KafkaInstancePortProtocolPtrOutput) PublicSaslSslDomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaInstancePortProtocol) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicSaslSslDomainName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o KafkaInstancePortProtocolPtrOutput) PublicSaslSslEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KafkaInstancePortProtocol) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PublicSaslSslEnable
+	}).(pulumi.BoolPtrOutput)
 }
 
 type KafkaInstancePortProtocolArrayOutput struct{ *pulumi.OutputState }
@@ -1678,6 +1915,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaInstanceParameterInput)(nil)).Elem(), KafkaInstanceParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaInstanceParameterArrayInput)(nil)).Elem(), KafkaInstanceParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaInstancePortProtocolInput)(nil)).Elem(), KafkaInstancePortProtocolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaInstancePortProtocolPtrInput)(nil)).Elem(), KafkaInstancePortProtocolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaInstancePortProtocolArrayInput)(nil)).Elem(), KafkaInstancePortProtocolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaPermissionsPolicyInput)(nil)).Elem(), KafkaPermissionsPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaPermissionsPolicyArrayInput)(nil)).Elem(), KafkaPermissionsPolicyArray{})
@@ -1702,6 +1940,7 @@ func init() {
 	pulumi.RegisterOutputType(KafkaInstanceParameterOutput{})
 	pulumi.RegisterOutputType(KafkaInstanceParameterArrayOutput{})
 	pulumi.RegisterOutputType(KafkaInstancePortProtocolOutput{})
+	pulumi.RegisterOutputType(KafkaInstancePortProtocolPtrOutput{})
 	pulumi.RegisterOutputType(KafkaInstancePortProtocolArrayOutput{})
 	pulumi.RegisterOutputType(KafkaPermissionsPolicyOutput{})
 	pulumi.RegisterOutputType(KafkaPermissionsPolicyArrayOutput{})

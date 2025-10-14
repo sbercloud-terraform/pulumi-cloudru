@@ -22,6 +22,7 @@ __all__ = ['ZoneArgs', 'Zone']
 class ZoneArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 dnssec: Optional[pulumi.Input[_builtins.str]] = None,
                  email: Optional[pulumi.Input[_builtins.str]] = None,
                  enterprise_project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -35,6 +36,7 @@ class ZoneArgs:
         """
         The set of arguments for constructing a Zone resource.
         :param pulumi.Input[_builtins.str] description: The description of the zone.
+        :param pulumi.Input[_builtins.str] dnssec: Specifies whether to enable DNSSEC for a public zone.
         :param pulumi.Input[_builtins.str] email: The email address of the administrator managing the zone.
         :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID of the zone.
         :param pulumi.Input[_builtins.str] name: The name of the zone.
@@ -46,6 +48,8 @@ class ZoneArgs:
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if dnssec is not None:
+            pulumi.set(__self__, "dnssec", dnssec)
         if email is not None:
             pulumi.set(__self__, "email", email)
         if enterprise_project_id is not None:
@@ -78,6 +82,18 @@ class ZoneArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def dnssec(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies whether to enable DNSSEC for a public zone.
+        """
+        return pulumi.get(self, "dnssec")
+
+    @dnssec.setter
+    def dnssec(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "dnssec", value)
 
     @_builtins.property
     @pulumi.getter
@@ -198,6 +214,8 @@ class ZoneArgs:
 class _ZoneState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 dnssec: Optional[pulumi.Input[_builtins.str]] = None,
+                 dnssec_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneDnssecInfoArgs']]]] = None,
                  email: Optional[pulumi.Input[_builtins.str]] = None,
                  enterprise_project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  masters: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -212,6 +230,8 @@ class _ZoneState:
         """
         Input properties used for looking up and filtering Zone resources.
         :param pulumi.Input[_builtins.str] description: The description of the zone.
+        :param pulumi.Input[_builtins.str] dnssec: Specifies whether to enable DNSSEC for a public zone.
+        :param pulumi.Input[Sequence[pulumi.Input['ZoneDnssecInfoArgs']]] dnssec_infos: Indicates the DNSSEC infos.
         :param pulumi.Input[_builtins.str] email: The email address of the administrator managing the zone.
         :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID of the zone.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] masters: The list of the masters of the DNS server.
@@ -224,6 +244,10 @@ class _ZoneState:
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if dnssec is not None:
+            pulumi.set(__self__, "dnssec", dnssec)
+        if dnssec_infos is not None:
+            pulumi.set(__self__, "dnssec_infos", dnssec_infos)
         if email is not None:
             pulumi.set(__self__, "email", email)
         if enterprise_project_id is not None:
@@ -258,6 +282,30 @@ class _ZoneState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def dnssec(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies whether to enable DNSSEC for a public zone.
+        """
+        return pulumi.get(self, "dnssec")
+
+    @dnssec.setter
+    def dnssec(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "dnssec", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dnssecInfos")
+    def dnssec_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZoneDnssecInfoArgs']]]]:
+        """
+        Indicates the DNSSEC infos.
+        """
+        return pulumi.get(self, "dnssec_infos")
+
+    @dnssec_infos.setter
+    def dnssec_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneDnssecInfoArgs']]]]):
+        pulumi.set(self, "dnssec_infos", value)
 
     @_builtins.property
     @pulumi.getter
@@ -393,6 +441,7 @@ class Zone(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 dnssec: Optional[pulumi.Input[_builtins.str]] = None,
                  email: Optional[pulumi.Input[_builtins.str]] = None,
                  enterprise_project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -409,6 +458,7 @@ class Zone(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the zone.
+        :param pulumi.Input[_builtins.str] dnssec: Specifies whether to enable DNSSEC for a public zone.
         :param pulumi.Input[_builtins.str] email: The email address of the administrator managing the zone.
         :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID of the zone.
         :param pulumi.Input[_builtins.str] name: The name of the zone.
@@ -442,6 +492,7 @@ class Zone(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 dnssec: Optional[pulumi.Input[_builtins.str]] = None,
                  email: Optional[pulumi.Input[_builtins.str]] = None,
                  enterprise_project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -462,6 +513,7 @@ class Zone(pulumi.CustomResource):
             __props__ = ZoneArgs.__new__(ZoneArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["dnssec"] = dnssec
             __props__.__dict__["email"] = email
             __props__.__dict__["enterprise_project_id"] = enterprise_project_id
             __props__.__dict__["name"] = name
@@ -472,6 +524,7 @@ class Zone(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["ttl"] = ttl
             __props__.__dict__["zone_type"] = zone_type
+            __props__.__dict__["dnssec_infos"] = None
             __props__.__dict__["masters"] = None
         super(Zone, __self__).__init__(
             'cloudru:Dns/zone:Zone',
@@ -484,6 +537,8 @@ class Zone(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
+            dnssec: Optional[pulumi.Input[_builtins.str]] = None,
+            dnssec_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZoneDnssecInfoArgs', 'ZoneDnssecInfoArgsDict']]]]] = None,
             email: Optional[pulumi.Input[_builtins.str]] = None,
             enterprise_project_id: Optional[pulumi.Input[_builtins.str]] = None,
             masters: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -503,6 +558,8 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the zone.
+        :param pulumi.Input[_builtins.str] dnssec: Specifies whether to enable DNSSEC for a public zone.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneDnssecInfoArgs', 'ZoneDnssecInfoArgsDict']]]] dnssec_infos: Indicates the DNSSEC infos.
         :param pulumi.Input[_builtins.str] email: The email address of the administrator managing the zone.
         :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID of the zone.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] masters: The list of the masters of the DNS server.
@@ -518,6 +575,8 @@ class Zone(pulumi.CustomResource):
         __props__ = _ZoneState.__new__(_ZoneState)
 
         __props__.__dict__["description"] = description
+        __props__.__dict__["dnssec"] = dnssec
+        __props__.__dict__["dnssec_infos"] = dnssec_infos
         __props__.__dict__["email"] = email
         __props__.__dict__["enterprise_project_id"] = enterprise_project_id
         __props__.__dict__["masters"] = masters
@@ -538,6 +597,22 @@ class Zone(pulumi.CustomResource):
         The description of the zone.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def dnssec(self) -> pulumi.Output[_builtins.str]:
+        """
+        Specifies whether to enable DNSSEC for a public zone.
+        """
+        return pulumi.get(self, "dnssec")
+
+    @_builtins.property
+    @pulumi.getter(name="dnssecInfos")
+    def dnssec_infos(self) -> pulumi.Output[Sequence['outputs.ZoneDnssecInfo']]:
+        """
+        Indicates the DNSSEC infos.
+        """
+        return pulumi.get(self, "dnssec_infos")
 
     @_builtins.property
     @pulumi.getter
@@ -599,7 +674,7 @@ class Zone(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+    def tags(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         The key/value pairs to associate with the zone.
         """

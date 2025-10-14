@@ -23,10 +23,13 @@ class SnapshotArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  force: Optional[pulumi.Input[_builtins.bool]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 metadata_origin: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Snapshot resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata_origin: The script configuration value of this change is also the original value used for comparison with
+                the new value next time the change is made. The corresponding parameter name is 'metadata'.
         """
         pulumi.set(__self__, "volume_id", volume_id)
         if description is not None:
@@ -35,6 +38,8 @@ class SnapshotArgs:
             pulumi.set(__self__, "force", force)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
+        if metadata_origin is not None:
+            pulumi.set(__self__, "metadata_origin", metadata_origin)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if region is not None:
@@ -75,6 +80,19 @@ class SnapshotArgs:
     @metadata.setter
     def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
+
+    @_builtins.property
+    @pulumi.getter(name="metadataOrigin")
+    def metadata_origin(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The script configuration value of this change is also the original value used for comparison with
+         the new value next time the change is made. The corresponding parameter name is 'metadata'.
+        """
+        return pulumi.get(self, "metadata_origin")
+
+    @metadata_origin.setter
+    def metadata_origin(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "metadata_origin", value)
 
     @_builtins.property
     @pulumi.getter
@@ -250,6 +268,7 @@ class Snapshot(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  force: Optional[pulumi.Input[_builtins.bool]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 metadata_origin: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  volume_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -258,6 +277,8 @@ class Snapshot(pulumi.CustomResource):
         Create a Snapshot resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata_origin: The script configuration value of this change is also the original value used for comparison with
+                the new value next time the change is made. The corresponding parameter name is 'metadata'.
         """
         ...
     @overload
@@ -285,6 +306,7 @@ class Snapshot(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  force: Optional[pulumi.Input[_builtins.bool]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 metadata_origin: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  volume_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -300,13 +322,13 @@ class Snapshot(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["force"] = force
             __props__.__dict__["metadata"] = metadata
+            __props__.__dict__["metadata_origin"] = metadata_origin
             __props__.__dict__["name"] = name
             __props__.__dict__["region"] = region
             if volume_id is None and not opts.urn:
                 raise TypeError("Missing required property 'volume_id'")
             __props__.__dict__["volume_id"] = volume_id
             __props__.__dict__["created_at"] = None
-            __props__.__dict__["metadata_origin"] = None
             __props__.__dict__["size"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["updated_at"] = None

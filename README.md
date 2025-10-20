@@ -2,6 +2,8 @@
 
 The Cloudru Resource Provider lets you manage [Cloud.ru Advanced](https://cloud.ru/advanced) resources.
 
+You can find quick start guide [here](/examples/quick-start.md)
+
 ## Installing
 
 This package is available for several languages/platforms:

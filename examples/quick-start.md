@@ -23,6 +23,13 @@ If everything is installed correctly, you should see output similar to:
 v3.202.0
 ```
 
+To initialize yur backend run: 
+```shell
+pulumi login --local
+# or something like this, if you have an configured S3 bucket
+# pulumi login s3://your-bucket/path 
+```
+
 Next, open your favorite code editor (VS Code is used in this example) and navigate to your project directory (create a new empty one if needed).
 Open a terminal in this directory and run:
 ```shell

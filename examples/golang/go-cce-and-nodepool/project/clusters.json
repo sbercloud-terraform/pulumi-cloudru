@@ -1,0 +1,42 @@
+[
+    {
+        "name": "team-a1",
+        "cluster_type": "VirtualMachine",
+        "flavor_id": "cce.s1.small",
+        "container_network_type": "vpc-router",
+        "subnetCidr": "192.168.10.0/24",
+        "node_pool_conf": {
+            "initial_node_count": 1,
+            "os": "CentOS 7.6",
+            "flavor_id": "c7n.large.4",
+            "root_volume_conf": {
+                "size": 50,
+                "volume_type": "SAS"
+            },
+            "data_volume_conf": {
+                "size": 100,
+                "volume_type": "SAS"
+            }
+        }
+    },
+    {
+        "name": "team-b2",
+        "cluster_type": "VirtualMachine",
+        "flavor_id": "cce.s1.small",
+        "container_network_type": "vpc-router",
+        "subnetCidr": "192.168.20.0/24",
+        "node_pool_conf": {
+            "initial_node_count": 2,
+            "os": "CentOS 7.6",
+            "flavor_id": "c7n.large.4",
+            "root_volume_conf": {
+                "size": 50,
+                "volume_type": "SAS"
+            },
+            "data_volume_conf": {
+                "size": 100,
+                "volume_type": "SAS"
+            }
+        }
+    }
+]

@@ -5,43 +5,46 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cce"
 )
 
-func CreateCCE(ctx *pulumi.Context, args CCEArgs) (*cce.Cluster, error) {
-	clusterRes, err := cce.NewCluster(ctx, "cceCluster", &cce.ClusterArgs{
-		ClusterType:          pulumi.String("VirtualMachine"),
-		FlavorId:             pulumi.String("cce.s1.small"),
-		Name:                 pulumi.String("my-cce"),
+func CreateCCE(ctx *pulumi.Context, args CCEArgs, conf *ClusterConf) (*cce.Cluster, error) {
+	// This is used as the internal name of the resource and as the name that is displayed in the console
+	clusterName := conf.Name + "-cluster"
+
+	clusterRes, err := cce.NewCluster(ctx, clusterName, &cce.ClusterArgs{
+		ClusterType:          pulumi.String(conf.ClusterType),
+		FlavorId:             pulumi.String(conf.FlavorId),
+		Name:                 pulumi.String(clusterName),
 		VpcId:                args.VpcId,
 		SubnetId:             args.SubnetId,
-		ContainerNetworkType: pulumi.String("vpc-router"),
+		ContainerNetworkType: pulumi.String(conf.ContainerNetworkType),
 	})
 	if err != nil {
 		return nil, err
 	}
 
-	dataVolumes := make(cce.NodePoolDataVolumeArray, 0)
-	dataVolumes = append(dataVolumes, cce.NodePoolDataVolumeArgs{
-		Size:       pulumi.Int(100),
-		Volumetype: pulumi.String("SAS"),
-	})
-	_, err = cce.NewNodePool(ctx, "nodePool", &cce.NodePoolArgs{
+	// This is used as the internal name of the resource and as the name that is displayed in the console
+	nodepoolName := conf.Name + "-nodepool"
+
+	_, err = cce.NewNodePool(ctx, nodepoolName, &cce.NodePoolArgs{
 		RootVolume: &cce.NodePoolRootVolumeArgs{
-			Size:       pulumi.Int(40),
-			Volumetype: pulumi.String("SAS"),
+			Size:       pulumi.Int(conf.NodePool.RootVolume.Size),
+			Volumetype: pulumi.String(conf.NodePool.RootVolume.VolumeType),
 		},
-
-		DataVolumes: &dataVolumes,
-
-		Os:               pulumi.String("CentOS 7.6"),
-		Password:         pulumi.String("Test@1234"), // pls, don't use this password in production :)
+		DataVolumes: cce.NodePoolDataVolumeArray{
+			cce.NodePoolDataVolumeArgs{
+				Size:       pulumi.Int(conf.NodePool.DataVolume.Size),
+				Volumetype: pulumi.String(conf.NodePool.DataVolume.VolumeType),
+			},
+		},
+		InitialNodeCount: args.NodeCount,
 		ClusterId:        clusterRes.ID(),
-		Name:             pulumi.String("np1"),
-		FlavorId:         pulumi.String("c7n.large.4"),
-		InitialNodeCount: pulumi.Int(2),
 		SubnetId:         args.SubnetId,
+		Name:             pulumi.String(nodepoolName),
+		Os:               pulumi.String(conf.NodePool.Os),
+		FlavorId:         pulumi.String(conf.NodePool.FlavorId),
+		Password:         pulumi.String("Test@1234"), // TODO don't use this in production
 	})
 	if err != nil {
 		return nil, err
 	}
-
 	return clusterRes, nil
 }
